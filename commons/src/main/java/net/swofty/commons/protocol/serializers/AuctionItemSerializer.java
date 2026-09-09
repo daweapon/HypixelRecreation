@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.util.List;
 import java.util.UUID;
 
+// Serializes a single AuctionItem to/from JSON, including its nested SkyBlock item and bid history.
 public class AuctionItemSerializer<T> implements Serializer<AuctionItem> {
 
     @Override
@@ -17,11 +18,12 @@ public class AuctionItemSerializer<T> implements Serializer<AuctionItem> {
         UnderstandableSkyBlockItem item = value.getItem();
         long endTime = value.getEndTime();
         boolean isBin = value.isBin();
-        Integer startingPrice = value.getStartingPrice();
+        Long startingPrice = value.getStartingPrice();
 
         JSONObject obj = new JSONObject();
         obj.put("uuid", uuid.toString());
         obj.put("originator", originator.toString());
+        if (value.getSellerProfile() != null) obj.put("seller_profile", value.getSellerProfile().toString());
         obj.put("item", new UnderstandableSkyBlockItemSerializer().serialize(item));
         obj.put("end", endTime);
         obj.put("bin", isBin);
@@ -38,7 +40,7 @@ public class AuctionItemSerializer<T> implements Serializer<AuctionItem> {
         UnderstandableSkyBlockItem item = new UnderstandableSkyBlockItemSerializer().deserialize(obj.getString("item"));
         long endTime = obj.getLong("end");
         boolean isBin = obj.getBoolean("bin");
-        Integer startingPrice = obj.getInt("starting-price");
+        Long startingPrice = obj.getLong("starting-price");
         List<AuctionItem.Bid> bids = obj.getJSONArray("bids").toList().stream()
                 .map(Object::toString)
                 .map(AuctionItem.Bid::fromString)
@@ -47,6 +49,7 @@ public class AuctionItemSerializer<T> implements Serializer<AuctionItem> {
         AuctionItem auctionItem = new AuctionItem();
         auctionItem.setUuid(uuid);
         auctionItem.setOriginator(originator);
+        if (obj.has("seller_profile") && !obj.isNull("seller_profile")) auctionItem.setSellerProfile(UUID.fromString(obj.getString("seller_profile")));
         auctionItem.setItem(item);
         auctionItem.setEndTime(endTime);
         auctionItem.setBin(isBin);
@@ -57,6 +60,6 @@ public class AuctionItemSerializer<T> implements Serializer<AuctionItem> {
 
     @Override
     public AuctionItem clone(AuctionItem value) {
-        return new AuctionItem(value.getItem(), value.getOriginator(), value.getEndTime(), value.isBin(), Long.valueOf(value.getStartingPrice()));
+        return deserialize(serialize(value));
     }
 }

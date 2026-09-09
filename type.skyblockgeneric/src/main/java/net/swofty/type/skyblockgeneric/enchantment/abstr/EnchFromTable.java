@@ -5,6 +5,8 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Map;
 
+// Marks an enchantment as obtainable from the vanilla enchanting table, defining which levels
+// it can roll there and the bookshelf power required.
 public interface EnchFromTable {
 
     TableLevels getLevelsFromTableToApply(@NonNull SkyBlockPlayer player);

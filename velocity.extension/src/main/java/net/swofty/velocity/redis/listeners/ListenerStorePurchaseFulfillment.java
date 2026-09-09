@@ -30,6 +30,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+// Redis handler that fulfills store purchases: records entitlements in Mongo, applies rank changes, and notifies the player.
 public class ListenerStorePurchaseFulfillment implements RedisMessageHandler<
     StorePurchaseFulfillmentProtocol.Request,
     StorePurchaseFulfillmentProtocol.Response> {

@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointBankData;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Applies overdue bank interest to a player (and co-op members) when they rejoin
 public class ActionPlayerBankAddInterest implements HypixelEventClass {
 
 

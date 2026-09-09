@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system event: sets a custom nickname for one of a player's friends.
 public final class FriendSetNicknameRequestEvent extends FriendEvent {
     private static final Serializer<FriendSetNicknameRequestEvent> SERIALIZER =
             new JacksonSerializer<>(FriendSetNicknameRequestEvent.class);

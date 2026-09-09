@@ -14,6 +14,8 @@ import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 
+// Persists a player's Commissions progress: active commission slots, daily completion count/bonus,
+// and which milestone reward tiers they've claimed.
 public class DatapointCommissions extends SkyBlockDatapoint<DatapointCommissions.PlayerCommissionData> {
     private static final Serializer<PlayerCommissionData> serializer = new Serializer<>() {
         @Override

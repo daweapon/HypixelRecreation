@@ -13,6 +13,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.lobby.LobbyTypeLoader;
 import net.swofty.type.lobby.item.LobbyItemHandler;
 
+// Forwards item-related player events to the active lobby's item handler.
 public class LobbyItemEvents implements HypixelEventClass {
 
     private static LobbyItemHandler getHandler() {

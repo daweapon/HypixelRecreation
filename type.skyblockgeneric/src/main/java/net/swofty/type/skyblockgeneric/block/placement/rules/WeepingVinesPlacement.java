@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.block.placement.BlockUtils;
 import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 
+// Placement rule for weeping vines, converting the block above into the growable "plant" variant.
 public class WeepingVinesPlacement extends PlacementRule {
 
     public WeepingVinesPlacement() {

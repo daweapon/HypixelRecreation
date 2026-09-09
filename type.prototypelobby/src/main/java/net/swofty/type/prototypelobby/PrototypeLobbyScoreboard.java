@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+// Manages and periodically updates the sidebar scoreboard shown in the Prototype Lobby.
 public class PrototypeLobbyScoreboard {
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("MM/dd/yy");
     private static final Text BLANK = Text.literal(" ");

@@ -16,8 +16,10 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.commands.VisitCommand;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperience;
+import net.swofty.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -25,6 +27,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI showing another player's equipped items, stats, and profile info
 public class GUIViewPlayerProfile extends HypixelInventoryGUI {
 	private final SkyBlockPlayer viewedPlayer;
 
@@ -148,7 +151,12 @@ public class GUIViewPlayerProfile extends HypixelInventoryGUI {
 			@Override
 			public void run(InventoryPreClickEvent e, HypixelPlayer p) {
 				SkyBlockPlayer player = (SkyBlockPlayer) p;
-				player.sendMessage(Text.key("gui_profile.feature_not_added"));
+				if (player.getUuid().equals(viewedPlayer.getUuid())) {
+					player.sendMessage("<c>You can't visit your own island - use /is to go home!");
+					return;
+				}
+				player.closeInventory();
+				VisitCommand.visitAsync(player, viewedPlayer.getUuid(), viewedPlayer.getUsername());
 			}
 
 			@Override
@@ -187,7 +195,42 @@ public class GUIViewPlayerProfile extends HypixelInventoryGUI {
 			@Override
 			public void run(InventoryPreClickEvent e, HypixelPlayer p) {
 				SkyBlockPlayer player = (SkyBlockPlayer) p;
-				player.sendMessage(Text.key("gui_profile.feature_not_added"));
+
+				if (player.getUuid().equals(viewedPlayer.getUuid())) {
+					player.sendMessage("<c>You can't invite yourself to a co-op!");
+					return;
+				}
+
+				CoopDatabase.Coop playerCoop = CoopDatabase.getFromMember(player.getUuid());
+				if (playerCoop != null) {
+					if (playerCoop.members().contains(player.getUuid())) {
+						player.sendMessage("<c>You are already in a co-op!");
+						player.sendMessage("<e>Run <a>/coopleave <e>to leave your current co-op.");
+					} else {
+						player.sendMessage("<hover:'<e>Click here to view the invite'><click:run:'/coopcheck'>" +
+								"<e>You already have a pending co-op invite! <a><l>CLICK TO VIEW!</click></hover>");
+					}
+					return;
+				}
+
+				if (CoopDatabase.getFromMember(viewedPlayer.getUuid()) != null) {
+					player.sendMessage("<b>[Co-op] <c>{} already has a co-op or an invite pending!", viewedPlayer.getUsername());
+					return;
+				}
+
+				CoopDatabase.Coop coop = CoopDatabase.getClean(player.getUuid());
+				coop.addInvite(viewedPlayer.getUuid());
+				coop.save();
+
+				player.sendMessage("<b>[Co-op] <e>You invited {} to a SkyBlock co-op!", viewedPlayer.getUsername());
+				player.sendMessage("<hover:'<e>Click here to view the invite'><click:run:'/coopcheck'>" +
+						"<e>Use <b>/coop <e>or <a><l>CLICK THIS </l><e>for status!</click></hover>");
+
+				viewedPlayer.sendMessage("<b>----------------------------------------");
+				viewedPlayer.sendMessage("{} <e>invited you to a SkyBlock co-op!", player.getFullDisplayName());
+				viewedPlayer.sendMessage("<hover:'<e>Click here to view the invite'><click:run:'/coopcheck'>" +
+						"<6>Click here <e>to view!</click></hover>");
+				viewedPlayer.sendMessage("<b>----------------------------------------");
 			}
 
 			@Override

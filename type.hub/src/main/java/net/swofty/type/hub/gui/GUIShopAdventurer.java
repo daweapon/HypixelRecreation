@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Adventurer NPC in the Hub, selling combat drops and talismans.
 public class GUIShopAdventurer extends ShopView {
 
     public GUIShopAdventurer() {

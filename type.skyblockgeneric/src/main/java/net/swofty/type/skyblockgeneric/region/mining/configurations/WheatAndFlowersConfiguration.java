@@ -22,7 +22,10 @@ public class WheatAndFlowersConfiguration extends SkyBlockRegenConfiguration {
         task.setReviveBlock(Block.AIR);
 
         if (task.getInitialMinedBlock().equals(Block.WHEAT)) {
-            task.setReviveBlock(Block.WHEAT);
+            // Revive must already be the mature crop: the regen repeater applies reviveBlock
+            // directly with no further growth ticking, so a default (age=0) block would leave
+            // farmland permanently bare instead of regrowing wheat.
+            task.setReviveBlock(Block.WHEAT.withProperty("age", "7"));
         }
 
         return task;

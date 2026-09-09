@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Fireball-like projectile that flies in a straight line unaffected by drag or gravity.
 public class FireballProjectile extends AbstractProjectile {
     public FireballProjectile(EntityType type, Entity shooter) {
         super(type, shooter);

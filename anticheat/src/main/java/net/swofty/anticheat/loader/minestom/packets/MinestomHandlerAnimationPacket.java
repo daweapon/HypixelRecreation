@@ -8,6 +8,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts Minestom's client animation packet into an AnimationPacket.
 public class MinestomHandlerAnimationPacket
         extends LoaderPacketHandler<ClientAnimationPacket> {
 

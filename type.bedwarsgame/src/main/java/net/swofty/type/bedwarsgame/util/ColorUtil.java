@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 import java.lang.reflect.Field;
 
+// Resolves AWT/Adventure color constants by their field name via reflection.
 public class ColorUtil {
 
     @Nullable

@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// GUI for the Chocolate Factory shop, selling chocolate-themed items and upgrades
 public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
     // Texture IDs (extracted from skull texture URLs)
     private static final String SUPREME_CHOCOLATE_BAR_TEXTURE = "254b7f3f2a6f0d1c2c054678128ec2322619aefff0f450c390d6a41b5950302e";

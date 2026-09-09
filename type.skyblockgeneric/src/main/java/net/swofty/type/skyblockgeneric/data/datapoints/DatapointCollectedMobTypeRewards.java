@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 import java.util.List;
 
+// Persists which one-time mob-type collection rewards a player has already claimed.
 public class DatapointCollectedMobTypeRewards extends SkyBlockDatapoint<DatapointCollectedMobTypeRewards.PlayerCollectedMobTypeRewards> {
 
     public DatapointCollectedMobTypeRewards(String key, PlayerCollectedMobTypeRewards value) {

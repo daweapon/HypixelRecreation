@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Platform integration point the anticheat uses to send packets/messages and dispatch loader-specific packet handlers.
 public abstract class Loader {
     private final Map<String, LoaderPacketHandler> packetHandlerMap = new HashMap<>();
 

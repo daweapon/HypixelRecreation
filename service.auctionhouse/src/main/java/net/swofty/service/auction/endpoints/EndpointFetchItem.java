@@ -10,6 +10,7 @@ import org.bson.Document;
 import java.util.UUID;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that fetches a single auction listing by id, checking active listings first then inactive ones.
 public class EndpointFetchItem implements RedisMessageHandler<
         AuctionFetchItemProtocol.AuctionFetchItemMessage,
         AuctionFetchItemProtocol.AuctionFetchItemResponse> {
@@ -23,18 +24,9 @@ public class EndpointFetchItem implements RedisMessageHandler<
     public AuctionFetchItemProtocol.AuctionFetchItemResponse handle(AuctionFetchItemProtocol.AuctionFetchItemMessage messageObject, RedisMessageContext context) {
         UUID uuidToFetch = messageObject.uuid();
 
-        AuctionItem toReturn = new AuctionItem();
-
         Document item = AuctionActiveDatabase.collection.find(new Document("_id", uuidToFetch.toString())).first();
-        if (item != null) {
-            toReturn = AuctionItem.fromDocument(item);
-        }
-
-        Document inactiveItem = AuctionInactiveDatabase.collection.find(new Document("_id", uuidToFetch.toString())).first();
-        if (inactiveItem != null) {
-            toReturn = AuctionItem.fromDocument(inactiveItem);
-        }
-
-        return new AuctionFetchItemProtocol.AuctionFetchItemResponse(toReturn, true, null);
+        if (item == null) item = AuctionInactiveDatabase.collection.find(new Document("_id", uuidToFetch.toString())).first();
+        if (item == null) return new AuctionFetchItemProtocol.AuctionFetchItemResponse(null, false, "This auction could not be found.");
+        return new AuctionFetchItemProtocol.AuctionFetchItemResponse(AuctionItem.fromDocument(item), true, null);
     }
 }

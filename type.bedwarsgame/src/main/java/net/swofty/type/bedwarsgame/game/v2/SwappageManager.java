@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Drives the "Swappage" Bedwars game mode: periodically swaps players between teams with/without beds.
 @RequiredArgsConstructor
 public class SwappageManager {
     private final BedWarsGame game;

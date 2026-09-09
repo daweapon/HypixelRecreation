@@ -22,6 +22,8 @@ import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
+// Orchestrates a fishing cast end-to-end: tracks active sessions, computes bite wait time, and
+// resolves/awards the catch (bait consumption, sinker rolls, skill XP) when a hook is reeled in.
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class FishingService {
     private static final Map<UUID, FishingSession> SESSIONS = new ConcurrentHashMap<>();

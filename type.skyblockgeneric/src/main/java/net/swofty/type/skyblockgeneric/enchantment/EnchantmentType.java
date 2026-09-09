@@ -9,6 +9,8 @@ import net.swofty.type.skyblockgeneric.enchantment.impl.*;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
+// Registry of every enchantment, each backed by its implementing Ench class instance, with
+// helpers for apply cost, description, and table-source lookup.
 @Getter
 public enum EnchantmentType {
     SHARPNESS(EnchantmentSharpness.class),

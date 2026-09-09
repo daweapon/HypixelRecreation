@@ -31,6 +31,7 @@ class ProfileWipeCoverageTest {
 
         assertTrue(profileBacked.contains(SkyBlockDataHandler.Data.COINS));
         assertTrue(profileBacked.contains(SkyBlockDataHandler.Data.INVENTORY));
+        assertTrue(profileBacked.contains(SkyBlockDataHandler.Data.AUCTION_DELIVERED_CLAIMS));
         profileBacked.forEach(data -> {
             assertNotNull(data.profileField());
             assertEquals(SkyBlockProfileFields.NAMESPACE, data.profileField().namespace());

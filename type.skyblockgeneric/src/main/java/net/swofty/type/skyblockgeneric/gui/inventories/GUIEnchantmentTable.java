@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// GUI for enchanting an item using bookshelf power and applicable enchantments
 public class GUIEnchantmentTable extends HypixelInventoryGUI {
     private static final int[] PAGINATED_SLOTS_LIST_ENCHANTS = new int[]{
             12, 13, 14, 15, 16,

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Builds display item stacks (with stat/bonus lore) for bait and rod parts shown in fishing guides
 public final class FishingGuideStackFactory {
     private static final List<ItemStatistic> GUIDE_STAT_ORDER = List.of(
         ItemStatistic.DAMAGE,

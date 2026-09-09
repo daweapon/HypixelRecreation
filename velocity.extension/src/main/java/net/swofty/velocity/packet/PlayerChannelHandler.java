@@ -11,6 +11,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelPromise;
 import net.swofty.velocity.gamemanager.TransferHandler;
 
+// Netty outbound handler that suppresses most game packets while a player is parked in Limbo, replaying only the cached respawn packet.
 public final class PlayerChannelHandler extends ChannelDuplexHandler {
     private final Player player;
     private RespawnPacket respawn = null;

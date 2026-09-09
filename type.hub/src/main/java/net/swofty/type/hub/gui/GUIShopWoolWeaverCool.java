@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Wool Weaver NPC's "cool" color page in the Hub, selling terracotta, glass, carpet, and wool in cool tones.
 public class GUIShopWoolWeaverCool extends ShopView {
     public GUIShopWoolWeaverCool() {
         super("Wool Weaver (Cool)", WOOLWEAVER_COOL);

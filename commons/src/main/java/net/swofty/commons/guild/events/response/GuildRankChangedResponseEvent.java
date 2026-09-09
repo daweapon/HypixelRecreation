@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: confirms a member's rank was changed from one rank to another.
 public class GuildRankChangedResponseEvent extends GuildResponseEvent {
     private UUID changer;
     private UUID target;

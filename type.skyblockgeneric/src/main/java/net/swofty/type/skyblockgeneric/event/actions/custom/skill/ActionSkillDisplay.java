@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.event.custom.SkillUpdateEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 
+// Shows skill XP gain progress in the action bar when a player's skill value increases
 public class ActionSkillDisplay implements HypixelEventClass {
 
 

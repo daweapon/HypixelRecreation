@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+// Registry that registers all vanilla CombatEnchantment implementations and looks them up by enchantment key.
 public class CombatEnchantments {
 	private static final Map<RegistryKey<Enchantment>, CombatEnchantment> ENCHANTMENTS = new HashMap<>();
 	private static boolean registered = false;

@@ -12,6 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// Persists a player's fishing ship configuration (name, helm/engine/hull parts) and unlocked
+// travel destinations.
 public class DatapointShipState extends SkyBlockDatapoint<DatapointShipState.ShipState> {
     private static final Serializer<ShipState> serializer = new Serializer<>() {
         @Override

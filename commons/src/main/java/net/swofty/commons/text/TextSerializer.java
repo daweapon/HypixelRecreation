@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+// Converts a rendered Component back into canonical Text markup, minimally opening/closing style, hover, and click tags.
 final class TextSerializer {
 
     private static final String COLOR = "color";

@@ -10,6 +10,7 @@ import org.tinylog.Logger;
 import java.util.Map;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that returns which candidate a given player voted for in the current election year, if any.
 public class GetPlayerVoteEndpoint implements RedisMessageHandler
         <GetPlayerVoteProtocol.GetPlayerVoteMessage,
                 GetPlayerVoteProtocol.GetPlayerVoteResponse> {

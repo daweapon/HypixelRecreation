@@ -10,6 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
+// Base contract for a standalone backend microservice: declares its ServiceType and Redis endpoints, and bootstraps via init().
 public interface SkyBlockService {
     ServiceType getType();
 

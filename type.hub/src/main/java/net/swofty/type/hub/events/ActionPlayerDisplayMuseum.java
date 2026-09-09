@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+// Refreshes a player's museum item displays shortly after they first spawn in the Hub.
 public class ActionPlayerDisplayMuseum implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, isAsync = true, phase = EventPhase.GAMEPLAY)

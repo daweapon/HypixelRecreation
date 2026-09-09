@@ -2,6 +2,7 @@ package net.swofty.anticheat.math;
 
 import org.jetbrains.annotations.NotNull;
 
+// Utility for computing yaw/pitch look angles from a direction vector.
 public final class PositionUtils {
     public static Pos lookAlong(@NotNull Pos position, double dx, double dy, double dz) {
         final float yaw = getLookYaw(dx, dz);

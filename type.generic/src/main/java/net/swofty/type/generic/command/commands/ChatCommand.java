@@ -13,8 +13,9 @@ import net.swofty.type.generic.user.categories.Rank;
 @CommandParameters(description = "Changes chat mode",
         usage = "/chat <type>",
         permission = Rank.DEFAULT,
-    labels = "chatmode chat",
+    labels = "chatmode chat ch",
         allowsConsole = false)
+// Command to switch a player's active chat channel (all/party/staff), including a staff chat-view toggle.
 public class ChatCommand extends HypixelCommand {
     private static final java.util.concurrent.ConcurrentHashMap<java.util.UUID, Boolean> staffView = new java.util.concurrent.ConcurrentHashMap<>();
 

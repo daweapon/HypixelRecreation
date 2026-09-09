@@ -2,6 +2,7 @@ package net.swofty.type.generic.collectibles;
 
 import java.util.*;
 
+// Base registry for a set of collectibles, indexed by id and category, for subclasses to populate per gamemode.
 public abstract class CollectibleCatalog {
 
     private final Map<String, CollectibleDefinition> byId = new LinkedHashMap<>();

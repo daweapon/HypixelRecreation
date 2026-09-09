@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleContext;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecyclePhase;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleStep;
 
+// Island lifecycle step that removes minion entities and persists minion data on save.
 public class MinionSaveStep implements IslandLifecycleStep {
     @Override
     public IslandLifecyclePhase phase() {

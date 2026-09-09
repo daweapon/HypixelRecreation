@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
 
+// Block state values for the six cardinal/vertical directions plus SELF, with offsets and rotation helpers.
 public enum Directional implements State<Directional> {
     SELF(0, 0, 0, null),
     WEST(-1, 0, 0, BlockFace.WEST),

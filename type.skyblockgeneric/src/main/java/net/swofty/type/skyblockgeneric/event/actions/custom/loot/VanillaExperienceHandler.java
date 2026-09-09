@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Awards vanilla XP orbs for mob kills, boosted by bestiary tier and the Experience enchantment
 public class VanillaExperienceHandler implements HypixelEventClass {
     BestiaryData bestiaryData = new BestiaryData();
 

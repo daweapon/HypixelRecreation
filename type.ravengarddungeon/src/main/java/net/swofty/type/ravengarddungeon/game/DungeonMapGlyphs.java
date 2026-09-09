@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.util.List;
 import java.util.Map;
 
+// Loads and caches the per-room, per-rotation minimap glyph art used to render dungeon rooms on the map/HUD.
 public final class DungeonMapGlyphs {
     public record RoomArt(int cols, int rows, int w, int h, List<List<Integer>> tiles) {
     }

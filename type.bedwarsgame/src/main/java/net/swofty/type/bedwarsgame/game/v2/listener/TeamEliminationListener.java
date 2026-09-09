@@ -13,6 +13,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 
 import java.util.Optional;
 
+// Handles a team's elimination: records bed-loss/loss stats, broadcasts it, and logs it to replay.
 public class TeamEliminationListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

@@ -11,6 +11,7 @@ import net.swofty.type.bedwarsgame.shop.Trap;
 import net.swofty.type.bedwarsgame.shop.TrapId;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Team trap that blinds the intruder for a short duration when triggered.
 public class BlindnessTrap extends Trap {
 
 	public BlindnessTrap() {

@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Decorative Oden NPC, found in Galatea.
 public class NPCOden extends HypixelNPC {
 
     public NPCOden() {

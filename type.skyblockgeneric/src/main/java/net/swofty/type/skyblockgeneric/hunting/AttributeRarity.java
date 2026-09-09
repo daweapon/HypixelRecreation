@@ -2,6 +2,8 @@ package net.swofty.type.skyblockgeneric.hunting;
 
 import net.swofty.commons.skyblock.item.Rarity;
 
+// Hunting attribute rarity tiers, each with its own cumulative-shard level thresholds and
+// hunting-skill requirement.
 public enum AttributeRarity {
     COMMON(new int[]{1, 4, 9, 15, 22, 30, 40, 54, 72, 96}, 0),
     UNCOMMON(new int[]{1, 3, 6, 10, 15, 21, 28, 36, 48, 64}, 5),

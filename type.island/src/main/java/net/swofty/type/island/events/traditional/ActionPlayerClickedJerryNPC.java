@@ -12,6 +12,7 @@ import net.swofty.type.island.gui.GUIJerry;
 import net.swofty.type.skyblockgeneric.event.custom.JerryClickedEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Opens the Jerry GUI when a player right-clicks the Jerry villager NPC on their island.
 public class ActionPlayerClickedJerryNPC implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

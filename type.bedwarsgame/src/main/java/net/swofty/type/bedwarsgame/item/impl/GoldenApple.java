@@ -10,6 +10,7 @@ import net.swofty.type.bedwarsgame.item.SimpleInteractableItem;
 import net.swofty.type.bedwarsgame.shop.Currency;
 import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 
+// Shop item that heals and grants regeneration/resistance on consumption.
 public class GoldenApple extends SimpleInteractableItem {
 
 	public GoldenApple() {

@@ -23,6 +23,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import java.util.List;
 import java.util.Optional;
 
+// Hub GUI linking to prestige scheme/star/bracket customization submenus.
 public class GUIPrestigeCustomizer extends StatelessView {
 
     @Override

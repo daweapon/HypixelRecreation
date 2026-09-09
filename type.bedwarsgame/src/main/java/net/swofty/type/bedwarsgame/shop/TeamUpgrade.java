@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+// Base class for a tiered team-wide Bedwars upgrade (e.g. sharpness, armor) purchasable per team.
 @Getter
 public abstract class TeamUpgrade {
 

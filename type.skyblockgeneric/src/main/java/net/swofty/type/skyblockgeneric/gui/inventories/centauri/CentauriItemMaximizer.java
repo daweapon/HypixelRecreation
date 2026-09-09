@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.item.components.GemstoneComponent;
 import net.swofty.type.skyblockgeneric.item.components.HotPotatoableComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Maxes out an item's enchantments, hot potato books, gemstones, and recombobulation for testing
 public final class CentauriItemMaximizer {
     private CentauriItemMaximizer() {}
 

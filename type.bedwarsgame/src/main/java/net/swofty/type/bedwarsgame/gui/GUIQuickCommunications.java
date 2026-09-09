@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+// GUI of preset team-chat quick messages (e.g. "I'm defending!") for fast in-game communication.
 public class GUIQuickCommunications extends StatelessView {
 
     @Override

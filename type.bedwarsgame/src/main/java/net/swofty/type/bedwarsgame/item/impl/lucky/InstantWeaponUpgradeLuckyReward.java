@@ -9,6 +9,7 @@ import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 
 import java.util.List;
 
+// Lucky Block reward that instantly upgrades the opener's best sword to the next tier.
 public class InstantWeaponUpgradeLuckyReward extends LuckyReward {
     public InstantWeaponUpgradeLuckyReward() {
         super("Instant Weapon Upgrade");

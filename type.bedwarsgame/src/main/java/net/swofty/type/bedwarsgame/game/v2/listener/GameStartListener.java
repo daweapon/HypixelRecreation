@@ -17,6 +17,7 @@ import org.tinylog.Logger;
 import java.util.Comparator;
 import java.util.Map;
 
+// Handles Bedwars match start: prepares the world, assigns teams, places beds, and starts generators.
 public class GameStartListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

@@ -4,6 +4,7 @@ import redis.clients.jedis.Jedis;
 
 import java.util.UUID;
 
+// Redis-backed lookup mapping lowercase player usernames to their UUID.
 public final class NameIndex {
     private static final String KEY = "hsb:name2uuid";
 

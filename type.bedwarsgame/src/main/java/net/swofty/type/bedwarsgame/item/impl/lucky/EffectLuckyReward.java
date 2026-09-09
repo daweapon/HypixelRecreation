@@ -5,6 +5,7 @@ import net.minestom.server.potion.Potion;
 import net.minestom.server.potion.PotionEffect;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Lucky Block reward that applies a configured potion effect to the opener.
 public class EffectLuckyReward extends LuckyReward {
     private final PotionEffect effect;
     private final int amplifier;

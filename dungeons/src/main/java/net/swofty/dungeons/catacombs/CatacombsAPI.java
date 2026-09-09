@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Facade exposing Catacombs subsystems (classes, mobs, kits, puzzles, generation, runs) through static registries.
 public final class CatacombsAPI {
     private static final DungeonClassRegistry CLASS_REGISTRY = DungeonClassRegistry.defaults();
     private static final CatacombsRegistry CATACOMBS_REGISTRY = CatacombsRegistry.defaults();

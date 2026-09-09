@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import java.util.UUID;
 
+// Per-server entry point that wires up Redis-based RPC handlers between this server, the proxy, and backend services.
 public class ProxyAPI {
     private final UUID serverUUID;
 

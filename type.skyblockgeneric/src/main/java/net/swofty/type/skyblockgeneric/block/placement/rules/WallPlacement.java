@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.WallHeight;
 
 import java.util.stream.Stream;
 
+// Placement rule for walls, computing per-side connection height and whether the center post should render.
 public class WallPlacement extends PlacementRule {
 
     public WallPlacement(Block block) {

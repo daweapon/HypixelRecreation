@@ -1,6 +1,7 @@
 package net.swofty.commons.mc;
 
 
+// Engine-agnostic 3D position with yaw/pitch, independent of Minestom's Pos type, with basic vector arithmetic.
 public record HypixelPosition(double x, double y, double z, float yaw, float pitch) {
 
     public static HypixelPosition ZERO = new HypixelPosition(0, 0, 0);

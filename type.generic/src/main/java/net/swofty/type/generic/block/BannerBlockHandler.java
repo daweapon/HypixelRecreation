@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import java.util.Set;
 
+// Minestom BlockHandler for banner blocks; preserves the banner pattern NBT tag.
 public final class BannerBlockHandler implements BlockHandler {
     public static final Key KEY = Key.key("minecraft:banner");
 

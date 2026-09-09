@@ -32,6 +32,7 @@ import java.util.Locale;
 import static net.kyori.adventure.text.Component.text;
 import static net.kyori.adventure.text.format.NamedTextColor.*;
 
+// Utility holder (no instances) of static helpers that format TPS, tick durations, and memory usage into colored chat components.
 public enum StatisticFormatter {
     ;
 

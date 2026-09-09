@@ -8,6 +8,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.UUID;
 
+// Redis handler that reports whether the requesting server is currently known to the proxy.
 public class ListenerProxyOnline implements RedisMessageHandler<
         ProxyIsOnlineProtocol.Request,
         ProxyIsOnlineProtocol.Response> {

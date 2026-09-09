@@ -14,6 +14,7 @@ import net.swofty.type.generic.user.categories.Rank;
         usage = "/speed <speed>",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command to set a player's fly/walk movement speed attribute.
 public class FlySpeedCommand extends HypixelCommand {
     private static final float MIN_SPEED = 0.0f;
     private static final float MAX_SPEED = 10.0f;

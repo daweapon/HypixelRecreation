@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Efficiency enchantment: grants mining speed and reduces block-breaking time on pickaxes.
 public class EnchantmentEfficiency extends SkyBlockValueEvent implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

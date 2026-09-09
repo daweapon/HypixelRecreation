@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that tallies votes to determine the winning mayor and minister, applies perk progression, and closes the election.
 public class ResolveElectionEndpoint implements RedisMessageHandler
         <ResolveElectionProtocol.ResolveElectionMessage,
                 ResolveElectionProtocol.ResolveElectionResponse> {

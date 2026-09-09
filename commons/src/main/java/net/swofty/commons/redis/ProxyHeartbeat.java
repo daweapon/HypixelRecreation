@@ -3,6 +3,7 @@ package net.swofty.commons.redis;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+// Redis-backed liveness beacon the proxy refreshes periodically so servers can detect if the proxy is down.
 public final class ProxyHeartbeat {
     private static final String KEY = "proxy:heartbeat";
     private static final int TTL_SECONDS = 6;

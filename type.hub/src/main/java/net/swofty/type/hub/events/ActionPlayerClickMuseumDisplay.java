@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.gui.inventories.museum.GUIMuseumNonEmptyD
 import net.swofty.type.skyblockgeneric.museum.MuseumDisplayEntityImpl;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Opens the museum item view GUI when a player clicks a museum display case in the Hub museum.
 public class ActionPlayerClickMuseumDisplay implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

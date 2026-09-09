@@ -20,6 +20,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for configuring a player's leaderboard hologram display (mode, period, view, alignment).
 public class GUILeaderboardSettings extends HypixelInventoryGUI {
 	private BedwarsLeaderboardMode selectedMode;
 	private BedwarsLeaderboardPeriod selectedPeriod;

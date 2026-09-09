@@ -1,5 +1,6 @@
 package net.swofty.pvp.feature.attack;
 
+// Holder for the intermediate attack-damage records passed through the critical/sweeping/sound attack pipeline.
 public class AttackValues {
 	public record PreCritical(float damage, float magicalDamage, double cooldownProgress,
 	                          boolean strong, boolean sprint, int knockback, int fireAspect) {

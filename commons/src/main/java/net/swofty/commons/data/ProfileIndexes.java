@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// Defines the per-module PlayerFields storing a player's selected/available profile UUIDs, and decodes their packed string format.
 public final class ProfileIndexes {
     public static final String SELECTED_SEPARATOR = ";";
     public static final String PROFILE_SEPARATOR = ",";

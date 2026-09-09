@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @Getter
+// Fired when a player's skill XP changes, carrying both raw and cumulative old/new values
 public class SkillUpdateEvent implements PlayerInstanceEvent {
     private final SkyBlockPlayer player;
     private final SkillCategories skillCategory;

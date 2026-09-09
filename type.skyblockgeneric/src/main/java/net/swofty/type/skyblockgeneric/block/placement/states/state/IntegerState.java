@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.block.placement.states.state;
 
 import org.jetbrains.annotations.NotNull;
 
+// Generic clamped-integer block state value for a named property key (e.g. power, layers, rotation).
 public class IntegerState implements State<Integer> {
 
     private final String key;

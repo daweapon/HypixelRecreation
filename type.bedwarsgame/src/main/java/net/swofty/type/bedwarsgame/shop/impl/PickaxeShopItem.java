@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+// Tiered upgradeable pickaxe shop item that downgrades one tier on death.
 public class PickaxeShopItem extends UpgradeableShopItem {
 
     public static final Tag<@NotNull Integer> PICKAXE_UPGRADE_TAG = Tag.Integer("pickaxe_upgrade");

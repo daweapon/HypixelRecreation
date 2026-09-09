@@ -161,7 +161,7 @@ public class GUIRecipeCategory extends PaginatedView<SkyBlockRecipe<?>, GUIRecip
             }
         });
 
-        return new RecipeCategoryState(List.of(), 0, "");
+        return new RecipeCategoryState(recipes, 0, "");
     }
 
     public record RecipeCategoryState(

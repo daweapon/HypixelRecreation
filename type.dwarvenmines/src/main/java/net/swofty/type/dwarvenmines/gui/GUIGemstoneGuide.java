@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.*;
 
+// Paginated GUI listing all items that can hold gemstone slots, reachable from the Gemstone Grinder.
 public class GUIGemstoneGuide extends HypixelPaginatedGUI<SkyBlockItem> {
     protected GUIGemstoneGuide() {
         super(InventoryType.CHEST_6_ROW);

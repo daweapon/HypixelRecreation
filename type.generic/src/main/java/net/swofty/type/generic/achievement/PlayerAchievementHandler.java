@@ -8,6 +8,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.List;
 
+// Per-player handler for tracking achievement progress and firing unlock notifications.
 @RequiredArgsConstructor
 public class PlayerAchievementHandler {
     private final HypixelPlayer player;

@@ -46,13 +46,18 @@ public class NPCSirius extends HypixelNPC {
                         return new Pos(91, 75, 176, 180, 0);
                     }
                     default -> {
-                        return new Pos(88.5, 50, 145.5, 0, 0);
+                        return new Pos(86.5, 55, 154.5, 0, 0);
                     }
                 }
             }
 
             @Override
             public boolean looking(HypixelPlayer player) {
+                return true;
+            }
+
+            @Override
+            public boolean dynamicPosition() {
                 return true;
             }
         });

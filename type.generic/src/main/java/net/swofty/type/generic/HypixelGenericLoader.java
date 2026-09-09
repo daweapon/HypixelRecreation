@@ -66,6 +66,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
+// Bootstraps and wires up a running server for the given HypixelTypeLoader (data handlers, events, NPCs, autosave, etc.).
 public record HypixelGenericLoader(HypixelTypeLoader loader) {
     public static final AtomicReference<TickMonitor> LAST_TICK = new AtomicReference<>();
 

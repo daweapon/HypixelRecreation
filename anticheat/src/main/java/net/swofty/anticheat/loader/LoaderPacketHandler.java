@@ -8,6 +8,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+// Converts between a platform-native packet type and the loader-agnostic SwoftyPacket representation.
 public abstract class LoaderPacketHandler<T> {
     public abstract SwoftyPacket buildSwoftyPacket(UUID uuid, T packet);
     public abstract T buildLoaderPacket(UUID uuid, SwoftyPacket packet);

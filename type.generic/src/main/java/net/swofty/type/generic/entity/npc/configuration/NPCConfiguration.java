@@ -28,6 +28,16 @@ public interface NPCConfiguration {
 
     Pos position(HypixelPlayer player);
 
+    /**
+     * Whether {@link #position(HypixelPlayer)} can return a different value across calls for an
+     * already-spawned NPC (e.g. an NPC that relocates based on external state). Defaults to false
+     * since most NPCs have a fixed home position; returning true here causes the NPC's already-spawned
+     * entity to be re-teleported whenever its computed position changes and it isn't mid-walk.
+     */
+    default boolean dynamicPosition() {
+        return false;
+    }
+
     default boolean looking(HypixelPlayer player) {
         return false;
     }

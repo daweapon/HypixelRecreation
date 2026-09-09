@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Persists a player's placed backpack items (keyed by inventory slot) and how many backpack
+// slots they've unlocked.
 public class DatapointBackpacks extends SkyBlockDatapoint<DatapointBackpacks.PlayerBackpacks> {
     private static final Serializer<PlayerBackpacks> serializer = new Serializer<>() {
         @Override

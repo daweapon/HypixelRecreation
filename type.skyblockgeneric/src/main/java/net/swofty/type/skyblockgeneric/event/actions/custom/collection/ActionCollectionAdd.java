@@ -17,7 +17,9 @@ import net.swofty.type.skyblockgeneric.event.custom.CollectionUpdateEvent;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.island.CoopContributionTracker;
 
+// Adds dropped blocks/items to the player's collection and fires collection update events
 public class ActionCollectionAdd implements HypixelEventClass {
 
 
@@ -35,6 +37,7 @@ public class ActionCollectionAdd implements HypixelEventClass {
             int oldAmount = player.getCollection().get(type);
             int dropAmount = drop.getAmount();
             player.getCollection().increase(type, dropAmount);
+            CoopContributionTracker.record(player.getUuid(), dropAmount);
 
             player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.COLLECTION, DatapointCollection.class).setValue(
                     player.getCollection()

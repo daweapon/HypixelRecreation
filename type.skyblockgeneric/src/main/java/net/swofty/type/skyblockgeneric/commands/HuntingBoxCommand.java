@@ -6,7 +6,7 @@ import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.gui.inventories.hunting.GUIHuntingBox;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-@CommandParameters(labels = "huntingbox",
+@CommandParameters(labels = "huntingbox hb",
         description = "Opens your Hunting Box",
         usage = "/huntingbox",
         permission = Rank.DEFAULT,

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Registry mapping each ServerType to its ordered chain of BalanceConfiguration strategies, and the entry point for running them.
 public final class BalanceConfigurations {
 
     // Shared singletons — the strategies are stateless, so there's no reason to

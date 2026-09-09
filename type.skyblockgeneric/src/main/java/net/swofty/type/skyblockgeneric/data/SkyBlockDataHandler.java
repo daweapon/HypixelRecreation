@@ -31,6 +31,7 @@ import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
+import net.swofty.type.skyblockgeneric.user.island.IslandPrivacy;
 import net.swofty.type.skyblockgeneric.user.SkyBlockInventory;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.bson.Document;
@@ -43,6 +44,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
+// Per-profile SkyBlock data handler: loads/saves a player's profile document to/from its datapoints
+// (coins, inventory, skills, minions, etc.) and defines every persisted SkyBlock data field.
 public class SkyBlockDataHandler extends DataHandler {
 
     @Getter
@@ -225,16 +228,15 @@ public class SkyBlockDataHandler extends DataHandler {
     }
 
     public void loadFromApi() {
-        SwoftyData.profile().load(currentProfileId);
+        if (!SwoftyData.profile().isLoaded(currentProfileId)) SwoftyData.profile().load(currentProfileId);
         loadBackedData();
     }
 
     public void loadFromTransferDocument(Document document) {
         loadSkyBlock(document);
-        SwoftyData.profile().load(currentProfileId);
+        if (!SwoftyData.profile().isLoaded(currentProfileId)) SwoftyData.profile().load(currentProfileId);
         readCoopBackedData();
-        saveBackedData(datapoint -> !isCoopBacked(datapoint));
-        SwoftyData.profile().set(currentProfileId, ProfilesDatabase.DOCUMENT, toProfileDocument().toJson());
+        persistProfileDocument(SwoftyData.profile(), currentProfileId, toProfileDocument());
     }
 
     private void readCoopBackedData() {
@@ -254,8 +256,67 @@ public class SkyBlockDataHandler extends DataHandler {
     }
 
     public void saveToApi() {
-        saveBackedData();
-        SwoftyData.profile().set(currentProfileId, ProfilesDatabase.DOCUMENT, toProfileDocument().toJson());
+        saveBackedData(SkyBlockDataHandler::isCoopBacked);
+        Document document = toProfileDocument();
+        persistProfileDocument(SwoftyData.profile(), currentProfileId, document);
+    }
+
+    public boolean commitAuctionClaim(UUID receipt, SkyBlockPlayer player, Runnable reward) {
+        saveBackedData(SkyBlockDataHandler::isCoopBacked);
+        return SwoftyData.profile().transaction(currentProfileId, transaction -> {
+            String existing = transaction.get(Data.AUCTION_DELIVERED_CLAIMS.profileField());
+            if (existing != null && Arrays.asList(existing.split(",")).contains(receipt.toString())) return false;
+            reward.run();
+            runOnSave(player);
+            writeProfileDocument(transaction, toProfileDocument());
+            return true;
+        });
+    }
+
+    public void commitAuctionOperation(DatapointAuctionOperations.State expected, SkyBlockPlayer player, Runnable change) {
+        saveBackedData(SkyBlockDataHandler::isCoopBacked);
+        SwoftyData.profile().transaction(currentProfileId, transaction -> {
+            var saved = DatapointAuctionOperations.read(transaction.get(Data.AUCTION_OPERATIONS.profileField()));
+            if (!saved.equals(expected)) throw new IllegalStateException("Auction operation state changed; reload the profile");
+            change.run();
+            runOnSave(player);
+            writeProfileDocument(transaction, toProfileDocument());
+        });
+    }
+
+    static void persistProfileDocument(net.swofty.DataAPI api, UUID profile, Document document) {
+        validateProfileDocument(document);
+        api.transaction(profile, transaction -> { writeProfileDocument(transaction, document); });
+    }
+
+    private static void validateProfileDocument(Document document) {
+        for (Data field : new Data[]{Data.COINS, Data.INVENTORY, Data.AUCTION_DELIVERED_CLAIMS, Data.AUCTION_OPERATIONS,
+                Data.AUCTION_ACTIVE_OWNED, Data.AUCTION_INACTIVE_OWNED, Data.AUCTION_ACTIVE_BIDS, Data.AUCTION_INACTIVE_BIDS}) {
+            if (!document.containsKey(field.getKey())) throw new IllegalStateException("Incomplete profile save: " + field);
+        }
+    }
+
+    private static void writeProfileDocument(net.swofty.transaction.Transaction transaction, Document document) {
+        validateProfileDocument(document);
+        String savedClaims = transaction.get(Data.AUCTION_DELIVERED_CLAIMS.profileField());
+        if (savedClaims != null && !savedClaims.isEmpty()) {
+            var currentClaims = Arrays.asList(document.getString(Data.AUCTION_DELIVERED_CLAIMS.getKey()).split(","));
+            if (!currentClaims.containsAll(Arrays.asList(savedClaims.split(",")))) {
+                throw new IllegalStateException("Refusing to overwrite newer auction claim receipts");
+            }
+        }
+        var savedOperations = DatapointAuctionOperations.read(transaction.get(Data.AUCTION_OPERATIONS.profileField()));
+        var operations = DatapointAuctionOperations.read(document.getString(Data.AUCTION_OPERATIONS.getKey()));
+        if (operations.revision() < savedOperations.revision()
+                || operations.revision() == savedOperations.revision() && !operations.equals(savedOperations)) {
+            throw new IllegalStateException("Refusing to overwrite newer auction operations");
+        }
+        for (Data field : Data.values()) {
+            if (field.coopField() == null && document.containsKey(field.getKey())) {
+                transaction.set(field.profileField(), document.getString(field.getKey()));
+            }
+        }
+        transaction.set(ProfilesDatabase.DOCUMENT, document.toJson());
     }
 
     public Map<String, Object> getCoopValues() {
@@ -399,6 +460,16 @@ public class SkyBlockDataHandler extends DataHandler {
         IS_COOP("is_coop", false, true, false,
                 DatapointBoolean.class, new DatapointBoolean("is_coop", false)),
 
+        // Island-wide visitation privacy tier (PUBLIC/FRIENDS_ONLY/PRIVATE) - coop-shared like
+        // ISLAND_UUID/IS_COOP since it describes the island itself, not any one member.
+        ISLAND_PRIVACY("island_privacy", false, true, false,
+                DatapointString.class, new DatapointString("island_privacy", IslandPrivacy.PUBLIC.name())),
+
+        // Players (by UUID string) blocked from /visit-ing this island regardless of privacy tier -
+        // island-wide like ISLAND_PRIVACY, set via /ignore.
+        IGNORED_VISITORS("ignored_visitors", false, true, false,
+                DatapointStringList.class, new DatapointStringList("ignored_visitors")),
+
         COLLECTION("collection", false, true, false,
                 DatapointCollection.class, new DatapointCollection("collection")),
 
@@ -446,6 +517,12 @@ public class SkyBlockDataHandler extends DataHandler {
 
         AUCTION_INACTIVE_OWNED("auction_inactive_owned", false, false, false,
                 DatapointUUIDList.class, new DatapointUUIDList("auction_inactive_owned")),
+
+        AUCTION_DELIVERED_CLAIMS("auction_delivered_claims", false, false, false,
+                DatapointUUIDList.class, new DatapointUUIDList("auction_delivered_claims")),
+
+        AUCTION_OPERATIONS("auction_operations", false, false, false,
+                DatapointAuctionOperations.class, new DatapointAuctionOperations("auction_operations")),
 
         AUCTION_ESCROW("auction_escrow", false, false, false,
                 DatapointAuctionEscrow.class, new DatapointAuctionEscrow("auction_escrow")),

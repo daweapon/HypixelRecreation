@@ -45,6 +45,12 @@ public final class ForagingTreeManager {
      */
     private static final int REGEN_DELAY_TICKS = 20 * 30;
     private static final int REGEN_LAYER_TICKS = 3;
+    /**
+     * Each individual log also regrows on its own shorter timer, independent of whether the rest
+     * of the tree has been felled - keeps the area continuously harvestable instead of requiring
+     * the whole tree to come down before anything grows back.
+     */
+    private static final int SINGLE_LOG_REGEN_TICKS = 20 * 10;
     private static final int LEAF_SEARCH_DISTANCE = 5;
     private static final int[][] FACES = {
             {1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}
@@ -139,6 +145,10 @@ public final class ForagingTreeManager {
                     tree.decayLeavesNear(instance, BlockPosition.from(log.position));
                 }
                 tree.updateHologram(instance);
+            }
+
+            for (HarvestedLog log : harvested) {
+                tree.scheduleSingleLogRegeneration(instance, BlockPosition.from(log.position), log.originalBlock());
             }
 
             if (tree.isFullyBroken()) {
@@ -552,6 +562,16 @@ public final class ForagingTreeManager {
                 if (hasRemaining) return part == expected;
             }
             return true;
+        }
+
+        private void scheduleSingleLogRegeneration(Instance instance, BlockPosition position, Block originalBlock) {
+            MinecraftServer.getSchedulerManager().scheduleTask(() -> {
+                // Skip if the whole-tree bottom-up regrow already restored this position first.
+                if (!broken.remove(position)) return;
+                if (instance.getBlock(position.asPoint()).air()) {
+                    instance.setBlock(position.asPoint(), originalBlock);
+                }
+            }, TaskSchedule.tick(SINGLE_LOG_REGEN_TICKS), TaskSchedule.stop());
         }
 
         private void scheduleRegeneration(Instance instance) {

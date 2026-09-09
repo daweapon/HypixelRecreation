@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing a minion's tier and its accumulated generated resources.
 public class ItemAttributeMinionData extends ItemAttribute<ItemAttributeMinionData.MinionData> {
 
     @Override

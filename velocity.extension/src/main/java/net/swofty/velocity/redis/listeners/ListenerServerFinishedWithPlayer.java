@@ -11,6 +11,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import java.util.Optional;
 import java.util.UUID;
 
+// Redis handler that resumes a player's pending limbo transfer once their previous server confirms it has finished with them.
 public class ListenerServerFinishedWithPlayer implements RedisMessageHandler<
         FinishedWithPlayerProtocol.Request,
         FinishedWithPlayerProtocol.Response> {

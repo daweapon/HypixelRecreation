@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+// Interactable dungeon loot chest: converts decorative chest displays into openable interactables that animate a lid and roll loot.
 public final class DungeonChest extends DungeonInteractable {
     private static final String TITLE_GLYPHS = new String(Character.toChars(0xCFFD0)) + "";
     private static final int LID_TICKS = 5;

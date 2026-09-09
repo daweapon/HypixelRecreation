@@ -3,6 +3,7 @@ package net.swofty.type.bedwarsgame.item.impl;
 import net.minestom.server.instance.block.Block;
 import net.swofty.commons.text.Text;
 
+// The rarity tiers of Lucky Blocks, each with its own display name, block color, and head texture.
 public enum LuckyBlockTier {
     NORMAL(Text.of("<e>Normal Lucky Block"), Block.YELLOW_STAINED_GLASS, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzlkMWVmNGMxNTNiZGU4YTdiMDhmOTJjMGM0Yjc5ZmRjMmZjYjU3ZjgzYTMxYTgyMjljNjJhYzc1ZjFmMGEzMSJ9fX0="),
     PROMISING(Text.of("<1>Promising Lucky Block"), Block.LIGHT_BLUE_STAINED_GLASS, "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzY2ZDZjMTllNGY1MDUxODgyODUxYTRhZWFkNzlmMGYxZjM4YWE2ODk3MTliNmIzMzAzMTdlYTJiOGIwZTUwMCJ9fX0="),

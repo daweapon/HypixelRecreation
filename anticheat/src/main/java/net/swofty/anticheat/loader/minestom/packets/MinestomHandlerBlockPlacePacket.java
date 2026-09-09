@@ -9,6 +9,7 @@ import net.swofty.anticheat.math.Pos;
 
 import java.util.UUID;
 
+// Converts Minestom's client block-placement packet into a BlockPlacePacket.
 public class MinestomHandlerBlockPlacePacket
         extends LoaderPacketHandler<ClientPlayerBlockPlacementPacket> {
 

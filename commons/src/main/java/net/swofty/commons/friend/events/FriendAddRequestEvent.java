@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system event: a player sent a friend request to a target player.
 public final class FriendAddRequestEvent extends FriendEvent {
     private static final Serializer<FriendAddRequestEvent> SERIALIZER =
             new JacksonSerializer<>(FriendAddRequestEvent.class);

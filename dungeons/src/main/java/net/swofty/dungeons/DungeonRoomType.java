@@ -3,6 +3,7 @@ package net.swofty.dungeons;
 import lombok.Getter;
 
 @Getter
+// Types of rooms that can appear in a generated dungeon layout, and how they should be placed.
 public enum DungeonRoomType {
     ENTRANCE(),
     BASE(),

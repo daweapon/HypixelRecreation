@@ -3,6 +3,7 @@ package net.swofty.type.generic.data.datapoints;
 import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.type.generic.data.Datapoint;
 
+// Datapoint wrapper for a plain Integer value.
 public class DatapointInteger extends Datapoint<Integer> {
     private static final JacksonSerializer<Integer> serializer = new JacksonSerializer<>(Integer.class);
 

@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Cancels player movement while they are locked into a shopkeeper skin preview.
 public class ActionShopkeeperPreviewMoveLock implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

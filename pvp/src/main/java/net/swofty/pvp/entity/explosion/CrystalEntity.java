@@ -10,6 +10,7 @@ import net.minestom.server.entity.metadata.other.EndCrystalMeta;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 
+// End crystal entity that ignites the block below it and explodes when damaged.
 public class CrystalEntity extends LivingEntity {
 	private final boolean fire;
 	

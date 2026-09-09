@@ -10,6 +10,7 @@ import net.swofty.type.generic.resourcepack.ResourcePackManager;
 
 import java.util.UUID;
 
+// Static holder for server-wide global state (instance containers, event handler, server identity/port, resource pack manager).
 public class HypixelConst {
     @Getter
     @Setter

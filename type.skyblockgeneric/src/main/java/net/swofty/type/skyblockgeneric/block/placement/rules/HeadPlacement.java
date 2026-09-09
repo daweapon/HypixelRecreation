@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 
+// Placement rule for skull/head blocks, swapping to the wall variant and orienting it when placed on a side face.
 public class HeadPlacement extends PlacementRule {
     private final Block wall_head;
 

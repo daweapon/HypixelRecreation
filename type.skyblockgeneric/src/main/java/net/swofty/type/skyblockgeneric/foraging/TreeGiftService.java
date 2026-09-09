@@ -19,6 +19,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Distributes Tree Gift rewards (essence, foraging XP, wood, bonus drops) to players who
+// contributed enough logs to a felled foraging tree, scaled by tree size and their share of the cut.
 public final class TreeGiftService {
     private TreeGiftService() {
     }

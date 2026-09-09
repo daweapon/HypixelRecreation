@@ -8,6 +8,7 @@ import net.swofty.type.generic.user.categories.Rank;
 
 @CommandParameters(labels = "rankcolour rankcolor", description = "Change your MVP+ rank color",
     usage = "/rankcolor", permission = Rank.DEFAULT, allowsConsole = false)
+// Command that opens the GUI for changing an MVP+ player's rank color.
 public class RankColorCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

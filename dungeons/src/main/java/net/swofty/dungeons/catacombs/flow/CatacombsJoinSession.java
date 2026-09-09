@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// Tracks one player's progress through the Catacombs join flow (mode/floor/class/kit selection, party finder, run start).
 public final class CatacombsJoinSession {
     private final UUID playerId;
     private final List<CatacombsJoinTrace> traces = new ArrayList<>();

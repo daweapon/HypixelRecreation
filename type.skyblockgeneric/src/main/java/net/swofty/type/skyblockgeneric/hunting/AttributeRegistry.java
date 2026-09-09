@@ -14,6 +14,8 @@ import java.util.*;
 
 import static net.swofty.type.skyblockgeneric.hunting.AttributeDefinition.*;
 
+// Loads all hunting attribute shard definitions from shards.yml and provides lookup/search by
+// id, shard name, or free-text query.
 public final class AttributeRegistry {
     private static final Map<AttributeId, AttributeDefinition> BY_ID = load();
     private static final List<AttributeDefinition> SORTED = BY_ID.values().stream()

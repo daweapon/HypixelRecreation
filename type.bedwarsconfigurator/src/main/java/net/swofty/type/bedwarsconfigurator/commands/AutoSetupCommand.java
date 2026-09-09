@@ -44,6 +44,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @CommandParameters(labels = "setup mapsetup autosetup", description = "Automatic BedWars map configuration tool", usage = "/autosetup <subcommand>", permission = Rank.STAFF, allowsConsole = false)
+// /autosetup command tree driving the automatic Bedwars map configuration tool (scan, bounds, teams, generators, save).
 public class AutoSetupCommand extends HypixelCommand {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: notifies both parties that a pending friend request expired unanswered.
 public final class FriendRequestExpiredResponseEvent extends FriendResponseEvent {
     private static final Serializer<FriendRequestExpiredResponseEvent> SERIALIZER =
             new JacksonSerializer<>(FriendRequestExpiredResponseEvent.class);

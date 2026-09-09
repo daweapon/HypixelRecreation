@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @Getter
+// Fired when a shot arrow collides with a block, carrying the shooter, arrow item, and impact location
 public class ArrowHitBlockEvent implements Event {
     private final Entity shooter;
     private final SkyBlockItem arrowItem;

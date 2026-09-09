@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Weaponsmith NPC in the Hub, selling swords, bows, and arrows.
 public class GUIShopWeaponsmith extends ShopView {
 
     public GUIShopWeaponsmith() {

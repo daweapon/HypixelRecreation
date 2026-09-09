@@ -110,7 +110,11 @@ public final class MathUtility {
 
                         try {
                             Block blockAt = instance.getBlock(x, y, z);
-                            if (blockAt == block) {
+                            // Compare by block type key, not reference: world blocks carry state
+                            // properties (e.g. farmland moisture) that make them a different Block
+                            // instance than the caller's default-state constant, so `==` misses almost
+                            // every real placement.
+                            if (blockAt.key().equals(block.key())) {
                                 blocks.add(new Pos(x, y, z));
                             }
                         } catch (Exception e) {

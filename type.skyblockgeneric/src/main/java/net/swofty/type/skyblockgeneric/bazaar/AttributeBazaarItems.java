@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.hunting.AttributeRegistry;
 
 import java.util.Locale;
 
+// Derives the list of attribute shard ItemTypes tradeable on the bazaar from the attribute registry.
 public final class AttributeBazaarItems {
     private AttributeBazaarItems() {
     }

@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.List;
 
+// Backend microservice that owns guild state and processes guild-related requests via Redis.
 public class GuildService implements SkyBlockService {
 
     static void main() {

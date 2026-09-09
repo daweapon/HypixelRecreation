@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Holds the current mayor/minister election state: active candidates, vote tallies, current
+// mayor/minister and their perks, and the logic for starting a new election cycle.
 @Getter
 @Setter
 public class ElectionData {

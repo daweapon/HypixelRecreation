@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+// Confirmation GUI for purchasing a Bedwars cosmetic collectible with tokens.
 public class GUIBedWarsCollectiblePurchaseConfirm implements View<GUIBedWarsCollectiblePurchaseConfirm.State> {
 
     @Override

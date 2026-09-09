@@ -11,6 +11,7 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 
+// Base class for a dungeon interactable object (chest, door, satchel): manages its interaction hitbox and item-display entities.
 public abstract class DungeonInteractable {
     protected final Instance instance;
     protected Entity interaction;

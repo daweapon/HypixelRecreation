@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.BooleanState;
 
+// Placement rule that forces a block's waterlogged state to false on update, disabling waterlogging.
 public class DisableWaterLogPlacement extends PlacementRule {
     public DisableWaterLogPlacement(Block block) {
         super(block);

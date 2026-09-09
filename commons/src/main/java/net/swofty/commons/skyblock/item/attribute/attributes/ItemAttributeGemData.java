@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+// Item attribute storing an item's gemstone slots: which are unlocked and what gem fills each.
 public class ItemAttributeGemData extends ItemAttribute<ItemAttributeGemData.GemData> {
 
     @Override

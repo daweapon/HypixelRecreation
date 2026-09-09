@@ -8,6 +8,7 @@ import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.type.ravengarddungeon.game.DungeonInstanceRegistry;
 
+// Redis service endpoint that creates a new dungeon instance in response to an orchestrator instantiate-game request.
 public class DungeonInstantiateGameHandler implements RedisMessageHandler<Request, Response> {
 
     private static final InstantiateGamePushProtocol PROTOCOL = new InstantiateGamePushProtocol();

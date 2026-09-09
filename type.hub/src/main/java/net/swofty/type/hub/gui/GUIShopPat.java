@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Pat NPC in the Hub, selling flint and gravel.
 public class GUIShopPat extends ShopView {
     public GUIShopPat() {
         super("Pat", DEFAULT);

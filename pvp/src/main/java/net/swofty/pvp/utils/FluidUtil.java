@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Utility for checking whether a player or entity is touching water, used for legacy critical-hit detection.
 public final class FluidUtil {
 
 	public static int getLevel(Block block) {

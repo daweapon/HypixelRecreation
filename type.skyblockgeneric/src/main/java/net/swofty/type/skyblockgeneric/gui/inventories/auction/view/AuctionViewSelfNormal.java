@@ -5,8 +5,9 @@ import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.auctions.AuctionItem;
+import net.swofty.type.skyblockgeneric.auction.AuctionClaims;
+import net.swofty.type.skyblockgeneric.auction.AuctionCancellation;
 import net.swofty.commons.text.Text;
-import net.swofty.type.generic.data.datapoints.DatapointDouble;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
@@ -20,9 +21,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
+// Renders the auction-view slots shown to the owner of an active/ended normal (bid-based) listing
 public class AuctionViewSelfNormal implements AuctionView {
     @Override
     public void open(GUIAuctionViewItem gui, AuctionItem item, SkyBlockPlayer player) {
+        java.util.UUID claimProfile = player.getSkyblockDataHandler().getCurrentProfileId();
         gui.set(new GUIItem(33) {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
@@ -50,21 +53,13 @@ public class AuctionViewSelfNormal implements AuctionView {
 
         if (item.getEndTime() < System.currentTimeMillis()) {
             List<UUID> ownedActive = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ACTIVE_OWNED, DatapointUUIDList.class).getValue();
-            List<UUID> ownedInactive = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_INACTIVE_OWNED, DatapointUUIDList.class).getValue();
 
             if (ownedActive.contains(item.getUuid())) {
                 if (item.getBids().isEmpty()) {
                     gui.set(new GUIClickableItem(29) {
                         @Override
                         public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                            SkyBlockPlayer player = (SkyBlockPlayer) p;
-                            ownedActive.remove(item.getUuid());
-                            player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ACTIVE_OWNED, DatapointUUIDList.class).setValue(ownedActive);
-                            ownedInactive.add(item.getUuid());
-                            player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_INACTIVE_OWNED, DatapointUUIDList.class).setValue(ownedInactive);
-                            player.closeInventory();
-
-                            player.addAndUpdateItem(item.getItem());
+                            AuctionClaims.claim((SkyBlockPlayer) p, item.getUuid(), claimProfile, true);
                         }
 
                         @Override
@@ -79,18 +74,7 @@ public class AuctionViewSelfNormal implements AuctionView {
                     gui.set(new GUIClickableItem(29) {
                         @Override
                         public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                            SkyBlockPlayer player = (SkyBlockPlayer) p;
-                            double coins = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.COINS, DatapointDouble.class).getValue();
-                            long highestBid = item.getBids().stream().max(Comparator.comparingLong(AuctionItem.Bid::value)).map(AuctionItem.Bid::value).orElse(0L);
-                            player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.COINS, DatapointDouble.class).setValue(coins + highestBid);
-
-                            ownedActive.remove(item.getUuid());
-                            player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ACTIVE_OWNED, DatapointUUIDList.class).setValue(ownedActive);
-                            ownedInactive.add(item.getUuid());
-                            player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_INACTIVE_OWNED, DatapointUUIDList.class).setValue(ownedInactive);
-
-                            player.sendMessage(Text.key("gui_auction.view_self_normal.collected_coins", highestBid));
-                            player.closeInventory();
+                            AuctionClaims.claim((SkyBlockPlayer) p, item.getUuid(), claimProfile, true);
                         }
 
                         @Override
@@ -116,6 +100,18 @@ public class AuctionViewSelfNormal implements AuctionView {
             return;
         }
 
+        if (item.getBids().isEmpty()) {
+            gui.set(new GUIClickableItem(29) {
+                @Override public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                    AuctionCancellation.cancel((SkyBlockPlayer) p, item.getUuid(), claimProfile);
+                }
+                @Override public ItemStack.Builder getItem(HypixelPlayer p) {
+                    return ItemStacks.item(Material.BARRIER, 1, Text.of("<c>Cancel Auction"),
+                            List.of(Text.of("<7>Cancel this auction and return the item."), Text.of(""), Text.of("<e>Click to cancel!")));
+                }
+            });
+            return;
+        }
         gui.set(new GUIItem(29) {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {

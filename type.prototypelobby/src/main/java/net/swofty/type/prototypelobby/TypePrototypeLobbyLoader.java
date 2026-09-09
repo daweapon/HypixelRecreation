@@ -41,6 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// Loader that wires up the Prototype Lobby server type: spawn, scoreboard, parkour, items, NPCs, and events.
 public class TypePrototypeLobbyLoader implements LobbyTypeLoader {
     private static final LobbyItemHandler itemHandler = new LobbyItemHandler();
     public static LobbyParkourManager parkourManager;

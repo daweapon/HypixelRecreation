@@ -9,6 +9,7 @@ import java.util.function.DoubleUnaryOperator;
 
 @Getter
 @Setter
+// Immutable 3D vector used for velocity/direction math, with rotation, interpolation, and arithmetic helpers.
 public final class Vel implements Point {
     public static final double EPSILON = 0.000001;
 

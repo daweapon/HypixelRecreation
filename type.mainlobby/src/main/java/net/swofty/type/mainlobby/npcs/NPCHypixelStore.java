@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// NPC in the Main Lobby representing the Hypixel Store.
 public class NPCHypixelStore extends HypixelNPC {
 
     public NPCHypixelStore() {

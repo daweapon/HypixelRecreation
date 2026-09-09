@@ -3,6 +3,7 @@ package net.swofty.commons.skyblock.item.reforge;
 import lombok.Getter;
 
 @Getter
+// Enumerates the equipment categories that reforges can be restricted to.
 public enum ReforgeType {
     SWORDS("Swords"),
     BOWS("Bows"),

@@ -20,6 +20,8 @@ import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Loads and caches all fishing configuration (loot tables, trophy fish, sea creatures, hotspots)
+// from YAML files under configuration/skyblock/fishing.
 public final class FishingRegistry {
     private static final File FISHING_DIR = new File("./configuration/skyblock/fishing");
 

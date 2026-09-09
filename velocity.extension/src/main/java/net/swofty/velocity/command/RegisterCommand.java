@@ -8,6 +8,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.velocity.SkyBlockVelocity;
 import net.swofty.velocity.data.AuthenticationDatabase;
 
+// "/register <password> <password>" command used by unauthenticated players to create their authentication data.
 public class RegisterCommand implements SimpleCommand {
 
     @Override

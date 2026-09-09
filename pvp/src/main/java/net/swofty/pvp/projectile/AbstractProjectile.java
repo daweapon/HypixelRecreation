@@ -25,6 +25,7 @@ import net.minestom.server.utils.chunk.ChunkCache;
 import net.minestom.server.utils.chunk.ChunkUtils;
 import org.jetbrains.annotations.NotNull;
 
+// Base entity for the alternate projectile system, handling shared movement physics and block/entity collision events.
 public abstract class AbstractProjectile extends Entity implements Projectile {
     @Getter
 	protected final Entity shooter;

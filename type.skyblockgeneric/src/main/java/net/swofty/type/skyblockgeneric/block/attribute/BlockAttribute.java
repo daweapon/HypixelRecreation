@@ -11,6 +11,7 @@ import java.util.Collection;
 
 @Setter
 @Getter
+// Base type for a persisted, typed piece of block state (e.g. chest contents) with string (de)serialization.
 public abstract class BlockAttribute<T> {
     private static final ArrayList<BlockAttribute<?>> attributes = new ArrayList<>();
 

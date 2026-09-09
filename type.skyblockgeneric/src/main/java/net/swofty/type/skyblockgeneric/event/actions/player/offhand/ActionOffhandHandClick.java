@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Blocks offhand-hand animation clicks, since SkyBlock does not support offhand items
 public class ActionOffhandHandClick implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

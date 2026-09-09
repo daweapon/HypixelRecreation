@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI hub for browsing crafting recipes by category
 public class GUIRecipeBook extends StatelessView {
     private static final String LOADING_BAR = "─────────────────";
 

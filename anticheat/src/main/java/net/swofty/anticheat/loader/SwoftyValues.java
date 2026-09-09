@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+// Configurable anticheat settings such as logging and ping-timeout tolerances.
 public class SwoftyValues {
     private boolean shouldPrint = true;
     private int ticksAllowedToMissPing = 40;

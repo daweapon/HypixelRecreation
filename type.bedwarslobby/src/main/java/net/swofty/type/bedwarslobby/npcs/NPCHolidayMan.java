@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.lobby.gui.GUITheDeliveryMan;
 
+// Seasonal delivery-man NPC that opens the daily reward GUI on click.
 public class NPCHolidayMan extends HypixelNPC {
 
 	public NPCHolidayMan() {

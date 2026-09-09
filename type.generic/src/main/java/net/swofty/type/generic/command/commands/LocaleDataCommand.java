@@ -15,6 +15,7 @@ import java.util.Locale;
     usage = "/localedata",
     permission = Rank.STAFF,
     allowsConsole = false)
+// Debug/staff command that reports and resyncs a player's stored locale setting.
 public class LocaleDataCommand extends HypixelCommand {
 
     @Override

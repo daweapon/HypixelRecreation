@@ -7,6 +7,7 @@ import net.minestom.server.entity.metadata.display.AbstractDisplayMeta;
 import net.minestom.server.entity.metadata.display.TextDisplayMeta;
 import net.swofty.commons.text.Text;
 
+// A floating text-display entity used for in-world markup labels (e.g. holograms).
 public class TextDisplayEntity extends EntityCreature {
 
 	public TextDisplayEntity(String markup, Object... arguments) {

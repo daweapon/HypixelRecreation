@@ -10,6 +10,8 @@ import org.tinylog.Logger;
 import java.util.UUID;
 import java.util.function.Function;
 
+// Performs coop-safe read-modify-write updates to a shared, coop-linked datapoint field using
+// a distributed transaction, reporting whether the change applied, was unchanged, or failed.
 public final class DataMutexService {
 
     public enum Outcome {

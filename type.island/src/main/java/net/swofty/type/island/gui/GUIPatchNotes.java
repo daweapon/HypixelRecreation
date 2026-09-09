@@ -12,6 +12,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI listing recent SkyBlock patch notes, linked from Jerry the Assistant on the Island.
 public class GUIPatchNotes extends HypixelInventoryGUI {
     public GUIPatchNotes() {
         super("Patch Notes", InventoryType.CHEST_4_ROW);

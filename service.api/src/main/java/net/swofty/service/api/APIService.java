@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Backend microservice exposing the public HTTP API (via embedded Spark web server) and an admin authentication panel, alongside Redis endpoints.
 public class APIService implements SkyBlockService {
 
     static void main(String[] args) {

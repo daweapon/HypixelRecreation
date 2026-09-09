@@ -4,6 +4,7 @@ import net.swofty.commons.StringUtility;
 
 import java.math.BigDecimal;
 
+// Parses and applies the `{:spec}` numeric format specifiers (comma, short, roman, time, signed, percent, decimal) used in Text placeholders.
 final class TextFormats {
 
     enum Kind {

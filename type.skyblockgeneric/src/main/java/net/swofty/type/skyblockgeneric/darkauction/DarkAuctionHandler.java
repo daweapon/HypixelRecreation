@@ -146,8 +146,8 @@ public class DarkAuctionHandler {
 
         for (UUID playerId : playersInAuction) {
             SkyBlockPlayer player = SkyBlockGenericLoader.getFromUUID(playerId);
-            player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_VISITED_DARK_AUCTION, true);
             if (player != null) {
+                player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_VISITED_DARK_AUCTION, true);
                 player.sendMessage(NPC_PREFIX + "Come on down to the basement, the auction is about to begin!");
                 player.teleport(new Pos(91, 75, 182, 0, 0));
             }
@@ -165,9 +165,11 @@ public class DarkAuctionHandler {
     }
 
     public static void handleRoundStart(JSONObject msg) {
-        if (localState != null) {
-            localState.updateFromMessage(msg);
+        if (localState == null) {
+            Logger.warn("Received ROUND_START but no local Dark Auction state exists; ignoring");
+            return;
         }
+        localState.updateFromMessage(msg);
 
         String itemTypeName = msg.optString("currentItemType", "Unknown");
         int countdown = msg.optInt("countdown", 10);

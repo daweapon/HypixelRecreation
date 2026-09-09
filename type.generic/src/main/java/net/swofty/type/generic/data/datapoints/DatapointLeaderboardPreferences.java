@@ -4,6 +4,7 @@ import net.swofty.commons.bedwars.LeaderboardPreferences;
 import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.type.generic.data.Datapoint;
 
+// Datapoint storing a player's BedWars leaderboard display preferences.
 public class DatapointLeaderboardPreferences extends Datapoint<LeaderboardPreferences> {
 	private static final JacksonSerializer<LeaderboardPreferences> serializer =
 			new JacksonSerializer<>(LeaderboardPreferences.class);

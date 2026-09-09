@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
+// Generic helper for reading a YAML configuration (from disk or falling back to a bundled resource) and atomically saving it back.
 public final class YamlConfigLoader {
     private static final YamlConfigurationProperties PROPERTIES = YamlConfigurationProperties.newBuilder()
         .setNameFormatter(NameFormatters.IDENTITY)

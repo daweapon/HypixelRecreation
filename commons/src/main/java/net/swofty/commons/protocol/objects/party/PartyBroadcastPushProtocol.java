@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Redis RPC protocol for the party service to push a PartyBroadcast event out to a server for delivery to its players.
 public class PartyBroadcastPushProtocol
         extends RedisProtocol<PartyBroadcastPushProtocol.Request, PartyBroadcastPushProtocol.Response> {
 

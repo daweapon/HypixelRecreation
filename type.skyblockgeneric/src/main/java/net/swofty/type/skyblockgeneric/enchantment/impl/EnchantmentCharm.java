@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Charm enchantment: increases the chance of catching higher-tiered trophy fish.
 public class EnchantmentCharm implements Ench {
     @Override
     public String getDescription(int level) {

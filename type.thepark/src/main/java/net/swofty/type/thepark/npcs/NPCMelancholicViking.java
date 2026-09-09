@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
 
+// NPC for the Melancholic Viking in The Park, reacts to held items to help him recall the sea.
 public class NPCMelancholicViking extends HypixelNPC {
 
 	public NPCMelancholicViking() {

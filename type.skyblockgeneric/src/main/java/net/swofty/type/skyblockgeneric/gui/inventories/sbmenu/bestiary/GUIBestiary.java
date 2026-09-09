@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// GUI listing bestiary regions the player can browse mob kill progress for
 public class GUIBestiary extends StatelessView {
 
     private static final int[] DISPLAY_SLOTS = {

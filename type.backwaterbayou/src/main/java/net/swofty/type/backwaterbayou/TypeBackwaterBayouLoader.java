@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Loader that wires up the Backwater Bayou server type: spawn point, tablist, NPCs, and events.
 public class TypeBackwaterBayouLoader implements SkyBlockTypeLoader {
     @Override
     public ServerType getType() {

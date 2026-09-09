@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Generic thrown-item projectile (e.g. snowball-like) with simple constant-gravity arc physics.
 public class ThrownItemProjectile extends AbstractProjectile {
     public ThrownItemProjectile(EntityType type, Entity shooter) {
         super(type, shooter);

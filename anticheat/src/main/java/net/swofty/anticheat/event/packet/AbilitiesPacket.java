@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
+// Loader-agnostic representation of a client's player-abilities packet (flight/creative/invulnerability state).
 public class AbilitiesPacket extends SwoftyPacket {
     private final boolean invulnerable;
     private final boolean flying;

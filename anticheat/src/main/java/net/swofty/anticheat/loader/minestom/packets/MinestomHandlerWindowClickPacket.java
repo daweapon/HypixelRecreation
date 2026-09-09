@@ -7,6 +7,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts Minestom's client click-window packet into a WindowClickPacket.
 public class MinestomHandlerWindowClickPacket
         extends LoaderPacketHandler<ClientClickWindowPacket> {
 

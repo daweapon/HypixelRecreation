@@ -5,6 +5,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for a server to ask the proxy for its own display name and short display name.
 public class RequestServerNameProtocol extends RedisProtocol<
         RequestServerNameProtocol.Request,
         RequestServerNameProtocol.Response> {

@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.Directional;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import org.jetbrains.annotations.NotNull;
 
+// Typed BlockState accessor for a fence gate's open, in-wall, and facing properties.
 public class FenceGateState extends WaterloggedState {
     public FenceGateState(Block block) {
         super(block);

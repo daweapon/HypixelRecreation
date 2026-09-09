@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 
+// Hub GUI for the Slumber Hotel feature: guide, quest log, and inventory entry points.
 public class GUITheSlumberHotel extends StatelessView {
 
     @Override

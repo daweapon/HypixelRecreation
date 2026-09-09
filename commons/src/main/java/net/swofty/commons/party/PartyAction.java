@@ -20,8 +20,13 @@ import java.util.UUID;
         @JsonSubTypes.Type(value = PartyAction.Chat.class, name = "Chat"),
         @JsonSubTypes.Type(value = PartyAction.SwitchedServer.class, name = "SwitchedServer"),
         @JsonSubTypes.Type(value = PartyAction.PlayerDisconnect.class, name = "PlayerDisconnect"),
-        @JsonSubTypes.Type(value = PartyAction.PlayerRejoin.class, name = "PlayerRejoin")
+        @JsonSubTypes.Type(value = PartyAction.PlayerRejoin.class, name = "PlayerRejoin"),
+        @JsonSubTypes.Type(value = PartyAction.ChangeSize.class, name = "ChangeSize"),
+        @JsonSubTypes.Type(value = PartyAction.ToggleAllInvite.class, name = "ToggleAllInvite"),
+        @JsonSubTypes.Type(value = PartyAction.ToggleMute.class, name = "ToggleMute"),
+        @JsonSubTypes.Type(value = PartyAction.KickOffline.class, name = "KickOffline")
 })
+// Sealed set of player-initiated party commands (invite, leave, kick, transfer, chat, etc.) sent through the party service.
 public sealed interface PartyAction {
 
     record Invite(PendingParty party) implements PartyAction {}
@@ -51,4 +56,12 @@ public sealed interface PartyAction {
     record PlayerDisconnect(UUID disconnectedPlayer) implements PartyAction {}
 
     record PlayerRejoin(UUID rejoinedPlayer) implements PartyAction {}
+
+    record ChangeSize(UUID setter, int size) implements PartyAction {}
+
+    record ToggleAllInvite(UUID setter) implements PartyAction {}
+
+    record ToggleMute(UUID setter) implements PartyAction {}
+
+    record KickOffline(UUID kicker) implements PartyAction {}
 }

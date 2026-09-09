@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Detects timer/game-speed hacks by checking whether movement packets arrive faster than the expected tick rate.
 public class TimerFlag extends Flag {
     // Track last packet times per player
     private static final Map<UUID, Long> lastPacketTimes = new HashMap<>();

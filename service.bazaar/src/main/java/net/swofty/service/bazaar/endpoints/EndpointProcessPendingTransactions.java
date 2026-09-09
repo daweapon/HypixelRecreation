@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that marks a batch of pending bazaar transactions as processed and cleans them up.
 public class EndpointProcessPendingTransactions implements RedisMessageHandler<
         BazaarProcessPendingTransactionsMessage,
         BazaarProcessPendingTransactionsResponse> {

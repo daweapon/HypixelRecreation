@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 
 import java.util.List;
 
+// Paginated GUI listing an Abiphone's saved contacts with sorting and search
 public class GUIAbiphone extends HypixelPaginatedGUI<AbiphoneNPC> {
 	@Setter
 	private SortType sortType = SortType.ALPHABETICAL;

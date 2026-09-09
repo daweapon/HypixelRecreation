@@ -40,6 +40,7 @@ import org.jspecify.annotations.NonNull;
 import java.time.Duration;
 import java.util.*;
 
+// Main SkyBlock menu hub, linking out to bags, calendar, bank, skills, storage, and other sub-menus
 public class GUISkyBlockMenu extends StatelessView {
 
     @Override
@@ -241,6 +242,12 @@ public class GUISkyBlockMenu extends StatelessView {
             Text.key("gui_sbmenu.main.settings"),
             Text.keyLines("gui_sbmenu.main.settings.lore")), (_, c) -> c.player().sendMessage("<c>SkyBlock Settings are not available yet."));
 
+        layout.slot(52, (s, c) -> c.player().getRank().isStaff()
+                ? ItemStacks.item(Material.COMMAND_BLOCK, 1, Text.literal("Admin Menu"), List.of(Text.literal("Staff tools and command actions")))
+                : net.minestom.server.item.ItemStack.builder(Material.AIR), (_, c) -> {
+            if (c.player().getRank().isStaff()) new net.swofty.type.skyblockgeneric.gui.inventories.admin.GUIAdmin().open(c.player());
+        });
+
         layout.slot(51, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             Text status = player.isBoosterCookieActive() ? Text.of("<a>Active") : Text.of("<c>Not active!");
@@ -276,7 +283,8 @@ public class GUISkyBlockMenu extends StatelessView {
 
         Map<SkyBlockCalendar.EventInfo, CalendarEvent> upcomingEvents;
         if (ctx.player().getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_VISITED_DARK_AUCTION)) {
-            upcomingEvents = SkyBlockCalendar.getEventsWithDurationUntil(1);
+            boolean halveDarkAuction = ctx.player().getToggles().get(DatapointToggles.Toggles.ToggleType.HALVE_DARK_AUCTION_CALENDAR_ENTRIES);
+            upcomingEvents = SkyBlockCalendar.getEventsWithDurationUntil(1, halveDarkAuction);
         } else {
             upcomingEvents = SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(1, Collections.singletonList(CalendarEvent.DARK_AUCTION));
         }

@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
+// Default CombatPlayer implementation adding vanilla-accurate movement physics and deferred velocity updates.
 public class CombatPlayerImpl extends Player implements CombatPlayer {
 	private boolean velocityUpdate = false;
 	private PhysicsResult previousPhysicsResult = null;

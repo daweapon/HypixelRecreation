@@ -3,6 +3,7 @@ package net.swofty.commons.protocol;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.json.JsonMapper;
 
+// Generic Jackson-based Serializer implementation used as the default for most Redis RPC protocols.
 public class JacksonSerializer<T> implements Serializer<T> {
     private static final ObjectMapper MAPPER = JsonMapper.builder()
             .findAndAddModules()

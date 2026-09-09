@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Attachment;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 
+// Placement rule for bells, choosing floor/ceiling/wall attachment and single/double wall mounting.
 public class BellPlacement extends PlacementRule {
 
     public BellPlacement() {

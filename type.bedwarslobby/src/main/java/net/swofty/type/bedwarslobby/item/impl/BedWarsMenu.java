@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.lobby.item.LobbyItem;
 
+// Lobby hotbar item that opens the Bedwars menu/shop GUI on interact.
 public class BedWarsMenu extends LobbyItem {
 
     public BedWarsMenu() {

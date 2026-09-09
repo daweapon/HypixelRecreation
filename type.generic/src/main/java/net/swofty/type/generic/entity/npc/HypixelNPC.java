@@ -146,6 +146,14 @@ public abstract class HypixelNPC {
                 }
                 npcViewable.updateNPC();
 
+                if (config.dynamicPosition() && !npcViewable.getMovementController().isMoving()) {
+                    Pos desiredPosition = config.position(player);
+                    if (!npcPosition.samePoint(desiredPosition)) {
+                        entity.teleport(desiredPosition);
+                        npcPosition = desiredPosition;
+                    }
+                }
+
                 Pos playerPosition = player.getPosition();
                 double entityDistance = playerPosition.distance(npcPosition);
                 boolean isLookingNPC = config.looking(player)

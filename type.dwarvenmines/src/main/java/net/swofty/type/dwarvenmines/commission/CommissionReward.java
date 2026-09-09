@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+// The Heart of the Mountain XP, mining XP, and mithril powder granted for completing a Dwarven Mines commission.
 public record CommissionReward(int hotmXp, int miningXp, int mithrilPowder, boolean isDailyBonus) {
 	public static CommissionReward calculate(int hotmTier, boolean isHotmMaxed, boolean isDailyBonus) {
 		int hotmXp;

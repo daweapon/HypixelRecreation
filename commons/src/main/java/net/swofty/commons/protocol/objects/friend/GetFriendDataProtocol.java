@@ -8,6 +8,7 @@ import net.swofty.commons.protocol.Serializer;
 import java.util.UUID;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for fetching a player's full FriendData document.
 public class GetFriendDataProtocol extends RedisProtocol
         <GetFriendDataProtocol.GetFriendDataMessage,
                 GetFriendDataProtocol.GetFriendDataResponse> {

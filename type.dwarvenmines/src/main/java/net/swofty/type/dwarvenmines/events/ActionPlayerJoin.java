@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Handles spawning and respawn placement for players joining the Dwarven Mines server.
 public class ActionPlayerJoin implements HypixelEventClass {
 
 	@SneakyThrows

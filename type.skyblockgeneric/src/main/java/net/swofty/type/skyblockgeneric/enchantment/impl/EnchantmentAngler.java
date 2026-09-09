@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Angler enchantment: grants bonus Sea Creature Chance on fishing rods.
 public class EnchantmentAngler implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

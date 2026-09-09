@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Set;
 
+// Tracks block-break events in the Dwarven Mines and updates a player's active commission progress.
 public class ActionPlayerCommissions implements HypixelEventClass {
 
 	private static final Set<Material> MITHRIL_BLOCKS = Set.of(Material.LIGHT_BLUE_WOOL, Material.GRAY_WOOL, Material.CYAN_TERRACOTTA, Material.PRISMARINE, Material.DARK_PRISMARINE, Material.PRISMARINE_BRICKS);

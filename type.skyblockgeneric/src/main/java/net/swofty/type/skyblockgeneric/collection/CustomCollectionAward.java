@@ -7,6 +7,8 @@ import net.swofty.commons.text.Text;
 import java.util.HashMap;
 import java.util.Map;
 
+// Non-recipe/non-XP collection rewards (enchant XP discounts, bag upgrades, foraging cap increases)
+// with their display text, cached against the collection/requirement that unlocks them.
 @Getter
 public enum CustomCollectionAward {
     // ENCHANTMENTS

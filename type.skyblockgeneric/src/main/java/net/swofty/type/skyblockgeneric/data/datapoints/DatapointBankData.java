@@ -15,6 +15,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// Persists a player's bank account: balance, tier, interest history/transactions, personal bank
+// upgrade level, and the personal vault's contents.
 public class DatapointBankData extends SkyBlockDatapoint<DatapointBankData.BankData> {
     private static final Serializer<BankData> serializer = new Serializer<>() {
         @Override

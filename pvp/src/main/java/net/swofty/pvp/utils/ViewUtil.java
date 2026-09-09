@@ -10,6 +10,7 @@ import net.minestom.server.entity.Entity;
 import java.util.Collections;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Utility for getting the viewer audience/packet-grouping audience of an entity's chunk.
 public final class ViewUtil {
 
 	public static Audience viewersAndSelf(Entity origin) {

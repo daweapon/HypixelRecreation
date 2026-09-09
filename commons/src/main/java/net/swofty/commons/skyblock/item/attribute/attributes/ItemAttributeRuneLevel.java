@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing a rune item's own level.
 public class ItemAttributeRuneLevel extends ItemAttribute<Integer> {
     @Override
     public String getKey() {

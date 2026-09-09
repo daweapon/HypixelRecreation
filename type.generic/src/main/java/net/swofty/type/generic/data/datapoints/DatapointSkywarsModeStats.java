@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Datapoint storing per-mode/per-period SkyWars statistics, with custom JSON (de)serialization and leaderboard score export.
 public class DatapointSkywarsModeStats extends Datapoint<SkywarsModeStats>
         implements MapLeaderboardTracked {
 

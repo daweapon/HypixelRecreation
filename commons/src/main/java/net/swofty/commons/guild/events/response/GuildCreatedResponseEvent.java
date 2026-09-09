@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: confirms a new guild was created.
 public class GuildCreatedResponseEvent extends GuildResponseEvent {
     private UUID creator;
 

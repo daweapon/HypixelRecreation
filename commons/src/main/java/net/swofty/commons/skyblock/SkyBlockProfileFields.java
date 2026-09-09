@@ -6,6 +6,7 @@ import net.swofty.codec.Codecs;
 
 import java.util.UUID;
 
+// Defines the PlayerField/LinkedField keys used to store a SkyBlock profile's document and island UUID.
 public final class SkyBlockProfileFields {
     public static final String NAMESPACE = "skyblock";
     public static final String ISLAND_UUID_KEY = "island_uuid";

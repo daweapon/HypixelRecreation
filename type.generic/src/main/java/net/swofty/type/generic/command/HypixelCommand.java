@@ -21,6 +21,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+// Base class for all server commands: parses the CommandParameters annotation into labels/permission/usage and registers syntax.
 public abstract class HypixelCommand {
     @Getter
     private final CommandParameters params;
@@ -101,16 +102,18 @@ public abstract class HypixelCommand {
      * wrapped so that casts inside executors keep working.
      */
     public static class MinestomCommand extends Command {
+        @Getter
+        private final CommandParameters parameters;
 
         public MinestomCommand(HypixelCommand command) {
             super(command.getName());
-
+            this.parameters = command.getParams();
             install(command);
         }
 
         public MinestomCommand(HypixelCommand command, String... aliases) {
             super(command.getName(), aliases);
-
+            this.parameters = command.getParams();
             install(command);
         }
 

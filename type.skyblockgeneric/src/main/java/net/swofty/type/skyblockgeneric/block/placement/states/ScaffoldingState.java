@@ -4,6 +4,7 @@ import net.minestom.server.instance.block.Block;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.BooleanState;
 import org.jetbrains.annotations.NotNull;
 
+// Typed BlockState accessor for scaffolding's bottom property.
 public class ScaffoldingState extends WaterloggedState {
     public ScaffoldingState(Block block) {
         super(block);

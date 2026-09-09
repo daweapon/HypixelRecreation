@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.hub.util.HubMap;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Sends the Hub map item data to a player when they spawn in the Hub.
 public class ActionPlayerSpawn implements HypixelEventClass {
 
     @SneakyThrows

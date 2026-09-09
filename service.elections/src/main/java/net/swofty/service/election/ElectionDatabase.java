@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// MongoDB accessor for election data, votes, and per-year vote tallies.
 public record ElectionDatabase(String key) implements MongoDB {
     public static MongoClient client;
     public static MongoDatabase database;

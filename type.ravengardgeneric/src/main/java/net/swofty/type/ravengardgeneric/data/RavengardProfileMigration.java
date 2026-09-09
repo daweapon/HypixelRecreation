@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
+// One-time migration of a player's legacy Mongo-stored Ravengard profiles onto the newer profile-index/data-api storage.
 public final class RavengardProfileMigration {
     private RavengardProfileMigration() {
     }

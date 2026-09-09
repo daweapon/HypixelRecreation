@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
+// Type-safe wrapper for reading values out of a loosely-typed YAML/config map
 public class SafeConfig {
     final Map<String, Object> config;
     private final String path;

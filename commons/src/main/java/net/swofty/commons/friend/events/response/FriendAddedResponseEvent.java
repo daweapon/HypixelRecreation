@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: notifies both players that they are now friends.
 public final class FriendAddedResponseEvent extends FriendResponseEvent {
     private static final Serializer<FriendAddedResponseEvent> SERIALIZER =
             new JacksonSerializer<>(FriendAddedResponseEvent.class);

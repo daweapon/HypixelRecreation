@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.SlabType;
 
+// Placement rule for slabs, merging adjacent half-slabs into double slabs and picking top/bottom half from cursor position.
 public class SlabPlacement extends PlacementRule {
     public SlabPlacement(Block block) {
         super(block);

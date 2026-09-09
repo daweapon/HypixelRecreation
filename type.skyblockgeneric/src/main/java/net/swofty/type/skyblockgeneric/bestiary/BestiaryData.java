@@ -5,6 +5,8 @@ import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 
 import java.util.List;
 
+// Computes bestiary tier progress and rewards (magic find, strength, coin/XP bonuses) for a mob
+// from its kill count, using per-bracket kill-requirement tables.
 public class BestiaryData {
     private final static int[] BRACKET_1 = new int[]{
             20, 40, 60, 100, 200, 400, 800, 1400, 2000, 3000,

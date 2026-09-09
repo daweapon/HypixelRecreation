@@ -32,6 +32,7 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+// Base GUI for NPC shops: paginates purchasable items over a configurable slot layout and handles buy/sell clicks
 public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, ShopView.State> {
 
     public static final int[] DEFAULT = new int[]{

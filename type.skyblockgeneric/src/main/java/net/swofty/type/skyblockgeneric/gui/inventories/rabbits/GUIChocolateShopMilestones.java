@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI showing Chocolate Factory shop milestone rewards and progress
 public class GUIChocolateShopMilestones implements StatefulView<GUIChocolateShopMilestones.State> {
     private static final int[] MILESTONE_SLOTS = {
             27, 18, 9, 0, 1, 2, 11, 20, 29, 30, 31, 22,

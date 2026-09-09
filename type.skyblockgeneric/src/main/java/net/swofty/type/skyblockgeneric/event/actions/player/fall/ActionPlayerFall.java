@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Tracks fall height and applies fall damage, adjusted by value-update events and the active pet
 public class ActionPlayerFall implements HypixelEventClass {
 
 

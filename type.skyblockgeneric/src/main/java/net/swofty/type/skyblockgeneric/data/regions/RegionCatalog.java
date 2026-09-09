@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+// Loads and persists the world's defined SkyBlock regions (bounds, type, server) from/to a
+// YAML catalog file.
 public final class RegionCatalog {
     private static final String RESOURCE = "/Minestom.regions.yml";
     private static final Path LOCATION_FILE = Path.of("configuration/skyblock/Minestom.regions.yml");

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Frail enchantment: reduces the defense of sea creatures hit with the weapon/rod.
 public class EnchantmentFrail implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

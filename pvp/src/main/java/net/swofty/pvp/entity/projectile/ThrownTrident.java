@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
+// Thrown trident projectile that deals damage once, then optionally returns to its shooter via Loyalty.
 public class ThrownTrident extends AbstractArrow {
 	private final ItemStack tridentItem;
 	private boolean damageDone;

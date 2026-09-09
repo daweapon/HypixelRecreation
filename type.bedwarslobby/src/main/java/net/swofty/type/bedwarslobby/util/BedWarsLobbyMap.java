@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Pos;
 import net.swofty.type.generic.utility.AbstractMapSystem;
 
 
+// Defines and serves the compressed map data/spawn config for the Bedwars lobby world.
 public class BedWarsLobbyMap extends AbstractMapSystem {
     @Override
     protected MapConfiguration getConfiguration() {

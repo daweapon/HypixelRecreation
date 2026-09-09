@@ -3,6 +3,7 @@ package net.swofty.dungeons.catacombs.blessing;
 import java.util.EnumMap;
 import java.util.Map;
 
+// Tracks a player's stacked blessing levels and computes their combined applied stat bonuses.
 public final class BlessingSet {
     private final Map<BlessingType, Integer> levels = new EnumMap<>(BlessingType.class);
 

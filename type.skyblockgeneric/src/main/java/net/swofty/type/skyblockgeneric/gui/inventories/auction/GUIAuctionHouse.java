@@ -17,6 +17,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Main auction house GUI, linking out to browsing, stats, and managing owned auctions
 public class GUIAuctionHouse extends HypixelInventoryGUI implements RefreshingGUI {
     public GUIAuctionHouse() {
         super(Text.key("gui_auction.house.title"), InventoryType.CHEST_4_ROW);
@@ -24,6 +25,13 @@ public class GUIAuctionHouse extends HypixelInventoryGUI implements RefreshingGU
 
     @Override
     public void onOpen(InventoryGUIOpenEvent e) {
+        if (((SkyBlockPlayer) getPlayer()).isIronman()) {
+            getPlayer().sendMessage(Text.key("gui_auction.house.ironman_blocked"));
+            getPlayer().closeInventory();
+            return;
+        }
+        net.swofty.type.skyblockgeneric.auction.AuctionBidding.recover((SkyBlockPlayer) getPlayer());
+        net.swofty.type.skyblockgeneric.auction.AuctionCreation.recover((SkyBlockPlayer) getPlayer());
         fill(Material.BLACK_STAINED_GLASS_PANE, "");
         set(GUIClickableItem.getCloseItem(31));
         set(new GUIClickableItem(32) {

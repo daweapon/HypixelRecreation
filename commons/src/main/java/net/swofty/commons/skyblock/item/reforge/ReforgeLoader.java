@@ -15,6 +15,7 @@ import java.util.*;
 import java.util.function.BiFunction;
 
 @Data
+// Loads reforge definitions from YAML config files on disk and serves as the runtime registry for looking them up by id/name/type.
 public class ReforgeLoader {
     private static final File REFORGES_DIR = new File("./configuration/skyblock/reforges");
     private static final Map<String, Reforge> LOADED_REFORGES = new HashMap<>();

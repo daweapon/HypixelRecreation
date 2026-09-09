@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 
+// Placement rule that derives a generic "facing" state from the clicked face or player yaw, inverting it for certain blocks.
 public class FacingPlacement extends PlacementRule {
     private final List<Block> needToBeInverted =
             Arrays.asList(Block.HOPPER, Block.LECTERN, Block.REPEATER, Block.COMPARATOR, Block.CHEST, Block.ENDER_CHEST,

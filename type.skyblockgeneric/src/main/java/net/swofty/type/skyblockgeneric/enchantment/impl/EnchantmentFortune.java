@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Fortune enchantment: grants Mining Fortune for extra ore drops; conflicts with Silk Touch.
 public class EnchantmentFortune implements Ench, EnchFromTable, ConflictingEnch {
 
     public static final int[] MINING_FORTUNE_BONUS = new int[]{10, 20, 30, 45};

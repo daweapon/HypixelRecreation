@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Sets a player's game mode to Adventure on spawn in the Main Lobby.
 public class ActionPlayerSpawn implements HypixelEventClass {
 
     @SneakyThrows

@@ -13,6 +13,7 @@ import net.swofty.velocity.testflow.TestFlowManager;
 
 import java.util.*;
 
+// Redis handler that answers server-directory queries (all, by type, by UUID, or by player) filtered for test-flow isolation.
 public class ListenerServersInformation implements RedisMessageHandler<
         RequestServersProtocol.Request,
         RequestServersProtocol.Response> {

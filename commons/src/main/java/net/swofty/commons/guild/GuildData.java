@@ -18,6 +18,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor(force = true)
+// A guild's full persisted state: roster, ranks, GEXP/leveling, daily progress, and settings, with level/rank computation helpers.
 public class GuildData {
     private final UUID guildId;
     private String name;
@@ -31,6 +32,7 @@ public class GuildData {
     private String description;
     private String discordLink;
     private boolean listedInFinder;
+    private boolean openJoin;
     private boolean slowChat;
     private boolean everyoneMuted;
     private long everyoneMutedExpiry;
@@ -42,7 +44,7 @@ public class GuildData {
     private boolean onlineMode;
 
     public static final int MAX_MEMBERS = 125;
-    private static final int MAX_CUSTOM_RANKS = 3;
+    public static final int MAX_CUSTOM_RANKS = 3;
     private static final int TAG_UNLOCK_LEVEL = 5;
 
     private static final long[] LEVEL_THRESHOLDS = {
@@ -71,6 +73,7 @@ public class GuildData {
         this.description = "";
         this.discordLink = "";
         this.listedInFinder = true;
+        this.openJoin = false;
         this.slowChat = false;
         this.everyoneMuted = false;
         this.everyoneMutedExpiry = 0;
@@ -83,7 +86,7 @@ public class GuildData {
     private GuildData(@JsonProperty("guildId") UUID guildId, @JsonProperty("name") String name, @JsonProperty("tag") String tag, @JsonProperty("tagColor") String tagColor,
                       @JsonProperty("members") List<GuildMember> members, @JsonProperty("ranks") List<GuildRank> ranks,
                       @JsonProperty("totalGexp") long totalGexp, @JsonProperty("level") int level, @JsonProperty("motd") String motd, @JsonProperty("description") String description,
-                      @JsonProperty("discordLink") String discordLink, @JsonProperty("listedInFinder") boolean listedInFinder, @JsonProperty("slowChat") boolean slowChat,
+                      @JsonProperty("discordLink") String discordLink, @JsonProperty("listedInFinder") boolean listedInFinder, @JsonProperty("openJoin") Boolean openJoin, @JsonProperty("slowChat") boolean slowChat,
                       @JsonProperty("everyoneMuted") boolean everyoneMuted, @JsonProperty("everyoneMutedExpiry") long everyoneMutedExpiry, @JsonProperty("createdAt") long createdAt,
                       @JsonProperty("auditLog") List<String> auditLog, @JsonProperty("dailyGexp") Long dailyGexp,
                       @JsonProperty("dailyWins") Integer dailyWins, @JsonProperty("dailyProgressDate") String dailyProgressDate,
@@ -100,6 +103,7 @@ public class GuildData {
         this.description = description;
         this.discordLink = discordLink;
         this.listedInFinder = listedInFinder;
+        this.openJoin = openJoin != null && openJoin;
         this.slowChat = slowChat;
         this.everyoneMuted = everyoneMuted;
         this.everyoneMutedExpiry = everyoneMutedExpiry;

@@ -10,6 +10,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.user.categories.Rank;
 
+// Announces staff joins and sends the welcome message on a player's first spawn in the Prototype Lobby.
 public class ActionPlayerDataSpawn implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER_DATA, requireDataLoaded = false, isAsync = true, phase = EventPhase.POST_SPAWN)

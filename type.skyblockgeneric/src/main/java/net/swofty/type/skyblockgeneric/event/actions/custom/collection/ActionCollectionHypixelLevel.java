@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.collection.CollectionCategory;
 import net.swofty.type.skyblockgeneric.event.custom.CollectionUpdateEvent;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelCause;
 
+// Grants SkyBlock XP for each collection reward tier a player crosses
 public class ActionCollectionHypixelLevel implements HypixelEventClass {
 
 

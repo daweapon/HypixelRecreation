@@ -6,6 +6,7 @@ import redis.clients.jedis.Jedis;
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;
 
+// Redis key helpers for checking existence and deleting a private island's stored data.
 public final class IslandStorage {
     public static final String ISLAND_PREFIX = "hsb:island:";
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+// Every class ability in Ravengard: its owning class, display icon, cooldown, and description text/HUD glyph.
 public enum RavengardAbility implements RavengardSprite {
     // cooldowns marked (capture) come from the live tooltips, which disagree with the wiki
     SENTINEL(RavengardClass.KNIGHT, "Sentinel", '\uF106', 100,   // capture; wiki says 1m 28s

@@ -9,6 +9,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.hub.gui.GUIShopFishMerchant;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// NPC for the Hub's Fishing Merchant, who buys and sells fish, rods, and treasure via the Fisherman Shop GUI
 public class NPCFishingMerchant extends HypixelNPC {
 
     public NPCFishingMerchant() {

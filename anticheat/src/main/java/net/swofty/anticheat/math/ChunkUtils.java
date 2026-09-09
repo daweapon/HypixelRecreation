@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Utility for converting world (block) coordinates into chunk/section coordinates.
 public final class ChunkUtils {
 
     public static int getChunkCoordinate(double xz) {

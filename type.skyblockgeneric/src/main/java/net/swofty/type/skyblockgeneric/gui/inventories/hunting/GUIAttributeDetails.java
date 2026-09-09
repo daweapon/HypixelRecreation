@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI showing a hunting attribute's level progress, max-level requirements, and hunt info
 public final class GUIAttributeDetails extends StatelessView {
     private final AttributeDefinition definition;
 

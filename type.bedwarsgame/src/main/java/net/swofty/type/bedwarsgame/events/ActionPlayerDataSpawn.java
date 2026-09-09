@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Loads a player's Bedwars data and applies their level/experience bar on first spawn.
 public class ActionPlayerDataSpawn implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER_DATA, requireDataLoaded = false, isAsync = true)

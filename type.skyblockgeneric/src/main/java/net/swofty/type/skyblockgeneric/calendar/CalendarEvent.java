@@ -22,6 +22,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
+// Defines a recurring SkyBlock calendar event (New Year, Dark Auction, elections, festivals, etc.)
+// with its display info, occurrence times/duration, and the action run when it triggers.
 public record CalendarEvent(
     String id,
     ItemStack representation,
@@ -36,6 +38,7 @@ public record CalendarEvent(
     private static final long THREE_DAYS = 3L * SkyBlockCalendar.DAY;
     private static final long YEAR = SkyBlockCalendar.YEAR;
     private static final long MONTH = SkyBlockCalendar.MONTH;
+    private static final long DAY = SkyBlockCalendar.DAY;
     private static final Map<Long, List<CalendarEvent>> eventCache = new HashMap<>();
     private static final List<CalendarEvent> allEvents = new ArrayList<>();
 
@@ -142,11 +145,62 @@ public record CalendarEvent(
         }
     );
 
+    // Twice yearly: Early Summer 1-3 and Early Winter 1-3
+    public static CalendarEvent TRAVELING_ZOO = new CalendarEvent(
+        "traveling_zoo",
+        ItemStack.of(Material.HAY_BLOCK),
+        year -> Text.of("<a>Traveling Zoo"),
+        List.of(
+            Text.of("<7>A traveling zoo has arrived!"),
+            Text.of("<7>Visit to see rare animals and"),
+            Text.of("<7>buy exclusive pets.")
+        ),
+        List.of(3 * MONTH, 9 * MONTH),
+        Duration.ofMinutes(3L * 20),
+        true,
+        (_, _) -> {}
+    );
+
+    // Once yearly: Autumn 29-31
+    public static CalendarEvent SPOOKY_FESTIVAL = new CalendarEvent(
+        "spooky_festival",
+        ItemStack.of(Material.JACK_O_LANTERN),
+        year -> Text.of("<6>Spooky Festival"),
+        List.of(
+            Text.of("<7>The Spooky Festival has begun!"),
+            Text.of("<7>Trade candy and fight monsters"),
+            Text.of("<7>for spooky rewards.")
+        ),
+        List.of(7 * MONTH + 28 * DAY),
+        Duration.ofMinutes(3L * 20),
+        true,
+        (_, _) -> {}
+    );
+
+    // Once yearly: Late Winter 24-26
+    public static CalendarEvent SEASON_OF_JERRY = new CalendarEvent(
+        "season_of_jerry",
+        ItemStack.of(Material.LIME_WOOL),
+        year -> Text.of("<d>Season of Jerry"),
+        List.of(
+            Text.of("<7>Jerry's Workshop is open!"),
+            Text.of("<7>Complete gifts and quests"),
+            Text.of("<7>for festive rewards.")
+        ),
+        List.of(11 * MONTH + 23 * DAY),
+        Duration.ofMinutes(3L * 20),
+        true,
+        (_, _) -> {}
+    );
+
     static {
         registerEvent(NEW_YEAR);
         registerEvent(DARK_AUCTION);
         registerEvent(ELECTION_OPEN);
         registerEvent(ELECTION_CLOSE);
+        registerEvent(TRAVELING_ZOO);
+        registerEvent(SPOOKY_FESTIVAL);
+        registerEvent(SEASON_OF_JERRY);
     }
 
     public Text getDisplayName(int year) {

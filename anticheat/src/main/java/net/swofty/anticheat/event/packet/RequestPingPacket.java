@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.swofty.anticheat.engine.SwoftyPlayer;
 
 @Getter
+// Loader-agnostic outgoing packet asking the client to echo back a ping request id, for latency measurement.
 public class RequestPingPacket extends SwoftyPacket {
     private final int requestId;
 

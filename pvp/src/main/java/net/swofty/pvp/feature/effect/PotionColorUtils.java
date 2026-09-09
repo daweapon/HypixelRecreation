@@ -4,6 +4,7 @@ import net.minestom.server.potion.Potion;
 
 import java.util.Collection;
 
+// Computes the blended RGBA color shown for a combination of active potion effects.
 class PotionColorUtils {
 	public static int getPotionColor(Collection<Potion> effects) {
 		int r = 0, g = 0, b = 0;

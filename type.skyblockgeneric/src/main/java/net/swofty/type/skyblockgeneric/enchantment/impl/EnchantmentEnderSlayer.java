@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Ender Slayer enchantment: boosts damage dealt to ender-type mobs.
 public class EnchantmentEnderSlayer implements Ench, EnchFromTable, EventBasedEnchant {
 
     public static final double[] MULTIPLIERS = new double[]{5, 10, 15, 20, 30, 40, 50};

@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Computes and applies melee damage when a player attacks a SkyBlock mob
 public class PlayerActionDamageMob implements HypixelEventClass {
     private static final Map<UUID, Long> COOLDOWN = new HashMap<>();
 

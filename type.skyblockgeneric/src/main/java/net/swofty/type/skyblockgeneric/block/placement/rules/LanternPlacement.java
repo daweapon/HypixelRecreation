@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.BooleanState;
 
+// Placement rule for lanterns, toggling the hanging state based on whether a solid block is above.
 public class LanternPlacement extends PlacementRule {
 
     private final BooleanState HANGING = BooleanState.Of("hanging", false);

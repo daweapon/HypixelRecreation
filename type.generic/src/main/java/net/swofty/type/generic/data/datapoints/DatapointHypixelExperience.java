@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.type.generic.data.Datapoint;
 import net.swofty.type.generic.leaderboard.LeaderboardTracked;
 
+// Datapoint storing a player's network-wide Hypixel experience, tracked on the network experience leaderboard.
 public class DatapointHypixelExperience extends Datapoint<Long> implements LeaderboardTracked {
     private static final JacksonSerializer<Long> serializer = new JacksonSerializer<>(Long.class);
     private static final String LEADERBOARD_KEY = "hypixel:network_experience";

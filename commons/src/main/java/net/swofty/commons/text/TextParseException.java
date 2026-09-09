@@ -3,6 +3,7 @@ package net.swofty.commons.text;
 import lombok.Getter;
 
 @Getter
+// Thrown when Text markup fails to parse; carries the offending markup and index for a helpful snippet in the message.
 public final class TextParseException extends RuntimeException {
 
     private final String markup;

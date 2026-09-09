@@ -31,6 +31,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Base class for arrow-like projectiles, handling pickup, sticking, critical hits, knockback, and piercing.
 public abstract class AbstractArrow extends CustomEntityProjectile {
 	private static final double ARROW_BASE_DAMAGE = 2.0;
 

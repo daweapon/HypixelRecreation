@@ -11,6 +11,7 @@ import org.tinylog.Logger;
 import java.util.List;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that lists a player's unhandled pending bazaar transactions for a given profile.
 public class EndpointGetPendingTransactions implements RedisMessageHandler<
         BazaarGetPendingTransactionsMessage,
         BazaarGetPendingTransactionsResponse> {

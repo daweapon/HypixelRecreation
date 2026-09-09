@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Cleave enchantment: splashes a percentage of melee damage to other nearby monsters on hit.
 public class EnchantmentCleave implements Ench, EnchFromTable, DamageEventEnchant {
 
     public static final double[] DAMAGE_PERCENTAGES = new double[]{0.05, 0.10, 0.15, 0.20, 0.25, 0.30};

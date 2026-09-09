@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for a wall's connection height on one side (none/low/tall).
 public enum WallHeight implements State<WallHeight> {
     NONE, LOW, TALL;
 

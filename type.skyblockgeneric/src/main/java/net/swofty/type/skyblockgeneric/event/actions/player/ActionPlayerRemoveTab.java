@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.Collections;
 
+// Sends custom scoreboard teams between players so tab-list name prefixes stay accurate on spawn
 public class ActionPlayerRemoveTab implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

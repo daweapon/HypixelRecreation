@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.Half;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.StairsShape;
 import org.jetbrains.annotations.NotNull;
 
+// Typed BlockState accessor for a stair's facing, half, and corner shape properties.
 public class StairsState extends WaterloggedState {
 
     public StairsState(Block block) {

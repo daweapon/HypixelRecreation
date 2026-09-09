@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.warps.TravelScrollIslands;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for fast-traveling between unlocked islands via travel scrolls
 public class GUIFastTravel extends StatelessView {
     private static final int[] SLOTS = new int[]{
             10, 11, 12, 13, 14, 15, 16,

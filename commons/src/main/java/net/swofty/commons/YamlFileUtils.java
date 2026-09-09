@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// File-system helpers for discovering, loading, and copying YAML configuration files.
 public final class YamlFileUtils {
 
     /**

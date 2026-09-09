@@ -1,5 +1,6 @@
 package net.swofty.commons.skyblock.auctions;
 
+// Cyclable Auction House listing filters (show all / BIN only / auctions only).
 public enum AuctionsFilter {
     SHOW_ALL,
     BIN_ONLY,

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: notifies a player that one of their friends has come online.
 public final class FriendJoinNotificationEvent extends FriendResponseEvent {
     private static final Serializer<FriendJoinNotificationEvent> SERIALIZER =
             new JacksonSerializer<>(FriendJoinNotificationEvent.class);

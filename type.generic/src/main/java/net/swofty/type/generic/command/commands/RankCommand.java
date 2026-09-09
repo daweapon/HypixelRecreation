@@ -12,6 +12,7 @@ import net.swofty.type.generic.data.datapoints.DatapointRank;
 import net.swofty.type.generic.user.categories.Rank;
 
 @CommandParameters(labels = "setrank rank", description = "Rank command", usage = "/rank <player> <rank>", permission = Rank.STAFF, allowsConsole = true)
+// Staff command to set another player's rank.
 public class RankCommand extends HypixelCommand {
 
     @Override

@@ -7,6 +7,7 @@ import net.swofty.service.party.PartyCache;
 import java.util.UUID;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that reports whether a given player is currently in a party.
 public class IsPlayerInPartyEndpoint implements RedisMessageHandler<
         IsPlayerInPartyProtocol.IsPlayerInPartyMessage,
         IsPlayerInPartyProtocol.IsPlayerInPartyResponse> {

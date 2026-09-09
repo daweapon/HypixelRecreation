@@ -7,6 +7,7 @@ import net.swofty.commons.text.Text;
 
 import java.util.Locale;
 
+// Rarity tiers for collectibles, each with a display color and sort weight.
 @Getter
 public enum CollectibleRarity {
     COMMON("COMMON", NamedTextColor.GREEN, 1),

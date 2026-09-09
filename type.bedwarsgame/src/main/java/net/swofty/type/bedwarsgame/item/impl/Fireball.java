@@ -19,6 +19,7 @@ import net.swofty.type.bedwarsgame.shop.Currency;
 import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 import net.swofty.type.generic.utility.ScheduleUtility;
 
+// Shop item that launches a knockback fireball projectile and briefly slows the user.
 public class Fireball extends SimpleInteractableItem {
 
 	public Fireball() {

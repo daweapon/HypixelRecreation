@@ -14,6 +14,7 @@ import net.swofty.type.ravengardgeneric.user.RavengardPlayer;
         usage = "/crowns <amount>",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command that sets a player's crown currency balance, or shows their own balance.
 public class CrownsCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

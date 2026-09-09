@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// GUI for one page of a player's persistent storage
 public class GUIStoragePage extends StatelessView {
     private final int page;
 

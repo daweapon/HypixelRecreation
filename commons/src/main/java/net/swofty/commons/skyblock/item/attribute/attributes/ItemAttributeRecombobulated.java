@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute flagging whether an item has been upgraded with a Recombobulator 3000.
 public class ItemAttributeRecombobulated extends ItemAttribute<Boolean> {
     @Override
     public String getKey() {

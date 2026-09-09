@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// Loads furniture layouts (item/block display entities) from JSON files and spawns them into
+// the world at a given offset.
 public class Furniture {
 
 	private static final File FURNITURE_DIR = new File("./configuration/skyblock/furniture");

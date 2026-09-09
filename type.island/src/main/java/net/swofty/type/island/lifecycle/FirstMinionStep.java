@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleContext;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecyclePhase;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleStep;
 
+// Island lifecycle step that spawns the free starter Cobblestone Minion when a new Island is created.
 public class FirstMinionStep implements IslandLifecycleStep {
     @Override
     public IslandLifecyclePhase phase() {

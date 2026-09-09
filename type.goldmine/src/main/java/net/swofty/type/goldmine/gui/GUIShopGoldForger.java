@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
 import java.util.Map;
 
+// Shop GUI for the Gold Forger, selling gold gear and ingots in the Gold Mine.
 public class GUIShopGoldForger extends ShopView {
     public GUIShopGoldForger() {
         super("Gold Forger", DEFAULT);

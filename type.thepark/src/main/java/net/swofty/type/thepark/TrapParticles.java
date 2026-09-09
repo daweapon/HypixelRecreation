@@ -9,6 +9,7 @@ import org.jspecify.annotations.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+// Generates the outline particle effect shown around trap placement spots in The Park's jungle mission.
 public class TrapParticles {
 
 	public static final List<ParticlePacket> EDGE_PARTICLES = new ArrayList<>();

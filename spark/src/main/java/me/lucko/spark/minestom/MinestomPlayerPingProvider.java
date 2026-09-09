@@ -27,6 +27,7 @@ import net.minestom.server.entity.Player;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// Spark ping provider that reports each online player's latency, keyed by username.
 public final class MinestomPlayerPingProvider implements PlayerPingProvider {
     @Override
     public Map<String, Integer> poll() {

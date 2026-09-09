@@ -8,6 +8,8 @@ import net.swofty.type.skyblockgeneric.item.components.FishingRodPartComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
+// Bundles all the state (player, rod, bait/parts, region, hotspot buffs) needed to resolve what
+// a fishing cast catches.
 public record FishingContext(
     SkyBlockPlayer player,
     SkyBlockItem rod,

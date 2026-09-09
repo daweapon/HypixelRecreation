@@ -4,6 +4,7 @@ import net.swofty.anticheat.event.ListenerMethod;
 import net.swofty.anticheat.event.events.PlayerPositionUpdateEvent;
 import net.swofty.anticheat.flag.Flag;
 
+// Flags players who stop responding to anticheat ping requests, indicating a frozen or manipulated client.
 public class TimeoutPingPacketsFlag extends Flag {
     // This flag is triggered by the engine when ping packets timeout
     // We can add additional logic here for handling the timeout

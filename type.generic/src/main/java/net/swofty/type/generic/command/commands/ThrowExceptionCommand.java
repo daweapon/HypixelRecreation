@@ -5,6 +5,7 @@ import net.swofty.type.generic.command.HypixelCommand;
 import net.swofty.type.generic.user.categories.Rank;
 
 @CommandParameters(permission = Rank.STAFF, description = "Throws an exception for testing purposes", usage = "/throwexception", labels = "throwexception", allowsConsole = true)
+// Debug command that deliberately throws a RuntimeException, for exercising error handling/logging.
 public class ThrowExceptionCommand extends HypixelCommand {
 
 	@Override

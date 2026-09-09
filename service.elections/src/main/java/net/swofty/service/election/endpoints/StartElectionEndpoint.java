@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that opens a new mayoral election for a given year, storing candidates and initializing vote tallies.
 public class StartElectionEndpoint implements RedisMessageHandler
         <StartElectionProtocol.StartElectionMessage,
                 StartElectionProtocol.StartElectionResponse> {

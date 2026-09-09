@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.DoorHalf;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Hinge;
 
+// Placement rule for doors, placing the paired upper/lower halves and computing hinge side from cursor position.
 public class DoorPlacement extends PlacementRule {
 
     public DoorPlacement(Block block) {

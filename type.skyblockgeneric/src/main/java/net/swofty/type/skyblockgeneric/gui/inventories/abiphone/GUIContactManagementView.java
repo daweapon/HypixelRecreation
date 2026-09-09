@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.abiphone.AbiphoneNPC;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 
 
+// GUI for managing a single Abiphone contact, offering removal and navigation back to the contact list
 public final class GUIContactManagementView implements View<GUIContactManagementView.State> {
 
     @Override

@@ -8,6 +8,8 @@ import net.swofty.commons.protocol.Serializer;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
 import org.json.JSONObject;
 
+// Persists a player's Heart of the Mountain progress: XP/tier, mithril and gemstone powder
+// balances, and HOTM skill tokens earned/spent.
 public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMData> {
 	private static final Serializer<PlayerHOTMData> serializer = new Serializer<>() {
 		@Override

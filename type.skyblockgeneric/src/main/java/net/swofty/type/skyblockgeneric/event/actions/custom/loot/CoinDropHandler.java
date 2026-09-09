@@ -11,6 +11,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Awards coin drops for mob kills, boosted by the Scavenger enchantment and bestiary tier
 public class CoinDropHandler implements HypixelEventClass {
     BestiaryData bestiaryData = new BestiaryData();
 

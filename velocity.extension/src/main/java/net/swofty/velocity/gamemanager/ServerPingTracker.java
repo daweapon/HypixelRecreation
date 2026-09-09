@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Counts consecutive missed heartbeat pings per server, signalling when a server has exceeded its miss threshold.
 public final class ServerPingTracker {
     private final int missesBeforeRemoval;
     private final Map<UUID, Integer> misses = new ConcurrentHashMap<>();

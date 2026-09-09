@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Decorative Haymitch NPC, found in the Spider's Den.
 public class NPCHaymitch extends HypixelNPC {
     public NPCHaymitch() {
         super(new HumanConfiguration() {

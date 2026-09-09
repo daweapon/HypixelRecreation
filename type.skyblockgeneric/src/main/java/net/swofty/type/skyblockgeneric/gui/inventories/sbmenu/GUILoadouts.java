@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI listing a player's saved gear loadouts for selection and editing
 public class GUILoadouts implements StatefulView<GUILoadouts.LoadoutsState> {
     private static final int[] LOADOUT_SLOTS = {14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43};
     private static final String[] ARMOR_NAMES = {"Helmet", "Chestplate", "Leggings", "Boots"};

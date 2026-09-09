@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIEnchantmentTable;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Opens the enchantment table GUI when a player interacts with an enchanting table
 public class ActionEnchantmentTableClick implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

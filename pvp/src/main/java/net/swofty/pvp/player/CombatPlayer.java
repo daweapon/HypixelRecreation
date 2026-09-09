@@ -14,6 +14,7 @@ import net.minestom.server.potion.TimedPotion;
 
 import java.util.function.Function;
 
+// Player extension providing jump/knockback velocity helpers and client-side ground prediction for fair combat.
 public interface CombatPlayer {
     // Minestom methods
     TimedPotion getEffect(PotionEffect effect);

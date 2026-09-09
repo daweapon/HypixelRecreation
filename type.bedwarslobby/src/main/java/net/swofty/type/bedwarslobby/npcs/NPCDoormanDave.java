@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// The Slumber Hotel doorman NPC, greeting players and handling their interaction on click.
 public class NPCDoormanDave extends HypixelNPC {
 
 	public NPCDoormanDave() {

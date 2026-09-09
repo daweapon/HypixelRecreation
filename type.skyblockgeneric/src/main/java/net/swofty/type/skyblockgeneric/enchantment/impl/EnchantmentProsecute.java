@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Prosecute enchantment: increases damage dealt scaled by the target's remaining health
+// percentage; conflicts with Execute.
 public class EnchantmentProsecute implements Ench, EnchFromTable, EventBasedEnchant, ConflictingEnch {
 
     public static final double[] DAMAGE_BONUSES = new double[]{0.001, 0.002, 0.003, 0.004, 0.007, 0.01};

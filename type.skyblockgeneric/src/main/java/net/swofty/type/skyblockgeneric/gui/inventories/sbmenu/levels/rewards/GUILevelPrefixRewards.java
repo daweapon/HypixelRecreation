@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// GUI listing SkyBlock level-up rewards that unlock chat prefixes
 public class GUILevelPrefixRewards extends StatelessView {
     private static final int[] SLOTS = new int[]{
             19, 20, 21, 22, 23, 24, 25,

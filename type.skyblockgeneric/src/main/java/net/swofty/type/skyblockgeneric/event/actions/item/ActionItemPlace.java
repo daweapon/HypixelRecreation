@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.item.components.PlaceEventComponent;
 import net.swofty.type.skyblockgeneric.item.components.PlaceableComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Handles placing SkyBlock items as blocks, delegating to a custom place event or placeable component
 public class ActionItemPlace implements HypixelEventClass {
 
     @SneakyThrows

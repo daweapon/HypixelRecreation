@@ -7,6 +7,7 @@ import net.swofty.service.friend.PresenceStorage;
 import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that updates a player's presence and, on an online/offline transition, notifies their friends.
 public class UpdatePresenceEndpoint implements RedisMessageHandler<
         UpdatePresenceProtocol.UpdatePresenceMessage,
         UpdatePresenceProtocol.UpdatePresenceResponse> {

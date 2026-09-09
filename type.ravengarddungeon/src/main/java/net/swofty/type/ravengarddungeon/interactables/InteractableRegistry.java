@@ -16,6 +16,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 
+// Tracks all spawned dungeon interactables and drives the look-and-hold interaction channel (boss bar progress, open on completion).
 public final class InteractableRegistry {
     private static final double MAX_DISTANCE = 4.5;
     private static final int CHANNEL_TICKS = 18;

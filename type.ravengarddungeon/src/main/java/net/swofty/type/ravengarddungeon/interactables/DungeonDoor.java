@@ -11,6 +11,7 @@ import net.swofty.type.ravengarddungeon.config.RavengardDungeonConfig;
 import java.util.ArrayList;
 import java.util.List;
 
+// Interactable dungeon door: spawns door leaf/top displays from config objects and animates swinging open/closed, clearing barrier blocks while open.
 public final class DungeonDoor extends DungeonInteractable {
     private static final String LEAF_MODEL = "hypixel_ravengard:item/gameplay/doors/door_1";
     private static final String TOP_MODEL = "hypixel_ravengard:item/gameplay/doors/door_1_top";

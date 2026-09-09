@@ -12,6 +12,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+// A Bedwars team: tracks bed status, purchased upgrades, and active traps.
 @Getter
 public class BedWarsTeam extends SimpleGameTeam {
     private final TeamKey teamKey;

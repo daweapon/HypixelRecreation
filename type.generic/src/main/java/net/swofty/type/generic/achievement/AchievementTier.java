@@ -1,5 +1,6 @@
 package net.swofty.type.generic.achievement;
 
+// One tier (goal and point reward) of a multi-tier achievement.
 public record AchievementTier(int tier, int goal, int points) {
     public String getRomanNumeral() {
         return toRomanNumeral(tier);

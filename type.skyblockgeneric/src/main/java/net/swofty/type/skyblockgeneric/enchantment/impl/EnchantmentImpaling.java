@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Impaling enchantment: boosts damage dealt to aquatic-type mobs.
 public class EnchantmentImpaling implements Ench, EnchFromTable, EventBasedEnchant {
 
     public static final double[] DAMAGE_MULTIPLIERS = new double[]{5.0, 10.0, 15.0, 20.0, 30.0};

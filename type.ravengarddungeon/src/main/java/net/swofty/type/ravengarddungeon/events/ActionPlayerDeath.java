@@ -8,6 +8,7 @@ import net.swofty.type.generic.utility.ScheduleUtility;
 import net.swofty.type.ravengarddungeon.TypeRavengardDungeonLoader;
 import net.swofty.type.ravengarddungeon.user.RavengardDungeonPlayer;
 
+// Suppresses the default death chat message and eliminates the player from the dungeon game on death.
 public class ActionPlayerDeath implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)
     public void run(PlayerDeathEvent event) {

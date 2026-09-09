@@ -10,6 +10,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import org.tinylog.Logger;
 
+// Spawns a joining player into the empty configurator instance at their type-defined respawn point.
 public class ActionPlayerJoin implements HypixelEventClass {
 
 	@SneakyThrows

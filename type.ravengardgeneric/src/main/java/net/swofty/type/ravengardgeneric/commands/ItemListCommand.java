@@ -14,6 +14,7 @@ import net.swofty.type.ravengardgeneric.user.RavengardPlayer;
         usage = "/items [search]",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command that opens a browsable/searchable GUI listing every implemented Ravengard item.
 public class ItemListCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

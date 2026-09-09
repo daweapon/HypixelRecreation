@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+// Tablist module header for the Island's guests section.
 public class IslandGuestsModule extends TablistModule {
     @Override
     public List<TablistEntry> getEntries(HypixelPlayer player) {

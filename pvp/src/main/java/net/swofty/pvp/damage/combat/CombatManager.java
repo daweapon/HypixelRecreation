@@ -25,6 +25,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+// Tracks a player's combat state (in-combat timers, damage history) and builds vanilla-style death messages.
 @Getter
 public class CombatManager {
 	private static final Component BAD_RESPAWN_POINT_MESSAGE = Component.text("[")

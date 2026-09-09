@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisClient;
 import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.commons.redis.RedisMessageHandler;
 
+// Redis endpoint that broadcasts a player's request to view a chosen replay to all servers.
 public class ReplayChooseEndpoint implements RedisMessageHandler
 		<ChooseReplayProtocolObject.ChooseReplayMessage,
 			ChooseReplayProtocolObject.ChooseReplayResponse> {

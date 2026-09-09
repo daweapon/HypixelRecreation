@@ -8,6 +8,7 @@ import net.swofty.anticheat.math.Pos;
 
 import java.util.UUID;
 
+// Converts Minestom's client interact-entity packet into a UseEntityPacket.
 public class MinestomHandlerUseEntityPacket
         extends LoaderPacketHandler<ClientInteractEntityPacket> {
 

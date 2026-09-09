@@ -9,6 +9,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 
+// Hub GUI linking to the Quick Communications and enemy tracker purchase menus.
 public class GUITrackerAndCommunication extends StatelessView {
 
     @Override

@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
 
 @Getter
+// Fired when a SkyBlock block finishes breaking, carrying its drops and whether it was player-placed
 public class CustomBlockBreakEvent implements PlayerInstanceEvent {
     private final SkyBlockPlayer player;
     private final Material material;

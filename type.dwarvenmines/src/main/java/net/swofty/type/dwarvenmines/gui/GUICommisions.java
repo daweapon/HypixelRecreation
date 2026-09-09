@@ -22,6 +22,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI showing a player's active Dwarven Mines commissions and letting them claim completed rewards.
 public class GUICommisions extends HypixelInventoryGUI {
 
 	public GUICommisions() {

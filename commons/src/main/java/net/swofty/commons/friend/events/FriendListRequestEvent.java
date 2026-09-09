@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system event: requests a page of a player's friends list, optionally filtered to best friends only.
 public final class FriendListRequestEvent extends FriendEvent {
     private static final Serializer<FriendListRequestEvent> SERIALIZER =
             new JacksonSerializer<>(FriendListRequestEvent.class);

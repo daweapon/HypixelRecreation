@@ -8,6 +8,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import net.swofty.type.generic.collectibles.bedwars.BedWarsWoodSkinRuntimeService;
 import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 
+// Shop item for wood planks, giving the player's cosmetically-selected wood skin variant.
 public class WoodShopItem extends ShopItem {
 
     public WoodShopItem() {

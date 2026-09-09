@@ -9,6 +9,7 @@ import net.swofty.commons.ChatUtility;
 import java.util.ArrayList;
 import java.util.List;
 
+// Component-level text layout operations: flattening to styled runs, splitting into lines, centering, word-wrapping, and plain-text extraction.
 final class TextLayout {
 
     record Run(String text, Component special, Style style) {

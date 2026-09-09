@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.Serializer;
 import net.swofty.type.generic.data.Datapoint;
 import org.json.JSONObject;
 
+// Datapoint storing a player's preferred friend-list sort type and direction.
 public class DatapointFriendSort extends Datapoint<DatapointFriendSort.FriendSortData> {
     private static final Serializer<FriendSortData> serializer = new Serializer<>() {
         @Override

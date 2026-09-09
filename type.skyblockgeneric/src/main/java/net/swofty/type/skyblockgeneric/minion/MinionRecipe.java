@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Getter
+// Builds the crafting-shape ingredient map for upgrading a minion to a given tier number.
 public class MinionRecipe {
     private final Function<MinionRecipeData, Map> recipeFunction;
 

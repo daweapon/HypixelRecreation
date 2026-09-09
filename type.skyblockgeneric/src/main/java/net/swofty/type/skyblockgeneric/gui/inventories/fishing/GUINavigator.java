@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.v2.*;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI for traveling between fishing hub locations, gated by unlock progress
 public class GUINavigator extends StatelessView {
 
     @Override

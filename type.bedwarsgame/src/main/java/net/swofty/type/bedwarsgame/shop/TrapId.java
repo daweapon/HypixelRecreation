@@ -1,5 +1,6 @@
 package net.swofty.type.bedwarsgame.shop;
 
+// Identifiers for each purchasable Bedwars team trap type.
 public enum TrapId {
     BLINDNESS("blindness_trap"),
     COUNTER_OFFENSIVE("counter_offensive_trap"),

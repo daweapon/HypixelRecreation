@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
 import java.util.function.Consumer;
 
+// GUI for the Deep Caverns mine lift, letting players fast-travel between discovered mining zones.
 public class GUILiftOperator extends HypixelInventoryGUI {
 	public GUILiftOperator() {
 		super("Lift", InventoryType.CHEST_6_ROW);

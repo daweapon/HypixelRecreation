@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Redis endpoint that lists a player's stored replays as summaries.
 public class ReplayListEndpoint implements RedisMessageHandler<
         ReplayListProtocolObject.ListRequest,
         ReplayListProtocolObject.ListResponse> {

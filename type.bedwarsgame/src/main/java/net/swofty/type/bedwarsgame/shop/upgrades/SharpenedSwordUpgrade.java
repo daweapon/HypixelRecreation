@@ -15,6 +15,7 @@ import net.swofty.type.bedwarsgame.shop.TeamUpgradeTier;
 
 import java.util.List;
 
+// Team upgrade granting permanent Sharpness on all swords and axes.
 public class SharpenedSwordUpgrade extends TeamUpgrade {
 
 	public SharpenedSwordUpgrade() {

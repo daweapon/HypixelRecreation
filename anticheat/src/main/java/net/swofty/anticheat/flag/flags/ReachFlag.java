@@ -5,6 +5,7 @@ import net.swofty.anticheat.event.events.PlayerAttackEvent;
 import net.swofty.anticheat.flag.Flag;
 import net.swofty.anticheat.math.Pos;
 
+// Detects extended attack reach beyond vanilla's 3-block limit, with ping-based distance compensation.
 public class ReachFlag extends Flag {
     // Vanilla Minecraft reach is 3.0 blocks, with some tolerance for lag
     private static final double MAX_REACH = 3.1;

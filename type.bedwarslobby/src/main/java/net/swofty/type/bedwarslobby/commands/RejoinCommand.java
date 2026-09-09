@@ -16,6 +16,7 @@ import net.swofty.type.generic.user.categories.Rank;
         allowsConsole = false,
         labels = "rejoin"
 )
+// /rejoin command that reconnects a player to their active Bedwars game via the orchestrator.
 public class RejoinCommand extends HypixelCommand {
     private static final ProxyService ORCHESTRATOR = new ProxyService(ServiceType.ORCHESTRATOR);
 

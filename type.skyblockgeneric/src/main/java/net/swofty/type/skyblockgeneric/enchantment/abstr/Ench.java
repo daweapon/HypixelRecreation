@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// Base contract every enchantment implementation must satisfy: description, applicable levels,
+// item-group eligibility, and the (optional) static statistic bonuses and lore sources it grants.
 public interface Ench {
 
     String getDescription(int level);

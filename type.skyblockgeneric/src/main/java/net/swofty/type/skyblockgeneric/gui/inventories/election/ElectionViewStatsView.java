@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// GUI showing detailed vote tallies for the current mayoral election
 public class ElectionViewStatsView extends StatelessView {
 
     @Override

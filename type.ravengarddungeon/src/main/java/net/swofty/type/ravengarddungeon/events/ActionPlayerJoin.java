@@ -11,6 +11,7 @@ import net.swofty.type.generic.utility.ScheduleUtility;
 import net.swofty.type.ravengarddungeon.TypeRavengardDungeonLoader;
 import net.swofty.type.ravengarddungeon.user.RavengardDungeonPlayer;
 
+// On player connect, joins them into the dungeon game shortly after configuration, sending them back to the lobby if denied.
 public class ActionPlayerJoin implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.PLAYER, phase = EventPhase.GAMEPLAY)
     public void run(AsyncPlayerConfigurationEvent event) {

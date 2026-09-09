@@ -10,6 +10,8 @@ A 26.2 Minestom-based recreation of Hypixel with a properly abstracted, scalable
 
 ## Documentation
 
+For the commands implemented in this checkout, see the sorted [Commands reference](COMMANDS.md), including aliases, syntax, permissions, and source links.
+
 Full documentation is available at **[opensource.swofty.net](https://opensource.swofty.net)**
 
 - [Getting Started](https://opensource.swofty.net/docs/introduction)

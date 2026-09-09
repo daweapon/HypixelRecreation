@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecycle;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Registers all Island lifecycle steps (creation, load, and save) with the IslandLifecycle system.
 public final class IslandLifecycleSteps {
     private static boolean registered = false;
 

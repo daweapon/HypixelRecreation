@@ -14,6 +14,7 @@ import net.swofty.type.generic.leaderboard.LeaderboardService;
 
 import java.util.UUID;
 
+// Records persistent Bedwars stats (wins, kills, losses) to player data and leaderboards.
 public class BedWarsStatsRecorder {
 
 	public static void recordWin(BedWarsPlayer player, BedWarsGameType gameType) {

@@ -12,6 +12,7 @@ import spark.Response;
 
 import java.util.Map;
 
+// Admin panel HTTP endpoint that reports whether the caller's session cookie is authenticated.
 public class IsAuthenticatedEndpoint extends SkyBlockEndpoint {
     @Override
     public EndpointType getType() {

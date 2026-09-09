@@ -6,6 +6,7 @@ import net.minestom.server.item.component.EnchantmentList;
 import net.minestom.server.item.enchant.Enchantment;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Lucky Block reward that enchants the player's worn armor pieces with Thorns.
 public class ArmorSpikesLuckyReward extends LuckyReward {
     public ArmorSpikesLuckyReward() {
         super("Armor Spikes");

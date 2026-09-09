@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @Getter
+// Fired when a player's bestiary kill count for a mob changes
 public class BestiaryUpdateEvent implements PlayerInstanceEvent {
     private final SkyBlockPlayer player;
     private final BestiaryMob bestiaryMob;

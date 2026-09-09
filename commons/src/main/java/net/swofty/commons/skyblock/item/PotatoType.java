@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Getter
+// Enumerates Hot/Fuming Potato Book target categories (armor vs weapons) and the stat bonuses each grants.
 public enum PotatoType {
     ARMOR(List.of(
             "<7>When applied to armor, grants <a>+2<glyph:stat_defense>",

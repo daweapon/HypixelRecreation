@@ -6,6 +6,7 @@ import net.minestom.server.potion.PotionType;
 
 import java.util.List;
 
+// Maps a vanilla PotionType (e.g. Healing, Poison) to the Potion effects it grants, with optional legacy variants.
 public class CombatPotionType {
 	private final PotionType potionType;
 	private final List<Potion> effects;

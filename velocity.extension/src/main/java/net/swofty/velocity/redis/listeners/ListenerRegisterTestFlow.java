@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Redis handler that registers a new isolated test flow and its expected server configs with the TestFlowManager.
 public class ListenerRegisterTestFlow implements RedisMessageHandler<
         RegisterTestFlowProtocol.Request,
         RegisterTestFlowProtocol.Response> {

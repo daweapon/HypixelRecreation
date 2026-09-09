@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// NPC for Charlie in The Park's Birch Park, drives the Birch Logs collection questline.
 public class NPCCharlie extends HypixelNPC {
 
 	public NPCCharlie() {

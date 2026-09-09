@@ -19,6 +19,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+// Tracks in-progress replay recording sessions, finalizes them into MongoDB on end, and periodically evicts stale sessions.
 public class ReplaySessionManager {
 	private final ReplayDatabase database;
 	private final Map<UUID, RecordingSession> activeSessions = new ConcurrentHashMap<>();

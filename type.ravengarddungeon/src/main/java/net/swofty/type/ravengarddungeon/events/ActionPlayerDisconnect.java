@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.ravengarddungeon.TypeRavengardDungeonLoader;
 import net.swofty.type.ravengarddungeon.user.RavengardDungeonPlayer;
 
+// Notifies the dungeon game that a player has disconnected.
 public class ActionPlayerDisconnect implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.DISCONNECT)
     public void run(PlayerDisconnectEvent event) {

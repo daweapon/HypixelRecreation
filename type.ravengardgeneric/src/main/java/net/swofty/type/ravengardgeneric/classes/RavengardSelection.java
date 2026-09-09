@@ -7,6 +7,7 @@ import net.swofty.type.ravengardgeneric.user.RavengardPlayer;
 
 import java.util.List;
 
+// Handles a player choosing a Ravengard class: assigns it, equips their starter kit, and moves them to the main spawn.
 public final class RavengardSelection {
     public static final Pos MAIN_WORLD_SPAWN = new Pos(47.5, 61, 121.5, 180f, 0f);
 

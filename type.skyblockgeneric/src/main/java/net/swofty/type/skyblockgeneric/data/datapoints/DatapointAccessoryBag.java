@@ -19,6 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Persists a player's accessory bag: the items placed in each accessory slot and which
+// accessory types they've ever discovered.
 public class DatapointAccessoryBag extends SkyBlockDatapoint<DatapointAccessoryBag.PlayerAccessoryBag> {
     public static Serializer<DatapointAccessoryBag.PlayerAccessoryBag> serializer = new Serializer<>() {
         @Override

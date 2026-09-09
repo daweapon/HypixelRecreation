@@ -44,7 +44,13 @@ public final class IslandWorldStorage {
 
     private static PolarWorld templateWorld() {
         try {
-            return new PolarLoader(TEMPLATE_PATH).world();
+            PolarWorld template = new PolarLoader(TEMPLATE_PATH).world();
+            // The exported template includes overworld terrain outside the two starter islands.
+            var starterChunks = template.chunks().stream()
+                    .filter(chunk -> chunk.x() >= -1 && chunk.x() <= 0 && chunk.z() >= 0 && chunk.z() <= 2)
+                    .toList();
+            return new PolarWorld(template.version(), template.dataVersion(), template.compression(),
+                    template.minSection(), template.maxSection(), template.userData(), starterChunks);
         } catch (IOException e) {
             Logger.error("Failed to create island world", e);
             throw new RuntimeException("Failed to create island world", e);

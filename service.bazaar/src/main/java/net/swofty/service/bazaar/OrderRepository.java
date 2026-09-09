@@ -8,6 +8,7 @@ import org.bson.Document;
 import java.time.Instant;
 import java.util.UUID;
 
+// Persists bazaar limit orders to MongoDB and reloads them into BazaarMarket on startup.
 public class OrderRepository {
 
     public static void saveNew(LimitOrder o, String itemName) {

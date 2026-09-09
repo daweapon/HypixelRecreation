@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+// RavengardTypeLoader for the Ravengard lobby server: spawns lobby NPCs/decorations, music, and the advancement-menu detector tab.
 public class TypeRavengardLobbyLoader implements RavengardTypeLoader {
 
     // the tab that is used to detect when player opens the advancement menu

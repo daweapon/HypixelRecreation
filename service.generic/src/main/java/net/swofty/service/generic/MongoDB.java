@@ -3,6 +3,7 @@ package net.swofty.service.generic;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+// Generic contract for a MongoDB-backed key/value document accessor used by backend services.
 public interface MongoDB {
     @NotNull
     MongoDB connect(@NotNull String connectionString);

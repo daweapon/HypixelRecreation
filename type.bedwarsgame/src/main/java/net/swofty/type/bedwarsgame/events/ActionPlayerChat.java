@@ -20,6 +20,7 @@ import net.swofty.type.generic.user.categories.Rank;
 import java.util.ArrayList;
 import java.util.List;
 
+// Handles in-game Bedwars chat: routes messages by chat type (all/team/staff) and sanitizes input.
 public class ActionPlayerChat implements HypixelEventClass {
 
 	@PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

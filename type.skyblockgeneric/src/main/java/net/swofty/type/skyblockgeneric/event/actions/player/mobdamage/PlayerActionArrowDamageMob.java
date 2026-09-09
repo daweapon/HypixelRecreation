@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.utility.AttackService;
 
 import java.util.Map;
 
+// Computes and applies arrow damage when a player's shot arrow collides with a SkyBlock mob
 public class PlayerActionArrowDamageMob implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.ALL, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

@@ -15,6 +15,7 @@ import net.swofty.type.generic.user.categories.Rank;
     labels = "worldtime skipworldtime",
     usage = "/worldtime (tick)"
 )
+// Staff command to set the world time of the sender's current instance.
 public class SkipWorldTimeCommand extends HypixelCommand {
 
     @Override

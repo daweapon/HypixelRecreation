@@ -14,6 +14,7 @@ import spark.Response;
 import java.util.Map;
 import java.util.UUID;
 
+// Public API HTTP endpoint that returns a user's profile list, gated by API key and rate limiting.
 public class UserEndpoint extends SkyBlockEndpoint {
     @Override
     public EndpointType getType() {

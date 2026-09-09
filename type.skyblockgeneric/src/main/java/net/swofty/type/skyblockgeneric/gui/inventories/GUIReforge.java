@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// GUI for reforging an item, applying a rarity-based reforge cost via a cursor-drop interaction
 public class GUIReforge extends HypixelInventoryGUI {
     private static final Map<Rarity, Integer> COST_MAP = new HashMap<>();
     private final int[] borderSlots = {

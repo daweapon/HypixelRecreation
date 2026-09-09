@@ -30,6 +30,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
+// Defines each Bedwars lobby leaderboard hologram's stat type/position and renders its display lines.
 @Getter
 public enum BedWarsLeaderboardHologram {
 	LEVEL(BedwarsStatType.LEVEL, new Pos(-17, 68.6, -28)),

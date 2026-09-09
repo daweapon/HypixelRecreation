@@ -13,6 +13,8 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 
+// Counts hits per player-mob pair to trigger a Thunderbolt/Thunderlord lightning strike every
+// few hits, dealing bonus damage to the target.
 public class ThunderboltTracker {
 
     public static final double[] THUNDERBOLT_DAMAGE_PERCENTAGES = new double[]{0.04, 0.08, 0.12, 0.16, 0.20, 0.25, 0.30};

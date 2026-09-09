@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 
+// NPC for the Lazy Miner in the Gold Mine, drives the lost-pickaxe questline.
 public class NPCLazyMiner extends HypixelNPC {
 
     public NPCLazyMiner() {

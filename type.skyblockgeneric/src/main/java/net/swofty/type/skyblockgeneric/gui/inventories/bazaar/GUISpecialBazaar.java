@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.text.DecimalFormat;
 import java.time.Duration;
 
+// Restricted bazaar GUI shown to Ironman profiles, allowing only Booster Cookie purchases
 public class GUISpecialBazaar extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {

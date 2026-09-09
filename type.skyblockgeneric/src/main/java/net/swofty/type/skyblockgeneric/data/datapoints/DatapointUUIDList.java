@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// Persists a simple list of UUIDs as a comma-separated string, with add/remove/contains helpers.
 public class DatapointUUIDList extends SkyBlockDatapoint<List<UUID>> {
     public DatapointUUIDList(String key, ArrayList<UUID> value) {
         super(key, value, new Serializer<>() {

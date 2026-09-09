@@ -19,6 +19,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.List;
 
+// Collectible selection GUI for choosing an unlocked shopkeeper NPC skin.
 public class GUIShopkeeperSkins extends CollectibleSelectionView {
 
     private static final int[] PAGINATED_SLOTS_WITH_RANDOM = {

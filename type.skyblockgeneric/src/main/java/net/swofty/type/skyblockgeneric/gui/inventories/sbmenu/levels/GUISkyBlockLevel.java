@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// GUI showing the unlocks granted at one SkyBlock level
 public class GUISkyBlockLevel extends StatelessView {
     private static final Map<Integer, List<Integer>> SLOTS_MAP = new HashMap<>(
             Map.of(

@@ -28,6 +28,7 @@ import net.swofty.type.skyblockgeneric.utility.ItemPriceCalculator;
 import java.util.List;
 import java.util.UUID;
 
+// Paginated GUI listing items donatable to a given museum category
 public class GUIMuseumCategory extends HypixelPaginatedGUI<ItemType> {
     private final MuseumableItemCategory category;
 

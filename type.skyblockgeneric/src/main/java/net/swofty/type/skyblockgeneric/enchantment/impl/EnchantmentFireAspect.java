@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Fire Aspect enchantment: ignites hit enemies, dealing ongoing burn damage over time.
 public class EnchantmentFireAspect implements Ench, EnchFromTable, DamageEventEnchant {
 
     public static final int[] DURATION_SECONDS = new int[]{3, 4, 4};

@@ -15,6 +15,7 @@ import java.util.UUID;
         usage = "/formatname <name>",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command to look up a player's formatted/raw display name from their username.
 public class FormatNameCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

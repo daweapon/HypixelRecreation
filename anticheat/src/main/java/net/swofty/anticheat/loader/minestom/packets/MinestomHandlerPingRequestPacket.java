@@ -8,6 +8,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts between Minestom's ping packet and a RequestPingPacket for anticheat latency measurement.
 public class MinestomHandlerPingRequestPacket
         extends LoaderPacketHandler<PingPacket> {
 

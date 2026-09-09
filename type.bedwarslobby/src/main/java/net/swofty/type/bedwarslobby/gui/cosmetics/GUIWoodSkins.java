@@ -13,6 +13,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.List;
 
+// Collectible selection GUI for choosing an unlocked wood-block cosmetic skin.
 public class GUIWoodSkins extends CollectibleSelectionView {
 
     public GUIWoodSkins() {

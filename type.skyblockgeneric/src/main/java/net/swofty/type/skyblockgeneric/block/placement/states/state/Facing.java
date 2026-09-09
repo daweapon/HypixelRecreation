@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
 
+// Block state values for the six directions a block can face, with rotation and yaw/BlockFace conversion helpers.
 public enum Facing implements State<Facing> {
     SELF(0, 0, 0, null, 0),
     WEST(-1, 0, 0, BlockFace.WEST, 4),

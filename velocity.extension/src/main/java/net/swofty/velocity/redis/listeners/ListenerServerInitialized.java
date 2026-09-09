@@ -10,6 +10,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.UUID;
 
+// Redis handler that registers a newly-started backend server with GameManager and returns its assigned host/port.
 public class ListenerServerInitialized implements RedisMessageHandler<
         RegisterServerProtocol.Request,
         RegisterServerProtocol.Response> {

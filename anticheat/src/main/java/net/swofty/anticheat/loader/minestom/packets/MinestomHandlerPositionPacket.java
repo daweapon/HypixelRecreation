@@ -8,6 +8,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts between Minestom's position-only packet and a PositionPacket.
 public class MinestomHandlerPositionPacket
         extends LoaderPacketHandler<ClientPlayerPositionPacket> {
 

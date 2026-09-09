@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+// Item attribute storing the list of enchantments applied to an item.
 public class ItemAttributeEnchantments extends ItemAttribute<UnderstandableSkyBlockEnchantment.ItemEnchantments> {
 
     @Override

@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Placeable Lucky Block item that tracks placed blocks and grants a random reward when broken.
 public class LuckyBlockItem extends SimpleInteractableItem {
     private static final Tag<String> TIER_TAG = Tag.String("lucky_tier");
     private static final Tag<Boolean> PLACED_LUCKY_BLOCK_TAG = Tag.Boolean("placed_lucky_block");

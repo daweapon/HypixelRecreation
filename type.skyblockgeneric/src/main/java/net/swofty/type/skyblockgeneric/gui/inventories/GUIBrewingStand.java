@@ -31,6 +31,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// GUI for a placed brewing stand: manages ingredient/potion slots and their brewing animation
 public class GUIBrewingStand extends HypixelInventoryGUI implements RefreshingGUI {
 
     private static final int INGREDIENT_SLOT = 13;

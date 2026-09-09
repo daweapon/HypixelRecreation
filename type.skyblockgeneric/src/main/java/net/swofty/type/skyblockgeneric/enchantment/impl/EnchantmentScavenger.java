@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Scavenger enchantment: grants bonus coins per monster level on kill.
 public class EnchantmentScavenger implements Ench, EnchFromTable, HypixelEventClass {
     @Override
     public String getDescription(int level) {

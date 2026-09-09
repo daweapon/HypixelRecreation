@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.commons.redis.RedisClient;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that forwards a player's chosen game selection on to the hosting server.
 public class GameChooseEndpoint implements RedisMessageHandler
 		<ChooseGameProtocol.ChooseGameMessage,
 				ChooseGameProtocol.ChooseGameResponse> {

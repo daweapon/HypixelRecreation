@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
 
+// Generic option-picker GUI used for quick resource/team communication prompts.
 public class GUISelectAnOption extends StatelessView {
 
     private static final int[] RESOURCE_SLOTS = {10, 12, 14, 16};

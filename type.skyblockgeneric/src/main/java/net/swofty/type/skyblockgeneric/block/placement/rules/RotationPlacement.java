@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.IntegerState;
 
+// Placement rule that sets a 16-step rotation state from the placing player's yaw (e.g. signs, heads on the floor).
 public class RotationPlacement extends PlacementRule {
 
     private final IntegerState ROTATION = IntegerState.Of("rotation", 0, 0, 15);

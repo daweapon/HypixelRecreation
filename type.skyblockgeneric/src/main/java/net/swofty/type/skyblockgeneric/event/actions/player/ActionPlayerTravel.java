@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// Handles server-transfer portals (nether/end) and teleporting players through warp portals
 public class ActionPlayerTravel implements HypixelEventClass {
     public static List<UUID> delay = new ArrayList<>();
 

@@ -13,6 +13,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
 import java.util.Set;
 
+// Base class for a purchasable Bedwars team trap that triggers against approaching enemies.
 @Getter
 public abstract class Trap {
 	private final TrapId id;

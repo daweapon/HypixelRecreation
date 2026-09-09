@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.type.generic.achievement.AchievementData;
 import net.swofty.type.generic.data.Datapoint;
 
+// Datapoint storing a player's AchievementData (progress and tier tracking), serialized via Jackson.
 public class DatapointAchievementData extends Datapoint<AchievementData> {
     private static final JacksonSerializer<AchievementData> serializer = new JacksonSerializer<>(AchievementData.class);
 

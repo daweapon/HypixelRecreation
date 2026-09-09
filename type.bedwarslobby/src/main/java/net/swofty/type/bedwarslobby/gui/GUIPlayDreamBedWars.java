@@ -25,6 +25,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for queuing into the current rotating Dream Mode Bedwars game type.
 public class GUIPlayDreamBedWars extends StatelessView {
     private static final ProxyService ORCHESTRATOR = new ProxyService(ServiceType.ORCHESTRATOR);
     private static final String LUCKY_HEAD = "50d8f863e9b42653e642711ee8b854dd8f9463ef4bfcde7db9776daadb532b";

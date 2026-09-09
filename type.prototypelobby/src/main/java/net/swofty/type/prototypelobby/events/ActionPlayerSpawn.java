@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.prototypelobby.util.PrototypeLobbyMap;
 
+// Sends the Prototype Lobby's map image data to the player on spawn.
 public class ActionPlayerSpawn implements HypixelEventClass {
 
     @SneakyThrows

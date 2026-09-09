@@ -10,6 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 // this is named as PackSprite even though they are font glyphs as of now. I think they're going to change this at some point, so that's why I made it like this.
+// Enumerates the custom resource-pack font glyphs (GUI icons, stat symbols, mob-type icons) usable as Components.
 @AllArgsConstructor
 public enum PackSprite {
     // All things found in the font from hypixel_skyblock:gui/icons.png

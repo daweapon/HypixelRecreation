@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 
+// Records player arm-swing animations to the replay manager's entity lifecycle dispatcher.
 public class ActionPlayerArmSwing implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

@@ -13,6 +13,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import java.util.UUID;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Registers a proxy-side RedisMessageHandler onto the message bus under the proxy endpoint.
 public final class RedisHandlerRegistry {
 
     public static <T, R> void register(RedisMessageHandler<T, R> handler) {

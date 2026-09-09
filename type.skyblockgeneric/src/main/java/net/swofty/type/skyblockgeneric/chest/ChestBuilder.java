@@ -8,6 +8,8 @@ import net.swofty.type.skyblockgeneric.block.BlockType;
 import net.swofty.type.skyblockgeneric.block.SkyBlockBlock;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 
+// Places a chest block in the world (if needed) and constructs the matching Chest instance
+// (single or double) for it, with convenience item-setting methods.
 public class ChestBuilder {
     private final Instance instance;
     private final Point position;

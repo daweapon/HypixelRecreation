@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Blessing enchantment: improves treasure quality chance from fishing.
 public class EnchantmentBlessing implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

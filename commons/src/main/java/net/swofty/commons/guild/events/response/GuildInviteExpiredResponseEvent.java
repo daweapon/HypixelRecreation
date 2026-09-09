@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: notifies inviter and invitee that a pending guild invite expired.
 public class GuildInviteExpiredResponseEvent extends GuildResponseEvent {
     private UUID inviter;
     private UUID invitee;

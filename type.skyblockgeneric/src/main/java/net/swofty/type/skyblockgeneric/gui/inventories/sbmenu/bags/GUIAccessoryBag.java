@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+// GUI for a player's accessory bag, whose slot count grows with collection upgrades
 public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBagState> {
     private static final SortedMap<CustomCollectionAward, Integer> SLOTS_PER_UPGRADE = new TreeMap<>(Map.of(
             CustomCollectionAward.ACCESSORY_BAG, 3,

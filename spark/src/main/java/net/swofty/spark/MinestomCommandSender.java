@@ -10,6 +10,7 @@ import net.swofty.type.generic.user.categories.Rank;
 
 import java.util.UUID;
 
+// Adapts a Minestom CommandSender (player or console) to Spark's command sender abstraction, including staff-only permission checks.
 public class MinestomCommandSender extends AbstractCommandSender<CommandSender> {
     public MinestomCommandSender(CommandSender delegate) {
         super(delegate);

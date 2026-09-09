@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Informational GUI explaining Dwarven Mines mechanics like mithril, commissions, HOTM, and the Crystal Hollows entrance.
 public class GUIGuide extends HypixelInventoryGUI {
 
     public GUIGuide() {

@@ -6,6 +6,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for submitting a PartyAction command to the party service.
 public class SendPartyActionProtocol extends RedisProtocol<
         SendPartyActionProtocol.Request,
         SendPartyActionProtocol.Response> {

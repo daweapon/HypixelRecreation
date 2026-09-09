@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.abiphone.AbiphoneNPC;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 
 
+// GUI for managing a single Abiphone contact, offering confirmation-gated removal
 public class GUIContactManagement extends HypixelInventoryGUI {
 
 	private final SkyBlockItem abiphone;

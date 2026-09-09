@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Venomous enchantment: applies a stacking poison damage-over-time and slow debuff on melee hit.
 public class EnchantmentVenomous implements Ench, EnchFromTable, DamageEventEnchant {
 
     @Override

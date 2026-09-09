@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+// Reads and writes a Ravengard profile's fields (class, level, inventory, lock box, discovered regions, etc.) through the profile data API.
 public final class RavengardProfileStorage {
     private RavengardProfileStorage() {
     }

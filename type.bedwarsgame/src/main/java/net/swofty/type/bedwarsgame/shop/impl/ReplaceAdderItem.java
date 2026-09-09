@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Function;
 
+// Shop item that replaces an existing lower-tier item (e.g. sword) in the buyer's inventory.
 public class ReplaceAdderItem extends ShopItem {
 
 	private final Material replacementMaterial;

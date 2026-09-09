@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Low-level pub/sub message bus underlying the Redis RPC system: channel subscription, handler dispatch, and request/response and broadcast correlation.
 public final class RedisMessageBus {
     private static final Map<String, List<RegisteredHandler<?, ?>>> handlers = new ConcurrentHashMap<>();
     private static final Map<UUID, CompletableFuture<String>> pendingResponses = new ConcurrentHashMap<>();

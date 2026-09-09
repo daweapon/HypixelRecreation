@@ -14,6 +14,7 @@ import net.minestom.server.tag.Tag;
 import java.util.ArrayList;
 import java.util.List;
 
+// Registry that dispatches item-use/place/drop events to the matching registered SimpleInteractableItem.
 public class SimpleInteractableItemHandler {
     private final List<SimpleInteractableItem> items = new ArrayList<>();
 

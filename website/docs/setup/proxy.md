@@ -74,7 +74,7 @@ integrations:
     sentry-dsn: ''
 limbo:
     host-name: 127.0.0.1
-    port: 65535
+    port: 25565
 ```
 
 :::alert warning

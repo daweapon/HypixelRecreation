@@ -9,6 +9,7 @@ import net.swofty.service.party.PartyCache;
 import org.tinylog.Logger;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that dispatches an incoming PartyAction to the matching PartyCache handler method.
 public class PartyActionEndpoint implements RedisMessageHandler<Request, Response> {
 
     @Override
@@ -35,6 +36,10 @@ public class PartyActionEndpoint implements RedisMessageHandler<Request, Respons
                 case PartyAction.SwitchedServer a -> PartyCache.handleSwitchedServer(a);
                 case PartyAction.PlayerDisconnect a -> PartyCache.handlePlayerDisconnect(a);
                 case PartyAction.PlayerRejoin a -> PartyCache.handlePlayerRejoin(a);
+                case PartyAction.ChangeSize a -> PartyCache.handleChangeSize(a);
+                case PartyAction.ToggleAllInvite a -> PartyCache.handleToggleAllInvite(a);
+                case PartyAction.ToggleMute a -> PartyCache.handleToggleMute(a);
+                case PartyAction.KickOffline a -> PartyCache.handleKickOffline(a);
             }
             return Response.ok();
         } catch (Exception e) {

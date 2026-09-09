@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Decorative NPC for Einary, found in Jerry's Workshop.
 public class NPCEinary extends HypixelNPC {
 
 	public NPCEinary() {

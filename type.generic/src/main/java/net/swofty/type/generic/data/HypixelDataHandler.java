@@ -30,6 +30,7 @@ import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
+// The main account-level DataHandler for a player, holding rank, IGN, locale, and other cross-game datapoints.
 public class HypixelDataHandler extends DataHandler {
 
     protected HypixelDataHandler() { super(); }

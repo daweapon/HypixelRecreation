@@ -6,6 +6,7 @@ import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.service.replay.ReplayService;
 import org.tinylog.Logger;
 
+// Redis endpoint that loads a stored map's compressed data by its hash.
 public class ReplayMapLoadEndpoint implements RedisMessageHandler<
     ReplayMapLoadProtocolObject.MapLoadRequest,
     ReplayMapLoadProtocolObject.MapLoadResponse> {

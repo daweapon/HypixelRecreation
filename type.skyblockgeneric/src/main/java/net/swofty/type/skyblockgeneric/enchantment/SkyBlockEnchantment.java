@@ -6,6 +6,8 @@ import net.swofty.commons.skyblock.item.UnderstandableSkyBlockEnchantment;
 import java.util.ArrayList;
 import java.util.List;
 
+// A single enchantment-type-and-level pair applied to an item, convertible to/from its
+// wire-transferable UnderstandableSkyBlockEnchantment form.
 @Builder
 public record SkyBlockEnchantment(EnchantmentType type, int level) {
     public SkyBlockEnchantment(UnderstandableSkyBlockEnchantment enchantment) {

@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// Persists which fairy souls a player has collected and which have been exchanged for
+// Fairy Exchange levels.
 public class DatapointFairySouls extends SkyBlockDatapoint<DatapointFairySouls.PlayerFairySouls> {
     public static Serializer<PlayerFairySouls> serializer = new Serializer<>() {
 

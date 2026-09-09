@@ -4,6 +4,8 @@ import java.util.List;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
 
+// Config-driven definition of a fishing hotspot: where it can spawn, which medium/regions it
+// applies to, and the statistic buffs and sea creatures it offers while active.
 public record HotspotDefinition(
     String id,
     String displayName,

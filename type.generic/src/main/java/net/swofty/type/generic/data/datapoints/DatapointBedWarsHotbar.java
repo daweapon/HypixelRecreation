@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Datapoint storing a player's customized BedWars hotbar slot-to-item-type layout.
 public class DatapointBedWarsHotbar extends Datapoint<Map<Byte, DatapointBedWarsHotbar.HotbarItemType>> {
     public static Serializer<Map<Byte, DatapointBedWarsHotbar.HotbarItemType>> serializer = new Serializer<>() {
         @Override

@@ -32,6 +32,7 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Consumer;
 
+// Manages world/instance setup for a Bedwars match: bed clearing and shop NPC placement/recording.
 @RequiredArgsConstructor
 public class BedWarsWorldManager {
     private final BedWarsGame game;

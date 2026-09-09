@@ -12,6 +12,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.utility.GameCountCache;
 
+// NPC that shows live 4v4 queue population and opens the 4v4 play GUI on click.
 public class NPCFourFour extends HypixelNPC {
     public NPCFourFour() {
         super(new HumanConfiguration() {

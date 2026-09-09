@@ -15,6 +15,7 @@ import spark.Response;
 import java.util.List;
 import java.util.Map;
 
+// Admin panel HTTP endpoint that lists all issued public API keys.
 public class GetKeysEndpoint extends SkyBlockEndpoint {
     @Override
     public EndpointType getType() {

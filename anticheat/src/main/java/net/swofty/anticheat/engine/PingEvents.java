@@ -6,6 +6,7 @@ import net.swofty.anticheat.event.events.AnticheatPacketEvent;
 import net.swofty.anticheat.event.packet.PingResponsePacket;
 import net.swofty.anticheat.event.packet.SwoftyPacket;
 
+// Listens for ping response packets and relays them to the player for latency calculation.
 public class PingEvents extends AntiCheatListener {
     @ListenerMethod
     public void onPacketReceive(AnticheatPacketEvent event) {

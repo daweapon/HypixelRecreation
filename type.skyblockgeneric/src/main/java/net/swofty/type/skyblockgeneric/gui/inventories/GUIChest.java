@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.IntStream;
 
+// GUI backing a placeable storage chest, persisting its contents and playing open/close effects
 public class GUIChest extends HypixelInventoryGUI {
 
     private final Chest chest;

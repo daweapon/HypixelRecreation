@@ -14,6 +14,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+// GUI backing a Bedwars player's personal ender chest storage.
 public class GUIEnderChest implements StatefulView<GUIEnderChest.State> {
 
     @Override

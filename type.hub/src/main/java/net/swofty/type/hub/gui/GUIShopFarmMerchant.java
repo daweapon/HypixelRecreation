@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Farm Merchant NPC in the Hub, selling crops and basic farming tools.
 public class GUIShopFarmMerchant extends ShopView {
     public GUIShopFarmMerchant() {
         super("Farm Merchant", DEFAULT);

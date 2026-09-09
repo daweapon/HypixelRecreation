@@ -28,6 +28,7 @@ import net.minestom.server.event.server.ServerTickMonitorEvent;
 
 import java.util.UUID;
 
+// Spark tick reporter implementation that measures tick duration via Minestom's server tick monitor event.
 public final class MinestomTickReporter extends AbstractTickReporter {
     private final EventNode<Event> node = EventNode.all("sparkTickReporter-" + UUID.randomUUID());
 

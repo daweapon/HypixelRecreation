@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+// Tablist module listing online players in the Main Lobby, paginated across multiple module instances.
 public class MainLobbyPlayersOnlineModule extends TablistModule {
     public int page;
 

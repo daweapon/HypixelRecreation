@@ -54,6 +54,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+// Entry point that bootstraps the Bedwars lobby server type: map, parkour, holograms, and launch pads.
 public class TypeBedWarsLobbyLoader implements LobbyTypeLoader {
     public static BedWarsLobbyMap bedWarsLobbyMap = new BedWarsLobbyMap();
     public static LobbyParkourManager parkourManager;

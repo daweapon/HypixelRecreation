@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
+// Contract a specific game-type module (SkyBlock, BedWars, etc.) implements to plug into the generic server bootstrap.
 public interface HypixelTypeLoader {
     ServerType getType();
 

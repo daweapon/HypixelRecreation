@@ -8,6 +8,7 @@ import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.entity.damage.Damage;
 import org.jetbrains.annotations.Nullable;
 
+// Records a single damage instance taken by a player, including fall context, for death-message and combat tracking.
 public record CombatEntry(Damage damage, @Nullable String fallLocation, double fallDistance) {
 	
 	public String getMessageFallLocation() {

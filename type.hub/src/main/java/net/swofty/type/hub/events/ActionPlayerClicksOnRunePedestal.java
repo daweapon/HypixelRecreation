@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.hub.gui.GUIRunicPedestal;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Opens the Runic Pedestal GUI when a player interacts with the rune pedestal block in the Hub.
 public class ActionPlayerClicksOnRunePedestal implements HypixelEventClass {
 
 

@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Lethality enchantment: applies a stacking defense-reduction debuff to melee targets.
 public class EnchantmentLethality implements Ench, EnchFromTable, DamageEventEnchant {
 
     @Override

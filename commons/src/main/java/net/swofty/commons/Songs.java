@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.nio.file.Path;
 
 @Getter
+// Enumerates bundled NBS song files and their on-disk paths for in-game music playback.
 public enum Songs {
     ABSTRACT_RINGING(Path.of("./configuration/skyblock/songs/abstract_ringing.nbs")),
     A_SILENT_MEMOIR(Path.of("./configuration/skyblock/songs/a_silent_memoir.nbs")),

@@ -17,6 +17,7 @@ import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+// Standalone HTTP server that builds each known resource pack and serves it by content hash for clients to download.
 public class HypixelPackServer {
     private static final String DEFAULT_HOST = "0.0.0.0";
     private static final int DEFAULT_PORT = 7270;

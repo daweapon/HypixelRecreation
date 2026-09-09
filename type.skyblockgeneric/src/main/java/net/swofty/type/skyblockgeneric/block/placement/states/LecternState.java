@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.BooleanState
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import org.jetbrains.annotations.NotNull;
 
+// Typed BlockState accessor for a lectern's facing and has-book properties.
 public class LecternState extends BlockState {
 
     public LecternState(Block block) {

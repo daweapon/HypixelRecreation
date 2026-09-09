@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI listing crafting recipes tied to each slayer boss type
 public class GUIRecipeSlayers extends StatelessView {
 
     private static final int[] CATEGORY_SLOTS = {20, 21, 22, 23, 24};

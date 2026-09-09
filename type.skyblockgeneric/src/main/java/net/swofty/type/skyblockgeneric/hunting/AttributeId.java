@@ -4,6 +4,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.Locale;
 
+// A hunting attribute's short id (e.g. "C12"): a rarity letter prefix plus its number within that rarity.
 public record AttributeId(AttributeRarity rarity, int number) {
     public static AttributeId parse(String value) {
         if (value == null || value.length() < 2) throw new IllegalArgumentException("Invalid attribute id: " + value);

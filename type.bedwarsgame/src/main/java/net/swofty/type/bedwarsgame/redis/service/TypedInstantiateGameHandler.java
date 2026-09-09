@@ -14,6 +14,7 @@ import net.swofty.type.bedwarsgame.game.v2.BedWarsGame;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Redis handler that creates a new Bedwars game instance on request from the proxy/orchestrator.
 public class TypedInstantiateGameHandler implements RedisMessageHandler<Request, Response> {
 
     private static final InstantiateGamePushProtocol PROTOCOL = new InstantiateGamePushProtocol();

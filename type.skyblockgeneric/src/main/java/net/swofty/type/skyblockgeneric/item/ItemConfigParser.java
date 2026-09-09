@@ -445,6 +445,7 @@ public class ItemConfigParser {
 					yield new MuseumComponent(category, gameStage, donationXp, parent, mappedItemIds);
 				}
 				case "NOT_FINISHED_YET" -> new NotFinishedYetComponent();
+				case "BAZAAR_PLACEHOLDER" -> new BazaarPlaceholderComponent();
 				case "NEW_YEAR_CAKE" -> new NewYearCakeComponent();
 				case "LORE_UPDATE" -> {
 					boolean isAbsolute = safeConfig.getBoolean("is_absolute", false);

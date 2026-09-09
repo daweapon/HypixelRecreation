@@ -10,6 +10,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import java.util.List;
 import java.util.UUID;
 
+// Redis handler answering player-count lookups by network total, server type, or a specific server UUID.
 public class ListenerPlayerCount implements RedisMessageHandler<
         PlayerCountProtocol.Request,
         PlayerCountProtocol.Response> {

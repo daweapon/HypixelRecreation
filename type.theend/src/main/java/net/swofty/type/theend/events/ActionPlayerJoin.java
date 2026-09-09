@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// On player connect, spawns the player into the instance and sets their respawn point for this server type.
 public class ActionPlayerJoin implements HypixelEventClass {
 
     @SneakyThrows

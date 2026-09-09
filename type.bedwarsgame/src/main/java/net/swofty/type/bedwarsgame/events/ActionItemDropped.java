@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 
+// Records dropped-item entity spawns to the replay manager when a game is being recorded.
 public class ActionItemDropped implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.ALL, requireDataLoaded = false, isAsync = false)

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Detects mathematically impossible packet values, such as out-of-range pitch or NaN/infinite rotation.
 public class BadPacketsFlag extends Flag {
     // Track packet patterns per player
     private static final Map<UUID, PacketData> packetData = new HashMap<>();

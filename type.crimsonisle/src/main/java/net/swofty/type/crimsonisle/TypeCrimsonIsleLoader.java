@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// SkyBlockTypeLoader for the Crimson Isle server type: defines its spawn point, tablist, and events/NPCs.
 public class TypeCrimsonIsleLoader implements SkyBlockTypeLoader {
     @Override
     public ServerType getType() {

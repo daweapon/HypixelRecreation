@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Stores arbitrary key-value data per player UUID for use by custom anticheat integrations.
 public class PlayerDataRegistry {
     private final Map<UUID, Map<String, Object>> playerData = new ConcurrentHashMap<>();
 

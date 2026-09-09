@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Corruption enchantment: chance to summon a corrupted variant of a caught sea creature.
 public class EnchantmentCorruption implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

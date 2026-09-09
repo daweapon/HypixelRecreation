@@ -9,6 +9,7 @@ import net.swofty.type.bedwarsgame.item.SimpleInteractableItem;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// The default compass item that opens the tracker/communication menu on interact.
 public class CompassItem extends SimpleInteractableItem {
 
     public CompassItem() {

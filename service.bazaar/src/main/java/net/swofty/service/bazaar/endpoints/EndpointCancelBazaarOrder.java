@@ -10,6 +10,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import org.tinylog.Logger;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that cancels a player's bazaar order, removing it from both storage and the in-memory market.
 public class EndpointCancelBazaarOrder implements RedisMessageHandler<
         CancelMessage, CancelResponse> {
 

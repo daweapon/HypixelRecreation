@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// GUI for a placed minion: shows its fuel/storage slots and lets the player collect or pick it up
 public class GUIMinion extends HypixelInventoryGUI implements RefreshingGUI {
     private static final int[] SLOTS = new int[]{
             21, 22, 23, 24, 25,

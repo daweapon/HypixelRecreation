@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that lists a player's outstanding bazaar orders for a given profile.
 public class EndpointGetPendingOrders implements RedisMessageHandler<
         BazaarGetPendingOrdersProtocol.BazaarGetPendingOrdersMessage,
         BazaarGetPendingOrdersProtocol.BazaarGetPendingOrdersResponse> {

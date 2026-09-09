@@ -12,6 +12,7 @@ import net.swofty.service.generic.MongoDB;
 import org.bson.Document;
 import org.jspecify.annotations.NonNull;
 
+// MongoDB accessor for punishment records, keyed by player id.
 public record PunishmentDatabase(String playerId) implements MongoDB {
     public static MongoClient client;
     public static MongoDatabase database;

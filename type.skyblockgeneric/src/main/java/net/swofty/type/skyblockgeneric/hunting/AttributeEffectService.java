@@ -13,6 +13,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static net.swofty.type.skyblockgeneric.hunting.AttributeDefinition.*;
 
+// Computes the aggregate gameplay effects of a player's active hunting attributes: statistic
+// bonuses, mob-type damage/resistance modifiers, and hunter fortune-based shard drop amounts.
 public final class AttributeEffectService {
     private AttributeEffectService() {
     }

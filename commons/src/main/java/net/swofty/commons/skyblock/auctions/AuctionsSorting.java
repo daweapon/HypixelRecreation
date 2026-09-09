@@ -1,5 +1,6 @@
 package net.swofty.commons.skyblock.auctions;
 
+// Cyclable Auction House listing sort orders.
 public enum AuctionsSorting {
     HIGHEST_BID,
     LOWEST_BID,

@@ -15,6 +15,7 @@ import net.swofty.type.generic.user.categories.Rank;
         permission = Rank.DEFAULT,
         allowsConsole = false
 )
+// Command that lists a player's friends, paginated and optionally sorted by "best" status.
 public class FriendListCommand extends HypixelCommand {
 
     @Override

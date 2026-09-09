@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.event.custom.CalenderHourlyUpdateEvent;
 
+// Syncs every loaded player's world time to the SkyBlock calendar's hourly clock
 public class ActionChangeTimeCalender implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(CalenderHourlyUpdateEvent event) {

@@ -23,8 +23,14 @@ import java.util.UUID;
         @JsonSubTypes.Type(value = PartyBroadcast.MemberSwitchedServer.class, name = "MemberSwitchedServer"),
         @JsonSubTypes.Type(value = PartyBroadcast.MemberDisconnected.class, name = "MemberDisconnected"),
         @JsonSubTypes.Type(value = PartyBroadcast.MemberRejoined.class, name = "MemberRejoined"),
-        @JsonSubTypes.Type(value = PartyBroadcast.MemberDisconnectTimedOut.class, name = "MemberDisconnectTimedOut")
+        @JsonSubTypes.Type(value = PartyBroadcast.MemberDisconnectTimedOut.class, name = "MemberDisconnectTimedOut"),
+        @JsonSubTypes.Type(value = PartyBroadcast.SizeChanged.class, name = "SizeChanged"),
+        @JsonSubTypes.Type(value = PartyBroadcast.AllInviteToggled.class, name = "AllInviteToggled"),
+        @JsonSubTypes.Type(value = PartyBroadcast.MuteToggled.class, name = "MuteToggled"),
+        @JsonSubTypes.Type(value = PartyBroadcast.OfflineMembersKicked.class, name = "OfflineMembersKicked"),
+        @JsonSubTypes.Type(value = PartyBroadcast.Hijacked.class, name = "Hijacked")
 })
+// Sealed set of party state-change events broadcast out to affected players, each knowing who its participants are.
 public sealed interface PartyBroadcast {
 
     List<UUID> participants();
@@ -121,5 +127,36 @@ public sealed interface PartyBroadcast {
             }
             return participants;
         }
+    }
+
+    record SizeChanged(FullParty party, UUID setter, int size) implements PartyBroadcast {
+        @Override
+        public List<UUID> participants() { return party.getParticipants(); }
+    }
+
+    record AllInviteToggled(FullParty party, UUID setter, boolean enabled) implements PartyBroadcast {
+        @Override
+        public List<UUID> participants() { return party.getParticipants(); }
+    }
+
+    record MuteToggled(FullParty party, UUID setter, boolean muted) implements PartyBroadcast {
+        @Override
+        public List<UUID> participants() { return party.getParticipants(); }
+    }
+
+    record OfflineMembersKicked(FullParty party, UUID kicker, List<UUID> kicked) implements PartyBroadcast {
+        @Override
+        public List<UUID> participants() {
+            List<UUID> participants = new java.util.ArrayList<>(party.getParticipants());
+            for (UUID uuid : kicked) {
+                if (!participants.contains(uuid)) participants.add(uuid);
+            }
+            return participants;
+        }
+    }
+
+    record Hijacked(FullParty party, UUID hijacker, UUID oldLeader) implements PartyBroadcast {
+        @Override
+        public List<UUID> participants() { return party.getParticipants(); }
     }
 }

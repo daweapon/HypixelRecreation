@@ -13,6 +13,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 @Getter
+// Mutable state for one in-progress replay recording: game/map metadata, players/teams, and received data batches.
 public class RecordingSession {
 	private final UUID replayId;
 	private final String gameId;

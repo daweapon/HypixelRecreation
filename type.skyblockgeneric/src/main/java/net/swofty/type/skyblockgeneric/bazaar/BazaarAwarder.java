@@ -15,6 +15,8 @@ import org.tinylog.Logger;
 import java.text.DecimalFormat;
 import java.util.UUID;
 
+// Applies the effects of completed/refunded/expired bazaar transactions to a player: stores the
+// completed transaction record and sends the corresponding chat notifications.
 public class BazaarAwarder {
     private static final DecimalFormat FORMATTER = new DecimalFormat("#,###.##");
 

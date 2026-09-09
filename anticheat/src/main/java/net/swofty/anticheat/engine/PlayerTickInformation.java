@@ -6,6 +6,7 @@ import net.swofty.anticheat.math.Pos;
 import net.swofty.anticheat.math.Vel;
 
 @Getter
+// Snapshot of a player's position, velocity, and on-ground state for one tick, linked to adjacent ticks.
 public class PlayerTickInformation {
     private final Pos pos;
     private final Vel vel;

@@ -24,6 +24,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+// Coordinates mayoral elections with the remote election service: loading/syncing election
+// state, starting/resolving election cycles, casting and caching votes, and checking active perks.
 public class ElectionManager {
 
     private static final Gson GSON = new Gson();

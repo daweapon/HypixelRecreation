@@ -14,6 +14,7 @@ import net.swofty.type.generic.user.categories.Rank;
         usage = "/teleport",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command to teleport to a player or to given coordinates.
 public class TeleportCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

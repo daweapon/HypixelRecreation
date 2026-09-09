@@ -10,6 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+// Backend microservice that matchmakes players into game servers; periodically cleans up stale server/game state.
 public class OrchestratorService implements SkyBlockService {
 
 	static void main() {

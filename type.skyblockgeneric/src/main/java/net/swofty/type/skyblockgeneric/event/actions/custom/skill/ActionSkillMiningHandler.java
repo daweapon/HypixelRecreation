@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.SkillableMineComponent;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 
+// Grants mining-skill XP for blocks broken with a skillable mining tool
 public class ActionSkillMiningHandler implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

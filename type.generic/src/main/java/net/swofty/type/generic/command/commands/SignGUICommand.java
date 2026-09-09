@@ -14,6 +14,7 @@ import org.tinylog.Logger;
         usage = "/signgui <text>",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff test command that opens a sign GUI and echoes back what the player writes on it.
 public class SignGUICommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

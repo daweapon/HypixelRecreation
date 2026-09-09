@@ -2,6 +2,7 @@ package net.swofty.type.generic.collectibles;
 
 import net.swofty.type.generic.user.categories.Rank;
 
+// Describes what is needed to unlock a collectible: method, required rank/currency/cost, or a custom resolver.
 public record CollectibleUnlockRequirement(
     CollectibleUnlockMethod method,
     Rank requiredRank,

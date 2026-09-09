@@ -9,6 +9,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
+// In-memory store of players' online/server presence, keyed by UUID.
 public class PresenceStorage {
     private static final Map<UUID, PresenceInfo> presenceByUuid = new ConcurrentHashMap<>();
 

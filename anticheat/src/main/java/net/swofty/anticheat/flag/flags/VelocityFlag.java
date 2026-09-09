@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Detects knockback/anti-knockback hacks by comparing actual post-hit velocity against the expected knockback.
 public class VelocityFlag extends Flag {
     // Track expected velocity after knockback per player
     private static final Map<UUID, KnockbackData> expectedKnockback = new HashMap<>();

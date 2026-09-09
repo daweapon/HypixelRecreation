@@ -11,6 +11,8 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.UUID;
 
+// Subscribes to coop-linked profile datapoint changes and applies incoming updates to every
+// online player currently sharing that coop, keeping their in-memory datapoints in sync.
 public final class CoopSync {
 
     private CoopSync() {}

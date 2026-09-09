@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// NPC for Worker Xavier in The Park's Savanna Woodland, points players toward the Check on Melody mission.
 public class NPCWorkerXavier extends HypixelNPC {
 
 	public NPCWorkerXavier() {

@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.Directional;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.IntegerState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.RedstoneWireHeight;
 
+// Placement rule for redstone wire, computing per-side connection heights based on neighboring wire/blocks.
 public class RedstonePlacement extends PlacementRule {
 
     private final IntegerState POWER = IntegerState.Of("power", 0, 0, 15);

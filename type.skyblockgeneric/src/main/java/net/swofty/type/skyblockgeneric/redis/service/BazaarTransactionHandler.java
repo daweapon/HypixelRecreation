@@ -5,6 +5,7 @@ import net.swofty.commons.protocol.objects.bazaar.BazaarTransactionPushProtocol;
 import net.swofty.commons.protocol.objects.bazaar.BazaarTransactionPushProtocol.Request;
 import net.swofty.commons.protocol.objects.bazaar.BazaarTransactionPushProtocol.Response;
 import net.swofty.commons.skyblock.bazaar.BazaarTransaction;
+import net.swofty.commons.skyblock.bazaar.BuyOrderRefundTransaction;
 import net.swofty.commons.skyblock.bazaar.OrderExpiredBazaarTransaction;
 import net.swofty.commons.skyblock.bazaar.SuccessfulBazaarTransaction;
 import net.swofty.commons.redis.RedisMessageHandler;
@@ -43,6 +44,7 @@ public class BazaarTransactionHandler implements RedisMessageHandler<Request, Re
             return switch (transaction) {
                 case SuccessfulBazaarTransaction success -> handleSuccessfulTransaction(success);
                 case OrderExpiredBazaarTransaction expired -> handleExpiredTransaction(expired);
+                case BuyOrderRefundTransaction refund -> handleRefundTransaction(refund);
                 default -> {
                     Logger.error("Unknown transaction type: " + transaction.getClass().getSimpleName());
                     yield Response.failure("Unknown transaction type");
@@ -63,6 +65,9 @@ public class BazaarTransactionHandler implements RedisMessageHandler<Request, Re
                 ).fromJSON(data);
                 case "OrderExpiredBazaarTransaction" -> new OrderExpiredBazaarTransaction(
                         null, null, null, null, null, 0, 0, null
+                ).fromJSON(data);
+                case "BuyOrderRefundTransaction" -> new BuyOrderRefundTransaction(
+                        null, null, null, null, 0, null, null
                 ).fromJSON(data);
                 default -> {
                     Logger.error("Unknown transaction type: " + type);
@@ -110,6 +115,23 @@ public class BazaarTransactionHandler implements RedisMessageHandler<Request, Re
         SkyBlockPlayer owner = SkyBlockGenericLoader.getFromUUID(transaction.owner());
         if (owner != null && owner.getProfiles().getCurrentlySelected().equals(transaction.ownerProfile())) {
             ownerHandled = BazaarAwarder.processExpiredOrder(owner, transaction);
+            Logger.info("Owner " + transaction.owner() + " processed successfully: " + ownerHandled);
+        } else {
+            Logger.info("Owner " + transaction.owner() + " is offline or on different profile");
+        }
+
+        return new Response(true, ownerHandled, false, transaction.orderId().toString(), null);
+    }
+
+    private Response handleRefundTransaction(BuyOrderRefundTransaction transaction) {
+        Logger.info("Handling buy order refund for: " + transaction.itemName() +
+                " owner: " + transaction.owner() + " reason: " + transaction.reason());
+
+        boolean ownerHandled = false;
+
+        SkyBlockPlayer owner = SkyBlockGenericLoader.getFromUUID(transaction.owner());
+        if (owner != null && owner.getProfiles().getCurrentlySelected().equals(transaction.ownerProfile())) {
+            ownerHandled = BazaarAwarder.processRefundTransaction(owner, transaction);
             Logger.info("Owner " + transaction.owner() + " processed successfully: " + ownerHandled);
         } else {
             Logger.info("Owner " + transaction.owner() + " is offline or on different profile");

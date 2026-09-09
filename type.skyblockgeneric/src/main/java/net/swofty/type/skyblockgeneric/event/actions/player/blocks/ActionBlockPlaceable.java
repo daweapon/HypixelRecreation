@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PlaceableComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Delegates block placement to a placeable SkyBlock item's custom BlockPlaceable behavior
 public class ActionBlockPlaceable implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

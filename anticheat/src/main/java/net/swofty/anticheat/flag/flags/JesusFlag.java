@@ -8,6 +8,7 @@ import net.swofty.anticheat.math.Vel;
 import net.swofty.anticheat.world.Block;
 import net.swofty.anticheat.world.PlayerWorld;
 
+// Detects walking or floating on liquid surfaces (water-walk/Jesus hacks) by checking blocks beneath the player.
 public class JesusFlag extends Flag {
 
     @ListenerMethod

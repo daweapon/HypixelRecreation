@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: mutes a member (or the whole guild) in guild chat for a duration.
 public class GuildMuteRequestEvent extends GuildEvent {
     @NotNull
     private UUID muter;

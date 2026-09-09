@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing the price an item sold for at a Dark Auction.
 public class ItemAttributeDarkAuctionPrice extends ItemAttribute<Long> {
     @Override
     public String getKey() {

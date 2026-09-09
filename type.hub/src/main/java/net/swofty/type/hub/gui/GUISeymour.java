@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// GUI for Seymour the NPC in the Hub, selling the cheap, fancy, and elegant Tuxedo armor sets.
 public class GUISeymour extends HypixelInventoryGUI {
     private final List<SkyBlockItem> cheapTuxedoSet = List.of(
             new SkyBlockItem(ItemType.CHEAP_TUXEDO_CHESTPLATE),

@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Smelting Touch enchantment: automatically smelts broken blocks into their smelted form;
+// conflicts with Silk Touch.
 public class EnchantmentSmeltingTouch implements Ench, EnchFromTable, ConflictingEnch {
 
     @Override

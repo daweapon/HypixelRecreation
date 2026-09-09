@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Teleports non-staff players back to spawn if they linger too long outside any region
 public class ActionPlayerStrayTooFar implements HypixelEventClass {
     public static Map<UUID, Long> startedStray = new HashMap<>();
 

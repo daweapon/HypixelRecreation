@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 
 import java.util.List;
 
+// GUI listing an Abiphone's saved NPC contacts, letting the player call or manage each one
 public final class AbiphoneView extends PaginatedView<AbiphoneNPC, AbiphoneView.State> {
 
     private static final int[] PAGINATED_SLOTS = {

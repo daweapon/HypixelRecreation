@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Vampirism enchantment: heals the wielder a percentage of missing health on kill.
 public class EnchantmentVampirism implements Ench, EnchFromTable, KillEventEnchant {
 
     public static final double[] HEAL_PERCENTAGES = new double[]{0.01, 0.02, 0.03, 0.04, 0.05, 0.06};

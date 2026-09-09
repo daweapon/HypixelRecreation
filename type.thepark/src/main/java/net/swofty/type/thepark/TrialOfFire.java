@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Runs the Trial of Fire minigame in The Park's Dark Thicket, damaging players standing in campfires over time.
 public class TrialOfFire {
 
 	private static final Map<UUID, Integer> competingPlayers = new HashMap<>();
@@ -60,8 +61,8 @@ public class TrialOfFire {
 
 		// TODO: remove this
 		if (trial == Trial.II) {
-			sendMessage(player, "<c>Trials are not finished.");
 			player.notImplemented();
+			sendMessage(player, "<c>Trials are not finished.");
 			return;
 		}
 

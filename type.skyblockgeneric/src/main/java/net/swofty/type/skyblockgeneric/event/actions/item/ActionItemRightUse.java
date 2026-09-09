@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.InteractableComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Delegates right-click use to an item's interactable component
 public class ActionItemRightUse implements HypixelEventClass {
     @SneakyThrows
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

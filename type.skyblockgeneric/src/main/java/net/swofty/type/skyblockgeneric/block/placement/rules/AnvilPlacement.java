@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 
+// Placement rule for anvils: prevents placement/updates but rotates facing on place.
 public class AnvilPlacement extends PlacementRule {
 
     public AnvilPlacement(Block block) {

@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: notifies the guild and the kicked player that a member was removed.
 public class GuildMemberKickedResponseEvent extends GuildResponseEvent {
     private UUID kicker;
     private UUID kicked;

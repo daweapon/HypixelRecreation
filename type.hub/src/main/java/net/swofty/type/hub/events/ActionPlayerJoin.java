@@ -10,6 +10,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
+// Handles a player's initial configuration when joining the Hub, setting their spawn instance and respawn point.
 public class ActionPlayerJoin implements HypixelEventClass {
 
     @SneakyThrows

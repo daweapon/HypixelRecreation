@@ -32,6 +32,7 @@ import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Base projectile entity implementing custom vanilla-accurate physics, shooting, and block/entity collision handling.
 public class CustomEntityProjectile extends Entity {
 	private static final BoundingBox POINT_BOX = new BoundingBox(0, 0, 0);
 	private static final BoundingBox UNSTUCK_BOX = new BoundingBox(0.12, 0.6, 0.12);

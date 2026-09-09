@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that returns the current election's candidates along with their live vote counts and percentages.
 public class GetCandidatesEndpoint implements RedisMessageHandler
         <GetCandidatesProtocol.GetCandidatesMessage,
                 GetCandidatesProtocol.GetCandidatesResponse> {

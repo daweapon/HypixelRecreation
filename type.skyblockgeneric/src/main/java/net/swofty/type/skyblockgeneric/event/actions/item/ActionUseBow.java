@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.item.components.BowComponent;
 import net.swofty.type.skyblockgeneric.item.components.ItemRequirementsComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Fires a bow shot with vanilla charge-based power when the player releases the draw
 public class ActionUseBow implements HypixelEventClass {
     private static final double MIN_POWER = 0.1;
 

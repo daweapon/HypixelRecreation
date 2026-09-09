@@ -1,5 +1,6 @@
 package net.swofty.velocity.data;
 
+// Common CRUD contract implemented by the proxy's document-store-backed database wrappers.
 public interface MongoDB {
     MongoDB connect(String connectionString);
 

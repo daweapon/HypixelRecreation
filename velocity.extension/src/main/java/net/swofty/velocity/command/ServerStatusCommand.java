@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// "/serverstatus" command that lists all registered game servers grouped by type with basic status info.
 public class ServerStatusCommand implements SimpleCommand {
     @Override
     public void execute(Invocation invocation) {

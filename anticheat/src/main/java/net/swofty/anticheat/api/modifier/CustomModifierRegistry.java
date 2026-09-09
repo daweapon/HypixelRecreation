@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+// Holds third-party velocity/friction modifiers registered via AnticheatAPI for use during movement prediction.
 public class CustomModifierRegistry {
     private final List<VelocityModifier> customVelocityModifiers = new CopyOnWriteArrayList<>();
     private final List<FrictionModifier> customFrictionModifiers = new CopyOnWriteArrayList<>();

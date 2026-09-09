@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.hunting.AttributeRegistry;
 import net.swofty.type.skyblockgeneric.hunting.HuntrapService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI for a placed hunting trap, showing its catch countdown or the caught shard
 public class GUIHuntrap implements View<GUIHuntrap.State> {
     public record State(DatapointHunting.PlacedHuntrap trap) {
     }

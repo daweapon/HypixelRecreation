@@ -3,6 +3,7 @@ package net.swofty.commons;
 import lombok.Getter;
 
 @Getter
+// Enumerates every kind of backend server on the network and whether it belongs to SkyBlock.
 public enum ServerType {
 	SKYBLOCK_ISLAND(true),
 	SKYBLOCK_HUB(true),

@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// GUI for Jamie the NPC in the Hub who lets players claim a free Rogue Sword reward.
 public class GUIJamie extends HypixelInventoryGUI {
     public GUIJamie() {
         super("Claim Reward", InventoryType.CHEST_6_ROW);

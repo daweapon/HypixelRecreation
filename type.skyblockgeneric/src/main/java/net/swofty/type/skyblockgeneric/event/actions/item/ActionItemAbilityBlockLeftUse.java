@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.ability.RegisteredAbility;
 import net.swofty.type.skyblockgeneric.user.PlayerAbilityHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Triggers an item's block-left-click ability, handling its cooldown and resource cost
 public class ActionItemAbilityBlockLeftUse implements HypixelEventClass {
     @SneakyThrows
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

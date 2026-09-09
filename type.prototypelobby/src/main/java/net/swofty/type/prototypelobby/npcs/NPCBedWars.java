@@ -14,6 +14,7 @@ import java.util.List;
 
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 
+// NPC in the Prototype Lobby that shows live BedWars player count and sends players to the BedWars lobby.
 public class NPCBedWars extends HypixelNPC {
     private static List<UnderstandableProxyServer> cacheServers = new ArrayList<>();
     private static long lastCacheTime = 0;

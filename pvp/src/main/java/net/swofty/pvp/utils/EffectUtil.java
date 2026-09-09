@@ -12,6 +12,7 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.utils.PacketSendingUtils;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Utility for broadcasting a world event/particle effect packet to players within a given distance.
 public final class EffectUtil {
 
 	public static void sendNearby(@NotNull Instance instance, @NotNull WorldEvent effect,

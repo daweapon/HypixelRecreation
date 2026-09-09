@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Server type loader that configures the Galatea (Crystal Hollows) SkyBlock zone, including its NPCs, events, and tablist.
 public class TypeGalateaLoader implements SkyBlockTypeLoader {
     @Override
     public ServerType getType() {

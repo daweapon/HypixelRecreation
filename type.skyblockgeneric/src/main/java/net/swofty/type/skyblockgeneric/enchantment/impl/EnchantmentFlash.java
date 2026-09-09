@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Flash enchantment: grants bonus Fishing Speed.
 public class EnchantmentFlash implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

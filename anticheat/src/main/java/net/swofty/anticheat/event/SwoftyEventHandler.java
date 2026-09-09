@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+// Lightweight reflection-based event bus that dispatches events to registered @ListenerMethod handlers.
 public class SwoftyEventHandler {
     private static final HashMap<Class<?>, List<EventMethodEntry>> cachedEvents = new HashMap<>();
 

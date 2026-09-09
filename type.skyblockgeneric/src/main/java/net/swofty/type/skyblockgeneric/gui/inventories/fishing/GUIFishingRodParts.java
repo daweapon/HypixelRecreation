@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI for attaching/removing rod parts on a fishing rod, returning it to the player on close
 public class GUIFishingRodParts extends StatelessView {
 
     @Override

@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
 
+// Builds and owns the block/item/text display entities that represent a placed Huntrap in the
+// world (trap box, caught shard, status text, and click interaction).
 public final class HuntrapDisplay {
     private final List<Entity> entities = new ArrayList<>();
 

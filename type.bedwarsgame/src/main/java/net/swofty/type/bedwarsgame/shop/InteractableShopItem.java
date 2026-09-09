@@ -3,6 +3,7 @@ package net.swofty.type.bedwarsgame.shop;
 import net.swofty.type.bedwarsgame.item.SimpleInteractableItem;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Adapts a SimpleInteractableItem so it can be sold as a regular shop item.
 public class InteractableShopItem extends ShopItem {
     private final SimpleInteractableItem item;
 

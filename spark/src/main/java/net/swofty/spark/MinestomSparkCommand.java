@@ -18,6 +18,7 @@ import java.util.Arrays;
 
 /**
  * From <a href="https://github.com/lucko/spark/blob/891914f313ea5742e71b6a42135f5451e99ca516/spark-minestom/src/main/java/me/lucko/spark/minestom/MinestomSparkPlugin.java">lucko/spark</a>.
+ * Wires the "/spark" command into Minestom's command system, forwarding execution and tab-completion to the Spark platform.
  */
 final class MinestomSparkCommand extends Command implements CommandExecutor, SuggestionCallback {
     private final SparkPlatform platform;

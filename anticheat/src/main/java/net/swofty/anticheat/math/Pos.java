@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.DoubleUnaryOperator;
 
 @AllArgsConstructor
+// Immutable 3D position with yaw/pitch view, independent of any Minestom types, used throughout the anticheat.
 public final class Pos implements Point {
     private double x;
     private double y;

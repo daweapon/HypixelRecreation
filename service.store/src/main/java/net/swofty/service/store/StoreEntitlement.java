@@ -3,6 +3,7 @@ package net.swofty.service.store;
 import net.swofty.commons.protocol.objects.proxy.to.StorePurchaseFulfillmentProtocol;
 import org.bson.Document;
 
+// A single grant (item, rank, currency, etc.) awarded by a store purchase, with an optional duration.
 public record StoreEntitlement(String type, String key, long amount, Long durationDays) {
     public static StoreEntitlement fromDocument(Document document) {
         Number amount = document.get("amount", Number.class);

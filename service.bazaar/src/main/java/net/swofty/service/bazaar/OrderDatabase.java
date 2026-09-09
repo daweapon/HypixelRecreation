@@ -6,6 +6,7 @@ import com.mongodb.client.*;
 import org.bson.Document;
 import org.tinylog.Logger;
 
+// MongoDB connection holder for the bazaar orders collection.
 public class OrderDatabase {
     public static MongoClient client;
     public static MongoDatabase database;

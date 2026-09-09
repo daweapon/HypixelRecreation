@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 
+// Teleports players back to spawn if they fall out of the lobby world's bounds.
 public class LobbyPlayerMove implements HypixelEventClass {
 	private final Pos spawnPoint;
 

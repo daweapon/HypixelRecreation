@@ -8,6 +8,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import org.tinylog.Logger;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that dispatches an incoming FriendEvent to the matching FriendCache handler.
 public class FriendEventToServiceEndpoint implements RedisMessageHandler<
         SendFriendEventToServiceProtocol.SendFriendEventToServiceMessage,
         SendFriendEventToServiceProtocol.SendFriendEventToServiceResponse> {

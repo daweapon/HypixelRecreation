@@ -18,6 +18,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+// Singleton in-memory order book (buy/sell per item) that matches bazaar orders, tracks refunds, and expires stale orders.
 public class BazaarMarket {
     private static final BazaarMarket INSTANCE = new BazaarMarket();
     public static BazaarMarket get() { return INSTANCE; }

@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Getter
+// Persisted provenance record for a unique tracked item, logging every player who has owned it over time.
 public class TrackedItem {
     private final UUID itemUUID;
     private final long created;

@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+// Tablist module listing the Island's online co-op members.
 public class IslandMemberModule extends TablistModule {
 
     @Override

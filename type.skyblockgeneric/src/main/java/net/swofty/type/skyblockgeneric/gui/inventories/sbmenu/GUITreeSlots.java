@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// Renders the ASCII skill-tree progress diagram (HOTM/HOTF) for the loadout menu
 public class GUITreeSlots extends StatelessView {
     private static final List<Text> HOTM_TREE_ONE = List.of(
             Text.empty(),

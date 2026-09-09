@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: a member kicked another member from the guild for a given reason.
 public class GuildKickRequestEvent extends GuildEvent {
     @NotNull
     private UUID kicker;

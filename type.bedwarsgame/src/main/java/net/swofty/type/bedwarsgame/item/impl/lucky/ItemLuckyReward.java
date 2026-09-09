@@ -6,6 +6,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
 import java.util.function.Supplier;
 
+// Lucky Block reward that hands the opener a fixed or lazily-supplied item stack.
 public class ItemLuckyReward extends LuckyReward {
     private final Supplier<ItemStack> itemSupplier;
 

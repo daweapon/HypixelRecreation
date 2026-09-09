@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
+// Loader-agnostic representation of a client's hand-swing/animation packet.
 public class AnimationPacket extends SwoftyPacket {
     private final Hand hand;
 

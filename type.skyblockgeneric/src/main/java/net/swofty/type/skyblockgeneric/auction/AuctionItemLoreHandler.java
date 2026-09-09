@@ -17,6 +17,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
+// Builds the displayed lore lines for an auction house listing (item, seller, bid/BIN info,
+// coop-member notice, and remaining time) for a given viewing player.
 public record AuctionItemLoreHandler(AuctionItem auctionItem) {
     private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacySection();
 
@@ -88,10 +90,12 @@ public record AuctionItemLoreHandler(AuctionItem auctionItem) {
         if (player != null) {
             TextBody.Section viewer = lore.section(VIEWER, VIEWER_ORDER).separated();
             if (auctionItem.getOriginator().equals(player.getUuid())) {
-                viewer.line("<a>This is your own auction!");
+                viewer.line(auctionItem.getSellerProfile() != null
+                        && !auctionItem.getSellerProfile().equals(player.getSkyblockDataHandler().getCurrentProfileId())
+                        ? "<e>This auction belongs to another profile!" : "<a>This is your own auction!");
             } else {
-                CoopDatabase.Coop viewerCoop = CoopDatabase.getFromMember(player.getUuid());
-                if (viewerCoop != null && viewerCoop.members().contains(auctionItem.getOriginator())) {
+                CoopDatabase.Coop viewerCoop = CoopDatabase.getFromMemberProfile(player.getSkyblockDataHandler().getCurrentProfileId());
+                if (viewerCoop != null && auctionItem.getSellerProfile() != null && viewerCoop.memberProfiles().contains(auctionItem.getSellerProfile())) {
                     viewer.line("<a>This is a coop member's auction!");
                 }
             }

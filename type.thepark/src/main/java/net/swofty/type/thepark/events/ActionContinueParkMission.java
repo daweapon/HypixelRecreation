@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.thepark.TypeTheParkLoader;
 import net.swofty.type.thepark.npcs.NPCWorkerXavier;
 
+// Advances The Park's region-travel missions as a player moves between its sub-areas.
 public class ActionContinueParkMission implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// SkyBlockTypeLoader for the Dungeon Hub server type: defines its spawn point, tablist, and events/NPCs, and requires the item tracker service.
 public class TypeDungeonHubLoader implements SkyBlockTypeLoader {
 
     @Override

@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Arrays;
 import java.util.List;
 
+// Item attribute storing a pet's experience and computing its level from rarity-specific XP tables.
 public class ItemAttributePetData extends ItemAttribute<ItemAttributePetData.PetData> {
     @Override
     public String getKey() {

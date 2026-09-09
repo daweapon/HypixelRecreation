@@ -24,6 +24,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
+// In-memory cache of guild data plus all guild request handling logic: create, invite, kick, ranks, settings, chat, mutes, etc.
 public class GuildCache {
     private static final DateTimeFormatter LOG_DATE = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm z");
     private static final Cache<UUID, GuildData> guildCache = Caffeine.newBuilder()
@@ -161,6 +162,42 @@ public class GuildCache {
         GuildDatabase.mapPlayerToGuild(accepter, guild.getGuildId());
 
         GuildMemberJoinedResponseEvent response = new GuildMemberJoinedResponseEvent(guild, accepter);
+        sendEvent(response);
+    }
+
+    public static void handleJoinRequest(GuildJoinRequestEvent event) {
+        UUID joiner = event.getJoiner();
+        String guildName = event.getGuildName();
+
+        if (isInGuild(joiner)) {
+            sendErrorToPlayer(joiner, "<c>You must leave your current guild before joining another!");
+            return;
+        }
+
+        GuildData guild = GuildDatabase.getGuildByName(guildName);
+        if (guild == null) {
+            sendErrorToPlayer(joiner, "<c>No guild named {} exists!", guildName);
+            return;
+        }
+
+        if (!guild.isOpenJoin()) {
+            sendErrorToPlayer(joiner, "<c>That guild requires an invite to join - ask an officer to /guild invite you!");
+            return;
+        }
+
+        if (guild.isFull()) {
+            sendErrorToPlayer(joiner, "<c>That guild is full!");
+            return;
+        }
+
+        GuildMember newMember = new GuildMember(joiner, "Member", System.currentTimeMillis());
+        guild.getMembers().add(newMember);
+        log(guild, "<a>{}<7> joined", joiner);
+
+        persistGuild(guild);
+        GuildDatabase.mapPlayerToGuild(joiner, guild.getGuildId());
+
+        GuildMemberJoinedResponseEvent response = new GuildMemberJoinedResponseEvent(guild, joiner);
         sendEvent(response);
     }
 
@@ -528,6 +565,14 @@ public class GuildCache {
                 guild.setListedInFinder(!guild.isListedInFinder());
                 value = guild.isListedInFinder() ? "visible" : "hidden";
             }
+            case "openjoin" -> {
+                if (!rank.hasPermission(GuildPermission.MODIFY_SETTINGS)) {
+                    sendErrorToPlayer(changer, "<c>You do not have permission to modify settings!");
+                    return;
+                }
+                guild.setOpenJoin(!guild.isOpenJoin());
+                value = guild.isOpenJoin() ? "enabled" : "disabled";
+            }
             case "notifications" -> {
                 GuildMember member = guild.getMember(changer);
                 member.setNotificationsEnabled(!member.isNotificationsEnabled());
@@ -541,6 +586,69 @@ public class GuildCache {
             case "onlinemode" -> {
                 guild.setOnlineMode(!guild.isOnlineMode());
                 value = guild.isOnlineMode() ? "enabled" : "disabled";
+            }
+            case "rankcreate" -> {
+                if (!guild.getMasterUuid().equals(changer)) {
+                    sendErrorToPlayer(changer, "<c>Only the Guild Master can manage ranks!");
+                    return;
+                }
+                if (!guild.canAddCustomRank()) {
+                    sendErrorToPlayer(changer, "<c>Your guild already has the maximum of {} custom ranks!", GuildData.MAX_CUSTOM_RANKS);
+                    return;
+                }
+                if (value.isBlank() || value.length() > 16) {
+                    sendErrorToPlayer(changer, "<c>Rank names must be between 1 and 16 characters!");
+                    return;
+                }
+                if (guild.getRank(value) != null) {
+                    sendErrorToPlayer(changer, "<c>A rank named {} already exists!", value);
+                    return;
+                }
+                // Slot new custom ranks between Officer (priority 1) and Member (priority 100), in
+                // creation order, so promote/demote naturally walks through them by priority.
+                int priority = 2 + (int) guild.getRanks().stream().filter(r -> !r.isDefault()).count();
+                guild.getRanks().add(new GuildRank(value, priority, false, java.util.EnumSet.noneOf(GuildPermission.class)));
+            }
+            case "rankdelete" -> {
+                if (!guild.getMasterUuid().equals(changer)) {
+                    sendErrorToPlayer(changer, "<c>Only the Guild Master can manage ranks!");
+                    return;
+                }
+                GuildRank toDelete = guild.getRank(value);
+                if (toDelete == null || toDelete.isDefault()) {
+                    sendErrorToPlayer(changer, "<c>{} isn't a custom rank!", value);
+                    return;
+                }
+                guild.getRanks().remove(toDelete);
+                guild.getMembers().stream()
+                        .filter(member -> member.getRankName().equalsIgnoreCase(toDelete.getName()))
+                        .forEach(member -> member.setRankName("Member"));
+            }
+            case "rankpermission" -> {
+                if (!guild.getMasterUuid().equals(changer)) {
+                    sendErrorToPlayer(changer, "<c>Only the Guild Master can manage ranks!");
+                    return;
+                }
+                String[] parts = value.split(":", 2);
+                GuildRank target = parts.length == 2 ? guild.getRank(parts[0]) : null;
+                if (target == null) {
+                    sendErrorToPlayer(changer, "<c>Usage: /guild permissions <rank> <permission>");
+                    return;
+                }
+                if (target.getName().equals("Guild Master")) {
+                    sendErrorToPlayer(changer, "<c>The Guild Master rank always has every permission!");
+                    return;
+                }
+                GuildPermission permission;
+                try {
+                    permission = GuildPermission.valueOf(parts[1].toUpperCase());
+                } catch (IllegalArgumentException exception) {
+                    sendErrorToPlayer(changer, "<c>Unknown permission: {}", parts[1]);
+                    return;
+                }
+                boolean wasGranted = target.getPermissions().remove(permission);
+                if (!wasGranted) target.getPermissions().add(permission);
+                value = target.getName() + ":" + permission.name() + ":" + (wasGranted ? "revoked" : "granted");
             }
             default -> {
                 sendErrorToPlayer(changer, "<c>Unknown setting: {}", setting);

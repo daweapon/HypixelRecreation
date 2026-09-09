@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Captain Baha, greets players arriving at the Backwater Bayou by ship.
 public class NPCCaptainBaha extends HypixelNPC {
 
     public NPCCaptainBaha() {

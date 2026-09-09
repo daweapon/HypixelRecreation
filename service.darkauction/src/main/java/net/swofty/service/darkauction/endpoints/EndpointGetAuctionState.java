@@ -9,6 +9,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import java.util.List;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that returns a snapshot of the current Dark Auction state, if one is active.
 public class EndpointGetAuctionState implements RedisMessageHandler<
         GetAuctionStateProtocol.GetAuctionStateMessage,
         GetAuctionStateProtocol.GetAuctionStateResponse> {

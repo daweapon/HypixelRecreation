@@ -8,6 +8,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing which rune type and level, if any, an item has been infused with.
 public class ItemAttributeRuneInfusedWith extends ItemAttribute<ItemAttributeRuneInfusedWith.RuneData> {
 
     @Override

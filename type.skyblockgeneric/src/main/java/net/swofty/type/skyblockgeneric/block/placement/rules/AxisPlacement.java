@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Axis;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 
+// Placement rule that orients axis-based blocks (e.g. logs) according to the placed block face.
 public class AxisPlacement extends PlacementRule {
     public AxisPlacement(Block block) {
         super(block);

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Drives the "OneBlock" Bedwars game mode: periodically hands out random items from a pool.
 public class OneBlockManager {
     private static final int GAME_LENGTH_SECONDS = 5 * 60;
 

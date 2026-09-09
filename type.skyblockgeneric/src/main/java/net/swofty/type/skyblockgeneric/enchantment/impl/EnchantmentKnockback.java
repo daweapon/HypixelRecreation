@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Knockback enchantment: increases how far hit mobs are knocked back.
 public class EnchantmentKnockback implements Ench, EnchFromTable, DamageEventEnchant {
 
     public static final int[] KNOCKBACK_BLOCKS = new int[]{3, 6};

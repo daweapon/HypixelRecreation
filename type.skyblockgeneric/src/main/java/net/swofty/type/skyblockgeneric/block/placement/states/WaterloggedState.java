@@ -4,6 +4,7 @@ import net.minestom.server.instance.block.Block;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.BooleanState;
 import org.jetbrains.annotations.NotNull;
 
+// Base BlockState for any block that carries a waterlogged property.
 public class WaterloggedState extends BlockState {
     private final BooleanState waterlogged = BooleanState.Of("waterlogged", false);
 

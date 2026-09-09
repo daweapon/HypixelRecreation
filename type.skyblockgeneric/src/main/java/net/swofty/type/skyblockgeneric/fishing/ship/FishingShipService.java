@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.item.components.FishingShipPartComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Reads/updates a player's fishing ship state: installing ship parts and unlocking travel destinations.
 public final class FishingShipService {
 
     public static DatapointShipState.ShipState getState(SkyBlockPlayer player) {

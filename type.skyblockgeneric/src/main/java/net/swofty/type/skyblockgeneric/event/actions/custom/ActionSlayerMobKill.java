@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import net.swofty.type.skyblockgeneric.slayer.SlayerService;
 
+// Delegates mob-kill handling to the slayer service for slayer quest progress
 public class ActionSlayerMobKill implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(PlayerKilledSkyBlockMobEvent event) {

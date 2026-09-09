@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Quick Bite enchantment: reduces the time it takes for a fishing hook to get a bite.
 public class EnchantmentQuickBite implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

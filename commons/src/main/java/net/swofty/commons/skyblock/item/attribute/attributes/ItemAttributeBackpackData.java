@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// Item attribute storing the contents of a backpack item as a list of serialized SkyBlock items.
 public class ItemAttributeBackpackData extends ItemAttribute<ItemAttributeBackpackData.BackpackData> {
     @Override
     public String getKey() {

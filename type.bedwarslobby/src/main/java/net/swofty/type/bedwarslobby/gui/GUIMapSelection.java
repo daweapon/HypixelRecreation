@@ -35,6 +35,7 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 // TODO: order by favorite
+// Paginated GUI for picking a specific map to queue for a given Bedwars game type.
 public class GUIMapSelection extends StatefulPaginatedView<String, GUIMapSelection.State> {
 
 	private final BedWarsGameType gameType;

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Serializes a list of AuctionItems to/from a single JSON array wrapper.
 public class AuctionItemListSerializer implements Serializer<List<AuctionItem>> {
     private final AuctionItemSerializer<AuctionItem> auctionItemSerializer = new AuctionItemSerializer<>();
 

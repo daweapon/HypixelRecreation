@@ -44,6 +44,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// Loader that wires up The Park server type: spawn point, tablist, trap-placement mission entities, races, NPCs, and events.
 public class TypeTheParkLoader implements SkyBlockTypeLoader, RaceInstance {
 
 	public static List<LivingEntity> entities = new ArrayList<>();

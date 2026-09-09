@@ -3,6 +3,7 @@ package net.swofty.type.dwarvenmines.commission;
 import lombok.Getter;
 
 @Getter
+// Heart of the Mountain skill tiers, tracking the mining XP and rewards needed to progress in the Dwarven Mines.
 public enum HOTMTier {
     TIER_1(1, 0, 0, 1, 0, 35),
     TIER_2(2, 3_000, 3_000, 2, 0, 45),

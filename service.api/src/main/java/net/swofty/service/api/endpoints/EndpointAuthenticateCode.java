@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import org.jetbrains.annotations.Nullable;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that links an admin-panel auth code to the authenticating player, completing panel login.
 public class EndpointAuthenticateCode implements RedisMessageHandler<
         APIAuthenticateCodeProtocol.AuthenticateCodeMessage,
         APIAuthenticateCodeProtocol.AuthenticateCodeResponse> {

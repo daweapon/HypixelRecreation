@@ -9,6 +9,7 @@ import net.swofty.commons.ServerType;
 import net.swofty.velocity.gamemanager.GameManager;
 import net.swofty.velocity.gamemanager.TransferHandler;
 
+// "/lobby [game]" command that transfers the player to a default or named lobby destination.
 public class LobbyCommand implements SimpleCommand {
 
     @Override

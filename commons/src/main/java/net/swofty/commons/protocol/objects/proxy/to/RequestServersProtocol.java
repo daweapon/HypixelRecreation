@@ -5,6 +5,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for querying the proxy's server directory: all servers, by type, by UUID, or by player.
 public class RequestServersProtocol extends RedisProtocol<
         RequestServersProtocol.Request,
         RequestServersProtocol.Response> {

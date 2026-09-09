@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.InteractableComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Delegates left-click use to an item's interactable component
 public class ActionItemLeftUse implements HypixelEventClass {
 
     @SneakyThrows

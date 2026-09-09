@@ -10,6 +10,7 @@ import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 @Getter
 @AllArgsConstructor
+// Enumerates SkyBlock item rarity tiers with their display color, tooltip style, and whether they can be reforged.
 public enum Rarity {
     COMMON(NamedTextColor.WHITE, "hypixel_skyblock:common"),
     UNCOMMON(NamedTextColor.GREEN, "hypixel_skyblock:uncommon"),

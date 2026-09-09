@@ -20,6 +20,7 @@ import org.tinylog.Logger;
 import java.time.Duration;
 import java.util.List;
 
+// Team upgrade boosting island resource generation, unlocking an emerald generator at tier 3.
 public class ForgeUpgrade extends TeamUpgrade {
 	public ForgeUpgrade() {
 		super(

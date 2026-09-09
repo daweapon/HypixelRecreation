@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+// Registry of CatacombsFloorDefinitions per mode/floor, with the built-in default Normal and Master configurations.
 public record CatacombsRegistry(Map<CatacombsMode, Map<CatacombsFloor, CatacombsFloorDefinition>> floors) {
     public CatacombsRegistry {
         floors = Map.copyOf(floors);

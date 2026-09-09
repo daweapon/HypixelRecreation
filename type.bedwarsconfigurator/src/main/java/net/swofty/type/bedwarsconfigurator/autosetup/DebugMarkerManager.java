@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Spawns and clears visible armor-stand markers showing a player's in-progress autosetup positions.
 public class DebugMarkerManager {
 
     private static final Map<UUID, List<Entity>> playerMarkers = new HashMap<>();

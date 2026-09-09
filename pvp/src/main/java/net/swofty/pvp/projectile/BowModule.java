@@ -19,6 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.BiFunction;
 
 // https://gist.github.com/hapily04/82fe9bdd6ddd757664701ba2f45ac474
+// Wires up bow charge/release listeners that compute draw power and hand off shooting to a supplied projectile factory.
 public class BowModule {
     private static final Tag<Long> CHARGE_SINCE_TAG = Tag.Long("bow_charge_since").defaultValue(Long.MAX_VALUE);
     private static final Tag<Double> BOW_POWER = Tag.Double("bow_power").defaultValue(0.0);

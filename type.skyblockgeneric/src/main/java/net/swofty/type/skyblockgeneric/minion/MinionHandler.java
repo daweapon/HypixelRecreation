@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 
+// Drives the recurring tick loop that advances every active minion's action and collection.
 public record MinionHandler(Scheduler scheduler) {
     private static final int STEPS = 7;
 

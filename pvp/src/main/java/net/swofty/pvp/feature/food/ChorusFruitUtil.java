@@ -17,6 +17,7 @@ import net.minestom.server.world.DimensionType;
 import java.util.concurrent.ThreadLocalRandom;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Utility for chorus fruit's random short-range teleportation, including safe-landing spot search.
 public final class ChorusFruitUtil {
 
 	private static boolean randomTeleport(Entity entity, Pos to) {

@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Giant Killer enchantment: increases damage against targets with more max health than the wielder.
 public class EnchantmentGiantKiller implements Ench, EnchFromTable, EventBasedEnchant {
 
     public static final double[] DAMAGE_MULTIPLIERS = new double[]{0.1, 0.2, 0.3, 0.4, 0.6, 0.9, 1.2};

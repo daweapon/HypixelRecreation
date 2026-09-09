@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.List;
 
+// Backend microservice for SkyBlock mayor elections: candidates, voting, tallies, and resolution, backed by MongoDB.
 public class ElectionService implements SkyBlockService {
 
     public static void main(String[] args) {

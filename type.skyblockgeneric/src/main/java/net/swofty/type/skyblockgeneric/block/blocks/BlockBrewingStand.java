@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.block.impl.CustomSkyBlockBlock;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIBrewingStand;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Custom block behaviour for the brewing stand, opening the brewing GUI on interact.
 public class BlockBrewingStand implements CustomSkyBlockBlock, BlockInteractable {
 
     @Override

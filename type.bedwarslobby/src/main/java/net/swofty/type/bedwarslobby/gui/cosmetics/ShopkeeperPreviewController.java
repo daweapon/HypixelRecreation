@@ -23,6 +23,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Spawns and manages a locked-view preview entity when a player previews a shopkeeper skin.
 public final class ShopkeeperPreviewController {
 
     public static final Tag<Boolean> PREVIEW_LOCK_TAG = Tag.Boolean("bedwars_shopkeeper_preview_lock");

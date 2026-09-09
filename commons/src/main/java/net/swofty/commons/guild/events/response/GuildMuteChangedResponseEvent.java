@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: confirms a member's mute state (muted or unmuted) was changed.
 public class GuildMuteChangedResponseEvent extends GuildResponseEvent {
     private UUID muter;
     private String target;

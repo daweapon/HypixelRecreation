@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: promotes a guild member to the next rank up.
 public class GuildPromoteRequestEvent extends GuildEvent {
     @NotNull
     private UUID promoter;

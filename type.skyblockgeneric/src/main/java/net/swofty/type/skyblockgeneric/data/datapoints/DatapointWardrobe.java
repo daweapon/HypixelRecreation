@@ -12,6 +12,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// Persists a player's wardrobe: the armor sets stored in each slot, which slot is equipped,
+// and how many community-shared slots they've unlocked.
 public class DatapointWardrobe extends SkyBlockDatapoint<DatapointWardrobe.WardrobeData> {
     private static final Serializer<WardrobeData> SERIALIZER = new Serializer<>() {
         @Override

@@ -23,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for managing a single active bazaar order (view details, cancel, etc.)
 public class GUIBazaarOrderOptions extends HypixelInventoryGUI {
     private final BazaarConnector.BazaarOrder order;
     private static final DecimalFormat FORMATTER = new DecimalFormat("#,###.##");

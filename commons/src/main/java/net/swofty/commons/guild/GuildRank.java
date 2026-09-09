@@ -15,6 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+// A guild rank definition: its name, priority ordering, and granted permissions, with built-in defaults (Guild Master/Officer/Member).
 public class GuildRank implements Comparable<GuildRank> {
     private String name;
     private int priority;

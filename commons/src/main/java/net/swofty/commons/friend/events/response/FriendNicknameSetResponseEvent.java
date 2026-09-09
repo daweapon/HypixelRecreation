@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: confirms a friend's nickname was updated.
 public final class FriendNicknameSetResponseEvent extends FriendResponseEvent {
     private static final Serializer<FriendNicknameSetResponseEvent> SERIALIZER =
             new JacksonSerializer<>(FriendNicknameSetResponseEvent.class);

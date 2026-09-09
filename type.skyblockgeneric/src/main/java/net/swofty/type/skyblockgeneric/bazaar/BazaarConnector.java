@@ -19,6 +19,8 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
+// Per-player client for the remote Bazaar service: places/cancels orders, fetches item data and
+// statistics, performs instant buy/sell, and processes pending transactions over the proxy protocol.
 public class BazaarConnector {
     private final SkyBlockPlayer player;
     private final ProxyService bazaarService;

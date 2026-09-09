@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system event: a player denied an incoming friend request.
 public final class FriendDenyRequestEvent extends FriendEvent {
     private static final Serializer<FriendDenyRequestEvent> SERIALIZER =
             new JacksonSerializer<>(FriendDenyRequestEvent.class);

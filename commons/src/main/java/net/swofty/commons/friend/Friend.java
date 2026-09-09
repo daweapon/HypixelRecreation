@@ -10,6 +10,7 @@ import net.swofty.commons.protocol.Serializer;
 import java.util.UUID;
 
 @Getter
+// A single entry in a player's friends list: the friend's UUID, optional nickname, best-friend flag, and when they were added.
 public class Friend {
     private static final Serializer<Friend> SERIALIZER = new JacksonSerializer<>(Friend.class);
 

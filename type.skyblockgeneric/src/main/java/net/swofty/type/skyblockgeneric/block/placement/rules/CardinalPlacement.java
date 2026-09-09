@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import java.util.Arrays;
 import java.util.List;
 
+// Placement rule for multipart-connectable blocks (fences, panes, mushroom blocks, vines) that computes which cardinal sides connect to neighbors.
 public class CardinalPlacement extends PlacementRule {
 
     private static final List<String> cardinalPlacement = Arrays.asList(

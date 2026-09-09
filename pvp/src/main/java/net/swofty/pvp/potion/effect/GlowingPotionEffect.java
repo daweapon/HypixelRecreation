@@ -4,6 +4,7 @@ import net.swofty.pvp.utils.CombatVersion;
 import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.potion.PotionEffect;
 
+// Implements the Glowing potion effect, toggling the entity's glowing outline.
 public class GlowingPotionEffect extends CombatPotionEffect {
 	public GlowingPotionEffect() {
 		super(PotionEffect.GLOWING);

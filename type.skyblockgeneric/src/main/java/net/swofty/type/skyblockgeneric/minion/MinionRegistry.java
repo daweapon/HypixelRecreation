@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.minion.minions.mining.*;
 
 import java.util.Arrays;
 
+// Registry mapping every minion type to its implementation class and crafted ItemType, with lookup/instantiation helpers.
 public enum MinionRegistry {
     COBBLESTONE(MinionCobblestone.class, ItemType.COBBLESTONE_MINION),
     COAL(MinionCoal.class, ItemType.COAL_MINION),

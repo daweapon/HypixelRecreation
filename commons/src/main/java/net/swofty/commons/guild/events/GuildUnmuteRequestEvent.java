@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: lifts an existing mute on a guild member.
 public class GuildUnmuteRequestEvent extends GuildEvent {
     @NotNull
     private UUID actor;

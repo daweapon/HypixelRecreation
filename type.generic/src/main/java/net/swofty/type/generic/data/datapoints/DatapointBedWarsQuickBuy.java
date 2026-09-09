@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+// Datapoint storing a player's BedWars quick-buy menu configuration.
 public class DatapointBedWarsQuickBuy extends Datapoint<DatapointBedWarsQuickBuy.PlayerQuickBuy> {
     public static Serializer<PlayerQuickBuy> serializer = new Serializer<>() {
         @Override

@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 
+// A standalone chest block whose contents are stored as a block tag and loaded/saved on demand.
 public class SingleChest implements Chest {
 
     private static final Tag<@NotNull List<ItemStack>> ITEMS_TAG = Tag.ItemStack("configuration/skyblock/items").list();

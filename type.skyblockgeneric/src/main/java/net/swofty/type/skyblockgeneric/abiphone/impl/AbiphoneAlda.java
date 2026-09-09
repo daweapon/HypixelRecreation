@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.gui.inventories.shop.GUIShopAlda;
 
 import java.util.List;
 
+// Abiphone contact for Alda, who opens her Abiphone shop GUI when called.
 public class AbiphoneAlda extends AbiphoneNPC {
 
 	public AbiphoneAlda() {

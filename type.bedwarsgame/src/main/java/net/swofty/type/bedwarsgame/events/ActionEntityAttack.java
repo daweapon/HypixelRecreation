@@ -12,6 +12,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 
+// Guards attacks in Bedwars: blocks hits on NPCs/teammates and applies lucky combat effects.
 public class ActionEntityAttack implements HypixelEventClass {
 
 	@PhasedEvent(node = EventNodes.ALL, requireDataLoaded = false)

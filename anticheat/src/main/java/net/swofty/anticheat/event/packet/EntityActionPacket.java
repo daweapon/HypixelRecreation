@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
+// Loader-agnostic representation of a client's entity-action packet (sneak, sprint, elytra, horse jump, etc.).
 public class EntityActionPacket extends SwoftyPacket {
     private final Action action;
     private final int jumpBoost;

@@ -14,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// Custom primed TNT entity with a manual fuse/velocity tick and explosion on detonation.
 public class TntEntity extends Entity {
 	private final Entity causingEntity;
 

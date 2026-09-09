@@ -11,6 +11,7 @@ import java.util.Locale;
 import static net.kyori.adventure.text.format.NamedTextColor.*;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Static catalog of BedWars prestige schemes, stars, and brackets (color styles, materials, level requirements).
 public final class BedWarsPrestigeDefinitions {
 
     public static final String DEFAULT_SCHEME_ID = "prestige_scheme_diamond";

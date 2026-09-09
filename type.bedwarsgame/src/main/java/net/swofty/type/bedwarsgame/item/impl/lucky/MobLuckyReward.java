@@ -17,6 +17,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Lucky Block reward that spawns one or more named mobs, optionally hostile, near the opener.
 public class MobLuckyReward extends LuckyReward {
     private static final Duration MOB_DESPAWN = Duration.ofSeconds(75);
 

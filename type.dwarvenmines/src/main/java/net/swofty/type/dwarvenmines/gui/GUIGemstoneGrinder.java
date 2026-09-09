@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// GUI for the Dwarven Mines Gemstone Grinder, letting players apply or remove gemstones on an item.
 public class GUIGemstoneGrinder extends HypixelInventoryGUI {
     private final static int[] PRE_SLOTS = {28, 29, 30, 31, 32, 33, 34};
     private static final Map<Integer, int[]> SLOTS = new HashMap<>(Map.of(

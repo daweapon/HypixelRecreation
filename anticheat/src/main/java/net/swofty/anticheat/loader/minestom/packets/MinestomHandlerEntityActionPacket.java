@@ -7,6 +7,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts Minestom's client entity-action packet into an EntityActionPacket.
 public class MinestomHandlerEntityActionPacket
         extends LoaderPacketHandler<ClientEntityActionPacket> {
 

@@ -10,6 +10,7 @@ import net.swofty.type.bedwarsgame.shop.ShopItem;
 import net.swofty.type.bedwarsgame.shop.TeamUpgradeId;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Shop item that equips a fixed boots/leggings armor tier on purchase.
 public class ArmorShopItem extends ShopItem {
 
 	private final Material boots;

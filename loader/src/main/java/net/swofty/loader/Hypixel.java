@@ -47,6 +47,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 
+// Server process entry point: parses launch args, bootstraps Minestom, discovers and initializes the matching
+// HypixelTypeLoader, registers Redis proxy/service handlers, and manages proxy registration and heartbeat monitoring.
 public class Hypixel {
     @Getter
     @Setter

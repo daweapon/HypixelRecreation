@@ -7,6 +7,7 @@ import net.swofty.anticheat.math.Pos;
 import java.util.UUID;
 
 @Getter
+// Loader-agnostic representation of a client's interact/attack-entity packet.
 public class UseEntityPacket extends SwoftyPacket {
     private final int entityId;
     private final Pos targetPosition;

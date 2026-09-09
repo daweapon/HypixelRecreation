@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+// Central Redis handler for backend-server-initiated player actions: transfers, teleports, limbo, messaging, and status lookups.
 public class ListenerPlayerHandler implements RedisMessageHandler<
         PlayerHandlerProtocol.Request,
         PlayerHandlerProtocol.Response> {
@@ -171,7 +172,7 @@ public class ListenerPlayerHandler implements RedisMessageHandler<
                     new TeleportProtocol(),
                     new TeleportProtocol.Request(uuid.toString(),
                         x.doubleValue(), y.doubleValue(), z.doubleValue(),
-                        yaw.floatValue(), pitch.floatValue())).join();
+                        yaw.floatValue(), pitch.floatValue(), null)).join();
             }
             case EVENT -> {
                 if (potentialServer.isEmpty()) {

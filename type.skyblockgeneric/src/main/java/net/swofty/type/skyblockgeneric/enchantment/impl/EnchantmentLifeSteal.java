@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Life Steal enchantment: heals the wielder a percentage of max health per hit on a mob; conflicts
+// with Drain and Mana Steal.
 public class EnchantmentLifeSteal implements Ench, EnchFromTable, DamageEventEnchant, ConflictingEnch {
 
     public static final double[] HEAL_PERCENTAGES = new double[]{0.005, 0.01, 0.015, 0.02, 0.025};

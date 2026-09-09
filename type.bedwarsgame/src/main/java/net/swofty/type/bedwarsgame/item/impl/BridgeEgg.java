@@ -24,6 +24,7 @@ import net.swofty.type.generic.utility.ScheduleUtility;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Shop item that throws an egg leaving a wool bridge in its trail.
 public class BridgeEgg extends SimpleInteractableItem {
 	public BridgeEgg() {
 		super("bridge_egg", new ShopData("Bridge Egg", "This egg creates a bridge in its trail\nafter being thrown.",

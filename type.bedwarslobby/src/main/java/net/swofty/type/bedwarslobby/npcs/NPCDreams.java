@@ -19,6 +19,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+// NPC advertising the current rotating Dream Mode, with cached player counts, opening its play GUI on click.
 public class NPCDreams extends HypixelNPC {
 	private static final List<UnderstandableProxyServer> cacheServers = new ArrayList<>();
 	private static long lastCacheTime = 0;

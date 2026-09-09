@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: notifies the original requester that their friend request was denied.
 public final class FriendDeniedResponseEvent extends FriendResponseEvent {
     private static final Serializer<FriendDeniedResponseEvent> SERIALIZER =
             new JacksonSerializer<>(FriendDeniedResponseEvent.class);

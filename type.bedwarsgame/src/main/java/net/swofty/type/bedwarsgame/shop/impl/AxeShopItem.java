@@ -9,6 +9,7 @@ import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 
 import java.util.List;
 
+// Tiered upgradeable axe shop item that downgrades one tier on death.
 public class AxeShopItem extends UpgradeableShopItem {
 
     public static final Tag<Integer> AXE_UPGRADE_TAG = Tag.Integer("axe_upgrade");

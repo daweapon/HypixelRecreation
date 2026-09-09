@@ -16,6 +16,7 @@ import net.swofty.type.generic.utility.ScheduleUtility;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperience;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Builds and assigns the scoreboard team that renders a player's SkyBlock level in their nametag
 public class ActionAddSkyBlockXPToNametag implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

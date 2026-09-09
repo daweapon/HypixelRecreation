@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that returns the current election data (with votes stripped and live tallies attached) as JSON.
 public class GetElectionDataEndpoint implements RedisMessageHandler
         <GetElectionDataProtocol.GetElectionDataMessage,
                 GetElectionDataProtocol.GetElectionDataResponse> {

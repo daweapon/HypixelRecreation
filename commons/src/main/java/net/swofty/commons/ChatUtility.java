@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Pixel-width text measurement and centering/wrapping utilities based on Minecraft's default chat font metrics.
 public final class ChatUtility {
 
 

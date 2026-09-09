@@ -11,12 +11,15 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+// Tracks the in-game SkyBlock date/time (year/month/day/hour) and fires calendar events as time
+// elapses, plus helpers for looking up upcoming event occurrences.
 public final class SkyBlockCalendar {
     private static final String DAY_SYMBOL = "☀";
     private static final String NIGHT_SYMBOL = "☽";
@@ -118,44 +121,15 @@ public final class SkyBlockCalendar {
     public record EventInfo(long timeUntilBegin, Duration duration, int year) {}
 
     public static Map<EventInfo, CalendarEvent> getEventsWithDurationUntil(int amount) {
-        Map<EventInfo, CalendarEvent> result = new LinkedHashMap<>();
-        long currentElapsed = getElapsed();
-        int currentYear = getYear();
+        return getEventsWithDurationUntil(amount, false);
+    }
 
-        int foundEvents = 0;
-        int yearsAhead = 0;
-
-        while (foundEvents < amount) {
-            int targetYear = currentYear + yearsAhead;
-            long yearStartElapsed = (long) (targetYear - 1) * YEAR;
-
-            for (CalendarEvent event : CalendarEvent.getAllEvents()) {
-                if (foundEvents >= amount) break;
-
-                for (Long eventTime : event.times()) {
-                    if (foundEvents >= amount) break;
-
-                    long eventElapsed = yearStartElapsed + eventTime;
-
-                    // Skip events that have already passed (including currently ongoing ones that started)
-                    if (eventElapsed <= currentElapsed) {
-                        continue;
-                    }
-
-                    long timeUntilBegin = eventElapsed - currentElapsed;
-
-                    EventInfo info = new EventInfo(timeUntilBegin, event.duration(), targetYear);
-                    result.put(info, event);
-                    foundEvents++;
-                }
-            }
-            yearsAhead++;
-
-            // Safety check to prevent infinite loops
-            if (yearsAhead > 100) break;
-        }
-
-        return result;
+    /**
+     * @param halveDarkAuction if true, only every other upcoming Dark Auction occurrence is
+     *                         included, leaving more room for rarer events in the result.
+     */
+    public static Map<EventInfo, CalendarEvent> getEventsWithDurationUntil(int amount, boolean halveDarkAuction) {
+        return collectUpcomingEvents(amount, List.of(), halveDarkAuction);
     }
 
     public static long ticksUntilEvent(CalendarEvent event) {
@@ -181,25 +155,35 @@ public final class SkyBlockCalendar {
         return -1;
     }
 
-    public static Map<EventInfo, CalendarEvent> getEventsWithDurationUntilSkipSpecific(int amount, List<CalendarEvent> event) {
-        Map<EventInfo, CalendarEvent> result = new LinkedHashMap<>();
+    private record UpcomingOccurrence(long eventElapsed, int year, CalendarEvent event) {}
+
+    public static Map<EventInfo, CalendarEvent> getEventsWithDurationUntilSkipSpecific(int amount, List<CalendarEvent> skip) {
+        return collectUpcomingEvents(amount, skip, false);
+    }
+
+    private static Map<EventInfo, CalendarEvent> collectUpcomingEvents(int amount, List<CalendarEvent> skip, boolean halveDarkAuction) {
         long currentElapsed = getElapsed();
         int currentYear = getYear();
 
-        int foundEvents = 0;
+        List<UpcomingOccurrence> occurrences = new ArrayList<>();
         int yearsAhead = 0;
 
-        while (foundEvents < amount) {
+        // When halving Dark Auction we need to gather extra raw occurrences up front, since half
+        // of them get filtered back out below before we can tell if `amount` results were reached.
+        int rawTarget = halveDarkAuction ? amount * 2 : amount;
+
+        // Gather occurrences year by year until we have enough to satisfy `amount` once sorted
+        // chronologically. Gathering per-event-then-truncating (as before) let a frequent event
+        // like Dark Auction (~40 occurrences/year) exhaust the whole quota before rarer events
+        // ever got a chance to appear.
+        while (occurrences.size() < rawTarget) {
             int targetYear = currentYear + yearsAhead;
             long yearStartElapsed = (long) (targetYear - 1) * YEAR;
 
             for (CalendarEvent e : CalendarEvent.getAllEvents()) {
-                if (event.contains(e)) continue; // Skip specified events
-                if (foundEvents >= amount) break;
+                if (skip.contains(e)) continue;
 
                 for (Long eventTime : e.times()) {
-                    if (foundEvents >= amount) break;
-
                     long eventElapsed = yearStartElapsed + eventTime;
 
                     // Skip events that have already passed (including currently ongoing ones that started)
@@ -207,17 +191,37 @@ public final class SkyBlockCalendar {
                         continue;
                     }
 
-                    long timeUntilBegin = eventElapsed - currentElapsed;
-
-                    EventInfo info = new EventInfo(timeUntilBegin, e.duration(), targetYear);
-                    result.put(info, e);
-                    foundEvents++;
+                    occurrences.add(new UpcomingOccurrence(eventElapsed, targetYear, e));
                 }
             }
             yearsAhead++;
 
             // Safety check to prevent infinite loops
             if (yearsAhead > 100) break;
+        }
+
+        occurrences.sort(Comparator.comparingLong(UpcomingOccurrence::eventElapsed));
+
+        // Cap how many Dark Auction entries can occupy the result instead of skipping every other
+        // one chronologically - skipping alone just spaces them further apart while something still
+        // backfills every slot, leaving the visible count unchanged. Capping and refusing to
+        // backfill past it means half the slots are genuinely left empty (or taken by a rarer event
+        // that happens to fall in the gap), which is what "see half as many" actually means visually.
+        int darkAuctionCap = halveDarkAuction ? (amount + 1) / 2 : Integer.MAX_VALUE;
+        int darkAuctionCount = 0;
+
+        Map<EventInfo, CalendarEvent> result = new LinkedHashMap<>();
+        for (UpcomingOccurrence occurrence : occurrences) {
+            if (result.size() >= amount) break;
+
+            if (occurrence.event() == CalendarEvent.DARK_AUCTION) {
+                if (darkAuctionCount >= darkAuctionCap) continue;
+                darkAuctionCount++;
+            }
+
+            long timeUntilBegin = occurrence.eventElapsed() - currentElapsed;
+            EventInfo info = new EventInfo(timeUntilBegin, occurrence.event().duration(), occurrence.year());
+            result.put(info, occurrence.event());
         }
 
         return result;

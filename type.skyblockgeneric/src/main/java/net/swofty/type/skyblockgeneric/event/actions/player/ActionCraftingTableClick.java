@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.GUICrafting;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Opens the crafting GUI when a player interacts with a crafting table
 public class ActionCraftingTableClick implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// GUI displaying a player's overall and per-mode Bedwars statistics.
 public class GUIBedWarsStatistics extends HypixelInventoryGUI {
 	private static final DecimalFormat NUMBER_FORMAT = new DecimalFormat("#,###");
 	private static final DecimalFormat RATIO_FORMAT = new DecimalFormat("#,##0.##");

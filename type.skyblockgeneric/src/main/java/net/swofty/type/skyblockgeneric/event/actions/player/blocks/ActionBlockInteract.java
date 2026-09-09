@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.item.components.BlockDataToolComponent;
 import net.swofty.type.skyblockgeneric.item.components.RegionSelectorComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Handles block interactions for region-selector and block-data debug tools, and custom interactable blocks
 public class ActionBlockInteract implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

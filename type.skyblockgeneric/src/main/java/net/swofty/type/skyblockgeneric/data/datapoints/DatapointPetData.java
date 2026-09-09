@@ -24,6 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Persists a player's owned pets and which one is active, and manages the active pet's entity,
+// abilities, and ability runtime state.
 public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPetData> {
     private static final Serializer serializer = new Serializer<UserPetData>() {
         @Override

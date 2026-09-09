@@ -8,6 +8,7 @@ import net.swofty.type.bedwarsgame.util.BedWarsInventoryManipulator;
 import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 
+// Base class for all Lucky Block reward effects, providing a name and shared item-giving helper.
 public abstract class LuckyReward {
     private final String name;
 

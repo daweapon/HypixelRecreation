@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.event.value.ValueUpdateEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @Getter
+// Value-update event for adjusting damage a mob deals to a player before it is applied
 public class PlayerDamagedByMobValueUpdateEvent extends ValueUpdateEvent {
     private final SkyBlockMob mob;
 

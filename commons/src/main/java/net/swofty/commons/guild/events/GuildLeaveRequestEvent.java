@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: a member left the guild voluntarily.
 public class GuildLeaveRequestEvent extends GuildEvent {
     @NotNull
     private UUID leaver;

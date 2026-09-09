@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: notifies the guild and the leaving player that a member left.
 public class GuildMemberLeftResponseEvent extends GuildResponseEvent {
     private UUID leaver;
 

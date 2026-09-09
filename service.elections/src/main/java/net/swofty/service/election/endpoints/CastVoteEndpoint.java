@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that validates and records a player's vote for a mayoral candidate in the currently open election.
 public class CastVoteEndpoint implements RedisMessageHandler
         <CastVoteProtocol.CastVoteMessage,
                 CastVoteProtocol.CastVoteResponse> {

@@ -21,6 +21,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 
+// MongoDB-backed store for per-player login credentials (salted password hashes) used by the auth-required login flow.
 public record AuthenticationDatabase(UUID id) implements MongoDB {
     public static MongoClient client;
     public static MongoDatabase database;

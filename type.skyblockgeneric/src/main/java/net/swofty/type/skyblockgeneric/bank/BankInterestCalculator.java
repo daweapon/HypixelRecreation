@@ -2,6 +2,8 @@ package net.swofty.type.skyblockgeneric.bank;
 
 import java.util.List;
 
+// Computes daily bank interest from a player's balance using tiered rate brackets, scaled up
+// by a museum-milestone multiplier and capped by the account tier's maximum interest.
 public final class BankInterestCalculator {
 
     private record Tranche(double lower, double upper, double rate, BankAccountTier requiredTier) {

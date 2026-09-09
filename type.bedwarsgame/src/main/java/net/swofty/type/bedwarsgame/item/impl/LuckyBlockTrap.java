@@ -18,6 +18,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Places and triggers hidden carpet traps awarded from Lucky Blocks, ignoring the owner's own team.
 public final class LuckyBlockTrap {
     public static final Tag<String> TRAP_TAG = Tag.String("lucky_trap");
     private static final Tag<String> OWNER_TEAM_TAG = Tag.String("lucky_trap_owner_team");

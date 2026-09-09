@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// GUI for viewing, switching, creating, and deleting a player's SkyBlock profiles
 public class GUIProfileManagement extends StatelessView {
     private static final int[] PROFILE_SLOTS = {11, 12, 13, 14, 15};
 

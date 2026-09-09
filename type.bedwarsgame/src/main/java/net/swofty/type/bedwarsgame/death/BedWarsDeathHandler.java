@@ -11,6 +11,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+// Computes a BedWarsDeathResult (death type, killer/assist, final-kill flag) for a player death.
 public final class BedWarsDeathHandler {
 
     private BedWarsDeathHandler() {

@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+// MongoDB accessor for public API keys, keyed by the key string itself.
 public record APIKeyDatabase(String key) {
     public static MongoClient client;
     public static MongoDatabase database;

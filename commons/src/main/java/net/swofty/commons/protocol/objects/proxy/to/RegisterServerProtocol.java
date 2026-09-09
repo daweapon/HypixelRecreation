@@ -5,6 +5,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol used by a starting backend server to register itself with the proxy's GameManager.
 public class RegisterServerProtocol extends RedisProtocol<
         RegisterServerProtocol.Request,
         RegisterServerProtocol.Response> {

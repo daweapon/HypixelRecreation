@@ -21,6 +21,7 @@ import java.util.UUID;
         usage = "/friend <subcommand>",
         permission = Rank.DEFAULT,
         allowsConsole = false)
+// Command exposing friend management subcommands (add/remove/accept/etc.), proxied to the friend service.
 public class FriendCommand extends HypixelCommand {
     public List<UUID> pendingCommands = new ArrayList<>();
 

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Caster enchantment: chance to not consume bait when fishing.
 public class EnchantmentCaster implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

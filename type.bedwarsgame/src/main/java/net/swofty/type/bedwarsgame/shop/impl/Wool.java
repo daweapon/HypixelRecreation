@@ -7,6 +7,7 @@ import net.swofty.type.bedwarsgame.shop.ShopItem;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 
+// Shop item for wool blocks, giving the buyer wool colored to their own team.
 public class Wool extends ShopItem {
 
 	public Wool() {

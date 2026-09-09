@@ -13,6 +13,7 @@ import net.swofty.type.generic.party.PartyManager;
 import net.swofty.type.generic.utility.ScheduleUtility;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Handles party bookkeeping after a player disconnects: server transfer vs. true disconnect
 public class ActionPlayerTransferServerParty implements HypixelEventClass {
 
     @SneakyThrows

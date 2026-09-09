@@ -47,6 +47,7 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+// Records and streams a Bedwars match replay (blocks, entities, kills, scoreboard) to the replay service.
 public class BedWarsReplayManager {
     private final BedWarsGame game;
     private final ProxyService replayService;

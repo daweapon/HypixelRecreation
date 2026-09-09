@@ -12,6 +12,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Jerry's guide GUI explaining Island guesting and visiting rules.
 public class GUIGuests extends HypixelInventoryGUI {
     public GUIGuests() {
         super ("Jerry's Guide to Guesting", InventoryType.CHEST_4_ROW);

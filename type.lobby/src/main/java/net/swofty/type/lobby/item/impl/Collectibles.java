@@ -27,8 +27,8 @@ public class Collectibles extends LobbyItem {
 
 	@Override
 	public void onItemInteract(PlayerInstanceEvent event) {
-		((CancellableEvent) event).setCancelled(true);
 		((HypixelPlayer) event.getPlayer()).notImplemented();
+		((CancellableEvent) event).setCancelled(true);
 	}
 
 }

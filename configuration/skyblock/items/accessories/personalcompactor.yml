@@ -8,7 +8,8 @@ items:
         display_name: Personal Compactor 4000
       - id: ACCESSORY
       - id: ENCHANTED
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: PERSONAL_COMPACTOR_INTERACT
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -41,7 +42,8 @@ items:
         display_name: Personal Compactor 5000
       - id: ACCESSORY
       - id: ENCHANTED
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: PERSONAL_COMPACTOR_INTERACT
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -74,7 +76,8 @@ items:
         display_name: Personal Compactor 6000
       - id: ACCESSORY
       - id: ENCHANTED
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: PERSONAL_COMPACTOR_INTERACT
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -107,7 +110,8 @@ items:
         display_name: Personal Compactor 7000
       - id: ACCESSORY
       - id: ENCHANTED
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: PERSONAL_COMPACTOR_INTERACT
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

@@ -17,6 +17,7 @@ import net.swofty.type.ravengardgeneric.user.RavengardPlayer;
         usage = "/animreview [start <clip>|stop|goto <tick>|markstart|mark <name>|marks|unmark <name>]",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command for reviewing/marking captured NPC animation clips via an AnimReviewService session.
 public class AnimReviewCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

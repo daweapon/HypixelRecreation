@@ -16,6 +16,8 @@ import org.json.JSONObject;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// Persists a player's museum contents (current/previously donated items, per-item display
+// placements, insertion times and prices) and provides lookup/display-management helpers.
 public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumData> {
     private static final Serializer<MuseumData> serializer = new Serializer<>() {
         @Override

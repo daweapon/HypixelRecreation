@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Paginated GUI listing armor sets donatable to the museum's armor category
 public class GUIMuseumArmorCategory extends HypixelPaginatedGUI<ArmorSetRegistry> {
     public GUIMuseumArmorCategory() {
         super(InventoryType.CHEST_6_ROW);

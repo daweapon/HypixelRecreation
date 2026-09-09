@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+// Persists a player's hunting attribute shards (collected/syphoned/disabled) and placed huntraps.
 public class DatapointHunting extends SkyBlockDatapoint<DatapointHunting.HuntingData> {
     private static final Serializer<HuntingData> SERIALIZER = new Serializer<>() {
         @Override

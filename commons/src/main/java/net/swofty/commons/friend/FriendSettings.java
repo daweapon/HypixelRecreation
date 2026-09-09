@@ -9,6 +9,7 @@ import net.swofty.commons.protocol.Serializer;
 
 @Getter
 @Setter
+// A player's friend-system preferences (accepting requests, join/leave notifications).
 public class FriendSettings {
     private static final Serializer<FriendSettings> SERIALIZER = new JacksonSerializer<>(FriendSettings.class);
 

@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 
+// NPC that operates the Deep Caverns mine lift, opening the GUILiftOperator travel menu.
 public class NPCLiftOperator extends HypixelNPC {
 
 	public NPCLiftOperator() {

@@ -23,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+// Builds and periodically refreshes the in-game Bedwars scoreboard shown to players.
 public class BedWarsGameScoreboard {
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("MM/dd/yy");
     private static final Text BLANK = Text.literal(" ");

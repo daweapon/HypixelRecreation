@@ -19,6 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Grab-bag of string formatting helpers: time durations, number formatting, case conversion, and escaping.
 public final class StringUtility {
 
 	public static final char[] ALPHABET = {

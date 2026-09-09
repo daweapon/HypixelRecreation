@@ -18,6 +18,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import static net.swofty.commons.bedwars.BedwarsLevelUtil.suffix;
 
+// NPC that displays a live summary of the viewing player's Bedwars stats and opens the stats GUI on click.
 public class NPCStats extends HypixelNPC {
 
 	public NPCStats() {

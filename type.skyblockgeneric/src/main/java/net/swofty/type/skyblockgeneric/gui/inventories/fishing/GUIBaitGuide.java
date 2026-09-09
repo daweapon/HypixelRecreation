@@ -11,6 +11,7 @@ import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.fishing.item.FishingItemSupport;
 
+// GUI listing available fishing baits and their effects
 public class GUIBaitGuide extends StatelessView {
     private static final int[] BAIT_SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34};
 

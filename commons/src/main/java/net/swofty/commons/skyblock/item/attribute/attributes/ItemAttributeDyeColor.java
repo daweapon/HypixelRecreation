@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing an item's applied dye color.
 public class ItemAttributeDyeColor extends ItemAttribute<String> {
 
     @Override

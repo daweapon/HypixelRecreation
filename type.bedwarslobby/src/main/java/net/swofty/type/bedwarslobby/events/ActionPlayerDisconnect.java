@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Cleans up shopkeeper preview state and scoreboard cache when a lobby player disconnects.
 public class ActionPlayerDisconnect implements HypixelEventClass {
 
 	@PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

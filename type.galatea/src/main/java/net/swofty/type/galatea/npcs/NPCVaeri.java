@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// NPC for Vaeri in Galatea, jokes with players about the correct pronunciation of the zone's name.
 public class NPCVaeri extends HypixelNPC {
 
     public NPCVaeri() {

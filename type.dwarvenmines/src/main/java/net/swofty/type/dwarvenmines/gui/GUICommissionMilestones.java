@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI displaying Dwarven Mines commission milestone tiers, their progress, and claimable rewards.
 public class GUICommissionMilestones extends HypixelInventoryGUI {
 
 	private static final int[] MILESTONE_SLOTS = {19, 20, 21, 23, 24, 25};

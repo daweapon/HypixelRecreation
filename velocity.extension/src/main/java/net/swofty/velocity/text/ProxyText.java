@@ -4,6 +4,7 @@ import com.velocitypowered.api.proxy.Player;
 import net.kyori.adventure.text.Component;
 import net.swofty.commons.text.Text;
 
+// Proxy-side helpers for rendering markup text and disconnecting players with a formatted reason.
 public final class ProxyText {
 
     private ProxyText() {

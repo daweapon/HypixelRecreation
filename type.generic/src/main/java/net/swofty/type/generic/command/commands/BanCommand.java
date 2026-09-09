@@ -34,6 +34,7 @@ import java.util.concurrent.TimeUnit;
         usage = "/ban <player> [duration] <reason>",
         allowsConsole = false
 )
+// Staff command to ban/tempban a player (and optionally their IP), issuing the punishment via the proxy service.
 public class BanCommand extends HypixelCommand {
 
     @Override

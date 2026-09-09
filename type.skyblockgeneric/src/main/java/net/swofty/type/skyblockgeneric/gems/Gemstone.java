@@ -14,6 +14,8 @@ import net.swofty.type.skyblockgeneric.item.components.GemstoneImplComponent;
 
 import java.util.List;
 
+// The gemstone types (Ruby, Amethyst, Jade, etc.), each mapping to its gem item tiers and the
+// statistic it boosts; also defines the gem slot categories items can carry.
 @Getter
 public enum Gemstone {
     RUBY(List.of(ItemType.ROUGH_RUBY_GEM, ItemType.FLAWED_RUBY_GEM, ItemType.FINE_RUBY_GEM, ItemType.FLAWLESS_RUBY_GEM, ItemType.PERFECT_RUBY_GEM), NamedTextColor.RED, ItemStatistic.HEALTH),

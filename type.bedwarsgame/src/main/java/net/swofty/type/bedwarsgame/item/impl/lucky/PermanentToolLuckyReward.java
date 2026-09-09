@@ -5,6 +5,7 @@ import net.swofty.type.bedwarsgame.shop.impl.AxeShopItem;
 import net.swofty.type.bedwarsgame.shop.impl.PickaxeShopItem;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Lucky Block reward that grants the opener a permanent axe or pickaxe upgrade.
 public class PermanentToolLuckyReward extends LuckyReward {
     private final boolean axe;
 

@@ -5,6 +5,7 @@ import net.minestom.server.event.EventNode;
 
 import java.util.ArrayList;
 
+// Registry base class that wires each ValueUpdateEvent subtype to its handler on a shared event node
 public abstract class SkyBlockValueEvent {
     private static final ArrayList<SkyBlockValueEvent> cachedCustomEvents = new ArrayList<>();
     private static final EventNode<Event> customEventNode = EventNode.all("value-listener");

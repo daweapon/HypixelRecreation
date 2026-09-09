@@ -1,6 +1,8 @@
 package net.swofty.type.generic.redis;
 
+import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.instance.Instance;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.objects.proxy.from.TeleportProtocol;
 import net.swofty.commons.redis.RedisMessageHandler;
@@ -21,7 +23,17 @@ public class RedisTeleport implements RedisMessageHandler<TeleportProtocol.Reque
         UUID uuid = UUID.fromString(message.uuid());
         HypixelPlayer player = HypixelGenericLoader.getFromUUID(uuid);
         if (player == null) return new TeleportProtocol.Response();
-        player.teleport(new Pos(message.x(), message.y(), message.z(), message.yaw(), message.pitch()));
+
+        Pos pos = new Pos(message.x(), message.y(), message.z(), message.yaw(), message.pitch());
+        Instance targetInstance = message.instanceId() != null
+                ? MinecraftServer.getInstanceManager().getInstance(UUID.fromString(message.instanceId()))
+                : null;
+
+        if (targetInstance != null && targetInstance != player.getInstance()) {
+            player.setInstance(targetInstance, pos);
+        } else {
+            player.teleport(pos);
+        }
         return new TeleportProtocol.Response();
     }
 }

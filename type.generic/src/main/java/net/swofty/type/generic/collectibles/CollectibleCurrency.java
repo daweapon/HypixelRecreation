@@ -6,6 +6,7 @@ import net.kyori.adventure.text.format.TextColor;
 
 import java.util.Locale;
 
+// The per-gamemode currencies that can be spent to unlock collectibles.
 @Getter
 public enum CollectibleCurrency {
     BEDWARS_TOKENS("Tokens", NamedTextColor.DARK_GREEN),

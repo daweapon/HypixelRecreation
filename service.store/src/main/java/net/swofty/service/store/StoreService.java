@@ -7,6 +7,7 @@ import net.swofty.service.generic.SkyBlockService;
 
 import java.util.List;
 
+// Backend microservice for the in-game store; on startup connects MongoDB and starts the purchase fulfillment worker.
 public class StoreService implements SkyBlockService {
     private final PurchaseFulfillmentWorker worker;
 

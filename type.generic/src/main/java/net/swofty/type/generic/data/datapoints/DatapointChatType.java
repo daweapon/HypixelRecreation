@@ -3,6 +3,7 @@ package net.swofty.type.generic.data.datapoints;
 import net.swofty.commons.protocol.Serializer;
 import net.swofty.type.generic.data.Datapoint;
 
+// Datapoint storing a player's currently selected chat channel.
 public class DatapointChatType extends Datapoint<DatapointChatType.ChatType> {
     private static final Serializer<ChatType> serializer = new Serializer<>() {
         @Override

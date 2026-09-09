@@ -19,6 +19,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI showing all Mob Types the player has discovered, with claimable rewards for each, opened via Ike.
 public class GUICollectedMobTypes extends HypixelInventoryGUI {
 
     private static final int[] SLOTS = {
@@ -94,7 +95,7 @@ public class GUICollectedMobTypes extends HypixelInventoryGUI {
                         lore.add(Text.of("<c>these rewards!"));
                     }
 
-                    if (hasUnlocked) {
+                    if (hasUnlocked || hasClaimed) {
                         return ItemStacks.of(mobType.guiMaterial, 1, Text.parse(mobType.mobType.getFullDisplayName()), lore);
                     } else {
                         return ItemStacks.item(Material.GRAY_DYE, 1, Text.of("<7>{} {}", mobType.mobType.getSymbol(), mobType.mobType.getDisplayName()), lore);

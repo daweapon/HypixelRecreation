@@ -10,6 +10,7 @@ import net.swofty.anticheat.event.packet.RotationPacket;
 import net.swofty.anticheat.event.packet.SwoftyPacket;
 import net.swofty.anticheat.math.Pos;
 
+// Listens for movement-related packets and forwards the resulting position/on-ground state to the player.
 public class MovementEvents extends AntiCheatListener {
     @ListenerMethod
     public void onPacketReceive(AnticheatPacketEvent event) {

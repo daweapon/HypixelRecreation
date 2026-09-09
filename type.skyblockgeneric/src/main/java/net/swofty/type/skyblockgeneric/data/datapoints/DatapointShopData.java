@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.PlayerShopData;
 import net.swofty.commons.protocol.serializers.PlayerShopDataSerializer;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
 
+// Persists a player's shop purchase/cooldown data (PlayerShopData) using its dedicated serializer.
 public class DatapointShopData extends SkyBlockDatapoint<PlayerShopData> {
     private static final PlayerShopDataSerializer serializer = new PlayerShopDataSerializer();
 

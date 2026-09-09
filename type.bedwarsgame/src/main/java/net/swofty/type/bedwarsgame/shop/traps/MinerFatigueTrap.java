@@ -13,6 +13,7 @@ import net.swofty.type.bedwarsgame.shop.Trap;
 import net.swofty.type.bedwarsgame.shop.TrapId;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Team trap that inflicts a mining-speed penalty on the triggering intruder.
 public class MinerFatigueTrap extends Trap {
 
 	public MinerFatigueTrap() {

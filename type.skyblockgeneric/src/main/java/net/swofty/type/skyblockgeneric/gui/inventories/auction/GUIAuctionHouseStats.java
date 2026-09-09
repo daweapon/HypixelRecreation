@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAuctionStatistics;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI showing a player's lifetime auction house seller/buyer statistics
 public class GUIAuctionHouseStats extends HypixelInventoryGUI {
     public GUIAuctionHouseStats() {
         super(Text.key("gui_auction.stats.title"), InventoryType.CHEST_4_ROW);

@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.List;
 
+// Backend microservice that tracks unique items and which players have owned them, backed by MongoDB.
 public class ItemTrackerService implements SkyBlockService {
     static void main(String[] args) {
         // Connect the DB before the service starts handling Redis requests,

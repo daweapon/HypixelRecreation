@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleContext;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecyclePhase;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleStep;
 
+// Island lifecycle step that places the starter supply chest when a new Island is created.
 public class StarterChestStep implements IslandLifecycleStep {
     @Override
     public IslandLifecyclePhase phase() {

@@ -12,6 +12,7 @@ import net.swofty.type.generic.user.categories.Rank;
         usage = "/sc <message>",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command ("/sc") that sends a message to the staff chat channel.
 public class StaffChatCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

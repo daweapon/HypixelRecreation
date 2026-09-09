@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for a bell's mounting style (ceiling/floor/single or double wall).
 public enum Attachment implements State<Attachment> {
     CEILING, SINGLE_WALL, DOUBLE_WALL, FLOOR;
 

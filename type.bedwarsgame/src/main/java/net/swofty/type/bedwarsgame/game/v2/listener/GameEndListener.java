@@ -22,6 +22,7 @@ import org.tinylog.Logger;
 import java.util.List;
 import java.util.Optional;
 
+// Handles Bedwars match end: shows results, records wins/stats, and stops replay recording.
 public class GameEndListener implements HypixelEventClass {
 
     private static final Text THICK_BAR = Text.of("<a><l>▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");

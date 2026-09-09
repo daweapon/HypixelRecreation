@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that looks up a player's currently active punishment of a given type, if any.
 public class GetActivePunishmentEndpoint implements RedisMessageHandler
         <GetActivePunishmentProtocol.GetActivePunishmentMessage,
                 GetActivePunishmentProtocol.GetActivePunishmentResponse> {

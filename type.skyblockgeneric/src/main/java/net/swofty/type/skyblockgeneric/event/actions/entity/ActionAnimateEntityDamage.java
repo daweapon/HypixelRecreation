@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 
+// Forces the damage-flash animation packet whenever an entity takes damage
 public class ActionAnimateEntityDamage implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.ENTITY, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

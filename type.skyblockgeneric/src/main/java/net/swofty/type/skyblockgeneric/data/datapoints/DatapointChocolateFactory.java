@@ -16,6 +16,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+// Persists a player's Chocolate Factory/Hoppity's Hunt progress: chocolate totals, upgrades,
+// employees, time tower state, and found rabbits/eggs, plus the chocolate production math.
 public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocolateFactory.ChocolateFactoryData> {
     private static final Serializer<ChocolateFactoryData> serializer = new Serializer<>() {
         @Override

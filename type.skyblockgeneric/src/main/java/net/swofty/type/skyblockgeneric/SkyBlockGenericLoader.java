@@ -66,6 +66,9 @@ import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.event.value.SkyBlockValueEvent;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import net.swofty.type.skyblockgeneric.hunting.HuntrapService;
+import net.swofty.type.skyblockgeneric.compactor.PersonalCompactorService;
+import net.swofty.type.skyblockgeneric.deletor.PersonalDeletorService;
+import net.swofty.type.skyblockgeneric.staff.MaxStickService;
 import net.swofty.type.skyblockgeneric.item.ItemConfigParser;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.CraftableComponent;
@@ -96,6 +99,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockScoreboard;
 import net.swofty.type.skyblockgeneric.user.StashReminder;
 import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoul;
+import net.swofty.type.skyblockgeneric.user.island.CoopContributionTracker;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import net.swofty.type.skyblockgeneric.user.statistics.TemporaryStatistic;
@@ -107,6 +111,7 @@ import org.tinylog.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -119,6 +124,8 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
+// Top-level bootstrap for the SkyBlock server type: wires up databases, registries, schedulers,
+// event/command/entity scanning, and the tablist/scoreboard loops when the server starts.
 public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
     @Getter
     private static MinecraftServer server;
@@ -153,6 +160,9 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
          */
         ItemAttribute.registerItemAttributes();
         HuntrapService.initialize();
+        PersonalDeletorService.initialize();
+        PersonalCompactorService.initialize();
+        MaxStickService.initialize();
         PlayerItemUpdater.updateLoop(MinecraftServer.getSchedulerManager());
         File configDir = new File("./configuration/skyblock");
         File itemsDir = new File(configDir, "items");
@@ -361,6 +371,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         SkyBlockScoreboard.start();
         StashReminder.start(MinecraftServer.getSchedulerManager());
         PlayerHolograms.updateAll(MinecraftServer.getSchedulerManager());
+        CoopContributionTracker.startFlushLoop(MinecraftServer.getSchedulerManager());
 
         /**
          * Register Bazaar propagator
@@ -608,11 +619,21 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         Set<Class<? extends T>> subTypes = reflections.getSubTypesOf(clazz);
 
         return subTypes.stream()
+            // Abstract classes/interfaces picked up by getSubTypesOf() were never meant to be
+            // instantiated directly (e.g. SkyBlockMission) - skip them without complaint.
+            .filter(subClass -> !Modifier.isAbstract(subClass.getModifiers()))
             .map(subClass -> {
                 try {
                     return clazz.cast(subClass.getDeclaredConstructor().newInstance());
-                } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
-                         InvocationTargetException e) {
+                } catch (NoSuchMethodException | IllegalAccessException e) {
+                    // No accessible no-arg constructor: this class deliberately opts out of
+                    // reflection-based construction (e.g. SlayerMinionMob, which is only ever
+                    // built via its own factory method with real context) - not an error.
+                    return null;
+                } catch (InstantiationException | InvocationTargetException e) {
+                    // Has a no-arg constructor but it actually threw - a genuine bug worth surfacing.
+                    Logger.error(e, "Failed to instantiate {} while scanning package {} for {} - it will be silently skipped",
+                        subClass.getSimpleName(), packageName, clazz.getSimpleName());
                     return null;
                 }
             })

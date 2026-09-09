@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: notifies a player that one of their friends has gone offline.
 public final class FriendLeaveNotificationEvent extends FriendResponseEvent {
     private static final Serializer<FriendLeaveNotificationEvent> SERIALIZER =
             new JacksonSerializer<>(FriendLeaveNotificationEvent.class);

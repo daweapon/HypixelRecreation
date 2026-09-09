@@ -14,6 +14,7 @@ import io.netty.channel.ChannelPipeline;
 
 import java.lang.reflect.Field;
 
+// Netty channel initializer that inserts ViaVersion's encode/decode handlers into the pipeline, reordering them once compression is enabled.
 public final class SkyBlockViaChannelInitializer extends ViaChannelInitializer {
     private static final Object COMPRESSION_ENABLED_EVENT = compressionEnabledEvent();
 

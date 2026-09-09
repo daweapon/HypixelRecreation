@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Decorative Archaeologist NPC, found in the Spider's Den.
 public class NPCArchaelogist extends HypixelNPC {
     public NPCArchaelogist() {
         super(new HumanConfiguration() {

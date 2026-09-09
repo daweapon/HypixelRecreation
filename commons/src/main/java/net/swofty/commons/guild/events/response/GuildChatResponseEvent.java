@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: broadcasts a chat message to the guild (or officer chat).
 public class GuildChatResponseEvent extends GuildResponseEvent {
     private UUID sender;
     private String message;

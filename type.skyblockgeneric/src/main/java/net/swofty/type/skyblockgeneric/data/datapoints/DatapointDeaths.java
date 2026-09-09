@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Persists how many times a player has died to each death cause (mob or damage type).
 public class DatapointDeaths extends SkyBlockDatapoint<DatapointDeaths.PlayerDeaths> {
 
     public DatapointDeaths(String key, PlayerDeaths value) {

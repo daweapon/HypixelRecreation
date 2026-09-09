@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.item.components.PetItemComponent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI for George the NPC in the Hub who buys pets from players in exchange for coins.
 public class GUIGeorge extends HypixelInventoryGUI {
 
     boolean pricePaid = false;

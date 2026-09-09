@@ -14,6 +14,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.collection.CustomCollectionAward;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI hub linking to a player's unlocked bags (sacks, accessory bag, etc.)
 public class GUIYourBags extends StatelessView {
 
     @Override

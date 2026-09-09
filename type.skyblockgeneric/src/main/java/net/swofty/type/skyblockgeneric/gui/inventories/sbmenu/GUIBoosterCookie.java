@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI showing Booster Cookie status and buff info from the SkyBlock menu
 public class GUIBoosterCookie extends StatelessView {
 
     @Override

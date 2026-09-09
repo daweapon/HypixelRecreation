@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI for a player's personal vault: editable storage slots persisted on close
 public class GUIPersonalVault extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {

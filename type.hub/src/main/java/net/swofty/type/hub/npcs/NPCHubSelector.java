@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.hub.gui.GUIHubSelector;
 
+// NPC that opens the Hub Selector GUI, letting players travel between hub instances
 public class NPCHubSelector extends HypixelNPC {
 
     public NPCHubSelector() {

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+// The top-level collection groups (Farming, Mining, Combat, etc.), each lazily loading its
+// CollectionCategory data from its config file.
 @Getter
 public enum CollectionCategories {
     FARMING("Farming"),

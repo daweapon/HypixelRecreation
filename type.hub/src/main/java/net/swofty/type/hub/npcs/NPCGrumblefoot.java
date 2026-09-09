@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// NPC for Grumblefoot, a decorative Hub NPC with no interaction logic
 public class NPCGrumblefoot extends HypixelNPC {
 
     public NPCGrumblefoot() {

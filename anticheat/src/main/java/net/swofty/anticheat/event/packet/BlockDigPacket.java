@@ -6,6 +6,7 @@ import net.swofty.anticheat.math.Pos;
 import java.util.UUID;
 
 @Getter
+// Loader-agnostic representation of a client's block-dig (start/finish/cancel digging) packet.
 public class BlockDigPacket extends SwoftyPacket {
     private final Status status;
     private final Pos position;

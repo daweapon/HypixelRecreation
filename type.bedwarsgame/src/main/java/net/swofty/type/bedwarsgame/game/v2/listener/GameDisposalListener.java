@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 
+// Cleans up a disposed Bedwars game: stops managers and unregisters its instance once empty.
 public class GameDisposalListener implements HypixelEventClass {
     private static final int MAX_UNREGISTER_ATTEMPTS = 120;
 

@@ -34,6 +34,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+// Default Pagination implementation: renders one page of content as header/rows/footer with clickable page navigation.
 final class PaginationImpl<T> implements Pagination<T> {
     private static final int LINE_CHARACTER_LENGTH = 1;
 

@@ -7,6 +7,7 @@ import net.swofty.anticheat.flag.Flag;
 import net.swofty.anticheat.flag.FlagType;
 import net.swofty.anticheat.math.Vel;
 
+// Detects horizontal movement speeds that are mathematically impossible without cheats.
 public class SpeedFlag extends Flag {
     // Base movement constants (blocks per tick)
     private static final double MAX_WALK_SPEED = 0.215;  // ~4.3 blocks/sec

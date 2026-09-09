@@ -6,6 +6,7 @@ import net.swofty.type.generic.data.Datapoint;
 
 import java.util.Locale;
 
+// Datapoint storing a player's currently selected locale/language.
 public class DatapointLocale extends Datapoint<DatapointLocale.LocaleType> {
     private static final Serializer<LocaleType> serializer = new Serializer<>() {
         @Override

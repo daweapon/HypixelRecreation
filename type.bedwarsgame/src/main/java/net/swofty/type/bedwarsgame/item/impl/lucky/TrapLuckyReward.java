@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Pos;
 import net.swofty.type.bedwarsgame.item.impl.LuckyBlockTrap;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Lucky Block reward that places a hidden trap of the configured type at the opener's location.
 public class TrapLuckyReward extends LuckyReward {
     private final String trap;
 

@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.slayer.SlayerType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Developer/cheat GUI granting items, currencies, and maxed progression for testing
 public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
     @Override
     public ViewConfiguration<State> configuration() {

@@ -10,6 +10,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.utility.ScheduleUtility;
 
+// Checks the orchestrator for an active game on spawn and prompts the player to rejoin if found.
 public class ActionRejoinCheck implements HypixelEventClass {
     private static final ProxyService ORCHESTRATOR = new ProxyService(ServiceType.ORCHESTRATOR);
 

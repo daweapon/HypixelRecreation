@@ -5,6 +5,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing an item's rarity tier.
 public class ItemAttributeRarity extends ItemAttribute<Rarity> {
     @Override
     public String getKey() {

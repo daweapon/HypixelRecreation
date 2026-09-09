@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+// Woodsplitter enchantment: boosts damage dealt to woodland-type mobs.
 public final class EnchantmentWoodsplitter implements Ench, EnchFromTable, MobTypeDamageEnchantment {
     private static final double[] BONUSES = {5, 10, 15, 20, 30, 40};
 

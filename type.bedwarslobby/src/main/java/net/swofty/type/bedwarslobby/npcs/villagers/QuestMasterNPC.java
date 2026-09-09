@@ -10,6 +10,7 @@ import net.swofty.type.lobby.gui.GUIGameQuests;
 
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 
+// Villager NPC that opens the game quests GUI on click.
 public class QuestMasterNPC extends HypixelNPC {
 
 	public QuestMasterNPC() {

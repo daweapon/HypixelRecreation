@@ -1,6 +1,7 @@
 package net.swofty.type.generic.data;
 
 @SuppressWarnings("unchecked")
+// Small helpers for working with raw/wildcard Datapoint references.
 public final class DatapointUtils {
     private DatapointUtils() {}
 

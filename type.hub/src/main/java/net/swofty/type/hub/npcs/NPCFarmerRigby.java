@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.mission.missions.farmer.MissionTalkToFarm
 import net.swofty.type.skyblockgeneric.mission.missions.farmer.MissionTalkToFarmerAgain;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// NPC for Farmer Rigby in the Hub, tied to the farmer introduction mission line
 public class NPCFarmerRigby extends HypixelNPC {
 
     public NPCFarmerRigby() {

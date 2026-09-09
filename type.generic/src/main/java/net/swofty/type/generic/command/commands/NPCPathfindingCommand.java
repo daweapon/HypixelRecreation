@@ -14,6 +14,7 @@ import net.swofty.type.generic.user.categories.Rank;
 import java.util.List;
 
 @CommandParameters(labels = "npcpathfinding", allowsConsole = false, description = "NPC Pathfinding test", permission = Rank.STAFF, usage = "/npcpathfinding <npc>")
+// Staff test command that makes a named NPC pathfind/walk to a given relative position.
 public class NPCPathfindingCommand extends HypixelCommand {
 
     @Override

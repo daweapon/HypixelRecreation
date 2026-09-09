@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 
+// Villager NPC in the Gold Mine that opens the item reforge GUI.
 public class VillagerBlacksmith extends HypixelNPC {
 	public VillagerBlacksmith() {
 		super(new VillagerConfiguration() {

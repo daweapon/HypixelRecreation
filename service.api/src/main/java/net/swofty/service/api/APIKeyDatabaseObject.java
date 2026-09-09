@@ -12,6 +12,7 @@ import java.util.Map;
 @NoArgsConstructor
 @Getter
 @Setter
+// Plain data object for a public API key: its key string, description, and daily request limit.
 public class APIKeyDatabaseObject {
     public String key;
     public String description;

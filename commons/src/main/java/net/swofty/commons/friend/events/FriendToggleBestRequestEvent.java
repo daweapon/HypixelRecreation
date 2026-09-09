@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system event: toggles whether a friend is marked as a best friend.
 public final class FriendToggleBestRequestEvent extends FriendEvent {
     private static final Serializer<FriendToggleBestRequestEvent> SERIALIZER =
             new JacksonSerializer<>(FriendToggleBestRequestEvent.class);

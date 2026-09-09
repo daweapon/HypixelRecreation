@@ -19,6 +19,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.UUID;
 
+// MongoDB accessor for guild documents and the player-to-guild mapping collection.
 public record GuildDatabase(String id) implements MongoDB {
     public static MongoClient client;
     public static MongoDatabase database;
@@ -101,6 +102,12 @@ public record GuildDatabase(String id) implements MongoDB {
         return guildCollection.find(Filters.eq("name", name.toLowerCase())).first() != null;
     }
 
+    public static @Nullable GuildData getGuildByName(@NotNull String name) {
+        Document doc = guildCollection.find(Filters.eq("name", name.toLowerCase())).first();
+        if (doc == null) return null;
+        return GuildData.getStaticSerializer().deserialize(doc.getString("data"));
+    }
+
     @Override
     public void set(@NotNull String key, @Nullable Object value) {
         insertOrUpdate(key, value);
@@ -117,9 +124,7 @@ public record GuildDatabase(String id) implements MongoDB {
     public void insertOrUpdate(@NonNull String key, Object value) {
         if (exists()) {
             Document query = new Document("_id", id);
-            Document found = guildCollection.find(query).first();
-            assert found != null;
-            guildCollection.updateOne(found, Updates.set(key, value));
+            guildCollection.updateOne(query, Updates.set(key, value));
             return;
         }
         Document newDoc = new Document("_id", id);

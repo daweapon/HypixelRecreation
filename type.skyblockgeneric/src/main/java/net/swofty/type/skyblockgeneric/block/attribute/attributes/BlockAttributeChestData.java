@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+// Block attribute storing a chest's item contents as a comma-delimited serialized list.
 public class BlockAttributeChestData extends BlockAttribute<List<SkyBlockItem>> {
     @Override
     public String getKey() {

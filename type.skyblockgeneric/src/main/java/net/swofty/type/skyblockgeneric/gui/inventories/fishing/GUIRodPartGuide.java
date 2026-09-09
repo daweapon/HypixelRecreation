@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 
+// GUI hub linking to individual fishing rod part guides (hooks, lines, sinkers, etc.)
 public class GUIRodPartGuide extends StatelessView {
     @Override
     public ViewConfiguration<DefaultState> configuration() {

@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+// Paginated GUI listing other Bedwars lobby servers a player can transfer to.
 public class GUILobbySelector extends HypixelPaginatedGUI<UnderstandableProxyServer> implements RefreshingGUI {
     private final ProxyInformation information;
     private List<UnderstandableProxyServer> servers;

@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI showing the tasks/requirements for a specific SkyBlock levels guide
 public class GUILevelsGuide extends StatelessView {
     private final LevelsGuide guide;
 

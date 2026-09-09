@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Getter
+// Fired when a player crafts an item; also records newly crafted minion types/tiers
 public class ItemCraftEvent implements PlayerInstanceEvent {
     private final SkyBlockPlayer player;
     private final SkyBlockItem craftedItem;

@@ -8,32 +8,29 @@ import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.StringUtility;
-import net.swofty.commons.protocol.objects.auctions.AuctionAddItemProtocol;
-import net.swofty.commons.skyblock.auctions.AuctionCategories;
-import net.swofty.commons.skyblock.auctions.AuctionItem;
 import net.swofty.commons.text.Text;
 import net.swofty.proxyapi.ProxyService;
-import net.swofty.type.generic.data.datapoints.DatapointDouble;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.RefreshingGUI;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIQueryItem;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.auction.AuctionCreation;
+import net.swofty.type.skyblockgeneric.auction.AuctionEligibility;
+import net.swofty.commons.skyblock.auctions.AuctionRules;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAuctionEscrow;
-import net.swofty.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
-import net.swofty.type.skyblockgeneric.item.components.AuctionCategoryComponent;
 import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
+// GUI for creating a new auction listing (or BIN) from an item held in escrow
 public class GUIAuctionCreateItem extends HypixelInventoryGUI implements RefreshingGUI {
     private final HypixelInventoryGUI previousGUI;
+    private java.util.UUID profile;
 
     public GUIAuctionCreateItem(HypixelInventoryGUI previousGUI) {
         super(Text.key("gui_auction.create.title"), InventoryType.CHEST_6_ROW);
@@ -43,10 +40,30 @@ public class GUIAuctionCreateItem extends HypixelInventoryGUI implements Refresh
 
     @Override
     public void onOpen(InventoryGUIOpenEvent e) {
+        profile = ((SkyBlockPlayer) getPlayer()).getSkyblockDataHandler().getCurrentProfileId();
+        if (((SkyBlockPlayer) getPlayer()).isIronman()) {
+            getPlayer().sendMessage(Text.key("gui_auction.house.ironman_blocked"));
+            getPlayer().closeInventory();
+            return;
+        }
         fill(Material.BLACK_STAINED_GLASS_PANE, "");
         set(GUIClickableItem.getGoBackItem(49, previousGUI));
 
         DatapointAuctionEscrow.AuctionEscrow escrow = ((SkyBlockPlayer) getPlayer()).getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ESCROW, DatapointAuctionEscrow.class).getValue();
+        if (escrow.isPending()) {
+            set(new GUIClickableItem(29) {
+                @Override
+                public ItemStack.Builder getItem(HypixelPlayer player) {
+                    return ItemStacks.item(Material.CLOCK, 1, "<e>Check Pending Auction",
+                            "<7>Your item and fee are reserved.\n<7>Click to retry without paying again.");
+                }
+                @Override
+                public void run(InventoryPreClickEvent e, HypixelPlayer player) {
+                    AuctionCreation.submit((SkyBlockPlayer) player, profile);
+                }
+            });
+            return;
+        }
         if (escrow.isBin())
             setTitle(Text.key("gui_auction.create.title_bin"));
 
@@ -75,9 +92,11 @@ public class GUIAuctionCreateItem extends HypixelInventoryGUI implements Refresh
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
-                if (escrow.getItem() == null) return;
-                player.addAndUpdateItem(escrow.getItem());
-                escrow.setItem(null);
+                synchronized (escrow) {
+                    if (escrow.isPending() || escrow.getItem() == null) return;
+                    player.addAndUpdateItem(escrow.getItem());
+                    escrow.setItem(null);
+                }
 
                 new GUIAuctionCreateItem(previousGUI).open(player);
             }
@@ -99,7 +118,7 @@ public class GUIAuctionCreateItem extends HypixelInventoryGUI implements Refresh
                     lore.addAll(Text.keyLines("gui_auction.create.duration_normal.lore"));
                 }
                 lore.add(Text.literal(" "));
-                lore.add(Text.key("gui_auction.create.duration_extra_fee", escrow.getDuration() / 180000));
+                lore.add(Text.key("gui_auction.create.duration_extra_fee", AuctionRules.durationFee(escrow.getDuration())));
                 lore.add(Text.literal(" "));
                 lore.add(Text.key("gui_auction.create.duration_click"));
 
@@ -133,47 +152,7 @@ public class GUIAuctionCreateItem extends HypixelInventoryGUI implements Refresh
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
-                ProxyService auctionService = new ProxyService(ServiceType.AUCTION_HOUSE);
-
-                auctionService.isOnline().thenAccept((response) -> {
-                    if (escrow.getItem() == null || !response)
-                        return;
-
-                    long fee = (long) ((escrow.getPrice() * 0.05) + ((double) escrow.getDuration() / 180000));
-                    DatapointDouble coins = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.COINS, DatapointDouble.class);
-                    if (coins.getValue() < fee) {
-                        player.sendMessage(Text.key("gui_auction.create.not_enough_coins"));
-                        return;
-                    }
-                    coins.setValue(coins.getValue() - fee);
-
-                    player.closeInventory();
-
-                    player.sendMessage(Text.key("gui_auction.create.escrow_message"));
-
-                    AuctionItem item = new AuctionItem(escrow.getItem().toUnderstandable(), player.getUuid(), escrow.getDuration() + System.currentTimeMillis(),
-                            escrow.isBin(), escrow.getPrice());
-                    Text itemName = escrow.getItem().getDisplayNameText();
-
-                    AuctionCategories category = AuctionCategories.TOOLS;
-                    if (escrow.getItem().hasComponent(AuctionCategoryComponent.class))
-                        category = escrow.getItem().getComponent(AuctionCategoryComponent.class).getCategory();
-
-                    player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ESCROW, DatapointAuctionEscrow.class).clearEscrow();
-                    player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ACTIVE_OWNED, DatapointUUIDList.class).getValue().add(item.getUuid());
-
-                    player.sendMessage(Text.key("gui_auction.create.setup_message"));
-
-                    AuctionAddItemProtocol.AuctionAddItemMessage message =
-                            new AuctionAddItemProtocol.AuctionAddItemMessage(item, category);
-                    CompletableFuture<AuctionAddItemProtocol.AuctionAddItemResponse> future =
-                            auctionService.handleRequest(message);
-                    future.thenAccept(addResponse -> {
-                        UUID auctionUUID = addResponse.uuid();
-                        player.sendMessage(Text.key("gui_auction.create.started_message", itemName));
-                        player.sendMessage(Text.key("gui_auction.create.started_id", auctionUUID.toString()));
-                    });
-                });
+                AuctionCreation.submit(player, profile);
             }
 
             @Override
@@ -190,7 +169,7 @@ public class GUIAuctionCreateItem extends HypixelInventoryGUI implements Refresh
                             StringUtility.getAuctionSetupFormattedTime(escrow.getDuration()),
                             escrow.isBin() ? Text.key("gui_auction.create.price_bin_label") : Text.key("gui_auction.create.price_normal_label"),
                             StringUtility.commaify(escrow.getPrice()),
-                            (escrow.getPrice() * 0.05) + (escrow.getDuration() / 180000)));
+                            AuctionRules.listingFee(escrow.getPrice(), escrow.getDuration(), escrow.isBin())));
                 }
             }
         });
@@ -205,8 +184,8 @@ public class GUIAuctionCreateItem extends HypixelInventoryGUI implements Refresh
                     player.sendMessage(Text.key("gui_auction.create.number_parse_error"));
                     return GUIAuctionCreateItem.this;
                 }
-                if (val <= 50) {
-                    player.sendMessage(Text.key("gui_auction.create.price_too_low"));
+                if (val <= 0 || val > AuctionRules.MAX_PRICE) {
+                    player.sendMessage(Text.of("<c>Enter a price from 1 to 50,000,000,000 coins."));
                     return GUIAuctionCreateItem.this;
                 }
                 escrow.setPrice(val);
@@ -226,7 +205,9 @@ public class GUIAuctionCreateItem extends HypixelInventoryGUI implements Refresh
                     lore.addAll(Text.keyLines("gui_auction.create.price_normal.lore"));
                 }
                 lore.add(Text.literal(" "));
-                lore.add(Text.key("gui_auction.create.price_extra_fee", escrow.getPrice() * 0.05));
+                lore.add(Text.key("gui_auction.create.price_extra_fee",
+                        AuctionRules.listingFee(escrow.getPrice(), escrow.getDuration(), escrow.isBin())
+                                - AuctionRules.durationFee(escrow.getDuration())));
                 lore.add(Text.literal(" "));
                 lore.add(Text.key("gui_auction.create.price_click"));
 
@@ -262,16 +243,28 @@ public class GUIAuctionCreateItem extends HypixelInventoryGUI implements Refresh
         if (item.isNA()) return;
         if (item.isAir()) return;
 
-        DatapointAuctionEscrow.AuctionEscrow escrow = ((SkyBlockPlayer) getPlayer()).getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ESCROW, DatapointAuctionEscrow.class).getValue();
-
-        if (escrow.getItem() != null) {
-            ((HypixelPlayer) e.getPlayer()).sendMessage(Text.key("gui_auction.create.already_have_item"));
+        if (!AuctionEligibility.canList(item)) {
+            e.setCancelled(true);
+            ((HypixelPlayer) e.getPlayer()).sendMessage(Text.of("<c>This item cannot be auctioned."));
             return;
         }
 
-        e.setCancelled(true);
-        escrow.setItem(item);
-        e.getPlayer().getInventory().setItemStack(e.getSlot(), ItemStack.AIR);
+        DatapointAuctionEscrow.AuctionEscrow escrow = ((SkyBlockPlayer) getPlayer()).getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ESCROW, DatapointAuctionEscrow.class).getValue();
+
+        synchronized (escrow) {
+            if (escrow.isPending()) {
+                e.setCancelled(true);
+                return;
+            }
+            if (escrow.getItem() != null) {
+                ((HypixelPlayer) e.getPlayer()).sendMessage(Text.key("gui_auction.create.already_have_item"));
+                return;
+            }
+
+            e.setCancelled(true);
+            escrow.setItem(item);
+            e.getPlayer().getInventory().setItemStack(e.getSlot(), ItemStack.AIR);
+        }
         new GUIAuctionCreateItem(previousGUI).open(getPlayer());
     }
 

@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+// Resolves the effective protocol version ViaVersion should translate to/from for a given client or backend connection.
 public class SkyBlockVersionProvider implements VersionProvider {
     private static final Method GET_ASSOCIATION = getAssociationMethod();
 

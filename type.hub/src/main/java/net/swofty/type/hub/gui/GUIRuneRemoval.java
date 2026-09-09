@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.item.components.RuneableComponent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI at the Runic Pedestal in the Hub for removing a rune from an item.
 public class GUIRuneRemoval extends HypixelInventoryGUI {
     private final int[] borderSlots = {
             0, 8, 9, 17, 18, 26, 27, 35, 36, 44

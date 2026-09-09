@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// Intercepts vanilla chat and routes it to the player's selected SkyBlock chat channel (all/party/staff)
 public class ActionPlayerChat implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

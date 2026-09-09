@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+// Thrown splash/lingering potion projectile that applies its potion effects to nearby entities on impact.
 public class ThrownPotion extends CustomEntityProjectile implements ItemHoldingProjectile {
 	private final EffectFeature effectFeature;
 	private final boolean lingering;

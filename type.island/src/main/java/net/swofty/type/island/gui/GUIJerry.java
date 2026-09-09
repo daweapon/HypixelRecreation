@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Main menu GUI for Jerry the Assistant on the Island: patch notes, deliveries, guesting, and moving Jerry.
 public class GUIJerry extends HypixelInventoryGUI {
     public GUIJerry() {
         super("Jerry The Assistant", InventoryType.CHEST_4_ROW);

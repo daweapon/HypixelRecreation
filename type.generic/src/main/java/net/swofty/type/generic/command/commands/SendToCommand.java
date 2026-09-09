@@ -12,6 +12,7 @@ import net.swofty.type.generic.user.categories.Rank;
         usage = "/sendto <server_type>",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command that transfers the sender to a server of the given ServerType.
 public class SendToCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

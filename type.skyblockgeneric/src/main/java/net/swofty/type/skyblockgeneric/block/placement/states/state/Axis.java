@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.block.placement.states.state;
 
 import org.jetbrains.annotations.NotNull;
 
+// Block state values for the X/Y/Z axis a block (e.g. a log) is oriented along.
 public enum Axis implements State<Axis> {
     X, Y, Z;
 

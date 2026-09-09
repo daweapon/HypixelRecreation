@@ -13,6 +13,7 @@ import redis.clients.jedis.JedisPool;
 
 import java.time.Duration;
 
+// Lazily-bootstrapped access point for the shared Redis-backed account/profile DataAPI instances, lock, and connection pool.
 public final class SwoftyData {
     private static final Duration LOCK_TIMEOUT = Duration.ofSeconds(5);
 

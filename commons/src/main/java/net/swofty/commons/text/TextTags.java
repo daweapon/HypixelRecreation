@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+// Static lookup tables mapping markup color/decoration tokens to Adventure colors/decorations and legacy formatting codes.
 final class TextTags {
 
     static final String CONTEXT_KEY_PREFIX = "hsb.ctx.";

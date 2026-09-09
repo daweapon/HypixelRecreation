@@ -7,10 +7,12 @@ import net.swofty.commons.guild.GuildData;
 import net.swofty.commons.guild.GuildMember;
 import net.swofty.commons.guild.GuildRank;
 import net.swofty.commons.text.Text;
+import net.swofty.proxyapi.ProxyPlayer;
 import net.swofty.proxyapi.ProxyService;
 import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
 import net.swofty.type.generic.guild.GuildManager;
+import net.swofty.type.generic.party.PartyManager;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.user.categories.Rank;
 
@@ -23,6 +25,7 @@ import java.util.UUID;
     usage = "/guild <subcommand>",
     permission = Rank.DEFAULT,
     allowsConsole = false)
+// Command exposing guild management subcommands, proxied to the guild service.
 public class GuildCommand extends HypixelCommand {
     private final List<UUID> pendingCommands = new ArrayList<>();
 
@@ -72,14 +75,30 @@ public class GuildCommand extends HypixelCommand {
             case "list", "info" -> showGuildInfo(player);
             case "online", "members" -> showOnlineMembers(player);
             case "member" -> showMember(player, argument);
-            case "mypermissions", "permissions" -> showPermissions(player);
+            case "mypermissions" -> showPermissions(player);
+            case "permissions" -> {
+                if (args.length < 3) showPermissions(player);
+                else GuildManager.changeSetting(player, "rankpermission", args[1] + ":" + args[2]);
+            }
+            case "rank" -> {
+                if (args.length < 3) {
+                    player.sendMessage("<c>Usage: {}", "/guild rank <create|delete> <name>");
+                    break;
+                }
+                switch (args[1].toLowerCase()) {
+                    case "create" -> GuildManager.changeSetting(player, "rankcreate", args[2]);
+                    case "delete" -> GuildManager.changeSetting(player, "rankdelete", args[2]);
+                    default -> player.sendMessage("<c>Usage: {}", "/guild rank <create|delete> <name>");
+                }
+            }
             case "top" -> showTop(player);
             case "discord" -> showDiscord(player, message);
-            case "join" -> player.sendMessage("<c>Guild join requests are not currently accepted by this guild.");
+            case "join" ->
+                withArgument(player, argument, "/guild join <name>", value -> GuildManager.joinGuild(player, value));
             case "menu" -> player.sendMessage("<e>Open your profile and select <a>Guild <e>to open the Guild Menu.");
-            case "party" -> player.sendMessage("<c>No online guild party could be formed.");
+            case "party" -> formGuildParty(player);
             case "quest" -> player.sendMessage("<e>Your guild does not currently have an active Guild Quest.");
-            case "notifications", "slow", "onlinemode", "toggle" -> GuildManager.changeSetting(player, sub, "toggle");
+            case "notifications", "slow", "onlinemode", "toggle", "openjoin" -> GuildManager.changeSetting(player, sub, "toggle");
             case "create" ->
                 withArgument(player, argument, "/guild create <name>", value -> GuildManager.createGuild(player, value));
             case "invite" ->
@@ -154,6 +173,31 @@ public class GuildCommand extends HypixelCommand {
         player.sendMessage("<7>Weekly GEXP: <e>{:,}", member.getWeeklyGexp());
         player.sendMessage("<7>Total GEXP: <e>{:,}", member.getTotalGexp());
         player.sendMessage("<sep>");
+    }
+
+    // Sends a party invite (via the existing party system) to every online guild member other than
+    // the caller - a party auto-forms with the caller as leader on their first accepted/sent invite,
+    // so no separate "create party" step is needed.
+    private void formGuildParty(HypixelPlayer player) {
+        GuildData guild = GuildManager.getGuildFromPlayer(player);
+        if (guild == null) {
+            player.sendMessage("<c>You are not in a guild!");
+            return;
+        }
+
+        List<UUID> onlineOthers = guild.getMembers().stream()
+            .map(GuildMember::getUuid)
+            .filter(uuid -> !uuid.equals(player.getUuid()))
+            .filter(uuid -> new ProxyPlayer(uuid).isOnline().join())
+            .toList();
+
+        if (onlineOthers.isEmpty()) {
+            player.sendMessage("<c>No online guild members could be formed into a party!");
+            return;
+        }
+
+        player.sendMessage("<e>Inviting {} online guild member(s) to a party...", onlineOthers.size());
+        onlineOthers.forEach(uuid -> PartyManager.invitePlayer(player, HypixelPlayer.getRawName(uuid)));
     }
 
     private void showPermissions(HypixelPlayer player) {
@@ -312,15 +356,17 @@ public class GuildCommand extends HypixelCommand {
             {"create <name>", "Creates a guild with the specified name"}, {"demote <player>", "Demotes the player to the previous rank"},
             {"disband", "Disbands the guild"}, {"discord", "Set or view the guild's discord link"}, {"help", "Prints this help message"},
             {"history", "View the last 24 hours of guild events"}, {"info", "Prints information about your guild"},
-            {"invite <player>", "Invites the player to your guild"}, {"join <guild>", "Request to join the specified guild"},
+            {"invite <player>", "Invites the player to your guild"}, {"join <guild>", "Joins a guild that has open join enabled"},
             {"kick <player> <reason>", "Kicks the player from your guild"}, {"leave", "Leaves your current guild"},
             {"log", "View the audit log"}, {"member", "Displays information about the Guild Member"}, {"members", "Lists players in your guild"},
             {"menu", "Opens the Guild Menu"}, {"motd", "Modifies the MOTD for the Guild"}, {"mute <player/everyone> <time>", "Mutes a player or the whole guild"},
             {"mypermissions", "View your rank's permissions"}, {"notifications", "Toggle guild join/leave notifications"},
             {"officerchat", "Send a chat message to your guild officer chat channel"}, {"online", "Show the current online members of your guild"},
-            {"onlinemode", "Toggle if offline players are displayed in the guild list"}, {"party", "Forms a party from your online Guild Members"},
-            {"permissions", "Modify a rank's permissions"}, {"promote <player>", "Promotes the player to the next rank"},
-            {"quest", "Shows information regarding the current Guild Quest"}, {"rename <name>", "Renames the Guild"},
+            {"onlinemode", "Toggle if offline players are displayed in the guild list"}, {"openjoin", "Toggle whether anyone can /guild join without an invite"},
+            {"party", "Invites your online Guild Members to a party"},
+            {"permissions <rank> <permission>", "Toggles a permission for a rank (Guild Master only)"}, {"promote <player>", "Promotes the player to the next rank"},
+            {"quest", "Shows information regarding the current Guild Quest"}, {"rank create <name>", "Creates a custom rank (Guild Master only)"},
+            {"rank delete <name>", "Deletes a custom rank (Guild Master only)"}, {"rename <name>", "Renames the Guild"},
             {"setrank <player> <rank>", "Sets a player's rank"}, {"settings <setting> <value>", "Modify settings for your guild"},
             {"slow", "Toggle slow chat, requiring guild members to wait 10 seconds between messages"}, {"tag", "Sets the guild [TAG]"},
             {"tagcolor", "Sets the guild tag color"}, {"toggle", "Toggle guild chat for yourself"}, {"top", "Lists the players with most experience earned"},

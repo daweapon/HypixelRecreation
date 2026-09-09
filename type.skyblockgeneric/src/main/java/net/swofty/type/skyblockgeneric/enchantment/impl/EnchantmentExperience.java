@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Experience enchantment: chance for mobs/ores to drop double XP.
 public class EnchantmentExperience implements Ench, EnchFromTable {
 
     public static final double[] CHANCE_PERCENTAGES = new double[]{0.125, 0.25, 0.375, 0.50, 0.625};

@@ -30,6 +30,7 @@ import org.jetbrains.annotations.Range;
 
 import java.util.function.Consumer;
 
+// Default builder implementation for Pagination, accumulating display options before constructing a PaginationImpl.
 final class PaginationBuilder implements Pagination.Builder {
     private int width = Pagination.WIDTH;
     private int resultsPerPage = Pagination.RESULTS_PER_PAGE;

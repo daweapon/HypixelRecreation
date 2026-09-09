@@ -18,6 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+// In-memory matchmaking state: tracks game servers (via heartbeats) and active games, and implements the logic
+// for finding or instantiating a joinable game/server for a requested game type, map, and mode.
 public class OrchestratorCache {
     private static final Map<String, GameServerState> serversByShortName = new ConcurrentHashMap<>();
     private static final Map<UUID, GameWithServer> gamesByGameId = new ConcurrentHashMap<>();

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Vicious enchantment: grants bonus Ferocity.
 public class EnchantmentVicious implements Ench {
 
     public static final int[] FEROCITY_BONUSES = new int[]{3, 4, 5};

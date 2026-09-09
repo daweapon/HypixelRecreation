@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.hub.gui.GUIGeorge;
 
+// NPC for George in the Hub, who opens the GUIGeorge menu on click
 public class NPCGeorge extends HypixelNPC {
 
     public NPCGeorge() {

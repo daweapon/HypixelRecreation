@@ -5,6 +5,7 @@ import net.minestom.server.event.trait.CancellableEvent;
 import net.minestom.server.event.trait.EntityInstanceEvent;
 import org.jetbrains.annotations.NotNull;
 
+// Called before an attack is resolved, allowing the attack to be cancelled before damage is calculated.
 public class PrepareAttackEvent implements EntityInstanceEvent, CancellableEvent {
 
 	private final Entity entity;

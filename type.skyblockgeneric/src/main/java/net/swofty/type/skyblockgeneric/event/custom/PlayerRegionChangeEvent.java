@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.NotNull;
 
+// Fired when a player moves from one SkyBlock region into another
 public class PlayerRegionChangeEvent implements PlayerInstanceEvent {
     private final SkyBlockPlayer player;
     @Getter

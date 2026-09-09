@@ -15,6 +15,7 @@ import org.tinylog.Logger;
 import java.util.List;
 import java.util.Map;
 
+// Loader contract implemented by each lobby variant, defining its items, launch pads, and parkour setup.
 public interface LobbyTypeLoader extends HypixelTypeLoader {
 
     /**

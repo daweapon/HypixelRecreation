@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for a two-tall plant's lower/upper half.
 public enum PlantHalf implements State<PlantHalf> {
     LOWER, UPPER;
 

@@ -6,6 +6,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.*;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 
+// Menu opened by NPC David offering hunting tool and lesson info in Galatea.
 public class GUIDavid extends StatelessView {
 
     @Override

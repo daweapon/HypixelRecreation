@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+// Datapoint storing a player's unlocked and selected collectibles, keyed by category.
 public class DatapointCollectibles extends Datapoint<DatapointCollectibles.CollectiblesState> {
 
 

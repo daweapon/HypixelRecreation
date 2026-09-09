@@ -3,6 +3,7 @@ package net.swofty.type.hub;
 import net.minestom.server.instance.SharedInstance;
 import net.swofty.type.skyblockgeneric.structure.tree.SpawnableTree;
 
+// Places the decorative oak trees in the Hub's forest area.
 public class ForestTreePlacement {
     public static final long DEFAULT_BASE_SEED = 12345L;
 

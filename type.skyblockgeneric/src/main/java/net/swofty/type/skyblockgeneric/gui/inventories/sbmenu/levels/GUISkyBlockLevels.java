@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI hub for SkyBlock level rewards, emblems, and the chat-display toggle
 public class GUISkyBlockLevels extends StatelessView {
 
     @Override

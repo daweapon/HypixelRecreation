@@ -7,6 +7,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.Optional;
 
+// Resolves the wood/plank material a player has selected via the Wood Skins collectible category.
 public final class BedWarsWoodSkinRuntimeService {
 
     private BedWarsWoodSkinRuntimeService() {

@@ -3,6 +3,7 @@ package net.swofty.service.bazaar;
 import net.swofty.commons.protocol.objects.bazaar.BazaarTransactionPushProtocol;
 import net.swofty.commons.protocol.objects.bazaar.BazaarTransactionPushProtocol.Response;
 import net.swofty.commons.skyblock.bazaar.BazaarTransaction;
+import net.swofty.commons.skyblock.bazaar.BuyOrderRefundTransaction;
 import net.swofty.commons.skyblock.bazaar.SuccessfulBazaarTransaction;
 import net.swofty.commons.skyblock.bazaar.OrderExpiredBazaarTransaction;
 import net.swofty.commons.redis.RedisClient;
@@ -11,6 +12,7 @@ import org.tinylog.Logger;
 import java.util.Map;
 import java.util.UUID;
 
+// Broadcasts bazaar transactions to all servers and falls back to storing them as pending if no server handled them.
 public class BazaarPropagator {
 
     private static final BazaarTransactionPushProtocol PROTOCOL = new BazaarTransactionPushProtocol();
@@ -35,6 +37,7 @@ public class BazaarPropagator {
         switch (tx) {
             case SuccessfulBazaarTransaction success -> handleSuccessfulTransactionResponses(success, responses);
             case OrderExpiredBazaarTransaction expired -> handleExpiredTransactionResponses(expired, responses);
+            case BuyOrderRefundTransaction refund -> handleRefundTransactionResponses(refund, responses);
             default -> Logger.warn("Unknown transaction type for response handling: {}", tx.getClass().getSimpleName());
         }
     }
@@ -78,5 +81,22 @@ public class BazaarPropagator {
         }
 
         Logger.debug("Expired order handled — owner={}", ownerHandled);
+    }
+
+    private void handleRefundTransactionResponses(BuyOrderRefundTransaction tx, Map<UUID, Response> responses) {
+        boolean ownerHandled = false;
+
+        for (Response response : responses.values()) {
+            if (response != null && response.success()) {
+                ownerHandled |= response.buyerHandled();
+            }
+        }
+
+        if (!ownerHandled) {
+            Logger.info("Owner {} not handled by any server — storing as pending", tx.owner());
+            PendingTransactionsDatabase.storePendingTransaction(tx.owner(), tx.ownerProfile(), tx);
+        }
+
+        Logger.debug("Refund handled — owner={}", ownerHandled);
     }
 }

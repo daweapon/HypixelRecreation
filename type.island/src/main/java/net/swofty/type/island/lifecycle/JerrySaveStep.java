@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.user.island.IslandLifecyclePhase;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleStep;
 import net.swofty.type.skyblockgeneric.utility.JerryInformation;
 
+// Island lifecycle step that persists Jerry's position and removes his entity/hologram on save.
 public class JerrySaveStep implements IslandLifecycleStep {
     @Override
     public IslandLifecyclePhase phase() {

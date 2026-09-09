@@ -21,6 +21,7 @@ import net.swofty.commons.friend.events.response.*;
         @JsonSubTypes.Type(value = FriendRequestsListResponseEvent.class),
         @JsonSubTypes.Type(value = FriendSettingToggledResponseEvent.class)
 })
+// Base class for friend-system events sent back to a server as a response/notification, as opposed to a client request.
 public abstract class FriendResponseEvent extends FriendEvent {
     public FriendResponseEvent() {
         super();

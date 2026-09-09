@@ -3,6 +3,7 @@ package net.swofty.type.generic.data.datapoints;
 import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.type.generic.data.Datapoint;
 
+// Datapoint wrapper for a plain Boolean value.
 public class DatapointBoolean extends Datapoint<Boolean> {
     private static final JacksonSerializer<Boolean> serializer = new JacksonSerializer<>(Boolean.class);
 

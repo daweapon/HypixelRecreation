@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Alchemist NPC in the Hub, selling brewing and potion ingredients.
 public class GUIShopAlchemist extends ShopView {
     public GUIShopAlchemist() {
         super("Alchemist", DEFAULT);

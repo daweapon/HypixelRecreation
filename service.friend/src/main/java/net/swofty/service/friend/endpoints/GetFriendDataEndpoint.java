@@ -6,6 +6,7 @@ import net.swofty.service.friend.FriendCache;
 import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that returns a player's full friend data.
 public class GetFriendDataEndpoint implements RedisMessageHandler<
         GetFriendDataProtocol.GetFriendDataMessage,
         GetFriendDataProtocol.GetFriendDataResponse> {

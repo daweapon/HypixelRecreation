@@ -2,6 +2,7 @@ package net.swofty.commons.redis;
 
 import java.util.UUID;
 
+// Metadata about an in-flight Redis RPC exchange: request id, origin/destination endpoints, channel, and broadcast flag.
 public record RedisMessageContext(
         UUID requestId,
         RedisEndpoint origin,

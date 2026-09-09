@@ -11,6 +11,7 @@ import java.util.Map;
 @Getter
 @Configuration
 @SuppressWarnings({"unused", "FieldMayBeFinal"})
+// Root configuration schema (config.yml) for host/database connections, auth, integrations, limbo, and resource packs.
 public class Settings {
 
     @Comment("The host name or IP address to bind the server to")

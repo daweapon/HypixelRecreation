@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
 import java.util.function.BooleanSupplier;
 
+// Generic GUI for presenting a single reward item that the player can claim
 public class ClaimRewardView implements View<ClaimRewardView.State> {
 
     public record State(SkyBlockItem rewardItem, BooleanSupplier canClaim, Runnable onClaim, boolean claimed) {

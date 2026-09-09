@@ -14,6 +14,7 @@ import net.swofty.type.generic.user.categories.Rank;
     usage = "/translatablecomponent <string>",
     permission = Rank.STAFF,
     allowsConsole = false)
+// Debug command to preview how a Minecraft TranslatableComponent key renders for the sender.
 public class TranslatableComponentCommand extends HypixelCommand {
 
     @Override

@@ -23,6 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+// Tracks player activity in the lobby and transfers idle players to limbo after an AFK timeout.
 public class LobbyAFKEvents implements HypixelEventClass {
 
     private static final long AFK_TIMEOUT_MS = TimeUnit.MINUTES.toMillis(5);

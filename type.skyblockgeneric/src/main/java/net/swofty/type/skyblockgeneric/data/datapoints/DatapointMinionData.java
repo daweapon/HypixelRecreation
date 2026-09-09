@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Persists which minion types/tiers a profile has ever crafted, used to determine minion slot count.
 public class DatapointMinionData extends SkyBlockDatapoint<DatapointMinionData.ProfileMinionData> {
 
     public DatapointMinionData(String key, DatapointMinionData.ProfileMinionData value) {

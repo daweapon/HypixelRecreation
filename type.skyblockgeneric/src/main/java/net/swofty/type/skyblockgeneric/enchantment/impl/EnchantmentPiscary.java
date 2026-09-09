@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Piscary enchantment: grants bonus Trophy Fish Chance.
 public class EnchantmentPiscary implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Face;
 
+// Placement rule for buttons and levers, setting floor/ceiling/wall face based on the clicked block face.
 public class ButtonAndLeverPlacement extends PlacementRule {
     public ButtonAndLeverPlacement(Block block) {
         super(block);

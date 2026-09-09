@@ -22,6 +22,7 @@ import net.swofty.type.skyblockgeneric.utility.DamageIndicator;
 
 import java.util.Map;
 
+// Computes and applies damage dealt to a player by an attacking SkyBlock mob, including pet mitigation
 public class PlayerActionDamagedAttacked implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.ENTITY, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

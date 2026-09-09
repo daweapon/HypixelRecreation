@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.IntegerState;
 
+// Placement rule for turtle eggs, stacking up to 4 eggs into an existing clutch instead of always placing a new one.
 public class TurtleEggPlacement extends PlacementRule {
 
     private static final IntegerState EGGS = IntegerState.Of("eggs");

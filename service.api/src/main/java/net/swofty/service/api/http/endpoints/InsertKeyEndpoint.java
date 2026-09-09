@@ -14,6 +14,7 @@ import spark.Response;
 import java.util.Map;
 import java.util.Random;
 
+// Admin panel HTTP endpoint that generates and stores a new public API key with a daily usage limit.
 public class InsertKeyEndpoint extends SkyBlockEndpoint {
     private static final String ALLOWED_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     private static final int API_KEY_LENGTH = 32;

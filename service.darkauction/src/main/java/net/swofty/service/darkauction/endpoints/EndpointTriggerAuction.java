@@ -8,6 +8,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import org.tinylog.Logger;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that starts a new Dark Auction (e.g. from a calendar trigger), ignoring the request if one is already active.
 public class EndpointTriggerAuction implements RedisMessageHandler<
         TriggerDarkAuctionProtocol.TriggerMessage,
         TriggerDarkAuctionProtocol.TriggerResponse> {

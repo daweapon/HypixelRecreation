@@ -6,6 +6,7 @@ import net.minestom.server.event.trait.PlayerInstanceEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @Getter
+// Base class for events that let listeners mutate a numeric/object value before it takes effect
 public abstract class ValueUpdateEvent implements PlayerInstanceEvent {
     private final SkyBlockPlayer player;
     @Setter

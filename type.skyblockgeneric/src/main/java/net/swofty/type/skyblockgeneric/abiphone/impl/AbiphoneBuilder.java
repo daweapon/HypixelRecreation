@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.Collections;
 import java.util.List;
 
+// Abiphone contact for the Builder NPC, requiring a donated Builder's Wand before unlocking his contact.
 public class AbiphoneBuilder extends AbiphoneNPC {
 
 	public AbiphoneBuilder() {

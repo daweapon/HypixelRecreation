@@ -16,6 +16,7 @@ import org.jspecify.annotations.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+// MongoDB accessor for ended/inactive auction house listings.
 public record AuctionInactiveDatabase(String auctionId) implements MongoDB {
     public static MongoClient client;
     public static MongoDatabase database;

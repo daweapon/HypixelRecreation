@@ -29,6 +29,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+// Deletes a player's persisted data across account fields and owned MongoDB collections during a profile wipe.
 public final class PlayerWipeService {
     public static final List<HypixelDataHandler.Data> PRESERVED_ACCOUNT_FIELDS = List.of(
             HypixelDataHandler.Data.RANK,
@@ -160,7 +161,7 @@ public final class PlayerWipeService {
         return dropped;
     }
 
-    private static Set<UUID> islandIdsOf(UUID profileId, UUID coopId) {
+    static Set<UUID> islandIdsOf(UUID profileId, UUID coopId) {
         Set<UUID> islandIds = new LinkedHashSet<>();
         islandIds.add(profileId);
 

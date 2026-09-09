@@ -7,6 +7,7 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// Tiny arithmetic expression evaluator used to compute reforge stat bonuses from configured formulas with variable substitution.
 public class ReforgeExpressionEvaluator {
     private static final Pattern VARIABLE_PATTERN = Pattern.compile("\\{([^}]+)\\}");
     private static final Pattern NUMBER_PATTERN = Pattern.compile("-?\\d+(?:\\.\\d+)?");

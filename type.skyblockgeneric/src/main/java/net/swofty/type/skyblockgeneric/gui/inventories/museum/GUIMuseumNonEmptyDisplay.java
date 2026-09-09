@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// GUI showing the items donated to one museum display slot, with retrieval via the item tracker
 public class GUIMuseumNonEmptyDisplay extends HypixelInventoryGUI {
     private static final Map<Integer, int[]> SLOTS = Map.of(
             1, new int[]{13},

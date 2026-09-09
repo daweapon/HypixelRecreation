@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// GUI shown to an invited player, displaying current co-op members/invites and accept/decline actions
 public class GUICoopInviteTarget extends HypixelInventoryGUI {
     private static final Map<Integer, List<Integer>> SLOTS_MAP = new HashMap<>(
             Map.of(

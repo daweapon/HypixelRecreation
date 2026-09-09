@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Tabasco enchantment: grants bonus Trophy Fish Chance while fishing in lava.
 public class EnchantmentTabasco implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

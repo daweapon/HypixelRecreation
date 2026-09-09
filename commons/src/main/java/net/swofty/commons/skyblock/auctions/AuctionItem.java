@@ -16,14 +16,16 @@ import java.util.UUID;
 
 @Getter
 @Setter
+// A single Auction House listing: the item, its seller, timing, BIN/starting price, and accumulated bids, with Mongo/JSON (de)serialization.
 public class AuctionItem {
     private UUID uuid;
     private UUID originator;
+    private UUID sellerProfile;
     private UnderstandableSkyBlockItem item;
     private long endTime;
 
     private boolean isBin;
-    private Integer startingPrice;
+    private Long startingPrice;
 
     private List<Bid> bids;
 
@@ -37,7 +39,7 @@ public class AuctionItem {
         this.item = item;
         this.endTime = endTime;
         this.isBin = isBin;
-        this.startingPrice = Math.toIntExact(startingPrice);
+        this.startingPrice = startingPrice;
 
         this.bids = new ArrayList<>();
     }
@@ -53,7 +55,7 @@ public class AuctionItem {
     }
 
     public Document toDocument() {
-        return new Document()
+        Document document = new Document()
                 .append("_id", uuid.toString())
                 .append("originator", originator.toString())
                 .append("item", new UnderstandableSkyBlockItemSerializer().serialize(item))
@@ -61,16 +63,19 @@ public class AuctionItem {
                 .append("bin", isBin)
                 .append("starting-price", startingPrice)
                 .append("bids", bids.stream().map(Bid::toString).toList());
+        if (sellerProfile != null) document.append("seller_profile", sellerProfile.toString());
+        return document;
     }
 
     public static AuctionItem fromDocument(Document document) {
         AuctionItem item = new AuctionItem();
         item.setUuid(UUID.fromString(document.getString("_id")));
         item.setOriginator(UUID.fromString(document.getString("originator")));
+        if (document.getString("seller_profile") != null) item.setSellerProfile(UUID.fromString(document.getString("seller_profile")));
         item.setItem(new UnderstandableSkyBlockItemSerializer().deserialize(document.getString("item")));
         item.setEndTime(document.getLong("end"));
         item.setBin(document.getBoolean("bin"));
-        item.setStartingPrice(document.getInteger("starting-price"));
+        item.setStartingPrice(((Number) document.get("starting-price")).longValue());
         item.setBids(document.getList("bids", String.class).stream().map(Bid::fromString).toList());
         return item;
     }

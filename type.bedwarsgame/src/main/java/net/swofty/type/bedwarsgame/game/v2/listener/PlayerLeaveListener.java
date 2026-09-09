@@ -11,6 +11,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 
 import java.util.Random;
 
+// Sends a leaving player back to the Bedwars lobby and announces their quit if still waiting.
 public class PlayerLeaveListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

@@ -6,6 +6,7 @@ import net.minestom.server.instance.block.Block;
 import net.swofty.pvp.entity.projectile.ThrownEgg;
 import org.jetbrains.annotations.Nullable;
 
+// Thrown egg variant that lays a line of bridge blocks behind it as it flies.
 public class ThrownBridgeEgg extends ThrownEgg {
 
 	private final Block block;

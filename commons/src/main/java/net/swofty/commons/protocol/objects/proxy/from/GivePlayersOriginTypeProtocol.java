@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 
+// Redis RPC protocol telling a destination server what server type a transferring player is arriving from.
 public class GivePlayersOriginTypeProtocol extends RedisProtocol<
         GivePlayersOriginTypeProtocol.Request,
         GivePlayersOriginTypeProtocol.Response> {

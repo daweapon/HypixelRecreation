@@ -46,6 +46,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// Loader that wires up the Main Lobby server type: spawn, scoreboard, parkour, launch pads, items, NPCs, and events.
 public class TypeMainLobbyLoader implements LobbyTypeLoader {
     public static LobbyParkourManager parkourManager;
     private final Pos spawnPoint = new Pos(-52.5, 97, 0.5, -90, 0);

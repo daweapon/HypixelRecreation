@@ -5,6 +5,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.service.guild.GuildCache;
 
+// Redis endpoint that looks up the guild a given player belongs to, if any.
 public class GetGuildEndpoint implements RedisMessageHandler<
     GetGuildProtocolObject.GetGuildMessage,
     GetGuildProtocolObject.GetGuildResponse> {

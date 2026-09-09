@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.List;
 
+// Backend microservice for the bazaar: connects MongoDB, restores persisted orders into the market, and serves bazaar endpoints.
 public class BazaarService implements SkyBlockService {
 
     static void main(String[] args) {

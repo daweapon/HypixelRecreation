@@ -9,6 +9,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.goldmine.gui.GUIShopIronForger;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// NPC for the Iron Forger, sells iron gear and ingots in the Gold Mine.
 public class NPCIronForger extends HypixelNPC {
 
 	public NPCIronForger() {

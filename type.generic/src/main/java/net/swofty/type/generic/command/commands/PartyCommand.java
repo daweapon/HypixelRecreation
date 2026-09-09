@@ -13,18 +13,22 @@ import net.swofty.type.generic.party.PartyManager;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.user.categories.Rank;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 @CommandParameters(labels = "p party",
         description = "Party management commands",
         usage = "/party <subcommand>",
         permission = Rank.DEFAULT,
         allowsConsole = false)
+// Command exposing party management subcommands, proxied to the party service.
 public class PartyCommand extends HypixelCommand {
-    public List<UUID> pendingCommands = new ArrayList<>();
+    // A plain (non-thread-safe) collection here previously meant any uncaught exception in a
+    // syntax callback below would leave a player's UUID stuck forever, silently no-oping every
+    // future /party command for them (the remove() call never ran). Set + try/finally fixes both
+    // the concurrency hazard and the stuck-forever failure mode.
+    public Set<UUID> pendingCommands = ConcurrentHashMap.newKeySet();
 
     @Override
     public void registerUsage(MinestomCommand command) {
@@ -45,10 +49,9 @@ public class PartyCommand extends HypixelCommand {
             }
 
             pendingCommands.add(player.getUuid());
-
+            try {
             if (!partyService.isOnline().join()) {
                 player.sendMessage(Text.key("commands.common.service_offline_party"));
-                pendingCommands.remove(player.getUuid());
                 return;
             }
 
@@ -110,10 +113,15 @@ public class PartyCommand extends HypixelCommand {
                 case "leave" -> PartyManager.leaveParty(player);
                 case "disband" -> PartyManager.disbandParty(player);
                 case "warp" -> PartyManager.warpParty(player);
+                case "mute" -> PartyManager.toggleMute(player);
+                case "kickoffline", "removeoffline" -> PartyManager.kickOfflineMembers(player);
                 default -> PartyManager.invitePlayer(player, sub);
             }
-
-            pendingCommands.remove(player.getUuid());
+            } catch (Throwable t) {
+                org.tinylog.Logger.error(t, "/party command failed for {}", player.getUsername());
+            } finally {
+                pendingCommands.remove(player.getUuid());
+            }
         }, subcommand);
 
         command.addSyntax((sender, context) -> {
@@ -125,10 +133,9 @@ public class PartyCommand extends HypixelCommand {
             }
 
             pendingCommands.add(player.getUuid());
-
+            try {
             if (!partyService.isOnline().join()) {
                 player.sendMessage(Text.key("commands.common.service_offline_party"));
-                pendingCommands.remove(player.getUuid());
                 return;
             }
 
@@ -136,22 +143,31 @@ public class PartyCommand extends HypixelCommand {
             String target = context.get(playerName);
 
             switch (sub.toLowerCase()) {
-                case "invite" -> PartyManager.invitePlayer(player, target);
+                case "invite", "add" -> PartyManager.invitePlayer(player, target);
                 case "accept" -> PartyManager.acceptInvite(player, target);
-                case "kick" -> PartyManager.kickPlayer(player, target);
+                case "kick", "remove" -> PartyManager.kickPlayer(player, target);
                 case "transfer" -> PartyManager.transferLeadership(player, target);
                 case "promote" -> PartyManager.promotePlayer(player, target);
                 case "demote" -> PartyManager.demotePlayer(player, target);
                 case "hijack" -> PartyManager.hijackParty(player, target);
                 case "chat" -> PartyManager.sendChat(player, target);
+                case "settings" -> {
+                    switch (target.toLowerCase()) {
+                        case "allinvite" -> PartyManager.toggleAllInvite(player);
+                        default -> player.sendMessage(Text.key("commands.common.unknown_command_use_help", "party"));
+                    }
+                }
                 case "movetoserver" -> {
                     UUID targetServer = UUID.fromString(target);
                     player.asProxyPlayer().transferToWithIndication(targetServer);
                 }
                 default -> player.sendMessage(Text.key("commands.common.unknown_command_use_help", "party"));
             }
-
-            pendingCommands.remove(player.getUuid());
+            } catch (Throwable t) {
+                org.tinylog.Logger.error(t, "/party command failed for {}", player.getUsername());
+            } finally {
+                pendingCommands.remove(player.getUuid());
+            }
         }, subcommand, playerName);
 
         command.addSyntax((sender, context) -> {
@@ -163,23 +179,54 @@ public class PartyCommand extends HypixelCommand {
             }
 
             pendingCommands.add(player.getUuid());
-
+            try {
             if (!partyService.isOnline().join()) {
                 player.sendMessage(Text.key("commands.common.service_offline_party_alt"));
-                pendingCommands.remove(player.getUuid());
                 return;
             }
 
             String sub = context.get(subcommand);
-            String message = Arrays.toString(context.get(new ArgumentStringArray("message")));
+            String message = String.join(" ", context.get(new ArgumentStringArray("message")));
 
             switch (sub.toLowerCase()) {
                 case "chat" -> PartyManager.sendChat(player, message);
                 default -> player.sendMessage(Text.key("commands.common.unknown_command_use_help", "party"));
             }
-
-            pendingCommands.remove(player.getUuid());
+            } finally {
+                pendingCommands.remove(player.getUuid());
+            }
         }, subcommand, new ArgumentStringArray("message"));
+
+        ArgumentString settingArg = ArgumentType.String("setting");
+        ArgumentString valueArg = ArgumentType.String("value");
+        command.addSyntax((sender, context) -> {
+            if (!permissionCheck(sender)) return;
+            HypixelPlayer player = (HypixelPlayer) sender;
+
+            if (pendingCommands.contains(player.getUuid())) {
+                return;
+            }
+
+            pendingCommands.add(player.getUuid());
+            try {
+            if (!partyService.isOnline().join()) {
+                player.sendMessage(Text.key("commands.common.service_offline_party"));
+                return;
+            }
+
+            String sub = context.get(subcommand);
+            String setting = context.get(settingArg);
+            String value = context.get(valueArg);
+
+            if (sub.equalsIgnoreCase("settings") && setting.equalsIgnoreCase("size")) {
+                PartyManager.changeSize(player, value);
+            } else {
+                player.sendMessage(Text.key("commands.common.unknown_command_use_help", "party"));
+            }
+            } finally {
+                pendingCommands.remove(player.getUuid());
+            }
+        }, subcommand, settingArg, valueArg);
     }
 
     private void showHelp(HypixelPlayer player) {
@@ -196,6 +243,10 @@ public class PartyCommand extends HypixelCommand {
         player.sendMessage(Text.key("commands.party.help_promote"));
         player.sendMessage(Text.key("commands.party.help_demote"));
         player.sendMessage(Text.key("commands.party.help_chat"));
+        player.sendMessage(Text.key("commands.party.help_settings_size"));
+        player.sendMessage(Text.key("commands.party.help_settings_allinvite"));
+        player.sendMessage(Text.key("commands.party.help_mute"));
+        player.sendMessage(Text.key("commands.party.help_kickoffline"));
         if (player.getRank().isEqualOrHigherThan(Rank.STAFF)) {
             player.sendMessage(Text.key("commands.party.help_hijack"));
         }

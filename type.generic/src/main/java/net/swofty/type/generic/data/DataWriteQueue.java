@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Per-player serial queue for data write operations, ensuring writes for the same key run in order without blocking callers.
 public final class DataWriteQueue {
     private static final long IDLE_POLL_MILLIS = 250;
 

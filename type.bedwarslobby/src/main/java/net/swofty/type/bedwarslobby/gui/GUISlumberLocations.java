@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// GUI providing quick teleports to named locations within the Slumber Hotel lobby area.
 public class GUISlumberLocations extends HypixelInventoryGUI {
 
     public GUISlumberLocations() {

@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Fisherman Gerald in the Hub, who guides players through the fishing/ship-unlock storyline
 public class NPCFishermanGerald extends HypixelNPC {
 
     public NPCFishermanGerald() {

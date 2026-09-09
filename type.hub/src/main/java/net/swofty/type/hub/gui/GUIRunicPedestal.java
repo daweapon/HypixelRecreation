@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// GUI for the Runic Pedestal in the Hub, letting players apply runes to items or fuse two runes together.
 public class GUIRunicPedestal extends HypixelInventoryGUI {
     private static final int MAX_RUNE_LEVEL = 3;
     private static final int[] BOTTOM_SLOTS = {45, 46, 47, 48, 50, 51, 52, 53};

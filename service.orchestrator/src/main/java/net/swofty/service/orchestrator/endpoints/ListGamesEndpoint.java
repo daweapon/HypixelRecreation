@@ -9,6 +9,7 @@ import net.swofty.service.orchestrator.OrchestratorCache;
 import java.util.ArrayList;
 import java.util.List;
 
+// Redis endpoint that lists all known servers and their active games for a given server type.
 public class ListGamesEndpoint implements RedisMessageHandler
         <ListGamesProtocol.ListGamesMessage, ListGamesProtocol.ListGamesResponse> {
 

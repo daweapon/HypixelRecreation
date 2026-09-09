@@ -6,6 +6,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
 import java.util.List;
 
+// Lucky Block reward that instantly fills the opener's team trap queue with a fixed set of traps.
 public class InstantTrapQueueLuckyReward extends LuckyReward {
     public InstantTrapQueueLuckyReward() {
         super("Instant Trap Queue");

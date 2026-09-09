@@ -21,6 +21,6 @@ integrations:
 # Settings related to configuration of Limbo server connections
 limbo:
     host-name: 127.0.0.1
-    port: 65535
+    port: 25565
 # Resource pack settings keyed by pack name (e.g. testingpack, bedwarspack)
 resource-packs: { }

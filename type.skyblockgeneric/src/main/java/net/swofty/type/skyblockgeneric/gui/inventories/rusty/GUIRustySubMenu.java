@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+// Generic paginated GUI for a Rusty (NPC) shop sub-menu over a supplied list of shop entries
 public class GUIRustySubMenu<T extends GUIRustySubMenu.ShopEntry>
         extends HypixelPaginatedGUI<GUIRustySubMenu.DisplayEntry<T>> {
 

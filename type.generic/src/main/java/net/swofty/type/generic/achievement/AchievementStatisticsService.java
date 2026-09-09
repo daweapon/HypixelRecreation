@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Aggregates and caches global achievement unlock statistics/percentages, backed by Redis.
 public class AchievementStatisticsService {
 
     private static final String PLAYERS_KEY = "hsb:stats:players";

@@ -5,6 +5,7 @@ import net.swofty.velocity.testflow.ProxyTestFlowHandler;
 import net.swofty.velocity.testflow.TestFlowManager;
 import org.tinylog.Logger;
 
+// Example/default test flow handler that just logs lifecycle and periodic status events.
 public class SendToHubTestFlowHandler extends ProxyTestFlowHandler {
 
     @Override

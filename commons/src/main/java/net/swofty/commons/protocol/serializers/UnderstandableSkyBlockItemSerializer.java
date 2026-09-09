@@ -11,6 +11,7 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+// Serializes an UnderstandableSkyBlockItem to/from JSON, encoding each ItemAttribute as a keyed field.
 public class UnderstandableSkyBlockItemSerializer implements Serializer<UnderstandableSkyBlockItem> {
 
     @Override

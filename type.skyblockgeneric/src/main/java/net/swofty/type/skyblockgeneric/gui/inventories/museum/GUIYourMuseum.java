@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// GUI for a player's museum overview, linking into weapon, armor, and rarity display categories
 public class GUIYourMuseum extends HypixelInventoryGUI {
     private static final Map<MuseumableItemCategory, Integer> CATEGORY_SLOTS = Map.of(
             MuseumableItemCategory.WEAPONS, 20,

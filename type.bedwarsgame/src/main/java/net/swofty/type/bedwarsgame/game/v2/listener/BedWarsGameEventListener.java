@@ -6,6 +6,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 
+// Reacts to match-timeline advances by updating generator displays and recording upgrades to replay.
 public class BedWarsGameEventListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

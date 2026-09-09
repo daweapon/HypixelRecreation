@@ -6,6 +6,7 @@ import net.swofty.commons.bedwars.map.BedWarsMapsConfig;
 import net.swofty.type.bedwarsgame.TypeBedWarsGameLoader;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Lucky Block reward that encases the player's own bed in protective blocks.
 public class BedCoverLuckyReward extends LuckyReward {
     public BedCoverLuckyReward() {
         super("Protective Bed Cover");

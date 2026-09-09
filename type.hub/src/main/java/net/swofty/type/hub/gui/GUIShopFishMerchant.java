@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Fish Merchant NPC in the Hub, selling fish and a fishing rod.
 public class GUIShopFishMerchant extends ShopView {
     public GUIShopFishMerchant() {
         super("Fish Merchant", DEFAULT);

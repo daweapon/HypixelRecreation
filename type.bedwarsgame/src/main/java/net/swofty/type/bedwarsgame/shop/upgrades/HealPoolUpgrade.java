@@ -19,6 +19,7 @@ import net.swofty.type.game.game.GameState;
 
 import java.util.List;
 
+// Team upgrade that adds a periodic healing pool at the team's base.
 public class HealPoolUpgrade extends TeamUpgrade {
 
 	public HealPoolUpgrade() {

@@ -16,6 +16,7 @@ import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
 
+// MongoDB accessor for persisted Ravengard regions (bounds, type, server) used to seed the region cache.
 public record RavengardRegionDatabase(String id) implements MongoDB {
     public static MongoDatabase database;
     public static MongoCollection<Document> collection;

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Optional;
 
+// Seasonal events (with date ranges) that gate the availability of event-locked collectibles.
 public enum CollectibleEvent {
     EASTER("Easter",
         LocalDate.of(2026, 1, 1),

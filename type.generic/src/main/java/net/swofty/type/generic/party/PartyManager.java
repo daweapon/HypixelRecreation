@@ -111,6 +111,29 @@ public class PartyManager {
         send(new PartyAction.Warp(warper.getUuid()));
     }
 
+    public static void changeSize(HypixelPlayer setter, String sizeText) {
+        int size;
+        try {
+            size = Integer.parseInt(sizeText);
+        } catch (NumberFormatException e) {
+            sendError(setter, "<c>Party size must be a number!");
+            return;
+        }
+        send(new PartyAction.ChangeSize(setter.getUuid(), size));
+    }
+
+    public static void toggleAllInvite(HypixelPlayer setter) {
+        send(new PartyAction.ToggleAllInvite(setter.getUuid()));
+    }
+
+    public static void toggleMute(HypixelPlayer setter) {
+        send(new PartyAction.ToggleMute(setter.getUuid()));
+    }
+
+    public static void kickOfflineMembers(HypixelPlayer kicker) {
+        send(new PartyAction.KickOffline(kicker.getUuid()));
+    }
+
     public static void sendChat(HypixelPlayer player, String message) {
         send(new PartyAction.Chat(player.getUuid(), message));
     }

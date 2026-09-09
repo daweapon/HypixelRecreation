@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.concurrent.CompletableFuture;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that resolves a matchmaking request into a specific server/game to join, per-game-type (Bedwars, Murder Mystery, Skywars, Ravengard Dungeon), instantiating a new game if none is joinable.
 public class GetServerForMapEndpoint implements RedisMessageHandler
 		<GetServerForMapProtocol.GetServerForMapMessage,
 				GetServerForMapProtocol.GetServerForMapResponse> {

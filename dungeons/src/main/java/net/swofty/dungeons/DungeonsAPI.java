@@ -1,5 +1,6 @@
 package net.swofty.dungeons;
 
+// Entry point for obtaining a validated GeneratorService for a given dungeon layout configuration.
 public class DungeonsAPI {
     /**
      * Get a new instance of the {@link DungeonsData} class.

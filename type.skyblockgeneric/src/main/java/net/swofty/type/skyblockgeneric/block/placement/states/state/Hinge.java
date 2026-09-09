@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for a door's hinge side.
 public enum Hinge implements State<Hinge> {
     LEFT, RIGHT;
 

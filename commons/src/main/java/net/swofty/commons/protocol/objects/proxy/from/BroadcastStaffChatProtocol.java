@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 
+// Redis RPC protocol for pushing a staff chat message (or join/leave notice) from the proxy out to a backend server.
 public class BroadcastStaffChatProtocol extends RedisProtocol<
         BroadcastStaffChatProtocol.Request,
         BroadcastStaffChatProtocol.Response> {

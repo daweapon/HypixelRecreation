@@ -27,6 +27,7 @@ import org.tinylog.Logger;
 
 import java.util.List;
 
+// GUI for the Dark Auction event in the Hub, showing the current auction item and allowing players to place bids.
 public class GUIDarkAuction extends HypixelInventoryGUI implements RefreshingGUI {
     private static final ProxyService darkAuctionService = new ProxyService(ServiceType.DARK_AUCTION);
 

@@ -3,6 +3,7 @@ package net.swofty.type.dwarvenmines.commission;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 
+// A single Dwarven Mines commission task, pairing an objective with a display description.
 public class Commission {
     public final String name;
     public final CommissionCategory category;

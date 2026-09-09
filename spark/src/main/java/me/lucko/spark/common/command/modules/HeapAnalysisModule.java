@@ -49,6 +49,7 @@ import java.util.logging.Level;
 import static net.kyori.adventure.text.Component.text;
 import static net.kyori.adventure.text.format.NamedTextColor.*;
 
+// Command module implementing "/spark heapsummary": captures and reports a heap dump summary of the server's memory usage.
 public class HeapAnalysisModule implements CommandModule {
 
     @Override

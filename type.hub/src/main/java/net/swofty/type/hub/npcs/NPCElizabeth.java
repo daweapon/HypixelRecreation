@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Elizabeth, who runs the Hub's Community/Bits Shop for players above SkyBlock level 3
 public class NPCElizabeth extends HypixelNPC {
 
     public NPCElizabeth() {

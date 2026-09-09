@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.SoulflowComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI confirming consumption of a Soulflow item to add to the player's Soulflow balance
 public class GUIConsumeSoulflow implements View<GUIConsumeSoulflow.State> {
 
 	public record State(SkyBlockItem item) {

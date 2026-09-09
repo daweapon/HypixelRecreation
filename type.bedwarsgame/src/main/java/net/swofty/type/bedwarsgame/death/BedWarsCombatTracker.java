@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
+// Tracks the most recent player-vs-player attacker/weapon per victim for kill/assist attribution.
 public class BedWarsCombatTracker {
 
     public static final Tag<String> LAST_ATTACKER_UUID = Tag.String("bedwars_last_attacker_uuid");

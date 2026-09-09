@@ -7,6 +7,7 @@ import net.minestom.server.item.ItemStack;
 
 import java.util.List;
 
+// Common contract for a placeable, item-storing chest (single or double) in the world.
 public interface Chest {
 
     String getName();

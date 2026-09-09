@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Librarian NPC in the Hub, selling books and basic enchanted books.
 public class GUIShopLibrarian extends ShopView {
     public GUIShopLibrarian() {
         super("Librarian", DEFAULT);

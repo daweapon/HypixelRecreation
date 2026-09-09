@@ -9,6 +9,7 @@ import net.swofty.anticheat.math.Pos;
 
 import java.util.UUID;
 
+// Converts between Minestom's combined position+rotation packet and a PositionAndRotationPacket.
 public class MinestomHandlerPositionAndRotationPacket
         extends LoaderPacketHandler<ClientPlayerPositionAndRotationPacket> {
 

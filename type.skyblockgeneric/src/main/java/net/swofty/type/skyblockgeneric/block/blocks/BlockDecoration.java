@@ -19,6 +19,7 @@ import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.generic.utility.BlockUtility;
 
+// Custom block behaviour for placeable head/decoration items, applying skull textures on place and returning the item on break.
 public class BlockDecoration implements CustomSkyBlockBlock, BlockPlaceable, BlockBreakable {
 
     private final Tag<String> ITEM_TYPE_TAG = Tag.String("item_type");

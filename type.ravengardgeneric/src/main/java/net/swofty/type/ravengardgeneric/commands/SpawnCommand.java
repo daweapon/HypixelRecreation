@@ -17,6 +17,7 @@ import java.util.List;
         usage = "/spawn <mob>",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command that spawns a named Ravengard mob at the player's position.
 public class SpawnCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

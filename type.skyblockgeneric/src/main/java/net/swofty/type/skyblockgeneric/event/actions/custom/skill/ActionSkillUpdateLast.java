@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkillCategory;
 import net.swofty.type.skyblockgeneric.event.custom.SkillUpdateEvent;
 
+// Tracks the most recently increased skill so it can be shown elsewhere in the UI
 public class ActionSkillUpdateLast implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

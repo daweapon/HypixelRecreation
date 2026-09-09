@@ -14,6 +14,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 
+// Applies scoreboard-team color/prefix to a player once they're assigned a Bedwars team.
 public class PlayerTeamAssignationListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

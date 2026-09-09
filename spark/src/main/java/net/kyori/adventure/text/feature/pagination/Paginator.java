@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.RandomAccess;
 import java.util.function.ObjIntConsumer;
 
+// Helper for iterating just the slice of a collection that falls on a given page.
 interface Paginator {
     @SuppressWarnings("unchecked")
     static <T> void forEachPageEntry(final @NotNull Collection<? extends T> content, final int pageSize, final int page, final @NotNull ObjIntConsumer<? super T> consumer) {

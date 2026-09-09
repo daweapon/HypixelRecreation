@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+// Loads and persists the world's placed SkyBlock crystals (server orbs) from/to a YAML catalog
+// file, and provides lookups by server type and proximity.
 public final class CrystalCatalog {
     private static final String RESOURCE = "/Minestom.crystals.yml";
     private static final Path LOCATION_FILE = Path.of("configuration/skyblock/Minestom.crystals.yml");

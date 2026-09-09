@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.block.placement.BlockUtils;
 import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 
+// Placement rule for twisting vines, converting the block below into the growable "plant" variant.
 public class TwistingVinesPlacement extends PlacementRule {
 
     public TwistingVinesPlacement() {

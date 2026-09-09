@@ -14,6 +14,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.user.categories.Rank;
 
+// Announces staff joins and loads BedWars level/experience display when spawning in the BedWars lobby.
 public class ActionPlayerDataSpawn implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER_DATA, requireDataLoaded = false, isAsync = true)

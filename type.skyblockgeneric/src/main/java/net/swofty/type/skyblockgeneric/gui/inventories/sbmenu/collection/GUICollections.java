@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI hub for browsing item collection categories and overall progress
 public class GUICollections extends StatelessView {
     private static final int[] DISPLAY_SLOTS = {
             20, 21, 22, 23, 24,

@@ -5,6 +5,7 @@ import net.minestom.server.instance.block.rule.BlockPlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 
+// Fallback no-op placement rule used for blocks that don't match any other placement rule.
 public class UnknownPlacement extends PlacementRule {
 
     public UnknownPlacement(Block block) {

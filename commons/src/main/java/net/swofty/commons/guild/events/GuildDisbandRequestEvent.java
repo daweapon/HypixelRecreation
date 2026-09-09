@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: the guild master requested disbanding the guild.
 public class GuildDisbandRequestEvent extends GuildEvent {
     @NotNull
     private UUID disbander;

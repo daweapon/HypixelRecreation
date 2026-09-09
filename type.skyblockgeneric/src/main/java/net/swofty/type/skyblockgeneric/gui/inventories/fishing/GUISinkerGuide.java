@@ -12,6 +12,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import net.swofty.type.skyblockgeneric.fishing.rod.FishingPartCategory;
 
+// GUI listing available fishing rod sinkers and their effects
 public class GUISinkerGuide extends StatelessView {
     private static final int[] PART_SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20};
 

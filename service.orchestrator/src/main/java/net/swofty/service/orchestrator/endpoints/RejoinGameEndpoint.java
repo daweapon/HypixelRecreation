@@ -11,6 +11,7 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that checks whether a player has a disconnected game to rejoin and, if so, returns its hosting server.
 public class RejoinGameEndpoint implements RedisMessageHandler<
         RejoinGameProtocol.RejoinGameRequest,
         RejoinGameProtocol.RejoinGameResponse> {

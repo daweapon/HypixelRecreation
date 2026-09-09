@@ -42,6 +42,7 @@ import static net.kyori.adventure.text.format.NamedTextColor.*;
 import static net.kyori.adventure.text.format.TextDecoration.BOLD;
 
 // this is to patch a bug in Spark
+// Command module implementing "/spark gcmonitor": reports garbage collection events and their pause durations.
 public class GcMonitoringModule implements CommandModule {
     private static final DecimalFormat DF = new DecimalFormat("#.##");
 

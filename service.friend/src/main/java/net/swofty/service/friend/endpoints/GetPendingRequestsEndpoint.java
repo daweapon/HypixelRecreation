@@ -8,6 +8,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import java.util.List;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that returns the pending friend requests addressed to a given player.
 public class GetPendingRequestsEndpoint implements RedisMessageHandler<
         GetPendingFriendRequestsProtocol.GetPendingRequestsMessage,
         GetPendingFriendRequestsProtocol.GetPendingRequestsResponse> {

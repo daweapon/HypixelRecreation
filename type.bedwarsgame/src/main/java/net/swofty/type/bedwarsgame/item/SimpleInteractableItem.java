@@ -18,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Function;
 
+// Base class for custom Bedwars hotbar/utility items with stubbed use/place/drop hooks.
 @Getter
 public abstract class SimpleInteractableItem {
 

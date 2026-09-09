@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Serializes a chunk region of a game instance into compressed map data for replay upload.
 public final class MapSerializer {
 
     private static final int CHUNK_SECTION_SIZE = 16;

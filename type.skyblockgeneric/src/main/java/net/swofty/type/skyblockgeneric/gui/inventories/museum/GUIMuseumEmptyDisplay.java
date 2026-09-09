@@ -33,6 +33,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+// GUI for donating items to fill an empty museum display slot
 public class GUIMuseumEmptyDisplay extends HypixelPaginatedGUI<Object> {
     private final MuseumDisplays display;
     private final int position;

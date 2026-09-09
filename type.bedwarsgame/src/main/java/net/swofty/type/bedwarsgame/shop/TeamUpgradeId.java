@@ -2,6 +2,7 @@ package net.swofty.type.bedwarsgame.shop;
 
 import net.minestom.server.tag.Tag;
 
+// Identifiers for each team upgrade type, each carrying its own persisted level tag.
 public enum TeamUpgradeId {
     SHARPNESS("sharpness"),
     REINFORCED_ARMOR("reinforced_armor"),

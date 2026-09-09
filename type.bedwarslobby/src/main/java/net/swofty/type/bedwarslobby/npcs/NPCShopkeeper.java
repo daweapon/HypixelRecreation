@@ -7,6 +7,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// NPC that opens the Bedwars menu/shop GUI on click.
 public class NPCShopkeeper extends HypixelNPC {
 
     public NPCShopkeeper() {

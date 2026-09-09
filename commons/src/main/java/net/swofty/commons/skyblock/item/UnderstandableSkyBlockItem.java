@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+// Transport-friendly snapshot of a SkyBlock item (type, material, amount, and attributes) used for cross-server serialization.
 public record UnderstandableSkyBlockItem(@Nullable ItemType itemKey, List<ItemAttribute> attributes,
                                          int amount, Material material) {
     public UnderstandableSkyBlockItem() {

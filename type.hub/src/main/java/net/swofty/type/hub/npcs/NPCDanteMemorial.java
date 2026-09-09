@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// NPC for Dante's memorial in the Hub, a tribute displaying a farewell message on click
 public class NPCDanteMemorial extends HypixelNPC {
 
     public NPCDanteMemorial() {

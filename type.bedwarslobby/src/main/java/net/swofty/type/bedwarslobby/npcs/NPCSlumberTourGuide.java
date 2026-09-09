@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 
+// NPC that opens the Slumber Locations teleport menu on click.
 public class NPCSlumberTourGuide extends HypixelNPC {
 
 	public NPCSlumberTourGuide() {

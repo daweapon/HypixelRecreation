@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Tracks stacking Lethality defense-reduction debuffs applied to mobs, expiring stacks over time.
 public class LethalityDebuff {
 
     public static final double[] DEFENSE_REDUCTION_PERCENTAGES = new double[]{0.012, 0.024, 0.036, 0.048, 0.06, 0.09};

@@ -18,6 +18,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.List;
 
+// Persists a player's raw skill XP per category and skill-derived item statistics, with level/
+// progress calculations that respect the unlocked level cap.
 public class DatapointSkills extends SkyBlockDatapoint<DatapointSkills.PlayerSkills> {
     private static final Serializer<PlayerSkills> serializer = new Serializer<>() {
 

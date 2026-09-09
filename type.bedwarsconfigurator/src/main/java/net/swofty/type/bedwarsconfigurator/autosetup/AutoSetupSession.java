@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Per-player in-progress state for the /autosetup map configuration wizard (bounds, teams, generators).
 @Getter
 @Setter
 public class AutoSetupSession {

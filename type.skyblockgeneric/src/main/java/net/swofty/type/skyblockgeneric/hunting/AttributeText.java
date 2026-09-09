@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// Renders hunting attribute description text: strips wiki-style markup, wraps for display, and
+// substitutes level-scaled effect values (including upgrade before/after diffs).
 public final class AttributeText {
     private static final Pattern LINK = Pattern.compile("\\[\\[([^]|]+)(?:\\|([^]]+))?]]");
     private static final Pattern TEMPLATE = Pattern.compile("\\{\\{([^{}]+)}}");

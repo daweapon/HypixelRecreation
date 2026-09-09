@@ -29,6 +29,7 @@ import java.util.stream.Stream;
         permission = Rank.DEFAULT,
         allowsConsole = false
 )
+// Command that loads (and caches) captured .polar world files and teleports the player into them, for world review.
 public class SwitchCommand extends HypixelCommand {
     private static final Path CAPTURES = Path.of("configuration/world/captures");
     private static final String EXTENSION = ".polar";

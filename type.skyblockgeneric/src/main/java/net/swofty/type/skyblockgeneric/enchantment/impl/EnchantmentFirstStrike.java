@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// First Strike enchantment: boosts melee damage on the first hit against a mob.
 public class EnchantmentFirstStrike implements Ench, EnchFromTable, EventBasedEnchant {
 
     public static final double[] MULTIPLIERS = new double[]{25, 50, 75, 100, 125};

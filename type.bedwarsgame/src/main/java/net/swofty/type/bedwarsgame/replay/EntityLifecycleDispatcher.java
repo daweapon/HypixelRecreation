@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+// Replay dispatcher that tracks entity spawn/despawn, equipment, and effect changes for recording.
 public class EntityLifecycleDispatcher implements ReplayDispatcher {
     private ReplayRecorder recorder;
     private final Instance instance;

@@ -13,6 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Wraps a Minestom Block with its custom SkyBlock type, attributes, and facing, converting between the two.
 public class SkyBlockBlock {
     public List<BlockAttribute<?>> attributes = new ArrayList<>();
     public final Class<? extends CustomSkyBlockBlock> clazz;

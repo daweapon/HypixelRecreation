@@ -5,6 +5,8 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointBankData;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Manages the personal (remote) bank upgrade levels: unlock/collection requirements, coin costs,
+// and the remote-use cooldown for each level.
 public final class PersonalBankService {
     public static final int[] COLLECTION = {15_000, 50_000, 100_000, 250_000};
     public static final double[] COST = {0, 200_000, 1_000_000, 5_000_000};

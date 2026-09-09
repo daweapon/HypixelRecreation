@@ -11,6 +11,7 @@ import net.minestom.server.event.player.PlayerSpawnEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+// Global registry of DefinedFeatures that wires up per-player init (join/spawn/respawn) listeners for each feature.
 public class CombatFeatureRegistry {
 	private static final EventNode<Event> initNode = EventNode.all("combat-feature-init");
 	private static final List<DefinedFeature<?>> features = new ArrayList<>();

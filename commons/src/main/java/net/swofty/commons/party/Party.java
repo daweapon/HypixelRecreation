@@ -12,6 +12,7 @@ import java.util.UUID;
         @JsonSubTypes.Type(value = FullParty.class, name = "FullParty"),
         @JsonSubTypes.Type(value = PendingParty.class, name = "PendingParty")
 })
+// Sealed union of a party's two possible states: fully formed (FullParty) or awaiting an invite response (PendingParty).
 public sealed interface Party permits FullParty, PendingParty {
     List<UUID> getParticipants();
 }

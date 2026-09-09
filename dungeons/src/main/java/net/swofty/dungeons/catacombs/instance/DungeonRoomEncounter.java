@@ -6,6 +6,7 @@ import net.swofty.dungeons.catacombs.mob.DungeonMobInstance;
 import java.util.ArrayList;
 import java.util.List;
 
+// Tracks the mobs spawned in one dungeon room and whether the room has been cleared and its key dropped.
 public final class DungeonRoomEncounter {
     private final int roomId;
     private final List<DungeonMobInstance> mobs = new ArrayList<>();

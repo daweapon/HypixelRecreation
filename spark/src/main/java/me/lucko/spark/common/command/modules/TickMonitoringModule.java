@@ -35,6 +35,7 @@ import java.util.function.Consumer;
 
 import static net.kyori.adventure.text.Component.text;
 
+// Command module implementing "/spark tickmonitor": reports individual tick durations that exceed a threshold.
 public class TickMonitoringModule implements CommandModule {
 
     /**

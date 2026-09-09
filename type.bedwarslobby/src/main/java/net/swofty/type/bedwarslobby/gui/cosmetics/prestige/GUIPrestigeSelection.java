@@ -23,6 +23,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import java.util.Comparator;
 import java.util.List;
 
+// Base class for paginated prestige-cosmetic selection GUIs (schemes, stars, brackets).
 public abstract class GUIPrestigeSelection extends CollectibleSelectionView {
     private static final int[] PRESTIGE_SLOTS = {
         10, 13, 14, 15, 16,

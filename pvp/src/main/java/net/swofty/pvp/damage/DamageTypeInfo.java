@@ -9,6 +9,7 @@ import net.minestom.server.registry.RegistryKey;
 import java.util.HashMap;
 import java.util.Map;
 
+// Per-damage-type metadata (armor bypass, fire, fall, explosive, etc.) used to drive combat resolution rules.
 public record DamageTypeInfo(boolean damagesHelmet, boolean bypassesArmor, boolean outOfWorld,
 							 boolean unblockable, boolean fire, ScaleWithDifficulty scaleWithDifficulty,
 							 boolean magic, boolean explosive, boolean fall, boolean thorns, boolean projectile,

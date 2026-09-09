@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+// GUI for picking a unit price within the market spread when placing a bazaar buy/sell order
 public class GUIBazaarPriceSelection extends HypixelInventoryGUI implements RefreshingGUI {
     private CompletableFuture<Double> future = new CompletableFuture<>();
     private final boolean isSellOrder;

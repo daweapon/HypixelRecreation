@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: directly sets a member's rank to a named rank.
 public class GuildSetRankRequestEvent extends GuildEvent {
     @NotNull
     private UUID setter;

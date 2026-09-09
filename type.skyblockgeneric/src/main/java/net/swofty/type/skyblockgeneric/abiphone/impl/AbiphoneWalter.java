@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.Collections;
 import java.util.List;
 
+// Abiphone contact for Walter, the Superboom TNT seller, unlocked by donating an Enchanted Sulphur Cube.
 public class AbiphoneWalter extends AbiphoneNPC {
 
 	public AbiphoneWalter() {

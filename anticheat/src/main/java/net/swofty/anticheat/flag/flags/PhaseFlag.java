@@ -10,6 +10,7 @@ import net.swofty.anticheat.world.PlayerWorld;
 
 import java.util.concurrent.CompletableFuture;
 
+// Detects noclip/phase hacks by checking whether the player is inside or has moved through solid blocks.
 public class PhaseFlag extends Flag {
 
     @ListenerMethod

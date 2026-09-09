@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Persists the arrows/items placed in a player's quiver slots.
 public class DatapointQuiver extends SkyBlockDatapoint<DatapointQuiver.PlayerQuiver> {
     public static Serializer<PlayerQuiver> serializer = new Serializer<>() {
         @Override

@@ -10,6 +10,7 @@ import net.swofty.pvp.enchantment.CombatEnchantment;
 import net.swofty.pvp.feature.config.FeatureConfiguration;
 import net.swofty.pvp.feature.enchantment.EnchantmentFeature;
 
+// Implements the protection-family enchantments (all, fire, fall, blast, projectile) and their damage reduction.
 public class ProtectionEnchantment extends CombatEnchantment {
 	private final Type type;
 

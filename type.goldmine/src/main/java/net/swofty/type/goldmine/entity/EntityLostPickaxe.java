@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.mission.missions.goldmine.lazyminer.Missi
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.joml.Quaternionf;
 
+// Interactable pickaxe display entity in the Gold Mine for the Lazy Miner's lost pickaxe mission.
 public class EntityLostPickaxe extends LivingEntity {
 
 	private static final float width = 0.55f;

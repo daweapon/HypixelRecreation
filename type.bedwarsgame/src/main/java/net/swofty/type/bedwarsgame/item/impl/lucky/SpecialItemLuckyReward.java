@@ -6,6 +6,7 @@ import net.swofty.type.bedwarsgame.TypeBedWarsGameLoader;
 import net.swofty.type.bedwarsgame.item.impl.LuckySpecialItem;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Lucky Block reward that hands the opener a configured LuckySpecialItem variant.
 public class SpecialItemLuckyReward extends LuckyReward {
     private final Material material;
     private final String action;

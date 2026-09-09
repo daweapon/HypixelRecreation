@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Implements the Thorns enchantment, reflecting damage back onto attackers and damaging the worn equipment.
 public class ThornsEnchantment extends CombatEnchantment {
 	public ThornsEnchantment(EquipmentSlot... slotTypes) {
 		super(Enchantment.THORNS, Set.of(FeatureType.ITEM_DAMAGE), slotTypes);

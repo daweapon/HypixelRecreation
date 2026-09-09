@@ -1,5 +1,6 @@
 package net.swofty.type.dwarvenmines.commission;
 
+// Describes what a Dwarven Mines commission requires: the action type, target, amount, location, and event.
 public class Objective {
 	public final ObjectiveType type;
 	public final BlockTarget target;

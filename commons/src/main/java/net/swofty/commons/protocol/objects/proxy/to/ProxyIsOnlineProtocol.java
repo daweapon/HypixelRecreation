@@ -5,6 +5,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for a server to check with the proxy whether it (the requester) is currently registered/online.
 public class ProxyIsOnlineProtocol extends RedisProtocol<
         ProxyIsOnlineProtocol.Request,
         ProxyIsOnlineProtocol.Response> {

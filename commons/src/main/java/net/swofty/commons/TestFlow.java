@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import java.util.List;
 
+// Server-local holder for the currently active isolated test flow name and its participating players.
 public class TestFlow {
     @Getter
     @Setter

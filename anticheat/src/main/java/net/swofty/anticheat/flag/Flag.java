@@ -6,6 +6,7 @@ import net.swofty.anticheat.event.AntiCheatListener;
 
 @Getter
 @Setter
+// Base class for a single detection check, carrying the certainty and timestamp of one flag instance.
 public abstract class Flag extends AntiCheatListener {
     private final long timestamp;
 

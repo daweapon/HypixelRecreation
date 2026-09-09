@@ -3,6 +3,7 @@ package net.swofty.type.generic.achievement;
 import lombok.Getter;
 import net.minestom.server.item.Material;
 
+// The kinds of achievements: one-time challenges, multi-tier progressive achievements, and seasonal/event ones.
 @Getter
 public enum AchievementType {
     CHALLENGE("Challenge", "One-time achievements", Material.DIAMOND),

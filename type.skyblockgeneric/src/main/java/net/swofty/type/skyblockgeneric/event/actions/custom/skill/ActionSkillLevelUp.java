@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Arrays;
 
+// Announces skill level-ups and grants their unlock rewards
 public class ActionSkillLevelUp implements HypixelEventClass {
 
 

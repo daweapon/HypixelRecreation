@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 
+// Restores a reconnecting player's state into their in-progress Bedwars game.
 public class PlayerRejoinGameListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

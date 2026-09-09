@@ -9,6 +9,7 @@ import net.swofty.dungeons.GeneratorService;
 import net.swofty.dungeons.catacombs.CatacombsFloorDefinition;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Builds a GeneratorService configured for a specific CatacombsFloorDefinition's size and room counts.
 public final class CatacombsGenerator {
     public static GeneratorService generator(CatacombsFloorDefinition definition) {
         DungeonsData data = new DungeonsData(

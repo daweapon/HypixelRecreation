@@ -11,16 +11,34 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// A fully-formed party with its roster of members and their roles (leader/moderator/member).
 public final class FullParty implements Party {
+    // Real Hypixel has no fixed party size cap - the leader can set it anywhere from 2 to 100.
+    public static final int MIN_SIZE = 2;
+    public static final int MAX_SIZE = 100;
+    public static final int DEFAULT_SIZE = 20;
+
     private final UUID uuid;
     private final List<Member> members;
+    @Setter
+    private int maxSize;
+    @Setter
+    private boolean allowAllInvite;
+    @Setter
+    private boolean muted;
 
     @JsonCreator
     public FullParty(
             @JsonProperty("uuid") UUID uuid,
-            @JsonProperty("members") List<Member> members) {
+            @JsonProperty("members") List<Member> members,
+            @JsonProperty("maxSize") Integer maxSize,
+            @JsonProperty("allowAllInvite") boolean allowAllInvite,
+            @JsonProperty("muted") boolean muted) {
         this.uuid = uuid;
         this.members = members;
+        this.maxSize = maxSize != null ? maxSize : DEFAULT_SIZE;
+        this.allowAllInvite = allowAllInvite;
+        this.muted = muted;
     }
 
     public Member getFromUuid(UUID uuid) {
@@ -35,7 +53,7 @@ public final class FullParty implements Party {
         Member leaderMember = new Member(leader, Role.LEADER, true);
         Member inviteeMember = new Member(invitee, Role.MEMBER, true);
 
-        return new FullParty(UUID.randomUUID(), new ArrayList<>(List.of(leaderMember, inviteeMember)));
+        return new FullParty(UUID.randomUUID(), new ArrayList<>(List.of(leaderMember, inviteeMember)), DEFAULT_SIZE, false, false);
     }
 
     @Override

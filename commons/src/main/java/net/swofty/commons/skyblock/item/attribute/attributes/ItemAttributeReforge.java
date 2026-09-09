@@ -6,6 +6,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
+// Item attribute storing an item's applied reforge, validated against the ReforgeLoader registry.
 public class ItemAttributeReforge extends ItemAttribute<String> {
     @Override
     public String getKey() {

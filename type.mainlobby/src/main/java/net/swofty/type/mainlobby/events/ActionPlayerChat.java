@@ -15,6 +15,7 @@ import net.swofty.type.generic.user.categories.Rank;
 
 import java.util.List;
 
+// Routes Main Lobby chat messages to the correct channel (all, party, or staff).
 public class ActionPlayerChat implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

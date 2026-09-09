@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Builds CollectibleDefinitions for prestige schemes/stars/brackets from BedWarsPrestigeDefinitions.
 public final class PrestigeCollectibleFactory {
 
     public static List<CollectibleDefinition> definitions() {

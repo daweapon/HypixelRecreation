@@ -7,6 +7,7 @@ import net.swofty.commons.protocol.Serializer;
 import java.util.List;
 import java.util.Map;
 
+// Redis RPC protocol for registering a new isolated test flow and its expected server configuration with the proxy.
 public class RegisterTestFlowProtocol extends RedisProtocol<
         RegisterTestFlowProtocol.Request,
         RegisterTestFlowProtocol.Response> {

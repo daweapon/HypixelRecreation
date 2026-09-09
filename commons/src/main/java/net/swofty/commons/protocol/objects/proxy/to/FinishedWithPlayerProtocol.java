@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 
+// Redis RPC protocol notifying the proxy that a server has finished processing a player and it may proceed with its transfer.
 public class FinishedWithPlayerProtocol extends RedisProtocol<
         FinishedWithPlayerProtocol.Request,
         FinishedWithPlayerProtocol.Response> {

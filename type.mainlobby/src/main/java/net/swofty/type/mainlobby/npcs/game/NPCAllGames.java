@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.lobby.gui.GUIGameMenu;
 
+// NPC in the Main Lobby that opens the all-games menu GUI.
 public class NPCAllGames extends HypixelNPC {
 
     public NPCAllGames() {

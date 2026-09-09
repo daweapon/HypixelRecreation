@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Persists a player's trophy fish catches per fish (bronze/silver/gold/diamond counts and
+// pity-timer progress toward the next gold/diamond catch).
 public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.TrophyFishData> {
     private static final Serializer<TrophyFishData> serializer = new Serializer<>() {
         @Override

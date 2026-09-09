@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Half;
 
+// Placement rule for trapdoors, choosing top/bottom half and facing from the clicked face and cursor position.
 public class TrapdoorPlacement extends PlacementRule {
     public TrapdoorPlacement(Block block) {
         super(block);

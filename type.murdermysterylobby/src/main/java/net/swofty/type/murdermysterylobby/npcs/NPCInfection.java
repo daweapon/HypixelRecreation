@@ -43,7 +43,7 @@ public class NPCInfection extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().sendMessage("<7>Infection is coming soon...");
         event.player().notImplemented();
+        event.player().sendMessage("<7>Infection is coming soon...");
     }
 }

@@ -10,6 +10,7 @@ import org.tinylog.Logger;
 import java.util.Optional;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that revokes a player's active punishment of a given type.
 public class UnpunishPlayerEndpoint implements RedisMessageHandler
         <UnpunishPlayerProtocol.UnpunishPlayerMessage,
                 UnpunishPlayerProtocol.UnpunishPlayerResponse> {

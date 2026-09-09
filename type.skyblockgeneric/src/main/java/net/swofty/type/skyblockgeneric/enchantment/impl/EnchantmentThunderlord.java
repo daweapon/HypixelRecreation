@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Thunderlord enchantment: strikes lightning on a monster every 3 hits, dealing bonus damage;
+// conflicts with Thunderbolt.
 public class EnchantmentThunderlord implements Ench, EnchFromTable, DamageEventEnchant, ConflictingEnch {
 
     @Override

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// MongoDB accessor for player friend data and pending friend requests.
 public record FriendDatabase(String playerId) implements MongoDB {
     public static MongoClient client;
     public static MongoDatabase database;

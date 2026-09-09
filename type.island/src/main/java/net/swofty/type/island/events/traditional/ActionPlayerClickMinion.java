@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.entity.MinionEntityImpl;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIMinion;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Opens the minion management GUI when a player interacts with a minion entity on their island.
 public class ActionPlayerClickMinion implements HypixelEventClass {
 
 

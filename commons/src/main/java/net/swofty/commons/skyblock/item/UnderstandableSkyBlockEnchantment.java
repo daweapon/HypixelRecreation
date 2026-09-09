@@ -7,6 +7,7 @@ import java.util.List;
 
 @Getter
 @Builder
+// Serializable representation of a single enchantment (type + level) applied to a SkyBlock item.
 public class UnderstandableSkyBlockEnchantment {
     private String enchantmentType;
     private int level;

@@ -6,6 +6,7 @@ import net.swofty.anticheat.flag.Flag;
 
 import java.util.*;
 
+// Detects autoclickers by analyzing click-interval consistency, CPS, and perfectly rhythmic timing.
 public class AutoClickerFlag extends Flag {
     // Track click timings per player
     private static final Map<UUID, ClickData> clickData = new HashMap<>();

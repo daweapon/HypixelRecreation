@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Checks a departing player's island for vacancy so it can be saved/cleaned up on disconnect.
 public class ActionIslandSave implements HypixelEventClass {
 
     @SneakyThrows

@@ -12,6 +12,7 @@ public record BuyOrderRefundTransaction(
         double refundAmount,
         String reason,  // "COMPLETED", "EXPIRED", "CANCELLED"
         Instant timestamp
+// Bazaar transaction record logging a refund issued for a buy order (completed, expired, or cancelled).
 ) implements BazaarTransaction {
 
     @Override

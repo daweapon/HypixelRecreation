@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+// GUI showing the upcoming Dream Mode rotation schedule, with quick-queue for the current mode.
 public class GUIDreamCalendar extends StatelessView {
     private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16};
 

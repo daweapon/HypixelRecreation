@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
+// Drives a single Abiphone NPC's scripted dialogue lines to a player, one line every couple
+// seconds, and tracks which players are mid-conversation so it can be cancelled.
 public class AbiphoneDialogueController {
     private final HashMap<HypixelPlayer, Map.Entry<AbiphoneNPC.DialogueSet, CompletableFuture<String>>> activeDialogues = new HashMap<>();
     private final AbiphoneNPC npc;

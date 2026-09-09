@@ -10,6 +10,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.ravengardgeneric.gui.GUIRavengardMenu;
 import net.swofty.type.ravengardgeneric.user.RavengardPlayer;
 
+// Detects the client opening the advancement tab (via the detector tab packet) and opens the Ravengard menu GUI instead.
 public class ActionPlayerOpenAdvancements implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, phase = EventPhase.GAMEPLAY)

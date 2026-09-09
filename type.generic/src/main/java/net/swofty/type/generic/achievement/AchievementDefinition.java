@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.util.List;
 
+// Immutable metadata for a single achievement, loaded from configuration (goal, points, tiers, trigger, etc.).
 @Getter
 @Builder
 public class AchievementDefinition {

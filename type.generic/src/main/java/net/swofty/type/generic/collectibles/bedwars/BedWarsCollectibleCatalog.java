@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+// Singleton catalog of all BedWars collectibles, loaded from the cosmetics.yml configuration file.
 public final class BedWarsCollectibleCatalog extends CollectibleCatalog {
 
     private static final File CATALOG_FILE = new File("./configuration/bedwars/cosmetics.yml");

@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI listing item collections within one category and their reward progress
 public class GUICollectionCategory extends StatelessView {
     private static final int[] PAGINATED_SLOTS = {
             10, 11, 12, 13, 14, 15, 16,

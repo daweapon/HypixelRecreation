@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Loader that wires up the Spider's Den server type: spawn point, tablist, NPCs, and events.
 public class TypeSpidersDenLoader implements SkyBlockTypeLoader {
     @Override
     public ServerType getType() {

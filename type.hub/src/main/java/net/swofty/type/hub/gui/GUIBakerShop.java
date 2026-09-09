@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
 
+// Shop GUI for the Baker NPC in the Hub, selling baked goods like the New Year Cake Bag.
 public class GUIBakerShop extends ShopView {
 
     public GUIBakerShop() {

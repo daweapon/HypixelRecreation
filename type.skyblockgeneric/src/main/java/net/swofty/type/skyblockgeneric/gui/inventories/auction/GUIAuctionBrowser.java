@@ -1,11 +1,7 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.auction;
 
 import lombok.Getter;
-import lombok.Setter;
-import lombok.SneakyThrows;
-import net.minestom.server.event.inventory.InventoryCloseEvent;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
-import net.minestom.server.inventory.Inventory;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.ItemStack;
@@ -19,24 +15,18 @@ import net.swofty.commons.skyblock.auctions.AuctionsFilter;
 import net.swofty.commons.skyblock.auctions.AuctionsSorting;
 import net.swofty.commons.text.Text;
 import net.swofty.proxyapi.ProxyService;
-import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
-import net.swofty.type.generic.gui.inventory.RefreshingGUI;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
-import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.generic.utility.PaginationList;
-import org.tinylog.Logger;
-import net.swofty.type.skyblockgeneric.auction.AuctionItemLoreHandler;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-@Setter
-public class GUIAuctionBrowser extends HypixelInventoryGUI implements RefreshingGUI {
+// GUI for browsing, sorting, and filtering paginated auction house listings by category
+public class GUIAuctionBrowser extends AuctionPagedMenu {
     private static final int[] PAGINATED_SLOTS = new int[]{
             11, 12, 13, 14, 15, 16,
             20, 21, 22, 23, 24, 25,
@@ -49,46 +39,22 @@ public class GUIAuctionBrowser extends HypixelInventoryGUI implements Refreshing
     @Getter
     private AuctionCategories category = AuctionCategories.WEAPONS;
 
-    private int page = 1;
-    @Getter
-    private List<AuctionItem> itemCache = new ArrayList<>();
-
     public GUIAuctionBrowser() {
-        super(Text.key("gui_auction.browser.title"), InventoryType.CHEST_6_ROW);
+        super(Text.key("gui_auction.browser.title"), InventoryType.CHEST_6_ROW, PAGINATED_SLOTS, 46, 53, 48);
 
-        Thread.startVirtualThread(this::updateItemsCache);
     }
 
-    private void updateItemsCache() {
-        AuctionFetchItemsProtocol.AuctionFetchItemsMessage message =
-                new AuctionFetchItemsProtocol.AuctionFetchItemsMessage(
-                        sorting,
-                        filter,
-                        category
-                );
-
-        new ProxyService(ServiceType.AUCTION_HOUSE).handleRequest(message)
-                .thenAccept(responseRaw -> {
-                    AuctionFetchItemsProtocol.AuctionFetchItemsResponse response = (AuctionFetchItemsProtocol.AuctionFetchItemsResponse) responseRaw;
-                    List<AuctionItem> auctionItems = response.items();
-
-                    // Items are already sorted, so just paginate them
-                    PaginationList<AuctionItem> paginationList = new PaginationList<>(auctionItems, 24);
-                    paginationList.addAll(auctionItems);
-
-                    // Set the items in the GUI
-                    List<AuctionItem> paginatedItems = paginationList.getPage(page);
-                    setItemCache(paginatedItems);
-                })
-                .exceptionally(ex -> {
-                    Logger.error(ex, "Auction browse failed for category {}", category);
-                    return null;
-                });
+    @Override protected CompletableFuture<List<AuctionItem>> fetch(SkyBlockPlayer player) {
+        return new ProxyService(ServiceType.AUCTION_HOUSE).handleRequest(new AuctionFetchItemsProtocol(),
+                new AuctionFetchItemsProtocol.AuctionFetchItemsMessage(sorting, filter, category)).thenApply(response -> {
+            if (!response.success() || response.items() == null) throw new IllegalStateException("Auction browse failed");
+            return response.items();
+        });
     }
 
-    @SneakyThrows
-    private void setItems() {
-        fill(ItemStacks.named(category.getMaterial(), ""));
+    @Override protected Material background() { return category.getMaterial(); }
+
+    @Override protected void controls() {
         set(GUIClickableItem.getGoBackItem(49, new GUIAuctionHouse()));
         setTitle(Text.key("gui_auction.browser.title_with_category",
             StringUtility.toNormalCase(category.name())));
@@ -96,18 +62,10 @@ public class GUIAuctionBrowser extends HypixelInventoryGUI implements Refreshing
         set(new GUIClickableItem(50) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p;
-                AuctionsSorting nextSort = sorting.next();
-                setSorting(nextSort);
-
-                if (filter.equals(AuctionsFilter.BIN_ONLY)) {
-                    // Ensure that the auctions sorting isn't MOST_BIDS
-                    if (nextSort.equals(AuctionsSorting.MOST_BIDS)) {
-                        setSorting(AuctionsSorting.HIGHEST_BID);
-                    }
-                }
-
-                Thread.startVirtualThread(() -> updateItemsCache());
+                changeSelection(() -> {
+                    sorting = sorting.next();
+                    if (filter == AuctionsFilter.BIN_ONLY && sorting == AuctionsSorting.MOST_BIDS) sorting = AuctionsSorting.HIGHEST_BID;
+                });
             }
 
             @Override
@@ -140,17 +98,10 @@ public class GUIAuctionBrowser extends HypixelInventoryGUI implements Refreshing
         set(new GUIClickableItem(52) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                if (e.getClick() instanceof Click.Right) {
-                    AuctionsFilter nextFilter = filter.previous();
-                    setFilter(nextFilter);
-
-                    Thread.startVirtualThread(() -> updateItemsCache());
-                    return;
-                }
-                AuctionsFilter nextFilter = filter.next();
-                setFilter(nextFilter);
-
-                Thread.startVirtualThread(() -> updateItemsCache());
+                changeSelection(() -> {
+                    filter = e.getClick() instanceof Click.Right ? filter.previous() : filter.next();
+                    if (filter == AuctionsFilter.BIN_ONLY && sorting == AuctionsSorting.MOST_BIDS) sorting = AuctionsSorting.HIGHEST_BID;
+                });
             }
 
             @Override
@@ -180,13 +131,7 @@ public class GUIAuctionBrowser extends HypixelInventoryGUI implements Refreshing
             set(new GUIClickableItem(i * 9) {
                 @Override
                 public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    if (category.equals(getCategory())) {
-                        return;
-                    }
-
-                    setCategory(category);
-                    Thread.startVirtualThread(() -> updateItemsCache());
+                    if (category != getCategory()) changeSelection(() -> GUIAuctionBrowser.this.category = category);
                 }
 
                 @Override
@@ -211,86 +156,5 @@ public class GUIAuctionBrowser extends HypixelInventoryGUI implements Refreshing
             });
         }
 
-        int highestCoveredSlot = 0;
-
-        if (getItemCache() == null) {
-            fillInAir(highestCoveredSlot);
-            return;
-        }
-
-        for (AuctionItem auctionItem : getItemCache()) {
-            int slot = PAGINATED_SLOTS[getItemCache().indexOf(auctionItem)];
-            highestCoveredSlot++;
-
-            set(new GUIClickableItem(slot) {
-                @Override
-                public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    new GUIAuctionViewItem(auctionItem.getUuid(), GUIAuctionBrowser.this).open(player);
-                }
-
-                @Override
-                public ItemStack.Builder getItem(HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    SkyBlockItem skyBlockItem = new SkyBlockItem(auctionItem.getItem());
-
-                    return ItemStacks.item(skyBlockItem.getMaterial(), skyBlockItem.getAmount(),
-                            skyBlockItem.getDisplayNameText(player),
-                            new AuctionItemLoreHandler(auctionItem).getLoreTexts());
-                }
-            });
-        }
-
-        // Fill the rest of the slots with air
-        fillInAir(highestCoveredSlot / 2);
-    }
-
-    private void fillInAir(int highestCoveredSlot) {
-        for (int i = highestCoveredSlot; i < PAGINATED_SLOTS.length; i++) {
-            int slot = PAGINATED_SLOTS[i];
-            set(new GUIItem(slot) {
-                @Override
-                public ItemStack.Builder getItem(HypixelPlayer p) {
-                    return ItemStacks.item(Material.AIR, 1, Text.literal(" "), List.of());
-                }
-            });
-        }
-    }
-
-    @Override
-    public boolean allowHotkeying() {
-        return false;
-    }
-
-    @Override
-    public void onClose(InventoryCloseEvent e, CloseReason reason) {
-
-    }
-
-    @Override
-    public void suddenlyQuit(Inventory inventory, HypixelPlayer player) {
-
-    }
-
-    @Override
-    public void onBottomClick(InventoryPreClickEvent e) {
-        e.setCancelled(true);
-    }
-
-    @Override
-    public void refreshItems(HypixelPlayer player) {
-        new ProxyService(ServiceType.AUCTION_HOUSE).isOnline().thenAccept(online -> {
-            if (!online) {
-                player.sendMessage(Text.key("gui_auction.browser.offline_message"));
-                player.closeInventory();
-                return;
-            }
-            setItems();
-        });
-    }
-
-    @Override
-    public int refreshRate() {
-        return 10;
     }
 }

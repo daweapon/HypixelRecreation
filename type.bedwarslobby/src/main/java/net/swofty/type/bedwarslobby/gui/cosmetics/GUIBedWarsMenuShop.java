@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 
+// Hub GUI linking to the Slumber Hotel, cosmetics browser, and game settings.
 public class GUIBedWarsMenuShop extends StatelessView {
 
     @Override

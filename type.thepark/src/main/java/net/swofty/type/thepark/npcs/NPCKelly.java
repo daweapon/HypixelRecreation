@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// NPC for Kelly in The Park's Spruce Woods, drives the Spruce Logs collection questline.
 public class NPCKelly extends HypixelNPC {
 
 	public NPCKelly() {

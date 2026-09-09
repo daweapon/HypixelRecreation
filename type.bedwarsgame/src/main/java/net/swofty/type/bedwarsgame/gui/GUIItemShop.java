@@ -30,6 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+// Main Bedwars item shop GUI, organized into category tabs (blocks, weapons, armor, tools, etc).
 public class GUIItemShop implements StatefulView<GUIItemShop.State> {
 
     private static final ItemStack QUICK_BUY = ItemStacks.name(ItemStack.builder(Material.NETHER_STAR), "<b>Quick Buy").build();

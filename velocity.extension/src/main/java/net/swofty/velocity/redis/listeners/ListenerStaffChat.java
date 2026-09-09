@@ -10,6 +10,7 @@ import net.swofty.commons.redis.RedisClient;
 
 import java.util.UUID;
 
+// Redis handler that relays staff chat messages and staff join/leave notifications to every registered backend server.
 public class ListenerStaffChat implements RedisMessageHandler<
         StaffChatProtocol.Request,
         StaffChatProtocol.Response> {

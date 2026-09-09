@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.bazaar;
 
 import lombok.Getter;
+import net.minestom.server.component.DataComponents;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
@@ -17,6 +18,8 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.utility.ScheduleUtility;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarItemSet;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.components.ItemModelComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
@@ -27,6 +30,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Getter
+// GUI listing bazaar item sets for a category, with a short-lived cache of rendered items
 public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
     private static final int[] SLOTS = {
             11, 12, 13, 14, 15, 16,
@@ -138,20 +142,32 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
     }
 
     private void rebuildCacheAndRender(SkyBlockPlayer player) {
-        List<BazaarItemSet> sets = category.getItems().stream().toList();
+        List<BazaarItemSet> allSets = category.getItems().stream().toList();
 
-        // Create a thread-safe map to collect results
+        // Sets sharing a non-null nestedGroup collapse into a single tile (see
+        // BazaarItemSet.nestedGroup) - real Hypixel does this for e.g. Mining's 12 gemstone
+        // types under one "Gemstones" tile, since a category grid only has so many slots.
+        Map<String, List<BazaarItemSet>> grouped = new java.util.LinkedHashMap<>();
+        List<BazaarItemSet> ungrouped = new ArrayList<>();
+        for (BazaarItemSet set : allSets) {
+            if (set.nestedGroup != null) {
+                grouped.computeIfAbsent(set.nestedGroup, k -> new ArrayList<>()).add(set);
+            } else {
+                ungrouped.add(set);
+            }
+        }
+
+        // Create a thread-safe map to collect results - only ungrouped (directly rendered) sets
+        // need price data fetched, since a grouped tile just shows a summary, not per-item prices.
         Map<BazaarItemSet, Map<ItemType, PriceData>> setDataMap = new ConcurrentHashMap<>();
-
-        // Initialize the map
-        for (BazaarItemSet set : sets) {
+        for (BazaarItemSet set : ungrouped) {
             setDataMap.put(set, new ConcurrentHashMap<>());
         }
 
         // Collect all futures for price fetching
         List<CompletableFuture<Void>> allFutures = new ArrayList<>();
 
-        for (BazaarItemSet set : sets) {
+        for (BazaarItemSet set : ungrouped) {
             for (ItemType type : set.items) {
                 CompletableFuture<Void> future = player.getBazaarConnector().getItemStatistics(type)
                         .thenAccept(stats -> {
@@ -175,10 +191,11 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
         CompletableFuture.allOf(allFutures.toArray(new CompletableFuture[0]))
                 .thenRun(() -> {
                     List<CacheEntry.CachedSlot> slotData = new ArrayList<>();
+                    int slotIndex = 0;
 
-                    for (int i = 0; i < sets.size() && i < SLOTS.length; i++) {
-                        int slot = SLOTS[i];
-                        BazaarItemSet set = sets.get(i);
+                    for (BazaarItemSet set : ungrouped) {
+                        if (slotIndex >= SLOTS.length) break;
+                        int slot = SLOTS[slotIndex++];
 
                         List<Text> lore = new ArrayList<>();
                         lore.add(Text.key("gui_bazaar.main.item_set_products", set.items.size()));
@@ -199,7 +216,20 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
 
                         lore.add(Text.literal(" "));
                         lore.add(Text.key("gui_bazaar.main.item_set_click"));
-                        slotData.add(new CacheEntry.CachedSlot(slot, set, lore));
+                        slotData.add(new CacheEntry.CachedSlot(slot, null, List.of(set), lore));
+                    }
+
+                    for (Map.Entry<String, List<BazaarItemSet>> group : grouped.entrySet()) {
+                        if (slotIndex >= SLOTS.length) break;
+                        int slot = SLOTS[slotIndex++];
+
+                        int totalProducts = group.getValue().stream().mapToInt(s -> s.items.size()).sum();
+                        List<Text> lore = List.of(
+                                Text.key("gui_bazaar.main.item_set_products", totalProducts),
+                                Text.literal(" "),
+                                Text.key("gui_bazaar.main.item_set_click")
+                        );
+                        slotData.add(new CacheEntry.CachedSlot(slot, group.getKey(), group.getValue(), lore));
                     }
 
                     // Cache it
@@ -251,18 +281,35 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
                 @Override
                 public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                     SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    new GUIBazaarItemSet(category, cs.itemSet()).open(p);
+                    if (cs.groupName() != null) {
+                        new GUIBazaarNestedGroup(category, cs.groupName(), cs.sets()).open(p);
+                    } else {
+                        new GUIBazaarItemSet(category, cs.sets().getFirst()).open(p);
+                    }
                 }
 
                 @Override
                 public ItemStack.Builder getItem(HypixelPlayer p) {
                     SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    return ItemStacks.item(
-                            cs.itemSet().displayMaterial.material,
+                    BazaarItemSet displaySet = cs.sets().getFirst();
+                    String label = cs.groupName() != null ? cs.groupName() : displaySet.displayName;
+                    ItemStack.Builder builder = ItemStacks.item(
+                            displaySet.displayMaterial.material,
                             1,
-                            Text.parse(category.getColor() + cs.itemSet().displayName),
+                            Text.parse(category.getColor() + label),
                             cs.lore()
                     );
+
+                    // ItemStacks.item() only sets the base material - a custom ITEM_MODEL on the
+                    // set's display item would otherwise be silently ignored, leaving this category
+                    // tile showing the plain vanilla material instead of its real icon.
+                    SkyBlockItem displayItem = new SkyBlockItem(displaySet.displayMaterial);
+                    if (displayItem.hasComponent(ItemModelComponent.class)) {
+                        builder = builder.set(DataComponents.ITEM_MODEL,
+                                displayItem.getComponent(ItemModelComponent.class).getItemModel());
+                    }
+
+                    return builder;
                 }
             });
         }
@@ -304,7 +351,9 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
     }
 
     private record CacheEntry(long timestamp, List<CachedSlot> slots) {
-        record CachedSlot(int slot, BazaarItemSet itemSet, List<Text> lore) {
+        // groupName is null for a normal tile (sets has exactly one element, opens directly);
+        // non-null for a collapsed nested-group tile (sets has every member, opens a sub-menu).
+        record CachedSlot(int slot, String groupName, List<BazaarItemSet> sets, List<Text> lore) {
         }
     }
 }

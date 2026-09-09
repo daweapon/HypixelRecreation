@@ -19,6 +19,7 @@ import net.swofty.type.lobby.parkour.LobbyParkourManager;
 import java.util.HashMap;
 import java.util.UUID;
 
+// Drives lobby parkour progress: join setup, checkpoint detection, and cleanup on disconnect.
 public class LobbyParkourEvents implements HypixelEventClass {
 
 	private final HashMap<UUID, Long> lastClickedTimes = new HashMap<>();

@@ -22,6 +22,7 @@ import net.swofty.type.lobby.LobbyOrchestratorConnector;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for queuing into a standard (non-Dream) Bedwars game type.
 public class GUIPlay extends StatelessView {
     private static final ProxyService ORCHESTRATOR = new ProxyService(ServiceType.ORCHESTRATOR);
 

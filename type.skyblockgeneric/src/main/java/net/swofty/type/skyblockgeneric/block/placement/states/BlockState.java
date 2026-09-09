@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// Mutable, typed wrapper around a Minestom Block's key/value property map, plus its handler and NBT.
 public class BlockState {
     private final HashMap<String, String> block_states = new HashMap<>();
 

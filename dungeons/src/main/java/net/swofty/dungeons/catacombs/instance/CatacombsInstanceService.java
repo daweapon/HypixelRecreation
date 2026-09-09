@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Creates a running CatacombsInstance: generates the dungeon, seeds room encounters, and starts the run state.
 public final class CatacombsInstanceService {
     public CatacombsInstance create(CatacombsFloorDefinition floor,
                                     Map<UUID, DungeonClassKit> kits,

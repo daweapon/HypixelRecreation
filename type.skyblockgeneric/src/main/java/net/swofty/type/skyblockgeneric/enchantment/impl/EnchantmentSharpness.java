@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Sharpness enchantment: increases melee damage dealt.
 public class EnchantmentSharpness implements Ench, EnchFromTable {
 
     public static final int[] MULTIPLIERS = new int[]{5, 10, 15, 20, 30, 45, 65};

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.UnaryOperator;
 
+// Redis-backed storage for coop roster documents, with member/profile lookup indexes and lock-guarded read-modify-write updates.
 public final class CoopStorage {
     public static final String COOP_PREFIX = "hsb:coop:";
     public static final String BY_MEMBER = "hsb:coop:bymember";

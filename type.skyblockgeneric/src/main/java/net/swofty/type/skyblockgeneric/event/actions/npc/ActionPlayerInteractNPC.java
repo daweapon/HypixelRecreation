@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.item.components.AbiphoneComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
+// Adds an NPC to the player's Abiphone contacts when interacted with while holding an Abiphone
 public class ActionPlayerInteractNPC implements HypixelEventClass {
 
 	@PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

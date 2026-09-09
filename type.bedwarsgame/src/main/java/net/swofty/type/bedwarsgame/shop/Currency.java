@@ -6,6 +6,7 @@ import net.kyori.adventure.text.format.TextColor;
 import net.minestom.server.item.Material;
 import org.jetbrains.annotations.Nullable;
 
+// The four Bedwars shop currencies (iron/gold/diamond/emerald) with their display material and color.
 @Getter
 public enum Currency {
     IRON("Iron", Material.IRON_INGOT, NamedTextColor.WHITE),

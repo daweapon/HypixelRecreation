@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: demotes a guild member to the next rank down.
 public class GuildDemoteRequestEvent extends GuildEvent {
     @NotNull
     private UUID demoter;

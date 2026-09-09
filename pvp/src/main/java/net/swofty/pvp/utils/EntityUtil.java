@@ -19,6 +19,7 @@ import java.lang.reflect.Field;
 import java.util.Objects;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Miscellaneous entity helpers: dropping items, building hoverable display names, and setting an entity's last damage.
 public final class EntityUtil {
 
 	public static void spawnItemAtLocation(Entity entity, ItemStack itemStack, double up) {

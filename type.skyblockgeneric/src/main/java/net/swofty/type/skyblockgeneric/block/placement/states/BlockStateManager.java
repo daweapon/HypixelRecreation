@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.block.placement.states;
 
 import net.minestom.server.instance.block.Block;
 
+// Factory that picks the correct typed BlockState subclass for a given Minestom Block.
 public class BlockStateManager {
 
     public static BlockState get(Block block) {

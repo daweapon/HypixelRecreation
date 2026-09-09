@@ -11,6 +11,7 @@ import java.net.URI;
 import java.time.Duration;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Builds and validates a configured Jedis connection pool for a Redis URI.
 public final class RedisConnectionPool {
 
     public static JedisPool connect(String redisUri, Settings settings) {

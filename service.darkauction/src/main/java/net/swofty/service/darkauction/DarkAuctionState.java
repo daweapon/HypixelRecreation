@@ -18,6 +18,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Getter
 @Setter
+// Mutable state for a single Dark Auction run: current round/item, bid/bidder, escrowed coins, refunds, and bid history.
 public class DarkAuctionState {
     public static final long STARTING_BID = 50_000;
 

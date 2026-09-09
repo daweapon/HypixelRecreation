@@ -105,7 +105,9 @@ public class ServerCrystalImpl extends LivingEntity {
             if (isDead()) {
                 cropsTask.cancel();
             }
-            if (landToPlaceOn.isEmpty()) return;
+            if (landToPlaceOn.isEmpty()) {
+                return;
+            }
 
             List<Pos> possiblePositions = new ArrayList<>();
             for (Pos block : landToPlaceOn) {

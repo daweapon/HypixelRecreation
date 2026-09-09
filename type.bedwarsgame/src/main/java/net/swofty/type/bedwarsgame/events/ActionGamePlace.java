@@ -21,6 +21,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.utility.ScheduleUtility;
 import org.tinylog.Logger;
 
+// Validates and processes block placement in Bedwars games (height limits, spawn protection, replay).
 public class ActionGamePlace implements HypixelEventClass {
 
 	@PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

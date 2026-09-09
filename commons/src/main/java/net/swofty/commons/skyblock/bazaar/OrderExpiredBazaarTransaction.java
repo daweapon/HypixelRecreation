@@ -14,6 +14,7 @@ public record OrderExpiredBazaarTransaction(
         double   originalPricePaid,
         double   remainingQty,
         Instant  expiredAt
+// Bazaar transaction record logging a buy/sell order that expired with quantity still unfilled.
 ) implements BazaarTransaction {
     @Override
     public JSONObject toJSON() {

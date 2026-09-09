@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// GUI for fusing two hunting attribute shards together
 public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State> {
     public record State(int page, String first, String second) {
     }

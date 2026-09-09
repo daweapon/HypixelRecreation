@@ -5,6 +5,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import java.util.List;
 import java.util.UUID;
 
+// Redis RPC protocol for the friend service to push a serialized FriendEvent out to a server for delivery to its players.
 public class FriendEventPushProtocol
         extends RedisProtocol<FriendEventPushProtocol.Request, FriendEventPushProtocol.Response> {
 

@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.fishing;
 import java.util.UUID;
 import org.jetbrains.annotations.Nullable;
 
+// Tracks one in-progress fishing cast: rod/bait used, cast/bite timing, and resolution state.
 public record FishingSession(
     UUID ownerUuid,
     String rodItemId,

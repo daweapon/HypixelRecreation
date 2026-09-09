@@ -6,6 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
+// Annotation declaring a HypixelCommand's labels, permission, usage, and console-execution eligibility.
 public @interface CommandParameters {
     String description() default "";
 

@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for editing one loadout's armor and equipment slots
 public class GUILoadoutEdit extends StatelessView {
     private static final int[] ARMOR_SLOTS = {11, 20, 29, 38};
     private static final int[] EQUIPMENT_SLOTS = {10, 19, 28, 37};

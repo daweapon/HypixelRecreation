@@ -6,6 +6,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.List;
 
+// Backend microservice hosting the Dark Auction: starts the scheduler and holds the single currently-running auction, if any.
 public class DarkAuctionService implements SkyBlockService {
     private static DarkAuctionState currentAuction = null;
 

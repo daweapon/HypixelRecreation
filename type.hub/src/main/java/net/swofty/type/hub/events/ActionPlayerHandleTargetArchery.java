@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Runs the Hub's Target Practice archery minigame: tracks lantern hits, timing, and level progression near the archery range.
 public class ActionPlayerHandleTargetArchery implements HypixelEventClass {
     private static final Pos ARCHERY_POSITION = DatapointArcheryPractice.getArcheryPosition();
     private static final int TOTAL_TARGETS = 16;

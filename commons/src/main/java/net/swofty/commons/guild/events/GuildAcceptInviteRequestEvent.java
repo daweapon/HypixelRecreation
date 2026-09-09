@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: a player accepted an incoming guild invite.
 public class GuildAcceptInviteRequestEvent extends GuildEvent {
     @NotNull
     private UUID accepter;

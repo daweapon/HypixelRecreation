@@ -16,6 +16,7 @@ import org.tinylog.Logger;
 
 import java.util.Arrays;
 
+// Sends collection-unlocked and collection-level-up chat messages as a player's collection grows
 public class ActionCollectionDisplay implements HypixelEventClass {
 
 

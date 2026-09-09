@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.swofty.anticheat.engine.SwoftyPlayer;
 
 @Getter
+// Loader-agnostic representation of a client's rotation-only movement packet.
 public class RotationPacket extends SwoftyPacket {
     private final float yaw;
     private final float pitch;

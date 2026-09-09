@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Pos;
 
 import java.util.List;
 
+// Deserialized JSON config for a Ravengard dungeon map: its id/name, world file, spawn point, and placed objects.
 public record RavengardDungeonConfig(String id, String name, String polar, Position spawn,
                                      List<DungeonObject> objects) {
     public RavengardDungeonConfig {

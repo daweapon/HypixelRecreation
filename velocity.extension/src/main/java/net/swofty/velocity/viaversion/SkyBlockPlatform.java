@@ -5,6 +5,7 @@ import com.viaversion.viaversion.platform.UserConnectionViaVersionPlatform;
 import java.io.File;
 import java.util.logging.Logger;
 
+// ViaVersion platform implementation identifying this Velocity plugin to the ViaVersion/ViaBackwards/ViaRewind stack.
 public final class SkyBlockPlatform extends UserConnectionViaVersionPlatform {
     public SkyBlockPlatform(File dataFolder) {
         super(new File(dataFolder.toURI()));

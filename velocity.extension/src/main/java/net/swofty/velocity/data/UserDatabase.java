@@ -7,6 +7,7 @@ import org.bson.Document;
 
 import java.util.UUID;
 
+// Looks up a player's currently selected profile index via the shared SwoftyData account store.
 public class UserDatabase {
     private static final PlayerField<String> PROFILES_INDEX =
             PlayerField.create("hypixel", "_profiles_index", Codecs.STRING, null);

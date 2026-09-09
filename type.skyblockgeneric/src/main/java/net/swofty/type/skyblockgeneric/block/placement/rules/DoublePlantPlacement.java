@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.PlantHalf;
 import java.util.Arrays;
 import java.util.List;
 
+// Placement rule for two-tall plants (sunflower, lilac, tall grass, etc.), marking upper/lower half.
 public class DoublePlantPlacement extends PlacementRule {
     private static final List<Block> blockList = Arrays.asList(Block.SUNFLOWER, Block.LILAC, Block.ROSE_BUSH, Block.PEONY, Block.TALL_GRASS, Block.LARGE_FERN);
 

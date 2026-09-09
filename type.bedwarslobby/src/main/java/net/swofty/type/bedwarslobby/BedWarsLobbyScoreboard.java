@@ -29,6 +29,7 @@ import java.util.Locale;
 
 import static net.swofty.commons.bedwars.BedwarsLevelUtil.suffix;
 
+// Builds and periodically refreshes the Bedwars lobby scoreboard shown to waiting players.
 public class BedWarsLobbyScoreboard {
 	private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("MM/dd/yy");
 	private static final Text BLANK = Text.literal(" ");

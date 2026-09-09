@@ -10,6 +10,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 
+// Handles player disconnects during a Bedwars game, marking them as offline or removing them.
 public class ActionPlayerDisconnect implements HypixelEventClass {
 
 	@SneakyThrows

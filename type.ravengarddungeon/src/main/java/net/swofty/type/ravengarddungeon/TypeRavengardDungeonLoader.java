@@ -32,6 +32,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
+// RavengardTypeLoader for the Ravengard dungeon server type: loads the dungeon map/config, spawns the game, and reports heartbeats to the orchestrator.
 public class TypeRavengardDungeonLoader implements RavengardTypeLoader {
     private static final Path CONFIGURATION = Path.of("./configuration/ravengard/dungeon_1.json");
 

@@ -7,6 +7,7 @@ import net.swofty.dungeons.catacombs.boss.CatacombsBossPhase;
 import java.util.ArrayList;
 import java.util.List;
 
+// State machine that advances a boss encounter through its phases as matching fight events occur.
 public final class BossFightController {
     private final CatacombsBossEncounter encounter;
     private final List<BossFightTrace> traces = new ArrayList<>();

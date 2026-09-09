@@ -2,6 +2,7 @@ package net.swofty.dungeons.catacombs;
 
 import java.util.Arrays;
 
+// Catacombs floors (Entrance through Floor VII) with their boss, size, and Normal/Master score requirements.
 public enum CatacombsFloor {
     ENTRANCE("Entrance", "The Watcher", CatacombsDungeonSize.TINY, 0, -1),
     FLOOR_ONE("Floor I", "Bonzo", CatacombsDungeonSize.TINY, 1, 24),

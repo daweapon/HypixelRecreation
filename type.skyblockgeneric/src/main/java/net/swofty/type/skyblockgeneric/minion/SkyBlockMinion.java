@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// Base type for a minion definition: its tiers, armor colours, placement expectations, and per-tick action.
 public abstract class SkyBlockMinion {
     public abstract List<MinionTier> getTiers();
     public abstract Color getBootColour();

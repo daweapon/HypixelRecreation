@@ -33,6 +33,26 @@ items:
       - id: SELLABLE
         value: 10.0
       - id: TRACKED_UNIQUE
+  - id: CONDENSED_FERMENTO
+    material: paper
+    name: "Condensed Fermento"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 2250000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/condensed_fermento
+  - id: CROPIE
+    material: wheat
+    name: "Cropie"
+    rarity: UNCOMMON
+    components:
+      - id: SELLABLE
+        value: 25000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/cropie
   - id: DUNG
     material: brown_wool
     name: "Dung"
@@ -42,6 +62,44 @@ items:
         value: 100.0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pests/dung
+  - id: ENCHANTED_CARROT_ON_A_STICK
+    material: carrot_on_a_stick
+    name: "Enchanted Carrot on a Stick"
+    rarity: UNCOMMON
+    components:
+      - id: ENCHANTED
+      - id: SELLABLE
+        value: 10300.0
+      - id: BAZAAR_PLACEHOLDER
+  - id: ENCHANTED_COOKED_RABBIT
+    material: cooked_rabbit
+    name: "Enchanted Cooked Rabbit"
+    rarity: RARE
+    components:
+      - id: ENCHANTED
+      - id: SELLABLE
+        value: 102400.0
+      - id: BAZAAR_PLACEHOLDER
+  - id: FERMENTO
+    material: brown_mushroom
+    name: "Fermento"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 250000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/fermento
+  - id: FINE_FLOUR
+    material: paper
+    name: "Fine Flour"
+    rarity: UNCOMMON
+    components:
+      - id: SELLABLE
+        value: 500.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/community_center/mayor/finnegan/fine_flour
   - id: FLOWER_CRYSTAL
     material: player_head
     name: "Flower Crystal"
@@ -111,6 +169,16 @@ items:
         value: 3.0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/rookie_hoe
+  - id: SQUASH
+    material: pumpkin
+    name: "Squash"
+    rarity: RARE
+    components:
+      - id: SELLABLE
+        value: 75000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/squash
   - id: TIGHTLY_TIED_HAY_BALE
     material: player_head
     name: "Tightly Tied Hay Bale"
@@ -134,3 +202,13 @@ items:
           - FARMLAND
       - id: PLACE_EVENT
         handler_id: WHEAT_CRYSTAL_PLACE
+  - id: WRIGGLING_LARVA
+    material: paper
+    name: "Wriggling Larva"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 250000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/pests/wriggling_larva

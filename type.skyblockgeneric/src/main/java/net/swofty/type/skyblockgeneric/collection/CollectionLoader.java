@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// Loads a CollectionCategory's collections and reward tiers from its YAML config file.
 @Data
 public class CollectionLoader {
     private static final File COLLECTIONS_DIR = new File("./configuration/skyblock/collections");

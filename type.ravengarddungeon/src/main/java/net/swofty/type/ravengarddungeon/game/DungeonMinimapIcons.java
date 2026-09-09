@@ -9,6 +9,7 @@ import net.swofty.type.ravengardgeneric.hud.RavengardHudState;
 
 import java.util.UUID;
 
+// Renders the player's live position marker on the dungeon minimap HUD element.
 public final class DungeonMinimapIcons {
     /** The crypt segment tiles: with the city-base layout the world keeps the
      * blueprint's coordinates, so Hypixel's own map art lines up verbatim.

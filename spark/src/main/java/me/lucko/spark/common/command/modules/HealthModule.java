@@ -64,6 +64,7 @@ import static net.kyori.adventure.text.format.NamedTextColor.*;
 import static net.kyori.adventure.text.format.TextDecoration.BOLD;
 
 // this is to patch a bug in Spark
+// Command module implementing "/spark health": reports overall server health (TPS, CPU, memory, disk, network, ping).
 public class HealthModule implements CommandModule {
 
     @Override

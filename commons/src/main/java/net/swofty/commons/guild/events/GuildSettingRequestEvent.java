@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: changes a named guild setting to a new value (e.g. MOTD, tag, description).
 public class GuildSettingRequestEvent extends GuildEvent {
     @NotNull
     private UUID changer;

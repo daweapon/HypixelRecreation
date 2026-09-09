@@ -10,6 +10,7 @@ import net.swofty.anticheat.flag.Flag;
 import net.swofty.anticheat.flag.FlagType;
 import net.swofty.anticheat.math.Vel;
 
+// Detects unauthorized flight by checking for impossible upward velocity and sustained gravity-free hovering.
 public class FlightFlag extends Flag {
     // Physics constants
     private static final double GRAVITY = -0.08; // Minecraft gravity per tick

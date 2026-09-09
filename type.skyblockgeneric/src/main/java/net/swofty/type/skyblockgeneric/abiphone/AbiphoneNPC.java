@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Arrays;
 
+// Base type for an Abiphone contact NPC: holds its identity/icon and the dialogue lines it can play.
 @Getter
 public abstract class AbiphoneNPC {
 
@@ -56,6 +57,7 @@ public abstract class AbiphoneNPC {
 		player.sendMessage("<e>[NPC] {}<f>: <b>✆ <f>{}", getName(), message);
 	}
 
+	// A named, keyed sequence of dialogue lines an Abiphone NPC can play back to a player.
 	@Builder
 	public record DialogueSet(String key, Text[] lines, boolean abiPhone) {
 		public static final DialogueSet[] EMPTY = new DialogueSet[0];

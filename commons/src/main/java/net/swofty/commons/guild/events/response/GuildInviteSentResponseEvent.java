@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: notifies the guild and the invitee that an invite was sent.
 public class GuildInviteSentResponseEvent extends GuildResponseEvent {
     private UUID inviter;
     private UUID invitee;

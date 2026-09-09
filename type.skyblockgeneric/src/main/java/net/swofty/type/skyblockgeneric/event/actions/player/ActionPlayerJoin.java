@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 
+// Syncs a joining player's world time to the current SkyBlock calendar hour
 public class ActionPlayerJoin implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.SPAWN)

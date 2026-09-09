@@ -5,6 +5,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import net.swofty.type.game.game.Game;
 import net.swofty.type.game.game.event.GameEvent;
 
+// Custom game event fired when a team's bed is destroyed, identifying the team and the destroyer.
 public record BedDestroyedEvent(
         Game<?> game,
     TeamKey teamKey,

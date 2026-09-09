@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.ability.RegisteredAbility;
 import net.swofty.type.skyblockgeneric.user.PlayerAbilityHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Triggers an item's right-click ability (sneak or regular), handling its cooldown and resource cost
 public class ActionItemAbilityRightUse implements HypixelEventClass {
 
     @SneakyThrows

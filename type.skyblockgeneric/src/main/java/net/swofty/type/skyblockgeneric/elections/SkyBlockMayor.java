@@ -5,6 +5,8 @@ import lombok.Getter;
 import java.util.Arrays;
 import java.util.List;
 
+// The pool of mayoral candidates (regular and special), each with its display skin and the set
+// of perks it can grant when elected.
 @Getter
 public enum SkyBlockMayor {
     AATROX(

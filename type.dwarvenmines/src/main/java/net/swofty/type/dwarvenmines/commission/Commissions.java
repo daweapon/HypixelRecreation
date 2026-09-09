@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Holds the pools of available Dwarven Mines commissions and manages generating/replacing a player's active ones.
 public class Commissions {
 	public static List<Commission> CONSISTENT = List.of(
 

@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
+// Async, chunk-based cache of block data used by movement checks, backed by a single-threaded executor.
 public class PlayerWorld {
     private static final int CHUNK_SIZE = 16;
     private final Map<ChunkCoordinate, Chunk> chunks;

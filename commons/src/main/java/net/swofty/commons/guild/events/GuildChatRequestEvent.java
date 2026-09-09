@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: a player sent a message to guild (or officer) chat.
 public class GuildChatRequestEvent extends GuildEvent {
     @NotNull
     private UUID sender;

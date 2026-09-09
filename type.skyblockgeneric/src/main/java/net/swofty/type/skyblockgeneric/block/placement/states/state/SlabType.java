@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for a slab's bottom/top/double placement.
 public enum SlabType implements State<SlabType> {
     BOTTOM,
     TOP,

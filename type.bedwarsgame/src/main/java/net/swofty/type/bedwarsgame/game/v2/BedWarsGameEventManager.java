@@ -9,6 +9,7 @@ import net.swofty.type.bedwarsgame.events.custom.BedWarsGameEventAdvanceEvent;
 import net.swofty.type.game.game.GameState;
 import net.swofty.type.generic.event.HypixelEventHandler;
 
+// Drives the timed Bedwars match phase timeline (diamond/emerald upgrades, bed destruction, sudden death).
 @RequiredArgsConstructor
 public class BedWarsGameEventManager {
     private final BedWarsGame game;

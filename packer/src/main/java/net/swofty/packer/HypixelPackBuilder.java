@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+// Zips a pack's source directory into a resource pack archive and computes its SHA-1 hash for versioning.
 public class HypixelPackBuilder {
     private static final FormatVersion FORMAT_VERSION = FormatVersion.of(FormatVersion.FORMAT_26_1);
 

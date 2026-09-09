@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// Defines the Woods Racing race course and reward missions in The Park's Spruce Woods.
 public class WoodsRacing implements Race {
 
 	private final Pos start = new Pos(-362, 89, 42);

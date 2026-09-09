@@ -8,6 +8,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for the Gladiator in the Hub's Colosseum area
 public class NPCGladiator extends HypixelNPC {
 
     public NPCGladiator() {

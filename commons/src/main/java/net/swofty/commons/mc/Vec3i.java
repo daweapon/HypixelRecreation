@@ -3,6 +3,7 @@ package net.swofty.commons.mc;
 
 import net.minestom.server.coordinate.BlockVec;
 
+// Engine-agnostic integer 3D vector/block position with basic arithmetic and conversions to Minestom types.
 public record Vec3i(int x, int y, int z) {
 
     public static Vec3i ZERO = new Vec3i(0, 0, 0);

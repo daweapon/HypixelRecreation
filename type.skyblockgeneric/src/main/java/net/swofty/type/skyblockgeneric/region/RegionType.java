@@ -57,7 +57,10 @@ public enum RegionType {
     FISHING_OUTPOST("Fishing Outpost"),
     FISHERMANS_HUT("Fisherman's Hut"),
     ARTISTS_ABODE("Artist's Abode", NamedTextColor.YELLOW),
-    FOREST("Forest", NamedTextColor.DARK_GREEN, MineLogsConfiguration.class),
+    // No mining handler: FOREST is a large scenic buffer nested around FORAGING_CAMP (see
+    // Minestom.regions.yml) and previously granted log-mining rights across that whole buffer,
+    // not just the actual camp.
+    FOREST("Forest", NamedTextColor.DARK_GREEN),
     FORAGING_CAMP("Foraging Camp", NamedTextColor.DARK_GREEN, MineLogsConfiguration.class), // TODO: you can't break everything here though
     REGALIA_ROOM("Regalia Room", NamedTextColor.GOLD),
     ABIPHONES_AND_CO("Abiphones & Co.", NamedTextColor.AQUA),

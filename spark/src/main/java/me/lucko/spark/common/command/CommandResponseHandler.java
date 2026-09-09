@@ -37,6 +37,7 @@ import static net.kyori.adventure.text.Component.text;
 import static net.kyori.adventure.text.format.NamedTextColor.*;
 import static net.kyori.adventure.text.format.TextDecoration.BOLD;
 
+// Sends prefixed reply messages from Spark command execution back to the command sender that invoked it.
 @SuppressWarnings("unused") // -- it is used just not directly
 public class CommandResponseHandler {
 

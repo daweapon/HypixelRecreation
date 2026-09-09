@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.time.Duration;
 import java.util.List;
 
+// Shows a one-time welcome title with tips when a player first discovers a region
 public class ActionNewZoneDisplay implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

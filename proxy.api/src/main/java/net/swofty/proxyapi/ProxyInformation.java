@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+// Queries the proxy over Redis for server metadata, looked up by UUID, server type, or associated player.
 public class ProxyInformation {
     private static final RequestServersProtocol PROTOCOL = new RequestServersProtocol();
 

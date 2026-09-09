@@ -13,6 +13,7 @@ import java.util.UUID;
 
 @Setter
 @Getter
+// RavengardPlayer subtype adding dungeon-specific state: assigned game id, team, dead/spectating status.
 public class RavengardDungeonPlayer extends RavengardPlayer implements GameParticipant {
     private static final Tag<String> GAME_ID = Tag.String("ravengard_game_id");
     private static final Tag<Integer> TEAM = Tag.Integer("ravengard_dungeon_team");

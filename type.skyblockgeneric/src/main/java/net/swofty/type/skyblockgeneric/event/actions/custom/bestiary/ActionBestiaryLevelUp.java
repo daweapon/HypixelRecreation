@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// Announces bestiary tier-ups and grants their stat/coin/XP rewards
 //TODO make messages clickable to open the right mob gui
 
 public class ActionBestiaryLevelUp implements HypixelEventClass {

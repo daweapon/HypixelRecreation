@@ -1,5 +1,6 @@
 package net.swofty.anticheat.math;
 
+// General-purpose numeric helpers (squaring, rounding, clamping, range checks) used throughout the anticheat's math.
 public final class MathUtils {
 
     private MathUtils() {

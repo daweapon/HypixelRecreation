@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.BooleanState
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import org.jetbrains.annotations.NotNull;
 
+// Typed BlockState accessor for a campfire's lit, signal-fire, and facing properties.
 public class CampfireState extends WaterloggedState {
 
     private final BooleanState lit = BooleanState.Of("lit", true);

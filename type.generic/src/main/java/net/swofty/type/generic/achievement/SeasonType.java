@@ -5,6 +5,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.swofty.commons.text.Text;
 
+// Seasonal/event categories (holiday, easter, summer, halloween) used by seasonal achievements.
 @Getter
 public enum SeasonType {
     HOLIDAY("Holiday", NamedTextColor.RED, "Christmas/Winter event"),

@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.HashMap;
 import java.util.UUID;
 
+// Manages race lifecycle for players on race instances: setup on join, start/checkpoint detection, and cancellation on disconnect
 public class RaceEvents implements HypixelEventClass {
 
 	private final HashMap<UUID, Long> lastClickedTimes = new HashMap<>();

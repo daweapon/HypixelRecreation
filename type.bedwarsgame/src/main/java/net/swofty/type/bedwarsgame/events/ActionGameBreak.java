@@ -25,6 +25,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import java.util.Map;
 import java.util.Objects;
 
+// Handles block-break events in Bedwars games, including replay recording of block changes.
 public class ActionGameBreak implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.ALL, requireDataLoaded = false)

@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Server type loader that configures and initializes the Island server (a player's private SkyBlock island).
 public class TypeIslandLoader implements SkyBlockTypeLoader {
     public static final Pos SPAWN_POS = new Pos(7.5, 100, 7.5);
 

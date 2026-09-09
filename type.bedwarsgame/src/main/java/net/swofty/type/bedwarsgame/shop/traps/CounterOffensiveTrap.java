@@ -11,6 +11,7 @@ import net.swofty.type.bedwarsgame.shop.Trap;
 import net.swofty.type.bedwarsgame.shop.TrapId;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Team trap that grants Speed II to the whole team when triggered.
 public class CounterOffensiveTrap extends Trap {
 
 	public CounterOffensiveTrap() {

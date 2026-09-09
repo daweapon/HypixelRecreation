@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Procedurally generates a Ravengard dungeon layout from the room catalog and stamps its rooms/swaps into a Minestom instance.
 public final class RavengardDungeonGenerator {
     private static final Path CATALOG_PATH = Path.of("./configuration/ravengard/dungeon_rooms.json");
     private static final Block DOOR_PLUG = Block.POLISHED_BLACKSTONE_BRICKS;

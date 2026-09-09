@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Detects aimbot-style rotation patterns (static or robotic aim); currently disabled due to false positives.
 public class AimFlag extends Flag {
     // Track rotation changes per player
     private static final Map<UUID, RotationData> rotationData = new HashMap<>();

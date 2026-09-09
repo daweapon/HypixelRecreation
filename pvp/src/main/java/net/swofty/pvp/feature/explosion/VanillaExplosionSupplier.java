@@ -39,6 +39,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Vanilla-accurate explosion supplier: computes block destruction, entity damage falloff/exposure, and knockback.
 public final class VanillaExplosionSupplier implements ExplosionSupplier {
     private final ExplosionFeature feature;
     private final EnchantmentFeature enchantmentFeature;

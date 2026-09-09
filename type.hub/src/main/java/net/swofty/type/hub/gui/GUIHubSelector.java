@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+// Paginated GUI listing available Hub servers, letting players transfer to a specific, random, or least-populated Hub.
 public class GUIHubSelector extends HypixelPaginatedGUI<UnderstandableProxyServer> implements RefreshingGUI {
     private final ProxyInformation information;
     private List<UnderstandableProxyServer> servers;

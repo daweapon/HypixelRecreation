@@ -6,6 +6,7 @@ import com.mongodb.client.*;
 import org.bson.Document;
 import org.jetbrains.annotations.Nullable;
 
+// MongoDB accessor for API admin panel sessions, keyed by session id and lookup-by-auth-code.
 public record APIAdminDatabase() {
     public static MongoClient client;
     public static MongoDatabase database;

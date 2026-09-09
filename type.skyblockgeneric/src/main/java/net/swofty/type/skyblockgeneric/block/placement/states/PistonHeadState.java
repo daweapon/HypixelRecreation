@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.PistonType;
 import org.jetbrains.annotations.NotNull;
 
+// Typed BlockState accessor for a piston head's short, type, and facing properties.
 public class PistonHeadState extends BlockState {
     public PistonHeadState(Block alternative) {
         super(alternative);

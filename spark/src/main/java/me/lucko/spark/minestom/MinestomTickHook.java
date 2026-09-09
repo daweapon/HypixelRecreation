@@ -25,6 +25,7 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.Task;
 import net.minestom.server.timer.TaskSchedule;
 
+// Spark tick hook implementation that drives its tick counter from a repeating Minestom scheduler task.
 public final class MinestomTickHook extends AbstractTickHook {
     private Task task;
 

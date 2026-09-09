@@ -13,6 +13,7 @@ import org.tinylog.Logger;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 
+// Loads and exposes the singleton Settings instance from configuration/config.yml on class initialization.
 public class ConfigProvider {
 
     final static ConfigurationProperties.EnvVarResolutionConfiguration envResolution = ConfigurationProperties.EnvVarResolutionConfiguration

@@ -5,6 +5,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing a tool's breaking power stat, defaulting from the item's base statistics.
 public class ItemAttributeBreakingPower extends ItemAttribute<Integer> {
     @Override
     public String getKey() {

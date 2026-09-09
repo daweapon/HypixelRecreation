@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 
+// Redis RPC protocol instructing a server to teleport a player to a specific position and instance.
 public class TeleportProtocol extends RedisProtocol<
         TeleportProtocol.Request,
         TeleportProtocol.Response> {
@@ -22,6 +23,6 @@ public class TeleportProtocol extends RedisProtocol<
         return RETURN_SERIALIZER;
     }
 
-    public record Request(String uuid, double x, double y, double z, float yaw, float pitch) {}
+    public record Request(String uuid, double x, double y, double z, float yaw, float pitch, String instanceId) {}
     public record Response() {}
 }

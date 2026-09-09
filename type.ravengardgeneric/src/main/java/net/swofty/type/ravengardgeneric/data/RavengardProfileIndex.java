@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+// A player's list of Ravengard profile ids plus which one is currently selected, with encode/decode to a single stored string.
 public record RavengardProfileIndex(UUID selected, List<UUID> profiles) {
     private static final RavengardProfileIndex EMPTY = new RavengardProfileIndex(null, List.of());
     private static final String SELECTED_SEPARATOR = ";";

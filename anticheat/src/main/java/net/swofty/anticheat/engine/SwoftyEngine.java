@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+// Bootstraps the anticheat's repeating tick/ping schedulers and registers all movement/flag event listeners.
 public class SwoftyEngine {
     public static void startSchedulers(Loader loader) {
         SwoftySchedulerManager scheduler = loader.getSchedulerManager();

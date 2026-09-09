@@ -13,6 +13,7 @@ import net.swofty.type.spidersden.gui.GUICollectedMobTypes;
 
 import java.util.List;
 
+// NPC for Ike in the Spider's Den, tracks and rewards collected mob types via the GUICollectedMobTypes menu.
 public class NPCIke extends HypixelNPC {
     public NPCIke() {
         super(new HumanConfiguration() {

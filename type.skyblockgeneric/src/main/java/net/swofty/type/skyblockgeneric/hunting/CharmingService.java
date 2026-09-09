@@ -8,6 +8,8 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// Rolls a chance to "charm" (capture a shard from) a mob on kill, based on hunting skill level
+// and the Charmed attribute bonus.
 public final class CharmingService {
     private CharmingService() {
     }

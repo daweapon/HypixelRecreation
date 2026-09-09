@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Mad Redstone Engineer NPC in the Hub, selling redstone components.
 public class GUIShopMadRedstoneEngineer extends ShopView {
     public GUIShopMadRedstoneEngineer() {
         super("Mad Redstone Engineer", DEFAULT);

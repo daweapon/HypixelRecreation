@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.data;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import net.minestom.server.MinecraftServer;
 import net.minestom.server.instance.SharedInstance;
 import net.swofty.commons.skyblock.SkyBlockPlayerProfiles;
 import net.swofty.type.generic.HypixelConst;
@@ -11,6 +12,7 @@ import net.swofty.type.generic.data.domain.PlayerDataService;
 import net.swofty.type.generic.data.mongodb.ProfilesDatabase;
 import net.swofty.type.generic.data.mongodb.UserDatabase;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.SkyBlockScoreboard;
 import net.swofty.type.skyblockgeneric.user.island.IslandHostLookup;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import org.bson.Document;
@@ -21,6 +23,8 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicReference;
 
+// Handles switching a player between their SkyBlock profiles, either in place or by transferring
+// them to the remote server hosting the target profile's island.
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ProfileSwitcher {
 
@@ -145,6 +149,12 @@ public final class ProfileSwitcher {
             player.getPetData().updatePetEntityImpl(null);
             player.getInventory().clear();
 
+            // The sidebar's viewer registration doesn't survive an instance change, but
+            // HypixelScoreboard only ever creates it once per UUID - normally that cache is
+            // cleared on disconnect (ActionPlayerClearSkyBlockCache), which is why a full relog
+            // fixes a missing scoreboard but staying connected through a profile switch doesn't.
+            SkyBlockScoreboard.removeCache(player);
+
             if (islandServer) {
                 moveTo(player, HypixelConst.getEmptyInstance());
                 if (previousIsland != null) previousIsland.runVacantCheck();
@@ -171,10 +181,22 @@ public final class ProfileSwitcher {
         return result.get();
     }
 
+    // switchInPlace() runs on a virtual thread (see switchTo()), but normal first-spawn island
+    // teleportation (ActionPlayerTeleport) always happens on the main tick thread via
+    // PlayerSpawnEvent. Calling setInstance()/teleport() off the tick thread was letting players
+    // land before their new instance's chunks had actually finished sending - visually a void
+    // world - even though the CompletableFuture from setInstance() had already completed.
+    // Forcing the actual swap back onto the tick thread matches the working login path.
     private static void moveTo(SkyBlockPlayer player, SharedInstance instance) {
         if (instance == null || player.getInstance() == instance) return;
-        player.setInstance(instance, player.getRespawnPoint()).join();
-        player.teleport(player.getRespawnPoint());
+
+        CompletableFuture<Void> moved = new CompletableFuture<>();
+        MinecraftServer.getSchedulerManager().scheduleNextTick(() -> {
+            player.setInstance(instance, player.getRespawnPoint()).join();
+            player.teleport(player.getRespawnPoint());
+            moved.complete(null);
+        });
+        moved.join();
     }
 
     private static void select(SkyBlockPlayer player, SkyBlockPlayerProfiles profiles, UUID profileId) {

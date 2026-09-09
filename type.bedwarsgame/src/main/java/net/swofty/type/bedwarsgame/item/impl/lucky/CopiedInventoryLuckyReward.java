@@ -6,6 +6,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Lucky Block reward that copies a random other player's inventory onto the opener.
 public class CopiedInventoryLuckyReward extends LuckyReward {
     public CopiedInventoryLuckyReward() {
         super("Copied Inventory");

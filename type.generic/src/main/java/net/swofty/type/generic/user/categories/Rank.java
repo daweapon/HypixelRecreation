@@ -36,6 +36,20 @@ public enum Rank {
         return this.ordinal() <= rank.ordinal();
     }
 
+    // Max concurrent island visitors this rank's island can host, matching the tiers already shown
+    // (as static lore text) in GUIGuests.
+    public int maxIslandGuests() {
+        return switch (this) {
+            case STAFF, YOUTUBE -> 15;
+            case MVP_PLUS_PLUS -> 7;
+            case MVP_PLUS -> 6;
+            case MVP -> 5;
+            case VIP_PLUS -> 4;
+            case VIP -> 3;
+            case DEFAULT -> 1;
+        };
+    }
+
     public char getPriorityCharacter() {
         return StringUtility.ALPHABET[ordinal()];
     }

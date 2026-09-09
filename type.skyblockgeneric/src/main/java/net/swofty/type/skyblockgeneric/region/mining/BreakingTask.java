@@ -40,6 +40,10 @@ public class BreakingTask {
         this.nextSchedule = TaskSchedule.tick(1);
     }
 
+    public Pos getPosition() {
+        return block.pos();
+    }
+
     public TaskSchedule run() {
         if (nextSchedule.equals(TaskSchedule.stop())) {
             sendBlockBreak(-1);
@@ -57,11 +61,16 @@ public class BreakingTask {
         counter += 1;
 
         if (counter >= breakTime) {
+            // resultBlock must be AIR, not the original block: most callers explicitly cancel this
+            // event and remove the block themselves, but for a player with build-bypass enabled
+            // (e.g. staff in Creative), nothing cancels it and Minestom applies resultBlock directly -
+            // leaving it as the original block silently puts the same block right back with no
+            // visible break, no drop, and no error.
             MinecraftServer.getGlobalEventHandler().call(new PlayerBlockBreakEvent(
                     player,
                 player.getInstance(),
                     block.block(),
-                    block.block(),
+                    Block.AIR,
                 block.pos().asBlockVec(),
                     BlockFace.BOTTOM));
 

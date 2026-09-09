@@ -18,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// Thrown ender pearl projectile that teleports its shooter to the impact point and applies fall damage/particles.
 public class ThrownEnderpearl extends CustomEntityProjectile implements ItemHoldingProjectile {
 	private Pos prevPos = Pos.ZERO;
 

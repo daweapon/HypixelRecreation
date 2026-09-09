@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Silk Touch enchantment: lets a pickaxe collect normally unobtainable block drops; conflicts
+// with Smelting Touch and Fortune.
 public class EnchantmentSilkTouch implements Ench, EnchFromTable, ConflictingEnch {
 
     @Override

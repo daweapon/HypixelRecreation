@@ -5,6 +5,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for querying player counts from the proxy, by network total, server type, or specific server UUID.
 public class PlayerCountProtocol extends RedisProtocol<
         PlayerCountProtocol.Request,
         PlayerCountProtocol.Response> {

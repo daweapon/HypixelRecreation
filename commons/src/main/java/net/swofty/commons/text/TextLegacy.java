@@ -10,6 +10,7 @@ import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 
+// Parses legacy '&'/'§' formatting-code strings (including hex colors) into an Adventure Component.
 final class TextLegacy {
 
     private TextLegacy() {

@@ -7,6 +7,7 @@ import net.swofty.velocity.gamemanager.GameManager;
 import java.util.Comparator;
 import java.util.List;
 
+// Balance strategy that picks the candidate server with the fewest connected players.
 public final class LowestPlayerCount extends BalanceConfiguration {
 
     private static final Comparator<GameManager.GameServer> BY_PLAYER_COUNT =

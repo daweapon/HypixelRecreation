@@ -13,6 +13,7 @@ import tools.jackson.core.JacksonException;
 import java.util.Map;
 import java.util.Objects;
 
+// Base class for a single named, serializable, persisted piece of player/game data.
 public abstract class Datapoint<T> {
     protected DataHandler dataHandler;
     @Getter private String key;

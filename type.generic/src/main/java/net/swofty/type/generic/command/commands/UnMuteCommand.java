@@ -25,6 +25,7 @@ import java.util.concurrent.TimeUnit;
         permission = Rank.STAFF,
         allowsConsole = false
 )
+// Staff command to lift a player's mute via the proxy punishment service.
 public class UnMuteCommand extends HypixelCommand {
 
     @Override

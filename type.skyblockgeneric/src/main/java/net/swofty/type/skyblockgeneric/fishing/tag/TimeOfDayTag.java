@@ -4,6 +4,7 @@ import java.util.function.IntPredicate;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 
+// Fishing tag that gates loot to a range of in-game hours (night, day, dawn, dusk).
 public record TimeOfDayTag(String id, IntPredicate hourPredicate) implements FishingTag {
 
     public static final TimeOfDayTag NIGHT = new TimeOfDayTag("NIGHT", hour -> hour < 6 || hour >= 20);

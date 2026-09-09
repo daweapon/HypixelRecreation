@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Lure enchantment: grants bonus Fishing Speed.
 public class EnchantmentLure implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+// Gravity enchantment: boosts damage dealt to airborne-type mobs.
 public final class EnchantmentGravity implements Ench, EnchFromTable, MobTypeDamageEnchantment {
     private static final double[] BONUSES = {5, 10, 15, 20, 30, 40};
 

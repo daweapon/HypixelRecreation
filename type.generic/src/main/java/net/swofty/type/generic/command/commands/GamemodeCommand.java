@@ -13,6 +13,7 @@ import net.swofty.type.generic.user.categories.Rank;
         usage = "/gamemode <gamemode>",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command to change a player's Minecraft gamemode.
 public class GamemodeCommand extends HypixelCommand {
 
     @Override

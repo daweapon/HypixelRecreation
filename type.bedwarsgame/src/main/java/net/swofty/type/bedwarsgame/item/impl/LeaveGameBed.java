@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Hotbar item that lets a player leave their Bedwars game after a delayed confirmation.
 public class LeaveGameBed extends SimpleInteractableItem {
 
     private static Map<UUID, Task> leaveTasks = new ConcurrentHashMap<>();

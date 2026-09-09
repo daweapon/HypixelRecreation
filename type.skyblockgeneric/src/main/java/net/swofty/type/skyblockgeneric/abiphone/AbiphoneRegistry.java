@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.swofty.type.skyblockgeneric.abiphone.AbiphoneNPC;
 
+// Holds the list of all registered Abiphone contact NPCs and looks them up by id.
 public class AbiphoneRegistry {
 	@Getter
 	private static final List<AbiphoneNPC> registeredContactNPCs = new ArrayList<>();

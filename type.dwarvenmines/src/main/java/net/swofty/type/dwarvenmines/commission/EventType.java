@@ -1,5 +1,6 @@
 package net.swofty.type.dwarvenmines.commission;
 
+// Special timed events in the Dwarven Mines that some commissions can require participation in.
 public enum EventType {
     GOBLIN_RAID,
     RAFFLE,

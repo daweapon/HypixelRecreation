@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// GUI for purchasing team upgrades and traps shared across the whole Bedwars team.
 public class GUITeamShop extends StatelessView {
 
     private static final int[] UPGRADE_SLOTS = {10, 11, 12, 19, 20, 21};

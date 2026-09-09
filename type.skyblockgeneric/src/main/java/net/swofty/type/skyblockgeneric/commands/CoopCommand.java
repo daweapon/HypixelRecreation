@@ -6,8 +6,10 @@ import net.swofty.proxyapi.ProxyPlayer;
 import net.swofty.proxyapi.ProxyPlayerSet;
 import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
+import net.swofty.type.generic.data.datapoints.DatapointBoolean;
 import net.swofty.type.generic.data.mongodb.ProfilesDatabase;
 import net.swofty.type.generic.user.categories.Rank;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -89,6 +91,17 @@ public class CoopCommand extends HypixelCommand {
             }
 
             CoopDatabase.Coop coop = CoopDatabase.getClean(player.getUuid());
+
+            // The originator's existing profile is the island every invitee will actually be
+            // joining - it must be registered as the first memberProfile so CoopProfileCreation
+            // clones its real ISLAND_UUID instead of generating a disconnected new island.
+            coop.memberProfiles().add(player.getProfiles().getCurrentlySelected());
+            SkyBlockDataHandler originatorHandler = player.getSkyblockDataHandler();
+            originatorHandler.get(SkyBlockDataHandler.Data.IS_COOP, DatapointBoolean.class).setValue(true);
+            // setValue() only mutates the in-memory datapoint - without this it's lost on the
+            // next server restart or profile reload, silently reverting to is_coop=false and
+            // leaving /coopleave's isCoop() gate out of sync with the real Redis membership.
+            originatorHandler.saveToApi();
 
             int i = 0;
             for (ProxyPlayer invitedPlayer : chosenPlayers.asProxyPlayers()) {

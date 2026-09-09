@@ -14,6 +14,7 @@ import java.util.function.Consumer;
         usage = "/spawnsatchel",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command that drops a loot satchel at the player's position via a dungeon-server-supplied spawn hook.
 public class SpawnSatchelCommand extends HypixelCommand {
     public static volatile Consumer<Player> spawner;
 

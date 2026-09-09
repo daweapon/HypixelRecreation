@@ -20,6 +20,7 @@ import java.util.List;
     permission = Rank.DEFAULT,
     allowsConsole = false
 )
+// /sl command that transfers a player to a specific numbered lobby server.
 public class SwapLobbyCommand extends HypixelCommand {
 
     @Override

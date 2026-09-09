@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Main builder shop menu, linking out to material-category sub-shops
 public class GUIBuilder extends HypixelInventoryGUI {
     public GUIBuilder() {
         super(Text.key("gui_builder.title"), InventoryType.CHEST_4_ROW);

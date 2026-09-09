@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: transfers guild ownership from the current guild master to another member.
 public class GuildTransferRequestEvent extends GuildEvent {
     @NotNull
     private UUID currentOwner;

@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.Set;
 
+// The kinds of cosmetic collectibles players can unlock/select (trails, dances, sprays, skins, etc.), grouped by gamemode.
 @Getter
 public enum CollectibleCategory {
     PROJECTILE_TRAILS("Projectile Trails"),

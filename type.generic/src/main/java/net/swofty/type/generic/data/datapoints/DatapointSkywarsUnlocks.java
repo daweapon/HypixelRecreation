@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+// Datapoint storing a player's unlocked/selected SkyWars kits and perks (per-mode selections, favorites, prestige XP).
 public class DatapointSkywarsUnlocks extends Datapoint<DatapointSkywarsUnlocks.SkywarsUnlocks> {
 
     public DatapointSkywarsUnlocks(String key, SkywarsUnlocks value) {

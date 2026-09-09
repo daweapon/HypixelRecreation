@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Comparator;
 import java.util.List;
 
+// Orders and indexes lobby servers for display in the lobby selector.
 @NoArgsConstructor
 public final class LobbyServerOrder {
 

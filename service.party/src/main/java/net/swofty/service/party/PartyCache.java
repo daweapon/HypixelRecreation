@@ -18,6 +18,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
+// In-memory store of active parties, pending invites, and disconnect timers; implements all party action logic (invite, kick, warp, disband, etc.).
 public class PartyCache {
     private static final long DISCONNECT_TIMEOUT_MS = 300_000;
     private static final long INVITE_TIMEOUT_MS = 60_000;
@@ -42,6 +43,23 @@ public class PartyCache {
 
     public static void handleInvite(PartyAction.Invite action) {
         PendingParty pending = action.party();
+        UUID inviter = pending.leader();
+
+        FullParty existingParty = getPartyFromPlayer(inviter);
+        if (existingParty != null) {
+            FullParty.Member inviterMember = getMember(existingParty, inviter);
+            boolean canInvite = inviterMember != null &&
+                    (inviterMember.getRole() != FullParty.Role.MEMBER || existingParty.isAllowAllInvite());
+            if (!canInvite) {
+                sendErrorToPlayer(inviter, "<c>Only party leaders and moderators can invite players!");
+                return;
+            }
+            if (existingParty.getMembers().size() >= existingParty.getMaxSize()) {
+                sendErrorToPlayer(inviter, "<c>Your party is full! (Max {} players)", existingParty.getMaxSize());
+                return;
+            }
+        }
+
         pendingInvites.put(pending.invitee(), pending);
         scheduleInviteExpiration(pending.leader(), pending.invitee());
         broadcast(new PartyBroadcast.Invited(pending));
@@ -63,6 +81,10 @@ public class PartyCache {
             activeParties.put(party.getUuid(), party);
             playerToParty.put(inviter, party.getUuid());
         } else {
+            if (party.getMembers().size() >= party.getMaxSize()) {
+                sendErrorToPlayer(accepter, "<c>That party is full!");
+                return;
+            }
             party.getMembers().add(new FullParty.Member(accepter, FullParty.Role.MEMBER, true));
         }
         playerToParty.put(accepter, party.getUuid());
@@ -210,7 +232,114 @@ public class PartyCache {
             sendErrorToPlayer(sender, "<c>You are not in a party!");
             return;
         }
+
+        if (party.isMuted()) {
+            FullParty.Member member = getMember(party, sender);
+            if (member != null && member.getRole() == FullParty.Role.MEMBER) {
+                sendErrorToPlayer(sender, "<c>Party chat is muted - only the leader and moderators can talk!");
+                return;
+            }
+        }
+
         broadcast(new PartyBroadcast.Chat(party, sender, action.message()));
+    }
+
+    public static void handleChangeSize(PartyAction.ChangeSize action) {
+        UUID setterUUID = action.setter();
+        FullParty party = getPartyFromPlayer(setterUUID);
+        if (party == null) {
+            sendErrorToPlayer(setterUUID, "<c>You are not in a party!");
+            return;
+        }
+
+        FullParty.Member setter = getMember(party, setterUUID);
+        if (setter.getRole() == FullParty.Role.MEMBER) {
+            sendErrorToPlayer(setterUUID, "<c>Only party leaders and moderators can change party settings!");
+            return;
+        }
+
+        int size = action.size();
+        if (size < FullParty.MIN_SIZE || size > FullParty.MAX_SIZE) {
+            sendErrorToPlayer(setterUUID, "<c>Party size must be between {} and {}!", FullParty.MIN_SIZE, FullParty.MAX_SIZE);
+            return;
+        }
+        if (size < party.getMembers().size()) {
+            sendErrorToPlayer(setterUUID, "<c>Your party already has more than {} members!", size);
+            return;
+        }
+
+        party.setMaxSize(size);
+        broadcast(new PartyBroadcast.SizeChanged(party, setterUUID, size));
+    }
+
+    public static void handleToggleAllInvite(PartyAction.ToggleAllInvite action) {
+        UUID setterUUID = action.setter();
+        FullParty party = getPartyFromPlayer(setterUUID);
+        if (party == null) {
+            sendErrorToPlayer(setterUUID, "<c>You are not in a party!");
+            return;
+        }
+
+        FullParty.Member setter = getMember(party, setterUUID);
+        if (setter.getRole() == FullParty.Role.MEMBER) {
+            sendErrorToPlayer(setterUUID, "<c>Only party leaders and moderators can change party settings!");
+            return;
+        }
+
+        party.setAllowAllInvite(!party.isAllowAllInvite());
+        broadcast(new PartyBroadcast.AllInviteToggled(party, setterUUID, party.isAllowAllInvite()));
+    }
+
+    public static void handleToggleMute(PartyAction.ToggleMute action) {
+        UUID setterUUID = action.setter();
+        FullParty party = getPartyFromPlayer(setterUUID);
+        if (party == null) {
+            sendErrorToPlayer(setterUUID, "<c>You are not in a party!");
+            return;
+        }
+
+        FullParty.Member setter = getMember(party, setterUUID);
+        if (setter.getRole() == FullParty.Role.MEMBER) {
+            sendErrorToPlayer(setterUUID, "<c>Only party leaders and moderators can mute the party!");
+            return;
+        }
+
+        party.setMuted(!party.isMuted());
+        broadcast(new PartyBroadcast.MuteToggled(party, setterUUID, party.isMuted()));
+    }
+
+    public static void handleKickOffline(PartyAction.KickOffline action) {
+        UUID kickerUUID = action.kicker();
+        FullParty party = getPartyFromPlayer(kickerUUID);
+        if (party == null) {
+            sendErrorToPlayer(kickerUUID, "<c>You are not in a party!");
+            return;
+        }
+
+        FullParty.Member kicker = getMember(party, kickerUUID);
+        if (kicker.getRole() == FullParty.Role.MEMBER) {
+            sendErrorToPlayer(kickerUUID, "<c>Only party leaders and moderators can kick offline members!");
+            return;
+        }
+
+        List<UUID> offline = party.getMembers().stream()
+                .map(FullParty.Member::getUuid)
+                .filter(disconnectTimers::containsKey)
+                .filter(uuid -> !uuid.equals(kickerUUID))
+                .toList();
+
+        if (offline.isEmpty()) {
+            sendErrorToPlayer(kickerUUID, "<c>There are no disconnected members to kick!");
+            return;
+        }
+
+        for (UUID uuid : offline) {
+            cancelDisconnectTimer(uuid);
+            party.getMembers().removeIf(member -> member.getUuid().equals(uuid));
+            playerToParty.remove(uuid);
+        }
+
+        broadcast(new PartyBroadcast.OfflineMembersKicked(party, kickerUUID, offline));
     }
 
     public static void handleSwitchedServer(PartyAction.SwitchedServer action) {
@@ -230,20 +359,31 @@ public class PartyCache {
             return;
         }
 
-        FullParty currentParty = getPartyFromPlayer(hijackerUUID);
-        if (currentParty != null) {
-            handleLeave(new PartyAction.Leave(hijackerUUID));
-        }
-
         FullParty.Member currentLeader = targetParty.getMembers().stream()
                 .filter(m -> m.getRole() == FullParty.Role.LEADER)
                 .findFirst().orElse(null);
+        if (currentLeader != null && currentLeader.getUuid().equals(hijackerUUID)) {
+            sendErrorToPlayer(hijackerUUID, "<c>You are already the leader of this party!");
+            return;
+        }
+
+        FullParty currentParty = getPartyFromPlayer(hijackerUUID);
+        if (currentParty != null && !currentParty.getUuid().equals(targetParty.getUuid())) {
+            handleLeave(new PartyAction.Leave(hijackerUUID));
+        } else if (currentParty != null) {
+            targetParty.getMembers().removeIf(m -> m.getUuid().equals(hijackerUUID));
+        }
+
+        UUID oldLeaderUUID = null;
         if (currentLeader != null) {
+            oldLeaderUUID = currentLeader.getUuid();
             currentLeader.setRole(FullParty.Role.MEMBER);
         }
 
         targetParty.getMembers().add(new FullParty.Member(hijackerUUID, FullParty.Role.LEADER, true));
         playerToParty.put(hijackerUUID, targetParty.getUuid());
+
+        broadcast(new PartyBroadcast.Hijacked(targetParty, hijackerUUID, oldLeaderUUID));
     }
 
     public static void handleWarp(PartyAction.Warp action) {

@@ -23,6 +23,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// Updates the held item's menu/quiver display and swapped arrow visuals when a player switches held slot
 public class ActionPlayerChangeHypixelMenuDisplay implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

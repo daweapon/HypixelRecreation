@@ -6,6 +6,7 @@ import net.swofty.anticheat.math.Pos;
 import java.util.UUID;
 
 @Getter
+// Loader-agnostic representation of a client's block/item placement (use-item-on-block) packet.
 public class BlockPlacePacket extends SwoftyPacket {
     private final Hand hand;
     private final Pos position;

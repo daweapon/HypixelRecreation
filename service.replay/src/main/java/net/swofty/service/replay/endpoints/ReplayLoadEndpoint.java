@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Redis endpoint that loads a stored replay's full metadata and data chunks for playback.
 public class ReplayLoadEndpoint implements RedisMessageHandler<
     ReplayLoadProtocolObject.LoadRequest,
     ReplayLoadProtocolObject.LoadResponse> {

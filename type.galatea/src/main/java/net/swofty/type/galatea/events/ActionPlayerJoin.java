@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Spawns joining players at Galatea's configured respawn point.
 public class ActionPlayerJoin implements HypixelEventClass {
 
     @SneakyThrows

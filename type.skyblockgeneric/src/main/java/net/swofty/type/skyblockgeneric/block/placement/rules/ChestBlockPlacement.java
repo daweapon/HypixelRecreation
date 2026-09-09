@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.ChestType;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 
+// Placement rule for chests, forming/splitting double chests with adjacent matching chests.
 public class ChestBlockPlacement extends PlacementRule {
     public ChestBlockPlacement(Block block) {
         super(block);

@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+// Generic tagged item type used to build the many one-off active Lucky Block reward items.
 public class LuckySpecialItem extends SimpleInteractableItem {
     public static final Tag<String> ACTION_TAG = Tag.String("lucky_action");
     private static final Tag<Integer> USES_TAG = Tag.Integer("lucky_uses");

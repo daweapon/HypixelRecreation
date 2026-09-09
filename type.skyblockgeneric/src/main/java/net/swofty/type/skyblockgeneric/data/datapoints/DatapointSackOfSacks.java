@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+// Persists the individual sack items placed in a player's Sack of Sacks slots.
 public class DatapointSackOfSacks extends SkyBlockDatapoint<DatapointSackOfSacks.PlayerSackOfSacks> {
     public static Serializer<PlayerSackOfSacks> serializer = new Serializer<>() {
         @Override

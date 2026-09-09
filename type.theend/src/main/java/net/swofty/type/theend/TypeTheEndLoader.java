@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// SkyBlockTypeLoader for the Crystal Hollows/The End server type: defines its spawn point, tablist, dimension, and events/NPCs.
 public class TypeTheEndLoader implements SkyBlockTypeLoader {
     @Override
     public ServerType getType() {

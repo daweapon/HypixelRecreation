@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.DoubleUnaryOperator;
 
+// Common contract for 3D coordinate types (Pos, Vel) shared across the anticheat's own math library.
 public sealed interface Point permits Vel, Pos {
 
     /**

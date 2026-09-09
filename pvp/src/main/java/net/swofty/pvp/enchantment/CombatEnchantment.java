@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+// Base type describing how a vanilla enchantment affects combat: protection, attack damage, and damage-event hooks.
 public class CombatEnchantment {
 	private final RegistryKey<Enchantment> enchantment;
 	private final EquipmentSlot[] slotTypes;

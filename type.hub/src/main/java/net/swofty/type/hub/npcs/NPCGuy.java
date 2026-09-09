@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// NPC for Guy in the Hub; interaction is not yet implemented
 public class NPCGuy extends HypixelNPC {
 
     public NPCGuy() {

@@ -6,7 +6,7 @@ import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.gui.inventories.hunting.GUIAttributeMenu;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-@CommandParameters(labels = "attributes attributesmenu",
+@CommandParameters(labels = "attributes attributesmenu attributemenu am",
         description = "Opens your Attributes menu",
         usage = "/attributesmenu",
         permission = Rank.DEFAULT,

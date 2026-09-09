@@ -17,6 +17,7 @@ import net.swofty.type.generic.party.PartyManager;
 import java.util.Random;
 import java.util.UUID;
 
+// Sets up a player who just joined a Bedwars game: instance, gamemode, leave item, and obfuscated name.
 public class PlayerJoinGameListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

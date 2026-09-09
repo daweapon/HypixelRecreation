@@ -10,6 +10,7 @@ import net.minestom.server.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+// Thrown egg projectile; deals no real damage but shows particles on impact.
 public class ThrownEgg extends CustomEntityProjectile implements ItemHoldingProjectile {
 	
 	public ThrownEgg(@Nullable Entity shooter) {

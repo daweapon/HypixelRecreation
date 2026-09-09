@@ -82,6 +82,11 @@ public class PartyBroadcastHandler implements RedisMessageHandler<Request, Respo
             case PartyBroadcast.MemberDisconnected b -> renderDisconnected(player, b);
             case PartyBroadcast.MemberRejoined b -> renderRejoined(player, b);
             case PartyBroadcast.MemberDisconnectTimedOut b -> renderDisconnectTimedOut(player, b);
+            case PartyBroadcast.SizeChanged b -> renderSizeChanged(player, b);
+            case PartyBroadcast.AllInviteToggled b -> renderAllInviteToggled(player, b);
+            case PartyBroadcast.MuteToggled b -> renderMuteToggled(player, b);
+            case PartyBroadcast.OfflineMembersKicked b -> renderOfflineMembersKicked(player, b);
+            case PartyBroadcast.Hijacked b -> renderHijacked(player, b);
         };
     }
 
@@ -283,6 +288,42 @@ public class PartyBroadcastHandler implements RedisMessageHandler<Request, Respo
             sendBoxed(player, "<c>The party leader {} <c>timed out. The party has been disbanded.", name);
         } else if (!b.timedOutPlayer().equals(player.getUuid())) {
             sendBoxed(player, "{} <e>has been removed from the party due to disconnect timeout.", name);
+        }
+        return DispatchResult.ok();
+    }
+
+    private static DispatchResult renderSizeChanged(HypixelPlayer player, PartyBroadcast.SizeChanged b) {
+        sendBoxed(player, "{} <e>set the max party size to <a>{}!", displayName(b.setter()), b.size());
+        return DispatchResult.ok();
+    }
+
+    private static DispatchResult renderAllInviteToggled(HypixelPlayer player, PartyBroadcast.AllInviteToggled b) {
+        sendBoxed(player, "{} <e>{} <e>all-invite - {}<e> can now invite players.",
+                displayName(b.setter()), b.enabled() ? "enabled" : "disabled", b.enabled() ? "any member" : "only the leader and moderators");
+        return DispatchResult.ok();
+    }
+
+    private static DispatchResult renderMuteToggled(HypixelPlayer player, PartyBroadcast.MuteToggled b) {
+        sendBoxed(player, "{} <e>has {} <e>the party!", displayName(b.setter()), b.muted() ? "muted" : "unmuted");
+        return DispatchResult.ok();
+    }
+
+    private static DispatchResult renderOfflineMembersKicked(HypixelPlayer player, PartyBroadcast.OfflineMembersKicked b) {
+        if (b.kicked().contains(player.getUuid())) {
+            sendBoxed(player, "<c>You were removed from the party for being offline.");
+            return DispatchResult.ok();
+        }
+        sendBoxed(player, "{} <e>kicked {} disconnected member(s) from the party.", displayName(b.kicker()), b.kicked().size());
+        return DispatchResult.ok();
+    }
+
+    private static DispatchResult renderHijacked(HypixelPlayer player, PartyBroadcast.Hijacked b) {
+        if (b.hijacker().equals(player.getUuid())) {
+            sendBoxed(player, "<c><l>You have hijacked this party! You are now the leader.");
+        } else if (b.oldLeader() != null && b.oldLeader().equals(player.getUuid())) {
+            sendBoxed(player, "<c><l>A staff member has hijacked your party! They are now the leader.");
+        } else {
+            sendBoxed(player, "<c>A staff member ({}) <c>has taken control of the party as leader!", displayName(b.hijacker()));
         }
         return DispatchResult.ok();
     }

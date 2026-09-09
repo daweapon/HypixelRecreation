@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerRegionChangeEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Resets a player's mining efficiency attribute when they change region on non-island servers
 public class ActionChangeMiningRegion implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
     public void run(PlayerRegionChangeEvent event) {

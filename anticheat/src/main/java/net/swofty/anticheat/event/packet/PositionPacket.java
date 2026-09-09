@@ -5,6 +5,7 @@ import net.swofty.anticheat.engine.SwoftyPlayer;
 import org.jetbrains.annotations.NotNull;
 
 @Getter
+// Loader-agnostic representation of a client's position-only movement packet.
 public class PositionPacket extends SwoftyPacket {
     private final double x;
     private final double y;

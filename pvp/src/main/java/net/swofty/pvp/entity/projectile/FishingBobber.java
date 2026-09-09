@@ -11,6 +11,7 @@ import net.minestom.server.entity.metadata.other.FishingHookMeta;
 import net.minestom.server.item.Material;
 import org.jetbrains.annotations.Nullable;
 
+// Fishing rod bobber projectile, handling hooking entities/items and pulling them back to the shooter on retrieve.
 public class FishingBobber extends CustomEntityProjectile {
 	private final boolean legacy;
 	private int stuckTime;

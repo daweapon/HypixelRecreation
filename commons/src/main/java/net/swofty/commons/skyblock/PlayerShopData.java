@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Tracks a player's NPC-shop purchase stock cooldowns and pending buyback stack, with serialization for persistence.
 public class PlayerShopData {
     public static final int MAXIMUM_STOCK = 640;
 

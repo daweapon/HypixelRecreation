@@ -19,6 +19,7 @@ import net.swofty.type.ravengardgeneric.hud.RavengardHud;
 import java.util.List;
 import java.util.Optional;
 
+// Game logic for a Ravengard dungeon run: team assignment, elimination/spectating, HUD updates, and routing teams back to the lobby on wipe.
 public class RavengardDungeonGame extends AbstractGame<RavengardDungeonPlayer> {
     private static final int TEAM_SIZE = 3;
     public static final List<Pos> SPAWN_POINTS = List.of(

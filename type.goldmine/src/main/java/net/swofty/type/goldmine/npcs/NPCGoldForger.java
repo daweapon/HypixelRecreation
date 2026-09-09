@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 
+// NPC for the Gold Forger, sells gold gear and ingots in the Gold Mine.
 public class NPCGoldForger extends HypixelNPC {
 
 	public NPCGoldForger() {

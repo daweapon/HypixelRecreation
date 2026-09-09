@@ -16,6 +16,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Orchestrates a single player's transfers between backend servers and Limbo, including AFK-limbo return and origin-server bookkeeping.
 public record TransferHandler(Player player) {
 	public static final Map<Player, ServerType> playersGoalServerType = new ConcurrentHashMap<>();
 	private static final Map<Player, RegisteredServer> playersOriginServer = new ConcurrentHashMap<>();

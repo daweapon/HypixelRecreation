@@ -10,6 +10,7 @@ import net.swofty.velocity.SkyBlockVelocity;
 import net.swofty.velocity.data.AuthenticationDatabase;
 import net.swofty.velocity.gamemanager.TransferHandler;
 
+// "/login <password>" command used by unauthenticated players to log in against their stored authentication data.
 public class LoginCommand implements SimpleCommand {
 
     @Override

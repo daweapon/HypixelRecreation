@@ -12,6 +12,7 @@ import org.bson.Document;
 import java.util.List;
 import java.util.Map;
 
+// Island lifecycle step that restores minions on load and simulates offline production since last save.
 public class MinionLoadStep implements IslandLifecycleStep {
     @Override
     public IslandLifecyclePhase phase() {

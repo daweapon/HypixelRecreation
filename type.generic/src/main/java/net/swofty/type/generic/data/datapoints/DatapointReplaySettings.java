@@ -8,6 +8,7 @@ import net.swofty.commons.protocol.Serializer;
 import net.swofty.type.generic.data.Datapoint;
 import org.json.JSONObject;
 
+// Datapoint storing a player's replay viewer preferences (chat, night vision, fly speed, skip intervals, etc.).
 public class DatapointReplaySettings extends Datapoint<DatapointReplaySettings.ReplaySettings> {
 	private static final Serializer<ReplaySettings> serializer = new Serializer<>() {
 		@Override

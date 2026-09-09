@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.UnaryOperator;
 
+// Standard (possibly tipped) arrow projectile, applying potion effects on hit and decaying its potion glow over time.
 public class Arrow extends AbstractArrow {
 	public static final ItemStack DEFAULT_ARROW = ItemStack.of(Material.ARROW);
 

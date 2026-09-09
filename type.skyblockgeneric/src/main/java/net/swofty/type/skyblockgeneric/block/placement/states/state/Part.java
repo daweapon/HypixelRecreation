@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for a bed's foot/head segment.
 public enum Part implements State<Part> {
     FOOT, HEAD;
 

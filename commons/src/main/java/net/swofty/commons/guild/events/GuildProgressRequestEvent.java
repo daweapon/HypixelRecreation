@@ -10,6 +10,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system event: reports a member's GEXP contribution and whether it came from a win, for guild/daily progress tracking.
 public class GuildProgressRequestEvent extends GuildEvent {
     private UUID player;
     private long gexp;

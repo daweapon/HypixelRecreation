@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.minestom.server.item.Material;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
 
+// Achievement categories, one per minigame/hub, each with a display name, config key, and GUI icon.
 @Getter
 public enum AchievementCategory {
     BEDWARS("Bed Wars", "bedwars", new GUIMaterial(Material.RED_BED)),

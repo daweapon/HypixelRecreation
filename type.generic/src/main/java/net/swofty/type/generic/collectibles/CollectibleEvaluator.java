@@ -16,6 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Evaluates whether a player can select a given collectible based on its unlock requirement (event, rank, manual unlock).
 public final class CollectibleEvaluator {
 
     private static final DateTimeFormatter WINDOW_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneOffset.UTC);

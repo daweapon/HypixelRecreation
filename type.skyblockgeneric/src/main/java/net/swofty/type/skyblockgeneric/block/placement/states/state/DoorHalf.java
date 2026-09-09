@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for whether a door segment is its lower or upper half.
 public enum DoorHalf implements State<DoorHalf> {
     LOWER, UPPER;
 

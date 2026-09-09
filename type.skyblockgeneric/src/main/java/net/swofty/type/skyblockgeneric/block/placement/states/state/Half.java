@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for whether a segment is the top or bottom half (e.g. stairs, trapdoors).
 public enum Half implements State<Half> {
     TOP,
     BOTTOM;

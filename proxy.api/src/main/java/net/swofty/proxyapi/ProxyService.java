@@ -6,6 +6,7 @@ import net.swofty.commons.redis.RedisClient;
 
 import java.util.concurrent.CompletableFuture;
 
+// Handle for invoking a specific backend service's Redis RPC protocol from proxy-side code.
 public record ProxyService(ServiceType type) {
     public CompletableFuture<Boolean> isOnline() {
         return RedisClient.isServiceOnline(type);

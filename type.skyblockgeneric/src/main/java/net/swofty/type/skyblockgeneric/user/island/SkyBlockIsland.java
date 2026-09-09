@@ -157,7 +157,7 @@ public class SkyBlockIsland {
         if (islandVersion >= HypixelConst.getCurrentIslandVersion()) return;
 
         MathUtility.delay(() -> SkyBlockGenericLoader.getLoadedPlayers().stream()
-                .filter(player -> player.getSkyBlockIsland().getIslandID() == islandID)
+                .filter(player -> player.getSkyBlockIsland().getIslandID().equals(islandID))
                 .forEach(player -> player.getLogHandler().debug(Text.of("Your island was migrated from version <c>{} <f>to <a>{}<f>!",
                         oldVersion, HypixelConst.getCurrentIslandVersion()))), 20);
 

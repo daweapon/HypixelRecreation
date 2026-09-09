@@ -5,6 +5,7 @@ import net.swofty.anticheat.engine.PlayerTickInformation;
 import net.swofty.anticheat.engine.SwoftyPlayer;
 
 @Getter
+// Event fired each time a player's tick advances, carrying the previous and current tick snapshots.
 public class PlayerPositionUpdateEvent {
     private final SwoftyPlayer player;
     private final PlayerTickInformation previousTick;

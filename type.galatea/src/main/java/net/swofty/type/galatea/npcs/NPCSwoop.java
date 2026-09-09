@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Decorative Swoop NPC, found in Galatea.
 public class NPCSwoop extends HypixelNPC {
 
     public NPCSwoop() {

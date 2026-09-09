@@ -9,6 +9,7 @@ import org.bson.Document;
 import java.util.List;
 import java.util.UUID;
 
+// Reads and writes a player profile's SkyBlock document via the shared SwoftyData profile store.
 public record ProfilesDatabase(String id) implements MongoDB {
     private static final PlayerField<String> DOCUMENT =
             PlayerField.create("skyblock", "_doc", Codecs.STRING, null);

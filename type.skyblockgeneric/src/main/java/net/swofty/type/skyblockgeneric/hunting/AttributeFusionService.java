@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Determines the shard cost and possible outcomes for fusing two hunting attribute shards
+// together, and performs the fusion against a player's hunting data.
 public final class AttributeFusionService {
     private AttributeFusionService() {
     }

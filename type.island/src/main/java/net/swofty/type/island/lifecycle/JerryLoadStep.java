@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleStep;
 import net.swofty.type.skyblockgeneric.utility.JerryInformation;
 import org.bson.Document;
 
+// Island lifecycle step that spawns Jerry's entity and hologram at his saved (or default) position on load.
 public class JerryLoadStep implements IslandLifecycleStep {
     @Override
     public IslandLifecyclePhase phase() {

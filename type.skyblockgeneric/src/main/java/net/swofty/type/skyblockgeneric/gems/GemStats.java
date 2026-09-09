@@ -3,6 +3,8 @@ package net.swofty.type.skyblockgeneric.gems;
 import lombok.Getter;
 import net.swofty.commons.skyblock.item.Rarity;
 
+// Per-gemstone, per-rarity-tier stat bonus tables, looked up by gemstone type and gem rarity
+// against the item's own rarity.
 public enum GemStats {
     // RUBY - Health
     ROUGH_RUBY(1, 2, 3, 4, 5, 7, 0),

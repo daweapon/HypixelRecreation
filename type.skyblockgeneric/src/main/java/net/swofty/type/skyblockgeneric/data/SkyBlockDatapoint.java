@@ -6,6 +6,8 @@ import net.swofty.commons.protocol.Serializer;
 import net.swofty.type.generic.data.Datapoint;
 import net.swofty.type.generic.data.HypixelDataHandler;
 
+// Base type for SkyBlock-specific datapoints, resolving their onChange callback from either
+// generic Hypixel data or SkyBlock data definitions.
 public abstract class SkyBlockDatapoint<T> extends Datapoint<T> {
 
     protected SkyBlockDatapoint(String key, T value, Serializer<T> serializer) {

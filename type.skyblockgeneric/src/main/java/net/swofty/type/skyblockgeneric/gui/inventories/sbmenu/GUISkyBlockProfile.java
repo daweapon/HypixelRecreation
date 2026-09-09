@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
+// GUI showing a player's equipped gear, stats, and gathering-category breakdown
 public class GUISkyBlockProfile extends StatelessView {
 
     @Override

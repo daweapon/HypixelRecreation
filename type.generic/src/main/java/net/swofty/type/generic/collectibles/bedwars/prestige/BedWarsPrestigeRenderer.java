@@ -12,6 +12,7 @@ import net.swofty.type.generic.data.handlers.BedWarsDataHandler;
 import net.swofty.type.generic.user.HypixelPlayer;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Renders a player's BedWars level as styled prestige text, using their selected scheme/star/bracket collectibles.
 public final class BedWarsPrestigeRenderer {
 
     public static Text renderBrackets(HypixelPlayer player) {

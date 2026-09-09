@@ -26,6 +26,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+// In-memory cache of friend data plus all friend request/list/settings handling logic, including expiring stale pending requests.
 public class FriendCache {
     private static final Map<UUID, FriendData> cachedFriendData = new ConcurrentHashMap<>();
     private static final int FRIENDS_PER_PAGE = 10;

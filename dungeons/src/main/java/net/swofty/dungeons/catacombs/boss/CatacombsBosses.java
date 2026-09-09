@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Factory of the built-in CatacombsBossEncounter definitions (phases and mechanics) for each Catacombs boss.
 public final class CatacombsBosses {
     public static CatacombsBossEncounter watcher() {
         return encounter("WATCHER", "The Watcher", "Stalker",

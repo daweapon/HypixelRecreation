@@ -11,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Getter
 @Setter
+// Tracks a player's set of SkyBlock profiles and which one is currently selected, cached in-memory by UUID.
 public class SkyBlockPlayerProfiles {
     private final static String[] PROFILE_NAMES = {
             "Zucchini", "Papaya", "Watermelon", "Pineapple",

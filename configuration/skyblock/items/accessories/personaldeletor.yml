@@ -7,7 +7,8 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Deletor 4000
       - id: ACCESSORY
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: PERSONAL_DELETOR_INTERACT
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -39,7 +40,8 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Deletor 5000
       - id: ACCESSORY
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: PERSONAL_DELETOR_INTERACT
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -71,7 +73,8 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Deletor 6000
       - id: ACCESSORY
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: PERSONAL_DELETOR_INTERACT
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -103,7 +106,8 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Deletor 7000
       - id: ACCESSORY
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: PERSONAL_DELETOR_INTERACT
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

@@ -10,6 +10,7 @@ import net.swofty.type.bedwarsgame.shop.ShopItem;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 
+// Shop item for a specific potion type, rendering and granting the correct potion contents.
 public class PotionShopItem extends ShopItem {
 
 	final PotionType potionType;

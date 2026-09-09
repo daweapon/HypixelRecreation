@@ -9,6 +9,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.generic.user.HypixelPlayer;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Sends staff-only chat messages and notifications, broadcast to the network via the proxy.
 public final class StaffChat {
 
     private static final StaffChatProtocol PROTOCOL = new StaffChatProtocol();

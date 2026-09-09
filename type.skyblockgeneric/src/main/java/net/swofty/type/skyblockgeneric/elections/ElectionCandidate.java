@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.objects.election.GetCandidatesProtocol;
 
 import java.util.List;
 
+// A mayoral election candidate's current vote standing, built from the election service's protocol data.
 public record ElectionCandidate(
         SkyBlockMayor mayor,
         List<SkyBlockMayor.Perk> activePerks,

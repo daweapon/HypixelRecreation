@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// GUI for selecting an equipment piece to assign to one loadout component slot
 public class GUIEquipmentSets implements StatefulView<GUIEquipmentSets.EquipmentState> {
     private static final Material[] COLORS = {
             Material.RED_STAINED_GLASS_PANE, Material.ORANGE_STAINED_GLASS_PANE,

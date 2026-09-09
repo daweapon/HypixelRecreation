@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: one page of a player's friends list with each friend's presence/details.
 public final class FriendListResponseEvent extends FriendResponseEvent {
     private static final Serializer<FriendListResponseEvent> SERIALIZER =
             new JacksonSerializer<>(FriendListResponseEvent.class);

@@ -17,6 +17,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+// Shop item that builds a rising defensive block tower when placed.
 public class PopupTower extends SimpleInteractableItem {
 
 	public PopupTower() {

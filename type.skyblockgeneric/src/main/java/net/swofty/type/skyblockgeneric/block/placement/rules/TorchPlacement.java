@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 
+// Placement rule for torches, swapping to the wall variant and setting its facing when placed on a side.
 public class TorchPlacement extends PlacementRule {
 
     private final Block toPlace;

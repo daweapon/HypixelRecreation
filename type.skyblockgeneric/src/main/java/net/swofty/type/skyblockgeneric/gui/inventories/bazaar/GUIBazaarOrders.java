@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+// GUI listing a player's active bazaar buy and sell orders
 public class GUIBazaarOrders extends HypixelInventoryGUI {
     private static final int[] SELL_SLOTS = {10, 11, 12, 13, 14, 15, 16};
     private static final int[] BUY_SLOTS = {19, 20, 21, 22, 23, 24, 25};

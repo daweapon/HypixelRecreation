@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Datapoint storing a player's Soul Well upgrade levels and wheel count for BedWars/Murder Mystery-style progression.
 public class DatapointSoulWellUpgrades extends Datapoint<DatapointSoulWellUpgrades.SoulWellUpgrades> {
 
     public DatapointSoulWellUpgrades(String key, SoulWellUpgrades value) {

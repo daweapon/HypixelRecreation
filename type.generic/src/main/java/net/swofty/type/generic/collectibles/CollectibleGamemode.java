@@ -1,5 +1,6 @@
 package net.swofty.type.generic.collectibles;
 
+// The gamemodes that have their own collectible catalog.
 public enum CollectibleGamemode {
     BEDWARS("BedWars"),
     SKYWARS("SkyWars"),

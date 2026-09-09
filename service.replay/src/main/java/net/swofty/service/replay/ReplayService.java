@@ -11,6 +11,7 @@ import org.tinylog.Logger;
 
 import java.util.List;
 
+// Backend microservice that records, stores, and serves game replays and their maps, backed by MongoDB.
 public class ReplayService implements SkyBlockService {
 
     @Getter

@@ -24,6 +24,8 @@ import net.swofty.type.skyblockgeneric.fishing.tag.FishingTag;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Rolls what a fishing cast actually catches: quest items, sea creatures, trophy fish, or a
+// regular/treasure/junk item from the matching loot table, in priority order.
 public final class FishingLootResolver {
 
     private static final CatchPayload DEFAULT_CATCH =

@@ -13,7 +13,7 @@ import java.util.UUID;
 @CommandParameters(labels = "auctionview ahview",
         description = "Views an auction",
         usage = "/ahview <uuid>",
-        permission = Rank.STAFF,
+        permission = Rank.DEFAULT,
         allowsConsole = false)
 public class AhViewCommand extends HypixelCommand {
     @Override

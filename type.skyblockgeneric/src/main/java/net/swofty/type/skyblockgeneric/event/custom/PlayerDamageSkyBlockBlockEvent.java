@@ -7,6 +7,7 @@ import net.minestom.server.event.trait.PlayerInstanceEvent;
 import net.minestom.server.network.packet.client.play.ClientPlayerActionPacket;
 import org.jetbrains.annotations.NotNull;
 
+// Fired for each mining-swing packet a player sends against a SkyBlock block, driving custom break progress
 public class PlayerDamageSkyBlockBlockEvent implements PlayerInstanceEvent {
     private final Player player;
     @Getter

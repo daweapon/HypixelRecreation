@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 
+// Redis RPC protocol notifying a server that a player has fully switched away from it.
 public class PlayerSwitchedProtocol extends RedisProtocol<
         PlayerSwitchedProtocol.Request,
         PlayerSwitchedProtocol.Response> {

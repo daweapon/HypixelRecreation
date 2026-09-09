@@ -9,6 +9,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+// Immutable, compact (sparse-array-backed) set of base/additive/multiplicative values across all ItemStatistic entries, with arithmetic combination helpers.
 public final class ItemStatistics {
     private static final ItemStatistic[] STATISTICS = ItemStatistic.values();
     private static final ItemStatistics EMPTY = new ItemStatistics(new double[0], new double[0], new double[0]);

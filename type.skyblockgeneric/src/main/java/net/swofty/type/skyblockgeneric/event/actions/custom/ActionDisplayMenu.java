@@ -8,6 +8,7 @@ import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.skyblockgeneric.event.actions.player.ActionPlayerChangeHypixelMenuDisplay;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Sets the SkyBlock main menu display whenever the Hypixel inventory GUI opens
 public class ActionDisplayMenu implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
     public void run(HypixelInventoryGUI.InventoryGUIOpenEvent event) {

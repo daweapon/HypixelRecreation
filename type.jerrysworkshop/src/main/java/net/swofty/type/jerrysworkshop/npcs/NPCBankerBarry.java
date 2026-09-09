@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.gui.inventories.banker.GUIBanker;
 
+// NPC for Banker Barry, opens the banker GUI in Jerry's Workshop.
 public class NPCBankerBarry extends HypixelNPC {
 
 	public NPCBankerBarry() {

@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.block.placement.states;
 import net.minestom.server.instance.block.Block;
 import org.jetbrains.annotations.NotNull;
 
+// Typed BlockState marker for wall blocks (properties currently incomplete, see TODO below).
 public class WallState extends WaterloggedState {
 
     //TODO Complete Wall BlockSate

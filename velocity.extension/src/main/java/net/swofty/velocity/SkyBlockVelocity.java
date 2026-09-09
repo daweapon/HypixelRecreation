@@ -110,6 +110,7 @@ import java.util.stream.Stream;
     description = "SkyBlock plugin for Velocity",
     authors = {"Swofty"}
 )
+// Main Velocity plugin entry point: wires up packet handling, ViaVersion, commands, databases, Redis, and proxy-wide player lifecycle events.
 public class SkyBlockVelocity {
     @Getter
     private static ProxyServer server = null;
@@ -245,12 +246,17 @@ public class SkyBlockVelocity {
             .plugin(this)
             .build();
 
+        CommandMeta findCommandMeta = commandManager.metaBuilder("find")
+            .plugin(this)
+            .build();
+
         commandManager.register(statusCommandMeta, new ServerStatusCommand());
         commandManager.register(protocolVersionMeta, new ProtocolVersionCommand());
         commandManager.register(limboCommandMeta, new LimboCommand());
         commandManager.register(loginCommandMeta, new LoginCommand());
         commandManager.register(registerCommandMeta, new RegisterCommand());
         commandManager.register(lobbyCommandMeta, new LobbyCommand());
+        commandManager.register(findCommandMeta, new FindCommand());
 
         // Handle database
         new ProfilesDatabase("_placeHolder").connect(ConfigProvider.settings().getMongodb());
@@ -274,7 +280,8 @@ public class SkyBlockVelocity {
             new TeleportProtocol(), new PlayerSwitchedProtocol(),
             new DoesServerHaveIslandProtocol(),
             new RunEventProtocol(), new PingServerProtocol(),
-            new GivePlayersOriginTypeProtocol(), new BroadcastStaffChatProtocol()
+            new GivePlayersOriginTypeProtocol(), new BroadcastStaffChatProtocol(),
+            new PlayerLocationProtocol(), new PlayerRankProtocol()
         };
         for (RedisProtocol<?, ?> protocol : fromProxyProtocols) {
             RedisClient.registerResponseProtocol(protocol);

@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Spawns per-player leaderboard holograms and tracks each viewer's leaderboard display preferences.
 public class LeaderboardHologramManager {
 	private static final Map<UUID, PlayerLeaderboardState> playerStates = new ConcurrentHashMap<>();
 	private static final List<InteractionEntity> clickZones = new ArrayList<>();

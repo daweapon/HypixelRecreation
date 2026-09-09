@@ -9,9 +9,9 @@ anticheat: false
 redis-uri: redis://redis:6379
 limbo:
     host-name: pico_limbo
-    port: 65535
+    port: 25565
 resource-packs:
     skyblockpack:
-        server-url: http://127.0.0.1:7270
+        server-url: https://ending-receptors-presentations-requiring.trycloudflare.com
     ravengard:
-        server-url: http://127.0.0.1:7270
+        server-url: https://ending-receptors-presentations-requiring.trycloudflare.com

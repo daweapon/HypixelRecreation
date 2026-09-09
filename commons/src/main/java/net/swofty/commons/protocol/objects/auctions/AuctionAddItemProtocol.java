@@ -33,7 +33,17 @@ public class AuctionAddItemProtocol extends RedisProtocol
 
     }
 
-    public record AuctionAddItemMessage(AuctionItem item, AuctionCategories category) {}
+    public record AuctionAddItemMessage(AuctionItem item, AuctionCategories category, @Nullable ExpectedState expected) {
+        public AuctionAddItemMessage(AuctionItem item, AuctionCategories category) {
+            this(item, category, null);
+        }
+    }
+
+    public record ExpectedState(java.util.List<AuctionItem.Bid> bids, long endTime) {
+        public static ExpectedState of(AuctionItem item) {
+            return new ExpectedState(java.util.List.copyOf(item.getBids()), item.getEndTime());
+        }
+    }
 
     public record AuctionAddItemResponse(UUID uuid, boolean success, @Nullable String error) {}
 }

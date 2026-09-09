@@ -12,6 +12,7 @@ import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 import java.util.List;
 import java.util.function.Function;
 
+// Base class for shop items that upgrade through a sequence of tiers (e.g. tools, armor).
 public abstract class UpgradeableShopItem extends ShopItem {
 
     @Getter

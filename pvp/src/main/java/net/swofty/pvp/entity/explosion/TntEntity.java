@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// Primed TNT entity that counts down its fuse and triggers an explosion on the instance when it expires.
 public class TntEntity extends Entity {
 	private final Entity causingEntity;
 	

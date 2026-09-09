@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 // Fired when a buy+sell actually crosses
+// Bazaar transaction record logging a filled trade between a buyer and seller order.
 public record SuccessfulBazaarTransaction(
         String itemName,
         UUID buyer,

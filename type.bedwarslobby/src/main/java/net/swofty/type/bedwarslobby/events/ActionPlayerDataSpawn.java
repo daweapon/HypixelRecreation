@@ -21,6 +21,7 @@ import net.swofty.type.generic.quest.QuestType;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.user.categories.Rank;
 
+// Loads a player's Bedwars data on first spawn: level bar, join announcement, holograms, and quests.
 public class ActionPlayerDataSpawn implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER_DATA, requireDataLoaded = false, isAsync = true)

@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 
+// Redis RPC protocol used by the proxy as a liveness heartbeat ping to a backend server.
 public class PingServerProtocol extends RedisProtocol<
         PingServerProtocol.Request,
         PingServerProtocol.Response> {

@@ -8,6 +8,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.UUID;
 
+// Redis handler that resolves the requesting server's own display name and short display name from GameManager.
 public class ListenerServerName implements RedisMessageHandler<
         RequestServerNameProtocol.Request,
         RequestServerNameProtocol.Response> {

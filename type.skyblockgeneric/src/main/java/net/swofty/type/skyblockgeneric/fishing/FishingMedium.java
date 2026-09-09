@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.fishing;
 import net.minestom.server.instance.block.Block;
 import org.jetbrains.annotations.Nullable;
 
+// The liquid a player is fishing in (water or lava), detected from the block being fished in.
 public enum FishingMedium {
     WATER,
     LAVA;

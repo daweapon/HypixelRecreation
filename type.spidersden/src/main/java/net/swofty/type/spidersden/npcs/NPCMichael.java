@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// NPC for Michael in the Spider's Den, introduces the concept of Mob Types.
 public class NPCMichael extends HypixelNPC {
     public NPCMichael() {
         super(new HumanConfiguration() {

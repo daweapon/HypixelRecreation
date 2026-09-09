@@ -10,6 +10,7 @@ import org.tinylog.Logger;
 
 import java.util.UUID;
 
+// Redis handler that records a server's readiness signal for its assigned test flow.
 public class ListenerTestFlowServerReady implements RedisMessageHandler<
         TestFlowServerReadyProtocol.Request,
         TestFlowServerReadyProtocol.Response> {

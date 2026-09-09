@@ -257,3 +257,173 @@ items:
     rarity: UNCOMMON
     material: IRON_SHOVEL
     name: "Promising Shovel"
+  - id: DRILL_ENGINE
+    material: paper
+    name: "Drill Motor"
+    rarity: RARE
+    components:
+      - id: SELLABLE
+        value: 5884.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/drill_motor
+  - id: BEJEWELED_HANDLE
+    material: paper
+    name: "Bejeweled Handle"
+    rarity: RARE
+    components:
+      - id: SELLABLE
+        value: 100.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/bejeweled_handle
+  - id: MITHRIL_PLATE
+    material: paper
+    name: "Mithril Plate"
+    rarity: RARE
+    components:
+      - id: SELLABLE
+        value: 10108.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/mithril_plate
+  - id: GOLDEN_PLATE
+    material: paper
+    name: "Golden Plate"
+    rarity: RARE
+    components:
+      - id: SELLABLE
+        value: 3068.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/golden_plate
+  - id: PRECURSOR_APPARATUS
+    material: paper
+    name: "Precursor Apparatus"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 900000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/precursor_apparatus
+  - id: JUNGLE_HEART
+    material: paper
+    name: "Jungle Heart"
+    rarity: LEGENDARY
+    components:
+      - id: SELLABLE
+        value: 100000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/jungle_heart
+  - id: YOGGIE
+    material: paper
+    name: "Yoggie"
+    rarity: UNCOMMON
+    components:
+      - id: SELLABLE
+        value: 100.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/yoggie
+  - id: REFINED_UMBER
+    material: paper
+    name: "Refined Umber"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 256000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/umber/refined_umber
+  - id: UMBER_PLATE
+    material: paper
+    name: "Umber Plate"
+    rarity: RARE
+    components:
+      - id: SELLABLE
+        value: 11000000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/umber/umber_plate
+  - id: UMBER_KEY
+    material: dead_bush
+    name: "Umber Key"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 2400000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/umber/umber_key
+  - id: REFINED_TUNGSTEN
+    material: paper
+    name: "Refined Tungsten"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 256000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/tungsten/refined_tungsten
+  - id: TUNGSTEN_PLATE
+    material: paper
+    name: "Tungsten Plate"
+    rarity: RARE
+    components:
+      - id: SELLABLE
+        value: 10500000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/tungsten/tungsten_plate
+  - id: TUNGSTEN_KEY
+    material: paper
+    name: "Tungsten Key"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 2400000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/tungsten/tungsten_key
+  - id: GLACITE_AMALGAMATION
+    material: paper
+    name: "Glacite Amalgamation"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 1300000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/glacite/glacite_amalgamation
+  - id: PERFECT_PLATE
+    material: paper
+    name: "Perfect Plate"
+    rarity: LEGENDARY
+    components:
+      - id: SELLABLE
+        value: 28000000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/uncategorized/perfect_plate
+  - id: SKELETON_KEY
+    material: paper
+    name: "Skeleton Key"
+    rarity: LEGENDARY
+    components:
+      - id: SELLABLE
+        value: 10000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/uncategorized/skeleton_key
+  - id: SUSPICIOUS_SCRAP
+    material: paper
+    name: "Suspicious Scrap"
+    rarity: RARE
+    components:
+      - id: SELLABLE
+        value: 113000.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/suspicious_scrap

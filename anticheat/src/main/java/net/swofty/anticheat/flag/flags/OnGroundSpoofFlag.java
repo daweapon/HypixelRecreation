@@ -4,6 +4,7 @@ import net.swofty.anticheat.event.ListenerMethod;
 import net.swofty.anticheat.event.events.PlayerPositionUpdateEvent;
 import net.swofty.anticheat.flag.Flag;
 
+// Intended to detect spoofed on-ground movement flags; currently disabled pending real collision checking.
 public class OnGroundSpoofFlag extends Flag {
     @ListenerMethod
     public void onPlayerPositionUpdate(PlayerPositionUpdateEvent event) {

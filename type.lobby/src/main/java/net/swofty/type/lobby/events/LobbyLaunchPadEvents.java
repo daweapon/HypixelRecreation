@@ -14,6 +14,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.lobby.launchpad.LaunchPad;
 import net.swofty.type.lobby.launchpad.LaunchPadHandler;
 
+// Detects players walking over a lobby launch pad and launches them toward its destination.
 public class LobbyLaunchPadEvents implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, isAsync = true, phase = EventPhase.GAMEPLAY)

@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Getter
+// Guild-system event: a player requested creation of a new guild with the given name.
 public class GuildCreateRequestEvent extends GuildEvent {
     @NotNull
     private UUID creator;

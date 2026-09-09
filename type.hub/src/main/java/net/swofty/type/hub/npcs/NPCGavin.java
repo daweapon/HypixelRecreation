@@ -9,6 +9,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Gavin in the Hub, who hands out New Year cakes and sells the New Year Cake Bag
 public class NPCGavin extends HypixelNPC {
 
     public NPCGavin() {

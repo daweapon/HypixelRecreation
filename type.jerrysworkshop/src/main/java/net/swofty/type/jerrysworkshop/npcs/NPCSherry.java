@@ -7,6 +7,7 @@ import net.swofty.type.generic.entity.npc.configuration.AnimalConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Decorative snow golem NPC named Sherry, found in Jerry's Workshop.
 public class NPCSherry extends HypixelNPC {
 
 	public NPCSherry() {

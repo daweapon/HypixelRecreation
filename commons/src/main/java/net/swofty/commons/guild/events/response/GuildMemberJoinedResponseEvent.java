@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: notifies the guild that a new member joined.
 public class GuildMemberJoinedResponseEvent extends GuildResponseEvent {
     private UUID joiner;
 

@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 
+// Informational GUI explaining the Slumber Hotel lore and Slumber Ticket currency.
 public class GUIHotelGuide extends StatelessView {
 
     @Override

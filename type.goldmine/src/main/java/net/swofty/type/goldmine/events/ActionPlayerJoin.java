@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Spawns the player in the Gold Mine instance and sets their respawn point on join.
 public class ActionPlayerJoin implements HypixelEventClass {
 
     @SneakyThrows

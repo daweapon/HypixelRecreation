@@ -12,6 +12,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.utility.GameCountCache;
 
+// NPC that shows live Doubles queue population and opens the Doubles play GUI on click.
 public class NPCDoubles extends HypixelNPC {
 	public NPCDoubles() {
 		super(new HumanConfiguration() {

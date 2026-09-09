@@ -12,6 +12,7 @@ import org.bson.Document;
 
 import java.util.UUID;
 
+// MongoDB accessor for tracked items (unique items with attached-player history), keyed by item UUID.
 public record TrackedItemsDatabase(UUID itemUUID) {
     public static MongoClient client;
     public static MongoDatabase database;

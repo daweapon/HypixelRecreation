@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Lucky Block reward that grants the opener's whole team a random unmaxed shop upgrade.
 public class RandomTeamUpgradeLuckyReward extends LuckyReward {
     public RandomTeamUpgradeLuckyReward() {
         super("Random Team Upgrade");

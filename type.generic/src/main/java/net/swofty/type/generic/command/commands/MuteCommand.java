@@ -29,6 +29,7 @@ import java.util.concurrent.TimeUnit;
         usage = "/mute <player> [duration] <reason>",
         allowsConsole = false
 )
+// Staff command to mute/tempmute a player, issuing the punishment via the proxy service.
 public class MuteCommand extends HypixelCommand {
 
     @Override

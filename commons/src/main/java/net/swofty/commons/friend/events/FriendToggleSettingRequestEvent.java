@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system event: toggles one of a player's friend-system settings.
 public final class FriendToggleSettingRequestEvent extends FriendEvent {
     private static final Serializer<FriendToggleSettingRequestEvent> SERIALIZER =
             new JacksonSerializer<>(FriendToggleSettingRequestEvent.class);

@@ -9,6 +9,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.lobby.item.LobbyItem;
 
+// Main Lobby hotbar item that opens the (unimplemented) Collectibles menu.
 public class Collectibles extends LobbyItem {
 
     public Collectibles() {
@@ -27,8 +28,8 @@ public class Collectibles extends LobbyItem {
 
     @Override
     public void onItemInteract(PlayerInstanceEvent event) {
-        ((CancellableEvent) event).setCancelled(true);
         ((HypixelPlayer) event.getPlayer()).notImplemented();
+        ((CancellableEvent) event).setCancelled(true);
     }
 
 }

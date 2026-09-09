@@ -10,6 +10,7 @@ import net.minestom.server.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+// Thrown snowball projectile; deals minor damage to blazes and shows particles on impact.
 public class Snowball extends CustomEntityProjectile implements ItemHoldingProjectile {
 	
 	public Snowball(@Nullable Entity shooter) {

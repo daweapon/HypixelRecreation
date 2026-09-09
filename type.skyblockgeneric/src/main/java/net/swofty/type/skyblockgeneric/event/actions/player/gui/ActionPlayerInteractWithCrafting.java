@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.utility.PlayerInventoryCrafting;
 
 import java.util.List;
 
+// Intercepts clicks and drags in the vanilla crafting grid to drive SkyBlock's custom crafting logic
 public class ActionPlayerInteractWithCrafting implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(InventoryPreClickEvent event) {

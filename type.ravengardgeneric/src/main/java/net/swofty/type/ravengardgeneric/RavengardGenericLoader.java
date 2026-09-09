@@ -29,6 +29,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+// Bootstraps Ravengard-specific systems (items, shops, regions, events, commands, resource pack) on top of a HypixelTypeLoader.
 public record RavengardGenericLoader(HypixelTypeLoader typeLoader) {
 
     @Getter

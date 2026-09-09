@@ -38,6 +38,7 @@ services:
       timeout: 5s
       retries: 5
     command: ["mongod", "--quiet"]
+    mem_limit: 768m
 
   redis:
     image: redis:latest
@@ -52,6 +53,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    mem_limit: 512m
 
   proxy:
     build:
@@ -60,6 +62,7 @@ services:
     container_name: hypixel_proxy
     environment:
       <<: *forwarding_env
+      JAVA_TOOL_OPTIONS: -Xms256m -Xmx512m
     ports:
       - "25565:25565"
     depends_on:
@@ -77,6 +80,7 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
+    mem_limit: 768m
 
   game_server_builder:
     build:
@@ -104,6 +108,7 @@ services:
       - ./configuration:/app/configuration_files
     networks:
       - hypixel_network
+    mem_limit: 256m
 
   pack_server:
     image: game_server_prepared
@@ -112,6 +117,7 @@ services:
     environment:
       <<: *forwarding_env
       SERVICE_CMD: java -jar net.swofty.packer.HypixelPackServer.jar
+      JAVA_TOOL_OPTIONS: -Xms128m -Xmx384m
     ports:
       - "7270:7270"
     depends_on:
@@ -121,6 +127,7 @@ services:
       - ./configuration:/app/configuration_files
     networks:
       - hypixel_network
+    mem_limit: 512m
 
 `, mongoPorts, redisPorts)
 
@@ -133,6 +140,7 @@ services:
     environment:
       <<: *forwarding_env
       SERVICE_CMD: java -jar HypixelCore.jar %[2]s
+      JAVA_TOOL_OPTIONS: -Xms256m -Xmx1536m
     depends_on:
       proxy:
         condition: service_healthy
@@ -142,6 +150,7 @@ services:
       - ./configuration:/app/configuration_files
     networks:
       - hypixel_network
+    mem_limit: 2g
 
 `, name, server)
 	}
@@ -161,6 +170,7 @@ services:
     environment:
       <<: *forwarding_env
       SERVICE_CMD: %[2]s
+      JAVA_TOOL_OPTIONS: -Xms128m -Xmx384m
     depends_on:
       proxy:
         condition: service_healthy
@@ -170,6 +180,7 @@ services:
       - ./configuration:/app/configuration_files
 %[3]s    networks:
       - hypixel_network
+    mem_limit: 512m
 
 `, name, cmd, ports)
 	}

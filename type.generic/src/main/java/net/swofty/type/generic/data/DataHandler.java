@@ -19,6 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Predicate;
 
 @Getter
+// Base class holding a set of Datapoints for a given entity (player/game), handling their loading from storage.
 public abstract class DataHandler {
     protected UUID uuid;
     protected final Map<String, Datapoint<?>> datapoints = new ConcurrentHashMap<>();

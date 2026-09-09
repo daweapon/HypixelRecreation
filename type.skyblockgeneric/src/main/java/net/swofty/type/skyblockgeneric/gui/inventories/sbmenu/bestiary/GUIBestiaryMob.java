@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// GUI showing a single mob's bestiary progress, tier rewards, and loot table
 public class GUIBestiaryMob extends StatelessView {
 
     private static final Map<Integer, int[]> SLOTS = new HashMap<>(Map.of(

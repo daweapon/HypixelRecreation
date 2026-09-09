@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// JSON-serializable snapshot of a backend server's identity, type, players, and capacity, exchanged with proxy-side code.
 public record UnderstandableProxyServer(String name, UUID uuid, ServerType type,
                                         int port, List<UUID> players, int maxPlayers,
                                         String shortName

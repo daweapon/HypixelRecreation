@@ -160,7 +160,7 @@ integrations:
     sentry-dsn: ''
 limbo:
     host-name: pico_limbo
-    port: 65535
+    port: 25565
 resource-pack:
     public-url: ''
     pack-hash: ''

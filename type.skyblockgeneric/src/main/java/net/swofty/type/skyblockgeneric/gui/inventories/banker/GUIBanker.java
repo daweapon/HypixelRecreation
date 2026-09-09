@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// Main banking GUI showing balance info and linking to deposit, withdraw, and upgrade screens
 public class GUIBanker extends HypixelInventoryGUI implements RefreshingGUI {
     public GUIBanker() {
         super(Text.key("gui_banker.main.title"), InventoryType.CHEST_4_ROW);

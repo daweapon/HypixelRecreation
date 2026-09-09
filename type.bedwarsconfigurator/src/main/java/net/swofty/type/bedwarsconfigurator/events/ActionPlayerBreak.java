@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 
+// Prevents block breaking in the configurator world during gameplay phase.
 public class ActionPlayerBreak implements HypixelEventClass {
 
     @SneakyThrows

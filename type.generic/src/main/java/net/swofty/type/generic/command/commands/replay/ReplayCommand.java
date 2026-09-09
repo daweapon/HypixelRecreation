@@ -18,6 +18,7 @@ import java.util.UUID;
 	permission = Rank.DEFAULT,
 	allowsConsole = false
 )
+// Command to send a player into watching a specific replay by its UUID.
 public class ReplayCommand extends HypixelCommand {
 
 	@Override

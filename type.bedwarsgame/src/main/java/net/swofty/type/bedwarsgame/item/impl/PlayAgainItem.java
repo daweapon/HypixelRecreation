@@ -7,6 +7,7 @@ import net.swofty.type.bedwarsgame.item.SimpleInteractableItem;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Post-game "Play Again" hotbar item (feature stub, not yet implemented).
 public class PlayAgainItem extends SimpleInteractableItem {
 
 

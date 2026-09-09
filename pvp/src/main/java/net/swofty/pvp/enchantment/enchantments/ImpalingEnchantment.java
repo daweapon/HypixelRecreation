@@ -7,6 +7,7 @@ import net.swofty.pvp.feature.enchantment.EnchantmentFeature;
 import net.minestom.server.entity.EquipmentSlot;
 import net.minestom.server.item.enchant.Enchantment;
 
+// Implements the Impaling enchantment, granting bonus attack damage against aquatic entities.
 public class ImpalingEnchantment extends CombatEnchantment {
 	public ImpalingEnchantment(EquipmentSlot... slotTypes) {
 		super(Enchantment.IMPALING, slotTypes);

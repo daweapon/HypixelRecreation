@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.IntStream;
 
+// Helper for inserting items into a Bedwars player's inventory using preferred hotbar slot priorities.
 public class BedWarsInventoryManipulator {
 
     public static void addItemWithHotbarPriority(BedWarsPlayer player,

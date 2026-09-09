@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 @UtilityClass
+// Helper for checking whether a Minestom Material belongs to a given material registry tag.
 public class RegistryUtil {
     final Registry<Material> MATERIAL = Material.staticRegistry();
 

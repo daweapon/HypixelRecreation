@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// Manages per-team and global resource generators (iron/gold/diamond/emerald) and their display entities.
 public class BedWarsGeneratorManager {
     private final BedWarsGame game;
     private final Map<TeamKey, List<Task>> teamGeneratorTasks = new EnumMap<>(TeamKey.class);

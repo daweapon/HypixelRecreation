@@ -7,6 +7,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// NPC in the Prototype Lobby that sends players back to the Main Lobby.
 public class NPCMainLobby extends HypixelNPC {
 
     public NPCMainLobby() {

@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.block.placement.rules.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+// Registry mapping vanilla block predicates to their PlacementRule implementations, and registers them all with Minestom.
 public enum BlockPlacementManager {
     FACING(
             block -> block.properties().containsKey("facing"),

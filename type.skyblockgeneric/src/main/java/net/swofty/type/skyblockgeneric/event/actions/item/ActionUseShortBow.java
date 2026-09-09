@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.item.components.BowComponent;
 import net.swofty.type.skyblockgeneric.item.components.ItemRequirementsComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Fires shortbows instantly on draw and validates arrow availability for regular bows
 public class ActionUseShortBow implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

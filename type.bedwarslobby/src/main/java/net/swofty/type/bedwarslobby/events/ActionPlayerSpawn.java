@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Enforces survival gamemode and sends map data when a player spawns in the Bedwars lobby.
 public class ActionPlayerSpawn implements HypixelEventClass {
 
     @SneakyThrows

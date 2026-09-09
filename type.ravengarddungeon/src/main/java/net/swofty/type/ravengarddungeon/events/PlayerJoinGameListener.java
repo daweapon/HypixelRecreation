@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.ravengarddungeon.game.RavengardDungeonGame;
 import net.swofty.type.ravengarddungeon.user.RavengardDungeonPlayer;
 
+// On successfully joining the dungeon game, places the player into the instance at their assigned spawn point.
 public class PlayerJoinGameListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

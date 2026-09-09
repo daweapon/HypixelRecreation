@@ -17,6 +17,7 @@ import net.swofty.pvp.utils.PotionFlags;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Handles damage-boosting enchantments (Sharpness, Smite, Bane of Arthropods) and their target-specific effects.
 public class DamageEnchantment extends CombatEnchantment {
 	private final Type type;
 

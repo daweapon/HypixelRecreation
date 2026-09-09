@@ -11,6 +11,7 @@ import spark.Response;
 
 import java.util.Map;
 
+// Admin panel HTTP endpoint that deletes an existing public API key.
 public class DeleteKeyEndpoint extends SkyBlockEndpoint {
     @Override
     public EndpointType getType() {

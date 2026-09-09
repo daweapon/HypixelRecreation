@@ -16,6 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Homing projectile that continuously accelerates toward a target entity.
 public class FollowProjectile extends AbstractProjectile {
     private final Entity target;
     private final float attractionAcceleration;

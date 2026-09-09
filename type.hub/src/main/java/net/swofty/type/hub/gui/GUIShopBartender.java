@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Bartender NPC in the Hub, selling drinks and mob-mixin ingredients.
 public class GUIShopBartender extends ShopView {
 
     public GUIShopBartender() {

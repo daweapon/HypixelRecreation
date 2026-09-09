@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+// Loads the world's fairy soul locations and zones from a YAML catalog file.
 public final class FairySoulCatalog {
     private static final String CATALOG_RESOURCE = "/Minestom.fairysouls.yml";
     private static final Path LOCATION_FILE = Path.of("configuration/skyblock/Minestom.fairysouls.yml");

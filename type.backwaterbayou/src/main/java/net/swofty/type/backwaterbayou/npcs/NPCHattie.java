@@ -8,6 +8,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Hattie in the Backwater Bayou, explains fishing hotspots.
 public class NPCHattie extends HypixelNPC {
 
     public NPCHattie() {

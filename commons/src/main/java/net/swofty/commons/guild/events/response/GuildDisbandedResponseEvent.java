@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: notifies members that the guild was disbanded.
 public class GuildDisbandedResponseEvent extends GuildResponseEvent {
     private UUID disbander;
 

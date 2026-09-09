@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+// A joined pair of chest blocks (left/right) whose contents are persisted as a single 6-row inventory.
 public class DoubleChest implements Chest {
 
     private static final Tag<@NotNull List<ItemStack>> ITEMS_TAG = Tag.ItemStack("configuration/skyblock/items").list();

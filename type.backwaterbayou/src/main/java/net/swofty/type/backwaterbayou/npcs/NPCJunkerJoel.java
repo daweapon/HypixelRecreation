@@ -9,6 +9,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Junker Joel, trades fishing junk for rewards in the Backwater Bayou.
 public class NPCJunkerJoel extends HypixelNPC {
 
     public NPCJunkerJoel() {

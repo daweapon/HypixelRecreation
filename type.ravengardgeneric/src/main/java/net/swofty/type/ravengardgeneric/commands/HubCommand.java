@@ -8,6 +8,7 @@ import net.swofty.type.ravengardgeneric.user.RavengardPlayer;
 
 @CommandParameters(labels = "h hub", description = "Sends the player to the Ravengard hub",
         usage = "/hub", permission = Rank.DEFAULT, allowsConsole = false)
+// Command that sends the player to the Ravengard lobby.
 public class HubCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+// Base type describing one potion effect's attribute modifiers, particle color, and periodic/instant application logic.
 public class CombatPotionEffect {
 	private final Map<Attribute, AttributeModifier> attributeModifiers = new HashMap<>();
 	private Map<Attribute, AttributeModifier> legacyAttributeModifiers;

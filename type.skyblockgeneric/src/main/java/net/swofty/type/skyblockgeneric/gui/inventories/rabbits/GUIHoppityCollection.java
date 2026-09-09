@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// Paginated GUI showing found/missing chocolate rabbits, with sort/filter and an admin edit mode
 public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.State> {
     private static final String HOPPITY_TEXTURE = "b79e7f3341b672d9de6564cbaca052a6a723ea466a2e66af35ba1ba855f0d692";
     private static final String LOCATION_TEXTURE = "d7cc6687423d0570d556ac53e0676cb563bbdd9717cd8269bdebed6f6d4e7bf8";
@@ -43,12 +44,16 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
             45, 46, 47, 48, 49, 50, 51, 52, 53
     };
 
-    public record State(int page, SortType sortType, FilterType filterType) {
+    public record State(int page, SortType sortType, FilterType filterType, boolean adminMode) {
     }
 
     @Override
     public State initialState() {
-        return new State(1, SortType.A_TO_Z, FilterType.NONE);
+        return new State(1, SortType.A_TO_Z, FilterType.NONE, false);
+    }
+
+    public static State adminInitialState() {
+        return new State(1, SortType.A_TO_Z, FilterType.NONE, true);
     }
 
     @Override
@@ -56,7 +61,8 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
         return ViewConfiguration.withText((state, ctx) -> {
             int totalRabbits = ChocolateRabbit.values().length;
             int totalPages = Math.max(1, (int) Math.ceil(totalRabbits / (double) RABBITS_PER_PAGE));
-            return Text.of("({}/{}) Hoppity's Collection", state.page(), totalPages);
+            String prefix = state.adminMode() ? "[ADMIN] " : "";
+            return Text.of("{}({}/{}) Hoppity's Collection", prefix, state.page(), totalPages);
         }, InventoryType.CHEST_6_ROW);
     }
 
@@ -81,10 +87,27 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
 
             if (rabbitIndex < rabbits.size()) {
                 ChocolateRabbit rabbit = rabbits.get(rabbitIndex);
-                layout.slot(slot, (s, c) -> {
-                    boolean found = foundRabbits.contains(rabbit);
-                    return createRabbitItem(rabbit, found);
-                });
+                if (state.adminMode()) {
+                    layout.slot(slot, (s, c) -> {
+                        boolean found = foundRabbits.contains(rabbit);
+                        return createRabbitItem(rabbit, found);
+                    }, (click, c) -> {
+                        SkyBlockPlayer clicker = (SkyBlockPlayer) c.player();
+                        DatapointChocolateFactory.ChocolateFactoryData clickerData = clicker.getSkyblockDataHandler()
+                                .get(SkyBlockDataHandler.Data.CHOCOLATE_FACTORY, DatapointChocolateFactory.class).getValue();
+                        if (clickerData.getFoundRabbits().contains(rabbit)) {
+                            clickerData.getFoundRabbits().remove(rabbit);
+                        } else {
+                            clickerData.addFoundRabbit(rabbit);
+                        }
+                        c.session(State.class).setState(state);
+                    });
+                } else {
+                    layout.slot(slot, (s, c) -> {
+                        boolean found = foundRabbits.contains(rabbit);
+                        return createRabbitItem(rabbit, found);
+                    });
+                }
             } else {
                 layout.slot(slot, (s, c) -> ItemStack.AIR.builder());
             }
@@ -127,7 +150,7 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
         }, (click, c) -> {
             boolean isRightClick = click.click() instanceof Click.Right;
             SortType newSort = isRightClick ? state.sortType().previous() : state.sortType().next();
-            c.session(State.class).setState(new State(1, newSort, state.filterType()));
+            c.session(State.class).setState(new State(1, newSort, state.filterType(), state.adminMode()));
         });
 
         layout.slot(51, (s, c) -> {
@@ -144,21 +167,21 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
         }, (click, c) -> {
             boolean isRightClick = click.click() instanceof Click.Right;
             FilterType newFilter = isRightClick ? state.filterType().previous() : state.filterType().next();
-            c.session(State.class).setState(new State(1, state.sortType(), newFilter));
+            c.session(State.class).setState(new State(1, state.sortType(), newFilter, state.adminMode()));
         });
 
         if (state.page() < totalPages) {
             layout.slot(53, (s, c) -> ItemStacks.item(Material.ARROW, """
                     <a>Next Page
                     <e>Page {}""", s.page() + 1),
-                    (click, c) -> c.session(State.class).setState(new State(state.page() + 1, state.sortType(), state.filterType())));
+                    (click, c) -> c.session(State.class).setState(new State(state.page() + 1, state.sortType(), state.filterType(), state.adminMode())));
         }
 
         if (state.page() > 1) {
             layout.slot(45, (s, c) -> ItemStacks.item(Material.ARROW, """
                     <a>Previous Page
                     <e>Page {}""", s.page() - 1),
-                    (click, c) -> c.session(State.class).setState(new State(state.page() - 1, state.sortType(), state.filterType())));
+                    (click, c) -> c.session(State.class).setState(new State(state.page() - 1, state.sortType(), state.filterType(), state.adminMode())));
         }
     }
 

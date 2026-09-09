@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import org.tinylog.Logger;
 
 // todo: move functionality here
+// Logs Bedwars game state transitions (countdown/start/end); a placeholder for further logic.
 public class BedWarsGameStateListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

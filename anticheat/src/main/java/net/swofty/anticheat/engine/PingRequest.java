@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
+// Tracks a single outgoing ping request and when its response (if any) arrived, for latency measurement.
 public class PingRequest {
     private final int pingId;
     private final long initiatedTime;

@@ -4,6 +4,8 @@ import java.util.List;
 import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 import net.swofty.type.skyblockgeneric.fishing.tag.FishingTag;
 
+// Config-driven definition of a sea creature: its required fishing level, XP reward, and the
+// availability tags (region/medium/etc.) it must satisfy to spawn.
 public record SeaCreatureDefinition(
     String id,
     int requiredFishingLevel,

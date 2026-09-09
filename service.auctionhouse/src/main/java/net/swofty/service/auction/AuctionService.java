@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.List;
 
+// Backend microservice for the auction house: connects the active/inactive auction databases and serves auction endpoints.
 public class AuctionService implements SkyBlockService {
     public static AuctionsCacheService cacheService;
 
@@ -15,6 +16,7 @@ public class AuctionService implements SkyBlockService {
         new AuctionInactiveDatabase("_placeholder").connect(ConfigProvider.settings().getMongodb());
 
         cacheService = new AuctionsCacheService();
+        new AuctionArchiveService().start();
 
         SkyBlockService.init(new AuctionService());
     }

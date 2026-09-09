@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
+// Loader-agnostic representation of a client's vehicle-steering input packet.
 public class SteerVehiclePacket extends SwoftyPacket {
     private final float sideways;
     private final float forward;

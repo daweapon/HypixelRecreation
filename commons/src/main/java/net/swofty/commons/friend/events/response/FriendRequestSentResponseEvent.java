@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: confirms to the sender that their friend request was sent.
 public final class FriendRequestSentResponseEvent extends FriendResponseEvent {
     private static final Serializer<FriendRequestSentResponseEvent> SERIALIZER =
             new JacksonSerializer<>(FriendRequestSentResponseEvent.class);

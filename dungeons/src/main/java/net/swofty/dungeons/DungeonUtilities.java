@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.stream.Stream;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Shared helpers for dungeon generation: grid traversal, A* pathfinding, and debug printing.
 public final class DungeonUtilities {
 
     public static Stream<Map.Entry<Integer, Integer>> loopOverDungeonRooms(DungeonsData data) {

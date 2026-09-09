@@ -6,6 +6,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+// Immutable outcome of a Bedwars player death: type, killer/victim/assist, weapon, and final-kill flag.
 public record BedWarsDeathResult(
     @NotNull BedWarsDeathType deathType,
     @NotNull BedWarsPlayer victim,

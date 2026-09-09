@@ -19,6 +19,8 @@ import org.json.JSONObject;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// Persists a player's bestiary kill counts per mob and renders the tier-progress/reward lore
+// for individual mob entries and the overall bestiary summary.
 public class DatapointBestiary extends SkyBlockDatapoint<DatapointBestiary.PlayerBestiary> {
 
     public DatapointBestiary(String key, PlayerBestiary value) {

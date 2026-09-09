@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for a block's mounting face (floor/wall/ceiling), e.g. buttons and grindstones.
 public enum Face implements State<Face> {
     FLOOR, WALL, CEILING;
 

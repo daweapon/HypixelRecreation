@@ -21,6 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
         description = "Ravengard dungeon administration",
         usage = "/dungeon <join|list|generate [seed] [rooms]>",
         permission = Rank.STAFF, allowsConsole = false)
+// Command for queueing into, listing, generating, and joining Ravengard dungeon instances via the orchestrator service.
 public class DungeonCommand extends HypixelCommand {
     /** Set by the dungeon server so joining an instance hosted locally skips the proxy hop. */
     public static volatile java.util.function.BiFunction<RavengardPlayer, String, Boolean> localJoin;

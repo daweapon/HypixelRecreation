@@ -6,6 +6,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.service.orchestrator.OrchestratorCache;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that receives a game server's periodic heartbeat and updates the orchestrator's tracked state for it.
 public class GameHeartbeatEndpoint implements RedisMessageHandler
         <GameHeartbeatProtocol.HeartbeatMessage,
                 GameHeartbeatProtocol.HeartbeatResponse> {

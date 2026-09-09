@@ -4,6 +4,8 @@ import lombok.Getter;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 
+// The bank account tiers (Starter through Palatial), each defining its coin capacity, interest cap,
+// and the coin/material/museum cost to upgrade to it.
 @Getter
 public enum BankAccountTier {
     STARTER(NamedTextColor.GREEN, "Starter", 50_000_000D, 250_000D, 0D, 0, 0, 0),

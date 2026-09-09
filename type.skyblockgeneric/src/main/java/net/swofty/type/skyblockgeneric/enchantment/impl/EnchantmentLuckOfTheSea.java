@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Luck of the Sea enchantment: grants bonus Magic Find on fishing rods.
 public class EnchantmentLuckOfTheSea implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

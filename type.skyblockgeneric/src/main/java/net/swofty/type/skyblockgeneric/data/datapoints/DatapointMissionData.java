@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
+// Persists a player's MissionData (active/completed missions) by delegating to its own serialize/deserialize.
 public class DatapointMissionData extends SkyBlockDatapoint<MissionData> {
     private static final Serializer<MissionData> serializer = new Serializer<>() {
         @Override

@@ -8,6 +8,7 @@ import net.minestom.server.potion.PotionType;
 import java.util.HashMap;
 import java.util.Map;
 
+// Registry that registers all vanilla CombatPotionType definitions and looks them up by PotionType.
 public class CombatPotionTypes {
 	private static final Map<PotionType, CombatPotionType> POTION_EFFECTS = new HashMap<>();
 	

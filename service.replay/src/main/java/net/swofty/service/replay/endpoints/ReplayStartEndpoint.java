@@ -10,6 +10,7 @@ import org.tinylog.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
+// Redis endpoint that starts a new replay recording session for a game.
 public class ReplayStartEndpoint implements RedisMessageHandler<
         ReplayStartProtocolObject.StartMessage,
         ReplayStartProtocolObject.StartResponse> {

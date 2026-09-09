@@ -5,6 +5,7 @@ import net.swofty.service.friend.FriendCache;
 import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that reports whether two players are friends with each other.
 public class AreFriendsEndpoint implements RedisMessageHandler<
         AreFriendsProtocol.AreFriendsMessage,
         AreFriendsProtocol.AreFriendsResponse> {

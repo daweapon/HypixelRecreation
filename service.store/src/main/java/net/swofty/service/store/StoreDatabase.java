@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+// MongoDB accessor for store purchases, Stripe events, and player entitlements, including lease-based claiming of due purchases for fulfillment.
 public record StoreDatabase(String id) implements MongoDB {
     private static final int MAX_BACKOFF_SECONDS = 300;
 

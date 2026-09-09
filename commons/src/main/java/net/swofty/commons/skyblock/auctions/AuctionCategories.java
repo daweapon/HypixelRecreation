@@ -8,6 +8,7 @@ import net.minestom.server.item.Material;
 import java.util.List;
 
 @Getter
+// Enumerates Auction House browse categories with their display material, filter color, and example item types.
 public enum AuctionCategories {
     WEAPONS(Material.GOLDEN_SWORD, Material.ORANGE_STAINED_GLASS_PANE, NamedTextColor.GOLD, List.of("Swords", "Bows", "Axes", "Magic Weapons")),
     ARMOR(Material.DIAMOND_CHESTPLATE, Material.BLUE_STAINED_GLASS_PANE, NamedTextColor.AQUA, List.of("Helmets", "Chestplates", "Leggings", "Boots")),

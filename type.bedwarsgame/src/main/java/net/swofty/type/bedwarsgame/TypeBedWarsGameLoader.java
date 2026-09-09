@@ -78,6 +78,7 @@ import java.util.stream.Stream;
 import static net.swofty.pvp.feature.CombatFeatures.*;
 import static net.swofty.type.generic.HypixelGenericLoader.getLoadedPlayers;
 
+// Entry point that bootstraps the Bedwars game server type: registers managers, items, and game instances.
 public class TypeBedWarsGameLoader implements HypixelTypeLoader {
 
     public static final int MAX_GAMES = 12;

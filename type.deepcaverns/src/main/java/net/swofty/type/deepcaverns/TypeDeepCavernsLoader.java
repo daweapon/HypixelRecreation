@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Loader that wires up the Deep Caverns server type: spawn point, tablist, NPCs, and events.
 public class TypeDeepCavernsLoader implements SkyBlockTypeLoader {
 	@Override
 	public ServerType getType() {

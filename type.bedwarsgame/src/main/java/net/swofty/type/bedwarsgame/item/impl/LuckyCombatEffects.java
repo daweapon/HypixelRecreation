@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Applies on-hit effects for Lucky Block combat items (e.g. angel sword, knockback slimeball).
 public final class LuckyCombatEffects {
     private static final Map<UUID, Long> JUSTICE_HEAL_COOLDOWN = new HashMap<>();
 

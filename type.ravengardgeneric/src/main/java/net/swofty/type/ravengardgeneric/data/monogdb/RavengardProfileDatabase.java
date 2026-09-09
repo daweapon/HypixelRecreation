@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// MongoDB accessor for the legacy Ravengard profile collection, used during migration to the newer profile storage.
 public final class RavengardProfileDatabase {
     public static MongoDatabase database;
     public static MongoCollection<Document> collection;

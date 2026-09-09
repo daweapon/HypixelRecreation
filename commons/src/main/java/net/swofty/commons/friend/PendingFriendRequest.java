@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Represents an outstanding friend request between two players, awaiting accept/deny.
 public class PendingFriendRequest {
     private static final Serializer<PendingFriendRequest> SERIALIZER =
             new JacksonSerializer<>(PendingFriendRequest.class);

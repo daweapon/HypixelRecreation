@@ -14,11 +14,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
-@CommandParameters(labels = "msg message whipser",
+@CommandParameters(labels = "msg message whisper w tell t m whipser",
         description = "Sends a message to another player",
         usage = "/msg <player> <message>",
         permission = Rank.DEFAULT,
         allowsConsole = false)
+// Command to send a private message ("/msg") to another player, resolved cross-server via ProxyPlayer.
 public class MessageCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {

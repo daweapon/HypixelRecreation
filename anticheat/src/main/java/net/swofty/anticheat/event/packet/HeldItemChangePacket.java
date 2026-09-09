@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
+// Loader-agnostic representation of a client's held-hotbar-slot-change packet.
 public class HeldItemChangePacket extends SwoftyPacket {
     private final int slot;
 

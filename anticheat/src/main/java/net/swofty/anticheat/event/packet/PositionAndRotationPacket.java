@@ -5,6 +5,7 @@ import net.swofty.anticheat.engine.SwoftyPlayer;
 import net.swofty.anticheat.math.Pos;
 
 @Getter
+// Loader-agnostic representation of a client's combined position+rotation movement packet.
 public class PositionAndRotationPacket extends SwoftyPacket {
     private final Pos pos;
     private final boolean onGround;

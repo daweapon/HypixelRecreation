@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Finds and consumes fishing bait from a player's inventory for the given fishing medium.
 public final class FishingBaitService {
 
     public static @Nullable FishingBaitComponent getFirstAvailableBait(SkyBlockPlayer player, FishingMedium medium) {

@@ -19,6 +19,7 @@ import java.util.Optional;
         usage = "/bwadmin <breakbed|respawnbed|endgame|info> [team]",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff-only /bwadmin command for manipulating bed state and match info during a game.
 public class BedWarsAdminCommand extends HypixelCommand {
 
     @Override

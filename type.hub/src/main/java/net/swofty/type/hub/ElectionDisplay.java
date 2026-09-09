@@ -19,6 +19,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
+// Manages the per-player holograms showing mayor election info in the Hub election room.
 public class ElectionDisplay {
 
     private static final Map<HypixelPlayer, PlayerHolograms.ExternalPlayerHologram> holos = new ConcurrentHashMap<>();

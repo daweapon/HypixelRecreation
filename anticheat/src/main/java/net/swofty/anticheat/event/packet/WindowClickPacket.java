@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.UUID;
 
 @Getter
+// Loader-agnostic representation of a client's inventory/window click packet.
 public class WindowClickPacket extends SwoftyPacket {
     private final int windowId;
     private final int stateId;

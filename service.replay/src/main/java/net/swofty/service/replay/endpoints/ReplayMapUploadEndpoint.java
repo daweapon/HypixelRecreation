@@ -6,6 +6,7 @@ import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.service.replay.ReplayService;
 import org.tinylog.Logger;
 
+// Redis endpoint that stores an uploaded map's compressed data, skipping the write if that map hash already exists.
 public class ReplayMapUploadEndpoint implements RedisMessageHandler<
         ReplayMapUploadProtocolObject.MapUploadMessage,
         ReplayMapUploadProtocolObject.MapUploadResponse> {

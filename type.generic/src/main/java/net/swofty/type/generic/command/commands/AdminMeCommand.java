@@ -19,6 +19,7 @@ import java.util.UUID;
         usage = "/adminme",
         permission = Rank.DEFAULT,
         allowsConsole = false)
+// Dev command that grants the running player admin, restricted to a hardcoded list of allowed usernames.
 public class AdminMeCommand extends HypixelCommand {
 
     private static final List<String> ADMIN_LIST = List.of(

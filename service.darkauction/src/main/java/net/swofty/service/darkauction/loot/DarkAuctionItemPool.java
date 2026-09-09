@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+// Weighted pool of special items/pets that can be selected (and removed) as Dark Auction round prizes.
 public class DarkAuctionItemPool {
     private final List<WeightedItem> items = new ArrayList<>();
     private static final double DARK_PURPLE_DYE_FIRST_ROLL = 0.0025; // 0.25% chance

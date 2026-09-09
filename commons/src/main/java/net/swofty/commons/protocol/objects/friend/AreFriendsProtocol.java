@@ -7,6 +7,7 @@ import net.swofty.commons.protocol.Serializer;
 import java.util.UUID;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for checking whether two players are friends.
 public class AreFriendsProtocol extends RedisProtocol
         <AreFriendsProtocol.AreFriendsMessage,
                 AreFriendsProtocol.AreFriendsResponse> {

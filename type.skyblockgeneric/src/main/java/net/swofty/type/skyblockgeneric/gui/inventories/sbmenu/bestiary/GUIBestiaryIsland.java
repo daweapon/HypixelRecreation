@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI listing bestiary entries for mobs within one region category
 public class GUIBestiaryIsland extends StatelessView {
 
     private static final int[] DISPLAY_SLOTS = {

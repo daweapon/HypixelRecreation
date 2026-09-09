@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
+// Generated Catacombs dungeon layout: a grid of rooms and the doors connecting them.
 public class CatacombsDungeon extends GameDungeon {
     @Override
     public int getRoomCount() {

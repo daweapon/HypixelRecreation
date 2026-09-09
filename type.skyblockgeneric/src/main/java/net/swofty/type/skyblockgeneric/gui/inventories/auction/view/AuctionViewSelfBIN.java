@@ -4,8 +4,9 @@ import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.auctions.AuctionItem;
+import net.swofty.type.skyblockgeneric.auction.AuctionClaims;
+import net.swofty.type.skyblockgeneric.auction.AuctionCancellation;
 import net.swofty.commons.text.Text;
-import net.swofty.type.generic.data.datapoints.DatapointDouble;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
@@ -17,31 +18,20 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
 import java.util.UUID;
 
+// Renders the auction-view slots shown to the owner of an ended Buy-It-Now listing
 public class AuctionViewSelfBIN implements AuctionView {
     @Override
     public void open(GUIAuctionViewItem gui, AuctionItem item, SkyBlockPlayer player) {
+        java.util.UUID claimProfile = player.getSkyblockDataHandler().getCurrentProfileId();
         if (!item.getBids().isEmpty()) {
             List<UUID> ownedActive = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ACTIVE_OWNED, DatapointUUIDList.class).getValue();
-            List<UUID> ownedInactive = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_INACTIVE_OWNED, DatapointUUIDList.class).getValue();
 
             if (ownedActive.contains(item.getUuid())) {
                 gui.set(new GUIClickableItem(31) {
                     @Override
                     public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                        SkyBlockPlayer player = (SkyBlockPlayer) p;
-                        double coins = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.COINS, DatapointDouble.class).getValue();
-
-                        player.sendMessage(Text.key("gui_auction.view_self_bin.claiming_coins"));
-                        player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.COINS, DatapointDouble.class).setValue(coins + item.getBids().getFirst().value());
-
-                        ownedActive.remove(item.getUuid());
-                        player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ACTIVE_OWNED, DatapointUUIDList.class).setValue(ownedActive);
-                        ownedInactive.add(item.getUuid());
-                        player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_INACTIVE_OWNED, DatapointUUIDList.class).setValue(ownedInactive);
-
-                        player.sendMessage(Text.key("gui_auction.view_self_bin.collected_coins", item.getBids().getFirst().value()));
-                        player.closeInventory();
-                    }
+                            AuctionClaims.claim((SkyBlockPlayer) p, item.getUuid(), claimProfile, true);
+                        }
 
                     @Override
                     public ItemStack.Builder getItem(HypixelPlayer p) {
@@ -67,7 +57,6 @@ public class AuctionViewSelfBIN implements AuctionView {
 
         if (item.getEndTime() < System.currentTimeMillis()) {
             List<UUID> ownedActive = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ACTIVE_OWNED, DatapointUUIDList.class).getValue();
-            List<UUID> ownedInactive = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_INACTIVE_OWNED, DatapointUUIDList.class).getValue();
 
             if (ownedActive.contains(item.getUuid())) {
                 gui.set(new GUIClickableItem(31) {
@@ -80,18 +69,8 @@ public class AuctionViewSelfBIN implements AuctionView {
 
                     @Override
                     public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                        SkyBlockPlayer player = (SkyBlockPlayer) p;
-                        player.sendMessage(Text.key("gui_auction.view_self_bin.claiming_item"));
-                        ownedActive.remove(item.getUuid());
-                        player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ACTIVE_OWNED, DatapointUUIDList.class).setValue(ownedActive);
-                        ownedInactive.add(item.getUuid());
-                        player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_INACTIVE_OWNED, DatapointUUIDList.class).setValue(ownedInactive);
-
-                        player.addAndUpdateItem(item.getItem());
-
-                        player.sendMessage(Text.key("gui_auction.view_self_bin.claimed_item"));
-                        player.closeInventory();
-                    }
+                            AuctionClaims.claim((SkyBlockPlayer) p, item.getUuid(), claimProfile, true);
+                        }
                 });
             } else {
                 gui.set(new GUIItem(31) {
@@ -106,12 +85,14 @@ public class AuctionViewSelfBIN implements AuctionView {
             return;
         }
 
-        gui.set(new GUIItem(31) {
+        gui.set(new GUIClickableItem(31) {
+            @Override public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                AuctionCancellation.cancel((SkyBlockPlayer) p, item.getUuid(), claimProfile);
+            }
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
-                return ItemStacks.item(Material.BEDROCK, 1,
-                    Text.key("gui_auction.view_self_bin.cannot_buy_own"),
-                    Text.keyLines("gui_auction.view_self_bin.cannot_buy_own_active.lore"));
+                return ItemStacks.item(Material.BARRIER, 1, Text.of("<c>Cancel Auction"),
+                        List.of(Text.of("<7>Cancel this auction and return the item."), Text.of(""), Text.of("<e>Click to cancel!")));
             }
         });
     }

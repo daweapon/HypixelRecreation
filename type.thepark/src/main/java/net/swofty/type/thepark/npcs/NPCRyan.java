@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// NPC for Ryan in The Park's Dark Thicket, leads the Campfire Cult sneak-up and Trial of Fire questline.
 public class NPCRyan extends HypixelNPC {
 
 	public static final Map<UUID, Boolean> hasInteractedMap = new HashMap<>();

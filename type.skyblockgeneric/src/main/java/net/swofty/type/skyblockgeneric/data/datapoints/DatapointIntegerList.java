@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
 import java.util.ArrayList;
 import java.util.List;
 
+// Persists a simple list of integers as a comma-separated string, with add/remove/contains helpers.
 public class DatapointIntegerList extends SkyBlockDatapoint<List<Integer>> {
 
     public DatapointIntegerList(String key, ArrayList<Integer> value) {

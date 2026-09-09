@@ -5,6 +5,7 @@ import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.entity.Player;
 import net.minestom.server.potion.PotionEffect;
 
+// Implements the Absorption potion effect, granting and removing extra "golden" hearts.
 public class AbsorptionPotionEffect extends CombatPotionEffect {
 	public AbsorptionPotionEffect() {
 		super(PotionEffect.ABSORPTION);

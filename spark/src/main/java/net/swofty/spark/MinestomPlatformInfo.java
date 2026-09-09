@@ -3,6 +3,7 @@ package net.swofty.spark;
 import me.lucko.spark.common.platform.PlatformInfo;
 import net.minestom.server.MinecraftServer;
 
+// Spark platform info implementation describing this server as a Minestom-based "Hypixel" server.
 public final class MinestomPlatformInfo implements PlatformInfo {
 
     @Override

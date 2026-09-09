@@ -13,6 +13,7 @@ import spark.Response;
 import java.util.Map;
 import java.util.UUID;
 
+// Admin panel HTTP endpoint that logs out the caller's authenticated session.
 public class LogoutEndpoint extends SkyBlockEndpoint {
     @Override
     public EndpointType getType() {

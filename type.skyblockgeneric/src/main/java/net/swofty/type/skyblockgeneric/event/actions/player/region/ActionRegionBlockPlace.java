@@ -11,6 +11,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.generic.utility.MathUtility;
 
+// Restricts block placement to within island bounds and tags player-placed blocks on island servers
 public class ActionRegionBlockPlace implements HypixelEventClass {
     private static final int ISLAND_SIZE = 161;
     private static final Tag<Boolean> PLAYER_PLACED_TAG = Tag.Boolean("player_placed");

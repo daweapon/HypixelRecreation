@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Handles reading/persisting a player's selected BedWars collectibles, including random/random-favorite selection modes.
 public final class BedWarsCollectibleStateService {
 
     public static final String RANDOM_SELECTION_ID = "random";

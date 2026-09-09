@@ -21,6 +21,7 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+// Manages the White Gift present entities scattered around Jerry's Workshop, one findable per real-life year.
 public class Present {
 
 	static List<BlockVec> positions = List.of(

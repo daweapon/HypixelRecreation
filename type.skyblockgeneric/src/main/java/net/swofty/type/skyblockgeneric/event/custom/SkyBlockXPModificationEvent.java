@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @Getter
+// Fired when a player's overall SkyBlock XP changes, carrying the cause and old/new totals
 public class SkyBlockXPModificationEvent implements PlayerInstanceEvent {
     @Getter
     private SkyBlockPlayer player;

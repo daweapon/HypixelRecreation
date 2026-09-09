@@ -13,6 +13,7 @@ import net.swofty.type.generic.utility.AnimatedExplosion;
         usage = "/explodesimulation <radius> [knockbackStrength]",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command that triggers a cosmetic animated explosion with falling blocks around the player.
 public class ExplodeSimulationCommand extends HypixelCommand {
 
     @Override

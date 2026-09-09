@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system event: requests removal of every friend from a player's list.
 public final class FriendRemoveAllRequestEvent extends FriendEvent {
     private static final Serializer<FriendRemoveAllRequestEvent> SERIALIZER =
             new JacksonSerializer<>(FriendRemoveAllRequestEvent.class);

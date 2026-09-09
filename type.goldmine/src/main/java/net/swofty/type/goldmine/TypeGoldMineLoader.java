@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Loader that wires up the Gold Mine server type: spawn point, tablist, NPCs, and events.
 public class TypeGoldMineLoader implements SkyBlockTypeLoader {
     @Override
     public ServerType getType() {

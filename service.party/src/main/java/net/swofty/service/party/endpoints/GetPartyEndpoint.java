@@ -9,6 +9,7 @@ import net.swofty.service.party.PartyCache;
 import java.util.UUID;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that looks up the party a given player belongs to, if any.
 public class GetPartyEndpoint implements RedisMessageHandler
         <GetPartyProtocol.GetPartyMessage,
                 GetPartyProtocol.GetPartyResponse> {

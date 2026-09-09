@@ -7,6 +7,7 @@ import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 import org.jetbrains.annotations.Nullable;
 
+// Generic shop item that simply hands the player its display item stack on purchase.
 public class BasicItem extends ShopItem {
 
 	public BasicItem(String id, String name, String description, int cost, int amount, Currency currency, Material material) {

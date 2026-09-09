@@ -14,6 +14,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Creates, tracks, and expires generated dungeon instances, and handles teleporting players into a ready instance.
 public final class DungeonInstanceRegistry {
     public static final int MAX_INSTANCES = 4;
     private static final int STANDARD_ROOM_COUNT = 120;

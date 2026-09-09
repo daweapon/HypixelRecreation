@@ -4,6 +4,7 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.Weather;
 import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 
+// Fishing tag that gates loot to the current instance weather (raining, clear, thunderstorm).
 public record WeatherTag(String id, Condition condition) implements FishingTag {
 
     public static final WeatherTag RAINING = new WeatherTag("RAINING", Condition.RAINING);

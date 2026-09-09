@@ -8,6 +8,7 @@ import net.swofty.type.bedwarsgame.shop.ShopItem;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 
+// Shop item that gives the buyer's team-colored terracotta blocks.
 public class HardenedClay extends ShopItem {
 
 	public HardenedClay() {

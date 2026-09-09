@@ -7,6 +7,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// NPC in the Main Lobby that sends players to the Murder Mystery lobby.
 public class NPCMurderMystery extends HypixelNPC {
 
     public NPCMurderMystery() {

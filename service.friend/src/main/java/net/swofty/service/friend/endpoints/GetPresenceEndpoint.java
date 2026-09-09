@@ -8,6 +8,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import java.util.List;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that bulk-fetches presence info for a list of player UUIDs.
 public class GetPresenceEndpoint implements RedisMessageHandler<
         GetPresenceBulkProtocol.GetPresenceBulkMessage,
         GetPresenceBulkProtocol.GetPresenceBulkResponse> {

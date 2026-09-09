@@ -22,6 +22,7 @@ import java.util.UUID;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
+// Per-player Ravengard data handler: loads/saves profile- and account-scoped datapoints (class, level, crowns, tutorial state) to/from Mongo documents.
 public class RavengardDataHandler extends DataHandler {
 
     @Getter

@@ -15,6 +15,8 @@ import net.swofty.type.skyblockgeneric.slayer.SlayerType;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
+// Persists a player's slayer progress (XP and tier completions per slayer type) and their
+// currently active slayer quest, if any.
 public class DatapointSlayer extends SkyBlockDatapoint<DatapointSlayer.SlayerData> {
     private static final Serializer<SlayerData> serializer = new Serializer<>() {
         @Override

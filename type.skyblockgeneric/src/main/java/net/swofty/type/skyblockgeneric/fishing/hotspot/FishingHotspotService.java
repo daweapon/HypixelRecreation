@@ -14,6 +14,8 @@ import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Determines whether a fishing bobber sits within an active fishing hotspot and aggregates the
+// statistic buffs (fishing speed, sea creature chance, etc.) it grants, scaled by any sinker bonus.
 public final class FishingHotspotService {
     private static final double HOTSPOT_RADIUS_SQUARED = 25.0D;
 

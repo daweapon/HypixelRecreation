@@ -69,6 +69,16 @@ items:
     components:
       - id: SELLABLE
         value: 8.0
+  - id: REFINED_DIAMOND
+    material: paper
+    name: "Refined Diamond"
+    rarity: EPIC
+    components:
+      - id: SELLABLE
+        value: 4096.0
+      - id: BAZAAR_PLACEHOLDER
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/refined_diamond
   - id: DIAMOND_ORE
     material: diamond_ore
     rarity: UNCOMMON

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Ticks passive effects for equipped Lucky Block armor pieces (helmet/boots) each movement tick.
 public final class LuckyEquipmentEffects {
     private static final Map<UUID, Long> CHICKEN_HAT_COOLDOWN = new HashMap<>();
     private static final Map<UUID, Long> SQUID_BOOTS_COOLDOWN = new HashMap<>();

@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing the unique ID used to look up an item's TrackedItem provenance record.
 public class ItemAttributeUniqueTrackedID extends ItemAttribute<String> {
     @Override
     public String getKey() {

@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Bane of Arthropods enchantment: boosts damage dealt to arthropod-type mobs.
 public class EnchantmentBaneOfArthropods implements Ench, EnchFromTable, EventBasedEnchant {
 
     public static final double[] DAMAGE_MULTIPLIERS = new double[]{5.0, 10.0, 15.0, 20.0, 30.0, 40.0, 50.0};

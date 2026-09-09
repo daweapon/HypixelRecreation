@@ -8,6 +8,7 @@ import net.swofty.type.lobby.parkour.Parkour;
 
 import java.util.List;
 
+// Defines the parkour course layout for the Main Lobby.
 public class MainLobbyParkour implements Parkour {
 
     @Override

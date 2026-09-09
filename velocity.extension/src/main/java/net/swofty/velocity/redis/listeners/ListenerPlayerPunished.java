@@ -21,6 +21,7 @@ import org.tinylog.Logger;
 import java.util.List;
 import java.util.UUID;
 
+// Redis handler that applies a punishment (ban/mute/warning) to an online player, disconnecting or messaging them as appropriate.
 public class ListenerPlayerPunished implements RedisMessageHandler<
         PunishPlayerProtocol.Request,
         PunishPlayerProtocol.Response> {

@@ -20,6 +20,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+// Handles sending a lobby player (or their whole party) to a game server via the orchestrator.
 public record LobbyOrchestratorConnector(HypixelPlayer player) {
     private static final ProxyService PROXY_SERVICE = new ProxyService(ServiceType.ORCHESTRATOR);
     private static final List<UUID> PLAYERS_SEARCHING = new ArrayList<>();

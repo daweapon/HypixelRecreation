@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+// GUI for switching between saved wardrobe armor slots
 public class GUIWardrobe implements StatefulView<GUIWardrobe.WardrobeState> {
     private final Integer selectingLoadout;
 

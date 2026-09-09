@@ -58,6 +58,7 @@ import static net.kyori.adventure.text.format.NamedTextColor.*;
 import static net.kyori.adventure.text.format.TextDecoration.BOLD;
 
 // this is to patch a bug in Spark
+// Registers Spark's command modules and dispatches "/spark" subcommands (with tab-completion) to the matching module.
 @SuppressWarnings("unused") // -- it is used just not directly
 public class CommandManager implements AutoCloseable {
     private final SparkPlatform platform;

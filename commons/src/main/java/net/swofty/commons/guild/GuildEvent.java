@@ -13,6 +13,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Base class for all guild-system request/response events, with lookup of a placeholder instance by class name for Redis dispatch.
 public abstract class GuildEvent {
     private GuildData guild;
 
@@ -65,6 +66,10 @@ public abstract class GuildEvent {
             case "GuildAcceptInviteRequestEvent" -> {
                 var c = clazz.getDeclaredConstructor(UUID.class, UUID.class);
                 return (GuildEvent) c.newInstance(UUID.randomUUID(), UUID.randomUUID());
+            }
+            case "GuildJoinRequestEvent" -> {
+                var c = clazz.getDeclaredConstructor(UUID.class, String.class);
+                return (GuildEvent) c.newInstance(UUID.randomUUID(), "");
             }
             case "GuildLeaveRequestEvent" -> {
                 var c = clazz.getDeclaredConstructor(UUID.class);

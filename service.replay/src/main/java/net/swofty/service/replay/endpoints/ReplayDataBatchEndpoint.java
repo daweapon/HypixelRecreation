@@ -6,6 +6,7 @@ import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.service.replay.ReplayService;
 import org.tinylog.Logger;
 
+// Redis endpoint that feeds a compressed batch of recorded replay data into the active recording session.
 public class ReplayDataBatchEndpoint implements RedisMessageHandler<
         ReplayDataBatchProtocolObject.BatchMessage,
         ReplayDataBatchProtocolObject.BatchResponse> {

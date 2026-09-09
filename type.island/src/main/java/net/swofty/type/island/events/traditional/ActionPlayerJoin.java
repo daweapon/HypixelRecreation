@@ -10,6 +10,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.island.TypeIslandLoader;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Sets a player's spawning instance and respawn point when they connect to the Island server.
 public class ActionPlayerJoin implements HypixelEventClass {
 
     @SneakyThrows

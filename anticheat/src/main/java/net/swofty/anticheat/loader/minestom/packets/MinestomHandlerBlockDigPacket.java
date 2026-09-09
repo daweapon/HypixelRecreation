@@ -8,6 +8,7 @@ import net.swofty.anticheat.math.Pos;
 
 import java.util.UUID;
 
+// Converts Minestom's client player-action (block dig) packet into a BlockDigPacket.
 public class MinestomHandlerBlockDigPacket
         extends LoaderPacketHandler<ClientPlayerActionPacket> {
 

@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Keyed registry of custom CollectibleUnlockResolver implementations, looked up by resolver key.
 public final class CollectibleUnlockResolverRegistry {
 
     private static final Map<String, CollectibleUnlockResolver> RESOLVERS = new ConcurrentHashMap<>();

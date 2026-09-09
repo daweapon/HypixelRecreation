@@ -38,13 +38,13 @@ import net.swofty.type.skyblockgeneric.darkauction.DarkAuctionHandler;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
 import net.swofty.type.skyblockgeneric.entity.GlassDisplay;
 import net.swofty.type.skyblockgeneric.furniture.Furniture;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.gui.inventories.election.ElectionView;
 import net.swofty.type.skyblockgeneric.gui.inventories.election.ElectionViewStatsView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.museum.MuseumDisplays;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
-import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.WarpPortal;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
@@ -55,6 +55,7 @@ import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
+// Server type loader for the Hub: registers NPCs, events, warp portals, furniture, and displays for the central lobby world.
 public class TypeHubLoader implements SkyBlockTypeLoader {
 
 	@Override

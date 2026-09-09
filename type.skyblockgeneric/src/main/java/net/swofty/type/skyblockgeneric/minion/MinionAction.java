@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.minion.extension.extensions.MinionShippin
 
 import java.util.List;
 
+// Base type for a minion's per-tick behaviour (mining, farming, fishing, etc.), producing items and checking fuel/materials.
 public abstract class MinionAction {
 
     public abstract @NonNull List<SkyBlockItem> onAction(MinionActionEvent event, IslandMinionData.IslandMinion minion, Instance island);

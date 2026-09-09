@@ -6,6 +6,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.service.orchestrator.OrchestratorCache;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that lists the maps currently available for a given server type/mode.
 public class GetMapsEndpoint implements RedisMessageHandler
         <GetMapsProtocol.GetMapsMessage,
                 GetMapsProtocol.GetMapsResponse> {

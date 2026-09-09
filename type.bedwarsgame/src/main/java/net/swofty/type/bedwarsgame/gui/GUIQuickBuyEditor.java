@@ -18,6 +18,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import java.util.ArrayList;
 import java.util.List;
 
+// Confirmation GUI for adding a shop item to a player's Quick Buy slot.
 public class GUIQuickBuyEditor extends StatelessView {
     private final ShopManager shopService = TypeBedWarsGameLoader.shopManager;
     private final ShopItem shopItem;

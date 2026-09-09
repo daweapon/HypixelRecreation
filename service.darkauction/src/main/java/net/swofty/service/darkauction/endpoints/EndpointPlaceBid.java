@@ -12,6 +12,7 @@ import org.tinylog.Logger;
 import java.util.UUID;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that validates and applies a player's bid on the active Dark Auction round.
 public class EndpointPlaceBid implements RedisMessageHandler<
         PlaceBidProtocol.PlaceBidMessage,
         PlaceBidProtocol.PlaceBidResponse> {

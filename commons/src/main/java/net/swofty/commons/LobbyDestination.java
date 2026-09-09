@@ -7,6 +7,7 @@ import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
+// Maps minigame lobby destinations to their aliases and the ServerTypes considered part of that game's session.
 public enum LobbyDestination {
     BEDWARS(
         ServerType.BEDWARS_LOBBY,

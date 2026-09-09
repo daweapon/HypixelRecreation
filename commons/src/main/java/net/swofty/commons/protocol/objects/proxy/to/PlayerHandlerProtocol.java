@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
+// Redis RPC protocol for backend-server-initiated player actions on the proxy: transfer, teleport, limbo, messaging, and status lookups.
 public class PlayerHandlerProtocol extends RedisProtocol<
         PlayerHandlerProtocol.Request,
         PlayerHandlerProtocol.Response> {

@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// GUI showing the unlock rewards for one collection tier
 public class GUICollectionReward extends StatelessView {
     private static final Map<Integer, int[]> SLOTS = new HashMap<>(Map.of(
             0, new int[]{},

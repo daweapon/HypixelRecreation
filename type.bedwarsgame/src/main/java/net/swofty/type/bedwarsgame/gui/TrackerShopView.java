@@ -8,6 +8,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 
+// Placeholder tracker shop GUI shell with just a back button.
 public class TrackerShopView extends StatelessView {
 
     @Override

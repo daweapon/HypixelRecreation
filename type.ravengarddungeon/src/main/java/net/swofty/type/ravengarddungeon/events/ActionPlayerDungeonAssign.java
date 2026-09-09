@@ -14,6 +14,7 @@ import net.swofty.type.ravengarddungeon.user.RavengardDungeonPlayer;
 
 import java.util.UUID;
 
+// Routes a player to their orchestrator-assigned dungeon instance on spawn, and marks them as left on disconnect.
 public class ActionPlayerDungeonAssign implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

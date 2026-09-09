@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Execute enchantment: increases damage dealt scaled by the target's missing health percentage;
+// conflicts with Prosecute.
 public class EnchantmentExecute implements Ench, EnchFromTable, EventBasedEnchant, ConflictingEnch {
 
     public static final double[] DAMAGE_MULTIPLIERS = new double[]{0.2, 0.4, 0.6, 0.8, 1.0, 1.25};

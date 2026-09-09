@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.race.Race;
 
 @Getter
 @AllArgsConstructor
+// Fired when a player finishes a race, carrying their completion time
 public class ActionPlayerFinishRace implements PlayerEvent {
 
 	private final Player player;

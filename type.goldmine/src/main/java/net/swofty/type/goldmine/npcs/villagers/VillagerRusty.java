@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 
+// Villager NPC for Rusty, the Gold Mine's janitor who buys back dropped items, with an Abiphone contact.
 public class VillagerRusty extends HypixelNPC implements NPCAbiphoneTrait {
 	public VillagerRusty() {
 		super(new VillagerConfiguration() {

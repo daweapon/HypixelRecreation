@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.DisableAnimationComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Cancels the item-use animation for items configured to suppress it
 public class ActionItemDisableEatingAnimation implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

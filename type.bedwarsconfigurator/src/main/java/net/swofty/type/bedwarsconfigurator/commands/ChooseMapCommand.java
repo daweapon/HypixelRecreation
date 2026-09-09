@@ -24,6 +24,7 @@ import java.util.Set;
     usage = "/choosemap <map>",
     permission = Rank.STAFF,
     allowsConsole = false)
+// /choosemap command for staff to select a Bedwars map (configured or raw .polar file) to edit.
 public class ChooseMapCommand extends HypixelCommand {
 
     @Override

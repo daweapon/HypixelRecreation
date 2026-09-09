@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.UUID;
 
+// Creates a new co-op member's SkyBlock profile, cloning shared island data from an existing member
 final class CoopProfileCreation {
 
     private CoopProfileCreation() {}

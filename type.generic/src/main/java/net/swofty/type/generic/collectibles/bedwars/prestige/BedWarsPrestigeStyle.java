@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+// Coloring/paint definition for a rendered prestige (brackets, digits, star), used to build styled prestige text.
 public record BedWarsPrestigeStyle(
     TextPaint openBracket,
     DigitPaint digits,

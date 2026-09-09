@@ -6,6 +6,7 @@ import net.minestom.server.event.trait.PlayerInstanceEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @Getter
+// Fired when a player clicks the Jerry NPC/entity
 public class JerryClickedEvent implements PlayerInstanceEvent, CancellableEvent {
     SkyBlockPlayer player;
     boolean cancelled;

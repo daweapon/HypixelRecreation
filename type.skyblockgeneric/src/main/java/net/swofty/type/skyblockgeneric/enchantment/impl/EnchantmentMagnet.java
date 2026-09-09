@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Magnet enchantment: instantly pulls nearby dropped items to the player when fishing.
 public class EnchantmentMagnet implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

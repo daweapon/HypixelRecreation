@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Persists how many of each item type a player has stored in their sacks.
 public class DatapointItemsInSacks extends SkyBlockDatapoint<DatapointItemsInSacks.PlayerItemsInSacks> {
 
     public DatapointItemsInSacks(String key, PlayerItemsInSacks value) {

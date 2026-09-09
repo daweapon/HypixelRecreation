@@ -15,6 +15,7 @@ import net.swofty.type.generic.user.categories.Rank;
 		usage = "/shout <message>",
 		permission = Rank.DEFAULT,
 		allowsConsole = false)
+// /shout command letting a player broadcast a message to everyone in the current game.
 public class ShoutCommand extends HypixelCommand {
 
 	@Override

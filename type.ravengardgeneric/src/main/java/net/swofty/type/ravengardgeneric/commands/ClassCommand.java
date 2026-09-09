@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
         permission = Rank.DEFAULT,
         allowsConsole = false
 )
+// Command that sets or reports the player's chosen Ravengard class and lists its abilities.
 public class ClassCommand extends HypixelCommand {
 
     @Override

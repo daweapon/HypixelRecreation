@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// GUI for depositing coins from a player's purse into their bank account
 public class GUIBankerDeposit extends HypixelInventoryGUI {
 
     public GUIBankerDeposit() {

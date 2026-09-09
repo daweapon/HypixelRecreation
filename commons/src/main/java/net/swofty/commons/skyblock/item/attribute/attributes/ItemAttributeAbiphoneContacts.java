@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+// Item attribute storing an Abiphone's saved contact list.
 public class ItemAttributeAbiphoneContacts extends ItemAttribute<List<String>> {
     @Override
     public String getKey() {

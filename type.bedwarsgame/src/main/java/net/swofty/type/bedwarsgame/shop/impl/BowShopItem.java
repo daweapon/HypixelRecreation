@@ -9,6 +9,7 @@ import net.swofty.type.bedwarsgame.shop.ShopItem;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import net.swofty.type.generic.data.datapoints.DatapointBedWarsHotbar;
 
+// Shop item for bows that applies a fixed enchantment list to the purchased bow.
 public class BowShopItem extends ShopItem {
 
 	final EnchantmentList enchantmentList;

@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
+// Block state values for a stair's connecting shape (straight or inner/outer corner).
 public enum StairsShape implements State<StairsShape> {
     STRAIGHT,
     INNER_LEFT,

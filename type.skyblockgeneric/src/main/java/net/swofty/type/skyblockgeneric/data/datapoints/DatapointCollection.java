@@ -14,6 +14,8 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+// Persists a player's item collection counts and renders collection/reward progress lore,
+// while exposing per-item scores to the global collection leaderboards.
 public class DatapointCollection extends SkyBlockDatapoint<DatapointCollection.PlayerCollection>
         implements MapLeaderboardTracked {
 

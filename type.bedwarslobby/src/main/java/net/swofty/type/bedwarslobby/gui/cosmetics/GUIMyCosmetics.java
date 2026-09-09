@@ -23,6 +23,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import java.util.List;
 import java.util.Optional;
 
+// Hub GUI listing all Bedwars cosmetic categories a player can browse and equip.
 public class GUIMyCosmetics extends StatelessView {
 
     @Override

@@ -2,6 +2,7 @@ package net.swofty.type.bedwarsgame.user;
 
 import lombok.Getter;
 
+// Sources of Bedwars XP gain (wins, kills, resource pickups, playtime) and their reward amounts.
 @Getter
 public enum ExperienceCause {
 	// WIN

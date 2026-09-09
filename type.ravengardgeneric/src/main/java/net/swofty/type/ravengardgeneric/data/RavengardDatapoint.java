@@ -6,6 +6,7 @@ import net.swofty.type.generic.data.Datapoint;
 import net.swofty.type.generic.data.HypixelDataHandler;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Base Datapoint type for Ravengard data fields, wiring their on-change callbacks from either the Hypixel or Ravengard data enums.
 public abstract class RavengardDatapoint<T> extends Datapoint<T> {
 
     protected RavengardDatapoint(String key, T value, Serializer<T> serializer) {

@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.missions.MissionBreakLog;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Starts the "break log" tutorial mission for new players on their Island.
 public class ActionStartIslandMission implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.POST_DATA)

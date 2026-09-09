@@ -169,6 +169,15 @@ public class RedisPropagateGuildEvent implements RedisMessageHandler<GuildEventP
             case "rename" -> Text.of("the guild name to <6>{}", event.getValue());
             case "slow" -> Text.of("slow chat to <6>{}", event.getValue());
             case "finder" -> Text.of("guild finder to <6>{}", event.getValue());
+            case "openjoin" -> Text.of("open join to <6>{}", event.getValue());
+            case "rankcreate" -> Text.of("created the rank <6>{}", event.getValue());
+            case "rankdelete" -> Text.of("deleted the rank <6>{}", event.getValue());
+            case "rankpermission" -> {
+                String[] parts = event.getValue().split(":", 3);
+                yield parts.length == 3
+                        ? Text.of("the <6>{}<e> permission for rank <6>{} <e>({})", parts[1], parts[0], parts[2])
+                        : Text.of("a rank's permissions");
+            }
             default -> Text.of("{} to {}", event.getSetting(), event.getValue());
         };
         sendMessage(player, "{} <e>updated {}<e>.", displayName(event.getChanger()), settingDisplay);

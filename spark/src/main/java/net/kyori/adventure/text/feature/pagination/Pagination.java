@@ -38,6 +38,7 @@ import java.util.function.Consumer;
 
 /**
  * Pagination.
+ * Renders a collection of content as a titled, navigable set of chat pages with previous/next-page buttons.
  *
  * @param <T> the content type
  */

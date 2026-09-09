@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Fisherwoman Enid in the Hub, who teaches new players the basics of fishing
 public class NPCFisherwomanEnid extends HypixelNPC {
 
     public NPCFisherwomanEnid() {

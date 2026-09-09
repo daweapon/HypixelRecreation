@@ -32,6 +32,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// Detects when a player steps onto a launch pad and fires its particle/permission-gated launch effect
 public class ActionPlayerLaunchPads implements HypixelEventClass {
     private static final int SEGMENTS = 30;
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);

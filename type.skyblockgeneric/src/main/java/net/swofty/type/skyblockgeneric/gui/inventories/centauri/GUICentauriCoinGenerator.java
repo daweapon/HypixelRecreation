@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// Developer/cheat GUI for generating preset or custom amounts of coins
 public final class GUICentauriCoinGenerator implements View<GUICentauriCoinGenerator.State> {
     private static final double[] AMOUNTS = {1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000};
     private static final int[] SLOTS = {11, 13, 15, 19, 21, 23, 25};

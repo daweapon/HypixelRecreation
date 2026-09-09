@@ -20,6 +20,8 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
+// Manages placed Huntraps: handles placement, ticks them toward catching an eligible attribute
+// shard, and lets players claim or pick them back up.
 public final class HuntrapService {
     private static final Map<TrapKey, HuntrapDisplay> DISPLAYS = new HashMap<>();
 

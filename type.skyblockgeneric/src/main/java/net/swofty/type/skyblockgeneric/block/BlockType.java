@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.block.blocks.BlockChest;
 import net.swofty.type.skyblockgeneric.block.blocks.BlockDecoration;
 import net.swofty.type.skyblockgeneric.block.impl.CustomSkyBlockBlock;
 
+// Registry of custom SkyBlock block kinds, each mapped to its CustomSkyBlockBlock implementation class.
 public enum BlockType {
     CHEST(BlockChest.class),
     DECORATION(BlockDecoration.class),

@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// NPC for Rhys, found in the Deep Caverns.
 public class NPCRhys extends HypixelNPC {
 
 	public NPCRhys() {

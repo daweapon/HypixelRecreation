@@ -15,10 +15,12 @@ import net.swofty.type.generic.gui.inventory.item.GUIQueryItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAuctionEscrow;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.commons.skyblock.auctions.AuctionRules;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+// GUI for choosing how long a new auction listing will run, including a custom time query
 public class GUIAuctionDuration extends HypixelInventoryGUI {
     public GUIAuctionDuration() {
         super(Text.key("gui_auction.duration.title"), InventoryType.CHEST_4_ROW);
@@ -49,14 +51,20 @@ public class GUIAuctionDuration extends HypixelInventoryGUI {
                     player.sendMessage(Text.key("gui_auction.duration.invalid_time"));
                     return null;
                 }
-                if (val >= 336 && !right.get()) {
+
+                long duration;
+                try {
+                    duration = Math.multiplyExact(val, right.get() ? 60000L : 3600000L);
+                } catch (ArithmeticException overflow) {
+                    player.sendMessage(Text.key("gui_auction.duration.max_exceeded"));
+                    return null;
+                }
+                if (duration > AuctionRules.MAX_DURATION) {
                     player.sendMessage(Text.key("gui_auction.duration.max_exceeded"));
                     return null;
                 }
 
-                ((SkyBlockPlayer) player).getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ESCROW, DatapointAuctionEscrow.class).getValue().setDuration(
-                        val * (right.get() ? 60000 : 3600000)
-                );
+                ((SkyBlockPlayer) player).getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.AUCTION_ESCROW, DatapointAuctionEscrow.class).getValue().setDuration(duration);
 
                 return new GUIAuctionCreateItem(GUIAuctionDuration.this);
             }

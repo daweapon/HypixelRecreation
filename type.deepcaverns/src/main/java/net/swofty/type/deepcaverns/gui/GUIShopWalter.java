@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for Walter, selling Deep Caverns mining supplies like Superboom TNT.
 public class GUIShopWalter extends ShopView {
 	public GUIShopWalter() {
 		super("Walter", SINGLE_SLOT);

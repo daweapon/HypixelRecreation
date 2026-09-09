@@ -5,6 +5,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.service.guild.GuildCache;
 
+// Redis endpoint that reports whether a given player is currently in a guild.
 public class IsPlayerInGuildEndpoint implements RedisMessageHandler<
     IsPlayerInGuildProtocolObject.IsPlayerInGuildMessage,
     IsPlayerInGuildProtocolObject.IsPlayerInGuildResponse> {

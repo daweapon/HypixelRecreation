@@ -6,6 +6,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for submitting a FriendEvent request to the friend service for processing.
 public class SendFriendEventToServiceProtocol extends RedisProtocol
         <SendFriendEventToServiceProtocol.SendFriendEventToServiceMessage,
                 SendFriendEventToServiceProtocol.SendFriendEventToServiceResponse> {

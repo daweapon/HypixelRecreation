@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.block.placement.BlockUtils;
 import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 
+// Placement rule for bamboo, handling sapling growth and collapsing the stalk when its support is removed.
 public class BambooPlacement extends PlacementRule {
     public BambooPlacement() {
         super(Block.BAMBOO);

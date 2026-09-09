@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.Attachment;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import org.jetbrains.annotations.NotNull;
 
+// Typed BlockState accessor for the bell's facing and wall/ceiling/floor attachment.
 public class BellState extends BlockState {
 
     public BellState(Block blockAlternative) {

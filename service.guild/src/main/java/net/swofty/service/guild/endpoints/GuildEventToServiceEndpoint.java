@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.service.guild.GuildCache;
 
+// Redis endpoint that deserializes an incoming GuildEvent and dispatches it to the matching GuildCache handler.
 public class GuildEventToServiceEndpoint implements RedisMessageHandler<
     SendGuildEventToServiceProtocolObject.SendGuildEventToServiceMessage,
     SendGuildEventToServiceProtocolObject.SendGuildEventToServiceResponse> {
@@ -25,6 +26,7 @@ public class GuildEventToServiceEndpoint implements RedisMessageHandler<
             case GuildCreateRequestEvent e -> GuildCache.handleCreateRequest(e);
             case GuildInviteRequestEvent e -> GuildCache.handleInviteRequest(e);
             case GuildAcceptInviteRequestEvent e -> GuildCache.handleAcceptInvite(e);
+            case GuildJoinRequestEvent e -> GuildCache.handleJoinRequest(e);
             case GuildLeaveRequestEvent e -> GuildCache.handleLeaveRequest(e);
             case GuildKickRequestEvent e -> GuildCache.handleKickRequest(e);
             case GuildDisbandRequestEvent e -> GuildCache.handleDisbandRequest(e);

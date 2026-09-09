@@ -13,6 +13,7 @@ import spark.Response;
 import java.util.Map;
 import java.util.UUID;
 
+// Public API HTTP endpoint that returns a SkyBlock profile's document, gated by API key and rate limiting.
 public class ProfileEndpoint extends SkyBlockEndpoint {
     @Override
     public EndpointType getType() {

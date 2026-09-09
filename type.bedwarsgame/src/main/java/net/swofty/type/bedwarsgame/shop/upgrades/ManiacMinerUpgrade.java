@@ -17,6 +17,7 @@ import net.swofty.type.bedwarsgame.shop.TeamUpgradeTier;
 
 import java.util.List;
 
+// Team upgrade granting permanent Haste and mining-speed boost to all teammates.
 public class ManiacMinerUpgrade extends TeamUpgrade {
 
 	public ManiacMinerUpgrade() {

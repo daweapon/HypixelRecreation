@@ -4,6 +4,7 @@ import net.swofty.commons.ServiceType;
 
 import java.util.UUID;
 
+// Identifies a Redis RPC participant (the proxy, a specific server, or a service) by type and id.
 public record RedisEndpoint(RedisEndpointType type, String id) {
     public static RedisEndpoint proxy() {
         return new RedisEndpoint(RedisEndpointType.PROXY, "proxy");

@@ -7,6 +7,7 @@ import net.swofty.type.generic.data.Datapoint;
 import java.util.HashMap;
 import java.util.Map;
 
+// Datapoint storing a player's per-feature boolean toggle preferences, serialized as a comma-separated key:value list.
 public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
 
     public DatapointToggles(String key, DatapointToggles.Toggles value) {
@@ -125,7 +126,22 @@ public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
             HAS_CAUGHT_FIRST_FISH(false),
             HAS_UNLOCKED_SHIP(false),
             HAS_VISITED_BACKWATER_BAYOU(false),
-            ;
+            PERSONAL_DELETOR_COBBLESTONE(true),
+            PERSONAL_DELETOR_DIRT(true),
+            PERSONAL_DELETOR_NETHERRACK(true),
+            PERSONAL_DELETOR_ROTTEN_FLESH(true),
+            PERSONAL_DELETOR_GRAVEL(true),
+            PERSONAL_DELETOR_SAND(true),
+            PERSONAL_DELETOR_STRING(true),
+            PERSONAL_DELETOR_BONE(true),
+            PERSONAL_COMPACTOR_IRON(true),
+            PERSONAL_COMPACTOR_GOLD(true),
+            PERSONAL_COMPACTOR_DIAMOND(true),
+            PERSONAL_COMPACTOR_EMERALD(true),
+            PERSONAL_COMPACTOR_COAL(true),
+            PERSONAL_COMPACTOR_REDSTONE(true),
+            PERSONAL_COMPACTOR_LAPIS(true),
+            HALVE_DARK_AUCTION_CALENDAR_ENTRIES(false);
 
             private final boolean defaultValue;
 

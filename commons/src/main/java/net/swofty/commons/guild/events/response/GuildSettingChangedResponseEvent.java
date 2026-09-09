@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: confirms a guild setting was changed to a new value.
 public class GuildSettingChangedResponseEvent extends GuildResponseEvent {
     private UUID changer;
     private String setting;

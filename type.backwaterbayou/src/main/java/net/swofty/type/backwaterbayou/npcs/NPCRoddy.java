@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Roddy, the Backwater Bayou's rod mechanic who opens the fishing rod parts GUI.
 public class NPCRoddy extends HypixelNPC {
 
     public NPCRoddy() {

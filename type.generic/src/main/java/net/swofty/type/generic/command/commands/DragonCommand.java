@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
         usage = "/dragon <spawn|follow|stop|remove>",
         permission = Rank.STAFF,
         allowsConsole = false)
+// Staff command for spawning and controlling per-player dragon entities (spawn/follow/idle/stop/remove).
 public class DragonCommand extends HypixelCommand {
     private static final Map<UUID, DragonEntity> playerDragons = new ConcurrentHashMap<>();
 

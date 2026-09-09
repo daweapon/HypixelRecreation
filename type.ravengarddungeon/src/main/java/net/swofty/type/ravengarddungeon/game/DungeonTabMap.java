@@ -11,6 +11,7 @@ import net.swofty.type.ravengardgeneric.hud.RavengardHudState;
 
 import java.util.UUID;
 
+// Renders the full dungeon layout with room art and live player/teammate markers for the tab-list map HUD element.
 public final class DungeonTabMap {
     private static final int TILE = 13;
     private static final int MAP_CENTER = 256;

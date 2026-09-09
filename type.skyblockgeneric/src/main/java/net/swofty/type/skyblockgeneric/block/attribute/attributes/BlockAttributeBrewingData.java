@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.block.impl.CustomSkyBlockBlock;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import org.jetbrains.annotations.Nullable;
 
+// Block attribute storing a brewing stand's ingredient, potion slots, and brew timing, with pipe-delimited serialization.
 public class BlockAttributeBrewingData extends BlockAttribute<BlockAttributeBrewingData.BrewingData> {
 
     @Override

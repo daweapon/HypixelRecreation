@@ -15,6 +15,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// GUI for Maxwell the NPC in the Hub showing Accessory Bag Thaumaturgy magical power breakdown.
 public class GUIMaxwell extends HypixelInventoryGUI {
 
     public GUIMaxwell() {

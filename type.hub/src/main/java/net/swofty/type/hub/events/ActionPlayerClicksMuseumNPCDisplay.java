@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.gui.inventories.museum.GUIYourMuseum;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Opens the player's own museum GUI when they interact with the museum entrance block in the Hub.
 public class ActionPlayerClicksMuseumNPCDisplay implements HypixelEventClass {
 
 

@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Half;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.StairsShape;
 
+// Placement rule for stairs, computing top/bottom half and inner/outer corner shape from neighboring stairs.
 public class StairsPlacement extends PlacementRule {
 
     public StairsPlacement(Block block) {

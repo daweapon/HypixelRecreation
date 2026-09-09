@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that returns the current buy/sell order book for a given item.
 public class EndpointGetBazaarItem implements RedisMessageHandler<
         BazaarGetItemProtocol.BazaarGetItemMessage,
         BazaarGetItemProtocol.BazaarGetItemResponse> {

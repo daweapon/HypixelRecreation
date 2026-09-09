@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for the Zog NPC in the Hub, selling skill XP boosts and pet item upgrades.
 public class GUIShopZog extends ShopView {
     public GUIShopZog() {
         super("Zog", DEFAULT);

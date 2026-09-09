@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Static facade for sending Redis RPC requests/broadcasts to the proxy, a specific server, or a service, on top of RedisMessageBus.
 public final class RedisClient {
     private static final Map<String, RedisProtocol<?, ?>> protocolsByRequest = new ConcurrentHashMap<>();
     private static volatile RedisEndpoint localEndpoint;
@@ -144,9 +145,9 @@ public final class RedisClient {
 
     @SuppressWarnings("unchecked")
     public static <T, R> RedisProtocol<T, R> protocolFor(T request) {
-        RedisProtocol<?, ?> protocol = protocolsByRequest.get(request.getClass().getSimpleName());
+        RedisProtocol<?, ?> protocol = protocolsByRequest.get(request.getClass().getName());
         if (protocol == null) {
-            throw new IllegalArgumentException("No Redis protocol registered for " + request.getClass().getSimpleName());
+            throw new IllegalArgumentException("No Redis protocol registered for " + request.getClass().getName());
         }
         return (RedisProtocol<T, R>) protocol;
     }
@@ -167,7 +168,7 @@ public final class RedisClient {
             if (typeArguments.length > 0) {
                 Type firstTypeArg = typeArguments[0];
                 if (firstTypeArg instanceof Class) {
-                    return ((Class<?>) firstTypeArg).getSimpleName();
+                    return ((Class<?>) firstTypeArg).getName();
                 }
                 return firstTypeArg.getTypeName();
             }

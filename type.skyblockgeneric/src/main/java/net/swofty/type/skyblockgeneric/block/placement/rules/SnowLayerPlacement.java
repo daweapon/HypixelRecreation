@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.block.placement.PlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.IntegerState;
 
+// Placement rule for snow layers, stacking additional layers onto existing snow up to the maximum height.
 public class SnowLayerPlacement extends PlacementRule {
 
     private static final IntegerState LAYERS = IntegerState.Of("layers");

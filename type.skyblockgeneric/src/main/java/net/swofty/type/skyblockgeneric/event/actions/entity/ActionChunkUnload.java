@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 
+// Keeps chunks loaded on non-island servers by immediately reloading any that unload
 public class ActionChunkUnload implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.ENTITY, requireDataLoaded = false, isAsync = true, phase = EventPhase.GAMEPLAY)

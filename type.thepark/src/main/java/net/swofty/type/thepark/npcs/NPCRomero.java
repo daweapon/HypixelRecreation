@@ -10,6 +10,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 
+// NPC for Romero in The Park, the multi-stage Romero & Juliette gift-fetching questline giver.
 public class NPCRomero extends HypixelNPC {
 
 	public NPCRomero() {

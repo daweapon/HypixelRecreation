@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: confirms a specific friend was removed.
 public final class FriendRemovedResponseEvent extends FriendResponseEvent {
     private static final Serializer<FriendRemovedResponseEvent> SERIALIZER =
             new JacksonSerializer<>(FriendRemovedResponseEvent.class);

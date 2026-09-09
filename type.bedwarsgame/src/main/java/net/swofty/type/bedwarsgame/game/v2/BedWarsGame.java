@@ -51,6 +51,7 @@ import org.tinylog.Logger;
 
 import java.util.*;
 
+// Central Bedwars match state: teams, generators, shops, replay, and win-condition orchestration.
 @Getter
 public class BedWarsGame extends AbstractTeamGame<BedWarsPlayer, BedWarsTeam> {
     public static final Tag<Boolean> ELIMINATED_TAG = Tag.Boolean("eliminated");

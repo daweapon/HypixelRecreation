@@ -23,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI summarizing a bazaar order's completed transactions and their totals
 public class GUIBazaarOrderCompletedOptions extends HypixelInventoryGUI {
     private final List<DatapointCompletedBazaarTransactions.CompletedBazaarTransaction> completions;
     private final BazaarConnector.BazaarOrder activeOrder;

@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 
+// Broadcasts a team-colored disconnect message when a player leaves a Bedwars game mid-match.
 public class PlayerGameDisconnectListener implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false)

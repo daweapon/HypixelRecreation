@@ -10,6 +10,7 @@ import net.kyori.adventure.text.format.TextColor;
 import java.util.ArrayList;
 import java.util.List;
 
+// Sealed AST of a compiled Text markup template; each variant knows how to render itself into a Component given the call's arguments.
 sealed interface TextNode {
 
     Component render(Object[] arguments);

@@ -8,6 +8,7 @@ import net.minestom.server.network.packet.client.common.ClientKeepAlivePacket;
 import net.minestom.server.network.packet.server.common.KeepAlivePacket;
 import net.minestom.server.tag.Tag;
 
+// Measures player latency precisely by timestamping keep-alive packets right before they are written to the socket.
 public class AccurateLatencyListener {
 	private static final Component KICK_MESSAGE = Component.text("Bad Keep Alive packet", NamedTextColor.RED);
 	

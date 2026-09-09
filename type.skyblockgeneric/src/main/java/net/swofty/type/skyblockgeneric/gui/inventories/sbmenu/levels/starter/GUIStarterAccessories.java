@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.levels.causes.NewAccessoryLevelCause;
 import java.util.List;
 import java.util.stream.Stream;
 
+// GUI intended to show starter accessory unlocks for given level-up causes (content not yet implemented)
 public class GUIStarterAccessories extends StatelessView {
     private final List<NewAccessoryLevelCause> causes;
 

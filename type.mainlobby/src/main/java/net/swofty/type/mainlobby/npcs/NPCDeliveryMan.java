@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.lobby.gui.GUITheDeliveryMan;
 
+// NPC for The Delivery Man in the Main Lobby, opens the daily reward/delivery GUI.
 public class NPCDeliveryMan extends HypixelNPC {
 
     public NPCDeliveryMan() {

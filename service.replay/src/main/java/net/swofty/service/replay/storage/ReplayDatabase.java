@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// MongoDB accessor for replay metadata, compressed replay data chunks, and uploaded map data.
 public class ReplayDatabase {
     private MongoClient client;
     private MongoDatabase database;

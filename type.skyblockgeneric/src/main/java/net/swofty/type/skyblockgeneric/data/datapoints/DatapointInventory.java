@@ -10,6 +10,8 @@ import org.tinylog.Logger;
 import java.util.HashMap;
 import java.util.Map;
 
+// Persists a player's full SkyBlock inventory: armor, accessory-slot items (necklace/cloak/belt/
+// gloves), and the main inventory contents.
 public class DatapointInventory extends SkyBlockDatapoint<SkyBlockInventory> {
     private static final Serializer<SkyBlockInventory> serializer = new Serializer<>() {
         @Override

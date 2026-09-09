@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing the item's underlying ItemType identifier as a raw string.
 public class ItemAttributeType extends ItemAttribute<String> {
     @Override
     public String getKey() {

@@ -11,6 +11,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.Wiki;
 
+// GUI for Biblio the librarian NPC in the Hub, offering shortcuts to the SkyBlock Wiki commands.
 public class GUIBiblio extends HypixelInventoryGUI {
 	public GUIBiblio() {
 		super("Skyblock Wiki", InventoryType.CHEST_4_ROW);

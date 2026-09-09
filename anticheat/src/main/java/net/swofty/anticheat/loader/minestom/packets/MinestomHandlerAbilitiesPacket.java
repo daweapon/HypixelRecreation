@@ -7,6 +7,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts Minestom's client player-abilities packet into an AbilitiesPacket.
 public class MinestomHandlerAbilitiesPacket
         extends LoaderPacketHandler<ClientPlayerAbilitiesPacket> {
 

@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.HashMap;
 import java.util.Map;
 
+// Configuration input for dungeon generation: dungeon dimensions and min/max room-type counts.
 public class DungeonsData {
     private final Map<DungeonRoomType, RoomData> roomData;
     @Getter

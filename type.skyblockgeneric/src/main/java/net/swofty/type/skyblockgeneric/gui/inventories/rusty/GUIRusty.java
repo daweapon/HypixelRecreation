@@ -11,6 +11,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// Main Rusty NPC shop menu, linking out to weapon, pet, and accessory sub-shops
 public class GUIRusty extends HypixelInventoryGUI {
     public GUIRusty() {
         super(Text.key("gui_rusty.main.title"), InventoryType.CHEST_4_ROW);

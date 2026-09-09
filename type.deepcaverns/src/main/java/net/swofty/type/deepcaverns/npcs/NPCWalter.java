@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Walter, the Deep Caverns tools merchant with an Abiphone contact.
 public class NPCWalter extends HypixelNPC implements NPCAbiphoneTrait {
 
 	public NPCWalter() {

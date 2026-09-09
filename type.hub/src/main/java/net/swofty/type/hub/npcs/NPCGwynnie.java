@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
+// NPC for Gwynnie, a decorative Hub NPC with no interaction logic
 public class NPCGwynnie extends HypixelNPC {
 
     public NPCGwynnie() {

@@ -5,6 +5,7 @@ import net.swofty.commons.protocol.objects.PingProtocol;
 import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.commons.redis.RedisMessageHandler;
 
+// Trivial Redis endpoint every service registers so callers can health-check that it is alive and responding.
 public class PingEndpoint implements RedisMessageHandler<
         PingProtocol.EmptyMessage,
         PingProtocol.EmptyMessage> {

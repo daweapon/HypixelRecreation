@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Spiked Hook enchantment: deals bonus damage to sea creatures.
 public class EnchantmentSpikedHook implements Ench, EnchFromTable {
     @Override
     public String getDescription(int level) {

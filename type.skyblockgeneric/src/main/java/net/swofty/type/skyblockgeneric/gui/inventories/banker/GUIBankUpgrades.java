@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for purchasing higher bank account tiers to raise the balance limit
 public class GUIBankUpgrades extends HypixelInventoryGUI {
     private static final int[] TIER_SLOTS = {10, 11, 12, 13, 14, 15, 16};
     private static final String LUXURIOUS_TEXTURE =

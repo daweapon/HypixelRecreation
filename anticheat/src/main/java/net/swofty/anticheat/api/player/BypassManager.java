@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Tracks temporary or permanent per-player check bypasses, keyed by flag type, with automatic expiry.
 public class BypassManager {
     private final Map<UUID, Map<FlagType, BypassEntry>> bypasses = new ConcurrentHashMap<>();
 

@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Protection enchantment: grants bonus Defense on armor.
 public class EnchantmentProtection implements Ench, EnchFromTable {
 
     @Override

@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.block.placement.states.state;
 
 import org.jetbrains.annotations.NotNull;
 
+// Generic true/false block state value for an arbitrary named property key (e.g. waterlogged, open, lit).
 public final class BooleanState implements State<Boolean> {
 
     private final String key;

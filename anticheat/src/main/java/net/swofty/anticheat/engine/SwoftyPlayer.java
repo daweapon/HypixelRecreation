@@ -19,6 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingDeque;
 
 @Getter
+// Per-player anticheat state: recent tick history, ping tracking, flag manager, and ability/bypass status.
 public class SwoftyPlayer {
     public static final Map<UUID, SwoftyPlayer> players = new ConcurrentHashMap<>();
     private final UUID uuid;

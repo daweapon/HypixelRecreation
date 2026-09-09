@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.ItemShopPrice;
 
+// Shop GUI for the Mine Merchant NPC in the Hub, selling ores and basic mining tools.
 public class GUIShopMineMerchant extends ShopView {
     public GUIShopMineMerchant() {
         super("Mine Merchant", DEFAULT);

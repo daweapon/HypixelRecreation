@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+// GUI for browsing and searching every SkyBlock and vanilla item to spawn in creative mode
 public class GUICreative extends PaginatedView<SkyBlockItem, GUICreative.CreativeState> {
 
     @Override

@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// GUI for the Lonely Philosopher NPC in the Hub, selling a travel scroll to Hub Castle.
 public class GUILonelyPhilosopher extends HypixelInventoryGUI {
 
     public GUILonelyPhilosopher() {

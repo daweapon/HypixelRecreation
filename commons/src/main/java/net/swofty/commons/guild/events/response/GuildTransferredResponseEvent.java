@@ -9,6 +9,7 @@ import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
+// Guild-system response event: confirms guild ownership was transferred to a new guild master.
 public class GuildTransferredResponseEvent extends GuildResponseEvent {
     private UUID oldOwner;
     private UUID newOwner;

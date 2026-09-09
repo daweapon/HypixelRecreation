@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+// Paginated GUI listing hunting attribute shards with filtering, sorting, and search
 public class GUIAttributeMenu extends StatefulPaginatedView<AttributeDefinition, GUIAttributeMenu.State> {
     public enum SkillFilter {ALL, COMBAT, FISHING, FARMING, FORAGING, MINING, TAMING, ENCHANTING, HUNTING, GLOBAL}
 

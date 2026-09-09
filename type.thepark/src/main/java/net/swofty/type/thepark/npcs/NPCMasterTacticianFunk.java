@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// NPC for Master Tactician Funk in The Park's Woodlands, gives a one-time welcome dialogue.
 public class NPCMasterTacticianFunk extends HypixelNPC {
 
 	public NPCMasterTacticianFunk() {

@@ -30,6 +30,7 @@ import java.util.UUID;
         @JsonSubTypes.Type(value = FriendToggleSettingRequestEvent.class),
         @JsonSubTypes.Type(value = FriendResponseEvent.class)
 })
+// Base class for all friend-system request/response events, with reflection-based lookup of a placeholder instance by class name.
 public abstract class FriendEvent {
 
     private static final String[] EVENT_PACKAGES = {

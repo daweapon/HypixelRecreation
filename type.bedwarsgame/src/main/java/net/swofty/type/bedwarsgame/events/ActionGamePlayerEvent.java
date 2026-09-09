@@ -30,6 +30,7 @@ import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Handles miscellaneous player inventory/interaction events during Bedwars (clicks, drops, digging).
 public class ActionGamePlayerEvent implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

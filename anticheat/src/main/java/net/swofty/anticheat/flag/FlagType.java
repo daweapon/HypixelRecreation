@@ -5,6 +5,7 @@ import net.swofty.anticheat.flag.flags.*;
 
 import java.util.function.Supplier;
 
+// Enumerates every cheat-detection check and the Flag implementation that backs it.
 public enum FlagType {
     // Prediction-based checks (highest precision)
     PREDICTION(PredictionFlag::new),

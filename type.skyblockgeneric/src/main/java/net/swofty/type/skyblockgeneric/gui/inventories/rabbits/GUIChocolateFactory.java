@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.v2.StatefulView;
 import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
+import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointChocolateFactory;
 import net.swofty.type.skyblockgeneric.rabbits.ChocolateFactoryHelper;
 import net.swofty.type.skyblockgeneric.rabbits.ChocolateRabbit;
@@ -21,6 +22,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for the Chocolate Factory: manages chocolate production upgrades, employees, and rabbit collection links
 public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.State> {
     private static final int RABBIT_BARN_MAX_LEVEL = 247;
     private static final int RABBIT_BARN_EXTRA_CAPACITY = 2;
@@ -287,6 +289,19 @@ public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.Sta
         // Slot 45: Chocolate Production info
         layout.slot(45, (s, c) -> createProductionInfoItem((SkyBlockPlayer) c.player()));
 
+        // Slot 8: Admin Menu (Staff only)
+        if (player.getRank().isEqualOrHigherThan(Rank.STAFF)) {
+            layout.slot(8, (s, c) -> ItemStacks.item(Material.COMMAND_BLOCK, """
+                    <c>ADMIN MENU
+                    <7>Edit this player's Chocolate,
+                    <7>storage, milestones, prestige,
+                    <7>worker levels, and rabbit
+                    <7>collection.
+
+                    <e>Click to open!"""),
+                    (click, c) -> ((SkyBlockPlayer) c.player()).openView(new GUIChocolateFactoryAdmin()));
+        }
+
         // Slot 49: Close
         Components.close(layout, 49);
 
@@ -310,7 +325,7 @@ public class GUIChocolateFactory implements StatefulView<GUIChocolateFactory.Sta
 
                     <7>Rabbits Found: <e>{}<6>%
                     <2><l><m>    <f>                     <r> <e>{}<6>/<e>{}
-</m>
+
                     <e>Click to view!""",
                     String.format("%.1f", percentage), rabbitsFound, TOTAL_RABBITS);
         }, (click, c) -> ((SkyBlockPlayer) c.player()).openView(new GUIHoppityCollection()));

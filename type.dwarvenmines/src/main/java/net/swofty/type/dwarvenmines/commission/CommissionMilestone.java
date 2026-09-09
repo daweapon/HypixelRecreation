@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+// Milestone tiers reached by completing Dwarven Mines commissions, each unlocking rewards like emissaries or scrolls.
 public enum CommissionMilestone {
     TIER_1(1, 5, 100_000, 20, true, false, false, false, false, false),
     TIER_2(2, 25, 200_000, 30, false, false, false, false, false, false),

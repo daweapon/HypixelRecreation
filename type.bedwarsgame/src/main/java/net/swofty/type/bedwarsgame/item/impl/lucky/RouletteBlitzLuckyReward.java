@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.damage.Damage;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Lucky Block reward that deals heavy damage to a random enemy player.
 public class RouletteBlitzLuckyReward extends LuckyReward {
     public RouletteBlitzLuckyReward() {
         super("Roulette Blitz");

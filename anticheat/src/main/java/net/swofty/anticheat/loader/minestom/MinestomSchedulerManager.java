@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Minestom-backed scheduler implementation using Minestom's tick-based task scheduler.
 public class MinestomSchedulerManager extends SwoftySchedulerManager {
     private final Map<Runnable, Integer> activeTasks = new HashMap<>();
 

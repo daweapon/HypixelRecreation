@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Getter
+// The playable Ravengard classes, with their display info, lore, base stats, and default abilities.
 public enum RavengardClass {
     KNIGHT("Knight", '\uE226'),
     WARRIOR("Warrior", '\uE228'),

@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// NPC for Melody in The Park's Savanna Woodland, drives the harp-crafting Acacia Logs questline.
 public class NPCMelody extends HypixelNPC {
 
 	public NPCMelody() {

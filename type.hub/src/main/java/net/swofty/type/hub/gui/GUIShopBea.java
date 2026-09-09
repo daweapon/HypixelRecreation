@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.shop.type.ItemShopPrice;
 
 import java.util.List;
 
+// Shop GUI for Bea in the Hub, selling Bee pets of various rarities for coins and coal/gold blocks.
 public class GUIShopBea extends ShopView {
     public GUIShopBea() {
         super("Pea", DEFAULT);

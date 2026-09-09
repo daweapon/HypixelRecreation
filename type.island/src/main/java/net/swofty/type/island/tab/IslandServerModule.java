@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+// Tablist module showing Island server info and the status of each active minion.
 public class IslandServerModule extends TablistModule {
 
     @Override

@@ -1,5 +1,6 @@
 package net.swofty.dungeons;
 
+// Manual test/demo entry point that generates a sample dungeon and prints its layout and generation time.
 public class DungeonsTest {
     static void main(String[] args) {
         DungeonsData data = new DungeonsData(5, 5)

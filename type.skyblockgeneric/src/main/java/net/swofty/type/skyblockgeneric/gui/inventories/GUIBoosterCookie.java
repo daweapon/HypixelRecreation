@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// GUI confirming consumption of a Booster Cookie to extend its buff duration and grant Bits
 public class GUIBoosterCookie extends HypixelInventoryGUI {
     public GUIBoosterCookie() {
         super(Text.key("gui_misc.booster_cookie.title"), InventoryType.CHEST_3_ROW);

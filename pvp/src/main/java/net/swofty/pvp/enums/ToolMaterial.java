@@ -5,6 +5,7 @@ import net.minestom.server.item.Material;
 import java.util.HashMap;
 import java.util.Map;
 
+// Vanilla tool materials and their mining level/speed and base attack damage.
 public enum ToolMaterial {
 	WOOD(0, 2.0F, 0.0F, Material.WOODEN_SWORD, Material.WOODEN_SHOVEL, Material.WOODEN_PICKAXE, Material.WOODEN_AXE, Material.WOODEN_HOE),
 	STONE(1, 4.0F, 1.0F, Material.STONE_SWORD, Material.STONE_SHOVEL, Material.STONE_PICKAXE, Material.STONE_AXE, Material.STONE_HOE),

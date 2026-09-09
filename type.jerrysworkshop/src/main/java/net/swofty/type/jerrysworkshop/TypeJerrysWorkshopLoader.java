@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Loader that wires up Jerry's Workshop server type: spawn point, tablist, presents, NPCs, and events.
 public class TypeJerrysWorkshopLoader implements SkyBlockTypeLoader {
     @Override
     public ServerType getType() {

@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Function;
 
+// Base class for a purchasable Bedwars item shop entry: price, currency, amount, and display.
 @Getter
 public abstract class ShopItem {
 

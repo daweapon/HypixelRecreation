@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 	permission = Rank.DEFAULT,
 	allowsConsole = false
 )
+// Command that lists and opens a GUI of the player's available game replays.
 public class ReplaysCommand extends HypixelCommand {
 
 	@Override

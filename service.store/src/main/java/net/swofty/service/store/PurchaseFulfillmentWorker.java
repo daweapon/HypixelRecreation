@@ -14,6 +14,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+// Background worker that periodically claims due store purchases and fulfills them via the proxy, retrying with backoff on failure.
 public class PurchaseFulfillmentWorker {
     private static final StorePurchaseFulfillmentProtocol PROTOCOL = new StorePurchaseFulfillmentProtocol();
     private static final int BATCH_SIZE = 50;

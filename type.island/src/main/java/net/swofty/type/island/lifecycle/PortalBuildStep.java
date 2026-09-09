@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleContext;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecyclePhase;
 import net.swofty.type.skyblockgeneric.user.island.IslandLifecycleStep;
 
+// Island lifecycle step that builds the Hub travel portal when the Island loads.
 public class PortalBuildStep implements IslandLifecycleStep {
     @Override
     public IslandLifecyclePhase phase() {

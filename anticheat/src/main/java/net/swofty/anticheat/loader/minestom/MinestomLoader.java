@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// Minestom-backed Loader implementation that registers packet handlers and bridges Minestom events to SwoftyPacket events.
 public class MinestomLoader extends Loader {
     @Override
     public SwoftySchedulerManager getSchedulerManager() {

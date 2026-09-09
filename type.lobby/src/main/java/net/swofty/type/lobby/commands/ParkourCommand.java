@@ -10,6 +10,7 @@ import net.swofty.type.lobby.LobbyTypeLoader;
 import net.swofty.type.lobby.parkour.LobbyParkourManager;
 import net.swofty.type.lobby.parkour.Parkour;
 
+// Lobby /parkour command for starting, resetting, and checkpointing the lobby parkour course.
 @CommandParameters(labels = "parkour", allowsConsole = false, description = "Parkour related commands", permission = Rank.DEFAULT, usage = "/parkour")
 public class ParkourCommand extends HypixelCommand {
 

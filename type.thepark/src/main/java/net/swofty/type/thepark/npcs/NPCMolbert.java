@@ -18,6 +18,7 @@ import net.swofty.type.thepark.TypeTheParkLoader;
 
 import java.util.List;
 
+// NPC for Molbert in The Park's Jungle Island, drives the multi-stage mole-trapping questline.
 public class NPCMolbert extends HypixelNPC {
 
 	public NPCMolbert() {

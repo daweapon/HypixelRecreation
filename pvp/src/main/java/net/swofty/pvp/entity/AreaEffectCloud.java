@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+// Custom lingering-potion area-of-effect cloud entity that periodically applies potion effects to nearby entities.
 public class AreaEffectCloud extends Entity {
     protected int duration;
     protected final int durationOnUse;

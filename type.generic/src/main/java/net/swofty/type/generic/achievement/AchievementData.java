@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.util.HashMap;
 import java.util.Map;
 
+// Per-player persisted achievement progress and tier-tracking state.
 @Getter
 @NoArgsConstructor
 public class AchievementData {

@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
+// Combines multiple PlacementRule instances into a single Minestom BlockPlacementRule for one block.
 public class MultiplePlacementRules extends BlockPlacementRule {
     private final ArrayList<PlacementRule> blockPlacements = new ArrayList<>();
 

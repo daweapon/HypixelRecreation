@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Resolves the shopkeeper NPC appearance (skin/entity type) matching a player's selected shopkeeper skin collectible.
 public final class BedWarsShopkeeperAppearanceService {
 
     private static final String DEFAULT_SHOPKEEPER_ID = "blacksmith";

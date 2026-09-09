@@ -15,6 +15,7 @@ import net.swofty.type.bedwarsgame.shop.TeamUpgradeTier;
 
 import java.util.List;
 
+// Team upgrade granting permanent Protection enchantment on all worn armor.
 public class ReinforcedArmorUpgrade extends TeamUpgrade {
 
 	public ReinforcedArmorUpgrade() {

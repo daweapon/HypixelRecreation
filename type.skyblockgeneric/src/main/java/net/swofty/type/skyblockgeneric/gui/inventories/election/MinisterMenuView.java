@@ -19,6 +19,7 @@ import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI showing the current SkyBlock minister and their active perk
 public class MinisterMenuView extends StatelessView {
 
     @Override

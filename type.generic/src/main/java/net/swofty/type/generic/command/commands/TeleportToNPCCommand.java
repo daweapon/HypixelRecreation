@@ -17,6 +17,7 @@ import net.swofty.type.generic.user.categories.Rank;
     description = "Teleports you to the specified NPC.",
     allowsConsole = false
 )
+// Staff command to teleport the sender to a named registered NPC.
 public class TeleportToNPCCommand extends HypixelCommand {
 
     @Override

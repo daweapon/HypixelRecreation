@@ -1,5 +1,6 @@
 package net.swofty.pvp.utils;
 
+// Utility for encoding/providing the ambient/particles/icon bitflags used by potion effects.
 public class PotionFlags {
 	public static byte create(boolean ambient, boolean particles, boolean icon) {
 		byte flags = 0;

@@ -14,6 +14,7 @@ import java.time.Instant;
 import java.util.Optional;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that validates and issues a new punishment against a player, then notifies the proxy to enforce it.
 public class PunishPlayerEndpoint implements RedisMessageHandler
         <PunishPlayerServiceProtocol.PunishPlayerMessage,
                 PunishPlayerServiceProtocol.PunishPlayerResponse> {

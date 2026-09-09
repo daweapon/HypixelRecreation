@@ -13,6 +13,7 @@ import net.swofty.type.generic.user.categories.Rank;
 		usage = "/velocity <player> <x> <y> <z>",
 		permission = Rank.STAFF,
 		allowsConsole = false)
+// Staff command to directly set an entity's velocity vector, for testing knockback/movement.
 public class SetVelocityCommand extends HypixelCommand {
 
 	@Override

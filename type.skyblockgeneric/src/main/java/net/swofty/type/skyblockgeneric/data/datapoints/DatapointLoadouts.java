@@ -9,6 +9,8 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+// Persists a player's gear loadouts, equipment sets, and Heart of the Mountain/Forest tree slot
+// selections, including which loadout is currently equipped.
 public class DatapointLoadouts extends SkyBlockDatapoint<DatapointLoadouts.LoadoutsData> {
     public static final int LOADOUT_COUNT = 36;
     public static final int EQUIPMENT_SET_COUNT = 18;

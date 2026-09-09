@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Applies charming pet loot rolls and hunting-attribute healing when a player kills a SkyBlock mob
 public class ActionCharmingMobKill implements HypixelEventClass {
     private static final Map<UUID, Long> HEAL_COOLDOWN = new HashMap<>();
 

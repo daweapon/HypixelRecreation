@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import java.util.Set;
 
+// Minestom BlockHandler for sign blocks; preserves waxed state and front/back text NBT tags.
 public final class SignBlockHandler implements BlockHandler {
     public static final Key KEY = Key.key("minecraft:sign");
 

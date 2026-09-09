@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// A player's complete friends-list document: their friends and settings, with lookup/mutation helpers.
 public class FriendData {
     private static final Serializer<FriendData> SERIALIZER = new JacksonSerializer<>(FriendData.class);
 

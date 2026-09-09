@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 
 @Setter
 @Getter
+// Base class for a single named, string-serializable piece of item metadata, with a registry of all discovered subclasses.
 public abstract class ItemAttribute<T> {
     private static final ArrayList<ItemAttribute> attributes = new ArrayList<>();
 

@@ -12,6 +12,7 @@ import org.tinylog.Logger;
 import java.util.UUID;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that reconciles a departing player's escrowed bid: refunds them and promotes the next highest bidder if needed.
 public class EndpointPlayerLeftAuction implements RedisMessageHandler<
         PlayerLeftAuctionProtocol.PlayerLeftMessage,
         PlayerLeftAuctionProtocol.PlayerLeftResponse> {

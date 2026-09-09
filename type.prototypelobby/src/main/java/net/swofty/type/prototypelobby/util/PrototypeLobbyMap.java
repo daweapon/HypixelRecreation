@@ -3,6 +3,7 @@ package net.swofty.type.prototypelobby.util;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.type.generic.utility.AbstractMapSystem;
 
+// Renders the Prototype Lobby's map image across item frames.
 public class PrototypeLobbyMap extends AbstractMapSystem {
     @Override
     protected AbstractMapSystem.MapConfiguration getConfiguration() {

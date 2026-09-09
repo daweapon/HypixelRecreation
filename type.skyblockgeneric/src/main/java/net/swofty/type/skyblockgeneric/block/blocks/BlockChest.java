@@ -25,6 +25,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// Custom block behaviour for chests: opens the chest GUI on interact and drops contents on break.
 public class BlockChest implements CustomSkyBlockBlock, BlockInteractable, BlockBreakable {
     @Override
     public @NonNull Block getDisplayMaterial() {

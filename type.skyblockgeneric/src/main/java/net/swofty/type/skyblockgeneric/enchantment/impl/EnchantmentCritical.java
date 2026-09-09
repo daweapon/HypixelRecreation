@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Critical enchantment: increases critical damage.
 public class EnchantmentCritical implements Ench, EnchFromTable {
 
     public static final int[] MULTIPLIERS = new int[]{10, 20, 30, 40, 50, 70, 100};

@@ -16,6 +16,7 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
+// Resolves SkyBlock-domain markup tags (glyphs, stats, rarities, separators, bars, and custom registered tags) into Components.
 final class TextDomain {
 
     private static final Map<String, Function<String, Component>> REGISTERED = new ConcurrentHashMap<>();

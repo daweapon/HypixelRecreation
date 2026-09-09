@@ -7,6 +7,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts Minestom's client held-item-change packet into a HeldItemChangePacket.
 public class MinestomHandlerHeldItemChangePacket
         extends LoaderPacketHandler<ClientHeldItemChangePacket> {
 

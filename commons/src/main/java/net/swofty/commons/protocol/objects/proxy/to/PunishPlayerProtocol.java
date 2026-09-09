@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 
+// Redis RPC protocol instructing the proxy to apply a punishment (ban/mute/warning) to an online player.
 public class PunishPlayerProtocol extends RedisProtocol<
         PunishPlayerProtocol.Request,
         PunishPlayerProtocol.Response> {

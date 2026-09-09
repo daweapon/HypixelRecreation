@@ -20,6 +20,7 @@ import org.bson.Document;
 import java.util.List;
 import java.util.UUID;
 
+// GUI for confirming creation of a new SkyBlock (or Ironman) profile
 public class GUIProfileCreate extends StatelessView {
     private final net.swofty.type.skyblockgeneric.user.ProfileMode mode;
 
@@ -52,7 +53,7 @@ public class GUIProfileCreate extends StatelessView {
                         <7>You can switch between profiles.
 
                         <b>You are creating a SOLO profile!
-                        <b>Use /coopadd \\<name\\> to play with friends!
+                        <b>Use /coopadd \\<name> to play with friends!
                         <e>Click to confirm new profile!""",
                         profileName, mode.getDisplayName()),
                 (click, c) -> {

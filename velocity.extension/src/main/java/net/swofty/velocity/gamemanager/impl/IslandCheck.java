@@ -18,6 +18,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+// Balance strategy that routes a player to whichever island server already hosts their active profile's island, if any.
 public class IslandCheck extends BalanceConfiguration {
     private static final long LOOKUP_TIMEOUT_MILLIS = 3000;
 

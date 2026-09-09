@@ -27,6 +27,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 
 import java.util.UUID;
 
+// Handles Bedwars custom item interactions (fireballs, projectiles, block placement restrictions).
 public class ActionGameCustomItems implements HypixelEventClass {
 
 	private static void handleFireballExplosion(FireballProjectile fireball) {

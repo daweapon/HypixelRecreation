@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Expertise enchantment: grants Fishing Wisdom per sea creature kill and Sea Creature Chance based on tier.
 public class EnchantmentExpertise implements Ench {
     private static final double[] SEA_CREATURE_CHANCE_BONUS = {
         0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0

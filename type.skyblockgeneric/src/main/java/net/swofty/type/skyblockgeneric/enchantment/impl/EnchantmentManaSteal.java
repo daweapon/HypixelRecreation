@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Mana Steal enchantment: regains a percentage of max mana on hit; conflicts with Life Steal and Drain.
 public class EnchantmentManaSteal implements Ench, EnchFromTable, DamageEventEnchant, ConflictingEnch {
 
     public static final double[] MANA_REGAIN_PERCENTAGES = new double[]{0.0025, 0.005, 0.0075};

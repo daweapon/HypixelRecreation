@@ -14,6 +14,7 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.List;
 
+// NPC for Gustave in The Park's Spruce Woods, hosts the Woods Racing challenge and its reward tiers.
 public class NPCGustave extends HypixelNPC {
 
 	public NPCGustave() {

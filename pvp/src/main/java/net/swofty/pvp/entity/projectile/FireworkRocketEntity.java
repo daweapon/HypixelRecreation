@@ -40,6 +40,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Firework rocket projectile that flies, optionally slides, and explodes to deal splash damage and knockback.
 public class FireworkRocketEntity extends CustomEntityProjectile {
 
     private static final @NotNull BoundingBox POINT_BOX = new BoundingBox(0, 0, 0);

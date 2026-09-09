@@ -8,6 +8,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
+// MongoDB accessor exposing the collection of purchased store entitlements per player.
 public final class StoreEntitlementsDatabase {
     private static final String COLLECTION = "store-player-entitlements";
 

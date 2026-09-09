@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Item attribute tracking Hot Potato Book / Fuming Potato Book applications and their stat bonuses per item.
 public class ItemAttributeHotPotatoBookData extends ItemAttribute<ItemAttributeHotPotatoBookData.HotPotatoBookData> {
 
     @Override

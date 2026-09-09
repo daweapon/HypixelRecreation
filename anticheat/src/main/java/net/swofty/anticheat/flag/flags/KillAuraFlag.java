@@ -7,6 +7,7 @@ import net.swofty.anticheat.math.Pos;
 
 import java.util.*;
 
+// Detects killaura by analyzing multi-target attacks, bad attack angles, perfect hitbox centering, and attack rhythm.
 public class KillAuraFlag extends Flag {
     // Track attack patterns per player
     private static final Map<UUID, AttackData> attackData = new HashMap<>();

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: notifies the target player that they received a new friend request.
 public final class FriendRequestReceivedResponseEvent extends FriendResponseEvent {
     private static final Serializer<FriendRequestReceivedResponseEvent> SERIALIZER =
             new JacksonSerializer<>(FriendRequestReceivedResponseEvent.class);

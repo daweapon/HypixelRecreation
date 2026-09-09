@@ -15,6 +15,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// Persists a player's storage system as a list of paged slots, each holding its own item array
+// and display icon.
 public class DatapointStorage extends SkyBlockDatapoint<DatapointStorage.PlayerStorage> {
     private static final Serializer<DatapointStorage.PlayerStorage> serializer = new Serializer<>() {
         @Override

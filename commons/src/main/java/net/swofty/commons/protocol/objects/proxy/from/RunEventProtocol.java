@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 
+// Redis RPC protocol instructing a server to run a named ProxyUnderstandableEvent for a player with serialized event data.
 public class RunEventProtocol extends RedisProtocol<
         RunEventProtocol.Request,
         RunEventProtocol.Response> {

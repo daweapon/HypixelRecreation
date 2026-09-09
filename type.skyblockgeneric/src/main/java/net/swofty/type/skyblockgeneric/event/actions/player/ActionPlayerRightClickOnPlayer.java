@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIViewPlayerProfile;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Opens a player's profile GUI when another player right-clicks them
 public class ActionPlayerRightClickOnPlayer implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

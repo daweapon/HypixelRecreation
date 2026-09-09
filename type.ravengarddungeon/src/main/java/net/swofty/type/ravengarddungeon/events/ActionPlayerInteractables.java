@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.ravengarddungeon.interactables.InteractableRegistry;
 
+// Forwards player interactions with dungeon interactable entities (and inventory closes) to the InteractableRegistry.
 public class ActionPlayerInteractables implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Looting enchantment: increases the chance a monster drops an item.
 public class EnchantmentLooting implements Ench, EnchFromTable {
     public static final int[] MULTIPLIERS = new int[]{15, 30, 45, 60, 75};
 

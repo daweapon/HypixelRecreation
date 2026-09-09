@@ -7,6 +7,7 @@ import net.swofty.commons.text.Text;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Resolves the display lore lines for a collectible, from a category translation key or a static description list.
 public final class CollectibleDescriptionService {
 
     public static List<Text> resolveLore(CollectibleDefinition definition) {

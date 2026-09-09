@@ -17,6 +17,7 @@ import net.swofty.type.generic.gui.inventory.Inventories;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Interactable dungeon loot satchel (dead body): shows a rising skull particle effect and opens to reveal rolled loot.
 public final class DungeonSatchel extends DungeonInteractable {
     private static final String CLOSED_MODEL = "hypixel_ravengard:item/gameplay/lootbags/lootbag_2";
     private static final String OPEN_MODEL = "hypixel_ravengard:item/gameplay/lootbags/lootbag_2_open";

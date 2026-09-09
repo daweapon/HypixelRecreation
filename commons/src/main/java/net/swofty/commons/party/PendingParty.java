@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 import java.util.UUID;
 
+// Represents an outstanding party invite from a leader to an invitee, before the party is confirmed.
 public record PendingParty(UUID resultPartyUUID, UUID invitee, UUID leader) implements Party {
 
     @JsonCreator

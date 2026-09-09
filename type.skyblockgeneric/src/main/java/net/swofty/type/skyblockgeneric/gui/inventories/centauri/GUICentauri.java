@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUICreative;
 
+// Developer/cheat menu linking to the creative item list, coin generator, and toy box
 public final class GUICentauri implements View<GUICentauri.State> {
     @Override
     public ViewConfiguration<State> configuration() {

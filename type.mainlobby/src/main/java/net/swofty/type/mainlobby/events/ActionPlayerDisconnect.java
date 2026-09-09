@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.mainlobby.MainLobbyScoreboard;
 
+// Clears a player's cached Main Lobby scoreboard on disconnect.
 public class ActionPlayerDisconnect implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

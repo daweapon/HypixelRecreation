@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+// GUI for choosing the quantity when placing an instant or limit bazaar order
 public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
     private static final DecimalFormat F = new DecimalFormat("#,###.##");
 

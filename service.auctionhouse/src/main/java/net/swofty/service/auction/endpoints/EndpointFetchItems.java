@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that fetches, filters, and sorts auction listings for a category.
 public class EndpointFetchItems implements RedisMessageHandler<
         AuctionFetchItemsProtocol.AuctionFetchItemsMessage,
         AuctionFetchItemsProtocol.AuctionFetchItemsResponse> {
@@ -28,7 +29,15 @@ public class EndpointFetchItems implements RedisMessageHandler<
         AuctionsFilter filter = messageObject.filter();
         AuctionCategories category = messageObject.category();
 
-        List<Document> results = AuctionService.cacheService.getAuctions(category.toString(), filter);
+        List<Document> results = new ArrayList<>();
+        for (Document document : AuctionService.cacheService.getAuctions(category.toString(), filter)) {
+            try {
+                AuctionItem.fromDocument(document);
+                results.add(document);
+            } catch (RuntimeException invalid) {
+                System.err.println("Skipping unreadable auction " + document.get("_id"));
+            }
+        }
 
         if (results.isEmpty()) {
             return new AuctionFetchItemsProtocol.AuctionFetchItemsResponse(new ArrayList<>(), true, null);
@@ -37,18 +46,10 @@ public class EndpointFetchItems implements RedisMessageHandler<
         // Sort according to sorting
         switch (sorting) {
             case HIGHEST_BID:
-                results.sort((o1, o2) -> {
-                    int price1 = o1.getInteger("starting-price");
-                    int price2 = o2.getInteger("starting-price");
-                    return Integer.compare(price2, price1);
-                });
+                results.sort((o1, o2) -> Long.compare(currentPrice(o2), currentPrice(o1)));
                 break;
             case LOWEST_BID:
-                results.sort((o1, o2) -> {
-                    int price1 = o1.getInteger("starting-price");
-                    int price2 = o2.getInteger("starting-price");
-                    return Integer.compare(price1, price2);
-                });
+                results.sort((o1, o2) -> Long.compare(currentPrice(o1), currentPrice(o2)));
                 break;
             case ENDING_SOON:
                 results.sort((o1, o2) -> {
@@ -61,7 +62,7 @@ public class EndpointFetchItems implements RedisMessageHandler<
                 results.sort((o1, o2) -> {
                     int bids1 = o1.getList("bids", String.class).size();
                     int bids2 = o2.getList("bids", String.class).size();
-                    return Integer.compare(bids1, bids2);
+                    return Integer.compare(bids2, bids1);
                 });
                 break;
         }
@@ -76,5 +77,17 @@ public class EndpointFetchItems implements RedisMessageHandler<
             }
         }
         return new AuctionFetchItemsProtocol.AuctionFetchItemsResponse(items, true, null);
+    }
+
+    private static long currentPrice(Document document) {
+        List<String> bids = document.getList("bids", String.class);
+        if (bids != null && !bids.isEmpty()) {
+            long highest = Long.MIN_VALUE;
+            for (String bid : bids) {
+                highest = Math.max(highest, AuctionItem.Bid.fromString(bid).value());
+            }
+            return highest;
+        }
+        return ((Number) document.get("starting-price")).longValue();
     }
 }

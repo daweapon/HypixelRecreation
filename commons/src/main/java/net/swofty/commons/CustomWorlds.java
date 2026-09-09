@@ -2,6 +2,7 @@ package net.swofty.commons;
 
 import java.nio.file.Path;
 
+// Enumerates the pre-built Polar world files shipped with the server and their on-disk paths.
 public enum CustomWorlds {
 	SKYBLOCK_ISLAND_TEMPLATE("hypixel_skyblock_island_template"),
 	SKYBLOCK_HUB("hypixel_skyblock_hub"),

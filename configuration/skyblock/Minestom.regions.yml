@@ -685,12 +685,12 @@ regions:
     serverType: SKYBLOCK_HUB
   - id: farm
     type: FARM
-    x1: 28
+    x1: 20
     y1: 66
-    z1: -74
+    z1: -65
     x2: 107
     y2: 106
-    z2: -153
+    z2: -190
     serverType: SKYBLOCK_HUB
   - id: fishing_outpost
     type: FISHING_OUTPOST

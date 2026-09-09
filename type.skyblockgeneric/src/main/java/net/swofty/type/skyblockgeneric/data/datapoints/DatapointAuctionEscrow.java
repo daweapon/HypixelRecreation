@@ -1,6 +1,5 @@
 package net.swofty.type.skyblockgeneric.data.datapoints;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import net.swofty.commons.protocol.Serializer;
@@ -8,6 +7,7 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import org.json.JSONObject;
 
+// Persists the item/price/duration currently staged in a player's auction-creation escrow slot.
 public class DatapointAuctionEscrow extends SkyBlockDatapoint<DatapointAuctionEscrow.AuctionEscrow> {
 
     public DatapointAuctionEscrow(String key, DatapointAuctionEscrow.AuctionEscrow value) {
@@ -23,6 +23,8 @@ public class DatapointAuctionEscrow extends SkyBlockDatapoint<DatapointAuctionEs
                 obj.put("price", value.getPrice());
                 obj.put("duration", value.getDuration());
                 obj.put("bin", value.isBin());
+                obj.put("pendingCreation", value.getPendingCreation());
+                obj.put("pendingFee", value.getPendingFee());
                 return obj.toString();
             }
 
@@ -30,20 +32,20 @@ public class DatapointAuctionEscrow extends SkyBlockDatapoint<DatapointAuctionEs
             public AuctionEscrow deserialize(String json) {
                 JSONObject obj = new JSONObject(json);
 
-                if (obj.getString("item").isEmpty()) {
-                    return new AuctionEscrow(null, obj.getLong("price"), obj.getLong("duration"), obj.getBoolean("bin"));
-                }
-
-                return new AuctionEscrow(
-                        new SkyBlockItem(obj.getString("item")),
-                        obj.getLong("price"),
-                        obj.getLong("duration"),
-                        obj.getBoolean("bin"));
+                AuctionEscrow value = new AuctionEscrow(
+                        obj.getString("item").isEmpty() ? null : new SkyBlockItem(net.swofty.commons.skyblock.item.UnderstandableSkyBlockItem.deserialize(obj.getString("item"))),
+                        obj.getLong("price"), obj.getLong("duration"), obj.getBoolean("bin"));
+                value.setPendingCreation(obj.optString("pendingCreation", null));
+                value.setPendingFee(obj.optLong("pendingFee", 0));
+                return value;
             }
 
             @Override
             public AuctionEscrow clone(AuctionEscrow value) {
-                return new AuctionEscrow(value.getItem(), value.getPrice(), value.getDuration(), value.isBin());
+                AuctionEscrow copy = new AuctionEscrow(value.getItem(), value.getPrice(), value.getDuration(), value.isBin());
+                copy.setPendingCreation(value.getPendingCreation());
+                copy.setPendingFee(value.getPendingFee());
+                return copy;
             }
         });
     }
@@ -58,11 +60,23 @@ public class DatapointAuctionEscrow extends SkyBlockDatapoint<DatapointAuctionEs
 
     @Setter
     @Getter
-    @AllArgsConstructor
     public static class AuctionEscrow {
         private SkyBlockItem item;
         private long price;
         private long duration;
         private boolean isBin;
+        private String pendingCreation;
+        private long pendingFee;
+
+        public AuctionEscrow(SkyBlockItem item, long price, long duration, boolean isBin) {
+            this.item = item;
+            this.price = price;
+            this.duration = duration;
+            this.isBin = isBin;
+        }
+
+        public boolean isPending() {
+            return pendingCreation != null;
+        }
     }
 }

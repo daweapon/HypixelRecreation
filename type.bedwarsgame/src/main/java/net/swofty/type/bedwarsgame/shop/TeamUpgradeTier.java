@@ -2,6 +2,7 @@ package net.swofty.type.bedwarsgame.shop;
 
 import lombok.Getter;
 
+// A single purchasable level of a team upgrade: its price, currency, and description.
 @Getter
 public class TeamUpgradeTier {
 	private final int level;

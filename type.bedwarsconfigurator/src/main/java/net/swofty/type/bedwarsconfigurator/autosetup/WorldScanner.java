@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
+// Scans a Bedwars map's world region to auto-detect beds, generators, and other map features.
 public class WorldScanner {
 
     private final Instance instance;

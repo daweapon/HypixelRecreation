@@ -22,6 +22,7 @@ import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.stream.Stream;
 
+// Integrates the Spark profiler into this Minestom server: bootstraps the SparkPlatform, registers the /spark command, and wires platform hooks (ping, tick, logging).
 public final class Spark implements SparkPlugin {
 
     private static final @NotNull Logger LOGGER = LoggerFactory.getLogger(Spark.class);

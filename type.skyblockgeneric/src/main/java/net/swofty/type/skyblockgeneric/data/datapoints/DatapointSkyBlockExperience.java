@@ -18,6 +18,8 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+// Persists a player's completed SkyBlock XP causes and current emblem, and computes total XP,
+// level, and progress toward the next SkyBlock level.
 public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyBlockExperience.PlayerSkyBlockExperience> {
     private static final Serializer<PlayerSkyBlockExperience> serializer = new Serializer<>() {
         @Override

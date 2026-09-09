@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+// Friend-system response event: confirms one of a player's friend-system settings was toggled.
 public final class FriendSettingToggledResponseEvent extends FriendResponseEvent {
     private static final Serializer<FriendSettingToggledResponseEvent> SERIALIZER =
             new JacksonSerializer<>(FriendSettingToggledResponseEvent.class);

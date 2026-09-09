@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 
+// Item attribute storing a fishing rod's equipped line.
 public class ItemAttributeFishingLine extends ItemAttribute<String> {
     @Override
     public String getKey() {

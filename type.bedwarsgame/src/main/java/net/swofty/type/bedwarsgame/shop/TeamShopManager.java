@@ -14,6 +14,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+// Registers and looks up the team-wide upgrades available in the Bedwars team shop.
 public class TeamShopManager {
 
 	@Getter

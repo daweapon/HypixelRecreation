@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Watches raw client movement packets to detect when an AFK-limboed player moves enough to be returned to a lobby.
 public class PlayerMovementListener implements PacketListener {
 
     private static final class MovementData {

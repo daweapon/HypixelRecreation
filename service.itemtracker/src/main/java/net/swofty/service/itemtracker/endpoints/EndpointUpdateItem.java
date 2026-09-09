@@ -8,6 +8,7 @@ import net.swofty.service.itemtracker.TrackedItemsDatabase;
 import java.util.UUID;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that creates a tracked item record if missing, or updates its attached-player history if it already exists.
 public class EndpointUpdateItem implements RedisMessageHandler<
         TrackedItemUpdateProtocol.TrackedItemUpdateMessage,
         TrackedItemUpdateProtocol.TrackedItemUpdateResponse> {

@@ -5,6 +5,7 @@ import org.bson.Document;
 import java.time.Instant;
 import java.util.List;
 
+// A recorded store purchase and its entitlements to be fulfilled, as loaded from MongoDB.
 public record StorePurchase(
         String id,
         String playerUuid,

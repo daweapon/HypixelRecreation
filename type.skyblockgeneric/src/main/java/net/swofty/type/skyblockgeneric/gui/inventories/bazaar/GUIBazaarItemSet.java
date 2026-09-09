@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.bazaar;
 
+import net.minestom.server.component.DataComponents;
 import net.minestom.server.event.inventory.InventoryCloseEvent;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.Inventory;
@@ -18,6 +19,7 @@ import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarItemSet;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.EnchantedComponent;
+import net.swofty.type.skyblockgeneric.item.components.ItemModelComponent;
 import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -27,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
+// GUI listing the items within one bazaar item set, arranged for the set's size
 public class GUIBazaarItemSet extends HypixelInventoryGUI implements RefreshingGUI {
     private static final Map<Integer, int[]> SLOTS = Map.of(
             1, new int[]{13},
@@ -141,9 +144,15 @@ public class GUIBazaarItemSet extends HypixelInventoryGUI implements RefreshingG
                                 lore.add(Text.literal(" "));
                                 lore.add(Text.key("gui_bazaar.item_set.click_to_view"));
 
-                                return ItemStacks.item(itemType.material, 1,
+                                ItemStack.Builder errorBuilder = ItemStacks.item(itemType.material, 1,
                                         Text.of("<color:{}>{}", itemType.rarity.getColor(), itemType.getDisplayName()),
                                         lore);
+                                SkyBlockItem errorItem = new SkyBlockItem(itemType);
+                                if (errorItem.hasComponent(ItemModelComponent.class)) {
+                                    errorBuilder = errorBuilder.set(DataComponents.ITEM_MODEL,
+                                            errorItem.getComponent(ItemModelComponent.class).getItemModel());
+                                }
+                                return errorBuilder;
                             }
                         });
                         return null;
@@ -224,6 +233,13 @@ public class GUIBazaarItemSet extends HypixelInventoryGUI implements RefreshingG
                     item.getAmount(), name, List.of());
         } else {
             builder = ItemStacks.item(item.getMaterial(), item.getAmount(), name, List.of());
+        }
+
+        // ItemStacks.item()/.head() only sets the base material/skull texture - a custom
+        // ITEM_MODEL (used by every non-skull custom-icon item) is otherwise silently ignored,
+        // leaving the bazaar listing showing the plain vanilla material instead of its real icon.
+        if (item.hasComponent(ItemModelComponent.class)) {
+            builder = builder.set(DataComponents.ITEM_MODEL, item.getComponent(ItemModelComponent.class).getItemModel());
         }
 
         if (item.hasComponent(EnchantedComponent.class)) return ItemStacks.enchanted(builder);

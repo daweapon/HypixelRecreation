@@ -8,6 +8,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts between Minestom's rotation-only packet and a RotationPacket.
 public class MinestomHandlerRotationPacket
         extends LoaderPacketHandler<ClientPlayerRotationPacket> {
 

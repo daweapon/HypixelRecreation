@@ -8,6 +8,7 @@ import net.swofty.type.ravengardgeneric.item.RavengardItemType;
 import java.util.List;
 import java.util.Random;
 
+// Rolls a random Ravengard item as dungeon loot, weighting rarer items higher the further the loot source is from the map center.
 public final class DungeonLoot {
     private DungeonLoot() {
     }

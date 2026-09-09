@@ -8,6 +8,7 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.util.Map;
 
+// Serializes PlayerShopData to/from JSON for persistence.
 public class PlayerShopDataSerializer implements Serializer<PlayerShopData> {
     private final ObjectMapper mapper;
 

@@ -12,6 +12,7 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.utility.GameCountCache;
 
+// NPC that shows live Solo queue population and opens the Solo play GUI on click.
 public class NPCSolo extends HypixelNPC {
     public NPCSolo() {
         super(new HumanConfiguration() {

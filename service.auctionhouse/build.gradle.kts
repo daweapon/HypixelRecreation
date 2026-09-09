@@ -23,6 +23,7 @@ repositories {
 }
 
 dependencies {
+    testImplementation(libs.minestom)
     implementation(libs.caffeine)
     implementation(project(":service.generic"))
     implementation(project(":type.skyblockgeneric"))

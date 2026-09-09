@@ -14,6 +14,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+// Persists a player's Archery Practice minigame progress: their current difficulty level and
+// which targets they've hit in the active attempt.
 public class DatapointArcheryPractice extends SkyBlockDatapoint<DatapointArcheryPractice.ArcheryPracticeData> {
     private static final Pos ARCHERY_PRACTICE_HOLOGRAM_POS = new Pos(-56.5, 62, -82.5);
 

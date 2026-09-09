@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
 import java.util.Map;
 
+// Shop GUI for the Iron Forger, selling iron gear and ingots in the Gold Mine.
 public class GUIShopIronForger extends ShopView {
     public GUIShopIronForger() {
         super("Iron Forger", DEFAULT);

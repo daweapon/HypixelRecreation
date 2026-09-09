@@ -20,6 +20,7 @@ import java.util.Random;
 import java.util.UUID;
 import net.swofty.commons.text.Text;
 
+// Builds the in-game Bedwars tab list, including per-player skins and party obfuscation.
 public class BedWarsGameTabListModule extends TablistModule {
 
     @Override

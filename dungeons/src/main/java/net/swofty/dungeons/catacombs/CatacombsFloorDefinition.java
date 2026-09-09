@@ -6,6 +6,7 @@ import net.swofty.dungeons.catacombs.run.DungeonRunRules;
 
 import java.util.Set;
 
+// Full configuration for one floor+mode combination: boss, run rules, room counts, and allowed puzzles.
 public record CatacombsFloorDefinition(
         CatacombsFloor floor,
         CatacombsMode mode,

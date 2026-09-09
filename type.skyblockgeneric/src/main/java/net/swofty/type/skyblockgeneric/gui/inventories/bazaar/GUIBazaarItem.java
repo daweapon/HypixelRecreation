@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+// GUI for a single bazaar item: shows live buy/sell stats and links to order creation
 public class GUIBazaarItem extends HypixelInventoryGUI implements RefreshingGUI {
     private final ItemType itemType;
     private final boolean specialBazaar;

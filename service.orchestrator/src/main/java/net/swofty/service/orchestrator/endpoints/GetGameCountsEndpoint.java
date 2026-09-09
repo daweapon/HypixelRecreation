@@ -6,6 +6,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.service.orchestrator.OrchestratorCache;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that reports current player and game counts for a given server type/game type/map filter.
 public class GetGameCountsEndpoint implements RedisMessageHandler
         <GetGameCountsProtocol.GetGameCountsMessage,
                 GetGameCountsProtocol.GetGameCountsResponse> {

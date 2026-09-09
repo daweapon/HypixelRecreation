@@ -8,6 +8,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.stream.Stream;
 
+// NPC for Dusk in the Hub, who explains the Rune Pedestal for applying and combining runes
 public class NPCDusk extends HypixelNPC {
 
     public NPCDusk() {

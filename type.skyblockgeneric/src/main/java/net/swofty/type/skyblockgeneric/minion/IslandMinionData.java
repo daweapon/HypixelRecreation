@@ -21,6 +21,7 @@ import org.tinylog.Logger;
 import java.util.*;
 
 @Getter
+// Tracks all minions placed on an island, handling their initialization, storage, and per-minion state.
 public class IslandMinionData {
     private final SkyBlockIsland island;
     private final List<IslandMinion> minions = new ArrayList<>();

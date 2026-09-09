@@ -1,5 +1,6 @@
 package net.swofty.commons;
 
+// Words that should stay fully uppercase when normal-casing strings (see StringUtility.toNormalCase).
 public enum Acronym {
     TNT,
     ;

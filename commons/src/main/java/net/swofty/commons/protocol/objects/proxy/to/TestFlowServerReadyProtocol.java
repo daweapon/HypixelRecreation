@@ -4,6 +4,7 @@ import net.swofty.commons.protocol.JacksonSerializer;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 
+// Redis RPC protocol for a server to signal the proxy that it is ready for its assigned test flow.
 public class TestFlowServerReadyProtocol extends RedisProtocol<
         TestFlowServerReadyProtocol.Request,
         TestFlowServerReadyProtocol.Response> {

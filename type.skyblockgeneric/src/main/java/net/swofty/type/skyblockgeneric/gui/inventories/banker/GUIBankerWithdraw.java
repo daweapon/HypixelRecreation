@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// GUI for withdrawing coins from a player's bank account into their purse
 public class GUIBankerWithdraw extends HypixelInventoryGUI {
 
     public GUIBankerWithdraw() {

@@ -1,5 +1,6 @@
 package net.swofty.commons.protocol;
 
+// Base class for a typed Redis RPC protocol, pairing a request/response type with their serializers and a channel name.
 public abstract class RedisProtocol<T, R> {
     private final Serializer<T> serializer;
     private final Serializer<R> returnSerializer;

@@ -13,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
+// Plain data object for an API admin panel session: its id, auth code, and the staff member who authenticated it (if any).
 public class APIAdminDatabaseObject {
     public String sessionId;
     public String authCode;

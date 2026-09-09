@@ -16,6 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.SortedSet;
 
+// Reflectively swaps Velocity's channel initializers for ViaVersion-aware ones and reports supported protocol versions.
 public class SkyBlockViaInjector implements ViaInjector {
     public static final Method GET_PLAYER_INFO_FORWARDING_MODE = getPlayerInfoForwardingModeMethod();
 

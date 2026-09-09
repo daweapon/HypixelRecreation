@@ -92,6 +92,7 @@ public class ItemLore {
 		fillSoulbound(lore);
 		fillStatsWhenShot(lore);
 		fillUnfinished(lore);
+		fillBazaarPlaceholder(lore);
 		lore.section(LoreText.Sections.RARITY_FOOTER).line("{}", displayRarity(item, rarity));
 
 		this.stack = ItemStacks.lines(stack.builder(), lore.render())
@@ -443,6 +444,16 @@ public class ItemLore {
 				.line(Text.empty());
 	}
 
+	// Bazaar-catalog parity stub: item was added purely to match real Hypixel's bazaar listing,
+	// with no real drop source/recipe/use implemented yet.
+	private static void fillBazaarPlaceholder(LoreText lore) {
+		if (!lore.item().hasComponent(BazaarPlaceholderComponent.class)) return;
+
+		lore.section(LoreText.Sections.BAZAAR_PLACEHOLDER)
+				.line(Text.of("<c><l>ITEM NOT ADDED YET JUST FOR BAZAAR PLACEHOLDER"))
+				.line(Text.empty());
+	}
+
 	private static Text displayName(SkyBlockItem item, Material material) {
 		if (item.hasComponent(CustomDisplayNameComponent.class)) {
 			return item.getComponent(CustomDisplayNameComponent.class).getDisplayName(item);
@@ -465,7 +476,16 @@ public class ItemLore {
 
 	private static Text getConfiguredOrMaterialName(SkyBlockItem item, Material material) {
 		String name = item.getConfig() == null ? null : item.getConfig().getName();
-		return name == null ? Text.of("{}", Component.translatable(material)) : Text.parseLenient(name);
+		if (name != null) return Text.parseLenient(name);
+
+		// Component.translatable(material) only resolves client-side; any server code that
+		// flattens the name to plain text (e.g. SkyBlockItem.getDisplayName(), used by the bazaar
+		// GUI and chat messages) would otherwise print the raw key like "item.minecraft.wheat".
+		return Text.literal(materialDisplayName(material));
+	}
+
+	static String materialDisplayName(Material material) {
+		return StringUtility.toNormalCase(material.key().value());
 	}
 
 	private static Text reforgedName(SkyBlockItem item, Text displayName) {

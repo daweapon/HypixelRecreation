@@ -7,6 +7,7 @@ import net.swofty.anticheat.math.Pos;
 import java.util.UUID;
 
 @Getter
+// Event fired when a player attacks another entity, used by combat-related checks (e.g. reach, killaura).
 public class PlayerAttackEvent {
     private final SwoftyPlayer attacker;
     private final UUID targetUuid;

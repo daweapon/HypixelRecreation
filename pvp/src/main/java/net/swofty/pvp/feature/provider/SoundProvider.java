@@ -5,6 +5,7 @@ import net.kyori.adventure.sound.Sound;
 import net.swofty.pvp.feature.CombatFeature;
 import org.jetbrains.annotations.NotNull;
 
+// Combat feature abstracting how sounds are played to an audience, so playback can be customized or intercepted.
 public interface SoundProvider extends CombatFeature {
     SoundProvider DEFAULT = Audience::playSound;
 

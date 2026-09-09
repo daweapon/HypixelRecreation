@@ -9,6 +9,7 @@ import net.minestom.server.potion.PotionEffect;
 import java.util.HashMap;
 import java.util.Map;
 
+// Registry that registers all vanilla CombatPotionEffect instances and looks them up by PotionEffect.
 public class CombatPotionEffects {
 	private static final Map<PotionEffect, CombatPotionEffect> POTION_EFFECTS = new HashMap<>();
 

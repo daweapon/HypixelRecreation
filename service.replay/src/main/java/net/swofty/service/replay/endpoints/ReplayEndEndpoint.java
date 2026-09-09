@@ -9,6 +9,7 @@ import org.tinylog.Logger;
 
 import java.util.concurrent.TimeUnit;
 
+// Redis endpoint that ends a replay recording session and waits for it to be finalized and persisted.
 public class ReplayEndEndpoint implements RedisMessageHandler<
         ReplayEndProtocolObject.EndMessage,
         ReplayEndProtocolObject.EndResponse> {

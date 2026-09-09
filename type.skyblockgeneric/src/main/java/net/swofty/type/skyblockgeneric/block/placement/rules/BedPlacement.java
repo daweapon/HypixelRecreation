@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Part;
 
+// Placement rule for beds, placing both the foot and head halves in the direction the player is facing.
 public class BedPlacement extends PlacementRule {
 
     public BedPlacement(Block block) {

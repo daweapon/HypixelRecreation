@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Luck enchantment: increases the chance for monsters to drop their armor.
 public class EnchantmentLuck implements Ench, EnchFromTable {
     public static final int[] MULTIPLIERS = new int[]{5, 10, 15, 20, 25, 30, 35};
 

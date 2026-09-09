@@ -7,6 +7,7 @@ import net.swofty.commons.protocol.Serializer;
 import java.util.UUID;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for checking whether a player is currently in a party.
 public class IsPlayerInPartyProtocol extends RedisProtocol
         <IsPlayerInPartyProtocol.IsPlayerInPartyMessage,
                 IsPlayerInPartyProtocol.IsPlayerInPartyResponse> {

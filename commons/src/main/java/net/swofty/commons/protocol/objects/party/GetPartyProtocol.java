@@ -8,6 +8,7 @@ import net.swofty.commons.protocol.Serializer;
 import java.util.UUID;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for fetching the party a given member belongs to.
 public class GetPartyProtocol extends RedisProtocol
         <GetPartyProtocol.GetPartyMessage,
                 GetPartyProtocol.GetPartyResponse> {

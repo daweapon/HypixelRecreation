@@ -4,6 +4,7 @@ package net.swofty.type.skyblockgeneric.mission.missions.thepark.jungle;
 import net.minestom.server.event.player.PlayerTickEvent;
 import net.minestom.server.item.Material;
 import net.swofty.type.generic.event.EventNodes;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.SkyBlockProgressMission;
@@ -24,6 +25,10 @@ public class MissionCollectJungleLogs extends SkyBlockProgressMission {
 	@PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
 	public void onTick(PlayerTickEvent event) {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
+		// requireDataLoaded=false means this fires before the SkyBlock data guard runs, and a
+		// player entity can keep ticking briefly after a disconnect races their data unload -
+		// skip instead of throwing when that happens, since it was crashing TPS server-wide.
+		if (SkyBlockDataHandler.getUser(player) == null) return;
 		if (testTimes.containsKey(player.getUuid())) {
 			long lastTime = testTimes.get(player.getUuid());
 			if (System.currentTimeMillis() - lastTime < 650) {

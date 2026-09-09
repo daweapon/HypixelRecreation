@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.WallState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.BooleanState;
 import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 
+// Placement rule for fence gates, marking whether the gate sits between two walls.
 public class FenceGatePlacement extends PlacementRule {
 
     public FenceGatePlacement(Block block) {

@@ -27,6 +27,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+// Entry point that bootstraps the Bedwars map configurator server type, loading maps.json.
 public class TypeBedWarsConfiguratorLoader implements HypixelTypeLoader {
 	private static Gson gson;
 

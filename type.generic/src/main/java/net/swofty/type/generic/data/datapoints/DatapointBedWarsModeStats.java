@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Datapoint storing a player's per-mode BedWars statistics (wins, kills, streaks, and periodic reset timestamps).
 public class DatapointBedWarsModeStats extends Datapoint<BedWarsModeStats> {
 
 	public DatapointBedWarsModeStats(String key, BedWarsModeStats value) {

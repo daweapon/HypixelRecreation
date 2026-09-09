@@ -11,3 +11,10 @@ items:
     name: "Block Data Tool"
     components:
       - id: BLOCK_DATA_TOOL
+  - id: THE_MAX_STICK
+    material: stick
+    rarity: ADMIN
+    name: "THE MAX STICK"
+    components:
+      - id: INTERACTABLE
+        handler_id: THE_MAX_STICK_INTERACT

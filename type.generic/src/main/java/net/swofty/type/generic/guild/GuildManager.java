@@ -60,6 +60,11 @@ public class GuildManager {
         sendEventToService(event);
     }
 
+    public static void joinGuild(HypixelPlayer player, String guildName) {
+        GuildJoinRequestEvent event = new GuildJoinRequestEvent(player.getUuid(), guildName);
+        sendEventToService(event);
+    }
+
     public static void leaveGuild(HypixelPlayer player) {
         GuildLeaveRequestEvent event = new GuildLeaveRequestEvent(player.getUuid());
         sendEventToService(event);

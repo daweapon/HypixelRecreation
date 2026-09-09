@@ -4,6 +4,7 @@ import net.minestom.server.instance.block.Block;
 import net.minestom.server.instance.block.rule.BlockPlacementRule;
 import net.swofty.type.skyblockgeneric.block.placement.states.BlockState;
 
+// Base type for a single block-specific placement/update behaviour applied to a BlockState.
 public abstract class PlacementRule {
     private final Block block;
 

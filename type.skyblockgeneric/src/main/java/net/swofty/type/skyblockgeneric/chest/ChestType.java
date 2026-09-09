@@ -5,6 +5,7 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.instance.block.BlockFace;
 
+// Whether a chest is a single block or joined into a double chest, detected from adjacent blocks.
 public enum ChestType {
     SINGLE,
     DOUBLE;

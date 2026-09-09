@@ -6,6 +6,7 @@ import net.minestom.server.network.packet.server.play.BlockActionPacket;
 
 import java.util.Arrays;
 
+// The open/close lid animation for a chest, sent to nearby players as a block action packet.
 public enum ChestAnimationType {
     OPEN,
     CLOSE;

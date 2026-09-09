@@ -9,6 +9,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts between Minestom's client pong packet and a PingResponsePacket.
 public class MinestomHandlerPingResponsePacket
         extends LoaderPacketHandler<ClientPongPacket> {
 

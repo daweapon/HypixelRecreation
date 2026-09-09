@@ -7,6 +7,7 @@ import net.swofty.proxyapi.impl.ProxyUnderstandableEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @Getter
+// Fired when a player's item collection count changes; serializable for cross-server (proxy) propagation
 public class CollectionUpdateEvent implements PlayerInstanceEvent, ProxyUnderstandableEvent {
     private final SkyBlockPlayer player;
     private final ItemType itemType;

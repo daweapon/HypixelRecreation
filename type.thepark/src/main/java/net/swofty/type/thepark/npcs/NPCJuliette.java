@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// NPC for Juliette in The Park, receives Romero's gifts across the multi-stage romance questline.
 public class NPCJuliette extends HypixelNPC {
 
 	public NPCJuliette() {

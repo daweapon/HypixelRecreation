@@ -7,6 +7,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.velocity.SkyBlockVelocity;
 import net.swofty.velocity.gamemanager.TransferHandler;
 
+// "/limbo" command: explains Limbo to players stuck there, or otherwise transfers the player into Limbo.
 public class LimboCommand implements SimpleCommand {
 
     @Override

@@ -5,6 +5,7 @@ import net.minestom.server.item.Material;
 import java.util.List;
 import java.util.Map;
 
+// Immutable definition of a single collectible: identity, icon, category, rarity, and unlock requirement.
 public record CollectibleDefinition(
     String id,
     CollectibleGamemode gamemode,

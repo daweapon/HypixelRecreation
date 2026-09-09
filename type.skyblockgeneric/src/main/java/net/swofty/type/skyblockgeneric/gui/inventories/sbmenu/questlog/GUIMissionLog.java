@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+// GUI listing a player's active and completed missions
 public class GUIMissionLog extends StatelessView {
     private static final int[] MISSION_SLOTS = {
             11, 12, 13, 14, 15, 16,

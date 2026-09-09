@@ -11,6 +11,7 @@ import redis.clients.jedis.Jedis;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+// Redis-backed key/value store for a single island's profile data, keyed by profile UUID.
 public record IslandDatabase(String profileUuid) implements MongoDB {
 
     public static void connect(MongoClient client) {

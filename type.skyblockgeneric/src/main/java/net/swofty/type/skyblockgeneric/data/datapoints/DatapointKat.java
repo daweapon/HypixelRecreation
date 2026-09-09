@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+// Persists the pet a player currently has queued at Kat's pet-upgrade service and when it finishes.
 public class DatapointKat extends SkyBlockDatapoint<DatapointKat.PlayerKat> {
     public static Serializer<PlayerKat> serializer = new Serializer<>() {
         @Override

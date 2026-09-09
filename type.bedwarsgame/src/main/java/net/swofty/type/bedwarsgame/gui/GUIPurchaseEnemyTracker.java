@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+// GUI for purchasing a compass tracker targeting a specific enemy team.
 public class GUIPurchaseEnemyTracker extends StatelessView {
 
     private static final int TRACKER_PRICE = 2;

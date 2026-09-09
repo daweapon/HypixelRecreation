@@ -11,6 +11,7 @@ import net.minestom.server.potion.Potion;
 import net.minestom.server.potion.PotionEffect;
 import org.jetbrains.annotations.Nullable;
 
+// Arrow variant that applies a Glowing effect to whatever it hits.
 public class SpectralArrow extends AbstractArrow {
 	private static final ItemStack PICKUP_ITEM = ItemStack.of(Material.SPECTRAL_ARROW);
 	private int duration = 200;

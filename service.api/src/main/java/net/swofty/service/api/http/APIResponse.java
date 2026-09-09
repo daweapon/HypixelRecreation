@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import lombok.Getter;
 
 @Getter
+// Standard JSON response envelope (status, message, data) returned by public API HTTP endpoints.
 public class APIResponse {
     private StatusResponse status;
     private String message;

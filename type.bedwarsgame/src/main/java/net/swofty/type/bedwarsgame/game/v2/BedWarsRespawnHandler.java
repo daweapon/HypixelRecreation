@@ -22,6 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
+// Handles Bedwars respawn timers, gating respawn on whether the player's bed is still alive.
 @RequiredArgsConstructor
 public class BedWarsRespawnHandler implements RespawnHandler<BedWarsPlayer> {
     private static final int DEFAULT_RESPAWN_DELAY = 5;

@@ -15,6 +15,7 @@ import java.util.List;
 
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 
+// Villager NPC in the Barn on The Farming Islands, guides players through the Wheat Minion questline.
 public class VillagerFarmHand extends HypixelNPC {
     public VillagerFarmHand() {
         super(new VillagerConfiguration(){

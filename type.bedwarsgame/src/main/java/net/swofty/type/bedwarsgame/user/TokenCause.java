@@ -2,6 +2,7 @@ package net.swofty.type.bedwarsgame.user;
 
 import lombok.Getter;
 
+// Sources of Bedwars token gain (wins, kills, playtime) and their reward amounts.
 @Getter
 public enum TokenCause {
 	// WIN

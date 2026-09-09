@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Persists a player's item stash (non-stackable items, capped at ITEM_STASH_LIMIT) and material
+// stash (stackable items by type/count), with capacity and add/remove helpers.
 public class DatapointStash extends SkyBlockDatapoint<DatapointStash.PlayerStash> {
     public static final int ITEM_STASH_LIMIT = 720;
     public static final int ITEM_STASH_WARNING_THRESHOLD = 648; // 90% of 720

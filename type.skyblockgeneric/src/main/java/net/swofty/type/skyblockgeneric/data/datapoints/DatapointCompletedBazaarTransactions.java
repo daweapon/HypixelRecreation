@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// Persists a player's completed-but-unclaimed bazaar transactions (buys, sells, refunds, expired
+// orders) so they can be collected later, with helpers to query and mark them claimed.
 public class DatapointCompletedBazaarTransactions extends SkyBlockDatapoint<DatapointCompletedBazaarTransactions.PlayerCompletedBazaarTransactions> {
 
     private static final Serializer<PlayerCompletedBazaarTransactions> serializer = new Serializer<>() {

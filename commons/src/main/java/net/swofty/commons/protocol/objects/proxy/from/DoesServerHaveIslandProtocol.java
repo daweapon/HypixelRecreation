@@ -5,6 +5,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.Serializer;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for asking a SkyBlock island server whether it is currently hosting a given island.
 public class DoesServerHaveIslandProtocol extends RedisProtocol<
         DoesServerHaveIslandProtocol.Request,
         DoesServerHaveIslandProtocol.Response> {

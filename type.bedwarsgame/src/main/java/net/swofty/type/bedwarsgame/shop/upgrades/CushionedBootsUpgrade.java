@@ -17,6 +17,7 @@ import net.swofty.type.bedwarsgame.shop.TeamUpgradeTier;
 
 import java.util.List;
 
+// Team upgrade granting permanent Feather Falling on boots.
 public class CushionedBootsUpgrade extends TeamUpgrade {
 	public CushionedBootsUpgrade() {
 		super(

@@ -2,6 +2,8 @@ package net.swofty.type.skyblockgeneric.commands;
 
 import net.minestom.server.command.builder.arguments.ArgumentEnum;
 import net.minestom.server.command.builder.arguments.ArgumentType;
+import net.minestom.server.command.builder.arguments.minecraft.ArgumentEntity;
+import net.minestom.server.entity.Player;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
@@ -13,26 +15,46 @@ import java.util.Arrays;
 
 @CommandParameters(labels = "clearmissionset completemissionset",
         description = "Clears the mission set given",
-        usage = "/finishmissionset <set>",
+        usage = "/completemissionset <set> [player]",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class FinishMissionSetCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {
         ArgumentEnum<MissionSet> set = ArgumentType.Enum("set", MissionSet.class);
+        ArgumentEntity targetArgument = ArgumentType.Entity("player").onlyPlayers(true).singleEntity(true);
 
         command.addSyntax((sender, context) -> {
             if (!permissionCheck(sender)) return;
 
-            MissionSet missionSet = context.get(set);
-
-            Arrays.stream(missionSet.getMissions()).forEach(mission -> {
-                try {
-                    ((SkyBlockPlayer) sender).getMissionData().endMission(mission);
-                } catch (Exception e) {}
-            });
-
-            sender.sendMessage(Text.of("<a>Successfully finished mission set <e>{}", missionSet.name()));
+            completeMissionSet((SkyBlockPlayer) sender, context.get(set), (SkyBlockPlayer) sender);
         }, set);
+
+        command.addSyntax((sender, context) -> {
+            if (!permissionCheck(sender)) return;
+
+            Player target = context.get(targetArgument).findFirstPlayer(sender);
+            if (!(target instanceof SkyBlockPlayer skyBlockTarget)) {
+                sender.sendMessage(Text.of("<c>Could not find that player."));
+                return;
+            }
+
+            completeMissionSet((SkyBlockPlayer) sender, context.get(set), skyBlockTarget);
+        }, set, targetArgument);
+    }
+
+    private void completeMissionSet(SkyBlockPlayer sender, MissionSet missionSet, SkyBlockPlayer target) {
+        Arrays.stream(missionSet.getMissions()).forEach(mission -> {
+            try {
+                target.getMissionData().endMission(mission);
+            } catch (Exception ignored) {}
+        });
+
+        if (target == sender) {
+            sender.sendMessage(Text.of("<a>Successfully finished mission set <e>{}", missionSet.name()));
+        } else {
+            sender.sendMessage(Text.of("<a>Successfully finished mission set <e>{}<a> for <e>{}<a>.",
+                    missionSet.name(), target.getUsername()));
+        }
     }
 }

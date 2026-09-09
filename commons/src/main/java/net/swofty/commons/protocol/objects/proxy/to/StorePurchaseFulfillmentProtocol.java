@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+// Redis RPC protocol delivering a fulfilled store purchase and its entitlements to the proxy for processing.
 public class StorePurchaseFulfillmentProtocol
     extends RedisProtocol<StorePurchaseFulfillmentProtocol.Request, StorePurchaseFulfillmentProtocol.Response> {
 

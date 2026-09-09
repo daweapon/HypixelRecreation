@@ -43,6 +43,7 @@ import static net.kyori.adventure.text.format.NamedTextColor.*;
 import static net.kyori.adventure.text.format.TextDecoration.BOLD;
 
 // this is to patch a bug in Spark
+// Command module implementing "/spark activity": lists past Spark profiling activity (samples, heap dumps) as a paginated log.
 public class ActivityLogModule implements CommandModule, RowRenderer<Activity> {
 
     private final Pagination.Builder pagination = Pagination.builder()

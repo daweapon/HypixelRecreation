@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoulExchangeLevels;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for Tia the Fairy in the Hub, letting players exchange collected Fairy Souls for XP and backpack slots.
 public class GUITiaTheFairy extends HypixelInventoryGUI {
     public GUITiaTheFairy() {
         super("Fairy", InventoryType.CHEST_6_ROW);

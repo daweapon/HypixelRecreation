@@ -49,6 +49,7 @@ public final class LoreText {
         public static final String SOULBOUND = "soulbound";
         public static final String STATS_WHEN_SHOT = "stats_when_shot";
         public static final String UNFINISHED = "unfinished";
+        public static final String BAZAAR_PLACEHOLDER = "bazaar_placeholder";
         public static final String RARITY_FOOTER = "rarity_footer";
 
         private Sections() {
@@ -78,6 +79,7 @@ public final class LoreText {
             Sections.SOULBOUND, FOOTER_GROUP,
             Sections.STATS_WHEN_SHOT, FOOTER_GROUP,
             Sections.UNFINISHED, FOOTER_GROUP,
+            Sections.BAZAAR_PLACEHOLDER, FOOTER_GROUP,
             Sections.RARITY_FOOTER, FOOTER_GROUP);
 
     private final TextBody body = new TextBody();
@@ -147,6 +149,7 @@ public final class LoreText {
         footer.child(Sections.SOULBOUND);
         footer.child(Sections.STATS_WHEN_SHOT);
         footer.child(Sections.UNFINISHED);
+        footer.child(Sections.BAZAAR_PLACEHOLDER);
         footer.child(Sections.RARITY_FOOTER);
     }
 }

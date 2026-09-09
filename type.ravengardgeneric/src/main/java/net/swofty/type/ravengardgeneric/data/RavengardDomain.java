@@ -12,6 +12,7 @@ import org.tinylog.Logger;
 
 import java.util.UUID;
 
+// PlayerDataDomain implementation that loads/saves each player's RavengardDataHandler and manages their active profile lifecycle.
 public final class RavengardDomain implements PlayerDataDomain<RavengardDataHandler> {
     public static final DomainKey<RavengardDataHandler> KEY = new DomainKey<>("ravengard", RavengardDataHandler.class);
 

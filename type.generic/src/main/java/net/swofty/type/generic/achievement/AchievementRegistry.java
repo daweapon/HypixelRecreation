@@ -9,6 +9,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
+// Loads achievement definitions from YAML configuration and indexes them by id, category, and trigger.
 public class AchievementRegistry {
     private static final Map<String, AchievementDefinition> ACHIEVEMENTS = new ConcurrentHashMap<>();
     private static final Map<AchievementCategory, List<AchievementDefinition>> BY_CATEGORY = new ConcurrentHashMap<>();

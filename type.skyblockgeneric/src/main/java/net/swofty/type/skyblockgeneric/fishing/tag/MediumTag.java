@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.fishing.tag;
 import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
 
+// Fishing tag that gates loot to a specific fishing medium (water or lava).
 public record MediumTag(FishingMedium medium) implements FishingTag {
 
     public static final MediumTag WATER = new MediumTag(FishingMedium.WATER);

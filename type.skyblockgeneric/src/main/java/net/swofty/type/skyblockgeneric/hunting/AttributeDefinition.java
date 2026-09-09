@@ -7,6 +7,8 @@ import net.swofty.type.skyblockgeneric.region.RegionType;
 
 import java.util.List;
 
+// Config-driven definition of a hunting attribute shard: its rarity/category/family, the
+// statistic effects it grants per level, and where it can be obtained.
 public record AttributeDefinition(
         AttributeId id,
         String shard,

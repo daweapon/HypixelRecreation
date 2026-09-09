@@ -17,6 +17,8 @@ import net.swofty.type.skyblockgeneric.item.components.FishingShipPartComponent;
 import org.jetbrains.annotations.Nullable;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Looks up fishing-related item components (bait, rod parts, ship parts) by item id and lists
+// all configured items carrying a given component, sorted by rarity then name.
 public final class FishingItemSupport {
 
     public static @Nullable FishingRodMetadataComponent getRodMetadata(@Nullable String itemId) {

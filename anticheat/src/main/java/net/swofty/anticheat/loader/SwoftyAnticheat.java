@@ -8,6 +8,7 @@ import net.swofty.anticheat.flag.FlagType;
 
 import java.util.UUID;
 
+// Static entry point for configuring and starting the anticheat (loader, settings, punishment handler).
 public class SwoftyAnticheat {
     @Getter
     private static Loader loader = null;

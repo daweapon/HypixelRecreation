@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 import org.jetbrains.annotations.Nullable;
 
+// Redis RPC protocol for fetching a player's pending incoming friend requests.
 public class GetPendingFriendRequestsProtocol extends RedisProtocol
         <GetPendingFriendRequestsProtocol.GetPendingRequestsMessage,
                 GetPendingFriendRequestsProtocol.GetPendingRequestsResponse> {

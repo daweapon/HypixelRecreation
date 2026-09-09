@@ -10,6 +10,7 @@ import net.swofty.type.bedwarsgame.shop.TrapId;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 import net.swofty.type.generic.utility.ScheduleUtility;
 
+// Team trap that makes the triggering intruder glow, revealing their location.
 public class RevealTrap extends Trap {
 
 	public RevealTrap() {

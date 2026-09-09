@@ -30,6 +30,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+// Paginated GUI listing every craftable minion type for browsing recipes
 public class GUICraftedMinions extends PaginatedView<SkyBlockItem, GUICraftedMinions.MinionsState> {
 
     @Override

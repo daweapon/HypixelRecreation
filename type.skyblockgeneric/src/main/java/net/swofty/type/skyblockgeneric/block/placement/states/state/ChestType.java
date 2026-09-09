@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.block.placement.states.state;
 
 import org.jetbrains.annotations.NotNull;
 
+// Block state values describing whether a chest is single or the left/right half of a double chest.
 public enum ChestType implements State<ChestType> {
     SINGLE, RIGHT, LEFT;
 

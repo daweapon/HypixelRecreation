@@ -2,6 +2,7 @@ package net.swofty.proxyapi;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.json.JSONComponentSerializer;
+import net.kyori.adventure.translation.GlobalTranslator;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
 import net.swofty.commons.ServerType;
@@ -13,6 +14,7 @@ import net.swofty.proxyapi.impl.ProxyUnderstandableEvent;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -20,6 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
+// Proxy-side handle for a player, exposing messaging, teleport, and cross-server transfer operations via Redis RPC.
 public record ProxyPlayer(UUID uuid) {
     private static final PlayerHandlerProtocol PLAYER_HANDLER = new PlayerHandlerProtocol();
     private static volatile BiFunction<UUID, UUID, CompletableFuture<String>> transferPreparation =
@@ -33,9 +36,10 @@ public record ProxyPlayer(UUID uuid) {
     }
 
     public void sendMessage(Component message) {
+        Component rendered = GlobalTranslator.render(message, Locale.US);
         RedisClient.requestProxy(PLAYER_HANDLER,
                 new PlayerHandlerProtocol.Request(uuid.toString(), PlayerHandlerProtocol.Action.MESSAGE,
-                        Map.of("message", JSONComponentSerializer.json().serialize(message))));
+                        Map.of("message", JSONComponentSerializer.json().serialize(rendered))));
     }
 
     public void sendMessage(Text message) {

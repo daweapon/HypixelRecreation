@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.PlayerInventoryCrafting;
 
+// Returns items from the vanilla crafting grid to the player's inventory when they close it
 public class ActionPlayerCloseVanillaCrafting implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true)
     public void run(InventoryCloseEvent event) {

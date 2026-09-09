@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.missions.spidersden.MissionTheFlintBros;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// NPC for Rick in the Spider's Den, one of the Flint Bros, drives the Promising Shovel mission.
 public class NPCRick extends HypixelNPC {
     public NPCRick() {
         super(new HumanConfiguration() {

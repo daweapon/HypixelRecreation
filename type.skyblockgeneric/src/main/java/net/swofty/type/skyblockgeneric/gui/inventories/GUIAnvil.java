@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+// GUI for the Anvil: combines an upgrade item with a sacrifice item and shows the resulting item
 public class GUIAnvil extends HypixelInventoryGUI {
 
     private static final int[] BORDER_SLOTS = {45, 46, 47, 48, 50, 51, 52, 53};

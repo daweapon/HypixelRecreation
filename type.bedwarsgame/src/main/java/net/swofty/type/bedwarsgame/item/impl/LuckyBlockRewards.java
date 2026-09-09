@@ -17,6 +17,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+// Picks and applies a random Lucky Block reward for a given tier.
 public final class LuckyBlockRewards {
     private LuckyBlockRewards() {
     }

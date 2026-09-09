@@ -12,6 +12,8 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Tracks stacking Venomous poison-damage-over-time and movement-speed-reduction debuffs applied
+// to mobs, ticking damage and reverting speed once all stacks expire.
 public class VenomousDebuff {
     public static final double[] SPEED_REDUCTION_PERCENTAGES = new double[]{0.05, 0.10, 0.15, 0.20, 0.25, 0.30};
     private static final int MAX_STACKS = 40;

@@ -21,6 +21,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 // https://gist.github.com/hapily04/a463cbed41d2cfba04a58ecc62fa61f9
+// Arrow-like projectile from the alternate projectile system, with critical-hit state and vanilla-style drag/gravity.
 public class ArrowProjectile extends AbstractProjectile {
     private static final BoundingBox SMALL_BOUNDING_BOX = new BoundingBox(0.01, 0.01, 0.01);
     private static final BoundingBox REGULAR_BOUNDING_BOX = EntityType.ARROW.boundingBox();

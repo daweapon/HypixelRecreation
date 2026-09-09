@@ -3,6 +3,7 @@ package net.swofty.pvp.enchantment;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.LivingEntity;
 
+// Classifies living entities into damage-multiplier groups (undead, arthropod, illager, aquatic) for enchantments.
 public enum EntityGroup {
 	DEFAULT,
 	UNDEAD,

@@ -8,6 +8,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.List;
 
+// Backend microservice that issues, queries, and revokes player punishments (bans/mutes), backed by MongoDB and Redis.
 public class PunishmentService implements SkyBlockService {
 
     static void main(String[] args) {

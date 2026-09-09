@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.prototypelobby.PrototypeLobbyScoreboard;
 
+// Clears a player's cached Prototype Lobby scoreboard on disconnect.
 public class ActionPlayerDisconnect implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.DISCONNECT)

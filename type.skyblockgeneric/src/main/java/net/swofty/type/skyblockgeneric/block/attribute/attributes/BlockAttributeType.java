@@ -4,6 +4,7 @@ import net.swofty.type.skyblockgeneric.block.attribute.BlockAttribute;
 import net.swofty.type.skyblockgeneric.block.impl.CustomSkyBlockBlock;
 import org.jetbrains.annotations.Nullable;
 
+// Block attribute storing the block's BlockType name as a plain string.
 public class BlockAttributeType extends BlockAttribute<String> {
     @Override
     public String getKey() {

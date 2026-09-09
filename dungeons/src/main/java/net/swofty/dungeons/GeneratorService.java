@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
 @RequiredArgsConstructor
+// Drives the multi-stage procedural generation of a CatacombsDungeon layout (critical path, side paths, room/corridor assignment).
 public class GeneratorService {
     private final DungeonsData data;
     @Getter

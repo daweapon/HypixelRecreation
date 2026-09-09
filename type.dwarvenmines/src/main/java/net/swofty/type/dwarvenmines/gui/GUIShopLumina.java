@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
+// Shop GUI for Lumina, the Dwarven Mines NPC who sells torches and lanterns.
 public class GUIShopLumina extends ShopView {
     public GUIShopLumina() {
         super("Lumina", DEFAULT);

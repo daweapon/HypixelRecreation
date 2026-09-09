@@ -2,6 +2,7 @@ package net.swofty.commons.redis;
 
 import org.json.JSONObject;
 
+// Wire envelope wrapping a Redis RPC message's correlation id, sender, and serialized payload.
 public record RedisEnvelope(String id, String from, String payload) {
     public String serialize() {
         JSONObject json = new JSONObject();

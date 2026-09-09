@@ -37,6 +37,8 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// The PlayerDataDomain implementation for SkyBlock profile data: loads/saves a player's active
+// profile, links it into its coop, attaches the resulting island, and sends the profile intro.
 public final class SkyBlockDomain implements PlayerDataDomain<SkyBlockDataHandler> {
     public static final DomainKey<SkyBlockDataHandler> KEY = new DomainKey<>("skyblock-profile", SkyBlockDataHandler.class);
 
@@ -64,7 +66,10 @@ public final class SkyBlockDomain implements PlayerDataDomain<SkyBlockDataHandle
         UUID profileId = loadProfiles(uuid).getCurrentlySelected();
         SkyBlockDataHandler handler = SkyBlockDataHandler.initUserWithDefaultData(uuid, profileId);
         UUID coopId = resolveCoopId(profileId);
+        SwoftyData.profile().load(profileId);
         SwoftyData.profile().link(profileId, CoopLinks.COOP, coopId);
+        if (!SwoftyData.profile().isLinkLoaded(CoopLinks.COOP, coopId))
+            SwoftyData.profile().loadLink(CoopLinks.COOP, coopId);
         linkedCoops.put(uuid, coopId);
 
         String transferred = PlayerTransferDataCache.takeProfileDocument(uuid);
@@ -98,6 +103,8 @@ public final class SkyBlockDomain implements PlayerDataDomain<SkyBlockDataHandle
         PlayerDataService.get(KEY, player.getUuid()).runOnLoad(sbp);
         scheduleRegionRefresh(sbp);
         sendProfileIntro(sbp);
+        net.swofty.type.skyblockgeneric.auction.AuctionBidding.recover(sbp);
+        net.swofty.type.skyblockgeneric.auction.AuctionCreation.recover(sbp);
     }
 
     @Override

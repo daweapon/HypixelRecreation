@@ -20,6 +20,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import java.util.List;
 import java.util.Map;
 
+// Handles player movement in Bedwars: void-death detection, lucky equipment ticks, and trap triggers.
 public class ActionGameMove implements HypixelEventClass {
 
 	@PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, isAsync = true)

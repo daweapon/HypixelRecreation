@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.abiphone.AbiphoneNPC;
 import net.swofty.type.skyblockgeneric.gui.inventories.rusty.GUIRusty;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Abiphone contact for Rusty, SkyBlock's janitor, unlocked via a short dialogue and opening his GUI on call.
 public class AbiphoneRusty extends AbiphoneNPC {
 
 	public AbiphoneRusty() {

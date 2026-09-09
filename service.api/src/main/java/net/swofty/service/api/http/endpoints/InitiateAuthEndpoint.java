@@ -11,6 +11,7 @@ import spark.Response;
 import java.util.Map;
 import java.util.UUID;
 
+// Admin panel HTTP endpoint that starts an admin login session from an in-game-issued auth code.
 public class InitiateAuthEndpoint extends SkyBlockEndpoint {
     @Override
     public EndpointType getType() {

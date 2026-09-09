@@ -7,6 +7,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 
 import java.util.List;
 
+// Backend microservice that owns friend lists, friend requests, and player presence, backed by MongoDB and Redis.
 public class FriendService implements SkyBlockService {
 
     static void main() {

@@ -2,6 +2,7 @@ package net.swofty.type.generic.collectibles;
 
 import java.util.Locale;
 
+// The ways a collectible can be unlocked (free, rank, manual grant, currency purchase, custom, bedwars level).
 public enum CollectibleUnlockMethod {
     FREE,
     RANK,

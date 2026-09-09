@@ -22,6 +22,7 @@ import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 @RequiredArgsConstructor
+// Bootstraps a SkyBlockService: connects Redis, registers its endpoints (plus a built-in ping endpoint), and blocks until shutdown.
 public class ServiceInitializer {
     private final SkyBlockService service;
 

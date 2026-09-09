@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import org.jetbrains.annotations.NotNull;
 
+// Fired when a player kills a SkyBlock mob; updates bestiary progress and dispatches kill enchantments/pet effects
 public class PlayerKilledSkyBlockMobEvent implements PlayerInstanceEvent {
     private final SkyBlockPlayer player;
     @Getter

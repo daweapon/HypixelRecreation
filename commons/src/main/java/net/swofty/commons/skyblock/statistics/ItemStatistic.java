@@ -11,6 +11,7 @@ import net.swofty.commons.skyblock.PackSprite;
 import org.jetbrains.annotations.NotNull;
 
 @Getter
+// Enumerates every SkyBlock player/item statistic with its display name, colors, icon, and base value curve.
 public enum ItemStatistic {
     // Combat Stats
     HEALTH("Health", NamedTextColor.GREEN, NamedTextColor.RED,

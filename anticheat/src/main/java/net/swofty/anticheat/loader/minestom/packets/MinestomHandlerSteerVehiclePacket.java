@@ -7,6 +7,7 @@ import net.swofty.anticheat.loader.LoaderPacketHandler;
 
 import java.util.UUID;
 
+// Converts Minestom's client input packet into a SteerVehiclePacket.
 public class MinestomHandlerSteerVehiclePacket
         extends LoaderPacketHandler<ClientInputPacket> {
 

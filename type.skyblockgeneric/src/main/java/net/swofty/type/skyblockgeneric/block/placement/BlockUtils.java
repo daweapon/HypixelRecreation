@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.block.placement.states.state.Facing;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+// Convenience wrapper around a block position for reading state and navigating to relative/adjacent blocks.
 public final class BlockUtils {
 
     private final Instance instance;

@@ -12,6 +12,7 @@ import net.swofty.commons.redis.RedisClient;
 import java.util.UUID;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Publishes player online/offline presence updates to all backend services over Redis.
 public final class PresencePublisher {
 
     public static void publish(Player player, boolean online, String serverType, UUID serverId) {

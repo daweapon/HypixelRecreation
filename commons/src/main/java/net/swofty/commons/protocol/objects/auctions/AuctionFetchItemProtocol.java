@@ -28,5 +28,5 @@ public class AuctionFetchItemProtocol extends RedisProtocol<
 
     public record AuctionFetchItemMessage(UUID uuid) {}
 
-    public record AuctionFetchItemResponse(AuctionItem item, boolean success, @Nullable String error) {}
+    public record AuctionFetchItemResponse(@Nullable AuctionItem item, boolean success, @Nullable String error) {}
 }

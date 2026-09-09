@@ -6,6 +6,7 @@ import spark.Response;
 
 import java.util.Map;
 
+// Base class for a public HTTP API endpoint: declares its path, access type, and request handling.
 public abstract class SkyBlockEndpoint {
     public abstract EndpointType getType();
     public abstract String getPath();

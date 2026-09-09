@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIAnvil;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// Opens the Anvil GUI when a player interacts with an anvil block
 public class ActionAnvilClick implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

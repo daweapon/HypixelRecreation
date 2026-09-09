@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Drain enchantment: heals the wielder based on critical damage dealt per hit; conflicts with
+// Life Steal and Mana Steal.
 public class EnchantmentDrain implements Ench, EnchFromTable, DamageEventEnchant, ConflictingEnch {
 
     public static final double[] HEAL_PERCENTAGES = new double[]{0.002, 0.003, 0.004, 0.005, 0.006};

@@ -13,6 +13,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.event.HypixelEventClass;
 import org.jetbrains.annotations.Nullable;
 
+// Handles item pickups in Bedwars, awarding currency XP and recording pickups for replay.
 public class ActionGamePickup implements HypixelEventClass {
 
 	@PhasedEvent(node = EventNodes.ALL, requireDataLoaded = false)

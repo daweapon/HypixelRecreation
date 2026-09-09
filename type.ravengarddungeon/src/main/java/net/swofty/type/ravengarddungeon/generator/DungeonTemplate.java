@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+// Loads and caches the base dungeon .polar world file, giving block lookups used to stamp room content into generated instances.
 public final class DungeonTemplate {
     private static DungeonTemplate instance;
 

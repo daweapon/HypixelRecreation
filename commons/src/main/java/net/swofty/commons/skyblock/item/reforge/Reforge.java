@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.function.BiFunction;
 
 @Getter
+// Loaded reforge definition: its identity, which item types it applies to, and the stat calculation it applies at a given level.
 public class Reforge {
     private final String id;
     private final String name;

@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// Announces SkyBlock level-ups and grants their unlock rewards when a player's XP changes
 public class ActionChangeHypixelXP implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

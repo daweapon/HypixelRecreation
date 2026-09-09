@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// Type loader that initializes the Dwarven Mines server: its NPCs, events, tablist, and dimension.
 public class TypeDwarvenMinesLoader implements SkyBlockTypeLoader {
     @Override
     public ServerType getType() {

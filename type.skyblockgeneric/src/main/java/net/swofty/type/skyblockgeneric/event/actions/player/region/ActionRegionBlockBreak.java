@@ -30,6 +30,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// Handles custom block-break rules: region selector tool, build-bypass, foraging leaves, and island vs. mineable-region drops
 public class ActionRegionBlockBreak implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

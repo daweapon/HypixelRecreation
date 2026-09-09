@@ -7,16 +7,13 @@ import net.minestom.server.inventory.Inventory;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.swofty.commons.skyblock.SkyBlockPlayerProfiles;
 import net.swofty.commons.text.Text;
-import net.swofty.type.generic.data.mongodb.UserDatabase;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.RefreshingGUI;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.skyblockgeneric.data.ProfileSwitcher;
 import net.swofty.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -25,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// GUI for the co-op member sending an invite, showing pending invitee slots
 public class GUICoopInviteSender extends HypixelInventoryGUI implements RefreshingGUI {
     private static final Map<Integer, List<Integer>> SLOTS_MAP = new HashMap<>(
             Map.of(
@@ -64,15 +62,11 @@ public class GUICoopInviteSender extends HypixelInventoryGUI implements Refreshi
                 }
                 coop = confirmed;
 
-                UUID profileId = CoopProfileCreation.create(player, confirmed);
-                CoopDatabase.update(coopId, latest -> latest.memberProfiles().add(profileId));
-
-                SkyBlockPlayerProfiles profiles = player.getProfiles();
-                profiles.addProfile(profileId);
-                new UserDatabase(player.getUuid()).saveProfiles(profiles);
-
+                // The originator is already on the real shared island (registered as the first
+                // memberProfile when /coop was run) - confirming just locks in the invite list,
+                // it must not create another profile or switch them anywhere.
+                player.sendMessage("<b>[Co-op] <e>Your co-op is now locked in!");
                 player.closeInventory();
-                ProfileSwitcher.switchTo(player, profileId);
             }
 
             @Override

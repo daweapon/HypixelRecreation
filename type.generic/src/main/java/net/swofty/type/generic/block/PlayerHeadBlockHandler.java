@@ -8,6 +8,7 @@ import org.jspecify.annotations.NonNull;
 import java.util.Collection;
 import java.util.Set;
 
+// Minestom BlockHandler for player head/skull blocks; preserves the skull profile NBT tag.
 public class PlayerHeadBlockHandler implements BlockHandler {
 	public static final Key KEY = Key.key("minecraft:skull");
 

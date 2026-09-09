@@ -8,6 +8,7 @@ import net.swofty.service.itemtracker.TrackedItemsDatabase;
 import java.util.UUID;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that fetches a tracked item record by UUID, throwing if it does not exist.
 public class EndpointGetTrackedItem implements RedisMessageHandler<
         TrackedItemRetrieveProtocol.TrackedItemRetrieveMessage,
         TrackedItemRetrieveProtocol.TrackedItemResponse> {

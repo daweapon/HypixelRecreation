@@ -17,6 +17,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+// GUI backing a Bedwars team's shared chest storage.
 public class GUITeamChest implements View<GUITeamChest.State> {
 
     private final BedWarsMapsConfig.TeamKey teamKey;

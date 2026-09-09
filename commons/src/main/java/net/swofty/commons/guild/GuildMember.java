@@ -15,6 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor(force = true)
+// A single guild roster entry: a player's rank, GEXP contributions, login/mute state, and chat preferences.
 public class GuildMember {
     private final UUID uuid;
     private String rankName;

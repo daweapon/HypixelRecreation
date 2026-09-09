@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+// GUI for a resource sack, sized according to the sack item's capacity tier
 public class GUISack implements StatefulView<GUISack.SackState> {
     private final ItemType itemTypeLinker;
     private final boolean closeGUIButton;

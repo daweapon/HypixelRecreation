@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.HashMap;
 import java.util.Map;
 
+// Grants Carpentry skill XP from crafted items based on their raw materials' NPC sell value
 public class ActionSkillCarpentryGain implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(ItemCraftEvent event) {

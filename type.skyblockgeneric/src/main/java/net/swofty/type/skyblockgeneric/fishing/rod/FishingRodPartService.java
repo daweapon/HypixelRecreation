@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.item.components.FishingRodPartComponent;
 import org.jetbrains.annotations.Nullable;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Reads/applies a fishing rod's installed hook/line/sinker parts and aggregates their statistic bonuses.
 public final class FishingRodPartService {
 
     public static @Nullable FishingRodPartComponent getHook(SkyBlockItem rod) {

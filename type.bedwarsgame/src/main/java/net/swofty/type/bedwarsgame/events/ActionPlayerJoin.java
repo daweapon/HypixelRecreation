@@ -17,6 +17,7 @@ import net.swofty.type.generic.redis.service.GameInformationHandler;
 import net.swofty.type.generic.utility.ScheduleUtility;
 import org.tinylog.Logger;
 
+// Handles a player's initial connection, assigning and joining them to their pending Bedwars game.
 public class ActionPlayerJoin implements HypixelEventClass {
 
 	@SneakyThrows

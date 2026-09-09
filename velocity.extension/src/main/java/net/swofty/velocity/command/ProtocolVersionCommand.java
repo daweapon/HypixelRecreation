@@ -8,6 +8,7 @@ import net.swofty.commons.text.Text;
 
 import java.util.List;
 
+// "/protocolversion" command that reports the invoking player's client protocol version.
 public class ProtocolVersionCommand implements SimpleCommand {
 
 	@Override

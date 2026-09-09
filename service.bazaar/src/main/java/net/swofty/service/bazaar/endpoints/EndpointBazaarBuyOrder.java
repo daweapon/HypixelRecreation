@@ -8,6 +8,7 @@ import org.tinylog.Logger;
 import java.util.UUID;
 import net.swofty.commons.redis.RedisMessageContext;
 
+// Redis endpoint that submits a new buy order to the bazaar market.
 public class EndpointBazaarBuyOrder implements RedisMessageHandler<
         BazaarBuyProtocol.BazaarBuyMessage,
         BazaarBuyProtocol.BazaarBuyResponse> {

@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+// Vanilla tool/weapon items and their attack damage/speed attribute modifiers (modern and legacy).
 public enum Tool {
 	WOODEN_SWORD(ToolMaterial.WOOD, 3, 4.0F, -2.4F, false, true),
 	STONE_SWORD(ToolMaterial.STONE, 3, 4.0F, -2.4F, false, true),

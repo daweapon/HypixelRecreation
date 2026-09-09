@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+// Aggregates a player's recent flags per type into an overall certainty and triggers punishment past a threshold.
 public class FlagManager {
     private final UUID uuid;
     private final Map<FlagType, List<Flag>> flags;

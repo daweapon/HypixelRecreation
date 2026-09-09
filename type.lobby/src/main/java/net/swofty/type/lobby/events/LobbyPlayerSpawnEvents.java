@@ -13,6 +13,7 @@ import net.swofty.type.lobby.visibility.PlayerVisibilityManager;
 
 import java.util.Map;
 
+// Sets up a lobby player's hotbar items and visibility rules on spawn.
 public class LobbyPlayerSpawnEvents implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

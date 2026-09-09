@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// Drives the scripted "cult" scare event for NPC Ryan in The Park, freezing and teleporting players who spot him.
 public class RyanScene {
 
 	private static final Map<UUID, Long> lastTriggered = new HashMap<>();

@@ -9,6 +9,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.hub.gui.GUIShopFarmMerchant;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+// NPC for the Hub's Farm Merchant, who sells and buys harvested crops via the Farmer Shop GUI
 public class NPCFarmMerchant extends HypixelNPC {
 
     public NPCFarmMerchant() {

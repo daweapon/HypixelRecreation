@@ -18,6 +18,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+// Base type for a group of item collections (e.g. Farming), defining the per-item collections
+// and the reward/unlock types (recipe, XP, custom award) they can grant at each tier.
 public abstract class CollectionCategory {
     public abstract Material getDisplayIcon();
 

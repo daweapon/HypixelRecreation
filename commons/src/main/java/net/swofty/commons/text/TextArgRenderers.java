@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 
+// Registry mapping argument types (and their supertypes/interfaces) to custom Component renderers used by Text placeholders.
 public final class TextArgRenderers {
 
     private static final Map<Class<?>, Function<Object, Component>> RENDERERS = new ConcurrentHashMap<>();

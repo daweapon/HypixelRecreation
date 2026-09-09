@@ -5,6 +5,7 @@ import net.minestom.server.instance.block.Block;
 import net.swofty.type.bedwarsgame.TypeBedWarsGameLoader;
 import net.swofty.type.bedwarsgame.user.BedWarsPlayer;
 
+// Lucky Block reward that places a configured block at the spot the block was opened.
 public class BlockLuckyReward extends LuckyReward {
     private final Block block;
 

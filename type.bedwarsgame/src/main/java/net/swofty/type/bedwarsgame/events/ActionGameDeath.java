@@ -25,6 +25,7 @@ import net.swofty.type.generic.utility.ScheduleUtility;
 
 import java.util.function.Consumer;
 
+// Handles Bedwars player death: teleports to spectator, downgrades tools, and processes death logic.
 public class ActionGameDeath implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)

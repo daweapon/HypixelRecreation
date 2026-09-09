@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.abiphone.AbiphoneNPC;
 
 import java.util.List;
 
+// Generic confirm/cancel GUI used before performing an Abiphone action on an NPC contact
 public class GUIConfirmAbiphone extends HypixelInventoryGUI {
 
 	private final AbiphoneNPC npc;

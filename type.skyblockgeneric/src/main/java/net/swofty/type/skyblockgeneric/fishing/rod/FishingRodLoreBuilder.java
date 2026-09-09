@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Builds a fishing rod's display lore: its stats, gem slots, installed hook/line/sinker parts,
+// and requirement/soulbound notices.
 public final class FishingRodLoreBuilder {
     private static final List<ItemStatistic> STAT_ORDER = List.of(
         ItemStatistic.DAMAGE,

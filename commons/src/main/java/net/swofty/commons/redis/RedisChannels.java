@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import net.swofty.commons.protocol.RedisProtocol;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Builds the well-known Redis Pub/Sub channel names used for protocol requests, service requests, and broadcasts.
 public final class RedisChannels {
     public static final String PROXY_RESPONSE = "proxy";
     public static final String SERVICE_RESPONSE = "service_response";

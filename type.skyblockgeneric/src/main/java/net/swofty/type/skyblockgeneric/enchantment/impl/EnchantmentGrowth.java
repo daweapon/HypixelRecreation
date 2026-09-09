@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// Growth enchantment: grants bonus max health on armor.
 public class EnchantmentGrowth implements Ench, EnchFromTable {
     public static final int[] MULTIPLIERS = new int[]{15, 30, 45, 60, 75, 90, 105};
 

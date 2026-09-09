@@ -2,6 +2,7 @@ package net.swofty.pvp.utils;
 
 import net.swofty.pvp.feature.CombatFeature;
 
+// Marker feature selecting whether combat mechanics behave as modern (1.9+) or legacy (pre-1.9) vanilla.
 public final class CombatVersion implements CombatFeature {
 	public static CombatVersion MODERN = new CombatVersion(false);
 	public static CombatVersion LEGACY = new CombatVersion(true);
