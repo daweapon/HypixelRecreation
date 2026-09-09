@@ -58,7 +58,7 @@ public class CoopBankCommand extends HypixelCommand {
 
     private void viewBalance(SkyBlockPlayer player) {
         CoopDatabase.Coop coop = CoopDatabase.getFromMember(player.getUuid());
-        if (coop == null) {
+        if (!CoopDatabase.isMember(coop, player.getUuid())) {
             player.sendMessage("<c>You are not in a co-op!");
             return;
         }
@@ -67,7 +67,7 @@ public class CoopBankCommand extends HypixelCommand {
 
     private void deposit(SkyBlockPlayer player, long amount) {
         CoopDatabase.Coop coop = CoopDatabase.getFromMember(player.getUuid());
-        if (coop == null) {
+        if (!CoopDatabase.isMember(coop, player.getUuid())) {
             player.sendMessage("<c>You are not in a co-op!");
             return;
         }
@@ -85,7 +85,7 @@ public class CoopBankCommand extends HypixelCommand {
 
     private void withdraw(SkyBlockPlayer player, long amount) {
         CoopDatabase.Coop coop = CoopDatabase.getFromMember(player.getUuid());
-        if (coop == null) {
+        if (!CoopDatabase.isMember(coop, player.getUuid())) {
             player.sendMessage("<c>You are not in a co-op!");
             return;
         }

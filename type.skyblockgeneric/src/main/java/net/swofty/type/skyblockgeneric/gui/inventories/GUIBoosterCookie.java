@@ -12,6 +12,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
 
 import java.util.List;
 
@@ -43,16 +44,10 @@ public class GUIBoosterCookie extends HypixelInventoryGUI {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
-                long time;
-                if (player.getBoosterCookieExpirationDate() - System.currentTimeMillis() > System.currentTimeMillis()) {
-                    time = player.getBoosterCookieExpirationDate() - System.currentTimeMillis() + System.currentTimeMillis();
-                } else {
-                    time = System.currentTimeMillis();
-                }
-                time += 345600000; //4d
-                player.setBoosterCookieExpirationDate(time);
+                CookieBuffService.consume(player);
                 player.addBits(4000);
-                player.setItemInMainHand(ItemStack.AIR);
+                player.setItemInMainHand(player.getItemInMainHand().withAmount(player.getItemInMainHand().amount() - 1));
+                player.sendMessage("<e>You consumed a <6>Booster Cookie<e>!");
                 player.closeInventory();
             }
 

@@ -36,7 +36,7 @@ public class CoopAddCommand extends HypixelCommand {
             String targetName = context.get(targetArg);
 
             CoopDatabase.Coop coop = CoopDatabase.getFromMember(player.getUuid());
-            if (coop == null) {
+            if (!CoopDatabase.isMember(coop, player.getUuid())) {
                 player.sendMessage("<b>[Co-op] <c>You don't have a co-op yet - use /coop <player> to start one!");
                 return;
             }

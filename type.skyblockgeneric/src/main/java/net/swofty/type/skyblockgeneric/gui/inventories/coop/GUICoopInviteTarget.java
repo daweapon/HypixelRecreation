@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 // GUI shown to an invited player, displaying current co-op members/invites and accept/decline actions
 public class GUICoopInviteTarget extends HypixelInventoryGUI {
@@ -101,12 +102,12 @@ public class GUICoopInviteTarget extends HypixelInventoryGUI {
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
 
+                AtomicBoolean accepted = new AtomicBoolean();
                 CoopDatabase.Coop joined = CoopDatabase.update(coopId, latest -> {
-                    latest.removeInvite(player.getUuid());
-                    if (!latest.members().contains(player.getUuid())) latest.members().add(player.getUuid());
+                    accepted.set(latest.acceptInvite(player.getUuid()));
                 });
-                if (joined == null) {
-                    player.sendMessage("<b>[Co-op] <c>That co-op no longer exists!");
+                if (joined == null || !accepted.get()) {
+                    player.sendMessage("<b>[Co-op] <c>That co-op invite is no longer available!");
                     player.closeInventory();
                     return;
                 }

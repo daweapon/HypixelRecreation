@@ -67,8 +67,16 @@ public class CoopDatabase {
         return deserialize(CoopStorage.readByMember(member));
     }
 
+    public static Coop get(UUID coopId) {
+        return deserialize(CoopStorage.read(coopId));
+    }
+
     public static Coop getFromMemberProfile(UUID memberProfile) {
         return deserialize(CoopStorage.readByProfile(memberProfile));
+    }
+
+    public static boolean isMember(Coop coop, UUID player) {
+        return coop != null && coop.members().contains(player);
     }
 
     private static Coop deserialize(Document roster) {
@@ -76,7 +84,7 @@ public class CoopDatabase {
     }
 
     public static Coop getClean(UUID originator) {
-        return new Coop(UUID.randomUUID(), originator, new ArrayList<>(), new ArrayList<>(List.of(originator)), new ArrayList<>(),
+        return new Coop(UUID.randomUUID(), originator, new ArrayList<>(List.of(originator)), new ArrayList<>(), new ArrayList<>(),
                 0L, new HashMap<>(), new HashMap<>());
     }
 
@@ -112,6 +120,13 @@ public class CoopDatabase {
 
         public void removeInvite(UUID uuid) {
             memberInvites.remove(uuid);
+        }
+
+        public boolean acceptInvite(UUID uuid) {
+            if (!memberInvites.contains(uuid)) return false;
+            removeInvite(uuid);
+            if (!members.contains(uuid)) members.add(uuid);
+            return true;
         }
 
         public Document serialize() {

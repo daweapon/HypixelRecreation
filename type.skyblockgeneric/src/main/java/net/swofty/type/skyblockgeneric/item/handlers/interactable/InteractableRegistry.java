@@ -5,6 +5,8 @@ import net.minestom.server.coordinate.Pos;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.entity.hologram.ServerHolograms;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.GUISkyBlockMenu;
+import net.swofty.type.skyblockgeneric.gui.inventories.GUIBoosterCookie;
+import net.swofty.type.skyblockgeneric.potion.GodPotionService;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import net.swofty.type.skyblockgeneric.utility.JerryInformation;
 
@@ -60,6 +62,12 @@ public class InteractableRegistry {
                     jerryInformation.setHologram(hologram);
                     skyBlockItem.setAmount(0);
                 })
+        ).build());
+        register("BOOSTER_COOKIE_INTERACT", InteractableItemConfig.builder().rightClickHandler(
+                (player, item) -> new GUIBoosterCookie().open(player)
+        ).build());
+        register("GOD_POTION_INTERACT", InteractableItemConfig.builder().rightClickHandler(
+                (player, item) -> GodPotionService.consume(player, item)
         ).build());
     }
 

@@ -9,15 +9,19 @@ import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
 import net.swofty.type.generic.data.mongodb.ProfilesDatabase;
 import net.swofty.type.generic.data.mongodb.UserDatabase;
+import net.swofty.type.generic.data.datapoints.DatapointString;
 import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.data.ProfileSwitcher;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointUUID;
 import net.swofty.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.island.CoopVoteManager;
 import org.bson.Document;
 
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 @CommandParameters(labels = "coopkick",
         description = "Kicks a player from your co-op",
@@ -36,7 +40,7 @@ public class CoopKickCommand extends HypixelCommand {
             String targetName = context.get(targetArg);
 
             CoopDatabase.Coop coop = CoopDatabase.getFromMember(player.getUuid());
-            if (coop == null) {
+            if (!CoopDatabase.isMember(coop, player.getUuid())) {
                 player.sendMessage("<b>[Co-op] <c>You are not part of a co-op!");
                 return;
             }
@@ -79,7 +83,8 @@ public class CoopKickCommand extends HypixelCommand {
 
     // Package-visible (and static) so AdminCoopKickCommand can reuse the same removal logic
     // while bypassing the vote/inactivity requirements CoopVoteManager enforces for players.
-    static void performKick(SkyBlockPlayer kicker, UUID coopId, UUID targetUuid, UUID targetProfileId, String targetName) {
+    static CompletableFuture<Boolean> performKick(SkyBlockPlayer kicker, UUID coopId, UUID targetUuid,
+                                                  UUID targetProfileId, String targetName) {
         SkyBlockPlayer targetOnline = SkyBlockGenericLoader.getLoadedPlayers().stream()
                 .filter(loaded -> loaded.getUuid().equals(targetUuid))
                 .findFirst().orElse(null);
@@ -93,16 +98,44 @@ public class CoopKickCommand extends HypixelCommand {
                     .findFirst().orElse(null);
             if (fallback == null) {
                 kicker.sendMessage("<b>[Co-op] <c>That member has no other profile to fall back to - they need to make one first.");
-                return;
+                return CompletableFuture.completedFuture(false);
             }
-            ProfileSwitcher.switchTo(targetOnline, fallback).thenAccept(result -> {
-                if (result != ProfileSwitcher.Result.SWITCHED && result != ProfileSwitcher.Result.TRANSFERRED) return;
+            return ProfileSwitcher.switchTo(targetOnline, fallback).thenApply(result -> {
+                if (result != ProfileSwitcher.Result.SWITCHED && result != ProfileSwitcher.Result.TRANSFERRED) return false;
                 finishKick(kicker, coopId, targetUuid, targetProfileId, targetName);
+                return true;
             });
-            return;
         }
 
         finishKick(kicker, coopId, targetUuid, targetProfileId, targetName);
+        return CompletableFuture.completedFuture(true);
+    }
+
+    static UUID createFallbackProfile(UUID targetUuid, UUID removedProfileId) {
+        SkyBlockPlayer targetOnline = SkyBlockGenericLoader.getLoadedPlayers().stream()
+                .filter(loaded -> loaded.getUuid().equals(targetUuid))
+                .findFirst().orElse(null);
+        SkyBlockPlayerProfiles profiles = targetOnline == null
+                ? new UserDatabase(targetUuid).getProfiles()
+                : targetOnline.getProfiles();
+
+        UUID existingFallback = profiles.getProfiles().stream()
+                .filter(profileId -> !profileId.equals(removedProfileId))
+                .findFirst()
+                .orElse(null);
+        if (existingFallback != null) return existingFallback;
+
+        UUID fallbackProfileId = UUID.randomUUID();
+        SkyBlockDataHandler handler = SkyBlockDataHandler.initUserWithDefaultData(targetUuid, fallbackProfileId);
+        handler.get(SkyBlockDataHandler.Data.PROFILE_NAME, DatapointString.class)
+                .setValue(SkyBlockPlayerProfiles.getRandomName());
+        handler.get(SkyBlockDataHandler.Data.ISLAND_UUID, DatapointUUID.class)
+                .setValue(fallbackProfileId);
+        new ProfilesDatabase(fallbackProfileId.toString()).saveDocument(handler.toProfileDocument());
+
+        profiles.addProfile(fallbackProfileId);
+        new UserDatabase(targetUuid).saveProfiles(profiles);
+        return fallbackProfileId;
     }
 
     static void finishKick(SkyBlockPlayer kicker, UUID coopId, UUID targetUuid, UUID targetProfileId, String targetName) {

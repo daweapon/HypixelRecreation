@@ -37,7 +37,6 @@ items:
       - id: DISABLE_ANIMATION
         disabled_animations:
           - EAT
-      - id: NOT_FINISHED_YET
   - id: BUILDERS_WAND
     material: blaze_rod
     name: "Builders Wand"
@@ -67,7 +66,6 @@ items:
         texture: 60226d4c1d30fbebecae939da900603e4cd0fed8592a1bb3e11f9ac92391a45a
       - id: INTERACTABLE
         handler_id: GOD_POTION_INTERACT
-      - id: NOT_FINISHED_YET
   - id: HEAT_CORE
     material: player_head
     name: "Heat Core"

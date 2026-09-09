@@ -39,16 +39,6 @@ public class CoopLeaveCommand extends HypixelCommand {
                 return;
             }
 
-            // The originator's profile is the real, pre-existing island every other member's
-            // profile was cloned from - leave() below deletes the leaving player's profile
-            // document, which would destroy that shared island and all of the originator's
-            // actual SkyBlock data. There's no island-transfer flow yet, so block it outright.
-            if (coop.isOriginator(player.getUuid())) {
-                player.sendMessage("<b>[Co-op] <c>You started this co-op - you can't leave it yourself!");
-                player.sendMessage("<b>[Co-op] <e>Kick the other members instead, or ask staff for help.");
-                return;
-            }
-
             UUID coopId = coop.coopUUID();
             UUID playerId = player.getUuid();
             UUID profileId = player.getProfiles().getCurrentlySelected();

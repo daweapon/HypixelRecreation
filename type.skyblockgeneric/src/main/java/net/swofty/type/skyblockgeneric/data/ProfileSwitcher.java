@@ -13,6 +13,7 @@ import net.swofty.type.generic.data.mongodb.ProfilesDatabase;
 import net.swofty.type.generic.data.mongodb.UserDatabase;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockScoreboard;
+import net.swofty.type.skyblockgeneric.event.actions.player.ActionPlayerChangeHypixelMenuDisplay;
 import net.swofty.type.skyblockgeneric.user.island.IslandHostLookup;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import org.bson.Document;
@@ -173,6 +174,7 @@ public final class ProfileSwitcher {
             }
 
             domain.applyToPlayer(player);
+            ActionPlayerChangeHypixelMenuDisplay.setMainMenu(player);
             HypixelConst.getTypeLoader().getTablistManager().nullifyCache(player);
             PlayerDataService.clearHandoff(player.getUuid());
             result.set(Result.SWITCHED);

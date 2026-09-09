@@ -36,10 +36,12 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/coopadd <player>` | — | Adds a player to your existing co-op. | DEFAULT | No | `type.skyblockgeneric` |
 | `/coopbank; /coopbank <deposit\|withdraw> <amount>` | `/cbank` | Deposits or withdraws from your co-op's shared bank account. Shared co-op bank; membership, balance, and amount checks apply. | DEFAULT | No | `type.skyblockgeneric` |
 | `/coopchat <message>` | `/cchat`, `/cc` | Sends a message to your co-op. | DEFAULT | No | `type.skyblockgeneric` |
-| `/coopcheck` | `/cooperativecheck` | Checks outgoing invites. Opens the relevant co-op invitation GUI; help incorrectly says /coop. | DEFAULT | No | `type.skyblockgeneric` |
+| `/coopcheck` | `/cooperativecheck` | Checks your pending co-op invite. Opens the relevant outgoing or incoming invitation GUI. | DEFAULT | No | `type.skyblockgeneric` |
+| `/coopclear` | — | Clears pending co-op invites. A member cancels the co-op's outgoing invites; an invited player clears their own incoming invite. | DEFAULT | No | `type.skyblockgeneric` |
 | `/coopkick <player>` | — | Kicks a player from your co-op. | DEFAULT | No | `type.skyblockgeneric` |
 | `/coopleave` | `/cooperativeleave` | Leaves the current coop. | DEFAULT | No | `type.skyblockgeneric` |
 | `/coopstats` | — | Shows each co-op member's mining/farming contribution. | DEFAULT | No | `type.skyblockgeneric` |
+| `/coopview <player>` | — | Shows the named player's current co-op members. | DEFAULT | No | `type.skyblockgeneric` |
 | `/coopvote <accept\|deny>` | — | Votes on an active co-op add/kick vote. | DEFAULT | No | `type.skyblockgeneric` |
 | `/ignore <add\|remove\|list> [player]` | — | Blocks a player from visiting your island. | DEFAULT | No | `type.skyblockgeneric` |
 | `/islandprivacy <public\|friends\|private>` | — | Sets who can visit your island. | DEFAULT | No | `type.skyblockgeneric` |

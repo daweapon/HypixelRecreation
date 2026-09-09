@@ -21,7 +21,7 @@ public class CoopStatsCommand extends HypixelCommand {
 
             SkyBlockPlayer player = (SkyBlockPlayer) sender;
             CoopDatabase.Coop coop = CoopDatabase.getFromMember(player.getUuid());
-            if (coop == null) {
+            if (!CoopDatabase.isMember(coop, player.getUuid())) {
                 player.sendMessage("<b>[Co-op] <c>You are not part of a co-op!");
                 return;
             }

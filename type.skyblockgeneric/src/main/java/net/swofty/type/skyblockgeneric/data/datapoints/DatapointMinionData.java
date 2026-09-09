@@ -5,7 +5,8 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
 
@@ -61,24 +62,24 @@ public class DatapointMinionData extends SkyBlockDatapoint<DatapointMinionData.P
     }
 
     public record ProfileMinionData(List<Map.Entry<String, List<Integer>>> craftedMinions) {
-        private static final Map<Integer, Integer> SLOTS_FOR_CRAFTED = new HashMap<>(Map.of(
-                0, 5,
-                5, 6,
-                11, 7
+        private static final NavigableMap<Integer, Integer> SLOTS_FOR_CRAFTED = new TreeMap<>(Map.ofEntries(
+                Map.entry(0, 5), Map.entry(5, 6), Map.entry(15, 7), Map.entry(30, 8),
+                Map.entry(50, 9), Map.entry(75, 10), Map.entry(100, 11), Map.entry(125, 12),
+                Map.entry(150, 13), Map.entry(175, 14), Map.entry(200, 15), Map.entry(225, 16),
+                Map.entry(250, 17), Map.entry(275, 18), Map.entry(300, 19), Map.entry(350, 20),
+                Map.entry(400, 21), Map.entry(450, 22), Map.entry(500, 23), Map.entry(550, 24),
+                Map.entry(600, 25), Map.entry(650, 26), Map.entry(700, 27)
         ));
 
         public int getUniqueMinions() {
-            // Check for every unique key in the map
-            return (int) craftedMinions.stream().map(Map.Entry::getKey).distinct().count();
+            return (int) craftedMinions.stream()
+                    .flatMap(entry -> entry.getValue().stream().map(tier -> entry.getKey() + ':' + tier))
+                    .distinct()
+                    .count();
         }
 
         public int getSlots() {
-            for (Map.Entry<Integer, Integer> entry : SLOTS_FOR_CRAFTED.entrySet()) {
-                if (getUniqueMinions() <= entry.getKey()) {
-                    return entry.getValue();
-                }
-            }
-            return 0;
+            return SLOTS_FOR_CRAFTED.floorEntry(getUniqueMinions()).getValue();
         }
     }
 }

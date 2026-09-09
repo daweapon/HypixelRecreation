@@ -29,6 +29,8 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
+import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
+import net.swofty.type.skyblockgeneric.potion.GodPotionService;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.island.IslandPrivacy;
@@ -617,7 +619,16 @@ public class SkyBlockDataHandler extends DataHandler {
                 DatapointStringList.class, new DatapointStringList("used_scrolls")),
 
         BOOSTER_COOKIE_EXPIRATION_DATE("booster_cookie_expiration_date", false, false, false,
-                DatapointLong.class, new DatapointLong("booster_cookie_expiration_date", 1L)),
+                DatapointLong.class, new DatapointLong("booster_cookie_expiration_date", 1L),
+                (player, datapoint) -> CookieBuffService.restore((SkyBlockPlayer) player)),
+
+        GOD_POTION_REMAINING_MS("god_potion_remaining_ms", false, false, false,
+                DatapointLong.class, new DatapointLong("god_potion_remaining_ms", 0L),
+                (player, datapoint) -> GodPotionService.restore((SkyBlockPlayer) player),
+                (player, datapoint) -> GodPotionService.synchronize((SkyBlockPlayer) player)),
+
+        GOD_POTION_LAST_UPDATED("god_potion_last_updated", false, false, false,
+                DatapointLong.class, new DatapointLong("god_potion_last_updated", 0L)),
 
         TRIAL_OF_FIRE_LEVEL("trial_of_fire_level", false, false, false,
                 DatapointInteger.class, new DatapointInteger("trial_of_fire_level", 0)),

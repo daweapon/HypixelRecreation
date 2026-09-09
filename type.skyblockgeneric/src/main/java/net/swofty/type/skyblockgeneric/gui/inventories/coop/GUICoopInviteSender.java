@@ -52,7 +52,6 @@ public class GUICoopInviteSender extends HypixelInventoryGUI implements Refreshi
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
 
                 CoopDatabase.Coop confirmed = CoopDatabase.update(coopId, latest -> {
-                    latest.memberInvites().clear();
                     if (!latest.members().contains(player.getUuid())) latest.members().add(player.getUuid());
                 });
                 if (confirmed == null) {
@@ -62,10 +61,7 @@ public class GUICoopInviteSender extends HypixelInventoryGUI implements Refreshi
                 }
                 coop = confirmed;
 
-                // The originator is already on the real shared island (registered as the first
-                // memberProfile when /coop was run) - confirming just locks in the invite list,
-                // it must not create another profile or switch them anywhere.
-                player.sendMessage("<b>[Co-op] <e>Your co-op is now locked in!");
+                player.sendMessage("<b>[Co-op] <e>Your co-op invites are still pending!");
                 player.closeInventory();
             }
 
@@ -84,7 +80,7 @@ public class GUICoopInviteSender extends HypixelInventoryGUI implements Refreshi
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
 
-                CoopDatabase.Coop cancelled = CoopDatabase.update(coopId, latest -> latest.removeInvite(player.getUuid()));
+                CoopDatabase.Coop cancelled = CoopDatabase.update(coopId, latest -> latest.memberInvites().clear());
                 if (cancelled != null) coop = cancelled;
 
                 player.closeInventory();

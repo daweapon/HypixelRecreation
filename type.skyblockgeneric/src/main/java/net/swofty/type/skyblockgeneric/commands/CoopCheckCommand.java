@@ -9,8 +9,8 @@ import net.swofty.type.skyblockgeneric.gui.inventories.coop.GUICoopInviteTarget;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "cooperativecheck coopcheck",
-        description = "Checks outgoing invites",
-        usage = "/coop",
+        description = "Checks your pending co-op invite",
+        usage = "/coopcheck",
         permission = Rank.DEFAULT,
         allowsConsole = false)
 public class CoopCheckCommand extends HypixelCommand {
@@ -27,16 +27,17 @@ public class CoopCheckCommand extends HypixelCommand {
                 return;
             }
 
+            if (coop.isOriginator(player.getUuid()) && !coop.memberInvites().isEmpty()) {
+                new GUICoopInviteSender(coop).open(player);
+                return;
+            }
+
             if (coop.members().contains(player.getUuid())) {
                 player.sendMessage("<b>[Co-op] <c>You are already in a co-op!");
                 return;
             }
 
-            if (coop.isOriginator(player.getUuid())) {
-                new GUICoopInviteSender(coop).open(player);
-            } else {
-                new GUICoopInviteTarget(coop).open(player);
-            }
+            new GUICoopInviteTarget(coop).open(player);
         });
     }
 }

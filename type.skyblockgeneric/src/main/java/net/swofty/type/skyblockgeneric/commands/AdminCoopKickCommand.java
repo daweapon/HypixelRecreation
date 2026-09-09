@@ -50,14 +50,15 @@ public class AdminCoopKickCommand extends HypixelCommand {
                 return;
             }
 
-            CoopKickCommand.performKick(admin, coop.coopUUID(), targetUuid, targetProfileId, targetName);
-
-            SkyBlockGenericLoader.getLoadedPlayers().stream()
-                    .filter(loaded -> loaded.getUuid().equals(targetUuid))
-                    .findFirst()
-                    .ifPresent(targetOnline -> targetOnline.sendMessage("<c><l>An Admin has kicked you off your coop!"));
-
-            admin.sendMessage("<e>Force-kicked {} from their co-op.", targetName);
+            CoopKickCommand.createFallbackProfile(targetUuid, targetProfileId);
+            CoopKickCommand.performKick(admin, coop.coopUUID(), targetUuid, targetProfileId, targetName)
+                    .thenAccept(kicked -> {
+                        if (kicked) {
+                            admin.sendMessage("<e>Force-kicked {} from their co-op.", targetName);
+                        } else {
+                            admin.sendMessage("<c>Could not force-kick {} from their co-op.", targetName);
+                        }
+                    });
         }, targetArg);
     }
 }

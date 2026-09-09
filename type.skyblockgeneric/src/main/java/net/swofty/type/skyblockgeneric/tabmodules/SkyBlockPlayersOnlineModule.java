@@ -25,10 +25,12 @@ public class SkyBlockPlayersOnlineModule extends TablistModule {
 
     public List<TablistEntry> getEntries(SkyBlockPlayer player) {
         Locale l = player.getLocale();
-        List<SkyBlockPlayer> players = SkyBlockGenericLoader.getLoadedPlayers();
+        List<SkyBlockPlayer> players = new ArrayList<>(SkyBlockGenericLoader.getLoadedPlayers());
+        int playerCount = players.size();
+        players.removeIf(loaded -> loaded.getUuid().equals(player.getUuid()));
 
         ArrayList<TablistEntry> entries = new ArrayList<>(List.of(
-                centered(Text.key("tablist.module.players", players.size()), l, TablistSkinRegistry.GREEN)
+                centered(Text.key("tablist.module.players", playerCount), l, TablistSkinRegistry.GREEN)
         ));
 
         List<SkyBlockPlayer> toShow = new ArrayList<>();

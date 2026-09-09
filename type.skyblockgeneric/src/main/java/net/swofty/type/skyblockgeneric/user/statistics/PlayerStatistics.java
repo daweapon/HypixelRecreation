@@ -59,6 +59,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Constructor;
 import java.util.*;
+import java.util.function.Predicate;
 
 public class PlayerStatistics {
     private static final Map<Player, BossBar> barCache = new HashMap<>();
@@ -636,6 +637,12 @@ public class PlayerStatistics {
 
     public void boostStatistic(TemporaryStatistic temporaryStatistic) {
         temporaryStatistics.add(temporaryStatistic);
+    }
+
+    public void removeTemporaryStatistics(Predicate<TemporaryStatistic> predicate) {
+        synchronized (temporaryStatistics) {
+            temporaryStatistics.removeIf(predicate);
+        }
     }
 
     /**

@@ -39,7 +39,7 @@ public class SkyBlockIsland {
     private static final AtomicBoolean shutdownHookRegistered = new AtomicBoolean();
 
     private final IslandDatabase database;
-    private final CoopDatabase.Coop coop;
+    private final UUID coopId;
     private final UUID islandID;
     private Boolean created = false;
     private volatile boolean discarded = false;
@@ -58,7 +58,8 @@ public class SkyBlockIsland {
     public SkyBlockIsland(UUID islandID, UUID profileID) {
         this.islandID = islandID;
         this.database = new IslandDatabase(islandID.toString());
-        this.coop = CoopDatabase.getFromMemberProfile(profileID);
+        CoopDatabase.Coop coop = CoopDatabase.getFromMemberProfile(profileID);
+        this.coopId = coop == null ? null : coop.coopUUID();
 
         loadedIslands.put(islandID, this);
     }
@@ -147,6 +148,7 @@ public class SkyBlockIsland {
     }
 
     private IslandLifecycleContext lifecycleContext() {
+        CoopDatabase.Coop coop = coopId == null ? null : CoopDatabase.get(coopId);
         List<SkyBlockPlayer> onlineMembers = IslandMembers.onlineMembers(islandID, coop);
         List<UUID> memberProfiles = IslandMembers.memberProfiles(islandID, coop);
         return new IslandLifecycleContext(this, coop != null, onlineMembers, memberProfiles);
@@ -178,6 +180,10 @@ public class SkyBlockIsland {
     public static @Nullable SkyBlockIsland getIsland(UUID islandID) {
         if (!loadedIslands.containsKey(islandID)) return null;
         return loadedIslands.get(islandID);
+    }
+
+    public @Nullable CoopDatabase.Coop getCoop() {
+        return coopId == null ? null : CoopDatabase.get(coopId);
     }
 
     public static boolean discard(UUID islandID) {

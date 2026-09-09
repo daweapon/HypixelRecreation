@@ -34,6 +34,7 @@ import net.swofty.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
 import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import org.jspecify.annotations.NonNull;
 
@@ -250,7 +251,9 @@ public class GUISkyBlockMenu extends StatelessView {
 
         layout.slot(51, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
-            Text status = player.isBoosterCookieActive() ? Text.of("<a>Active") : Text.of("<c>Not active!");
+            Text status = player.isBoosterCookieActive()
+                    ? Text.of("<a>Active <7>({})", CookieBuffService.formatRemaining(player))
+                    : Text.of("<c>Not active!");
             return ItemStacks.item(Material.COOKIE, 1,
                 Text.key("gui_sbmenu.main.booster_cookie"),
                 Text.keyLines("gui_sbmenu.main.booster_cookie.lore", status));
