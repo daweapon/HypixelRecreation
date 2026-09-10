@@ -7,6 +7,7 @@ import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.Material;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.StringUtility;
+import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
@@ -65,7 +66,11 @@ public class GUISkyBlockMenu extends StatelessView {
             List<String> statNames = new ArrayList<>(List.of("Health", "Defense", "Speed", "Strength", "Intelligence",
                 "Crit Chance", "Crit Damage", "Swing Range"
             ));
-            statistics.allStatistics().getOverall().forEach((statistic, value) -> {
+            List<Map.Entry<ItemStatistic, Double>> statisticEntries = new ArrayList<>(statistics.allStatistics().getOverall().entrySet());
+            statisticEntries.sort(Comparator.comparing(entry -> entry.getKey().name().endsWith("_WISDOM")));
+            statisticEntries.forEach(entry -> {
+                ItemStatistic statistic = entry.getKey();
+                Double value = entry.getValue();
                 if (!value.equals(statistic.getBaseAdditiveValue()) || statNames.contains(statistic.getDisplayName())) {
                     lore.add(Text.of(" <stat:{}> <f>{}{}", statistic.name(),
                         StringUtility.decimalify(value, 2), statistic.getSuffix()));

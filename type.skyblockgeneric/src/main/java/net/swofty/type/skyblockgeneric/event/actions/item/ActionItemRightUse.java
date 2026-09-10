@@ -21,6 +21,7 @@ public class ActionItemRightUse implements HypixelEventClass {
         SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
 
         if (item.hasComponent(InteractableComponent.class)) {
+            event.setCancelled(true);
             InteractableComponent interactableComponent = item.getComponent(InteractableComponent.class);
             interactableComponent.onRightClick(player, item);
         }
