@@ -38,7 +38,7 @@ public final class GodPotionService {
         }
         setRemaining(player, remaining + duration);
         applyEffects(player, remaining + duration);
-        item.setAmount(0);
+        player.setItemInMainHand(player.getItemInMainHand().withAmount(player.getItemInMainHand().amount() - 1));
         player.sendMessage("<a><bold>SIP! <e>The <c>God Potion <e>grants you powers for <b>{}h {}m<e>!",
                 (remaining + duration) / 3_600_000, ((remaining + duration) / 60_000) % 60);
     }

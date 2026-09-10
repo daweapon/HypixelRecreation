@@ -10,7 +10,11 @@ import net.swofty.type.generic.gui.v2.StatelessView;
 import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.skyblockgeneric.gui.inventories.GUIAnvil;
+import net.swofty.type.skyblockgeneric.gui.inventories.auction.GUIAuctionHouse;
+import net.swofty.type.skyblockgeneric.gui.inventories.bazaar.GUIBazaar;
 import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -115,7 +119,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /hex
 
-                {}""", menuAccessStatus));
+                """ + menuAccessStatus), (_, c) -> unavailable((SkyBlockPlayer) c.player(), "The Hex"));
         layout.slot(29, ItemStacks.item(Material.ENCHANTING_TABLE, """
                 <6>Enchantment Table
                 <7>Access an Enchantment Table from
@@ -126,7 +130,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /enchantingtable
 
-                {}""", menuAccessStatus));
+                """ + menuAccessStatus), (_, c) -> unavailable((SkyBlockPlayer) c.player(), "Enchantment Table"));
         layout.slot(30, ItemStacks.item(Material.ANVIL, """
                 <6>Anvil
                 <7>Access an Anvil from anywhere in
@@ -134,13 +138,13 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /anvil
 
-                {}""", menuAccessStatus));
+                """ + menuAccessStatus), (_, c) -> new GUIAnvil().open(c.player()));
         layout.slot(32, ItemStacks.item(Material.POTION, """
                 <a>Toggle Potion Effects
                 <7>Choose which of your potion effects
                 <7>are applied to you.
 
-                {}""", menuAccessStatus));
+                """ + menuAccessStatus), (_, c) -> unavailable((SkyBlockPlayer) c.player(), "Toggle Potion Effects"));
         layout.slot(33, ItemStacks.item(Material.GOLDEN_HORSE_ARMOR, """
                 <6>Auction House
                 <7>Access the Auction House menu from
@@ -148,7 +152,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /auctions
 
-                {}""", menuAccessStatus));
+                """ + menuAccessStatus), (_, c) -> new GUIAuctionHouse().open(c.player()));
         layout.slot(34, ItemStacks.head("c232e3820897429157619b0ee099fec0628f602fff12b695de54aef11d923ad7", """
                 <6>Bazaar
                 <7>Access the Bazaar from anywhere in
@@ -156,7 +160,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /bazaar
 
-                {}""", menuAccessStatus));
+                """ + menuAccessStatus), (_, c) -> new GUIBazaar(BazaarCategories.FARMING).open(c.player()));
 
         layout.slot(50, ItemStacks.item(Material.EMERALD, """
                 <a>SkyBlock Gems
@@ -172,5 +176,9 @@ public class GUIBoosterCookie extends StatelessView {
                 <8>webstore at <b>store.hypixel.net<8>!
 
                 <e>Click to get link!""", gems));
+    }
+
+    private static void unavailable(SkyBlockPlayer player, String feature) {
+        player.sendMessage("<c>{} has not been added yet. Yell at <6>daweapon<c> to get it added!", feature);
     }
 }

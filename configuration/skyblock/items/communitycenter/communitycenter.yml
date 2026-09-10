@@ -85,27 +85,14 @@ items:
     name: "God Potion"
     rarity: SPECIAL
     lore:
-      - "\u00a77Consume this potion to receive"
-      - "\u00a77all of the following effects for"
-      - "\u00a7a12 hours\u00a77. Duration increases with"
-      - "\u00a77your Alchemy level and stacks up"
-      - "\u00a77to \u00a7a192 hours\u00a77."
+      - "\u00a77Consume this potion to receive an"
+      - "\u00a77assortment of positive \u00a7dpotion effects\u00a77!"
       - ''
-      - "\u00a79Critical IV \u00a77| \u00a7aRegeneration IX"
-      - "\u00a7cStrength VIII \u00a77| \u00a7aAgility IV"
-      - "\u00a79Night Vision I \u00a77| \u00a7eAbsorption VIII"
-      - "\u00a76Burning IV \u00a77| \u00a7cStun IV \u00a77| \u00a7aDodge IV"
-      - "\u00a7aExperience IV \u00a77| \u00a7bMana VIII"
-      - "\u00a79Speed VIII \u00a77| \u00a7bWater Breathing VI"
-      - "\u00a7dAlchemy, Combat, Enchanting,"
-      - "\u00a7dFarming, Fishing, Foraging, and"
-      - "\u00a7dMining XP Boost III"
-      - "\u00a7aRabbit VI \u00a77| \u00a7aResistance VIII"
-      - "\u00a7aArchery IV \u00a77| \u00a7aJump Boost IV"
-      - "\u00a7bMagic Find IV \u00a77| \u00a7bPet Luck IV"
-      - "\u00a7fSpirit IV \u00a77| \u00a76Spelunker V"
-      - "\u00a7cAdrenaline VIII \u00a77| \u00a7cFire Resistance I"
-      - "\u00a7eHaste IV \u00a77| \u00a7bTrue Resistance IV"
+      - "\u00a77Duration: \u00a7a12h 0m"
+      - ''
+      - "\u00a77The duration of God Potions can be stacked!"
+      - ''
+      - "\u00a7eRight-click to consume!"
     components:
       - id: SKULL_HEAD
         texture: 60226d4c1d30fbebecae939da900603e4cd0fed8592a1bb3e11f9ac92391a45a
