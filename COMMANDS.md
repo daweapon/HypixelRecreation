@@ -60,6 +60,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/calendar` | — | Opens the SkyBlock Calendar. | DEFAULT | No | `type.skyblockgeneric` |
 | `/chocolatefactory` | `/cf`, `/factory` | Opens the Chocolate Factory menu. | DEFAULT | No | `type.skyblockgeneric` |
 | `/clearstash [confirm]` | — | Clear your stash. Confirmation is required before deleting the stash. | DEFAULT | No | `type.skyblockgeneric` |
+| `/etable` | `/et`, `/enchantingtable`, `/enchantmenttable`, `/enchantingtablemenu`, `/enchantmenttablemenu` | Opens an Enchantment Table remotely. Requires an active Booster Cookie. | DEFAULT | No | `type.skyblockgeneric` |
 | `/help [page\|command]` | — | Alphabetical chat command list, eight per page, with clickable navigation. Click a command or look up its alias for usage and aliases. Filters by minimum rank and loaded game-server commands; includes proxy travel commands. | DEFAULT | No | `type.generic` |
 | `/huntingbox` | `/hb` | Opens your Hunting Box. | DEFAULT | No | `type.skyblockgeneric` |
 | `/pickupstash [item\|material]` | — | Pickup items from your stash. | DEFAULT | No | `type.skyblockgeneric` |
@@ -184,7 +185,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | Command / syntax | Aliases | Purpose and notes | Minimum rank | Console declared | Module |
 | --- | --- | --- | --- | --- | --- |
 | `/addcrystal <itemType>` | `/spawncrystal` | Spawns in a crystal at the player's location. Item must provide the orb and skull components the handler uses. | STAFF | No | `type.skyblockgeneric` |
-| `/adminbypass <event>`<br>`/adminbypass auction [uuid]`<br>`/adminbypass bin_grace [uuid]` | `/jumptonextevent`, `/skiptoevent` | Skips the selected SkyBlock calendar timer, ends an active Auction House listing, or removes a BIN listing's 20-second purchase grace period. Omitting the UUID targets your newest owned auction; console use requires it. Event IDs are suggested by the command. | STAFF | Yes | `type.skyblockgeneric` |
+| `/adminbypass <event>`<br>`/adminbypass auction [uuid]`<br>`/adminbypass bin_grace [uuid]`<br>`/adminbypass <auctionhouse\|bazaar\|bank\|etable>` | `/jumptonextevent`, `/skiptoevent` | Skips the selected SkyBlock calendar timer, ends an active Auction House listing, removes a BIN listing's 20-second purchase grace period, or opens a Cookie-gated menu without an active Booster Cookie. Omitting the UUID targets your newest owned auction; the Cookie-menu bypasses require an in-game player. Event IDs are suggested by the command. | STAFF | Yes | `type.skyblockgeneric` |
 | `/build` | `/buildmode` | Toggles whether or not you are in build mode. | STAFF | No | `type.skyblockgeneric` |
 | `/deleteorb` | — | Deletes orbs at the player's location.  Help uses /removeorb, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
 | `/forcedarkauction` | — | Force starts a Dark Auction. | STAFF | No | `type.skyblockgeneric` |

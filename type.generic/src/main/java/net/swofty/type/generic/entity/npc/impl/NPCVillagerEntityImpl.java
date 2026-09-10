@@ -7,9 +7,13 @@ import net.minestom.server.entity.metadata.villager.VillagerMeta;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.item.ItemStack;
 import net.swofty.commons.text.Text;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.kyori.adventure.translation.GlobalTranslator;
 import net.swofty.type.generic.entity.hologram.PlayerHolograms;
 import net.swofty.type.generic.entity.npc.NPCMovementController;
 import net.swofty.type.generic.entity.npc.configuration.VillagerConfiguration;
+import net.swofty.type.generic.text.HypixelTextRenderer;
+import net.swofty.type.generic.text.RenderContext;
 import net.swofty.type.generic.user.HypixelPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
@@ -118,7 +122,8 @@ public class NPCVillagerEntityImpl extends EntityCreature implements NPCViewable
         }
 
         String[] newHolograms = config.hologramTexts(viewer).stream()
-                .map(Text::serialize)
+                .map(text -> LegacyComponentSerializer.legacySection().serialize(
+                        GlobalTranslator.render(HypixelTextRenderer.render(text.asComponent(), RenderContext.of(viewer)), viewer.getLocale())))
                 .toArray(String[]::new);
         if (!Arrays.equals(newHolograms, holograms)) {
             PlayerHolograms.updateExternalPlayerHologramText(holo, newHolograms);

@@ -14,11 +14,16 @@ import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
+import net.swofty.type.skyblockgeneric.gui.inventories.GUIEnchantmentTable;
+import net.swofty.type.skyblockgeneric.gui.inventories.auction.GUIAuctionHouse;
+import net.swofty.type.skyblockgeneric.gui.inventories.banker.GUIBanker;
+import net.swofty.type.skyblockgeneric.gui.inventories.bazaar.GUIBazaar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "adminbypass jumptonextevent skiptoevent",
         description = "Skips the timer to the next occurrence of a SkyBlock event",
-        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]",
+        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable",
         permission = Rank.STAFF,
         allowsConsole = true)
 public class AdminBypassCommand extends HypixelCommand {
@@ -75,6 +80,24 @@ public class AdminBypassCommand extends HypixelCommand {
                 AuctionAdminBypassProtocol.Timer.AUCTION_END), ArgumentType.Literal("auction"));
         command.addSyntax((sender, context) -> skipNewestOwnedAuction(sender,
                 AuctionAdminBypassProtocol.Timer.BIN_GRACE), ArgumentType.Literal("bin_grace"));
+        command.addSyntax((sender, context) -> openCookieMenu(sender, "Auction House"), ArgumentType.Literal("auctionhouse"));
+        command.addSyntax((sender, context) -> openCookieMenu(sender, "Bazaar"), ArgumentType.Literal("bazaar"));
+        command.addSyntax((sender, context) -> openCookieMenu(sender, "Bank"), ArgumentType.Literal("bank"));
+        command.addSyntax((sender, context) -> openCookieMenu(sender, "Enchantment Table"), ArgumentType.Literal("etable"));
+    }
+
+    private static void openCookieMenu(net.minestom.server.command.CommandSender sender, String menu) {
+        if (!(sender instanceof SkyBlockPlayer player)) {
+            sender.sendMessage("<c>This admin bypass requires an in-game player.");
+            return;
+        }
+        switch (menu) {
+            case "Auction House" -> new GUIAuctionHouse().open(player);
+            case "Bazaar" -> new GUIBazaar(BazaarCategories.FARMING).open(player);
+            case "Bank" -> new GUIBanker().open(player);
+            case "Enchantment Table" -> new GUIEnchantmentTable(player.getInstance(), player.getPosition()).open(player);
+            default -> throw new IllegalArgumentException("Unknown Cookie-gated menu: " + menu);
+        }
     }
 
     private static void skipNewestOwnedAuction(net.minestom.server.command.CommandSender sender,

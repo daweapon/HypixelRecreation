@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIAnvil;
+import net.swofty.type.skyblockgeneric.gui.inventories.GUIEnchantmentTable;
 import net.swofty.type.skyblockgeneric.gui.inventories.auction.GUIAuctionHouse;
 import net.swofty.type.skyblockgeneric.gui.inventories.bazaar.GUIBazaar;
 import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
@@ -129,7 +130,8 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /enchantingtable
 
-                """ + menuAccessStatus), (_, c) -> unavailable((SkyBlockPlayer) c.player(), "Enchantment Table"));
+                """ + menuAccessStatus), (_, c) -> openIfActive((SkyBlockPlayer) c.player(),
+                        p -> new GUIEnchantmentTable(p.getInstance(), p.getPosition()).open(p)));
         layout.slot(30, ItemStacks.item(Material.ANVIL, """
                 <6>Anvil
                 <7>Access an Anvil from anywhere in

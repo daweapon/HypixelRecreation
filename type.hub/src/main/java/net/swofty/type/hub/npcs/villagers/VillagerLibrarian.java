@@ -17,7 +17,7 @@ public class VillagerLibrarian extends HypixelNPC {
         super(new VillagerConfiguration(){
             @Override
             public String[] holograms(HypixelPlayer player) {
-                return new String[]{"&fLibrarian", "<e><l>CLICK"};
+                return new String[]{"<f>Librarian", "<e><l>CLICK"};
             }
 
             @Override
