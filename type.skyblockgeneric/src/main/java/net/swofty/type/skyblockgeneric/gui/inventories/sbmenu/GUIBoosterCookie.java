@@ -11,6 +11,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // GUI showing Booster Cookie status and buff info from the SkyBlock menu
@@ -30,6 +31,9 @@ public class GUIBoosterCookie extends StatelessView {
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         SkyBlockDataHandler handler = player.getSkyblockDataHandler();
         int gems = handler.get(SkyBlockDataHandler.Data.GEMS, DatapointInteger.class).getValue();
+        String cookieStatus = player.isBoosterCookieActive()
+                ? "<7>Status: <a>Active <7>(<a>" + CookieBuffService.formatRemaining(player) + "<7>)"
+                : "<c>You do not currently have a\n<c>Booster Cookie active!";
 
         layout.slot(11, ItemStacks.item(Material.DIAMOND, """
                 <b>Bits
@@ -75,8 +79,7 @@ public class GUIBoosterCookie extends StatelessView {
                 <8>‣ <7>Allows consuming <9>Mixins <7>directly from your inventory
                 <8>‣ <7>Call <3>Abiphone Contacts <7>with <b>/call
 
-                <c>You do not currently have a
-                <c>Booster Cookie active!
+                {}
 
                 <7>Cost
                 <a>325 SkyBlock Gems
@@ -84,7 +87,7 @@ public class GUIBoosterCookie extends StatelessView {
                 <7>You have: <a>{} Gems
 
                 <c>You cannot afford this!
-                <e>Click to get store info!""", gems));
+                <e>Click to get store info!""", cookieStatus, gems));
         layout.slot(15, ItemStacks.item(Material.GOLDEN_HELMET, """
                 <e>Fame Rank
                 <7>Earn fame by <6>contributing to city
