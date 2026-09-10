@@ -34,6 +34,7 @@ public class GUIBoosterCookie extends StatelessView {
         String cookieStatus = player.isBoosterCookieActive()
                 ? "<7>Status: <a>Active <7>(<a>" + CookieBuffService.formatRemaining(player) + "<7>)"
                 : "<c>You do not currently have a\n<c>Booster Cookie active!";
+        String menuAccessStatus = player.isBoosterCookieActive() ? "<e>Click to view!" : "<c>Requires Cookie Buff!";
 
         layout.slot(11, ItemStacks.item(Material.DIAMOND, """
                 <b>Bits
@@ -114,7 +115,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /hex
 
-                <c>Requires Cookie Buff!"""));
+                {}""", menuAccessStatus));
         layout.slot(29, ItemStacks.item(Material.ENCHANTING_TABLE, """
                 <6>Enchantment Table
                 <7>Access an Enchantment Table from
@@ -125,7 +126,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /enchantingtable
 
-                <c>Requires Cookie Buff!"""));
+                {}""", menuAccessStatus));
         layout.slot(30, ItemStacks.item(Material.ANVIL, """
                 <6>Anvil
                 <7>Access an Anvil from anywhere in
@@ -133,13 +134,13 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /anvil
 
-                <c>Requires Cookie Buff!"""));
+                {}""", menuAccessStatus));
         layout.slot(32, ItemStacks.item(Material.POTION, """
                 <a>Toggle Potion Effects
                 <7>Choose which of your potion effects
                 <7>are applied to you.
 
-                <c>Requires Cookie Buff!"""));
+                {}""", menuAccessStatus));
         layout.slot(33, ItemStacks.item(Material.GOLDEN_HORSE_ARMOR, """
                 <6>Auction House
                 <7>Access the Auction House menu from
@@ -147,7 +148,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /auctions
 
-                <c>Requires Cookie Buff!"""));
+                {}""", menuAccessStatus));
         layout.slot(34, ItemStacks.head("c232e3820897429157619b0ee099fec0628f602fff12b695de54aef11d923ad7", """
                 <6>Bazaar
                 <7>Access the Bazaar from anywhere in
@@ -155,7 +156,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /bazaar
 
-                <c>Requires Cookie Buff!"""));
+                {}""", menuAccessStatus));
 
         layout.slot(50, ItemStacks.item(Material.EMERALD, """
                 <a>SkyBlock Gems
