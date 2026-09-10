@@ -22,7 +22,7 @@ public class EnchantmentTableCommand extends HypixelCommand {
                 player.sendMessage("<c>You need an active Booster Cookie to use /etable!");
                 return;
             }
-            new GUIEnchantmentTable(player.getInstance(), player.getPosition()).open(player);
+            new GUIEnchantmentTable().open(player);
         });
     }
 }

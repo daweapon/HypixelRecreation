@@ -47,6 +47,11 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
 
     private final int bookshelfPower;
 
+    public GUIEnchantmentTable() {
+        super(Text.key("gui_enchantment.title"), InventoryType.CHEST_6_ROW);
+        this.bookshelfPower = 60;
+    }
+
     public GUIEnchantmentTable(Instance instance, Pos enchantmentTable) {
         super(Text.key("gui_enchantment.title"), InventoryType.CHEST_6_ROW);
 

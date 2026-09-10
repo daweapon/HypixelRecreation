@@ -26,7 +26,7 @@ public final class CookieBuffService {
 
     public static String formatRemaining(SkyBlockPlayer player) {
         long remaining = Math.max(0, player.getBoosterCookieExpirationDate() - System.currentTimeMillis());
-        long days = remaining / DURATION_MS;
+        long days = remaining / (24L * 60 * 60 * 1000);
         long hours = (remaining / 3_600_000) % 24;
         long minutes = (remaining / 60_000) % 60;
         return days > 0 ? days + "d " + hours + "h" : hours + "h " + minutes + "m";

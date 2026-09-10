@@ -95,7 +95,7 @@ public class AdminBypassCommand extends HypixelCommand {
             case "Auction House" -> new GUIAuctionHouse().open(player);
             case "Bazaar" -> new GUIBazaar(BazaarCategories.FARMING).open(player);
             case "Bank" -> new GUIBanker().open(player);
-            case "Enchantment Table" -> new GUIEnchantmentTable(player.getInstance(), player.getPosition()).open(player);
+            case "Enchantment Table" -> new GUIEnchantmentTable().open(player);
             default -> throw new IllegalArgumentException("Unknown Cookie-gated menu: " + menu);
         }
     }

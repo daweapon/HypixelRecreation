@@ -131,7 +131,7 @@ public class GUIBoosterCookie extends StatelessView {
                 <8>Also accessible via /enchantingtable
 
                 """ + menuAccessStatus), (_, c) -> openIfActive((SkyBlockPlayer) c.player(),
-                        p -> new GUIEnchantmentTable(p.getInstance(), p.getPosition()).open(p)));
+                        p -> new GUIEnchantmentTable().open(p)));
         layout.slot(30, ItemStacks.item(Material.ANVIL, """
                 <6>Anvil
                 <7>Access an Anvil from anywhere in
