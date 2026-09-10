@@ -82,7 +82,7 @@ public enum PotionEffectType {
                     .build(),
             null),
 
-    SPELUNKER("Spelunker", PotionEffectCategory.BUFF, 4, 180,
+    SPELUNKER("Spelunker", PotionEffectCategory.BUFF, 5, 180,
             level -> ItemStatistics.builder()
                     .withBase(ItemStatistic.MINING_FORTUNE, 5.0 + (level - 1) * 6.67) // +5 to +25 Mining Fortune
                     .build(),

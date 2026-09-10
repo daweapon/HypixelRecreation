@@ -29,6 +29,23 @@ items:
     material: cookie
     name: "Booster Cookie"
     rarity: LEGENDARY
+    lore:
+      - "\u00a77Consume to gain the \u00a7dCookie Buff"
+      - "\u00a77for \u00a7a4 days\u00a77. Multiple cookies"
+      - "\u00a77can be consumed to increase the"
+      - "\u00a77duration."
+      - ''
+      - "\u00a7dCookie Buff:"
+      - "\u00a78\u2023 \u00a77Ability to gain \u00a7bBits\u00a77!"
+      - "\u00a78\u2023 \u00a73+25\u262f \u00a77on all \u00a73Wisdom \u00a77stats"
+      - "\u00a78\u2023 \u00a7b+15\u272f \u00a77Magic Find"
+      - "\u00a78\u2023 \u00a77Keep \u00a76coins \u00a77on death"
+      - "\u00a78\u2023 \u00a7ePermafly \u00a77on private islands"
+      - "\u00a78  \u00a77and gardens"
+      - "\u00a78\u2023 \u00a77Access Cookie Buff menus and"
+      - "\u00a78  \u00a77commands anywhere in SkyBlock"
+      - "\u00a78\u2023 \u00a77AFK \u00a7aimmunity \u00a77on your island"
+      - "\u00a78  \u00a77and garden"
     components:
       - id: INTERACTABLE
         handler_id: BOOSTER_COOKIE_INTERACT
@@ -61,6 +78,28 @@ items:
     material: player_head
     name: "God Potion"
     rarity: SPECIAL
+    lore:
+      - "\u00a77Consume this potion to receive"
+      - "\u00a77all of the following effects for"
+      - "\u00a7a12 hours\u00a77. Duration increases with"
+      - "\u00a77your Alchemy level and stacks up"
+      - "\u00a77to \u00a7a192 hours\u00a77."
+      - ''
+      - "\u00a79Critical IV \u00a77| \u00a7aRegeneration IX"
+      - "\u00a7cStrength VIII \u00a77| \u00a7aAgility IV"
+      - "\u00a79Night Vision I \u00a77| \u00a7eAbsorption VIII"
+      - "\u00a76Burning IV \u00a77| \u00a7cStun IV \u00a77| \u00a7aDodge IV"
+      - "\u00a7aExperience IV \u00a77| \u00a7bMana VIII"
+      - "\u00a79Speed VIII \u00a77| \u00a7bWater Breathing VI"
+      - "\u00a7dAlchemy, Combat, Enchanting,"
+      - "\u00a7dFarming, Fishing, Foraging, and"
+      - "\u00a7dMining XP Boost III"
+      - "\u00a7aRabbit VI \u00a77| \u00a7aResistance VIII"
+      - "\u00a7aArchery IV \u00a77| \u00a7aJump Boost IV"
+      - "\u00a7bMagic Find IV \u00a77| \u00a7bPet Luck IV"
+      - "\u00a7fSpirit IV \u00a77| \u00a76Spelunker V"
+      - "\u00a7cAdrenaline VIII \u00a77| \u00a7cFire Resistance I"
+      - "\u00a7eHaste IV \u00a77| \u00a7bTrue Resistance IV"
     components:
       - id: SKULL_HEAD
         texture: 60226d4c1d30fbebecae939da900603e4cd0fed8592a1bb3e11f9ac92391a45a
