@@ -18,6 +18,8 @@ import net.swofty.type.skyblockgeneric.gui.inventories.bazaar.GUIBazaar;
 import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.util.function.Consumer;
+
 // GUI showing Booster Cookie status and buff info from the SkyBlock menu
 public class GUIBoosterCookie extends StatelessView {
 
@@ -84,15 +86,12 @@ public class GUIBoosterCookie extends StatelessView {
                 <8>‣ <7>Allows consuming <9>Mixins <7>directly from your inventory
                 <8>‣ <7>Call <3>Abiphone Contacts <7>with <b>/call
 
-                {}
+                """ + cookieStatus + """
 
                 <7>Cost
                 <a>325 SkyBlock Gems
 
-                <7>You have: <a>{} Gems
-
-                <c>You cannot afford this!
-                <e>Click to get store info!""", cookieStatus, gems));
+                <7>You have: <a>""" + gems + " Gems\n\n<c>You cannot afford this!\n<e>Click to get store info!"));
         layout.slot(15, ItemStacks.item(Material.GOLDEN_HELMET, """
                 <e>Fame Rank
                 <7>Earn fame by <6>contributing to city
@@ -138,7 +137,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /anvil
 
-                """ + menuAccessStatus), (_, c) -> new GUIAnvil().open(c.player()));
+                """ + menuAccessStatus), (_, c) -> openIfActive((SkyBlockPlayer) c.player(), p -> new GUIAnvil().open(p)));
         layout.slot(32, ItemStacks.item(Material.POTION, """
                 <a>Toggle Potion Effects
                 <7>Choose which of your potion effects
@@ -152,7 +151,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /auctions
 
-                """ + menuAccessStatus), (_, c) -> new GUIAuctionHouse().open(c.player()));
+                """ + menuAccessStatus), (_, c) -> openIfActive((SkyBlockPlayer) c.player(), p -> new GUIAuctionHouse().open(p)));
         layout.slot(34, ItemStacks.head("c232e3820897429157619b0ee099fec0628f602fff12b695de54aef11d923ad7", """
                 <6>Bazaar
                 <7>Access the Bazaar from anywhere in
@@ -160,7 +159,7 @@ public class GUIBoosterCookie extends StatelessView {
 
                 <8>Also accessible via /bazaar
 
-                """ + menuAccessStatus), (_, c) -> new GUIBazaar(BazaarCategories.FARMING).open(c.player()));
+                """ + menuAccessStatus), (_, c) -> openIfActive((SkyBlockPlayer) c.player(), p -> new GUIBazaar(BazaarCategories.FARMING).open(p)));
 
         layout.slot(50, ItemStacks.item(Material.EMERALD, """
                 <a>SkyBlock Gems
@@ -180,5 +179,13 @@ public class GUIBoosterCookie extends StatelessView {
 
     private static void unavailable(SkyBlockPlayer player, String feature) {
         player.sendMessage("<c>{} has not been added yet. Yell at <6>daweapon<c> to get it added!", feature);
+    }
+
+    private static void openIfActive(SkyBlockPlayer player, Consumer<SkyBlockPlayer> action) {
+        if (!player.isBoosterCookieActive()) {
+            player.sendMessage("<c>You need an active Booster Cookie to use this!");
+            return;
+        }
+        action.accept(player);
     }
 }
