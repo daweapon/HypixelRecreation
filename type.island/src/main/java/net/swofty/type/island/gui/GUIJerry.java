@@ -57,7 +57,7 @@ public class GUIJerry extends HypixelInventoryGUI {
                         <7>yourself or your island will appear
                         <7>here for collection!
 
-                        <e>Click to open!""");
+                        <e>Click to check!""");
             }
         });
 

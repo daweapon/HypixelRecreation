@@ -4,7 +4,7 @@ items:
     name: "Odgers Bronze Tooth"
     rarity: COMMON
     lore:
-      - '%%dark_gray%%%%italic%%A perfectly fine tooth, besides some wear and tear...'
+      - '<8><o>A perfectly fine tooth, besides some wear and tear...'
     default_statistics:
       sea_creature_chance: 0.5
     components:
@@ -22,7 +22,7 @@ items:
     name: "Odgers Silver Tooth"
     rarity: UNCOMMON
     lore:
-      - '%%dark_gray%%%%italic%%A perfectly fine tooth, besides a broken chunk...'
+      - '<8><o>A perfectly fine tooth, besides a broken chunk...'
     default_statistics:
       sea_creature_chance: 1
     components:
@@ -40,7 +40,7 @@ items:
     name: "Odgers Gold Tooth"
     rarity: RARE
     lore:
-      - '%%dark_gray%%%%italic%%A perfectly fine tooth, besides its weight...'
+      - '<8><o>A perfectly fine tooth, besides its weight...'
     default_statistics:
       sea_creature_chance: 1.5
     components:
@@ -58,7 +58,7 @@ items:
     name: "Odgers Diamond Tooth"
     rarity: EPIC
     lore:
-      - '%%dark_gray%%%%italic%%A perfectly fine tooth, besides its radiant brightness...'
+      - '<8><o>A perfectly fine tooth, besides its radiant brightness...'
     default_statistics:
       sea_creature_chance: 2
     components:

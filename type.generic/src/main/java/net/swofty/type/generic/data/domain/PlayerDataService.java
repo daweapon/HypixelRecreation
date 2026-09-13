@@ -159,7 +159,14 @@ public final class PlayerDataService {
     }
 
     public static void applyAll(ServerType type, HypixelPlayer player) {
-        for (PlayerDataDomain<?> domain : active(type)) domain.applyToPlayer(player);
+        for (PlayerDataDomain<?> domain : active(type)) {
+            try {
+                domain.applyToPlayer(player);
+            } catch (Exception e) {
+                Logger.error("Failed to apply data domain {} to player {}, skipping so remaining domains still load",
+                        domain.getClass().getSimpleName(), player.getUuid(), e);
+            }
+        }
     }
 
     public static void saveAndUnloadAll(ServerType type, HypixelPlayer player) {

@@ -187,6 +187,25 @@ public class ItemAttributeHandler {
         }
     }
 
+    public List<String> getAppliedScrolls() {
+        if (item.hasComponent(NecronsBladeScrollComponent.class)) {
+            return ((ItemAttributeAppliedScrolls) item.getAttribute("applied_scrolls")).getValue();
+        } else {
+            return List.of();
+        }
+    }
+
+    public void addAppliedScroll(String scrollId) {
+        if (item.hasComponent(NecronsBladeScrollComponent.class)) {
+            List<String> scrolls = new ArrayList<>(getAppliedScrolls());
+            scrolls.remove(scrollId);
+            scrolls.add(scrollId);
+            ((ItemAttributeAppliedScrolls) item.getAttribute("applied_scrolls")).setValue(scrolls);
+        } else {
+            throw new RuntimeException("Item does not support Necron's Blade Scrolls");
+        }
+    }
+
     public void setPetData(ItemAttributePetData.PetData data) {
         if (item.hasComponent(PetComponent.class)) {
             ((ItemAttributePetData) item.getAttribute("pet_data")).setValue(data);

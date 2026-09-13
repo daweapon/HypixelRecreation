@@ -66,6 +66,7 @@ public class ActionPlayerInventoryClick implements HypixelEventClass {
 
             if (!gui.allowHotkeying() && isHotKey(event)) {
                 event.setCancelled(true);
+                player.sendActionBar(net.kyori.adventure.text.Component.text("You can't do that here! Place items one at a time.", net.kyori.adventure.text.format.NamedTextColor.RED));
                 return;
             }
 
@@ -83,6 +84,7 @@ public class ActionPlayerInventoryClick implements HypixelEventClass {
                     event.setCancelled(true);
                 } else if (!gui.allowHotkeying() && isHotKey(event)) {
                     event.setCancelled(true);
+                    player.sendActionBar(net.kyori.adventure.text.Component.text("You can't do that here! Place items one at a time.", net.kyori.adventure.text.format.NamedTextColor.RED));
                     return;
                 }
 

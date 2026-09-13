@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.EnchantableComponent;
 import net.swofty.type.skyblockgeneric.item.components.HotPotatoableComponent;
+import net.swofty.type.skyblockgeneric.item.components.NecronsBladeScrollComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.groups.EnchantItemGroups;
 import net.minestom.server.item.Material;
@@ -114,6 +115,21 @@ public class AnvilCombineRegistry {
                     player.sendMessage("<a>Applied Dark Purple Dye! <7>(<b>-100 Bits<7>)");
                     return true; // Proceed with craft
                 }
+        ));
+
+        registerScroll("IMPLOSION_SCROLL", "IMPLOSION");
+        registerScroll("SHADOW_WARP_SCROLL", "SHADOW_WARP");
+        registerScroll("WITHER_SHIELD_SCROLL", "WITHER_SHIELD");
+    }
+
+    // Necron's Blade Scrolls: consumed to permanently grant the target weapon one of the three
+    // scroll abilities, which combine into Wither Impact once all three have been applied.
+    private static void registerScroll(String handlerId, String scrollAbilityId) {
+        register(handlerId, new AnvilCombineHandler(
+                (upgradeItem, sacrificeItem) -> upgradeItem.getAttributeHandler().addAppliedScroll(scrollAbilityId),
+                (player, upgradeItem, sacrificeItem) -> upgradeItem.hasComponent(NecronsBladeScrollComponent.class)
+                        && !upgradeItem.getAttributeHandler().getAppliedScrolls().contains(scrollAbilityId),
+                (upgradeItem, sacrificeItem, player) -> 0
         ));
     }
 

@@ -582,6 +582,9 @@ public class SkyBlockDataHandler extends DataHandler {
         GEMS("gems", false, false, false,
                 DatapointInteger.class, new DatapointInteger("gems", 0)),
 
+        FAME("fame", false, false, false,
+                DatapointInteger.class, new DatapointInteger("fame", 0)),
+
         MUSEUM_DATA("museum_data", false, false, false,
                 DatapointMuseum.class, new DatapointMuseum("museum_data"),
                 (player, datapoint) -> {

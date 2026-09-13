@@ -10,10 +10,12 @@ import net.swofty.type.generic.data.mongodb.UserDatabase;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.*;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
+import net.swofty.commons.skyblock.IslandStorage;
 import net.swofty.type.skyblockgeneric.data.ProfileSwitcher;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 
 import java.util.UUID;
 
@@ -65,6 +67,8 @@ public class GUIProfileSelect extends StatelessView {
                     profiles.removeProfile(profileUuid);
                     new UserDatabase(player.getUuid()).saveProfiles(profiles);
 
+                    UUID islandId = ProfileSwitcher.islandOf(profileUuid);
+
                     try {
                         SkyBlockDataHandler handler = SkyBlockDataHandler.createFromProfileOnly(new ProfilesDatabase(profileUuid.toString()).getDocument());
                         player.sendMessage(Text.key("gui_sbmenu.profiles.select.msg.deleted",
@@ -74,6 +78,14 @@ public class GUIProfileSelect extends StatelessView {
                     }
 
                     ProfilesDatabase.deleteDocument(profileUuid.toString());
+
+                    SkyBlockIsland island = SkyBlockIsland.getIsland(islandId);
+                    if (island != null) {
+                        SkyBlockIsland.discard(islandId);
+                        island.runVacantCheck();
+                    }
+                    IslandStorage.delete(islandId);
+
                     player.openView(new GUIProfileManagement());
                 });
     }

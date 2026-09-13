@@ -266,6 +266,7 @@ items:
       ferocity: 30
       intelligence: 50
     components:
+      - id: NECRONS_BLADE_SCROLLABLE
       - id: STANDARD_ITEM
         standard_item_type: SWORD
       - id: DUNGEON_ITEM
@@ -1486,9 +1487,7 @@ items:
       - Grants <c>+1 ❁ Damage <7>and <a>+2 <b>✎
       - <b>Intelligence <7>per <c>Catacombs <7>level.
     components:
-      - id: ABILITY
-        abilities:
-          - WITHER_IMPACT
+      - id: NECRONS_BLADE_SCROLLABLE
       - id: MUSEUM
         museum_category: WEAPONS
       - id: TRACKED_UNIQUE
@@ -1861,6 +1860,7 @@ items:
       ferocity: 30
       intelligence: 50
     components:
+      - id: NECRONS_BLADE_SCROLLABLE
       - id: STANDARD_ITEM
         standard_item_type: SWORD
       - id: DUNGEON_ITEM
@@ -2249,6 +2249,7 @@ items:
       ferocity: 30
       intelligence: 50
     components:
+      - id: NECRONS_BLADE_SCROLLABLE
       - id: STANDARD_ITEM
         standard_item_type: SWORD
       - id: DUNGEON_ITEM
@@ -3233,6 +3234,7 @@ items:
       ferocity: 60
       intelligence: 60
     components:
+      - id: NECRONS_BLADE_SCROLLABLE
       - id: STANDARD_ITEM
         standard_item_type: SWORD
       - id: DUNGEON_ITEM

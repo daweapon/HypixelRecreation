@@ -15,6 +15,7 @@
 ## Hypixel parity
 
 - When adding or changing a player-facing feature, research the corresponding current Hypixel behavior before implementation. Always use [Hypixel SkyBlock Wiki](https://hypixelskyblock.minecraft.wiki/) as the primary cross-reference, document any uncertainty, and call out intentional differences.
+- For SkyBlock Level/XP sources, Garden (crop profits, composter, pests, greenhouse), and Attributes (shard fusions, shard prices), also cross-reference the [Skyblock Things Spreadsheet by @Georik](https://docs.google.com/spreadsheets/d/1vOyMKoTGO-uZliJJ6jS4MTdoMKYXFozSf7bjRFysk2k/edit) — a community-maintained, actively updated sheet with numeric/mechanical data (prices, XP tables, fusion recipes) that's more granular than the wiki in these areas. Requires a signed-in Google account to load (unlike the Roadmap tracker sheet, it isn't publicly readable via a plain fetch).
 
 ## Local server startup
 

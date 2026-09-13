@@ -19,10 +19,14 @@ import org.bson.Document;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 // GUI for confirming creation of a new SkyBlock (or Ironman) profile
 public class GUIProfileCreate extends StatelessView {
     private final net.swofty.type.skyblockgeneric.user.ProfileMode mode;
+    // Guards against a laggy/double click firing the create handler twice before the async
+    // ProfileSwitcher.switchTo() closes this view - one view instance is opened per GUI visit.
+    private final AtomicBoolean submitted = new AtomicBoolean(false);
 
     public GUIProfileCreate(net.swofty.type.skyblockgeneric.user.ProfileMode mode) {
         this.mode = mode;
@@ -59,6 +63,14 @@ public class GUIProfileCreate extends StatelessView {
                 (click, c) -> {
                     SkyBlockPlayer player = (SkyBlockPlayer) c.player();
                     SkyBlockPlayerProfiles profiles = player.getProfiles();
+
+                    if (profiles.getProfiles().size() >= GUIProfileManagement.MAX_PROFILES) {
+                        player.sendMessage("<c>You already have the maximum number of profiles!");
+                        return;
+                    }
+
+                    if (!submitted.compareAndSet(false, true)) return;
+
                     UUID profileId = UUID.randomUUID();
 
                     // Create new SkyBlock data handler with the profile ID

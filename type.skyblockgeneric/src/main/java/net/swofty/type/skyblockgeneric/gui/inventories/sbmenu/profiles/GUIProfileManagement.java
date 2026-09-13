@@ -30,7 +30,11 @@ import java.util.UUID;
 
 // GUI for viewing, switching, creating, and deleting a player's SkyBlock profiles
 public class GUIProfileManagement extends StatelessView {
+    // Real Hypixel has 6 profile slots total: 5 normal + 1 reserved for Bingo. Bingo events aren't
+    // implemented here, so slot 16 is an inert placeholder rather than a real, creatable slot.
+    public static final int MAX_PROFILES = 5;
     private static final int[] PROFILE_SLOTS = {11, 12, 13, 14, 15};
+    private static final int BINGO_SLOT = 16;
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -105,6 +109,14 @@ public class GUIProfileManagement extends StatelessView {
                 }, (click, c) -> c.player().openView(new GUIProfileSelect(profileId)));
             }
         }
+
+        layout.slot(BINGO_SLOT, (s, c) -> ItemStacks.item(Material.GRAY_DYE, 1, """
+                        <7>Bingo
+                        <7>A special limited-time profile
+                        <7>for the Bingo event.
+
+                        <c>Not currently available!"""),
+                (click, c) -> c.player().sendMessage("<c>Bingo profiles aren't available yet!"));
     }
 
     public static List<Text> updateLore(UUID profileUuid, SkyBlockDataHandler handler, List<Text> lore) {

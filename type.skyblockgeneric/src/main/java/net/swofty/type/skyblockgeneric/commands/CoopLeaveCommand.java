@@ -8,9 +8,11 @@ import net.swofty.type.generic.data.mongodb.ProfilesDatabase;
 import net.swofty.type.generic.data.mongodb.UserDatabase;
 import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.commons.skyblock.CoopLinks;
+import net.swofty.commons.skyblock.IslandStorage;
 import net.swofty.type.skyblockgeneric.data.ProfileSwitcher;
 import net.swofty.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 
 import java.util.UUID;
 
@@ -61,6 +63,8 @@ public class CoopLeaveCommand extends HypixelCommand {
     }
 
     private void leave(UUID playerId, UUID coopId, UUID profileId) {
+        UUID islandId = ProfileSwitcher.islandOf(profileId);
+
         CoopDatabase.Coop remaining = CoopDatabase.update(coopId, latest -> {
             latest.members().remove(playerId);
             latest.removeInvite(playerId);
@@ -68,11 +72,24 @@ public class CoopLeaveCommand extends HypixelCommand {
         });
 
         SwoftyData.profile().unlink(profileId, CoopLinks.COOP);
-        if (remaining == null || (remaining.members().isEmpty() && remaining.memberProfiles().isEmpty())) {
+        boolean disbanded = remaining == null || (remaining.members().isEmpty() && remaining.memberProfiles().isEmpty());
+        if (disbanded) {
             SwoftyData.profile().deleteLink(CoopLinks.COOP, coopId);
         }
 
         ProfilesDatabase.deleteDocument(profileId.toString());
+
+        // The last member leaving disbands the coop - its shared island would otherwise become
+        // permanently unreferenced (no profile document left pointing at it). Same cleanup as
+        // GUIProfileSelect's solo profile-delete path.
+        if (disbanded) {
+            SkyBlockIsland island = SkyBlockIsland.getIsland(islandId);
+            if (island != null) {
+                SkyBlockIsland.discard(islandId);
+                island.runVacantCheck();
+            }
+            IslandStorage.delete(islandId);
+        }
 
         SkyBlockPlayerProfiles profiles = new UserDatabase(playerId).getProfiles();
         profiles.removeProfile(profileId);

@@ -11,6 +11,9 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.island.VisitManager;
+
+import java.util.UUID;
 
 // Jerry's guide GUI explaining Island guesting and visiting rules.
 public class GUIGuests extends HypixelInventoryGUI {
@@ -64,6 +67,10 @@ public class GUIGuests extends HypixelInventoryGUI {
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
+                SkyBlockPlayer player = (SkyBlockPlayer) p;
+                UUID profileId = player.getProfiles().getCurrentlySelected();
+                int limit = VisitManager.maxGuestLimit(profileId, player.getUuid());
+
                 return ItemStacks.item(Material.SHORT_GRASS, """
                         <a>Guests limit
                         <7>You can only host a limited
@@ -73,36 +80,40 @@ public class GUIGuests extends HypixelInventoryGUI {
                         <7>The limit depends on your rank:
                         <7>- <c>[<f>YOUTUBE<c>] <f>= <a>15
                         <7>- <6>[MVP<c>++<6>] <f>= <a>7
-                        <7>- <b>[MVP] <f>= <a>5
-                        <7>- <a>[VIP] <f>= <a>3
+                        <7>- <b>[MVP/MVP+] <f>= <a>5
+                        <7>- <a>[VIP/VIP+] <f>= <a>3
                         <7>- Default <f>= <a>1
 
-                        <7>Limit on the island: <a>1 guests
+                        <7>Limit on the island: <a>%d guests
 
                         <b>Co-op profile use the partner
                         <b>with the highest rank!
 
-                        <e>purchase rank at store.hypixel.net!""");
+                        <e>purchase rank at store.hypixel.net!""".formatted(limit));
             }
         });
 
         set(new GUIClickableItem(14) {
             @Override
-            public void run(InventoryPreClickEvent e, HypixelPlayer p) {}
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                SkyBlockPlayer player = (SkyBlockPlayer) p;
+                player.closeInventory();
+                player.sendMessage("<e>Use /ignore add <username> to block a player, or /islandprivacy <public|friends|private> to change who can visit.");
+            }
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 return ItemStacks.item(Material.OAK_FENCE, """
                         <a>Access Permissions
                         <7>You may edit who is able to
-                        <7>guest on your island in your
-                        <e>Island Settings<7>.
+                        <7>guest on your island using:
 
-                        <7>Use <c>/ignore add \\<username> to
-                        <7>prevent a specific player from
-                        <7>joining.
+                        <7>- <c>/ignore add \\<username>
+                        <7>  to block a specific player.
+                        <7>- <c>/islandprivacy \\<mode>
+                        <7>  to set public/friends/private.
 
-                        <e>Click to open island settings!""");
+                        <e>Click for a reminder of these commands!""");
             }
         });
 
@@ -110,14 +121,29 @@ public class GUIGuests extends HypixelInventoryGUI {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
+                player.closeInventory();
+
+                if (VisitManager.isVisiting(player.getUuid())) {
+                    player.sendMessage("<c>You can't kick guests while visiting someone else's island!");
+                    return;
+                }
+                if (VisitManager.visitorIds(player.getSkyBlockIsland().getIslandID()).isEmpty()) {
+                    player.sendMessage("<c>Nobody is currently visiting your island!");
+                    return;
+                }
+
+                Thread.startVirtualThread(() -> {
+                    int kicked = VisitManager.kickAllGuests(player);
+                    player.sendMessage("<e>Kicked {} guest(s) off your island.", kicked);
+                });
             }
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 return ItemStacks.item(Material.REPEATER, """
                         <a>Moderation
-                        <7>Manage online guests using the
-                        <e>Guests Management <7>menu.
+                        <7>Click to kick every current guest
+                        <7>off your island at once.
 
                         <7>Alternatively, use the <c>/sbkick &
                         <a>/sbkickall commands or <a>clicking

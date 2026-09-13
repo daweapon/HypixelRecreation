@@ -4,7 +4,7 @@ items:
     name: "Anguish Talisman"
     rarity: RARE
     lore:
-      - '%%dark_gray%%%%italic%%Why are we still here? Just to suffer?'
+      - '<8><o>Why are we still here? Just to suffer?'
     default_statistics:
       true_defense: 0.5
       magic_find: 1
@@ -21,7 +21,7 @@ items:
     name: "Anguish Ring"
     rarity: EPIC
     lore:
-      - '%%dark_gray%%%%italic%%Why are we still here? Just to suffer?'
+      - '<8><o>Why are we still here? Just to suffer?'
     default_statistics:
       true_defense: 1
       magic_find: 2
@@ -38,7 +38,7 @@ items:
     name: "Anguish Artifact"
     rarity: LEGENDARY
     lore:
-      - '%%dark_gray%%%%italic%%Why are we still here? Just to suffer?'
+      - '<8><o>Why are we still here? Just to suffer?'
     default_statistics:
       true_defense: 1.5
       magic_find: 3

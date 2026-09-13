@@ -861,6 +861,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
     public void removeBits(int amount) {
         setBits(getBits() - amount);
+        addFame(amount);
     }
 
     public Integer getGems() {
@@ -877,6 +878,18 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
     public void removeGems(int amount) {
         setGems(getGems() - amount);
+    }
+
+    public Integer getFame() {
+        return getSkyblockDataHandler().get(SkyBlockDataHandler.Data.FAME, DatapointInteger.class).getValue();
+    }
+
+    public void setFame(int amount) {
+        getSkyblockDataHandler().get(SkyBlockDataHandler.Data.FAME, DatapointInteger.class).setValue(Math.max(0, amount));
+    }
+
+    public void addFame(int amount) {
+        setFame(getFame() + amount);
     }
 
     public int maxItemFit(ItemType targetType) {

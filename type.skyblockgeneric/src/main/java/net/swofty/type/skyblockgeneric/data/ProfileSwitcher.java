@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockScoreboard;
 import net.swofty.type.skyblockgeneric.event.actions.player.ActionPlayerChangeHypixelMenuDisplay;
 import net.swofty.type.skyblockgeneric.user.island.IslandHostLookup;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
+import net.swofty.type.skyblockgeneric.user.island.VisitManager;
 import org.bson.Document;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
@@ -106,6 +107,12 @@ public final class ProfileSwitcher {
             player.sendMessage(refusal.message());
             return Result.REFUSED;
         }
+
+        // A player can /profile switch while still physically standing on someone else's island as a
+        // guest (via /visit). Without this, the abandoned island's guest slot/Redis visitor set stays
+        // permanently occupied and VisitManager.isVisiting() keeps reporting stale state until the
+        // player fully disconnects.
+        VisitManager.clearVisit(player.getUuid());
 
         if (HypixelConst.isIslandServer()) {
             UUID remoteHost = IslandHostLookup.findRemoteHost(islandOf(targetProfileId));

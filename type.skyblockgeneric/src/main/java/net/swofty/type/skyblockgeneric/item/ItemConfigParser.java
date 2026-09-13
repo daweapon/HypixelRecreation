@@ -580,6 +580,7 @@ public class ItemConfigParser {
 					yield new CustomStatisticsComponent(handlerId);
 				}
 				case "TRACKED_UNIQUE" -> new TrackedUniqueComponent();
+				case "NECRONS_BLADE_SCROLLABLE" -> new NecronsBladeScrollComponent();
 				case "BREWING_INGREDIENT" -> {
 					int brewingTime = safeConfig.getInt("brewing_time_seconds", 20);
 					String effect = safeConfig.getString("effect", "SPEED");

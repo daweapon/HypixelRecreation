@@ -2,13 +2,11 @@ package net.swofty.type.skyblockgeneric.commands;
 
 import net.minestom.server.command.builder.arguments.ArgumentType;
 import net.minestom.server.command.builder.arguments.ArgumentWord;
-import net.swofty.commons.data.SwoftyData;
 import net.swofty.proxyapi.ProxyPlayer;
 import net.swofty.proxyapi.ProxyPlayerSet;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
-import net.swofty.type.generic.data.HypixelDataHandler;
 import net.swofty.type.generic.data.mongodb.ProfilesDatabase;
 import net.swofty.type.generic.data.mongodb.UserDatabase;
 import net.swofty.type.generic.friend.FriendManager;
@@ -114,8 +112,7 @@ public class VisitCommand extends HypixelCommand {
             return;
         }
 
-        Rank targetRank = rankOf(targetUuid);
-        int guestLimit = targetRank.maxIslandGuests();
+        int guestLimit = VisitManager.maxGuestLimit(targetProfileId, targetUuid);
         if (VisitManager.visitorCount(targetIslandId) >= guestLimit) {
             player.sendMessage("<c>{}'s island is full! (Max {} guests)", targetName, guestLimit);
             return;
@@ -155,15 +152,5 @@ public class VisitCommand extends HypixelCommand {
         String raw = targetProfileDoc.getString(SkyBlockDataHandler.Data.IGNORED_VISITORS.getKey());
         if (raw == null || raw.isEmpty()) return false;
         return List.of(raw.split(",")).contains(visitorUuid.toString());
-    }
-
-    private static Rank rankOf(UUID playerUuid) {
-        String raw = SwoftyData.account().get(playerUuid, HypixelDataHandler.Data.RANK.accountField());
-        if (raw == null) return Rank.DEFAULT;
-        try {
-            return Rank.valueOf(raw.replace("\"", "").trim());
-        } catch (IllegalArgumentException exception) {
-            return Rank.DEFAULT;
-        }
     }
 }

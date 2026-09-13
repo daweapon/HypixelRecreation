@@ -4,10 +4,14 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.instance.SharedInstance;
 import net.swofty.commons.data.SwoftyData;
 import net.swofty.type.generic.HypixelConst;
+import net.swofty.type.generic.data.HypixelDataHandler;
+import net.swofty.type.generic.user.categories.Rank;
+import net.swofty.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import redis.clients.jedis.Jedis;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -61,6 +65,50 @@ public final class VisitManager {
             Long count = jedis.scard(VISITORS_PREFIX + islandId);
             return count == null ? 0 : count.intValue();
         }
+    }
+
+    // Real Hypixel: "the Guests Limit before upgrades depends on the highest rank among the owners
+    // of the island" - i.e. a co-op island's limit is the max across every member's own rank, not
+    // just whichever member's profile happens to be looked up.
+    public static int maxGuestLimit(UUID ownerProfileId, UUID ownerAccountUuid) {
+        CoopDatabase.Coop coop = CoopDatabase.getFromMemberProfile(ownerProfileId);
+        if (coop == null) {
+            return rankOf(ownerAccountUuid).maxIslandGuests();
+        }
+        int max = 0;
+        for (UUID member : coop.members()) {
+            max = Math.max(max, rankOf(member).maxIslandGuests());
+        }
+        return max;
+    }
+
+    private static Rank rankOf(UUID accountUuid) {
+        String raw = SwoftyData.account().get(accountUuid, HypixelDataHandler.Data.RANK.accountField());
+        if (raw == null) return Rank.DEFAULT;
+        try {
+            return Rank.valueOf(raw.replace("\"", "").trim());
+        } catch (IllegalArgumentException exception) {
+            return Rank.DEFAULT;
+        }
+    }
+
+    // Shared by /sbkickall and GUIGuests's Moderation button. Must be called from a virtual thread -
+    // sendHome() blocks on scheduleNextTick(...).join(), same restriction as elsewhere in this class.
+    public static int kickAllGuests(SkyBlockPlayer owner) {
+        UUID islandId = owner.getSkyBlockIsland().getIslandID();
+        List<UUID> ids = List.copyOf(visitorIds(islandId));
+        int kicked = 0;
+        for (UUID visitorId : ids) {
+            SkyBlockPlayer target = net.swofty.type.skyblockgeneric.SkyBlockGenericLoader.getLoadedPlayers().stream()
+                    .filter(loaded -> loaded.getUuid().equals(visitorId))
+                    .findFirst().orElse(null);
+            if (target == null) continue;
+
+            sendHome(target);
+            target.sendMessage("<c>You were kicked off {}'s island.", owner.getUsername());
+            kicked++;
+        }
+        return kicked;
     }
 
     // Used by /sbkickall - every visitor UUID currently on this island, wherever it's hosted.

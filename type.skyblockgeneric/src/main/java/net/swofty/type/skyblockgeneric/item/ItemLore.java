@@ -24,6 +24,7 @@ import net.swofty.type.skyblockgeneric.fishing.rod.FishingRodLoreBuilder;
 import net.swofty.type.skyblockgeneric.gems.GemRarity;
 import net.swofty.type.skyblockgeneric.gems.Gemstone;
 import net.swofty.type.skyblockgeneric.item.components.*;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.AbilityRegistry;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.RegisteredAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreConfig;
 import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
@@ -356,11 +357,15 @@ public class ItemLore {
 
 	private static void fillAbilities(LoreText lore) {
 		SkyBlockItem item = lore.item();
-		if (!item.hasComponent(AbilityComponent.class)) return;
+		List<RegisteredAbility> effectiveAbilities = item.getEffectiveAbilityIds().stream()
+				.map(AbilityRegistry::getAbility)
+				.filter(Objects::nonNull)
+				.toList();
+		if (effectiveAbilities.isEmpty()) return;
 
 		TextBody.Section abilities = lore.section(LoreText.Sections.ABILITIES);
 		int index = 0;
-		for (RegisteredAbility ability : item.getComponent(AbilityComponent.class).getAbilities()) {
+		for (RegisteredAbility ability : effectiveAbilities) {
 			TextBody.Section section = abilities.child("ability_" + index++).separated();
 
 			section.line(Text.key("items.lore.ability_label",

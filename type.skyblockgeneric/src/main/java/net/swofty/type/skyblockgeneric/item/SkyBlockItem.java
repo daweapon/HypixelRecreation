@@ -18,8 +18,12 @@ import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeType;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
+import net.swofty.type.skyblockgeneric.item.components.AbilityComponent;
 import net.swofty.type.skyblockgeneric.item.components.EnchantedComponent;
+import net.swofty.type.skyblockgeneric.item.components.NecronsBladeScrollComponent;
 import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.AbilityRegistry;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.RegisteredAbility;
 import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -30,6 +34,7 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class SkyBlockItem {
 	public List<ItemAttribute> attributes = new ArrayList<>();
@@ -265,10 +270,14 @@ public class SkyBlockItem {
 		} catch (IllegalArgumentException e) {
 			if (typeAttribute.getValue().equalsIgnoreCase("N/A"))
 				return Material.BEDROCK;
-			Material material = Material.fromKey(typeAttribute.getValue());
-			if (material == null)
+			try {
+				Material material = Material.fromKey(typeAttribute.getValue());
+				if (material == null)
+					return Material.AIR;
+				return material;
+			} catch (net.kyori.adventure.key.InvalidKeyException invalidKeyException) {
 				return Material.AIR;
-			return material;
+			}
 		}
 	}
 
@@ -295,6 +304,38 @@ public class SkyBlockItem {
 
 	public <T extends SkyBlockItemComponent> T getComponent(Class<T> componentClass) {
 		return config.getComponent(componentClass);
+	}
+
+	// Resolves the ability IDs this item instance should currently expose. For Necron's Blade
+	// family weapons, this is derived dynamically from applied scrolls rather than the static
+	// YAML ability list, since those weapons ship with no ability until scrolls are applied.
+	public List<String> getEffectiveAbilityIds() {
+		if (hasComponent(NecronsBladeScrollComponent.class)) {
+			List<String> applied = getAttributeHandler().getAppliedScrolls();
+			if (applied.containsAll(List.of("IMPLOSION", "SHADOW_WARP", "WITHER_SHIELD"))) {
+				return List.of("WITHER_IMPACT");
+			}
+			if (applied.isEmpty()) {
+				return List.of();
+			}
+			// Partial (1 or 2 of 3) application isn't a documented real-Hypixel state; the
+			// most-recently-applied scroll's own ability is used as a deterministic fallback.
+			return List.of(applied.get(applied.size() - 1));
+		}
+
+		if (!hasComponent(AbilityComponent.class)) {
+			return List.of();
+		}
+		return getComponent(AbilityComponent.class).getAbilityIds();
+	}
+
+	public RegisteredAbility getEffectiveAbility(RegisteredAbility.AbilityActivation type) {
+		return getEffectiveAbilityIds().stream()
+				.map(AbilityRegistry::getAbility)
+				.filter(Objects::nonNull)
+				.filter(ability -> ability.getActivation() == type)
+				.findFirst()
+				.orElse(null);
 	}
 
 	public boolean isSimilar(SkyBlockItem item) {

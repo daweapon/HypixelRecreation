@@ -4,7 +4,7 @@ items:
     name: "Nibble Chocolate Stick"
     rarity: COMMON
     lore:
-      - '%%dark_gray%%%%italic%%A delightful treat from the Factory. Its crisp taste sparks joy with every bite.'
+      - '<8><o>A delightful treat from the Factory. Its crisp taste sparks joy with every bite.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Nibble Chocolate Stick
@@ -18,7 +18,7 @@ items:
     name: "Smooth Chocolate Bar"
     rarity: UNCOMMON
     lore:
-      - '%%dark_gray%%%%italic%%Crafted in the Factory, its smoothness melts hearts and tastes like a sweet escape.'
+      - '<8><o>Crafted in the Factory, its smoothness melts hearts and tastes like a sweet escape.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Smooth Chocolate Bar
@@ -32,7 +32,7 @@ items:
     name: "Rich Chocolate Chunk"
     rarity: RARE
     lore:
-      - '%%dark_gray%%%%italic%%From the Factory''s secret reserves, its rich flavor is a deep dive into indulgence.'
+      - '<8><o>From the Factory''s secret reserves, its rich flavor is a deep dive into indulgence.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Rich Chocolate Chunk
@@ -46,7 +46,7 @@ items:
     name: "Ganache Chocolate Slab"
     rarity: EPIC
     lore:
-      - '%%dark_gray%%%%italic%%A Factory masterpiece - its divine taste transcends reality, offering a heavenly escape.'
+      - '<8><o>A Factory masterpiece - its divine taste transcends reality, offering a heavenly escape.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Ganache Chocolate Slab
@@ -60,7 +60,7 @@ items:
     name: "Prestige Chocolate Realm"
     rarity: LEGENDARY
     lore:
-      - '%%dark_gray%%%%italic%%The Factory''s pinnacle creation - its epic taste shatters expectations, offering a taste of utopia.'
+      - '<8><o>The Factory''s pinnacle creation - its epic taste shatters expectations, offering a taste of utopia.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Prestige Chocolate Realm

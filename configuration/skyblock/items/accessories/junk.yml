@@ -4,7 +4,7 @@ items:
     name: "Junk Talisman"
     rarity: COMMON
     lore:
-      - '%%dark_gray%%%%italic%%One man''s trash is another man''s treasure.'
+      - '<8><o>One man''s trash is another man''s treasure.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Junk Talisman
@@ -18,7 +18,7 @@ items:
     name: "Junk Ring"
     rarity: UNCOMMON
     lore:
-      - '%%dark_gray%%%%italic%%One man''s trash is another man''s treasure.'
+      - '<8><o>One man''s trash is another man''s treasure.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Junk Ring
@@ -32,7 +32,7 @@ items:
     name: "Junk Artifact"
     rarity: RARE
     lore:
-      - '%%dark_gray%%%%italic%%One man''s trash is another man''s treasure.'
+      - '<8><o>One man''s trash is another man''s treasure.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Junk Artifact

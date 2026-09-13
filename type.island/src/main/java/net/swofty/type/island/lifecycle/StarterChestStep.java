@@ -25,7 +25,13 @@ public class StarterChestStep implements IslandLifecycleStep {
 
     @Override
     public void run(IslandLifecycleContext context) {
-        MathUtility.delay(() -> new ChestBuilder(context.island().getIslandInstance(), new Pos(10, 93, 38), ChestType.SINGLE, Facing.WEST)
+        // Resolve the instance now, not inside the delayed lambda: getIslandInstance() is guaranteed
+        // non-null here (SkyBlockIsland.getSharedInstance() sets it before running CREATE steps), but
+        // a disconnect during the 60-tick delay can null it out via runVacantCheck() in the meantime,
+        // which used to NPE this step. The captured Instance itself stays valid either way.
+        var instance = context.island().getIslandInstance();
+
+        MathUtility.delay(() -> new ChestBuilder(instance, new Pos(10, 93, 38), ChestType.SINGLE, Facing.WEST)
                 .setItem(0, ItemStack.of(Material.DIRT, 5))
                 .setItem(1, ItemStack.of(Material.GRASS_BLOCK, 7))
                 .setItem(2, ItemStack.of(Material.COBBLESTONE, 8))

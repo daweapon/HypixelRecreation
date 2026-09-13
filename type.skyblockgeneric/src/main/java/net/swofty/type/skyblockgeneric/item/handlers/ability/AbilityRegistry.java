@@ -12,6 +12,8 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ShadowWarpAbility;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.WitherShieldEffect;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.statistics.TemporaryStatistic;
 
@@ -56,17 +58,54 @@ public class AbilityRegistry {
         register(new RegisteredAbility(
             "WITHER_IMPACT",
             "Wither Impact",
-            (player, item) -> "<7>Teleports <a>10 Blocks <7>ahead of you. Then implode dealing <c>10000 <7>damage to nearby enemies. Also applies the wither shield scroll ability reducing mobdamage taken and granting an absorption shield for <e>5 <7>seconds.",
+            (player, item) -> "<7>Teleports <a>10 Blocks <7>ahead of you dealing <c>10,000 <7>damage to nearby enemies within a <a>6 block <7>radius. Also reduces your damage taken by <a>10% <7>and grants an absorption shield for <e>5 <7>seconds.",
             RegisteredAbility.AbilityActivation.RIGHT_CLICK,
-            50,
-            new RegisteredAbility.AbilityManaCost(25),
+            3, // Intentionally near-instant - real Hypixel's known "Hyperion jump" mobility mechanic
+            new RegisteredAbility.AbilityManaCost(150), // Temporarily lowered from the wiki-confirmed 300 for testing
             (player, _, _, _) -> {
                 BlockVec tpPos = player.getPosition().add(player.getPosition().direction().mul(10)).asBlockVec();
                 if (!player.getInstance().getBlock(tpPos.add(0, 1, 0)).air() || !player.getInstance().getBlock(tpPos.add(0, 2, 0)).air())
                     return false;
                 player.teleport(tpPos.add(0, 1, 0).asPos(player.getPosition().yaw(), player.getPosition().pitch()));
+
+                for (Entity entity : player.getInstance().getNearbyEntities(tpPos, 6)) {
+                    if (!(entity instanceof SkyBlockMob mob)) continue;
+                    mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), 10000));
+                }
+
+                WitherShieldEffect.apply(player);
                 return true;
-                // TODO: damage nearby mobs
+            }
+        ));
+
+        register(new RegisteredAbility(
+            "IMPLOSION",
+            "Implosion",
+            (_, _) -> "<7>Deals <c>10,000 <7>damage to all mobs in a <a>6 block <7>radius.",
+            RegisteredAbility.AbilityActivation.RIGHT_CLICK,
+            200,
+            new RegisteredAbility.AbilityManaCost(300),
+            (player, _, _, _) -> {
+                for (Entity entity : player.getInstance().getNearbyEntities(player.getPosition(), 6)) {
+                    if (!(entity instanceof SkyBlockMob mob)) continue;
+                    mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), 10000));
+                }
+                return true;
+            }
+        ));
+
+        register(new ShadowWarpAbility());
+
+        register(new RegisteredAbility(
+            "WITHER_SHIELD",
+            "Wither Shield",
+            (_, _) -> "<7>Reduces damage taken by <a>10% <7>for <e>5 <7>seconds. Also grants an absorption shield.",
+            RegisteredAbility.AbilityActivation.RIGHT_CLICK,
+            200,
+            new RegisteredAbility.AbilityManaCost(150),
+            (player, _, _, _) -> {
+                WitherShieldEffect.apply(player);
+                return true;
             }
         ));
 

@@ -1,0 +1,70 @@
+items:
+  - id: IMPLOSION_SCROLL
+    material: writable_book
+    name: "Implosion Scroll"
+    rarity: LEGENDARY
+    lore:
+      - <7>Apply to a Necron's Blade family
+      - <7>weapon in an Anvil to permanently
+      - <7>grant it the <c>Implosion <7>ability.
+    components:
+      - id: ANVIL_COMBINABLE
+        handler_id: IMPLOSION_SCROLL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: SPECIAL
+            ingredients:
+              - type: WITHER_ARTIFACT
+                amount: 1
+              - type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+            result:
+              type: IMPLOSION_SCROLL
+              amount: 1
+  - id: SHADOW_WARP_SCROLL
+    material: writable_book
+    name: "Shadow Warp Scroll"
+    rarity: LEGENDARY
+    lore:
+      - <7>Apply to a Necron's Blade family
+      - <7>weapon in an Anvil to permanently
+      - <7>grant it the <c>Shadow Warp <7>ability.
+    components:
+      - id: ANVIL_COMBINABLE
+        handler_id: SHADOW_WARP_SCROLL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: SPECIAL
+            ingredients:
+              - type: WITHER_RELIC
+                amount: 1
+              - type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+            result:
+              type: SHADOW_WARP_SCROLL
+              amount: 1
+  - id: WITHER_SHIELD_SCROLL
+    material: writable_book
+    name: "Wither Shield Scroll"
+    rarity: LEGENDARY
+    lore:
+      - <7>Apply to a Necron's Blade family
+      - <7>weapon in an Anvil to permanently
+      - <7>grant it the <c>Wither Shield <7>ability.
+    components:
+      - id: ANVIL_COMBINABLE
+        handler_id: WITHER_SHIELD_SCROLL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: SPECIAL
+            ingredients:
+              - type: WITHER_ARTIFACT
+                amount: 1
+              - type: WITHER_RELIC
+                amount: 1
+            result:
+              type: WITHER_SHIELD_SCROLL
+              amount: 1

@@ -22,7 +22,7 @@ items:
     name: "Fried Frozen Chicken"
     rarity: EPIC
     lore:
-      - '%%dark_gray%%%%italic%%Fried Frozen?! There is no such thing!'
+      - '<8><o>Fried Frozen?! There is no such thing!'
     default_statistics:
       speed: 1
       heat_resistance: 1

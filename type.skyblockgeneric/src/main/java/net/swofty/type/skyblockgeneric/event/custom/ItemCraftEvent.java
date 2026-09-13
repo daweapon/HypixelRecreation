@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Getter
@@ -26,34 +27,41 @@ public class ItemCraftEvent implements PlayerInstanceEvent {
         this.recipe = recipe;
 
         if (craftedItem.hasComponent(MinionComponent.class)) {
-            DatapointMinionData.ProfileMinionData playerData = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.MINION_DATA, DatapointMinionData.class).getValue();
+            var datapoint = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.MINION_DATA, DatapointMinionData.class);
+            DatapointMinionData.ProfileMinionData playerData = datapoint.getValue();
             String name = craftedItem.getAttributeHandler().getMinionType().name();
             Integer tier = craftedItem.getAttributeHandler().getMinionData().tier();
+            List<Map.Entry<String, List<Integer>>> craftedMinions = new ArrayList<>(playerData.craftedMinions());
             AbstractMap.SimpleEntry<String, List<Integer>> minion = new AbstractMap.SimpleEntry<>(name, List.of(tier));
             boolean minionTypeInList = false;
+            boolean alreadyHasTier = false;
 
-            if (playerData.craftedMinions().isEmpty()) {
-                playerData.craftedMinions().add(minion);
-                return;
-            }
-
-            for (int i = 0; i < playerData.craftedMinions().size(); i++) {
-                if (Objects.equals(playerData.craftedMinions().get(i).getKey(), name)) {
-                    for (Integer integer : playerData.craftedMinions().get(i).getValue()) {
-                        if (Objects.equals(integer, tier)) return;
-                    }
-                    List<Integer> tiers = new ArrayList<>(playerData.craftedMinions().get(i).getValue());
-                    tiers.add(tier);
-                    minion.setValue(tiers);
-                    playerData.craftedMinions().remove(playerData.craftedMinions().get(i));
-                    playerData.craftedMinions().add(minion);
+            for (int i = 0; i < craftedMinions.size(); i++) {
+                if (Objects.equals(craftedMinions.get(i).getKey(), name)) {
                     minionTypeInList = true;
+                    for (Integer integer : craftedMinions.get(i).getValue()) {
+                        if (Objects.equals(integer, tier)) {
+                            alreadyHasTier = true;
+                            break;
+                        }
+                    }
+                    if (!alreadyHasTier) {
+                        List<Integer> tiers = new ArrayList<>(craftedMinions.get(i).getValue());
+                        tiers.add(tier);
+                        minion.setValue(tiers);
+                        craftedMinions.set(i, minion);
+                    }
+                    break;
                 }
             }
 
+            if (alreadyHasTier) return;
+
             if (!minionTypeInList) {
-                playerData.craftedMinions().add(minion);
+                craftedMinions.add(minion);
             }
+
+            datapoint.setValue(new DatapointMinionData.ProfileMinionData(craftedMinions));
         }
     }
 }
