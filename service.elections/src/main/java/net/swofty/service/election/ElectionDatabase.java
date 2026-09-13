@@ -91,7 +91,7 @@ public record ElectionDatabase(String key) implements MongoDB {
         );
     }
 
-    public static void castVote(String playerId, String candidateName, int electionYear) {
+    public static void castVote(String playerId, String candidateName, int electionYear, long voteWeight) {
         String talliesDocId = "tallies_" + electionYear;
 
         Document existingVote = votesCollection.find(
@@ -100,17 +100,19 @@ public record ElectionDatabase(String key) implements MongoDB {
 
         if (existingVote != null) {
             String oldCandidate = existingVote.getString("candidate");
+            Long oldWeight = existingVote.get("voteWeight") != null ? existingVote.getLong("voteWeight") : 1L;
             if (oldCandidate != null && !oldCandidate.equals(candidateName)) {
                 talliesCollection.updateOne(
                         Filters.eq("_id", talliesDocId),
-                        Updates.inc(oldCandidate, -1L)
+                        Updates.inc(oldCandidate, -oldWeight)
                 );
             }
         }
 
         Document voteDoc = new Document("_id", playerId)
                 .append("candidate", candidateName)
-                .append("electionYear", electionYear);
+                .append("electionYear", electionYear)
+                .append("voteWeight", voteWeight);
         votesCollection.replaceOne(
                 Filters.eq("_id", playerId),
                 voteDoc,
@@ -120,7 +122,7 @@ public record ElectionDatabase(String key) implements MongoDB {
         if (existingVote == null || !candidateName.equals(existingVote.getString("candidate"))) {
             talliesCollection.updateOne(
                     Filters.eq("_id", talliesDocId),
-                    Updates.inc(candidateName, 1L),
+                    Updates.inc(candidateName, voteWeight),
                     new com.mongodb.client.model.UpdateOptions().upsert(true)
             );
         }

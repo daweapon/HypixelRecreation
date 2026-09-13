@@ -21,6 +21,7 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkills;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSlayer;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointStorage;
 import net.swofty.type.skyblockgeneric.data.fairysouls.FairySoulCatalog;
+import net.swofty.type.skyblockgeneric.elections.FameRank;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategories;
@@ -63,6 +64,8 @@ public final class MaxStickService {
     private static final double MOB_TYPE_COMBAT_XP_REWARD = 1000D;
     private static final int MOB_TYPE_COIN_REWARD = 1000;
 
+    private static final int MAX_BITS = 100_000_000;
+
     private MaxStickService() {}
 
     public static void initialize() {
@@ -102,6 +105,8 @@ public final class MaxStickService {
         maxMissions(player);
         maxChocolateFactory(player);
         maxMobTypes(player);
+        maxFame(player);
+        giveMaxBits(player);
 
         player.sendMessage("<a><l>MAXED! <f>Your profile has been fully maxed out.");
     }
@@ -219,6 +224,15 @@ public final class MaxStickService {
             player.addCoins(MOB_TYPE_COIN_REWARD);
             rewards.claim(mobType.name());
         }
+    }
+
+    private static void maxFame(SkyBlockPlayer player) {
+        long maxFameRequired = FameRank.PARAGON.getFameRequired();
+        player.setFame((int) maxFameRequired);
+    }
+
+    private static void giveMaxBits(SkyBlockPlayer player) {
+        player.setBits(MAX_BITS);
     }
 
     private static void maxBackpackSlots(SkyBlockPlayer player) {

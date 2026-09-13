@@ -93,25 +93,42 @@ public class GUIBoosterCookie extends StatelessView {
                 <a>325 SkyBlock Gems
 
                 <7>You have: <a>""" + gems + " Gems\n\n<c>You cannot afford this!\n<e>Click to get store info!"));
+        net.swofty.type.skyblockgeneric.elections.FameRank fameRank =
+                net.swofty.type.skyblockgeneric.elections.FameRank.forFame(player.getFame());
+        net.swofty.type.skyblockgeneric.elections.FameRank nextFameRank = fameRank.next();
+        String fameProgress = nextFameRank == null
+                ? "<a>MAX RANK"
+                : "<e>" + net.swofty.commons.StringUtility.commaify(player.getFame())
+                        + "<6>/<e>" + net.swofty.commons.StringUtility.commaify(nextFameRank.getFameRequired());
+        String nextRankLine = nextFameRank == null
+                ? "<7>Next rank: <a>None <7>(max rank reached)"
+                : "<7>Next rank: <b>" + nextFameRank.getDisplayName();
+
         layout.slot(15, ItemStacks.item(Material.GOLDEN_HELMET, """
                 <e>Fame Rank
-                <7>Earn fame by <6>contributing to city
-                <6>projects <7>and spending <b>Bits <7>& <a>Gems
-                <7>with Elizabeth.
+                <7>Earn fame by spending <b>Bits <7>with
+                <7>Elizabeth. <8>(1 fame per Bit spent)
 
-                <7>Your rank: <e>New player
-                <7>Bits Multiplier: <b>1x
-                <7>Election Votes: <a>1
+                <7>Your rank: <e>""" + fameRank.getDisplayName() + """
+
+                <7>Bits Multiplier: <b>""" + fameRank.getBitsMultiplier() + """
+                x
+                <7>Election Votes: <a>""" + fameRank.getVotes() + """
+
                 <8>The election is run every SkyBlock
                 <8>year.
 
-                <7>Your total: <e>10,850 Fame
+                <7>Your total: <e>""" + net.swofty.commons.StringUtility.commaify(player.getFame()) + """
+                 Fame
 
-                <7>Next rank: <b>Settler
-                <6><l><m>           <f><l><m>         <r> <e>10,850<6>/<e>20k
-                <8>You earn 1 fame per bit and
-                <8>200 per gem spent in the
-                <8>community shop."""));
+                """ + nextRankLine + """
+
+                <6><l><m>           <f><l><m>         <r> """ + fameProgress + """
+                <8>You earn 1 fame per bit spent
+                <8>with Elizabeth. Gem-spending and
+                <8>city project fame are not yet
+                <8>implemented (no real Gem-spend or
+                <8>contribution system exists)."""));
         layout.slot(28, ItemStacks.head("3b11fb90db7f57beb435954013b1c7ef776c6bd96cbf3308aa8ebac29591ebbd", """
                 <d>The Hex
                 <7>Access <d>The Hex <7>from anywhere in

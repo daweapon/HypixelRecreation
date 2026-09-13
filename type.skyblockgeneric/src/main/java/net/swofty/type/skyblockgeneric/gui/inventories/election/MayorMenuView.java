@@ -5,6 +5,8 @@ import net.minestom.server.entity.PlayerSkin;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
+import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.Components;
 import net.swofty.type.generic.gui.v2.DefaultState;
@@ -53,8 +55,27 @@ public class MayorMenuView extends StatelessView {
 
             for (SkyBlockMayor.Perk perk : activePerks) {
                 lore.add(ElectionData.colored(mayorColor, perk.getDisplayName()));
-                lore.addAll(Text.of("<wrap:50>{}</wrap>", perk.getDescription()).lines());
+                lore.addAll(Text.parseLenient("<wrap:50>" + perk.getDescription() + "</wrap>").lines());
                 lore.add(Text.empty());
+            }
+
+            if (mayor == SkyBlockMayor.JERRY && ElectionManager.isMayorPerkActive(SkyBlockMayor.Perk.PERKPOCALYPSE)) {
+                long ticksUntilNext = SkyBlockCalendar.ticksUntilEvent(CalendarEvent.PERKPOCALYPSE);
+                if (ticksUntilNext > 0) {
+                    lore.add(Text.of("<7>Next Perkpocalypse in: <e>{:time}", ticksUntilNext * 50L));
+                    lore.add(Text.empty());
+                }
+            }
+
+            SkyBlockMayor perkpocalypseSource = ElectionManager.getPerkpocalypseSourceMayor();
+            if (perkpocalypseSource != null) {
+                lore.add(Text.of("<c><l>PERKPOCALYPSE! <7>Also active:"));
+                lore.add(Text.empty());
+                for (SkyBlockMayor.Perk perk : perkpocalypseSource.getAllPerks()) {
+                    lore.add(Text.of("<e>{}", perk.getDisplayName()));
+                    lore.addAll(Text.parseLenient("<wrap:50>" + perk.getDescription() + "</wrap>").lines());
+                    lore.add(Text.empty());
+                }
             }
 
             lore.add(Text.of("<8><m>--------------------------"));
@@ -63,9 +84,13 @@ public class MayorMenuView extends StatelessView {
             lore.add(Text.key("gui_election.mayor.perks_footer_2"));
             lore.add(Text.key("gui_election.mayor.perks_footer_3"));
 
+            Text mayorName = ElectionData.colored(mayorColor, "Mayor " + mayor.getDisplayName());
+            if (mayor == SkyBlockMayor.JERRY) {
+                return ItemStacks.item(Material.VILLAGER_SPAWN_EGG, 1, mayorName, lore);
+            }
             return ItemStacks.head(
                     new PlayerSkin(mayor.getTexture(), mayor.getSignature()),
-                    ElectionData.colored(mayorColor, "Mayor " + mayor.getDisplayName()),
+                    mayorName,
                     lore
             );
         });

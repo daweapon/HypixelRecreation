@@ -29,8 +29,8 @@ public class NPCEntityImpl extends EntityCreature implements NPCViewable {
     private List<HypixelPlayer> inRangeOf = Collections.synchronizedList(new ArrayList<>());
     private final String username;
 
-    private final String skinTexture;
-    private final String skinSignature;
+    private String skinTexture;
+    private String skinSignature;
     private String[] holograms;
     private Pos lastHologramPosition;
 
@@ -162,6 +162,8 @@ public class NPCEntityImpl extends EntityCreature implements NPCViewable {
         String actualSkinTexture = config.texture(viewer);
         String actualSkinSignature = config.signature(viewer);
         if (!Objects.equals(getSkinSignature(), actualSkinSignature) || !Objects.equals(getSkinTexture(), actualSkinTexture)) {
+            this.skinTexture = actualSkinTexture;
+            this.skinSignature = actualSkinSignature;
             editEntityMeta(MannequinMeta.class, meta -> {
                 meta.setProfile(
                     new ResolvableProfile(
@@ -169,6 +171,10 @@ public class NPCEntityImpl extends EntityCreature implements NPCViewable {
                     )
                 );
             });
+            // Clients cache the rendered skin texture per entity ID - a bare metadata update
+            // does not force a reload, so the mannequin must be fully respawned for the viewer.
+            removeViewer(viewer);
+            addViewer(viewer);
         }
     }
 }

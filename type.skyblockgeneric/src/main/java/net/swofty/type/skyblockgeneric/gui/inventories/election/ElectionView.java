@@ -76,13 +76,27 @@ public class ElectionView extends StatelessView {
                     lore
                 );
             }, (_, c) -> {
-                ElectionManager.castVote(c.player().getUuid(), candidateName);
-                c.player().sendMessage(Text.key("gui_election.view.vote_divider"));
-                c.player().sendMessage(Text.key("gui_election.view.vote_cast", candidate.getColoredName(), data.getElectionYear()));
-                c.player().sendMessage(Text.literal("  ").append(Text.key("gui_election.view.vote_fame")));
-                c.player().sendMessage(Text.key("gui_election.view.vote_result", candidate.getColoredName(), pctStr, voteStr));
-                c.player().sendMessage(Text.key("gui_election.view.vote_divider"));
-                c.replace(new ElectionViewStatsView());
+                net.swofty.type.skyblockgeneric.user.SkyBlockPlayer voter =
+                        (net.swofty.type.skyblockgeneric.user.SkyBlockPlayer) c.player();
+                long weight = ElectionManager.computeVoteWeight(voter);
+                net.swofty.type.skyblockgeneric.elections.FameRank fameRank =
+                        net.swofty.type.skyblockgeneric.elections.FameRank.forFame(voter.getFame());
+                ElectionManager.castVote(voter, candidateName).thenAccept(v ->
+                    voter.scheduler().scheduleNextTick(() -> {
+                        Map<String, Long> freshTally = ElectionManager.getElectionData().tallyVotes();
+                        long freshVotes = freshTally.getOrDefault(candidateName, 0L);
+                        long freshTotal = freshTally.values().stream().mapToLong(Long::longValue).sum();
+                        String freshPct = freshTotal > 0
+                            ? String.format("%.1f%%", (freshVotes * 100.0) / freshTotal) : "0%";
+                        c.player().sendMessage(Text.key("gui_election.view.vote_divider"));
+                        c.player().sendMessage(Text.key("gui_election.view.vote_cast", candidate.getColoredName(), data.getElectionYear(), weight));
+                        c.player().sendMessage(Text.literal("  ").append(Text.key("gui_election.view.vote_fame",
+                                fameRank.getDisplayName(), fameRank.getVotes())));
+                        c.player().sendMessage(Text.key("gui_election.view.vote_result", candidate.getColoredName(), freshPct, formatVotes(freshVotes)));
+                        c.player().sendMessage(Text.key("gui_election.view.vote_divider"));
+                        c.replace(new ElectionViewStatsView());
+                    })
+                );
             });
         }
     }
@@ -106,12 +120,12 @@ public class ElectionView extends StatelessView {
         List<SkyBlockMayor.Perk> activePerks = candidate.getActivePerkEnums();
         for (int j = 0; j < activePerks.size(); j++) {
             SkyBlockMayor.Perk perk = activePerks.get(j);
-            if (j == 0) {
+            if (candidate.hasMinisterPerkMarker(perk)) {
                 lore.add(Text.of("<6>✯ ").append("<color:{0}>{1}", candidate.getColor(), perk.getDisplayName()));
             } else {
                 lore.addAll(Text.of("<color:{0}><wrap:35>{1}</wrap>", candidate.getColor(), perk.getDisplayName()).lines());
             }
-            lore.addAll(Text.of("<wrap:35>{}</wrap>", perk.getDescription()).lines());
+            lore.addAll(Text.parseLenient("<wrap:35>" + perk.getDescription() + "</wrap>").lines());
             if (j < activePerks.size() - 1) lore.add(Text.empty());
         }
 

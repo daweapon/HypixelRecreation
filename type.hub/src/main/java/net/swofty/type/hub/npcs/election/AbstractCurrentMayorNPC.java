@@ -1,8 +1,11 @@
 package net.swofty.type.hub.npcs.election;
 
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.VillagerProfession;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
+import net.swofty.type.generic.entity.npc.configuration.NPCConfiguration;
+import net.swofty.type.generic.entity.npc.configuration.VillagerConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.user.HypixelPlayer;
@@ -11,6 +14,8 @@ import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.gui.inventories.election.MayorMenuView;
 
 public abstract class AbstractCurrentMayorNPC extends HypixelNPC {
+    private final NPCConfiguration humanConfig;
+    private final NPCConfiguration villagerConfig;
 
     protected AbstractCurrentMayorNPC(Pos mayorPosition) {
         super(new HumanConfiguration() {
@@ -49,6 +54,35 @@ public abstract class AbstractCurrentMayorNPC extends HypixelNPC {
                 return true;
             }
         });
+
+        this.humanConfig = super.getParameters();
+        this.villagerConfig = new VillagerConfiguration() {
+            @Override
+            public String[] holograms(HypixelPlayer player) {
+                return new String[]{"Mayor Jerry", "<key:'npcs_hub.election.click'>"};
+            }
+
+            @Override
+            public VillagerProfession profession() {
+                return VillagerProfession.NITWIT;
+            }
+
+            @Override
+            public Pos position(HypixelPlayer player) {
+                return mayorPosition;
+            }
+
+            @Override
+            public boolean looking(HypixelPlayer player) {
+                return true;
+            }
+        };
+    }
+
+    @Override
+    public NPCConfiguration getParameters() {
+        SkyBlockMayor mayor = ElectionManager.getCurrentMayor();
+        return mayor == SkyBlockMayor.JERRY ? villagerConfig : humanConfig;
     }
 
     @Override

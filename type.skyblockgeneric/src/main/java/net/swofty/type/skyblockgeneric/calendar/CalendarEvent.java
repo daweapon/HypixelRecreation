@@ -112,6 +112,39 @@ public record CalendarEvent(
         return times;
     }
 
+    // Jerry's Perkpocalypse: every 18 SkyBlock days, re-roll which mayor's perks are piggybacked
+    // onto Jerry's term. No-op unless Jerry is currently mayor with Perkpocalypse active.
+    private static final long EIGHTEEN_DAYS = 18L * SkyBlockCalendar.DAY;
+    public static CalendarEvent PERKPOCALYPSE = new CalendarEvent(
+        "perkpocalypse",
+        ItemStack.of(Material.LIME_WOOL).with(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true),
+        year -> Text.of("<d>Perkpocalypse!"),
+        List.of(
+            Text.of("<7>Jerry's Perkpocalypse has"),
+            Text.of("<7>activated another Mayor's perks!")
+        ),
+        calculatePerkpocalypseTimes(),
+        Duration.ofMinutes(1),
+        false,
+        (_, _) -> ElectionManager.triggerPerkpocalypseIfEligible()
+    );
+
+    private static List<Long> calculatePerkpocalypseTimes() {
+        List<Long> times = new ArrayList<>();
+        for (long time = 0; time < YEAR; time += EIGHTEEN_DAYS) {
+            times.add(time);
+        }
+        return times;
+    }
+
+    // Matches the real SkyBlock Wiki-documented cycle: voting opens Late Summer 27th and stays open
+    // until Late Spring 27th of the FOLLOWING year (a ~9 month window spanning the year boundary),
+    // not a short same-year window. Late Summer is month index 5 (0-based), Late Spring index 2;
+    // since Late Spring's within-year tick position is earlier than Late Summer's, this recurring
+    // tick naturally lands a full year later the next time it comes around - exactly matching the
+    // real close-in-the-following-year behavior. The actual open/close is driven day-precisely by
+    // ElectionManager.checkElectionCycle(); these entries exist for the player-facing Calendar GUI
+    // and call the same idempotent (already-open/closed no-ops) methods as a redundant safety net.
     public static CalendarEvent ELECTION_OPEN = new CalendarEvent(
         "election_open",
         ItemStack.of(Material.JUKEBOX),
@@ -121,7 +154,7 @@ public record CalendarEvent(
             Text.of("<7>is now open! Cast your vote for"),
             Text.of("<7>your favorite candidate.")
         ),
-        List.of(5 * MONTH),
+        List.of(5 * MONTH + 26 * DAY),
         Duration.ofMinutes(5),
         true,
         (_, _) -> {
@@ -137,7 +170,7 @@ public record CalendarEvent(
             Text.of("<7>The Mayor Election has concluded!"),
             Text.of("<7>A new Mayor has been elected.")
         ),
-        List.of(8 * MONTH),
+        List.of(2 * MONTH + 26 * DAY),
         Duration.ofMinutes(5),
         true,
         (_, _) -> {
@@ -196,6 +229,7 @@ public record CalendarEvent(
     static {
         registerEvent(NEW_YEAR);
         registerEvent(DARK_AUCTION);
+        registerEvent(PERKPOCALYPSE);
         registerEvent(ELECTION_OPEN);
         registerEvent(ELECTION_CLOSE);
         registerEvent(TRAVELING_ZOO);

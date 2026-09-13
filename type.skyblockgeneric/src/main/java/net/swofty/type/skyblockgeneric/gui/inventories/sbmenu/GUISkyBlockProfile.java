@@ -238,6 +238,11 @@ public class GUISkyBlockProfile extends StatelessView {
             lore.add(Text.key("gui_sbmenu.profile.misc_stats.lore.2"));
             lore.add(Text.literal(" "));
 
+            net.swofty.type.skyblockgeneric.elections.FameRank fameRank =
+                net.swofty.type.skyblockgeneric.elections.FameRank.forFame(player.getFame());
+            lore.add(Text.of(" <7>Fame Rank: <e>{} <8>({} votes)", fameRank.getDisplayName(), fameRank.getVotes()));
+            lore.add(Text.literal(" "));
+
             List<ItemStatistic> stats = List.of(ItemStatistic.SPEED, ItemStatistic.MAGIC_FIND, ItemStatistic.PET_LUCK,
                 ItemStatistic.HEAT_RESISTANCE, ItemStatistic.COLD_RESISTANCE, ItemStatistic.RESPIRATION,
                 ItemStatistic.PRESSURE_RESISTANCE, ItemStatistic.FEAR, ItemStatistic.TRACKING);

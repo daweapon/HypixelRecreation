@@ -26,7 +26,7 @@ public class CastVoteProtocol
         return RETURN_SERIALIZER;
     }
 
-    public record CastVoteMessage(UUID accountId, String candidateName) {}
+    public record CastVoteMessage(UUID accountId, String candidateName, long voteWeight) {}
 
     public record CastVoteResponse(boolean success, Map<String, Long> tallies, @Nullable String error) {}
 }

@@ -26,6 +26,22 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
 
     private static final List<String> SPECIAL_MAYORS = List.of("SCORPIUS", "DERPY", "JERRY");
 
+    // Mirrors the perk pool defined per-candidate in SkyBlockMayor.java (type.skyblockgeneric). This
+    // service module can't depend on that enum directly, so the full perk list per regular mayor is
+    // duplicated here to drive perk-count progression (a losing candidate gradually unlocks more of
+    // their own perks across elections, per the SkyBlock Wiki's documented Mayor perk mechanic).
+    private static final Map<String, List<String>> MAYOR_PERK_POOLS = Map.of(
+            "AATROX", List.of("SLASHED_PRICING", "SLAYER_XP_BUFF", "PATHFINDER"),
+            "COLE", List.of("PROSPECTION", "MINING_XP_BUFF", "MINING_FIESTA", "MOLTEN_FORGE"),
+            "DIANA", List.of("HUNTRESS_INTUITION", "SHARING_IS_CARING", "LUCKY_PAWS", "PET_XP_BUFF"),
+            "DIAZ", List.of("STOCK_EXCHANGE", "LONG_TERM_INVESTMENT", "SHOPPING_SPREE", "VOLUME_TRADING"),
+            "FINNEGAN", List.of("PEST_ERADICATOR", "GOATED", "PELT_POCALYPSE", "BLOOMING_BUSINESS"),
+            "FOXY", List.of("SWEET_BENEVOLENCE", "A_TIME_FOR_GIVING", "CHIVALROUS_CARNIVAL", "EXTRA_EVENT"),
+            "MARINA", List.of("FISHING_XP_BUFF", "LUCK_OF_THE_SEA", "FISHING_FESTIVAL", "DOUBLE_TROUBLE"),
+            "PAUL", List.of("MARAUDER", "BENEDICTION", "EZPZ"),
+            "BARRY", List.of("SEAL_OF_APPROVAL", "HOT_STUFF", "ARCANE_CATALYST", "GOVERNMENT_REFORM")
+    );
+
     private static final List<NamedTextColor> CANDIDATE_COLORS = List.of(
             NamedTextColor.RED, NamedTextColor.GREEN, NamedTextColor.AQUA,
             NamedTextColor.YELLOW, NamedTextColor.LIGHT_PURPLE);
@@ -127,12 +143,14 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
                     data.put("currentMinister", secondPlace);
                     data.put("currentMinisterColor", wireColorForIndex(ministerIndex));
 
-                    List<String> ministerPerks = ministerCandidate != null
-                            ? (List<String>) ministerCandidate.get("activePerks")
+                    // The ministerPerk star was already rolled and shown to voters when the candidate
+                    // list was built (ElectionData.assignMinisterPerk) - reuse it here instead of
+                    // rolling a new one, so the perk that actually activates matches what voters saw.
+                    String designatedMinisterPerk = ministerCandidate != null
+                            ? (String) ministerCandidate.get("ministerPerk")
                             : null;
-                    if (ministerPerks != null && !ministerPerks.isEmpty()) {
-                        data.put("ministerPerk", ministerPerks.get(
-                                ThreadLocalRandom.current().nextInt(ministerPerks.size())));
+                    if (designatedMinisterPerk != null) {
+                        data.put("ministerPerk", designatedMinisterPerk);
                     }
                 }
             }
@@ -188,12 +206,15 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
                     ? new ArrayList<>((List<String>) candidate.get("activePerks"))
                     : new ArrayList<>();
 
-            int maxPerks = estimateMaxPerks(name);
-            if (currentPerks.size() < maxPerks) {
+            List<String> fullPool = MAYOR_PERK_POOLS.getOrDefault(name, List.of());
+            List<String> remainingPerks = fullPool.stream().filter(p -> !currentPerks.contains(p)).toList();
+
+            if (!remainingPerks.isEmpty()) {
                 Boolean failedLast = (Boolean) failedPerkGainLastTime.get(name);
                 boolean gainPerk = Boolean.TRUE.equals(failedLast) || ThreadLocalRandom.current().nextBoolean();
 
                 if (gainPerk) {
+                    currentPerks.add(remainingPerks.get(ThreadLocalRandom.current().nextInt(remainingPerks.size())));
                     failedPerkGainLastTime.put(name, false);
                 } else {
                     failedPerkGainLastTime.put(name, true);
@@ -220,15 +241,6 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
 
         data.put("candidateActivePerks", candidateActivePerks);
         data.put("failedPerkGainLastTime", failedPerkGainLastTime);
-    }
-
-    private int estimateMaxPerks(String mayorName) {
-        return switch (mayorName) {
-            case "PAUL" -> 3;
-            case "SCORPIUS" -> 2;
-            case "JERRY" -> 3;
-            default -> 4;
-        };
     }
 
     private static TextColor colorForIndex(int index) {

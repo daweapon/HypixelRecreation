@@ -17,7 +17,6 @@ import net.swofty.type.skyblockgeneric.gui.inventories.rabbits.GUIChocolateFacto
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -37,11 +36,13 @@ public class GUICalendar extends StatelessView {
     private static Map<SkyBlockCalendar.EventInfo, CalendarEvent> queryEvents(ViewContext ctx) {
         boolean includeDarkAuction = ctx.player().getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_VISITED_DARK_AUCTION);
         if (!includeDarkAuction) {
-            return SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(14, Collections.singletonList(CalendarEvent.DARK_AUCTION));
+            return SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(14,
+                    List.of(CalendarEvent.DARK_AUCTION, CalendarEvent.PERKPOCALYPSE));
         }
 
         boolean halveDarkAuction = ctx.player().getToggles().get(DatapointToggles.Toggles.ToggleType.HALVE_DARK_AUCTION_CALENDAR_ENTRIES);
-        return SkyBlockCalendar.getEventsWithDurationUntil(14, halveDarkAuction);
+        return SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(14,
+                List.of(CalendarEvent.PERKPOCALYPSE), halveDarkAuction);
     }
 
     private record SlotOccurrence(long eventAbsoluteTime, Duration duration, int year, CalendarEvent event) {}

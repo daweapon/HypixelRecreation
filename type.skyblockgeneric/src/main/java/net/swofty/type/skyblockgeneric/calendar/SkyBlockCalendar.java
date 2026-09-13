@@ -161,6 +161,10 @@ public final class SkyBlockCalendar {
         return collectUpcomingEvents(amount, skip, false);
     }
 
+    public static Map<EventInfo, CalendarEvent> getEventsWithDurationUntilSkipSpecific(int amount, List<CalendarEvent> skip, boolean halveDarkAuction) {
+        return collectUpcomingEvents(amount, skip, halveDarkAuction);
+    }
+
     private static Map<EventInfo, CalendarEvent> collectUpcomingEvents(int amount, List<CalendarEvent> skip, boolean halveDarkAuction) {
         long currentElapsed = getElapsed();
         int currentYear = getYear();

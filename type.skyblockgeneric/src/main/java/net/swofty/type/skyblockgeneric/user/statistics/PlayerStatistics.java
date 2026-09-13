@@ -71,6 +71,8 @@ public class PlayerStatistics {
     @Setter
     @Getter
     private double manaRegenerationPercentBonus;
+    @Getter
+    private double incomingDamageReductionPercent;
     private ItemStatistics accessoryStatistics = ItemStatistics.builder().build();
     private final List<TemporaryStatistic> temporaryStatistics = Collections.synchronizedList(new ArrayList<>());
     private final List<TemporaryConditionalStatistic> temporaryConditionalStatistics = Collections.synchronizedList(new ArrayList<>());
@@ -241,6 +243,18 @@ public class PlayerStatistics {
         return allStatistics(null, null);
     }
 
+    // Combat and Miscellaneous stat groupings, matching the tabs GUISkyBlockProfile already shows
+    // the player (see its Combat Stats / Misc Stats slots) - used for Jerry's Statspocalypse perk.
+    private static final ItemStatistic[] STATSPOCALYPSE_STATS = {
+        ItemStatistic.HEALTH, ItemStatistic.DEFENSE, ItemStatistic.STRENGTH, ItemStatistic.INTELLIGENCE,
+        ItemStatistic.CRITICAL_CHANCE, ItemStatistic.CRITICAL_DAMAGE, ItemStatistic.BONUS_ATTACK_SPEED,
+        ItemStatistic.ABILITY_DAMAGE, ItemStatistic.TRUE_DEFENSE, ItemStatistic.FEROCITY,
+        ItemStatistic.HEALTH_REGENERATION, ItemStatistic.VITALITY, ItemStatistic.MENDING, ItemStatistic.SWING_RANGE,
+        ItemStatistic.SPEED, ItemStatistic.MAGIC_FIND, ItemStatistic.PET_LUCK, ItemStatistic.HEAT_RESISTANCE,
+        ItemStatistic.COLD_RESISTANCE, ItemStatistic.RESPIRATION, ItemStatistic.PRESSURE_RESISTANCE,
+        ItemStatistic.FEAR, ItemStatistic.TRACKING,
+    };
+
     public ItemStatistics allStatistics(SkyBlockPlayer causer, LivingEntity enemy) {
         ItemStatistics total = ItemStatistics.builder().build();
         if (enemy instanceof BestiaryMob bestiaryMob) total = ItemStatistics.add(total, getBestiaryStatistics(causer, bestiaryMob));
@@ -253,6 +267,15 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, accessoryStatistics);
         total = ItemStatistics.add(total, AttributeEffectService.statistics(player));
         total = ItemStatistics.add(total, ItemStatistic.getOfAllBaseValues());
+
+        if (net.swofty.type.skyblockgeneric.elections.ElectionManager.isPerkActive(
+                net.swofty.type.skyblockgeneric.elections.SkyBlockMayor.Perk.STATSPOCALYPSE)) {
+            ItemStatistics.Builder statspocalypse = ItemStatistics.builder();
+            for (ItemStatistic statistic : STATSPOCALYPSE_STATS) {
+                statspocalypse.withMultiplicativePercentage(statistic, 10D);
+            }
+            total = ItemStatistics.add(total, statspocalypse.build());
+        }
 
         return total;
     }
@@ -632,6 +655,14 @@ public class PlayerStatistics {
 
         MinecraftServer.getSchedulerManager().scheduleTask(() -> {
             manaRegenerationPercentBonus -= percent;
+        }, TaskSchedule.tick(ticks), TaskSchedule.stop());
+    }
+
+    public void boostIncomingDamageReduction(double percent, int ticks) {
+        incomingDamageReductionPercent += percent;
+
+        MinecraftServer.getSchedulerManager().scheduleTask(() -> {
+            incomingDamageReductionPercent -= percent;
         }, TaskSchedule.tick(ticks), TaskSchedule.stop());
     }
 

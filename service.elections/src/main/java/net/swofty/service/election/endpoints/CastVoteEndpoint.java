@@ -50,10 +50,12 @@ public class CastVoteEndpoint implements RedisMessageHandler
                 return new CastVoteProtocol.CastVoteResponse(false, null, "Vote failed");
             }
 
+            long voteWeight = Math.max(1L, messageObject.voteWeight());
             ElectionDatabase.castVote(
                     messageObject.accountId().toString(),
                     messageObject.candidateName(),
-                    electionYear
+                    electionYear,
+                    voteWeight
             );
 
             Map<String, Long> tallies = ElectionDatabase.getTallies(electionYear);

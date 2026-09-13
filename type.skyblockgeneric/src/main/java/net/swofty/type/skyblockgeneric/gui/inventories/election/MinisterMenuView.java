@@ -53,7 +53,7 @@ public class MinisterMenuView extends StatelessView {
 
             if (activePerk != null) {
                 lore.add(ElectionData.colored(ministerColor, activePerk.getDisplayName()));
-                lore.addAll(Text.of("<wrap:50>{}</wrap>", activePerk.getDescription()).lines());
+                lore.addAll(Text.parseLenient("<wrap:50>" + activePerk.getDescription() + "</wrap>").lines());
             }
 
             lore.add(Text.of("<8><m>--------------------------"));

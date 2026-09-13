@@ -123,6 +123,7 @@ public class ElectionData {
             } else {
                 candidate.setActivePerks(new ArrayList<>(perks));
             }
+            assignMinisterPerk(candidate);
             candidates.add(candidate);
         }
 
@@ -135,6 +136,7 @@ public class ElectionData {
             candidate.setMayorName(specialCandidate.name());
             candidate.setIndex(candidates.size());
             candidate.setActivePerks(Arrays.stream(specialCandidate.getAllPerks()).map(Enum::name).toList());
+            assignMinisterPerk(candidate);
             candidates.add(candidate);
         }
 
@@ -151,9 +153,19 @@ public class ElectionData {
                 diazCandidate.setMayorName(SkyBlockMayor.DIAZ.name());
                 diazCandidate.setIndex(candidates.size());
                 diazCandidate.setActivePerks(Arrays.stream(SkyBlockMayor.DIAZ.getAllPerks()).map(Enum::name).toList());
+                assignMinisterPerk(diazCandidate);
                 candidates.add(diazCandidate);
             }
         }
+    }
+
+    // Rolls the perk that becomes this candidate's ✯ Minister Perk if they place second, decided
+    // once up front so the star shown to voters throughout the election matches what actually gets
+    // applied at resolution - matches the SkyBlock Wiki's documented Minister Perk mechanic.
+    private void assignMinisterPerk(CandidateData candidate) {
+        List<String> perks = candidate.getActivePerks();
+        if (perks.isEmpty()) return;
+        candidate.setMinisterPerk(perks.get(ThreadLocalRandom.current().nextInt(perks.size())));
     }
 
     public int getYearsSinceLastElected(String mayorName, int currentYear) {
@@ -180,6 +192,7 @@ public class ElectionData {
         private int index;
         private String mayorName;
         private List<String> activePerks = new ArrayList<>();
+        private String ministerPerk;
 
         public CandidateData() {}
 
@@ -201,6 +214,15 @@ public class ElectionData {
             return result;
         }
 
+        public SkyBlockMayor.Perk getMinisterPerkEnum() {
+            if (ministerPerk == null) return null;
+            try {
+                return SkyBlockMayor.Perk.valueOf(ministerPerk);
+            } catch (IllegalArgumentException e) {
+                return null;
+            }
+        }
+
         public TextColor getColor() {
             return colorForIndex(index);
         }
@@ -210,7 +232,7 @@ public class ElectionData {
         }
 
         public boolean hasMinisterPerkMarker(SkyBlockMayor.Perk perk) {
-            return activePerks.contains(perk.name());
+            return ministerPerk != null && ministerPerk.equals(perk.name());
         }
     }
 

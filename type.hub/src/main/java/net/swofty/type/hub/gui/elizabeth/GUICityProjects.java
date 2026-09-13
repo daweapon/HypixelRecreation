@@ -88,9 +88,10 @@ public class GUICityProjects extends HypixelInventoryGUI {
                         <7>Bits: <b>{:,}
                         <8>Earn from Booster Cookies!
 
-                        <7>Fame Rank: <e>
-                        <8>Rank up by spending gems & bits!
-                        <e>Click to get link!""", player.getGems(), player.getBits()));
+                        <7>Fame Rank: <e>{}
+                        <8>Rank up by spending bits!
+                        <e>Click to get link!""", player.getGems(), player.getBits(),
+                        net.swofty.type.skyblockgeneric.elections.FameRank.forFame(player.getFame()).getDisplayName()));
             }
         });
         set(new GUIClickableItem(50) {

@@ -1,0 +1,69 @@
+items:
+  - id: VOTER_BADGE
+    material: PLAYER_HEAD
+    name: "Voter's Badge"
+    rarity: COMMON
+    lore:
+      - 'Grants <a>+3 votes <7>in <e>Mayor Elections<7>.'
+      - ''
+      - '<8><o>Awarded once for accepting an offer from a unique Mayor visitor.'
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Voter's Badge"
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 1f88702bd5bce0293f30411ff43c72dfe2f756d7852fa25606e0fe50ee08ce87
+
+  - id: VOTER_BADGE_VIP
+    material: PLAYER_HEAD
+    name: "VIP Voter's Badge"
+    rarity: UNCOMMON
+    lore:
+      - 'Grants <a>+6 votes <7>in <e>Mayor Elections<7>.'
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "VIP Voter's Badge"
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 92ace792c26e79a1c624fa0daf547a028ca59cb63ce187c2477610868f5748fa
+
+  - id: VOTER_BADGE_ELITE
+    material: PLAYER_HEAD
+    name: "Elite Voter's Badge"
+    rarity: RARE
+    lore:
+      - 'Grants <a>+9 votes <7>in <e>Mayor Elections<7>.'
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Elite Voter's Badge"
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 2a2100a53245bfb4d1d99acf4af506252b57ac147b7eb9e1af505d35e160714e
+
+  - id: VOTER_BADGE_SUPREME
+    material: PLAYER_HEAD
+    name: "Supreme Voter's Badge"
+    rarity: EPIC
+    lore:
+      - 'Grants <a>+12 votes <7>in <e>Mayor Elections<7>.'
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Supreme Voter's Badge"
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 433cbf75ff40d1bfc8146528ca3e1bdac3d670ac77ee1c8d98af174ca19feb19
+
+  - id: ARTIFACT_OF_CONTROL
+    material: PLAYER_HEAD
+    name: "Artifact of Control"
+    rarity: LEGENDARY
+    lore:
+      - 'Doubles the amount of votes you cast in <e>Mayor Elections<7>.'
+      - ''
+      - '<8><o>Obtained from Shen''s Auction.'
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Artifact of Control"
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 31f748a43f3b3ada04f44d5d290a8b9bf583d93e1c83ab93c60c4dec1fde1c5c

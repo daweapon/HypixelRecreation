@@ -23,7 +23,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "adminbypass jumptonextevent skiptoevent",
         description = "Skips the timer to the next occurrence of a SkyBlock event",
-        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable",
+        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor",
         permission = Rank.STAFF,
         allowsConsole = true)
 public class AdminBypassCommand extends HypixelCommand {
@@ -84,6 +84,21 @@ public class AdminBypassCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> openCookieMenu(sender, "Bazaar"), ArgumentType.Literal("bazaar"));
         command.addSyntax((sender, context) -> openCookieMenu(sender, "Bank"), ArgumentType.Literal("bank"));
         command.addSyntax((sender, context) -> openCookieMenu(sender, "Enchantment Table"), ArgumentType.Literal("etable"));
+        command.addSyntax((sender, context) -> forceElectSpecialMayor(sender), ArgumentType.Literal("skiptospecialmayor"));
+    }
+
+    private static void forceElectSpecialMayor(net.minestom.server.command.CommandSender sender) {
+        net.swofty.type.skyblockgeneric.elections.SkyBlockMayor elected =
+                net.swofty.type.skyblockgeneric.elections.ElectionManager.forceElectSpecialMayor();
+        if (elected == null) {
+            sender.sendMessage("<c>No special mayors are registered.");
+            return;
+        }
+        sender.sendMessage(Text.parseLenient("<a>Force-elected special mayor <f>" + elected.getDisplayName() + "<a>!"));
+        sender.sendMessage(Text.parseLenient("<7>Active perks: <f>" + String.join("<7>, <f>",
+                java.util.Arrays.stream(elected.getAllPerks())
+                        .map(net.swofty.type.skyblockgeneric.elections.SkyBlockMayor.Perk::getDisplayName)
+                        .toList())));
     }
 
     private static void openCookieMenu(net.minestom.server.command.CommandSender sender, String menu) {

@@ -96,35 +96,7 @@ public abstract class HypixelNPC {
 
                     if (!config.visible(player)) return;
 
-                    String[] holograms = config.hologramTexts(player).stream()
-                            .map(text -> LegacyComponentSerializer.legacySection().serialize(
-                                    GlobalTranslator.render(HypixelTextRenderer.render(text.asComponent(), RenderContext.of(player)), player.getLocale())))
-                            .toArray(String[]::new);
-                    Pos position = config.position(player);
-
-                    String username = holograms[holograms.length - 1];
-                    Entity entity;
-
-                    switch (config) {
-                        case HumanConfiguration humanConfig -> entity = new NPCEntityImpl(
-                            player,
-                            position,
-                            username,
-                            humanConfig.texture(player),
-                            humanConfig.signature(player),
-                            holograms,
-                            humanConfig
-                        );
-                        case VillagerConfiguration villagerConfig -> entity = new NPCVillagerEntityImpl(player,
-                            position, username, villagerConfig.profession(), villagerConfig, holograms);
-                        case AnimalConfiguration animalConfig -> entity = new NPCAnimalEntityImpl(player,
-                            position,
-                            username,
-                            animalConfig.entityType(), animalConfig, holograms);
-                        default ->
-                            throw new IllegalStateException("Unknown NPCConfiguration type: " + config.getClass().getName());
-                    }
-
+                    Entity entity = spawnEntity(npc, player, config);
                     cache.add(npc, entity);
                     perPlayerNPCs.put(player.getUuid(), cache);
                     return;
@@ -136,6 +108,19 @@ public abstract class HypixelNPC {
                 if (!config.visible(player)) {
                     entity.remove();
                     cache.remove(npc);
+                    return;
+                }
+
+                // A config's underlying kind (human/villager/animal) can change across ticks for
+                // NPCs like the current Mayor NPC, whose displayed entity type depends on which
+                // mayor is currently elected. Since that requires an entirely different Entity
+                // implementation, the old one must be torn down and replaced rather than updated.
+                if (!matchesConfigKind(entity, config)) {
+                    entity.remove();
+                    cache.remove(npc);
+                    Entity replacement = spawnEntity(npc, player, config);
+                    cache.add(npc, replacement);
+                    perPlayerNPCs.put(player.getUuid(), cache);
                     return;
                 }
 
@@ -190,6 +175,45 @@ public abstract class HypixelNPC {
                 }
             });
         }
+    }
+
+    private static Entity spawnEntity(HypixelNPC npc, HypixelPlayer player, NPCConfiguration config) {
+        String[] holograms = config.hologramTexts(player).stream()
+                .map(text -> LegacyComponentSerializer.legacySection().serialize(
+                        GlobalTranslator.render(HypixelTextRenderer.render(text.asComponent(), RenderContext.of(player)), player.getLocale())))
+                .toArray(String[]::new);
+        Pos position = config.position(player);
+        String username = holograms[holograms.length - 1];
+
+        return switch (config) {
+            case HumanConfiguration humanConfig -> new NPCEntityImpl(
+                player,
+                position,
+                username,
+                humanConfig.texture(player),
+                humanConfig.signature(player),
+                holograms,
+                humanConfig
+            );
+            case VillagerConfiguration villagerConfig -> new NPCVillagerEntityImpl(player,
+                position, username, villagerConfig.profession(), villagerConfig, holograms);
+            case AnimalConfiguration animalConfig -> new NPCAnimalEntityImpl(player,
+                position,
+                username,
+                animalConfig.entityType(), animalConfig, holograms);
+            default ->
+                throw new IllegalStateException("Unknown NPCConfiguration type: " + config.getClass().getName());
+        };
+    }
+
+    private static boolean matchesConfigKind(Entity entity, NPCConfiguration config) {
+        return switch (config) {
+            case HumanConfiguration ignored -> entity instanceof NPCEntityImpl;
+            case VillagerConfiguration ignored -> entity instanceof NPCVillagerEntityImpl;
+            case AnimalConfiguration ignored -> entity instanceof NPCAnimalEntityImpl;
+            default ->
+                throw new IllegalStateException("Unknown NPCConfiguration type: " + config.getClass().getName());
+        };
     }
 
     public abstract void onClick(NPCInteractEvent event);
