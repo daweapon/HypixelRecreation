@@ -242,13 +242,6 @@ public class GUIDarkAuction extends HypixelInventoryGUI implements RefreshingGUI
                         return;
                     }
 
-                    // Check if already highest bidder
-                    if (state.getHighestBidderId() != null &&
-                            state.getHighestBidderId().equals(sp.getUuid())) {
-                        sp.sendMessage("<c>You are already the highest bidder!");
-                        return;
-                    }
-
                     // Send bid to service
                     sp.sendMessage("<7>Placing bid of <6>{:,} coins</6>...", bidValue);
 

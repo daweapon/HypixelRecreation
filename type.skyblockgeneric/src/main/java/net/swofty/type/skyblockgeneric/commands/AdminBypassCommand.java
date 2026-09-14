@@ -5,6 +5,8 @@ import net.minestom.server.command.builder.arguments.ArgumentType;
 import net.minestom.server.command.builder.arguments.minecraft.ArgumentUUID;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.protocol.objects.auctions.AuctionAdminBypassProtocol;
+import net.swofty.commons.protocol.objects.calendar.ResetCalendarProtocol;
+import net.swofty.commons.redis.RedisClient;
 import net.swofty.commons.text.Text;
 import net.swofty.proxyapi.ProxyService;
 import net.swofty.type.generic.command.CommandParameters;
@@ -19,11 +21,12 @@ import net.swofty.type.skyblockgeneric.gui.inventories.GUIEnchantmentTable;
 import net.swofty.type.skyblockgeneric.gui.inventories.auction.GUIAuctionHouse;
 import net.swofty.type.skyblockgeneric.gui.inventories.banker.GUIBanker;
 import net.swofty.type.skyblockgeneric.gui.inventories.bazaar.GUIBazaar;
+import net.swofty.type.skyblockgeneric.server.attribute.SkyBlockServerAttributes;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "adminbypass jumptonextevent skiptoevent",
         description = "Skips the timer to the next occurrence of a SkyBlock event",
-        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor",
+        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|resetyear",
         permission = Rank.STAFF,
         allowsConsole = true)
 public class AdminBypassCommand extends HypixelCommand {
@@ -85,6 +88,27 @@ public class AdminBypassCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> openCookieMenu(sender, "Bank"), ArgumentType.Literal("bank"));
         command.addSyntax((sender, context) -> openCookieMenu(sender, "Enchantment Table"), ArgumentType.Literal("etable"));
         command.addSyntax((sender, context) -> forceElectSpecialMayor(sender), ArgumentType.Literal("skiptospecialmayor"));
+        command.addSyntax((sender, context) -> resetYear(sender), ArgumentType.Literal("resetyear"));
+    }
+
+    private static void resetYear(net.minestom.server.command.CommandSender sender) {
+        // A local-only reset would just get overwritten back up within a few seconds by
+        // SkyBlockServerAttributes' cross-server "highest elapsed wins" reconciliation once any
+        // other still-running server saves its own (higher) value again - so this resets locally
+        // immediately, then broadcasts the same reset to every other connected game server so they
+        // all land on Year 1 together instead of one racing the others back up.
+        SkyBlockCalendar.resetToYearOne();
+        SkyBlockServerAttributes.forceSave();
+        sender.sendMessage("<a>Reset the SkyBlock Calendar to Year 1, Early Spring, Day 1.");
+
+        RedisClient.requestAllServersFromService(new ResetCalendarProtocol(),
+                new ResetCalendarProtocol.ResetMessage(), 5000)
+            .thenAccept(responses -> sender.sendMessage(
+                    Text.of("<7>Synced the reset across <f>{} <7>connected game server(s).", responses.size())))
+            .exceptionally(error -> {
+                sender.sendMessage("<c>Reset this server, but failed to sync the reset to other game servers.");
+                return null;
+            });
     }
 
     private static void forceElectSpecialMayor(net.minestom.server.command.CommandSender sender) {

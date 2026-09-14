@@ -9,7 +9,6 @@ import net.swofty.commons.ServerType;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.text.Text;
-import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.*;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
@@ -266,7 +265,11 @@ public class GUISkyBlockMenu extends StatelessView {
     }
 
     private static @NonNull List<Text> getCalendarLore(ViewContext ctx) {
-        List<CalendarEvent> currentEvents = SkyBlockCalendar.getCurrentEvents();
+        // Perkpocalypse is Jerry's own mayor mechanic and lives in the Mayor Jerry tooltip instead
+        // of general Calendar UI (matches GUICalendar/GUIFullCalendar, which skip it the same way).
+        List<CalendarEvent> currentEvents = SkyBlockCalendar.getCurrentEvents().stream()
+                .filter(event -> event != CalendarEvent.PERKPOCALYPSE)
+                .toList();
         boolean multipleEvents = currentEvents.size() > 1;
 
         String date = StringUtility.ntify(SkyBlockCalendar.getDay()) + " " + SkyBlockCalendar.getMonthName() + " " + SkyBlockCalendar.getYear();
@@ -289,13 +292,12 @@ public class GUISkyBlockMenu extends StatelessView {
 
         lore.add(Text.literal(" "));
 
-        Map<SkyBlockCalendar.EventInfo, CalendarEvent> upcomingEvents;
-        if (ctx.player().getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_VISITED_DARK_AUCTION)) {
-            boolean halveDarkAuction = ctx.player().getToggles().get(DatapointToggles.Toggles.ToggleType.HALVE_DARK_AUCTION_CALENDAR_ENTRIES);
-            upcomingEvents = SkyBlockCalendar.getEventsWithDurationUntil(1, halveDarkAuction);
-        } else {
-            upcomingEvents = SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(1, Collections.singletonList(CalendarEvent.DARK_AUCTION));
-        }
+        // Dark Auction recurs every 3 SkyBlock days and lives on the full day-by-day Calendar
+        // instead of this rotating "next event" preview - it would otherwise dominate the slot.
+        // Perkpocalypse lives in the Mayor Jerry tooltip instead (see filter above).
+        Map<SkyBlockCalendar.EventInfo, CalendarEvent> upcomingEvents =
+                SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(1,
+                        List.of(CalendarEvent.DARK_AUCTION, CalendarEvent.PERKPOCALYPSE));
 
         if (!upcomingEvents.isEmpty()) {
             Map.Entry<SkyBlockCalendar.EventInfo, CalendarEvent> entry = upcomingEvents.entrySet().iterator().next();

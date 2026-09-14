@@ -107,6 +107,7 @@ public final class MaxStickService {
         maxMobTypes(player);
         maxFame(player);
         giveMaxBits(player);
+        unlockDarkAuctionCalendar(player);
 
         player.sendMessage("<a><l>MAXED! <f>Your profile has been fully maxed out.");
     }
@@ -233,6 +234,12 @@ public final class MaxStickService {
 
     private static void giveMaxBits(SkyBlockPlayer player) {
         player.setBits(MAX_BITS);
+    }
+
+    // Real Hypixel only shows Dark Auction on the Calendar once a player has physically visited
+    // one - testers using /maxprofile or THE_MAX_STICK shouldn't have to wait out a live auction.
+    private static void unlockDarkAuctionCalendar(SkyBlockPlayer player) {
+        player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_VISITED_DARK_AUCTION, true);
     }
 
     private static void maxBackpackSlots(SkyBlockPlayer player) {

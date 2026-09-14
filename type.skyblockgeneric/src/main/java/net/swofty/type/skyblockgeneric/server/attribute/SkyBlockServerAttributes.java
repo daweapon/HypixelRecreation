@@ -16,6 +16,7 @@ import tools.jackson.core.JacksonException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -64,16 +65,59 @@ public class SkyBlockServerAttributes {
         return type.cast(serverAttributes.get(attribute));
     }
 
+    // Every game server type runs its own JVM with no single "main" instance, so a value like the
+    // calendar's elapsed time otherwise drifts per-server the moment two servers boot at different
+    // times (each only ever loaded the shared document once, at its own boot). This loop instead
+    // reconciles against the shared document every cycle: for a "convergent" attribute (see
+    // Attributes.reconcile), the higher of this server's local value and the last-saved shared
+    // value wins, is adopted locally if this server was behind, and is saved back if it was ahead -
+    // so every server converges on the same value within a couple of cycles regardless of boot order.
     public static void saveAttributeLoop() {
-        MinecraftServer.getSchedulerManager().scheduleTask(() -> {
-            AttributeDatabase.saveDocument(toDocument());
-        }, TaskSchedule.seconds(3), TaskSchedule.seconds(3), ExecutionType.TICK_END);
+        MinecraftServer.getSchedulerManager().scheduleTask(SkyBlockServerAttributes::reconcileAndSave,
+                TaskSchedule.seconds(3), TaskSchedule.seconds(3), ExecutionType.TICK_END);
+    }
+
+    // Bypasses the "highest value wins" reconciliation to push this server's current attribute
+    // values straight to the shared document. Only safe to call when every server's local value is
+    // being deliberately forced to the same new value at once (e.g. a coordinated calendar reset) -
+    // otherwise the next reconcileAndSave cycle on another server will just overwrite it back.
+    public static void forceSave() {
+        AttributeDatabase.saveDocument(toDocument());
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void reconcileAndSave() {
+        Document remoteDocument = AttributeDatabase.getDocument("attributes");
+
+        for (Attributes data : Attributes.values()) {
+            Object localValue = data.onSave.apply(HypixelConst.getTypeLoader()).getValue();
+            if (remoteDocument == null || !remoteDocument.containsKey(data.getKey())) continue;
+
+            try {
+                ServerAttribute remoteAttribute = data.getDefaultAttribute().getClass().getDeclaredConstructor(String.class).newInstance(data.getKey());
+                remoteAttribute.deserializeValue(remoteDocument.getString(data.getKey()));
+
+                Object reconciled = data.reconcile.apply(localValue, remoteAttribute.getValue());
+                if (!reconciled.equals(localValue)) {
+                    remoteAttribute.setValue(reconciled);
+                    data.onLoad.accept(remoteAttribute);
+                }
+            } catch (Exception e) {
+                Logger.error(e, "Failed to reconcile server attribute {}", data.getKey());
+            }
+        }
+
+        AttributeDatabase.saveDocument(toDocument());
     }
 
     public enum Attributes {
+        // Calendar time only ever advances, so the reconcile strategy is "highest value wins" -
+        // this is what makes it converge across servers instead of just persisting/restoring
+        // per-server state.
         CALENDER_ELAPSED_TIME("elapsed", AttributeLong.class, new AttributeLong("elapsed", 0L), (attribute) -> {
             SkyBlockCalendar.setElapsed((Long) attribute.getValue());
-        }, (server) -> new AttributeLong("elapsed", SkyBlockCalendar.getElapsed()));
+        }, (server) -> new AttributeLong("elapsed", SkyBlockCalendar.getElapsed()),
+                (local, remote) -> Math.max((Long) local, (Long) remote));
         @Getter
         private final String key;
         @Getter
@@ -82,13 +126,15 @@ public class SkyBlockServerAttributes {
         private final ServerAttribute defaultAttribute;
         public final Consumer<ServerAttribute> onLoad;
         public final Function<HypixelTypeLoader, ServerAttribute> onSave;
+        public final BinaryOperator<Object> reconcile;
 
-        Attributes(String key, Class<? extends ServerAttribute> type, ServerAttribute defaultAttribute, Consumer<ServerAttribute> onLoad, Function<HypixelTypeLoader, ServerAttribute> onSave) {
+        Attributes(String key, Class<? extends ServerAttribute> type, ServerAttribute defaultAttribute, Consumer<ServerAttribute> onLoad, Function<HypixelTypeLoader, ServerAttribute> onSave, BinaryOperator<Object> reconcile) {
             this.key = key;
             this.type = type;
             this.defaultAttribute = defaultAttribute;
             this.onLoad = onLoad;
             this.onSave = onSave;
+            this.reconcile = reconcile;
         }
 
         public static Attributes fromKey(String key) {

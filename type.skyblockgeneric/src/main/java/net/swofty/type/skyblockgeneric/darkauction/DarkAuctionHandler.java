@@ -259,7 +259,12 @@ public class DarkAuctionHandler {
         // Reset timer on new bid
         timeLeft.set(10);
 
-        // Handle refunds for previous bidder (if on this server)
+        // Handle refunds for previous bidder (if on this server). Refunding a player's own
+        // previous bid when they raise it themselves is intentional - only the "outbid by someone
+        // else" message is skipped for that case below, since they'll get the bid-placed message.
+        UUID newBidderId = msg.has("newBidderId") && !msg.isNull("newBidderId")
+                ? UUID.fromString(msg.getString("newBidderId")) : null;
+
         if (msg.has("refundPlayerId") && !msg.isNull("refundPlayerId")) {
             String refundPlayerIdStr = msg.getString("refundPlayerId");
             long refundAmount = msg.getLong("refundAmount");
@@ -268,17 +273,16 @@ public class DarkAuctionHandler {
             SkyBlockPlayer refundPlayer = SkyBlockGenericLoader.getFromUUID(refundPlayerId);
             if (refundPlayer != null && playersInAuction.contains(refundPlayerId)) {
                 refundPlayer.addCoins(refundAmount);
-                refundPlayer.sendMessage("<c>You have been outbid! <6>{:,} Coins <c>have been returned to you.",
-                        refundAmount);
+                if (!refundPlayerId.equals(newBidderId)) {
+                    refundPlayer.sendMessage("<c>You have been outbid! <6>{:,} Coins <c>have been returned to you.",
+                            refundAmount);
+                }
             }
         }
 
         // Handle new bidder
-        UUID newBidderId = null;
-        if (msg.has("newBidderId") && !msg.isNull("newBidderId")) {
-            String newBidderIdStr = msg.getString("newBidderId");
+        if (newBidderId != null) {
             long newBidAmount = msg.getLong("newBidAmount");
-            newBidderId = UUID.fromString(newBidderIdStr);
 
             SkyBlockPlayer newBidder = SkyBlockGenericLoader.getFromUUID(newBidderId);
             if (newBidder != null && playersInAuction.contains(newBidderId)) {

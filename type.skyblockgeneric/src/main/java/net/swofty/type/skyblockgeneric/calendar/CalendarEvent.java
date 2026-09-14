@@ -61,7 +61,7 @@ public record CalendarEvent(
     // Dark Auction occurs every 3 SkyBlock days at midnight
     public static CalendarEvent DARK_AUCTION = new CalendarEvent(
         "dark_auction",
-        ItemStack.of(Material.NETHER_STAR).with(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true),
+        ItemStack.of(Material.NETHER_BRICK).with(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true),
         year -> Text.of("<5>Dark Auction"),
         List.of(
             Text.of("<7>The Dark Auction is a secret"),

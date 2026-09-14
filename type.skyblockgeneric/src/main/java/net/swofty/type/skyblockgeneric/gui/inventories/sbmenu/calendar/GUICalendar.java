@@ -3,7 +3,6 @@ package net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.calendar;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
 import net.swofty.commons.text.Text;
-import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.Components;
 import net.swofty.type.generic.gui.v2.DefaultState;
@@ -29,20 +28,15 @@ public class GUICalendar extends StatelessView {
         return new ViewConfiguration<>("Calendar and Events", InventoryType.CHEST_5_ROW);
     }
 
-    private static final int HALVE_DARK_AUCTION_TOGGLE_SLOT = 41;
+    private static final int FULL_CALENDAR_SLOT = 41;
     private static final int CHOCOLATE_FACTORY_SLOT = 42;
     private static final String CHOCOLATE_TEXTURE = "9a815398e7da89b1bc08f646cafc8e7b813da0be0eec0cce6d3eff5207801026";
 
-    private static Map<SkyBlockCalendar.EventInfo, CalendarEvent> queryEvents(ViewContext ctx) {
-        boolean includeDarkAuction = ctx.player().getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_VISITED_DARK_AUCTION);
-        if (!includeDarkAuction) {
-            return SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(14,
-                    List.of(CalendarEvent.DARK_AUCTION, CalendarEvent.PERKPOCALYPSE));
-        }
-
-        boolean halveDarkAuction = ctx.player().getToggles().get(DatapointToggles.Toggles.ToggleType.HALVE_DARK_AUCTION_CALENDAR_ENTRIES);
+    // Dark Auction recurs every 3 SkyBlock days and lives on the full day-by-day Calendar
+    // (GUIFullCalendar) instead - showing individual occurrences here would crowd out rarer events.
+    private static Map<SkyBlockCalendar.EventInfo, CalendarEvent> queryEvents() {
         return SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(14,
-                List.of(CalendarEvent.PERKPOCALYPSE), halveDarkAuction);
+                List.of(CalendarEvent.DARK_AUCTION, CalendarEvent.PERKPOCALYPSE));
     }
 
     private record SlotOccurrence(long eventAbsoluteTime, Duration duration, int year, CalendarEvent event) {}
@@ -53,7 +47,7 @@ public class GUICalendar extends StatelessView {
         Components.close(layout, 40);
         Components.back(layout, 39, ctx);
 
-        Map<SkyBlockCalendar.EventInfo, CalendarEvent> initialEvents = queryEvents(ctx);
+        Map<SkyBlockCalendar.EventInfo, CalendarEvent> initialEvents = queryEvents();
         long baseElapsed = SkyBlockCalendar.getElapsed();
 
         // Anchor each slot to the absolute tick its occurrence begins at, rather than re-looking it
@@ -87,16 +81,14 @@ public class GUICalendar extends StatelessView {
             }, Duration.ofSeconds(1));
         }
 
-        layout.autoUpdating(HALVE_DARK_AUCTION_TOGGLE_SLOT, (_, c) -> {
-            boolean enabled = c.player().getToggles().get(DatapointToggles.Toggles.ToggleType.HALVE_DARK_AUCTION_CALENDAR_ENTRIES);
-            String template = enabled
-                ? "<e>Halve Dark Auction Entries\n<a>Status: ENABLED\n\n<7>At most half of the slots above\n<7>can be Dark Auction, leaving\n<7>room for other events."
-                : "<e>Halve Dark Auction Entries\n<c>Status: DISABLED\n\n<7>Every upcoming Dark Auction\n<7>is shown here, which can\n<7>crowd out other events.";
-            return ItemStacks.item(Material.HOPPER, template);
-        }, (click, c) -> {
-            c.player().getToggles().inverse(DatapointToggles.Toggles.ToggleType.HALVE_DARK_AUCTION_CALENDAR_ENTRIES);
-            c.player().openView(new GUICalendar());
-        }, Duration.ofSeconds(1));
+        layout.slot(FULL_CALENDAR_SLOT, (_, _) -> ItemStacks.item(Material.CLOCK, """
+                <6>SkyBlock Calendar
+                <7>View the full year, day by day,
+                <7>including every upcoming
+                <7>Dark Auction.
+
+                <e>Click to view!"""),
+                (click, c) -> c.player().openView(new GUIFullCalendar()));
 
         layout.slot(CHOCOLATE_FACTORY_SLOT, (_, _) -> ItemStacks.head(CHOCOLATE_TEXTURE, """
                 <6>Chocolate Factory
