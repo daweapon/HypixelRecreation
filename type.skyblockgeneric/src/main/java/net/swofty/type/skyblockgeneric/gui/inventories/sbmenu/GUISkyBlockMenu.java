@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointBankData;
 import net.swofty.type.skyblockgeneric.gui.inventories.banker.GUIBanker;
+import net.swofty.type.skyblockgeneric.gui.inventories.islandsettings.GUIIslandSettings;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bags.GUIYourBags;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.calendar.GUICalendar;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.collection.GUICollections;
@@ -245,7 +246,7 @@ public class GUISkyBlockMenu extends StatelessView {
 
         layout.slot(50, (s, c) -> ItemStacks.item(Material.REDSTONE_TORCH, 1,
             Text.key("gui_sbmenu.main.settings"),
-            Text.keyLines("gui_sbmenu.main.settings.lore")), (_, c) -> c.player().sendMessage("<c>SkyBlock Settings are not available yet."));
+            Text.keyLines("gui_sbmenu.main.settings.lore")), (_, c) -> c.push(new GUIIslandSettings()));
 
         layout.slot(52, (s, c) -> c.player().getRank().isStaff()
                 ? ItemStacks.item(Material.COMMAND_BLOCK, 1, Text.literal("Admin Menu"), List.of(Text.literal("Staff tools and command actions")))

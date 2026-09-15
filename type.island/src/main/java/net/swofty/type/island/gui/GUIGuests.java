@@ -10,6 +10,8 @@ import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.gui.inventories.islandsettings.GUIIslandSettingsGuests;
+import net.swofty.type.skyblockgeneric.gui.inventories.islandsettings.GUIIslandSettingsIgnored;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.island.VisitManager;
 
@@ -97,23 +99,21 @@ public class GUIGuests extends HypixelInventoryGUI {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
-                player.closeInventory();
-                player.sendMessage("<e>Use /ignore add <username> to block a player, or /islandprivacy <public|friends|private> to change who can visit.");
+                player.openView(new GUIIslandSettingsIgnored());
             }
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 return ItemStacks.item(Material.OAK_FENCE, """
                         <a>Access Permissions
-                        <7>You may edit who is able to
-                        <7>guest on your island using:
+                        <7>View and manage which players
+                        <7>are blocked from guesting on
+                        <7>your island.
 
-                        <7>- <c>/ignore add \\<username>
-                        <7>  to block a specific player.
-                        <7>- <c>/islandprivacy \\<mode>
-                        <7>  to set public/friends/private.
+                        <7>Use <c>/islandprivacy \\<mode>
+                        <7>to set public/friends/private.
 
-                        <e>Click for a reminder of these commands!""");
+                        <e>Click to open the Ignored Players menu!""");
             }
         });
 
@@ -121,33 +121,22 @@ public class GUIGuests extends HypixelInventoryGUI {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
-                player.closeInventory();
-
-                if (VisitManager.isVisiting(player.getUuid())) {
-                    player.sendMessage("<c>You can't kick guests while visiting someone else's island!");
-                    return;
-                }
-                if (VisitManager.visitorIds(player.getSkyBlockIsland().getIslandID()).isEmpty()) {
-                    player.sendMessage("<c>Nobody is currently visiting your island!");
-                    return;
-                }
-
-                Thread.startVirtualThread(() -> {
-                    int kicked = VisitManager.kickAllGuests(player);
-                    player.sendMessage("<e>Kicked {} guest(s) off your island.", kicked);
-                });
+                player.openView(new GUIIslandSettingsGuests());
             }
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 return ItemStacks.item(Material.REPEATER, """
                         <a>Moderation
-                        <7>Click to kick every current guest
-                        <7>off your island at once.
+                        <7>View everyone currently visiting
+                        <7>your island and kick them
+                        <7>individually or all at once.
 
                         <7>Alternatively, use the <c>/sbkick &
                         <a>/sbkickall commands or <a>clicking
-                        <a>on them<7>.""");
+                        <a>on them<7>.
+
+                        <e>Click to open the Guest Management menu!""");
             }
         });
         updateItemStacks(getInventory(), getPlayer());
