@@ -39,6 +39,6 @@ public class NPCSherry extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-
+		event.player().sendMessage("<f>Sherry chirps happily and points you towards <c>St. Jerry <f>if you want to help defend the Workshop!");
 	}
 }

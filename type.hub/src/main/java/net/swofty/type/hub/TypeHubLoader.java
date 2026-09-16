@@ -178,6 +178,7 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
 		}).setInstance(HypixelConst.getInstanceContainer(), new Pos(0.5, 50, 34.5));
 
 		MinecraftServer.getSchedulerManager().buildTask(ElectionDisplay::addAndUpdate).delay(TaskSchedule.seconds(1)).repeat(TaskSchedule.seconds(1)).schedule();
+		MinecraftServer.getSchedulerManager().buildTask(SpookyFestivalLeaderboardDisplay::addAndUpdate).delay(TaskSchedule.seconds(1)).repeat(TaskSchedule.seconds(1)).schedule();
 	}
 
 	private static String[] electionLines() {

@@ -1,6 +1,6 @@
 items:
   - id: NEW_YEAR_CAKE
-    material: PLAYER_HEAD
+    material: CAKE
     name: "New Year Cake"
     rarity: SPECIAL
     components:

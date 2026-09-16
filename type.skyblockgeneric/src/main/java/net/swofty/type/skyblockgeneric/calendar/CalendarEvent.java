@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.calendar;
 
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.sound.Sound;
 import net.minestom.server.component.DataComponents;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -9,7 +11,9 @@ import net.swofty.commons.protocol.objects.darkauction.TriggerDarkAuctionProtoco
 import net.swofty.commons.redis.RedisClient;
 import net.swofty.commons.text.Text;
 import net.swofty.proxyapi.ProxyService;
+import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
 import java.time.Duration;
@@ -54,7 +58,16 @@ public record CalendarEvent(
         Duration.ofHours(1),
         true,
         (time, year) -> {
-            // New Year's actions
+            // The Baker's free-Cake gate (NPCBaker.java) already gives out the real reward by
+            // continuously polling getCurrentEvents(); this one-time trigger only handles the
+            // celebratory broadcast that polling can't express.
+            Text announcement = Text.parseLenient(
+                    "<d><l>HAPPY NEW YEAR! <7>Year " + StringUtility.ntify(year) +
+                            " has begun! <7>Visit the <a>Baker <7>in the Hub for free Cake!");
+            for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
+                player.sendMessage(announcement.asComponent());
+                player.playSound(Sound.sound(Key.key("entity.firework_rocket.blast"), Sound.Source.MASTER, 1f, 1f));
+            }
         }
     );
 
@@ -191,7 +204,15 @@ public record CalendarEvent(
         List.of(3 * MONTH, 9 * MONTH),
         Duration.ofMinutes(3L * 20),
         true,
-        (_, _) -> {}
+        (_, _) -> {
+            // NPCOringo (type.hub) gates its own visibility/click off getCurrentEvents() directly,
+            // same pattern as NPCBaker for New Year - this only handles the one-time announcement.
+            Text announcement = Text.parseLenient(
+                    "<a><l>THE TRAVELING ZOO HAS ARRIVED! <7>Visit <a>Oringo <7>in the Village to see rare animals and buy exclusive pets!");
+            for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
+                player.sendMessage(announcement.asComponent());
+            }
+        }
     );
 
     // Once yearly: Autumn 29-31
@@ -207,10 +228,22 @@ public record CalendarEvent(
         List.of(7 * MONTH + 28 * DAY),
         Duration.ofMinutes(3L * 20),
         true,
-        (_, _) -> {}
+        (_, _) -> {
+            // SpookyFestivalCandyHandler and NPCFearMongerer both gate off getCurrentEvents()
+            // directly - this only handles the one-time announcement.
+            Text announcement = Text.parseLenient(
+                    "<6><l>THE SPOOKY FESTIVAL HAS BEGUN! <7>Kill monsters for a chance at Candy, then trade it in with the <6>Fear Mongerer<7>!");
+            for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
+                player.sendMessage(announcement.asComponent());
+            }
+        }
     );
 
-    // Once yearly: Late Winter 24-26
+    // Once yearly, starting Late Winter 23rd. Real Hypixel (SkyBlock Wiki, "Jerry's Workshop"):
+    // the island opens for the entirety of Late Winter (~11 real-world hours) - user-reported
+    // the previous 1-hour duration was wrong ("the event lasts more than an hour"). This
+    // codebase's Late Winter (1 SkyBlock month = MONTH ticks) is itself ~10.3 real-world hours
+    // at 20 ticks/sec, so spanning the full month here lines up almost exactly with the wiki.
     public static CalendarEvent SEASON_OF_JERRY = new CalendarEvent(
         "season_of_jerry",
         ItemStack.of(Material.LIME_WOOL),
@@ -221,7 +254,7 @@ public record CalendarEvent(
             Text.of("<7>for festive rewards.")
         ),
         List.of(11 * MONTH + 23 * DAY),
-        Duration.ofMinutes(3L * 20),
+        Duration.ofSeconds(MONTH / 20L),
         true,
         (_, _) -> {}
     );
@@ -239,6 +272,20 @@ public record CalendarEvent(
 
     public Text getDisplayName(int year) {
         return displayName.apply(year);
+    }
+
+    // Ticks remaining until this event's currently-active occurrence ends, or -1 if it isn't
+    // active at the given time (elapsed % YEAR). Mirrors getCurrentEvents(long)'s own active-
+    // window check so the two never disagree about whether an event is active.
+    public long remainingTicksAt(long timeInYear) {
+        long durationTicks = duration.toMillis() / 50;
+        for (Long eventStartTime : times) {
+            long ticksSinceStart = timeInYear - eventStartTime;
+            if (ticksSinceStart >= 0 && ticksSinceStart < durationTicks) {
+                return durationTicks - ticksSinceStart;
+            }
+        }
+        return -1;
     }
 
     private static void registerEvent(CalendarEvent event) {

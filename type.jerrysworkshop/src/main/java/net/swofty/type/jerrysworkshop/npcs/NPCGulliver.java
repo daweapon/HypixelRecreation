@@ -43,6 +43,6 @@ public class NPCGulliver extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-
+		event.player().sendMessage("<f>Gulliver grins. \"Come back during the Season of Jerry - the Workshop will need every hand it can get!\"");
 	}
 }

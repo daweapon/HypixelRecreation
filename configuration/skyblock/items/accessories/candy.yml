@@ -9,7 +9,6 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: e6ae8c4c983ac24d93c48417a95beeb1ca055b9b49764143cc98c1392548eed3
-      - id: NOT_FINISHED_YET
 
   - id: CANDY_RING
     material: PLAYER_HEAD
@@ -21,7 +20,6 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 18c0d7034a7dac30e2b52c00eeec0eca55fe688d25faf4efd9c0a07dce9eaf30
-      - id: NOT_FINISHED_YET
 
   - id: CANDY_ARTIFACT
     material: PLAYER_HEAD
@@ -33,4 +31,17 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: b797add1b3ae64d510bcc6ac16c2fa1dd69369edf59821239c955f7f11e1177b
-      - id: NOT_FINISHED_YET
+
+  # 4th tier confirmed via user-provided Fear Mongerer shop tooltip screenshot (not present when
+  # this file previously had only 3 tiers) - reuses the Candy Artifact texture as a placeholder,
+  # real Candy Relic texture not sourced.
+  - id: CANDY_RELIC
+    material: PLAYER_HEAD
+    name: "Candy Relic"
+    rarity: LEGENDARY
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: Candy Relic
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: b797add1b3ae64d510bcc6ac16c2fa1dd69369edf59821239c955f7f11e1177b

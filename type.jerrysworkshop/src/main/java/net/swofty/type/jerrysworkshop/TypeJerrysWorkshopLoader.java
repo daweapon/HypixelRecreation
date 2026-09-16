@@ -15,6 +15,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
+import net.swofty.type.jerrysworkshop.defense.JerryWorkshopDefenseManager;
 import net.swofty.type.jerrysworkshop.present.Present;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.entity.GlassDisplay;
@@ -43,13 +44,25 @@ public class TypeJerrysWorkshopLoader implements SkyBlockTypeLoader {
 
     @Override
     public void afterInitialize(MinecraftServer server) {
-        GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(14, 77, 91), (player, _) -> player.notImplemented());
-        GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(16, 77, 91), (player, _) -> player.notImplemented());
-        GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(13, 77, 97), (player, _) -> player.notImplemented());
-        GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(13, 77, 99), (player, _) -> player.notImplemented());
-        GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(13, 77, 101), (player, _) -> player.notImplemented());
+        // Repurposed from dead "not implemented" props into a shelf previewing the Defend Jerry's
+        // Workshop reward tiers (Roadmap #20) - the actual arena entry point is St. Jerry.
+        GlassDisplay.create(new SkyBlockItem(ItemType.GREEN_GIFT), HypixelConst.getInstanceContainer(), new Pos(14, 77, 91),
+                (player, _) -> player.sendMessage("<a>Green Gifts are earned by helping defend Jerry's Workshop!"));
+        GlassDisplay.create(new SkyBlockItem(ItemType.RED_GIFT), HypixelConst.getInstanceContainer(), new Pos(16, 77, 91),
+                (player, _) -> player.sendMessage("<c>Red Gifts are earned by dealing top damage in a defense round!"));
+        GlassDisplay.create(new SkyBlockItem(ItemType.WHITE_GIFT), HypixelConst.getInstanceContainer(), new Pos(13, 77, 97),
+                (player, _) -> player.sendMessage("<f>White Gifts are hidden around the Workshop - go find them!"));
+        GlassDisplay.create(new SkyBlockItem(ItemType.PAPER), HypixelConst.getInstanceContainer(), new Pos(13, 77, 99),
+                (player, _) -> player.sendMessage("<7>Talk to <c>St. Jerry <7>to see when the next defense round begins."));
+        GlassDisplay.create(new SkyBlockItem(ItemType.NETHERRACK), HypixelConst.getInstanceContainer(), new Pos(13, 77, 101),
+                (player, _) -> player.sendMessage("<7>Magma Cubes attack in waves during the Season of Jerry - defend the Workshop!"));
 
         Present.spawnAll();
+
+        MinecraftServer.getSchedulerManager().submitTask(() -> {
+            JerryWorkshopDefenseManager.checkAndAutoStart();
+            return net.minestom.server.timer.TaskSchedule.seconds(10);
+        });
     }
 
     @Override

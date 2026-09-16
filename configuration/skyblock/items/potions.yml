@@ -162,6 +162,20 @@ items:
         base_duration: 180
         splash: false
 
+  # Spirit Potions (Fear Mongerer shop, Roadmap #19 - real Hypixel tooltip confirmed "Spirit I
+  # (3:00)" matches this codebase's existing SPIRIT PotionEffectType exactly: +10 Speed, +10% Crit
+  # Damage at level 1, 180s base duration)
+  - id: SPIRIT_POTION_1
+    rarity: COMMON
+    material: potion
+    name: "Spirit Potion 1"
+    components:
+      - id: POTION_DATA
+        effect: SPIRIT
+        level: 1
+        base_duration: 180
+        splash: false
+
   # Pet Luck Potions
   - id: PET_LUCK_POTION_1
     rarity: COMMON

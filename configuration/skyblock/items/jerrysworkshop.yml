@@ -10,27 +10,48 @@ items:
         value: 200.0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/winter/glacial_fragment
+  # Awarded by the Defend Jerry's Workshop event (Roadmap #20) based on damage dealt each round -
+  # real Hypixel: "the amount of gifts received at the end of each round can be sold to the
+  # Bazaar." These were previously NOT_FINISHED_YET placeholders wired to nothing.
   - id: GREEN_GIFT
     material: player_head
     name: "Green Gift"
     rarity: UNCOMMON
+    lore:
+      - "\xA77Awarded for participating in a"
+      - "\xA77round of \xA7aDefend Jerry's"
+      - "\xA77\xA7aWorkshop\xA77."
+    default_statistics: { }
     components:
       - id: SKULL_HEAD
         texture: 46f5c1738d551ccf44fac2e847fb5d6e9683a66c1db4a0223fd457a8be9eb76f
-      - id: NOT_FINISHED_YET
+      - id: SELLABLE
+        value: 5000.0
   - id: RED_GIFT
     material: player_head
     name: "Red Gift"
     rarity: RARE
+    lore:
+      - "\xA77Awarded for dealing top damage"
+      - "\xA77in a round of \xA7aDefend Jerry's"
+      - "\xA77\xA7aWorkshop\xA77."
+    default_statistics: { }
     components:
       - id: SKULL_HEAD
         texture: 349b2f08ac4e984ec999b5ee264854cc6a6dff23cbc97578ed10521fdcd0e832
-      - id: NOT_FINISHED_YET
+      - id: SELLABLE
+        value: 25000.0
   - id: WHITE_GIFT
     material: player_head
     name: "White Gift"
     rarity: COMMON
+    lore:
+      - "\xA77Found scattered around Jerry's"
+      - "\xA77Workshop during the \xA7aSeason of"
+      - "\xA77\xA7aJerry\xA77. Collect 20 for a reward"
+      - "\xA77from \xA7cSt. Jerry\xA77."
     components:
       - id: SKULL_HEAD
-        texture: 10f5398510b1a05afc5b201ead8bfc583e57d7202f5193b0b761fcbd0ae2
-      - id: NOT_FINISHED_YET
+        texture: e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c
+      - id: SELLABLE
+        value: 2500.0

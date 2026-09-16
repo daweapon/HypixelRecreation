@@ -16,7 +16,6 @@ import net.swofty.type.generic.entity.InteractionEntity;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
-import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +45,18 @@ public class Present {
 	public static void spawn(int index, Point position) {
 		Instance instance = HypixelConst.getInstanceContainer();
 
+		// Real Hypixel-Wiki-sourced White Gift skull texture (reused from the existing "White Gift
+		// Talisman" accessory item, configuration/skyblock/items/accessories/gift.yml). The
+		// previous hardcoded texture value here was a truncated/invalid Mojang texture hash (60
+		// chars instead of the required 64) - Minecraft silently falls back to a blank default
+		// head when the value can't be resolved, which is exactly the bug the user reported
+		// ("any placed player heads should be a white gift"). Built the same simple
+		// signature-less way PlayerItemUpdater builds skull textures for held items, rather than
+		// a hardcoded signed profile blob - a signature only validates against the exact value it
+		// was issued for, so hand-copying one for a different texture would never have worked.
+		String texturesJson = "{\"textures\":{\"SKIN\":{\"url\":\"https://textures.minecraft.net/texture/e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c\"}}}";
+		String texturesEncoded = java.util.Base64.getEncoder().encodeToString(texturesJson.getBytes());
+
 		Block playerHead = Block.PLAYER_HEAD.withTag(
 				Tag.NBT("profile"),
 				CompoundBinaryTag.builder().put(
@@ -53,13 +64,10 @@ public class Present {
 						ListBinaryTag.builder(BinaryTagTypes.COMPOUND).add(
 								CompoundBinaryTag.builder()
 										.putString("name", "textures")
-										.putString("value", "eyJ0aW1lc3RhbXAiOjE1MTQzMjM1NTc0ODYsInByb2ZpbGVJZCI6IjcwOTU2NDU0NTJkOTRiYTI5YzcwZDFmYTY3YjhkYTQyIiwicHJvZmlsZU5hbWUiOiJIaWRkdXMiLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzEwZjUzOTg1MTBiMWEwNWFmYzViMjAxZWFkOGJmYzU4M2U1N2Q3MjAyZjUxOTNiMGI3NjFmY2JkMGFlMiJ9fX0=")
-										.putString("signature", "biaiICm45OenpyzFGCo1Fn/jkrLGEXhfheW1Spi2NyQZddvnqtFmJPaPvVY0pPAkY5vrDDWxkCs2X+/Vt2wdVfctNg6jWDBLuElmk/nmzUwt18+dwKacPEv1K9BMqQ56AfdoRTvRps2F8OYdMJaUrBavjIc8f5Bc3cosGH+o/Ux4sFdoLX0EWWyyymb02SXFEebXZ3Mw0q343XJCzS0D/gb9xO92Zu+RtGAej/NFzvFT7T06dTAimOTM4lfGqYkVl0CjoBFi+8OpmtNWKrcbiNoLY8LOnmzI+cEPpnEVZCxSVeVg3GOKr43Qbf3bKrhFz5vPMONMeJIJkm9yoDq5OOd0Khkhz5Bg5Yope4bdNXMZvzS+r4OS6lxVuSxz+/F7RopW4ZwEzyFy+NOy4BCMT+HrGQbtxKJuJNAx4nqW5FBQkBS/FNdk1eY4IT8aTpWXfvCrWu0Qp1NBPNp2TgpSOuwPCBENGcpjUA+gR5jPKGWGAXsYqglRB0KwQaglWtqUZlw0BPIwiUWrzoYruxJ3B6Lo1KGFO6aJ0av1RXF8/HGJn8rSQUbNevvWUsXys/BykX6uCKbRELGcIJKkAe8xjYzD3CSa26eg1vYV/uHIX2jlcP24gaZhGdQowi4oEBOAn0n+t61yVm9Zoo9TgeHyNH/SJOppfkWKB6Z2TZ5D2fE=")
+										.putString("value", texturesEncoded)
 										.build()
 						).build()
 				).build());
-
-		Logger.info(playerHead.getTag(Tag.NBT("profile")).toString());
 
 		BlockDisplayEntity displayEntity = new BlockDisplayEntity(playerHead, _ -> {});
 		displayEntity.setInstance(instance, position);

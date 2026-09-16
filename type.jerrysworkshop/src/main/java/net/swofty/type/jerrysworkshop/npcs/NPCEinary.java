@@ -43,6 +43,6 @@ public class NPCEinary extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-
+		event.player().sendMessage("<6>Einary nods. \"Those Magma Cubes won't fight themselves off. Talk to <c>St. Jerry <6>when you're ready.\"");
 	}
 }

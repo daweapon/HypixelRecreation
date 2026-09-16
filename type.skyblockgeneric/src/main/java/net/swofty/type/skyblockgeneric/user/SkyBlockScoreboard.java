@@ -15,6 +15,7 @@ import net.swofty.type.generic.data.datapoints.DatapointInteger;
 import net.swofty.type.generic.scoreboard.HypixelScoreboard;
 import net.swofty.type.generic.utility.BlockUtility;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
+import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.darkauction.DarkAuctionHandler;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -30,6 +31,7 @@ import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -38,6 +40,14 @@ public class SkyBlockScoreboard {
     private static final Text BLANK = Text.literal(" ");
     private static final HypixelScoreboard scoreboard = new HypixelScoreboard();
     private static Integer skyblockName = 0;
+
+    // Dark Auction/Perkpocalypse/elections already have their own dedicated scoreboard sections
+    // or UI - this covers the 4 seasonal events (Roadmap #19/20/21/24) that previously had no
+    // in-game way to see their remaining time.
+    private static final List<CalendarEvent> SEASONAL_SCOREBOARD_EVENTS = List.of(
+        CalendarEvent.NEW_YEAR, CalendarEvent.TRAVELING_ZOO,
+        CalendarEvent.SPOOKY_FESTIVAL, CalendarEvent.SEASON_OF_JERRY
+    );
 
     public static void start() {
         Scheduler scheduler = MinecraftServer.getSchedulerManager();
@@ -149,7 +159,23 @@ public class SkyBlockScoreboard {
                     }
                 }
 
-                boolean objective = !electionRoom && !darkAuction && region != null
+                long timeInYear = SkyBlockCalendar.getElapsed() % SkyBlockCalendar.YEAR;
+                CalendarEvent activeSeasonalEvent = SEASONAL_SCOREBOARD_EVENTS.stream()
+                    .filter(candidate -> candidate.remainingTicksAt(timeInYear) >= 0)
+                    .findFirst().orElse(null);
+                boolean seasonalEventActive = !electionRoom && !darkAuction && activeSeasonalEvent != null;
+                TextBody.Section seasonalEvent = body.section("seasonal_event").when(() -> seasonalEventActive);
+                if (seasonalEventActive) {
+                    seasonalEvent.line(BLANK);
+                    seasonalEvent.line(Text.key("scoreboard.skyblock.event_title"));
+                    seasonalEvent.line(Text.key("scoreboard.skyblock.event_name_line",
+                        activeSeasonalEvent.getDisplayName(SkyBlockCalendar.getYear())));
+                    long remainingMillis = activeSeasonalEvent.remainingTicksAt(timeInYear) * 50L;
+                    seasonalEvent.line(Text.key("scoreboard.skyblock.event_ends_line",
+                        StringUtility.formatTimeLeft(remainingMillis)));
+                }
+
+                boolean objective = !electionRoom && !darkAuction && !seasonalEventActive && region != null
                     && !missionData.getActiveMissions(region.getType()).isEmpty();
                 TextBody.Section objectives = body.section("objective").when(() -> objective);
                 if (objective) {

@@ -48,6 +48,7 @@ public enum EnchantmentType {
     CUBISM(EnchantmentCubism.class),
     GRAVITY(EnchantmentGravity.class),
     SMOLDERING(EnchantmentSmoldering.class),
+    SUGAR_RUSH(EnchantmentSugarRush.class),
     WOODSPLITTER(EnchantmentWoodsplitter.class),
     FORTUNE(EnchantmentFortune.class),
     CLEAVE(EnchantmentCleave.class),

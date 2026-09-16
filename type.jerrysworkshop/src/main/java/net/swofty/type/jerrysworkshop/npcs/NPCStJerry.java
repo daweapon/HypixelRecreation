@@ -5,6 +5,10 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.jerrysworkshop.defense.JerryWorkshopDefenseManager;
+import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
+import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // Decorative NPC for St. Jerry, found in Jerry's Workshop.
 public class NPCStJerry extends HypixelNPC {
@@ -43,6 +47,26 @@ public class NPCStJerry extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
+		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+		boolean active = SkyBlockCalendar.getCurrentEvents().contains(CalendarEvent.SEASON_OF_JERRY);
 
+		if (!active) {
+			player.sendMessage("<c>The Season of Jerry isn't active right now - come back during the event!");
+			return;
+		}
+
+		switch (JerryWorkshopDefenseManager.getPhase()) {
+			case IDLE -> {
+				player.sendMessage("<a>Ho ho ho! Let's get this defense started!");
+				JerryWorkshopDefenseManager.beginEvent();
+			}
+			case PREPARING -> {
+				long secondsLeft = JerryWorkshopDefenseManager.getPhaseRemainingMillis() / 1000;
+				player.sendMessage("<e>Round " + (JerryWorkshopDefenseManager.getCurrentRound() + 1) +
+						" begins in " + secondsLeft + "s - get ready!");
+			}
+			case WAVE_ACTIVE -> player.sendMessage("<c>Round " + JerryWorkshopDefenseManager.getCurrentRound() +
+					" is underway - grab your Snowballs and fight!");
+		}
 	}
 }

@@ -43,6 +43,6 @@ public class NPCGary extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-
+		event.player().sendMessage("<f>Gary shrugs. \"I just keep the place tidy. St. Jerry runs the defense.\"");
 	}
 }

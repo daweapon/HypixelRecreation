@@ -21,7 +21,12 @@ public enum PetHandler {
             at(new FreeRangeAbility(), Rarity.COMMON),
             at(new EggstraLootAbility(), Rarity.RARE),
             at(new LightFeetAbility(), Rarity.LEGENDARY)
-    ));
+    )),
+    // The 6 Traveling Zoo pets (Roadmap #21) - stat-only for now, no ability kit sourced.
+    ZOO(List.of()),
+    // Black Cat (Roadmap #19, Fear Mongerer shop) - real Hypixel's unique Hunter/Omen/Supernatural
+    // ability tree isn't implemented, stat-only like ZOO above.
+    SPOOKY(List.of());
 
     private final List<AbilityEntry> abilities;
 

@@ -43,6 +43,6 @@ public class NPCTerry extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-
+		event.player().sendMessage("<f>Terry waves. \"Looking for the defense? Go find <c>St. Jerry<f>!\"");
 	}
 }

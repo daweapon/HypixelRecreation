@@ -1,4 +1,9 @@
 items:
+  # BAT_FIREWORK/HORSEMAN_CANDLE: purchasable via the Fear Mongerer shop (Roadmap #19), NOT_FINISHED_YET
+  # removed since they're now sold as real items - their real Hypixel right-click use behavior
+  # (launching Bat Pinatas / summoning the Headless Horseman) is NOT implemented, since neither
+  # Bat Pinatas nor a Headless Horseman boss mob exist in this codebase. A documented gap, not a
+  # silent approximation - right-clicking these currently does nothing.
   - id: BAT_FIREWORK
     material: firework_rocket
     name: "Bat Firework"
@@ -17,7 +22,8 @@ items:
       - "\xA78\xA7oprogress!"
     default_statistics: { }
     components:
-      - id: NOT_FINISHED_YET
+      - id: SELLABLE
+        value: 25000.0
   - id: BLAST_O_LANTERN
     material: player_head
     name: "Blast O Lantern"
@@ -89,7 +95,8 @@ items:
     components:
       - id: SKULL_HEAD
         texture: 746f7469b7d9cc34c8990a0add635841917af89ca52cafdde575007d1a8c398e
-      - id: NOT_FINISHED_YET
+      - id: SELLABLE
+        value: 32000.0
   - id: PUMPKIN_GUTS
     material: pumpkin_seeds
     name: "Pumpkin Guts"
@@ -153,3 +160,228 @@ items:
     components:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/werewolf_skin
+  # Fear Mongerer leaderboard-tier rewards (Roadmap #19). Real Hypixel's exact reward-tier item
+  # models weren't sourced (same missing-asset situation as WEREWOLF_SKIN above pre-ITEM_MODEL) -
+  # these use the Green Candy placeholder skull texture until real assets are found.
+  - id: CARNIVAL_TICKET
+    material: paper
+    name: "Carnival Ticket"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77Awarded for reaching the"
+      - "\xA77\xA76Wood \xA77tier on the Fear"
+      - "\xA77Mongerer's candy leaderboard."
+    default_statistics: { }
+    components:
+      - id: SELLABLE
+        value: 2500.0
+  - id: WITCH_MASK
+    material: player_head
+    name: "Witch Mask"
+    rarity: EPIC
+    lore:
+      - "\xA77A spooky collectible awarded"
+      - "\xA77for reaching the \xA7bDiamond"
+      - "\xA77\xA77tier on the Fear Mongerer's"
+      - "\xA77candy leaderboard."
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: e31c0bd76a655d5d8fea5b06daaf1fb8d8060bf0823ebbc6eb6f99c8ee5a35aa
+      - id: SELLABLE
+        value: 500000.0
+  - id: SKELETON_HORSE_PET
+    material: player_head
+    name: "Skeleton Horse Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Skeleton Horse
+        base_statistics: {}
+        per_level_statistics:
+          common: { speed: 0.5, health: 1 }
+          uncommon: { speed: 0.5, health: 1 }
+          rare: { speed: 0.5, health: 1 }
+          epic: { speed: 0.5, health: 1 }
+          legendary: { speed: 0.5, health: 1 }
+        particle: 3
+        skill_category: COMBAT
+        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
+        handler_id: ZOO
+      - id: TRACKED_UNIQUE
+  - id: SPOOKY_PIE
+    material: pumpkin_pie
+    name: "Spooky Pie"
+    rarity: COMMON
+    lore:
+      - "\xA77Awarded from the Fear Mongerer's"
+      - "\xA77candy leaderboard."
+    default_statistics: { }
+    components:
+      - id: SELLABLE
+        value: 1000.0
+  - id: SPOOKY_DISC
+    material: music_disc_13
+    name: "Spooky Disc"
+    rarity: RARE
+    lore:
+      - "\xA77Awarded from the Fear Mongerer's"
+      - "\xA77candy leaderboard."
+    default_statistics: { }
+    components:
+      - id: SELLABLE
+        value: 50000.0
+  - id: GOLDEN_TREAT
+    material: player_head
+    name: "Golden Treat"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77Awarded for reaching \xA76Top 50"
+      - "\xA77\xA77on the Fear Mongerer's candy"
+      - "\xA77leaderboard."
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: e31c0bd76a655d5d8fea5b06daaf1fb8d8060bf0823ebbc6eb6f99c8ee5a35aa
+      - id: SELLABLE
+        value: 1000000.0
+  # Fear Mongerer candy shop (Roadmap #19) - real item list/prices sourced from the user's own
+  # in-game tooltip screenshots, not the wiki (its shop table is image-rendered and didn't extract
+  # via automated fetch). Placeholder skull textures reuse Green/Purple Candy's texture where no
+  # real asset was available - flagged per item below.
+  - id: TRICK_OR_TREAT_BAG
+    material: player_head
+    name: "Trick or Treat Bag"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77Picking up Candy will place it"
+      - "\xA77directly into this bag! Your"
+      - "\xA77Candy inventory is shared across"
+      - "\xA77your profile - opening any Trick"
+      - "\xA77or Treat Bag will display your"
+      - "\xA77Candy inventory."
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: e31c0bd76a655d5d8fea5b06daaf1fb8d8060bf0823ebbc6eb6f99c8ee5a35aa
+      - id: SELLABLE
+        value: 1000.0
+  - id: ECHOLOCATOR
+    material: compass
+    name: "Echolocator"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77When held during the \xA76Spooky"
+      - "\xA77\xA76Festival\xA77, this compass points"
+      - "\xA77towards the nearest \xA7cMega Bat"
+      - "\xA77. Happy hunting!"
+      - ''
+      - "\xA78\xA7oReal Hypixel: points toward the"
+      - "\xA78\xA7onearest Mega Bat. Not implemented"
+      - "\xA78\xA7ohere - Mega Bat isn't a mob in"
+      - "\xA78\xA7othis codebase yet."
+    default_statistics: { }
+    components:
+      - id: SELLABLE
+        value: 15000.0
+  # Spooky armor set (Candy Man set bonus) - drop-chance bonuses are wired into
+  # SpookyFestivalCandyHandler, which checks equipped Spooky armor piece count directly (this
+  # codebase has no generic "armor set bonus" component framework to hook into).
+  - id: SPOOKY_HELMET
+    material: player_head
+    name: "Spooky Helmet"
+    rarity: EPIC
+    lore:
+      - "\xA7aDefense: \xA7a+25"
+      - ''
+      - "\xA77Each armor piece grants \xA7a+5%"
+      - "\xA77chance to get Candy from mobs"
+      - "\xA77during the \xA76Spooky Festival\xA77."
+      - ''
+      - "\xA76Full Set Bonus: Candy Man"
+      - "\xA77Grants a \xA7a+5% \xA77chance to find"
+      - "\xA77rare Candy."
+    default_statistics:
+      defense: 25
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: b797add1b3ae64d510bcc6ac16c2fa1dd69369edf59821239c955f7f11e1177b
+      - id: SELLABLE
+        value: 400000.0
+  - id: SPOOKY_CHESTPLATE
+    material: leather_chestplate
+    name: "Spooky Chestplate"
+    rarity: EPIC
+    lore:
+      - "\xA7aDefense: \xA7a+50"
+      - ''
+      - "\xA77Each armor piece grants \xA7a+5%"
+      - "\xA77chance to get Candy from mobs"
+      - "\xA77during the \xA76Spooky Festival\xA77."
+      - ''
+      - "\xA76Full Set Bonus: Candy Man"
+      - "\xA77Grants a \xA7a+5% \xA77chance to find"
+      - "\xA77rare Candy."
+    default_statistics:
+      defense: 50
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '90'
+        g: '40'
+        b: '130'
+      - id: SELLABLE
+        value: 800000.0
+  - id: SPOOKY_LEGGINGS
+    material: leather_leggings
+    name: "Spooky Leggings"
+    rarity: EPIC
+    lore:
+      - "\xA7aDefense: \xA7a+35"
+      - ''
+      - "\xA77Each armor piece grants \xA7a+5%"
+      - "\xA77chance to get Candy from mobs"
+      - "\xA77during the \xA76Spooky Festival\xA77."
+      - ''
+      - "\xA76Full Set Bonus: Candy Man"
+      - "\xA77Grants a \xA7a+5% \xA77chance to find"
+      - "\xA77rare Candy."
+    default_statistics:
+      defense: 35
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '90'
+        g: '40'
+        b: '130'
+      - id: SELLABLE
+        value: 600000.0
+  - id: SPOOKY_BOOTS
+    material: leather_boots
+    name: "Spooky Boots"
+    rarity: EPIC
+    lore:
+      - "\xA7aDefense: \xA7a+25"
+      - ''
+      - "\xA77Each armor piece grants \xA7a+5%"
+      - "\xA77chance to get Candy from mobs"
+      - "\xA77during the \xA76Spooky Festival\xA77."
+      - ''
+      - "\xA76Full Set Bonus: Candy Man"
+      - "\xA77Grants a \xA7a+5% \xA77chance to find"
+      - "\xA77rare Candy."
+    default_statistics:
+      defense: 25
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '90'
+        g: '40'
+        b: '130'
+      - id: SELLABLE
+        value: 400000.0

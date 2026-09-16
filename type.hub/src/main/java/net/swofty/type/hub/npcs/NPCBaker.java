@@ -17,16 +17,26 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
+// Real bug fix (found live-testing Roadmap #19/20/21/24): this used to gate visibility by
+// toggling position() between y=0 (hidden underground) and y=70, driven by getCurrentEvents().
+// HypixelNPC only re-teleports an already-spawned NPC when dynamicPosition() is true (which
+// HumanConfiguration doesn't set by default), and holograms are computed once at spawn time and
+// never regenerated - so a player already connected when New Year activates stayed stuck looking
+// at Baker's spawn-time state (invisible, underground, blank hologram) forever. Switched to
+// visible(), which the framework properly despawns/respawns off - a fresh entity gets correct
+// position and holograms every time visibility flips. Same fix applied to NPCOringo (Roadmap #21)
+// and NPCFearMongerer (Roadmap #19), which copied this exact broken pattern.
 public class NPCBaker extends HypixelNPC {
 
     public NPCBaker() {
         super(new HumanConfiguration() {
             @Override
+            public boolean visible(HypixelPlayer player) {
+                return SkyBlockCalendar.getCurrentEvents().contains(CalendarEvent.NEW_YEAR);
+            }
+
+            @Override
             public String[] holograms(HypixelPlayer player) {
-                List<CalendarEvent> events = SkyBlockCalendar.getCurrentEvents();
-                if (!events.contains(CalendarEvent.NEW_YEAR)) {
-                    return new String[]{""};
-                }
                 return new String[]{"<f>Baker", "<e><l>CLICK"};
             }
 
@@ -42,11 +52,11 @@ public class NPCBaker extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                List<CalendarEvent> events = SkyBlockCalendar.getCurrentEvents();
-                if (!events.contains(CalendarEvent.NEW_YEAR)) {
-                    return new Pos(-6.5, 0, -47.5, 180, 0);
-                }
-                return new Pos(-6.5, 70, -47.5, 180, 0);
+                // Village pond - user-confirmed coordinates. VillagerJerry (a decorative,
+                // unrelated NPC that previously stood in this exact spot) was removed at the
+                // user's request so the pond is free for seasonal event booths, matching real
+                // Hypixel.
+                return new Pos(-29.5, 69, 8.5, -90, 0);
             }
 
             @Override

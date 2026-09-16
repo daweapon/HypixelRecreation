@@ -25,9 +25,11 @@ public class SkyBlockPlayersOnlineModule extends TablistModule {
 
     public List<TablistEntry> getEntries(SkyBlockPlayer player) {
         Locale l = player.getLocale();
+        // Real Hypixel's tablist includes the viewer themselves in the player list, not just
+        // everyone else - previously excluded here, which made the list look empty whenever you
+        // were the only one online despite the header correctly saying "Players (1)".
         List<SkyBlockPlayer> players = new ArrayList<>(SkyBlockGenericLoader.getLoadedPlayers());
         int playerCount = players.size();
-        players.removeIf(loaded -> loaded.getUuid().equals(player.getUuid()));
 
         ArrayList<TablistEntry> entries = new ArrayList<>(List.of(
                 centered(Text.key("tablist.module.players", playerCount), l, TablistSkinRegistry.GREEN)

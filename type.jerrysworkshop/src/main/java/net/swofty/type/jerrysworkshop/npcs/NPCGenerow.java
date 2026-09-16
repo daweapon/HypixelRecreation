@@ -43,6 +43,6 @@ public class NPCGenerow extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-
+		event.player().sendMessage("<6>Generow tips his hat. \"Good luck out there when the monsters show up!\"");
 	}
 }

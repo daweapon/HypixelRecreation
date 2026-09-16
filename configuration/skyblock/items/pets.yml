@@ -137,3 +137,144 @@ items:
         skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
         handler_id: GRANDMA_WOLF
       - id: TRACKED_UNIQUE
+  # The 6 Traveling Zoo pets below (Roadmap #21). Real Hypixel skin textures for these could not
+  # be sourced (same 403/dead-source problem noted for the mayor NPCs elsewhere in this project) -
+  # all 6 reuse the Grandma Wolf skull texture as a placeholder pending real assets. No ability kit
+  # is wired (PetHandler.ZOO is an empty list) - only base stats, matching the project's practice
+  # of shipping a working stat-only pet rather than guessing at undocumented ability text.
+  - id: LION_PET
+    material: player_head
+    name: "Lion Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Lion
+        base_statistics: {}
+        per_level_statistics:
+          common: { strength: 0.4, health: 1 }
+          uncommon: { strength: 0.4, health: 1 }
+          rare: { strength: 0.4, health: 1 }
+          epic: { strength: 0.4, health: 1 }
+          legendary: { strength: 0.4, health: 1 }
+        particle: 3
+        skill_category: COMBAT
+        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
+        handler_id: ZOO
+      - id: TRACKED_UNIQUE
+  - id: MONKEY_PET
+    material: player_head
+    name: "Monkey Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Monkey
+        base_statistics: {}
+        per_level_statistics:
+          common: { speed: 0.4, foraging_fortune: 0.5 }
+          uncommon: { speed: 0.4, foraging_fortune: 0.5 }
+          rare: { speed: 0.4, foraging_fortune: 0.5 }
+          epic: { speed: 0.4, foraging_fortune: 0.5 }
+          legendary: { speed: 0.4, foraging_fortune: 0.5 }
+        particle: 3
+        skill_category: FORAGING
+        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
+        handler_id: ZOO
+      - id: TRACKED_UNIQUE
+  - id: ELEPHANT_PET
+    material: player_head
+    name: "Elephant Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Elephant
+        base_statistics: {}
+        per_level_statistics:
+          common: { health: 2, defense: 1 }
+          uncommon: { health: 2, defense: 1 }
+          rare: { health: 2, defense: 1 }
+          epic: { health: 2, defense: 1 }
+          legendary: { health: 2, defense: 1 }
+        particle: 3
+        skill_category: FARMING
+        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
+        handler_id: ZOO
+      - id: TRACKED_UNIQUE
+  - id: GIRAFFE_PET
+    material: player_head
+    name: "Giraffe Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Giraffe
+        base_statistics: {}
+        per_level_statistics:
+          common: { speed: 0.3, farming_fortune: 0.5 }
+          uncommon: { speed: 0.3, farming_fortune: 0.5 }
+          rare: { speed: 0.3, farming_fortune: 0.5 }
+          epic: { speed: 0.3, farming_fortune: 0.5 }
+          legendary: { speed: 0.3, farming_fortune: 0.5 }
+        particle: 3
+        skill_category: FARMING
+        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
+        handler_id: ZOO
+      - id: TRACKED_UNIQUE
+  - id: BLUE_WHALE_PET
+    material: player_head
+    name: "Blue Whale Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Blue Whale
+        base_statistics: {}
+        per_level_statistics:
+          common: { intelligence: 1, health: 1 }
+          uncommon: { intelligence: 1, health: 1 }
+          rare: { intelligence: 1, health: 1 }
+          epic: { intelligence: 1, health: 1 }
+          legendary: { intelligence: 1, health: 1 }
+        particle: 3
+        skill_category: FISHING
+        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
+        handler_id: ZOO
+      - id: TRACKED_UNIQUE
+  - id: TIGER_PET
+    material: player_head
+    name: "Tiger Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Tiger
+        base_statistics: {}
+        per_level_statistics:
+          common: { critical_chance: 0.3, strength: 0.3 }
+          uncommon: { critical_chance: 0.3, strength: 0.3 }
+          rare: { critical_chance: 0.3, strength: 0.3 }
+          epic: { critical_chance: 0.3, strength: 0.3 }
+          legendary: { critical_chance: 0.3, strength: 0.3 }
+        particle: 3
+        skill_category: COMBAT
+        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
+        handler_id: ZOO
+      - id: TRACKED_UNIQUE
+  # Black Cat (Fear Mongerer shop, Roadmap #19) - real Hypixel: Speed 0, Intelligence +1 at level 1,
+  # unique Hunter/Omen/Supernatural ability tree not implemented (see PetHandler.SPOOKY), reuses
+  # the zoo pets' Grandma Wolf placeholder texture (no real Black Cat skull sourced).
+  - id: BLACK_CAT_PET
+    material: player_head
+    name: "Black Cat Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Black Cat
+        base_statistics: {}
+        per_level_statistics:
+          common: { intelligence: 0.1 }
+          uncommon: { intelligence: 0.1 }
+          rare: { intelligence: 0.1 }
+          epic: { intelligence: 0.1 }
+          legendary: { intelligence: 0.1 }
+        particle: 3
+        skill_category: COMBAT
+        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
+        handler_id: SPOOKY
+      - id: TRACKED_UNIQUE
