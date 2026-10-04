@@ -211,7 +211,7 @@ services:
     environment:
       <<: *forwarding_env
       SERVICE_CMD: java -jar ServiceAPI.jar
-      CONTROL_AGENT_URL: "http://service_control:9090"
+      CONTROL_AGENT_URL: "http://service-control:9090"
       CONTROL_TOKEN: "${CONTROL_TOKEN:?set CONTROL_TOKEN in a .env file beside docker-compose.yml}"
     depends_on:
       proxy:
@@ -251,7 +251,13 @@ services:
       # the agent is a separate container from the public-facing API.
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - hypixel_network
+      hypixel_network:
+        # Java's URI parser treats an underscore as illegal in a hostname, so
+        # http://service_control:9090 parses with a null host and HttpRequest rejects it
+        # outright. curl is lenient, which makes this look like a network fault. The alias
+        # gives Java a parseable hostname.
+        aliases:
+          - service-control
 
   service_auctionhouse:
     image: game_server_prepared

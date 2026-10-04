@@ -1,5 +1,7 @@
 package net.swofty.service.api.control;
 
+import org.tinylog.Logger;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -22,14 +24,43 @@ public final class ControlAgentClient {
             .connectTimeout(Duration.ofSeconds(5))
             .build();
 
+    /**
+     * Default host is the hyphenated network alias, NOT the container name.
+     *
+     * The container is called service_control, but Java's URI parser follows RFC 2396, where
+     * an underscore is not legal in a hostname: URI.getHost() returns null and HttpRequest
+     * rejects the whole thing with "unsupported URI" before a single packet is sent. curl and
+     * most other clients are lenient about this, so the fault presents as the agent being
+     * unreachable while every manual connectivity check passes. The compose override gives the
+     * agent an underscore-free alias for exactly this reason.
+     */
+    private static final String DEFAULT_AGENT_URL = "http://service-control:9090";
+
     public ControlAgentClient() {
-        this(System.getenv().getOrDefault("CONTROL_AGENT_URL", "http://service_control:9090"),
+        this(System.getenv().getOrDefault("CONTROL_AGENT_URL", DEFAULT_AGENT_URL),
                 System.getenv("CONTROL_TOKEN"));
     }
 
     public ControlAgentClient(String baseUrl, String token) {
         this.baseUrl = baseUrl.endsWith("/") ? baseUrl.substring(0, baseUrl.length() - 1) : baseUrl;
         this.token = token;
+        warnIfHostUnusable(this.baseUrl);
+    }
+
+    /**
+     * Fails loudly at startup rather than once per request. A host Java cannot parse is a
+     * configuration error, and reporting it as "unreachable" at call time sends whoever is
+     * debugging it hunting through container networking instead of the URL.
+     */
+    private static void warnIfHostUnusable(String baseUrl) {
+        try {
+            if (URI.create(baseUrl).getHost() == null) {
+                Logger.error("CONTROL_AGENT_URL '{}' has no host Java can parse - an underscore "
+                        + "in the hostname does this. Use an underscore-free network alias.", baseUrl);
+            }
+        } catch (IllegalArgumentException e) {
+            Logger.error("CONTROL_AGENT_URL '{}' is not a valid URI: {}", baseUrl, e.getMessage());
+        }
     }
 
     public record AgentResponse(int status, String body) {
