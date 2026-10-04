@@ -117,81 +117,86 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _commandBar(FleetSnapshot? fleet) {
+    // The identity block is Expanded and the actions are fixed width, so the actions always
+    // get their space and the text gives way instead. With a Spacer and an unconstrained
+    // title the reverse happened: on a phone the right-hand icons were pushed off-screen
+    // entirely and could not be reached.
+    final narrow = MediaQuery.of(context).size.width < 520;
+
     return Container(
       height: 46,
       decoration: const BoxDecoration(
         color: ReactorTheme.panel,
         border: Border(bottom: BorderSide(color: ReactorTheme.hairline)),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 14),
+      padding: const EdgeInsets.only(left: 14, right: 4),
       child: Row(
         children: [
           Container(width: 6, height: 6, color: ReactorTheme.cyan),
           const SizedBox(width: 8),
-          Text('HYPIXEL CONTROL',
-              style: ReactorTheme.heading(size: 13, color: ReactorTheme.textPrimary)),
-          const SizedBox(width: 14),
-          Flexible(
-            child: Text(
-              widget.api.baseUrl ?? '',
-              overflow: TextOverflow.ellipsis,
-              style: ReactorTheme.data(size: 10, color: ReactorTheme.textFaint),
+          Expanded(
+            child: Row(
+              children: [
+                Flexible(
+                  child: Text(
+                    narrow ? 'HYPIXEL' : 'HYPIXEL CONTROL',
+                    overflow: TextOverflow.ellipsis,
+                    style: ReactorTheme.heading(size: 13, color: ReactorTheme.textPrimary),
+                  ),
+                ),
+                // The server address is reference information, not something to act on, so
+                // it is the first thing dropped when space is short.
+                if (!narrow) ...[
+                  const SizedBox(width: 14),
+                  Flexible(
+                    child: Text(
+                      widget.api.baseUrl ?? '',
+                      overflow: TextOverflow.ellipsis,
+                      style: ReactorTheme.data(size: 10, color: ReactorTheme.textFaint),
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
-          const Spacer(),
+          const SizedBox(width: 8),
           if (widget.state.appVersion.isNotEmpty) ...[
             Text(widget.state.appVersion,
                 style: ReactorTheme.data(size: 10, color: ReactorTheme.textFaint)),
-            const SizedBox(width: 10),
+            const SizedBox(width: 8),
           ],
           Text(widget.state.role,
               style: ReactorTheme.label(
                   size: 9,
-                  spacing: 1.6,
+                  spacing: 1.2,
                   color: widget.state.canOperate
                       ? ReactorTheme.cyan
                       : ReactorTheme.textFaint)),
-          const SizedBox(width: 12),
-          IconButton(
-            iconSize: 16,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 30),
-            icon: const Icon(Icons.upload_file, color: ReactorTheme.textSecondary),
-            tooltip: 'Deploy',
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => DeployScreen(
-                api: widget.api,
-                canDeploy: widget.state.role == 'OWNER',
-              ),
-            )),
-          ),
-          IconButton(
-            iconSize: 16,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 30),
-            icon: const Icon(Icons.receipt_long, color: ReactorTheme.textSecondary),
-            tooltip: 'Audit log',
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (_) => AuditScreen(api: widget.api),
-            )),
-          ),
-          IconButton(
-            iconSize: 16,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 30),
-            icon: const Icon(Icons.refresh, color: ReactorTheme.textSecondary),
-            tooltip: 'Refresh now',
-            onPressed: () => widget.state.refresh(force: true),
-          ),
-          IconButton(
-            iconSize: 16,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(minWidth: 30),
-            icon: const Icon(Icons.logout, color: ReactorTheme.textSecondary),
-            tooltip: 'Unpair this device',
-            onPressed: widget.onSignOut,
-          ),
+          const SizedBox(width: 6),
+          _action(Icons.upload_file, 'Deploy', () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => DeployScreen(
+                    api: widget.api,
+                    canDeploy: widget.state.role == 'OWNER',
+                  )))),
+          _action(Icons.receipt_long, 'Audit log', () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => AuditScreen(api: widget.api)))),
+          _action(Icons.refresh, 'Refresh now', () => widget.state.refresh(force: true)),
+          _action(Icons.logout, 'Unpair this device', widget.onSignOut),
         ],
+      ),
+    );
+  }
+
+  Widget _action(IconData icon, String tooltip, VoidCallback onPressed) {
+    return SizedBox(
+      width: 32,
+      child: IconButton(
+        iconSize: 16,
+        padding: EdgeInsets.zero,
+        constraints: const BoxConstraints(),
+        icon: Icon(icon, color: ReactorTheme.textSecondary),
+        tooltip: tooltip,
+        onPressed: onPressed,
       ),
     );
   }

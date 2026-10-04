@@ -1,7 +1,7 @@
 name: hypixel_control
 description: Operations console for the HypixelRecreation server stack.
 publish_to: 'none'
-version: 0.3.1+5
+version: 0.3.2+6
 
 environment:
   sdk: ^3.13.0

@@ -226,6 +226,15 @@ class ControlApi {
     if (decoded is Map && decoded['status'] == 'ERROR') {
       throw ApiException(_describe(decoded['message']), status: response.statusCode);
     }
+    // A 404 that is not our JSON envelope means the route does not exist on this server,
+    // which in practice means the backend is older than the app. Saying so is far more
+    // actionable than echoing the web server's HTML error page at the operator.
+    if (response.statusCode == 404 && decoded == null) {
+      throw ApiException(
+          'This server does not have that endpoint yet - its backend is older than the app. '
+          'Run deploy-control.sh on the NAS to update it.',
+          status: 404);
+    }
     if (response.statusCode >= 500) {
       throw ApiException(
           'Server error ${response.statusCode}${_trailing(response.body)}',
@@ -243,7 +252,13 @@ class ControlApi {
   /// response shape is still diagnosable from the device rather than silently swallowed.
   static String _trailing(String? body) {
     if (body == null || body.trim().isEmpty) return '';
-    final trimmed = body.trim();
+    var trimmed = body.trim();
+    // Strip markup: an HTML error page rendered verbatim in a status bar is noise, and the
+    // useful part is almost always the plain text inside it.
+    if (trimmed.startsWith('<')) {
+      trimmed = trimmed.replaceAll(RegExp(r'<[^>]*>'), ' ').replaceAll(RegExp(r'\s+'), ' ').trim();
+    }
+    if (trimmed.isEmpty) return '';
     return ': ${trimmed.length > 200 ? '${trimmed.substring(0, 200)}...' : trimmed}';
   }
 
