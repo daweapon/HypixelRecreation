@@ -102,6 +102,35 @@ class ControlApi {
     return payload;
   }
 
+  /// Break-glass path: claim OWNER when no owner device is left to grant the role.
+  ///
+  /// Authority is the same in-game handshake enrolment uses; the server decides whether the
+  /// claim is permitted, so a refusal here is an answer rather than an error to retry.
+  Future<Map<String, dynamic>> recoverOwner(
+    String sessionId,
+    String deviceName, {
+    bool revokePrevious = true,
+  }) async {
+    final response = await http
+        .post(
+          _uri('/control/recover-owner'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({
+            'sessionId': sessionId,
+            'deviceName': deviceName,
+            'revokePrevious': revokePrevious.toString(),
+          }),
+        )
+        .timeout(const Duration(seconds: 15));
+
+    final payload = _decodeData(_ensureOk(response));
+    _deviceToken = payload['deviceToken'] as String;
+    role = payload['role'] as String?;
+    playerName = payload['playerName'] as String?;
+    await _storage.write(key: _keyDeviceToken, value: _deviceToken);
+    return payload;
+  }
+
   Future<void> _ensureAccessToken() async {
     final expiry = _accessTokenExpiry;
     if (_accessToken != null && expiry != null && DateTime.now().isBefore(expiry)) {

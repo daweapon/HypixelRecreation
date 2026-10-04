@@ -78,6 +78,28 @@ Tokens: the long-lived **device token** is held in platform secure storage and i
 to exchange for a 15-minute **access token**, which is what every control call actually carries.
 Only the SHA-256 hash of a device token is stored server-side.
 
+## Recovering owner access
+
+Promotion normally requires an existing OWNER device. When none is usable — the device was
+lost, or the app was uninstalled, which wipes secure storage — the pairing screen's
+**Lost the owner device?** toggle claims OWNER directly.
+
+Authority is the same STAFF-gated `/verifyapi` handshake, so no bearer token is needed: the
+caller by definition has no working credential. The server decides:
+
+| Situation | Result |
+|---|---|
+| Your own account already owns a live owner device | Allowed — you are replacing your own hardware |
+| No owner device has checked in for 72 hours | Allowed — the owner set is presumed lost |
+| No owner device has ever existed | Allowed |
+| Somebody else's owner device is still active | **Refused**, naming who to ask for promotion |
+
+Leave **Revoke my previous owner devices** ticked when the old device is genuinely gone; it
+only ever revokes devices belonging to *your* account, never another operator's. Every attempt,
+refusals included, is recorded in the audit log as `owner-recovery`.
+
+The idle window is `CONTROL_OWNER_RECOVERY_IDLE_HOURS` in the stack `.env` (default 72).
+
 ## Building the app
 
 Android (works from WSL/Linux):
@@ -92,6 +114,14 @@ A Windows `.exe` cannot be produced from WSL:
 flutter build windows --release
 # build\windows\x64\runner\Release\
 ```
+
+The build also needs symlink support, which means either Developer Mode enabled or an elevated
+shell; without it Flutter stops at `Building with plugins requires symlink support`. Driving it
+from WSL works, but `cmd.exe` cannot start in a `\\wsl.localhost\...` directory, so copy the
+source onto `C:` first and build from there.
+
+Ship the whole `Release\` directory, not just the `.exe` — it needs the DLLs and `data/`
+alongside it.
 
 Distribution is self-hosted: serve the APK off the NAS and sideload it. No app store, and
 choosing Android over iOS avoids a $99/yr Apple Developer dependency.
@@ -184,7 +214,5 @@ read-write at `/app/jar-store`.
   *registered* with it.
 - Phases 2 and 3 (jar deploy with verification, config-drift detector, cross-server player and
   event admin, backups, spark metrics) are untouched.
-- **No owner-recovery path.** Promoting a device requires an OWNER device, so if the only
-  owner's device token is lost the app cannot recover on its own and the device records have to
-  be cleared directly in Mongo. Needing a shell on the NAS to regain admin access to the tool
-  that is supposed to replace the shell is a real gap.
+- **Owner recovery is rate-limited only by the idle window**, not by attempt count; a STAFF
+  account is trusted absolutely once no live owner remains.
