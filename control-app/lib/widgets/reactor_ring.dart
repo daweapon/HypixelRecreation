@@ -11,6 +11,10 @@ import '../theme/reactor_theme.dart';
 /// figure at its centre, so "lead with shared-dependency health" is literally the largest
 /// object on screen rather than three tiles among many.
 ///
+/// Their names sit in a legend beneath the ring rather than on the arcs. The annulus inside
+/// the arcs is narrower than a two-line label, and the integrity figure scales with the ring,
+/// so arc labels collided with it at every size the console actually uses.
+///
 /// Motion rule: movement means attention is needed. A nominal ring is almost still - only the
 /// slow radar sweep turns, to show the view is live rather than a frozen capture. Faulted arcs
 /// breathe.
@@ -57,6 +61,17 @@ class _ReactorRingState extends State<ReactorRing> with TickerProviderStateMixin
   Widget build(BuildContext context) {
     final reduceMotion = MediaQuery.maybeOf(context)?.disableAnimations ?? false;
 
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _ring(reduceMotion),
+        SizedBox(height: widget.size * 0.05),
+        _legend(),
+      ],
+    );
+  }
+
+  Widget _ring(bool reduceMotion) {
     return SizedBox(
       width: widget.size,
       height: widget.size,
@@ -91,6 +106,34 @@ class _ReactorRingState extends State<ReactorRing> with TickerProviderStateMixin
           );
         },
       ),
+    );
+  }
+
+  /// Status is always colour *and* text code, so the legend repeats the state in words.
+  Widget _legend() {
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 14,
+      runSpacing: 6,
+      children: [
+        for (final dependency in widget.dependencies)
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(dependency.displayName.toUpperCase(),
+                  style: ReactorTheme.label(
+                      size: 9, color: ReactorTheme.textSecondary, spacing: 1.2)),
+              const SizedBox(width: 5),
+              Text(dependency.state,
+                  style: TextStyle(
+                    fontFamily: ReactorTheme.dataFamily,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                    color: ReactorTheme.forStatus(dependency.state),
+                  )),
+            ],
+          ),
+      ],
     );
   }
 }
@@ -172,7 +215,6 @@ class _ReactorPainter extends CustomPainter {
           ..strokeCap = StrokeCap.butt,
       );
 
-      _paintArcLabel(canvas, centre, arcRadius, start + extent / 2, dependency);
     }
 
     // Inner hairline circle.
@@ -216,37 +258,6 @@ class _ReactorPainter extends CustomPainter {
         ..style = PaintingStyle.stroke
         ..strokeWidth = 5,
     );
-  }
-
-  void _paintArcLabel(
-      Canvas canvas, Offset centre, double radius, double angle, DependencyStatus dependency) {
-    final colour = ReactorTheme.forStatus(dependency.state);
-    final painter = TextPainter(
-      text: TextSpan(children: [
-        TextSpan(
-          text: '${dependency.displayName}\n',
-          style: ReactorTheme.label(size: 9, color: ReactorTheme.textSecondary, spacing: 1.2),
-        ),
-        TextSpan(
-          text: dependency.state,
-          style: TextStyle(
-            fontFamily: ReactorTheme.dataFamily,
-            fontSize: 11,
-            fontWeight: FontWeight.w600,
-            color: colour,
-          ),
-        ),
-      ]),
-      textAlign: TextAlign.center,
-      textDirection: TextDirection.ltr,
-    )..layout();
-
-    final labelRadius = radius - 44;
-    final position = Offset(
-      centre.dx + labelRadius * math.cos(angle) - painter.width / 2,
-      centre.dy + labelRadius * math.sin(angle) - painter.height / 2,
-    );
-    painter.paint(canvas, position);
   }
 
   @override
