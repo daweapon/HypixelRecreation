@@ -198,17 +198,32 @@ class ControlApi {
   /// The API wraps everything in {status, message, data}; message carries JSON for some
   /// endpoints and a plain string for others.
   http.Response _ensureOk(http.Response response) {
-    if (response.statusCode >= 500) {
-      throw ApiException('Server error ${response.statusCode}', status: response.statusCode);
-    }
+    // The body is inspected before the status code on purpose. A 5xx from service.api still
+    // carries a useful explanation -- "control agent unreachable: <reason>" and similar --
+    // and reporting a bare "Server error 503" throws away the only part that says what to fix.
     final decoded = _tryDecode(response.body);
     if (decoded is Map && decoded['status'] == 'ERROR') {
       throw ApiException(_describe(decoded['message']), status: response.statusCode);
     }
+    if (response.statusCode >= 500) {
+      throw ApiException(
+          'Server error ${response.statusCode}${_trailing(response.body)}',
+          status: response.statusCode);
+    }
     if (response.statusCode >= 400) {
-      throw ApiException('Request failed (${response.statusCode})', status: response.statusCode);
+      throw ApiException(
+          'Request failed (${response.statusCode})${_trailing(response.body)}',
+          status: response.statusCode);
     }
     return response;
+  }
+
+  /// Appends a trimmed raw body when it is not the standard envelope, so an unexpected
+  /// response shape is still diagnosable from the device rather than silently swallowed.
+  static String _trailing(String? body) {
+    if (body == null || body.trim().isEmpty) return '';
+    final trimmed = body.trim();
+    return ': ${trimmed.length > 200 ? '${trimmed.substring(0, 200)}...' : trimmed}';
   }
 
   static String _describe(dynamic message) {

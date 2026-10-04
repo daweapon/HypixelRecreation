@@ -12,8 +12,14 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Minimal HTTP/1.1 client speaking the Docker Engine API over a Unix domain socket.
@@ -24,7 +30,24 @@ import java.util.Map;
  */
 public final class DockerSocketClient {
     private static final String DEFAULT_SOCKET = "/var/run/docker.sock";
-    private static final int CONNECT_TIMEOUT_MS = 5_000;
+
+    /**
+     * Hard ceiling on a single Docker call.
+     *
+     * A blocking read on a Unix domain SocketChannel has no timeout of its own, so without
+     * this a single unresponsive call would hang the calling thread forever - and because a
+     * fleet snapshot inspects every container, one hung inspect would stall the whole
+     * snapshot and surface to the operator as an unexplained timeout further upstream.
+     */
+    private static final Duration REQUEST_TIMEOUT = Duration.ofSeconds(10);
+
+    /** Closes channels that overrun REQUEST_TIMEOUT; the blocked read then fails fast. */
+    private static final ScheduledExecutorService TIMEOUT_WATCHDOG =
+            Executors.newSingleThreadScheduledExecutor(runnable -> {
+                Thread thread = new Thread(runnable, "docker-socket-timeout");
+                thread.setDaemon(true);
+                return thread;
+            });
 
     private final Path socketPath;
 
@@ -60,15 +83,34 @@ public final class DockerSocketClient {
                     + " - is /var/run/docker.sock mounted into this container?");
         }
 
+        AtomicBoolean timedOut = new AtomicBoolean(false);
         try (SocketChannel channel = SocketChannel.open(StandardProtocolFamily.UNIX)) {
-            channel.connect(UnixDomainSocketAddress.of(socketPath));
+            ScheduledFuture<?> watchdog = TIMEOUT_WATCHDOG.schedule(() -> {
+                timedOut.set(true);
+                try {
+                    // Closing the channel unblocks any read stuck on it.
+                    channel.close();
+                } catch (IOException ignored) {
+                    // Nothing useful to do; the caller already sees the failure.
+                }
+            }, REQUEST_TIMEOUT.toMillis(), TimeUnit.MILLISECONDS);
 
-            OutputStream out = Channels.newOutputStream(channel);
-            writeRequest(out, method, path, jsonBody);
-            out.flush();
+            try {
+                channel.connect(UnixDomainSocketAddress.of(socketPath));
 
-            return readResponse(new BufferedInputStream(Channels.newInputStream(channel)));
+                OutputStream out = Channels.newOutputStream(channel);
+                writeRequest(out, method, path, jsonBody);
+                out.flush();
+
+                return readResponse(new BufferedInputStream(Channels.newInputStream(channel)));
+            } finally {
+                watchdog.cancel(false);
+            }
         } catch (IOException e) {
+            if (timedOut.get()) {
+                throw new DockerException("Docker Engine API call timed out after "
+                        + REQUEST_TIMEOUT.toSeconds() + "s: " + method + " " + path, e);
+            }
             throw new DockerException("Docker Engine API call failed: " + method + " " + path, e);
         }
     }
