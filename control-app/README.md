@@ -205,6 +205,37 @@ Mounts involved (see `docker-compose.override.yml`): the drop folder is mounted 
 `/app/deploy-drop` (override with `DEPLOY_DROP_DIR` in `.env`), and `DockerFiles/jars` is mounted
 read-write at `/app/jar-store`.
 
+### Shipping a content update
+
+A content change is a jar change, so the whole round trip stays inside the app:
+
+```bash
+./gradlew :type.skyblockgeneric:shadowJar   # or whichever module you changed
+```
+
+Copy the built jar to `\\thelibrary\home\Hypixel\control-deploy` over SMB, press **Deploy**,
+pick it. The drop folder is the operator's own home share, so writing to it needs no privilege
+on the NAS.
+
+Two deploys restart the container serving the request, which is worth expecting rather than
+debugging:
+
+- `ServiceAPI.jar` restarts the API the app is talking to, so the job completes but the app
+  loses sight of it part-way and shows an error. Reopen the app; the state will be correct.
+- `ServiceControl.jar` restarts the agent running the job, so it is effectively fire-and-forget
+  and the post-restart verification never runs.
+
+### What a deploy cannot do
+
+Still needs a shell on the NAS, so keep a tested administrator account for them:
+
+- Compose or `.env` changes, including adding a container or a new service
+- Image rebuilds where a `Dockerfile` itself changed - deploys replace jars inside existing
+  images, they do not rebuild
+- Non-jar content: world data, schematics and anything else not shipped inside a jar
+- Any recovery while `service_api` or `service_control` is down, which is when the app is least
+  able to help
+
 ## Known gaps
 
 - **FCM push** is not implemented; the webhook transport covers the need for now.
