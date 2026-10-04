@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../api/control_api.dart';
 import '../theme/reactor_theme.dart';
@@ -29,9 +30,16 @@ class _EnrolScreenState extends State<EnrolScreen> {
   String? _status;
   bool _busy = false;
 
+  String _version = '';
+
   @override
   void initState() {
     super.initState();
+    PackageInfo.fromPlatform()
+        .then((info) {
+          if (mounted) setState(() => _version = 'v${info.version}');
+        })
+        .catchError((_) => null);
     _deviceNameController.text = 'control app';
     if (widget.api.baseUrl != null) _urlController.text = widget.api.baseUrl!;
   }
@@ -105,7 +113,17 @@ class _EnrolScreenState extends State<EnrolScreen> {
                   Text('HYPIXEL CONTROL',
                       style: ReactorTheme.heading(size: 20, color: ReactorTheme.cyan)),
                   const SizedBox(height: 4),
-                  Text('Operations console', style: ReactorTheme.label(size: 10)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Operations console', style: ReactorTheme.label(size: 10)),
+                      if (_version.isNotEmpty) ...[
+                        const SizedBox(width: 8),
+                        Text(_version,
+                            style: ReactorTheme.data(size: 10, color: ReactorTheme.textFaint)),
+                      ],
+                    ],
+                  ),
                   const SizedBox(height: 20),
                   _field('SERVER ADDRESS', _urlController, 'http://192.168.100.10:8080'),
                   const SizedBox(height: 12),

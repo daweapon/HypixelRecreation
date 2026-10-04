@@ -39,6 +39,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void initState() {
     super.initState();
     widget.state.addListener(_onChange);
+    widget.state.loadVersion();
     widget.state.startPolling();
   }
 
@@ -138,6 +139,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           ),
           const Spacer(),
+          if (widget.state.appVersion.isNotEmpty) ...[
+            Text(widget.state.appVersion,
+                style: ReactorTheme.data(size: 10, color: ReactorTheme.textFaint)),
+            const SizedBox(width: 10),
+          ],
           Text(widget.state.role,
               style: ReactorTheme.label(
                   size: 9,

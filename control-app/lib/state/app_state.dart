@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../api/control_api.dart';
 import '../models/fleet.dart';
@@ -21,6 +22,22 @@ class AppState extends ChangeNotifier {
 
   Timer? _timer;
   Timer? _jobTimer;
+
+  /// Read from the installed package rather than a hand-maintained constant, so it cannot
+  /// drift from what is actually running. Surfaced in the UI because this app is sideloaded:
+  /// the filename never changes, so "am I on the current build?" is otherwise unanswerable
+  /// without digging through Android settings.
+  String appVersion = '';
+
+  Future<void> loadVersion() async {
+    try {
+      final info = await PackageInfo.fromPlatform();
+      appVersion = 'v${info.version}';
+      notifyListeners();
+    } catch (_) {
+      // Version display is a convenience; never let it break startup.
+    }
+  }
 
   bool get isEnrolled => api.isEnrolled;
   String get role => api.role ?? 'READ_ONLY';
