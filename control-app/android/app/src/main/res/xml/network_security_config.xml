@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The control plane is reached over plain HTTP on the LAN (service.api listens on 8080 with no
+  TLS), and Android 9+ blocks cleartext by default, so it has to be permitted explicitly or
+  every request fails with no useful error.
+
+  This is deliberately not scoped to a single IP: pinning the NAS address here would silently
+  break the app the moment that address changed. If this console is ever reached from outside
+  the LAN it must go via VPN or an authenticated TLS reverse proxy, at which point this should
+  be tightened to cleartextTrafficPermitted="false".
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

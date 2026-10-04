@@ -58,6 +58,7 @@ include(":service.punishment")
 include(":service.elections")
 include(":service.guild")
 include(":service.store")
+include(":service.control")
 include(":anticheat")
 
 val clientModRequested = gradle.startParameter.taskNames.any { taskName ->

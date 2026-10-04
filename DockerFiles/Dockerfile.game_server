@@ -36,6 +36,16 @@ RUN set -eu; \
             curl -fSL -o "$jar" "${JAR_BASE_URL}/$jar"; \
         fi; \
     done; \
+    for jar in \
+        ServiceControl.jar \
+    ; do \
+        if [ -f "/app/prebuilt_jars/$jar" ]; then \
+            echo "Using locally built $jar"; \
+            cp "/app/prebuilt_jars/$jar" "$jar"; \
+        else \
+            echo "Skipping $jar - not built locally and not published upstream"; \
+        fi; \
+    done; \
     rm -rf /app/prebuilt_jars
 
 # Copy configuration data

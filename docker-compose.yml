@@ -211,6 +211,8 @@ services:
     environment:
       <<: *forwarding_env
       SERVICE_CMD: java -jar ServiceAPI.jar
+      CONTROL_AGENT_URL: "http://service_control:9090"
+      CONTROL_TOKEN: "${CONTROL_TOKEN:?set CONTROL_TOKEN in a .env file beside docker-compose.yml}"
     depends_on:
       proxy:
         condition: service_healthy
@@ -218,6 +220,36 @@ services:
         condition: service_started
     volumes:
       - ./configuration:/app/configuration_files
+    networks:
+      - hypixel_network
+
+  # Control-plane agent for the server control app.
+  #
+  # Holds the Docker socket so it can report on and manage the fleet. Deliberately publishes no
+  # ports: it is reachable only from inside hypixel_network, with service_api as the
+  # authenticated front door. Note it does NOT depend on mongodb/redis/proxy - its job is to
+  # report on the stack when the stack is broken, so it must start even when they are down.
+  service_control:
+    image: game_server_prepared
+    container_name: service_control
+    restart: "unless-stopped"
+    environment:
+      <<: *forwarding_env
+      SERVICE_CMD: java -jar ServiceControl.jar
+      CONTROL_PORT: "9090"
+      CONTROL_TOKEN: "${CONTROL_TOKEN:?set CONTROL_TOKEN in a .env file beside docker-compose.yml}"
+      WATCHDOG_POLL_SECONDS: "30"
+      WATCHDOG_CONFIRM_POLLS: "3"
+      # Optional: a webhook that delivers alerts to a phone today (ntfy, Gotify, Discord).
+      ALERT_WEBHOOK_URL: "${ALERT_WEBHOOK_URL:-}"
+    depends_on:
+      game_server_builder:
+        condition: service_started
+    volumes:
+      - ./configuration:/app/configuration_files
+      # Read-write because the agent starts, stops and restarts containers. This mount is why
+      # the agent is a separate container from the public-facing API.
+      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - hypixel_network
 

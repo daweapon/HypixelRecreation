@@ -6,6 +6,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.config.ConfigProvider;
+import net.swofty.service.api.control.DeviceDatabase;
 import net.swofty.service.api.http.APIResponse;
 import net.swofty.service.api.http.SkyBlockEndpoint;
 import net.swofty.service.generic.SkyBlockService;
@@ -13,6 +14,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.type.generic.data.mongodb.ProfilesDatabase;
 import net.swofty.type.generic.data.mongodb.UserDatabase;
 import org.jetbrains.annotations.Nullable;
+import spark.Route;
 import spark.Spark;
 
 import java.io.IOException;
@@ -52,13 +54,14 @@ public class APIService implements SkyBlockService {
         UserDatabase.connect(mongoClient);
         ProfilesDatabase.connect(mongoClient);
         new APIAdminDatabase().connect(ConfigProvider.settings().getMongodb());
+        DeviceDatabase.connect(ConfigProvider.settings().getMongodb());
         new APIKeyDatabase("_placeHolder").connect(ConfigProvider.settings().getMongodb());
 
         System.out.println("API Service initializing...");
         Spark.port(port);
 
         service.loopThroughPackage("net.swofty.service.api.http.endpoints", SkyBlockEndpoint.class).forEach(endpoint -> {
-            Spark.get("/api" + endpoint.getPath(), (req, res) -> {
+            Route route = (req, res) -> {
                 res.type("application/json");
 
                 Map<String, String> headers = new HashMap<>();
@@ -72,7 +75,13 @@ public class APIService implements SkyBlockService {
                 }
                 res.body(response.toJson());
                 return response.toJson();
-            });
+            };
+
+            String path = "/api" + endpoint.getPath();
+            switch (endpoint.getMethod()) {
+                case POST -> Spark.post(path, route);
+                default -> Spark.get(path, route);
+            }
         });
 
         Spark.get("/", (req, res) -> {

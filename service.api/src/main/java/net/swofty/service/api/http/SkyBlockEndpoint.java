@@ -11,5 +11,9 @@ public abstract class SkyBlockEndpoint {
     public abstract EndpointType getType();
     public abstract String getPath();
 
+    public HttpMethod getMethod() {
+        return HttpMethod.GET;
+    }
+
     public abstract @Nullable APIResponse handle(Map<String, String> headers, Request req, Response res);
 }

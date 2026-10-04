@@ -34,6 +34,7 @@ dependencies {
     implementation(libs.tinylog.api)
     implementation(libs.tinylog.impl)
     compileOnly(libs.annotations)
+    testImplementation(libs.junit.jupiter)
 }
 
 application {
@@ -41,6 +42,9 @@ application {
 }
 
 tasks {
+    test {
+        useJUnitPlatform()
+    }
     named<ShadowJar>("shadowJar") {
         archiveBaseName.set("ServiceAPI")
         archiveClassifier.set("")
