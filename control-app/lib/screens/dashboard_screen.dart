@@ -295,6 +295,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         const SizedBox(height: 10),
         FleetTable(
           fleet: fleet,
+          scrollable: false,
           canOperate: widget.state.canOperate,
           onSelect: (c) => _openLogs(c.name),
           onAction: (action, names) =>

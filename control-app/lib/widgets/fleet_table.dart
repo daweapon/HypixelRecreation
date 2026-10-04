@@ -12,12 +12,20 @@ class FleetTable extends StatefulWidget {
   final bool canOperate;
   final void Function(String action, List<String> names)? onAction;
 
+  /// False when the table sits inside a scrolling page.
+  ///
+  /// A scrollable nested in another scrollable still claims the drag even when it has nothing
+  /// left to scroll, which strands the page: on a phone the table is tall enough to fill the
+  /// screen, so every upward drag landed on it and the page could never scroll back up.
+  final bool scrollable;
+
   const FleetTable({
     super.key,
     required this.fleet,
     required this.onSelect,
     required this.canOperate,
     this.onAction,
+    this.scrollable = true,
   });
 
   @override
@@ -42,7 +50,8 @@ class _FleetTableState extends State<FleetTable> {
       title: 'fleet  ·  ${widget.fleet.runningCount}/${widget.fleet.containers.length} up',
       actions: [SizedBox(width: 170, child: _filterField())],
       child: ListView(
-        shrinkWrap: true,
+        shrinkWrap: !widget.scrollable,
+        physics: widget.scrollable ? null : const NeverScrollableScrollPhysics(),
         children: [
           for (final group in groups) ..._buildGroup(group),
         ],
