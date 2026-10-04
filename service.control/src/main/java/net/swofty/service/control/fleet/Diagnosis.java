@@ -26,6 +26,7 @@ public record Diagnosis(Severity severity, String headline, String detail) {
         }
 
         List<ContainerInfo> looping = containers.stream()
+                .filter(container -> !FleetGroup.isOneShot(container.name()))
                 .filter(container -> container.state() == ContainerState.LOOP)
                 .toList();
         if (!looping.isEmpty()) {
@@ -47,6 +48,7 @@ public record Diagnosis(Severity severity, String headline, String detail) {
         }
 
         List<ContainerInfo> stoppedServices = containers.stream()
+                .filter(container -> !FleetGroup.isOneShot(container.name()))
                 .filter(container -> container.group() == FleetGroup.SERVICE)
                 .filter(container -> container.state().isCritical())
                 .toList();
@@ -57,6 +59,7 @@ public record Diagnosis(Severity severity, String headline, String detail) {
         }
 
         List<ContainerInfo> unhealthy = containers.stream()
+                .filter(container -> !FleetGroup.isOneShot(container.name()))
                 .filter(container -> container.state() == ContainerState.WRN)
                 .toList();
         if (!unhealthy.isEmpty()) {

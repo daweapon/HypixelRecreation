@@ -69,7 +69,8 @@ public record FleetSnapshot(
         }
 
         for (ContainerInfo container : containers) {
-            if (SharedDependency.of(container.name()) != null) {
+            if (SharedDependency.of(container.name()) != null
+                    || FleetGroup.isOneShot(container.name())) {
                 continue;
             }
             int weight = switch (container.group()) {

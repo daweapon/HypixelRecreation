@@ -33,4 +33,16 @@ public enum FleetGroup {
     public static boolean isProjectContainer(String containerName) {
         return classify(containerName) != UNKNOWN;
     }
+
+    /**
+     * One-shot containers that are expected to sit in EXIT once their job is done.
+     *
+     * game_server_builder exists only to build the shared image; it exiting is success, not a
+     * fault. Counting it against fleet health would peg integrity permanently below 100 and
+     * list a non-problem on every screen, which is exactly how an operator learns to ignore
+     * the dashboard.
+     */
+    public static boolean isOneShot(String containerName) {
+        return "game_server_builder".equals(containerName);
+    }
 }

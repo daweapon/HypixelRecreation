@@ -85,6 +85,24 @@ class FleetModelTest {
     }
 
     @Test
+    void theOneShotImageBuilderExitingIsNotCountedAsAFault() {
+        // game_server_builder is meant to exit once it has built the image. Counting it would
+        // peg integrity below 100 forever and list a non-problem on every screen.
+        List<ContainerInfo> containers = List.of(
+                container("hypixel_mongo", ContainerState.UP),
+                container("hypixel_redis", ContainerState.UP),
+                container("hypixel_proxy", ContainerState.UP),
+                container("service_party", ContainerState.UP),
+                container("game_server_builder", ContainerState.EXIT));
+
+        FleetSnapshot snapshot = FleetSnapshot.of(containers);
+        assertEquals(100, snapshot.integrity(),
+                "a finished one-shot builder must not dent integrity");
+        assertEquals(Diagnosis.Severity.NOMINAL, snapshot.diagnosis().severity());
+        assertEquals("Stack nominal", snapshot.diagnosis().headline());
+    }
+
+    @Test
     void diagnosisReportsNominalWhenEverythingIsUp() {
         List<ContainerInfo> containers = List.of(
                 container("hypixel_mongo", ContainerState.UP),
