@@ -10,6 +10,7 @@ import '../widgets/fleet_table.dart';
 import '../widgets/job_banner.dart';
 import '../widgets/reactor_ring.dart';
 import '../widgets/telemetry_strip.dart';
+import 'audit_screen.dart';
 import 'logs_screen.dart';
 
 /// One adaptive dashboard: phone and desktop are the same language at different densities,
@@ -144,6 +145,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ? ReactorTheme.cyan
                       : ReactorTheme.textFaint)),
           const SizedBox(width: 12),
+          IconButton(
+            iconSize: 16,
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(minWidth: 30),
+            icon: const Icon(Icons.receipt_long, color: ReactorTheme.textSecondary),
+            tooltip: 'Audit log',
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => AuditScreen(api: widget.api),
+            )),
+          ),
           IconButton(
             iconSize: 16,
             padding: EdgeInsets.zero,

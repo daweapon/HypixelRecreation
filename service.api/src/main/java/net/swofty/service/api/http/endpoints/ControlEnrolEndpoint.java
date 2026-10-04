@@ -4,6 +4,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.swofty.service.api.APIAdminDatabase;
 import net.swofty.service.api.APIAdminDatabaseObject;
+import net.swofty.service.api.control.AuditDatabase;
+import net.swofty.service.api.control.AuditEntry;
 import net.swofty.service.api.control.ControlRole;
 import net.swofty.service.api.control.ControlTokens;
 import net.swofty.service.api.control.DeviceDatabase;
@@ -16,6 +18,7 @@ import spark.Request;
 import spark.Response;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -81,6 +84,12 @@ public class ControlEnrolEndpoint extends SkyBlockEndpoint {
                 false
         );
         DeviceDatabase.save(record);
+
+        AuditDatabase.record(AuditEntry.of(
+                record.playerName(), record.deviceId(), record.deviceName(), role.name(),
+                "device-enrol", List.of(deviceName), AuditEntry.Outcome.ACCEPTED,
+                firstEver ? "first device enrolled - granted OWNER"
+                        : "device enrolled with default READ_ONLY"));
 
         JsonObject payload = new JsonObject();
         payload.addProperty("deviceToken", token);

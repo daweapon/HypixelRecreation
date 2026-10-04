@@ -1,6 +1,8 @@
 package net.swofty.service.api.http.endpoints;
 
 import com.google.gson.JsonObject;
+import net.swofty.service.api.control.AuditDatabase;
+import net.swofty.service.api.control.AuditEntry;
 import net.swofty.service.api.control.ControlAuth;
 import net.swofty.service.api.control.ControlRole;
 import net.swofty.service.api.control.ControlTokens;
@@ -14,6 +16,7 @@ import org.tinylog.Logger;
 import spark.Request;
 import spark.Response;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -72,6 +75,11 @@ public class ControlDeviceUpdateEndpoint extends SkyBlockEndpoint {
                 DeviceDatabase.save(device.revokedCopy());
                 ControlTokens.revokeDevice(deviceId);
                 Logger.warn("Device {} revoked by {}", deviceId, auth.caller().actor());
+                AuditDatabase.record(AuditEntry.of(
+                        auth.caller().device().playerName(), auth.caller().device().deviceId(),
+                        auth.caller().device().deviceName(), auth.caller().role().name(),
+                        "device-revoke", List.of(deviceId), AuditEntry.Outcome.ACCEPTED,
+                        "revoked device '" + device.deviceName() + "' of " + device.playerName()));
                 return APIResponse.success("Device revoked");
             }
             case "role" -> {
@@ -88,6 +96,12 @@ public class ControlDeviceUpdateEndpoint extends SkyBlockEndpoint {
                 DeviceDatabase.save(device.withRole(newRole));
                 ControlTokens.revokeDevice(deviceId);
                 Logger.warn("Device {} set to {} by {}", deviceId, newRole, auth.caller().actor());
+                AuditDatabase.record(AuditEntry.of(
+                        auth.caller().device().playerName(), auth.caller().device().deviceId(),
+                        auth.caller().device().deviceName(), auth.caller().role().name(),
+                        "device-role", List.of(deviceId), AuditEntry.Outcome.ACCEPTED,
+                        "changed '" + device.deviceName() + "' from " + device.role()
+                                + " to " + newRole));
                 return APIResponse.success("Device role updated to " + newRole);
             }
             default -> {

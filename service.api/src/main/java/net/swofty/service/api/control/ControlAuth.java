@@ -29,6 +29,31 @@ public final class ControlAuth {
     private ControlAuth() {
     }
 
+    /**
+     * Best-effort identity for a request that failed authorisation.
+     *
+     * A refused attempt still needs to name whoever made it where possible. When the token was
+     * valid but the role insufficient the device is known; when the token itself was bad there
+     * is nothing to resolve and the entry says so rather than inventing an actor.
+     */
+    public static String describeCaller(Request req) {
+        ControlTokens.AccessToken token = resolveToken(req);
+        return token == null ? "unauthenticated" : token.playerName();
+    }
+
+    public static String describeDeviceId(Request req) {
+        ControlTokens.AccessToken token = resolveToken(req);
+        return token == null ? "unknown" : token.deviceId();
+    }
+
+    private static @Nullable ControlTokens.AccessToken resolveToken(Request req) {
+        String header = req.headers("Authorization");
+        if (header == null || !header.startsWith("Bearer ")) {
+            return null;
+        }
+        return ControlTokens.validateAccessToken(header.substring("Bearer ".length()).trim());
+    }
+
     public static Result authorise(Request req, ControlRole required) {
         String header = req.headers("Authorization");
         if (header == null || !header.startsWith("Bearer ")) {

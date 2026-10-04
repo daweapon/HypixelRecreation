@@ -190,6 +190,14 @@ class ControlApi {
     return OperationJob.fromJson(data as Map<String, dynamic>);
   }
 
+  Future<List<AuditEntry>> fetchAudit({int limit = 100}) async {
+    final data = await _authedGet('/control/audit', {'limit': '$limit'});
+    final map = data as Map<String, dynamic>;
+    return ((map['entries'] as List?) ?? [])
+        .map((e) => AuditEntry.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
   Future<OperationJob> fetchJob(String id) async {
     final data = await _authedGet('/control/jobs', {'id': id});
     return OperationJob.fromJson(data as Map<String, dynamic>);

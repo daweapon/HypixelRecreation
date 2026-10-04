@@ -252,3 +252,42 @@ class OperationJob {
             .toList(),
       );
 }
+
+class AuditEntry {
+  final String id;
+  final DateTime at;
+  final String actorName;
+  final String? deviceName;
+  final String? role;
+  final String action;
+  final List<String> targets;
+  final String outcome;
+  final String? detail;
+
+  AuditEntry({
+    required this.id,
+    required this.at,
+    required this.actorName,
+    required this.deviceName,
+    required this.role,
+    required this.action,
+    required this.targets,
+    required this.outcome,
+    required this.detail,
+  });
+
+  bool get wasDenied => outcome == 'DENIED';
+  bool get wasAccepted => outcome == 'ACCEPTED';
+
+  factory AuditEntry.fromJson(Map<String, dynamic> json) => AuditEntry(
+        id: json['id'] as String? ?? '',
+        at: DateTime.tryParse(json['at'] as String? ?? '') ?? DateTime.now(),
+        actorName: json['actorName'] as String? ?? 'unknown',
+        deviceName: json['deviceName'] as String?,
+        role: json['role'] as String?,
+        action: json['action'] as String? ?? '?',
+        targets: ((json['targets'] as List?) ?? []).map((e) => e.toString()).toList(),
+        outcome: json['outcome'] as String? ?? 'FAILED',
+        detail: json['detail'] as String?,
+      );
+}

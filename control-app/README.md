@@ -124,6 +124,25 @@ Alerts currently go to the log plus an optional webhook (`ALERT_WEBHOOK_URL`). F
 wired up yet, and deliberately so: an FCM device token can only come from an installed app, so
 the webhook is what delivers to a phone today. Point it at an ntfy/Gotify topic.
 
+## Audit log
+
+Every action taken through the app is recorded to an append-only Mongo collection
+(`api-control-audit`): who, which device, what role, what action, which containers, the
+outcome and when. **Denied attempts are recorded too** - a log of successes alone cannot answer
+"who tried to stop the fleet and was refused", which is the question that matters once more
+than one person holds a paired device. Device enrolments, role changes and revocations are
+recorded as well.
+
+Readable by any paired device, not owners only: the people who can press the buttons should be
+able to see what has been pressed. View it from the receipt icon in the command bar, or
+`GET /api/control/audit?limit=200`.
+
+Honest limitation: this is append-only *by construction in the application* - nothing in the
+service can update or delete an entry - but it is not cryptographically tamper-evident. Anyone
+with direct Mongo access on the NAS can still edit the collection, and since Docker socket
+access already implies host root, that is not a boundary this layer can enforce. It answers
+"who did what" for accountability, not against an adversary who already owns the box.
+
 ## Known gaps
 
 - **FCM push** is not implemented; the webhook transport covers the need for now.
@@ -133,3 +152,7 @@ the webhook is what delivers to a phone today. Point it at an ntfy/Gotify topic.
   *registered* with it.
 - Phases 2 and 3 (jar deploy with verification, config-drift detector, cross-server player and
   event admin, backups, spark metrics) are untouched.
+- **No owner-recovery path.** Promoting a device requires an OWNER device, so if the only
+  owner's device token is lost the app cannot recover on its own and the device records have to
+  be cleared directly in Mongo. Needing a shell on the NAS to regain admin access to the tool
+  that is supposed to replace the shell is a real gap.

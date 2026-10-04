@@ -2,6 +2,8 @@ package net.swofty.service.api.http.endpoints;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.swofty.service.api.control.AuditDatabase;
+import net.swofty.service.api.control.AuditEntry;
 import net.swofty.service.api.control.ControlAgentClient;
 import net.swofty.service.api.control.ControlAuth;
 import net.swofty.service.api.control.ControlRole;
@@ -14,6 +16,7 @@ import org.tinylog.Logger;
 import spark.Request;
 import spark.Response;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,6 +29,16 @@ import java.util.Set;
 public class ControlActionEndpoint extends SkyBlockEndpoint {
     private static final ControlAgentClient AGENT = new ControlAgentClient();
     private static final Set<String> CONTAINER_ACTIONS = Set.of("start", "stop", "restart");
+
+    private static List<String> readNames(JsonObject body) {
+        if (body == null || !body.has("names") || !body.get("names").isJsonArray()) {
+            return List.of();
+        }
+        return body.getAsJsonArray("names").asList().stream()
+                .filter(element -> !element.isJsonNull())
+                .map(com.google.gson.JsonElement::getAsString)
+                .toList();
+    }
 
     @Override
     public EndpointType getType() {
@@ -44,14 +57,21 @@ public class ControlActionEndpoint extends SkyBlockEndpoint {
 
     @Override
     public APIResponse handle(Map<String, String> headers, Request req, Response res) {
+        JsonObject body = ControlEnrolEndpoint.parseBody(req);
+        String action = ControlEnrolEndpoint.optString(body, "action", "");
+
         ControlAuth.Result auth = ControlAuth.authorise(req, ControlRole.OPERATOR);
         if (auth.failed()) {
+            // A refused attempt is recorded too - "who tried to stop the fleet and was turned
+            // away" is exactly the kind of thing an audit log exists to answer.
+            AuditDatabase.record(AuditEntry.of(
+                    ControlAuth.describeCaller(req), ControlAuth.describeDeviceId(req), null, null,
+                    action.isBlank() ? "unknown" : action, readNames(body),
+                    AuditEntry.Outcome.DENIED, String.valueOf(auth.error().getMessage())));
             res.status(403);
             return auth.error();
         }
 
-        JsonObject body = ControlEnrolEndpoint.parseBody(req);
-        String action = ControlEnrolEndpoint.optString(body, "action", "");
         String actor = auth.caller().actor();
 
         String path;
@@ -81,6 +101,18 @@ public class ControlActionEndpoint extends SkyBlockEndpoint {
         Logger.warn("CONTROL ACTION {} requested by {} ({})", action, actor, forwarded);
 
         ControlAgentClient.AgentResponse response = AGENT.post(path, forwarded.toString(), actor);
+
+        AuditDatabase.record(AuditEntry.of(
+                auth.caller().device().playerName(),
+                auth.caller().device().deviceId(),
+                auth.caller().device().deviceName(),
+                auth.caller().role().name(),
+                action,
+                readNames(body),
+                response.isSuccess() ? AuditEntry.Outcome.ACCEPTED : AuditEntry.Outcome.FAILED,
+                response.isSuccess() ? "dispatched to control agent"
+                        : "agent returned HTTP " + response.status()));
+
         if (!response.isSuccess()) {
             res.status(response.status());
             return APIResponse.error(response.body());

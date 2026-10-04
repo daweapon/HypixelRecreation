@@ -6,6 +6,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.config.ConfigProvider;
+import net.swofty.service.api.control.AuditDatabase;
 import net.swofty.service.api.control.DeviceDatabase;
 import net.swofty.service.api.http.APIResponse;
 import net.swofty.service.api.http.SkyBlockEndpoint;
@@ -56,6 +57,7 @@ public class APIService implements SkyBlockService {
         ProfilesDatabase.connect(mongoClient);
         new APIAdminDatabase().connect(ConfigProvider.settings().getMongodb());
         DeviceDatabase.connect(ConfigProvider.settings().getMongodb());
+        AuditDatabase.connect(ConfigProvider.settings().getMongodb());
         new APIKeyDatabase("_placeHolder").connect(ConfigProvider.settings().getMongodb());
 
         System.out.println("API Service initializing...");
