@@ -198,6 +198,19 @@ class ControlApi {
         .toList();
   }
 
+  Future<DeployCandidates> fetchDeployCandidates() async {
+    final data = await _authedGet('/control/deploy/candidates');
+    return DeployCandidates.fromJson(data as Map<String, dynamic>);
+  }
+
+  Future<OperationJob> deploy(String jar, {List<String>? targets, int? stagger}) async {
+    final body = <String, dynamic>{'jar': jar};
+    if (targets != null && targets.isNotEmpty) body['names'] = targets;
+    if (stagger != null) body['stagger'] = stagger;
+    final data = await _authedPost('/control/deploy', body);
+    return OperationJob.fromJson(data as Map<String, dynamic>);
+  }
+
   Future<OperationJob> fetchJob(String id) async {
     final data = await _authedGet('/control/jobs', {'id': id});
     return OperationJob.fromJson(data as Map<String, dynamic>);

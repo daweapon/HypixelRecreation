@@ -1,6 +1,7 @@
 package net.swofty.service.control;
 
 import net.swofty.service.control.docker.DockerApi;
+import net.swofty.service.control.deploy.DeployService;
 import net.swofty.service.control.docker.DockerSocketClient;
 import net.swofty.service.control.fleet.FleetService;
 import net.swofty.service.control.fleet.LifecycleController;
@@ -30,6 +31,7 @@ public final class ControlService {
         FleetService fleetService = new FleetService(docker);
         LifecycleController lifecycle = new LifecycleController(docker);
         LogTailer logTailer = new LogTailer(docker);
+        DeployService deployService = new DeployService(docker, socketClient, fleetService, lifecycle);
 
         AlertDispatcher alertDispatcher = AlertDispatcher.fromEnvironment();
         Watchdog watchdog = new Watchdog(fleetService, alertDispatcher);
@@ -44,7 +46,7 @@ public final class ControlService {
         }
 
         Spark.port(port);
-        new ControlRoutes(fleetService, lifecycle, logTailer, watchdog, socketClient).register();
+        new ControlRoutes(fleetService, lifecycle, logTailer, watchdog, socketClient, deployService).register();
         Spark.awaitInitialization();
 
         watchdog.start();
@@ -55,6 +57,8 @@ public final class ControlService {
             Spark.stop();
         }));
 
+        Logger.info("Deploy drop folder: {} (available: {})",
+                deployService.dropDirectory(), deployService.isDropAvailable());
         Logger.info("Control agent ready on port {}", port);
     }
 

@@ -291,3 +291,57 @@ class AuditEntry {
         detail: json['detail'] as String?,
       );
 }
+
+class JarCandidate {
+  final String name;
+  final int sizeBytes;
+  final String sha256;
+  final DateTime? modifiedAt;
+  final List<String> defaultTargets;
+  final bool bindMounted;
+  final bool matchesStaged;
+
+  JarCandidate({
+    required this.name,
+    required this.sizeBytes,
+    required this.sha256,
+    required this.modifiedAt,
+    required this.defaultTargets,
+    required this.bindMounted,
+    required this.matchesStaged,
+  });
+
+  String get sizeLabel => '${(sizeBytes / 1048576).toStringAsFixed(1)} MB';
+  String get shortHash => sha256.length > 12 ? sha256.substring(0, 12) : sha256;
+
+  factory JarCandidate.fromJson(Map<String, dynamic> json) => JarCandidate(
+        name: json['name'] as String? ?? '?',
+        sizeBytes: (json['sizeBytes'] as num?)?.toInt() ?? 0,
+        sha256: json['sha256'] as String? ?? '',
+        modifiedAt: DateTime.tryParse(json['modifiedAt'] as String? ?? ''),
+        defaultTargets:
+            ((json['defaultTargets'] as List?) ?? []).map((e) => e.toString()).toList(),
+        bindMounted: json['bindMounted'] as bool? ?? false,
+        matchesStaged: json['matchesStaged'] as bool? ?? false,
+      );
+}
+
+class DeployCandidates {
+  final String dropDirectory;
+  final bool dropAvailable;
+  final List<JarCandidate> candidates;
+
+  DeployCandidates({
+    required this.dropDirectory,
+    required this.dropAvailable,
+    required this.candidates,
+  });
+
+  factory DeployCandidates.fromJson(Map<String, dynamic> json) => DeployCandidates(
+        dropDirectory: json['dropDirectory'] as String? ?? '',
+        dropAvailable: json['dropAvailable'] as bool? ?? false,
+        candidates: ((json['candidates'] as List?) ?? [])
+            .map((e) => JarCandidate.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+}

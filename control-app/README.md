@@ -143,6 +143,38 @@ with direct Mongo access on the NAS can still edit the collection, and since Doc
 access already implies host root, that is not a boundary this layer can enforce. It answers
 "who did what" for accountability, not against an adversary who already owns the box.
 
+## Deploying from the app
+
+Deploys run without the operator holding any privilege on the NAS. You copy a built jar into
+the **drop folder** over SMB (`\\thelibrary\home\Hypixel\control-deploy`), then press
+**Deploy** in the app. The agent does the privileged part.
+
+What a deploy does, in order:
+
+1. **Hash and verify** the jar in the drop folder before touching anything.
+2. **Persist** it to `DockerFiles/jars/` so a future image rebuild cannot silently revert the
+   deploy - the stale-jar trap that has cost this project real work before.
+3. **Push** it into each target container over the Engine API (the equivalent of `docker cp`),
+   then stat it back to confirm it actually landed.
+4. **Restart** the targets one at a time with the usual stagger, never in parallel.
+5. **Confirm** each container came back up, reporting per-step rather than pass/fail overall.
+
+Targets are derived from the jar name rather than chosen by whoever presses the button:
+`HypixelCore.jar` goes to **every** game server (a partial rollout is the version-skew bug that
+once looked like a wiped inventory), `ServiceFoo.jar` goes to its own `service_foo` container.
+A jar whose targets cannot be resolved is refused rather than guessed at.
+
+`ServiceControl.jar` is bind-mounted, so replacing the stored file *is* the deploy and no push
+is needed; the agent handles that distinction itself.
+
+**Deploying requires OWNER**, not OPERATOR. Restarting existing code and pushing arbitrary new
+code are different grants and do not share a role. Both are recorded in the audit log, including
+refused attempts.
+
+Mounts involved (see `docker-compose.override.yml`): the drop folder is mounted **read-only** at
+`/app/deploy-drop` (override with `DEPLOY_DROP_DIR` in `.env`), and `DockerFiles/jars` is mounted
+read-write at `/app/jar-store`.
+
 ## Known gaps
 
 - **FCM push** is not implemented; the webhook transport covers the need for now.

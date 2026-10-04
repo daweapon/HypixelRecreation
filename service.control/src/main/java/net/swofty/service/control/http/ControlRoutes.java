@@ -1,6 +1,7 @@
 package net.swofty.service.control.http;
 
 import com.google.gson.JsonObject;
+import net.swofty.service.control.deploy.DeployService;
 import net.swofty.service.control.docker.DockerSocketClient;
 import net.swofty.service.control.fleet.FleetService;
 import net.swofty.service.control.fleet.LifecycleController;
@@ -30,15 +31,17 @@ public final class ControlRoutes {
     private final LogTailer logTailer;
     private final Watchdog watchdog;
     private final DockerSocketClient socketClient;
+    private final DeployService deployService;
     private final String expectedToken;
 
     public ControlRoutes(FleetService fleetService, LifecycleController lifecycle, LogTailer logTailer,
-                         Watchdog watchdog, DockerSocketClient socketClient) {
+                         Watchdog watchdog, DockerSocketClient socketClient, DeployService deployService) {
         this.fleetService = fleetService;
         this.lifecycle = lifecycle;
         this.logTailer = logTailer;
         this.watchdog = watchdog;
         this.socketClient = socketClient;
+        this.deployService = deployService;
         this.expectedToken = System.getenv("CONTROL_TOKEN");
 
         if (expectedToken == null || expectedToken.isBlank()) {
@@ -70,6 +73,16 @@ public final class ControlRoutes {
         Spark.post("/control/containers/start", (req, res) -> containerAction(req, res, "start"));
         Spark.post("/control/containers/stop", (req, res) -> containerAction(req, res, "stop"));
         Spark.post("/control/containers/restart", (req, res) -> containerAction(req, res, "restart"));
+
+        Spark.get("/control/deploy/candidates", (req, res) -> {
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("dropDirectory", deployService.dropDirectory());
+            payload.put("dropAvailable", deployService.isDropAvailable());
+            payload.put("candidates", deployService.candidates());
+            return Json.write(payload);
+        });
+
+        Spark.post("/control/deploy", this::deploy);
 
         Spark.get("/control/jobs", (req, res) -> Json.write(lifecycle.recentJobs().stream()
                 .map(ControlRoutes::describeJob).toList()));
@@ -166,6 +179,29 @@ public final class ControlRoutes {
             default -> lifecycle.restart(names, stagger, actor(req));
         };
         return Json.write(describeJob(job));
+    }
+
+    private String deploy(Request req, Response res) {
+        JsonObject body = parseBody(req);
+        String jar = body.has("jar") && !body.get("jar").isJsonNull()
+                ? body.get("jar").getAsString() : null;
+        if (jar == null || jar.isBlank()) {
+            res.status(400);
+            return Json.write(Map.of("error", "missing jar name"));
+        }
+        // Guard against a caller reaching outside the drop folder.
+        if (jar.contains("/") || jar.contains("\\") || jar.contains("..")) {
+            res.status(400);
+            return Json.write(Map.of("error", "jar must be a bare filename"));
+        }
+
+        try {
+            return Json.write(describeJob(deployService.deploy(
+                    jar, readNames(body), optInt(body, "stagger", 0), actor(req))));
+        } catch (IllegalArgumentException e) {
+            res.status(400);
+            return Json.write(Map.of("error", String.valueOf(e.getMessage())));
+        }
     }
 
     private String job(Request req, Response res) {

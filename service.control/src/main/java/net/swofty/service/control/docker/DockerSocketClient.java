@@ -41,6 +41,9 @@ public final class DockerSocketClient {
      */
     private static final Duration REQUEST_TIMEOUT = Duration.ofSeconds(10);
 
+    /** Uploading a ~50MB jar legitimately takes longer than a status call. */
+    private static final Duration UPLOAD_TIMEOUT = Duration.ofSeconds(120);
+
     /** Closes channels that overrun REQUEST_TIMEOUT; the blocked read then fails fast. */
     private static final ScheduledExecutorService TIMEOUT_WATCHDOG =
             Executors.newSingleThreadScheduledExecutor(runnable -> {
@@ -77,7 +80,18 @@ public final class DockerSocketClient {
         return request("POST", path, null);
     }
 
+    /** PUTs a raw body (used for the tar stream that implements `docker cp`). */
+    public DockerResponse putBinary(String path, byte[] body, String contentType) {
+        return send("PUT", path, body, contentType);
+    }
+
     public DockerResponse request(String method, String path, String jsonBody) {
+        return send(method, path,
+                jsonBody == null ? null : jsonBody.getBytes(StandardCharsets.UTF_8),
+                jsonBody == null ? null : "application/json");
+    }
+
+    private DockerResponse send(String method, String path, byte[] body, String contentType) {
         if (!isAvailable()) {
             throw new DockerException("Docker socket is not available at " + socketPath
                     + " - is /var/run/docker.sock mounted into this container?");
@@ -85,6 +99,8 @@ public final class DockerSocketClient {
 
         AtomicBoolean timedOut = new AtomicBoolean(false);
         try (SocketChannel channel = SocketChannel.open(StandardProtocolFamily.UNIX)) {
+            Duration budget = body != null && body.length > 1_000_000
+                    ? UPLOAD_TIMEOUT : REQUEST_TIMEOUT;
             ScheduledFuture<?> watchdog = TIMEOUT_WATCHDOG.schedule(() -> {
                 timedOut.set(true);
                 try {
@@ -93,13 +109,13 @@ public final class DockerSocketClient {
                 } catch (IOException ignored) {
                     // Nothing useful to do; the caller already sees the failure.
                 }
-            }, REQUEST_TIMEOUT.toMillis(), TimeUnit.MILLISECONDS);
+            }, budget.toMillis(), TimeUnit.MILLISECONDS);
 
             try {
                 channel.connect(UnixDomainSocketAddress.of(socketPath));
 
                 OutputStream out = Channels.newOutputStream(channel);
-                writeRequest(out, method, path, jsonBody);
+                writeRequest(out, method, path, body, contentType);
                 out.flush();
 
                 return readResponse(new BufferedInputStream(Channels.newInputStream(channel)));
@@ -108,23 +124,25 @@ public final class DockerSocketClient {
             }
         } catch (IOException e) {
             if (timedOut.get()) {
-                throw new DockerException("Docker Engine API call timed out after "
-                        + REQUEST_TIMEOUT.toSeconds() + "s: " + method + " " + path, e);
+                throw new DockerException("Docker Engine API call timed out: "
+                        + method + " " + path, e);
             }
             throw new DockerException("Docker Engine API call failed: " + method + " " + path, e);
         }
     }
 
-    private void writeRequest(OutputStream out, String method, String path, String jsonBody) throws IOException {
+    private void writeRequest(OutputStream out, String method, String path,
+                              byte[] payload, String contentType) throws IOException {
         StringBuilder head = new StringBuilder();
         head.append(method).append(' ').append(path).append(" HTTP/1.1\r\n");
         head.append("Host: docker\r\n");
         head.append("Accept: application/json\r\n");
         head.append("Connection: close\r\n");
 
-        byte[] payload = jsonBody == null ? null : jsonBody.getBytes(StandardCharsets.UTF_8);
         if (payload != null) {
-            head.append("Content-Type: application/json\r\n");
+            head.append("Content-Type: ")
+                    .append(contentType == null ? "application/octet-stream" : contentType)
+                    .append("\r\n");
             head.append("Content-Length: ").append(payload.length).append("\r\n");
         }
         head.append("\r\n");

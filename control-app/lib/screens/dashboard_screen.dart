@@ -11,6 +11,7 @@ import '../widgets/job_banner.dart';
 import '../widgets/reactor_ring.dart';
 import '../widgets/telemetry_strip.dart';
 import 'audit_screen.dart';
+import 'deploy_screen.dart';
 import 'logs_screen.dart';
 
 /// One adaptive dashboard: phone and desktop are the same language at different densities,
@@ -145,6 +146,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ? ReactorTheme.cyan
                       : ReactorTheme.textFaint)),
           const SizedBox(width: 12),
+          IconButton(
+            iconSize: 16,
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(minWidth: 30),
+            icon: const Icon(Icons.upload_file, color: ReactorTheme.textSecondary),
+            tooltip: 'Deploy',
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (_) => DeployScreen(
+                api: widget.api,
+                canDeploy: widget.state.role == 'OWNER',
+              ),
+            )),
+          ),
           IconButton(
             iconSize: 16,
             padding: EdgeInsets.zero,

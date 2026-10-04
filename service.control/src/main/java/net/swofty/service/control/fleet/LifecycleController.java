@@ -257,8 +257,19 @@ public final class LifecycleController {
                 "did not become ready within " + timeoutSeconds + "s - continuing anyway");
     }
 
-    private interface JobBody {
+    /** Body of a long-running fleet operation. */
+    public interface JobBody {
         void run(OperationJob job) throws Exception;
+    }
+
+    /**
+     * Runs an externally-defined operation under the same one-at-a-time guard.
+     *
+     * A deploy restarts containers, so it must not interleave with a staggered fleet start -
+     * that would defeat the stagger, which is the exact condition that causes the CPU spike.
+     */
+    public OperationJob submitExternal(String operation, String requestedBy, JobBody body) {
+        return submit(operation, requestedBy, body);
     }
 
     /**
