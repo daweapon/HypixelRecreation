@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 // Backend microservice exposing the public HTTP API (via embedded Spark web server) and an admin authentication panel, alongside Redis endpoints.
 public class APIService implements SkyBlockService {
@@ -64,7 +65,11 @@ public class APIService implements SkyBlockService {
             Route route = (req, res) -> {
                 res.type("application/json");
 
-                Map<String, String> headers = new HashMap<>();
+                // HTTP header names are case-insensitive, and clients disagree on casing:
+                // curl sends "X-Auth-Code" while Dart's http package lowercases to
+                // "x-auth-code". A case-sensitive map silently loses the latter, which reads
+                // to the caller as a missing header rather than a casing mismatch.
+                Map<String, String> headers = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
                 for (String header : req.headers()) {
                     headers.put(header, req.headers(header));
                 }
