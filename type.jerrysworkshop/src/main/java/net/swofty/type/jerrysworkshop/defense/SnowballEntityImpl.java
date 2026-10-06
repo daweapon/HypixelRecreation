@@ -17,11 +17,10 @@ import java.util.Collection;
 
 // Snowball projectile used to damage WorkshopDefenseMob during "Defend Jerry's Workshop" (Roadmap
 // #20) - real Hypixel restricts these mobs to snowball-only damage. Physics/collision handling is
-// adapted from ArrowEntityImpl; flat per-hit damage (not a full player-stat formula) since no
-// real per-hit damage value was sourced from the wiki - a documented simplification.
+// adapted from ArrowEntityImpl. Each hit deals 1 damage, as on Hypixel.
 public class SnowballEntityImpl extends LivingEntity {
 
-    private static final float DAMAGE_PER_HIT = 40f;
+    private static final float DAMAGE_PER_HIT = 1f;
 
     private final SkyBlockPlayer shooter;
 

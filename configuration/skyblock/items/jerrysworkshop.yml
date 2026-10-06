@@ -55,3 +55,32 @@ items:
         texture: e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c
       - id: SELLABLE
         value: 2500.0
+  - id: SNOW_CANNON
+    material: player_head
+    name: "Frosty the Snow Cannon"
+    rarity: RARE
+    lore:
+      - "\xA77Holds and shoots Snowballs. When"
+      - "\xA77you pickup Snowballs, they increase"
+      - "\xA77the ammo held by this item."
+      - ""
+      - "\xA7eRight click to shoot!"
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: 768e0f41d81af076db05b38efbf1325b43fdfb7828d732673d6cf35e968d9dcc
+  - id: VOLCANIC_ROCK
+    material: player_head
+    name: "Volcanic Rock"
+    rarity: EPIC
+    lore:
+      - "\xA77Visit \xA7aEinary's Shop \xA77to trade it for"
+      - "\xA77useful items!"
+      - ""
+      - "\xA78\xA7oForged in the crucible of a volcanic"
+      - "\xA78\xA7oeruption, this rock embodies the"
+      - "\xA78\xA7ounyielding fury of the Earth."
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: b63c7f188070d1f27dfff8be4d5258c5a317009f566dfd9e861cf6e5f8fb38e2

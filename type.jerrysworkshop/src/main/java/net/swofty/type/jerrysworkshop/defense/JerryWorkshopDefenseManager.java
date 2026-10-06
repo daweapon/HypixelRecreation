@@ -2,65 +2,64 @@ package net.swofty.type.jerrysworkshop.defense;
 
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.coordinate.Vec;
+import net.minestom.server.instance.Instance;
+import net.minestom.server.item.ItemStack;
+import net.minestom.server.item.Material;
 import net.minestom.server.timer.TaskSchedule;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
-import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
-// Runs the "Defend Jerry's Workshop" wave-defense minigame (Roadmap #20).
-//
-// Real Hypixel (SkyBlock Wiki, "Jerry's Workshop"): the event is 5 rounds with an 8-minute timer
-// between them; the real mob roster is Frozen Steve/Frosty/Grinch/Nutcracker/Yeti/Reindrake
-// (see WorkshopMobVariant), damageable only by snowballs (see WorkshopDefenseMob/
-// SnowballEntityImpl). Rewards (gifts, scaled by damage dealt) are handed out at the end of each
-// round. The wiki's "8 minutes in total" between-round phrasing is ambiguous about whether that's
-// the prep timer or something else - this treats it as the full prep/break duration before each
-// wave, which is the reading that makes the rest of the mechanic (players regroup, sell gifts,
-// prepare) make sense.
-//
-// Scope cuts made explicit rather than silently guessed at:
-//  - Real Hypixel: mobs attack 5 gift piles scattered around the village, and piles can be lost
-//    if not defended. This is modeled as a single circular arena instead - simpler, but a real
-//    divergence from "defend 5 separate piles."
-//  - Runs in-process on this single server type (Jerry's Workshop is its own dedicated server),
-//    not cross-server broadcast like Dark Auction - there's only ever one workshop instance.
+/**
+ * Runs Defend Jerry's Workshop: five waves in which Magma Cubes erupt from Mount Jerry and march
+ * on the five gift piles, hurt only by snowballs.
+ *
+ * Each pile still standing when a wave ends pays the wiki's gifts for that pile, plus a Volcanic
+ * Rock, to everyone who dealt at least 100 damage; below that a player receives half the gifts and
+ * no rock. The wiki says only that more damage means more gifts, so that split is an estimate.
+ */
 public final class JerryWorkshopDefenseManager {
 
     public enum Phase {IDLE, PREPARING, WAVE_ACTIVE}
 
-    private static final int TOTAL_ROUNDS = 5;
-    private static final long WAVE_DURATION_MS = 90_000L;
-    private static final long BETWEEN_ROUNDS_MS = 8L * 60 * 1000;
+    private static final int TOTAL_WAVES = 5;
+    private static final long FIRST_WAVE_DELAY_MS = 60_000L;
+    private static final long BETWEEN_WAVES_MS = 8L * 60 * 1000;
+    private static final long WAVE_TIME_LIMIT_MS = 5L * 60 * 1000;
     private static final int SNOWBALLS_GRANTED_PER_WAVE = 32;
+    private static final int FULL_REWARD_DAMAGE = 100;
+    private static final double PILE_REACH = 3;
+    private static final int PILES_LOST_BEFORE_GARY = 4;
 
-    // Approximate arena center, inferred from the existing NPC/prop coordinates already placed in
-    // this server type (St. Jerry (-22.5,76,92.5), Sherry (6.5,76,95.5), GlassDisplay props at
-    // (13-16,77,91-101)) - these NPC positions are now wiki-confirmed exact, but no exact map
-    // reference for the actual battle floor itself was available.
-    private static final Pos ARENA_CENTER = new Pos(-4.5, 76, 96.5);
-    private static final double ARENA_RADIUS = 18;
+    // Where the cubes come down from Mount Jerry onto the village path; the wiki gives no exact point.
+    private static final Pos ERUPTION_POINT = new Pos(4.5, 76, -6.5);
 
     private static volatile Phase phase = Phase.IDLE;
-    private static int currentRound = 0;
+    private static int currentWave = 0;
     private static long phaseEndsAtMillis = 0;
     private static boolean tickerStarted = false;
     private static boolean triggeredThisOccurrence = false;
+    private static boolean garyAnnounced = false;
 
     private static final Map<UUID, Double> damageDealt = new ConcurrentHashMap<>();
-    private static final List<SkyBlockMob> activeMobs = new ArrayList<>();
+    private static final List<WorkshopDefenseMob> activeCubes = new ArrayList<>();
+    private static final Map<WorkshopDefenseMob, GiftPile> cubeTargets = new ConcurrentHashMap<>();
 
     private JerryWorkshopDefenseManager() {
     }
@@ -72,17 +71,15 @@ public final class JerryWorkshopDefenseManager {
         }
         if (HypixelConst.getInstanceContainer() == null) return;
 
-        currentRound = 0;
+        currentWave = 0;
         damageDealt.clear();
-        broadcast("<c><l>JERRY'S WORKSHOP IS UNDER ATTACK! <7>Defend it over 5 rounds with your Snowballs for gifts!");
-        startPreparing();
+        broadcast("<c><l>MOUNT JERRY IS ERUPTING! <7>Magma Cubes will march on the gift piles - defend them with Snowballs!");
+        startPreparing(FIRST_WAVE_DELAY_MS);
         ensureTicker();
     }
 
-    // Polled periodically by TypeJerrysWorkshopLoader while the server is up - auto-starts the
-    // defense once per Season of Jerry occurrence, matching real Hypixel's automatic trigger,
-    // without needing a separate cross-server scheduler like Dark Auction's (this server type is
-    // a single dedicated instance, so an in-process poll is enough).
+    // Polled by TypeJerrysWorkshopLoader. The Season of Jerry event opens on Late Winter 24, the
+    // day Mount Jerry erupts, so the defense starts once per occurrence.
     public static synchronized void checkAndAutoStart() {
         boolean active = SkyBlockCalendar.getCurrentEvents().contains(CalendarEvent.SEASON_OF_JERRY);
         if (!active) {
@@ -99,7 +96,7 @@ public final class JerryWorkshopDefenseManager {
     }
 
     public static int getCurrentRound() {
-        return currentRound;
+        return currentWave;
     }
 
     public static long getPhaseRemainingMillis() {
@@ -120,98 +117,161 @@ public final class JerryWorkshopDefenseManager {
         });
     }
 
-    private static void tick() {
+    private static synchronized void tick() {
         if (phase == Phase.PREPARING && System.currentTimeMillis() >= phaseEndsAtMillis) {
             startWave();
         } else if (phase == Phase.WAVE_ACTIVE) {
-            boolean cleared = activeMobs.stream().allMatch(SkyBlockMob::isRemoved);
-            if (cleared || System.currentTimeMillis() >= phaseEndsAtMillis) {
+            advanceCubes();
+            showPileStatus();
+            boolean cleared = activeCubes.stream().allMatch(WorkshopDefenseMob::isRemoved);
+            boolean allLost = Arrays.stream(GiftPile.values()).allMatch(GiftPile::isDestroyed);
+            if (cleared || allLost || System.currentTimeMillis() >= phaseEndsAtMillis) {
                 endWave();
             }
         }
     }
 
-    private static void startPreparing() {
+    private static void startPreparing(long delay) {
         phase = Phase.PREPARING;
-        phaseEndsAtMillis = System.currentTimeMillis() + BETWEEN_ROUNDS_MS;
-        broadcast("<e>Round " + (currentRound + 1) + " begins in 8 minutes - prepare yourselves!");
+        phaseEndsAtMillis = System.currentTimeMillis() + delay;
+        broadcast("<e>Wave " + (currentWave + 1) + " erupts in " + (delay / 60_000 > 0
+                ? (delay / 60_000) + " minutes" : (delay / 1000) + " seconds") + " - prepare yourselves!");
     }
 
     private static void startWave() {
-        currentRound++;
+        currentWave++;
         phase = Phase.WAVE_ACTIVE;
-        phaseEndsAtMillis = System.currentTimeMillis() + WAVE_DURATION_MS;
+        phaseEndsAtMillis = System.currentTimeMillis() + WAVE_TIME_LIMIT_MS;
         damageDealt.clear();
+        garyAnnounced = false;
+        GiftPile.restoreAll();
         spawnWave();
         grantSnowballs();
-        broadcast("<c><l>ROUND " + currentRound + " HAS BEGUN! <7>Pelt them with Snowballs!");
+        broadcast("<c><l>WAVE " + currentWave + " HAS BEGUN! <7>Pelt the Magma Cubes with Snowballs!");
     }
 
     private static void spawnWave() {
-        activeMobs.clear();
-        WorkshopMobVariant[] variants = WorkshopMobVariant.values();
-        int mobCount = 2 + currentRound;
-        for (int i = 0; i < mobCount; i++) {
-            Pos spawnPos = randomArenaPosition();
-            WorkshopMobVariant variant = variants[(int) (Math.random() * variants.length)];
-            WorkshopDefenseMob mob = new WorkshopDefenseMob(variant, currentRound);
-            mob.setInstance(HypixelConst.getInstanceContainer(), spawnPos);
-            activeMobs.add(mob);
+        activeCubes.clear();
+        cubeTargets.clear();
+        Instance instance = HypixelConst.getInstanceContainer();
+        for (DefendCube cube : DefendCube.forWave(currentWave)) {
+            WorkshopDefenseMob mob = new WorkshopDefenseMob(cube, currentWave);
+            mob.setInstance(instance, groundAt(instance, ERUPTION_POINT.add(Math.random() * 4 - 2, 0, Math.random() * 4 - 2)));
+            activeCubes.add(mob);
+        }
+    }
+
+    private static Pos groundAt(Instance instance, Pos around) {
+        for (int y = 140; y > around.blockY() - 20; y--) {
+            if (!instance.getBlock(around.blockX(), y - 1, around.blockZ()).isAir()
+                    && instance.getBlock(around.blockX(), y, around.blockZ()).isAir()) {
+                return around.withY(y);
+            }
+        }
+        return around;
+    }
+
+    private static void advanceCubes() {
+        Arrays.stream(GiftPile.values()).forEach(pile -> pile.setTargeted(false));
+        for (WorkshopDefenseMob cube : activeCubes) {
+            if (cube.isRemoved()) continue;
+            GiftPile target = nearestStandingPile(cube.getPosition());
+            if (target == null) continue;
+            target.setTargeted(true);
+
+            if (cube.getPosition().distance(target.getPosition()) <= PILE_REACH) {
+                target.damage(cube.getCube().pileDamagePerSecond());
+                if (target.isDestroyed()) {
+                    broadcast("<c>Gift Pile " + target.getSymbol() + " has been destroyed!");
+                }
+                continue;
+            }
+
+            if (cubeTargets.get(cube) != target || cube.getVanillaNavigator().isComplete()) {
+                cubeTargets.put(cube, target);
+                if (!cube.getVanillaNavigator().pathTo(target.getPosition())) {
+                    Vec direction = target.getPosition().sub(cube.getPosition()).asVec().normalize();
+                    cube.setVelocity(direction.mul(6).withY(4));
+                }
+            }
+        }
+
+        long lost = Arrays.stream(GiftPile.values()).filter(GiftPile::isDestroyed).count();
+        if (!garyAnnounced && lost >= PILES_LOST_BEFORE_GARY) {
+            garyAnnounced = true;
+            broadcast("<e>[NPC] Gary<f>: I finally got my snow machine to work! This snow should put a damper on those Magma Cubes! You can thank me later!");
+        }
+    }
+
+    private static GiftPile nearestStandingPile(Pos from) {
+        return Arrays.stream(GiftPile.values())
+                .filter(pile -> !pile.isDestroyed())
+                .min(Comparator.comparingDouble(pile -> pile.getPosition().distanceSquared(from)))
+                .orElse(null);
+    }
+
+    private static void showPileStatus() {
+        String status = Arrays.stream(GiftPile.values()).map(GiftPile::status).collect(Collectors.joining(" "));
+        Text text = Text.parseLenient("<7>Gift Piles: " + status);
+        for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
+            player.sendActionBar(text.asComponent());
         }
     }
 
     private static void grantSnowballs() {
         for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
-            player.getInventory().addItemStack(net.minestom.server.item.ItemStack.of(net.minestom.server.item.Material.SNOWBALL, SNOWBALLS_GRANTED_PER_WAVE));
+            player.getInventory().addItemStack(ItemStack.of(Material.SNOWBALL, SNOWBALLS_GRANTED_PER_WAVE));
         }
-    }
-
-    private static Pos randomArenaPosition() {
-        double angle = Math.random() * Math.PI * 2;
-        double distance = Math.random() * ARENA_RADIUS;
-        double x = ARENA_CENTER.x() + Math.cos(angle) * distance;
-        double z = ARENA_CENTER.z() + Math.sin(angle) * distance;
-        return new Pos(x, ARENA_CENTER.y(), z);
     }
 
     private static void endWave() {
-        for (SkyBlockMob mob : activeMobs) {
-            if (!mob.isRemoved()) mob.remove();
+        for (WorkshopDefenseMob cube : activeCubes) {
+            if (!cube.isRemoved()) cube.remove();
         }
-        activeMobs.clear();
+        activeCubes.clear();
+        cubeTargets.clear();
 
         distributeRewards();
 
-        if (currentRound >= TOTAL_ROUNDS) {
+        if (currentWave >= TOTAL_WAVES) {
             phase = Phase.IDLE;
             tickerStarted = false;
-            broadcast("<a><l>JERRY'S WORKSHOP HAS BEEN DEFENDED! <7>Thanks for defending all 5 rounds!");
+            broadcast("<a><l>JERRY'S WORKSHOP HAS BEEN DEFENDED! <7>Mount Jerry has calmed down - for now.");
         } else {
-            startPreparing();
+            startPreparing(BETWEEN_WAVES_MS);
         }
     }
 
     private static void distributeRewards() {
-        if (damageDealt.isEmpty()) return;
+        List<GiftPile> standing = Arrays.stream(GiftPile.values()).filter(pile -> !pile.isDestroyed()).toList();
+        int white = standing.stream().mapToInt(GiftPile::getWhiteGifts).sum();
+        int green = standing.stream().mapToInt(GiftPile::getGreenGifts).sum();
+        int red = standing.stream().mapToInt(GiftPile::getRedGifts).sum();
 
-        List<Map.Entry<UUID, Double>> ranked = damageDealt.entrySet().stream()
-                .sorted(Comparator.comparingDouble((Map.Entry<UUID, Double> e) -> e.getValue()).reversed())
-                .toList();
-
-        for (int i = 0; i < ranked.size(); i++) {
-            UUID uuid = ranked.get(i).getKey();
+        damageDealt.forEach((uuid, damage) -> {
             SkyBlockPlayer player = findLoadedPlayer(uuid);
-            if (player == null) continue;
+            if (player == null || damage <= 0) return;
 
-            // Top-3 damage dealers get a Red Gift, everyone who dealt damage gets a Green Gift -
-            // matches the wiki's "gifts depending on the amount of damage done" without a sourced
-            // exact formula.
-            boolean topDamage = i < 3;
-            player.addAndUpdateItem(new SkyBlockItem(
-                    topDamage ? net.swofty.commons.skyblock.item.ItemType.RED_GIFT
-                            : net.swofty.commons.skyblock.item.ItemType.GREEN_GIFT));
-            player.sendMessage("<a>You received a {} <a>for your efforts in Round " + currentRound + "!",
-                    topDamage ? "<c>Red Gift" : "<a>Green Gift");
+            boolean full = damage >= FULL_REWARD_DAMAGE;
+            int playerWhite = full ? white : white / 2;
+            int playerGreen = full ? green : green / 2;
+            int playerRed = full ? red : red / 2;
+            int rocks = full ? standing.size() : 0;
+
+            give(player, ItemType.WHITE_GIFT, playerWhite);
+            give(player, ItemType.GREEN_GIFT, playerGreen);
+            give(player, ItemType.RED_GIFT, playerRed);
+            give(player, ItemType.VOLCANIC_ROCK, rocks);
+
+            player.sendMessage("<a>Wave " + currentWave + " complete! <7>You dealt <c>" + Math.round(damage)
+                    + " <7>damage and received <f>" + playerWhite + " White<7>, <a>" + playerGreen + " Green<7>, <c>"
+                    + playerRed + " Red <7>Gifts and <5>" + rocks + " Volcanic Rock<7>.");
+        });
+    }
+
+    private static void give(SkyBlockPlayer player, ItemType type, int amount) {
+        for (int i = 0; i < amount; i++) {
+            player.addAndUpdateItem(new SkyBlockItem(type));
         }
     }
 

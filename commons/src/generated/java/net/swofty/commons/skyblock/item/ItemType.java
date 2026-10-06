@@ -4026,6 +4026,8 @@ public enum ItemType {
 
   SNOW_BLOCK(Material.SNOW_BLOCK, Rarity.COMMON),
 
+  SNOW_CANNON(Material.PLAYER_HEAD, Rarity.RARE),
+
   SNOW_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
   SOLAR_PANEL(Material.DAYLIGHT_DETECTOR, Rarity.UNCOMMON),
@@ -4581,6 +4583,8 @@ public enum ItemType {
   VOIDWALKER_KATANA(Material.BLAZE_ROD, Rarity.UNCOMMON),
 
   VOID_SWORD(Material.DIAMOND_SWORD, Rarity.EPIC),
+
+  VOLCANIC_ROCK(Material.PLAYER_HEAD, Rarity.EPIC),
 
   VOLTA(Material.PLAYER_HEAD, Rarity.RARE),
 

@@ -53,7 +53,7 @@ public class TypeJerrysWorkshopLoader implements SkyBlockTypeLoader {
         GlassDisplay.create(new SkyBlockItem(ItemType.WHITE_GIFT), HypixelConst.getInstanceContainer(), new Pos(13, 77, 97),
                 (player, _) -> player.sendMessage("<f>White Gifts are hidden around the Workshop - go find them!"));
         GlassDisplay.create(new SkyBlockItem(ItemType.PAPER), HypixelConst.getInstanceContainer(), new Pos(13, 77, 99),
-                (player, _) -> player.sendMessage("<7>Talk to <c>St. Jerry <7>to see when the next defense round begins."));
+                (player, _) -> player.sendMessage("<7>Buy a <9>Snow Cannon <7>from <a>Frosty <7>to defend the gift piles when Mount Jerry erupts."));
         GlassDisplay.create(new SkyBlockItem(ItemType.NETHERRACK), HypixelConst.getInstanceContainer(), new Pos(13, 77, 101),
                 (player, _) -> player.sendMessage("<7>Magma Cubes attack in waves during the Season of Jerry - defend the Workshop!"));
 

@@ -5,6 +5,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.jerrysworkshop.gui.GUIShopFrosty;
 
 // Decorative NPC for Frosty, found in Jerry's Workshop.
 public class NPCFrosty extends HypixelNPC {
@@ -42,6 +43,6 @@ public class NPCFrosty extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-
+		event.player().openView(new GUIShopFrosty());
 	}
 }
