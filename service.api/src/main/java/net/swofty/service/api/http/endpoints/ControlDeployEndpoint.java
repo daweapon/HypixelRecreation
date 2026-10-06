@@ -67,9 +67,6 @@ public class ControlDeployEndpoint extends SkyBlockEndpoint {
         }
 
         String actor = auth.caller().actor();
-        Logger.warn("DEPLOY {} requested by {}", jar, actor);
-
-        ControlAgentClient.AgentResponse response = AGENT.post("/control/deploy", body.toString(), actor);
 
         List<String> targets = new ArrayList<>();
         targets.add(jar);
@@ -77,6 +74,25 @@ public class ControlDeployEndpoint extends SkyBlockEndpoint {
             JsonArray names = body.getAsJsonArray("names");
             names.forEach(element -> targets.add(element.getAsString()));
         }
+
+        if (targetsControlAgent(jar, targets)) {
+            String reason = "The control agent cannot deploy to its own container: it would be stopped "
+                    + "mid-deploy with nothing left to bring it back. Copy the jar to "
+                    + "DockerFiles/jars/ServiceControl.jar on the NAS and restart service_control "
+                    + "from DSM Container Manager instead.";
+            AuditDatabase.record(AuditEntry.of(
+                    auth.caller().device().playerName(),
+                    auth.caller().device().deviceId(),
+                    auth.caller().device().deviceName(),
+                    auth.caller().role().name(),
+                    "deploy", targets, AuditEntry.Outcome.DENIED, reason));
+            res.status(409);
+            return APIResponse.error(reason);
+        }
+
+        Logger.warn("DEPLOY {} requested by {}", jar, actor);
+
+        ControlAgentClient.AgentResponse response = AGENT.post("/control/deploy", body.toString(), actor);
 
         AuditDatabase.record(AuditEntry.of(
                 auth.caller().device().playerName(),
@@ -93,5 +109,9 @@ public class ControlDeployEndpoint extends SkyBlockEndpoint {
             return APIResponse.error(response.body());
         }
         return new APIResponse(StatusResponse.SUCCESS, JsonParser.parseString(response.body()));
+    }
+
+    static boolean targetsControlAgent(String jar, List<String> targets) {
+        return jar.equalsIgnoreCase("ServiceControl.jar") || targets.contains("service_control");
     }
 }

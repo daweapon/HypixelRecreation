@@ -13,6 +13,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DeployTest {
@@ -111,5 +113,22 @@ class DeployTest {
         assertTrue(DeployTargets.isBindMounted("ServiceControl.jar"));
         assertFalse(DeployTargets.isBindMounted("ServiceAPI.jar"));
         assertFalse(DeployTargets.isBindMounted("HypixelCore.jar"));
+    }
+
+    @Test
+    void theAgentRefusesToDeployItsOwnJar() {
+        assertNotNull(DeployTargets.selfDeployRefusal("ServiceControl.jar", List.of()));
+        assertNotNull(DeployTargets.selfDeployRefusal("servicecontrol.jar", null));
+    }
+
+    @Test
+    void theAgentRefusesAnyJarExplicitlyTargetedAtItsOwnContainer() {
+        assertNotNull(DeployTargets.selfDeployRefusal("ServiceAPI.jar", List.of("service_api", "service_control")));
+    }
+
+    @Test
+    void ordinaryDeploysAreNotRefused() {
+        assertNull(DeployTargets.selfDeployRefusal("HypixelCore.jar", List.of()));
+        assertNull(DeployTargets.selfDeployRefusal("ServiceAPI.jar", List.of("service_api")));
     }
 }

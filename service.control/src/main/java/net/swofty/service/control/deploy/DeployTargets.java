@@ -15,6 +15,7 @@ import java.util.Locale;
  * to whoever is pressing the button.
  */
 public final class DeployTargets {
+    public static final String SELF_CONTAINER = "service_control";
 
     private DeployTargets() {
     }
@@ -22,6 +23,26 @@ public final class DeployTargets {
     /** The jar is bind-mounted rather than baked into the image, so it is replaced on the host. */
     public static boolean isBindMounted(String jarName) {
         return jarName.equalsIgnoreCase("ServiceControl.jar");
+    }
+
+    /**
+     * Why this deploy must not run through the agent, or null when it may.
+     *
+     * Applying ServiceControl.jar restarts the very container executing the job, which killed
+     * the agent mid-deploy on 2026-10-05 (tracker #134) and left nothing able to recover it,
+     * since every container action routes through the agent.
+     */
+    public static String selfDeployRefusal(String jarName, List<String> requestedTargets) {
+        boolean targetsSelf = SELF_CONTAINER.equals(serviceContainerFor(jarName))
+                || (requestedTargets != null && requestedTargets.contains(SELF_CONTAINER));
+        if (!targetsSelf) {
+            return null;
+        }
+        return "The control agent cannot deploy to its own container (" + SELF_CONTAINER + "): "
+                + "it would be stopped mid-deploy with nothing left to bring it back. "
+                + "Copy the jar to DockerFiles/jars/ServiceControl.jar on the NAS, then restart "
+                + SELF_CONTAINER + " from DSM Container Manager or with 'docker compose up -d "
+                + SELF_CONTAINER + "' in a shell.";
     }
 
     public static List<String> defaultTargets(String jarName, List<ContainerInfo> fleet) {

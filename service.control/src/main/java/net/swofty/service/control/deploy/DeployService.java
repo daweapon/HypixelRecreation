@@ -121,6 +121,10 @@ public final class DeployService {
      * distinction is explicit rather than inferred at restart time.
      */
     public OperationJob deploy(String jarName, List<String> requestedTargets, int stagger, String actor) {
+        String refusal = DeployTargets.selfDeployRefusal(jarName, requestedTargets);
+        if (refusal != null) {
+            throw new IllegalArgumentException(refusal);
+        }
         return lifecycle.submitExternal("deploy:" + jarName, actor, job -> {
             Path source = DROP_DIR.resolve(jarName);
             if (!Files.isRegularFile(source)) {

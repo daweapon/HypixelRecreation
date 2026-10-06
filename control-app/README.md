@@ -194,8 +194,12 @@ Targets are derived from the jar name rather than chosen by whoever presses the 
 once looked like a wiped inventory), `ServiceFoo.jar` goes to its own `service_foo` container.
 A jar whose targets cannot be resolved is refused rather than guessed at.
 
-`ServiceControl.jar` is bind-mounted, so replacing the stored file *is* the deploy and no push
-is needed; the agent handles that distinction itself.
+**`ServiceControl.jar` cannot be deployed from the app.** Applying it restarts the agent that is
+running the deploy, and on 2026-10-05 that killed the agent mid-job, left the jar missing from
+`DockerFiles/jars/`, and destroyed the `service_control` container - with no way back from the
+app, since every container action goes through the agent. Both the API and the agent now refuse
+it (HTTP 409 / 400, recorded as DENIED in the audit log). Update the agent by hand instead - see
+[Updating or recovering the agent](#updating-or-recovering-the-agent).
 
 **Deploying requires OWNER**, not OPERATOR. Restarting existing code and pushing arbitrary new
 code are different grants and do not share a role. Both are recorded in the audit log, including
@@ -219,20 +223,17 @@ Copy the built jar to `\\thelibrary\home\Hypixel\control-deploy` over SMB, press
 pick it. The drop folder is the operator's own home share, so writing to it needs no privilege
 on the NAS.
 
-**Configuration YAML is not a jar change, and the app cannot ship it.** The server reads
-`./configuration`, which `Dockerfile.game_server` fills once at build time by copying
-`configuration_files` into it. The compose bind mount covers `configuration_files`, which
-nothing reads back, and the entrypoint only ever rewrites `config.yml`. A restart therefore
-keeps serving the copy baked into the image. Changing anything under `configuration/` needs a
-shell on the NAS - see below.
+**Configuration YAML is not a jar change.** The server reads `./configuration`, which
+`Dockerfile.game_server` fills once at build time; the live host config is mounted at
+`./configuration_files`. `ConfigurationOverlay` copies the mount over the baked copy at startup,
+so write the YAML to `\\thelibrary\docker\hypixel-skyblock\configuration\` over SMB and
+restart the game servers from the app.
 
-Two deploys restart the container serving the request, which is worth expecting rather than
-debugging:
+`ServiceAPI.jar` restarts the container serving the request, which is worth expecting rather
+than debugging:
 
 - `ServiceAPI.jar` restarts the API the app is talking to, so the job completes but the app
   loses sight of it part-way and shows an error. Reopen the app; the state will be correct.
-- `ServiceControl.jar` restarts the agent running the job, so it is effectively fire-and-forget
-  and the post-restart verification never runs.
 
 ### What a deploy cannot do
 
@@ -241,10 +242,31 @@ Still needs a shell on the NAS, so keep a tested administrator account for them:
 - Compose or `.env` changes, including adding a container or a new service
 - Image rebuilds where a `Dockerfile` itself changed - deploys replace jars inside existing
   images, they do not rebuild
-- Non-jar content: `configuration/` YAML, world data, schematics and anything else not
-  shipped inside a jar
+- Non-jar content other than `configuration/` YAML: world data, schematics and anything else
+  not shipped inside a jar
+- Updating `ServiceControl.jar` itself
 - Any recovery while `service_api` or `service_control` is down, which is when the app is least
   able to help
+
+### Updating or recovering the agent
+
+`ServiceControl.jar` is bind-mounted from `DockerFiles/jars/ServiceControl.jar`. If that file is
+missing, Docker creates a *directory* at the mount point and the agent fails to start even after
+a correct recreate, so restore the file first.
+
+1. Copy the new jar to `DockerFiles/jars/ServiceControl.jar` in the stack directory. The
+   directory is root-owned, so this needs a shell (`sudo cp`) or a DSM Task Scheduler task run
+   as root - the SMB account cannot write it.
+2. Restart the agent: DSM -> Container Manager -> `service_control` -> Restart, or
+   `sudo docker restart service_control`.
+3. If the container no longer exists (DSM shows a row whose Start fails with
+   `No such container`), recreate it from compose: DSM -> Container Manager -> Project ->
+   `hypixel-skyblock` -> Action -> Build, or `sudo docker compose up -d service_control` in
+   `/volume1/docker/hypixel-skyblock`. DSM Task Scheduler runs with a minimal `PATH`, so use
+   `/usr/local/bin/docker` there.
+
+Game servers, the proxy and `service_api` keep running throughout; only the app's fleet
+actions are unavailable until the agent is back.
 
 ## Known gaps
 
