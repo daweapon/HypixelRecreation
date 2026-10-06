@@ -654,6 +654,9 @@ public class SkyBlockDataHandler extends DataHandler {
         SPOOKY_FESTIVAL_PURPLE_CANDY("spooky_festival_purple_candy", false, false, false,
                 DatapointInteger.class, new DatapointInteger("spooky_festival_purple_candy", 0)),
 
+        ST_JERRY_GREEN_GIFT_YEAR("st_jerry_green_gift_year", false, false, false,
+                DatapointInteger.class, new DatapointInteger("st_jerry_green_gift_year", 0)),
+
         LATEST_YEAR_PRESENT_PICKUP("latest_year_pickup_present", false, false, false,
                 DatapointPresentYear.class, new DatapointPresentYear("latest_year_pickup_present")),
 

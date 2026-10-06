@@ -5,9 +5,12 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.jerrysworkshop.defense.JerryWorkshopDefenseManager;
-import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.generic.data.datapoints.DatapointInteger;
+import net.swofty.type.jerrysworkshop.present.Present;
+import net.swofty.type.jerrysworkshop.present.WhiteGiftLocations;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // Decorative NPC for St. Jerry, found in Jerry's Workshop.
@@ -48,25 +51,38 @@ public class NPCStJerry extends HypixelNPC {
 	@Override
 	public void onClick(NPCInteractEvent event) {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
-		boolean active = SkyBlockCalendar.getCurrentEvents().contains(CalendarEvent.SEASON_OF_JERRY);
+		if (isInDialogue(player)) return;
 
-		if (!active) {
-			player.sendMessage("<c>The Season of Jerry isn't active right now - come back during the event!");
+		int found = Present.foundThisYear(player);
+		if (found < WhiteGiftLocations.GIFTS_PER_YEAR) {
+			setDialogue(player, "find_more");
 			return;
 		}
 
-		switch (JerryWorkshopDefenseManager.getPhase()) {
-			case IDLE -> {
-				player.sendMessage("<a>Ho ho ho! Let's get this defense started!");
-				JerryWorkshopDefenseManager.beginEvent();
-			}
-			case PREPARING -> {
-				long secondsLeft = JerryWorkshopDefenseManager.getPhaseRemainingMillis() / 1000;
-				player.sendMessage("<e>Round " + (JerryWorkshopDefenseManager.getCurrentRound() + 1) +
-						" begins in " + secondsLeft + "s - get ready!");
-			}
-			case WAVE_ACTIVE -> player.sendMessage("<c>Round " + JerryWorkshopDefenseManager.getCurrentRound() +
-					" is underway - grab your Snowballs and fight!");
+		DatapointInteger claimedYear = player.getSkyblockDataHandler()
+				.get(SkyBlockDataHandler.Data.ST_JERRY_GREEN_GIFT_YEAR, DatapointInteger.class);
+		if (claimedYear.getValue() == SkyBlockCalendar.getYear()) {
+			setDialogue(player, "already_rewarded");
+			return;
 		}
+		claimedYear.setValue(SkyBlockCalendar.getYear());
+		player.addAndUpdateItem(ItemType.GREEN_GIFT);
+		setDialogue(player, "all_found");
+	}
+
+	@Override
+	public DialogueSet[] dialogues(HypixelPlayer player) {
+		int remaining = WhiteGiftLocations.GIFTS_PER_YEAR - Present.foundThisYear((SkyBlockPlayer) player);
+		return new DialogueSet[]{
+				DialogueSet.builder().key("find_more").lines(
+						"Find " + remaining + " more " + (remaining == 1 ? "Gift" : "Gifts") + "!"
+				).build(),
+				DialogueSet.builder().key("all_found").lines(
+						"You found all of the Gifts! Take this Green Gift! You'll hopefully find something nicer than what was in those White Gifts!"
+				).build(),
+				DialogueSet.builder().key("already_rewarded").lines(
+						"You found all of the Gifts this year! Come back next year to find them again."
+				).build()
+		};
 	}
 }
