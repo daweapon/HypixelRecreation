@@ -1,5 +1,8 @@
 package net.swofty.type.skyblockgeneric.item.handlers.interactable;
 
+import net.swofty.type.skyblockgeneric.elections.jerrypocalypse.HiddenJerryType;
+import net.swofty.type.skyblockgeneric.elections.jerrypocalypse.JerryBoxLoot;
+
 import net.minestom.server.coordinate.Point;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.type.generic.HypixelConst;
@@ -69,6 +72,12 @@ public class InteractableRegistry {
         register("GOD_POTION_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 (player, item) -> GodPotionService.consume(player, item)
         ).build());
+        register("JERRY_BOX_OPEN", InteractableItemConfig.builder().rightClickHandler((player, item) -> {
+            HiddenJerryType type = HiddenJerryType.ofBox(item.getAttributeHandler().getPotentialType());
+            if (type == null) return;
+            player.setItemInMainHand(player.getItemInMainHand().withAmount(player.getItemInMainHand().amount() - 1));
+            JerryBoxLoot.open(player, type);
+        }).build());
     }
 
     public static void register(String id, InteractableItemConfig handler) {

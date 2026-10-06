@@ -1,0 +1,118 @@
+items:
+  - id: JERRY_BOX_GREEN
+    material: player_head
+    name: "Green Jerry Box"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77Obtained while Mayor Jerry is elected."
+      - "\xA77Contains \xA76coins\xA77, \xA73Skill XP \xA77and posh \xA7djerry items\xA77."
+      - ""
+      - "\xA7eRight-click to open!"
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: daadf63a18632af72dcecc05d9a5adb60c68a18ffbb58e36ac43b10ceb934a7b
+      - id: INTERACTABLE
+        handler_id: JERRY_BOX_OPEN
+  - id: JERRY_BOX_BLUE
+    material: player_head
+    name: "Blue Jerry Box"
+    rarity: RARE
+    lore:
+      - "\xA77Obtained while Mayor Jerry is elected."
+      - "\xA77Contains \xA76coins\xA77, \xA73Skill XP \xA77and posh \xA7djerry items\xA77."
+      - ""
+      - "\xA7eRight-click to open!"
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: 6ac311fab7ac73782b221200e6cd4acbbb217c62e787b213635d5e52f75c372b
+      - id: INTERACTABLE
+        handler_id: JERRY_BOX_OPEN
+  - id: JERRY_BOX_PURPLE
+    material: player_head
+    name: "Purple Jerry Box"
+    rarity: EPIC
+    lore:
+      - "\xA77Obtained while Mayor Jerry is elected."
+      - "\xA77Contains \xA76coins\xA77, \xA73Skill XP \xA77and posh \xA7djerry items\xA77."
+      - ""
+      - "\xA7eRight-click to open!"
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: a3f75c5281ccbb76759fdd57106120eb9c1db128b386d438e0659f312eb715a5
+      - id: INTERACTABLE
+        handler_id: JERRY_BOX_OPEN
+  - id: JERRY_BOX_GOLDEN
+    material: player_head
+    name: "Golden Jerry Box"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77Obtained while Mayor Jerry is elected."
+      - "\xA77Contains \xA76coins\xA77, \xA73Skill XP \xA77and posh \xA7djerry items\xA77."
+      - ""
+      - "\xA7eRight-click to open!"
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: 8ade6d678ee82fa5ae9eda3fa33d39a41413e8dee4436f3eb51bd8971321f79
+      - id: INTERACTABLE
+        handler_id: JERRY_BOX_OPEN
+  - id: JERRY_CANDY
+    material: player_head
+    name: "Jerry Candy"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77Right-click to consume and"
+      - "\xA77gain the \xA7aJerry Effect \xA77(20:00):"
+      - " \xA7c+100 Health"
+      - " \xA7c+20 Strength"
+      - " \xA7c+2 Ferocity"
+      - " \xA7b+100 Intelligence"
+      - " \xA7b+3 Magic Find"
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: 17f0e6352b57d6fac8d5c1e7882588927e1b197b32fbd33cf5f3ff9de961193d
+      - id: NOT_FINISHED_YET
+  - id: JERRY_STONE
+    material: player_head
+    name: "Jerry Stone"
+    rarity: RARE
+    lore:
+      - "\xA78Reforge Stone"
+      - ""
+      - "\xA77Applies the \xA79Jerry's \xA77reforge when"
+      - "\xA77combined with \xA7fAspect of the Jerry\xA77."
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: d0b638467b5ee306088390919e65db4267b006d28b6f12a48bd922552bfc3367
+      - id: NOT_FINISHED_YET
+  - id: JERRY_RUNE
+    material: player_head
+    name: "Jerry Rune III"
+    rarity: COMMON
+    lore:
+      - "\xA77It's Jerrys all the way down."
+      - ""
+      - "\xA77Apply this rune to weapons or fuse"
+      - "\xA77two together at the Runic Pedestal!"
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: a1353ba65b6521f922b6464d17af39bddd43c984b8a227d99161594eba7a14c4
+      - id: NOT_FINISHED_YET
+  - id: PET_ITEM_TOY_JERRY
+    material: player_head
+    name: "Jerry 3D Glasses"
+    rarity: MYTHIC
+    lore:
+      - "\xA77Use at \xA7bKat \xA77to upgrade \xA7eJerry Pets \xA77to"
+      - "\xA7dMythic \xA77rarity."
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: a2f6577b7457c1dbe906da785a1a850a3f81e532f82c16e1f63ea0eae1e7d0f2
+      - id: NOT_FINISHED_YET
