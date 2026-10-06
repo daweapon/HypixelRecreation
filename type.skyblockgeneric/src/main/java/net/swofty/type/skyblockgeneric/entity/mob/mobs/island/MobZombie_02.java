@@ -1,13 +1,10 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.island;
 
-public class MobZombie_02 extends MobZombie_01 {
-    @Override
-    public Integer getLevel() {
-        return 2;
-    }
+import net.swofty.type.skyblockgeneric.entity.mob.island.IslandMobSpecies;
+import net.swofty.type.skyblockgeneric.entity.mob.island.PrivateIslandMob;
 
-    @Override
-    public String getMobID() {
-        return "ZOMBIE_02";
+public class MobZombie_02 extends PrivateIslandMob {
+    public MobZombie_02() {
+        super(IslandMobSpecies.ZOMBIE, 2);
     }
 }

@@ -26,6 +26,7 @@ import net.swofty.type.skyblockgeneric.utility.JerryInformation;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -166,6 +167,10 @@ public class SkyBlockIsland {
                         oldVersion, HypixelConst.getCurrentIslandVersion()))), 20);
 
         islandVersion = HypixelConst.getCurrentIslandVersion();
+    }
+
+    public static Collection<SkyBlockIsland> loaded() {
+        return loadedIslands.values();
     }
 
     public static boolean hasIsland(UUID islandID) {

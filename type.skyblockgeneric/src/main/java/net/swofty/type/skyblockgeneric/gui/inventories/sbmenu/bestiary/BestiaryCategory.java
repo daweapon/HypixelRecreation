@@ -17,18 +17,30 @@ import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobGraveyardZombie;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobGraveyardZombieVillager;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobRuinsOldWolf;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobRuinsWolf;
-import net.swofty.type.skyblockgeneric.entity.mob.mobs.island.MobZombie_01;
-import net.swofty.type.skyblockgeneric.entity.mob.mobs.island.MobZombie_02;
+import net.swofty.type.skyblockgeneric.entity.mob.island.IslandMobSpecies;
+import net.swofty.type.skyblockgeneric.entity.mob.island.PrivateIslandMob;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public enum BestiaryCategory {
     ;
 
     @Getter
     public enum PRIVATE_ISLAND implements BestiaryEntry {
-        ZOMBIE("<a>Zombie", "Brains.", new GUIMaterial(Material.ZOMBIE_HEAD), List.of(new MobZombie_01(), new MobZombie_02())),
+        ZOMBIE("<a>Zombie", "Brains.", new GUIMaterial(Material.ZOMBIE_HEAD), allLevels(IslandMobSpecies.ZOMBIE)),
+        SKELETON("<a>Skeleton", "Just a normal skelly.", new GUIMaterial(Material.SKELETON_SKULL), allLevels(IslandMobSpecies.SKELETON)),
+        SPIDER("<a>Spider", "Likes to climb.", new GUIMaterial(Material.SPIDER_EYE), allLevels(IslandMobSpecies.SPIDER)),
+        CREEPER("<a>Creeper", "Look out for their hiss!", new GUIMaterial(Material.CREEPER_HEAD), allLevels(IslandMobSpecies.CREEPER)),
+        ENDERMAN("<a>Enderman", "Don't like making eye contact.", new GUIMaterial(Material.ENDER_PEARL), allLevels(IslandMobSpecies.ENDERMAN)),
+        WITCH("<a>Witch", "Masters of alchemy.", new GUIMaterial(Material.POTION), allLevels(IslandMobSpecies.WITCH)),
         ;
+
+        private static List<BestiaryMob> allLevels(IslandMobSpecies species) {
+            return IntStream.rangeClosed(1, species.getMaxLevel())
+                    .mapToObj(level -> (BestiaryMob) PrivateIslandMob.of(species, level))
+                    .toList();
+        }
 
         private final String name, description;
         private final GUIMaterial guiMaterial;

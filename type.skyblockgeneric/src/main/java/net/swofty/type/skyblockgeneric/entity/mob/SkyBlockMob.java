@@ -306,7 +306,7 @@ public abstract class SkyBlockMob extends EntityCreature {
                     int amountInRegion = 0;
 
                     for (SkyBlockMob mob : SkyBlockRegion.getMobsInRegion(regionType)) {
-                        if (!MobRegistry.getFromMob(mob).equals(mobRegistry)) {
+                        if (!mobRegistry.equals(MobRegistry.getFromMob(mob))) {
                             continue;
                         }
 
