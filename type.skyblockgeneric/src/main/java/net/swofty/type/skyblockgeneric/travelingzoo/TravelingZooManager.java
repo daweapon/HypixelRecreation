@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.shop.type.ItemShopPrice;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 // Determines Oringo the Traveling Zookeeper's current visit offer (Roadmap #21).
@@ -19,13 +20,8 @@ import java.util.Random;
 // visit - one guaranteed-Legendary pet chosen from a fixed yearly-rotating sequence
 // (Lion -> Monkey -> Elephant -> Giraffe -> Blue Whale -> Tiger), plus 2 random pets at a random
 // rarity between Common and Epic. Pricing is coins PLUS a species-specific raw/enchanted material
-// (cod for Blue Whale, beef for Lion, chicken for Tiger, logs for the rest), scaling steeply with
-// rarity (documented range: 10,000 coins + 64 raw material at Common, up to 10-18,000,000 coins +
-// 512-1,024 enchanted material at Legendary).
-//
-// The exact per-rarity cost table isn't wiki-documented to the coin, so the figures below are a
-// reasonable interpolation within that documented range, not a sourced 1:1 copy - flagged here
-// rather than silently presented as exact.
+// (cod for Blue Whale, beef for Lion, chicken for Tiger, acacia, jungle and dark oak logs for
+// Giraffe, Monkey and Elephant), per the wiki's Oringo price table.
 public class TravelingZooManager {
 
     private static final List<ItemType> LEGENDARY_ROTATION = List.of(
@@ -64,54 +60,54 @@ public class TravelingZooManager {
         return offers;
     }
 
-    private static ItemType rawMaterialFor(ItemType pet) {
-        if (pet == ItemType.LION_PET) return ItemType.RAW_BEEF;
-        if (pet == ItemType.TIGER_PET) return ItemType.RAW_CHICKEN;
-        if (pet == ItemType.BLUE_WHALE_PET) return ItemType.RAW_FISH;
-        return ItemType.OAK_LOG;
+    private record Cost(long coins, ItemType material, int amount) {
     }
 
-    private static ItemType enchantedMaterialFor(ItemType pet) {
-        if (pet == ItemType.LION_PET) return ItemType.ENCHANTED_RAW_BEEF;
-        if (pet == ItemType.TIGER_PET) return ItemType.ENCHANTED_RAW_CHICKEN;
-        if (pet == ItemType.BLUE_WHALE_PET) return ItemType.ENCHANTED_RAW_FISH;
-        return ItemType.ENCHANTED_OAK_LOG;
-    }
+    // Oringo's prices per rarity, Common to Legendary.
+    private static final Map<ItemType, List<Cost>> PRICES = Map.of(
+            ItemType.LION_PET, List.of(
+                    new Cost(10_000, ItemType.RAW_BEEF, 64),
+                    new Cost(25_000, ItemType.ENCHANTED_RAW_BEEF, 2),
+                    new Cost(100_000, ItemType.ENCHANTED_RAW_BEEF, 32),
+                    new Cost(1_000_000, ItemType.ENCHANTED_RAW_BEEF, 256),
+                    new Cost(15_000_000, ItemType.ENCHANTED_RAW_BEEF, 1024)),
+            ItemType.TIGER_PET, List.of(
+                    new Cost(10_000, ItemType.RAW_CHICKEN, 128),
+                    new Cost(25_000, ItemType.ENCHANTED_RAW_CHICKEN, 2),
+                    new Cost(100_000, ItemType.ENCHANTED_RAW_CHICKEN, 32),
+                    new Cost(1_000_000, ItemType.ENCHANTED_RAW_CHICKEN, 256),
+                    new Cost(15_000_000, ItemType.ENCHANTED_RAW_CHICKEN, 1024)),
+            ItemType.GIRAFFE_PET, List.of(
+                    new Cost(10_000, ItemType.ACACIA_LOG, 64),
+                    new Cost(25_000, ItemType.ENCHANTED_ACACIA_LOG, 1),
+                    new Cost(100_000, ItemType.ENCHANTED_ACACIA_LOG, 16),
+                    new Cost(1_000_000, ItemType.ENCHANTED_ACACIA_LOG, 128),
+                    new Cost(10_000_000, ItemType.ENCHANTED_ACACIA_LOG, 512)),
+            ItemType.MONKEY_PET, List.of(
+                    new Cost(10_000, ItemType.JUNGLE_LOG, 64),
+                    new Cost(25_000, ItemType.ENCHANTED_JUNGLE_LOG, 1),
+                    new Cost(100_000, ItemType.ENCHANTED_JUNGLE_LOG, 16),
+                    new Cost(1_000_000, ItemType.ENCHANTED_JUNGLE_LOG, 128),
+                    new Cost(18_000_000, ItemType.ENCHANTED_JUNGLE_LOG, 512)),
+            ItemType.ELEPHANT_PET, List.of(
+                    new Cost(10_000, ItemType.DARK_OAK_LOG, 64),
+                    new Cost(25_000, ItemType.ENCHANTED_DARK_OAK_LOG, 1),
+                    new Cost(100_000, ItemType.ENCHANTED_DARK_OAK_LOG, 16),
+                    new Cost(1_000_000, ItemType.ENCHANTED_DARK_OAK_LOG, 128),
+                    new Cost(15_000_000, ItemType.ENCHANTED_DARK_OAK_LOG, 512)),
+            ItemType.BLUE_WHALE_PET, List.of(
+                    new Cost(10_000, ItemType.RAW_FISH, 64),
+                    new Cost(25_000, ItemType.ENCHANTED_RAW_FISH, 1),
+                    new Cost(100_000, ItemType.ENCHANTED_RAW_FISH, 16),
+                    new Cost(1_000_000, ItemType.ENCHANTED_COOKED_FISH, 1),
+                    new Cost(10_000_000, ItemType.ENCHANTED_COOKED_FISH, 8))
+    );
 
     private static ShopPrice priceFor(ItemType pet, Rarity rarity) {
-        long coins;
-        int amount;
-        ItemType material;
-        switch (rarity) {
-            case COMMON -> {
-                coins = 10_000;
-                amount = 64;
-                material = rawMaterialFor(pet);
-            }
-            case UNCOMMON -> {
-                coins = 50_000;
-                amount = 128;
-                material = rawMaterialFor(pet);
-            }
-            case RARE -> {
-                coins = 500_000;
-                amount = 256;
-                material = rawMaterialFor(pet);
-            }
-            case EPIC -> {
-                coins = 2_000_000;
-                amount = 384;
-                material = enchantedMaterialFor(pet);
-            }
-            default -> {
-                coins = 14_000_000;
-                amount = 768;
-                material = enchantedMaterialFor(pet);
-            }
-        }
+        Cost cost = PRICES.get(pet).get(Math.min(rarity.ordinal(), 4));
         return new CombinedShopPrice(List.of(
-                new CoinShopPrice(coins),
-                new ItemShopPrice(material, amount)
+                new CoinShopPrice(cost.coins()),
+                new ItemShopPrice(cost.material(), cost.amount())
         ));
     }
 }

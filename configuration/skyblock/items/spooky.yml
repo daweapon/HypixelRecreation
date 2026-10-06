@@ -199,15 +199,15 @@ items:
         pet_name: Skeleton Horse
         base_statistics: {}
         per_level_statistics:
-          common: { speed: 0.5, health: 1 }
-          uncommon: { speed: 0.5, health: 1 }
-          rare: { speed: 0.5, health: 1 }
-          epic: { speed: 0.5, health: 1 }
-          legendary: { speed: 0.5, health: 1 }
+          common: { intelligence: 0.75, speed: 1.5 }
+          uncommon: { intelligence: 0.75, speed: 1.5 }
+          rare: { intelligence: 0.75, speed: 1.5 }
+          epic: { intelligence: 0.75, speed: 1.5 }
+          legendary: { intelligence: 0.75, speed: 1.5 }
         particle: 3
         skill_category: COMBAT
-        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
-        handler_id: ZOO
+        skull_texture: abc63ba27357898cf2e64da94802c74efc17ffd24064b5327fbc59694bc5e3dc
+        handler_id: SPOOKY
       - id: TRACKED_UNIQUE
   - id: SPOOKY_PIE
     material: pumpkin_pie

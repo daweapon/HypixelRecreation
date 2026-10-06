@@ -151,15 +151,15 @@ items:
         pet_name: Lion
         base_statistics: {}
         per_level_statistics:
-          common: { strength: 0.4, health: 1 }
-          uncommon: { strength: 0.4, health: 1 }
-          rare: { strength: 0.4, health: 1 }
-          epic: { strength: 0.4, health: 1 }
-          legendary: { strength: 0.4, health: 1 }
+          common: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
+          uncommon: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
+          rare: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
+          epic: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
+          legendary: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
         particle: 3
-        skill_category: COMBAT
-        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
-        handler_id: ZOO
+        skill_category: FORAGING
+        skull_texture: 38ff473bd52b4db2c06f1ac87fe1367bce7574fac330ffac7956229f82efba1
+        handler_id: LION
       - id: TRACKED_UNIQUE
   - id: MONKEY_PET
     material: player_head
@@ -170,15 +170,15 @@ items:
         pet_name: Monkey
         base_statistics: {}
         per_level_statistics:
-          common: { speed: 0.4, foraging_fortune: 0.5 }
-          uncommon: { speed: 0.4, foraging_fortune: 0.5 }
-          rare: { speed: 0.4, foraging_fortune: 0.5 }
-          epic: { speed: 0.4, foraging_fortune: 0.5 }
-          legendary: { speed: 0.4, foraging_fortune: 0.5 }
+          common: { intelligence: 0.5, speed: 0.2 }
+          uncommon: { intelligence: 0.5, speed: 0.2 }
+          rare: { intelligence: 0.5, speed: 0.2 }
+          epic: { intelligence: 0.5, speed: 0.2 }
+          legendary: { intelligence: 0.5, speed: 0.2 }
         particle: 3
         skill_category: FORAGING
-        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
-        handler_id: ZOO
+        skull_texture: 96e1836c73af42cf3c299fcb56d7342bf305f720be3c8cce2a0fae199794207a
+        handler_id: MONKEY
       - id: TRACKED_UNIQUE
   - id: ELEPHANT_PET
     material: player_head
@@ -189,15 +189,15 @@ items:
         pet_name: Elephant
         base_statistics: {}
         per_level_statistics:
-          common: { health: 2, defense: 1 }
-          uncommon: { health: 2, defense: 1 }
-          rare: { health: 2, defense: 1 }
-          epic: { health: 2, defense: 1 }
-          legendary: { health: 2, defense: 1 }
+          common: { health: 1, intelligence: 0.75 }
+          uncommon: { health: 1, intelligence: 0.75 }
+          rare: { health: 1, intelligence: 0.75 }
+          epic: { health: 1, intelligence: 0.75 }
+          legendary: { health: 1, intelligence: 0.75 }
         particle: 3
         skill_category: FARMING
-        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
-        handler_id: ZOO
+        skull_texture: 4ef8efea450632d2753a38a23a4f1502a8a685f6e99bf69205ec04420fd64f6
+        handler_id: ELEPHANT
       - id: TRACKED_UNIQUE
   - id: GIRAFFE_PET
     material: player_head
@@ -208,15 +208,15 @@ items:
         pet_name: Giraffe
         base_statistics: {}
         per_level_statistics:
-          common: { speed: 0.3, farming_fortune: 0.5 }
-          uncommon: { speed: 0.3, farming_fortune: 0.5 }
-          rare: { speed: 0.3, farming_fortune: 0.5 }
-          epic: { speed: 0.3, farming_fortune: 0.5 }
-          legendary: { speed: 0.3, farming_fortune: 0.5 }
+          common: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
+          uncommon: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
+          rare: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
+          epic: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
+          legendary: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
         particle: 3
-        skill_category: FARMING
-        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
-        handler_id: ZOO
+        skill_category: FORAGING
+        skull_texture: 2528ce6ad51fcb6e27c85566e70da351075185f184d910f4996e4311d4a1bfa5
+        handler_id: GIRAFFE
       - id: TRACKED_UNIQUE
   - id: BLUE_WHALE_PET
     material: player_head
@@ -227,15 +227,15 @@ items:
         pet_name: Blue Whale
         base_statistics: {}
         per_level_statistics:
-          common: { intelligence: 1, health: 1 }
-          uncommon: { intelligence: 1, health: 1 }
-          rare: { intelligence: 1, health: 1 }
-          epic: { intelligence: 1, health: 1 }
-          legendary: { intelligence: 1, health: 1 }
+          common: { health: 2 }
+          uncommon: { health: 2 }
+          rare: { health: 2 }
+          epic: { health: 2 }
+          legendary: { health: 2 }
         particle: 3
         skill_category: FISHING
-        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
-        handler_id: ZOO
+        skull_texture: 9ee72d3435c183dbdda2290cc8fcc9054b6e4d6e8f5338db4f4c1d9a30854b5d
+        handler_id: BLUE_WHALE
       - id: TRACKED_UNIQUE
   - id: TIGER_PET
     material: player_head
@@ -244,17 +244,17 @@ items:
     components:
       - id: PET
         pet_name: Tiger
-        base_statistics: {}
+        base_statistics: { strength: 5 }
         per_level_statistics:
-          common: { critical_chance: 0.3, strength: 0.3 }
-          uncommon: { critical_chance: 0.3, strength: 0.3 }
-          rare: { critical_chance: 0.3, strength: 0.3 }
-          epic: { critical_chance: 0.3, strength: 0.3 }
-          legendary: { critical_chance: 0.3, strength: 0.3 }
+          common: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
+          uncommon: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
+          rare: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
+          epic: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
+          legendary: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
         particle: 3
         skill_category: COMBAT
-        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
-        handler_id: ZOO
+        skull_texture: fc42638744922b5fcf62cd9bf27eeab91b2e72d6c70e86cc5aa3883993e9d84
+        handler_id: TIGER
       - id: TRACKED_UNIQUE
   # Black Cat (Fear Mongerer shop, Roadmap #19) - real Hypixel: Speed 0, Intelligence +1 at level 1,
   # unique Hunter/Omen/Supernatural ability tree not implemented (see PetHandler.SPOOKY), reuses
