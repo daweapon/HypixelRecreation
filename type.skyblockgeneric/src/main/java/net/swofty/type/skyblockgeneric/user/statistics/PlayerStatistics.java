@@ -47,7 +47,6 @@ import net.swofty.type.skyblockgeneric.item.components.StandardItemComponent;
 import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
-import net.swofty.type.skyblockgeneric.levels.unlocks.SkyBlockLevelStatisticUnlock;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.SkyBlockProgressMission;
 import net.swofty.type.skyblockgeneric.region.RegionType;
@@ -221,14 +220,8 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, skills.getSkillStatistics());
 
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
-        for (int i = 1; i <= experience.getLevel().asInt(); i++) {
-            var requirement = net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement.getLevel(i);
-            if (requirement == null) continue;
-            List<SkyBlockLevelStatisticUnlock> unlocks = requirement.getStatisticUnlocks();
-            for (SkyBlockLevelStatisticUnlock unlock : unlocks) {
-                spare = ItemStatistics.add(spare, unlock.getStatistics());
-            }
-        }
+        spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement
+                .getStatisticsUpTo(experience.getLevel().asInt()));
 
         return spare;
     }
@@ -415,15 +408,8 @@ public class PlayerStatistics {
         addModifier(modifiers, "Skill Progression", skills.getSkillStatistics().sub(reconstructedSkills),
             StatisticSourceType.SKILL, StatisticModifierType.SKILL, null, Material.CRAFTING_TABLE, null);
 
-        ItemStatistics levelStatistics = ItemStatistics.empty();
-        DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
-        for (int level = 1; level <= experience.getLevel().asInt(); level++) {
-            var requirement = net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement.getLevel(level);
-            if (requirement == null) continue;
-            for (SkyBlockLevelStatisticUnlock unlock : requirement.getStatisticUnlocks()) {
-                levelStatistics = ItemStatistics.add(levelStatistics, unlock.getStatistics());
-            }
-        }
+        ItemStatistics levelStatistics = net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement
+            .getStatisticsUpTo(player.getSkyBlockExperience().getLevel().asInt());
         addModifier(modifiers, "SkyBlock Level", levelStatistics, StatisticSourceType.SKYBLOCK_LEVELS,
             StatisticModifierType.PROGRESSION, null, Material.NETHER_STAR, null);
 

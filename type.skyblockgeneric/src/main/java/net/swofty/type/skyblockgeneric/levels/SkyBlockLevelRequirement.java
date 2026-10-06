@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.levels;
 
 import lombok.Getter;
+import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.minestom.server.item.Material;
 import net.swofty.type.skyblockgeneric.levels.unlocks.SkyBlockLevelStatisticUnlock;
 import org.jetbrains.annotations.Nullable;
@@ -12,11 +13,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @Getter
 public class SkyBlockLevelRequirement {
     private static final Map<Integer, SkyBlockLevelRequirement> LEVELS = new LinkedHashMap<>();
+    private static final Map<Integer, ItemStatistics> STATISTICS_UP_TO = new ConcurrentHashMap<>();
+    private static volatile SkyBlockLevelRequirement[] ordered = new SkyBlockLevelRequirement[0];
     private static boolean isLoaded = false;
 
     private final int level;
@@ -54,6 +58,8 @@ public class SkyBlockLevelRequirement {
             }
 
             SkyBlockLevelLoader.initializeCustomLevelAwardCache(levels);
+            ordered = LEVELS.values().toArray(new SkyBlockLevelRequirement[0]);
+            STATISTICS_UP_TO.clear();
             isLoaded = true;
 
             Logger.info("Loaded " + levels.length + " SkyBlock levels from YAML");
@@ -70,7 +76,21 @@ public class SkyBlockLevelRequirement {
 
     public static SkyBlockLevelRequirement[] values() {
         ensureLoaded();
-        return LEVELS.values().toArray(new SkyBlockLevelRequirement[0]);
+        return ordered.clone();
+    }
+
+    public static ItemStatistics getStatisticsUpTo(int level) {
+        ensureLoaded();
+        return STATISTICS_UP_TO.computeIfAbsent(level, max -> {
+            ItemStatistics total = ItemStatistics.empty();
+            for (SkyBlockLevelRequirement requirement : ordered) {
+                if (requirement.level < 1 || requirement.level > max) continue;
+                for (SkyBlockLevelStatisticUnlock unlock : requirement.getStatisticUnlocks()) {
+                    total = ItemStatistics.add(total, unlock.getStatistics());
+                }
+            }
+            return total;
+        });
     }
 
     public static Collection<SkyBlockLevelRequirement> getAllLevels() {
@@ -195,7 +215,7 @@ public class SkyBlockLevelRequirement {
         SkyBlockLevelRequirement toReturn = getLevel(0);
         if (toReturn == null) return null;
 
-        for (SkyBlockLevelRequirement requirement : values()) {
+        for (SkyBlockLevelRequirement requirement : ordered) {
             if (xp < requirement.experience) {
                 return toReturn;
             } else {
@@ -209,6 +229,7 @@ public class SkyBlockLevelRequirement {
     public static void reload() {
         isLoaded = false;
         LEVELS.clear();
+        STATISTICS_UP_TO.clear();
         loadFromYaml();
     }
 

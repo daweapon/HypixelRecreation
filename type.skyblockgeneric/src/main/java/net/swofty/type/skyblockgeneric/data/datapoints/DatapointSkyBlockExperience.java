@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.data.datapoints;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -114,6 +115,10 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
         private double bonusXP = 0D;
         @Setter
         private SkyBlockPlayer attachedPlayer = null;
+        @Getter(AccessLevel.NONE)
+        private int cachedCauseCount = -1;
+        @Getter(AccessLevel.NONE)
+        private double cachedCauseXP;
 
         public PlayerSkyBlockExperience(List<SkyBlockLevelCauseAbstr> completedExperienceCauses,
                                         Map.Entry<SkyBlockEmblems, Integer> currentEmblem) {
@@ -273,9 +278,11 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
 
         /** XP earned without the admin offset — what the player actually worked for. */
         public double getEarnedXP() {
-            double fromCauses = completedExperienceCauses.isEmpty() ? 0D
-                    : completedExperienceCauses.stream().mapToDouble(SkyBlockLevelCauseAbstr::xpReward).sum();
-            return fromCauses + getTotalSourceXP();
+            if (cachedCauseCount != completedExperienceCauses.size()) {
+                cachedCauseXP = completedExperienceCauses.stream().mapToDouble(SkyBlockLevelCauseAbstr::xpReward).sum();
+                cachedCauseCount = completedExperienceCauses.size();
+            }
+            return cachedCauseXP + getTotalSourceXP();
         }
 
         private void fireModification(@Nullable SkyBlockLevelCauseAbstr cause, double oldXP, double newXP) {
