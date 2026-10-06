@@ -4,7 +4,9 @@ import net.minestom.server.coordinate.Pos;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.jerrysworkshop.gui.GUIEinaryEmporium;
 
 // Decorative NPC for Einary, found in Jerry's Workshop.
 public class NPCEinary extends HypixelNPC {
@@ -43,6 +45,29 @@ public class NPCEinary extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-		event.player().sendMessage("<6>Einary nods. \"Those Magma Cubes won't fight themselves off. Talk to <c>St. Jerry <6>when you're ready.\"");
+		HypixelPlayer player = event.player();
+		if (isInDialogue(player)) return;
+		if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_EINARY)) {
+			setDialogue(player, "hello").thenRun(() ->
+					player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_EINARY, true));
+			return;
+		}
+		if (!GUIEinaryEmporium.isDecember()) {
+			player.sendMessage("<c>Only sold in December!");
+			return;
+		}
+		player.openView(new GUIEinaryEmporium());
+	}
+
+	@Override
+	public DialogueSet[] dialogues(HypixelPlayer player) {
+		return new DialogueSet[]{
+				DialogueSet.builder().key("hello").lines(
+						"Welcome, welcome, welcome!",
+						"Come, see what I have on offer for you today.",
+						"Special items for a special currency just for you!",
+						"You can get this North Star currency by giving gifts to others!"
+				).build()
+		};
 	}
 }
