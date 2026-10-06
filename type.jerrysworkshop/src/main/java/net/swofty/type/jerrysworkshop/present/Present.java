@@ -1,20 +1,22 @@
 package net.swofty.type.jerrysworkshop.present;
 
-import net.kyori.adventure.nbt.BinaryTagTypes;
-import net.kyori.adventure.nbt.CompoundBinaryTag;
-import net.kyori.adventure.nbt.ListBinaryTag;
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.component.DataComponents;
 import net.minestom.server.coordinate.BlockVec;
 import net.minestom.server.coordinate.Point;
+import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Entity;
+import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.PlayerSkin;
+import net.minestom.server.entity.metadata.display.ItemDisplayMeta;
 import net.minestom.server.instance.Instance;
-import net.minestom.server.instance.block.Block;
-import net.minestom.server.tag.Tag;
+import net.minestom.server.item.ItemStack;
+import net.minestom.server.item.Material;
+import net.minestom.server.network.player.ResolvableProfile;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.data.datapoints.DatapointPresentYear;
-import net.swofty.type.generic.entity.BlockDisplayEntity;
 import net.swofty.type.generic.entity.InteractionEntity;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -68,32 +70,19 @@ public class Present {
 	public static void spawn(int index, Point position) {
 		Instance instance = HypixelConst.getInstanceContainer();
 
-		// Real Hypixel-Wiki-sourced White Gift skull texture (reused from the existing "White Gift
-		// Talisman" accessory item, configuration/skyblock/items/accessories/gift.yml). The
-		// previous hardcoded texture value here was a truncated/invalid Mojang texture hash (60
-		// chars instead of the required 64) - Minecraft silently falls back to a blank default
-		// head when the value can't be resolved, which is exactly the bug the user reported
-		// ("any placed player heads should be a white gift"). Built the same simple
-		// signature-less way PlayerItemUpdater builds skull textures for held items, rather than
-		// a hardcoded signed profile blob - a signature only validates against the exact value it
-		// was issued for, so hand-copying one for a different texture would never have worked.
 		String texturesJson = "{\"textures\":{\"SKIN\":{\"url\":\"https://textures.minecraft.net/texture/e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c\"}}}";
 		String texturesEncoded = java.util.Base64.getEncoder().encodeToString(texturesJson.getBytes());
 
-		Block playerHead = Block.PLAYER_HEAD.withTag(
-				Tag.NBT("profile"),
-				CompoundBinaryTag.builder().put(
-						"properties",
-						ListBinaryTag.builder(BinaryTagTypes.COMPOUND).add(
-								CompoundBinaryTag.builder()
-										.putString("name", "textures")
-										.putString("value", texturesEncoded)
-										.build()
-						).build()
-				).build());
-
-		BlockDisplayEntity displayEntity = new BlockDisplayEntity(playerHead, _ -> {});
-		displayEntity.setInstance(instance, position);
+		// A block display renders only the block state, never a skull's profile, so the head is shown
+		// as an item instead.
+		Entity displayEntity = new Entity(EntityType.ITEM_DISPLAY);
+		displayEntity.editEntityMeta(ItemDisplayMeta.class, meta -> {
+			meta.setHasNoGravity(true);
+			meta.setItemStack(ItemStack.builder(Material.PLAYER_HEAD)
+					.set(DataComponents.PROFILE, new ResolvableProfile(new PlayerSkin(texturesEncoded, null)))
+					.build());
+		});
+		displayEntity.setInstance(instance, Pos.fromPoint(position).add(0.5, 0.25, 0.5));
 		spawned.add(displayEntity);
 		InteractionEntity entity = new InteractionEntity(0.5f, 0.5f, (player, interactEvent) -> {
 			SkyBlockDataHandler dataHandler = ((SkyBlockPlayer) player).getSkyblockDataHandler();
