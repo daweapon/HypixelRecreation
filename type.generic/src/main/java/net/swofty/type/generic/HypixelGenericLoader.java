@@ -26,6 +26,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.commons.text.TextArgRenderers;
 import net.swofty.proxyapi.PlayerTransferDataCache;
 import net.swofty.proxyapi.ProxyPlayer;
+import net.swofty.type.generic.utility.SlowTickProfiler;
 import net.swofty.type.generic.achievement.AchievementRegistry;
 import net.swofty.type.generic.achievement.AchievementStatisticsService;
 import net.swofty.type.generic.block.BannerBlockHandler;
@@ -94,6 +95,7 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
         HypixelConst.setEmptyInstance(instanceManager.createSharedInstance(instanceManager.createInstanceContainer()));
         HypixelConst.getEmptyInstance().setBlock(0, 99, 0, Block.BEDROCK);
         HypixelConst.setEventHandler(MinecraftServer.getGlobalEventHandler());
+        SlowTickProfiler.start();
 
         // Register commands
         MinecraftServer.getCommandManager().setUnknownCommandCallback((sender, command) -> {
