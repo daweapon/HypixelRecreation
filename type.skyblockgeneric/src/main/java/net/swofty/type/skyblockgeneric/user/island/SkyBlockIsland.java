@@ -158,6 +158,8 @@ public class SkyBlockIsland {
         int oldVersion = islandVersion;
         if (islandVersion >= HypixelConst.getCurrentIslandVersion()) return;
 
+        world = IslandMigrations.apply(world, this, oldVersion, HypixelConst.getCurrentIslandVersion());
+
         MathUtility.delay(() -> SkyBlockGenericLoader.getLoadedPlayers().stream()
                 .filter(player -> player.getSkyBlockIsland().getIslandID().equals(islandID))
                 .forEach(player -> player.getLogHandler().debug(Text.of("Your island was migrated from version <c>{} <f>to <a>{}<f>!",
@@ -194,6 +196,7 @@ public class SkyBlockIsland {
     }
 
     public static void runVacantLoop(Scheduler scheduler) {
+        IslandMigrations.validate(HypixelConst.getCurrentIslandVersion());
         registerShutdownHook();
 
         scheduler.submitTask(() -> {
