@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.spookyfestival.SpookyFestivalTiers;
+import net.swofty.type.skyblockgeneric.spookyfestival.SpookyFestivalCandyTally;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -56,16 +57,15 @@ public class GUIFearMongerer implements View<GUIFearMongerer.State> {
     public void layout(ViewLayout<State> layout, State state, ViewContext ctx) {
         Components.fill(layout);
 
-        // Matches the real tooltip's wording where the data backs it (combined score + rank).
-        // Real Hypixel also shows separate "Your Green Candy: X" / "Your Purple Candy: Y" lines -
-        // not shown here since this only tracks combined leaderboard points, not a per-candy-type
-        // lifetime counter (a real, documented gap, not silently approximated).
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        SpookyFestivalCandyTally tally = SpookyFestivalCandyTally.of(player);
         layout.slot(4, (_, _) -> ItemStacks.item(Material.PUMPKIN,
-                "<6><l>Spooky Rewards\n<7>{} Spooky Festival\n \n<7>+1 pt. per Green Candy\n<7>+5 pts. per Purple Candy\n \n<7>Your score is <a>top #{} <7>for this event.",
+                "<6><l>Spooky Rewards\n<7>{} Spooky Festival\n \n<7>+1 pt. per Green Candy\n<7>+5 pts. per Purple Candy\n \n<7>Your Green Candy: <a>{}\n<7>Your Purple Candy: <5>{}\n \n<7>Your score is <a>top #{} <7>for this event.",
                 StringUtility.ntify(SkyBlockCalendar.getYear()),
+                StringUtility.commaify(tally.green()),
+                StringUtility.commaify(tally.purple()),
                 state.rank() <= 0 ? "Unranked" : String.valueOf(state.rank())));
 
-        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         int claimedTier = player.getSkyblockDataHandler()
                 .get(SkyBlockDataHandler.Data.SPOOKY_FESTIVAL_CLAIMED_TIER, DatapointInteger.class)
                 .getValue();

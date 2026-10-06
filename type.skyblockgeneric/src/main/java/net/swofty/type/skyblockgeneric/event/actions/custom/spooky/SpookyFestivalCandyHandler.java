@@ -10,13 +10,14 @@ import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.spookyfestival.SpookyFestivalCandyTally;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 // Universal candy drop during the Spooky Festival (Roadmap #19). Real Hypixel: ALL mobs get a
 // baseline 10% chance to drop Green Candy per kill, which itself converts to Purple Candy at a
-// base 10% rate - both rates are boosted by Spooky Armor (+5% drop per piece, +5% "rare Candy"
+// base 10% rate plus 0.2% per mob level - both rates are boosted by Spooky Armor (+5% drop per piece, +5% "rare Candy"
 // i.e. Purple conversion at full 4-piece set) and the Candy Talisman/Ring/Artifact/Relic line
 // (+5/10/15/20% drop, highest tier only), both sourced from the Fear Mongerer shop tooltips.
 // Bat Person Armor - a separate, unrelated pre-existing accessory line in this codebase - is not
@@ -32,8 +33,7 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
     private static final double PURPLE_CONVERSION_CHANCE = 0.10;
     private static final double SPOOKY_ARMOR_PIECE_BONUS = 0.05;
     private static final double SPOOKY_ARMOR_FULL_SET_BONUS = 0.05;
-    private static final double GREEN_CANDY_POINTS = 1;
-    private static final double PURPLE_CANDY_POINTS = 5;
+    private static final double PURPLE_CHANCE_PER_MOB_LEVEL = 0.002;
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(PlayerKilledSkyBlockMobEvent event) {
@@ -44,14 +44,18 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
         double dropChance = CANDY_DROP_CHANCE + (spookyPieces * SPOOKY_ARMOR_PIECE_BONUS) + candyAccessoryBonus(player);
         if (ThreadLocalRandom.current().nextDouble() >= dropChance) return;
 
-        double purpleChance = PURPLE_CONVERSION_CHANCE + (spookyPieces == 4 ? SPOOKY_ARMOR_FULL_SET_BONUS : 0);
+        Integer mobLevel = event.getKilledMob().getLevel();
+        double purpleChance = PURPLE_CONVERSION_CHANCE
+                + (mobLevel == null ? 0 : mobLevel * PURPLE_CHANCE_PER_MOB_LEVEL)
+                + (spookyPieces == 4 ? SPOOKY_ARMOR_FULL_SET_BONUS : 0);
         boolean purple = ThreadLocalRandom.current().nextDouble() < purpleChance;
         ItemType candyType = purple ? ItemType.PURPLE_CANDY : ItemType.GREEN_CANDY;
 
         player.addAndUpdateItem(new SkyBlockItem(candyType));
         player.sendMessage("<7>You received <a>1x {}<7>!", new SkyBlockItem(candyType).getDisplayName());
 
-        double points = purple ? PURPLE_CANDY_POINTS : GREEN_CANDY_POINTS;
+        SpookyFestivalCandyTally.record(player, purple);
+        double points = purple ? SpookyFestivalCandyTally.PURPLE_POINTS : SpookyFestivalCandyTally.GREEN_POINTS;
         String leaderboardKey = "spooky_festival_" + SkyBlockCalendar.getYear();
         Double currentScore = LeaderboardService.getPlayerScore(leaderboardKey, player.getUuid());
         double newScore = (currentScore == null ? 0 : currentScore) + points;

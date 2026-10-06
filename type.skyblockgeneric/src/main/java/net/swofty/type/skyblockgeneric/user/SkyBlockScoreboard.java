@@ -14,6 +14,7 @@ import net.swofty.type.generic.data.datapoints.DatapointDouble;
 import net.swofty.type.generic.data.datapoints.DatapointInteger;
 import net.swofty.type.generic.scoreboard.HypixelScoreboard;
 import net.swofty.type.generic.utility.BlockUtility;
+import net.swofty.type.skyblockgeneric.spookyfestival.SpookyFestivalCandyTally;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
@@ -173,6 +174,14 @@ public class SkyBlockScoreboard {
                     long remainingMillis = activeSeasonalEvent.remainingTicksAt(timeInYear) * 50L;
                     seasonalEvent.line(Text.key("scoreboard.skyblock.event_ends_line",
                         StringUtility.formatTimeLeft(remainingMillis)));
+                    if (activeSeasonalEvent == CalendarEvent.SPOOKY_FESTIVAL) {
+                        SpookyFestivalCandyTally candy = SpookyFestivalCandyTally.of(player);
+                        seasonalEvent.line(Text.key("scoreboard.skyblock.spooky_candy_label"));
+                        seasonalEvent.line(Text.key("scoreboard.skyblock.spooky_candy_line",
+                            StringUtility.commaify(candy.green()),
+                            StringUtility.commaify(candy.purple()),
+                            StringUtility.commaify(candy.points())));
+                    }
                 }
 
                 boolean objective = !electionRoom && !darkAuction && !seasonalEventActive && region != null
