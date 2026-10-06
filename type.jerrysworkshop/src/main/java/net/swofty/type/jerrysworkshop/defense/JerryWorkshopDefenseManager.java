@@ -162,6 +162,7 @@ public final class JerryWorkshopDefenseManager {
     }
 
     private static Pos groundAt(Instance instance, Pos around) {
+        instance.loadChunk(around).join();
         for (int y = 140; y > around.blockY() - 20; y--) {
             if (!instance.getBlock(around.blockX(), y - 1, around.blockZ()).isAir()
                     && instance.getBlock(around.blockX(), y, around.blockZ()).isAir()) {

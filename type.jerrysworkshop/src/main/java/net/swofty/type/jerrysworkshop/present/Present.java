@@ -51,6 +51,7 @@ public class Present {
 	// lifted to the first open space above it rather than becoming unreachable.
 	private static Point openSpot(BlockVec recorded) {
 		Instance instance = HypixelConst.getInstanceContainer();
+		instance.loadChunk(recorded).join();
 		for (int lift = 0; lift <= 3; lift++) {
 			BlockVec candidate = recorded.add(0, lift, 0);
 			if (!instance.getBlock(candidate).isSolid()) return candidate;
