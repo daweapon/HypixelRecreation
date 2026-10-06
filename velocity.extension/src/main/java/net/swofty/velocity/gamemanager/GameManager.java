@@ -19,6 +19,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 // Tracks all registered backend game servers by type, handles registration, liveness pinging, and removal of dead servers.
 public class GameManager {
     public static final int SLEEP_TIME = 300;
+
+    /**
+     * How long a server has to answer a ping.
+     *
+     * Deliberately much larger than SLEEP_TIME. These were the same value, which meant a
+     * server had one ping interval - 300ms - to make a Redis round trip, and five such misses
+     * in a row removed it. That is 1.5 seconds, so a single GC pause or a busy host evicted a
+     * perfectly healthy server, and nothing re-registered it while it kept running: the only
+     * cure was restarting it. Pinging stays frequent; the verdict is now slow.
+     */
+    public static final int PING_TIMEOUT_MS = 5_000;
     public static final int MISSED_PINGS_BEFORE_REMOVAL = 5;
     private static final Map<ServerType, ArrayList<GameServer>> servers = new HashMap<>();
     private static final ServerPingTracker pingTracker = new ServerPingTracker(MISSED_PINGS_BEFORE_REMOVAL);
@@ -172,7 +183,7 @@ public class GameManager {
                         }
 
                         TestFlowManager.handleServerDisconnect(registeredServer.internalID);
-                    }).delay(Duration.ofMillis(SLEEP_TIME)).schedule();
+                    }).delay(Duration.ofMillis(PING_TIMEOUT_MS)).schedule();
                 });
             });
         }).repeat(Duration.ofMillis(SLEEP_TIME)).schedule();

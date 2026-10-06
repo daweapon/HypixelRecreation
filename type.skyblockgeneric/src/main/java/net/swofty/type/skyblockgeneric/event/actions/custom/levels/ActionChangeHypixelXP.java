@@ -20,21 +20,26 @@ public class ActionChangeHypixelXP implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(SkyBlockXPModificationEvent event) {
-        if (event.getNewXP() <= event.getOldXP()) return;
         SkyBlockPlayer player = event.getPlayer();
 
         SkyBlockLevelRequirement oldLevel = SkyBlockLevelRequirement.getFromTotalXP(event.getOldXP());
         SkyBlockLevelRequirement newLevel = SkyBlockLevelRequirement.getFromTotalXP(event.getNewXP());
 
+        // XP can now be taken away by staff commands; keep the nametag honest but stay quiet
+        // rather than announcing a "level up" that went backwards.
+        if (event.getNewXP() <= event.getOldXP()) {
+            if (oldLevel != newLevel) ActionAddSkyBlockXPToNametag.updatePlayerNametag(player);
+            return;
+        }
+
         if (oldLevel == newLevel) {
-            if (event.getCause().shouldDisplayMessage(player))
+            if (event.getCause() != null && event.getCause().shouldDisplayMessage(player))
                 player.sendMessage("<b>+<3>{} <b>SkyBlock XP", event.getNewXP() - event.getOldXP());
         } else {
             ActionAddSkyBlockXPToNametag.updatePlayerNametag(player);
             if (!(event.getCause() instanceof LevelCause)) {
-                player.getSkyBlockExperience().addExperience(
-                        SkyBlockLevelCause.getLevelCause(newLevel.asInt())
-                );
+                LevelCause levelCause = SkyBlockLevelCause.getLevelCause(newLevel.asInt());
+                if (levelCause != null) player.getSkyBlockExperience().addExperience(levelCause);
             }
             List<SkyBlockLevelUnlock> unlocks = newLevel.getUnlocks();
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GUIEmblems extends StatelessView {
-    private static final int[] SLOTS = new int[]{11, 12, 13, 14, 15};
+    private static final int[] SLOTS = new int[]{10, 11, 12, 13, 14, 15, 16};
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {

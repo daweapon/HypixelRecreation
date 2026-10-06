@@ -32,6 +32,7 @@ class ControlApi {
 
   String? role;
   String? playerName;
+  String? deviceId;
 
   String? get baseUrl => _baseUrl;
   bool get isEnrolled => _deviceToken != null && _baseUrl != null;
@@ -150,6 +151,7 @@ class ControlApi {
     _accessToken = payload['accessToken'] as String;
     role = payload['role'] as String?;
     playerName = payload['playerName'] as String?;
+    deviceId = payload['deviceId'] as String? ?? deviceId;
     final ttl = (payload['expiresInSeconds'] as num?)?.toInt() ?? 900;
     // Refresh a minute early so a call never races the expiry.
     _accessTokenExpiry = DateTime.now().add(Duration(seconds: ttl - 60));
@@ -225,6 +227,30 @@ class ControlApi {
     return ((map['entries'] as List?) ?? [])
         .map((e) => AuditEntry.fromJson(e as Map<String, dynamic>))
         .toList();
+  }
+
+  Future<List<DeviceEntry>> fetchDevices() async {
+    final data = await _authedGet('/control/devices');
+    return (data as List)
+        .map((e) => DeviceEntry.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  /// Changes a device's role. Owner only; the server refuses to demote the calling device.
+  Future<void> setDeviceRole(String deviceId, String role) async {
+    await _authedPost('/control/devices/update', {
+      'deviceId': deviceId,
+      'action': 'role',
+      'role': role,
+    });
+  }
+
+  /// Revokes a device permanently. Owner only; the server refuses to revoke the caller.
+  Future<void> revokeDevice(String deviceId) async {
+    await _authedPost('/control/devices/update', {
+      'deviceId': deviceId,
+      'action': 'revoke',
+    });
   }
 
   Future<DeployCandidates> fetchDeployCandidates() async {

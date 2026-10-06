@@ -135,7 +135,13 @@ public final class ViewSession<S> {
             }
             return;
         }
-        if (event.getInventory() != inventory || closed) return;
+        if (event.getInventory() != inventory) return;
+        if (closed) {
+            // The window is still on screen but nothing drives it any more; letting the click
+            // through would hand the player its decorative items.
+            event.setCancelled(true);
+            return;
+        }
 
         int slot = event.getSlot();
         SlotBehavior behavior = cachedLayout != null ? cachedLayout.getBehavior(slot) : SlotBehavior.UI;

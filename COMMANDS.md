@@ -161,6 +161,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/reforge` | `/reforgeitem` | Reforges the item in the players hand. | STAFF | No | `type.skyblockgeneric` |
 | `/setpetlevel <level>` | `/updatepetlevel` | Sets the level of the pet. | STAFF | No | `type.skyblockgeneric` |
 | `/setpetrarity <rarity>` | — | Sets the rarity of the pet in your hand. | STAFF | No | `type.skyblockgeneric` |
+| `/skyblockxp <action> [amount] [player]` | `/sbxp` | Manages SkyBlock XP and SkyBlock Level. See the SkyBlock XP subcommand reference below. | STAFF | No | `type.skyblockgeneric` |
 | `/unlockbestiary [player]` | — | Unlocks the Bestiary menu for yourself or an optional online player without needing to speak to Bramass Beastslayer. | STAFF | No | `type.skyblockgeneric` |
 | `/updatebestiary <mob> <amount> [player]` | — | Updates the bestiary of a player.  Help uses /setbestiary, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
 | `/updatecollection <item_type> <amount> [player]` | — | Updates the collection of a player.  Help uses /setcollection, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
@@ -322,6 +323,24 @@ Position arguments support the registered relative-block-position syntax. Region
 Co-op commands are distinct top-level commands in the player tables, not `/coop <subcommand>`. `/coopadd` and `/coopkick` run vote/membership flows. `/admincoopkick` is the STAFF override. `/coopbank` uses the shared co-op balance. `/islandprivacy` accepts `public`, `friends`, or `private`.
 
 `/chat` and `/ch` currently select ALL, PARTY, or STAFF, plus the staff-view toggle. `/gc`, `/oc`, and `/cc` send a single message through their respective existing systems; they do not add persistent guild/officer/co-op modes. `/reply` and `/r` are not implemented by this command inventory.
+
+### SkyBlock XP
+
+`/skyblockxp` (alias `/sbxp`) is STAFF-only and not console-declared. Every form takes an optional trailing online-player selector; omit it to target yourself. One SkyBlock Level is 100 SkyBlock XP.
+
+| Subcommand | Purpose and notes |
+| --- | --- |
+| `/skyblockxp give <amount> [player]` | Adds XP to the admin bonus offset. Earned causes and per-source progress are left untouched. |
+| `/skyblockxp take <amount> [player]` | Subtracts from the bonus offset. Total XP floors at 0, so it can never go negative. |
+| `/skyblockxp set <amount> [player]` | Moves total XP to an exact figure by adjusting the bonus offset only. |
+| `/skyblockxp setlevel <level> [player]` | Sets total XP to that level's threshold. Valid range is 0-700. |
+| `/skyblockxp prestige [player]` | Jumps to the next prefix tier, which real Hypixel changes every 40 levels. |
+| `/skyblockxp max [player]` | Grants level 620.19, completes every source, and unlocks every prefix emblem. Same path `/maxprofile` and THE MAX STICK use. |
+| `/skyblockxp reset [player]` | Clears all causes, source progress, and the bonus offset back to zero XP. |
+| `/skyblockxp info [player]` | Prints level, total XP, earned-vs-bonus split, and progress to the next level. |
+| `/skyblockxp source <xpSource> <amount> [player]` | Sets one XP source's progress, clamped to that source's real Hypixel maximum. Rejected for sources backed by their own causes — use `/giveskyblockxp` for those. |
+
+`/giveskyblockxp` remains the way to award a single named cause (a skill level, collection tier, museum reward and so on). `/skyblockxp` works in XP totals and whole sources.
 
 ## Examples
 

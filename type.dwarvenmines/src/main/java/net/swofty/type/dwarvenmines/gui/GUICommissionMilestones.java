@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCommissions;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -178,7 +179,10 @@ public class GUICommissionMilestones extends HypixelInventoryGUI {
 		Commissions.saveCommissionData(player, data);
 
 		player.getSkills().increase(player, SkillCategories.MINING, (double) milestone.getMiningXpReward());
-		player.getExperienceHandler().addExperience(milestone.getSkyBlockXpReward());
+		// The reward lore promises SkyBlock XP, so credit SkyBlock XP — getExperienceHandler()
+		// is the network-wide Hypixel level, which is a different currency entirely.
+		player.getSkyBlockExperience().addSourceXP(SkyBlockXPSource.COMMISSION_MILESTONES,
+				milestone.getSkyBlockXpReward());
 
 
 		player.sendMessage("<6><l> MILESTONE CLAIMED! <r><e>Tier {:roman}", milestone.getTier());

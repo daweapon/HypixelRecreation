@@ -207,15 +207,24 @@ read-write at `/app/jar-store`.
 
 ### Shipping a content update
 
-A content change is a jar change, so the whole round trip stays inside the app:
+A code change ships as a jar, so that half of the round trip stays inside the app. Only
+`loader` produces a deployable artifact - it fat-jars every `type.*` module into
+`HypixelCore.jar`, so build that whichever module you actually edited:
 
 ```bash
-./gradlew :type.skyblockgeneric:shadowJar   # or whichever module you changed
+./gradlew :loader:shadowJar
 ```
 
 Copy the built jar to `\\thelibrary\home\Hypixel\control-deploy` over SMB, press **Deploy**,
 pick it. The drop folder is the operator's own home share, so writing to it needs no privilege
 on the NAS.
+
+**Configuration YAML is not a jar change, and the app cannot ship it.** The server reads
+`./configuration`, which `Dockerfile.game_server` fills once at build time by copying
+`configuration_files` into it. The compose bind mount covers `configuration_files`, which
+nothing reads back, and the entrypoint only ever rewrites `config.yml`. A restart therefore
+keeps serving the copy baked into the image. Changing anything under `configuration/` needs a
+shell on the NAS - see below.
 
 Two deploys restart the container serving the request, which is worth expecting rather than
 debugging:
@@ -232,7 +241,8 @@ Still needs a shell on the NAS, so keep a tested administrator account for them:
 - Compose or `.env` changes, including adding a container or a new service
 - Image rebuilds where a `Dockerfile` itself changed - deploys replace jars inside existing
   images, they do not rebuild
-- Non-jar content: world data, schematics and anything else not shipped inside a jar
+- Non-jar content: `configuration/` YAML, world data, schematics and anything else not
+  shipped inside a jar
 - Any recovery while `service_api` or `service_control` is down, which is when the app is least
   able to help
 

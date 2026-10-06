@@ -58,7 +58,7 @@ public class GUILevelRewards extends StatelessView {
             lore.add(Text.key("gui_sbmenu.levels.rewards.click_to_view"));
 
             return ItemStacks.item(Material.NETHER_STAR, 1, Text.key("gui_sbmenu.levels.rewards.feature"), lore);
-        }, (click, c) -> c.player().openView(new GUILevelFeatureRewards()));
+        }, (click, c) -> c.push(new GUILevelFeatureRewards()));
 
         // Prefix Color Rewards
         layout.slot(12, (s, c) -> {
@@ -85,7 +85,7 @@ public class GUILevelRewards extends StatelessView {
             lore.add(Text.key("gui_sbmenu.levels.rewards.click_to_view"));
 
             return ItemStacks.item(Material.GRAY_DYE, 1, Text.key("gui_sbmenu.levels.rewards.prefix"), lore);
-        }, (click, c) -> c.player().openView(new GUILevelPrefixRewards()));
+        }, (click, c) -> c.push(new GUILevelPrefixRewards()));
 
         // Emblem Rewards
         layout.slot(13, (s, c) -> {
@@ -119,7 +119,7 @@ public class GUILevelRewards extends StatelessView {
             lore.add(Text.key("gui_sbmenu.levels.rewards.click_to_view"));
 
             return ItemStacks.item(Material.NAME_TAG, 1, Text.key("gui_sbmenu.levels.rewards.emblem"), lore);
-        }, (click, c) -> c.player().openView(new GUILevelEmblemRewards()));
+        }, (click, c) -> c.push(new GUILevelEmblemRewards()));
 
         // Statistic Rewards
         layout.slot(14, (s, c) -> {
@@ -129,7 +129,7 @@ public class GUILevelRewards extends StatelessView {
             return ItemStacks.item(Material.DIAMOND_HELMET, 1, Text.key("gui_sbmenu.levels.rewards.statistic"),
                     Text.keyLines("gui_sbmenu.levels.rewards.statistic.lore",
                             nextLevel == null ? Text.of("<c>MAX") : Text.literal(String.valueOf(nextLevel.asInt()))));
-        });
+        }, (click, c) -> c.push(new GUILevelStatisticRewards(), new GUILevelStatisticRewards.State()));
     }
 
     public static int getTotalAwards() {

@@ -32,6 +32,24 @@ public enum Rarity {
         this(color, tooltipStyle, true);
     }
 
+    /**
+     * Magical Power an accessory of this rarity contributes to the Accessory Bag, matching real
+     * Hypixel's table. Also drives the SkyBlock XP that accessory is worth, since SkyBlock
+     * Levels grant +1 XP per point of Magical Power.
+     */
+    public int getMagicalPower() {
+        return switch (this) {
+            case COMMON, SPECIAL -> 3;
+            case UNCOMMON, VERY_SPECIAL -> 5;
+            case RARE -> 8;
+            case EPIC -> 12;
+            case LEGENDARY -> 16;
+            case MYTHIC -> 22;
+            case DIVINE -> 22;
+            case ADMIN -> 0;
+        };
+    }
+
     public Rarity upgrade() {
         return values()[Math.min(this.ordinal() + 1, values().length - 1)];
     }

@@ -47,7 +47,7 @@ public class GUILevelEmblemRewards extends StatelessView {
                         <7>associated with them in chat!
 
                         <e>Click to view!"""),
-                (click, c) -> c.player().openView(new GUIEmblems()));
+                (click, c) -> c.push(new GUIEmblems()));
 
         // Title item
         layout.slot(4, (s, c) -> {

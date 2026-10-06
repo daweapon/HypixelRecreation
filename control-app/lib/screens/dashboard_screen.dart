@@ -11,6 +11,7 @@ import '../widgets/job_banner.dart';
 import '../widgets/reactor_ring.dart';
 import '../widgets/telemetry_strip.dart';
 import 'audit_screen.dart';
+import 'devices_screen.dart';
 import 'deploy_screen.dart';
 import 'logs_screen.dart';
 
@@ -180,6 +181,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   )))),
           _action(Icons.receipt_long, 'Audit log', () => Navigator.of(context).push(
               MaterialPageRoute(builder: (_) => AuditScreen(api: widget.api)))),
+          if (widget.state.role == 'OWNER')
+            _action(Icons.devices_other, 'Paired devices', () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => DevicesScreen(api: widget.api)))),
           _action(Icons.refresh, 'Refresh now', () => widget.state.refresh(force: true)),
           _action(Icons.logout, 'Unpair this device', widget.onSignOut),
         ],

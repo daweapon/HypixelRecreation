@@ -74,10 +74,7 @@ public class GUILevelsGuide extends StatelessView {
                 task.getDisplay().apply(player).forEach(line -> lore.add(Text.parse(line)));
 
                 return ItemStacks.lore(ItemStacks.copy(task.getMaterial().build()), lore);
-            }, (click, c) -> {
-                SkyBlockPlayer player = (SkyBlockPlayer) c.player();
-                player.openView(task.getGuiToOpen());
-            });
+            }, (click, c) -> c.push(task.getGuiToOpen()));
         }
 
     }

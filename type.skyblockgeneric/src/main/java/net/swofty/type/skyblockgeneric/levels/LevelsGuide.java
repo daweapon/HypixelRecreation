@@ -47,6 +47,18 @@ public enum LevelsGuide {
                     .cause(SkyBlockLevelCause.getAccessoryCause(ItemType.MINE_AFFINITY_TALISMAN), null)
                     .build()
     )),
+    AMATEUR(Text.of("<8>Very Early Game"), Text.of("<7>Looks like you're getting the hang of things!"),
+            Material.YELLOW_STAINED_GLASS_PANE, List.of()),
+    INTERMEDIATE(Text.of("<8>Early Game"), Text.of("<7>You have successfully navigated the base layer of SkyBlock."),
+            Material.ORANGE_STAINED_GLASS_PANE, List.of()),
+    SKILLED(Text.of("<8>Mid Game"), Text.of("<7>Since you've made it this far, it's clear that you know your way around SkyBlock."),
+            Material.RED_STAINED_GLASS_PANE, List.of()),
+    EXPERT(Text.of("<8>Late Game"), Text.of("<7>You have made significant progress and should be proud of your accomplishments."),
+            Material.PURPLE_STAINED_GLASS_PANE, List.of()),
+    PROFESSIONAL(Text.of("<8>Very Late Game"), Text.of("<7>You're better at this than most, but never forget your roots."),
+            Material.BLUE_STAINED_GLASS_PANE, List.of()),
+    MASTER(Text.of("<8>End Game"), Text.of("<7>Why are you still playing this game? To check these boxes, that's why!"),
+            Material.BLACK_STAINED_GLASS_PANE, List.of()),
     ;
 
     private final Text title;

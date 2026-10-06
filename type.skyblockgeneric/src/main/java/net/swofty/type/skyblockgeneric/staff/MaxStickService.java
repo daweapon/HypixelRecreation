@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointFairySouls;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointMinionData;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointMissionData;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperience;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkills;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSlayer;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointStorage;
@@ -27,7 +28,9 @@ import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategories;
 import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
 import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
+import net.swofty.type.skyblockgeneric.levels.SkyBlockEmblems;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelCause;
+import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.minion.MinionRegistry;
 import net.swofty.type.skyblockgeneric.minion.SkyBlockMinion;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
@@ -108,6 +111,9 @@ public final class MaxStickService {
         maxFame(player);
         giveMaxBits(player);
         unlockDarkAuctionCalendar(player);
+        // Last: it tops the total up to real Hypixel's maximum, so everything above must have
+        // granted its own SkyBlock XP causes first or the top-up would overshoot.
+        maxSkyBlockLevel(player);
 
         player.sendMessage("<a><l>MAXED! <f>Your profile has been fully maxed out.");
     }
@@ -296,6 +302,32 @@ public final class MaxStickService {
 
             datapoint.setValue(missionData);
         }
+    }
+
+    /**
+     * Takes a player to real Hypixel's maximum SkyBlock Level ({@code 620.19}) and unlocks
+     * every prefix emblem.
+     *
+     * <p>Completes all per-source progress, marks every emblem's unlock cause as met so the
+     * full emblem and prefix set is selectable, then tops the total up with bonus XP to exactly
+     * {@link SkyBlockXPSource#TOTAL_MAX_XP}. The top-up covers the shortfall between what this
+     * server can actually award today and real Hypixel's total.
+     */
+    public static void maxSkyBlockLevel(SkyBlockPlayer player) {
+        DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
+
+        experience.completeAllSourceProgress();
+
+        for (SkyBlockEmblems category : SkyBlockEmblems.values()) {
+            for (SkyBlockEmblems.SkyBlockEmblem emblem : category.getEmblems()) {
+                if (emblem.cause() != null) experience.addExperience(emblem.cause());
+            }
+        }
+
+        experience.setTotalXP(SkyBlockXPSource.TOTAL_MAX_XP);
+
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SKYBLOCK_EXPERIENCE,
+                DatapointSkyBlockExperience.class).setValue(experience);
     }
 
     private static void maxChocolateFactory(SkyBlockPlayer player) {

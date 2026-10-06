@@ -14,6 +14,11 @@ public class LevelCause extends SkyBlockLevelCauseAbstr implements CauseEmblem {
     }
 
     @Override
+    public String displayName() {
+        return "SkyBlock Level " + level;
+    }
+
+    @Override
     public double xpReward() {
         return 0;
     }

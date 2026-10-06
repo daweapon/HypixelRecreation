@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.levels.causes;
 
 import lombok.Getter;
+import net.swofty.commons.StringUtility;
 import net.swofty.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
 import net.swofty.type.skyblockgeneric.museum.MuseumRewards;
 import net.swofty.type.skyblockgeneric.museum.rewards.MuseumXPReward;
@@ -12,6 +13,11 @@ public class MuseumLevelCause extends SkyBlockLevelCauseAbstr {
 
     public MuseumLevelCause(MuseumRewards reward) {
         this.reward = reward;
+    }
+
+    @Override
+    public String displayName() {
+        return "Museum " + StringUtility.toNormalCase(reward.name());
     }
 
     @Override

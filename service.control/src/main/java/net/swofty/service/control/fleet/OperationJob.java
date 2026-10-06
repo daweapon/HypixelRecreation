@@ -18,7 +18,9 @@ public final class OperationJob {
         SUCCEEDED,
         /** Finished, but at least one step failed. The sequence still ran to completion. */
         COMPLETED_WITH_ERRORS,
-        FAILED
+        FAILED,
+        /** Never started: another operation held the lock. Nothing was attempted. */
+        REJECTED
     }
 
     public record Step(Instant at, String container, String action, boolean ok, String message) {
@@ -90,6 +92,30 @@ public final class OperationJob {
         status.set(Status.FAILED);
         currentStep.set(message);
         finishedAt = Instant.now();
+    }
+
+    /** Refused before anything ran. Distinct from FAILED, where the fleet was actually touched. */
+    public void reject(String message) {
+        status.set(Status.REJECTED);
+        currentStep.set(message);
+        finishedAt = Instant.now();
+    }
+
+    /**
+     * Supersedes an earlier failed step that later proved to have worked.
+     *
+     * A lifecycle call can exceed its client budget and still have taken effect; when the
+     * health check then finds the container up, the recorded error is misleading rather than
+     * informative, and would otherwise leave the whole job reading as COMPLETED_WITH_ERRORS.
+     */
+    public void resolve(String container, String action, String message) {
+        for (int i = 0; i < steps.size(); i++) {
+            Step step = steps.get(i);
+            if (!step.ok() && step.container().equals(container) && step.action().equals(action)) {
+                steps.set(i, new Step(step.at(), container, action, true,
+                        message + " (was: " + step.message() + ")"));
+            }
+        }
     }
 
     public boolean isTerminal() {

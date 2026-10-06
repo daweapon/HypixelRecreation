@@ -1277,14 +1277,23 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: REDSTONE_MINION
+    - type: CUSTOM_AWARD
+      data:
+        customAward: ACCESSORY_BAG
+    - type: CUSTOM_AWARD
+      data:
+        customAward: ACCESSORY_BAG_UPGRADE_1
   - amount: 250
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ENCHANTED_REDSTONE
     - type: CUSTOM_AWARD
       data:
-        customAward: ACCESSORY_BAG
+        customAward: ACCESSORY_BAG_UPGRADE_2
   - amount: 750
     rewards:
     - type: XP
@@ -1293,32 +1302,36 @@ collections:
     - type: CUSTOM_AWARD
       data:
         customAward: EFFICIENCY_DISCOUNT
+    - type: CUSTOM_AWARD
+      data:
+        customAward: ACCESSORY_BAG_UPGRADE_3
   - amount: 1500
-    rewards:
-    - type: XP
-      data:
-        xp: 4
-    - type: RECIPE_UNLOCK
-      data:
-        unlockedItemType: ENCHANTED_REDSTONE
-  - amount: 3000
-    rewards:
-    - type: XP
-      data:
-        xp: 4
-  - amount: 5000
     rewards:
     - type: XP
       data:
         xp: 4
     - type: CUSTOM_AWARD
       data:
-        customAward: ACCESSORY_BAG_UPGRADE_1
-  - amount: 10000
+        customAward: ACCESSORY_BAG_UPGRADE_4
+  - amount: 2500
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: CUSTOM_AWARD
+      data:
+        customAward: ACCESSORY_BAG_UPGRADE_5
+  - amount: 5000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: PERSONAL_COMPACTOR_4000
+    - type: CUSTOM_AWARD
+      data:
+        customAward: ACCESSORY_BAG_UPGRADE_6
   - amount: 25000
     rewards:
     - type: XP
@@ -1327,79 +1340,31 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_REDSTONE_BLOCK
-  - amount: 50000
-    rewards:
-    - type: XP
-      data:
-        xp: 4
-    - type: CUSTOM_AWARD
-      data:
-        customAward: ACCESSORY_BAG_UPGRADE_2
-    - type: RECIPE_UNLOCK
-      data:
-        unlockedItemType: PERSONAL_COMPACTOR_4000
-  - amount: 200000
-    rewards:
-    - type: XP
-      data:
-        xp: 4
-    - type: CUSTOM_AWARD
-      data:
-        customAward: ACCESSORY_BAG_UPGRADE_3
-  - amount: 400000
-    rewards:
-    - type: XP
-      data:
-        xp: 4
-    - type: CUSTOM_AWARD
-      data:
-        customAward: ACCESSORY_BAG_UPGRADE_4
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: PERSONAL_COMPACTOR_5000
-  - amount: 600000
-    rewards:
-    - type: XP
-      data:
-        xp: 4
-    - type: CUSTOM_AWARD
-      data:
-        customAward: ACCESSORY_BAG_UPGRADE_5
-  - amount: 800000
-    rewards:
-    - type: XP
-      data:
-        xp: 4
-    - type: CUSTOM_AWARD
-      data:
-        customAward: ACCESSORY_BAG_UPGRADE_6
-    - type: RECIPE_UNLOCK
-      data:
-        unlockedItemType: PERSONAL_COMPACTOR_6000
-  - amount: 1000000
-    rewards:
-    - type: XP
-      data:
-        xp: 4
     - type: CUSTOM_AWARD
       data:
         customAward: ACCESSORY_BAG_UPGRADE_7
-    - type: RECIPE_UNLOCK
-      data:
-        unlockedItemType: PERSONAL_COMPACTOR_7000
-  - amount: 1200000
+  - amount: 100000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: PERSONAL_COMPACTOR_6000
     - type: CUSTOM_AWARD
       data:
         customAward: ACCESSORY_BAG_UPGRADE_8
-  - amount: 1400000
+  - amount: 250000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: PERSONAL_COMPACTOR_7000
     - type: CUSTOM_AWARD
       data:
         customAward: ACCESSORY_BAG_UPGRADE_9

@@ -80,6 +80,17 @@ public final class DockerSocketClient {
         return request("POST", path, null);
     }
 
+    /**
+     * POSTs with an explicit time budget.
+     *
+     * Lifecycle calls carry their own grace period (`?t=`), and Docker does not answer until
+     * that has elapsed. A fixed client ceiling below it therefore reports a timeout for every
+     * container that uses its full allowance, even though the restart succeeded.
+     */
+    public DockerResponse post(String path, Duration budget) {
+        return send("POST", path, null, null, budget);
+    }
+
     /** PUTs a raw body (used for the tar stream that implements `docker cp`). */
     public DockerResponse putBinary(String path, byte[] body, String contentType) {
         return send("PUT", path, body, contentType);
@@ -92,6 +103,11 @@ public final class DockerSocketClient {
     }
 
     private DockerResponse send(String method, String path, byte[] body, String contentType) {
+        return send(method, path, body, contentType, null);
+    }
+
+    private DockerResponse send(String method, String path, byte[] body, String contentType,
+                                Duration explicitBudget) {
         if (!isAvailable()) {
             throw new DockerException("Docker socket is not available at " + socketPath
                     + " - is /var/run/docker.sock mounted into this container?");
@@ -99,8 +115,8 @@ public final class DockerSocketClient {
 
         AtomicBoolean timedOut = new AtomicBoolean(false);
         try (SocketChannel channel = SocketChannel.open(StandardProtocolFamily.UNIX)) {
-            Duration budget = body != null && body.length > 1_000_000
-                    ? UPLOAD_TIMEOUT : REQUEST_TIMEOUT;
+            Duration budget = explicitBudget != null ? explicitBudget
+                    : body != null && body.length > 1_000_000 ? UPLOAD_TIMEOUT : REQUEST_TIMEOUT;
             ScheduledFuture<?> watchdog = TIMEOUT_WATCHDOG.schedule(() -> {
                 timedOut.set(true);
                 try {

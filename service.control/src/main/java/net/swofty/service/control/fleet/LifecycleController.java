@@ -241,6 +241,10 @@ public final class LifecycleController {
                 if (info.state() == ContainerState.UP) {
                     job.record(container, "health", true, "healthy after "
                             + Duration.between(deadline.minusSeconds(timeoutSeconds), Instant.now()).toSeconds() + "s");
+                    // The call may have overrun its budget and still taken effect.
+                    for (String action : new String[]{"restart", "start", "stop"}) {
+                        job.resolve(container, action, "confirmed by health check");
+                    }
                     return;
                 }
                 if (info.state() == ContainerState.EXIT) {
@@ -280,7 +284,7 @@ public final class LifecycleController {
         OperationJob job = new OperationJob(UUID.randomUUID().toString(), operation, requestedBy);
 
         if (!operationInFlight.compareAndSet(false, true)) {
-            job.fail("another fleet operation is already running");
+            job.reject("another fleet operation is already running");
             jobs.put(job.getId(), job);
             return job;
         }

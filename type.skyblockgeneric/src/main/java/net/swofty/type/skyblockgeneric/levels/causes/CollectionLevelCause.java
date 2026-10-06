@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategory;
+import net.swofty.commons.StringUtility;
 import net.swofty.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -23,6 +24,11 @@ public class CollectionLevelCause extends SkyBlockLevelCauseAbstr {
             return;
         }
         this.collection = category.getCollection(type);
+    }
+
+    @Override
+    public String displayName() {
+        return StringUtility.toNormalCase(type.name()) + " Collection " + level;
     }
 
     @Override

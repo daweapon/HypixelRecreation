@@ -10,6 +10,9 @@ import java.util.Deque;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Supplier;
+
+import org.tinylog.Logger;
 
 @ToString
 @RequiredArgsConstructor
@@ -44,10 +47,7 @@ public final class ViewNavigator {
             currentSession.close(ViewSession.CloseReason.REPLACED);
         }
 
-        ViewSession<S> session = ViewSession.open(view, player, state);
-        this.currentSession = session;
-        registerCloseHandler(session);
-        return session;
+        return adopt(() -> ViewSession.open(view, player, state), view);
     }
 
     public <S> ViewSession<S> push(View<S> view) {
@@ -62,10 +62,7 @@ public final class ViewNavigator {
         }
 
         SharedContext<S> ctx = SharedContext.getOrCreate(contextId, initialState);
-        var session = ViewSession.openShared(view, player, ctx);
-        this.currentSession = session;
-        registerCloseHandler(session);
-        return session;
+        return adopt(() -> ViewSession.openShared(view, player, ctx), view);
     }
 
     public <S> ViewSession<S> joinShared(View<S> view, String contextId) {
@@ -74,10 +71,7 @@ public final class ViewNavigator {
                 pushCurrentToStack();
                 currentSession.close(ViewSession.CloseReason.REPLACED);
             }
-            var session = ViewSession.openShared(view, player, ctx);
-            this.currentSession = session;
-            registerCloseHandler(session);
-            return session;
+            return adopt(() -> ViewSession.openShared(view, player, ctx), view);
         }).orElseThrow(() -> new IllegalArgumentException("Shared context not found: " + contextId));
     }
 
@@ -87,10 +81,7 @@ public final class ViewNavigator {
             currentSession.close(ViewSession.CloseReason.REPLACED);
         }
 
-        var session = ViewSession.openShared(view, player, sharedContext);
-        this.currentSession = session;
-        registerCloseHandler(session);
-        return session;
+        return adopt(() -> ViewSession.openShared(view, player, sharedContext), view);
     }
 
     public <S> ViewSession<S> replace(View<S> view, S state) {
@@ -98,10 +89,7 @@ public final class ViewNavigator {
             currentSession.close(ViewSession.CloseReason.REPLACED);
         }
 
-        var session = ViewSession.open(view, player, state);
-        this.currentSession = session;
-        registerCloseHandler(session);
-        return session;
+        return adopt(() -> ViewSession.open(view, player, state), view);
     }
 
     public <S> ViewSession<S> replace(View<S> view) {
@@ -123,10 +111,7 @@ public final class ViewNavigator {
         }
 
         NavigationEntry<?> entry = stack.pop();
-        var session = openEntry(entry);
-        this.currentSession = session;
-        registerCloseHandler(session);
-        return true;
+        return adopt(() -> openEntry(entry), entry.view()) != null;
     }
 
     public void popTo(int levels) {
@@ -166,6 +151,30 @@ public final class ViewNavigator {
 
     public HypixelPlayer player() {
         return player;
+    }
+
+
+    /**
+     * Building a view runs arbitrary rendering code, and a failure used to leave the player
+     * looking at an inventory this navigator no longer drives - clicks in it went uncancelled,
+     * so its items could be dragged into the player's inventory. Anything that throws now tears
+     * the whole stack down and shuts the window.
+     */
+    private <S> ViewSession<S> adopt(Supplier<ViewSession<S>> opener, View<?> view) {
+        ViewSession<S> session;
+        try {
+            session = opener.get();
+        } catch (RuntimeException e) {
+            Logger.error(e, "Failed to open view " + view.getClass().getName() + " for " + player.getUsername());
+            stack.clear();
+            currentSession = null;
+            player.closeInventory();
+            player.sendMessage("<c>That menu could not be opened. Please report this.");
+            return null;
+        }
+        this.currentSession = session;
+        registerCloseHandler(session);
+        return session;
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})

@@ -7,9 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,15 +90,13 @@ public class SkyBlockLevelRequirement {
     }
 
     // Instance methods (equivalent to the original enum methods)
+    /**
+     * Total SkyBlock XP needed to reach this level. The {@code experience} column in
+     * {@code skyblock_level_rewards.yml} is already cumulative (level N == N * 100 XP), so
+     * this is the value itself rather than a running sum of every entry below it.
+     */
     public int getCumulativeExperience() {
-        int cumulative = 0;
-        for (SkyBlockLevelRequirement requirement : values()) {
-            cumulative += requirement.experience;
-            if (requirement.level == this.level) {
-                return cumulative;
-            }
-        }
-        return 0;
+        return experience;
     }
 
     public SkyBlockLevelRequirement getNextMilestoneLevel() {
@@ -123,8 +119,13 @@ public class SkyBlockLevelRequirement {
         return level;
     }
 
+    /**
+     * Colour markup for this level's bracketed prefix. Real Hypixel changes it every 40 levels
+     * (white at 40 through dark red at 480, which is the final tier), and the per-level
+     * {@code prefix} column already encodes that ladder.
+     */
     public String getColor() {
-        return "<7>";
+        return prefix == null || prefix.isBlank() ? "<7>" : prefix;
     }
 
     public @Nullable SkyBlockLevelRequirement getNextLevel() {
@@ -137,7 +138,7 @@ public class SkyBlockLevelRequirement {
     }
 
     public Map<SkyBlockLevelRequirement, String> getPreviousPrefixChanges() {
-        Map<SkyBlockLevelRequirement, String> toReturn = new HashMap<>();
+        Map<SkyBlockLevelRequirement, String> toReturn = new LinkedHashMap<>();
 
         SkyBlockLevelRequirement last = getLevel(0);
         if (last == null) return toReturn;
@@ -161,17 +162,20 @@ public class SkyBlockLevelRequirement {
         return null;
     }
 
+    /**
+     * Total SkyBlock XP needed to reach the level directly below this one — i.e. the XP floor
+     * this level starts counting from. Because {@code experience} is cumulative, summing every
+     * entry below would square the figure rather than yield a threshold.
+     */
     public int getExperienceOfAllPreviousLevels() {
-        return Arrays.stream(values())
-                .filter(requirement -> requirement.level < this.level)
-                .mapToInt(SkyBlockLevelRequirement::getExperience)
-                .sum();
+        SkyBlockLevelRequirement previous = getLevel(level - 1);
+        return previous == null ? 0 : previous.experience;
     }
 
     // Static utility methods
     public static Map<SkyBlockLevelRequirement, String> getAllPrefixChanges() {
         ensureLoaded();
-        Map<SkyBlockLevelRequirement, String> toReturn = new HashMap<>();
+        Map<SkyBlockLevelRequirement, String> toReturn = new LinkedHashMap<>();
 
         SkyBlockLevelRequirement last = getLevel(0);
         if (last == null) return toReturn;

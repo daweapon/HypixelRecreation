@@ -15,10 +15,12 @@ class JobBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final failed = job.steps.where((s) => !s.ok).length;
-    final colour = job.status == 'FAILED' || failed > 0
-        ? ReactorTheme.amber
-        : job.isRunning
-            ? ReactorTheme.cyan
+    // REJECTED means nothing was attempted - the operator pressed twice. Worth showing, but
+    // it is not an outage and should not read like one.
+    final colour = job.status == 'REJECTED'
+        ? ReactorTheme.textSecondary
+        : job.status == 'FAILED' || failed > 0
+            ? ReactorTheme.amber
             : ReactorTheme.cyan;
 
     return HudPanel(

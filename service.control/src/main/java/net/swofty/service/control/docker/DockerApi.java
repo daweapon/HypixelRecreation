@@ -13,6 +13,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -139,15 +140,30 @@ public final class DockerApi {
     }
 
     public void stop(String name, int timeoutSeconds) {
-        act("stop", name, "/containers/" + encode(name) + "/stop?t=" + timeoutSeconds);
+        act("stop", name, "/containers/" + encode(name) + "/stop?t=" + timeoutSeconds,
+                graceBudget(timeoutSeconds));
     }
 
     public void restart(String name, int timeoutSeconds) {
-        act("restart", name, "/containers/" + encode(name) + "/restart?t=" + timeoutSeconds);
+        act("restart", name, "/containers/" + encode(name) + "/restart?t=" + timeoutSeconds,
+                graceBudget(timeoutSeconds));
+    }
+
+    /**
+     * Docker withholds its response for the whole stop grace period, so the client must wait
+     * longer than the grace it just asked for. The margin covers the container actually
+     * starting again after the stop.
+     */
+    private static Duration graceBudget(int timeoutSeconds) {
+        return Duration.ofSeconds(Math.max(timeoutSeconds, 0) + 30L);
     }
 
     private void act(String verb, String name, String path) {
-        DockerResponse response = client.post(path);
+        act(verb, name, path, null);
+    }
+
+    private void act(String verb, String name, String path, Duration budget) {
+        DockerResponse response = budget == null ? client.post(path) : client.post(path, budget);
         // 304 means the container was already in the requested state, which is not a failure.
         if (!response.isSuccess() && response.status() != 304) {
             throw new DockerException("Failed to " + verb + " " + name + ": HTTP "

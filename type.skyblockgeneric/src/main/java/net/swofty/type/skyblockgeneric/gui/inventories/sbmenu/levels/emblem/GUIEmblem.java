@@ -72,6 +72,14 @@ public class GUIEmblem extends PaginatedView<SkyBlockEmblems.SkyBlockEmblem, GUI
                     Text.literal(" "),
                     Text.of("<e>Click to select!")
             ));
+        } else if (causeEmblem == null) {
+            // Listed for parity with Hypixel; the system that awards it does not exist here yet.
+            lore = new ArrayList<>(List.of(
+                    Text.of("<8>Locked"),
+                    Text.literal(" "),
+                    Text.of("<c>Not in the game yet."),
+                    Text.of("<8>Listed for parity with Hypixel.")
+            ));
         } else {
             lore = new ArrayList<>(List.of(
                     Text.of("<8>Locked"),

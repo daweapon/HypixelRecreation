@@ -17,11 +17,24 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class SkyBlockLevelCause {
+    /**
+     * Highest level a {@link LevelCause} is registered for. Keep in step with the last entry in
+     * {@code configuration/skyblock/levels/skyblock_level_rewards.yml}.
+     */
+    public static final int HIGHEST_LEVEL_CAUSE = 700;
+
     private static final Map<String, SkyBlockLevelCauseAbstr> CAUSES = new HashMap<>();
+    /**
+     * Reverse lookup for {@link #getKey}. Causes are compared by identity, matching the
+     * original linear scan, but without rescanning every registered cause on each call — this
+     * runs once per cause on every profile save, so a linear scan made saving quadratic.
+     */
+    private static final Map<SkyBlockLevelCauseAbstr, String> KEYS_BY_CAUSE = new IdentityHashMap<>();
 
     public static void initializeCauses() {
         // Register all Skill causes
@@ -38,8 +51,10 @@ public class SkyBlockLevelCause {
             }
         }
 
-        // Register all level causes up to 500
-        for (int i = 0; i <= 500; i++) {
+        // Register all level causes. Must cover every level defined in
+        // skyblock_level_rewards.yml, otherwise levelling past the ceiling hands
+        // ActionChangeHypixelXP a null cause.
+        for (int i = 0; i <= HIGHEST_LEVEL_CAUSE; i++) {
             CAUSES.put("level-" + i, new LevelCause(i));
         }
 
@@ -175,12 +190,15 @@ public class SkyBlockLevelCause {
     }
 
     public static String getKey(@NonNull SkyBlockLevelCauseAbstr cause) {
-        for (Map.Entry<String, SkyBlockLevelCauseAbstr> entry : CAUSES.entrySet()) {
-            if (entry.getValue() == cause) {
-                return entry.getKey();
-            }
+        if (KEYS_BY_CAUSE.isEmpty() && !CAUSES.isEmpty()) {
+            CAUSES.forEach((key, value) -> KEYS_BY_CAUSE.put(value, key));
         }
-        throw new IllegalArgumentException("Cause not found " + cause.getClass().getSimpleName());
+
+        String key = KEYS_BY_CAUSE.get(cause);
+        if (key == null) {
+            throw new IllegalArgumentException("Cause not found " + cause.getClass().getSimpleName());
+        }
+        return key;
     }
 
     public static List<SkyBlockLevelCauseAbstr> getSkillCauses(SkillCategories category, int levelUpToInclusive) {

@@ -345,3 +345,37 @@ class DeployCandidates {
             .toList(),
       );
 }
+
+/// An enrolled device: who may control the stack, and at what level.
+class DeviceEntry {
+  final String deviceId;
+  final String deviceName;
+  final String playerName;
+  final String role;
+  final DateTime? createdAt;
+  final DateTime? lastSeenAt;
+  final bool revoked;
+
+  DeviceEntry({
+    required this.deviceId,
+    required this.deviceName,
+    required this.playerName,
+    required this.role,
+    required this.createdAt,
+    required this.lastSeenAt,
+    required this.revoked,
+  });
+
+  bool get isOwner => role == 'OWNER';
+  bool get isReadOnly => role == 'READ_ONLY';
+
+  factory DeviceEntry.fromJson(Map<String, dynamic> json) => DeviceEntry(
+        deviceId: json['deviceId'] as String? ?? '',
+        deviceName: json['deviceName'] as String? ?? 'unnamed device',
+        playerName: json['playerName'] as String? ?? 'unknown',
+        role: json['role'] as String? ?? 'READ_ONLY',
+        createdAt: DateTime.tryParse(json['createdAt'] as String? ?? ''),
+        lastSeenAt: DateTime.tryParse(json['lastSeenAt'] as String? ?? ''),
+        revoked: json['revoked'] as bool? ?? false,
+      );
+}

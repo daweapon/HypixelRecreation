@@ -82,7 +82,8 @@ public class GUILevelPrefixRewards extends StatelessView {
                         unlockLine
                 );
 
-                return ItemStacks.item(level.getPrefixItem(), 1, name, lore);
+                Material icon = level.getPrefixItem() == null ? Material.GRAY_DYE : level.getPrefixItem();
+                return ItemStacks.item(icon, 1, name, lore);
             });
 
             index++;

@@ -13,9 +13,11 @@ import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.levels.emblem.GUIEmblems;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.levels.rewards.GUILevelRewards;
+import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.levels.sources.GUIXPSources;
 import net.swofty.type.skyblockgeneric.levels.LevelsGuide;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelCause;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement;
+import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -60,7 +62,7 @@ public class GUISkyBlockLevels extends StatelessView {
 
             return ItemStacks.item(Material.CHEST, 1, Text.key("gui_sbmenu.levels.main.level_rewards"),
                     Text.keyLines("gui_sbmenu.levels.main.level_rewards.lore", display));
-        }, (click, c) -> c.player().openView(new GUILevelRewards()));
+        }, (click, c) -> c.push(new GUILevelRewards()));
 
         // Your SkyBlock Level Ranking
         layout.slot(4, (s, c) -> {
@@ -79,12 +81,26 @@ public class GUISkyBlockLevels extends StatelessView {
         // SkyBlock Guide
         layout.slot(25, (s, c) -> ItemStacks.item(Material.FILLED_MAP, 1, Text.key("gui_sbmenu.levels.main.guide"),
                         Text.keyLines("gui_sbmenu.levels.main.guide.lore")),
-                (click, c) -> c.player().openView(new GUILevelsGuide(LevelsGuide.STARTER)));
+                (click, c) -> c.push(new GUIGuideTiers()));
 
         // Prefix Emblems
         layout.slot(43, (s, c) -> ItemStacks.item(Material.NAME_TAG, 1, Text.key("gui_sbmenu.levels.main.emblems"),
                         Text.keyLines("gui_sbmenu.levels.main.emblems.lore")),
-                (click, c) -> c.player().openView(new GUIEmblems()));
+                (click, c) -> c.push(new GUIEmblems()));
+
+        // Ways to Level Up
+        layout.slot(16, (s, c) -> {
+            List<Text> lore = new ArrayList<>();
+            lore.add(Text.of("<7>Learn more about the different ways"));
+            lore.add(Text.of("<7>to earn SkyBlock XP."));
+            lore.add(Text.empty());
+            lore.add(Text.of("<7>Also see a specific breakdown of"));
+            lore.add(Text.of("<7>where all your XP comes from!"));
+            lore.add(Text.empty());
+            lore.add(Text.of("<e>Click to view!"));
+
+            return ItemStacks.item(Material.REDSTONE_TORCH, 1, Text.of("<a>Ways to Level Up"), lore);
+        }, (click, c) -> c.push(new GUIXPSources()));
 
         // Level progression slots
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
@@ -128,7 +144,7 @@ public class GUISkyBlockLevels extends StatelessView {
                 lore.add(Text.key("gui_sbmenu.levels.main.click_to_view"));
 
                 return ItemStacks.item(material, 1, Text.key("gui_sbmenu.levels.main.level", level.asInt()), lore);
-            }, (click, c) -> c.player().openView(new GUISkyBlockLevel(level)));
+            }, (click, c) -> c.push(new GUISkyBlockLevel(level)));
         }
 
         // Next Milestone Level
@@ -150,7 +166,7 @@ public class GUISkyBlockLevels extends StatelessView {
 
                 return ItemStacks.item(Material.PURPLE_STAINED_GLASS_PANE, 1,
                         Text.key("gui_sbmenu.levels.main.level", currentMilestone.asInt()), lore);
-            }, (click, c) -> c.player().openView(new GUISkyBlockLevel(currentMilestone)));
+            }, (click, c) -> c.push(new GUISkyBlockLevel(currentMilestone)));
         }
     }
 }

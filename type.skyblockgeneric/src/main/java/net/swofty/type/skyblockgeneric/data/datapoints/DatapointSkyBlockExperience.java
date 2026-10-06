@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.event.custom.SkyBlockXPModificationEvent;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockEmblems;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelCause;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement;
+import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -18,8 +19,8 @@ import org.json.JSONObject;
 
 import java.util.*;
 
-// Persists a player's completed SkyBlock XP causes and current emblem, and computes total XP,
-// level, and progress toward the next SkyBlock level.
+// Persists a player's completed SkyBlock XP causes, per-source XP progress, any admin-granted
+// bonus XP and their current emblem, and computes total XP, level, and progress to the next level.
 public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyBlockExperience.PlayerSkyBlockExperience> {
     private static final Serializer<PlayerSkyBlockExperience> serializer = new Serializer<>() {
         @Override
@@ -30,14 +31,20 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
                 serialized.add(SkyBlockLevelCause.getKey(cause));
             });
 
-            if (value.getCurrentEmblem() == null) return new JSONObject(new HashMap<>(Map.of(
-                    "values", serialized
-            ))).toString();
+            Map<String, Object> json = new HashMap<>();
+            json.put("values", serialized);
 
-            return new JSONObject(new HashMap<>(Map.of(
-                    "values", serialized,
-                    "emblem", value.getCurrentEmblem().getKey().name() + ":" + value.getCurrentEmblem().getValue()
-            ))).toString();
+            if (value.getCurrentEmblem() != null) {
+                json.put("emblem", value.getCurrentEmblem().getKey().name() + ":" + value.getCurrentEmblem().getValue());
+            }
+            if (!value.getSourceProgress().isEmpty()) {
+                json.put("sources", new JSONObject(new HashMap<String, Object>(value.getSourceProgress())));
+            }
+            if (value.getBonusXP() != 0) {
+                json.put("bonus", value.getBonusXP());
+            }
+
+            return new JSONObject(json).toString();
         }
 
         @Override
@@ -46,20 +53,41 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
 
             JSONObject jsonObject = new JSONObject(json);
             jsonObject.getJSONArray("values").forEach((value) -> {
-                if (value instanceof String)
-                    experience.add(SkyBlockLevelCause.getCause((String) value));
+                if (value instanceof String) {
+                    SkyBlockLevelCauseAbstr cause = SkyBlockLevelCause.getCause((String) value);
+                    // A cause key can disappear between versions (an item or mission that no
+                    // longer exists). Skipping it keeps the rest of the profile loadable.
+                    if (cause != null) experience.add(cause);
+                }
             });
 
-            if (!jsonObject.has("emblem") || jsonObject.isNull("emblem")) return new PlayerSkyBlockExperience(experience, null);
-            String[] emblem = jsonObject.getString("emblem").split(":");
-            AbstractMap.SimpleEntry<SkyBlockEmblems, Integer> currentEmblem = new HashMap.SimpleEntry<>(SkyBlockEmblems.valueOf(emblem[0]), Integer.parseInt(emblem[1]));
+            Map<String, Double> sources = new LinkedHashMap<>();
+            if (jsonObject.has("sources") && !jsonObject.isNull("sources")) {
+                JSONObject sourcesJson = jsonObject.getJSONObject("sources");
+                for (String key : sourcesJson.keySet()) {
+                    sources.put(key, sourcesJson.getDouble(key));
+                }
+            }
 
-            return new PlayerSkyBlockExperience(experience, currentEmblem);
+            double bonus = jsonObject.has("bonus") && !jsonObject.isNull("bonus")
+                    ? jsonObject.getDouble("bonus") : 0D;
+
+            Map.Entry<SkyBlockEmblems, Integer> currentEmblem = null;
+            if (jsonObject.has("emblem") && !jsonObject.isNull("emblem")) {
+                String[] emblem = jsonObject.getString("emblem").split(":");
+                currentEmblem = new HashMap.SimpleEntry<>(SkyBlockEmblems.valueOf(emblem[0]), Integer.parseInt(emblem[1]));
+            }
+
+            return new PlayerSkyBlockExperience(experience, currentEmblem, sources, bonus);
         }
 
         @Override
         public PlayerSkyBlockExperience clone(PlayerSkyBlockExperience value) {
-            return new PlayerSkyBlockExperience(value.getCompletedExperienceCauses(), value.getCurrentEmblem());
+            return new PlayerSkyBlockExperience(
+                    new ArrayList<>(value.getCompletedExperienceCauses()),
+                    value.getCurrentEmblem(),
+                    new LinkedHashMap<>(value.getSourceProgress()),
+                    value.getBonusXP());
         }
     };
 
@@ -76,12 +104,30 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
     public static class PlayerSkyBlockExperience {
         private List<SkyBlockLevelCauseAbstr> completedExperienceCauses = new ArrayList<>();
         private Map.Entry<SkyBlockEmblems, Integer> currentEmblem = null;
+        /**
+         * XP earned per {@link SkyBlockXPSource}, keyed by enum name, for every source that
+         * isn't already represented by a dedicated cause class. This is how systems that exist
+         * but don't yet grant SkyBlock XP get wired up later — one {@code addSourceXP} call.
+         */
+        private Map<String, Double> sourceProgress = new LinkedHashMap<>();
+        /** Admin-granted XP offset, set by the SkyBlock XP commands. Can be negative. */
+        private double bonusXP = 0D;
         @Setter
         private SkyBlockPlayer attachedPlayer = null;
 
-        public PlayerSkyBlockExperience(List<SkyBlockLevelCauseAbstr> completedExperienceCauses, Map.Entry<SkyBlockEmblems, Integer> currentEmblem) {
+        public PlayerSkyBlockExperience(List<SkyBlockLevelCauseAbstr> completedExperienceCauses,
+                                        Map.Entry<SkyBlockEmblems, Integer> currentEmblem) {
+            this(completedExperienceCauses, currentEmblem, new LinkedHashMap<>(), 0D);
+        }
+
+        public PlayerSkyBlockExperience(List<SkyBlockLevelCauseAbstr> completedExperienceCauses,
+                                        Map.Entry<SkyBlockEmblems, Integer> currentEmblem,
+                                        Map<String, Double> sourceProgress,
+                                        double bonusXP) {
             this.completedExperienceCauses = completedExperienceCauses;
             this.currentEmblem = currentEmblem;
+            this.sourceProgress = sourceProgress;
+            this.bonusXP = bonusXP;
         }
 
         /**
@@ -138,11 +184,104 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
 
             double oldXP = getTotalXP();
             completedExperienceCauses.add(cause);
-            double newXP = getTotalXP();
+            fireModification(cause, oldXP, getTotalXP());
+        }
 
-            if (getAttachedPlayer() != null)
-                HypixelEventHandler.callCustomEvent(new SkyBlockXPModificationEvent(
-                        getAttachedPlayer(), cause, oldXP, newXP));
+        // ----- Per-source XP -----
+
+        /**
+         * XP this player has earned from a given source. Sources backed by a dedicated cause
+         * class are summed from completed causes; everything else reads stored progress.
+         */
+        public double getSourceXP(@NonNull SkyBlockXPSource source) {
+            Class<? extends SkyBlockLevelCauseAbstr> backing = source.getBackingCauseType();
+            if (backing != null) {
+                return completedExperienceCauses.stream()
+                        .filter(backing::isInstance)
+                        .mapToDouble(SkyBlockLevelCauseAbstr::xpReward)
+                        .sum();
+            }
+            return sourceProgress.getOrDefault(source.name(), 0D);
+        }
+
+        /**
+         * Awards XP for a source, clamped to that source's real Hypixel maximum. This is the
+         * entry point for wiring up a system that already tracks progress but doesn't yet grant
+         * SkyBlock XP. No-ops for sources backed by a dedicated cause class, which award
+         * themselves through {@link #addExperience}.
+         */
+        public void addSourceXP(@NonNull SkyBlockXPSource source, double amount) {
+            if (!source.usesSourceProgress() || amount == 0) return;
+            setSourceXP(source, getSourceXP(source) + amount);
+        }
+
+        /** Sets a source's earned XP outright, clamped to {@code [0, source max]}. */
+        public void setSourceXP(@NonNull SkyBlockXPSource source, double amount) {
+            if (!source.usesSourceProgress()) return;
+
+            double clamped = source.isUncapped()
+                    ? Math.max(0D, amount)
+                    : Math.max(0D, Math.min(amount, source.getMaxXP()));
+            double current = sourceProgress.getOrDefault(source.name(), 0D);
+            if (clamped == current) return;
+
+            double oldXP = getTotalXP();
+            if (clamped == 0D) {
+                sourceProgress.remove(source.name());
+            } else {
+                sourceProgress.put(source.name(), clamped);
+            }
+            fireModification(null, oldXP, getTotalXP());
+        }
+
+        /** Marks every source this server cannot award through play as fully completed. */
+        public void completeAllSourceProgress() {
+            double oldXP = getTotalXP();
+            for (SkyBlockXPSource source : SkyBlockXPSource.values()) {
+                if (source.usesSourceProgress()) {
+                    sourceProgress.put(source.name(), (double) source.getMaxXP());
+                }
+            }
+            fireModification(null, oldXP, getTotalXP());
+        }
+
+        public double getTotalSourceXP() {
+            return sourceProgress.values().stream().mapToDouble(Double::doubleValue).sum();
+        }
+
+        // ----- Admin bonus XP -----
+
+        /** Replaces the admin bonus offset. Negative values are allowed, total XP floors at 0. */
+        public void setBonusXP(double bonusXP) {
+            if (this.bonusXP == bonusXP) return;
+            double oldXP = getTotalXP();
+            this.bonusXP = bonusXP;
+            fireModification(null, oldXP, getTotalXP());
+        }
+
+        public void addBonusXP(double amount) {
+            setBonusXP(this.bonusXP + amount);
+        }
+
+        /**
+         * Moves the player's total XP to {@code target} by adjusting the bonus offset, leaving
+         * genuinely earned causes and source progress untouched.
+         */
+        public void setTotalXP(double target) {
+            setBonusXP(bonusXP + (Math.max(0D, target) - getTotalXP()));
+        }
+
+        /** XP earned without the admin offset — what the player actually worked for. */
+        public double getEarnedXP() {
+            double fromCauses = completedExperienceCauses.isEmpty() ? 0D
+                    : completedExperienceCauses.stream().mapToDouble(SkyBlockLevelCauseAbstr::xpReward).sum();
+            return fromCauses + getTotalSourceXP();
+        }
+
+        private void fireModification(@Nullable SkyBlockLevelCauseAbstr cause, double oldXP, double newXP) {
+            if (oldXP == newXP || getAttachedPlayer() == null) return;
+            HypixelEventHandler.callCustomEvent(new SkyBlockXPModificationEvent(
+                    getAttachedPlayer(), cause, oldXP, newXP));
         }
 
         /**
@@ -152,30 +291,36 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
          * @return a String representation of the next level's progress or "<c>MAX" if the maximum level is reached.
          */
         public String getNextLevelDisplay() {
-            SkyBlockLevelRequirement nextLevel = getLevel().getNextLevel();
+            SkyBlockLevelRequirement currentLevel = getLevel();
+            SkyBlockLevelRequirement nextLevel = currentLevel.getNextLevel();
             if (nextLevel == null) return "<c>MAX";
 
-            int nextLevelXP = nextLevel.getExperience() - nextLevel.getExperienceOfAllPreviousLevels();
-            double totalXP = getTotalXP() - nextLevel.getExperienceOfAllPreviousLevels();
+            int levelFloor = currentLevel.getCumulativeExperience();
+            int nextLevelXP = nextLevel.getCumulativeExperience() - levelFloor;
+            if (nextLevelXP <= 0) return "<c>MAX";
+
+            double intoLevel = Math.max(0D, Math.min(getTotalXP() - levelFloor, nextLevelXP));
 
             String baseLoadingBar = "─────────────────";
             int maxBarLength = baseLoadingBar.length();
-            int completedLength = (int) ((totalXP / (double) nextLevelXP) * maxBarLength);
+            int completedLength = (int) ((intoLevel / nextLevelXP) * maxBarLength);
+            completedLength = Math.max(0, Math.min(completedLength, maxBarLength));
 
-            String completedLoadingBar = baseLoadingBar.substring(0, Math.min(completedLength, maxBarLength));
-            String uncompletedLoadingBar = baseLoadingBar.substring(Math.min(completedLoadingBar.length(), maxBarLength));
+            String completedLoadingBar = baseLoadingBar.substring(0, completedLength);
+            String uncompletedLoadingBar = baseLoadingBar.substring(completedLength);
 
-            return "<7><3><m>" + completedLoadingBar + "<f>" + uncompletedLoadingBar + "<r> <b>" + Math.round(totalXP) + "<3>/<b>" + nextLevelXP;
+            return "<7><3><m>" + completedLoadingBar + "<f>" + uncompletedLoadingBar
+                    + "<r> <b>" + Math.round(intoLevel) + "<3>/<b>" + nextLevelXP;
         }
 
         /**
-         * Calculates and returns the total experience earned from all completed experience causes.
+         * Calculates and returns the total experience earned from all completed experience causes,
+         * per-source progress, and any admin bonus offset.
          *
          * @return the total experience points as a {@link Double}.
          */
         public Double getTotalXP() {
-            if (completedExperienceCauses.isEmpty()) return 0.0;
-            return completedExperienceCauses.stream().mapToDouble(SkyBlockLevelCauseAbstr::xpReward).sum();
+            return Math.max(0D, getEarnedXP() + bonusXP);
         }
 
         /**
@@ -185,6 +330,11 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
          */
         public SkyBlockLevelRequirement getLevel() {
             return SkyBlockLevelRequirement.getFromTotalXP(getTotalXP());
+        }
+
+        /** The player's SkyBlock level including its fractional part, e.g. {@code 620.19}. */
+        public double getPreciseLevel() {
+            return getTotalXP() / SkyBlockXPSource.XP_PER_LEVEL;
         }
     }
 }

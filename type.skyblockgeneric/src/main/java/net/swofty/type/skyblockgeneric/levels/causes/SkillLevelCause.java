@@ -18,6 +18,11 @@ public class SkillLevelCause extends SkyBlockLevelCauseAbstr implements CauseEmb
     }
 
     @Override
+    public String displayName() {
+        return category + " Skill " + level;
+    }
+
+    @Override
     public double xpReward() {
         for (SkillCategory.Reward unlock : category.asCategory().getReward(level).unlocks()) {
             if (unlock.type() == SkillCategory.Reward.UnlockType.XP) {

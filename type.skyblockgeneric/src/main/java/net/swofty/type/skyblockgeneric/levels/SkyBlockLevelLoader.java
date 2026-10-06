@@ -103,20 +103,7 @@ public class SkyBlockLevelLoader {
             }
         }
 
-        // Parse prefix item if provided
-        Material prefixItem = null;
-        String entryPrefixItem = entry.prefixItem;
-        if (entryPrefixItem != null) {
-            try {
-                prefixItem = Material.fromKey(entryPrefixItem.toUpperCase());
-            } catch (IllegalArgumentException | InvalidKeyException e) {
-                // Try to find by key value
-                prefixItem = Material.values().stream()
-                        .filter(material -> material.key().value().equalsIgnoreCase(entryPrefixItem))
-                        .findFirst()
-                        .orElse(null);
-            }
-        }
+        Material prefixItem = parsePrefixItem(entry.prefixItem, entry.level);
 
         return createSkyBlockLevelRequirement(
                 entry.level,
@@ -173,6 +160,39 @@ public class SkyBlockLevelLoader {
     }
 
     // Helper method to create SkyBlockLevelRequirement instances
+
+    /**
+     * A level's prefix reward is rendered as an item, so an unresolved material would reach the
+     * GUI as null and throw while the menu was being built. Anything unrecognised falls back to a
+     * visible placeholder and is logged instead.
+     */
+    private static Material parsePrefixItem(@Nullable String raw, int level) {
+        if (raw == null || raw.isBlank()) return null;
+
+        String name = raw.trim();
+        int separator = Math.max(name.lastIndexOf('.'), name.lastIndexOf(':'));
+        if (separator >= 0) name = name.substring(separator + 1);
+        String key = name.toLowerCase();
+
+        try {
+            Material resolved = Material.fromKey(key);
+            if (resolved != null) return resolved;
+        } catch (IllegalArgumentException | InvalidKeyException ignored) {
+            // Fall through to the slower lookup below.
+        }
+
+        Material resolved = Material.values().stream()
+                .filter(material -> material.key().value().equalsIgnoreCase(key))
+                .findFirst()
+                .orElse(null);
+
+        if (resolved == null) {
+            Logger.warn("Level " + level + " has an unknown prefixItem '" + raw + "'; using a placeholder");
+            return Material.GRAY_DYE;
+        }
+        return resolved;
+    }
+
     private static SkyBlockLevelRequirement createSkyBlockLevelRequirement(
             int level,
             int experience,

@@ -284,15 +284,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
         int magicalPower = 0;
 
         for (SkyBlockItem accessory : getAccessoryBag().getUniqueAccessories()) {
-            Rarity taliRarity = accessory.getAttributeHandler().getRarity();
-            switch (taliRarity) {
-                case COMMON -> magicalPower += 3;
-                case UNCOMMON -> magicalPower += 5;
-                case RARE -> magicalPower += 8;
-                case EPIC -> magicalPower += 12;
-                case LEGENDARY -> magicalPower += 16;
-                case MYTHIC -> magicalPower += 22;
-            }
+            magicalPower += accessory.getAttributeHandler().getRarity().getMagicalPower();
         }
         return magicalPower;
     }

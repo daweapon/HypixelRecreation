@@ -19,6 +19,7 @@ import net.swofty.anticheat.loader.minestom.MinestomLoader;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.TestFlow;
 import net.swofty.commons.config.ConfigProvider;
+import net.swofty.commons.config.ConfigurationOverlay;
 import net.swofty.commons.data.SwoftyData;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.objects.proxy.to.*;
@@ -50,6 +51,11 @@ import java.util.stream.Collectors;
 // Server process entry point: parses launch args, bootstraps Minestom, discovers and initializes the matching
 // HypixelTypeLoader, registers Redis proxy/service handlers, and manages proxy registration and heartbeat monitoring.
 public class Hypixel {
+    // Must run before any configuration is read - ConfigProvider loads during static init below.
+    static {
+        ConfigurationOverlay.apply();
+    }
+
     @Getter
     @Setter
     private static UUID serverUUID;

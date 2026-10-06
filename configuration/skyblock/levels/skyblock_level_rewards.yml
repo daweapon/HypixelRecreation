@@ -75,6 +75,11 @@ levels:
   - type: custom
     data:
       customAward: ACCESS_TO_WARDROBE
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
 - level: 6
   experience: 600
   isMilestone: false
@@ -527,7 +532,7 @@ levels:
   isMilestone: true
   prefix: <f>
   prefixDisplay: White Level Prefix
-  prefixItem: Material.BONE_MEAL
+  prefixItem: bone_meal
   unlocks:
   - type: statistic
     data:
@@ -1050,7 +1055,7 @@ levels:
   isMilestone: true
   prefix: <e>
   prefixDisplay: Yellow Level Prefix
-  prefixItem: Material.YELLOW_DYE
+  prefixItem: yellow_dye
   unlocks:
   - type: statistic
     data:
@@ -1573,7 +1578,7 @@ levels:
   isMilestone: true
   prefix: <a>
   prefixDisplay: Green Level Prefix
-  prefixItem: Material.LIME_DYE
+  prefixItem: lime_dye
   unlocks:
   - type: statistic
     data:
@@ -2093,7 +2098,7 @@ levels:
   isMilestone: true
   prefix: <2>
   prefixDisplay: Dark Green Level Prefix
-  prefixItem: Material.GREEN_DYE
+  prefixItem: green_dye
   unlocks:
   - type: statistic
     data:
@@ -2613,7 +2618,7 @@ levels:
   isMilestone: true
   prefix: <b>
   prefixDisplay: Aqua Level Prefix
-  prefixItem: Material.LIGHT_BLUE_DYE
+  prefixItem: light_blue_dye
   unlocks:
   - type: statistic
     data:
@@ -3133,7 +3138,7 @@ levels:
   isMilestone: true
   prefix: <3>
   prefixDisplay: Cyan Level Prefix
-  prefixItem: Material.CYAN_DYE
+  prefixItem: cyan_dye
   unlocks:
   - type: statistic
     data:
@@ -3653,7 +3658,7 @@ levels:
   isMilestone: true
   prefix: <9>
   prefixDisplay: Blue Level Prefix
-  prefixItem: Material.LAPIS_LAZULI
+  prefixItem: lapis_lazuli
   unlocks:
   - type: statistic
     data:
@@ -4173,7 +4178,7 @@ levels:
   isMilestone: true
   prefix: <d>
   prefixDisplay: Pink Level Prefix
-  prefixItem: Material.PINK_DYE
+  prefixItem: pink_dye
   unlocks:
   - type: statistic
     data:
@@ -4693,7 +4698,7 @@ levels:
   isMilestone: true
   prefix: <5>
   prefixDisplay: Purple Level Prefix
-  prefixItem: Material.PURPLE_DYE
+  prefixItem: purple_dye
   unlocks:
   - type: statistic
     data:
@@ -5213,7 +5218,7 @@ levels:
   isMilestone: true
   prefix: <6>
   prefixDisplay: Gold Level Prefix
-  prefixItem: Material.ORANGE_DYE
+  prefixItem: orange_dye
   unlocks:
   - type: statistic
     data:
@@ -5733,7 +5738,7 @@ levels:
   isMilestone: true
   prefix: <c>
   prefixDisplay: Red Level Prefix
-  prefixItem: Material.RED_DYE
+  prefixItem: red_dye
   unlocks:
   - type: statistic
     data:
@@ -6253,7 +6258,7 @@ levels:
   isMilestone: true
   prefix: <4>
   prefixDisplay: Dark Red Level Prefix
-  prefixItem: Material.REDSTONE
+  prefixItem: redstone
   unlocks:
   - type: statistic
     data:
@@ -6510,6 +6515,2606 @@ levels:
           base: 5.0
 - level: 500
   experience: 50000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 501
+  experience: 50100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 502
+  experience: 50200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 503
+  experience: 50300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 504
+  experience: 50400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 505
+  experience: 50500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 506
+  experience: 50600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 507
+  experience: 50700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 508
+  experience: 50800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 509
+  experience: 50900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 510
+  experience: 51000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 511
+  experience: 51100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 512
+  experience: 51200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 513
+  experience: 51300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 514
+  experience: 51400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 515
+  experience: 51500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 516
+  experience: 51600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 517
+  experience: 51700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 518
+  experience: 51800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 519
+  experience: 51900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 520
+  experience: 52000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 521
+  experience: 52100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 522
+  experience: 52200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 523
+  experience: 52300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 524
+  experience: 52400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 525
+  experience: 52500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 526
+  experience: 52600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 527
+  experience: 52700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 528
+  experience: 52800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 529
+  experience: 52900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 530
+  experience: 53000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 531
+  experience: 53100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 532
+  experience: 53200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 533
+  experience: 53300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 534
+  experience: 53400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 535
+  experience: 53500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 536
+  experience: 53600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 537
+  experience: 53700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 538
+  experience: 53800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 539
+  experience: 53900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 540
+  experience: 54000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 541
+  experience: 54100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 542
+  experience: 54200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 543
+  experience: 54300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 544
+  experience: 54400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 545
+  experience: 54500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 546
+  experience: 54600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 547
+  experience: 54700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 548
+  experience: 54800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 549
+  experience: 54900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 550
+  experience: 55000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 551
+  experience: 55100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 552
+  experience: 55200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 553
+  experience: 55300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 554
+  experience: 55400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 555
+  experience: 55500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 556
+  experience: 55600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 557
+  experience: 55700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 558
+  experience: 55800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 559
+  experience: 55900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 560
+  experience: 56000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 561
+  experience: 56100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 562
+  experience: 56200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 563
+  experience: 56300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 564
+  experience: 56400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 565
+  experience: 56500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 566
+  experience: 56600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 567
+  experience: 56700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 568
+  experience: 56800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 569
+  experience: 56900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 570
+  experience: 57000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 571
+  experience: 57100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 572
+  experience: 57200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 573
+  experience: 57300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 574
+  experience: 57400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 575
+  experience: 57500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 576
+  experience: 57600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 577
+  experience: 57700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 578
+  experience: 57800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 579
+  experience: 57900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 580
+  experience: 58000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 581
+  experience: 58100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 582
+  experience: 58200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 583
+  experience: 58300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 584
+  experience: 58400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 585
+  experience: 58500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 586
+  experience: 58600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 587
+  experience: 58700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 588
+  experience: 58800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 589
+  experience: 58900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 590
+  experience: 59000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 591
+  experience: 59100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 592
+  experience: 59200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 593
+  experience: 59300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 594
+  experience: 59400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 595
+  experience: 59500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 596
+  experience: 59600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 597
+  experience: 59700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 598
+  experience: 59800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 599
+  experience: 59900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 600
+  experience: 60000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 601
+  experience: 60100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 602
+  experience: 60200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 603
+  experience: 60300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 604
+  experience: 60400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 605
+  experience: 60500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 606
+  experience: 60600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 607
+  experience: 60700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 608
+  experience: 60800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 609
+  experience: 60900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 610
+  experience: 61000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 611
+  experience: 61100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 612
+  experience: 61200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 613
+  experience: 61300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 614
+  experience: 61400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 615
+  experience: 61500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 616
+  experience: 61600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 617
+  experience: 61700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 618
+  experience: 61800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 619
+  experience: 61900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 620
+  experience: 62000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 621
+  experience: 62100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 622
+  experience: 62200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 623
+  experience: 62300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 624
+  experience: 62400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 625
+  experience: 62500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 626
+  experience: 62600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 627
+  experience: 62700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 628
+  experience: 62800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 629
+  experience: 62900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 630
+  experience: 63000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 631
+  experience: 63100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 632
+  experience: 63200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 633
+  experience: 63300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 634
+  experience: 63400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 635
+  experience: 63500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 636
+  experience: 63600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 637
+  experience: 63700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 638
+  experience: 63800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 639
+  experience: 63900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 640
+  experience: 64000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 641
+  experience: 64100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 642
+  experience: 64200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 643
+  experience: 64300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 644
+  experience: 64400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 645
+  experience: 64500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 646
+  experience: 64600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 647
+  experience: 64700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 648
+  experience: 64800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 649
+  experience: 64900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 650
+  experience: 65000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 651
+  experience: 65100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 652
+  experience: 65200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 653
+  experience: 65300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 654
+  experience: 65400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 655
+  experience: 65500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 656
+  experience: 65600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 657
+  experience: 65700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 658
+  experience: 65800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 659
+  experience: 65900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 660
+  experience: 66000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 661
+  experience: 66100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 662
+  experience: 66200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 663
+  experience: 66300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 664
+  experience: 66400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 665
+  experience: 66500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 666
+  experience: 66600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 667
+  experience: 66700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 668
+  experience: 66800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 669
+  experience: 66900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 670
+  experience: 67000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 671
+  experience: 67100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 672
+  experience: 67200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 673
+  experience: 67300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 674
+  experience: 67400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 675
+  experience: 67500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 676
+  experience: 67600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 677
+  experience: 67700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 678
+  experience: 67800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 679
+  experience: 67900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 680
+  experience: 68000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 681
+  experience: 68100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 682
+  experience: 68200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 683
+  experience: 68300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 684
+  experience: 68400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 685
+  experience: 68500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 686
+  experience: 68600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 687
+  experience: 68700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 688
+  experience: 68800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 689
+  experience: 68900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 690
+  experience: 69000
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 691
+  experience: 69100
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 692
+  experience: 69200
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 693
+  experience: 69300
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 694
+  experience: 69400
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 695
+  experience: 69500
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+  - type: statistic
+    data:
+      statistics:
+        strength:
+          base: 1.0
+- level: 696
+  experience: 69600
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 697
+  experience: 69700
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 698
+  experience: 69800
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 699
+  experience: 69900
+  isMilestone: false
+  prefix: <4>
+  prefixDisplay: null
+  prefixItem: null
+  unlocks:
+  - type: statistic
+    data:
+      statistics:
+        health:
+          base: 5.0
+- level: 700
+  experience: 70000
   isMilestone: false
   prefix: <4>
   prefixDisplay: null
