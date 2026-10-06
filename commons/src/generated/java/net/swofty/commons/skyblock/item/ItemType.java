@@ -3458,6 +3458,8 @@ public enum ItemType {
 
   SAVANA_BOW(Material.BOW, Rarity.UNCOMMON),
 
+  SCARE_FRAGMENT(Material.BLACK_STAINED_GLASS, Rarity.RARE),
+
   SCARFS_GRIMOIRE(Material.PLAYER_HEAD, Rarity.COMMON),
 
   SCARFS_STUDIES(Material.PLAYER_HEAD, Rarity.COMMON),

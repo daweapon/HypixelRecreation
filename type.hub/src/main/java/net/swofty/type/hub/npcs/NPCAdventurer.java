@@ -13,7 +13,7 @@ public class NPCAdventurer extends HypixelNPC {
         super(new HumanConfiguration() {
             @Override
             public String[] holograms(HypixelPlayer player) {
-                return new String[]{"Adventurer", "<e><l>CLICK"};
+                return new String[]{"Combat Merchant", "<e><l>CLICK"};
             }
 
             @Override

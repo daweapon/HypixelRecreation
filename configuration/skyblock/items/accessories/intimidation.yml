@@ -43,3 +43,22 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: c066fd07683989e66bf752398c4861c71ae6fe228a493f2fdf427381650a1280
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: true
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - SSS
+              - SAS
+              - SSS
+            ingredients:
+              S:
+                type: SCARE_FRAGMENT
+                amount: 1
+              A:
+                type: INTIMIDATION_ARTIFACT
+                amount: 1
+            result:
+              type: INTIMIDATION_RELIC
+              amount: 1

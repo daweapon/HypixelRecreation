@@ -6,11 +6,11 @@ import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
-// Shop GUI for the Adventurer NPC in the Hub, selling combat drops and talismans.
+// Shop GUI for the Combat Merchant (formerly the Adventurer) in the Hub, selling combat drops and talismans.
 public class GUIShopAdventurer extends ShopView {
 
     public GUIShopAdventurer() {
-        super("Adventurer", DEFAULT);
+        super("Combat Merchant", DEFAULT);
     }
 
     @Override
@@ -24,5 +24,6 @@ public class GUIShopAdventurer extends ShopView {
         attachItem(ShopItem.Single(new SkyBlockItem(ItemType.SKELETON_TALISMAN), 1, new CoinShopPrice(500)));
         attachItem(ShopItem.Single(new SkyBlockItem(ItemType.VILLAGE_AFFINITY_TALISMAN), 1, new CoinShopPrice(2500)));
         attachItem(ShopItem.Single(new SkyBlockItem(ItemType.MINE_AFFINITY_TALISMAN), 1, new CoinShopPrice(2500)));
+        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.INTIMIDATION_TALISMAN), 1, new CoinShopPrice(10000)));
     }
 }

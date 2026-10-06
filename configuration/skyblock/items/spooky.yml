@@ -385,3 +385,16 @@ items:
         b: '130'
       - id: SELLABLE
         value: 400000.0
+  - id: SCARE_FRAGMENT
+    material: black_stained_glass
+    name: "Scare Fragment"
+    rarity: RARE
+    lore:
+      - "\xA77Imbued with the pure essence of"
+      - "\xA77terror, this shard pulsates with an"
+      - "\xA77unsettling energy."
+    default_statistics: { }
+    components:
+      - id: SELLABLE
+        value: 1000.0
+      - id: NOT_FINISHED_YET

@@ -6,6 +6,7 @@ import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.entity.ai.target.ClosestEntityTarget;
 import net.minestom.server.entity.ai.target.LastEntityDamagerTarget;
 import net.minestom.server.utils.time.TimeUnit;
+import net.swofty.type.skyblockgeneric.entity.mob.ai.Intimidation;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
@@ -48,7 +49,7 @@ public class MobMinionZombie extends SkyBlockMob {
     public List<TargetSelector> getTargetSelectors() {
         return List.of(
                 new LastEntityDamagerTarget(this, 16), // First target the last entity which attacked you
-                new ClosestEntityTarget(this, 16, entity -> entity instanceof SkyBlockPlayer)
+                new ClosestEntityTarget(this, 16, entity -> entity instanceof SkyBlockPlayer && !Intimidation.deters(this, entity))
         );
     }
 

@@ -53,6 +53,7 @@ public class ClosestEntityRegionTarget extends TargetSelector {
                 // Don't target our self and make sure entity is valid
                 .filter(ent -> !entityCreature.equals(ent) && !ent.isRemoved())
                 .filter(targetPredicate)
+                .filter(ent -> !Intimidation.deters(entityCreature, ent))
                 .filter(ent -> {
                     SkyBlockRegion region = SkyBlockRegion.getRegionOfEntity(ent);
                     return region == null || region.getType() == type;
