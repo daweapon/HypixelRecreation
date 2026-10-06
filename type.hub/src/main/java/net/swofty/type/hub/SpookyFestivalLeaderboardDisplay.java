@@ -20,6 +20,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
+import org.tinylog.Logger;
 
 // The floating candy-contest leaderboard hologram next to the Fear Mongerer (Roadmap #19) -
 // user-confirmed via screenshot: real Hypixel shows top 10 + your own rank below the NPC's
@@ -34,10 +35,8 @@ import java.util.stream.Collectors;
 // the text - PlayerHolograms' marker armor stands have no hitbox, so a plain hologram can't
 // receive clicks on its own (see GlassDisplay for the same interaction-entity-over-text pattern).
 //
-// Username resolution is only reliable for currently-loaded players (no persistent UUID->name
-// cache exists in this codebase) - an offline player's leaderboard entry falls back to showing
-// their raw UUID, a real but minor limitation given this leaderboard resets every occurrence
-// anyway.
+// Offline entries resolve their name from the account's stored IGN once and are cached, since
+// the hologram refreshes far more often than names change.
 public class SpookyFestivalLeaderboardDisplay {
 
     private static final Pos DISPLAY_POS = new Pos(-29.5, 70, 12.5);
@@ -45,6 +44,7 @@ public class SpookyFestivalLeaderboardDisplay {
 
     private static final Map<HypixelPlayer, PlayerHolograms.ExternalPlayerHologram> holos = new ConcurrentHashMap<>();
     private static InteractionEntity clickTarget;
+    private static final Map<UUID, String> names = new ConcurrentHashMap<>();
 
     public static void addAndUpdate() {
         Set<UUID> loadedUuids = HypixelGenericLoader.getLoadedPlayers().stream()
@@ -120,11 +120,18 @@ public class SpookyFestivalLeaderboardDisplay {
             case 3 -> "<c>";
             default -> "<f>";
         };
-        String name = HypixelGenericLoader.getLoadedPlayers().stream()
-                .filter(p -> p.getUuid().equals(entry.playerUuid()))
-                .findFirst()
-                .map(HypixelPlayer::getUsername)
-                .orElse(entry.playerUuid().toString());
+        String name = names.computeIfAbsent(entry.playerUuid(), SpookyFestivalLeaderboardDisplay::resolveName);
+        if (name == null) name = entry.playerUuid().toString();
         return entry.rank() + ". " + color + name + " <7>- <f>" + StringUtility.commaify(entry.scoreAsLong());
+    }
+
+    private static String resolveName(UUID uuid) {
+        try {
+            String name = HypixelPlayer.getRawName(uuid);
+            if (name != null && !name.isBlank()) return name;
+        } catch (RuntimeException e) {
+            Logger.warn("Could not resolve a leaderboard name for {}: {}", uuid, e.getMessage());
+        }
+        return null;
     }
 }
