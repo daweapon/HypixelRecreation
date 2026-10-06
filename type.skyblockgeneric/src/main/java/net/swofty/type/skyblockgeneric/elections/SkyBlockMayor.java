@@ -6,7 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 // The pool of mayoral candidates (regular and special), each with its display skin and the set
-// of perks it can grant when elected.
+// of perks it can grant when elected. Perk text follows the wiki's Module:Mayor/Data. Barry, Scorpius,
+// Derpy and Jerry carry Hypixel's real skins without a signature, which no public source holds.
 @Getter
 public enum SkyBlockMayor {
     AATROX(
@@ -25,7 +26,7 @@ public enum SkyBlockMayor {
         "Diana", false,
         "ewogICJ0aW1lc3RhbXAiIDogMTU5Nzk0MjU3NDIzMCwKICAicHJvZmlsZUlkIiA6ICI0MWQzYWJjMmQ3NDk0MDBjOTA5MGQ1NDM0ZDAzODMxYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJNZWdha2xvb24iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODNjYzFjZjY3MmE0YjI1NDBiZTM0NmVhZDc5YWMyZDllZDE5ZDk1YjYwNzViZjk1YmUwYjZkMGRhNjEzNzdiZSIsCiAgICAgICJtZXRhZGF0YSIgOiB7CiAgICAgICAgIm1vZGVsIiA6ICJzbGltIgogICAgICB9CiAgICB9CiAgfQp9",
         "FepPcmM5MycgGDcxdEFXgQ0ncPuOWemDQRpJguSUc2Xfyz0Dub5OKDAiBOPkWDt7gR/UUOfenDW8XGg0gRFSvw4VR6maV1twwL3S+sn6rgIYfBZ4A5khrVpKNTvXQFDyMPB4780dsvIrM34CAcLzadxdoldT1Z8iibunDXVmLKiJwj9RctTRwdc3nbk/7a1P2pkpUs9JRUwbLwidZJRFbhSMr87jyNiUJzYKAaQ1vXpsWvkRD860PuLrbi8Nf1GInHuxRaIkeMRP6tQKDY7XubW2wIYrDn5MzZf9htnOBKWRx50s3e2qy3PiBgI7iJNbEo9X1qNHBQe6FkHS6zsZLX63kJDSyzq4+xgKZmSvVnPYFKeJLor/gKf+xX9RkVKzZqlU97jNHV+9vXUWfrVoUfCNpNwmK2YR+HT86Q5g0vQyD3gwq1W/QvvFkmgU7sOHRINVNxH6R6QOx3cKKDVaEqPjRKkEMsJOBLsJjNXDRMKg21oh+mhxzSRyjDy6LBBIPLM6m25GUtBhAuMs65gwWeyUAOml1hNLN9knzPVPigv0iAx8BJxvSIhXWkudA0UDDjnNGFGpxinykftWr1FAKo40M+SSnOG58mpOwGJEPxsWQm4k8IY73c1fiAdugh/LbkD2WBS0nc3qHQhZAW8xM7sZaBLhq7Et+9hrQx8qse8=",
-        new Perk[]{Perk.HUNTRESS_INTUITION, Perk.SHARING_IS_CARING, Perk.LUCKY_PAWS, Perk.PET_XP_BUFF}
+        new Perk[]{Perk.HUNTRESS_INTUITION, Perk.MYTHOLOGICAL_RITUAL, Perk.PET_XP_BUFF, Perk.SHARING_IS_CARING}
     ),
     DIAZ(
         "Diaz", false,
@@ -37,7 +38,7 @@ public enum SkyBlockMayor {
         "Finnegan", false,
         "ewogICJ0aW1lc3RhbXAiIDogMTY1NDIwMzAxNDc3MiwKICAicHJvZmlsZUlkIiA6ICI0NGNlMmMwZTFjNTM0ZDhmYmExNmNkNDhlYjkyYTUxZSIsCiAgInByb2ZpbGVOYW1lIiA6ICJ4WGlyYW56dThYeCIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS9lNzc0N2ZiZWU5ZmIzOWJlMzliMDBkM2Q0ODNlYjJmODhiNGJhZTgyNDE3YWI1Y2IxYjFhYTkzMGRkN2I2Njg5IiwKICAgICAgIm1ldGFkYXRhIiA6IHsKICAgICAgICAibW9kZWwiIDogInNsaW0iCiAgICAgIH0KICAgIH0KICB9Cn0=",
         "W1VnWYThZuihE6z8wX4XqfYwXIMxSHeXpWabQYntXkBeL+G4tA7Vu5p/IbBIco2w2uVeJZ1HC5HnHFQMgcBSXImHyomGjn4T2NQD9zg4sAAXevh8T9oeAC92qzCCa5wyyzm0hhxFhJ2RHr+JOii0cfaPn+7P6gLxZgVfaRLPJA4d5J+SwaUdTcHBVZm6A0Tzn54T4Acj4tUcWFZNrsqOck9VdJy9gLPvE3xDKDOVk4MTvXUJFRxOEjwWiIKmdP8ccDqy/C3F/zB0fulCXc0e8LWN9RKUQc0NSiz+TFetzZbNhi6PApA7DaicNKbZcj9DCDiGFvZUi2YMiadI25h7yhkF98uUc06Bg1soe8UTKok4LAFpt93CHr9ISFGXF34SnMSphbIWvsp34KgmdDOxAbSCogHDFfbozzljS2t07DHD0TiWfA+6WbzL6WB94774A/c8iPOFcPnmdBHodeYjp5bn8GBn+Bzu4dbOJxFmEj4940ZrYgYG1USwaw69hApXxmDJbzeD6oojiceT2CARGrFAxwpI9TvMU2ZtLATnS01vXxlX8NVcR+ovR1awuPOB/NiCY0kCxs/2pi65Glm09NqAK8AurFJXK/ueHYnV+FzuutSybvc78Mn2+iwgzOoxD0GM9fqw9eC70tI+10daitNyIi9QK0R6yfi3WpzxEzs=",
-        new Perk[]{Perk.PEST_ERADICATOR, Perk.GOATED, Perk.PELT_POCALYPSE, Perk.BLOOMING_BUSINESS}
+        new Perk[]{Perk.PEST_ERADICATOR, Perk.GOATED, Perk.BLOOMING_BUSINESS, Perk.GRAND_FEAST}
     ),
     FOXY(
         "Foxy", false,
@@ -57,32 +58,28 @@ public enum SkyBlockMayor {
         "UeEf0Ir81BLTBE0PfVeEtU/6mHUw3xSP7XGcQYN18qlYS6J7qd+bQskaSJQbEHXr+axq2+5aPm/AfGrjNnl9zQn1EucBIwhdRBHnjuJeRY6x9VKEHAtX2gnpnNelU/oP6MKPZ1dUad4iAHQg8BmJR/oQpedvOJDuqdUZowe8WTVFC5qctJQWRIZCX0BWYK1O1xxJx4FZ9LzF++7qWZsVqO+qmOR8R7Xr4jFkF8cdNIRyezgcfhmw3BCqiDDheOzuJzo0l7y9kHR82reHus/JBLGyTy/iqMqlZFgNePEoaOGRgIvROw9oIS4R/19+UABIe0MDD6CSGgsE7VfgWeyCVw3qxmCSAZDHnYuYyH0zpnGQRsmQrx9aTjFXHf6g551MEpx7KGGTMaOm9b7ygOGuVGB/52UXR2W9UU+YtBZoUzDPMeVcM1NQno/fY3rLoSf5PfuaaEpZMlczYpH0DBvApEQ6FBm/XTOPeS5w3a+7UXh/wrjXu5b62rXG4SNZaBZRT76eseX3wZoCGiLYEh+IXfAJxXSKOqmlHmRmv6FGRzMcZpHzr63GqD0jJwpLuUZ54uuMgUtjx/liEZG1pesdUuf0ObRVf+xDxk/iLAiNKRvd6BoP7wVm0CkebDlyPObdKW0Ss+tAhB0y1o4das+n+UjpHUuPM2D/eLZFA01umyw=",
         new Perk[]{Perk.MARAUDER, Perk.BENEDICTION, Perk.EZPZ}
     ),
-    // Placeholder skin (borrowed from NPCWizard) until a Barry-specific skin is sourced - see Bugs & Loose Ends #91
     BARRY(
         "Barry", false,
-        "eyJ0aW1lc3RhbXAiOjE1NTkxNDEyMjMzNjIsInByb2ZpbGVJZCI6ImEyZjgzNDU5NWM4OTRhMjdhZGQzMDQ5NzE2Y2E5MTBjIiwicHJvZmlsZU5hbWUiOiJiUHVuY2giLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzJmNjlhYjJmNGU3MzQxYWMyNjI1OTcwODNjYTM4YWQwMWJmYmJmODczMGZiZmJkZDEwY2E5MGFlZTMzN2EyZGQifX19",
-        "Ubs3ogFzpCcDZZQiNcIrTQTykcnJsac0Fm+mXYMFVh7CNuTdmGlcJcqdb8fXmBJFOfO9/8zAxKVyn3YVehkzzFdHJyMiPqK++arqf0eBNElbON9LUlPvOGca7JCBYBJdZWbpTS3lbzL9VZRoba9GmM0XZfvunZyLTF671JrKT0adDREe4B7HJaqmLAPOXZlzQokxeyN0oqXAPThkQPcR2UzKNQpwAAPiQhrPc7dTvikw9sHOVPX9GsTsqUAjh1vQOZl4DeALMZwG5Clzc+SDWAa5hgNn15SVCWlbPcsumGziXo1EPhYrx5XbGkDS/9OE+y7/7qMQE1YAUoVw4umREJ5YoqWfv5Elko1dOkF6HfVLuyglFIoJenPJ6/jy7C1tNpHbCG/xOKBeMAGR1+YNCIm3JWzgZbFDMpKjFhfgQEOaLPsQPLPxAYA+RjNRpQpXSke8Zfi64j2j85G4gCcOy8zxlYjHdKgxiZNSIs2cyLSU87BdJFaVBKkQvnB5z9AsJu6u1OoC0A4NakRDQyhjzn93RO8i6LoF2MQshEbBn/2q1ja/KfIw4ZjsK11G7xTP+qnVdkXzgC0eGwnfAqkltbfbmwnGVShe0+cVF3FNs+C/j2BtjptUm7Fhw7nu/I40J+u+jTA/NdZl4JWGCIDIzsawACfO14Xt5DjrmtcY24U=",
-        new Perk[]{Perk.SEAL_OF_APPROVAL, Perk.HOT_STUFF, Perk.ARCANE_CATALYST, Perk.GOVERNMENT_REFORM}
+        "ewogICJ0aW1lc3RhbXAiIDogMTU5Nzc4MDg1NjQ5NCwKICAicHJvZmlsZUlkIiA6ICI0MWQzYWJjMmQ3NDk0MDBjOTA5MGQ1NDM0ZDAzODMxYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJNZWdha2xvb24iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjA0YzU5MWIxNjQ3NDZlODQ4ZjNkNmE0NTFlZTg3YTYyZGQxOTNlNWM0NWU5NGVkNzhlNzJkZjExOWFjYTQyNiIKICAgIH0KICB9Cn0=",
+        null,
+        new Perk[]{Perk.ARCANE_CATALYST, Perk.ASTRAL_NEGOTIATOR, Perk.MAGIC_XP_BOOST}
     ),
-    // Placeholder skin (borrowed from NPCSirius, the Dark Auctioneer) until a Scorpius-specific skin is sourced - see Bugs & Loose Ends #91
     SCORPIUS(
         "Scorpius", true,
-        "ewogICJ0aW1lc3RhbXAiIDogMTYxMjI5MDEyMjIxNSwKICAicHJvZmlsZUlkIiA6ICJkZGVkNTZlMWVmOGI0MGZlOGFkMTYyOTIwZjdhZWNkYSIsCiAgInByb2ZpbGVOYW1lIiA6ICJEaXNjb3JkQXBwIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzY3YWUzZTI1MzlhNDQyNTE4MTMwMzcwZDNiMmQzYjE4MzdhNDkxZWUyM2Q1YWZmMjBmMDE1YWUyODRhMjhjOTAiLAogICAgICAibWV0YWRhdGEiIDogewogICAgICAgICJtb2RlbCIgOiAic2xpbSIKICAgICAgfQogICAgfQogIH0KfQ==",
-        "wxO8NN0XVV66aolUjL9qhturPPfas7lvoxTGCZ9jkV+ojvREtBS2fYuFTNaF5kB+SZdnZLphOrLBAHlyMIsGS7o+MhBmtlQblJBafdNHN5CsA5LpsbaHwj+WZjqSnzCV2qVVj2gY7w7HLlLV1PEPg97TcRS/SjIZND08257kJOkrCRxJBLGfQ8ZhQWl0p4JF5S4bn+kP754L1fyUx0kYWGstIZGmMcyQkY0aOI251bRapVa3rs+rc0QtOkRyy38OputzTaCREQ3m3fpCZ5lxG0IvR4NScXc3V1EJKwvsEpXUYsy1ElrrbYle+2sZvHdPS4JGYN8RLcVBiOHcncZ2xSSlep2O9rui/jtiTZAIvUGQX6Fn4RSRbeI9qinOr8qhGOnKiPsBXx18BNgCRNcj1rCmwAqmHGbP0eMZ/KYMoVlHZWlXBd1DMN/7duEoy5MV59+GK2sOO2Qkz1C+TeTKRV2gLe2tkTJMukUYS58m4BBZPavdY8RZAnzn0EP6pwWTrb1ms9ZA+CovfFTdGLh4fGuHjrhQBvdldQf00gbbDGcWnOoiiEfsZ/azW1VmB08XpIvRlLDTTgjmI1avwrd0BMe+oRNt9wOLFnUbPZ+weIKPTT/iyrhthG3dialYr+GgTJGJ/+QHKJY9gWkDIcDrl3Iei3Va1tuI2VvEtf9wcy8=",
+        "ewogICJ0aW1lc3RhbXAiIDogMTU5Nzc4MTc1NzIxOSwKICAicHJvZmlsZUlkIiA6ICI0MWQzYWJjMmQ3NDk0MDBjOTA5MGQ1NDM0ZDAzODMxYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJNZWdha2xvb24iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGYyNmZhMGM0NzUzNmU3OGUzMzcyNTdkODk4YWY4YjFlYmM4N2MwODk0NTAzMzc1MjM0MDM1ZmYyYzdlZjhmMCIKICAgIH0KICB9Cn0=",
+        null,
         new Perk[]{Perk.BRIBE, Perk.DARKER_AUCTIONS}
     ),
-    // Placeholder skin (borrowed from NPCShifty) until a Derpy-specific skin is sourced - see Bugs & Loose Ends #91
     DERPY(
         "Derpy", true,
-        "eyJ0aW1lc3RhbXAiOjE1NzUyOTg4MzI3NzcsInByb2ZpbGVJZCI6IjQxZDNhYmMyZDc0OTQwMGM5MDkwZDU0MzRkMDM4MzFiIiwicHJvZmlsZU5hbWUiOiJNZWdha2xvb24iLCJzaWduYXR1cmVSZXF1aXJlZCI6dHJ1ZSwidGV4dHVyZXMiOnsiU0tJTiI6eyJ1cmwiOiJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzZjMDFiMjEzNTc0ZjYzMDYxNmRkMDBiN2EzYmM2MTc3NGZkN2Q0NjcxMzY0NzZiZDdiN2E5OWVjMjVlZTI3NTcifX19",
-        "phxW0auuDIf8/A99q8l6i6VYwIadA+TXJMNcMBVdLK7ItptNJH6TAHjBU5tzXJb2lZ4+4zLY5Nl2a78dpXX8lCegLNUhO0rvFpnTOJIR4mXxAxi0frUmaoiUh5ElK+XhSU6GBzvqgf4K0V+HAfFBDWqYP/IcQdJYr1YDftfEuFkmcJuTCbiJ0kVc+6Hy09adBrcYJnDtiYpF4m3OG2vieXUyIUcB2UeyOvAQuVNQ4HvyhZHqXg93WmZVA5JZRLefOryU9xF/nw367a0rTxiANUkGoQ7kdqJ4MDD/v6yNfin5aLFtEu3tVqMc2QPOpMtjn5Mm7IAOXBVB/LuICZ+EW9LDozV/tPqlGs5cbGWzvKhla/fUJkIhhcjtgHF5NwCr88hlo/TCiI0PPXNAG/2woa2eYZtL6T4g5y5DeTqo/vbZrgedJV7F+gvc3v3BvGeVmQUlu+u1I5T0gR/U2nqCH1RTDx/8zJO0luOmGBCF6Py7W1vhwAEUHNuh/EQyBPkyGHbiupvitlYleIvXvn0VzgSNts3fvsh4lNYXfRcmzLb7kTilh65DIyg9wsrDQ+YBVochFSm2c2FzhdxklhU4iPASz+rmfo+AaL8iKfMKgva4GwAOWYfq294B/avB3bgUcOrmmFopjANr5sx5V1VXaQXMzx7DTw0eKXEF+PA5IJ4=",
-        new Perk[]{Perk.TURBO_MINIONS, Perk.AH_CLOSED, Perk.DOUBLE_MOBS_HP, Perk.MOAR_SKILLZ}
+        "e3RleHR1cmVzOntTS0lOOnt1cmw6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjQ1MGQxMjY5Mjg4NmM0N2IwNzhhMzhmNGQ0OTJhY2ZlNjEyMTZlMmQwMjM3YWI4MjQzMzQwOWIzMDQ2YjQ2NCJ9fX0=",
+        null,
+        new Perk[]{Perk.QUAD_TAXES, Perk.TURBO_MINIONS, Perk.DOUBLE_MOBS_HP, Perk.MOAR_SKILLZ}
     ),
-    // TODO: proper skin for Jerry
     JERRY(
         "Jerry", true,
-        "ewogICJ0aW1lc3RhbXAiIDogMTU5Nzc4MTM1NTM0MywKICAicHJvZmlsZUlkIiA6ICI0MWQzYWJjMmQ3NDk0MDBjOTA5MGQ1NDM0ZDAzODMxYiIsCiAgInByb2ZpbGVOYW1lIiA6ICJNZWdha2xvb24iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzQ4NWE3MTdmYTBmNTFkN2ZhZGM2NmE1ZDVlOTg1MzkwNWJlZjkxNGUzYjI4NDhhMmYxMjhlNjNkMmRiODciLAogICAgICAibWV0YWRhdGEiIDogewogICAgICAgICJtb2RlbCIgOiAic2xpbSIKICAgICAgfQogICAgfQogIH0KfQ==",
-        "hsdCpEijJf50Jx84oVf2b9sTv9JswZQ6rM+/sszeTpIDhuR9NH/3icxLz16i3PJ2Yvze7f6pd4KNfV2pqJhadO11rNhU3W0XGBAtd2bWJ1Ib16U0Qe1EHFY6g8r5VfRk1ZHBZxlRUQK15bd1MfuTMNr4+kl2BiCt7Ee/8dX+AWsNHXz0mbL4GRnrrBy9Y7bkBAWqOa3fjYnqCGzbmSi2yajxWqmUaba1qVuOA8ko/a1KkC/4yEoxd775gHZXyorZTD3VZEh6wbk9Y5eTeSo0U2fJCxmE18uZaxEm7uyMIpdV8QLH5VoHCvS+7liQ01BI6sITL8HwBINIW80oeSsOFLkB1E7yM185KPbMP3r0ahUuRfmSwiD37cqryMRvRWKlIdg9FojeKQENKXn9cbxSvZSjqerL01+Fp3Kw14iYU7/tIPX7VyAx/Qg0OYam3dTj4CLiEfwJc/NnE0p0mhaGQAiVDP3WJH7yjoHXlwZ1XIirJjWzUyzIz25gPGTR5Q/1WZjho8YQZmqqpNyzkX5yknHcS2iJIKj5wALsblqToy13Rsv1zAJiB6oyN5IfznOjBiHdcgpBApEGuCNQAAwNsUrQgJt2QvXniWCRBK9/SiUNa/9Sl5DoqrA72HgbM7Ty6j7lxBrx0BuLFUMw0Qtir5zzeM3Ndtc+IqeprJpkAdM=",
+        "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODIyZDhlNzUxYzhmMmZkNGM4OTQyYzQ0YmRiMmY1Y2E0ZDhhZThlNTc1ZWQzZWIzNGMxOGE4NmU5M2IifX19",
+        null,
         new Perk[]{Perk.PERKPOCALYPSE, Perk.STATSPOCALYPSE, Perk.JERRYPOCALYPSE}
     );
 
@@ -110,60 +107,59 @@ public enum SkyBlockMayor {
 
     @Getter
     public enum Perk {
-        SLASHED_PRICING("SLASHED Pricing", "<7>Starting slayer quests is <e>half price</e>."),
-        SLAYER_XP_BUFF("Slayer XP Buff", "<7>Earn <d>25% </d>more Slayer XP."),
-        PATHFINDER("Pathfinder", "<7>Gain rare drops <d>20% </d>more often."),
+        SLASHED_PRICING("SLASHED Pricing", "<7>Starting slayer quests is <e>half price<7>."),
+        SLAYER_XP_BUFF("Slayer XP Buff", "<7>Earn <d>25% <7>more Slayer XP."),
+        PATHFINDER("Pathfinder", "<7>Gain rare drops <d>20% <7>more often."),
 
-        PROSPECTION("Prospection", "<7>Mining minions work <a>25% </a>faster."),
-        MINING_XP_BUFF("Mining XP Buff", "<7>Get <3>+60☯ Mining Wisdom </3>on public islands."),
-        MINING_FIESTA("Mining Fiesta", "<7>Schedules 5 <6>Mining Fiestas </6>throughout the year!"),
-        MOLTEN_FORGE("Molten Forge", "<7>Decrease the time it takes to <6>forge </6>items by <d>25%</d>."),
+        PROSPECTION("Prospection", "<7>Mining minions work <a>25% <7>faster."),
+        MINING_XP_BUFF("Mining XP Buff", "<7>Get <3>+60☯ Mining Wisdom <7>on public islands."),
+        MINING_FIESTA("Mining Fiesta", "<7>Schedules 5 <6>Mining Fiestas <7>throughout the year! During these events gain <3>+75☯ Mining Wisdom<7>, collect <9>Refined Mineral <7>and <5>Glossy Gemstone<7>, and earn <d>2x drops <7>from mining!"),
+        MOLTEN_FORGE("Molten Forge", "<7>Decrease the time it takes to <6>forge items <7>by <d>25%<7>."),
 
-        HUNTRESS_INTUITION("Huntress' Intuition", "<7>Gain <d>+10❃ Tracking</d>."),
-        SHARING_IS_CARING("Sharing is Caring", "<7>Unlocks <a>2 </a>more <6>Exp Share </6>slots in your pets menu and increases the <6>Exp Share </6>rate by <a>+10%</a>!"),
-        LUCKY_PAWS("Lucky Paws", "<7>Increases chance of finding rare Mythological creatures by <a>+15%</a>."),
-        PET_XP_BUFF("Pet XP Buff", "<7>Gain <a>+35% </a>more pet experience from all sources."),
+        HUNTRESS_INTUITION("Huntress' Intuition", "<7>Gain <d>+10❃ Tracking<7>."),
+        MYTHOLOGICAL_RITUAL("Mythological Ritual", "<7>Mayor Diana will sell the Griffin pet, which lets you find <2>Mythological Creatures <7>and tons of <e>unique items<7>."),
+        PET_XP_BUFF("Pet XP Buff", "<7>Gain <d>35% <7>more pet XP."),
+        SHARING_IS_CARING("Sharing is Caring", "<7>Unlocks <a>2 <7>more <6>Exp Share <7>slots in your pets menu and increases the <6>Exp Share <7>rate by <a>+10%<7>!"),
 
-        STOCK_EXCHANGE("Stock Exchange", "<7>Participate in the <d>Stonks Auction </d>for a chance to win <5>Stock of Stonks</5>! Trade them for <6>extravagant items </6>at the <b>Trade Center</b>."),
-        LONG_TERM_INVESTMENT("Long Term Investment", "<7>The <d>Minister </d>reappears in the next election with <a>all </a>of their perks."),
-        SHOPPING_SPREE("Shopping Spree", "<7>Reduces NPC shop prices by <a>20%</a>."),
-        VOLUME_TRADING("Volume Trading", "<7>Bazaar sell/buy orders are <a>10% </a>cheaper."),
+        LONG_TERM_INVESTMENT("Long Term Investment", "<7>The <b>elected minister <7>will appear as a candidate with <d>all <7>of their perks in the <a>next election cycle<7>."),
+        VOLUME_TRADING("Volume Trading", "<7>The available item quantity per <6>Shen's Auction <7>has been doubled, and two additional <6>Shen's Special <7>auctions will be available if Diaz is Mayor."),
+        STOCK_EXCHANGE("Stock Exchange", "<7>Participate in the <d>Stonks Auction <7>for a chance to win <5>Stock of Stonks<7>! Trade them for <6>extravagant items <7>at the <b>Trade Center<7>."),
+        SHOPPING_SPREE("Shopping Spree", "<7>Increase daily NPC buy limits by <e>10x<7>."),
 
-        PEST_ERADICATOR("Pest Eradicator", "<7>The duration of Pesthunter Phillip's <6>☘ Farming Fortune </6>bonus is now <a>60m</a>. Decreases the spawn cooldown of <2>Pests </2>by <a>20%</a>."),
-        GOATED("GOATed", "<e>Jacob's Farming Contest <7>brackets include up to <a>10% </a>more players each."),
-        PELT_POCALYPSE("Pelt-pocalypse", "<7>Obtain <a>1.5x </a>more <5>pelts </5>from <a>Trevor </a>in the <e>Mushroom Desert</e>."),
-        BLOOMING_BUSINESS("Blooming Business", "<7>All Garden Visitors reward <a>Fine Flour</a> and <c>+10% Copper </c>for accepting offers."),
+        PEST_ERADICATOR("Pest Eradicator", "<7>The duration of Pesthunter Phillip's <6>☘ Farming Fortune <7>bonus is now <a>60m<7>. Decreases the spawn cooldown of <2>Pests <7>by <a>20%<7>."),
+        GOATED("GOATed", "<e>Jacob's Farming Contest <7>brackets include <a>10% <7>more players each."),
+        BLOOMING_BUSINESS("Blooming Business", "<7>All Garden Visitors reward <a>Fine Flour <7>and <c>+10% Copper <7>for accepting offers. Invites <a>5 <7>unique visitors to your <b>Garden <7>and makes higher rarity visitors <a>20% <7>more likely to show up."),
+        GRAND_FEAST("Grand Feast", "<7>Finnegan upgrades the <6>Harvest Feast <7>into the <d>Grand Feast<7>, making it lasts a full SkyBlock year. Also opens the <c>Grand Bakery<7>, where <6>Kernels <7>can be spent on more exclusive items."),
 
-        SWEET_BENEVOLENCE("Sweet Benevolence", "<7>Earn <a>+30% </a>more <d>Candy</d>, <c>Gifts </c>and <6>Chocolate </6>from duplicate rabbits during their respective events."),
-        A_TIME_FOR_GIVING("A Time for Giving", "<7>Spawn <d>Party Chests </d>by killing mobs during the <6>Spooky Festival </6>and collect <b>Party Gifts </b>from <c>Jerry's Workshop</c>."),
-        CHIVALROUS_CARNIVAL("Chivalrous Carnival", "<7>Schedules a <e>Carnival </e>in the hub, active throughout the <b>entire year</b>."),
-        EXTRA_EVENT("Extra Event", "<7>Schedules an extra <6>Spooky Festival </6>event during the year."),
+        SWEET_BENEVOLENCE("Sweet Benevolence", "<7>Earn <a>+30% <7>more <5>Candy<7>, <c>Gifts <7>and <6>Chocolate <7>from duplicate Rabbits during their respective events."),
+        A_TIME_FOR_GIVING("A Time for Giving", "<7>Spawn <d>Party Chests <7>by killing mobs during the <6>Spooky Festival <7>and collect <b>Party Gifts <7>from <c>Jerry's Workshop<7>."),
+        CHIVALROUS_CARNIVAL("Chivalrous Carnival", "<7>Schedules a <e>Carnival <7>in the hub, active throughout the <b>entire year<7>."),
+        EXTRA_EVENT("Extra Event", "<7>Schedules an extra <6>Spooky Festival <7>event during the year."),
 
-        FISHING_XP_BUFF("Fishing XP Buff", "<7>Get <3>+50☯ Fishing Wisdom </3>on public islands."),
-        LUCK_OF_THE_SEA("Luck of the Sea 2.0", "<7>Gain <a>+15 ☂ Sea Creature Chance</a>."),
-        FISHING_FESTIVAL("Fishing Festival", "<7>Schedules 5 <6>Fishing Festivals </6>throughout the year!"),
-        DOUBLE_TROUBLE("Double Trouble", "<7>Fishing minions work <a>50% </a>faster."),
+        FISHING_XP_BUFF("Fishing XP Buff", "<7>Gain <3>+50☯ Fishing Wisdom <7>on public islands."),
+        LUCK_OF_THE_SEA("Luck of the Sea 2.0", "<7>Gain <3>15α Sea Creature Chance<7>."),
+        FISHING_FESTIVAL("Fishing Festival", "<7>Start a special fishing event the first <b>3 <7>days of each month! Fish and fight dangerous <b>sharks <7>and earn unique Shark loot."),
+        DOUBLE_TROUBLE("Double Trouble", "<7>For every <3>1 α Sea Creature Chance<7>, gain <9>+0.1 ⚓ Double Hook Chance<7>."),
 
-        MARAUDER("Marauder", "<7>Dungeon reward chests are <e>20% </e>cheaper."),
-        BENEDICTION("Benediction", "<7>Blessings are <d>25% </d>stronger."),
-        EZPZ("EZPZ", "<7>Gain <e>+25% </e>more class experience."),
+        MARAUDER("Marauder", "<7>Dungeon reward chests are <e>20% <7>cheaper."),
+        EZPZ("EZPZ", "<7>Gain <e>10 <7>bonus score on dungeon runs."),
+        BENEDICTION("Benediction", "<7>Blessings are <d>25% <7>stronger."),
 
-        SEAL_OF_APPROVAL("Seal of Approval", "<7>Rare items from the <d>Wizard Tower </d>are <a>5% </a>more common."),
-        HOT_STUFF("Hot Stuff", "<7>Get <d>+10% </d>bonus stats from Hot Potato Books on weapons and armor."),
-        ARCANE_CATALYST("Arcane Catalyst", "<7>Enchanting pet XP is boosted <a>50%</a>."),
-        GOVERNMENT_REFORM("Government Reform", "<7>Influence the perks of the current Mayor by selecting <a>1 </a>of <a>3 </a>options from a special menu."),
+        ARCANE_CATALYST("Arcane Catalyst", "<7>Spells deal <c>15% <7>increased damage."),
+        ASTRAL_NEGOTIATOR("Astral Negotiator", "<7>Enchanting and anvils costs <b>-15% <7>less experience."),
+        MAGIC_XP_BOOST("Magic XP Boost", "<7>Gain <a>+15 <3>☯ Alchemy Wisdom <7>and <3>☯ Enchanting Wisdom<7>."),
 
-        BRIBE("Bribe", "<7>If Scorpius wins, all players receive a <6>gift </6>at the <a>Election Room </a>based on their rank."),
-        DARKER_AUCTIONS("Darker Auctions", "<7>During Scorpius's term, the <5>Dark Auction </5>sells extra rare items."),
+        BRIBE("Bribe", "<7>If Scorpius wins and you voted for him, Mayor Scorpius will offer you <6>coins <7>as a token of gratitude."),
+        DARKER_AUCTIONS("Darker Auctions", "<7>Scorpius will intrude in Dark Auctions, increasing the amount of rounds to 7 and offering special items."),
 
-        TURBO_MINIONS("TURBO MINIONS!!!", "<7>All minions work <a>2x </a>faster!"),
-        AH_CLOSED("AH CLOSED!!!", "<7>Auction House is closed for the duration."),
-        DOUBLE_MOBS_HP("DOUBLE MOBS HP!!!", "<7>All mobs have <c>2x </c>more health."),
-        MOAR_SKILLZ("MOAR SKILLZ!!!", "<7>Earn <d>+50% </d>more skill experience."),
+        QUAD_TAXES("QUAD TAXES!!!", "<f>Pay 4x the normal amount of taxes!"),
+        TURBO_MINIONS("TURBO MINIONS!!!", "<7>Minions have double the output!"),
+        DOUBLE_MOBS_HP("DOUBLE MOBS HP!!!", "<7>ALL monsters have double health!"),
+        MOAR_SKILLZ("MOAR SKILLZ!!!", "<7>Gain <d>+50% <7>more skill experience!"),
 
-        PERKPOCALYPSE("Perkpocalypse", "<7>All previously elected Mayor <a>perks </a>are activated!"),
-        STATSPOCALYPSE("Statspocalypse", "<7>Gain <a>+10% </a>to all stats."),
-        JERRYPOCALYPSE("Jerrypocalypse", "<5>Perk unknown until elected...");
+        PERKPOCALYPSE("Perkpocalypse", "<7>Activates all perks of another mayor every 18 SkyBlock days (6 hours)"),
+        STATSPOCALYPSE("Statspocalypse", "<7>Increases all <c>Combat <7>and <d>Miscellaneous <7>stats by <a>10%<7>."),
+        JERRYPOCALYPSE("Jerrypocalypse", "<7>Reveal hidden Jerries from logging, farming, mining and killing mobs.");
 
         private final String displayName;
         private final String description;

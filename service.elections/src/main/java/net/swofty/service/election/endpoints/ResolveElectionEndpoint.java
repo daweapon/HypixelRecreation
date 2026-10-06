@@ -33,13 +33,13 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
     private static final Map<String, List<String>> MAYOR_PERK_POOLS = Map.of(
             "AATROX", List.of("SLASHED_PRICING", "SLAYER_XP_BUFF", "PATHFINDER"),
             "COLE", List.of("PROSPECTION", "MINING_XP_BUFF", "MINING_FIESTA", "MOLTEN_FORGE"),
-            "DIANA", List.of("HUNTRESS_INTUITION", "SHARING_IS_CARING", "LUCKY_PAWS", "PET_XP_BUFF"),
+            "DIANA", List.of("HUNTRESS_INTUITION", "MYTHOLOGICAL_RITUAL", "PET_XP_BUFF", "SHARING_IS_CARING"),
             "DIAZ", List.of("STOCK_EXCHANGE", "LONG_TERM_INVESTMENT", "SHOPPING_SPREE", "VOLUME_TRADING"),
-            "FINNEGAN", List.of("PEST_ERADICATOR", "GOATED", "PELT_POCALYPSE", "BLOOMING_BUSINESS"),
+            "FINNEGAN", List.of("PEST_ERADICATOR", "GOATED", "BLOOMING_BUSINESS", "GRAND_FEAST"),
             "FOXY", List.of("SWEET_BENEVOLENCE", "A_TIME_FOR_GIVING", "CHIVALROUS_CARNIVAL", "EXTRA_EVENT"),
             "MARINA", List.of("FISHING_XP_BUFF", "LUCK_OF_THE_SEA", "FISHING_FESTIVAL", "DOUBLE_TROUBLE"),
             "PAUL", List.of("MARAUDER", "BENEDICTION", "EZPZ"),
-            "BARRY", List.of("SEAL_OF_APPROVAL", "HOT_STUFF", "ARCANE_CATALYST", "GOVERNMENT_REFORM")
+            "BARRY", List.of("ARCANE_CATALYST", "ASTRAL_NEGOTIATOR", "MAGIC_XP_BOOST")
     );
 
     private static final List<NamedTextColor> CANDIDATE_COLORS = List.of(
@@ -207,6 +207,8 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
                     : new ArrayList<>();
 
             List<String> fullPool = MAYOR_PERK_POOLS.getOrDefault(name, List.of());
+            // Drops perks Hypixel has since retired, so they stop occupying a slot.
+            if (!fullPool.isEmpty()) currentPerks.retainAll(fullPool);
             List<String> remainingPerks = fullPool.stream().filter(p -> !currentPerks.contains(p)).toList();
 
             if (!remainingPerks.isEmpty()) {
