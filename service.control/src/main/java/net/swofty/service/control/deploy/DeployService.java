@@ -6,6 +6,7 @@ import net.swofty.service.control.docker.DockerResponse;
 import net.swofty.service.control.docker.DockerSocketClient;
 import net.swofty.service.control.docker.TarWriter;
 import net.swofty.service.control.fleet.ContainerInfo;
+import net.swofty.service.control.fleet.ContainerState;
 import net.swofty.service.control.fleet.FleetService;
 import net.swofty.service.control.fleet.LifecycleController;
 import net.swofty.service.control.fleet.OperationJob;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HexFormat;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Deploys a staged jar to its containers.
@@ -161,7 +164,12 @@ public final class DeployService {
                         "bind-mounted - replacing the stored file is the deploy");
             }
 
+            Set<String> stopped = stoppedTargets(fleet, targets);
             for (String target : targets) {
+                if (stopped.contains(target)) {
+                    job.record(target, "restart", true, "was stopped - jar updated, left stopped");
+                    continue;
+                }
                 job.setCurrentStep("restarting " + target);
                 try {
                     docker.restart(target, RESTART_TIMEOUT_SECONDS);
@@ -173,9 +181,21 @@ public final class DeployService {
             }
 
             for (String target : targets) {
-                verifyRunning(job, target);
+                if (!stopped.contains(target)) {
+                    verifyRunning(job, target);
+                }
             }
         });
+    }
+
+    /** Restarting a stopped container starts it, and the NAS cannot run every area at once. */
+    public static Set<String> stoppedTargets(List<ContainerInfo> fleet, List<String> targets) {
+        return fleet.stream()
+                .filter(container -> targets.contains(container.name()))
+                .filter(container -> container.state() == ContainerState.EXIT
+                        || container.state() == ContainerState.DWN)
+                .map(ContainerInfo::name)
+                .collect(Collectors.toSet());
     }
 
     private void persistToStore(OperationJob job, String jarName, byte[] content) {

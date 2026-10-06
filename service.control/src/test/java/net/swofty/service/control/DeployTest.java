@@ -1,5 +1,6 @@
 package net.swofty.service.control;
 
+import net.swofty.service.control.deploy.DeployService;
 import net.swofty.service.control.deploy.DeployTargets;
 import net.swofty.service.control.docker.TarWriter;
 import net.swofty.service.control.fleet.ContainerInfo;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -130,5 +132,20 @@ class DeployTest {
     void ordinaryDeploysAreNotRefused() {
         assertNull(DeployTargets.selfDeployRefusal("HypixelCore.jar", List.of()));
         assertNull(DeployTargets.selfDeployRefusal("ServiceAPI.jar", List.of("service_api")));
+    }
+
+    @Test
+    void stoppedGameServersTakeTheJarWithoutBeingStarted() {
+        List<ContainerInfo> fleet = List.of(
+                container("hypixelcore_skyblock_hub"),
+                new ContainerInfo("id", "hypixelcore_skyblock_galatea", "image", FleetGroup.GAME_SERVER,
+                        ContainerState.DWN, "created", "none", 0, 0, null, "created"),
+                new ContainerInfo("id", "hypixelcore_skyblock_the_end", "image", FleetGroup.GAME_SERVER,
+                        ContainerState.EXIT, "exited", "none", 0, 0, null, "exited"));
+        List<String> targets = DeployTargets.defaultTargets("HypixelCore.jar", fleet);
+
+        assertEquals(3, targets.size());
+        assertEquals(Set.of("hypixelcore_skyblock_galatea", "hypixelcore_skyblock_the_end"),
+                DeployService.stoppedTargets(fleet, targets));
     }
 }
