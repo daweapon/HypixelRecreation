@@ -994,3 +994,57 @@ rewards:
         data:
           statistic: FORAGING_FORTUNE
           amount: 4
+
+  - level: 55
+    requirement: 5500000
+    unlocks:
+      - type: XP
+        data:
+          amount: 30
+      - type: COINS
+        data:
+          amount: 1000000
+      - type: STATS_BASE
+        data:
+          statistic: STRENGTH
+          amount: 2
+      - type: STATS_BASE
+        data:
+          statistic: FORAGING_FORTUNE
+          amount: 4
+
+  - level: 56
+    requirement: 5800000
+    unlocks:
+      - type: XP
+        data:
+          amount: 30
+      - type: COINS
+        data:
+          amount: 1000000
+      - type: STATS_BASE
+        data:
+          statistic: STRENGTH
+          amount: 2
+      - type: STATS_BASE
+        data:
+          statistic: FORAGING_FORTUNE
+          amount: 4
+
+  - level: 57
+    requirement: 6100000
+    unlocks:
+      - type: XP
+        data:
+          amount: 30
+      - type: COINS
+        data:
+          amount: 1000000
+      - type: STATS_BASE
+        data:
+          statistic: STRENGTH
+          amount: 2
+      - type: STATS_BASE
+        data:
+          statistic: FORAGING_FORTUNE
+          amount: 4

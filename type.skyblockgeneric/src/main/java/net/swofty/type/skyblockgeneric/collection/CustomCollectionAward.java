@@ -76,6 +76,11 @@ public enum CustomCollectionAward {
     // FORAGING LEVEL CAP
     FIG_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),
     MANGROVE_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),
+    HELIX_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),
+    AGATHA_MILESTONE_4_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),
+    AGATHA_MILESTONE_5_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),
+    MIRIA_MILESTONE_4_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),
+    MIRIA_MILESTONE_5_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),
     ;
 
     public static final Map<CustomCollectionAward, Map.Entry<ItemType, Integer>> AWARD_CACHE = new HashMap<>();

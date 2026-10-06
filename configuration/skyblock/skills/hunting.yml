@@ -191,7 +191,7 @@ rewards:
     unlocks:
       - type: XP
         data:
-          amount: 5
+          amount: 10
       - type: COINS
         data:
           amount: 30000
@@ -325,6 +325,356 @@ rewards:
       - type: COINS
         data:
           amount: 225000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 26
+    requirement: 800000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 250000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 27
+    requirement: 900000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 275000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 28
+    requirement: 1000000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 300000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 29
+    requirement: 1100000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 325000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 30
+    requirement: 1200000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 350000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 31
+    requirement: 1300000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 375000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 32
+    requirement: 1400000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 400000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 33
+    requirement: 1500000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 425000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 34
+    requirement: 1600000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 450000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 35
+    requirement: 1700000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 475000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 36
+    requirement: 1800000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 500000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 37
+    requirement: 1900000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 550000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 38
+    requirement: 2000000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 600000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 39
+    requirement: 2100000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 650000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 40
+    requirement: 2200000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 700000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 41
+    requirement: 2300000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 750000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 42
+    requirement: 2400000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 800000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 43
+    requirement: 2500000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 850000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 44
+    requirement: 2600000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 900000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 45
+    requirement: 2750000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 1000000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 46
+    requirement: 2900000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 1000000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 47
+    requirement: 3100000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 1000000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 48
+    requirement: 3400000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 1000000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 49
+    requirement: 3700000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 1000000
+      - type: STATS_BASE
+        data:
+          statistic: HUNTER_FORTUNE
+          amount: 1
+
+  - level: 50
+    requirement: 4000000
+    unlocks:
+      - type: XP
+        data:
+          amount: 20
+      - type: COINS
+        data:
+          amount: 1000000
       - type: STATS_BASE
         data:
           statistic: HUNTER_FORTUNE

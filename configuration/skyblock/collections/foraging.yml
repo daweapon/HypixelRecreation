@@ -644,3 +644,8 @@ collections:
         - type: XP
           data:
             xp: 4
+    - amount: 10000
+      rewards:
+        - type: XP
+          data:
+            xp: 4

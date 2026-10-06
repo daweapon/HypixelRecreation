@@ -199,14 +199,25 @@ public class DatapointSkills extends SkyBlockDatapoint<DatapointSkills.PlayerSki
             return Math.min(category.asCategory().getLevel(rawExperience), getUnlockedLevelCap(category));
         }
 
+        // Each Foraging level past 50 is unlocked separately, in any order: three by collections
+        // (Fig, Mangrove and Helix Log IX) and four by Agatha's and Miria's Starlyn milestones.
+        private static final List<CustomCollectionAward> FORAGING_LEVEL_CAP_AWARDS = List.of(
+                CustomCollectionAward.FIG_FORAGING_LEVEL_CAP,
+                CustomCollectionAward.MANGROVE_FORAGING_LEVEL_CAP,
+                CustomCollectionAward.HELIX_FORAGING_LEVEL_CAP,
+                CustomCollectionAward.AGATHA_MILESTONE_4_FORAGING_LEVEL_CAP,
+                CustomCollectionAward.AGATHA_MILESTONE_5_FORAGING_LEVEL_CAP,
+                CustomCollectionAward.MIRIA_MILESTONE_4_FORAGING_LEVEL_CAP,
+                CustomCollectionAward.MIRIA_MILESTONE_5_FORAGING_LEVEL_CAP);
+
         private int getUnlockedLevelCap(SkillCategories category) {
             if (category != SkillCategories.FORAGING || attachedPlayer == null) {
                 return category.asCategory().getHighestLevel();
             }
 
-            int cap = 50;
-            if (attachedPlayer.hasCustomCollectionAward(CustomCollectionAward.FIG_FORAGING_LEVEL_CAP)) cap++;
-            if (attachedPlayer.hasCustomCollectionAward(CustomCollectionAward.MANGROVE_FORAGING_LEVEL_CAP)) cap++;
+            int cap = 50 + (int) FORAGING_LEVEL_CAP_AWARDS.stream()
+                    .filter(attachedPlayer::hasCustomCollectionAward)
+                    .count();
             return Math.min(cap, category.asCategory().getHighestLevel());
         }
 

@@ -350,6 +350,14 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: SMALL_BACKPACK
+  - amount: 500
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ENCHANTED_LEATHER
   - amount: 1000
     rewards:
     - type: XP
@@ -371,9 +379,6 @@ collections:
     - type: XP
       data:
         xp: 4
-    - type: RECIPE_UNLOCK
-      data:
-        unlockedItemType: ENCHANTED_LEATHER
   - amount: 10000
     rewards:
     - type: XP

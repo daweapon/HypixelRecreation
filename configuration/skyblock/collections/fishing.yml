@@ -215,6 +215,16 @@ collections:
     - type: XP
       data:
         xp: 4
+  - amount: 25000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+  - amount: 50000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
 - itemType: MAGMAFISH
   rewards:
   - amount: 20
