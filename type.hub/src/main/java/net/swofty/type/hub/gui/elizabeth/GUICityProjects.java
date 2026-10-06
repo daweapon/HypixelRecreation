@@ -8,7 +8,10 @@ import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.swofty.type.hub.gui.elizabeth.subguis.GUICityProject;
 import net.swofty.type.hub.gui.elizabeth.subguis.GUIPreviousCityProjects;
+import net.swofty.type.skyblockgeneric.cityprojects.CityProject;
+import net.swofty.type.skyblockgeneric.cityprojects.CityProjectContributions;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
@@ -89,9 +92,29 @@ public class GUICityProjects extends HypixelInventoryGUI {
                         <8>Earn from Booster Cookies!
 
                         <7>Fame Rank: <e>{}
-                        <8>Rank up by spending bits!
+                        <8>Rank up by spending bits, gems\n<8>and contributing to projects!
                         <e>Click to get link!""", player.getGems(), player.getBits(),
                         net.swofty.type.skyblockgeneric.elections.FameRank.forFame(player.getFame()).getDisplayName()));
+            }
+        });
+        set(new GUIClickableItem(22) {
+            @Override
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                new GUICityProject(CityProject.CURRENT).open(p);
+            }
+
+            @Override
+            public ItemStack.Builder getItem(HypixelPlayer p) {
+                CityProject project = CityProject.CURRENT;
+                return ItemStacks.item(project.getIcon(), """
+                        <a>{}
+                        <8>City Project
+
+                        <7>Total contributions: <b>{}
+                        <7>Stage: <b><l>FUNDING
+
+                        <e>Click to view!""", project.getDisplayName(),
+                        net.swofty.commons.StringUtility.commaify(CityProjectContributions.globalTotal(project)));
             }
         });
         set(new GUIClickableItem(50) {

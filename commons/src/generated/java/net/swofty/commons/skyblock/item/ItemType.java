@@ -2524,6 +2524,8 @@ public enum ItemType {
 
   MAGENTA_WOOL(Material.MAGENTA_WOOL, Rarity.COMMON),
 
+  MAGICAL_WATER_BUCKET(Material.WATER_BUCKET, Rarity.COMMON),
+
   MAGIC_FIND_ENRICHMENT(Material.PLAYER_HEAD, Rarity.COMMON),
 
   MAGIC_FIND_POTION_1(Material.POTION, Rarity.COMMON),
@@ -4587,6 +4589,8 @@ public enum ItemType {
   VENOMOUS_SWORD(Material.IRON_SWORD, Rarity.UNCOMMON),
 
   VENOMS_TOUCH(Material.BOW, Rarity.EPIC),
+
+  VILLAGER_DOLL(Material.PLAYER_HEAD, Rarity.SPECIAL),
 
   VILLAGE_AFFINITY_TALISMAN(Material.PLAYER_HEAD, Rarity.COMMON),
 

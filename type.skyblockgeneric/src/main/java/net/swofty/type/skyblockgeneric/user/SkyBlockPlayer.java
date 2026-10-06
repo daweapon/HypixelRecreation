@@ -868,8 +868,10 @@ public class SkyBlockPlayer extends HypixelPlayer {
         setGems(getGems() + amount);
     }
 
+    // Gems are only spent in the Community Shop, where each one earns 200 Fame.
     public void removeGems(int amount) {
         setGems(getGems() - amount);
+        addFame(amount * 200);
     }
 
     public Integer getFame() {

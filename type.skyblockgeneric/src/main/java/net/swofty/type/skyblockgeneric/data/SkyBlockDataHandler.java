@@ -552,6 +552,9 @@ public class SkyBlockDataHandler extends DataHandler {
         SLAYER("slayer", false, false, false,
                 DatapointSlayer.class, new DatapointSlayer("slayer")),
 
+        CITY_PROJECT_CONTRIBUTIONS("city_project_contributions", false, false, false, DatapointMapStringLong.class,
+                new DatapointMapStringLong("city_project_contributions")),
+
         RACE_BEST_TIME("race_best_time", false, false, false, DatapointMapStringLong.class,
                 new DatapointMapStringLong("race_best_time")),
 

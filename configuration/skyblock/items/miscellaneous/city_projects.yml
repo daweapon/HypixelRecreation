@@ -1,0 +1,48 @@
+items:
+  - id: MAGICAL_WATER_BUCKET
+    material: water_bucket
+    name: "Magical Water Bucket"
+    rarity: COMMON
+    lore:
+      - "\xA77This Magical Water Bucket will never"
+      - "\xA77run out of water, no matter how"
+      - "\xA77many times it is emptied."
+    default_statistics: { }
+    components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: true
+        recipes:
+          - type: SHAPED
+            recipe-type: MISC
+            pattern:
+              - IEI
+              - OIO
+            ingredients:
+              I:
+                type: IRON_INGOT
+                amount: 1
+              E:
+                type: ENCHANTED_ICE
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: MAGICAL_WATER_BUCKET
+              amount: 1
+  - id: VILLAGER_DOLL
+    material: player_head
+    name: "Villager Doll"
+    rarity: SPECIAL
+    lore:
+      - "\xA77Commemorates your participation in"
+      - "\xA77the \xA7bHub Revamp \xA77city project."
+      - ""
+      - "\xA78\xA7oAn ugly doll of a villager. Holding it"
+      - "\xA78\xA7oevokes suppressed memories of"
+      - "\xA78\xA7owalking aimlessly in circles around"
+      - "\xA78\xA7othe Hub for hours on end."
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: 2125484eb621c13b9d6813fe96c05df38858ae997fcf5c0f4dcd900935ae1695
