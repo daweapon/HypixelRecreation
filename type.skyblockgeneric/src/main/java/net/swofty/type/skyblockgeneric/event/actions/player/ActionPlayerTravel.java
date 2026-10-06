@@ -60,6 +60,11 @@ public class ActionPlayerTravel implements HypixelEventClass {
         WarpPortal.getWarpPortals().forEach(warp -> {
             // distanceSquared is a micro-optimization
             if (event.getNewPosition().distanceSquared(warp.vector().asPos()) < 2) {
+                String closed = warp.closedReason().get();
+                if (closed != null) {
+                    player.sendMessage(closed);
+                    return;
+                }
                 player.teleport(warp.pos());
                 player.playSound(
                         Sound.sound(

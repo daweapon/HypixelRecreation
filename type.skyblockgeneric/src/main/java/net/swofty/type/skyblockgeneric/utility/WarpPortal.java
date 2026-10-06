@@ -9,6 +9,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.generic.entity.hologram.ServerHolograms;
 
 import java.util.ArrayList;
+import java.util.function.Supplier;
 
 public class WarpPortal {
 
@@ -16,13 +17,18 @@ public class WarpPortal {
     private static ArrayList<WarpPortalData> warpPortals = new ArrayList<>();
 
     public static void create(Instance instance, BlockVec vector, Component text, Pos pos) {
+        create(instance, vector, text, pos, () -> null);
+    }
+
+    /** {@code closedReason} returns why the portal is shut right now, or null while it is open. */
+    public static void create(Instance instance, BlockVec vector, Component text, Pos pos, Supplier<String> closedReason) {
         ServerHolograms.addExternalHologram(ServerHolograms.ExternalHologram.builder().pos(vector.asPos().add(0.5, 2, 0.5)).instance(instance).text(new String[]{
             Text.of("<5>✦ <d>Warp To <b>{}", text).serialize()
         }).build());
-        warpPortals.add(new WarpPortalData(vector, text, pos));
+        warpPortals.add(new WarpPortalData(vector, text, pos, closedReason));
     }
 
-    public record WarpPortalData(BlockVec vector, Component text, Pos pos) {
+    public record WarpPortalData(BlockVec vector, Component text, Pos pos, Supplier<String> closedReason) {
     }
 
 }

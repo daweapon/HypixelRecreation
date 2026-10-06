@@ -38,6 +38,7 @@ import net.swofty.type.skyblockgeneric.darkauction.DarkAuctionHandler;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
 import net.swofty.type.skyblockgeneric.entity.GlassDisplay;
 import net.swofty.type.skyblockgeneric.furniture.Furniture;
+import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.gui.inventories.election.ElectionView;
 import net.swofty.type.skyblockgeneric.gui.inventories.election.ElectionViewStatsView;
@@ -57,6 +58,8 @@ import java.util.stream.Collectors;
 
 // Server type loader for the Hub: registers NPCs, events, warp portals, furniture, and displays for the central lobby world.
 public class TypeHubLoader implements SkyBlockTypeLoader {
+    private static final Pos COMMUNITY_CENTER_ARRIVAL = new Pos(9.5, 79, 12.5, 90, 0);
+
 
 	@Override
 	public ServerType getType() {
@@ -158,8 +161,21 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
 			ServerHolograms.updateExternalHologramText(electionUUID, electionLines())
 		).delay(TaskSchedule.seconds(1)).repeat(TaskSchedule.seconds(1)).schedule();
 
-		WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(13, 78, 13), Component.text("Election Room"), new Pos(0.5, 50, 45.5, -180, 0));
-        WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(0, 49, 47), Component.text("Community Center"), new Pos(9.5, 79, 12.5, 90, 0));
+		WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(13, 78, 13), Component.text("Election Room"), new Pos(0.5, 50, 45.5, -180, 0),
+				() -> ElectionManager.getElectionData().isElectionOpen() ? null : "<c>The Election Room only opens while an election is running.");
+        WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(0, 49, 47), Component.text("Community Center"), COMMUNITY_CENTER_ARRIVAL);
+
+		// The Election Room is only open while voting is; anyone still inside when it closes is
+		// returned to the Community Center.
+		MinecraftServer.getSchedulerManager().buildTask(() -> {
+			if (ElectionManager.getElectionData().isElectionOpen()) return;
+			for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
+				if (player.getRegion() != null && player.getRegion().getType() == RegionType.ELECTION_ROOM) {
+					player.teleport(COMMUNITY_CENTER_ARRIVAL);
+					player.sendMessage("<c>The election has closed, so you were returned to the Community Center.");
+				}
+			}
+		}).repeat(TaskSchedule.seconds(1)).schedule();
 
 		Furniture.load("hexatorum");
 		Furniture.load("rune_table");
