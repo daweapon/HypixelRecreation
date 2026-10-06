@@ -1,21 +1,19 @@
 package net.swofty.type.jerrysworkshop.present;
 
+import net.kyori.adventure.nbt.BinaryTagTypes;
+import net.kyori.adventure.nbt.CompoundBinaryTag;
+import net.kyori.adventure.nbt.ListBinaryTag;
 import net.minestom.server.MinecraftServer;
-import net.minestom.server.component.DataComponents;
 import net.minestom.server.coordinate.BlockVec;
 import net.minestom.server.coordinate.Point;
-import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Entity;
-import net.minestom.server.entity.EntityType;
-import net.minestom.server.entity.PlayerSkin;
-import net.minestom.server.entity.metadata.display.ItemDisplayMeta;
 import net.minestom.server.instance.Instance;
-import net.minestom.server.item.ItemStack;
-import net.minestom.server.item.Material;
-import net.minestom.server.network.player.ResolvableProfile;
+import net.minestom.server.instance.block.Block;
+import net.minestom.server.tag.Tag;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.HypixelConst;
+import net.swofty.type.generic.block.PlayerHeadBlockHandler;
 import net.swofty.type.generic.data.datapoints.DatapointPresentYear;
 import net.swofty.type.generic.entity.InteractionEntity;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
@@ -23,13 +21,16 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 // Manages the White Gift present entities scattered around Jerry's Workshop. Each SkyBlock year
 // places 20 gifts drawn from WhiteGiftLocations and finding them resets with the year.
 public class Present {
 
 	private static final List<Entity> spawned = new ArrayList<>();
+	private static final Map<Point, Block> replacedBlocks = new HashMap<>();
 	private static int spawnedYear = Integer.MIN_VALUE;
 
 	public static void spawnAll() {
@@ -43,6 +44,9 @@ public class Present {
 		if (year == spawnedYear) return;
 		spawned.forEach(Entity::remove);
 		spawned.clear();
+		Instance instance = HypixelConst.getInstanceContainer();
+		replacedBlocks.forEach(instance::setBlock);
+		replacedBlocks.clear();
 		spawnedYear = year;
 		for (int poolIndex : WhiteGiftLocations.forYear(year)) {
 			spawn(poolIndex + 1, openSpot(WhiteGiftLocations.position(poolIndex)));
@@ -73,17 +77,16 @@ public class Present {
 		String texturesJson = "{\"textures\":{\"SKIN\":{\"url\":\"https://textures.minecraft.net/texture/e47b37e67a89159bf4acc4a44d4328f4efc0181605142288e5eed1ab8aed913c\"}}}";
 		String texturesEncoded = java.util.Base64.getEncoder().encodeToString(texturesJson.getBytes());
 
-		// A block display renders only the block state, never a skull's profile, so the head is shown
-		// as an item instead.
-		Entity displayEntity = new Entity(EntityType.ITEM_DISPLAY);
-		displayEntity.editEntityMeta(ItemDisplayMeta.class, meta -> {
-			meta.setHasNoGravity(true);
-			meta.setItemStack(ItemStack.builder(Material.PLAYER_HEAD)
-					.set(DataComponents.PROFILE, new ResolvableProfile(new PlayerSkin(texturesEncoded, null)))
-					.build());
-		});
-		displayEntity.setInstance(instance, Pos.fromPoint(position).add(0.5, 0.25, 0.5));
-		spawned.add(displayEntity);
+		CompoundBinaryTag profile = CompoundBinaryTag.builder().put("properties",
+				ListBinaryTag.builder(BinaryTagTypes.COMPOUND).add(CompoundBinaryTag.builder()
+						.putString("name", "textures")
+						.putString("value", texturesEncoded)
+						.build()).build()).build();
+		replacedBlocks.put(position, instance.getBlock(position));
+		instance.setBlock(position, Block.PLAYER_HEAD
+				.withHandler(new PlayerHeadBlockHandler())
+				.withTag(Tag.NBT("profile"), profile));
+
 		InteractionEntity entity = new InteractionEntity(0.5f, 0.5f, (player, interactEvent) -> {
 			SkyBlockDataHandler dataHandler = ((SkyBlockPlayer) player).getSkyblockDataHandler();
 			DatapointPresentYear.YearData presents = dataHandler.get(SkyBlockDataHandler.Data.LATEST_YEAR_PRESENT_PICKUP, DatapointPresentYear.class).getValue();
