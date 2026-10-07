@@ -164,7 +164,12 @@ public class ElectionManager {
 
         SkyBlockMayor chosen = specials.get(electionData.getSpecialCandidateIndex() % specials.size());
         electionData.setSpecialCandidateIndex(electionData.getSpecialCandidateIndex() + 1);
+        return forceElectMayor(chosen);
+    }
 
+    // Admin-only testing helper backing /adminbypass forcemayor: installs the given mayor with all of
+    // their perks, bypassing the vote, so a perk such as Diana's Mythological Ritual can be tested.
+    public static SkyBlockMayor forceElectMayor(SkyBlockMayor chosen) {
         electionData.setElectionOpen(false);
         electionData.getCandidates().clear();
         electionData.setCurrentMayor(chosen.name());
