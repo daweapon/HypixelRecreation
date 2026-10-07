@@ -43,6 +43,7 @@ import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.minion.MinionRegistry;
 import net.swofty.type.skyblockgeneric.minion.SkyBlockMinion;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
+import net.swofty.type.skyblockgeneric.museum.MuseumService;
 import net.swofty.type.skyblockgeneric.rabbits.ChocolateRabbit;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.skill.SkillCategory;
@@ -127,6 +128,7 @@ public final class MaxStickService {
         maxAccessoryBagUpgrades(player);
         maxPersonalBank(player);
         maxHubUpgrades(player);
+        MuseumService.maxOut(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have
         // granted its own SkyBlock XP causes first or the top-up would overshoot.
         maxSkyBlockLevel(player);
