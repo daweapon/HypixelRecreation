@@ -1,0 +1,139 @@
+items:
+  - id: PARKOUR_CONTROLLER
+    material: light_weighted_pressure_plate
+    name: "Parkour Start/End"
+    rarity: COMMON
+    lore:
+      - '<7>Create the start/end of parkour'
+      - '<7>courses on your private island!'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 1<c>.'
+    components:
+      - id: NOT_FINISHED_YET
+
+  - id: PARKOUR_POINT
+    material: heavy_weighted_pressure_plate
+    name: "Parkour Checkpoint"
+    rarity: COMMON
+    lore:
+      - '<7>Create checkpoints for parkour'
+      - '<7>courses on your private island!'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 1<c>.'
+    components:
+      - id: NOT_FINISHED_YET
+
+  - id: PARKOUR_TIMES
+    material: iron_block
+    name: "Parkour Times"
+    rarity: COMMON
+    lore:
+      - '<7>Places a hologram displaying the top'
+      - '<7>parkour times of players on your'
+      - '<7>island. Click to select which parkour'
+      - '<7>is displayed.'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 1<c>.'
+    components:
+      - id: NOT_FINISHED_YET
+
+  - id: SOCIAL_DISPLAY
+    material: gold_block
+    name: "Social Display"
+    rarity: UNCOMMON
+    lore:
+      - '<7>Places a hologram displaying the top'
+      - '<7>players on your island by points.'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 2<c>.'
+    components:
+      - id: NOT_FINISHED_YET
+
+  - id: EGG_HUNT
+    material: PLAYER_HEAD
+    name: "Egg Hunt"
+    rarity: COMMON
+    lore:
+      - '<7>Place an egg which can be found on'
+      - '<7>your island by guests for island'
+      - '<7>points.'
+      - ''
+      - '<7>Maximum of 10.'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 3<c>.'
+    components:
+      - id: SKULL_HEAD
+        texture: 98c5530c2c856e30b11fb22c711117b073fd8333ae06c9fd1c697c4af4a0ccc9
+      - id: NOT_FINISHED_YET
+
+  - id: ISLAND_NPC
+    material: polar_bear_spawn_egg
+    name: "Island NPC"
+    rarity: RARE
+    lore:
+      - '<7>Spawn island NPCs for your private'
+      - '<7>world! Right-Click one to edit its'
+      - '<7>settings and add dialogue.'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 5<c>.'
+    components:
+      - id: NOT_FINISHED_YET
+
+  - id: TIC_TAC_TOE
+    material: PLAYER_HEAD
+    name: "Tic Tac Toe"
+    rarity: UNCOMMON
+    lore:
+      - '<7>Click another player to initiate a'
+      - '<7>game of Tic Tac Toe!'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 6<c>.'
+    components:
+      - id: SKULL_HEAD
+        texture: 70f534f071a94607a9f8a30b23d46149801565ccebada859483364d4fb683886
+      - id: NOT_FINISHED_YET
+
+  - id: CONNECT_FOUR
+    material: PLAYER_HEAD
+    name: "Four in a Row"
+    rarity: UNCOMMON
+    lore:
+      - '<7>Click another player to initiate a'
+      - '<7>game of Four in a Row!'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 7<c>.'
+    components:
+      - id: SKULL_HEAD
+        texture: 9f388f159574040f6de079a52d952276d8880f581fde8468384ec74166fe9ad
+      - id: NOT_FINISHED_YET
+
+  - id: ROCK_PAPER_SHEARS
+    material: shears
+    name: "Rock Paper Shears"
+    rarity: UNCOMMON
+    lore:
+      - '<7>Click this item to initiate a tournament'
+      - '<7>of Rock Paper Shears with all of the'
+      - '<7>players on your island!'
+      - ''
+      - '<7>Outsmart your opponents by'
+      - '<7>choosing the least picked option to'
+      - '<7>win the round! Final round uses'
+      - '<7>classic rules.'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 8<c>.'
+    components:
+      - id: NOT_FINISHED_YET
+
+  - id: SHOWCASE_BLOCK
+    material: glass
+    name: "Showcase Block"
+    rarity: UNCOMMON
+    lore:
+      - '<7>Show off an item in this fancy glass'
+      - '<7>display box! <e><l>RIGHT CLICK <7>to put in'
+      - '<7>or swap an item.'
+      - ''
+      - '<dark_red>❣ <c>Requires <a>Social Skill 10<c>.'
+    components:
+      - id: NOT_FINISHED_YET

@@ -1,0 +1,45 @@
+items:
+  - id: SHADY_RING
+    material: PLAYER_HEAD
+    name: "Shady Ring"
+    rarity: UNCOMMON
+    lore:
+      - '<7>Get 1% off on most shops.'
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: Shady Ring
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: da8524274a65d8a80a0f44e103e2021e27c8916e965aa11f665ac0c49be40ec6
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: CROOKED_ARTIFACT
+    material: PLAYER_HEAD
+    name: "Crooked Artifact"
+    rarity: RARE
+    lore:
+      - '<7>Get 2% off on most shops.'
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: Crooked Artifact
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 5b7ff88d154d04a8a26995c99f64e53b574c7b82ec21a12a9e448bca1e70f461
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: SEAL_OF_THE_FAMILY
+    material: PLAYER_HEAD
+    name: "Seal of the Family"
+    rarity: EPIC
+    lore:
+      - '<7>Get 3% off on most shops.'
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: Seal of the Family
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 7ab83858ebc8ee85c3e54ab13aabfcc1ef2ad446d6a900e471c3f33b78906a5b
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false

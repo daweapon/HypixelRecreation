@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.shop.ShopDiscount;
 import net.swofty.type.skyblockgeneric.shop.ShopPrice;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -31,12 +32,12 @@ public class CoinShopPrice implements ShopPrice {
 
     @Override
     public boolean canAfford(SkyBlockPlayer player) {
-        return player.getCoins() >= amount;
+        return player.getCoins() >= ShopDiscount.apply(player, amount);
     }
 
     @Override
     public void processPurchase(SkyBlockPlayer player) {
-        player.removeCoins(amount);
+        player.removeCoins(ShopDiscount.apply(player, amount));
     }
 
     @Override

@@ -836,6 +836,8 @@ public enum ItemType {
 
   CONJURING_SWORD(Material.STONE_SWORD, Rarity.RARE),
 
+  CONNECT_FOUR(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
   CONTROL_SWITCH(Material.PLAYER_HEAD, Rarity.RARE),
 
   CORLEONITE(Material.PLAYER_HEAD, Rarity.EPIC),
@@ -893,6 +895,8 @@ public enum ItemType {
   CRITICAL_POTION_4(Material.POTION, Rarity.EPIC),
 
   CROCHET_TIGER_PLUSHIE(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  CROOKED_ARTIFACT(Material.PLAYER_HEAD, Rarity.RARE),
 
   CROPIE(Material.WHEAT, Rarity.UNCOMMON),
 
@@ -1191,6 +1195,8 @@ public enum ItemType {
   EFFICIENT_AXE(Material.IRON_AXE, Rarity.UNCOMMON),
 
   EGG(Material.EGG, Rarity.COMMON),
+
+  EGG_HUNT(Material.PLAYER_HEAD, Rarity.COMMON),
 
   ELDER_GUARDIAN_SPAWN_EGG(Material.ELDER_GUARDIAN_SPAWN_EGG, Rarity.COMMON),
 
@@ -2126,6 +2132,8 @@ public enum ItemType {
 
   HUB_MUSEUM_TRAVEL_SCROLL(Material.PAPER, Rarity.UNCOMMON),
 
+  HUB_WIZARD_TOWER_TRAVEL_SCROLL(Material.PAPER, Rarity.RARE),
+
   HUNTER_KNIFE(Material.IRON_SWORD, Rarity.UNCOMMON),
 
   HUNTER_RING(Material.PLAYER_HEAD, Rarity.RARE),
@@ -2221,6 +2229,8 @@ public enum ItemType {
   IRON_SWORD(Material.IRON_SWORD, Rarity.COMMON),
 
   IRON_TRAPDOOR(Material.IRON_TRAPDOOR, Rarity.COMMON),
+
+  ISLAND_NPC(Material.POLAR_BEAR_SPAWN_EGG, Rarity.RARE),
 
   ITEM_SPIRIT_BOW(Material.BOW, Rarity.LEGENDARY),
 
@@ -2948,6 +2958,12 @@ public enum ItemType {
 
   PAPER(Material.PAPER, Rarity.COMMON),
 
+  PARKOUR_CONTROLLER(Material.LIGHT_WEIGHTED_PRESSURE_PLATE, Rarity.COMMON),
+
+  PARKOUR_POINT(Material.HEAVY_WEIGHTED_PRESSURE_PLATE, Rarity.COMMON),
+
+  PARKOUR_TIMES(Material.IRON_BLOCK, Rarity.COMMON),
+
   PEONY(Material.PEONY, Rarity.COMMON),
 
   PERFECT_AMBER_GEM(Material.PLAYER_HEAD, Rarity.LEGENDARY),
@@ -3388,6 +3404,8 @@ public enum ItemType {
 
   RICH_CHOCOLATE_CHUNK(Material.PLAYER_HEAD, Rarity.RARE),
 
+  RIFT_PRISM(Material.PLAYER_HEAD, Rarity.RARE),
+
   RING_OF_COINS(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   RING_POTION_AFFINITY(Material.PLAYER_HEAD, Rarity.UNCOMMON),
@@ -3395,6 +3413,8 @@ public enum ItemType {
   RITUAL_RESIDUE(Material.PAPER, Rarity.EPIC),
 
   ROBOTRON_REFLECTOR(Material.PLAYER_HEAD, Rarity.RARE),
+
+  ROCK_PAPER_SHEARS(Material.SHEARS, Rarity.UNCOMMON),
 
   ROD_OF_THE_SEA(Material.FISHING_ROD, Rarity.LEGENDARY),
 
@@ -3502,6 +3522,8 @@ public enum ItemType {
 
   SCYTHE_BLADE(Material.DIAMOND, Rarity.LEGENDARY),
 
+  SEAL_OF_THE_FAMILY(Material.PLAYER_HEAD, Rarity.EPIC),
+
   SEAL_RING(Material.PLAYER_HEAD, Rarity.RARE),
 
   SEAL_TALISMAN(Material.PLAYER_HEAD, Rarity.UNCOMMON),
@@ -3527,6 +3549,8 @@ public enum ItemType {
   SHADOW_FURY(Material.DIAMOND_SWORD, Rarity.LEGENDARY),
 
   SHADOW_WARP_SCROLL(Material.WRITABLE_BOOK, Rarity.LEGENDARY),
+
+  SHADY_RING(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   SHAMAN_SWORD(Material.IRON_SWORD, Rarity.EPIC),
 
@@ -3930,6 +3954,8 @@ public enum ItemType {
 
   SHORT_GRASS(Material.SHORT_GRASS, Rarity.COMMON),
 
+  SHOWCASE_BLOCK(Material.GLASS, Rarity.UNCOMMON),
+
   SHREDDED_LINE(Material.PLAYER_HEAD, Rarity.RARE),
 
   SIGNAL_ENHANCER(Material.PAPER, Rarity.LEGENDARY),
@@ -4047,6 +4073,8 @@ public enum ItemType {
   SNOW_CANNON(Material.PLAYER_HEAD, Rarity.RARE),
 
   SNOW_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  SOCIAL_DISPLAY(Material.GOLD_BLOCK, Rarity.UNCOMMON),
 
   SOLAR_PANEL(Material.DAYLIGHT_DETECTOR, Rarity.UNCOMMON),
 
@@ -4493,6 +4521,8 @@ public enum ItemType {
   THORNY_VINES(Material.VINE, Rarity.EPIC),
 
   THUNDER_SHARDS(Material.PAPER, Rarity.EPIC),
+
+  TIC_TAC_TOE(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   TIGER_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
