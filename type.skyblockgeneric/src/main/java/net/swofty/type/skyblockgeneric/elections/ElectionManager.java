@@ -16,12 +16,12 @@ import net.swofty.commons.text.Text;
 import net.swofty.proxyapi.ProxyService;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
+import net.swofty.type.skyblockgeneric.elections.perks.PerkpocalypseRotation;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -151,8 +151,6 @@ public class ElectionManager {
         }
 
         playerVoteCache.clear();
-        perkpocalypseActivePerks = Set.of();
-        perkpocalypseSourceMayor = null;
     }
 
     // Admin-only testing helper backing /adminbypass skiptospecialmayor: directly force-elects the
@@ -191,8 +189,6 @@ public class ElectionManager {
         }
 
         playerVoteCache.clear();
-        perkpocalypseActivePerks = Set.of();
-        perkpocalypseSourceMayor = null;
         return chosen;
     }
 
@@ -279,70 +275,33 @@ public class ElectionManager {
     }
 
     public static boolean isMayorPerkActive(SkyBlockMayor.Perk perk) {
-        return electionData.getCurrentMayorPerkEnums().contains(perk);
+        return ElectionPerks.current().isMayorPerk(perk);
     }
 
     public static boolean isMinisterPerkActive(SkyBlockMayor.Perk perk) {
-        SkyBlockMayor.Perk activePerk = electionData.getMinisterPerkEnum();
-        return activePerk != null && activePerk == perk;
+        return ElectionPerks.current().isMinisterPerk(perk);
     }
 
     public static boolean isPerkActive(SkyBlockMayor.Perk perk) {
-        return isMayorPerkActive(perk) || isMinisterPerkActive(perk) || perkpocalypseActivePerks.contains(perk);
+        return ElectionPerks.isActive(perk);
     }
 
-    // Jerry's Perkpocalypse: while active, every 18 SkyBlock days the next mayor in a shuffled
-    // rotation of Aatrox/Cole/Diana/Finnegan/Marina/Paul (Diaz and Foxy are excluded, and Barry isn't
-    // part of the real rotation either) has their full perk set activated alongside Jerry's own. The
-    // rotation order is shuffled once per Jerry term and cycled through without repeats until
-    // exhausted, then reshuffled - matching the SkyBlock Wiki's documented mechanic (a shuffled list
-    // decided when Jerry is elected, not an independent re-roll each trigger).
-    private static volatile Set<SkyBlockMayor.Perk> perkpocalypseActivePerks = Set.of();
-    private static volatile SkyBlockMayor perkpocalypseSourceMayor = null;
-    private static volatile List<SkyBlockMayor> perkpocalypseRotation = List.of();
-    private static volatile int perkpocalypseRotationIndex = 0;
-    private static volatile int perkpocalypseRotationYear = -1;
-
     public static Set<SkyBlockMayor.Perk> getPerkpocalypseActivePerks() {
-        return perkpocalypseActivePerks;
+        SkyBlockMayor source = getPerkpocalypseSourceMayor();
+        return source == null ? Set.of() : Set.of(source.getAllPerks());
     }
 
     public static SkyBlockMayor getPerkpocalypseSourceMayor() {
-        return perkpocalypseSourceMayor;
+        ElectionData data = electionData;
+        if (data.getMayorEnum() != SkyBlockMayor.JERRY) return null;
+        if (!data.getCurrentMayorPerks().contains(SkyBlockMayor.Perk.PERKPOCALYPSE.name())) return null;
+        return PerkpocalypseRotation.mayorAt(data.getMayorElectedYear(), SkyBlockCalendar.getElapsed());
     }
 
     public static void triggerPerkpocalypseIfEligible() {
-        if (getCurrentMayor() != SkyBlockMayor.JERRY || !isMayorPerkActive(SkyBlockMayor.Perk.PERKPOCALYPSE)) {
-            perkpocalypseActivePerks = Set.of();
-            perkpocalypseSourceMayor = null;
-            perkpocalypseRotation = List.of();
-            perkpocalypseRotationIndex = 0;
-            perkpocalypseRotationYear = -1;
-            return;
-        }
-
-        int electedYear = electionData.getMayorElectedYear();
-        if (perkpocalypseRotation.isEmpty() || perkpocalypseRotationIndex >= perkpocalypseRotation.size()
-                || perkpocalypseRotationYear != electedYear) {
-            List<SkyBlockMayor> eligible = new ArrayList<>(SkyBlockMayor.getRegularMayors().stream()
-                    .filter(mayor -> mayor != SkyBlockMayor.DIAZ
-                            && mayor != SkyBlockMayor.FOXY
-                            && mayor != SkyBlockMayor.BARRY)
-                    .toList());
-            Collections.shuffle(eligible);
-            perkpocalypseRotation = eligible;
-            perkpocalypseRotationIndex = 0;
-            perkpocalypseRotationYear = electedYear;
-        }
-
-        if (perkpocalypseRotation.isEmpty()) return;
-
-        SkyBlockMayor chosen = perkpocalypseRotation.get(perkpocalypseRotationIndex);
-        perkpocalypseRotationIndex++;
-        perkpocalypseActivePerks = Set.of(chosen.getAllPerks());
-        perkpocalypseSourceMayor = chosen;
+        SkyBlockMayor chosen = getPerkpocalypseSourceMayor();
+        if (chosen == null) return;
         Logger.info("Perkpocalypse activated {}'s perks", chosen.getDisplayName());
-
         Text announcement = Text.parseLenient(
                 "<c><l>PERKPOCALYPSE! <7>Mayor <a>" + chosen.getDisplayName() + "<7>'s perks have been activated!");
         for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {

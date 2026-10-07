@@ -8,8 +8,8 @@ import net.minestom.server.instance.Instance;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSlayer;
-import net.swofty.type.skyblockgeneric.elections.ElectionManager;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.SlayerBossMob;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.SlayerBossProfile;
@@ -149,17 +149,13 @@ public final class SlayerService {
     }
 
     private static int questCost(SlayerTierDefinition tierDefinition) {
-        if (ElectionManager.isPerkActive(SkyBlockMayor.Perk.SLASHED_PRICING)) {
-            return Math.max(1, tierDefinition.cost() / 2);
-        }
-        return tierDefinition.cost();
+        if (!ElectionPerks.isActive(SkyBlockMayor.Perk.SLASHED_PRICING)) return tierDefinition.cost();
+        double discount = ElectionPerks.bonus(SkyBlockMayor.Perk.SLASHED_PRICING) / 100D;
+        return Math.max(1, (int) (tierDefinition.cost() * (1D - discount)));
     }
 
     private static int slayerXpReward(SlayerTierDefinition tierDefinition) {
-        if (ElectionManager.isPerkActive(SkyBlockMayor.Perk.SLAYER_XP_BUFF)) {
-            return (int) Math.round(tierDefinition.slayerXp() * 1.25D);
-        }
-        return tierDefinition.slayerXp();
+        return (int) Math.round(tierDefinition.slayerXp() * ElectionPerks.multiplier(SkyBlockMayor.Perk.SLAYER_XP_BUFF));
     }
 
     private static @Nullable SlayerBossMob spawnBoss(SkyBlockPlayer player, SlayerDefinition definition, SlayerTierDefinition tierDefinition, Pos position) {
