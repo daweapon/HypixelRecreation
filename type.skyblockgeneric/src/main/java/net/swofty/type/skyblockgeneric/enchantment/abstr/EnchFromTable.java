@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.enchantment.abstr;
 
 import lombok.NonNull;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Map;
@@ -15,7 +16,7 @@ public interface EnchFromTable {
 
     record TableLevels(Map<Integer, Integer> levelsFromTableToApply) {
         public int get(int level) {
-            return levelsFromTableToApply.get(level);
+            return ElectionPerks.experienceLevelCost(levelsFromTableToApply.get(level));
         }
 
         public int minimumLevel() {

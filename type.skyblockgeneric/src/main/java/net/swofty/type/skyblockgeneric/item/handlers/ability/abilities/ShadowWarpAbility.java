@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Point;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.damage.Damage;
 import net.minestom.server.entity.damage.DamageType;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.RegisteredAbility;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -48,7 +49,7 @@ public class ShadowWarpAbility extends RegisteredAbility {
     private static void detonate(SkyBlockPlayer player, Point warpPosition) {
         for (Entity entity : player.getInstance().getNearbyEntities(warpPosition, 6)) {
             if (!(entity instanceof SkyBlockMob mob)) continue;
-            mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), 10000));
+            mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), ElectionPerks.spellDamage(10000)));
         }
     }
 

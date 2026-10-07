@@ -9,6 +9,7 @@ import net.minestom.server.entity.damage.DamageType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.event.EventNodes;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
@@ -35,7 +36,7 @@ public class AbilityRegistry {
                 (player, _, _, _) -> {
                     for (Entity entity : player.getInstance().getNearbyEntities(player.getPosition(), 6)) {
                         if (!(entity instanceof SkyBlockMob mob)) continue;
-                        mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), 12000));
+                        mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), ElectionPerks.spellDamage(12000)));
                         mob.setVelocity(mob.getPosition().sub(player.getPosition()).asVec().normalize().mul(14).withY(7));
                     }
                     return true;
@@ -70,7 +71,7 @@ public class AbilityRegistry {
 
                 for (Entity entity : player.getInstance().getNearbyEntities(tpPos, 6)) {
                     if (!(entity instanceof SkyBlockMob mob)) continue;
-                    mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), 10000));
+                    mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), ElectionPerks.spellDamage(10000)));
                 }
 
                 WitherShieldEffect.apply(player);
@@ -88,7 +89,7 @@ public class AbilityRegistry {
             (player, _, _, _) -> {
                 for (Entity entity : player.getInstance().getNearbyEntities(player.getPosition(), 6)) {
                     if (!(entity instanceof SkyBlockMob mob)) continue;
-                    mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), 10000));
+                    mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), ElectionPerks.spellDamage(10000)));
                 }
                 return true;
             }

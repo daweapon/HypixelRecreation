@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.components;
 
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.anvilcombine.AnvilCombineHandler;
@@ -28,7 +29,9 @@ public class AnvilCombinableComponent extends SkyBlockItemComponent {
 
     public int applyCostLevels(SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem, SkyBlockPlayer player) {
         AnvilCombineHandler handler = AnvilCombineRegistry.getHandler(handlerId);
-        return handler != null ? handler.costFunction().getCost(upgradeItem, sacrificeItem, player) : 0;
+        return handler != null
+                ? ElectionPerks.experienceLevelCost(handler.costFunction().getCost(upgradeItem, sacrificeItem, player))
+                : 0;
     }
 
     public boolean onCraft(SkyBlockPlayer player, SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem) {
