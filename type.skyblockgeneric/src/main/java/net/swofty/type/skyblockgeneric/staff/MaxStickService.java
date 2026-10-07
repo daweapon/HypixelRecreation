@@ -21,7 +21,16 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperien
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkills;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSlayer;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointStorage;
+import net.swofty.type.generic.data.datapoints.DatapointBoolean;
+import net.swofty.type.generic.data.datapoints.DatapointInteger;
+import net.swofty.type.skyblockgeneric.bank.PersonalBankService;
 import net.swofty.type.skyblockgeneric.data.fairysouls.FairySoulCatalog;
+import net.swofty.type.skyblockgeneric.farmingcontest.AnitaShop;
+import net.swofty.type.skyblockgeneric.farmingcontest.ContestBracket;
+import net.swofty.type.skyblockgeneric.farmingcontest.ContestCrop;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestProfile;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
+import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bags.GUIAccessoryBag;
 import net.swofty.type.skyblockgeneric.elections.FameRank;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
@@ -69,6 +78,9 @@ public final class MaxStickService {
 
     private static final int MAX_BITS = 100_000_000;
 
+    private static final int MAX_CONTEST_MEDALS = 10_000;
+    private static final int LUCIUS_FINAL_TIER_DARK_AUCTION_PURCHASES = 7;
+
     private MaxStickService() {}
 
     public static void initialize() {
@@ -111,6 +123,10 @@ public final class MaxStickService {
         maxFame(player);
         giveMaxBits(player);
         unlockDarkAuctionCalendar(player);
+        maxFarmingContests(player);
+        maxAccessoryBagUpgrades(player);
+        maxPersonalBank(player);
+        maxHubUpgrades(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have
         // granted its own SkyBlock XP causes first or the top-up would overshoot.
         maxSkyBlockLevel(player);
@@ -246,6 +262,52 @@ public final class MaxStickService {
     // one - testers using /maxprofile or THE_MAX_STICK shouldn't have to wait out a live auction.
     private static void unlockDarkAuctionCalendar(SkyBlockPlayer player) {
         player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_VISITED_DARK_AUCTION, true);
+    }
+
+    private static void maxFarmingContests(SkyBlockPlayer player) {
+        FarmingContestProfile profile = FarmingContests.profile(player);
+        profile.setMetJacob(true);
+        profile.setMetAnita(true);
+        profile.setPersonalBestsUnlocked(true);
+        profile.setExtraFortuneTier(AnitaShop.EXTRA_FORTUNE_TIERS.size());
+        profile.setLevelCapTier(AnitaShop.LEVEL_CAP_TIERS.size());
+        profile.addMedals(ContestBracket.BRONZE, Math.max(0, MAX_CONTEST_MEDALS - profile.getBronzeMedals()));
+        profile.addMedals(ContestBracket.SILVER, Math.max(0, MAX_CONTEST_MEDALS - profile.getSilverMedals()));
+        profile.addMedals(ContestBracket.GOLD, Math.max(0, MAX_CONTEST_MEDALS - profile.getGoldMedals()));
+
+        for (ContestCrop crop : ContestCrop.values()) {
+            profile.getUniqueBrackets().put(crop, ContestBracket.DIAMOND);
+            long cappedPersonalBest = (long) Math.ceil(
+                    ContestCrop.PERSONAL_BEST_FORTUNE_CAP * crop.getCropsPerTenthFortune() * 10D);
+            profile.getPersonalBests().merge(crop, cappedPersonalBest, Math::max);
+        }
+
+        FarmingContests.save(player, profile);
+    }
+
+    private static void maxAccessoryBagUpgrades(SkyBlockPlayer player) {
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.JACOBUS_UPGRADES, DatapointInteger.class)
+                .setValue(GUIAccessoryBag.MAX_JACOBUS_UPGRADES);
+    }
+
+    private static void maxPersonalBank(SkyBlockPlayer player) {
+        DatapointBankData datapoint = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.BANK_DATA, DatapointBankData.class);
+
+        synchronized (datapoint) {
+            DatapointBankData.BankData bankData = datapoint.getValue();
+            bankData.setPersonalBankLevel(PersonalBankService.COST.length - 1);
+            datapoint.setValue(bankData);
+        }
+    }
+
+    // Lucius's accessories are items, so only the Dark Auction wins that unlock all three tiers are granted.
+    private static void maxHubUpgrades(SkyBlockPlayer player) {
+        DatapointInteger darkAuctionPurchases = player.getSkyblockDataHandler()
+                .get(SkyBlockDataHandler.Data.DARK_AUCTION_PURCHASES, DatapointInteger.class);
+        darkAuctionPurchases.setValue(Math.max(darkAuctionPurchases.getValue(), LUCIUS_FINAL_TIER_DARK_AUCTION_PURCHASES));
+
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.RIFT_PRISM_IMBUED, DatapointBoolean.class)
+                .setValue(true);
     }
 
     private static void maxBackpackSlots(SkyBlockPlayer player) {

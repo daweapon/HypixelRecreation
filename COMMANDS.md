@@ -336,7 +336,7 @@ Co-op commands are distinct top-level commands in the player tables, not `/coop 
 | `/skyblockxp set <amount> [player]` | Moves total XP to an exact figure by adjusting the bonus offset only. |
 | `/skyblockxp setlevel <level> [player]` | Sets total XP to that level's threshold. Valid range is 0-700. |
 | `/skyblockxp prestige [player]` | Jumps to the next prefix tier, which real Hypixel changes every 40 levels. |
-| `/skyblockxp max [player]` | Grants level 620.19, completes every source, and unlocks every prefix emblem. Same path `/maxprofile` and THE MAX STICK use. |
+| `/skyblockxp max [player]` | Grants level 578.74, completes every source, and unlocks every prefix emblem. Same path `/maxprofile` and THE MAX STICK use. |
 | `/skyblockxp reset [player]` | Clears all causes, source progress, and the bonus offset back to zero XP. |
 | `/skyblockxp info [player]` | Prints level, total XP, earned-vs-bonus split, and progress to the next level. |
 | `/skyblockxp source <xpSource> <amount> [player]` | Sets one XP source's progress, clamped to that source's real Hypixel maximum. Rejected for sources backed by their own causes — use `/giveskyblockxp` for those. |

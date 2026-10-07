@@ -41,7 +41,8 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
             CustomCollectionAward.ACCESSORY_BAG_UPGRADE_9, 57
     ));
 
-    private static final int SLOTS_PER_JACOBUS_UPGRADE = 2;
+    public static final int SLOTS_PER_JACOBUS_UPGRADE = 2;
+    public static final int MAX_JACOBUS_UPGRADES = 99;
 
     @Override
     public ViewConfiguration<AccessoryBagState> configuration() {

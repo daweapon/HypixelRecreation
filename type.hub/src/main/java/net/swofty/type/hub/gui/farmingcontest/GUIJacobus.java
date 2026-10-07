@@ -22,8 +22,6 @@ import java.util.List;
 
 // Jacobus' Accessory Bag Upgrades menu, from the wiki's Jacobus/UI subpage and upgrade table.
 public class GUIJacobus extends StatelessView {
-    public static final int MAX_UPGRADES = 99;
-    private static final int SLOTS_PER_UPGRADE = 2;
     private static final int REGISTER_AT_UPGRADES = 5;
     private static final int XP_PER_UPGRADE = 2;
     private static final String REGISTER_TEXTURE = "3b648b9a44e280bcdf25f4a66a97bd5c33542e5e82415e15b475c6b999b8d635";
@@ -74,12 +72,12 @@ public class GUIJacobus extends StatelessView {
         lines.add("<7>Redstone collection: <c>" + GUIAccessoryBag.getCollectionSlots(player) + " Slots");
         lines.add("<7>Jacobus: <6>+" + GUIAccessoryBag.getJacobusSlots(player) + " Slots");
         lines.add("");
-        if (upgrades >= MAX_UPGRADES) {
+        if (upgrades >= GUIAccessoryBag.MAX_JACOBUS_UPGRADES) {
             lines.add("<a>Maxed out!");
             return lines;
         }
         long cost = costOfUpgrade(upgrades + 1);
-        lines.add("<7>Buying: <6>+" + SLOTS_PER_UPGRADE + " Slots");
+        lines.add("<7>Buying: <6>+" + GUIAccessoryBag.SLOTS_PER_JACOBUS_UPGRADE + " Slots");
         lines.add("<7>Cost: <6>" + StringUtility.commaify(cost) + " Coins");
         lines.add("");
         lines.add(player.getCoins() >= cost ? "<e>Click to upgrade!" : "<c>Can't afford upgrade!");
@@ -88,7 +86,7 @@ public class GUIJacobus extends StatelessView {
 
     private static void buy(SkyBlockPlayer player) {
         int upgrades = upgrades(player);
-        if (upgrades >= MAX_UPGRADES) {
+        if (upgrades >= GUIAccessoryBag.MAX_JACOBUS_UPGRADES) {
             player.sendMessage("<c>You have reached the maximum amount of Jacobus upgrades! That was NOT a smart business decision.");
             return;
         }
@@ -104,7 +102,7 @@ public class GUIJacobus extends StatelessView {
         player.removeCoins(cost);
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.JACOBUS_UPGRADES, DatapointInteger.class).setValue(upgrades + 1);
         player.getSkyBlockExperience().addSourceXP(SkyBlockXPSource.ACCESSORY_BAG_UPGRADES, XP_PER_UPGRADE);
-        player.sendMessage("<a>You upgraded your Accessory Bag by <6>+" + SLOTS_PER_UPGRADE + " Slots<a>!");
+        player.sendMessage("<a>You upgraded your Accessory Bag by <6>+" + GUIAccessoryBag.SLOTS_PER_JACOBUS_UPGRADE + " Slots<a>!");
         if (upgrades + 1 == REGISTER_AT_UPGRADES) {
             player.addAndUpdateItem(new SkyBlockItem(ItemType.JACOBUS_REGISTER));
             player.sendMessage("<a>Jacobus gave you a <6>Jacobus Register<a>!");
