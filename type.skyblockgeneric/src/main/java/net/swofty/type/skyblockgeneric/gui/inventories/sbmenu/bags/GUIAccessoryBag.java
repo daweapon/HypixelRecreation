@@ -4,6 +4,7 @@ import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.text.Text;
+import net.swofty.type.generic.data.datapoints.DatapointInteger;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.Components;
 import net.swofty.type.generic.gui.v2.StatefulView;
@@ -39,6 +40,8 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
             CustomCollectionAward.ACCESSORY_BAG_UPGRADE_8, 51,
             CustomCollectionAward.ACCESSORY_BAG_UPGRADE_9, 57
     ));
+
+    private static final int SLOTS_PER_JACOBUS_UPGRADE = 2;
 
     @Override
     public ViewConfiguration<AccessoryBagState> configuration() {
@@ -92,7 +95,7 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
         // Locked slots
         for (int i = endSlot; i < slotsPerPage; i++) {
             int slotIndex = i + startIndex;
-            CustomCollectionAward nextUpgrade = getUpgradeNeededForSlotIndex(slotIndex);
+            CustomCollectionAward nextUpgrade = getUpgradeNeededForSlotIndex(slotIndex - getJacobusSlots(player));
             if (nextUpgrade != null) {
                 layout.slot(i, (s, c) -> ItemStacks.item(Material.RED_STAINED_GLASS_PANE, 1,
                     Text.key("gui_sbmenu.bags.accessory.locked"),
@@ -135,6 +138,10 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
     }
 
     private int getTotalSlots(SkyBlockPlayer player) {
+        return getCollectionSlots(player) + getJacobusSlots(player);
+    }
+
+    public static int getCollectionSlots(SkyBlockPlayer player) {
         int totalSlots = 0;
         for (CustomCollectionAward entry : SLOTS_PER_UPGRADE.keySet()) {
             if (player.hasCustomCollectionAward(entry)) {
@@ -142,6 +149,11 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
             }
         }
         return totalSlots;
+    }
+
+    public static int getJacobusSlots(SkyBlockPlayer player) {
+        return SLOTS_PER_JACOBUS_UPGRADE * player.getSkyblockDataHandler()
+                .get(SkyBlockDataHandler.Data.JACOBUS_UPGRADES, DatapointInteger.class).getValue();
     }
 
     private CustomCollectionAward getUpgradeNeededForSlotIndex(int slotIndex) {

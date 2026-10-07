@@ -17,6 +17,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.DroppedItemEntityImpl;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.foraging.ForagingTreeManager;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.CustomDropComponent;
@@ -171,6 +172,9 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                 // Update the drop item amount
                 dropItem.setAmount(dropAmount);
                 ItemType droppedItemType = dropItem.getAttributeHandler().getPotentialType();
+                if (!playerPlaced && droppedItemType != null) {
+                    FarmingContests.recordHarvest(player, droppedItemType, dropAmount);
+                }
 
                 // Handle item distribution based on player conditions
                 if (player.canInsertItemIntoSacks(droppedItemType, dropAmount)) {

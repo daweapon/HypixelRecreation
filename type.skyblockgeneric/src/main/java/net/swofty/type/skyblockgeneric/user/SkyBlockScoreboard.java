@@ -14,6 +14,10 @@ import net.swofty.type.generic.data.datapoints.DatapointDouble;
 import net.swofty.type.generic.data.datapoints.DatapointInteger;
 import net.swofty.type.generic.scoreboard.HypixelScoreboard;
 import net.swofty.type.generic.utility.BlockUtility;
+import net.swofty.type.skyblockgeneric.farmingcontest.ContestBracket;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContest;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestProfile;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.spookyfestival.SpookyFestivalCandyTally;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
@@ -184,7 +188,35 @@ public class SkyBlockScoreboard {
                     }
                 }
 
-                boolean objective = !electionRoom && !darkAuction && !seasonalEventActive && region != null
+                FarmingContest contest = FarmingContest.active().orElse(null);
+                FarmingContestProfile.Entry contestEntry = contest == null ? null
+                    : FarmingContests.profile(player).entryFor(contest).orElse(null);
+                boolean contestShown = !electionRoom && !darkAuction && !seasonalEventActive && contest != null
+                    && (contestEntry != null || FarmingContests.canParticipate(player));
+                TextBody.Section farmingContest = body.section("farming_contest").when(() -> contestShown);
+                if (contestShown) {
+                    farmingContest.line(BLANK);
+                    farmingContest.line(Text.key("scoreboard.skyblock.contest_title",
+                        StringUtility.formatTimeLeft((contest.endElapsed() - SkyBlockCalendar.getElapsed()) * 50L)));
+                    if (contestEntry == null) {
+                        contest.crops().forEach(crop -> farmingContest.line(
+                            Text.key("scoreboard.skyblock.contest_crop_line", "○", crop.getDisplayName())));
+                    } else {
+                        farmingContest.line(Text.key("scoreboard.skyblock.contest_crop_line", "☘",
+                            contestEntry.getCrop().getDisplayName()));
+                        String collected = StringUtility.commaify(contestEntry.getCollected());
+                        ContestBracket bracket = contestEntry.qualifies()
+                            ? FarmingContests.liveBracket(player).filter(ContestBracket::earnsMedal).orElse(null) : null;
+                        if (bracket == null) {
+                            farmingContest.line(Text.key("scoreboard.skyblock.contest_collected_line", collected));
+                        } else {
+                            farmingContest.line(Text.key("scoreboard.skyblock.contest_bracket_line",
+                                Text.of(bracket.formatted()), collected));
+                        }
+                    }
+                }
+
+                boolean objective = !electionRoom && !darkAuction && !seasonalEventActive && !contestShown && region != null
                     && !missionData.getActiveMissions(region.getType()).isEmpty();
                 TextBody.Section objectives = body.section("objective").when(() -> objective);
                 if (objective) {

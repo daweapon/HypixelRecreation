@@ -293,12 +293,12 @@ public class GUISkyBlockMenu extends StatelessView {
 
         lore.add(Text.literal(" "));
 
-        // Dark Auction recurs every 3 SkyBlock days and lives on the full day-by-day Calendar
+        // Dark Auction and Jacob's Farming Contest recur every 3 SkyBlock days and live on the full day-by-day Calendar
         // instead of this rotating "next event" preview - it would otherwise dominate the slot.
         // Perkpocalypse lives in the Mayor Jerry tooltip instead (see filter above).
         Map<SkyBlockCalendar.EventInfo, CalendarEvent> upcomingEvents =
                 SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(1,
-                        List.of(CalendarEvent.DARK_AUCTION, CalendarEvent.PERKPOCALYPSE));
+                        List.of(CalendarEvent.DARK_AUCTION, CalendarEvent.PERKPOCALYPSE, CalendarEvent.FARMING_CONTEST));
 
         if (!upcomingEvents.isEmpty()) {
             Map.Entry<SkyBlockCalendar.EventInfo, CalendarEvent> entry = upcomingEvents.entrySet().iterator().next();

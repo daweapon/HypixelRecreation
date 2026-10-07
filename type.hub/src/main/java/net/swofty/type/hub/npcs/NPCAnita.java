@@ -5,6 +5,10 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.farmingcontest.GUIAnita;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestProfile;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCAnita extends HypixelNPC {
 
@@ -39,7 +43,24 @@ public class NPCAnita extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+
+        FarmingContestProfile profile = FarmingContests.profile(player);
+        if (!profile.isMetAnita()) {
+            profile.setMetAnita(true);
+            FarmingContests.save(player, profile);
+            setDialogue(player, "hello").thenRun(() -> player.openView(new GUIAnita()));
+            return;
+        }
+        player.openView(new GUIAnita());
+    }
+
+    @Override
+    public DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[] {
+            DialogueSet.ofTranslation("hello", "npcs_hub.anita.dialogue.hello")
+        };
     }
 
 }

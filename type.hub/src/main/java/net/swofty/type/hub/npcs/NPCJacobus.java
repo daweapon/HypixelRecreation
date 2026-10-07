@@ -5,8 +5,11 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.farmingcontest.GUIJacobus;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// NPC for Jacobus in the Hub; interaction is not yet implemented
+import java.util.concurrent.ThreadLocalRandom;
+
 public class NPCJacobus extends HypixelNPC {
 
     public NPCJacobus() {
@@ -38,9 +41,23 @@ public class NPCJacobus extends HypixelNPC {
         });
     }
 
+    private static final int QUOTES = 9;
+
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+        setDialogue(player, "quote-" + ThreadLocalRandom.current().nextInt(1, QUOTES + 1));
+        player.openView(new GUIJacobus());
+    }
+
+    @Override
+    public DialogueSet[] dialogues(HypixelPlayer player) {
+        DialogueSet[] quotes = new DialogueSet[QUOTES];
+        for (int i = 1; i <= QUOTES; i++) {
+            quotes[i - 1] = DialogueSet.ofTranslation("quote-" + i, "npcs_hub.jacobus.dialogue.quote_" + i);
+        }
+        return quotes;
     }
 
 }

@@ -58,6 +58,9 @@ import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.skill.SkillCategory;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestProfile;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestStatistics;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
@@ -227,6 +230,7 @@ public class PlayerStatistics {
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement
                 .getStatisticsUpTo(experience.getLevel().asInt()));
+        spare = ItemStatistics.add(spare, FarmingContestStatistics.all(player));
 
         return spare;
     }
@@ -408,6 +412,14 @@ public class PlayerStatistics {
             (double) player.getFairySouls().getExchangedFairySouls().size() * 2D).build();
         addModifier(modifiers, "Fairy Souls", fairySouls, StatisticSourceType.FAIRY_SOULS,
             StatisticModifierType.PROGRESSION, null, Material.PLAYER_HEAD, null);
+
+        FarmingContestProfile contests = FarmingContests.profile(player);
+        addModifier(modifiers, "Anita's Extra Farming Fortune", FarmingContestStatistics.extraFortune(contests),
+            StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.WHEAT, null);
+        addModifier(modifiers, "Personal Bests", FarmingContestStatistics.personalBests(contests),
+            StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.PAPER, null);
+        addModifier(modifiers, "Anita's Accessory", FarmingContestStatistics.anitaAccessory(player),
+            StatisticSourceType.ACCESSORY_BAG, StatisticModifierType.ABILITY_PASSIVE, null, Material.PLAYER_HEAD, null);
     }
 
     private void addTemporaryModifiers(List<StatisticModifier> modifiers) {

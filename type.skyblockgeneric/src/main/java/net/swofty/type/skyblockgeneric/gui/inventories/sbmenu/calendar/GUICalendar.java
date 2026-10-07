@@ -32,11 +32,12 @@ public class GUICalendar extends StatelessView {
     private static final int CHOCOLATE_FACTORY_SLOT = 42;
     private static final String CHOCOLATE_TEXTURE = "9a815398e7da89b1bc08f646cafc8e7b813da0be0eec0cce6d3eff5207801026";
 
-    // Dark Auction recurs every 3 SkyBlock days and lives on the full day-by-day Calendar
-    // (GUIFullCalendar) instead - showing individual occurrences here would crowd out rarer events.
+    // Dark Auction and Jacob's Farming Contest recur every 3 SkyBlock days and live on the full
+    // day-by-day Calendar (GUIFullCalendar) instead - showing individual occurrences here would
+    // crowd out rarer events.
     private static Map<SkyBlockCalendar.EventInfo, CalendarEvent> queryEvents() {
         return SkyBlockCalendar.getEventsWithDurationUntilSkipSpecific(14,
-                List.of(CalendarEvent.DARK_AUCTION, CalendarEvent.PERKPOCALYPSE));
+                List.of(CalendarEvent.DARK_AUCTION, CalendarEvent.PERKPOCALYPSE, CalendarEvent.FARMING_CONTEST));
     }
 
     private record SlotOccurrence(long eventAbsoluteTime, Duration duration, int year, CalendarEvent event) {}
