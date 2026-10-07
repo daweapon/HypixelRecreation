@@ -7,6 +7,8 @@ import net.minestom.server.entity.ai.TargetSelector;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
+import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
+import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
@@ -82,13 +84,13 @@ public class SharkMob extends BestiaryMob {
     private int finAmount(@Nullable SkyBlockPlayer killer) {
         int amount = getShark().getFinAmount();
         if (killer == null) return amount;
-        double extraFinChance = FishingFestivalPerk.ELASMOBRANCHII_AFFINITY.bonus(killer);
+        double extraFinChance = Carnivals.perkValue(killer, CarnivalPerk.ELASMOBRANCHII_AFFINITY);
         return ThreadLocalRandom.current().nextDouble(100D) < extraFinChance ? amount + 1 : amount;
     }
 
     private double toothChance(@Nullable SkyBlockPlayer killer) {
         if (killer == null) return FestivalShark.BASE_TOOTH_CHANCE;
-        double bonus = SharkToothNecklace.toothChanceBonus(killer) + FishingFestivalPerk.DENTURE_COLLECTOR.bonus(killer);
+        double bonus = SharkToothNecklace.toothChanceBonus(killer) + Carnivals.perkValue(killer, CarnivalPerk.DENTURE_COLLECTOR);
         return FestivalShark.BASE_TOOTH_CHANCE * (1 + bonus / 100D);
     }
 

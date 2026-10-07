@@ -34,13 +34,4 @@ class FishingFestivalTest {
         assertEquals(57.79D, Math.round(FestivalShark.NURSE_SHARK.getWeight() * 10_000D / total) / 100D);
         assertEquals(2.01D, Math.round(FestivalShark.GREAT_WHITE_SHARK.getWeight() * 10_000D / total) / 100D);
     }
-
-    @Test
-    void dougPerksMatchTheirTopTiers() {
-        assertEquals(5, FishingFestivalPerk.SHARK_SONAR.maxTier());
-        assertEquals(5D, FishingFestivalPerk.SHARK_SONAR.maxTier() * FishingFestivalPerk.SHARK_SONAR.getBonusPerTier());
-        assertEquals(30D, FishingFestivalPerk.DENTURE_COLLECTOR.maxTier() * FishingFestivalPerk.DENTURE_COLLECTOR.getBonusPerTier());
-        assertEquals(100D, FishingFestivalPerk.ELASMOBRANCHII_AFFINITY.maxTier() * FishingFestivalPerk.ELASMOBRANCHII_AFFINITY.getBonusPerTier());
-        assertEquals(10D, FishingFestivalPerk.FISHING_PRODIGY.maxTier() * FishingFestivalPerk.FISHING_PRODIGY.getBonusPerTier());
-    }
 }

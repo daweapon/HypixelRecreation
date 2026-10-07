@@ -9,6 +9,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestival;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
@@ -37,6 +38,10 @@ public final class CarnivalStatistics {
         if (HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_JERRYS_WORKSHOP) {
             total = ItemStatistics.add(total, single(ItemStatistic.SEA_CREATURE_CHANCE,
                     Carnivals.perkValue(player, CarnivalPerk.ICY_HOOK)));
+        }
+        if (FishingFestival.isActive()) {
+            total = ItemStatistics.add(total, single(ItemStatistic.FISHING_WISDOM,
+                    Carnivals.perkValue(player, CarnivalPerk.FISHING_PRODIGY)));
         }
         return total;
     }
