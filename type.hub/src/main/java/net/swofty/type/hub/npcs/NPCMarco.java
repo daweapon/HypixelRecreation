@@ -1,12 +1,15 @@
 package net.swofty.type.hub.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.gui.inventories.ClaimRewardView;
+import net.swofty.type.skyblockgeneric.mission.MissionData;
+import net.swofty.type.skyblockgeneric.mission.missions.marco.MissionGiveRoseRedDyeToMarco;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCMarco extends HypixelNPC {
 
@@ -41,7 +44,36 @@ public class NPCMarco extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+
+        MissionData missions = player.getMissionData();
+        if (missions.hasCompleted(MissionGiveRoseRedDyeToMarco.class)) {
+            setDialogue(player, "idle-" + (1 + (int) (Math.random() * 3)));
+            return;
+        }
+        if (!missions.isCurrentlyActive(MissionGiveRoseRedDyeToMarco.class)) {
+            setDialogue(player, "quest-start").thenRun(() -> missions.startMission(MissionGiveRoseRedDyeToMarco.class));
+            return;
+        }
+        if (player.getAmountInInventory(ItemType.RED_DYE) < MissionGiveRoseRedDyeToMarco.REQUIRED_DYE) {
+            setDialogue(player, "missing-items");
+            return;
+        }
+        player.takeItem(ItemType.RED_DYE, MissionGiveRoseRedDyeToMarco.REQUIRED_DYE);
+        setDialogue(player, "quest-complete").thenRun(() -> player.openView(new ClaimRewardView(),
+            new ClaimRewardView.State(ItemType.SPRAY_CAN, () -> missions.endMission(MissionGiveRoseRedDyeToMarco.class))));
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("quest-start", "npcs_hub.marco.dialogue.quest_start"),
+            DialogueSet.ofTranslation("missing-items", "npcs_hub.marco.dialogue.missing_items"),
+            DialogueSet.ofTranslation("quest-complete", "npcs_hub.marco.dialogue.quest_complete"),
+            DialogueSet.ofTranslation("idle-1", "npcs_hub.marco.dialogue.idle_1"),
+            DialogueSet.ofTranslation("idle-2", "npcs_hub.marco.dialogue.idle_2"),
+            DialogueSet.ofTranslation("idle-3", "npcs_hub.marco.dialogue.idle_3")
+        };
+    }
 }

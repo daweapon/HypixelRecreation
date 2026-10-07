@@ -1,4 +1,38 @@
 items:
+  - id: SPRAY_CAN
+    material: player_head
+    name: "Spray Can"
+    rarity: COMMON
+    lore:
+      - "\xA7eSelected Spray: \xA7cNONE"
+      - ""
+      - "\xA77Right-click on any wall of your"
+      - "\xA77choice to spray."
+      - ""
+      - "\xA77Left-click to access the Ink Manager"
+      - "\xA77and Spray Selector."
+    components:
+      - id: SKULL_HEAD
+        texture: a064d9796ed5fab445dbc90b4166c4e274228832719b5318a00126a29096a4f1
+      - id: NOT_FINISHED_YET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - ABA
+              - A A
+              - AAA
+            ingredients:
+              A:
+                type: GLASS
+                amount: 1
+              B:
+                type: REDSTONE
+                amount: 1
+            result:
+              type: SPRAY_CAN
+              amount: 1
   - id: AATROX_BATPHONE
     material: player_head
     name: "Maddox Batphone"

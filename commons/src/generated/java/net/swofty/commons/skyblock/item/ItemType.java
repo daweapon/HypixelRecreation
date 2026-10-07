@@ -4208,6 +4208,8 @@ public enum ItemType {
 
   SPOOKY_WATER_ORB(Material.PAPER, Rarity.LEGENDARY),
 
+  SPRAY_CAN(Material.PLAYER_HEAD, Rarity.COMMON),
+
   SPRUCE_BOAT(Material.SPRUCE_BOAT, Rarity.COMMON),
 
   SPRUCE_BUTTON(Material.SPRUCE_BUTTON, Rarity.COMMON),
