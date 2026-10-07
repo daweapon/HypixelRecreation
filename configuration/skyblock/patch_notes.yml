@@ -1,0 +1,44 @@
+# Patch notes shown by Jerry the Assistant (Island Jerry -> Patch Notes). Newest first; the menu shows
+# the first 7, like Hypixel's. Clicking an entry sends its link in chat.
+#
+# Each entry: version (shown as "SkyBlock v<version>"), date (display text), material (lowercase
+# Minecraft id for the icon), title (sent in chat with the link) and url.
+#
+# Seeded with Hypixel's latest SkyBlock releases (wiki Module:History/Datasheet). Replace or prepend
+# entries with this server's own notes as they are published.
+patch_notes:
+  - version: "0.27.2"
+    date: "6th October 2026"
+    material: gold_block
+    title: "The Minister Update, Greenhouse QOL, and More!"
+    url: "https://hypixel.net/threads/6159904/"
+  - version: "0.27.1"
+    date: "1st September 2026"
+    material: minecart
+    title: "Chocolate Factory Improvements, QOL Changes, and more!"
+    url: "https://hypixel.net/threads/6147732/"
+  - version: "0.27"
+    date: "4th August 2026"
+    material: ender_pearl
+    title: "Torrhus Canyon & Critter Safari"
+    url: "https://hypixel.net/threads/6132090/"
+  - version: "0.26.1"
+    date: "22nd July 2026"
+    material: wheat
+    title: "New Player Improvements, Harvest Feast Changes, Healing Revamp, and more!"
+    url: "https://hypixel.net/threads/6127383/"
+  - version: "0.26"
+    date: "8th July 2026"
+    material: bone
+    title: "SkyBlock Resource Pack, Loadouts, Security Quest, and more!"
+    url: "https://hypixel.net/threads/6117801/"
+  - version: "0.25"
+    date: "26th May 2026"
+    material: spider_eye
+    title: "Lotus Atoll"
+    url: "https://hypixel.net/threads/6100264/"
+  - version: "0.24.5"
+    date: "6th May 2026"
+    material: diamond
+    title: "Assorted QoL Changes"
+    url: "https://hypixel.net/threads/6094244/"
