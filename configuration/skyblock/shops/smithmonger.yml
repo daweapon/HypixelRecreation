@@ -1,0 +1,25 @@
+# Smithmonger's Reforge Stones at the Blacksmith (wiki Smithmonger/UI). None of these
+# reforges exist on this server yet, so every stone shows greyed out until its item is added.
+title: Smithmonger
+slots: DEFAULT
+entries:
+  - item: MOIL_LOG
+    name: "<a>Moil Log"
+    material: player_head
+    cost: { coins: 50000 }
+  - item: DIRT_BOTTLE
+    name: "<9>Dirt Bottle"
+    material: player_head
+    cost: { coins: 100000 }
+  - item: TOIL_LOG
+    name: "<9>Toil Log"
+    material: paper
+    cost: { coins: 1000000 }
+  - item: ANDESITE_WHETSTONE
+    name: "<9>Andesite Whetstone"
+    material: player_head
+    cost: { coins: 1000000 }
+  - item: BLESSED_FRUIT
+    name: "<9>Blessed Fruit"
+    material: paper
+    cost: { coins: 1000000 }

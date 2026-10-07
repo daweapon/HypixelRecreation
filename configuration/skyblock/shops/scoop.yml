@@ -1,0 +1,8 @@
+# Scoop's shop at the Mountain peak (wiki Scoop/UI).
+title: Scoop
+slots: SINGLE_SLOT
+entries:
+  - item: SNOW_SHOVEL
+    name: "<9>Snow Shovel"
+    material: iron_shovel
+    cost: { coins: 2500 }

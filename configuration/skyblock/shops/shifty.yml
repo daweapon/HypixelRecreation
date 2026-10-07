@@ -1,0 +1,19 @@
+# Shifty's brews in the Wilderness tavern (wiki Shifty/UI).
+title: Shifty
+slots: DEFAULT
+entries:
+  - item: TUTTI_FRUTTI_POISON
+    name: "<f>Tutti-Frutti Flavored Poison"
+    material: player_head
+    cost: { coins: 1000 }
+    stackable: true
+  - item: DCTR_PAPER
+    name: "<a>Dctr. Paper"
+    material: player_head
+    cost: { coins: 4000 }
+    stackable: true
+  - item: SLAYER_ENERGY_DRINK
+    name: "<9>Slayer© Energy Drink"
+    material: player_head
+    cost: { coins: 10000 }
+    stackable: true
