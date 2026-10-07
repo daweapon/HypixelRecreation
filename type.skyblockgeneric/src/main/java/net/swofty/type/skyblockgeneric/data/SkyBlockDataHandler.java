@@ -639,12 +639,13 @@ public class SkyBlockDataHandler extends DataHandler {
 
         BOOSTER_COOKIE_EXPIRATION_DATE("booster_cookie_expiration_date", false, false, false,
                 DatapointLong.class, new DatapointLong("booster_cookie_expiration_date", 1L),
-                (player, datapoint) -> CookieBuffService.restore((SkyBlockPlayer) player)),
+                (player, datapoint) -> CookieBuffService.restore((SkyBlockPlayer) player),
+                (player, datapoint) -> CookieBuffService.restore(player)),
 
         GOD_POTION_REMAINING_MS("god_potion_remaining_ms", false, false, false,
                 DatapointLong.class, new DatapointLong("god_potion_remaining_ms", 0L),
-                (player, datapoint) -> GodPotionService.restore((SkyBlockPlayer) player),
-                (player, datapoint) -> GodPotionService.synchronize((SkyBlockPlayer) player)),
+                null,
+                (player, datapoint) -> GodPotionService.restore(player)),
 
         GOD_POTION_LAST_UPDATED("god_potion_last_updated", false, false, false,
                 DatapointLong.class, new DatapointLong("god_potion_last_updated", 0L)),

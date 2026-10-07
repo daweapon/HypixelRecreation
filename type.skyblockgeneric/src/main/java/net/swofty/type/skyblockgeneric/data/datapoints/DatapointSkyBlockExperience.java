@@ -201,10 +201,8 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
         public double getSourceXP(@NonNull SkyBlockXPSource source) {
             Class<? extends SkyBlockLevelCauseAbstr> backing = source.getBackingCauseType();
             if (backing != null) {
-                return completedExperienceCauses.stream()
-                        .filter(backing::isInstance)
-                        .mapToDouble(SkyBlockLevelCauseAbstr::xpReward)
-                        .sum();
+                double earned = causeXP(backing) + sourceProgress.getOrDefault(source.name(), 0D);
+                return source.isUncapped() ? earned : Math.min(source.getMaxXP(), earned);
             }
             return sourceProgress.getOrDefault(source.name(), 0D);
         }
@@ -240,14 +238,34 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
         }
 
         /** Marks every source this server cannot award through play as fully completed. */
+        /**
+         * Puts every capped task at 100%. Cause-backed tasks get a top-up for the part of
+         * Hypixel's total this server has no content for yet; uncapped tasks keep their real
+         * running totals.
+         */
         public void completeAllSourceProgress() {
             double oldXP = getTotalXP();
             for (SkyBlockXPSource source : SkyBlockXPSource.values()) {
-                if (source.usesSourceProgress()) {
-                    sourceProgress.put(source.name(), (double) source.getMaxXP());
-                }
+                if (source.isUncapped()) continue;
+                Class<? extends SkyBlockLevelCauseAbstr> backing = source.getBackingCauseType();
+                double topUp = backing == null ? source.getMaxXP() : Math.max(0D, source.getMaxXP() - causeXP(backing));
+                sourceProgress.put(source.name(), topUp);
             }
             fireModification(null, oldXP, getTotalXP());
+        }
+
+        public double getUncappedSourceXP() {
+            return Arrays.stream(SkyBlockXPSource.values())
+                    .filter(SkyBlockXPSource::isUncapped)
+                    .mapToDouble(this::getSourceXP)
+                    .sum();
+        }
+
+        private double causeXP(Class<? extends SkyBlockLevelCauseAbstr> type) {
+            return completedExperienceCauses.stream()
+                    .filter(type::isInstance)
+                    .mapToDouble(SkyBlockLevelCauseAbstr::xpReward)
+                    .sum();
         }
 
         public double getTotalSourceXP() {

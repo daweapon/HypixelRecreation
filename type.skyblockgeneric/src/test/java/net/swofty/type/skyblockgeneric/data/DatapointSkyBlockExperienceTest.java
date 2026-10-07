@@ -80,17 +80,16 @@ class DatapointSkyBlockExperienceTest {
     }
 
     @Test
-    void completingEverySourceMatchesTheNonLiveTotal() {
+    void completingEverySourcePutsEveryCappedTaskAtItsMaximum() {
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = experience();
 
         experience.completeAllSourceProgress();
 
-        int expected = 0;
         for (SkyBlockXPSource source : SkyBlockXPSource.values()) {
-            if (source.usesSourceProgress()) expected += source.getMaxXP();
+            double expected = source.isUncapped() ? 0 : source.getMaxXP();
+            assertEquals(expected, experience.getSourceXP(source), source.name());
         }
-        assertEquals(expected, experience.getTotalSourceXP());
-        assertEquals(expected, experience.getEarnedXP());
+        assertEquals(SkyBlockXPSource.TOTAL_MAX_XP, experience.getEarnedXP());
     }
 
     @Test
@@ -99,7 +98,7 @@ class DatapointSkyBlockExperienceTest {
 
         // Mirrors MaxStickService.maxSkyBlockLevel: finish every source, then top up.
         experience.completeAllSourceProgress();
-        experience.setTotalXP(SkyBlockXPSource.TOTAL_MAX_XP);
+        experience.setTotalXP(SkyBlockXPSource.TOTAL_MAX_XP + experience.getUncappedSourceXP());
 
         assertEquals(SkyBlockXPSource.TOTAL_MAX_XP, experience.getTotalXP());
         assertEquals(SkyBlockXPSource.getMaxLevel(), experience.getPreciseLevel(), 1e-9);

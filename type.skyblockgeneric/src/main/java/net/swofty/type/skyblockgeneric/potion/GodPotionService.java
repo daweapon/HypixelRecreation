@@ -44,13 +44,8 @@ public final class GodPotionService {
     }
 
     public static void restore(SkyBlockPlayer player) {
-        setLastUpdated(player, System.currentTimeMillis());
-        long remaining = getRemaining(player);
+        long remaining = remaining(player);
         if (remaining > 0) applyEffects(player, remaining);
-    }
-
-    public static void synchronize(SkyBlockPlayer player) {
-        remaining(player);
     }
 
     private static long durationFor(SkyBlockPlayer player) {

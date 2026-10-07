@@ -395,13 +395,11 @@ public final class MaxStickService {
     }
 
     /**
-     * Takes a player to real Hypixel's maximum SkyBlock Level ({@code 620.19}) and unlocks
-     * every prefix emblem.
+     * Puts every capped SkyBlock XP task at 100% and unlocks every prefix emblem.
      *
-     * <p>Completes all per-source progress, marks every emblem's unlock cause as met so the
-     * full emblem and prefix set is selectable, then tops the total up with bonus XP to exactly
-     * {@link SkyBlockXPSource#TOTAL_MAX_XP}. The top-up covers the shortfall between what this
-     * server can actually award today and real Hypixel's total.
+     * <p>The total is {@link SkyBlockXPSource#TOTAL_MAX_XP} (Level 578.74) plus whatever the
+     * uncapped tasks (Accessory Bag, Pet Score, ...) hold, since Hypixel counts those on top.
+     * Bonus XP absorbs causes such as emblems that belong to no task.
      */
     public static void maxSkyBlockLevel(SkyBlockPlayer player) {
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
@@ -414,7 +412,7 @@ public final class MaxStickService {
             }
         }
 
-        experience.setTotalXP(SkyBlockXPSource.TOTAL_MAX_XP);
+        experience.setTotalXP(SkyBlockXPSource.TOTAL_MAX_XP + experience.getUncappedSourceXP());
 
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SKYBLOCK_EXPERIENCE,
                 DatapointSkyBlockExperience.class).setValue(experience);
