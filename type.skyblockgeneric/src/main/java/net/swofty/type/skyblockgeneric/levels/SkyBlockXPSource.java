@@ -82,7 +82,7 @@ public enum SkyBlockXPSource {
     SLAYER_LEVEL_UP(Group.SLAYING, null, 3825, Availability.UNWIRED, Material.POTION),
     BOSS_COLLECTIONS(Group.SLAYING, null, 1015, Availability.NOT_IN_GAME, Material.BONE_BLOCK),
     BESTIARY_PROGRESS(Group.SLAYING, null, 5655, Availability.UNWIRED, Material.WRITTEN_BOOK),
-    MYTHOLOGICAL_KILLS(Group.SLAYING, null, 100, Availability.NOT_IN_GAME, Material.BONE_MEAL),
+    MYTHOLOGICAL_KILLS(Group.SLAYING, null, 100, Availability.LIVE, Material.BONE_MEAL),
     COLLECT_MOB_TYPES(Group.SLAYING, null, 35, Availability.LIVE, Material.ZOMBIE_SPAWN_EGG),
     SLAY_DRAGONS(Group.SLAYING, null, 200, Availability.NOT_IN_GAME, Material.DRAGON_EGG),
     DEFEAT_SLAYERS(Group.SLAYING, null, 1125, Availability.UNWIRED, Material.ROTTEN_FLESH),

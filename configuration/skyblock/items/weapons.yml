@@ -771,6 +771,27 @@ items:
               - FINE_AMETHYST_GEM:40
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/community_center/mayor/diana/daedalus_blade
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - ABA
+              - ACA
+              - ABA
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 8
+              B:
+                type: DAEDALUS_STICK
+                amount: 1
+              C:
+                type: SWORD_OF_REVELATIONS
+                amount: 1
+            result:
+              type: DAEDALUS_AXE
+              amount: 1
   - id: DEATH_BOW
     material: BOW
     rarity: EPIC
@@ -3078,6 +3099,30 @@ items:
           - gemstone: COMBAT
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/community_center/mayor/diana/sword_of_revelations
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - ABA
+              - ACA
+              - ADA
+            ingredients:
+              A:
+                type: GRIFFIN_FEATHER
+                amount: 2
+              B:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 8
+              C:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 1
+              D:
+                type: HILT_OF_REVELATIONS
+                amount: 1
+            result:
+              type: SWORD_OF_REVELATIONS
+              amount: 1
   - id: TACTICIAN_MURDER_WEAPON
     material: STONE_SWORD
     rarity: RARE

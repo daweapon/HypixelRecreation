@@ -92,6 +92,8 @@ public enum ItemType {
 
   AMALGAMATED_CRIMSONITE_NEW(Material.PAPER, Rarity.RARE),
 
+  ANCESTRAL_SPADE(Material.WOODEN_SHOVEL, Rarity.RARE),
+
   ANCIENT_CLAW(Material.FLINT, Rarity.RARE),
 
   ANCIENT_ROSE(Material.POPPY, Rarity.COMMON),
@@ -227,6 +229,8 @@ public enum ItemType {
   BAMBOO_STAIRS(Material.BAMBOO_STAIRS, Rarity.COMMON),
 
   BAMBOO_TRAPDOOR(Material.BAMBOO_TRAPDOOR, Rarity.COMMON),
+
+  BASE_GRIFFIN_UPGRADE_STONE(Material.PLAYER_HEAD, Rarity.COMMON),
 
   BASIC_CHICKEN_AXE(Material.WOODEN_AXE, Rarity.COMMON),
 
@@ -467,6 +471,8 @@ public enum ItemType {
   BOX_OF_SEEDS(Material.PLAYER_HEAD, Rarity.RARE),
 
   BRAIDED_GRIFFIN_FEATHER(Material.STRING, Rarity.EPIC),
+
+  BRAIN_FOOD(Material.PLAYER_HEAD, Rarity.EPIC),
 
   BREAD(Material.BREAD, Rarity.COMMON),
 
@@ -862,6 +868,8 @@ public enum ItemType {
 
   CREEPER_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  CRETAN_URN(Material.PLAYER_HEAD, Rarity.EPIC),
+
   CRIMSON_BUTTON(Material.CRIMSON_BUTTON, Rarity.COMMON),
 
   CRIMSON_DOOR(Material.CRIMSON_DOOR, Rarity.COMMON),
@@ -1185,6 +1193,8 @@ public enum ItemType {
   DWARF_TURTLE_SHELMET(Material.PLAYER_HEAD, Rarity.EPIC),
 
   DWARVEN_SACK(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  DYE_MYTHOLOGICAL(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   EARTH_SHARD(Material.STONE_SWORD, Rarity.EPIC),
 
@@ -1593,6 +1603,8 @@ public enum ItemType {
   FARM_SUIT_HELMET(Material.LEATHER_HELMET, Rarity.COMMON),
 
   FARM_SUIT_LEGGINGS(Material.LEATHER_LEGGINGS, Rarity.COMMON),
+
+  FATEFUL_STINGER(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   FEATHER(Material.FEATHER, Rarity.COMMON),
 
@@ -2024,6 +2036,18 @@ public enum ItemType {
 
   GRIFFIN_FEATHER(Material.FEATHER, Rarity.RARE),
 
+  GRIFFIN_PET(Material.PLAYER_HEAD, Rarity.MYTHIC),
+
+  GRIFFIN_UPGRADE_STONE_EPIC(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  GRIFFIN_UPGRADE_STONE_LEGENDARY(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
+  GRIFFIN_UPGRADE_STONE_MYTHIC(Material.PLAYER_HEAD, Rarity.MYTHIC),
+
+  GRIFFIN_UPGRADE_STONE_RARE(Material.PLAYER_HEAD, Rarity.RARE),
+
+  GRIFFIN_UPGRADE_STONE_UNCOMMON(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
   GRIZZLY_SALMON(Material.COOKED_SALMON, Rarity.RARE),
 
   GUNPOWDER(Material.GUNPOWDER, Rarity.COMMON),
@@ -2089,6 +2113,8 @@ public enum ItemType {
   HELLSTORM_STAFF(Material.REDSTONE_TORCH, Rarity.EPIC),
 
   HIGH_CLASS_ARCHFIEND_DICE(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
+  HILT_OF_REVELATIONS(Material.STICK, Rarity.RARE),
 
   HOLLOW_WAND(Material.FEATHER, Rarity.LEGENDARY),
 
@@ -2606,6 +2632,8 @@ public enum ItemType {
 
   MANGROVE_WOOD(Material.MANGROVE_WOOD, Rarity.COMMON),
 
+  MANTI_CORE(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   MASTER_SKULL_TIER_1(Material.PLAYER_HEAD, Rarity.COMMON),
 
   MASTER_SKULL_TIER_2(Material.PLAYER_HEAD, Rarity.COMMON),
@@ -2785,6 +2813,10 @@ public enum ItemType {
   MUTTON(Material.MUTTON, Rarity.COMMON),
 
   MYCELIUM(Material.MYCELIUM, Rarity.COMMON),
+
+  MYTHOS_FRAGMENT(Material.PLAYER_HEAD, Rarity.RARE),
+
+  MYTH_THE_FISH(Material.PLAYER_HEAD, Rarity.SPECIAL),
 
   NECROMANCER_SWORD(Material.IRON_SWORD, Rarity.LEGENDARY),
 
@@ -3957,6 +3989,8 @@ public enum ItemType {
   SHEEP_AXE(Material.STONE_AXE, Rarity.UNCOMMON),
 
   SHEEP_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  SHIMMERING_WOOL(Material.YELLOW_WOOL, Rarity.LEGENDARY),
 
   SHORT_GRASS(Material.SHORT_GRASS, Rarity.COMMON),
 

@@ -16,6 +16,8 @@ import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
+import net.swofty.type.skyblockgeneric.elections.ElectionManager;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIEnchantmentTable;
 import net.swofty.type.skyblockgeneric.gui.inventories.auction.GUIAuctionHouse;
@@ -26,7 +28,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "adminbypass jumptonextevent skiptoevent",
         description = "Skips the timer to the next occurrence of a SkyBlock event",
-        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|resetyear",
+        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear",
         permission = Rank.STAFF,
         allowsConsole = true)
 public class AdminBypassCommand extends HypixelCommand {
@@ -89,6 +91,15 @@ public class AdminBypassCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> openCookieMenu(sender, "Enchantment Table"), ArgumentType.Literal("etable"));
         command.addSyntax((sender, context) -> forceElectSpecialMayor(sender), ArgumentType.Literal("skiptospecialmayor"));
         command.addSyntax((sender, context) -> resetYear(sender), ArgumentType.Literal("resetyear"));
+
+        ArgumentString mayorArgument = new ArgumentString("mayor");
+        mayorArgument.setSuggestionCallback((sender, context, suggestion) -> {
+            for (SkyBlockMayor mayor : SkyBlockMayor.values()) {
+                suggest(suggestion, mayor.name(), mayor.getDisplayName());
+            }
+        });
+        command.addSyntax((sender, context) -> forceElectMayor(sender, context.get(mayorArgument)),
+                ArgumentType.Literal("forcemayor"), mayorArgument);
     }
 
     private static void resetYear(net.minestom.server.command.CommandSender sender) {
@@ -123,6 +134,20 @@ public class AdminBypassCommand extends HypixelCommand {
                 java.util.Arrays.stream(elected.getAllPerks())
                         .map(net.swofty.type.skyblockgeneric.elections.SkyBlockMayor.Perk::getDisplayName)
                         .toList())));
+    }
+
+    private static void forceElectMayor(net.minestom.server.command.CommandSender sender, String name) {
+        SkyBlockMayor mayor;
+        try {
+            mayor = SkyBlockMayor.valueOf(name.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            sender.sendMessage("<c>Unknown mayor. Use the tab-completed mayor ID.");
+            return;
+        }
+        ElectionManager.forceElectMayor(mayor);
+        sender.sendMessage(Text.parseLenient("<a>Force-elected mayor <f>" + mayor.getDisplayName() + "<a>!"));
+        sender.sendMessage(Text.parseLenient("<7>Active perks: <f>" + String.join("<7>, <f>",
+                java.util.Arrays.stream(mayor.getAllPerks()).map(SkyBlockMayor.Perk::getDisplayName).toList())));
     }
 
     private static void openCookieMenu(net.minestom.server.command.CommandSender sender, String menu) {

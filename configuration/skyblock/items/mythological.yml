@@ -1,0 +1,394 @@
+items:
+  - id: ANCESTRAL_SPADE
+    material: wooden_shovel
+    name: "Ancestral Spade"
+    rarity: RARE
+    lore:
+      - "\xA77Use to reveal and dig up \xA7eGriffin"
+      - "\xA7eBurrows \xA77in the hub while Diana's"
+      - "\xA72Mythological Ritual \xA77is active."
+      - ""
+      - "\xA77Maximum Burrow Chain Length: \xA7a4"
+      - ""
+      - "\xA77Burrows dug with this item may contain:"
+      - "\xA78 ● \xA7cMonsters"
+      - "\xA78 ● \xA7fGriffin Feathers"
+      - "\xA78 ● \xA76Coins"
+    components:
+      - id: ABILITY
+        abilities:
+          - ECHO
+      - id: SELLABLE
+        value: 100.0
+  - id: HILT_OF_REVELATIONS
+    material: stick
+    name: "Hilt of Revelations"
+    rarity: RARE
+    lore:
+      - "\xA77A rusted hilt, dropped by the Minos"
+      - "\xA77Hunter."
+  - id: CRETAN_URN
+    material: player_head
+    name: "Cretan Urn"
+    rarity: EPIC
+    lore:
+      - "\xA77Grants \xA7d+5 Pet Luck\xA77."
+    components:
+      - id: SKULL_HEAD
+        texture: 895df42056d79602a6915fec6ef804bbe57b450a0a484ce9997403d0c904d356
+      - id: PET_ITEM
+      - id: NOT_FINISHED_YET
+  - id: BRAIN_FOOD
+    material: player_head
+    name: "Brain Food"
+    rarity: EPIC
+    lore:
+      - "\xA78Consumable"
+      - ""
+      - "\xA77Consume this item to permanently"
+      - "\xA77gain \xA7d+1 Tracking\xA77."
+      - ""
+      - "\xA77You can only consume \xA7a5 \xA77of this item"
+      - "\xA77before the information overload"
+      - "\xA77starts to cause you physical pain."
+      - ""
+      - "\xA78\xA7oIs it called brain food because it's"
+      - "\xA78\xA7ogood for the brain, or because it's"
+      - "\xA78\xA7omade of them?"
+    components:
+      - id: SKULL_HEAD
+        texture: 867e27a256cdb7b741dbfe8419f5f3d89bdfbd52a1b3f0fdb9c95edeeafc1f3f
+      - id: NOT_FINISHED_YET
+  - id: DYE_MYTHOLOGICAL
+    material: player_head
+    name: "Mythological Dye"
+    rarity: LEGENDARY
+    lore:
+      - "\xA78Combinable in Anvil"
+      - ""
+      - "\xA77Changes the color of an armor piece"
+      - "\xA77to \xA72#6F6F0C\xA77!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4c542472eee1cdee78a7a17fd6ee806a146959c97177587b6e2005e874a9f71e
+      - id: NOT_FINISHED_YET
+  - id: FATEFUL_STINGER
+    material: player_head
+    name: "Fateful Stinger"
+    rarity: LEGENDARY
+    lore:
+      - "\xA78Combinable in Anvil"
+      - ""
+      - "\xA77When applied to a weapon, increases"
+      - "\xA77its \xA79Venomous \xA77level by \xA7a1\xA77!"
+      - "\xA78Can be applied once."
+      - "\xA78Requires Venomous VI!"
+      - ""
+      - "\xA78\xA7oThe sting of the Manticore is fatal to"
+      - "\xA78\xA7oall but the Elephant."
+    components:
+      - id: SKULL_HEAD
+        texture: 4e2c26ad88fdd10381284650770d9b59d3688a52868b3bcc7762f88a34303de8
+      - id: NOT_FINISHED_YET
+  - id: MANTI_CORE
+    material: player_head
+    name: "Manti-core"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77An array of cells from different"
+      - "\xA77creatures mashed together in some"
+      - "\xA77crude, unnatural arrangement."
+    components:
+      - id: SKULL_HEAD
+        texture: d4f1eb29bf8314703394c624c5832e0dfbce8fa6c25870205d67d96ed743bf90
+  - id: SHIMMERING_WOOL
+    material: yellow_wool
+    name: "Shimmering Wool"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77A splendid wool found nowhere else;"
+      - "\xA77it caresses your fingers and"
+      - "\xA77exudes a unique warmth the likes of"
+      - "\xA77which you have never experienced"
+      - "\xA77before, and likely never will again."
+  - id: MYTH_THE_FISH
+    material: player_head
+    name: "Myth the Fish"
+    rarity: SPECIAL
+    lore:
+      - "\xA77The fish, the myth, the legend."
+    components:
+      - id: SKULL_HEAD
+        texture: 2d31ecb695d882453aa206bb8e6870aa95c2545bccf347e1ba5c7f2e5af012b0
+  - id: MYTHOS_FRAGMENT
+    material: player_head
+    name: "Mythos Fragment"
+    rarity: RARE
+    lore:
+      - "\xA77Drops rarely from \xA7eGriffin Burrows"
+      - "\xA77during Diana's \xA72Mythological Ritual\xA77."
+      - ""
+      - "\xA78\xA7oA splendid shard that was buried in"
+      - "\xA78\xA7othe earth by someone a long, long"
+      - "\xA78\xA7otime ago."
+    components:
+      - id: SKULL_HEAD
+        texture: 7c5e2923b44d7c8fe725735c3415d40cfc95b8d70df115f5633551ecb1ae65e4
+  - id: BASE_GRIFFIN_UPGRADE_STONE
+    material: player_head
+    name: "Base Griffin Upgrade Stone"
+    rarity: COMMON
+    lore:
+      - "\xA77Base component to upgrade your"
+      - "\xA77Griffin's rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: 9be74f191e8aed6d7c2e45f97e798433e9ea40146f6498f844d4ecefe76392f
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - ABA
+              - BCB
+              - ABA
+            ingredients:
+              A:
+                type: GRIFFIN_FEATHER
+                amount: 2
+              B:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 4
+              C:
+                type: ENCHANTED_COBBLESTONE
+                amount: 8
+            result:
+              type: BASE_GRIFFIN_UPGRADE_STONE
+              amount: 1
+  - id: GRIFFIN_UPGRADE_STONE_UNCOMMON
+    material: player_head
+    name: "Uncommon Griffin Upgrade Stone"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77Use at \xA7bKat \xA77to upgrade \xA7eGriffin Pets"
+      - "\xA77from \xA7fCommon \xA77to \xA7aUncommon."
+    components:
+      - id: SKULL_HEAD
+        texture: 2024f3c5efa8dca8197cd7847e3f4103f9ab7d2b8044fb1833738a3e0bcc85b8
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - ABA
+              - CDC
+              - BBB
+            ingredients:
+              A:
+                type: GRIFFIN_FEATHER
+                amount: 4
+              B:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 16
+              C:
+                type: ANCIENT_CLAW
+                amount: 16
+              D:
+                type: BASE_GRIFFIN_UPGRADE_STONE
+                amount: 1
+            result:
+              type: GRIFFIN_UPGRADE_STONE_UNCOMMON
+              amount: 1
+  - id: GRIFFIN_UPGRADE_STONE_RARE
+    material: player_head
+    name: "Rare Griffin Upgrade Stone"
+    rarity: RARE
+    lore:
+      - "\xA77Use at \xA7bKat \xA77to upgrade \xA7eGriffin Pets"
+      - "\xA77from \xA7aUncommon \xA77to \xA79Rare."
+    components:
+      - id: SKULL_HEAD
+        texture: 17521ed24eb1e764442f13f5c02352ec04d3c35c36cca56b6c36487ec9189002
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - ABA
+              - CDC
+              - BBB
+            ingredients:
+              A:
+                type: GRIFFIN_FEATHER
+                amount: 8
+              B:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 1
+              C:
+                type: ANCIENT_CLAW
+                amount: 32
+              D:
+                type: BASE_GRIFFIN_UPGRADE_STONE
+                amount: 1
+            result:
+              type: GRIFFIN_UPGRADE_STONE_RARE
+              amount: 1
+  - id: GRIFFIN_UPGRADE_STONE_EPIC
+    material: player_head
+    name: "Epic Griffin Upgrade Stone"
+    rarity: EPIC
+    lore:
+      - "\xA77Use at \xA7bKat \xA77to upgrade \xA7eGriffin Pets"
+      - "\xA77from \xA79Rare \xA77to \xA75Epic."
+    components:
+      - id: SKULL_HEAD
+        texture: 969c103338745fa1b1832d66bc95f9c7e3110cb63abe22ff1c2e9b2eca1aeed6
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - ABA
+              - CDC
+              - EEE
+            ingredients:
+              A:
+                type: GRIFFIN_FEATHER
+                amount: 32
+              B:
+                type: MYTHOS_FRAGMENT
+                amount: 4
+              C:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 2
+              D:
+                type: BASE_GRIFFIN_UPGRADE_STONE
+                amount: 1
+              E:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 4
+            result:
+              type: GRIFFIN_UPGRADE_STONE_EPIC
+              amount: 1
+  - id: GRIFFIN_UPGRADE_STONE_LEGENDARY
+    material: player_head
+    name: "Legendary Griffin Upgrade Stone"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77Use at \xA7bKat \xA77to upgrade \xA7eGriffin Pets"
+      - "\xA77from \xA75Epic \xA77to \xA76Legendary."
+    components:
+      - id: SKULL_HEAD
+        texture: d0352a7a16d3edd503218a1db81db0793c225de8c4493db0b29c0daec6db40a5
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - ABA
+              - CDC
+              - EEE
+            ingredients:
+              A:
+                type: MYTHOS_FRAGMENT
+                amount: 8
+              B:
+                type: BRAIDED_GRIFFIN_FEATHER
+                amount: 1
+              C:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 16
+              D:
+                type: BASE_GRIFFIN_UPGRADE_STONE
+                amount: 1
+              E:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 32
+            result:
+              type: GRIFFIN_UPGRADE_STONE_LEGENDARY
+              amount: 1
+  - id: GRIFFIN_UPGRADE_STONE_MYTHIC
+    material: player_head
+    name: "Mythic Griffin Upgrade Stone"
+    rarity: MYTHIC
+    lore:
+      - "\xA77Use at \xA7bKat \xA77to upgrade \xA7eGriffin Pets"
+      - "\xA77from \xA76Legendary \xA77to \xA7dMythic."
+    components:
+      - id: SKULL_HEAD
+        texture: 32768a4dfd517d7aa52fe70bf29a741e551d4108379a34e3d5b0dcc658c54a73
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - ABA
+              - CDC
+              - EEE
+            ingredients:
+              A:
+                type: BRAIDED_GRIFFIN_FEATHER
+                amount: 1
+              B:
+                type: MYTHOS_FRAGMENT
+                amount: 48
+              C:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 64
+              D:
+                type: BASE_GRIFFIN_UPGRADE_STONE
+                amount: 1
+              E:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 64
+            result:
+              type: GRIFFIN_UPGRADE_STONE_MYTHIC
+              amount: 1
+  - id: GRIFFIN_PET
+    material: player_head
+    name: "Griffin Pet"
+    rarity: MYTHIC
+    components:
+      - id: PET
+        pet_name: Griffin
+        kat_upgrades:
+          common: null
+          uncommon:
+            time: 60000
+            coins: 100
+            item: GRIFFIN_UPGRADE_STONE_UNCOMMON
+            amount: 1
+          rare:
+            time: 3600000
+            coins: 10000
+            item: GRIFFIN_UPGRADE_STONE_RARE
+            amount: 1
+          epic:
+            time: 86400000
+            coins: 250000
+            item: GRIFFIN_UPGRADE_STONE_EPIC
+            amount: 1
+          legendary:
+            time: 259200000
+            coins: 500000
+            item: GRIFFIN_UPGRADE_STONE_LEGENDARY
+            amount: 1
+          mythic:
+            time: 3600000
+            coins: 1000000
+            item: GRIFFIN_UPGRADE_STONE_MYTHIC
+            amount: 1
+          rest: null
+        base_statistics: {}
+        per_level_statistics:
+          common: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
+          uncommon: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
+          rare: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
+          epic: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
+          legendary: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
+          mythic: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
+        particle: 3
+        skill_category: COMBAT
+        skull_texture: 4c27e3cb52a64968e60c861ef1ab84e0a0cb5f07be103ac78da67761731f00c8
+        handler_id: GRIFFIN
+      - id: TRACKED_UNIQUE

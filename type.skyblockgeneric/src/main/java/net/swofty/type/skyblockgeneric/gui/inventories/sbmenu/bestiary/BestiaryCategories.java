@@ -11,6 +11,7 @@ public enum BestiaryCategories {
     YOUR_ISLAND("<a>Your island", BestiaryCategory.PRIVATE_ISLAND.values()),
     HUB("<a>Hub", BestiaryCategory.HUB.values()),
     DEEP_CAVERNS("<b>Deep Caverns", BestiaryCategory.DEEP_CAVERNS.values()),
+    MYTHOLOGICAL_CREATURES("<b>Mythological Creatures", BestiaryCategory.MYTHOLOGICAL_CREATURES.values()),
     ;
 
     private final String displayName;

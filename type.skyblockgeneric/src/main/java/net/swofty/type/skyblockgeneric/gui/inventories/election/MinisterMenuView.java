@@ -70,6 +70,10 @@ public class MinisterMenuView extends StatelessView {
             );
         });
 
+        if (DianaOffice.isDiana(minister)) {
+            DianaOffice.layoutSpade(layout, DianaOffice.MINISTER_SPADE_SLOT);
+        }
+
         layout.slot(15, (s, c) -> {
             ElectionData.ElectionResult lastResult = data.getLastElectionResult();
             if (lastResult == null) {

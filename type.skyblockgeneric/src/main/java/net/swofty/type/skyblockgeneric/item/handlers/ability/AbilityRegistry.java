@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ShadowWarpAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.WitherShieldEffect;
+import net.swofty.type.skyblockgeneric.mythological.burrow.GriffinBurrowService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.statistics.TemporaryStatistic;
 
@@ -160,6 +161,16 @@ public class AbilityRegistry {
                 player.notImplemented();
                 return false;
             }
+        ));
+
+        register(new RegisteredAbility(
+            "ECHO",
+            "Echo",
+            (_, _) -> "<7>Show the way to the next or nearby Griffin burrow.",
+            RegisteredAbility.AbilityActivation.RIGHT_CLICK,
+            20 * 3,
+            new RegisteredAbility.NoAbilityCost(),
+            (player, _, _, _) -> GriffinBurrowService.INSTANCE.echo(player)
         ));
 
         register(new RegisteredAbility(

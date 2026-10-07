@@ -19,6 +19,8 @@ import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobRuinsOldWolf;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobRuinsWolf;
 import net.swofty.type.skyblockgeneric.entity.mob.island.IslandMobSpecies;
 import net.swofty.type.skyblockgeneric.entity.mob.island.PrivateIslandMob;
+import net.swofty.type.skyblockgeneric.mythological.MythologicalBestiary;
+import net.swofty.type.skyblockgeneric.mythological.MythologicalCreature;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -71,6 +73,34 @@ public enum BestiaryCategory {
             this.description = description;
             this.guiMaterial = guiMaterial;
             this.mobs = mobs;
+        }
+    }
+
+    @Getter
+    public enum MYTHOLOGICAL_CREATURES implements BestiaryEntry {
+        MINOS_HUNTER(MythologicalCreature.MINOS_HUNTER),
+        SIAMESE_LYNX(MythologicalCreature.SIAMESE_LYNXES),
+        STRANDED_NYMPH(MythologicalCreature.STRANDED_NYMPH),
+        CRETAN_BULL(MythologicalCreature.CRETAN_BULL),
+        HARPY(MythologicalCreature.HARPY),
+        GAIA_CONSTRUCT(MythologicalCreature.GAIA_CONSTRUCT),
+        MINOTAUR(MythologicalCreature.MINOTAUR),
+        MINOS_CHAMPION(MythologicalCreature.MINOS_CHAMPION),
+        SPHINX(MythologicalCreature.SPHINX),
+        MINOS_INQUISITOR(MythologicalCreature.MINOS_INQUISITOR),
+        MANTICORE(MythologicalCreature.MANTICORE),
+        KING_MINOS(MythologicalCreature.KING_MINOS),
+        ;
+
+        private final String name, description;
+        private final GUIMaterial guiMaterial;
+        private final List<BestiaryMob> mobs;
+
+        MYTHOLOGICAL_CREATURES(MythologicalCreature creature) {
+            this.name = "<a>" + creature.getDisplayName();
+            this.description = creature.getBestiary().description();
+            this.guiMaterial = new GUIMaterial(creature.getIcon());
+            this.mobs = MythologicalBestiary.family(creature);
         }
     }
 
