@@ -8,6 +8,8 @@ import net.swofty.commons.StringUtility;
 import org.jetbrains.annotations.Nullable;
 
 public enum ItemType {
+  AATROX_BATPHONE(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
   ABIPHONE_BASIC(Material.PLAYER_HEAD, Rarity.COMMON),
 
   ABIPHONE_CONTACTS_TRIO(Material.COMPARATOR, Rarity.COMMON),

@@ -1,0 +1,38 @@
+items:
+  - id: AATROX_BATPHONE
+    material: player_head
+    name: "Maddox Batphone"
+    rarity: UNCOMMON
+    lore:
+      - "\xA76Ability: Whassup?  \xA7e\xA7lRIGHT CLICK"
+      - "\xA77Lets you call \xA75Maddox\xA77, when he's not busy."
+      - ""
+      - "\xA74☠ \xA7cRequires \xA75Wolf Slayer 3\xA7c."
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: Maddox Batphone
+      - id: SKULL_HEAD
+        texture: 9336d7cc95cbf6689f5e8c954294ec8d1efc494a4031325bb427bc81d56a484d
+      - id: INTERACTABLE
+        handler_id: MADDOX_BATPHONE_CALL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SVEN_PACKMASTER
+            pattern:
+              - AAA
+              - ABA
+              - ACA
+            ingredients:
+              A:
+                type: ENCHANTED_COBBLESTONE
+                amount: 1
+              B:
+                type: ENCHANTED_REDSTONE
+                amount: 1
+              C:
+                type: ENCHANTED_IRON_INGOT
+                amount: 1
+            result:
+              type: AATROX_BATPHONE
+              amount: 1

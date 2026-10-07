@@ -10,6 +10,7 @@ import net.swofty.type.generic.entity.hologram.ServerHolograms;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.GUISkyBlockMenu;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIBoosterCookie;
 import net.swofty.type.skyblockgeneric.potion.GodPotionService;
+import net.swofty.type.skyblockgeneric.slayer.MaddoxBatphone;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import net.swofty.type.skyblockgeneric.utility.JerryInformation;
 
@@ -65,6 +66,9 @@ public class InteractableRegistry {
                     jerryInformation.setHologram(hologram);
                     skyBlockItem.setAmount(0);
                 })
+        ).build());
+        register("MADDOX_BATPHONE_CALL", InteractableItemConfig.builder().rightClickHandler(
+                (player, item) -> MaddoxBatphone.call(player)
         ).build());
         register("BOOSTER_COOKIE_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 (player, item) -> new GUIBoosterCookie().open(player)
