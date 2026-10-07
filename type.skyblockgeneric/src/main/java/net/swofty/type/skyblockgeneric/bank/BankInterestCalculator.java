@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.bank;
 
+import net.swofty.type.skyblockgeneric.museum.MuseumMilestones;
+
 import java.util.List;
 
 // Computes daily bank interest from a player's balance using tiered rate brackets, scaled up
@@ -26,7 +28,7 @@ public final class BankInterestCalculator {
             if (tier.ordinal() < tranche.requiredTier.ordinal() || balance <= tranche.lower) continue;
             base += (Math.min(balance, tranche.upper) - tranche.lower) * tranche.rate;
         }
-        double multiplier = 1D + Math.clamp(museumMilestone, 0, 30) * 0.02D;
+        double multiplier = MuseumMilestones.bankInterestMultiplier(museumMilestone);
         return Math.min(base * multiplier, tier.getBaseMaximumInterest() * multiplier);
     }
 }

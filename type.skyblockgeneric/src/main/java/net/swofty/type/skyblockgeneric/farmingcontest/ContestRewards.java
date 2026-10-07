@@ -1,8 +1,8 @@
 package net.swofty.type.skyblockgeneric.farmingcontest;
 
 import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.type.skyblockgeneric.elections.FameRank;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.user.BitsMultiplier;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public final class ContestRewards {
     }
 
     public static int bits(SkyBlockPlayer player, ContestBracket bracket) {
-        return (int) Math.round(bracket.getBits() * FameRank.forFame(player.getFame()).getBitsMultiplier());
+        return (int) Math.round(bracket.getBits() * BitsMultiplier.of(player));
     }
 
     public static List<String> lore(ContestBracket bracket, ContestCrop crop) {

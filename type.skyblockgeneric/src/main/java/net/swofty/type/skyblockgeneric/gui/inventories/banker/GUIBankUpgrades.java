@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.bank.BankAccountTier;
 import net.swofty.type.skyblockgeneric.bank.PersonalBankService;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointBankData;
+import net.swofty.type.skyblockgeneric.museum.MuseumMilestones;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public class GUIBankUpgrades extends HypixelInventoryGUI {
         addInterestTranches(lore, tier);
         lore.add(Text.empty());
 
-        double multiplier = 1D + Math.clamp(data.getMuseumMilestone(), 0, 30) * 0.02D;
+        double multiplier = MuseumMilestones.bankInterestMultiplier(data.getMuseumMilestone());
         lore.add(Text.of(" <7>Max interest: <6>{:,}", tier.getBaseMaximumInterest() * multiplier));
         lore.add(Text.of(" <8> (With {:,} balance)", interestBalance(tier)));
         lore.add(Text.of("<color:{0}>><m>---------------------------------</m><color:{0}>\\<", color));

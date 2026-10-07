@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.bank.BankAccountTier;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.museum.MuseumMilestones;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -78,7 +79,7 @@ public class DatapointBankData extends SkyBlockDatapoint<DatapointBankData.BankD
             }
             return new BankData(jsonObject.optLong("lastClaimedInterest", SkyBlockCalendar.getElapsed()), transactions,
                 jsonObject.optDouble("amount", 0), tier, jsonObject.optDouble("lastInterest", 0),
-                Math.min(30, Math.max(0, jsonObject.optInt("museumMilestone", 0))),
+                MuseumMilestones.clamp(jsonObject.optInt("museumMilestone", 0)),
                 Math.min(3, Math.max(0, jsonObject.optInt("personalBankLevel", 0))),
                 jsonObject.optLong("lastRemoteBankUse", 0), jsonObject.optBoolean("personalVaultUnlocked", false), vault);
         }
