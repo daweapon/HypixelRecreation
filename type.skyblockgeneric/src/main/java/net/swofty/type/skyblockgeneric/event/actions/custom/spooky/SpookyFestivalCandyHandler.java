@@ -8,6 +8,8 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.leaderboard.LeaderboardService;
 import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.spookyfestival.SpookyFestivalCandyTally;
@@ -41,14 +43,21 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
 
         SkyBlockPlayer player = event.getPlayer();
         int spookyPieces = countSpookyArmorPieces(player);
-        double dropChance = CANDY_DROP_CHANCE + (spookyPieces * SPOOKY_ARMOR_PIECE_BONUS) + candyAccessoryBonus(player);
-        if (ThreadLocalRandom.current().nextDouble() >= dropChance) return;
+        double dropChance = CANDY_DROP_CHANCE + (spookyPieces * SPOOKY_ARMOR_PIECE_BONUS) + candyAccessoryBonus(player)
+                + ElectionPerks.bonus(SkyBlockMayor.Perk.SWEET_BENEVOLENCE) / 100D;
+        int candies = (int) dropChance + (ThreadLocalRandom.current().nextDouble() < dropChance % 1D ? 1 : 0);
+        if (candies == 0) return;
 
         Integer mobLevel = event.getKilledMob().getLevel();
         double purpleChance = PURPLE_CONVERSION_CHANCE
                 + (mobLevel == null ? 0 : mobLevel * PURPLE_CHANCE_PER_MOB_LEVEL)
                 + (spookyPieces == 4 ? SPOOKY_ARMOR_FULL_SET_BONUS : 0);
-        boolean purple = ThreadLocalRandom.current().nextDouble() < purpleChance;
+        for (int i = 0; i < candies; i++) {
+            giveCandy(player, ThreadLocalRandom.current().nextDouble() < purpleChance);
+        }
+    }
+
+    private static void giveCandy(SkyBlockPlayer player, boolean purple) {
         ItemType candyType = purple ? ItemType.PURPLE_CANDY : ItemType.GREEN_CANDY;
 
         player.addAndUpdateItem(new SkyBlockItem(candyType));

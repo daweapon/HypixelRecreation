@@ -13,6 +13,8 @@ import net.swofty.commons.text.Text;
 import net.swofty.proxyapi.ProxyService;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
@@ -45,6 +47,12 @@ public record CalendarEvent(
     private static final long DAY = SkyBlockCalendar.DAY;
     private static final Map<Long, List<CalendarEvent>> eventCache = new HashMap<>();
     private static final List<CalendarEvent> allEvents = new ArrayList<>();
+
+    // Foxy's Extra Event schedules a second Spooky Festival on Late Summer 22nd (wiki: Spooky
+    // Festival, "Foxy's Festival Schedule").
+    private static final Map<String, PerkOccurrence> PERK_OCCURRENCES = Map.of(
+        "spooky_festival", new PerkOccurrence(SkyBlockMayor.Perk.EXTRA_EVENT, List.of(5 * MONTH + 21 * DAY))
+    );
 
     public static CalendarEvent NEW_YEAR = new CalendarEvent(
         "new_year",
@@ -270,6 +278,21 @@ public record CalendarEvent(
         registerEvent(SEASON_OF_JERRY);
     }
 
+    @Override
+    public List<Long> times() {
+        PerkOccurrence extra = PERK_OCCURRENCES.get(id);
+        return extra == null ? times : extra.addTo(times);
+    }
+
+    private record PerkOccurrence(SkyBlockMayor.Perk perk, List<Long> extraTimes) {
+        List<Long> addTo(List<Long> regularTimes) {
+            if (!ElectionPerks.isActive(perk)) return regularTimes;
+            List<Long> combined = new ArrayList<>(regularTimes);
+            combined.addAll(extraTimes);
+            return combined;
+        }
+    }
+
     public Text getDisplayName(int year) {
         return displayName.apply(year);
     }
@@ -279,7 +302,7 @@ public record CalendarEvent(
     // window check so the two never disagree about whether an event is active.
     public long remainingTicksAt(long timeInYear) {
         long durationTicks = duration.toMillis() / 50;
-        for (Long eventStartTime : times) {
+        for (Long eventStartTime : times()) {
             long ticksSinceStart = timeInYear - eventStartTime;
             if (ticksSinceStart >= 0 && ticksSinceStart < durationTicks) {
                 return durationTicks - ticksSinceStart;

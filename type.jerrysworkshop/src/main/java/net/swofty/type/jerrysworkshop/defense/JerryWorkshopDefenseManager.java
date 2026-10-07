@@ -13,6 +13,8 @@ import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
@@ -254,9 +256,9 @@ public final class JerryWorkshopDefenseManager {
             if (player == null || damage <= 0) return;
 
             boolean full = damage >= FULL_REWARD_DAMAGE;
-            int playerWhite = full ? white : white / 2;
-            int playerGreen = full ? green : green / 2;
-            int playerRed = full ? red : red / 2;
+            int playerWhite = ElectionPerks.boostedCount(SkyBlockMayor.Perk.SWEET_BENEVOLENCE, full ? white : white / 2);
+            int playerGreen = ElectionPerks.boostedCount(SkyBlockMayor.Perk.SWEET_BENEVOLENCE, full ? green : green / 2);
+            int playerRed = ElectionPerks.boostedCount(SkyBlockMayor.Perk.SWEET_BENEVOLENCE, full ? red : red / 2);
             int rocks = full ? standing.size() : 0;
 
             give(player, ItemType.WHITE_GIFT, playerWhite);
