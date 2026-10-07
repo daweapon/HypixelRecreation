@@ -6,6 +6,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.VillagerConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.shop.catalogue.CatalogueShopView;
 
 public class VillagerSmithmonger extends HypixelNPC {
     public VillagerSmithmonger() {
@@ -34,6 +35,6 @@ public class VillagerSmithmonger extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        e.player().openView(new CatalogueShopView("smithmonger"));
     }
 }

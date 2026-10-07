@@ -119,19 +119,19 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
 			player.sendMessage("<e>Talk to <6>Alda <e>to purchase!");
 		});
 		GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(25, 74, -44), (player, _) -> {
-			player.notImplemented();
+			player.sendMessage("<e>Talk to <a>Taylor <e>to browse her cosmetics!");
 		});
 		GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(28, 74, -47), (player, _) -> {
-			player.notImplemented();
+			player.sendMessage("<e>Talk to <a>Taylor <e>to browse her cosmetics!");
 		});
 		GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(32, 74, -48), (player, _) -> {
-			player.notImplemented();
+			player.sendMessage("<e>Talk to <a>Taylor <e>to browse her cosmetics!");
 		});
 		GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(35, 74, -47), (player, _) -> {
-			player.notImplemented();
+			player.sendMessage("<e>Talk to <a>Taylor <e>to browse her cosmetics!");
 		});
 		GlassDisplay.create(new SkyBlockItem(ItemType.DIRT), HypixelConst.getInstanceContainer(), new Pos(36, 74, -44), (player, _) -> {
-			player.notImplemented();
+			player.sendMessage("<e>Talk to <a>Taylor <e>to browse her cosmetics!");
 		});
 
 		// Create Dark Auction display

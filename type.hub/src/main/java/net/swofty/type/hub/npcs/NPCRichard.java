@@ -1,10 +1,14 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.util.UnreleasedContent;
+import net.swofty.type.skyblockgeneric.elections.ElectionManager;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 
 public class NPCRichard extends HypixelNPC {
 
@@ -39,6 +43,21 @@ public class NPCRichard extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
+        HypixelPlayer player = event.player();
+        if (isInDialogue(player)) return;
+        if (ElectionManager.getCurrentMayor() != SkyBlockMayor.DIAZ) {
+            setDialogue(player, "no-diaz");
+            return;
+        }
+        FirstInteraction.then(this, player, DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_RICHARD, "diaz",
+            () -> player.sendMessage(UnreleasedContent.STONKS_AUCTION.message()));
+    }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("no-diaz", "npcs_hub.richard.dialogue.no_diaz"),
+            DialogueSet.ofTranslation("diaz", "npcs_hub.richard.dialogue.diaz")
+        };
     }
 }

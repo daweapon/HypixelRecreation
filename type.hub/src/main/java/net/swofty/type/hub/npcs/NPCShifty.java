@@ -5,6 +5,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.shop.catalogue.CatalogueShopView;
 
 public class NPCShifty extends HypixelNPC {
 
@@ -39,6 +40,6 @@ public class NPCShifty extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-
+        event.player().openView(new CatalogueShopView("shifty"));
     }
 }

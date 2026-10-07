@@ -1,0 +1,85 @@
+# Taylor's Collection, her permanent cosmetics (wiki Taylor/UI).
+# Item ids are estimated from the cosmetic names.
+title: Taylor's Collection
+slots: DEFAULT
+entries:
+  - item: SUPER_PLUSHIE_GOLDEN_DRAGON_SKIN
+    name: "<4>Super Plushie Golden Dragon Skin"
+    material: player_head
+    cost: { gems: 1800 }
+  - item: SUPER_PLUSHIE_ENDER_DRAGON_SKIN
+    name: "<4>Super Plushie Ender Dragon Skin"
+    material: player_head
+    cost: { gems: 1800 }
+  - item: KNIGHT_SKIN
+    name: "<d>Knight Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: SUPERIOR_DRAKE_SKIN
+    name: "<d>Superior Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: UNSTABLE_DRAKE_SKIN
+    name: "<d>Unstable Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: WISE_DRAKE_SKIN
+    name: "<d>Wise Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: STRONG_DRAKE_SKIN
+    name: "<d>Strong Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: YOUNG_DRAKE_SKIN
+    name: "<d>Young Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: PROTECTOR_DRAKE_SKIN
+    name: "<d>Protector Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: OLD_DRAKE_SKIN
+    name: "<d>Old Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: HOLY_DRAKE_SKIN
+    name: "<d>Holy Drake Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: DRAGON_HYDRA_SKIN
+    name: "<5>Dragon Hydra Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: HOLLOW_ROCK_SKIN
+    name: "<5>Hollow Rock Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: GERMAN_WOLF_SKIN
+    name: "<5>German Wolf Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: CLAY_GOLEM_SKIN
+    name: "<5>Clay Golem Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: SOCK_MONKEY_SKIN
+    name: "<5>Sock Monkey Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: BALD_EAGLE_GRIFFIN_SKIN
+    name: "<5>Bald Eagle Griffin Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: BBQ_PIGMAN_SKIN
+    name: "<5>BBQ Pigman Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: ROAST_CHICKEN_SKIN
+    name: "<5>Roast Chicken Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: MYCELIYUM_BURGER_MOOSHROOM_COW_SKIN
+    name: "<5>Myceliyum Burger Mooshroom Cow Skin"
+    material: player_head
+    cost: { gems: 650 }

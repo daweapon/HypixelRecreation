@@ -14,10 +14,10 @@ slayers:
       - { level: 9, requiredXp: 1000000, title: Grim Reaper }
     tiers:
       - { tier: I, cost: 2000, requiredCombatXp: 150, slayerXp: 5, bossLevel: 1, bossHealth: 500, bossDamage: 15, bossSpeed: 100, tokenItem: REVENANT_FLESH, tokenDrops: 1 }
-      - { tier: II, cost: 7500, requiredCombatXp: 1440, slayerXp: 25, bossLevel: 2, bossHealth: 20000, bossDamage: 50, bossSpeed: 110, tokenItem: REVENANT_FLESH, tokenDrops: 8 }
-      - { tier: III, cost: 20000, requiredCombatXp: 2400, slayerXp: 100, bossLevel: 3, bossHealth: 400000, bossDamage: 120, bossSpeed: 120, tokenItem: REVENANT_FLESH, tokenDrops: 32 }
-      - { tier: IV, cost: 50000, requiredCombatXp: 4800, slayerXp: 500, bossLevel: 4, bossHealth: 1500000, bossDamage: 400, bossSpeed: 130, tokenItem: REVENANT_FLESH, tokenDrops: 64 }
-      - { tier: V, cost: 100000, requiredCombatXp: 6000, slayerXp: 1500, bossLevel: 5, bossHealth: 10000000, bossDamage: 2400, bossSpeed: 135, tokenItem: REVENANT_FLESH, tokenDrops: 128 }
+      - { tier: II, cost: 7500, requiredCombatXp: 1440, slayerXp: 25, bossLevel: 2, bossHealth: 20000, bossDamage: 50, bossSpeed: 110, tokenItem: REVENANT_FLESH, tokenDrops: 8, requiredCombatLevel: 5 }
+      - { tier: III, cost: 20000, requiredCombatXp: 2400, slayerXp: 100, bossLevel: 3, bossHealth: 400000, bossDamage: 120, bossSpeed: 120, tokenItem: REVENANT_FLESH, tokenDrops: 32, requiredCombatLevel: 10 }
+      - { tier: IV, cost: 50000, requiredCombatXp: 4800, slayerXp: 500, bossLevel: 4, bossHealth: 1500000, bossDamage: 400, bossSpeed: 130, tokenItem: REVENANT_FLESH, tokenDrops: 64, requiredCombatLevel: 15 }
+      - { tier: V, cost: 100000, requiredCombatXp: 6000, slayerXp: 1500, bossLevel: 5, bossHealth: 10000000, bossDamage: 2400, bossSpeed: 135, tokenItem: REVENANT_FLESH, tokenDrops: 128, requiredCombatLevel: 25, requiredSlayerLevel: 7 }
 
   - id: TARANTULA_BROODFATHER
     enabled: true
@@ -38,7 +38,7 @@ slayers:
       - { tier: II, cost: 7500, requiredCombatXp: 540, slayerXp: 25, bossLevel: 2, bossHealth: 30000, bossDamage: 110, bossSpeed: 125, tokenItem: TARANTULA_WEB, tokenDrops: 8 }
       - { tier: III, cost: 20000, requiredCombatXp: 1320, slayerXp: 100, bossLevel: 3, bossHealth: 900000, bossDamage: 525, bossSpeed: 135, tokenItem: TARANTULA_WEB, tokenDrops: 32 }
       - { tier: IV, cost: 50000, requiredCombatXp: 2000, slayerXp: 500, bossLevel: 4, bossHealth: 2400000, bossDamage: 1325, bossSpeed: 145, tokenItem: TARANTULA_WEB, tokenDrops: 64 }
-      - { tier: V, cost: 100000, requiredCombatXp: 10000, slayerXp: 1500, bossLevel: 5, bossHealth: 10000000, bossDamage: 3500, bossSpeed: 150, tokenItem: TARANTULA_WEB, tokenDrops: 128 }
+      - { tier: V, cost: 100000, requiredCombatXp: 10000, slayerXp: 1500, bossLevel: 5, bossHealth: 10000000, bossDamage: 3500, bossSpeed: 150, tokenItem: TARANTULA_WEB, tokenDrops: 128, requiredCombatLevel: 25, requiredSlayerLevel: 7 }
 
   - id: SVEN_PACKMASTER
     enabled: true

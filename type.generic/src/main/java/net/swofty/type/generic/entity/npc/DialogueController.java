@@ -57,10 +57,9 @@ public class DialogueController {
      * @param player The player to remove from dialogue.
      */
     public void cancelDialogue(HypixelPlayer player) {
-        Map.Entry<HypixelNPC.DialogueSet, CompletableFuture<String>> entry = activeDialogues.get(player);
+        Map.Entry<HypixelNPC.DialogueSet, CompletableFuture<String>> entry = activeDialogues.remove(player);
         if (entry != null) {
             entry.getValue().complete(null);
-            activeDialogues.remove(player);
         }
     }
 
@@ -75,11 +74,10 @@ public class DialogueController {
         System.arraycopy(dialogueSet.lines(), 1, newLines, 0, dialogueSet.lines().length - 1);
 
         if (newLines.length == 0) {
-            Map.Entry<HypixelNPC.DialogueSet, CompletableFuture<String>> entry = activeDialogues.get(player);
+            Map.Entry<HypixelNPC.DialogueSet, CompletableFuture<String>> entry = activeDialogues.remove(player);
             if (entry != null) {
                 entry.getValue().complete(dialogueSet.key());
             }
-            activeDialogues.remove(player);
             return;
         }
 

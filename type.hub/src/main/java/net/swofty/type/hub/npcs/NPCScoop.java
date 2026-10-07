@@ -1,12 +1,11 @@
 package net.swofty.type.hub.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.shop.catalogue.CatalogueShopView;
 
 public class NPCScoop extends HypixelNPC {
 
@@ -41,7 +40,15 @@ public class NPCScoop extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        HypixelPlayer player = e.player();
+        if (!isInDialogue(player)) setDialogue(player, "open-shop");
+        player.openView(new CatalogueShopView("scoop"));
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("open-shop", "npcs_hub.scoop.dialogue.open_shop")
+        };
+    }
 }

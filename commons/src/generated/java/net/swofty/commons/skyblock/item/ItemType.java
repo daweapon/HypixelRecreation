@@ -8,6 +8,8 @@ import net.swofty.commons.StringUtility;
 import org.jetbrains.annotations.Nullable;
 
 public enum ItemType {
+  AATROX_BATPHONE(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
   ABIPHONE_BASIC(Material.PLAYER_HEAD, Rarity.COMMON),
 
   ABIPHONE_CONTACTS_TRIO(Material.COMPARATOR, Rarity.COMMON),
@@ -4233,6 +4235,8 @@ public enum ItemType {
   SPOOKY_SHARD(Material.PLAYER_HEAD, Rarity.EPIC),
 
   SPOOKY_WATER_ORB(Material.PAPER, Rarity.LEGENDARY),
+
+  SPRAY_CAN(Material.PLAYER_HEAD, Rarity.COMMON),
 
   SPRUCE_BOAT(Material.SPRUCE_BOAT, Rarity.COMMON),
 

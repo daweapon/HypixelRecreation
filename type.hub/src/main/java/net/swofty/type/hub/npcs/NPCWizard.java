@@ -1,12 +1,18 @@
 package net.swofty.type.hub.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
+import net.swofty.type.generic.entity.npc.NPCOption;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.GUIDimensionalInfusion;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.List;
+import java.util.function.Consumer;
 
 public class NPCWizard extends HypixelNPC {
 
@@ -36,12 +42,76 @@ public class NPCWizard extends HypixelNPC {
             public boolean looking(HypixelPlayer player) {
                 return true;
             }
+
+            @Override
+            public String chatName(HypixelPlayer player) {
+                return "<d>Wizard";
+            }
         });
     }
 
+    private static final int REQUIRED_SKYBLOCK_LEVEL = 12;
+    private static final String OPTION_ID = "wizard";
+
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+
+        if (player.getSkyBlockExperience().getLevel().asInt() < REQUIRED_SKYBLOCK_LEVEL) {
+            setDialogue(player, "low-level").thenRun(() ->
+                player.sendMessage("<7>(Requires SkyBlock Level {})", REQUIRED_SKYBLOCK_LEVEL));
+            return;
+        }
+        if (player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_WIZARD)) {
+            player.openView(new GUIDimensionalInfusion());
+            return;
+        }
+
+        setDialogue(player, "greeting").thenRun(() -> NPCOption.sendOption(player, OPTION_ID, true, List.of(
+            option("yes", NamedTextColor.GREEN, "Yes", p -> setDialogue(p, "breach").thenRun(() ->
+                askThen(p, "succeed", "And did you succeed?", "succeeded", () ->
+                    askThen(p, "why", "Why aren't you there yourself?", "why-not-you", () ->
+                        askThen(p, "need", "Sounds bad. Why do you need me?", "need-you", () -> offerHelp(p)))))),
+            option("no", NamedTextColor.RED, "No", p -> setDialogue(p, "declined"))
+        )));
     }
 
+    private void askThen(HypixelPlayer player, String key, String label, String dialogueKey, Runnable next) {
+        NPCOption.sendOption(player, OPTION_ID, true, List.of(
+            option(key, NamedTextColor.GREEN, label, p -> setDialogue(p, dialogueKey).thenRun(next))
+        ));
+    }
+
+    private void offerHelp(HypixelPlayer player) {
+        NPCOption.sendOption(player, OPTION_ID, true, List.of(
+            option("absolutely", NamedTextColor.GREEN, "Absolutely.", this::acceptQuest),
+            option("gear", NamedTextColor.GOLD, "I'm doing it for gear.", this::acceptQuest)
+        ));
+    }
+
+    private void acceptQuest(HypixelPlayer player) {
+        setDialogue(player, "infusion").thenRun(() -> {
+            player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_WIZARD, true);
+            player.openView(new GUIDimensionalInfusion());
+        });
+    }
+
+    private static NPCOption.Option option(String key, NamedTextColor colour, String label, Consumer<HypixelPlayer> action) {
+        return new NPCOption.Option(key, colour, false, label, action);
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("low-level", "npcs_hub.wizard.dialogue.low_level"),
+            DialogueSet.ofTranslation("greeting", "npcs_hub.wizard.dialogue.greeting"),
+            DialogueSet.ofTranslation("declined", "npcs_hub.wizard.dialogue.declined"),
+            DialogueSet.ofTranslation("breach", "npcs_hub.wizard.dialogue.breach"),
+            DialogueSet.ofTranslation("succeeded", "npcs_hub.wizard.dialogue.succeeded"),
+            DialogueSet.ofTranslation("why-not-you", "npcs_hub.wizard.dialogue.why_not_you"),
+            DialogueSet.ofTranslation("need-you", "npcs_hub.wizard.dialogue.need_you"),
+            DialogueSet.ofTranslation("infusion", "npcs_hub.wizard.dialogue.infusion")
+        };
+    }
 }

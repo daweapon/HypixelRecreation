@@ -1,0 +1,14 @@
+# Plumber Joe's shop at the Fishing Outpost (wiki Plumber Joe/UI).
+title: Plumber Joe
+slots: DEFAULT
+entries:
+  - item: PLUMBER_SPONGE
+    name: "<a>Plumber's Sponge"
+    material: sponge
+    cost: { coins: 50 }
+    stackable: true
+  - item: SUPER_SCRUBBER
+    name: "<9>Super Scrubber"
+    material: player_head
+    cost: { coins: 25000 }
+    stackable: true

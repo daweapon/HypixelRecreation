@@ -1,10 +1,12 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.util.UnreleasedContent;
 
 public class NPCZarina extends HypixelNPC {
 
@@ -39,6 +41,15 @@ public class NPCZarina extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
+        HypixelPlayer player = event.player();
+        FirstInteraction.then(this, player, DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_ZARINA, "first-interaction",
+            () -> player.sendMessage(UnreleasedContent.MIDAS_ANVIL.message()));
+    }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("first-interaction", "npcs_hub.zarina.dialogue.first_interaction")
+        };
     }
 }
