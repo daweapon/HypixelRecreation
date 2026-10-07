@@ -12,7 +12,9 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.AbilityDamage;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ForwardTeleport;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ShadowWarpAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.WitherShieldEffect;
 import net.swofty.type.skyblockgeneric.mythological.burrow.GriffinBurrowService;
@@ -65,16 +67,8 @@ public class AbilityRegistry {
             3, // Intentionally near-instant - real Hypixel's known "Hyperion jump" mobility mechanic
             new RegisteredAbility.AbilityManaCost(150), // Temporarily lowered from the wiki-confirmed 300 for testing
             (player, _, _, _) -> {
-                BlockVec tpPos = player.getPosition().add(player.getPosition().direction().mul(10)).asBlockVec();
-                if (!player.getInstance().getBlock(tpPos.add(0, 1, 0)).air() || !player.getInstance().getBlock(tpPos.add(0, 2, 0)).air())
-                    return false;
-                player.teleport(tpPos.add(0, 1, 0).asPos(player.getPosition().yaw(), player.getPosition().pitch()));
-
-                for (Entity entity : player.getInstance().getNearbyEntities(tpPos, 6)) {
-                    if (!(entity instanceof SkyBlockMob mob)) continue;
-                    mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), ElectionPerks.spellDamage(10000)));
-                }
-
+                Pos landed = ForwardTeleport.teleport(player, 10);
+                AbilityDamage.hitArea(player, landed, 6, "Implosion", 10000, 0.3);
                 WitherShieldEffect.apply(player);
                 return true;
             }
@@ -88,10 +82,7 @@ public class AbilityRegistry {
             200,
             new RegisteredAbility.AbilityManaCost(300),
             (player, _, _, _) -> {
-                for (Entity entity : player.getInstance().getNearbyEntities(player.getPosition(), 6)) {
-                    if (!(entity instanceof SkyBlockMob mob)) continue;
-                    mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), ElectionPerks.spellDamage(10000)));
-                }
+                AbilityDamage.hitArea(player, player.getPosition(), 6, "Implosion", 10000, 0.3);
                 return true;
             }
         ));
@@ -119,11 +110,7 @@ public class AbilityRegistry {
             5,
             new RegisteredAbility.AbilityManaCost(50),
             (player, _, _, _) -> {
-                BlockVec tpPos = player.getPosition().add(player.getPosition().direction().mul(8)).asBlockVec();
-                // TODO: Make it so you can't go through walls
-                if (!player.getInstance().getBlock(tpPos.add(0, 1, 0)).air() || !player.getInstance().getBlock(tpPos.add(0, 2, 0)).air())
-                    return false;
-                player.teleport(new Pos(tpPos.add(0, 1, 0), player.getPosition().yaw(), player.getPosition().pitch()));
+                ForwardTeleport.teleport(player, 8);
                 ItemStatistics speedStats = ItemStatistics.builder().withBase(ItemStatistic.SPEED, 50.0).build();
                 TemporaryStatistic speedBoost = TemporaryStatistic.builder().withStatistics(speedStats).withExpirationInMs(3000).withDisplayName("Instant Transmission").build();
                 player.getStatistics().boostStatistic(speedBoost);

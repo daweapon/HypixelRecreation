@@ -2,9 +2,6 @@ package net.swofty.type.skyblockgeneric.item.handlers.ability.abilities;
 
 import net.minestom.server.coordinate.Point;
 import net.minestom.server.entity.Entity;
-import net.minestom.server.entity.damage.Damage;
-import net.minestom.server.entity.damage.DamageType;
-import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.RegisteredAbility;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -15,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 // A two-stage Necron's Blade Scroll ability: first use creates a warp point 10 blocks ahead that
 // pulls nearby enemies toward it; using it again within 5 seconds detonates the warp, dealing
-// flat 10,000 damage to enemies within 6 blocks of it.
+// 10,000 base ability damage to enemies within 6 blocks of it.
 public class ShadowWarpAbility extends RegisteredAbility {
     private static final long DETONATE_WINDOW_MS = 5000;
     private static final Map<UUID, ActiveWarp> ACTIVE_WARPS = new ConcurrentHashMap<>();
@@ -47,10 +44,7 @@ public class ShadowWarpAbility extends RegisteredAbility {
     }
 
     private static void detonate(SkyBlockPlayer player, Point warpPosition) {
-        for (Entity entity : player.getInstance().getNearbyEntities(warpPosition, 6)) {
-            if (!(entity instanceof SkyBlockMob mob)) continue;
-            mob.damage(new Damage(DamageType.MAGIC, player, player, player.getPosition(), ElectionPerks.spellDamage(10000)));
-        }
+        AbilityDamage.hitArea(player, warpPosition, 6, "Shadow Warp", 10000, 0.3);
     }
 
     private record ActiveWarp(Point position, long createdAtMs) {

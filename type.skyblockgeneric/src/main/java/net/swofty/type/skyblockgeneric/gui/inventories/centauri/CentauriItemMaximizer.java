@@ -11,10 +11,16 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.EnchantableComponent;
 import net.swofty.type.skyblockgeneric.item.components.GemstoneComponent;
 import net.swofty.type.skyblockgeneric.item.components.HotPotatoableComponent;
+import net.swofty.type.skyblockgeneric.item.components.NecronsBladeScrollComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Maxes out an item's enchantments, hot potato books, gemstones, and recombobulation for testing
+import java.util.List;
+
+// Maxes out an item's enchantments, hot potato books, gemstones, Necron's Blade scrolls and
+// recombobulation for testing
 public final class CentauriItemMaximizer {
+    private static final List<String> NECRONS_BLADE_SCROLLS = List.of("IMPLOSION", "SHADOW_WARP", "WITHER_SHIELD");
+
     private CentauriItemMaximizer() {}
 
     public static int maximize(SkyBlockPlayer player, SkyBlockItem item) {
@@ -22,6 +28,7 @@ public final class CentauriItemMaximizer {
         applied += maximizeEnchantments(player, item);
         applied += maximizePotatoBooks(item);
         applied += maximizeGemstones(item);
+        applied += maximizeScrolls(item);
 
         ItemAttributeHandler handler = item.getAttributeHandler();
         if (handler.getRarity().isCanReforge() && !handler.isRecombobulated()) {
@@ -62,6 +69,17 @@ public final class CentauriItemMaximizer {
         }
         data.setPotatoType(component.getPotatoType());
         item.getAttributeHandler().setHotPotatoBookData(data);
+        return applied;
+    }
+
+    private static int maximizeScrolls(SkyBlockItem item) {
+        if (!item.hasComponent(NecronsBladeScrollComponent.class)) return 0;
+        int applied = 0;
+        for (String scroll : NECRONS_BLADE_SCROLLS) {
+            if (item.getAttributeHandler().getAppliedScrolls().contains(scroll)) continue;
+            item.getAttributeHandler().addAppliedScroll(scroll);
+            applied++;
+        }
         return applied;
     }
 
