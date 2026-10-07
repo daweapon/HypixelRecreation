@@ -32,6 +32,7 @@ import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.hub.darkauction.DarkAuctionDisplay;
 import net.swofty.type.hub.util.HubMap;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
+import net.swofty.type.skyblockgeneric.mythological.burrow.GriffinBurrowService;
 import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.darkauction.DarkAuctionHandler;
@@ -192,6 +193,7 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
 
 		MinecraftServer.getSchedulerManager().buildTask(ElectionDisplay::addAndUpdate).delay(TaskSchedule.seconds(1)).repeat(TaskSchedule.seconds(1)).schedule();
 		MinecraftServer.getSchedulerManager().buildTask(SpookyFestivalLeaderboardDisplay::addAndUpdate).delay(TaskSchedule.seconds(1)).repeat(TaskSchedule.seconds(1)).schedule();
+		GriffinBurrowService.INSTANCE.start();
 	}
 
 	private static String[] electionLines() {
