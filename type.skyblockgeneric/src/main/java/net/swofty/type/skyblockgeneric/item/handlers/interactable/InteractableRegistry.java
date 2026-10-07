@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.GUISkyBlockMenu;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIBoosterCookie;
 import net.swofty.type.skyblockgeneric.potion.GodPotionService;
 import net.swofty.type.skyblockgeneric.slayer.MaddoxBatphone;
+import net.swofty.type.skyblockgeneric.spray.SprayCanHandlers;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import net.swofty.type.skyblockgeneric.utility.JerryInformation;
 
@@ -67,6 +68,7 @@ public class InteractableRegistry {
                     skyBlockItem.setAmount(0);
                 })
         ).build());
+        register(SprayCanHandlers.HANDLER_ID, SprayCanHandlers.interactable());
         register("MADDOX_BATPHONE_CALL", InteractableItemConfig.builder().rightClickHandler(
                 (player, item) -> MaddoxBatphone.call(player)
         ).build());

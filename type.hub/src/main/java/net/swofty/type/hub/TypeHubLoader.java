@@ -49,6 +49,7 @@ import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import net.swofty.type.skyblockgeneric.utility.WarpPortal;
 import net.swofty.type.hub.sewer.SewerRats;
+import net.swofty.type.skyblockgeneric.mission.missions.marco.MissionGiveRoseRedDyeToMarco;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
@@ -61,6 +62,8 @@ import java.util.stream.Collectors;
 // Server type loader for the Hub: registers NPCs, events, warp portals, furniture, and displays for the central lobby world.
 public class TypeHubLoader implements SkyBlockTypeLoader {
     private static final Pos COMMUNITY_CENTER_ARRIVAL = new Pos(9.5, 79, 12.5, 90, 0);
+    private static final Pos CANVAS_ROOM_ARRIVAL = new Pos(55.5, 22, 95.5, 180, 0);
+    private static final Pos FLOWER_HOUSE_ARRIVAL = new Pos(90.5, 76.0625, 7.5, 180, 0);
 
 
 	@Override
@@ -164,6 +167,10 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
 				() -> ElectionManager.getElectionData().isElectionOpen() ? null : "<c>The Election Room only opens while an election is running.");
         WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(0, 49, 47), Component.text("Community Center"), COMMUNITY_CENTER_ARRIVAL);
 		SewerRats.start();
+		WarpPortal.createFor(HypixelConst.getInstanceContainer(), new BlockVec(90, 75, 9), Component.text("Canvas Room"), CANVAS_ROOM_ARRIVAL,
+				player -> player.getMissionData().hasCompleted(MissionGiveRoseRedDyeToMarco.class)
+						? null : "<c>Help Marco with his dye before visiting his Canvas Room!");
+		WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(55, 21, 98), Component.text("Flower House"), FLOWER_HOUSE_ARRIVAL);
 
 		// The Election Room is only open while voting is; anyone still inside when it closes is
 		// returned to the Community Center.

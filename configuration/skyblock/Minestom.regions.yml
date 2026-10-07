@@ -701,6 +701,15 @@ regions:
     y2: 67
     z2: -18
     serverType: SKYBLOCK_HUB
+  - id: canvas_room
+    type: CANVAS_ROOM
+    x1: 25
+    y1: 12
+    z1: 42
+    x2: 89
+    y2: 57
+    z2: 100
+    serverType: SKYBLOCK_HUB
   - id: carnival
     type: CARNIVAL
     x1: -116

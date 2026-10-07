@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointMinionData;
 import net.swofty.type.skyblockgeneric.item.components.MinionComponent;
 import net.swofty.type.skyblockgeneric.minion.IslandMinionData;
+import net.swofty.type.skyblockgeneric.spray.SprayCanHandlers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +49,7 @@ public class PlaceEventRegistry {
             player.sendMessage("<b>You placed a minion! ({}/{})",
                     minionData.getMinions().size(), playerData.getSlots());
         });
+        register(SprayCanHandlers.HANDLER_ID, SprayCanHandlers.place());
         register("CARROT_CRYSTAL_PLACE", (event, player, item) -> {
 
         });

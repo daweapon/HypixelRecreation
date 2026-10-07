@@ -14,6 +14,10 @@ items:
     components:
       - id: SKULL_HEAD
         texture: a064d9796ed5fab445dbc90b4166c4e274228832719b5318a00126a29096a4f1
+      - id: INTERACTABLE
+        handler_id: SPRAY_CAN
+      - id: PLACE_EVENT
+        handler_id: SPRAY_CAN
       - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         recipes:
