@@ -75,6 +75,19 @@ public enum PetHandler {
             at(ScaledPetAbility.notActive("Apex Predator", scaling(0, 0, 0, 0, 100),
                     "<7>Deal <c>+{0}% <7>damage against targets", "<7>with no other mobs within <a>15 <7>blocks."), Rarity.LEGENDARY)
     )),
+    GRIFFIN(List.of(
+            at(new GameplayPetAbility("Odyssey", scaling(2, 4, 6, 8, 10, 12),
+                    "<c>{0} <7>types of <2>✿ Mythological <7>mobs can", "<7>spawn from <e>Griffin Burrows<7>. Their",
+                    "<7>stats scale with your Griffin's", "<7>rarity."), Rarity.COMMON),
+            at(ScaledPetAbility.percentageWhen(player -> player.getHealth() > player.getMaxHealth() * 0.85,
+                    "Sacred Strength", scaling(0, 0, 10, 15, 15, 15), ItemStatistic.STRENGTH,
+                    "<7>Gain <c>+{0}% ❁ Strength <7>when above", "<c>85% ❤ Health<7>."), Rarity.RARE),
+            at(ScaledPetAbility.notActive("King of Kings", scaling(0, 0, 0, 0, 20, 20),
+                    "<7>Grants <b>+{0}✯ Magic Find <7>on <2>✿", "<2>Mythological <7>mobs."), Rarity.LEGENDARY),
+            at(new GameplayPetAbility("Ancient Earth", scaling(0, 0, 0, 0, 0, 1),
+                    "<7>Grants <d>+1 Tracking <7>on <e>Griffin", "<e>Burrows <7>for each burrow excavated",
+                    "<7>in your current chain."), Rarity.MYTHIC)
+    )),
     // Black Cat and Skeleton Horse (Spooky Festival rewards) - their ability trees are not
     // implemented, so they carry stats only.
     SPOOKY(List.of());
@@ -102,6 +115,11 @@ public enum PetHandler {
 
     private static RarityValue<Double> scaling(double common, double uncommon, double rare, double epic, double legendary) {
         return new RarityValue<>(common, uncommon, rare, epic, legendary, legendary, 0.0);
+    }
+
+    private static RarityValue<Double> scaling(double common, double uncommon, double rare, double epic, double legendary,
+                                               double mythic) {
+        return new RarityValue<>(common, uncommon, rare, epic, legendary, mythic, 0.0);
     }
 
     private static final class Regions {
