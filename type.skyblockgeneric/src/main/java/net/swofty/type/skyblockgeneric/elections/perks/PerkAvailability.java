@@ -24,8 +24,6 @@ public final class PerkAvailability {
                     "exp share slots += 2 and rate += ElectionPerks.bonus(SHARING_IS_CARING) when isActive"),
             missing(Perk.VOLUME_TRADING, "Shen's Auction isn't in this server yet.",
                     "Shen's Auction quantity * ElectionPerks.factor(VOLUME_TRADING)"),
-            missing(Perk.STOCK_EXCHANGE, "The Stonks Auction and Trade Center aren't in this server yet.",
-                    "open the Stonks Auction when ElectionPerks.isActive(STOCK_EXCHANGE)"),
             missing(Perk.SHOPPING_SPREE, "NPC shops have no daily buy limits in this server yet.",
                     "daily NPC buy limit * ElectionPerks.factor(SHOPPING_SPREE)"),
             missing(Perk.PEST_ERADICATOR, GARDEN,

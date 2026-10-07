@@ -710,6 +710,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         TRADE_COINS_SENT("trade_coins_sent", false, false, false,
                 DatapointString.class, new DatapointString("trade_coins_sent", "")),
+
+        STONKS_AUCTIONS("stonks_auctions", false, false, false,
+                DatapointStonksAuctions.class, new DatapointStonksAuctions("stonks_auctions")),
         ;
 
         @Getter
