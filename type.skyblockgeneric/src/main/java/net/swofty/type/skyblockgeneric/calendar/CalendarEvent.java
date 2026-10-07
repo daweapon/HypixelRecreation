@@ -15,6 +15,8 @@ import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContest;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
@@ -267,6 +269,22 @@ public record CalendarEvent(
         (_, _) -> {}
     );
 
+    // Wiki: Jacob's Farming Contest - every 3 SkyBlock days from the 2nd, lasting one SkyBlock day.
+    public static CalendarEvent FARMING_CONTEST = new CalendarEvent(
+        "farming_contest",
+        ItemStack.of(Material.WHEAT),
+        year -> Text.of("<e>Jacob's Farming Contest"),
+        List.of(
+            Text.of("<7>Jacob picks <e>3 crops<7>. The top"),
+            Text.of("<7>farmers of each crop earn <a>Jacob's"),
+            Text.of("<a>Tickets <7>and <d>unique rewards<7>!")
+        ),
+        FarmingContest.startTimesInYear(),
+        Duration.ofMillis(FarmingContest.DURATION * 50L),
+        false,
+        (_, _) -> FarmingContests.announceStart()
+    );
+
     static {
         registerEvent(NEW_YEAR);
         registerEvent(DARK_AUCTION);
@@ -276,6 +294,7 @@ public record CalendarEvent(
         registerEvent(TRAVELING_ZOO);
         registerEvent(SPOOKY_FESTIVAL);
         registerEvent(SEASON_OF_JERRY);
+        registerEvent(FARMING_CONTEST);
     }
 
     @Override

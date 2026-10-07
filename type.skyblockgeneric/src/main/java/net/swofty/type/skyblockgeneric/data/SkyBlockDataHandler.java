@@ -689,6 +689,12 @@ public class SkyBlockDataHandler extends DataHandler {
 
         COLLECTED_MOB_TYPE_REWARDS("collected_mob_type_rewards", false, false, false,
                 DatapointCollectedMobTypeRewards.class, new DatapointCollectedMobTypeRewards("collected_mob_type_rewards")),
+
+        FARMING_CONTESTS("farming_contests", false, false, false,
+                DatapointFarmingContests.class, new DatapointFarmingContests("farming_contests")),
+
+        JACOBUS_UPGRADES("jacobus_upgrades", false, false, false,
+                DatapointInteger.class, new DatapointInteger("jacobus_upgrades", 0)),
         ;
 
         @Getter

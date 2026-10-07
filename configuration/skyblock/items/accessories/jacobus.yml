@@ -1,0 +1,16 @@
+items:
+  - id: JACOBUS_REGISTER
+    material: PLAYER_HEAD
+    name: "Jacobus Register"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 10
+      pet_luck: 1
+    components:
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: Jacobus Register
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 3b648b9a44e280bcdf25f4a66a97bd5c33542e5e82415e15b475c6b999b8d635
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false

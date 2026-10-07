@@ -2226,6 +2226,10 @@ public enum ItemType {
 
   JACK_O_LANTERN(Material.JACK_O_LANTERN, Rarity.COMMON),
 
+  JACOBS_TICKET(Material.PAPER, Rarity.UNCOMMON),
+
+  JACOBUS_REGISTER(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   JERRY_BOX_BLUE(Material.PLAYER_HEAD, Rarity.RARE),
 
   JERRY_BOX_GOLDEN(Material.PLAYER_HEAD, Rarity.LEGENDARY),

@@ -5,6 +5,7 @@ import org.tinylog.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.params.ScanParams;
+import redis.clients.jedis.params.ZAddParams;
 import redis.clients.jedis.resps.ScanResult;
 import redis.clients.jedis.resps.Tuple;
 
@@ -71,6 +72,18 @@ public class LeaderboardService {
      */
     public static void updateScoreAsync(String leaderboardKey, UUID playerUuid, double score) {
         Thread.startVirtualThread(() -> updateScore(leaderboardKey, playerUuid, score));
+    }
+
+    public static void updateExpiringScoreAsync(String leaderboardKey, UUID playerUuid, double score, long ttlSeconds) {
+        Thread.startVirtualThread(() -> {
+            if (!isInitialized()) return;
+            try (Jedis jedis = jedisPool.getResource()) {
+                jedis.zadd(PREFIX + leaderboardKey, score, playerUuid.toString(), ZAddParams.zAddParams().gt());
+                jedis.expire(PREFIX + leaderboardKey, ttlSeconds);
+            } catch (Exception e) {
+                Logger.warn(e, "Failed to update expiring leaderboard score for {} on {}", playerUuid, leaderboardKey);
+            }
+        });
     }
 
     /**

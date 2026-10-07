@@ -1,0 +1,13 @@
+items:
+  - id: JACOBS_TICKET
+    material: paper
+    name: "Jacob's Ticket"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77Awarded for taking part in"
+      - "\xA77\xA7eJacob's Farming Contests\xA77. Spend"
+      - "\xA77them at \xA7aAnita\xA77's shop."
+    default_statistics: { }
+    components:
+      - id: SELLABLE
+        value: 10000.0

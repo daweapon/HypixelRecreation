@@ -51,7 +51,7 @@ public enum SkyBlockXPSource {
     HARVEST_FEAST_SEASONING(Group.EVENT, null, 100, Availability.NOT_IN_GAME, Material.PUMPKIN_PIE),
     SPOOKY_FESTIVAL(Group.EVENT, null, 225, Availability.UNWIRED, Material.JACK_O_LANTERN),
     HOPPITYS_HUNT(Group.EVENT, null, 285, Availability.UNWIRED, Material.COCOA_BEANS),
-    JACOBS_FARMING_CONTEST(Group.EVENT, null, 130, Availability.NOT_IN_GAME, Material.GOLDEN_HOE),
+    JACOBS_FARMING_CONTEST(Group.EVENT, null, 130, Availability.LIVE, Material.GOLDEN_HOE),
     FISHING_FESTIVAL_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.COD),
     MINING_FIESTA_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.RAW_IRON),
     MYTHOLOGICAL_RITUAL_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.FEATHER),
@@ -98,7 +98,7 @@ public enum SkyBlockXPSource {
     FROZEN_CORPSE_MILESTONES(Group.SKILL_RELATED, SubArea.MINING, 140, Availability.NOT_IN_GAME, Material.PACKED_ICE),
     ROCK_MILESTONES(Group.SKILL_RELATED, SubArea.MINING, 100, Availability.NOT_IN_GAME, Material.COBBLESTONE),
 
-    ANITAS_SHOP_UPGRADES(Group.SKILL_RELATED, SubArea.FARMING, 250, Availability.NOT_IN_GAME, Material.GOLDEN_HOE),
+    ANITAS_SHOP_UPGRADES(Group.SKILL_RELATED, SubArea.FARMING, 250, Availability.LIVE, Material.GOLDEN_HOE),
     GARDEN_LEVEL(Group.SKILL_RELATED, SubArea.FARMING, 140, Availability.NOT_IN_GAME, Material.WHEAT),
     GARDEN_VISITORS_SERVED(Group.SKILL_RELATED, SubArea.FARMING, 96, Availability.NOT_IN_GAME, Material.VILLAGER_SPAWN_EGG),
     OFFERS_ACCEPTED(Group.SKILL_RELATED, SubArea.FARMING, 90, Availability.NOT_IN_GAME, Material.EMERALD),
@@ -123,7 +123,7 @@ public enum SkyBlockXPSource {
     SAFARI_MILESTONES(Group.SKILL_RELATED, SubArea.FORAGING, 220, Availability.NOT_IN_GAME, Material.LEAD),
 
     // ----- Miscellaneous Tasks (6,266 XP) -----
-    ACCESSORY_BAG_UPGRADES(Group.MISCELLANEOUS, null, 0, Availability.UNWIRED, Material.BUNDLE),
+    ACCESSORY_BAG_UPGRADES(Group.MISCELLANEOUS, null, 0, Availability.LIVE, Material.BUNDLE),
     TIMECHARMS(Group.MISCELLANEOUS, null, 800, Availability.NOT_IN_GAME, Material.CLOCK),
     UNLOCKING_POWERS(Group.MISCELLANEOUS, null, 0, Availability.NOT_IN_GAME, Material.HEART_OF_THE_SEA),
     UPGRADED_RELAYS(Group.MISCELLANEOUS, null, 45, Availability.NOT_IN_GAME, Material.LIGHTNING_ROD),

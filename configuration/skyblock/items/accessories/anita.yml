@@ -2,6 +2,10 @@ items:
   - id: ANITA_TALISMAN
     material: PLAYER_HEAD
     name: "Anita Talisman"
+    lore:
+      - "\xA77Grants a random \xA76+5 Farming"
+      - "\xA76Fortune \xA77stat during \xA7eJacob's Farming"
+      - "\xA7eContest\xA77."
     rarity: COMMON
     components:
       - id: CUSTOM_DISPLAY_NAME
@@ -9,11 +13,14 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: bb8ec57b37fdf093fe66efe2ac070a8f5181949970a4458d56ec9701eded8cff
-      - id: NOT_FINISHED_YET
 
   - id: ANITA_RING
     material: PLAYER_HEAD
     name: "Anita Ring"
+    lore:
+      - "\xA77Grants a random \xA76+15 Farming"
+      - "\xA76Fortune \xA77stat during \xA7eJacob's Farming"
+      - "\xA7eContest\xA77."
     rarity: UNCOMMON
     components:
       - id: CUSTOM_DISPLAY_NAME
@@ -21,11 +28,14 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 59a1035bc6f00fddc8e0291c38319408babc84ae10648cb5258ed8b55d60e0c3
-      - id: NOT_FINISHED_YET
 
   - id: ANITA_ARTIFACT
     material: PLAYER_HEAD
     name: "Anita Artifact"
+    lore:
+      - "\xA77Grants a random \xA76+25 Farming"
+      - "\xA76Fortune \xA77stat during \xA7eJacob's Farming"
+      - "\xA7eContest\xA77."
     rarity: RARE
     components:
       - id: CUSTOM_DISPLAY_NAME
@@ -33,4 +43,3 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 8feabdadd5f593771fa23c94fc6816091917371fd5a1c74723e716210d6e6efb
-      - id: NOT_FINISHED_YET
