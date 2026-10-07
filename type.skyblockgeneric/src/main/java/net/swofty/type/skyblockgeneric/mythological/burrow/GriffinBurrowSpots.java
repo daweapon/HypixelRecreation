@@ -22,12 +22,12 @@ import java.util.random.RandomGenerator;
 /**
  * Where Griffin Burrows may appear. Hypixel only places burrows on grass blocks in the open Hub, so
  * the pool is built by sampling random columns across the Hub's region boxes, keeping the top block
- * when it is grass with headroom above it and the column sits in an open-air region rather than a
- * building or a cave.
+ * when it is bare grass (nothing planted on it) with headroom above it and the column sits in an
+ * open-air region outside the Village, rather than a building or a cave.
  */
 public final class GriffinBurrowSpots {
     private static final Set<RegionType> OPEN_GROUND = EnumSet.of(
-            RegionType.VILLAGE, RegionType.WILDERNESS, RegionType.RUINS, RegionType.GRAVEYARD,
+            RegionType.WILDERNESS, RegionType.RUINS, RegionType.GRAVEYARD,
             RegionType.FOREST, RegionType.FARM, RegionType.FISHING_OUTPOST, RegionType.MOUNTAIN,
             RegionType.UNINCORPORATED, RegionType.COAL_MINE, RegionType.COMBAT_SETTLEMENT);
     private static final int TARGET_SPOTS = 600;
@@ -103,7 +103,7 @@ public final class GriffinBurrowSpots {
             Block block = instance.getBlock(x, y, z);
             if (block.air() || (!block.solid() && !block.liquid())) continue;
             if (!block.compare(Block.GRASS_BLOCK)) return Optional.empty();
-            if (instance.getBlock(x, y + 1, z).solid() || instance.getBlock(x, y + 2, z).solid()) {
+            if (!instance.getBlock(x, y + 1, z).air() || instance.getBlock(x, y + 2, z).solid()) {
                 return Optional.empty();
             }
             return Optional.of(new BlockVec(x, y, z));

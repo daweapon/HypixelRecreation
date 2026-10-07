@@ -234,6 +234,9 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
             burrow.getDefenders().add(mob);
             if (creature == MythologicalCreature.MINOS_INQUISITOR) MythologicalLootShare.track(mob, player);
         }
+        if (creature == MythologicalCreature.SIAMESE_LYNXES && burrow.getDefenders().size() == 2) {
+            MythologicalCreatureMob.pairAsTwins(burrow.getDefenders().get(0), burrow.getDefenders().get(1));
+        }
         burrow.setOpened(true);
 
         String exclamation = DIG_EXCLAMATIONS.get(ThreadLocalRandom.current().nextInt(DIG_EXCLAMATIONS.size()));

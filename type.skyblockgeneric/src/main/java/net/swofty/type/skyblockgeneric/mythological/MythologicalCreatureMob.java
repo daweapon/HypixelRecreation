@@ -9,6 +9,8 @@ import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.entity.ai.target.ClosestEntityTarget;
 import net.minestom.server.entity.ai.target.LastEntityDamagerTarget;
 import net.minestom.server.entity.damage.Damage;
+import net.minestom.server.network.packet.server.play.ParticlePacket;
+import net.minestom.server.particle.Particle;
 import net.minestom.server.utils.time.TimeUnit;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
@@ -41,6 +43,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
     private static final ThreadLocal<Spec> CONSTRUCTING = new ThreadLocal<>();
     private static final double MAX_RAMPAGE_PERCENT = 600;
     private static final long WARNING_COOLDOWN_MS = 2000;
+    private static final int TWIN_PARTICLE_INTERVAL_TICKS = 5;
 
     private record Spec(MythologicalCreature creature, MythologicalVariant variant) {
     }
@@ -60,6 +63,9 @@ public class MythologicalCreatureMob extends BestiaryMob {
     private @Nullable Listener listener;
     private long spawnedAt;
     private boolean escaped;
+    private @Nullable MythologicalCreatureMob twin;
+    private boolean twinsTurn;
+    private int ticksAlive;
 
     protected MythologicalCreatureMob(MythologicalCreature creature, MythologicalVariant variant) {
         super(begin(new Spec(creature, variant)));
@@ -93,6 +99,20 @@ public class MythologicalCreatureMob extends BestiaryMob {
         this.listener = listener;
     }
 
+    public static void pairAsTwins(MythologicalCreatureMob first, MythologicalCreatureMob second) {
+        first.twin = second;
+        second.twin = first;
+        second.twinsTurn = true;
+    }
+
+    private boolean hasLivingTwin() {
+        return twin != null && !twin.isDead() && !twin.isRemoved();
+    }
+
+    private boolean isHittable() {
+        return !hasLivingTwin() || !twinsTurn;
+    }
+
     @Override
     public void onSpawn() {
         spawnedAt = System.currentTimeMillis();
@@ -112,6 +132,11 @@ public class MythologicalCreatureMob extends BestiaryMob {
             if (listener != null) listener.onEscaped(this);
             remove();
         }
+        if (hasLivingTwin() && !twinsTurn && !isDead() && ticksAlive++ % TWIN_PARTICLE_INTERVAL_TICKS == 0) {
+            sendPacketToViewers(new ParticlePacket(Particle.ANGRY_VILLAGER, false, true,
+                    (float) getPosition().x(), (float) (getPosition().y() + getEyeHeight() + 0.6), (float) getPosition().z(),
+                    0.2f, 0.1f, 0.2f, 0, 1));
+        }
     }
 
     @Override
@@ -123,10 +148,16 @@ public class MythologicalCreatureMob extends BestiaryMob {
                 warn(player, required);
                 return false;
             }
+            if (!isHittable()) return false;
             attackers.add(player.getUuid());
             damage.setAmount((float) (damage.getAmount() * Carnivals.multiplier(player, CarnivalPerk.STORIED_STINGER)));
         }
-        return super.damage(damage);
+        boolean damaged = super.damage(damage);
+        if (damaged && damage.getAttacker() instanceof SkyBlockPlayer && hasLivingTwin()) {
+            twinsTurn = true;
+            twin.twinsTurn = false;
+        }
+        return damaged;
     }
 
     private void warn(SkyBlockPlayer player, Rarity required) {
