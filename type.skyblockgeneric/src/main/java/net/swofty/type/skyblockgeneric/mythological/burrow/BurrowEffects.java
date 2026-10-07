@@ -26,7 +26,8 @@ public final class BurrowEffects {
 
     public static void marker(SkyBlockPlayer player, GriffinBurrow burrow) {
         Point top = burrow.getPosition().add(0.5, 1.1, 0.5);
-        send(player, burrow.getKind().getParticle(), top, 0.3f, 0.1f, 6);
+        send(player, Particle.ENCHANT, top.add(0, 0.4, 0), 0.4f, 0.3f, 8);
+        send(player, burrow.getKind().getParticle(), top, 0.45f, 0.1f, 8);
     }
 
     public static void echo(SkyBlockPlayer player, Point target) {
