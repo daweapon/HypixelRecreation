@@ -50,7 +50,13 @@ public class BestiaryData {
             375, 500, 1000, 1500, 2000, 2500, 3000
     };
 
-    private final List<int[]> brackets = List.of(BRACKET_1, BRACKET_2, BRACKET_3, BRACKET_4, BRACKET_5, BRACKET_6, BRACKET_7);
+    private final static int[] BRACKET_8 = new int[]{
+            1, 2, 3, 4, 5, 8, 11, 14, 17, 20,
+            25, 30, 35, 40, 50, 60, 70, 80,
+            90, 100, 120, 140, 160, 180, 200
+    };
+
+    private final List<int[]> brackets = List.of(BRACKET_1, BRACKET_2, BRACKET_3, BRACKET_4, BRACKET_5, BRACKET_6, BRACKET_7, BRACKET_8);
 
     private enum BestiaryTierRewards {
         TIER_1(2, 2, 2, 50),
