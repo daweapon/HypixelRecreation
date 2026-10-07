@@ -5,8 +5,10 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.skyblockgeneric.elections.ElectionManager;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
+import net.swofty.type.hub.gui.tradecenter.GUILizStockRedemption;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 
 public class NPCLiz extends HypixelNPC {
 
@@ -43,7 +45,12 @@ public class NPCLiz extends HypixelNPC {
     public void onClick(NPCInteractEvent event) {
         HypixelPlayer player = event.player();
         if (isInDialogue(player)) return;
-        setDialogue(player, ElectionManager.isPerkActive(SkyBlockMayor.Perk.STOCK_EXCHANGE) ? "diaz" : "no-diaz");
+        if (!ElectionPerks.isActive(SkyBlockMayor.Perk.STOCK_EXCHANGE)) {
+            setDialogue(player, "no-diaz");
+            return;
+        }
+        FirstInteraction.then(this, player, DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_LIZ, "diaz",
+                () -> player.openView(new GUILizStockRedemption()));
     }
 
     @Override

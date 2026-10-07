@@ -11,9 +11,7 @@ public enum UnreleasedContent {
     DUNGEONS("<c>The Catacombs are not available on this server yet!"),
     RIFT("<c>The Rift is not available on this server yet!"),
     DYES("<c>Dyes are not obtainable on this server yet!"),
-    COSMETICS("<c>Taylor's cosmetics are not available on this server yet!"),
-    STONKS_AUCTION("<c>The Stonks Auction is not available on this server yet!"),
-    MIDAS_ANVIL("<c>Zarina's Midas Anvil is not available on this server yet!");
+    COSMETICS("<c>Taylor's cosmetics are not available on this server yet!");
 
     private final String message;
 

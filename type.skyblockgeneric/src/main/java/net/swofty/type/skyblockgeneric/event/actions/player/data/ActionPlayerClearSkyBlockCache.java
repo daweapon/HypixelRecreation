@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.event.actions.player.ActionPlayerStrayToo
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import net.swofty.type.skyblockgeneric.server.eventcaller.CustomEventCaller;
+import net.swofty.type.skyblockgeneric.trade.TradeManager;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockScoreboard;
 import net.swofty.type.skyblockgeneric.user.island.VisitManager;
@@ -32,6 +33,7 @@ public class ActionPlayerClearSkyBlockCache implements HypixelEventClass {
         CustomEventCaller.clearCache(player);
         // Stop counting this player against their visited island's guest limit if they disconnect mid-visit.
         VisitManager.clearVisit(player.getUuid());
+        TradeManager.handleDisconnect(player);
 
         CoopDatabase.Coop coop = CoopDatabase.getFromMember(player.getUuid());
         if (coop != null) CoopDatabase.markLastSeen(coop.coopUUID(), player.getUuid());

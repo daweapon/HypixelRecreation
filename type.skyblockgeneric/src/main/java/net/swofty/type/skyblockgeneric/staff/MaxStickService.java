@@ -129,6 +129,7 @@ public final class MaxStickService {
         maxPersonalBank(player);
         maxHubUpgrades(player);
         MuseumService.maxOut(player);
+        meetTradeCenter(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have
         // granted its own SkyBlock XP causes first or the top-up would overshoot.
         maxSkyBlockLevel(player);
@@ -262,6 +263,12 @@ public final class MaxStickService {
 
     // Real Hypixel only shows Dark Auction on the Calendar once a player has physically visited
     // one - testers using /maxprofile or THE_MAX_STICK shouldn't have to wait out a live auction.
+    private static void meetTradeCenter(SkyBlockPlayer player) {
+        player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_LIZ, true);
+        player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_RICHARD, true);
+        player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_ZARINA, true);
+    }
+
     private static void unlockDarkAuctionCalendar(SkyBlockPlayer player) {
         player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_VISITED_DARK_AUCTION, true);
     }

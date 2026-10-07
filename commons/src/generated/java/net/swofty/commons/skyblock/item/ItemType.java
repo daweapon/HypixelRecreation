@@ -182,6 +182,8 @@ public enum ItemType {
 
   AUTO_SMELTER(Material.FURNACE, Rarity.COMMON),
 
+  AVARICIOUS_CHALICE(Material.PLAYER_HEAD, Rarity.EPIC),
+
   AWKWARD_POTION(Material.POTION, Rarity.COMMON),
 
   AXE_OF_THE_SHREDDED(Material.DIAMOND_SWORD, Rarity.LEGENDARY),
@@ -1774,6 +1776,8 @@ public enum ItemType {
 
   FOUL_FLESH(Material.CHARCOAL, Rarity.RARE),
 
+  FRESHLY_MINTED_COINS(Material.PLAYER_HEAD, Rarity.RARE),
+
   FRIED_FEATHER(Material.FEATHER, Rarity.UNCOMMON),
 
   FRIED_FROZEN_CHICKEN(Material.PLAYER_HEAD, Rarity.EPIC),
@@ -1880,9 +1884,13 @@ public enum ItemType {
 
   GOLDEN_BOOTS(Material.GOLDEN_BOOTS, Rarity.COMMON),
 
+  GOLDEN_BOUNTY(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   GOLDEN_CARROT(Material.GOLDEN_CARROT, Rarity.COMMON),
 
   GOLDEN_CHESTPLATE(Material.GOLDEN_CHESTPLATE, Rarity.COMMON),
+
+  GOLDEN_FRAGMENT(Material.PLAYER_HEAD, Rarity.EPIC),
 
   GOLDEN_HELMET(Material.GOLDEN_HELMET, Rarity.COMMON),
 
@@ -4387,6 +4395,8 @@ public enum ItemType {
   STINGER_BOW(Material.BOW, Rarity.RARE),
 
   STINGY_SINKER(Material.PLAYER_HEAD, Rarity.RARE),
+
+  STOCK_OF_STONKS(Material.PAPER, Rarity.EPIC),
 
   STONE(Material.STONE, Rarity.COMMON),
 

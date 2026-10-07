@@ -6,7 +6,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.hub.util.UnreleasedContent;
+import net.swofty.type.hub.gui.tradecenter.GUIMidasAnvil;
 
 public class NPCZarina extends HypixelNPC {
 
@@ -43,7 +43,7 @@ public class NPCZarina extends HypixelNPC {
     public void onClick(NPCInteractEvent event) {
         HypixelPlayer player = event.player();
         FirstInteraction.then(this, player, DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_ZARINA, "first-interaction",
-            () -> player.sendMessage(UnreleasedContent.MIDAS_ANVIL.message()));
+            () -> player.openView(new GUIMidasAnvil()));
     }
 
     @Override
