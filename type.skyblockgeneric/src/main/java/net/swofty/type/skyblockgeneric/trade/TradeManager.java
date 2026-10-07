@@ -13,7 +13,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.skyblockgeneric.gui.inventories.trade.TradeView;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -31,6 +31,14 @@ public final class TradeManager {
 
     public static Optional<TradeSession> sessionOf(SkyBlockPlayer player) {
         return Optional.ofNullable(sessions.get(player.getUuid()));
+    }
+
+    public static List<TradeOffer.HeldItem> heldItems(SkyBlockPlayer player) {
+        return sessionOf(player).map(session -> {
+            synchronized (session) {
+                return List.copyOf(session.offerOf(player).getItems());
+            }
+        }).orElse(List.<TradeOffer.HeldItem>of());
     }
 
     public static void request(SkyBlockPlayer sender, SkyBlockPlayer target) {
@@ -101,6 +109,7 @@ public final class TradeManager {
 
     public static void cancel(TradeSession session, SkyBlockPlayer canceller) {
         if (!session.finish()) return;
+        session.giveBackAllItems();
         forget(session);
         SkyBlockPlayer other = session.otherOffer(canceller).getPlayer();
         canceller.sendMessage("<c>You cancelled the trade!");
@@ -126,8 +135,8 @@ public final class TradeManager {
     private static void complete(TradeSession session) {
         TradeOffer first = session.getFirst();
         TradeOffer second = session.getSecond();
-        Map<Integer, ItemStack> firstGave;
-        Map<Integer, ItemStack> secondGave;
+        List<ItemStack> firstGave;
+        List<ItemStack> secondGave;
         synchronized (session) {
             if (session.isFinished()) return;
             Optional<String> refusal = session.bothAccepted()
@@ -139,8 +148,8 @@ public final class TradeManager {
             }
             if (!session.finish()) return;
             forget(session);
-            firstGave = new LinkedHashMap<>(first.getItems());
-            secondGave = new LinkedHashMap<>(second.getItems());
+            firstGave = first.stacks();
+            secondGave = second.stacks();
             TradeExchange.swap(session);
         }
         closeView(first);
@@ -150,14 +159,14 @@ public final class TradeManager {
     }
 
     private static void summarise(SkyBlockPlayer player, SkyBlockPlayer other,
-                                  Map<Integer, ItemStack> received, long coinsReceived,
-                                  Map<Integer, ItemStack> given, long coinsGiven) {
+                                  List<ItemStack> received, long coinsReceived,
+                                  List<ItemStack> given, long coinsGiven) {
         player.sendMessage("<6>Trade completed with " + other.getUsername() + "<6>!");
         if (coinsReceived > 0) player.sendMessage("<a><l>+ <6>" + StringUtility.commaify(coinsReceived) + " coins");
-        received.values().forEach(stack -> player.sendMessage(Text.of("<a><l>+ <f>{}x ", stack.amount())
+        received.forEach(stack -> player.sendMessage(Text.of("<a><l>+ <f>{}x ", stack.amount())
                 .append(ItemStacks.nameText(stack)).asComponent()));
         if (coinsGiven > 0) player.sendMessage("<c><l>- <6>" + StringUtility.commaify(coinsGiven) + " coins");
-        given.values().forEach(stack -> player.sendMessage(Text.of("<c><l>- <f>{}x ", stack.amount())
+        given.forEach(stack -> player.sendMessage(Text.of("<c><l>- <f>{}x ", stack.amount())
                 .append(ItemStacks.nameText(stack)).asComponent()));
         player.playSuccessSound();
     }

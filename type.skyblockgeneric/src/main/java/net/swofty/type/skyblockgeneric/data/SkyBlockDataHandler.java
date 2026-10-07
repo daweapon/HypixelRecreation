@@ -36,6 +36,8 @@ import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.island.IslandPrivacy;
 import net.swofty.type.skyblockgeneric.user.SkyBlockInventory;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.trade.TradeOffer;
+import net.swofty.type.skyblockgeneric.trade.TradeManager;
 import org.bson.Document;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
@@ -253,6 +255,13 @@ public class SkyBlockDataHandler extends DataHandler {
         }
     }
 
+    private static int freeInventorySlot(SkyBlockInventory inventory) {
+        for (int slot = 0; slot < 36; slot++) {
+            if (slot != 8 && !inventory.getItems().containsKey(slot)) return slot;
+        }
+        return -1;
+    }
+
     private static boolean isCoopBacked(Datapoint<?> datapoint) {
         return datapoint.getData() instanceof Data data && data.coopField() != null;
     }
@@ -401,6 +410,10 @@ public class SkyBlockDataHandler extends DataHandler {
                         if (SkyBlockItem.isSkyBlockItem(stack)) {
                             inv.getItems().put(i, new SkyBlockItem(stack).toUnderstandable());
                         }
+                    }
+                    for (TradeOffer.HeldItem held : TradeManager.heldItems(player)) {
+                        int slot = inv.getItems().containsKey(held.homeSlot()) ? freeInventorySlot(inv) : held.homeSlot();
+                        if (slot >= 0) inv.getItems().put(slot, new SkyBlockItem(held.stack()).toUnderstandable());
                     }
                     return new DatapointInventory("inventory", inv);
                 }),

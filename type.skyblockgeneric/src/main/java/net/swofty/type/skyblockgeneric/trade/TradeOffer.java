@@ -4,20 +4,22 @@ import lombok.Getter;
 import lombok.Setter;
 import net.minestom.server.item.ItemStack;
 import net.swofty.type.generic.gui.v2.ViewSession;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * One side of a trade. Offered items never leave the owner's inventory: the offer remembers each
- * inventory slot and the exact stack it held, and the swap only happens if every slot still holds
- * that stack. A disconnect, crash or closed menu therefore can't lose or duplicate anything.
+ * One side of a trade. Offered items leave the owner's inventory and are held here, as on Hypixel,
+ * until the swap delivers them or a withdrawal, cancel or disconnect returns them. Inventory saves
+ * taken mid-trade write held items back in (see {@link TradeManager#heldItems}), so a crash can't
+ * lose them.
  */
 @Getter
 public final class TradeOffer {
     private final SkyBlockPlayer player;
-    private final Map<Integer, ItemStack> items = new LinkedHashMap<>();
+    private final List<HeldItem> items = new ArrayList<>();
     @Setter private long coins;
     @Setter private boolean accepted;
     @Setter private boolean warned;
@@ -32,16 +34,35 @@ public final class TradeOffer {
         return items.isEmpty() && coins <= 0;
     }
 
-    public boolean isOffered(int slot) {
-        return items.containsKey(slot);
+    public List<ItemStack> stacks() {
+        return items.stream().map(HeldItem::stack).toList();
     }
 
-    boolean stillHoldsOfferedItems() {
-        return items.entrySet().stream()
-                .allMatch(entry -> player.getInventory().getItemStack(entry.getKey()).equals(entry.getValue()));
+    void hold(int homeSlot, ItemStack stack) {
+        items.add(new HeldItem(homeSlot, stack));
+        player.getInventory().setItemStack(homeSlot, ItemStack.AIR);
     }
 
-    void dropChangedItems() {
-        items.entrySet().removeIf(entry -> !player.getInventory().getItemStack(entry.getKey()).equals(entry.getValue()));
+    boolean giveBack(HeldItem held) {
+        if (!items.remove(held)) return false;
+        restore(held);
+        return true;
+    }
+
+    void giveBackAll() {
+        List<HeldItem> held = List.copyOf(items);
+        items.clear();
+        held.forEach(this::restore);
+    }
+
+    private void restore(HeldItem held) {
+        if (player.getInventory().getItemStack(held.homeSlot()).isAir()) {
+            player.getInventory().setItemStack(held.homeSlot(), held.stack());
+        } else {
+            player.addAndUpdateItem(new SkyBlockItem(held.stack()));
+        }
+    }
+
+    public record HeldItem(int homeSlot, ItemStack stack) {
     }
 }

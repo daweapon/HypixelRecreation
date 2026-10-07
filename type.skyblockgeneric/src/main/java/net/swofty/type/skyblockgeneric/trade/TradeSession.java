@@ -39,19 +39,23 @@ public final class TradeSession {
     public synchronized Optional<String> offerItem(SkyBlockPlayer player, int slot) {
         if (locked()) return Optional.empty();
         TradeOffer offer = offerOf(player);
-        if (offer.isOffered(slot)) return Optional.empty();
         if (offer.getItems().size() >= TradeRules.OFFER_SLOTS) return Optional.of("<c>There is no more room in this trade!");
         ItemStack stack = player.getInventory().getItemStack(slot);
         Optional<String> refusal = TradeRules.refuseItem(stack, player, otherOffer(player).getPlayer());
         if (refusal.isPresent()) return refusal;
-        offer.getItems().put(slot, stack);
+        offer.hold(slot, stack);
         changed();
         return Optional.empty();
     }
 
-    public synchronized void withdrawItem(SkyBlockPlayer player, int slot) {
+    public synchronized void withdrawItem(SkyBlockPlayer player, TradeOffer.HeldItem held) {
         if (locked()) return;
-        if (offerOf(player).getItems().remove(slot) != null) changed();
+        if (offerOf(player).giveBack(held)) changed();
+    }
+
+    synchronized void giveBackAllItems() {
+        first.giveBackAll();
+        second.giveBackAll();
     }
 
     public synchronized Optional<String> addCoins(SkyBlockPlayer player, long coins) {
@@ -105,8 +109,6 @@ public final class TradeSession {
 
     synchronized void abortCompletion(String reason) {
         completing = false;
-        first.dropChangedItems();
-        second.dropChangedItems();
         changed();
         first.getPlayer().sendMessage(reason);
         second.getPlayer().sendMessage(reason);

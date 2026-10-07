@@ -38,10 +38,7 @@ final class TradeExchange {
         Optional<String> refusal = TradeRules.refuseProfile(player)
                 .or(() -> TradeRules.refuseDistance(player, other.getPlayer()));
         if (refusal.isPresent()) return refusal;
-        if (!offer.stillHoldsOfferedItems()) {
-            return Optional.of("<c>An item offered by " + name + " <c>changed, so the trade was reset!");
-        }
-        for (ItemStack stack : offer.getItems().values()) {
+        for (ItemStack stack : offer.stacks()) {
             refusal = TradeRules.refuseItem(stack, player, other.getPlayer());
             if (refusal.isPresent()) return refusal;
         }
@@ -51,7 +48,7 @@ final class TradeExchange {
         if (offer.getCoins() > TradeAllowance.remaining(player)) {
             return Optional.of("<c>" + name + " <c>has reached their daily trading limit!");
         }
-        if (freeSlots(player) + offer.getItems().size() < other.getItems().size()) {
+        if (freeSlots(player) < other.getItems().size()) {
             return Optional.of("<c>" + name + " <c>doesn't have enough inventory space for this trade!");
         }
         return Optional.empty();
@@ -60,11 +57,11 @@ final class TradeExchange {
     static void swap(TradeSession session) {
         TradeOffer first = session.getFirst();
         TradeOffer second = session.getSecond();
-        List<ItemStack> toSecond = List.copyOf(first.getItems().values());
-        List<ItemStack> toFirst = List.copyOf(second.getItems().values());
+        List<ItemStack> toSecond = first.stacks();
+        List<ItemStack> toFirst = second.stacks();
+        first.getItems().clear();
+        second.getItems().clear();
 
-        first.getItems().keySet().forEach(slot -> first.getPlayer().getInventory().setItemStack(slot, ItemStack.AIR));
-        second.getItems().keySet().forEach(slot -> second.getPlayer().getInventory().setItemStack(slot, ItemStack.AIR));
         deliver(first.getPlayer(), toFirst);
         deliver(second.getPlayer(), toSecond);
 

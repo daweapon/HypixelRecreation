@@ -23,9 +23,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.CoinAmountParser;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.OptionalLong;
 
 /** The trade menu from the wiki's Trading/UI: your offer on the left, theirs on the right. */
@@ -85,17 +83,15 @@ public final class TradeView implements View<TradeView.State> {
     }
 
     private void layoutOffer(ViewLayout<State> layout, TradeOffer offer, int[] slots, boolean own) {
-        List<Map.Entry<Integer, ItemStack>> items = new ArrayList<>(offer.getItems().entrySet());
+        List<TradeOffer.HeldItem> items = List.copyOf(offer.getItems());
         for (int index = 0; index < items.size() && index < slots.length; index++) {
-            Map.Entry<Integer, ItemStack> entry = items.get(index);
-            ItemStack stack = entry.getValue();
+            TradeOffer.HeldItem held = items.get(index);
             if (!own) {
-                layout.slot(slots[index], (s, c) -> stack.builder());
+                layout.slot(slots[index], (s, c) -> held.stack().builder());
                 continue;
             }
-            int inventorySlot = entry.getKey();
-            layout.slot(slots[index], (s, c) -> stack.builder(),
-                    (click, c) -> session.withdrawItem(offer.getPlayer(), inventorySlot));
+            layout.slot(slots[index], (s, c) -> held.stack().builder(),
+                    (click, c) -> session.withdrawItem(offer.getPlayer(), held));
         }
     }
 
@@ -185,10 +181,6 @@ public final class TradeView implements View<TradeView.State> {
         int slot = click.slot();
         if (slot < 0 || slot >= MAIN_INVENTORY_SIZE) return false;
         if (!(click.click() instanceof Click.Left || click.click() instanceof Click.Right)) return false;
-        if (session.offerOf(player).isOffered(slot)) {
-            session.withdrawItem(player, slot);
-            return false;
-        }
         if (player.getInventory().getItemStack(slot).isAir()) return false;
         session.offerItem(player, slot).ifPresent(player::sendMessage);
         return false;
