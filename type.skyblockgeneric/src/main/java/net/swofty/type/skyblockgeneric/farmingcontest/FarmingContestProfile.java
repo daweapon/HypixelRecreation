@@ -19,6 +19,7 @@ public class FarmingContestProfile {
     public static final int KEPT_ENTRIES = 112;
 
     private boolean metJacob;
+    private boolean metAnita;
     private int bronzeMedals;
     private int silverMedals;
     private int goldMedals;
@@ -157,6 +158,7 @@ public class FarmingContestProfile {
     public String serialize() {
         JSONObject json = new JSONObject();
         json.put("metJacob", metJacob);
+        json.put("metAnita", metAnita);
         json.put("bronze", bronzeMedals);
         json.put("silver", silverMedals);
         json.put("gold", goldMedals);
@@ -181,6 +183,7 @@ public class FarmingContestProfile {
         if (serialized == null || serialized.isEmpty() || serialized.equals("null")) return profile;
         JSONObject json = new JSONObject(serialized);
         profile.metJacob = json.optBoolean("metJacob", false);
+        profile.metAnita = json.optBoolean("metAnita", false);
         profile.bronzeMedals = json.optInt("bronze", 0);
         profile.silverMedals = json.optInt("silver", 0);
         profile.goldMedals = json.optInt("gold", 0);
@@ -208,6 +211,7 @@ public class FarmingContestProfile {
     public FarmingContestProfile copy() {
         FarmingContestProfile copy = new FarmingContestProfile();
         copy.metJacob = metJacob;
+        copy.metAnita = metAnita;
         copy.bronzeMedals = bronzeMedals;
         copy.silverMedals = silverMedals;
         copy.goldMedals = goldMedals;
