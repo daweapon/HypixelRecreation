@@ -4570,7 +4570,7 @@ public enum ItemType {
 
   TARANTULA_WEB(Material.STRING, Rarity.UNCOMMON),
 
-  TASTY_CHEESE(Material.SPONGE, Rarity.RARE),
+  TASTY_CHEESE(Material.SPONGE, Rarity.UNCOMMON),
 
   TENDER_WOOD(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 

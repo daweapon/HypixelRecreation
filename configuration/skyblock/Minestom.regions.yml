@@ -638,6 +638,69 @@ regions:
     y2: 104
     z2: -72
     serverType: SKYBLOCK_HUB
+  - id: sewer_channel
+    type: SEWER
+    x1: 11
+    y1: 58
+    z1: -53
+    x2: 23
+    y2: 67
+    z2: -5
+    serverType: SKYBLOCK_HUB
+  - id: sewer_junction
+    type: SEWER
+    x1: -2
+    y1: 56
+    z1: -53
+    x2: 20
+    y2: 67
+    z2: -41
+    serverType: SKYBLOCK_HUB
+  - id: sewer_west_tunnel
+    type: SEWER
+    x1: -15
+    y1: 58
+    z1: -47
+    x2: -1
+    y2: 67
+    z2: -41
+    serverType: SKYBLOCK_HUB
+  - id: sewer_west_room
+    type: SEWER
+    x1: -28
+    y1: 57
+    z1: -42
+    x2: -13
+    y2: 67
+    z2: -31
+    serverType: SKYBLOCK_HUB
+  - id: sewer_outlet
+    type: SEWER
+    x1: -43
+    y1: 60
+    z1: -39
+    x2: -29
+    y2: 67
+    z2: -35
+    serverType: SKYBLOCK_HUB
+  - id: sewer_north_tunnel
+    type: SEWER
+    x1: 13
+    y1: 60
+    z1: -73
+    x2: 21
+    y2: 67
+    z2: -53
+    serverType: SKYBLOCK_HUB
+  - id: sewer_east_tunnel
+    type: SEWER
+    x1: 23
+    y1: 60
+    z1: -21
+    x2: 31
+    y2: 67
+    z2: -18
+    serverType: SKYBLOCK_HUB
   - id: carnival
     type: CARNIVAL
     x1: -116

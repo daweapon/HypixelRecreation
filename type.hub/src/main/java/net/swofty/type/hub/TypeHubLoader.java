@@ -48,6 +48,7 @@ import net.swofty.type.skyblockgeneric.museum.MuseumDisplays;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import net.swofty.type.skyblockgeneric.utility.WarpPortal;
+import net.swofty.type.hub.sewer.SewerRats;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
@@ -162,6 +163,7 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
 		WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(13, 78, 13), Component.text("Election Room"), new Pos(0.5, 50, 45.5, -180, 0),
 				() -> ElectionManager.getElectionData().isElectionOpen() ? null : "<c>The Election Room only opens while an election is running.");
         WarpPortal.create(HypixelConst.getInstanceContainer(), new BlockVec(0, 49, 47), Component.text("Community Center"), COMMUNITY_CENTER_ARRIVAL);
+		SewerRats.start();
 
 		// The Election Room is only open while voting is; anyone still inside when it closes is
 		// returned to the Community Center.

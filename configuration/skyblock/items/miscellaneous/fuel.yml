@@ -165,7 +165,7 @@ items:
   - id: TASTY_CHEESE
     material: sponge
     name: "Tasty Cheese"
-    rarity: RARE
+    rarity: UNCOMMON
     components:
       - id: MINION_FUEL
         fuel_percentage: 0.0
