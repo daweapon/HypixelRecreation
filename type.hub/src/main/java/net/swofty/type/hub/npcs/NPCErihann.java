@@ -1,12 +1,16 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.generic.data.datapoints.DatapointBoolean;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.GUIErihann;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// NPC for Erihann in the Hub; interaction is not yet implemented
 public class NPCErihann extends HypixelNPC {
 
     public NPCErihann() {
@@ -40,7 +44,26 @@ public class NPCErihann extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+
+        if (player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.RIFT_PRISM_IMBUED, DatapointBoolean.class).getValue()) {
+            setDialogue(player, "imbued");
+            return;
+        }
+        if (player.countItem(ItemType.RIFT_PRISM) > 0) {
+            setDialogue(player, "has-prism").thenRun(() -> player.openView(new GUIErihann()));
+            return;
+        }
+        setDialogue(player, "idle");
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("idle", "npcs_hub.erihann.dialogue.idle"),
+                DialogueSet.ofTranslation("has-prism", "npcs_hub.erihann.dialogue.has_prism"),
+                DialogueSet.ofTranslation("imbued", "npcs_hub.erihann.dialogue.imbued")
+        };
+    }
 }

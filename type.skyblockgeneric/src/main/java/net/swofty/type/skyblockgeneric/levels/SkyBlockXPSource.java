@@ -138,7 +138,7 @@ public enum SkyBlockXPSource {
     HARP_SONGS(Group.MISCELLANEOUS, null, 236, Availability.UNWIRED, Material.ENCHANTED_BOOK),
     ABIPHONE_CONTACTS(Group.MISCELLANEOUS, null, 840, Availability.UNWIRED, Material.PAPER),
     COMMUNITY_SHOP_UPGRADES(Group.MISCELLANEOUS, null, 120, Availability.UNWIRED, Material.EMERALD_BLOCK),
-    PERSONAL_BANK_UPGRADES(Group.MISCELLANEOUS, null, 110, Availability.UNWIRED, Material.GOLD_BLOCK),
+    PERSONAL_BANK_UPGRADES(Group.MISCELLANEOUS, null, 110, Availability.LIVE, Material.GOLD_BLOCK),
     MAGE_REPUTATION(Group.MISCELLANEOUS, null, 75, Availability.NOT_IN_GAME, Material.BLUE_BANNER),
     BARBARIAN_REPUTATION(Group.MISCELLANEOUS, null, 75, Availability.NOT_IN_GAME, Material.RED_BANNER),
 

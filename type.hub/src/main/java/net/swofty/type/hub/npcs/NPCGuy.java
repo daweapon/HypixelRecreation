@@ -5,8 +5,10 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.GUIGuy;
+import net.swofty.type.skyblockgeneric.bank.PersonalBankService;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// NPC for Guy in the Hub; interaction is not yet implemented
 public class NPCGuy extends HypixelNPC {
 
     public NPCGuy() {
@@ -40,7 +42,20 @@ public class NPCGuy extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+
+        if (!PersonalBankService.isUnlocked(player)) {
+            setDialogue(player, "locked");
+            return;
+        }
+        player.openView(new GUIGuy());
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("locked", "npcs_hub.guy.dialogue.locked")
+        };
+    }
 }
