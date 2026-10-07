@@ -1,12 +1,13 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.GUIGwynnieFishingStats;
 
-// NPC for Gwynnie, a decorative Hub NPC with no interaction logic
 public class NPCGwynnie extends HypixelNPC {
 
     public NPCGwynnie() {
@@ -40,6 +41,24 @@ public class NPCGwynnie extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
+        HypixelPlayer player = event.player();
+        if (isInDialogue(player)) return;
 
+        if (player.getToggles().get(ToggleType.HAS_SPOKEN_TO_GWYNNIE)) {
+            player.openView(new GUIGwynnieFishingStats());
+            return;
+        }
+
+        setDialogue(player, "first-interaction").thenRun(() -> {
+            player.getToggles().set(ToggleType.HAS_SPOKEN_TO_GWYNNIE, true);
+            player.openView(new GUIGwynnieFishingStats());
+        });
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("first-interaction", "npcs_hub.gwynnie.dialogue.first_interaction")
+        };
     }
 }

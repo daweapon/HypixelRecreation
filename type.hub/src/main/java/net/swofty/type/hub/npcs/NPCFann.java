@@ -1,12 +1,15 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.fann.GUIFannPetTraining;
+import net.swofty.type.skyblockgeneric.pettraining.PetTrainingService;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// NPC for Fann in the Hub; interaction is not yet implemented
 public class NPCFann extends HypixelNPC {
 
     public NPCFann() {
@@ -40,7 +43,28 @@ public class NPCFann extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+
+        if (PetTrainingService.tamingLevel(player) < PetTrainingService.MIN_TAMING_LEVEL) {
+            setDialogue(player, "low-taming");
+            return;
+        }
+        if (player.getToggles().get(ToggleType.HAS_SPOKEN_TO_FANN)) {
+            player.openView(new GUIFannPetTraining());
+            return;
+        }
+        setDialogue(player, "first-interaction").thenRun(() -> {
+            player.getToggles().set(ToggleType.HAS_SPOKEN_TO_FANN, true);
+            player.openView(new GUIFannPetTraining());
+        });
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("low-taming", "npcs_hub.fann.dialogue.low_taming"),
+                DialogueSet.ofTranslation("first-interaction", "npcs_hub.fann.dialogue.first_interaction")
+        };
+    }
 }

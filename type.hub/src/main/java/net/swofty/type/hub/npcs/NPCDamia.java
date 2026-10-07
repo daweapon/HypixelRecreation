@@ -1,12 +1,20 @@
 package net.swofty.type.hub.npcs;
 
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
+import net.swofty.type.generic.entity.npc.NPCOption;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.bank.PersonalBankService;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.List;
 
 public class NPCDamia extends HypixelNPC {
+    private static final int SHEN_MUSEUM_MILESTONE = 10;
 
     public NPCDamia() {
         super(new HumanConfiguration() {
@@ -39,6 +47,54 @@ public class NPCDamia extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
 
+        boolean popular = PersonalBankService.data(player).getMuseumMilestone() >= SHEN_MUSEUM_MILESTONE;
+        if (!popular && player.getToggles().get(ToggleType.HAS_BEEN_REFUSED_BY_DAMIA)) {
+            setDialogue(player, "not-popular");
+            return;
+        }
+
+        say(player, "welcome", "Who is Shen?", () ->
+                say(player, "who-is-shen", "Sure...", () ->
+                        say(player, "sure", "What else?", () -> {
+                            if (popular) {
+                                say(player, "what-else", "Is there anything else?", () -> setDialogue(player, "anything-else"));
+                                return;
+                            }
+                            say(player, "what-else-locked", "But?", () ->
+                                    say(player, "but", "Is there anything else?", () ->
+                                            say(player, "anything-else-locked", "Are you lying?", () ->
+                                                    setDialogue(player, "are-you-lying").thenRun(() ->
+                                                            player.getToggles().set(ToggleType.HAS_BEEN_REFUSED_BY_DAMIA, true)))));
+                        })));
+    }
+
+    private void say(SkyBlockPlayer player, String dialogue, String reply, Runnable next) {
+        setDialogue(player, dialogue).thenRun(() -> NPCOption.sendOption(player, "damia", true, List.of(
+                NPCOption.Option.builder()
+                        .key(dialogue)
+                        .color(NamedTextColor.GREEN)
+                        .bold(false)
+                        .name(reply)
+                        .action(ignored -> next.run())
+                        .build())));
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("welcome", "npcs_hub.damia.dialogue.welcome"),
+                DialogueSet.ofTranslation("who-is-shen", "npcs_hub.damia.dialogue.who_is_shen"),
+                DialogueSet.ofTranslation("sure", "npcs_hub.damia.dialogue.sure"),
+                DialogueSet.ofTranslation("what-else", "npcs_hub.damia.dialogue.what_else"),
+                DialogueSet.ofTranslation("anything-else", "npcs_hub.damia.dialogue.anything_else"),
+                DialogueSet.ofTranslation("what-else-locked", "npcs_hub.damia.dialogue.what_else_locked"),
+                DialogueSet.ofTranslation("but", "npcs_hub.damia.dialogue.but"),
+                DialogueSet.ofTranslation("anything-else-locked", "npcs_hub.damia.dialogue.anything_else_locked"),
+                DialogueSet.ofTranslation("are-you-lying", "npcs_hub.damia.dialogue.are_you_lying"),
+                DialogueSet.ofTranslation("not-popular", "npcs_hub.damia.dialogue.not_popular")
+        };
     }
 }

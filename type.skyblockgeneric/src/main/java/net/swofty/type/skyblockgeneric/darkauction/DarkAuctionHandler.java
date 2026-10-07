@@ -14,8 +14,10 @@ import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.commons.text.Text;
 import net.swofty.proxyapi.ProxyService;
+import net.swofty.type.generic.data.datapoints.DatapointInteger;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.json.JSONArray;
@@ -344,6 +346,9 @@ public class DarkAuctionHandler {
                     }
 
                     winner.addAndUpdateItem(skyBlockItem);
+                    DatapointInteger purchases = winner.getSkyblockDataHandler()
+                            .get(SkyBlockDataHandler.Data.DARK_AUCTION_PURCHASES, DatapointInteger.class);
+                    purchases.setValue(purchases.getValue() + 1);
                 } catch (Exception e) {
                     Logger.error(e, "Error giving item to winner");
                 }

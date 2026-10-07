@@ -5,6 +5,9 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.lucius.GUILucius;
+import net.swofty.type.hub.gui.lucius.LuciusTier;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCLucius extends HypixelNPC {
 
@@ -39,7 +42,39 @@ public class NPCLucius extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+
+        int purchases = LuciusTier.darkAuctionPurchases(player);
+        if (purchases == 0) {
+            setDialogue(player, "introduction");
+            return;
+        }
+
+        LuciusTier next = LuciusTier.next(player);
+        if (next == null) {
+            setDialogue(player, "family").thenRun(() -> player.openView(new GUILucius()));
+            return;
+        }
+        if (purchases < next.getRequiredPurchases()) {
+            setDialogue(player, "come-back");
+            return;
+        }
+        player.openView(new GUILucius());
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        if (!(player instanceof SkyBlockPlayer skyBlockPlayer)) {
+            return new DialogueSet[]{DialogueSet.ofTranslation("introduction", "npcs_hub.lucius.dialogue.introduction")};
+        }
+        int purchases = LuciusTier.darkAuctionPurchases(skyBlockPlayer);
+        LuciusTier next = LuciusTier.next(skyBlockPlayer);
+        int target = next == null ? purchases : next.getRequiredPurchases();
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("introduction", "npcs_hub.lucius.dialogue.introduction"),
+                DialogueSet.ofTranslation("come-back", "npcs_hub.lucius.dialogue.come_back", purchases, target),
+                DialogueSet.ofTranslation("family", "npcs_hub.lucius.dialogue.family", purchases)
+        };
+    }
 }

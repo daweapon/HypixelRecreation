@@ -1,10 +1,12 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.amelia.GUIShopAmelia;
 
 public class NPCAmelia extends HypixelNPC {
 
@@ -39,7 +41,24 @@ public class NPCAmelia extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        HypixelPlayer player = e.player();
+        if (isInDialogue(player)) return;
+
+        if (player.getToggles().get(ToggleType.HAS_SPOKEN_TO_AMELIA)) {
+            player.openView(new GUIShopAmelia());
+            return;
+        }
+
+        setDialogue(player, "first-interaction").thenRun(() -> {
+            player.getToggles().set(ToggleType.HAS_SPOKEN_TO_AMELIA, true);
+            player.openView(new GUIShopAmelia());
+        });
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("first-interaction", "npcs_hub.amelia.dialogue.first_interaction")
+        };
+    }
 }

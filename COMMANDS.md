@@ -55,6 +55,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | --- | --- | --- | --- | --- | --- |
 | `/attributesmenu` | `/attributes`, `/attributemenu`, `/am` | Opens your Attributes menu. | DEFAULT | No | `type.skyblockgeneric` |
 | `/auctionhouse` | `/ah` | Opens the Auction House remotely. Requires an active Booster Cookie. | DEFAULT | No | `type.skyblockgeneric` |
+| `/bait` | — | Opens the Bait Guide, the same menu Angler Angus shows after he gives you Fish Bait. | DEFAULT | No | `type.skyblockgeneric` |
 | `/bank` | — | Open your Personal Bank. | DEFAULT | No | `type.skyblockgeneric` |
 | `/bazzar` | `/bazaar`, `/bz` | Opens the Bazaar remotely. Requires an active Booster Cookie and SkyBlock Level 7. | DEFAULT | No | `type.skyblockgeneric` |
 | `/calendar` | — | Opens the SkyBlock Calendar. | DEFAULT | No | `type.skyblockgeneric` |

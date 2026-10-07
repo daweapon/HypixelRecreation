@@ -1,12 +1,14 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 
 public class NPCChristopher extends HypixelNPC {
+    private static final String ISLAND_BROWSER_DISABLED = "<c>This feature is currently disabled!";
 
     public NPCChristopher() {
         super(new HumanConfiguration() {
@@ -39,7 +41,24 @@ public class NPCChristopher extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        HypixelPlayer player = e.player();
+        if (isInDialogue(player)) return;
+
+        if (player.getToggles().get(ToggleType.HAS_SPOKEN_TO_CHRISTOPHER)) {
+            player.sendMessage(ISLAND_BROWSER_DISABLED);
+            return;
+        }
+
+        setDialogue(player, "first-interaction").thenRun(() -> {
+            player.getToggles().set(ToggleType.HAS_SPOKEN_TO_CHRISTOPHER, true);
+            player.sendMessage(ISLAND_BROWSER_DISABLED);
+        });
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("first-interaction", "npcs_hub.christopher.dialogue.first_interaction")
+        };
+    }
 }

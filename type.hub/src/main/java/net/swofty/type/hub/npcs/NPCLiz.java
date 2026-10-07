@@ -5,6 +5,8 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.elections.ElectionManager;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 
 public class NPCLiz extends HypixelNPC {
 
@@ -12,7 +14,7 @@ public class NPCLiz extends HypixelNPC {
         super(new HumanConfiguration() {
             @Override
             public String[] holograms(HypixelPlayer player) {
-                return new String[]{"Zog", "<e><l>CLICK"};
+                return new String[]{"Liz", "<e><l>CLICK"};
             }
 
             @Override
@@ -27,7 +29,7 @@ public class NPCLiz extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return new Pos(10, 69, -71, 90, 0);
+                return new Pos(-35.5, 70, -77.5, 90, 0);
             }
 
             @Override
@@ -39,6 +41,16 @@ public class NPCLiz extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
+        HypixelPlayer player = event.player();
+        if (isInDialogue(player)) return;
+        setDialogue(player, ElectionManager.isPerkActive(SkyBlockMayor.Perk.STOCK_EXCHANGE) ? "diaz" : "no-diaz");
+    }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("no-diaz", "npcs_hub.liz.dialogue.no_diaz"),
+                DialogueSet.ofTranslation("diaz", "npcs_hub.liz.dialogue.diaz")
+        };
     }
 }

@@ -1,0 +1,33 @@
+package net.swofty.type.skyblockgeneric.shop;
+
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.List;
+
+public final class ShopDiscount {
+    private record Source(ItemType accessory, double fraction) {
+    }
+
+    private static final List<Source> SOURCES = List.of(
+            new Source(ItemType.SEAL_OF_THE_FAMILY, 0.03),
+            new Source(ItemType.CROOKED_ARTIFACT, 0.02),
+            new Source(ItemType.SHADY_RING, 0.01)
+    );
+
+    private ShopDiscount() {
+    }
+
+    public static double fraction(SkyBlockPlayer player) {
+        List<ItemType> owned = player.getTalismans();
+        return SOURCES.stream()
+                .filter(source -> owned.contains(source.accessory()))
+                .mapToDouble(Source::fraction)
+                .findFirst()
+                .orElse(0);
+    }
+
+    public static double apply(SkyBlockPlayer player, double coins) {
+        return coins * (1 - fraction(player));
+    }
+}

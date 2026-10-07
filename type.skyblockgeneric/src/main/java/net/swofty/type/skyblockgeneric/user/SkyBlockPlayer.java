@@ -279,12 +279,17 @@ public class SkyBlockPlayer extends HypixelPlayer {
         return Stream.concat(inInventory.stream(), inAccessoryBag.stream()).collect(Collectors.toList());
     }
 
+    public static final int RIFT_PRISM_IMBUED_MAGICAL_POWER = 11;
+
     public Integer getMagicalPower() {
 
         int magicalPower = 0;
 
         for (SkyBlockItem accessory : getAccessoryBag().getUniqueAccessories()) {
             magicalPower += accessory.getAttributeHandler().getRarity().getMagicalPower();
+        }
+        if (getSkyblockDataHandler().get(SkyBlockDataHandler.Data.RIFT_PRISM_IMBUED, DatapointBoolean.class).getValue()) {
+            magicalPower += RIFT_PRISM_IMBUED_MAGICAL_POWER;
         }
         return magicalPower;
     }

@@ -4,10 +4,13 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.EquipmentSlot;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.swofty.type.generic.data.datapoints.DatapointToggles.Toggles.ToggleType;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.GUIAnglerAngusReward;
+import net.swofty.type.skyblockgeneric.gui.inventories.fishing.GUIBaitGuide;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Map;
@@ -52,6 +55,23 @@ public class NPCAnglerAngus extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        HypixelPlayer player = event.player();
+        if (isInDialogue(player)) return;
+
+        if (player.getToggles().get(ToggleType.HAS_CLAIMED_ANGLER_ANGUS_BAIT)) {
+            player.openView(new GUIBaitGuide());
+            return;
+        }
+
+        setDialogue(player, "first-interaction").thenRun(() ->
+                player.openView(new GUIAnglerAngusReward(claimer -> setDialogue(claimer, "claimed"))));
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("first-interaction", "npcs_hub.angler_angus.dialogue.first_interaction"),
+                DialogueSet.ofTranslation("claimed", "npcs_hub.angler_angus.dialogue.claimed")
+        };
     }
 }
