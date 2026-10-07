@@ -153,7 +153,7 @@ public class SkyBlockRegion {
         long smallestVolume = Long.MAX_VALUE;
 
         for (SkyBlockRegion region : getRegions()) {
-            if (!region.insideRegion(position))
+            if (!region.insideRegion(position) || !RegionPresence.isPresent(region.getType()))
                 continue;
 
             long volume = region.getVolume();

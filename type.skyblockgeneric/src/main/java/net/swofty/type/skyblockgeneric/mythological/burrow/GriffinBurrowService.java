@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.mythological.burrow;
 
+import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
+import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.BlockVec;
 import net.minestom.server.coordinate.Point;
@@ -191,7 +193,8 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
     private void giveTreasure(SkyBlockPlayer player) {
         BurrowTreasure treasure = BurrowTreasure.roll(ThreadLocalRandom.current());
         if (treasure.getItem() == null) {
-            int coins = treasure.getCoins() * coinMultiplier(player);
+            int coins = (int) Math.round(treasure.getCoins() * coinMultiplier(player)
+                    * Carnivals.multiplier(player, CarnivalPerk.DEADLY_GREED));
             player.addCoins(coins);
             player.sendMessage("<6><l>Wow!</l> <e>You dug out <6>" + String.format("%,d", coins) + " coins<e>!");
             return;
@@ -208,7 +211,8 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
     }
 
     private void summonDefenders(SkyBlockPlayer player, BurrowChain chain, GriffinBurrow burrow, Rarity griffin) {
-        double tracking = player.getStatistics().allStatistics().getOverall(ItemStatistic.TRACKING);
+        double tracking = player.getStatistics().allStatistics().getOverall(ItemStatistic.TRACKING)
+                + Carnivals.perkValue(player, CarnivalPerk.ELUSIVE_HUNTER);
         if (GriffinPet.isMythic(player)) tracking += chain.getExcavated();
 
         MythologicalCreature creature = MythologicalCreature.roll(griffin, tracking, ThreadLocalRandom.current());

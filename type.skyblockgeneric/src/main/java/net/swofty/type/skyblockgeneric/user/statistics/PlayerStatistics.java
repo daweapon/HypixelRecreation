@@ -60,6 +60,7 @@ import net.swofty.type.skyblockgeneric.skill.SkillCategory;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestProfile;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestStatistics;
+import net.swofty.type.skyblockgeneric.carnival.CarnivalStatistics;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -231,6 +232,7 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement
                 .getStatisticsUpTo(experience.getLevel().asInt()));
         spare = ItemStatistics.add(spare, FarmingContestStatistics.all(player));
+        spare = ItemStatistics.add(spare, CarnivalStatistics.all(player));
 
         return spare;
     }
@@ -248,6 +250,7 @@ public class PlayerStatistics {
     public ItemStatistics allStatistics(SkyBlockPlayer causer, LivingEntity enemy) {
         ItemStatistics total = ItemStatistics.builder().build();
         if (enemy instanceof BestiaryMob bestiaryMob) total = ItemStatistics.add(total, getBestiaryStatistics(causer, bestiaryMob));
+        total = ItemStatistics.add(total, CarnivalStatistics.against(player, enemy));
         total = ItemStatistics.add(total, allArmorStatistics(causer, enemy));
         total = ItemStatistics.add(total, equipmentStatistics(causer, enemy));
         total = ItemStatistics.add(total, mainHandStatistics(causer, enemy));

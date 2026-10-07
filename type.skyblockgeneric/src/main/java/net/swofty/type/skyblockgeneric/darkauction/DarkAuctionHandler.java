@@ -510,7 +510,7 @@ public class DarkAuctionHandler {
      * - 25M-50M: 95 + (price - 25M) / 1,000,000 (max 120 cumulative)
      * - >=50M: 120
      */
-    private static int calculateGreedBonus(long price) {
+    public static int calculateGreedBonus(long price) {
         if (price >= 50_000_000L) return 120;
         if (price >= 25_000_000L) {
             int bonus = 95 + (int) ((price - 25_000_000L) / 1_000_000L);

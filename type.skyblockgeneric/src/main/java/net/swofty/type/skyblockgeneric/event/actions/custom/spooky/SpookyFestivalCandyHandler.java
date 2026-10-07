@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.event.actions.custom.spooky;
 
+import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
+import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
@@ -47,11 +49,13 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
                 + ElectionPerks.bonus(SkyBlockMayor.Perk.SWEET_BENEVOLENCE) / 100D;
         int candies = (int) dropChance + (ThreadLocalRandom.current().nextDouble() < dropChance % 1D ? 1 : 0);
         if (candies == 0) return;
+        candies = Carnivals.boostedCount(player, CarnivalPerk.CANDY_SCAVENGER, candies);
 
         Integer mobLevel = event.getKilledMob().getLevel();
         double purpleChance = PURPLE_CONVERSION_CHANCE
                 + (mobLevel == null ? 0 : mobLevel * PURPLE_CHANCE_PER_MOB_LEVEL)
-                + (spookyPieces == 4 ? SPOOKY_ARMOR_FULL_SET_BONUS : 0);
+                + (spookyPieces == 4 ? SPOOKY_ARMOR_FULL_SET_BONUS : 0)
+                + Carnivals.perkValue(player, CarnivalPerk.PURPLE_VOGUE) / 100D;
         for (int i = 0; i < candies; i++) {
             giveCandy(player, ThreadLocalRandom.current().nextDouble() < purpleChance);
         }

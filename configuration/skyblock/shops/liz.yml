@@ -1,0 +1,24 @@
+# Liz's Stock Redemption in the Trade Center (wiki Liz/UI). Open only while Diaz's Stock Exchange
+# perk is active. Freshly-Minted Coins also draw from a SkyBlock-wide stock of 5,000 every 4 hours.
+title: Liz's Stock Redemption
+slots: DEFAULT
+entries:
+  - item: GOLDEN_BOUNTY
+    name: "<6>Golden Bounty"
+    material: player_head
+    cost: { items: { STOCK_OF_STONKS: 20 } }
+    unavailable: "<c>Applying a Golden Bounty to a weapon\n<c>isn't in this server yet!"
+  - item: AVARICIOUS_CHALICE
+    name: "<5>Avaricious Chalice"
+    material: player_head
+    stackable: true
+    cost: { items: { STOCK_OF_STONKS: 50 } }
+  - item: GOLDEN_FRAGMENT
+    name: "<5>Golden Fragment"
+    material: player_head
+    stackable: true
+    cost: { items: { STOCK_OF_STONKS: 3 } }
+  - item: FRESHLY_MINTED_COINS
+    name: "<9>Freshly-Minted Coins"
+    material: player_head
+    cost: { items: { STOCK_OF_STONKS: 1 } }

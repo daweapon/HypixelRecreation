@@ -6,9 +6,9 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.hub.util.UnreleasedContent;
-import net.swofty.type.skyblockgeneric.elections.ElectionManager;
-import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.hub.gui.tradecenter.GUIStonksAuction;
+import net.swofty.type.skyblockgeneric.stonks.StonksAuctions;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCRichard extends HypixelNPC {
 
@@ -45,12 +45,16 @@ public class NPCRichard extends HypixelNPC {
     public void onClick(NPCInteractEvent event) {
         HypixelPlayer player = event.player();
         if (isInDialogue(player)) return;
-        if (ElectionManager.getCurrentMayor() != SkyBlockMayor.DIAZ) {
+        if (!StonksAuctions.isRunning()) {
+            if (StonksAuctions.profile((SkyBlockPlayer) player).claimableStocks() > 0) {
+                player.openView(new GUIStonksAuction());
+                return;
+            }
             setDialogue(player, "no-diaz");
             return;
         }
         FirstInteraction.then(this, player, DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_RICHARD, "diaz",
-            () -> player.sendMessage(UnreleasedContent.STONKS_AUCTION.message()));
+            () -> player.openView(new GUIStonksAuction()));
     }
 
     @Override

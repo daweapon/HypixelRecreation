@@ -164,15 +164,21 @@ items:
   # models weren't sourced (same missing-asset situation as WEREWOLF_SKIN above pre-ITEM_MODEL) -
   # these use the Green Candy placeholder skull texture until real assets are found.
   - id: CARNIVAL_TICKET
-    material: paper
+    material: name_tag
     name: "Carnival Ticket"
     rarity: UNCOMMON
     lore:
-      - "\xA77Awarded for reaching the"
-      - "\xA77\xA76Wood \xA77tier on the Fear"
-      - "\xA77Mongerer's candy leaderboard."
+      - "\xA77Used to play games at \xA7eThe Carnival"
+      - "\xA77when \xA7dFoxy \xA77is elected!"
+      - ""
+      - "\xA78\xA7oIt takes a while for Foxy to prepare"
+      - "\xA78\xA7oher Carnivals, but she's always"
+      - "\xA78\xA7ohanding out Tickets to ramp up the"
+      - "\xA78\xA7ohype."
     default_statistics: { }
     components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
       - id: SELLABLE
         value: 2500.0
   - id: WITCH_MASK

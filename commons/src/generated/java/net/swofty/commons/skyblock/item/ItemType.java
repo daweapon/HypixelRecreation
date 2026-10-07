@@ -140,6 +140,8 @@ public enum ItemType {
 
   ARCHITECTS_FIRST_DRAFT(Material.PAPER, Rarity.COMMON),
 
+  ARMADILLO_MASK(Material.PLAYER_HEAD, Rarity.RARE),
+
   ARTIFACT_OF_COINS(Material.PLAYER_HEAD, Rarity.RARE),
 
   ARTIFACT_OF_CONTROL(Material.PLAYER_HEAD, Rarity.LEGENDARY),
@@ -181,6 +183,8 @@ public enum ItemType {
   AUTO_RECOMBOBULATOR(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   AUTO_SMELTER(Material.FURNACE, Rarity.COMMON),
+
+  AVARICIOUS_CHALICE(Material.PLAYER_HEAD, Rarity.EPIC),
 
   AWKWARD_POTION(Material.POTION, Rarity.COMMON),
 
@@ -275,6 +279,8 @@ public enum ItemType {
   BEEF(Material.BEEF, Rarity.COMMON),
 
   BEETROOT(Material.BEETROOT, Rarity.COMMON),
+
+  BEE_MASK(Material.PLAYER_HEAD, Rarity.EPIC),
 
   BEE_MINION_SKIN(Material.PLAYER_HEAD, Rarity.COMMON),
 
@@ -656,7 +662,15 @@ public enum ItemType {
 
   CAN_OF_WORMS(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
-  CARNIVAL_TICKET(Material.PAPER, Rarity.UNCOMMON),
+  CARNIVAL_DART_TUBE(Material.STICK, Rarity.UNCOMMON),
+
+  CARNIVAL_MASK_BAG(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  CARNIVAL_ROD(Material.FISHING_ROD, Rarity.UNCOMMON),
+
+  CARNIVAL_SHOVEL(Material.IRON_SHOVEL, Rarity.UNCOMMON),
+
+  CARNIVAL_TICKET(Material.NAME_TAG, Rarity.UNCOMMON),
 
   CARROT(Material.CARROT, Rarity.COMMON),
 
@@ -1774,9 +1788,13 @@ public enum ItemType {
 
   FOUL_FLESH(Material.CHARCOAL, Rarity.RARE),
 
+  FRESHLY_MINTED_COINS(Material.PLAYER_HEAD, Rarity.RARE),
+
   FRIED_FEATHER(Material.FEATHER, Rarity.UNCOMMON),
 
   FRIED_FROZEN_CHICKEN(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  FROG_MASK(Material.PLAYER_HEAD, Rarity.EPIC),
 
   FROZEN_BAIT(Material.PLAYER_HEAD, Rarity.RARE),
 
@@ -1880,9 +1898,13 @@ public enum ItemType {
 
   GOLDEN_BOOTS(Material.GOLDEN_BOOTS, Rarity.COMMON),
 
+  GOLDEN_BOUNTY(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   GOLDEN_CARROT(Material.GOLDEN_CARROT, Rarity.COMMON),
 
   GOLDEN_CHESTPLATE(Material.GOLDEN_CHESTPLATE, Rarity.COMMON),
+
+  GOLDEN_FRAGMENT(Material.PLAYER_HEAD, Rarity.EPIC),
 
   GOLDEN_HELMET(Material.GOLDEN_HELMET, Rarity.COMMON),
 
@@ -3002,6 +3024,8 @@ public enum ItemType {
 
   PARKOUR_TIMES(Material.IRON_BLOCK, Rarity.COMMON),
 
+  PARROT_MASK(Material.PLAYER_HEAD, Rarity.RARE),
+
   PEONY(Material.PEONY, Rarity.COMMON),
 
   PERFECT_AMBER_GEM(Material.PLAYER_HEAD, Rarity.LEGENDARY),
@@ -3519,6 +3543,8 @@ public enum ItemType {
   RUSTY_COIN(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   RUSTY_SHIP_ENGINE(Material.PLAYER_HEAD, Rarity.SPECIAL),
+
+  SALMON_MASK(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   SAND(Material.SAND, Rarity.COMMON),
 
@@ -4108,6 +4134,8 @@ public enum ItemType {
 
   SNOWBALL(Material.SNOWBALL, Rarity.COMMON),
 
+  SNOWMAN_MASK(Material.PLAYER_HEAD, Rarity.RARE),
+
   SNOW_BLOCK(Material.SNOW_BLOCK, Rarity.COMMON),
 
   SNOW_CANNON(Material.PLAYER_HEAD, Rarity.RARE),
@@ -4387,6 +4415,8 @@ public enum ItemType {
   STINGER_BOW(Material.BOW, Rarity.RARE),
 
   STINGY_SINKER(Material.PLAYER_HEAD, Rarity.RARE),
+
+  STOCK_OF_STONKS(Material.PAPER, Rarity.EPIC),
 
   STONE(Material.STONE, Rarity.COMMON),
 
@@ -4897,6 +4927,8 @@ public enum ItemType {
   ZOMBIE_HEART(Material.PLAYER_HEAD, Rarity.RARE),
 
   ZOMBIE_KNIGHT_SWORD(Material.IRON_SWORD, Rarity.EPIC),
+
+  ZOMBIE_MASK(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   ZOMBIE_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
