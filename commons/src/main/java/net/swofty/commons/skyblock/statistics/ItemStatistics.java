@@ -227,6 +227,17 @@ public final class ItemStatistics {
         return create(statisticsBase, statisticsAdditive, multiplicative);
     }
 
+    /** A copy in which {@code stat} totals exactly {@code value}, ignoring every modifier on it. */
+    public ItemStatistics withExactValue(ItemStatistic stat, double value) {
+        double[] base = expandedCopy(statisticsBase);
+        double[] additive = expandedCopy(statisticsAdditive);
+        double[] multiplicative = expandedCopy(statisticsMultiplicative);
+        base[stat.ordinal()] = value;
+        additive[stat.ordinal()] = 0;
+        multiplicative[stat.ordinal()] = 0;
+        return create(base, additive, multiplicative);
+    }
+
     public Map<ItemStatistic, Double> getOverall() {
         Map<ItemStatistic, Double> result = new EnumMap<>(ItemStatistic.class);
         for (ItemStatistic stat : STATISTICS) result.put(stat, getOverall(stat));

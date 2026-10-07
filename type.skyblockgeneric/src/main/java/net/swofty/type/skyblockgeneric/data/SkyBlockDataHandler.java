@@ -612,6 +612,9 @@ public class SkyBlockDataHandler extends DataHandler {
         BITS_LAST_FARMED("bits_last_farmed", false, false, false,
                 DatapointLong.class, new DatapointLong("bits_last_farmed", 0L)),
 
+        STAT_OVERRIDES("stat_overrides", false, false, false,
+                DatapointString.class, new DatapointString("stat_overrides", "")),
+
         GEMS("gems", false, false, false,
                 DatapointInteger.class, new DatapointInteger("gems", 0)),
 

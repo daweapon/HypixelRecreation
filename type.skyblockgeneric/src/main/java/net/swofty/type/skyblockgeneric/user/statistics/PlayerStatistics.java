@@ -280,7 +280,7 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, MayorPerkStatistics.flatBonuses(perks, !HypixelConst.isIslandServer()));
         total = MayorPerkStatistics.applyScaling(perks, total, enemy instanceof SlayerBossMob);
 
-        return total;
+        return StatOverrides.apply(player, total);
     }
 
     public List<StatisticSource> statisticSources() {
