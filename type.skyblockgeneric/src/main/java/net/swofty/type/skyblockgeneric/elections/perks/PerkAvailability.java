@@ -22,8 +22,6 @@ public final class PerkAvailability {
                     "forge duration * (1 - ElectionPerks.bonus(MOLTEN_FORGE) / 100)"),
             missing(Perk.SHARING_IS_CARING, "Pet Exp Share isn't in this server yet.",
                     "exp share slots += 2 and rate += ElectionPerks.bonus(SHARING_IS_CARING) when isActive"),
-            missing(Perk.VOLUME_TRADING, "Shen's Auction isn't in this server yet.",
-                    "Shen's Auction quantity * ElectionPerks.factor(VOLUME_TRADING)"),
             missing(Perk.SHOPPING_SPREE, "NPC shops have no daily buy limits in this server yet.",
                     "daily NPC buy limit * ElectionPerks.factor(SHOPPING_SPREE)"),
             missing(Perk.PEST_ERADICATOR, GARDEN,

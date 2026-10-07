@@ -53,15 +53,15 @@ public final class GUISprayOrientation implements StatefulView<GUISprayOrientati
         spray.lore().forEach(line -> inkLore.add(Text.of("<7>{}", line)));
         inkLore.add(Text.empty());
         inkLore.add(Text.of("<7>Required Ink"));
-        spray.ink().forEach((dye, percent) -> inkLore.add(Text.of("  <7>{}: {}{}%", dye.getDisplayName(),
-                can.inkOf(dye) >= percent ? "<a>" : "<c>", percent)));
+        spray.ink().forEach((dye, percent) -> inkLore.add(dye.loreLine(percent, can.inkOf(dye) >= percent)));
         layout.slot(CENTRE_SLOT, ItemStacks.item(Material.PAINTING, 1, Text.of("<a>{}", spray.name()), inkLore));
 
         for (SprayDirection direction : SprayDirection.offeredBy(spray)) {
             boolean selected = spray.id().equals(can.getSelectedSpray()) && can.getDirection() == direction;
             layout.slot(SLOTS.get(direction), (s, c) -> {
-                var item = ItemStacks.item(Material.ARROW, "<a>{}\n\n<e>Right-Click to preview!\n\n{}",
-                        direction.getDisplayName(), selected ? "<a>Selected!" : "<e>Click to select!");
+                var item = ItemStacks.item(Material.ARROW, selected
+                        ? "<a>{}\n\n<e>Right-Click to preview!\n\n<a>Selected!"
+                        : "<a>{}\n\n<e>Right-Click to preview!\n\n<e>Click to select!", direction.getDisplayName());
                 return selected ? ItemStacks.enchanted(item) : item;
             }, (click, c) -> {
                 if (click.click() instanceof Click.Right) {

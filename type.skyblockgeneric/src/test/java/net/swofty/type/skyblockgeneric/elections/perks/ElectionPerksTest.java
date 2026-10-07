@@ -29,7 +29,7 @@ class ElectionPerksTest {
     @Test
     void perksLeftToOtherWorkstreamsStayAvailable() {
         for (Perk perk : new Perk[]{Perk.MYTHOLOGICAL_RITUAL, Perk.CHIVALROUS_CARNIVAL, Perk.FISHING_FESTIVAL, Perk.GOATED,
-                Perk.STOCK_EXCHANGE}) {
+                Perk.STOCK_EXCHANGE, Perk.VOLUME_TRADING}) {
             assertTrue(PerkAvailability.isFullyAvailable(perk), perk.name());
         }
     }

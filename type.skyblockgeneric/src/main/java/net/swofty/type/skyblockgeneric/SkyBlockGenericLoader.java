@@ -37,6 +37,7 @@ import net.swofty.type.generic.entity.hologram.ServerHolograms;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.stonks.StonksAuctions;
+import net.swofty.type.skyblockgeneric.shen.ShenAuctions;
 import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.generic.packet.HypixelPacketClientListener;
 import net.swofty.type.generic.packet.HypixelPacketServerListener;
@@ -375,6 +376,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         SkyBlockScoreboard.start();
         FarmingContests.start();
         StonksAuctions.start();
+        ShenAuctions.start();
         StashReminder.start(MinecraftServer.getSchedulerManager());
         PlayerHolograms.updateAll(MinecraftServer.getSchedulerManager());
         CoopContributionTracker.startFlushLoop(MinecraftServer.getSchedulerManager());

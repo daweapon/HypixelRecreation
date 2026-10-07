@@ -716,6 +716,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         STONKS_AUCTIONS("stonks_auctions", false, false, false,
                 DatapointStonksAuctions.class, new DatapointStonksAuctions("stonks_auctions")),
+
+        SHEN_AUCTIONS("shen_auctions", false, false, false,
+                DatapointShenAuctions.class, new DatapointShenAuctions("shen_auctions")),
         ;
 
         @Getter

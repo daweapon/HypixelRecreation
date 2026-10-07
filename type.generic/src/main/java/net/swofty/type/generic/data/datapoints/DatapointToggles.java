@@ -119,6 +119,7 @@ public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
             HAS_SPOKEN_TO_AMELIA(false),
             HAS_SPOKEN_TO_CHRISTOPHER(false),
             HAS_BEEN_REFUSED_BY_DAMIA(false),
+            HAS_SPOKEN_TO_DAMIA(false),
             HAS_SPOKEN_TO_FANN(false),
             HAS_SPOKEN_TO_GWYNNIE(false),
             HAS_CLAIMED_ANGLER_ANGUS_BAIT(false),

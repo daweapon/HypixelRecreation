@@ -22,7 +22,7 @@ public enum MuseumMilestoneReward {
     LUXURIOUS_BANK_UPGRADE(14, "<3>Luxurious Bank Upgrade", null, null),
     PALATIAL_BANK_UPGRADE(18, "<4>Palatial Bank Upgrade", null, null),
     EON_THE_FISH(20, "<c>Eon the Fish", "EON_THE_FISH", null),
-    SHENS_SPECIAL(20, "<b>Shen's Special", null, "Shen's Special isn't in this server yet."),
+    SHENS_SPECIAL(20, "<b>Shen's Special", null, null),
     GOLDEN_COLLECTING_TOP_HAT_EMBLEM(24, "<a>Golden Collecting Top Hat Emblem <7>ᱪ", null, null);
 
     private final int milestone;

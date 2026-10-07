@@ -94,8 +94,7 @@ public final class GUISprayCan implements StatefulView<GUISprayCan.State> {
         if (!spray.hasDirections() && !spray.ink().isEmpty()) {
             lore.add(Text.empty());
             lore.add(Text.of("<7>Required Ink"));
-            spray.ink().forEach((dye, percent) -> lore.add(Text.of("  <7>{}: {}{}%", dye.getDisplayName(),
-                    can.inkOf(dye) >= percent ? "<a>" : "<c>", percent)));
+            spray.ink().forEach((dye, percent) -> lore.add(dye.loreLine(percent, can.inkOf(dye) >= percent)));
         }
         lore.add(Text.empty());
         if (!spray.isUnlocked()) {
@@ -163,7 +162,7 @@ public final class GUISprayCan implements StatefulView<GUISprayCan.State> {
         lore.add(Text.of("<7>Ink Storage"));
         for (SprayInk dye : SprayInk.values()) {
             int percent = can.inkOf(dye);
-            lore.add(Text.of("  <7>{}: {}{}%", dye.getDisplayName(), percent > 0 ? "<a>" : "<c>", percent));
+            lore.add(dye.loreLine(percent, percent > 0));
         }
         return ItemStacks.item(Material.BONE_MEAL, 1, Text.of("<e>Your Ink Storage"), lore);
     }

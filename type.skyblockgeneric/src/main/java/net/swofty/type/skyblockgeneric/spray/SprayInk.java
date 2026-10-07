@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.spray;
 import lombok.Getter;
 import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.text.Text;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -39,6 +40,11 @@ public enum SprayInk {
         this.displayName = displayName;
         this.icon = icon;
         this.items = List.of(items);
+    }
+
+    /** One "Dye: N%" lore line, green when there is enough of it and red when there isn't. */
+    public Text loreLine(int percent, boolean enough) {
+        return Text.of(enough ? "  <7>{}: <a>{}%" : "  <7>{}: <c>{}%", displayName, percent);
     }
 
     public static Optional<SprayInk> fromItem(@Nullable ItemType type) {

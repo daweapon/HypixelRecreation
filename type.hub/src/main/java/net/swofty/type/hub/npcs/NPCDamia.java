@@ -8,14 +8,13 @@ import net.swofty.type.generic.entity.npc.NPCOption;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.skyblockgeneric.bank.PersonalBankService;
+import net.swofty.type.hub.gui.shen.GUIShenAuction;
+import net.swofty.type.skyblockgeneric.shen.ShenAuctions;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
 public class NPCDamia extends HypixelNPC {
-    private static final int SHEN_MUSEUM_MILESTONE = 10;
-
     public NPCDamia() {
         super(new HumanConfiguration() {
             @Override
@@ -50,7 +49,11 @@ public class NPCDamia extends HypixelNPC {
         SkyBlockPlayer player = (SkyBlockPlayer) event.player();
         if (isInDialogue(player)) return;
 
-        boolean popular = PersonalBankService.data(player).getMuseumMilestone() >= SHEN_MUSEUM_MILESTONE;
+        boolean popular = ShenAuctions.museumMilestone(player) >= ShenAuctions.AUCTION_MILESTONE;
+        if (popular && player.getToggles().get(ToggleType.HAS_SPOKEN_TO_DAMIA)) {
+            player.openView(new GUIShenAuction());
+            return;
+        }
         if (!popular && player.getToggles().get(ToggleType.HAS_BEEN_REFUSED_BY_DAMIA)) {
             setDialogue(player, "not-popular");
             return;
@@ -60,7 +63,11 @@ public class NPCDamia extends HypixelNPC {
                 say(player, "who-is-shen", "Sure...", () ->
                         say(player, "sure", "What else?", () -> {
                             if (popular) {
-                                say(player, "what-else", "Is there anything else?", () -> setDialogue(player, "anything-else"));
+                                say(player, "what-else", "Is there anything else?", () ->
+                                        setDialogue(player, "anything-else").thenRun(() -> {
+                                            player.getToggles().set(ToggleType.HAS_SPOKEN_TO_DAMIA, true);
+                                            player.openView(new GUIShenAuction());
+                                        }));
                                 return;
                             }
                             say(player, "what-else-locked", "But?", () ->
