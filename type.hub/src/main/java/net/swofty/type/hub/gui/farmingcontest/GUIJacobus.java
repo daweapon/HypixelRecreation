@@ -23,7 +23,6 @@ import java.util.List;
 // Jacobus' Accessory Bag Upgrades menu, from the wiki's Jacobus/UI subpage and upgrade table.
 public class GUIJacobus extends StatelessView {
     private static final int REGISTER_AT_UPGRADES = 5;
-    private static final int XP_PER_UPGRADE = 2;
     private static final String REGISTER_TEXTURE = "3b648b9a44e280bcdf25f4a66a97bd5c33542e5e82415e15b475c6b999b8d635";
     private static final String BAG_TEXTURE = "396ce13ff6155fdf3235d8d22174c5de4bf5512f1adeda1afa3fc28180f3f7";
 
@@ -101,7 +100,7 @@ public class GUIJacobus extends StatelessView {
         }
         player.removeCoins(cost);
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.JACOBUS_UPGRADES, DatapointInteger.class).setValue(upgrades + 1);
-        player.getSkyBlockExperience().addSourceXP(SkyBlockXPSource.ACCESSORY_BAG_UPGRADES, XP_PER_UPGRADE);
+        player.getSkyBlockExperience().addSourceXP(SkyBlockXPSource.ACCESSORY_BAG_UPGRADES, GUIAccessoryBag.SKYBLOCK_XP_PER_JACOBUS_UPGRADE);
         player.sendMessage("<a>You upgraded your Accessory Bag by <6>+" + GUIAccessoryBag.SLOTS_PER_JACOBUS_UPGRADE + " Slots<a>!");
         if (upgrades + 1 == REGISTER_AT_UPGRADES) {
             player.addAndUpdateItem(new SkyBlockItem(ItemType.JACOBUS_REGISTER));

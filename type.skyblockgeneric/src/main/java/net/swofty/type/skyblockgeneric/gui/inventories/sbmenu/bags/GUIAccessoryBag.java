@@ -43,6 +43,7 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
 
     public static final int SLOTS_PER_JACOBUS_UPGRADE = 2;
     public static final int MAX_JACOBUS_UPGRADES = 99;
+    public static final int SKYBLOCK_XP_PER_JACOBUS_UPGRADE = 2;
 
     @Override
     public ViewConfiguration<AccessoryBagState> configuration() {

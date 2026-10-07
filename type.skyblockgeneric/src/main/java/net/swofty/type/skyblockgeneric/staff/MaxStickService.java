@@ -308,6 +308,8 @@ public final class MaxStickService {
     private static void maxAccessoryBagUpgrades(SkyBlockPlayer player) {
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.JACOBUS_UPGRADES, DatapointInteger.class)
                 .setValue(GUIAccessoryBag.MAX_JACOBUS_UPGRADES);
+        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.ACCESSORY_BAG_UPGRADES,
+                GUIAccessoryBag.MAX_JACOBUS_UPGRADES * GUIAccessoryBag.SKYBLOCK_XP_PER_JACOBUS_UPGRADE);
     }
 
     private static void maxPersonalBank(SkyBlockPlayer player) {
