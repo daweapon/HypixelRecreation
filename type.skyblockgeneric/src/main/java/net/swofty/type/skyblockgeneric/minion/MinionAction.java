@@ -6,6 +6,8 @@ import lombok.Setter;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.crafting.FurnaceRecipeRegistry;
 import net.swofty.type.skyblockgeneric.item.components.MinionShippingComponent;
@@ -35,8 +37,9 @@ public abstract class MinionAction {
                                              List<SkyBlockItem> items) {
         MinionExtensionData extensionData = islandMinion.getExtensionData();
         SkyBlockItem fuel = extensionData.getFuel();
-        double outputMultiplier = fuel == null ? 1.0
+        double fuelMultiplier = fuel == null ? 1.0
                 : fuel.getComponent(MinionFuelComponent.class).getOutputMultiplier();
+        double outputMultiplier = fuelMultiplier * ElectionPerks.factor(SkyBlockMayor.Perk.TURBO_MINIONS);
 
         for (SkyBlockItem item : items) {
             if (extensionData.hasMinionUpgrade(ItemType.AUTO_SMELTER)) {

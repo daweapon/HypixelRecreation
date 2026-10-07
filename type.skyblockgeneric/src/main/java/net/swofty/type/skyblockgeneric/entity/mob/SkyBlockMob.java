@@ -35,6 +35,8 @@ import net.swofty.type.generic.entity.drop.ItemDrops;
 import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.generic.utility.MathUtility;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.entity.DroppedItemEntityImpl;
 import net.swofty.type.skyblockgeneric.entity.TextDisplayEntity;
 import net.swofty.type.skyblockgeneric.entity.mob.impl.MobPlayerSkin;
@@ -86,18 +88,19 @@ public abstract class SkyBlockMob extends EntityCreature {
     private void init() {
         this.setCustomNameVisible(true);
 
-        this.getAttribute(Attribute.MAX_HEALTH)
-                .setBaseValue(getBaseStatistics().getOverall(ItemStatistic.HEALTH).floatValue());
+        float maxHealth = (float) (getBaseStatistics().getOverall(ItemStatistic.HEALTH)
+                * ElectionPerks.factor(SkyBlockMayor.Perk.DOUBLE_MOBS_HP));
+        this.getAttribute(Attribute.MAX_HEALTH).setBaseValue(maxHealth);
         this.getAttribute(Attribute.MOVEMENT_SPEED)
                 .setBaseValue((float) ((getBaseStatistics().getOverall(ItemStatistic.SPEED).floatValue() / 1000) * 2.5));
-        this.setHealth(getBaseStatistics().getOverall(ItemStatistic.HEALTH).floatValue());
+        this.setHealth(maxHealth);
 
         this.customName = Text.of("<8>[<7>Lv{}<8>] <c>{}<c> {} <a>{}<f>/<a>{}",
                 getLevel(),
                 Text.parse(getMobTypes().getFirst().getColor() + getMobTypes().getFirst().getSymbol()),
                 getDisplayName(),
                 Math.round(getHealth()),
-                Math.round(getBaseStatistics().getOverall(ItemStatistic.HEALTH).floatValue())
+                Math.round(maxHealth)
         );
         this.set(DataComponents.CUSTOM_NAME, customName.asComponent());
         nameDisplayEntity = new TextDisplayEntity(customName, meta -> meta.setTranslation(new Pos(0, getNameDisplayHeightOffset(), 0)));

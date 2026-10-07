@@ -8,6 +8,8 @@ import net.minestom.server.instance.SharedInstance;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.UnderstandableSkyBlockItem;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeMinionData;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.entity.MinionEntityImpl;
 import net.swofty.type.skyblockgeneric.item.ItemQuantifiable;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -137,6 +139,10 @@ public class IslandMinionData {
                 if (item != null && item.hasComponent(MinionUpgradeComponent.class)) {
                     percentageSpeedIncrease += (int) item.getComponent(MinionUpgradeComponent.class).getSpeedIncrease();
                 }
+            }
+
+            if (minion.isMining()) {
+                percentageSpeedIncrease += (int) ElectionPerks.bonus(SkyBlockMayor.Perk.PROSPECTION);
             }
 
             return percentageSpeedIncrease;

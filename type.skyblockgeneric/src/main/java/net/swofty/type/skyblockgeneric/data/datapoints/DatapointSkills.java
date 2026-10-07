@@ -9,6 +9,8 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.skyblockgeneric.collection.CustomCollectionAward;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.event.custom.SkillUpdateEvent;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.skill.SkillCategory;
@@ -165,7 +167,7 @@ public class DatapointSkills extends SkyBlockDatapoint<DatapointSkills.PlayerSki
          */
         public void increase(SkyBlockPlayer player, SkillCategories category, Double value) {
             double wisdom = player.getStatistics().allStatistics().getOverall(category.getWisdomStatistic());
-            double modifiedValue = value * (1D + wisdom / 100D);
+            double modifiedValue = value * (1D + wisdom / 100D) * ElectionPerks.multiplier(SkyBlockMayor.Perk.MOAR_SKILLZ);
             setRaw(player, category, getRaw(category) + modifiedValue);
         }
 

@@ -11,6 +11,8 @@ import net.swofty.type.skyblockgeneric.minion.minions.foraging.*;
 import net.swofty.type.skyblockgeneric.minion.minions.mining.*;
 
 import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.Set;
 
 // Registry mapping every minion type to its implementation class and crafted ItemType, with lookup/instantiation helpers.
 public enum MinionRegistry {
@@ -72,6 +74,10 @@ public enum MinionRegistry {
     ZOMBIE(MinionZombie.class, ItemType.ZOMBIE_MINION),
     ;
 
+    private static final Set<MinionRegistry> MINING = EnumSet.of(
+            COBBLESTONE, COAL, SNOW, DIAMOND, GOLD, LAPIS, IRON, ENDSTONE, REDSTONE, EMERALD,
+            ICE, QUARTZ, OBSIDIAN, GRAVEL, SAND, GLOWSTONE, HARD_STONE, MITHRIL);
+
     private final Class<? extends SkyBlockMinion> minionClass;
     @Getter
     private final ItemType itemType;
@@ -90,6 +96,10 @@ public enum MinionRegistry {
         } catch (Exception e) {
             throw new RuntimeException("Failed to create minion instance", e);
         }
+    }
+
+    public boolean isMining() {
+        return MINING.contains(this);
     }
 
     public String getDisplay() {
