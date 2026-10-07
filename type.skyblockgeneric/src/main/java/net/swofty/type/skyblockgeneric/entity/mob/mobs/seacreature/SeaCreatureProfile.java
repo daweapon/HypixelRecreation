@@ -7,6 +7,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Immutable, declarative description of a sea creature. The concrete mob
@@ -27,7 +28,8 @@ public record SeaCreatureProfile(
         int xpOrbs,
         List<MobType> mobTypes,
         SeaCreatureBehaviour behaviour,
-        SkyBlockLootTable lootTable
+        SkyBlockLootTable lootTable,
+        @Nullable String catchMessage
 ) {
 
     public ItemStatistics asBaseStatistics() {
@@ -60,6 +62,7 @@ public record SeaCreatureProfile(
         private List<MobType> mobTypes = List.of(MobType.AQUATIC);
         private SeaCreatureBehaviour behaviour = SeaCreatureBehaviour.passive(8);
         private SkyBlockLootTable lootTable = null;
+        private String catchMessage = null;
 
         private Builder(String id) {
             this.id = id;
@@ -78,12 +81,13 @@ public record SeaCreatureProfile(
         public Builder mobTypes(MobType... mobTypes) { this.mobTypes = List.of(mobTypes); return this; }
         public Builder behaviour(SeaCreatureBehaviour behaviour) { this.behaviour = behaviour; return this; }
         public Builder lootTable(SkyBlockLootTable lootTable) { this.lootTable = lootTable; return this; }
+        public Builder catchMessage(String catchMessage) { this.catchMessage = catchMessage; return this; }
 
         public SeaCreatureProfile build() {
             return new SeaCreatureProfile(
                     id, displayName, level, entityType,
                     health, damage, speed, damageCooldownMs,
-                    fishingXpReward, xpOrbs, mobTypes, behaviour, lootTable
+                    fishingXpReward, xpOrbs, mobTypes, behaviour, lootTable, catchMessage
             );
         }
     }

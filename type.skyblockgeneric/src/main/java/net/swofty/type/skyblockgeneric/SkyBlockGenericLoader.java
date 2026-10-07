@@ -36,6 +36,7 @@ import net.swofty.type.generic.entity.hologram.PlayerHolograms;
 import net.swofty.type.generic.entity.hologram.ServerHolograms;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
+import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestivalAnnouncer;
 import net.swofty.type.skyblockgeneric.stonks.StonksAuctions;
 import net.swofty.type.skyblockgeneric.shen.ShenAuctions;
 import net.swofty.type.generic.event.HypixelEventHandler;
@@ -375,6 +376,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         // Start repeaters
         SkyBlockScoreboard.start();
         FarmingContests.start();
+        FishingFestivalAnnouncer.start(MinecraftServer.getSchedulerManager());
         StonksAuctions.start();
         ShenAuctions.start();
         StashReminder.start(MinecraftServer.getSchedulerManager());

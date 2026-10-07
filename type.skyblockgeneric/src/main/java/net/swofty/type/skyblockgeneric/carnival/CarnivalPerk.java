@@ -16,16 +16,16 @@ import java.util.List;
 public enum CarnivalPerk {
     FISHING_PRODIGY(CarnivalPerkEvent.FISHING_FESTIVAL, "Fishing Prodigy", Material.WRITABLE_BOOK, Tiers.FIVE,
             new double[]{2, 4, 6, 8, 10},
-            "<7>Gain <3>+%s☯ Fishing Wisdom <7>during the\n<b>Fishing Festival<7>.", Reasons.FISHING_FESTIVAL),
+            "<7>Gain <3>+%s☯ Fishing Wisdom <7>during the\n<b>Fishing Festival<7>.", null),
     SHARK_SONAR(CarnivalPerkEvent.FISHING_FESTIVAL, "Shark Sonar", Material.TROPICAL_FISH, Tiers.FIVE,
             new double[]{1, 2, 3, 4, 5},
-            "<7>Increases your chance to catch\n<b>Sharks <7>by <a>+%s% <7>during the <b>Fishing\n<b>Festival<7>.", Reasons.FISHING_FESTIVAL),
+            "<7>Increases your chance to catch\n<b>Sharks <7>by <a>+%s% <7>during the <b>Fishing\n<b>Festival<7>.", null),
     DENTURE_COLLECTOR(CarnivalPerkEvent.FISHING_FESTIVAL, "Denture Collector", Material.GHAST_TEAR, Tiers.THREE,
             new double[]{10, 20, 30},
-            "<7>Increase your chance of dropping\n<6>Shark Teeth <7>by <a>+%s% <7>during the\n<b>Fishing Festival<7>.", Reasons.FISHING_FESTIVAL),
+            "<7>Increase your chance of dropping\n<6>Shark Teeth <7>by <a>+%s% <7>during the\n<b>Fishing Festival<7>.", null),
     ELASMOBRANCHII_AFFINITY(CarnivalPerkEvent.FISHING_FESTIVAL, "Elasmobranchii Affinity", Material.PRISMARINE_SHARD, Tiers.TWO,
             new double[]{50, 100},
-            "<7>Grants a <a>+%s% <7>chance for <b>Sharks <7>to\n<7>drop <a>+1 <9>Shark Fin <7>during the <b>Fishing\n<b>Festival<7>.", Reasons.FISHING_FESTIVAL),
+            "<7>Grants a <a>+%s% <7>chance for <b>Sharks <7>to\n<7>drop <a>+1 <9>Shark Fin <7>during the <b>Fishing\n<b>Festival<7>.", null),
 
     REFINED_MIND(CarnivalPerkEvent.MINING_FIESTA, "Refined Mind", Material.LIGHT_BLUE_DYE, Tiers.FIVE,
             new double[]{2, 4, 6, 8, 10},
@@ -166,7 +166,6 @@ public enum CarnivalPerk {
     }
 
     private static final class Reasons {
-        static final String FISHING_FESTIVAL = "The Fishing Festival isn't in this server yet.";
         static final String MINING_FIESTA = "The Mining Fiesta isn't in this server yet.";
         static final String HARVEST_FEAST = "The Harvest Feast isn't in this server yet.";
     }

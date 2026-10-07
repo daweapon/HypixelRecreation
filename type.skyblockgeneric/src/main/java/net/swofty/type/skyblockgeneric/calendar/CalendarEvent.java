@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContest;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
+import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestival;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
@@ -53,7 +54,8 @@ public record CalendarEvent(
     // Foxy's Extra Event schedules a second Spooky Festival on Late Summer 22nd (wiki: Spooky
     // Festival, "Foxy's Festival Schedule").
     private static final Map<String, PerkOccurrence> PERK_OCCURRENCES = Map.of(
-        "spooky_festival", new PerkOccurrence(SkyBlockMayor.Perk.EXTRA_EVENT, List.of(5 * MONTH + 21 * DAY))
+        "spooky_festival", new PerkOccurrence(SkyBlockMayor.Perk.EXTRA_EVENT, List.of(5 * MONTH + 21 * DAY)),
+        "fishing_festival", new PerkOccurrence(SkyBlockMayor.Perk.FISHING_FESTIVAL, FishingFestival.startTimesInYear())
     );
 
     public static CalendarEvent NEW_YEAR = new CalendarEvent(
@@ -285,6 +287,22 @@ public record CalendarEvent(
         (_, _) -> FarmingContests.announceStart()
     );
 
+    // Wiki: Fishing Festival - Marina's perk runs it on the first 3 days of every month.
+    public static CalendarEvent FISHING_FESTIVAL = new CalendarEvent(
+        "fishing_festival",
+        ItemStack.of(Material.FISHING_ROD),
+        year -> Text.of("<b>Fishing Festival"),
+        List.of(
+            Text.of("<7>Fish up <b>Sharks <7>for Shark Fins"),
+            Text.of("<7>and Shark Teeth while Mayor"),
+            Text.of("<7>Marina's festival runs!")
+        ),
+        List.of(),
+        Duration.ofMillis(FishingFestival.DURATION_TICKS * 50L),
+        false,
+        (_, _) -> FishingFestival.announceStart()
+    );
+
     static {
         registerEvent(NEW_YEAR);
         registerEvent(DARK_AUCTION);
@@ -295,6 +313,7 @@ public record CalendarEvent(
         registerEvent(SPOOKY_FESTIVAL);
         registerEvent(SEASON_OF_JERRY);
         registerEvent(FARMING_CONTEST);
+        registerEvent(FISHING_FESTIVAL);
     }
 
     @Override

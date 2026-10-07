@@ -131,6 +131,19 @@ items:
         tag_bonuses:
           SHARK: 20
         texture: edff904124efe486b3a54261dbb8072b0a4e11615ad8d7394d814e0e8c8ef9eb
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - AA
+            ingredients:
+              A:
+                type: SHARK_FIN
+                amount: 1
+            result:
+              type: SHARK_BAIT
+              amount: 16
       - id: SELLABLE
         value: 8.0
       - id: ITEM_MODEL

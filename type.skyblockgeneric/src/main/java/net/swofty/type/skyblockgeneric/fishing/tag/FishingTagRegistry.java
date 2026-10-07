@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
+import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestival;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
@@ -43,7 +44,8 @@ public final class FishingTagRegistry {
                 RarityTag.RARE,
                 RarityTag.EPIC,
                 RarityTag.LEGENDARY,
-                RarityTag.MYTHIC
+                RarityTag.MYTHIC,
+                FishingFestival.EVENT_TAG
         );
     }
 

@@ -47,7 +47,7 @@ public enum SkyBlockXPSource {
 
     // ----- Event Tasks (1,439 XP) -----
     MINING_FIESTA(Group.EVENT, null, 200, Availability.NOT_IN_GAME, Material.IRON_PICKAXE),
-    FISHING_FESTIVAL(Group.EVENT, null, 100, Availability.NOT_IN_GAME, Material.FISHING_ROD),
+    FISHING_FESTIVAL(Group.EVENT, null, 100, Availability.LIVE, Material.FISHING_ROD),
     HARVEST_FEAST_SEASONING(Group.EVENT, null, 100, Availability.NOT_IN_GAME, Material.PUMPKIN_PIE),
     SPOOKY_FESTIVAL(Group.EVENT, null, 225, Availability.UNWIRED, Material.JACK_O_LANTERN),
     HOPPITYS_HUNT(Group.EVENT, null, 285, Availability.UNWIRED, Material.COCOA_BEANS),
@@ -357,6 +357,12 @@ public enum SkyBlockXPSource {
                     "Creatures and Minos!",
                     "Per 100 Kills: <b>+1 XP",
                     "<8>(Caps at 10,000 kills!)");
+            case FISHING_FESTIVAL -> List.of(
+                    "Gain XP by killing Sharks",
+                    "during the <b>Fishing Festival<7>",
+                    "event!",
+                    "Per 50 Sharks Killed: <b>+1 XP",
+                    "<8>(Caps at 5,000 Sharks killed!)");
             case COLLECT_MOB_TYPES -> List.of(
                     "Gain XP by collecting all of the Mob",
                     "Types!",
@@ -414,6 +420,7 @@ public enum SkyBlockXPSource {
             case SLAYER_LEVEL_UP -> TaskAction.hint(
                     "Visit Maddox the Slayer in the Hub to", "view Slayer Levels.");
             case MYTHOLOGICAL_KILLS -> TaskAction.hint("Kill Mythological Creatures!");
+            case FISHING_FESTIVAL -> TaskAction.hint("Go Kill some sharks!");
             default -> TaskAction.hint("Go earn some XP!");
         };
     }
