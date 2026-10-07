@@ -1,10 +1,13 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.gui.inventories.slayer.GUISlayer;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCMaddoxTheSlayer extends HypixelNPC {
 
@@ -34,12 +37,26 @@ public class NPCMaddoxTheSlayer extends HypixelNPC {
             public boolean looking(HypixelPlayer player) {
                 return true;
             }
+
+            @Override
+            public String chatName(HypixelPlayer player) {
+                return "<5>Maddox";
+            }
         });
     }
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        FirstInteraction.then(this, player, DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_MADDOX,
+            "first-interaction", () -> player.openView(new GUISlayer()));
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("first-interaction", "npcs_hub.maddox.dialogue.first_interaction")
+        };
     }
 
 }

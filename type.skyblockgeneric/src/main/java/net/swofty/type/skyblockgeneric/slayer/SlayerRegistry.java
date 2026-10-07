@@ -96,7 +96,9 @@ public final class SlayerRegistry {
                 doubleValue(entry, "bossDamage", 5D),
                 doubleValue(entry, "bossSpeed", 100D),
                 intValue(entry, "tokenDrops", 0),
-                optionalItem(entry.get("tokenItem"))
+                optionalItem(entry.get("tokenItem")),
+                intValue(entry, "requiredCombatLevel", 0),
+                intValue(entry, "requiredSlayerLevel", 0)
             ));
         }
         return result;

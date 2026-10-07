@@ -1,10 +1,12 @@
 package net.swofty.type.skyblockgeneric.slayer;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.Instance;
+import net.swofty.commons.StringUtility;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSlayer;
@@ -13,6 +15,7 @@ import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.SlayerBossMob;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.SlayerBossProfile;
+import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,7 +44,12 @@ public final class SlayerService {
             }
         }
 
-        int cost = questCost(tierDefinition);
+        Optional<String> tierLock = tierLock(player, definition, tierDefinition);
+        if (tierLock.isPresent()) {
+            return new StartResult(false, tierLock.get(), Optional.empty());
+        }
+
+        int cost = questCost(player, tierDefinition);
         if (player.getCoins() < cost) {
             return StartResult.notEnoughCoins(cost);
         }
@@ -53,6 +61,33 @@ public final class SlayerService {
         player.sendMessage("<5><l>SLAYER QUEST STARTED!");
         player.sendMessage("<7>Slay {} mobs to summon <c>{}<7>.", type.categoryName(), tierDefinition.displayName(type));
         return StartResult.started(quest);
+    }
+
+    public static boolean isBossUnlocked(SkyBlockPlayer player, SlayerDefinition definition) {
+        return definition.unlockRequirement()
+            .map(requirement -> data(player).progress(requirement.type()).completions(requirement.tier()) > 0)
+            .orElse(true);
+    }
+
+    public static Optional<String> tierLock(SkyBlockPlayer player, SlayerDefinition definition, SlayerTierDefinition tierDefinition) {
+        int combatLevel = player.getSkills().getCurrentLevel(SkillCategories.COMBAT);
+        if (combatLevel < tierDefinition.requiredCombatLevel()) {
+            return Optional.of("Requires Combat Level " + StringUtility.getAsRomanNumeral(tierDefinition.requiredCombatLevel()) + "!");
+        }
+
+        DatapointSlayer.SlayerProgress progress = data(player).progress(definition.type());
+        if (definition.levelForXp(progress.getXp()) < tierDefinition.requiredSlayerLevel()) {
+            return Optional.of("Requires " + definition.type().categoryName() + " Slayer " + tierDefinition.requiredSlayerLevel() + "!");
+        }
+
+        SlayerTier tier = tierDefinition.tier();
+        if (tier.number() > 1) {
+            SlayerTier previous = SlayerTier.values()[tier.ordinal() - 1];
+            if (progress.completions(previous) <= 0) {
+                return Optional.of("Slay " + definition.type().displayName() + " " + previous.numeral() + "!");
+            }
+        }
+        return Optional.empty();
     }
 
     public static void cancelQuest(SkyBlockPlayer player) {
@@ -148,14 +183,27 @@ public final class SlayerService {
             quest.type().categoryName(), level, progress.getXp());
     }
 
-    private static int questCost(SlayerTierDefinition tierDefinition) {
+    public static int questCost(SkyBlockPlayer player, SlayerTierDefinition tierDefinition) {
+        double cost = tierDefinition.cost();
         if (ElectionManager.isPerkActive(SkyBlockMayor.Perk.SLASHED_PRICING)) {
-            return Math.max(1, tierDefinition.cost() / 2);
+            cost /= 2;
         }
-        return tierDefinition.cost();
+        if (firstThreeBossesAtLevel(player, 7)) {
+            cost *= 0.96D;
+        }
+        return Math.max(1, (int) Math.round(cost));
     }
 
-    private static int slayerXpReward(SlayerTierDefinition tierDefinition) {
+    public static boolean firstThreeBossesAtLevel(SkyBlockPlayer player, int level) {
+        DatapointSlayer.SlayerData data = data(player);
+        return Stream.of(SlayerType.REVENANT_HORROR, SlayerType.TARANTULA_BROODFATHER, SlayerType.SVEN_PACKMASTER)
+            .allMatch(type -> {
+                SlayerDefinition definition = SlayerRegistry.get(type);
+                return definition != null && definition.levelForXp(data.progress(type).getXp()) >= level;
+            });
+    }
+
+    public static int slayerXpReward(SlayerTierDefinition tierDefinition) {
         if (ElectionManager.isPerkActive(SkyBlockMayor.Perk.SLAYER_XP_BUFF)) {
             return (int) Math.round(tierDefinition.slayerXp() * 1.25D);
         }
