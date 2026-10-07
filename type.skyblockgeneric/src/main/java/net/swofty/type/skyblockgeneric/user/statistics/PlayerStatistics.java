@@ -21,6 +21,7 @@ import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeHotPot
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeRuneInfusedWith;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
+import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.data.datapoints.DatapointStringList;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.bestiary.BestiaryData;
@@ -28,12 +29,16 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointInventory;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkills;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperience;
+import net.swofty.type.skyblockgeneric.elections.perks.ActivePerks;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
+import net.swofty.type.skyblockgeneric.elections.perks.MayorPerkStatistics;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.enchantment.abstr.EventBasedEnchant;
 import net.swofty.type.skyblockgeneric.enchantment.debuff.LethalityDebuff;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.SlayerBossMob;
 import net.swofty.type.skyblockgeneric.event.value.SkyBlockValueEvent;
 import net.swofty.type.skyblockgeneric.event.value.events.RegenerationValueUpdateEvent;
 import net.swofty.type.skyblockgeneric.gems.Gemstone;
@@ -236,18 +241,6 @@ public class PlayerStatistics {
         return allStatistics(null, null);
     }
 
-    // Combat and Miscellaneous stat groupings, matching the tabs GUISkyBlockProfile already shows
-    // the player (see its Combat Stats / Misc Stats slots) - used for Jerry's Statspocalypse perk.
-    private static final ItemStatistic[] STATSPOCALYPSE_STATS = {
-        ItemStatistic.HEALTH, ItemStatistic.DEFENSE, ItemStatistic.STRENGTH, ItemStatistic.INTELLIGENCE,
-        ItemStatistic.CRITICAL_CHANCE, ItemStatistic.CRITICAL_DAMAGE, ItemStatistic.BONUS_ATTACK_SPEED,
-        ItemStatistic.ABILITY_DAMAGE, ItemStatistic.TRUE_DEFENSE, ItemStatistic.FEROCITY,
-        ItemStatistic.HEALTH_REGENERATION, ItemStatistic.VITALITY, ItemStatistic.MENDING, ItemStatistic.SWING_RANGE,
-        ItemStatistic.SPEED, ItemStatistic.MAGIC_FIND, ItemStatistic.PET_LUCK, ItemStatistic.HEAT_RESISTANCE,
-        ItemStatistic.COLD_RESISTANCE, ItemStatistic.RESPIRATION, ItemStatistic.PRESSURE_RESISTANCE,
-        ItemStatistic.FEAR, ItemStatistic.TRACKING,
-    };
-
     public ItemStatistics allStatistics(SkyBlockPlayer causer, LivingEntity enemy) {
         ItemStatistics total = ItemStatistics.builder().build();
         if (enemy instanceof BestiaryMob bestiaryMob) total = ItemStatistics.add(total, getBestiaryStatistics(causer, bestiaryMob));
@@ -261,14 +254,9 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, AttributeEffectService.statistics(player));
         total = ItemStatistics.add(total, ItemStatistic.getOfAllBaseValues());
 
-        if (net.swofty.type.skyblockgeneric.elections.ElectionManager.isPerkActive(
-                net.swofty.type.skyblockgeneric.elections.SkyBlockMayor.Perk.STATSPOCALYPSE)) {
-            ItemStatistics.Builder statspocalypse = ItemStatistics.builder();
-            for (ItemStatistic statistic : STATSPOCALYPSE_STATS) {
-                statspocalypse.withMultiplicativePercentage(statistic, 10D);
-            }
-            total = ItemStatistics.add(total, statspocalypse.build());
-        }
+        ActivePerks perks = ElectionPerks.current();
+        total = ItemStatistics.add(total, MayorPerkStatistics.flatBonuses(perks, !HypixelConst.isIslandServer()));
+        total = MayorPerkStatistics.applyScaling(perks, total, enemy instanceof SlayerBossMob);
 
         return total;
     }
@@ -323,6 +311,9 @@ public class PlayerStatistics {
         addModifier(modifiers, "Attributes", AttributeEffectService.statistics(player),
                 StatisticSourceType.ATTRIBUTE, StatisticModifierType.ATTRIBUTE, null, Material.PRISMARINE_SHARD, null);
         addTemporaryModifiers(modifiers);
+        addModifier(modifiers, "Mayor Perks",
+                MayorPerkStatistics.flatBonuses(ElectionPerks.current(), !HypixelConst.isIslandServer()),
+                StatisticSourceType.OTHER, StatisticModifierType.BUFF, null, Material.JUKEBOX, null);
 
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         if (pet != null) modifiers.add(new StatisticModifier(pet.getDisplayName(), pet.getMaterial(),
