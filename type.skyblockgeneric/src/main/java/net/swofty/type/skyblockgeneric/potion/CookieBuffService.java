@@ -24,6 +24,10 @@ public final class CookieBuffService {
         if (expiration > System.currentTimeMillis()) apply(player, expiration);
     }
 
+    public static boolean isCookieBuff(TemporaryStatistic statistic) {
+        return DISPLAY_NAME.equals(statistic.getDisplayName());
+    }
+
     public static String formatRemaining(SkyBlockPlayer player) {
         long remaining = Math.max(0, player.getBoosterCookieExpirationDate() - System.currentTimeMillis());
         long days = remaining / (24L * 60 * 60 * 1000);
@@ -44,7 +48,7 @@ public final class CookieBuffService {
                 .withStatistics(statistics.build())
                 .withExpirationInMs(remaining)
                 .withDisplayName(DISPLAY_NAME)
-                .withDisplayColor("d")
+                .withDisplayColor("<d>")
                 .build());
     }
 }

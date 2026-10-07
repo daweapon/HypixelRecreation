@@ -5,8 +5,11 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.statistics.TemporaryStatistic;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public final class GodPotionService {
     private static final long BASE_DURATION_MS = 12L * 60 * 60 * 1000;
@@ -26,7 +29,15 @@ public final class GodPotionService {
             PotionEffectType.FIRE_RESISTANCE, PotionEffectType.HASTE, PotionEffectType.TRUE_RESISTANCE
     );
 
+    private static final Set<String> EFFECT_NAMES = EFFECTS.stream()
+            .map(effect -> effect.getLevelDisplay(effect.getMaxLevel()))
+            .collect(Collectors.toSet());
+
     private GodPotionService() {
+    }
+
+    public static boolean isGodPotionEffect(TemporaryStatistic statistic) {
+        return EFFECT_NAMES.contains(statistic.getDisplayName());
     }
 
     public static void consume(SkyBlockPlayer player, SkyBlockItem item) {

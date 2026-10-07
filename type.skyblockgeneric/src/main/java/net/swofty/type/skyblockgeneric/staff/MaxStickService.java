@@ -404,15 +404,17 @@ public final class MaxStickService {
     public static void maxSkyBlockLevel(SkyBlockPlayer player) {
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
 
-        experience.completeAllSourceProgress();
+        experience.batch(() -> {
+            experience.completeAllSourceProgress();
 
-        for (SkyBlockEmblems category : SkyBlockEmblems.values()) {
-            for (SkyBlockEmblems.SkyBlockEmblem emblem : category.getEmblems()) {
-                if (emblem.cause() != null) experience.addExperience(emblem.cause());
+            for (SkyBlockEmblems category : SkyBlockEmblems.values()) {
+                for (SkyBlockEmblems.SkyBlockEmblem emblem : category.getEmblems()) {
+                    if (emblem.cause() != null) experience.addExperience(emblem.cause());
+                }
             }
-        }
 
-        experience.setTotalXP(SkyBlockXPSource.TOTAL_MAX_XP + experience.getUncappedSourceXP());
+            experience.setTotalXP(SkyBlockXPSource.TOTAL_MAX_XP + experience.getUncappedSourceXP());
+        });
 
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SKYBLOCK_EXPERIENCE,
                 DatapointSkyBlockExperience.class).setValue(experience);

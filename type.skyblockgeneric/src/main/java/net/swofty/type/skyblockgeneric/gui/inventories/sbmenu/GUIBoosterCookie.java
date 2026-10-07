@@ -18,6 +18,9 @@ import net.swofty.type.skyblockgeneric.gui.inventories.auction.GUIAuctionHouse;
 import net.swofty.type.skyblockgeneric.gui.inventories.bazaar.GUIBazaar;
 import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.commons.StringUtility;
+import net.swofty.type.skyblockgeneric.user.BitsMultiplier;
+import net.swofty.type.skyblockgeneric.user.BitsService;
 
 import java.util.function.Consumer;
 
@@ -43,24 +46,29 @@ public class GUIBoosterCookie extends StatelessView {
                 : "<c>You do not currently have a\n<c>Booster Cookie active!";
         String menuAccessStatus = player.isBoosterCookieActive() ? "<e>Click to view!" : "<c>Requires Cookie Buff!";
 
-        layout.slot(11, ItemStacks.item(Material.DIAMOND, """
+        layout.slot(11, ItemStacks.item(Material.DIAMOND, 1, """
                 <b>Bits
                 <7>Bits are earned from booster
                 <7>cookies and spent in the community
                 <7>shop for unique items.
 
-                <7>Bits Purse: <b>0
+                <7>Bits Purse: <b>{}
 
-                <7>Bits Available: <b>0<3>/0
+                <7>Bits Available: <b>{}<3>/{}
                 <8>Eligible to farm while you have
                 <8>the cookie buff.
 
-                <7>Bits Multiplier: <b>1x
-                <7>Per <6>Cookie<7>: <b>+4,800 bits <7>available
+                <7>Bits Multiplier: <b>{}x
+                <7>Per <6>Cookie<7>: <b>+{} bits <7>available
 
                 <8>Your Fame Rank's bit multiplier
                 <8>applies on the bits from every
-                <8>cookie you've ever eaten!"""));
+                <8>cookie you've ever eaten!""",
+                StringUtility.commaify(player.getBits()),
+                StringUtility.commaify(BitsService.available(player)),
+                StringUtility.commaify(BitsService.poolSize(player)),
+                StringUtility.decimalify(BitsMultiplier.of(player), 2),
+                StringUtility.commaify(BitsService.perCookie(player))));
         layout.slot(13, ItemStacks.item(Material.COOKIE, """
                 <6>Booster Cookie
                 <7>Acquire Booster Cookies from the

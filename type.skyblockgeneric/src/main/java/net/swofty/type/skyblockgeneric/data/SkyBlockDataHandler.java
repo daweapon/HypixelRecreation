@@ -375,13 +375,20 @@ public class SkyBlockDataHandler extends DataHandler {
                     player.setLeggings(new SkyBlockItem(inv.getLeggings()).getItemStack());
                     player.setBoots(new SkyBlockItem(inv.getBoots()).getItemStack());
 
+                    List<SkyBlockItem> displaced = new ArrayList<>();
                     inv.getItems().forEach((slot, item) -> {
+                        SkyBlockItem loaded = new SkyBlockItem(item);
+                        if (loaded.getItemType() == ItemType.SKYBLOCK_MENU) return;
+                        if (slot == 8) {
+                            displaced.add(loaded);
+                            return;
+                        }
                         PlayerItemOrigin origin = PlayerItemOrigin.INVENTORY_SLOT;
                         origin.setData(slot);
 
                         ItemStack updated = PlayerItemUpdater.playerUpdate(
                                 player,
-                                new SkyBlockItem(item).getItemStack(),
+                                loaded.getItemStack(),
                                 true
                         ).build();
 
@@ -391,6 +398,7 @@ public class SkyBlockDataHandler extends DataHandler {
                     player.getInventory().setItemStack(8,
                             new NonPlayerItemUpdater(new SkyBlockItem(ItemType.SKYBLOCK_MENU).getItemStack())
                                     .getUpdatedItem().build());
+                    displaced.forEach(player::addAndUpdateItem);
                 },
                 (player) -> {
                     SkyBlockInventory inv = new SkyBlockInventory();
@@ -594,6 +602,15 @@ public class SkyBlockDataHandler extends DataHandler {
 
         BITS("bits", false, false, false,
                 DatapointInteger.class, new DatapointInteger("bits", 0)),
+
+        BITS_AVAILABLE("bits_available", false, false, false,
+                DatapointInteger.class, new DatapointInteger("bits_available", 0)),
+
+        BITS_POOL_SIZE("bits_pool_size", false, false, false,
+                DatapointInteger.class, new DatapointInteger("bits_pool_size", 0)),
+
+        BITS_LAST_FARMED("bits_last_farmed", false, false, false,
+                DatapointLong.class, new DatapointLong("bits_last_farmed", 0L)),
 
         GEMS("gems", false, false, false,
                 DatapointInteger.class, new DatapointInteger("gems", 0)),

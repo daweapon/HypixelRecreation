@@ -191,28 +191,22 @@ public class SkyBlockScoreboard {
                 FarmingContest contest = FarmingContest.active().orElse(null);
                 FarmingContestProfile.Entry contestEntry = contest == null ? null
                     : FarmingContests.profile(player).entryFor(contest).orElse(null);
-                boolean contestShown = !electionRoom && !darkAuction && !seasonalEventActive && contest != null
-                    && (contestEntry != null || FarmingContests.canParticipate(player));
+                boolean contestShown = !electionRoom && !darkAuction && !seasonalEventActive && contestEntry != null;
                 TextBody.Section farmingContest = body.section("farming_contest").when(() -> contestShown);
                 if (contestShown) {
                     farmingContest.line(BLANK);
                     farmingContest.line(Text.key("scoreboard.skyblock.contest_title",
                         StringUtility.formatTimeLeft((contest.endElapsed() - SkyBlockCalendar.getElapsed()) * 50L)));
-                    if (contestEntry == null) {
-                        contest.crops().forEach(crop -> farmingContest.line(
-                            Text.key("scoreboard.skyblock.contest_crop_line", "○", crop.getDisplayName())));
+                    farmingContest.line(Text.key("scoreboard.skyblock.contest_crop_line", "☘",
+                        contestEntry.getCrop().getDisplayName()));
+                    String collected = StringUtility.commaify(contestEntry.getCollected());
+                    ContestBracket bracket = contestEntry.qualifies()
+                        ? FarmingContests.liveBracket(player).filter(ContestBracket::earnsMedal).orElse(null) : null;
+                    if (bracket == null) {
+                        farmingContest.line(Text.key("scoreboard.skyblock.contest_collected_line", collected));
                     } else {
-                        farmingContest.line(Text.key("scoreboard.skyblock.contest_crop_line", "☘",
-                            contestEntry.getCrop().getDisplayName()));
-                        String collected = StringUtility.commaify(contestEntry.getCollected());
-                        ContestBracket bracket = contestEntry.qualifies()
-                            ? FarmingContests.liveBracket(player).filter(ContestBracket::earnsMedal).orElse(null) : null;
-                        if (bracket == null) {
-                            farmingContest.line(Text.key("scoreboard.skyblock.contest_collected_line", collected));
-                        } else {
-                            farmingContest.line(Text.key("scoreboard.skyblock.contest_bracket_line",
-                                Text.of(bracket.formatted()), collected));
-                        }
+                        farmingContest.line(Text.key("scoreboard.skyblock.contest_bracket_line",
+                            Text.of(bracket.formatted()), collected));
                     }
                 }
 

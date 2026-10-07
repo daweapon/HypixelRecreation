@@ -35,6 +35,9 @@ import net.swofty.type.generic.data.mongodb.ProfilesDatabase;
 import net.swofty.type.generic.entity.hologram.PlayerHolograms;
 import net.swofty.type.generic.entity.hologram.ServerHolograms;
 import net.swofty.type.generic.event.HypixelEventClass;
+import net.swofty.type.skyblockgeneric.user.BitsService;
+import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
+import net.swofty.type.skyblockgeneric.potion.GodPotionService;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestivalAnnouncer;
 import net.swofty.type.skyblockgeneric.stonks.StonksAuctions;
@@ -253,11 +256,19 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
             for (SkyBlockPlayer player : players) {
                 Text footer = Text.of("\n<a><l>Active Effects\n");
 
-                List<TemporaryStatistic> activeEffects = player.getStatistics().getDisplayableActiveEffects();
-                if (activeEffects.isEmpty()) {
+                List<TemporaryStatistic> activeEffects = new ArrayList<>(player.getStatistics().getDisplayableActiveEffects());
+                activeEffects.removeIf(CookieBuffService::isCookieBuff);
+                long godPotionMs = activeEffects.stream().filter(GodPotionService::isGodPotionEffect)
+                        .mapToLong(TemporaryStatistic::getRemainingMs).max().orElse(0);
+                if (godPotionMs > 0) activeEffects.removeIf(GodPotionService::isGodPotionEffect);
+
+                if (activeEffects.isEmpty() && godPotionMs <= 0) {
                     footer = footer.append(
                         "<7>No effects active. Drink potions or splash them on the\n<7>ground to buff yourself!");
                 } else {
+                    if (godPotionMs > 0) {
+                        footer = footer.append("<c>God Potion <f>{}\n", formatEffectDuration(godPotionMs));
+                    }
                     for (TemporaryStatistic effect : activeEffects) {
                         String color = effect.getDisplayColor() != null ? effect.getDisplayColor() : "<7>";
                         String name = effect.getDisplayName();
@@ -266,11 +277,12 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
                     }
                 }
 
-                footer = footer.append("""
+                footer = footer.append("\n<d><l>Cookie Buff</l>\n");
+                footer = player.isBoosterCookieActive()
+                        ? footer.append("<7>{}\n", CookieBuffService.formatRemaining(player))
+                        : footer.append("<7>Not active! Obtain booster cookies from the community\n<7>shop in the hub.\n");
 
-                    <d><l>Cookie Buff</l>
-                    <7>Not active! Obtain booster cookies from the community
-                    <7>shop in the hub.
+                footer = footer.append("""
 
                     <a>Ranks, Boosters & MORE! <c><l>STORE.HYPIXEL.NET""");
 
@@ -294,6 +306,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
          * Start data loop
          */
         SkyBlockDataHandler.startRepeatSetValueLoop();
+        BitsService.startFarming();
         CoopSync.subscribe();
         PlayerDataService.register(new SkyBlockDomain());
         ProfilesDatabase.setHostedProfileCheck(SkyBlockDomain::isProfileHosted);

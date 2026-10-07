@@ -116,6 +116,8 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
         @Setter
         private SkyBlockPlayer attachedPlayer = null;
         @Getter(AccessLevel.NONE)
+        private boolean batching;
+        @Getter(AccessLevel.NONE)
         private int cachedCauseCount = -1;
         @Getter(AccessLevel.NONE)
         private double cachedCauseXP;
@@ -303,8 +305,23 @@ public class DatapointSkyBlockExperience extends SkyBlockDatapoint<DatapointSkyB
             return cachedCauseXP + getTotalSourceXP();
         }
 
+        /**
+         * Applies several XP changes as one, so intermediate totals never announce level-ups;
+         * a single modification from the starting to the final total is fired at the end.
+         */
+        public void batch(Runnable changes) {
+            double oldXP = getTotalXP();
+            batching = true;
+            try {
+                changes.run();
+            } finally {
+                batching = false;
+            }
+            fireModification(null, oldXP, getTotalXP());
+        }
+
         private void fireModification(@Nullable SkyBlockLevelCauseAbstr cause, double oldXP, double newXP) {
-            if (oldXP == newXP || getAttachedPlayer() == null) return;
+            if (batching || oldXP == newXP || getAttachedPlayer() == null) return;
             HypixelEventHandler.callCustomEvent(new SkyBlockXPModificationEvent(
                     getAttachedPlayer(), cause, oldXP, newXP));
         }
