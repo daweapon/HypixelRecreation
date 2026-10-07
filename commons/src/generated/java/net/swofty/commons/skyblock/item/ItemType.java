@@ -140,6 +140,8 @@ public enum ItemType {
 
   ARCHITECTS_FIRST_DRAFT(Material.PAPER, Rarity.COMMON),
 
+  ARMADILLO_MASK(Material.PLAYER_HEAD, Rarity.RARE),
+
   ARTIFACT_OF_COINS(Material.PLAYER_HEAD, Rarity.RARE),
 
   ARTIFACT_OF_CONTROL(Material.PLAYER_HEAD, Rarity.LEGENDARY),
@@ -277,6 +279,8 @@ public enum ItemType {
   BEEF(Material.BEEF, Rarity.COMMON),
 
   BEETROOT(Material.BEETROOT, Rarity.COMMON),
+
+  BEE_MASK(Material.PLAYER_HEAD, Rarity.EPIC),
 
   BEE_MINION_SKIN(Material.PLAYER_HEAD, Rarity.COMMON),
 
@@ -658,7 +662,15 @@ public enum ItemType {
 
   CAN_OF_WORMS(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
-  CARNIVAL_TICKET(Material.PAPER, Rarity.UNCOMMON),
+  CARNIVAL_DART_TUBE(Material.STICK, Rarity.UNCOMMON),
+
+  CARNIVAL_MASK_BAG(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  CARNIVAL_ROD(Material.FISHING_ROD, Rarity.UNCOMMON),
+
+  CARNIVAL_SHOVEL(Material.IRON_SHOVEL, Rarity.UNCOMMON),
+
+  CARNIVAL_TICKET(Material.NAME_TAG, Rarity.UNCOMMON),
 
   CARROT(Material.CARROT, Rarity.COMMON),
 
@@ -1781,6 +1793,8 @@ public enum ItemType {
   FRIED_FEATHER(Material.FEATHER, Rarity.UNCOMMON),
 
   FRIED_FROZEN_CHICKEN(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  FROG_MASK(Material.PLAYER_HEAD, Rarity.EPIC),
 
   FROZEN_BAIT(Material.PLAYER_HEAD, Rarity.RARE),
 
@@ -3010,6 +3024,8 @@ public enum ItemType {
 
   PARKOUR_TIMES(Material.IRON_BLOCK, Rarity.COMMON),
 
+  PARROT_MASK(Material.PLAYER_HEAD, Rarity.RARE),
+
   PEONY(Material.PEONY, Rarity.COMMON),
 
   PERFECT_AMBER_GEM(Material.PLAYER_HEAD, Rarity.LEGENDARY),
@@ -3527,6 +3543,8 @@ public enum ItemType {
   RUSTY_COIN(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   RUSTY_SHIP_ENGINE(Material.PLAYER_HEAD, Rarity.SPECIAL),
+
+  SALMON_MASK(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   SAND(Material.SAND, Rarity.COMMON),
 
@@ -4115,6 +4133,8 @@ public enum ItemType {
   SNOW(Material.SNOW, Rarity.COMMON),
 
   SNOWBALL(Material.SNOWBALL, Rarity.COMMON),
+
+  SNOWMAN_MASK(Material.PLAYER_HEAD, Rarity.RARE),
 
   SNOW_BLOCK(Material.SNOW_BLOCK, Rarity.COMMON),
 
@@ -4907,6 +4927,8 @@ public enum ItemType {
   ZOMBIE_HEART(Material.PLAYER_HEAD, Rarity.RARE),
 
   ZOMBIE_KNIGHT_SWORD(Material.IRON_SWORD, Rarity.EPIC),
+
+  ZOMBIE_MASK(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   ZOMBIE_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 

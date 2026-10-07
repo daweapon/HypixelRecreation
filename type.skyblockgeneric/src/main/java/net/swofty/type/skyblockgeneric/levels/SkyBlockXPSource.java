@@ -54,9 +54,9 @@ public enum SkyBlockXPSource {
     JACOBS_FARMING_CONTEST(Group.EVENT, null, 130, Availability.LIVE, Material.GOLDEN_HOE),
     FISHING_FESTIVAL_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.COD),
     MINING_FIESTA_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.RAW_IRON),
-    MYTHOLOGICAL_RITUAL_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.FEATHER),
-    SPOOKY_FESTIVAL_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.PUMPKIN),
-    SEASON_OF_JERRY_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.SNOWBALL),
+    MYTHOLOGICAL_RITUAL_PERK_SHOP(Group.EVENT, null, 49, Availability.LIVE, Material.FEATHER),
+    SPOOKY_FESTIVAL_PERK_SHOP(Group.EVENT, null, 49, Availability.LIVE, Material.PUMPKIN),
+    SEASON_OF_JERRY_PERK_SHOP(Group.EVENT, null, 49, Availability.LIVE, Material.SNOWBALL),
     HARVEST_FEAST_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.BREAD),
     YEAR_OF_THE_WITCH(Group.EVENT, null, 105, Availability.NOT_IN_GAME, Material.CAULDRON),
 
@@ -364,6 +364,12 @@ public enum SkyBlockXPSource {
                     "grant you <b>+1 XP<7>.",
                     "Collecting all Mob Types will grant an",
                     "additional <b>+10 XP<7>.");
+            case FISHING_FESTIVAL_PERK_SHOP, MINING_FIESTA_PERK_SHOP, MYTHOLOGICAL_RITUAL_PERK_SHOP,
+                 SPOOKY_FESTIVAL_PERK_SHOP, SEASON_OF_JERRY_PERK_SHOP, HARVEST_FEAST_PERK_SHOP -> List.of(
+                    "Gain XP by purchasing perk levels from",
+                    getDisplayName() + "!",
+                    "Tier I: <b>+2 XP", "Tier II: <b>+2 XP", "Tier III: <b>+3 XP",
+                    "Tier IV: <b>+5 XP", "Tier V: <b>+7 XP");
             default -> List.of("Gain XP from " + getDisplayName() + "!");
         };
     }

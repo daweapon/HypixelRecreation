@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.mythological;
 
+import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
+import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import lombok.Getter;
 import lombok.NonNull;
 import net.minestom.server.entity.ai.GoalSelector;
@@ -122,6 +124,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
                 return false;
             }
             attackers.add(player.getUuid());
+            damage.setAmount((float) (damage.getAmount() * Carnivals.multiplier(player, CarnivalPerk.STORIED_STINGER)));
         }
         return super.damage(damage);
     }

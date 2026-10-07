@@ -4,6 +4,10 @@ import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.bank.BankAccountTier;
 import net.swofty.type.skyblockgeneric.bestiary.BestiaryData;
+import net.swofty.type.skyblockgeneric.carnival.CarnivalNpc;
+import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
+import net.swofty.type.skyblockgeneric.carnival.CarnivalProfile;
+import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategory;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -81,6 +85,7 @@ public final class MaxStickService {
 
     private static final int MAX_CONTEST_MEDALS = 10_000;
     private static final int LUCIUS_FINAL_TIER_DARK_AUCTION_PURCHASES = 7;
+    private static final int MAX_CARNIVAL_TOKENS = 100_000;
 
     private MaxStickService() {}
 
@@ -130,6 +135,7 @@ public final class MaxStickService {
         maxHubUpgrades(player);
         MuseumService.maxOut(player);
         meetTradeCenter(player);
+        maxCarnival(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have
         // granted its own SkyBlock XP causes first or the top-up would overshoot.
         maxSkyBlockLevel(player);
@@ -317,6 +323,14 @@ public final class MaxStickService {
 
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.RIFT_PRISM_IMBUED, DatapointBoolean.class)
                 .setValue(true);
+    }
+
+    private static void maxCarnival(SkyBlockPlayer player) {
+        CarnivalProfile profile = Carnivals.profile(player);
+        for (CarnivalPerk perk : CarnivalPerk.values()) profile.getPerkTiers().put(perk, perk.maxTier());
+        for (CarnivalNpc npc : CarnivalNpc.values()) profile.meet(npc);
+        profile.setTokens(Math.max(profile.getTokens(), MAX_CARNIVAL_TOKENS));
+        Carnivals.save(player, profile);
     }
 
     private static void maxBackpackSlots(SkyBlockPlayer player) {

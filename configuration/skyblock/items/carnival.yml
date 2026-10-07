@@ -1,0 +1,198 @@
+items:
+  - id: CARNIVAL_SHOVEL
+    material: iron_shovel
+    name: "Carnival Shovel"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77Used to dig up \xA76fruits \xA77in the \xA76Fruit"
+      - "\xA76Digging \xA77game."
+      - ""
+      - "\xA7eRight-click to cycle Dowsing Modes!"
+    components:
+      - id: INTERACTABLE
+        handler_id: CARNIVAL_SHOVEL_INTERACT
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: CARNIVAL_ROD
+    material: fishing_rod
+    name: "Carnival Rod"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77Used to catch \xA73fish \xA77in the \xA73Catch a"
+      - "\xA73Fish \xA77game."
+      - ""
+      - "\xA7eRight-click to hook a fish, then hold"
+      - "\xA7eRight-click to reel it in!"
+    components:
+      - id: INTERACTABLE
+        handler_id: CARNIVAL_ROD_INTERACT
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: CARNIVAL_DART_TUBE
+    material: stick
+    name: "Carnival Dart Tube"
+    rarity: UNCOMMON
+    lore:
+      - "\xA76Ability: Phwomp  \xA7e\xA7lRIGHT CLICK"
+      - "\xA77Shoots a dart. Can only damage"
+      - "\xA7cZombies \xA77from \xA7cZombie Shootout\xA77."
+    components:
+      - id: INTERACTABLE
+        handler_id: CARNIVAL_DART_TUBE_INTERACT
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: CARNIVAL_MASK_BAG
+    material: player_head
+    name: "Carnival Mask Bag"
+    rarity: COMMON
+    lore:
+      - "\xA77Holds \xA7eCarnival Masks\xA77. Each unique"
+      - "\xA77Mask within this bag grants \xA7b+1"
+      - "\xA7bIntelligence\xA77."
+      - ""
+      - "\xA7eRight-click to open!"
+    components:
+      - id: SKULL_HEAD
+        texture: 44af943371d76e5db5deb93df2eaf14d9b0e03a1648bee7f90126abf8983c1d6
+      - id: NOT_FINISHED_YET
+  - id: ZOMBIE_MASK
+    material: player_head
+    name: "Zombie Mask"
+    rarity: UNCOMMON
+    lore:
+      - "\xA76Ability: Exanimate Blessing "
+      - "\xA77Increases the stats of \xA72Undead ༕"
+      - "\xA77armor pieces by \xA7a+5%\xA77."
+      - ""
+      - "\xA78\xA7oGuh."
+    default_statistics:
+      health: 1
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 9bfb6565082d9f2f7ab8a58ec8b4549091102a72944b956c7aafe4d2d49cd6d7
+      - id: EXTRA_RARITY
+        display: CARNIVAL MASK
+  - id: SALMON_MASK
+    material: player_head
+    name: "Salmon Mask"
+    rarity: UNCOMMON
+    lore:
+      - "\xA76Ability: Slippery Slope "
+      - "\xA77Gain \xA7f+10 Speed \xA77and \xA7b+10 Fishing"
+      - "\xA7bSpeed \xA77while in water."
+      - ""
+      - "\xA78\xA7oNot to be confused with Salmon Hat."
+    default_statistics:
+      health: 1
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: e969747a5bbc9a3661fde68d369acffca54c9f9b19f94daa3879970796629244
+      - id: EXTRA_RARITY
+        display: CARNIVAL MASK
+  - id: ARMADILLO_MASK
+    material: player_head
+    name: "Armadillo Mask"
+    rarity: RARE
+    lore:
+      - "\xA76Ability: Soiling! Soiling! Soiling! "
+      - "\xA77Grants \xA76+50 Block Fortune\xA77."
+      - ""
+      - "\xA78\xA7oWhat does the Armadillo say?!"
+    default_statistics:
+      health: 1
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 9259a342be4f1399334c9a40ec2500b81d1e73afe8f296fe767125dedec38e4f
+      - id: EXTRA_RARITY
+        display: CARNIVAL MASK
+  - id: PARROT_MASK
+    material: player_head
+    name: "Parrot Mask"
+    rarity: RARE
+    lore:
+      - "\xA76Ability: Party Flock "
+      - "\xA77Nearby players within \xA7a20 \xA77blocks gain"
+      - "\xA7c+1 Strength \xA77for each upgrade of"
+      - "\xA77your \xA76Intimidation Accessory\xA77."
+      - ""
+      - "\xA78\xA7oSquawk, squawk!"
+    default_statistics:
+      health: 1
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 84b43fa30018b2794cb82c3eac8a89e87b1a23080fce80c52246e31c53947c0d
+      - id: EXTRA_RARITY
+        display: CARNIVAL MASK
+  - id: SNOWMAN_MASK
+    material: player_head
+    name: "Snowman Mask"
+    rarity: RARE
+    lore:
+      - "\xA76Ability: Feelin' Festive "
+      - "\xA77Gain \xA7a+10% \xA77more \xA76Coins \xA77and \xA73Skill XP"
+      - "\xA77from \xA7cGifts\xA77."
+      - ""
+      - "\xA78\xA7oAlso comes with a hat!"
+      - "\xA78\xA7oVery stylish."
+    default_statistics:
+      health: 10
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: c321c12d4d88273abba4fa2f5f9a90f3d1445229dc7ccaa5711975c8b0a833b7
+      - id: EXTRA_RARITY
+        display: CARNIVAL MASK
+  - id: BEE_MASK
+    material: player_head
+    name: "Bee Mask"
+    rarity: EPIC
+    lore:
+      - "\xA76Ability: Buzzy Little Bee "
+      - "\xA7aDouble \xA77the base pet stats of your"
+      - "\xA77active \xA76Bee \xA77pet."
+      - ""
+      - "\xA78\xA7oBuzz, buzz!"
+    default_statistics:
+      health: 7
+      speed: 7
+      foraging_fortune: 7
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: f2450ff787abd966de7ae88dc8a812149ac91ddd8f120866f6939f2a17999cd0
+      - id: EXTRA_RARITY
+        display: CARNIVAL MASK
+  - id: FROG_MASK
+    material: player_head
+    name: "Frog Mask"
+    rarity: EPIC
+    lore:
+      - "\xA76Ability: Stick Around "
+      - "\xA77Every \xA7bSkyBlock \xA77day, a random region"
+      - "\xA77in \xA7aThe Park \xA77is selected. While in that"
+      - "\xA77region, gain:"
+      - "\xA76+20 Foraging Fortune"
+      - "\xA73+5☯ Foraging Wisdom"
+      - ""
+      - "\xA78\xA7oRibbit, ribbit!"
+    default_statistics:
+      health: 7
+      speed: 7
+      foraging_fortune: 7
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 87522a1eadf8996f42a8d2e5fb0ca9bfb3ab483d3fbaf68ef29a42de8cef74c5
+      - id: EXTRA_RARITY
+        display: CARNIVAL MASK
