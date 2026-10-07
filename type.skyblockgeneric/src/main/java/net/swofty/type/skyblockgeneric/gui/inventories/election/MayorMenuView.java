@@ -96,7 +96,12 @@ public class MayorMenuView extends StatelessView {
             );
         });
 
-        layout.slot(15, (s, c) -> {
+        if (DianaOffice.isDiana(mayor)) {
+            DianaOffice.layoutMayor(layout);
+        }
+
+        int resultsSlot = DianaOffice.isDiana(mayor) ? DianaOffice.MAYOR_RESULTS_SLOT : 15;
+        layout.slot(resultsSlot, (s, c) -> {
             ElectionData.ElectionResult lastResult = data.getLastElectionResult();
             if (lastResult == null) {
                 return ItemStacks.item(Material.JUKEBOX, 1, Text.key("gui_election.mayor.results_title"), List.of(
