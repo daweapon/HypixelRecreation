@@ -1,12 +1,12 @@
 package net.swofty.type.hub.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.taylor.GUITaylor;
 
 public class NPCTaylor extends HypixelNPC {
 
@@ -36,12 +36,25 @@ public class NPCTaylor extends HypixelNPC {
             public boolean looking(HypixelPlayer player) {
                 return true;
             }
+
+            @Override
+            public String chatName(HypixelPlayer player) {
+                return "<a>Taylor";
+            }
         });
     }
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        HypixelPlayer player = e.player();
+        FirstInteraction.then(this, player, DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_TAYLOR, "first-interaction",
+            () -> player.openView(new GUITaylor()));
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("first-interaction", "npcs_hub.taylor.dialogue.first_interaction")
+        };
+    }
 }

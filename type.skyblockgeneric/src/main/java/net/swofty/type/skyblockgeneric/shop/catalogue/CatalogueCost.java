@@ -6,6 +6,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.shop.ShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.CombinedShopPrice;
+import net.swofty.type.skyblockgeneric.shop.type.GemShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.ItemShopPrice;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,13 +43,14 @@ public record CatalogueCost(double coins, int gems, int bits, Map<String, Intege
     }
 
     public boolean purchasable() {
-        return gems == 0 && bits == 0 && essence == 0
+        return bits == 0 && essence == 0
                 && items.keySet().stream().allMatch(id -> ItemType.get(id) != null);
     }
 
     public ShopPrice toShopPrice() {
         List<ShopPrice> parts = new ArrayList<>();
         if (coins > 0) parts.add(new CoinShopPrice(coins));
+        if (gems > 0) parts.add(new GemShopPrice(gems));
         items.forEach((id, amount) -> parts.add(new ItemShopPrice(ItemType.get(id), amount)));
         if (parts.size() == 1) return parts.getFirst();
         return new CombinedShopPrice(parts);

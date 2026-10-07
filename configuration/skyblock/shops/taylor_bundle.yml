@@ -1,0 +1,38 @@
+# Taylor's current Seasonal Bundle (wiki Taylor/UI, Fall bundle). Replace the entries when the
+# season changes. Name colours for bundle items are estimated from their price tier.
+# Item ids are estimated from the cosmetic names.
+title: Seasonal Bundles
+slots: DEFAULT
+entries:
+  - item: MYSTIC_MOON_POWER_ORB_SKIN
+    name: "<6>Mystic Moon Power Orb Skin"
+    material: player_head
+    cost: { gems: 950 }
+  - item: SUPER_PUMPKIN_RUNE_III
+    name: "<d>Super Pumpkin Rune III"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: ROYAL_SKIN
+    name: "<d>Royal Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: BEAUTIFALL_CABIN_BARN_SKIN
+    name: "<5>Beautifall Cabin Barn Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: PEARL_SKELETON_SKIN
+    name: "<5>Pearl Skeleton Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: GHOULFRIEND_GHOUL_SKIN
+    name: "<5>Ghoulfriend Ghoul Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: CROW_PARROT_SKIN
+    name: "<5>Crow Parrot Skin"
+    material: player_head
+    cost: { gems: 650 }
+  - item: CAT_O_LANTERN_SKIN
+    name: "<9>Cat-o-Lantern Skin"
+    material: player_head
+    cost: { gems: 350 }
