@@ -1,7 +1,5 @@
 package net.swofty.type.hub.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
@@ -36,12 +34,24 @@ public class NPCUdium extends HypixelNPC {
             public boolean looking(HypixelPlayer player) {
                 return true;
             }
+
+            @Override
+            public String chatName(HypixelPlayer player) {
+                return "<b>Udium";
+            }
         });
     }
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        if (isInDialogue(e.player())) return;
+        setDialogue(e.player(), "hello");
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("hello", "npcs_hub.udium.dialogue.hello")
+        };
+    }
 }

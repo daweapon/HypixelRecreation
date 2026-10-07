@@ -6,6 +6,9 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.VillagerConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.mission.MissionData;
+import net.swofty.type.skyblockgeneric.mission.missions.MissionGiveWoolToCarpenter;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class VillagerApprentice extends HypixelNPC {
     public VillagerApprentice() {
@@ -26,6 +29,11 @@ public class VillagerApprentice extends HypixelNPC {
             }
 
             @Override
+            public String chatName(HypixelPlayer player) {
+                return "<6>Apprentice";
+            }
+
+            @Override
             public VillagerProfession profession() {
                 return VillagerProfession.BUTCHER;
             }
@@ -34,6 +42,26 @@ public class VillagerApprentice extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+
+        MissionData missions = player.getMissionData();
+        if (missions.hasCompleted(MissionGiveWoolToCarpenter.class)) {
+            setDialogue(player, Math.random() < 0.5 ? "furniture" : "learning");
+        } else if (missions.isCurrentlyActive(MissionGiveWoolToCarpenter.class)) {
+            setDialogue(player, "wool-hint");
+        } else {
+            setDialogue(player, "talk-to-carpenter");
+        }
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("furniture", "npcs_hub.apprentice.dialogue.furniture"),
+            DialogueSet.ofTranslation("learning", "npcs_hub.apprentice.dialogue.learning"),
+            DialogueSet.ofTranslation("talk-to-carpenter", "npcs_hub.apprentice.dialogue.talk_to_carpenter"),
+            DialogueSet.ofTranslation("wool-hint", "npcs_hub.apprentice.dialogue.wool_hint")
+        };
     }
 }
