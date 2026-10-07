@@ -1,0 +1,126 @@
+# Ophelia's shop in the Catacombs Entrance (wiki Ophelia/UI, every floor tab merged).
+# Entries gated behind Catacombs floor completions stay unavailable until Dungeons exist.
+# An entry whose item id is not in the game yet is shown greyed out and starts selling
+# automatically once the item is added.
+title: Ophelia
+slots: DEFAULT
+entries:
+  - item: POTION_DUNGEON_1
+    name: "<f>Dungeon I Potion"
+    material: potion
+    cost: { coins: 5000 }
+  - item: POTION_DUNGEON_2
+    name: "<f>Dungeon II Potion"
+    material: potion
+    cost: { coins: 10000 }
+    unavailable: "<c>Requires completing The Catacombs Floor I!\n<8>Dungeons are not available yet."
+  - item: POTION_DUNGEON_3
+    name: "<a>Dungeon III Potion"
+    material: potion
+    cost: { coins: 15000 }
+    unavailable: "<c>Requires completing The Catacombs Floor II!\n<8>Dungeons are not available yet."
+  - item: POTION_DUNGEON_4
+    name: "<a>Dungeon IV Potion"
+    material: potion
+    cost: { coins: 20000 }
+    unavailable: "<c>Requires completing The Catacombs Floor III!\n<8>Dungeons are not available yet."
+  - item: POTION_DUNGEON_5
+    name: "<9>Dungeon V Potion"
+    material: potion
+    cost: { coins: 25000 }
+    unavailable: "<c>Requires completing The Catacombs Floor IV!\n<8>Dungeons are not available yet."
+  - item: POTION_DUNGEON_6
+    name: "<9>Dungeon VI Potion"
+    material: potion
+    cost: { coins: 30000 }
+    unavailable: "<c>Requires completing The Catacombs Floor V!\n<8>Dungeons are not available yet."
+  - item: POTION_DUNGEON_7
+    name: "<5>Dungeon VII Potion"
+    material: potion
+    cost: { coins: 35000 }
+    unavailable: "<c>Requires completing The Catacombs Floor VI!\n<8>Dungeons are not available yet."
+  - item: SUPER_CLEAVER
+    name: "<9>Super Cleaver"
+    material: golden_sword
+    cost: { coins: 80000, items: { CLEAVER: 1 } }
+  - item: HYPER_CLEAVER
+    name: "<5>Hyper Cleaver"
+    material: diamond_sword
+    cost: { coins: 800000, items: { SUPER_CLEAVER: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor III!\n<8>Dungeons are not available yet."
+  - item: GIANT_CLEAVER
+    name: "<5>Giant Cleaver"
+    material: diamond_sword
+    cost: { coins: 5000000, items: { HYPER_CLEAVER: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor VI!\n<8>Dungeons are not available yet."
+  - item: UNDEAD_BOW
+    name: "<9>Undead Bow"
+    material: bow
+    cost: { coins: 80000 }
+  - item: SUPER_UNDEAD_BOW
+    name: "<5>Super Undead Bow"
+    material: bow
+    cost: { coins: 800000, items: { UNDEAD_BOW: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor III!\n<8>Dungeons are not available yet."
+  - item: DEATH_BOW
+    name: "<5>Death Bow"
+    material: bow
+    cost: { coins: 5000000, items: { SUPER_UNDEAD_BOW: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor VI!\n<8>Dungeons are not available yet."
+  - item: FLINT_ARROW
+    name: "<f>Flint Arrow"
+    material: arrow
+    cost: { coins: 5 }
+    stackable: true
+  - item: DARK_GOGGLES
+    name: "<9>Dark Goggles"
+    material: player_head
+    cost: { coins: 80000 }
+  - item: SHADOW_GOGGLES
+    name: "<5>Shadow Goggles"
+    material: player_head
+    cost: { coins: 800000, items: { DARK_GOGGLES: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor III!\n<8>Dungeons are not available yet."
+  - item: WITHER_GOGGLES
+    name: "<5>Wither Goggles"
+    material: player_head
+    cost: { coins: 5000000, items: { SHADOW_GOGGLES: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor VI!\n<8>Dungeons are not available yet."
+  - item: MENDER_HELMET
+    name: "<9>Mender Helmet"
+    material: player_head
+    cost: { coins: 80000 }
+  - item: MENDER_FEDORA
+    name: "<5>Mender Fedora"
+    material: player_head
+    cost: { coins: 800000, items: { MENDER_HELMET: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor III!\n<8>Dungeons are not available yet."
+  - item: MENDER_CROWN
+    name: "<5>Mender Crown"
+    material: player_head
+    cost: { coins: 5000000, items: { MENDER_FEDORA: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor VI!\n<8>Dungeons are not available yet."
+  - item: SUPERBOOM_TNT
+    name: "<9>Superboom TNT"
+    material: tnt
+    cost: { coins: 3000 }
+    stackable: true
+  - item: STONE_CHESTPLATE
+    name: "<9>Stone Chestplate"
+    material: leather_chestplate
+    cost: { coins: 80000 }
+  - item: METAL_CHESTPLATE
+    name: "<5>Metal Chestplate"
+    material: leather_chestplate
+    cost: { coins: 800000, items: { STONE_CHESTPLATE: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor III!\n<8>Dungeons are not available yet."
+  - item: STEEL_CHESTPLATE
+    name: "<5>Steel Chestplate"
+    material: leather_chestplate
+    cost: { coins: 5000000, items: { METAL_CHESTPLATE: 1 } }
+    unavailable: "<c>Requires completing The Catacombs Floor VI!\n<8>Dungeons are not available yet."
+  - item: DUNGEONBREAKER
+    name: "<c>Dungeonbreaker"
+    material: diamond_pickaxe
+    cost: { essence: { type: WITHER, amount: 500 } }
+    unavailable: "<c>Requires completing The Catacombs Floor III!\n<8>Dungeons are not available yet."

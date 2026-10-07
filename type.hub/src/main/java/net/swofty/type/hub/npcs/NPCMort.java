@@ -1,12 +1,13 @@
 package net.swofty.type.hub.npcs;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.catacombs.GUICatacombsGate;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCMort extends HypixelNPC {
 
@@ -36,12 +37,27 @@ public class NPCMort extends HypixelNPC {
             public boolean looking(HypixelPlayer player) {
                 return true;
             }
+
+            @Override
+            public String chatName(HypixelPlayer player) {
+                return "<b>Mort";
+            }
         });
     }
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        FirstInteraction.then(this, player, DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_MORT, "first-interaction",
+            () -> player.openView(new GUICatacombsGate(p -> setDialogue(p, "low-combat"))));
     }
 
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("first-interaction", "npcs_hub.mort.dialogue.first_interaction",
+                player == null ? "" : player.getUsername()),
+            DialogueSet.ofTranslation("low-combat", "npcs_hub.mort.dialogue.low_combat")
+        };
+    }
 }
