@@ -4,8 +4,6 @@ items:
     name: "Spray Can"
     rarity: COMMON
     lore:
-      - "\xA7eSelected Spray: \xA7cNONE"
-      - ""
       - "\xA77Right-click on any wall of your"
       - "\xA77choice to spray."
       - ""
@@ -18,7 +16,8 @@ items:
         handler_id: SPRAY_CAN
       - id: PLACE_EVENT
         handler_id: SPRAY_CAN
-      - id: NOT_FINISHED_YET
+      - id: LORE_UPDATE
+        handler_id: SPRAY_CAN
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED

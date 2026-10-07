@@ -1,0 +1,1663 @@
+# Every Spray Can spray, from the Hypixel SkyBlock Wiki (Sprays/Default, Sprays/Reward Bundles,
+# Sprays/Misc and Spray Can/UI). Ink is the percentage of each dye one spray uses. Only DEFAULT
+# sprays are unlocked here; image names a 128x128 PNG in configuration/skyblock/sprays/.
+sprays:
+  - id: AFTERNOON_SNACK
+    name: "Afternoon Snack"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "The best treat!"
+    ink:
+      BONE_MEAL: 5
+      DANDELION_YELLOW: 10
+      GRAY_DYE: 5
+      LAPIS_LAZULI: 5
+      CACTUS_GREEN: 10
+  - id: ANGRY_TURKEY
+    name: "Angry Turkey"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Ouch that hurt."
+    ink:
+      BONE_MEAL: 5
+      LIME_DYE: 5
+      PURPLE_DYE: 5
+      LAPIS_LAZULI: 5
+      COCOA_BEANS: 10
+      ROSE_RED: 5
+  - id: ANIMAL_MINIONS
+    name: "Animal Minions"
+    category: UTILITY
+    source: DEFAULT
+    image: animal_minions.png
+    lore:
+      - "A bunch of animal-related"
+      - "minions! Perfect for labeling."
+    ink:
+      MAGENTA_DYE: 15
+      PINK_DYE: 5
+      LIGHT_GRAY_DYE: 3
+      COCOA_BEANS: 2
+      CACTUS_GREEN: 5
+      ROSE_RED: 5
+  - id: ANIMAL_PYRAMID
+    name: "Animal Pyramid"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Stacked!"
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 10
+      LIME_DYE: 10
+      LAPIS_LAZULI: 5
+      COCOA_BEANS: 5
+  - id: ANOTHER_DIMENSION
+    name: "Another Dimension"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "It's almost like they're"
+      - "fishing for updates!"
+    ink:
+      LIGHT_GRAY_DYE: 10
+      CYAN_DYE: 10
+      LAPIS_LAZULI: 5
+      INK_SAC: 5
+  - id: ARMOR_ITEMS
+    name: "Armor Items"
+    category: UTILITY
+    source: DEFAULT
+    image: armor_items.png
+    lore:
+      - "A collection of armor! Perfect"
+      - "for labeling."
+    ink:
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 5
+      GRAY_DYE: 5
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 10
+      LAPIS_LAZULI: 5
+  - id: BEACH_CASTLE
+    name: "Beach Castle"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Quite the architect."
+    ink:
+      ORANGE_DYE: 10
+      DANDELION_YELLOW: 10
+      CYAN_DYE: 5
+      LAPIS_LAZULI: 10
+  - id: BEACH_VOLLEYBALL
+    name: "Beach Volleyball"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Join in the games!"
+    ink:
+      DANDELION_YELLOW: 10
+      LAPIS_LAZULI: 15
+      ROSE_RED: 5
+      INK_SAC: 5
+  - id: BEE_THAT_CHICKEN
+    name: "Bee That Chicken"
+    category: MISCELLANEOUS
+    source: REWARD_BUNDLE
+    lore:
+      - "Follow the leader."
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 10
+      LIME_DYE: 10
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 5
+  - id: BIG_CATCH
+    name: "Big Catch"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "That's one big fish!"
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 10
+      LAPIS_LAZULI: 10
+      COCOA_BEANS: 10
+  - id: BLUE_ARROW
+    name: "Blue Arrow"
+    category: UTILITY
+    source: DEFAULT
+    directions: 8
+    image: blue_arrow.png
+    lore:
+      - "An arrow pointing in every"
+      - "cardinal and intercardinal"
+      - "direction!"
+    ink:
+      LIGHT_GRAY_DYE: 10
+      LAPIS_LAZULI: 25
+  - id: BONZO_THE_CLOWN
+    name: "Bonzo the Clown"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Invite the first Dungeons boss"
+      - "onto your island to spook your"
+      - "friends!"
+    ink:
+      BONE_MEAL: 5
+      PINK_DYE: 15
+      GRAY_DYE: 5
+      ROSE_RED: 10
+  - id: BOOM
+    name: "Boom"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Snowball Fight!"
+    ink:
+      BONE_MEAL: 7
+      GRAY_DYE: 2
+      COCOA_BEANS: 7
+      CACTUS_GREEN: 1
+      ROSE_RED: 10
+      INK_SAC: 3
+  - id: BUBBLEGUM_JERRY
+    name: "Bubblegum Jerry"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+  - id: BUNNY_GG
+    name: "Bunny GG"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Good game!"
+    ink:
+      BONE_MEAL: 10
+      GRAY_DYE: 5
+      CACTUS_GREEN: 10
+      ROSE_RED: 5
+  - id: BUNNY_PARKOUR
+    name: "Bunny Parkour"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Jump around like a rabbit!"
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 10
+      LAPIS_LAZULI: 10
+  - id: CANDY_CANE_SNIPER
+    name: "Candy Cane Sniper"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Take down your foes from afar."
+    ink:
+      BONE_MEAL: 5
+      ORANGE_DYE: 5
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 5
+      LAPIS_LAZULI: 10
+      ROSE_RED: 5
+  - id: CHICKEN_MINION
+    name: "Chicken Minion"
+    category: MISCELLANEOUS
+    source: REWARD_BUNDLE
+    lore:
+      - "Cluck cluck."
+    ink:
+      BONE_MEAL: 10
+      LIGHT_BLUE_DYE: 10
+      LIME_DYE: 10
+      COCOA_BEANS: 5
+  - id: CHICKENS
+    name: "Chickens"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Just adorable chickens in"
+      - "their nest."
+    ink:
+      BONE_MEAL: 10
+      GRAY_DYE: 10
+      COCOA_BEANS: 5
+  - id: CHIMNEY
+    name: "Chimney"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "So cozy..."
+    ink:
+      ORANGE_DYE: 2
+      DANDELION_YELLOW: 2
+      LAPIS_LAZULI: 2
+      COCOA_BEANS: 20
+      CACTUS_GREEN: 2
+      ROSE_RED: 2
+  - id: CHOCOLATE_FEAST
+    name: "Chocolate Feast"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Yummy."
+    ink:
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 10
+      PINK_DYE: 5
+      LAPIS_LAZULI: 5
+      COCOA_BEANS: 5
+  - id: CHRISTMAS_TREE
+    name: "Christmas Tree"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "'Tis the Season."
+    ink:
+      ORANGE_DYE: 10
+      LIGHT_BLUE_DYE: 2
+      PINK_DYE: 3
+      LAPIS_LAZULI: 1
+      COCOA_BEANS: 1
+      CACTUS_GREEN: 10
+      ROSE_RED: 1
+  - id: CLOUD_GAZERS
+    name: "Cloud Gazers"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Those clouds make a shape!"
+    ink:
+      BONE_MEAL: 15
+      LIGHT_BLUE_DYE: 15
+      CACTUS_GREEN: 5
+  - id: COCONUT
+    name: "Coconut"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "This refreshing coconut will"
+      - "help you cool down on a hot day."
+    ink:
+      BONE_MEAL: 5
+      ORANGE_DYE: 5
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 5
+      CYAN_DYE: 10
+      COCOA_BEANS: 5
+  - id: COOLER_CLIMATES
+    name: "Cooler Climates"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Bring your sunscreen!"
+    ink:
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 10
+      LIME_DYE: 5
+      PINK_DYE: 5
+      PURPLE_DYE: 5
+      COCOA_BEANS: 5
+  - id: CREEPER
+    name: "Creeper"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Watch out!"
+    ink:
+      LIGHT_BLUE_DYE: 15
+      LIME_DYE: 5
+      LAPIS_LAZULI: 5
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 10
+  - id: CUTE_BUNNY
+    name: "Cute Bunny"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Those eyes!!!"
+    ink:
+      BONE_MEAL: 10
+      ORANGE_DYE: 5
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 10
+  - id: DEADLY_SUNDAE
+    name: "Deadly Sundae"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+  - id: DISTINGUISHED_GHOST
+    name: "Distinguished Ghost"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "They're wearing a suit!"
+    ink:
+      BONE_MEAL: 10
+      CYAN_DYE: 10
+      LAPIS_LAZULI: 10
+      INK_SAC: 5
+  - id: EASTER_BASKET
+    name: "Easter Basket"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Get to the hunt!"
+    ink:
+      DANDELION_YELLOW: 5
+      PINK_DYE: 5
+      PURPLE_DYE: 10
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 5
+  - id: EASTER_CREEPER
+    name: "Easter Creeper"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "On no!"
+    ink:
+      BONE_MEAL: 5
+      DANDELION_YELLOW: 10
+      LIME_DYE: 5
+      PINK_DYE: 5
+      LAPIS_LAZULI: 5
+  - id: EASTER_EGGS
+    name: "Easter Eggs"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "So pretty!"
+    ink:
+      BONE_MEAL: 3
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 5
+      PINK_DYE: 5
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 5
+      ROSE_RED: 3
+  - id: EEK
+    name: "Eek!"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "This is gonna be an epic"
+      - "fight!"
+    ink:
+      ORANGE_DYE: 5
+      DANDELION_YELLOW: 5
+      LIME_DYE: 1
+      PINK_DYE: 1
+      GRAY_DYE: 5
+      LIGHT_GRAY_DYE: 1
+      PURPLE_DYE: 1
+      LAPIS_LAZULI: 1
+      ROSE_RED: 10
+  - id: EGG_DECORATIONS
+    name: "Egg Decorations"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Create the fanciest egg!"
+    ink:
+      LIGHT_BLUE_DYE: 10
+      LAPIS_LAZULI: 10
+      COCOA_BEANS: 10
+      ROSE_RED: 5
+  - id: EGG_GUNNER
+    name: "Egg Gunner"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "You'd better run."
+    ink:
+      BONE_MEAL: 5
+      GRAY_DYE: 10
+      PURPLE_DYE: 10
+      COCOA_BEANS: 5
+      ROSE_RED: 5
+  - id: EGG_HIT
+    name: "Egg Hit"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "That's gotta hurt."
+    ink:
+      DANDELION_YELLOW: 5
+      LAPIS_LAZULI: 5
+      COCOA_BEANS: 10
+      CACTUS_GREEN: 10
+      ROSE_RED: 5
+  - id: EGG_HUNT
+    name: "Egg Hunt"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Who will get there first?"
+    ink:
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 5
+      LIME_DYE: 5
+      PURPLE_DYE: 5
+      COCOA_BEANS: 3
+      ROSE_RED: 2
+  - id: EGG_SURPRISE
+    name: "Egg Surprise"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "What's this!?"
+    ink:
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 5
+      PINK_DYE: 5
+      LAPIS_LAZULI: 2
+      CACTUS_GREEN: 3
+  - id: EGG_TIME
+    name: "Egg Time"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Ready for anything."
+    ink:
+      BONE_MEAL: 5
+      ORANGE_DYE: 5
+      DANDELION_YELLOW: 5
+      PURPLE_DYE: 10
+      ROSE_RED: 10
+  - id: ENCHANTING_ITEMS
+    name: "Enchanting Items"
+    category: UTILITY
+    source: DEFAULT
+    image: enchanting_items.png
+    lore:
+      - "A collection of"
+      - "enchanting-related items!"
+      - "Perfect for labeling."
+    ink:
+      MAGENTA_DYE: 5
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 10
+      PURPLE_DYE: 5
+      COCOA_BEANS: 10
+  - id: FABOOLOUS
+    name: "FaBOOlous"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Make sure your costume looks"
+      - "top notch!"
+    ink:
+      BONE_MEAL: 15
+      ORANGE_DYE: 10
+      LIGHT_BLUE_DYE: 5
+      CYAN_DYE: 5
+  - id: FAMILY_PHOTO
+    name: "Family Photo"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Lovely picture."
+    ink:
+      BONE_MEAL: 5
+      PURPLE_DYE: 10
+      COCOA_BEANS: 10
+      CACTUS_GREEN: 5
+      INK_SAC: 5
+  - id: FARMING_ARROW
+    name: "Farming Arrow"
+    category: UTILITY
+    source: DEFAULT
+    directions: 4
+    image: farming_arrow.png
+    lore:
+      - "A farming-themed arrow"
+      - "pointing in every cardinal!"
+    ink:
+      LIGHT_BLUE_DYE: 10
+      GRAY_DYE: 5
+      LIGHT_GRAY_DYE: 10
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 5
+  - id: FARMING_MINIONS
+    name: "Farming Minions"
+    category: UTILITY
+    source: DEFAULT
+    image: farming_minions.png
+    lore:
+      - "A bunch of farming-related"
+      - "minions! Perfect for labeling."
+    ink:
+      ORANGE_DYE: 5
+      MAGENTA_DYE: 15
+      DANDELION_YELLOW: 10
+      COCOA_BEANS: 5
+  - id: FISHING_ITEMS
+    name: "Fishing Items"
+    category: UTILITY
+    source: DEFAULT
+    image: fishing_items.png
+    lore:
+      - "A collection of"
+      - "fishing-related items! Perfect"
+      - "for labeling."
+    ink:
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 5
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 5
+      COCOA_BEANS: 5
+      ROSE_RED: 5
+  - id: FLOWERS_FOR_YOU
+    name: "Flowers For You"
+    category: MISCELLANEOUS
+    source: REWARD_BUNDLE
+    lore:
+      - "Is for you."
+    ink:
+      BONE_MEAL: 5
+      DANDELION_YELLOW: 5
+      LIME_DYE: 5
+      PINK_DYE: 5
+      CYAN_DYE: 5
+      CACTUS_GREEN: 10
+  - id: FORAGING_MINIONS
+    name: "Foraging Minions"
+    category: UTILITY
+    source: DEFAULT
+    image: foraging_minions.png
+    lore:
+      - "A bunch of foraging-related"
+      - "minions! Perfect for labeling."
+    ink:
+      MAGENTA_DYE: 15
+      DANDELION_YELLOW: 5
+      LIGHT_GRAY_DYE: 5
+      LAPIS_LAZULI: 5
+      CACTUS_GREEN: 5
+  - id: FOUND_U
+    name: "Found U!!"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Watch out, you're being"
+      - "hunted!"
+    ink:
+      GRAY_DYE: 5
+      CYAN_DYE: 10
+      LAPIS_LAZULI: 10
+      ROSE_RED: 10
+  - id: FULL_MOON
+    name: "Full Moon"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Howl."
+    ink:
+      BONE_MEAL: 10
+      ORANGE_DYE: 10
+      LAPIS_LAZULI: 10
+      INK_SAC: 5
+  - id: GARLIC
+    name: "Garlic"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "A vampire's fatal weakness!"
+    ink:
+      BONE_MEAL: 10
+      CYAN_DYE: 10
+      LAPIS_LAZULI: 10
+      ROSE_RED: 5
+  - id: GLOWING_CHEST
+    name: "Glowing Chest"
+    category: MISCELLANEOUS
+    source: RANK_GIFTING
+    lore:
+      - "Ideal for indicating that a chest"
+      - "has very valuable items in it!"
+    ink:
+      LIME_DYE: 5
+      COCOA_BEANS: 10
+      INK_SAC: 20
+  - id: GOLDEN_EGG
+    name: "Golden Egg"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Ooo, shiny."
+    ink:
+      ORANGE_DYE: 10
+      DANDELION_YELLOW: 15
+      PURPLE_DYE: 5
+  - id: GOLEM_PICNIC
+    name: "Golem Picnic"
+    category: MISCELLANEOUS
+    source: REWARD_BUNDLE
+    lore:
+      - "What a nice outing!"
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 5
+      LIME_DYE: 10
+      LIGHT_GRAY_DYE: 5
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 5
+  - id: HALLOWEEN_COSTUMES
+    name: "Halloween Costumes"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP"
+  - id: HAMMOCK
+    name: "Hammock"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Lounge and relax."
+    ink:
+      DANDELION_YELLOW: 10
+      CYAN_DYE: 10
+      CACTUS_GREEN: 5
+      ROSE_RED: 10
+  - id: HYPIXEL_LOGO
+    name: "Hypixel Logo"
+    category: MISCELLANEOUS
+    source: DEFAULT
+    image: hypixel_logo.png
+    lore:
+      - "The iconic golden Hypixel \"H\""
+      - "on a white background!"
+    ink:
+      BONE_MEAL: 3
+      DANDELION_YELLOW: 1
+  - id: HYPIXEL_LOGO_DARK
+    name: "Hypixel Logo (Dark)"
+    category: MISCELLANEOUS
+    source: DEFAULT
+    image: hypixel_logo_dark.png
+    lore:
+      - "The iconic golden Hypixel \"H\""
+      - "on a blue background!"
+    ink:
+      BONE_MEAL: 2
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 1
+      LAPIS_LAZULI: 10
+  - id: HYPIXEL_SAND_CASTLE
+    name: "Hypixel Sand Castle"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Crafty architecture."
+    ink:
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 10
+      LAPIS_LAZULI: 5
+      CACTUS_GREEN: 5
+      ROSE_RED: 5
+  - id: I_HEART_ICE_CREAM
+    name: "I Heart Ice Cream"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Everyone loves ice cream on a"
+      - "warm summer day."
+    ink:
+      BONE_MEAL: 5
+      PURPLE_DYE: 10
+      COCOA_BEANS: 5
+      ROSE_RED: 5
+  - id: ICE_SCREAM_CART
+    name: "Ice Scream Cart"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "A topping of betrayal."
+    ink:
+      ORANGE_DYE: 5
+      LIME_DYE: 5
+      PINK_DYE: 5
+      LIGHT_GRAY_DYE: 10
+      COCOA_BEANS: 5
+      ROSE_RED: 5
+  - id: JERRY_ISLAND_POSTER
+    name: "Jerry Island Poster"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+  - id: KITE
+    name: "Kite"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "It's windy! The perfect"
+      - "conditions for any minion to get"
+      - "their kites out!"
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 5
+      LIME_DYE: 5
+      CYAN_DYE: 10
+      ROSE_RED: 2
+  - id: LAZY_BUNNIES
+    name: "Lazy Bunnies"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Always save time to relax!"
+    ink:
+      BONE_MEAL: 5
+      DANDELION_YELLOW: 10
+      GRAY_DYE: 5
+      LAPIS_LAZULI: 10
+      COCOA_BEANS: 5
+  - id: LAZY_SPRING
+    name: "Lazy Spring"
+    category: MISCELLANEOUS
+    source: REWARD_BUNDLE
+    lore:
+      - "Just laying in the sun."
+    ink:
+      LIGHT_BLUE_DYE: 10
+      LIME_DYE: 10
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 10
+  - id: LEI
+    name: "Lei"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+  - id: LET_US_IN
+    name: "Let Us In"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "LET US IIIIIIN!"
+    ink:
+      ORANGE_DYE: 5
+      DANDELION_YELLOW: 5
+      GRAY_DYE: 5
+      CYAN_DYE: 5
+      LAPIS_LAZULI: 5
+      ROSE_RED: 5
+      INK_SAC: 10
+  - id: LIFEBELT
+    name: "Lifebelt"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Safety first!"
+    ink:
+      LIGHT_BLUE_DYE: 10
+      LIGHT_GRAY_DYE: 7
+      CYAN_DYE: 10
+      ROSE_RED: 7
+  - id: LOOT_ITEMS
+    name: "Loot Items"
+    category: UTILITY
+    source: DEFAULT
+    image: loot_items.png
+    lore:
+      - "A collection of loot-related"
+      - "items! Perfect for labeling."
+    ink:
+      BONE_MEAL: 5
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 10
+      CACTUS_GREEN: 5
+      ROSE_RED: 5
+  - id: MENORAH
+    name: "Menorah"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Happy Hanukkah!"
+    ink:
+      ORANGE_DYE: 5
+      DANDELION_YELLOW: 10
+      LAPIS_LAZULI: 10
+      COCOA_BEANS: 10
+  - id: MINING_MINIONS
+    name: "Mining Minions"
+    category: UTILITY
+    source: DEFAULT
+    image: mining_minions.png
+    lore:
+      - "A bunch of mining-related"
+      - "minions! Perfect for labeling."
+    ink:
+      MAGENTA_DYE: 15
+      DANDELION_YELLOW: 2
+      GRAY_DYE: 5
+      LIGHT_GRAY_DYE: 5
+      LAPIS_LAZULI: 5
+      CACTUS_GREEN: 2
+      ROSE_RED: 1
+  - id: MISC_MINIONS
+    name: "Misc. Minions"
+    category: UTILITY
+    source: DEFAULT
+    image: misc_minions.png
+    lore:
+      - "A bunch of minions! Perfect"
+      - "for labeling."
+    ink:
+      MAGENTA_DYE: 20
+      LIGHT_BLUE_DYE: 5
+      CYAN_DYE: 5
+      COCOA_BEANS: 5
+  - id: MISTOLTOE
+    name: "Mistoltoe"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Watch above you!"
+    ink:
+      BONE_MEAL: 10
+      ORANGE_DYE: 10
+      DANDELION_YELLOW: 10
+      GRAY_DYE: 5
+  - id: MONSTER_MINIONS
+    name: "Monster Minions"
+    category: UTILITY
+    source: DEFAULT
+    image: monster_minions.png
+    lore:
+      - "A bunch of mob-related"
+      - "minions! Perfect for labeling."
+    ink:
+      BONE_MEAL: 5
+      MAGENTA_DYE: 15
+      LIME_DYE: 5
+      COCOA_BEANS: 5
+      ROSE_RED: 5
+  - id: ON_FIRE
+    name: "On Fire"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "They're on fire!!"
+    ink:
+      PINK_DYE: 10
+      ROSE_RED: 10
+      INK_SAC: 10
+  - id: ONE_OF_US
+    name: "One of Us"
+    category: MISCELLANEOUS
+    source: REWARD_BUNDLE
+    lore:
+      - "Join!"
+    ink:
+      BONE_MEAL: 10
+      DANDELION_YELLOW: 5
+      LIME_DYE: 15
+      CYAN_DYE: 5
+  - id: ORE_ITEMS
+    name: "Ore Items"
+    category: UTILITY
+    source: DEFAULT
+    image: ore_items.png
+    lore:
+      - "A collection of ores! Perfect"
+      - "for labeling."
+    ink:
+      BONE_MEAL: 3
+      LIGHT_BLUE_DYE: 3
+      DANDELION_YELLOW: 3
+      LIME_DYE: 3
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 10
+      LAPIS_LAZULI: 3
+      ROSE_RED: 3
+      INK_SAC: 3
+  - id: PAINTED_DRAGON_EGG
+    name: "Painted Dragon Egg"
+    category: MISCELLANEOUS
+    source: REWARD_BUNDLE
+    lore:
+      - "Just like all the others."
+    ink:
+      PURPLE_DYE: 15
+      LAPIS_LAZULI: 10
+      COCOA_BEANS: 10
+  - id: PORKCHOP
+    name: "Porkchop"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Chop chop!"
+    ink:
+      LIME_DYE: 5
+      PINK_DYE: 15
+      GRAY_DYE: 2
+      LIGHT_GRAY_DYE: 2
+      CACTUS_GREEN: 5
+      INK_SAC: 1
+  - id: PORTAL_ARROW
+    name: "Portal Arrow"
+    category: UTILITY
+    source: DEFAULT
+    directions: 4
+    image: portal_arrow.png
+    lore:
+      - "A portal-themed arrow pointing"
+      - "in every cardinal!"
+    ink:
+      LIGHT_GRAY_DYE: 15
+      PURPLE_DYE: 20
+  - id: POTION_BREWER
+    name: "Potion Brewer"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Double, double toil and"
+      - "trouble."
+    ink:
+      LIGHT_BLUE_DYE: 5
+      PURPLE_DYE: 10
+      CACTUS_GREEN: 10
+      INK_SAC: 10
+  - id: POTION_ITEMS
+    name: "Potion Items"
+    category: UTILITY
+    source: DEFAULT
+    image: potion_items.png
+    lore:
+      - "A collection of potions!"
+      - "Perfect for labeling."
+    ink:
+      LIGHT_BLUE_DYE: 5
+      LIME_DYE: 5
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 10
+      PURPLE_DYE: 5
+      ROSE_RED: 5
+  - id: PRESENTS
+    name: "Presents"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "LET US IIIIIIN!"
+    ink:
+      ORANGE_DYE: 5
+      DANDELION_YELLOW: 5
+      GRAY_DYE: 5
+      CYAN_DYE: 5
+      LAPIS_LAZULI: 5
+      ROSE_RED: 5
+      INK_SAC: 10
+  - id: PUFFER
+    name: "Puffer"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Blub."
+    ink:
+      BONE_MEAL: 5
+      ORANGE_DYE: 5
+      LIGHT_BLUE_DYE: 5
+      LAPIS_LAZULI: 10
+      ROSE_RED: 5
+  - id: PUMPKINZ
+    name: "Pumpkinz"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Spooky carvings!"
+    ink:
+      ORANGE_DYE: 10
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 5
+      LAPIS_LAZULI: 10
+  - id: PUPPY_SURPRISE
+    name: "Puppy Surprise"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Adorable!"
+    ink:
+      LAPIS_LAZULI: 10
+      COCOA_BEANS: 10
+      CACTUS_GREEN: 10
+      ROSE_RED: 5
+  - id: RABBIT_COSTUME
+    name: "Rabbit Costume"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "All dressed up!"
+    ink:
+      BONE_MEAL: 15
+      LIGHT_BLUE_DYE: 5
+      PINK_DYE: 2
+      LAPIS_LAZULI: 5
+      INK_SAC: 3
+  - id: RABBITS_IN_A_BASKET
+    name: "Rabbits in a Basket"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Look how cozy they are!"
+    ink:
+      BONE_MEAL: 10
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 3
+      PINK_DYE: 5
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 5
+      ROSE_RED: 2
+  - id: RADIATING_HEART
+    name: "Radiating Heart"
+    category: MISCELLANEOUS
+    source: RANK_GIFTING
+    lore:
+      - "So lovely!"
+    ink:
+      ORANGE_DYE: 2
+      DANDELION_YELLOW: 3
+      PINK_DYE: 30
+  - id: RED_ARROW
+    name: "Red Arrow"
+    category: UTILITY
+    source: DEFAULT
+    directions: 8
+    image: red_arrow.png
+    lore:
+      - "An arrow pointing in every"
+      - "cardinal and intercardinal"
+      - "direction!"
+    ink:
+      LIGHT_GRAY_DYE: 15
+      ROSE_RED: 20
+  - id: RELAXATION
+    name: "Relaxation"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Just chilling on the beach."
+    ink:
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 10
+      PURPLE_DYE: 3
+      LAPIS_LAZULI: 5
+      COCOA_BEANS: 7
+  - id: RELAXING_SLOTH
+    name: "Relaxing Sloth"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Chill."
+    ink:
+      ORANGE_DYE: 5
+      LIGHT_BLUE_DYE: 10
+      PURPLE_DYE: 10
+      COCOA_BEANS: 10
+  - id: SANDCASTLE
+    name: "Sandcastle"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Thankfully nobody can step on"
+      - "this piece of art."
+    ink:
+      ORANGE_DYE: 5
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 10
+      CYAN_DYE: 10
+  - id: SANTA_JERRY
+    name: "Santa Jerry"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "His beard is actually made of"
+      - "snow."
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 5
+      LAPIS_LAZULI: 5
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 2
+      ROSE_RED: 3
+  - id: SANTA_SLIPS
+    name: "Santa Slips"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "We can fix that."
+    ink:
+      BONE_MEAL: 5
+      COCOA_BEANS: 10
+      ROSE_RED: 10
+      INK_SAC: 10
+  - id: SCARY_JERRY
+    name: "Scary Jerry"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Spooky!"
+    ink:
+      ORANGE_DYE: 10
+      PURPLE_DYE: 10
+      COCOA_BEANS: 10
+      INK_SAC: 5
+  - id: SEA_BASS
+    name: "Sea Bass"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "That's at least a C+!"
+    ink:
+      BONE_MEAL: 5
+      GRAY_DYE: 5
+      CYAN_DYE: 5
+      LAPIS_LAZULI: 10
+      COCOA_BEANS: 10
+  - id: SKYBLOCK_CHRISTMAS
+    name: "SkyBlock Christmas"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "What a wonderful time of year!"
+    ink:
+      CYAN_DYE: 5
+      PURPLE_DYE: 5
+      LAPIS_LAZULI: 10
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 10
+  - id: SLEDDING
+    name: "Sledding"
+    category: WINTER
+    source: ADVENT_CALENDAR
+    lore:
+      - "Weee!"
+    ink:
+      BONE_MEAL: 10
+      LIGHT_BLUE_DYE: 5
+      COCOA_BEANS: 10
+      CACTUS_GREEN: 10
+  - id: SLOTH_BURN
+    name: "Sloth Burn"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Everything is fine!"
+    ink:
+      ORANGE_DYE: 10
+      DANDELION_YELLOW: 10
+      LAPIS_LAZULI: 5
+      COCOA_BEANS: 10
+  - id: SNIPER_SNOWBALL
+    name: "Sniper Snowball"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Target acquired."
+    ink:
+      GRAY_DYE: 10
+      LAPIS_LAZULI: 10
+      CACTUS_GREEN: 10
+      ROSE_RED: 5
+  - id: SNORKELING
+    name: "Snorkeling"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Dive down deep!"
+    ink:
+      ORANGE_DYE: 10
+      DANDELION_YELLOW: 5
+      LAPIS_LAZULI: 15
+      ROSE_RED: 5
+  - id: SNOW_ANGEL_SPRAY
+    name: "Snow Angel Spray"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Soft and fluffy snow!"
+    ink:
+      BONE_MEAL: 15
+      GRAY_DYE: 10
+      LAPIS_LAZULI: 10
+  - id: SNOW_JERRY
+    name: "Snow Jerry"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Do you wanna build a snow"
+      - "jerry?"
+    ink:
+      BONE_MEAL: 10
+      LIGHT_BLUE_DYE: 10
+      LAPIS_LAZULI: 10
+      ROSE_RED: 5
+  - id: SNOWBALL
+    name: "Snowball"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "This is gonna turn into an"
+      - "avalanche..."
+    ink:
+      BONE_MEAL: 10
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 5
+      CACTUS_GREEN: 2
+      ROSE_RED: 5
+      INK_SAC: 3
+  - id: SNOWBALL_FIGHT
+    name: "Snowball Fight"
+    category: WINTER
+    source: ADVENT_CALENDAR
+    lore:
+      - "Be prepared"
+    ink:
+      BONE_MEAL: 10
+      LIGHT_BLUE_DYE: 10
+      LAPIS_LAZULI: 10
+      ROSE_RED: 5
+  - id: SPARKLERS
+    name: "Sparklers"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+  - id: SPOOKY_SKELINGTON
+    name: "Spooky Skelington"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    ink:
+      BONE_MEAL: 10
+      LIGHT_BLUE_DYE: 5
+      LAPIS_LAZULI: 10
+      INK_SAC: 10
+  - id: STORAGE_ARROW
+    name: "Storage Arrow"
+    category: UTILITY
+    source: DEFAULT
+    directions: 4
+    image: storage_arrow.png
+    lore:
+      - "A storage-themed arrow"
+      - "pointing in every cardinal!"
+    ink:
+      LIGHT_BLUE_DYE: 10
+      LIGHT_GRAY_DYE: 10
+      COCOA_BEANS: 15
+  - id: SUNBATHER
+    name: "Sunbather"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Relaxing on the beach."
+    ink:
+      BONE_MEAL: 5
+      ORANGE_DYE: 10
+      DANDELION_YELLOW: 10
+      CYAN_DYE: 10
+  - id: SUNBATHING
+    name: "Sunbathing"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Relax in the sun."
+    ink:
+      DANDELION_YELLOW: 15
+      LAPIS_LAZULI: 10
+      INK_SAC: 10
+  - id: SURFING
+    name: "Surfing"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Only for professional"
+      - "wave-riders!"
+    ink:
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 5
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 5
+      LAPIS_LAZULI: 10
+  - id: SURFS_UP
+    name: "Surfs Up"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+  - id: SWEET_TREAT
+    name: "Sweet Treat"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Ice cream!"
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 5
+      LAPIS_LAZULI: 10
+      COCOA_BEANS: 5
+      INK_SAC: 5
+  - id: SWEETS
+    name: "Sweets"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Gather up all the candy!"
+    ink:
+      ORANGE_DYE: 5
+      DANDELION_YELLOW: 5
+      PINK_DYE: 5
+      CYAN_DYE: 10
+      PURPLE_DYE: 5
+      COCOA_BEANS: 5
+  - id: THE_WRONG_EGGS
+    name: "The Wrong Eggs"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "Maybe it wasn't such a good"
+      - "idea."
+    ink:
+      BONE_MEAL: 5
+      ORANGE_DYE: 2
+      LIGHT_BLUE_DYE: 3
+      DANDELION_YELLOW: 10
+      PINK_DYE: 5
+      ROSE_RED: 3
+      INK_SAC: 2
+  - id: THIS_IS_FINE
+    name: "This is Fine"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Don't worry!"
+    ink:
+      BONE_MEAL: 5
+      ORANGE_DYE: 10
+      DANDELION_YELLOW: 10
+      GRAY_DYE: 10
+  - id: TRAP
+    name: "Trap"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "VIP"
+    lore:
+      - "Got 'em!"
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 2
+      GRAY_DYE: 5
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 1
+      LAPIS_LAZULI: 2
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 2
+      ROSE_RED: 3
+  - id: TRICK_OR_TREAT
+    name: "Trick Or Treat"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "I hope it's treats!"
+    ink:
+      BONE_MEAL: 1
+      PINK_DYE: 2
+      GRAY_DYE: 10
+      LIGHT_GRAY_DYE: 5
+      LAPIS_LAZULI: 2
+      INK_SAC: 10
+  - id: UBS
+    name: "UBS"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+  - id: UGLY_CHRISTMAS_SWEATER
+    name: "Ugly Christmas Sweater"
+    category: WINTER
+    source: ADVENT_CALENDAR
+    lore:
+      - "It's actually nice!"
+    ink:
+      BONE_MEAL: 15
+      COCOA_BEANS: 5
+  - id: UGLY_EASTER_SWEATER
+    name: "Ugly Easter Sweater"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "The best sweater!"
+    ink:
+      BONE_MEAL: 10
+      DANDELION_YELLOW: 5
+      LIME_DYE: 10
+      CACTUS_GREEN: 10
+  - id: UGLY_EASTER_SWEATER_2
+    name: "Ugly Easter Sweater #2"
+    category: EASTER
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "More of the best sweater!"
+    ink:
+      BONE_MEAL: 5
+      DANDELION_YELLOW: 15
+      PINK_DYE: 15
+  - id: UNDEAD_JERRY
+    name: "Undead Jerry"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Despite the Zombie-fication,"
+      - "he's still your trusty"
+      - "Assistant."
+    ink:
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 2
+      LIGHT_GRAY_DYE: 5
+      PURPLE_DYE: 1
+      LAPIS_LAZULI: 5
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 5
+      INK_SAC: 2
+  - id: UNDEAD_LIFESAVING_ASSOCIATION
+    name: "Undead Lifesaving Association"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "The dead never rest!"
+    ink:
+      BONE_MEAL: 5
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 5
+      CYAN_DYE: 5
+      COCOA_BEANS: 5
+      CACTUS_GREEN: 5
+      ROSE_RED: 5
+  - id: VACATION
+    name: "Vacation"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Even minions need a break!"
+    ink:
+      LIGHT_BLUE_DYE: 5
+      DANDELION_YELLOW: 3
+      CYAN_DYE: 10
+      COCOA_BEANS: 10
+      CACTUS_GREEN: 5
+      INK_SAC: 3
+  - id: VOLLEYBALL
+    name: "Volleyball"
+    category: SUMMER
+    source: REWARD_BUNDLE
+    rank: "MVP"
+    lore:
+      - "Beach sport is the best kind"
+      - "of sport!"
+    ink:
+      LIGHT_BLUE_DYE: 10
+      DANDELION_YELLOW: 10
+      PINK_DYE: 5
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 5
+  - id: WATCHER
+    name: "Watcher"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP++"
+    lore:
+      - "It's always watching."
+    ink:
+      BONE_MEAL: 10
+      GRAY_DYE: 10
+      PURPLE_DYE: 5
+      CACTUS_GREEN: 10
+  - id: WEAPON_ITEMS
+    name: "Weapon Items"
+    category: UTILITY
+    source: DEFAULT
+    image: weapon_items.png
+    lore:
+      - "A collection of weapons!"
+      - "Perfect for labeling."
+    ink:
+      ORANGE_DYE: 5
+      DANDELION_YELLOW: 10
+      GRAY_DYE: 5
+      LIGHT_GRAY_DYE: 5
+      CYAN_DYE: 10
+  - id: WHOOSH
+    name: "Whoosh"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "Whoosh!"
+    ink:
+      LIME_DYE: 3
+      GRAY_DYE: 7
+      LIGHT_GRAY_DYE: 10
+      PURPLE_DYE: 10
+  - id: WITCH_PLEASE
+    name: "Witch Please"
+    category: HALLOWEEN
+    source: REWARD_BUNDLE
+    rank: "MVP+"
+    lore:
+      - "Would you please?"
+    ink:
+      BONE_MEAL: 10
+      PURPLE_DYE: 10
+      CACTUS_GREEN: 5
+      INK_SAC: 10
+  - id: WREATH
+    name: "Wreath"
+    category: WINTER
+    source: REWARD_BUNDLE
+    rank: "VIP+"
+    lore:
+      - "So pretty!"
+    ink:
+      COCOA_BEANS: 10
+      CACTUS_GREEN: 15
+      ROSE_RED: 5
+  - id: YELLOW_ARROW
+    name: "Yellow Arrow"
+    category: UTILITY
+    source: DEFAULT
+    directions: 8
+    image: yellow_arrow.png
+    lore:
+      - "An arrow pointing in every"
+      - "cardinal and intercardinal"
+      - "direction!"
+    ink:
+      DANDELION_YELLOW: 25
+      LIGHT_GRAY_DYE: 10

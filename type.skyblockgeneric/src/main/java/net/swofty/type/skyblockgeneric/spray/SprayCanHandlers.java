@@ -1,9 +1,17 @@
 package net.swofty.type.skyblockgeneric.spray;
 
+import net.swofty.type.skyblockgeneric.gui.inventories.spraycan.GUISprayCan;
 import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
+import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreConfig;
 import net.swofty.type.skyblockgeneric.item.handlers.place.PlaceEventHandler;
 
-/** Item callbacks for the Spray Can, registered under the handler id {@value #HANDLER_ID}. */
+import java.util.List;
+
+/**
+ * Item callbacks for the Spray Can, registered under the handler id {@value #HANDLER_ID}.
+ * Left-click opens the Spray Selector (or picks a palette colour in the Canvas Room); right-click on
+ * a block sprays the selected spray, or paints when aimed at Marco's canvas.
+ */
 public final class SprayCanHandlers {
     public static final String HANDLER_ID = "SPRAY_CAN";
 
@@ -15,7 +23,8 @@ public final class SprayCanHandlers {
                     if (CanvasRoomPainter.isInCanvasRoom(player)) CanvasRoomPainter.paint(player);
                 })
                 .leftClickHandler((player, item) -> {
-                    if (CanvasRoomPainter.isInCanvasRoom(player)) CanvasRoomPainter.pickColour(player);
+                    if (CanvasRoomPainter.isInCanvasRoom(player) && CanvasRoomPainter.pickColour(player)) return;
+                    player.openView(new GUISprayCan(), GUISprayCan.State.forHeldCan(player));
                 })
                 .build();
     }
@@ -23,7 +32,14 @@ public final class SprayCanHandlers {
     public static PlaceEventHandler place() {
         return (event, player, item) -> {
             event.setCancelled(true);
-            if (CanvasRoomPainter.isInCanvasRoom(player)) CanvasRoomPainter.paint(player);
+            if (CanvasRoomPainter.isInCanvasRoom(player) && CanvasRoomPainter.paint(player)) return;
+            SprayPlacer.spray(player, item, event.getBlockPosition(), event.getBlockFace());
         };
+    }
+
+    public static LoreConfig lore() {
+        return new LoreConfig((item, player) -> List.of(
+                "<e>Selected Spray: " + SprayCanData.of(item).selected().map(spray -> "<a>" + spray.name()).orElse("<c>NONE"),
+                ""), null);
     }
 }

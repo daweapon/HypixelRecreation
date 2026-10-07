@@ -5,6 +5,7 @@ import net.swofty.commons.skyblock.item.PotatoType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.fishing.rod.FishingRodLoreBuilder;
+import net.swofty.type.skyblockgeneric.spray.SprayCanHandlers;
 import net.swofty.type.skyblockgeneric.utility.groups.EnchantItemGroups;
 
 import java.util.ArrayList;
@@ -57,6 +58,7 @@ public class LoreRegistry {
                 "<e> ",
                 "<e>Click to open!"
         ), (item, player) -> "<a>SkyBlock Menu <7>(Click)"));
+        register(SprayCanHandlers.HANDLER_ID, SprayCanHandlers.lore());
         register("HOT_POTATO_BOOK", new LoreConfig((item, player) -> PotatoType.allLores(), null));
         register("FISHING_ROD", new LoreConfig(
             (item, player) -> {
