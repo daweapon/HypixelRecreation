@@ -296,6 +296,78 @@ public class LeaderboardService {
         }
     }
 
+    private static final String CONSUME_STOCK_SCRIPT = """
+            local used = tonumber(redis.call('GET', KEYS[1]) or '0')
+            local amount = tonumber(ARGV[1])
+            if used + amount > tonumber(ARGV[2]) then return -1 end
+            redis.call('INCRBY', KEYS[1], amount)
+            redis.call('EXPIRE', KEYS[1], tonumber(ARGV[3]))
+            return used + amount""";
+
+    /**
+     * Atomically takes {@code amount} units from a stock shared by every server.
+     * @return the units used after taking, -1 if the stock can't cover it, -2 if Redis is unavailable
+     */
+    public static long consumeSharedStock(String stockKey, int amount, long limit, long ttlSeconds) {
+        if (!isInitialized()) return -2;
+
+        try (Jedis jedis = jedisPool.getResource()) {
+            Object result = jedis.eval(CONSUME_STOCK_SCRIPT, List.of(PREFIX + stockKey),
+                    List.of(String.valueOf(amount), String.valueOf(limit), String.valueOf(ttlSeconds)));
+            return ((Number) result).longValue();
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to consume shared stock {}", stockKey);
+            return -2;
+        }
+    }
+
+    public static void releaseSharedStock(String stockKey, int amount) {
+        if (!isInitialized()) return;
+
+        try (Jedis jedis = jedisPool.getResource()) {
+            jedis.decrBy(PREFIX + stockKey, amount);
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to release shared stock {}", stockKey);
+        }
+    }
+
+    public static long sharedStockUsed(String stockKey) {
+        if (!isInitialized()) return 0;
+
+        try (Jedis jedis = jedisPool.getResource()) {
+            String used = jedis.get(PREFIX + stockKey);
+            return used == null ? 0 : Long.parseLong(used);
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to read shared stock {}", stockKey);
+            return 0;
+        }
+    }
+
+    public static boolean setExpiringScore(String leaderboardKey, UUID member, double score, long ttlSeconds) {
+        if (!isInitialized()) return false;
+
+        try (Jedis jedis = jedisPool.getResource()) {
+            jedis.zadd(PREFIX + leaderboardKey, score, member.toString(), ZAddParams.zAddParams().gt());
+            jedis.expire(PREFIX + leaderboardKey, ttlSeconds);
+            return true;
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to set expiring score for {} on {}", member, leaderboardKey);
+            return false;
+        }
+    }
+
+    public static Double scoreAtRank(String leaderboardKey, long rank) {
+        if (!isInitialized() || rank < 1) return null;
+
+        try (Jedis jedis = jedisPool.getResource()) {
+            List<Tuple> results = jedis.zrevrangeWithScores(PREFIX + leaderboardKey, rank - 1, rank - 1);
+            return results.isEmpty() ? null : results.getFirst().getScore();
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to read rank {} of {}", rank, leaderboardKey);
+            return null;
+        }
+    }
+
     /**
      * Shutdown the leaderboard service.
      */

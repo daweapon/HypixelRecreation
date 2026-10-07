@@ -1,0 +1,60 @@
+items:
+  - id: STOCK_OF_STONKS
+    material: paper
+    name: "Stock of Stonks"
+    rarity: EPIC
+    lore:
+      - "\xA77Can be traded in to \xA7aLiz \xA77when \xA76Diaz \xA77is"
+      - "\xA77Mayor for \xA7dspecial items\xA77!"
+      - ""
+      - "\xA78\xA7oStarted as a shady venture by an"
+      - "\xA78\xA7oestranged comrade of Diaz's. She"
+      - "\xA78\xA7olater adopted it herself for"
+      - "\xA78\xA7opersonal use to fuel her candidacy."
+  - id: FRESHLY_MINTED_COINS
+    material: player_head
+    name: "Freshly-Minted Coins"
+    rarity: RARE
+    lore:
+      - "\xA77Nothing beats the smell of fresh"
+      - "\xA76Coins\xA77. Except for lots of things."
+    components:
+      - id: SKULL_HEAD
+        texture: 8893a7d3a92c5c3c124e5c81a4969d61d71751527fe0fbfb6852ca70fb0d0908
+  - id: GOLDEN_FRAGMENT
+    material: player_head
+    name: "Golden Fragment"
+    rarity: EPIC
+    lore:
+      - "\xA76Gold\xA77, but broken into fragments. This"
+      - "\xA77makes it important somehow."
+    components:
+      - id: SKULL_HEAD
+        texture: 804c5ce12545a7ccdf0a35b9df0ef9bac15826c3a0786e1ce10f3ec7d0656f61
+  - id: GOLDEN_BOUNTY
+    material: player_head
+    name: "Golden Bounty"
+    rarity: LEGENDARY
+    lore:
+      - "\xA78Combinable in Anvil"
+      - ""
+      - "\xA77When applied to a weapon, increases"
+      - "\xA77its \xA79Scavenger \xA77level by \xA7a1\xA77!"
+      - "\xA78Can be applied once."
+      - "\xA78Requires Scavenger V!"
+    components:
+      - id: SKULL_HEAD
+        texture: 8e6e10a9ef1b2cdd998557554b209f369ada7bc50b47c81ed14ab2632dab3834
+      - id: SELLABLE
+        value: 1000000.0
+      - id: NOT_FINISHED_YET
+  - id: AVARICIOUS_CHALICE
+    material: player_head
+    name: "Avaricious Chalice"
+    rarity: EPIC
+    lore:
+      - "\xA77Said to make any drink inside it taste"
+      - "\xA77like \xA76gold\xA77."
+    components:
+      - id: SKULL_HEAD
+        texture: 315ca96954db319fef597654e5866e0891e67eeabd97d28910f15d6094e246b7
