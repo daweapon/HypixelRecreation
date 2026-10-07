@@ -93,6 +93,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/party <subcommand>` | `/p` | Party management commands. | DEFAULT | No | `type.generic` |
 | `/pchat <message>` | `/pc` | Sends a message to party chat. Forwards to /party chat with existing membership and chat restrictions. | DEFAULT | No | `type.generic` |
 | `/pl` | — | Lists your party members. Forwards to /party list. | DEFAULT | No | `type.generic` |
+| `/trade <player>` | — | Sends a trade request to a player, or accepts theirs if they already sent you one; shift-right-clicking a player or clicking the Emerald in their profile does the same. Opens the trade menu for both. The player must be on your server and within 9 blocks; Ironman profiles can't trade; Soulbound items, Sacks and the SkyBlock Menu are refused, and Co-op Soulbound items only go to co-op members. Coins sent per day are capped at 50M (1B from SkyBlock Level 50, 10B from Level 100). Requests expire after 60 seconds. | DEFAULT | No | `type.skyblockgeneric` |
 
 ### Travel and lobbies
 

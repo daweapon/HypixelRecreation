@@ -22,6 +22,7 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperien
 import net.swofty.type.skyblockgeneric.data.monogdb.CoopDatabase;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
+import net.swofty.type.skyblockgeneric.trade.TradeManager;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -169,7 +170,8 @@ public class GUIViewPlayerProfile extends HypixelInventoryGUI {
 			@Override
 			public void run(InventoryPreClickEvent e, HypixelPlayer p) {
 				SkyBlockPlayer player = (SkyBlockPlayer) p;
-				player.sendMessage(Text.key("gui_profile.feature_not_added"));
+				player.closeInventory();
+				TradeManager.request(player, viewedPlayer);
 			}
 
 			@Override
