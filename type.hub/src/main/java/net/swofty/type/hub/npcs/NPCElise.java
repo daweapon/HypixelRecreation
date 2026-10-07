@@ -5,9 +5,11 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.skill.SkillCategories;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// NPC for Elise, a decorative Hub NPC with no interaction logic
 public class NPCElise extends HypixelNPC {
+    private static final int GREAT_ENCHANTER_LEVEL = 30;
 
     public NPCElise() {
         super(new HumanConfiguration() {
@@ -40,6 +42,18 @@ public class NPCElise extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
 
+        boolean greatEnchanter = player.getSkills().getCurrentLevel(SkillCategories.ENCHANTING) >= GREAT_ENCHANTER_LEVEL;
+        setDialogue(player, greatEnchanter ? "enchanter" : "novice");
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("enchanter", "npcs_hub.elise.dialogue.enchanter"),
+                DialogueSet.ofTranslation("novice", "npcs_hub.elise.dialogue.novice")
+        };
     }
 }

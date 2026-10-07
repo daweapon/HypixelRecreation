@@ -51,6 +51,14 @@ public class NPCLotusAtoll extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        if (isInDialogue(e.player())) return;
+        setDialogue(e.player(), "advert");
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.ofTranslation("advert", "npcs_hub.lotus_atoll.dialogue.advert")
+        };
     }
 }
