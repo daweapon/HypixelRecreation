@@ -177,7 +177,7 @@ public final class GUI23SeaCreatureGuide extends SeaCreatureGuidePage {
             <7>- <b>Water
             <7>- <6>Spooky Festival"""),
         head(22, "ea575977e6bd0c7add94e2d8fdcc2af77e36c44d6b4c67788862a94000be6399", """
-            <7>[Lvl 50] Tiger Shark (<5><l>Epic</l><7>)
+            <7>[Lvl 99] Tiger Shark (<5><l>Epic</l><7>)
             <9>⚓ Aquatic<7>, <a>☮ Animal
 
             <c>Drops:

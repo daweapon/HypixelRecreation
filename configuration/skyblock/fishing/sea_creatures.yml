@@ -53,6 +53,24 @@ seaCreatures:
     skillXp: 20000
     tags: [WATER, MYTHIC]
 
+  # ---------- sharks (Fishing Festival only; they replace water catches) ----------
+  - id: NURSE_SHARK
+    requiredFishingLevel: 5
+    skillXp: 220
+    tags: [WATER, FISHING_FESTIVAL, SHARK, UNCOMMON]
+  - id: BLUE_SHARK
+    requiredFishingLevel: 10
+    skillXp: 650
+    tags: [WATER, FISHING_FESTIVAL, SHARK, RARE]
+  - id: TIGER_SHARK
+    requiredFishingLevel: 18
+    skillXp: 1485
+    tags: [WATER, FISHING_FESTIVAL, SHARK, EPIC]
+  - id: GREAT_WHITE_SHARK
+    requiredFishingLevel: 24
+    skillXp: 3200
+    tags: [WATER, FISHING_FESTIVAL, SHARK, LEGENDARY]
+
   # ---------- lava (Crimson Isle) ----------
   - id: MAGMA_SLUG
     requiredFishingLevel: 21

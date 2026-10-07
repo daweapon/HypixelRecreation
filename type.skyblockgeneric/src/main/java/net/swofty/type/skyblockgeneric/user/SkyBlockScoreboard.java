@@ -51,7 +51,7 @@ public class SkyBlockScoreboard {
     // in-game way to see their remaining time.
     private static final List<CalendarEvent> SEASONAL_SCOREBOARD_EVENTS = List.of(
         CalendarEvent.NEW_YEAR, CalendarEvent.TRAVELING_ZOO,
-        CalendarEvent.SPOOKY_FESTIVAL, CalendarEvent.SEASON_OF_JERRY
+        CalendarEvent.SPOOKY_FESTIVAL, CalendarEvent.SEASON_OF_JERRY, CalendarEvent.FISHING_FESTIVAL
     );
 
     public static void start() {

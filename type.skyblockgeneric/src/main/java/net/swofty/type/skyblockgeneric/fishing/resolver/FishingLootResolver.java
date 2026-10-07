@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
 import net.swofty.type.skyblockgeneric.fishing.catches.CatchPayload;
 import net.swofty.type.skyblockgeneric.fishing.catches.TrophyTier;
+import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestival;
 import net.swofty.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
@@ -202,7 +203,8 @@ public final class FishingLootResolver {
             double tagBonus = definition == null ? 0.0D : getTagBonus(context, definition.tags());
             if (Math.random() * 100 <= roll.chance() + seaCreatureChance + tagBonus) {
                 double skillXp = definition == null ? 0.0D : definition.skillXp();
-                CatchPayload.SeaCreature payload = new CatchPayload.SeaCreature(roll.seaCreatureId(), skillXp);
+                CatchPayload.SeaCreature payload = FishingFestival.replaceWithShark(context,
+                    new CatchPayload.SeaCreature(roll.seaCreatureId(), skillXp));
                 if (rollDoubleHook(context)) {
                     payload = payload.withDoubleHook();
                 }

@@ -161,7 +161,7 @@ public final class GUI13SeaCreatureGuide extends SeaCreatureGuidePage {
             <c>Stats
             <7>- Kills: <b>38"""),
         head(21, "2067ccefba5d811f47e3e18438556b704393aafcafccedd5d0981999286f598a", """
-            <7>[Lvl 6] Nurse Shark (<a><l>Uncommon</l><7>)
+            <7>[Lvl 22] Nurse Shark (<a><l>Uncommon</l><7>)
             <9>⚓ Aquatic<7>, <a>☮ Animal
 
             <c>Drops:
@@ -344,7 +344,7 @@ public final class GUI13SeaCreatureGuide extends SeaCreatureGuidePage {
             <c>Stats
             <7>- Kills: <b>22"""),
         head(34, "381e1d06e5f0654a682a3264905b5dc4b8e7b613ab6697ac45f2e0da3bc9b4fd", """
-            <7>[Lvl 20] Blue Shark (<9><l>Rare</l><7>)
+            <7>[Lvl 52] Blue Shark (<9><l>Rare</l><7>)
             <9>⚓ Aquatic<7>, <a>☮ Animal
 
             <c>Drops:

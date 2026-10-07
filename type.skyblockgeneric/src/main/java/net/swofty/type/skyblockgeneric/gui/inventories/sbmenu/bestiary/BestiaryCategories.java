@@ -12,6 +12,7 @@ public enum BestiaryCategories {
     HUB("<a>Hub", BestiaryCategory.HUB.values()),
     DEEP_CAVERNS("<b>Deep Caverns", BestiaryCategory.DEEP_CAVERNS.values()),
     MYTHOLOGICAL_CREATURES("<b>Mythological Creatures", BestiaryCategory.MYTHOLOGICAL_CREATURES.values()),
+    FISHING("<3>Fishing", BestiaryCategory.FISHING.values()),
     ;
 
     private final String displayName;
