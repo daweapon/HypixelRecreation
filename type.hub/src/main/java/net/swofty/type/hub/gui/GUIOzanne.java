@@ -31,12 +31,12 @@ public class GUIOzanne extends StatelessView {
                 <7>reforges from accessories in
                 <7>your Accessory Bag.
                 <6>---------------------------
-                <f><l>COMMON</l><7>: <6>2,500 coins
-                <a><l>UNCOMMON</l><7>: <6>5,000 coins
-                <9><l>RARE</l><7>: <6>10,000 coins
-                <5><l>EPIC</l><7>: <6>25,000 coins
-                <6><l>LEGENDARY</l><7>: <6>50,000 coins
-                <d><l>MYTHIC</l><7>: <6>100,000 coins
+                <f><l>COMMON<r><7>: <6>2,500 coins
+                <a><l>UNCOMMON<r><7>: <6>5,000 coins
+                <9><l>RARE<r><7>: <6>10,000 coins
+                <5><l>EPIC<r><7>: <6>25,000 coins
+                <6><l>LEGENDARY<r><7>: <6>50,000 coins
+                <d><l>MYTHIC<r><7>: <6>100,000 coins
 
                 <9>Sweet<7>: <6>40,000 coins
                 <9>Silky<7>: <6>50,000 coins
