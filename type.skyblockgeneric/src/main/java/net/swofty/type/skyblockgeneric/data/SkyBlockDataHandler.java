@@ -645,6 +645,9 @@ public class SkyBlockDataHandler extends DataHandler {
         LUCIUS_TIERS_PURCHASED("lucius_tiers_purchased", false, false, false,
                 DatapointInteger.class, new DatapointInteger("lucius_tiers_purchased", 0)),
 
+        PET_TRAINING("pet_training", false, false, false,
+                DatapointPetTraining.class, new DatapointPetTraining("pet_training")),
+
         RIFT_PRISM_IMBUED("rift_prism_imbued", false, false, false,
                 DatapointBoolean.class, new DatapointBoolean("rift_prism_imbued", false)),
 
