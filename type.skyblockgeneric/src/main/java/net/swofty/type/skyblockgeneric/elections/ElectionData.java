@@ -102,9 +102,7 @@ public class ElectionData {
         boolean isSpecialYear = (year % 8 == 0);
 
         List<SkyBlockMayor> regularPool = new ArrayList<>(SkyBlockMayor.getRegularMayors());
-        if (currentMayor != null) {
-            regularPool.removeIf(m -> m.name().equals(currentMayor));
-        }
+        regularPool.removeIf(m -> m.name().equals(currentMayor) || m.name().equals(currentMinister));
 
         Collections.shuffle(regularPool);
 
@@ -140,23 +138,26 @@ public class ElectionData {
             candidates.add(candidate);
         }
 
-        boolean diazLongTerm = currentMinister != null
-                && currentMinister.equals(SkyBlockMayor.DIAZ.name())
-                && ministerPerk != null
-                && ministerPerk.equals(SkyBlockMayor.Perk.LONG_TERM_INVESTMENT.name());
-
-        if (diazLongTerm) {
+        SkyBlockMayor returningMinister = getMinisterEnum();
+        if (longTermInvestmentActive() && returningMinister != null && !returningMinister.isSpecial()) {
             boolean alreadyInElection = candidates.stream()
-                    .anyMatch(c -> c.getMayorName().equals(SkyBlockMayor.DIAZ.name()));
+                    .anyMatch(c -> c.getMayorName().equals(returningMinister.name()));
             if (!alreadyInElection) {
-                CandidateData diazCandidate = new CandidateData();
-                diazCandidate.setMayorName(SkyBlockMayor.DIAZ.name());
-                diazCandidate.setIndex(candidates.size());
-                diazCandidate.setActivePerks(Arrays.stream(SkyBlockMayor.DIAZ.getAllPerks()).map(Enum::name).toList());
-                assignMinisterPerk(diazCandidate);
-                candidates.add(diazCandidate);
+                CandidateData returning = new CandidateData();
+                returning.setMayorName(returningMinister.name());
+                returning.setIndex(candidates.size());
+                returning.setActivePerks(Arrays.stream(returningMinister.getAllPerks()).map(Enum::name).toList());
+                assignMinisterPerk(returning);
+                candidates.add(returning);
             }
         }
+    }
+
+    // Diaz's Long Term Investment brings the sitting Minister back with every perk, whether Diaz
+    // holds it as Mayor or as Minister (wiki: Diaz, Mayor Election).
+    private boolean longTermInvestmentActive() {
+        String perk = SkyBlockMayor.Perk.LONG_TERM_INVESTMENT.name();
+        return currentMayorPerks.contains(perk) || perk.equals(ministerPerk);
     }
 
     // Rolls the perk that becomes this candidate's ✯ Minister Perk if they place second, decided
