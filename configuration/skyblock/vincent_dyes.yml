@@ -1,0 +1,532 @@
+# Every dye in Vincent's Dye Guide (wiki Vincent/UI). droppable marks the dyes Vincent can pick
+# for his yearly masterpiece; shop and Fire Sale dyes are never picked.
+dyes:
+  - id: AQUAMARINE_DYE
+    name: "Aquamarine Dye"
+    colour: 'b'
+    hex: '7FFFD4'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Drop chances: <a>1<7>/<a>2.5M <7>- <a>1<7>/<a>25k"
+      - "<8>(0.004% - 0.00004%)"
+      - ""
+      - "<7>Dropped from <7>Multiple sources<7>."
+  - id: ARCHFIEND_DYE
+    name: "Archfiend Dye"
+    colour: '4'
+    hex: 'B80036'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>rolling a fancy dice<7>."
+      - ""
+      - "<a>1<7>/<a>6.6k <7>from <5>Archfiend Dice<7>"
+      - "<a>1<7>/<a>666 <7>from <6>High Class Archfiend Dice<7>"
+  - id: BINGO_BLUE_DYE
+    name: "Bingo Blue Dye"
+    colour: '1'
+    hex: '002FA7'
+    kind: HEX
+    droppable: false
+    source:
+      - "<7>Can be purchased from the Bingo"
+      - "<7>Shop."
+  - id: BONE_DYE
+    name: "Bone Dye"
+    colour: 'f'
+    hex: 'E3DAC9'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>3M <7>drop from <7>killing any"
+      - "<7>Skeleton<7><7>."
+      - "<8>0.00003% chance"
+  - id: BRICK_RED_DYE
+    name: "Brick Red Dye"
+    colour: 'c'
+    hex: 'CB4154'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>killing a <c>Tarantula"
+      - "<c>Broodfather<7>."
+      - ""
+      - "<a>1<7>/<a>10M <7>from <a>Tier I<7>"
+      - "<a>1<7>/<a>2.5M <7>from <e>Tier II<7>"
+      - "<a>1<7>/<a>1M <7>from <c>Tier III<7>"
+      - "<a>1<7>/<a>500k <7>from <4>Tier IV<7>"
+  - id: BYZANTIUM_DYE
+    name: "Byzantium Dye"
+    colour: '5'
+    hex: '702963'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>killing a <5>Voidgloom"
+      - "<5>Seraph<7>."
+      - ""
+      - "<a>1<7>/<a>10M <7>from <a>Tier I<7>"
+      - "<a>1<7>/<a>2.5M <7>from <e>Tier II<7>"
+      - "<a>1<7>/<a>1M <7>from <c>Tier III<7>"
+      - "<a>1<7>/<a>500k <7>from <4>Tier IV<7>"
+  - id: CARMINE_DYE
+    name: "Carmine Dye"
+    colour: '4'
+    hex: '960018'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Drop chances: <a>1<7>/<a>5M <7>- <a>1<7>/<a>50k"
+      - "<8>(0.002% - 0.00002%)"
+      - ""
+      - "<7>Dropped from <7>killing <c>Lava Sea"
+      - "<c>Creatures<7>."
+  - id: CELADON_DYE
+    name: "Celadon Dye"
+    colour: 'a'
+    hex: 'ACE1AF'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>Multiple sources<7>."
+      - ""
+      - "<a>1<7>/<a>100k <7>from <7>killing <a>Blobbercysts<7> in"
+      - "<7>the <a>Bacte<7> fight<7>"
+      - ""
+      - "<a>1<7>/<a>10k <7>from <7>killing <a>Bacte<7> in <d>The Rift<7><7>"
+  - id: CELESTE_DYE
+    name: "Celeste Dye"
+    colour: 'b'
+    hex: 'B2FFFF'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>killing a <b>Sven"
+      - "<b>Packmaster<7>."
+      - ""
+      - "<a>1<7>/<a>10M <7>from <a>Tier I<7>"
+      - "<a>1<7>/<a>2.5M <7>from <e>Tier II<7>"
+      - "<a>1<7>/<a>1M <7>from <c>Tier III<7>"
+      - "<a>1<7>/<a>500k <7>from <4>Tier IV<7>"
+  - id: CHOCOLATE_DYE
+    name: "Chocolate Dye"
+    colour: '6'
+    hex: '7B3F00'
+    kind: HEX
+    droppable: false
+    source:
+      - "<7>Can be purchased from the"
+      - "<7>Chocolate Shop."
+  - id: COPPER_DYE
+    name: "Copper Dye"
+    colour: '8'
+    hex: 'B87333'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>trading with visitors in"
+      - "<7>the <a>The Garden<7>."
+      - ""
+      - "<a>1<7>/<a>100k <7>from <a>Uncommon<7>"
+      - "<a>1<7>/<a>50k <7>from <9>Rare<7>"
+      - "<a>1<7>/<a>25k <7>from <6>Legendary<7>"
+      - "<a>1<7>/<a>5k <7>from <d>Mythic<7>"
+      - "<a>1<7>/<a>500 <7>from <c>Special<7>"
+  - id: CYCLAMEN_DYE
+    name: "Cyclamen Dye"
+    colour: 'c'
+    hex: 'F56FA1'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Drop chances: <a>1<7>/<a>10M <7>- <a>1<7>/<a>250k"
+      - "<8>(0.0004% - 0.00001%)"
+      - ""
+      - "<7>Dropped from <7>killing mobs in the"
+      - "<c>Crimson Isle<7>."
+  - id: DARK_PURPLE_DYE
+    name: "Dark Purple Dye"
+    colour: '5'
+    hex: '301934'
+    kind: HEX
+    droppable: false
+    source:
+      - "<a>1<7>/<a>400<7> chance to appear in the <5><5>Dark"
+      - "<5>Auction<7>."
+  - id: DUNG_DYE
+    name: "Dung Dye"
+    colour: '8'
+    hex: '4F2A2A'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>250k <7>drop from <7>vacuuming a <6>Pest<7>"
+      - "<7>in the <a>The Garden<7><7>."
+      - "<8>0.0004% chance"
+  - id: EMERALD_DYE
+    name: "Emerald Dye"
+    colour: '2'
+    hex: '50C878'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>5M <7>drop from <7>mining <a>Emeralds<7>."
+      - "<8>0.00002% chance"
+  - id: FLAME_DYE
+    name: "Flame Dye"
+    colour: '6'
+    hex: 'E25822'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>killing an <6>Inferno"
+      - "<6>Demonlord<7>."
+      - ""
+      - "<a>1<7>/<a>10M <7>from <a>Tier I<7>"
+      - "<a>1<7>/<a>2.5M <7>from <e>Tier II<7>"
+      - "<a>1<7>/<a>1M <7>from <c>Tier III<7>"
+      - "<a>1<7>/<a>500k <7>from <4>Tier IV<7>"
+  - id: FOSSIL_DYE
+    name: "Fossil Dye"
+    colour: '8'
+    hex: '866F12'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>500k <7>drop from <7>the <6>Fossil"
+      - "<6>Excavator<7> in the <b>Glacite Tunnels<7><7>."
+      - "<8>0.0002% chance"
+  - id: FROSTBITTEN_DYE
+    name: "Frostbitten Dye"
+    colour: '3'
+    hex: '09D8EB'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>looting <b>Frozen"
+      - "<b>Corpses<7> in the <b>Glacite Tunnels<7>."
+      - ""
+      - "<a>1<7>/<a>250k <7>from <9>Lapis<7>"
+      - "<a>1<7>/<a>100k <7>from <6>Umber<7>, <7>Tungsten<7>"
+      - "<a>1<7>/<a>10k <7>from <f>Vanguard<7>"
+  - id: HOLLY_DYE
+    name: "Holly Dye"
+    colour: '2'
+    hex: '3C6746'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>8k <7>drop from <7>opening <c>Red Gifts<7><7>."
+      - "<8>0.0125% chance"
+  - id: ICEBERG_DYE
+    name: "Iceberg Dye"
+    colour: '3'
+    hex: '71A6D2'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <c>Jerry's Workshop<7>."
+      - ""
+      - "<a>1<7>/<a>1M <7>from <f>Frozen Steve<7>, <f>Frosty<7>"
+      - "<a>1<7>/<a>500k <7>from <a>Grinch<7>, <9>Nutcracker<7>"
+      - "<a>1<7>/<a>50k <7>from <6>Yeti<7>, <6>Reindrake<7>"
+  - id: JADE_DYE
+    name: "Jade Dye"
+    colour: '2'
+    hex: '00A86B'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>500k <7>drop from <7>completing <d>Crystal"
+      - "<d>Nucleus<7> runs in the <5>Crystal Hollows<7><7>."
+      - "<8>0.0002% chance"
+  - id: LIVID_DYE
+    name: "Livid Dye"
+    colour: '7'
+    hex: 'CEB7AA'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>5k <7>drop from <8>Bedrock Chests<7> for"
+      - "<7>completing <c>Catacombs Floor 5<7>."
+      - "<8>0.02% chance"
+  - id: LUCKY_DYE
+    name: "Lucky Dye"
+    colour: 'a'
+    kind: ANIMATED
+    droppable: false
+    source:
+      - "<7>Purchased from a <c><l>Fire Sale<7> in"
+      - "<7><b>March 2024<7> for <a>375 SkyBlock Gems<7>."
+      - ""
+      - "<7>Dyes purchased from <c><l>Fire Sales<7>"
+      - "<7>cannot be donated to Vincent!"
+  - id: MANGO_DYE
+    name: "Mango Dye"
+    colour: '6'
+    hex: 'FDBE02'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>10M <7>drop from <7>breaking any log"
+      - "<7>on a public island<7>."
+      - "<8>0.00001% chance"
+  - id: MATCHA_DYE
+    name: "Matcha Dye"
+    colour: '2'
+    hex: '74A12E'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>killing a <2>Revenant"
+      - "<2>Horror<7>."
+      - ""
+      - "<a>1<7>/<a>10M <7>from <a>Tier I<7>"
+      - "<a>1<7>/<a>2.5M <7>from <e>Tier II<7>"
+      - "<a>1<7>/<a>1M <7>from <c>Tier III<7>"
+      - "<a>1<7>/<a>500k <7>from <4>Tier IV<7>"
+      - "<a>1<7>/<a>250k <7>from <5>Tier V<7>"
+  - id: MIDNIGHT_DYE
+    name: "Midnight Dye"
+    colour: '5'
+    hex: '50216C'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Drop chances: <a>1<7>/<a>1M <7>- <a>1<7>/<a>50k"
+      - "<8>(0.002% - 0.0001%)"
+      - ""
+      - "<7>Dropped from <7>killing <6>Spooky Mobs<7>"
+      - "<7>and <6>Spooky Sea Creatures<7>."
+  - id: MOCHA_DYE
+    name: "Mocha Dye"
+    colour: '8'
+    hex: '967969'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>brewing potions<7>."
+      - ""
+      - "<a>1<7>/<a>100M <7>from <f>Tier I<7>"
+      - "<a>1<7>/<a>5M <7>from <f>Tier II<7>"
+      - "<a>1<7>/<a>2.5M <7>from <f>Tier III<7>"
+      - "<a>1<7>/<a>1M <7>from <f>Tier IV<7>"
+      - "<a>1<7>/<a>750k <7>from <f>Tier V<7>"
+      - "<a>1<7>/<a>500k <7>from <f>Tier VI<7>"
+      - "<a>1<7>/<a>250k <7>from <f>Tier VII<7>"
+      - "<a>1<7>/<a>100k <7>from <f>Tier VIII<7>"
+  - id: NADESHIKO_DYE
+    name: "Nadeshiko Dye"
+    colour: 'd'
+    hex: 'F6ADC6'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>completing <d>Superpairs"
+      - "<7>in the Experimentation Table<7>."
+      - ""
+      - "<a>1<7>/<a>75k <7>from <6>Supreme Experiments<7>"
+      - ""
+      - "<a>1<7>/<a>50k <7>from <c>Transcendent"
+      - "<c>Experiments<7>"
+      - ""
+      - "<a>1<7>/<a>25k <7>from <d>Metaphysical Experiments<7>"
+  - id: NECRON_DYE
+    name: "Necron Dye"
+    colour: '6'
+    hex: 'E7413C'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>2.5k <7>drop from <c>Master Mode The"
+      - "<c>Catacombs Floor VII<7>."
+      - "<8>0.04% chance"
+  - id: NYANZA_DYE
+    name: "Nyanza Dye"
+    colour: 'a'
+    hex: 'E9FFDB'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>250k <7>drop from <7>claiming a Mining"
+      - "<7>Commission<7>."
+      - "<8>0.0004% chance"
+  - id: PASTEL_SKY_DYE
+    name: "Pastel Sky Dye"
+    colour: 'd'
+    kind: ANIMATED
+    droppable: false
+    source:
+      - "<7>Purchased from a <c><l>Fire Sale<7> in"
+      - "<7><b>September 2024<7> for <a>375 SkyBlock"
+      - "<a>Gems<7>."
+      - ""
+      - "<7>Dyes purchased from <c><l>Fire Sales<7>"
+      - "<7>cannot be donated to Vincent!"
+  - id: PEARLESCENT_DYE
+    name: "Pearlescent Dye"
+    colour: '2'
+    hex: '115555'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Drop chances: <a>1<7>/<a>10M <7>- <a>1<7>/<a>50k"
+      - "<8>(0.002% - 0.00001%)"
+      - ""
+      - "<7>Dropped from <7>killing mobs in <d>The End<7>."
+  - id: PELT_DYE
+    name: "Pelt Dye"
+    colour: '7'
+    hex: '50414C'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>killing Trapper Animals"
+      - "<7>in the <e>Mushroom Desert<7>."
+      - ""
+      - "<a>1<7>/<a>250k <7>from <f>Trackable Animals<7>"
+      - "<a>1<7>/<a>200k <7>from <a>Untrackable Animals<7>"
+      - "<a>1<7>/<a>150k <7>from <9>Undetected Animals<7>"
+      - "<a>1<7>/<a>100k <7>from <5>Endangered Animals<7>"
+      - "<a>1<7>/<a>10k <7>from <6>Elusive Animals<7>"
+  - id: PERIWINKLE_DYE
+    name: "Periwinkle Dye"
+    colour: '3'
+    hex: 'CCCCFF'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>Multiple sources<7>."
+      - ""
+      - "<a>1<7>/<a>500k <7>from <7>killing Level"
+      - "<7>1-99 <5>Runic <7>mobs<7>"
+      - ""
+      - "<a>1<7>/<a>400k <7>from <7>killing Level"
+      - "<7>100-199 <5>Runic <7>mobs<7>"
+      - ""
+      - "<a>1<7>/<a>300k <7>from <7>killing Level"
+      - "<7>200-299 <5>Runic <7>mobs<7>"
+      - ""
+      - "<a>1<7>/<a>200k <7>from <7>killing Level"
+      - "<7>300-399 <5>Runic <7>mobs<7>"
+      - ""
+      - "<a>1<7>/<a>100k <7>from <7>killing Level 400+"
+      - "<5>Runic <7>mobs<7>"
+  - id: PORTAL_DYE
+    name: "Portal Dye"
+    colour: '5'
+    kind: PARTICLE
+    droppable: false
+    source:
+      - "<7>Purchased from a <c><l>Fire Sale<7> in <b>July"
+      - "<b>2024<7> for <a>375 SkyBlock Gems<7>."
+      - ""
+      - "<7>Dyes purchased from <c><l>Fire Sales<7>"
+      - "<7>cannot be donated to Vincent!"
+  - id: PURE_BLACK_DYE
+    name: "Pure Black Dye"
+    colour: '8'
+    hex: '000000'
+    kind: HEX
+    droppable: false
+    source:
+      - "<7>Can be purchased from the <b>Bits"
+      - "<b>Shop<7> for <b>250,000 Bits<7>."
+  - id: PURE_BLUE_DYE
+    name: "Pure Blue Dye"
+    colour: '1'
+    hex: '0013FF'
+    kind: HEX
+    droppable: false
+    source:
+      - "<7>Rewarded from the <6>Raffle of the"
+      - "<6>Century<7>."
+  - id: PURE_WHITE_DYE
+    name: "Pure White Dye"
+    colour: 'f'
+    hex: 'FFFFFF'
+    kind: HEX
+    droppable: false
+    source:
+      - "<7>Can be purchased from the <b>Bits"
+      - "<b>Shop<7> for <b>250,000 Bits<7>."
+  - id: PURE_YELLOW_DYE
+    name: "Pure Yellow Dye"
+    colour: 'e'
+    hex: 'FFF700'
+    kind: HEX
+    droppable: false
+    source:
+      - "<7>Rewarded from the <6>Raffle of the"
+      - "<6>Century<7>."
+  - id: ROSE_DYE
+    name: "Rose Dye"
+    colour: 'c'
+    kind: ANIMATED
+    droppable: false
+    source:
+      - "<7>Purchased from a <c><l>Fire Sale<7> in <b>May"
+      - "<b>2024<7> for <a>375 SkyBlock Gems<7>."
+      - ""
+      - "<7>Dyes purchased from <c><l>Fire Sales<7>"
+      - "<7>cannot be donated to Vincent!"
+  - id: SANGRIA_DYE
+    name: "Sangria Dye"
+    colour: '4'
+    hex: 'D40808'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>killing a <5>Riftstalker"
+      - "<5>Bloodfiend<7>."
+      - ""
+      - "<a>1<7>/<a>100k <7>from <a>Tier I<7>"
+      - "<a>1<7>/<a>80k <7>from <e>Tier II<7>"
+      - "<a>1<7>/<a>60k <7>from <c>Tier III<7>"
+      - "<a>1<7>/<a>40k <7>from <4>Tier IV<7>"
+      - "<a>1<7>/<a>10k <7>from <5>Tier V<7>"
+  - id: SECRET_DYE
+    name: "Secret Dye"
+    colour: '7'
+    hex: '7D7D7D'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>1M <7>drop from <7>Dungeon Secrets<7>."
+      - "<8>0.00003% chance"
+  - id: TENTACLE_DYE
+    name: "Tentacle Dye"
+    colour: '5'
+    hex: '324D6C'
+    kind: HEX
+    droppable: true
+    source:
+      - "<7>Dropped from <7>defeating <c>Kuudra<7>."
+      - ""
+      - "<a>1<7>/<a>100k <7>from <c>Kuudra Basic Tier<7>"
+      - "<a>1<7>/<a>80k <7>from <c>Kuudra Hot Tier<7>"
+      - "<a>1<7>/<a>60k <7>from <c>Kuudra Burning Tier<7>"
+      - "<a>1<7>/<a>40k <7>from <c>Kuudra Fiery Tier<7>"
+      - "<a>1<7>/<a>20k <7>from <c>Kuudra Infernal Tier<7>"
+  - id: WARDEN_DYE
+    name: "Warden Dye"
+    colour: '9'
+    kind: ANIMATED
+    droppable: false
+    source:
+      - "<7>Purchased from a <c><l>Fire Sale<7> in"
+      - "<7><b>February 2024<7> for <a>375 SkyBlock"
+      - "<a>Gems<7>."
+      - ""
+      - "<7>Dyes purchased from <c><l>Fire Sales<7>"
+      - "<7>cannot be donated to Vincent!"
+  - id: WILD_STRAWBERRY_DYE
+    name: "Wild Strawberry Dye"
+    colour: 'd'
+    hex: 'FF43A4'
+    kind: HEX
+    droppable: true
+    source:
+      - "<a>1<7>/<a>150M <7>drop from <7>farming crops<7>."
+      - "<8>0.0000007% chance"

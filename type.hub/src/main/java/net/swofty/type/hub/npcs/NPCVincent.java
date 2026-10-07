@@ -1,10 +1,17 @@
 package net.swofty.type.hub.npcs;
 
+import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
+import net.swofty.type.generic.entity.npc.NPCOption;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.vincent.GUIVincent;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.List;
 
 public class NPCVincent extends HypixelNPC {
 
@@ -34,11 +41,54 @@ public class NPCVincent extends HypixelNPC {
             public boolean looking(HypixelPlayer player) {
                 return true;
             }
+
+            @Override
+            public String chatName(HypixelPlayer player) {
+                return "<b>Vincent";
+            }
         });
     }
 
+    private static final int REQUIRED_SKYBLOCK_LEVEL = 10;
+
     @Override
     public void onClick(NPCInteractEvent event) {
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
 
+        if (player.getSkyBlockExperience().getLevel().asInt() < REQUIRED_SKYBLOCK_LEVEL) {
+            setDialogue(player, "low-level");
+            return;
+        }
+        if (player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_VINCENT)) {
+            setDialogue(player, "open-" + (1 + (int) (Math.random() * 3)));
+            player.openView(new GUIVincent());
+            return;
+        }
+
+        setDialogue(player, "introduction").thenRun(() -> NPCOption.sendOption(player, "vincent", true, List.of(
+            new NPCOption.Option("yes", NamedTextColor.GREEN, false, "Yes...", p -> explain(p, "knows-dyes")),
+            new NPCOption.Option("no", NamedTextColor.RED, false, "No, what are they?", p -> explain(p, "explain-dyes"))
+        )));
+    }
+
+    private void explain(HypixelPlayer player, String dialogueKey) {
+        setDialogue(player, dialogueKey)
+            .thenCompose(ignored -> setDialogue(player, "painting"))
+            .thenRun(() -> player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_VINCENT, true));
+    }
+
+    @Override
+    protected DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+            DialogueSet.ofTranslation("low-level", "npcs_hub.vincent.dialogue.low_level"),
+            DialogueSet.ofTranslation("introduction", "npcs_hub.vincent.dialogue.introduction"),
+            DialogueSet.ofTranslation("knows-dyes", "npcs_hub.vincent.dialogue.knows_dyes"),
+            DialogueSet.ofTranslation("explain-dyes", "npcs_hub.vincent.dialogue.explain_dyes"),
+            DialogueSet.ofTranslation("painting", "npcs_hub.vincent.dialogue.painting"),
+            DialogueSet.ofTranslation("open-1", "npcs_hub.vincent.dialogue.open_1"),
+            DialogueSet.ofTranslation("open-2", "npcs_hub.vincent.dialogue.open_2"),
+            DialogueSet.ofTranslation("open-3", "npcs_hub.vincent.dialogue.open_3")
+        };
     }
 }
