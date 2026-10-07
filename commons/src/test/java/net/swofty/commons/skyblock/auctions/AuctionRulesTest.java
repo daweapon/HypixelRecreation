@@ -32,4 +32,11 @@ class AuctionRulesTest {
         assertEquals(1, AuctionRules.collectionTax(1_000_001));
         assertEquals(20_000, AuctionRules.collectionTax(2_000_000));
     }
+
+    @Test void derpyQuadruplesOnlyTheCollectionTaxAndKeepsTheOneMillionFloor() {
+        assertEquals(80_000, AuctionRules.collectionTax(2_000_000, 4));
+        assertEquals(2_000_000_000L, AuctionRules.collectionTax(50_000_000_000L, 4));
+        assertEquals(1, AuctionRules.collectionTax(1_000_001, 4));
+        assertEquals(20_000, AuctionRules.collectionTax(2_000_000, 0));
+    }
 }

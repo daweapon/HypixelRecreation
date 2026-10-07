@@ -47,7 +47,7 @@ public class EndpointClaim implements RedisMessageHandler<Request, Response> {
         boolean receivesItem=false;
         if (seller) {
             if (winner==null) receivesItem=true;
-            else coins=Math.subtractExact(winner.value(), AuctionRules.collectionTax(winner.value()));
+            else coins=Math.subtractExact(winner.value(), AuctionRules.collectionTax(winner.value(), request.collectionTaxMultiplier()));
         } else {
             boolean participated=false;
             for (var bid:item.getBids()) if (request.player().equals(bid.uuid())) {

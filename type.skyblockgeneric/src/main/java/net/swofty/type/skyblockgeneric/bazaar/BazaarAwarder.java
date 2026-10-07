@@ -7,6 +7,8 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCompletedBazaarTransactions;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.json.JSONObject;
@@ -186,7 +188,8 @@ public class BazaarAwarder {
             double quantity = transaction.quantity();
             double pricePerUnit = transaction.actualPricePerUnit();
             double grossEarnings = pricePerUnit * quantity;
-            double taxTaken = transaction.taxTaken();
+            double taxTaken = Math.min(grossEarnings,
+                    transaction.taxTaken() * ElectionPerks.factor(SkyBlockMayor.Perk.QUAD_TAXES));
             double netEarnings = grossEarnings - taxTaken;
 
             // Get display name for the item

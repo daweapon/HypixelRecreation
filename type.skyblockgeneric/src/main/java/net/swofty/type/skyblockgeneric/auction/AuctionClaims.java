@@ -10,6 +10,8 @@ import net.swofty.type.generic.data.domain.PlayerDataService;
 import net.swofty.type.skyblockgeneric.data.*;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAuctionStatistics;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -35,7 +37,7 @@ public final class AuctionClaims {
                 });
                 if (!allowed[0]) return;
                 var response=new ProxyService(ServiceType.AUCTION_HOUSE).handleRequest(new AuctionClaimProtocol(),
-                        new Request(auction,player.getUuid(),profile)).get(10,TimeUnit.SECONDS);
+                        new Request(auction,player.getUuid(),profile,(int) ElectionPerks.factor(SkyBlockMayor.Perk.QUAD_TAXES))).get(10,TimeUnit.SECONDS);
                 if (!response.success()) { player.sendMessage("<c>"+response.error()); return; }
                 Receipt receipt=response.receipt();
                 if (receipt==null || !auction.equals(receipt.auction()) || !profile.equals(receipt.profile())

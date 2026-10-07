@@ -35,8 +35,12 @@ public final class AuctionRules {
     }
 
     public static long collectionTax(long salePrice) {
+        return collectionTax(salePrice, 1);
+    }
+
+    public static long collectionTax(long salePrice, int multiplier) {
         if (salePrice <= 1_000_000L) return 0;
-        return Math.min(percentage(salePrice, 100), salePrice - 1_000_000L);
+        return Math.min(percentage(salePrice, 100L * Math.max(1, multiplier)), salePrice - 1_000_000L);
     }
 
     private static long percentage(long value, long basisPoints) {
