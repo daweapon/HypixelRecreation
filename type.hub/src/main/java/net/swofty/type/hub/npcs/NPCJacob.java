@@ -5,8 +5,11 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.hub.gui.farmingcontest.GUIJacob;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestProfile;
+import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// NPC for Jacob in the Hub; interaction is not yet implemented
 public class NPCJacob extends HypixelNPC {
 
     public NPCJacob() {
@@ -40,7 +43,32 @@ public class NPCJacob extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        e.player().notImplemented();
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (isInDialogue(player)) return;
+
+        if (!FarmingContests.meetsFarmingRequirement(player)) {
+            setDialogue(player, "too-low");
+            return;
+        }
+
+        FarmingContestProfile profile = FarmingContests.profile(player);
+        if (!profile.isMetJacob()) {
+            profile.setMetJacob(true);
+            FarmingContests.save(player, profile);
+            setDialogue(player, "introduction");
+            return;
+        }
+
+        FarmingContests.finaliseEnded(player);
+        player.openView(new GUIJacob());
+    }
+
+    @Override
+    public DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[] {
+            DialogueSet.ofTranslation("too-low", "npcs_hub.jacob.dialogue.too_low"),
+            DialogueSet.ofTranslation("introduction", "npcs_hub.jacob.dialogue.introduction")
+        };
     }
 
 }
