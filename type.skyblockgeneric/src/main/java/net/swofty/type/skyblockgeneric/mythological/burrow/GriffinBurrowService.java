@@ -48,9 +48,14 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
     private static final List<String> DIG_EXCLAMATIONS = List.of("Danger!", "Oi!", "Uh oh!", "Woah!", "Yikes!", "Good Grief!");
 
     private final Map<UUID, BurrowChain> chains = new ConcurrentHashMap<>();
+    private final Map<UUID, MythologicalCreature> forcedCreatures = new ConcurrentHashMap<>();
     private final AtomicBoolean started = new AtomicBoolean();
 
     private GriffinBurrowService() {
+    }
+
+    public void forceNextCreature(UUID player, MythologicalCreature creature) {
+        forcedCreatures.put(player, creature);
     }
 
     public static boolean isRitualActive() {
@@ -215,8 +220,12 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
                 + Carnivals.perkValue(player, CarnivalPerk.ELUSIVE_HUNTER);
         if (GriffinPet.isMythic(player)) tracking += chain.getExcavated();
 
-        MythologicalCreature creature = MythologicalCreature.roll(griffin, tracking, ThreadLocalRandom.current());
-        MythologicalVariant variant = creature.variant(griffin).orElseThrow();
+        MythologicalCreature forced = forcedCreatures.remove(player.getUuid());
+        MythologicalCreature creature = forced != null ? forced
+                : MythologicalCreature.roll(griffin, tracking, ThreadLocalRandom.current());
+        MythologicalVariant variant = creature.variant(griffin)
+                .or(() -> creature.allVariants().stream().findFirst())
+                .orElseThrow();
         Instance instance = player.getInstance();
         for (int i = 0; i < creature.getGroupSize(); i++) {
             MythologicalCreatureMob mob = MythologicalCreatureMob.of(creature, variant);
