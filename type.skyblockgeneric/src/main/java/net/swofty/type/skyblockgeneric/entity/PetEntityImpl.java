@@ -5,8 +5,11 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.LivingEntity;
+import net.minestom.server.entity.Metadata;
+import net.minestom.server.entity.Player;
 import net.minestom.server.entity.MetadataDef;
 import net.minestom.server.entity.metadata.other.ArmorStandMeta;
+import net.minestom.server.network.packet.server.play.EntityMetaDataPacket;
 import net.minestom.server.network.packet.server.play.ParticlePacket;
 import net.minestom.server.particle.Particle;
 import net.minestom.server.timer.Task;
@@ -14,11 +17,12 @@ import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.utility.MathUtility;
-import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 
 public class PetEntityImpl extends LivingEntity {
     private final String url;
@@ -53,9 +57,40 @@ public class PetEntityImpl extends LivingEntity {
         });
     }
 
+    public static void refreshFor(SkyBlockPlayer viewer) {
+        if (viewer.getInstance() == null) return;
+        viewer.getInstance().getEntities().forEach(entity -> {
+            if (!(entity instanceof PetEntityImpl pet)) return;
+            pet.updateViewableRule();
+            if (pet.isViewer(viewer)) pet.sendNameTagState(viewer);
+        });
+    }
+
+    private boolean canBeSeenBy(Player viewer) {
+        if (!(viewer instanceof SkyBlockPlayer skyBlockViewer)) return true;
+        return switch (skyBlockViewer.getPetData().getVisibility()) {
+            case ALL -> true;
+            case NONE -> false;
+            case OWN -> viewer == player;
+        };
+    }
+
+    private void sendNameTagState(Player viewer) {
+        boolean visible = !(viewer instanceof SkyBlockPlayer skyBlockViewer) || skyBlockViewer.getPetData().isNameTags();
+        viewer.sendPacket(new EntityMetaDataPacket(getEntityId(),
+                Map.of(MetadataDef.CUSTOM_NAME_VISIBLE.index(), Metadata.Boolean(visible))));
+    }
+
+    @Override
+    public void updateNewViewer(@NotNull Player viewer) {
+        super.updateNewViewer(viewer);
+        sendNameTagState(viewer);
+    }
+
     @Override
     public void spawn() {
         super.spawn();
+        updateViewableRule(this::canBeSeenBy);
 
         ArmorStandMeta meta = (ArmorStandMeta) getEntityMeta();
         meta.setSmall(true);
@@ -82,10 +117,8 @@ public class PetEntityImpl extends LivingEntity {
                 goingDown = false;
             }
             teleport(getPosition().add(0, yLevel, 0));
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
-                if (player.getInstance() != getInstance()) return;
-
-                player.sendPacket(new ParticlePacket(
+            getViewers().forEach(viewer -> {
+                viewer.sendPacket(new ParticlePacket(
                         particle,
                         false,
                         false,

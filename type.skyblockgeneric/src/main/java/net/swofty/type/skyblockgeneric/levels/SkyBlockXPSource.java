@@ -39,7 +39,7 @@ public enum SkyBlockXPSource {
     MUSEUM_DONATIONS(Group.CORE, null, 3646, Availability.LIVE, Material.GOLD_BLOCK),
     FAIRY_SOULS(Group.CORE, null, 570, Availability.LIVE, Material.LIGHT_BLUE_DYE),
     ACCESSORY_BAG(Group.CORE, null, 0, Availability.LIVE, Material.FLOWER_POT),
-    PET_SCORE(Group.CORE, null, 0, Availability.UNWIRED, Material.BONE),
+    PET_SCORE(Group.CORE, null, 0, Availability.LIVE, Material.BONE),
     COLLECTIONS(Group.CORE, null, 3160, Availability.LIVE, Material.PAINTING),
     CRAFT_MINIONS(Group.CORE, null, 3164, Availability.UNWIRED, Material.PLAYER_HEAD),
     BANK_UPGRADES(Group.CORE, null, 200, Availability.UNWIRED, Material.GOLD_INGOT),
@@ -338,6 +338,9 @@ public enum SkyBlockXPSource {
             case ACCESSORY_BAG -> List.of(
                     "Gain <b>+1 XP <7>per Accessory Power you",
                     "have in your Accessory Bag!");
+            case PET_SCORE -> List.of(
+                    "Gain <b>+3 XP <7>per Pet Score from",
+                    "collecting unique pets!");
             case SLAYER_LEVEL_UP -> List.of(
                     "Gain XP by leveling up your Slayer",
                     "Boss Progress!",

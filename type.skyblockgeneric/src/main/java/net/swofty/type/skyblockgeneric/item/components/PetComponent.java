@@ -5,7 +5,6 @@ import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.minestom.server.particle.Particle;
 import net.swofty.commons.StringUtility;
-import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributePetData;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
@@ -20,6 +19,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.PetHandler;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetScore;
 import net.swofty.type.skyblockgeneric.utility.RarityValue;
 import org.jetbrains.annotations.Nullable;
 
@@ -68,15 +68,13 @@ public class PetComponent extends SkyBlockItemComponent {
 
     private void interact(SkyBlockPlayer player, SkyBlockItem item) {
         DatapointPetData.UserPetData petData = player.getPetData();
-        ItemType type = item.getAttributeHandler().getPotentialType();
-        Rarity rarity = item.getAttributeHandler().getRarity();
-
-        if (petData.getPet(type) != null) {
-            player.sendMessage("<c>You already have a pet of this type.");
+        if (petData.isFull()) {
+            player.sendMessage("<c>Your Pets menu is full! You can hold up to {} pets.", petData.capacity());
             return;
         }
 
         petData.addPet(item);
+        PetScore.syncSkyBlockXP(player);
         player.setItemInHand(null);
         player.sendMessage("<a>Successfully added {} <a>to your pet menu!", item.getDisplayName());
         player.playSound(Sound.sound()

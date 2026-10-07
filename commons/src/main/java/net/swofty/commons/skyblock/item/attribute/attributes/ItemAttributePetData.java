@@ -49,7 +49,7 @@ public class ItemAttributePetData extends ItemAttribute<ItemAttributePetData.Pet
         }
 
         public void setLevel(int level, Rarity rarity) {
-            this.experience = getExperienceForLevel(level, rarity);
+            this.experience = getExperienceForLevel(Math.clamp(level, 1, MAX_LEVEL), rarity);
         }
 
         public double getExperienceInCurrentLevel(Rarity rarity) {
@@ -106,6 +106,8 @@ public class ItemAttributePetData extends ItemAttribute<ItemAttributePetData.Pet
             return goals.size();
         }
     }
+
+    public static final int MAX_LEVEL = 100;
 
     protected static final List<Integer> COMMON_XP_GOALS = Arrays.asList(0, 100, 210, 330, 460, 605, 765, 940, 1130, 1340, 1570, 1820, 2095, 2395, 2725, 3085, 3485, 3925, 4415,
             4955, 5555, 6215, 6945, 7745, 8625, 9585, 10635, 11785, 13045, 14425, 15935, 17585, 19385, 21345, 23475, 25785, 28285, 30985, 33905, 37065, 40485, 44185, 48185,

@@ -64,6 +64,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/etable` | `/et`, `/enchantingtable`, `/enchantmenttable`, `/enchantingtablemenu`, `/enchantmenttablemenu` | Opens an Enchantment Table remotely. Requires an active Booster Cookie. | DEFAULT | No | `type.skyblockgeneric` |
 | `/help [page\|command]` | — | Alphabetical chat command list, eight per page, with clickable navigation. Click a command or look up its alias for usage and aliases. Filters by minimum rank and loaded game-server commands; includes proxy travel commands. | DEFAULT | No | `type.generic` |
 | `/huntingbox` | `/hb` | Opens your Hunting Box. | DEFAULT | No | `type.skyblockgeneric` |
+| `/pets` | `/petsmenu`, `/petmenu`, `/viewpetsmenu` | Opens your Pets menu. | DEFAULT | No | `type.skyblockgeneric` |
 | `/pickupstash [item\|material]` | — | Pickup items from your stash. | DEFAULT | No | `type.skyblockgeneric` |
 | `/rankcolor` | `/rankcolour` | Change your MVP+ rank color. | DEFAULT | No | `type.generic` |
 | `/replay <uuid> [hex]` | — | Watch a specific replay by ID. | DEFAULT | No | `type.generic` |
@@ -161,7 +162,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/mithrilinfuse` | — | Mithril Infuses the minion in the players hand. | STAFF | No | `type.skyblockgeneric` |
 | `/recomb` | — | Recombobulates the item in the players hand.  Help uses /recombobulate, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
 | `/reforge` | `/reforgeitem` | Reforges the item in the players hand. | STAFF | No | `type.skyblockgeneric` |
-| `/setpetlevel <level>` | `/updatepetlevel` | Sets the level of the pet. | STAFF | No | `type.skyblockgeneric` |
+| `/setpetlevel <level>` | `/updatepetlevel` | Sets the held pet's level (1–100) using that pet's own rarity; with no pet in hand it levels your active pet. | STAFF | No | `type.skyblockgeneric` |
 | `/setpetrarity <rarity>` | — | Sets the rarity of the pet in your hand. | STAFF | No | `type.skyblockgeneric` |
 | `/skyblockxp <action> [amount] [player]` | `/sbxp` | Manages SkyBlock XP and SkyBlock Level. See the SkyBlock XP subcommand reference below. | STAFF | No | `type.skyblockgeneric` |
 | `/unlockbestiary [player]` | — | Unlocks the Bestiary menu for yourself or an optional online player without needing to speak to Bramass Beastslayer. | STAFF | No | `type.skyblockgeneric` |
@@ -192,6 +193,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/build` | `/buildmode` | Toggles whether or not you are in build mode. | STAFF | No | `type.skyblockgeneric` |
 | `/deleteorb` | — | Deletes orbs at the player's location.  Help uses /removeorb, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
 | `/forcedarkauction` | — | Force starts a Dark Auction. | STAFF | No | `type.skyblockgeneric` |
+| `/forcedianamob <creature>` | `/dianamob` | Makes your next Griffin Mob burrow spawn the chosen Mythological creature (e.g. `MINOS_INQUISITOR`, `KING_MINOS`) instead of a random roll. Applies once; if your Griffin's rarity can't normally dig that creature, its first variant is used. Burrows only appear during Diana's Mythological Ritual. | STAFF | No | `type.skyblockgeneric` |
 | `/gamemode <gamemode>` | `/gm` | Sets a players gamemode. | STAFF | No | `type.generic` |
 | `/handleminionspeed <NORMAL\|MULTIPLY_2\|MULTIPLY_5\|MULTIPLY_10>` | — | Handle minion speed. Changes the server-side minion speed divisor. | STAFF | No | `type.skyblockgeneric` |
 | `/regions <add\|remove\|wand> ...` | — | Handles regions across the server. See region syntax below. | STAFF | No | `type.skyblockgeneric` |
