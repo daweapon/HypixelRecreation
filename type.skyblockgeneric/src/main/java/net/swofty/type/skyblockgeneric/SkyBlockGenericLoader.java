@@ -70,6 +70,7 @@ import net.swofty.type.skyblockgeneric.hunting.HuntrapService;
 import net.swofty.type.skyblockgeneric.compactor.PersonalCompactorService;
 import net.swofty.type.skyblockgeneric.deletor.PersonalDeletorService;
 import net.swofty.type.skyblockgeneric.staff.MaxStickService;
+import net.swofty.type.skyblockgeneric.carnival.Carnival;
 import net.swofty.type.skyblockgeneric.item.ItemConfigParser;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.CraftableComponent;
@@ -165,6 +166,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         PersonalDeletorService.initialize();
         PersonalCompactorService.initialize();
         MaxStickService.initialize();
+        Carnival.initialize();
         PlayerItemUpdater.updateLoop(MinecraftServer.getSchedulerManager());
         File configDir = new File("./configuration/skyblock");
         File itemsDir = new File(configDir, "items");

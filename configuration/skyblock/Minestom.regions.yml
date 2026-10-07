@@ -638,6 +638,15 @@ regions:
     y2: 104
     z2: -72
     serverType: SKYBLOCK_HUB
+  - id: carnival
+    type: CARNIVAL
+    x1: -116
+    y1: 60
+    z1: 4
+    x2: -72
+    y2: 100
+    z2: 46
+    serverType: SKYBLOCK_HUB
   - id: forest_camp
     type: FORAGING_CAMP
     x1: -151
