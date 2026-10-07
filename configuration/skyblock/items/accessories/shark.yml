@@ -2,6 +2,10 @@ items:
   - id: RAGGEDY_SHARK_TOOTH_NECKLACE
     material: PLAYER_HEAD
     name: "Raggedy Shark Tooth Necklace"
+    lore:
+      - "<7>Increases the chance to get <6>Shark"
+      - "<6>Teeth <7>by <a>+5% <7>during the <b>Fishing"
+      - "<b>Festival<7>."
     default_statistics:
       strength: 2
     components:
@@ -10,12 +14,33 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: d77309ddebbdc278ee2772d92fa4905dd850c5f213a77ffaed5a67eecb23984a
-      - id: NOT_FINISHED_YET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: SHARK_FIN
+                amount: 1
+              B:
+                type: NURSE_SHARK_TOOTH
+                amount: 1
+            result:
+              type: RAGGEDY_SHARK_TOOTH_NECKLACE
+              amount: 1
 
   - id: DULL_SHARK_TOOTH_NECKLACE
     material: PLAYER_HEAD
     name: "Dull Shark Tooth Necklace"
     rarity: UNCOMMON
+    lore:
+      - "<7>Increases the chance to get <6>Shark"
+      - "<6>Teeth <7>by <a>+10% <7>during the <b>Fishing"
+      - "<b>Festival<7>."
     default_statistics:
       strength: 4
     components:
@@ -24,12 +49,33 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: f3ab3aa1ade74915dacd298613904361c18877eebfa81d9f936309f271e1389a
-      - id: NOT_FINISHED_YET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " A "
+              - ABA
+              - " A "
+            ingredients:
+              A:
+                type: NURSE_SHARK_TOOTH
+                amount: 1
+              B:
+                type: RAGGEDY_SHARK_TOOTH_NECKLACE
+                amount: 1
+            result:
+              type: DULL_SHARK_TOOTH_NECKLACE
+              amount: 1
 
   - id: HONED_SHARK_TOOTH_NECKLACE
     material: PLAYER_HEAD
     name: "Honed Shark Tooth Necklace"
     rarity: RARE
+    lore:
+      - "<7>Increases the chance to get <6>Shark"
+      - "<6>Teeth <7>by <a>+15% <7>during the <b>Fishing"
+      - "<b>Festival<7>."
     default_statistics:
       strength: 6
     components:
@@ -38,12 +84,33 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: e6b120938d83bf49ddab3a78666a0bf37a3de7b46b9d97b984da3be62ce3e5e3
-      - id: NOT_FINISHED_YET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " A "
+              - ABA
+              - " A "
+            ingredients:
+              A:
+                type: BLUE_SHARK_TOOTH
+                amount: 1
+              B:
+                type: DULL_SHARK_TOOTH_NECKLACE
+                amount: 1
+            result:
+              type: HONED_SHARK_TOOTH_NECKLACE
+              amount: 1
 
   - id: SHARP_SHARK_TOOTH_NECKLACE
     material: PLAYER_HEAD
     name: "Sharp Shark Tooth Necklace"
     rarity: EPIC
+    lore:
+      - "<7>Increases the chance to get <6>Shark"
+      - "<6>Teeth <7>by <a>+20% <7>during the <b>Fishing"
+      - "<b>Festival<7>."
     default_statistics:
       strength: 8
     components:
@@ -52,12 +119,33 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 228e3fb6bd9887d60434ccd279ec3e59227826c9a2f8dd9ce9899ea6683d4ee8
-      - id: NOT_FINISHED_YET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " A "
+              - ABA
+              - " A "
+            ingredients:
+              A:
+                type: TIGER_SHARK_TOOTH
+                amount: 1
+              B:
+                type: HONED_SHARK_TOOTH_NECKLACE
+                amount: 1
+            result:
+              type: SHARP_SHARK_TOOTH_NECKLACE
+              amount: 1
 
   - id: RAZOR_SHARP_SHARK_TOOTH_NECKLACE
     material: PLAYER_HEAD
     name: "Razor Sharp Shark Tooth Necklace"
     rarity: LEGENDARY
+    lore:
+      - "<7>Increases the chance to get <6>Shark"
+      - "<6>Teeth <7>by <a>+25% <7>during the <b>Fishing"
+      - "<b>Festival<7>."
     default_statistics:
       strength: 10
     components:
@@ -66,4 +154,21 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 7792676664ac711488641f72b25961835613da9ffd43ea3bdd163cb365343a6
-      - id: NOT_FINISHED_YET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " A "
+              - ABA
+              - " A "
+            ingredients:
+              A:
+                type: GREAT_WHITE_SHARK_TOOTH
+                amount: 1
+              B:
+                type: SHARP_SHARK_TOOTH_NECKLACE
+                amount: 1
+            result:
+              type: RAZOR_SHARP_SHARK_TOOTH_NECKLACE
+              amount: 1
