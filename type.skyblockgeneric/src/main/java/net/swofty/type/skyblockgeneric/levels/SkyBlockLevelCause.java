@@ -10,7 +10,9 @@ import net.swofty.type.skyblockgeneric.item.components.AccessoryComponent;
 import net.swofty.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
 import net.swofty.type.skyblockgeneric.levels.causes.*;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
-import net.swofty.type.skyblockgeneric.museum.MuseumRewards;
+import net.swofty.type.skyblockgeneric.museum.MuseumCatalogue;
+import net.swofty.type.skyblockgeneric.museum.MuseumEntry;
+import net.swofty.type.skyblockgeneric.museum.MuseumMilestones;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoulExchangeLevels;
 import org.jetbrains.annotations.Nullable;
@@ -86,9 +88,11 @@ public class SkyBlockLevelCause {
             CAUSES.put("mission-" + missionID, new MissionLevelCause(missionID));
         }
 
-        // Register all Museum rewards
-        for (MuseumRewards reward : MuseumRewards.values()) {
-            CAUSES.put("museum-" + reward.name(), new MuseumLevelCause(reward));
+        for (MuseumEntry entry : MuseumCatalogue.get().progressEntries()) {
+            CAUSES.put("museum-" + entry.id(), new MuseumLevelCause(entry));
+        }
+        for (int milestone = 1; milestone <= MuseumMilestones.MAX_MILESTONE; milestone++) {
+            CAUSES.put("museum-milestone-" + milestone, new MuseumMilestoneCause(milestone));
         }
     }
 
@@ -126,15 +130,12 @@ public class SkyBlockLevelCause {
         return null;
     }
 
-    public static MuseumLevelCause getMuseumCause(MuseumRewards reward) {
-        for (SkyBlockLevelCauseAbstr cause : CAUSES.values()) {
-            if (cause instanceof MuseumLevelCause museumCause) {
-                if (museumCause.getReward() == reward) {
-                    return museumCause;
-                }
-            }
-        }
-        return null;
+    public static @Nullable MuseumLevelCause getMuseumCause(MuseumEntry entry) {
+        return CAUSES.get("museum-" + entry.id()) instanceof MuseumLevelCause cause ? cause : null;
+    }
+
+    public static @Nullable MuseumMilestoneCause getMuseumMilestoneCause(int milestone) {
+        return CAUSES.get("museum-milestone-" + milestone) instanceof MuseumMilestoneCause cause ? cause : null;
     }
 
     public static CollectionLevelCause getCollectionCause(ItemType itemTypeLinker, int level) {

@@ -88,6 +88,6 @@ public class NPCMuseumDisplay extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        new GUIYourMuseum().open(e.player());
+        e.player().openView(new GUIYourMuseum());
     }
 }

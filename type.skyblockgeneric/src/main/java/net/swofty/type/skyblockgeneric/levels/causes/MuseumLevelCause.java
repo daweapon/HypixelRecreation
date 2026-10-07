@@ -1,34 +1,26 @@
 package net.swofty.type.skyblockgeneric.levels.causes;
 
 import lombok.Getter;
-import net.swofty.commons.StringUtility;
 import net.swofty.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
-import net.swofty.type.skyblockgeneric.museum.MuseumRewards;
-import net.swofty.type.skyblockgeneric.museum.rewards.MuseumXPReward;
+import net.swofty.type.skyblockgeneric.museum.MuseumEntry;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @Getter
 public class MuseumLevelCause extends SkyBlockLevelCauseAbstr {
-    private MuseumRewards reward;
+    private final MuseumEntry entry;
 
-    public MuseumLevelCause(MuseumRewards reward) {
-        this.reward = reward;
+    public MuseumLevelCause(MuseumEntry entry) {
+        this.entry = entry;
     }
 
     @Override
     public String displayName() {
-        return "Museum " + StringUtility.toNormalCase(reward.name());
+        return "Museum Donation: " + entry.name();
     }
 
     @Override
     public double xpReward() {
-        MuseumXPReward xpReward = reward.getXPReward();
-
-        if (xpReward != null) {
-            return xpReward.getXp();
-        }
-
-        return 0;
+        return entry.xp();
     }
 
     @Override

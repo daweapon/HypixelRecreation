@@ -19,19 +19,19 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.utility.PaginationList;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointMuseum;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
-import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.museum.MuseumDisplays;
-import net.swofty.type.skyblockgeneric.museum.MuseumableItemCategory;
+import net.swofty.type.skyblockgeneric.museum.MuseumEntry;
+import net.swofty.type.skyblockgeneric.museum.MuseumService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.ItemPriceCalculator;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 // GUI for donating items to fill an empty museum display slot
 public class GUIMuseumEmptyDisplay extends HypixelPaginatedGUI<Object> {
@@ -70,25 +70,17 @@ public class GUIMuseumEmptyDisplay extends HypixelPaginatedGUI<Object> {
         SkyBlockPlayer player = (SkyBlockPlayer) p;
         DatapointMuseum.MuseumData data = player.getMuseumData();
 
-        for (MuseumableItemCategory category : display.getAllowedItemCategories()) {
-            List<SkyBlockItem> categoryItems = data.getNotInDisplayByCategory(category);
-
-            if (category == MuseumableItemCategory.ARMOR_SETS) {
-                // Group armor pieces by armor set
-                Map<ArmorSetRegistry, List<SkyBlockItem>> armorSetGroups = categoryItems.stream()
-                        .filter(item -> ArmorSetRegistry.getArmorSet(item.getAttributeHandler().getPotentialType()) != null)
-                        .collect(Collectors.groupingBy(item ->
-                                ArmorSetRegistry.getArmorSet(item.getAttributeHandler().getPotentialType())));
-
-                // Only add complete armor sets (4 pieces)
-                armorSetGroups.entrySet().stream()
-                        .filter(entry -> entry.getValue().size() == 4)
-                        .forEach(paged::add);
-            } else {
-                // Add individual items for non-armor categories
-                paged.addAll(categoryItems);
-            }
+        Map<MuseumEntry, List<SkyBlockItem>> byEntry = new LinkedHashMap<>();
+        for (SkyBlockItem item : data.getNotInDisplay()) {
+            MuseumService.entryFor(item).ifPresent(entry -> byEntry.computeIfAbsent(entry, _ -> new ArrayList<>()).add(item));
         }
+        byEntry.forEach((entry, items) -> {
+            if (entry.isSet() && display.isAcceptsSets() && items.size() == entry.pieces().size()) {
+                paged.add(Map.entry(entry, items));
+            } else if (!entry.isSet()) {
+                paged.addAll(items);
+            }
+        });
 
         return paged;
     }
@@ -97,8 +89,8 @@ public class GUIMuseumEmptyDisplay extends HypixelPaginatedGUI<Object> {
     public boolean shouldFilterFromSearch(String query, Object item) {
         if (item instanceof SkyBlockItem skyBlockItem) {
             return skyBlockItem.getDisplayName().toLowerCase().contains(query.toLowerCase());
-        } else if (item instanceof Map.Entry<?, ?> entry && entry.getKey() instanceof ArmorSetRegistry armorSet) {
-            return armorSet.getDisplayName().toLowerCase().contains(query.toLowerCase());
+        } else if (item instanceof Map.Entry<?, ?> entry && entry.getKey() instanceof MuseumEntry museumEntry) {
+            return museumEntry.name().toLowerCase().contains(query.toLowerCase());
         }
         return false;
     }
@@ -146,8 +138,8 @@ public class GUIMuseumEmptyDisplay extends HypixelPaginatedGUI<Object> {
         SkyBlockPlayer player = (SkyBlockPlayer) p;
         if (item instanceof SkyBlockItem skyBlockItem) {
             return createIndividualItemDisplay(skyBlockItem, slot, player);
-        } else if (item instanceof Map.Entry<?, ?> entry && entry.getKey() instanceof ArmorSetRegistry armorSet) {
-            return createArmorSetDisplay((Map.Entry<ArmorSetRegistry, List<SkyBlockItem>>) entry, slot, player);
+        } else if (item instanceof Map.Entry<?, ?> entry && entry.getKey() instanceof MuseumEntry) {
+            return createArmorSetDisplay((Map.Entry<MuseumEntry, List<SkyBlockItem>>) entry, slot, player);
         }
 
         // Fallback
@@ -217,15 +209,10 @@ public class GUIMuseumEmptyDisplay extends HypixelPaginatedGUI<Object> {
         };
     }
 
-    private GUIClickableItem createArmorSetDisplay(Map.Entry<ArmorSetRegistry, List<SkyBlockItem>> armorSetEntry, int slot, SkyBlockPlayer player) {
-        ArmorSetRegistry armorSet = armorSetEntry.getKey();
+    private GUIClickableItem createArmorSetDisplay(Map.Entry<MuseumEntry, List<SkyBlockItem>> armorSetEntry, int slot, SkyBlockPlayer player) {
+        MuseumEntry armorSet = armorSetEntry.getKey();
         List<SkyBlockItem> armorPieces = armorSetEntry.getValue();
-
-        // Get the helmet for display purposes
-        SkyBlockItem displayItem = armorPieces.stream()
-                .filter(item -> item.getAttributeHandler().getPotentialType().equals(armorSet.getHelmet()))
-                .findFirst()
-                .orElse(armorPieces.getFirst());
+        SkyBlockItem displayItem = armorPieces.getFirst();
 
         return new GUIClickableItem(slot) {
             @Override
@@ -233,7 +220,7 @@ public class GUIMuseumEmptyDisplay extends HypixelPaginatedGUI<Object> {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
                 player.closeInventory();
                 player.sendMessage(Text.key("gui_museum.empty_display.set_display_armor", display.toString(), position + 1,
-                        armorSet.getDisplayName()));
+                        armorSet.name()));
                 DatapointMuseum.MuseumData data = player.getMuseumData();
 
                 // Add all armor pieces to the same display slot
@@ -264,7 +251,7 @@ public class GUIMuseumEmptyDisplay extends HypixelPaginatedGUI<Object> {
                 lore.add(Text.key("gui_museum.empty_display.click_to_display_armor"));
 
                 return ItemStacks.item(displayItem.getMaterial(), 1,
-                        Text.of("<a>{} Set", armorSet.getDisplayName()), lore);
+                        Text.of("<a>{}", armorSet.name()), lore);
             }
         };
     }

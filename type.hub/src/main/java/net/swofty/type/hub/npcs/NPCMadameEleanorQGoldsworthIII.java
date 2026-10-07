@@ -6,7 +6,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.skyblockgeneric.gui.inventories.museum.GUIMuseumAppraisal;
+import net.swofty.type.skyblockgeneric.gui.inventories.museum.GUIYourMuseum;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
@@ -47,38 +47,31 @@ public class NPCMadameEleanorQGoldsworthIII extends HypixelNPC {
         SkyBlockPlayer player = (SkyBlockPlayer) e.player();
         if (isInDialogue(player)) return;
 
-        if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_CURATOR)) {
-            setDialogue(player, "pre-curator");
-            return;
-        }
         if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_MADAME_ELEANOR)) {
-            setDialogue(player, "post-curator").thenRun(() -> {
+            setDialogue(player, "welcome").thenRun(() -> {
                 player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_MADAME_ELEANOR, true);
+                player.openView(new GUIYourMuseum());
             });
             return;
         }
 
-        new GUIMuseumAppraisal().open(player);
+        player.openView(new GUIYourMuseum());
     }
 
     @Override
-    public DialogueSet[] dialogues(HypixelPlayer player) {
+    public DialogueSet[] dialogues(HypixelPlayer p) {
+        SkyBlockPlayer player = (SkyBlockPlayer) p;
         return Stream.of(
                 DialogueSet.builder()
-                        .key("pre-curator").lines(
-                                "The <b>Curator <f>has advised me to direct you back to him.",
-                                "Please hear what he has to say before coming to me"
-                        ).build(),
-                DialogueSet.builder()
-                        .key("post-curator").lines(
-                                "Don't trust what the <b>Curator <f>told you, I am in no way his assistant.",
-                                "I serve someone much more important.",
-                                "I offer a <6>Museum Appraisal Service<f>, which allows you to determine the value of your Museum.",
-                                "For a one-time fee, I will appraise your Museum's worth each time you modify your Museum.",
-                                "You may even find yourself atop the <6>Top Valued Museums <f>in the <9>Museum Browser<f>!",
-                                "Additionally, reaching certain valuation thresholds will allow you to purchase <6>bank upgrades<f>.",
-                                "In the future, reaching these thresholds will reward even more!"
-                        ).build()
+                        .key("welcome")
+                        .line("Welcome, {}<f>!", player.getShortenedDisplayName())
+                        .line("This world has an <o>incredible <f>amount of interesting gear and rare items, which I would like to showcase.")
+                        .line("Would you like to help me fill the <9>Museum<f>? I can even reward you for your contributions!")
+                        .line("I'll show you the list of items that I'm currently looking for.")
+                        .line("You can donate any item from the list and you'll still be able to use those items whenever you want!")
+                        .line("However, once you donate an item, it will become <c>Co-op Soulbound <f>to you, meaning you won't be able to trade off your profile, auction, or sell the item anymore.")
+                        .line("Choose carefully!")
+                        .build()
         ).toArray(DialogueSet[]::new);
     }
 }

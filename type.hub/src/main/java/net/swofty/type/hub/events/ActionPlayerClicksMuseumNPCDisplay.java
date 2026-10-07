@@ -20,6 +20,6 @@ public class ActionPlayerClicksMuseumNPCDisplay implements HypixelEventClass {
 
         if (event.getBlockPosition().distance(displayPosition) > 2) return;
 
-        new GUIYourMuseum().open(player);
+        player.openView(new GUIYourMuseum());
     }
 }

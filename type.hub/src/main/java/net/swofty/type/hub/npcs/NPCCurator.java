@@ -1,17 +1,19 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
-import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.gui.inventories.museum.GUIYourMuseum;
+import net.swofty.type.skyblockgeneric.museum.MuseumService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.stream.Stream;
 
 public class NPCCurator extends HypixelNPC {
+    private static final int LANDMARK_MILESTONE = 10;
+    private static final int NEARLY_COMPLETE_MILESTONE = 30;
 
     public NPCCurator() {
         super(new HumanConfiguration() {
@@ -46,31 +48,22 @@ public class NPCCurator extends HypixelNPC {
     public void onClick(NPCInteractEvent e) {
         SkyBlockPlayer player = (SkyBlockPlayer) e.player();
         if (isInDialogue(player)) return;
-        boolean hasSpokenBefore = player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_CURATOR);
 
-        if (!hasSpokenBefore) {
-            setDialogue(player, "initial-hello").thenRun(() -> {
-                player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_CURATOR, true);
-            });
-            return;
-        }
-
-        new GUIYourMuseum().open(player);
+        int milestone = MuseumService.milestone(player.getMuseumData());
+        String line = milestone >= NEARLY_COMPLETE_MILESTONE ? "nearly-complete"
+                : milestone >= LANDMARK_MILESTONE ? "landmark" : "starting";
+        setDialogue(player, line).thenRun(() -> player.openView(new GUIYourMuseum()));
     }
 
     @Override
-    public DialogueSet[] dialogues(HypixelPlayer p) {
-        SkyBlockPlayer player = (SkyBlockPlayer) p;
+    public DialogueSet[] dialogues(HypixelPlayer player) {
         return Stream.of(
-                DialogueSet.builder()
-                        .key("initial-hello").line("Welcome, {}<f>!", player.getShortenedDisplayName())
-                                .line("After years of work, I finally opened the <9>Museum<f>!")
-                                .line("This world has an incredible amount of interesting gear and rare items, which I would like to showcase.")
-                                .line("Would you like to help me fill the Museum? My assistant, <6>Madame Goldsworth<f>, will even reward you!")
-                                .line("I'll show you the list of items that I'm currently looking for.")
-                                .line("You can donate any item from the list, and you'll still be able to use those items whenever you want!")
-                                .line("However - once you donate an item, it will be <d>Co-op Soulbound <f>to you, meaning that you won't be able to trade, auction or sell the item anymore.")
-                                .line("Choose carefully!").build()
+                DialogueSet.builder().key("starting").lines(
+                        "Welcome! The museum is just starting to take shape. Your first few contributions are the seeds of something magnificent!").build(),
+                DialogueSet.builder().key("landmark").lines(
+                        "Your incredible contributions have transformed the museum into a landmark of cultural heritage.").build(),
+                DialogueSet.builder().key("nearly-complete").lines(
+                        "The museum is almost complete! Your tireless efforts have brought us to the brink of greatness.").build()
         ).toArray(DialogueSet[]::new);
     }
 }

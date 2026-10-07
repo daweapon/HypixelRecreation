@@ -1,248 +1,225 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.museum;
 
-import net.minestom.server.event.inventory.InventoryCloseEvent;
-import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.swofty.commons.ServiceType;
-import net.swofty.commons.StringUtility;
-import net.swofty.commons.TrackedItem;
-import net.swofty.commons.protocol.objects.itemtracker.TrackedItemRetrieveProtocol;
-import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
-import net.swofty.proxyapi.ProxyService;
-import net.swofty.type.generic.gui.inventory.HypixelPaginatedGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
-import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
-import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.generic.utility.PaginationList;
-import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.generic.gui.v2.Components;
+import net.swofty.type.generic.gui.v2.Layouts;
+import net.swofty.type.generic.gui.v2.StatefulView;
+import net.swofty.type.generic.gui.v2.ViewConfiguration;
+import net.swofty.type.generic.gui.v2.ViewLayout;
+import net.swofty.type.generic.gui.v2.context.ClickContext;
+import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointMuseum;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.museum.MuseumCategory;
 import net.swofty.type.skyblockgeneric.museum.MuseumDisplays;
-import net.swofty.type.skyblockgeneric.museum.MuseumableItemCategory;
+import net.swofty.type.skyblockgeneric.museum.MuseumEntry;
+import net.swofty.type.skyblockgeneric.museum.MuseumService;
+import net.swofty.type.skyblockgeneric.museum.MuseumState;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
-import net.swofty.type.skyblockgeneric.utility.ItemPriceCalculator;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.UUID;
+import java.util.Locale;
 
-// Paginated GUI listing items donatable to a given museum category
-public class GUIMuseumCategory extends HypixelPaginatedGUI<ItemType> {
-    private final MuseumableItemCategory category;
+public class GUIMuseumCategory implements StatefulView<GUIMuseumCategory.State> {
+    private static final int[] SLOTS = {
+            10, 11, 12, 13, 14, 15, 16,
+            19, 20, 21, 22, 23, 24, 25,
+            28, 29, 30, 31, 32, 33, 34,
+            37, 38, 39, 40, 41, 42, 43
+    };
 
-    public GUIMuseumCategory(MuseumableItemCategory category) {
-        super(InventoryType.CHEST_6_ROW);
+    public enum Sort {
+        ASCENDING_XP("Ascending XP"),
+        DESCENDING_XP("Descending XP"),
+        MISSING_FIRST("Missing First"),
+        A_TO_Z("A to Z"),
+        Z_TO_A("Z to A");
 
-        this.category = category;
+        private final String label;
+
+        Sort(String label) {
+            this.label = label;
+        }
+
+        Sort step(int direction) {
+            Sort[] values = values();
+            return values[Math.floorMod(ordinal() + direction, values.length)];
+        }
+    }
+
+    public record State(@Nullable MuseumCategory category, String query, int page, Sort sort, boolean extraDetails) {
+        public static State of(MuseumCategory category) {
+            return new State(category, "", 0, Sort.ASCENDING_XP, true);
+        }
+
+        public static State search(String query) {
+            return new State(null, query, 0, Sort.ASCENDING_XP, true);
+        }
+
+        State withPage(int page) {
+            return new State(category, query, page, sort, extraDetails);
+        }
+
+        State withSort(Sort sort) {
+            return new State(category, query, 0, sort, extraDetails);
+        }
+
+        State toggleDetails() {
+            return new State(category, query, page, sort, !extraDetails);
+        }
     }
 
     @Override
-    public boolean allowHotkeying() {
+    public State initialState() {
+        return State.of(MuseumCategory.COMBAT);
+    }
+
+    @Override
+    public ViewConfiguration<State> configuration() {
+        return ViewConfiguration.withString((state, ctx) -> state.category() == null
+                ? "Museum Search"
+                : "Museum ➜ " + state.category().getDisplayName(), InventoryType.CHEST_6_ROW);
+    }
+
+    @Override
+    public void layout(ViewLayout<State> layout, State state, ViewContext ctx) {
+        layout.filler(Layouts.border(0, 53));
+        DatapointMuseum.MuseumData data = ((SkyBlockPlayer) ctx.player()).getMuseumData();
+        List<MuseumEntry> entries = entries(state, data);
+        int pages = Math.max(1, (int) Math.ceil(entries.size() / (double) SLOTS.length));
+        int page = Math.min(state.page(), pages - 1);
+
+        for (int index = 0; index < SLOTS.length; index++) {
+            int entryIndex = page * SLOTS.length + index;
+            if (entryIndex >= entries.size()) {
+                layout.slot(SLOTS[index], (s, c) -> ItemStack.AIR.builder());
+                continue;
+            }
+            MuseumEntry entry = entries.get(entryIndex);
+            layout.slot(SLOTS[index], (s, c) -> MuseumEntryIcon.render(
+                    ((SkyBlockPlayer) c.player()).getMuseumData(), entry, s.extraDetails()),
+                    (click, c) -> onEntryClick(c, entry));
+        }
+
+        if (state.category() != null) {
+            layout.slot(4, (s, c) -> header(((SkyBlockPlayer) c.player()).getMuseumData(), s.category()));
+        }
+        if (page > 0) {
+            layout.slot(45, (s, c) -> ItemStacks.item(Material.ARROW, "<a>Previous Page\n<e>Page {}", page),
+                    (click, c) -> c.session(State.class).update(s -> s.withPage(page - 1)));
+        }
+        if (page < pages - 1) {
+            layout.slot(53, (s, c) -> ItemStacks.item(Material.ARROW, "<a>Next Page\n<e>Page {}", page + 2),
+                    (click, c) -> c.session(State.class).update(s -> s.withPage(page + 1)));
+        }
+
+        layout.slot(47, (s, c) -> detailsToggle(s.extraDetails()),
+                (click, c) -> c.session(State.class).update(State::toggleDetails));
+        Components.back(layout, 48, ctx);
+        Components.close(layout, 49);
+        layout.slot(50, (s, c) -> GUIYourMuseum.searchButton(), (click, c) -> GUIYourMuseum.openSearch(c));
+        layout.slot(51, (s, c) -> sortButton(s.sort()), (click, c) -> {
+            int direction = click.click() instanceof Click.Right ? -1 : 1;
+            c.session(State.class).update(s -> s.withSort(s.sort().step(direction)));
+        });
+    }
+
+    @Override
+    public boolean onBottomClick(ClickContext<State> click, ViewContext ctx) {
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        MuseumService.donate(player, click.slot());
+        MuseumDisplays.updateDisplay(player);
+        ctx.session(State.class).refresh();
         return false;
     }
 
-    @Override
-    public void onBottomClick(InventoryPreClickEvent e) {
-        e.setCancelled(true);
-
-        ItemStack item = e.getClickedItem();
-        SkyBlockItem skyBlockItem = new SkyBlockItem(item);
-
-        if (skyBlockItem.getAttributeHandler().getPotentialType() == null) {
+    private void onEntryClick(ViewContext ctx, MuseumEntry entry) {
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        MuseumState state = MuseumService.stateOf(player.getMuseumData(), entry);
+        if (state == MuseumState.UNAVAILABLE) {
+            player.sendMessage(MuseumEntry.UNAVAILABLE_REASON);
             return;
         }
-
-        SkyBlockPlayer player = (SkyBlockPlayer) e.getPlayer();
-        DatapointMuseum.MuseumData data = player.getMuseumData();
-
-        if (data.getItemInMuseum(skyBlockItem.getAttributeHandler().getPotentialType()) != null) {
-            player.sendMessage(Text.key("gui_museum.category.already_in_museum", skyBlockItem.getDisplayName()));
-            return;
-        }
-
-        if (data.getItemPreviouslyInMuseum(skyBlockItem.getAttributeHandler().getPotentialType()) != null) {
-            UUID trackedItemUUID = UUID.fromString(skyBlockItem.getAttributeHandler().getUniqueTrackedID());
-            UUID previouslyInMuseumUUID = UUID.fromString(
-                    data.getItemPreviouslyInMuseum(skyBlockItem.getAttributeHandler().getPotentialType())
-                            .getAttributeHandler().getUniqueTrackedID()
-            );
-
-            if (!trackedItemUUID.equals(previouslyInMuseumUUID)) {
-                player.sendMessage(Text.key("gui_museum.category.can_only_read"));
-                return;
-            }
-        }
-
-        if (category.contains(skyBlockItem.getAttributeHandler().getPotentialType())) {
-            skyBlockItem.getAttributeHandler().setSoulBound(true);
-            data.add(skyBlockItem);
-            player.setMuseumData(data);
-            player.getInventory().setItemStack(e.getSlot(), ItemStack.AIR);
-            player.closeInventory();
+        if (state != MuseumState.IN_MUSEUM) return;
+        if (MuseumService.retrieve(player, entry)) {
             MuseumDisplays.updateDisplay(player);
-
-            new GUIMuseumCategory(category).open(player);
-            player.sendMessage(Text.key("gui_museum.category.donated", skyBlockItem.getDisplayName()));
+            ctx.session(State.class).refresh();
         }
     }
 
-    @Override
-    public int[] getPaginatedSlots() {
-        return new int[]{
-                10, 11, 12, 13, 14, 15, 16,
-                19, 20, 21, 22, 23, 24, 25,
-                28, 29, 30, 31, 32, 33, 34,
-                37, 38, 39, 40, 41, 42, 43
-        };
-    }
-
-    @Override
-    public PaginationList<ItemType> fillPaged(HypixelPlayer player, PaginationList<ItemType> paged) {
-        paged.addAll(category.getItems());
-        return paged;
-    }
-
-    @Override
-    public boolean shouldFilterFromSearch(String query, ItemType item) {
-        return !item.getDisplayName().toLowerCase().contains(query.toLowerCase());
-    }
-
-    @Override
-    public void performSearch(HypixelPlayer p, String query, int page, int maxPage) {
-        SkyBlockPlayer player = (SkyBlockPlayer) p;
-        border(ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, ""));
-        set(GUIClickableItem.getCloseItem(49));
-        set(createSearchItem(this, 50, query));
-        set(GUIClickableItem.getGoBackItem(48, new GUIYourMuseum()));
-
-        if (page > 1) {
-            set(createNavigationButton(this, 45, query, page, false));
+    private static List<MuseumEntry> entries(State state, DatapointMuseum.MuseumData data) {
+        List<MuseumEntry> entries = new ArrayList<>(state.category() == null
+                ? MuseumService.catalogue().all()
+                : MuseumService.catalogue().entries(state.category()));
+        if (!state.query().isEmpty()) {
+            String query = state.query().toLowerCase(Locale.ROOT);
+            entries.removeIf(entry -> !entry.name().toLowerCase(Locale.ROOT).contains(query));
         }
-        if (page < maxPage) {
-            set(createNavigationButton(this, 53, query, page, true));
+        Comparator<MuseumEntry> byXp = Comparator.comparingInt(MuseumEntry::xp).thenComparing(MuseumEntry::name);
+        Comparator<MuseumEntry> byName = Comparator.comparing(MuseumEntry::name);
+        entries.sort(switch (state.sort()) {
+            case ASCENDING_XP -> byXp;
+            case DESCENDING_XP -> byXp.reversed();
+            case MISSING_FIRST -> Comparator.comparing((MuseumEntry entry) -> data.isCredited(entry.id())).thenComparing(byXp);
+            case A_TO_Z -> byName;
+            case Z_TO_A -> byName.reversed();
+        });
+        return entries;
+    }
+
+    private static ItemStack.Builder header(DatapointMuseum.MuseumData data, MuseumCategory category) {
+        long donated = MuseumService.donatedCount(data, category);
+        List<Text> lore = new ArrayList<>();
+        if (category.isSpecial()) {
+            lore.add(Text.of("<7>View all of the <d>Special Items <7>that you"));
+            lore.add(Text.of("<7>have donated to the <9>Museum<7>!"));
+            lore.add(Text.empty());
+            lore.add(Text.of("<7>These items don't count towards"));
+            lore.add(Text.of("<7>Museum progress and rewards."));
+            lore.add(Text.empty());
+            lore.add(Text.of("<7>Items Donated: <b>{}<9>/<b>{}", donated, MuseumCategory.SPECIAL_ITEM_LIMIT));
+        } else {
+            long total = MuseumService.catalogue().entries(category).size();
+            lore.add(Text.of("<7>View all of the items related to the"));
+            lore.add(Text.of(category.getColor() + "{} Skill <7>that you have donated", category.getDisplayName()));
+            lore.add(Text.of("<7>to the <9>Museum<7>!"));
+            lore.add(Text.empty());
+            lore.add(Text.of("<7>Items Donated: <e>{}<6>%", GUIYourMuseum.percent(donated, total)));
+            lore.add(GUIYourMuseum.progressBar(donated, total));
         }
+        return ItemStacks.item(category.getIcon(), 1, Text.of(category.coloredName()), lore);
+    }
 
-        for (int i = 0; i < 36; i++) {
-            SkyBlockItem item = new SkyBlockItem(player.getInventory().getItemStack(i));
-            if (item.getAttributeHandler().getPotentialType() == null) {
-                continue;
-            }
+    private static ItemStack.Builder detailsToggle(boolean enabled) {
+        return ItemStacks.item(enabled ? Material.LIME_TERRACOTTA : Material.RED_TERRACOTTA, 1,
+                Text.of("<a>Extra Details"), List.of(
+                        Text.of("<7>Show info on your donated items:"),
+                        Text.of("<8>- <7>Date of the donation"),
+                        Text.of("<8>- <7>Item Value"),
+                        Text.of("<8>- <7>Clean Item Value"),
+                        Text.of("<8>- <7>Museum Display Slot"),
+                        Text.empty(),
+                        Text.of(enabled ? "<7>Toggled: <a><l>ON" : "<7>Toggled: <c><l>OFF"),
+                        Text.empty(),
+                        Text.of("<e>Click to toggle!")));
+    }
 
-            if (category.contains(item.getAttributeHandler().getPotentialType())) {
-                TrackedItemRetrieveProtocol.TrackedItemRetrieveMessage message = new TrackedItemRetrieveProtocol.TrackedItemRetrieveMessage(
-                        UUID.fromString(item.getAttributeHandler().getUniqueTrackedID())
-                );
-                TrackedItem trackedItem = ((TrackedItemRetrieveProtocol.TrackedItemResponse) new ProxyService(ServiceType.ITEM_TRACKER).handleRequest(message).join()).trackedItem();
-
-                ItemStack.Builder toReturn = item.getItemStackBuilder();
-                List<Text> lore = item.getLoreText(player);
-                lore.add(Text.of("<8><m>---------------------"));
-                lore.add(Text.key("gui_museum.category.item_created_label"));
-                lore.add(Text.of("<a>{}", StringUtility.formatAsDate(trackedItem.getCreated())));
-                lore.add(Text.literal(" "));
-                lore.add(Text.key("gui_museum.category.click_to_donate"));
-
-                player.getInventory().setItemStack(i, ItemStacks.name(ItemStacks.lore(toReturn, lore),
-                        Text.literal(item.getDisplayName())).build());
-            }
+    private static ItemStack.Builder sortButton(Sort current) {
+        List<Text> lore = new ArrayList<>();
+        lore.add(Text.empty());
+        for (Sort sort : Sort.values()) {
+            lore.add(sort == current ? Text.of("<b>▶ {}", sort.label) : Text.of("<7>   {}", sort.label));
         }
-    }
-
-    @Override
-    public Text getTitleText(HypixelPlayer player, String query, int page, PaginationList<ItemType> paged) {
-        return Text.key("gui_museum.category.title", category.toString());
-    }
-
-    @Override
-    public GUIClickableItem createItemFor(ItemType item, int slot, HypixelPlayer p) {
-        SkyBlockPlayer player = (SkyBlockPlayer) p;
-        DatapointMuseum.MuseumData data = player.getMuseumData();
-        SkyBlockItem skyBlockItem = data.getItem(category, item);
-        boolean inMuseum = skyBlockItem != null;
-        boolean hasTakenItOut = data.getPreviouslyInMuseum().contains(skyBlockItem);
-
-        return new GUIClickableItem(slot) {
-            @Override
-            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p;
-                if (!inMuseum || hasTakenItOut) {
-                    return;
-                }
-
-                player.sendMessage(Text.key("gui_museum.category.retrieved_message", item.getDisplayName()));
-                player.sendMessage(Text.key("gui_museum.category.retrieved_return_message"));
-
-                data.moveToRetrieved(skyBlockItem);
-                player.setMuseumData(data);
-                MuseumDisplays.updateDisplay(player);
-
-                player.closeInventory();
-                player.addAndUpdateItem(skyBlockItem.getItemStack());
-                new GUIMuseumCategory(category).open(player);
-            }
-
-            @Override
-            public ItemStack.Builder getItem(HypixelPlayer p) {
-                if (!inMuseum) {
-                    return ItemStacks.item(Material.GRAY_DYE, 1,
-                            Text.key("gui_museum.category.item_not_in_museum", item.getDisplayName()),
-                            Text.keyLines("gui_museum.category.item_not_in_museum.lore"));
-                }
-
-                UUID trackedItemUUID = UUID.fromString(skyBlockItem.getAttributeHandler().getUniqueTrackedID());
-                TrackedItemRetrieveProtocol.TrackedItemRetrieveMessage message = new TrackedItemRetrieveProtocol.TrackedItemRetrieveMessage(trackedItemUUID);
-                TrackedItem trackedItem = ((TrackedItemRetrieveProtocol.TrackedItemResponse) new ProxyService(ServiceType.ITEM_TRACKER)
-                        .handleRequest(message).join()).trackedItem();
-
-                List<Text> lore = skyBlockItem.getLoreText();
-                lore.add(Text.of("<8><m>---------------------"));
-                lore.add(Text.key("gui_museum.category.item_donated_label"));
-                lore.add(Text.of("<b>{}", StringUtility.formatAsDate(data.getInsertionTimes().get(trackedItemUUID))));
-                lore.add(Text.literal(" "));
-                lore.add(Text.key("gui_museum.category.item_created_label"));
-                lore.add(Text.of("<a>{}", StringUtility.formatAsDate(trackedItem.getCreated())));
-                lore.add(Text.of("<6>  {} <7>created", StringUtility.commaifyAndTh(trackedItem.getNumberMade())));
-                lore.add(Text.literal(" "));
-                lore.add(Text.key("gui_museum.category.item_clean_value_label"));
-                lore.add(Text.of("<6>{:,} Coins", new ItemPriceCalculator(skyBlockItem).calculateCleanPrice()));
-                lore.add(Text.literal(" "));
-                lore.add(Text.key("gui_museum.category.item_value_label"));
-                if (data.getCalculatedPrices().containsKey(trackedItemUUID)) {
-                    lore.add(Text.of("<6>{:,} Coins", data.getCalculatedPrices().get(trackedItemUUID)));
-                } else {
-                    lore.add(Text.key("gui_museum.category.uncalculated"));
-                }
-                lore.add(Text.literal(" "));
-                lore.add(Text.key("gui_museum.category.display_slot_label"));
-                DatapointMuseum.DisplayPlacement placement = data.getDisplayHandler().getItemDisplayPlacement(skyBlockItem);
-                if (data.getCurrentlyInMuseum().contains(skyBlockItem) && placement != null) {
-                    lore.add(Text.of("<9>{} Slot #{}", placement.display(), placement.slot() + 1));
-                } else {
-                    lore.add(Text.key("gui_museum.category.not_in_display"));
-                }
-                if (hasTakenItOut) {
-                    lore.add(Text.of("<8><m>---------------------"));
-                    lore.addAll(Text.keyLines("gui_museum.category.retrieved_from_museum.lore"));
-                } else {
-                    lore.add(Text.literal(" "));
-                    lore.add(Text.key("gui_museum.category.click_to_retrieve"));
-                }
-
-                return ItemStacks.item(hasTakenItOut ? Material.LIME_DYE : item.material, 1,
-                        Text.of("<a>{}", item.getDisplayName()), lore);
-            }
-        };
-    }
-
-
-    @Override
-    public void onClose(InventoryCloseEvent e, CloseReason reason) {
-        SkyBlockPlayer player = (SkyBlockPlayer) e.getPlayer();
-
-        SkyBlockDataHandler.Data.INVENTORY.onLoad.accept(
-                player, SkyBlockDataHandler.Data.INVENTORY.onQuit.apply(player)
-        );
+        lore.add(Text.empty());
+        lore.add(Text.of("<b>Right-click to go backwards!"));
+        lore.add(Text.of("<e>Click to switch sort!"));
+        return ItemStacks.item(Material.HOPPER, 1, Text.of("<a>Sort"), lore);
     }
 }

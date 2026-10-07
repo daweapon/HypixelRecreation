@@ -10,14 +10,13 @@ import net.swofty.commons.protocol.Serializer;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.museum.MuseumDisplays;
-import net.swofty.type.skyblockgeneric.museum.MuseumableItemCategory;
+import net.swofty.type.skyblockgeneric.museum.MuseumEntry;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-// Persists a player's museum contents (current/previously donated items, per-item display
-// placements, insertion times and prices) and provides lookup/display-management helpers.
 public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumData> {
     private static final Serializer<MuseumData> serializer = new Serializer<>() {
         @Override
@@ -59,25 +58,29 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
         private Map<UUID, DisplayPlacement> museumDisplay = new HashMap<>();
         private Map<UUID, Long> insertionTimes = new HashMap<>();
         private Map<UUID, Double> calculatedPrices = new HashMap<>();
+        private Set<String> donatedEntries = new LinkedHashSet<>();
+        private int claimedMilestone = 0;
 
         @Getter
         private final DisplayHandler displayHandler = new DisplayHandler();
 
-        public List<SkyBlockItem> getItemsByCategory(MuseumableItemCategory category) {
-            return getAllItems().stream()
-                    .filter(item -> category.contains(item.getAttributeHandler().getPotentialType()))
+        public boolean isCredited(String entryId) {
+            return donatedEntries.contains(entryId);
+        }
+
+        public void credit(String entryId) {
+            donatedEntries.add(entryId);
+        }
+
+        public List<SkyBlockItem> itemsFor(MuseumEntry entry, boolean current) {
+            return (current ? currentlyInMuseum : previouslyInMuseum).stream()
+                    .filter(item -> item.getAttributeHandler().getPotentialType() != null)
+                    .filter(item -> entry.accepts(item.getAttributeHandler().getPotentialType()))
                     .collect(Collectors.toList());
         }
 
-        public List<SkyBlockItem> getCurrentItemsByCategory(MuseumableItemCategory category) {
+        public List<SkyBlockItem> getNotInDisplay() {
             return currentlyInMuseum.stream()
-                    .filter(item -> category.contains(item.getAttributeHandler().getPotentialType()))
-                    .collect(Collectors.toList());
-        }
-
-        public List<SkyBlockItem> getNotInDisplayByCategory(MuseumableItemCategory category) {
-            return currentlyInMuseum.stream()
-                    .filter(item -> category.contains(item.getAttributeHandler().getPotentialType()))
                     .filter(item -> !museumDisplay.containsKey(UUID.fromString(item.getAttributeHandler().getUniqueTrackedID())))
                     .collect(Collectors.toList());
         }
@@ -95,13 +98,6 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
                     .findFirst().orElse(null);
         }
 
-        public @Nullable SkyBlockItem getItem(MuseumableItemCategory category, ItemType type) {
-            return getItemsByCategory(category).stream()
-                    .filter(item -> item.getAttributeHandler().getPotentialType().equals(type))
-                    .findFirst()
-                    .orElse(null);
-        }
-
         public @NonNull SkyBlockItem getFromUUID(UUID itemUuid) {
             return currentlyInMuseum.stream()
                     .filter(item -> item.getAttributeHandler().getUniqueTrackedID().equals(itemUuid.toString()))
@@ -116,10 +112,6 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
             List<SkyBlockItem> items = new ArrayList<>(currentlyInMuseum);
             items.addAll(previouslyInMuseum);
             return items;
-        }
-
-        public Map<MuseumableItemCategory, List<SkyBlockItem>> getAllItemsByCategory() {
-            return MuseumableItemCategory.sortAsMuseumItems(getAllItems());
         }
 
         public void add(SkyBlockItem item) {
@@ -174,18 +166,6 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
                                 entry -> entry.getValue().slot(),
                                 Collectors.mapping(entry -> getFromUUID(entry.getKey()), Collectors.toList())
                         ));
-            }
-
-            public List<SkyBlockItem> getItemsInDisplayByCategory(MuseumDisplays display, MuseumableItemCategory category) {
-                return getAllItemsInDisplay(display).stream()
-                        .filter(item -> category.contains(item.getAttributeHandler().getPotentialType()))
-                        .collect(Collectors.toList());
-            }
-
-            public List<SkyBlockItem> getItemsAtSlotByCategory(MuseumDisplays display, Integer slot, MuseumableItemCategory category) {
-                return getItemsAtSlot(display, slot).stream()
-                        .filter(item -> category.contains(item.getAttributeHandler().getPotentialType()))
-                        .collect(Collectors.toList());
             }
 
             public boolean isItemInDisplay(SkyBlockItem item) {
@@ -328,6 +308,8 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
 
             json.put("insertionTimes", new JSONObject(insertionTimes).toString());
             json.put("calculatedPrices", new JSONObject(calculatedPrices).toString());
+            json.put("donatedEntries", new ArrayList<>(donatedEntries));
+            json.put("claimedMilestone", claimedMilestone);
 
             return json;
         }
@@ -370,14 +352,20 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
             data.insertionTimes = new JSONObject(json.getString("insertionTimes")).toMap().entrySet().stream()
                     .collect(Collectors.toMap(
                             entry -> UUID.fromString(entry.getKey()),
-                            entry -> (Long) entry.getValue()
+                            entry -> ((Number) entry.getValue()).longValue()
                     ));
 
             data.calculatedPrices = new JSONObject(json.getString("calculatedPrices")).toMap().entrySet().stream()
                     .collect(Collectors.toMap(
                             entry -> UUID.fromString(entry.getKey()),
-                            entry -> (Double) entry.getValue()
+                            entry -> ((Number) entry.getValue()).doubleValue()
                     ));
+
+            JSONArray donated = json.optJSONArray("donatedEntries");
+            if (donated != null) {
+                donated.toList().forEach(entryId -> data.donatedEntries.add(String.valueOf(entryId)));
+            }
+            data.claimedMilestone = json.optInt("claimedMilestone", 0);
 
             return data;
         }

@@ -1,0 +1,3619 @@
+# Every real Hypixel SkyBlock Museum entry. IDs, categories, armor-set pieces, XP, game stages,
+# upgrade chains and mapped IDs come from the official item resource
+# (https://api.hypixel.net/v2/resources/skyblock/items, museum_data) as curated by the
+# NotEnoughUpdates repo's constants/museum.json; names follow the wiki's Museum/UI pages.
+# An entry is donatable here only when every item it needs exists in ItemType; the rest are
+# listed greyed out until their items are added.
+# parent: donating that entry also credits this one. mapped: alternate item IDs that count as it.
+categories:
+  COMBAT:
+    - id: ARTISANAL_SHORTBOW
+      name: Artisanal Shortbow
+      xp: 1
+      stage: STARTER
+    - id: ASPECT_OF_THE_JERRY
+      name: Aspect of the Jerry
+      xp: 1
+      stage: STARTER
+    - id: BLOBFISH_HAT
+      name: Blobfish Hat
+      xp: 1
+      stage: AMATEUR
+    - id: CELESTE
+      name: Celeste Armor
+      xp: 1
+      stage: STARTER
+      pieces: [CELESTE_HELMET, CELESTE_CHESTPLATE, CELESTE_LEGGINGS, CELESTE_BOOTS]
+    - id: CELESTE_WAND
+      name: Celeste Wand
+      xp: 1
+      stage: AMATEUR
+    - id: COW_HEAD
+      name: Cow Hat
+      xp: 1
+      stage: STARTER
+    - id: CREEPER_HAT
+      name: Creeper Hat
+      xp: 1
+      stage: STARTER
+    - id: END_SWORD
+      name: End Sword
+      xp: 1
+      stage: STARTER
+    - id: FANCY_SWORD
+      name: Fancy Sword
+      xp: 1
+      stage: STARTER
+    - id: SNOW_CANNON
+      name: Frosty the Snow Cannon
+      xp: 1
+      stage: INTERMEDIATE
+      parent: SNOW_BLASTER
+    - id: MAGMA_FISH_HAT
+      name: Magmafish Hat
+      xp: 1
+      stage: SKILLED
+    - id: MERCENARY
+      name: Mercenary Armor
+      xp: 1
+      stage: AMATEUR
+      pieces: [MERCENARY_HELMET, MERCENARY_CHESTPLATE, MERCENARY_LEGGINGS, MERCENARY_BOOTS]
+    - id: PUFFERFISH_HAT
+      name: Pufferfish Hat
+      xp: 1
+      stage: AMATEUR
+      mapped: [PUFFERFISH_HAT_CELEBRATION]
+    - id: ROGUE_SWORD
+      name: Rogue Sword
+      xp: 1
+      stage: STARTER
+    - id: ROSETTA
+      name: 'Rosetta''s Armor'
+      xp: 1
+      stage: STARTER
+      pieces: [ROSETTA_HELMET, ROSETTA_CHESTPLATE, ROSETTA_LEGGINGS, ROSETTA_BOOTS]
+    - id: SKELETON_HAT
+      name: Skeleton Hat
+      xp: 1
+      stage: STARTER
+    - id: SLIME_HAT
+      name: Slime Hat
+      xp: 1
+      stage: AMATEUR
+    - id: SPIDER_HAT
+      name: Spider Hat
+      xp: 1
+      stage: STARTER
+    - id: SPIDER_SWORD
+      name: Spider Sword
+      xp: 1
+      stage: STARTER
+      parent: RECLUSE_FANG
+    - id: SQUIRE
+      name: Squire Armor
+      xp: 1
+      stage: STARTER
+      pieces: [SQUIRE_HELMET, SQUIRE_CHESTPLATE, SQUIRE_LEGGINGS, SQUIRE_BOOTS]
+    - id: SQUIRE_SWORD
+      name: Squire Sword
+      xp: 1
+      stage: STARTER
+    - id: CLOWNFISH_HAT
+      name: Tropical Fish Hat
+      xp: 1
+      stage: STARTER
+    - id: UNDEAD_SWORD
+      name: Undead Sword
+      xp: 1
+      stage: STARTER
+      parent: REVENANT_SWORD
+    - id: DOJO_WHITE_BELT
+      name: White Belt
+      xp: 1
+      stage: SKILLED
+      parent: DOJO_YELLOW_BELT
+    - id: ZOMBIE_HAT
+      name: Zombie Hat
+      xp: 1
+      stage: AMATEUR
+    - id: ANCESTRAL_SPADE
+      name: Ancestral Spade
+      xp: 2
+      stage: AMATEUR
+      parent: ARCHAIC_SPADE
+    - id: ARACK
+      name: Arack
+      xp: 2
+      stage: AMATEUR
+    - id: DOJO_BLUE_BELT
+      name: Blue Belt
+      xp: 2
+      stage: EXPERT
+      parent: DOJO_BROWN_BELT
+    - id: ENDERMAN_MASK
+      name: Enderman Mask
+      xp: 2
+      stage: INTERMEDIATE
+    - id: FAIRY
+      name: 'Fairy''s Armor'
+      xp: 2
+      stage: INTERMEDIATE
+      pieces: [FAIRY_HELMET, FAIRY_CHESTPLATE, FAIRY_LEGGINGS, FAIRY_BOOTS]
+    - id: SNOW_BLASTER
+      name: Frosty the Snow Blaster
+      xp: 2
+      stage: INTERMEDIATE
+      parent: SNOW_HOWITZER
+    - id: DOJO_GREEN_BELT
+      name: Green Belt
+      xp: 2
+      stage: SKILLED
+      parent: DOJO_BLUE_BELT
+    - id: HUNTER_KNIFE
+      name: Hunter Knife
+      xp: 2
+      stage: AMATEUR
+    - id: PRISMARINE_BLADE
+      name: Prismarine Blade
+      xp: 2
+      stage: AMATEUR
+    - id: PRISMARINE_BOW
+      name: Prismarine Bow
+      xp: 2
+      stage: AMATEUR
+    - id: RADIANT_POWER_ORB
+      name: Radiant Power Orb
+      xp: 2
+      stage: AMATEUR
+      parent: MANA_FLUX_POWER_ORB
+    - id: RECLUSE_FANG
+      name: Recluse Fang
+      xp: 2
+      stage: INTERMEDIATE
+      parent: TARANTULA_FANG
+    - id: STARLIGHT
+      name: Starlight Armor
+      xp: 2
+      stage: AMATEUR
+      pieces: [STARLIGHT_HELMET, STARLIGHT_CHESTPLATE, STARLIGHT_LEGGINGS, STARLIGHT_BOOTS]
+    - id: STARLIGHT_WAND
+      name: Starlight Wand
+      xp: 2
+      stage: AMATEUR
+    - id: TRIBAL_SPEAR
+      name: Tribal Spear
+      xp: 2
+      stage: SKILLED
+    - id: WAND_OF_HEALING
+      name: Wand of Healing
+      xp: 2
+      stage: AMATEUR
+      parent: WAND_OF_MENDING
+    - id: WAND_OF_MENDING
+      name: Wand of Mending
+      xp: 2
+      stage: INTERMEDIATE
+      parent: WAND_OF_RESTORATION
+    - id: WITHER_BOW
+      name: Wither Bow
+      xp: 2
+      stage: STARTER
+    - id: DOJO_YELLOW_BELT
+      name: Yellow Belt
+      xp: 2
+      stage: SKILLED
+      parent: DOJO_GREEN_BELT
+    - id: ZOMBIE_MASK
+      name: Zombie Mask
+      xp: 2
+      stage: INTERMEDIATE
+    - id: GROWTH
+      name: Armor of Growth
+      xp: 3
+      stage: SKILLED
+      parent: MASTIFF
+      pieces: [GROWTH_HELMET, GROWTH_CHESTPLATE, GROWTH_LEGGINGS, GROWTH_BOOTS]
+    - id: DOJO_BROWN_BELT
+      name: Brown Belt
+      xp: 3
+      stage: EXPERT
+      parent: DOJO_BLACK_BELT
+    - id: CHEAP_TUXEDO
+      name: Cheap Tuxedo
+      xp: 3
+      stage: INTERMEDIATE
+      parent: FANCY_TUXEDO
+      pieces: [CHEAP_TUXEDO_CHESTPLATE, CHEAP_TUXEDO_LEGGINGS, CHEAP_TUXEDO_BOOTS]
+    - id: DECENT_BOW
+      name: Decent Bow
+      xp: 3
+      stage: INTERMEDIATE
+    - id: END_STONE_BOW
+      name: End Stone Bow
+      xp: 3
+      stage: SKILLED
+    - id: END
+      name: Ender Armor
+      xp: 3
+      stage: INTERMEDIATE
+      pieces: [END_HELMET, END_CHESTPLATE, END_LEGGINGS, END_BOOTS, ENDER_NECKLACE, ENDER_CLOAK, ENDER_BELT, ENDER_GAUNTLET]
+    - id: ENDER_BOW
+      name: Ender Bow
+      xp: 3
+      stage: INTERMEDIATE
+    - id: FLAMING_SWORD
+      name: Flaming Sword
+      xp: 3
+      stage: AMATEUR
+    - id: SNOW_HOWITZER
+      name: Frosty the Howitzer
+      xp: 3
+      stage: SKILLED
+    - id: GOLEM_ARMOR
+      name: Golem Armor
+      xp: 3
+      stage: INTERMEDIATE
+      pieces: [GOLEM_ARMOR_HELMET, GOLEM_ARMOR_CHESTPLATE, GOLEM_ARMOR_LEGGINGS, GOLEM_ARMOR_BOOTS]
+    - id: HARDENED_DIAMOND
+      name: Hardened Diamond Armor
+      xp: 3
+      stage: INTERMEDIATE
+      parent: MINERAL
+      pieces: [HARDENED_DIAMOND_HELMET, HARDENED_DIAMOND_CHESTPLATE, HARDENED_DIAMOND_LEGGINGS, HARDENED_DIAMOND_BOOTS]
+    - id: KALHUIKI_MASK
+      name: Kalhuiki Mask
+      xp: 3
+      stage: SKILLED
+    - id: MERCENARY_AXE
+      name: Mercenary Sword
+      xp: 3
+      stage: AMATEUR
+    - id: PARROT_MASK
+      name: Parrot Mask
+      xp: 3
+      stage: INTERMEDIATE
+    - id: RABBIT_HAT
+      name: Rabbit Hat
+      xp: 3
+      stage: INTERMEDIATE
+    - id: SAVANA_BOW
+      name: Savanna Bow
+      xp: 3
+      stage: INTERMEDIATE
+    - id: SHAMAN_SWORD
+      name: Shaman Sword
+      xp: 3
+      stage: INTERMEDIATE
+      parent: POOCH_SWORD
+    - id: SNOWMAN_MASK
+      name: Snowman Mask
+      xp: 3
+      stage: INTERMEDIATE
+    - id: SPIDER_QUEENS_STINGER
+      name: 'Spider Queen''s Stinger'
+      xp: 3
+      stage: SKILLED
+      mapped: [STARRED_SPIDER_QUEENS_STINGER]
+    - id: SYNTHESIZER_V1
+      name: Synthesizer v1
+      xp: 3
+      stage: EXPERT
+      parent: SYNTHESIZER_V2
+    - id: TACTICIAN_SWORD
+      name: 'Tactician''s Sword'
+      xp: 3
+      stage: AMATEUR
+    - id: VOIDWALKER_KATANA
+      name: Voidwalker Katana
+      xp: 3
+      stage: SKILLED
+      parent: VOIDEDGE_KATANA
+    - id: ZOMBIE_HEART
+      name: 'Zombie''s Heart'
+      xp: 3
+      stage: INTERMEDIATE
+      parent: CRYSTALLIZED_HEART
+    - id: ARACHNE
+      name: 'Arachne''s Armor'
+      xp: 4
+      stage: INTERMEDIATE
+      pieces: [ARACHNE_HELMET, ARACHNE_CHESTPLATE, ARACHNE_LEGGINGS, ARACHNE_BOOTS, ARACHNE_NECKLACE, ARACHNE_CLOAK, ARACHNE_BELT, ARACHNE_GLOVES]
+    - id: ARCHAIC_SPADE
+      name: Archaic Spade
+      xp: 4
+      stage: INTERMEDIATE
+      parent: DEIFIC_SPADE
+    - id: ASPECT_OF_THE_END
+      name: Aspect of the End
+      xp: 4
+      stage: INTERMEDIATE
+      parent: ASPECT_OF_THE_VOID
+    - id: ATOMINIZER
+      name: Atominizer
+      xp: 4
+      stage: SKILLED
+    - id: BLADE_OF_THE_VOLCANO
+      name: Blade of the Volcano
+      xp: 4
+      stage: EXPERT
+    - id: CHARMINIZER
+      name: Charminizer
+      xp: 4
+      stage: SKILLED
+    - id: CRYSTALLIZED_HEART
+      name: Crystallized Heart
+      xp: 4
+      stage: INTERMEDIATE
+      parent: REVIVED_HEART
+    - id: DRAGON_SHORTBOW
+      name: Dragon Shortbow
+      xp: 4
+      stage: INTERMEDIATE
+    - id: DRAGONFADE_CLOAK
+      name: Dragonfade Cloak
+      xp: 4
+      stage: INTERMEDIATE
+    - id: DRAGONFUSE_GLOVE
+      name: Dragonfuse Glove
+      xp: 4
+      stage: INTERMEDIATE
+    - id: EDIBLE_MACE
+      name: Edible Mace
+      xp: 4
+      stage: SKILLED
+    - id: EMERALD_BLADE
+      name: Emerald Blade
+      xp: 4
+      stage: SKILLED
+    - id: END_STONE_SWORD
+      name: End Stone Sword
+      xp: 4
+      stage: SKILLED
+    - id: EXPLOSIVE_BOW
+      name: Explosive Bow
+      xp: 4
+      stage: SKILLED
+    - id: FANCY_TUXEDO
+      name: Fancy Tuxedo
+      xp: 4
+      stage: EXPERT
+      parent: ELEGANT_TUXEDO
+      pieces: [FANCY_TUXEDO_CHESTPLATE, FANCY_TUXEDO_LEGGINGS, FANCY_TUXEDO_BOOTS]
+    - id: GHOUL_BUSTER
+      name: Ghoul Buster
+      xp: 4
+      stage: INTERMEDIATE
+    - id: GOLEM_SWORD
+      name: Golem Sword
+      xp: 4
+      stage: INTERMEDIATE
+    - id: HURRICANE_BOW
+      name: Hurricane Bow
+      xp: 4
+      stage: SKILLED
+    - id: JINGLE_BELLS
+      name: Jingle Bells
+      xp: 4
+      stage: INTERMEDIATE
+    - id: MANA_FLUX_POWER_ORB
+      name: Mana Flux Power Orb
+      xp: 4
+      stage: INTERMEDIATE
+      parent: OVERFLUX_POWER_ORB
+    - id: MITHRIL_COAT
+      name: Mithril Coat
+      xp: 4
+      stage: INTERMEDIATE
+    - id: MONSTER_HUNTER
+      name: Monster Hunter Armor
+      xp: 4
+      stage: SKILLED
+      parent: MONSTER_RAIDER
+      pieces: [SKELETON_HELMET, GUARDIAN_CHESTPLATE, CREEPER_LEGGINGS, SPIDER_BOOTS]
+    - id: MONSTER_RAIDER
+      name: Monster Raider Armor
+      xp: 4
+      stage: SKILLED
+      pieces: [SKELETON_HELMET, GUARDIAN_CHESTPLATE, CREEPER_LEGGINGS, TARANTULA_BOOTS]
+    - id: OBSIDIAN_CHESTPLATE
+      name: Obsidian Chestplate
+      xp: 4
+      stage: INTERMEDIATE
+    - id: ORNATE_ZOMBIE_SWORD
+      name: Ornate Zombie Sword
+      xp: 4
+      stage: SKILLED
+      parent: FLORID_ZOMBIE_SWORD
+    - id: PARTY
+      name: Party Equipment
+      xp: 4
+      stage: INTERMEDIATE
+      pieces: [PARTY_HAT, PARTY_NECKLACE, PARTY_CLOAK, PARTY_BELT, PARTY_GLOVES]
+    - id: RAIDER_AXE
+      name: Raider Sword
+      xp: 4
+      stage: AMATEUR
+    - id: REVENANT_SWORD
+      name: Revenant Falchion
+      xp: 4
+      stage: INTERMEDIATE
+      parent: REAPER_SWORD
+    - id: SOUL_ESOWARD
+      name: Soul Esoward
+      xp: 4
+      stage: SKILLED
+    - id: STAFF_OF_THE_VOLCANO
+      name: Staff of the Volcano
+      xp: 4
+      stage: EXPERT
+    - id: VAMPIRE_MASK
+      name: Vampire Mask
+      xp: 4
+      stage: SKILLED
+      parent: WITCH_MASK
+    - id: VAMPIRE_WITCH_MASK
+      name: Vampire Witch Mask
+      xp: 4
+      stage: EXPERT
+    - id: VENOMS_TOUCH
+      name: 'Venom''s Touch'
+      xp: 4
+      stage: SKILLED
+      mapped: [STARRED_VENOMS_TOUCH]
+    - id: VOID_SWORD
+      name: Void Sword
+      xp: 4
+      stage: INTERMEDIATE
+    - id: WAND_OF_RESTORATION
+      name: Wand of Restoration
+      xp: 4
+      stage: SKILLED
+      parent: WAND_OF_ATONEMENT
+    - id: WARNING_FLARE
+      name: Warning Flare
+      xp: 4
+      stage: EXPERT
+      parent: ALERT_FLARE
+    - id: WEIRD_TUBA
+      name: Weird Tuba
+      xp: 4
+      stage: SKILLED
+      parent: WEIRDER_TUBA
+    - id: WITCH_MASK
+      name: Witch Mask
+      xp: 4
+      stage: SKILLED
+      parent: VAMPIRE_WITCH_MASK
+    - id: ZOMBIE
+      name: Zombie Armor
+      xp: 4
+      stage: INTERMEDIATE
+      parent: REVENANT
+      pieces: [ZOMBIE_CHESTPLATE, ZOMBIE_LEGGINGS, ZOMBIE_BOOTS]
+    - id: ZOMBIE_SWORD
+      name: Zombie Sword
+      xp: 4
+      stage: INTERMEDIATE
+      parent: ORNATE_ZOMBIE_SWORD
+    - id: RIFT_NECKLACE_OUTSIDE
+      name: '%%light_purple%%Rift Necklace'
+      xp: 5
+      stage: INTERMEDIATE
+    - id: ASPECT_OF_THE_DRAGON
+      name: Aspect of the Dragons
+      xp: 5
+      stage: INTERMEDIATE
+    - id: RUNIC_STAFF
+      name: Aurora Staff
+      xp: 5
+      stage: EXPERT
+    - id: CRIMSON_HUNTER
+      name: Crimson Hunter Set
+      xp: 5
+      stage: EXPERT
+      parent: VANQUISHED
+      pieces: [MAGMA_NECKLACE, GHAST_CLOAK, BLAZE_BELT, GLOWSTONE_GAUNTLET]
+    - id: ELEANOR
+      name: 'Eleanor''s Armor'
+      xp: 5
+      stage: INTERMEDIATE
+      pieces: [ELEANOR_CAP, ELEANOR_TUNIC, ELEANOR_TROUSERS, ELEANOR_SLIPPERS]
+    - id: EMERALD_ARMOR
+      name: Emerald Armor
+      xp: 5
+      stage: INTERMEDIATE
+      pieces: [EMERALD_ARMOR_HELMET, EMERALD_ARMOR_CHESTPLATE, EMERALD_ARMOR_LEGGINGS, EMERALD_ARMOR_BOOTS]
+    - id: FIRE_FREEZE_STAFF
+      name: Fire Freeze Staff
+      xp: 5
+      stage: EXPERT
+    - id: FIRE_FURY_STAFF
+      name: Fire Fury Staff
+      xp: 5
+      stage: EXPERT
+    - id: FLORID_ZOMBIE_SWORD
+      name: Florid Zombie Sword
+      xp: 5
+      stage: SKILLED
+    - id: FROZEN_SCYTHE
+      name: Frozen Scythe
+      xp: 5
+      stage: SKILLED
+      parent: GLACIAL_SCYTHE
+    - id: GHOST_BOOTS
+      name: Ghostly Boots
+      xp: 5
+      stage: SKILLED
+    - id: GLOOMLOCK_GRIMOIRE
+      name: Gloomlock Grimoire
+      xp: 5
+      stage: EXPERT
+    - id: HOLLOW_WAND
+      name: Hollow Wand
+      xp: 5
+      stage: PROFESSIONAL
+    - id: KRAMPUS_HELMET
+      name: Krampus Helmet
+      xp: 5
+      stage: SKILLED
+    - id: LEAPING_SWORD
+      name: Leaping Sword
+      xp: 5
+      stage: SKILLED
+      parent: SILK_EDGE_SWORD
+    - id: POOCH_SWORD
+      name: Pooch Sword
+      xp: 5
+      stage: SKILLED
+    - id: REVENANT
+      name: Revenant Armor
+      xp: 5
+      stage: SKILLED
+      parent: REAPER
+      pieces: [REVENANT_CHESTPLATE, REVENANT_LEGGINGS, REVENANT_BOOTS]
+    - id: SILK_EDGE_SWORD
+      name: Silk-Edge Sword
+      xp: 5
+      stage: SKILLED
+    - id: SLIME_BOW
+      name: Slime Bow
+      xp: 5
+      stage: SKILLED
+    - id: SOULS_REBOUND
+      name: Souls Rebound
+      xp: 5
+      stage: SKILLED
+    - id: SCORPION_BOW
+      name: Spider Shortbow
+      xp: 5
+      stage: SKILLED
+      parent: MOSQUITO_BOW
+    - id: SULPHUR_BOW
+      name: Sulphur Bow
+      xp: 5
+      stage: EXPERT
+    - id: SWORD_OF_BAD_HEALTH
+      name: Sword of Bad Health
+      xp: 5
+      stage: SKILLED
+    - id: SYNTHESIZER_V2
+      name: Synthesizer v2
+      xp: 5
+      stage: EXPERT
+      parent: SYNTHESIZER_V3
+    - id: TARANTULA_FANG
+      name: Tarantula Fang
+      xp: 5
+      stage: INTERMEDIATE
+      parent: SCORPION_FOIL
+    - id: VOIDEDGE_KATANA
+      name: Voidedge Katana
+      xp: 5
+      stage: SKILLED
+      parent: VORPAL_KATANA
+    - id: VOODOO_DOLL
+      name: Voodoo Doll
+      xp: 5
+      stage: SKILLED
+      parent: VOODOO_DOLL_WILTED
+    - id: WEIRDER_TUBA
+      name: Weirder Tuba
+      xp: 5
+      stage: SKILLED
+    - id: ASPECT_OF_THE_VOID
+      name: Aspect of the Void
+      xp: 6
+      stage: EXPERT
+    - id: CHALLENGER
+      name: 'Challenger''s Armor'
+      xp: 6
+      stage: INTERMEDIATE
+      parent: MYTHOS
+      pieces: [CHALLENGER_HELMET, CHALLENGER_CHESTPLATE, CHALLENGER_LEGGINGS, CHALLENGER_BOOTS, CHALLENGER_NECKLACE, CHALLENGER_CLOAK, CHALLENGER_BELT, CHALLENGER_BRACELET]
+    - id: CROWN_OF_GREED
+      name: Crown of Greed
+      xp: 6
+      stage: EXPERT
+      parent: CROWN_OF_AVARICE
+    - id: CRYSTAL
+      name: Crystal Armor
+      xp: 6
+      stage: INTERMEDIATE
+      pieces: [CRYSTAL_HELMET, CRYSTAL_CHESTPLATE, CRYSTAL_LEGGINGS, CRYSTAL_BOOTS]
+    - id: ELEGANT_TUXEDO
+      name: Elegant Tuxedo
+      xp: 6
+      stage: PROFESSIONAL
+      pieces: [ELEGANT_TUXEDO_CHESTPLATE, ELEGANT_TUXEDO_LEGGINGS, ELEGANT_TUXEDO_BOOTS]
+    - id: FIREDUST_DAGGER
+      name: Firedust Dagger
+      xp: 6
+      stage: EXPERT
+      parent: BURSTFIRE_DAGGER
+    - id: INK_WAND
+      name: Ink Wand
+      xp: 6
+      stage: SKILLED
+    - id: JERRY_STAFF
+      name: Jerry-chine Gun
+      xp: 6
+      stage: INTERMEDIATE
+    - id: VOODOO_DOLL_WILTED
+      name: Jinxed Voodoo Doll
+      xp: 6
+      stage: SKILLED
+    - id: MIDAS_SWORD
+      name: 'Midas'' Sword'
+      xp: 6
+      stage: EXPERT
+      mapped: [STARRED_MIDAS_SWORD]
+    - id: PUMPKIN_LAUNCHER
+      name: Pumpkin Launcher
+      xp: 6
+      stage: INTERMEDIATE
+    - id: RAGNAROCK_AXE
+      name: Ragnarock
+      xp: 6
+      stage: EXPERT
+    - id: RAMPART
+      name: Rampart Armor
+      xp: 6
+      stage: EXPERT
+      pieces: [RAMPART_HELMET, RAMPART_CHESTPLATE, RAMPART_LEGGINGS, RAMPART_BOOTS]
+    - id: REVIVED_HEART
+      name: Revived Heart
+      xp: 6
+      stage: SKILLED
+      parent: REAPER_MASK
+    - id: RUNAANS_BOW
+      name: 'Runaan''s Bow'
+      xp: 6
+      stage: SKILLED
+    - id: SHRIVELED_BRACELET
+      name: Shriveled Bracelet
+      xp: 6
+      stage: SKILLED
+    - id: SNOW_SUIT
+      name: Snow Suit Armor
+      xp: 6
+      stage: INTERMEDIATE
+      parent: NUTCRACKER
+      pieces: [SNOW_SUIT_HELMET, SNOW_SUIT_CHESTPLATE, SNOW_SUIT_LEGGINGS, SNOW_SUIT_BOOTS, SNOW_NECKLACE, SNOW_CLOAK, SNOW_BELT, SNOW_GLOVES]
+    - id: MAWDUST_DAGGER
+      name: Twilight Dagger
+      xp: 6
+      stage: PROFESSIONAL
+      parent: BURSTMAW_DAGGER
+    - id: WAND_OF_STRENGTH
+      name: Wand of Strength
+      xp: 6
+      stage: EXPERT
+    - id: ARMOR_OF_THE_PACK
+      name: Armor of the Pack
+      xp: 7
+      stage: SKILLED
+      pieces: [BOOTS_OF_THE_PACK, CHESTPLATE_OF_THE_PACK, HELMET_OF_THE_PACK, LEGGINGS_OF_THE_PACK]
+    - id: BAT_PERSON
+      name: Bat Person Armor
+      xp: 7
+      stage: SKILLED
+      pieces: [BAT_PERSON_HELMET, BAT_PERSON_CHESTPLATE, BAT_PERSON_LEGGINGS, BAT_PERSON_BOOTS]
+    - id: BLAZE
+      name: Blaze Armor
+      xp: 7
+      stage: EXPERT
+      parent: FROZEN_BLAZE
+      pieces: [BLAZE_HELMET, BLAZE_CHESTPLATE, BLAZE_LEGGINGS, BLAZE_BOOTS]
+    - id: FIRE_VEIL_WAND
+      name: Fire Veil Wand
+      xp: 7
+      stage: EXPERT
+    - id: JUJU_SHORTBOW
+      name: Juju Shortbow
+      xp: 7
+      stage: EXPERT
+    - id: REAPER
+      name: Reaper Armor
+      xp: 7
+      stage: EXPERT
+      pieces: [REAPER_CHESTPLATE, REAPER_LEGGINGS, REAPER_BOOTS]
+    - id: REAPER_SWORD
+      name: Reaper Falchion
+      xp: 7
+      stage: SKILLED
+      parent: AXE_OF_THE_SHREDDED
+    - id: SCORPION_FOIL
+      name: Scorpion Foil
+      xp: 7
+      stage: SKILLED
+      parent: STING
+    - id: SINSEEKER_SCYTHE
+      name: Sinseeker Scythe
+      xp: 7
+      stage: EXPERT
+    - id: SOUL_WHIP
+      name: Soul Whip
+      xp: 7
+      stage: SKILLED
+      parent: FLAMING_FLAY
+    - id: SPOOKY
+      name: Spooky Armor
+      xp: 7
+      stage: SKILLED
+      parent: BAT_PERSON
+      pieces: [SPOOKY_HELMET, SPOOKY_CHESTPLATE, SPOOKY_LEGGINGS, SPOOKY_BOOTS]
+    - id: TARANTULA
+      name: Tarantula Armor
+      xp: 7
+      stage: SKILLED
+      parent: PRIMORDIAL
+      pieces: [TARANTULA_HELMET, TARANTULA_CHESTPLATE, TARANTULA_LEGGINGS, TARANTULA_BOOTS]
+    - id: VORPAL_KATANA
+      name: Vorpal Katana
+      xp: 7
+      stage: EXPERT
+      parent: ATOMSPLIT_KATANA
+    - id: WEREWOLF
+      name: Werewolf Armor
+      xp: 7
+      stage: SKILLED
+      pieces: [WEREWOLF_HELMET, WEREWOLF_CHESTPLATE, WEREWOLF_LEGGINGS, WEREWOLF_BOOTS]
+    - id: YETI_SWORD
+      name: Yeti Sword
+      xp: 7
+      stage: EXPERT
+      mapped: [STARRED_YETI_SWORD]
+    - id: ANCIENT_CLOAK
+      name: Ancient Cloak
+      xp: 8
+      stage: EXPERT
+    - id: DEIFIC_SPADE
+      name: Deific Spade
+      xp: 8
+      stage: EXPERT
+    - id: DELIRIUM_NECKLACE
+      name: Delirium Necklace
+      xp: 8
+      stage: EXPERT
+    - id: DESTRUCTION_CLOAK
+      name: Destruction Cloak
+      xp: 8
+      stage: PROFESSIONAL
+      parent: ANNIHILATION_CLOAK
+    - id: FINAL_DESTINATION
+      name: Final Destination Armor
+      xp: 8
+      stage: EXPERT
+      pieces: [FINAL_DESTINATION_HELMET, FINAL_DESTINATION_CHESTPLATE, FINAL_DESTINATION_LEGGINGS, FINAL_DESTINATION_BOOTS]
+    - id: GYROKINETIC_WAND
+      name: Gyrokinetic Wand
+      xp: 8
+      stage: PROFESSIONAL
+    - id: MASTIFF
+      name: Mastiff Armor
+      xp: 8
+      stage: SKILLED
+      pieces: [MASTIFF_HELMET, MASTIFF_CHESTPLATE, MASTIFF_LEGGINGS, MASTIFF_BOOTS]
+    - id: MOODY_GRAPPLESHOT
+      name: Moody Grappleshot
+      xp: 8
+      stage: EXPERT
+    - id: MOSQUITO_BOW
+      name: Mosquito Shortbow
+      xp: 8
+      stage: EXPERT
+    - id: PERFECT_TIER_12
+      name: Perfect Armor - Tier XII
+      xp: 8
+      stage: SKILLED
+      parent: PERFECT_TIER_13
+      pieces: [PERFECT_BOOTS_12, PERFECT_CHESTPLATE_12, PERFECT_HELMET_12, PERFECT_LEGGINGS_12]
+    - id: PIGMAN_SWORD
+      name: Pigman Sword
+      xp: 8
+      stage: EXPERT
+    - id: REAPER_MASK
+      name: Reaper Mask
+      xp: 8
+      stage: EXPERT
+    - id: REAPER_SCYTHE
+      name: Reaper Scythe
+      xp: 8
+      stage: EXPERT
+    - id: SUMMONING_RING
+      name: Summoning Ring
+      xp: 8
+      stage: SKILLED
+    - id: SWORD_OF_REVELATIONS
+      name: Sword of Revelations
+      xp: 8
+      stage: SKILLED
+      parent: DAEDALUS_AXE
+    - id: ALCHEMISTS_STAFF
+      name: 'The Alchemist''s Staff'
+      xp: 8
+      stage: EXPERT
+    - id: VANQUISHED
+      name: Vanquisher Set
+      xp: 8
+      stage: EXPERT
+      pieces: [VANQUISHED_MAGMA_NECKLACE, VANQUISHED_GHAST_CLOAK, VANQUISHED_BLAZE_BELT, VANQUISHED_GLOWSTONE_GAUNTLET]
+    - id: WAND_OF_ATONEMENT
+      name: Wand of Atonement
+      xp: 8
+      stage: EXPERT
+    - id: GLACIAL_SCYTHE
+      name: Glacial Scythe
+      xp: 9
+      stage: EXPERT
+      mapped: [STARRED_GLACIAL_SCYTHE]
+    - id: ALERT_FLARE
+      name: Alert Flare
+      xp: 10
+      stage: PROFESSIONAL
+      parent: SOS_FLARE
+    - id: ATOMSPLIT_KATANA
+      name: Atomsplit Katana
+      xp: 10
+      stage: PROFESSIONAL
+    - id: AURORA
+      name: Aurora Armor
+      xp: 10
+      stage: PROFESSIONAL
+      pieces: [AURORA_HELMET, AURORA_CHESTPLATE, AURORA_LEGGINGS, AURORA_BOOTS]
+    - id: CRIMSON
+      name: Crimson Armor
+      xp: 10
+      stage: PROFESSIONAL
+      pieces: [CRIMSON_HELMET, CRIMSON_CHESTPLATE, CRIMSON_LEGGINGS, CRIMSON_BOOTS]
+    - id: CROWN_OF_AVARICE
+      name: Crown of Avarice
+      xp: 10
+      stage: PROFESSIONAL
+    - id: DAEDALUS_AXE
+      name: Daedalus Blade
+      xp: 10
+      stage: PROFESSIONAL
+      mapped: [STARRED_DAEDALUS_AXE]
+    - id: FERVOR
+      name: Fervor Armor
+      xp: 10
+      stage: PROFESSIONAL
+      pieces: [FERVOR_HELMET, FERVOR_CHESTPLATE, FERVOR_LEGGINGS, FERVOR_BOOTS]
+    - id: FROZEN_BLAZE
+      name: Frozen Blaze Armor
+      xp: 10
+      stage: EXPERT
+      pieces: [FROZEN_BLAZE_HELMET, FROZEN_BLAZE_CHESTPLATE, FROZEN_BLAZE_LEGGINGS, FROZEN_BLAZE_BOOTS]
+    - id: GAUNTLET_OF_CONTAGION
+      name: Gauntlet of Contagion
+      xp: 10
+      stage: EXPERT
+    - id: GOLDEN_FLEECE
+      name: Golden Fleece
+      xp: 10
+      stage: MASTER
+    - id: AXE_OF_THE_SHREDDED
+      name: Halberd of the Shredded
+      xp: 10
+      stage: EXPERT
+    - id: HOLLOW
+      name: Hollow Armor
+      xp: 10
+      stage: PROFESSIONAL
+      pieces: [HOLLOW_HELMET, HOLLOW_CHESTPLATE, HOLLOW_LEGGINGS, HOLLOW_BOOTS]
+    - id: HOLY_DRAGON
+      name: Holy Dragon Armor
+      xp: 10
+      stage: SKILLED
+      pieces: [HOLY_DRAGON_HELMET, HOLY_DRAGON_CHESTPLATE, HOLY_DRAGON_LEGGINGS, HOLY_DRAGON_BOOTS]
+    - id: IMPLOSION_BELT
+      name: Implosion Belt
+      xp: 10
+      stage: EXPERT
+    - id: BURSTFIRE_DAGGER
+      name: Kindlebane Dagger
+      xp: 10
+      stage: MASTER
+      parent: HEARTFIRE_DAGGER
+    - id: LAVA_SHELL_NECKLACE
+      name: Lava Shell Necklace
+      xp: 10
+      stage: EXPERT
+    - id: MANTICORE_CLAW
+      name: Manticore Claw
+      xp: 10
+      stage: MASTER
+    - id: BURSTMAW_DAGGER
+      name: Mawdredge Dagger
+      xp: 10
+      stage: MASTER
+      parent: HEARTMAW_DAGGER
+    - id: MOLTEN
+      name: Molten Set
+      xp: 10
+      stage: EXPERT
+      pieces: [MOLTEN_NECKLACE, MOLTEN_CLOAK, MOLTEN_BELT, MOLTEN_BRACELET]
+    - id: OLD_DRAGON
+      name: Old Dragon Armor
+      xp: 10
+      stage: INTERMEDIATE
+      pieces: [OLD_DRAGON_HELMET, OLD_DRAGON_CHESTPLATE, OLD_DRAGON_LEGGINGS, OLD_DRAGON_BOOTS]
+    - id: OVERFLUX_POWER_ORB
+      name: Overflux Power Orb
+      xp: 10
+      stage: EXPERT
+      parent: PLASMAFLUX_POWER_ORB
+    - id: PERFECT_TIER_13
+      name: Perfect Armor - Tier XIII
+      xp: 10
+      stage: EXPERT
+      pieces: [PERFECT_BOOTS_13, PERFECT_CHESTPLATE_13, PERFECT_HELMET_13, PERFECT_LEGGINGS_13]
+    - id: PRIMORDIAL
+      name: Primordial Armor
+      xp: 10
+      stage: SKILLED
+      pieces: [PRIMORDIAL_HELMET, PRIMORDIAL_CHESTPLATE, PRIMORDIAL_LEGGINGS, PRIMORDIAL_BOOTS]
+    - id: PROTECTOR_DRAGON
+      name: Protector Dragon Armor
+      xp: 10
+      stage: INTERMEDIATE
+      pieces: [PROTECTOR_DRAGON_HELMET, PROTECTOR_DRAGON_CHESTPLATE, PROTECTOR_DRAGON_LEGGINGS, PROTECTOR_DRAGON_BOOTS]
+    - id: REKINDLED_EMBER
+      name: Rekindled Ember Armor
+      xp: 10
+      stage: EXPERT
+      pieces: [REKINDLED_EMBER_HELMET, REKINDLED_EMBER_CHESTPLATE, REKINDLED_EMBER_LEGGINGS, REKINDLED_EMBER_BOOTS]
+    - id: SCOURGE_CLOAK
+      name: Scourge Cloak
+      xp: 10
+      stage: EXPERT
+    - id: SCOVILLE_BELT
+      name: Scoville Belt
+      xp: 10
+      stage: EXPERT
+    - id: STING
+      name: Sting
+      xp: 10
+      stage: EXPERT
+    - id: STRONG_DRAGON
+      name: Strong Dragon Armor
+      xp: 10
+      stage: INTERMEDIATE
+      pieces: [STRONG_DRAGON_HELMET, STRONG_DRAGON_CHESTPLATE, STRONG_DRAGON_LEGGINGS, STRONG_DRAGON_BOOTS]
+    - id: TERROR
+      name: Terror Armor
+      xp: 10
+      stage: PROFESSIONAL
+      pieces: [TERROR_HELMET, TERROR_CHESTPLATE, TERROR_LEGGINGS, TERROR_BOOTS]
+    - id: THERMODYNAMIC
+      name: Thermodynamic Armor
+      xp: 10
+      stage: EXPERT
+      pieces: [THERMODYNAMIC_HELMET, THERMODYNAMIC_CHESTPLATE, THERMODYNAMIC_LEGGINGS, THERMODYNAMIC_BOOTS]
+    - id: UNSTABLE_DRAGON
+      name: Unstable Dragon Armor
+      xp: 10
+      stage: INTERMEDIATE
+      pieces: [UNSTABLE_DRAGON_HELMET, UNSTABLE_DRAGON_CHESTPLATE, UNSTABLE_DRAGON_LEGGINGS, UNSTABLE_DRAGON_BOOTS]
+    - id: WISE_DRAGON
+      name: Wise Dragon Armor
+      xp: 10
+      stage: INTERMEDIATE
+      pieces: [WISE_DRAGON_HELMET, WISE_DRAGON_CHESTPLATE, WISE_DRAGON_LEGGINGS, WISE_DRAGON_BOOTS]
+    - id: YOUNG_DRAGON
+      name: Young Dragon Armor
+      xp: 10
+      stage: INTERMEDIATE
+      pieces: [YOUNG_DRAGON_HELMET, YOUNG_DRAGON_CHESTPLATE, YOUNG_DRAGON_LEGGINGS, YOUNG_DRAGON_BOOTS]
+    - id: DOJO_BLACK_BELT
+      name: Black Belt
+      xp: 12
+      stage: PROFESSIONAL
+    - id: DEMONLORD_GAUNTLET
+      name: Demonslayer Gauntlet
+      xp: 12
+      stage: PROFESSIONAL
+    - id: FLAMING_FLAY
+      name: Flaming Flay
+      xp: 12
+      stage: MASTER
+    - id: MIDAS_STAFF
+      name: Midas Staff
+      xp: 12
+      stage: PROFESSIONAL
+      mapped: [STARRED_MIDAS_STAFF]
+    - id: MYTHOS
+      name: Mythos Armor
+      xp: 12
+      stage: SKILLED
+      pieces: [MYTHOS_HELMET, MYTHOS_CHESTPLATE, MYTHOS_LEGGINGS, MYTHOS_BOOTS, MYTHOS_NECKLACE, MYTHOS_CLOAK, MYTHOS_BELT, MYTHOS_BRACELET]
+    - id: THE_PRIMORDIAL
+      name: The Primordial
+      xp: 12
+      stage: EXPERT
+    - id: WARDEN_HELMET
+      name: Warden Helmet
+      xp: 12
+      stage: PROFESSIONAL
+    - id: BERSERKER
+      name: Berserker Armor
+      xp: 14
+      stage: SKILLED
+      pieces: [BERSERKER_HELMET, BERSERKER_CHESTPLATE, BERSERKER_LEGGINGS, BERSERKER_BOOTS]
+    - id: TACTICAL_INSERTION
+      name: Tactical Insertion
+      xp: 14
+      stage: PROFESSIONAL
+    - id: FLAMING_FIST
+      name: Flaming Fist
+      xp: 15
+      stage: PROFESSIONAL
+    - id: PLASMAFLUX_POWER_ORB
+      name: Plasmaflux Power Orb
+      xp: 15
+      stage: MASTER
+    - id: SUPERIOR_DRAGON
+      name: Superior Dragon Armor
+      xp: 15
+      stage: SKILLED
+      pieces: [SUPERIOR_DRAGON_HELMET, SUPERIOR_DRAGON_CHESTPLATE, SUPERIOR_DRAGON_LEGGINGS, SUPERIOR_DRAGON_BOOTS]
+    - id: SYNTHESIZER_V3
+      name: Synthesizer v3
+      xp: 15
+      stage: PROFESSIONAL
+    - id: ANNIHILATION_CLOAK
+      name: Annihilation Cloak
+      xp: 16
+      stage: MASTER
+    - id: BLAZETEKK_HAM_RADIO
+      name: 'Blazetekk™ Ham Radio'
+      xp: 16
+      stage: PROFESSIONAL
+    - id: SHIMMERING_LIGHT
+      name: Shimmering Light Armor
+      xp: 16
+      stage: EXPERT
+      pieces: [SHIMMERING_LIGHT_HOOD, SHIMMERING_LIGHT_TUNIC, SHIMMERING_LIGHT_TROUSERS, SHIMMERING_LIGHT_SLIPPERS]
+    - id: TERMINATOR
+      name: Terminator
+      xp: 18
+      stage: MASTER
+    - id: HEARTMAW_DAGGER
+      name: Deathripper Dagger
+      xp: 20
+      stage: MASTER
+    - id: HELLSTORM_STAFF
+      name: Hellstorm Wand
+      xp: 20
+      stage: MASTER
+    - id: HEARTFIRE_DAGGER
+      name: Pyrochaos Dagger
+      xp: 20
+      stage: MASTER
+    - id: TORMENTOR
+      name: Tormentor
+      xp: 20
+      stage: MASTER
+    - id: SOS_FLARE
+      name: SOS Flare
+      xp: 25
+      stage: MASTER
+  FARMING:
+    - id: BASIC_CHICKEN_AXE
+      name: Basic Chicken Axe
+      xp: 1
+      stage: STARTER
+      parent: CHICKEN_AXE
+    - id: BASIC_COW_AXE
+      name: Basic Cow Axe
+      xp: 1
+      stage: STARTER
+      parent: COW_AXE
+    - id: BASIC_MUSHROOM_COW_AXE
+      name: Basic Mooshroom Axe
+      xp: 1
+      stage: STARTER
+      parent: MUSHROOM_COW_AXE
+    - id: BASIC_PIG_AXE
+      name: Basic Pig Axe
+      xp: 1
+      stage: STARTER
+      parent: PIG_AXE
+    - id: BASIC_RABBIT_AXE
+      name: Basic Rabbit Axe
+      xp: 1
+      stage: STARTER
+      parent: RABBIT_AXE
+    - id: BASIC_SHEEP_AXE
+      name: Basic Sheep Axe
+      xp: 1
+      stage: STARTER
+      parent: SHEEP_AXE
+    - id: CHICKEN_HEAD
+      name: Chicken Hat
+      xp: 1
+      stage: STARTER
+    - id: FARM_SUIT
+      name: Farm Suit
+      xp: 1
+      stage: STARTER
+      parent: FARM_ARMOR
+      pieces: [FARM_SUIT_HELMET, FARM_SUIT_CHESTPLATE, FARM_SUIT_LEGGINGS, FARM_SUIT_BOOTS]
+    - id: RABBIT
+      name: Rabbit Armor
+      xp: 1
+      stage: STARTER
+      pieces: [RABBIT_HELMET, RABBIT_CHESTPLATE, RABBIT_LEGGINGS, RABBIT_BOOTS]
+    - id: ROOKIE_FARMING_AXE
+      name: Rookie Farming Axe
+      xp: 1
+      stage: STARTER
+    - id: ROOKIE_HOE
+      name: Rookie Hoe
+      xp: 1
+      stage: STARTER
+    - id: CHICKEN_AXE
+      name: Advanced Chicken Axe
+      xp: 2
+      stage: INTERMEDIATE
+    - id: COW_AXE
+      name: Advanced Cow Axe
+      xp: 2
+      stage: INTERMEDIATE
+    - id: MUSHROOM_COW_AXE
+      name: Advanced Mooshroom Axe
+      xp: 2
+      stage: INTERMEDIATE
+    - id: PIG_AXE
+      name: Advanced Pig Axe
+      xp: 2
+      stage: INTERMEDIATE
+    - id: RABBIT_AXE
+      name: Advanced Rabbit Axe
+      xp: 2
+      stage: INTERMEDIATE
+    - id: SHEEP_AXE
+      name: Advanced Sheep Axe
+      xp: 2
+      stage: INTERMEDIATE
+    - id: BASIC_GARDENING_AXE
+      name: Basic Gardening Axe
+      xp: 2
+      stage: AMATEUR
+      parent: ADVANCED_GARDENING_AXE
+    - id: BASIC_GARDENING_HOE
+      name: Basic Gardening Hoe
+      xp: 2
+      stage: AMATEUR
+      parent: ADVANCED_GARDENING_HOE
+    - id: CACTUS
+      name: Cactus Armor
+      xp: 2
+      stage: STARTER
+      pieces: [CACTUS_HELMET, CACTUS_CHESTPLATE, CACTUS_LEGGINGS, CACTUS_BOOTS]
+    - id: FARM_ARMOR
+      name: Farm Armor
+      xp: 2
+      stage: AMATEUR
+      parent: PUMPKIN
+      pieces: [FARM_ARMOR_HELMET, FARM_ARMOR_CHESTPLATE, FARM_ARMOR_LEGGINGS, FARM_ARMOR_BOOTS]
+    - id: GARDEN_SCYTHE
+      name: Garden Scythe
+      xp: 2
+      stage: AMATEUR
+    - id: HOE_OF_GREAT_TILLING
+      name: Hoe of Great Tilling
+      xp: 2
+      stage: AMATEUR
+      parent: HOE_OF_GREATER_TILLING
+    - id: HYDRO_CAN_1000
+      name: 'HydroCan™ 1000'
+      xp: 2
+      stage: AMATEUR
+      parent: HYDRO_CAN_TURBO_2000
+    - id: HYDRO_CAN_TURBO_2000
+      name: 'HydroCan™ Turbo 2000'
+      xp: 2
+      stage: AMATEUR
+      parent: HYDRO_CAN_ULTRA_3000
+    - id: MUSHROOM
+      name: Mushroom Armor
+      xp: 2
+      stage: STARTER
+      parent: BIOHAZARD
+      pieces: [MUSHROOM_HELMET, MUSHROOM_CHESTPLATE, MUSHROOM_LEGGINGS, MUSHROOM_BOOTS]
+    - id: PLANT_DIAGNOSTICS_TOOL
+      name: Plant Diagnostics Tool
+      xp: 2
+      stage: AMATEUR
+    - id: SAM_SCYTHE
+      name: 'Sam''s Scythe'
+      xp: 2
+      stage: AMATEUR
+      parent: GARDEN_SCYTHE
+    - id: SKYMART_TURBO_VACUUM
+      name: SkyMart Turbo Vacuum
+      xp: 2
+      stage: AMATEUR
+      parent: SKYMART_HYPER_VACUUM
+    - id: SKYMART_VACUUM
+      name: SkyMart Vacuum
+      xp: 2
+      stage: AMATEUR
+      parent: SKYMART_TURBO_VACUUM
+    - id: SPRAYONATOR
+      name: Sprayonator
+      xp: 2
+      stage: AMATEUR
+      parent: JUICY_SPRAYONATOR
+    - id: ADVANCED_GARDENING_AXE
+      name: Advanced Gardening Axe
+      xp: 3
+      stage: AMATEUR
+    - id: ADVANCED_GARDENING_HOE
+      name: Advanced Gardening Hoe
+      xp: 3
+      stage: AMATEUR
+    - id: HOE_OF_GREATER_TILLING
+      name: Hoe of Greater Tilling
+      xp: 3
+      stage: INTERMEDIATE
+      parent: HOE_OF_GREATEST_TILLING
+    - id: ENCHANTED_JACK_O_LANTERN
+      name: Lantern Helmet
+      xp: 3
+      stage: INTERMEDIATE
+    - id: PUMPKIN
+      name: Pumpkin Armor
+      xp: 3
+      stage: AMATEUR
+      parent: MELON
+      pieces: [PUMPKIN_HELMET, PUMPKIN_CHESTPLATE, PUMPKIN_LEGGINGS, PUMPKIN_BOOTS]
+    - id: SPORE_HARVESTER
+      name: Spore Harvester
+      xp: 3
+      stage: SKILLED
+    - id: SUNFLOWER_HEAD
+      name: Sunflower Head
+      xp: 3
+      stage: AMATEUR
+    - id: THORNLEAF_SCYTHE
+      name: Thornleaf Scythe
+      xp: 3
+      stage: SKILLED
+    - id: BIOHAZARD
+      name: Biohazard Armor
+      xp: 4
+      stage: AMATEUR
+      pieces: [BIOHAZARD_HELMET, BIOHAZARD_LEGGINGS, BIOHAZARD_BOOTS, BIOHAZARD_SUIT]
+    - id: CACTUS_KNIFE
+      name: 'Cactus Knife Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: CACTUS_KNIFE_2
+    - id: COCO_CHOPPER
+      name: 'Cocoa Chopper Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: COCO_CHOPPER_2
+    - id: THEORETICAL_HOE_SUNFLOWER_1
+      name: 'Eclipse Sickle Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: THEORETICAL_HOE_SUNFLOWER_2
+    - id: THEORETICAL_HOE_WHEAT_1
+      name: 'Euclid''s Wheat Sickle Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: THEORETICAL_HOE_WHEAT_2
+    - id: FARMER_BOOTS
+      name: Farmer Boots
+      xp: 4
+      stage: INTERMEDIATE
+      parent: RANCHERS_BOOTS
+    - id: FUNGI_CUTTER
+      name: 'Fungi Cutter Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: FUNGI_CUTTER_2
+    - id: THEORETICAL_HOE_CARROT_1
+      name: 'Gauss Carrot Shovel Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: THEORETICAL_HOE_CARROT_2
+    - id: HOE_OF_GREATEST_TILLING
+      name: Hoe of Greatest Tilling
+      xp: 4
+      stage: INTERMEDIATE
+    - id: HYDRO_CAN_ULTRA_3000
+      name: 'HydroCan™ Ultra 3000'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: AQUAMASTER_X
+    - id: JUICY_SPRAYONATOR
+      name: Juicy Sprayonator
+      xp: 4
+      stage: SKILLED
+      parent: SALTY_SPRAYONATOR
+    - id: MELON
+      name: Melon Armor
+      xp: 4
+      stage: INTERMEDIATE
+      parent: CROPIE
+      pieces: [MELON_HELMET, MELON_CHESTPLATE, MELON_LEGGINGS, MELON_BOOTS]
+    - id: MELON_DICER
+      name: 'Melon Dicer Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: MELON_DICER_2
+    - id: MOBYS_SHEARS
+      name: 'Moby''s Shears'
+      xp: 4
+      stage: INTERMEDIATE
+    - id: THEORETICAL_HOE_WARTS_1
+      name: 'Newton Nether Wart Cutter Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: THEORETICAL_HOE_WARTS_2
+    - id: LOTUS
+      name: Peony Set
+      xp: 4
+      stage: INTERMEDIATE
+      parent: BLOSSOM
+      pieces: [LOTUS_NECKLACE, LOTUS_CLOAK, LOTUS_BELT, LOTUS_BRACELET]
+    - id: PEST_VEST
+      name: Pest Vest
+      xp: 4
+      stage: INTERMEDIATE
+    - id: PESTHUNTER
+      name: 'Pesthunter''s Set'
+      xp: 4
+      stage: AMATEUR
+      pieces: [PESTHUNTERS_NECKLACE, PESTHUNTERS_CLOAK, PESTHUNTERS_BELT, PESTHUNTERS_GLOVES]
+    - id: PUMPKIN_DICER
+      name: 'Pumpkin Dicer Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: PUMPKIN_DICER_2
+    - id: THEORETICAL_HOE_POTATO_1
+      name: 'Pythagorean Potato Shovel Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: THEORETICAL_HOE_POTATO_2
+    - id: RANCHERS_BOOTS
+      name: 'Rancher''s Boots'
+      xp: 4
+      stage: SKILLED
+    - id: SEYMOUR
+      name: 'Seymour''s Special Armor'
+      xp: 4
+      stage: SKILLED
+      pieces: [VELVET_TOP_HAT, CASHMERE_JACKET, SATIN_TROUSERS, OXFORD_SHOES]
+    - id: SKYMART_HYPER_VACUUM
+      name: SkyMart Hyper Vacuum
+      xp: 4
+      stage: INTERMEDIATE
+      parent: INFINI_VACUUM
+    - id: THEORETICAL_HOE_CANE_1
+      name: 'Turing Sugar Cane Cutter Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: THEORETICAL_HOE_CANE_2
+    - id: THEORETICAL_HOE_WILD_ROSE_1
+      name: 'Wild Rose Cutter Mk. I'
+      xp: 4
+      stage: INTERMEDIATE
+      parent: THEORETICAL_HOE_WILD_ROSE_2
+    - id: CACTUS_KNIFE_2
+      name: 'Cactus Knife Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: CACTUS_KNIFE_3
+    - id: COCO_CHOPPER_2
+      name: 'Cocoa Chopper Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: COCO_CHOPPER_3
+    - id: THEORETICAL_HOE_SUNFLOWER_2
+      name: 'Eclipse Sickle Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: THEORETICAL_HOE_SUNFLOWER_3
+    - id: THEORETICAL_HOE_WHEAT_2
+      name: 'Euclid''s Wheat Sickle Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: THEORETICAL_HOE_WHEAT_3
+    - id: FUNGI_CUTTER_2
+      name: 'Fungi Cutter Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: FUNGI_CUTTER_3
+    - id: THEORETICAL_HOE_CARROT_2
+      name: 'Gauss Carrot Shovel Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: THEORETICAL_HOE_CARROT_3
+    - id: MELON_DICER_2
+      name: 'Melon Dicer Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: MELON_DICER_3
+    - id: THEORETICAL_HOE_WARTS_2
+      name: 'Newton Nether Wart Cutter Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: THEORETICAL_HOE_WARTS_3
+    - id: PUMPKIN_DICER_2
+      name: 'Pumpkin Dicer Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: PUMPKIN_DICER_3
+    - id: THEORETICAL_HOE_POTATO_2
+      name: 'Pythagorean Potato Shovel Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: THEORETICAL_HOE_POTATO_3
+    - id: SPEEDSTER
+      name: Speedster Armor
+      xp: 5
+      stage: INTERMEDIATE
+      parent: THERMODYNAMIC
+      pieces: [SPEEDSTER_HELMET, SPEEDSTER_CHESTPLATE, SPEEDSTER_LEGGINGS, SPEEDSTER_BOOTS]
+    - id: THEORETICAL_HOE_CANE_2
+      name: 'Turing Sugar Cane Cutter Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: THEORETICAL_HOE_CANE_3
+    - id: THEORETICAL_HOE_WILD_ROSE_2
+      name: 'Wild Rose Cutter Mk. II'
+      xp: 5
+      stage: SKILLED
+      parent: THEORETICAL_HOE_WILD_ROSE_3
+    - id: AQUAMASTER_X
+      name: 'AquaMaster™ X'
+      xp: 6
+      stage: SKILLED
+      parent: AQUAMASTER_HYDROMAX
+    - id: CROPIE
+      name: Cropie Armor
+      xp: 6
+      stage: SKILLED
+      parent: SQUASH
+      pieces: [CROPIE_HELMET, CROPIE_CHESTPLATE, CROPIE_LEGGINGS, CROPIE_BOOTS]
+    - id: INFINI_VACUUM
+      name: 'InfiniVacuum™'
+      xp: 6
+      stage: SKILLED
+      parent: INFINI_VACUUM_HOOVERIUS
+    - id: SQUEAKY_MOUSEMAT
+      name: Squeaky Mousemat
+      xp: 6
+      stage: EXPERT
+    - id: AQUAMASTER_HYDROMAX
+      name: 'AquaMaster™ Hydromax'
+      xp: 8
+      stage: EXPERT
+    - id: BLOSSOM
+      name: Blossom Set
+      xp: 8
+      stage: EXPERT
+      pieces: [BLOSSOM_NECKLACE, BLOSSOM_CLOAK, BLOSSOM_BELT, BLOSSOM_BRACELET]
+    - id: CACTUS_KNIFE_3
+      name: 'Cactus Knife Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: COCO_CHOPPER_3
+      name: 'Cocoa Chopper Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: THEORETICAL_HOE_SUNFLOWER_3
+      name: 'Eclipse Sickle Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: THEORETICAL_HOE_WHEAT_3
+      name: 'Euclid''s Wheat Sickle Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: FUNGI_CUTTER_3
+      name: 'Fungi Cutter Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: THEORETICAL_HOE_CARROT_3
+      name: 'Gauss Carrot Shovel Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: INFINI_VACUUM_HOOVERIUS
+      name: 'InfiniVacuum™ Hooverius'
+      xp: 8
+      stage: EXPERT
+    - id: MELON_DICER_3
+      name: 'Melon Dicer Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: THEORETICAL_HOE_WARTS_3
+      name: 'Newton Nether Wart Cutter Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: PUMPKIN_DICER_3
+      name: 'Pumpkin Dicer Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: THEORETICAL_HOE_POTATO_3
+      name: 'Pythagorean Potato Shovel Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: SALTY_SPRAYONATOR
+      name: Salty Sprayonator
+      xp: 8
+      stage: PROFESSIONAL
+    - id: THEORETICAL_HOE_CANE_3
+      name: 'Turing Sugar Cane Cutter Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: THEORETICAL_HOE_WILD_ROSE_3
+      name: 'Wild Rose Cutter Mk. III'
+      xp: 8
+      stage: EXPERT
+    - id: SQUASH
+      name: Squash Armor
+      xp: 9
+      stage: SKILLED
+      parent: FERMENTO
+      pieces: [SQUASH_HELMET, SQUASH_CHESTPLATE, SQUASH_LEGGINGS, SQUASH_BOOTS]
+    - id: FERMENTO
+      name: Fermento Armor
+      xp: 12
+      stage: PROFESSIONAL
+      parent: HELIANTHUS
+      pieces: [FERMENTO_HELMET, FERMENTO_CHESTPLATE, FERMENTO_LEGGINGS, FERMENTO_BOOTS]
+    - id: HELIANTHUS
+      name: Helianthus Armor
+      xp: 15
+      stage: MASTER
+      pieces: [HELIANTHUS_HELMET, HELIANTHUS_CHESTPLATE, HELIANTHUS_LEGGINGS, HELIANTHUS_BOOTS]
+    - id: ZORROS_CAPE
+      name: 'Zorro''s Cape'
+      xp: 15
+      stage: PROFESSIONAL
+  MINING:
+    - id: LANTERN
+      name: Dwarven Lantern
+      xp: 1
+      stage: AMATEUR
+      parent: MITHRIL_LANTERN
+    - id: FLINT_SHOVEL
+      name: Flint Shovel
+      xp: 1
+      stage: STARTER
+    - id: GOLEM_HAT
+      name: Golem Hat
+      xp: 1
+      stage: AMATEUR
+    - id: PROMISING_SPADE
+      name: Promising Shovel
+      xp: 1
+      stage: STARTER
+    - id: BANDAGED_MITHRIL_PICKAXE
+      name: Bandaged Mithril Pickaxe
+      xp: 2
+      stage: AMATEUR
+      parent: MITHRIL_PICKAXE
+    - id: FALLEN_STAR_TRACKER
+      name: Fallen Star Lozenge
+      xp: 2
+      stage: AMATEUR
+    - id: FRACTURED_MITHRIL_PICKAXE
+      name: Fractured Mithril Pickaxe
+      xp: 2
+      stage: AMATEUR
+      parent: BANDAGED_MITHRIL_PICKAXE
+    - id: HEAT
+      name: Heat Armor
+      xp: 2
+      stage: SKILLED
+      pieces: [HEAT_HELMET, HEAT_CHESTPLATE, HEAT_LEGGINGS, HEAT_BOOTS]
+    - id: LAPIS_PICKAXE
+      name: Lapis Pickaxe
+      xp: 2
+      stage: AMATEUR
+    - id: MITHRIL_PICKAXE
+      name: Mithril Pickaxe
+      xp: 2
+      stage: INTERMEDIATE
+      parent: REFINED_MITHRIL_PICKAXE
+    - id: PROMISING_PICKAXE
+      name: Promising Pickaxe
+      xp: 2
+      stage: STARTER
+    - id: ROOKIE_PICKAXE
+      name: Rookie Pickaxe
+      xp: 2
+      stage: STARTER
+    - id: RUSTY_TITANIUM_PICKAXE
+      name: Rusty Titanium Pickaxe
+      xp: 2
+      stage: INTERMEDIATE
+      parent: TITANIUM_PICKAXE
+    - id: ZOMBIE_PICKAXE
+      name: Zombie Pickaxe
+      xp: 2
+      stage: STARTER
+    - id: ARMADILLO_MASK
+      name: Armadillo Mask
+      xp: 3
+      stage: INTERMEDIATE
+    - id: FALLEN_STAR_HAT
+      name: Fallen Star Helmet
+      xp: 3
+      stage: INTERMEDIATE
+    - id: FLAME_BREAKER
+      name: Flamebreaker Armor
+      xp: 3
+      stage: SKILLED
+      parent: ARMOR_OF_YOG
+      pieces: [FLAME_BREAKER_HELMET, FLAME_BREAKER_CHESTPLATE, FLAME_BREAKER_LEGGINGS, FLAME_BREAKER_BOOTS]
+    - id: JUNGLE_PICKAXE
+      name: Jungle Pickaxe
+      xp: 3
+      stage: SKILLED
+    - id: LAPIS_ARMOR
+      name: Lapis Armor
+      xp: 3
+      stage: AMATEUR
+      pieces: [LAPIS_ARMOR_HELMET, LAPIS_ARMOR_CHESTPLATE, LAPIS_ARMOR_LEGGINGS, LAPIS_ARMOR_BOOTS]
+    - id: TANK_MINER
+      name: Miner Armor
+      xp: 3
+      stage: AMATEUR
+      parent: HEAT
+      pieces: [TANK_MINER_HELMET, TANK_MINER_CHESTPLATE, TANK_MINER_LEGGINGS, TANK_MINER_BOOTS]
+    - id: MITHRIL
+      name: Mithril Equipment
+      xp: 3
+      stage: INTERMEDIATE
+      parent: TITANIUM
+      pieces: [MITHRIL_NECKLACE, MITHRIL_CLOAK, MITHRIL_BELT, MITHRIL_GAUNTLET]
+    - id: MITHRIL_LANTERN
+      name: Mithril Lantern
+      xp: 3
+      stage: INTERMEDIATE
+      parent: TITANIUM_LANTERN
+    - id: MINER_OUTFIT
+      name: 'Prospector''s Outfit'
+      xp: 3
+      stage: STARTER
+      pieces: [MINER_OUTFIT_HELMET, MINER_OUTFIT_CHESTPLATE, MINER_OUTFIT_LEGGINGS, MINER_OUTFIT_BOOTS]
+    - id: REFINED_MITHRIL_PICKAXE
+      name: Refined Mithril Pickaxe
+      xp: 3
+      stage: INTERMEDIATE
+    - id: STARFALL_SEASONING
+      name: Starfall Seasoning
+      xp: 3
+      stage: INTERMEDIATE
+    - id: STONK_PICKAXE
+      name: Stonk
+      xp: 3
+      stage: INTERMEDIATE
+    - id: TITANIUM_PICKAXE
+      name: Titanium Pickaxe
+      xp: 3
+      stage: INTERMEDIATE
+      parent: REFINED_TITANIUM_PICKAXE
+    - id: ARMOR_OF_YOG
+      name: Yog Armor
+      xp: 3
+      stage: SKILLED
+      pieces: [ARMOR_OF_YOG_HELMET, ARMOR_OF_YOG_CHESTPLATE, ARMOR_OF_YOG_LEGGINGS, ARMOR_OF_YOG_BOOTS]
+    - id: GLACITE
+      name: Glacite Armor
+      xp: 4
+      stage: INTERMEDIATE
+      pieces: [GLACITE_HELMET, GLACITE_CHESTPLATE, GLACITE_LEGGINGS, GLACITE_BOOTS]
+    - id: GOBLIN
+      name: Goblin Armor
+      xp: 4
+      stage: INTERMEDIATE
+      pieces: [GOBLIN_HELMET, GOBLIN_CHESTPLATE, GOBLIN_LEGGINGS, GOBLIN_BOOTS]
+    - id: GOBLIN_OMELETTE
+      name: Goblin Omelette
+      xp: 4
+      stage: INTERMEDIATE
+      parent: GOBLIN_OMELETTE_PESTO
+    - id: MINERAL
+      name: Mineral Armor
+      xp: 4
+      stage: SKILLED
+      parent: GLOSSY_MINERAL
+      pieces: [MINERAL_HELMET, MINERAL_CHESTPLATE, MINERAL_LEGGINGS, MINERAL_BOOTS]
+    - id: MITHRIL_DRILL_ENGINE
+      name: Mithril-Plated Drill Engine
+      xp: 4
+      stage: INTERMEDIATE
+      parent: TITANIUM_DRILL_ENGINE
+    - id: REFINED_TITANIUM_PICKAXE
+      name: Polished Titanium Pickaxe
+      xp: 4
+      stage: INTERMEDIATE
+    - id: GEMSTONE_DRILL_1
+      name: Ruby Drill TX-15
+      xp: 4
+      stage: INTERMEDIATE
+      parent: GEMSTONE_DRILL_2
+    - id: TITANIUM
+      name: Titanium Equipment
+      xp: 4
+      stage: INTERMEDIATE
+      pieces: [TITANIUM_NECKLACE, TITANIUM_CLOAK, TITANIUM_BELT, TITANIUM_GAUNTLET]
+    - id: GEMSTONE_DRILL_2
+      name: Gemstone Drill LT-522
+      xp: 5
+      stage: SKILLED
+      parent: GEMSTONE_DRILL_3
+    - id: GEMSTONE
+      name: Gemstone Equipment
+      xp: 5
+      stage: SKILLED
+      pieces: [AMBER_NECKLACE, SAPPHIRE_CLOAK, JADE_BELT, AMETHYST_GAUNTLET]
+    - id: MITHRIL_FUEL_TANK
+      name: Mithril-Infused Fuel Tank
+      xp: 5
+      stage: SKILLED
+      parent: TITANIUM_FUEL_TANK
+    - id: TITANIUM_LANTERN
+      name: Titanium Lantern
+      xp: 5
+      stage: SKILLED
+      parent: GLACITE_LANTERN
+    - id: MITHRIL_DRILL_1
+      name: Mithril Drill SX-R226
+      xp: 6
+      stage: INTERMEDIATE
+      parent: MITHRIL_DRILL_2
+    - id: GOBLIN_OMELETTE_PESTO
+      name: Pesto Goblin Omelette
+      xp: 6
+      stage: SKILLED
+    - id: ROYAL_PIGEON
+      name: Royal Pigeon
+      xp: 6
+      stage: SKILLED
+    - id: GOBLIN_OMELETTE_SUNNY_SIDE
+      name: Sunny Side Goblin Omelette
+      xp: 6
+      stage: SKILLED
+    - id: TITANIUM_DRILL_ENGINE
+      name: Titanium-Plated Drill Engine
+      xp: 6
+      stage: SKILLED
+      parent: RUBY_POLISHED_DRILL_ENGINE
+    - id: ENCHANTED_TIME_CLOCK
+      name: Enchanted Clock
+      xp: 7
+      stage: EXPERT
+    - id: GLOSSY_MINERAL
+      name: Glossy Mineral Armor
+      xp: 7
+      stage: EXPERT
+      pieces: [GLOSSY_MINERAL_HELMET, GLOSSY_MINERAL_CHESTPLATE, GLOSSY_MINERAL_LEGGINGS, GLOSSY_MINERAL_BOOTS]
+    - id: TITANIUM_FUEL_TANK
+      name: Titanium-Infused Fuel Tank
+      xp: 7
+      stage: EXPERT
+      parent: GEMSTONE_FUEL_TANK
+    - id: GEMSTONE_DRILL_3
+      name: Topaz Drill KGR-12
+      xp: 7
+      stage: SKILLED
+      parent: GEMSTONE_DRILL_4
+    - id: GEMSTONE_GAUNTLET
+      name: Gemstone Gauntlet
+      xp: 8
+      stage: EXPERT
+    - id: GLACITE_LANTERN
+      name: Glacite Lantern
+      xp: 8
+      stage: EXPERT
+      parent: WILL_O_WISP
+    - id: REINFORCED_CHISEL
+      name: Reinforced Chisel
+      xp: 8
+      stage: EXPERT
+      parent: GLACITE_CHISEL
+    - id: RUBY_POLISHED_DRILL_ENGINE
+      name: Ruby-Polished Drill Engine
+      xp: 8
+      stage: EXPERT
+      parent: SAPPHIRE_POLISHED_DRILL_ENGINE
+    - id: GOBLIN_OMELETTE_SPICY
+      name: Spicy Goblin Omelette
+      xp: 8
+      stage: EXPERT
+    - id: DWARVEN_HANDWARMERS
+      name: Dwarven Handwarmers
+      xp: 10
+      stage: PROFESSIONAL
+    - id: GEMSTONE_FUEL_TANK
+      name: Gemstone Fuel Tank
+      xp: 10
+      stage: PROFESSIONAL
+      parent: PERFECTLY_CUT_FUEL_TANK
+    - id: GLACITE_CHISEL
+      name: Glacite-Plated Chisel
+      xp: 10
+      stage: PROFESSIONAL
+      parent: PERFECT_CHISEL
+    - id: GEMSTONE_DRILL_4
+      name: Jasper Drill X
+      xp: 10
+      stage: EXPERT
+    - id: MITHRIL_DRILL_2
+      name: Mithril Drill SX-R326
+      xp: 10
+      stage: SKILLED
+    - id: SAPPHIRE_POLISHED_DRILL_ENGINE
+      name: Sapphire-Polished Drill Engine
+      xp: 10
+      stage: PROFESSIONAL
+      parent: AMBER_POLISHED_DRILL_ENGINE
+    - id: SORROW
+      name: Sorrow Armor
+      xp: 10
+      stage: EXPERT
+      pieces: [SORROW_HELMET, SORROW_CHESTPLATE, SORROW_LEGGINGS, SORROW_BOOTS]
+    - id: TITANIUM_DRILL_1
+      name: Titanium Drill DR-X355
+      xp: 10
+      stage: SKILLED
+      parent: TITANIUM_DRILL_2
+    - id: TUNGSTEN_KEYCHAIN
+      name: Tungsten Regulator
+      xp: 10
+      stage: PROFESSIONAL
+    - id: AMBER_POLISHED_DRILL_ENGINE
+      name: Amber-Polished Drill Engine
+      xp: 15
+      stage: MASTER
+    - id: GOBLIN_OMELETTE_BLUE_CHEESE
+      name: Blue Cheese Goblin Omelette
+      xp: 15
+      stage: PROFESSIONAL
+    - id: PERFECT_CHISEL
+      name: Perfect Chisel
+      xp: 15
+      stage: MASTER
+    - id: PERFECTLY_CUT_FUEL_TANK
+      name: Perfectly-Cut Fuel Tank
+      xp: 15
+      stage: MASTER
+    - id: TITANIUM_DRILL_2
+      name: Titanium Drill DR-X455
+      xp: 15
+      stage: SKILLED
+      parent: TITANIUM_DRILL_3
+    - id: TITANIUM_DRILL_3
+      name: Titanium Drill DR-X555
+      xp: 15
+      stage: EXPERT
+      parent: TITANIUM_DRILL_4
+    - id: WILL_O_WISP
+      name: 'Will-o''-wisp'
+      xp: 15
+      stage: PROFESSIONAL
+    - id: DIVAN
+      name: 'Divan''s Armor'
+      xp: 20
+      stage: PROFESSIONAL
+      pieces: [DIVAN_HELMET, DIVAN_CHESTPLATE, DIVAN_LEGGINGS, DIVAN_BOOTS]
+    - id: TITANIUM_DRILL_4
+      name: Titanium Drill DR-X655
+      xp: 20
+      stage: PROFESSIONAL
+      parent: DIVAN_DRILL
+    - id: DIVAN_DRILL
+      name: 'Divan''s Drill'
+      xp: 25
+      stage: MASTER
+    - id: DIVAN_EQUIPMENT
+      name: Pendant of Divan
+      xp: 25
+      stage: MASTER
+      pieces: [DIVAN_PENDANT]
+  FISHING:
+    - id: FISH_HAT
+      name: Fish Hat
+      xp: 1
+      stage: STARTER
+    - id: SALMON_HAT
+      name: Salmon Hat
+      xp: 1
+      stage: STARTER
+    - id: SQUID_HAT
+      name: Squid Hat
+      xp: 1
+      stage: STARTER
+    - id: ANGLER
+      name: Angler Armor
+      xp: 2
+      stage: AMATEUR
+      parent: BACKWATER
+      pieces: [ANGLER_HELMET, ANGLER_CHESTPLATE, ANGLER_LEGGINGS, ANGLER_BOOTS, ANGLER_NECKLACE, ANGLER_CLOAK, ANGLER_BELT, ANGLER_BRACELET]
+    - id: CHALLENGE_ROD
+      name: Challenging Rod
+      xp: 2
+      stage: INTERMEDIATE
+      parent: CHAMP_ROD
+    - id: COMMON_HOOK
+      name: Common Hook
+      xp: 2
+      stage: STARTER
+    - id: FESTIVE_SINKER
+      name: Festive Sinker
+      xp: 2
+      stage: STARTER
+    - id: FROGGLES
+      name: Froggles
+      xp: 2
+      stage: INTERMEDIATE
+      parent: FROGGLES_SILVER
+    - id: HOTSPOT_RADAR
+      name: Hotspot Radar
+      xp: 2
+      stage: AMATEUR
+    - id: JUNK_SINKER
+      name: Junk Sinker
+      xp: 2
+      stage: STARTER
+    - id: PRISMARINE_SINKER
+      name: Prismarine Sinker
+      xp: 2
+      stage: STARTER
+    - id: SALMON_MASK
+      name: Salmon Mask
+      xp: 2
+      stage: AMATEUR
+    - id: SPONGE_SINKER
+      name: Sponge Sinker
+      xp: 2
+      stage: STARTER
+    - id: SQUID_BOOTS
+      name: Squid Boots
+      xp: 2
+      stage: STARTER
+    - id: MUSIC_PANTS
+      name: Stereo Pants
+      xp: 2
+      stage: INTERMEDIATE
+    - id: CHUM_SINKER
+      name: Chum Sinker
+      xp: 3
+      stage: INTERMEDIATE
+    - id: FISHERMAN
+      name: Fisherman Set
+      xp: 3
+      stage: AMATEUR
+      pieces: [PRISMARINE_NECKLACE, CLOWNFISH_CLOAK, SPONGE_BELT, CLAY_BRACELET]
+    - id: ICY_SINKER
+      name: Icy Sinker
+      xp: 3
+      stage: INTERMEDIATE
+    - id: LUMINOUS_BRACELET
+      name: Luminous Bracelet
+      xp: 3
+      stage: AMATEUR
+    - id: RED_SWEATER
+      name: Red Sweater
+      xp: 3
+      stage: INTERMEDIATE
+    - id: CHAMP_ROD
+      name: Rod of Champions
+      xp: 3
+      stage: SKILLED
+      parent: LEGEND_ROD
+    - id: SALMON_NEW
+      name: Salmon Armor
+      xp: 3
+      stage: INTERMEDIATE
+      pieces: [SALMON_BOOTS_NEW, SALMON_CHESTPLATE_NEW, SALMON_HELMET_NEW, SALMON_LEGGINGS_NEW]
+    - id: SNORKELING
+      name: Snorkeling Armor
+      xp: 3
+      stage: AMATEUR
+      parent: DIVER
+      pieces: [SNORKELING_HELMET, SNORKELING_CHESTPLATE, SNORKELING_LEGGINGS, SNORKELING_BOOTS]
+    - id: SPEEDY_LINE
+      name: Speedy Line
+      xp: 3
+      stage: INTERMEDIATE
+    - id: STINGY_SINKER
+      name: Stingy Sinker
+      xp: 3
+      stage: INTERMEDIATE
+    - id: TOTEM_OF_CORRUPTION
+      name: Totem of Corruption
+      xp: 3
+      stage: SKILLED
+    - id: FROZEN
+      name: Frozen Amulet
+      xp: 4
+      stage: INTERMEDIATE
+      pieces: [FROZEN_AMULET]
+    - id: LOTUS_SINKER
+      name: Lotus Sinker
+      xp: 4
+      stage: INTERMEDIATE
+    - id: FROGGLES_SILVER
+      name: Silver Froggles
+      xp: 4
+      stage: SKILLED
+      parent: FROGGLES_GOLD
+    - id: STARTER_LAVA_ROD
+      name: Starter Lava Rod
+      xp: 4
+      stage: SKILLED
+    - id: WATER_HYDRA_HEAD
+      name: Water Hydra Head
+      xp: 4
+      stage: INTERMEDIATE
+    - id: LEGEND_ROD
+      name: Rod of Legends
+      xp: 5
+      stage: EXPERT
+      parent: ROD_OF_THE_SEA
+    - id: SPONGE
+      name: Sponge Armor
+      xp: 5
+      stage: SKILLED
+      parent: SHARK_SCALE
+      pieces: [SPONGE_HELMET, SPONGE_CHESTPLATE, SPONGE_LEGGINGS, SPONGE_BOOTS]
+    - id: PHANTOM_HOOK
+      name: Spooky Hook
+      xp: 5
+      stage: SKILLED
+    - id: BACKWATER
+      name: Backwater Armor
+      xp: 6
+      stage: INTERMEDIATE
+      pieces: [BACKWATER_HELMET, BACKWATER_CHESTPLATE, BACKWATER_LEGGINGS, BACKWATER_BOOTS, BACKWATER_NECKLACE, BACKWATER_CLOAK, BACKWATER_BELT, BACKWATER_GLOVES]
+    - id: FROGGLES_GOLD
+      name: Golden Froggles
+      xp: 6
+      stage: SKILLED
+      parent: FROGGLES_DIAMOND
+    - id: HOTSPOT_HOOK
+      name: Hotspot Hook
+      xp: 6
+      stage: EXPERT
+    - id: HOTSPOT_SINKER
+      name: Hotspot Sinker
+      xp: 6
+      stage: EXPERT
+    - id: ICHTHYIC
+      name: Ichthyic Set
+      xp: 6
+      stage: INTERMEDIATE
+      parent: FINWAVE
+      pieces: [ICHTHYIC_CLOAK, ICHTHYIC_BELT, ICHTHYIC_GLOVES]
+    - id: MAGMA_ROD
+      name: Magma Rod
+      xp: 6
+      stage: SKILLED
+      parent: INFERNO_ROD
+    - id: PUDDLE_JUMPER_HOOK
+      name: Puddle Jumper Hook
+      xp: 6
+      stage: EXPERT
+    - id: POLISHED_TOPAZ_ROD
+      name: Topaz Rod
+      xp: 6
+      stage: SKILLED
+    - id: TREASURE_HOOK
+      name: Treasure Hook
+      xp: 6
+      stage: EXPERT
+    - id: TROPHY_LINE
+      name: Trophy Line
+      xp: 6
+      stage: EXPERT
+    - id: UMBERELLA
+      name: Umberella
+      xp: 6
+      stage: EXPERT
+    - id: SHARK_SCALE
+      name: Shark Scale Armor
+      xp: 7
+      stage: SKILLED
+      pieces: [SHARK_SCALE_HELMET, SHARK_SCALE_CHESTPLATE, SHARK_SCALE_LEGGINGS, SHARK_SCALE_BOOTS]
+    - id: SHREDDED_LINE
+      name: Shredded Line
+      xp: 7
+      stage: SKILLED
+    - id: ROD_OF_THE_SEA
+      name: Rod of the Sea
+      xp: 8
+      stage: EXPERT
+    - id: TERA_SHELL_NECKLACE
+      name: Tera Shell Necklace
+      xp: 8
+      stage: EXPERT
+    - id: TITAN_LINE
+      name: Titan Line
+      xp: 8
+      stage: EXPERT
+    - id: ABYSSAL
+      name: Abyssal Armor
+      xp: 10
+      stage: EXPERT
+      pieces: [ABYSSAL_HELMET, ABYSSAL_CHESTPLATE, ABYSSAL_LEGGINGS, ABYSSAL_BOOTS]
+    - id: BRONZE_HUNTER
+      name: Bronze Hunter Armor
+      xp: 10
+      stage: EXPERT
+      parent: SILVER_HUNTER
+      pieces: [BRONZE_HUNTER_HELMET, BRONZE_HUNTER_CHESTPLATE, BRONZE_HUNTER_LEGGINGS, BRONZE_HUNTER_BOOTS]
+    - id: FROGGLES_DIAMOND
+      name: Diamond Froggles
+      xp: 10
+      stage: EXPERT
+    - id: DIVER
+      name: 'Diver''s Armor'
+      xp: 10
+      stage: SKILLED
+      parent: ABYSSAL
+      pieces: [DIVER_HELMET, DIVER_CHESTPLATE, DIVER_LEGGINGS, DIVER_BOOTS]
+    - id: FINWAVE
+      name: Finwave Set
+      xp: 10
+      stage: SKILLED
+      parent: GILLSPLASH
+      pieces: [FINWAVE_CLOAK, FINWAVE_BELT, FINWAVE_GLOVES]
+    - id: INFERNO_ROD
+      name: Inferno Rod
+      xp: 10
+      stage: EXPERT
+      parent: HELLFIRE_ROD
+    - id: LAVA_SEA_CREATURE
+      name: Lava Sea Creature Armor
+      xp: 10
+      stage: EXPERT
+      pieces: [TAURUS_HELMET, FLAMING_CHESTPLATE, MOOGMA_LEGGINGS, SLUG_BOOTS]
+    - id: NUTCRACKER
+      name: Nutcracker Armor
+      xp: 10
+      stage: SKILLED
+      pieces: [NUTCRACKER_HELMET, NUTCRACKER_CHESTPLATE, NUTCRACKER_LEGGINGS, NUTCRACKER_BOOTS]
+    - id: TIKI_MASK
+      name: Tiki Mask
+      xp: 10
+      stage: MASTER
+    - id: SILVER_HUNTER
+      name: Silver Hunter Armor
+      xp: 12
+      stage: EXPERT
+      parent: GOLD_HUNTER
+      pieces: [SILVER_HUNTER_HELMET, SILVER_HUNTER_CHESTPLATE, SILVER_HUNTER_LEGGINGS, SILVER_HUNTER_BOOTS]
+    - id: GILLSPLASH
+      name: Gillsplash Set
+      xp: 15
+      stage: PROFESSIONAL
+      pieces: [GILLSPLASH_CLOAK, GILLSPLASH_BELT, GILLSPLASH_GLOVES]
+    - id: THUNDER
+      name: Thunder Armor
+      xp: 15
+      stage: PROFESSIONAL
+      pieces: [THUNDER_HELMET, THUNDER_CHESTPLATE, THUNDER_LEGGINGS, THUNDER_BOOTS, THUNDERBOLT_NECKLACE]
+    - id: GOLD_HUNTER
+      name: Gold Hunter Armor
+      xp: 16
+      stage: PROFESSIONAL
+      parent: DIAMOND_HUNTER
+      pieces: [GOLD_HUNTER_HELMET, GOLD_HUNTER_CHESTPLATE, GOLD_HUNTER_LEGGINGS, GOLD_HUNTER_BOOTS]
+    - id: HELLFIRE_ROD
+      name: Hellfire Rod
+      xp: 20
+      stage: PROFESSIONAL
+    - id: MAGMA_LORD
+      name: Magma Lord Armor
+      xp: 20
+      stage: MASTER
+      pieces: [MAGMA_LORD_HELMET, MAGMA_LORD_CHESTPLATE, MAGMA_LORD_LEGGINGS, MAGMA_LORD_BOOTS, MAGMA_LORD_GAUNTLET]
+    - id: DIAMOND_HUNTER
+      name: Diamond Hunter Armor
+      xp: 25
+      stage: MASTER
+      pieces: [DIAMOND_HUNTER_HELMET, DIAMOND_HUNTER_CHESTPLATE, DIAMOND_HUNTER_LEGGINGS, DIAMOND_HUNTER_BOOTS]
+  FORAGING:
+    - id: EFFICIENT_AXE
+      name: Efficient Axe
+      xp: 1
+      stage: STARTER
+    - id: PARK
+      name: Park Armor
+      xp: 1
+      stage: STARTER
+      pieces: [MOLE_HAT, CHARLIE_TROUSERS, MELODY_SHOES, KELLY_TSHIRT]
+    - id: PROMISING_AXE
+      name: Promising Axe
+      xp: 1
+      stage: STARTER
+    - id: ROOKIE_AXE
+      name: Rookie Foraging Axe
+      xp: 1
+      stage: STARTER
+    - id: SERIOUSLY_DAMAGED_AXE
+      name: Seriously Damaged Axe
+      xp: 1
+      stage: STARTER
+      parent: DECENT_AXE
+    - id: TINY_SCAFFOLDING
+      name: Tiny Scaffolding
+      xp: 1
+      stage: STARTER
+      parent: MEDIUM_SCAFFOLDING
+    - id: DECENT_AXE
+      name: Decent Axe
+      xp: 2
+      stage: STARTER
+    - id: FIG_AXE
+      name: Fig Hew
+      xp: 2
+      stage: AMATEUR
+      parent: FIGSTONE_AXE
+    - id: LEAFLET
+      name: Leaflet Armor
+      xp: 2
+      stage: STARTER
+      pieces: [LEAFLET_HELMET, LEAFLET_CHESTPLATE, LEAFLET_LEGGINGS, LEAFLET_BOOTS]
+    - id: MEDIUM_SCAFFOLDING
+      name: Medium Scaffolding
+      xp: 2
+      stage: AMATEUR
+      parent: LARGE_SCAFFOLDING
+    - id: SCULPTORS_AXE
+      name: 'Sculptor''s Axe'
+      xp: 2
+      stage: STARTER
+    - id: JUNGLE_AXE
+      name: Spruce Axe
+      xp: 2
+      stage: AMATEUR
+      parent: TREECAPITATOR_AXE
+    - id: SWEET_AXE
+      name: Sweet Axe
+      xp: 2
+      stage: STARTER
+    - id: CANOPY
+      name: Canopy Armor
+      xp: 3
+      stage: INTERMEDIATE
+      parent: FIG
+      pieces: [CANOPY_HELMET, CANOPY_CHESTPLATE, CANOPY_LEGGINGS, CANOPY_BOOTS]
+    - id: BEE_MASK
+      name: Bee Mask
+      xp: 4
+      stage: INTERMEDIATE
+    - id: FROG_MASK
+      name: Frog Mask
+      xp: 4
+      stage: INTERMEDIATE
+    - id: LARGE_SCAFFOLDING
+      name: Large Scaffolding
+      xp: 4
+      stage: INTERMEDIATE
+    - id: TREECAPITATOR_AXE
+      name: Treecapitator
+      xp: 4
+      stage: INTERMEDIATE
+    - id: FIGSTONE_AXE
+      name: Figstone Splitter
+      xp: 5
+      stage: SKILLED
+      parent: HELIX_CHOPPER
+    - id: MANGROVE_VINE
+      name: Moonglade Belt
+      xp: 5
+      stage: EXPERT
+      parent: TORRHUS_BELT
+    - id: FIG
+      name: Fig Armor
+      xp: 7
+      stage: EXPERT
+      parent: HELIX_ARMOR
+      pieces: [FIG_HELMET, FIG_CHESTPLATE, FIG_LEGGINGS, FIG_BOOTS]
+    - id: HELIX_CHOPPER
+      name: Helix Chopper
+      xp: 7
+      stage: EXPERT
+    - id: HONEYCOMB
+      name: Honeycomb Set
+      xp: 8
+      stage: EXPERT
+      pieces: [HONEYCOMB_NECKLACE]
+    - id: MANGROVE
+      name: Mangrove Equipment
+      xp: 8
+      stage: EXPERT
+      pieces: [MANGROVE_GRIPPERS, MANGROVE_LOCKET]
+    - id: TORRHUS_BELT
+      name: Torrhus Belt
+      xp: 8
+      stage: PROFESSIONAL
+    - id: VEILSHROOM_BRACELET
+      name: Veilshroom Bracelet
+      xp: 8
+      stage: EXPERT
+    - id: HELIX_ARMOR
+      name: Helix Armor
+      xp: 9
+      stage: EXPERT
+      pieces: [HELIX_ARMOR_HELMET, HELIX_ARMOR_CHESTPLATE, HELIX_ARMOR_LEGGINGS, HELIX_ARMOR_BOOTS]
+  DUNGEONEERING:
+    - id: CLEAVER
+      name: Cleaver
+      xp: 1
+      stage: STARTER
+      parent: SUPER_CLEAVER
+    - id: DUNGEON_STONE
+      name: Dungeon Orb
+      xp: 1
+      stage: INTERMEDIATE
+    - id: DARK_GOGGLES
+      name: Dark Goggles
+      xp: 2
+      stage: AMATEUR
+      parent: SHADOW_GOGGLES
+    - id: CRYPT_DREADLORD_SWORD
+      name: Dreadlord Sword
+      xp: 2
+      stage: INTERMEDIATE
+    - id: HYPER_CLEAVER
+      name: Hyper Cleaver
+      xp: 2
+      stage: INTERMEDIATE
+      parent: GIANT_CLEAVER
+    - id: MENDER_FEDORA
+      name: Mender Fedora
+      xp: 2
+      stage: INTERMEDIATE
+      parent: MENDER_CROWN
+    - id: MENDER_HELMET
+      name: Mender Helmet
+      xp: 2
+      stage: AMATEUR
+      parent: MENDER_FEDORA
+    - id: METAL_CHESTPLATE
+      name: Metal Chestplate
+      xp: 2
+      stage: INTERMEDIATE
+      parent: STEEL_CHESTPLATE
+    - id: ROTTEN
+      name: Rotten Armor
+      xp: 2
+      stage: AMATEUR
+      pieces: [ROTTEN_HELMET, ROTTEN_CHESTPLATE, ROTTEN_LEGGINGS, ROTTEN_BOOTS]
+    - id: SHADOW_GOGGLES
+      name: Shadow Goggles
+      xp: 2
+      stage: INTERMEDIATE
+      parent: WITHER_GOGGLES
+    - id: SNIPER_BOW
+      name: Sniper Bow
+      xp: 2
+      stage: SKILLED
+    - id: STONE_CHESTPLATE
+      name: Stone Chestplate
+      xp: 2
+      stage: INTERMEDIATE
+      parent: METAL_CHESTPLATE
+    - id: SUPER_CLEAVER
+      name: Super Cleaver
+      xp: 2
+      stage: INTERMEDIATE
+      parent: HYPER_CLEAVER
+    - id: SUPER_UNDEAD_BOW
+      name: Super Undead Bow
+      xp: 2
+      stage: INTERMEDIATE
+      parent: DEATH_BOW
+    - id: UNDEAD_BOW
+      name: Undead Bow
+      xp: 2
+      stage: INTERMEDIATE
+      parent: SUPER_UNDEAD_BOW
+    - id: CONJURING_SWORD
+      name: Conjuring
+      xp: 3
+      stage: INTERMEDIATE
+    - id: DEATH_BOW
+      name: Death Bow
+      xp: 3
+      stage: EXPERT
+    - id: GIANT_CLEAVER
+      name: Giant Cleaver
+      xp: 3
+      stage: SKILLED
+    - id: HEAVY
+      name: Heavy Armor
+      xp: 3
+      stage: AMATEUR
+      pieces: [HEAVY_HELMET, HEAVY_CHESTPLATE, HEAVY_LEGGINGS, HEAVY_BOOTS]
+    - id: MACHINE_GUN_BOW
+      name: Machine Gun Shortbow
+      xp: 3
+      stage: INTERMEDIATE
+    - id: SECRET_TRACKER
+      name: Secret Tracker 3000
+      xp: 3
+      stage: INTERMEDIATE
+    - id: SKELETON_GRUNT
+      name: Skeleton Grunt Armor
+      xp: 3
+      stage: AMATEUR
+      pieces: [SKELETON_GRUNT_HELMET, SKELETON_GRUNT_CHESTPLATE, SKELETON_GRUNT_LEGGINGS, SKELETON_GRUNT_BOOTS]
+    - id: SKELETON_MASTER
+      name: Skeleton Master Armor
+      xp: 3
+      stage: AMATEUR
+      pieces: [SKELETON_MASTER_HELMET, SKELETON_MASTER_CHESTPLATE, SKELETON_MASTER_LEGGINGS, SKELETON_MASTER_BOOTS]
+    - id: SKELETON_SOLDIER
+      name: Skeleton Soldier Armor
+      xp: 3
+      stage: AMATEUR
+      pieces: [SKELETON_SOLDIER_HELMET, SKELETON_SOLDIER_CHESTPLATE, SKELETON_SOLDIER_LEGGINGS, SKELETON_SOLDIER_BOOTS]
+    - id: SNIPER_HELMET
+      name: Sniper Helmet
+      xp: 3
+      stage: AMATEUR
+    - id: CRYPT_BOW
+      name: Soulstealer Bow
+      xp: 3
+      stage: INTERMEDIATE
+    - id: SUPER_HEAVY
+      name: Super Heavy Armor
+      xp: 3
+      stage: INTERMEDIATE
+      pieces: [SUPER_HEAVY_HELMET, SUPER_HEAVY_CHESTPLATE, SUPER_HEAVY_LEGGINGS, SUPER_HEAVY_BOOTS]
+    - id: ZOMBIE_COMMANDER_WHIP
+      name: Zombie Commander Whip
+      xp: 3
+      stage: SKILLED
+    - id: ZOMBIE_KNIGHT_SWORD
+      name: Zombie Knight Sword
+      xp: 3
+      stage: SKILLED
+    - id: ZOMBIE_SOLDIER
+      name: Zombie Soldier Armor
+      xp: 3
+      stage: INTERMEDIATE
+      pieces: [ZOMBIE_SOLDIER_HELMET, ZOMBIE_SOLDIER_CHESTPLATE, ZOMBIE_SOLDIER_LEGGINGS, ZOMBIE_SOLDIER_BOOTS]
+    - id: ZOMBIE_SOLDIER_CUTLASS
+      name: Zombie Soldier Cutlass
+      xp: 3
+      stage: SKILLED
+    - id: BALLOON_SNAKE
+      name: Balloon Snake
+      xp: 4
+      stage: AMATEUR
+    - id: BONZO_MASK
+      name: 'Bonzo''s Mask'
+      xp: 4
+      stage: INTERMEDIATE
+      mapped: [STARRED_BONZO_MASK]
+    - id: BOUNCY
+      name: Bouncy Armor
+      xp: 4
+      stage: SKILLED
+      pieces: [BOUNCY_HELMET, BOUNCY_CHESTPLATE, BOUNCY_LEGGINGS, BOUNCY_BOOTS]
+    - id: EARTH_SHARD
+      name: Earthen Blade
+      xp: 4
+      stage: SKILLED
+    - id: SILENT_DEATH
+      name: Silent Death
+      xp: 4
+      stage: SKILLED
+    - id: STONE_BLADE
+      name: Adaptive Blade
+      xp: 5
+      stage: INTERMEDIATE
+      mapped: [STARRED_STONE_BLADE]
+    - id: ASTRAEA
+      name: Astraea
+      xp: 5
+      stage: MASTER
+      parent: SCYLLA
+    - id: BONZO_STAFF
+      name: 'Bonzo''s Staff'
+      xp: 5
+      stage: INTERMEDIATE
+      mapped: [STARRED_BONZO_STAFF]
+    - id: FEL_SWORD
+      name: Fel Sword
+      xp: 5
+      stage: SKILLED
+    - id: GOLD_BONZO_HEAD
+      name: Golden Bonzo Head
+      xp: 5
+      stage: SKILLED
+      parent: DIAMOND_BONZO_HEAD
+    - id: GOLD_LIVID_HEAD
+      name: Golden Livid Head
+      xp: 5
+      stage: EXPERT
+      parent: DIAMOND_LIVID_HEAD
+    - id: GOLD_NECRON_HEAD
+      name: Golden Necron Head
+      xp: 5
+      stage: EXPERT
+      parent: DIAMOND_NECRON_HEAD
+    - id: GOLD_PROFESSOR_HEAD
+      name: Golden Professor Head
+      xp: 5
+      stage: SKILLED
+      parent: DIAMOND_PROFESSOR_HEAD
+    - id: GOLD_SADAN_HEAD
+      name: Golden Sadan Head
+      xp: 5
+      stage: EXPERT
+      parent: DIAMOND_SADAN_HEAD
+    - id: GOLD_SCARF_HEAD
+      name: Golden Scarf Head
+      xp: 5
+      stage: SKILLED
+      parent: DIAMOND_SCARF_HEAD
+    - id: GOLD_THORN_HEAD
+      name: Golden Thorn Head
+      xp: 5
+      stage: SKILLED
+      parent: DIAMOND_THORN_HEAD
+    - id: HYPERION
+      name: Hyperion
+      xp: 5
+      stage: MASTER
+    - id: SCYLLA
+      name: Scylla
+      xp: 5
+      stage: MASTER
+      parent: VALKYRIE
+    - id: SKELETOR
+      name: Skeletor Armor
+      xp: 5
+      stage: INTERMEDIATE
+      pieces: [SKELETOR_HELMET, SKELETOR_CHESTPLATE, SKELETOR_LEGGINGS, SKELETOR_BOOTS]
+    - id: THORNS_BOOTS
+      name: Spirit Boots
+      xp: 5
+      stage: INTERMEDIATE
+      mapped: [STARRED_THORNS_BOOTS]
+    - id: VALKYRIE
+      name: Valkyrie
+      xp: 5
+      stage: MASTER
+      parent: HYPERION
+    - id: BONE_NECKLACE
+      name: Bone Necklace
+      xp: 6
+      stage: SKILLED
+      mapped: [STARRED_BONE_NECKLACE]
+    - id: FLOWER_OF_TRUTH
+      name: Flower of Truth
+      xp: 6
+      stage: SKILLED
+      parent: BOUQUET_OF_LIES
+    - id: TANK_WITHER
+      name: 'Goldor''s Armor'
+      xp: 6
+      stage: PROFESSIONAL
+      parent: WISE_WITHER
+      pieces: [TANK_WITHER_HELMET, TANK_WITHER_CHESTPLATE, TANK_WITHER_LEGGINGS, TANK_WITHER_BOOTS]
+    - id: LIVID_DAGGER
+      name: Livid Dagger
+      xp: 6
+      stage: SKILLED
+    - id: SPEED_WITHER
+      name: 'Maxor''s Armor'
+      xp: 6
+      stage: PROFESSIONAL
+      parent: POWER_WITHER
+      pieces: [SPEED_WITHER_HELMET, SPEED_WITHER_CHESTPLATE, SPEED_WITHER_LEGGINGS, SPEED_WITHER_BOOTS]
+    - id: MENDER_CROWN
+      name: Mender Crown
+      xp: 6
+      stage: SKILLED
+    - id: POWER_WITHER
+      name: 'Necron''s Armor'
+      xp: 6
+      stage: PROFESSIONAL
+      pieces: [POWER_WITHER_HELMET, POWER_WITHER_CHESTPLATE, POWER_WITHER_LEGGINGS, POWER_WITHER_BOOTS]
+    - id: SOULWEAVER_GLOVES
+      name: Soulweaver Gloves
+      xp: 6
+      stage: SKILLED
+    - id: STEEL_CHESTPLATE
+      name: Steel Chestplate
+      xp: 6
+      stage: SKILLED
+    - id: WISE_WITHER
+      name: 'Storm''s Armor'
+      xp: 6
+      stage: PROFESSIONAL
+      parent: SPEED_WITHER
+      pieces: [WISE_WITHER_HELMET, WISE_WITHER_CHESTPLATE, WISE_WITHER_LEGGINGS, WISE_WITHER_BOOTS]
+    - id: WITHER_GOGGLES
+      name: Wither Goggles
+      xp: 6
+      stage: SKILLED
+    - id: ADAPTIVE
+      name: Adaptive Armor
+      xp: 7
+      stage: INTERMEDIATE
+      pieces: [ADAPTIVE_HELMET, ADAPTIVE_CHESTPLATE, ADAPTIVE_LEGGINGS, ADAPTIVE_BOOTS, ADAPTIVE_BELT]
+    - id: NECROMANCER_SWORD
+      name: Necromancer Sword
+      xp: 7
+      stage: EXPERT
+    - id: SPIRIT_SWORD
+      name: Spirit Sword
+      xp: 7
+      stage: SKILLED
+      parent: BONE_REAVER
+    - id: WITHER_CLOAK
+      name: Wither Cloak Sword
+      xp: 7
+      stage: EXPERT
+    - id: ZOMBIE_KNIGHT
+      name: Zombie Knight Armor
+      xp: 7
+      stage: INTERMEDIATE
+      pieces: [ZOMBIE_KNIGHT_HELMET, ZOMBIE_KNIGHT_CHESTPLATE, ZOMBIE_KNIGHT_LEGGINGS, ZOMBIE_KNIGHT_BOOTS]
+    - id: BONE_REAVER
+      name: Bone Reaver
+      xp: 8
+      stage: SKILLED
+      parent: FELTHORN_REAPER
+    - id: BONE_BOOMERANG
+      name: Bonemerang
+      xp: 8
+      stage: SKILLED
+      mapped: [STARRED_BONE_BOOMERANG]
+    - id: BOUQUET_OF_LIES
+      name: Bouquet of Lies
+      xp: 8
+      stage: EXPERT
+    - id: DUNGEONBREAKER
+      name: Dungeonbreaker
+      xp: 8
+      stage: SKILLED
+    - id: FELTHORN_REAPER
+      name: Felthorn Reaper
+      xp: 8
+      stage: EXPERT
+      mapped: [STARRED_FELTHORN_REAPER]
+    - id: ICE_SPRAY_WAND
+      name: Ice Spray Wand
+      xp: 8
+      stage: PROFESSIONAL
+      mapped: [STARRED_ICE_SPRAY_WAND]
+    - id: LAST_BREATH
+      name: Last Breath
+      xp: 8
+      stage: SKILLED
+      mapped: [STARRED_LAST_BREATH]
+    - id: SHADOW_FURY
+      name: Shadow Fury
+      xp: 8
+      stage: SKILLED
+      mapped: [STARRED_SHADOW_FURY]
+    - id: BAT_WAND
+      name: Spirit Sceptre
+      xp: 8
+      stage: SKILLED
+      mapped: [STARRED_BAT_WAND]
+    - id: ITEM_SPIRIT_BOW
+      name: Spirit Shortbow
+      xp: 8
+      stage: SKILLED
+      mapped: [STARRED_ITEM_SPIRIT_BOW]
+    - id: ZOMBIE_COMMANDER
+      name: Zombie Commander Armor
+      xp: 8
+      stage: SKILLED
+      pieces: [ZOMBIE_COMMANDER_HELMET, ZOMBIE_COMMANDER_CHESTPLATE, ZOMBIE_COMMANDER_LEGGINGS, ZOMBIE_COMMANDER_BOOTS]
+    - id: DIAMOND_BONZO_HEAD
+      name: Diamond Bonzo Head
+      xp: 10
+      stage: PROFESSIONAL
+    - id: DIAMOND_LIVID_HEAD
+      name: Diamond Livid Head
+      xp: 10
+      stage: MASTER
+    - id: DIAMOND_NECRON_HEAD
+      name: Diamond Necron Head
+      xp: 10
+      stage: MASTER
+    - id: DIAMOND_PROFESSOR_HEAD
+      name: Diamond Professor Head
+      xp: 10
+      stage: PROFESSIONAL
+    - id: DIAMOND_SADAN_HEAD
+      name: Diamond Sadan Head
+      xp: 10
+      stage: MASTER
+    - id: DIAMOND_SCARF_HEAD
+      name: Diamond Scarf Head
+      xp: 10
+      stage: PROFESSIONAL
+    - id: DIAMOND_THORN_HEAD
+      name: Diamond Thorn Head
+      xp: 10
+      stage: PROFESSIONAL
+    - id: GIANTS_SWORD
+      name: 'Giant''s Sword'
+      xp: 10
+      stage: EXPERT
+    - id: INFINITE_SUPERBOOM_TNT
+      name: 'InfiniBoom™ TNT'
+      xp: 10
+      stage: PROFESSIONAL
+    - id: INFINITE_SPIRIT_LEAP
+      name: 'InfiniLeap™'
+      xp: 10
+      stage: PROFESSIONAL
+    - id: SHADOW_ASSASSIN
+      name: Shadow Assassin Armor
+      xp: 10
+      stage: SKILLED
+      pieces: [SHADOW_ASSASSIN_HELMET, SHADOW_ASSASSIN_CHESTPLATE, SHADOW_ASSASSIN_LEGGINGS, SHADOW_ASSASSIN_BOOTS, SHADOW_ASSASSIN_CLOAK]
+    - id: SKELETON_LORD
+      name: Skeleton Lord Armor
+      xp: 10
+      stage: SKILLED
+      pieces: [SKELETON_LORD_HELMET, SKELETON_LORD_CHESTPLATE, SKELETON_LORD_LEGGINGS, SKELETON_LORD_BOOTS]
+    - id: SPIRIT_MASK
+      name: Spirit Mask
+      xp: 10
+      stage: EXPERT
+      mapped: [STARRED_SPIRIT_MASK]
+    - id: WITHER
+      name: Wither Armor
+      xp: 10
+      stage: PROFESSIONAL
+      parent: TANK_WITHER
+      pieces: [WITHER_HELMET, WITHER_CHESTPLATE, WITHER_LEGGINGS, WITHER_BOOTS]
+    - id: ZOMBIE_LORD
+      name: Zombie Lord Armor
+      xp: 10
+      stage: SKILLED
+      pieces: [ZOMBIE_LORD_HELMET, ZOMBIE_LORD_CHESTPLATE, ZOMBIE_LORD_LEGGINGS, ZOMBIE_LORD_BOOTS]
+    - id: NECROMANCER_LORD
+      name: Necromancer Lord Armor
+      xp: 12
+      stage: SKILLED
+      pieces: [NECROMANCER_LORD_HELMET, NECROMANCER_LORD_CHESTPLATE, NECROMANCER_LORD_LEGGINGS, NECROMANCER_LORD_BOOTS]
+    - id: PRECURSOR_EYE
+      name: Precursor Eye
+      xp: 12
+      stage: EXPERT
+    - id: NECRON_BLADE
+      name: 'Necron''s Blade (Unrefined)'
+      xp: 20
+      stage: MASTER
+      parent: ASTRAEA
+    - id: DARK_CLAYMORE
+      name: Dark Claymore
+      xp: 30
+      stage: MASTER
+  HUNTING:
+    - id: ABYSMAL_LASSO
+      name: Abysmal Lasso
+      xp: 1
+      stage: STARTER
+      parent: VINERIP_LASSO
+    - id: BASIC_FISHING_NET
+      name: Basic Fishing Net
+      xp: 1
+      stage: STARTER
+      parent: MEDIUM_FISHING_NET
+    - id: RETIA_BASICA
+      name: Small Huntrap
+      xp: 1
+      stage: STARTER
+      parent: RETIA_MELIORA
+    - id: VENATOR_GENESIS
+      name: Worn Huntaxe - Genesis
+      xp: 1
+      stage: STARTER
+      parent: SILVA_DOMINUS
+    - id: DAVIDS_CLOAK
+      name: 'David''s Cloak'
+      xp: 2
+      stage: STARTER
+    - id: MEDIUM_FISHING_NET
+      name: Medium Fishing Net
+      xp: 2
+      stage: AMATEUR
+      parent: TURBO_FISHING_NET
+    - id: RETIA_MELIORA
+      name: Medium Huntrap
+      xp: 2
+      stage: AMATEUR
+      parent: RETIA_ROBUSTA
+    - id: SAFARI_BELT
+      name: Safari Belt
+      xp: 2
+      stage: INTERMEDIATE
+    - id: SILVA_DOMINUS
+      name: Sharpened Huntaxe - Dominus
+      xp: 2
+      stage: AMATEUR
+      parent: CURSUS_FERAE
+    - id: SMALL_POCKET_BLACK_HOLE
+      name: Small Pocket Black Hole
+      xp: 2
+      stage: STARTER
+      parent: MEDIUM_POCKET_BLACK_HOLE
+    - id: VINERIP_LASSO
+      name: Vinerip Lasso
+      xp: 2
+      stage: AMATEUR
+      parent: ENTANGLER_LASSO
+    - id: RETIA_ROBUSTA
+      name: Large Huntrap
+      xp: 3
+      stage: INTERMEDIATE
+      parent: RETIA_FORTA
+    - id: ENTANGLER_LASSO
+      name: Entangler Lasso
+      xp: 4
+      stage: INTERMEDIATE
+      parent: EVERSTRETCH_LASSO
+    - id: RETIA_FORTA
+      name: Greater Huntrap
+      xp: 4
+      stage: SKILLED
+      parent: RETIA_SUPREMA
+    - id: MEDIUM_POCKET_BLACK_HOLE
+      name: Medium Pocket Black Hole
+      xp: 4
+      stage: INTERMEDIATE
+      parent: LARGE_POCKET_BLACK_HOLE
+    - id: PELT_BELT
+      name: Pelt Belt
+      xp: 4
+      stage: INTERMEDIATE
+    - id: CURSUS_FERAE
+      name: Reinforced Huntaxe - Cursus
+      xp: 4
+      stage: INTERMEDIATE
+      parent: APEX_PRAEDATOR
+    - id: TALBOTS_THEODOLITE
+      name: 'Talbot''s Theodolite'
+      xp: 4
+      stage: INTERMEDIATE
+    - id: RETIA_SUPREMA
+      name: Astral Huntrap
+      xp: 5
+      stage: EXPERT
+    - id: LARGE_POCKET_BLACK_HOLE
+      name: Large Pocket Black Hole
+      xp: 6
+      stage: SKILLED
+    - id: TURBO_FISHING_NET
+      name: Turbo Fishing Net
+      xp: 7
+      stage: SKILLED
+      parent: GIGANTIC_FISHING_NET
+    - id: EVERSTRETCH_LASSO
+      name: Everstretch Lasso
+      xp: 10
+      stage: EXPERT
+    - id: GIGANTIC_FISHING_NET
+      name: Gigantic Fishing Net
+      xp: 10
+      stage: EXPERT
+    - id: APEX_PRAEDATOR
+      name: Savage Huntaxe - Praedator
+      xp: 10
+      stage: EXPERT
+      parent: NEX_TITANUM
+    - id: NEX_TITANUM
+      name: Prime Huntaxe - Nex Titanum
+      xp: 15
+      stage: PROFESSIONAL
+special:
+  - id: ANCIENT_ELEVATOR
+    name: Ancient Elevator
+  - id: APOTHEJERRY_PERSONALITY
+    name: Apothejerry Minion Skin
+  - id: PET_SKIN_SHEEP_AQUA
+    name: AquaSheep
+  - id: AQUAMARINE_CRYSTAL
+    name: Aquamarine Crystal
+  - id: PET_SKIN_RABBIT_AQUAMARINE
+    name: AquamarineRabbit
+  - id: ARMOR_OF_MAGMA_BOOTS
+    name: Armor of Magma Boots
+  - id: ARMOR_OF_MAGMA_CHESTPLATE
+    name: Armor of Magma Chestplate
+  - id: ARMOR_OF_MAGMA_HELMET
+    name: Armor of Magma Helmet
+  - id: ARMOR_OF_MAGMA_LEGGINGS
+    name: Armor of Magma Leggings
+  - id: ASPECT_OF_THE_JERRY_SIGNATURE
+    name: 'Aspect of the Jerry, Signature Edition'
+  - id: PET_SKIN_CHICKEN_BABY_CHICK
+    name: Baby ChickChicken
+  - id: PET_SKIN_MEGALODON_BABY
+    name: BabyMegalodon
+  - id: BAG_OF_CASH
+    name: Bag of Cash
+  - id: BANANA_MONKEY_PERSONALITY
+    name: Banana Monkey Minion Skin
+  - id: EPOCH_CAKE_AQUA
+    name: Barry Century Cake
+  - id: POTATO_BASKET
+    name: Basket of Hope from the Great Potato War
+  - id: BASKETBALL_PERSONALITY
+    name: Basketball Minion Skin
+  - id: BAT_THE_FISH
+    name: Bat the Fish
+  - id: BATTLE_DISC
+    name: Battle Disc
+  - id: BEACH_BALL_PERSONALITY
+    name: Beach Ball Minion Skin
+  - id: BEDROCK
+    name: Bedrock
+  - id: BEE_PERSONALITY
+    name: Bee Minion Skin
+  - id: HEADLESS_PERSONALITY
+    name: Beheaded Minion Skin
+  - id: BERRY_THE_FISH
+    name: Berry the Fish
+  - id: BINGO_ARTIFACT
+    name: Bingo Artifact
+  - id: BINGO_CARD
+    name: Bingo Card
+  - id: BINGO_DISPLAY
+    name: Bingo Display
+  - id: BINGO_HEIRLOOM
+    name: Bingo Heirloom
+  - id: BINGO_RELIC
+    name: Bingo Relic
+  - id: BINGO_RING
+    name: Bingo Ring
+  - id: BINGO_TALISMAN
+    name: Bingo Talisman
+  - id: PET_SKIN_SHEEP_BLACK
+    name: BlackSheep
+  - id: BLAZE_HAT
+    name: Blaze Hat
+  - id: TROPICAL_BIRD_2_PERSONALITY
+    name: Blue Gold Tropical Bird Minion Skin
+  - id: PET_SKIN_ELEPHANT_BLUE
+    name: BlueElephant
+  - id: PET_SKIN_SHEEP_BLUE
+    name: BlueSheep
+  - id: BONZO_STATUE
+    name: Bonzo Statue
+  - id: BOOK_OF_STATS
+    name: Book of Stats
+  - id: ARMOR_OF_THE_RESISTANCE_BOOTS
+    name: Boots of the Rising Sun
+  - id: GENERALS_ARMOR_OF_THE_RESISTANCE_BOOTS
+    name: Boots of the Rising Sun
+  - id: BREAD_BOWL
+    name: Bread Bowl
+  - id: PET_SKIN_SHEEP_BROWN
+    name: BrownSheep
+  - id: PET_SKIN_MEGALODON_BULLHEAD
+    name: BullheadMegalodon
+  - id: BUNNY_PERSONALITY
+    name: Bunny Minion Skin
+  - id: CAKE_SOUL
+    name: Cake Soul
+  - id: CANDY_THE_FISH
+    name: Candy the Fish
+  - id: EPOCH_CAKE_CYAN
+    name: Century Cake of Hype
+  - id: EPOCH_CAKE_BLACK
+    name: Century Cake of the Next Dungeon Floor
+  - id: EPOCH_CAKE_SEVEN_SEAS
+    name: Century Cake of the Seven Seas
+  - id: CENTURY_THE_FISH
+    name: Century the Fish
+  - id: ARMOR_OF_THE_RESISTANCE_CHESTPLATE
+    name: Chestplate of the Rising Sun
+  - id: GENERALS_ARMOR_OF_THE_RESISTANCE_CHESTPLATE
+    name: Chestplate of the Rising Sun
+  - id: CHILL_THE_FISH
+    name: Chill the Fish
+  - id: CHILL_THE_FISH_2
+    name: Chill the Fish
+  - id: CHOCO_RABBIT_PERSONALITY
+    name: Choco Rabbit Minion Skin
+  - id: EPOCH_CAKE_BROWN
+    name: Chocolate Century Cake
+  - id: CITRINE_CRYSTAL
+    name: Citrine Crystal
+  - id: EPOCH_CAKE_WHITE
+    name: Cloudy Century Cake
+  - id: DUNGEON_DISC_2
+    name: Clown Disc
+  - id: CLOWN_THE_FISH
+    name: Clown the Fish
+  - id: CLUCK_THE_FISH
+    name: Cluck the Fish
+  - id: COLLECTION_DISPLAY
+    name: Collection Display
+  - id: PET_SKIN_ROCK_COOL
+    name: CoolRock
+  - id: EPOCH_CAKE_SILVER
+    name: Corpse-Flavored Century Cake
+  - id: COTTON_CANDY
+    name: Cotton Candy
+  - id: PARTY_HAT_CRAB
+    name: Crab Hat of Celebration
+  - id: PARTY_HAT_CRAB_ANIMATED
+    name: Crab Hat of Celebration - 2022 Edition
+  - id: EPOCH_CAKE_PINK
+    name: Crab-Colored Century Cake
+  - id: CREATIVE_MIND
+    name: Creative Mind
+  - id: CYCLOPS_PERSONALITY
+    name: Cyclops Minion Skin
+  - id: DANTE_RING
+    name: 'Dante''s Ring'
+  - id: DANTE_TALISMAN
+    name: 'Dante''s Talisman'
+  - id: DARK_PEBBLE
+    name: Dark Pebble
+  - id: PET_SKIN_WITHER
+    name: DarkWither Skeleton
+  - id: PET_SKIN_WOLF
+    name: DarkWolf
+  - id: DEAD_BUSH_OF_LOVE
+    name: Dead Bush of Love
+  - id: DEFUSE_KIT
+    name: Defuse Kit
+  - id: PET_SKIN_ROCK_DERP
+    name: DerpyRock
+  - id: DIAMOND_BARDING
+    name: Diamond Horse Armor
+  - id: DIAMOND_THE_FISH
+    name: Diamond the Fish
+  - id: DIRT_ROD
+    name: Dirt Rod
+  - id: DITTO_SKIN
+    name: Ditto Skin
+  - id: DITTO_SKULL
+    name: Ditto Skull
+  - id: DIVAN_ALLOY
+    name: 'Divan''s Alloy'
+  - id: FAMILY_DOUBLOON
+    name: Doubloon of the Family
+  - id: DUNGEON_DISC_1
+    name: Dungeon Disc
+  - id: DUST_THE_FISH
+    name: Dust the Fish
+  - id: EASTER_EGG_PERSONALITY
+    name: Easter Egg Minion Skin
+  - id: EDITOR_PENCIL
+    name: 'Editor''s Pencil'
+  - id: EGG_THE_FISH
+    name: Egg the Fish
+  - id: PET_SKIN_ROCK_EMBARRASSED
+    name: EmbarrassedRock
+  - id: FLAMEBREAKER_BOOTS
+    name: Ember Ash Boots
+  - id: FLAMEBREAKER_CHESTPLATE
+    name: Ember Ash Chestplate
+  - id: FLAMEBREAKER_HELMET
+    name: Ember Ash Helmet
+  - id: FLAMEBREAKER_LEGGINGS
+    name: Ember Ash Leggings
+  - id: EMBER_BOOTS
+    name: Ember Boots
+  - id: EMBER_CHESTPLATE
+    name: Ember Chestplate
+  - id: EMBER_HELMET
+    name: Ember Helmet
+  - id: EMBER_LEGGINGS
+    name: Ember Leggings
+  - id: EMBER_ROD
+    name: Ember Rod
+  - id: ENDSTONE_ROSE
+    name: End Stone Rose
+  - id: END_STONE_PERSONALITY
+    name: Ender Minion Skin
+  - id: ENRAGER
+    name: Enrager
+  - id: EON_THE_FISH
+    name: Eon the Fish
+  - id: ETERNAL_FLAME_RING
+    name: Eternal Flame Ring
+  - id: EXPERIMENT_THE_FISH
+    name: Experiment the Fish
+  - id: EXTREME_BINGO_CARD
+    name: Extreme Bingo Card
+  - id: FAIRY_FLUTE
+    name: Fairy Flute
+  - id: FAIRY_WINGS_CHARM
+    name: 'Fairy Wing''s Charm'
+  - id: FARMING_FOR_DUMMIES
+    name: Farming for Dummies
+  - id: FESTIVE_JERRY_PERSONALITY
+    name: Festive Jerry Minion Skin
+  - id: FESTIVE_SKELETON_PERSONALITY
+    name: Festive Skeleton Minion Skin
+  - id: FESTIVE_ZOMBIE_PERSONALITY
+    name: Festive Zombie Minion Skin
+  - id: FISH_PERSONALITY
+    name: Fish Minion Skin
+  - id: FISH_THE_FISH
+    name: Fish the Fish
+  - id: FISHY_PENGUIN_PERSONALITY
+    name: Fishy Penguin Minion Skin
+  - id: SNOWFLAKE_THE_FISH
+    name: Flake the Fish
+  - id: PET_SKIN_SILVERFISH
+    name: FortifiedSilverfish
+  - id: FOSSIL_THE_FISH
+    name: Fossil the Fish
+  - id: PET_SKIN_SILVERFISH_FOSSILIZED
+    name: FossilizedSilverfish
+  - id: FRENCH_BREAD
+    name: French Bread
+  - id: EPOCH_CAKE_RED
+    name: Fruit Century Cake
+  - id: GABAGOOL_THE_FISH
+    name: Gabagool the Fish
+  - id: GAME_ANNIHILATOR
+    name: Game Annihilator
+  - id: GAME_BREAKER
+    name: Game Breaker
+  - id: GAME_FIXER
+    name: Game Fixer
+  - id: GHAST_HEAD
+    name: Ghast Head
+  - id: GHOST_PERSONALITY
+    name: Ghost Minion Skin
+  - id: GIANT_FISHING_ROD
+    name: Giant Fishing Rod
+  - id: GIANT_THE_FISH
+    name: Giant the Fish
+  - id: GIFT_THE_FISH
+    name: Gift the Fish
+  - id: GINGERBREAD_PERSONALITY
+    name: Gingerbread Man Minion Skin
+  - id: GOD_POTION
+    name: God Potion
+  - id: GOD_POTION_2
+    name: God Potion
+  - id: GOLD_BARDING
+    name: Gold Horse Armor
+  - id: GOLDEN_DANTE_STATUE
+    name: Golden Dante Statue
+  - id: GOLD_GIFT
+    name: Golden Gift
+  - id: GOLD_CANDY
+    name: Golden Treat
+  - id: PET_SKIN_MONKEY_GOLDEN
+    name: GoldenMonkey
+  - id: GOLDOR_THE_FISH
+    name: Goldor the Fish
+  - id: PET_SKIN_MONKEY_GORILLA
+    name: GorillaMonkey
+  - id: PET_SKIN_SHEEP_GRAY
+    name: GraySheep
+  - id: GREAT_SPOOK_ARTIFACT
+    name: Great Spook Artifact
+  - id: GREAT_SPOOK_BELT
+    name: Great Spook Belt
+  - id: GREAT_SPOOK_BOOTS
+    name: Great Spook Boots
+  - id: GREAT_SPOOK_CHESTPLATE
+    name: Great Spook Chestplate
+  - id: GREAT_SPOOK_CLOAK
+    name: Great Spook Cloak
+  - id: GREAT_SPOOK_GLOVES
+    name: Great Spook Gloves
+  - id: GREAT_SPOOK_HELMET
+    name: Great Spook Helmet
+  - id: GREAT_SPOOK_LEGGINGS
+    name: Great Spook Leggings
+  - id: GREAT_SPOOK_NECKLACE
+    name: Great Spook Necklace
+  - id: GREAT_SPOOK_RING
+    name: Great Spook Ring
+  - id: GREAT_SPOOK_STAFF
+    name: Great Spook Staff
+  - id: GREAT_SPOOK_SWORD
+    name: Great Spook Sword
+  - id: GREAT_SPOOK_TALISMAN
+    name: Great Spook Talisman
+  - id: PET_SKIN_JERRY_GREEN_ELF
+    name: Green ElfJerry
+  - id: PET_SKIN_ELEPHANT_GREEN
+    name: GreenElephant
+  - id: PET_SKIN_SHEEP_GREEN
+    name: GreenSheep
+  - id: GRINCH_PERSONALITY
+    name: Grinch Minion Skin
+  - id: PET_SKIN_YETI_GROWN_UP
+    name: Grown-upBaby Yeti
+  - id: HAPPY_EMOJI_PERSONALITY
+    name: Happy Emoji Minion Skin
+  - id: HAPPY_MASK
+    name: Happy Mask
+  - id: HELIX
+    name: Helix Fossil
+  - id: ARMOR_OF_THE_RESISTANCE_HELMET
+    name: Helmet of the Rising Sun
+  - id: GENERALS_ARMOR_OF_THE_RESISTANCE_HELMET
+    name: Helmet of the Rising Sun
+  - id: PET_SKIN_WOLF_HENZO_DOGGO
+    name: Henzo DoggoWolf
+  - id: EPOCH_CAKE_HEPHAESTUS
+    name: 'Hephaestus'' Century Cake'
+  - id: HERMIT_CRAB_PERSONALITY
+    name: Hermit Crab Minion Skin
+  - id: TROPICAL_BIRD_1_PERSONALITY
+    name: Hyacinth Tropical Bird Minion Skin
+  - id: ICE_CREAM_PERSONALITY
+    name: Ice Cream Minion Skin
+  - id: ICE_LOLLY_PERSONALITY
+    name: Ice Lolly Minion Skin
+  - id: IRON_BARDING
+    name: Iron Horse Armor
+  - id: PET_SKIN_BLACK_CAT_IVORY
+    name: IvoryBlack Cat
+  - id: JASPER_CRYSTAL
+    name: Jasper Crystal
+  - id: JUNGLE_HEART
+    name: Jungle Heart
+  - id: KILLER_PERSONALITY
+    name: Killer Minion Skin
+  - id: KLOONBOAT
+    name: Kloonboat
+  - id: LADY_BUG_PERSONALITY
+    name: Lady Bug Minion Skin
+  - id: LANTERN_OF_THE_DEAD
+    name: Lantern of the Dead
+  - id: EPOCH_CAKE_ORANGE
+    name: Latest Update Century Cake
+  - id: PET_SKIN_ROCK_LAUGH
+    name: LaughingRock
+  - id: ARMOR_OF_THE_RESISTANCE_LEGGINGS
+    name: Leggings of the Rising Sun
+  - id: GENERALS_ARMOR_OF_THE_RESISTANCE_LEGGINGS
+    name: Leggings of the Rising Sun
+  - id: PET_SKIN_SHEEP_LIGHT_BLUE
+    name: Light BlueSheep
+  - id: PET_SKIN_SHEEP_LIGHT_GRAY
+    name: Light GraySheep
+  - id: PET_SKIN_SHEEP_LIGHT_GREEN
+    name: Light GreenSheep
+  - id: EPOCH_CAKE_EXPIRED
+    name: Long-Expired Century Cake
+  - id: LOUDMOUTH_BASS
+    name: Loudmouth Bass
+  - id: AATROX_BADPHONE
+    name: Maddox Badphone
+  - id: AATROX_BATPHONE
+    name: Maddox Batphone
+  - id: PET_SKIN_SHEEP_MAGENTA
+    name: MagentaSheep
+  - id: MAGMA_BOW
+    name: Magma Bow
+  - id: MAGMA_CUBE_HEAD
+    name: Magma Cube Head
+  - id: MAXOR_THE_FISH
+    name: Maxor the Fish
+  - id: MELON_PERSONALITY
+    name: Melon Minion Skin
+  - id: MOB_THE_FISH
+    name: Mob the Fish
+  - id: PET_SKIN_ELEPHANT_MONOCHROME
+    name: MonochromeElephant
+  - id: MUMMY_PERSONALITY
+    name: Mummy Minion Skin
+  - id: REVENGE
+    name: Music Disc - Revenge
+  - id: MYTH_THE_FISH
+    name: Myth the Fish
+  - id: NAME_TAG
+    name: Name Tag
+  - id: DUNGEON_DISC_5
+    name: Necron Disc
+  - id: PET_SKIN_DRAGON_NEON_BLUE
+    name: Neon BlueEnder Dragon
+  - id: PET_SKIN_SHEEP_NEON_BLUE
+    name: Neon BlueSheep
+  - id: PET_SKIN_SHEEP_NEON_GREEN
+    name: Neon GreenSheep
+  - id: PET_SKIN_DRAGON_NEON_PURPLE
+    name: Neon PurpleEnder Dragon
+  - id: PET_SKIN_DRAGON_NEON_RED
+    name: Neon RedEnder Dragon
+  - id: PET_SKIN_SHEEP_NEON_RED
+    name: Neon RedSheep
+  - id: PET_SKIN_SHEEP_NEON_YELLOW
+    name: Neon YellowSheep
+  - id: CORRUPTED_NETHER_STAR
+    name: Nether Star
+  - id: NETHER_STAR
+    name: Nether Star
+  - id: NEW_YEAR_CAKE
+    name: New Year Cake
+  - id: NOPE_THE_FISH
+    name: Nope the Fish
+  - id: EPOCH_CAKE_GRAY
+    name: Not-a-lie Century Cake
+  - id: DUNGEON_DISC_4
+    name: Old Disc
+  - id: ONYX_CRYSTAL
+    name: Onyx Crystal
+  - id: PET_SKIN_BLACK_CAT_ONYX
+    name: OnyxBlack Cat
+  - id: OOPS_THE_FISH
+    name: Oops the Fish
+  - id: OPAL_CRYSTAL
+    name: Opal Crystal
+  - id: PET_SKIN_ELEPHANT_ORANGE
+    name: OrangeElephant
+  - id: PET_SKIN_SHEEP_ORANGE
+    name: OrangeSheep
+  - id: PET_SKIN_WHALE_ORCA
+    name: OrcaBlue Whale
+  - id: PAINT_CARTRIDGE
+    name: Paint Drying Simulator
+  - id: PARTY_THE_FISH
+    name: Party the Fish
+  - id: PET_SKIN_DRAGON_PASTEL
+    name: PastelEnder Dragon
+  - id: PENGUIN_PERSONALITY
+    name: Penguin Minion Skin
+  - id: PERIDOT_CRYSTAL
+    name: Peridot Crystal
+  - id: EPOCH_CAKE_GREEN
+    name: Pet Rock Century Cake
+  - id: PIG_MASK
+    name: Pig Mask
+  - id: PINK_BUNNY_PERSONALITY
+    name: Pink Bunny Minion Skin
+  - id: PINK_DONUT_PERSONALITY
+    name: Pink Donut Minion Skin
+  - id: PET_SKIN_ELEPHANT_PINK
+    name: PinkElephant
+  - id: PET_SKIN_SHEEP_PINK
+    name: PinkSheep
+  - id: ALPHA_PICK
+    name: Pioneer Pickaxe
+  - id: PLASTIC_SHOVEL
+    name: Plastic Shovel
+  - id: POLAR_BEAR_PERSONALITY
+    name: Polar Bear Minion Skin
+  - id: POLISHED_PEBBLE
+    name: Polished Pebble
+  - id: POTATO_CROWN
+    name: Potato Crown
+  - id: POTATO_RING
+    name: Potato Ring
+  - id: POTATO_SPREADING
+    name: Potato Spreading
+  - id: POTATO_TALISMAN
+    name: Potato Talisman
+  - id: POTATO_SILVER_MEDAL
+    name: Potato War Silver Medal
+  - id: EPOCH_CAKE_YELLOW
+    name: Potato-Style Century Cake
+  - id: PRESENT_PERSONALITY
+    name: Present Minion Skin
+  - id: PET_SKIN_RABBIT
+    name: PrettyRabbit
+  - id: PRICELESS_THE_FISH
+    name: Priceless the Fish
+  - id: PROMISING_HOE
+    name: Promising Hoe
+  - id: PUFFERFISH_PERSONALITY
+    name: Pufferfish Minion Skin
+  - id: PUMPKIN_PERSONALITY
+    name: Pumpkin Minion Skin
+  - id: PET_SKIN_ELEPHANT_PURPLE
+    name: PurpleElephant
+  - id: PET_SKIN_SHEEP_PURPLE
+    name: PurpleSheep
+  - id: PUZZLE_CUBE
+    name: Puzzle Cube
+  - id: QUALITY_MAP
+    name: Quality Map
+  - id: RABBIT_THE_FISH
+    name: Rabbit the Fish
+  - id: PET_SKIN_ENDERMITE_RADIANT
+    name: RadiantEndermite
+  - id: RECOMBOBULATOR_3000
+    name: Recombobulator 3000
+  - id: PET_SKIN_JERRY_RED_ELF
+    name: Red ElfJerry
+  - id: PET_SKIN_ELEPHANT_RED
+    name: RedElephant
+  - id: PET_SKIN_SHEEP_RED
+    name: RedSheep
+  - id: REINDEER_PERSONALITY
+    name: Reindeer Minion Skin
+  - id: RIBBIT_THE_FISH
+    name: Ribbit the Fish
+  - id: ROBOT_PERSONALITY
+    name: Robot Minion Skin
+  - id: ROCK_THE_FISH
+    name: Rock the Fish
+  - id: PET_SKIN_RABBIT_ROSE
+    name: RoseRabbit
+  - id: RUBY_CRYSTAL
+    name: Ruby Crystal
+  - id: SALMON_BOOTS
+    name: Salmon Boots
+  - id: SALMON_CHESTPLATE
+    name: Salmon Chestplate
+  - id: SALMON_HELMET
+    name: Salmon Helmet
+  - id: SALMON_LEGGINGS
+    name: Salmon Leggings
+  - id: SANDCASTLE_PERSONALITY
+    name: Sandcastle Minion Skin
+  - id: SANTA_PERSONALITY
+    name: Santa Minion Skin
+  - id: SCARECROW_PERSONALITY
+    name: Scarecrow Minion Skin
+  - id: EPOCH_CAKE_BLUE
+    name: Sea Emperor Century Cake
+  - id: SEA_LANTERN_HAT
+    name: Sea Lantern Hat
+  - id: SEAL_PERSONALITY
+    name: Seal Minion Skin
+  - id: SECRET_BINGO_CARD
+    name: Secret Bingo Card
+  - id: SHARK_PERSONALITY
+    name: Shark Minion Skin
+  - id: SHINY_ORB
+    name: Shiny Orb
+  - id: SHINY_RELIC
+    name: Shiny Relic
+  - id: SHINY_ROD
+    name: Shiny Rod
+  - id: SHRIMP_THE_FISH
+    name: Shrimp the Fish
+  - id: SINGING_FISH
+    name: Singing Fish
+  - id: SKELETON_THE_FISH
+    name: Skeleton the Fish
+  - id: SKULL_PERSONALITY
+    name: Skull Minion Skin
+  - id: PARTY_HAT_SLOTH
+    name: Sloth Hat of Celebration
+  - id: SLOTH_PERSONALITY
+    name: Sloth Minion Skin
+  - id: PET_SKIN_ROCK_SMILE
+    name: SmilingRock
+  - id: SNOW_BELT
+    name: Snow Belt
+  - id: SNOW_CLOAK
+    name: Snow Cloak
+  - id: SNOW_GLOVES
+    name: Snow Gloves
+  - id: SNOW_NECKLACE
+    name: Snow Necklace
+  - id: SNOWMAN_PERSONALITY
+    name: Snowman Minion Skin
+  - id: PET_SKIN_DOLPHIN_SNUBNOSE
+    name: SnubfinDolphin
+  - id: DCTR_SPACE_HELM
+    name: Space Helmet
+  - id: SPOOK_THE_FISH
+    name: Spook the Fish
+  - id: SPOOKY_DISC
+    name: Spooky Disc
+  - id: SPOOKY_PIE
+    name: Spooky Pie
+  - id: PET_SKIN_ENDERMAN
+    name: SpookyEnderman
+  - id: SPRING_BOOTS
+    name: Spring Boots
+  - id: GENERALS_HOPE_OF_THE_RESISTANCE
+    name: Staff of the Rising Sun
+  - id: HOPE_OF_THE_RESISTANCE
+    name: Staff of the Rising Sun
+  - id: EPOCH_CAKE_STARBORN
+    name: Starborn Century Cake
+  - id: STEW_THE_FISH
+    name: Stew the Fish
+  - id: STOCK_OF_STONKS
+    name: Stock of Stonks
+  - id: STORM_THE_FISH
+    name: Storm the Fish
+  - id: EPOCH_CAKE_PURPLE
+    name: 'Streamer''s Century Cake'
+  - id: SUMMONING_EYE
+    name: Summoning Eye
+  - id: SUN_PERSONALITY
+    name: Sun Minion Skin
+  - id: PET_SKIN_MONKEY_SUNGLASSES
+    name: SunglassesMonkey
+  - id: SUPER_COMPACTOR_3000
+    name: Super Compactor 3000
+  - id: SWAMP_THE_FISH
+    name: Swamp the Fish
+  - id: THE_ART_OF_PEACE
+    name: The Art of Peace
+  - id: THE_ART_OF_WAR
+    name: The Art of War
+  - id: DUECES_BUILDER_CLAY
+    name: 'The Builder''s Clay'
+  - id: THE_CAKE
+    name: The Cake
+  - id: PET_SKIN_ROCK_THINKING
+    name: ThinkingRock
+  - id: TREE_THE_FISH
+    name: Tree the Fish
+  - id: CLOWNFISH_PERSONALITY
+    name: Tropical Fish Minion Skin
+  - id: PET_SKIN_TIGER_TWILIGHT
+    name: TwilightTiger
+  - id: EPOCH_CAKE_DARK_GREEN
+    name: Undead Century Cake
+  - id: UNDEAD_PERSONALITY
+    name: Undead Minion Skin
+  - id: PET_SKIN_ENDERMAN_SLAYER
+    name: Void ConquerorEnderman
+  - id: DETECTIVE_WALLET
+    name: Wallet
+  - id: WAND_OF_RECALL
+    name: Wand of Recall
+  - id: DUNGEON_DISC_3
+    name: Watcher Disc
+  - id: PET_SKIN_GUARDIAN
+    name: WatcherGuardian
+  - id: WHITE_TIGER_PERSONALITY
+    name: White Tiger Minion Skin
+  - id: PET_SKIN_SHEEP_WHITE
+    name: WhiteSheep
+  - id: WIKI_JOURNAL
+    name: Wiki Journal
+  - id: WINTER_DISC
+    name: Winter Disc
+  - id: WORM_THE_FISH
+    name: Worm the Fish
+  - id: PET_SKIN_SHEEP_YELLOW
+    name: YellowSheep
+  - id: ZOMBIE_EYE_PERSONALITY
+    name: Zombie Eye Minion Skin
+  - id: PET_SKIN_HORSE_ZOMBIE
+    name: ZombieSkeleton Horse
+  - id: ZOOP_THE_FISH
+    name: Zoop the Fish
+  - id: EPOCH_CAKE_MAGENTA
+    name: ekaC yrutneC tfiR
+  - id: GORF_THE_FISH
+    name: hsiF ehT gorF

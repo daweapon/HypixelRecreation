@@ -73,7 +73,6 @@ import net.swofty.type.skyblockgeneric.staff.MaxStickService;
 import net.swofty.type.skyblockgeneric.item.ItemConfigParser;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.CraftableComponent;
-import net.swofty.type.skyblockgeneric.item.components.MuseumComponent;
 import net.swofty.type.skyblockgeneric.item.components.ServerOrbComponent;
 import net.swofty.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.AbilityRegistry;
@@ -87,7 +86,6 @@ import net.swofty.type.skyblockgeneric.levels.unlocks.CustomLevelUnlock;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.MissionRepeater;
 import net.swofty.type.skyblockgeneric.mission.SkyBlockMission;
-import net.swofty.type.skyblockgeneric.museum.MuseumableItemCategory;
 import net.swofty.type.skyblockgeneric.noteblock.SkyBlockSongsHandler;
 import net.swofty.type.skyblockgeneric.region.SkyBlockBiomeConfiguration;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegenConfiguration;
@@ -546,17 +544,6 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
                     }
                 });
             });
-        });
-
-        /**
-         * Register Museum items
-         */
-        Arrays.stream(ItemType.values()).forEach(itemType -> {
-            SkyBlockItem item = new SkyBlockItem(itemType);
-            if (item.hasComponent(MuseumComponent.class)) {
-                MuseumComponent museumComponent = item.getComponent(MuseumComponent.class);
-                MuseumableItemCategory.addItem(museumComponent.getCategory(), itemType);
-            }
         });
 
         /**

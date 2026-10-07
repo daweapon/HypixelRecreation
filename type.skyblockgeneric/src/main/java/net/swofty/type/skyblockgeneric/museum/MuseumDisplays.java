@@ -17,7 +17,7 @@ import java.util.*;
 
 @Getter
 public enum MuseumDisplays {
-    ATRIUM_SLOTS(new ItemMuseumDisplayHandler(), List.of(MuseumableItemCategory.WEAPONS, MuseumableItemCategory.RARITIES),
+    ATRIUM_SLOTS(new ItemMuseumDisplayHandler(), false,
         new Pos(33.5, 68.5, 23.5),
         new Pos(36.5, 68.5, 24.5),
         new Pos(38.5, 68.5, 26.5),
@@ -42,12 +42,12 @@ public enum MuseumDisplays {
     private static final Map<UUID, Map<MuseumDisplayEntityImpl, PlayerHolograms.ExternalPlayerHologram>> displayEntities = new HashMap<>();
 
     private final MuseumDisplay displayHandler;
-    private final List<MuseumableItemCategory> allowedItemCategories;
+    private final boolean acceptsSets;
     private final List<Pos> positions;
 
-    MuseumDisplays(MuseumDisplay displayHandler, List<MuseumableItemCategory> allowedItemCategories, Pos... positions) {
+    MuseumDisplays(MuseumDisplay displayHandler, boolean acceptsSets, Pos... positions) {
         this.displayHandler = displayHandler;
-        this.allowedItemCategories = allowedItemCategories;
+        this.acceptsSets = acceptsSets;
         this.positions = List.of(positions);
     }
 

@@ -1,168 +1,193 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.museum;
 
-import lombok.SneakyThrows;
-import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.swofty.commons.ServiceType;
+import net.swofty.commons.StringUtility;
 import net.swofty.commons.text.Text;
-import net.swofty.proxyapi.ProxyService;
-import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
+import net.swofty.type.generic.gui.HypixelSignGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
-import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
-import net.swofty.type.generic.gui.inventory.item.GUIItem;
-import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.generic.gui.v2.Components;
+import net.swofty.type.generic.gui.v2.DefaultState;
+import net.swofty.type.generic.gui.v2.StatelessView;
+import net.swofty.type.generic.gui.v2.ViewConfiguration;
+import net.swofty.type.generic.gui.v2.ViewLayout;
+import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointMuseum;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
-import net.swofty.type.skyblockgeneric.museum.MuseumableItemCategory;
+import net.swofty.type.skyblockgeneric.museum.MuseumCategory;
+import net.swofty.type.skyblockgeneric.museum.MuseumMilestones;
+import net.swofty.type.skyblockgeneric.museum.MuseumService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 
-// GUI for a player's museum overview, linking into weapon, armor, and rarity display categories
-public class GUIYourMuseum extends HypixelInventoryGUI {
-    private static final Map<MuseumableItemCategory, Integer> CATEGORY_SLOTS = Map.of(
-            MuseumableItemCategory.WEAPONS, 20,
-            MuseumableItemCategory.ARMOR_SETS, 22,
-            MuseumableItemCategory.RARITIES, 24
-    );
-    private static final String MUSEUM_INFO_TEXTURE =
-            "597e4e27a04afa5f06108265a9bfb797630391c7f3d880d244f610bb1ff393d8";
+public class GUIYourMuseum extends StatelessView {
+    private static final String MUSEUM_TEXTURE = "597e4e27a04afa5f06108265a9bfb797630391c7f3d880d244f610bb1ff393d8";
 
-    public GUIYourMuseum() {
-        super(Text.key("gui_museum.main.title"), InventoryType.CHEST_6_ROW);
+    @Override
+    public ViewConfiguration<DefaultState> configuration() {
+        return new ViewConfiguration<>("Your Museum", InventoryType.CHEST_6_ROW);
     }
 
-    @SneakyThrows
     @Override
-    public void onOpen(InventoryGUIOpenEvent e) {
-        if (!new ProxyService(ServiceType.ITEM_TRACKER).isOnline().join()) {
-            e.player().sendMessage(Text.key("gui_museum.main.item_tracker_offline"));
-            e.player().closeInventory();
-            return;
+    public void onOpen(DefaultState state, ViewContext ctx) {
+        MuseumService.sync((SkyBlockPlayer) ctx.player());
+    }
+
+    @Override
+    public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
+        Components.fill(layout);
+        layout.slot(4, (s, c) -> museumInfo(data(c)));
+
+        for (MuseumCategory category : MuseumCategory.values()) {
+            layout.slot(category.getMenuSlot(), (s, c) -> categoryButton(data(c), category),
+                    (click, c) -> c.push(new GUIMuseumCategory(), GUIMuseumCategory.State.of(category)));
         }
 
-        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
-        DatapointMuseum.MuseumData data = player.getMuseumData();
-        fill(ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, ""));
-        set(GUIClickableItem.getCloseItem(49));
-
-        set(new GUIClickableItem(40) {
-            @Override
-            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p;
-                new GUIMuseumRewards().open(player);
+        layout.slot(48, (s, c) -> milestonesButton(data(c)), (click, c) -> c.push(new GUIMuseumMilestones()));
+        Components.close(layout, 49);
+        layout.slot(50, (s, c) -> searchButton(), (click, c) -> openSearch(c));
+        layout.slot(51, (s, c) -> appraisalButton(data(c)), (click, c) -> {
+            SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+            DatapointMuseum.MuseumData data = player.getMuseumData();
+            if (data.isHasBoughtAppraisalService()) return;
+            if (MuseumService.milestone(data) < MuseumMilestones.APPRAISAL_MILESTONE) {
+                player.sendMessage("<c>You need Museum Milestone {} to unlock the Appraisal Service!",
+                        MuseumMilestones.APPRAISAL_MILESTONE);
+                return;
             }
-
-            @Override
-            public ItemStack.Builder getItem(HypixelPlayer p) {
-                return ItemStacks.item(Material.GOLD_BLOCK, 1, Text.key("gui_museum.main.rewards_button"),
-                        Text.keyLines("gui_museum.main.rewards_button.lore"));
-            }
+            c.push(new GUIMuseumAppraisal());
         });
-        set(new GUIItem(45) {
-            @Override
-            public ItemStack.Builder getItem(HypixelPlayer p) {
-                return ItemStacks.item(Material.NAME_TAG, 1, Text.key("gui_museum.main.edit_npc_tags"),
-                        Text.keyLines("gui_museum.main.edit_npc_tags.lore"));
-            }
+    }
+
+    static void openSearch(ViewContext ctx) {
+        new HypixelSignGUI(ctx.player()).open(new String[]{"Enter query", ""}).thenAccept(line -> {
+            if (line == null || line.isBlank()) return;
+            ctx.push(new GUIMuseumCategory(), GUIMuseumCategory.State.search(line.trim()));
         });
-        set(new GUIItem(4) {
-            @Override
-            public ItemStack.Builder getItem(HypixelPlayer p) {
-                List<Text> lore = new ArrayList<>(Text.keyLines("gui_museum.main.museum_info.lore"));
+    }
 
-                int maxAmountOfItems = MuseumableItemCategory.getMuseumableItemCategorySize();
-                int unlockedItems = data.getAllItems().size();
+    static ItemStack.Builder searchButton() {
+        return ItemStacks.item(Material.OAK_SIGN, 1, Text.of("<a>Museum Search"), List.of(
+                Text.of("<7>Search your entire Museum for a"),
+                Text.of("<7>specific item or armor set!"),
+                Text.empty(),
+                Text.of("<e>Click to search for an item!")));
+    }
 
-                double percentageUnlocked = (double) unlockedItems / (double) maxAmountOfItems * 100;
-                double percentageUnlockedToTwoDecimalPlaces = Math.round(percentageUnlocked * 100) / 100.0;
+    static Text progressBar(long done, long total) {
+        String bar = "--------------------";
+        int filled = total == 0 ? 0 : (int) Math.min(bar.length(), done * bar.length() / total);
+        return Text.of("<2><m>{}<f><m>{}<r> <b>{}<9>/<b>{}", bar.substring(0, filled), bar.substring(filled),
+                StringUtility.commaify(done), StringUtility.commaify(total));
+    }
 
-                lore.add(Text.key("gui_museum.main.items_donated", percentageUnlockedToTwoDecimalPlaces));
-                lore.add(getAsDisplay(unlockedItems, maxAmountOfItems));
+    static String percent(long done, long total) {
+        if (total == 0) return "0";
+        double value = Math.round(done * 10000D / total) / 100D;
+        return value == Math.floor(value) ? String.valueOf((long) value) : String.valueOf(value);
+    }
 
-                Map<UUID, Double> calculatedPrices = data.getCalculatedPrices();
-                if (!calculatedPrices.isEmpty()) {
-                    lore.add(Text.literal(" "));
-                    lore.add(Text.key("gui_museum.main.top_items"));
+    private static DatapointMuseum.MuseumData data(ViewContext ctx) {
+        return ((SkyBlockPlayer) ctx.player()).getMuseumData();
+    }
 
-                    AtomicInteger index = new AtomicInteger(1);
-                    calculatedPrices.entrySet().stream()
-                            .sorted((e1, e2) -> Double.compare(e2.getValue(), e1.getValue()))
-                            .limit(5)
-                            .forEach(entry -> {
-                                SkyBlockItem item = data.getFromUUID(entry.getKey());
-                                lore.add(Text.of("<8>{}. {}", index.getAndIncrement(),
-                                        item.getDisplayName()));
-                                lore.add(Text.of("<8>    {:,} Coins", entry.getValue()));
-                            });
-                }
-
-                return ItemStacks.head(MUSEUM_INFO_TEXTURE, Text.key("gui_museum.main.museum_info"), lore);
-            }
-        });
-
-        for (MuseumableItemCategory category : MuseumableItemCategory.values()) {
-            Integer slot = CATEGORY_SLOTS.get(category);
-            if (slot == null) {
-                continue;
-            }
-
-            set(new GUIClickableItem(slot) {
-                @Override
-                public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    if (category == MuseumableItemCategory.ARMOR_SETS)
-                        new GUIMuseumArmorCategory().open(player);
-                    else new GUIMuseumCategory(category).open(player);
-                }
-
-                @Override
-                public ItemStack.Builder getItem(HypixelPlayer p) {
-                    List<Text> lore = new ArrayList<>(Text.keyLines("gui_museum.main.category_button.lore_prefix",
-                            Text.empty(), Text.parse(category.getColor() + category.getCategory())));
-
-                    int maxAmountOfItems = MuseumableItemCategory.getMuseumableItemCategorySize(category);
-                    int unlockedItems = data.getItemsByCategory(category).size();
-                    double percentage = (double) unlockedItems / (double) maxAmountOfItems * 100;
-                    double percentageToTwoDecimalPlaces = Math.round(percentage * 100) / 100.0;
-
-                    lore.add(Text.key("gui_museum.main.category_items_donated", percentageToTwoDecimalPlaces));
-                    lore.add(getAsDisplay(unlockedItems, maxAmountOfItems));
-                    lore.add(Text.literal(" "));
-                    lore.add(Text.key("gui_museum.main.category_click"));
-
-                    return ItemStacks.item(category.getMaterial(), 1,
-                            Text.of("<a>{}", category.getCategory()), lore);
-                }
-            });
+    private static ItemStack.Builder museumInfo(DatapointMuseum.MuseumData data) {
+        long donated = MuseumService.donatedCount(data);
+        long total = MuseumService.catalogue().progressEntries().size();
+        long unavailable = MuseumService.catalogue().progressEntries().stream().filter(entry -> !entry.isAvailable()).count();
+        List<Text> lore = new ArrayList<>(List.of(
+                Text.of("<7>The <9>Museum <7>is a compendium"),
+                Text.of("<7>of all of your items in"),
+                Text.of("<7>SkyBlock. Donate items to your"),
+                Text.of("<7>Museum to unlock rewards."),
+                Text.empty(),
+                Text.of("<7>Other players can visit your"),
+                Text.of("<7>Museum at any time! Display your"),
+                Text.of("<7>best items proudly for all to"),
+                Text.of("<7>see."),
+                Text.empty(),
+                Text.of("<7>Items Donated: <e>{}<6>%", percent(donated, total)),
+                progressBar(donated, total)));
+        if (unavailable > 0) {
+            lore.add(Text.empty());
+            lore.add(Text.of("<8>{} of these items aren't in this", unavailable));
+            lore.add(Text.of("<8>server yet."));
         }
-
-        updateItemStacks(getInventory(), getPlayer());
+        return ItemStacks.head(MUSEUM_TEXTURE, Text.of("<9>Museum"), lore);
     }
 
-    public static Text getAsDisplay(int unlocked, int total) {
-        String baseLoadingBar = "─────────────────";
-        int completedLength = Math.min((int) ((unlocked / (double) total) * baseLoadingBar.length()),
-                baseLoadingBar.length());
-
-        return Text.of("<b><m>{}</m><7><m>{}</m><r> <b>{}<9>/<b>{}",
-                baseLoadingBar.substring(0, completedLength), baseLoadingBar.substring(completedLength),
-                unlocked, total);
+    private static ItemStack.Builder categoryButton(DatapointMuseum.MuseumData data, MuseumCategory category) {
+        long donated = MuseumService.donatedCount(data, category);
+        List<Text> lore = new ArrayList<>();
+        if (category.isSpecial()) {
+            lore.add(Text.of("<7>View all of the <d>Special Items <7>that you"));
+            lore.add(Text.of("<7>have donated to the <9>Museum<7>!"));
+            lore.add(Text.empty());
+            lore.add(Text.of("<7>These items don't count towards"));
+            lore.add(Text.of("<7>Museum progress and rewards, but"));
+            lore.add(Text.of("<7>are cool nonetheless. Items that are"));
+            lore.add(Text.of("<9>rare <7>and <6>prestigious <7>fit into this"));
+            lore.add(Text.of("<7>category, and can be displayed in"));
+            lore.add(Text.of("<7>the Museum."));
+            lore.add(Text.empty());
+            lore.add(Text.of("<7>Items Donated: <b>{}<9>/<b>{}", donated, MuseumCategory.SPECIAL_ITEM_LIMIT));
+        } else {
+            long total = MuseumService.catalogue().entries(category).size();
+            lore.add(Text.of("<7>View all of the items related to the"));
+            lore.add(Text.of(category.getColor() + "{} Skill <7>that you have donated", category.getDisplayName()));
+            lore.add(Text.of("<7>to the <9>Museum<7>!"));
+            lore.add(Text.empty());
+            lore.add(Text.of("<7>Items Donated: <e>{}<6>%", percent(donated, total)));
+            lore.add(progressBar(donated, total));
+        }
+        lore.add(Text.empty());
+        lore.add(Text.of("<e>Click to view!"));
+        return ItemStacks.item(category.getIcon(), 1, Text.of(category.coloredName()), lore);
     }
 
-    @Override
-    public boolean allowHotkeying() {
-        return false;
+    private static ItemStack.Builder milestonesButton(DatapointMuseum.MuseumData data) {
+        return ItemStacks.item(Material.GOLD_BLOCK, 1, Text.of("<6>Museum Milestones"), List.of(
+                Text.of("<7>Every <b>100 SkyBlock XP <7>obtained from"),
+                Text.of("<7>your Museum, <6>Eleanor <7>will reward you."),
+                Text.empty(),
+                Text.of("<d>Special Items <7>do not reward SkyBlock"),
+                Text.of("<7>XP."),
+                Text.empty(),
+                Text.of("<7>Total XP: <b>{}<3>/<b>{}", StringUtility.commaify(MuseumService.museumXp(data)),
+                        StringUtility.commaify(MuseumService.catalogue().totalXp())),
+                Text.of("<7>Milestone: <e>{}<6>/<e>{}", MuseumService.milestone(data), MuseumMilestones.MAX_MILESTONE),
+                Text.empty(),
+                Text.of("<e>Click to view!")));
     }
 
-    @Override
-    public void onBottomClick(InventoryPreClickEvent e) {
-        e.setCancelled(true);
+    private static ItemStack.Builder appraisalButton(DatapointMuseum.MuseumData data) {
+        List<Text> lore = new ArrayList<>(List.of(
+                Text.of("<6>Madame Goldsworth <7>offers an"),
+                Text.of("<7>appraisal service for Museums. She"),
+                Text.of("<7>will appraise the value of your"),
+                Text.of("<7>Museum each time you add or remove"),
+                Text.of("<7>items."),
+                Text.empty(),
+                Text.of("<7>This service also allows you to"),
+                Text.of("<7>appear on the <6>Top Valued <7>filter in"),
+                Text.of("<7>the <9>Museum Browser<7>."),
+                Text.empty()));
+        if (data.isHasBoughtAppraisalService()) {
+            lore.add(Text.of("<7>Your Museum Value"));
+            lore.add(Text.of("<6>{} Coins", StringUtility.commaify(MuseumService.museumValue(data))));
+            lore.add(Text.empty());
+            lore.add(Text.of("<8>The Museum Browser's Top Valued"));
+            lore.add(Text.of("<8>ranking isn't in this server yet."));
+        } else if (MuseumService.milestone(data) < MuseumMilestones.APPRAISAL_MILESTONE) {
+            lore.add(Text.of("<c>Requires Museum Milestone {}!", MuseumMilestones.APPRAISAL_MILESTONE));
+        } else {
+            lore.add(Text.of("<7>Cost"));
+            lore.add(Text.of("<6>{} Coins", StringUtility.commaify(MuseumMilestones.APPRAISAL_COST)));
+            lore.add(Text.empty());
+            lore.add(Text.of("<e>Click to unlock!"));
+        }
+        return ItemStacks.item(Material.DIAMOND, 1, Text.of("<6>Museum Appraisal Service"), lore);
     }
 }
