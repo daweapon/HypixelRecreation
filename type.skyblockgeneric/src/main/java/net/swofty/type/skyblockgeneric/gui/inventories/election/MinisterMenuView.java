@@ -15,6 +15,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.elections.ElectionData;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.PerkLore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class MinisterMenuView extends StatelessView {
 
             if (activePerk != null) {
                 lore.add(ElectionData.colored(ministerColor, activePerk.getDisplayName()));
-                lore.addAll(Text.parseLenient("<wrap:50>" + activePerk.getDescription() + "</wrap>").lines());
+                lore.addAll(PerkLore.description(activePerk, 50));
             }
 
             lore.add(Text.of("<8><m>--------------------------"));

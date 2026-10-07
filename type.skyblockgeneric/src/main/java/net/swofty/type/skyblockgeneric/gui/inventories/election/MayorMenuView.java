@@ -17,6 +17,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.elections.ElectionData;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.PerkLore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,7 @@ public class MayorMenuView extends StatelessView {
 
             for (SkyBlockMayor.Perk perk : activePerks) {
                 lore.add(ElectionData.colored(mayorColor, perk.getDisplayName()));
-                lore.addAll(Text.parseLenient("<wrap:50>" + perk.getDescription() + "</wrap>").lines());
+                lore.addAll(PerkLore.description(perk, 50));
                 lore.add(Text.empty());
             }
 
@@ -73,7 +74,7 @@ public class MayorMenuView extends StatelessView {
                 lore.add(Text.empty());
                 for (SkyBlockMayor.Perk perk : perkpocalypseSource.getAllPerks()) {
                     lore.add(Text.of("<e>{}", perk.getDisplayName()));
-                    lore.addAll(Text.parseLenient("<wrap:50>" + perk.getDescription() + "</wrap>").lines());
+                    lore.addAll(PerkLore.description(perk, 50));
                     lore.add(Text.empty());
                 }
             }

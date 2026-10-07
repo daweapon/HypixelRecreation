@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.elections.ElectionData;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.PerkLore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -165,7 +166,7 @@ public class ElectionViewStatsView extends StatelessView {
             } else {
                 lore.addAll(Text.of("<color:{0}><wrap:35>{1}</wrap>", candidate.getColor(), perk.getDisplayName()).lines());
             }
-            lore.addAll(Text.parseLenient("<wrap:35>" + perk.getDescription() + "</wrap>").lines());
+            lore.addAll(PerkLore.description(perk, 35));
             if (j < activePerks.size() - 1) lore.add(Text.empty());
         }
 
