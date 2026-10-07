@@ -83,6 +83,9 @@ public class PlayerStatistics {
     @Getter
     private double incomingDamageReductionPercent;
     private ItemStatistics accessoryStatistics = ItemStatistics.builder().build();
+    // Pet ability conditions may read stats (e.g. Griffin's "above 85% Health" reads max health),
+    // which would recurse back into the pet's own statistics.
+    private final ThreadLocal<Boolean> computingPetStatistics = ThreadLocal.withInitial(() -> false);
     private final List<TemporaryStatistic> temporaryStatistics = Collections.synchronizedList(new ArrayList<>());
     private final List<TemporaryConditionalStatistic> temporaryConditionalStatistics = Collections.synchronizedList(new ArrayList<>());
     BestiaryData bestiaryData = new BestiaryData();
@@ -203,6 +206,16 @@ public class PlayerStatistics {
     }
 
     public ItemStatistics petStatistics() {
+        if (computingPetStatistics.get()) return ItemStatistics.empty();
+        computingPetStatistics.set(true);
+        try {
+            return computePetStatistics();
+        } finally {
+            computingPetStatistics.set(false);
+        }
+    }
+
+    private ItemStatistics computePetStatistics() {
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         if (pet == null) return ItemStatistics.empty();
         PetComponent component = pet.getComponent(PetComponent.class);
