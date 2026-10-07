@@ -1,5 +1,8 @@
 package net.swofty.type.skyblockgeneric.gifts;
 
+import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
+import net.swofty.type.skyblockgeneric.carnival.CarnivalStatistics;
+import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import lombok.Getter;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
@@ -59,6 +62,8 @@ public enum Gift {
         }
     }
 
+    private static final double FEELIN_FESTIVE_PERCENT = 10;
+
     public static Gift of(ItemType type) {
         for (Gift gift : values()) {
             if (gift.item == type) return gift;
@@ -70,16 +75,25 @@ public enum Gift {
         Reward reward = roll();
         SkillCategories skill = XP_SKILLS[ThreadLocalRandom.current().nextInt(XP_SKILLS.length)];
         for (SkyBlockPlayer player : List.of(giver, receiver)) {
+            double boost = boost(player);
             if (reward.coins() > 0) {
-                player.addCoins(reward.coins());
-                player.sendMessage("<a><l>GIFT! <7>You received <6>{} coins <7>from the gift!", StringUtility.commaify(reward.coins()));
+                long coins = Math.round(reward.coins() * boost);
+                player.addCoins(coins);
+                player.sendMessage("<a><l>GIFT! <7>You received <6>{} coins <7>from the gift!", StringUtility.commaify(coins));
             } else {
-                player.getSkills().increase(player, skill, (double) reward.skillXp());
+                long xp = Math.round(reward.skillXp() * boost);
+                player.getSkills().increase(player, skill, (double) xp);
                 player.sendMessage("<a><l>GIFT! <7>You received <3>{} {} XP <7>from the gift!",
-                        StringUtility.commaify(reward.skillXp()), StringUtility.toNormalCase(skill.name()));
+                        StringUtility.commaify(xp), StringUtility.toNormalCase(skill.name()));
             }
             awardNorthStars(player);
         }
+    }
+
+    private static double boost(SkyBlockPlayer player) {
+        double percent = Carnivals.perkValue(player, CarnivalPerk.PROFESSIONAL_GIFTER)
+                + (CarnivalStatistics.isWearing(player, ItemType.SNOWMAN_MASK) ? FEELIN_FESTIVE_PERCENT : 0);
+        return 1 + percent / 100D;
     }
 
     private void awardNorthStars(SkyBlockPlayer player) {

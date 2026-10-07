@@ -1,5 +1,7 @@
 package net.swofty.type.jerrysworkshop.defense;
 
+import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
+import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
@@ -19,6 +21,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -259,6 +262,14 @@ public final class JerryWorkshopDefenseManager {
             int playerWhite = ElectionPerks.boostedCount(SkyBlockMayor.Perk.SWEET_BENEVOLENCE, full ? white : white / 2);
             int playerGreen = ElectionPerks.boostedCount(SkyBlockMayor.Perk.SWEET_BENEVOLENCE, full ? green : green / 2);
             int playerRed = ElectionPerks.boostedCount(SkyBlockMayor.Perk.SWEET_BENEVOLENCE, full ? red : red / 2);
+            playerWhite = Carnivals.boostedCount(player, CarnivalPerk.PRESENT_CONNOISSEUR, playerWhite);
+            playerGreen = Carnivals.boostedCount(player, CarnivalPerk.PRESENT_CONNOISSEUR, playerGreen);
+            playerRed = Carnivals.boostedCount(player, CarnivalPerk.PRESENT_CONNOISSEUR, playerRed);
+            int whiteToRed = redFad(player, playerWhite);
+            int greenToRed = redFad(player, playerGreen);
+            playerWhite -= whiteToRed;
+            playerGreen -= greenToRed;
+            playerRed += whiteToRed + greenToRed;
             int rocks = full ? standing.size() : 0;
 
             give(player, ItemType.WHITE_GIFT, playerWhite);
@@ -270,6 +281,15 @@ public final class JerryWorkshopDefenseManager {
                     + " <7>damage and received <f>" + playerWhite + " White<7>, <a>" + playerGreen + " Green<7>, <c>"
                     + playerRed + " Red <7>Gifts and <5>" + rocks + " Volcanic Rock<7>.");
         });
+    }
+
+    private static int redFad(SkyBlockPlayer player, int gifts) {
+        double chance = Carnivals.perkValue(player, CarnivalPerk.RED_FAD) / 100D;
+        int converted = 0;
+        for (int i = 0; i < gifts; i++) {
+            if (ThreadLocalRandom.current().nextDouble() < chance) converted++;
+        }
+        return converted;
     }
 
     private static void give(SkyBlockPlayer player, ItemType type, int amount) {
