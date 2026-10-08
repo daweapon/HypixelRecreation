@@ -1,0 +1,157 @@
+# The Kuudra Follower questline items (NEU).
+items:
+  - id: KUUDRA_RELIC
+    material: player_head
+    name: "Kuudra Relic"
+    rarity: SPECIAL
+    lore:
+      - "§8Quest Item"
+    components:
+      - id: SKULL_HEAD
+        texture: 2f6c7aa31556a12080cc36e8a28d113221eef8f738dc4756529b5b328e82981a
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: KUUDRA_FOLLOWER_HELMET
+    material: player_head
+    name: "Kuudra Follower Helmet"
+    rarity: SPECIAL
+    lore:
+      - "§6Full Set Bonus: Follower"
+      - "§7Shows that you are a true follower"
+      - "§7of Kuudra."
+    components:
+      - id: SKULL_HEAD
+        texture: e57de815a24c961b28d539c92e0044ca4f37dad2672822f42d85e3ccf4d193b7
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: KUUDRA_FOLLOWER_CHESTPLATE
+    material: leather_chestplate
+    name: "Kuudra Follower Chestplate"
+    rarity: SPECIAL
+    lore:
+      - "§6Full Set Bonus: Follower"
+      - "§7Shows that you are a true"
+      - "§7follower of Kuudra."
+    components:
+      - id: LEATHER_COLOR
+        r: '53'
+        g: '83'
+        b: '10'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: KUUDRA_FOLLOWER_LEGGINGS
+    material: leather_leggings
+    name: "Kuudra Follower Leggings"
+    rarity: SPECIAL
+    lore:
+      - "§6Full Set Bonus: Follower"
+      - "§7Shows that you are a true"
+      - "§7follower of Kuudra."
+    components:
+      - id: LEATHER_COLOR
+        r: '53'
+        g: '83'
+        b: '10'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: KUUDRA_FOLLOWER_BOOTS
+    material: leather_boots
+    name: "Kuudra Follower Boots"
+    rarity: SPECIAL
+    lore:
+      - "§6Full Set Bonus: Follower"
+      - "§7Shows that you are a true"
+      - "§7follower of Kuudra."
+    components:
+      - id: LEATHER_COLOR
+        r: '53'
+        g: '83'
+        b: '10'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: KUUDRA_FOLLOWER_ARTIFACT
+    material: player_head
+    name: "Kuudra Follower Artifact"
+    rarity: EPIC
+    lore:
+      - "§7Reduces damage taken from Kuudra"
+      - "§7Followers by §a50%§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 772011280b5b9ab18c55703943e7f11a19717974bb9541ca4b2723f7a5fab236
+      - id: TALISMAN
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: KUUDRA_FOLLOWER_RELIC
+    material: player_head
+    name: "Kuudra Follower Relic"
+    rarity: LEGENDARY
+    lore:
+      - "§7Reduces damage taken from Kuudra"
+      - "§7Followers by §a65%§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 97528b815fa12da44fd1c0f3f3a2a9034bff2d997bf9324bc1bfadcad3ae1ec4
+      - id: TALISMAN
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: KUUDRA_CAVITY
+    material: player_head
+    name: "Kuudra Teeth Plaque"
+    rarity: SPECIAL
+    lore:
+      - "§7§oOnce used to poison a great beast."
+      - "§7§oIts remains show the true mark of a"
+      - "§7§ogreat adventurer."
+      - ""
+      - "§8§oThis item is in its final form!"
+      - ""
+      - "§7Discoverer: §6[MVP§3++§6] Eisengolem"
+    components:
+      - id: SKULL_HEAD
+        texture: 4105b97e06f161421a8d2caf309803339fc04ef84eb3cdb1e5474b0192fc50a8
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: LORE_UPDATE
+        handler_id: KUUDRA_TEETH_PLAQUE
+        is_absolute: true
+  - id: WET_NAPKIN
+    material: filled_map
+    name: "Wet Napkin"
+    rarity: SPECIAL
+    lore:
+      - "§7An old wet napkin that appears"
+      - "§7to have some scribbling on the"
+      - "§7back, but part of it is too"
+      - "§7blurry to make out:"
+      - ""
+      - "§8§oThe total §8§o§k--------§8§o plus time"
+      - "§8§otimes time, all that subtracted"
+      - "§8§ofrom thrice the commencement,"
+      - "§8§othen add §8§o§k--§8§o of yourself,"
+      - "§8§othe whole thing elbuod."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: HERRING_THE_FISH
+    material: cod
+    name: "Herring the Fish"
+    rarity: SPECIAL
+    lore:
+      - "§7Sometimes patience is the key"
+      - "§7to victory. Sometimes it leads"
+      - "§7to very little and it seems like"
+      - "§7it's not worth it. And you"
+      - "§7wonder why you waited so long"
+      - "§7for something so disappointing."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false

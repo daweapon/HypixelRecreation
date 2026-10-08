@@ -1,0 +1,118 @@
+# Kuudra Keys (NEU): bought from the faction Emissaries, crafted 4 into 1, and dropped by minibosses and lava treasure.
+items:
+  - id: KUUDRA_TIER_KEY
+    material: player_head
+    name: "Kuudra Key"
+    rarity: RARE
+    lore:
+      - "§7Used to unlock the reward chest in"
+      - "§7the Basic Tier of the Kuudra fight."
+    components:
+      - id: SKULL_HEAD
+        texture: bfd3e71838c0e76f890213120b4ce7449577736604338a8d28b4c86db2547e71
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: KUUDRA_HOT_TIER_KEY
+    material: player_head
+    name: "Hot Kuudra Key"
+    rarity: EPIC
+    lore:
+      - "§7Used to unlock the reward chest in"
+      - "§7the Hot Tier of the Kuudra fight."
+    components:
+      - id: SKULL_HEAD
+        texture: c0259e8964c3deb95b1233bb2dc82c986177e63ae36c11265cb385180bb91cc0
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - "AA"
+              - "AA"
+            ingredients:
+              A:
+                type: KUUDRA_TIER_KEY
+                amount: 1
+            result:
+              type: KUUDRA_HOT_TIER_KEY
+              amount: 1
+  - id: KUUDRA_BURNING_TIER_KEY
+    material: player_head
+    name: "Burning Kuudra Key"
+    rarity: EPIC
+    lore:
+      - "§7Used to unlock the reward chest in"
+      - "§7the Burning Tier of the Kuudra fight."
+    components:
+      - id: SKULL_HEAD
+        texture: 330f6f6e63b245f839e3ccdce5a5f22056201d0274411dfe5d94bbe449c4ece
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - "AA"
+              - "AA"
+            ingredients:
+              A:
+                type: KUUDRA_HOT_TIER_KEY
+                amount: 1
+            result:
+              type: KUUDRA_BURNING_TIER_KEY
+              amount: 1
+  - id: KUUDRA_FIERY_TIER_KEY
+    material: player_head
+    name: "Fiery Kuudra Key"
+    rarity: EPIC
+    lore:
+      - "§7Used to unlock the reward chest in"
+      - "§7the Fiery Tier of the Kuudra fight."
+    components:
+      - id: SKULL_HEAD
+        texture: bd854393bbf9444542502582d4b5a23cc73896506e2fc739d545bc35bc7b1c06
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - "AA"
+              - "AA"
+            ingredients:
+              A:
+                type: KUUDRA_BURNING_TIER_KEY
+                amount: 1
+            result:
+              type: KUUDRA_FIERY_TIER_KEY
+              amount: 1
+  - id: KUUDRA_INFERNAL_TIER_KEY
+    material: player_head
+    name: "Infernal Kuudra Key"
+    rarity: LEGENDARY
+    lore:
+      - "§7Used to unlock the reward chest in"
+      - "§7the Infernal Tier of the Kuudra fight."
+    components:
+      - id: SKULL_HEAD
+        texture: 82ee25414aa7efb4a2b4901c6e33e5eaa705a6ab212ebebfd6a4de984125c7a0
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - "AA"
+              - "AA"
+            ingredients:
+              A:
+                type: KUUDRA_FIERY_TIER_KEY
+                amount: 1
+            result:
+              type: KUUDRA_INFERNAL_TIER_KEY
+              amount: 1
