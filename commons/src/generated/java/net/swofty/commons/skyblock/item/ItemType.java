@@ -206,6 +206,8 @@ public enum ItemType {
 
   BABY_YETI_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  BAG_OF_GOLD(Material.PLAYER_HEAD, Rarity.RARE),
+
   BAKED_POTATO(Material.BAKED_POTATO, Rarity.COMMON),
 
   BAMBOO(Material.BAMBOO, Rarity.COMMON),
@@ -1875,6 +1877,8 @@ public enum ItemType {
   FOUL_FLESH(Material.CHARCOAL, Rarity.RARE),
 
   FOUR_EYED_FISH(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  FRAMED_VOLCANIC_STONEFISH(Material.ITEM_FRAME, Rarity.RARE),
 
   FRESHLY_MINTED_COINS(Material.PLAYER_HEAD, Rarity.RARE),
 

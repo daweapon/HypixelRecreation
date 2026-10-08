@@ -1,0 +1,23 @@
+# Items handed out by the Crimson Isle faction questlines and side quests (NEU lore and textures).
+# The Maddox Batphone Elle gives out is AATROX_BATPHONE in hub_npc_items.yml.
+items:
+  - id: FRAMED_VOLCANIC_STONEFISH
+    material: item_frame
+    name: "Framed Volcanic Stonefish"
+    rarity: RARE
+    lore:
+      - "§8§l* §8Soulbound §8§l*"
+  - id: BAG_OF_GOLD
+    material: player_head
+    name: "Bag of Gold"
+    rarity: RARE
+    lore:
+      - "§6A thank you present from a grateful"
+      - "§6person in the Crimson Isle."
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: e36e94f6c34a35465fce4a90f2e25976389eb9709a12273574ff70fd4daa6852
+      - id: SELLABLE
+        value: 250000.0
