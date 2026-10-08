@@ -1,9 +1,12 @@
 package net.swofty.type.crimsonisle;
 
 import net.swofty.type.crimsonisle.dojo.DojoService;
+import net.swofty.type.crimsonisle.quest.TownBoard;
+import net.swofty.type.crimsonisle.quest.rescue.RescueService;
 import net.swofty.type.skyblockgeneric.crimson.matriarch.MatriarchService;
 import net.swofty.type.skyblockgeneric.crimson.mob.CrimsonMobSpawner;
 import net.swofty.type.skyblockgeneric.crimson.mob.miniboss.CrimsonMinibossSpawner;
+import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestService;
 import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoEruptionService;
 import net.swofty.type.skyblockgeneric.fishing.trophy.GoldenFishService;
 import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishTabWidget;
@@ -23,5 +26,8 @@ public final class CrimsonIsleServices {
         GoldenFishService.start();
         TrophyFishTabWidget.register();
         DojoService.start();
+        FactionQuestService.registerTabWidget();
+        TownBoard.spawnAll();
+        RescueService.start();
     }
 }
