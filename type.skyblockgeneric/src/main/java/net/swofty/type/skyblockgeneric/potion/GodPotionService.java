@@ -60,6 +60,14 @@ public final class GodPotionService {
         if (remaining > 0) applyEffects(player, remaining);
     }
 
+    public static void pauseClock(SkyBlockPlayer player) {
+        remaining(player);
+    }
+
+    public static void resumeClock(SkyBlockPlayer player) {
+        setLastUpdated(player, System.currentTimeMillis());
+    }
+
     private static long durationFor(SkyBlockPlayer player) {
         int alchemyLevel = player.getSkills().getCurrentLevel(SkillCategories.ALCHEMY);
         long duration = BASE_DURATION_MS + Math.round(alchemyLevel * 0.24 * 60 * 60 * 1000);

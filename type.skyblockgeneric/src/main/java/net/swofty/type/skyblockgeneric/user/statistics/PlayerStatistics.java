@@ -89,6 +89,7 @@ import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
+import net.swofty.type.skyblockgeneric.region.rules.ZoneRuleService;
 import java.lang.reflect.Constructor;
 import java.util.*;
 import java.util.function.Predicate;
@@ -309,7 +310,7 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, MayorPerkStatistics.flatBonuses(perks, !HypixelConst.isIslandServer()));
         total = MayorPerkStatistics.applyScaling(perks, total, enemy instanceof SlayerBossMob);
 
-        return StatOverrides.apply(player, total);
+        return ZoneRuleService.capStatistics(player, StatOverrides.apply(player, total));
     }
 
     public List<StatisticSource> statisticSources() {
