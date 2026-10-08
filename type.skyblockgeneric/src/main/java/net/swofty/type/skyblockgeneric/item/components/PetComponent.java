@@ -19,6 +19,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.KatUpgrade;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.ConfiguredPetAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetNumbers;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetSource;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetStatTable;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetType;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.RarityNumbers;
@@ -55,6 +56,7 @@ public class PetComponent extends SkyBlockItemComponent {
     private final Particle particleId;
     private final String skullTexture;
     private final EnumMap<Rarity, String> skullTextureByRarity;
+    private @Nullable PetSource source;
 
     public PetComponent(String petName, PetType petType, List<Rarity> rarities, int maxLevel, int statsBaseLevel,
                         @Nullable Integer fixedXpOffset, boolean fixedLevel, boolean countsForPetScore, boolean passive,
@@ -88,6 +90,11 @@ public class PetComponent extends SkyBlockItemComponent {
                             .serialize();
                 }), true)
         );
+    }
+
+    public PetComponent withSource(@Nullable PetSource source) {
+        this.source = source;
+        return this;
     }
 
     public String textureFor(SkyBlockItem item) {
@@ -215,6 +222,11 @@ public class PetComponent extends SkyBlockItemComponent {
         }
 
         lore.add(" ");
+        String sourceLine = source == null ? null : source.loreLine();
+        if (sourceLine != null) {
+            lore.add(sourceLine);
+            lore.add(" ");
+        }
         lore.add(Text.of("<rarity:{}>", rarity.name()).serialize());
 
         return lore;
