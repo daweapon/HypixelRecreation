@@ -32,6 +32,7 @@ import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.item.ItemLore;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.entity.drop.ItemDrops;
 import net.swofty.type.generic.event.HypixelEventHandler;
@@ -66,6 +67,7 @@ import java.util.Map;
 @Setter
 public abstract class SkyBlockMob extends EntityCreature {
     private static final float VANILLA_MAX_HEALTH = 1024;
+    private static final double RARE_DROP_CHANCE_PERCENT = 5;
     private float maxHealth;
     private float health;
     @Getter
@@ -368,6 +370,7 @@ public abstract class SkyBlockMob extends EntityCreature {
 
             SkyBlockItem item = createDrop(itemType, record.getAmount());
             ItemType droppedItemLinker = item.getAttributeHandler().getPotentialType();
+            if (record.getChancePercent() < RARE_DROP_CHANCE_PERCENT) announceRareDrop(player, item);
 
             if (player.canInsertItemIntoSacks(droppedItemLinker, record.getAmount())) {
                 player.getSackItems().increase(droppedItemLinker, record.getAmount());
@@ -378,6 +381,18 @@ public abstract class SkyBlockMob extends EntityCreature {
                         getInstance(), getPosition().add(0, 0.5, 0));
             }
         }
+    }
+
+    private void announceRareDrop(SkyBlockPlayer player, SkyBlockItem item) {
+        Text name = item.getDisplayNameText();
+        List<Text> enchantments = item.getAttributeHandler().getEnchantments().map(ItemLore::enchantmentTitle).toList();
+        if (!enchantments.isEmpty()) {
+            name = Text.of("{} <a>({}<a>)", name, Text.join(Text.of("<a>, "), enchantments));
+        }
+        double magicFind = player.getStatistics().allStatistics(player, this).getOverall(ItemStatistic.MAGIC_FIND);
+        player.sendMessage(magicFind > 0
+                ? Text.of("<6><l>RARE DROP!</l> {} <b>(+{}% ✯ Magic Find)", name, Math.round(magicFind))
+                : Text.of("<6><l>RARE DROP!</l> {}", name));
     }
 
     public SkyBlockItem createDrop(ItemType type, int amount) {

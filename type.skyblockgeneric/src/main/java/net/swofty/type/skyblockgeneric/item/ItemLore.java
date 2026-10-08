@@ -321,7 +321,7 @@ public class ItemLore {
 		if (!current.isEmpty()) section.line(Text.join(separator, current));
 	}
 
-	private static Text enchantmentTitle(SkyBlockEnchantment enchantment) {
+	public static Text enchantmentTitle(SkyBlockEnchantment enchantment) {
 		String format = enchantment.type().getEnch().isUltimate() ? "<d><l>{} {:roman}" : "<9>{} {:roman}";
 		return Text.of(format, Text.parseLenient(enchantment.type().getName()), enchantment.level());
 	}

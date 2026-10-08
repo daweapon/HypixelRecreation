@@ -81,6 +81,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
     @Getter
     private final PlayerStatistics statistics = new PlayerStatistics(this);
     public float health = 100;
+    private float absorption;
     @Setter
     public boolean isBankDelayed = false;
     @Setter
@@ -1054,6 +1055,16 @@ public class SkyBlockPlayer extends HypixelPlayer {
         MaxHealthValueUpdateEvent event = new MaxHealthValueUpdateEvent(this, maxHealth);
         SkyBlockValueEvent.callValueUpdateEvent(event);
         return (float) event.getValue();
+    }
+
+    @Override
+    public float getAdditionalHearts() {
+        return absorption;
+    }
+
+    @Override
+    public void setAdditionalHearts(float additionalHearts) {
+        this.absorption = Math.max(0, additionalHearts);
     }
 
     @Override
