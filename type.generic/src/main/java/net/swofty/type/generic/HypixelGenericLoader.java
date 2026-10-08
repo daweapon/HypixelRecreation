@@ -28,6 +28,7 @@ import net.swofty.proxyapi.PlayerTransferDataCache;
 import net.swofty.proxyapi.ProxyPlayer;
 import net.swofty.type.generic.user.StalePlayerReaper;
 import net.swofty.type.generic.utility.SlowTickProfiler;
+import net.swofty.type.generic.utility.TpsMeter;
 import net.swofty.type.generic.achievement.AchievementRegistry;
 import net.swofty.type.generic.achievement.AchievementStatisticsService;
 import net.swofty.type.generic.block.BannerBlockHandler;
@@ -97,6 +98,7 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
         HypixelConst.getEmptyInstance().setBlock(0, 99, 0, Block.BEDROCK);
         HypixelConst.setEventHandler(MinecraftServer.getGlobalEventHandler());
         SlowTickProfiler.start();
+        TpsMeter.start();
         StalePlayerReaper.start();
 
         // Register commands
@@ -160,10 +162,9 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
                     Audiences.players().sendPlayerListHeaderAndFooter(headerFooter.getKey(), headerFooter.getValue());
                 }, () -> {
                     final long ramUsage = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() / (long) 1e6; // bytes to MB
-                    final TickMonitor tickMonitor = LAST_TICK.get();
-                    final double TPS = 1000 / tickMonitor.getTickTime();
+                    final double TPS = TpsMeter.tps();
 
-                    if (TPS < 20) {
+                    if (TPS < TpsMeter.WARN_BELOW_TPS) {
                         HypixelGenericLoader.getLoadedPlayers().forEach(player -> {
                             player.getLogHandler().debug("<c>Server TPS is below 20! TPS: {}", TPS);
                         });

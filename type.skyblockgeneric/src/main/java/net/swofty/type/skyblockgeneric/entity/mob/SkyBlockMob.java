@@ -60,6 +60,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -420,6 +421,7 @@ public abstract class SkyBlockMob extends EntityCreature {
         scheduler.submitTask(() -> {
             if (SkyBlockGenericLoader.getLoadedPlayers().isEmpty()) return TaskSchedule.seconds(10);
 
+            Map<RegionType, List<SkyBlockMob>> mobsByRegion = new EnumMap<>(RegionType.class);
             MobRegistry.getMobsToRegionPopulate().forEach(mobRegistry -> {
                 RegionPopulator regionPopulator = (RegionPopulator) mobRegistry.getMobCache();
 
@@ -429,7 +431,7 @@ public abstract class SkyBlockMob extends EntityCreature {
 
                     int amountInRegion = 0;
 
-                    for (SkyBlockMob mob : SkyBlockRegion.getMobsInRegion(regionType)) {
+                    for (SkyBlockMob mob : mobsByRegion.computeIfAbsent(regionType, SkyBlockRegion::getMobsInRegion)) {
                         if (!mobRegistry.equals(MobRegistry.getFromMob(mob))) {
                             continue;
                         }
@@ -440,6 +442,7 @@ public abstract class SkyBlockMob extends EntityCreature {
                     if (amountInRegion < minimumAmountToPopulate) {
                         for (int i = 0; i < minimumAmountToPopulate - amountInRegion; i++)
                             RegionPopulator.populateRegion(mobRegistry, populator);
+                        mobsByRegion.remove(regionType);
                     }
                 });
             });
@@ -458,7 +461,8 @@ public abstract class SkyBlockMob extends EntityCreature {
         }
 
         if (!instance.isChunkLoaded(position)) {
-            instance.loadChunk(position).join();
+            instance.loadChunk(position);
+            return;
         }
 
         // Entity collision handling

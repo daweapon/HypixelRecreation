@@ -8,16 +8,15 @@ import net.minestom.server.item.Material;
 import net.minestom.server.item.component.PotionContents;
 import net.minestom.server.network.player.ResolvableProfile;
 import net.minestom.server.potion.PotionType;
-import net.minestom.server.tag.Tag;
 import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
-import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeGemData;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributePotionData;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.item.ItemAttributeHandler;
+import net.swofty.type.skyblockgeneric.item.ItemAttributeTags;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.skyblockgeneric.item.ItemLore;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -47,7 +46,7 @@ public class PlayerItemUpdater {
     }
 
     public static Map.Entry<SkyBlockItem, ItemStack.Builder> playerUpdateFull(SkyBlockPlayer player, ItemStack stack, boolean isOwnedByPlayer) {
-        if (stack.hasTag(Tag.Boolean("uneditable")) && stack.getTag(Tag.Boolean("uneditable")))
+        if (ItemAttributeTags.flag(ItemAttributeTags.of(stack), "uneditable"))
             return Map.entry(new SkyBlockItem(stack), ItemStacks.copy(stack));
 
         if (!SkyBlockItem.isSkyBlockItem(stack) || stack.material().equals(Material.AIR)) {
@@ -116,7 +115,6 @@ public class PlayerItemUpdater {
             UUID randomUUID = UUID.randomUUID();
 
             handler.setUniqueTrackedID(randomUUID.toString(), player);
-            toReturn.set(Tag.String("unique-tracked-id"), randomUUID.toString());
         } else if (item.hasComponent(TrackedUniqueComponent.class) && handler.getUniqueTrackedID() != null && isOwnedByPlayer) {
             handler.setUniqueTrackedID(handler.getUniqueTrackedID(), player);
         }
@@ -160,10 +158,7 @@ public class PlayerItemUpdater {
             item.getAttributeHandler().setGemData(gemData);
         }
 
-        for (ItemAttribute attribute : ItemAttribute.getPossibleAttributes()) {
-            toReturn.set(Tag.String(attribute.getKey()),
-                    item.getAttribute(attribute.getKey()).saveIntoString());
-        }
+        toReturn = ItemAttributeTags.write(toReturn, item.attributes);
 
         // Apply potion contents for proper color display
         if (potionData != null && isPotionMaterial(baseMaterial)) {
@@ -196,7 +191,8 @@ public class PlayerItemUpdater {
 
                         Map.Entry<SkyBlockItem, ItemStack.Builder> builder = playerUpdateFull(player, item, true);
                         cache.put(origin, builder.getKey());
-                        origin.setStack(player, builder.getValue().build());
+                        ItemStack updated = builder.getValue().build();
+                        if (!updated.equals(item)) origin.setStack(player, updated);
                     });
 
                     PlayerItemOrigin.setCache(player.getUuid(), cache);

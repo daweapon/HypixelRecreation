@@ -13,7 +13,6 @@ import net.minestom.server.coordinate.CoordConversion;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.event.server.ServerTickMonitorEvent;
 import net.minestom.server.instance.Chunk;
-import net.minestom.server.monitoring.TickMonitor;
 import net.minestom.server.registry.RegistryKey;
 import net.minestom.server.timer.TaskSchedule;
 import net.minestom.server.utils.time.TimeUnit;
@@ -29,6 +28,7 @@ import net.swofty.proxyapi.PlayerTransferDataCache;
 import net.swofty.proxyapi.ProxyPlayer;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.HypixelGenericLoader;
+import net.swofty.type.generic.utility.TpsMeter;
 import net.swofty.type.generic.HypixelTypeLoader;
 import net.swofty.type.generic.command.HypixelCommand;
 import net.swofty.type.generic.data.mongodb.AttributeDatabase;
@@ -240,10 +240,9 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
 
             long ramUsage = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
             ramUsage /= (long) 1e6; // bytes to MB
-            TickMonitor tickMonitor = HypixelGenericLoader.LAST_TICK.get();
-            double TPS = 1000 / tickMonitor.getTickTime();
+            double TPS = TpsMeter.tps();
 
-            if (TPS < 20) {
+            if (TPS < TpsMeter.WARN_BELOW_TPS) {
                 HypixelGenericLoader.getLoadedPlayers().forEach(player -> {
                     player.getLogHandler().debug(Text.of("<c>Server TPS is below 20! TPS: {}", TPS));
                 });

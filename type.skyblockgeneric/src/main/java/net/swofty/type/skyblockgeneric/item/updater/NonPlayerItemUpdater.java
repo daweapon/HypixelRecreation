@@ -9,26 +9,23 @@ import net.minestom.server.item.Material;
 import net.minestom.server.item.component.PotionContents;
 import net.minestom.server.network.player.ResolvableProfile;
 import net.minestom.server.potion.PotionType;
-import net.minestom.server.tag.Tag;
 import net.swofty.commons.skyblock.item.UnderstandableSkyBlockItem;
-import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeGemData;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributePotionData;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeRarity;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
+import net.swofty.type.skyblockgeneric.item.ItemAttributeTags;
 import net.swofty.type.skyblockgeneric.item.ItemLore;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.EnchantedComponent;
 import net.swofty.type.skyblockgeneric.item.components.GemstoneComponent;
 import net.swofty.type.skyblockgeneric.item.components.ItemModelComponent;
 import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
-import net.swofty.type.skyblockgeneric.item.components.TrackedUniqueComponent;
 import net.swofty.type.skyblockgeneric.potion.PotionEffectType;
 import org.json.JSONObject;
 
 import java.util.Base64;
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 public class NonPlayerItemUpdater {
@@ -55,7 +52,7 @@ public class NonPlayerItemUpdater {
     }
 
     public ItemStack.Builder getUpdatedItem() {
-        if (stack.build().hasTag(Tag.Boolean("uneditable")) && stack.build().getTag(Tag.Boolean("uneditable"))) {
+        if (ItemAttributeTags.flag(ItemAttributeTags.of(stack.build()), "uneditable")) {
             return stack;
         }
 
@@ -66,21 +63,14 @@ public class NonPlayerItemUpdater {
             baseMaterial = getPotionMaterial(potionData, baseMaterial);
         }
 
-        ItemStack.Builder builder = ItemStack.builder(baseMaterial).amount(item.getAmount());
-        // Copy tags from original builder
-        for (ItemAttribute attribute : ItemAttribute.getPossibleAttributes()) {
-            builder = builder.set(Tag.String(attribute.getKey()),
-                    item.getAttribute(attribute.getKey()).saveIntoString());
-        }
+        ItemStack.Builder builder = ItemAttributeTags.write(
+                ItemStack.builder(baseMaterial).amount(item.getAmount()), item.attributes);
         builder = ItemStacks.clearAttributes(builder);
 
         ItemStack.Builder stack = updateItemLore(builder);
 
         if (item.hasComponent(EnchantedComponent.class))
             stack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
-
-        if (item.hasComponent(TrackedUniqueComponent.class))
-            stack.setTag(Tag.UUID("unique-tracked-id"), UUID.randomUUID());
 
         if (item.hasComponent(SkullHeadComponent.class)) {
             SkullHeadComponent component = item.getComponent(SkullHeadComponent.class);
@@ -131,10 +121,7 @@ public class NonPlayerItemUpdater {
             stack.set(DataComponents.POTION_CONTENTS, createPotionContents(potionData));
         }
 
-        for (ItemAttribute attribute : ItemAttribute.getPossibleAttributes()) {
-            stack = stack.set(Tag.String(attribute.getKey()),
-                    item.getAttribute(attribute.getKey()).saveIntoString());
-        }
+        stack = ItemAttributeTags.write(stack, item.attributes);
 
         ItemStacks.clearAttributes(stack);
         return stack;

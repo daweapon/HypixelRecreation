@@ -3,10 +3,10 @@ package net.swofty.type.skyblockgeneric.item;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
+import net.kyori.adventure.nbt.CompoundBinaryTag;
 import net.minestom.server.component.DataComponents;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.minestom.server.tag.Tag;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
@@ -36,8 +36,6 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class SkyBlockItem {
@@ -97,7 +95,7 @@ public class SkyBlockItem {
 	}
 
 	public static boolean isSkyBlockItem(ItemStack item) {
-		return item.hasTag(Tag.String("item_type"));
+		return ItemAttributeTags.string(ItemAttributeTags.of(item), "item_type") != null;
 	}
 
 	private void loadAsItemType(ItemType type) {
@@ -165,7 +163,8 @@ public class SkyBlockItem {
 			loadAsMaterial(Material.AIR);
 			return;
 		}
-		String savedItemType = item.getTag(Tag.String("item_type"));
+		CompoundBinaryTag nbt = ItemAttributeTags.of(item);
+		String savedItemType = ItemAttributeTags.string(nbt, "item_type");
 		String itemType = PetItemLegacyIds.migrate(TrophyFishLegacyIds.migrate(savedItemType));
 		ItemStatistics statistics = ItemStatistics.empty();
 
@@ -179,18 +178,12 @@ public class SkyBlockItem {
 
 		ConfigurableSkyBlockItem config = ConfigurableSkyBlockItem.getFromID(itemType);
 
-		Map<String, ItemAttribute> byKey = new LinkedHashMap<>();
-		for (ItemAttribute attribute : attributes) byKey.put(attribute.getKey(), attribute);
-		for (ItemAttribute attribute : ItemAttribute.getPossibleAttributes()) {
-			String saved = item.getTag(Tag.String(attribute.getKey()));
+		for (ItemAttribute attribute : attributes) {
+			String saved = ItemAttributeTags.string(nbt, attribute.getKey());
 			attribute.setValue(saved != null ? attribute.loadFromString(saved) : attribute.getDefaultValue(statistics));
-			byKey.remove(attribute.getKey());
-			byKey.put(attribute.getKey(), attribute);
 		}
-		attributes.clear();
-		attributes.addAll(byKey.values());
 
-        migrateLegacyFishingRodState(item);
+        migrateLegacyFishingRodState(nbt);
 		if (type != null && !Objects.equals(savedItemType, itemType)) {
 			((ItemAttributeType) getAttribute("item_type")).setValue(type.name());
 			((ItemAttributeRarity) getAttribute("rarity")).setValue(type.rarity);
@@ -202,8 +195,8 @@ public class SkyBlockItem {
 		}
 	}
 
-    private void migrateLegacyFishingRodState(ItemStack item) {
-        String legacy = item.getTag(Tag.String("fishing_rod_state"));
+    private void migrateLegacyFishingRodState(CompoundBinaryTag nbt) {
+        String legacy = ItemAttributeTags.string(nbt, "fishing_rod_state");
         if (legacy == null || legacy.isBlank()) {
             return;
         }
@@ -240,7 +233,10 @@ public class SkyBlockItem {
 	}
 
 	public ItemAttribute getAttribute(String key) {
-		return attributes.stream().filter(attribute -> attribute.getKey().equals(key)).findFirst().orElse(null);
+		for (ItemAttribute attribute : attributes) {
+			if (attribute.getKey().equals(key)) return attribute;
+		}
+		return null;
 	}
 
 	public @Nullable ConfigurableSkyBlockItem toConfigurableItem() {
@@ -295,12 +291,7 @@ public class SkyBlockItem {
 
 	public ItemStack.Builder getItemStackBuilder() {
 		ItemStack.Builder itemStackBuilder = ItemStack.builder(getMaterial()).amount(amount);
-
-		for (ItemAttribute attribute : attributes) {
-			itemStackBuilder.setTag(Tag.String(attribute.getKey()), attribute.saveIntoString());
-		}
-
-		return ItemStacks.clearAttributes(itemStackBuilder);
+		return ItemStacks.clearAttributes(ItemAttributeTags.write(itemStackBuilder, attributes));
 	}
 
 	public <T extends SkyBlockItemComponent> boolean hasComponent(Class<T> componentClass) {

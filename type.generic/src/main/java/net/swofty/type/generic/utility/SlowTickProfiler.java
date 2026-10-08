@@ -8,7 +8,9 @@ import org.tinylog.Logger;
 
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -24,8 +26,10 @@ public final class SlowTickProfiler {
             Long.parseLong(System.getenv().getOrDefault("SLOW_TICK_MS", "100"))) * 1_000_000L;
     private static final long SAMPLE_INTERVAL_MS = 20;
     private static final long REPORT_INTERVAL_MS = 60_000;
-    private static final int FRAMES_PER_SIGNATURE = 4;
-    private static final int SIGNATURES_REPORTED = 8;
+    private static final int FRAMES_PER_SIGNATURE = 3;
+    private static final int PROJECT_FRAMES_PER_SIGNATURE = 8;
+    private static final int AWAIT_SEARCH_DEPTH = 8;
+    private static final int SIGNATURES_REPORTED = 12;
 
     private static volatile Thread tickThread;
     private static volatile long tickStartNanos;
@@ -70,8 +74,7 @@ public final class SlowTickProfiler {
 
             Thread thread = tickThread;
             if (thread != null && System.nanoTime() - tickStartNanos > THRESHOLD_NANOS) {
-                samples.computeIfAbsent(signature(thread.getStackTrace()), key -> new AtomicInteger())
-                        .incrementAndGet();
+                sample(thread);
             }
 
             if (System.currentTimeMillis() >= nextReport) {
@@ -83,19 +86,67 @@ public final class SlowTickProfiler {
         }
     }
 
-    /** The top frames plus the first project frame, which is usually the one worth fixing. */
+    /**
+     * While the scheduler thread waits for the chunk/entity tick threads, the real work is on those
+     * threads, so each busy tick thread is sampled instead.
+     */
+    private static void sample(Thread scheduler) {
+        StackTraceElement[] stack = scheduler.getStackTrace();
+        if (!isAwaitingTickThreads(stack)) {
+            record("[scheduler] " + signature(stack));
+            return;
+        }
+        boolean anyBusy = false;
+        for (Thread worker : tickThreads()) {
+            StackTraceElement[] workerStack = worker.getStackTrace();
+            if (!isTicking(workerStack)) continue;
+            anyBusy = true;
+            record("[tick-thread] " + signature(workerStack));
+        }
+        if (!anyBusy) record("[scheduler] " + signature(stack));
+    }
+
+    private static void record(String signature) {
+        samples.computeIfAbsent(signature, key -> new AtomicInteger()).incrementAndGet();
+    }
+
+    private static List<? extends Thread> tickThreads() {
+        try {
+            return MinecraftServer.process().dispatcher().threads();
+        } catch (RuntimeException e) {
+            return List.of();
+        }
+    }
+
+    static boolean isAwaitingTickThreads(StackTraceElement[] stack) {
+        for (int i = 0; i < Math.min(stack.length, AWAIT_SEARCH_DEPTH); i++) {
+            if (stack[i].getMethodName().equals("updateAndAwait")
+                    && stack[i].getClassName().startsWith("net.minestom.server.thread.")) return true;
+        }
+        return false;
+    }
+
+    static boolean isTicking(StackTraceElement[] stack) {
+        for (StackTraceElement element : stack) {
+            if (element.getMethodName().equals("tick")
+                    && element.getClassName().equals("net.minestom.server.thread.TickThread")) return true;
+        }
+        return false;
+    }
+
+    /** The top frames plus the chain of project frames, innermost first, which names both the hot code and its callers. */
     static String signature(StackTraceElement[] stack) {
         if (stack.length == 0) return "<idle>";
-        String top = java.util.Arrays.stream(stack)
+        String top = Arrays.stream(stack)
                 .limit(FRAMES_PER_SIGNATURE)
                 .map(SlowTickProfiler::frame)
                 .collect(Collectors.joining(" <- "));
-        for (StackTraceElement element : stack) {
-            if (element.getClassName().startsWith("net.swofty")) {
-                return top + " || first project frame: " + frame(element);
-            }
-        }
-        return top;
+        String chain = Arrays.stream(stack)
+                .filter(element -> element.getClassName().startsWith("net.swofty"))
+                .limit(PROJECT_FRAMES_PER_SIGNATURE)
+                .map(SlowTickProfiler::frame)
+                .collect(Collectors.joining(" <- "));
+        return chain.isEmpty() ? top : top + " || project: " + chain;
     }
 
     private static String frame(StackTraceElement element) {

@@ -66,6 +66,7 @@ public final class StatOverrides {
         datapoint.setValue(overrides.entrySet().stream()
                 .map(entry -> entry.getKey().name() + "=" + entry.getValue())
                 .collect(Collectors.joining(";")));
+        player.getStatistics().invalidateStatistics();
     }
 
     private static Map<ItemStatistic, Double> parse(String raw) {
