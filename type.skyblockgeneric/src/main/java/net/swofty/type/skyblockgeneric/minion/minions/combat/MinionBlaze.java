@@ -2,12 +2,21 @@ package net.swofty.type.skyblockgeneric.minion.minions.combat;
 
 import net.minestom.server.color.Color;
 import net.minestom.server.item.Material;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.minionMobs.MobMinionBlaze;
 import net.swofty.type.skyblockgeneric.minion.MinionAction;
 import net.swofty.type.skyblockgeneric.minion.SkyBlockMinion;
+import net.swofty.type.skyblockgeneric.minion.actions.MinionKillMobAction;
+import net.swofty.type.skyblockgeneric.minion.drops.MinionDrop;
+import net.swofty.type.skyblockgeneric.minion.drops.MinionDropTable;
 
 import java.util.List;
 
 public class MinionBlaze extends SkyBlockMinion {
+    public static final MinionDropTable DROPS = MinionDropTable.of(
+            MinionDrop.of(ItemType.BLAZE_ROD, 1)
+    );
+
     @Override
     public List<MinionTier> getTiers() {
         return List.of(
@@ -74,6 +83,6 @@ public class MinionBlaze extends SkyBlockMinion {
 
     @Override
     public MinionAction getAction() {
-        throw new RuntimeException("Not implemented yet");
+        return new MinionKillMobAction(MobMinionBlaze.class, MobMinionBlaze::new, DROPS);
     }
 }

@@ -8,6 +8,7 @@ import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
+import net.swofty.type.skyblockgeneric.item.ItemQuantifiable;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.crafting.FurnaceRecipeRegistry;
 import net.swofty.type.skyblockgeneric.item.components.MinionShippingComponent;
@@ -32,6 +33,11 @@ public abstract class MinionAction {
     public static class MinionActionEvent {
         private Pos toLook;
         private Runnable action;
+    }
+
+    protected static boolean isStorageFull(IslandMinionData.IslandMinion minion) {
+        int capacity = minion.getMinion().asSkyBlockMinion().getTiers().get(minion.getTier() - 1).storage();
+        return minion.getItemsInMinion().stream().mapToInt(ItemQuantifiable::getAmount).sum() >= capacity;
     }
 
     public static void onMinionIteration(IslandMinionData.IslandMinion islandMinion,

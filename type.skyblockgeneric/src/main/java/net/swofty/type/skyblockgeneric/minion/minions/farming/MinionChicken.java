@@ -2,14 +2,22 @@ package net.swofty.type.skyblockgeneric.minion.minions.farming;
 
 import net.minestom.server.color.Color;
 import net.minestom.server.item.Material;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.minionMobs.MobMinionChicken;
 import net.swofty.type.skyblockgeneric.minion.MinionAction;
 import net.swofty.type.skyblockgeneric.minion.SkyBlockMinion;
 import net.swofty.type.skyblockgeneric.minion.actions.MinionKillMobAction;
+import net.swofty.type.skyblockgeneric.minion.drops.MinionDrop;
+import net.swofty.type.skyblockgeneric.minion.drops.MinionDropTable;
 
 import java.util.List;
 
 public class MinionChicken extends SkyBlockMinion {
+    public static final MinionDropTable DROPS = MinionDropTable.of(
+            MinionDrop.of(ItemType.CHICKEN, 1),
+            MinionDrop.of(ItemType.FEATHER, 1)
+    );
+
     @Override
     public List<MinionTier> getTiers() {
         return List.of(
@@ -76,6 +84,6 @@ public class MinionChicken extends SkyBlockMinion {
 
     @Override
     public MinionAction getAction() {
-        return new MinionKillMobAction(MobMinionChicken::new);
+        return new MinionKillMobAction(MobMinionChicken.class, MobMinionChicken::new, DROPS);
     }
 }
