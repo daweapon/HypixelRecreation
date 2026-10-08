@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.gui.inventories.slayer;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.Components;
@@ -48,6 +49,17 @@ public class GUISlayerLevels extends StatelessView {
         }
     }
 
+    private static List<Text> rewardLines(SlayerLevelReward reward) {
+        List<Text> lines = new ArrayList<>();
+        reward.stats().forEach((stat, value) -> lines.add(Text.of(
+            stat == ItemStatistic.TRUE_DEFENSE ? " <f>+{} {}" : " <c>+{} {}", value.intValue(), stat.getDisplayName())));
+        reward.perks().forEach(perk -> lines.add(Text.of(" <8>+ " + perk)));
+        reward.unlocks().forEach(item -> lines.add(Text.of(" <8>+ <a>{} <7>Recipe", item.getDisplayName())));
+        reward.catalogued().forEach(entry -> lines.add(Text.of(" <8>+ " + entry + " <8>(not available yet)")));
+        if (reward.skyBlockXp() > 0) lines.add(Text.of(" <8>+<b>{} SkyBlock XP", reward.skyBlockXp()));
+        return lines;
+    }
+
     private ItemStack.Builder levelItem(SkyBlockPlayer player, SlayerDefinition definition, SlayerLevelReward reward) {
         int xp = player.getSlayerData().progress(style.type()).getXp();
         int level = definition.levelForXp(xp);
@@ -67,6 +79,12 @@ public class GUISlayerLevels extends StatelessView {
         lore.add(Text.of("<7>Kill the boss to gain XP."));
         lore.add(Text.of("<7>Higher tiers reward more XP."));
         lore.add(Text.empty());
+        List<Text> rewards = rewardLines(reward);
+        if (!rewards.isEmpty()) {
+            lore.add(Text.of("<7>Rewards:"));
+            lore.addAll(rewards);
+            lore.add(Text.empty());
+        }
         boolean reached = reward.level() <= level;
         lore.add(reached ? Text.of("<a>Level reached!") : Text.of("<c>Level not reached!"));
         return ItemStacks.item(reached ? Material.LIME_STAINED_GLASS_PANE : style.material(), name, lore);
