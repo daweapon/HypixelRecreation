@@ -2,10 +2,26 @@ items:
   - id: DIAMOND_MAGMAFISH
     material: player_head
     name: "Diamond Magmafish"
-    rarity: COMMON
+    rarity: MYTHIC
     components:
       - id: SKULL_HEAD
         texture: 19b393eb6a5bd65d735aaa3b3cfa993b50f5e536d7a13b535514bd0740d63350
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " A "
+              - "AAA"
+              - " A "
+            ingredients:
+              A:
+                type: GOLD_MAGMAFISH
+                amount: 4
+            result:
+              type: DIAMOND_MAGMAFISH
+              amount: 1
   - id: FLAMES
     material: blaze_powder
     name: "Flames"
@@ -19,16 +35,32 @@ items:
   - id: GOLD_MAGMAFISH
     material: player_head
     name: "Gold Magmafish"
-    rarity: COMMON
+    rarity: LEGENDARY
     components:
       - id: SKULL_HEAD
         texture: 5324eda6af85e50f35180607341728ff90faea1465be57a6242c6dea63aa3f28
       - id: SELLABLE
         value: 128000.0
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " A "
+              - "AAA"
+              - " A "
+            ingredients:
+              A:
+                type: SILVER_MAGMAFISH
+                amount: 16
+            result:
+              type: GOLD_MAGMAFISH
+              amount: 1
   - id: MAGMAFISH
     material: player_head
     name: "Magmafish"
-    rarity: COMMON
+    rarity: RARE
     components:
       - id: SKULL_HEAD
         texture: f56b5955b295522c9689481960c01a992ca1c7754cf4ee313c8dd0c356d335f
@@ -37,9 +69,25 @@ items:
   - id: SILVER_MAGMAFISH
     material: player_head
     name: "Silver Magmafish"
-    rarity: COMMON
+    rarity: EPIC
     components:
       - id: SKULL_HEAD
         texture: 353e10c0712ff28d877b9cef990d613b21d843732663f4aac385dc7db97ac54a
       - id: SELLABLE
         value: 1600.0
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " A "
+              - "AAA"
+              - " A "
+            ingredients:
+              A:
+                type: MAGMAFISH
+                amount: 16
+            result:
+              type: SILVER_MAGMAFISH
+              amount: 1

@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CrimsonCollectionRewardsTest {
     private static final Set<String> CRIMSON_COLLECTIONS = Set.of("GLOWSTONE_DUST", "QUARTZ", "NETHERRACK", "MYCELIUM",
-            "RED_SAND", "SULPHUR", "BLAZE_ROD", "MAGMA_CREAM", "GHAST_TEAR", "CHILI_PEPPER", "NETHER_WART");
+            "RED_SAND", "SULPHUR", "BLAZE_ROD", "MAGMA_CREAM", "GHAST_TEAR", "CHILI_PEPPER", "NETHER_WART", "MAGMAFISH");
     private static final Set<String> RECIPE_COMPONENTS = Set.of("DEFAULT_CRAFTABLE", "ENCHANTED", "MINION");
 
     @Test
@@ -26,7 +26,7 @@ class CrimsonCollectionRewardsTest {
     void everyCrimsonRecipeUnlockPointsAtACraftableItem() throws Exception {
         Map<String, List<String>> components = componentsById();
         List<String> problems = new ArrayList<>();
-        for (String file : List.of("mining.yml", "combat.yml", "farming.yml")) {
+        for (String file : List.of("mining.yml", "combat.yml", "farming.yml", "fishing.yml")) {
             Map<String, Object> data = YamlFileUtils.loadYaml(new File("../configuration/skyblock/collections", file));
             for (Map<String, Object> collection : (List<Map<String, Object>>) data.get("collections")) {
                 if (!CRIMSON_COLLECTIONS.contains(collection.get("itemType"))) continue;
@@ -53,7 +53,12 @@ class CrimsonCollectionRewardsTest {
                 for (Object raw : items) {
                     Map<String, Object> item = (Map<String, Object>) raw;
                     List<String> ids = new ArrayList<>();
-                    for (Map<String, Object> component : (List<Map<String, Object>>) item.getOrDefault("components", List.of())) {
+                    Object listed = item.get("components");
+                    if (!(listed instanceof List<?> componentList)) {
+                        result.put(String.valueOf(item.get("id")), ids);
+                        continue;
+                    }
+                    for (Map<String, Object> component : (List<Map<String, Object>>) componentList) {
                         ids.add(String.valueOf(component.get("id")));
                     }
                     result.put(String.valueOf(item.get("id")), ids);

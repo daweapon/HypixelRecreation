@@ -1186,7 +1186,7 @@ public enum ItemType {
 
   DIAMOND_LEGGINGS(Material.DIAMOND_LEGGINGS, Rarity.UNCOMMON),
 
-  DIAMOND_MAGMAFISH(Material.PLAYER_HEAD, Rarity.COMMON),
+  DIAMOND_MAGMAFISH(Material.PLAYER_HEAD, Rarity.MYTHIC),
 
   DIAMOND_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
@@ -2046,7 +2046,7 @@ public enum ItemType {
 
   GOLD_INGOT(Material.GOLD_INGOT, Rarity.COMMON),
 
-  GOLD_MAGMAFISH(Material.PLAYER_HEAD, Rarity.COMMON),
+  GOLD_MAGMAFISH(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   GOLD_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
@@ -2774,7 +2774,7 @@ public enum ItemType {
 
   MAGIC_TOP_HAT(Material.PLAYER_HEAD, Rarity.MYTHIC),
 
-  MAGMAFISH(Material.PLAYER_HEAD, Rarity.COMMON),
+  MAGMAFISH(Material.PLAYER_HEAD, Rarity.RARE),
 
   MAGMAG(Material.PAPER, Rarity.UNCOMMON),
 
@@ -4418,7 +4418,7 @@ public enum ItemType {
 
   SILVER_LACED_KARAMBIT(Material.IRON_SWORD, Rarity.EPIC),
 
-  SILVER_MAGMAFISH(Material.PLAYER_HEAD, Rarity.COMMON),
+  SILVER_MAGMAFISH(Material.PLAYER_HEAD, Rarity.EPIC),
 
   SILVER_TROPHY_FISHING_SACK(Material.PLAYER_HEAD, Rarity.RARE),
 

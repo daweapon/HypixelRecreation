@@ -242,11 +242,17 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SILVER_MAGMAFISH
   - amount: 1000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MAGMA_ROD
   - amount: 5000
     rewards:
     - type: XP
@@ -262,11 +268,17 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: GOLD_MAGMAFISH
   - amount: 50000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: INFERNO_ROD
   - amount: 75000
     rewards:
     - type: XP
@@ -277,6 +289,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DIAMOND_MAGMAFISH
   - amount: 250000
     rewards:
     - type: XP
@@ -287,6 +302,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: HELLFIRE_ROD
 - itemType: PRISMARINE_CRYSTALS
   rewards:
   - amount: 10
