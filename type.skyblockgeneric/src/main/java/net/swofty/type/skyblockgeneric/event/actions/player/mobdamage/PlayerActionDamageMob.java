@@ -57,7 +57,8 @@ public class PlayerActionDamageMob implements HypixelEventClass {
         ItemStatistics entityStats = mob.getStatistics();
         Map.Entry<Double, Boolean> hit = player.getStatistics().runPrimaryDamageFormula(entityStats, player, targetLivingEntity);
 
-        double damage = hit.getKey() * AttributeEffectService.outgoingDamageMultiplier(player.getHuntingData(), mob, false);
+        double damage = hit.getKey() * AttributeEffectService.outgoingDamageMultiplier(player.getHuntingData(), mob, false)
+                * net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.outgoingMultiplier(player, mob);
         boolean critical = hit.getValue();
 
         PlayerDamageMobValueUpdateEvent valueEvent = new PlayerDamageMobValueUpdateEvent(

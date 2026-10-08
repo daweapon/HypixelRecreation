@@ -1,12 +1,13 @@
 items:
   - id: ODGERS_BRONZE_TOOTH
     material: PLAYER_HEAD
-    name: "Odgers Bronze Tooth"
+    name: "Odger's Bronze Tooth"
     rarity: COMMON
     lore:
       - '<8><o>A perfectly fine tooth, besides some wear and tear...'
     default_statistics:
       sea_creature_chance: 0.5
+      trophy_fish_chance: 1
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Odger's Bronze Tooth
@@ -15,16 +16,16 @@ items:
         texture: accc4432efe08c88530ac084fea6526641a207d78e637e41f7a4e5dcfdaaa162
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: ODGERS_SILVER_TOOTH
     material: PLAYER_HEAD
-    name: "Odgers Silver Tooth"
+    name: "Odger's Silver Tooth"
     rarity: UNCOMMON
     lore:
       - '<8><o>A perfectly fine tooth, besides a broken chunk...'
     default_statistics:
       sea_creature_chance: 1
+      trophy_fish_chance: 2
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Odger's Silver Tooth
@@ -33,16 +34,16 @@ items:
         texture: c2d41b2279abce5fd626923b61e3ab98dce4972417289ee2b73214c0aaba841e
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: ODGERS_GOLD_TOOTH
     material: PLAYER_HEAD
-    name: "Odgers Gold Tooth"
+    name: "Odger's Gold Tooth"
     rarity: RARE
     lore:
       - '<8><o>A perfectly fine tooth, besides its weight...'
     default_statistics:
       sea_creature_chance: 1.5
+      trophy_fish_chance: 3
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Odger's Gold Tooth
@@ -51,16 +52,16 @@ items:
         texture: 42024901024636f1c074e6562285f4cc9fd3da2885d4010cee52cc0696d2f96a
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: ODGERS_DIAMOND_TOOTH
     material: PLAYER_HEAD
-    name: "Odgers Diamond Tooth"
+    name: "Odger's Diamond Tooth"
     rarity: EPIC
     lore:
       - '<8><o>A perfectly fine tooth, besides its radiant brightness...'
     default_statistics:
       sea_creature_chance: 2
+      trophy_fish_chance: 4
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Odger's Diamond Tooth
@@ -69,4 +70,3 @@ items:
         texture: a2680a28962e9ad2d4872d06fba2cc60824fbb2d0824e42d958575b7563884aa
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET

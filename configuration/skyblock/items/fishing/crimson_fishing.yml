@@ -1,0 +1,1203 @@
+items:
+  - id: BRONZE_HUNTER_HELMET
+    material: leather_helmet
+    name: 'Bronze Hunter Helmet'
+    rarity: UNCOMMON
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/3/4/5 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.2 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Novice Trophy Fisher.'
+    default_statistics:
+      health: 50
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: BRONZE_HUNTER_CHESTPLATE
+    material: leather_chestplate
+    name: 'Bronze Hunter Chestplate'
+    rarity: UNCOMMON
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/3/4/5 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.2 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Novice Trophy Fisher.'
+    default_statistics:
+      health: 100
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: BRONZE_HUNTER_LEGGINGS
+    material: leather_leggings
+    name: 'Bronze Hunter Leggings'
+    rarity: UNCOMMON
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/3/4/5 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.2 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Novice Trophy Fisher.'
+    default_statistics:
+      health: 75
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: BRONZE_HUNTER_BOOTS
+    material: leather_boots
+    name: 'Bronze Hunter Boots'
+    rarity: UNCOMMON
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/3/4/5 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.2 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Novice Trophy Fisher.'
+    default_statistics:
+      health: 25
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: SILVER_HUNTER_HELMET
+    material: iron_helmet
+    name: 'Silver Hunter Helmet'
+    rarity: RARE
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/5/7.5/10 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.4 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Adept Trophy Fisher.'
+    default_statistics:
+      health: 75
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: SILVER_HUNTER_CHESTPLATE
+    material: iron_chestplate
+    name: 'Silver Hunter Chestplate'
+    rarity: RARE
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/5/7.5/10 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.4 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Adept Trophy Fisher.'
+    default_statistics:
+      health: 125
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: SILVER_HUNTER_LEGGINGS
+    material: iron_leggings
+    name: 'Silver Hunter Leggings'
+    rarity: RARE
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/5/7.5/10 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.4 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Adept Trophy Fisher.'
+    default_statistics:
+      health: 100
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: SILVER_HUNTER_BOOTS
+    material: iron_boots
+    name: 'Silver Hunter Boots'
+    rarity: RARE
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/5/7.5/10 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.4 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Adept Trophy Fisher.'
+    default_statistics:
+      health: 50
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: GOLD_HUNTER_HELMET
+    material: golden_helmet
+    name: 'Gold Hunter Helmet'
+    rarity: EPIC
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/10/15/20 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.7 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Expert Trophy Fisher.'
+    default_statistics:
+      health: 100
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: GOLD_HUNTER_CHESTPLATE
+    material: golden_chestplate
+    name: 'Gold Hunter Chestplate'
+    rarity: EPIC
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/10/15/20 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.7 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Expert Trophy Fisher.'
+    default_statistics:
+      health: 150
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: GOLD_HUNTER_LEGGINGS
+    material: golden_leggings
+    name: 'Gold Hunter Leggings'
+    rarity: EPIC
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/10/15/20 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.7 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Expert Trophy Fisher.'
+    default_statistics:
+      health: 125
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: GOLD_HUNTER_BOOTS
+    material: golden_boots
+    name: 'Gold Hunter Boots'
+    rarity: EPIC
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/10/15/20 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+0.7 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Expert Trophy Fisher.'
+    default_statistics:
+      health: 75
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: DIAMOND_HUNTER_HELMET
+    material: diamond_helmet
+    name: 'Diamond Hunter Helmet'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/20/25/30 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+1 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Master Trophy Fisher.'
+    default_statistics:
+      health: 125
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: DIAMOND_HUNTER_CHESTPLATE
+    material: diamond_chestplate
+    name: 'Diamond Hunter Chestplate'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/20/25/30 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+1 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Master Trophy Fisher.'
+    default_statistics:
+      health: 175
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: DIAMOND_HUNTER_LEGGINGS
+    material: diamond_leggings
+    name: 'Diamond Hunter Leggings'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/20/25/30 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+1 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Master Trophy Fisher.'
+    default_statistics:
+      health: 150
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: DIAMOND_HUNTER_BOOTS
+    material: diamond_boots
+    name: 'Diamond Hunter Boots'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Tiered Bonus: Peace Treaty (2)'
+      - '<7>Gain immunity to <3>Sea Creatures <7>but'
+      - '<7>they are immune to you and you can'
+      - '<7>no longer catch them.'
+      - ''
+      - '<8>Tiered Bonus: Odger''s Blessing (1-4)'
+      - '<7>Grants <6>+0/20/25/30 Trophy Chance <7>with'
+      - '<7>1/2/3/4 Hunter pieces of this tier.'
+      - ''
+      - '<6>Full Set Bonus: Star Fisher'
+      - '<7>Grants <b>+1 Fishing Speed<7> per <6>✪'
+      - '<6>Upgrade Star <7>on your armor.'
+      - ''
+      - '<4>❣ <c>Requires Master Trophy Fisher.'
+    default_statistics:
+      health: 100
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: TAURUS_HELMET
+    material: player_head
+    name: 'Taurus Helmet'
+    rarity: RARE
+    lore:
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>5% <7>and damage dealt'
+      - '<7>is increased by <c>1.1x<7>.'
+    default_statistics:
+      health: 175
+      defense: 150
+      crit_damage: 20
+      sea_creature_chance: 3
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 1642a06cd75ef307c1913ba7a224fb2082d8a2c5254fd1bf006125a087a9a868
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 35
+      - id: SELLABLE
+        value: 50000
+  - id: FLAMING_CHESTPLATE
+    material: leather_chestplate
+    name: 'Flaming Chestplate'
+    rarity: RARE
+    lore:
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>5% <7>and damage dealt'
+      - '<7>is increased by <c>1.1x<7>.'
+    default_statistics:
+      health: 225
+      defense: 200
+      strength: 25
+      sea_creature_chance: 3
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '237'
+        g: '102'
+        b: '18'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 33
+      - id: SELLABLE
+        value: 25000
+  - id: MOOGMA_LEGGINGS
+    material: leather_leggings
+    name: 'Moogma Leggings'
+    rarity: RARE
+    lore:
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>5% <7>and damage dealt'
+      - '<7>is increased by <c>1.1x<7>.'
+    default_statistics:
+      health: 200
+      defense: 175
+      crit_damage: 15
+      sea_creature_chance: 3
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '206'
+        g: '44'
+        b: '44'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 28
+      - id: SELLABLE
+        value: 10000
+  - id: SLUG_BOOTS
+    material: leather_boots
+    name: 'Slug Boots'
+    rarity: RARE
+    lore:
+      - '<6>Ability: Bouncy  <e><l>SNEAK'
+      - '<7>When falling from a great height, you''ll bounce'
+      - '<7>straight up!'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>5% <7>and damage dealt'
+      - '<7>is increased by <c>1.1x<7>.'
+    default_statistics:
+      health: 150
+      defense: 125
+      strength: 20
+      sea_creature_chance: 3
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '39'
+        g: '97'
+        b: '20'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 27
+      - id: SELLABLE
+        value: 5000
+  - id: THUNDER_HELMET
+    material: player_head
+    name: 'Thunder Helmet'
+    rarity: EPIC
+    lore:
+      - '<8>Tiered Bonus: Static Charge (2-5)'
+      - '<7>Gains <c>1<7> static charge every <e>30/25/20/10'
+      - '<7>seconds with 2/3/4/5 pieces. Hitting a target'
+      - '<7>discharges, adding <a>15/20/25/40%<7> damage'
+      - '<7>to that hit for each charge collected.'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>10% <7>and damage dealt'
+      - '<7>is increased by <c>1.2x<7>.'
+    default_statistics:
+      health: 200
+      defense: 175
+      strength: 25
+      sea_creature_chance: 4
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 4a93d2bf999a7fe052bf6795e0a0bc7555cc1e014c667fa86dc421cb186d5b67
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 36
+      - id: SELLABLE
+        value: 600000
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "FFF"
+              - "F F"
+            ingredients:
+              F:
+                type: THUNDER_FRAGMENT
+                amount: 1
+            result:
+              type: THUNDER_HELMET
+              amount: 1
+  - id: THUNDER_CHESTPLATE
+    material: leather_chestplate
+    name: 'Thunder Chestplate'
+    rarity: EPIC
+    lore:
+      - '<8>Tiered Bonus: Static Charge (2-5)'
+      - '<7>Gains <c>1<7> static charge every <e>30/25/20/10'
+      - '<7>seconds with 2/3/4/5 pieces. Hitting a target'
+      - '<7>discharges, adding <a>15/20/25/40%<7> damage'
+      - '<7>to that hit for each charge collected.'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>10% <7>and damage dealt'
+      - '<7>is increased by <c>1.2x<7>.'
+    default_statistics:
+      health: 250
+      defense: 225
+      strength: 25
+      sea_creature_chance: 4
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '36'
+        g: '221'
+        b: '229'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 36
+      - id: SELLABLE
+        value: 600000
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "F F"
+              - "FFF"
+              - "FFF"
+            ingredients:
+              F:
+                type: THUNDER_FRAGMENT
+                amount: 1
+            result:
+              type: THUNDER_CHESTPLATE
+              amount: 1
+  - id: THUNDER_LEGGINGS
+    material: leather_leggings
+    name: 'Thunder Leggings'
+    rarity: EPIC
+    lore:
+      - '<8>Tiered Bonus: Static Charge (2-5)'
+      - '<7>Gains <c>1<7> static charge every <e>30/25/20/10'
+      - '<7>seconds with 2/3/4/5 pieces. Hitting a target'
+      - '<7>discharges, adding <a>15/20/25/40%<7> damage'
+      - '<7>to that hit for each charge collected.'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>10% <7>and damage dealt'
+      - '<7>is increased by <c>1.2x<7>.'
+    default_statistics:
+      health: 225
+      defense: 200
+      strength: 25
+      sea_creature_chance: 4
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '36'
+        g: '221'
+        b: '229'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 36
+      - id: SELLABLE
+        value: 600000
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "FFF"
+              - "F F"
+              - "F F"
+            ingredients:
+              F:
+                type: THUNDER_FRAGMENT
+                amount: 1
+            result:
+              type: THUNDER_LEGGINGS
+              amount: 1
+  - id: THUNDER_BOOTS
+    material: leather_boots
+    name: 'Thunder Boots'
+    rarity: EPIC
+    lore:
+      - '<8>Tiered Bonus: Static Charge (2-5)'
+      - '<7>Gains <c>1<7> static charge every <e>30/25/20/10'
+      - '<7>seconds with 2/3/4/5 pieces. Hitting a target'
+      - '<7>discharges, adding <a>15/20/25/40%<7> damage'
+      - '<7>to that hit for each charge collected.'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>10% <7>and damage dealt'
+      - '<7>is increased by <c>1.2x<7>.'
+    default_statistics:
+      health: 175
+      defense: 150
+      strength: 25
+      sea_creature_chance: 4
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '36'
+        g: '221'
+        b: '229'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 36
+      - id: SELLABLE
+        value: 600000
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "F F"
+              - "F F"
+            ingredients:
+              F:
+                type: THUNDER_FRAGMENT
+                amount: 1
+            result:
+              type: THUNDER_BOOTS
+              amount: 1
+  - id: THUNDERBOLT_NECKLACE
+    material: player_head
+    name: 'Thunderbolt Necklace'
+    rarity: EPIC
+    lore:
+      - '<8>Tiered Bonus: Static Charge (2-5)'
+      - '<7>Gains <c>1<7> static charge every <e>30/25/20/10'
+      - '<7>seconds with 2/3/4/5 pieces. Hitting a target'
+      - '<7>discharges, adding <a>15/20/25/40%<7> damage'
+      - '<7>to that hit for each charge collected.'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>5% <7>and damage dealt'
+      - '<7>is increased by <c>1.1x<7>.'
+    default_statistics:
+      health: 40
+      defense: 30
+      sea_creature_chance: 1.5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/thunder_armor/thunderbolt_necklace
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 36
+  - id: MAGMA_LORD_HELMET
+    material: player_head
+    name: 'Magma Lord Helmet'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Tiered Bonus: Fireproof (2)'
+      - '<7>Provides immunity to <c>Crimson Isle'
+      - '<c>Lava<7>.'
+      - ''
+      - '<8>Tiered Bonus: Lord''s Blessing (4-5)'
+      - '<7>Grants <3>+1/1.5 Sea Creature Chance<7>.'
+      - '<7>Grants <b>+20/30 Magic Find <7>on'
+      - '<c>Magmatic<7> mobs.'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>15% <7>and damage dealt'
+      - '<7>is increased by <c>1.3x<7>.'
+    default_statistics:
+      health: 225
+      defense: 175
+      strength: 10
+      crit_damage: 35
+      sea_creature_chance: 4.5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 77d91bac4755dbc968add75e6ec3979a74da30bcb4d2556e35a4635718ae7390
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 45
+      - id: SELLABLE
+        value: 1300000
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "FFF"
+              - "F F"
+            ingredients:
+              F:
+                type: MAGMA_LORD_FRAGMENT
+                amount: 1
+            result:
+              type: MAGMA_LORD_HELMET
+              amount: 1
+  - id: MAGMA_LORD_CHESTPLATE
+    material: leather_chestplate
+    name: 'Magma Lord Chestplate'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Tiered Bonus: Fireproof (2)'
+      - '<7>Provides immunity to <c>Crimson Isle'
+      - '<c>Lava<7>.'
+      - ''
+      - '<8>Tiered Bonus: Lord''s Blessing (4-5)'
+      - '<7>Grants <3>+1/1.5 Sea Creature Chance<7>.'
+      - '<7>Grants <b>+20/30 Magic Find <7>on'
+      - '<c>Magmatic<7> mobs.'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>15% <7>and damage dealt'
+      - '<7>is increased by <c>1.3x<7>.'
+    default_statistics:
+      health: 275
+      defense: 225
+      strength: 10
+      crit_damage: 35
+      sea_creature_chance: 4.5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '111'
+        g: '15'
+        b: '8'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 45
+      - id: SELLABLE
+        value: 1300000
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "F F"
+              - "FFF"
+              - "FFF"
+            ingredients:
+              F:
+                type: MAGMA_LORD_FRAGMENT
+                amount: 1
+            result:
+              type: MAGMA_LORD_CHESTPLATE
+              amount: 1
+  - id: MAGMA_LORD_LEGGINGS
+    material: leather_leggings
+    name: 'Magma Lord Leggings'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Tiered Bonus: Fireproof (2)'
+      - '<7>Provides immunity to <c>Crimson Isle'
+      - '<c>Lava<7>.'
+      - ''
+      - '<8>Tiered Bonus: Lord''s Blessing (4-5)'
+      - '<7>Grants <3>+1/1.5 Sea Creature Chance<7>.'
+      - '<7>Grants <b>+20/30 Magic Find <7>on'
+      - '<c>Magmatic<7> mobs.'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>15% <7>and damage dealt'
+      - '<7>is increased by <c>1.3x<7>.'
+    default_statistics:
+      health: 250
+      defense: 200
+      strength: 10
+      crit_damage: 35
+      sea_creature_chance: 4.5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '111'
+        g: '15'
+        b: '8'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 45
+      - id: SELLABLE
+        value: 1300000
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "FFF"
+              - "F F"
+              - "F F"
+            ingredients:
+              F:
+                type: MAGMA_LORD_FRAGMENT
+                amount: 1
+            result:
+              type: MAGMA_LORD_LEGGINGS
+              amount: 1
+  - id: MAGMA_LORD_BOOTS
+    material: leather_boots
+    name: 'Magma Lord Boots'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Tiered Bonus: Fireproof (2)'
+      - '<7>Provides immunity to <c>Crimson Isle'
+      - '<c>Lava<7>.'
+      - ''
+      - '<8>Tiered Bonus: Lord''s Blessing (4-5)'
+      - '<7>Grants <3>+1/1.5 Sea Creature Chance<7>.'
+      - '<7>Grants <b>+20/30 Magic Find <7>on'
+      - '<c>Magmatic<7> mobs.'
+      - ''
+      - '<7>Damage taken from <c>Magmatic<7> mobs'
+      - '<7>is reduced by <a>15% <7>and damage dealt'
+      - '<7>is increased by <c>1.3x<7>.'
+    default_statistics:
+      health: 200
+      defense: 150
+      strength: 10
+      crit_damage: 35
+      sea_creature_chance: 4.5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '111'
+        g: '15'
+        b: '8'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FISHING
+            level: 45
+      - id: SELLABLE
+        value: 1300000
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "F F"
+              - "F F"
+            ingredients:
+              F:
+                type: MAGMA_LORD_FRAGMENT
+                amount: 1
+            result:
+              type: MAGMA_LORD_BOOTS
+              amount: 1
+  - id: THUNDER_FRAGMENT
+    material: prismarine_shard
+    name: 'Thunder Fragment'
+    rarity: EPIC
+    lore:
+      - '<7>Crafting material dropped by <5>Thunder<7>.'
+    components:
+      - id: SELLABLE
+        value: 20000
+  - id: RADIOACTIVE_VIAL
+    material: player_head
+    name: 'Radioactive Vial'
+    rarity: MYTHIC
+    lore:
+      - '<7>Use at <b>Kat <7>to upgrade <e>Flying Fish'
+      - '<e>Pets <7>to <d>Mythic <7>rarity.'
+    components:
+      - id: SKULL_HEAD
+        texture: 9b574c03b1c8f52535f96a20a4176020bb280e0af52fc1285d3ecbd3517280c4
+      - id: SELLABLE
+        value: 100000
+  - id: PITCHIN_KOI
+    material: paper
+    name: 'Pitchin'' Koi'
+    rarity: RARE
+    lore:
+      - '<8>Reforge Stone'
+      - '<8>Combinable in Anvil'
+      - ''
+      - '<7>Applies the <9>Pitchin'' <7>reforge when'
+      - '<7>combined with a <b>Fishing Rod<7>.'
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/pitchin_koi
+  - id: SEARED_ESCARGOT
+    material: paper
+    name: 'Seared Escargot'
+    rarity: RARE
+    lore:
+      - '<7>All that remains of an especially'
+      - '<7>adventurous snail that ventured too'
+      - '<7>deep into the fiery depths.'
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/misc/seared_escargot
+  - id: SEVERED_PINCER
+    material: player_head
+    name: 'Severed Pincer'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Combinable in Anvil'
+      - ''
+      - '<7>When applied to a fishing rod,'
+      - '<7>increases its <9>Frail <7>level by <a>1<7>!'
+      - '<8>Can be applied once.'
+      - '<8>Requires Frail VI!'
+      - ''
+      - '<8><o>Hopefully he doesn''t want this back.'
+    components:
+      - id: SKULL_HEAD
+        texture: 7e1e0701f1f9e974765e4f2a7c33a9458c598334401538dc9f21f5ed7e35f79a
+  - id: SCUTTLER_SHELL
+    material: player_head
+    name: 'Scuttler Shell'
+    rarity: MYTHIC
+    lore:
+      - '<7>Use at <b>Kat <7>to upgrade <e>Hermit Crab'
+      - '<e>Pets <7>to <d>Mythic <7>rarity.'
+    components:
+      - id: SKULL_HEAD
+        texture: 74c4857e7a1996825ce8ad3658b7188800d1bbc212fa2257c75530759dc687eb
+  - id: CHAIN_OF_THE_END_TIMES
+    material: paper
+    name: 'Chain of the End Times'
+    rarity: LEGENDARY
+    lore:
+      - '<7>Upgrades a <9>Charm V <7>book into'
+      - '<9>Charm VI<7>.'
+    components:
+  - id: BURNT_TEXTS
+    material: player_head
+    name: 'Burnt Texts'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Consumed on use'
+      - ''
+      - '<7>Grants <9>+5 Double Hook Chance<7>, but'
+      - '<7>reduces your <b>Fishing Speed <7>by <c>50<7>.'
+    components:
+      - id: SKULL_HEAD
+        texture: 78bd1889bf8a635ec71fc05b1ed548763778e3d371926d39a62c29d350c48b49
+  - id: SQUID_BOOTS
+    material: leather_boots
+    name: 'Squid Boots'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Your shoes spit out Squid ink!'
+    default_statistics:
+      health: 100
+      sea_creature_chance: 1
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '0'
+        b: '0'
+  - id: DYE_CARMINE
+    material: player_head
+    name: 'Carmine Dye'
+    rarity: LEGENDARY
+    lore:
+      - '<8>Combinable in Anvil'
+      - ''
+      - '<7>Changes the color of an armor piece'
+      - '<7>to <4>#960018<7>!'
+    components:
+      - id: SKULL_HEAD
+        texture: 8150b42e6497137217d5d8f56503f98d8f549cb034fbeae6fdd5431570518e38
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: THUNDER_IN_A_BOTTLE_EMPTY
+    material: player_head
+    name: 'Empty Thunder Bottle'
+    rarity: EPIC
+    lore:
+      - '<7>This bottle is empty, I wonder if'
+      - '<7>there is a way to charge it up...'
+      - ''
+      - '<7>Fills to <e>50,000 <7>charge.'
+    components:
+      - id: SKULL_HEAD
+        texture: 57a6d35e9d43542d2750c4836b4037f75146eb2787532b4c4c5c3b26bb63dc10
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " O "
+              - "OBO"
+              - " O "
+            ingredients:
+              O:
+                type: ORB_OF_ENERGY
+                amount: 1
+              B:
+                type: GLASS_BOTTLE
+                amount: 1
+            result:
+              type: THUNDER_IN_A_BOTTLE_EMPTY
+              amount: 1
+  - id: THUNDER_IN_A_BOTTLE
+    material: player_head
+    name: 'Thunder in a Bottle'
+    rarity: EPIC
+    lore:
+      - '<8>Combinable in Anvil'
+      - ''
+      - '<7>What happens if you open it? The'
+      - '<7>answer may shock you.'
+      - ''
+      - '<7>Charge: <e>50,000<6>/<e>50,000'
+    components:
+      - id: SKULL_HEAD
+        texture: 24378b986e358555ee73f09b210d49ec13719de5ea88d75523770d31163f3aef
+  - id: BRONZE_TROPHY_FISHING_SACK
+    material: player_head
+    name: 'Bronze Trophy Fishing Sack'
+    rarity: UNCOMMON
+    lore:
+      - '<6>Trophy Fish <7>pickups of <8><l>BRONZE'
+      - '<7>quality go directly into your sacks.'
+      - ''
+      - '<7>Capacity: <e>512 per trophy'
+      - '<8>Sacks sum their capacity.'
+      - ''
+      - '<e>Right Click to open sack!'
+      - ''
+      - '<4>❣ <c>Requires Novice Trophy Fisher.'
+    components:
+      - id: SKULL_HEAD
+        texture: 87cd36e09d7c48f71b9c8809cde5c9bb60a36b3193f32b493125e3595fd757da
+      - id: SACK
+        valid_items:
+          - SULPHUR_SKITTER_BRONZE
+          - OBFUSCATED_FISH_1_BRONZE
+          - STEAMING_HOT_FLOUNDER_BRONZE
+          - GUSHER_BRONZE
+          - BLOBFISH_BRONZE
+          - OBFUSCATED_FISH_2_BRONZE
+          - SLUGFISH_BRONZE
+          - FLYFISH_BRONZE
+          - OBFUSCATED_FISH_3_BRONZE
+          - LAVA_HORSE_BRONZE
+          - MANA_RAY_BRONZE
+          - VOLCANIC_STONEFISH_BRONZE
+          - VANILLE_BRONZE
+          - SKELETON_FISH_BRONZE
+          - MOLDFIN_BRONZE
+          - SOUL_FISH_BRONZE
+          - KARATE_FISH_BRONZE
+          - GOLDEN_FISH_BRONZE
+        max_capacity: 512
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: SILVER_TROPHY_FISHING_SACK
+    material: player_head
+    name: 'Silver Trophy Fishing Sack'
+    rarity: RARE
+    lore:
+      - '<6>Trophy Fish <7>pickups of <7><l>SILVER'
+      - '<7>quality go directly into your sacks.'
+      - ''
+      - '<7>Capacity: <e>512 per trophy'
+      - '<8>Sacks sum their capacity.'
+      - ''
+      - '<e>Right Click to open sack!'
+      - ''
+      - '<4>❣ <c>Requires Adept Trophy Fisher.'
+    components:
+      - id: SKULL_HEAD
+        texture: 325f027a4a2bc2df53154e0baf917470207b8139c80f487ed9dada7033c592d5
+      - id: SACK
+        valid_items:
+          - SULPHUR_SKITTER_SILVER
+          - OBFUSCATED_FISH_1_SILVER
+          - STEAMING_HOT_FLOUNDER_SILVER
+          - GUSHER_SILVER
+          - BLOBFISH_SILVER
+          - OBFUSCATED_FISH_2_SILVER
+          - SLUGFISH_SILVER
+          - FLYFISH_SILVER
+          - OBFUSCATED_FISH_3_SILVER
+          - LAVA_HORSE_SILVER
+          - MANA_RAY_SILVER
+          - VOLCANIC_STONEFISH_SILVER
+          - VANILLE_SILVER
+          - SKELETON_FISH_SILVER
+          - MOLDFIN_SILVER
+          - SOUL_FISH_SILVER
+          - KARATE_FISH_SILVER
+          - GOLDEN_FISH_SILVER
+        max_capacity: 512
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: DIAMOND_THE_FISH
+    material: cooked_salmon
+    name: 'Diamond the Fish'
+    rarity: SPECIAL
+    lore:
+      - '<7>Shines bright like a fish.'
+      - ''
+      - '<4>❣ <c>Requires Master Trophy Fisher.'
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false

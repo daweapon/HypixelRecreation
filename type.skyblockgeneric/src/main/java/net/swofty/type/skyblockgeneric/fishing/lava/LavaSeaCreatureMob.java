@@ -26,6 +26,7 @@ import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.utility.MobAttackService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -159,7 +160,7 @@ public class LavaSeaCreatureMob extends BestiaryMob {
 
     protected void hit(SkyBlockPlayer player, double amount) {
         if (amount <= 0 || player.isDead() || PeaceTreaty.applies(player)) return;
-        player.damage(new EntityDamage(this, (float) amount));
+        MobAttackService.trueStrike(this, player, amount);
     }
 
     protected @Nullable SkyBlockPlayer killer() {
