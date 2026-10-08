@@ -1,33 +1,51 @@
 package net.swofty.type.crimsonisle.events;
 
-import net.swofty.type.crimsonisle.faction.DuelistNPC;
+import net.minestom.server.event.player.PlayerBlockInteractEvent;
+import net.minestom.server.event.player.PlayerDisconnectEvent;
+import net.minestom.server.instance.block.Block;
+import net.swofty.type.crimsonisle.quest.rescue.RescueService;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoTestCompletedEvent;
-import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
-import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonSideQuests;
+import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestService;
 import net.swofty.type.skyblockgeneric.event.custom.CrimsonMinibossKilledEvent;
-import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
+import net.swofty.type.skyblockgeneric.event.custom.KuudraClearedEvent;
+import net.swofty.type.skyblockgeneric.event.custom.TrophyFishCaughtEvent;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Feeds Crimson Isle kills, miniboss kills and Dojo results into the main questlines and the faction side quests.
+// Feeds game events into the daily Faction Quests and lets bells distract rescue-mission guards.
 public class ActionFactionQuestProgress implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
-    public void onKill(PlayerKilledSkyBlockMobEvent event) {
-        CrimsonQuestlines.onMobKilled(event.getPlayer(), event.getKilledMob());
-        CrimsonSideQuests.onMobKilled(event.getPlayer(), event.getKilledMob());
-        DuelistNPC.onKill(event.getPlayer(), event.getKilledMob());
+    public void onTrophyFish(TrophyFishCaughtEvent event) {
+        FactionQuestService.onTrophyFish(event.getPlayer(), event.getFishId());
     }
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void onMiniboss(CrimsonMinibossKilledEvent event) {
-        CrimsonQuestlines.onMinibossKilled(event.player(), event.miniboss().name());
+        FactionQuestService.onMiniboss(event.player(), event.miniboss());
     }
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void onDojo(DojoTestCompletedEvent event) {
-        CrimsonQuestlines.onDojoTestCompleted(event.player(), event.test(), event.grade());
+        FactionQuestService.onDojo(event.player(), event.test(), event.grade());
+    }
+
+    @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
+    public void onKuudra(KuudraClearedEvent event) {
+        FactionQuestService.onKuudraCleared(event.player(), event.tier());
+    }
+
+    @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
+    public void onBell(PlayerBlockInteractEvent event) {
+        if (!event.getBlock().compare(Block.BELL)) return;
+        RescueService.ringBell((SkyBlockPlayer) event.getPlayer(), event.getBlockPosition());
+    }
+
+    @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
+    public void onDisconnect(PlayerDisconnectEvent event) {
+        RescueService.forget((SkyBlockPlayer) event.getPlayer());
     }
 }

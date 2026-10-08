@@ -26,7 +26,7 @@ import java.util.UUID;
  * faction.
  */
 public abstract class CrimsonMinibossMob extends CrimsonIsleMob {
-    static final String DAILY_KEY = "miniboss:day:";
+    public static final String DAILY_KEY = "miniboss:day:";
     private static final double LEASH = 30;
 
     protected CrimsonMinibossMob(CrimsonMobProfile profile) {

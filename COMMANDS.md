@@ -158,6 +158,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/clear` | `/cl` | Rid your inventory of useless items. | STAFF | No | `type.skyblockgeneric` |
 | `/coins <amount> [player]` | — | Sets your purse balance. | STAFF | No | `type.skyblockgeneric` |
 | `/enchant <enchantment_type> <level>` | `/ench` | Enchants the contents o the players hand. | STAFF | No | `type.skyblockgeneric` |
+| `/factionquests <list\|reroll>; /factionquests complete <slot>` | `/fquests` | Lists today's Crimson Isle Faction Quests for your current faction, rolls a fresh Town Board for today (`reroll`), or marks slot 1–5 complete so it can be claimed at the Town Board without doing the task (`complete`). Needs a faction. | STAFF | No | `type.skyblockgeneric` |
 | `/giveskyblockxp <cause> [player]` | `/awardskyblockxp` | Gives yourself skyblock xp. | STAFF | No | `type.skyblockgeneric` |
 | `/item <item> [amount] [player]` | `/i`, `/sbitem` | Gives an item to the player. Also accepts /item <item> <player> with the default amount. Target is an online player selector. | STAFF | No | `type.skyblockgeneric` |
 | `/max coa` | — | Fills the Crown of Avarice in your hand (or on your head) to its 1,000,000,000 Coins consumed cap, granting the full Overindulgence bonus. | STAFF | No | `type.skyblockgeneric` |
