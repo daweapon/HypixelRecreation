@@ -109,6 +109,9 @@ collections:
     - type: CUSTOM_AWARD
       data:
         customAward: QUIVER
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SPIDER_PET
   - amount: 1000
     rewards:
     - type: XP
@@ -233,6 +236,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SKELETON_PET
   - amount: 500
     rewards:
     - type: XP
@@ -548,6 +554,9 @@ collections:
     - type: CUSTOM_AWARD
       data:
         customAward: SMITE_DISCOUNT
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ZOMBIE_PET
   - amount: 1000
     rewards:
     - type: XP

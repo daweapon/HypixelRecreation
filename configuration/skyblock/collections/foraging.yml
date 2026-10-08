@@ -86,6 +86,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: WOLF_PET
   - amount: 1000
     rewards:
     - type: XP
