@@ -1,0 +1,3701 @@
+# Crimson, Aurora, Terror, Fervor and Hollow Armor, all five tiers (NEU). Only Kuudra drops them.
+items:
+  - id: CRIMSON_HELMET
+    material: player_head
+    name: "Crimson Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 160
+      defense: 50
+      strength: 30
+      critical_damage: 20
+      intelligence: 15
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.05 Swing Range§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.5x §4Swipe Damage§7 to mobs in its path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 5051c83d9ebf69013f1ec8c9efc979ec2d925a921cc877ff64abe09aadd2f6cc
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: CRIMSON_CHESTPLATE
+    material: leather_chestplate
+    name: "Crimson Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 230
+      defense: 65
+      strength: 30
+      critical_damage: 20
+      intelligence: 5
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.05 Swing Range§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.5x §4Swipe Damage§7 to mobs in its path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '111'
+        b: '12'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: CRIMSON_LEGGINGS
+    material: leather_leggings
+    name: "Crimson Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 205
+      defense: 55
+      strength: 30
+      critical_damage: 20
+      intelligence: 5
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.05 Swing Range§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.5x §4Swipe Damage§7 to mobs in its path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '97'
+        b: '5'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: CRIMSON_BOOTS
+    material: leather_boots
+    name: "Crimson Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 130
+      defense: 40
+      strength: 30
+      critical_damage: 20
+      intelligence: 5
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.05 Swing Range§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.5x §4Swipe Damage§7 to mobs in its path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '83'
+        b: '0'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: HOT_CRIMSON_HELMET
+    material: player_head
+    name: "Hot Crimson Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 202
+      defense: 63
+      strength: 38
+      critical_damage: 25
+      intelligence: 19
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.62x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: bbe6d66770a61bf56e6d4b476922b1c3b3dc9f78a26e56b36cd965b7ab20b417
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_CRIMSON_CHESTPLATE
+    material: leather_chestplate
+    name: "Hot Crimson Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 290
+      defense: 82
+      strength: 38
+      critical_damage: 25
+      intelligence: 6
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.62x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '111'
+        b: '12'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_CRIMSON_LEGGINGS
+    material: leather_leggings
+    name: "Hot Crimson Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 258
+      defense: 69
+      strength: 38
+      critical_damage: 25
+      intelligence: 6
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.62x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '97'
+        b: '5'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_CRIMSON_BOOTS
+    material: leather_boots
+    name: "Hot Crimson Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 164
+      defense: 50
+      strength: 38
+      critical_damage: 25
+      intelligence: 6
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.62x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '83'
+        b: '0'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: BURNING_CRIMSON_HELMET
+    material: player_head
+    name: "Burning Crimson Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 254
+      defense: 79
+      strength: 48
+      critical_damage: 32
+      intelligence: 24
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range"
+      - "§7and §c+1 Ferocity§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.75x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: eb034a5d97c24fe0ec902bd02fec52a09d917366be060c51f9a1a276b284a9d7
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_CRIMSON_CHESTPLATE
+    material: leather_chestplate
+    name: "Burning Crimson Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 365
+      defense: 103
+      strength: 48
+      critical_damage: 32
+      intelligence: 8
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range"
+      - "§7and §c+1 Ferocity§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.75x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '111'
+        b: '12'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_CRIMSON_LEGGINGS
+    material: leather_leggings
+    name: "Burning Crimson Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 325
+      defense: 87
+      strength: 48
+      critical_damage: 32
+      intelligence: 8
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range"
+      - "§7and §c+1 Ferocity§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.75x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '97'
+        b: '5'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_CRIMSON_BOOTS
+    material: leather_boots
+    name: "Burning Crimson Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 206
+      defense: 64
+      strength: 48
+      critical_damage: 32
+      intelligence: 8
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range"
+      - "§7and §c+1 Ferocity§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.75x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '83'
+        b: '0'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: FIERY_CRIMSON_HELMET
+    material: player_head
+    name: "Fiery Crimson Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 320
+      defense: 100
+      strength: 60
+      critical_damage: 40
+      intelligence: 30
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range"
+      - "§7and §c+2 Ferocity§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.88x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 91f0c7afff1782465d8cdb5eba261b65423a7a0712ee3a4c572c33f94c68c55
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_CRIMSON_CHESTPLATE
+    material: leather_chestplate
+    name: "Fiery Crimson Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 460
+      defense: 130
+      strength: 60
+      critical_damage: 40
+      intelligence: 10
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range"
+      - "§7and §c+2 Ferocity§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.88x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '111'
+        b: '12'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_CRIMSON_LEGGINGS
+    material: leather_leggings
+    name: "Fiery Crimson Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 410
+      defense: 110
+      strength: 60
+      critical_damage: 40
+      intelligence: 10
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range"
+      - "§7and §c+2 Ferocity§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.88x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '97'
+        b: '5'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_CRIMSON_BOOTS
+    material: leather_boots
+    name: "Fiery Crimson Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 260
+      defense: 80
+      strength: 60
+      critical_damage: 40
+      intelligence: 10
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range"
+      - "§7and §c+2 Ferocity§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c0.88x §4Swipe Damage§7 to mobs in its"
+      - "§7path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '83'
+        b: '0'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: INFERNAL_CRIMSON_HELMET
+    material: player_head
+    name: "Infernal Crimson Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 403
+      defense: 126
+      strength: 76
+      critical_damage: 50
+      intelligence: 38
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range§7,"
+      - "§c+2 Ferocity§7 and §c+10% Damage§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c1x §4Swipe Damage§7 to mobs in its path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 507d6bf7611190ed9c580d8c87c296059216230c9501eec6359e0d60ec84758e
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_CRIMSON_CHESTPLATE
+    material: leather_chestplate
+    name: "Infernal Crimson Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 580
+      defense: 164
+      strength: 76
+      critical_damage: 50
+      intelligence: 13
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range§7,"
+      - "§c+2 Ferocity§7 and §c+10% Damage§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c1x §4Swipe Damage§7 to mobs in its path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '111'
+        b: '12'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_CRIMSON_LEGGINGS
+    material: leather_leggings
+    name: "Infernal Crimson Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 517
+      defense: 139
+      strength: 76
+      critical_damage: 50
+      intelligence: 13
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range§7,"
+      - "§c+2 Ferocity§7 and §c+10% Damage§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c1x §4Swipe Damage§7 to mobs in its path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '97'
+        b: '5'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_CRIMSON_BOOTS
+    material: leather_boots
+    name: "Infernal Crimson Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 328
+      defense: 101
+      strength: 76
+      critical_damage: 50
+      intelligence: 13
+    lore:
+      - "§8Tiered Bonus: Dominus (0/4)"
+      - "§7Every §a1.5s§7, melee attacks grant §c1§7 stack of"
+      - "§6ᝐ Dominus§7. §8Lose 1 stack after 4s of not"
+      - "§8gaining a stack."
+      - ""
+      - "§7Each stack grants §e+0.1 Swing Range§7,"
+      - "§c+2 Ferocity§7 and §c+10% Damage§7."
+      - ""
+      - "§7At §c10§7 stacks swipe in a random direction"
+      - "§7dealing §c1x §4Swipe Damage§7 to mobs in its path."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '83'
+        b: '0'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: AURORA_HELMET
+    material: player_head
+    name: "Aurora Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 160
+      defense: 50
+      intelligence: 275
+      ability_damage: 16
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a3§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 763d2fe93881b4f26cbe1dd3b09da7cc48dbcdc568d19852ad635d5d16859611
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: AURORA_CHESTPLATE
+    material: leather_chestplate
+    name: "Aurora Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 230
+      defense: 65
+      intelligence: 175
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a3§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '40'
+        g: '65'
+        b: '241'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: AURORA_LEGGINGS
+    material: leather_leggings
+    name: "Aurora Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 205
+      defense: 55
+      intelligence: 175
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a3§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '63'
+        g: '86'
+        b: '251'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: AURORA_BOOTS
+    material: leather_boots
+    name: "Aurora Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 130
+      defense: 40
+      intelligence: 175
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a3§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '97'
+        g: '132'
+        b: '252'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: HOT_AURORA_HELMET
+    material: player_head
+    name: "Hot Aurora Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 202
+      defense: 63
+      intelligence: 347
+      ability_damage: 20
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a4§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 30b6e2d43ee24c9a246a83515f9b7414846f315ad954400c38ca65cdf08e919e
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_AURORA_CHESTPLATE
+    material: leather_chestplate
+    name: "Hot Aurora Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 290
+      defense: 82
+      intelligence: 221
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a4§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '40'
+        g: '65'
+        b: '241'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_AURORA_LEGGINGS
+    material: leather_leggings
+    name: "Hot Aurora Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 258
+      defense: 69
+      intelligence: 221
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a4§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '63'
+        g: '86'
+        b: '251'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_AURORA_BOOTS
+    material: leather_boots
+    name: "Hot Aurora Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 164
+      defense: 50
+      intelligence: 221
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a4§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '97'
+        g: '132'
+        b: '252'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: BURNING_AURORA_HELMET
+    material: player_head
+    name: "Burning Aurora Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 254
+      defense: 79
+      intelligence: 437
+      ability_damage: 25
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a4§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: f886b484b750c367107892586930a5e50cd57e9be843bd3db7eb217cb782f0a1
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_AURORA_CHESTPLATE
+    material: leather_chestplate
+    name: "Burning Aurora Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 365
+      defense: 103
+      intelligence: 278
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a4§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '40'
+        g: '65'
+        b: '241'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_AURORA_LEGGINGS
+    material: leather_leggings
+    name: "Burning Aurora Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 325
+      defense: 87
+      intelligence: 278
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a4§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '63'
+        g: '86'
+        b: '251'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_AURORA_BOOTS
+    material: leather_boots
+    name: "Burning Aurora Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 206
+      defense: 64
+      intelligence: 278
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a4§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '97'
+        g: '132'
+        b: '252'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: FIERY_AURORA_HELMET
+    material: player_head
+    name: "Fiery Aurora Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 320
+      defense: 100
+      intelligence: 550
+      ability_damage: 32
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a5§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 1855aabafa461d35b864291d494ca36a2f46307ceadad3a28774054f86788e8
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_AURORA_CHESTPLATE
+    material: leather_chestplate
+    name: "Fiery Aurora Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 460
+      defense: 130
+      intelligence: 350
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a5§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '40'
+        g: '65'
+        b: '241'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_AURORA_LEGGINGS
+    material: leather_leggings
+    name: "Fiery Aurora Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 410
+      defense: 110
+      intelligence: 350
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a5§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '63'
+        g: '86'
+        b: '251'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_AURORA_BOOTS
+    material: leather_boots
+    name: "Fiery Aurora Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 260
+      defense: 80
+      intelligence: 350
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a5§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '97'
+        g: '132'
+        b: '252'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: INFERNAL_AURORA_HELMET
+    material: player_head
+    name: "Infernal Aurora Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 403
+      defense: 126
+      intelligence: 693
+      ability_damage: 40
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a5§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 2cc3ea5345c288c24f1aa7dd8fc63295597d3fb374e314f605640b8dea06fe3f
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_AURORA_CHESTPLATE
+    material: leather_chestplate
+    name: "Infernal Aurora Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 580
+      defense: 164
+      intelligence: 441
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a5§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '40'
+        g: '65'
+        b: '241'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_AURORA_LEGGINGS
+    material: leather_leggings
+    name: "Infernal Aurora Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 517
+      defense: 139
+      intelligence: 441
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a5§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '63'
+        g: '86'
+        b: '251'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_AURORA_BOOTS
+    material: leather_boots
+    name: "Infernal Aurora Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 328
+      defense: 101
+      intelligence: 441
+    lore:
+      - "§8Tiered Bonus: Arcane Energy (0/4)"
+      - "§7Every §a1s§7, dealing §bMagic Damage§7 from an"
+      - "§7ability grants §c1§7 stack of §6Ѫ Arcane Energy§7."
+      - "§8Lose 1 stack after 4s of not gaining a stack."
+      - " "
+      - "§6Ability: Homing Missiles §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your"
+      - "§7stacks and shoot §a5§7 homing missiles"
+      - "§7dealing §c5,000 Damage§7 each."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '97'
+        g: '132'
+        b: '252'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: TERROR_HELMET
+    material: player_head
+    name: "Terror Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 160
+      defense: 50
+      critical_damage: 50
+      intelligence: 15
+      speed: 12
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+2% Damage§7 and §b+1%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c20%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 52af8833697c81b46e83c8f1895266e606efbb3a59f1c3b4ca2816da2bcfa9d6
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: TERROR_CHESTPLATE
+    material: leather_chestplate
+    name: "Terror Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 230
+      defense: 65
+      critical_damage: 50
+      intelligence: 5
+      speed: 12
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+2% Damage§7 and §b+1%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c20%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '62'
+        g: '5'
+        b: '175'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: TERROR_LEGGINGS
+    material: leather_leggings
+    name: "Terror Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 205
+      defense: 55
+      critical_damage: 50
+      intelligence: 5
+      speed: 12
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+2% Damage§7 and §b+1%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c20%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '93'
+        g: '35'
+        b: '209'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: TERROR_BOOTS
+    material: leather_boots
+    name: "Terror Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 130
+      defense: 40
+      critical_damage: 50
+      intelligence: 5
+      speed: 12
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+2% Damage§7 and §b+1%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c20%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '124'
+        g: '68'
+        b: '236'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: HOT_TERROR_HELMET
+    material: player_head
+    name: "Hot Terror Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 202
+      defense: 63
+      critical_damage: 63
+      intelligence: 19
+      speed: 15
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+2.8% Damage§7 and §b+1.5%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c30%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: bdea30e305483713ac9a5295ae698d4109766c9ae2bc744ac58f6bb4cf93a9f1
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_TERROR_CHESTPLATE
+    material: leather_chestplate
+    name: "Hot Terror Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 290
+      defense: 82
+      critical_damage: 63
+      intelligence: 6
+      speed: 15
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+2.8% Damage§7 and §b+1.5%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c30%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '62'
+        g: '5'
+        b: '175'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_TERROR_LEGGINGS
+    material: leather_leggings
+    name: "Hot Terror Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 258
+      defense: 69
+      critical_damage: 63
+      intelligence: 6
+      speed: 15
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+2.8% Damage§7 and §b+1.5%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c30%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '93'
+        g: '35'
+        b: '209'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_TERROR_BOOTS
+    material: leather_boots
+    name: "Hot Terror Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 164
+      defense: 50
+      critical_damage: 63
+      intelligence: 6
+      speed: 15
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+2.8% Damage§7 and §b+1.5%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c30%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '124'
+        g: '68'
+        b: '236'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: BURNING_TERROR_HELMET
+    material: player_head
+    name: "Burning Terror Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 254
+      defense: 79
+      critical_damage: 79
+      intelligence: 24
+      speed: 19
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+3.5% Damage§7 and §b+2%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c40%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 4482ec351f353445775b439ebc909d5702732f8bae9d32b0b08860b3d6439061
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_TERROR_CHESTPLATE
+    material: leather_chestplate
+    name: "Burning Terror Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 365
+      defense: 103
+      critical_damage: 79
+      intelligence: 8
+      speed: 19
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+3.5% Damage§7 and §b+2%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c40%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '62'
+        g: '5'
+        b: '175'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_TERROR_LEGGINGS
+    material: leather_leggings
+    name: "Burning Terror Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 325
+      defense: 87
+      critical_damage: 79
+      intelligence: 8
+      speed: 19
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+3.5% Damage§7 and §b+2%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c40%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '93'
+        g: '35'
+        b: '209'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_TERROR_BOOTS
+    material: leather_boots
+    name: "Burning Terror Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 206
+      defense: 64
+      critical_damage: 79
+      intelligence: 8
+      speed: 19
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+3.5% Damage§7 and §b+2%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c40%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '124'
+        g: '68'
+        b: '236'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: FIERY_TERROR_HELMET
+    material: player_head
+    name: "Fiery Terror Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 320
+      defense: 100
+      critical_damage: 100
+      intelligence: 30
+      speed: 24
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+4.2% Damage§7 and §b+2.5%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c50%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: b46902e1756a242f401d0c2567ec6481c65084af9b1aaabb9732f56cade542f3
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_TERROR_CHESTPLATE
+    material: leather_chestplate
+    name: "Fiery Terror Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 460
+      defense: 130
+      critical_damage: 100
+      intelligence: 10
+      speed: 24
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+4.2% Damage§7 and §b+2.5%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c50%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '62'
+        g: '5'
+        b: '175'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_TERROR_LEGGINGS
+    material: leather_leggings
+    name: "Fiery Terror Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 410
+      defense: 110
+      critical_damage: 100
+      intelligence: 10
+      speed: 24
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+4.2% Damage§7 and §b+2.5%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c50%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '93'
+        g: '35'
+        b: '209'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_TERROR_BOOTS
+    material: leather_boots
+    name: "Fiery Terror Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 260
+      defense: 80
+      critical_damage: 100
+      intelligence: 10
+      speed: 24
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+4.2% Damage§7 and §b+2.5%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c50%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '124'
+        g: '68'
+        b: '236'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: INFERNAL_TERROR_HELMET
+    material: player_head
+    name: "Infernal Terror Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 403
+      defense: 126
+      critical_damage: 126
+      intelligence: 38
+      speed: 30
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+5% Damage§7 and §b+3%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c60%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 4eadf2954f1629d793d7f467181c449e18d89aa4941bec3ea5211e5909bb567
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_TERROR_CHESTPLATE
+    material: leather_chestplate
+    name: "Infernal Terror Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 580
+      defense: 164
+      critical_damage: 126
+      intelligence: 13
+      speed: 30
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+5% Damage§7 and §b+3%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c60%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '62'
+        g: '5'
+        b: '175'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_TERROR_LEGGINGS
+    material: leather_leggings
+    name: "Infernal Terror Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 517
+      defense: 139
+      critical_damage: 126
+      intelligence: 13
+      speed: 30
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+5% Damage§7 and §b+3%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c60%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '93'
+        g: '35'
+        b: '209'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_TERROR_BOOTS
+    material: leather_boots
+    name: "Infernal Terror Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 328
+      defense: 101
+      critical_damage: 126
+      intelligence: 13
+      speed: 30
+    lore:
+      - "§8Tiered Bonus: Hydra Strike (0/4)"
+      - "§7Every §a0.2s§7, arrow attacks grant §c1"
+      - "§7stack of §6⁑ Hydra Strike§7. §8Lose 1 stack"
+      - "§8after 4s of not gaining a stack."
+      - ""
+      - "§7Each stack grants §c+5% Damage§7 and §b+3%"
+      - "§bArrow Speed§7."
+      - ""
+      - "§7At §c10§7 stacks shoot §a+2§7 arrows that deal §c60%"
+      - "§cArrow Damage§8."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '124'
+        g: '68'
+        b: '236'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: FERVOR_HELMET
+    material: player_head
+    name: "Fervor Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 180
+      defense: 100
+      true_defense: 5
+      intelligence: 15
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform a §cGround Pound§7 dealing damage to"
+      - "§7mobs within §a6§7 blocks. §8(Damage scales with your"
+      - "§8EHP, max 25M)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: bc6e137e2a6a501dfc854ca900b5b681227dea4d5a9616849a3a68f09c6dc327
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: FERVOR_CHESTPLATE
+    material: leather_chestplate
+    name: "Fervor Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 265
+      defense: 140
+      true_defense: 5
+      intelligence: 5
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform a §cGround Pound§7 dealing damage to"
+      - "§7mobs within §a6§7 blocks. §8(Damage scales with your"
+      - "§8EHP, max 25M)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '240'
+        g: '71'
+        b: '41'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: FERVOR_LEGGINGS
+    material: leather_leggings
+    name: "Fervor Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 210
+      defense: 115
+      true_defense: 5
+      intelligence: 5
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform a §cGround Pound§7 dealing damage to"
+      - "§7mobs within §a6§7 blocks. §8(Damage scales with your"
+      - "§8EHP, max 25M)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '23'
+        g: '191'
+        b: '137'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: FERVOR_BOOTS
+    material: leather_boots
+    name: "Fervor Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 160
+      defense: 85
+      true_defense: 5
+      intelligence: 5
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform a §cGround Pound§7 dealing damage to"
+      - "§7mobs within §a6§7 blocks. §8(Damage scales with your"
+      - "§8EHP, max 25M)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '7'
+        g: '166'
+        b: '116'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: HOT_FERVOR_HELMET
+    material: player_head
+    name: "Hot Fervor Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 227
+      defense: 126
+      true_defense: 6
+      intelligence: 19
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform a §cGround Pound§7 dealing damage to"
+      - "§7mobs within §a7§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 3030c3217a2ac070e404cf8c21eafba3a0f6b579dbf4ec9fdc1633ad2180cf28
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_FERVOR_CHESTPLATE
+    material: leather_chestplate
+    name: "Hot Fervor Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 334
+      defense: 176
+      true_defense: 6
+      intelligence: 6
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform a §cGround Pound§7 dealing damage to"
+      - "§7mobs within §a7§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '240'
+        g: '71'
+        b: '41'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_FERVOR_LEGGINGS
+    material: leather_leggings
+    name: "Hot Fervor Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 265
+      defense: 145
+      true_defense: 6
+      intelligence: 6
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform a §cGround Pound§7 dealing damage to"
+      - "§7mobs within §a7§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '23'
+        g: '191'
+        b: '137'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_FERVOR_BOOTS
+    material: leather_boots
+    name: "Hot Fervor Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 202
+      defense: 107
+      true_defense: 6
+      intelligence: 6
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform a §cGround Pound§7 dealing damage to"
+      - "§7mobs within §a7§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '7'
+        g: '166'
+        b: '116'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: BURNING_FERVOR_HELMET
+    material: player_head
+    name: "Burning Fervor Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 286
+      defense: 159
+      true_defense: 8
+      intelligence: 24
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a8§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 97e2d177faac867c9e49542aa4ec831b458d8537f20672014c9149e4ddba43d6
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_FERVOR_CHESTPLATE
+    material: leather_chestplate
+    name: "Burning Fervor Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 421
+      defense: 222
+      true_defense: 8
+      intelligence: 8
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a8§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '240'
+        g: '71'
+        b: '41'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_FERVOR_LEGGINGS
+    material: leather_leggings
+    name: "Burning Fervor Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 333
+      defense: 183
+      true_defense: 8
+      intelligence: 8
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a8§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '23'
+        g: '191'
+        b: '137'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_FERVOR_BOOTS
+    material: leather_boots
+    name: "Burning Fervor Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 254
+      defense: 135
+      true_defense: 8
+      intelligence: 8
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a8§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '7'
+        g: '166'
+        b: '116'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: FIERY_FERVOR_HELMET
+    material: player_head
+    name: "Fiery Fervor Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 360
+      defense: 200
+      true_defense: 10
+      intelligence: 30
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a9§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 73f65fffe8fb4e70ee1c1edb8d8f5ef7bb66d0fd1807fb2568b09f1ab976d64f
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_FERVOR_CHESTPLATE
+    material: leather_chestplate
+    name: "Fiery Fervor Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 530
+      defense: 280
+      true_defense: 10
+      intelligence: 10
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a9§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '240'
+        g: '71'
+        b: '41'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_FERVOR_LEGGINGS
+    material: leather_leggings
+    name: "Fiery Fervor Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 420
+      defense: 230
+      true_defense: 10
+      intelligence: 10
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a9§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '23'
+        g: '191'
+        b: '137'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_FERVOR_BOOTS
+    material: leather_boots
+    name: "Fiery Fervor Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 320
+      defense: 170
+      true_defense: 10
+      intelligence: 10
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a9§7 blocks. §8(Damage scales with your"
+      - "§8EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '7'
+        g: '166'
+        b: '116'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: INFERNAL_FERVOR_HELMET
+    material: player_head
+    name: "Infernal Fervor Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 454
+      defense: 252
+      true_defense: 12
+      intelligence: 38
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a10§7 blocks. §8(Damage scales with"
+      - "§8your EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 1d47cf6e12d12a5eb161759ba95689a9237ec111473e92a140ecab0158dfd258
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_FERVOR_CHESTPLATE
+    material: leather_chestplate
+    name: "Infernal Fervor Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 668
+      defense: 353
+      true_defense: 12
+      intelligence: 13
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a10§7 blocks. §8(Damage scales with"
+      - "§8your EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '240'
+        g: '71'
+        b: '41'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_FERVOR_LEGGINGS
+    material: leather_leggings
+    name: "Infernal Fervor Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 529
+      defense: 290
+      true_defense: 12
+      intelligence: 13
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a10§7 blocks. §8(Damage scales with"
+      - "§8your EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '23'
+        g: '191'
+        b: '137'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_FERVOR_BOOTS
+    material: leather_boots
+    name: "Infernal Fervor Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 403
+      defense: 214
+      true_defense: 12
+      intelligence: 13
+    lore:
+      - "§8Tiered Bonus: Fervor (0/4)"
+      - "§7Every §a1.5s§7, attacking a mob grants §c1§7 stack of"
+      - "§6҉ Fervor§7. §8Lose 1 stack after 4s of not gaining"
+      - "§8a stack."
+      - " "
+      - "§6Ability: Ground Pound §e§lSNEAK"
+      - "§7At §c10§7 stacks, sneak to reset your stacks and"
+      - "§7perform §a2 §cGround Pounds§7 dealing damage to"
+      - "§7mobs within §a10§7 blocks. §8(Damage scales with"
+      - "§8your EHP)."
+      - " "
+      - "§6Full Set Bonus: Intimidate"
+      - "§7Attacking a mob has a §c50%§7 chance to direct"
+      - "§7aggro from 3 mobs to you."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '7'
+        g: '166'
+        b: '116'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: HOLLOW_HELMET
+    material: player_head
+    name: "Hollow Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 175
+      defense: 55
+      intelligence: 130
+      mending: 5
+      speed: 5
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 10 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 4aacd705a29b790528a70ee93a1cbd92c029601a762d52805f60460e7a7ff8f7
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: HOLLOW_CHESTPLATE
+    material: leather_chestplate
+    name: "Hollow Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 250
+      defense: 70
+      intelligence: 85
+      mending: 5
+      speed: 5
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 10 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '203'
+        b: '13'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: HOLLOW_LEGGINGS
+    material: leather_leggings
+    name: "Hollow Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 225
+      defense: 60
+      intelligence: 85
+      mending: 5
+      speed: 5
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 10 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '246'
+        b: '163'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: HOLLOW_BOOTS
+    material: leather_boots
+    name: "Hollow Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 150
+      defense: 45
+      intelligence: 85
+      mending: 5
+      speed: 5
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 10 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - "§4❣ §cRequires Kuudra Basic Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '227'
+        g: '255'
+        b: '250'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: HOT_HOLLOW_HELMET
+    material: player_head
+    name: "Hot Hollow Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 219
+      defense: 69
+      intelligence: 164
+      mending: 6
+      speed: 6
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 15 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: cc344d65ae6bc2230ee220d76dda1e080f90282ca0f9f0d9bc9667d22048ce9f
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_HOLLOW_CHESTPLATE
+    material: leather_chestplate
+    name: "Hot Hollow Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 313
+      defense: 88
+      intelligence: 107
+      mending: 6
+      speed: 6
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 15 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '203'
+        b: '13'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_HOLLOW_LEGGINGS
+    material: leather_leggings
+    name: "Hot Hollow Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 281
+      defense: 75
+      intelligence: 107
+      mending: 6
+      speed: 6
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 15 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '246'
+        b: '163'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: HOT_HOLLOW_BOOTS
+    material: leather_boots
+    name: "Hot Hollow Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 188
+      defense: 56
+      intelligence: 107
+      mending: 6
+      speed: 6
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 15 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 27§c."
+      - "§4❣ §cRequires Kuudra Hot Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '227'
+        g: '255'
+        b: '250'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 27
+  - id: BURNING_HOLLOW_HELMET
+    material: player_head
+    name: "Burning Hollow Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 273
+      defense: 86
+      intelligence: 206
+      mending: 8
+      speed: 8
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 20 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 92aa17c32d27b92816b00362c2f69d867cd99ba376d10b097796368287834ea1
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_HOLLOW_CHESTPLATE
+    material: leather_chestplate
+    name: "Burning Hollow Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 391
+      defense: 109
+      intelligence: 135
+      mending: 8
+      speed: 8
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 20 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '203'
+        b: '13'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_HOLLOW_LEGGINGS
+    material: leather_leggings
+    name: "Burning Hollow Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 352
+      defense: 94
+      intelligence: 135
+      mending: 8
+      speed: 8
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 20 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '246'
+        b: '163'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: BURNING_HOLLOW_BOOTS
+    material: leather_boots
+    name: "Burning Hollow Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 234
+      defense: 70
+      intelligence: 135
+      mending: 8
+      speed: 8
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 20 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 32§c."
+      - "§4❣ §cRequires Kuudra Burning Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '227'
+        g: '255'
+        b: '250'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 32
+  - id: FIERY_HOLLOW_HELMET
+    material: player_head
+    name: "Fiery Hollow Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 342
+      defense: 107
+      intelligence: 260
+      mending: 10
+      speed: 10
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 30 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 28c6bdbff6f033c61bc335dd9a78956e6cdfdd613ebb5a77ec38d271a8332612
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_HOLLOW_CHESTPLATE
+    material: leather_chestplate
+    name: "Fiery Hollow Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 488
+      defense: 137
+      intelligence: 170
+      mending: 10
+      speed: 10
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 30 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '203'
+        b: '13'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_HOLLOW_LEGGINGS
+    material: leather_leggings
+    name: "Fiery Hollow Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 439
+      defense: 117
+      intelligence: 170
+      mending: 10
+      speed: 10
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 30 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '246'
+        b: '163'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: FIERY_HOLLOW_BOOTS
+    material: leather_boots
+    name: "Fiery Hollow Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 293
+      defense: 88
+      intelligence: 170
+      mending: 10
+      speed: 10
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 30 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 37§c."
+      - "§4❣ §cRequires Kuudra Fiery Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '227'
+        g: '255'
+        b: '250'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 37
+  - id: INFERNAL_HOLLOW_HELMET
+    material: player_head
+    name: "Infernal Hollow Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 427
+      defense: 134
+      intelligence: 328
+      mending: 12
+      speed: 13
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 40 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 84eee9f23952f9777d0519c111655066851fb4c1793629d3767a00dacee6f250
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_HOLLOW_CHESTPLATE
+    material: leather_chestplate
+    name: "Infernal Hollow Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 610
+      defense: 171
+      intelligence: 214
+      mending: 12
+      speed: 13
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 40 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '203'
+        b: '13'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_HOLLOW_LEGGINGS
+    material: leather_leggings
+    name: "Infernal Hollow Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 549
+      defense: 146
+      intelligence: 214
+      mending: 12
+      speed: 13
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 40 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '246'
+        b: '163'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42
+  - id: INFERNAL_HOLLOW_BOOTS
+    material: leather_boots
+    name: "Infernal Hollow Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 366
+      defense: 110
+      intelligence: 214
+      mending: 12
+      speed: 13
+    lore:
+      - "§8Tiered Bonus: Spirit (0/4)"
+      - "§7Every §a3s§7, up to 5 nearby player's attacks"
+      - "§7grant §c1§7 stack of §6⚶ Spirit§7. §8(Max 40 Stacks)"
+      - "§8Lose 1 after 4s of not gaining a stack."
+      - ""
+      - "§7Stacks can be used with a §6Hollow Wand§7 to cast"
+      - "§7spells."
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 42§c."
+      - "§4❣ §cRequires Kuudra Infernal Tier Completion."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: LEATHER_COLOR
+        r: '227'
+        g: '255'
+        b: '250'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 42

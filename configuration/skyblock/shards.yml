@@ -698,7 +698,9 @@
       "sources": [
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": [
+            "bezal"
+          ]
         },
         {
           "type": "BLACK_HOLE"
@@ -4666,7 +4668,9 @@
         },
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": [
+            "cinderbat"
+          ]
         },
         {
           "type": "BLACK_HOLE"

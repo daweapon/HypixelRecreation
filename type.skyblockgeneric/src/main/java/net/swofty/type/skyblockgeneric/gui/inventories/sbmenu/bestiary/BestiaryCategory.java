@@ -4,6 +4,30 @@ import lombok.Getter;
 import net.minestom.server.item.Material;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobAshfang;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBarbarianDukeX;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBezal;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBladesoul;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBlaze;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobDiveGhast;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobFlamingSpider;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobFlare;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobGhast;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobHellwisp;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobKadaKnight;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMageOutlaw;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMagmaBoss;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMagmaCube;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMagmaCubeRider;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMatcho;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMillenniaAgedBlaze;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMushroomBull;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMutatedBlaze;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobPackMagmaCube;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobSmolderingBlaze;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobVanquisher;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobWitherSkeleton;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobWitherSpectre;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobEmeraldSlime_05;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobEmeraldSlime_10;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobLapisZombie;
@@ -129,6 +153,49 @@ public enum BestiaryCategory {
             this.description = description;
             this.guiMaterial = guiMaterial;
             this.mobs = mobs;
+        }
+    }
+
+    /**
+     * The 20 Crimson Isle Bestiary families (wiki Bestiary list and Module:BestiaryTiers); each family's icon is
+     * its first mob's Bestiary head.
+     */
+    @Getter
+    public enum CRIMSON_ISLE implements BestiaryEntry {
+        ASHFANG("<a>Ashfang", "They also call themselves \"The Twins\".", List.of(new MobAshfang())),
+        BARBARIAN_DUKE_X("<a>Barbarian Duke X", "He's got anger issues.", List.of(new MobBarbarianDukeX())),
+        BLADESOUL("<a>Bladesoul", "Used to be a prince.", List.of(new MobBladesoul())),
+        BLAZE("<a>Blaze", "They started the fire.", List.of(new MobBlaze(), new MobMutatedBlaze(), new MobBezal())),
+        FLAMING_SPIDER("<a>Flaming Spider", "Can't stop burning.", List.of(new MobFlamingSpider())),
+        FLARE("<a>Flare", "Oh baby, a triple!", List.of(new MobFlare())),
+        GHAST("<a>Ghast", "Their screams can be heard from miles away.", List.of(new MobGhast(), new MobDiveGhast())),
+        KADA_KNIGHT("<a>Kada Knight", "A short walk for you is a long walk for them.", List.of(new MobKadaKnight())),
+        MAGE_OUTLAW("<a>Mage Outlaw", "Ate too much Sulphur.", List.of(new MobMageOutlaw())),
+        MAGMA_BOSS("<a>Magma Boss", "Like a Magma Cube, but bigger.", List.of(new MobMagmaBoss())),
+        MAGMA_CUBE("<a>Magma Cube", "Like Slime, but hotter.", List.of(new MobMagmaCube(), new MobPackMagmaCube())),
+        MAGMA_CUBE_RIDER("<a>Magma Cube Rider", "Relatively docile...until you push them.", List.of(new MobMagmaCubeRider())),
+        MATCHO("<a>Matcho", "Has quite an explosive temper.", List.of(new MobMatcho())),
+        MILLENNIA_AGED_BLAZE("<a>Millennia-Aged Blaze", "Blazes rarely live past the age of 900.", List.of(new MobMillenniaAgedBlaze())),
+        MUSHROOM_BULL("<a>Mushroom Bull", "Born with digestive problems.", List.of(new MobMushroomBull())),
+        SMOLDERING_BLAZE("<a>Smoldering Blaze", "It's on fire. But more than usual.", List.of(new MobSmolderingBlaze())),
+        TENTACLE("<a>Tentacle", "Offspring of The Matriarch.", List.of(new MobHellwisp())),
+        VANQUISHER("<a>Vanquisher", "The embodiment of vengeful souls that come for revenge.", List.of(new MobVanquisher())),
+        WITHER_SKELETON("<a>Wither Skeleton", "Keepers of the Crimson Isle.", List.of(new MobWitherSkeleton())),
+        WITHER_SPECTRE("<a>Wither Spectre", "Hasn't seen light in ages.", List.of(new MobWitherSpectre())),
+        ;
+
+        private final String name, description;
+        private final List<BestiaryMob> mobs;
+
+        CRIMSON_ISLE(String name, String description, List<BestiaryMob> mobs) {
+            this.name = name;
+            this.description = description;
+            this.mobs = mobs;
+        }
+
+        @Override
+        public GUIMaterial getGuiMaterial() {
+            return mobs.getFirst().getGuiMaterial();
         }
     }
 }

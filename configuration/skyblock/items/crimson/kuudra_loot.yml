@@ -1,0 +1,329 @@
+# Kuudra-only equipment, accessories and loot (NEU), catalogued until Kuudra exists.
+items:
+  - id: MOLTEN_BELT
+    material: paper
+    name: "Molten Belt"
+    rarity: EPIC
+    default_statistics:
+      health: 30
+      defense: 20
+      strength: 20
+    lore:
+      - "§8Tiered Bonus: Molten Core (0/4)"
+      - "§7Gain §a5% §7damage resistance while"
+      - "§7fighting §6Kuudra§7."
+      - ""
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: MOLTEN_CLOAK
+    material: paper
+    name: "Molten Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 30
+      defense: 20
+      strength: 20
+    lore:
+      - "§8Tiered Bonus: Molten Core (0/4)"
+      - "§7Gain §a5% §7damage resistance while"
+      - "§7fighting §6Kuudra§7."
+      - ""
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: MOLTEN_BRACELET
+    material: paper
+    name: "Molten Bracelet"
+    rarity: EPIC
+    default_statistics:
+      health: 30
+      defense: 20
+      strength: 20
+    lore:
+      - "§8Tiered Bonus: Molten Core (0/4)"
+      - "§7Gain §a5% §7damage resistance while"
+      - "§7fighting §6Kuudra§7."
+      - ""
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: MOLTEN_NECKLACE
+    material: paper
+    name: "Molten Necklace"
+    rarity: EPIC
+    default_statistics:
+      health: 30
+      defense: 20
+      strength: 20
+    lore:
+      - "§8Tiered Bonus: Molten Core (0/4)"
+      - "§7Gain §a5% §7damage resistance while"
+      - "§7fighting §6Kuudra§7."
+      - ""
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: WHEEL_OF_FATE
+    material: player_head
+    name: "Wheel of Fate"
+    rarity: RARE
+    lore:
+      - "§7Can be consumed inside a §cKuudra"
+      - "§7chest to reroll the Shard inside into"
+      - "§7a higher rarity one."
+      - ""
+      - "§8§oMay the eternal luck of Kuudra be in your favor."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 5c87f59b02886fef594eaebb46dc337aabb845b2c41bb4d238c12607d8a09544
+  - id: KUUDRA_TENTACLE
+    material: paper
+    name: "Kuudra Tentacle"
+    rarity: RARE
+    lore:
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+  - id: KUUDRAS_KIDNEY
+    material: player_head
+    name: "Kuudra's Kidney"
+    rarity: RARE
+    lore:
+      - "§7You pick up crates §a10% §7faster."
+      - "§7You build the ballista §a5% §7faster."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 6768112ce79544de28ffab7c085ecd4368f0194027fe4d5916f748e0aa3b65a1
+      - id: TALISMAN
+  - id: KUUDRAS_LUNG
+    material: player_head
+    name: "Kuudra's Lung"
+    rarity: EPIC
+    lore:
+      - "§7You pick up crates §a20% §7faster."
+      - "§7You build the ballista §a10% §7faster."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 4055a6b8591c46c19c890020b3d2aaef76479513f86802aeedc064c5dc271be
+      - id: TALISMAN
+  - id: KUUDRAS_HEART
+    material: player_head
+    name: "Kuudra's Heart"
+    rarity: LEGENDARY
+    lore:
+      - "§7You pick up crates §a30% §7faster."
+      - "§7You build the ballista §a15% §7faster."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 79c08e7447aecda5c9ab6113eb0efbabfa1bd9f811811208d89875c146ee8844
+      - id: TALISMAN
+  - id: ANANKE_FEATHER
+    material: feather
+    name: "Ananke Feather"
+    rarity: RARE
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this delicate feather to add"
+      - "§7a large amount of progress to an"
+      - "§dRNG Meter §7of your choosing."
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+  - id: TENTACLE_DYE
+    material: player_head
+    name: "Tentacle Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §5#324D6C§7!"
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 298bba8068091bfb70d7f97983934b0dea6cf91cc99ea9d14af7e811815c4bf7
+  - id: KUUDRA_MANDIBLE
+    material: paper
+    name: "Kuudra Mandible"
+    rarity: LEGENDARY
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Chomp §7reforge when"
+      - "§7combined with a §bFishing Rod§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §9 Crit Chance"
+      - " §b Fishing Speed"
+      - ""
+      - "§9Chomp Bonus"
+      - "§7Each unique §cLava Sea Creature"
+      - "§7killed with this rod in your inventory"
+      - "§7reduces their §c Health §7when fished"
+      - "§7by §a1%§7."
+      - "§8Capped at -20% health."
+      - ""
+      - ""
+      - ""
+      - "§4❣ §cRequires §aMining Skill 33§c."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+  - id: MANDRAA
+    material: paper
+    name: "Mandraa"
+    rarity: RARE
+    lore:
+      - "§7Combine §ax9 §7of this item at the"
+      - "§6Thaumaturgist §7in the §bHub §7to unlock the"
+      - "§aStrong §7power."
+      - ""
+      - "§7At §6250 Accessory Power§7:"
+      - "§c+115.7 Strength"
+      - "§9+115.7 Crit Damage"
+      - ""
+      - "§7Unique Power Bonus:"
+      - "§c+25 Strength"
+      - "§9+25 Crit Damage"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 30§c."
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 30
+  - id: UNCOMMON_KUUDRA_CHUNK
+    material: player_head
+    name: "Kuudra Chunk"
+    rarity: UNCOMMON
+    lore:
+      - "§7A chunk of Kuudra's enchanted"
+      - "§7flesh, capable of upgrading your"
+      - "§cKuudra Pet§7 to §aUncommon§7 rarity!"
+      - ""
+      - "§eRight-click on your Kuudra Pet to"
+      - "§eapply this upgrade!"
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: d09368a0dc03b57a7d68e2b2c05b72047bd65c276c014d993976a747b2446c99
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: RARE_KUUDRA_CHUNK
+    material: player_head
+    name: "Meaty Kuudra Chunk"
+    rarity: RARE
+    lore:
+      - "§7A chunk of Kuudra's enchanted"
+      - "§7flesh, capable of upgrading your"
+      - "§cKuudra Pet§7 to §9Rare§7 rarity!"
+      - ""
+      - "§eRight-click on your Kuudra Pet to"
+      - "§eapply this upgrade!"
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: d09368a0dc03b57a7d68e2b2c05b72047bd65c276c014d993976a747b2446c99
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: EPIC_KUUDRA_CHUNK
+    material: player_head
+    name: "Hardened Kuudra Chunk"
+    rarity: EPIC
+    lore:
+      - "§7A chunk of Kuudra's enchanted"
+      - "§7flesh, capable of upgrading your"
+      - "§cKuudra Pet§7 to §5Epic§7 rarity!"
+      - ""
+      - "§eRight-click on your Kuudra Pet to"
+      - "§eapply this upgrade!"
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: d09368a0dc03b57a7d68e2b2c05b72047bd65c276c014d993976a747b2446c99
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: LEGENDARY_KUUDRA_CHUNK
+    material: player_head
+    name: "Enriched Kuudra Chunk"
+    rarity: LEGENDARY
+    lore:
+      - "§7A chunk of Kuudra's enchanted"
+      - "§7flesh, capable of upgrading your"
+      - "§cKuudra Pet§7 to §6Legendary§7 rarity!"
+      - ""
+      - "§eRight-click on your Kuudra Pet to"
+      - "§eapply this upgrade!"
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: d09368a0dc03b57a7d68e2b2c05b72047bd65c276c014d993976a747b2446c99
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: ELLES_PICKAXE
+    material: iron_pickaxe
+    name: "Elle's Pickaxe"
+    rarity: SPECIAL
+    default_statistics:
+      damage: 10
+      mining_speed: 250
+    lore:
+      - "§8Breaking Power 5"
+      - ""
+      - "§cObtained from Kuudra (not available yet)"
