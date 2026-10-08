@@ -88,6 +88,7 @@ public class DiamondGoblin extends BestiaryMob {
 			@Override
 			public @NonNull List<LootRecord> getLootTable() {
 				return List.of(
+						new LootRecord(ItemType.PET_ITEM_PURE_MITHRIL_GEM, 1, 1),
 						new LootRecord(ItemType.MITHRIL, 20, 100)
 				);
 			}

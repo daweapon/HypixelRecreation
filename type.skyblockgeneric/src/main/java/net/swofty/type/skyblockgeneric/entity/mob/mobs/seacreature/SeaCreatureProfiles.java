@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.minestom.server.entity.EntityType;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 
@@ -112,6 +114,7 @@ public final class SeaCreatureProfiles {
             .mobTypes(MobType.AQUATIC, MobType.ANIMAL)
             .damageCooldownMs(400)
             .fishingXpReward(500).xpOrbs(20)
+            .lootTable(drops(new SkyBlockLootTable.LootRecord(ItemType.PET_ITEM_LUCKY_CLOVER_DROP, 1, 0.66)))
             .build();
 
     public static final SeaCreatureProfile SEA_LEECH = SeaCreatureProfile.builder("SEA_LEECH")
@@ -179,4 +182,18 @@ public final class SeaCreatureProfiles {
             // Lava
             LAVA_BLAZE
     );
+
+    private static SkyBlockLootTable drops(SkyBlockLootTable.LootRecord... records) {
+        return new SkyBlockLootTable() {
+            @Override
+            public List<LootRecord> getLootTable() {
+                return List.of(records);
+            }
+
+            @Override
+            public CalculationMode getCalculationMode() {
+                return CalculationMode.CALCULATE_INDIVIDUAL;
+            }
+        };
+    }
 }

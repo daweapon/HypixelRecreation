@@ -89,6 +89,7 @@ public class MobMinerZombie_15 extends BestiaryMob implements RegionPopulator {
 			@Override
 			public @NonNull List<LootRecord> getLootTable() {
 				return List.of(
+						new LootRecord(ItemType.PET_ITEM_EXP_SHARE_DROP, 1, 0.01),
 						new LootRecord(ItemType.ROTTEN_FLESH, 1, 100),
 						new LootRecord(ItemType.MINER_ARMOR_BOOTS, 1, 1),
 						new LootRecord(ItemType.MINER_ARMOR_LEGGINGS, 1, 1),

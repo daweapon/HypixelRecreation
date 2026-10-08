@@ -80,6 +80,7 @@ public class MobSneakyCreeper extends BestiaryMob implements RegionPopulator {
 			@Override
 			public @NonNull List<LootRecord> getLootTable() {
 				return List.of(
+						new LootRecord(ItemType.PET_ITEM_EXP_SHARE_DROP, 1, 0.01),
 						new LootRecord(ItemType.GUNPOWDER, 1, 100)
 						//new LootRecord(ItemType.EXP_SHARE_CORE, 1, 0.01)
 				);
