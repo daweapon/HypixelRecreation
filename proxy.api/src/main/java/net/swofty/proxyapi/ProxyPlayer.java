@@ -96,10 +96,14 @@ public record ProxyPlayer(UUID uuid) {
     }
 
     public CompletableFuture<Void> transferToWithIndication(UUID serverToTransferTo) {
+        return transferToWithIndication(serverToTransferTo, null);
+    }
+
+    public CompletableFuture<Void> transferToWithIndication(UUID serverToTransferTo, Pos arrival) {
         CompletableFuture<Void> future = new CompletableFuture<>();
         waitingForTransferComplete.put(uuid, future);
         transferPreparation.apply(uuid, serverToTransferTo)
-                .thenAccept(document -> sendTransfer(serverToTransferTo, document, future))
+                .thenAccept(document -> sendTransfer(serverToTransferTo, document, arrival, future))
                 .exceptionally(error -> {
                     failTransfer(future, error);
                     return null;
@@ -110,7 +114,7 @@ public record ProxyPlayer(UUID uuid) {
     public CompletableFuture<Void> transferWithoutDataTo(UUID serverToTransferTo) {
         CompletableFuture<Void> future = new CompletableFuture<>();
         waitingForTransferComplete.put(uuid, future);
-        sendTransfer(serverToTransferTo, null, future);
+        sendTransfer(serverToTransferTo, null, null, future);
         return future;
     }
 
@@ -118,12 +122,13 @@ public record ProxyPlayer(UUID uuid) {
         return resolveServer(serverType).thenCompose(this::transferWithoutDataTo);
     }
 
-    private void sendTransfer(UUID serverToTransferTo, String document, CompletableFuture<Void> future) {
+    private void sendTransfer(UUID serverToTransferTo, String document, Pos arrival, CompletableFuture<Void> future) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("server_uuid", serverToTransferTo.toString());
+        if (document != null) data.put("document", document);
+        if (arrival != null) data.putAll(arrivalData(arrival));
         RedisClient.requestProxy(PLAYER_HANDLER,
-                        new PlayerHandlerProtocol.Request(uuid.toString(), PlayerHandlerProtocol.Action.TRANSFER_WITH_UUID,
-                                document == null
-                                        ? Map.of("server_uuid", serverToTransferTo.toString())
-                                        : Map.of("server_uuid", serverToTransferTo.toString(), "document", document)))
+                        new PlayerHandlerProtocol.Request(uuid.toString(), PlayerHandlerProtocol.Action.TRANSFER_WITH_UUID, data))
                 .thenAccept(response -> {
                     if (!response.success()) {
                         failTransfer(future, new IllegalStateException(response.error()));
@@ -168,6 +173,15 @@ public record ProxyPlayer(UUID uuid) {
 
     public CompletableFuture<Void> transferToWithIndication(ServerType serverType) {
         return resolveServer(serverType).thenCompose(this::transferToWithIndication);
+    }
+
+    public CompletableFuture<Void> transferToWithIndication(ServerType serverType, Pos arrival) {
+        return resolveServer(serverType).thenCompose(server -> transferToWithIndication(server, arrival));
+    }
+
+    private static Map<String, Object> arrivalData(Pos arrival) {
+        return Map.of("arrival_x", arrival.x(), "arrival_y", arrival.y(), "arrival_z", arrival.z(),
+                "arrival_yaw", arrival.yaw(), "arrival_pitch", arrival.pitch());
     }
 
     private CompletableFuture<UUID> resolveServer(ServerType serverType) {

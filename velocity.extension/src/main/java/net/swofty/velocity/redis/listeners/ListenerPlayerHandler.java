@@ -129,6 +129,17 @@ public class ListenerPlayerHandler implements RedisMessageHandler<
                     }
                 }
 
+                if (data.get("arrival_x") instanceof Number x) {
+                    RedisClient.requestServer(server,
+                        new TeleportProtocol(),
+                        new TeleportProtocol.Request(uuid.toString(),
+                            x.doubleValue(),
+                            ((Number) data.get("arrival_y")).doubleValue(),
+                            ((Number) data.get("arrival_z")).doubleValue(),
+                            ((Number) data.get("arrival_yaw")).floatValue(),
+                            ((Number) data.get("arrival_pitch")).floatValue(), null)).join();
+                }
+
                 transferHandler.addToDisregard();
                 transferHandler.transferTo(serverInfo.registeredServer())
                     .thenRun(transferHandler::removeFromDisregard);

@@ -16,6 +16,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.warps.ScrollUnlockReason;
+import net.swofty.type.skyblockgeneric.warps.ScrollWarp;
 import net.swofty.type.skyblockgeneric.warps.TravelScrollIslands;
 import net.swofty.type.skyblockgeneric.warps.TravelScrollType;
 
@@ -162,10 +163,7 @@ public class GUIFastTravelSubMenu extends StatelessView {
 
                 p.closeInventory();
                 p.sendMessage("<7>Warping you to {}<7>...", scroll.getDisplayName());
-                p.asProxyPlayer().transferToWithIndication(island.getServerType()).thenRun(() -> {
-                    p.asProxyPlayer().sendMessage("<7>You have been warped to {}<7>!", scroll.getDisplayName());
-                    p.asProxyPlayer().teleport(scroll.getLocation());
-                });
+                ScrollWarp.travel(p, scroll, island.getServerType());
             });
         }
     }
