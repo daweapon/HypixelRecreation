@@ -1,15 +1,19 @@
 package net.swofty.type.skyblockgeneric.crimson;
 
+import net.swofty.commons.YamlFileUtils;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.shop.catalogue.CatalogueEntry;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraCollectionTier;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.follower.CoinOffering;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.follower.KuudraFollowerRules;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -33,6 +37,27 @@ class KuudraTablesTest {
         assertEquals(List.of(0, 1_000, 3_000, 7_000, 12_000),
                 Arrays.stream(KuudraTier.values()).map(KuudraTier::getRequiredReputation).toList());
         assertEquals(300, Arrays.stream(KuudraTier.values()).mapToInt(KuudraTier::getFirstClearSkyBlockXP).sum());
+    }
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void emissaryKeyEntriesMatchTheTierTable() throws Exception {
+        Map<String, String> materials = Map.of("mage", "ENCHANTED_MYCELIUM", "barbarian", "ENCHANTED_RED_SAND");
+        for (Map.Entry<String, String> faction : materials.entrySet()) {
+            Map<String, Object> shop = YamlFileUtils.loadYaml(
+                    new File("../configuration/skyblock/shops/kuudra_keys_" + faction.getKey() + ".yml"));
+            List<CatalogueEntry> entries = ((List<Map<String, Object>>) shop.get("entries")).stream()
+                    .map(CatalogueEntry::parse).toList();
+            assertEquals(KuudraTier.values().length, entries.size());
+            for (KuudraTier tier : KuudraTier.values()) {
+                CatalogueEntry entry = entries.get(tier.ordinal());
+                assertEquals(tier.getKeyItemId(), entry.itemId());
+                assertEquals(tier.getKeyCoins(), (int) entry.cost().coins());
+                assertEquals(tier.getKeyMaterials(), entry.cost().items().get(faction.getValue()));
+                assertEquals(KuudraTier.KEY_NETHER_STARS, entry.cost().items().get("CORRUPTED_NETHER_STAR"));
+                assertEquals(tier.getRequiredReputation(), entry.requirement() == null ? 0 : entry.requirement().reputation());
+            }
+        }
     }
 
     @Test
