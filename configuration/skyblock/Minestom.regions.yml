@@ -406,7 +406,7 @@ regions:
     serverType: JERRYS_WORKSHOP
   - id: pond
     type: JERRY_POND
-    x1: -82
+    x1: -87
     y1: 110
     z1: -17
     x2: -35

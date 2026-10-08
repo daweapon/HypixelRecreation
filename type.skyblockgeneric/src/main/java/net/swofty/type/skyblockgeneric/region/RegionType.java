@@ -84,8 +84,8 @@ public enum RegionType {
 
     // Jerry's Workshop
     JERRYS_WORKSHOP("Jerry's Workshop", NamedTextColor.RED),
-    JERRY_POND("Jerry Pond", NamedTextColor.AQUA),
-    SUNKEN_JERRY_POND("Sunken Jerry Pond", NamedTextColor.AQUA),
+    JERRY_POND("Jerry Pond", NamedTextColor.AQUA, JerryPondIceConfiguration.class),
+    SUNKEN_JERRY_POND("Sunken Jerry Pond", NamedTextColor.AQUA, SunkenJerryPondIceConfiguration.class),
     TERRYS_SHACK("Terry's Shack", NamedTextColor.AQUA),
     MOUNT_JERRY("Mount Jerry", NamedTextColor.RED),
     HOT_SPRINGS("Hot Springs", NamedTextColor.DARK_RED),
@@ -93,7 +93,7 @@ public enum RegionType {
     GARYS_SHACK("Gary's Shack", NamedTextColor.AQUA),
     SHERRYS_SHOWROOM("Sherry's Showroom", NamedTextColor.YELLOW),
     EINARYS_EMPORIUM("Einary's Emporium", NamedTextColor.GOLD),
-    REFLECTIVE_POND("Reflective Pond"),
+    REFLECTIVE_POND("Reflective Pond", JerryPondIceConfiguration.class),
 
     // The Barn
     THE_BARN("The Barn", NamedTextColor.AQUA, BarnConfiguration.class),

@@ -28,6 +28,10 @@ public abstract class SkyBlockRegenConfiguration {
 
     public abstract long getRegenerationTime();
 
+    public boolean canRegenerate(MiningTask task) {
+        return true;
+    }
+
     public void addToQueue(SkyBlockPlayer player, Pos block, SharedInstance instance) {
         Optional<MiningTask> taskExists = findMiningTask(block);
 
@@ -95,7 +99,7 @@ public abstract class SkyBlockRegenConfiguration {
                         List<MiningTask> toAdd = new ArrayList<>();
 
                         mining.activeMiningTasks.forEach(task -> {
-                            if (task.getRegenerationTime() <= System.currentTimeMillis()) {
+                            if (task.getRegenerationTime() <= System.currentTimeMillis() && mining.canRegenerate(task)) {
                                 task.getInstance().setBlock(task.getPosition(), task.getReviveBlock());
 
                                 toRemove.add(task.getPosition());
