@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.DroppedItemEntityImpl;
+import net.swofty.type.skyblockgeneric.gifts.SnowCannon;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -30,6 +31,14 @@ public class ActionPlayerItemPickup implements HypixelEventClass {
                 ItemPickup.playPickupSound(player);
 
                 ItemType type = dropped.getAttributeHandler().getPotentialType();
+                if (type == ItemType.SNOWBALL) {
+                    amount = SnowCannon.absorbSnowballs(player, amount);
+                    if (amount == 0) {
+                        item.remove();
+                        return;
+                    }
+                    dropped.setAmount(amount);
+                }
                 if (player.canInsertItemIntoSacks(type, amount)) {
                     player.getSackItems().increase(type, amount);
                 } else {

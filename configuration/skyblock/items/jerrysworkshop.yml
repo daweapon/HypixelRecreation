@@ -59,16 +59,17 @@ items:
     material: player_head
     name: "Frosty the Snow Cannon"
     rarity: RARE
-    lore:
-      - "\xA77Holds and shoots Snowballs. When"
-      - "\xA77you pickup Snowballs, they increase"
-      - "\xA77the ammo held by this item."
-      - ""
-      - "\xA7eRight click to shoot!"
     default_statistics: { }
     components:
       - id: SKULL_HEAD
         texture: 768e0f41d81af076db05b38efbf1325b43fdfb7828d732673d6cf35e968d9dcc
+      - id: LORE_UPDATE
+        handler_id: SNOW_CANNON
+        is_absolute: false
+      - id: INTERACTABLE
+        handler_id: SNOW_CANNON
+      - id: SELLABLE
+        value: 10.0
   - id: VOLCANIC_ROCK
     material: player_head
     name: "Volcanic Rock"

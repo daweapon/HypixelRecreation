@@ -27,6 +27,7 @@ import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.bestiary.BestiaryData;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointInventory;
+import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
 import net.swofty.type.skyblockgeneric.gifts.SnowSuit;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkills;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperience;
@@ -249,6 +250,7 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, IceEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, PetScore.statistics(player));
         spare = ItemStatistics.add(spare, MythologicalItemHandlers.permanentStatistics(player));
+        spare = ItemStatistics.add(spare, BottleOfJyrre.permanentStatistics(player));
 
         return spare;
     }

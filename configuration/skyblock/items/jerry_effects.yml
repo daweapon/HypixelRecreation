@@ -1,0 +1,52 @@
+items:
+  - id: REFINED_BOTTLE_OF_JYRRE
+    material: potion
+    name: "Refined Bottle of Jyrre"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77Consume to gain \xA7b+300✎ Intelligence"
+      - "\xA77for \xA7a60m\xA77!"
+      - ""
+      - "\xA76Aged Like Fine Jyrre"
+      - "\xA77Consuming this grants permanent"
+      - "\xA7b+1✎ Intelligence\xA77."
+      - ""
+      - "\xA77You may consume \xA7a5 \xA77of these before"
+      - "\xA77they lose their magical energy."
+    components:
+      - id: INTERACTABLE
+        handler_id: REFINED_BOTTLE_OF_JYRRE
+      - id: SELLABLE
+        value: 30000.0
+
+  - id: SNOW_BLASTER
+    material: player_head
+    name: "Frosty the Snow Blaster"
+    rarity: EPIC
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: e07ac3cd0591ec0a36f9271baf74611624d39af7530bb19522529507a2e21b29
+      - id: LORE_UPDATE
+        handler_id: SNOW_CANNON
+        is_absolute: false
+      - id: INTERACTABLE
+        handler_id: SNOW_CANNON
+      - id: SELLABLE
+        value: 100.0
+
+  - id: SNOW_HOWITZER
+    material: player_head
+    name: "Frosty the Howitzer"
+    rarity: LEGENDARY
+    default_statistics: { }
+    components:
+      - id: SKULL_HEAD
+        texture: b8dc7e77c21c4e3228e2c0251bfe174741f7a33bf3267b0cc1f58e234bc2b9c5
+      - id: LORE_UPDATE
+        handler_id: SNOW_CANNON
+        is_absolute: false
+      - id: INTERACTABLE
+        handler_id: SNOW_CANNON
+      - id: SELLABLE
+        value: 100.0

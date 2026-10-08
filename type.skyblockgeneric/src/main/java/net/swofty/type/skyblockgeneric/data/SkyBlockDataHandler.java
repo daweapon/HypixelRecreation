@@ -30,6 +30,7 @@ import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
+import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
 import net.swofty.type.skyblockgeneric.potion.GodPotionService;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
@@ -723,6 +724,17 @@ public class SkyBlockDataHandler extends DataHandler {
 
         GIFTS_GIVEN("gifts_given", false, false, false,
                 DatapointInteger.class, new DatapointInteger("gifts_given", 0)),
+
+        JYRRE_BUFF_EXPIRATION("jyrre_buff_expiration", false, false, false,
+                DatapointLong.class, new DatapointLong("jyrre_buff_expiration", 0L),
+                null,
+                (player, datapoint) -> BottleOfJyrre.restore(player)),
+
+        JYRRE_BUFF_INTELLIGENCE("jyrre_buff_intelligence", false, false, false,
+                DatapointInteger.class, new DatapointInteger("jyrre_buff_intelligence", 0)),
+
+        REFINED_JYRRE_CONSUMED("refined_jyrre_consumed", false, false, false,
+                DatapointInteger.class, new DatapointInteger("refined_jyrre_consumed", 0)),
 
         ST_JERRY_GREEN_GIFT_YEAR("st_jerry_green_gift_year", false, false, false,
                 DatapointInteger.class, new DatapointInteger("st_jerry_green_gift_year", 0)),

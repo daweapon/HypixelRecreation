@@ -36,6 +36,8 @@ import net.swofty.type.generic.entity.hologram.PlayerHolograms;
 import net.swofty.type.generic.entity.hologram.ServerHolograms;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.skyblockgeneric.user.BitsService;
+import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
+import net.swofty.type.skyblockgeneric.gifts.SnowmanPet;
 import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
 import net.swofty.type.skyblockgeneric.potion.GodPotionService;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
@@ -307,6 +309,8 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
          */
         SkyBlockDataHandler.startRepeatSetValueLoop();
         BitsService.startFarming();
+        BottleOfJyrre.startAging();
+        SnowmanPet.startBlizzard();
         CoopSync.subscribe();
         PlayerDataService.register(new SkyBlockDomain());
         ProfilesDatabase.setHostedProfileCheck(SkyBlockDomain::isProfileHosted);

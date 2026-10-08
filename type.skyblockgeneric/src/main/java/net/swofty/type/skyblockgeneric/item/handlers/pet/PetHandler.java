@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.item.handlers.pet;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.skyblockgeneric.gifts.ReindeerPet;
+import net.swofty.type.skyblockgeneric.gifts.SnowmanPet;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.*;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
@@ -100,16 +101,22 @@ public enum PetHandler {
                     "<7>Grants <b>+{0} ✯ Magic Find <7>against", "<f>Winter Sea Creatures<7>."), Rarity.LEGENDARY)
     )),
     SNOWMAN(List.of(
-            at(LeveledPetAbility.notActive("Blizzard", new double[]{8, 0}, new double[]{0.08, 0.1},
+            at(LeveledPetAbility.events("Blizzard", SnowmanPet.BLIZZARD_BASE, SnowmanPet.BLIZZARD_PER_LEVEL,
+                    SnowmanPet::blizzard,
                     "<7>Enemies within <a>{0} <7>blocks are slowed", "<7>by <a>25% <7>and deal <a>{1}% <7>less damage."),
                     Rarity.LEGENDARY),
-            at(LeveledPetAbility.notActive("Frostbite", new double[]{0}, new double[]{0.1},
+            at(LeveledPetAbility.events("Frostbite", SnowmanPet.FROSTBITE_BASE, SnowmanPet.FROSTBITE_PER_LEVEL,
+                    SnowmanPet::frostbite,
                     "<7>Your freezing aura slows enemy", "<7>attacks causing you to take <a>{0}%", "<7>reduced damage"),
                     Rarity.LEGENDARY),
-            at(LeveledPetAbility.notActive("Snow Cannon", new double[]{10}, new double[]{0.1},
+            at(LeveledPetAbility.events("Snow Cannon", SnowmanPet.SNOW_CANNON_BASE, SnowmanPet.SNOW_CANNON_PER_LEVEL,
+                    SnowmanPet::snowCannon,
                     "<7>Shoots a snowball towards an enemy", "<7>when you attack dealing <a>{0}% <7>of",
                     "<7>your last dealt melee damage,", "<7>capped at <f>200,000<7>. <8>(1s cooldown)"),
-                    Rarity.LEGENDARY)
+                    Rarity.LEGENDARY),
+            at(LeveledPetAbility.gameplay("Ouch!", new double[0], new double[0],
+                    "<7>Your snowballs have <a>50% <7>chance of", "<7>dealing <c>double <7>damage!"),
+                    Rarity.MYTHIC)
     )),
     REINDEER(List.of(
             at(LeveledPetAbility.gameplay("Winter Sprint", new double[0], new double[0],
