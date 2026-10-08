@@ -322,7 +322,7 @@ public class ItemLore {
 	}
 
 	private static Text enchantmentTitle(SkyBlockEnchantment enchantment) {
-		String format = enchantment.type().getEnch().isUltimate() ? "<d><b>{} {:roman}</b>" : "<9>{} {:roman}";
+		String format = enchantment.type().getEnch().isUltimate() ? "<d><l>{} {:roman}" : "<9>{} {:roman}";
 		return Text.of(format, Text.parseLenient(enchantment.type().getName()), enchantment.level());
 	}
 

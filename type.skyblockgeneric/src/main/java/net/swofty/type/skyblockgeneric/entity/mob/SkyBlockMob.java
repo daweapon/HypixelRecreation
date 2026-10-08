@@ -100,7 +100,11 @@ public abstract class SkyBlockMob extends EntityCreature {
 
         this.customName = Text.parse(nameLine());
         this.set(DataComponents.CUSTOM_NAME, customName.asComponent());
-        nameDisplayEntity = new TextDisplayEntity(customName, meta -> meta.setTranslation(new Pos(0, getNameDisplayHeightOffset(), 0)));
+        nameDisplayEntity = new TextDisplayEntity(customName, meta -> {
+            meta.setTranslation(new Pos(0, getNameDisplayHeightOffset(), 0));
+            meta.setBackgroundColor(0);
+            meta.setShadow(true);
+        });
 
         setAutoViewable(true);
         setAutoViewEntities(true);
@@ -296,6 +300,13 @@ public abstract class SkyBlockMob extends EntityCreature {
 
     public boolean isImmuneToArrows() {
         return false;
+    }
+
+    @Override
+    public void remove() {
+        mobs.remove(this);
+        if (nameDisplayEntity != null && !nameDisplayEntity.isRemoved()) nameDisplayEntity.remove();
+        super.remove();
     }
 
     @Override

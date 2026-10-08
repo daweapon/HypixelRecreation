@@ -14,7 +14,8 @@ import java.util.UUID;
 
 /**
  * Every hit a player lands lowers all of that player's stats by 10%, to at most 40%, until the
- * Inquisitor is gone. It calls lightning down on the player's block, harder the longer it has lived.
+ * Inquisitor is gone. It calls lightning down on the player's block, harder the longer it has lived;
+ * jumping dodges it.
  */
 final class MinosInquisitorAbility implements MythologicalAbility {
     private static final String DRAIN = "Inquisitor's Judgement";
@@ -45,7 +46,8 @@ final class MinosInquisitorAbility implements MythologicalAbility {
         MythologicalCombat.target(mob)
                 .filter(target -> target.getPosition().distance(mob.getPosition()) <= LIGHTNING_RANGE)
                 .ifPresent(target -> {
-                    MythologicalCombat.lightning(mob.getInstance(), target.getPosition());
+                    MythologicalCombat.lightning(mob.getInstance(), target.getPosition().withY(Math.floor(target.getPosition().y())));
+                    if (!target.isOnGround()) return;
                     MobAttackService.strike(mob, target,
                             mob.getStatistics().getOverall(ItemStatistic.DAMAGE) * LIGHTNING_DAMAGE_MULTIPLIER);
                 });

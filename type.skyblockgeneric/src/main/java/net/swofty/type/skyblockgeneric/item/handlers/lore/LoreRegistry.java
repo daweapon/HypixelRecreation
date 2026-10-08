@@ -28,7 +28,7 @@ public class LoreRegistry {
                     ArrayList<String> lore = new ArrayList<>();
 
                     enchantments.forEach(enchantment -> {
-                        lore.add(Text.of(enchantment.type().getEnch().isUltimate() ? "<d><b>{} {:roman}" : "<9>{} {:roman}",
+                        lore.add(Text.of(enchantment.type().getEnch().isUltimate() ? "<d><l>{} {:roman}" : "<9>{} {:roman}",
                                 StringUtility.toNormalCase(enchantment.type().name()),
                                 enchantment.level()).serialize());
                         Text.of("<7><wrap:30>{}</wrap>",
