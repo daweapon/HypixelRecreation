@@ -2,6 +2,7 @@ package net.swofty.type.crimsonisle.npcs;
 
 import net.minestom.server.coordinate.Pos;
 import net.swofty.commons.text.Text;
+import net.swofty.type.crimsonisle.faction.OdgerQuestTopics;
 import net.swofty.type.crimsonisle.gui.odger.GUITrophyFishing;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
@@ -53,6 +54,7 @@ public class NPCOdger extends HypixelNPC {
         SkyBlockPlayer player = (SkyBlockPlayer) event.player();
         if (isInDialogue(player)) return;
         if (player.getTrophyFishData().isOdgerMet()) {
+            if (OdgerQuestTopics.intercept(player, () -> player.openView(new GUITrophyFishing()))) return;
             player.openView(new GUITrophyFishing());
             return;
         }
