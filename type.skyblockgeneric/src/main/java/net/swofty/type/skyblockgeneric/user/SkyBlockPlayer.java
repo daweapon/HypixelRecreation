@@ -1010,7 +1010,8 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
         if (HypixelConst.isIslandServer()) return;
 
-        if (!isBoosterCookieActive()) {
+        if (!isBoosterCookieActive()
+                && !net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.keepsCoinsOnDeath(this)) {
             sendMessage("<c>You died and lost {:.1} coins!", getCoins() / 2);
             setCoins(getCoins() / 2);
         }

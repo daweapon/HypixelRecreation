@@ -36,6 +36,7 @@ public final class VanquisherSpawns {
         chance *= 1 + CrimsonEssenceShop.witherPiperBonus(player) / 100D;
         chance *= 1 + AttributeEffectService.value(player.getHuntingData(), CRIMSON_SERENDIPITY) / 100D;
         chance *= 1 + player.getStatistics().allStatistics().getOverall(ItemStatistic.TRACKING) / 100D;
+        chance *= 1 + net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.vanquisherBonusPercent(player) / 100D;
         return chance;
     }
 

@@ -59,7 +59,8 @@ public class PlayerActionDamageMob implements HypixelEventClass {
 
         double damage = hit.getKey() * AttributeEffectService.outgoingDamageMultiplier(player.getHuntingData(), mob, false)
                 * net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.outgoingMultiplier(player, mob)
-                * net.swofty.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.outgoingMultiplier(player, mob);
+                * net.swofty.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.outgoingMultiplier(player, mob)
+                * net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.outgoingMultiplier(player, mob);
         boolean critical = hit.getValue();
 
         PlayerDamageMobValueUpdateEvent valueEvent = new PlayerDamageMobValueUpdateEvent(
