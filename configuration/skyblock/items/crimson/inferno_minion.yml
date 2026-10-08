@@ -1,0 +1,929 @@
+items:
+  - id: INFERNO_MINION
+    material: PLAYER_HEAD
+    name: "Inferno Minion"
+    rarity: RARE
+    components:
+      - id: MINION
+        minion_type: INFERNO
+        base_item: BLAZE_MINION
+        default_craftable: false
+        ingredients:
+          - DERELICT_ASHE:10
+          - DERELICT_ASHE:40
+          - MOLTEN_POWDER:1
+          - MOLTEN_POWDER:2
+          - MOLTEN_POWDER:4
+          - MOLTEN_POWDER:8
+          - MOLTEN_POWDER:16
+          - MOLTEN_POWDER:32
+          - MOLTEN_POWDER:64
+          - MOLTEN_POWDER:64
+          - MOLTEN_POWDER:64
+        tier_recipes:
+          - tier: 9
+            pattern:
+              - "AVA"
+              - "VBV"
+              - "AVA"
+            ingredients:
+              A: MOLTEN_POWDER:64
+              V: INFERNO_VERTEX:4
+          - tier: 10
+            pattern:
+              - "AVA"
+              - "VBV"
+              - "AVA"
+            ingredients:
+              A: MOLTEN_POWDER:64
+              V: INFERNO_VERTEX:12
+          - tier: 11
+            pattern:
+              - "AXA"
+              - "VBV"
+              - "AMA"
+            ingredients:
+              A: MOLTEN_POWDER:64
+              X: INFERNO_APEX:1
+              V: INFERNO_VERTEX:24
+            minions:
+              M: 8
+  - id: CRUDE_GABAGOOL
+    material: player_head
+    name: "Crude Gabagool"
+    rarity: UNCOMMON
+    lore:
+      - "§7Created by Inferno minions, use to"
+      - "§7feed Wisp pets or tier up into Fuel"
+      - "§7Gabagool."
+    components:
+      - id: SKULL_HEAD
+        texture: 7e6564bbfa749c9e0ef3ac2a3f2110139a55944841d10735cf900d1e29039418
+      - id: SELLABLE
+        value: 1.0
+  - id: VERY_CRUDE_GABAGOOL
+    material: player_head
+    name: "Very Crude Gabagool"
+    rarity: RARE
+    lore:
+      - "§7Compacted Crude Gabagool, use to"
+      - "§7feed Wisp pets or tier up into Fuel"
+      - "§7Gabagool."
+    components:
+      - id: SKULL_HEAD
+        texture: 7717933c40fbf936aa9288513efe19bda4601efc0e4ecad2e023b0c1d28444b
+      - id: SELLABLE
+        value: 1.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "CCC"
+              - "C C"
+              - "CCC"
+            ingredients:
+              C:
+                type: CRUDE_GABAGOOL
+                amount: 24
+            result:
+              type: VERY_CRUDE_GABAGOOL
+              amount: 1
+  - id: FUEL_GABAGOOL
+    material: player_head
+    name: "Fuel Gabagool"
+    rarity: RARE
+    lore:
+      - "§7Feed Wisp pets, tier up into Heavy"
+      - "§7Gabagool or craft Inferno minion"
+      - "§7fuel."
+    components:
+      - id: SKULL_HEAD
+        texture: b000aad6388ca47cb6f6cfc88d785671bd4780a850106ef47f2a8a2c3f35b3b1
+      - id: SELLABLE
+        value: 1.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "CCC"
+              - "CSC"
+              - "CCC"
+            ingredients:
+              C:
+                type: CRUDE_GABAGOOL
+                amount: 3
+              S:
+                type: SULPHURIC_COAL
+                amount: 1
+            result:
+              type: FUEL_GABAGOOL
+              amount: 1
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "SSS"
+              - "SVS"
+              - "SSS"
+            ingredients:
+              S:
+                type: SULPHURIC_COAL
+                amount: 1
+              V:
+                type: VERY_CRUDE_GABAGOOL
+                amount: 1
+            result:
+              type: FUEL_GABAGOOL
+              amount: 8
+  - id: HEAVY_GABAGOOL
+    material: player_head
+    name: "Heavy Gabagool"
+    rarity: EPIC
+    lore:
+      - "§7Feed Wisp pets, tier up into"
+      - "§7Hypergolic Gabagool or craft"
+      - "§7Inferno minion fuel."
+    components:
+      - id: SKULL_HEAD
+        texture: 704e0ac81e608c5605b505d4e9cd6e75397332c912c1ff8f79afe170f38b7a78
+      - id: SELLABLE
+        value: 1.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "FFF"
+              - "FSF"
+              - "FFF"
+            ingredients:
+              F:
+                type: FUEL_GABAGOOL
+                amount: 3
+              S:
+                type: SULPHURIC_COAL
+                amount: 1
+            result:
+              type: HEAVY_GABAGOOL
+              amount: 1
+  - id: HYPERGOLIC_GABAGOOL
+    material: player_head
+    name: "Hypergolic Gabagool"
+    rarity: LEGENDARY
+    lore:
+      - "§7Feed Wisp pets or craft into strong"
+      - "§7Inferno minion fuel."
+      - ""
+      - "§cHypergolic-grade fuels create"
+      - "§cextra unique items!"
+    components:
+      - id: SKULL_HEAD
+        texture: 244489c2432efa89e56411178e60ddde43a654974ad45d13996d48594deea399
+      - id: SELLABLE
+        value: 1.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - " H "
+              - "HSH"
+              - " H "
+            ingredients:
+              H:
+                type: HEAVY_GABAGOOL
+                amount: 3
+              S:
+                type: SULPHURIC_COAL
+                amount: 1
+            result:
+              type: HYPERGOLIC_GABAGOOL
+              amount: 1
+  - id: REAPER_PEPPER
+    material: player_head
+    name: "Reaper Pepper"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this §odangerous §7pepper to"
+      - "§7permanently gain §c+1❤ Health §7and"
+      - "§b+1❄ Cold Resistance§7."
+      - ""
+      - "§7You may eat up to §a5 §7peppers before"
+      - "§7it's considered truly dangerous."
+    components:
+      - id: SKULL_HEAD
+        texture: b5d617b4ce45705240bd48f5ba50e25ca8375290a212acc5f3039c2ed8178606
+      - id: INTERACTABLE
+        handler_id: REAPER_PEPPER
+  - id: GABAGOOL_THE_FISH
+    material: salmon
+    name: "Gabagool the Fish"
+    rarity: SPECIAL
+    lore:
+      - "§7If the salad is on top, I send it back."
+  - id: INFERNO_FUEL_CRUDE_GABAGOOL
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: RARE
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a10x"
+      - "§7Specialty: §bCrude Gabagool"
+      - "§7Specialty amount: §e1"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: FUEL
+        specialty: CRUDE_GABAGOOL
+        min_amount: 1
+        max_amount: 1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: GABAGOOL_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: FUEL_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_FUEL_CRUDE_GABAGOOL
+              amount: 1
+  - id: INFERNO_FUEL_NETHER_STALK
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: RARE
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a10x"
+      - "§7Specialty: §bNether Wart"
+      - "§7Specialty amount: §e3 to 7"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: FUEL
+        specialty: NETHER_WART
+        min_amount: 3
+        max_amount: 7
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: NETHER_WART_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: FUEL_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_FUEL_NETHER_STALK
+              amount: 1
+  - id: INFERNO_FUEL_MAGMA_CREAM
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: RARE
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a10x"
+      - "§7Specialty: §bMagma Cream"
+      - "§7Specialty amount: §e1 to 3"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: FUEL
+        specialty: MAGMA_CREAM
+        min_amount: 1
+        max_amount: 3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: MAGMA_CREAM_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: FUEL_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_FUEL_MAGMA_CREAM
+              amount: 1
+  - id: INFERNO_FUEL_BLAZE_ROD
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: RARE
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a10x"
+      - "§7Specialty: §bBlaze Rod"
+      - "§7Specialty amount: §e1"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: FUEL
+        specialty: BLAZE_ROD
+        min_amount: 1
+        max_amount: 1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: BLAZE_ROD_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: FUEL_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_FUEL_BLAZE_ROD
+              amount: 1
+  - id: INFERNO_FUEL_GLOWSTONE_DUST
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: RARE
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a10x"
+      - "§7Specialty: §bGlowstone Dust"
+      - "§7Specialty amount: §e2 to 3"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: FUEL
+        specialty: GLOWSTONE_DUST
+        min_amount: 2
+        max_amount: 3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: GLOWSTONE_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: FUEL_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_FUEL_GLOWSTONE_DUST
+              amount: 1
+  - id: INFERNO_HEAVY_CRUDE_GABAGOOL
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: EPIC
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a15x"
+      - "§7Specialty: §bCrude Gabagool"
+      - "§7Specialty amount: §e1"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HEAVY
+        specialty: CRUDE_GABAGOOL
+        min_amount: 1
+        max_amount: 1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: GABAGOOL_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HEAVY_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HEAVY_CRUDE_GABAGOOL
+              amount: 1
+  - id: INFERNO_HEAVY_NETHER_STALK
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: EPIC
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a15x"
+      - "§7Specialty: §bNether Wart"
+      - "§7Specialty amount: §e3 to 7"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HEAVY
+        specialty: NETHER_WART
+        min_amount: 3
+        max_amount: 7
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: NETHER_WART_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HEAVY_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HEAVY_NETHER_STALK
+              amount: 1
+  - id: INFERNO_HEAVY_MAGMA_CREAM
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: EPIC
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a15x"
+      - "§7Specialty: §bMagma Cream"
+      - "§7Specialty amount: §e1 to 3"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HEAVY
+        specialty: MAGMA_CREAM
+        min_amount: 1
+        max_amount: 3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: MAGMA_CREAM_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HEAVY_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HEAVY_MAGMA_CREAM
+              amount: 1
+  - id: INFERNO_HEAVY_BLAZE_ROD
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: EPIC
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a15x"
+      - "§7Specialty: §bBlaze Rod"
+      - "§7Specialty amount: §e1"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HEAVY
+        specialty: BLAZE_ROD
+        min_amount: 1
+        max_amount: 1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: BLAZE_ROD_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HEAVY_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HEAVY_BLAZE_ROD
+              amount: 1
+  - id: INFERNO_HEAVY_GLOWSTONE_DUST
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: EPIC
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§7Speed multiplier: §a15x"
+      - "§7Specialty: §bGlowstone Dust"
+      - "§7Specialty amount: §e2 to 3"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HEAVY
+        specialty: GLOWSTONE_DUST
+        min_amount: 2
+        max_amount: 3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: GLOWSTONE_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HEAVY_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HEAVY_GLOWSTONE_DUST
+              amount: 1
+  - id: INFERNO_HYPERGOLIC_CRUDE_GABAGOOL
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: LEGENDARY
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§cHypergolic-grade fuels create"
+      - "§cextra unique items! RARELY!"
+      - ""
+      - "§7Speed multiplier: §a20x"
+      - "§7Specialty: §bCrude Gabagool"
+      - "§7Specialty amount: §e1"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HYPERGOLIC
+        specialty: CRUDE_GABAGOOL
+        min_amount: 1
+        max_amount: 1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: GABAGOOL_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HYPERGOLIC_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HYPERGOLIC_CRUDE_GABAGOOL
+              amount: 1
+  - id: INFERNO_HYPERGOLIC_NETHER_STALK
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: LEGENDARY
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§cHypergolic-grade fuels create"
+      - "§cextra unique items! RARELY!"
+      - ""
+      - "§7Speed multiplier: §a20x"
+      - "§7Specialty: §bNether Wart"
+      - "§7Specialty amount: §e3 to 7"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HYPERGOLIC
+        specialty: NETHER_WART
+        min_amount: 3
+        max_amount: 7
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: NETHER_WART_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HYPERGOLIC_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HYPERGOLIC_NETHER_STALK
+              amount: 1
+  - id: INFERNO_HYPERGOLIC_MAGMA_CREAM
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: LEGENDARY
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§cHypergolic-grade fuels create"
+      - "§cextra unique items! RARELY!"
+      - ""
+      - "§7Speed multiplier: §a20x"
+      - "§7Specialty: §bMagma Cream"
+      - "§7Specialty amount: §e1 to 3"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HYPERGOLIC
+        specialty: MAGMA_CREAM
+        min_amount: 1
+        max_amount: 3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: MAGMA_CREAM_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HYPERGOLIC_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HYPERGOLIC_MAGMA_CREAM
+              amount: 1
+  - id: INFERNO_HYPERGOLIC_BLAZE_ROD
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: LEGENDARY
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§cHypergolic-grade fuels create"
+      - "§cextra unique items! RARELY!"
+      - ""
+      - "§7Speed multiplier: §a20x"
+      - "§7Specialty: §bBlaze Rod"
+      - "§7Specialty amount: §e1"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HYPERGOLIC
+        specialty: BLAZE_ROD
+        min_amount: 1
+        max_amount: 1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: BLAZE_ROD_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HYPERGOLIC_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HYPERGOLIC_BLAZE_ROD
+              amount: 1
+  - id: INFERNO_HYPERGOLIC_GLOWSTONE_DUST
+    material: player_head
+    name: "Inferno Minion Fuel"
+    rarity: LEGENDARY
+    lore:
+      - "§8Minion Fuel"
+      - ""
+      - "§7Can be used as minion fuel"
+      - "§7exclusively in the Inferno minion for"
+      - "§724 hours!"
+      - ""
+      - "§7Replaces §c4/5 §7of the regular minion"
+      - "§7production with a §bspecialty §7item."
+      - ""
+      - "§cHypergolic-grade fuels create"
+      - "§cextra unique items! RARELY!"
+      - ""
+      - "§7Speed multiplier: §a20x"
+      - "§7Specialty: §bGlowstone Dust"
+      - "§7Specialty amount: §e2 to 3"
+    components:
+      - id: SKULL_HEAD
+        texture: 602a1169309f05ef2f061b1fa0fe225f29d73a24f8f07ccc2a705deeaca069d1
+      - id: INFERNO_MINION_FUEL
+        grade: HYPERGOLIC
+        specialty: GLOWSTONE_DUST
+        min_amount: 2
+        max_amount: 3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "DFD"
+              - "DGD"
+              - "DFD"
+            ingredients:
+              D:
+                type: GLOWSTONE_DISTILLATE
+                amount: 1
+              F:
+                type: INFERNO_FUEL_BLOCK
+                amount: 1
+              G:
+                type: HYPERGOLIC_GABAGOOL
+                amount: 1
+            result:
+              type: INFERNO_HYPERGOLIC_GLOWSTONE_DUST
+              amount: 1

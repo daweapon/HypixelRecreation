@@ -151,7 +151,7 @@ public class GUIMinion extends HypixelInventoryGUI implements RefreshingGUI {
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
                 List<Text> lore = new ArrayList<>();
-                MinionComponent.getLore(minion.asSkyBlockItem(), minion.getSpeedPercentage())
+                MinionComponent.getLore(minion.asSkyBlockItem(), minion.getSpeedDivisor())
                         .forEach(line -> lore.add(Text.parseLenient(line)));
 
                 return ItemStacks.lines(
@@ -169,16 +169,18 @@ public class GUIMinion extends HypixelInventoryGUI implements RefreshingGUI {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 List<SkyBlockMinion.MinionTier> minionTiers = minion.getMinion().asSkyBlockMinion().getTiers();
+                SkyBlockMinion.MinionTier current = minionTiers.get(minion.getTier() - 1);
+                SkyBlockMinion.MinionTier next = minion.getTier() < minionTiers.size() ? minionTiers.get(minion.getTier()) : current;
 
-                int speedPercentage = minion.getSpeedPercentage();
+                double speedDivisor = minion.getSpeedDivisor();
                 final DecimalFormat formatter = new DecimalFormat("#.##");
 
                 return ItemStacks.item(Material.GOLD_INGOT, 1, Text.key("gui_minion.next_tier"),
                     Text.keyLines("gui_minion.next_tier.lore",
-                        formatter.format(minionTiers.get(minion.getTier() - 1).timeBetweenActions() / (1. + speedPercentage / 100.)),
-                        formatter.format(minionTiers.get(minion.getTier()).timeBetweenActions() / (1. + speedPercentage / 100.)),
-                        minionTiers.get(minion.getTier() - 1).storage(),
-                        minionTiers.get(minion.getTier()).storage()));
+                        formatter.format(current.timeBetweenActions() / speedDivisor),
+                        formatter.format(next.timeBetweenActions() / speedDivisor),
+                        current.storage(),
+                        next.storage()));
             }
         });
 

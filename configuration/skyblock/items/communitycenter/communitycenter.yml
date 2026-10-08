@@ -118,10 +118,12 @@ items:
     material: player_head
     name: "Inferno Fuel Block"
     rarity: RARE
+    lore:
+      - "§7Reacts with gabagool in the crafting"
+      - "§7of Inferno minion fuels."
     components:
       - id: SKULL_HEAD
         texture: 28a1884ee3f8a6e66692a91ed763cb78d9f2017706d8b42a9263b417b2d715d2
-      - id: NOT_FINISHED_YET
   - id: MATRIARCHS_PERFUME
     material: rabbit_stew
     name: "Matriarchs Perfume"

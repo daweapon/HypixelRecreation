@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.minion;
 import lombok.Getter;
 import lombok.Setter;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.Entity;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.timer.ExecutionType;
 import net.minestom.server.timer.Scheduler;
@@ -15,6 +16,7 @@ import net.swofty.type.skyblockgeneric.item.ItemQuantifiable;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.minion.extension.MinionExtensionData;
 import net.swofty.type.skyblockgeneric.minion.extension.extensions.MinionShippingExtension;
+import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
@@ -48,9 +50,7 @@ public record MinionHandler(Scheduler scheduler) {
             MinionExtensionData extensionData = islandMinion.getExtensionData();
             long timeBetweenActions = ((long) tier.timeBetweenActions() / MinionGenerationCommand.divisionFactor) * 1000L;
 
-            //Handle percentage speed increase from both fuels and minion upgrades
-            double percentageSpeedIncrease = islandMinion.getSpeedPercentage();
-            timeBetweenActions = (long) (timeBetweenActions / (1 + (percentageSpeedIncrease / 100)));
+            timeBetweenActions = (long) (timeBetweenActions / islandMinion.getSpeedDivisor());
 
             if (!instance.isChunkLoaded(minionEntity.getPosition().chunkX(), minionEntity.getPosition().chunkZ())) return;
 
@@ -172,10 +172,15 @@ public record MinionHandler(Scheduler scheduler) {
         private int currentStep = 0;
         private List<Pos> points = new ArrayList<>();
         private Runnable action;
+        private @Nullable Entity spawnedMob;
 
         public void onMinionDespawn(IslandMinionData.IslandMinion minion) {
             if (associatedHologram != null)
                 ServerHolograms.removeExternalHologram(associatedHologram);
+            if (spawnedMob != null) {
+                spawnedMob.remove();
+                spawnedMob = null;
+            }
         }
 
         public enum State {

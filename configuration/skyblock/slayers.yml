@@ -100,7 +100,7 @@ slayers:
     levels:
       - { level: 1, requiredXp: 10, title: Noob, stats: { health: 3 }, catalogued: ["<a>Droplet Wisp Pet"] }
       - { level: 2, requiredXp: 30, title: Novice, stats: { strength: 1 }, unlocks: [MOLTEN_POWDER, FIREDUST_DAGGER, MAWDUST_DAGGER] }
-      - { level: 3, requiredXp: 250, title: Skilled, stats: { health: 4 }, unlocks: [UPGRADE_STONE_FROST, BURSTSTOPPER_TALISMAN, WARNING_FLARE], catalogued: ["<9>Inferno Minion I"] }
+      - { level: 3, requiredXp: 250, title: Skilled, stats: { health: 4 }, unlocks: [INFERNO_MINION, UPGRADE_STONE_FROST, BURSTSTOPPER_TALISMAN, WARNING_FLARE] }
       - { level: 4, requiredXp: 1500, title: Destroyer, stats: { true_defense: 1 }, unlocks: [BURSTFIRE_DAGGER, BURSTMAW_DAGGER, DEMONLORD_GAUNTLET, TELEPORTER_PILL, SMOLDERING_CHAMBERS_TRAVEL_SCROLL] }
       - { level: 5, requiredXp: 5000, title: Bulldozer, stats: { health: 5 }, unlocks: [UPGRADE_STONE_GLACIAL, DESTRUCTION_CLOAK, TACTICAL_INSERTION] }
       - { level: 6, requiredXp: 20000, title: Savage, stats: { strength: 2 }, unlocks: [HEARTFIRE_DAGGER, HEARTMAW_DAGGER, BLAZETEKK_HAM_RADIO, ALERT_FLARE] }

@@ -20,6 +20,31 @@ public abstract class SkyBlockMinion {
     public abstract List<MinionExpectation> getExpectations();
     public abstract MinionAction getAction();
 
+    public List<String> getDescription(String name) {
+        return List.of(
+                "<7>Place this minion and it will start",
+                "<7>generating and mining " + name + "!",
+                "<7>Requires an open area to place",
+                "<7>" + name + ". Minions also work",
+                "<7>you are offline!");
+    }
+
+    public List<String> getAbilityLore(int tier) {
+        return List.of();
+    }
+
+    public int getBonusSpeedPercentage(IslandMinionData.IslandMinion minion) {
+        return 0;
+    }
+
+    /**
+     * Divides the action time after every percentage speed bonus, for minions whose fuel multiplies
+     * speed rather than adding to it.
+     */
+    public double getSpeedMultiplier(IslandMinionData.IslandMinion minion) {
+        return 1;
+    }
+
     public record MinionTier(int tier, float timeBetweenActions, int storage, String texture, Material heldItem, boolean craftable) {
         public int getSlots() {
             return storage / 64;

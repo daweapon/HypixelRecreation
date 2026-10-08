@@ -74,6 +74,7 @@ public enum MinionRegistry {
     SLIME(MinionSlime.class, ItemType.SLIME_MINION),
     SPIDER(MinionSpider.class, ItemType.SPIDER_MINION),
     ZOMBIE(MinionZombie.class, ItemType.ZOMBIE_MINION),
+    INFERNO(MinionInferno.class, ItemType.INFERNO_MINION),
     ;
 
     private static final Set<MinionRegistry> MINING = EnumSet.of(

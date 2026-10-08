@@ -23,6 +23,9 @@ import net.swofty.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
 import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.KatUpgrade;
 import net.swofty.type.skyblockgeneric.minion.MinionIngredient;
+import net.swofty.type.skyblockgeneric.minion.MinionTierRecipe;
+import net.swofty.type.skyblockgeneric.minion.inferno.InfernoFuelGrade;
+import net.swofty.type.skyblockgeneric.minion.inferno.InfernoMinionFuelComponent;
 import net.swofty.type.skyblockgeneric.utility.RarityValue;
 import net.swofty.type.skyblockgeneric.utility.RecipeParser;
 import net.swofty.type.skyblockgeneric.utility.groups.EnchantItemGroups;
@@ -388,8 +391,19 @@ public class ItemConfigParser {
 						));
 					}
 
-					yield new MinionComponent(minionType, baseItem, isByDefaultCraftable, ingredientsMap);
+					Map<Integer, MinionTierRecipe> tierRecipes = new HashMap<>();
+					for (Map<String, Object> tierConfig : safeConfig.getMapList("tier_recipes")) {
+						MinionTierRecipe recipe = parseMinionTierRecipe(SafeConfig.of(tierConfig));
+						tierRecipes.put(recipe.tier(), recipe);
+					}
+
+					yield new MinionComponent(minionType, baseItem, isByDefaultCraftable, ingredientsMap, tierRecipes);
 				}
+				case "INFERNO_MINION_FUEL" -> new InfernoMinionFuelComponent(
+						safeConfig.getEnum("grade", InfernoFuelGrade.class),
+						ItemType.valueOf(safeConfig.getString("specialty")),
+						safeConfig.getInt("min_amount", 1),
+						safeConfig.getInt("max_amount", 1));
 				case "MINION_FUEL" -> {
 					double percentage = safeConfig.getDouble("fuel_percentage");
 					long lastTime = safeConfig.getInt("last_time_ms");
@@ -754,6 +768,18 @@ public class ItemConfigParser {
 			Logger.error(e, "Unexpected error parsing component {} for item {}", id, itemId);
 			return null;
 		}
+	}
+
+	private static MinionTierRecipe parseMinionTierRecipe(SafeConfig config) {
+		Map<Character, MinionIngredient> ingredients = new HashMap<>();
+		config.getMap("ingredients").forEach((symbol, value) -> {
+			String[] parts = value.toString().split(":");
+			ingredients.put(symbol.charAt(0), new MinionIngredient(ItemType.valueOf(parts[0]), Integer.parseInt(parts[1])));
+		});
+		Map<Character, Integer> minionTiers = new HashMap<>();
+		config.getMap("minions").forEach((symbol, value) ->
+				minionTiers.put(symbol.charAt(0), Integer.parseInt(value.toString())));
+		return new MinionTierRecipe(config.getInt("tier"), config.getList("pattern", String.class), ingredients, minionTiers);
 	}
 
 	private static ItemStatistics parsePerLevelStatistics(SafeConfig config) {

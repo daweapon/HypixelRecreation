@@ -376,6 +376,28 @@ items:
         mythic_cost: 2000000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "CHC"
+              - "HKH"
+              - "CHC"
+            ingredients:
+              C:
+                type: CHILI_PEPPER
+                amount: 8
+              H:
+                type: HEAVY_GABAGOOL
+                amount: 4
+              K:
+                type: KELVIN_INVERTER
+                amount: 4
+            result:
+              type: ENTROPY_SUPPRESSOR
+              amount: 1
   - id: GOLDEN_BALL
     material: paper
     name: "Golden Ball"

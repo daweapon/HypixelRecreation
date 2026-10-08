@@ -15,6 +15,8 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.MinionFuelComponent;
 import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.minion.IslandMinionData;
+import net.swofty.type.skyblockgeneric.minion.MinionRegistry;
+import net.swofty.type.skyblockgeneric.minion.inferno.InfernoMinionFuelComponent;
 import net.swofty.type.skyblockgeneric.minion.extension.MinionExtension;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -39,17 +41,18 @@ public class MinionFuelExtension extends MinionExtension {
      * called from the minion tick as well as the GUI: fuel must expire while nobody
      * has the menu open.
      */
-    public boolean refresh() {
+    public boolean refresh(IslandMinionData.IslandMinion minion) {
         if (getItemTypePassedIn() == null) return false;
 
-        long duration = new SkyBlockItem(getItemTypePassedIn())
-                .getComponent(MinionFuelComponent.class).getFuelLastTimeInMS();
+        SkyBlockItem fuel = new SkyBlockItem(getItemTypePassedIn());
+        long duration = fuel.getComponent(MinionFuelComponent.class).getFuelLastTimeInMS();
         if (duration == 0) return true;
 
         long elapsed = Math.max(0, System.currentTimeMillis() - insertionTime);
         long consumed = elapsed / duration;
         if (consumed == 0) return count > 0;
 
+        leaveResidue(minion, fuel, (int) Math.min(consumed, count));
         count -= (int) Math.min(consumed, Integer.MAX_VALUE);
         if (count <= 0) {
             count = 0;
@@ -60,6 +63,18 @@ public class MinionFuelExtension extends MinionExtension {
         return true;
     }
 
+    private static void leaveResidue(IslandMinionData.IslandMinion minion, SkyBlockItem fuel, int expired) {
+        if (expired <= 0 || !fuel.hasComponent(InfernoMinionFuelComponent.class)) return;
+        ItemType residue = fuel.getComponent(InfernoMinionFuelComponent.class).getGrade().getResidue();
+        if (residue != null) minion.addItem(new SkyBlockItem(residue, expired));
+    }
+
+    private static boolean fits(IslandMinionData.IslandMinion minion, SkyBlockItem fuel, SkyBlockPlayer player) {
+        if (!fuel.hasComponent(InfernoMinionFuelComponent.class) || minion.getMinion() == MinionRegistry.INFERNO) return true;
+        player.sendMessage("<c>This fuel can only be used in an Inferno Minion!");
+        return false;
+    }
+
     @Override
     public @NonNull GUIClickableItem getDisplayItem(IslandMinionData.IslandMinion minion, int slot) {
         boolean shouldDisplayItem = true;
@@ -67,7 +82,7 @@ public class MinionFuelExtension extends MinionExtension {
         if (getItemTypePassedIn() == null) {
             shouldDisplayItem = false;
         } else {
-            if (!refresh()) {
+            if (!refresh(minion)) {
                 shouldDisplayItem = false;
                 minion.getExtensionData().setData(slot, MinionFuelExtension.this);
             }
@@ -82,6 +97,7 @@ public class MinionFuelExtension extends MinionExtension {
                     e.setCancelled(true);
 
                     if (fuelItem.hasComponent(MinionFuelComponent.class)) {
+                        if (!fits(minion, fuelItem, player)) return;
                         p.getInventory().setCursorItem(ItemStack.AIR);
                         MinionFuelExtension.this.addFuel(minion, slot, fuelItem);
                     } else {
@@ -136,6 +152,7 @@ public class MinionFuelExtension extends MinionExtension {
                     player.sendMessage("<c>You can only put fuel in this slot.");
                     return;
                 }
+                if (!fits(minion, fuelItem, player)) return;
 
                 if (getItemTypePassedIn() != fuelItem.getAttributeHandler().getPotentialType())
                     player.sendMessage("<a>Replaced your old fuel!");

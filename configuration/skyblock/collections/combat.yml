@@ -302,6 +302,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ENTROPY_SUPPRESSOR
   - amount: 500
     rewards:
     - type: XP

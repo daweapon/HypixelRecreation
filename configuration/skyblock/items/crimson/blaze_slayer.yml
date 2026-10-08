@@ -6,8 +6,6 @@ items:
     lore:
       - "§7Created once in a while by Inferno"
       - "§7minions using Hypergolic-grade fuel."
-      - ""
-      - "§cInferno Minions aren't available yet."
     components:
       - id: SKULL_HEAD
         texture: ae221bb733172207315acedcc5c99836a639862a3727da6d5df36b851fc191c4
@@ -36,8 +34,6 @@ items:
     lore:
       - "§7Created very rarely by Inferno"
       - "§7minions using Hypergolic-grade fuel."
-      - ""
-      - "§cInferno Minions aren't available yet."
     components:
       - id: SKULL_HEAD
         texture: ed78cc391affb80b2b35eb7364ff762d38424c07e724b99396dee921fbbc9cf
@@ -75,8 +71,6 @@ items:
       - "§8using a phosphate-based crystalline"
       - "§8ceramic host through an ion"
       - "§8exchange, or something..."
-      - ""
-      - "§cInferno Minion fuel isn't available yet."
     components:
       - id: SKULL_HEAD
         texture: 55d5ebef99868a9b6ace9489c9397e979fe0f2b56cafb2f69b94a8c59a856860

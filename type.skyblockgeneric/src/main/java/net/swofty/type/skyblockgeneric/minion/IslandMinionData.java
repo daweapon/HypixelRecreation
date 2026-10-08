@@ -41,7 +41,8 @@ public class IslandMinionData {
                 System.currentTimeMillis(), null,
                 new MinionHandler.InternalMinionTags(),
                 new MinionExtensionData(),
-                mithrilInfusion);
+                mithrilInfusion,
+                0L);
         minions.add(islandMinion);
         return islandMinion;
     }
@@ -65,6 +66,7 @@ public class IslandMinionData {
         private MinionHandler.InternalMinionTags internalMinionTags;
         private final MinionExtensionData extensionData;
         private boolean mithrilInfusion;
+        private long capsaicinExpiry;
 
         public void spawnMinion(SharedInstance instance) {
             minionEntity = new MinionEntityImpl(this, minion.asSkyBlockMinion());
@@ -129,7 +131,7 @@ public class IslandMinionData {
             MinionFuelExtension fuelExtension = (MinionFuelExtension)
                     extensionData.getOfType(MinionFuelExtension.class);
             ItemType minionFuel = fuelExtension.getItemTypePassedIn();
-            if (minionFuel != null && fuelExtension.refresh()
+            if (minionFuel != null && fuelExtension.refresh(this)
                     && (minionFuel != ItemType.SOLAR_PANEL || isDaytime())) {
                 percentageSpeedIncrease += (int) new SkyBlockItem(minionFuel).getComponent(MinionFuelComponent.class).getFuelPercentage();
             }
@@ -145,7 +147,13 @@ public class IslandMinionData {
                 percentageSpeedIncrease += (int) ElectionPerks.bonus(SkyBlockMayor.Perk.PROSPECTION);
             }
 
+            percentageSpeedIncrease += minion.asSkyBlockMinion().getBonusSpeedPercentage(this);
+
             return percentageSpeedIncrease;
+        }
+
+        public double getSpeedDivisor() {
+            return (1 + getSpeedPercentage() / 100.0) * minion.asSkyBlockMinion().getSpeedMultiplier(this);
         }
 
         private boolean isDaytime() {
@@ -176,6 +184,7 @@ public class IslandMinionData {
             data.put("minionUUID", minionUUID.toString());
             data.put("extensionData", extensionData.toString());
             data.put("mithrilInfusion", mithrilInfusion);
+            data.put("capsaicinExpiry", capsaicinExpiry);
             return data;
         }
 
@@ -223,7 +232,8 @@ public class IslandMinionData {
                     null,
                     new MinionHandler.InternalMinionTags(),
                     extensionData,
-                    data.containsKey("mithrilInfusion") && (boolean) data.get("mithrilInfusion")
+                    data.containsKey("mithrilInfusion") && (boolean) data.get("mithrilInfusion"),
+                    data.containsKey("capsaicinExpiry") ? ((Number) data.get("capsaicinExpiry")).longValue() : 0L
             );
         }
     }

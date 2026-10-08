@@ -1,5 +1,6 @@
 package net.swofty.type.island.events.traditional;
 
+import net.minestom.server.entity.PlayerHand;
 import net.minestom.server.event.player.PlayerEntityInteractEvent;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
@@ -7,6 +8,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.MinionEntityImpl;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIMinion;
+import net.swofty.type.skyblockgeneric.minion.inferno.CapsaicinEyedrops;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // Opens the minion management GUI when a player interacts with a minion entity on their island.
@@ -18,6 +20,10 @@ public class ActionPlayerClickMinion implements HypixelEventClass {
         SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
 
         if (event.getTarget() instanceof MinionEntityImpl minion) {
+            if (CapsaicinEyedrops.isHeld(player)) {
+                if (event.getHand() == PlayerHand.MAIN) CapsaicinEyedrops.apply(player, minion.getIslandMinion());
+                return;
+            }
             new GUIMinion(minion.getIslandMinion()).open(player);
         }
     }

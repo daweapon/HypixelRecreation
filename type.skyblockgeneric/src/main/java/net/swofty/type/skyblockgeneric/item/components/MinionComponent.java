@@ -5,6 +5,7 @@ import net.swofty.commons.StringUtility;
 import net.swofty.commons.text.Text;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeMinionData;
+import net.swofty.type.skyblockgeneric.item.ItemQuantifiable;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
 import net.swofty.type.skyblockgeneric.item.crafting.ShapedRecipe;
@@ -14,12 +15,15 @@ import net.swofty.type.skyblockgeneric.minion.MinionIngredient;
 import net.swofty.type.skyblockgeneric.minion.MinionRecipe;
 import net.swofty.type.skyblockgeneric.minion.MinionRegistry;
 import net.swofty.type.skyblockgeneric.minion.MinionReputationGates;
+import net.swofty.type.skyblockgeneric.minion.MinionTierRecipe;
 import net.swofty.type.skyblockgeneric.minion.SkyBlockMinion;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 public class MinionComponent extends SkyBlockItemComponent {
@@ -28,6 +32,11 @@ public class MinionComponent extends SkyBlockItemComponent {
 
     public MinionComponent(String minionType, String baseItem,
                            boolean isByDefaultCraftable, List<MinionIngredient> ingredients) {
+        this(minionType, baseItem, isByDefaultCraftable, ingredients, Map.of());
+    }
+
+    public MinionComponent(String minionType, String baseItem, boolean isByDefaultCraftable,
+                           List<MinionIngredient> ingredients, Map<Integer, MinionTierRecipe> tierRecipes) {
         this.minionRegistry = MinionRegistry.valueOf(minionType);
         this.baseItem = ItemType.get(baseItem);
 
@@ -56,16 +65,13 @@ public class MinionComponent extends SkyBlockItemComponent {
         getMinionRegistry().asSkyBlockMinion().getTiers().forEach(tier -> {
             if (!tier.craftable()) return; // Skip non-craftable tiers
 
-            List<String> pattern = new ArrayList<>(Arrays.asList(
-                    "AAA",
-                    "ABA",
-                    "AAA"
-            ));
-
             SkyBlockItem item = new SkyBlockItem(getMinionRegistry().getItemType());
             item.getAttributeHandler().setMinionData(new ItemAttributeMinionData.MinionData(tier.tier(), 0));
 
-            ShapedRecipe recipe = new ShapedRecipe(
+            MinionTierRecipe custom = tierRecipes.get(tier.tier());
+            ShapedRecipe recipe = custom != null
+                    ? customRecipe(item, custom)
+                    : new ShapedRecipe(
                     SkyBlockRecipe.RecipeType.MINION,
                     item,
                     MinionRecipe.fromNumber(tier.tier() - 1).getRecipeFunction().apply(new MinionRecipe.MinionRecipeData(
@@ -73,7 +79,7 @@ public class MinionComponent extends SkyBlockItemComponent {
                             this.baseItem,
                             getMinionRegistry().getItemType()
                     )),
-                    pattern
+                    new ArrayList<>(Arrays.asList("AAA", "ABA", "AAA"))
             );
             if (MinionReputationGates.factionFor(getMinionRegistry()) != null) {
                 recipe.setCanCraft(player -> MinionReputationGates.check(player, getMinionRegistry(), tier.tier()));
@@ -90,23 +96,46 @@ public class MinionComponent extends SkyBlockItemComponent {
         addInheritedComponent(new CraftableComponent(toReturn.toArray(new SkyBlockRecipe[0]), isByDefaultCraftable));
     }
 
-    public static List<String> getLore(SkyBlockItem item, int percentageSpeed) {
-        MinionRegistry minionRegistry = item.getComponent(MinionComponent.class).getMinionRegistry();
+    private ShapedRecipe customRecipe(SkyBlockItem result, MinionTierRecipe custom) {
+        Map<Character, ItemQuantifiable> ingredientMap = new HashMap<>();
+        custom.ingredients().forEach((symbol, ingredient) ->
+                ingredientMap.put(symbol, new ItemQuantifiable(ingredient.getItem(), ingredient.getAmount())));
+        ingredientMap.put('B', minionOfTier(custom.tier() - 1));
+        custom.minionTiers().forEach((symbol, minionTier) -> ingredientMap.put(symbol, minionOfTier(minionTier)));
 
-        List<String> lore = new ArrayList<>(Arrays.asList(
-                "<7>Place this minion and it will start",
-                "<7>generating and mining " + StringUtility.toNormalCase(minionRegistry.name()) + "!",
-                "<7>Requires an open area to place",
-                "<7>" + StringUtility.toNormalCase(minionRegistry.name()) + ". Minions also work",
-                "<7>you are offline!",
-                ""
-        ));
+        ShapedRecipe recipe = new ShapedRecipe(SkyBlockRecipe.RecipeType.MINION, result, ingredientMap, custom.pattern());
+        custom.minionTiers().forEach((symbol, minionTier) -> recipe.addExtraRequirement(symbol, minionItem ->
+                !minionItem.hasComponent(MinionComponent.class)
+                        || minionItem.getAttributeHandler().getMinionData().tier() == minionTier));
+        return recipe;
+    }
+
+    private ItemQuantifiable minionOfTier(int tier) {
+        SkyBlockItem minion = new SkyBlockItem(getMinionRegistry().getItemType());
+        minion.getAttributeHandler().setMinionData(new ItemAttributeMinionData.MinionData(tier, 0));
+        return new ItemQuantifiable(minion, 1);
+    }
+
+    public static List<String> getLore(SkyBlockItem item, int percentageSpeed) {
+        return getLore(item, 1. + percentageSpeed / 100.);
+    }
+
+    public static List<String> getLore(SkyBlockItem item, double speedDivisor) {
+        MinionRegistry minionRegistry = item.getComponent(MinionComponent.class).getMinionRegistry();
 
         SkyBlockMinion minion = item.getAttributeHandler().getMinionType().asSkyBlockMinion();
         ItemAttributeMinionData.MinionData data = item.getAttributeHandler().getMinionData();
         SkyBlockMinion.MinionTier tier = minion.getTiers().get(data.tier() - 1);
 
-        double timeBetweenActions = tier.timeBetweenActions() / (1. + percentageSpeed/100.);
+        List<String> lore = new ArrayList<>(minion.getDescription(StringUtility.toNormalCase(minionRegistry.name())));
+        lore.add("");
+        List<String> abilities = minion.getAbilityLore(data.tier());
+        if (!abilities.isEmpty()) {
+            lore.addAll(abilities);
+            lore.add("");
+        }
+
+        double timeBetweenActions = tier.timeBetweenActions() / speedDivisor;
 
         final DecimalFormat formattter = new DecimalFormat("#.##");
 
