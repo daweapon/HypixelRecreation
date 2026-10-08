@@ -12,11 +12,13 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
 import net.swofty.type.skyblockgeneric.entity.PetEntityImpl;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
+import net.swofty.type.skyblockgeneric.item.components.PetItemComponent;
 import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.AbilityRuntime;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetItems;
 import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
@@ -241,7 +243,11 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
             List<ActiveAbility> active = new ArrayList<>();
             SkyBlockItem summoned = getEnabledPet();
             ItemType summonedType = summoned == null ? null : summoned.getAttributeHandler().getPotentialType();
-            if (summoned != null) addAbilities(active, summoned);
+            if (summoned != null) {
+                addAbilities(active, summoned);
+                PetItemComponent held = PetItems.held(summoned);
+                if (held != null && held.getAbility() != null) active.add(new ActiveAbility(summoned, held.getAbility()));
+            }
 
             Map<ItemType, SkyBlockItem> passive = new HashMap<>();
             for (SkyBlockItem pet : petsMap.keySet()) {

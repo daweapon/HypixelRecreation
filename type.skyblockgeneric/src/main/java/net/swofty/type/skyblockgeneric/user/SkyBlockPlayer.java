@@ -366,7 +366,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
             takeItem(type, inventoryAmount);
             getSackItems().decrease(type, leftToTakeFromSacks);
         } else {
-            getSackItems().decrease(type, sacksAmount);
+            getSackItems().decrease(type, amount);
         }
 
         return true;

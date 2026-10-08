@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.user.pets;
 
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -14,8 +15,8 @@ import java.util.EnumSet;
 import java.util.Set;
 
 /**
- * Pet Items: a pet holds at most one, which boosts its stats. Giving a pet a new item returns the
- * one it was holding.
+ * Pet Items: a pet holds at most one, which boosts its stats, its Pet Exp or its rarity. Giving a pet
+ * a new item returns the one it was holding for a fee based on that item's rarity.
  */
 public final class PetItems {
     public static final Set<ItemStatistic> COMBAT_STATISTICS = EnumSet.of(
@@ -34,28 +35,78 @@ public final class PetItems {
             return;
         }
         PetItemComponent component = petItem.getComponent(PetItemComponent.class);
-        ItemType petType = pet.getAttributeHandler().getPotentialType();
-        if (!component.appliesTo(petType)) {
-            player.sendMessage("<c>This Pet Item can't be given to this pet!");
-            return;
-        }
-
         ItemType given = petItem.getAttributeHandler().getPotentialType();
         ItemType previous = pet.getAttributeHandler().getPetHeldItem();
-        if (previous == given) {
-            player.sendMessage("<c>Your pet is already holding this item!");
+        String problem = problem(pet, given, component, previous);
+        if (problem != null) {
+            player.sendMessage("<c>" + problem);
             return;
         }
 
-        pet.getAttributeHandler().setPetHeldItem(given);
+        long fee = previous == null ? 0 : swapFee(new SkyBlockItem(previous).getAttributeHandler().getRarity());
+        if (player.getCoins() < fee) {
+            player.sendMessage("<c>You need <6>" + String.format("%,d", fee) + " Coins <c>to take back your pet's current item!");
+            return;
+        }
+        if (fee > 0) player.removeCoins(fee);
+
+        Rarity before = pet.getAttributeHandler().getRarity();
+        hold(pet, given);
         player.setItemInHand(petItem.getAmount() > 1 ? withAmount(petItem, petItem.getAmount() - 1) : null);
         if (previous != null) player.addAndUpdateItem(new SkyBlockItem(previous));
+        player.getPetData().refreshCachedAbilities();
+        if (pet.getAttributeHandler().getRarity() != before) player.getPetData().updatePetEntityImpl(player);
 
         String petName = "<color:" + pet.getAttributeHandler().getRarity().getColor().asHexString() + ">"
                 + pet.getComponent(PetComponent.class).getPetName();
         String itemName = "<color:" + petItem.getAttributeHandler().getRarity().getColor().asHexString() + ">"
                 + petItem.getDisplayName();
         player.sendMessage("<a>Your " + petName + " <a>is now holding " + itemName + "<a>.");
+    }
+
+    public static @Nullable String problem(SkyBlockItem pet, ItemType given, PetItemComponent component,
+                                           @Nullable ItemType previous) {
+        ItemType petType = pet.getAttributeHandler().getPotentialType();
+        if (!component.appliesTo(petType)) return "This Pet Item can't be given to this pet!";
+        if (previous == given) return "Your pet is already holding this item!";
+        if (component.getTierBoost() != null) {
+            Rarity target = baseRarity(pet).upgrade();
+            PetComponent petComponent = pet.getComponent(PetComponent.class);
+            if (target.ordinal() > component.getTierBoost().maxFor(petType).ordinal()
+                    || !petComponent.getRarities().contains(target)) {
+                return "This pet can't be boosted to a higher rarity!";
+            }
+        }
+        return null;
+    }
+
+    public static void hold(SkyBlockItem pet, @Nullable ItemType item) {
+        Rarity base = baseRarity(pet);
+        pet.getAttributeHandler().setPetHeldItem(item);
+        PetItemComponent held = held(pet);
+        pet.getAttributeHandler().setRarity(held != null && held.getTierBoost() != null ? base.upgrade() : base);
+    }
+
+    public static Rarity baseRarity(SkyBlockItem pet) {
+        Rarity rarity = pet.getAttributeHandler().getRarity();
+        return isTierBoosted(pet) ? rarity.downgrade() : rarity;
+    }
+
+    public static boolean isTierBoosted(@Nullable SkyBlockItem pet) {
+        PetItemComponent held = held(pet);
+        return held != null && held.getTierBoost() != null;
+    }
+
+    public static long swapFee(Rarity heldRarity) {
+        return switch (heldRarity) {
+            case COMMON -> 25_000;
+            case UNCOMMON -> 50_000;
+            case RARE -> 100_000;
+            case EPIC -> 250_000;
+            case LEGENDARY -> 500_000;
+            case MYTHIC -> 1_000_000;
+            default -> 2_500_000;
+        };
     }
 
     public static @Nullable ItemType heldType(@Nullable SkyBlockItem pet) {
@@ -70,15 +121,21 @@ public final class PetItems {
         return item.hasComponent(PetItemComponent.class) ? item.getComponent(PetItemComponent.class) : null;
     }
 
+    private static @Nullable PetItemComponent active(@Nullable SkyBlockItem pet) {
+        PetItemComponent item = held(pet);
+        return item == null || item.isInactive() ? null : item;
+    }
+
     /**
      * The pet's own stats at its level, including what its held Pet Item adds, but not its
      * abilities. This is what Chimera and the Manticore Claw copy.
      */
     public static ItemStatistics statistics(SkyBlockItem pet) {
         PetComponent component = pet.getComponent(PetComponent.class);
-        ItemStatistics base = component.statisticsAt(pet.getAttributeHandler().getRarity(), PetLevels.level(pet));
+        int level = PetLevels.level(pet);
+        ItemStatistics base = component.statisticsAt(pet.getAttributeHandler().getRarity(), level);
 
-        PetItemComponent item = held(pet);
+        PetItemComponent item = active(pet);
         if (item == null) return base;
         ItemStatistics.Builder boosted = ItemStatistics.builder();
         for (ItemStatistic statistic : ItemStatistic.values()) {
@@ -87,7 +144,11 @@ public final class PetItems {
             double percent = item.getAllPetStatisticsBoost() + item.getPetStatisticBoosts().getOrDefault(statistic, 0D);
             if (percent != 0) boosted.withBase(statistic, value * percent / 100D);
         }
-        return ItemStatistics.add(ItemStatistics.add(base, boosted.build()), item.getStatistics());
+        ItemStatistics total = ItemStatistics.add(ItemStatistics.add(base, boosted.build()), item.getStatistics());
+        if (item.hasLevelStatistics()) {
+            total = ItemStatistics.add(total, ItemStatistics.multiply(item.getLevelStatistics(), level / item.getLevelStep()));
+        }
+        return total;
     }
 
     public static ItemStatistics combatStatistics(ItemStatistics statistics, double fraction) {
@@ -100,15 +161,25 @@ public final class PetItems {
     }
 
     public static boolean isKnockbackImmune(SkyBlockPlayer player) {
-        PetItemComponent item = held(player.getPetData().getEnabledPet());
+        PetItemComponent item = active(player.getPetData().getEnabledPet());
         return item != null && item.isKnockbackImmune();
     }
 
     public static double expMultiplier(SkyBlockItem pet, SkillCategories skill) {
-        PetItemComponent item = held(pet);
+        PetItemComponent item = active(pet);
         if (item == null || item.getPetExpBoost() == 0) return 1;
         if (item.getPetExpSkill() != null && item.getPetExpSkill() != skill) return 1;
         return 1 + item.getPetExpBoost() / 100D;
+    }
+
+    public static double expShareRate(@Nullable SkyBlockItem pet) {
+        PetItemComponent item = active(pet);
+        return item == null ? 0 : item.getExpShareRate() / 100D;
+    }
+
+    public static double trophyTierMultiplier(SkyBlockPlayer player, String tier) {
+        PetItemComponent item = active(player.getPetData().getEnabledPet());
+        return item == null ? 1 : 1 + item.getTrophyTierBoost().getOrDefault(tier, 0D) / 100D;
     }
 
     private static SkyBlockItem withAmount(SkyBlockItem item, int amount) {

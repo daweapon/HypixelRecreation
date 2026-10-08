@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import net.swofty.type.skyblockgeneric.fishing.registry.TrophyFishDefinition;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetItems;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -106,8 +107,10 @@ public final class TrophyFishRoller {
         }
         double charm = 1D + charmPercent / 100D;
         UUID uuid = player.getUuid();
-        if (LootRoll.roll(uuid, definition.itemType(TrophyTier.DIAMOND), DIAMOND_CHANCE * charm)) return TrophyTier.DIAMOND;
-        if (LootRoll.roll(uuid, definition.itemType(TrophyTier.GOLD), GOLD_CHANCE * charm)) return TrophyTier.GOLD;
+        double diamond = DIAMOND_CHANCE * charm * PetItems.trophyTierMultiplier(player, TrophyTier.DIAMOND.name());
+        double gold = GOLD_CHANCE * charm * PetItems.trophyTierMultiplier(player, TrophyTier.GOLD.name());
+        if (LootRoll.roll(uuid, definition.itemType(TrophyTier.DIAMOND), diamond)) return TrophyTier.DIAMOND;
+        if (LootRoll.roll(uuid, definition.itemType(TrophyTier.GOLD), gold)) return TrophyTier.GOLD;
         if (LootRoll.roll(uuid, definition.itemType(TrophyTier.SILVER), SILVER_CHANCE * charm)) return TrophyTier.SILVER;
         return TrophyTier.BRONZE;
     }
