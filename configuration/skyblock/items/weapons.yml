@@ -1,6 +1,7 @@
 items:
   - id: SILVER_FANG
     material: IRON_SWORD
+    name: "Silver Fang"
     rarity: RARE
     name: "Silver Fang"
 
@@ -16,6 +17,7 @@ items:
         item_model: hypixel_skyblock:item/broken/broken_bow
   - id: ALCHEMISTS_STAFF
     material: POPPY
+    name: "Alchemist's Staff"
     rarity: RARE
     default_statistics:
       damage: 50
@@ -472,6 +474,7 @@ items:
         item_model: hypixel_skyblock:item/bingo/bingo_blaster
   - id: BLADE_OF_THE_VOLCANO
     material: IRON_SWORD
+    name: "Blade of the Volcano"
     rarity: RARE
     default_statistics:
       damage: 220
@@ -506,6 +509,7 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/dungeons/bonemerang
   - id: BONZO_STAFF
     material: BLAZE_ROD
+    name: "Bonzo's Staff"
     rarity: RARE
     default_statistics:
       damage: 160
@@ -569,6 +573,7 @@ items:
         standard_item_type: BOW
   - id: BURSTFIRE_DAGGER
     material: STONE_SWORD
+    name: "Kindlebane Dagger"
     rarity: EPIC
     default_statistics:
       damage: 130
@@ -619,6 +624,7 @@ items:
               amount: 1
   - id: BURSTMAW_DAGGER
     material: IRON_SWORD
+    name: "Mawdredge Dagger"
     rarity: EPIC
     default_statistics:
       damage: 130
@@ -949,6 +955,7 @@ items:
         item_model: hypixel_skyblock:item/broken/broken_wand
   - id: EMBER_ROD
     material: BLAZE_ROD
+    name: "Ember Rod"
     rarity: EPIC
     default_statistics:
       damage: 80
@@ -1028,6 +1035,7 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/combat_3/weapons/end_sword
   - id: ENRAGER
     material: IRON_SWORD
+    name: "Enrager"
     rarity: EPIC
     default_statistics:
       damage: 270
@@ -1106,6 +1114,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/fel_sword
   - id: FIREDUST_DAGGER
     material: STONE_SWORD
+    name: "Firedust Dagger"
     rarity: RARE
     default_statistics:
       damage: 90
@@ -1152,6 +1161,7 @@ items:
               amount: 1
   - id: FIRE_FREEZE_STAFF
     material: DANDELION
+    name: "Fire Freeze Staff"
     rarity: EPIC
     default_statistics:
       damage: 50
@@ -1195,6 +1205,7 @@ items:
               amount: 1
   - id: FIRE_FURY_STAFF
     material: BLAZE_ROD
+    name: "Fire Fury Staff"
     rarity: EPIC
     default_statistics:
       damage: 100
@@ -1238,6 +1249,7 @@ items:
               amount: 1
   - id: FIRE_VEIL_WAND
     material: BLAZE_ROD
+    name: "Fire Veil Wand"
     rarity: EPIC
     default_statistics:
       damage: 50
@@ -1278,6 +1290,7 @@ items:
               amount: 1
   - id: FLAMING_FLAY
     material: FISHING_ROD
+    name: "Flaming Flay"
     rarity: LEGENDARY
     default_statistics:
       damage: 200
@@ -1417,6 +1430,7 @@ items:
           signature: SOQb/wJC4uwWbZOKEdbt9k6yVTvofC/ax8qME9rSairtZhZe4vuA7iV+QVXi9rYP1ssh9gMCyeuIA7+jcQ1xwg4l+TUzZUUTV9zPz+lvKTKdQNFLHbfUWo452MTy3Gf79UbRQprkCBSgi8Tl4NPwlIVxFV7s+D+/agS4oga6skqvZDX5/lakZBVWeed6gJtgBOsRJQZWAolJrOK7nz1wLR2I5w4nWKZhuKsHa5Xe47OKwopEuGLH8ZH4hjovY77vszmjJ6g31dq92WnKKhwkifb9k520FYlwZcH1tbXf5h8RBqoT7dylBlMuQg3MaRqn3QMb1ZeU8Y/3On/VmWP8GGH/rv44MoBQ0bNlG9ZI3b2qhRF5lCVER2cRt2J2U2NNLFTL8AkcHNqWt8bVnlFIFPzhypdVRzUKi6xOtDVwQZmvlHUPnQUbH30Xkb99nducU0JNcQPIFIV1WDdEXKvM7541zVBl3tqQogUVqfHza+wzH3uQZUGqY2xmQA70HcQDby35d4ilQh++AMoqK/J97Z3QIde/znWEv2M3z9IF1no+GRmclq/bM4MAcdhN5PxsH60hOINwwVmQCtPV8spWQHYia5zM8nXuyOsEfKNQBLuJHUXirHKf3kiWiRbt5aTqtkUHh1k2DYpAiHViAlY2cpWHnwUByxiRTDAoDUEMaLw=
   - id: GENERALS_HOPE_OF_THE_RESISTANCE
     material: SUNFLOWER
+    name: "General's Hope of the Resistance"
     rarity: LEGENDARY
     components:
       - id: STANDARD_ITEM
@@ -1469,6 +1483,7 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/winter/weapons/glacial_scythe
   - id: GOLD_SWORD
     material: GOLDEN_SWORD
+    name: "Golden Sword"
     rarity: COMMON
     default_statistics:
       damage: 20
@@ -1531,6 +1546,7 @@ items:
         item_model: hypixel_skyblock:item/broken/broken_wand
   - id: HEARTFIRE_DAGGER
     material: STONE_SWORD
+    name: "Pyrochaos Dagger"
     rarity: LEGENDARY
     default_statistics:
       damage: 160
@@ -1585,6 +1601,7 @@ items:
               amount: 1
   - id: HEARTMAW_DAGGER
     material: IRON_SWORD
+    name: "Deathripper Dagger"
     rarity: LEGENDARY
     default_statistics:
       damage: 160
@@ -1639,6 +1656,7 @@ items:
               amount: 1
   - id: HELLSTORM_STAFF
     material: REDSTONE_TORCH
+    name: "Hellstorm Staff"
     rarity: EPIC
     default_statistics:
       damage: 120
@@ -1659,6 +1677,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/hellstorm_wand
   - id: HOLLOW_WAND
     material: FEATHER
+    name: "Hollow Wand"
     rarity: LEGENDARY
     default_statistics:
       damage: 150
@@ -1961,6 +1980,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/magma_bow
   - id: MAWDUST_DAGGER
     material: IRON_SWORD
+    name: "Twilight Dagger"
     rarity: RARE
     default_statistics:
       damage: 90
@@ -2312,6 +2332,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/rabbit_axe
   - id: RAGNAROCK_AXE
     material: GOLDEN_SWORD
+    name: "Ragnarock Axe"
     rarity: RARE
     default_statistics:
       damage: 200
@@ -2433,6 +2454,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/rogue_sword
   - id: RUNAANS_BOW
     material: BOW
+    name: "Runaan's Bow"
     rarity: LEGENDARY
     default_statistics:
       damage: 160
@@ -2444,6 +2466,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/runaans_bow
   - id: RUNIC_STAFF
     material: BLAZE_ROD
+    name: "Aurora Staff"
     rarity: LEGENDARY
     default_statistics:
       damage: 20
@@ -2468,6 +2491,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/aurora_staff
   - id: SAVANA_BOW
     material: BOW
+    name: "Savanna Bow"
     rarity: UNCOMMON
     default_statistics:
       damage: 50
@@ -2759,6 +2783,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/sniper_bow
   - id: SOULS_REBOUND
     material: BOW
+    name: "Soul's Rebound"
     rarity: EPIC
     default_statistics:
       damage: 450
@@ -2776,6 +2801,7 @@ items:
         standard_item_type: SWORD
   - id: SOUL_WHIP
     material: FISHING_ROD
+    name: "Soul Whip"
     rarity: EPIC
     default_statistics:
       damage: 145
@@ -2801,6 +2827,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/soul_whip
   - id: SPIDER_QUEENS_STINGER
     material: BOW
+    name: "Spider Queen's Stinger"
     rarity: EPIC
     default_statistics:
       damage: 360
@@ -2873,6 +2900,7 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/rift/wands/staff_of_the_rising_moon
   - id: STAFF_OF_THE_VOLCANO
     material: WHEAT
+    name: "Staff of the Volcano"
     rarity: RARE
     default_statistics:
       damage: 60
@@ -3275,6 +3303,7 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/foraging_2/stretching_sticks
   - id: SULPHUR_BOW
     material: BOW
+    name: "Sulphur Bow"
     rarity: EPIC
     lore:
       - "§6Ability: Arrow Infusion  §e§lON SHOOT"
@@ -3351,6 +3380,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/super_undead_bow
   - id: SWORD_OF_BAD_HEALTH
     material: WOODEN_SWORD
+    name: "Sword of Bad Health"
     rarity: UNCOMMON
     default_statistics:
       damage: 200
@@ -3488,6 +3518,7 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/rift/weapons/time_shuriken
   - id: TORMENTOR
     material: IRON_SWORD
+    name: "Tormentor"
     rarity: LEGENDARY
     default_statistics:
       damage: 525
@@ -3604,6 +3635,7 @@ items:
         item_model: hypixel_skyblock:item/broken/broken_sword
   - id: VENOMS_TOUCH
     material: BOW
+    name: "Venom's Touch"
     rarity: EPIC
     default_statistics:
       damage: 250
@@ -3750,6 +3782,7 @@ items:
         item_model: hypixel_skyblock:item/slayer/zombie/wands/wand_of_restoration
   - id: WAND_OF_STRENGTH
     material: STICK
+    name: "Wand of Strength"
     rarity: EPIC
     default_statistics:
       damage: 50
@@ -3827,6 +3860,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/wizard_wand
   - id: WOOD_SWORD
     material: WOODEN_SWORD
+    name: "Wooden Sword"
     rarity: COMMON
     default_statistics:
       damage: 20

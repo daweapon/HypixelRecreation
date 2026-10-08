@@ -518,13 +518,20 @@ public class ItemLore {
 	}
 
 	private static Text getConfiguredOrMaterialName(SkyBlockItem item, Material material) {
-		String name = item.getConfig() == null ? null : item.getConfig().getName();
-		if (name != null) return Text.parseLenient(name);
+		ConfigurableSkyBlockItem config = item.getConfig();
+		return Text.parseLenient(fallbackDisplayName(
+				config == null ? null : config.getId(),
+				config == null ? null : config.getName(),
+				material));
+	}
 
+	static String fallbackDisplayName(@Nullable String itemId, @Nullable String configuredName, Material material) {
+		if (configuredName != null) return configuredName;
+		if (itemId != null && !itemId.isBlank()) return StringUtility.toNormalCase(itemId);
 		// Component.translatable(material) only resolves client-side; any server code that
 		// flattens the name to plain text (e.g. SkyBlockItem.getDisplayName(), used by the bazaar
 		// GUI and chat messages) would otherwise print the raw key like "item.minecraft.wheat".
-		return Text.literal(materialDisplayName(material));
+		return materialDisplayName(material);
 	}
 
 	static String materialDisplayName(Material material) {
