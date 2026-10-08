@@ -1,6 +1,8 @@
 package net.swofty.codegen;
 
+import com.palantir.javapoet.ArrayTypeName;
 import com.palantir.javapoet.ClassName;
+import com.palantir.javapoet.FieldSpec;
 import com.palantir.javapoet.JavaFile;
 import com.palantir.javapoet.MethodSpec;
 import com.palantir.javapoet.TypeSpec;
@@ -19,6 +21,8 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class ItemTypeGenerator {
+    private static final String ALPHABET =
+            "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+,-./:;<=>?@[]^_{|}~";
     static void main(String[] args) throws Exception {
         if (args.length < 2) {
             throw new IllegalArgumentException("Expected args: <inputDir> <outputDir>");
@@ -84,34 +88,51 @@ public class ItemTypeGenerator {
         TypeSpec.Builder enumBuilder = TypeSpec.enumBuilder("ItemType")
                 .addModifiers(Modifier.PUBLIC);
 
+        List<String> materials = new ArrayList<>();
+        List<String> rarities = new ArrayList<>();
+        StringBuilder table = new StringBuilder();
         for (ItemYaml item : items) {
-            String enumName = toEnumConstantName(item.id());
-            String rarityExpr = resolveRarity(item);
-
-            enumBuilder.addEnumConstant(
-                    enumName,
-                    TypeSpec.anonymousClassBuilder(
-                            "$T.$L, $T.$L",
-                            material,
-                            item.material().toUpperCase(),
-                            rarity,
-                            rarityExpr
-                    ).build()
-            );
+            enumBuilder.addEnumConstant(toEnumConstantName(item.id()));
+            int materialIndex = indexOf(materials, item.material().toUpperCase(Locale.ROOT));
+            table.append(ALPHABET.charAt(materialIndex / ALPHABET.length()))
+                    .append(ALPHABET.charAt(materialIndex % ALPHABET.length()))
+                    .append(ALPHABET.charAt(indexOf(rarities, resolveRarity(item))));
         }
 
-        // Fields
         enumBuilder.addField(material, "material",
                 Modifier.PUBLIC, Modifier.FINAL);
         enumBuilder.addField(rarity, "rarity",
                 Modifier.PUBLIC, Modifier.FINAL);
 
-        // Constructor
+        // Constants take no arguments because every argument adds bytecode to the enum's static
+        // initializer, which the JVM caps at 64 KB. Each constant's material and rarity are three
+        // characters of TABLE: two for its index in MATERIALS, one for its index in RARITIES.
+        enumBuilder.addType(TypeSpec.classBuilder("Defaults")
+                .addModifiers(Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL)
+                .addField(FieldSpec.builder(ArrayTypeName.of(material), "MATERIALS", Modifier.STATIC, Modifier.FINAL)
+                        .initializer("{$L}", String.join(", ", materials.stream().map(m -> "Material." + m).toList()))
+                        .build())
+                .addField(FieldSpec.builder(ArrayTypeName.of(rarity), "RARITIES", Modifier.STATIC, Modifier.FINAL)
+                        .initializer("{$L}", String.join(", ", rarities.stream().map(r -> "Rarity." + r).toList()))
+                        .build())
+                .addField(FieldSpec.builder(String.class, "ALPHABET", Modifier.STATIC, Modifier.FINAL)
+                        .initializer("$S", ALPHABET)
+                        .build())
+                .addField(FieldSpec.builder(String.class, "TABLE", Modifier.STATIC, Modifier.FINAL)
+                        .initializer("$S", table.toString())
+                        .build())
+                .addMethod(MethodSpec.methodBuilder("index")
+                        .addModifiers(Modifier.STATIC)
+                        .returns(int.class)
+                        .addParameter(int.class, "at")
+                        .addStatement("return ALPHABET.indexOf(TABLE.charAt(at))")
+                        .build())
+                .build());
+
         enumBuilder.addMethod(MethodSpec.constructorBuilder()
-                .addParameter(material, "material")
-                .addParameter(rarity, "rarity")
-                .addStatement("this.material = material")
-                .addStatement("this.rarity = rarity")
+                .addStatement("int at = 3 * ordinal()")
+                .addStatement("this.material = Defaults.MATERIALS[Defaults.index(at) * Defaults.ALPHABET.length() + Defaults.index(at + 1)]")
+                .addStatement("this.rarity = Defaults.RARITIES[Defaults.index(at + 2)]")
                 .build()
         );
 
@@ -181,6 +202,13 @@ public class ItemTypeGenerator {
                 .addFileComment("AUTO-GENERATED FILE. DO NOT EDIT.")
                 .build()
                 .writeTo(outputDir);
+    }
+
+    private static int indexOf(List<String> values, String value) {
+        int index = values.indexOf(value);
+        if (index >= 0) return index;
+        values.add(value);
+        return values.size() - 1;
     }
 
     private static String resolveRarity(ItemYaml item) {
