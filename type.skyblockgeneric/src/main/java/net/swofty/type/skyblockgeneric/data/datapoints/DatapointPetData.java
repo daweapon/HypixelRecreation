@@ -119,6 +119,7 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
         @JsonIgnore
         private boolean nameTags = true;
         private PetEntityImpl enabledPetEntityImpl = null;
+        @JsonIgnore
         private transient List<ActiveAbility> activeAbilities;
         private final transient Map<PetAbility, AbilityRuntime> abilityRuntimes = new HashMap<>();
 
@@ -226,6 +227,7 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
             return petsMap.keySet().stream().filter(petsMap::get).findFirst().orElse(null);
         }
 
+        @JsonIgnore
         public List<ActiveAbility> getActiveAbilities() {
             List<ActiveAbility> cached = activeAbilities;
             if (cached == null) {
