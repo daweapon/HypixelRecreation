@@ -129,12 +129,3 @@ items:
     rarity: RARE
     material: COOKED_SALMON
     name: "Grizzly Salmon"
-  - id: WASHED_UP_SOUVENIR
-    rarity: EPIC
-    material: PLAYER_HEAD
-    name: "Washed Up Souvenir"
-    components:
-      - id: SELLABLE
-        value: 250000.0
-      - id: SKULL_HEAD
-        texture: 3777f04644dec5f80bfeaa7401acfbbc150eb25d3ff8be4220e7c34426cd727c

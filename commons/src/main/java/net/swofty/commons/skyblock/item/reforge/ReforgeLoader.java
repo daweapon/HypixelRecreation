@@ -26,6 +26,7 @@ public class ReforgeLoader {
         public String name;
         public String prefix;
         public List<String> applicableTypes;
+        public boolean stoneOnly;
         public Map<String, ReforgeStatisticData> statistics;
     }
 
@@ -108,7 +109,7 @@ public class ReforgeLoader {
         BiFunction<ItemStatistics, Integer, ItemStatistics> calculation = createCalculationFunction(config.statistics);
 
         String id = config.id == null || config.id.isBlank() ? config.name : config.id;
-        return new Reforge(id, config.name, config.prefix, applicableTypes, calculation);
+        return new Reforge(id, config.name, config.prefix, applicableTypes, config.stoneOnly, calculation);
     }
 
     private static BiFunction<ItemStatistics, Integer, ItemStatistics> createCalculationFunction(
@@ -238,6 +239,7 @@ public class ReforgeLoader {
 
     public static List<Reforge> getReforgesForType(ReforgeType type) {
         return LOADED_REFORGES.values().stream()
+                .filter(reforge -> !reforge.isStoneOnly())
                 .filter(reforge -> reforge.getApplicableTypes().contains(type))
                 .toList();
     }

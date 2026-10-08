@@ -9,6 +9,8 @@ import net.swofty.type.skyblockgeneric.event.value.events.PlayerDamagedByMobValu
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
+import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalGear;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 
@@ -37,7 +39,7 @@ public final class MobAttackService {
         double resistanceMultiplier = (100D + Math.max(0, baseDefense))
                 / (100D + Math.max(0, baseDefense + resistance));
         PlayerDamagedByMobValueUpdateEvent valueEvent = new PlayerDamagedByMobValueUpdateEvent(
-                player, (float) (damageDealt.getKey() * resistanceMultiplier), mob);
+                player, (float) (damageDealt.getKey() * resistanceMultiplier * gearMultiplier(mob, player)), mob);
         SkyBlockValueEvent.callValueUpdateEvent(valueEvent);
 
         float finalDamage = (float) valueEvent.getValue();
@@ -58,11 +60,16 @@ public final class MobAttackService {
 
     public static void trueStrike(SkyBlockMob mob, SkyBlockPlayer player, double damage) {
         if (damage <= 0 || player.isRemoved()) return;
+        damage *= gearMultiplier(mob, player);
         player.damage(new EntityDamage(mob, (float) damage));
         new DamageIndicator()
                 .damage((float) damage)
                 .pos(player.getPosition())
                 .critical(false)
                 .display(player.getInstance());
+    }
+
+    private static double gearMultiplier(SkyBlockMob mob, SkyBlockPlayer player) {
+        return mob instanceof MythologicalCreatureMob ? MythologicalGear.incomingDamageMultiplier(player) : 1;
     }
 }

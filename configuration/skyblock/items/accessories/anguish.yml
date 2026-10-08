@@ -14,7 +14,25 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 8d4793f4c7df5dbb7c67ac6cc551ee0d9998e15e35a737bc27ee453103a00b14
-      - id: NOT_FINISHED_YET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "B B"
+              - "ABA"
+            ingredients:
+              A:
+                type: SORROW
+                amount: 4
+              B:
+                type: PLASMA
+                amount: 4
+            result:
+              type: ANGUISH_TALISMAN
+              amount: 1
+
 
   - id: ANGUISH_RING
     material: PLAYER_HEAD
@@ -31,7 +49,29 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 73de3d0e0d7d2345a902305196012874411040ebe2c4e95fb2587dd4d1c09f37
-      - id: NOT_FINISHED_YET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: ANGUISH_TALISMAN
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: SORROW
+                amount: 8
+              B:
+                type: PLASMA
+                amount: 8
+              C:
+                type: ANGUISH_TALISMAN
+                amount: 1
+            result:
+              type: ANGUISH_RING
+              amount: 1
+
 
   - id: ANGUISH_ARTIFACT
     material: PLAYER_HEAD
@@ -48,4 +88,25 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 215e22698071bc74bdfde25f61d8f69028c0e7b8ed82366c287315e56a233efc
-      - id: NOT_FINISHED_YET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: ANGUISH_RING
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: SORROW
+                amount: 16
+              B:
+                type: PLASMA
+                amount: 16
+              C:
+                type: ANGUISH_RING
+                amount: 1
+            result:
+              type: ANGUISH_ARTIFACT
+              amount: 1

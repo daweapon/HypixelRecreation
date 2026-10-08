@@ -5,6 +5,7 @@ import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.minestom.server.particle.Particle;
 import net.swofty.commons.StringUtility;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributePetData;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
@@ -19,6 +20,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.PetHandler;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetItems;
 import net.swofty.type.skyblockgeneric.user.pets.PetScore;
 import net.swofty.type.skyblockgeneric.utility.RarityValue;
 import org.jetbrains.annotations.Nullable;
@@ -95,9 +97,9 @@ public class PetComponent extends SkyBlockItemComponent {
         lore.add("<8>" + skillCategory.asCategory().getName() + " Pet");
         lore.add(" ");
 
+        ItemStatistics statistics = PetItems.statistics(item);
         for (ItemStatistic stat : ItemStatistic.values()) {
-            double value = baseStatistics.getOverall(stat)
-                    + getPerLevelStatistics(rarity).getOverall(stat) * level;
+            double value = statistics.getOverall(stat);
             if (value == 0) continue;
 
             if (stat.getIsPercentage()) {
@@ -111,6 +113,15 @@ public class PetComponent extends SkyBlockItemComponent {
             lore.add(" ");
             lore.add("<6>" + ability.getName());
             lore.addAll(ability.getDescription(item));
+        }
+
+        ItemType heldItem = item.getAttributeHandler().getPetHeldItem();
+        PetItemComponent held = PetItems.held(item);
+        if (heldItem != null && held != null) {
+            Rarity heldRarity = new SkyBlockItem(heldItem).getAttributeHandler().getRarity();
+            lore.add(" ");
+            lore.add("<6>Held Item: <color:" + heldRarity.getColor().asHexString() + ">" + heldItem.getDisplayName());
+            lore.addAll(held.getDescription());
         }
 
         if (level < 100) {

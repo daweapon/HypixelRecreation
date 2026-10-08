@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.handlers.interactable;
 
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
 import net.swofty.type.skyblockgeneric.elections.jerrypocalypse.HiddenJerryType;
 import net.swofty.type.skyblockgeneric.elections.jerrypocalypse.JerryBoxLoot;
 
@@ -22,6 +23,7 @@ public class InteractableRegistry {
     private static final Map<String, InteractableItemConfig> REGISTERED_HANDLERS = new HashMap<>();
 
     static {
+        MythologicalItemHandlers.registerInteractables();
         register("SKYBLOCK_MENU_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 ((skyBlockPlayer, skyBlockItem) -> skyBlockPlayer.openView(new GUISkyBlockMenu()))
         ).leftClickHandler(

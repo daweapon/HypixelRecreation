@@ -32,13 +32,18 @@ public class RecipeParser {
         // Parse requirements if they exist
         List<RequirementCheck> requirements = parseRequirements((Map<String, Object>) config.get("requirements"));
 
+        SkyBlockRecipe<?> recipe;
         if (type.equalsIgnoreCase("shapeless")) {
-            return parseShapelessRecipe(config, craftingType, result, requirements);
+            recipe = parseShapelessRecipe(config, craftingType, result, requirements);
         } else if (type.equalsIgnoreCase("shaped")) {
-            return parseShapedRecipe(config, craftingType, result, requirements);
+            recipe = parseShapedRecipe(config, craftingType, result, requirements);
+        } else {
+            throw new IllegalArgumentException("Invalid recipe type: " + type);
         }
-
-        throw new IllegalArgumentException("Invalid recipe type: " + type);
+        if (config.get("upgrades_from") instanceof String upgradesFrom) {
+            recipe.setUpgradesFrom(ItemType.valueOf(upgradesFrom));
+        }
+        return recipe;
     }
 
     private record RequirementCheck(String leftVariable, String operation, String rightVariable, String failMessage) {

@@ -13,7 +13,8 @@ public enum ReforgeType {
     PICKAXES("Pickaxes"),
     AXES("Axes"),
     HOES("Hoes"),
-    VACUUMS("Vacuums");
+    VACUUMS("Vacuums"),
+    SPADES("Spades");
 
     private final String displayName;
 

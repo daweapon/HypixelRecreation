@@ -320,7 +320,8 @@ public class ItemLore {
 	}
 
 	private static Text enchantmentTitle(SkyBlockEnchantment enchantment) {
-		return Text.of("<9>{} {:roman}", Text.parseLenient(enchantment.type().getName()), enchantment.level());
+		String format = enchantment.type().getEnch().isUltimate() ? "<d><b>{} {:roman}</b>" : "<9>{} {:roman}";
+		return Text.of(format, Text.parseLenient(enchantment.type().getName()), enchantment.level());
 	}
 
 	private static void fillRune(LoreText lore) {

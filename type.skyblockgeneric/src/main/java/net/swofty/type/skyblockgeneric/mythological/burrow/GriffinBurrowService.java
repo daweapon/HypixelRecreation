@@ -8,7 +8,6 @@ import net.minestom.server.coordinate.Point;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.ServerType;
-import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.generic.HypixelConst;
@@ -22,6 +21,8 @@ import net.swofty.type.skyblockgeneric.mythological.MythologicalCreature;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalLootShare;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalVariant;
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalCoins;
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalGear;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -33,14 +34,13 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * Diana's Mythological Ritual in the Hub: each player holding an Ancestral Spade with a Griffin
+ * Diana's Mythological Ritual in the Hub: each player holding a Griffin spade with a Griffin
  * equipped follows their own chain of Griffin Burrows, digging up treasure or Mythological
  * creatures along the way.
  */
 public final class GriffinBurrowService implements MythologicalCreatureMob.Listener {
     public static final GriffinBurrowService INSTANCE = new GriffinBurrowService();
 
-    private static final int ANCESTRAL_CHAIN_LENGTH = 4;
     private static final double START_MIN_DISTANCE = 10;
     private static final double START_MAX_DISTANCE = 50;
     private static final double NEXT_MIN_DISTANCE = 20;
@@ -64,7 +64,7 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
     }
 
     public static boolean isHoldingSpade(SkyBlockPlayer player) {
-        return new SkyBlockItem(player.getItemInMainHand()).getAttributeHandler().getPotentialType() == ItemType.ANCESTRAL_SPADE;
+        return SpadeTier.held(player).isPresent();
     }
 
     public void start() {
@@ -169,13 +169,15 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
     private Optional<BurrowChain> newChain(SkyBlockPlayer player) {
         return GriffinBurrowSpots.near(player.getPosition(), START_MIN_DISTANCE, START_MAX_DISTANCE, ThreadLocalRandom.current())
                 .map(start -> {
-                    BurrowChain chain = new BurrowChain(ANCESTRAL_CHAIN_LENGTH, start);
+                    int length = SpadeTier.chainLength(new SkyBlockItem(player.getItemInMainHand()));
+                    BurrowChain chain = new BurrowChain(length, start);
                     chains.put(player.getUuid(), chain);
                     return chain;
                 });
     }
 
     private void excavate(SkyBlockPlayer player, BurrowChain chain) {
+        MythologicalCoins.onBurrowDug(player);
         int number = chain.getExcavated() + 1;
         if (chain.isLastBurrow()) {
             chain.finish();
@@ -196,28 +198,28 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
     }
 
     public void giveTreasure(SkyBlockPlayer player) {
-        BurrowTreasure treasure = BurrowTreasure.roll(ThreadLocalRandom.current());
-        if (treasure.getItem() == null) {
-            int coins = (int) Math.round(treasure.getCoins() * coinMultiplier(player)
-                    * Carnivals.multiplier(player, CarnivalPerk.DEADLY_GREED));
+        BurrowTreasure treasure = SpadeTier.held(player).orElse(SpadeTier.ANCESTRAL).roll(ThreadLocalRandom.current());
+        if (treasure.item() == null) {
+            long coins = MythologicalCoins.fromBurrow(player, treasure.coins());
+            if (coins <= 0) {
+                player.sendMessage("<6><l>Wow!</l> <e>You dug out <6>" + String.format("%,d", treasure.coins())
+                        + " coins<e>, but your <6>Crown of Avarice <e>ate them!");
+                return;
+            }
             player.addCoins(coins);
             player.sendMessage("<6><l>Wow!</l> <e>You dug out <6>" + String.format("%,d", coins) + " coins<e>!");
             return;
         }
-        SkyBlockItem item = new SkyBlockItem(treasure.getItem());
+        SkyBlockItem item = new SkyBlockItem(treasure.item());
         player.addAndUpdateItem(item);
         String color = item.getAttributeHandler().getRarity().getColor().asHexString();
         player.sendMessage("<6><l>RARE DROP!</l> <e>You dug out a <color:" + color + ">" + item.getDisplayName() + "<e>!");
     }
 
-    private static int coinMultiplier(SkyBlockPlayer player) {
-        ItemType helmet = new SkyBlockItem(player.getHelmet()).getAttributeHandler().getPotentialType();
-        return helmet == ItemType.CROWN_OF_GREED ? 2 : 1;
-    }
-
     private void summonDefenders(SkyBlockPlayer player, BurrowChain chain, GriffinBurrow burrow, Rarity griffin) {
         double tracking = player.getStatistics().allStatistics().getOverall(ItemStatistic.TRACKING)
-                + Carnivals.perkValue(player, CarnivalPerk.ELUSIVE_HUNTER);
+                + Carnivals.perkValue(player, CarnivalPerk.ELUSIVE_HUNTER)
+                + MythologicalGear.burrowTracking(player);
         if (GriffinPet.isMythic(player)) tracking += chain.getExcavated();
 
         MythologicalCreature forced = forcedCreatures.remove(player.getUuid());

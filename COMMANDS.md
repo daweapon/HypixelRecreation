@@ -159,6 +159,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/enchant <enchantment_type> <level>` | `/ench` | Enchants the contents o the players hand. | STAFF | No | `type.skyblockgeneric` |
 | `/giveskyblockxp <cause> [player]` | `/awardskyblockxp` | Gives yourself skyblock xp. | STAFF | No | `type.skyblockgeneric` |
 | `/item <item> [amount] [player]` | `/i`, `/sbitem` | Gives an item to the player. Also accepts /item <item> <player> with the default amount. Target is an online player selector. | STAFF | No | `type.skyblockgeneric` |
+| `/max coa` | — | Fills the Crown of Avarice in your hand (or on your head) to its 1,000,000,000 Coins consumed cap, granting the full Overindulgence bonus. | STAFF | No | `type.skyblockgeneric` |
 | `/maxprofile [player]` | — | Fully maxes out a profile, identical to THE MAX STICK. | STAFF | No | `type.skyblockgeneric` |
 | `/mithrilinfuse` | — | Mithril Infuses the minion in the players hand. | STAFF | No | `type.skyblockgeneric` |
 | `/recomb` | — | Recombobulates the item in the players hand.  Help uses /recombobulate, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
@@ -196,6 +197,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/deleteorb` | — | Deletes orbs at the player's location.  Help uses /removeorb, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
 | `/forcedarkauction` | — | Force starts a Dark Auction. | STAFF | No | `type.skyblockgeneric` |
 | `/forcedianamob <creature>` | `/dianamob` | Makes your next Griffin Mob burrow spawn the chosen Mythological creature (e.g. `MINOS_INQUISITOR`, `KING_MINOS`) instead of a random roll. Applies once; if your Griffin's rarity can't normally dig that creature, its first variant is used. Burrows only appear during Diana's Mythological Ritual. | STAFF | No | `type.skyblockgeneric` |
+| `/forcedrop <item> [player]` | — | Guarantees the item from the next mob you (or the given online player) kill whose drop table contains it, once. Takes any item ID, plus `chimera` for the Minos Inquisitor's Chimera I book. Forced drops are held in memory on the current server and clear on restart. | STAFF | No | `type.skyblockgeneric` |
 | `/gamemode <gamemode>` | `/gm` | Sets a players gamemode. | STAFF | No | `type.generic` |
 | `/handleminionspeed <NORMAL\|MULTIPLY_2\|MULTIPLY_5\|MULTIPLY_10>` | — | Handle minion speed. Changes the server-side minion speed divisor. | STAFF | No | `type.skyblockgeneric` |
 | `/regions <add\|remove\|wand> ...` | — | Handles regions across the server. See region syntax below. | STAFF | No | `type.skyblockgeneric` |

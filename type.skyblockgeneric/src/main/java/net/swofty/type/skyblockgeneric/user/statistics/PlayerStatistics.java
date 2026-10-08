@@ -61,6 +61,9 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestProfile;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestStatistics;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalStatistics;
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalGear;
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
+import net.swofty.type.skyblockgeneric.user.pets.PetItems;
 import net.swofty.type.skyblockgeneric.user.pets.PetScore;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -218,13 +221,7 @@ public class PlayerStatistics {
     private ItemStatistics computePetStatistics() {
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         if (pet == null) return ItemStatistics.empty();
-        PetComponent component = pet.getComponent(PetComponent.class);
-        ItemStatistics baseStatistics = component.getBaseStatistics();
-        ItemStatistics perLevelStatistics = component.getPerLevelStatistics(
-                pet.getAttributeHandler().getRarity()
-        );
-        int level = pet.getAttributeHandler().getPetData().getAsLevel(pet.getAttributeHandler().getRarity());
-        ItemStatistics stats = ItemStatistics.add(baseStatistics, ItemStatistics.multiply(perLevelStatistics, level));
+        ItemStatistics stats = PetItems.statistics(pet);
 
         for (PetAbility ability : player.getPetData().getCachedAbilities(pet)) {
             stats = ItemStatistics.add(stats, ability.getStatistics(player, pet));
@@ -248,6 +245,7 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, FarmingContestStatistics.all(player));
         spare = ItemStatistics.add(spare, CarnivalStatistics.all(player));
         spare = ItemStatistics.add(spare, PetScore.statistics(player));
+        spare = ItemStatistics.add(spare, MythologicalItemHandlers.permanentStatistics(player));
 
         return spare;
     }
@@ -266,6 +264,7 @@ public class PlayerStatistics {
         ItemStatistics total = ItemStatistics.builder().build();
         if (enemy instanceof BestiaryMob bestiaryMob) total = ItemStatistics.add(total, getBestiaryStatistics(causer, bestiaryMob));
         total = ItemStatistics.add(total, CarnivalStatistics.against(player, enemy));
+        total = ItemStatistics.add(total, MythologicalGear.against(player, enemy));
         total = ItemStatistics.add(total, allArmorStatistics(causer, enemy));
         total = ItemStatistics.add(total, equipmentStatistics(causer, enemy));
         total = ItemStatistics.add(total, mainHandStatistics(causer, enemy));
@@ -534,6 +533,7 @@ public class PlayerStatistics {
         statistics = getGemstoneStatistics(item, statistics);
         statistics = getEnchantStatistics(item, statistics, causer, enemy);
         statistics = getHotPotatoBookStatistics(item, statistics);
+        statistics = ItemStatistics.add(statistics, MythologicalGear.extraItemStatistics(item, player));
 
         return statistics;
     }

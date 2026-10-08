@@ -126,6 +126,7 @@ public class ShapelessRecipe extends SkyBlockRecipe<ShapelessRecipe> {
     @Override
     public SkyBlockRecipe<?> clone() {
         ShapelessRecipe recipe = new ShapelessRecipe(recipeType, result.clone(), amount, canCraft);
+        recipe.setUpgradesFrom(upgradesFrom);
         recipe.ingredientList.addAll(ingredientList.stream().map(ItemQuantifiable::clone).toList());
         if (customRecipeDisplay != null) {
             recipe.customRecipeDisplay = Arrays.stream(customRecipeDisplay)

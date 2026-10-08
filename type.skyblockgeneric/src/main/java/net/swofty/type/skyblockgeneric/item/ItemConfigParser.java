@@ -7,6 +7,7 @@ import net.minestom.server.item.ItemAnimation;
 import net.minestom.server.item.Material;
 import net.minestom.server.particle.Particle;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.commons.skyblock.item.PotatoType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.item.reforge.ReforgeType;
@@ -452,7 +453,33 @@ public class ItemConfigParser {
 					String handlerId = safeConfig.getString("handler_id", "");
 					yield new LoreUpdateComponent(handlerId, isAbsolute);
 				}
-				case "PET_ITEM" -> new PetItemComponent();
+				case "PET_ITEM" -> {
+					ItemStatistics.Builder flat = ItemStatistics.builder();
+					if (safeConfig.containsKey("statistics")) {
+						SafeConfig statistics = safeConfig.getNested("statistics");
+						for (String key : statistics.getKeys()) {
+							flat.withBase(ItemStatistic.valueOf(key.toUpperCase()), statistics.getDouble(key, 0.0));
+						}
+					}
+					Map<ItemStatistic, Double> boosts = new EnumMap<>(ItemStatistic.class);
+					double allBoost = 0;
+					if (safeConfig.containsKey("pet_stat_boost")) {
+						SafeConfig boostConfig = safeConfig.getNested("pet_stat_boost");
+						for (String key : boostConfig.getKeys()) {
+							double value = boostConfig.getDouble(key, 0.0);
+							if (key.equalsIgnoreCase("all")) allBoost = value;
+							else boosts.put(ItemStatistic.valueOf(key.toUpperCase()), value);
+						}
+					}
+					String expSkill = safeConfig.getString("pet_exp_skill", null);
+					String onlyFor = safeConfig.getString("pet", null);
+					yield new PetItemComponent(flat.build(), boosts, allBoost,
+							safeConfig.getBoolean("knockback_immune", false),
+							safeConfig.getDouble("pet_exp_boost", 0.0),
+							expSkill == null ? null : SkillCategories.valueOf(expSkill.toUpperCase()),
+							onlyFor == null ? null : ItemType.valueOf(onlyFor),
+							safeConfig.containsKey("description") ? safeConfig.getList("description", String.class) : List.of());
+				}
 				case "PICKAXE" -> new PickaxeComponent();
 				case "PLACEABLE" -> {
 					String blockType = safeConfig.getString("block_type");

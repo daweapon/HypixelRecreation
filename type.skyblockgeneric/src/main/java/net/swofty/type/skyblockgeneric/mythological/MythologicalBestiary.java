@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.mythological;
 
+import net.swofty.type.skyblockgeneric.bestiary.BestiaryData;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointBestiary;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 public final class MythologicalBestiary {
     private static final int KILLS_PER_XP = 100;
+    private static final BestiaryData BESTIARY = new BestiaryData();
 
     private MythologicalBestiary() {
     }
@@ -29,6 +31,17 @@ public final class MythologicalBestiary {
         static final List<BestiaryMob> MOBS = Arrays.stream(MythologicalCreature.values())
                 .flatMap(creature -> family(creature).stream())
                 .toList();
+    }
+
+    public static int totalTiers(SkyBlockPlayer player) {
+        DatapointBestiary.PlayerBestiary bestiary = player.getSkyblockDataHandler()
+                .get(SkyBlockDataHandler.Data.BESTIARY, DatapointBestiary.class).getValue();
+        int tiers = 0;
+        for (MythologicalCreature creature : MythologicalCreature.values()) {
+            List<BestiaryMob> family = family(creature);
+            tiers += BESTIARY.getCurrentBestiaryTier(family.getFirst(), bestiary.getAmount(family));
+        }
+        return tiers;
     }
 
     public static void updateKillsXP(SkyBlockPlayer player) {

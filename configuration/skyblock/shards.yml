@@ -552,6 +552,15 @@
       ],
       "sources": [
         {
+          "type": "MOB",
+          "mobs": [
+            "HARPY_85",
+            "HARPY_110",
+            "HARPY_175",
+            "HARPY_325"
+          ]
+        },
+        {
           "type": "SALT",
           "mobs": [ ]
         },
@@ -845,14 +854,24 @@
       "description": "Grants +4 <sbstat:defense> against Mythological mobs",
       "effects": [
         {
-          "type": "STATISTIC_PER_LEVEL",
-          "statistic": "DEFENSE",
+          "type": "ABILITY_VALUE",
           "minimum": 4,
           "maximum": 40,
-          "condition": "ALWAYS"
+          "condition": "ALWAYS",
+          "key": "C39"
         }
       ],
       "sources": [
+        {
+          "type": "MOB",
+          "mobs": [
+            "CRETAN_BULL_40",
+            "CRETAN_BULL_70",
+            "CRETAN_BULL_95",
+            "CRETAN_BULL_150",
+            "CRETAN_BULL_250"
+          ]
+        },
         {
           "type": "SALT",
           "mobs": [ ]
@@ -1768,6 +1787,41 @@
       "sources": [
         {
           "type": "TRAP"
+        }
+      ]
+    },
+    {
+      "id": "U60",
+      "shard": "Minos Hunter",
+      "name": "Mythological Ruler",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Grants +3% more <sbstat:damage> against Mythological mobs",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "ALWAYS",
+          "key": "U60"
+        }
+      ],
+      "sources": [
+        {
+          "type": "MOB",
+          "mobs": [
+            "MINOS_HUNTER_15",
+            "MINOS_HUNTER_25",
+            "MINOS_HUNTER_60",
+            "MINOS_HUNTER_80",
+            "MINOS_HUNTER_125",
+            "MINOS_HUNTER_200"
+          ]
+        },
+        {
+          "type": "BLACK_HOLE"
         }
       ]
     },
@@ -3014,14 +3068,22 @@
       "description": "Grants +0.5 <sbstat:magic_find> against Mythological mobs",
       "effects": [
         {
-          "type": "STATISTIC_PER_LEVEL",
-          "statistic": "MAGIC_FIND",
+          "type": "ABILITY_VALUE",
           "minimum": 0.5,
           "maximum": 5,
-          "condition": "ALWAYS"
+          "condition": "ALWAYS",
+          "key": "R63"
         }
       ],
       "sources": [
+        {
+          "type": "MOB",
+          "mobs": [
+            "MINOTAUR_45",
+            "MINOTAUR_120",
+            "MINOTAUR_210"
+          ]
+        },
         {
           "type": "SALT",
           "mobs": [ ]
@@ -3909,6 +3971,13 @@
       ],
       "sources": [
         {
+          "type": "MOB",
+          "mobs": [
+            "SPHINX_750",
+            "SPHINX_1250"
+          ]
+        },
+        {
           "type": "SALT",
           "mobs": [ ]
         },
@@ -3936,6 +4005,12 @@
         }
       ],
       "sources": [
+        {
+          "type": "MOB",
+          "mobs": [
+            "KING_MINOS_1750"
+          ]
+        },
         {
           "type": "SALT",
           "mobs": [ ]

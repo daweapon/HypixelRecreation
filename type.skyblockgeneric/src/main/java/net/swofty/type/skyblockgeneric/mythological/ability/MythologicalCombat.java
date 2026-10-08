@@ -17,6 +17,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetItems;
 import net.swofty.type.skyblockgeneric.user.statistics.TemporaryStatistic;
 
 import java.util.Comparator;
@@ -62,6 +63,7 @@ public final class MythologicalCombat {
     }
 
     public static void launch(SkyBlockPlayer player, Vec velocity) {
+        if (PetItems.isKnockbackImmune(player)) return;
         player.setVelocity(velocity);
     }
 

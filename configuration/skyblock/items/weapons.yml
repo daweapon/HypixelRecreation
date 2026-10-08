@@ -690,14 +690,21 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/cow_axe
   - id: CROWN_OF_GREED
     material: GOLDEN_HELMET
-    name: "Crown Of Greed"
+    name: "Crown of Greed"
     rarity: LEGENDARY
+    lore:
+      - "\xA76Ability: Indulgence"
+      - "\xA77Gain \xA7a2x \xA76Coins \xA77from \xA7eGriffin Burrows \xA77and"
+      - "\xA7b+10 \u272F Magic Find \xA77on \xA72\u273F Mythological \xA77mobs,"
+      - "\xA77but you take \xA7c1.25x \xA77damage from them."
     default_statistics:
       defense: 50
       health: 100
     components:
       - id: STANDARD_ITEM
-        standard_item_type: SWORD
+        standard_item_type: HELMET
+      - id: SELLABLE
+        value: 1000000.0
   - id: CRYPT_BOW
     material: BOW
     rarity: RARE
@@ -754,9 +761,12 @@ items:
         item_model: hypixel_skyblock:item/broken/broken_sword
   - id: DAEDALUS_AXE
     material: GOLDEN_SWORD
-    name: "Daedalus Axe"
+    name: "Daedalus Blade"
     rarity: LEGENDARY
     components:
+      - id: LORE_UPDATE
+        handler_id: DAEDALUS_BLADE
+        is_absolute: false
       - id: STANDARD_ITEM
         standard_item_type: SWORD
       - id: GEMSTONE
@@ -3086,8 +3096,12 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/sword_of_bad_health
   - id: SWORD_OF_REVELATIONS
     material: WOODEN_SWORD
-    name: "Sword Of Revelations"
+    name: "Sword of Revelations"
     rarity: EPIC
+    lore:
+      - "\xA77Deals \xA7a1.5x \xA77damage to \xA72\u273F Mythological"
+      - "\xA77mobs and grants \xA7b+5 \u272F Magic Find\xA77 on"
+      - "\xA77them."
     default_statistics:
       damage: 180
       strength: 50

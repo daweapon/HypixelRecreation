@@ -46,6 +46,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ArmorComponent;
 import net.swofty.type.skyblockgeneric.loottable.LootAffector;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
+import net.swofty.type.skyblockgeneric.loottable.ForcedDrops;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
@@ -278,7 +279,8 @@ public abstract class SkyBlockMob extends EntityCreature {
                 adjustedChance = affector.getAffector().apply(player, adjustedChance, this);
             }
 
-            if (Math.random() * 100 < adjustedChance && record.getShouldCalculate().apply(player)) {
+            if (ForcedDrops.consume(player.getUuid(), itemType)
+                    || (Math.random() * 100 < adjustedChance && record.getShouldCalculate().apply(player))) {
                 drops.put(itemType, record);
             }
         }
@@ -288,7 +290,7 @@ public abstract class SkyBlockMob extends EntityCreature {
 
             if (SkyBlockLootTable.LootRecord.isNone(record)) continue;
 
-            SkyBlockItem item = new SkyBlockItem(itemType, record.getAmount());
+            SkyBlockItem item = createDrop(itemType, record.getAmount());
             ItemType droppedItemLinker = item.getAttributeHandler().getPotentialType();
 
             if (player.canInsertItemIntoSacks(droppedItemLinker, record.getAmount())) {
@@ -300,6 +302,10 @@ public abstract class SkyBlockMob extends EntityCreature {
                         getInstance(), getPosition().add(0, 0.5, 0));
             }
         }
+    }
+
+    public SkyBlockItem createDrop(ItemType type, int amount) {
+        return new SkyBlockItem(type, amount);
     }
 
     public void updateCustomName(Text newName) {

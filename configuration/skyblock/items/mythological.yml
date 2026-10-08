@@ -1,25 +1,4 @@
 items:
-  - id: ANCESTRAL_SPADE
-    material: wooden_shovel
-    name: "Ancestral Spade"
-    rarity: RARE
-    lore:
-      - "\xA77Use to reveal and dig up \xA7eGriffin"
-      - "\xA7eBurrows \xA77in the hub while Diana's"
-      - "\xA72Mythological Ritual \xA77is active."
-      - ""
-      - "\xA77Maximum Burrow Chain Length: \xA7a4"
-      - ""
-      - "\xA77Burrows dug with this item may contain:"
-      - "\xA78 ● \xA7cMonsters"
-      - "\xA78 ● \xA7fGriffin Feathers"
-      - "\xA78 ● \xA76Coins"
-    components:
-      - id: ABILITY
-        abilities:
-          - ECHO
-      - id: SELLABLE
-        value: 100.0
   - id: HILT_OF_REVELATIONS
     material: stick
     name: "Hilt of Revelations"
@@ -27,69 +6,6 @@ items:
     lore:
       - "\xA77A rusted hilt, dropped by the Minos"
       - "\xA77Hunter."
-  - id: CRETAN_URN
-    material: player_head
-    name: "Cretan Urn"
-    rarity: EPIC
-    lore:
-      - "\xA77Grants \xA7d+5 Pet Luck\xA77."
-    components:
-      - id: SKULL_HEAD
-        texture: 895df42056d79602a6915fec6ef804bbe57b450a0a484ce9997403d0c904d356
-      - id: PET_ITEM
-      - id: NOT_FINISHED_YET
-  - id: BRAIN_FOOD
-    material: player_head
-    name: "Brain Food"
-    rarity: EPIC
-    lore:
-      - "\xA78Consumable"
-      - ""
-      - "\xA77Consume this item to permanently"
-      - "\xA77gain \xA7d+1 Tracking\xA77."
-      - ""
-      - "\xA77You can only consume \xA7a5 \xA77of this item"
-      - "\xA77before the information overload"
-      - "\xA77starts to cause you physical pain."
-      - ""
-      - "\xA78\xA7oIs it called brain food because it's"
-      - "\xA78\xA7ogood for the brain, or because it's"
-      - "\xA78\xA7omade of them?"
-    components:
-      - id: SKULL_HEAD
-        texture: 867e27a256cdb7b741dbfe8419f5f3d89bdfbd52a1b3f0fdb9c95edeeafc1f3f
-      - id: NOT_FINISHED_YET
-  - id: DYE_MYTHOLOGICAL
-    material: player_head
-    name: "Mythological Dye"
-    rarity: LEGENDARY
-    lore:
-      - "\xA78Combinable in Anvil"
-      - ""
-      - "\xA77Changes the color of an armor piece"
-      - "\xA77to \xA72#6F6F0C\xA77!"
-    components:
-      - id: SKULL_HEAD
-        texture: 4c542472eee1cdee78a7a17fd6ee806a146959c97177587b6e2005e874a9f71e
-      - id: NOT_FINISHED_YET
-  - id: FATEFUL_STINGER
-    material: player_head
-    name: "Fateful Stinger"
-    rarity: LEGENDARY
-    lore:
-      - "\xA78Combinable in Anvil"
-      - ""
-      - "\xA77When applied to a weapon, increases"
-      - "\xA77its \xA79Venomous \xA77level by \xA7a1\xA77!"
-      - "\xA78Can be applied once."
-      - "\xA78Requires Venomous VI!"
-      - ""
-      - "\xA78\xA7oThe sting of the Manticore is fatal to"
-      - "\xA78\xA7oall but the Elephant."
-    components:
-      - id: SKULL_HEAD
-        texture: 4e2c26ad88fdd10381284650770d9b59d3688a52868b3bcc7762f88a34303de8
-      - id: NOT_FINISHED_YET
   - id: MANTI_CORE
     material: player_head
     name: "Manti-core"
@@ -392,3 +308,1524 @@ items:
         skull_texture: 4c27e3cb52a64968e60c861ef1ab84e0a0cb5f07be103ac78da67761731f00c8
         handler_id: GRIFFIN
       - id: TRACKED_UNIQUE
+  - id: ANCESTRAL_SPADE
+    material: wooden_shovel
+    name: "Ancestral Spade"
+    rarity: RARE
+    lore:
+      - "\xA77Use to reveal and dig up \xA7eGriffin"
+      - "\xA7eBurrows \xA77in the hub while Diana's"
+      - "\xA72Mythological Ritual \xA77is active."
+      - ""
+      - "\xA77Maximum Burrow Chain Length: \xA7a4"
+      - ""
+      - "\xA77Burrows dug with this item may contain:"
+      - "\xA78 ● \xA7cMonsters"
+      - "\xA78 ● \xA7fGriffin Feathers"
+      - "\xA78 ● \xA76Coins"
+    components:
+      - id: ABILITY
+        abilities:
+          - ECHO
+      - id: REFORGABLE
+        reforge_type: SPADES
+      - id: SELLABLE
+        value: 100.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/community_center/mayor/diana/ancestral_spade
+  - id: ARCHAIC_SPADE
+    material: stone_shovel
+    name: "Archaic Spade"
+    rarity: EPIC
+    lore:
+      - "\xA77Use to reveal and dig up \xA7eGriffin"
+      - "\xA7eBurrows \xA77in the hub while Diana's"
+      - "\xA72Mythological Ritual \xA77is active."
+      - ""
+      - "\xA77Maximum Burrow Chain Length: \xA7a6"
+      - ""
+      - "\xA77Burrows dug with this item may contain:"
+      - "\xA78 ● \xA7cMonsters"
+      - "\xA78 ● \xA7fGriffin Feathers"
+      - "\xA78 ● \xA76Coins"
+      - "\xA78 ● \xA79Mythos Fragments"
+    components:
+      - id: ABILITY
+        abilities:
+          - ECHO_ARCHAIC
+      - id: REFORGABLE
+        reforge_type: SPADES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/community_center/mayor/diana/archaic_spade
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: ANCESTRAL_SPADE
+            pattern:
+              - "ABA"
+              - "CDC"
+              - "AEA"
+            ingredients:
+              A:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 2
+              B:
+                type: GRIFFIN_FEATHER
+                amount: 32
+              C:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 1
+              D:
+                type: ANCESTRAL_SPADE
+                amount: 1
+              E:
+                type: HILT_OF_REVELATIONS
+                amount: 1
+            result:
+              type: ARCHAIC_SPADE
+              amount: 1
+  - id: DEIFIC_SPADE
+    material: golden_shovel
+    name: "Deific Spade"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77Use to reveal and dig up \xA7eGriffin"
+      - "\xA7eBurrows \xA77in the hub while Diana's"
+      - "\xA72Mythological Ritual \xA77is active."
+      - ""
+      - "\xA77Maximum Burrow Chain Length: \xA7a8"
+      - ""
+      - "\xA77Burrows dug with this item may contain:"
+      - "\xA78 ● \xA7cMonsters"
+      - "\xA78 ● \xA7fGriffin Feathers"
+      - "\xA78 ● \xA76Coins"
+      - "\xA78 ● \xA79Mythos Fragments"
+      - "\xA78 ● \xA75Braided Griffin Feathers"
+    components:
+      - id: ABILITY
+        abilities:
+          - ECHO_DEIFIC
+      - id: REFORGABLE
+        reforge_type: SPADES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/community_center/mayor/diana/deific_spade
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: ARCHAIC_SPADE
+            pattern:
+              - "ABA"
+              - "CDC"
+              - "EFE"
+            ingredients:
+              A:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 64
+              B:
+                type: BRAIDED_GRIFFIN_FEATHER
+                amount: 1
+              C:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 64
+              D:
+                type: ARCHAIC_SPADE
+                amount: 1
+              E:
+                type: MYTHOS_FRAGMENT
+                amount: 8
+              F:
+                type: HILT_OF_REVELATIONS
+                amount: 1
+            result:
+              type: DEIFIC_SPADE
+              amount: 1
+  - id: DAEDALUS_NOTES
+    material: paper
+    name: "Daedalus' Notes"
+    rarity: LEGENDARY
+    lore:
+      - "\xA78Reforge Stone"
+      - "\xA78Combinable in Anvil"
+      - ""
+      - "\xA77Applies the \xA79Erudite \xA77reforge when"
+      - "\xA77combined with \xA79Ancestral Spade\xA77,"
+      - "\xA75Archaic Spade\xA77, and \xA76Deific Spade\xA77."
+      - ""
+      - "\xA78\xA7oOne of the greatest minds of his time."
+      - "\xA78\xA7oMuch can be learned from what"
+      - "\xA78\xA7oDaedalus left behind."
+      - ""
+      - "\xA77Grants the following stats that scale"
+      - "\xA77with the item's rarity:"
+      - " \xA7f✦ Speed"
+      - ""
+      - "\xA79Erudite Bonus"
+      - "\xA7eGriffin Burrow \xA77chains always consist"
+      - "\xA77of \xA7a2 \xA77additional burrows."
+      - ""
+      - "\xA74❣ \xA7cRequires \xA7aMining Skill 30\xA7c."
+    components:
+      - id: REFORGE_STONE
+        reforge: erudite
+        rare_cost: 500000
+        epic_cost: 500000
+        legendary_cost: 500000
+        mythic_cost: 500000
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "CDC"
+              - "AEA"
+            ingredients:
+              A:
+                type: MYTHOS_FRAGMENT
+                amount: 1
+              B:
+                type: GRIFFIN_FEATHER
+                amount: 64
+              C:
+                type: ENCHANTED_PAPER
+                amount: 64
+              D:
+                type: DAEDALUS_STICK
+                amount: 1
+              E:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 32
+            result:
+              type: DAEDALUS_NOTES
+              amount: 1
+  - id: CHALLENGER_HELMET
+    material: player_head
+    name: "Challenger's Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 50.0
+      defense: 25.0
+      strength: 10.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: SKULL_HEAD
+        texture: efca286890072570f152239faf68e8dd82e792236b49e3e0338d82d50f379b13
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "C C"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 16
+              B:
+                type: GRIFFIN_FEATHER
+                amount: 4
+              C:
+                type: ANCIENT_CLAW
+                amount: 32
+            result:
+              type: CHALLENGER_HELMET
+              amount: 1
+  - id: CHALLENGER_CHESTPLATE
+    material: golden_chestplate
+    name: "Challenger's Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 80.0
+      defense: 40.0
+      strength: 25.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "BAB"
+              - "BCB"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 16
+              B:
+                type: GRIFFIN_FEATHER
+                amount: 1
+              C:
+                type: ANCIENT_CLAW
+                amount: 64
+            result:
+              type: CHALLENGER_CHESTPLATE
+              amount: 1
+  - id: CHALLENGER_LEGGINGS
+    material: leather_leggings
+    name: "Challenger's Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 70.0
+      defense: 35.0
+      strength: 20.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: LEATHER_COLOR
+        r: '42'
+        g: '91'
+        b: '72'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "C C"
+              - "C C"
+            ingredients:
+              A:
+                type: ANCIENT_CLAW
+                amount: 64
+              B:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 16
+              C:
+                type: GRIFFIN_FEATHER
+                amount: 1
+            result:
+              type: CHALLENGER_LEGGINGS
+              amount: 1
+  - id: CHALLENGER_BOOTS
+    material: leather_boots
+    name: "Challenger's Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 40.0
+      defense: 30.0
+      strength: 5.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: LEATHER_COLOR
+        r: '42'
+        g: '91'
+        b: '72'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "B B"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 32
+              B:
+                type: GRIFFIN_FEATHER
+                amount: 2
+            result:
+              type: CHALLENGER_BOOTS
+              amount: 1
+  - id: CHALLENGER_NECKLACE
+    material: gold_nugget
+    name: "Challenger's Necklace"
+    rarity: EPIC
+    default_statistics:
+      health: 20.0
+      defense: 10.0
+      strength: 5.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "B B"
+              - " C "
+            ingredients:
+              A:
+                type: GRIFFIN_FEATHER
+                amount: 2
+              B:
+                type: ANCIENT_CLAW
+                amount: 32
+              C:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 32
+            result:
+              type: CHALLENGER_NECKLACE
+              amount: 1
+  - id: CHALLENGER_CLOAK
+    material: leather
+    name: "Challenger's Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 20.0
+      defense: 10.0
+      strength: 5.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "BAB"
+              - "C C"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 16
+              B:
+                type: ANCIENT_CLAW
+                amount: 32
+              C:
+                type: GRIFFIN_FEATHER
+                amount: 2
+            result:
+              type: CHALLENGER_CLOAK
+              amount: 1
+  - id: CHALLENGER_BELT
+    material: lead
+    name: "Challenger's Belt"
+    rarity: EPIC
+    default_statistics:
+      health: 20.0
+      defense: 10.0
+      strength: 5.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "BCB"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 16
+              B:
+                type: GRIFFIN_FEATHER
+                amount: 2
+              C:
+                type: ANCIENT_CLAW
+                amount: 64
+            result:
+              type: CHALLENGER_BELT
+              amount: 1
+  - id: CHALLENGER_BRACELET
+    material: iron_chain
+    name: "Challenger's Bracelet"
+    rarity: EPIC
+    default_statistics:
+      health: 20.0
+      defense: 10.0
+      strength: 5.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "B B"
+              - "CBC"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 16
+              B:
+                type: GRIFFIN_FEATHER
+                amount: 1
+              C:
+                type: ANCIENT_CLAW
+                amount: 32
+            result:
+              type: CHALLENGER_BRACELET
+              amount: 1
+  - id: MYTHOS_HELMET
+    material: player_head
+    name: "Mythos Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 100.0
+      defense: 50.0
+      strength: 20.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: SKULL_HEAD
+        texture: 5ff0d31cfe43b97a772c9055e6bdad3cb0df60fed34cbc6492df65616dadbbdf
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: COMBAT
+            coins: 250000
+            items:
+              - FLAWLESS_JASPER_GEM:1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: CHALLENGER_HELMET
+            pattern:
+              - " A "
+              - "BCB"
+              - " A "
+            ingredients:
+              A:
+                type: MYTHOS_FRAGMENT
+                amount: 2
+              B:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 32
+              C:
+                type: CHALLENGER_HELMET
+                amount: 1
+            result:
+              type: MYTHOS_HELMET
+              amount: 1
+  - id: MYTHOS_CHESTPLATE
+    material: golden_chestplate
+    name: "Mythos Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 160.0
+      defense: 80.0
+      strength: 50.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: COMBAT
+            coins: 250000
+            items:
+              - FLAWLESS_JASPER_GEM:1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: CHALLENGER_CHESTPLATE
+            pattern:
+              - " A "
+              - "BCB"
+              - " A "
+            ingredients:
+              A:
+                type: MYTHOS_FRAGMENT
+                amount: 2
+              B:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 16
+              C:
+                type: CHALLENGER_CHESTPLATE
+                amount: 1
+            result:
+              type: MYTHOS_CHESTPLATE
+              amount: 1
+  - id: MYTHOS_LEGGINGS
+    material: leather_leggings
+    name: "Mythos Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 140.0
+      defense: 70.0
+      strength: 40.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: LEATHER_COLOR
+        r: '124'
+        g: '55'
+        b: '86'
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: COMBAT
+            coins: 250000
+            items:
+              - FLAWLESS_JASPER_GEM:1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: CHALLENGER_LEGGINGS
+            pattern:
+              - " A "
+              - "BCB"
+              - " A "
+            ingredients:
+              A:
+                type: MYTHOS_FRAGMENT
+                amount: 2
+              B:
+                type: GRIFFIN_FEATHER
+                amount: 32
+              C:
+                type: CHALLENGER_LEGGINGS
+                amount: 1
+            result:
+              type: MYTHOS_LEGGINGS
+              amount: 1
+  - id: MYTHOS_BOOTS
+    material: leather_boots
+    name: "Mythos Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 80.0
+      defense: 60.0
+      strength: 10.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: LEATHER_COLOR
+        r: '124'
+        g: '55'
+        b: '86'
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: COMBAT
+            coins: 250000
+            items:
+              - FLAWLESS_JASPER_GEM:1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: CHALLENGER_BOOTS
+            pattern:
+              - " A "
+              - "BCB"
+              - " A "
+            ingredients:
+              A:
+                type: MYTHOS_FRAGMENT
+                amount: 2
+              B:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 16
+              C:
+                type: CHALLENGER_BOOTS
+                amount: 1
+            result:
+              type: MYTHOS_BOOTS
+              amount: 1
+  - id: MYTHOS_NECKLACE
+    material: gold_nugget
+    name: "Mythos Necklace"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 25.0
+      defense: 15.0
+      strength: 15.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: CHALLENGER_NECKLACE
+            pattern:
+              - "A A"
+              - "BCB"
+              - "DED"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 8
+              B:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 16
+              C:
+                type: MYTHOS_FRAGMENT
+                amount: 4
+              D:
+                type: GRIFFIN_FEATHER
+                amount: 32
+              E:
+                type: CHALLENGER_NECKLACE
+                amount: 1
+            result:
+              type: MYTHOS_NECKLACE
+              amount: 1
+  - id: MYTHOS_CLOAK
+    material: leather
+    name: "Mythos Cloak"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 25.0
+      defense: 15.0
+      strength: 15.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: CHALLENGER_CLOAK
+            pattern:
+              - "ABA"
+              - "CDC"
+              - "E E"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 8
+              B:
+                type: MYTHOS_FRAGMENT
+                amount: 4
+              C:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 16
+              D:
+                type: CHALLENGER_CLOAK
+                amount: 1
+              E:
+                type: GRIFFIN_FEATHER
+                amount: 32
+            result:
+              type: MYTHOS_CLOAK
+              amount: 1
+  - id: MYTHOS_BELT
+    material: lead
+    name: "Mythos Belt"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 25.0
+      defense: 15.0
+      strength: 15.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: CHALLENGER_BELT
+            pattern:
+              - " A "
+              - "BCB"
+              - "DED"
+            ingredients:
+              A:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 32
+              B:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 8
+              C:
+                type: CHALLENGER_BELT
+                amount: 1
+              D:
+                type: GRIFFIN_FEATHER
+                amount: 32
+              E:
+                type: MYTHOS_FRAGMENT
+                amount: 4
+            result:
+              type: MYTHOS_BELT
+              amount: 1
+  - id: MYTHOS_BRACELET
+    material: iron_chain
+    name: "Mythos Bracelet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 25.0
+      defense: 15.0
+      strength: 15.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+      - id: LORE_UPDATE
+        handler_id: MYTHOLOGICAL_GEAR
+        is_absolute: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: CHALLENGER_BRACELET
+            pattern:
+              - "ABA"
+              - "C C"
+              - "DED"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 8
+              B:
+                type: MYTHOS_FRAGMENT
+                amount: 4
+              C:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 16
+              D:
+                type: GRIFFIN_FEATHER
+                amount: 32
+              E:
+                type: CHALLENGER_BRACELET
+                amount: 1
+            result:
+              type: MYTHOS_BRACELET
+              amount: 1
+  - id: GOLDEN_FLEECE
+    material: yellow_wool
+    name: "Golden Fleece"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77Grants \xA7b+5 ✯ Magic Find \xA77on \xA72✿"
+      - "\xA72Mythological \xA77mobs."
+      - ""
+      - "\xA76Ability: Empyrean Intuition"
+      - "\xA77Grants \xA7d+15 ❃ Tracking \xA77on \xA7eGriffin"
+      - "\xA7eBurrows\xA77."
+    default_statistics:
+      true_defense: 10.0
+      strength: 20.0
+      critical_damage: 15.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "CDC"
+              - "C C"
+            ingredients:
+              A:
+                type: ENCHANTED_WOOL
+                amount: 64
+              B:
+                type: SHIMMERING_WOOL
+                amount: 1
+              C:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 64
+              D:
+                type: BRAIDED_GRIFFIN_FEATHER
+                amount: 1
+            result:
+              type: GOLDEN_FLEECE
+              amount: 1
+  - id: MANTICORE_CLAW
+    material: rabbit_foot
+    name: "Manticore Claw"
+    rarity: LEGENDARY
+    lore:
+      - "\xA76Ability: Chimeric Core"
+      - "\xA77Copies \xA7a10% \xA77of your active pet's"
+      - "\xA7cCombat \xA77stats."
+    default_statistics:
+      strength: 20.0
+      critical_damage: 10.0
+      bonus_attack_speed: 2.5
+      ferocity: 4.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "ABA"
+              - "CAC"
+            ingredients:
+              A:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 64
+              B:
+                type: MANTI_CORE
+                amount: 1
+              C:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 32
+            result:
+              type: MANTICORE_CLAW
+              amount: 1
+  - id: CROWN_OF_AVARICE
+    material: player_head
+    name: "Crown of Avarice"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 200.0
+      defense: 100.0
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 9b60d6f6557520c0cb0dfc0a1193f23a2f29de52c18dbb746e4a1a99f18dc61c
+      - id: LORE_UPDATE
+        handler_id: CROWN_OF_AVARICE
+        is_absolute: false
+      - id: SELLABLE
+        value: 1000000.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            upgrades_from: CROWN_OF_GREED
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ADA"
+            ingredients:
+              A:
+                type: GRIFFIN_FEATHER
+                amount: 16
+              B:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 8
+              C:
+                type: CROWN_OF_GREED
+                amount: 1
+              D:
+                type: AVARICIOUS_CHALICE
+                amount: 2
+            result:
+              type: CROWN_OF_AVARICE
+              amount: 1
+  - id: ANTIQUE_REMEDIES
+    material: azure_bluet
+    name: "Antique Remedies"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "\xA77Increases the pet's \xA7c❁ Strength \xA77by"
+          - "\xA7a80%\xA77."
+        pet_stat_boost:
+          strength: 80
+      - id: SELLABLE
+        value: 250000.0
+  - id: CRETAN_URN
+    material: player_head
+    name: "Cretan Urn"
+    rarity: EPIC
+    components:
+      - id: SKULL_HEAD
+        texture: 895df42056d79602a6915fec6ef804bbe57b450a0a484ce9997403d0c904d356
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA7d+5 ♣ Pet Luck\xA77."
+        statistics:
+          pet_luck: 5
+  - id: CROCHET_TIGER_PLUSHIE
+    material: player_head
+    name: "Crochet Tiger Plushie"
+    rarity: EPIC
+    components:
+      - id: SKULL_HEAD
+        texture: f66fb4d9e6ae0c5e61ec6b9131e015fb89792852e195e96864662ba422ef26e2
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA7e+35 ⚔ Attack Speed\xA77."
+        statistics:
+          bonus_attack_speed: 35
+      - id: SELLABLE
+        value: 250000.0
+  - id: DWARF_TURTLE_SHELMET
+    material: player_head
+    name: "Dwarf Turtle Shelmet"
+    rarity: EPIC
+    components:
+      - id: SKULL_HEAD
+        texture: bac1510610d50443fd97f34a6e94e21d0b93d5c7529f3d95c1816ce24a13dc84
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA7f+10 ❂ True Defense \xA77and"
+          - "\xA77makes the pet's owner immune to"
+          - "\xA77knockback."
+        statistics:
+          true_defense: 10
+        knockback_immune: true
+      - id: SELLABLE
+        value: 250000.0
+  - id: MINOS_RELIC
+    material: player_head
+    name: "Minos Relic"
+    rarity: EPIC
+    components:
+      - id: SKULL_HEAD
+        texture: 40b4648cbd817c7b5fc654c9c054e360d81bbfe1a00f214657a174e3e0d07d21
+      - id: PET_ITEM
+        description:
+          - "\xA77Increases all pet stats by \xA7a33.3%\xA77."
+        pet_stat_boost:
+          all: 33.3
+      - id: SELLABLE
+        value: 5000000.0
+  - id: WASHED_UP_SOUVENIR
+    material: player_head
+    name: "Washed-up Souvenir"
+    rarity: EPIC
+    components:
+      - id: SKULL_HEAD
+        texture: 3777f04644dec5f80bfeaa7401acfbbc150eb25d3ff8be4220e7c34426cd727c
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA73+5 α Sea Creature Chance\xA77."
+        statistics:
+          sea_creature_chance: 5
+      - id: SELLABLE
+        value: 250000.0
+  - id: HEPHAESTUS_REMEDIES
+    material: player_head
+    name: "Hephaestus Remedies"
+    rarity: LEGENDARY
+    components:
+      - id: SKULL_HEAD
+        texture: e0c0f2fe2cc8e729881fa824cd95f1b2c14bd4b1a1eb9e94fe4ddc6d4d34aeb5
+      - id: PET_ITEM
+        description:
+          - "\xA77Increases this pet's \xA7c❁ Strength \xA77by"
+          - "\xA7a100%\xA77."
+        pet_stat_boost:
+          strength: 100
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+            ingredients:
+              A:
+                type: ANTIQUE_REMEDIES
+                amount: 1
+              B:
+                type: HEPHAESTUS_ANVIL
+                amount: 1
+            result:
+              type: HEPHAESTUS_REMEDIES
+              amount: 1
+  - id: HEPHAESTUS_URN
+    material: player_head
+    name: "Hephaestus Urn"
+    rarity: LEGENDARY
+    components:
+      - id: SKULL_HEAD
+        texture: 455f8bb5782498a84f4be9071b92726bac9a55df73426a1b9afc591e47c981ef
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA7d+10 ♣ Pet Luck\xA77."
+        statistics:
+          pet_luck: 10
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+            ingredients:
+              A:
+                type: CRETAN_URN
+                amount: 1
+              B:
+                type: HEPHAESTUS_ANVIL
+                amount: 1
+            result:
+              type: HEPHAESTUS_URN
+              amount: 1
+  - id: HEPHAESTUS_PLUSHIE
+    material: player_head
+    name: "Hephaestus Plushie"
+    rarity: LEGENDARY
+    components:
+      - id: SKULL_HEAD
+        texture: 2086a2d1f0c37eeee81fb1b6aff719976fa3028cbc765bfb4050623465c6c9ac
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA7e+50 ⚔ Attack Speed\xA77."
+        statistics:
+          bonus_attack_speed: 50
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+            ingredients:
+              A:
+                type: CROCHET_TIGER_PLUSHIE
+                amount: 1
+              B:
+                type: HEPHAESTUS_ANVIL
+                amount: 1
+            result:
+              type: HEPHAESTUS_PLUSHIE
+              amount: 1
+  - id: HEPHAESTUS_SHELMET
+    material: player_head
+    name: "Hephaestus Shelmet"
+    rarity: LEGENDARY
+    components:
+      - id: SKULL_HEAD
+        texture: ab192eca11e16e34d52d9fe69fa5169f1be3570af29d59ed789d7ea28069c9ae
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA7f+20 ❂ True Defense \xA77and"
+          - "\xA77makes the pet's owner immune to"
+          - "\xA77knockback."
+        statistics:
+          true_defense: 20
+        knockback_immune: true
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+            ingredients:
+              A:
+                type: DWARF_TURTLE_SHELMET
+                amount: 1
+              B:
+                type: HEPHAESTUS_ANVIL
+                amount: 1
+            result:
+              type: HEPHAESTUS_SHELMET
+              amount: 1
+  - id: HEPHAESTUS_RELIC
+    material: player_head
+    name: "Hephaestus Relic"
+    rarity: LEGENDARY
+    components:
+      - id: SKULL_HEAD
+        texture: 769cd5350a65e7b289027058d2ffd9d82fdaf88408c82d4dbd5b5b5d3262a320
+      - id: PET_ITEM
+        description:
+          - "\xA77Increases all pet stats by \xA7a50%\xA77."
+        pet_stat_boost:
+          all: 50
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+            ingredients:
+              A:
+                type: MINOS_RELIC
+                amount: 1
+              B:
+                type: HEPHAESTUS_ANVIL
+                amount: 1
+            result:
+              type: HEPHAESTUS_RELIC
+              amount: 1
+  - id: HEPHAESTUS_SOUVENIR
+    material: player_head
+    name: "Hephaestus Souvenir"
+    rarity: LEGENDARY
+    components:
+      - id: SKULL_HEAD
+        texture: 912cb4bc82ce9fe06ec40e798d14ac2e954405b5f69cc6272e742ef31d008c10
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA73+10 α Sea Creature Chance\xA77."
+        statistics:
+          sea_creature_chance: 10
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+            ingredients:
+              A:
+                type: WASHED_UP_SOUVENIR
+                amount: 1
+              B:
+                type: HEPHAESTUS_ANVIL
+                amount: 1
+            result:
+              type: HEPHAESTUS_SOUVENIR
+              amount: 1
+  - id: BIGGER_TEETH
+    material: ghast_tear
+    name: "Bigger Teeth"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA79+10 ☣ Crit Chance\xA77."
+        statistics:
+          critical_chance: 10
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+              - " C "
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 6
+              B:
+                type: BIG_TEETH
+                amount: 1
+              C:
+                type: ZOG_ANVIL
+                amount: 1
+            result:
+              type: BIGGER_TEETH
+              amount: 1
+  - id: GOLD_CLAWS
+    material: gold_ingot
+    name: "Gold Claws"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "\xA77Increases the pet's \xA79☠ Crit Damage"
+          - "\xA77by \xA7a50% \xA77and \xA79☣ Crit Chance \xA77by \xA7a50%\xA77."
+        pet_stat_boost:
+          critical_damage: 50
+          critical_chance: 50
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+              - " C "
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 6
+              B:
+                type: IRON_CLAWS
+                amount: 1
+              C:
+                type: ZOG_ANVIL
+                amount: 1
+            result:
+              type: GOLD_CLAWS
+              amount: 1
+  - id: REINFORCED_SCALES
+    material: prismarine_crystals
+    name: "Reinforced Scales"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA7a+40 ❈ Defense\xA77."
+        statistics:
+          defense: 40
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+              - " C "
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 6
+              B:
+                type: HARDENED_SCALES
+                amount: 1
+              C:
+                type: ZOG_ANVIL
+                amount: 1
+            result:
+              type: REINFORCED_SCALES
+              amount: 1
+  - id: SERRATED_CLAWS
+    material: prismarine_shard
+    name: "Serrated Claws"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "\xA77Grants \xA79+25 ☠ Crit Damage\xA77."
+        statistics:
+          critical_damage: 25
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+              - " C "
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 6
+              B:
+                type: SHARPENED_CLAWS
+                amount: 1
+              C:
+                type: ZOG_ANVIL
+                amount: 1
+            result:
+              type: SERRATED_CLAWS
+              amount: 1
+  - id: ALL_SKILLS_SUPER_BOOST
+    material: diamond
+    name: "All Skills Exp Super-Boost"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "\xA77Gives \xA7a+20% \xA77pet exp for all skills."
+        pet_exp_boost: 20
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+              - " C "
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 6
+              B:
+                type: ALL_SKILLS_EXP_BOOST
+                amount: 1
+              C:
+                type: ZOG_ANVIL
+                amount: 1
+            result:
+              type: ALL_SKILLS_SUPER_BOOST
+              amount: 1
+  - id: FOUR_EYED_FISH
+    material: player_head
+    name: "Four-Eyed Fish"
+    rarity: EPIC
+    components:
+      - id: SKULL_HEAD
+        texture: 19b9f43b51bd45bedf09e4582d762d26c031847fc8f30d25305792c574181d3f
+      - id: PET_ITEM
+        description:
+          - "\xA77Gain \xA76+2,000 coins \xA77when digging up"
+          - "\xA77any \xA7eGriffin Burrow\xA77."
+          - ""
+          - "\xA77Grants \xA7b+13 ✯ Magic Find\xA77 and \xA7a+55"
+          - "\xA7a❈ Defense\xA77."
+        statistics:
+          magic_find: 13
+          defense: 55
+        pet: GRIFFIN_PET
+  - id: ZOG_ANVIL
+    material: player_head
+    name: "Zog Anvil"
+    rarity: RARE
+    lore:
+      - "\xA77Used in crafting to upgrade pet"
+      - "\xA77items purchased from \xA79Zog\xA77."
+      - ""
+      - "\xA77Can also be used to craft the"
+      - "\xA75Hephaestus Anvil\xA77."
+    components:
+      - id: SKULL_HEAD
+        texture: ab712b0e82bb8ba18a028f15650e43e13354dbe22932553d6b5d6616e635107b
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - " B "
+              - "AAA"
+            ingredients:
+              A:
+                type: ANCIENT_CLAW
+                amount: 16
+              B:
+                type: GRIFFIN_FEATHER
+                amount: 16
+            result:
+              type: ZOG_ANVIL
+              amount: 1
+  - id: HEPHAESTUS_ANVIL
+    material: player_head
+    name: "Hephaestus Anvil"
+    rarity: EPIC
+    lore:
+      - "\xA77Used in crafting to upgrade pet"
+      - "\xA77items dropped from \xA72✿ Mythological"
+      - "\xA77mobs."
+    components:
+      - id: SKULL_HEAD
+        texture: 588a159e75dc625805393bf6c75870db9a59a4b16e54d81a548750f8c6c99599
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - " C "
+              - "DED"
+            ingredients:
+              A:
+                type: BRAIDED_GRIFFIN_FEATHER
+                amount: 1
+              B:
+                type: ENCHANTED_GOLD_BLOCK
+                amount: 64
+              C:
+                type: ZOG_ANVIL
+                amount: 1
+              D:
+                type: ENCHANTED_ANCIENT_CLAW
+                amount: 64
+              E:
+                type: MYTHOS_FRAGMENT
+                amount: 32
+            result:
+              type: HEPHAESTUS_ANVIL
+              amount: 1
+  - id: BRAIN_FOOD
+    material: player_head
+    name: "Brain Food"
+    rarity: EPIC
+    lore:
+      - "\xA78Consumable"
+      - ""
+      - "\xA77Consume this item to permanently"
+      - "\xA77gain \xA7d+1 ❃ Tracking\xA77."
+      - ""
+      - "\xA77You can only consume \xA7a5 \xA77of this item"
+      - "\xA77before the information overload"
+      - "\xA77starts to cause you physical pain."
+      - ""
+      - "\xA78\xA7oIs it called brain food because it's"
+      - "\xA78\xA7ogood for the brain, or because it's"
+      - "\xA78\xA7omade of them?"
+      - ""
+      - "\xA7eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 867e27a256cdb7b741dbfe8419f5f3d89bdfbd52a1b3f0fdb9c95edeeafc1f3f
+      - id: INTERACTABLE
+        handler_id: BRAIN_FOOD
+  - id: DYE_MYTHOLOGICAL
+    material: player_head
+    name: "Mythological Dye"
+    rarity: LEGENDARY
+    lore:
+      - "\xA78Combinable in Anvil"
+      - ""
+      - "\xA77Changes the color of an armor piece"
+      - "\xA77to \xA72#6F6F0C\xA77!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4c542472eee1cdee78a7a17fd6ee806a146959c97177587b6e2005e874a9f71e
+      - id: ANVIL_COMBINABLE
+        handler_id: DYE_MYTHOLOGICAL
+  - id: FATEFUL_STINGER
+    material: player_head
+    name: "Fateful Stinger"
+    rarity: LEGENDARY
+    lore:
+      - "\xA78Combinable in Anvil"
+      - ""
+      - "\xA77When applied to a weapon, increases"
+      - "\xA77its \xA79Venomous \xA77level by \xA7a1\xA77!"
+      - "\xA78Can be applied once."
+      - "\xA78Requires Venomous VI!"
+      - ""
+      - "\xA78\xA7oThe sting of the Manticore is fatal to"
+      - "\xA78\xA7oall but the Elephant."
+    components:
+      - id: SKULL_HEAD
+        texture: 4e2c26ad88fdd10381284650770d9b59d3688a52868b3bcc7762f88a34303de8
+      - id: ANVIL_COMBINABLE
+        handler_id: FATEFUL_STINGER
+  - id: FUTURE_CALORIES
+    material: player_head
+    name: "Future Calories Talisman"
+    rarity: COMMON
+    default_statistics:
+      tracking: 0.5
+    components:
+      - id: SKULL_HEAD
+        texture: eae9540c5690d545434d66ac9a20b12ad020d5e3f0fb5272b2397bbaed6961e0
+      - id: ACCESSORY
+

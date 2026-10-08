@@ -1,10 +1,15 @@
 package net.swofty.type.skyblockgeneric.mythological;
 
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
+import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalGear;
 import net.swofty.type.skyblockgeneric.mythological.ability.MythologicalAbilities;
 import net.swofty.type.skyblockgeneric.mythological.ability.MythologicalAbility;
 import net.minestom.server.entity.ai.GoalSelector;
@@ -179,7 +184,8 @@ public class MythologicalCreatureMob extends BestiaryMob {
             }
             if (!isHittable()) return false;
             attackers.add(player.getUuid());
-            damage.setAmount((float) (damage.getAmount() * Carnivals.multiplier(player, CarnivalPerk.STORIED_STINGER)));
+            damage.setAmount((float) (damage.getAmount() * Carnivals.multiplier(player, CarnivalPerk.STORIED_STINGER)
+                    * MythologicalGear.outgoingDamageMultiplier(player)));
         }
         float amount = ability().modifyIncomingDamage(this, damage, damage.getAmount());
         if (amount <= 0) return false;
@@ -288,6 +294,15 @@ public class MythologicalCreatureMob extends BestiaryMob {
                 .withBase(ItemStatistic.DAMAGE, getVariant().damage())
                 .withBase(ItemStatistic.SPEED, getCreature().getSpeed())
                 .build();
+    }
+
+    @Override
+    public SkyBlockItem createDrop(ItemType type, int amount) {
+        SkyBlockItem drop = super.createDrop(type, amount);
+        if (type == ItemType.ENCHANTED_BOOK) {
+            drop.getAttributeHandler().addEnchantment(new SkyBlockEnchantment(EnchantmentType.CHIMERA, 1));
+        }
+        return drop;
     }
 
     @Override

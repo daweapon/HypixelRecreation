@@ -39,15 +39,6 @@ items:
     components:
       - id: ITEM_MODEL
         item_model: minecraft:mooshroom_spawn_egg
-  - id: CROCHET_TIGER_PLUSHIE
-    rarity: EPIC
-    material: PLAYER_HEAD
-    name: "Crochet Tiger Plushie"
-    components:
-      - id: SELLABLE
-        value: 250000.0
-      - id: SKULL_HEAD
-        texture: f66fb4d9e6ae0c5e61ec6b9131e015fb89792852e195e96864662ba422ef26e2
   - id: NULL_ATOM
     rarity: RARE
     material: OAK_BUTTON
@@ -71,26 +62,10 @@ items:
     components:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/enderman/null_sphere
-  - id: MINOS_RELIC
-    rarity: EPIC
-    material: PLAYER_HEAD
-    name: "Minos Relic"
-    components:
-      - id: SELLABLE
-        value: 5000000.0
-      - id: SKULL_HEAD
-        texture: 40b4648cbd817c7b5fc654c9c054e360d81bbfe1a00f214657a174e3e0d07d21
   - id: EMPERORS_SKULL
     rarity: UNCOMMON
     material: PLAYER_HEAD
     name: "Emperors Skull"
-  - id: ANTIQUE_REMEDIES
-    rarity: EPIC
-    material: AZURE_BLUET
-    name: "Antique Remedies"
-    components:
-      - id: SELLABLE
-        value: 250000.0
   - id: RUSTY_COIN
     rarity: UNCOMMON
     material: PLAYER_HEAD

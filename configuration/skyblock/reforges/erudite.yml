@@ -1,0 +1,12 @@
+name: "Erudite"
+prefix: "Erudite"
+stoneOnly: true
+applicableTypes:
+  - "SPADES"
+
+statistics:
+  SPEED:
+    rare: 8
+    epic: 11
+    legendary: 15
+    mythic: 20

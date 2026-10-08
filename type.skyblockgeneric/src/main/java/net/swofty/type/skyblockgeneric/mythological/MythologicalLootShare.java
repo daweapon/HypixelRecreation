@@ -51,7 +51,7 @@ public final class MythologicalLootShare {
 
     private static void reward(SkyBlockPlayer member, MythologicalCreatureMob mob, SkyBlockPlayer digger) {
         Map<ItemType, SkyBlockLootTable.LootRecord> loot = mob.getLootTable().runChances(member, LootAffector.MAGIC_FIND);
-        loot.forEach((type, record) -> member.addAndUpdateItem(new SkyBlockItem(type, record.getAmount())));
+        loot.forEach((type, record) -> member.addAndUpdateItem(mob.createDrop(type, record.getAmount())));
         member.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.BESTIARY, DatapointBestiary.class)
                 .getValue().increase(mob, 1);
         MythologicalBestiary.updateKillsXP(member);

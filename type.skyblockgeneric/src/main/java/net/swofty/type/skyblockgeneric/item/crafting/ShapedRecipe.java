@@ -314,6 +314,7 @@ public class ShapedRecipe extends SkyBlockRecipe<ShapedRecipe> {
         }
 
         ShapedRecipe cloned = new ShapedRecipe(recipeType, result.clone(), ingredientMapCopy, patternCopy, canCraft);
+        cloned.setUpgradesFrom(upgradesFrom);
         for (int i = 0; i < CHAR_SPACE; i++) {
             Function<SkyBlockItem, Boolean> req = extraReqByChar[i];
             if (req != null) cloned.addExtraRequirement((char) i, req);

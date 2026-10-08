@@ -12,12 +12,13 @@ import net.swofty.type.skyblockgeneric.item.components.EnchantableComponent;
 import net.swofty.type.skyblockgeneric.item.components.GemstoneComponent;
 import net.swofty.type.skyblockgeneric.item.components.HotPotatoableComponent;
 import net.swofty.type.skyblockgeneric.item.components.NecronsBladeScrollComponent;
+import net.swofty.type.skyblockgeneric.mythological.gear.CrownOfAvarice;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 
 // Maxes out an item's enchantments, hot potato books, gemstones, Necron's Blade scrolls and
-// recombobulation for testing
+// recombobulation for testing, and fills a Crown of Avarice to its 1B cap
 public final class CentauriItemMaximizer {
     private static final List<String> NECRONS_BLADE_SCROLLS = List.of("IMPLOSION", "SHADOW_WARP", "WITHER_SHIELD");
 
@@ -29,6 +30,7 @@ public final class CentauriItemMaximizer {
         applied += maximizePotatoBooks(item);
         applied += maximizeGemstones(item);
         applied += maximizeScrolls(item);
+        applied += maximizeCrownOfAvarice(item);
 
         ItemAttributeHandler handler = item.getAttributeHandler();
         if (handler.getRarity().isCanReforge() && !handler.isRecombobulated()) {
@@ -36,6 +38,13 @@ public final class CentauriItemMaximizer {
             applied++;
         }
         return applied;
+    }
+
+    private static int maximizeCrownOfAvarice(SkyBlockItem item) {
+        if (item.getAttributeHandler().getPotentialType() != ItemType.CROWN_OF_AVARICE) return 0;
+        if (item.getAttributeHandler().getCoinsConsumed() >= CrownOfAvarice.CAPACITY) return 0;
+        item.getAttributeHandler().setCoinsConsumed(CrownOfAvarice.CAPACITY);
+        return 1;
     }
 
     private static int maximizeEnchantments(SkyBlockPlayer player, SkyBlockItem item) {

@@ -243,6 +243,14 @@ items:
         shard_id: C39
       - id: SKULL_HEAD
         texture: db5fbd57a880f6f8bb473c217d08ee7ba47bf291185f4b2971305de496521f84
+  - id: SHARD_MINOS_HUNTER
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U60
+      - id: SKULL_HEAD
+        texture: 4e7ab5fa7ce74e34fa0bdbb783d905ba91a3300d24fe15a156c06d8237ac52a9
   - id: SHARD_BRAMBLE
     material: PLAYER_HEAD
     rarity: UNCOMMON

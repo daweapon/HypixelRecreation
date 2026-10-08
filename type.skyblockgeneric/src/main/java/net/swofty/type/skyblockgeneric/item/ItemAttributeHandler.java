@@ -442,6 +442,23 @@ public class ItemAttributeHandler {
         ((ItemAttributeDarkAuctionPrice) item.getAttribute("dark_auction_price")).setValue(price);
     }
 
+    public long getCoinsConsumed() {
+        return ((ItemAttributeCoinsConsumed) item.getAttribute("coins_consumed")).getValue();
+    }
+
+    public void setCoinsConsumed(long coins) {
+        ((ItemAttributeCoinsConsumed) item.getAttribute("coins_consumed")).setValue(coins);
+    }
+
+    public @Nullable ItemType getPetHeldItem() {
+        String id = ((ItemAttributePetHeldItem) item.getAttribute("pet_held_item")).getValue();
+        return id == null || id.isEmpty() ? null : ItemType.get(id);
+    }
+
+    public void setPetHeldItem(@Nullable ItemType type) {
+        ((ItemAttributePetHeldItem) item.getAttribute("pet_held_item")).setValue(type == null ? "" : type.name());
+    }
+
     public List<AbiphoneNPC> getAbiphoneNPCs() {
         return ((ItemAttributeAbiphoneContacts) item.getAttribute("abiphone_contacts")).getValue().stream()
                 .map(AbiphoneRegistry::getFromId)

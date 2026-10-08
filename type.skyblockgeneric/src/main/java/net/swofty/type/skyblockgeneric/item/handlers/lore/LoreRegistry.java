@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.handlers.lore;
 
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.PotatoType;
 import net.swofty.commons.text.Text;
@@ -20,13 +21,14 @@ public class LoreRegistry {
     private static final Map<String, LoreConfig> REGISTERED_HANDLERS = new HashMap<>();
 
     static {
+        MythologicalItemHandlers.registerLore();
         register("ENCHANTED_BOOK", new LoreConfig(
                 (item, player) -> {
                     List<SkyBlockEnchantment> enchantments = item.getAttributeHandler().getEnchantments().toList();
                     ArrayList<String> lore = new ArrayList<>();
 
                     enchantments.forEach(enchantment -> {
-                        lore.add(Text.of("<9>{} {:roman}",
+                        lore.add(Text.of(enchantment.type().getEnch().isUltimate() ? "<d><b>{} {:roman}" : "<9>{} {:roman}",
                                 StringUtility.toNormalCase(enchantment.type().name()),
                                 enchantment.level()).serialize());
                         Text.of("<7><wrap:30>{}</wrap>",

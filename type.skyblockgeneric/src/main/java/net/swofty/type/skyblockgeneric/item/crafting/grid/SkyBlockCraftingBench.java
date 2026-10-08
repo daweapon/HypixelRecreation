@@ -5,6 +5,7 @@ import net.swofty.type.generic.gui.v2.click.ItemSlots;
 import net.swofty.type.generic.gui.v2.click.SlotStack;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
+import net.swofty.type.skyblockgeneric.item.crafting.UpgradeCarryOver;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -50,7 +51,9 @@ public final class SkyBlockCraftingBench implements CraftingResolver {
             resolution = Resolution.NONE;
         } else {
             SkyBlockRecipe.CraftingResult permission = recipe.getCanCraft().apply(player);
-            ItemStack output = PlayerItemUpdater.playerUpdate(player, recipe.getResult().getItemStack())
+            SkyBlockItem result = recipe.getUpgradesFrom() == null ? recipe.getResult()
+                    : UpgradeCarryOver.apply(recipe.getResult(), recipe.getUpgradesFrom(), toItems(stacks));
+            ItemStack output = PlayerItemUpdater.playerUpdate(player, result.getItemStack())
                     .amount(recipe.getAmount())
                     .build();
             resolution = new Resolution(recipe, permission, output);
@@ -97,6 +100,14 @@ public final class SkyBlockCraftingBench implements CraftingResolver {
             out[i] = ItemSlots.toSlot(PlayerItemUpdater.playerUpdate(player, leftover.getItemStack()).build());
         }
         return out;
+    }
+
+    private static SkyBlockItem[] toItems(ItemStack[] stacks) {
+        SkyBlockItem[] items = new SkyBlockItem[stacks.length];
+        for (int i = 0; i < stacks.length; i++) {
+            items[i] = stacks[i].isAir() ? null : new SkyBlockItem(stacks[i]);
+        }
+        return items;
     }
 
     private static ItemStack[] toStacks(SlotStack[] grid) {

@@ -20,6 +20,14 @@ public interface Ench {
 
     List<EnchantItemGroups> getGroups();
 
+    default boolean isUltimate() {
+        return false;
+    }
+
+    default int getEndcapLevel() {
+        return 0;
+    }
+
     default ItemStatistics getStatistics(int level) {
         return ItemStatistics.empty();
     }

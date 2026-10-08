@@ -61,6 +61,8 @@ public final class AdminCatalog {
             Map.entry("enchant", new Details(Category.ITEMS, "/enchant <enchantment_type> <level>", "Enchants the contents o the players hand.")),
             Map.entry("giveskyblockxp", new Details(Category.ITEMS, "/giveskyblockxp <cause> [player]", "Gives yourself skyblock xp.")),
             Map.entry("item", new Details(Category.ITEMS, "/item <item> [amount] [player]", "Gives an item to the player. Also accepts /item <item> <player> with the default amount. Target is an online player selector.")),
+            Map.entry("forcedrop", new Details(Category.ITEMS, "/forcedrop <item> [player]", "Guarantees an item from the next mob killed that can drop it (chimera for the Inquisitor's book).")),
+            Map.entry("max", new Details(Category.ITEMS, "/max coa", "Fills a held or worn Crown of Avarice to its 1B Coins consumed cap.")),
             Map.entry("maxprofile", new Details(Category.ITEMS, "/maxprofile [player]", "Fully maxes out a profile, identical to THE MAX STICK.")),
             Map.entry("mithrilinfuse", new Details(Category.ITEMS, "/mithrilinfuse", "Mithril Infuses the minion in the players hand.")),
             Map.entry("recomb", new Details(Category.ITEMS, "/recomb", "Recombobulates the item in the players hand.  Help uses /recombobulate, but it is not a registered label; use the spelling shown here.")),

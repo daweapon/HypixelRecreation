@@ -5,6 +5,9 @@ items:
     rarity: COMMON
     components:
       - id: PET_ITEM
+        pet_exp_boost: 10
+        description:
+          - "\xA77Gives \xA7a+10% \xA77pet exp for all skills."
       - id: ENCHANTED
       - id: NOT_FINISHED_YET
   - id: BIG_TEETH
@@ -14,6 +17,10 @@ items:
     components:
       - id: ENCHANTED
       - id: PET_ITEM
+        statistics:
+          critical_chance: 5
+        description:
+          - "\xA77Grants \xA79+5 \u2623 Crit Chance\xA77."
       - id: NOT_FINISHED_YET
   - id: BUBBLEGUM
     material: player_head
@@ -71,10 +78,14 @@ items:
   - id: HARDENED_SCALES
     material: prismarine_crystals
     name: "Hardened Scales"
-    rarity: COMMON
+    rarity: UNCOMMON
     components:
       - id: ENCHANTED
       - id: PET_ITEM
+        statistics:
+          defense: 25
+        description:
+          - "\xA77Grants \xA7a+25 \u2748 Defense\xA77."
       - id: NOT_FINISHED_YET
   - id: IRON_CLAWS
     material: iron_ingot
@@ -83,6 +94,12 @@ items:
     components:
       - id: ENCHANTED
       - id: PET_ITEM
+        pet_stat_boost:
+          critical_damage: 40
+          critical_chance: 40
+        description:
+          - "\xA77Increases the pet's \xA79\u2620 Crit Damage"
+          - "\xA77and \xA79\u2623 Crit Chance \xA77by \xA7a40%\xA77."
       - id: NOT_FINISHED_YET
   - id: MINING_EXP_BOOST_COMMON
     material: iron_pickaxe
@@ -107,8 +124,11 @@ items:
   - id: SHARPENED_CLAWS
     material: prismarine_shard
     name: "Sharpened Claws"
-    rarity: COMMON
+    rarity: UNCOMMON
     components:
       - id: ENCHANTED
       - id: PET_ITEM
-      - id: NOT_FINISHED_YET
+        statistics:
+          critical_damage: 15
+        description:
+          - "\xA77Grants \xA79+15 \u2620 Crit Damage\xA77."

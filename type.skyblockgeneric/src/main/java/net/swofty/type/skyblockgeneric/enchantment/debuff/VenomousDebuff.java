@@ -15,13 +15,14 @@ import java.util.concurrent.ConcurrentHashMap;
 // Tracks stacking Venomous poison-damage-over-time and movement-speed-reduction debuffs applied
 // to mobs, ticking damage and reverting speed once all stacks expire.
 public class VenomousDebuff {
-    public static final double[] SPEED_REDUCTION_PERCENTAGES = new double[]{0.05, 0.10, 0.15, 0.20, 0.25, 0.30};
+    public static final double[] SPEED_REDUCTION_PERCENTAGES = new double[]{0.02, 0.04, 0.06, 0.08, 0.12, 0.15, 0.20};
+    public static final double[] DAMAGE_PERCENT_PER_SECOND = new double[]{0.2, 0.4, 0.6, 0.8, 1.2, 1.6, 2.0};
     private static final int MAX_STACKS = 40;
     private static final int DURATION_SECONDS = 5;
     private static final Map<UUID, VenomousEffect> activeEffects = new ConcurrentHashMap<>();
 
     public static void applyVenomous(SkyBlockPlayer player, SkyBlockMob mob, double damageDealt, int level) {
-        if (level < 1 || level > 6) return;
+        if (level < 1 || level > SPEED_REDUCTION_PERCENTAGES.length) return;
 
         UUID mobId = mob.getUuid();
 
@@ -103,7 +104,7 @@ public class VenomousDebuff {
                     if (age >= DURATION_SECONDS) {
                         iterator.remove();
                     } else {
-                        double damagePercent = stack.damageDealt * 0.003 * stack.level;
+                        double damagePercent = stack.damageDealt * DAMAGE_PERCENT_PER_SECOND[stack.level - 1] / 100D;
                         totalDamage += damagePercent;
                     }
                 }

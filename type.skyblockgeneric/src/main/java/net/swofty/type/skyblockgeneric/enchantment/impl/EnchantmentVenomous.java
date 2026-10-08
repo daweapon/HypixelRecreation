@@ -20,7 +20,7 @@ public class EnchantmentVenomous implements Ench, EnchFromTable, DamageEventEnch
     @Override
     public String getDescription(int level) {
         double speedReduction = VenomousDebuff.SPEED_REDUCTION_PERCENTAGES[level - 1] * 100;
-        double damagePercent = level * 0.3;
+        double damagePercent = VenomousDebuff.DAMAGE_PERCENT_PER_SECOND[level - 1];
         return "Reduces the target's walk speed by <a>" + speedReduction + "%<7> and deals <a>+" + damagePercent + "%<7> of your damage per second per hit, stacking globally up to 40 hits. Lasts 5s.";
     }
 
@@ -40,6 +40,11 @@ public class EnchantmentVenomous implements Ench, EnchFromTable, DamageEventEnch
         }
 
         return new ApplyLevels(levels);
+    }
+
+    @Override
+    public int getEndcapLevel() {
+        return 7;
     }
 
     @Override
@@ -69,7 +74,7 @@ public class EnchantmentVenomous implements Ench, EnchFromTable, DamageEventEnch
 
     @Override
     public void onDamageDealt(SkyBlockPlayer player, net.minestom.server.entity.LivingEntity target, double damageDealt, int level) {
-        if (level < 1 || level > 6) return;
+        if (level < 1 || level > getEndcapLevel()) return;
         if (!(target instanceof SkyBlockMob mob)) return;
 
         VenomousDebuff.applyVenomous(player, mob, damageDealt, level);

@@ -13,14 +13,21 @@ public class Reforge {
     private final String name;
     private final String prefix;
     private final Set<ReforgeType> applicableTypes;
+    private final boolean stoneOnly;
     private final BiFunction<ItemStatistics, Integer, ItemStatistics> calculation;
 
     public Reforge(String id, String name, String prefix, Set<ReforgeType> applicableTypes,
+                   BiFunction<ItemStatistics, Integer, ItemStatistics> calculation) {
+        this(id, name, prefix, applicableTypes, false, calculation);
+    }
+
+    public Reforge(String id, String name, String prefix, Set<ReforgeType> applicableTypes, boolean stoneOnly,
                    BiFunction<ItemStatistics, Integer, ItemStatistics> calculation) {
         this.id = id;
         this.name = name;
         this.prefix = prefix;
         this.applicableTypes = applicableTypes;
+        this.stoneOnly = stoneOnly;
         this.calculation = calculation;
     }
 

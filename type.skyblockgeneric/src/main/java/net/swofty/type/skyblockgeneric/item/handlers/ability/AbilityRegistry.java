@@ -150,15 +150,9 @@ public class AbilityRegistry {
             }
         ));
 
-        register(new RegisteredAbility(
-            "ECHO",
-            "Echo",
-            (_, _) -> "<7>Show the way to the next or nearby Griffin burrow.",
-            RegisteredAbility.AbilityActivation.RIGHT_CLICK,
-            20 * 3,
-            new RegisteredAbility.NoAbilityCost(),
-            (player, _, _, _) -> GriffinBurrowService.INSTANCE.echo(player)
-        ));
+        registerEcho("ECHO", 3);
+        registerEcho("ECHO_ARCHAIC", 2);
+        registerEcho("ECHO_DEIFIC", 1);
 
         register(new RegisteredAbility(
             "SPEED_BOOST",
@@ -231,4 +225,15 @@ public class AbilityRegistry {
         return REGISTERED_ABILITIES;
     }
 
+    private static void registerEcho(String id, int cooldownSeconds) {
+        register(new RegisteredAbility(
+            id,
+            "Echo",
+            (_, _) -> "<7>Show the way to the next or nearby Griffin burrow.",
+            RegisteredAbility.AbilityActivation.RIGHT_CLICK,
+            20 * cooldownSeconds,
+            new RegisteredAbility.NoAbilityCost(),
+            (player, _, _, _) -> GriffinBurrowService.INSTANCE.echo(player)
+        ));
+    }
 }

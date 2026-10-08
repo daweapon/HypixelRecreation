@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.staff;
 
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.bank.BankAccountTier;
@@ -137,6 +138,7 @@ public final class MaxStickService {
         meetTradeCenter(player);
         meetDamia(player);
         maxCarnival(player);
+        MythologicalItemHandlers.setBrainFoodEaten(player, MythologicalItemHandlers.BRAIN_FOOD_LIMIT);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have
         // granted its own SkyBlock XP causes first or the top-up would overshoot.
         maxSkyBlockLevel(player);

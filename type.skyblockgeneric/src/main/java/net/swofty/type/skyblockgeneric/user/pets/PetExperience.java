@@ -37,6 +37,7 @@ public final class PetExperience {
         }
         if (skill == SkillCategories.FISHING) xp *= FISHING_MULTIPLIER;
         xp *= 1 + tamingLevel(player) * TAMING_MULTIPLIER_PER_LEVEL;
+        xp *= PetItems.expMultiplier(pet, skill);
         return xp * ElectionPerks.multiplier(SkyBlockMayor.Perk.PET_XP_BUFF);
     }
 

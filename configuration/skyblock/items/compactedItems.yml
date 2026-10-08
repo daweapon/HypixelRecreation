@@ -21,6 +21,8 @@ items:
         item_id: ANCIENT_CLAW
       - id: SELLABLE
         value: 32000.0
+      - id: SELLABLE
+        value: 32000.0
   - id: ENCHANTED_BAKED_POTATO
     material: BAKED_POTATO
     name: "Enchanted Baked Potato"

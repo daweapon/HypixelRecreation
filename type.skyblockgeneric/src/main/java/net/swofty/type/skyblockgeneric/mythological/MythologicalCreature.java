@@ -267,13 +267,13 @@ public enum MythologicalCreature {
                             drop(ItemType.ANCIENT_CLAW, 16, 100),
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 16, 50),
                             drop(ItemType.ENCHANTED_ANCIENT_CLAW, 1, 50),
-                            unavailable("Chimera I", 1, 1),
+                            chimera(1),
                             dye(50_000)),
                     tier(Rarity.MYTHIC, "MINOS_INQUISITOR_1250", 290, 80_000_000, 900, 96, 435, 319,
                             drop(ItemType.ANCIENT_CLAW, 32, 100),
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 32, 50),
                             drop(ItemType.ENCHANTED_ANCIENT_CLAW, 2, 50),
-                            unavailable("Chimera I", 1, 1.25),
+                            chimera(1.25),
                             dye(50_000)))),
     MANTICORE("Manticore", EntityType.MANNEQUIN,
             "9e057e819907a638975760b9cd935cb8a57dbf2816954ac8d944196a4e8b02ca", Rarity.MYTHIC, 15, 160, 1,
@@ -385,7 +385,7 @@ public enum MythologicalCreature {
         return new MythologicalDrop(ItemType.DYE_MYTHOLOGICAL, "Mythological Dye", 1, 100D / oneIn);
     }
 
-    private static MythologicalDrop unavailable(String name, int amount, double chancePercent) {
-        return new MythologicalDrop(null, name, amount, chancePercent);
+    private static MythologicalDrop chimera(double chancePercent) {
+        return new MythologicalDrop(ItemType.ENCHANTED_BOOK, "Chimera I", 1, chancePercent);
     }
 }

@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,9 @@ public abstract class SkyBlockRecipe<T> {
     protected int amount = 1;
     @Getter
     protected RecipeType recipeType;
+    @Getter
+    @Setter
+    protected @Nullable ItemType upgradesFrom;
 
     protected SkyBlockRecipe(SkyBlockItem result, RecipeType recipeType, Function<SkyBlockPlayer, CraftingResult> canCraft) {
         this.result = result;

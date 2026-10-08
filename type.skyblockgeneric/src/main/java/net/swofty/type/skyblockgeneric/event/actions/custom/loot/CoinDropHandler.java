@@ -9,6 +9,8 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
+import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
+import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalCoins;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // Awards coin drops for mob kills, boosted by the Scavenger enchantment and bestiary tier
@@ -40,6 +42,9 @@ public class CoinDropHandler implements HypixelEventClass {
         }
 
         coinsDropped = Math.round((baseCoins + scavengedCoins) * bestiaryBoost);
+        if (mob instanceof MythologicalCreatureMob) {
+            coinsDropped = (int) MythologicalCoins.fromMob(player, coinsDropped);
+        }
 
         player.addCoins(coinsDropped);
     }

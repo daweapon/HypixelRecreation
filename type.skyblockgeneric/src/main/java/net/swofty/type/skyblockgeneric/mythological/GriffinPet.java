@@ -9,6 +9,8 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.Optional;
 
 public final class GriffinPet {
+    private static final double KING_OF_KINGS_MAGIC_FIND = 20;
+
     private GriffinPet() {
     }
 
@@ -22,6 +24,10 @@ public final class GriffinPet {
 
     public static boolean isMythic(SkyBlockPlayer player) {
         return equippedRarity(player).map(rarity -> rarity.isAtLeast(Rarity.MYTHIC)).orElse(false);
+    }
+
+    public static double kingOfKingsMagicFind(SkyBlockPlayer player) {
+        return equippedRarity(player).map(rarity -> rarity.isAtLeast(Rarity.LEGENDARY) ? KING_OF_KINGS_MAGIC_FIND : 0D).orElse(0D);
     }
 
     public static String coloredName(Rarity rarity) {

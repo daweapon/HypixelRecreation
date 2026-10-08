@@ -55,12 +55,3 @@ items:
     rarity: UNCOMMON
     material: LEATHER_BOOTS
     name: "Miners Outfit Boots"
-  - id: DWARF_TURTLE_SHELMET
-    rarity: EPIC
-    material: PLAYER_HEAD
-    name: "Dwarf Turtle Shelmet"
-    components:
-      - id: SELLABLE
-        value: 250000.0
-      - id: SKULL_HEAD
-        texture: bac1510610d50443fd97f34a6e94e21d0b93d5c7529f3d95c1816ce24a13dc84

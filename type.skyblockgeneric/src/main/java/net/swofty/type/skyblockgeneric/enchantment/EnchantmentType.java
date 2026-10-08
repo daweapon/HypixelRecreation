@@ -64,6 +64,7 @@ public enum EnchantmentType {
     THUNDERLORD(EnchantmentThunderlord.class),
     VAMPIRISM(EnchantmentVampirism.class),
     VENOMOUS(EnchantmentVenomous.class),
+    CHIMERA(EnchantmentChimera.class),
     VICIOUS(EnchantmentVicious.class),
     ;
 
@@ -85,9 +86,9 @@ public enum EnchantmentType {
     }
 
     public String getDescription(int level, SkyBlockPlayer player) {
-        if (level < 1 || level > ench.getLevelsToApply(player).maximumLevel())
-            return ("level cannot be less than 1 and more than " +
-                    ench.getLevelsToApply(player).maximumLevel() + " for " + name());
+        int maximumLevel = Math.max(ench.getLevelsToApply(player).maximumLevel(), ench.getEndcapLevel());
+        if (level < 1 || level > maximumLevel)
+            return ("level cannot be less than 1 and more than " + maximumLevel + " for " + name());
         return ench.getDescription(level);
     }
 
