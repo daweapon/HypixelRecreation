@@ -214,14 +214,30 @@ public abstract class SkyBlockMob extends EntityCreature {
                     -Math.cos(sourcePoint.getPosition().yaw() * Math.PI / 180));
         }
 
-        updateCustomName("<8>[<7>Lv{}<8>] <c>{} <a>{}<f>/<a>{}",
+        refreshName();
+
+        return toReturn;
+    }
+
+    public void refreshName() {
+        String header = nameHeader();
+        updateCustomName((header.isEmpty() ? "" : header + "\n") + "<8>[<7>Lv{}<8>] <c>{} <a>{}<f>/<a>{}",
                 getLevel(),
                 getDisplayName(),
                 Math.round(getHealth()),
                 Math.round(this.getAttributeValue(Attribute.MAX_HEALTH))
         );
+    }
 
-        return toReturn;
+    protected String nameHeader() {
+        return "";
+    }
+
+    public void onMeleeHit(SkyBlockPlayer target) {
+    }
+
+    public boolean isImmuneToArrows() {
+        return false;
     }
 
     @Override

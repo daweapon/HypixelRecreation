@@ -91,9 +91,12 @@ public class SkyBlockPlayer extends HypixelPlayer {
     public boolean bypassBuild = false;
     @Setter
     public boolean speedManaged = false;
+    private final Map<String, HealingModifier> healingModifiers = new java.util.concurrent.ConcurrentHashMap<>();
+    private long lastHealingBlockedMessage;
     @Setter
     private SkyBlockIsland skyBlockIsland;
     private static final Tag<Integer> fallHeight = Tag.Integer("fallHeight");
+    private static final long HEALING_BLOCKED_MESSAGE_COOLDOWN_MS = 10_000;
 
     private static final Pattern SACK_PATTERN = Pattern.compile("^(?:(SMALL|MEDIUM|LARGE|ENCHANTED)_)?(.+?)_SACK$");
 
@@ -993,6 +996,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
     @Override
     public void kill() {
+        healingModifiers.clear();
         setHealth(getMaxHealth());
         sendTo(HypixelConst.getTypeLoader().getType());
 
@@ -1020,6 +1024,30 @@ public class SkyBlockPlayer extends HypixelPlayer {
         });
     }
 
+    public record HealingModifier(double multiplier, @Nullable String blockedMessage) {
+    }
+
+    public void setHealingModifier(String source, HealingModifier modifier) {
+        healingModifiers.put(source, modifier);
+    }
+
+    public void removeHealingModifier(String source) {
+        healingModifiers.remove(source);
+    }
+
+    private double healingMultiplier() {
+        double multiplier = 1;
+        for (HealingModifier modifier : healingModifiers.values()) {
+            multiplier *= modifier.multiplier();
+            if (modifier.multiplier() <= 0 && modifier.blockedMessage() != null
+                    && System.currentTimeMillis() - lastHealingBlockedMessage > HEALING_BLOCKED_MESSAGE_COOLDOWN_MS) {
+                lastHealingBlockedMessage = System.currentTimeMillis();
+                sendMessage(modifier.blockedMessage());
+            }
+        }
+        return Math.max(0, multiplier);
+    }
+
     public float getMaxHealth() {
         PlayerStatistics statistics = this.getStatistics();
         float maxHealth = statistics.allStatistics().getOverall(ItemStatistic.HEALTH).floatValue();
@@ -1039,6 +1067,9 @@ public class SkyBlockPlayer extends HypixelPlayer {
         if (health < 0) {
             kill();
             return;
+        }
+        if (health > this.health && !healingModifiers.isEmpty()) {
+            health = (float) (this.health + (health - this.health) * healingMultiplier());
         }
         this.health = health;
         this.sendPacket(new UpdateHealthPacket((health / getMaxHealth()) * 20, 20, 20));

@@ -70,6 +70,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/replay <uuid> [hex]` | — | Watch a specific replay by ID. | DEFAULT | No | `type.generic` |
 | `/replays` | — | View your game replays. | DEFAULT | No | `type.generic` |
 | `/selectnpcoption <npc> <option>` | — | Selects an option from an NPC dialogue. Internal NPC dialogue entry point; both arguments are required. | DEFAULT | No | `type.skyblockgeneric` |
+| `/sphinxanswer <sphinx> <choice>` | — | Answers a Sphinx's riddle during Diana's Mythological Ritual. Internal entry point behind the clickable answers; only the player who dug the Sphinx up can answer, once. | DEFAULT | No | `type.skyblockgeneric` |
 | `/slayer start <type> <tier>; /slayer status; /slayer cancel` | — | Starts and manages Slayer quests. Starts a quest, displays status, or cancels it; progression and cost checks apply. | DEFAULT | No | `type.skyblockgeneric` |
 | `/toggledropalert` | `/dropalert` | Toggles drop alert. | DEFAULT | No | `type.skyblockgeneric` |
 | `/viewcollection <collection>` | `/vc` | Opens up a collections GUI. | DEFAULT | No | `type.skyblockgeneric` |

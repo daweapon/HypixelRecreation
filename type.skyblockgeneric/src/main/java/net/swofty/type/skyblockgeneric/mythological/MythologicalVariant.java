@@ -18,6 +18,10 @@ public record MythologicalVariant(Rarity griffinRarity, String mobId, int level,
             Rarity.LEGENDARY, "Exalted",
             Rarity.MYTHIC, "Empyrean");
 
+    public int displayLevel() {
+        return Integer.parseInt(mobId.substring(mobId.lastIndexOf('_') + 1));
+    }
+
     public String nameOf(String baseName) {
         String prefix = PREFIXES.get(griffinRarity);
         return prefix == null ? baseName : prefix + " " + baseName;

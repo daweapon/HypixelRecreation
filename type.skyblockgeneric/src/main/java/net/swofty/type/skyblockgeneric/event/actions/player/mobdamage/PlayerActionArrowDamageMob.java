@@ -31,6 +31,7 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
         if (event.getTarget() instanceof SkyBlockMob mob)
             collidedWith = mob;
         else return;
+        if (collidedWith.isImmuneToArrows()) return;
 
         SkyBlockPlayer shooter;
         if (arrow.getShooter() instanceof SkyBlockPlayer player)

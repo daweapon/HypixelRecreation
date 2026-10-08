@@ -8,7 +8,7 @@ import java.util.*;
 
 public final class HelpCatalog {
     public static final int PAGE_SIZE = 8;
-    private static final Set<String> INTERNAL_COMMANDS = Set.of("forceadmin", "selectnpcoption");
+    private static final Set<String> INTERNAL_COMMANDS = Set.of("forceadmin", "selectnpcoption", "sphinxanswer");
     private static final Map<String, String> USAGE_OVERRIDES = Map.ofEntries(
             Map.entry("tp", "/tp <x> <y> <z>"),
             Map.entry("speed", "/speed <speed> [FLY|WALK]"),

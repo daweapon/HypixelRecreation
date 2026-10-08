@@ -195,7 +195,7 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
         chain.advance(next.get(), BurrowKind.rollFollowUp(ThreadLocalRandom.current()));
     }
 
-    private void giveTreasure(SkyBlockPlayer player) {
+    public void giveTreasure(SkyBlockPlayer player) {
         BurrowTreasure treasure = BurrowTreasure.roll(ThreadLocalRandom.current());
         if (treasure.getItem() == null) {
             int coins = (int) Math.round(treasure.getCoins() * coinMultiplier(player)

@@ -4,22 +4,23 @@ import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
+import net.swofty.type.skyblockgeneric.mythological.ability.MythologicalAbilities;
+import net.swofty.type.skyblockgeneric.mythological.ability.MythologicalAbility;
 import net.minestom.server.entity.ai.GoalSelector;
+import net.minestom.server.entity.attribute.Attribute;
 import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.entity.ai.target.ClosestEntityTarget;
 import net.minestom.server.entity.ai.target.LastEntityDamagerTarget;
 import net.minestom.server.entity.damage.Damage;
 import net.minestom.server.network.packet.server.play.ParticlePacket;
 import net.minestom.server.particle.Particle;
-import net.minestom.server.utils.time.TimeUnit;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
-import net.swofty.type.skyblockgeneric.entity.mob.ai.VanillaMeleeAttackGoal;
-import net.swofty.type.skyblockgeneric.entity.mob.ai.VanillaRandomStrollGoal;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
@@ -55,6 +56,13 @@ public class MythologicalCreatureMob extends BestiaryMob {
     }
 
     private final Spec spec;
+    private final MythologicalAbility ability;
+    @Getter
+    @Setter
+    private boolean aiPaused;
+    private boolean cleanedUp;
+    private int abilityTicks;
+    private @Nullable String twinName;
     @Getter
     private final Set<UUID> attackers = new LinkedHashSet<>();
     private final Map<UUID, Long> lastWarning = new HashMap<>();
@@ -71,6 +79,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
         super(begin(new Spec(creature, variant)));
         this.spec = CONSTRUCTING.get();
         CONSTRUCTING.remove();
+        this.ability = MythologicalAbilities.create(creature);
     }
 
     public static MythologicalCreatureMob of(MythologicalCreature creature, MythologicalVariant variant) {
@@ -80,6 +89,10 @@ public class MythologicalCreatureMob extends BestiaryMob {
     private static net.minestom.server.entity.EntityType begin(Spec spec) {
         CONSTRUCTING.set(spec);
         return spec.creature().getEntityType();
+    }
+
+    private MythologicalAbility ability() {
+        return ability != null ? ability : MythologicalAbility.NONE;
     }
 
     private Spec spec() {
@@ -103,7 +116,11 @@ public class MythologicalCreatureMob extends BestiaryMob {
         first.twin = second;
         second.twin = first;
         second.twinsTurn = true;
+        first.twinName = "Bagheera";
+        second.twinName = "Azrael";
         MythologicalAppearance.dressAsAzrael(second);
+        first.refreshName();
+        second.refreshName();
     }
 
     private boolean hasLivingTwin() {
@@ -122,6 +139,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
     @Override
     public void onSpawn() {
         spawnedAt = System.currentTimeMillis();
+        ability().onSpawn(this);
     }
 
     public double rampagePercent() {
@@ -133,6 +151,11 @@ public class MythologicalCreatureMob extends BestiaryMob {
     @Override
     public void tick(long time) {
         super.tick(time);
+        if (!isDead() && !isRemoved() && getInstance() != null) {
+            ability().tick(this, abilityTicks);
+            if (getCreature().rampagePercentPerSecond() > 0 && abilityTicks % 20 == 0) refreshName();
+            abilityTicks++;
+        }
         if (!escaped && !isDead() && rampagePercent() >= MAX_RAMPAGE_PERCENT) {
             escaped = true;
             if (listener != null) listener.onEscaped(this);
@@ -158,7 +181,11 @@ public class MythologicalCreatureMob extends BestiaryMob {
             attackers.add(player.getUuid());
             damage.setAmount((float) (damage.getAmount() * Carnivals.multiplier(player, CarnivalPerk.STORIED_STINGER)));
         }
+        float amount = ability().modifyIncomingDamage(this, damage, damage.getAmount());
+        if (amount <= 0) return false;
+        damage.setAmount(amount);
         boolean damaged = super.damage(damage);
+        if (damaged) ability().onDamaged(this, damage, amount);
         if (damaged && damage.getAttacker() instanceof SkyBlockPlayer && hasLivingTwin()) {
             twinsTurn = true;
             twin.twinsTurn = false;
@@ -176,35 +203,75 @@ public class MythologicalCreatureMob extends BestiaryMob {
 
     @Override
     public void kill() {
+        cleanUp();
         super.kill();
         if (!escaped && listener != null) listener.onSlain(this);
+    }
+
+    @Override
+    public void remove() {
+        cleanUp();
+        super.remove();
+    }
+
+    private void cleanUp() {
+        if (cleanedUp) return;
+        cleanedUp = true;
+        aiPaused = true;
+        ability().cleanup(this);
+    }
+
+    @Override
+    public void onMeleeHit(SkyBlockPlayer target) {
+        ability().onMeleeHit(this, target);
+    }
+
+    @Override
+    protected String nameHeader() {
+        String header = ability().nameHeader(this);
+        if (!header.isEmpty()) return header;
+        double rampage = rampagePercent();
+        return rampage > 0 ? "<c>+" + Math.round(rampage) + "% damage" : "";
+    }
+
+    public int getFightTicks() {
+        return abilityTicks;
+    }
+
+    public double healthRatio() {
+        return getHealth() / getAttributeValue(Attribute.MAX_HEALTH);
+    }
+
+    @Override
+    public boolean isImmuneToArrows() {
+        return ability().immuneToArrows();
     }
 
     @Override
     public ItemStatistics getStatistics() {
         ItemStatistics statistics = super.getStatistics();
         double rampage = rampagePercent();
-        if (rampage <= 0) return statistics;
-        return ItemStatistics.add(statistics, ItemStatistics.builder()
-                .withBase(ItemStatistic.DAMAGE, getVariant().damage() * rampage / 100D)
-                .build());
+        if (rampage > 0) {
+            statistics = ItemStatistics.add(statistics, ItemStatistics.builder()
+                    .withBase(ItemStatistic.DAMAGE, getVariant().damage() * rampage / 100D)
+                    .build());
+        }
+        return ability().modifyStatistics(this, statistics);
     }
 
     @Override
     public String getDisplayName() {
-        return getVariant().nameOf(getCreature().getDisplayName());
+        return getVariant().nameOf(twinName != null ? twinName : getCreature().getDisplayName());
     }
 
     @Override
     public Integer getLevel() {
-        return getVariant().level();
+        return getVariant().displayLevel();
     }
 
     @Override
     public List<GoalSelector> getGoalSelectors() {
-        return List.of(
-                new VanillaMeleeAttackGoal(this, 1.6, 20, TimeUnit.SERVER_TICK),
-                new VanillaRandomStrollGoal(this, 6));
+        return List.of(MythologicalGoals.chase(this), MythologicalGoals.stroll(this));
     }
 
     @Override

@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.ability.SlayerBoss
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
 public final class SlayerBossMob extends SkyBlockMob {
@@ -78,6 +79,11 @@ public final class SlayerBossMob extends SkyBlockMob {
     @Override
     public void onSpawn() {
         ability.onSpawn(this);
+    }
+
+    @Override
+    public void onMeleeHit(SkyBlockPlayer target) {
+        ability.onMeleeHit(this, target);
     }
 
     @Override
