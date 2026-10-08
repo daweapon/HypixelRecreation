@@ -2,6 +2,7 @@ package net.swofty.type.crimsonisle.faction;
 
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.TaskSchedule;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.crimson.questline.BarbarianStep;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonAbiphone;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
@@ -11,8 +12,12 @@ import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
 /**
- * Twice a second: the Throne Room and pre-faction Chief's Hut gates, walking into the Chief's Hut
+ * Registers the questline with Crag's Kuudra gate, then twice a second: Elle's intro Blazes, the Throne Room and pre-faction Chief's Hut gates, walking into the Chief's Hut
  * with Ugo, picking up stolen research, and the Dean's contact once a Mage owns an Abiphone.
  */
 public final class FactionQuestTicker {
@@ -22,14 +27,18 @@ public final class FactionQuestTicker {
     }
 
     public static void start() {
+        KuudraProgress.registerQuestlineCheck(CrimsonQuestlines::isReadyForKuudra);
         MinecraftServer.getSchedulerManager().buildTask(FactionQuestTicker::tick)
                 .repeat(TaskSchedule.tick(10)).schedule();
         FactionVillagers.startParticles();
     }
 
     private static void tick() {
-        for (var online : MinecraftServer.getConnectionManager().getOnlinePlayers()) {
-            if (online instanceof SkyBlockPlayer player && player.isOnline() && player.getSkyblockDataHandler() != null) {
+        Set<UUID> online = new HashSet<>();
+        for (var each : MinecraftServer.getConnectionManager().getOnlinePlayers()) online.add(each.getUuid());
+        IntroBlazes.cleanUp(online);
+        for (var each : MinecraftServer.getConnectionManager().getOnlinePlayers()) {
+            if (each instanceof SkyBlockPlayer player && player.isOnline() && player.getSkyblockDataHandler() != null) {
                 check(player);
             }
         }
@@ -43,6 +52,7 @@ public final class FactionQuestTicker {
             if (!ThroneRoomGate.mayEnterChiefsHut(player)) ThroneRoomGate.turnAwayFromChiefsHut(player);
             else if (CrimsonQuestlines.barbarian(player) == BarbarianStep.ESCORT_UGO) BarbarianScenes.chiefWelcome(player);
         }
+        IntroBlazes.check(player);
         if (CrimsonScene.isPlaying(player)) return;
         MageStep mage = CrimsonQuestlines.mage(player);
         if (mage == MageStep.RECOVER_RESEARCH && player.getPosition().distance(MageScenes.BASTION_RESEARCH) <= RESEARCH_RADIUS) {

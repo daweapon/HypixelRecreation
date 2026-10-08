@@ -3,15 +3,15 @@ package net.swofty.type.crimsonisle.npcs.faction;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.type.crimsonisle.faction.CrimsonSkins;
 import net.swofty.type.crimsonisle.faction.FactionVillagerNPC;
-import net.swofty.type.crimsonisle.faction.QuestMobs;
+import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.entity.npc.trait.NPCAbiphoneTrait;
 import net.swofty.type.skyblockgeneric.abiphone.impl.AbiphoneIgrupan;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonFaction;
-import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestMobs;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonSideQuests;
 import net.swofty.type.skyblockgeneric.crimson.questline.MageStep;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobChickzilla;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Map;
@@ -70,10 +70,10 @@ public class NPCIgrupan extends FactionVillagerNPC implements NPCAbiphoneTrait {
                     "Come back later and I will have more for you to see.");
             return;
         }
-        QuestMobs.spawn(CrimsonQuestMobs.CHICKZILLA, COOP).ifPresentOrElse(mob -> {
-            CHICKZILLAS.put(player.getUuid(), mob);
-            say(player, "A SUPER CHICKEN!", "I was wrong!! My chickens are not immune to Sulphur!",
-                    "One of my chickens mutated into an abomination.", "I don't know what to do, it's way to strong for me!");
-        }, () -> player.sendMessage("<c>Chickzilla isn't available yet!"));
+        MobChickzilla chickzilla = new MobChickzilla();
+        chickzilla.setInstance(HypixelConst.getInstanceContainer(), COOP);
+        CHICKZILLAS.put(player.getUuid(), chickzilla);
+        say(player, "A SUPER CHICKEN!", "I was wrong!! My chickens are not immune to Sulphur!",
+                "One of my chickens mutated into an abomination.", "I don't know what to do, it's way to strong for me!");
     }
 }

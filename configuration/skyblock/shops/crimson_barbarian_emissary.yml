@@ -1,9 +1,15 @@
-# Kuudra Keys as sold by the Barbarian Emissary (wiki Barbarian_Emissary/UI, 2025-02 revision; 2024-11 changelog).
-# Copy these entries into the Emissary's shop: coins take the reputation discount, materials don't (estimate).
+# Barbarian Emissary's "Barbarian Shop" in Dragontail (wiki Barbarian_Emissary/UI), in menu order.
+# Barbarian Faction members only. Coin prices drop 5/10/15/20% at Friendly/Trusted/Honored/Hero
+# Barbarian Reputation. The Thornleaf Scythe's base price is 100,000 (the UI page's 85,000 is a
+# discounted screenshot). Kuudra Keys cost 2/4/16/40/80 Enchanted Red Sand (2024-11 changelog; the
+# 2022 UI page's 6/20/60/120 is stale).
 title: Barbarian Shop
 slots: DEFAULT
 priceModifier: barbarian_emissary
 entries:
+  - item: THORNLEAF_SCYTHE
+    material: iron_hoe
+    cost: { coins: 100000 }
   - item: KUUDRA_TIER_KEY
     name: "<9>Kuudra Key"
     material: player_head

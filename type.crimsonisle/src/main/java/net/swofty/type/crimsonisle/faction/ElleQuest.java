@@ -4,16 +4,17 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.crimsonisle.gui.faction.GUIQuestClaim;
+import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonFaction;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraAvailability;
 import net.swofty.type.skyblockgeneric.crimson.questline.BarbarianStep;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonAbiphone;
-import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestMobs;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonScene;
 import net.swofty.type.skyblockgeneric.crimson.questline.MageStep;
 import net.swofty.type.skyblockgeneric.crimson.questline.UniversalStep;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobFlamingSpider;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -260,13 +261,13 @@ public final class ElleQuest {
                     "It's just ahead of us, the <2>Burning Spider<f>!", "Go fight it, good luck!"
             ).thenRun(() -> {
                 if (CrimsonQuestlines.advance(player, BarbarianStep.FOLLOW_ELLE, BarbarianStep.KILL_CORRUPTED_MONSTER, 0)) {
-                    QuestMobs.spawn(CrimsonQuestMobs.FLAMING_SPIDERS, CORRUPTED_SPIDER_SPAWN);
+                    spawnCorruptedSpider();
                 }
             });
             case KILL_CORRUPTED_MONSTER -> {
                 elle.say(player, "Go fight it, good luck!");
                 if (CrimsonQuestlines.increment(player, "spider_respawns") % 3 == 0) {
-                    QuestMobs.spawn(CrimsonQuestMobs.FLAMING_SPIDERS, CORRUPTED_SPIDER_SPAWN);
+                    spawnCorruptedSpider();
                 }
             }
             case FIND_THE_NOISE -> CrimsonScene.create()
@@ -295,6 +296,11 @@ public final class ElleQuest {
             }
         }
         return true;
+    }
+
+    private static void spawnCorruptedSpider() {
+        MobFlamingSpider spider = new MobFlamingSpider();
+        spider.setInstance(HypixelConst.getInstanceContainer(), CORRUPTED_SPIDER_SPAWN).thenRun(spider::corrupt);
     }
 
     private static void forgottenSkull(CrimsonNPC elle, SkyBlockPlayer player) {

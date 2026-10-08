@@ -1,0 +1,58 @@
+# Lys's lamps in Scarleton (wiki Lys/UI), in menu order.
+title: Lys
+slots: DEFAULT
+entries:
+  - item: LAMP_BLACK
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_GRAY
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_LIGHT_GRAY
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_WHITE
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_BROWN
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_ORANGE
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_RED
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_YELLOW
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_PURPLE
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_MAGENTA
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_LILAC
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_PINK
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_GREEN
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_LIME
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_BLUE
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_CYAN
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_LIGHT_BLUE
+    material: player_head
+    cost: { coins: 150000 }
+  - item: LAMP_RAINBOW
+    material: player_head
+    cost: { coins: 250000 }

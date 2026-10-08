@@ -12,11 +12,13 @@ import java.util.Set;
  * {@code BLAZE}), so a quest keeps working whatever exact id the mob classes use.
  */
 public final class CrimsonQuestMobs {
-    public static final Set<String> BLAZES = Set.of("BLAZE", "INTRO_BLAZE", "BLAZE_ELLES_QUEST");
+    /** Elle's Blazes, plus any other Blaze so a player is never stuck if the intro Blazes were killed by someone else. */
+    public static final Set<String> BLAZES = Set.of("INTRO_BLAZE", "BLAZE", "MUTATED_BLAZE", "BEZAL", "SMOLDERING_BLAZE",
+            "MILLENNIA_AGED_BLAZE");
     public static final Set<String> FLAMING_SPIDERS = Set.of("FLAMING_SPIDER", "CORRUPTED_FLAMING_SPIDER");
     public static final Set<String> MAGMA_CUBE_RIDERS = Set.of("MAGMA_CUBE_RIDER");
     public static final Set<String> MAGE_OUTLAW = Set.of("MAGE_OUTLAW");
-    public static final Set<String> MAGMA_BOSS = Set.of("MAGMA_BOSS", "MAGMA_CUBE_BOSS");
+    public static final Set<String> MAGMA_BOSS = Set.of("MAGMA_BOSS");
     public static final Set<String> CHICKZILLA = Set.of("CHICKZILLA");
 
     private CrimsonQuestMobs() {

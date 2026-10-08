@@ -1,9 +1,30 @@
-# Kuudra Keys as sold by the Mage Emissary (wiki Mage_Emissary/UI, 2025-02 revision; 2024-11 changelog).
-# Copy these entries into the Emissary's shop: coins take the reputation discount, materials don't (estimate).
+# Mage Emissary's "Mage Shop" in Scarleton (wiki Mage_Emissary/UI, 2025-02 revision), in menu order.
+# Mage Faction members only. Coin prices drop 5/10/15/20% at Friendly/Trusted/Honored/Hero Mage
+# Reputation; materials are not discounted (estimate). Kuudra Keys cost 2/4/16/40/80 Enchanted
+# Mycelium (2024-11 changelog) and need the matching Mage Reputation.
 title: Mage Shop
 slots: DEFAULT
 priceModifier: mage_emissary
 entries:
+  - item: SPORE_HARVESTER
+    material: golden_hoe
+    cost: { coins: 100000 }
+  - item: GRAND_EXP_BOTTLE
+    name: "<9>Grand Experience Bottle"
+    material: experience_bottle
+    stackable: true
+    cost: { coins: 5000 }
+  - item: TITANIC_EXP_BOTTLE
+    name: "<5>Titanic Experience Bottle"
+    material: experience_bottle
+    stackable: true
+    cost: { coins: 750000 }
+  - item: ATOMINIZER
+    material: player_head
+    cost: { coins: 100000, items: { ENCHANTED_MYCELIUM: 500 } }
+  - item: CHARMINIZER
+    material: player_head
+    cost: { coins: 100000, items: { MUSHROOM_SPORE: 1000 } }
   - item: KUUDRA_TIER_KEY
     name: "<9>Kuudra Key"
     material: player_head

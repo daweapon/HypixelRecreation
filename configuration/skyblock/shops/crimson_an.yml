@@ -1,0 +1,29 @@
+# An's material shop (wiki An/UI; Barbarian Faction members only).
+title: An
+slots: DEFAULT
+entries:
+  - item: RED_SAND
+    material: red_sand
+    stackable: true
+    cost: { coins: 20 }
+  - item: BLAZE_ROD
+    material: blaze_rod
+    stackable: true
+    cost: { coins: 50 }
+  - item: MAGMA_CREAM
+    material: magma_cream
+    stackable: true
+    cost: { coins: 20 }
+  - item: QUARTZ
+    name: "<f>Nether Quartz"
+    material: quartz
+    stackable: true
+    cost: { coins: 50 }
+  - item: NETHER_WART
+    material: nether_wart
+    stackable: true
+    cost: { coins: 10 }
+  - item: GHAST_TEAR
+    material: ghast_tear
+    stackable: true
+    cost: { coins: 200 }

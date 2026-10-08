@@ -166,6 +166,12 @@ public abstract class CrimsonIsleMob extends BestiaryMob {
     protected void onDamagedBy(SkyBlockPlayer player, Damage damage) {
     }
 
+    /** Quest spawns that must be Corrupted, such as the Barbarian questline's Corrupted Flaming Spider. */
+    public void corrupt() {
+        corrupted = true;
+        refreshName();
+    }
+
     @Override
     public void onSpawn() {
         super.onSpawn();

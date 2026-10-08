@@ -45,9 +45,9 @@ class KuudraTablesTest {
         Map<String, String> materials = Map.of("mage", "ENCHANTED_MYCELIUM", "barbarian", "ENCHANTED_RED_SAND");
         for (Map.Entry<String, String> faction : materials.entrySet()) {
             Map<String, Object> shop = YamlFileUtils.loadYaml(
-                    new File("../configuration/skyblock/shops/kuudra_keys_" + faction.getKey() + ".yml"));
+                    new File("../configuration/skyblock/shops/crimson_" + faction.getKey() + "_emissary.yml"));
             List<CatalogueEntry> entries = ((List<Map<String, Object>>) shop.get("entries")).stream()
-                    .map(CatalogueEntry::parse).toList();
+                    .map(CatalogueEntry::parse).filter(entry -> entry.itemId().startsWith("KUUDRA_")).toList();
             assertEquals(KuudraTier.values().length, entries.size());
             for (KuudraTier tier : KuudraTier.values()) {
                 CatalogueEntry entry = entries.get(tier.ordinal());

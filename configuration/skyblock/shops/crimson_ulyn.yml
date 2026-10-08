@@ -1,0 +1,29 @@
+# Ulyn's material shop (wiki Ulyn/UI; Mage Faction members only).
+title: Ulyn
+slots: DEFAULT
+entries:
+  - item: MYCELIUM
+    material: mycelium
+    stackable: true
+    cost: { coins: 20 }
+  - item: BLAZE_ROD
+    material: blaze_rod
+    stackable: true
+    cost: { coins: 50 }
+  - item: MAGMA_CREAM
+    material: magma_cream
+    stackable: true
+    cost: { coins: 20 }
+  - item: QUARTZ
+    name: "<f>Nether Quartz"
+    material: quartz
+    stackable: true
+    cost: { coins: 50 }
+  - item: NETHER_WART
+    material: nether_wart
+    stackable: true
+    cost: { coins: 25 }
+  - item: GHAST_TEAR
+    material: ghast_tear
+    stackable: true
+    cost: { coins: 200 }

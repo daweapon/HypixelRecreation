@@ -101,6 +101,12 @@ public final class CrimsonQuestlines {
         return mage(player) == MageStep.MEET_AT_FORGOTTEN_SKULL || barbarian(player) == BarbarianStep.MEET_AT_FORGOTTEN_SKULL;
     }
 
+    /** Crag's "Complete main quest" check: a faction line has reached its first-Kuudra step. */
+    public static boolean isReadyForKuudra(SkyBlockPlayer player) {
+        return mage(player).ordinal() >= MageStep.DEFEAT_KUUDRA.ordinal()
+                || barbarian(player).ordinal() >= BarbarianStep.DEFEAT_KUUDRA.ordinal();
+    }
+
     public static boolean isAwaitingKuudra(SkyBlockPlayer player) {
         return mage(player) == MageStep.DEFEAT_KUUDRA || barbarian(player) == BarbarianStep.DEFEAT_KUUDRA;
     }
@@ -162,14 +168,9 @@ public final class CrimsonQuestlines {
             player.sendMessage("<a>The Flaming Spider dropped <f>Sulphur<a>!");
             set(player, BarbarianStep.FIND_THE_NOISE);
         }
-        if (CrimsonQuestMobs.matches(mob, CrimsonQuestMobs.MAGE_OUTLAW)) onMinibossKilled(player, "MAGE_OUTLAW");
-        if (CrimsonQuestMobs.matches(mob, CrimsonQuestMobs.MAGMA_BOSS)) onMinibossKilled(player, "MAGMA_BOSS");
     }
 
-    /**
-     * Miniboss hook for the miniboss spawner: Ugo's training needs a Mage Outlaw and then the Magma
-     * Boss. Ids are matched like {@link CrimsonQuestMobs}, so {@code MAGE_OUTLAW_100} also counts.
-     */
+    /** Ugo's training needs a Mage Outlaw and then the Magma Boss (fed from {@code CrimsonMinibossKilledEvent}). */
     public static void onMinibossKilled(SkyBlockPlayer player, String minibossId) {
         if (CrimsonQuestMobs.matches(minibossId, CrimsonQuestMobs.MAGE_OUTLAW)) {
             advance(player, BarbarianStep.KILL_MAGE_OUTLAW, BarbarianStep.REPORT_MAGE_OUTLAW, 0);

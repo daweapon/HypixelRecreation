@@ -1,0 +1,13 @@
+# Grog's brewery in Dragontail (wiki Grog/UI).
+title: Grog
+slots: DEFAULT
+entries:
+  - item: HOT_CHOCOLATE
+    material: potion
+    cost: { coins: 70000 }
+  - item: BLACK_COFFEE
+    material: potion
+    cost: { coins: 50000 }
+  - item: RED_THORNLEAF_TEA
+    material: potion
+    cost: { coins: 20000, items: { RED_THORNLEAF: 50 } }
