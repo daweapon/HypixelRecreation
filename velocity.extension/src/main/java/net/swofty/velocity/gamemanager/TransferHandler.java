@@ -259,7 +259,13 @@ public record TransferHandler(Player player) {
 									player.getUniqueId().toString(), originServerType.name()));
 				}
 
-				player.createConnectionRequest(toTransferTo).connectWithIndication();
+				RegisteredServer departedFrom = originServer;
+				player.createConnectionRequest(toTransferTo).connectWithIndication().thenAccept(connected -> {
+					if (!Boolean.TRUE.equals(connected) || departedFrom == null) return;
+					RedisClient.requestServer(UUID.fromString(departedFrom.getServerInfo().getName()),
+							new PlayerSwitchedProtocol(),
+							new PlayerSwitchedProtocol.Request(player.getUniqueId().toString()));
+				});
 				future.complete(null);
 			} catch (Exception e) {
 				future.completeExceptionally(e);

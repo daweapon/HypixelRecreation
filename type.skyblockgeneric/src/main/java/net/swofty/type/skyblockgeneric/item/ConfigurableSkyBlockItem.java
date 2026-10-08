@@ -204,6 +204,11 @@ public class ConfigurableSkyBlockItem {
         );
     }
 
+    public static @Nullable String getConfiguredName(String id) {
+        ConfigurableSkyBlockItem item = CACHED_ITEMS.get(id);
+        return item == null ? null : item.name;
+    }
+
     public static @Nullable ConfigurableSkyBlockItem getFromID(String id) {
         @Nullable ConfigurableSkyBlockItem item = CACHED_ITEMS.get(id);
         if (item == null) {

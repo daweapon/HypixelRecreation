@@ -5,6 +5,8 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Comparator;
+
 /**
  * A slayer RNG Meter: Slayer XP from Tier III+ kills fills it, the selected drop becomes up to three
  * times as likely as the meter fills, and a full meter guarantees that drop on the next kill.
@@ -46,6 +48,20 @@ public final class SlayerRngMeter {
     public static void addXp(DatapointSlayer.SlayerProgress progress, SlayerTier tier, int slayerXp) {
         if (tier.number() < MINIMUM_TIER.number() || progress.getRngItem() == null) return;
         progress.setRngXp(progress.getRngXp() + slayerXp);
+    }
+
+    public static void fill(SlayerDefinition definition, DatapointSlayer.SlayerProgress progress) {
+        SlayerDrop target = selected(definition, progress);
+        if (target == null) {
+            target = definition.drops().stream()
+                .filter(drop -> drop.hasRngMeter() && drop.available())
+                .max(Comparator.comparingLong(SlayerDrop::rngMeterXp))
+                .orElse(null);
+            if (target == null) return;
+            progress.setRngItem(target.key());
+            progress.setRngXp(0);
+        }
+        progress.setRngXp(Math.max(progress.getRngXp(), target.rngMeterXp()));
     }
 
     public static double percent(DatapointSlayer.SlayerProgress progress, SlayerDrop drop) {

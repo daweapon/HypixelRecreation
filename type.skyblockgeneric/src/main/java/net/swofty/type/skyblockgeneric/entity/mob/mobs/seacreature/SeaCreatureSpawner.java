@@ -77,6 +77,19 @@ public final class SeaCreatureSpawner {
         return PROFILES.containsKey(seaCreatureId);
     }
 
+    public static @Nullable String resolveId(String input) {
+        String normalized = input.trim().toUpperCase().replace(' ', '_').replace('-', '_');
+        if (PROFILES.containsKey(normalized)) return normalized;
+        String compact = normalized.replace("_", "");
+        for (SeaCreatureProfile profile : PROFILES.values()) {
+            if (profile.id().replace("_", "").equals(compact)
+                    || profile.displayName().toUpperCase().replace(" ", "").replace("_", "").equals(compact)) {
+                return profile.id();
+            }
+        }
+        return null;
+    }
+
     public static @Nullable SeaCreatureProfile getProfile(String seaCreatureId) {
         return PROFILES.get(seaCreatureId);
     }

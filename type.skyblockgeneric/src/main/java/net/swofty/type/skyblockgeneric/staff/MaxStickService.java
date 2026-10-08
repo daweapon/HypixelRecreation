@@ -67,6 +67,7 @@ import net.swofty.type.skyblockgeneric.skill.SkillCategory;
 import net.swofty.type.skyblockgeneric.slayer.SlayerDefinition;
 import net.swofty.type.skyblockgeneric.slayer.SlayerProgression;
 import net.swofty.type.skyblockgeneric.slayer.SlayerRegistry;
+import net.swofty.type.skyblockgeneric.slayer.SlayerRngMeter;
 import net.swofty.type.skyblockgeneric.slayer.SlayerType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.warps.TravelScrollIslands;
@@ -229,6 +230,7 @@ public final class MaxStickService {
             definition.tiers().keySet().forEach(tier -> {
                 if (progress.completions(tier) <= 0) progress.addCompletion(tier);
             });
+            if (SlayerRngMeter.unlocked(progress)) SlayerRngMeter.fill(definition, progress);
         }
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SLAYER, DatapointSlayer.class).setValue(slayerData);
         SlayerProgression.sync(player);
