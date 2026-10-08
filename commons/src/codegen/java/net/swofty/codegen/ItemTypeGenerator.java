@@ -198,10 +198,14 @@ public class ItemTypeGenerator {
         );
 
         Files.createDirectories(outputDir);
-        JavaFile.builder("net.swofty.commons.skyblock.item", enumBuilder.build())
+        String source = JavaFile.builder("net.swofty.commons.skyblock.item", enumBuilder.build())
                 .addFileComment("AUTO-GENERATED FILE. DO NOT EDIT.")
                 .build()
-                .writeTo(outputDir);
+                .toString()
+                .replaceAll("(?m)^  ([A-Z0-9_]+)([,;])$", "  $1()$2");
+        Path file = outputDir.resolve("net/swofty/commons/skyblock/item/ItemType.java");
+        Files.createDirectories(file.getParent());
+        Files.writeString(file, source);
     }
 
     private static int indexOf(List<String> values, String value) {
