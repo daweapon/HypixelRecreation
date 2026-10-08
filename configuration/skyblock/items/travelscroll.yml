@@ -80,3 +80,43 @@ items:
             result:
               type: HUB_CRYPTS_TRAVEL_SCROLL
               amount: 1
+  - id: DANGER_2_TRAVEL_SCROLL
+    material: MAP
+    name: "Travel Scroll to the Crimson Isle"
+    rarity: RARE
+    components:
+      - id: TRAVEL_SCROLL
+        scroll_type: CRIMSON_ISLE_SPAWN
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_GLOWSTONE_DUST
+                amount: 16
+              B:
+                type: ENCHANTED_ENDER_PEARL
+                amount: 16
+            result:
+              type: DANGER_2_TRAVEL_SCROLL
+              amount: 1
+  - id: NETHER_FORTRESS_BOSS_TRAVEL_SCROLL
+    material: MAP
+    name: "Dusty Travel Scroll to the Kuudra Skull"
+    rarity: EPIC
+    components:
+      - id: TRAVEL_SCROLL
+        scroll_type: CRIMSON_ISLE_FORGOTTEN_SKULL
+  - id: SMOLDERING_CHAMBERS_TRAVEL_SCROLL
+    material: MAP
+    name: "Travel Scroll to the Smoldering Tomb"
+    rarity: EPIC
+    components:
+      - id: TRAVEL_SCROLL
+        scroll_type: CRIMSON_ISLE_SMOLDERING_TOMB

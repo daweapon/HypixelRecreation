@@ -32,7 +32,7 @@ public class GUIFastTravelSubMenu extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(StringUtility.toNormalCase(island.getInternalName()) + " Warps", InventoryType.CHEST_5_ROW);
+        return new ViewConfiguration<>(island.getWarpMenuTitle(), InventoryType.CHEST_5_ROW);
     }
 
     @Override
@@ -48,6 +48,7 @@ public class GUIFastTravelSubMenu extends StatelessView {
         layout.slot(13, (s, c) -> {
             SkyBlockPlayer p = (SkyBlockPlayer) c.player();
             boolean isPaper = p.getToggles().get(DatapointToggles.Toggles.ToggleType.PAPER_ICONS);
+            boolean unlocked = island.isUnlocked(p);
 
             List<Text> lore = new ArrayList<>();
             lore.add(Text.of("<8>/warp {}", island.getInternalName()));
@@ -58,20 +59,29 @@ public class GUIFastTravelSubMenu extends StatelessView {
 
             if (island.getAssociatedSkill() != null) {
                 lore.add(Text.of("<7>Main skill: <b>{}", island.getAssociatedSkill()));
-                lore.add(Text.of("<7>Island tier: <e>{}", island.getIslandTier()));
+                lore.add(Text.of("<7>Island tier: <e>{}", StringUtility.getAsRomanNumeral(island.getIslandTier())));
                 lore.add(Text.literal(" "));
             }
 
-            lore.add(Text.of("<e>Click to warp!"));
+            lore.add(Text.of(unlocked ? "<e>Click to warp!" : "<c>Warp not unlocked!"));
 
             Text name = island.getDescriptiveName();
             if (isPaper) {
-                return ItemStacks.item(Material.PAPER, 1, name, lore);
+                return ItemStacks.item(unlocked ? Material.PAPER : Material.BEDROCK, 1, name, lore);
             } else {
-                return ItemStacks.head(island.getTexture(), 1, name, lore);
+                return ItemStacks.head(unlocked ? island.getTexture() : "da99b05b9a1db4d29b5e673d77ae54a77eab66818586035c8a2005aeb810602a", 1, name, lore);
             }
         }, (click, c) -> {
             SkyBlockPlayer p = (SkyBlockPlayer) c.player();
+            if (!island.isUnlocked(p)) {
+                p.sendMessage("<c>You haven't unlocked this fast travel destination!");
+                return;
+            }
+            String blocked = island.entryBlockReason(p);
+            if (blocked != null) {
+                p.sendMessage(blocked);
+                return;
+            }
             p.closeInventory();
             p.sendMessage("<7>Warping you to {}<7>...", island.getDescriptiveName());
             p.asProxyPlayer().transferToWithIndication(island.getServerType()).thenRun(() -> {
@@ -128,9 +138,14 @@ public class GUIFastTravelSubMenu extends StatelessView {
                     p.sendMessage("<c>You haven't unlocked this fast travel destination!");
                     return;
                 }
+                String blocked = island.entryBlockReason(p);
+                if (blocked != null) {
+                    p.sendMessage(blocked);
+                    return;
+                }
 
                 p.closeInventory();
-                p.sendMessage("<7>Warping you to {}<7>...", scroll.getDescription());
+                p.sendMessage("<7>Warping you to {}<7>...", scroll.getDisplayName());
                 p.asProxyPlayer().transferToWithIndication(island.getServerType()).thenRun(() -> {
                     p.asProxyPlayer().sendMessage("<7>You have been warped to {}<7>!", scroll.getDisplayName());
                     p.asProxyPlayer().teleport(scroll.getLocation());

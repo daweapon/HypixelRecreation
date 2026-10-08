@@ -1,8 +1,8 @@
 package net.swofty.type.skyblockgeneric.minion;
 
 import net.swofty.commons.StringUtility;
-import net.swofty.type.skyblockgeneric.crimson.CrimsonGates;
-import net.swofty.type.skyblockgeneric.crimson.CrimsonGates.Faction;
+import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonFaction;
+import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
 import net.swofty.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -14,14 +14,14 @@ import java.util.Map;
  */
 public final class MinionReputationGates {
     private static final int[] REQUIRED = {500, 1_000, 1_500, 2_000, 3_000, 4_000, 5_500, 6_500, 7_500, 9_000, 10_000, 12_000};
-    private static final Map<MinionRegistry, Faction> FACTIONS = Map.of(
-            MinionRegistry.MYCELIUM, Faction.MAGE,
-            MinionRegistry.RED_SAND, Faction.BARBARIAN);
+    private static final Map<MinionRegistry, CrimsonFaction> FACTIONS = Map.of(
+            MinionRegistry.MYCELIUM, CrimsonFaction.MAGE,
+            MinionRegistry.RED_SAND, CrimsonFaction.BARBARIAN);
 
     private MinionReputationGates() {
     }
 
-    public static @Nullable Faction factionFor(MinionRegistry minion) {
+    public static @Nullable CrimsonFaction factionFor(MinionRegistry minion) {
         return FACTIONS.get(minion);
     }
 
@@ -30,14 +30,14 @@ public final class MinionReputationGates {
     }
 
     public static @Nullable String requirementLine(MinionRegistry minion, int tier) {
-        Faction faction = factionFor(minion);
+        CrimsonFaction faction = factionFor(minion);
         if (faction == null) return null;
-        return "<4>❣ <c>Requires " + StringUtility.commaify(requiredReputation(tier)) + " " + faction.displayName() + " Reputation.";
+        return "<4>❣ <c>Requires " + StringUtility.commaify(requiredReputation(tier)) + " " + faction.getDisplayName() + " Reputation.";
     }
 
     public static SkyBlockRecipe.CraftingResult check(SkyBlockPlayer player, MinionRegistry minion, int tier) {
-        Faction faction = factionFor(minion);
-        if (faction == null || CrimsonGates.hasReputation(player, faction, requiredReputation(tier))) {
+        CrimsonFaction faction = factionFor(minion);
+        if (faction == null || CrimsonReputationService.get(player, faction) >= requiredReputation(tier)) {
             return new SkyBlockRecipe.CraftingResult(true, null);
         }
         return new SkyBlockRecipe.CraftingResult(false, new String[]{requirementLine(minion, tier)});

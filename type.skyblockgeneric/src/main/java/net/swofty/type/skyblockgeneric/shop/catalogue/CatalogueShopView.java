@@ -9,10 +9,16 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A shop drawn from {@code configuration/skyblock/shops/<id>.yml}. Prices and reputation locks are
+ * resolved for the viewing player each time an entry is drawn or clicked, so per-player discounts
+ * ({@code priceModifier}) and {@code requires} gates stay current.
+ */
 public class CatalogueShopView extends ShopView {
     private final ShopCatalogue catalogue;
 
@@ -27,49 +33,52 @@ public class CatalogueShopView extends ShopView {
 
     @Override
     public void initializeShopItems() {
-        catalogue.entries().forEach(entry -> attachItem(toShopItem(entry)));
+        catalogue.entries().forEach(entry -> attachItem(new CatalogueItem(entry)));
     }
 
-    private ShopItem toShopItem(CatalogueEntry entry) {
-        if (!entry.available()) {
-            return new UnavailableItem(entry);
-        }
+    private ShopItem forPlayer(CatalogueEntry entry, SkyBlockPlayer player) {
+        double multiplier = CataloguePriceModifiers.coinMultiplier(catalogue.priceModifier(), player);
         SkyBlockItem item = new SkyBlockItem(entry.itemType());
-        return entry.stackable()
-                ? ShopItem.Stackable(item, entry.amount(), entry.cost().toShopPrice())
-                : ShopItem.Single(item, entry.amount(), entry.cost().toShopPrice());
+        ShopItem shopItem = entry.stackable()
+                ? ShopItem.Stackable(item, entry.amount(), entry.cost().toShopPrice(multiplier))
+                : ShopItem.Single(item, entry.amount(), entry.cost().toShopPrice(multiplier));
+        ReputationRequirement requirement = entry.requirement();
+        if (requirement != null) shopItem.lockedWhen(viewer -> requirement.isMet(viewer) ? null : requirement.lockLine());
+        return shopItem;
     }
 
     @Override
     protected ItemStack.Builder renderItem(ShopItem item, int index, HypixelPlayer player) {
-        if (!(item instanceof UnavailableItem unavailable)) {
-            return super.renderItem(item, index, player);
+        CatalogueEntry entry = ((CatalogueItem) item).entry;
+        if (entry.available()) {
+            return super.renderItem(forPlayer(entry, (SkyBlockPlayer) player), index, player);
         }
-        CatalogueEntry entry = unavailable.entry;
         List<Text> lore = new ArrayList<>();
         entry.lore().forEach(line -> lore.add(Text.of(line)));
         if (!lore.isEmpty()) lore.add(Text.empty());
         lore.add(Text.of("<7>Cost"));
         lore.addAll(entry.cost().display());
         lore.add(Text.empty());
+        if (entry.requirement() != null) lore.add(Text.of(entry.requirement().lockLine()));
         lore.addAll(Text.of(entry.reason()).lines());
         return ItemStacks.item(entry.material(), entry.amount(), Text.of(entry.name()), lore);
     }
 
     @Override
     protected void onItemClick(ClickContext<State> click, ViewContext ctx, ShopItem item, int index) {
-        if (item instanceof UnavailableItem unavailable) {
-            ctx.player().sendMessage(Text.of(unavailable.entry.reason()));
+        CatalogueEntry entry = ((CatalogueItem) item).entry;
+        if (!entry.available()) {
+            ctx.player().sendMessage(Text.of(entry.reason()));
             return;
         }
-        super.onItemClick(click, ctx, item, index);
+        super.onItemClick(click, ctx, forPlayer(entry, (SkyBlockPlayer) ctx.player()), index);
     }
 
-    private static final class UnavailableItem extends ShopItem {
+    private static final class CatalogueItem extends ShopItem {
         private final CatalogueEntry entry;
 
-        private UnavailableItem(CatalogueEntry entry) {
-            super(new SkyBlockItem(entry.material()), entry.amount(), new CoinShopPrice(entry.cost().coins()), false);
+        private CatalogueItem(CatalogueEntry entry) {
+            super(new SkyBlockItem(entry.material()), entry.amount(), new CoinShopPrice(entry.cost().coins()), entry.stackable());
             this.entry = entry;
         }
     }

@@ -818,3 +818,408 @@ regions:
     y2: 122
     z2: 20
     serverType: SKYBLOCK_GALATEA
+  - id: crimson_isle
+    type: CRIMSON_ISLE
+    x1: -768
+    y1: 0
+    z1: -1104
+    x2: 47
+    y2: 255
+    z2: -401
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_stronghold
+    type: STRONGHOLD
+    x1: -425
+    y1: 0
+    z1: -580
+    x2: -285
+    y2: 255
+    z2: -400
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_fields
+    type: CRIMSON_FIELDS
+    x1: -540
+    y1: 0
+    z1: -700
+    x2: -266
+    y2: 255
+    z2: -581
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_barbarian_outpost
+    type: BARBARIAN_OUTPOST
+    x1: -465
+    y1: 95
+    z1: -720
+    x2: -405
+    y2: 150
+    z2: -650
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_plhlegblast_pool
+    type: PLHLEGBLAST_POOL
+    x1: -403
+    y1: 60
+    z1: -724
+    x2: -352
+    y2: 100
+    z2: -680
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_blazing_volcano
+    type: BLAZING_VOLCANO
+    x1: -445
+    y1: 0
+    z1: -930
+    x2: -300
+    y2: 255
+    z2: -701
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_odgers_hut
+    type: ODGERS_HUT
+    x1: -385
+    y1: 200
+    z1: -820
+    x2: -362
+    y2: 222
+    z2: -792
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_magma_chamber
+    type: MAGMA_CHAMBER
+    x1: -445
+    y1: 40
+    z1: -868
+    x2: -305
+    y2: 90
+    z2: -748
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_auras_lab
+    type: AURAS_LAB
+    x1: -415
+    y1: 62
+    z1: -897
+    x2: -380
+    y2: 88
+    z2: -848
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_burning_desert
+    type: BURNING_DESERT
+    x1: -540
+    y1: 0
+    z1: -905
+    x2: -446
+    y2: 255
+    z2: -701
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_the_dukedom
+    type: THE_DUKEDOM
+    x1: -565
+    y1: 100
+    z1: -930
+    x2: -505
+    y2: 150
+    z2: -885
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_matriarchs_lair
+    type: MATRIARCHS_LAIR
+    x1: -560
+    y1: 28
+    z1: -915
+    x2: -505
+    y2: 70
+    z2: -860
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_belly_of_the_beast
+    type: BELLY_OF_THE_BEAST
+    x1: -556
+    y1: 0
+    z1: -908
+    x2: -516
+    y2: 27
+    z2: -868
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_dragontail
+    type: DRAGONTAIL
+    x1: -768
+    y1: 0
+    z1: -900
+    x2: -541
+    y2: 255
+    z2: -625
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_dragontail_townsquare
+    type: DRAGONTAIL_TOWNSQUARE
+    x1: -655
+    y1: 95
+    z1: -840
+    x2: -588
+    y2: 135
+    z2: -770
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_dragontail_auction_house
+    type: DRAGONTAIL_AUCTION_HOUSE
+    x1: -645
+    y1: 100
+    z1: -795
+    x2: -631
+    y2: 130
+    z2: -776
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_dragontail_bank
+    type: DRAGONTAIL_BANK
+    x1: -618
+    y1: 97
+    z1: -795
+    x2: -602
+    y2: 112
+    z2: -780
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_dragontail_bazaar
+    type: DRAGONTAIL_BAZAAR
+    x1: -630
+    y1: 98
+    z1: -800
+    x2: -619
+    y2: 110
+    z2: -789
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_dragontail_minion_shop
+    type: MINION_SHOP
+    x1: -652
+    y1: 98
+    z1: -833
+    x2: -637
+    y2: 112
+    z2: -818
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_dragontail_blacksmith
+    type: DRAGONTAIL_BLACKSMITH
+    x1: -560
+    y1: 95
+    z1: -715
+    x2: -541
+    y2: 110
+    z2: -698
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_chiefs_hut
+    type: CHIEFS_HUT
+    x1: -605
+    y1: 105
+    z1: -700
+    x2: -570
+    y2: 135
+    z2: -665
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_the_bastion
+    type: THE_BASTION
+    x1: -768
+    y1: 0
+    z1: -1080
+    x2: -560
+    y2: 255
+    z2: -901
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_ruins_of_ashfang
+    type: RUINS_OF_ASHFANG
+    x1: -540
+    y1: 100
+    z1: -1060
+    x2: -441
+    y2: 200
+    z2: -940
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_the_wasteland
+    type: THE_WASTELAND
+    x1: -440
+    y1: 90
+    z1: -1075
+    x2: -201
+    y2: 255
+    z2: -931
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_forgotten_skull
+    type: FORGOTTEN_SKULL
+    x1: -405
+    y1: 95
+    z1: -1060
+    x2: -335
+    y2: 200
+    z2: -976
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_smoldering_tomb
+    type: SMOLDERING_TOMB
+    x1: -308
+    y1: 40
+    z1: -1045
+    x2: -262
+    y2: 122
+    z2: -1000
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_mystic_marsh_1
+    type: MYSTIC_MARSH
+    x1: -299
+    y1: 0
+    z1: -884
+    x2: -166
+    y2: 255
+    z2: -650
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_mystic_marsh_2
+    type: MYSTIC_MARSH
+    x1: -299
+    y1: 0
+    z1: -930
+    x2: -206
+    y2: 255
+    z2: -885
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_mage_outpost
+    type: MAGE_OUTPOST
+    x1: -185
+    y1: 85
+    z1: -700
+    x2: -110
+    y2: 170
+    z2: -625
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_dojo
+    type: DOJO
+    x1: -265
+    y1: 60
+    z1: -640
+    x2: -170
+    y2: 255
+    z2: -515
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_courtyard
+    type: COURTYARD
+    x1: -240
+    y1: 90
+    z1: -890
+    x2: -166
+    y2: 140
+    z2: -835
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_scarleton
+    type: SCARLETON
+    x1: -165
+    y1: 0
+    z1: -860
+    x2: 30
+    y2: 255
+    z2: -700
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_scarleton_plaza
+    type: SCARLETON_PLAZA
+    x1: -100
+    y1: 100
+    z1: -825
+    x2: -35
+    y2: 135
+    z2: -740
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_scarleton_auction_house
+    type: SCARLETON_AUCTION_HOUSE
+    x1: -65
+    y1: 104
+    z1: -756
+    x2: -52
+    y2: 120
+    z2: -740
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_scarleton_bank
+    type: SCARLETON_BANK
+    x1: -95
+    y1: 104
+    z1: -798
+    x2: -70
+    y2: 135
+    z2: -765
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_scarleton_bazaar
+    type: SCARLETON_BAZAAR
+    x1: -77
+    y1: 104
+    z1: -764
+    x2: -66
+    y2: 118
+    z2: -752
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_scarleton_minion_shop
+    type: SCARLETON_MINION_SHOP
+    x1: -52
+    y1: 104
+    z1: -792
+    x2: -40
+    y2: 118
+    z2: -774
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_scarleton_blacksmith
+    type: SCARLETON_BLACKSMITH
+    x1: -95
+    y1: 88
+    z1: -750
+    x2: -75
+    y2: 99
+    z2: -725
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_community_center
+    type: SCARLETON_COMMUNITY_CENTER
+    x1: -140
+    y1: 78
+    z1: -770
+    x2: -105
+    y2: 125
+    z2: -735
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_throne_room
+    type: THRONE_ROOM
+    x1: -128
+    y1: 100
+    z1: -762
+    x2: -110
+    y2: 120
+    z2: -746
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_mage_council
+    type: MAGE_COUNCIL
+    x1: -135
+    y1: 78
+    z1: -765
+    x2: -110
+    y2: 89
+    z2: -745
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_igrupans_house
+    type: IGRUPANS_HOUSE
+    x1: -14
+    y1: 90
+    z1: -838
+    x2: 2
+    y2: 112
+    z2: -806
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_igrupans_chicken_coop
+    type: IGRUPANS_CHICKEN_COOP
+    x1: -38
+    y1: 90
+    z1: -826
+    x2: -22
+    y2: 105
+    z2: -806
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_cathedral
+    type: CATHEDRAL
+    x1: -200
+    y1: 0
+    z1: -1070
+    x2: 30
+    y2: 255
+    z2: -885
+    serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: crimson_cathedral_steps
+    type: CATHEDRAL
+    x1: -120
+    y1: 0
+    z1: -884
+    x2: 30
+    y2: 255
+    z2: -846
+    serverType: SKYBLOCK_CRIMSON_ISLE

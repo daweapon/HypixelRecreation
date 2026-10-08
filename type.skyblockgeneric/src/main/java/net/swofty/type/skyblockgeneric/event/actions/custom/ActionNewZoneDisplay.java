@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
+import net.swofty.type.skyblockgeneric.crimson.CrimsonZoneTips;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerRegionChangeEvent;
 import net.swofty.type.skyblockgeneric.region.RegionType;
@@ -199,6 +200,11 @@ public class ActionNewZoneDisplay implements HypixelEventClass {
 
             case ARCHERY_RANGE -> onNewZone(player, RegionType.ARCHERY_RANGE,
                 Text.of("Talk to Jax to forge special arrows!"));
+
+            default -> {
+                Text[] crimsonTips = CrimsonZoneTips.of(event.getTo());
+                if (crimsonTips != null) onNewZone(player, event.getTo(), crimsonTips);
+            }
         }
     }
 

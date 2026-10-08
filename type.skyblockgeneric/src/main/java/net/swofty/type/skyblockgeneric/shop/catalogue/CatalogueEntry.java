@@ -16,7 +16,8 @@ public record CatalogueEntry(
         CatalogueCost cost,
         boolean stackable,
         List<String> lore,
-        @Nullable String unavailableReason
+        @Nullable String unavailableReason,
+        @Nullable ReputationRequirement requirement
 ) {
     public static final String MISSING_ITEM_REASON = "<c>This item is not in the game yet!";
 
@@ -33,7 +34,8 @@ public record CatalogueEntry(
                 CatalogueCost.parse(raw.get("cost")),
                 Boolean.TRUE.equals(raw.get("stackable")),
                 lore instanceof List<?> list ? (List<String>) list : List.of(),
-                raw.get("unavailable") == null ? null : String.valueOf(raw.get("unavailable"))
+                raw.get("unavailable") == null ? null : String.valueOf(raw.get("unavailable")),
+                ReputationRequirement.parse(raw.get("requires"))
         );
     }
 
