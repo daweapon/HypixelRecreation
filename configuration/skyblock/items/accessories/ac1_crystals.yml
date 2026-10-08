@@ -1,0 +1,33 @@
+items:
+  - id: SUNSHINE_CRYSTAL
+    material: PAPER
+    name: "Sunshine Crystal"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: STAT
+            statistics: { strength: 10, defense: 10 }
+            time: DAY
+            text:
+              - "Increases your <c>❁ Strength <7>and <a>❈"
+              - "<a>Defense <7>by <a>+10 <7>during the Day."
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: COMPACTED_SUNFLOWER
+                amount: 4
+              B:
+                type: DAY_CRYSTAL
+                amount: 1
+            result:
+              type: SUNSHINE_CRYSTAL
+              amount: 1
