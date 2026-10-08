@@ -6,6 +6,7 @@ import net.swofty.type.crimsonisle.faction.OdgerQuestTopics;
 import net.swofty.type.crimsonisle.gui.odger.GUITrophyFishing;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
+import net.swofty.type.generic.entity.npc.trait.NPCAbiphoneTrait;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.fishing.trophy.OdgerRewards;
@@ -13,7 +14,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // Odger, the trophy fishing Goblin in his hut on top of the Blazing Volcano (wiki: Odger). Gives a Starter Lava
 // Rod the first time a profile talks to him, then opens the Trophy Fishing menu.
-public class NPCOdger extends HypixelNPC {
+public class NPCOdger extends HypixelNPC implements NPCAbiphoneTrait {
 
     public NPCOdger() {
         super(new HumanConfiguration() {
@@ -76,5 +77,10 @@ public class NPCOdger extends HypixelNPC {
                         "Take this. Help you."
                 ).build()
         };
+    }
+
+    @Override
+    public String getAbiphoneKey() {
+        return "odger";
     }
 }

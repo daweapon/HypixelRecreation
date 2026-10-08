@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Pos;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
+import net.swofty.type.generic.entity.npc.trait.NPCAbiphoneTrait;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.gui.inventories.essence.GUICrimsonEssenceShop;
@@ -16,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Vulcan runs the Crimson Essence Shop in the Forgotten Skull. On Hypixel he only opens it after a
  * Kuudra win; that fight isn't built, so the shop is open to everyone.
  */
-public class NPCVulcan extends HypixelNPC {
+public class NPCVulcan extends HypixelNPC implements NPCAbiphoneTrait {
     private static final Set<UUID> GREETED = ConcurrentHashMap.newKeySet();
 
     public NPCVulcan() {
@@ -73,5 +74,10 @@ public class NPCVulcan extends HypixelNPC {
                         "I'm the <d>Crimson Essence<f> guy, but you can call me <c>Vulcan<f>."
                 ).build()
         };
+    }
+
+    @Override
+    public String getAbiphoneKey() {
+        return "vulcan";
     }
 }
