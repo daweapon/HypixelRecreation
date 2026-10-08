@@ -25,16 +25,16 @@ class IceEssenceShopTest {
     @Test
     void buyingNeedsTheNextTiersCost() {
         IceEssencePerk perk = IceEssencePerk.SEASON_OF_JOY;
-        assertEquals(IceEssenceShop.Result.TOO_POOR, IceEssenceShop.check(0, perk, 199));
-        assertEquals(IceEssenceShop.Result.BOUGHT, IceEssenceShop.check(0, perk, 200));
-        assertEquals(IceEssenceShop.Result.TOO_POOR, IceEssenceShop.check(3, perk, 1_499));
-        assertEquals(IceEssenceShop.Result.BOUGHT, IceEssenceShop.check(3, perk, 1_500));
-        assertEquals(IceEssenceShop.Result.MAXED, IceEssenceShop.check(10, perk, Long.MAX_VALUE));
+        assertEquals(EssenceShop.Result.TOO_POOR, IceEssenceShop.check(0, perk, 199));
+        assertEquals(EssenceShop.Result.BOUGHT, IceEssenceShop.check(0, perk, 200));
+        assertEquals(EssenceShop.Result.TOO_POOR, IceEssenceShop.check(3, perk, 1_499));
+        assertEquals(EssenceShop.Result.BOUGHT, IceEssenceShop.check(3, perk, 1_500));
+        assertEquals(EssenceShop.Result.MAXED, IceEssenceShop.check(10, perk, Long.MAX_VALUE));
     }
 
     @Test
     void perksWithoutAnEffectCannotBeBought() {
-        assertEquals(IceEssenceShop.Result.UNAVAILABLE,
+        assertEquals(EssenceShop.Result.UNAVAILABLE,
                 IceEssenceShop.check(0, IceEssencePerk.COLD_EFFICIENCY, 1_000_000));
     }
 

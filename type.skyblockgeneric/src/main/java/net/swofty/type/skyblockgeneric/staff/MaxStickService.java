@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalProfile;
 import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import net.swofty.type.skyblockgeneric.chickenrace.ChickenRaceProgress;
+import net.swofty.type.skyblockgeneric.essence.CrimsonEssenceShop;
 import net.swofty.type.skyblockgeneric.essence.IceEssenceShop;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategory;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
@@ -145,6 +146,7 @@ public final class MaxStickService {
         MythologicalItemHandlers.setBrainFoodEaten(player, MythologicalItemHandlers.BRAIN_FOOD_LIMIT);
         BottleOfJyrre.setRefinedConsumed(player, BottleOfJyrre.REFINED_LIMIT);
         IceEssenceShop.maxAvailable(player);
+        CrimsonEssenceShop.maxAvailable(player);
         ChickenRaceProgress.maxOut(player);
         CrimsonReputationService.maxOut(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have

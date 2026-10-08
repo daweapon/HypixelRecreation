@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.ToIntFunction;
@@ -30,51 +31,34 @@ public final class IceEssenceShop {
             IceEssencePerk.SEASON_OF_JOY, new int[]{3, 3, 4, 4, 5, 7, 8, 9, 9, 10},
             IceEssencePerk.DRAKE_PIPER, new int[]{2});
 
+    public static final EssenceShop<IceEssencePerk> SHOP = new EssenceShop<>(EssenceType.ICE,
+            List.of(IceEssencePerk.values()), TIER_XP, SkyBlockXPSource.ICE_ESSENCE_SHOP);
+
     private IceEssenceShop() {
     }
 
-    public enum Result {BOUGHT, UNAVAILABLE, TOO_POOR, MAXED}
-
-    public static Result buy(SkyBlockPlayer player, IceEssencePerk perk) {
-        int owned = EssencePerks.tier(player, perk);
-        Result check = check(owned, perk, Essences.get(player, EssenceType.ICE));
-        if (check != Result.BOUGHT) return check;
-        if (!Essences.take(player, EssenceType.ICE, perk.costOfTier(owned + 1))) return Result.TOO_POOR;
-        EssencePerks.setTier(player, perk, owned + 1);
-        syncSkyBlockXP(player);
-        return Result.BOUGHT;
+    public static EssenceShop.Result buy(SkyBlockPlayer player, IceEssencePerk perk) {
+        return SHOP.buy(player, perk);
     }
 
-    static Result check(int owned, IceEssencePerk perk, long essence) {
-        if (owned >= perk.getMaxTier()) return Result.MAXED;
-        if (perk.getUnavailableReason() != null) return Result.UNAVAILABLE;
-        if (essence < perk.costOfTier(owned + 1)) return Result.TOO_POOR;
-        return Result.BOUGHT;
+    static EssenceShop.Result check(int owned, IceEssencePerk perk, long essence) {
+        return SHOP.check(owned, perk, essence);
     }
 
     public static void maxAvailable(SkyBlockPlayer player) {
-        for (IceEssencePerk perk : IceEssencePerk.values()) {
-            if (perk.getUnavailableReason() == null) EssencePerks.setTier(player, perk, perk.getMaxTier());
-        }
-        syncSkyBlockXP(player);
+        SHOP.maxAvailable(player);
     }
 
     public static void syncSkyBlockXP(SkyBlockPlayer player) {
-        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.ICE_ESSENCE_SHOP,
-                skyBlockXP(perk -> EssencePerks.tier(player, perk)));
+        SHOP.syncSkyBlockXP(player);
     }
 
     static int skyBlockXP(ToIntFunction<IceEssencePerk> tiers) {
-        int total = 0;
-        for (IceEssencePerk perk : IceEssencePerk.values()) {
-            int[] perTier = TIER_XP.get(perk);
-            for (int tier = 0; tier < Math.min(tiers.applyAsInt(perk), perTier.length); tier++) total += perTier[tier];
-        }
-        return total;
+        return SHOP.skyBlockXP(tiers);
     }
 
     public static int maxSkyBlockXP() {
-        return skyBlockXP(IceEssencePerk::getMaxTier);
+        return SHOP.maxSkyBlockXP();
     }
 
     public static ItemStatistics statistics(SkyBlockPlayer player) {

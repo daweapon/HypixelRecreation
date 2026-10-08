@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
  * {@code unavailableReason} can't be bought until its effect is wired.
  */
 @Getter
-public enum IceEssencePerk {
+public enum IceEssencePerk implements EssencePerk {
     COLD_EFFICIENCY("Cold Efficiency", new double[]{2, 4, 6, 8, 10},
             new long[]{1_000, 1_500, 2_000, 3_000, 5_000}, "Dungeon classes aren't in this server yet."),
     COOLED_FORGES("Cooled Forges", new double[]{4, 8, 12, 16, 20},
@@ -32,15 +32,8 @@ public enum IceEssencePerk {
         this.unavailableReason = unavailableReason;
     }
 
-    public int getMaxTier() {
-        return costs.length;
-    }
-
-    public double valueAt(int tier) {
-        return tier <= 0 ? 0 : values[Math.min(tier, values.length) - 1];
-    }
-
-    public long costOfTier(int tier) {
-        return costs[tier - 1];
+    @Override
+    public EssenceType essence() {
+        return EssenceType.ICE;
     }
 }

@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 public enum EssenceType {
     WITHER("Wither", "Dungeons aren't in this server yet."),
     UNDEAD("Undead", "Dungeons aren't in this server yet."),
-    CRIMSON("Crimson", "Crimson Isle content isn't in this server yet."),
+    CRIMSON("Crimson", null),
     SPIDER("Spider", "Arachne isn't in this server yet."),
     DRAGON("Dragon", "The Ender Dragon fight isn't in this server yet."),
     GOLD("Gold", "Dungeons aren't in this server yet."),

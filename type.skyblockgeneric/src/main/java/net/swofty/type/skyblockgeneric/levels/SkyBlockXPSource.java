@@ -71,7 +71,7 @@ public enum SkyBlockXPSource {
     SPIDER_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 126, Availability.NOT_IN_GAME, Material.COBWEB),
     UNDEAD_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 128, Availability.NOT_IN_GAME, Material.ZOMBIE_HEAD),
     WITHER_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 161, Availability.NOT_IN_GAME, Material.WITHER_SKELETON_SKULL),
-    CRIMSON_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 194, Availability.NOT_IN_GAME, Material.CRIMSON_FUNGUS),
+    CRIMSON_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 194, Availability.LIVE, Material.CRIMSON_FUNGUS),
     GOLD_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 188, Availability.NOT_IN_GAME, Material.GOLD_BLOCK),
     DIAMOND_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 226, Availability.NOT_IN_GAME, Material.DIAMOND),
     FOREST_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 171, Availability.NOT_IN_GAME, Material.OAK_SAPLING),
