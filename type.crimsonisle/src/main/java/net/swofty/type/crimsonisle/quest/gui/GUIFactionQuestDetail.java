@@ -36,17 +36,22 @@ public class GUIFactionQuestDetail extends StatelessView {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             FactionQuestBoard board = FactionQuestService.board(player);
             return FactionQuestItems.quest(player, board.getSlots().get(index), false);
-        }, (_, c) -> claim((SkyBlockPlayer) c.player()));
+        }, (_, c) -> {
+            if (claim((SkyBlockPlayer) c.player(), index)) c.backOrClose();
+        });
     }
 
-    private void claim(SkyBlockPlayer player) {
-        switch (FactionQuestService.claim(player, index)) {
-            case CLAIMED -> player.closeInventory();
+    static boolean claim(SkyBlockPlayer player, int index) {
+        FactionQuestService.ClaimResult result = FactionQuestService.claim(player, index);
+        switch (result) {
+            case CLAIMED -> {
+            }
             case MISSING_ITEMS -> player.sendMessage("<c>You don't have the items this request asks for!");
             case NOT_COMPLETE -> player.sendMessage("<c>You haven't completed this quest yet!");
             case ALREADY_CLAIMED -> player.sendMessage("<c>You already claimed this quest's rewards!");
             case NO_FACTION -> player.sendMessage("<c>You need to join a faction first!");
         }
+        return result == FactionQuestService.ClaimResult.CLAIMED;
     }
 
     public static GUIFactionQuestDetail of(SkyBlockPlayer player, int index) {

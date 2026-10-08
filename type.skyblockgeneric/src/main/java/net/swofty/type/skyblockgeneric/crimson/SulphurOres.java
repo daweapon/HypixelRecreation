@@ -40,9 +40,8 @@ public final class SulphurOres {
         return ORES_PER_ERUPTION.getOrDefault(explosivity, 20);
     }
 
-    public static synchronized void scatter(Instance instance, VolcanoExplosivity explosivity) {
+    public static synchronized void scatter(Instance instance, int wanted) {
         int placed = 0;
-        int wanted = countFor(explosivity);
         for (int attempt = 0; attempt < wanted * ATTEMPTS_PER_ORE && placed < wanted; attempt++) {
             Pos spot = findSpot(instance);
             if (spot == null) continue;

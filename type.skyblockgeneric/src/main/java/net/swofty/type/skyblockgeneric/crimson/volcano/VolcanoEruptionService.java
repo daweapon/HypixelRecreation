@@ -18,8 +18,9 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * The Blazing Volcano's eruption cycle and its rotating geyser. It only runs on the Crimson Isle
- * server; anywhere else {@link #isErupting()} stays false.
+ * The Blazing Volcano's eruption cycle and its rotating geyser. An eruption starts every 2 to 2.5 hours
+ * (wiki) and lasts about 20 minutes, spewing its blocks in waves across that time. It only runs on the
+ * Crimson Isle server; anywhere else {@link #isErupting()} stays false.
  */
 public final class VolcanoEruptionService {
     public static final Pos CRATER = new Pos(-370, 118, -775);
@@ -30,12 +31,15 @@ public final class VolcanoEruptionService {
 
     private static final Duration MIN_INTERVAL = Duration.ofMinutes(120);
     private static final Duration MAX_INTERVAL = Duration.ofMinutes(150);
-    private static final Duration ERUPTION_LENGTH = Duration.ofMinutes(3);
+    public static final Duration ERUPTION_LENGTH = Duration.ofMinutes(20);
+    public static final int SPEW_WAVES = 10;
     private static final Duration GEYSER_ROTATION = Duration.ofMinutes(10);
 
     private static boolean running;
     private static long nextEruptionAt;
+    private static long eruptionStartedAt;
     private static long eruptionEndsAt;
+    private static int spewWave;
     private static long lastEruptionEndedAt = -1;
     private static @Nullable VolcanoExplosivity current;
     private static VolcanoExplosivity lastExplosivity = VolcanoExplosivity.CHILL;
@@ -74,6 +78,10 @@ public final class VolcanoEruptionService {
         return lastEruptionEndedAt < 0 ? Long.MAX_VALUE : System.currentTimeMillis() - lastEruptionEndedAt;
     }
 
+    public static long millisUntilEruptionEnds() {
+        return current == null ? 0 : Math.max(0, eruptionEndsAt - System.currentTimeMillis());
+    }
+
     public static long millisUntilNextEruption() {
         return Math.max(0, nextEruptionAt - System.currentTimeMillis());
     }
@@ -98,6 +106,8 @@ public final class VolcanoEruptionService {
     private static synchronized void tick() {
         long now = System.currentTimeMillis();
         if (current == null && now >= nextEruptionAt) beginEruption(now, VolcanoExplosivity.roll());
+        if (current != null && spewWave < SPEW_WAVES
+                && now >= eruptionStartedAt + ERUPTION_LENGTH.toMillis() * spewWave / SPEW_WAVES) spew();
         if (current != null && now >= eruptionEndsAt) finishEruption(now);
         if (now >= geyserMovesAt) {
             geyserIndex = (geyserIndex + 1 + ThreadLocalRandom.current().nextInt(GEYSER_POINTS.size() - 1))
@@ -110,19 +120,28 @@ public final class VolcanoEruptionService {
     private static void beginEruption(long now, VolcanoExplosivity explosivity) {
         current = explosivity;
         lastExplosivity = explosivity;
+        eruptionStartedAt = now;
         eruptionEndsAt = now + ERUPTION_LENGTH.toMillis();
+        nextEruptionAt = now + randomInterval();
+        spewWave = 0;
         for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
             player.sendMessage("<6><l>VOLCANO! <c>The <6>Blazing Volcano <c>is erupting! <7>Explosivity: " + explosivity.coloured());
             player.playSound(Sound.sound(Key.key("entity.generic.explode"), Sound.Source.AMBIENT, 1f, 0.6f));
         }
         HypixelEventHandler.callCustomEvent(new VolcanoEruptionEvent(explosivity, true));
+        spew();
+    }
+
+    private static void spew() {
+        HypixelEventHandler.callCustomEvent(new VolcanoSpewEvent(current, spewWave, SPEW_WAVES));
+        spewWave++;
     }
 
     private static void finishEruption(long now) {
         VolcanoExplosivity ended = current;
         current = null;
         lastEruptionEndedAt = now;
-        scheduleNext(now);
+        if (nextEruptionAt <= now) scheduleNext(now);
         for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
             player.sendMessage("<e>The <6>Blazing Volcano <e>has calmed down.");
         }
@@ -130,7 +149,11 @@ public final class VolcanoEruptionService {
     }
 
     private static void scheduleNext(long now) {
-        nextEruptionAt = now + ThreadLocalRandom.current().nextLong(MIN_INTERVAL.toMillis(), MAX_INTERVAL.toMillis() + 1);
+        nextEruptionAt = now + randomInterval();
+    }
+
+    private static long randomInterval() {
+        return ThreadLocalRandom.current().nextLong(MIN_INTERVAL.toMillis(), MAX_INTERVAL.toMillis() + 1);
     }
 
     private static void showEffects() {

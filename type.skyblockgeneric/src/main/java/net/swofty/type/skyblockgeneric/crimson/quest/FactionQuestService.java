@@ -61,7 +61,10 @@ public final class FactionQuestService {
 
     public static FactionQuestBoard board(SkyBlockPlayer player, CrimsonFaction faction) {
         FactionQuestBoard stored = stored(player, faction);
-        if (stored != null && stored.getDay() == today()) return stored;
+        if (stored != null && stored.getDay() == today()) {
+            if (assignMissingRewards(player, stored, new Random())) save(player, faction, stored);
+            return stored;
+        }
         FactionQuestBoard fresh = roll(player, faction);
         save(player, faction, fresh);
         return fresh;
@@ -74,7 +77,19 @@ public final class FactionQuestService {
                 quest -> isAvailable(player, quest), random);
         List<FactionQuestBoard.Slot> slots = new ArrayList<>();
         quests.forEach(quest -> slots.add(new FactionQuestBoard.Slot(quest.id(), 0, false, false)));
-        return new FactionQuestBoard(day, slots);
+        FactionQuestBoard board = new FactionQuestBoard(day, slots);
+        assignMissingRewards(player, board, random);
+        return board;
+    }
+
+    private static boolean assignMissingRewards(SkyBlockPlayer player, FactionQuestBoard board, Random random) {
+        boolean changed = false;
+        for (FactionQuestBoard.Slot slot : board.getSlots()) {
+            if (slot.getReward() != null) continue;
+            slot.setReward(FactionQuestRewards.roll(player.getUuid(), slot.quest(), random));
+            changed = true;
+        }
+        return changed;
     }
 
     /** Whether a quest may be put on a board: Kuudra needs the fight and the tier, Dojo the test unlocked. */
@@ -175,6 +190,13 @@ public final class FactionQuestService {
         return player.getAmountInInventory(type) + player.getSackItems().getAmount(type);
     }
 
+    public static boolean isClaimable(SkyBlockPlayer player, FactionQuestBoard.Slot slot) {
+        if (slot.isClaimed()) return false;
+        if (slot.isCompleted()) return true;
+        FactionQuest quest = slot.quest();
+        return quest.type() == FactionQuestType.FETCH && fetchAvailable(player, quest) >= quest.amount();
+    }
+
     public enum ClaimResult { CLAIMED, NOT_COMPLETE, MISSING_ITEMS, ALREADY_CLAIMED, NO_FACTION }
 
     /** Claims a finished slot; a Fetch quest first takes its items from the inventory and sacks. */
@@ -197,7 +219,7 @@ public final class FactionQuestService {
 
         slot.setClaimed(true);
         save(player, faction, board);
-        FactionQuestRewards.grant(player, faction, quest);
+        FactionQuestRewards.grant(player, faction, quest, slot.getReward());
         return ClaimResult.CLAIMED;
     }
 

@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuest;
 import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestBoard;
 import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestCatalogue;
 import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestGenerator;
+import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestRewards;
 import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestTier;
 import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestType;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FactionQuestTablesTest {
@@ -92,13 +94,25 @@ class FactionQuestTablesTest {
 
     @Test
     void boardSurvivesSerialization() {
-        FactionQuestBoard board = new FactionQuestBoard(20_000, List.of(
-                new FactionQuestBoard.Slot("FETCH_MAGMAG_C", 3, false, false),
+        FactionQuestBoard.Slot fetch = new FactionQuestBoard.Slot("FETCH_MAGMAG_C", 3, false, false);
+        fetch.setReward(new FactionQuestTier.RewardItem("MAGMAG", 10));
+        FactionQuestBoard board = new FactionQuestBoard(20_000, List.of(fetch,
                 new FactionQuestBoard.Slot("RESCUE_MAGE_B", 2, true, true)));
         FactionQuestBoard copy = FactionQuestBoard.fromJson(board.toJson());
         assertEquals(20_000, copy.getDay());
         assertEquals(2, copy.getSlots().size());
         assertEquals(3, copy.getSlots().getFirst().getProgress());
+        assertEquals(new FactionQuestTier.RewardItem("MAGMAG", 10), copy.getSlots().getFirst().getReward());
+        assertNull(copy.getSlots().get(1).getReward());
         assertTrue(copy.getSlots().get(1).isClaimed());
+    }
+
+    @Test
+    void rolledRewardComesFromTheQuestPool() {
+        Random random = new Random(7);
+        for (FactionQuest quest : FactionQuestCatalogue.all()) {
+            FactionQuestTier.RewardItem reward = FactionQuestRewards.roll(null, quest, random);
+            assertTrue(quest.tier().pool(quest.type()).contains(reward), quest.id());
+        }
     }
 }

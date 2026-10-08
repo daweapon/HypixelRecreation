@@ -1,7 +1,11 @@
 package net.swofty.type.skyblockgeneric.crimson.mob;
 
 import net.swofty.commons.skyblock.item.ItemType;
+import net.minestom.server.coordinate.Pos;
 import net.swofty.type.skyblockgeneric.crimson.mob.miniboss.CrimsonMiniboss;
+import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoEruptionService;
+import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoExplosivity;
+import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoSpewEvent;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMagmaGlare;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategory;
 import org.junit.jupiter.api.Test;
@@ -100,5 +104,30 @@ class CrimsonMobsTest {
     @Test
     void twentyCrimsonBestiaryFamilies() {
         assertEquals(20, BestiaryCategory.CRIMSON_ISLE.values().length);
+    }
+
+    @Test
+    void noSpawnSpotInTheStrongholdEntranceHall() throws IllegalAccessException {
+        for (Field field : CrimsonSpawnPoints.class.getDeclaredFields()) {
+            if (!Modifier.isStatic(field.getModifiers()) || field.getType() != List.class) continue;
+            field.setAccessible(true);
+            for (Object entry : (List<?>) field.get(null)) {
+                Pos spot = (Pos) entry;
+                boolean inHall = spot.x() >= -372 && spot.x() <= -347 && spot.z() >= -605 && spot.z() <= -414
+                        && spot.y() < 96;
+                assertFalse(inHall, field.getName() + " spawns in the entrance hall at " + spot);
+            }
+        }
+    }
+
+    @Test
+    void eruptionWavesSpewTheWholeEruption() {
+        for (int total : new int[]{1, 7, 20, 200}) {
+            int sum = 0;
+            for (int wave = 0; wave < VolcanoEruptionService.SPEW_WAVES; wave++) {
+                sum += new VolcanoSpewEvent(VolcanoExplosivity.CHILL, wave, VolcanoEruptionService.SPEW_WAVES).share(total);
+            }
+            assertEquals(total, sum);
+        }
     }
 }

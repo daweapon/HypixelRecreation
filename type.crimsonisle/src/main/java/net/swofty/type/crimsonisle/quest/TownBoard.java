@@ -14,12 +14,13 @@ import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 /**
- * The two Town Boards: Scarleton's in the Community Center, and Dragontail's on the wall beside Ugo's
- * wiki "This is our Town Board" spot. No source publishes their coordinates, so both are estimates.
+ * The two Town Boards, mounted on the boards built into each Community Center: Scarleton's on the
+ * west face of the nether-brick framed stone panel, Dragontail's on the east face of the black terracotta
+ * wall. Placed from SkyHanni's "Quest Board" waypoints and the world blocks.
  */
 public enum TownBoard {
-    MAGE(CrimsonFaction.MAGE, new Pos(-133.5, 92, -755.5)),
-    BARBARIAN(CrimsonFaction.BARBARIAN, new Pos(-583.9, 100, -687.5)),
+    MAGE(CrimsonFaction.MAGE, new Pos(-119.1, 93, -754.5)),
+    BARBARIAN(CrimsonFaction.BARBARIAN, new Pos(-583.9, 100.5, -687.5)),
     ;
 
     private final CrimsonFaction faction;

@@ -30,12 +30,12 @@ public final class MatchoEruptions {
         return Math.min(MAX_PER_ERUPTION, Math.max(1, SulphurOres.countFor(explosivity) / 5));
     }
 
-    public static synchronized void erupt(Instance instance, VolcanoExplosivity explosivity) {
-        if (instance == null) return;
+    public static synchronized void erupt(Instance instance, int count) {
+        if (instance == null || count <= 0) return;
         ALIVE.removeIf(matcho -> matcho.isDead() || matcho.isRemoved());
         List<Pos> slopes = CrimsonMobSpawner.volcanoSlopes();
         List<MobMatcho> spawned = new ArrayList<>();
-        for (int i = 0; i < countFor(explosivity); i++) {
+        for (int i = 0; i < count; i++) {
             Pos at = slopes.get(ThreadLocalRandom.current().nextInt(slopes.size()));
             if (!instance.isChunkLoaded(at)) instance.loadChunk(at).join();
             MobMatcho matcho = new MobMatcho();
