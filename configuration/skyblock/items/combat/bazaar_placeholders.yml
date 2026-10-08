@@ -33,50 +33,64 @@ items:
     material: paper
     name: "Bezos"
     rarity: RARE
+    lore:
+      - "§7The surface is strangely cool and"
+      - "§7smooth. Often used as a ball in many"
+      - "§7sports due to its bouncy nature."
     components:
       - id: SELLABLE
         value: 200.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/bezos
   - id: BLAZE_ASHES
     material: paper
     name: "Blaze Ashes"
     rarity: UNCOMMON
+    lore:
+      - "§7Blazes are ephemeral creatures,"
+      - "§7constantly consuming themselves."
+      - "§7Their ashes are said to bring good"
+      - "§7fortune."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/blaze_ashes
   - id: BURNING_EYE
     material: paper
     name: "Burning Eye"
     rarity: UNCOMMON
+    lore:
+      - "§7Probably the single most regrettable"
+      - "§7effect of Sulphur on the island's"
+      - "§7fauna. You can't kill a spider with"
+      - "§7fire if it's already burning."
     components:
       - id: SELLABLE
         value: 1000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/burning_eye
   - id: COMPACT_OOZE
     material: paper
     name: "Compact Ooze"
     rarity: EPIC
+    lore:
+      - "§7Piglins sometimes chew on them, they"
+      - "§7can even blow bubbles out of them."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/compact_ooze
   - id: CORRUPTED_FRAGMENT
     material: paper
     name: "Corrupted Fragment"
     rarity: EPIC
+    lore:
+      - "§7Spreads fast."
     components:
       - id: SELLABLE
         value: 1.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/corrupted_fragment
   - id: CRYSTAL_FRAGMENT
@@ -93,10 +107,11 @@ items:
     material: paper
     name: "Digested Mushrooms"
     rarity: UNCOMMON
+    lore:
+      - "§7Sometimes digested multiple times."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/digested_mushrooms
   - id: DUNGEON_CHEST_KEY
@@ -143,10 +158,12 @@ items:
     material: paper
     name: "Gazing Pearl"
     rarity: RARE
+    lore:
+      - "§7Can be used instead of a lamp, if you"
+      - "§7enjoy living on the edge."
     components:
       - id: SELLABLE
         value: 200.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/gazing_pearl
   - id: GOLDEN_POWDER
@@ -163,10 +180,13 @@ items:
     material: paper
     name: "Hallowed Skull"
     rarity: EPIC
+    lore:
+      - "§7Incredibly heavy. Put one on each"
+      - "§7side of a stick and you just crafted"
+      - "§7yourself very stylish dumbbells."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/hallowed_skull
   - id: HEALING_TISSUE
@@ -183,10 +203,15 @@ items:
     material: paper
     name: "Heavy Pearl"
     rarity: LEGENDARY
+    lore:
+      - "§7It can take years for Hellwisp to"
+      - "§7create a pearl, but the Matriarch"
+      - "§7secretes so much fluid that it can"
+      - "§7make multiple of those pearls every"
+      - "§7day."
     components:
       - id: SELLABLE
         value: 257945.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/heavy_pearl
   - id: HOLY_FRAGMENT
@@ -213,10 +238,13 @@ items:
     material: lead
     name: "Kada Lead"
     rarity: UNCOMMON
+    lore:
+      - "§7The lead has to be exceedingly soft"
+      - "§7due to the nature of the mount. The"
+      - "§7chicken needs to be comfy."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/kada_lead
   - id: KUUDRA_TEETH
@@ -233,60 +261,98 @@ items:
     material: leather
     name: "Leather Cloth"
     rarity: EPIC
+    lore:
+      - "§7The origin of that leather is a well"
+      - "§7kept secret."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/leather_cloth
   - id: LUMINO_FIBER
     material: paper
     name: "Lumino Fiber"
     rarity: EPIC
+    lore:
+      - "§7Changes color based on the angle"
+      - "§7you look at it."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/lumino_fiber
   - id: MAGMAG
     material: paper
     name: "Magmag"
     rarity: UNCOMMON
+    lore:
+      - "§7Used in love potions, and laxatives."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/magmag
   - id: MAGMA_CHUNK
     material: paper
     name: "Magma Chunk"
     rarity: UNCOMMON
+    lore:
+      - "§7§o\"If Magma Cream is the cement, Magma"
+      - "§7§oChunks are the bricks.\" - Magma"
+      - "§7§oCube local expert."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/magma_chunk
   - id: MATCH_STICKS
     material: paper
     name: "Match-Sticks"
     rarity: RARE
+    lore:
+      - "§7Consume to light yourself on fire"
+      - "§7for §a10 §7seconds granting you §c+10❁"
+      - "§cStrength§7."
+      - ""
+      - "§8§oThe head of Matchos is a combination"
+      - "§8§oof Sulphur and a crystalline"
+      - "§8§osubstance. With even the slightest"
+      - "§8§ofrictions they will light up."
     components:
       - id: SELLABLE
         value: 10.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/match_sticks
+      - id: INTERACTABLE
+        handler_id: MATCH_STICKS
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "A"
+              - "B"
+            ingredients:
+              A:
+                type: SULPHUR
+                amount: 1
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: MATCH_STICKS
+              amount: 1
   - id: MILLENIA_OLD_BLAZE_ASHES
     material: paper
     name: "Millennia-Old Blaze Ashes"
     rarity: RARE
+    lore:
+      - "§7Despite being ephemeral creatures,"
+      - "§7blaze ashes are eternal."
     components:
       - id: SELLABLE
         value: 1000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/blaze/millenia_old_blaze_ashes
   - id: MIMIC_FRAGMENT
@@ -323,10 +389,14 @@ items:
     material: paper
     name: "Mutated Blaze Ashes"
     rarity: RARE
+    lore:
+      - "§7Blazes are ephemeral creatures,"
+      - "§7constantly consuming themselves."
+      - "§7Their ashes are said to bring good"
+      - "§7fortune."
     components:
       - id: SELLABLE
         value: 200.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/mutated_blaze_ashes
   - id: NETHER_STAR
@@ -374,7 +444,6 @@ items:
     components:
       - id: SELLABLE
         value: 53142.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/rekindled_ember_fragment
   - id: RITUAL_RESIDUE
@@ -391,20 +460,24 @@ items:
     material: paper
     name: "Spectre Dust"
     rarity: UNCOMMON
+    lore:
+      - "§7A famous Wizard used a wand made"
+      - "§7out of these."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/spectre_dust
   - id: SPELL_POWDER
     material: glowstone_dust
     name: "Spell Powder"
     rarity: EPIC
+    lore:
+      - "§7Looks like Sulphur, smells like"
+      - "§7Sulphur... Suspicious."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/spell_powder
   - id: SPIRIT_BONE
@@ -474,7 +547,6 @@ items:
     components:
       - id: SELLABLE
         value: 200.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/tentacle_meat
   - id: UNSTABLE_FRAGMENT
@@ -521,30 +593,34 @@ items:
     material: paper
     name: "Wither Soul"
     rarity: UNCOMMON
+    lore:
+      - "§7You can still hear their cries from"
+      - "§7the other side."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/wither_soul
   - id: X
     material: paper
     name: "X"
     rarity: EPIC
+    lore:
+      - "§7One Dimensional"
     components:
       - id: SELLABLE
         value: 20.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/x
   - id: Y
     material: paper
     name: "Y"
     rarity: EPIC
+    lore:
+      - "§7Two Dimensional"
     components:
       - id: SELLABLE
         value: 30.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/y
   - id: YOUNG_FRAGMENT
@@ -561,9 +637,10 @@ items:
     material: paper
     name: "Z"
     rarity: EPIC
+    lore:
+      - "§7Three Dimensional"
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/z

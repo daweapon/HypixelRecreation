@@ -53,6 +53,8 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
 import net.swofty.type.skyblockgeneric.item.components.StandardItemComponent;
 import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
+import net.swofty.type.skyblockgeneric.item.set.impl.TieredArmorSet;
+import net.swofty.type.skyblockgeneric.crimson.CrimsonGear;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.SkyBlockProgressMission;
@@ -157,7 +159,7 @@ public class PlayerStatistics {
             } catch (Exception _) {
             }
         }
-        return total;
+        return ItemStatistics.add(total, TieredArmorSet.statistics(player));
     }
 
     // Returns a map of Level : Amount of that level
@@ -323,6 +325,8 @@ public class PlayerStatistics {
             } catch (ReflectiveOperationException ignored) {
             }
         }
+        addModifier(modifiers, "Tiered Set Bonuses", TieredArmorSet.statistics(player), StatisticSourceType.ARMOR,
+                StatisticModifierType.ABILITY_PASSIVE, null, Material.IRON_CHESTPLATE, null);
 
         DatapointInventory inventory = player.getSkyblockDataHandler()
             .get(SkyBlockDataHandler.Data.INVENTORY, DatapointInventory.class);
@@ -540,6 +544,7 @@ public class PlayerStatistics {
         statistics = getHotPotatoBookStatistics(item, statistics);
         statistics = ItemStatistics.add(statistics, MythologicalGear.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, SnowSuit.extraItemStatistics(item, player));
+        statistics = ItemStatistics.add(statistics, CrimsonGear.extraItemStatistics(item, player));
 
         return statistics;
     }

@@ -31,6 +31,9 @@ items:
             level: 22
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/alchemists_staff
+      - id: ABILITY
+        abilities:
+          - COIN_CONVERSION
   - id: ANTI_SENTIENT_PICKAXE
     material: WOODEN_PICKAXE
     rarity: EPIC
@@ -1086,6 +1089,30 @@ items:
           - gemstone: SAPPHIRE
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/fire_freeze_staff
+      - id: ABILITY
+        abilities:
+          - FIRE_FREEZE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "  A"
+              - " B "
+              - "C  "
+            ingredients:
+              A:
+                type: SPELL_POWDER
+                amount: 5
+              B:
+                type: WITHER_SOUL
+                amount: 20
+              C:
+                type: STICK
+                amount: 1
+            result:
+              type: FIRE_FREEZE_STAFF
+              amount: 1
   - id: FIRE_FURY_STAFF
     material: BLAZE_ROD
     rarity: EPIC
@@ -1105,6 +1132,30 @@ items:
           - gemstone: SAPPHIRE
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/fire_fury_staff
+      - id: ABILITY
+        abilities:
+          - FIRESTORM
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "  A"
+              - " B "
+              - "C  "
+            ingredients:
+              A:
+                type: COMPACT_OOZE
+                amount: 20
+              B:
+                type: REKINDLED_EMBER_FRAGMENT
+                amount: 20
+              C:
+                type: STICK
+                amount: 1
+            result:
+              type: FIRE_FURY_STAFF
+              amount: 1
   - id: FIRE_VEIL_WAND
     material: BLAZE_ROD
     rarity: EPIC
@@ -1121,6 +1172,30 @@ items:
             level: 22
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/fire_veil_wand
+      - id: ABILITY
+        abilities:
+          - FIRE_VEIL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "  A"
+              - " B "
+              - "C  "
+            ingredients:
+              A:
+                type: LUMINO_FIBER
+                amount: 10
+              B:
+                type: SPELL_POWDER
+                amount: 10
+              C:
+                type: STICK
+                amount: 1
+            result:
+              type: FIRE_VEIL_WAND
+              amount: 1
   - id: FLAMING_FLAY
     material: FISHING_ROD
     rarity: LEGENDARY
@@ -2088,6 +2163,9 @@ items:
           - gemstone: COMBAT
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/events/april_fools/ragnarock
+      - id: ABILITY
+        abilities:
+          - RAGNAROCK
   - id: RAIDER_AXE
     material: IRON_SWORD
     rarity: RARE
@@ -3032,6 +3110,12 @@ items:
   - id: SULPHUR_BOW
     material: BOW
     rarity: EPIC
+    lore:
+      - "§6Ability: Arrow Infusion  §e§lON SHOOT"
+      - "§7Consumes §a1 Sulphur §7from the"
+      - "§7Inventory or Quiver to double the"
+      - "§7damage per shot."
+      - "§8(Not active yet)"
     default_statistics:
       damage: 200
       strength: 100
@@ -3048,6 +3132,28 @@ items:
           - gemstone: COMBAT
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/sulphur_bow
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AB "
+              - "A C"
+              - "AB "
+            ingredients:
+              A:
+                type: ENCHANTED_STRING
+                amount: 50
+              B:
+                type: ENCHANTED_SULPHUR
+                amount: 50
+              C:
+                type: BEZOS
+                amount: 50
+            result:
+              type: SULPHUR_BOW
+              amount: 1
   - id: SUPER_CLEAVER
     material: GOLDEN_SWORD
     rarity: RARE
@@ -3094,6 +3200,9 @@ items:
             level: 22
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/sword_of_bad_health
+      - id: ABILITY
+        abilities:
+          - BAD_HEALTH
   - id: SWORD_OF_REVELATIONS
     material: WOODEN_SWORD
     name: "Sword of Revelations"
@@ -3489,6 +3598,30 @@ items:
             level: 22
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/wand_of_strength
+      - id: ABILITY
+        abilities:
+          - LIFE_BLOOD
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "  A"
+              - " B "
+              - "C  "
+            ingredients:
+              A:
+                type: SPELL_POWDER
+                amount: 20
+              B:
+                type: HALLOWED_SKULL
+                amount: 20
+              C:
+                type: STICK
+                amount: 1
+            result:
+              type: WAND_OF_STRENGTH
+              amount: 1
   - id: WITHER_BOW
     material: BOW
     name: "Wither Bow"

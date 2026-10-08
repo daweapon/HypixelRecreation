@@ -42,6 +42,8 @@ items:
         texture: e679f93531ffb3d6023207763f2d7389d10de3d1c21dd76b0c12b4fec656e255
       - id: EXTRA_RARITY
         display: DYE
+      - id: ANVIL_COMBINABLE
+        handler_id: DYE_CYCLAMEN
   - id: DYE_BONE
     material: player_head
     name: "Bone Dye"
@@ -56,6 +58,8 @@ items:
         texture: c71e9683e80383541ef9feff39c8f814a42684149502424c0a9341d726f40d8a
       - id: EXTRA_RARITY
         display: DYE
+      - id: ANVIL_COMBINABLE
+        handler_id: DYE_BONE
   - id: MAGMA_URCHIN
     material: paper
     name: "Magma Urchin"

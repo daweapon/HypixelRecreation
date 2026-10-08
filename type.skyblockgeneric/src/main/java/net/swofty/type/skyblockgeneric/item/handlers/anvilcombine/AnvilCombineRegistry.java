@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.handlers.anvilcombine;
 
+import net.swofty.type.skyblockgeneric.crimson.CrimsonItemHandlers;
 import net.swofty.type.skyblockgeneric.fishing.winter.WinterItemHandlers;
 import net.swofty.type.skyblockgeneric.gifts.HollyDye;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
@@ -26,6 +27,7 @@ public class AnvilCombineRegistry {
     static {
         MythologicalItemHandlers.registerAnvilCombines();
         WinterItemHandlers.registerAnvilCombines();
+        CrimsonItemHandlers.registerAnvilCombines();
         HollyDye.registerAnvilCombine();
         register("HOT_POTATO_BOOK", new AnvilCombineHandler(
                 (upgradeItem, sacrificeItem) -> {

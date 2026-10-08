@@ -142,6 +142,25 @@ items:
       - id: TRACKED_UNIQUE
       - id: SELLABLE
         value: 4000.0
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_QUARTZ
+                amount: 2
+              B:
+                type: ENCHANTED_REDSTONE
+                amount: 2
+            result:
+              type: MINION_EXPANDER
+              amount: 1
   - id: SUPER_COMPACTOR_3000
     material: dispenser
     name: "Super Compactor 3000"

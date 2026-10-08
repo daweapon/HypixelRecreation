@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.handlers.interactable;
 
+import net.swofty.type.skyblockgeneric.crimson.CrimsonItemHandlers;
 import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
 import net.swofty.type.skyblockgeneric.gifts.SnowCannon;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
@@ -28,6 +29,7 @@ public class InteractableRegistry {
         MythologicalItemHandlers.registerInteractables();
         BottleOfJyrre.registerInteractables();
         SnowCannon.registerInteractables();
+        CrimsonItemHandlers.registerInteractables();
         register("SKYBLOCK_MENU_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 ((skyBlockPlayer, skyBlockItem) -> skyBlockPlayer.openView(new GUISkyBlockMenu()))
         ).leftClickHandler(

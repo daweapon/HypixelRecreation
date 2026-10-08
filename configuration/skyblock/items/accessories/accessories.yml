@@ -48,6 +48,22 @@ items:
       - id: TALISMAN
       - id: SELLABLE
         value: 6480.0
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_BLAZE_POWDER
+                amount: 1
+            result:
+              type: FIRE_TALISMAN
+              amount: 1
   - id: LAVA_TALISMAN
     material: PLAYER_HEAD
     name: "Lava Talisman"
@@ -58,6 +74,22 @@ items:
       - id: TALISMAN
       - id: SELLABLE
         value: 5800.0
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_MAGMA_CREAM
+                amount: 1
+            result:
+              type: LAVA_TALISMAN
+              amount: 1
   - id: MINE_AFFINITY_TALISMAN
     material: PLAYER_HEAD
     name: "Mine Affinity Talisman"

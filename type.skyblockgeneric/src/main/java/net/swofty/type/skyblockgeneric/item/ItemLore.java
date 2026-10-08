@@ -29,6 +29,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.ability.RegisteredAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreConfig;
 import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
+import net.swofty.type.skyblockgeneric.item.set.impl.TieredArmorSet;
 import net.swofty.type.skyblockgeneric.potion.PotionEffectType;
 import net.swofty.type.skyblockgeneric.text.LoreText;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -413,6 +414,12 @@ public class ItemLore {
 		int totalPieces = setRegistry == null ? 4 : ArmorSetRegistry.getPieceCount(setRegistry);
 
 		TextBody.Section section = lore.section(LoreText.Sections.FULL_SET_BONUS);
+		if (armorSet instanceof TieredArmorSet tiered) {
+			String key = wearingAmount >= tiered.minimumPieces() ? "items.lore.tiered_bonus_active" : "items.lore.tiered_bonus";
+			section.line(Text.key(key, Text.parseLenient(armorSet.getName()), wearingAmount, totalPieces));
+			tiered.getDescription(Math.max(wearingAmount, tiered.minimumPieces())).forEach(line -> section.line(LoreText.gray(line)));
+			return;
+		}
 		section.line(Text.key("items.lore.full_set_bonus", Text.parseLenient(armorSet.getName()), wearingAmount, totalPieces));
 		armorSet.getDescription().forEach(line -> section.line(LoreText.gray(line)));
 	}

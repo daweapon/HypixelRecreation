@@ -41,9 +41,8 @@ items:
       - id: SELLABLE
         value: 159855.0
       - id: MINION_FUEL
-        fuel_percentage: 40.0
+        fuel_percentage: 35.0
         last_time_ms: 0
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

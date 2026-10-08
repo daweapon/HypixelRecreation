@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.AbilityDamage;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.CrimsonAbilities;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ForwardTeleport;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.JingleBellsAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ShadowWarpAbility;
@@ -222,6 +223,7 @@ public class AbilityRegistry {
 //		));
 
         register(new BuildersWandAbility());
+        CrimsonAbilities.register();
     }
 
     public static void register(RegisteredAbility ability) {

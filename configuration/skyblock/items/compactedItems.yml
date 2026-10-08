@@ -1484,7 +1484,7 @@ items:
     default_statistics: {}
     components:
       - id: ENCHANTED
-        recipe_type: COMBAT
+        recipe_type: MINING
         item_id: SULPHUR
       - id: SELLABLE
         value: 1600
