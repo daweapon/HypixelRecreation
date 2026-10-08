@@ -42,7 +42,7 @@ public enum BazaarCategories {
             new BazaarItemSet(ItemType.RAW_RABBIT, "Rabbit",
                     ItemType.RAW_RABBIT, ItemType.RABBIT_FOOT, ItemType.RABBIT_HIDE, ItemType.ENCHANTED_RAW_RABBIT, ItemType.ENCHANTED_COOKED_RABBIT, ItemType.ENCHANTED_RABBIT_FOOT, ItemType.ENCHANTED_RABBIT_HIDE),
             new BazaarItemSet(ItemType.NETHER_WART, "Nether Warts",
-                    ItemType.NETHER_WART, ItemType.ENCHANTED_NETHER_WART),
+                    ItemType.NETHER_WART, ItemType.ENCHANTED_NETHER_WART, ItemType.MUTANT_NETHER_WART),
             new BazaarItemSet(ItemType.COMPOST, "Garden",
                     ItemType.COMPOST, ItemType.COMPOST_BUNDLE, ItemType.CROPIE, ItemType.SQUASH, ItemType.FERMENTO, ItemType.CONDENSED_FERMENTO),
             new BazaarItemSet(ItemType.DUNG, "Garden Resources",
@@ -82,7 +82,7 @@ public enum BazaarCategories {
                     ItemType.SNOWBALL, ItemType.SNOW_BLOCK, ItemType.ENCHANTED_SNOW_BLOCK),
             // Crimson Isle's 6 mining resources nest under one "Crimson Isle" tile in real Hypixel
             new BazaarItemSet(ItemType.GLOWSTONE_DUST, "Glowstone", "Crimson Isle",
-                    ItemType.GLOWSTONE_DUST, ItemType.ENCHANTED_GLOWSTONE_DUST, ItemType.ENCHANTED_GLOWSTONE),
+                    ItemType.GLOWSTONE_DUST, ItemType.ENCHANTED_GLOWSTONE_DUST, ItemType.ENCHANTED_GLOWSTONE, ItemType.ENCHANTED_REDSTONE_LAMP),
             new BazaarItemSet(ItemType.NETHERRACK, "Netherrack", "Crimson Isle",
                     ItemType.NETHERRACK, ItemType.ENCHANTED_NETHERRACK),
             new BazaarItemSet(ItemType.QUARTZ, "Nether Quartz", "Crimson Isle",
@@ -171,8 +171,8 @@ public enum BazaarCategories {
                     ItemType.MATCH_STICKS, ItemType.TENTACLE_MEAT, ItemType.CORRUPTED_FRAGMENT),
             new BazaarItemSet(ItemType.HALLOWED_SKULL, "Mini Bosses", "Crimson Isle",
                     ItemType.HALLOWED_SKULL, ItemType.SPELL_POWDER, ItemType.LEATHER_CLOTH, ItemType.LUMINO_FIBER, ItemType.COMPACT_OOZE, ItemType.REKINDLED_EMBER_FRAGMENT),
-            new BazaarItemSet(ItemType.NETHER_STAR, "Special", "Crimson Isle",
-                    ItemType.NETHER_STAR, ItemType.HEAVY_PEARL, ItemType.KUUDRA_TEETH, ItemType.X, ItemType.Y, ItemType.Z),
+            new BazaarItemSet(ItemType.CORRUPTED_NETHER_STAR, "Special", "Crimson Isle",
+                    ItemType.CORRUPTED_NETHER_STAR, ItemType.HEAVY_PEARL, ItemType.KUUDRA_TEETH, ItemType.X, ItemType.Y, ItemType.Z),
             new BazaarItemSet(ItemType.REVENANT_FLESH, "Revenant Horror", "Slayers",
                     ItemType.REVENANT_FLESH, ItemType.REVENANT_VISCERA, ItemType.GOLDEN_POWDER, ItemType.UNDEAD_CATALYST, ItemType.REVENANT_CATALYST),
             new BazaarItemSet(ItemType.TARANTULA_WEB, "Tarantula Broodfather", "Slayers",
@@ -259,7 +259,11 @@ public enum BazaarCategories {
                     ItemType.EXALTED_LUSHLILAC_BONBON, ItemType.PRIME_LUSHLILAC_BONBON)
     ),
     ODDITIES(Material.ENCHANTING_TABLE, Material.PINK_STAINED_GLASS_PANE, "<d>",
-            new BazaarItemSet(ItemType.ATTRIBUTE_SHARD, "Attribute Shards", AttributeBazaarItems.values())),
+            new BazaarItemSet(ItemType.ATTRIBUTE_SHARD, "Attribute Shards", AttributeBazaarItems.values()),
+            new BazaarItemSet(ItemType.BLAZE_WAX, "Reforge Stones",
+                    ItemType.BLAZE_WAX, ItemType.MOLTEN_CUBE, ItemType.SEARING_STONE, ItemType.SHINY_PRISM),
+            new BazaarItemSet(ItemType.MAGMA_URCHIN, "Power Stones",
+                    ItemType.MAGMA_URCHIN)),
     ;
 
     private final Material displayItem;
