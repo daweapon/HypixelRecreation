@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.rabbits;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.UtilityClass;
@@ -35,7 +36,15 @@ public class ChocolateFactoryHelper {
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,##0.0");
 
     public static void updateProduction(SkyBlockPlayer player) {
-        mutateData(player, DatapointChocolateFactory.ChocolateFactoryData::updateChocolateFromProduction);
+        double accessoryPerSecond = AccessoryEconomyHooks.chocolatePerSecond(player);
+        mutateData(player, data -> {
+            if (accessoryPerSecond > 0) {
+                double seconds = Math.max(0, System.currentTimeMillis() - data.getLastUpdated()) / 1000D;
+                double multiplier = data.getShrineMultiplier() * data.getTimeTowerMultiplier() * data.getCoachMultiplier();
+                data.setPartialChocolate(data.getPartialChocolate() + accessoryPerSecond * multiplier * seconds);
+            }
+            data.updateChocolateFromProduction();
+        });
     }
 
     public static DatapointChocolateFactory.ChocolateFactoryData getData(SkyBlockPlayer player) {

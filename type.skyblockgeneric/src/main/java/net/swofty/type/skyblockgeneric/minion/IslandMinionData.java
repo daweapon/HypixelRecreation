@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.minion;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -151,6 +152,7 @@ public class IslandMinionData {
             percentageSpeedIncrease += minion.asSkyBlockMinion().getBonusSpeedPercentage(this);
             if (minionEntity != null) {
                 percentageSpeedIncrease += (int) PetAbilities.minionSpeedPercent(minionEntity.getInstance(), minion.name());
+                percentageSpeedIncrease += (int) AccessoryEconomyHooks.potatoMinionSpeedPercent(minionEntity.getInstance(), minion.name());
             }
 
             return percentageSpeedIncrease;

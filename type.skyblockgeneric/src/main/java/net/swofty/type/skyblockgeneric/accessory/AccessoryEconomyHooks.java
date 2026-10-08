@@ -1,6 +1,8 @@
 package net.swofty.type.skyblockgeneric.accessory;
 
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.entity.Player;
+import net.minestom.server.instance.Instance;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
@@ -8,8 +10,9 @@ import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 /**
- * Accessory effects on coins, bits, potions, bait and thunder charge. Each number is the effect's
- * {@code percent} in the accessory YAML (coins for the per-minute and per-level handlers).
+ * Accessory effects on coins, bits, potions, bait, thunder charge, minions and chocolate. Each number
+ * is the effect's {@code percent} in the accessory YAML; for the coin and chocolate handlers it is an
+ * amount, not a percentage.
  */
 public final class AccessoryEconomyHooks {
     public static final String COINS_PER_MINUTE = "COINS_PER_MINUTE";
@@ -18,6 +21,9 @@ public final class AccessoryEconomyHooks {
     public static final String POTION_DURATION = "POTION_DURATION";
     public static final String BAIT_PRESERVATION = "BAIT_PRESERVATION";
     public static final String THUNDER_CHARGE = "THUNDER_CHARGE";
+    public static final String CHOCOLATE_PER_SECOND = "CHOCOLATE_PER_SECOND";
+    public static final String POTATO_MINION_SPEED = "POTATO_MINION_SPEED";
+    private static final String POTATO_MINION = "POTATO";
 
     private AccessoryEconomyHooks() {
     }
@@ -53,6 +59,20 @@ public final class AccessoryEconomyHooks {
     public static boolean preservesBait(SkyBlockPlayer player) {
         double chance = AccessoryHandlerEffects.percent(player, BAIT_PRESERVATION);
         return chance > 0 && LootRoll.roll(player.getUuid(), null, chance);
+    }
+
+    public static double potatoMinionSpeedPercent(Instance island, String minion) {
+        if (island == null || !POTATO_MINION.equals(minion)) return 0;
+        double best = 0;
+        for (Player viewer : island.getPlayers()) {
+            if (viewer instanceof SkyBlockPlayer player)
+                best = Math.max(best, AccessoryHandlerEffects.percent(player, POTATO_MINION_SPEED));
+        }
+        return best;
+    }
+
+    public static double chocolatePerSecond(SkyBlockPlayer player) {
+        return AccessoryHandlerEffects.percent(player, CHOCOLATE_PER_SECOND);
     }
 
     public static double thunderChargeBonus(SkyBlockPlayer player) {
