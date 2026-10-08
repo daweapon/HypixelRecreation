@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonSideQuests;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.time.Duration;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Sirih, the writer who keeps forgetting Sulphur (wiki: Sirih). As a pig, 1 Sulphur turns them back
@@ -71,7 +72,7 @@ public final class NPCSirih {
                         "We Piglins always dream of water. This book will be about showing that water also brings pain and struggle.");
                 return;
             }
-            say(player, NOVELS[java.util.concurrent.ThreadLocalRandom.current().nextInt(NOVELS.length)]);
+            say(player, NOVELS[ThreadLocalRandom.current().nextInt(NOVELS.length)]);
         }
     }
 

@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonSideQuests;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Locale;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * A talk-only town villager: an introduction the first time (if it has one), then one of its idle
@@ -32,6 +33,6 @@ public class TownVillagerNPC extends FactionVillagerNPC {
             say(player, introduction);
             return;
         }
-        say(player, idle[java.util.concurrent.ThreadLocalRandom.current().nextInt(idle.length)]);
+        say(player, idle[ThreadLocalRandom.current().nextInt(idle.length)]);
     }
 }

@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Odger's "Select a topic: [Quest] [Trophy Fishing]" prompt while the player is on Odexar's
@@ -80,7 +81,7 @@ public final class OdgerQuestTopics {
         else odger(player, "Skeleton Fish <c>from Burning Desert<f>. Rare.");
     }
 
-    private static java.util.concurrent.CompletableFuture<Void> odger(SkyBlockPlayer player, String... lines) {
+    private static CompletableFuture<Void> odger(SkyBlockPlayer player, String... lines) {
         return CrimsonScene.create().say(ODGER, lines).play(player);
     }
 }
