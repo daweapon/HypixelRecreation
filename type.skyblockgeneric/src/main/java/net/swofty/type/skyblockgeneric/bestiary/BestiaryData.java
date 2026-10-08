@@ -99,9 +99,10 @@ public class BestiaryData {
     }
 
     public int getTotalKillsForMaxTier(BestiaryMob mob) {
-        int bracket = mob.getBestiaryBracket();
-        int maxTier = mob.getMaxBestiaryTier();
+        return getTotalKillsForMaxTier(mob.getBestiaryBracket(), mob.getMaxBestiaryTier());
+    }
 
+    public int getTotalKillsForMaxTier(int bracket, int maxTier) {
         if (bracket < 1 || bracket > brackets.size()) {
             throw new IllegalArgumentException("Invalid bestiary bracket: " + bracket);
         }

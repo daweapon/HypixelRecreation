@@ -3,13 +3,18 @@ package net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature;
 import java.util.List;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
+import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
+import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
+import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
-import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.fishing.bestiary.FishingBestiaryFamily;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 /**
  * A sea creature is fully described by a {@link SeaCreatureProfile} — one
@@ -20,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
  * field. Once super() returns the field is set and future calls hit the
  * fast path.
  */
-public final class SeaCreatureMob extends SkyBlockMob {
+public final class SeaCreatureMob extends BestiaryMob {
 
     private static final ThreadLocal<SeaCreatureProfile> IN_CONSTRUCTION = new ThreadLocal<>();
 
@@ -65,6 +70,30 @@ public final class SeaCreatureMob extends SkyBlockMob {
     @Override
     public List<TargetSelector> getTargetSelectors() {
         return live().behaviour().targets(this);
+    }
+
+    @Override
+    public int getMaxBestiaryTier() {
+        return family().map(FishingBestiaryFamily::getMaxTier).orElse(0);
+    }
+
+    @Override
+    public int getBestiaryBracket() {
+        return family().map(FishingBestiaryFamily::getBracket).orElse(1);
+    }
+
+    @Override
+    public String getMobID() {
+        return live().id();
+    }
+
+    @Override
+    public GUIMaterial getGuiMaterial() {
+        return family().map(FishingBestiaryFamily::getGuiMaterial).orElseGet(() -> new GUIMaterial(Material.PRISMARINE_SHARD));
+    }
+
+    private Optional<FishingBestiaryFamily> family() {
+        return FishingBestiaryFamily.forMobKey(live().id());
     }
 
     private SeaCreatureProfile live() {
