@@ -11,7 +11,9 @@ import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.patchnotes.PatchNoteBook;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import org.tinylog.Logger;
 
 import java.util.List;
 
@@ -48,7 +50,11 @@ public class GUIPatchNotes extends HypixelInventoryGUI {
                 @Override
                 public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                     p.closeInventory();
-                    p.sendMessage(Text.of("<a>SkyBlock v{} <8>- <f>{}", note.version(), note.title()));
+                    if (note.hasBook()) {
+                        openBook(p, note);
+                        return;
+                    }
+                    p.sendMessage(Text.of("<a>{} <8>- <f>{}", note.name(), note.title()));
                     if (!note.url().isBlank()) {
                         p.sendMessage(Text.of("<click:url:'" + note.url() + "'><e><l>CLICK HERE <e>to view the patch notes!"));
                     }
@@ -57,14 +63,23 @@ public class GUIPatchNotes extends HypixelInventoryGUI {
                 @Override
                 public ItemStack.Builder getItem(HypixelPlayer p) {
                     return ItemStacks.item(note.material(), """
-                            <a>SkyBlock v{}
+                            <a>{}
                             <7>{}
 
-                            <e>Click to view!""", note.version(), note.date());
+                            <e>Click to view!""", note.name(), note.date());
                 }
             });
         }
         updateItemStacks(getInventory(), getPlayer());
+    }
+
+    private static void openBook(HypixelPlayer player, PatchNote note) {
+        try {
+            player.openBook(PatchNoteBook.load(note.bookFile()));
+        } catch (Exception exception) {
+            Logger.error(exception, "Failed to open patch notes {}", note.book());
+            player.sendMessage(Text.of("<c>These patch notes couldn't be opened right now."));
+        }
     }
 
     @Override

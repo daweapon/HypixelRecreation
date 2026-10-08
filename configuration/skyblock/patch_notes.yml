@@ -1,12 +1,17 @@
 # Patch notes shown by Jerry the Assistant (Island Jerry -> Patch Notes). Newest first; the menu shows
-# the first 7, like Hypixel's. Clicking an entry sends its link in chat.
+# the first 7, like Hypixel's.
 #
-# Each entry: version (shown as "SkyBlock v<version>"), date (display text), material (lowercase
-# Minecraft id for the icon), title (sent in chat with the link) and url.
-#
-# Seeded with Hypixel's latest SkyBlock releases (wiki Module:History/Datasheet). Replace or prepend
-# entries with this server's own notes as they are published.
+# Each entry: version, date (display text), material (lowercase Minecraft id for the icon) and title.
+# Optional: name (menu heading; defaults to "SkyBlock v<version>"). This server's own updates set
+# book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
+# book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "crimson-isle"
+    name: "The Crimson Isle Update"
+    date: "8th October 2026"
+    material: netherrack
+    title: "The Crimson Isle Update"
+    book: "crimson_isle.yml"
   - version: "0.27.2"
     date: "6th October 2026"
     material: gold_block
