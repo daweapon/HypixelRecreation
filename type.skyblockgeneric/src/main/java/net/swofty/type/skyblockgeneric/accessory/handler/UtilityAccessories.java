@@ -1,7 +1,5 @@
 package net.swofty.type.skyblockgeneric.accessory.handler;
 
-import net.minestom.server.entity.Player;
-import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
@@ -11,7 +9,6 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 /** Small numeric accessory bonuses read by other systems: XP orbs, Fishing Hotspots, minions and commissions. */
 public final class UtilityAccessories {
     private static final double EXPERIENCE_ARTIFACT_MULTIPLIER = 1.25;
-    private static final double POTATO_RING_MINION_SPEED = 10;
     private static final int KING_TALISMAN_HOTM_XP = 10;
 
     private UtilityAccessories() {
@@ -26,15 +23,6 @@ public final class UtilityAccessories {
         if (AccessoryOwnership.owns(player, ItemType.HOTSPOT_RING)) return hotspot(5, 0.5, 0);
         if (AccessoryOwnership.owns(player, ItemType.HOTSPOT_TALISMAN)) return hotspot(2.5, 0, 0);
         return ItemStatistics.empty();
-    }
-
-    public static double minionSpeedPercent(Instance island, String minion) {
-        if (island == null || !"POTATO".equals(minion)) return 0;
-        for (Player viewer : island.getPlayers()) {
-            if (viewer instanceof SkyBlockPlayer player && player.getSkyblockDataHandler() != null
-                    && AccessoryOwnership.owns(player, ItemType.POTATO_RING)) return POTATO_RING_MINION_SPEED;
-        }
-        return 0;
     }
 
     public static int commissionHotmXp(SkyBlockPlayer player) {

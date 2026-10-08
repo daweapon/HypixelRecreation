@@ -108,6 +108,7 @@ items:
         effects:
           - type: HANDLER
             handler: POTATO_MINION_SPEED
+            percent: 10
             text:
               - "Your potato minions farm <a>10% <7>faster"
               - "while wearing on your island."

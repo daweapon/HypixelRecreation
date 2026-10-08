@@ -39,7 +39,6 @@ public final class AccessoryHandlers {
             Map.entry("HOTSPOT_BUFF", "accessory/handler/UtilityAccessories"),
             Map.entry("KING_COMMISSION_XP", "accessory/handler/UtilityAccessories"),
             Map.entry("NIGHT_VISION_CHARM", "accessory/handler/NightVisionCharm"),
-            Map.entry("POTATO_MINION_SPEED", "accessory/handler/UtilityAccessories"),
             Map.entry("REAPER_ORB", "accessory/handler/KillAccessories"),
             Map.entry("RING_OF_LOVE", "accessory/handler/RingOfLove"),
             Map.entry("TARANTULA_TENTH_HIT", "accessory/handler/TarantulaAccessories"),
