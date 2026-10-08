@@ -7,13 +7,18 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.anvilcombine.AnvilCombineHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.anvilcombine.AnvilCombineRegistry;
 
+import net.swofty.commons.StringUtility;
+import net.swofty.type.skyblockgeneric.skill.SkillCategories;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Map;
 
 /**
  * Makes a reforge stone applicable in the regular Anvil.
  */
 public class ReforgeStoneComponent extends SkyBlockItemComponent {
-    public ReforgeStoneComponent(String reforgeId, Map<Rarity, Integer> applicationCosts) {
+    public ReforgeStoneComponent(String reforgeId, Map<Rarity, Integer> applicationCosts,
+                                 @Nullable SkillCategories requiredSkill, int requiredLevel) {
         String handlerId = "REFORGE_STONE:" + reforgeId;
 
         AnvilCombineRegistry.register(handlerId, new AnvilCombineHandler(
@@ -27,6 +32,11 @@ public class ReforgeStoneComponent extends SkyBlockItemComponent {
                 },
                 (upgradeItem, sacrificeItem, player) -> 0,
                 (player, upgradeItem, sacrificeItem) -> {
+                    if (requiredSkill != null && player.getSkills().getCurrentLevel(requiredSkill) < requiredLevel) {
+                        player.sendMessage("<c>You need <a>" + StringUtility.toNormalCase(requiredSkill.name())
+                                + " Skill " + requiredLevel + " <c>to apply this reforge!");
+                        return false;
+                    }
                     int cost = applicationCosts.getOrDefault(
                             upgradeItem.getAttributeHandler().getRarity(), 0);
                     if (player.getCoins() < cost) {

@@ -129,7 +129,10 @@ public class ItemConfigParser {
 						int cost = safeConfig.getInt(rarity.name().toLowerCase() + "_cost", 0);
 						costs.put(rarity, cost);
 					}
-					yield new ReforgeStoneComponent(reforgeId, costs);
+					String requiredSkill = safeConfig.getString("required_skill", null);
+					yield new ReforgeStoneComponent(reforgeId, costs,
+							requiredSkill == null ? null : SkillCategories.valueOf(requiredSkill.toUpperCase()),
+							safeConfig.getInt("required_level", 0));
 				}
 				case "ARMOR" -> new ArmorComponent();
 				case "ARROW" -> new ArrowComponent();
