@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing.trophy;
 
+import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.HypixelConst;
@@ -105,9 +106,10 @@ public final class TrophyFishRoller {
             return TrophyTier.GOLD;
         }
         double charm = 1D + charmPercent / 100D;
+        double pursuit = 1D + PetAbilities.value(player, ItemType.SPINOSAURUS_PET, "Pursuit", 0) / 100D;
         UUID uuid = player.getUuid();
-        if (LootRoll.roll(uuid, definition.itemType(TrophyTier.DIAMOND), DIAMOND_CHANCE * charm)) return TrophyTier.DIAMOND;
-        if (LootRoll.roll(uuid, definition.itemType(TrophyTier.GOLD), GOLD_CHANCE * charm)) return TrophyTier.GOLD;
+        if (LootRoll.roll(uuid, definition.itemType(TrophyTier.DIAMOND), DIAMOND_CHANCE * charm * pursuit)) return TrophyTier.DIAMOND;
+        if (LootRoll.roll(uuid, definition.itemType(TrophyTier.GOLD), GOLD_CHANCE * charm * pursuit)) return TrophyTier.GOLD;
         if (LootRoll.roll(uuid, definition.itemType(TrophyTier.SILVER), SILVER_CHANCE * charm)) return TrophyTier.SILVER;
         return TrophyTier.BRONZE;
     }

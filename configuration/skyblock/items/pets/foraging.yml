@@ -1,0 +1,239 @@
+items:
+  - id: FROG_PET
+    material: player_head
+    name: "Frog Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Frog"
+        pet_type: FORAGING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: 45852a95928897746012988fbd5dbaa1b70b7a5fb65157016f4ff3f245374c08
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 1000, EPIC: 2000, LEGENDARY: 5000, MYTHIC: 10000 }
+        statistics:
+          COMMON: { speed: { per_level: 0.5 }, fishing_speed: { per_level: 0.4 }, respiration: { per_level: 0.1 }, sweep: { per_level: 0.1 } }
+          MYTHIC: { speed: { per_level: 0.5 }, fishing_speed: { per_level: 0.4 }, trophy_fish_chance: { per_level: 0.05 }, respiration: { per_level: 0.1 }, sweep: { per_level: 0.1 } }
+        abilities:
+          - name: "Hop"
+            kind: HANDLER
+            handler: FROG_HOP
+            triggers: JUMP
+            text:
+              - "<7>Grants<6> {0} Foraging Fortune <7>for"
+              - "<a>20s <7>every time you jump. Gain <b>Jump"
+              - "<b>Boost IV <7>while on <2>Foraging Islands<7>."
+            values:
+              - { base: { COMMON: 0.4, UNCOMMON: 0.6, EPIC: 0.8 }, per_level: { COMMON: 0.396, UNCOMMON: 0.594, EPIC: 0.792 } }
+          - name: "Happy Tree Friends"
+            rarity: RARE
+            kind: HANDLER
+            handler: FROG_HAPPY_TREE_FRIENDS
+            text:
+              - "<7>Grants<6> {0} Foraging Fortune <7>and"
+              - "<b>{1} Fishing Speed<7> for every other"
+              - "<2>Frog Pet <7>on the island, <7>up to <b>10"
+              - "<7>frogs."
+            text_by_rarity:
+              RARE:
+                - "<7>Grants<6> {0} Foraging Fortune <7>for"
+                - "<7>every other <2>Frog Pet <7>on the island,"
+                - "<7>up to <b>10 <7>frogs."
+              EPIC:
+                - "<7>Grants<6> {0} Foraging Fortune <7>for"
+                - "<7>every other <2>Frog Pet <7>on the island,"
+                - "<7>up to <b>10 <7>frogs."
+              LEGENDARY:
+                - "<7>Grants<6> {0} Foraging Fortune <7>for"
+                - "<7>every other <2>Frog Pet <7>on the island,"
+                - "<7>up to <b>10 <7>frogs."
+            values:
+              - { base: { RARE: 0.075, EPIC: 0.1 }, per_level: { RARE: 0.07425, EPIC: 0.099 } }
+              - { base: { RARE: 0, MYTHIC: 0.02 }, per_level: { RARE: 0, MYTHIC: 0.0198 } }
+          - name: "Hunting Enjoyer"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases your chance of fishing up"
+              - "<b>Water <7>Shards by <a>{0}% <7>while on"
+              - "<a>Foraging Islands<7>."
+            values:
+              - { base: 0.5, per_level: 0.495 }
+          - name: "Home Sweet Home"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Increases your chance of catching"
+              - "<6><l>GOLD <7>and <b><l>DIAMOND <2>Trophy Frogs"
+              - "<7>by <a>{0}%<7>."
+            values:
+              - { base: 0.1, per_level: 0.099 }
+      - id: TRACKED_UNIQUE
+  - id: JADE_DRAGON_PET
+    material: player_head
+    name: "Jade Dragon Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Jade Dragon"
+        pet_type: FORAGING
+        rarities: [LEGENDARY]
+        max_level: 200
+        stats_base_level: 100
+        skull_texture: 4099589796de185787ab92c3066d0d0af832ffad7153a42bb2e2d23598e7ea60
+        george_price: { LEGENDARY: 5000 }
+        statistics:
+          LEGENDARY: { strength: { base: 25, per_level: 0.25 }, magic_find: { base: 5, per_level: 0.05 }, foraging_fortune: { base: 25, per_level: 0.25 } }
+        abilities:
+          - name: "Forest Power"
+            kind: STAT
+            statistics: { strength: "{0}", speed: "{1}" }
+            when: { conditions: [HOLDING_AXE] }
+            text:
+              - "<7>Adds <c>{0}<glyph:stat_strength> Strength <7>and <f>{1}<glyph:stat_speed> Speed"
+              - "<7>to all your Axes."
+            values:
+              - { base: 75, per_level: 0.25 }
+              - { base: 37.5, per_level: 0.125 }
+          - name: "Jade Scale"
+            kind: HANDLER
+            handler: JADE_DRAGON_JADE_SCALE
+            text:
+              - "<7>Grants <6>{0}<glyph:stat_foraging_fortune> Foraging Fortune <7>and"
+              - "<2>{1}<glyph:stat_sweep> Sweep <7>for every digit in your"
+              - "<a>Mangrove Collection<7>."
+              - "<8>(Max 10M collection)"
+            values:
+              - 15
+              - 4
+          - name: "Dragon's Pride"
+            kind: STAT_PER_STAT
+            per_stat: { grants: foraging_fortune, amount: 1, per: sweep, every: 5 }
+            text:
+              - "<7>Grants <6>1<glyph:stat_foraging_fortune> Foraging Fortune <7>per <2>5<glyph:stat_sweep>"
+              - "<2>Sweep<7>."
+          - name: "Apex Predator"
+            kind: HANDLER
+            handler: JADE_DRAGON_APEX_PREDATOR
+            text:
+              - "<7>Increases your total <2><glyph:stat_sweep> Sweep <7>by"
+              - "<2>{0}% <7>for every Maxed out Attribute"
+              - "<7>you unlocked."
+            values:
+              - 0.1
+          - name: "Symbiosis"
+            kind: HANDLER
+            handler: JADE_DRAGON_SYMBIOSIS
+            text:
+              - "<7>If you own a level <a>200 Jade Dragon<7>,"
+              - "<7>Grants <6>+{0}<glyph:stat_foraging_fortune> Foraging Fortune for"
+              - "<7>every other unique maxed Foraging"
+              - "<7>Pet that you own."
+            values:
+              - 4
+      - id: TRACKED_UNIQUE
+  - id: OCELOT_PET
+    material: player_head
+    name: "Ocelot Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Ocelot"
+        pet_type: FORAGING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 5657cd5c2989ff97570fec4ddcdc6926a68a3393250c1be1f0b114a1db1
+        george_price: { COMMON: 250, UNCOMMON: 5000, RARE: 10000, EPIC: 25000, LEGENDARY: 50000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 5000, time_seconds: 300, items: { JUNGLE_LOG: 512 } }
+          RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_JUNGLE_LOG: 8 } }
+          EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_JUNGLE_LOG: 16 } }
+          LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_JUNGLE_LOG: 32 } }
+        statistics:
+          COMMON: { ferocity: { per_level: 0.1 }, speed: { per_level: 0.5 } }
+        abilities:
+          - name: "Foraging Wisdom Boost"
+            kind: STAT
+            statistics: { foraging_wisdom: "{0}" }
+            text:
+              - "<7>Grants <3>+{0}☯ Foraging"
+              - "<3>Wisdom<7>."
+            values:
+              - { per_level: { COMMON: 0.2, UNCOMMON: 0.25, EPIC: 0.3 } }
+          - name: "Tree Hugger"
+            rarity: RARE
+            kind: MINION_SPEED
+            minions: [OAK, SPRUCE, BIRCH, DARK_OAK, ACACIA, JUNGLE]
+            when: { conditions: [PRIVATE_ISLAND] }
+            text:
+              - "<7>Foraging minions work <a>{0}%"
+              - "<a><7>faster while on your island."
+            values:
+              - { per_level: 0.3 }
+          - name: "Tree Essence"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Gain a <a>{0}% <7>chance to get"
+              - "<7>exp from breaking a log."
+            values:
+              - { per_level: 0.3 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: JUNGLE_LOG
+                amount: 32
+              B:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: OCELOT_PET
+              amount: 1
+  - id: SLOTH_PET
+    material: player_head
+    name: "Sloth Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Sloth"
+        pet_type: FORAGING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 5468537e1e99040b760c83e53096c86870cdcd9285d53300761d0e36ff9e192f
+        george_price: { COMMON: 25000, UNCOMMON: 50000 }
+        statistics:
+          COMMON: { sweep: { per_level: 0.25 }, foraging_fortune: { per_level: 0.25 } }
+        abilities:
+          - name: "Slow Start"
+            kind: INACTIVE
+            text:
+              - "<7>Every <a>60s<7>, your next cut gains"
+              - "<2>+{0} <glyph:stat_sweep> Sweep <7>and <6>+{1} <glyph:stat_foraging_fortune> Foraging"
+              - "<6>Fortune<7>."
+            values:
+              - { per_level: { COMMON: 0.15, UNCOMMON: 0.2, EPIC: 0.25 } }
+              - { per_level: { COMMON: 0.3, UNCOMMON: 0.4, EPIC: 0.5 } }
+          - name: "Stronk Arm"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Gains <2>+{0} <glyph:stat_sweep> Sweep <7>and <6>+{1}<glyph:stat_foraging_fortune>"
+              - "<6>Foraging Fortune <7>on <2>Axe <7>throws."
+            values:
+              - { per_level: { RARE: 0.2, EPIC: 0.4 } }
+              - { per_level: { RARE: 0.5, EPIC: 1 } }
+          - name: "Starlyn's Favorite"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Cutting <a>Trees <7>give <a>+{0}% <7>more points"
+              - "<7>towards <d>Starlyn Contests<7>."
+            values:
+              - { per_level: 0.2 }
+      - id: TRACKED_UNIQUE

@@ -207,6 +207,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: OCELOT_PET
   - amount: 500
     rewards:
     - type: XP

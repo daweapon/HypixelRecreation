@@ -1,0 +1,426 @@
+items:
+  - id: AMMONITE_PET
+    material: player_head
+    name: "Ammonite Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Ammonite"
+        pet_type: FISHING
+        rarities: [LEGENDARY]
+        skull_texture: a074a7bd976fe6aba1624161793be547d54c835cf422243a851ba09d1e650553
+        george_price: { LEGENDARY: 5000 }
+        statistics:
+          LEGENDARY: { sea_creature_chance: { per_level: 0.05 } }
+        abilities:
+          - name: "Heart of the Sea"
+            kind: HANDLER
+            handler: AMMONITE_HEART_OF_THE_SEA
+            text:
+              - "<7>Grants <3>+{0}<glyph:stat_sea_creature_chance> Sea Creature"
+              - "<3>Chance <7>to your pet for each"
+              - "<5>Heart of the Mountain <7>level."
+            values:
+              - { per_level: 0.01 }
+          - name: "Expert Cave Fisher"
+            kind: INACTIVE
+            text:
+              - "<7>Grants <9>+{0}<glyph:stat_double_hook_chance> Double Hook Chance"
+              - "<7>for each <5>Heart of the Mountain <7>level"
+              - "<7>while in the <5>Crystal Hollows<7>."
+            values:
+              - { per_level: 0.005 }
+          - name: "Gift of the Ammonite"
+            kind: HANDLER
+            handler: AMMONITE_GIFT
+            text:
+              - "<7>Each Mining and Fishing level grants"
+              - "<b>+{0}<glyph:stat_fishing_speed> Fishing Speed<7>,"
+              - "<7><f>+{1}<glyph:stat_speed> Speed"
+              - "<7>and <a>+{2}<glyph:stat_defense>"
+              - "<a>Defense<7>."
+            values:
+              - { per_level: 0.005 }
+              - { per_level: 0.02 }
+              - { per_level: 0.02 }
+      - id: TRACKED_UNIQUE
+  - id: DOLPHIN_PET
+    material: player_head
+    name: "Dolphin Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Dolphin"
+        pet_type: FISHING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 1415d2c543e34bb88ede94d79b9427691fc9be72daad8831a9ef297180546e18
+        george_price: { COMMON: 10000, UNCOMMON: 50000, RARE: 500000, EPIC: 2500000, LEGENDARY: 10000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 100000, time_seconds: 86400 }
+          RARE: { coins: 1000000, time_seconds: 172800 }
+          EPIC: { coins: 10000000, time_seconds: 604800 }
+          LEGENDARY: { coins: 50000000, time_seconds: 1209600, items: { ENCHANTED_RAW_FISH: 16 } }
+        statistics:
+          COMMON: { intelligence: { per_level: 1 }, sea_creature_chance: { per_level: 0.05 } }
+        abilities:
+          - name: "Pod Tactics"
+            kind: HANDLER
+            handler: DOLPHIN_POD_TACTICS
+            text:
+              - "<7>Grants <b>+{0}<glyph:stat_fishing_speed> Fishing Speed"
+              - "<7>for each player within <a>30"
+              - "<7>blocks, up to <a>5 <7>players."
+            values:
+              - { per_level: { COMMON: 0.06, UNCOMMON: 0.08, EPIC: 0.1 } }
+          - name: "Echolocation"
+            rarity: RARE
+            kind: STAT
+            statistics: { sea_creature_chance: "{0}" }
+            text:
+              - "<7>Grants <3>+{0}<glyph:stat_sea_creature_chance> Sea Creature"
+              - "<3>Chance."
+            values:
+              - { per_level: { RARE: 0.07, EPIC: 0.1 } }
+          - name: "Splash Surprise"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Stun sea creatures for <a>5s"
+              - "<a><7>after fishing them up."
+      - id: TRACKED_UNIQUE
+  - id: FLYING_FISH_PET
+    material: player_head
+    name: "Flying Fish Pet"
+    rarity: RARE
+    components:
+      - id: PET
+        pet_name: "Flying Fish"
+        pet_type: FISHING
+        rarities: [RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: b8b1bc70136d620a822d08dfc2b04abe927e1c432b256139624b00c7bf4d3c1e
+        skull_texture_by_rarity: { MYTHIC: "b0e2363c2d41a9d323ba625de8c0637063a36fe85a045de275a7b7739ded6051" }
+        george_price: { RARE: 1000, EPIC: 100000, LEGENDARY: 250000, MYTHIC: 5000000 }
+        kat_upgrades:
+          EPIC: { coins: 250000, time_seconds: 432000 }
+          LEGENDARY: { coins: 1000000, time_seconds: 864000, items: { ENCHANTED_RAW_FISH: 64 } }
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { RADIOACTIVE_VIAL: 1 } }
+        statistics:
+          RARE: { defense: { per_level: 0.5 }, strength: { per_level: 0.5 } }
+        abilities:
+          - name: "Quick Reel"
+            kind: STAT
+            statistics: { fishing_speed: "{0}" }
+            text:
+              - "<7>Grants <b>+{0}<glyph:stat_fishing_speed> Fishing Speed<7>."
+            values:
+              - { per_level: { RARE: 0.6, EPIC: 0.75, LEGENDARY: 0.8 } }
+          - name: "Water Bender"
+            max_rarity: LEGENDARY
+            kind: HANDLER
+            handler: FLYING_FISH_WATER_BENDER
+            text:
+              - "<7>Gives <a>{0} <c><glyph:stat_strength> Strength <7>and <a><glyph:stat_defense> Defense <7>"
+              - "<7>when near water."
+            values:
+              - { per_level: { RARE: 0.8, EPIC: 1 } }
+          - name: "Deep Sea Diver"
+            rarity: LEGENDARY
+            max_rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases the stats of <a>Diver Armor"
+              - "<7>and <a>Abyssal Armor <7>by <a>{0}%"
+            values:
+              - { per_level: 0.2 }
+          - name: "Lava Bender"
+            rarity: MYTHIC
+            kind: HANDLER
+            handler: FLYING_FISH_LAVA_BENDER
+            text:
+              - "<7>Gives <a>{0} <c><glyph:stat_strength> Strength <7>and"
+              - "<7><a><glyph:stat_defense> Defense <7>when near lava."
+            values:
+              - { per_level: 1 }
+          - name: "Magmatic Diver"
+            rarity: MYTHIC
+            kind: HANDLER
+            handler: FLYING_FISH_MAGMATIC_DIVER
+            text:
+              - "<7>Increases the stats of Magma"
+              - "<7>Lord armor by <a>{0}%"
+            values:
+              - { per_level: 0.2 }
+          - name: "Rapid Decay"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Increases the chance to"
+              - "<7>activate the <d><l>Flash"
+              - "<d><l>Enchantment<a> by {0}%<7>."
+            values:
+              - { per_level: 0.5 }
+      - id: TRACKED_UNIQUE
+  - id: HERMIT_CRAB_PET
+    material: player_head
+    name: "Hermit Crab Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Hermit Crab"
+        pet_type: FISHING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: 26629dfa3fdfef04054024e0156d5e19da5401b1911f59b4bd3982685fe54c2c
+        george_price: { COMMON: 10000, UNCOMMON: 20000, RARE: 50000, EPIC: 200000, LEGENDARY: 1000000, MYTHIC: 2000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 10000, time_seconds: 3600, items: { RUSTY_COIN: 4 } }
+          RARE: { coins: 50000, time_seconds: 7200, items: { RUSTY_COIN: 16 } }
+          EPIC: { coins: 200000, time_seconds: 21600, items: { BUSTED_BELT_BUCKLE: 8 } }
+          LEGENDARY: { coins: 1000000, time_seconds: 172800, items: { OLD_LEATHER_BOOT: 1 } }
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { SCUTTLER_SHELL: 1 } }
+        statistics:
+          COMMON: { defense: { per_level: 0.2 }, fishing_speed: { per_level: 0.2 }, sea_creature_chance: { per_level: 0.02 } }
+        abilities:
+          - name: "Comfort Zone"
+            kind: HANDLER
+            handler: HERMIT_CRAB_COMFORT_ZONE
+            triggers: FISH_CAUGHT
+            text:
+              - "<7>Grants <b>+{0}<glyph:stat_fishing_speed> Fishing Speed <7>for <a>30s"
+              - "<7>upon catching <6>Treasure<7>."
+            values:
+              - { per_level: { COMMON: 0.2, UNCOMMON: 0.3, EPIC: 0.4 } }
+          - name: "Seafloor Scalper"
+            rarity: RARE
+            kind: TEXT
+            text:
+              - "<6>Treasure <7>catches are <a>{0}% <7>more"
+              - "<7>likely to be <6><l>GREAT <7>or <d><l>OUTSTANDING<7>."
+            values:
+              - { per_level: { RARE: 0.075, EPIC: 0.1 } }
+          - name: "Crab Rave"
+            rarity: LEGENDARY
+            kind: HANDLER
+            handler: HERMIT_CRAB_CRAB_RAVE
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_treasure_chance> Treasure Chance <7>for"
+              - "<7>each player with a <a>Hermit Crab Pet"
+              - "<7>within <a>30 <7>blocks, up to <a>5 <7>players."
+            values:
+              - { per_level: 0.002 }
+          - name: "Hotspot Hazard"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Increases the chance of catching"
+              - "<d>Hotspot Sea Creatures <7>by <a>{0}%<7>."
+            values:
+              - { per_level: 0.2 }
+      - id: TRACKED_UNIQUE
+  - id: MEGALODON_PET
+    material: player_head
+    name: "Megalodon Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Megalodon"
+        pet_type: FISHING
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: a94ae433b301c7fb7c68cba625b0bd36b0b14190f20e34a7c8ee0d9de06d53b9
+        george_price: { EPIC: 500000, LEGENDARY: 2500000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 10000000, time_seconds: 1728000 }
+        statistics:
+          EPIC: { strength: { per_level: 0.5 }, ferocity: { base: 5, per_level: 0.05 }, magic_find: { per_level: 0.1 }, fishing_speed: { base: 10, per_level: 0.3 }, sea_creature_chance: { base: 5, per_level: 0.05 } }
+        abilities:
+          - name: "Blood Scent"
+            kind: INACTIVE
+            text:
+              - "<7>Deal up to <c>+{0}% <c><glyph:skill_sword> Damage <7>based on"
+              - "<7>the enemy's missing health."
+            values:
+              - { base: 50, per_level: 1 }
+          - name: "Enhanced Scales"
+            kind: HANDLER
+            handler: MEGALODON_ENHANCED_SCALES
+            text:
+              - "<7>Doubles the pet's base stats during"
+              - "<7>the <b>Fishing Festival<7>."
+          - name: "Feeding Frenzy"
+            rarity: LEGENDARY
+            kind: TEXT
+            text:
+              - "<7>Grants a <a>{0}% <7>chance to catch"
+              - "<b>Sharks <7>during the <b>Fishing Festival<7>."
+            values:
+              - { base: 10, per_level: 0.1 }
+      - id: TRACKED_UNIQUE
+  - id: PENGUIN_PET
+    material: player_head
+    name: "Penguin Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Penguin"
+        pet_type: FISHING
+        rarities: [LEGENDARY]
+        skull_texture: 37534e97f36e5a8335928e171ec99608bee7fb16e260afb301025b3b17eeefc4
+        george_price: { LEGENDARY: 500000 }
+        statistics:
+          LEGENDARY: { sea_creature_chance: { per_level: 0.1 }, cold_resistance: { per_level: 0.15 } }
+        abilities:
+          - name: "Thick Blubber"
+            kind: INACTIVE
+            text:
+              - "<7>Each time you catch a Sea Creature,"
+              - "<7>reduce your <b><glyph:stat_cold_resistance> Cold <7>by <a>{0}<7>."
+            values:
+              - { base: 1, per_level: 0.05 }
+          - name: "Chilly Reception"
+            kind: HANDLER
+            handler: PENGUIN_CHILLY_RECEPTION
+            text:
+              - "<7>Grants <b>+{0}<glyph:stat_cold_resistance> Cold Resistance <7>for"
+              - "<7>each player within <a>30 <7>blocks, up to"
+              - "<a>10 <7>players."
+            values:
+              - { per_level: 0.01 }
+          - name: "Subzero Hero"
+            kind: STAT
+            statistics: { fishing_speed: "{0}" }
+            when: { regions: [GLACITE_TUNNELS, GREAT_GLACITE_LAKE] }
+            text:
+              - "<7>Gain <b>+{0}<glyph:stat_fishing_speed> Fishing Speed<7> while in the"
+              - "<b>Glacite Tunnels<7>."
+            values:
+              - { per_level: 0.75 }
+      - id: TRACKED_UNIQUE
+  - id: SEAL_PET
+    material: player_head
+    name: "Seal Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Seal"
+        pet_type: FISHING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 3a7728bbf6f53f6c1e3b121778e2c2175f6c27032dbd9a5fb3a0d8747e104f67
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 1000, EPIC: 2000, LEGENDARY: 5000 }
+        statistics:
+          COMMON: { fishing_speed: { per_level: 0.35 }, sea_creature_chance: { per_level: 0.05 }, treasure_chance: { per_level: 0.01 } }
+        abilities:
+          - name: "Showboater"
+            kind: INACTIVE
+            text:
+              - "<7>Increases your chance of catching"
+              - "<5>Bouncy Beach Balls <7>and <6>Giant Bouncy"
+              - "<6>Beach Balls <7>during the <9>Year of the"
+              - "<9>Seal <7>by <a>{0}%<7>."
+            values:
+              - { per_level: { COMMON: 0.5, UNCOMMON: 0.75, EPIC: 1 } }
+          - name: "Peak Performance"
+            rarity: RARE
+            kind: HANDLER
+            handler: SEAL_PEAK_PERFORMANCE
+            triggers: FISH_CAUGHT
+            text:
+              - "<7>Gain a <a>{0}% <7>chance to materialize"
+              - "<7>some <9>Treasure Bait <7>in your"
+              - "<7>inventory upon catching <6>Treasure<7>."
+              - "<7>Materializes <a>Golden Bait <7>instead"
+              - "<7>during the <9>Year of the Seal<7>."
+            values:
+              - { per_level: { RARE: 0.035, EPIC: 0.05 } }
+          - name: "Amphibious"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases the base stats of this pet"
+              - "<7>by <a>{0}% <7>during the <9>Year of the Seal<7>."
+            values:
+              - { per_level: 1 }
+      - id: TRACKED_UNIQUE
+  - id: SPINOSAURUS_PET
+    material: player_head
+    name: "Spinosaurus Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Spinosaurus"
+        pet_type: FISHING
+        rarities: [LEGENDARY]
+        skull_texture: d3c9d479471a2f13f22548315159591720992e70c920fef83a901b7186720e3c
+        george_price: { LEGENDARY: 500000 }
+        statistics:
+          LEGENDARY: { fishing_speed: { per_level: 0.5 }, sea_creature_chance: { per_level: 0.05 }, trophy_fish_chance: { per_level: 0.05 } }
+        abilities:
+          - name: "Sharp Attitude"
+            kind: TEXT
+            text:
+              - "<b>Sea Creatures <7>spawn with <a>{0}% <7>of"
+              - "<7>their maximum health missing."
+            values:
+              - { per_level: 0.1 }
+          - name: "Pursuit"
+            kind: TEXT
+            text:
+              - "<7>Increases the chance of catching"
+              - "<6><l>GOLD<r><7> and <b><l>DIAMOND<r><7> tier <6>Trophy"
+              - "<6>Fish <7>by <a>{0}%<7>."
+            values:
+              - { per_level: 0.1 }
+          - name: "Adaptive Predator"
+            kind: HANDLER
+            handler: SPINOSAURUS_ADAPTIVE_PREDATOR
+            text:
+              - "<7>Increases this pet's base stats by"
+              - "<a>{0}% <7>during any <b>Weather<7>."
+            values:
+              - { per_level: 0.5 }
+      - id: TRACKED_UNIQUE
+  - id: SQUID_PET
+    material: player_head
+    name: "Squid Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Squid"
+        pet_type: FISHING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 01433be242366af126da434b8735df1eb5b3cb2cede39145974e9c483607bac
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 100000, EPIC: 200000, LEGENDARY: 500000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 20000, time_seconds: 3600 }
+          RARE: { coins: 100000, time_seconds: 21600 }
+          EPIC: { coins: 500000, time_seconds: 172800 }
+          LEGENDARY: { coins: 3000000, time_seconds: 432000, items: { ENCHANTED_INK_SAC: 64 } }
+        statistics:
+          COMMON: { health: { per_level: 0.5 }, intelligence: { per_level: 0.5 } }
+        abilities:
+          - name: "More Ink"
+            kind: INACTIVE
+            text:
+              - "<7>Gain a <a>{0}% <7>chance to get"
+              - "<7>double drops from squids."
+            values:
+              - { per_level: { COMMON: 0.5, UNCOMMON: 0.75, EPIC: 1 } }
+          - name: "Ink Specialty"
+            rarity: RARE
+            kind: STAT
+            statistics: { damage: "{0}", strength: "{1}" }
+            when: { conditions: [HOLDING_INK_WAND] }
+            text:
+              - "<7>Buffs the <5>Ink Wand <7>by <a>{0} <c><glyph:skill_sword>"
+              - "<c>Damage <7>and <a>{1} <c><glyph:stat_strength> Strength."
+            values:
+              - { per_level: { RARE: 0.3, EPIC: 0.4 } }
+              - { per_level: { RARE: 0.1, EPIC: 0.2 } }
+          - name: "Fishing Wisdom Boost"
+            rarity: LEGENDARY
+            kind: STAT
+            statistics: { fishing_wisdom: "{0}" }
+            text:
+              - "<7>Gives <3>+{0}☯ Fishing"
+              - "<3>Wisdom<7>."
+            values:
+              - { per_level: 0.3 }
+      - id: TRACKED_UNIQUE

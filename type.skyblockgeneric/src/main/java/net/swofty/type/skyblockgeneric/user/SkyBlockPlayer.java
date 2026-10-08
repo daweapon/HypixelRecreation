@@ -43,6 +43,7 @@ import net.swofty.type.skyblockgeneric.event.value.ValueUpdateEvent;
 import net.swofty.type.skyblockgeneric.event.value.events.MaxHealthValueUpdateEvent;
 import net.swofty.type.skyblockgeneric.event.value.events.MiningValueUpdateEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
 import net.swofty.type.skyblockgeneric.item.components.AccessoryComponent;
 import net.swofty.type.skyblockgeneric.item.components.ArrowComponent;
@@ -813,6 +814,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
         if (handler.getStrength() > 0) {
             // Use handler's speed statistic
             double speed = this.getStatistics().allStatistics().getOverall(handler.getSpeedStatistic());
+            if (handler.getSpeedStatistic() == ItemStatistic.MINING_SPEED) speed += GatheringPetBonuses.miningSpeed(this, block);
             double time = Math.round(handler.getStrength() * 30) / (Math.max(speed, 1));
             ValueUpdateEvent event = new MiningValueUpdateEvent(this, time, item);
             SkyBlockValueEvent.callValueUpdateEvent(event);

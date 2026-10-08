@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing;
 
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetDrops;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -157,6 +158,7 @@ public final class FishingService {
         SkyBlockRegion region = player.getRegion();
         payload = PetEvents.fishCaught(player, payload, region == null ? null : region.getType().name());
         payload.apply(new CatchAwardContext(player, rod, hook.getSpawnPosition()));
+        GatheringPetDrops.fishCaught(player, rodMedium(rod), payload);
 
         if (!(payload instanceof CatchPayload.SeaCreature) && payload.skillXp() > 0) {
             player.getSkills().increase(player, net.swofty.type.skyblockgeneric.skill.SkillCategories.FISHING, payload.skillXp());

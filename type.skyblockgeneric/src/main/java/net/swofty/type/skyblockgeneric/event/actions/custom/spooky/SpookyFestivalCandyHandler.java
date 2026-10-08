@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.event.actions.custom.spooky;
 
+import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 import java.util.List;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
@@ -49,6 +50,7 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
         int spookyPieces = countSpookyArmorPieces(player);
         double dropChance = CANDY_DROP_CHANCE + (spookyPieces * SPOOKY_ARMOR_PIECE_BONUS) + candyAccessoryBonus(player)
                 + ElectionPerks.bonus(SkyBlockMayor.Perk.SWEET_BENEVOLENCE) / 100D;
+        dropChance *= 1 + PetAbilities.value(player, ItemType.BAT_PET, "Candy Lover", 0) / 100D;
         ItemType forced = LootRoll.claim(player.getUuid(), List.of(ItemType.PURPLE_CANDY, ItemType.GREEN_CANDY));
         int candies = (int) dropChance + (ThreadLocalRandom.current().nextDouble() < dropChance % 1D ? 1 : 0);
         if (forced != null) candies = Math.max(1, candies);

@@ -1,0 +1,690 @@
+items:
+  - id: ARMADILLO_PET
+    material: player_head
+    name: "Armadillo Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Armadillo"
+        pet_type: MINING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: c1eb6df4736ae24dd12a3d00f91e6e3aa7ade6bbefb0978afef2f0f92461018f
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 1000, EPIC: 2000, LEGENDARY: 5000, MYTHIC: 10000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 10000, time_seconds: 10800 }
+          RARE: { coins: 30000, time_seconds: 36000 }
+          EPIC: { coins: 250000, time_seconds: 172800 }
+          LEGENDARY: { coins: 1000000, time_seconds: 432000 }
+        statistics:
+          COMMON: { defense: { per_level: 2 } }
+        abilities:
+          - name: "Ridable"
+            kind: INACTIVE
+            text:
+              - "<7>Right-click your summoned pet to"
+              - "<7>ride it! Moves faster based on your"
+              - "<f><glyph:stat_speed> Speed<7>."
+          - name: "Tunneller"
+            kind: INACTIVE
+            text:
+              - "<7>While in the <5>Crystal Hollows<7>, this Pet"
+              - "<7>breaks all blocks in its path using"
+              - "<7>your held item."
+          - name: "Rolling Miner"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Every <a>{0} <7>seconds, the next"
+              - "<d>Gemstone <7>you mine gives <a>2x <7>drops."
+            values:
+              - { base: 60, per_level: { RARE: -0.2, EPIC: -0.3, LEGENDARY: -0.4 } }
+          - name: "Long Claws"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Grants <e>{0}<glyph:stat_mining_spread> Mining Spread <7>while"
+              - "<7>mining Hard Stone."
+            values:
+              - { per_level: 3 }
+          - name: "Well-Worked"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Consumes <e>{0}% <7>less energy when"
+              - "<7>tunneling."
+            values:
+              - { per_level: 0.1 }
+      - id: TRACKED_UNIQUE
+  - id: BAL_PET
+    material: player_head
+    name: "Bal Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Bal"
+        pet_type: MINING
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: c469ba2047122e0a2de3c7437ad3dd5d31f1ac2d27abde9f8841e1d92a8c5b75
+        george_price: { EPIC: 2000, LEGENDARY: 5000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 2000000, time_seconds: 864000, items: { YOGGIE: 100 } }
+        statistics:
+          EPIC: { heat_resistance: { per_level: 1.5 }, mining_fortune: { per_level: 1 } }
+        abilities:
+          - name: "Furnace"
+            kind: INACTIVE
+            text:
+              - "<7>Grants <5>+{0}<glyph:stat_pristine> Pristine <7>while in the"
+              - "<c>Magma Fields<7>."
+            values:
+              - { per_level: { EPIC: 0.02, LEGENDARY: 0.03 } }
+          - name: "Dispersion"
+            kind: INACTIVE
+            text:
+              - "<7>While in the <5>Crystal Hollows<7>, killing"
+              - "<7>mobs reduces your <c><glyph:stat_heat_resistance> Heat <7>by <c>4<7>."
+            values:
+              - { per_level: 0.04 }
+          - name: "Cannibal"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases damage dealt to <c><l>Bal <7>by"
+              - "<a>{0}%<7>."
+            values:
+              - { per_level: 1 }
+      - id: TRACKED_UNIQUE
+  - id: BAT_PET
+    material: player_head
+    name: "Bat Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Bat"
+        pet_type: MINING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: 377ade8afb257086fb1861da43c8ae468b8eb0578fada84303858517ba17217e
+        george_price: { COMMON: 250, UNCOMMON: 5000, RARE: 10000, EPIC: 25000, LEGENDARY: 50000, MYTHIC: 100000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 5000, time_seconds: 300, items: { RED_MUSHROOM: 256, BROWN_MUSHROOM: 256 } }
+          RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_RED_MUSHROOM: 4, ENCHANTED_BROWN_MUSHROOM: 4 } }
+          EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_RED_MUSHROOM: 8, ENCHANTED_BROWN_MUSHROOM: 8 } }
+          LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_RED_MUSHROOM: 16, ENCHANTED_BROWN_MUSHROOM: 16 } }
+        statistics:
+          COMMON: { intelligence: { per_level: 1 }, speed: { per_level: 0.05 } }
+          MYTHIC: { intelligence: { per_level: 1 }, speed: { per_level: 0.05 }, fishing_speed: { per_level: 0.4 }, sea_creature_chance: { per_level: 0.05 } }
+        abilities:
+          - name: "Candy Lover"
+            kind: TEXT
+            text:
+              - "<7>Increases drop chance of candies"
+              - "<7>from mobs by <a>{0}%<7>."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.15, EPIC: 0.2 } }
+          - name: "Nightmare"
+            rarity: RARE
+            kind: STAT
+            statistics: { intelligence: "{0}", speed: "{1}" }
+            when: { conditions: [NIGHT] }
+            text:
+              - "<7>During night, gain <a>{0} <b><glyph:stat_intelligence> Intelligence<7>,"
+              - "<a>{1} <f><glyph:stat_speed> Speed<7>, and <a>Night Vision<7>."
+            values:
+              - { per_level: { RARE: 0.2, EPIC: 0.3 } }
+              - { per_level: { RARE: 0.4, EPIC: 0.5 } }
+          - name: "Wings of Steel"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Deals <a>+{0}% <7>damage to <6>Spooky"
+              - "<7>enemies during the <6>Spooky Festival<7>."
+            values:
+              - { per_level: 0.5 }
+          - name: "Sonar"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Grants a <a>+{0}% <7>chance to catch"
+              - "<6>Spooky Sea Creatures <7>during the"
+              - "<6>Spooky Festival<7>."
+            values:
+              - { per_level: 0.2 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: BROWN_MUSHROOM
+                amount: 32
+              B:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: BAT_PET
+              amount: 1
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: RED_MUSHROOM
+                amount: 32
+              B:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: BAT_PET
+              amount: 1
+  - id: ENDERMITE_PET
+    material: player_head
+    name: "Endermite Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Endermite"
+        pet_type: MINING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: 18ae7046da98dcb33f3ed42f1dc41d08ac8dfa5db3a3860de5b1b5c056804187
+        george_price: { COMMON: 250, UNCOMMON: 5000, RARE: 10000, EPIC: 25000, LEGENDARY: 50000, MYTHIC: 100000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 5000, time_seconds: 300, items: { END_STONE: 512 } }
+          RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_END_STONE: 8 } }
+          EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_END_STONE: 16, MITE_GEL: 32 } }
+          LEGENDARY: { coins: 250000, time_seconds: 1800, items: { ENCHANTED_END_STONE: 32, MITE_GEL: 64 } }
+        statistics:
+          COMMON: { intelligence: { per_level: 1.5 }, pet_luck: { per_level: 0.1 } }
+        abilities:
+          - name: "More Stonks"
+            kind: TEXT
+            text:
+              - "<7>Gain more exp orbs for"
+              - "<7>breaking end stone and gain a"
+              - "<7>+<a>{0}% <7>chance to get an extra"
+              - "<7>block dropped."
+            values:
+              - { per_level: { COMMON: 0.5, UNCOMMON: 0.8, EPIC: 1 } }
+          - name: "Daily Commuter"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<9>Transmission Abilities"
+              - "<7>cost <a>{0}% <7>less mana."
+            values:
+              - { per_level: { RARE: 0.3, EPIC: 0.4 } }
+          - name: "Mite Bait"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Gain a <a>{0}% <7>chance to dig up"
+              - "<7>a bonus <c>Nest Endermite <7>per"
+              - "<d>+1<glyph:stat_pet_luck> Pet Luck <8>(Stacks above"
+              - "<8>100%)."
+            values:
+              - { per_level: 0.03 }
+          - name: "Sacrificer"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Increases the odds of rolling"
+              - "<7>for bonus items in the"
+              - "<c>Draconic Altar <7>by <a>{0}%<7>."
+            values:
+              - { per_level: 0.1 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: END_STONE
+                amount: 32
+              B:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: ENDERMITE_PET
+              amount: 1
+  - id: GLACITE_GOLEM_PET
+    material: player_head
+    name: "Glacite Golem Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Glacite Golem"
+        pet_type: MINING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: af132a6593876d3c377d503fd66eca3fb938743251f7b16a9870c60b7388c8a3
+        george_price: { COMMON: 10000, UNCOMMON: 250000, RARE: 500000, EPIC: 1000000, LEGENDARY: 2500000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 250000, time_seconds: 86400, items: { ENCHANTED_GLACITE: 128 } }
+          RARE: { coins: 500000, time_seconds: 172800, items: { ENCHANTED_GLACITE: 256 } }
+          EPIC: { coins: 1000000, time_seconds: 259200, items: { ENCHANTED_GLACITE: 512 } }
+          LEGENDARY: { coins: 2500000, time_seconds: 432000, items: { GLACITE_AMALGAMATION: 8 } }
+        statistics:
+          COMMON: { cold_resistance: { per_level: 0.1 }, mining_speed: { per_level: 1.25 } }
+        abilities:
+          - name: "Powder-powered"
+            kind: INACTIVE
+            text:
+              - "<7>Gain <a>+{0}%<7> more <b>Glacite Powder <7>from"
+              - "<7>most sources."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.15, EPIC: 0.2 } }
+          - name: "Iceborn"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Gain <a>+{0} <6><glyph:stat_mining_fortune> Mining Fortune <7>while in the"
+              - "<b>Glacite Mineshafts<7>."
+            values:
+              - { per_level: { RARE: 0.75, EPIC: 1 } }
+          - name: "Frozen Perfection"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Gain <a>+{0} <5><glyph:stat_pristine> Pristine <7>for every"
+              - "<b>Frozen Corpse <7>you've looted in the"
+              - "<7>current <b>Glacite Mineshaft<7>."
+            values:
+              - { per_level: 0.01 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_GLACITE
+                amount: 8
+              B:
+                type: SUPER_ENCHANTED_EGG
+                amount: 1
+            result:
+              type: GLACITE_GOLEM_PET
+              amount: 1
+  - id: GOBLIN_PET
+    material: player_head
+    name: "Goblin Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Goblin"
+        pet_type: MINING
+        rarities: [LEGENDARY]
+        skull_texture: 7309d8dc35a638a04b915a3b15a1452ceeae0d7ea42bcdadb21b03046987515c
+        george_price: { LEGENDARY: 500000 }
+        statistics:
+          LEGENDARY: { magic_find: { per_level: 0.07 }, ore_fortune: { per_level: 1 } }
+        abilities:
+          - name: "Grunt Work"
+            kind: TEXT
+            text:
+              - "<7>Gain <6>+{0}<glyph:stat_mining_speed> Mining Speed <7>when mining"
+              - "<6>Ores<7>."
+            values:
+              - { per_level: 2.5 }
+          - name: "Fetid Thief"
+            kind: INACTIVE
+            text:
+              - "<7>Gain <e>+{0}<glyph:stat_mining_spread> Mining Spread <7>while in the"
+              - "<2>Mines of Divan<7>."
+            values:
+              - { per_level: 1 }
+          - name: "Free-range Eggs"
+            kind: INACTIVE
+            text:
+              - "<7>Increases the chance of finding"
+              - "<7>rare goblin eggs by <a>{0}%<7>."
+            values:
+              - { per_level: 0.5 }
+      - id: TRACKED_UNIQUE
+  - id: MITHRIL_GOLEM_PET
+    material: player_head
+    name: "Mithril Golem Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Mithril Golem"
+        pet_type: MINING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: c1b2dfe8ed5dffc5b1687bc1c249c39de2d8a6c3d90305c95f6d1a1a330a0b1
+        george_price: { COMMON: 250, UNCOMMON: 5000, RARE: 10000, EPIC: 25000, LEGENDARY: 50000, MYTHIC: 100000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 5000, time_seconds: 300, items: { MITHRIL: 512 } }
+          RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_MITHRIL: 8 } }
+          EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_MITHRIL: 16 } }
+          LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_MITHRIL: 32 } }
+        statistics:
+          COMMON: { true_defense: { per_level: 0.5 }, mining_fortune: { per_level: 0.25 } }
+        abilities:
+          - name: "Mithril Affinity"
+            kind: TEXT
+            text:
+              - "<7>Grants <6>+{0}<6><glyph:stat_mining_speed> Mining Speed <7>when"
+              - "<7>mining <2>Mithril<7>."
+            values:
+              - { per_level: { COMMON: 1, UNCOMMON: 1.5, EPIC: 2 } }
+          - name: "Subterranean Battler"
+            rarity: RARE
+            kind: PERCENT_STAT
+            statistics: [health, defense, strength, intelligence, critical_chance, critical_damage, bonus_attack_speed, ability_damage, true_defense, ferocity, health_regeneration, vitality, mending]
+            when: { servers: [DWARVEN_MINES, DEEP_CAVERNS, GOLD_MINE] }
+            text:
+              - "<7>Increases all <c>Combat Stats <7>by <a>+{0}%"
+              - "<7>on <b>Mining Islands<7>."
+            values:
+              - { per_level: { RARE: 0.1, EPIC: 0.2 } }
+          - name: "The Smell Of Powder"
+            rarity: LEGENDARY
+            kind: TEXT
+            text:
+              - "<7>Grants <2>+{0}% ᠅ Mithril Powder <7>from"
+              - "<7>all sources."
+            values:
+              - { per_level: 0.2 }
+          - name: "Refined Senses"
+            rarity: MYTHIC
+            kind: STAT
+            statistics: { magic_find: "{0}" }
+            when: { servers: [DWARVEN_MINES, DEEP_CAVERNS, GOLD_MINE] }
+            text:
+              - "<7>Grants <b>+{0}% <glyph:stat_magic_find> Magic Find<7> while on"
+              - "<b>Mining Islands<7>."
+            values:
+              - { per_level: 0.1 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: MITHRIL
+                amount: 32
+              B:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: MITHRIL_GOLEM_PET
+              amount: 1
+  - id: MOLE_PET
+    material: player_head
+    name: "Mole Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Mole"
+        pet_type: MINING
+        rarities: [LEGENDARY]
+        skull_texture: 727baaafc09978d4bda73e16afdde85ec13b0f95ad989524c5fcaa717cf06b4a
+        george_price: { LEGENDARY: 500000 }
+        statistics:
+          LEGENDARY: { intelligence: { per_level: 1 }, magic_find: { per_level: 0.05 }, mining_speed: { per_level: 1.5 } }
+        abilities:
+          - name: "Archaeologist"
+            kind: INACTIVE
+            text:
+              - "<7>Increase your chance of finding"
+              - "<c>Scavenged Items <7>in the <2>Mines of"
+              - "<2>Divan <7>by <a>{0}%<7>."
+            values:
+              - { per_level: 0.25 }
+          - name: "Magnetic Nose"
+            kind: INACTIVE
+            text:
+              - "<9>Automatons <7>drop their parts <a>{0}%"
+              - "<7>more frequently."
+            values:
+              - { per_level: 0.5 }
+          - name: "Nucleic Explorer"
+            kind: INACTIVE
+            text:
+              - "<7>Gain a <a>{0}% <7>chance to receive an"
+              - "<7>extra drop when completing the"
+              - "<d>Crystal Nucleus<7>."
+            values:
+              - { per_level: 1 }
+      - id: TRACKED_UNIQUE
+  - id: ROCK_PET
+    material: player_head
+    name: "Rock Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Rock"
+        pet_type: MINING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 7df8aab57136df2296c7c6f969ff25d58116fe2ec59b96a85ba4927e1f6779e6
+        george_price: { COMMON: 10000, UNCOMMON: 50000, RARE: 500000, EPIC: 2500000, LEGENDARY: 10000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 100000, time_seconds: 86400 }
+          RARE: { coins: 1000000, time_seconds: 172800 }
+          EPIC: { coins: 10000000, time_seconds: 604800 }
+          LEGENDARY: { coins: 50000000, time_seconds: 1209600, items: { ENCHANTED_COBBLESTONE: 64 } }
+        statistics:
+          COMMON: { defense: { per_level: 2 }, true_defense: { per_level: 0.1 } }
+        abilities:
+          - name: "Rideable"
+            kind: INACTIVE
+            text:
+              - "<7>Right-click your summoned pet"
+              - "<7>to ride it!"
+          - name: "Sailing Stone"
+            kind: INACTIVE
+            text:
+              - "<7>Sneak to move your rock to"
+              - "<7>your location (15s cooldown)."
+          - name: "Fortify"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>While sitting on your rock,"
+              - "<7>gain +<a>{0}% <7>defense."
+            values:
+              - { per_level: { RARE: 0.2, EPIC: 0.25 } }
+          - name: "Steady Ground"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>While sitting on your rock,"
+              - "<7>gain <c>+{0}x <7>damage."
+            values:
+              - { per_level: 0.3 }
+      - id: TRACKED_UNIQUE
+  - id: SCATHA_PET
+    material: player_head
+    name: "Scatha Pet"
+    rarity: RARE
+    components:
+      - id: PET
+        pet_name: "Scatha"
+        pet_type: MINING
+        rarities: [RARE, EPIC, LEGENDARY]
+        skull_texture: df03ad96092f3f789902436709cdf69de6b727c121b3c2daef9ffa1ccaed186c
+        george_price: { RARE: 1000, EPIC: 2000, LEGENDARY: 5000 }
+        kat_upgrades:
+          EPIC: { coins: 125000000, time_seconds: 604800, items: { ENCHANTED_HARD_STONE: 64 } }
+          LEGENDARY: { coins: 250000000, time_seconds: 1209600, items: { ENCHANTED_HARD_STONE: 256 } }
+        statistics:
+          RARE: { mining_speed: { per_level: 1 }, mining_fortune: { per_level: 1.25 } }
+        abilities:
+          - name: "Burrowing"
+            kind: INACTIVE
+            text:
+              - "<7>Grants a <a>+{0}% <7>chance to find"
+              - "<e>Treasure Chests <7>while mining."
+            values:
+              - { per_level: { RARE: 0.3, EPIC: 0.4, LEGENDARY: 0.5 } }
+          - name: "Drill Infusion"
+            rarity: EPIC
+            kind: STAT
+            statistics: { gemstone_fortune: "{0}" }
+            when: { conditions: [HOLDING_DRILL] }
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_mining_fortune> Gemstone Fortune <7>to"
+              - "<7>Drills."
+            values:
+              - { per_level: { EPIC: 1, LEGENDARY: 1.25 } }
+          - name: "Bejeweled Eyes"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Earn <a>+{0}% <d>Gemstone Powder <7>from all"
+              - "<7>sources."
+            values:
+              - { per_level: 0.2 }
+      - id: TRACKED_UNIQUE
+  - id: SILVERFISH_PET
+    material: player_head
+    name: "Silverfish Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Silverfish"
+        pet_type: MINING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 811a1173af3bead305e6339f555662e990d5faadb87e07299fa68ca828a6d2fb
+        george_price: { COMMON: 50, UNCOMMON: 500, RARE: 2500, EPIC: 5000, LEGENDARY: 10000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 500, time_seconds: 10, items: { COBBLESTONE: 128 } }
+          RARE: { coins: 1000, time_seconds: 20, items: { COBBLESTONE: 256 } }
+          EPIC: { coins: 5000, time_seconds: 30, items: { COBBLESTONE: 512 } }
+          LEGENDARY: { coins: 10000, time_seconds: 45, items: { ENCHANTED_COBBLESTONE: 8 } }
+        statistics:
+          COMMON: { defense: { per_level: 1 }, mining_fortune: { per_level: 0.2 } }
+        abilities:
+          - name: "Magnetic"
+            kind: INACTIVE
+            text:
+              - "<7>Earn <a>+{0}% <7>more Exp when mining."
+            values:
+              - { per_level: { COMMON: 0.3, UNCOMMON: 0.4, EPIC: 0.5 } }
+          - name: "Experienced Burrower"
+            rarity: RARE
+            kind: STAT
+            statistics: { mining_wisdom: "{0}" }
+            text:
+              - "<7>Grants <3>+{0}☯ Mining Wisdom<7>."
+            values:
+              - { per_level: { RARE: 0.2, EPIC: 0.25, LEGENDARY: 0.3 } }
+          - name: "Dexterity"
+            rarity: LEGENDARY
+            kind: STAT
+            statistics: { mining_speed: "{0}" }
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_mining_speed> Mining Speed <7>and"
+              - "<7>permanent <e>Haste I/II/III<7>."
+            values:
+              - { per_level: 1.5 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: COBBLESTONE
+                amount: 8
+              B:
+                type: EGG
+                amount: 1
+            result:
+              type: SILVERFISH_PET
+              amount: 1
+  - id: WITHER_SKELETON_PET
+    material: player_head
+    name: "Wither Skeleton Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Wither Skeleton"
+        pet_type: MINING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: d50e972d26c3dbc4e1663aaf583388ff321e958d195f8a465b71a596a736fe9c
+        george_price: { COMMON: 1000, UNCOMMON: 25000, RARE: 50000, EPIC: 100000, LEGENDARY: 250000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 25000, time_seconds: 3600, items: { ENCHANTED_COAL: 16 } }
+          RARE: { coins: 50000, time_seconds: 10800, items: { ENCHANTED_COAL: 32 } }
+          EPIC: { coins: 100000, time_seconds: 21600, items: { ENCHANTED_COAL: 64 } }
+          LEGENDARY: { coins: 250000, time_seconds: 43200, items: { ENCHANTED_COAL: 128 } }
+        statistics:
+          COMMON: { defense: { per_level: 0.25 }, strength: { per_level: 0.25 }, critical_chance: { per_level: 0.05 }, critical_damage: { per_level: 0.25 }, intelligence: { per_level: 0.25 } }
+        abilities:
+          - name: "Stronger Bones"
+            kind: DAMAGE_REDUCTION
+            triggers: DAMAGED_BY_MOB
+            mobs: [skeleton, wither_skeleton, stray, bogged]
+            text:
+              - "<7>Take <a>{0}% <7>less damage from <f><glyph:mobs_skeletal>"
+              - "<f>Skeletal <7>mobs."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.2, EPIC: 0.3 } }
+          - name: "Wither Blood"
+            rarity: EPIC
+            kind: INACTIVE
+            text:
+              - "<7>Deal <a>{0}% <7>more damage to <8><glyph:mobs_wither> Wither"
+              - "<7>mobs."
+            values:
+              - { per_level: 1 }
+          - name: "Death's Touch"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Upon hitting an enemy inflict"
+              - "<7>the wither effect for <a>{0}%"
+              - "<7>damage over 3 seconds."
+              - "<8>Does not stack"
+            values:
+              - { per_level: 2 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_COAL
+                amount: 1
+              B:
+                type: SUPER_ENCHANTED_EGG
+                amount: 1
+            result:
+              type: WITHER_SKELETON_PET
+              amount: 1

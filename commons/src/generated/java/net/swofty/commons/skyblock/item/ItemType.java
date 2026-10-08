@@ -118,6 +118,8 @@ public enum ItemType {
 
   AMALGAMATED_CRIMSONITE_NEW(Material.PAPER, Rarity.RARE),
 
+  AMMONITE_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   ANANKE_FEATHER(Material.FEATHER, Rarity.RARE),
 
   ANCESTRAL_SPADE(Material.WOODEN_SHOVEL, Rarity.RARE),
@@ -177,6 +179,8 @@ public enum ItemType {
   ARCHITECTS_FIRST_DRAFT(Material.PAPER, Rarity.COMMON),
 
   ARMADILLO_MASK(Material.PLAYER_HEAD, Rarity.RARE),
+
+  ARMADILLO_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   ARTIFACT_OF_COINS(Material.PLAYER_HEAD, Rarity.RARE),
 
@@ -248,6 +252,8 @@ public enum ItemType {
 
   BAKED_POTATO(Material.BAKED_POTATO, Rarity.COMMON),
 
+  BAL_PET(Material.PLAYER_HEAD, Rarity.EPIC),
+
   BAMBOO(Material.BAMBOO, Rarity.COMMON),
 
   BAMBOO_BLOCK(Material.BAMBOO_BLOCK, Rarity.COMMON),
@@ -309,6 +315,8 @@ public enum ItemType {
   BAT_PERSON_RING(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   BAT_PERSON_TALISMAN(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  BAT_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   BAT_RING(Material.PLAYER_HEAD, Rarity.EPIC),
 
@@ -1336,6 +1344,8 @@ public enum ItemType {
 
   DOJO_YELLOW_BELT(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
+  DOLPHIN_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   DRACONIC_ARTIFACT(Material.PLAYER_HEAD, Rarity.EPIC),
 
   DRACONIC_RING(Material.PLAYER_HEAD, Rarity.RARE),
@@ -1716,6 +1726,8 @@ public enum ItemType {
 
   ENDERMAN_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  ENDERMITE_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   ENDER_ARTIFACT(Material.PLAYER_HEAD, Rarity.EPIC),
 
   ENDER_BOW(Material.BOW, Rarity.RARE),
@@ -2022,6 +2034,8 @@ public enum ItemType {
 
   FLYFISH_SILVER(Material.PAPER, Rarity.UNCOMMON),
 
+  FLYING_FISH_PET(Material.PLAYER_HEAD, Rarity.RARE),
+
   FLY_CATCHER(Material.COBWEB, Rarity.COMMON),
 
   FLY_SWATTER(Material.PAPER, Rarity.EPIC),
@@ -2045,6 +2059,8 @@ public enum ItemType {
   FRIED_FROZEN_CHICKEN(Material.PLAYER_HEAD, Rarity.EPIC),
 
   FROG_MASK(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  FROG_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   FROZEN_BAIT(Material.PLAYER_HEAD, Rarity.RARE),
 
@@ -2128,6 +2144,8 @@ public enum ItemType {
 
   GLACITE_AMALGAMATION(Material.PAPER, Rarity.EPIC),
 
+  GLACITE_GOLEM_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   GLACITE_JEWEL(Material.PLAYER_HEAD, Rarity.RARE),
 
   GLASS(Material.GLASS, Rarity.COMMON),
@@ -2159,6 +2177,8 @@ public enum ItemType {
   GLOWY_CHUM_BAIT(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   GOBLIN_EGG(Material.EGG, Rarity.RARE),
+
+  GOBLIN_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   GOD_POTION(Material.PLAYER_HEAD, Rarity.SPECIAL),
 
@@ -2423,6 +2443,8 @@ public enum ItemType {
   HEPHAESTUS_SOUVENIR(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   HEPHAESTUS_URN(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
+  HERMIT_CRAB_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   HERRING_THE_FISH(Material.COD, Rarity.SPECIAL),
 
@@ -2721,6 +2743,8 @@ public enum ItemType {
   JACOBS_TICKET(Material.PAPER, Rarity.UNCOMMON),
 
   JACOBUS_REGISTER(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
+  JADE_DRAGON_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   JALAPENO_BOOK(Material.KNOWLEDGE_BOOK, Rarity.EPIC),
 
@@ -3268,6 +3292,8 @@ public enum ItemType {
 
   MEDIUM_NETHER_SACK(Material.PLAYER_HEAD, Rarity.RARE),
 
+  MEGALODON_PET(Material.PLAYER_HEAD, Rarity.EPIC),
+
   MELODY_SHOES(Material.LEATHER_BOOTS, Rarity.COMMON),
 
   MELON_BLOCK(Material.MELON, Rarity.COMMON),
@@ -3352,6 +3378,8 @@ public enum ItemType {
 
   MITHRIL_GAUNTLET(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
+  MITHRIL_GOLEM_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   MITHRIL_INFUSION(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   MITHRIL_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
@@ -3369,6 +3397,8 @@ public enum ItemType {
   MOLDFIN_SILVER(Material.PAPER, Rarity.EPIC),
 
   MOLE_HAT(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  MOLE_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   MOLTEN_BELT(Material.PAPER, Rarity.EPIC),
 
@@ -3606,6 +3636,8 @@ public enum ItemType {
 
   OBSIDIAN_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  OCELOT_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   ODGERS_BRONZE_TOOTH(Material.PLAYER_HEAD, Rarity.COMMON),
 
   ODGERS_DIAMOND_TOOTH(Material.PLAYER_HEAD, Rarity.EPIC),
@@ -3701,6 +3733,8 @@ public enum ItemType {
   PARROT_MASK(Material.PLAYER_HEAD, Rarity.RARE),
 
   PARTY_GIFT(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
+  PENGUIN_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   PEONY(Material.PEONY, Rarity.COMMON),
 
@@ -4206,6 +4240,8 @@ public enum ItemType {
 
   ROCK_PAPER_SHEARS(Material.SHEARS, Rarity.UNCOMMON),
 
+  ROCK_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   ROD_OF_THE_SEA(Material.FISHING_ROD, Rarity.LEGENDARY),
 
   ROGUE_SWORD(Material.GOLDEN_SWORD, Rarity.COMMON),
@@ -4300,6 +4336,8 @@ public enum ItemType {
 
   SCARLETON_PREMIUM(Material.PLAYER_HEAD, Rarity.RARE),
 
+  SCATHA_PET(Material.PLAYER_HEAD, Rarity.RARE),
+
   SCAVENGER_ARTIFACT(Material.PLAYER_HEAD, Rarity.RARE),
 
   SCAVENGER_RING(Material.PLAYER_HEAD, Rarity.UNCOMMON),
@@ -4329,6 +4367,8 @@ public enum ItemType {
   SCYTHE_BLADE(Material.DIAMOND, Rarity.LEGENDARY),
 
   SEAL_OF_THE_FAMILY(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  SEAL_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   SEAL_RING(Material.PLAYER_HEAD, Rarity.RARE),
 
@@ -4796,6 +4836,8 @@ public enum ItemType {
 
   SILK_EDGE_SWORD(Material.GOLDEN_SWORD, Rarity.LEGENDARY),
 
+  SILVERFISH_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   SILVERTWIST_KARAMBIT(Material.IRON_SWORD, Rarity.EPIC),
 
   SILVER_FANG(Material.GHAST_TEAR, Rarity.UNCOMMON),
@@ -4847,6 +4889,8 @@ public enum ItemType {
   SLIME_BOW(Material.BOW, Rarity.EPIC),
 
   SLIME_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  SLOTH_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   SLOWNESS_SPLASH_POTION(Material.SPLASH_POTION, Rarity.COMMON),
 
@@ -5068,6 +5112,8 @@ public enum ItemType {
 
   SPIKED_BAIT(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  SPINOSAURUS_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   SPIRIT_BONE(Material.PAPER, Rarity.EPIC),
 
   SPIRIT_LEAP(Material.ENDER_PEARL, Rarity.RARE),
@@ -5149,6 +5195,8 @@ public enum ItemType {
   SQUASH_RING(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   SQUID_BOOTS(Material.LEATHER_BOOTS, Rarity.UNCOMMON),
+
+  SQUID_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   SQUIRE_BOOTS(Material.LEATHER_BOOTS, Rarity.UNCOMMON),
 
@@ -5769,6 +5817,8 @@ public enum ItemType {
   WITHER_ROSE(Material.WITHER_ROSE, Rarity.COMMON),
 
   WITHER_SHIELD_SCROLL(Material.WRITABLE_BOOK, Rarity.LEGENDARY),
+
+  WITHER_SKELETON_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   WITHER_SOUL(Material.PAPER, Rarity.UNCOMMON),
 

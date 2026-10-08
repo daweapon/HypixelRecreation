@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.item.handlers.pet.definition;
 
 import net.swofty.commons.ServerType;
 import net.swofty.type.generic.HypixelConst;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.registry.PetAbilityRegistry;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -61,6 +62,7 @@ public final class PetConditions {
     }
 
     private static Predicate<SkyBlockPlayer> named(List<String> ids, String where) {
+        PetAbilityRegistry.ids();
         List<String> upper = ids.stream().map(String::toUpperCase).toList();
         for (String id : upper) {
             if (!NAMED.containsKey(id)) throw new IllegalArgumentException(where + ": unknown named condition '" + id + "'");
