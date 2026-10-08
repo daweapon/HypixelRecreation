@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.staff;
 
+import net.swofty.type.skyblockgeneric.crimson.dojo.DojoProgress;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
 import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
@@ -147,6 +148,7 @@ public final class MaxStickService {
         IceEssenceShop.maxAvailable(player);
         ChickenRaceProgress.maxOut(player);
         CrimsonReputationService.maxOut(player);
+        DojoProgress.maxOut(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have
         // granted its own SkyBlock XP causes first or the top-up would overshoot.
         maxSkyBlockLevel(player);
