@@ -1,0 +1,647 @@
+items:
+  - id: SMALL_HONEY_DIPPER
+    material: paper
+    name: "Small Honey Dipper"
+    rarity: UNCOMMON
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
+      - "<f>Common <7>to <a>Uncommon."
+  - id: MEDIUM_HONEY_DIPPER
+    material: paper
+    name: "Medium Honey Dipper"
+    rarity: RARE
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
+      - "<a>Uncommon <7>to <9>Rare."
+  - id: LARGE_HONEY_DIPPER
+    material: paper
+    name: "Large Honey Dipper"
+    rarity: EPIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
+      - "<9>Rare <7>to <5>Epic."
+  - id: GIANT_HONEY_DIPPER
+    material: paper
+    name: "Giant Honey Dipper"
+    rarity: LEGENDARY
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
+      - "<5>Epic <7>to <6>Legendary."
+  - id: SMALL_FROG_TREAT
+    material: player_head
+    name: "Small Frog Treat"
+    rarity: UNCOMMON
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Frog Pets"
+      - "<7>from <f>Common <7>to <a>Uncommon."
+    components:
+      - id: SKULL_HEAD
+        texture: efd8881d02fe9cee859ac597731b2df46bee6d52c446205f9da9dfa7bd111694
+  - id: MEDIUM_FROG_TREAT
+    material: player_head
+    name: "Medium Frog Treat"
+    rarity: RARE
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Frog Pets"
+      - "<7>from <a>Uncommon <7>to <9>Rare."
+    components:
+      - id: SKULL_HEAD
+        texture: c245036782c6a7e25ff84c5087a65966d650c033ba37e00965e8b99021b3ecae
+  - id: LARGE_FROG_TREAT
+    material: player_head
+    name: "Large Frog Treat"
+    rarity: EPIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Frog Pets"
+      - "<7>from <9>Rare <7>to <5>Epic."
+    components:
+      - id: SKULL_HEAD
+        texture: e1f27337d1e1a97b67bf33d4517ce0c21de82b70e3bfd45a22201a4d056b600c
+  - id: GIANT_FROG_TREAT
+    material: player_head
+    name: "Giant Frog Treat"
+    rarity: LEGENDARY
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Frog Pets"
+      - "<7>from <5>Epic <7>to <6>Legendary."
+    components:
+      - id: SKULL_HEAD
+        texture: 38e3d6aa9880b5ba632e3c2f4766c3071936073a75dcedd445ae7aa572a5098e
+  - id: SMALL_PIG_EAR
+    material: player_head
+    name: "Small Pig's Ear"
+    rarity: UNCOMMON
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Pig Pets <7>from"
+      - "<f>Common <7>to <a>Uncommon."
+    components:
+      - id: SKULL_HEAD
+        texture: 59c17e8058a95266400e44dd391eccee1ee1677826fab7454cee1f1e71d3361a
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: MEDIUM_PIG_EAR
+    material: player_head
+    name: "Medium Pig's Ear"
+    rarity: RARE
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Pig Pets <7>from"
+      - "<a>Uncommon <7>to <9>Rare."
+    components:
+      - id: SKULL_HEAD
+        texture: 450e95998b88450c0f786c96c486626dd3486bfdd4ae0753e445a5ddbd514413
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: LARGE_PIG_EAR
+    material: player_head
+    name: "Large Pig's Ear"
+    rarity: EPIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Pig Pets <7>from"
+      - "<9>Rare <7>to <5>Epic."
+    components:
+      - id: SKULL_HEAD
+        texture: ad195baa69706cd84b9ede78c4855811f68e562fec59c617bd169c497a7cb026
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: GIANT_PIG_EAR
+    material: player_head
+    name: "Giant Pig's Ear"
+    rarity: LEGENDARY
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Pig Pets <7>from"
+      - "<5>Epic <7>to <6>Legendary."
+    components:
+      - id: SKULL_HEAD
+        texture: 7ae8dde28a9870bd1a138fd77116eef459e96ab325c30f592e4bb7415210f80
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: SMALL_SEAL_PLUSHIE
+    material: player_head
+    name: "Small Seal Plushie"
+    rarity: UNCOMMON
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Seal Pets"
+      - "<7>from <f>Common <7>to <a>Uncommon."
+    components:
+      - id: SKULL_HEAD
+        texture: ed5623bf7f4f5ae09669adbe9e40f65e46562ce9f0877871df217b156c532b3b
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: MEDIUM_SEAL_PLUSHIE
+    material: player_head
+    name: "Medium Seal Plushie"
+    rarity: RARE
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Seal Pets"
+      - "<7>from <a>Uncommon <7>to <9>Rare."
+    components:
+      - id: SKULL_HEAD
+        texture: a125b4dbf4f7f94966c90f6ea23f3507f94c151ccc6a07fb78d3c4f2c52ec181
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: LARGE_SEAL_PLUSHIE
+    material: player_head
+    name: "Large Seal Plushie"
+    rarity: EPIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Seal Pets"
+      - "<7>from <9>Rare <7>to <5>Epic."
+    components:
+      - id: SKULL_HEAD
+        texture: e751037fdf1847bde32a7a28ea24c1948ec61a163b2efd3772c506a9d671ec87
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: GIANT_SEAL_PLUSHIE
+    material: player_head
+    name: "Giant Seal Plushie"
+    rarity: LEGENDARY
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Seal Pets"
+      - "<7>from <5>Epic <7>to <6>Legendary."
+    components:
+      - id: SKULL_HEAD
+        texture: ae79abf1b52e47072fe5848473ee1399fe32487879c2da3b1f5cbe07693ad54b
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: SMALL_SLOTH_CLAW
+    material: paper
+    name: "Small Sloth Claw"
+    rarity: UNCOMMON
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Sloth Pets"
+      - "<7>from <f>Common <7>to <a>Uncommon."
+    components:
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: MEDIUM_SLOTH_CLAW
+    material: paper
+    name: "Medium Sloth Claw"
+    rarity: RARE
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Sloth Pets"
+      - "<7>from <a>Uncommon <7>to <9>Rare."
+    components:
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: LARGE_SLOTH_CLAW
+    material: paper
+    name: "Large Sloth Claw"
+    rarity: EPIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Sloth Pets"
+      - "<7>from <9>Rare <7>to <5>Epic."
+    components:
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: GIANT_SLOTH_CLAW
+    material: paper
+    name: "Giant Sloth Claw"
+    rarity: LEGENDARY
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Sloth Pets"
+      - "<7>from <5>Epic <7>to <6>Legendary."
+    components:
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: SMALL_WITCH_CAULDRON
+    material: player_head
+    name: "Small Witch Cauldron"
+    rarity: UNCOMMON
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Witch Pets"
+      - "<7>from <f>Common <7>to <a>Uncommon."
+    components:
+      - id: SKULL_HEAD
+        texture: 31da7cc1ed1db65505ffc7e2acba5324957bdf8b17c59fffaa848d698b73ec79
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: MEDIUM_WITCH_CAULDRON
+    material: player_head
+    name: "Medium Witch Cauldron"
+    rarity: RARE
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Witch Pets"
+      - "<7>from <a>Uncommon <7>to <9>Rare."
+    components:
+      - id: SKULL_HEAD
+        texture: 1d8fabf9d1e9521fc93ddc6ddace8c0a5d771960415c607596e209f34724113a
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: LARGE_WITCH_CAULDRON
+    material: player_head
+    name: "Large Witch Cauldron"
+    rarity: EPIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Witch Pets"
+      - "<7>from <9>Rare <7>to <5>Epic."
+    components:
+      - id: SKULL_HEAD
+        texture: a8802ceb500e907fc79594f180486a0d9b5904e25ca789f353a883fb15b4414
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: GIANT_WITCH_CAULDRON
+    material: player_head
+    name: "Giant Witch Cauldron"
+    rarity: LEGENDARY
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Witch Pets"
+      - "<7>from <5>Epic <7>to <6>Legendary."
+    components:
+      - id: SKULL_HEAD
+        texture: b27692e379ab129982c6a6d7f5434c400bc58ecb8e2504735c6157419009ba60
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: EERIE_TREAT
+    material: player_head
+    name: "Eerie Treat"
+    rarity: RARE
+    lore:
+      - "<7>Obtained during the <e>2023 <5>Alchemist"
+      - "<7>experiments!"
+      - ""
+      - "<7>Turns your <f><l>COMMON <7>Eerie Pet into"
+      - "<7>its <9><l>RARE <7>version."
+      - "<8>(Not active yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: e1bddfe9b2bd0f487d2f37c940d4a50e1726abc3273af47a702855540255e132
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: EERIE_TOY
+    material: player_head
+    name: "Eerie Toy"
+    rarity: EPIC
+    lore:
+      - "<7>Obtained during the <e>2023 <5>Alchemist"
+      - "<7>experiments!"
+      - ""
+      - "<7>Turns your <9><l>RARE <7>Eerie Pet into its"
+      - "<6><l>LEGENDARY <7>version."
+      - "<8>(Not active yet)"
+    components:
+      - id: SKULL_HEAD
+        texture: 5b2b755e01ff7229c02ab21f82b5252e809b8b8178ad7980c886cde5e555e58a
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: EXTRA_RARITY
+        display: "PET ITEM"
+  - id: ROYAL_JELLY
+    material: player_head
+    name: "Royal Jelly"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>to"
+      - "<d>Mythic <7>rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: f9c80e32c56a04139d050752414ccbf5b092f3811a6cdfd66f95e4263c1cb3fd
+  - id: BLACK_WOOLEN_YARN
+    material: black_wool
+    name: "Black Woolen Yarn"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Black Cat Pets"
+      - "<7>to <d>Mythic <7>rarity."
+  - id: TRUNK_POLISH
+    material: player_head
+    name: "Trunk Polish"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Elephant Pets"
+      - "<7>to <d>Mythic <7>rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: 7ff7dd2bdf418b40336da1ecbd9315b58b20627a94aee69adaf01f5d4eac80d9
+  - id: POCKET_SIZED_IGLOO
+    material: player_head
+    name: "Pocket-sized Igloo"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Baby Yeti Pets"
+      - "<7>to <d>Mythic <7>rarity."
+      - ""
+      - "<8><o>Though far too small to be habitable,"
+      - "<8><o>it reminds a certain creature of"
+      - "<8><o>home."
+    components:
+      - id: SKULL_HEAD
+        texture: 66961549079708f6debbbd380a947b1ec32a3c836b0bec93b145497366f09f22
+  - id: FROZEN_SCUTE
+    material: player_head
+    name: "Frozen Scute"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Armadillo Pets"
+      - "<7>to <d>Mythic <7>rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: 3fd163fb127bc2fd02cb6f60c2ba03a5dc5ac8c7655f9166afbff10a53217064
+  - id: PET_ITEM_VAMPIRE_FANG
+    material: ghast_tear
+    name: "Vampire Fang"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Bat Pets <7>to"
+      - "<d>Mythic <7>rarity."
+    components:
+      - id: ENCHANTED
+  - id: ENDERMAN_CORTEX_REWRITER
+    material: player_head
+    name: "Enderman Cortex Rewriter"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Enderman"
+      - "<e>Pets <7>to <d>Mythic <7>rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: eb07594e2df273921a77c101d0bfdfa1115abed5b9b2029eb496ceba9bdbb4b3
+  - id: MIXED_MITE_GEL
+    material: orange_dye
+    name: "Mixed Mite Gel"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Endermite"
+      - "<e>Pets <7>to <d>Mythic <7>rarity."
+      - ""
+      - "<8><o>Powerful substance combined from"
+      - "<8><o>the plasma membrane of many"
+      - "<8><o>Endermites."
+    components:
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "AAA"
+              - " A "
+            ingredients:
+              A:
+                type: MITE_GEL
+                amount: 32
+            result:
+              type: MIXED_MITE_GEL
+              amount: 1
+  - id: BUCKET_OF_FROGSPAWN
+    material: paper
+    name: "Frogspawn Bucket"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Frog Pets"
+      - "<7>from <6>Legendary <7>to <d>Mythic."
+      - ""
+      - "<8><o>Who cares about massive frogs when"
+      - "<8><o>you can have lots of tiny ones?"
+  - id: GUARDIAN_LUCKY_BLOCK
+    material: player_head
+    name: "Guardian Lucky Block"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Guardian Pets"
+      - "<7>to <d>Mythic <7>rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: 46ef21c8575a306999142b0814f163cb403ec0fa51beca81dd074b02dfe266af
+  - id: PET_ITEM_PURE_MITHRIL_GEM
+    material: player_head
+    name: "Pure Mithril Gem"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Mithril Golem"
+      - "<e>Pets <7>to <d>Mythic <7>rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: bdb7fc2b69bcd429abfd1ceb1aea10cebf1749a80680c63cd8b60f3a4c7e4ffd
+  - id: PET_ITEM_CHOCOLATE_SYRINGE
+    material: player_head
+    name: "Chocolate Syringe"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Rabbit Pets <7>to"
+      - "<d>Mythic <7>rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: 7dcb67a72c01f3ca75da846f957ffed6417f0c45ad814fb3e340c317cf316718
+  - id: RAT_JETPACK
+    material: player_head
+    name: "Rat Jetpack"
+    rarity: MYTHIC
+    lore:
+      - "<7>Use at <b>Kat <7>to upgrade <e>Rat Pets <7>to"
+      - "<d>Mythic <7>rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: 250de7097d939e447ca2d398441cba1d2a5e1a69052ac99c19ff20ad5a3f01ab
+  - id: FAKE_NEUROSCIENCE_DEGREE
+    material: player_head
+    name: "Fake Neuroscience Degree"
+    rarity: RARE
+    lore:
+      - "<7>Use at (the real) Kat to upgrade a"
+      - "<7>Spider or Tarantula pet to <d>Mythic"
+      - "<7>rarity."
+      - ""
+      - "<8>With this fake diploma you can"
+      - "<8>somehow talk spiders into uh..."
+      - "<8>upgrading their rarity."
+    components:
+      - id: SKULL_HEAD
+        texture: d7783282e171362cd36e43dfe7b1b0d6c6e9da42cb5533d292a9579a64457095
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: PET_ITEM_TIER_BOOST_DROP
+    material: red_dye
+    name: "Tier Boost Core"
+    rarity: LEGENDARY
+    lore:
+      - "<7>Used to craft the Tier Boost pet item."
+  - id: PET_ITEM_EXP_SHARE_DROP
+    material: yellow_dye
+    name: "Exp Share Core"
+    rarity: EPIC
+    lore:
+      - "<7>Used to craft the Exp Share pet item."
+  - id: PET_ITEM_LUCKY_CLOVER_DROP
+    material: lime_dye
+    name: "Lucky Clover Core"
+    rarity: EPIC
+    lore:
+      - "<7>Used to craft the Lucky Clover pet"
+      - "<7>item."
+  - id: SIMPLE_CARROT_CANDY
+    material: carrot
+    name: "Simple Carrot Candy"
+    rarity: UNCOMMON
+    lore:
+      - "<a>Carrot Candy <7>gives pets boosts of <e>Pet EXP<7>!"
+      - "<7>Pets can only eat <a>10 <7>candy in their lifetime!"
+      - ""
+      - "<7>Grants <a>20,000 <e>Pet EXP<7>."
+      - ""
+      - "<e>Right-click on your summoned pet to"
+      - "<e>feed it!"
+    components:
+      - id: PET_CANDY
+        experience: 20000
+        counts_towards_cap: true
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: CARROT
+                amount: 64
+            result:
+              type: SIMPLE_CARROT_CANDY
+              amount: 1
+  - id: GREAT_CARROT_CANDY
+    material: carrot
+    name: "Great Carrot Candy"
+    rarity: RARE
+    lore:
+      - "<a>Carrot Candy <7>gives pets boosts of <e>Pet EXP<7>!"
+      - "<7>Pets can only eat <a>10 <7>candy in their lifetime!"
+      - ""
+      - "<7>Grants <a>200,000 <e>Pet EXP<7>."
+      - ""
+      - "<e>Right-click on your summoned pet to"
+      - "<e>feed it!"
+    components:
+      - id: PET_CANDY
+        experience: 200000
+        counts_towards_cap: true
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_CARROT
+                amount: 40
+              B:
+                type: SIMPLE_CARROT_CANDY
+                amount: 1
+            result:
+              type: GREAT_CARROT_CANDY
+              amount: 1
+  - id: SUPERB_CARROT_CANDY
+    material: golden_carrot
+    name: "Superb Carrot Candy"
+    rarity: EPIC
+    lore:
+      - "<a>Carrot Candy <7>gives pets boosts of <e>Pet EXP<7>!"
+      - "<7>Pets can only eat <a>10 <7>candy in their lifetime!"
+      - ""
+      - "<7>Grants <a>750,000 <e>Pet EXP<7>."
+      - ""
+      - "<e>Right-click on your summoned pet to"
+      - "<e>feed it!"
+    components:
+      - id: PET_CANDY
+        experience: 750000
+        counts_towards_cap: true
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLDEN_CARROT
+                amount: 3
+              B:
+                type: GREAT_CARROT_CANDY
+                amount: 1
+            result:
+              type: SUPERB_CARROT_CANDY
+              amount: 1
+  - id: ULTIMATE_CARROT_CANDY
+    material: golden_carrot
+    name: "Ultimate Carrot Candy"
+    rarity: LEGENDARY
+    lore:
+      - "<a>Carrot Candy <7>gives pets boosts of <e>Pet EXP<7>!"
+      - "<7>Pets can only eat <a>10 <7>candy in their lifetime!"
+      - ""
+      - "<7>Grants <a>1,500,000 <e>Pet EXP<7>."
+      - ""
+      - "<e>Right-click on your summoned pet to"
+      - "<e>feed it!"
+    components:
+      - id: PET_CANDY
+        experience: 1500000
+        counts_towards_cap: true
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: SUPERB_CARROT_CANDY
+                amount: 1
+              B:
+                type: ULTIMATE_CARROT_CANDY_UPGRADE
+                amount: 1
+            result:
+              type: ULTIMATE_CARROT_CANDY
+              amount: 10
+  - id: PET_CAKE
+    material: cake
+    name: "Pet Cake"
+    rarity: COMMON
+    lore:
+      - "<7>Feeding this to your pets gives them"
+      - "<7>a boost of <a>10,000 Exp<7>!"
+      - ""
+      - "<e>Right-click on your summoned pet to"
+      - "<e>feed it!"
+    components:
+      - id: PET_CANDY
+        experience: 10000
+        counts_towards_cap: false
+  - id: SUPER_SCRUBBER
+    material: player_head
+    name: "Super Scrubber"
+    rarity: RARE
+    lore:
+      - "<8>Consumed on use"
+      - ""
+      - "<7>Can be used to remove <a>Pet Items"
+      - "<7>from your active Pet. You will be"
+      - "<7>refunded the Pet Item."
+      - ""
+      - "<8><o>\"What is the benefit of outright"
+      - "<8><o>removing a pet item instead of"
+      - "<8><o>swapping it with another, you ask?"
+      - "<8><o>Well, uh, it...looks...nicer?\""
+      - "<8><o>- Plumber Joe"
+      - ""
+      - "<e>Right-click on your summoned pet to"
+      - "<e>remove its item!"
+    components:
+      - id: SKULL_HEAD
+        texture: 6df384b74160414958cd7ace8c8393297c258fa1e1611350c3e2e8b204876764
+      - id: INTERACTABLE
+        handler_id: SUPER_SCRUBBER

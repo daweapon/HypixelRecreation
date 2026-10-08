@@ -10,6 +10,12 @@ items:
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: 9c72c132073ec5a058218d6fbfb4a9970652ced9214d53f4f614b3902fd99a7a
         george_price: { COMMON: 25, UNCOMMON: 250, RARE: 2500, EPIC: 25000, LEGENDARY: 250000, MYTHIC: 2500000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 0, time_seconds: 60, items: { SMALL_HONEY_DIPPER: 1 } }
+          RARE: { coins: 0, time_seconds: 3600, items: { MEDIUM_HONEY_DIPPER: 1 } }
+          EPIC: { coins: 0, time_seconds: 86400, items: { LARGE_HONEY_DIPPER: 1 } }
+          LEGENDARY: { coins: 0, time_seconds: 259200, items: { GIANT_HONEY_DIPPER: 1 } }
+          MYTHIC: { coins: 10000000, time_seconds: 3600, items: { ROYAL_JELLY: 1 } }
         statistics:
           COMMON: { strength: { base: 5, per_level: 0.25 }, intelligence: { per_level: 0.5 }, speed: { per_level: 0.1 } }
           RARE: { strength: { base: 5, per_level: 0.25 }, intelligence: { per_level: 0.5 }, speed: { per_level: 0.1 }, mining_fortune: { per_level: 0.2 }, foraging_fortune: { per_level: 0.2 }, farming_fortune: { per_level: 0.2 } }
@@ -268,6 +274,7 @@ items:
           RARE: { coins: 75000, time_seconds: 72000 }
           EPIC: { coins: 900000, time_seconds: 432000 }
           LEGENDARY: { coins: 14000000, time_seconds: 864000 }
+          MYTHIC: { coins: 10000000, time_seconds: 3600, items: { TRUNK_POLISH: 1 } }
         statistics:
           COMMON: { health: { per_level: 1 }, intelligence: { per_level: 0.75 } }
           MYTHIC: { health: { per_level: 1 }, intelligence: { per_level: 0.75 }, farming_fortune: { per_level: 0.5 } }
@@ -454,6 +461,8 @@ items:
         rarities: [LEGENDARY, MYTHIC]
         skull_texture: 8282b5a9bbe2cd3223724023cd4f6ad413f5bb9e0edef81700b8afc3072d04a5
         george_price: { LEGENDARY: 5000000, MYTHIC: 10000000 }
+        kat_upgrades:
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { BLACK_WOOLEN_YARN: 1 } }
         statistics:
           LEGENDARY: { intelligence: { per_level: 1 }, speed: { per_level: 1.25 }, magic_find: { per_level: 0.15 }, pet_luck: { per_level: 0.15 } }
         abilities:

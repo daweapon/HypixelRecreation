@@ -6,56 +6,41 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
-import net.swofty.type.skyblockgeneric.shop.type.CombinedShopPrice;
-import net.swofty.type.skyblockgeneric.shop.type.ItemShopPrice;
 import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 
 import java.util.List;
 
-// Shop GUI for Bea in the Hub, selling Bee pets of various rarities for coins and coal/gold blocks.
+// Shop GUI for Bea in the Hub: a Common Bee pet and the Honey Dippers Kat uses to raise its rarity.
 public class GUIShopBea extends ShopView {
     public GUIShopBea() {
-        super("Pea", DEFAULT);
+        super("Bea", DEFAULT);
     }
 
     @Override
     public void initializeShopItems() {
-        attachBeePet(Rarity.COMMON, new CombinedShopPrice(List.of(
-                new CoinShopPrice(4999),
-                new ItemShopPrice(ItemType.COAL_BLOCK, 2),
-                new ItemShopPrice(ItemType.GOLD_BLOCK, 2)
-        )));
-        attachBeePet(Rarity.RARE, new CombinedShopPrice(List.of(
-                new CoinShopPrice(50000),
-                new ItemShopPrice(ItemType.COAL_BLOCK, 128),
-                new ItemShopPrice(ItemType.GOLD_BLOCK, 128)
-        )));
-        attachBeePet(Rarity.EPIC, new CombinedShopPrice(List.of(
-                new CoinShopPrice(200000),
-                new ItemShopPrice(ItemType.ENCHANTED_COAL_BLOCK, 1),
-                new ItemShopPrice(ItemType.ENCHANTED_GOLD_BLOCK, 1)
-        )));
-        attachBeePet(Rarity.LEGENDARY, new CombinedShopPrice(List.of(
-                new CoinShopPrice(650000),
-                new ItemShopPrice(ItemType.ENCHANTED_COAL_BLOCK, 8),
-                new ItemShopPrice(ItemType.ENCHANTED_GOLD_BLOCK, 8)
-        )));
+        attachBeePet();
+        sell(ItemType.SMALL_HONEY_DIPPER, 500);
+        sell(ItemType.MEDIUM_HONEY_DIPPER, 5_000);
+        sell(ItemType.LARGE_HONEY_DIPPER, 50_000);
+        sell(ItemType.GIANT_HONEY_DIPPER, 500_000);
     }
 
-    public void attachBeePet(Rarity rarity, CombinedShopPrice price) {
+    private void sell(ItemType item, int coins) {
+        attachItem(ShopItem.Single(new SkyBlockItem(item), 1, new CoinShopPrice(coins)));
+    }
+
+    private void attachBeePet() {
         SkyBlockItem beeItem = new SkyBlockItem(ItemType.BEE_PET);
-        beeItem.getAttributeHandler().setRarity(rarity);
-        ShopItem bee = ShopItem.Single(beeItem,
-                1,
-                price);
+        beeItem.getAttributeHandler().setRarity(Rarity.COMMON);
+        ShopItem bee = ShopItem.Single(beeItem, 1, new CoinShopPrice(50));
 
         SkyBlockItem beeDisplayItem = new SkyBlockItem(ItemType.BEE_PET);
-        beeDisplayItem.getAttributeHandler().setRarity(rarity);
+        beeDisplayItem.getAttributeHandler().setRarity(Rarity.COMMON);
         PetLevels.setLevel(beeDisplayItem, PetLevels.maxLevel(beeDisplayItem));
 
         List<Text> lore = beeDisplayItem.getLoreText();
         lore.add(Text.literal(" "));
-        lore.add(Text.of("<c>This is a preview of Lvl 100"));
+        lore.add(Text.of("<c>This is a preview of Lvl 100."));
         lore.add(Text.of("<c>New pets are lowest level!"));
 
         bee.setLore(lore);

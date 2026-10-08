@@ -3,6 +3,12 @@ items:
     material: rose_bush
     name: "Kat Bouquet"
     rarity: SPECIAL
+    lore:
+      - "<7>Give this to <b>Kat <7>the <a>Pet Sitter <7>in"
+      - "<7>order to skip <9>5 days <7>of wait time"
+      - "<7>while upgrading your pet!"
+      - ""
+      - "<e>Right-click on <b>Kat <e>to use!"
     components:
       - id: KAT
         reduced_days: 5
@@ -10,9 +16,15 @@ items:
       - id: SELLABLE
         value: 1.0
   - id: KAT_FLOWER
-    material: poppy
+    material: red_tulip
     name: "Kat Flower"
     rarity: SPECIAL
+    lore:
+      - "<7>Give this to <b>Kat <7>the <a>Pet Sitter <7>in"
+      - "<7>order to skip <9>1 day <7>of wait time while"
+      - "<7>upgrading your pet!"
+      - ""
+      - "<e>Right-click on <b>Kat <e>to use!"
     components:
       - id: KAT
         reduced_days: 1

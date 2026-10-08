@@ -13,18 +13,22 @@ public class GUIShopZog extends ShopView {
 
     @Override
     public void initializeShopItems() {
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ALL_SKILLS_EXP_BOOST), 1, new CoinShopPrice(50000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.MINING_EXP_BOOST_COMMON), 1, new CoinShopPrice(60000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.FARMING_EXP_BOOST_COMMON), 1, new CoinShopPrice(60000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.FISHING_EXP_BOOST), 1, new CoinShopPrice(60000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.COMBAT_EXP_BOOST), 1, new CoinShopPrice(60000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.FORAGING_EXP_BOOST), 1, new CoinShopPrice(60000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.MINING_EXP_BOOST_RARE), 1, new CoinShopPrice(500000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.FARMING_EXP_BOOST_RARE), 1, new CoinShopPrice(500000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.BIG_TEETH), 1, new CoinShopPrice(750000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.IRON_CLAWS), 1, new CoinShopPrice(750000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.HARDENED_SCALES), 1, new CoinShopPrice(1000000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.SHARPENED_CLAWS), 1, new CoinShopPrice(1000000)));
-        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.BUBBLEGUM), 1, new CoinShopPrice(5000000)));
+        sell(ItemType.PET_ITEM_COMBAT_SKILL_BOOST_COMMON, 60_000);
+        sell(ItemType.PET_ITEM_FORAGING_SKILL_BOOST_COMMON, 60_000);
+        sell(ItemType.PET_ITEM_MINING_SKILL_BOOST_COMMON, 60_000);
+        sell(ItemType.PET_ITEM_MINING_SKILL_BOOST_UNCOMMON, 250_000);
+        sell(ItemType.PET_ITEM_FARMING_SKILL_BOOST_COMMON, 60_000);
+        sell(ItemType.PET_ITEM_FARMING_SKILL_BOOST_RARE, 500_000);
+        sell(ItemType.PET_ITEM_FISHING_SKILL_BOOST_COMMON, 60_000);
+        sell(ItemType.PET_ITEM_ALL_SKILLS_BOOST_COMMON, 50_000);
+        sell(ItemType.PET_ITEM_BIG_TEETH_COMMON, 750_000);
+        sell(ItemType.PET_ITEM_IRON_CLAWS_COMMON, 750_000);
+        sell(ItemType.PET_ITEM_HARDENED_SCALES_UNCOMMON, 1_000_000);
+        sell(ItemType.PET_ITEM_SHARPENED_CLAWS_UNCOMMON, 1_000_000);
+        sell(ItemType.PET_ITEM_BUBBLEGUM, 5_000_000);
+    }
+
+    private void sell(ItemType item, int coins) {
+        attachItem(ShopItem.Single(new SkyBlockItem(item), 1, new CoinShopPrice(coins)));
     }
 }

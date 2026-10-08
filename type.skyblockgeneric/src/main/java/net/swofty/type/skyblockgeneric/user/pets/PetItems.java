@@ -7,6 +7,8 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.components.PetItemComponent;
+import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
+import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -62,6 +64,37 @@ public final class PetItems {
         String itemName = "<color:" + petItem.getAttributeHandler().getRarity().getColor().asHexString() + ">"
                 + petItem.getDisplayName();
         player.sendMessage("<a>Your " + petName + " <a>is now holding " + itemName + "<a>.");
+    }
+
+    public static void registerInteractables() {
+        InteractableRegistry.register("SUPER_SCRUBBER", InteractableItemConfig.builder()
+                .rightClickHandler(PetItems::scrub).build());
+    }
+
+    public static void scrub(SkyBlockPlayer player, SkyBlockItem scrubber) {
+        SkyBlockItem pet = player.getPetData().getEnabledPet();
+        if (pet == null) {
+            player.sendMessage("<c>You need to have a pet summoned to remove its Pet Item!");
+            return;
+        }
+        ItemType held = pet.getAttributeHandler().getPetHeldItem();
+        if (held == null) {
+            player.sendMessage("<c>Your pet isn't holding a Pet Item!");
+            return;
+        }
+        long fee = swapFee(new SkyBlockItem(held).getAttributeHandler().getRarity());
+        if (player.getCoins() < fee) {
+            player.sendMessage("<c>You need <6>" + String.format("%,d", fee) + " Coins <c>to remove your pet's item!");
+            return;
+        }
+        player.removeCoins(fee);
+        Rarity before = pet.getAttributeHandler().getRarity();
+        hold(pet, null);
+        player.setItemInHand(scrubber.getAmount() > 1 ? withAmount(scrubber, scrubber.getAmount() - 1) : null);
+        player.addAndUpdateItem(new SkyBlockItem(held));
+        player.getPetData().refreshCachedAbilities();
+        if (pet.getAttributeHandler().getRarity() != before) player.getPetData().updatePetEntityImpl(player);
+        player.sendMessage("<a>You removed your pet's " + new SkyBlockItem(held).getDisplayName() + "<a>!");
     }
 
     public static @Nullable String problem(SkyBlockItem pet, ItemType given, PetItemComponent component,
