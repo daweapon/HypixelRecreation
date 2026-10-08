@@ -118,7 +118,7 @@ public final class SlayerService {
         }
 
         SlayerDefinition definition = SlayerRegistry.get(quest.type());
-        if (definition == null || !definition.accepts(mob.getMobTypes())) {
+        if (definition == null || !definition.accepts(mob)) {
             return;
         }
 
@@ -137,6 +137,7 @@ public final class SlayerService {
                 player.sendMessage("<7>Kill <c>{}<7> to complete your quest.", tierDefinition.displayName(quest.type()));
             }
         } else {
+            progressedQuest = SlayerMinibossSpawner.maybeSpawn(player, definition, progressedQuest, tierDefinition, mob.getPosition());
             int remaining = tierDefinition.requiredCombatXp() - progressedQuest.combatXp();
             player.sendMessage("<5>Slayer Quest <7>{}<8>/<7>{} Combat XP <8>(<e>{} left<8>)",
                 progressedQuest.combatXp(), tierDefinition.requiredCombatXp(), remaining);
@@ -170,7 +171,12 @@ public final class SlayerService {
         }
 
         DatapointSlayer.SlayerProgress progress = data.progress(quest.type());
+        int previousLevel = definition.levelForXp(progress.getXp());
         int slayerXp = slayerXpReward(tierDefinition);
+        if (definition.hasDropTable()) {
+            SlayerDropTable.award(player, bossMob, definition, quest.tier(), previousLevel, progress);
+        }
+        SlayerRngMeter.addXp(progress, quest.tier(), slayerXp);
         progress.setXp(progress.getXp() + slayerXp);
         progress.addCompletion(quest.tier());
         data.setActiveQuest(null);
@@ -181,6 +187,10 @@ public final class SlayerService {
         player.sendMessage("<7>You gained <d>{} {} Slayer XP<7>.", slayerXp, quest.type().categoryName());
         player.sendMessage("<7>{} Slayer Level: <e>{} <8>(<d>{} XP<8>)",
             quest.type().categoryName(), level, progress.getXp());
+        for (int reached = previousLevel + 1; reached <= level; reached++) {
+            player.sendMessage("<5><l>LVL UP!</l> <7>{} Slayer LVL <e>{}<7>!", quest.type().categoryName(), reached);
+        }
+        SlayerProgression.sync(player);
     }
 
     public static int questCost(SkyBlockPlayer player, SlayerTierDefinition tierDefinition) {
@@ -216,7 +226,7 @@ public final class SlayerService {
         SlayerBossProfile profile = new SlayerBossProfile(
             definition.type(),
             tierDefinition,
-            definition.targetMobTypes(),
+            definition.bossMobTypes(),
             definition.type().entityType()
         );
         SlayerBossMob mob = SlayerBossMob.create(player.getUuid(), profile);

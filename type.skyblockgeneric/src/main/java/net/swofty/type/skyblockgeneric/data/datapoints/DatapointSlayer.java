@@ -15,8 +15,8 @@ import net.swofty.type.skyblockgeneric.slayer.SlayerType;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-// Persists a player's slayer progress (XP and tier completions per slayer type) and their
-// currently active slayer quest, if any.
+// Persists a player's slayer progress (XP, tier completions and RNG meter per slayer type) and
+// their currently active slayer quest, if any.
 public class DatapointSlayer extends SkyBlockDatapoint<DatapointSlayer.SlayerData> {
     private static final Serializer<SlayerData> serializer = new Serializer<>() {
         @Override
@@ -29,6 +29,8 @@ public class DatapointSlayer extends SkyBlockDatapoint<DatapointSlayer.SlayerDat
                 JSONObject completions = new JSONObject();
                 progress.getCompletions().forEach((tier, amount) -> completions.put(tier.name(), amount));
                 entry.put("completions", completions);
+                if (progress.getRngItem() != null) entry.put("rngItem", progress.getRngItem());
+                if (progress.getRngXp() > 0) entry.put("rngXp", progress.getRngXp());
                 progressObject.put(type.name(), entry);
             });
             object.put("progress", progressObject);
@@ -41,6 +43,8 @@ public class DatapointSlayer extends SkyBlockDatapoint<DatapointSlayer.SlayerDat
                 questObject.put("startedAt", quest.startedAt());
                 questObject.put("combatXp", quest.combatXp());
                 questObject.put("bossSpawned", quest.bossSpawned());
+                questObject.put("lastMinibossXp", quest.lastMinibossXp());
+                questObject.put("lastMinibossAt", quest.lastMinibossAt());
                 if (quest.bossUuid() != null) {
                     questObject.put("bossUuid", quest.bossUuid().toString());
                 }
@@ -65,6 +69,8 @@ public class DatapointSlayer extends SkyBlockDatapoint<DatapointSlayer.SlayerDat
                     JSONObject entry = progressObject.getJSONObject(typeId);
                     SlayerProgress progress = new SlayerProgress();
                     progress.setXp(entry.optInt("xp", 0));
+                    progress.setRngItem(entry.has("rngItem") ? entry.getString("rngItem") : null);
+                    progress.setRngXp(entry.optLong("rngXp", 0L));
                     JSONObject completions = entry.optJSONObject("completions");
                     if (completions != null) {
                         for (String tierId : completions.keySet()) {
@@ -83,7 +89,9 @@ public class DatapointSlayer extends SkyBlockDatapoint<DatapointSlayer.SlayerDat
                     questObject.optLong("startedAt", System.currentTimeMillis()),
                     questObject.optInt("combatXp", 0),
                     questObject.optBoolean("bossSpawned", false),
-                    questObject.has("bossUuid") ? UUID.fromString(questObject.getString("bossUuid")) : null
+                    questObject.has("bossUuid") ? UUID.fromString(questObject.getString("bossUuid")) : null,
+                    questObject.optInt("lastMinibossXp", 0),
+                    questObject.optLong("lastMinibossAt", 0L)
                 ));
             }
             return data;
@@ -93,7 +101,8 @@ public class DatapointSlayer extends SkyBlockDatapoint<DatapointSlayer.SlayerDat
         public SlayerData clone(SlayerData value) {
             SlayerData clone = new SlayerData();
             value.getProgress().forEach((type, progress) -> {
-                SlayerProgress copied = new SlayerProgress(progress.getXp(), new EnumMap<>(progress.getCompletions()));
+                SlayerProgress copied = new SlayerProgress(progress.getXp(), new EnumMap<>(progress.getCompletions()),
+                    progress.getRngItem(), progress.getRngXp());
                 clone.getProgress().put(type, copied);
             });
             clone.setActiveQuest(value.getActiveQuest());
@@ -129,6 +138,8 @@ public class DatapointSlayer extends SkyBlockDatapoint<DatapointSlayer.SlayerDat
     public static class SlayerProgress {
         private int xp;
         private Map<SlayerTier, Integer> completions = new EnumMap<>(SlayerTier.class);
+        private @Nullable String rngItem;
+        private long rngXp;
 
         public int completions(SlayerTier tier) {
             return completions.getOrDefault(tier, 0);

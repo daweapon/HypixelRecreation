@@ -107,6 +107,7 @@ public class ItemConfigParser {
 						String category = switch (type) {
 							case SKILL -> requirement.getString("skill", "");
 							case DUNGEON_SKILL, DUNGEON_TIER -> requirement.getString("dungeon", "CATACOMBS");
+							case SLAYER -> requirement.getString("slayer", "");
 							case PENDING -> "";
 						};
 						int level = type == ItemRequirementsComponent.Type.DUNGEON_TIER

@@ -548,6 +548,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
                 recipes.forEach(SkyBlockRecipe::init);
             });
         });
+        net.swofty.type.skyblockgeneric.slayer.SlayerRecipeGates.install();
 
         /**
          * Cache custom collections

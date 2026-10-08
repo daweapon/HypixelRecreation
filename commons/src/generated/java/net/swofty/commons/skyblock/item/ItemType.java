@@ -84,6 +84,8 @@ public enum ItemType {
 
   ALCHEMISTS_STAFF(Material.POPPY, Rarity.RARE),
 
+  ALERT_FLARE(Material.FIREWORK_ROCKET, Rarity.RARE),
+
   ALLIGATOR_SKIN(Material.GREEN_DYE, Rarity.EPIC),
 
   ALLIUM(Material.ALLIUM, Rarity.COMMON),
@@ -123,6 +125,8 @@ public enum ItemType {
   ANITA_RING(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   ANITA_TALISMAN(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  ANNIHILATION_CLOAK(Material.PAPER, Rarity.LEGENDARY),
 
   ANTIQUE_REMEDIES(Material.AZURE_BLUET, Rarity.EPIC),
 
@@ -415,6 +419,8 @@ public enum ItemType {
   BLADE_OF_THE_VOLCANO(Material.IRON_SWORD, Rarity.RARE),
 
   BLAST_O_LANTERN(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
+  BLAZETEKK_HAM_RADIO(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   BLAZE_ASHES(Material.PAPER, Rarity.UNCOMMON),
 
@@ -1218,7 +1224,11 @@ public enum ItemType {
 
   DELIRIUM_NECKLACE(Material.PAPER, Rarity.EPIC),
 
+  DEMONLORD_GAUNTLET(Material.PAPER, Rarity.EPIC),
+
   DERELICT_ASHE(Material.GUNPOWDER, Rarity.UNCOMMON),
+
+  DESTRUCTION_CLOAK(Material.PAPER, Rarity.EPIC),
 
   DETECTOR_RAIL(Material.DETECTOR_RAIL, Rarity.COMMON),
 
@@ -1335,6 +1345,8 @@ public enum ItemType {
   DYE_CARMINE(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   DYE_CYCLAMEN(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
+  DYE_FLAME(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   DYE_HOLLY(Material.PLAYER_HEAD, Rarity.EPIC),
 
@@ -1797,6 +1809,8 @@ public enum ItemType {
   FIERY_AURORA_HELMET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   FIERY_AURORA_LEGGINGS(Material.LEATHER_LEGGINGS, Rarity.LEGENDARY),
+
+  FIERY_BURST_RUNE(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   FIERY_CRIMSON_BOOTS(Material.LEATHER_BOOTS, Rarity.LEGENDARY),
 
@@ -2476,6 +2490,8 @@ public enum ItemType {
 
   HURRICANE_BOW(Material.BOW, Rarity.EPIC),
 
+  HYPERGOLIC_IONIZED_CERAMICS(Material.PLAYER_HEAD, Rarity.EPIC),
+
   HYPERION(Material.IRON_SWORD, Rarity.LEGENDARY),
 
   HYPER_CATALYST(Material.END_STONE, Rarity.EPIC),
@@ -2548,9 +2564,13 @@ public enum ItemType {
 
   INFERNAL_TERROR_LEGGINGS(Material.LEATHER_LEGGINGS, Rarity.LEGENDARY),
 
+  INFERNO_APEX(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   INFERNO_FUEL_BLOCK(Material.PLAYER_HEAD, Rarity.RARE),
 
   INFERNO_ROD(Material.FISHING_ROD, Rarity.EPIC),
+
+  INFERNO_VERTEX(Material.PLAYER_HEAD, Rarity.EPIC),
 
   INFINI_TORCH(Material.TORCH, Rarity.EPIC),
 
@@ -2853,6 +2873,8 @@ public enum ItemType {
   LARGE_WINTER_SACK(Material.PLAYER_HEAD, Rarity.RARE),
 
   LAST_BREATH(Material.BOW, Rarity.LEGENDARY),
+
+  LAVATEARS_RUNE(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   LAVA_BUCKET(Material.LAVA_BUCKET, Rarity.COMMON),
 
@@ -4182,6 +4204,8 @@ public enum ItemType {
 
   SCAVENGER_TALISMAN(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  SCORCHED_BOOKS(Material.PAPER, Rarity.MYTHIC),
+
   SCORCHED_CRAB_STICK(Material.PAPER, Rarity.RARE),
 
   SCORCHED_POWER_CRYSTAL(Material.PLAYER_HEAD, Rarity.LEGENDARY),
@@ -4808,6 +4832,8 @@ public enum ItemType {
 
   SORROW(Material.GHAST_TEAR, Rarity.RARE),
 
+  SOS_FLARE(Material.FIREWORK_ROCKET, Rarity.EPIC),
+
   SOULFLOW(Material.PLAYER_HEAD, Rarity.RARE),
 
   SOULFLOW_BATTERY(Material.PLAYER_HEAD, Rarity.RARE),
@@ -5248,6 +5274,8 @@ public enum ItemType {
 
   SYNTHETIC_HEART(Material.PLAYER_HEAD, Rarity.RARE),
 
+  TACTICAL_INSERTION(Material.BLAZE_ROD, Rarity.EPIC),
+
   TACTICIAN_MURDER_WEAPON(Material.STONE_SWORD, Rarity.RARE),
 
   TACTICIAN_SWORD(Material.WOODEN_SWORD, Rarity.RARE),
@@ -5265,6 +5293,8 @@ public enum ItemType {
   TASTY_CHEESE(Material.SPONGE, Rarity.UNCOMMON),
 
   TAURUS_HELMET(Material.PLAYER_HEAD, Rarity.RARE),
+
+  TELEPORTER_PILL(Material.PLAYER_HEAD, Rarity.RARE),
 
   TENDER_WOOD(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
@@ -5410,6 +5440,12 @@ public enum ItemType {
 
   UNSTABLE_FRAGMENT(Material.PAPER, Rarity.EPIC),
 
+  UPGRADE_STONE_FROST(Material.PLAYER_HEAD, Rarity.RARE),
+
+  UPGRADE_STONE_GLACIAL(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  UPGRADE_STONE_SUBZERO(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   VACCINE_ARTIFACT(Material.PLAYER_HEAD, Rarity.RARE),
 
   VACCINE_RING(Material.PLAYER_HEAD, Rarity.UNCOMMON),
@@ -5491,6 +5527,8 @@ public enum ItemType {
   WARDEN_HEART(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   WARDEN_HELMET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
+  WARNING_FLARE(Material.FIREWORK_ROCKET, Rarity.UNCOMMON),
 
   WARPED_BUTTON(Material.WARPED_BUTTON, Rarity.COMMON),
 
@@ -5597,6 +5635,8 @@ public enum ItemType {
   WISE_FRAGMENT(Material.PAPER, Rarity.EPIC),
 
   WISHING_COMPASS(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
+  WISP_ICE_FLAVORED_WATER(Material.SPLASH_POTION, Rarity.COMMON),
 
   WITCH_MASK(Material.PLAYER_HEAD, Rarity.EPIC),
 

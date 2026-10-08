@@ -120,3 +120,32 @@ items:
     components:
       - id: TRAVEL_SCROLL
         scroll_type: CRIMSON_ISLE_SMOLDERING_TOMB
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 4
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "MRM"
+              - "GVG"
+              - "MRM"
+            ingredients:
+              M:
+                type: MOLTEN_POWDER
+                amount: 3
+              R:
+                type: ENCHANTED_BLAZE_ROD
+                amount: 4
+              G:
+                type: GOLD_MAGMAFISH
+                amount: 2
+              V:
+                type: INFERNO_VERTEX
+                amount: 1
+            result:
+              type: SMOLDERING_CHAMBERS_TRAVEL_SCROLL
+              amount: 1

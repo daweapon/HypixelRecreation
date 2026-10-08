@@ -18,6 +18,7 @@ public final class AttackService {
     public static final int EXTRA_HIT_DELAY_TICKS = 5;
     public static final double MAX_MELEE_FEROCITY_DISTANCE = 6D;
     public static final double MAX_FEROCITY = 500D;
+    private static final ThreadLocal<Boolean> EXTRA_HIT = ThreadLocal.withInitial(() -> false);
 
     private AttackService() {
     }
@@ -70,11 +71,22 @@ public final class AttackService {
         for (int hit = 0; hit < extraHits; hit++) {
             int delay = EXTRA_HIT_DELAY_TICKS * (hit + 1);
             MinecraftServer.getSchedulerManager().scheduleTask(
-                    () -> applyHit(attacker, target, damage, critical),
+                    () -> {
+                        EXTRA_HIT.set(true);
+                        try {
+                            applyHit(attacker, target, damage, critical);
+                        } finally {
+                            EXTRA_HIT.set(false);
+                        }
+                    },
                     TaskSchedule.tick(delay),
                     TaskSchedule.stop()
             );
         }
+    }
+
+    public static boolean isExtraHit() {
+        return EXTRA_HIT.get();
     }
 
     static int calculateExtraHits(double ferocity, double chanceRoll) {

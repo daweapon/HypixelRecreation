@@ -37,6 +37,7 @@ public final class CrimsonAbilities {
     }
 
     public static void register() {
+        BlazeSlayerAbilities.register();
         AbilityRegistry.register(new RegisteredAbility(
                 "FIRE_VEIL",
                 "Fire Veil",

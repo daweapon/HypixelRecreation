@@ -63,15 +63,43 @@ public class GUISlayerBoss extends StatelessView {
 
         layout.slot(29, (s, c) -> levelRewardsItem((SkyBlockPlayer) c.player(), definition),
                 (click, c) -> c.push(new GUISlayerLevels(style)));
-        layout.slot(31, ItemStacks.item(Material.GOLD_NUGGET, """
-                <6>Boss Drops
-                <8>{}
+        if (definition.hasDropTable()) {
+            layout.slot(31, ItemStacks.item(Material.GOLD_NUGGET, """
+                    <6>Boss Drops
+                    <8>{}
 
-                <7>Usually, the boss will drop
-                <7>its main token which is used
-                <7>for slayer crafts.
+                    <7>Usually, the boss will drop
+                    <7>its main token which is used
+                    <7>for slayer crafts.
 
-                <c>Drop previews are not available yet!""", style.type().displayName()));
+                    <7>Rarer drops unlock as your
+                    <7>slayer level grows.
+
+                    <e>Click to view drops!""", style.type().displayName()),
+                    (click, c) -> c.push(new GUISlayerDrops(style)));
+        } else {
+            layout.slot(31, ItemStacks.item(Material.GOLD_NUGGET, """
+                    <6>Boss Drops
+                    <8>{}
+
+                    <7>Usually, the boss will drop
+                    <7>its main token which is used
+                    <7>for slayer crafts.
+
+                    <c>Drop previews are not available yet!""", style.type().displayName()));
+        }
+        if (definition.drops().stream().anyMatch(net.swofty.type.skyblockgeneric.slayer.SlayerDrop::hasRngMeter)) {
+            layout.slot(35, ItemStacks.item(Material.PAINTING, """
+                    <d>RNG Meter
+                    <8>{}
+
+                    <7>Fill the meter with Slayer XP
+                    <7>from Tier III+ kills to guarantee
+                    <7>a drop of your choice.
+
+                    <e>Click to open!""", style.type().displayName()),
+                    (click, c) -> c.push(new GUISlayerRngMeter(style)));
+        }
         layout.slot(33, ItemStacks.item(Material.BOOK, """
                 <a>Slayer Recipes
                 <8>{}

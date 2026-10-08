@@ -79,7 +79,7 @@ public enum SkyBlockXPSource {
     SAFARI_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 395, Availability.NOT_IN_GAME, Material.LEAD),
 
     // ----- Slaying Tasks (12,315 XP) -----
-    SLAYER_LEVEL_UP(Group.SLAYING, null, 3825, Availability.UNWIRED, Material.POTION),
+    SLAYER_LEVEL_UP(Group.SLAYING, null, 3825, Availability.LIVE, Material.POTION),
     BOSS_COLLECTIONS(Group.SLAYING, null, 1015, Availability.NOT_IN_GAME, Material.BONE_BLOCK),
     BESTIARY_PROGRESS(Group.SLAYING, null, 5655, Availability.UNWIRED, Material.WRITTEN_BOOK),
     MYTHOLOGICAL_KILLS(Group.SLAYING, null, 100, Availability.LIVE, Material.BONE_MEAL),

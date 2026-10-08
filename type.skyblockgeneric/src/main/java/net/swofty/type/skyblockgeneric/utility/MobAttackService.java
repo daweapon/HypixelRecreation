@@ -42,7 +42,7 @@ public final class MobAttackService {
                 player, (float) (damageDealt.getKey() * resistanceMultiplier * gearMultiplier(mob, player)), mob);
         SkyBlockValueEvent.callValueUpdateEvent(valueEvent);
 
-        float finalDamage = (float) valueEvent.getValue();
+        float finalDamage = net.swofty.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.burststop(player, (float) valueEvent.getValue());
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         PetEvent.DamagedByMob damageEvent = player.getPetData()
                 .dispatch(new PetEvent.DamagedByMob(player, pet, mob, finalDamage));
@@ -61,6 +61,7 @@ public final class MobAttackService {
     public static void trueStrike(SkyBlockMob mob, SkyBlockPlayer player, double damage) {
         if (damage <= 0 || player.isRemoved()) return;
         damage *= gearMultiplier(mob, player);
+        damage = net.swofty.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.burststop(player, (float) damage);
         player.damage(new EntityDamage(mob, (float) damage));
         new DamageIndicator()
                 .damage((float) damage)

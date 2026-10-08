@@ -252,6 +252,7 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, CarnivalStatistics.all(player));
         spare = ItemStatistics.add(spare, IceEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, CrimsonEssenceShop.statistics(player));
+        spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.slayer.SlayerProgression.statistics(player));
         spare = ItemStatistics.add(spare, PetScore.statistics(player));
         spare = ItemStatistics.add(spare, MythologicalItemHandlers.permanentStatistics(player));
         spare = ItemStatistics.add(spare, BottleOfJyrre.permanentStatistics(player));
