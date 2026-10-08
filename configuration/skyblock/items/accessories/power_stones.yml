@@ -1,0 +1,164 @@
+# Tooltips come from AccessoryPowerType. Magma Urchin, Scorched Books, Mandraa and Luxurious Spool live with their sources.
+items:
+  - id: ACACIA_BIRDHOUSE
+    material: paper
+    name: "Acacia Birdhouse"
+    rarity: RARE
+    components:
+      - id: POWER_STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - " A "
+              - "A A"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_ACACIA_LOG
+                amount: 64
+            result:
+              type: ACACIA_BIRDHOUSE
+              amount: 1
+  - id: BEATING_HEART
+    material: paper
+    name: "Beating Heart"
+    rarity: RARE
+    components:
+      - id: POWER_STONE
+  - id: BUBBA_BLISTER
+    material: paper
+    name: "Bubba Blister"
+    rarity: LEGENDARY
+    components:
+      - id: POWER_STONE
+  - id: CHOCOLATE_CHIP
+    material: paper
+    name: "Fang-tastic Chocolate Chip"
+    rarity: LEGENDARY
+    components:
+      - id: POWER_STONE
+  - id: DARK_ORB
+    material: paper
+    name: "Dark Orb"
+    rarity: RARE
+    components:
+      - id: POWER_STONE
+  - id: DISPLACED_LEECH
+    material: paper
+    name: "Displaced Leech"
+    rarity: UNCOMMON
+    components:
+      - id: POWER_STONE
+  - id: ECCENTRIC_PAINTING
+    material: paper
+    name: "Eccentric Painting"
+    rarity: LEGENDARY
+    components:
+      - id: POWER_STONE
+  - id: ENDER_MONOCLE
+    material: paper
+    name: "Ender Monocle"
+    rarity: RARE
+    components:
+      - id: POWER_STONE
+  - id: END_STONE_SHULKER
+    material: paper
+    name: "End Stone Shulker"
+    rarity: RARE
+    components:
+      - id: POWER_STONE
+  - id: FURBALL
+    material: paper
+    name: "Furball"
+    rarity: RARE
+    components:
+      - id: POWER_STONE
+  - id: GLACITE_SHARD
+    material: paper
+    name: "Glacite Chunk"
+    rarity: LEGENDARY
+    components:
+      - id: POWER_STONE
+  - id: HAZMAT_ENDERMAN
+    material: paper
+    name: "Hazmat Enderman"
+    rarity: LEGENDARY
+    components:
+      - id: POWER_STONE
+  - id: HORNS_OF_TORMENT
+    material: paper
+    name: "Horns of Torment"
+    rarity: EPIC
+    components:
+      - id: POWER_STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_MUTTON
+                amount: 24
+              B:
+                type: HORN_OF_TAURUS
+                amount: 32
+            result:
+              type: HORNS_OF_TORMENT
+              amount: 1
+  - id: OBSIDIAN_TABLET
+    material: paper
+    name: "Obsidian Tablet"
+    rarity: RARE
+    components:
+      - id: POWER_STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_OBSIDIAN
+                amount: 24
+              B:
+                type: SUMMONING_EYE
+                amount: 1
+            result:
+              type: OBSIDIAN_TABLET
+              amount: 1
+  - id: PRECIOUS_PEARL
+    material: paper
+    name: "Precious Pearl"
+    rarity: EPIC
+    components:
+      - id: POWER_STONE
+  - id: ROCK_CANDY
+    material: paper
+    name: "Rock Candy"
+    rarity: UNCOMMON
+    components:
+      - id: POWER_STONE
+  - id: SUNFLOWER_BUTTER
+    material: paper
+    name: "Sunflower Butter"
+    rarity: RARE
+    components:
+      - id: POWER_STONE
+  - id: VITAMIN_DEATH
+    material: paper
+    name: "Vitamin Death"
+    rarity: LEGENDARY
+    components:
+      - id: POWER_STONE

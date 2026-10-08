@@ -1,5 +1,11 @@
 package net.swofty.type.skyblockgeneric.user.statistics;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryPower;
+import net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments;
+import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowerType;
+import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowers;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryPowers;
+
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryBagXP;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
@@ -101,6 +107,7 @@ public class PlayerStatistics {
     @Getter
     private double incomingDamageReductionPercent;
     private ItemStatistics accessoryStatistics = ItemStatistics.builder().build();
+    private ItemStatistics thaumaturgyStatistics = ItemStatistics.empty();
     // Pet ability conditions may read stats (e.g. Griffin's "above 85% Health" reads max health),
     // which would recurse back into the pet's own statistics.
     private final ThreadLocal<Boolean> computingPetStatistics = ThreadLocal.withInitial(() -> false);
@@ -294,6 +301,7 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, getTemporaryStatistics());
         total = ItemStatistics.add(total, petStatistics());
         total = ItemStatistics.add(total, accessoryStatistics);
+        total = ItemStatistics.add(total, thaumaturgyStatistics);
         total = ItemStatistics.add(total, AttributeEffectService.statistics(player));
         total = ItemStatistics.add(total, ItemStatistic.getOfAllBaseValues());
 
@@ -375,7 +383,10 @@ public class PlayerStatistics {
             }
             addModifier(modifiers, item.getDisplayName() + " Effect", effects, StatisticSourceType.ACCESSORY_BAG,
                 StatisticModifierType.ABILITY_PASSIVE, item.getDisplayName(), item.getMaterial(), texture(item));
+            addModifier(modifiers, "Enrichment", Enrichments.statistics(item), StatisticSourceType.ACCESSORY_BAG,
+                StatisticModifierType.OTHER, item.getDisplayName(), item.getMaterial(), texture(item));
         }
+        addThaumaturgyModifiers(modifiers);
         modifiers.add(new StatisticModifier("Base Value", Material.NETHER_STAR, null,
             ItemStatistic.getOfAllBaseValues(), StatisticSourceType.INNATE, StatisticModifierType.INNATE, null));
         return modifiers;
@@ -459,6 +470,17 @@ public class PlayerStatistics {
             StatisticSourceType.ACCESSORY_BAG, StatisticModifierType.ABILITY_PASSIVE, null, Material.PLAYER_HEAD, null);
     }
 
+    private void addThaumaturgyModifiers(List<StatisticModifier> modifiers) {
+        DatapointAccessoryPowers.PowerData powers = AccessoryPowers.data(player);
+        int accessoryPower = AccessoryPower.of(player);
+        AccessoryPowerType selected = powers.getSelected();
+        if (selected != null) addModifier(modifiers, selected.getDisplayName() + " Power",
+                AccessoryPowers.powerStatistics(powers, accessoryPower), StatisticSourceType.THAUMATURGIST_POWER,
+                StatisticModifierType.PROGRESSION, null, selected.getIcon(), null);
+        addModifier(modifiers, "Stats Tuning", AccessoryPowers.tuningStatistics(powers, accessoryPower),
+                StatisticSourceType.TUNING, StatisticModifierType.PROGRESSION, null, Material.COMPARATOR, null);
+    }
+
     private void addTemporaryModifiers(List<StatisticModifier> modifiers) {
         synchronized (temporaryStatistics) {
             temporaryStatistics.removeIf(stat -> stat.getExpiration() < System.currentTimeMillis());
@@ -517,6 +539,7 @@ public class PlayerStatistics {
         AccessoryOwnership.invalidate(player);
         accessoryStatistics = AccessoryStats.of(player, AccessoryOwnership.active(player),
                 item -> calculateExtraItemStatisticsToAdd(item, null, null));
+        thaumaturgyStatistics = AccessoryPowers.statistics(AccessoryPowers.data(player), AccessoryPower.of(player));
         AccessoryBagXP.sync(player);
     }
 

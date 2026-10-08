@@ -603,6 +603,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: HORNS_OF_TORMENT
   - amount: 100000
     rewards:
     - type: XP

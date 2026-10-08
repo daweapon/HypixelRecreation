@@ -98,6 +98,7 @@ items:
     material: PLAYER_HEAD
     name: "Luxurious Spool"
     components:
+      - id: POWER_STONE
       - id: SELLABLE
         value: 1.0
       - id: SKULL_HEAD

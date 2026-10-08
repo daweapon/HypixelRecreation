@@ -124,7 +124,7 @@ public enum SkyBlockXPSource {
     // ----- Miscellaneous Tasks (6,266 XP) -----
     ACCESSORY_BAG_UPGRADES(Group.MISCELLANEOUS, null, 0, Availability.LIVE, Material.BUNDLE),
     TIMECHARMS(Group.MISCELLANEOUS, null, 800, Availability.NOT_IN_GAME, Material.CLOCK),
-    UNLOCKING_POWERS(Group.MISCELLANEOUS, null, 0, Availability.NOT_IN_GAME, Material.HEART_OF_THE_SEA),
+    UNLOCKING_POWERS(Group.MISCELLANEOUS, null, 0, Availability.LIVE, Material.HEART_OF_THE_SEA),
     UPGRADED_RELAYS(Group.MISCELLANEOUS, null, 45, Availability.NOT_IN_GAME, Material.LIGHTNING_ROD),
     TAMING_CAP_INCREASES(Group.MISCELLANEOUS, null, 100, Availability.NOT_IN_GAME, Material.WOLF_SPAWN_EGG),
     HOOTIE_UPGRADES(Group.MISCELLANEOUS, null, 65, Availability.NOT_IN_GAME, Material.FEATHER),

@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.item;
 
 import net.swofty.type.skyblockgeneric.accessory.AccessoryPower;
 import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffect;
+import net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import net.kyori.adventure.text.Component;
@@ -359,6 +360,8 @@ public class ItemLore {
 	private static void fillAccessoryPower(LoreText lore) {
 		SkyBlockItem item = lore.item();
 		if (!item.hasComponent(AccessoryComponent.class)) return;
+		String enrichment = Enrichments.loreLine(item);
+		if (enrichment != null) lore.section(LoreText.Sections.STATS).line(Text.of(enrichment));
 		int power = AccessoryPower.itemPower(item, 0, false);
 		if (power <= 0) return;
 		lore.section(LoreText.Sections.STATS).line(Text.of("<7>Accessory Power: <6>+{}", power));

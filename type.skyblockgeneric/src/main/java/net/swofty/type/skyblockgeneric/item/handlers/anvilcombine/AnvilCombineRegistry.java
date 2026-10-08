@@ -31,6 +31,7 @@ public class AnvilCombineRegistry {
         CrimsonItemHandlers.registerAnvilCombines();
         HollyDye.registerAnvilCombine();
         Recombobulation.registerAnvilCombine();
+        net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments.registerAnvilCombine();
         register("HOT_POTATO_BOOK", new AnvilCombineHandler(
                 (upgradeItem, sacrificeItem) -> {
                     HotPotatoableComponent hotPotatoable = upgradeItem.getComponent(HotPotatoableComponent.class);
