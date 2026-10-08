@@ -721,6 +721,9 @@ public class SkyBlockDataHandler extends DataHandler {
         CHICKEN_RACE_CLUCKPOINT("chicken_race_cluckpoint", false, false, false,
                 DatapointInteger.class, new DatapointInteger("chicken_race_cluckpoint", 0)),
 
+        GIFTS_GIVEN("gifts_given", false, false, false,
+                DatapointInteger.class, new DatapointInteger("gifts_given", 0)),
+
         ST_JERRY_GREEN_GIFT_YEAR("st_jerry_green_gift_year", false, false, false,
                 DatapointInteger.class, new DatapointInteger("st_jerry_green_gift_year", 0)),
 

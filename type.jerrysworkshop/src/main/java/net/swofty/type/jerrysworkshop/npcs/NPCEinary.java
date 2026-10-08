@@ -8,7 +8,7 @@ import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.jerrysworkshop.gui.GUIEinaryEmporium;
 
-// Decorative NPC for Einary, found in Jerry's Workshop.
+// Einary, who runs Einary's Emporium in Jerry's Workshop.
 public class NPCEinary extends HypixelNPC {
 
 	public NPCEinary() {
@@ -50,10 +50,6 @@ public class NPCEinary extends HypixelNPC {
 		if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_EINARY)) {
 			setDialogue(player, "hello").thenRun(() ->
 					player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_EINARY, true));
-			return;
-		}
-		if (!GUIEinaryEmporium.isDecember()) {
-			player.sendMessage("<c>Only sold in December!");
 			return;
 		}
 		player.openView(new GUIEinaryEmporium());

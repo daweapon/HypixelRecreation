@@ -1,6 +1,7 @@
 package net.swofty.type.jerrysworkshop.defense;
 
 import net.swofty.type.skyblockgeneric.essence.IceEssenceShop;
+import net.swofty.type.skyblockgeneric.gifts.GiftBoosts;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.Carnivals;
@@ -267,9 +268,13 @@ public final class JerryWorkshopDefenseManager {
             playerWhite = Carnivals.boostedCount(player, CarnivalPerk.PRESENT_CONNOISSEUR, playerWhite);
             playerGreen = Carnivals.boostedCount(player, CarnivalPerk.PRESENT_CONNOISSEUR, playerGreen);
             playerRed = Carnivals.boostedCount(player, CarnivalPerk.PRESENT_CONNOISSEUR, playerRed);
-            playerWhite = IceEssenceShop.seasonOfJoyCount(player, ItemType.WHITE_GIFT, playerWhite);
-            playerGreen = IceEssenceShop.seasonOfJoyCount(player, ItemType.GREEN_GIFT, playerGreen);
-            playerRed = IceEssenceShop.seasonOfJoyCount(player, ItemType.RED_GIFT, playerRed);
+            int baseWhite = playerWhite, baseGreen = playerGreen, baseRed = playerRed;
+            playerWhite = IceEssenceShop.seasonOfJoyCount(player, ItemType.WHITE_GIFT, baseWhite)
+                    + GiftBoosts.withGiftAttackBonus(player, ItemType.WHITE_GIFT, baseWhite) - baseWhite;
+            playerGreen = IceEssenceShop.seasonOfJoyCount(player, ItemType.GREEN_GIFT, baseGreen)
+                    + GiftBoosts.withGiftAttackBonus(player, ItemType.GREEN_GIFT, baseGreen) - baseGreen;
+            playerRed = IceEssenceShop.seasonOfJoyCount(player, ItemType.RED_GIFT, baseRed)
+                    + GiftBoosts.withGiftAttackBonus(player, ItemType.RED_GIFT, baseRed) - baseRed;
             int whiteToRed = redFad(player, playerWhite);
             int greenToRed = redFad(player, playerGreen);
             playerWhite -= whiteToRed;

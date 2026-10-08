@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.item.handlers.pet;
 
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
+import net.swofty.type.skyblockgeneric.gifts.ReindeerPet;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.*;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
@@ -97,6 +98,31 @@ public enum PetHandler {
                     "<c>Workshop<7>."), Rarity.RARE),
             at(ScaledPetAbility.notActive("Frosty Familiarity", scaling(0, 0, 0, 0, 10, 10),
                     "<7>Grants <b>+{0} ✯ Magic Find <7>against", "<f>Winter Sea Creatures<7>."), Rarity.LEGENDARY)
+    )),
+    SNOWMAN(List.of(
+            at(LeveledPetAbility.notActive("Blizzard", new double[]{8, 0}, new double[]{0.08, 0.1},
+                    "<7>Enemies within <a>{0} <7>blocks are slowed", "<7>by <a>25% <7>and deal <a>{1}% <7>less damage."),
+                    Rarity.LEGENDARY),
+            at(LeveledPetAbility.notActive("Frostbite", new double[]{0}, new double[]{0.1},
+                    "<7>Your freezing aura slows enemy", "<7>attacks causing you to take <a>{0}%", "<7>reduced damage"),
+                    Rarity.LEGENDARY),
+            at(LeveledPetAbility.notActive("Snow Cannon", new double[]{10}, new double[]{0.1},
+                    "<7>Shoots a snowball towards an enemy", "<7>when you attack dealing <a>{0}% <7>of",
+                    "<7>your last dealt melee damage,", "<7>capped at <f>200,000<7>. <8>(1s cooldown)"),
+                    Rarity.LEGENDARY)
+    )),
+    REINDEER(List.of(
+            at(LeveledPetAbility.gameplay("Winter Sprint", new double[0], new double[0],
+                    "<7>Gain <d>double <7>pet <a>EXP<7>."), Rarity.LEGENDARY),
+            at(LeveledPetAbility.statistics("Infused", new double[]{0},
+                    new double[]{ReindeerPet.INFUSED_FISHING_SPEED_PER_LEVEL},
+                    (player, values) -> ReindeerPet.infused(values[0]),
+                    "<7>Gives <b>+{0} ☂ Fishing Speed <7>and <6>+5", "<6>⛃ Treasure Chance <7>while on <c>Jerry's",
+                    "<c>Workshop<7>."), Rarity.LEGENDARY),
+            at(LeveledPetAbility.gameplay("Snow Power", new double[]{0}, new double[]{ReindeerPet.SNOW_POWER_PER_LEVEL},
+                    "<7>Grants <a>+{0}% <7>bonus gift chance", "<7>during the <c>Gift Attack <7>event."), Rarity.LEGENDARY),
+            at(LeveledPetAbility.gameplay("Icy Wind", new double[]{0}, new double[]{ReindeerPet.ICY_WIND_PER_LEVEL},
+                    "<7>Grants <a>+{0}% <7>chance of getting", "<7>double <b>Ice Essence<7>."), Rarity.LEGENDARY)
     )),
     // Black Cat and Skeleton Horse (Spooky Festival rewards) - their ability trees are not
     // implemented, so they carry stats only.

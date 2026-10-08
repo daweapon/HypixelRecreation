@@ -27,6 +27,7 @@ import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.bestiary.BestiaryData;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointInventory;
+import net.swofty.type.skyblockgeneric.gifts.SnowSuit;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkills;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperience;
 import net.swofty.type.skyblockgeneric.elections.perks.ActivePerks;
@@ -536,6 +537,7 @@ public class PlayerStatistics {
         statistics = getEnchantStatistics(item, statistics, causer, enemy);
         statistics = getHotPotatoBookStatistics(item, statistics);
         statistics = ItemStatistics.add(statistics, MythologicalGear.extraItemStatistics(item, player));
+        statistics = ItemStatistics.add(statistics, SnowSuit.extraItemStatistics(item, player));
 
         return statistics;
     }

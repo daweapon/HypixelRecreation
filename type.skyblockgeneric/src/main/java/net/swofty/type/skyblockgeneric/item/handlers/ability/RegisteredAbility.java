@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.handlers.ability;
 
+import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentRefrigerate;
 import lombok.Getter;
 import lombok.NonNull;
 import net.minestom.server.coordinate.Point;
@@ -109,6 +110,7 @@ public class RegisteredAbility {
                     2
             );
             player.setMana(player.getMana() - cost);
+            EnchantmentRefrigerate.onManaUsed(player, cost);
         }
 
         @Override
@@ -150,6 +152,7 @@ public class RegisteredAbility {
                     2
             );
             player.setMana(player.getMana() - cost);
+            EnchantmentRefrigerate.onManaUsed(player, cost);
             player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).setValue(
                     player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue() - soulflow
             );

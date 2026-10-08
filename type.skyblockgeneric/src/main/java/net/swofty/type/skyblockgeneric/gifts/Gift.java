@@ -1,116 +1,110 @@
 package net.swofty.type.skyblockgeneric.gifts;
 
-import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
-import net.swofty.type.skyblockgeneric.carnival.CarnivalStatistics;
-import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import lombok.Getter;
-import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.type.generic.data.datapoints.DatapointInteger;
-import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
-import net.swofty.type.skyblockgeneric.skill.SkillCategories;
-import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.UUID;
+import java.util.random.RandomGenerator;
+
+import static net.swofty.type.skyblockgeneric.gifts.GiftDropRarity.COMMON;
+import static net.swofty.type.skyblockgeneric.gifts.GiftDropRarity.RARE;
+import static net.swofty.type.skyblockgeneric.gifts.GiftDropRarity.SANTA;
+import static net.swofty.type.skyblockgeneric.gifts.GiftDropRarity.SWEET;
+import static net.swofty.type.skyblockgeneric.gifts.GiftReward.coins;
+import static net.swofty.type.skyblockgeneric.gifts.GiftReward.item;
+import static net.swofty.type.skyblockgeneric.gifts.GiftReward.xp;
+import static net.swofty.type.skyblockgeneric.gifts.GiftReward.xpBoost;
 
 /**
- * The gifts players hand to each other, with the wiki's coin and Skill XP rewards and North Star
- * odds. Both the giver and the receiver get what the gift holds. The wiki's item rewards - XP
- * boost potions, runes, discs, minion skins - are left out until those items exist, so the coin and
- * XP rows are drawn in their own proportions.
+ * The gifts players hand to each other, with the wiki's drop weights (White 6,649, Green 6,503,
+ * Red 3,876) and North Star odds. The opener's roll decides the reward both players get.
  */
 @Getter
 public enum Gift {
-    WHITE(ItemType.WHITE_GIFT, 0.10, 1, 1, List.of(
-            Reward.coins(2000, 2_000), Reward.coins(1000, 5_000), Reward.coins(500, 10_000),
-            Reward.xp(1500, 250), Reward.xp(200, 500))),
-    GREEN(ItemType.GREEN_GIFT, 0.30, 1, 3, List.of(
-            Reward.coins(2000, 5_000), Reward.coins(1000, 10_000), Reward.coins(20, 20_000),
-            Reward.xp(1500, 250), Reward.xp(500, 500), Reward.xp(1, 2_500))),
-    RED(ItemType.RED_GIFT, 0.50, 1, 5, List.of(
-            Reward.coins(1032, 5_000), Reward.coins(1935, 20_000), Reward.coins(52, 100_000), Reward.coins(3, 1_000_000),
-            Reward.xp(258, 250), Reward.xp(2580, 500), Reward.xp(13, 2_500)));
-
-    // Gift Skill XP is not tied to one skill on the wiki; it goes to one of the gathering and
-    // combat skills at random here.
-    private static final SkillCategories[] XP_SKILLS = {
-            SkillCategories.FARMING, SkillCategories.MINING, SkillCategories.COMBAT,
-            SkillCategories.FORAGING, SkillCategories.FISHING};
+    WHITE(ItemType.WHITE_GIFT, 0.10, 1, 1, 0, List.of(
+            coins(COMMON, 2000, 2_000), coins(COMMON, 1000, 5_000), coins(RARE, 500, 10_000),
+            xp(COMMON, 1500, 250), xp(COMMON, 200, 500),
+            xpBoost(COMMON, 500, 1), xpBoost(COMMON, 250, 2),
+            item(RARE, 400, ItemType.ICE_RUNE),
+            item(SWEET, 60, ItemType.BATTLE_DISC), item(SWEET, 60, ItemType.WINTER_DISC),
+            item(SWEET, 30, ItemType.SNOW_MINION),
+            item(SWEET, 25, ItemType.GRINCH_PERSONALITY), item(SWEET, 25, ItemType.GINGERBREAD_PERSONALITY),
+            item(SWEET, 25, ItemType.SANTA_PERSONALITY),
+            item(SWEET, 20, ItemType.NUTCRACKER), item(SWEET, 20, ItemType.PRESENTS), item(SWEET, 20, ItemType.CHRISTMAS_TREE),
+            item(SANTA, 4, ItemType.GIFT_THE_FISH),
+            item(SWEET, 2, ItemType.SNOW_SUIT_HELMET), item(SWEET, 3, ItemType.SNOW_SUIT_CHESTPLATE),
+            item(SWEET, 3, ItemType.SNOW_SUIT_LEGGINGS), item(SWEET, 2, ItemType.SNOW_SUIT_BOOTS))),
+    GREEN(ItemType.GREEN_GIFT, 0.30, 1, 3, 0, List.of(
+            coins(COMMON, 2000, 5_000), coins(COMMON, 1000, 10_000), coins(RARE, 20, 20_000),
+            xp(COMMON, 1500, 250), xp(COMMON, 500, 500), xp(COMMON, 1, 2_500),
+            xpBoost(COMMON, 125, 1), xpBoost(COMMON, 500, 2), xpBoost(RARE, 125, 3),
+            item(RARE, 400, ItemType.ICE_RUNE),
+            item(SWEET, 60, ItemType.BATTLE_DISC), item(SWEET, 60, ItemType.WINTER_DISC),
+            item(SWEET, 50, ItemType.SNOW_MINION),
+            item(SWEET, 25, ItemType.GINGERBREAD_PERSONALITY), item(SWEET, 25, ItemType.GRINCH_PERSONALITY),
+            item(SWEET, 25, ItemType.SANTA_PERSONALITY),
+            item(SWEET, 20, ItemType.NUTCRACKER), item(SWEET, 20, ItemType.PRESENTS), item(SWEET, 20, ItemType.CHRISTMAS_TREE),
+            item(SWEET, 4, ItemType.SNOW_SUIT_HELMET), item(SWEET, 6, ItemType.SNOW_SUIT_CHESTPLATE),
+            item(SWEET, 6, ItemType.SNOW_SUIT_LEGGINGS), item(SWEET, 4, ItemType.SNOW_SUIT_BOOTS),
+            item(SANTA, 5, ItemType.GIFT_THE_FISH), item(SANTA, 2, ItemType.GOLD_GIFT))),
+    RED(ItemType.RED_GIFT, 0.50, 1, 5, 0.0125, List.of(
+            coins(RARE, 400, 5_000), coins(RARE, 750, 20_000), coins(SWEET, 20, 100_000), coins(SANTA, 1, 1_000_000),
+            xp(COMMON, 100, 250), xp(COMMON, 1000, 500), xp(COMMON, 5, 2_500),
+            xpBoost(COMMON, 125, 2), xpBoost(RARE, 500, 3),
+            item(RARE, 400, ItemType.ICE_RUNE),
+            item(SWEET, 70, ItemType.LARGE_WINTER_SACK), item(SWEET, 65, ItemType.SNOW_MINION),
+            item(SWEET, 60, ItemType.NEW_BOTTLE_OF_JYRRE),
+            item(SWEET, 60, ItemType.BATTLE_DISC), item(SWEET, 60, ItemType.WINTER_DISC),
+            item(SWEET, 25, ItemType.GINGERBREAD_PERSONALITY), item(SWEET, 25, ItemType.GRINCH_PERSONALITY),
+            item(SWEET, 25, ItemType.SANTA_PERSONALITY),
+            item(SWEET, 25, ItemType.SNOW_SUIT_HELMET), item(SWEET, 25, ItemType.SNOW_SUIT_CHESTPLATE),
+            item(SWEET, 25, ItemType.SNOW_SUIT_LEGGINGS), item(SWEET, 25, ItemType.SNOW_SUIT_BOOTS),
+            item(SWEET, 20, ItemType.NUTCRACKER), item(SWEET, 20, ItemType.PRESENTS), item(SWEET, 20, ItemType.CHRISTMAS_TREE),
+            item(SANTA, 6, ItemType.GIFT_THE_FISH), item(SANTA, 5, ItemType.GOLD_GIFT),
+            item(SANTA, 4, ItemType.KRAMPUS_HELMET), item(SANTA, 4, ItemType.CRYOPOWDER_SHARD),
+            item(SANTA, 4, ItemType.WINTER_ISLAND), item(SANTA, 2, ItemType.SNOWMAN_PET)));
 
     private final ItemType item;
     private final double northStarChance;
     private final int minNorthStars;
     private final int maxNorthStars;
-    private final List<Reward> rewards;
+    private final double hollyDyeChancePercent;
+    private final List<GiftReward> rewards;
 
-    Gift(ItemType item, double northStarChance, int minNorthStars, int maxNorthStars, List<Reward> rewards) {
+    Gift(ItemType item, double northStarChance, int minNorthStars, int maxNorthStars, double hollyDyeChancePercent,
+         List<GiftReward> rewards) {
         this.item = item;
         this.northStarChance = northStarChance;
         this.minNorthStars = minNorthStars;
         this.maxNorthStars = maxNorthStars;
+        this.hollyDyeChancePercent = hollyDyeChancePercent;
         this.rewards = rewards;
     }
 
-    record Reward(int weight, long coins, long skillXp) {
-        static Reward coins(int weight, long amount) {
-            return new Reward(weight, amount, 0);
-        }
-
-        static Reward xp(int weight, long amount) {
-            return new Reward(weight, 0, amount);
-        }
-    }
-
-    private static final double FEELIN_FESTIVE_PERCENT = 10;
-
-    public static Gift of(ItemType type) {
+    public static @Nullable Gift of(@Nullable ItemType type) {
         for (Gift gift : values()) {
             if (gift.item == type) return gift;
         }
         return null;
     }
 
-    public void give(SkyBlockPlayer giver, SkyBlockPlayer receiver) {
-        Reward reward = roll();
-        SkillCategories skill = XP_SKILLS[ThreadLocalRandom.current().nextInt(XP_SKILLS.length)];
-        for (SkyBlockPlayer player : List.of(giver, receiver)) {
-            double boost = boost(player);
-            if (reward.coins() > 0) {
-                long coins = Math.round(reward.coins() * boost);
-                player.addCoins(coins);
-                player.sendMessage("<a><l>GIFT! <7>You received <6>{} coins <7>from the gift!", StringUtility.commaify(coins));
-            } else {
-                long xp = Math.round(reward.skillXp() * boost);
-                player.getSkills().increase(player, skill, (double) xp);
-                player.sendMessage("<a><l>GIFT! <7>You received <3>{} {} XP <7>from the gift!",
-                        StringUtility.commaify(xp), StringUtility.toNormalCase(skill.name()));
-            }
-            awardNorthStars(player);
-        }
+    public int totalWeight() {
+        return rewards.stream().mapToInt(GiftReward::weight).sum();
     }
 
-    private static double boost(SkyBlockPlayer player) {
-        double percent = Carnivals.perkValue(player, CarnivalPerk.PROFESSIONAL_GIFTER)
-                + (CarnivalStatistics.isWearing(player, ItemType.SNOWMAN_MASK) ? FEELIN_FESTIVE_PERCENT : 0);
-        return 1 + percent / 100D;
+    public GiftReward pick(@Nullable UUID opener, double rareItemMultiplier, RandomGenerator random) {
+        return LootRoll.pick(opener, rewards, GiftReward::item, reward -> reward.weight(rareItemMultiplier), random);
     }
 
-    private void awardNorthStars(SkyBlockPlayer player) {
-        if (ThreadLocalRandom.current().nextDouble() >= northStarChance) return;
-        int amount = ThreadLocalRandom.current().nextInt(minNorthStars, maxNorthStars + 1);
-        DatapointInteger stars = player.getSkyblockDataHandler()
-                .get(SkyBlockDataHandler.Data.NORTH_STARS, DatapointInteger.class);
-        stars.setValue(stars.getValue() + amount);
-        player.sendMessage("<b>+{} North Star{}", amount, amount == 1 ? "" : "s");
+    public boolean rollHollyDye(@Nullable UUID opener, RandomGenerator random) {
+        return hollyDyeChancePercent > 0 && LootRoll.roll(opener, ItemType.DYE_HOLLY, hollyDyeChancePercent, random);
     }
 
-    private Reward roll() {
-        int roll = ThreadLocalRandom.current().nextInt(rewards.stream().mapToInt(Reward::weight).sum());
-        for (Reward reward : rewards) {
-            roll -= reward.weight();
-            if (roll < 0) return reward;
-        }
-        return rewards.getFirst();
+    public int rollNorthStars(RandomGenerator random) {
+        if (random.nextDouble() >= northStarChance) return 0;
+        return random.nextInt(minNorthStars, maxNorthStars + 1);
     }
 }

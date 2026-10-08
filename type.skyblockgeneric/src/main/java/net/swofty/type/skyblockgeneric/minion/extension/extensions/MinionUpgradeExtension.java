@@ -43,7 +43,7 @@ public class MinionUpgradeExtension extends MinionExtension {
                         return;
                     }
 
-                    if (upgradeItem.hasComponent(MinionUpgradeComponent.class)) {
+                    if (upgradeItem.hasComponent(MinionUpgradeComponent.class) || itemTypeLinker == ItemType.KRAMPUS_HELMET) {
                         p.getInventory().setCursorItem(ItemStack.AIR);
                         setItemTypePassedIn(itemTypeLinker);
                         minion.getExtensionData().setData(slot, MinionUpgradeExtension.this);

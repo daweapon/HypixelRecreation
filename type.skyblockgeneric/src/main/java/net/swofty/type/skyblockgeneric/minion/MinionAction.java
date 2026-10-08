@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.item.crafting.FurnaceRecipeRegistry;
 import net.swofty.type.skyblockgeneric.item.components.MinionShippingComponent;
 import net.swofty.type.skyblockgeneric.item.components.MinionFuelComponent;
 import net.swofty.type.skyblockgeneric.item.components.SellableComponent;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.minion.extension.MinionExtensionData;
 import net.swofty.type.skyblockgeneric.minion.extension.MinionExtensions;
 import net.swofty.type.skyblockgeneric.minion.extension.extensions.MinionShippingExtension;
@@ -21,6 +22,7 @@ import java.util.List;
 
 // Base type for a minion's per-tick behaviour (mining, farming, fishing, etc.), producing items and checking fuel/materials.
 public abstract class MinionAction {
+    private static final double KRAMPUS_RED_GIFT_CHANCE_PERCENT = 0.0045;
 
     public abstract @NonNull List<SkyBlockItem> onAction(MinionActionEvent event, IslandMinionData.IslandMinion minion, Instance island);
     public abstract boolean checkMaterials(IslandMinionData.IslandMinion minion, Instance island);
@@ -74,6 +76,15 @@ public abstract class MinionAction {
                 if (Math.random() < 0.1) diamonds++;
             }
             if (diamonds > 0) islandMinion.addItem(new SkyBlockItem(ItemType.DIAMOND, diamonds));
+        }
+
+        if (extensionData.hasMinionUpgrade(ItemType.KRAMPUS_HELMET)) {
+            int generated = items.stream().mapToInt(SkyBlockItem::getAmount).sum();
+            int redGifts = 0;
+            for (int i = 0; i < generated; i++) {
+                if (LootRoll.roll(null, ItemType.RED_GIFT, KRAMPUS_RED_GIFT_CHANCE_PERCENT)) redGifts++;
+            }
+            if (redGifts > 0) islandMinion.addItem(new SkyBlockItem(ItemType.RED_GIFT, redGifts));
         }
     }
 
