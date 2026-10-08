@@ -1,171 +1,169 @@
+# The 18 Trophy Fish (wiki: Trophy_Fish, Odger/Filleting_Rewards), in Odger's menu order.
+# id is the save key in the player's trophy data; itemStem is Hypixel's item id stem (<stem>_BRONZE ...).
+# catchChance is the base % before Trophy Chance; rarest eligible fish roll first.
 trophyFish:
   - id: SULPHUR_SKITTER
     displayName: Sulphur Skitter
+    itemStem: SULPHUR_SKITTER
+    rarity: COMMON
     catchChance: 30
-    regions: [BLAZING_VOLCANO]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_SULPHUR_SKITTER
-    silverItemId: SILVER_SULPHUR_SKITTER
-    goldItemId: GOLD_SULPHUR_SKITTER
-    diamondItemId: DIAMOND_SULPHUR_SKITTER
-  - id: BLOBFISH
-    displayName: Blobfish
-    catchChance: 25
-    regions: [ ]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_BLOBFISH
-    silverItemId: SILVER_BLOBFISH
-    goldItemId: GOLD_BLOBFISH
-    diamondItemId: DIAMOND_BLOBFISH
+    filletMagmafish: [40, 60, 80, 120]
+    conditions:
+      - type: REGIONS
+        regions: [BLAZING_VOLCANO]
   - id: OBFUSCATED_1
-    displayName: Obfuscated 1
+    displayName: Obfuscated-1
+    itemStem: OBFUSCATED_FISH_1
+    rarity: COMMON
     catchChance: 25
-    regions: [ ]
-    requiredFishingLevel: 0
-    requiredBaitId: CORRUPTED_BAIT
-    bronzeItemId: BRONZE_OBFUSCATED_1
-    silverItemId: SILVER_OBFUSCATED_1
-    goldItemId: GOLD_OBFUSCATED_1
-    diamondItemId: DIAMOND_OBFUSCATED_1
+    filletMagmafish: [16, 24, 32, 48]
+    conditions:
+      - type: BAIT
+        baits: [CORRUPTED_BAIT]
   - id: STEAMING_HOT_FLOUNDER
     displayName: Steaming-Hot Flounder
+    itemStem: STEAMING_HOT_FLOUNDER
+    rarity: COMMON
     catchChance: 20
-    regions: [BLAZING_VOLCANO]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_STEAMING_HOT_FLOUNDER
-    silverItemId: SILVER_STEAMING_HOT_FLOUNDER
-    goldItemId: GOLD_STEAMING_HOT_FLOUNDER
-    diamondItemId: DIAMOND_STEAMING_HOT_FLOUNDER
+    filletMagmafish: [20, 28, 40, 60]
+    conditions:
+      - type: REGIONS
+        regions: [BLAZING_VOLCANO]
   - id: GUSHER
     displayName: Gusher
+    itemStem: GUSHER
+    rarity: COMMON
     catchChance: 20
-    regions: [BLAZING_VOLCANO]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_GUSHER
-    silverItemId: SILVER_GUSHER
-    goldItemId: GOLD_GUSHER
-    diamondItemId: DIAMOND_GUSHER
+    filletMagmafish: [32, 48, 64, 96]
+    conditions:
+      - type: REGIONS
+        regions: [BLAZING_VOLCANO]
+  - id: BLOBFISH
+    displayName: Blobfish
+    itemStem: BLOBFISH
+    rarity: COMMON
+    catchChance: 25
+    filletMagmafish: [4, 8, 12, 16]
+    hint: Caught everywhere.
   - id: OBFUSCATED_2
-    displayName: Obfuscated 2
+    displayName: Obfuscated-2
+    itemStem: OBFUSCATED_FISH_2
+    rarity: UNCOMMON
     catchChance: 20
-    regions: [ ]
-    requiredFishingLevel: 0
-    requiredBaitId: BRONZE_OBFUSCATED_1
-    bronzeItemId: BRONZE_OBFUSCATED_2
-    silverItemId: SILVER_OBFUSCATED_2
-    goldItemId: GOLD_OBFUSCATED_2
-    diamondItemId: DIAMOND_OBFUSCATED_2
+    filletMagmafish: [40, 60, 80, 120]
+    conditions:
+      - type: BAIT
+        baits: [OBFUSCATED_FISH_1_BRONZE, OBFUSCATED_FISH_1_SILVER, OBFUSCATED_FISH_1_GOLD, OBFUSCATED_FISH_1_DIAMOND]
   - id: SLUGFISH
     displayName: Slugfish
+    itemStem: SLUGFISH
+    rarity: UNCOMMON
     catchChance: 15
-    regions: [ ]
-    requiredFishingLevel: 0
-    minimumCastTimeMs: 20000
-    bronzeItemId: BRONZE_SLUGFISH
-    silverItemId: SILVER_SLUGFISH
-    goldItemId: GOLD_SLUGFISH
-    diamondItemId: DIAMOND_SLUGFISH
-  - id: OBFUSCATED_3
-    displayName: Obfuscated 3
-    catchChance: 10
-    regions: [ ]
-    requiredFishingLevel: 0
-    requiredBaitId: BRONZE_OBFUSCATED_2
-    bronzeItemId: BRONZE_OBFUSCATED_3
-    silverItemId: SILVER_OBFUSCATED_3
-    goldItemId: GOLD_OBFUSCATED_3
-    diamondItemId: DIAMOND_OBFUSCATED_3
+    filletMagmafish: [40, 60, 80, 120]
+    conditions:
+      - type: MIN_BOBBER_SECONDS
+        seconds: 20
   - id: FLYFISH
     displayName: Flyfish
+    itemStem: FLYFISH
+    rarity: UNCOMMON
     catchChance: 8
-    regions: [BLAZING_VOLCANO]
-    requiredFishingLevel: 0
-    minimumBobberDepth: 8
-    bronzeItemId: BRONZE_FLYFISH
-    silverItemId: SILVER_FLYFISH
-    goldItemId: GOLD_FLYFISH
-    diamondItemId: DIAMOND_FLYFISH
-  - id: VANILLE
-    displayName: Vanille
-    catchChance: 8
-    regions: [ ]
-    requiredFishingLevel: 0
-    requiresStarterRodWithoutEnchantments: true
-    bronzeItemId: BRONZE_VANILLE
-    silverItemId: SILVER_VANILLE
-    goldItemId: GOLD_VANILLE
-    diamondItemId: DIAMOND_VANILLE
+    filletMagmafish: [32, 48, 64, 96]
+    conditions:
+      - type: REGIONS
+        regions: [BLAZING_VOLCANO]
+      - type: BOBBER_BELOW_PLAYER
+        blocks: 8
+  - id: OBFUSCATED_3
+    displayName: Obfuscated-3
+    itemStem: OBFUSCATED_FISH_3
+    rarity: RARE
+    catchChance: 10
+    filletMagmafish: [400, 700, 1000, 1300]
+    conditions:
+      - type: BAIT
+        baits: [OBFUSCATED_FISH_2_BRONZE, OBFUSCATED_FISH_2_SILVER, OBFUSCATED_FISH_2_GOLD, OBFUSCATED_FISH_2_DIAMOND]
   - id: LAVAHORSE
     displayName: Lavahorse
+    itemStem: LAVA_HORSE
+    rarity: RARE
     catchChance: 4
-    regions: [ ]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_LAVAHORSE
-    silverItemId: SILVER_LAVAHORSE
-    goldItemId: GOLD_LAVAHORSE
-    diamondItemId: DIAMOND_LAVAHORSE
+    filletMagmafish: [12, 16, 20, 24]
+    hint: Caught everywhere.
   - id: MANA_RAY
     displayName: Mana Ray
+    itemStem: MANA_RAY
+    rarity: RARE
     catchChance: 0
-    regions: [ ]
-    requiredFishingLevel: 0
-    minimumMana: 1200
-    bronzeItemId: BRONZE_MANA_RAY
-    silverItemId: SILVER_MANA_RAY
-    goldItemId: GOLD_MANA_RAY
-    diamondItemId: DIAMOND_MANA_RAY
+    manaScaled: true
+    filletMagmafish: [40, 60, 80, 120]
+    conditions:
+      - type: MIN_MANA
+        mana: 1200
   - id: VOLCANIC_STONEFISH
     displayName: Volcanic Stonefish
-    catchChance: 3
-    regions: [BLAZING_VOLCANO]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_VOLCANIC_STONEFISH
-    silverItemId: SILVER_VOLCANIC_STONEFISH
-    goldItemId: GOLD_VOLCANIC_STONEFISH
-    diamondItemId: DIAMOND_VOLCANIC_STONEFISH
+    itemStem: VOLCANIC_STONEFISH
+    rarity: RARE
+    catchChance: 4
+    filletMagmafish: [20, 28, 40, 60]
+    hint: Found in Blazing Volcano.
+    conditions:
+      - type: REGIONS
+        regions: [BLAZING_VOLCANO, ODGERS_HUT, PLHLEGBLAST_POOL, MAGMA_CHAMBER]
+  - id: VANILLE
+    displayName: Vanille
+    itemStem: VANILLE
+    rarity: RARE
+    catchChance: 8
+    filletMagmafish: [80, 120, 160, 240]
+    conditions:
+      - type: STARTER_ROD_NO_ENCHANTMENTS
   - id: SKELETON_FISH
     displayName: Skeleton Fish
+    itemStem: SKELETON_FISH
+    rarity: EPIC
     catchChance: 2
-    regions: [BURNING_DESERT]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_SKELETON_FISH
-    silverItemId: SILVER_SKELETON_FISH
-    goldItemId: GOLD_SKELETON_FISH
-    diamondItemId: DIAMOND_SKELETON_FISH
+    filletMagmafish: [32, 48, 64, 96]
+    hint: Found in Burning Desert.
+    conditions:
+      - type: REGIONS
+        regions: [BURNING_DESERT, DRAGONTAIL, DRAGONTAIL_AUCTION_HOUSE, DRAGONTAIL_BANK, DRAGONTAIL_BAZAAR,
+                  DRAGONTAIL_BLACKSMITH, DRAGONTAIL_TOWNSQUARE, CHIEFS_HUT, MINION_SHOP]
   - id: MOLDFIN
     displayName: Moldfin
+    itemStem: MOLDFIN
+    rarity: EPIC
     catchChance: 2
-    regions: [MYSTIC_MARSH]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_MOLDFIN
-    silverItemId: SILVER_MOLDFIN
-    goldItemId: GOLD_MOLDFIN
-    diamondItemId: DIAMOND_MOLDFIN
+    filletMagmafish: [32, 48, 64, 96]
+    hint: Found in Mystic Marsh.
+    conditions:
+      - type: REGIONS
+        regions: [MYSTIC_MARSH, SCARLETON, SCARLETON_AUCTION_HOUSE, SCARLETON_BANK, SCARLETON_BAZAAR,
+                  SCARLETON_BLACKSMITH, SCARLETON_MINION_SHOP, SCARLETON_PLAZA, CATHEDRAL, SCARLETON_COMMUNITY_CENTER,
+                  THRONE_ROOM, MAGE_COUNCIL]
   - id: SOUL_FISH
     displayName: Soul Fish
+    itemStem: SOUL_FISH
+    rarity: EPIC
     catchChance: 2
-    regions: [STRONGHOLD]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_SOUL_FISH
-    silverItemId: SILVER_SOUL_FISH
-    goldItemId: GOLD_SOUL_FISH
-    diamondItemId: DIAMOND_SOUL_FISH
+    filletMagmafish: [32, 48, 64, 96]
+    hint: Found in Stronghold.
+    conditions:
+      - type: REGIONS
+        regions: [STRONGHOLD]
   - id: KARATE_FISH
     displayName: Karate Fish
+    itemStem: KARATE_FISH
+    rarity: EPIC
     catchChance: 2
-    regions: [DOJO]
-    requiredFishingLevel: 0
-    bronzeItemId: BRONZE_KARATE_FISH
-    silverItemId: SILVER_KARATE_FISH
-    goldItemId: GOLD_KARATE_FISH
-    diamondItemId: DIAMOND_KARATE_FISH
+    filletMagmafish: [40, 60, 80, 120]
+    conditions:
+      - type: REGIONS
+        regions: [DOJO]
   - id: GOLDEN_FISH
     displayName: Golden Fish
+    itemStem: GOLDEN_FISH
+    rarity: LEGENDARY
     catchChance: 0
-    regions: [ ]
-    requiredFishingLevel: 0
     specialGoldenFish: true
-    bronzeItemId: BRONZE_GOLDEN_FISH
-    silverItemId: SILVER_GOLDEN_FISH
-    goldItemId: GOLD_GOLDEN_FISH
-    diamondItemId: DIAMOND_GOLDEN_FISH
+    filletMagmafish: [400, 700, 1000, 1300]

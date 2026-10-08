@@ -18,6 +18,7 @@ import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeType;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
+import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishLegacyIds;
 import net.swofty.type.skyblockgeneric.item.components.AbilityComponent;
 import net.swofty.type.skyblockgeneric.item.components.EnchantedComponent;
 import net.swofty.type.skyblockgeneric.item.components.NecronsBladeScrollComponent;
@@ -163,7 +164,8 @@ public class SkyBlockItem {
 			loadAsMaterial(Material.AIR);
 			return;
 		}
-		String itemType = item.getTag(Tag.String("item_type"));
+		String savedItemType = item.getTag(Tag.String("item_type"));
+		String itemType = TrophyFishLegacyIds.migrate(savedItemType);
 		ItemStatistics statistics = ItemStatistics.empty();
 
 		ItemType type = ItemType.get(itemType);
@@ -188,6 +190,10 @@ public class SkyBlockItem {
 		attributes.addAll(byKey.values());
 
         migrateLegacyFishingRodState(item);
+		if (type != null && !Objects.equals(savedItemType, itemType)) {
+			((ItemAttributeType) getAttribute("item_type")).setValue(type.name());
+			((ItemAttributeRarity) getAttribute("rarity")).setValue(type.rarity);
+		}
 
 		if (config != null) {
 			ItemAttributeStatistics statisticsAttribute = (ItemAttributeStatistics) getAttribute("statistics");

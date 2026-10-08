@@ -9,6 +9,8 @@ import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureSp
 import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.essence.Essences;
 import net.swofty.type.skyblockgeneric.fishing.FishingService;
+import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
+import net.swofty.type.skyblockgeneric.fishing.registry.TrophyFishDefinition;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -96,8 +98,9 @@ public sealed interface CatchPayload {
                     .get(SkyBlockDataHandler.Data.TROPHY_FISH, DatapointTrophyFish.class)
                     .setValue(data);
 
-            ctx.player().sendMessage("<b><l>TROPHY FISH! </l><7>You reeled in a <color:{0}>{1} <a>{2}<7>!",
-                    tier.colour(), tier.displayName(), definitionId);
+            TrophyFishDefinition definition = FishingRegistry.getTrophyFish(definitionId);
+            String name = definition == null ? definitionId : definition.coloredName();
+            ctx.player().sendMessage("<6><l>TROPHY FISH!</l> <b>You caught a " + name + " " + tier.label() + "<b>.");
         }
     }
 

@@ -7,21 +7,25 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Enumerated trophy fish tier. Replaces the previous stringly-typed
- * deduction that scanned item IDs for "_DIAMOND"/"_GOLD" substrings.
+ * Trophy fish tier. Hypixel's item ids are {@code <FISH>_<TIER>} and the tier label is drawn in
+ * dark gray, gray, gold or aqua.
  */
 public enum TrophyTier {
-    BRONZE(NamedTextColor.RED, "Bronze"),
-    SILVER(NamedTextColor.GRAY, "Silver"),
-    GOLD(NamedTextColor.GOLD, "Gold"),
-    DIAMOND(NamedTextColor.AQUA, "Diamond");
+    BRONZE(NamedTextColor.DARK_GRAY, "8", "Bronze", 4),
+    SILVER(NamedTextColor.GRAY, "7", "Silver", 8),
+    GOLD(NamedTextColor.GOLD, "6", "Gold", 16),
+    DIAMOND(NamedTextColor.AQUA, "b", "Diamond", 32);
 
     private final TextColor colour;
+    private final String colourCode;
     private final String displayName;
+    private final int firstCatchSkyBlockXp;
 
-    TrophyTier(TextColor colour, String displayName) {
+    TrophyTier(TextColor colour, String colourCode, String displayName, int firstCatchSkyBlockXp) {
         this.colour = colour;
+        this.colourCode = colourCode;
         this.displayName = displayName;
+        this.firstCatchSkyBlockXp = firstCatchSkyBlockXp;
     }
 
     public TextColor colour() {
@@ -32,14 +36,26 @@ public enum TrophyTier {
         return displayName;
     }
 
+    public int firstCatchSkyBlockXp() {
+        return firstCatchSkyBlockXp;
+    }
+
+    public String label() {
+        return "<" + colourCode + "><l>" + name() + "</l>";
+    }
+
     public String suffix() {
         return "_" + name();
+    }
+
+    public String itemId(String stem) {
+        return stem + suffix();
     }
 
     public static Optional<TrophyTier> fromItemId(String itemId) {
         if (itemId == null) return Optional.empty();
         for (TrophyTier tier : values()) {
-            if (itemId.contains(tier.suffix())) {
+            if (itemId.endsWith(tier.suffix())) {
                 return Optional.of(tier);
             }
         }
