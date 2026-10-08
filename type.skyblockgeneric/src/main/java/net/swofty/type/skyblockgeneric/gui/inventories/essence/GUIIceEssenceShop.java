@@ -109,7 +109,7 @@ public class GUIIceEssenceShop extends StatelessView {
     }
 
     private static String description(IceEssencePerk perk, double value) {
-        String amount = StringUtility.decimalify(value, 0);
+        String amount = StringUtility.decimalify(value, 1);
         return switch (perk) {
             case COLD_EFFICIENCY -> "<7>Increases Mage class experience\n<7>gain by <a>" + amount + "%<7>.";
             case COOLED_FORGES -> "<7>Grants +<a>" + amount + "% <7>essence when salvaging.";
