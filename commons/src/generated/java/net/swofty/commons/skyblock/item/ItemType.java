@@ -252,6 +252,8 @@ public enum ItemType {
 
   BASIC_SHEEP_AXE(Material.WOODEN_AXE, Rarity.COMMON),
 
+  BATTLE_DISC(Material.MUSIC_DISC_13, Rarity.RARE),
+
   BAT_ARTIFACT(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   BAT_FIREWORK(Material.FIREWORK_ROCKET, Rarity.RARE),
@@ -810,6 +812,8 @@ public enum ItemType {
 
   CHISELED_STONE_BRICKS(Material.CHISELED_STONE_BRICKS, Rarity.COMMON),
 
+  CHRISTMAS_TREE(Material.PLAYER_HEAD, Rarity.EPIC),
+
   CHRONO_PICKAXE(Material.IRON_PICKAXE, Rarity.EPIC),
 
   CHUM(Material.PLAYER_HEAD, Rarity.UNCOMMON),
@@ -951,6 +955,8 @@ public enum ItemType {
   CROWN_OF_AVARICE(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   CROWN_OF_GREED(Material.GOLDEN_HELMET, Rarity.LEGENDARY),
+
+  CRYOPOWDER_SHARD(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   CRYPT_BOW(Material.BOW, Rarity.RARE),
 
@@ -1235,6 +1241,8 @@ public enum ItemType {
   DWARF_TURTLE_SHELMET(Material.PLAYER_HEAD, Rarity.EPIC),
 
   DWARVEN_SACK(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  DYE_HOLLY(Material.PLAYER_HEAD, Rarity.EPIC),
 
   DYE_MYTHOLOGICAL(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
@@ -1874,7 +1882,11 @@ public enum ItemType {
 
   GIANT_FISHING_ROD(Material.FISHING_ROD, Rarity.LEGENDARY),
 
+  GIFT_THE_FISH(Material.PUFFERFISH, Rarity.SPECIAL),
+
   GILL_MEMBRANE(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
+  GINGERBREAD_PERSONALITY(Material.PLAYER_HEAD, Rarity.COMMON),
 
   GIRAFFE_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
@@ -1967,6 +1979,8 @@ public enum ItemType {
   GOLD_CLAWS(Material.GOLD_INGOT, Rarity.UNCOMMON),
 
   GOLD_FLYFISH(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  GOLD_GIFT(Material.PLAYER_HEAD, Rarity.SPECIAL),
 
   GOLD_GIFT_TALISMAN(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
@@ -2105,6 +2119,8 @@ public enum ItemType {
   GRIFFIN_UPGRADE_STONE_RARE(Material.PLAYER_HEAD, Rarity.RARE),
 
   GRIFFIN_UPGRADE_STONE_UNCOMMON(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
+  GRINCH_PERSONALITY(Material.PLAYER_HEAD, Rarity.COMMON),
 
   GRIZZLY_SALMON(Material.COOKED_SALMON, Rarity.RARE),
 
@@ -2261,6 +2277,8 @@ public enum ItemType {
   ICE_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
   ICE_ROD(Material.FISHING_ROD, Rarity.RARE),
+
+  ICE_RUNE(Material.PLAYER_HEAD, Rarity.RARE),
 
   ICE_SPRAY_WAND(Material.STICK, Rarity.RARE),
 
@@ -2436,6 +2454,8 @@ public enum ItemType {
 
   KNOCKOFF_COLA(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  KRAMPUS_HELMET(Material.PLAYER_HEAD, Rarity.EPIC),
+
   KUUDRA_TEETH(Material.PAPER, Rarity.EPIC),
 
   LADDER(Material.LADDER, Rarity.COMMON),
@@ -2483,6 +2503,8 @@ public enum ItemType {
   LARGE_FORAGING_SACK(Material.PLAYER_HEAD, Rarity.EPIC),
 
   LARGE_MINING_SACK(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  LARGE_WINTER_SACK(Material.PLAYER_HEAD, Rarity.RARE),
 
   LAST_BREATH(Material.BOW, Rarity.LEGENDARY),
 
@@ -2643,6 +2665,8 @@ public enum ItemType {
   MAGIC_FIND_ENRICHMENT(Material.PLAYER_HEAD, Rarity.COMMON),
 
   MAGIC_FIND_POTION_1(Material.POTION, Rarity.COMMON),
+
+  MAGIC_TOP_HAT(Material.PLAYER_HEAD, Rarity.MYTHIC),
 
   MAGMAFISH(Material.PLAYER_HEAD, Rarity.COMMON),
 
@@ -2938,6 +2962,8 @@ public enum ItemType {
 
   NETHER_WART_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  NEW_BOTTLE_OF_JYRRE(Material.POTION, Rarity.RARE),
+
   NEW_YEAR_CAKE(Material.CAKE, Rarity.SPECIAL),
 
   NEW_YEAR_CAKE_BAG(Material.PLAYER_HEAD, Rarity.UNCOMMON),
@@ -2961,6 +2987,8 @@ public enum ItemType {
   NULL_SPHERE(Material.FIREWORK_STAR, Rarity.UNCOMMON),
 
   NURSE_SHARK_TOOTH(Material.GHAST_TEAR, Rarity.UNCOMMON),
+
+  NUTCRACKER(Material.PLAYER_HEAD, Rarity.COMMON),
 
   OAK_BOAT(Material.OAK_BOAT, Rarity.COMMON),
 
@@ -3268,6 +3296,8 @@ public enum ItemType {
 
   PREHISTORIC_EGG(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  PRESENTS(Material.PLAYER_HEAD, Rarity.COMMON),
+
   PRESSURE_ARTIFACT(Material.PLAYER_HEAD, Rarity.RARE),
 
   PRESSURE_RING(Material.PLAYER_HEAD, Rarity.UNCOMMON),
@@ -3496,6 +3526,8 @@ public enum ItemType {
 
   REGION_SELECTOR(Material.GOLDEN_AXE, Rarity.ADMIN),
 
+  REINDEER_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   REINFORCED_SCALES(Material.PRISMARINE_CRYSTALS, Rarity.RARE),
 
   REKINDLED_EMBER_FRAGMENT(Material.PAPER, Rarity.EPIC),
@@ -3629,6 +3661,8 @@ public enum ItemType {
   SANDSTONE_WALL(Material.SANDSTONE_WALL, Rarity.COMMON),
 
   SAND_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  SANTA_PERSONALITY(Material.PLAYER_HEAD, Rarity.COMMON),
 
   SAVANA_BOW(Material.BOW, Rarity.UNCOMMON),
 
@@ -4212,11 +4246,29 @@ public enum ItemType {
 
   SNOWMAN_MASK(Material.PLAYER_HEAD, Rarity.RARE),
 
+  SNOWMAN_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
+  SNOW_BELT(Material.PLAYER_HEAD, Rarity.RARE),
+
   SNOW_BLOCK(Material.SNOW_BLOCK, Rarity.COMMON),
 
   SNOW_CANNON(Material.PLAYER_HEAD, Rarity.RARE),
 
+  SNOW_CLOAK(Material.PLAYER_HEAD, Rarity.RARE),
+
+  SNOW_GLOVES(Material.PLAYER_HEAD, Rarity.RARE),
+
   SNOW_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  SNOW_NECKLACE(Material.PLAYER_HEAD, Rarity.RARE),
+
+  SNOW_SUIT_BOOTS(Material.LEATHER_BOOTS, Rarity.EPIC),
+
+  SNOW_SUIT_CHESTPLATE(Material.LEATHER_CHESTPLATE, Rarity.EPIC),
+
+  SNOW_SUIT_HELMET(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  SNOW_SUIT_LEGGINGS(Material.LEATHER_LEGGINGS, Rarity.EPIC),
 
   SOCIAL_DISPLAY(Material.GOLD_BLOCK, Rarity.UNCOMMON),
 
@@ -4899,6 +4951,12 @@ public enum ItemType {
   WILD_ROSE(Material.ROSE_BUSH, Rarity.COMMON),
 
   WILSON_ENGINEERING_PLANS(Material.PAPER, Rarity.LEGENDARY),
+
+  WINTER_DISC(Material.MUSIC_DISC_STRAD, Rarity.RARE),
+
+  WINTER_FRAGMENT(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  WINTER_ISLAND(Material.PLAYER_HEAD, Rarity.COMMON),
 
   WINTER_ROD(Material.FISHING_ROD, Rarity.RARE),
 

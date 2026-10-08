@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.user.pets;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
+import net.swofty.type.skyblockgeneric.gifts.ReindeerPet;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
@@ -24,6 +25,7 @@ public final class PetExperience {
     private static final double FISHING_MULTIPLIER = 1.5;
     private static final double TAMING_MULTIPLIER_PER_LEVEL = 0.01;
     private static final double TAMING_SHARE_PER_LEVEL = 0.002;
+    private static final double WINTER_SPRINT_MULTIPLIER = 2;
 
     private PetExperience() {
     }
@@ -38,6 +40,7 @@ public final class PetExperience {
         if (skill == SkillCategories.FISHING) xp *= FISHING_MULTIPLIER;
         xp *= 1 + tamingLevel(player) * TAMING_MULTIPLIER_PER_LEVEL;
         xp *= PetItems.expMultiplier(pet, skill);
+        if (ReindeerPet.isReindeer(pet)) xp *= WINTER_SPRINT_MULTIPLIER;
         return xp * ElectionPerks.multiplier(SkyBlockMayor.Perk.PET_XP_BUFF);
     }
 

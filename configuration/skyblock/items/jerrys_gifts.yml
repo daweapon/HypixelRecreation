@@ -1,0 +1,575 @@
+items:
+  - id: GOLD_GIFT
+    material: player_head
+    name: "Golden Gift"
+    rarity: SPECIAL
+    lore:
+      - "\xA77It's a trophy!"
+    components:
+      - id: SKULL_HEAD
+        texture: f4b13734591f5f05dd1337831d553772bccaffe42f841c3ef39ed252614b1e9e
+
+  - id: ICE_RUNE
+    material: player_head
+    name: "Ice Rune"
+    rarity: RARE
+    lore:
+      - "\xA77Your arrows are icy cold!"
+    components:
+      - id: RUNE
+        required_level: 8
+        color: <f>
+        applicable_to: BOWS
+        skull_texture: cdc57c75adf39ec6f0e0916049dd9671e98a8a1e600104e84e645c988950bd7
+
+  - id: BATTLE_DISC
+    material: music_disc_13
+    name: "Battle Disc"
+    rarity: RARE
+    lore:
+      - "\xA77Place this inside a jukebox to play a"
+      - "\xA77battle song!"
+      - ""
+      - "\xA76Blast in Banter Battle"
+      - "  \xA77By ShinkoNet"
+
+  - id: WINTER_DISC
+    material: music_disc_strad
+    name: "Winter Disc"
+    rarity: RARE
+    lore:
+      - "\xA77Place this inside a jukebox to play a"
+      - "\xA77winter song!"
+      - ""
+      - "\xA76Let Them Eat Cake"
+      - "  \xA77By ShinkoNet"
+
+  - id: GRINCH_PERSONALITY
+    material: player_head
+    name: "Grinch Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: Grinch
+        helmet:
+          material: player_head
+          skull_texture: 9a1d45f0102d1410a061f74bef329ce3cfaa16d0762e5c9581fa5eb0032eaf60
+        chestplate:
+          material: leather_chestplate
+          leather_color:
+            r: 94
+            g: 160
+            b: 54
+        leggings:
+          material: leather_leggings
+          leather_color:
+            r: 94
+            g: 160
+            b: 54
+        boots:
+          material: leather_boots
+          leather_color:
+            r: 94
+            g: 160
+            b: 54
+      - id: SKULL_HEAD
+        texture: 9a1d45f0102d1410a061f74bef329ce3cfaa16d0762e5c9581fa5eb0032eaf60
+
+  - id: GINGERBREAD_PERSONALITY
+    material: player_head
+    name: "Gingerbread Man Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: Gingerbread Man
+        helmet:
+          material: player_head
+          skull_texture: 552f4c85e3e8d937ec59886c9d122e4fa0459b346e04301ccf12d3f2f4279543
+        chestplate:
+          material: leather_chestplate
+          leather_color:
+            r: 166
+            g: 102
+            b: 48
+        leggings:
+          material: leather_leggings
+          leather_color:
+            r: 166
+            g: 102
+            b: 48
+        boots:
+          material: leather_boots
+          leather_color:
+            r: 166
+            g: 102
+            b: 48
+      - id: SKULL_HEAD
+        texture: 552f4c85e3e8d937ec59886c9d122e4fa0459b346e04301ccf12d3f2f4279543
+
+  - id: SANTA_PERSONALITY
+    material: player_head
+    name: "Santa Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: Santa
+        helmet:
+          material: player_head
+          skull_texture: d178ae03d84227f21fa23682d9c620131000ffb7673395533b2740fa83ab1037
+        chestplate:
+          material: leather_chestplate
+          leather_color:
+            r: 204
+            g: 31
+            b: 31
+        leggings:
+          material: leather_leggings
+          leather_color:
+            r: 204
+            g: 31
+            b: 31
+        boots:
+          material: leather_boots
+          leather_color:
+            r: 30
+            g: 30
+            b: 30
+      - id: SKULL_HEAD
+        texture: d178ae03d84227f21fa23682d9c620131000ffb7673395533b2740fa83ab1037
+
+  - id: NUTCRACKER
+    material: player_head
+    name: "Nutcracker"
+    rarity: COMMON
+    lore:
+      - "\xA78Furniture"
+      - "\xA78Holiday Cosmetic"
+      - ""
+      - "\xA77This exclusive \xA7cHoliday \xA77cosmetic can"
+      - "\xA77be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: b032e910637300069682116003608e07833313c37bb42f08638609f0be751ef6
+
+  - id: PRESENTS
+    material: player_head
+    name: "Present Stack"
+    rarity: COMMON
+    lore:
+      - "\xA78Furniture"
+      - "\xA78Holiday Cosmetic"
+      - ""
+      - "\xA77This exclusive \xA7cHoliday \xA77cosmetic can"
+      - "\xA77be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 6f5c433908732b512f68461c14ef020bb2f55d96a61cd1d45ea1e7ea899f1a6b
+
+  - id: CHRISTMAS_TREE
+    material: player_head
+    name: "Tall Holiday Tree"
+    rarity: EPIC
+    lore:
+      - "\xA78Furniture"
+      - "\xA78Holiday Cosmetic"
+      - ""
+      - "\xA77This exclusive \xA7cHoliday \xA77cosmetic can"
+      - "\xA77be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 215ba31cde2671b8f176de6a9ffd008035f0590d63ee240be6e8921cd2037a45
+
+  - id: GIFT_THE_FISH
+    material: pufferfish
+    name: "Gift the Fish"
+    rarity: SPECIAL
+    lore:
+      - "\xA77I'm empty inside."
+
+  - id: SNOW_SUIT_HELMET
+    material: player_head
+    name: "Snow Suit Helmet"
+    rarity: EPIC
+    lore:
+      - "\xA76Full Set Bonus: Cold Thumb"
+      - "\xA77Allows the wearer to shoot unlimited"
+      - "\xA77snowballs when using \xA79Frosty the"
+      - "\xA79Snow Cannon\xA77."
+      - ""
+      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
+      - "\xA77chance for every present you earn"
+      - "\xA77from the \xA7cGift Attack \xA77minigame!"
+      - ""
+      - "\xA77All stats of this armor piece are"
+      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
+    default_statistics:
+      health: 70
+      defense: 30
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 3d1119643cecfbe004141a1ea4062f8315ca78e503958ac50505e8592c44a601
+
+  - id: SNOW_SUIT_CHESTPLATE
+    material: leather_chestplate
+    name: "Snow Suit Chestplate"
+    rarity: EPIC
+    lore:
+      - "\xA76Full Set Bonus: Cold Thumb"
+      - "\xA77Allows the wearer to shoot unlimited"
+      - "\xA77snowballs when using \xA79Frosty the"
+      - "\xA79Snow Cannon\xA77."
+      - ""
+      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
+      - "\xA77chance for every present you earn"
+      - "\xA77from the \xA7cGift Attack \xA77minigame!"
+      - ""
+      - "\xA77All stats of this armor piece are"
+      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
+    default_statistics:
+      health: 100
+      defense: 40
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '255'
+        b: '255'
+
+  - id: SNOW_SUIT_LEGGINGS
+    material: leather_leggings
+    name: "Snow Suit Leggings"
+    rarity: EPIC
+    lore:
+      - "\xA76Full Set Bonus: Cold Thumb"
+      - "\xA77Allows the wearer to shoot unlimited"
+      - "\xA77snowballs when using \xA79Frosty the"
+      - "\xA79Snow Cannon\xA77."
+      - ""
+      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
+      - "\xA77chance for every present you earn"
+      - "\xA77from the \xA7cGift Attack \xA77minigame!"
+      - ""
+      - "\xA77All stats of this armor piece are"
+      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
+    default_statistics:
+      health: 75
+      defense: 30
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '255'
+        b: '255'
+
+  - id: SNOW_SUIT_BOOTS
+    material: leather_boots
+    name: "Snow Suit Boots"
+    rarity: EPIC
+    lore:
+      - "\xA76Full Set Bonus: Cold Thumb"
+      - "\xA77Allows the wearer to shoot unlimited"
+      - "\xA77snowballs when using \xA79Frosty the"
+      - "\xA79Snow Cannon\xA77."
+      - ""
+      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
+      - "\xA77chance for every present you earn"
+      - "\xA77from the \xA7cGift Attack \xA77minigame!"
+      - ""
+      - "\xA77All stats of this armor piece are"
+      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
+    default_statistics:
+      health: 65
+      defense: 25
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '255'
+        b: '255'
+
+  - id: SNOW_CLOAK
+    material: player_head
+    name: "Snow Cloak"
+    rarity: RARE
+    lore:
+      - "\xA76Full Set Bonus: Cold Thumb"
+      - "\xA77Allows the wearer to shoot unlimited"
+      - "\xA77snowballs when using \xA79Frosty the"
+      - "\xA79Snow Cannon\xA77."
+      - ""
+      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
+      - "\xA77chance for every present you earn"
+      - "\xA77from the \xA7cGift Attack \xA77minigame!"
+      - ""
+      - "\xA77All stats of this armor piece are"
+      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
+    default_statistics:
+      health: 5
+      intelligence: 5
+      speed: 2
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: SKULL_HEAD
+        texture: f124bfb22d6ff6c00a73d5f6769b9072311bde6c8010df551e86758e8984b8bf
+
+  - id: SNOW_BELT
+    material: player_head
+    name: "Snow Belt"
+    rarity: RARE
+    lore:
+      - "\xA76Full Set Bonus: Cold Thumb"
+      - "\xA77Allows the wearer to shoot unlimited"
+      - "\xA77snowballs when using \xA79Frosty the"
+      - "\xA79Snow Cannon\xA77."
+      - ""
+      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
+      - "\xA77chance for every present you earn"
+      - "\xA77from the \xA7cGift Attack \xA77minigame!"
+      - ""
+      - "\xA77All stats of this armor piece are"
+      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
+    default_statistics:
+      health: 5
+      intelligence: 5
+      speed: 2
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: SKULL_HEAD
+        texture: bc03e87fbfa90324894e968be96b9930d998ecccf6632de047b3e9cc69111cc7
+
+  - id: SNOW_GLOVES
+    material: player_head
+    name: "Snow Gloves"
+    rarity: RARE
+    lore:
+      - "\xA76Full Set Bonus: Cold Thumb"
+      - "\xA77Allows the wearer to shoot unlimited"
+      - "\xA77snowballs when using \xA79Frosty the"
+      - "\xA79Snow Cannon\xA77."
+      - ""
+      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
+      - "\xA77chance for every present you earn"
+      - "\xA77from the \xA7cGift Attack \xA77minigame!"
+      - ""
+      - "\xA77All stats of this armor piece are"
+      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
+    default_statistics:
+      health: 5
+      intelligence: 5
+      speed: 2
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+      - id: SKULL_HEAD
+        texture: e8874504978bd868880b004e8e61113bb58a1023af86737e77511108a26ec05b
+
+  - id: SNOW_NECKLACE
+    material: player_head
+    name: "Snow Necklace"
+    rarity: RARE
+    lore:
+      - "\xA76Full Set Bonus: Cold Thumb"
+      - "\xA77Allows the wearer to shoot unlimited"
+      - "\xA77snowballs when using \xA79Frosty the"
+      - "\xA79Snow Cannon\xA77."
+      - ""
+      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
+      - "\xA77chance for every present you earn"
+      - "\xA77from the \xA7cGift Attack \xA77minigame!"
+      - ""
+      - "\xA77All stats of this armor piece are"
+      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
+    default_statistics:
+      health: 5
+      intelligence: 5
+      speed: 2
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: SKULL_HEAD
+        texture: b12faa2e798989d910efbf9281b8cba24185622e9aa357c75285aa4b7e3314bc
+
+  - id: LARGE_WINTER_SACK
+    material: player_head
+    name: "Winter Sack"
+    rarity: RARE
+    lore:
+      - "\xA77Holds items commonly found on"
+      - "\xA7cJerry's Workshop\xA77! Items you pickup"
+      - "\xA77go directly into your sacks."
+      - ""
+      - "\xA77Capacity: \xA7e20,160 of each item"
+      - "\xA78Multiple sacks sum their capacity!"
+      - ""
+      - "\xA7eRight Click to open!"
+    components:
+      - id: SKULL_HEAD
+        texture: ab339b1cd40053defd7d3528e01fea876d41b42f9d9268461da79f5f66771236
+      - id: SACK
+        valid_items:
+          - WHITE_GIFT
+          - GREEN_GIFT
+          - RED_GIFT
+          - SNOW_BLOCK
+          - ENCHANTED_SNOW_BLOCK
+          - SNOWBALL
+          - ICE
+          - PACKED_ICE
+          - ENCHANTED_ICE
+          - ENCHANTED_PACKED_ICE
+          - GLACIAL_FRAGMENT
+          - WINTER_FRAGMENT
+          - VOLCANIC_ROCK
+        max_capacity: 20160
+
+  - id: NEW_BOTTLE_OF_JYRRE
+    material: potion
+    name: "Bottle of Jyrre"
+    rarity: RARE
+    lore:
+      - "\xA77Consume to boost your \xA7b"
+      - "\xA7bIntelligence \xA77for \xA7a60m\xA77."
+      - ""
+      - "\xA77Keep this item in your inventory to"
+      - "\xA77increase the bonus up to \xA7b+300"
+      - "\xA7bIntelligence\xA77, at which point the item"
+      - "\xA7c\xA7oevolves\xA77!"
+    components:
+      - id: NOT_FINISHED_YET
+
+  - id: KRAMPUS_HELMET
+    material: player_head
+    name: "Krampus Helmet"
+    rarity: EPIC
+    lore:
+      - "\xA78Minion Upgrade"
+      - ""
+      - "\xA77Gains \xA7c+1❤ \xA77per 50 gifts given by"
+      - "\xA77wearer."
+      - "\xA78Max 500❤"
+      - ""
+      - "\xA77This item can be used as a minion"
+      - "\xA77upgrade. Place it in ONE minion and it"
+      - "\xA77will occasionally generate \xA7cRed Gifts\xA77!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: SKULL_HEAD
+        texture: 80ed61109371e866b7d0025d26f9d48fffdbdfda5c8731b0d3c93c51e16e3344
+      - id: SELLABLE
+        value: 500000.0
+
+  - id: CRYOPOWDER_SHARD
+    material: player_head
+    name: "Fragmented Cryopowder"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77Used to upgrade \xA75Frosty the Snow"
+      - "\xA75Blaster \xA77into \xA76Frosty the Howitzer\xA77."
+    components:
+      - id: SKULL_HEAD
+        texture: 3464874df452c1d717eddd0fb3b848202ad15571245af6fade2ecf514f3c80bb
+
+  - id: WINTER_ISLAND
+    material: player_head
+    name: "Winter Island"
+    rarity: COMMON
+    lore:
+      - "\xA77Place this in your private world to"
+      - "\xA77spawn a Winter island!"
+    components:
+      - id: SKULL_HEAD
+        texture: e19510d7dd09ecd679cb709ead894d49a08be6bea4f91fa05fb6b19eca2a5574
+      - id: NOT_FINISHED_YET
+
+  - id: DYE_HOLLY
+    material: player_head
+    name: "Holly Dye"
+    rarity: EPIC
+    lore:
+      - "\xA78Combinable in Anvil"
+      - ""
+      - "\xA77Changes the color of an armor piece"
+      - "\xA77to \xA72#3C6746\xA77!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5cf0590b3eddeaacb542636ffbe4d51c7563d9f1d9e225807ab57239d3b59ee7
+      - id: ANVIL_COMBINABLE
+        handler_id: DYE_HOLLY
+
+  - id: MAGIC_TOP_HAT
+    material: player_head
+    name: "Magic Top Hat"
+    rarity: MYTHIC
+    lore:
+      - "\xA77Use at \xA7bKat \xA77to upgrade \xA7eSnowman Pets"
+      - "\xA77to \xA7dMythic \xA77rarity."
+      - ""
+      - "\xA78\xA7oA hat so charming, even rabbits wish"
+      - "\xA78\xA7oto call it home."
+    components:
+      - id: SKULL_HEAD
+        texture: 715c5c9f279b1164ecd5e67e14478802184bb03031d1a9ff35e46b863a9c06bc
+
+  - id: WINTER_FRAGMENT
+    material: player_head
+    name: "Winter Fragment"
+    rarity: EPIC
+    lore:
+      - "\xA77A magical shard capturing the"
+      - "\xA77warmth and joy of winter festivities."
+    components:
+      - id: SKULL_HEAD
+        texture: ef74c2e4c0b222e42e8cddf3ba8f6b546c5103ada2c9c15461abc3fa3f42509
+
+  - id: SNOWMAN_PET
+    material: player_head
+    name: "Snowman Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Snowman
+        kat_upgrades:
+          common: null
+          uncommon: null
+          rare: null
+          epic: null
+          legendary: null
+          mythic:
+            time: 3600000
+            coins: 1000000
+            item: MAGIC_TOP_HAT
+            amount: 1
+          rest: null
+        base_statistics: {}
+        per_level_statistics:
+          legendary: { damage: 0.25, strength: 0.25, critical_damage: 0.25 }
+          mythic: { damage: 0.25, strength: 0.25, critical_damage: 0.25 }
+        particle: 3
+        skill_category: COMBAT
+        skull_texture: 609e161bdc325c71572a548a79bb15481c924d63e4fb821379d5dd6c8929f39f
+        handler_id: SNOWMAN
+      - id: TRACKED_UNIQUE
+
+  - id: REINDEER_PET
+    material: player_head
+    name: "Reindeer Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Reindeer
+        base_statistics: {}
+        per_level_statistics:
+          legendary: { health: 1, sea_creature_chance: 0.05, fishing_speed: 0.25 }
+        particle: 3
+        skill_category: FISHING
+        skull_texture: a2df65c6fd19a58bee38252192ac7ce2cf1dc8632c3547a9228b6b697240d098
+        handler_id: REINDEER
+      - id: TRACKED_UNIQUE

@@ -46,7 +46,7 @@ public class MinionSnow extends SkyBlockMinion {
                 new MinionTier(11, 6, 960,
                         "bce70b1b8e30e90a5ad951f42ff469c19dd416cedf98d5aa4178ec953c584796",
                         Material.DIAMOND_SHOVEL, true),
-                new MinionTier(12, 5, 960,
+                new MinionTier(12, 5.8f, 960,
                         "5799a16bdbb0793e8042f1838bae536594ecaef0d5556462eb9396db5f4059ac",
                         Material.DIAMOND_SHOVEL, false)
         );
