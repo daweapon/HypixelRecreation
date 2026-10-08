@@ -1,5 +1,6 @@
 package net.swofty.type.crimsonisle;
 
+import net.swofty.type.skyblockgeneric.crimson.matriarch.MatriarchService;
 import net.swofty.type.skyblockgeneric.crimson.mob.CrimsonMobSpawner;
 import net.swofty.type.skyblockgeneric.crimson.mob.miniboss.CrimsonMinibossSpawner;
 import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoEruptionService;
@@ -17,6 +18,7 @@ public final class CrimsonIsleServices {
         VolcanoEruptionService.start();
         CrimsonMobSpawner.start();
         CrimsonMinibossSpawner.start();
+        MatriarchService.start();
         GoldenFishService.start();
         TrophyFishTabWidget.register();
     }
