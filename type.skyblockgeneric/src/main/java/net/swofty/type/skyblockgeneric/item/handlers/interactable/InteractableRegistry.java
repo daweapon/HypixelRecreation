@@ -34,6 +34,7 @@ public class InteractableRegistry {
         CrimsonItemHandlers.registerInteractables();
         ReaperPepper.registerInteractables();
         PetItems.registerInteractables();
+        net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments.registerInteractables();
         register("SKYBLOCK_MENU_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 ((skyBlockPlayer, skyBlockItem) -> skyBlockPlayer.openView(new GUISkyBlockMenu()))
         ).leftClickHandler(

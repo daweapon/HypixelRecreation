@@ -786,6 +786,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         CRIMSON_ISLE("crimson_isle", false, false, false,
                 DatapointCrimsonIsle.class, new DatapointCrimsonIsle("crimson_isle")),
+
+        ACCESSORY_POWERS("accessory_powers", false, false, false,
+                DatapointAccessoryPowers.class, new DatapointAccessoryPowers("accessory_powers")),
         ;
 
         @Getter

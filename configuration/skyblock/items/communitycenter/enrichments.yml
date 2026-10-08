@@ -2,95 +2,214 @@ items:
   - id: ACCESSORY_ENRICHMENT_SWAPPER
     material: comparator
     name: "Accessory Enrichment Swapper"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Consumed on use"
+      - ""
+      - "<7>Swaps all <9>enriched <7>accessories in"
+      - "<7>your accessory bag to another"
+      - "<7>enrichment."
+      - ""
+      - "<e>Right-click to open menu!"
     components:
       - id: ENCHANTED
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: ACCESSORY_ENRICHMENT_SWAPPER
   - id: ATTACK_SPEED_ENRICHMENT
     material: player_head
     name: "Attack Speed Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <e>+0.5 Attack Speed <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: deccdd619394bffa25354617ec6b327eede45e2c73f1cf7afa3c11ac10ee1a0f
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: CRITICAL_CHANCE_ENRICHMENT
     material: player_head
     name: "Critical Chance Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <9>+1 Crit Chance <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: 9e95293acbcd4f55faf5947bfc5135038b275a7ab81087341b9ec6e453e839
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: CRITICAL_DAMAGE_ENRICHMENT
     material: player_head
     name: "Critical Damage Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <9>+1 Crit Damage <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: 163bcaf6d2679d8d7d9bf6a474a48a77a8e91747a1084c09256ebc86cb74811
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: DEFENSE_ENRICHMENT
     material: player_head
     name: "Defense Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <a>+1 Defense <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: 32fa8f38c7b22096619c3a6d6498b405530e48d5d4f91e2aacea578844d5c67
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: FEROCITY_ENRICHMENT
     material: player_head
     name: "Ferocity Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <c>+0.3 Ferocity <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: f1e8771719abdeb11b864c0104b3bd7fc5d26d21f0f0d8ab47d13e65cb74c40
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: HEALTH_ENRICHMENT
     material: player_head
     name: "Health Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <c>+3 Health <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: faff2eb498e5c6a04484f0c9f785b448479ab213df95ec91176a308a12add70
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: INTELLIGENCE_ENRICHMENT
     material: player_head
     name: "Intelligence Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <b>+2 Intelligence <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: dc9365642c6eddcfedf5b5e14e2bc71257d9e4a3363d123c6f33c55cafbf6d
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: MAGIC_FIND_ENRICHMENT
     material: player_head
     name: "Magic Find Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <b>+0.5 Magic Find <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: ad3b4a30aedc8040815778f778a7395909c4ccce6fd55c6e3e47ab5da531952b
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: SEA_CREATURE_CHANCE_ENRICHMENT
     material: player_head
     name: "Sea Creature Chance Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <3>+0.3 Sea Creature Chance <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: 92c77045a46982b40621bfc5b058159e961340d1076c81b96517664745eb8ccf
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: SPEED_ENRICHMENT
     material: player_head
     name: "Speed Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <f>+1 Speed <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: cbfb41f866e7e8e593659986c9d6e88cd37677b3f7bd44253e5871e66d1d424
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT
   - id: STRENGTH_ENRICHMENT
     material: player_head
     name: "Strength Enrichment"
-    rarity: COMMON
+    rarity: SPECIAL
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Enriches an accessory with the"
+      - "<7>power of <c>+1 Strength <7>when applied"
+      - "<7>to a <6>Legendary <7>or <d>Mythic <7>accessory."
+      - ""
+      - "<7>Only <l>ONE <7>enrichment can be applied"
+      - "<7>to a given accessory."
     components:
       - id: SKULL_HEAD
         texture: 14d844fee24d5f27ddb669438528d83b684d901b75a6889fe7488dfc4cf7a1c
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: ACCESSORY_ENRICHMENT

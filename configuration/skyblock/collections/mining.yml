@@ -1302,6 +1302,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: OBSIDIAN_TABLET
   - amount: 100000
     rewards:
     - type: XP

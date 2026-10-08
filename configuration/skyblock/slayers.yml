@@ -62,6 +62,9 @@ slayers:
       - { tier: II, cost: 7500, requiredCombatXp: 648, slayerXp: 25, bossLevel: 2, bossHealth: 40000, bossDamage: 200, bossSpeed: 135, tokenItem: WOLF_TOOTH, tokenDrops: 4 }
       - { tier: III, cost: 20000, requiredCombatXp: 1584, slayerXp: 100, bossLevel: 3, bossHealth: 750000, bossDamage: 450, bossSpeed: 145, tokenItem: WOLF_TOOTH, tokenDrops: 16 }
       - { tier: IV, cost: 50000, requiredCombatXp: 3168, slayerXp: 500, bossLevel: 4, bossHealth: 2000000, bossDamage: 1100, bossSpeed: 155, tokenItem: WOLF_TOOTH, tokenDrops: 64 }
+    drops:
+      - { item: WOLF_TOOTH, pool: TOKEN, level: 0, tiers: { I: [1, 1, 100], II: [4, 4, 100], III: [16, 16, 100], IV: [64, 64, 100] } }
+      - { item: FURBALL, pool: MAIN, level: 4, tiers: { III: [1, 1, 0.82], IV: [1, 1, 1.62] } }
 
   - id: VOIDGLOOM_SERAPH
     enabled: true
@@ -84,6 +87,7 @@ slayers:
       - { tier: IV, cost: 50000, requiredCombatXp: 22000, slayerXp: 500, bossLevel: 4, bossHealth: 300000000, bossDamage: 21000, bossSpeed: 160, tokenItem: NULL_SPHERE, tokenDrops: 4 }
     drops:
       - { item: NULL_SPHERE, pool: TOKEN, level: 0, tiers: { I: [2, 3, 100], II: [14, 24, 100], III: [60, 80, 100], IV: [105, 155, 100] } }
+      - { item: HAZMAT_ENDERMAN, pool: MAIN, level: 4, tiers: { III: [1, 1, 1.04], IV: [1, 1, 1.55] } }
       - { item: HANDY_BLOOD_CHALICE, pool: MAIN, level: 5, tiers: { IV: [1, 1, 0.1764] } }
 
   - id: RIFTSTALKER_BLOODFIEND

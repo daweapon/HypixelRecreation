@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.accessory;
 
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffect;
+import net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments;
 import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffectKind;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -31,6 +32,7 @@ public final class AccessoryStats {
         if (!owned.definition().getRealm().isActive()) return ItemStatistics.empty();
         ItemStatistics total = ItemStatistics.add(owned.item().getAttributeHandler().getStatistics(),
                 itemExtras.apply(owned.item()));
+        total = ItemStatistics.add(total, Enrichments.statistics(owned.item()));
         for (AccessoryEffect effect : owned.definition().getEffects()) {
             if (effect.kind() == AccessoryEffectKind.STAT && effect.appliesTo(player))
                 total = ItemStatistics.add(total, effect.statistics());
