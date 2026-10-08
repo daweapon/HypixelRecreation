@@ -92,8 +92,9 @@ public class NPCGustave extends HypixelNPC {
 		}
 		if (missionData.isCurrentlyActive(MissionTalkToGustaveFourth.class)) {
 			setDialogue(player, "completed-3").thenRun(() -> {
-				// TODO: give trinket (wolf paw)
-				missionData.endMission(MissionTalkToGustaveFourth.class);
+				player.openView(new ClaimRewardView(), new ClaimRewardView.State(ItemType.WOLF_PAW, () -> {
+					missionData.endMission(MissionTalkToGustaveFourth.class);
+				}));
 			});
 			return;
 		}

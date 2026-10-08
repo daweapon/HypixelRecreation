@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.fishing.hotspot;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.skyblockgeneric.accessory.handler.UtilityAccessories;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.HypixelConst;
@@ -39,7 +40,8 @@ public final class FishingHotspotService {
         Optional<ActiveHotspot> hotspot = activeAt(player, medium, bobberPos);
         if (hotspot.isEmpty()) return ItemStatistics.empty();
         double value = hotspot.get().value() * sinkerMultiplier(player);
-        return ItemStatistics.builder().withBase(hotspot.get().statistic(), value).build();
+        return ItemStatistics.add(ItemStatistics.builder().withBase(hotspot.get().statistic(), value).build(),
+                UtilityAccessories.hotspotBuffs(player));
     }
 
     public static Optional<ActiveHotspot> activeAt(SkyBlockPlayer player, FishingMedium medium, Pos bobberPos) {

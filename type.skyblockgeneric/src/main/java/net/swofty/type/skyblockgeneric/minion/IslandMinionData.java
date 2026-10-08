@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.minion;
 
 import lombok.AllArgsConstructor;
+import net.swofty.type.skyblockgeneric.accessory.handler.UtilityAccessories;
 import lombok.Getter;
 import lombok.Setter;
 import net.minestom.server.coordinate.Pos;
@@ -151,6 +152,7 @@ public class IslandMinionData {
             percentageSpeedIncrease += minion.asSkyBlockMinion().getBonusSpeedPercentage(this);
             if (minionEntity != null) {
                 percentageSpeedIncrease += (int) PetAbilities.minionSpeedPercent(minionEntity.getInstance(), minion.name());
+                percentageSpeedIncrease += (int) UtilityAccessories.minionSpeedPercent(minionEntity.getInstance(), minion.name());
             }
 
             return percentageSpeedIncrease;

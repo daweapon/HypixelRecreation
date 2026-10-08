@@ -1,0 +1,209 @@
+items:
+  - id: FISH_AFFINITY_TALISMAN
+    material: PLAYER_HEAD
+    name: "Fish Affinity Talisman"
+    rarity: RARE
+    default_statistics:
+      fishing_speed: 10
+    components:
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 1fb18c7bfac7c7b429933374cffd76e562c8866b5eb45cf5a987a2da4a77da54
+
+  - id: HOTSPOT_TALISMAN
+    material: PAPER
+    name: "Hotspot Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HOTSPOT_BUFF
+            text:
+              - "Grants <b>+2.5 ☂ Fishing Speed <7>when"
+              - "fishing in a <d>Fishing Hotspot<7>."
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "ABA"
+              - "B B"
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_CLAY_BALL
+                amount: 1
+              B:
+                type: RUSTY_COIN
+                amount: 1
+            result:
+              type: HOTSPOT_TALISMAN
+              amount: 1
+
+  - id: HOTSPOT_RING
+    material: PAPER
+    name: "Hotspot Ring"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HOTSPOT_BUFF
+            text:
+              - "Grants buffs when fishing in a"
+              - "<d>Fishing Hotspot<7>:"
+              - "<8>• <b>+5 ☂ Fishing Speed"
+              - "<8>• <3>+0.5α Sea Creature Chance"
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_CLAY_BALL
+                amount: 8
+              B:
+                type: BUSTED_BELT_BUCKLE
+                amount: 1
+              C:
+                type: HOTSPOT_TALISMAN
+                amount: 1
+            result:
+              type: HOTSPOT_RING
+              amount: 1
+
+  - id: HOTSPOT_ARTIFACT
+    material: PAPER
+    name: "Hotspot Artifact"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HOTSPOT_BUFF
+            text:
+              - "Grants buffs when fishing in a"
+              - "<d>Fishing Hotspot<7>:"
+              - "<8>• <b>+10 ☂ Fishing Speed"
+              - "<8>• <3>+1α Sea Creature Chance"
+              - "<8>• <6>+0.5⛃ Treasure Chance"
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "A"
+              - "B"
+            ingredients:
+              A:
+                type: HOTSPOT_WATER_ORB
+                amount: 1
+              B:
+                type: HOTSPOT_RING
+                amount: 1
+            result:
+              type: HOTSPOT_ARTIFACT
+              amount: 1
+
+  - id: APPLICANT_STATEMENT
+    material: PLAYER_HEAD
+    name: "Applicant's Statement"
+    rarity: COMMON
+    default_statistics:
+      trophy_fish_chance: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>A single-page printout outlining why"
+              - "<8>the candidate's application should be"
+              - "<8>accepted. Why are these a thing?"
+              - "<8>Just read the application itself..."
+          - type: TEXT
+            text:
+              - "<c>❣ Requires <a>Novice Frog Collector<c>."
+      - id: SKULL_HEAD
+        texture: e47ae209e8a52591cc20ac0c9ec6a5cb3dc04f238ac2d743b1d54f11e9c5c85
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: STUDENT_STUDIES
+    material: PLAYER_HEAD
+    name: "Student's Studies"
+    rarity: UNCOMMON
+    default_statistics:
+      trophy_fish_chance: 2
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>A hastily-written infodump explaining"
+              - "<8>the key differences between various"
+              - "<8>frog species. It uses the wrong"
+              - "<8>citation style and is thus deemed"
+              - "<8>worthless, regardless of the"
+              - "<8>information contained within."
+          - type: TEXT
+            text:
+              - "<c>❣ Requires <a>Adept Frog Collector<c>."
+      - id: SKULL_HEAD
+        texture: af45289c8b1346fb2644e08c0c56f096f011291f1904dd2e526109dcf09f1c50
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: MASTER_THESIS
+    material: PLAYER_HEAD
+    name: "Master's Thesis"
+    rarity: RARE
+    default_statistics:
+      trophy_fish_chance: 3
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>A well-written paper, complete with"
+              - "<8>labeled diagrams. It explores frog"
+              - "<8>biodiversity and details key efforts"
+              - "<8>made in the name of conservation."
+          - type: TEXT
+            text:
+              - "<c>❣ Requires <a>Expert Frog Collector<c>."
+      - id: SKULL_HEAD
+        texture: 1e082475220fda83dba11b39d3fcc1c3fcb9b6f1fb8a0fe3ae7d68359f38ad4b
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: PHD_GRIMOIRE
+    material: PLAYER_HEAD
+    name: "PhD's Grimoire"
+    rarity: EPIC
+    default_statistics:
+      trophy_fish_chance: 4
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>A brilliant treatise documenting the"
+              - "<8>physiognomy of various frog"
+              - "<8>species, their impact on surrounding"
+              - "<8>wildlife, and...tears in the fabric of"
+              - "<8>reality beyond our conception? What?"
+          - type: TEXT
+            text:
+              - "<c>❣ Requires <a>Master Frog Collector<c>."
+      - id: SKULL_HEAD
+        texture: 8442ce78095e80476d15ee3c7c0b631f7f734fa2d0592ca1e6bf8edb8930143c
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false

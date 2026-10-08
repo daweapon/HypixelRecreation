@@ -148,6 +148,7 @@ public final class SeaCreatureProfiles {
             .mobTypes(MobType.AQUATIC, MobType.ELUSIVE)
             .damageCooldownMs(300)
             .fishingXpReward(7500).xpOrbs(60)
+            .lootTable(drops(new SkyBlockLootTable.LootRecord(ItemType.FISH_AFFINITY_TALISMAN, 1, 30)))
             .build();
 
     public static final SeaCreatureProfile THE_SEA_EMPEROR = SeaCreatureProfile.builder("THE_SEA_EMPEROR")
