@@ -1,7 +1,9 @@
 package net.swofty.type.skyblockgeneric.crimson.kuudra;
 
+import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrimsonIsle;
+import net.swofty.type.skyblockgeneric.event.custom.KuudraClearedEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -49,6 +51,7 @@ public final class KuudraProgress {
     /** Records a win. Only the Kuudra fight (Roadmap #11) calls this. */
     public static void recordClear(SkyBlockPlayer player, KuudraTier tier) {
         DatapointCrimsonIsle.edit(player, data -> data.getNumbers().merge(CLEARED + tier.name(), 1L, Long::sum));
+        HypixelEventHandler.callCustomEvent(new KuudraClearedEvent(player, tier));
     }
 
     public static List<Requirement> requirements(SkyBlockPlayer player, KuudraTier tier) {
