@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.accessory;
 
+import net.minestom.server.inventory.PlayerInventory;
 import net.minestom.server.item.ItemStack;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -63,7 +64,8 @@ public final class AccessoryOwnership {
     public static List<OwnedAccessory> collect(SkyBlockPlayer player) {
         List<OwnedAccessory> candidates = new ArrayList<>();
         for (SkyBlockItem item : player.getAccessoryBag().getAllAccessories()) add(candidates, item, true);
-        for (ItemStack stack : player.getInventory().getItemStacks()) {
+        for (int slot = 0; slot < PlayerInventory.INNER_INVENTORY_SIZE; slot++) {
+            ItemStack stack = player.getInventory().getItemStack(slot);
             if (stack.isAir() || !SkyBlockItem.isSkyBlockItem(stack)) continue;
             add(candidates, new SkyBlockItem(stack), false);
         }

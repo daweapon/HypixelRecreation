@@ -58,6 +58,7 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
 import net.swofty.type.skyblockgeneric.item.components.StandardItemComponent;
+import net.swofty.type.skyblockgeneric.accessory.hatcessory.Hatcessories;
 import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
 import net.swofty.type.skyblockgeneric.item.set.impl.TieredArmorSet;
@@ -169,6 +170,7 @@ public class PlayerStatistics {
             } catch (Exception _) {
             }
         }
+        total = ItemStatistics.add(total, Hatcessories.wornStatistics(player, cache.get(PlayerItemOrigin.HELMET)));
         return ItemStatistics.add(total, TieredArmorSet.statistics(player));
     }
 
@@ -331,6 +333,11 @@ public class PlayerStatistics {
         addItemModifiers(modifiers, cache.get(PlayerItemOrigin.CHESTPLATE), StatisticSourceType.ARMOR);
         addItemModifiers(modifiers, cache.get(PlayerItemOrigin.LEGGINGS), StatisticSourceType.ARMOR);
         addItemModifiers(modifiers, cache.get(PlayerItemOrigin.BOOTS), StatisticSourceType.ARMOR);
+        SkyBlockItem worn = cache.get(PlayerItemOrigin.HELMET);
+        if (worn != null && !worn.isAir()) {
+            addModifier(modifiers, "Party Time!", Hatcessories.wornStatistics(player, worn), StatisticSourceType.ARMOR,
+                StatisticModifierType.ABILITY_PASSIVE, worn.getDisplayName(), worn.getMaterial(), texture(worn));
+        }
         if (player.getArmorSet() != null) {
             try {
                 ArmorSet armorSet = player.getArmorSet().getClazz().getConstructor().newInstance();
