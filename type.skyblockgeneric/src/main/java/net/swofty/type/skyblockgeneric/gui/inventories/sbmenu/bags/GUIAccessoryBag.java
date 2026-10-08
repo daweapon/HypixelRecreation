@@ -100,6 +100,7 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
     @Override
     public boolean onBottomClick(net.swofty.type.generic.gui.v2.context.ClickContext<AccessoryBagState> click, ViewContext ctx) {
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        if (click.slot() < 0 || click.slot() >= player.getInventory().getSize()) return true;
         SkyBlockItem cursorItem = new SkyBlockItem(player.getInventory().getCursorItem());
         SkyBlockItem clickedItem = new SkyBlockItem(player.getInventory().getItemStack(click.slot()));
 
