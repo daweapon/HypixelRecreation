@@ -6,6 +6,7 @@ items:
     components:
       - id: PET
         pet_name: "Armadillo"
+        source: { text: "Prehistoric Eggs", active: false }
         pet_type: MINING
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: c1eb6df4736ae24dd12a3d00f91e6e3aa7ade6bbefb0978afef2f0f92461018f
@@ -15,6 +16,7 @@ items:
           RARE: { coins: 30000, time_seconds: 36000 }
           EPIC: { coins: 250000, time_seconds: 172800 }
           LEGENDARY: { coins: 1000000, time_seconds: 432000 }
+          MYTHIC: { coins: 1500000, time_seconds: 3600, items: { FROZEN_SCUTE: 1 } }
         statistics:
           COMMON: { defense: { per_level: 2 } }
         abilities:
@@ -62,6 +64,7 @@ items:
     components:
       - id: PET
         pet_name: "Bal"
+        source: { text: "Bal", active: false }
         pet_type: MINING
         rarities: [EPIC, LEGENDARY]
         skull_texture: c469ba2047122e0a2de3c7437ad3dd5d31f1ac2d27abde9f8841e1d92a8c5b75
@@ -110,6 +113,7 @@ items:
           RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_RED_MUSHROOM: 4, ENCHANTED_BROWN_MUSHROOM: 4 } }
           EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_RED_MUSHROOM: 8, ENCHANTED_BROWN_MUSHROOM: 8 } }
           LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_RED_MUSHROOM: 16, ENCHANTED_BROWN_MUSHROOM: 16 } }
+          MYTHIC: { coins: 100000, time_seconds: 3600, items: { ENCHANTED_RED_MUSHROOM: 32, ENCHANTED_BROWN_MUSHROOM: 32, PET_ITEM_VAMPIRE_FANG: 1 } }
         statistics:
           COMMON: { intelligence: { per_level: 1 }, speed: { per_level: 0.05 } }
           MYTHIC: { intelligence: { per_level: 1 }, speed: { per_level: 0.05 }, fishing_speed: { per_level: 0.4 }, sea_creature_chance: { per_level: 0.05 } }
@@ -201,6 +205,7 @@ items:
           RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_END_STONE: 8 } }
           EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_END_STONE: 16, MITE_GEL: 32 } }
           LEGENDARY: { coins: 250000, time_seconds: 1800, items: { ENCHANTED_END_STONE: 32, MITE_GEL: 64 } }
+          MYTHIC: { coins: 100000, time_seconds: 3600, items: { MIXED_MITE_GEL: 1, ENCHANTED_END_STONE: 64 } }
         statistics:
           COMMON: { intelligence: { per_level: 1.5 }, pet_luck: { per_level: 0.1 } }
         abilities:
@@ -267,6 +272,7 @@ items:
     components:
       - id: PET
         pet_name: "Glacite Golem"
+        source: { text: "Glacite collection", active: false }
         pet_type: MINING
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: af132a6593876d3c377d503fd66eca3fb938743251f7b16a9870c60b7388c8a3
@@ -330,6 +336,7 @@ items:
     components:
       - id: PET
         pet_name: "Goblin"
+        source: { text: "The Forge", active: false }
         pet_type: MINING
         rarities: [LEGENDARY]
         skull_texture: 7309d8dc35a638a04b915a3b15a1452ceeae0d7ea42bcdadb21b03046987515c
@@ -375,6 +382,7 @@ items:
           RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_MITHRIL: 8 } }
           EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_MITHRIL: 16 } }
           LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_MITHRIL: 32 } }
+          MYTHIC: { coins: 100000, time_seconds: 3600, items: { ENCHANTED_MITHRIL: 64, PET_ITEM_PURE_MITHRIL_GEM: 1 } }
         statistics:
           COMMON: { true_defense: { per_level: 0.5 }, mining_fortune: { per_level: 0.25 } }
         abilities:
@@ -440,6 +448,7 @@ items:
     components:
       - id: PET
         pet_name: "Mole"
+        source: { text: "The Forge", active: false }
         pet_type: MINING
         rarities: [LEGENDARY]
         skull_texture: 727baaafc09978d4bda73e16afdde85ec13b0f95ad989524c5fcaa717cf06b4a
@@ -478,6 +487,7 @@ items:
     components:
       - id: PET
         pet_name: "Rock"
+        source: { text: "Mining milestones", active: false }
         pet_type: MINING
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 7df8aab57136df2296c7c6f969ff25d58116fe2ec59b96a85ba4927e1f6779e6
@@ -524,6 +534,7 @@ items:
     components:
       - id: PET
         pet_name: "Scatha"
+        source: { text: "Scatha", active: false }
         pet_type: MINING
         rarities: [RARE, EPIC, LEGENDARY]
         skull_texture: df03ad96092f3f789902436709cdf69de6b727c121b3c2daef9ffa1ccaed186c

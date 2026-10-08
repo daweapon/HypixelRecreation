@@ -63,7 +63,8 @@ public final class PetComponentParser {
                 RarityNumbers.parse(upperKeys(raw.get("george_price")), where + ".george_price"),
                 katUpgrades(raw.get("kat_upgrades"), where),
                 statistics, abilities, particle(raw.get("particle")),
-                string(raw, "skull_texture", ""), texturesByRarity(raw.get("skull_texture_by_rarity"), where));
+                string(raw, "skull_texture", ""), texturesByRarity(raw.get("skull_texture_by_rarity"), where))
+                .withSource(PetSource.parse(raw.get("source"), where + ".source"));
     }
 
     private static List<Rarity> rarities(Map<String, Object> raw, String where) {

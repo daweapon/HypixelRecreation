@@ -3,6 +3,8 @@ package net.swofty.type.hub.gui.fann;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.Components;
@@ -25,6 +27,7 @@ import java.util.List;
 
 public class GUIFannPetTraining extends StatelessView {
     private static final int[] TRAINING_SLOTS = {11, 13, 15};
+    private static final long OWL_PRICE = 2_200_000;
     private static final String OWL_TEXTURE = "da3216da54e7368fb40b721239ad95e07ef4f97d93f1c42ff319bab9a53882af";
 
     @Override
@@ -68,7 +71,7 @@ public class GUIFannPetTraining extends StatelessView {
                 <7>Cost
                 <6>2,200,000 Coins
 
-                <c>The Owl Pet is not available yet!"""));
+                <e>Click to purchase!"""), (click, c) -> buyOwl(player));
 
         int taming = PetTrainingService.tamingLevel(player);
         layout.slot(48, ItemStacks.item(Material.POLAR_BEAR_SPAWN_EGG, """
@@ -79,6 +82,19 @@ public class GUIFannPetTraining extends StatelessView {
 
                 <7>Taming Level: <a>{}
                 <7>Free Training: <b>{:,} EXP/day""", taming, (long) PetTrainingType.FREE.xpPerDay(taming)));
+    }
+
+    private static void buyOwl(SkyBlockPlayer player) {
+        if (player.getCoins() < OWL_PRICE) {
+            player.sendMessage("<c>You don't have enough coins!");
+            return;
+        }
+        player.removeCoins(OWL_PRICE);
+        SkyBlockItem owl = new SkyBlockItem(ItemType.OWL_PET);
+        owl.getAttributeHandler().setRarity(Rarity.LEGENDARY);
+        player.addAndUpdateItem(owl);
+        player.playSuccessSound();
+        player.sendMessage("<a>You bought an <6>Owl Pet<a>!");
     }
 
     private static ItemStack.Builder renderSlot(SkyBlockPlayer player, int slot) {

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.pettraining;
 
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetTraining;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetTraining.PetTrainingData;
@@ -63,7 +64,7 @@ public final class PetTrainingService {
     }
 
     public static void start(SkyBlockPlayer player, int slot, SkyBlockItem pet, PetTrainingType type, int days) {
-        double xpPerDay = type.xpPerDay(tamingLevel(player));
+        double xpPerDay = type.xpPerDay(tamingLevel(player)) * MiscPetHooks.trainingXpMultiplier(pet);
         long now = System.currentTimeMillis();
         player.removeCoins(type.getCoinsPerDay() * days);
         if (type.getBitsPerDay() > 0) player.removeBits(type.getBitsPerDay() * days);

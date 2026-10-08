@@ -6,10 +6,17 @@ items:
     components:
       - id: PET
         pet_name: "Frog"
+        source: { text: "Agatha", active: false }
         pet_type: FORAGING
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: 45852a95928897746012988fbd5dbaa1b70b7a5fb65157016f4ff3f245374c08
         george_price: { COMMON: 100, UNCOMMON: 500, RARE: 1000, EPIC: 2000, LEGENDARY: 5000, MYTHIC: 10000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 10000, time_seconds: 3600, items: { SMALL_FROG_TREAT: 1 } }
+          RARE: { coins: 50000, time_seconds: 7200, items: { MEDIUM_FROG_TREAT: 1 } }
+          EPIC: { coins: 200000, time_seconds: 10800, items: { LARGE_FROG_TREAT: 1 } }
+          LEGENDARY: { coins: 1000000, time_seconds: 14400, items: { GIANT_FROG_TREAT: 1 } }
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { BUCKET_OF_FROGSPAWN: 1 } }
         statistics:
           COMMON: { speed: { per_level: 0.5 }, fishing_speed: { per_level: 0.4 }, respiration: { per_level: 0.1 }, sweep: { per_level: 0.1 } }
           MYTHIC: { speed: { per_level: 0.5 }, fishing_speed: { per_level: 0.4 }, trophy_fish_chance: { per_level: 0.05 }, respiration: { per_level: 0.1 }, sweep: { per_level: 0.1 } }
@@ -75,6 +82,7 @@ items:
     components:
       - id: PET
         pet_name: "Jade Dragon"
+        source: { text: "Dragon's Lair egg", active: false }
         pet_type: FORAGING
         rarities: [LEGENDARY]
         max_level: 200
@@ -203,10 +211,16 @@ items:
     components:
       - id: PET
         pet_name: "Sloth"
+        source: { text: "Miria", active: false }
         pet_type: FORAGING
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 5468537e1e99040b760c83e53096c86870cdcd9285d53300761d0e36ff9e192f
         george_price: { COMMON: 25000, UNCOMMON: 50000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 25000, time_seconds: 3600, items: { SMALL_SLOTH_CLAW: 1 } }
+          RARE: { coins: 100000, time_seconds: 14400, items: { MEDIUM_SLOTH_CLAW: 1 } }
+          EPIC: { coins: 250000, time_seconds: 43200, items: { LARGE_SLOTH_CLAW: 1 } }
+          LEGENDARY: { coins: 1000000, time_seconds: 86400, items: { GIANT_SLOTH_CLAW: 1 } }
         statistics:
           COMMON: { sweep: { per_level: 0.25 }, foraging_fortune: { per_level: 0.25 } }
         abilities:

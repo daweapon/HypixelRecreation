@@ -459,7 +459,7 @@ items:
       - "§7Upgrades a §aDroplet Wisp §7pet to a"
       - "§9Frost Wisp §7pet, resetting its level."
       - ""
-      - "§cWisp pets aren't available yet."
+      - "§cUpgrading Wisp pets isn't available yet."
     components:
       - id: SKULL_HEAD
         texture: 54ea0dfb794fe9b372f5ec529fc8b8a0f077febf4b74f78972f0c82c3c186248
@@ -497,7 +497,7 @@ items:
       - "§7Upgrades a §9Frost Wisp §7pet to a"
       - "§5Glacial Wisp §7pet, resetting its level."
       - ""
-      - "§cWisp pets aren't available yet."
+      - "§cUpgrading Wisp pets isn't available yet."
     components:
       - id: SKULL_HEAD
         texture: 54ea0dfb794fe9b372f5ec529fc8b8a0f077febf4b74f78972f0c82c3c186248
@@ -535,7 +535,7 @@ items:
       - "§7Upgrades a §5Glacial Wisp §7pet to a"
       - "§6Subzero Wisp §7pet, resetting its level."
       - ""
-      - "§cWisp pets aren't available yet."
+      - "§cUpgrading Wisp pets isn't available yet."
     components:
       - id: SKULL_HEAD
         texture: 54ea0dfb794fe9b372f5ec529fc8b8a0f077febf4b74f78972f0c82c3c186248

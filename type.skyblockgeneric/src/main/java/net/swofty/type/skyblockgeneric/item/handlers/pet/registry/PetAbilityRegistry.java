@@ -18,7 +18,8 @@ public final class PetAbilityRegistry {
     private static final List<Provider> PROVIDERS = List.of(
             new CorePetAbilities(),
             new CombatPetAbilities(),
-            new GatheringPetAbilities()
+            new GatheringPetAbilities(),
+            new MiscPetAbilities()
     );
 
     static {

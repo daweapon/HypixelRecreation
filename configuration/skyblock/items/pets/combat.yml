@@ -6,6 +6,7 @@ items:
     components:
       - id: PET
         pet_name: "Ankylosaurus"
+        source: { text: "The Forge", active: false }
         pet_type: COMBAT
         rarities: [LEGENDARY]
         skull_texture: c1aa836b9096c417903299a6c5ab41738c19648ac439fed4bcbe6c32605338dc
@@ -112,6 +113,7 @@ items:
     components:
       - id: PET
         pet_name: "Eerie"
+        source: { text: "Tyashoi Alchemist", active: false }
         pet_type: COMBAT
         rarities: [COMMON, RARE, LEGENDARY]
         skull_texture: c3af70c6ff76ba48f24ee8a2063a5b50bbfabf409f4795248a292f8289f47c98
@@ -151,6 +153,7 @@ items:
     components:
       - id: PET
         pet_name: "Ender Dragon"
+        source: { text: "Ender Dragon fights", active: false }
         pet_type: COMBAT
         rarities: [EPIC, LEGENDARY]
         skull_texture: aec3ff563290b13ff3bcc36898af7eaa988b6cc18dc254147f58374afe9b21b9
@@ -194,6 +197,7 @@ items:
     components:
       - id: PET
         pet_name: "Enderman"
+        source: { text: "End Endermen", active: false }
         pet_type: COMBAT
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: 9f31c9b5a2bfe7443645b4e7e8ea408b04d554a9200b00afd574ce924b555ecb
@@ -203,6 +207,7 @@ items:
           RARE: { coins: 5000, time_seconds: 172800 }
           EPIC: { coins: 10000, time_seconds: 518400 }
           LEGENDARY: { coins: 40000000, time_seconds: 1036800, items: { ENCHANTED_EYE_OF_ENDER: 8 } }
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { ENDERMAN_CORTEX_REWRITER: 1 } }
         statistics:
           COMMON: { critical_damage: { per_level: 0.75 } }
         abilities:
@@ -252,6 +257,7 @@ items:
     components:
       - id: PET
         pet_name: "Ghoul"
+        source: { text: "Crypt Ghouls", active: false }
         pet_type: COMBAT
         rarities: [EPIC, LEGENDARY]
         skull_texture: 1e1109bbd1f82c182363ed53b624b688924447f9f68b929674ad37f3cef762a8
@@ -300,6 +306,7 @@ items:
     components:
       - id: PET
         pet_name: "Golden Dragon"
+        source: { text: "Dragon's Lair egg", active: false }
         pet_type: COMBAT
         rarities: [LEGENDARY]
         max_level: 200
@@ -362,6 +369,7 @@ items:
     components:
       - id: PET
         pet_name: "Golem"
+        source: { text: "End Stone Protector", active: false }
         pet_type: COMBAT
         rarities: [EPIC, LEGENDARY]
         skull_texture: 89091d79ea0f59ef7ef94d7bba6e5f17f2f7d4572c44f90f76c4819a714
@@ -594,6 +602,7 @@ items:
     components:
       - id: PET
         pet_name: "Kuudra"
+        source: { text: "Kuudra collection", active: false }
         pet_type: COMBAT
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         passive: true
@@ -652,6 +661,7 @@ items:
     components:
       - id: PET
         pet_name: "Mammoth"
+        source: { text: "The Forge", active: false }
         pet_type: COMBAT
         rarities: [LEGENDARY]
         skull_texture: 6b10715732cd1fd49fa1b6187947c307dd4687105cf033840607f9d6234743ad
@@ -813,6 +823,7 @@ items:
     components:
       - id: PET
         pet_name: "Precursor Drone"
+        source: { text: "The Forge", active: false }
         pet_type: COMBAT
         rarities: [LEGENDARY]
         skull_texture: 51aae288ab9d5354fda4e395a36421bd261a9b6213dbb786d7ab39465e479ce9
@@ -868,6 +879,8 @@ items:
         skull_texture: a8abb471db0ab78703011979dc8b40798a941f3a4dec3ec61cbeec2af8cffe8
         skull_texture_by_rarity: { MYTHIC: "250de7097d939e447ca2d398441cba1d2a5e1a69052ac99c19ff20ad5a3f01ab" }
         george_price: { LEGENDARY: 5000, MYTHIC: 10000 }
+        kat_upgrades:
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { RAT_JETPACK: 1 } }
         statistics:
           LEGENDARY: { health: { per_level: 1.25 }, strength: { per_level: 0.6 }, critical_damage: { per_level: 0.25 } }
         abilities:
@@ -909,6 +922,7 @@ items:
     components:
       - id: PET
         pet_name: "Rift Ferret"
+        source: { text: "The Rift", active: false }
         pet_type: COMBAT
         rarities: [EPIC, LEGENDARY]
         skull_texture: b6b11399448260185da1d17e54c984515faab6d8585f00972451ec2b43d46f94
@@ -1007,6 +1021,7 @@ items:
           RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_STRING: 8, ENCHANTED_SPIDER_EYE: 4 } }
           EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_STRING: 16, ENCHANTED_SPIDER_EYE: 8 } }
           LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_STRING: 32, ENCHANTED_SPIDER_EYE: 16 } }
+          MYTHIC: { coins: 100000, time_seconds: 3600, items: { ENCHANTED_STRING: 64, ENCHANTED_SPIDER_EYE: 32, FAKE_NEUROSCIENCE_DEGREE: 1 } }
         statistics:
           COMMON: { strength: { per_level: 0.5 }, critical_chance: { per_level: 0.1 } }
         abilities:
@@ -1081,6 +1096,7 @@ items:
     components:
       - id: PET
         pet_name: "Spirit"
+        source: { text: "Dungeons", active: false }
         pet_type: COMBAT
         rarities: [EPIC, LEGENDARY]
         passive: true
@@ -1121,6 +1137,7 @@ items:
     components:
       - id: PET
         pet_name: "T-Rex"
+        source: { text: "The Forge", active: false }
         pet_type: COMBAT
         rarities: [LEGENDARY]
         skull_texture: 93f28ec96df59c67e9d2fc2e7e3d055fa31646e4111add9fe26a692801964126
@@ -1159,12 +1176,14 @@ items:
     components:
       - id: PET
         pet_name: "Tarantula"
+        source: { text: "Spider's Den spiders", active: false }
         pet_type: COMBAT
         rarities: [EPIC, LEGENDARY, MYTHIC]
         skull_texture: b81b5cf3a65bf9cab4bca55781721a86d567d9e106551647f35b715edf00a13f
         george_price: { EPIC: 2000, LEGENDARY: 100000, MYTHIC: 150000 }
         kat_upgrades:
           LEGENDARY: { coins: 5000000, time_seconds: 864000, items: { TARANTULA_WEB: 512 } }
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { FAKE_NEUROSCIENCE_DEGREE: 1 } }
         statistics:
           EPIC: { strength: { per_level: 0.1 }, critical_chance: { per_level: 0.1 }, critical_damage: { per_level: 0.3 } }
         abilities:
