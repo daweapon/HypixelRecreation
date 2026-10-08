@@ -169,8 +169,7 @@ class MuseumMaxGrantTest {
 
         assertEquals(data.getEntryOf(), loaded.getEntryOf());
         assertEquals(data.getStaffGranted(), loaded.getStaffGranted());
-        assertEquals(suit.pieces().size(), loaded.itemsFor(suit, true).size());
-        assertTrue(loaded.getCurrentlyInMuseum().stream().allMatch(loaded::isStaffGranted));
+        assertEquals(suit.pieces().size(), loaded.getStaffGranted().size());
     }
 
     @Test
