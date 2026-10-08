@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
+import net.swofty.type.skyblockgeneric.crimson.dojo.DojoChallengeLock;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.GUISkyBlockMenu;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -21,6 +22,11 @@ public class ActionPlayerClickItem implements HypixelEventClass {
     public void run(InventoryPreClickEvent event) {
         final SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
 
+        if (DojoChallengeLock.isLocked(player) && touchesMenuSlot(event)) {
+            event.setCancelled(true);
+            if (event.getClick() instanceof Click.Left || event.getClick() instanceof Click.Right) DojoChallengeLock.cancel(player);
+            return;
+        }
         if (touchesMenuSlot(event) || isMenu(event.getClickedItem()) || isMenu(player.getInventory().getCursorItem())) {
             event.setCancelled(true);
             if (isMenu(event.getClickedItem()) && (event.getClick() instanceof Click.Left || event.getClick() instanceof Click.Right)) {

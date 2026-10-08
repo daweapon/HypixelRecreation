@@ -1,0 +1,132 @@
+items:
+  - id: DOJO_WHITE_BELT
+    material: player_head
+    name: "White Belt"
+    rarity: COMMON
+    default_statistics:
+      health: 10
+      defense: 5
+    lore:
+      - "\xA77Reduces damage taken by \xA7c0.5%\xA77."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: REFORGABLE
+        reforge_type: EQUIPMENT
+      - id: ENCHANTABLE
+        enchant_groups:
+          - EQUIPMENT
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: SKULL_HEAD
+        texture: 32d2e3fcf0e39037eaf22384dab3f08522a6b891d27a47b7527916ea81add3c5
+
+  - id: DOJO_YELLOW_BELT
+    material: player_head
+    name: "Yellow Belt"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 15
+      defense: 5
+    lore:
+      - "\xA77Reduces damage taken by \xA7c1%\xA77."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: REFORGABLE
+        reforge_type: EQUIPMENT
+      - id: ENCHANTABLE
+        enchant_groups:
+          - EQUIPMENT
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: SKULL_HEAD
+        texture: 436d66ce33005af4ee4e9637386349957902f25b7ea629577166f830fe0c54f6
+
+  - id: DOJO_GREEN_BELT
+    material: player_head
+    name: "Green Belt"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 20
+      defense: 10
+    lore:
+      - "\xA77Reduces damage taken by \xA7c3%\xA77."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: REFORGABLE
+        reforge_type: EQUIPMENT
+      - id: ENCHANTABLE
+        enchant_groups:
+          - EQUIPMENT
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: SKULL_HEAD
+        texture: f7203d2f08a7d2b7c95532865eb2b593e526ddb92fd5cca9e7d7b622bc539906
+
+  - id: DOJO_BLUE_BELT
+    material: player_head
+    name: "Blue Belt"
+    rarity: RARE
+    default_statistics:
+      health: 25
+      defense: 15
+    lore:
+      - "\xA77Reduces damage taken by \xA7c4%\xA77."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: REFORGABLE
+        reforge_type: EQUIPMENT
+      - id: ENCHANTABLE
+        enchant_groups:
+          - EQUIPMENT
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: SKULL_HEAD
+        texture: 5a4f7e57a4359457ce0e7da27e8513a8b6197f1ca68d071542c66f8a41baf4ed
+
+  - id: DOJO_BROWN_BELT
+    material: player_head
+    name: "Brown Belt"
+    rarity: EPIC
+    default_statistics:
+      health: 30
+      defense: 20
+    lore:
+      - "\xA77Reduces damage taken by \xA7c5%\xA77."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: REFORGABLE
+        reforge_type: EQUIPMENT
+      - id: ENCHANTABLE
+        enchant_groups:
+          - EQUIPMENT
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: SKULL_HEAD
+        texture: d3a2147c7ef772f9cc40b301512cbd4fb37b5a6885dd5fe24549362584dda467
+
+  - id: DOJO_BLACK_BELT
+    material: player_head
+    name: "Black Belt"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 35
+      defense: 25
+    lore:
+      - "\xA77Reduces damage taken by \xA7c6%\xA77."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: REFORGABLE
+        reforge_type: EQUIPMENT
+      - id: ENCHANTABLE
+        enchant_groups:
+          - EQUIPMENT
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: SKULL_HEAD
+        texture: c3b0d9622df69159c20706e9af400d6bb308ebcb7520025f57d977ad034f6b5a

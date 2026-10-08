@@ -1,5 +1,6 @@
 package net.swofty.type.crimsonisle;
 
+import net.swofty.type.crimsonisle.dojo.DojoService;
 import net.swofty.type.skyblockgeneric.crimson.matriarch.MatriarchService;
 import net.swofty.type.skyblockgeneric.crimson.mob.CrimsonMobSpawner;
 import net.swofty.type.skyblockgeneric.crimson.mob.miniboss.CrimsonMinibossSpawner;
@@ -21,5 +22,6 @@ public final class CrimsonIsleServices {
         MatriarchService.start();
         GoldenFishService.start();
         TrophyFishTabWidget.register();
+        DojoService.start();
     }
 }

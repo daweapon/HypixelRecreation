@@ -17,7 +17,8 @@ public class WitherShieldDamageReductionEvent extends SkyBlockValueEvent {
         double reduction = event.getPlayer().getStatistics().getIncomingDamageReductionPercent();
         if (reduction <= 0) return;
 
-        double value = (double) event.getValue();
-        event.setValue(value * (1 - Math.min(reduction, 1.0)));
+        if (!(event.getValue() instanceof Number damage)) return;
+        double reduced = damage.doubleValue() * (1 - Math.min(reduction, 1.0));
+        event.setValue(damage instanceof Float ? (Object) (float) reduced : (Object) reduced);
     }
 }
