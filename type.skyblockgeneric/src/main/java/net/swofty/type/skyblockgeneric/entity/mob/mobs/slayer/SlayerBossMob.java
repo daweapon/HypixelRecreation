@@ -82,6 +82,19 @@ public final class SlayerBossMob extends SkyBlockMob {
     }
 
     @Override
+    protected String nameHeader() {
+        return ability == null ? "" : ability.nameHeader(this);
+    }
+
+    @Override
+    public void attack(@org.jetbrains.annotations.NotNull net.minestom.server.entity.Entity target, boolean swingHand) {
+        if (ability != null && !ability.canAttack(this)) {
+            return;
+        }
+        super.attack(target, swingHand);
+    }
+
+    @Override
     public void onMeleeHit(SkyBlockPlayer target) {
         ability.onMeleeHit(this, target);
     }

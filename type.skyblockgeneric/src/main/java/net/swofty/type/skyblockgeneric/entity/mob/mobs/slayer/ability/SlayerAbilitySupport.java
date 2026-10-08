@@ -68,13 +68,19 @@ abstract class SlayerAbilitySupport implements SlayerBossAbility {
     }
 
     protected void trueDamage(SlayerBossMob boss, SkyBlockPlayer player, double damage, String source) {
+        trueDamage(boss, player, damage, source, true);
+    }
+
+    protected void trueDamage(SlayerBossMob boss, SkyBlockPlayer player, double damage, String source, boolean chat) {
         if (damage <= 0 || player.isRemoved()) {
             return;
         }
 
         player.setHealth((float) Math.max(0, player.getHealth() - damage));
         new DamageIndicator().damage((float) damage).pos(player.getPosition()).critical(false).display(player.getInstance());
-        player.sendMessage("<c>{} dealt {} true damage!", source, Math.round(damage));
+        if (chat) {
+            player.sendMessage("<c>{} dealt {} true damage!", source, Math.round(damage));
+        }
         player.playSound(Sound.sound(Key.key("entity.player.hurt"), Sound.Source.PLAYER, 0.8f, 0.8f), Sound.Emitter.self());
     }
 

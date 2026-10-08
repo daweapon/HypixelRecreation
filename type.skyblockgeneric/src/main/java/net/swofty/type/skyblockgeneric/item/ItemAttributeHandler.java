@@ -464,6 +464,14 @@ public class ItemAttributeHandler {
         ((ItemAttributeThunderCharge) item.getAttribute("thunder_charge")).setValue(charge);
     }
 
+    public int getDaggerAttunement() {
+        return ((ItemAttributeDaggerAttunement) item.getAttribute("td_attune_mode")).getValue();
+    }
+
+    public void setDaggerAttunement(int mode) {
+        ((ItemAttributeDaggerAttunement) item.getAttribute("td_attune_mode")).setValue(mode);
+    }
+
     public int getSnowballAmmo() {
         return ((ItemAttributeSnowballAmmo) item.getAttribute("ammo")).getValue();
     }

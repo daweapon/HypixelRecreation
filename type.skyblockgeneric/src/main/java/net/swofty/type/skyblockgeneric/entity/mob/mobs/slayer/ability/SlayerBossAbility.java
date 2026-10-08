@@ -15,6 +15,14 @@ public interface SlayerBossAbility {
 
     void onDeath(SlayerBossMob boss);
 
+    default boolean canAttack(SlayerBossMob boss) {
+        return true;
+    }
+
+    default String nameHeader(SlayerBossMob boss) {
+        return "";
+    }
+
     static SlayerBossAbility none() {
         return NoopSlayerBossAbility.INSTANCE;
     }

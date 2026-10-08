@@ -5,6 +5,7 @@ import java.util.UUID;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
+import net.minestom.server.entity.damage.Damage;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
@@ -44,17 +45,54 @@ public final class SlayerMinionMob extends SkyBlockMob {
     @Override public List<MobType> getMobTypes() { return live().mobTypes(); }
     @Override public @Nullable SkyBlockLootTable getLootTable() { return null; }
     @Override public SkillCategories getSkillCategory() { return SkillCategories.COMBAT; }
-    @Override public long damageCooldown() { return 700L; }
+    @Override public long damageCooldown() { return live().hooks().damageCooldownMillis(); }
     @Override public OtherLoot getOtherLoot() { return new OtherLoot(0, 0, 0); }
 
     @Override
     public List<GoalSelector> getGoalSelectors() {
-        return SlayerBossBehaviour.goals(this);
+        return live().hooks().stationary() ? List.of() : SlayerBossBehaviour.goals(this);
     }
 
     @Override
     public List<TargetSelector> getTargetSelectors() {
-        return SlayerBossBehaviour.targets(this);
+        return live().hooks().stationary() ? List.of() : SlayerBossBehaviour.targets(this);
+    }
+
+    @Override
+    protected String nameHeader() {
+        return live().hooks().nameHeader(this);
+    }
+
+    @Override
+    public void attack(@org.jetbrains.annotations.NotNull net.minestom.server.entity.Entity target, boolean swingHand) {
+        if (!live().hooks().canAttack(this)) {
+            return;
+        }
+        super.attack(target, swingHand);
+    }
+
+    @Override
+    public void onMeleeHit(net.swofty.type.skyblockgeneric.user.SkyBlockPlayer target) {
+        live().hooks().onMeleeHit(this, target);
+    }
+
+    @Override
+    public boolean damage(@org.jetbrains.annotations.NotNull Damage damage) {
+        float amount = damage.getAmount();
+        float modified = live().hooks().modifyIncomingDamage(this, damage, amount);
+        if (modified <= 0F) {
+            return false;
+        }
+        Damage applied = modified == amount
+            ? damage
+            : new Damage(damage.getType(), damage.getSource(), damage.getAttacker(), damage.getSourcePosition(), modified);
+        return super.damage(applied);
+    }
+
+    @Override
+    public void kill() {
+        live().hooks().onDeath(this);
+        super.kill();
     }
 
     @Override
@@ -77,7 +115,43 @@ public final class SlayerMinionMob extends SkyBlockMob {
         double health,
         double damage,
         double speed,
-        List<MobType> mobTypes
+        List<MobType> mobTypes,
+        Hooks hooks
     ) {
+        public SlayerMinionProfile(String displayName, int level, EntityType entityType, double health, double damage,
+                                   double speed, List<MobType> mobTypes) {
+            this(displayName, level, entityType, health, damage, speed, mobTypes, Hooks.NONE);
+        }
+    }
+
+    public interface Hooks {
+        Hooks NONE = new Hooks() {
+        };
+
+        default boolean stationary() {
+            return false;
+        }
+
+        default boolean canAttack(SlayerMinionMob minion) {
+            return true;
+        }
+
+        default long damageCooldownMillis() {
+            return 700L;
+        }
+
+        default String nameHeader(SlayerMinionMob minion) {
+            return "";
+        }
+
+        default float modifyIncomingDamage(SlayerMinionMob minion, Damage damage, float amount) {
+            return amount;
+        }
+
+        default void onMeleeHit(SlayerMinionMob minion, net.swofty.type.skyblockgeneric.user.SkyBlockPlayer target) {
+        }
+
+        default void onDeath(SlayerMinionMob minion) {
+        }
     }
 }
