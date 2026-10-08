@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.ConfiguredPetAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetAbilityKind;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetComponentParser;
 import net.swofty.type.skyblockgeneric.staff.MaxPets;
 import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import net.swofty.type.skyblockgeneric.user.pets.PetScore;
@@ -188,5 +189,56 @@ class PetFrameworkTest {
         DatapointPetData.UserPetData loaded = restored.getValue();
         assertEquals(data.getPetsMap().size(), loaded.getPetsMap().size());
         assertEquals(PetScore.of(data.getPetsMap().keySet()), PetScore.of(loaded.getPetsMap().keySet()));
+    }
+
+    @Test
+    void levelTwoHundredPetsUseTheirBaseLevel() {
+        PetComponent dragon = PetComponentParser.parse(Map.of(
+                "pet_name", "Golden Dragon",
+                "pet_type", "COMBAT",
+                "rarities", List.of("LEGENDARY"),
+                "max_level", 200,
+                "stats_base_level", 100,
+                "skull_texture", "test",
+                "statistics", Map.of("LEGENDARY", Map.of("strength", Map.of("base", 25, "per_level", 0.25))),
+                "abilities", List.of(Map.of(
+                        "name", "Gold's Power",
+                        "kind", "TEXT",
+                        "text", List.of("<7>by <a>{0}%"),
+                        "values", List.of(Map.of("base", 5, "per_level", 0.05))))));
+        assertEquals(0, dragon.statisticsAt(Rarity.LEGENDARY, 1).getOverall(ItemStatistic.STRENGTH), 1e-9);
+        assertTrue(dragon.isEggForm(99));
+        assertEquals(25, dragon.statisticsAt(Rarity.LEGENDARY, 100).getOverall(ItemStatistic.STRENGTH), 1e-9);
+        assertEquals(50, dragon.statisticsAt(Rarity.LEGENDARY, 200).getOverall(ItemStatistic.STRENGTH), 1e-9);
+        assertEquals(10, dragon.getAbilities().getFirst().valuesAt(Rarity.LEGENDARY, 200)[0], 1e-9);
+        assertEquals(5, dragon.getAbilities().getFirst().valuesAt(Rarity.LEGENDARY, 100)[0], 1e-9);
+    }
+
+    @Test
+    void snowmanValuesMatchNeuAtLevelsOneAndOneHundred() {
+        PetComponent snowman = new SkyBlockItem(ItemType.SNOWMAN_PET).getComponent(PetComponent.class);
+        ConfiguredPetAbility blizzard = ability(snowman, "Blizzard");
+        assertEquals(8.08, blizzard.valuesAt(Rarity.LEGENDARY, 1)[0], 1e-9);
+        assertEquals(16, blizzard.valuesAt(Rarity.LEGENDARY, 100)[0], 1e-9);
+        assertEquals(10, blizzard.valuesAt(Rarity.LEGENDARY, 100)[1], 1e-9);
+        assertEquals(10, ability(snowman, "Frostbite").valuesAt(Rarity.LEGENDARY, 100)[0], 1e-9);
+        assertEquals(10.1, ability(snowman, "Snow Cannon").valuesAt(Rarity.LEGENDARY, 1)[0], 1e-9);
+        assertEquals(20, ability(snowman, "Snow Cannon").valuesAt(Rarity.LEGENDARY, 100)[0], 1e-9);
+    }
+
+    @Test
+    void loreOnlyFlagsAbilitiesThatAreNotActive() {
+        SkyBlockItem griffin = new SkyBlockItem(ItemType.GRIFFIN_PET);
+        griffin.getAttributeHandler().setRarity(Rarity.MYTHIC);
+        PetLevels.setLevel(griffin, 100);
+        PetComponent component = griffin.getComponent(PetComponent.class);
+        assertFalse(ability(component, "King of Kings").getDescription(griffin).contains("<8>(Not active yet)"));
+        SkyBlockItem lion = new SkyBlockItem(ItemType.LION_PET);
+        assertTrue(ability(lion.getComponent(PetComponent.class), "King of the Jungle").getDescription(lion)
+                .contains("<8>(Not active yet)"));
+    }
+
+    private static ConfiguredPetAbility ability(PetComponent pet, String name) {
+        return pet.getAbilities().stream().filter(a -> a.getName().equals(name)).findFirst().orElseThrow();
     }
 }

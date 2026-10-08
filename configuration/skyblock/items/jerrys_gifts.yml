@@ -465,27 +465,53 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Snowman
-        kat_upgrades:
-          common: null
-          uncommon: null
-          rare: null
-          epic: null
-          legendary: null
-          mythic:
-            time: 3600000
-            coins: 1000000
-            item: MAGIC_TOP_HAT
-            amount: 1
-          rest: null
-        base_statistics: {}
-        per_level_statistics:
-          legendary: { damage: 0.25, strength: 0.25, critical_damage: 0.25 }
-          mythic: { damage: 0.25, strength: 0.25, critical_damage: 0.25 }
-        particle: 3
-        skill_category: COMBAT
+        pet_name: "Snowman"
+        pet_type: COMBAT
+        rarities: [LEGENDARY, MYTHIC]
         skull_texture: 609e161bdc325c71572a548a79bb15481c924d63e4fb821379d5dd6c8929f39f
-        handler_id: SNOWMAN
+        skull_texture_by_rarity: { MYTHIC: "903485cb1cd882fdd7faaf1359ffc3bd4d5341c81c17e95527204e554dad8188" }
+        george_price: { LEGENDARY: 2000000, MYTHIC: 2000000 }
+        kat_upgrades:
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { MAGIC_TOP_HAT: 1 } }
+        statistics:
+          LEGENDARY: { damage: { per_level: 0.25 }, strength: { per_level: 0.25 }, critical_damage: { per_level: 0.25 } }
+        abilities:
+          - name: "Blizzard"
+            kind: HANDLER
+            handler: SNOWMAN_BLIZZARD
+            triggers: DAMAGED_BY_MOB
+            text:
+              - "<7>Enemies within <a>{0} <7>blocks are slowed"
+              - "<7>by <a>25% <7>and deal <a>{1}% <7>less damage."
+            values:
+              - { base: 8, per_level: 0.08 }
+              - { per_level: 0.1 }
+          - name: "Frostbite"
+            kind: DAMAGE_REDUCTION
+            triggers: DAMAGED_BY_MOB
+            text:
+              - "<7>Your freezing aura slows enemy"
+              - "<7>attacks causing you to take <a>{0}%"
+              - "<7>reduced damage."
+            values:
+              - { per_level: 0.1 }
+          - name: "Snow Cannon"
+            kind: HANDLER
+            handler: SNOWMAN_SNOW_CANNON
+            triggers: MELEE_HIT
+            text:
+              - "<7>Shoots a snowball towards an enemy"
+              - "<7>when you attack dealing <a>{0}% <7>of"
+              - "<7>your last dealt melee damage,"
+              - "<7>capped at <f>200,000<7>. <8>(1s cooldown)."
+            values:
+              - { base: 10, per_level: 0.1 }
+          - name: "Ouch!"
+            rarity: MYTHIC
+            kind: TEXT
+            text:
+              - "<7>Your snowballs have <a>50% <7>chance of"
+              - "<7>dealing <c>double <7>damage!"
       - id: TRACKED_UNIQUE
 
   - id: REINDEER_PET
@@ -494,12 +520,41 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Reindeer
-        base_statistics: {}
-        per_level_statistics:
-          legendary: { health: 1, sea_creature_chance: 0.05, fishing_speed: 0.25 }
-        particle: 3
-        skill_category: FISHING
+        pet_name: "Reindeer"
+        pet_type: FISHING
+        rarities: [LEGENDARY]
         skull_texture: a2df65c6fd19a58bee38252192ac7ce2cf1dc8632c3547a9228b6b697240d098
-        handler_id: REINDEER
+        george_price: { LEGENDARY: 5000 }
+        statistics:
+          LEGENDARY: { health: { per_level: 1 }, fishing_speed: { per_level: 0.25 }, sea_creature_chance: { per_level: 0.05 } }
+        abilities:
+          - name: "Winter Sprint"
+            kind: TEXT
+            text:
+              - "<7>Gain <d>double <7>pet <a>EXP<7>."
+          - name: "Infused"
+            kind: STAT
+            statistics: { fishing_speed: "{0}", treasure_chance: 5 }
+            when: { servers: [JERRYS_WORKSHOP] }
+            text:
+              - "<7>Gives <b>+{0}<b><glyph:stat_fishing_speed> Fishing Speed <7>and <6>+5<glyph:stat_treasure_chance>"
+              - "<6>Treasure Chance <7>while on <c>Jerry's"
+              - "<c>Workshop<7>."
+            values:
+              - { per_level: 0.75 }
+          - name: "Snow Power"
+            kind: TEXT
+            text:
+              - "<7>Grants <a>+{0}% <7>bonus gift"
+              - "<7>chance during the <c>Gift Attack"
+              - "<c><7>event."
+            values:
+              - { per_level: 0.1 }
+          - name: "Icy Wind"
+            kind: TEXT
+            text:
+              - "<7>Grants <a>+{0}% <7>chance of"
+              - "<7>getting double <b>Ice Essence<7>."
+            values:
+              - { per_level: 0.2 }
       - id: TRACKED_UNIQUE

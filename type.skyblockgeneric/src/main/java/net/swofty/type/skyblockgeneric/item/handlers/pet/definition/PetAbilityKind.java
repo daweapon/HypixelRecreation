@@ -12,6 +12,7 @@ public enum PetAbilityKind {
     STAT_PER_STAT(true),
     DROP(true),
     DAMAGE_REDUCTION(true),
+    MINION_SPEED(true),
     HANDLER(true);
 
     private final boolean active;

@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.user.pets;
 
+import net.minestom.server.entity.Player;
+import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.ConfiguredPetAbility;
@@ -7,7 +9,8 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 /**
  * Lets a game system honour a {@code kind: TEXT} pet ability: whether one of the player's active
- * pets has it unlocked, and its values at that pet's level.
+ * pets has it unlocked, and its values at that pet's level. Also finds the best minion speed boost
+ * among the pets of the players on an island.
  */
 public final class PetAbilities {
     private PetAbilities() {
@@ -22,6 +25,20 @@ public final class PetAbilities {
         if (active == null) return 0;
         double[] values = ((ConfiguredPetAbility) active.ability()).valuesFor(active.pet());
         return index < values.length ? values[index] : 0;
+    }
+
+    public static double minionSpeedPercent(Instance island, String minion) {
+        if (island == null) return 0;
+        double best = 0;
+        for (Player viewer : island.getPlayers()) {
+            if (!(viewer instanceof SkyBlockPlayer player) || player.getSkyblockDataHandler() == null) continue;
+            for (DatapointPetData.ActiveAbility active : player.getPetData().getActiveAbilities()) {
+                if (active.ability() instanceof ConfiguredPetAbility configured) {
+                    best = Math.max(best, configured.minionSpeedPercent(minion, active.pet(), player));
+                }
+            }
+        }
+        return best;
     }
 
     private static DatapointPetData.ActiveAbility find(SkyBlockPlayer player, ItemType pet, String ability) {

@@ -5,18 +5,43 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Magma Cube
-        base_statistics: {}
-        per_level_statistics:
-          common: { defense: 0.3333, health: 0.5, strength: 0.2 }
-          uncommon: { defense: 0.3333, health: 0.5, strength: 0.2 }
-          rare: { defense: 0.3333, health: 0.5, strength: 0.2 }
-          epic: { defense: 0.3333, health: 0.5, strength: 0.2 }
-          legendary: { defense: 0.3333, health: 0.5, strength: 0.2 }
-        particle: 3
-        skill_category: COMBAT
+        pet_name: "Magma Cube"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 38957d5023c937c4c41aa2412d43410bda23cf79a9f6ab36b76fef2d7c429
-        handler_id: MAGMA_CUBE
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 2000, EPIC: 10000, LEGENDARY: 1000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 2500, time_seconds: 7200 }
+          RARE: { coins: 5000, time_seconds: 72000 }
+          EPIC: { coins: 100000, time_seconds: 432000 }
+          LEGENDARY: { coins: 500000, time_seconds: 864000, items: { ENCHANTED_MAGMA_CREAM: 16 } }
+        statistics:
+          COMMON: { health: { per_level: 0.5 }, defense: { per_level: 0.33 }, strength: { per_level: 0.2 } }
+        abilities:
+          - name: "Slimy Minions"
+            kind: MINION_SPEED
+            minions: [SLIME, MAGMA_CUBE]
+            when: { conditions: [PRIVATE_ISLAND] }
+            text:
+              - "<7>Slime and Magma Cube minions work"
+              - "<a>{0}% <a><7>faster while on your island"
+            values:
+              - { per_level: { COMMON: 0.2, RARE: 0.25, EPIC: 0.3 } }
+          - name: "Salt Blade"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Deal <a>{0}% <7>more damage to slimes"
+            values:
+              - { per_level: { RARE: 0.2, EPIC: 0.25 } }
+          - name: "Hot Ember"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Buffs the stats of <5>Rekindled Ember"
+              - "<5>Armor <7>by <a>{0}%."
+            values:
+              - { per_level: 0.5 }
       - id: TRACKED_UNIQUE
   - id: BLAZE_PET
     material: player_head
@@ -24,18 +49,43 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Blaze
-        base_statistics: {}
-        per_level_statistics:
-          common: { defense: 0.3, intelligence: 1 }
-          uncommon: { defense: 0.3, intelligence: 1 }
-          rare: { defense: 0.3, intelligence: 1 }
-          epic: { defense: 0.3, intelligence: 1 }
-          legendary: { defense: 0.3, intelligence: 1 }
-        particle: 3
-        skill_category: COMBAT
+        pet_name: "Blaze"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: b78ef2e4cf2c41a2d14bfde9caff10219f5b1bf5b35a49eb51c6467882cb5f0
-        handler_id: BLAZE
+        george_price: { COMMON: 10000, UNCOMMON: 250000, RARE: 500000, EPIC: 1000000, LEGENDARY: 2500000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 250000, time_seconds: 86400, items: { ENCHANTED_BLAZE_POWDER: 128 } }
+          RARE: { coins: 500000, time_seconds: 172800, items: { ENCHANTED_BLAZE_POWDER: 256 } }
+          EPIC: { coins: 1000000, time_seconds: 259200, items: { ENCHANTED_BLAZE_POWDER: 512 } }
+          LEGENDARY: { coins: 2500000, time_seconds: 432000, items: { ENCHANTED_BLAZE_ROD: 8 } }
+        statistics:
+          COMMON: { defense: { per_level: 0.3 }, intelligence: { per_level: 1 } }
+        abilities:
+          - name: "Nether Embodiment"
+            kind: PERCENT_STAT
+            statistics: [health, defense, strength, intelligence, critical_chance, critical_damage, bonus_attack_speed, ability_damage, true_defense, ferocity, health_regeneration, vitality, mending, swing_range, speed, magic_find, pet_luck]
+            when: { servers: [CRIMSON_ISLE] }
+            text:
+              - "<7>Increases <c>Combat <7>and <d>Miscellaneous"
+              - "<7>stats by <a>{0}% <7>while on the <c>Crimson"
+              - "<c>Isle<7>."
+            values:
+              - { per_level: { COMMON: 0.05, UNCOMMON: 0.075, EPIC: 0.1 } }
+          - name: "Bling Armor"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Upgrades <c>Blaze Armor <7>stats"
+              - "<7>and ability by <a>{0}%"
+            values:
+              - { per_level: { RARE: 0.35, EPIC: 0.4 } }
+          - name: "Fusion-Style Potato"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Double effects of hot potato"
+              - "<7>books."
       - id: TRACKED_UNIQUE
   - id: MOOSHROOM_COW_PET
     material: player_head
@@ -43,18 +93,50 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Mooshroom Cow
-        base_statistics: {}
-        per_level_statistics:
-          common: { farming_fortune: 1, health: 1 }
-          uncommon: { farming_fortune: 1, health: 1 }
-          rare: { farming_fortune: 1, health: 1 }
-          epic: { farming_fortune: 1, health: 1 }
-          legendary: { farming_fortune: 1, health: 1 }
-        particle: 3
-        skill_category: FARMING
+        pet_name: "Mooshroom Cow"
+        pet_type: FARMING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 47f1bc3fa91cd86cf4ba7745586d67207b58e7cf27bdf7a717780843785bf9b5
-        handler_id: MOOSHROOM_COW
+        george_price: { COMMON: 1000, UNCOMMON: 25000, RARE: 50000, EPIC: 100000, LEGENDARY: 250000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 25000, time_seconds: 3600, items: { ENCHANTED_MYCELIUM: 16 } }
+          RARE: { coins: 50000, time_seconds: 10800, items: { ENCHANTED_MYCELIUM: 32 } }
+          EPIC: { coins: 100000, time_seconds: 21600, items: { DIGESTED_MUSHROOMS: 32, ENCHANTED_MYCELIUM: 64 } }
+          LEGENDARY: { coins: 250000, time_seconds: 43200, items: { DIGESTED_MUSHROOMS: 64, ENCHANTED_MYCELIUM: 128 } }
+        statistics:
+          COMMON: { health: { per_level: 1 }, farming_fortune: { per_level: 1 } }
+        abilities:
+          - name: "Mushroom Eater"
+            kind: DROP
+            triggers: CROP_HARVESTED
+            items: [RED_MUSHROOM, BROWN_MUSHROOM]
+            chance: "{0}"
+            text:
+              - "<7>You have a <a>+{0} <7>chance to drop a"
+              - "<7>Mushroom when farming crops."
+            values:
+              - { per_level: { COMMON: 0.5, UNCOMMON: 1 } }
+          - name: "Farming Strength"
+            rarity: RARE
+            kind: STAT_PER_STAT
+            per_stat: { grants: farming_fortune, amount: 0.7, per: strength, every: "{0}" }
+            text:
+              - "<7>Grants <6>+0.7<glyph:stat_farming_fortune> Farming Fortune for"
+              - "<7>every <c>{0} <glyph:stat_strength> Strength <7>you have."
+            values:
+              - { base: 40, per_level: { RARE: -0.1, EPIC: -0.2 } }
+          - name: "Bovine Blessing"
+            rarity: LEGENDARY
+            kind: DROP
+            triggers: CROP_HARVESTED
+            items: [TASTY_CHEESE, DUNG]
+            chance: "{0}"
+            text:
+              - "<7>You have a <a>+{0}% <7>chance to find"
+              - "<a>Tasty Cheese <7>or <a>Dung <7>when farming"
+              - "<7>crops."
+            values:
+              - { per_level: 0.0002 }
       - id: TRACKED_UNIQUE
   - id: SNAIL_PET
     material: player_head
@@ -62,16 +144,44 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Snail
-        base_statistics: {}
-        per_level_statistics:
-          common: { intelligence: 1, defense: 1 }
-          uncommon: { intelligence: 1, defense: 1 }
-          rare: { intelligence: 1, defense: 1 }
-          epic: { intelligence: 1, defense: 1 }
-          legendary: { intelligence: 1, defense: 1 }
-        particle: 3
-        skill_category: MINING
+        pet_name: "Snail"
+        pet_type: MINING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 50a9933a3b10489d38f6950c4e628bfcf9f7a27f8d84666f04f14d5374252972
-        handler_id: SNAIL
+        george_price: { COMMON: 1000, UNCOMMON: 25000, RARE: 50000, EPIC: 100000, LEGENDARY: 250000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 25000, time_seconds: 3600, items: { ENCHANTED_RED_SAND: 16 } }
+          RARE: { coins: 50000, time_seconds: 10800, items: { ENCHANTED_RED_SAND: 32 } }
+          EPIC: { coins: 100000, time_seconds: 21600, items: { BURNING_EYE: 32, ENCHANTED_RED_SAND: 64 } }
+          LEGENDARY: { coins: 250000, time_seconds: 43200, items: { BURNING_EYE: 64, ENCHANTED_RED_SAND: 128 } }
+        statistics:
+          COMMON: { defense: { per_level: 1 }, intelligence: { per_level: 1 } }
+        abilities:
+          - name: "Red Sand Enjoyer"
+            kind: MINION_SPEED
+            minions: [RED_SAND]
+            when: { conditions: [PRIVATE_ISLAND] }
+            text:
+              - "<9>Red Sand Minions <7>work <a>{0}% <7>faster"
+              - "<7>while on your <b>Private Island<7>."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.2, EPIC: 0.3 } }
+          - name: "Slow and Steady"
+            rarity: RARE
+            kind: STAT_PER_STAT
+            per_stat: { grants: block_fortune, amount: 1, per: speed, every: "{0}", above: 100 }
+            text:
+              - "<7>Convert every <f>{0}<glyph:stat_speed> Speed <7>you have"
+              - "<7>above <f>100 <7>into <6>+1<glyph:stat_mining_fortune> Block Fortune<7>."
+            values:
+              - { base: { RARE: 6, LEGENDARY: 5 }, per_level: -0.03 }
+          - name: "Slimy Reach"
+            rarity: LEGENDARY
+            kind: STAT
+            statistics: { mining_spread: "{0}" }
+            text:
+              - "<7>Grants <e>+{0}<glyph:stat_mining_spread> Mining Spread <7>while"
+              - "<7>mining <9>Blocks<7>."
+            values:
+              - { per_level: 4 }
       - id: TRACKED_UNIQUE

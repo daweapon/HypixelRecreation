@@ -54,12 +54,13 @@ public class PetComponent extends SkyBlockItemComponent {
     private final List<ConfiguredPetAbility> abilities;
     private final Particle particleId;
     private final String skullTexture;
+    private final EnumMap<Rarity, String> skullTextureByRarity;
 
     public PetComponent(String petName, PetType petType, List<Rarity> rarities, int maxLevel, int statsBaseLevel,
                         @Nullable Integer fixedXpOffset, boolean fixedLevel, boolean countsForPetScore, boolean passive,
                         RarityNumbers georgePrices, EnumMap<Rarity, KatUpgrade> katUpgrades,
                         PetStatTable statistics, List<ConfiguredPetAbility> abilities,
-                        Particle particleId, String skullTexture) {
+                        Particle particleId, String skullTexture, EnumMap<Rarity, String> skullTextureByRarity) {
         this.petName = petName;
         this.petType = petType;
         this.rarities = List.copyOf(rarities);
@@ -75,8 +76,9 @@ public class PetComponent extends SkyBlockItemComponent {
         this.abilities = List.copyOf(abilities);
         this.particleId = particleId;
         this.skullTexture = skullTexture;
+        this.skullTextureByRarity = skullTextureByRarity;
 
-        addInheritedComponent(new SkullHeadComponent((item) -> skullTexture));
+        addInheritedComponent(new SkullHeadComponent(this::textureFor));
         addInheritedComponent(new TrackedUniqueComponent());
         addInheritedComponent(new InteractableComponent(this::interact, this::interact, null));
         addInheritedComponent(new LoreUpdateComponent(
@@ -86,6 +88,10 @@ public class PetComponent extends SkyBlockItemComponent {
                             .serialize();
                 }), true)
         );
+    }
+
+    public String textureFor(SkyBlockItem item) {
+        return skullTextureByRarity.getOrDefault(item.getAttributeHandler().getRarity(), skullTexture);
     }
 
     public Rarity getMinRarity() {

@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.KatUpgrade;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.registry.PetAbilityHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.registry.PetAbilityRegistry;
+import net.swofty.type.skyblockgeneric.minion.MinionRegistry;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
@@ -62,7 +63,7 @@ public final class PetComponentParser {
                 RarityNumbers.parse(upperKeys(raw.get("george_price")), where + ".george_price"),
                 katUpgrades(raw.get("kat_upgrades"), where),
                 statistics, abilities, particle(raw.get("particle")),
-                string(raw, "skull_texture", ""));
+                string(raw, "skull_texture", ""), texturesByRarity(raw.get("skull_texture_by_rarity"), where));
     }
 
     private static List<Rarity> rarities(Map<String, Object> raw, String where) {
@@ -149,7 +150,10 @@ public final class PetComponentParser {
                     p.get("max") instanceof Number n ? n.doubleValue() : null);
         }
 
-        Set<PetTrigger> triggers = PetTrigger.parse(raw.get("on"), where + ".on");
+        if (((Map<?, ?>) raw).containsKey(Boolean.TRUE)) {
+            throw new IllegalArgumentException(where + ": YAML reads the key 'on' as true; use 'triggers:'");
+        }
+        Set<PetTrigger> triggers = PetTrigger.parse(raw.get("triggers"), where + ".triggers");
         List<ItemType> items = new ArrayList<>();
         for (String item : lines(raw.get("items"))) items.add(ItemType.valueOf(item.trim().toUpperCase()));
         ValueRef chance = raw.containsKey("chance") ? ValueRef.parse(raw.get("chance"), valueCount, where + ".chance") : null;
@@ -159,6 +163,17 @@ public final class PetComponentParser {
             EntityType entityType = EntityType.fromKey(mob.contains(":") ? mob : "minecraft:" + mob.toLowerCase());
             if (entityType == null) throw new IllegalArgumentException(where + ".mobs: unknown entity '" + mob + "'");
             mobs.add(entityType);
+        }
+
+        Set<String> minions = new java.util.HashSet<>();
+        for (String minion : lines(raw.get("minions"))) {
+            String minionName = minion.trim().toUpperCase();
+            try {
+                MinionRegistry.valueOf(minionName);
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException(where + ".minions: unknown minion '" + minion + "'");
+            }
+            minions.add(minionName);
         }
 
         Predicate<SkyBlockPlayer> condition = PetConditions.parse(raw.get("when"), where + ".when");
@@ -173,9 +188,10 @@ public final class PetComponentParser {
         }
 
         validate(kind, statistics, perStat, triggers, items, chance, valueCount, where);
+        if (kind == PetAbilityKind.MINION_SPEED) require(!minions.isEmpty() && valueCount > 0, where, "needs minions and a value");
 
         return new ConfiguredPetAbility(name, minRarity, maxRarity, text, textByRarity, values, kind, statistics,
-                perStat, triggers, items, chance, mobs, condition, handlerId, handler, baseLevel);
+                perStat, triggers, items, chance, mobs, minions, condition, handlerId, handler, baseLevel);
     }
 
     private static void validate(PetAbilityKind kind, Map<ItemStatistic, ValueRef> statistics,
@@ -186,12 +202,12 @@ public final class PetComponentParser {
             case STAT_PER_STAT -> require(perStat != null, where, "needs per_stat");
             case DROP -> {
                 require(!items.isEmpty() && chance != null, where, "needs items and chance");
-                require(!triggers.isEmpty(), where, "needs on");
+                require(!triggers.isEmpty(), where, "needs triggers");
             }
             case DAMAGE_REDUCTION -> {
                 require(valueCount > 0, where, "needs a value (percent) at index 0");
                 require(!triggers.isEmpty() && EnumSet.of(PetTrigger.DAMAGED_BY_MOB, PetTrigger.FALL_DAMAGE)
-                        .containsAll(triggers), where, "on must be DAMAGED_BY_MOB and/or FALL_DAMAGE");
+                        .containsAll(triggers), where, "triggers must be DAMAGED_BY_MOB and/or FALL_DAMAGE");
             }
             default -> {
             }
@@ -223,6 +239,14 @@ public final class PetComponentParser {
             upgrades.put(target, new KatUpgrade(time, coins, List.copyOf(items)));
         });
         return upgrades;
+    }
+
+    private static EnumMap<Rarity, String> texturesByRarity(Object raw, String where) {
+        EnumMap<Rarity, String> textures = new EnumMap<>(Rarity.class);
+        if (raw instanceof Map<?, ?> map) {
+            map.forEach((key, value) -> textures.put(rarity(key, where + ".skull_texture_by_rarity"), String.valueOf(value)));
+        }
+        return textures;
     }
 
     private static Particle particle(Object raw) {

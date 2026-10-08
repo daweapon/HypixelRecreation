@@ -5,79 +5,61 @@ items:
     rarity: MYTHIC
     components:
       - id: PET
-        pet_name: Bee
-        george_price:
-          common: 2500
-          uncommon: 5000
-          rare: 25000
-          epic: 100000
-          legendary: 325000
-          rest: 0
-        kat_upgrades:
-          common: null
-          uncommon:
-            time: 3600000
-            coins: 5000
-            item: COAL_BLOCK
-            amount: 128
-          rare:
-            time: 21600000
-            coins: 40000
-            item: GOLD_BLOCK
-            amount: 128
-          epic:
-            time: 86400000
-            coins: 150000
-            item: ENCHANTED_COAL_BLOCK
-            amount: 9
-          legendary:
-            time: 259200000
-            coins: 450000
-            item: ENCHANTED_GOLD_BLOCK
-            amount: 9
-          rest: null
-        base_statistics: {}
-        per_level_statistics:
-          common:
-            speed: 0.1
-            strength: 0.25
-            intelligence: 0.5
-          uncommon:
-            speed: 0.1
-            strength: 0.25
-            intelligence: 0.5
-          rare:
-            speed: 0.1
-            strength: 0.25
-            intelligence: 0.5
-            mining_fortune: 0.2
-            foraging_fortune: 0.2
-            farming_fortune: 0.2
-          epic:
-            speed: 0.1
-            strength: 0.25
-            intelligence: 0.5
-            mining_fortune: 0.25
-            foraging_fortune: 0.25
-            farming_fortune: 0.25
-          legendary:
-            speed: 0.1
-            strength: 0.25
-            intelligence: 0.5
-            mining_fortune: 0.3
-            foraging_fortune: 0.3
-            farming_fortune: 0.3
-          mythic:
-            speed: 0.1
-            strength: 0.25
-            intelligence: 0.5
-            mining_fortune: 0.4
-            foraging_fortune: 0.4
-            farming_fortune: 0.4
-        particle: 3
-        skill_category: FARMING
-        skull_texture: 12724a9a4cdd68ba49415560e5be40b4a1c47cb5be1d66aedb52a30e62ef2d47
-        handler_id: BEE
+        pet_name: "Bee"
+        pet_type: FARMING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: 9c72c132073ec5a058218d6fbfb4a9970652ced9214d53f4f614b3902fd99a7a
+        george_price: { COMMON: 25, UNCOMMON: 250, RARE: 2500, EPIC: 25000, LEGENDARY: 250000, MYTHIC: 2500000 }
+        statistics:
+          COMMON: { strength: { base: 5, per_level: 0.25 }, intelligence: { per_level: 0.5 }, speed: { per_level: 0.1 } }
+          RARE: { strength: { base: 5, per_level: 0.25 }, intelligence: { per_level: 0.5 }, speed: { per_level: 0.1 }, mining_fortune: { per_level: 0.2 }, foraging_fortune: { per_level: 0.2 }, farming_fortune: { per_level: 0.2 } }
+          EPIC: { strength: { base: 5, per_level: 0.25 }, intelligence: { per_level: 0.5 }, speed: { per_level: 0.1 }, mining_fortune: { per_level: 0.3 }, foraging_fortune: { per_level: 0.3 }, farming_fortune: { per_level: 0.3 } }
+          MYTHIC: { strength: { base: 5, per_level: 0.25 }, intelligence: { per_level: 0.5 }, speed: { per_level: 0.1 }, mining_fortune: { per_level: 0.4 }, foraging_fortune: { per_level: 0.4 }, farming_fortune: { per_level: 0.4 } }
+        abilities:
+          - name: "Hive"
+            kind: HANDLER
+            handler: HIVE
+            text:
+              - "<7>For each player within <a>25 <7>blocks:"
+              - "<b> +{0}<glyph:stat_intelligence> Intelligence"
+              - "<c> +{1}<glyph:stat_strength> Strength"
+              - "<a> +{2}<glyph:stat_defense> Defense"
+              - "<8>Max 15 players"
+            values:
+              - { base: 1, per_level: { COMMON: 0.02, UNCOMMON: 0.05, EPIC: 0.09 } }
+              - { base: 1, per_level: { COMMON: 0.02, UNCOMMON: 0.04, EPIC: 0.07 } }
+              - { base: 1, per_level: { COMMON: 0.01, UNCOMMON: 0.02, EPIC: 0.04 } }
+          - name: "Busy Buzz Buzz"
+            rarity: RARE
+            kind: STAT
+            statistics: [farming_fortune, foraging_fortune, mining_fortune]
+            text:
+              - "<7>Grants <a>+{0} <7>of each to your pet:"
+              - "<6><glyph:stat_farming_fortune> Farming Fortune"
+              - "<6><glyph:stat_foraging_fortune> Foraging Fortune"
+              - "<6><glyph:stat_mining_fortune> Mining Fortune"
+            values:
+              - { per_level: { RARE: 0.2, EPIC: 0.3, MYTHIC: 0.4 } }
+          - name: "Honey Harvester"
+            rarity: LEGENDARY
+            kind: DROP
+            triggers: CROP_HARVESTED
+            items: [HONEY_JAR]
+            chance: "{0}"
+            text:
+              - "<7>You have a <a>{0}% <7>chance to find a"
+              - "<a>Honey Jar <7>when farming crops."
+            values:
+              - { per_level: 0.0002 }
+          - name: "Powered by Pollen"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Sunflower<7>,"
+              - "<6>Moonflower<7>, and <6>Wild Rose Fortune"
+              - "<7>while in <a>The Garden<7>."
+            values:
+              - { per_level: 1.6 }
       - id: TRACKED_UNIQUE
   - id: CHICKEN_PET
     material: player_head
@@ -85,28 +67,47 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Chicken
-        base_statistics: {}
-        per_level_statistics:
-          common:
-            speed: 0.5
-            farming_fortune: 0.5
-          uncommon:
-            speed: 0.5
-            farming_fortune: 0.5
-          rare:
-            speed: 0.5
-            farming_fortune: 0.5
-          epic:
-            speed: 0.5
-            farming_fortune: 0.5
-          legendary:
-            speed: 0.5
-            farming_fortune: 0.5
-        particle: 3
-        skill_category: FARMING
-        skull_texture: 7f37d524c3eed171ce149887ea1dee4ed399904727d521865688ece3bac75e
-        handler_id: CHICKEN
+        pet_name: "Chicken"
+        pet_type: FARMING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: c6e573262297df2bfa81562498a22a90478e5c96e80d05885d87084de24d2b18
+        george_price: { COMMON: 50, UNCOMMON: 500, RARE: 2500, EPIC: 5000, LEGENDARY: 10000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 500, time_seconds: 10, items: { RAW_CHICKEN: 128, FEATHER: 128 } }
+          RARE: { coins: 2500, time_seconds: 20, items: { RAW_CHICKEN: 256, FEATHER: 256 } }
+          EPIC: { coins: 5000, time_seconds: 30, items: { RAW_CHICKEN: 512, FEATHER: 512 } }
+          LEGENDARY: { coins: 10000, time_seconds: 45, items: { ENCHANTED_RAW_CHICKEN: 8, ENCHANTED_FEATHER: 8 } }
+        statistics:
+          COMMON: { speed: { per_level: 0.5 }, farming_fortune: { per_level: 0.5 } }
+        abilities:
+          - name: "Free Range"
+            kind: STAT
+            statistics: { farming_fortune: "{0}" }
+            when: { conditions: [PUBLIC_ISLAND] }
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming Fortune <7>while"
+              - "<7>on <b>Public Islands<7>."
+            values:
+              - { per_level: { COMMON: 0.5, UNCOMMON: 0.75, RARE: 1 } }
+          - name: "Eggstra Loot"
+            rarity: RARE
+            kind: HANDLER
+            handler: EGGSTRA_LOOT
+            triggers: KILL
+            text:
+              - "<7>Chickens always drop an <f>Egg <7>when"
+              - "<7>killed. Grants a <a>{0}% <7>chance for"
+              - "<7>animals to drop an additional item."
+            values:
+              - { per_level: { RARE: 0.8, EPIC: 1 } }
+          - name: "Light Feet"
+            rarity: LEGENDARY
+            kind: DAMAGE_REDUCTION
+            triggers: FALL_DAMAGE
+            text:
+              - "<7>Reduces fall damage by <a>{0}%<7>."
+            values:
+              - { per_level: 1 }
       - id: TRACKED_UNIQUE
   - id: GRANDMA_WOLF_PET
     material: player_head
@@ -114,28 +115,46 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Grandma Wolf
-        base_statistics: {}
-        per_level_statistics:
-          common:
-            strength: 0.25
-            health: 1
-          uncommon:
-            strength: 0.25
-            health: 1
-          rare:
-            strength: 0.25
-            health: 1
-          epic:
-            strength: 0.25
-            health: 1
-          legendary:
-            strength: 0.25
-            health: 1
-        particle: 3
-        skill_category: COMBAT
-        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
-        handler_id: GRANDMA_WOLF
+        pet_name: "Grandma Wolf"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        passive: true
+        skull_texture: 4e794274c1bb197ad306540286a7aa952974f5661bccf2b725424f6ed79c7884
+        george_price: { COMMON: 5000, UNCOMMON: 10000, RARE: 25000, EPIC: 50000, LEGENDARY: 200000 }
+        statistics:
+          COMMON: { strength: { per_level: 0.25 }, health: { per_level: 1 } }
+        abilities:
+          - name: "Kill Combo"
+            kind: HANDLER
+            handler: KILL_COMBO
+            text:
+              - "<7>Gain buffs for combo kills."
+              - "<7>Effects stack as you increase"
+              - "<7>your combo."
+              - ""
+              - "<a>5 Combo <8>(lasts <a>{0}s<8>)"
+              - "  <8>+<b>{6}% <b><glyph:stat_magic_find> Magic Find"
+              - "<a>10 Combo <8>(lasts <a>{1}s<8>)"
+              - "  <8>+<6>{7} <7>coins per kill"
+              - "<a>15 Combo <8>(lasts <a>{2}s<8>)"
+              - "  <8>+<b>{8}% <b><glyph:stat_magic_find> Magic Find"
+              - "<a>20 Combo <8>(lasts <a>{3}s<8>)"
+              - "  <8>+<3>{9}☯ Combat Wisdom"
+              - "<a>25 Combo <8>(lasts <a>{4}s<8>)"
+              - "  <8>+<b>{6}% <b><glyph:stat_magic_find> Magic Find"
+              - "<a>30 Combo <8>(lasts <a>{5}s<8>)"
+              - "  <8>+<6>{7} <7>coins per kill"
+            values:
+              - { base: 8, per_level: 0.02 }
+              - { base: 6, per_level: 0.02 }
+              - { base: 4, per_level: 0.02 }
+              - { base: 3, per_level: 0.02 }
+              - { base: 3, per_level: 0.01 }
+              - { base: 2, per_level: 0.01 }
+              - { base: { COMMON: 1, RARE: 2, LEGENDARY: 3 } }
+              - { base: { COMMON: 2, UNCOMMON: 4, RARE: 6, EPIC: 8, LEGENDARY: 10 } }
+              - { base: { COMMON: 1, UNCOMMON: 2, EPIC: 3 } }
+              - { base: { COMMON: 5, UNCOMMON: 7, RARE: 9, EPIC: 12, LEGENDARY: 15 } }
       - id: TRACKED_UNIQUE
   - id: LION_PET
     material: player_head
@@ -148,6 +167,11 @@ items:
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 38ff473bd52b4db2c06f1ac87fe1367bce7574fac330ffac7956229f82efba1
         george_price: { COMMON: 5000, UNCOMMON: 12500, RARE: 50000, EPIC: 500000, LEGENDARY: 5000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 15000, time_seconds: 86400 }
+          RARE: { coins: 75000, time_seconds: 172800 }
+          EPIC: { coins: 900000, time_seconds: 604800 }
+          LEGENDARY: { coins: 14000000, time_seconds: 1036800, items: { ENCHANTED_RAW_BEEF: 1024 } }
         statistics:
           COMMON: { strength: { per_level: 0.5 }, ferocity: { per_level: 0.05 }, speed: { per_level: 0.25 } }
         abilities:
@@ -186,18 +210,47 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Monkey
-        base_statistics: {}
-        per_level_statistics:
-          common: { intelligence: 0.5, speed: 0.2 }
-          uncommon: { intelligence: 0.5, speed: 0.2 }
-          rare: { intelligence: 0.5, speed: 0.2 }
-          epic: { intelligence: 0.5, speed: 0.2 }
-          legendary: { intelligence: 0.5, speed: 0.2 }
-        particle: 3
-        skill_category: FORAGING
+        pet_name: "Monkey"
+        pet_type: FORAGING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 96e1836c73af42cf3c299fcb56d7342bf305f720be3c8cce2a0fae199794207a
-        handler_id: MONKEY
+        george_price: { COMMON: 5000, UNCOMMON: 12500, RARE: 50000, EPIC: 500000, LEGENDARY: 5000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 15000, time_seconds: 86400 }
+          RARE: { coins: 75000, time_seconds: 172800 }
+          EPIC: { coins: 900000, time_seconds: 604800 }
+          LEGENDARY: { coins: 17000000, time_seconds: 1036800 }
+        statistics:
+          COMMON: { intelligence: { per_level: 0.5 }, speed: { per_level: 0.2 } }
+        abilities:
+          - name: "Treeborn"
+            kind: STAT
+            statistics: { foraging_fortune: "{0}" }
+            text:
+              - "<7>Grants <a>+{0} <6><glyph:stat_foraging_fortune> Foraging"
+              - "<6>Fortune<7>, which increases your"
+              - "<7>chance at double logs."
+            values:
+              - { per_level: { COMMON: 0.4, UNCOMMON: 0.5, EPIC: 0.6 } }
+          - name: "Vine Swing"
+            rarity: RARE
+            kind: STAT
+            statistics: { speed: "{0}" }
+            when: { conditions: [THE_PARK] }
+            text:
+              - "<7>Gain +<a>{0} <f><glyph:stat_speed> Speed <7>while"
+              - "<7>in The Park."
+            values:
+              - { per_level: { RARE: 0.75, EPIC: 1 } }
+          - name: "Evolved Axes"
+            rarity: LEGENDARY
+            kind: STAT
+            statistics: { sweep: "{0}" }
+            when: { conditions: [THE_PARK] }
+            text:
+              - "<7>Grants <2>{0}<glyph:stat_sweep> Sweep <7>while in <a>The Park"
+            values:
+              - { per_level: 0.1 }
       - id: TRACKED_UNIQUE
   - id: ELEPHANT_PET
     material: player_head
@@ -205,18 +258,54 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Elephant
-        base_statistics: {}
-        per_level_statistics:
-          common: { health: 1, intelligence: 0.75 }
-          uncommon: { health: 1, intelligence: 0.75 }
-          rare: { health: 1, intelligence: 0.75 }
-          epic: { health: 1, intelligence: 0.75 }
-          legendary: { health: 1, intelligence: 0.75 }
-        particle: 3
-        skill_category: FARMING
+        pet_name: "Elephant"
+        pet_type: FARMING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: 4ef8efea450632d2753a38a23a4f1502a8a685f6e99bf69205ec04420fd64f6
-        handler_id: ELEPHANT
+        george_price: { COMMON: 5000, UNCOMMON: 12500, RARE: 50000, EPIC: 500000, LEGENDARY: 5000000, MYTHIC: 10000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 15000, time_seconds: 21600 }
+          RARE: { coins: 75000, time_seconds: 72000 }
+          EPIC: { coins: 900000, time_seconds: 432000 }
+          LEGENDARY: { coins: 14000000, time_seconds: 864000 }
+        statistics:
+          COMMON: { health: { per_level: 1 }, intelligence: { per_level: 0.75 } }
+          MYTHIC: { health: { per_level: 1 }, intelligence: { per_level: 0.75 }, farming_fortune: { per_level: 0.5 } }
+        abilities:
+          - name: "Stomp"
+            kind: STAT_PER_STAT
+            per_stat: { grants: defense, amount: "{0}", per: speed, every: 100 }
+            text:
+              - "<7>Gain <a>{0}<glyph:stat_defense> Defense <7>for every"
+              - "<7>100 <f><glyph:stat_speed> Speed<7>."
+            values:
+              - { per_level: { COMMON: 0.15, EPIC: 0.2 } }
+          - name: "Walking Fortress"
+            rarity: RARE
+            kind: STAT_PER_STAT
+            per_stat: { grants: health, amount: "{0}", per: defense, every: 10 }
+            text:
+              - "<7>Gain <c>{0}<glyph:stat_health> Health <7>for every"
+              - "<7>10 <a><glyph:stat_defense> Defense<7>."
+            values:
+              - { per_level: 0.01 }
+          - name: "Trunk Efficiency"
+            rarity: LEGENDARY
+            kind: STAT
+            statistics: { farming_fortune: "{0}" }
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming"
+              - "<6>Fortune, <7>which increases your"
+              - "<7>chance for multiple drops."
+            values:
+              - { per_level: 1.5 }
+          - name: "Abundant Harvest"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Earn <2>+{0}% Sowdust <7>while farming."
+            values:
+              - { per_level: 0.2 }
       - id: TRACKED_UNIQUE
   - id: GIRAFFE_PET
     material: player_head
@@ -224,18 +313,46 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Giraffe
-        base_statistics: {}
-        per_level_statistics:
-          common: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
-          uncommon: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
-          rare: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
-          epic: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
-          legendary: { health: 1, critical_chance: 0.05, swing_range: 0.01 }
-        particle: 3
-        skill_category: FORAGING
+        pet_name: "Giraffe"
+        pet_type: FORAGING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 2528ce6ad51fcb6e27c85566e70da351075185f184d910f4996e4311d4a1bfa5
-        handler_id: GIRAFFE
+        george_price: { COMMON: 5000, UNCOMMON: 12500, RARE: 50000, EPIC: 500000, LEGENDARY: 5000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 15000, time_seconds: 86400, items: { ENCHANTED_ACACIA_LOG: 1 } }
+          RARE: { coins: 75000, time_seconds: 172800, items: { ENCHANTED_ACACIA_LOG: 16 } }
+          EPIC: { coins: 900000, time_seconds: 604800, items: { ENCHANTED_ACACIA_LOG: 128 } }
+          LEGENDARY: { coins: 9000000, time_seconds: 1036800, items: { ENCHANTED_ACACIA_LOG: 512 } }
+        statistics:
+          COMMON: { health: { per_level: 1 }, critical_chance: { per_level: 0.05 }, swing_range: { per_level: 0.01 } }
+        abilities:
+          - name: "Good Heart"
+            kind: STAT
+            statistics: { health_regeneration: "{0}" }
+            text:
+              - "<7>Grants <c>+{0}<glyph:stat_health_regen> Health Regen<7>."
+            values:
+              - { base: { COMMON: 1, UNCOMMON: 35, EPIC: 50 }, per_level: { COMMON: 0.49, UNCOMMON: 0.35, EPIC: 0.5 } }
+          - name: "Higher Ground"
+            rarity: RARE
+            kind: HANDLER
+            handler: HIGHER_GROUND
+            text:
+              - "<7>Increases your <9><glyph:stat_crit_damage> Crit Damage <7>and"
+              - "<c><glyph:stat_strength> Strength <7>by <c>{0}% <7>for every"
+              - "<e>0.1<glyph:stat_swing_range> Swing Range <7>over <e>3<glyph:stat_swing_range> <7>(up to"
+              - "<e>6<glyph:stat_swing_range><7>)."
+            values:
+              - { per_level: 0.0015 }
+          - name: "Long Neck"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases your melee damage by"
+              - "<c>{0} <7>if you are more than 3 blocks"
+              - "<7>away from the target."
+            values:
+              - { base: 50, per_level: 0.5 }
       - id: TRACKED_UNIQUE
   - id: BLUE_WHALE_PET
     material: player_head
@@ -243,18 +360,44 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Blue Whale
-        base_statistics: {}
-        per_level_statistics:
-          common: { health: 2 }
-          uncommon: { health: 2 }
-          rare: { health: 2 }
-          epic: { health: 2 }
-          legendary: { health: 2 }
-        particle: 3
-        skill_category: FISHING
+        pet_name: "Blue Whale"
+        pet_type: FISHING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 9ee72d3435c183dbdda2290cc8fcc9054b6e4d6e8f5338db4f4c1d9a30854b5d
-        handler_id: BLUE_WHALE
+        george_price: { COMMON: 5000, UNCOMMON: 12500, RARE: 50000, EPIC: 500000, LEGENDARY: 5000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 15000, time_seconds: 86400 }
+          RARE: { coins: 75000, time_seconds: 172800 }
+          EPIC: { coins: 900000, time_seconds: 604800, items: { ENCHANTED_COOKED_FISH: 1 } }
+          LEGENDARY: { coins: 9000000, time_seconds: 1036800, items: { ENCHANTED_COOKED_FISH: 8 } }
+        statistics:
+          COMMON: { health: { per_level: 2 } }
+        abilities:
+          - name: "Ingest"
+            kind: INACTIVE
+            text:
+              - "<7>If you have any absorption active,"
+              - "<7>gain <a>+{0}% Damage Reduction<7>."
+            values:
+              - { per_level: 0.05 }
+          - name: "Bulk"
+            rarity: RARE
+            kind: STAT_PER_STAT
+            per_stat: { grants: defense, amount: "{0}", per: health, every: "{1}" }
+            text:
+              - "<7>Gain <a>{0}<a><glyph:stat_defense> Defense <7>per"
+              - "<7><c>{1} Max <c><glyph:stat_health> Health."
+            values:
+              - { per_level: 0.01 }
+              - { base: { RARE: 30, EPIC: 25, LEGENDARY: 20 } }
+          - name: "Archimedes"
+            rarity: LEGENDARY
+            kind: PERCENT_STAT
+            statistics: { health: "{0}" }
+            text:
+              - "<7>Gain <c>+{0}% Max <c><glyph:stat_health> Health."
+            values:
+              - { per_level: 0.2 }
       - id: TRACKED_UNIQUE
   - id: TIGER_PET
     material: player_head
@@ -262,38 +405,83 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Tiger
-        base_statistics: { strength: 5 }
-        per_level_statistics:
-          common: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
-          uncommon: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
-          rare: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
-          epic: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
-          legendary: { strength: 0.1, critical_chance: 0.05, critical_damage: 0.5, ferocity: 0.25 }
-        particle: 3
-        skill_category: COMBAT
+        pet_name: "Tiger"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: fc42638744922b5fcf62cd9bf27eeab91b2e72d6c70e86cc5aa3883993e9d84
-        handler_id: TIGER
+        george_price: { COMMON: 5000, UNCOMMON: 12500, RARE: 50000, EPIC: 500000, LEGENDARY: 5000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 15000, time_seconds: 86400 }
+          RARE: { coins: 75000, time_seconds: 172800 }
+          EPIC: { coins: 900000, time_seconds: 604800 }
+          LEGENDARY: { coins: 14000000, time_seconds: 1036800, items: { ENCHANTED_RAW_CHICKEN: 1024 } }
+        statistics:
+          COMMON: { strength: { base: 5, per_level: 0.1 }, critical_chance: { per_level: 0.05 }, critical_damage: { per_level: 0.5 }, ferocity: { per_level: 0.25 } }
+        abilities:
+          - name: "Merciless Swipe"
+            kind: PERCENT_STAT
+            statistics: { ferocity: "{0}" }
+            text:
+              - "<7>Gain <c>+{0}% <c><glyph:stat_ferocity> Ferocity."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.2, EPIC: 0.3 } }
+          - name: "Hemorrhage"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Melee attacks reduce healing"
+              - "<7>by <6>{0}% <7>for <a>10s."
+            values:
+              - { per_level: { RARE: 0.3, EPIC: 0.55 } }
+          - name: "Apex Predator"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Deal <c>+{0}% <7>damage against"
+              - "<7>targets with no other mobs"
+              - "<7>within <a>15 <7>blocks."
+            values:
+              - { per_level: 1 }
       - id: TRACKED_UNIQUE
-  # Black Cat (Fear Mongerer shop, Roadmap #19) - real Hypixel: Speed 0, Intelligence +1 at level 1,
-  # unique Hunter/Omen/Supernatural ability tree not implemented (see PetHandler.SPOOKY), reuses
-  # the zoo pets' Grandma Wolf placeholder texture (no real Black Cat skull sourced).
   - id: BLACK_CAT_PET
     material: player_head
     name: "Black Cat Pet"
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Black Cat
-        base_statistics: {}
-        per_level_statistics:
-          common: { intelligence: 0.1 }
-          uncommon: { intelligence: 0.1 }
-          rare: { intelligence: 0.1 }
-          epic: { intelligence: 0.1 }
-          legendary: { intelligence: 0.1 }
-        particle: 3
-        skill_category: COMBAT
-        skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
-        handler_id: SPOOKY
+        pet_name: "Black Cat"
+        pet_type: COMBAT
+        rarities: [LEGENDARY, MYTHIC]
+        skull_texture: 8282b5a9bbe2cd3223724023cd4f6ad413f5bb9e0edef81700b8afc3072d04a5
+        george_price: { LEGENDARY: 5000000, MYTHIC: 10000000 }
+        statistics:
+          LEGENDARY: { intelligence: { per_level: 1 }, speed: { per_level: 1.25 }, magic_find: { per_level: 0.15 }, pet_luck: { per_level: 0.15 } }
+        abilities:
+          - name: "Hunter"
+            kind: INACTIVE
+            text:
+              - "<7>Increases your speed and"
+              - "<7>speed cap by +<a>{0}<7>."
+            values:
+              - { per_level: 1 }
+          - name: "Omen"
+            kind: TEXT
+            text:
+              - "<7>Grants <a>{0} <7><d><glyph:stat_pet_luck> Pet Luck<7>."
+            values:
+              - { per_level: 0.15 }
+          - name: "Supernatural"
+            kind: TEXT
+            text:
+              - "<7>Grants <a>{0} <7><b><glyph:stat_magic_find> Magic Find<7>."
+            values:
+              - { per_level: 0.15 }
+          - name: "Looting"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Gain <c>{0}% <7>more collection"
+              - "<7>items from monsters!"
+            values:
+              - { per_level: 0.15 }
       - id: TRACKED_UNIQUE

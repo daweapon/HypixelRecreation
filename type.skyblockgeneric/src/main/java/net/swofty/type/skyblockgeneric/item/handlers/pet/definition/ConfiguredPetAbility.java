@@ -48,6 +48,7 @@ public final class ConfiguredPetAbility implements PetAbility {
     private final List<ItemType> items;
     private final @Nullable ValueRef chance;
     private final Set<EntityType> mobs;
+    private final Set<String> minions;
     private final Predicate<SkyBlockPlayer> condition;
     private final @Nullable String handlerId;
     private final @Nullable PetAbilityHandler handler;
@@ -67,7 +68,7 @@ public final class ConfiguredPetAbility implements PetAbility {
     ConfiguredPetAbility(String name, Rarity minRarity, @Nullable Rarity maxRarity, List<String> text,
                          Map<Rarity, List<String>> textByRarity, List<PetValue> values, PetAbilityKind kind,
                          Map<ItemStatistic, ValueRef> statistics, @Nullable PerStat perStat, Set<PetTrigger> triggers,
-                         List<ItemType> items, @Nullable ValueRef chance, Set<EntityType> mobs,
+                         List<ItemType> items, @Nullable ValueRef chance, Set<EntityType> mobs, Set<String> minions,
                          Predicate<SkyBlockPlayer> condition, @Nullable String handlerId,
                          @Nullable PetAbilityHandler handler, int baseLevel) {
         this.name = name;
@@ -83,6 +84,7 @@ public final class ConfiguredPetAbility implements PetAbility {
         this.items = items;
         this.chance = chance;
         this.mobs = mobs;
+        this.minions = minions;
         this.condition = condition;
         this.handlerId = handlerId;
         this.handler = handler;
@@ -95,6 +97,12 @@ public final class ConfiguredPetAbility implements PetAbility {
 
     public boolean isActive() {
         return kind.isActive() && (kind != PetAbilityKind.HANDLER || handler != null);
+    }
+
+    public double minionSpeedPercent(String minion, SkyBlockItem pet, SkyBlockPlayer player) {
+        if (kind != PetAbilityKind.MINION_SPEED || !minions.contains(minion) || !condition.test(player)) return 0;
+        double[] evaluated = valuesFor(pet);
+        return evaluated.length == 0 ? 0 : evaluated[0];
     }
 
     public double[] valuesFor(SkyBlockItem pet) {

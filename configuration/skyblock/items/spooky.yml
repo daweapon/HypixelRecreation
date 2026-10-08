@@ -202,18 +202,40 @@ items:
     rarity: LEGENDARY
     components:
       - id: PET
-        pet_name: Skeleton Horse
-        base_statistics: {}
-        per_level_statistics:
-          common: { intelligence: 0.75, speed: 1.5 }
-          uncommon: { intelligence: 0.75, speed: 1.5 }
-          rare: { intelligence: 0.75, speed: 1.5 }
-          epic: { intelligence: 0.75, speed: 1.5 }
-          legendary: { intelligence: 0.75, speed: 1.5 }
-        particle: 3
-        skill_category: COMBAT
+        pet_name: "Skeleton Horse"
+        pet_type: COMBAT
+        rarities: [LEGENDARY]
         skull_texture: abc63ba27357898cf2e64da94802c74efc17ffd24064b5327fbc59694bc5e3dc
-        handler_id: SPOOKY
+        george_price: { LEGENDARY: 500000 }
+        statistics:
+          LEGENDARY: { intelligence: { per_level: 0.75 }, speed: { per_level: 1.5 } }
+        abilities:
+          - name: "High Stride"
+            kind: INACTIVE
+            text:
+              - "<7>Grants permanent <b>Jump Boost IV<7>."
+          - name: "Stampede"
+            kind: HANDLER
+            handler: STAMPEDE
+            triggers: KILL
+            text:
+              - "<7>Mob kills grant a stack of <e>+{0} <glyph:stat_attack_speed>"
+              - "<e>Attack Speed <7>and <c>+{1} <glyph:stat_strength> Strength"
+              - "<7>for <a>5s<7>."
+              - "<8>(Max 20 stacks)"
+            values:
+              - { per_level: 0.01 }
+              - { per_level: 0.1 }
+          - name: "Trample"
+            kind: INACTIVE
+            text:
+              - "<7>After falling <a>20 <7>or more blocks,"
+              - "<7>absorb your fall damage and deal <a>{0}%"
+              - "<7>of your weapon's <c><glyph:skill_sword> Damage <7>for"
+              - "<7>every block fallen to mobs within <a>3"
+              - "<7>blocks."
+            values:
+              - { base: 0.75, per_level: 0.0625 }
       - id: TRACKED_UNIQUE
   - id: SPOOKY_PIE
     material: pumpkin_pie
