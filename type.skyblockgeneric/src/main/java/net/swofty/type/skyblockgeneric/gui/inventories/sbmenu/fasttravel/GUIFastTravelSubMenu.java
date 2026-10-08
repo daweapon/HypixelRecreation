@@ -23,7 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GUIFastTravelSubMenu extends StatelessView {
-    private static final int[] SLOTS = new int[]{20, 21, 22, 23, 24};
+    private static final int[] FEW_SLOTS = new int[]{20, 21, 22, 23, 24};
+    private static final int[] MANY_SLOTS = new int[]{19, 20, 21, 22, 23, 24, 25, 29, 30, 31, 32, 33};
     private final TravelScrollIslands island;
 
     public GUIFastTravelSubMenu(TravelScrollIslands island) {
@@ -48,7 +49,7 @@ public class GUIFastTravelSubMenu extends StatelessView {
         layout.slot(13, (s, c) -> {
             SkyBlockPlayer p = (SkyBlockPlayer) c.player();
             boolean isPaper = p.getToggles().get(DatapointToggles.Toggles.ToggleType.PAPER_ICONS);
-            boolean unlocked = island.isUnlocked(p);
+            boolean unlocked = island.isAvailable() && island.isUnlocked(p);
 
             List<Text> lore = new ArrayList<>();
             lore.add(Text.of("<8>/warp {}", island.getInternalName()));
@@ -63,7 +64,11 @@ public class GUIFastTravelSubMenu extends StatelessView {
                 lore.add(Text.literal(" "));
             }
 
-            lore.add(Text.of(unlocked ? "<e>Click to warp!" : "<c>Warp not unlocked!"));
+            if (!island.isAvailable()) {
+                lore.add(Text.of("<c>Not in SkyBlock yet!"));
+            } else {
+                lore.add(Text.of(unlocked ? "<e>Click to warp!" : "<c>Warp not unlocked!"));
+            }
 
             Text name = island.getDescriptiveName();
             if (isPaper) {
@@ -73,6 +78,10 @@ public class GUIFastTravelSubMenu extends StatelessView {
             }
         }, (click, c) -> {
             SkyBlockPlayer p = (SkyBlockPlayer) c.player();
+            if (!island.isAvailable()) {
+                p.sendMessage(TravelScrollIslands.NOT_AVAILABLE_MESSAGE);
+                return;
+            }
             if (!island.isUnlocked(p)) {
                 p.sendMessage("<c>You haven't unlocked this fast travel destination!");
                 return;
@@ -90,9 +99,10 @@ public class GUIFastTravelSubMenu extends StatelessView {
         });
 
         List<TravelScrollType> scrolls = island.getAssociatedScrolls();
-        for (int i = 0; i < scrolls.size() && i < SLOTS.length; i++) {
+        int[] slots = scrolls.size() <= FEW_SLOTS.length ? FEW_SLOTS : MANY_SLOTS;
+        for (int i = 0; i < scrolls.size() && i < slots.length; i++) {
             TravelScrollType scroll = scrolls.get(i);
-            int slot = SLOTS[i];
+            int slot = slots[i];
 
             layout.slot(slot, (s, c) -> {
                 SkyBlockPlayer p = (SkyBlockPlayer) c.player();
@@ -109,7 +119,9 @@ public class GUIFastTravelSubMenu extends StatelessView {
                 lore.addAll(Text.of("<7><wrap:50>{}</wrap>", scroll.getDescription()).lines());
                 lore.add(Text.literal(" "));
 
-                if (!isUnlocked) {
+                if (!island.isAvailable()) {
+                    lore.add(Text.of("<c>Not in SkyBlock yet!"));
+                } else if (!isUnlocked) {
                     ScrollUnlockReason unlockReason = scroll.getUnlockReason();
                     lore.add(unlockReason.getTitleReason());
                     lore.add(unlockReason.getSubReason());
@@ -134,6 +146,10 @@ public class GUIFastTravelSubMenu extends StatelessView {
                         .getValue()
                         .contains(scroll.getInternalName());
 
+                if (!island.isAvailable()) {
+                    p.sendMessage(TravelScrollIslands.NOT_AVAILABLE_MESSAGE);
+                    return;
+                }
                 if (!isUnlocked) {
                     p.sendMessage("<c>You haven't unlocked this fast travel destination!");
                     return;

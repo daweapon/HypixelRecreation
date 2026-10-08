@@ -40,6 +40,10 @@ public class WarpCommand extends HypixelCommand {
 
             TravelScrollIslands island = TravelScrollIslands.getFromInternalName(warp);
             if (island != null) {
+                if (!island.isAvailable()) {
+                    player.sendMessage(TravelScrollIslands.NOT_AVAILABLE_MESSAGE);
+                    return;
+                }
                 String blocked = island.entryBlockReason(player);
                 if (blocked != null) {
                     player.sendMessage(blocked);
@@ -61,6 +65,10 @@ public class WarpCommand extends HypixelCommand {
                         .get(SkyBlockDataHandler.Data.USED_SCROLLS, DatapointStringList.class)
                         .getValue();
                 TravelScrollIslands islandFromScroll = TravelScrollIslands.getFromTravelScroll(scroll);
+                if (islandFromScroll == null || !islandFromScroll.isAvailable()) {
+                    player.sendMessage(TravelScrollIslands.NOT_AVAILABLE_MESSAGE);
+                    return;
+                }
                 if (unlockedWarps.contains(warp)) {
                     String blocked = islandFromScroll.entryBlockReason(player);
                     if (blocked != null) {

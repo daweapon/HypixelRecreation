@@ -25,8 +25,8 @@ import java.util.List;
 public class GUIFastTravel extends StatelessView {
     private static final int[] SLOTS = new int[]{
             10, 11, 12, 13, 14, 15, 16,
-            20, 21, 22, 23, 24,
-            30, 32
+            19, 20, 21, 22, 23, 24, 25,
+            28, 29, 30, 31, 32, 33, 34
     };
 
     @Override
@@ -67,7 +67,7 @@ public class GUIFastTravel extends StatelessView {
 
             layout.slot(slot, (s, c) -> {
                 SkyBlockPlayer p = (SkyBlockPlayer) c.player();
-                boolean hasUnlockedIsland = island.isUnlocked(p);
+                boolean hasUnlockedIsland = island.isAvailable() && island.isUnlocked(p);
                 boolean isPaper = p.getToggles().get(DatapointToggles.Toggles.ToggleType.PAPER_ICONS);
 
                 List<Text> lore = new ArrayList<>();
@@ -83,7 +83,10 @@ public class GUIFastTravel extends StatelessView {
                     lore.add(Text.literal(" "));
                 }
 
-                if (!hasUnlockedIsland) {
+                if (!island.isAvailable()) {
+                    lore.add(Text.of("<c>Not in SkyBlock yet!"));
+                    if (hasSubMenu) lore.add(Text.of("<e>Left-Click to open!"));
+                } else if (!hasUnlockedIsland) {
                     lore.add(Text.of("<c>Warp not unlocked!"));
                     if (hasSubMenu) lore.add(Text.of("<e>Left-Click to open!"));
                 } else {
@@ -107,6 +110,11 @@ public class GUIFastTravel extends StatelessView {
                 SkyBlockPlayer p = (SkyBlockPlayer) c.player();
                 boolean hasUnlockedIsland = island.isUnlocked(p);
 
+                if (!hasSubMenu && !island.isAvailable()) {
+                    p.sendMessage(TravelScrollIslands.NOT_AVAILABLE_MESSAGE);
+                    return;
+                }
+
                 if (!hasSubMenu && !hasUnlockedIsland) {
                     p.sendMessage("<c>You haven't unlocked this fast travel destination!");
                     return;
@@ -114,6 +122,11 @@ public class GUIFastTravel extends StatelessView {
 
                 if (hasSubMenu && !(click.click() instanceof Click.Right)) {
                     c.push(new GUIFastTravelSubMenu(island));
+                    return;
+                }
+
+                if (!island.isAvailable()) {
+                    p.sendMessage(TravelScrollIslands.NOT_AVAILABLE_MESSAGE);
                     return;
                 }
 

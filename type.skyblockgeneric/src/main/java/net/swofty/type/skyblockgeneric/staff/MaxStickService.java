@@ -69,6 +69,7 @@ import net.swofty.type.skyblockgeneric.slayer.SlayerProgression;
 import net.swofty.type.skyblockgeneric.slayer.SlayerRegistry;
 import net.swofty.type.skyblockgeneric.slayer.SlayerType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.warps.TravelScrollIslands;
 import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoul;
 import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoulExchangeLevels;
 
@@ -146,6 +147,7 @@ public final class MaxStickService {
         maxAccessoryBagUpgrades(player);
         maxPersonalBank(player);
         maxHubUpgrades(player);
+        TravelScrollIslands.unlockAll(player);
         MuseumService.maxOut(player);
         meetTradeCenter(player);
         meetDamia(player);
