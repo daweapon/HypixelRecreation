@@ -1,6 +1,9 @@
 package net.swofty.type.crimsonisle.events;
 
 import net.minestom.server.event.entity.EntityAttackEvent;
+import net.minestom.server.event.item.ItemDropEvent;
+import net.minestom.server.event.item.PlayerCancelItemUseEvent;
+import net.minestom.server.item.Material;
 import net.minestom.server.event.player.PlayerCommandEvent;
 import net.minestom.server.event.player.PlayerDisconnectEvent;
 import net.minestom.server.event.player.PlayerUseItemEvent;
@@ -51,6 +54,18 @@ public class ActionDojoChallenge implements HypixelEventClass {
         if (player.getHeldSlot() != ActionPlayerClickItem.MENU_SLOT) return;
         event.setCancelled(true);
         DojoChallengeLock.cancel(player);
+    }
+
+    @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
+    public void onBowRelease(PlayerCancelItemUseEvent event) {
+        if (event.getItemStack().material() != Material.BOW) return;
+        DojoChallenge challenge = DojoService.challengeOf((SkyBlockPlayer) event.getPlayer());
+        if (challenge != null) challenge.onBowRelease(event.getUseDuration());
+    }
+
+    @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
+    public void onDrop(ItemDropEvent event) {
+        if (DojoChallengeLock.isLocked((SkyBlockPlayer) event.getPlayer())) event.setCancelled(true);
     }
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

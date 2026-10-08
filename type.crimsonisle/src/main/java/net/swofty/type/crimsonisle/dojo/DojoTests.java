@@ -1,5 +1,6 @@
 package net.swofty.type.crimsonisle.dojo;
 
+import net.swofty.type.crimsonisle.dojo.tests.ForceChallenge;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoTest;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -25,6 +26,7 @@ public final class DojoTests {
 
     private static @Nullable Function<SkyBlockPlayer, DojoChallenge> factory(DojoTest test) {
         return switch (test) {
+            case FORCE -> ForceChallenge::new;
             default -> null;
         };
     }

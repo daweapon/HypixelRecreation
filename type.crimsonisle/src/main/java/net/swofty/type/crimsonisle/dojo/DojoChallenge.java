@@ -52,6 +52,9 @@ public abstract class DojoChallenge {
     public void onArrowHit(Point block) {
     }
 
+    public void onBowRelease(long useTicks) {
+    }
+
     /** Timed tests send a fallen player back to the platform; survival tests end. */
     protected void onFall() {
         if (test.isTimed()) {
