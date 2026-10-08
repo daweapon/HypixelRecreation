@@ -1,5 +1,6 @@
 package net.swofty.type.dwarvenmines.gui;
 
+import net.swofty.type.skyblockgeneric.accessory.handler.UtilityAccessories;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
@@ -81,7 +82,7 @@ public class GUICommisions extends HypixelInventoryGUI {
 
 						if (reward.hotmXp() > 0) {
 							hotmData.addExperience(Math.round(PetEvents.xpGained(player, PetEvent.XpType.HOTM, null,
-									reward.hotmXp())));
+									reward.hotmXp() + UtilityAccessories.commissionHotmXp(player))));
 							dataHandler.get(SkyBlockDataHandler.Data.HOTM, DatapointHOTM.class).setValue(hotmData);
 						}
 
