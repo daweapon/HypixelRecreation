@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.DrillComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 
 import java.time.Instant;
 import java.time.ZoneOffset;
@@ -95,7 +96,7 @@ public final class KuudraFollowerRules {
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         if (pet == null || pet.getAttributeHandler().getPotentialType() == null
                 || !"KUUDRA_PET".equals(pet.getAttributeHandler().getPotentialType().name())) return 0;
-        return pet.getAttributeHandler().getPetData().getAsLevel(pet.getAttributeHandler().getRarity());
+        return PetLevels.level(pet);
     }
 
     public static double intelligence(SkyBlockPlayer player) {

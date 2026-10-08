@@ -27,6 +27,7 @@ import net.swofty.type.skyblockgeneric.item.components.FishingBaitComponent;
 import net.swofty.type.skyblockgeneric.item.components.FishingRodPartComponent;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetEvents;
 import org.jetbrains.annotations.Nullable;
 
 // Orchestrates a fishing cast end-to-end: tracks active sessions, computes bite wait time, and
@@ -153,6 +154,8 @@ public final class FishingService {
         markFirstFishToggle(player);
         rollSinkerMaterialize(player, rod);
 
+        SkyBlockRegion region = player.getRegion();
+        payload = PetEvents.fishCaught(player, payload, region == null ? null : region.getType().name());
         payload.apply(new CatchAwardContext(player, rod, hook.getSpawnPosition()));
 
         if (!(payload instanceof CatchPayload.SeaCreature) && payload.skillXp() > 0) {

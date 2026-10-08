@@ -13,6 +13,8 @@ import org.jetbrains.annotations.Nullable;
 public sealed interface PetEvent {
     SkyBlockPlayer player();
 
+    SkyBlockItem pet();
+
     record Kill(SkyBlockPlayer player, SkyBlockItem pet, SkyBlockMob mob) implements PetEvent {
     }
 

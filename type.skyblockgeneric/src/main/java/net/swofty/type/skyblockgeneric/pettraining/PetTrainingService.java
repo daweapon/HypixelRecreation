@@ -1,7 +1,5 @@
 package net.swofty.type.skyblockgeneric.pettraining;
 
-import net.swofty.commons.skyblock.item.Rarity;
-import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributePetData;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetTraining;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetTraining.PetTrainingData;
@@ -9,6 +7,7 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetTraining.Sess
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import org.jetbrains.annotations.Nullable;
 
 public final class PetTrainingService {
@@ -16,7 +15,6 @@ public final class PetTrainingService {
     public static final int MIN_TAMING_LEVEL = 10;
     public static final int GREAT_CARROT_CANDIES_FOR_SLOT_TWO = 5;
     public static final long DAY_MILLIS = 86_400_000L;
-    private static final int MAX_PET_LEVEL = 100;
 
     private PetTrainingService() {
     }
@@ -47,9 +45,7 @@ public final class PetTrainingService {
     }
 
     public static double xpToMaxLevel(SkyBlockItem pet) {
-        Rarity rarity = pet.getAttributeHandler().getRarity();
-        ItemAttributePetData.PetData petData = pet.getAttributeHandler().getPetData();
-        return Math.max(0, petData.getExperienceForLevel(MAX_PET_LEVEL, rarity) - petData.getExperience());
+        return Math.max(0, PetLevels.totalExperienceForMax(pet) - pet.getAttributeHandler().getPetData().getExperience());
     }
 
     public static int days(SkyBlockItem pet, double xpPerDay, PetTrainingDuration duration) {
@@ -90,7 +86,7 @@ public final class PetTrainingService {
         }
 
         SkyBlockItem pet = session.pet();
-        pet.getAttributeHandler().getPetData().addExperience(xpEarned(session, now), pet.getAttributeHandler().getRarity());
+        PetLevels.addExperience(pet, xpEarned(session, now));
         datapoint(player).setValue(data);
         return pet;
     }

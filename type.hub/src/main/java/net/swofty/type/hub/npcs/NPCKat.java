@@ -1,6 +1,7 @@
 package net.swofty.type.hub.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.commons.StringUtility;
 import net.minestom.server.item.ItemStack;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
@@ -11,6 +12,7 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointKat;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.KatComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.KatService;
 
 public class NPCKat extends HypixelNPC {
 
@@ -48,18 +50,23 @@ public class NPCKat extends HypixelNPC {
         SkyBlockPlayer player = (SkyBlockPlayer) e.player();
         DatapointKat.PlayerKat katData = player.getKatData();
         SkyBlockItem heldItem = new SkyBlockItem(player.getItemInMainHand());
-        if (heldItem.hasComponent(KatComponent.class) && katData.getFinishTime() != 0 && katData.getFinishTime() > System.currentTimeMillis()) {
+        boolean waiting = katData.getPet() != null && katData.getFinishTime() > System.currentTimeMillis();
+        if (heldItem.hasComponent(KatComponent.class) && waiting) {
             long reducedTime = (long) heldItem.getComponent(KatComponent.class).getReducedDays() * 86400000;
             katData.setFinishedTime(katData.getFinishTime() - reducedTime);
-            player.setItemInMainHand(ItemStack.AIR);
+            player.setItemInMainHand(heldItem.getAmount() > 1
+                    ? player.getItemInMainHand().withAmount(heldItem.getAmount() - 1) : ItemStack.AIR);
+            player.sendMessage("<a>Kat will be done with your pet sooner!");
         } else if (katData.getPet() != null) {
-            if (katData.getFinishTime() > System.currentTimeMillis()) {
-                player.sendMessage("Kat didn't upgrade ur pet yet");
+            if (waiting) {
+                player.sendMessage("<e>[NPC] Kat<f>: I'm still taking care of your {}<f>! Come back in {}.",
+                        katData.getPet().getDisplayName(),
+                        StringUtility.formatTimeLeftWrittenOut(katData.getFinishTime() - System.currentTimeMillis()));
             } else {
-                SkyBlockItem pet = katData.getPet();
-                pet.getAttributeHandler().getRarity().upgrade();
+                SkyBlockItem pet = KatService.collect(player);
+                if (pet == null) return;
                 player.addAndUpdateItem(pet);
-                katData.setKatMap(0L, null);
+                player.sendMessage("<e>[NPC] Kat<f>: Here's your {}<f>, all grown up!", pet.getDisplayName());
             }
         } else {
             new GUIKat().open(player);

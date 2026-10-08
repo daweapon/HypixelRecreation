@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestival;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
@@ -92,11 +93,8 @@ public final class CarnivalStatistics {
     private static ItemStatistics beePetBaseStatistics(SkyBlockPlayer player) {
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         if (pet == null || pet.getAttributeHandler().getPotentialType() != ItemType.BEE_PET) return ItemStatistics.empty();
-        PetComponent component = pet.getComponent(PetComponent.class);
-        var rarity = pet.getAttributeHandler().getRarity();
-        int level = pet.getAttributeHandler().getPetData().getAsLevel(rarity);
-        return ItemStatistics.add(component.getBaseStatistics(),
-                ItemStatistics.multiply(component.getPerLevelStatistics(rarity), level));
+        return pet.getComponent(PetComponent.class).statisticsAt(pet.getAttributeHandler().getRarity(),
+                PetLevels.level(pet));
     }
 
     public static RegionType stickAroundRegionToday() {

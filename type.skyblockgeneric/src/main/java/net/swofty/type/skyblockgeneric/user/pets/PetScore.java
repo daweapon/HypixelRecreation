@@ -2,11 +2,11 @@ package net.swofty.type.skyblockgeneric.user.pets;
 
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
-import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributePetData;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperience;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -17,8 +17,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Hypixel's Pet Score: each unique pet scores its rarity (Common 1 to Mythic 6) plus 1 at max
- * level, counting only the best copy of duplicates. Thresholds grant Magic Find, and every point
+ * Hypixel's Pet Score: each unique pet scores its rarity (Common 1 to Mythic 6) plus 1 at its max
+ * level, counting only the best copy of duplicates. Pets flagged {@code pet_score: false} (Eagle,
+ * Phoenix) never count. Thresholds grant Magic Find, and every point
  * is worth 3 SkyBlock XP.
  */
 public final class PetScore {
@@ -36,6 +37,9 @@ public final class PetScore {
     public static int of(Collection<SkyBlockItem> pets) {
         Map<ItemType, SkyBlockItem> best = new HashMap<>();
         for (SkyBlockItem pet : pets) {
+            if (!pet.hasComponent(PetComponent.class) || !pet.getComponent(PetComponent.class).isCountsForPetScore()) {
+                continue;
+            }
             best.merge(pet.getAttributeHandler().getPotentialType(), pet,
                     (a, b) -> BEST_COPY.compare(a, b) >= 0 ? a : b);
         }
@@ -66,10 +70,10 @@ public final class PetScore {
     private static int pointsFor(SkyBlockItem pet) {
         Rarity rarity = pet.getAttributeHandler().getRarity();
         int points = Math.min(rarity.ordinal(), Rarity.MYTHIC.ordinal()) + 1;
-        return level(pet) >= ItemAttributePetData.MAX_LEVEL ? points + 1 : points;
+        return PetLevels.isMaxLevel(pet) ? points + 1 : points;
     }
 
     private static int level(SkyBlockItem pet) {
-        return pet.getAttributeHandler().getPetData().getAsLevel(pet.getAttributeHandler().getRarity());
+        return PetLevels.level(pet);
     }
 }

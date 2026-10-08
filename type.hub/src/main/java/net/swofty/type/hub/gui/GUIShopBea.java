@@ -2,13 +2,13 @@ package net.swofty.type.hub.gui;
 
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
-import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributePetData;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.CombinedShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.ItemShopPrice;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 
 import java.util.List;
 
@@ -51,9 +51,7 @@ public class GUIShopBea extends ShopView {
 
         SkyBlockItem beeDisplayItem = new SkyBlockItem(ItemType.BEE_PET);
         beeDisplayItem.getAttributeHandler().setRarity(rarity);
-        ItemAttributePetData.PetData petData = beeDisplayItem.getAttributeHandler().getPetData();
-        petData.setLevel(100, rarity);
-        beeDisplayItem.getAttributeHandler().setPetData(petData);
+        PetLevels.setLevel(beeDisplayItem, PetLevels.maxLevel(beeDisplayItem));
 
         List<Text> lore = beeDisplayItem.getLoreText();
         lore.add(Text.literal(" "));

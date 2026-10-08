@@ -10,14 +10,13 @@ import net.minestom.server.entity.attribute.AttributeOperation;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.AbilityRuntime;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.AttackService;
+import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,12 +28,6 @@ import java.util.concurrent.ThreadLocalRandom;
  * and a Mythic Snowman gives every snowball a 50% chance to deal double damage.
  */
 public final class SnowmanPet {
-    public static final double[] BLIZZARD_BASE = {8, 0};
-    public static final double[] BLIZZARD_PER_LEVEL = {0.08, 0.1};
-    public static final double[] FROSTBITE_BASE = {0};
-    public static final double[] FROSTBITE_PER_LEVEL = {0.1};
-    public static final double[] SNOW_CANNON_BASE = {10};
-    public static final double[] SNOW_CANNON_PER_LEVEL = {0.1};
     public static final double BLIZZARD_SLOW = 0.25;
     public static final double SNOW_CANNON_CAP = 200_000;
     public static final double SNOW_CANNON_RANGE = 8;
@@ -53,10 +46,6 @@ public final class SnowmanPet {
 
     public static double snowCannonDamage(double meleeDamage, double percent) {
         return Math.min(SNOW_CANNON_CAP, Math.max(0, meleeDamage) * percent / 100D);
-    }
-
-    public static void frostbite(PetEvent event, double[] values, AbilityRuntime runtime) {
-        if (event instanceof PetEvent.DamagedByMob hit) hit.damage(reduced(hit.damage(), values[0]));
     }
 
     public static void blizzard(PetEvent event, double[] values, AbilityRuntime runtime) {
@@ -96,10 +85,9 @@ public final class SnowmanPet {
     private static void tickBlizzard() {
         Set<SkyBlockMob> inRange = new HashSet<>();
         for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
-            int level = snowmanLevel(player);
             Instance instance = player.getInstance();
-            if (level < 0 || instance == null) continue;
-            double range = BLIZZARD_BASE[0] + BLIZZARD_PER_LEVEL[0] * level;
+            double range = PetAbilities.value(player, ItemType.SNOWMAN_PET, "Blizzard", 0);
+            if (range <= 0 || instance == null) continue;
             for (Entity entity : instance.getNearbyEntities(player.getPosition(), range)) {
                 if (entity instanceof SkyBlockMob mob && !mob.isDead()) inRange.add(mob);
             }
@@ -118,19 +106,6 @@ public final class SnowmanPet {
     }
 
     private static boolean isMythicSnowman(SkyBlockPlayer player) {
-        SkyBlockItem pet = enabledSnowman(player);
-        return pet != null && pet.getAttributeHandler().getRarity().isAtLeast(Rarity.MYTHIC);
-    }
-
-    private static int snowmanLevel(SkyBlockPlayer player) {
-        SkyBlockItem pet = enabledSnowman(player);
-        if (pet == null) return -1;
-        return pet.getAttributeHandler().getPetData().getAsLevel(pet.getAttributeHandler().getRarity());
-    }
-
-    private static SkyBlockItem enabledSnowman(SkyBlockPlayer player) {
-        if (player.getSkyblockDataHandler() == null) return null;
-        SkyBlockItem pet = player.getPetData().getEnabledPet();
-        return pet != null && pet.getAttributeHandler().getPotentialType() == ItemType.SNOWMAN_PET ? pet : null;
+        return player.getSkyblockDataHandler() != null && PetAbilities.has(player, ItemType.SNOWMAN_PET, "Ouch!");
     }
 }

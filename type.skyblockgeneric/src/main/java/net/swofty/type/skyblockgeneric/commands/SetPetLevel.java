@@ -9,6 +9,8 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
+import net.swofty.type.skyblockgeneric.user.pets.PetScore;
 
 @CommandParameters(labels = "updatepetlevel setpetlevel",
         description = "Sets the level of the held pet, or of the active pet when not holding one",
@@ -19,7 +21,7 @@ public class SetPetLevel extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {
         ArgumentInteger level = new ArgumentInteger("level");
-        level.between(1, ItemAttributePetData.MAX_LEVEL);
+        level.between(1, ItemAttributePetData.HIGHEST_MAX_LEVEL);
 
         command.addSyntax((sender, context) -> {
             if (!permissionCheck(sender)) return;
@@ -29,8 +31,9 @@ public class SetPetLevel extends HypixelCommand {
 
             SkyBlockItem held = new SkyBlockItem(player.getItemInMainHand());
             if (held.hasComponent(PetComponent.class)) {
-                player.updateItem(PlayerItemOrigin.MAIN_HAND, item -> applyLevel(item, target));
-                player.sendMessage("<a>Updated the level of the pet to <e>{}<a>.", target);
+                int applied = Math.min(target, PetLevels.maxLevel(held));
+                player.updateItem(PlayerItemOrigin.MAIN_HAND, item -> PetLevels.setLevel(item, applied));
+                player.sendMessage("<a>Updated the level of the pet to <e>{}<a>.", applied);
                 return;
             }
 
@@ -40,15 +43,12 @@ public class SetPetLevel extends HypixelCommand {
                 return;
             }
 
-            applyLevel(active, target);
+            int applied = Math.min(target, PetLevels.maxLevel(active));
+            PetLevels.setLevel(active, applied);
+            player.getPetData().refreshCachedAbilities();
             player.getPetData().updatePetEntityImpl(player);
-            player.sendMessage("<a>Updated the level of your active pet to <e>{}<a>.", target);
+            PetScore.syncSkyBlockXP(player);
+            player.sendMessage("<a>Updated the level of your active pet to <e>{}<a>.", applied);
         }, level);
-    }
-
-    private static void applyLevel(SkyBlockItem pet, int level) {
-        ItemAttributePetData.PetData data = pet.getAttributeHandler().getPetData();
-        data.setLevel(level, pet.getAttributeHandler().getRarity());
-        pet.getAttributeHandler().setPetData(data);
     }
 }

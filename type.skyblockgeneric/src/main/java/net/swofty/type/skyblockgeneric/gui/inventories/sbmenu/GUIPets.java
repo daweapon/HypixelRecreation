@@ -23,6 +23,7 @@ import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import net.swofty.type.skyblockgeneric.user.pets.PetScore;
 
 import java.util.ArrayList;
@@ -268,11 +269,12 @@ public class GUIPets extends PaginatedView<SkyBlockItem, GUIPets.PetsState> {
 
     public enum SortType {
         RARITY("Rarity", Comparator.comparing((SkyBlockItem pet) -> pet.getAttributeHandler().getRarity()).reversed()
+                .thenComparing(Comparator.comparingInt(PetLevels::level).reversed())
                 .thenComparing(GUIPets::petName)),
         ALPHABETICAL("Alphabetical", Comparator.comparing(GUIPets::petName)),
         PET_EXP("Pet Exp", Comparator.comparingDouble((SkyBlockItem pet) ->
                 pet.getAttributeHandler().getPetData().getExperience()).reversed()),
-        SKILL("Skill", Comparator.comparing((SkyBlockItem pet) -> pet.getComponent(PetComponent.class).getSkillCategory())
+        SKILL("Skill", Comparator.comparing((SkyBlockItem pet) -> pet.getComponent(PetComponent.class).getPetType())
                 .thenComparing(GUIPets::petName));
 
         private final String label;

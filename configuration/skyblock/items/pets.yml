@@ -137,11 +137,6 @@ items:
         skull_texture: e897c5640ccfc68ffb65e331b7070ce5d14439ad2cd7d9612a6feb023eedac18
         handler_id: GRANDMA_WOLF
       - id: TRACKED_UNIQUE
-  # The 6 Traveling Zoo pets below (Roadmap #21). Real Hypixel skin textures for these could not
-  # be sourced (same 403/dead-source problem noted for the mayor NPCs elsewhere in this project) -
-  # all 6 reuse the Grandma Wolf skull texture as a placeholder pending real assets. No ability kit
-  # is wired (PetHandler.ZOO is an empty list) - only base stats, matching the project's practice
-  # of shipping a working stat-only pet rather than guessing at undocumented ability text.
   - id: LION_PET
     material: player_head
     name: "Lion Pet"
@@ -149,17 +144,41 @@ items:
     components:
       - id: PET
         pet_name: Lion
-        base_statistics: {}
-        per_level_statistics:
-          common: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
-          uncommon: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
-          rare: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
-          epic: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
-          legendary: { strength: 0.5, ferocity: 0.05, speed: 0.25 }
-        particle: 3
-        skill_category: FORAGING
+        pet_type: FORAGING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
         skull_texture: 38ff473bd52b4db2c06f1ac87fe1367bce7574fac330ffac7956229f82efba1
-        handler_id: LION
+        george_price: { COMMON: 5000, UNCOMMON: 12500, RARE: 50000, EPIC: 500000, LEGENDARY: 5000000 }
+        statistics:
+          COMMON: { strength: { per_level: 0.5 }, ferocity: { per_level: 0.05 }, speed: { per_level: 0.25 } }
+        abilities:
+          - name: "Primal Force"
+            kind: STAT
+            statistics: { damage: "{0}", strength: "{1}" }
+            text:
+              - "<7>Adds <c>+{0} <c><glyph:skill_sword> Damage <7>and"
+              - "<7><c>+{1} <c><glyph:stat_strength> Strength <7>to your"
+              - "<7>weapons."
+            values:
+              - { per_level: { COMMON: 0.03, UNCOMMON: 0.05, RARE: 0.1, EPIC: 0.15, LEGENDARY: 0.2 } }
+              - { per_level: { COMMON: 0.03, UNCOMMON: 0.05, RARE: 0.1, EPIC: 0.15, LEGENDARY: 0.2 } }
+          - name: "First Pounce"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>First Strike<7>,"
+              - "<7>Triple-Strike<7>, and <d><l>Combo"
+              - "<r><7>are <a>{0}% <7>more effective."
+            values:
+              - { per_level: { RARE: 0.75, EPIC: 1 } }
+          - name: "King of the Jungle"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Deal <c>+{0}% <c><glyph:skill_sword> Damage"
+              - "<c><7>against mobs that have"
+              - "<7>attacked you."
+            values:
+              - { per_level: 1.5 }
       - id: TRACKED_UNIQUE
   - id: MONKEY_PET
     material: player_head

@@ -19,9 +19,9 @@ import net.swofty.type.skyblockgeneric.fishing.rod.FishingShipPartSlot;
 import net.swofty.type.skyblockgeneric.gems.GemRarity;
 import net.swofty.type.skyblockgeneric.gems.Gemstone;
 import net.swofty.type.skyblockgeneric.item.components.*;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetComponentParser;
 import net.swofty.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
 import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
-import net.swofty.type.skyblockgeneric.item.handlers.pet.KatUpgrade;
 import net.swofty.type.skyblockgeneric.minion.MinionIngredient;
 import net.swofty.type.skyblockgeneric.minion.MinionTierRecipe;
 import net.swofty.type.skyblockgeneric.minion.inferno.InfernoFuelGrade;
@@ -646,76 +646,7 @@ public class ItemConfigParser {
 					String scrollType = safeConfig.getString("scroll_type");
 					yield new TravelScrollComponent(scrollType);
 				}
-				case "PET" -> {
-					String petName = safeConfig.getString("pet_name");
-
-					// Parse george price
-					SafeConfig georgePriceConfig = safeConfig.getNested("george_price");
-					RarityValue<Integer> georgePrice = new RarityValue<>(
-							georgePriceConfig.getInt("common"),
-							georgePriceConfig.getInt("uncommon"),
-							georgePriceConfig.getInt("rare"),
-							georgePriceConfig.getInt("epic"),
-							georgePriceConfig.getInt("legendary"),
-                            georgePriceConfig.getInt("mythic"),
-							georgePriceConfig.getInt("rest")
-					);
-
-					// Parse kat upgrades if present
-					RarityValue<KatUpgrade> katUpgrades = null;
-					if (safeConfig.containsKey("kat_upgrades")) {
-						SafeConfig katUpgradeConfig = safeConfig.getNested("kat_upgrades");
-						katUpgrades = new RarityValue<>(
-								parseKatUpgrade(katUpgradeConfig.getNested("common").config),
-								parseKatUpgrade(katUpgradeConfig.getNested("uncommon").config),
-								parseKatUpgrade(katUpgradeConfig.getNested("rare").config),
-								parseKatUpgrade(katUpgradeConfig.getNested("epic").config),
-								parseKatUpgrade(katUpgradeConfig.getNested("legendary").config),
-                                parseKatUpgrade(katUpgradeConfig.getNested("mythic").config),
-								parseKatUpgrade(katUpgradeConfig.getNested("rest").config)
-						);
-					}
-
-					// Parse base statistics
-					SafeConfig baseStatsConfig = safeConfig.getNested("base_statistics");
-					ItemStatistics.Builder baseBuilder = ItemStatistics.builder();
-					for (String statKey : baseStatsConfig.getKeys()) {
-						double value = baseStatsConfig.getDouble(statKey);
-						baseBuilder.withBase(ItemStatistic.valueOf(statKey.toUpperCase()), value);
-					}
-					ItemStatistics baseStatistics = baseBuilder.build();
-
-					// Parse per level statistics
-					SafeConfig perLevelStatsConfig = safeConfig.getNested("per_level_statistics");
-					RarityValue<ItemStatistics> perLevelStatistics = new RarityValue<>(
-							parsePerLevelStatistics(perLevelStatsConfig.getNested("common")),
-							parsePerLevelStatistics(perLevelStatsConfig.getNested("uncommon")),
-							parsePerLevelStatistics(perLevelStatsConfig.getNested("rare")),
-							parsePerLevelStatistics(perLevelStatsConfig.getNested("epic")),
-							parsePerLevelStatistics(perLevelStatsConfig.getNested("legendary")),
-							parsePerLevelStatistics(perLevelStatsConfig.getNested("mythic")),
-							parsePerLevelStatistics(perLevelStatsConfig.getNested("rest"))
-					);
-
-					// Parse other fields
-					int particleIdValue = safeConfig.getInt("particle");
-					Particle particleId = Particle.fromId(particleIdValue);
-					String skillCategory = safeConfig.getString("skill_category");
-					String skullTexture = safeConfig.getString("skull_texture");
-					String handlerId = safeConfig.getString("handler_id");
-
-					yield new PetComponent(
-							petName,
-							georgePrice,
-							katUpgrades,
-							baseStatistics,
-							perLevelStatistics,
-							particleId,
-							skillCategory,
-							skullTexture,
-							handlerId
-					);
-				}
+				case "PET" -> PetComponentParser.parse(safeConfig.config);
 				case "UPGRADES" -> {
 					List<Map<String, Object>> levelsConfig = safeConfig.getMapList("levels");
 					List<UpgradesComponent.UpgradeLevel> levels = new ArrayList<>();
@@ -780,30 +711,6 @@ public class ItemConfigParser {
 		config.getMap("minions").forEach((symbol, value) ->
 				minionTiers.put(symbol.charAt(0), Integer.parseInt(value.toString())));
 		return new MinionTierRecipe(config.getInt("tier"), config.getList("pattern", String.class), ingredients, minionTiers);
-	}
-
-	private static ItemStatistics parsePerLevelStatistics(SafeConfig config) {
-		ItemStatistics.Builder builder = ItemStatistics.builder();
-		for (String statKey : config.getKeys()) {
-			builder.withBase(ItemStatistic.valueOf(statKey.toUpperCase()), config.getDouble(statKey));
-		}
-		return builder.build();
-	}
-
-	private static KatUpgrade parseKatUpgrade(Map<String, Object> config) {
-		if (config == null || config.isEmpty()) return null;
-
-		SafeConfig safeConfig = SafeConfig.of(config);
-		Long time = safeConfig.getLong("time");
-		Integer coins = safeConfig.getInt("coins");
-
-		if (safeConfig.containsKey("item")) {
-			String item = safeConfig.getString("item");
-			Integer amount = safeConfig.getInt("amount");
-			return KatUpgrade.WithItem(time, coins, ItemType.valueOf(item), amount);
-		}
-
-		return KatUpgrade.OnlyCoins(time, coins);
 	}
 
 	private static List<GemstoneComponent.GemstoneSlot> parseGemstoneEntries(List<Map<String, Object>> gemstoneEntries) {

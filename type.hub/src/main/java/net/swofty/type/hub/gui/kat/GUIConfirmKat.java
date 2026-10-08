@@ -1,22 +1,24 @@
 package net.swofty.type.hub.gui.kat;
 
+import net.minestom.server.event.inventory.InventoryCloseEvent;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
+import net.minestom.server.inventory.Inventory;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.StringUtility;
-import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
+import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
+import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
-import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.KatUpgrade;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
-import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.KatService;
 
 public class GUIConfirmKat extends HypixelInventoryGUI {
-
-    private SkyBlockItem pet;
+    private final SkyBlockItem pet;
+    private boolean handled = false;
 
     public GUIConfirmKat(SkyBlockItem pet) {
         super("Confirm Hiring Kat", InventoryType.CHEST_3_ROW);
@@ -30,50 +32,62 @@ public class GUIConfirmKat extends HypixelInventoryGUI {
         set(new GUIClickableItem(11) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p; 
-                if (pet.getComponent(PetComponent.class).getKatUpgrades().getForRarity(pet.getAttributeHandler().getRarity().upgrade()) == null) return;
-                KatUpgrade katUpgrade = pet.getComponent(PetComponent.class).getKatUpgrades().getForRarity(pet.getAttributeHandler().getRarity().upgrade());
-                int coins = katUpgrade.getCoins();
-                long time = katUpgrade.getTime();
-
-                Long timeWhenFinished = time + System.currentTimeMillis();
-                player.getKatData().setKatMap(timeWhenFinished, pet);
-                player.removeCoins(coins);
+                SkyBlockPlayer player = (SkyBlockPlayer) p;
+                if (handled) return;
+                if (!KatService.start(player, pet)) {
+                    String problem = KatService.problem(player, pet);
+                    player.sendMessage("<c>" + (problem == null ? "Kat is already taking care of a pet!" : problem));
+                    return;
+                }
+                handled = true;
+                player.sendMessage("<e>[NPC] Kat<f>: I'll take good care of your {}<f>!", pet.getDisplayName());
                 player.closeInventory();
             }
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p; 
-                if (pet.getComponent(PetComponent.class).getKatUpgrades().getForRarity(pet.getAttributeHandler().getRarity().upgrade()) == null) {
-                    return ItemStacks.item(Material.RED_TERRACOTTA, "<a>Something went wrong!");
+                KatUpgrade katUpgrade = KatService.upgradeFor(pet);
+                if (katUpgrade == null) {
+                    return ItemStacks.item(Material.RED_TERRACOTTA, "<c>Kat can't upgrade this pet any further!");
                 }
-                KatUpgrade katUpgrade = pet.getComponent(PetComponent.class).getKatUpgrades().getForRarity(pet.getAttributeHandler().getRarity().upgrade());
-                long time = katUpgrade.getTime();
                 return ItemStacks.item(Material.GREEN_TERRACOTTA, """
                         <a>Confirm
                         <c>WARNING: You will not be able to
                         <c>retrieve your pet for {} and its
                         <c>level will change as a result of the
-                        <c>rarity upgrade.""", StringUtility.formatTimeLeftWrittenOut(time));
+                        <c>rarity upgrade.""", StringUtility.formatTimeLeftWrittenOut(katUpgrade.timeMillis()));
             }
         });
 
         set(new GUIClickableItem(15) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p; 
-                player.closeInventory();
-                player.addAndUpdateItem(pet);
+                returnPet((SkyBlockPlayer) p);
+                p.closeInventory();
             }
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p;
                 return ItemStacks.item(Material.RED_TERRACOTTA, "<c>Cancel");
             }
         });
         updateItemStacks(getInventory(), getPlayer());
+    }
+
+    @Override
+    public void onClose(InventoryCloseEvent e, CloseReason reason) {
+        returnPet((SkyBlockPlayer) e.getPlayer());
+    }
+
+    @Override
+    public void suddenlyQuit(Inventory inventory, HypixelPlayer player) {
+        returnPet((SkyBlockPlayer) player);
+    }
+
+    private void returnPet(SkyBlockPlayer player) {
+        if (handled) return;
+        handled = true;
+        player.addAndUpdateItem(pet);
     }
 
     @Override
@@ -83,6 +97,5 @@ public class GUIConfirmKat extends HypixelInventoryGUI {
 
     @Override
     public void onBottomClick(InventoryPreClickEvent e) {
-
     }
 }

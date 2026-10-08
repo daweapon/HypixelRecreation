@@ -13,16 +13,18 @@ import net.swofty.type.skyblockgeneric.entity.PetEntityImpl;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
-import net.swofty.type.skyblockgeneric.item.handlers.pet.PetHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.AbilityRuntime;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
@@ -97,6 +99,13 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
         super(key, new UserPetData(new HashMap<>()), serializer);
     }
 
+    public record ActiveAbility(SkyBlockItem pet, PetAbility ability) {
+    }
+
+    private static final Comparator<SkyBlockItem> BEST_COPY = Comparator
+            .comparingInt((SkyBlockItem pet) -> pet.getAttributeHandler().getRarity().ordinal())
+            .thenComparingInt(PetLevels::level);
+
     @Getter
     @JsonIgnoreProperties(ignoreUnknown = true) // Due to protocols serializing "enabledPet"
     public static class UserPetData {
@@ -110,7 +119,7 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
         @JsonIgnore
         private boolean nameTags = true;
         private PetEntityImpl enabledPetEntityImpl = null;
-        private transient List<PetAbility> cachedAbilities;
+        private transient List<ActiveAbility> activeAbilities;
         private final transient Map<PetAbility, AbilityRuntime> abilityRuntimes = new HashMap<>();
 
         public UserPetData() {
@@ -123,6 +132,7 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
 
         public void addPet(SkyBlockItem pet) {
             petsMap.put(pet, false);
+            activeAbilities = null;
         }
 
         public void setEnabled(ItemType type, boolean enabled) {
@@ -209,19 +219,42 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
 
         public void deselectCurrent() {
             petsMap.keySet().forEach(pet -> petsMap.put(pet, false));
-            this.cachedAbilities = null;
+            this.activeAbilities = null;
         }
 
         public @Nullable SkyBlockItem getEnabledPet() {
             return petsMap.keySet().stream().filter(petsMap::get).findFirst().orElse(null);
         }
 
-        public List<PetAbility> getCachedAbilities(SkyBlockItem pet) {
-            if (cachedAbilities == null) {
-                PetComponent component = pet.getComponent(PetComponent.class);
-                cachedAbilities = PetHandler.valueOf(component.getHandlerId().toUpperCase()).getAbilities(pet);
+        public List<ActiveAbility> getActiveAbilities() {
+            List<ActiveAbility> cached = activeAbilities;
+            if (cached == null) {
+                cached = computeActiveAbilities();
+                activeAbilities = cached;
             }
-            return cachedAbilities;
+            return cached;
+        }
+
+        private List<ActiveAbility> computeActiveAbilities() {
+            List<ActiveAbility> active = new ArrayList<>();
+            SkyBlockItem summoned = getEnabledPet();
+            ItemType summonedType = summoned == null ? null : summoned.getAttributeHandler().getPotentialType();
+            if (summoned != null) addAbilities(active, summoned);
+
+            Map<ItemType, SkyBlockItem> passive = new HashMap<>();
+            for (SkyBlockItem pet : petsMap.keySet()) {
+                if (!pet.hasComponent(PetComponent.class)) continue;
+                ItemType type = pet.getAttributeHandler().getPotentialType();
+                if (!pet.getComponent(PetComponent.class).isPassive() || type == summonedType) continue;
+                passive.merge(type, pet, (a, b) -> BEST_COPY.compare(a, b) >= 0 ? a : b);
+            }
+            passive.values().forEach(pet -> addAbilities(active, pet));
+            return List.copyOf(active);
+        }
+
+        private static void addAbilities(List<ActiveAbility> active, SkyBlockItem pet) {
+            if (!pet.hasComponent(PetComponent.class)) return;
+            for (PetAbility ability : pet.getComponent(PetComponent.class).abilitiesFor(pet)) active.add(new ActiveAbility(pet, ability));
         }
 
         public AbilityRuntime getAbilityRuntime(PetAbility ability) {
@@ -229,23 +262,14 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
         }
 
         public <E extends PetEvent> E dispatch(E event) {
-            SkyBlockItem pet = getEnabledPet();
-            if (pet == null) return event;
-            for (PetAbility ability : getCachedAbilities(pet)) {
-                ability.onEvent(event);
+            for (ActiveAbility active : getActiveAbilities()) {
+                active.ability().onEvent(event, active.pet());
             }
             return event;
         }
 
-        // TODO: need to be called by Tier Boost
         public void refreshCachedAbilities() {
-            SkyBlockItem activePet = getEnabledPet();
-            if (activePet != null) {
-                PetComponent component = activePet.getComponent(PetComponent.class);
-                this.cachedAbilities = PetHandler.valueOf(component.getHandlerId().toUpperCase()).getAbilities(activePet);
-            } else {
-                this.cachedAbilities = null;
-            }
+            this.activeAbilities = null;
         }
 
         public @Nullable SkyBlockItem getPet(ItemType type) {
@@ -254,6 +278,7 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
 
         public void removePet(SkyBlockItem pet) {
             boolean wasActive = Boolean.TRUE.equals(petsMap.remove(pet));
+            activeAbilities = null;
             favorites.remove(pet);
             int slot = getExpShareSlot(pet);
             if (slot >= 0) expShare[slot] = null;
@@ -263,7 +288,6 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
                     enabledPetEntityImpl.remove();
                     enabledPetEntityImpl = null;
                 }
-                this.cachedAbilities = null;
             }
         }
     }

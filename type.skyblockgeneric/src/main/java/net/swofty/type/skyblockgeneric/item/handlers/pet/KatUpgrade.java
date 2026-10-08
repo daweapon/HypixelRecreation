@@ -1,30 +1,18 @@
 package net.swofty.type.skyblockgeneric.item.handlers.pet;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import net.swofty.commons.skyblock.item.ItemType;
 
-@RequiredArgsConstructor
-@Getter
-public class KatUpgrade {
-    private final Long time;
-    private final Integer coins;
-    @Setter
-    private ItemType item;
-    private Integer amount;
+import java.util.List;
 
-    public KatUpgrade(Long time, Integer coins, ItemType item, Integer amount) {
-        this.time = time;
-        this.coins = coins;
-        this.item = item;
-        this.amount = amount;
+/**
+ * Kat's price to raise a pet to the next rarity: coins, items and real time.
+ */
+public record KatUpgrade(long timeMillis, long coins, List<ItemCost> items) {
+
+    public record ItemCost(ItemType item, int amount) {
     }
 
-    public static KatUpgrade OnlyCoins(Long time, Integer coins) {
-        return new KatUpgrade(time, coins);
-    }
-    public static KatUpgrade WithItem(Long time, Integer coins, ItemType item, Integer amount) {
-        return new KatUpgrade(time, coins, item, amount);
+    public long discountedCoins(int petLevel) {
+        return Math.round(coins * (1 - 0.003 * Math.min(100, Math.max(0, petLevel))));
     }
 }

@@ -2,14 +2,12 @@ package net.swofty.type.skyblockgeneric.gifts;
 
 import net.minestom.server.MinecraftServer;
 import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.LeveledPetAbility;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -37,15 +35,6 @@ class JerryEffectsTest {
         assertFalse(BottleOfJyrre.hasEvolved(300 * 60 - 1));
         assertTrue(BottleOfJyrre.hasEvolved(300 * 60));
         assertEquals(10, BottleOfJyrre.REFINED_LIMIT * BottleOfJyrre.REFINED_XP_EACH);
-    }
-
-    @Test
-    void snowmanValuesMatchNeuAtLevelsOneAndOneHundred() {
-        assertArrayEquals(new double[]{8.08, 0.1}, LeveledPetAbility.values(SnowmanPet.BLIZZARD_BASE, SnowmanPet.BLIZZARD_PER_LEVEL, 1), 1e-9);
-        assertArrayEquals(new double[]{16, 10}, LeveledPetAbility.values(SnowmanPet.BLIZZARD_BASE, SnowmanPet.BLIZZARD_PER_LEVEL, 100), 1e-9);
-        assertArrayEquals(new double[]{10}, LeveledPetAbility.values(SnowmanPet.FROSTBITE_BASE, SnowmanPet.FROSTBITE_PER_LEVEL, 100), 1e-9);
-        assertArrayEquals(new double[]{10.1}, LeveledPetAbility.values(SnowmanPet.SNOW_CANNON_BASE, SnowmanPet.SNOW_CANNON_PER_LEVEL, 1), 1e-9);
-        assertArrayEquals(new double[]{20}, LeveledPetAbility.values(SnowmanPet.SNOW_CANNON_BASE, SnowmanPet.SNOW_CANNON_PER_LEVEL, 100), 1e-9);
     }
 
     @Test

@@ -6,7 +6,6 @@ import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
-import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributePetData;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.DefaultState;
@@ -22,6 +21,7 @@ import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.CombinedShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.ItemShopPrice;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,9 +114,7 @@ public final class DianaOffice {
 
     private static SkyBlockItem griffinPreview() {
         SkyBlockItem preview = griffin(Rarity.COMMON);
-        ItemAttributePetData.PetData petData = preview.getAttributeHandler().getPetData();
-        petData.setLevel(100, Rarity.COMMON);
-        preview.getAttributeHandler().setPetData(petData);
+        PetLevels.setLevel(preview, PetLevels.maxLevel(preview));
         return preview;
     }
 

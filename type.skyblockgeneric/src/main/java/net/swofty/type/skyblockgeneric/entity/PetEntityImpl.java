@@ -20,6 +20,7 @@ import net.swofty.type.generic.utility.MathUtility;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -47,7 +48,7 @@ public class PetEntityImpl extends LivingEntity {
 
         var attributeHandler = pet.getAttributeHandler();
         var rarity = attributeHandler.getRarity();
-        var level = attributeHandler.getPetData().getAsLevel(rarity);
+        var level = PetLevels.level(pet);
         var petName = pet.getComponent(PetComponent.class).getPetName();
 
         editEntityMeta(ArmorStandMeta.class, meta -> {
@@ -55,6 +56,10 @@ public class PetEntityImpl extends LivingEntity {
                     level, rarity.getColor(), player.getUsername(), petName
             ).asComponent());
         });
+    }
+
+    public SkyBlockPlayer getOwner() {
+        return player;
     }
 
     public static void refreshFor(SkyBlockPlayer viewer) {

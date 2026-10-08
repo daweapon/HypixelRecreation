@@ -8,6 +8,7 @@ import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
 import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.item.ItemAttributeHandler;
+import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -22,7 +23,7 @@ import java.util.stream.Collectors;
         allowsConsole = false)
 public class SetPetRarityCommand extends HypixelCommand {
     private static final List<Rarity> PET_RARITIES = Arrays.stream(Rarity.values())
-            .filter(rarity -> rarity.ordinal() <= Rarity.MYTHIC.ordinal())
+            .filter(rarity -> rarity != Rarity.DIVINE && rarity != Rarity.ADMIN)
             .toList();
 
     @Override
@@ -47,6 +48,12 @@ public class SetPetRarityCommand extends HypixelCommand {
                 ItemAttributeHandler handler = item.getAttributeHandler();
                 if (!handler.isPet()) {
                     sender.sendMessage("<c>The item in your hand is not a pet.");
+                    return;
+                }
+                List<Rarity> available = item.getComponent(PetComponent.class).getRarities();
+                if (!available.contains(rarity)) {
+                    sender.sendMessage(Text.of("<c>This pet only comes in {}.", available.stream()
+                            .map(Enum::name).collect(Collectors.joining("/"))));
                     return;
                 }
                 handler.setRarity(rarity);
