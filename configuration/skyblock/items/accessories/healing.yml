@@ -13,7 +13,6 @@ items:
         texture: 651eb16f22dd7505be5dae06671803633a5abf8b2beeb5c60548670df0e59214
       - id: SELLABLE
         value: 1440
-      - id: NOT_FINISHED_YET
 
   - id: HEALING_RING
     material: PLAYER_HEAD
@@ -29,4 +28,3 @@ items:
         texture: 50247bc4a01d2a2391cd8d8543c9fc673cda74b06bfc127a72ec06ad3ed580e1
       - id: SELLABLE
         value: 17000
-      - id: NOT_FINISHED_YET

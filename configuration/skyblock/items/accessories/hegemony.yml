@@ -9,7 +9,7 @@ items:
         effects:
           - type: TEXT
             text:
-              - "Counts for twice the Accessory"
-              - "Power in your Accessory Bag."
+              - "Counts for twice the <6>Accessory"
+              - "<6>Power <7>in your <a>Accessory Bag<7>."
       - id: SKULL_HEAD
         texture: 313384a293cfbba3489b483ebc1de7584ca2726d7f5c3a620513474925e87b97

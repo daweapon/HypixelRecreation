@@ -7,11 +7,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Runeblade Talisman
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: AXE_WOODLAND_DAMAGE
+            percent: 5
+            text:
+              - "Your Axes deal <c>5% <7>more <c> Damage"
+              - "to <2> Woodland <7>mobs."
       - id: SKULL_HEAD
         texture: 5f7eefa4da751f08c04e817c89fa2571fefaa7bbbe69bcbd1788ce5f0f08beed
       - id: SELLABLE
         value: 100
-      - id: NOT_FINISHED_YET
 
   - id: RUNEBLADE_RING
     material: PLAYER_HEAD
@@ -21,11 +27,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Runeblade Ring
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: AXE_WOODLAND_DAMAGE
+            percent: 10
+            text:
+              - "Your Axes deal <c>10% <7>more <c> Damage"
+              - "to <2> Woodland <7>mobs."
       - id: SKULL_HEAD
         texture: c4f6aa4ef624cf2d8149222b8e818cee3e0b00b341366d2560b319fa4d98708d
       - id: SELLABLE
         value: 900
-      - id: NOT_FINISHED_YET
 
   - id: RUNEBLADE_ARTIFACT
     material: PLAYER_HEAD
@@ -35,8 +47,14 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Runeblade Artifact
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: AXE_WOODLAND_DAMAGE
+            percent: 15
+            text:
+              - "Your Axes deal <c>15% <7>more <c> Damage"
+              - "to <2> Woodland <7>mobs."
       - id: SKULL_HEAD
         texture: 74332cd835d05bfca3f0ef445d82ca212cd910249cc7371653ab7b2970d1c0f3
       - id: SELLABLE
         value: 8100
-      - id: NOT_FINISHED_YET

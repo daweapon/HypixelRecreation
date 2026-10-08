@@ -3,8 +3,6 @@ items:
     material: PLAYER_HEAD
     name: "Odger's Bronze Tooth"
     rarity: COMMON
-    lore:
-      - '<8><o>A perfectly fine tooth, besides some wear and tear...'
     default_statistics:
       sea_creature_chance: 0.5
       trophy_fish_chance: 1
@@ -12,6 +10,11 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Odger's Bronze Tooth
       - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8><o>A perfectly fine tooth, besides some"
+              - "<8><o>wear and tear..."
       - id: SKULL_HEAD
         texture: accc4432efe08c88530ac084fea6526641a207d78e637e41f7a4e5dcfdaaa162
       - id: DEFAULT_SOULBOUND
@@ -21,8 +24,6 @@ items:
     material: PLAYER_HEAD
     name: "Odger's Silver Tooth"
     rarity: UNCOMMON
-    lore:
-      - '<8><o>A perfectly fine tooth, besides a broken chunk...'
     default_statistics:
       sea_creature_chance: 1
       trophy_fish_chance: 2
@@ -30,6 +31,11 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Odger's Silver Tooth
       - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8><o>A perfectly fine tooth, besides a"
+              - "<8><o>broken chunk..."
       - id: SKULL_HEAD
         texture: c2d41b2279abce5fd626923b61e3ab98dce4972417289ee2b73214c0aaba841e
       - id: DEFAULT_SOULBOUND
@@ -39,8 +45,6 @@ items:
     material: PLAYER_HEAD
     name: "Odger's Gold Tooth"
     rarity: RARE
-    lore:
-      - '<8><o>A perfectly fine tooth, besides its weight...'
     default_statistics:
       sea_creature_chance: 1.5
       trophy_fish_chance: 3
@@ -48,6 +52,11 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Odger's Gold Tooth
       - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8><o>A perfectly fine tooth, besides its"
+              - "<8><o>weight..."
       - id: SKULL_HEAD
         texture: 42024901024636f1c074e6562285f4cc9fd3da2885d4010cee52cc0696d2f96a
       - id: DEFAULT_SOULBOUND
@@ -57,8 +66,6 @@ items:
     material: PLAYER_HEAD
     name: "Odger's Diamond Tooth"
     rarity: EPIC
-    lore:
-      - '<8><o>A perfectly fine tooth, besides its radiant brightness...'
     default_statistics:
       sea_creature_chance: 2
       trophy_fish_chance: 4
@@ -66,6 +73,11 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Odger's Diamond Tooth
       - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8><o>A perfectly fine tooth, besides its"
+              - "<8><o>radiant brightness..."
       - id: SKULL_HEAD
         texture: a2680a28962e9ad2d4872d06fba2cc60824fbb2d0824e42d958575b7563884aa
       - id: DEFAULT_SOULBOUND

@@ -5,6 +5,13 @@ items:
     rarity: UNCOMMON
     components:
       - id: TALISMAN
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 5
+            mob_types: [ARTHROPOD]
+            text:
+              - "Reduces the damage taken from <4>"
+              - "<4>Arthropod <7>mobs by <a>5%<7>."
       - id: SKULL_HEAD
         texture: 9d83d0494939dba5f27a1dcba7031d5feff44d6efe8d8623e12052470d0a6674
       - id: SELLABLE
@@ -15,6 +22,13 @@ items:
     rarity: RARE
     components:
       - id: TALISMAN
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 10
+            mob_types: [ARTHROPOD]
+            text:
+              - "Reduces the damage taken from <4>"
+              - "<4>Arthropod <7>mobs by <a>10%<7>."
       - id: SKULL_HEAD
         texture: 604ada2212a38e67b6dbad2d156ee110c546dbfd7165b7f50b8ec17ff224dba5
   - id: SPIDER_ARTIFACT
@@ -23,5 +37,12 @@ items:
     rarity: EPIC
     components:
       - id: TALISMAN
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 15
+            mob_types: [ARTHROPOD]
+            text:
+              - "Reduces the damage taken from <4>"
+              - "<4>Arthropod <7>mobs by <a>15%<7>."
       - id: SKULL_HEAD
         texture: b81b5cf3a65bf9cab4bca55781721a86d567d9e106551647f35b715edf00a13f

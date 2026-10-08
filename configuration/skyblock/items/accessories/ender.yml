@@ -7,9 +7,15 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Ender Artifact
       - id: ACCESSORY
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 20
+            mob_types: [ENDER]
+            text:
+              - "Reduces the damage taken from <5>"
+              - "<5>Ender <7>mobs by <a>20%<7>."
       - id: SKULL_HEAD
         texture: 288748014809862e8bd210a0a3dfcd7be6e0ddc7b453e3947ee6d73f46fde9e2
-      - id: NOT_FINISHED_YET
 
   - id: ENDER_RELIC
     material: PLAYER_HEAD
@@ -19,6 +25,12 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Ender Relic
       - id: ACCESSORY
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 25
+            mob_types: [ENDER]
+            text:
+              - "Reduces the damage taken from <5>"
+              - "<5>Ender <7>mobs by <a>25%<7>."
       - id: SKULL_HEAD
         texture: 288748014809862e8bd210a0a3dfcd7be6e0ddc7b453e3947ee6d73f46fde9e2
-      - id: NOT_FINISHED_YET

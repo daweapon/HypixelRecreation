@@ -3,68 +3,138 @@ items:
     material: PLAYER_HEAD
     name: "Nibble Chocolate Stick"
     rarity: COMMON
-    lore:
-      - '<8><o>A delightful treat from the Factory. Its crisp taste sparks joy with every bite.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Nibble Chocolate Stick
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: CHOCOLATE_PER_SECOND
+            percent: 10
+            text:
+              - "Grants <6>+10 Chocolate <7>per second."
+          - type: INACTIVE
+            reason: "Hoppity rabbit odds"
+            text:
+              - "Grants <a>+2% <7>chance to find a"
+              - "<a>Chocolate Rabbit <7>that you haven't"
+              - "found yet."
+          - type: TEXT
+            text:
+              - "<8><o>A delightful treat from the Factory."
+              - "<8><o>Its crisp taste sparks joy with"
+              - "<8><o>every bite."
       - id: SKULL_HEAD
         texture: 888188d62908af6e114f73a109e15ac7f1faded39abd6a2054034ec5cc70c727
-      - id: NOT_FINISHED_YET
 
   - id: SMOOTH_CHOCOLATE_BAR
     material: PLAYER_HEAD
     name: "Smooth Chocolate Bar"
     rarity: UNCOMMON
-    lore:
-      - '<8><o>Crafted in the Factory, its smoothness melts hearts and tastes like a sweet escape.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Smooth Chocolate Bar
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: CHOCOLATE_PER_SECOND
+            percent: 20
+            text:
+              - "Grants <6>+20 Chocolate <7>per second."
+          - type: INACTIVE
+            reason: "Hoppity rabbit odds"
+            text:
+              - "Grants <a>+4% <7>chance to find a"
+              - "<a>Chocolate Rabbit <7>that you haven't"
+              - "found yet."
+          - type: TEXT
+            text:
+              - "<8><o>Crafted in the Factory, its"
+              - "<8><o>smoothness melts hearts and tastes"
+              - "<8><o>like a sweet escape."
       - id: SKULL_HEAD
         texture: a9372efd2ca1a6c6dfc066f1ec83f9456575c3850a0e7d01109c4f1af300ba8
-      - id: NOT_FINISHED_YET
 
   - id: RICH_CHOCOLATE_CHUNK
     material: PLAYER_HEAD
     name: "Rich Chocolate Chunk"
     rarity: RARE
-    lore:
-      - '<8><o>From the Factory''s secret reserves, its rich flavor is a deep dive into indulgence.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Rich Chocolate Chunk
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: CHOCOLATE_PER_SECOND
+            percent: 30
+            text:
+              - "Grants <6>+30 Chocolate <7>per second."
+          - type: INACTIVE
+            reason: "Hoppity rabbit odds"
+            text:
+              - "Grants <a>+6% <7>chance to find a"
+              - "<a>Chocolate Rabbit <7>that you haven't"
+              - "found yet."
+          - type: TEXT
+            text:
+              - "<8><o>From the Factory's secret"
+              - "<8><o>reserves, its rich flavor is a deep"
+              - "<8><o>dive into indulgence."
       - id: SKULL_HEAD
         texture: 6f942717364c0fecf7ad11bac8cd98dd7ad4dbd72e3d3ce2b57eb48713824ff
-      - id: NOT_FINISHED_YET
 
   - id: GANACHE_CHOCOLATE_SLAB
     material: PLAYER_HEAD
     name: "Ganache Chocolate Slab"
     rarity: EPIC
-    lore:
-      - '<8><o>A Factory masterpiece - its divine taste transcends reality, offering a heavenly escape.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Ganache Chocolate Slab
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: CHOCOLATE_PER_SECOND
+            percent: 40
+            text:
+              - "Grants <6>+40 Chocolate <7>per second."
+          - type: INACTIVE
+            reason: "Hoppity rabbit odds"
+            text:
+              - "Grants <a>+8% <7>chance to find a"
+              - "<a>Chocolate Rabbit <7>that you haven't"
+              - "found yet."
+          - type: TEXT
+            text:
+              - "<8><o>A Factory masterpiece - its divine"
+              - "<8><o>taste transcends reality, offering a"
+              - "<8><o>heavenly escape."
       - id: SKULL_HEAD
         texture: f89512331edfdc27cb7d4e80f3e0db460d05caf66c7c1c42e0e712130a9b690
-      - id: NOT_FINISHED_YET
 
   - id: PRESTIGE_CHOCOLATE_REALM
     material: PLAYER_HEAD
     name: "Prestige Chocolate Realm"
     rarity: LEGENDARY
-    lore:
-      - '<8><o>The Factory''s pinnacle creation - its epic taste shatters expectations, offering a taste of utopia.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Prestige Chocolate Realm
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: CHOCOLATE_PER_SECOND
+            percent: 50
+            text:
+              - "Grants <6>+50 Chocolate <7>per second."
+          - type: INACTIVE
+            reason: "Hoppity rabbit odds"
+            text:
+              - "Grants <a>+10% <7>chance to find a"
+              - "<a>Chocolate Rabbit <7>that you haven't"
+              - "found yet."
+          - type: TEXT
+            text:
+              - "<8><o>The Factory's pinnacle creation - its"
+              - "<8><o>epic taste shatters expectations,"
+              - "<8><o>offering a taste of utopia."
       - id: SKULL_HEAD
         texture: af19ceeabf2ecb020610b8aabc9299264fa670048c010c9699ce687fc9bf351e
-      - id: NOT_FINISHED_YET

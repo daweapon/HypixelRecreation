@@ -7,9 +7,15 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Glacial Talisman
       - id: ACCESSORY
+        effects:
+          - type: STAT
+            servers: [SKYBLOCK_JERRYS_WORKSHOP]
+            statistics: { mining_wisdom: 5 }
+            text:
+              - "Grants <3>+5☯ Mining Wisdom <7>on <c>Jerry's"
+              - "<c>Workshop<7>."
       - id: SKULL_HEAD
         texture: cb8f4a68845622b80caf7ac924d48bafaefc819c47c67f93978a09bc082983ff
-      - id: NOT_FINISHED_YET
 
   - id: GLACIAL_RING
     material: PLAYER_HEAD
@@ -19,9 +25,15 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Glacial Ring
       - id: ACCESSORY
+        effects:
+          - type: STAT
+            servers: [SKYBLOCK_JERRYS_WORKSHOP]
+            statistics: { mining_wisdom: 10 }
+            text:
+              - "Grants <3>+10☯ Mining Wisdom <7>on"
+              - "<c>Jerry's Workshop<7>."
       - id: SKULL_HEAD
         texture: 479b58ae7f0a10efbaebb4bac553b668623ca964d8da959a1d373fc6f0660fe6
-      - id: NOT_FINISHED_YET
 
   - id: GLACIAL_ARTIFACT
     material: PLAYER_HEAD
@@ -31,6 +43,12 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Glacial Artifact
       - id: ACCESSORY
+        effects:
+          - type: STAT
+            servers: [SKYBLOCK_JERRYS_WORKSHOP]
+            statistics: { mining_wisdom: 15 }
+            text:
+              - "Grants <3>+15☯ Mining Wisdom <7>on"
+              - "<c>Jerry's Workshop<7>."
       - id: SKULL_HEAD
         texture: f2ae6028a75441a5d3f718e574fb9ac7c310d4d7dc97ba56ba3d278d79e7ec23
-      - id: NOT_FINISHED_YET

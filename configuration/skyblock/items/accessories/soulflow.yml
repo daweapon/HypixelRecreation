@@ -7,11 +7,26 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Soulflow Pile
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Soulflow"
+            text:
+              - "Internalized: <3>0⸎ Soulflow"
+              - ""
+              - "<6>Ability: Overflow Mana"
+              - "When leaving combat, convert up to"
+              - "<3>5⸎ Soulflow <7>into <3>200 Overflow"
+              - "<3>Mana<7>."
+              - ""
+              - "Enabled: <a>On"
+              - "<e>Right-click to toggle!"
+              - ""
+              - "<8>Soulflow from abilities is drained from"
+              - "<8>your internalized ⸎."
       - id: SKULL_HEAD
         texture: 468c1fa4a21ba4f27dcb30ab3bfab0dc22a1e4fcf9ed12c1d7a70feb07f8d7ae
       - id: SELLABLE
         value: 160
-      - id: NOT_FINISHED_YET
 
   - id: SOULFLOW_BATTERY
     material: PLAYER_HEAD
@@ -21,9 +36,24 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Soulflow Battery
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Soulflow"
+            text:
+              - "Internalized: <3>0⸎ Soulflow"
+              - ""
+              - "<6>Ability: Overflow Mana"
+              - "When leaving combat, convert up to"
+              - "<3>4⸎ Soulflow <7>into <3>400 Overflow"
+              - "<3>Mana<7>."
+              - ""
+              - "Enabled: <a>On"
+              - "<e>Right-click to toggle!"
+              - ""
+              - "<8>Soulflow from abilities is drained from"
+              - "<8>your internalized ⸎."
       - id: SKULL_HEAD
         texture: 468c1fa4a21ba4f27dcb30ab3bfab0dc22a1e4fcf9ed12c1d7a70feb07f8d7ae
-      - id: NOT_FINISHED_YET
 
   - id: SOULFLOW_SUPERCELL
     material: PLAYER_HEAD
@@ -33,6 +63,21 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Soulflow Supercell
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Soulflow"
+            text:
+              - "Internalized: <3>0⸎ Soulflow"
+              - ""
+              - "<6>Ability: Overflow Mana"
+              - "When leaving combat, convert up to"
+              - "<3>4⸎ Soulflow <7>into <3>600 Overflow"
+              - "<3>Mana<7>."
+              - ""
+              - "Enabled: <a>On"
+              - "<e>Right-click to toggle!"
+              - ""
+              - "<8>Soulflow from abilities is drained from"
+              - "<8>your internalized ⸎."
       - id: SKULL_HEAD
         texture: 468c1fa4a21ba4f27dcb30ab3bfab0dc22a1e4fcf9ed12c1d7a70feb07f8d7ae
-      - id: NOT_FINISHED_YET

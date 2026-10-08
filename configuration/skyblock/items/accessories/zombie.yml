@@ -5,6 +5,13 @@ items:
     rarity: COMMON
     components:
       - id: TALISMAN
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 5
+            mob_types: [UNDEAD]
+            text:
+              - "Reduces the damage taken from <2>"
+              - "<2>Undead <7>mobs by <a>5%<7>."
       - id: SELLABLE
         value: 50.0
   - id: ZOMBIE_RING
@@ -13,6 +20,13 @@ items:
     rarity: UNCOMMON
     components:
       - id: TALISMAN
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 10
+            mob_types: [UNDEAD]
+            text:
+              - "Reduces the damage taken from <2>"
+              - "<2>Undead <7>mobs by <a>10%<7>."
       - id: SKULL_HEAD
         texture: 55d996cb5a8e5a71a274275f46944b944eeeacd2e1cadef918b05b879a03336f
   - id: ZOMBIE_ARTIFACT
@@ -21,5 +35,12 @@ items:
     rarity: RARE
     components:
       - id: TALISMAN
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 15
+            mob_types: [UNDEAD]
+            text:
+              - "Reduces the damage taken from <2>"
+              - "<2>Undead <7>mobs by <a>15%<7>."
       - id: SKULL_HEAD
         texture: da8ecb39160fb33714e7a1df418dda43b58598068f6052676328b267d03187fc

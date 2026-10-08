@@ -3,17 +3,25 @@ items:
     material: PLAYER_HEAD
     name: "Rift Prism"
     rarity: RARE
-    lore:
-      - '<7>While in your accessory bag, you may join the'
-      - '<d>Rift <7>at <a>no cost<7>.'
-      - ''
-      - '<7>Talk with <9>Erihann <7>in the Wizard Tower'
-      - '<7>of the Hub to consume this'
-      - '<7>accessory.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Rift Prism
       - id: ACCESSORY
         recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "While in your accessory bag, you may join the"
+              - "<d>Rift <7>at <a>no cost<7>."
+          - type: TEXT
+            text:
+              - "Talk with <9>Erihann <7>in the Wizard Tower"
+              - "of the Hub to consume this"
+              - "accessory."
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
       - id: SKULL_HEAD
         texture: 7caa5bf1bede9a27a0d0b985f77e8b9730d5db3eda952dfe3f1a31b87d5efec8

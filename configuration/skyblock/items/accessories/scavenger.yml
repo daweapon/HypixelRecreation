@@ -7,11 +7,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Scavenger Talisman
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: COINS_PER_MOB_LEVEL
+            percent: 0.5
+            text:
+              - "Grants <6>+0.5 coins <7>per level of the"
+              - "killed enemy."
       - id: SKULL_HEAD
         texture: 211ab3a1132c9d1ef835ea81d972ed9b5cd8ddff0a07c55a749bcfcf8df5
       - id: SELLABLE
         value: 200
-      - id: NOT_FINISHED_YET
   - id: SCAVENGER_RING
     material: PLAYER_HEAD
     name: "Scavenger Ring"
@@ -20,9 +26,15 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Scavenger Ring
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: COINS_PER_MOB_LEVEL
+            percent: 0.6
+            text:
+              - "Grants <6>+0.6 coins <7>per level of the"
+              - "killed enemy."
       - id: SKULL_HEAD
         texture: 4c52a30ee53cf2b33a474625ffb5ccde4ec38871a42999db4e72b63089acf072
-      - id: NOT_FINISHED_YET
       - id: SELLABLE
         value: 0.0
   - id: SCAVENGER_ARTIFACT
@@ -33,8 +45,14 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Scavenger Artifact
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: COINS_PER_MOB_LEVEL
+            percent: 0.75
+            text:
+              - "Grants <6>+0.75 coins <7>per level of the"
+              - "killed enemy."
       - id: SKULL_HEAD
         texture: 2e011f648de37e49171e267252472b2130007e632db7358220ca546712f79a81
-      - id: NOT_FINISHED_YET
       - id: SELLABLE
         value: 0.0

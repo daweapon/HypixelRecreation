@@ -11,7 +11,6 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 3d597f77cde32c9ac9b06f82fcf7c9cb500facc14bff166222b24be39962f0ef
-      - id: NOT_FINISHED_YET
 
   - id: AGARIMOO_RING
     material: PLAYER_HEAD
@@ -26,7 +25,6 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: d3ebf38b4a708eb00745d1fb87a53cb81a7af6cc178d9a2c1116c2cbcff94fea
-      - id: NOT_FINISHED_YET
 
   - id: AGARIMOO_ARTIFACT
     material: PLAYER_HEAD
@@ -42,4 +40,3 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 7f3130468ac480a427db13ad13e8ca8526b538ab7ad7d69fc9952f3c53aea8d1
-      - id: NOT_FINISHED_YET

@@ -1839,4 +1839,9 @@ items:
       - id: SKULL_HEAD
         texture: eae9540c5690d545434d66ac9a20b12ad020d5e3f0fb5272b2397bbaed6961e0
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
 

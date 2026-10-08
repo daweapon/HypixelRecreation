@@ -3,40 +3,64 @@ items:
     material: PLAYER_HEAD
     name: "Junk Talisman"
     rarity: COMMON
-    lore:
-      - '<8><o>One man''s trash is another man''s treasure.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Junk Talisman
       - id: ACCESSORY
+        effects:
+          - type: STAT
+            servers: [SKYBLOCK_BACKWATER_BAYOU]
+            statistics: { treasure_chance: 2.5 }
+            text:
+              - "Grants <6>+2.5 Treasure Chance <7>while"
+              - "on the <2>Backwater Bayou<7>."
+          - type: TEXT
+            text:
+              - "<8><o>One man's trash is another man's"
+              - "<8><o>treasure."
       - id: SKULL_HEAD
         texture: d24c6d00c53b51685a6be7453d236228f9837f1c1e27a9175813983ca49c792f
-      - id: NOT_FINISHED_YET
 
   - id: JUNK_RING
     material: PLAYER_HEAD
     name: "Junk Ring"
     rarity: UNCOMMON
-    lore:
-      - '<8><o>One man''s trash is another man''s treasure.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Junk Ring
       - id: ACCESSORY
+        effects:
+          - type: STAT
+            servers: [SKYBLOCK_BACKWATER_BAYOU]
+            statistics: { treasure_chance: 5 }
+            text:
+              - "Grants <6>+5 Treasure Chance <7>while"
+              - "on the <2>Backwater Bayou<7>."
+          - type: TEXT
+            text:
+              - "<8><o>One man's trash is another man's"
+              - "<8><o>treasure."
       - id: SKULL_HEAD
         texture: 4c920d3593ed4936defc894b88c43a2bb0b50c3a1e9a6dd8e859cb27bd3cabd
-      - id: NOT_FINISHED_YET
 
   - id: JUNK_ARTIFACT
     material: PLAYER_HEAD
     name: "Junk Artifact"
     rarity: RARE
-    lore:
-      - '<8><o>One man''s trash is another man''s treasure.'
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Junk Artifact
       - id: ACCESSORY
+        effects:
+          - type: STAT
+            servers: [SKYBLOCK_BACKWATER_BAYOU]
+            statistics: { treasure_chance: 7.5 }
+            text:
+              - "Grants <6>+7.5 Treasure Chance <7>while"
+              - "on the <2>Backwater Bayou<7>."
+          - type: TEXT
+            text:
+              - "<8><o>One man's trash is another man's"
+              - "<8><o>treasure."
       - id: SKULL_HEAD
         texture: 9727812f708dee1826bceecdadb9c7719e3d0f385a3b2515d00b5f665d8ba83e
-      - id: NOT_FINISHED_YET

@@ -7,6 +7,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Talisman of Power
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Accessory gemstone slots"
+            text:
+              - "Gemstones: <8>[<7><8>] [<7><8>]"
+          - type: INACTIVE
+            reason: "Accessory gemstone slots"
+            text:
+              - "Allows you to harness the power of"
+              - "<a>2<7> Gemstones, although only half of"
+              - "the normal power can be harnessed!"
       - id: SKULL_HEAD
         texture: c6736fd95d3a6a4aaac46709a07aec7f1c38f0a3aae573e6f483388819412b65
       - id: GEMSTONE
@@ -15,7 +26,6 @@ items:
             coins: 50000
           - gemstone: AMBER
             coins: 50000
-      - id: NOT_FINISHED_YET
 
   - id: POWER_RING
     material: PLAYER_HEAD
@@ -25,6 +35,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Ring of Power
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Accessory gemstone slots"
+            text:
+              - "Gemstones: <8>[<7><8>] [<7><8>] [<7><8>] [<7><8>]"
+          - type: INACTIVE
+            reason: "Accessory gemstone slots"
+            text:
+              - "Allows you to harness the power of"
+              - "<a>4<7> Gemstones, although only half of"
+              - "the normal power can be harnessed!"
       - id: SKULL_HEAD
         texture: 4528fe5dbe02e1d8d12186e2af98be1334ca7d596b7021ef7f978c7088b235fc
       - id: GEMSTONE
@@ -37,7 +58,6 @@ items:
             coins: 50000
           - gemstone: AMBER
             coins: 50000
-      - id: NOT_FINISHED_YET
 
   - id: POWER_ARTIFACT
     material: PLAYER_HEAD
@@ -47,6 +67,18 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Artifact of Power
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Accessory gemstone slots"
+            text:
+              - "Gemstones:"
+              - " <8>[<7><8>] [<7><8>] [<7><8>] [<7><8>] [<7><8>] [<7><8>] [<7><8>]"
+          - type: INACTIVE
+            reason: "Accessory gemstone slots"
+            text:
+              - "Allows you to harness the power of"
+              - "<a>7<7> Gemstones, although only half of"
+              - "the normal power can be harnessed!"
       - id: SKULL_HEAD
         texture: 2b15c8645bbabc42352350b1c9d84af71966c4c56a86d03acd079ed57f3ead3f
       - id: GEMSTONE
@@ -65,7 +97,6 @@ items:
             coins: 50000
           - gemstone: RUBY
             coins: 50000
-      - id: NOT_FINISHED_YET
 
   - id: POWER_RELIC
     material: PLAYER_HEAD
@@ -75,6 +106,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Relic of Power
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Accessory gemstone slots"
+            text:
+              - "Gemstones:"
+              - " <8>[<7><8>] [<7><8>] [<7><8>] [<7><8>] [<7><8>]"
+              - " <8>[<7><8>] [<7><8>] [<7><8>] [<7><8>] [<7><8>]"
+              - " <8>[<7><8>] [<7><8>]"
+          - type: INACTIVE
+            reason: "Accessory gemstone slots"
+            text:
+              - "Allows you to harness the power of"
+              - "<a>12<7> Gemstones, although only half of"
+              - "the normal power can be harnessed!"
       - id: SKULL_HEAD
         texture: d8fdc87023cff26356477f2e097a2de83b550d88a6f1a877da4f95c4db11567f
       - id: GEMSTONE
@@ -103,4 +148,3 @@ items:
             coins: 50000
           - gemstone: AQUAMARINE
             coins: 50000
-      - id: NOT_FINISHED_YET

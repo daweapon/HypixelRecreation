@@ -7,6 +7,13 @@ items:
       - id: SKULL_HEAD
         texture: 2ebadb1725aa85bb2810d0b73bf7cd74db3d9d8fc61c4cf9e543dbcc199187cc
       - id: TALISMAN
+        effects:
+          - type: HANDLER
+            handler: DOUBLE_BITS_CHANCE
+            percent: 10
+            text:
+              - "Whenever you gain bits, grants a <b>10%"
+              - "chance to gain double!"
   - id: FARMING_TALISMAN
     material: PLAYER_HEAD
     name: "Farming Talisman"
@@ -46,6 +53,17 @@ items:
       - id: SKULL_HEAD
         texture: 2f6c7aa31556a12080cc36e8a28d113221eef8f738dc4756529b5b328e82981a
       - id: TALISMAN
+        effects:
+          - type: INACTIVE
+            reason: "Fire and lava damage"
+            text:
+              - "Provides immunity against damage"
+              - "from <c>Fire<7>."
+          - type: INACTIVE
+            reason: "Fire and lava damage"
+            text:
+              - "While in the <c>Crimson Isle<7>, grants a <a>20%"
+              - "damage reduction instead."
       - id: SELLABLE
         value: 6480.0
       - id: DEFAULT_CRAFTABLE
@@ -72,6 +90,12 @@ items:
       - id: SKULL_HEAD
         texture: e47dcba7379cb3d53530d318bb40b621271a22df3ba59aeb424a06517c1b7eaa
       - id: TALISMAN
+        effects:
+          - type: INACTIVE
+            reason: "Fire and lava damage"
+            text:
+              - "Provides immunity against damage"
+              - "from <7><o>most <c>Lava<7>."
       - id: SELLABLE
         value: 5800.0
       - id: DEFAULT_CRAFTABLE
@@ -115,6 +139,17 @@ items:
       - id: SKULL_HEAD
         texture: 318476e3cf0d5fc8ab1761065cf0e372b11004ed4c97156396e17c869b4aa389
       - id: TALISMAN
+        effects:
+          - type: HANDLER
+            handler: POTATO_MINION_SPEED
+            percent: 5
+            text:
+              - "Your potato minions farm <a>5% <7>faster"
+              - "while wearing on your island."
+          - type: TEXT
+            text:
+              - "<8>Forged by the Potato King after"
+              - "<8>winning the Great Potato War."
   - id: VILLAGE_AFFINITY_TALISMAN
     material: PLAYER_HEAD
     name: "Village Affinity Talisman"

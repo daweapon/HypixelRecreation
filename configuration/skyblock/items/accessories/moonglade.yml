@@ -14,7 +14,6 @@ items:
         texture: 42945ce8eaaae7e8ff07369654c48a7b7e02f0c01ded77ad4a7bd8891baa2896
       - id: SELLABLE
         value: 1000
-      - id: NOT_FINISHED_YET
 
   - id: MOONGLADE_RING
     material: PLAYER_HEAD
@@ -31,7 +30,6 @@ items:
         texture: 4bdf35eb9367a3bcb70208e9ce8e47463810a48873df525f9e1bb3231fc5ef2d
       - id: SELLABLE
         value: 2000
-      - id: NOT_FINISHED_YET
 
   - id: MOONGLADE_ARTIFACT
     material: PLAYER_HEAD
@@ -48,4 +46,3 @@ items:
         texture: e49a23f05625bb010a838f9c6c0b05db192362bc48e85b0702f5d2861c269593
       - id: SELLABLE
         value: 3000
-      - id: NOT_FINISHED_YET
