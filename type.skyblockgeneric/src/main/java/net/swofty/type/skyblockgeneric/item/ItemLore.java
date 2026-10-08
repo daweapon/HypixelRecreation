@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.item;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryPower;
+import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffect;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import net.kyori.adventure.text.Component;
@@ -58,7 +60,7 @@ public class ItemLore {
 	public void updateLore(@Nullable SkyBlockPlayer player) {
 		SkyBlockItem item = new SkyBlockItem(stack);
 		ItemAttributeHandler handler = item.getAttributeHandler();
-		Rarity rarity = handler.isRecombobulated() ? handler.getRarity().upgrade() : handler.getRarity();
+		Rarity rarity = handler.getEffectiveRarity();
 
 		Text displayName = displayName(item, stack.material());
 
@@ -82,12 +84,14 @@ public class ItemLore {
 		fillUnderName(lore);
 		fillBreakingPower(lore);
 		fillStatistics(lore, rarity);
+		fillAccessoryPower(lore);
 		fillGemstones(lore);
 		fillPotion(lore);
 		fillEnchantments(lore);
 		fillRune(lore);
 		fillCustomLore(lore);
 		fillConfigLore(lore);
+		fillAccessoryEffects(lore);
 		fillAbilities(lore);
 		fillFullSetBonus(lore);
 		fillRecipes(lore);
@@ -350,6 +354,26 @@ public class ItemLore {
 				? LoreText.Sections.CUSTOM_AFTER_ABILITY
 				: LoreText.Sections.CUSTOM_BEFORE_ABILITY);
 		loreConfig.loreGenerator().apply(item, lore.viewer()).forEach(line -> section.line(LoreText.gray(line)));
+	}
+
+	private static void fillAccessoryPower(LoreText lore) {
+		SkyBlockItem item = lore.item();
+		if (!item.hasComponent(AccessoryComponent.class)) return;
+		int power = AccessoryPower.itemPower(item, 0, false);
+		if (power <= 0) return;
+		lore.section(LoreText.Sections.STATS).line(Text.of("<7>Accessory Power: <6>+{}", power));
+	}
+
+	private static void fillAccessoryEffects(LoreText lore) {
+		SkyBlockItem item = lore.item();
+		if (!item.hasComponent(AccessoryComponent.class)) return;
+		TextBody.Section section = lore.section(LoreText.Sections.CONFIG_LORE);
+		for (AccessoryEffect effect : item.getComponent(AccessoryComponent.class).getEffects()) {
+			if (effect.text().isEmpty()) continue;
+			if (!section.isEmpty()) section.line(Text.empty());
+			effect.text().forEach(line -> section.line(LoreText.gray(line)));
+			if (!effect.kind().isActive()) section.line(LoreText.darkGray("Not active yet"));
+		}
 	}
 
 	private static void fillConfigLore(LoreText lore) {

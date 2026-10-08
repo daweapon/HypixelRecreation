@@ -45,7 +45,7 @@ public class VillagerMathsEnjoyer extends HypixelNPC {
                 DialogueSet.builder()
                         .key("hello").lines(
                                 "<f>Hey if you really want to know...",
-                                "<f>The formula to <6>Magical Power <f>is...",
+                                "<f>The formula to <6>Accessory Power <f>is...",
                                 "<d>Stats Mult. <f>= <b>29.97<e>(<a>ln(<b>0.0019<6>MP<a>+1)<e>)^<b>1.2",
                                 "<f>Have fun with that!"
                         ).build()

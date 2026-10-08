@@ -11,6 +11,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Anita's Talisman
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: ANITA_CONTEST_FORTUNE
       - id: SKULL_HEAD
         texture: bb8ec57b37fdf093fe66efe2ac070a8f5181949970a4458d56ec9701eded8cff
 
@@ -26,6 +29,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Anita's Ring
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: ANITA_CONTEST_FORTUNE
       - id: SKULL_HEAD
         texture: 59a1035bc6f00fddc8e0291c38319408babc84ae10648cb5258ed8b55d60e0c3
 
@@ -41,5 +47,8 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Anita's Artifact
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: ANITA_CONTEST_FORTUNE
       - id: SKULL_HEAD
         texture: 8feabdadd5f593771fa23c94fc6816091917371fd5a1c74723e716210d6e6efb

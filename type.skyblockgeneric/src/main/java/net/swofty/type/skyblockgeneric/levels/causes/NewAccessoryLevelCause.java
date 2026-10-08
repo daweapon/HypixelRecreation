@@ -1,8 +1,6 @@
 package net.swofty.type.skyblockgeneric.levels.causes;
 
 import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.commons.skyblock.item.Rarity;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.commons.StringUtility;
 import net.swofty.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -20,13 +18,12 @@ public class NewAccessoryLevelCause extends SkyBlockLevelCauseAbstr {
     }
 
     /**
-     * Real Hypixel pays +1 SkyBlock XP per point of Magical Power, not a flat amount per
-     * accessory, so a Legendary talisman is worth 16 and a Common one 3.
+     * Records that an accessory was found. The Accessory Bag task pays by current Accessory Power
+     * instead ({@code AccessoryBagXP}), so finding one is worth nothing on its own.
      */
     @Override
     public double xpReward() {
-        Rarity rarity = new SkyBlockItem(itemTypeLinker).getAttributeHandler().getRarity();
-        return rarity == null ? 0 : rarity.getMagicalPower();
+        return 0;
     }
 
     @Override

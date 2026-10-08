@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.entity.mob.ai;
 
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.minestom.server.entity.Entity;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
@@ -33,7 +34,7 @@ public final class Intimidation {
 
     static int highestDeterredLevel(SkyBlockPlayer player) {
         int highest = 0;
-        for (SkyBlockItem accessory : player.getAccessoryBag().getUniqueAccessories()) {
+        for (SkyBlockItem accessory : AccessoryOwnership.activeItems(player)) {
             Integer deterred = HIGHEST_DETERRED_LEVEL.get(accessory.getAttributeHandler().getPotentialType());
             if (deterred != null) highest = Math.max(highest, deterred);
         }

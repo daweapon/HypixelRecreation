@@ -80,20 +80,11 @@ public class GUIYourBags extends StatelessView {
                     Text.keyLines("gui_sbmenu.bags.quiver.locked.lore")));
         }
 
-        // Accessory Bag
-        if (player.hasCustomCollectionAward(CustomCollectionAward.ACCESSORY_BAG)) {
-            layout.slot(24, (s, c) -> {
-                SkyBlockPlayer p = (SkyBlockPlayer) c.player();
-                return ItemStacks.head(
+        layout.slot(24, (s, c) -> ItemStacks.head(
                         "396ce13ff6155fdf3235d8d22174c5de4bf5512f1adeda1afa3fc28180f3f7",
                         Text.key("gui_sbmenu.bags.accessory_bag.unlocked"),
                         Text.keyLines("gui_sbmenu.bags.accessory_bag.unlocked.lore",
-                                StringUtility.commaify(p.getMagicalPower())));
-            }, (click, c) -> c.player().openView(new GUIAccessoryBag()));
-        } else {
-            layout.slot(24, (s, c) -> ItemStacks.item(Material.GRAY_DYE, 1,
-                    Text.key("gui_sbmenu.bags.accessory_bag.locked"),
-                    Text.keyLines("gui_sbmenu.bags.accessory_bag.locked.lore")));
-        }
+                                StringUtility.commaify(((SkyBlockPlayer) c.player()).getAccessoryPower()))),
+                (click, c) -> c.player().openView(new GUIAccessoryBag()));
     }
 }

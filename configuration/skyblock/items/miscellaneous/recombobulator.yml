@@ -1,0 +1,21 @@
+items:
+  - id: RECOMBOBULATOR_3000
+    material: PLAYER_HEAD
+    name: "Recombobulator 3000"
+    rarity: LEGENDARY
+    lore:
+      - "<8>Combinable in Anvil"
+      - ""
+      - "<7>Permanently increases the rarity of"
+      - "<7>an item. Can only be applied to an"
+      - "<7>item once."
+      - ""
+      - "<8>Dungeon reward chests and Boss"
+      - "<8>Collections: Not active yet."
+    components:
+      - id: SKULL_HEAD
+        texture: 57ccd36dc8f72adcb1f8c8e61ee82cd96ead140cf2a16a1366be9b5a8e3cc3fc
+      - id: ANVIL_COMBINABLE
+        handler_id: RECOMBOBULATOR_3000
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM

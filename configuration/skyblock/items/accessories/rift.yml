@@ -14,5 +14,6 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Rift Prism
       - id: ACCESSORY
+        recombobulate: false
       - id: SKULL_HEAD
         texture: 7caa5bf1bede9a27a0d0b985f77e8b9730d5db3eda952dfe3f1a31b87d5efec8

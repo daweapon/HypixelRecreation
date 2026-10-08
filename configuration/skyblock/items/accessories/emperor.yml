@@ -3,6 +3,8 @@ items:
     material: PLAYER_HEAD
     name: "Emperor Talisman"
     rarity: UNCOMMON
+    default_statistics:
+      sea_creature_chance: 0.5
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Emperor's Talisman
@@ -17,6 +19,8 @@ items:
     material: PLAYER_HEAD
     name: "Emperor Ring"
     rarity: RARE
+    default_statistics:
+      sea_creature_chance: 1
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Emperor's Ring
@@ -31,6 +35,8 @@ items:
     material: PLAYER_HEAD
     name: "Emperor Artifact"
     rarity: EPIC
+    default_statistics:
+      sea_creature_chance: 1.5
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Emperor's Artifact

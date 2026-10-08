@@ -8,36 +8,37 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 // Pins the two XP formulas that were previously wrong: Accessory Bag paid a flat 1 per accessory
-// instead of per Magical Power, and Fairy Soul exchanges paid nothing at all.
+// instead of per Accessory Power, and Fairy Soul exchanges paid nothing at all.
 class AccessoryAndFairySoulXPTest {
 
     @Test
-    void magicalPowerMatchesRealHypixelsRarityTable() {
-        assertEquals(3, Rarity.COMMON.getMagicalPower());
-        assertEquals(5, Rarity.UNCOMMON.getMagicalPower());
-        assertEquals(8, Rarity.RARE.getMagicalPower());
-        assertEquals(12, Rarity.EPIC.getMagicalPower());
-        assertEquals(16, Rarity.LEGENDARY.getMagicalPower());
-        assertEquals(22, Rarity.MYTHIC.getMagicalPower());
-        assertEquals(3, Rarity.SPECIAL.getMagicalPower());
-        assertEquals(5, Rarity.VERY_SPECIAL.getMagicalPower());
+    void accessoryPowerMatchesRealHypixelsRarityTable() {
+        assertEquals(3, Rarity.COMMON.getAccessoryPower());
+        assertEquals(5, Rarity.UNCOMMON.getAccessoryPower());
+        assertEquals(8, Rarity.RARE.getAccessoryPower());
+        assertEquals(12, Rarity.EPIC.getAccessoryPower());
+        assertEquals(16, Rarity.LEGENDARY.getAccessoryPower());
+        assertEquals(22, Rarity.MYTHIC.getAccessoryPower());
+        assertEquals(28, Rarity.DIVINE.getAccessoryPower());
+        assertEquals(3, Rarity.SPECIAL.getAccessoryPower());
+        assertEquals(5, Rarity.VERY_SPECIAL.getAccessoryPower());
     }
 
     @Test
-    void everyRarityReportsAMagicalPowerValue() {
+    void everyRarityReportsAnAccessoryPowerValue() {
         for (Rarity rarity : Rarity.values()) {
-            assertTrue(rarity.getMagicalPower() >= 0,
-                    rarity + " has no Magical Power value, so accessories of it would award negative XP");
+            assertTrue(rarity.getAccessoryPower() >= 0,
+                    rarity + " has no Accessory Power value, so accessories of it would award negative XP");
         }
     }
 
     @Test
-    void magicalPowerRisesWithRarity() {
+    void accessoryPowerRisesWithRarity() {
         Rarity[] ladder = {Rarity.COMMON, Rarity.UNCOMMON, Rarity.RARE, Rarity.EPIC,
                 Rarity.LEGENDARY, Rarity.MYTHIC};
         for (int i = 1; i < ladder.length; i++) {
-            assertTrue(ladder[i].getMagicalPower() > ladder[i - 1].getMagicalPower(),
-                    ladder[i] + " must be worth more Magical Power than " + ladder[i - 1]);
+            assertTrue(ladder[i].getAccessoryPower() > ladder[i - 1].getAccessoryPower(),
+                    ladder[i] + " must be worth more Accessory Power than " + ladder[i - 1]);
         }
     }
 

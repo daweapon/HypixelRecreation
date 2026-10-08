@@ -10,7 +10,6 @@ import net.swofty.type.skyblockgeneric.levels.causes.CollectionLevelCause;
 import net.swofty.type.skyblockgeneric.levels.causes.FairySoulExchangeLevelCause;
 import net.swofty.type.skyblockgeneric.levels.causes.MissionLevelCause;
 import net.swofty.type.skyblockgeneric.levels.causes.MuseumLevelCause;
-import net.swofty.type.skyblockgeneric.levels.causes.NewAccessoryLevelCause;
 import net.swofty.type.skyblockgeneric.levels.causes.SkillLevelCause;
 
 import java.util.ArrayList;
@@ -310,7 +309,6 @@ public enum SkyBlockXPSource {
             case COLLECTIONS -> CollectionLevelCause.class;
             case MUSEUM_DONATIONS -> MuseumLevelCause.class;
             case FAIRY_SOULS -> FairySoulExchangeLevelCause.class;
-            case ACCESSORY_BAG -> NewAccessoryLevelCause.class;
             case COLLECT_MOB_TYPES -> CollectedMobTypesCause.class;
             case COMPLETE_OBJECTIVES -> MissionLevelCause.class;
             default -> null;

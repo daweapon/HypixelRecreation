@@ -48,6 +48,7 @@ items:
       cocoa_beans_fortune: 30
       mushroom_fortune: 30
       sugar_cane_fortune: 30
+      nether_wart_fortune: 30
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Fermento Artifact

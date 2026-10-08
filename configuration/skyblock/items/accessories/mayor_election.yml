@@ -11,6 +11,10 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: "Voter's Badge"
       - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: HANDLER
+            handler: VOTE_WEIGHT
       - id: SKULL_HEAD
         texture: 1f88702bd5bce0293f30411ff43c72dfe2f756d7852fa25606e0fe50ee08ce87
 
@@ -24,6 +28,10 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: "VIP Voter's Badge"
       - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: HANDLER
+            handler: VOTE_WEIGHT
       - id: SKULL_HEAD
         texture: 92ace792c26e79a1c624fa0daf547a028ca59cb63ce187c2477610868f5748fa
 
@@ -37,6 +45,10 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: "Elite Voter's Badge"
       - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: HANDLER
+            handler: VOTE_WEIGHT
       - id: SKULL_HEAD
         texture: 2a2100a53245bfb4d1d99acf4af506252b57ac147b7eb9e1af505d35e160714e
 
@@ -50,6 +62,10 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: "Supreme Voter's Badge"
       - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: HANDLER
+            handler: VOTE_WEIGHT
       - id: SKULL_HEAD
         texture: 433cbf75ff40d1bfc8146528ca3e1bdac3d670ac77ee1c8d98af174ca19feb19
 
@@ -65,5 +81,8 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: "Artifact of Control"
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: VOTE_WEIGHT
       - id: SKULL_HEAD
         texture: 31f748a43f3b3ada04f44d5d290a8b9bf583d93e1c83ab93c60c4dec1fde1c5c

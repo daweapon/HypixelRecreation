@@ -1,5 +1,6 @@
 package net.swofty.type.hub.gui;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryPower;
 import net.minestom.server.inventory.InventoryType;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.data.datapoints.DatapointBoolean;
@@ -35,12 +36,12 @@ public class GUIErihann extends StatelessView {
                         """
                                 <9>Imbue Rift Prism
                                 <7>Consume the <9>Rift Prism <7>to permanently enjoy
-                                <7>its <a>effect <7>and gain <6>+{} Magical Power<7>.
+                                <7>its <a>effect <7>and gain <6>+{} Accessory Power<7>.
 
                                 <7>Cost
                                 <6>200,000 Coins
 
-                                <e>Click to imbue!""", SkyBlockPlayer.RIFT_PRISM_IMBUED_MAGICAL_POWER),
+                                <e>Click to imbue!""", AccessoryPower.RIFT_PRISM_IMBUED),
                 (click, context) -> imbue(player));
     }
 

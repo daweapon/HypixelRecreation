@@ -2,6 +2,7 @@ items:
   - id: VACCINE_TALISMAN
     material: PLAYER_HEAD
     name: "Vaccine Talisman"
+    rarity: COMMON
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Vaccine Talisman

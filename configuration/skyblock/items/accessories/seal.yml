@@ -5,6 +5,7 @@ items:
     rarity: UNCOMMON
     default_statistics:
       sea_creature_chance: 0.5
+      treasure_chance: 0.1
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Seal Talisman
@@ -21,6 +22,7 @@ items:
     rarity: RARE
     default_statistics:
       sea_creature_chance: 1
+      treasure_chance: 0.2
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Seal Ring

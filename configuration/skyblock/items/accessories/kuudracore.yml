@@ -3,6 +3,8 @@ items:
     material: PLAYER_HEAD
     name: "Burning Kuudra Core"
     rarity: RARE
+    default_statistics:
+      hunter_fortune: 1
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Burning Kuudra Core
@@ -17,6 +19,8 @@ items:
     material: PLAYER_HEAD
     name: "Fiery Kuudra Core"
     rarity: EPIC
+    default_statistics:
+      hunter_fortune: 2
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Fiery Kuudra Core
@@ -31,6 +35,8 @@ items:
     material: PLAYER_HEAD
     name: "Infernal Kuudra Core"
     rarity: LEGENDARY
+    default_statistics:
+      hunter_fortune: 3
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Infernal Kuudra Core

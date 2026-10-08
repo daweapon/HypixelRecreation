@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.gifts;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalStatistics;
@@ -49,7 +50,7 @@ public final class GiftBoosts {
 
     public static double talismanPercent(SkyBlockPlayer player) {
         double best = 0;
-        for (SkyBlockItem accessory : player.getAccessoryBag().getUniqueAccessories()) {
+        for (SkyBlockItem accessory : AccessoryOwnership.activeItems(player)) {
             best = Math.max(best, GIFT_TALISMANS.getOrDefault(accessory.getAttributeHandler().getPotentialType(), 0D));
         }
         return best;

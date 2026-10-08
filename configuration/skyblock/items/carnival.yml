@@ -54,6 +54,7 @@ items:
     components:
       - id: SKULL_HEAD
         texture: 44af943371d76e5db5deb93df2eaf14d9b0e03a1648bee7f90126abf8983c1d6
+      - id: ACCESSORY
       - id: NOT_FINISHED_YET
   - id: ZOMBIE_MASK
     material: player_head

@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.gems.GemRarity;
 import net.swofty.type.skyblockgeneric.gems.Gemstone;
 import net.swofty.type.skyblockgeneric.item.components.*;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetComponentParser;
+import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryComponentParser;
 import net.swofty.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
 import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
 import net.swofty.type.skyblockgeneric.minion.MinionIngredient;
@@ -121,7 +122,7 @@ public class ItemConfigParser {
 					}
 					yield new ItemRequirementsComponent(requirements);
 				}
-				case "TALISMAN", "ACCESSORY" -> new AccessoryComponent();
+				case "TALISMAN", "ACCESSORY" -> AccessoryComponentParser.parse(itemId, config);
 				case "ANVIL_COMBINABLE" -> {
 					String handlerId = safeConfig.getString("handler_id");
 					yield new AnvilCombinableComponent(handlerId);

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.elections;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import com.google.gson.Gson;
 import lombok.Getter;
 import net.minestom.server.MinecraftServer;
@@ -36,6 +37,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ElectionManager {
 
     private static final Gson GSON = new Gson();
+    private static final java.util.List<net.swofty.commons.skyblock.item.ItemType> VOTER_BADGES = java.util.List.of(
+            net.swofty.commons.skyblock.item.ItemType.VOTER_BADGE, net.swofty.commons.skyblock.item.ItemType.VOTER_BADGE_VIP,
+            net.swofty.commons.skyblock.item.ItemType.VOTER_BADGE_ELITE, net.swofty.commons.skyblock.item.ItemType.VOTER_BADGE_SUPREME);
     private static ProxyService SERVICE;
     private static final ConcurrentHashMap<UUID, String> playerVoteCache = new ConcurrentHashMap<>();
     private static final AtomicBoolean tallyRefreshStarted = new AtomicBoolean();
@@ -204,16 +208,12 @@ public class ElectionManager {
 
         int badgeTier = -1;
         boolean hasArtifactOfControl = false;
-        for (net.swofty.type.skyblockgeneric.item.SkyBlockItem accessory : player.getAccessoryBag().getUniqueAccessories()) {
+        for (net.swofty.type.skyblockgeneric.item.SkyBlockItem accessory : AccessoryOwnership.activeItems(player)) {
             net.swofty.commons.skyblock.item.ItemType type = accessory.getItemType();
             if (type == net.swofty.commons.skyblock.item.ItemType.ARTIFACT_OF_CONTROL) {
                 hasArtifactOfControl = true;
-            } else if (type == net.swofty.commons.skyblock.item.ItemType.VOTER_BADGE
-                    || type == net.swofty.commons.skyblock.item.ItemType.VOTER_BADGE_VIP
-                    || type == net.swofty.commons.skyblock.item.ItemType.VOTER_BADGE_ELITE
-                    || type == net.swofty.commons.skyblock.item.ItemType.VOTER_BADGE_SUPREME) {
-                badgeTier = Math.max(badgeTier,
-                        net.swofty.type.skyblockgeneric.item.TieredTalismansRegistry.getTier(type));
+            } else {
+                badgeTier = Math.max(badgeTier, VOTER_BADGES.indexOf(type));
             }
         }
         if (badgeTier >= 0) weight += (badgeTier + 1) * 3L;

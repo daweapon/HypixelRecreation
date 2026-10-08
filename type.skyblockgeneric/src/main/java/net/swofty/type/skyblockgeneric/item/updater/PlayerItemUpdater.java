@@ -140,9 +140,7 @@ public class PlayerItemUpdater {
             toReturn.set(DataComponents.ITEM_MODEL, item.getComponent(ItemModelComponent.class).getItemModel());
         }
 
-        Rarity rarity = handler.isRecombobulated()
-                ? handler.getRarity().upgrade()
-                : handler.getRarity();
+        Rarity rarity = handler.getEffectiveRarity();
         toReturn.set(DataComponents.TOOLTIP_STYLE, rarity.getTooltipStyle());
 
         if (item.hasComponent(GemstoneComponent.class)) {

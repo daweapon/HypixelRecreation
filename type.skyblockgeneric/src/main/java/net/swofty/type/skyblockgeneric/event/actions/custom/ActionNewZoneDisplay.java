@@ -169,7 +169,7 @@ public class ActionNewZoneDisplay implements HypixelEventClass {
                 Text.of("Buy Combat Tools from the <c>Weaponsmith <f>and <c>Rosetta<f>."),
                 Text.of("Talk to <c>Talk <f>at the <2>Archery Range <f>to learn about bows and arrows."),
                 Text.of("Learn about <2>Enchanting <f>at the <2>Library<f>."),
-                Text.of("Talk to <c>Maxwell <f>at the <6>Thaumaturgist <f>to learn about <6>Magical Power<f>."));
+                Text.of("Talk to <c>Maxwell <f>at the <6>Thaumaturgist <f>to learn about <6>Accessory Power<f>."));
 
             case FISHING_OUTPOST -> onNewZone(player, RegionType.FISHING_OUTPOST,
                 Text.of("Buy fishing essentials from the <b>Fishing Merchant<f>."),

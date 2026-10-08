@@ -7,6 +7,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Deletor 4000
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: PERSONAL_DELETOR
       - id: INTERACTABLE
         handler_id: PERSONAL_DELETOR_INTERACT
       - id: DEFAULT_CRAFTABLE
@@ -40,6 +43,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Deletor 5000
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: PERSONAL_DELETOR
       - id: INTERACTABLE
         handler_id: PERSONAL_DELETOR_INTERACT
       - id: DEFAULT_CRAFTABLE
@@ -73,6 +79,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Deletor 6000
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: PERSONAL_DELETOR
       - id: INTERACTABLE
         handler_id: PERSONAL_DELETOR_INTERACT
       - id: DEFAULT_CRAFTABLE
@@ -106,6 +115,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Deletor 7000
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: PERSONAL_DELETOR
       - id: INTERACTABLE
         handler_id: PERSONAL_DELETOR_INTERACT
       - id: DEFAULT_CRAFTABLE

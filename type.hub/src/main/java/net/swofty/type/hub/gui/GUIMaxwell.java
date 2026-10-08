@@ -6,7 +6,10 @@ import net.minestom.server.inventory.Inventory;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
+import net.swofty.type.skyblockgeneric.accessory.OwnedAccessory;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bags.GUIAccessoryBag;
@@ -15,7 +18,10 @@ import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.generic.user.HypixelPlayer;
 
-// GUI for Maxwell the NPC in the Hub showing Accessory Bag Thaumaturgy magical power breakdown.
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+
 public class GUIMaxwell extends HypixelInventoryGUI {
 
     public GUIMaxwell() {
@@ -46,41 +52,43 @@ public class GUIMaxwell extends HypixelInventoryGUI {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
-                int mythic = player.getAccessoryBag().getUniqueAccessories(Rarity.MYTHIC).size();
-                int legendary = player.getAccessoryBag().getUniqueAccessories(Rarity.LEGENDARY).size();
-                int epic = player.getAccessoryBag().getUniqueAccessories(Rarity.EPIC).size();
-                int rare = player.getAccessoryBag().getUniqueAccessories(Rarity.RARE).size();
-                int uncommon = player.getAccessoryBag().getUniqueAccessories(Rarity.UNCOMMON).size();
-                int common = player.getAccessoryBag().getUniqueAccessories(Rarity.COMMON).size();
-                int special = player.getAccessoryBag().getUniqueAccessories(Rarity.SPECIAL).size();
-                int verySpecial = player.getAccessoryBag().getUniqueAccessories(Rarity.VERY_SPECIAL).size();
-
-                return ItemStacks.item(Material.FILLED_MAP, """
-                        <a>Accessories Breakdown
-                        <8>From your bag
-
-                        <6>22 MP <7>x <d>{} Accs. <7>= <6>{} MP
-                        <6>16 MP <7>x <6>{} Accs. <7>= <6>{} MP
-                        <6>12 MP <7>x <5>{} Accs. <7>= <6>{} MP
-                        <6>8 MP <7>x <9>{} Accs. <7>= <6>{} MP
-                        <6>5 MP <7>x <a>{} Accs. <7>= <6>{} MP
-                        <6>3 MP <7>x <f>{} Accs. <7>= <6>{} MP
-                        <6>3 MP <7>x <c>{} Accs. <7>= <6>{} MP
-                        <6>5 MP <7>x <c>{} Accs. <7>= <6>{} MP
-
-                        <7>Total: <6>{:,} Magical Power""",
-                        mythic, mythic * 22,
-                        legendary, legendary * 16,
-                        epic, epic * 12,
-                        rare, rare * 8,
-                        uncommon, uncommon * 5,
-                        common, common * 3,
-                        special, special * 3,
-                        verySpecial, verySpecial * 5,
-                        player.getMagicalPower());
+                Map<Rarity, Integer> counts = new EnumMap<>(Rarity.class);
+                for (OwnedAccessory owned : AccessoryOwnership.active(player)) {
+                    if (!owned.inBag() || !owned.definition().getRealm().countsForPower()) continue;
+                    counts.merge(owned.item().getAttributeHandler().getEffectiveRarity(), 1, Integer::sum);
+                }
+                int fromRarity = 0;
+                StringBuilder lines = new StringBuilder();
+                for (Rarity rarity : BREAKDOWN) {
+                    int count = counts.getOrDefault(rarity, 0);
+                    int power = rarity.getAccessoryPower();
+                    fromRarity += count * power;
+                    lines.append("<6>").append(power).append(" AP <7>x <").append(colourCode(rarity)).append(">")
+                            .append(count).append(" Accs. <7>= <6>").append(count * power).append(" AP\n");
+                }
+                int total = player.getAccessoryPower();
+                return ItemStacks.item(Material.FILLED_MAP, "<a>Accessories Breakdown\n<8>From your bag\n\n"
+                        + lines + "<6>+" + (total - fromRarity) + " AP <7>from special bonuses\n\n"
+                        + "<7>Total: <6>" + StringUtility.commaify(total) + " Accessory Power");
             }
         });
         updateItemStacks(getInventory(), getPlayer());
+    }
+
+    private static final List<Rarity> BREAKDOWN = List.of(Rarity.DIVINE, Rarity.MYTHIC, Rarity.LEGENDARY, Rarity.EPIC,
+            Rarity.RARE, Rarity.UNCOMMON, Rarity.COMMON, Rarity.SPECIAL, Rarity.VERY_SPECIAL);
+
+    private static String colourCode(Rarity rarity) {
+        return switch (rarity) {
+            case DIVINE -> "b";
+            case MYTHIC -> "d";
+            case LEGENDARY -> "6";
+            case EPIC -> "5";
+            case RARE -> "9";
+            case UNCOMMON -> "a";
+            case SPECIAL, VERY_SPECIAL -> "c";
+            default -> "f";
+        };
     }
 
     @Override

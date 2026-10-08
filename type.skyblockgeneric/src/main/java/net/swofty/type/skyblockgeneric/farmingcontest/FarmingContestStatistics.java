@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.farmingcontest;
 
+import java.util.List;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.minestom.server.item.ItemStack;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
@@ -7,7 +9,6 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -59,13 +60,7 @@ public final class FarmingContestStatistics {
     }
 
     public static double anitaAccessoryFortune(SkyBlockPlayer player) {
-        Set<ItemType> owned = new HashSet<>();
-        for (ItemStack stack : player.getInventory().getItemStacks()) {
-            if (SkyBlockItem.isSkyBlockItem(stack)) owned.add(new SkyBlockItem(stack).getAttributeHandler().getPotentialType());
-        }
-        for (SkyBlockItem accessory : player.getAccessoryBag().getAllAccessories()) {
-            if (accessory != null) owned.add(accessory.getAttributeHandler().getPotentialType());
-        }
+        List<ItemType> owned = AccessoryOwnership.ownedTypes(player);
         return ANITA_ACCESSORY_FORTUNE.entrySet().stream()
                 .filter(entry -> owned.contains(entry.getKey()))
                 .mapToDouble(Map.Entry::getValue)

@@ -1,6 +1,12 @@
 package net.swofty.type.skyblockgeneric.user.statistics;
 
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryBagXP;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryStats;
+import net.swofty.type.skyblockgeneric.accessory.OwnedAccessory;
+import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffect;
+import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffectKind;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -358,14 +364,17 @@ public class PlayerStatistics {
         if (pet != null) modifiers.add(new StatisticModifier(pet.getDisplayName(), pet.getMaterial(),
             texture(pet), petStatistics(), StatisticSourceType.PET, StatisticModifierType.BASIC, null));
 
-        Set<ItemType> usedAccessories = new HashSet<>();
-        for (ItemStack stack : player.getInventory().getItemStacks()) {
-            if (!SkyBlockItem.isSkyBlockItem(stack)) continue;
-            SkyBlockItem accessory = new SkyBlockItem(stack);
-            addAccessoryModifiers(modifiers, accessory, usedAccessories);
-        }
-        for (SkyBlockItem accessory : player.getAccessoryBag().getAllAccessories()) {
-            addAccessoryModifiers(modifiers, accessory, usedAccessories);
+        for (OwnedAccessory accessory : AccessoryOwnership.active(player)) {
+            if (!accessory.definition().getRealm().isActive()) continue;
+            addItemModifiers(modifiers, accessory.item(), StatisticSourceType.ACCESSORY_BAG);
+            SkyBlockItem item = accessory.item();
+            ItemStatistics effects = ItemStatistics.empty();
+            for (AccessoryEffect effect : accessory.definition().getEffects()) {
+                if (effect.kind() == AccessoryEffectKind.STAT && effect.appliesTo(player))
+                    effects = ItemStatistics.add(effects, effect.statistics());
+            }
+            addModifier(modifiers, item.getDisplayName() + " Effect", effects, StatisticSourceType.ACCESSORY_BAG,
+                StatisticModifierType.ABILITY_PASSIVE, item.getDisplayName(), item.getMaterial(), texture(item));
         }
         modifiers.add(new StatisticModifier("Base Value", Material.NETHER_STAR, null,
             ItemStatistic.getOfAllBaseValues(), StatisticSourceType.INNATE, StatisticModifierType.INNATE, null));
@@ -378,13 +387,6 @@ public class PlayerStatistics {
      */
     private SkyBlockItem getMainHandItem() {
         return new SkyBlockItem(player.getInventory().getItemStack(player.getHeldSlot()));
-    }
-
-    private void addAccessoryModifiers(List<StatisticModifier> modifiers, SkyBlockItem item, Set<ItemType> used) {
-        if (item == null || !item.hasComponent(ConstantStatisticsComponent.class)) return;
-        ItemType type = item.getAttributeHandler().getPotentialType();
-        if (type != null && !used.add(type)) return;
-        addItemModifiers(modifiers, item, StatisticSourceType.ACCESSORY_BAG);
     }
 
     private void addItemModifiers(List<StatisticModifier> modifiers, SkyBlockItem item, StatisticSourceType sourceType) {
@@ -512,37 +514,10 @@ public class PlayerStatistics {
     }
 
     public void updateAccessoryStatistics() {
-        List<ItemType> usedAccessories = new ArrayList<>();
-        ItemStatistics total = ItemStatistics.builder().build();
-        for (ItemStack itemStack : player.getInventory().getItemStacks()) {
-            if (SkyBlockItem.isSkyBlockItem(itemStack)) {
-                SkyBlockItem item = new SkyBlockItem(itemStack);
-                if (!(item.hasComponent(ConstantStatisticsComponent.class))) continue;
-                if (usedAccessories.contains(item.getAttributeHandler().getPotentialType())) continue;
-
-                usedAccessories.add(item.getAttributeHandler().getPotentialType());
-                total = ItemStatistics.add(total, ItemStatistics.add(item.getAttributeHandler().getStatistics(),
-                        calculateExtraItemStatisticsToAdd(
-                            item,
-                            null,
-                            null
-                        )));
-            }
-        }
-        for (SkyBlockItem item : player.getAccessoryBag().getAllAccessories()) {
-            if (item == null) continue;
-            if (!(item.hasComponent(ConstantStatisticsComponent.class))) continue;
-            if (usedAccessories.contains(item.getAttributeHandler().getPotentialType())) continue;
-
-            usedAccessories.add(item.getAttributeHandler().getPotentialType());
-            total = ItemStatistics.add(total, ItemStatistics.add(item.getAttributeHandler().getStatistics(),
-                    calculateExtraItemStatisticsToAdd(
-                        item,
-                        null,
-                        null
-            )));
-        }
-        accessoryStatistics = total;
+        AccessoryOwnership.invalidate(player);
+        accessoryStatistics = AccessoryStats.of(player, AccessoryOwnership.active(player),
+                item -> calculateExtraItemStatisticsToAdd(item, null, null));
+        AccessoryBagXP.sync(player);
     }
 
     private ItemStatistics calculateExtraItemStatisticsToAdd(SkyBlockItem item, SkyBlockPlayer causer, LivingEntity enemy) {

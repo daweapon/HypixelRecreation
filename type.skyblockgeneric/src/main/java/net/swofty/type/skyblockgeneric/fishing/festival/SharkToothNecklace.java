@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing.festival;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -26,7 +27,7 @@ public enum SharkToothNecklace {
 
     public static double toothChanceBonus(SkyBlockPlayer player) {
         double best = 0;
-        for (SkyBlockItem accessory : player.getAccessoryBag().getUniqueAccessories()) {
+        for (SkyBlockItem accessory : AccessoryOwnership.activeItems(player)) {
             ItemType type = accessory.getAttributeHandler().getPotentialType();
             for (SharkToothNecklace necklace : values()) {
                 if (necklace.item == type) best = Math.max(best, necklace.toothChanceBonus);
