@@ -5,8 +5,6 @@ import net.swofty.type.skyblockgeneric.accessory.AccessoryBagXP;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryStats;
 import net.swofty.type.skyblockgeneric.accessory.OwnedAccessory;
-import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffect;
-import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffectKind;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -375,11 +373,7 @@ public class PlayerStatistics {
             if (!accessory.definition().getRealm().isActive()) continue;
             addItemModifiers(modifiers, accessory.item(), StatisticSourceType.ACCESSORY_BAG);
             SkyBlockItem item = accessory.item();
-            ItemStatistics effects = ItemStatistics.empty();
-            for (AccessoryEffect effect : accessory.definition().getEffects()) {
-                if (effect.kind() == AccessoryEffectKind.STAT && effect.appliesTo(player))
-                    effects = ItemStatistics.add(effects, effect.statistics());
-            }
+            ItemStatistics effects = AccessoryStats.effectStatistics(player, accessory);
             addModifier(modifiers, item.getDisplayName() + " Effect", effects, StatisticSourceType.ACCESSORY_BAG,
                 StatisticModifierType.ABILITY_PASSIVE, item.getDisplayName(), item.getMaterial(), texture(item));
         }

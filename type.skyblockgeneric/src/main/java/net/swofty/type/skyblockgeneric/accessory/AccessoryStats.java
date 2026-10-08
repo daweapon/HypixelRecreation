@@ -31,9 +31,18 @@ public final class AccessoryStats {
         if (!owned.definition().getRealm().isActive()) return ItemStatistics.empty();
         ItemStatistics total = ItemStatistics.add(owned.item().getAttributeHandler().getStatistics(),
                 itemExtras.apply(owned.item()));
+        return ItemStatistics.add(total, effectStatistics(player, owned));
+    }
+
+    /** Stats from the accessory's {@code STAT} effects and stat-granting {@code HANDLER} effects that apply now. */
+    public static ItemStatistics effectStatistics(SkyBlockPlayer player, OwnedAccessory owned) {
+        ItemStatistics total = ItemStatistics.empty();
+        if (!owned.definition().getRealm().isActive()) return total;
         for (AccessoryEffect effect : owned.definition().getEffects()) {
             if (effect.kind() == AccessoryEffectKind.STAT && effect.appliesTo(player))
                 total = ItemStatistics.add(total, effect.statistics());
+            else if (effect.kind() == AccessoryEffectKind.HANDLER)
+                total = ItemStatistics.add(total, AccessoryHandlerStats.of(player, effect));
         }
         return total;
     }

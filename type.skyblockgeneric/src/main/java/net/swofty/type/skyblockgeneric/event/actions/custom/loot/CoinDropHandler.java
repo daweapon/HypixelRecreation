@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.event.actions.custom.loot;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import net.swofty.type.skyblockgeneric.bestiary.BestiaryData;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentScavenger;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
@@ -41,7 +42,8 @@ public class CoinDropHandler implements HypixelEventClass {
             bestiaryBoost += (float) bestiaryData.getTotalExtraCoinPercentage(tier) / 100;
         }
 
-        coinsDropped = Math.round((baseCoins + scavengedCoins) * bestiaryBoost);
+        int accessoryCoins = AccessoryEconomyHooks.mobLevelCoins(player, mob);
+        coinsDropped = Math.round((baseCoins + scavengedCoins + accessoryCoins) * bestiaryBoost);
         if (mob instanceof MythologicalCreatureMob) {
             coinsDropped = (int) MythologicalCoins.fromMob(player, coinsDropped);
         }
