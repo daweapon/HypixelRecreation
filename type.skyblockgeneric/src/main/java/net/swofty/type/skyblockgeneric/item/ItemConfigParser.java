@@ -473,6 +473,7 @@ public class ItemConfigParser {
 				}
 				case "PET_ITEM" -> PetItemComponent.parse(safeConfig);
 				case "PET_CANDY" -> PetCandyComponent.parse(safeConfig);
+				case "PET_SKIN" -> PetSkinComponent.parse(safeConfig);
 				case "PICKAXE" -> new PickaxeComponent();
 				case "PLACEABLE" -> {
 					String blockType = safeConfig.getString("block_type");

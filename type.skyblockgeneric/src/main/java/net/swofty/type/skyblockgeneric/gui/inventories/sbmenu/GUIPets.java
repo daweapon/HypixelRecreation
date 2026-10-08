@@ -25,6 +25,7 @@ import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import net.swofty.type.skyblockgeneric.user.pets.PetScore;
+import net.swofty.type.skyblockgeneric.user.pets.PetSkins;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -82,6 +83,7 @@ public class GUIPets extends PaginatedView<SkyBlockItem, GUIPets.PetsState> {
         }
         lore.add(Text.key("gui_sbmenu.pets.click_to_favorite"));
         lore.add(Text.key("gui_sbmenu.pets.click_to_convert"));
+        if (item.getAttributeHandler().getPetSkin() != null) lore.add(Text.key("gui_sbmenu.pets.click_to_remove_skin"));
         return ItemStacks.lore(itemStack, lore);
     }
 
@@ -97,6 +99,7 @@ public class GUIPets extends PaginatedView<SkyBlockItem, GUIPets.PetsState> {
                         item.getDisplayName()));
             }
             case Click.Right _ -> convertToItem(player, item);
+            case Click.RightShift _ -> PetSkins.removeToInventory(player, item);
             default -> toggleSummon(player, item);
         }
         ctx.session(PetsState.class).update(s -> s.refreshedFrom(player));

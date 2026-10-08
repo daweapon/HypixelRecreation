@@ -516,6 +516,17 @@ public class ItemAttributeHandler {
         ((ItemAttributePetHeldItem) item.getAttribute("pet_held_item")).setValue(type == null ? "" : type.name());
     }
 
+    public @Nullable ItemType getPetSkin() {
+        ItemAttribute attribute = item.getAttribute("pet_skin");
+        if (attribute == null) return null;
+        String id = ((ItemAttributePetSkin) attribute).getValue();
+        return id == null || id.isEmpty() ? null : ItemType.get(id);
+    }
+
+    public void setPetSkin(@Nullable ItemType skin) {
+        ((ItemAttributePetSkin) item.getAttribute("pet_skin")).setValue(skin == null ? "" : skin.name());
+    }
+
     public List<AbiphoneNPC> getAbiphoneNPCs() {
         return ((ItemAttributeAbiphoneContacts) item.getAttribute("abiphone_contacts")).getValue().stream()
                 .map(AbiphoneRegistry::getFromId)
