@@ -56,6 +56,7 @@ import net.swofty.type.skyblockgeneric.levels.SkyBlockEmblems;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelCause;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.minion.MinionRegistry;
+import net.swofty.type.skyblockgeneric.minion.inferno.ReaperPepper;
 import net.swofty.type.skyblockgeneric.minion.SkyBlockMinion;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.museum.MuseumService;
@@ -150,6 +151,7 @@ public final class MaxStickService {
         maxCarnival(player);
         MythologicalItemHandlers.setBrainFoodEaten(player, MythologicalItemHandlers.BRAIN_FOOD_LIMIT);
         BottleOfJyrre.setRefinedConsumed(player, BottleOfJyrre.REFINED_LIMIT);
+        ReaperPepper.setEaten(player, ReaperPepper.LIMIT);
         IceEssenceShop.maxAvailable(player);
         CrimsonEssenceShop.maxAvailable(player);
         ChickenRaceProgress.maxOut(player);

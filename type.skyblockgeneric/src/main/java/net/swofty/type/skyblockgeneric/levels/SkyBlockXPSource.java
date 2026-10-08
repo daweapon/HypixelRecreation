@@ -149,7 +149,7 @@ public enum SkyBlockXPSource {
 
     // ----- Consumables Tasks (299 XP) -----
     METAPHYSICAL_SERUM(Group.CONSUMABLES, null, 15, Availability.NOT_IN_GAME, Material.POTION),
-    REAPER_PEPPERS(Group.CONSUMABLES, null, 50, Availability.NOT_IN_GAME, Material.RED_DYE),
+    REAPER_PEPPERS(Group.CONSUMABLES, null, 50, Availability.LIVE, Material.RED_DYE),
     MCGRUBBERS_BURGER(Group.CONSUMABLES, null, 25, Availability.NOT_IN_GAME, Material.COOKED_BEEF),
     WRIGGLING_LARVA(Group.CONSUMABLES, null, 25, Availability.NOT_IN_GAME, Material.PAPER),
     VIAL_OF_VENOM(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.POTION),
