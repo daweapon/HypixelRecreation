@@ -12,6 +12,7 @@ import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategory;
+import net.swofty.type.skyblockgeneric.gui.inventories.kuudra.GUIKuudraCollection;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -82,6 +83,10 @@ public class GUICollections extends StatelessView {
                 return ItemStacks.item(category.getDisplayIcon(), 1,
                         Text.of("<a>{} Collections", category.getName()), lore);
             }, (_, c) -> {
+                if (category == CollectionCategories.BOSS.getCategory()) {
+                    c.push(new GUIKuudraCollection());
+                    return;
+                }
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();
                 ArrayList<String> display = new ArrayList<>();
                 player.getCollection().getDisplay(display, category);
