@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.OptionalDouble;
 import java.util.Set;
 import net.minestom.server.collision.BoundingBox;
+import net.minestom.server.collision.CollisionUtils;
+import net.minestom.server.collision.PhysicsResult;
 import net.minestom.server.coordinate.Point;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.pathfinding.PNode;
@@ -150,6 +152,16 @@ public class VanillaGroundNodeGenerator implements NodeGenerator {
       }
       node.setType(PNode.Type.JUMP);
       return node;
+   }
+
+   /**
+    * Minestom's default refuses any destination block that isn't air, which strands mobs standing
+    * in short grass, flowers or snow layers. Collision alone decides, as in vanilla.
+    */
+   @Override
+   public boolean canMoveTowards(Block.Getter getter, Point start, Point end, BoundingBox boundingBox) {
+      PhysicsResult result = CollisionUtils.handlePhysics(getter, boundingBox, start.asPos(), end.sub(start).asVec(), null, false);
+      return !result.collisionX() && !result.collisionY() && !result.collisionZ();
    }
 
    private PNode newNode(PNode current, double cost, Point point, Point target) {
