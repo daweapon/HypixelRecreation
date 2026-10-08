@@ -8,6 +8,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import net.kyori.adventure.translation.GlobalTranslator;
+import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.GameMode;
@@ -24,15 +25,20 @@ import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.text.HypixelTextRenderer;
 import net.swofty.type.generic.text.RenderContext;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.minestom.server.timer.TaskSchedule;
 import org.tinylog.Logger;
 
 import java.util.*;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class HypixelNPC {
     private static final int SPAWN_DISTANCE = 48;
     private static final int LOOK_DISTANCE = 5;
+    private static final double WALK_DISTANCE = 48;
+    private static final double WALK_BLOCKS_PER_TICK = 0.1;
+    private static final long WALK_TIMEOUT_SLACK_TICKS = 100;
 
     @Getter
     private static final List<HypixelNPC> registeredNPCs = new ArrayList<>();
@@ -133,8 +139,8 @@ public abstract class HypixelNPC {
 
                 if (config.dynamicPosition() && !npcViewable.getMovementController().isMoving()) {
                     Pos desiredPosition = config.position(player);
-                    if (!npcPosition.samePoint(desiredPosition)) {
-                        entity.teleport(desiredPosition);
+                    if (!npcPosition.samePoint(desiredPosition)
+                            && !relocate(entity, npcViewable, player, desiredPosition, config.walksToNewPosition())) {
                         npcPosition = desiredPosition;
                     }
                 }
@@ -175,6 +181,39 @@ public abstract class HypixelNPC {
                 }
             });
         }
+    }
+
+    /**
+     * Moves an NPC whose position follows quest progress. One the player can see walks there;
+     * one out of sight, too far to path, or whose walk fails or stalls is teleported.
+     *
+     * @return true if the NPC started walking, false if it was teleported
+     */
+    private static boolean relocate(Entity entity, NPCViewable viewable, HypixelPlayer player, Pos destination, boolean walks) {
+        Pos from = entity.getPosition();
+        double distance = from.distance(destination);
+        boolean watched = player.getPosition().distance(from) <= SPAWN_DISTANCE;
+        if (!walks || !watched || distance > WALK_DISTANCE) {
+            entity.teleport(destination);
+            return false;
+        }
+
+        NPCMovementController movement = viewable.getMovementController();
+        CompletableFuture<Void> walk = movement.walkPath(List.of(destination));
+        walk.whenComplete((_, failure) -> {
+            if (failure != null && !(failure instanceof CancellationException)) {
+                MinecraftServer.getSchedulerManager().scheduleNextTick(() -> {
+                    if (!entity.isRemoved()) entity.teleport(destination);
+                });
+            }
+        });
+        long timeoutTicks = (long) (distance * 1.5 / WALK_BLOCKS_PER_TICK) + WALK_TIMEOUT_SLACK_TICKS;
+        MinecraftServer.getSchedulerManager().buildTask(() -> {
+            if (walk.isDone() || entity.isRemoved()) return;
+            movement.stop();
+            entity.teleport(destination);
+        }).delay(TaskSchedule.tick((int) timeoutTicks)).schedule();
+        return true;
     }
 
     private static Entity spawnEntity(HypixelNPC npc, HypixelPlayer player, NPCConfiguration config) {

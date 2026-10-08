@@ -23,6 +23,7 @@ import static net.swofty.type.skyblockgeneric.crimson.questline.CrimsonScene.KRE
 public final class ThroneRoomGate {
     public static final Pos OUTSIDE = new Pos(-134.5, 101, -754.5, 90, 0);
     public static final Pos CHIEFS_HUT_OUTSIDE = new Pos(-597.5, 109, -668.5);
+    private static final double CHIEFS_HUT_FLOOR_Y = 113;
     private static final String PASS = "throne_pass";
     private static final String[] RANDOM = {"DO YOU WANT TO BE PULVERIZED?", "WHAT DO YOU WANT?", "WE HAVE OUR EYES ON YOU."};
 
@@ -46,6 +47,14 @@ public final class ThroneRoomGate {
     /** Before choosing a faction the Chief's Hut is off limits too; Elle stops the player there. */
     public static boolean mayEnterChiefsHut(SkyBlockPlayer player) {
         return CrimsonQuestlines.universal(player) == UniversalStep.COMPLETE;
+    }
+
+    /**
+     * The Chief's Hut region also covers the square in front of it, where Elle waits and where a
+     * turned-away player is put back, so only the hut's raised floor is closed off.
+     */
+    public static boolean isInsideChiefsHut(SkyBlockPlayer player) {
+        return player.getPosition().y() >= CHIEFS_HUT_FLOOR_Y;
     }
 
     public static void turnAwayFromChiefsHut(SkyBlockPlayer player) {

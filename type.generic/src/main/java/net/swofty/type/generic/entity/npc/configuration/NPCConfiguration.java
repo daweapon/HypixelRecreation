@@ -38,6 +38,11 @@ public interface NPCConfiguration {
         return false;
     }
 
+    /** Whether a {@link #dynamicPosition()} NPC walks to its new position in view instead of teleporting. */
+    default boolean walksToNewPosition() {
+        return false;
+    }
+
     default boolean looking(HypixelPlayer player) {
         return false;
     }
