@@ -1,6 +1,5 @@
 package net.swofty.type.skyblockgeneric.accessory.power;
 
-import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryPowers.PowerData;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -39,10 +38,6 @@ public final class PowerStones {
             lore.add("<8>Source: Not active yet");
         }
         return lore;
-    }
-
-    public static String romanLevel(AccessoryPowerType power) {
-        return StringUtility.getAsRomanNumeral(power.getCombatLevel());
     }
 
     public enum LearnResult {

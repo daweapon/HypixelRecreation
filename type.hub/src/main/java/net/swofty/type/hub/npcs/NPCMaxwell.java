@@ -5,7 +5,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.hub.gui.GUIMaxwell;
+import net.swofty.type.hub.gui.maxwell.GUIMaxwell;
 
 public class NPCMaxwell extends HypixelNPC {
 
@@ -40,7 +40,7 @@ public class NPCMaxwell extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
-        new GUIMaxwell().open(e.player());
+        e.player().openView(new GUIMaxwell());
     }
 
 }
