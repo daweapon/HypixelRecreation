@@ -1,0 +1,13 @@
+# Abiphone Flip+ models sold by Udel (Scarleton) and Nuvian (Dragontail), per wiki Udel/UI (Aug 2025 revamp, flat prices).
+title: Abiphone Flip+
+slots: [10, 11, 12]
+entries:
+  - item: ABIPHONE_FLIP_PLUS_FLOWER
+    material: paper
+    cost: { coins: 100000000 }
+  - item: ABIPHONE_FLIP_PLUS_CLOCKWORK
+    material: paper
+    cost: { coins: 100000000 }
+  - item: ABIPHONE_FLIP_PLUS_LUNAR
+    material: paper
+    cost: { coins: 100000000 }

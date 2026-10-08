@@ -1,0 +1,10 @@
+# Abiphone XIII models sold by Udel (Scarleton) and Nuvian (Dragontail), per wiki Udel/UI (Aug 2025 revamp, flat prices).
+title: Abiphone XIII
+slots: [10, 11]
+entries:
+  - item: ABIPHONE_XIII_JADE
+    material: paper
+    cost: { coins: 5000000 }
+  - item: ABIPHONE_XIII_SAPPHIRE
+    material: paper
+    cost: { coins: 5000000 }

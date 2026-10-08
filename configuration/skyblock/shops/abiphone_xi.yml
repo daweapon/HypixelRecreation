@@ -1,0 +1,10 @@
+# Abiphone XI models sold by Udel (Scarleton) and Nuvian (Dragontail), per wiki Udel/UI (Aug 2025 revamp, flat prices).
+title: Abiphone XI
+slots: [10, 11]
+entries:
+  - item: ABIPHONE_XI_YELLOW
+    material: player_head
+    cost: { coins: 500000 }
+  - item: ABIPHONE_XI_GREEN
+    material: player_head
+    cost: { coins: 500000 }
