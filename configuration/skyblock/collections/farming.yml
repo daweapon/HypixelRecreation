@@ -496,6 +496,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: MUSHROOM_BOOTS
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BAT_PET
   - amount: 1000
     rewards:
     - type: XP

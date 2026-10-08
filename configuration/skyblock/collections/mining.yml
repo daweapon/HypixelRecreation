@@ -24,6 +24,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: AUTO_SMELTER
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SILVERFISH_PET
   - amount: 1000
     rewards:
     - type: XP
@@ -105,6 +108,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_COAL
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: WITHER_SKELETON_PET
   - amount: 2500
     rewards:
     - type: XP
@@ -493,6 +499,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ENDERMITE_PET
   - amount: 1000
     rewards:
     - type: XP
@@ -996,6 +1005,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_MITHRIL
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MITHRIL_GOLEM_PET
   - amount: 2500
     rewards:
     - type: XP

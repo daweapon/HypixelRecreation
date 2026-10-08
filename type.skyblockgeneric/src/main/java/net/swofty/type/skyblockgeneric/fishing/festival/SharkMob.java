@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing.festival;
 
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import lombok.NonNull;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.ai.GoalSelector;
@@ -79,6 +80,16 @@ public class SharkMob extends BestiaryMob {
                 return CalculationMode.CALCULATE_INDIVIDUAL;
             }
         };
+    }
+
+    @Override
+    public SkyBlockItem createDrop(ItemType type, int amount) {
+        SkyBlockItem drop = super.createDrop(type, amount);
+        getShark().getExtraDrops().stream()
+                .filter(extra -> extra.item() == type && extra.rarity() != null)
+                .findFirst()
+                .ifPresent(extra -> drop.getAttributeHandler().setRarity(extra.rarity()));
+        return drop;
     }
 
     private int finAmount(@Nullable SkyBlockPlayer killer) {

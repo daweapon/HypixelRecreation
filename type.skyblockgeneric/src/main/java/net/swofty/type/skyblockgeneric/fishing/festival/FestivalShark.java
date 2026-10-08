@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing.festival;
 
+import net.swofty.commons.skyblock.item.Rarity;
 import lombok.Getter;
 import net.minestom.server.entity.EntityType;
 import net.swofty.commons.skyblock.item.ItemType;
@@ -36,7 +37,7 @@ public enum FestivalShark {
             "A striped beast bounds from the depths, the wild Tiger Shark!",
             List.of(MobType.AQUATIC, MobType.ANIMAL),
             8, ItemType.TIGER_SHARK_TOOTH,
-            List.of(new SharkDrop(null, "Epic Megalodon Pet", 1, 1),
+            List.of(new SharkDrop(ItemType.MEGALODON_PET, Rarity.EPIC, "Epic Megalodon Pet", 1, 1),
                     new SharkDrop(ItemType.CARNIVAL_TICKET, "Carnival Ticket", 1, 0.25),
                     new SharkDrop(null, "Aquamarine Dye", 1, 0.00004)),
             new Bestiary("Like a regular tiger, but swims.", 7, 20),
@@ -45,7 +46,7 @@ public enum FestivalShark {
             "Hide no longer, a Great White Shark has tracked your scent and thirsts for your blood!",
             List.of(MobType.AQUATIC, MobType.ANIMAL, MobType.ELUSIVE),
             16, ItemType.GREAT_WHITE_SHARK_TOOTH,
-            List.of(new SharkDrop(null, "Legendary Megalodon Pet", 1, 1),
+            List.of(new SharkDrop(ItemType.MEGALODON_PET, Rarity.LEGENDARY, "Legendary Megalodon Pet", 1, 1),
                     new SharkDrop(ItemType.CARNIVAL_TICKET, "Carnival Ticket", 1, 0.5),
                     new SharkDrop(null, "Aquamarine Dye", 1, 0.002)),
             new Bestiary("Most famous of all sharks.", 6, 15),

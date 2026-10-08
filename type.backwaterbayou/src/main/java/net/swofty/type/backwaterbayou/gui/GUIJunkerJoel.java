@@ -1,6 +1,10 @@
 package net.swofty.type.backwaterbayou.gui;
 
 import net.minestom.server.inventory.InventoryType;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.minestom.server.item.Material;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.DefaultState;
@@ -11,6 +15,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 
 // TODO: use ShopView
 public class GUIJunkerJoel extends StatelessView {
+    private static final int HERMIT_CRAB_PRICE = 32;
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -318,7 +323,7 @@ public class GUIJunkerJoel extends StatelessView {
                     <a>Rusty Coin <8>x32
 
                     <e>Click to trade!"""
-        ));
+        ), (click, c) -> buyHermitCrab((SkyBlockPlayer) c.player()));
         layout.slot(29, ItemStacks.head(
             "e886d5cac32bd32fc07938908c552b7b27965d92065b3157dfc7ef849281ee9d",
             """
@@ -439,5 +444,16 @@ public class GUIJunkerJoel extends StatelessView {
                 <a>Sell Item
                 <7>Click items in your inventory to sell
                 <7>them to this Shop!"""));
+    }
+
+    private static void buyHermitCrab(SkyBlockPlayer player) {
+        if (!player.removeItemFromPlayer(ItemType.RUSTY_COIN, HERMIT_CRAB_PRICE)) {
+            player.sendMessage("<c>You don't have enough Rusty Coins!");
+            return;
+        }
+        SkyBlockItem pet = new SkyBlockItem(ItemType.HERMIT_CRAB_PET);
+        pet.getAttributeHandler().setRarity(Rarity.COMMON);
+        player.addAndUpdateItem(pet);
+        player.sendMessage("<a>You bought a " + pet.getDisplayName() + "<a>!");
     }
 }
