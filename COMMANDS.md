@@ -105,7 +105,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/is` | `/island` | Sends the player to their island. | DEFAULT | No | `type.skyblockgeneric` |
 | `/parkour` | — | Parkour related commands. | DEFAULT | No | `type.lobby` |
 | `/sl <number>` | — | Switch to a numbered lobby.  Help uses /swaplobby, but it is not a registered label; use the spelling shown here. | DEFAULT | No | `type.lobby` |
-| `/warp <warp>` | `/teleportregion` | Warps to the given destination. | DEFAULT | No | `type.skyblockgeneric` |
+| `/warp <warp>` | `/teleportregion` | Warps to an unlocked island or travel-scroll destination: `home`, `hub`, `gold`, `deep`, `dwarven`, `nether` (Crimson Isle; also `isle`, `crimson`, `ci`), the Hub scroll warps, and the Crimson Isle scroll warps `kuudra` (`skull`), `wasteland`, `dragontail`, `scarleton` and `smold` (`smoldering`, `smoldering_tomb`). Crimson Isle warps need Combat XXII and the Travel Scroll to the Crimson Isle; each scroll warp needs its own scroll. | DEFAULT | No | `type.skyblockgeneric` |
 
 ## Staff commands
 

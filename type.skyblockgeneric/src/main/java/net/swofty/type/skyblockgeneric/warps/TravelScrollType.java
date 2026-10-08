@@ -7,6 +7,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.warps.unlocks.ScrollUnlockCustomRecipe;
 import net.swofty.type.skyblockgeneric.warps.unlocks.ScrollUnlockDarkAuction;
+import net.swofty.type.skyblockgeneric.warps.unlocks.ScrollUnlockFound;
 import net.swofty.type.skyblockgeneric.warps.unlocks.ScrollUnlockPurchase;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -47,8 +48,45 @@ public enum TravelScrollType {
             "a221f813dacee0fef8c59f76894dbb26415478d9ddfc44c2e708a6d3b7549b",
             new ScrollUnlockCustomRecipe("Unlock this scroll's recipe through Foraging Skill Rewards."),
             new Pos(200, 70, 200, 0, 0),
-            Rank.DEFAULT)
+            Rank.DEFAULT),
+    CRIMSON_ISLE_SPAWN("nether", "<a>Crimson Isle <7>- <b>Spawn",
+            "Fight challenging bosses, discover new Sea Creatures, complete epic quests, and join your favorite faction!",
+            Textures.CRIMSON_PORTAL,
+            new ScrollUnlockCustomRecipe("Unlock this scroll's recipe through the Glowstone Dust Collection."),
+            new Pos(-360.5, 80, -430.5, 180, 0)),
+    CRIMSON_ISLE_FORGOTTEN_SKULL("kuudra", "<a>Crimson Isle <7>- <6>Forgotten Skull",
+            "Spawn at the entrance of the <c>Kuudra <7>arena behind the <6>Blazing Volcano<7>.",
+            Textures.CRIMSON_PORTAL,
+            new ScrollUnlockFound("Crimson Isle"),
+            new Pos(-372.5, 117, -981.5, 180, 0),
+            Rank.MVP_PLUS),
+    CRIMSON_ISLE_WASTELAND("wasteland", "<a>Crimson Isle <7>- <c>The Wasteland",
+            "Spawn in <c>The Wasteland<7>.",
+            Textures.CRIMSON_PORTAL,
+            new ScrollUnlockFound("Crimson Isle"),
+            new Pos(-368.5, 117, -975.5, 180, 0),
+            Rank.MVP_PLUS),
+    CRIMSON_ISLE_DRAGONTAIL("dragontail", "<a>Crimson Isle <7>- <2>Dragontail",
+            "Spawn in the center of <2>Dragontail<7>.",
+            Textures.CRIMSON_PORTAL,
+            new ScrollUnlockFound("Crimson Isle"),
+            new Pos(-614.5, 100, -806.5, 0, 0)),
+    CRIMSON_ISLE_SCARLETON("scarleton", "<a>Crimson Isle <7>- <5>Scarleton",
+            "Spawn in to the center of <5>Scarleton<7>.",
+            Textures.CRIMSON_PORTAL,
+            new ScrollUnlockFound("Crimson Isle"),
+            new Pos(-60.5, 107, -801.5, 0, 0)),
+    CRIMSON_ISLE_SMOLDERING_TOMB("smold", "<a>Crimson Isle <7>- <c>Smoldering Tomb",
+            "Spawn in front of the <c>Smoldering Tomb <7>full of blazes.",
+            Textures.CRIMSON_PORTAL,
+            new ScrollUnlockCustomRecipe("Unlock this scroll's recipe from Blaze Slayer LVL 4."),
+            new Pos(-283.5, 108, -1030.5, 180, 0),
+            Rank.MVP_PLUS)
     ;
+
+    private static final class Textures {
+        private static final String CRIMSON_PORTAL = "64457b2d7acf522d1912f0d6c6139440ba9d333a6bf61a2e9440e7fb3788939e";
+    }
 
     private final @NotNull String internalName;
     @Getter(AccessLevel.NONE)
