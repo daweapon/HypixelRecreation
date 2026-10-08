@@ -79,6 +79,9 @@ slayers:
       - { tier: II, cost: 7500, requiredCombatXp: 6600, slayerXp: 25, bossLevel: 2, bossHealth: 15000000, bossDamage: 5000, bossSpeed: 145, tokenItem: NULL_SPHERE, tokenDrops: 2 }
       - { tier: III, cost: 20000, requiredCombatXp: 11000, slayerXp: 100, bossLevel: 3, bossHealth: 66000000, bossDamage: 12000, bossSpeed: 150, tokenItem: NULL_SPHERE, tokenDrops: 3 }
       - { tier: IV, cost: 50000, requiredCombatXp: 22000, slayerXp: 500, bossLevel: 4, bossHealth: 300000000, bossDamage: 21000, bossSpeed: 160, tokenItem: NULL_SPHERE, tokenDrops: 4 }
+    # tiers: { TIER: [minAmount, maxAmount, chancePercent] }
+    drops:
+      - { item: POCKET_ESPRESSO_MACHINE, pool: SEPARATE, level: 4, tiers: { IV: [1, 1, 0.3882] } }
 
   - id: RIFTSTALKER_BLOODFIEND
     enabled: false

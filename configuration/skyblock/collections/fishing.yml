@@ -160,6 +160,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BAIT_RING
   - amount: 4000
     rewards:
     - type: XP

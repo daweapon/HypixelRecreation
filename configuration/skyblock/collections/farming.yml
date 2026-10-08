@@ -793,6 +793,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: PUMPKIN_BOOTS
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: FARMER_ORB
   - amount: 250
     rewards:
     - type: XP
@@ -1203,6 +1206,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: MOONLIGHT_CRYSTAL
 - itemType: SUNFLOWER
   rewards:
     - amount: 1000

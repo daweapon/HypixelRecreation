@@ -1,0 +1,397 @@
+items:
+  - id: FARMER_ORB
+    material: PLAYER_HEAD
+    name: "Farmer Orb"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Public island crop regrowth"
+            text:
+              - "Increases the regrowth rate of"
+              - "nearby crops on the public islands,"
+              - "regrowing an extra crop every <a>3"
+              - "seconds."
+      - id: SKULL_HEAD
+        texture: 557b354ce9bf8db0a7ed2afc79e27f28c3ccaaaf2c460a51993cac2b0564ef60
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "A A"
+              - "AAA"
+            ingredients:
+              A:
+                type: PUMPKIN
+                amount: 12
+            result:
+              type: FARMER_ORB
+              amount: 1
+
+  - id: WOOD_TALISMAN
+    material: PLAYER_HEAD
+    name: "Wood Affinity Talisman"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: STAT
+            regions: [FOREST, GRAVEYARD, WILDERNESS, MOONGLADE_MARSH]
+            statistics: { speed: 10 }
+            text:
+              - "Increases your <f> Speed <7>by <a>+10"
+              - "while held in the <2>Forest<7>, <c>Graveyard<7>,"
+              - "<2>Wilderness<7>, <a>The Park<7>, <2>Moonglade"
+              - "<2>Marsh<7>, and <6>Torrhus Canyon<7>."
+          - type: STAT
+            servers: [SKYBLOCK_THE_PARK]
+            statistics: { speed: 10 }
+      - id: SKULL_HEAD
+        texture: 907a913471a5bbbb4c0a7f233d78c27628cf0e516a2fb46360cd0e370c508345
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: OAK_LEAVES
+                amount: 1
+              B:
+                type: ENCHANTED_OAK_LOG
+                amount: 1
+            result:
+              type: WOOD_TALISMAN
+              amount: 1
+
+  - id: MOONLIGHT_CRYSTAL
+    material: PAPER
+    name: "Moonlight Crystal"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: STAT
+            time: NIGHT
+            statistics: { strength: 10, defense: 10 }
+            text:
+              - "Increases your <c> Strength <7>and <a>"
+              - "<a>Defense<7> by <a>+10<7> during the Night."
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: COMPACTED_MOONFLOWER
+                amount: 4
+              B:
+                type: NIGHT_CRYSTAL
+                amount: 1
+            result:
+              type: MOONLIGHT_CRYSTAL
+              amount: 1
+
+  - id: HONEYCOMB_TALISMAN
+    material: PAPER
+    name: "Honeycomb Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Galatea tree mobs"
+            text:
+              - "<a>Trees <7>smeared with <6>Honeycomb"
+              - "attract mobs <a>5% <7>faster."
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - " A "
+              - "A A"
+              - " A "
+            ingredients:
+              A:
+                type: HONEYCOMB
+                amount: 16
+            result:
+              type: HONEYCOMB_TALISMAN
+              amount: 1
+
+  - id: HONEYCOMB_RING
+    material: PAPER
+    name: "Honeycomb Ring"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Galatea tree mobs"
+            text:
+              - "<a>Trees <7>smeared with <6>Honeycomb"
+              - "attract mobs <a>10% <7>faster."
+
+  - id: HONEYCOMB_ARTIFACT
+    material: PAPER
+    name: "Honeycomb Artifact"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Galatea tree mobs"
+            text:
+              - "<a>Trees <7>smeared with <6>Honeycomb"
+              - "attract mobs <a>15% <7>faster."
+
+  - id: LUMBERJACK_TALISMAN
+    material: PAPER
+    name: "Lumberjack Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Foraging Axe throwing"
+            text:
+              - "Reduces the cooldown for throwing"
+              - "your <2>Foraging Axe <7>by <a>5%<7>."
+
+  - id: LUMBERJACK_RING
+    material: PAPER
+    name: "Lumberjack Ring"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Foraging Axe throwing"
+            text:
+              - "Reduces the cooldown for throwing"
+              - "your <2>Foraging Axe <7>by <a>10%<7>."
+
+  - id: LUMBERJACK_ARTIFACT
+    material: PAPER
+    name: "Lumberjack Artifact"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Foraging Axe throwing"
+            text:
+              - "Reduces the cooldown for throwing"
+              - "your <2>Foraging Axe <7>by <a>15%<7>."
+
+  - id: TORRHUS_TALISMAN
+    material: PAPER
+    name: "Torrhus Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Helix Fortune stat"
+            text:
+              - "Helix Fortune: <a>+5"
+
+  - id: TORRHUS_RING
+    material: PAPER
+    name: "Torrhus Ring"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Helix Fortune stat"
+            text:
+              - "Helix Fortune: <a>+10"
+
+  - id: TORRHUS_ARTIFACT
+    material: PAPER
+    name: "Torrhus Artifact"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Helix Fortune stat"
+            text:
+              - "Helix Fortune: <a>+15"
+
+  - id: FRESHLY_BAKED_TALISMAN
+    material: PLAYER_HEAD
+    name: "Freshly Baked Talisman"
+    rarity: COMMON
+    default_statistics:
+      overbloom: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Feast events"
+            text:
+              - "This item has <e>x2  Overbloom <7>during"
+              - "Feast events."
+      - id: SKULL_HEAD
+        texture: 4aaebfd586cec00e36a4a2e72d8a4eba586ec9ed58e9c8eeee6725fe90eeb584
+
+  - id: FRESHLY_BAKED_RING
+    material: PLAYER_HEAD
+    name: "Freshly Baked Ring"
+    rarity: UNCOMMON
+    default_statistics:
+      overbloom: 2
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Feast events"
+            text:
+              - "This item has <e>x2  Overbloom <7>during"
+              - "Feast events."
+      - id: SKULL_HEAD
+        texture: 6b94d27ab760315e64dc73b881458be8643d7b73cfa5bc8c23d35628ccd513ac
+
+  - id: FRESHLY_BAKED_ARTIFACT
+    material: PLAYER_HEAD
+    name: "Freshly Baked Artifact"
+    rarity: RARE
+    default_statistics:
+      overbloom: 3
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Feast events"
+            text:
+              - "This item has <e>x2  Overbloom <7>during"
+              - "Feast events."
+      - id: SKULL_HEAD
+        texture: d4e330e41bad63f7c65c8664efb6ec72b071e94831a01f1bb50fc10a22cd623e
+
+  - id: FRESHLY_BAKED_RELIC
+    material: PLAYER_HEAD
+    name: "Freshly Baked Relic"
+    rarity: EPIC
+    default_statistics:
+      overbloom: 4
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Feast events"
+            text:
+              - "This item has <e>x2  Overbloom <7>during"
+              - "Feast events."
+      - id: SKULL_HEAD
+        texture: dd0b79b73bb9ca033f30aaca3dca296580ec6e98504e75b3d5f722af1dfc676c
+
+  - id: FRESHLY_BAKED_HEIRLOOM
+    material: PLAYER_HEAD
+    name: "Freshly Baked Heirloom"
+    rarity: LEGENDARY
+    default_statistics:
+      overbloom: 5
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Feast events"
+            text:
+              - "This item has <e>x2  Overbloom <7>during"
+              - "Feast events."
+      - id: SKULL_HEAD
+        texture: 4522ee39ce8989b4c3777a23514e0e97b31441717c779e9c2eed364206d2b56e
+
+  - id: COPPER_TALISMAN
+    material: PLAYER_HEAD
+    name: "Copper Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Garden Visitors"
+            text:
+              - "<9><l>RARE <7>and above <a>Garden Visitors"
+              - "have a <a>4% <7>higher chance to arrive."
+      - id: SKULL_HEAD
+        texture: 856cba11ca1258258e903f2586fe19ecf20f4a99ef5870347cf32c2ba76e59cf
+
+  - id: COPPER_RING
+    material: PLAYER_HEAD
+    name: "Copper Ring"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Garden Visitors"
+            text:
+              - "<9><l>RARE <7>and above <a>Garden Visitors"
+              - "have a <a>8% <7>higher chance to arrive."
+      - id: SKULL_HEAD
+        texture: f83a812525faf3499c3294634398b5e0e967489f2ee63e14490c1440553af065
+
+  - id: COPPER_ARTIFACT
+    material: PLAYER_HEAD
+    name: "Copper Artifact"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Garden Visitors"
+            text:
+              - "<9><l>RARE <7>and above <a>Garden Visitors"
+              - "have a <a>12% <7>higher chance to arrive."
+      - id: SKULL_HEAD
+        texture: 2933e519fc6b29c930bf74d426a2f4888a9994fe2892c6d5585fd6a3a8e52689
+
+  - id: MAGIC_8_BALL
+    material: PLAYER_HEAD
+    name: "Magic 8 Ball"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: MAGIC_8_BALL
+            text:
+              - "Every <a>SkyBlock Season<7>, the <5>Magic 8"
+              - "<5>Ball <7>will grant one of the following"
+              - "bonuses:"
+              - ""
+              - "<a>✦ It is certain."
+              - "    <6>+25 Farming Fortune"
+              - "    <3>+1☯ Farming Wisdom"
+              - "✧ Reply hazy, try again."
+              - "    <6>+25 Foraging Fortune"
+              - "    <3>+1☯ Foraging Wisdom"
+              - "✧ Don't count on it."
+              - "    <6>+25 Mining Fortune"
+              - "    <3>+1☯ Mining Wisdom"
+              - "✧ As I see it, yes."
+              - "    <b>+25 Fishing Speed"
+              - "    <3>+1☯ Fishing Wisdom"
+              - "✧ My sources say no."
+              - "    <c>+25 Strength"
+              - "    <3>+1☯ Combat Wisdom"
+      - id: SKULL_HEAD
+        texture: df2412d63dd2e0e232230abd04a8f726e51c93a72686c7dae1722c4677f9f548

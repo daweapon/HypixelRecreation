@@ -23,6 +23,7 @@ public class DarkAuctionItemPool {
         items.add(new WeightedItem(ItemType.JELLYFISH_PET, 16));
         items.add(new WeightedItem(ItemType.PARROT_PET, 16));
         items.add(new WeightedItem(ItemType.PERFECT_AMBER_GEM, 16));
+        items.add(new WeightedItem(ItemType.MAGIC_8_BALL, 16));
     }
 
     /**

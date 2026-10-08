@@ -21,6 +21,7 @@ public final class AccessoryEconomyHooks {
     public static final String POTION_DURATION = "POTION_DURATION";
     public static final String BAIT_PRESERVATION = "BAIT_PRESERVATION";
     public static final String THUNDER_CHARGE = "THUNDER_CHARGE";
+    public static final String POWDER_GAIN = "POWDER_GAIN";
     public static final String CHOCOLATE_PER_SECOND = "CHOCOLATE_PER_SECOND";
     public static final String POTATO_MINION_SPEED = "POTATO_MINION_SPEED";
     private static final String POTATO_MINION = "POTATO";
@@ -69,6 +70,10 @@ public final class AccessoryEconomyHooks {
                 best = Math.max(best, AccessoryHandlerEffects.percent(player, POTATO_MINION_SPEED));
         }
         return best;
+    }
+
+    public static long powderGained(SkyBlockPlayer player, long powder) {
+        return Math.round(powder * (1 + AccessoryHandlerEffects.percent(player, POWDER_GAIN) / 100D));
     }
 
     public static double chocolatePerSecond(SkyBlockPlayer player) {

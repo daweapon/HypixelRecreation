@@ -1,0 +1,413 @@
+items:
+  - id: ARCHAEOLOGIST_COMPASS
+    material: COMPASS
+    name: "Archaeologist's Compass"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Spider's Den relics"
+            text:
+              - "Right-click to point towards the"
+              - "nearest <b>Relic<7>!"
+              - ""
+              - "Relics Found: <b>28/28"
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: BIG_BRAIN_TALISMAN
+    material: PLAYER_HEAD
+    name: "Big Brain Talisman"
+    rarity: COMMON
+    default_statistics:
+      intelligence: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
+      - id: SKULL_HEAD
+        texture: 70ea5a46c0986cde38e9691a3b7b7190ca28e88c03ca4e7b65b2eb3d431c1e3a
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: TEST_BUCKET_PLEASE_IGNORE
+    material: PLAYER_HEAD
+    name: "Test Bucket Please Ignore"
+    rarity: UNCOMMON
+    default_statistics:
+      true_defense: 0.5
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "Was it all a test?"
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
+      - id: SKULL_HEAD
+        texture: 21432fd4c8f85c809a81b761014c7add2bd9a46532467a5f672e6bbd5ca7a0bc
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: IQ_POINT
+    material: PLAYER_HEAD
+    name: "IQ Point"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: TOTAL_INTELLIGENCE
+            percent: 1
+            text:
+              - "Increases your total <b> Intelligence"
+              - "by <a>1%<7>."
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
+      - id: SKULL_HEAD
+        texture: fbc34fe027faaab44909c54acf9a9afcf450f228473169c409f609ee28ef0d94
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: TWO_IQ_POINT
+    material: PLAYER_HEAD
+    name: "2 IQ Points"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: TOTAL_INTELLIGENCE
+            percent: 2
+            text:
+              - "Increases your total <b> Intelligence"
+              - "by <a>2%<7>."
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
+      - id: SKULL_HEAD
+        texture: 151c534719e6f8937e2c9c45c601cd5ae7e06ffd7f4463659c043179029504ea
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - "AAA"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: IQ_POINT
+                amount: 1
+            result:
+              type: TWO_IQ_POINT
+              amount: 1
+
+  - id: BLOOD_GOD_CREST
+    material: PLAYER_HEAD
+    name: "Blood God Crest"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Kill counter"
+            text:
+              - "Tracks a counter for each mob"
+              - "killed while worn."
+              - ""
+              - "Gain <c>+1 Strength <7>for each digit"
+              - "on the counter. <8>(Max 7)"
+              - ""
+              - "Counter: <c>None yet!"
+      - id: SKULL_HEAD
+        texture: 5b8b51eaefe0e3a10ad7fa1627801d2ce4412b4e432685906192f83283708233
+
+  - id: BLOOD_GOD_SIGIL
+    material: PLAYER_HEAD
+    name: "Blood God Sigil"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Kill counter"
+            text:
+              - "Tracks a counter for each mob"
+              - "killed while worn."
+              - ""
+              - "Gain <c>+2 Strength <7>for each digit"
+              - "on the counter. <8>(Max 7)"
+              - ""
+              - "Counter: <c>None yet!"
+      - id: SKULL_HEAD
+        texture: fb3f340828cdcaf4502e79d0f4fc6da438be966ac2fd6bc7b972bb71be5b93b1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_GRILLED_PORK
+                amount: 8
+              B:
+                type: ENCHANTED_BAKED_POTATO
+                amount: 16
+              C:
+                type: BLOOD_GOD_CREST
+                amount: 1
+            result:
+              type: BLOOD_GOD_SIGIL
+              amount: 1
+
+  - id: BUCKET_OF_DYE
+    material: PLAYER_HEAD
+    name: "Bucket of Dye"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Dye drops"
+            text:
+              - "Increases your chance of dropping"
+              - "Dyes by <a>1%<7>."
+              - ""
+              - "<6>✿ Chocolate Dye Donated"
+      - id: SKULL_HEAD
+        texture: 34f6a9a52354b50616dd5a1004db9376e6d4a37538bff0bce20e4fa52d9362e1
+
+  - id: DANTE_RING
+    material: PLAYER_HEAD
+    name: "Dante's Ring"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "Found in a hidden warehouse. Not"
+              - "very useful but still pretty nice to"
+              - "wear."
+      - id: SKULL_HEAD
+        texture: a375dfabb5a764c31810e160ce3dceafe5bd6e99c10f9cb77db01fbd3e2c0e28
+
+  - id: DANTE_TALISMAN
+    material: PLAYER_HEAD
+    name: "Dante's Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "Official medal proving your eternal"
+              - "support for Dante."
+          - type: INACTIVE
+            reason: "Dante goons"
+            text:
+              - "Can be shown to goons in place of a"
+              - "Happy Mask for entry into official"
+              - "buildings."
+      - id: SKULL_HEAD
+        texture: cf92982f1a302310643a20ce51623f8199b7545e70dc6b93ed6bd61dc42ff213
+
+  - id: GRAVITY_TALISMAN
+    material: PLAYER_HEAD
+    name: "Gravity Talisman"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: GRAVITY_TALISMAN
+            text:
+              - "Gives between <a>+1<7> and <a>+10<7> <c>"
+              - "<c>Strength <7>and <a> Defense <7>the closer"
+              - "you are to the spawn of an Island!"
+      - id: SKULL_HEAD
+        texture: 616f4ac8a0698ab07bb0a5ef69dc08daedd8f5972e7a1237c8c56361e3f204ca
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: OBSIDIAN
+                amount: 16
+            result:
+              type: GRAVITY_TALISMAN
+              amount: 1
+
+  - id: SPEED_RELIC
+    material: PLAYER_HEAD
+    name: "Speed Relic"
+    rarity: EPIC
+    default_statistics:
+      bonus_attack_speed: 1
+      fishing_speed: 1
+      mining_speed: 1
+      speed: 7
+    components:
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 2a2c87ae5fa03345df42c12dfc957177c67c69e1400ebef7005eb13b58be6759
+
+  - id: INFINIPOT
+    material: PAPER
+    name: "InfiniPot™"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "Dungeons"
+            text:
+              - "Upon starting a floor in <c>The"
+              - "<c>Catacombs<7>, automatically consumes"
+              - "the selected <b>Dungeon Potion<7> from"
+              - "your inventory or Potion Bag."
+              - ""
+              - "If you do not have the selected"
+              - "potion in your inventory or Potion"
+              - "Bag, it will be purchased and"
+              - "consumed automatically using <6>Coins"
+              - "from your purse or bank."
+              - ""
+              - "Selected Potion: <f>Dungeon I Potion"
+              - "<e>Left-click to select a potion!"
+              - ""
+              - "Enabled: <a>On"
+              - "<e>Right-click to toggle!"
+          - type: TEXT
+            text:
+              - "<8><o>“Alixer’s latest and greatest"
+              - "<8><o>creation!”"
+
+  - id: MELODY_HAIR
+    material: STRING
+    name: "Melody's Hair"
+    rarity: EPIC
+    default_statistics:
+      intelligence: 6
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "A single strand of hair from"
+              - "Melody's head."
+          - type: INACTIVE
+            reason: "Melody's Harp"
+            text:
+              - "Left-Click: <e>Tune up!"
+              - "Right-Click: <d>Play note!"
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: PANDORAS_BOX
+    material: PLAYER_HEAD
+    name: "Pandora's Box"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        dynamic_max_rarity: MYTHIC
+        effects:
+          - type: INACTIVE
+            reason: "Pandora's Box challenges"
+            text:
+              - "Complete challenges to earn stats"
+              - "and level up the Pandora's Box."
+              - ""
+              - "Challenges completed: <a>0<7>/<a>20"
+              - "You receive <c>+1 <7> and <c>+1 <7> per"
+              - "2 challenges you complete."
+              - ""
+              - "<c>Note! <7>You must have this item in your inventory"
+              - "or accessory bag when completing a challenge!"
+              - ""
+              - "<e>Right-click to open!"
+      - id: SKULL_HEAD
+        texture: fe246925cbd4c05279b9c8dcf7c2fdfc9baf9b1424aa35e501533ebb98e00522
+
+  - id: POCKET_ESPRESSO_MACHINE
+    material: PLAYER_HEAD
+    name: "Pocket Espresso Machine"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Soulflow"
+            text:
+              - "Costs <3>1⸎ Soulflow <7>per 5s in combat:"
+              - "<3>⁍ <7>Gain <b>+100 Intelligence"
+              - ""
+              - "Enabled: <c>Off"
+              - "<e>Right-click to toggle!"
+      - id: SKULL_HEAD
+        texture: 666070ce03a545ee4d263bcf27f36338d249d7cb7a2376f92c1673ae134e04b6
+
+  - id: SAFETY_BADGE
+    material: PLAYER_HEAD
+    name: "Safety Badge"
+    rarity: COMMON
+    default_statistics:
+      defense: 3
+      intelligence: 1
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: TEXT
+            text:
+              - "<8><o>The holder of this badge is a"
+              - "<8><o>certified Safety Advocate!"
+      - id: SKULL_HEAD
+        texture: a017ad88a7547b04f0d2c7c82f38419321694f46e8335aabab365dc13092e237
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: VAMPIRE_DENTIST_RELIC
+    material: PLAYER_HEAD
+    name: "Vampire Dentist Relic"
+    rarity: LEGENDARY
+    default_statistics:
+      health_regeneration: 5
+      vitality: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Melee regen tick"
+            text:
+              - "Apply a natural regen tick when you"
+              - "deal melee damage. <8>(20s cooldown)"
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
+      - id: SKULL_HEAD
+        texture: 9d06d9a04a5a7720614e934c75c6b651f0ebabea3a7461f1c74105c7a2a0e672

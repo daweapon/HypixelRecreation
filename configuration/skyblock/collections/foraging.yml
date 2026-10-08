@@ -56,6 +56,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: WOOD_TALISMAN
   - amount: 10000
     rewards:
     - type: XP

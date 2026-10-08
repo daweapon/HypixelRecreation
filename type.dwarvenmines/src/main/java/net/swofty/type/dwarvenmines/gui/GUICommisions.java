@@ -1,5 +1,6 @@
 package net.swofty.type.dwarvenmines.gui;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
@@ -86,7 +87,8 @@ public class GUICommisions extends HypixelInventoryGUI {
 						}
 
 						if (reward.mithrilPowder() > 0) {
-							hotmData.addMithrilPowder(GatheringPetBonuses.mithrilPowder(player, reward.mithrilPowder()));
+							hotmData.addMithrilPowder(AccessoryEconomyHooks.powderGained(player,
+									GatheringPetBonuses.mithrilPowder(player, reward.mithrilPowder())));
 							dataHandler.get(SkyBlockDataHandler.Data.HOTM, DatapointHOTM.class).setValue(hotmData);
 						}
 

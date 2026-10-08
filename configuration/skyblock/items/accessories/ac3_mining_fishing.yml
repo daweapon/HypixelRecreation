@@ -1,0 +1,213 @@
+items:
+  - id: BAIT_RING
+    material: PLAYER_HEAD
+    name: "Bait Ring"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: BAIT_PRESERVATION
+            percent: 5
+            text:
+              - "<a>5%<7> chance not to consume bait."
+      - id: SKULL_HEAD
+        texture: 5ceec5342acd3f21b2c1c8d5913277e46caec6c83b869a20ca91bfd2c867575a
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "AAA"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_INK_SAC
+                amount: 32
+            result:
+              type: BAIT_RING
+              amount: 1
+
+  - id: SPIKED_ATROCITY
+    material: PLAYER_HEAD
+    name: "Spiked Atrocity"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: BAIT_PRESERVATION
+            percent: 10
+            text:
+              - "<a>10%<7> chance not to consume bait."
+      - id: SKULL_HEAD
+        texture: df4eeca825dddb7f861352ecb0be2df4615728b63894b7c54418af0105a39172
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_INK_SAC
+                amount: 32
+              B:
+                type: SPIKED_BAIT
+                amount: 32
+              C:
+                type: BAIT_RING
+                amount: 1
+            result:
+              type: SPIKED_ATROCITY
+              amount: 1
+
+  - id: CHUMMING_TALISMAN
+    material: PLAYER_HEAD
+    name: "Chumming Talisman"
+    rarity: UNCOMMON
+    default_statistics:
+      fishing_speed: 1
+      fishing_wisdom: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "Listen, it's for real chums of Moby,"
+              - "ok?"
+      - id: SKULL_HEAD
+        texture: 9b688545e326e4f1fd1c405873d9c5b8bbe69dd26889ce3dea10b4d9e3d7b4db
+
+  - id: PULSE_RING
+    material: PLAYER_HEAD
+    name: "Pulse Ring"
+    rarity: UNCOMMON
+    default_statistics:
+      magic_find: 0.25
+    components:
+      - id: ACCESSORY
+        dynamic_max_rarity: LEGENDARY
+        effects:
+          - type: HANDLER
+            handler: THUNDER_CHARGE
+            percent: 1
+            text:
+              - "Grants an additional <c>1% <7>charge when"
+              - "filling empty thunder bottles."
+          - type: INACTIVE
+            reason: "Pulse Ring charging"
+            text:
+              - "Charge up by combining a <e>Thunder in"
+              - "<e>a Bottle<7> (Full) with this item in an"
+              - "anvil."
+              - ""
+              - "Charge: <e>0 Thunder"
+              - ""
+              - "<9>Reach 150k Charge for +1 Rarity!"
+      - id: SKULL_HEAD
+        texture: e5ebf6f14301d3ebd14533587d2a2d48234433b17c9d2f13934b7cab458ee267
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - "AAA"
+              - "A A"
+              - "AAA"
+            ingredients:
+              A:
+                type: ORB_OF_ENERGY
+                amount: 32
+            result:
+              type: PULSE_RING
+              amount: 1
+
+  - id: JUNGLE_AMULET
+    material: PLAYER_HEAD
+    name: "Jungle Amulet"
+    rarity: UNCOMMON
+    default_statistics:
+      gemstone_fortune: 10
+    components:
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 1bff65479fb7029decfe6779382762a08fc7c8eceff5448de263d9d375066f7a
+
+  - id: DWARVEN_METAL
+    material: PLAYER_HEAD
+    name: "Dwarven Metal Talisman"
+    rarity: UNCOMMON
+    default_statistics:
+      dwarven_metal_fortune: 15
+    components:
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 4c01d99cfddc874cbf68c6af7cc599de04ec10f1e3dd5ea779795cfce77c7e23
+
+  - id: POWDER_OF_ONE
+    material: PAPER
+    name: "Powder of One"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: POWDER_GAIN
+            percent: 2.5
+            text:
+              - "Increases <2>Mithril Powder<7> gain by"
+              - "<a>+2.5%<7>."
+
+  - id: POWDER_OF_THE_FEW
+    material: PAPER
+    name: "Powder of the Few"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: POWDER_GAIN
+            percent: 5
+            text:
+              - "Increases <2>Mithril Powder<7> and"
+              - "<d>Gemstone Powder<7> gain by <a>+5%<7>."
+
+  - id: POWDER_OF_THE_MANY
+    material: PAPER
+    name: "Powder of the Many"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: POWDER_GAIN
+            percent: 7.5
+            text:
+              - "Increases <2>Mithril Powder<7>, <d>Gemstone"
+              - "<d>Powder<7>, and <b>Glacite Powder<7> gain by"
+              - "<a>+7.5%<7>."
+          - type: INACTIVE
+            reason: "Divan's Powder Coating"
+            text:
+              - "<8>Can be upgraded using <6>Divan's"
+              - "<6>Powder Coating<8>!"
+
+  - id: POWDER_OF_THE_PEOPLE
+    material: PAPER
+    name: "Powder of the People"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: POWDER_GAIN
+            percent: 10
+            text:
+              - "Increases <2>Mithril Powder<7>, <d>Gemstone"
+              - "<d>Powder<7>, and <b>Glacite Powder<7> gain by"
+              - "<a>+10%<7>."

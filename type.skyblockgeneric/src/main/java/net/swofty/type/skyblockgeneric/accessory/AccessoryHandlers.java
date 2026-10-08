@@ -24,6 +24,7 @@ public final class AccessoryHandlers {
             Map.entry("MAGIC_8_BALL", "accessory/AccessoryHandlerStats"),
             Map.entry("PIGGY_BANK", "accessory/PiggyBank"),
             Map.entry("POTATO_MINION_SPEED", "accessory/AccessoryEconomyHooks"),
+            Map.entry("POWDER_GAIN", "accessory/AccessoryEconomyHooks"),
             Map.entry("POTION_DURATION", "accessory/AccessoryEconomyHooks"),
             Map.entry("SAFE_FALL_BLOCKS", "item/events/AccessoryFallDamageEvent"),
             Map.entry("SEA_CREATURE_DAMAGE_REDUCTION", "item/events/AccessorySeaCreatureDamageEvent"),
