@@ -2286,7 +2286,7 @@ items:
         pet_name: "Rat"
         pets: [RAT_PET]
         texture: d7c7624fc4463749ed516df1bbbaa67c172ffc9f20b6f2d5b80e39ccf03d5f7a
-  - id: PET_SKIN_RAT_RAT-STRONAUT
+  - id: PET_SKIN_RAT_RATSTRONAUT
     material: player_head
     name: "Rat-stronaut Rat Skin"
     rarity: EPIC

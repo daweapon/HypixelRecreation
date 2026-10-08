@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.item.components;
 import lombok.Getter;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.type.skyblockgeneric.item.ConfigurableSkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SafeConfig;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
@@ -74,7 +75,9 @@ public class PetSkinComponent extends SkyBlockItemComponent {
     }
 
     public String skinName(SkyBlockItem item) {
-        return item.getAttributeHandler().getPotentialType().getDisplayName();
+        ItemType type = item.getAttributeHandler().getPotentialType();
+        ConfigurableSkyBlockItem config = ConfigurableSkyBlockItem.getFromID(type.name());
+        return config != null && config.getName() != null ? config.getName() : type.getDisplayName();
     }
 
     private String displayName(SkyBlockItem item) {
