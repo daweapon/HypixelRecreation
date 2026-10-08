@@ -101,7 +101,7 @@ public enum BestiaryCategory {
         MYTHOLOGICAL_CREATURES(MythologicalCreature creature) {
             this.name = "<a>" + creature.getDisplayName();
             this.description = creature.getBestiary().description();
-            this.guiMaterial = new GUIMaterial(creature.getIcon());
+            this.guiMaterial = new GUIMaterial(creature.getIconTexture());
             this.mobs = MythologicalBestiary.family(creature);
         }
     }

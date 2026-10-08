@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.mythological;
 
+import net.minestom.server.entity.EntityType;
 import net.swofty.commons.skyblock.item.Rarity;
 import org.junit.jupiter.api.Test;
 
@@ -42,6 +43,14 @@ class MythologicalCreatureTest {
         MythologicalVariant variant = MythologicalCreature.MINOS_HUNTER.variant(Rarity.MYTHIC).orElseThrow();
         assertEquals("Empyrean Minos Hunter", variant.nameOf("Minos Hunter"));
         assertEquals("MINOS_HUNTER_200", variant.mobId());
+    }
+
+    @Test
+    void everyPlayerModelCreatureWearsItsHypixelSkin() {
+        for (MythologicalCreature creature : MythologicalCreature.values()) {
+            boolean playerModel = creature.getEntityType() == EntityType.MANNEQUIN;
+            assertEquals(playerModel, MythologicalAppearance.skin(creature) != null, creature.name());
+        }
     }
 
     private static double chance(MythologicalCreature creature, Rarity griffin, double tracking) {

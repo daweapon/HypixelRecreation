@@ -2,7 +2,6 @@ package net.swofty.type.skyblockgeneric.mythological;
 
 import lombok.Getter;
 import net.minestom.server.entity.EntityType;
-import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
@@ -17,12 +16,13 @@ import java.util.random.RandomGenerator;
 
 /**
  * Every Mythological creature that can be dug out of a Griffin Burrow, with the SkyBlock Wiki's
- * spawn weight, Bestiary entry and per-Griffin-rarity level, health, damage, coins, Combat XP,
+ * entity type, Bestiary head, spawn weight, Bestiary entry and per-Griffin-rarity level, health, damage, coins, Combat XP,
  * experience orbs and drop table.
  */
 @Getter
 public enum MythologicalCreature {
-    MINOS_HUNTER("Minos Hunter", EntityType.ZOMBIE, Material.ZOMBIE_SPAWN_EGG, Rarity.COMMON, 1000, 100, 1,
+    MINOS_HUNTER("Minos Hunter", EntityType.ZOMBIE,
+            "db705068740cd6b4c2b0263daeab6103d652b9efbcaad8acbabee68e6fd1c4b4", Rarity.COMMON, 1000, 100, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.HUMANOID),
             new BestiaryProfile("The hunter becomes the hunted.", 5, 20),
             List.of(
@@ -56,7 +56,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 8, 50),
                             drop(ItemType.HILT_OF_REVELATIONS, 1, 2),
                             dye(1_000_000)))),
-    SIAMESE_LYNXES("Siamese Lynxes", EntityType.CAT, Material.CAT_SPAWN_EGG, Rarity.COMMON, 1000, 110, 2,
+    SIAMESE_LYNXES("Siamese Lynxes", EntityType.CAT,
+            "e18f77331b2cab64e2b430fa8e4273e4db7f78fcdfa4b1a9a418af47375056eb", Rarity.COMMON, 1000, 110, 2,
             List.of(MobType.MYTHOLOGICAL, MobType.ANIMAL),
             new BestiaryProfile("Not separated at birth.", 5, 20),
             List.of(
@@ -90,7 +91,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 8, 50),
                             drop(ItemType.CROCHET_TIGER_PLUSHIE, 1, 0.4),
                             dye(1_000_000)))),
-    STRANDED_NYMPH("Stranded Nymph", EntityType.DROWNED, Material.DROWNED_SPAWN_EGG, Rarity.UNCOMMON, 800, 80, 1,
+    STRANDED_NYMPH("Stranded Nymph", EntityType.MANNEQUIN,
+            "5596b05a16b34310a448526238b2fc655c8955c856698c7d6b1db9ad9e4227fb", Rarity.UNCOMMON, 800, 80, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.AQUATIC, MobType.HUMANOID),
             new BestiaryProfile("Just add water!", 5, 20),
             List.of(
@@ -119,7 +121,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 10, 50),
                             drop(ItemType.WASHED_UP_SOUVENIR, 1, 0.5),
                             dye(1_000_000)))),
-    CRETAN_BULL("Cretan Bull", EntityType.COW, Material.COW_SPAWN_EGG, Rarity.UNCOMMON, 800, 150, 1,
+    CRETAN_BULL("Cretan Bull", EntityType.COW,
+            "5d6c6eda942f7f5f71c3161c7306f4aed307d82895f9d2b07ab4525718edc5", Rarity.UNCOMMON, 800, 150, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.ANIMAL),
             new BestiaryProfile("A very angry fella.", 5, 20),
             List.of(
@@ -148,7 +151,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 10, 50),
                             drop(ItemType.CRETAN_URN, 1, 0.5),
                             dye(1_000_000)))),
-    HARPY("Harpy", EntityType.SKELETON, Material.SKELETON_SPAWN_EGG, Rarity.RARE, 600, 110, 1,
+    HARPY("Harpy", EntityType.MANNEQUIN,
+            "470ee91ee1a0059331d7ec924a09b86480bd96dae1914ff85c2cd3b7134ab683", Rarity.RARE, 600, 110, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.HUMANOID, MobType.ANIMAL),
             new BestiaryProfile("The winged terror.", 6, 20),
             List.of(
@@ -172,7 +176,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 12, 50),
                             drop(ItemType.ANTIQUE_REMEDIES, 1, 0.6),
                             dye(500_000)))),
-    GAIA_CONSTRUCT("Gaia Construct", EntityType.IRON_GOLEM, Material.IRON_GOLEM_SPAWN_EGG, Rarity.RARE, 600, 80, 1,
+    GAIA_CONSTRUCT("Gaia Construct", EntityType.IRON_GOLEM,
+            "22bcaceeb4162f400d44743315932ac820d3119ac8986a0161a726161ccc93fc", Rarity.RARE, 600, 80, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.CONSTRUCT),
             new BestiaryProfile("A construct truly connected to the Earth.", 6, 20),
             List.of(
@@ -196,7 +201,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 12, 50),
                             drop(ItemType.DWARF_TURTLE_SHELMET, 1, 0.6),
                             dye(500_000)))),
-    MINOTAUR("Minotaur", EntityType.VINDICATOR, Material.VINDICATOR_SPAWN_EGG, Rarity.EPIC, 400, 110, 1,
+    MINOTAUR("Minotaur", EntityType.MANNEQUIN,
+            "7f92d814b997fb7a676fc8cd15df23b7d485d6111060b3f1de3dd1b9cfa8111c", Rarity.EPIC, 400, 110, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.HUMANOID, MobType.ANIMAL),
             new BestiaryProfile("Buys his axes in bulk.", 7, 20),
             List.of(
@@ -215,7 +221,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 14, 50),
                             drop(ItemType.DAEDALUS_STICK, 1, 0.08),
                             dye(250_000)))),
-    MINOS_CHAMPION("Minos Champion", EntityType.WITHER_SKELETON, Material.WITHER_SKELETON_SPAWN_EGG, Rarity.EPIC, 400, 110, 1,
+    MINOS_CHAMPION("Minos Champion", EntityType.MANNEQUIN,
+            "eefcd13d5877ee4edd83a342088520a9cf2265484bfb93aa135cacd651b4fe85", Rarity.EPIC, 400, 110, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.HUMANOID),
             new BestiaryProfile("The champion of King Minos.", 7, 20),
             List.of(
@@ -234,7 +241,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_GOLD_INGOT, 14, 50),
                             drop(ItemType.MINOS_RELIC, 1, 0.04),
                             dye(250_000)))),
-    SPHINX("Sphinx", EntityType.HUSK, Material.HUSK_SPAWN_EGG, Rarity.LEGENDARY, 75, 100, 1,
+    SPHINX("Sphinx", EntityType.MANNEQUIN,
+            "cbba3f3ae5e3577e0ae37c302e8bf838d344359a7c7698c236687b74bc573a1a", Rarity.LEGENDARY, 75, 100, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.HUMANOID, MobType.ELUSIVE),
             new BestiaryProfile("A Cquizical Qreature.", 7, 20),
             List.of(
@@ -250,7 +258,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_ANCIENT_CLAW, 2, 50),
                             drop(ItemType.BRAIN_FOOD, 1, 0.5),
                             dye(50_000)))),
-    MINOS_INQUISITOR("Minos Inquisitor", EntityType.EVOKER, Material.EVOKER_SPAWN_EGG, Rarity.LEGENDARY, 75, 110, 1,
+    MINOS_INQUISITOR("Minos Inquisitor", EntityType.MANNEQUIN,
+            "19aac356dbbef3ea7ee3440d7b3ab9efc2965e259fadcb9b0851b0b244347b7d", Rarity.LEGENDARY, 75, 110, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.HUMANOID, MobType.ELUSIVE),
             new BestiaryProfile("The ultimate guardian of Minos' Literature.", 7, 20),
             List.of(
@@ -266,7 +275,8 @@ public enum MythologicalCreature {
                             drop(ItemType.ENCHANTED_ANCIENT_CLAW, 2, 50),
                             unavailable("Chimera I", 1, 1.25),
                             dye(50_000)))),
-    MANTICORE("Manticore", EntityType.RAVAGER, Material.RAVAGER_SPAWN_EGG, Rarity.MYTHIC, 15, 160, 1,
+    MANTICORE("Manticore", EntityType.MANNEQUIN,
+            "9e057e819907a638975760b9cd935cb8a57dbf2816954ac8d944196a4e8b02ca", Rarity.MYTHIC, 15, 160, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.ANIMAL, MobType.ELUSIVE),
             new BestiaryProfile("Boasts an insatiable hunger.", 8, 15),
             List.of(
@@ -277,7 +287,8 @@ public enum MythologicalCreature {
                             drop(ItemType.FATEFUL_STINGER, 1, 0.5),
                             drop(ItemType.MANTI_CORE, 1, 0.2),
                             dye(10_000)))),
-    KING_MINOS("King Minos", EntityType.ILLUSIONER, Material.GOLDEN_HELMET, Rarity.MYTHIC, 15, 100, 1,
+    KING_MINOS("King Minos", EntityType.MANNEQUIN,
+            "c84cd85a049fa9b3256baa34894ec07d858c4f324c30ebd80435f2c4ca9869d5", Rarity.MYTHIC, 15, 100, 1,
             List.of(MobType.MYTHOLOGICAL, MobType.HUMANOID, MobType.ELUSIVE),
             new BestiaryProfile("Rules with an iron fist and a fluffy sheep.", 8, 15),
             List.of(
@@ -294,7 +305,7 @@ public enum MythologicalCreature {
 
     private final String displayName;
     private final EntityType entityType;
-    private final Material icon;
+    private final String iconTexture;
     private final Rarity minimumGriffin;
     private final int weight;
     private final double speed;
@@ -303,12 +314,12 @@ public enum MythologicalCreature {
     private final BestiaryProfile bestiary;
     private final Map<Rarity, MythologicalVariant> variants;
 
-    MythologicalCreature(String displayName, EntityType entityType, Material icon, Rarity minimumGriffin, int weight,
+    MythologicalCreature(String displayName, EntityType entityType, String iconTexture, Rarity minimumGriffin, int weight,
                          double speed, int groupSize, List<MobType> mobTypes, BestiaryProfile bestiary,
                          List<MythologicalVariant> variants) {
         this.displayName = displayName;
         this.entityType = entityType;
-        this.icon = icon;
+        this.iconTexture = iconTexture;
         this.minimumGriffin = minimumGriffin;
         this.weight = weight;
         this.speed = speed;

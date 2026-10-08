@@ -159,6 +159,12 @@ public abstract class SkyBlockMob extends EntityCreature {
         // override this
     }
 
+    private Key deathSound() {
+        String entity = getEntityType() == EntityType.MANNEQUIN ? "player"
+                : getEntityType().name().toLowerCase().replace("minecraft:", "");
+        return Key.key("entity." + entity + ".death");
+    }
+
     public void onSpawn() {
         // override this
     }
@@ -229,7 +235,7 @@ public abstract class SkyBlockMob extends EntityCreature {
         HypixelEventHandler.callCustomEvent(new PlayerKilledSkyBlockMobEvent(player, this));
 
         player.getSkills().increase(player, getSkillCategory(), (double) getOtherLoot().getSkillXPAmount());
-        player.playSound(Sound.sound(Key.key("entity." + getEntityType().name().toLowerCase().replace("minecraft:", "") + ".death"), Sound.Source.PLAYER, 1f, 1f), Sound.Emitter.self());
+        player.playSound(Sound.sound(deathSound(), Sound.Source.PLAYER, 1f, 1f), Sound.Emitter.self());
 
         if (getLootTable() == null) return;
         if (getLastDamageSource() == null) return;

@@ -103,6 +103,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
         first.twin = second;
         second.twin = first;
         second.twinsTurn = true;
+        MythologicalAppearance.dressAsAzrael(second);
     }
 
     private boolean hasLivingTwin() {
@@ -111,6 +112,11 @@ public class MythologicalCreatureMob extends BestiaryMob {
 
     private boolean isHittable() {
         return !hasLivingTwin() || !twinsTurn;
+    }
+
+    @Override
+    public void onInit() {
+        MythologicalAppearance.dress(this);
     }
 
     @Override
@@ -273,6 +279,6 @@ public class MythologicalCreatureMob extends BestiaryMob {
 
     @Override
     public GUIMaterial getGuiMaterial() {
-        return new GUIMaterial(getCreature().getIcon());
+        return new GUIMaterial(getCreature().getIconTexture());
     }
 }
