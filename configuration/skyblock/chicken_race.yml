@@ -1,0 +1,61 @@
+# Gulliver's Chicken Race course in Jerry's Workshop.
+#
+# The wiki gives no hoop positions, chicken speed or timer values, so this course is our own: it was
+# routed around the island with every hoop and the straight line between hoops at least 4 blocks
+# above the terrain in hypixel_skyblock_jerrys_workshop.polar. Retune freely - the server reads this
+# file on startup. Hoops are flown in order; a missed hoop blocks the next one.
+#
+# At the default speed of 10 blocks/s the shortest line reaches the cluckpoints in about
+# 26s / 44s / 60s / 91s, against Hypixel's limits of 33s / 52s / 68s / 104s.
+
+speed: 10.0              # blocks per second, in the direction the rider is looking
+starting_seconds: 20     # time on the countdown when the race starts
+green_hoop_seconds: 5    # time added by a green hoop
+cluckpoint_seconds: 10   # time added by a cluckpoint the player has already claimed
+hoop_radius: 3.0
+
+start: { x: 66.5, y: 109, z: 33.5, yaw: 95 }
+finish: { x: 66.5, y: 105, z: 33.5, yaw: -90 }
+
+# green: true adds time; cluckpoint: N marks Cluckpoint N (1-4, in order).
+hoops:
+  - { x: 54, y: 112, z: 32 }
+  - { x: 34, y: 113, z: 30 }
+  - { x: 14, y: 108, z: 27, green: true }
+  - { x: -6, y: 102, z: 24 }
+  - { x: -26, y: 100, z: 20 }
+  - { x: -46, y: 98, z: 12, green: true }
+  - { x: -62, y: 100, z: -4 }
+  - { x: -72, y: 106, z: -24 }
+  - { x: -66, y: 118, z: -44, green: true }
+  - { x: -50, y: 133, z: -58 }
+  - { x: -40, y: 120, z: -40 }
+  - { x: -38, y: 106, z: -18, cluckpoint: 1 }
+  - { x: -30, y: 102, z: 2 }
+  - { x: -14, y: 102, z: 14, green: true }
+  - { x: 6, y: 100, z: 6 }
+  - { x: 26, y: 106, z: -6 }
+  - { x: 40, y: 116, z: -24, green: true }
+  - { x: 50, y: 122, z: -44 }
+  - { x: 40, y: 124, z: -62 }
+  - { x: 20, y: 126, z: -66, cluckpoint: 2 }
+  - { x: 0, y: 148, z: -62 }
+  - { x: -20, y: 150, z: -60, green: true }
+  - { x: -42, y: 142, z: -66 }
+  - { x: -60, y: 126, z: -48 }
+  - { x: -82, y: 114, z: -36, green: true }
+  - { x: -94, y: 108, z: -14, cluckpoint: 3 }
+  - { x: -102, y: 106, z: 10 }
+  - { x: -96, y: 108, z: 34, green: true }
+  - { x: -84, y: 104, z: 56 }
+  - { x: -64, y: 100, z: 72 }
+  - { x: -44, y: 104, z: 84, green: true }
+  - { x: -26, y: 110, z: 92 }
+  - { x: -4, y: 112, z: 90 }
+  - { x: 16, y: 112, z: 82, green: true }
+  - { x: 34, y: 122, z: 70 }
+  - { x: 54, y: 124, z: 66 }
+  - { x: 74, y: 124, z: 74, green: true }
+  - { x: 92, y: 120, z: 64 }
+  - { x: 94, y: 116, z: 46 }
+  - { x: 82, y: 114, z: 32, cluckpoint: 4 }

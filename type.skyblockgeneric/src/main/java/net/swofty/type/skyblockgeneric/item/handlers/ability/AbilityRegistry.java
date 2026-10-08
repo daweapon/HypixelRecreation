@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.AbilityDamage;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ForwardTeleport;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.JingleBellsAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ShadowWarpAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.WitherShieldEffect;
 import net.swofty.type.skyblockgeneric.mythological.burrow.GriffinBurrowService;
@@ -85,6 +86,16 @@ public class AbilityRegistry {
                 AbilityDamage.hitArea(player, player.getPosition(), 6, "Implosion", 10000, 0.3);
                 return true;
             }
+        ));
+
+        register(new RegisteredAbility(
+            "JINGLE_BELLS",
+            "Jingle Bells",
+            (_, _) -> "<7>Angers all monsters in a <a>10 block <7>range, consuming <a>50%<7> of your max mana and causing them to run towards you.",
+            RegisteredAbility.AbilityActivation.RIGHT_CLICK,
+            20,
+            new RegisteredAbility.NoAbilityCost(),
+            (player, _, _, _) -> JingleBellsAbility.ring(player)
         ));
 
         register(new ShadowWarpAbility());

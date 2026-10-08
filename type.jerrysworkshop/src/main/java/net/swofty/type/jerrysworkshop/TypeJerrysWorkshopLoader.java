@@ -16,6 +16,8 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.jerrysworkshop.defense.JerryWorkshopDefenseManager;
+import net.swofty.type.jerrysworkshop.chickenrace.GulliversChicken;
+import net.swofty.type.jerrysworkshop.present.GiftCompass;
 import net.swofty.type.jerrysworkshop.present.Present;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.entity.GlassDisplay;
@@ -58,6 +60,8 @@ public class TypeJerrysWorkshopLoader implements SkyBlockTypeLoader {
                 (player, _) -> player.sendMessage("<7>Magma Cubes attack in waves during the Season of Jerry - defend the Workshop!"));
 
         Present.spawnAll();
+        GiftCompass.start();
+        GulliversChicken.spawn();
 
         MinecraftServer.getSchedulerManager().submitTask(() -> {
             JerryWorkshopDefenseManager.checkAndAutoStart();

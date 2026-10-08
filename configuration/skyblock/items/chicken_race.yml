@@ -1,0 +1,35 @@
+items:
+  # Chicken Race (Gulliver, Jerry's Workshop) rewards. Lore and textures from the NEU repo.
+  - id: GIFT_COMPASS
+    material: compass
+    name: "Gift Compass"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77When held, points towards the"
+      - "\xA77nearest unopened present while in"
+      - "\xA77Jerry's Workshop."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: SELLABLE
+        value: 1
+  - id: JINGLE_BELLS
+    material: player_head
+    name: "Jingle Bells"
+    rarity: RARE
+    components:
+      - id: SKULL_HEAD
+        texture: b7652edfcbafb5d25050f03e7da6d84ca5c242429113da93742a1ddab612bc04
+      - id: ABILITY
+        abilities:
+          - JINGLE_BELLS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: CLUCK_THE_FISH
+    material: cod
+    name: "Cluck the Fish"
+    rarity: SPECIAL
+    lore:
+      - "\xA77Cluck cluck bkaawwk. Puk Puk Pukaaak!"
+    components:
+      - id: ENCHANTED

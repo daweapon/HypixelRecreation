@@ -1,5 +1,8 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.rusty;
 
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.chickenrace.ChickenRaceProgress;
+import net.swofty.type.skyblockgeneric.chickenrace.Cluckpoint;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -15,6 +18,7 @@ public class GUIRustyAccessories extends GUIRustySubMenu<GUIRustyAccessories.Rus
     }
 
     public enum RustyItem implements ShopEntry {
+        FROZEN_CHICKEN(new SkyBlockItem(ItemType.FROZEN_CHICKEN), 1_000_000, (player) -> ChickenRaceProgress.hasClaimed(player, Cluckpoint.THREE)),
         ;
 
         private final SkyBlockItem item;

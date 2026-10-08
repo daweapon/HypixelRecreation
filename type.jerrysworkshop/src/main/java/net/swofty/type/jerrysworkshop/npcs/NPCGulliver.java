@@ -5,9 +5,24 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.jerrysworkshop.chickenrace.ChickenRace;
+import net.swofty.type.skyblockgeneric.chickenrace.ChickenRaceProgress;
+import net.swofty.type.skyblockgeneric.chickenrace.Cluckpoint;
+import net.swofty.type.skyblockgeneric.mission.MissionData;
+import net.swofty.type.skyblockgeneric.mission.missions.jerry.MissionTalkToGulliver;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Decorative NPC for Gulliver, found in Jerry's Workshop.
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ThreadLocalRandom;
+
+// Gulliver runs the Chicken Race and only speaks chicken. Each line names the next cluckpoint to
+// reach, as in the wiki's dialogue table.
 public class NPCGulliver extends HypixelNPC {
+	private static final Map<UUID, Integer> HEARD = new ConcurrentHashMap<>();
 
 	public NPCGulliver() {
 		super(new HumanConfiguration() {
@@ -43,6 +58,40 @@ public class NPCGulliver extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-		event.player().sendMessage("<f>Gulliver grins. \"Come back during the Season of Jerry - the Workshop will need every hand it can get!\"");
+		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+		if (isInDialogue(player) || ChickenRace.isRacing(player)) return;
+		MissionData missions = player.getMissionData();
+		if (!missions.hasCompleted(MissionTalkToGulliver.class)) {
+			if (!missions.isCurrentlyActive(MissionTalkToGulliver.class)) missions.startMission(MissionTalkToGulliver.class);
+			missions.endMission(MissionTalkToGulliver.class);
+		}
+		int claimed = ChickenRaceProgress.claimed(player);
+		if (claimed >= Cluckpoint.values().length) {
+			sendNPCMessage(player, ThreadLocalRandom.current().nextBoolean() ? "Bak bawk bakok!" : "Coot Coot Cluck, Puk Puk Pukaaak!");
+			return;
+		}
+		if (HEARD.getOrDefault(player.getUuid(), -1) == claimed) {
+			ChickenRace.start(player);
+			return;
+		}
+		setDialogue(player, "stage_" + claimed).thenRun(() -> {
+			HEARD.put(player.getUuid(), claimed);
+			ChickenRace.start(player);
+		});
+	}
+
+	@Override
+	protected DialogueSet[] dialogues(HypixelPlayer player) {
+		DialogueSet[] sets = new DialogueSet[Cluckpoint.values().length];
+		for (int claimed = 0; claimed < sets.length; claimed++) {
+			List<String> lines = new ArrayList<>();
+			lines.add("Bukawk. Coot Coot Cluck, Puk Puk Pukaaak.");
+			if (claimed > 0) lines.add("Cluck cluck! Bacawk! " + Cluckpoint.of(claimed).getRewardMarkup() + "<f> bakok.");
+			Cluckpoint next = Cluckpoint.next(claimed);
+			lines.add("Buk bawk bakok <e>Cluckpoint " + next.number() + "<f> puk pock <e>\\< " + next.getSecondsToBeat() + "s<f>?");
+			lines.add("Puk Puk Pukaaak.");
+			sets[claimed] = DialogueSet.builder().key("stage_" + claimed).lines(lines.toArray(String[]::new)).build();
+		}
+		return sets;
 	}
 }

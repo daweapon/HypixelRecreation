@@ -9,6 +9,8 @@ import net.swofty.type.skyblockgeneric.carnival.CarnivalNpc;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalProfile;
 import net.swofty.type.skyblockgeneric.carnival.Carnivals;
+import net.swofty.type.skyblockgeneric.chickenrace.ChickenRaceProgress;
+import net.swofty.type.skyblockgeneric.essence.IceEssenceShop;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategory;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -139,6 +141,8 @@ public final class MaxStickService {
         meetDamia(player);
         maxCarnival(player);
         MythologicalItemHandlers.setBrainFoodEaten(player, MythologicalItemHandlers.BRAIN_FOOD_LIMIT);
+        IceEssenceShop.maxAvailable(player);
+        ChickenRaceProgress.maxOut(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have
         // granted its own SkyBlock XP causes first or the top-up would overshoot.
         maxSkyBlockLevel(player);

@@ -1,6 +1,8 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.rusty;
 
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.chickenrace.ChickenRaceProgress;
+import net.swofty.type.skyblockgeneric.chickenrace.Cluckpoint;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -21,6 +23,7 @@ public class GUIRustyMiscellaneous extends GUIRustySubMenu<GUIRustyMiscellaneous
 
     public enum RustyItem implements ShopEntry {
         IRON_PICKAXE(getRustyPickaxe(), 200, (player) -> player.getMissionData().hasCompleted(MissionFindLazyMinerPickaxe.class)),
+        GIFT_COMPASS(new SkyBlockItem(ItemType.GIFT_COMPASS), 1_000, (player) -> ChickenRaceProgress.hasClaimed(player, Cluckpoint.TWO)),
         ;
 
         private final SkyBlockItem item;

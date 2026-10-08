@@ -824,6 +824,8 @@ public enum ItemType {
 
   CLEAVER(Material.GOLDEN_SWORD, Rarity.UNCOMMON),
 
+  CLUCK_THE_FISH(Material.COD, Rarity.SPECIAL),
+
   COAL(Material.COAL, Rarity.COMMON),
 
   COAL_BLOCK(Material.COAL_BLOCK, Rarity.COMMON),
@@ -1874,6 +1876,8 @@ public enum ItemType {
 
   GIANT_FISHING_ROD(Material.FISHING_ROD, Rarity.LEGENDARY),
 
+  GIFT_COMPASS(Material.COMPASS, Rarity.UNCOMMON),
+
   GILL_MEMBRANE(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   GIRAFFE_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
@@ -2363,6 +2367,8 @@ public enum ItemType {
   JERRY_TALISMAN_GREEN(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   JERRY_TALISMAN_PURPLE(Material.PLAYER_HEAD, Rarity.EPIC),
+
+  JINGLE_BELLS(Material.PLAYER_HEAD, Rarity.RARE),
 
   JUDGEMENT_CORE(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
