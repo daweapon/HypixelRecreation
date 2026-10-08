@@ -89,6 +89,7 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
             BurrowChain chain = chains.get(player.getUuid());
             if (chain == null || !isHoldingSpade(player)) continue;
             BurrowEffects.marker(player, chain.getCurrent());
+            BurrowEffects.footprint(player, chain.getCurrent());
             if (chain.getPrevious() != null) {
                 BurrowEffects.arrow(player, chain.getPrevious(), chain.getCurrent().getPosition());
             }
