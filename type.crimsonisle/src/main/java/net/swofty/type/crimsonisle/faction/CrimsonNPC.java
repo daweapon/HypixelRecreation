@@ -76,7 +76,7 @@ public abstract class CrimsonNPC extends HypixelNPC {
     }
 
     protected CompletableFuture<Void> say(SkyBlockPlayer player, String... lines) {
-        return CrimsonScene.create().say(name, lines).play(player);
+        return CrimsonScene.create().say(name, lines).play(player, this);
     }
 
     protected CompletableFuture<Void> sayRandom(SkyBlockPlayer player, String... options) {
@@ -140,6 +140,11 @@ public abstract class CrimsonNPC extends HypixelNPC {
         }
 
         @Override
+        public boolean walksToNewPosition() {
+            return true;
+        }
+
+        @Override
         public boolean visible(HypixelPlayer player) {
             return owner.visible((SkyBlockPlayer) player);
         }
@@ -191,6 +196,11 @@ public abstract class CrimsonNPC extends HypixelNPC {
         @Override
         public boolean dynamicPosition() {
             return owner.moves();
+        }
+
+        @Override
+        public boolean walksToNewPosition() {
+            return true;
         }
 
         @Override

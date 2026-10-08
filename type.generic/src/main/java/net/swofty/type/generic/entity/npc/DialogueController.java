@@ -5,13 +5,17 @@ import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.user.HypixelPlayer;
+import org.tinylog.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 public class DialogueController {
+    private static final long LINE_MILLIS = 2_000;
     private final HashMap<HypixelPlayer, Map.Entry<HypixelNPC.DialogueSet, CompletableFuture<String>>> activeDialogues = new HashMap<>();
+    private final Map<HypixelPlayer, Long> conversationTokens = new HashMap<>();
     private final HypixelNPC npc;
 
     public DialogueController(HypixelNPC npc) {
@@ -42,7 +46,9 @@ public class DialogueController {
         for (HypixelNPC.DialogueSet dialogueSet : dialogueSets) {
             if (dialogueSet.key().equals(key)) {
                 activeDialogues.put(player, Map.entry(dialogueSet, future));
-                handleLineSendingLoop(player, dialogueSet);
+                long expected = Math.max(0, dialogueSet.lines().length - 1) * LINE_MILLIS;
+                conversationTokens.put(player, NPCConversations.server().begin(player.getUuid(), npc, expected));
+                sendLines(player, dialogueSet);
                 return future;
             }
         }
@@ -57,9 +63,25 @@ public class DialogueController {
      * @param player The player to remove from dialogue.
      */
     public void cancelDialogue(HypixelPlayer player) {
+        finish(player, future -> future.complete(null));
+    }
+
+    private void finish(HypixelPlayer player, Consumer<CompletableFuture<String>> completion) {
         Map.Entry<HypixelNPC.DialogueSet, CompletableFuture<String>> entry = activeDialogues.remove(player);
-        if (entry != null) {
-            entry.getValue().complete(null);
+        Long token = conversationTokens.remove(player);
+        try {
+            if (entry != null) completion.accept(entry.getValue());
+        } finally {
+            if (token != null) NPCConversations.server().end(player.getUuid(), token);
+        }
+    }
+
+    private void sendLines(HypixelPlayer player, HypixelNPC.DialogueSet dialogueSet) {
+        try {
+            handleLineSendingLoop(player, dialogueSet);
+        } catch (RuntimeException exception) {
+            finish(player, future -> future.completeExceptionally(exception));
+            Logger.error(exception, "Dialogue {} of NPC {} failed", dialogueSet.key(), npc.getName());
         }
     }
 
@@ -74,10 +96,7 @@ public class DialogueController {
         System.arraycopy(dialogueSet.lines(), 1, newLines, 0, dialogueSet.lines().length - 1);
 
         if (newLines.length == 0) {
-            Map.Entry<HypixelNPC.DialogueSet, CompletableFuture<String>> entry = activeDialogues.remove(player);
-            if (entry != null) {
-                entry.getValue().complete(dialogueSet.key());
-            }
+            finish(player, future -> future.complete(dialogueSet.key()));
             return;
         }
 
@@ -85,15 +104,16 @@ public class DialogueController {
         scheduler.buildTask(() -> {
             // Check if the player is still in dialogue (might have been canceled)
             if (activeDialogues.containsKey(player)) {
-                handleLineSendingLoop(player, new HypixelNPC.DialogueSet(
+                sendLines(player, new HypixelNPC.DialogueSet(
                         dialogueSet.key(), newLines, dialogueSet.sound()));
             }
-        }).delay(TaskSchedule.seconds(2)).schedule();
+        }).delay(TaskSchedule.millis(LINE_MILLIS)).schedule();
     }
 
     public static void removeAllDialogues(HypixelPlayer player) {
         for (HypixelNPC npc : HypixelNPC.getRegisteredNPCs()) {
             npc.dialogue().cancelDialogue(player);
         }
+        NPCConversations.server().release(player.getUuid());
     }
 }
