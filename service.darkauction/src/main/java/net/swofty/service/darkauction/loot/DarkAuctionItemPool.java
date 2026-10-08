@@ -19,6 +19,7 @@ public class DarkAuctionItemPool {
 
         // Epic Pets (weight 16)
         items.add(new WeightedItem(ItemType.BEE_PET, 16));
+        items.add(new WeightedItem(ItemType.TURTLE_PET, 16));
         items.add(new WeightedItem(ItemType.PERFECT_AMBER_GEM, 16));
     }
 

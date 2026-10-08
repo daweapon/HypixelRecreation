@@ -350,6 +350,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: SMALL_BACKPACK
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: HORSE_PET
   - amount: 500
     rewards:
     - type: XP
@@ -928,6 +931,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: PIGMAN_PET
   - amount: 1000
     rewards:
     - type: XP
@@ -1157,6 +1163,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: CROW_PET
     - amount: 25000
       rewards:
         - type: XP

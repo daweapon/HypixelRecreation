@@ -1,0 +1,1397 @@
+items:
+  - id: ANKYLOSAURUS_PET
+    material: player_head
+    name: "Ankylosaurus Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Ankylosaurus"
+        pet_type: COMBAT
+        rarities: [LEGENDARY]
+        skull_texture: c1aa836b9096c417903299a6c5ab41738c19648ac439fed4bcbe6c32605338dc
+        george_price: { LEGENDARY: 500000 }
+        statistics:
+          LEGENDARY: { health: { per_level: 1.5 }, defense: { per_level: 0.5 }, true_defense: { per_level: 0.15 } }
+        abilities:
+          - name: "Armored Tank"
+            kind: STAT_PER_STAT
+            per_stat: { grants: strength, amount: "{1}", per: defense, every: 1, max: 500 }
+            text:
+              - "<7>Gain <a>{0}% <7>of your <a><glyph:stat_defense> Defense <7>as <c><glyph:stat_strength>"
+              - "<c>Strength<7>. <8>(Max +500)"
+            values:
+              - { per_level: 0.5 }
+              - { per_level: 0.005 }
+          - name: "Unyielding"
+            kind: INACTIVE
+            text:
+              - "<7>Increase the effectiveness of <d><l>Last"
+              - "<d><l>Stand <7>and <6>Lifeline <7>by <a>{0}%<7>."
+            values:
+              - { per_level: 0.5 }
+          - name: "Clubbed Tail"
+            kind: HANDLER
+            handler: ANKYLOSAURUS_CLUBBED_TAIL
+            triggers: MELEE_HIT
+            text:
+              - "<7>Every 5th hit deals <a>{0}% <7>of your"
+              - "<7>final damage to enemies within 5"
+              - "<7>blocks. Enemies hit deal 10% less"
+              - "<7>damage for 10s."
+            values:
+              - { per_level: 0.5 }
+      - id: TRACKED_UNIQUE
+
+  - id: CROW_PET
+    material: player_head
+    name: "Crow Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Crow"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: c31e7e1c614639bbc95a0d81ff7e5f7f606d9b33115cf2bf2a40cdcbbb531324
+        george_price: { COMMON: 10000, UNCOMMON: 250000, RARE: 500000, EPIC: 1000000, LEGENDARY: 2500000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 250000, time_seconds: 86400, items: { ENCHANTED_MOONFLOWER: 128 } }
+        statistics:
+          COMMON: { intelligence: { per_level: 1.5 }, ability_damage: { per_level: 0.2 } }
+        abilities:
+          - name: "Quick Hands"
+            kind: INACTIVE
+            text:
+              - "<7>Lowers the cooldown of your <c>Weapon"
+              - "<7>abilities by <a>+{0}%<7>."
+            values:
+              - { base: 3, per_level: { COMMON: 0.07, EPIC: 0.12 } }
+          - name: "Camouflage"
+            rarity: RARE
+            kind: HANDLER
+            handler: CROW_CAMOUFLAGE
+            text:
+              - "<7>After casting an ability, increase"
+              - "<7>your <a><glyph:stat_defense> Defense <7>by <a>+{0} <7>for <b>20"
+              - "<b>seconds<7>."
+              - "<8>Capped at 500 Defense"
+            values:
+              - { base: 5, per_level: { RARE: 0.1, EPIC: 0.15 } }
+          - name: "Insightful"
+            rarity: LEGENDARY
+            kind: TEXT
+            text:
+              - "<7>Gives a <a>{0}% <7>chance to not consume"
+              - "<7>Mana when using an ability."
+            values:
+              - { base: 3, per_level: 0.12 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - AAA
+              - AEA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_MOONFLOWER
+                amount: 8
+              E:
+                type: SUPER_ENCHANTED_EGG
+                amount: 1
+            result:
+              type: CROW_PET
+              amount: 1
+
+  - id: EERIE_PET
+    material: player_head
+    name: "Eerie Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Eerie"
+        pet_type: COMBAT
+        rarities: [COMMON, RARE, LEGENDARY]
+        skull_texture: c3af70c6ff76ba48f24ee8a2063a5b50bbfabf409f4795248a292f8289f47c98
+        george_price: { COMMON: 0, RARE: 0, LEGENDARY: 0 }
+        statistics:
+          COMMON: { speed: { per_level: 0.1 }, intelligence: { per_level: 0.5 } }
+        abilities:
+          - name: "Fearnesy"
+            kind: INACTIVE
+            text:
+              - "<5>Fear <7>from <5>Great Spook Armor <7>in"
+              - "<7>your <b>wardrobe <7>applies to you, even"
+              - "<7>if you aren't wearing it."
+          - name: "Fearama"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Increases <c>damage <7>dealt to Primal"
+              - "<7>Fears and Spooky Mobs by <a>1% <7>for"
+              - "<7>every <5>Fear <7>you have."
+          - name: "Fearcreasing"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Gives <a>+{0} <5>Fear <7>for every <a>10 <c>Primal"
+              - "<c>Fears <7>killed, up to <a>150 <c>Primal Fears<7>."
+              - "<c>Primal Fear Kills<7>: (<a>0<7>"
+              - "<a>150<7>)"
+            values:
+              - { base: 0.1, per_level: 0.003 }
+      - id: TRACKED_UNIQUE
+
+  - id: ENDER_DRAGON_PET
+    material: player_head
+    name: "Ender Dragon Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Ender Dragon"
+        pet_type: COMBAT
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: aec3ff563290b13ff3bcc36898af7eaa988b6cc18dc254147f58374afe9b21b9
+        george_price: { EPIC: 500000, LEGENDARY: 5000000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 400000000, time_seconds: 1728000, items: { SUMMONING_EYE: 8 } }
+        statistics:
+          EPIC: { strength: { per_level: 0.5 }, critical_chance: { per_level: 0.1 }, critical_damage: { per_level: 0.5 } }
+        abilities:
+          - name: "End Strike"
+            kind: TEXT
+            text:
+              - "<7>Deal <a>{0}% <7>more damage to <5><glyph:mobs_ender> Ender"
+              - "<7>mobs."
+            values:
+              - { per_level: 2 }
+          - name: "One with the Dragons"
+            kind: INACTIVE
+            text:
+              - "<7>Buffs the <6>Aspect of the Dragons"
+              - "<7>sword by <a>{0} <c><glyph:skill_sword> Damage <7>and <a>{1} <c><glyph:stat_strength>"
+              - "<c>Strength<7>."
+            values:
+              - { per_level: 0.5 }
+              - { per_level: 0.3 }
+          - name: "Superior"
+            rarity: LEGENDARY
+            kind: PERCENT_STAT
+            statistics: [health, defense, strength, intelligence, critical_chance, critical_damage, bonus_attack_speed, ability_damage, true_defense, ferocity, health_regeneration, vitality, mending, swing_range, magic_find]
+            text:
+              - "<7>Increases all <c>Combat <7>stats and <b><glyph:stat_magic_find>"
+              - "<b>Magic Find <7>by <a>{0}%<7>."
+            values:
+              - { per_level: 0.1 }
+      - id: TRACKED_UNIQUE
+
+  - id: ENDERMAN_PET
+    material: player_head
+    name: "Enderman Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Enderman"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: 9f31c9b5a2bfe7443645b4e7e8ea408b04d554a9200b00afd574ce924b555ecb
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 2000, EPIC: 10000, LEGENDARY: 1000000, MYTHIC: 2500000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 1000, time_seconds: 86400 }
+          RARE: { coins: 5000, time_seconds: 172800 }
+          EPIC: { coins: 10000, time_seconds: 518400 }
+          LEGENDARY: { coins: 40000000, time_seconds: 1036800, items: { ENCHANTED_EYE_OF_ENDER: 8 } }
+        statistics:
+          COMMON: { critical_damage: { per_level: 0.75 } }
+        abilities:
+          - name: "Enderian"
+            kind: HANDLER
+            handler: ENDERMAN_ENDERIAN
+            triggers: DAMAGED_BY_MOB
+            text:
+              - "<7>Take <a>{0}% <7>less damage from <5><glyph:mobs_ender> Ender"
+              - "<7>mobs"
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.2, EPIC: 0.3 } }
+          - name: "Teleport Savvy"
+            rarity: RARE
+            kind: HANDLER
+            handler: ENDERMAN_TELEPORT_SAVVY
+            text:
+              - "<7>Buffs the Transmission abilities, granting"
+              - "<a>{0} <7>weapon damage for 5s on use"
+            values:
+              - { per_level: { RARE: 0.4, EPIC: 0.5 } }
+          - name: "Zealot Madness"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases your odds to find a"
+              - "<7>special Zealot by <a>{0}%<7>."
+            values:
+              - { per_level: 0.25 }
+          - name: "Enderman Slayer"
+            rarity: MYTHIC
+            kind: HANDLER
+            handler: COMBAT_WISDOM_TOWARDS
+            triggers: KILL
+            mobs: [enderman]
+            text:
+              - "<7>Gain <3>+{0}☯ Combat Wisdom <7>towards"
+              - "<5>Endermen<7>."
+            values:
+              - { per_level: 0.5 }
+      - id: TRACKED_UNIQUE
+
+  - id: GHOUL_PET
+    material: player_head
+    name: "Ghoul Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Ghoul"
+        pet_type: COMBAT
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: 1e1109bbd1f82c182363ed53b624b688924447f9f68b929674ad37f3cef762a8
+        george_price: { EPIC: 2000, LEGENDARY: 100000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 5000000, time_seconds: 864000, items: { REVENANT_FLESH: 512 } }
+        statistics:
+          EPIC: { health: { per_level: 1 }, ferocity: { per_level: 0.05 }, intelligence: { per_level: 0.75 }, vitality: { per_level: 0.15 }, mending: { per_level: 0.25 } }
+        abilities:
+          - name: "Undead Slayer"
+            kind: HANDLER
+            handler: COMBAT_WISDOM_TOWARDS
+            triggers: KILL
+            mobs: [zombie, zombie_villager, husk, drowned]
+            text:
+              - "<7>Gain <3>+{0}☯ Combat Wisdom <7>towards"
+              - "<2>Zombies<7>."
+            values:
+              - { per_level: 0.5 }
+          - name: "Army of the Dead"
+            kind: INACTIVE
+            text:
+              - "<7>Increases the amount of souls you"
+              - "<7>can store by <a>2 <7>and the chance of"
+              - "<7>getting a mob's soul by <a>{0}%"
+            values:
+              - { per_level: 0.2 }
+          - name: "Reaper Soul"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Reduces the summoning cost of mobs"
+              - "<7>by <a>{0}% <7>and increases their damage"
+              - "<7>output by <a>{1}%<7>. Increases the health"
+              - "<7>of all summoned mobs by <a>{2}%<7>."
+            values:
+              - { per_level: 0.3 }
+              - { per_level: 0.2 }
+              - { per_level: 1 }
+      - id: TRACKED_UNIQUE
+
+  - id: GOLDEN_DRAGON_PET
+    material: player_head
+    name: "Golden Dragon Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Golden Dragon"
+        pet_type: COMBAT
+        rarities: [LEGENDARY]
+        max_level: 200
+        stats_base_level: 100
+        skull_texture: 2e9f9b1fc014166cb46a093e5349b2bf6edd201b680d62e48dbf3af9b0459116
+        george_price: { LEGENDARY: 5000 }
+        statistics:
+          LEGENDARY: { strength: { base: 25, per_level: 0.25 }, bonus_attack_speed: { base: 25, per_level: 0.25 }, magic_find: { base: 5, per_level: 0.05 } }
+        abilities:
+          - name: "Gold's Power"
+            kind: HANDLER
+            handler: GOLDEN_DRAGON_GOLDS_POWER
+            text:
+              - "<7>Increase the potency of <6>Midas'"
+              - "<6>Sword <7>and <6>Midas Staff's <5>Greed Ability"
+              - "<7>by <a>{0}%"
+            values:
+              - { base: 5, per_level: 0.05 }
+          - name: "Shining Scales"
+            kind: HANDLER
+            handler: GOLDEN_DRAGON_SHINING_SCALES
+            text:
+              - "<7>Grants <c>+11.1<glyph:stat_strength> Strength <7>and <b>+2.2<glyph:stat_magic_find>"
+              - "<b>Magic Find <7>to your pet for each digit"
+              - "<7>in your <6>Gold Collection<7>."
+              - "<8>(Max 100M collection)"
+          - name: "Dragon's Greed"
+            kind: HANDLER
+            handler: GOLDEN_DRAGON_DRAGONS_GREED
+            text:
+              - "<7>Grants <c>+{0}% <c><glyph:stat_strength> Strength <7>per <b>5<glyph:stat_magic_find>"
+              - "<b>Magic Find<7>. <8>(Max +{1}%)"
+            values:
+              - { base: 0.25, per_level: 0.0025 }
+              - { base: 2.5, per_level: 0.025 }
+          - name: "Legendary Treasure"
+            kind: HANDLER
+            handler: GOLDEN_DRAGON_LEGENDARY_TREASURE
+            text:
+              - "<7>Gain <c>{0}% <7>damage for every million"
+              - "<7>coins in your bank. <8>(Max {1}%)"
+            values:
+              - { base: 0.125, per_level: 0.00125 }
+              - { base: 125, per_level: 1.25 }
+          - name: "Symbiosis"
+            kind: HANDLER
+            handler: GOLDEN_DRAGON_SYMBIOSIS
+            triggers: KILL
+            text:
+              - "<7>If you own a level <a>200 Golden"
+              - "<a>Dragon<7>, gain <6>+5 coins <7>per monster"
+              - "<7>kill for every other unique maxed"
+              - "<7>Combat Pet that you own."
+      - id: TRACKED_UNIQUE
+
+  - id: GOLEM_PET
+    material: player_head
+    name: "Golem Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Golem"
+        pet_type: COMBAT
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: 89091d79ea0f59ef7ef94d7bba6e5f17f2f7d4572c44f90f76c4819a714
+        george_price: { EPIC: 500000, LEGENDARY: 2500000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 10000000, time_seconds: 1728000, items: { ENCHANTED_IRON_BLOCK: 8 } }
+        statistics:
+          EPIC: { health: { per_level: 1.5 }, strength: { per_level: 0.5 }, swing_range: { per_level: 0.01 } }
+        abilities:
+          - name: "Last Stand"
+            kind: HANDLER
+            handler: GOLEM_LAST_STAND
+            triggers: DAMAGED_BY_MOB
+            text:
+              - "<7>While at less than <a>20% HP<7>, reduce"
+              - "<7>incoming damage by <a>20%<7>. Additionally,"
+              - "<7>gain a temporary shield equal to <a>40%"
+              - "<7>of your maximum health and deal <a>40%"
+              - "<7>more damage."
+              - "<8>(Lasts 12s, 60s cooldown)"
+          - name: "Ricochet"
+            kind: HANDLER
+            handler: GOLEM_RICOCHET
+            triggers: DAMAGED_BY_MOB
+            text:
+              - "<7>Your iron plating causes <a>{0}% <7>of"
+              - "<7>attacks to ricochet and hit the"
+              - "<7>attacker."
+            values:
+              - { per_level: 0.25 }
+          - name: "Toss"
+            rarity: LEGENDARY
+            kind: HANDLER
+            handler: GOLEM_TOSS
+            triggers: MELEE_HIT
+            text:
+              - "<7>Every 5 hits, throw the enemy up into"
+              - "<7>the air and deal <a>5x <7>damage <8>(5s cooldown)."
+      - id: TRACKED_UNIQUE
+
+  - id: HOUND_PET
+    material: player_head
+    name: "Hound Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Hound"
+        pet_type: COMBAT
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: 1290ad550c376d0108b5be22dd5a4082a8621cf9d40b2807156ca1950d246207
+        george_price: { EPIC: 2000, LEGENDARY: 100000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 5000000, time_seconds: 864000, items: { WOLF_TOOTH: 512 } }
+        statistics:
+          EPIC: { strength: { per_level: 0.4 }, bonus_attack_speed: { per_level: 0.25 }, ferocity: { per_level: 0.05 }, speed: { per_level: 0.1 } }
+        abilities:
+          - name: "Scavenger"
+            kind: HANDLER
+            handler: COINS_PER_KILL
+            triggers: KILL
+            text:
+              - "<7>Gain +<a>{0} <7>coins per monster kill."
+            values:
+              - { per_level: 1 }
+          - name: "Finder"
+            kind: INACTIVE
+            text:
+              - "<7>Increases the chance for monsters"
+              - "<7>to drop their armor by <a>{0}%<7>."
+            values:
+              - { per_level: 0.3 }
+          - name: "Pack Slayer"
+            rarity: LEGENDARY
+            kind: HANDLER
+            handler: COMBAT_WISDOM_TOWARDS
+            triggers: KILL
+            mobs: [wolf]
+            text:
+              - "<7>Gain <3>+{0}☯ Combat Wisdom <7>towards"
+              - "<f>Wolves<7>."
+            values:
+              - { per_level: 0.5 }
+      - id: TRACKED_UNIQUE
+
+  - id: HORSE_PET
+    material: player_head
+    name: "Horse Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Horse"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 36fcd3ec3bc84bafb4123ea479471f9d2f42d8fb9c5f11cf5f4e0d93226
+        george_price: { COMMON: 50, UNCOMMON: 500, RARE: 2500, EPIC: 5000, LEGENDARY: 10000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 500, time_seconds: 10, items: { LEATHER: 128 } }
+          RARE: { coins: 2500, time_seconds: 20, items: { LEATHER: 256 } }
+          EPIC: { coins: 5000, time_seconds: 30, items: { LEATHER: 512 } }
+          LEGENDARY: { coins: 10000, time_seconds: 45, items: { ENCHANTED_LEATHER: 8 } }
+        statistics:
+          COMMON: { intelligence: { per_level: 0.5 }, speed: { per_level: 1 } }
+        abilities:
+          - name: "High Stride"
+            kind: INACTIVE
+            text:
+              - "<7>Grants permanent <b>Jump Boost IV<7>."
+            text_by_rarity:
+              COMMON:
+                - "<7>Grants permanent <b>Jump Boost II<7>."
+              UNCOMMON:
+                - "<7>Grants permanent <b>Jump Boost III<7>."
+              RARE:
+                - "<7>Grants permanent <b>Jump Boost III<7>."
+          - name: "Stampede"
+            rarity: RARE
+            kind: HANDLER
+            handler: HORSE_STAMPEDE
+            triggers: KILL
+            text:
+              - "<7>Mob kills grant a stack of <f>+{0} <glyph:stat_speed>"
+              - "<f>Speed <7>and <c>+{1} <glyph:stat_strength> Strength <7>for <a>5s<7>."
+              - "<8>(Max 20 stacks)"
+            values:
+              - { base: 1, per_level: 0.2 }
+              - { base: 1, per_level: 0.05 }
+          - name: "Trample"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>After falling <a>20 <7>or more blocks,"
+              - "<7>absorb your fall damage and deal"
+              - "<a>{0}% <7>of your weapon's <c><glyph:skill_sword> Damage <7>for"
+              - "<7>every block fallen to mobs within <a>3"
+              - "<7>blocks."
+            values:
+              - { base: 0.5, per_level: 0.045 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - AAA
+              - AEA
+              - AAA
+            ingredients:
+              A:
+                type: LEATHER
+                amount: 8
+              E:
+                type: EGG
+                amount: 1
+            result:
+              type: HORSE_PET
+              amount: 1
+
+  - id: JERRY_PET
+    material: player_head
+    name: "Jerry Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Jerry"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: 822d8e751c8f2fd4c8942c44bdb2f5ca4d8ae8e575ed3eb34c18a86e93b
+        george_price: { COMMON: 50, UNCOMMON: 500, RARE: 2500, EPIC: 5000, LEGENDARY: 10000, MYTHIC: 25000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 500, time_seconds: 10, items: { MOVE_JERRY: 1 } }
+          RARE: { coins: 2500, time_seconds: 20, items: { MOVE_JERRY: 1 } }
+          EPIC: { coins: 5000, time_seconds: 30, items: { MOVE_JERRY: 1 } }
+          LEGENDARY: { coins: 10000, time_seconds: 45, items: { MOVE_JERRY: 1 } }
+          MYTHIC: { coins: 25000, time_seconds: 3600, items: { PET_ITEM_TOY_JERRY: 1 } }
+        statistics:
+          COMMON: { intelligence: { per_level: -1 } }
+        abilities:
+          - name: "Jerry"
+            kind: TEXT
+            text:
+              - "<7>Gain <a>50% <7>chance to deal"
+              - "<7>your regular damage."
+          - name: "Jerry"
+            kind: TEXT
+            text:
+              - "<7>Gain <a>100% <7>chance to"
+              - "<7>receive a normal amount of drops"
+              - "<7>from mobs."
+          - name: "Jerry"
+            rarity: LEGENDARY
+            kind: HANDLER
+            handler: JERRY_ASPECT_OF_THE_JERRY
+            text:
+              - "<7>Actually adds <c>{0} damage <7>to"
+              - "<7>the Aspect of the Jerry."
+            values:
+              - { per_level: { LEGENDARY: 0.1, MYTHIC: 0.5 } }
+          - name: "Jerry"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Tiny chance to find Jerry"
+              - "<7>Candies when killing mobs."
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: true
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - AAA
+              - AEA
+              - AAA
+            ingredients:
+              A:
+                type: MOVE_JERRY
+                amount: 1
+              E:
+                type: EGG
+                amount: 1
+            result:
+              type: JERRY_PET
+              amount: 1
+
+  - id: KUUDRA_PET
+    material: player_head
+    name: "Kuudra Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Kuudra"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        passive: true
+        skull_texture: 1f0239fb498e5907ede12ab32629ee95f0064574a9ffdff9fc3a1c8e2ec17587
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 1000, EPIC: 2000, LEGENDARY: 5000 }
+        statistics:
+          COMMON: { strength: { per_level: 0.4 }, health: { per_level: 4 } }
+        abilities:
+          - name: "Wither Bait"
+            kind: TEXT
+            text:
+              - "<7>Increases the odds of finding"
+              - "<7>a vanquisher by <a>{0}%<7>."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.15, EPIC: 0.2 } }
+          - name: "Trophy Bait"
+            rarity: UNCOMMON
+            kind: STAT
+            statistics: { trophy_fish_chance: "{0}" }
+            when: { servers: [CRIMSON_ISLE] }
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_trophy_chance> Trophy Chance<7> while"
+              - "<7>on the <c>Crimson Isle<f>."
+            values:
+              - { per_level: { UNCOMMON: 0.15, EPIC: 0.2 } }
+          - name: "Crimson"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Grants <a>{0}% <7>extra Crimson"
+              - "<7>Essence."
+            values:
+              - { per_level: { RARE: 0.15, EPIC: 0.2 } }
+          - name: "Kuudra Fortune"
+            rarity: EPIC
+            kind: STAT
+            statistics: { mining_fortune: "{0}" }
+            when: { servers: [CRIMSON_ISLE] }
+            text:
+              - "<7>Gain <6>+{0}<glyph:stat_mining_fortune> Mining Fortune"
+              - "<7>while on the Crimson Isle."
+            values:
+              - { per_level: 1 }
+          - name: "Kuudra Specialist"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases all damage to Kuudra and"
+              - "<7>his minions by <c>20%<7>."
+      - id: TRACKED_UNIQUE
+
+  - id: MAMMOTH_PET
+    material: player_head
+    name: "Mammoth Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Mammoth"
+        pet_type: COMBAT
+        rarities: [LEGENDARY]
+        skull_texture: 6b10715732cd1fd49fa1b6187947c307dd4687105cf033840607f9d6234743ad
+        george_price: { LEGENDARY: 500000 }
+        statistics:
+          LEGENDARY: { defense: { per_level: 0.5 }, cold_resistance: { per_level: 0.1 } }
+        abilities:
+          - name: "Wooly Coat"
+            kind: INACTIVE
+            text:
+              - "<7>Gain a <a>{0}% <7>chance for mobs to not"
+              - "<7>inflict <b><glyph:stat_cold_resistance> Cold <7>when damaging you in"
+              - "<7>the <b>Glacite Mineshafts<7>."
+            values:
+              - { per_level: 1 }
+          - name: "Tusk Luck"
+            kind: HANDLER
+            handler: MAMMOTH_TUSK_LUCK
+            text:
+              - "<7>Gain <b>+{0}<glyph:stat_magic_find> Magic Find <7>for every"
+              - "<7>100 <6><glyph:stat_mining_fortune> Mining Fortune<7>, doubled in the"
+              - "<b>Glacite Tunnels <7>and <b>Glacite"
+              - "<b>Mineshafts<7>."
+            values:
+              - { per_level: 0.005 }
+          - name: "Corpse Crusher"
+            kind: INACTIVE
+            text:
+              - "<7>Gain <6>+{0}<glyph:stat_mining_fortune> Mining Fortune <7>for each"
+              - "<b>Frozen Corpse <7>looted in your"
+              - "<7>current <b>Glacite Mineshaft<7>."
+            values:
+              - { per_level: 0.3 }
+      - id: TRACKED_UNIQUE
+
+  - id: PHOENIX_PET
+    material: player_head
+    name: "Phoenix Pet"
+    rarity: SPECIAL
+    components:
+      - id: PET
+        pet_name: "Phoenix"
+        pet_type: COMBAT
+        rarities: [SPECIAL, VERY_SPECIAL]
+        pet_score: false
+        skull_texture: 66b1b59bc890c9c97527787dde20600c8b86f6b9912d51a6bfcdb0e4c2aa3c97
+        george_price: { SPECIAL: 500000, VERY_SPECIAL: 5000000 }
+        statistics:
+          SPECIAL: { strength: { base: 10, per_level: 0.5 }, intelligence: { base: 50, per_level: 1 } }
+        abilities:
+          - name: "Rekindle"
+            kind: HANDLER
+            handler: PHOENIX_REKINDLE
+            triggers: [DAMAGED_BY_MOB, FALL_DAMAGE]
+            text:
+              - "<7>Before death, become <e>immune"
+              - "<e><7>and gain <c>{0} <c><glyph:stat_strength> Strength"
+              - "<c><7>for <a>{1} <7>seconds."
+              - "<8>1 minute cooldown"
+            values:
+              - { base: { SPECIAL: 10, VERY_SPECIAL: 15 }, per_level: { SPECIAL: 0.1, VERY_SPECIAL: 0.15 } }
+              - { base: 2, per_level: 0.02 }
+          - name: "Fourth Flare"
+            kind: HANDLER
+            handler: PHOENIX_FOURTH_FLARE
+            triggers: MELEE_HIT
+            text:
+              - "<7>On 4th melee strike, <6>ignite"
+              - "<6><7>mobs, dealing <c>{0}x <7>your <9><glyph:stat_crit_damage>"
+              - "<9>Crit Damage <7>each second for"
+              - "<7><a>{1} <7>seconds."
+            values:
+              - { base: 1, per_level: { SPECIAL: 0.12, VERY_SPECIAL: 0.14 } }
+              - { base: 2, per_level: { SPECIAL: 0.02, VERY_SPECIAL: 0.03 } }
+          - name: "Magic Bird"
+            rarity: VERY_SPECIAL
+            kind: INACTIVE
+            text:
+              - "<7>You may always fly on your"
+              - "<7>private island."
+          - name: "Eternal Coins"
+            rarity: VERY_SPECIAL
+            kind: TEXT
+            text:
+              - "<7>Don't lose coins from death."
+      - id: TRACKED_UNIQUE
+
+  - id: PIGMAN_PET
+    material: player_head
+    name: "Pigman Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Pigman"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: d15afad53d1726fae86b3fb11ba01e51112b1055e8e5af8b7df86ef956f1d4a1
+        george_price: { COMMON: 1000, UNCOMMON: 25000, RARE: 50000, EPIC: 100000, LEGENDARY: 250000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 25000, time_seconds: 3600, items: { ENCHANTED_PORK: 16 } }
+          RARE: { coins: 50000, time_seconds: 10800, items: { ENCHANTED_PORK: 32 } }
+          EPIC: { coins: 100000, time_seconds: 21600, items: { ENCHANTED_PORK: 64 } }
+          LEGENDARY: { coins: 250000, time_seconds: 43200, items: { ENCHANTED_PORK: 128 } }
+        statistics:
+          COMMON: { defense: { per_level: 0.5 }, strength: { per_level: 0.5 }, ferocity: { per_level: 0.05 } }
+        abilities:
+          - name: "Bacon Farmer"
+            kind: MINION_SPEED
+            minions: [PIG]
+            when: { conditions: [PRIVATE_ISLAND] }
+            text:
+              - "<7>Pig minions work <a>{0}%"
+              - "<a><7>faster while on your island."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.2, EPIC: 0.3 } }
+          - name: "Pork Master"
+            rarity: RARE
+            kind: HANDLER
+            handler: PIGMAN_PORK_MASTER
+            text:
+              - "<7>Buffs the Pigman sword by <a>{0}"
+              - "<a><c><glyph:skill_sword> Damage <7>and <a>{1} <c><glyph:stat_strength>"
+              - "<c>Strength."
+            values:
+              - { per_level: { RARE: 0.3, EPIC: 0.4 } }
+              - { per_level: { RARE: 0.15, EPIC: 0.25 } }
+          - name: "Giant Slayer"
+            rarity: LEGENDARY
+            kind: TEXT
+            text:
+              - "<7>Deal <c>+50% <7>damage to monsters Level"
+              - "<a>50+ <7>and <c>+75% damage to monsters"
+              - "<7>Level <a>100+<7>."
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - AAA
+              - AEA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_PORK
+                amount: 1
+              E:
+                type: SUPER_ENCHANTED_EGG
+                amount: 1
+            result:
+              type: PIGMAN_PET
+              amount: 1
+
+  - id: PRECURSOR_DRONE_PET
+    material: player_head
+    name: "Precursor Drone Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Precursor Drone"
+        pet_type: COMBAT
+        rarities: [LEGENDARY]
+        skull_texture: 51aae288ab9d5354fda4e395a36421bd261a9b6213dbb786d7ab39465e479ce9
+        george_price: { LEGENDARY: 5000 }
+        statistics:
+          LEGENDARY: { speed: { per_level: 0.25 }, sea_creature_chance: { base: 7.5 }, foraging_fortune: { base: 50 }, mining_fortune: { base: 75 } }
+        abilities:
+          - name: "Creative Mind"
+            kind: INACTIVE
+            text:
+              - "<7>This pet can have <b>Drone Mods"
+              - "<7>applied to it, which allows you to"
+              - "<7>modify its <6>Perks <7>to your liking."
+              - "<8>Precursor Drones may possess up"
+              - "<8>to 3 perks at a time, this one included."
+          - name: "Contraband"
+            kind: INACTIVE
+            text:
+              - "<7>When <b>Fishing<7>, catching a <3>Sea"
+              - "<3>Creature <7>has a <a>{0}% <7>chance to also"
+              - "<7>give you <6>Treasure<7>."
+            values:
+              - { per_level: 0.1 }
+          - name: "Grungle"
+            kind: INACTIVE
+            text:
+              - "<7>When <2>Foraging<7>, you can now <c><l>ONLY"
+              - "<7>throw your Foraging Axe, but the"
+              - "<c>Throwing Axe Penalty <7> is reduced by"
+              - "<a>{0}%<7>."
+            values:
+              - { per_level: 1 }
+          - name: "Mining Off Camera"
+            kind: INACTIVE
+            text:
+              - "<7>When <6>Mining<7>, each collection"
+              - "<7>progress grants a <a>{0}%"
+              - "<7>chance to drop a random enchanted"
+              - "<7>mining item."
+            values:
+              - { per_level: 0.00005 }
+      - id: TRACKED_UNIQUE
+
+  - id: RAT_PET
+    material: player_head
+    name: "Rat Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Rat"
+        pet_type: COMBAT
+        rarities: [LEGENDARY, MYTHIC]
+        skull_texture: a8abb471db0ab78703011979dc8b40798a941f3a4dec3ec61cbeec2af8cffe8
+        skull_texture_by_rarity: { MYTHIC: "250de7097d939e447ca2d398441cba1d2a5e1a69052ac99c19ff20ad5a3f01ab" }
+        george_price: { LEGENDARY: 5000, MYTHIC: 10000 }
+        statistics:
+          LEGENDARY: { health: { per_level: 1.25 }, strength: { per_level: 0.6 }, critical_damage: { per_level: 0.25 } }
+        abilities:
+          - name: "Morph"
+            kind: INACTIVE
+            text:
+              - "<7>Right-click your summoned pet"
+              - "<7>to morph into it!"
+          - name: "CHEESE!"
+            kind: INACTIVE
+            text:
+              - "<7>As a Rat, you smell"
+              - "<7><e><l>CHEESE<r><7> nearby! Yummy!"
+          - name: "Rat's Blessing"
+            kind: INACTIVE
+            text:
+              - "<7>Has a chance to grant a random"
+              - "<7>player <b>+{0}<glyph:stat_magic_find> Magic Find<7> for"
+              - "<7><a>{1}<7> seconds after finding a"
+              - "<7>yummy piece of Cheese! If the"
+              - "<7>player gets a drop during this"
+              - "<7>buff, you have a <a>20% <7>chance"
+              - "<7>to get it too."
+            values:
+              - { base: 2, per_level: 0.05 }
+              - { base: 20, per_level: 0.4 }
+          - name: "Extreme Speed"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>The Rat is TWO times faster AND can"
+              - "<7>fly!"
+      - id: TRACKED_UNIQUE
+
+  - id: RIFT_FERRET_PET
+    material: player_head
+    name: "Rift Ferret Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Rift Ferret"
+        pet_type: COMBAT
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: b6b11399448260185da1d17e54c984515faab6d8585f00972451ec2b43d46f94
+        george_price: { EPIC: 50000, LEGENDARY: 50000 }
+        statistics:
+          EPIC: { speed: { per_level: 0.5 }, intelligence: { per_level: -0.02 } }
+        abilities:
+          - name: "Orbs are Fun"
+            kind: INACTIVE
+            text:
+              - "<7>Gain <a>+{0}% <7>experience from"
+              - "<b>XP Orbs<7>."
+            values:
+              - { base: 10 }
+      - id: TRACKED_UNIQUE
+
+  - id: SKELETON_PET
+    material: player_head
+    name: "Skeleton Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Skeleton"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: fca445749251bdd898fb83f667844e38a1dff79a1529f79a42447a0599310ea4
+        george_price: { COMMON: 250, UNCOMMON: 5000, RARE: 10000, EPIC: 25000, LEGENDARY: 50000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 5000, time_seconds: 300, items: { BONE: 512 } }
+          RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_BONE: 8 } }
+          EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_BONE: 16 } }
+          LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_BONE: 32 } }
+        statistics:
+          COMMON: { critical_chance: { per_level: 0.15 }, critical_damage: { per_level: 0.3 } }
+        abilities:
+          - name: "Bone Arrows"
+            kind: TEXT
+            text:
+              - "<7>Increase arrow damage by <a>{0}%"
+              - "<7>which is doubled while in dungeons."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.2, RARE: 0.35, EPIC: 0.5, LEGENDARY: 0.75 } }
+          - name: "Combo"
+            rarity: RARE
+            kind: HANDLER
+            handler: SKELETON_COMBO
+            text:
+              - "<7>Gain a combo stack for every bow hit"
+              - "<7>granting +<a>3 <c><glyph:stat_strength> Strength<7>. Max <a>{0}"
+              - "<7>stacks, stacks disappear after 8"
+              - "<7>seconds."
+            values:
+              - { per_level: { RARE: 0.15, EPIC: 0.17, LEGENDARY: 0.2 } }
+          - name: "Skeletal Defense"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Your skeleton shoots an arrow"
+              - "<7>dealing <a>30x <7>your <9><glyph:stat_crit_damage> Crit Damage"
+              - "<7>when a mob gets close to you (5s"
+              - "<7>cooldown)."
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - AAA
+              - AEA
+              - AAA
+            ingredients:
+              A:
+                type: BONE
+                amount: 32
+              E:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: SKELETON_PET
+              amount: 1
+
+  - id: SPIDER_PET
+    material: player_head
+    name: "Spider Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Spider"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: cd541541daaff50896cd258bdbdd4cf80c3ba816735726078bfe393927e57f1
+        george_price: { COMMON: 250, UNCOMMON: 5000, RARE: 10000, EPIC: 25000, LEGENDARY: 50000, MYTHIC: 100000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 5000, time_seconds: 300, items: { STRING: 512, SPIDER_EYE: 256 } }
+          RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_STRING: 8, ENCHANTED_SPIDER_EYE: 4 } }
+          EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_STRING: 16, ENCHANTED_SPIDER_EYE: 8 } }
+          LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_STRING: 32, ENCHANTED_SPIDER_EYE: 16 } }
+        statistics:
+          COMMON: { strength: { per_level: 0.5 }, critical_chance: { per_level: 0.1 } }
+        abilities:
+          - name: "One With the Spider"
+            kind: INACTIVE
+            text:
+              - "<7>Applies <c>{0} <glyph:stat_strength> Strength <7>to all"
+              - "<4>Arachnal <glyph:mobs_arthropod> <7>weapons, armor, and"
+              - "<7>equipment you have equipped."
+            values:
+              - { base: { COMMON: 1, UNCOMMON: 2, RARE: 3, EPIC: 4, LEGENDARY: 5 }, per_level: { COMMON: 0.02, UNCOMMON: 0.04, RARE: 0.06, EPIC: 0.08, LEGENDARY: 0.1 } }
+          - name: "Web-Weaver"
+            rarity: RARE
+            kind: HANDLER
+            handler: SPIDER_WEB_WEAVER
+            triggers: MELEE_HIT
+            text:
+              - "<7>Upon hitting a monster it becomes"
+              - "<7>slowed by <a>{0}%"
+            values:
+              - { per_level: 0.4 }
+          - name: "Spider Whisperer"
+            rarity: LEGENDARY
+            kind: MINION_SPEED
+            minions: [SPIDER, CAVE_SPIDER]
+            when: { conditions: [PRIVATE_ISLAND] }
+            text:
+              - "<7>Spider, Cave Spider and Tarantula"
+              - "<7>minions work <a>{0}% <7>faster while on"
+              - "<7>your island."
+            values:
+              - { per_level: 0.3 }
+          - name: "Web Battlefield"
+            rarity: MYTHIC
+            kind: HANDLER
+            handler: WEB_BATTLEFIELD
+            triggers: KILL
+            text:
+              - "<7>Killing mobs grants <c>+{0}<glyph:stat_strength> <c>Strength"
+              - "<7>and <b>+{1}<glyph:stat_magic_find> Magic Find <7>for <a>40s <7>to all"
+              - "<7>players staying within <a>20 <7>blocks of"
+              - "<7>where they died. <8>Stacks up to 10"
+              - "<8>times."
+            values:
+              - { per_level: 0.06 }
+              - { per_level: 0.01 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - AAA
+              - AEA
+              - AAA
+            ingredients:
+              A:
+                type: STRING
+                amount: 32
+              E:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: SPIDER_PET
+              amount: 1
+
+  - id: SPIRIT_PET
+    material: player_head
+    name: "Spirit Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Spirit"
+        pet_type: COMBAT
+        rarities: [EPIC, LEGENDARY]
+        passive: true
+        skull_texture: 8d9ccc670677d0cebaad4058d6aaf9acfab09abea5d86379a059902f2fe22655
+        george_price: { EPIC: 2000, LEGENDARY: 5000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 5000000, time_seconds: 864000, items: { ENCHANTED_GHAST_TEAR: 64 } }
+        statistics:
+          EPIC: { intelligence: { per_level: 1 }, speed: { per_level: 0.3 } }
+        abilities:
+          - name: "Spirit Assistance"
+            kind: INACTIVE
+            text:
+              - "<7>Spawns and assists you when"
+              - "<7>you are a ghost in Dungeons."
+          - name: "Spirit Cooldowns"
+            kind: INACTIVE
+            text:
+              - "<7>Reduces the cooldown of your"
+              - "<7>ghost abilities in dungeons by"
+              - "<7><a>{0}%<7>."
+            values:
+              - { base: 5, per_level: 0.45 }
+          - name: "Half Life"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>If you are the first player to"
+              - "<7>die in a dungeon, the score"
+              - "<7>penalty for that death is"
+              - "<7>reduced to <a>1<7>."
+      - id: TRACKED_UNIQUE
+
+  - id: TYRANNOSAURUS_PET
+    material: player_head
+    name: "T-Rex Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "T-Rex"
+        pet_type: COMBAT
+        rarities: [LEGENDARY]
+        skull_texture: 93f28ec96df59c67e9d2fc2e7e3d055fa31646e4111add9fe26a692801964126
+        george_price: { LEGENDARY: 500000 }
+        statistics:
+          LEGENDARY: { strength: { per_level: 0.75 }, critical_chance: { per_level: 0.05 }, ferocity: { per_level: 0.25 } }
+        abilities:
+          - name: "Close Combat"
+            kind: TEXT
+            text:
+              - "<7>Deal <a>{0}% <7>more <c>damage <7>to enemies"
+              - "<7>within 1.5 blocks."
+            values:
+              - { per_level: 1 }
+          - name: "Ferocious Roar"
+            kind: INACTIVE
+            text:
+              - "<7>Attacks have a <a>{0}% <7>chance to stun"
+              - "<7>the target <8>(10s cooldown)."
+            values:
+              - { per_level: 0.1 }
+          - name: "Tyrant"
+            kind: HANDLER
+            handler: TREX_TYRANT
+            text:
+              - "<7>Combat stats granted by pet items on"
+              - "<7>this pet are increased by <a>{0}%<7>."
+            values:
+              - { per_level: 1 }
+      - id: TRACKED_UNIQUE
+
+  - id: TARANTULA_PET
+    material: player_head
+    name: "Tarantula Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Tarantula"
+        pet_type: COMBAT
+        rarities: [EPIC, LEGENDARY, MYTHIC]
+        skull_texture: b81b5cf3a65bf9cab4bca55781721a86d567d9e106551647f35b715edf00a13f
+        george_price: { EPIC: 2000, LEGENDARY: 100000, MYTHIC: 150000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 5000000, time_seconds: 864000, items: { TARANTULA_WEB: 512 } }
+        statistics:
+          EPIC: { strength: { per_level: 0.1 }, critical_chance: { per_level: 0.1 }, critical_damage: { per_level: 0.3 } }
+        abilities:
+          - name: "Webbed Cells"
+            kind: INACTIVE
+            text:
+              - "<c>Tarantula Broodfather's <4><glyph:stat_vitality> Vitality"
+              - "<7>reduction is <a>{0}% <7>less effective"
+              - "<7>against you."
+            values:
+              - { per_level: 0.3 }
+          - name: "Eight Legs"
+            kind: INACTIVE
+            text:
+              - "<7>Decreases the mana cost of"
+              - "<7>Spider, Tarantula and Spirit"
+              - "<7>boots by <a>{0}%"
+            values:
+              - { per_level: 0.5 }
+          - name: "Arachnid Slayer"
+            rarity: LEGENDARY
+            kind: HANDLER
+            handler: COMBAT_WISDOM_TOWARDS
+            triggers: KILL
+            mobs: [spider, cave_spider]
+            text:
+              - "<7>Gain <3>+{0}☯ Combat Wisdom <7>towards"
+              - "<4>Spiders<7>."
+            values:
+              - { per_level: 0.5 }
+          - name: "Web Battlefield"
+            rarity: MYTHIC
+            kind: HANDLER
+            handler: WEB_BATTLEFIELD
+            triggers: KILL
+            text:
+              - "<7>Killing mobs grants <c>+{0}<glyph:stat_strength>"
+              - "<c>Strength <7>and <b>+{1}<glyph:stat_magic_find> Magic Find"
+              - "<7>for <a>40s <7>to all players"
+              - "<7>staying within <a>20 <7>blocks"
+              - "<7>of where they died. <8>Stacks"
+              - "<8>up to 10 times."
+            values:
+              - { per_level: 0.06 }
+              - { per_level: 0.01 }
+      - id: TRACKED_UNIQUE
+
+  - id: TURTLE_PET
+    material: player_head
+    name: "Turtle Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Turtle"
+        pet_type: COMBAT
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: 242f86b51c8992b3758e85fe35bb2a20399ad4685095466e7feb54c6902fad8e
+        george_price: { EPIC: 500000, LEGENDARY: 5000000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 15000000, time_seconds: 864000, items: { ENCHANTED_RAW_FISH: 16 } }
+        statistics:
+          EPIC: { health: { base: 50, per_level: 0.25 }, defense: { base: 100, per_level: 0.5 }, true_defense: { per_level: 0.15 } }
+        abilities:
+          - name: "Turtle Tactics"
+            kind: HANDLER
+            handler: TURTLE_TACTICS
+            text:
+              - "<7>Gain <a>+{0}% <glyph:stat_defense> Defense <7>and an"
+              - "<7>additional <a>+10% <a><glyph:stat_defense> Defense <7>when"
+              - "<7>standing still."
+            values:
+              - { base: 3, per_level: 0.27 }
+          - name: "Genius Amniote"
+            kind: INACTIVE
+            text:
+              - "<7>Grants <a>+{0}% <glyph:stat_defense> Defense <7>to 4"
+              - "<7>players within 50 blocks of you."
+            values:
+              - { base: 1, per_level: 0.015 }
+          - name: "Unflippable"
+            rarity: LEGENDARY
+            kind: TEXT
+            text:
+              - "<7>Gain <a>immunity <7>to knockback."
+          - name: "Turtle Shell"
+            rarity: LEGENDARY
+            kind: HANDLER
+            handler: TURTLE_SHELL
+            triggers: DAMAGED_BY_MOB
+            text:
+              - "<7>When under <c>40% <7>maximum HP, you take"
+              - "<a>{0}% <7>less damage. Gain <4>+{1}<glyph:stat_vitality> <4>Vitality"
+              - "<7>after taking 10 hits."
+            values:
+              - { per_level: 0.25 }
+              - { base: 5, per_level: 0.05 }
+      - id: TRACKED_UNIQUE
+
+  - id: WOLF_PET
+    material: player_head
+    name: "Wolf Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Wolf"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 81483105ab8c33f04c97c7493c9871c8a51cc49df6d9b5e23b26652094bf3030
+        george_price: { COMMON: 250, UNCOMMON: 5000, RARE: 10000, EPIC: 25000, LEGENDARY: 50000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 5000, time_seconds: 300, items: { SPRUCE_LOG: 512 } }
+          RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_SPRUCE_LOG: 8 } }
+          EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_SPRUCE_LOG: 16 } }
+          LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_SPRUCE_LOG: 32 } }
+        statistics:
+          COMMON: { health: { per_level: 0.5 }, true_defense: { per_level: 0.1 }, critical_damage: { per_level: 0.1 }, speed: { per_level: 0.2 } }
+        abilities:
+          - name: "Alpha Dog"
+            kind: DAMAGE_REDUCTION
+            triggers: DAMAGED_BY_MOB
+            mobs: [wolf]
+            text:
+              - "<7>Take <a>{0}% <7>less damage from"
+              - "<7>wolves."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.2, EPIC: 0.3 } }
+          - name: "Pack Leader"
+            rarity: RARE
+            kind: HANDLER
+            handler: WOLF_PACK_LEADER
+            text:
+              - "<7>Gain <a>{0} <9><glyph:stat_crit_damage> Crit Damage"
+              - "<9><7>for every nearby wolf monsters."
+              - "<8>Max 10 wolves"
+            values:
+              - { per_level: { RARE: 0.1, EPIC: 0.15 } }
+          - name: "Combat Wisdom Boost"
+            rarity: LEGENDARY
+            kind: STAT
+            statistics: { combat_wisdom: "{0}" }
+            text:
+              - "<7>Grants <3>+{0}☯ Combat"
+              - "<3>Wisdom<7>."
+            values:
+              - { per_level: 0.3 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - AAA
+              - AEA
+              - AAA
+            ingredients:
+              A:
+                type: SPRUCE_LOG
+                amount: 32
+              E:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: WOLF_PET
+              amount: 1
+
+  - id: ZOMBIE_PET
+    material: player_head
+    name: "Zombie Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Zombie"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 56fc854bb84cf4b7697297973e02b79bc10698460b51a639c60e5e417734e11
+        george_price: { COMMON: 50, UNCOMMON: 500, RARE: 2500, EPIC: 5000, LEGENDARY: 10000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 500, time_seconds: 10, items: { ROTTEN_FLESH: 128 } }
+          RARE: { coins: 1000, time_seconds: 20, items: { ROTTEN_FLESH: 256 } }
+          EPIC: { coins: 2500, time_seconds: 30, items: { ROTTEN_FLESH: 512 } }
+          LEGENDARY: { coins: 5000, time_seconds: 45, items: { ENCHANTED_ROTTEN_FLESH: 8 } }
+        statistics:
+          COMMON: { health: { per_level: 1 }, critical_damage: { per_level: 0.3 } }
+        abilities:
+          - name: "Bite Shield"
+            kind: DAMAGE_REDUCTION
+            triggers: DAMAGED_BY_MOB
+            mobs: [zombie, zombie_villager, husk, drowned]
+            text:
+              - "<7>Reduce the damage taken from"
+              - "<7>zombies by <a>{0}%<7>."
+            values:
+              - { base: { COMMON: 5, UNCOMMON: 10, EPIC: 15 }, per_level: 0.1 }
+          - name: "Rotten Blade"
+            rarity: RARE
+            kind: TEXT
+            text:
+              - "<7>Deal <a>{0}% <7>more damage to <2><glyph:mobs_undead> Undead"
+              - "<7>mobs"
+            values:
+              - { base: 25, per_level: 1.25 }
+          - name: "Living Dead"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases all stats on"
+              - "<2>Undead ༕ <7>armor by <a>{0}%."
+            values:
+              - { per_level: 0.25 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - AAA
+              - AEA
+              - AAA
+            ingredients:
+              A:
+                type: ROTTEN_FLESH
+                amount: 8
+              E:
+                type: EGG
+                amount: 1
+            result:
+              type: ZOMBIE_PET
+              amount: 1

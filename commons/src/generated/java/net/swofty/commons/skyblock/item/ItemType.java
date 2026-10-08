@@ -148,6 +148,8 @@ public enum ItemType {
 
   ANITA_TALISMAN(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  ANKYLOSAURUS_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   ANNIHILATION_CLOAK(Material.PAPER, Rarity.LEGENDARY),
 
   ANTIQUE_REMEDIES(Material.AZURE_BLUET, Rarity.EPIC),
@@ -1072,6 +1074,8 @@ public enum ItemType {
 
   CROWN_OF_GREED(Material.GOLDEN_HELMET, Rarity.LEGENDARY),
 
+  CROW_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   CRUDE_GABAGOOL(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   CRYOPOWDER_SHARD(Material.PLAYER_HEAD, Rarity.LEGENDARY),
@@ -1385,6 +1389,8 @@ public enum ItemType {
   ECTOPLASM(Material.GHAST_TEAR, Rarity.RARE),
 
   EDIBLE_MACE(Material.MUTTON, Rarity.RARE),
+
+  EERIE_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   EFFICIENT_AXE(Material.IRON_AXE, Rarity.UNCOMMON),
 
@@ -1708,11 +1714,15 @@ public enum ItemType {
 
   ENDERMAN_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  ENDERMAN_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   ENDER_ARTIFACT(Material.PLAYER_HEAD, Rarity.EPIC),
 
   ENDER_BOW(Material.BOW, Rarity.RARE),
 
   ENDER_CHEST(Material.ENDER_CHEST, Rarity.COMMON),
+
+  ENDER_DRAGON_PET(Material.PLAYER_HEAD, Rarity.EPIC),
 
   ENDER_EYE(Material.ENDER_EYE, Rarity.COMMON),
 
@@ -2088,6 +2098,8 @@ public enum ItemType {
 
   GHOUL_BUSTER(Material.IRON_HOE, Rarity.EPIC),
 
+  GHOUL_PET(Material.PLAYER_HEAD, Rarity.EPIC),
+
   GIANT_CLEAVER(Material.GOLDEN_SWORD, Rarity.LEGENDARY),
 
   GIANT_FISHING_ROD(Material.FISHING_ROD, Rarity.LEGENDARY),
@@ -2164,6 +2176,8 @@ public enum ItemType {
 
   GOLDEN_CHESTPLATE(Material.GOLDEN_CHESTPLATE, Rarity.COMMON),
 
+  GOLDEN_DRAGON_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   GOLDEN_FISH_BRONZE(Material.PAPER, Rarity.LEGENDARY),
 
   GOLDEN_FISH_DIAMOND(Material.PAPER, Rarity.LEGENDARY),
@@ -2223,6 +2237,8 @@ public enum ItemType {
   GOLD_ORE(Material.GOLD_ORE, Rarity.COMMON),
 
   GOLD_SWORD(Material.GOLDEN_SWORD, Rarity.COMMON),
+
+  GOLEM_PET(Material.PLAYER_HEAD, Rarity.EPIC),
 
   GOLEM_SWORD(Material.IRON_SWORD, Rarity.RARE),
 
@@ -2448,6 +2464,8 @@ public enum ItemType {
 
   HORSEMAN_SCYTHE(Material.DIAMOND_HOE, Rarity.LEGENDARY),
 
+  HORSE_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   HOTSPOT_BAIT(Material.PLAYER_HEAD, Rarity.RARE),
 
   HOTSPOT_HOOK(Material.PLAYER_HEAD, Rarity.RARE),
@@ -2501,6 +2519,8 @@ public enum ItemType {
   HOT_TERROR_HELMET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   HOT_TERROR_LEGGINGS(Material.LEATHER_LEGGINGS, Rarity.LEGENDARY),
+
+  HOUND_PET(Material.PLAYER_HEAD, Rarity.EPIC),
 
   HUB_CASTLE_TRAVEL_SCROLL(Material.PAPER, Rarity.EPIC),
 
@@ -2714,6 +2734,8 @@ public enum ItemType {
 
   JERRY_CANDY(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
+  JERRY_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   JERRY_RUNE(Material.PLAYER_HEAD, Rarity.COMMON),
 
   JERRY_STAFF(Material.GOLDEN_HORSE_ARMOR, Rarity.EPIC),
@@ -2841,6 +2863,8 @@ public enum ItemType {
   KUUDRA_INFERNAL_TIER_KEY(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   KUUDRA_MANDIBLE(Material.PAPER, Rarity.LEGENDARY),
+
+  KUUDRA_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   KUUDRA_RELIC(Material.PLAYER_HEAD, Rarity.SPECIAL),
 
@@ -3149,6 +3173,8 @@ public enum ItemType {
   MAGMA_ROD(Material.FISHING_ROD, Rarity.RARE),
 
   MAGMA_URCHIN(Material.PAPER, Rarity.EPIC),
+
+  MAMMOTH_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   MANA_DISINTEGRATOR(Material.PLAYER_HEAD, Rarity.RARE),
 
@@ -3736,9 +3762,13 @@ public enum ItemType {
 
   PHANTOM_ROD(Material.FISHING_ROD, Rarity.LEGENDARY),
 
+  PHOENIX_PET(Material.PLAYER_HEAD, Rarity.SPECIAL),
+
   PICKONIMBUS_2000(Material.DIAMOND_PICKAXE, Rarity.COMMON),
 
   PIGGY_BANK(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
+  PIGMAN_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   PIGMAN_SWORD(Material.GOLDEN_SWORD, Rarity.LEGENDARY),
 
@@ -3847,6 +3877,8 @@ public enum ItemType {
   POWER_TALISMAN(Material.PLAYER_HEAD, Rarity.COMMON),
 
   PRECURSOR_APPARATUS(Material.PAPER, Rarity.EPIC),
+
+  PRECURSOR_DRONE_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   PREHISTORIC_EGG(Material.PLAYER_HEAD, Rarity.COMMON),
 
@@ -3987,6 +4019,8 @@ public enum ItemType {
   RAMPART_LEGGINGS(Material.LEATHER_LEGGINGS, Rarity.RARE),
 
   RARE_KUUDRA_CHUNK(Material.PLAYER_HEAD, Rarity.RARE),
+
+  RAT_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   RAW_BEEF(Material.BEEF, Rarity.COMMON),
 
@@ -4157,6 +4191,8 @@ public enum ItemType {
   REZAR_ABICASE(Material.PLAYER_HEAD, Rarity.COMMON),
 
   RICH_CHOCOLATE_CHUNK(Material.PLAYER_HEAD, Rarity.RARE),
+
+  RIFT_FERRET_PET(Material.PLAYER_HEAD, Rarity.EPIC),
 
   RIFT_PRISM(Material.PLAYER_HEAD, Rarity.RARE),
 
@@ -4798,6 +4834,8 @@ public enum ItemType {
 
   SKELETON_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  SKELETON_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   SKELETON_TALISMAN(Material.SKELETON_SKULL, Rarity.COMMON),
 
   SKYBLOCK_MENU(Material.NETHER_STAR, Rarity.COMMON),
@@ -5018,6 +5056,8 @@ public enum ItemType {
 
   SPIDER_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  SPIDER_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   SPIDER_QUEENS_STINGER(Material.BOW, Rarity.EPIC),
 
   SPIDER_RING(Material.PLAYER_HEAD, Rarity.RARE),
@@ -5031,6 +5071,8 @@ public enum ItemType {
   SPIRIT_BONE(Material.PAPER, Rarity.EPIC),
 
   SPIRIT_LEAP(Material.ENDER_PEARL, Rarity.RARE),
+
+  SPIRIT_PET(Material.PLAYER_HEAD, Rarity.EPIC),
 
   SPIRIT_POTION_1(Material.POTION, Rarity.COMMON),
 
@@ -5352,6 +5394,8 @@ public enum ItemType {
 
   TARANTULA_FANG(Material.STONE_SWORD, Rarity.RARE),
 
+  TARANTULA_PET(Material.PLAYER_HEAD, Rarity.EPIC),
+
   TARANTULA_SILK(Material.COBWEB, Rarity.RARE),
 
   TARANTULA_WEB(Material.STRING, Rarity.UNCOMMON),
@@ -5486,7 +5530,11 @@ public enum ItemType {
 
   TUNGSTEN_PLATE(Material.PAPER, Rarity.RARE),
 
+  TURTLE_PET(Material.PLAYER_HEAD, Rarity.EPIC),
+
   TWILIGHT_ARROW_POISON(Material.PURPLE_DYE, Rarity.UNCOMMON),
+
+  TYRANNOSAURUS_PET(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   ULTIMATE_CARROT_CANDY_UPGRADE(Material.PLAYER_HEAD, Rarity.SPECIAL),
 
@@ -5728,6 +5776,8 @@ public enum ItemType {
 
   WOLF_FUR_MIXIN(Material.PLAYER_HEAD, Rarity.RARE),
 
+  WOLF_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   WOLF_RING(Material.PLAYER_HEAD, Rarity.RARE),
 
   WOLF_TALISMAN(Material.PLAYER_HEAD, Rarity.UNCOMMON),
@@ -5807,6 +5857,8 @@ public enum ItemType {
   ZOMBIE_MASK(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   ZOMBIE_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
+
+  ZOMBIE_PET(Material.PLAYER_HEAD, Rarity.COMMON),
 
   ZOMBIE_RING(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 

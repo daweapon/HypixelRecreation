@@ -63,7 +63,8 @@ public final class MythologicalCombat {
     }
 
     public static void launch(SkyBlockPlayer player, Vec velocity) {
-        if (PetItems.isKnockbackImmune(player)) return;
+        if (PetItems.isKnockbackImmune(player)
+                || net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.isKnockbackImmune(player)) return;
         player.setVelocity(velocity);
     }
 

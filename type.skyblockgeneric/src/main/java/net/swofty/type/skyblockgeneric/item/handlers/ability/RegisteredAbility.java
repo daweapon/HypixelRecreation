@@ -9,6 +9,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.generic.data.datapoints.DatapointInteger;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.NotNull;
@@ -51,6 +52,7 @@ public class RegisteredAbility {
             return false;
         }
         cost.onUse(player, this);
+        CombatPetHooks.abilityCast(player, item);
         return true;
     }
 
@@ -109,6 +111,7 @@ public class RegisteredAbility {
                     20,
                     2
             );
+            if (CombatPetHooks.savesMana(player)) return;
             player.setMana(player.getMana() - cost);
             EnchantmentRefrigerate.onManaUsed(player, cost);
         }

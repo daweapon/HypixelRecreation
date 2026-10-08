@@ -72,6 +72,7 @@ public final class MobAttackService {
 
     private static double gearMultiplier(SkyBlockMob mob, SkyBlockPlayer player) {
         double mythological = mob instanceof MythologicalCreatureMob ? MythologicalGear.incomingDamageMultiplier(player) : 1;
-        return mythological * net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.incomingMultiplier(player, mob);
+        return mythological * net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.incomingMultiplier(player, mob)
+                * net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.mobDamageMultiplier(mob);
     }
 }

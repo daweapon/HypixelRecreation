@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.entity.ArrowEntityImpl;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import net.swofty.type.skyblockgeneric.utility.AttackService;
@@ -46,11 +47,13 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
         playerStats = ItemStatistics.add(playerStats, arrowItem.getAttributeHandler().getStatistics());
 
         Map.Entry<Double, Boolean> hit = PlayerStatistics.runPrimaryDamageFormula(playerStats, entityStats);
-        double damage = hit.getKey() * AttributeEffectService.outgoingDamageMultiplier(shooter.getHuntingData(), collidedWith, true);
+        double damage = hit.getKey() * AttributeEffectService.outgoingDamageMultiplier(shooter.getHuntingData(), collidedWith, true)
+                * CombatPetHooks.arrowMultiplier(shooter, collidedWith);
         boolean critical = hit.getValue();
 
         float damageAmount = (float) damage;
         if (!AttackService.applyHit(shooter, collidedWith, damageAmount, critical)) return;
+        CombatPetHooks.bowHit(shooter);
 
         double ferocity = playerStats.getOverall(ItemStatistic.FEROCITY);
         AttackService.scheduleExtraHits(shooter, collidedWith, damageAmount, critical, ferocity);
