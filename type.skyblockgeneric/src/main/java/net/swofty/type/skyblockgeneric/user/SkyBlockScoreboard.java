@@ -218,10 +218,13 @@ public class SkyBlockScoreboard {
                     }
                 }
 
-                boolean objective = !challenge && !electionRoom && !darkAuction && !seasonalEventActive && !contestShown && region != null
+                boolean objectiveAllowed = !challenge && !electionRoom && !darkAuction && !seasonalEventActive && !contestShown;
+                boolean missionObjective = objectiveAllowed && region != null
                     && !missionData.getActiveMissions(region.getType()).isEmpty();
+                QuestObjective questObjective = objectiveAllowed && !missionObjective ? QuestObjectives.current(player) : null;
+                boolean objective = missionObjective || questObjective != null;
                 TextBody.Section objectives = body.section("objective").when(() -> objective);
-                if (objective) {
+                if (missionObjective) {
                     objectives.line(BLANK);
                     MissionData.ActiveMission mission = missionData.getActiveMissions(region.getType()).getFirst();
                     SkyBlockMission skyBlockMission = MissionData.getMissionClass(mission.getMissionID());
@@ -242,6 +245,15 @@ public class SkyBlockScoreboard {
                             mission.getMissionProgress(),
                             progressMission.getMaxProgress()));
                     }
+                } else if (questObjective != null) {
+                    objectives.line(BLANK);
+                    if (questObjective.target() != null) {
+                        objectives.line(Text.key("scoreboard.skyblock.objective_with_arrow",
+                            Text.parse(BlockUtility.getArrow(player.getPosition(), questObjective.target()))));
+                    } else {
+                        objectives.line(Text.key("scoreboard.skyblock.objective_label"));
+                    }
+                    objectives.line("<e>{}", questObjective.text());
                 }
 
                 body.section("footer").line(BLANK).line(Text.key("scoreboard.common.footer"));
