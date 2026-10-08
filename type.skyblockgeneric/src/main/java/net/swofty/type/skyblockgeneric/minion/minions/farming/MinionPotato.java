@@ -4,6 +4,9 @@ import net.minestom.server.color.Color;
 import net.minestom.server.item.Material;
 import net.swofty.type.skyblockgeneric.minion.MinionAction;
 import net.swofty.type.skyblockgeneric.minion.SkyBlockMinion;
+import net.swofty.type.skyblockgeneric.minion.actions.MinionCropAction;
+import net.swofty.type.skyblockgeneric.minion.crop.CropFieldExpectation;
+import net.swofty.type.skyblockgeneric.minion.crop.MinionCrop;
 
 import java.util.List;
 
@@ -67,11 +70,11 @@ public class MinionPotato extends SkyBlockMinion {
 
     @Override
     public List<MinionExpectation> getExpectations() {
-        throw new RuntimeException("Not implemented yet");
+        return List.of(new CropFieldExpectation(MinionCrop.POTATO));
     }
 
     @Override
     public MinionAction getAction() {
-        throw new RuntimeException("Not implemented yet");
+        return new MinionCropAction(MinionCrop.POTATO);
     }
 }

@@ -1,11 +1,12 @@
 package net.swofty.type.skyblockgeneric.minion.minions.farming;
 
 import net.minestom.server.color.Color;
-import net.minestom.server.instance.block.Block;
 import net.minestom.server.item.Material;
 import net.swofty.type.skyblockgeneric.minion.MinionAction;
 import net.swofty.type.skyblockgeneric.minion.SkyBlockMinion;
-import net.swofty.type.skyblockgeneric.minion.actions.MinionMineAction;
+import net.swofty.type.skyblockgeneric.minion.actions.MinionCropAction;
+import net.swofty.type.skyblockgeneric.minion.crop.CropFieldExpectation;
+import net.swofty.type.skyblockgeneric.minion.crop.MinionCrop;
 
 import java.util.List;
 
@@ -69,11 +70,11 @@ public class MinionCactus extends SkyBlockMinion {
 
     @Override
     public List<MinionExpectation> getExpectations() {
-        throw new RuntimeException("Not implemented yet");
+        return List.of(new CropFieldExpectation(MinionCrop.CACTUS));
     }
 
     @Override
     public MinionAction getAction() {
-        return new MinionMineAction(Block.CACTUS);
+        return new MinionCropAction(MinionCrop.CACTUS);
     }
 }
