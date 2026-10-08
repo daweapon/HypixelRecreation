@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "pets"
+    name: "The Pets Update"
+    date: "8th October 2026"
+    material: bone
+    title: "The Pets Update"
+    book: "pets_update.yml"
   - version: "crimson-isle"
     name: "The Crimson Isle Update"
     date: "8th October 2026"
