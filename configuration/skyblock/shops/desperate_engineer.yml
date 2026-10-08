@@ -1,0 +1,7 @@
+# The Desperate Engineer in The Wasteland (wiki Desperate Engineer/UI).
+title: Desperate Engineer
+slots: [22]
+entries:
+  - item: MOODY_GRAPPLESHOT
+    material: tripwire_hook
+    cost: { coins: 3562000 }
