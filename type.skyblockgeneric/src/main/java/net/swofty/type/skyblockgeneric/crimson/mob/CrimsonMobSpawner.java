@@ -17,12 +17,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 
 /**
- * Keeps the Crimson Isle's regular mobs topped up in their areas. Hypixel publishes no caps or respawn rates, so
- * every count below is an estimate (spec 03 §1.1), except the 12 Flare pillars and the 2 Hellwisps. Blazes only
- * spawn from 17:00 to 09:00 and Ghasts from 19:00 to 06:00 SkyBlock time; out of hours the idle ones leave.
+ * Keeps the Crimson Isle's regular mobs topped up at their spawn spots ({@link CrimsonSpawnPoints}). Hypixel
+ * publishes no caps or respawn rates, so every count below is an estimate (spec 03 §1.1), except the 12 Flare
+ * pillars and the 2 Hellwisps. Blazes only spawn from 17:00 to 09:00 and Ghasts from 19:00 to 06:00 SkyBlock
+ * time; out of hours the idle ones leave.
  */
 public final class CrimsonMobSpawner {
-    static final Pos BLADESOUL_ARENA = new Pos(-295, 83, -518);
     static final double RARE_VARIANT_CHANCE = 5;
     private static final double LEASH = 48;
     private static final List<Rule> RULES = new ArrayList<>();
@@ -32,15 +32,11 @@ public final class CrimsonMobSpawner {
     }
 
     static {
-        List<Pos> strongholdEast = CrimsonSpawnPoints.STRONGHOLD_EAST.stream()
-                .filter(point -> point.distance(BLADESOUL_ARENA) > 14).toList();
-        List<Pos> stronghold = new ArrayList<>(strongholdEast);
-        stronghold.addAll(CrimsonSpawnPoints.STRONGHOLD_WEST);
-        rule(stronghold, 12, Hours.NIGHT_BLAZE, MobBlaze::new);
-        rule(stronghold, 4, Hours.ALWAYS, MobMutatedBlaze::new);
-        rule(strongholdEast, 8, Hours.ALWAYS, MobWitherSkeleton::new);
-        rule(CrimsonSpawnPoints.STRONGHOLD_WEST, 8, Hours.ALWAYS, MobWitherSpectre::new);
-        rule(CrimsonSpawnPoints.STRONGHOLD_LOWER, 4, Hours.ALWAYS, MobBezal::new);
+        rule(CrimsonSpawnPoints.STRONGHOLD_BLAZE, 12, Hours.NIGHT_BLAZE, MobBlaze::new);
+        rule(CrimsonSpawnPoints.STRONGHOLD_MUTATED_BLAZE, 4, Hours.ALWAYS, MobMutatedBlaze::new);
+        rule(CrimsonSpawnPoints.STRONGHOLD_WITHER_SKELETON, 8, Hours.ALWAYS, MobWitherSkeleton::new);
+        rule(CrimsonSpawnPoints.STRONGHOLD_WITHER_SPECTRE, 8, Hours.ALWAYS, MobWitherSpectre::new);
+        rule(CrimsonSpawnPoints.STRONGHOLD_BEZAL, 4, Hours.ALWAYS, MobBezal::new);
         rule(CrimsonSpawnPoints.SMOLDERING_TOMB_UPPER, 12, Hours.ALWAYS, MobSmolderingBlaze::new);
         rule(CrimsonSpawnPoints.SMOLDERING_TOMB_LOWER, 4, Hours.ALWAYS, MobMillenniaAgedBlaze::new);
         rule(CrimsonSpawnPoints.BURNING_DESERT, 10, Hours.ALWAYS, MobFlamingSpider::new);
@@ -50,7 +46,7 @@ public final class CrimsonMobSpawner {
         rule(CrimsonSpawnPoints.MAGMA_CAVES, 6, Hours.ALWAYS, MobKadaKnight::new);
         rule(CrimsonSpawnPoints.WASTELAND_SKY, 6, Hours.NIGHT_GHAST, MobGhast::new);
         rule(CrimsonSpawnPoints.WASTELAND_SKY, 4, Hours.NIGHT_GHAST, MobDiveGhast::new);
-        rule(CrimsonSpawnPoints.MYSTIC_MARSH, 8, Hours.ALWAYS, MobMushroomBull::new);
+        rule(CrimsonSpawnPoints.MYSTIC_MARSH_BULLS, 8, Hours.ALWAYS, MobMushroomBull::new);
         rule(CrimsonSpawnPoints.MYSTIC_MARSH, 6, Hours.ALWAYS, MobExe::new);
         rule(CrimsonSpawnPoints.MAGE_OUTPOST, 10, Hours.ALWAYS,
                 () -> rare() ? new MobKrondorNecromancer() : new MobFireMage());
