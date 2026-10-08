@@ -1,6 +1,9 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.rusty;
 
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.slayer.SlayerRequirement;
+import net.swofty.type.skyblockgeneric.slayer.SlayerType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -15,7 +18,8 @@ public class GUIRustyPetsAndPetItems extends GUIRustySubMenu<GUIRustyPetsAndPetI
     }
 
     public enum RustyItem implements ShopEntry {
-        ;
+        REAPER_GEM(new SkyBlockItem(ItemType.REAPER_GEM), 20_000_000,
+                player -> SlayerRequirement.level(player, SlayerType.REVENANT_HORROR) >= 9);
 
         private final SkyBlockItem item;
         private final int price;

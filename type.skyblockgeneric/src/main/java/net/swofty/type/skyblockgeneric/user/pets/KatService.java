@@ -9,6 +9,8 @@ import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
+
 /**
  * Kat's pet sitting: one pet at a time is upgraded to its next rarity after a real-time wait, for
  * coins (0.3% cheaper per pet level) and items, if the player's Taming is high enough.
@@ -43,6 +45,7 @@ public final class KatService {
     }
 
     public static @Nullable String problem(SkyBlockPlayer player, SkyBlockItem pet) {
+        if (PetItems.isTierBoosted(pet)) return "Kat can't upgrade a pet that is holding a Tier Boost!";
         KatUpgrade upgrade = upgradeFor(pet);
         if (upgrade == null) return "Kat can't upgrade this pet any further!";
         Rarity next = nextRarity(pet);
@@ -58,12 +61,21 @@ public final class KatService {
         return null;
     }
 
+    public record Bill(Rarity target, long coins, List<KatUpgrade.ItemCost> items, long timeMillis) {
+    }
+
+    public static @Nullable Bill bill(SkyBlockItem pet) {
+        KatUpgrade upgrade = upgradeFor(pet);
+        if (upgrade == null || PetItems.isTierBoosted(pet)) return null;
+        return new Bill(nextRarity(pet), coins(pet, upgrade), upgrade.items(), upgrade.timeMillis());
+    }
+
     public static boolean start(SkyBlockPlayer player, SkyBlockItem pet) {
         if (problem(player, pet) != null || player.getKatData().getPet() != null) return false;
-        KatUpgrade upgrade = upgradeFor(pet);
-        player.removeCoins(coins(pet, upgrade));
-        for (KatUpgrade.ItemCost cost : upgrade.items()) player.removeItemFromPlayer(cost.item(), cost.amount());
-        player.getKatData().set(System.currentTimeMillis() + upgrade.timeMillis(), pet);
+        Bill bill = bill(pet);
+        player.removeCoins(bill.coins());
+        for (KatUpgrade.ItemCost cost : bill.items()) player.removeItemFromPlayer(cost.item(), cost.amount());
+        player.getKatData().set(System.currentTimeMillis() + bill.timeMillis(), pet);
         return true;
     }
 

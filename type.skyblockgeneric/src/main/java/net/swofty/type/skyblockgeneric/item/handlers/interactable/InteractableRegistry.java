@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.potion.GodPotionService;
 import net.swofty.type.skyblockgeneric.slayer.MaddoxBatphone;
 import net.swofty.type.skyblockgeneric.spray.SprayCanHandlers;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
+import net.swofty.type.skyblockgeneric.user.pets.PetItems;
 import net.swofty.type.skyblockgeneric.utility.JerryInformation;
 
 import java.util.HashMap;
@@ -32,6 +33,7 @@ public class InteractableRegistry {
         SnowCannon.registerInteractables();
         CrimsonItemHandlers.registerInteractables();
         ReaperPepper.registerInteractables();
+        PetItems.registerInteractables();
         register("SKYBLOCK_MENU_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 ((skyBlockPlayer, skyBlockItem) -> skyBlockPlayer.openView(new GUISkyBlockMenu()))
         ).leftClickHandler(

@@ -64,15 +64,16 @@ public final class PetExperience {
     }
 
     public static void share(SkyBlockPlayer player, SkyBlockItem summoned, double summonedXP) {
+        if (summonedXP <= 0) return;
         double rate = shareRate(player);
-        if (rate <= 0 || summonedXP <= 0) return;
 
         DatapointPetData.UserPetData data = player.getPetData();
         for (int slot = 0; slot < DatapointPetData.EXP_SHARE_SLOTS; slot++) {
             SkyBlockItem pet = data.getExpSharePet(slot);
             if (pet == null || pet == summoned || !isSlotActive(slot)) continue;
             if (pet.getComponent(PetComponent.class).isFixedLevel()) continue;
-            PetLevels.addExperience(pet, summonedXP * rate);
+            double petRate = rate + PetItems.expShareRate(pet);
+            if (petRate > 0) PetLevels.addExperience(pet, summonedXP * petRate);
         }
     }
 

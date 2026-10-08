@@ -1,134 +1,795 @@
 items:
-  - id: ALL_SKILLS_EXP_BOOST
+  - id: PET_ITEM_ALL_SKILLS_BOOST_COMMON
     material: diamond
     name: "All Skills Exp Boost"
     rarity: COMMON
     components:
       - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+10% <7>pet exp for all skills."
         pet_exp_boost: 10
-        description:
-          - "\xA77Gives \xA7a+10% \xA77pet exp for all skills."
       - id: ENCHANTED
-      - id: NOT_FINISHED_YET
-  - id: BIG_TEETH
-    material: ghast_tear
-    name: "Big Teeth"
+  - id: PET_ITEM_FARMING_SKILL_BOOST_COMMON
+    material: iron_hoe
+    name: "Farming Exp Boost"
     rarity: COMMON
     components:
-      - id: ENCHANTED
       - id: PET_ITEM
-        statistics:
-          critical_chance: 5
         description:
-          - "\xA77Grants \xA79+5 \u2623 Crit Chance\xA77."
-      - id: NOT_FINISHED_YET
-  - id: BUBBLEGUM
-    material: player_head
-    name: "Bubblegum"
+          - "<7>Gives <a>+20% <7>pet exp for <a>Farming<7>."
+        pet_exp_boost: 20
+        pet_exp_skill: FARMING
+      - id: ENCHANTED
+  - id: PET_ITEM_FARMING_SKILL_BOOST_UNCOMMON
+    material: iron_hoe
+    name: "Farming Exp Boost"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+30% <7>pet exp for <a>Farming<7>."
+        pet_exp_boost: 30
+        pet_exp_skill: FARMING
+      - id: ENCHANTED
+  - id: PET_ITEM_FARMING_SKILL_BOOST_RARE
+    material: iron_hoe
+    name: "Farming Exp Boost"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+40% <7>pet exp for <a>Farming<7>."
+        pet_exp_boost: 40
+        pet_exp_skill: FARMING
+      - id: ENCHANTED
+  - id: PET_ITEM_FARMING_SKILL_BOOST_EPIC
+    material: iron_hoe
+    name: "Farming Exp Boost"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+50% <7>pet exp for <a>Farming<7>."
+        pet_exp_boost: 50
+        pet_exp_skill: FARMING
+      - id: ENCHANTED
+  - id: PET_ITEM_MINING_SKILL_BOOST_COMMON
+    material: iron_pickaxe
+    name: "Mining Exp Boost"
     rarity: COMMON
     components:
-      - id: SKULL_HEAD
-        texture: c68d716a20f1718c4478a9e9d423a4860143c2773be59c9c9d6984e8431155
       - id: PET_ITEM
-      - id: NOT_FINISHED_YET
-  - id: COMBAT_EXP_BOOST
+        description:
+          - "<7>Gives <a>+20% <7>pet exp for <a>Mining<7>."
+        pet_exp_boost: 20
+        pet_exp_skill: MINING
+      - id: ENCHANTED
+  - id: PET_ITEM_MINING_SKILL_BOOST_UNCOMMON
+    material: iron_pickaxe
+    name: "Mining Exp Boost"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+30% <7>pet exp for <a>Mining<7>."
+        pet_exp_boost: 30
+        pet_exp_skill: MINING
+      - id: ENCHANTED
+  - id: PET_ITEM_MINING_SKILL_BOOST_RARE
+    material: iron_pickaxe
+    name: "Mining Exp Boost"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+40% <7>pet exp for <a>Mining<7>."
+        pet_exp_boost: 40
+        pet_exp_skill: MINING
+      - id: ENCHANTED
+  - id: PET_ITEM_COMBAT_SKILL_BOOST_COMMON
     material: iron_sword
     name: "Combat Exp Boost"
     rarity: COMMON
     components:
-      - id: ENCHANTED
       - id: PET_ITEM
-      - id: NOT_FINISHED_YET
-  - id: FARMING_EXP_BOOST_COMMON
-    material: iron_hoe
-    name: "Farming Exp Boost Common"
-    rarity: COMMON
+        description:
+          - "<7>Gives <a>+20% <7>pet exp for <a>Combat<7>."
+        pet_exp_boost: 20
+        pet_exp_skill: COMBAT
+      - id: ENCHANTED
+  - id: PET_ITEM_COMBAT_SKILL_BOOST_UNCOMMON
+    material: iron_sword
+    name: "Combat Exp Boost"
+    rarity: UNCOMMON
     components:
-      - id: ENCHANTED
       - id: PET_ITEM
-      - id: CUSTOM_DISPLAY_NAME
-        display_name: Farming Exp Boost
-      - id: NOT_FINISHED_YET
-  - id: FARMING_EXP_BOOST_RARE
-    material: iron_hoe
-    name: "Farming Exp Boost Rare"
-    rarity: COMMON
+        description:
+          - "<7>Gives <a>+30% <7>pet exp for <a>Combat<7>."
+        pet_exp_boost: 30
+        pet_exp_skill: COMBAT
+      - id: ENCHANTED
+  - id: PET_ITEM_COMBAT_SKILL_BOOST_RARE
+    material: iron_sword
+    name: "Combat Exp Boost"
+    rarity: RARE
     components:
-      - id: ENCHANTED
       - id: PET_ITEM
-      - id: CUSTOM_DISPLAY_NAME
-        display_name: Farming Exp Boost
-      - id: NOT_FINISHED_YET
-  - id: FISHING_EXP_BOOST
-    material: cod
-    name: "Fishing Exp Boost"
-    rarity: COMMON
+        description:
+          - "<7>Gives <a>+40% <7>pet exp for <a>Combat<7>."
+        pet_exp_boost: 40
+        pet_exp_skill: COMBAT
+      - id: ENCHANTED
+  - id: PET_ITEM_COMBAT_SKILL_BOOST_EPIC
+    material: iron_sword
+    name: "Combat Exp Boost"
+    rarity: EPIC
     components:
-      - id: ENCHANTED
       - id: PET_ITEM
-      - id: NOT_FINISHED_YET
-  - id: FORAGING_EXP_BOOST
+        description:
+          - "<7>Gives <a>+50% <7>pet exp for <a>Combat<7>."
+        pet_exp_boost: 50
+        pet_exp_skill: COMBAT
+      - id: ENCHANTED
+  - id: PET_ITEM_FORAGING_SKILL_BOOST_COMMON
     material: iron_axe
     name: "Foraging Exp Boost"
     rarity: COMMON
     components:
-      - id: ENCHANTED
       - id: PET_ITEM
-      - id: NOT_FINISHED_YET
-  - id: HARDENED_SCALES
-    material: prismarine_crystals
-    name: "Hardened Scales"
+        description:
+          - "<7>Gives <a>+20% <7>pet exp for <a>Foraging<7>."
+        pet_exp_boost: 20
+        pet_exp_skill: FORAGING
+      - id: ENCHANTED
+  - id: PET_ITEM_FORAGING_SKILL_BOOST_UNCOMMON
+    material: iron_axe
+    name: "Foraging Exp Boost"
     rarity: UNCOMMON
     components:
-      - id: ENCHANTED
       - id: PET_ITEM
-        statistics:
-          defense: 25
         description:
-          - "\xA77Grants \xA7a+25 \u2748 Defense\xA77."
-      - id: NOT_FINISHED_YET
-  - id: IRON_CLAWS
+          - "<7>Gives <a>+30% <7>pet exp for <a>Foraging<7>."
+        pet_exp_boost: 30
+        pet_exp_skill: FORAGING
+      - id: ENCHANTED
+  - id: PET_ITEM_FORAGING_SKILL_BOOST_RARE
+    material: iron_axe
+    name: "Foraging Exp Boost"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+40% <7>pet exp for <a>Foraging<7>."
+        pet_exp_boost: 40
+        pet_exp_skill: FORAGING
+      - id: ENCHANTED
+  - id: PET_ITEM_FORAGING_SKILL_BOOST_EPIC
+    material: iron_axe
+    name: "Foraging Exp Boost"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+50% <7>pet exp for <a>Foraging<7>."
+        pet_exp_boost: 50
+        pet_exp_skill: FORAGING
+      - id: ENCHANTED
+  - id: PET_ITEM_FISHING_SKILL_BOOST_COMMON
+    material: cod
+    name: "Fishing Exp Boost"
+    rarity: COMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+20% <7>pet exp for Fishing."
+        pet_exp_boost: 20
+        pet_exp_skill: FISHING
+      - id: ENCHANTED
+  - id: PET_ITEM_FISHING_SKILL_BOOST_UNCOMMON
+    material: cod
+    name: "Fishing Exp Boost"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+30% <7>pet exp for <a>Fishing<7>."
+        pet_exp_boost: 30
+        pet_exp_skill: FISHING
+      - id: ENCHANTED
+  - id: PET_ITEM_FISHING_SKILL_BOOST_RARE
+    material: cod
+    name: "Fishing Exp Boost"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+40% <7>pet exp for <a>Fishing<7>."
+        pet_exp_boost: 40
+        pet_exp_skill: FISHING
+      - id: ENCHANTED
+  - id: PET_ITEM_FISHING_SKILL_BOOST_EPIC
+    material: cod
+    name: "Fishing Exp Boost"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gives <a>+50% <7>pet exp for <a>Fishing<7>."
+        pet_exp_boost: 50
+        pet_exp_skill: FISHING
+      - id: ENCHANTED
+  - id: PET_ITEM_BIG_TEETH_COMMON
+    material: ghast_tear
+    name: "Big Teeth"
+    rarity: COMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <9>+5<glyph:stat_crit_chance> Crit Chance<7>."
+        statistics: { critical_chance: 5 }
+      - id: ENCHANTED
+  - id: PET_ITEM_IRON_CLAWS_COMMON
     material: iron_ingot
     name: "Iron Claws"
     rarity: COMMON
     components:
-      - id: ENCHANTED
       - id: PET_ITEM
-        pet_stat_boost:
-          critical_damage: 40
-          critical_chance: 40
         description:
-          - "\xA77Increases the pet's \xA79\u2620 Crit Damage"
-          - "\xA77and \xA79\u2623 Crit Chance \xA77by \xA7a40%\xA77."
-      - id: NOT_FINISHED_YET
-  - id: MINING_EXP_BOOST_COMMON
-    material: iron_pickaxe
-    name: "Mining Exp Boost Common"
-    rarity: COMMON
-    components:
+          - "<7>Increases the pet's <9><glyph:stat_crit_damage> Crit Damage"
+          - "<7>by <a>40% <7>and <9><glyph:stat_crit_chance> Crit Chance <7>by <a>40%<7>."
+        pet_stat_boost: { critical_chance: 40, critical_damage: 40 }
       - id: ENCHANTED
-      - id: PET_ITEM
-      - id: CUSTOM_DISPLAY_NAME
-        display_name: Mining Exp Boost
-      - id: NOT_FINISHED_YET
-  - id: MINING_EXP_BOOST_RARE
-    material: iron_pickaxe
-    name: "Mining Exp Boost Rare"
-    rarity: COMMON
-    components:
-      - id: ENCHANTED
-      - id: PET_ITEM
-      - id: CUSTOM_DISPLAY_NAME
-        display_name: Mining Exp Boost
-      - id: NOT_FINISHED_YET
-  - id: SHARPENED_CLAWS
+  - id: PET_ITEM_SHARPENED_CLAWS_UNCOMMON
     material: prismarine_shard
     name: "Sharpened Claws"
     rarity: UNCOMMON
     components:
-      - id: ENCHANTED
       - id: PET_ITEM
-        statistics:
-          critical_damage: 15
         description:
-          - "\xA77Grants \xA79+15 \u2620 Crit Damage\xA77."
+          - "<7>Grants <9>+15<glyph:stat_crit_damage> Crit Damage<7>."
+        statistics: { critical_damage: 15 }
+      - id: ENCHANTED
+  - id: PET_ITEM_HARDENED_SCALES_UNCOMMON
+    material: prismarine_crystals
+    name: "Hardened Scales"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <a>+25<glyph:stat_defense> Defense<7>."
+        statistics: { defense: 25 }
+      - id: ENCHANTED
+  - id: PET_ITEM_SPOOKY_CUPCAKE
+    material: player_head
+    name: "Spooky Cupcake"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <c>+30<glyph:stat_strength> Strength<7> and <f>+20<glyph:stat_speed>"
+          - "<f>Speed<7>."
+        statistics: { strength: 30, speed: 20 }
+      - id: SKULL_HEAD
+        texture: 497ad99d53aacce6b7a84d874e67b8c56fadedfdf6a2565c7626cefbfc30c351
+  - id: PET_ITEM_SADDLE
+    material: saddle
+    name: "Saddle"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <f>+30<glyph:stat_speed> Speed<7>."
+        statistics: { speed: 30 }
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_LEATHER
+                amount: 8
+              B:
+                type: ENCHANTED_IRON_INGOT
+                amount: 8
+            result:
+              type: PET_ITEM_SADDLE
+              amount: 1
+  - id: MAGIC_FOR_PETS
+    material: paper
+    name: "Magic For Pets In A Hurry"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <f>+20<glyph:stat_speed> Speed<7> and <b>+50<glyph:stat_intelligence>"
+          - "<b>Intelligence<7>."
+        statistics: { speed: 20, intelligence: 50 }
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AA"
+              - "AB"
+            ingredients:
+              A:
+                type: ENCHANTED_PAPER
+                amount: 1
+              B:
+                type: ENCHANTED_RABBIT_HIDE
+                amount: 1
+            result:
+              type: MAGIC_FOR_PETS
+              amount: 1
+  - id: PET_ITEM_LUCKY_CLOVER
+    material: lily_pad
+    name: "Lucky Clover"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <b>+7<glyph:stat_magic_find> Magic Find<7> and <e>+7<glyph:stat_overbloom>"
+          - "<e>Overbloom<7>."
+        statistics: { magic_find: 7, overbloom: 7 }
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_EMERALD
+                amount: 32
+              B:
+                type: PET_ITEM_LUCKY_CLOVER_DROP
+                amount: 1
+            result:
+              type: PET_ITEM_LUCKY_CLOVER
+              amount: 1
+  - id: POIGNANT_LUCKY_CLOVER
+    material: paper
+    name: "Poignant Lucky Clover"
+    rarity: LEGENDARY
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <b>+13<glyph:stat_magic_find> Magic Find<7> and <e>+13<glyph:stat_overbloom>"
+          - "<e>Overbloom<7>."
+        statistics: { magic_find: 13, overbloom: 13 }
+      - id: ENCHANTED
+  - id: YELLOW_BANDANA
+    material: player_head
+    name: "Yellow Bandana"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <6>+30<glyph:stat_farming_fortune> Farming Fortune<7>."
+        statistics: { farming_fortune: 30 }
+      - id: SKULL_HEAD
+        texture: 799d16737b4f2633f9e7c4538992115c107928a9a01abff407c0297194bd6867
+  - id: GREEN_BANDANA
+    material: player_head
+    name: "Green Bandana"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <6>+4<glyph:stat_farming_fortune> Farming Fortune <7>for"
+          - "<7>each of your Garden Levels."
+        inactive: true
+      - id: SKULL_HEAD
+        texture: 3521cccdbb892dff183d97bbdb12f2671e0cd12b945b8fca211a7065359a03a5
+  - id: BROWN_BANDANA
+    material: player_head
+    name: "Brown Bandana"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gain <2>+0.2<glyph:stat_bonus_pest_chance> Bonus Pest Chance <7>for"
+          - "<7>every <3>Pest Bestiary <7>tier unlocked."
+        inactive: true
+      - id: SKULL_HEAD
+        texture: 674e061e6d853822bbad56d079357c248c9a40de494f20eae0078a0a02ef0da7
+  - id: BEJEWELED_COLLAR
+    material: player_head
+    name: "Bejeweled Collar"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <6>+25<glyph:stat_mining_speed> Mining Speed<7> and <6>+10<glyph:stat_mining_fortune>"
+          - "<6>Mining Fortune<7>."
+        statistics: { mining_speed: 25, mining_fortune: 10 }
+      - id: SKULL_HEAD
+        texture: 9ca2fda0290626f337e96adbb570fc476d5403344fb39535aa7dacfe85d01640
+  - id: PET_ITEM_TITANIUM_MINECART
+    material: player_head
+    name: "Titanium Minecart"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <6>+33.3<glyph:stat_mining_fortune> Mining Fortune <7>while"
+          - "<7>mining <f>Titanium Ore<7>."
+        inactive: true
+      - id: SKULL_HEAD
+        texture: cae0d1550fda69833c6ab884746d039bd752a4f2e44472cc0a3b05c694f8059b
+  - id: PET_ITEM_QUICK_CLAW
+    material: player_head
+    name: "Quick Claw"
+    rarity: LEGENDARY
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Every 2 pet levels, you gain <6>+1<glyph:stat_mining_speed>"
+          - "<6>Mining Speed <7>and <6>+1<glyph:stat_mining_fortune> Mining Fortune<7>."
+        level_statistics: { every: 2, statistics: { mining_speed: 1, mining_fortune: 1 } }
+      - id: SKULL_HEAD
+        texture: 6312a5a12ecb24d6852db388e6a34721cc67f522ccde7e824b9f75e95036ac93
+  - id: EDIBLE_SEAWEED
+    material: player_head
+    name: "Edible Seaweed"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <b>+10<glyph:stat_fishing_speed> Fishing Speed<7>."
+        statistics: { fishing_speed: 10 }
+      - id: SKULL_HEAD
+        texture: ef77346f5894cf0f5eff2a4c06cb9b6eab0bf39d789191b70cf7c08d36fda248
+  - id: SNAKE_EYES
+    material: player_head
+    name: "Snake Eyes"
+    rarity: LEGENDARY
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <6>+1.1<glyph:stat_treasure_chance> Treasure Chance<7>."
+        statistics: { treasure_chance: 1.1 }
+      - id: SKULL_HEAD
+        texture: 87f65850c37bdff7802a7dd1cd4dc6798308318e53d1588df0fba108c9e4d6fe
+  - id: BURNT_TEXTS
+    material: player_head
+    name: "Burnt Texts"
+    rarity: LEGENDARY
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <9>+5<glyph:stat_double_hook_chance> Double Hook Chance<7>, but"
+          - "<7>reduces your <b><glyph:stat_fishing_speed> Fishing Speed <7>by <c>50<7>."
+        statistics: { double_hook_chance: 5, fishing_speed: -50 }
+      - id: SKULL_HEAD
+        texture: 78bd1889bf8a635ec71fc05b1ed548763778e3d371926d39a62c29d350c48b49
+  - id: RUBBER_SNORKEL
+    material: paper
+    name: "Rubber Snorkel"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <3>5<glyph:stat_respiration> Respiration<7>, doubled while"
+          - "<7>on <2>Foraging Islands<7>."
+          - "<8>(Foraging Islands doubling not active yet)"
+        statistics: { respiration: 5 }
+  - id: WINDING_IVY
+    material: paper
+    name: "Winding Ivy"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <2>+10<glyph:stat_sweep> Sweep<7>."
+        statistics: { sweep: 10 }
+  - id: PET_ITEM_TEXTBOOK
+    material: book
+    name: "Textbook"
+    rarity: LEGENDARY
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Increases the pet's <b><glyph:stat_intelligence> Intelligence"
+          - "<7>by <a>100%<7>."
+        pet_stat_boost: { intelligence: 100 }
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_LAPIS_LAZULI_BLOCK
+                amount: 1
+              B:
+                type: ENCHANTED_PAPER
+                amount: 64
+            result:
+              type: PET_ITEM_TEXTBOOK
+              amount: 1
+  - id: REAPER_GEM
+    material: player_head
+    name: "Reaper Gem"
+    rarity: LEGENDARY
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Gain <c>8<glyph:stat_ferocity> Ferocity <7>for <a>5s <7>on kill."
+        kill_buff: { seconds: 5, statistics: { ferocity: 8 } }
+      - id: SKULL_HEAD
+        texture: 2b055c810bddfd16264ec8d439c43283e35bca71a50983e15e364cd8ab7c668f
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: UNALLOYED_SPEED
+    material: player_head
+    name: "Unalloyed Speed"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <f>+50 Max Speed Cap<7>."
+        inactive: true
+      - id: SKULL_HEAD
+        texture: 5abb1fa47fe3dc76ec88614b4eb7645e8e88fcf36bb62bc2bfdd17ede7502dd1
+  - id: DEAD_CAT_FOOD
+    material: cooked_cod
+    name: "Tasty Cat Food"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Use on a <2>mythological cat <7>to"
+          - "<7>transform this item."
+          - ""
+          - "<8>Pss-pss-pss-pss"
+          - "<8>Good cats only!"
+        pet: MONTEZUMA_PET
+        inactive: true
+  - id: PET_ITEM_FLYING_PIG
+    material: feather
+    name: "Flying Pig"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <6>+40<glyph:stat_farming_fortune> Potato Fortune<7> and"
+          - "<f>+20<glyph:stat_speed> Speed<7>."
+        statistics: { potato_fortune: 40, speed: 20 }
+        pet: PIG_PET
+      - id: ENCHANTED
+  - id: GRANDMAS_KNITTING_NEEDLE
+    material: stick
+    name: "Grandma's Knitting Needle"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Grants <b>+5% <glyph:stat_magic_find> Magic Find <7>when"
+          - "<7>getting a combo of <a>50 <7>or above."
+        pet: GRANDMA_WOLF_PET
+        inactive: true
+  - id: PET_ITEM_BINGO_BOOSTER
+    material: rabbit_foot
+    name: "Bingo Booster"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Doubles the efficiency of the"
+          - "<6>Lucky Looting <7>perk of your"
+          - "<7>Bingo Pet."
+        pet: BINGO_PET
+        inactive: true
+  - id: CONTRABAND
+    material: paper
+    name: "Drone Mod: Contraband"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Can be applied to <6>Precursor Drone"
+          - "<7>to grant it <3>+7.5<glyph:stat_sea_creature_chance> Sea Creature"
+          - "<3>Chance <7>and unlock the <6>Contraband"
+          - "<7>perk."
+          - ""
+          - "<6>Contraband"
+          - "<7>When <b>Fishing<7>, catching a <3>Sea"
+          - "<3>Creature <7>has a <a>0.1-10% <7>chance to"
+          - "<7>also give you <6>Treasure<7>."
+          - "<8>Chances scale with pet level."
+          - "<8>(Not active yet)"
+        statistics: { sea_creature_chance: 7.5 }
+        pet: PRECURSOR_DRONE_PET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " A "
+              - "BCB"
+              - " D "
+            ingredients:
+              A:
+                type: OLD_LEATHER_BOOT
+                amount: 1
+              B:
+                type: RUSTY_COIN
+                amount: 32
+              C:
+                type: WATER_ORB
+                amount: 1
+              D:
+                type: BUSTED_BELT_BUCKLE
+                amount: 8
+            result:
+              type: CONTRABAND
+              amount: 1
+  - id: GRUNGLE
+    material: paper
+    name: "Drone Mod: Grungle"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Can be applied to <6>Precursor Drone"
+          - "<7>to grant it <6>+50<glyph:stat_foraging_fortune> Foraging Fortune"
+          - "<7>and unlock the <6>Grungle <7>perk."
+          - ""
+          - "<6>Grungle"
+          - "<7>When <2>Foraging<7>, you can now <c><l>ONLY"
+          - "<7>throw your Foraging Axe, but the"
+          - "<c>Throwing Axe Penalty <7>is reduced by"
+          - "<a>0-100%<7>."
+          - "<8>Chances scale with pet level."
+          - "<8>(Not active yet)"
+        statistics: { foraging_fortune: 50 }
+        pet: PRECURSOR_DRONE_PET
+  - id: MINING_OFF_CAMERA
+    material: paper
+    name: "Drone Mod: Mining Off Camera"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Can be applied to <6>Precursor Drone"
+          - "<7>to grant it <6>+75<glyph:stat_mining_fortune> Mining Fortune <7>and"
+          - "<7>unlock the <6>Mining Off Camera <7>perk."
+          - ""
+          - "<6>Mining Off Camera"
+          - "<7>When <6>Mining<7>, each collection"
+          - "<7>progress grants a <a>0.0005-0.005%"
+          - "<7>chance to drop a random enchanted"
+          - "<7>mining item."
+          - "<8>Chances scale with pet level."
+          - "<8>(Not active yet)"
+        statistics: { mining_fortune: 75 }
+        pet: PRECURSOR_DRONE_PET
+  - id: PET_ITEM_BUBBLEGUM
+    material: player_head
+    name: "Bubblegum"
+    rarity: RARE
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Your pet fuses its power with placed"
+          - "<9>Deployables <7>to give them <a>2x <7>duration."
+        inactive: true
+      - id: SKULL_HEAD
+        texture: d05584c5394eb90ff5fbd1b25909371258b1526e6a47f72455a3f84dd7603a8c
+  - id: PET_ITEM_EXP_SHARE
+    material: dandelion
+    name: "Exp Share"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>While equipped in an Exp Share slot"
+          - "<7>this pet gains <a>+15% <7>Exp Share rate."
+        exp_share_rate: 15
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - " A "
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_GOLD_INGOT
+                amount: 12
+              B:
+                type: PET_ITEM_EXP_SHARE_DROP
+                amount: 1
+            result:
+              type: PET_ITEM_EXP_SHARE
+              amount: 1
+  - id: PET_ITEM_TIER_BOOST
+    material: hopper
+    name: "Tier Boost"
+    rarity: LEGENDARY
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Boosts the <a>rarity <7>of your pet by 1"
+          - "<7>tier!"
+        tier_boost: { max: LEGENDARY, max_for: { BINGO_PET: MYTHIC } }
+        excluded_pets: [GRIFFIN_PET, DROPLET_WISP_PET, FROST_WISP_PET, GLACIAL_WISP_PET, SUBZERO_WISP_PET]
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - "A A"
+              - "ABA"
+              - " A "
+            ingredients:
+              A:
+                type: ENCHANTED_IRON_BLOCK
+                amount: 2
+              B:
+                type: PET_ITEM_TIER_BOOST_DROP
+                amount: 1
+            result:
+              type: PET_ITEM_TIER_BOOST
+              amount: 1
+  - id: BARREL_OF_RICHES
+    material: player_head
+    name: "Barrel of Riches"
+    rarity: EPIC
+    components:
+      - id: PET_ITEM
+        description:
+          - "<6>Trophies <7>are <a>+10%<7> more likely to be"
+          - "<6><l>GOLD<7>."
+          - ""
+          - "<8><o>A wooden barrel, stuffed to the brim"
+          - "<8><o>with riches of all sorts. The lid won't"
+          - "<8><o>even fit on it!"
+        trophy_tier_boost: { GOLD: 10 }
+      - id: SKULL_HEAD
+        texture: a8c332d6a0032cb37e3d2de7bd7fa672d1fbf0d67beb02388174a01ed44de72b
+  - id: LOTUS_CROWN
+    material: player_head
+    name: "Lotus Crown"
+    rarity: LEGENDARY
+    components:
+      - id: PET_ITEM
+        description:
+          - "<6>Trophies <7>are <a>+10%<7> more likely to be"
+          - "<b><l>DIAMOND<7>."
+          - ""
+          - "<8><o>A splendid, yet tiny crown; just"
+          - "<8><o>about the right size for your pet!"
+        trophy_tier_boost: { DIAMOND: 10 }
+      - id: SKULL_HEAD
+        texture: 7210c8fb8bdfcd5926a7acb006305922fe862cd1e24505e6ece9b7f174d5e3d6
+  - id: UNCOMMON_PARTY_HAT
+    material: player_head
+    name: "Uncommon Party Hat"
+    rarity: UNCOMMON
+    components:
+      - id: PET_ITEM
+        description:
+          - "<7>Adds particles matching your <f>+ <7>color"
+          - "<7>to your pet and yourself, defaulting"
+          - "<7>to red."
+          - "<8>Editable in Hypixel lobbies."
+        inactive: true
+      - id: SKULL_HEAD
+        texture: 38f12470c365b2f1f3c80df1a606858a9daf7dcd6ebe0c9a4a6c684f62d21bcf

@@ -80,6 +80,7 @@ public class MobRedstonePigman extends BestiaryMob implements RegionPopulator {
 			@Override
 			public @NonNull List<LootRecord> getLootTable() {
 				return List.of(
+						new LootRecord(ItemType.PET_ITEM_EXP_SHARE_DROP, 1, 0.01),
 						new LootRecord(ItemType.GOLD_NUGGET, 2, 50),
 						new LootRecord(ItemType.REDSTONE, 5, 50)
 						//new LootRecord(ItemType.FLAMING_SWORD, 1, 0.01),

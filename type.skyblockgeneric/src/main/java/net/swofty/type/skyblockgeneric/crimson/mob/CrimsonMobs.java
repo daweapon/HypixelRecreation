@@ -94,7 +94,7 @@ public final class CrimsonMobs {
             .level(151).entity(EntityType.MAGMA_CUBE).stats(400_000, 2_000).rewards(226, 50, 166)
             .types(MobType.CUBIC, MobType.INFERNAL).bestiary(4, 20, MAGMA_CUBE_HEAD)
             .drops(always("MAGMA_CREAM", 1, 3), chance("MAGMA_CHUNK", 20), pet("MAGMA_CUBE_PET", Rarity.COMMON, 1),
-                    pet("MAGMA_CUBE_PET", Rarity.UNCOMMON, 0.05), chance("COMBAT_EXP_BOOST", 0.1), RAMPART,
+                    pet("MAGMA_CUBE_PET", Rarity.UNCOMMON, 0.05), chance("PET_ITEM_COMBAT_SKILL_BOOST_UNCOMMON", 0.1), RAMPART,
                     pet("MAGMA_CUBE_PET", Rarity.RARE, 0.01), cyclamen(0.00001))
             .build();
 

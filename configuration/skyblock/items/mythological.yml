@@ -1548,7 +1548,7 @@ items:
                 type: ENCHANTED_GOLD_BLOCK
                 amount: 6
               B:
-                type: BIG_TEETH
+                type: PET_ITEM_BIG_TEETH_COMMON
                 amount: 1
               C:
                 type: ZOG_ANVIL
@@ -1582,7 +1582,7 @@ items:
                 type: ENCHANTED_GOLD_BLOCK
                 amount: 6
               B:
-                type: IRON_CLAWS
+                type: PET_ITEM_IRON_CLAWS_COMMON
                 amount: 1
               C:
                 type: ZOG_ANVIL
@@ -1614,7 +1614,7 @@ items:
                 type: ENCHANTED_GOLD_BLOCK
                 amount: 6
               B:
-                type: HARDENED_SCALES
+                type: PET_ITEM_HARDENED_SCALES_UNCOMMON
                 amount: 1
               C:
                 type: ZOG_ANVIL
@@ -1646,7 +1646,7 @@ items:
                 type: ENCHANTED_GOLD_BLOCK
                 amount: 6
               B:
-                type: SHARPENED_CLAWS
+                type: PET_ITEM_SHARPENED_CLAWS_UNCOMMON
                 amount: 1
               C:
                 type: ZOG_ANVIL
@@ -1677,7 +1677,7 @@ items:
                 type: ENCHANTED_GOLD_BLOCK
                 amount: 6
               B:
-                type: ALL_SKILLS_EXP_BOOST
+                type: PET_ITEM_ALL_SKILLS_BOOST_COMMON
                 amount: 1
               C:
                 type: ZOG_ANVIL

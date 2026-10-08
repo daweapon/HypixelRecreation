@@ -72,6 +72,7 @@ items:
           RARE: { coins: 100000, time_seconds: 172800, items: { ICE_HUNK: 64 } }
           EPIC: { coins: 250000, time_seconds: 259200, items: { ICE_HUNK: 128 } }
           LEGENDARY: { coins: 500000, time_seconds: 345600, items: { BLUE_ICE_HUNK: 8 } }
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { POCKET_SIZED_IGLOO: 1 } }
         statistics:
           COMMON: { strength: { per_level: 0.5 }, fishing_speed: { per_level: 0.5 }, sea_creature_chance: { per_level: 0.05 } }
           MYTHIC: { strength: { per_level: 0.5 }, fishing_speed: { per_level: 0.5 }, sea_creature_chance: { per_level: 0.05 }, cold_resistance: { per_level: 0.1 } }

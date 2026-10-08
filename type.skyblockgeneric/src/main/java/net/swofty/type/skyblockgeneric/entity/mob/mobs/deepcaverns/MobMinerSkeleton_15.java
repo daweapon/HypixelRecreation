@@ -82,6 +82,7 @@ public class MobMinerSkeleton_15 extends BestiaryMob implements RegionPopulator 
 			@Override
 			public @NonNull List<LootRecord> getLootTable() {
 				return List.of(
+						new LootRecord(ItemType.PET_ITEM_EXP_SHARE_DROP, 1, 0.01),
 						new LootRecord(ItemType.BONE, 1, 300), // hypixel, why is it 300% and what does that mean?
 						new LootRecord(ItemType.MINER_ARMOR_BOOTS, 1, 1),
 						new LootRecord(ItemType.MINER_ARMOR_LEGGINGS, 1, 1),

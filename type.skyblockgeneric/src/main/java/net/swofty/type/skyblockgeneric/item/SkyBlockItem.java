@@ -19,6 +19,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishLegacyIds;
+import net.swofty.type.skyblockgeneric.user.pets.PetItemLegacyIds;
 import net.swofty.type.skyblockgeneric.item.components.AbilityComponent;
 import net.swofty.type.skyblockgeneric.item.components.EnchantedComponent;
 import net.swofty.type.skyblockgeneric.item.components.NecronsBladeScrollComponent;
@@ -165,7 +166,7 @@ public class SkyBlockItem {
 			return;
 		}
 		String savedItemType = item.getTag(Tag.String("item_type"));
-		String itemType = TrophyFishLegacyIds.migrate(savedItemType);
+		String itemType = PetItemLegacyIds.migrate(TrophyFishLegacyIds.migrate(savedItemType));
 		ItemStatistics statistics = ItemStatistics.empty();
 
 		ItemType type = ItemType.get(itemType);

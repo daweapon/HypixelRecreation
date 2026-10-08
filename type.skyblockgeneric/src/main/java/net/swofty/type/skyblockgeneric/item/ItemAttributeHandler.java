@@ -5,6 +5,7 @@ import net.swofty.commons.ServiceType;
 import net.swofty.commons.protocol.objects.itemtracker.TrackedItemUpdateProtocol;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.commons.skyblock.item.attribute.attributes.*;
 import net.swofty.commons.skyblock.item.reforge.Reforge;
 import net.swofty.commons.skyblock.item.reforge.ReforgeLoader;
@@ -17,6 +18,7 @@ import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.item.components.*;
 import net.swofty.type.skyblockgeneric.minion.MinionRegistry;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetItemLegacyIds;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -498,7 +500,16 @@ public class ItemAttributeHandler {
 
     public @Nullable ItemType getPetHeldItem() {
         String id = ((ItemAttributePetHeldItem) item.getAttribute("pet_held_item")).getValue();
-        return id == null || id.isEmpty() ? null : ItemType.get(id);
+        return id == null || id.isEmpty() ? null : ItemType.get(PetItemLegacyIds.migrate(id));
+    }
+
+    public int getPetCandyUsed() {
+        ItemAttribute attribute = item.getAttribute("pet_candy_used");
+        return attribute == null ? 0 : ((ItemAttributePetCandyUsed) attribute).getValue();
+    }
+
+    public void setPetCandyUsed(int candy) {
+        ((ItemAttributePetCandyUsed) item.getAttribute("pet_candy_used")).setValue(candy);
     }
 
     public void setPetHeldItem(@Nullable ItemType type) {

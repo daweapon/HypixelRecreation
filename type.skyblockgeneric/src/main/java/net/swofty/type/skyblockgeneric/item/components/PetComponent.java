@@ -191,10 +191,17 @@ public class PetComponent extends SkyBlockItemComponent {
         ItemType heldItem = item.getAttributeHandler().getPetHeldItem();
         PetItemComponent held = PetItems.held(item);
         if (heldItem != null && held != null) {
-            Rarity heldRarity = new SkyBlockItem(heldItem).getAttributeHandler().getRarity();
+            SkyBlockItem heldStack = new SkyBlockItem(heldItem);
+            Rarity heldRarity = heldStack.getAttributeHandler().getRarity();
             lore.add(" ");
-            lore.add("<6>Held Item: <color:" + heldRarity.getColor().asHexString() + ">" + heldItem.getDisplayName());
-            lore.addAll(held.getDescription());
+            lore.add("<6>Held Item: <color:" + heldRarity.getColor().asHexString() + ">" + heldStack.getDisplayName());
+            lore.addAll(held.effectLines());
+        }
+
+        int candyUsed = item.getAttributeHandler().getPetCandyUsed();
+        if (candyUsed > 0) {
+            lore.add(" ");
+            lore.add("<a>(" + candyUsed + "/" + PetCandyComponent.LIFETIME_CAP + ") Pet Candy Used");
         }
 
         lore.add(" ");
