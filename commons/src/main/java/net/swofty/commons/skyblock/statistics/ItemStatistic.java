@@ -90,7 +90,7 @@ public enum ItemStatistic {
     SPEED("Speed", NamedTextColor.GREEN, NamedTextColor.WHITE, false, PackSprite.STAT_SPEED, 100D, 1D, 400D),
     MAGIC_FIND("Magic Find", NamedTextColor.GREEN, NamedTextColor.AQUA, false, PackSprite.STAT_MAGIC_FIND, 900D),
     PET_LUCK("Pet Luck", NamedTextColor.GREEN, NamedTextColor.LIGHT_PURPLE, false, PackSprite.STAT_PET_LUCK),
-    SEA_CREATURE_CHANCE("Sea Creature Chance", NamedTextColor.RED, NamedTextColor.BLUE, true, PackSprite.STAT_SEA_CREATURE_CHANCE, 2D, 1D),
+    SEA_CREATURE_CHANCE("Sea Creature Chance", NamedTextColor.RED, NamedTextColor.BLUE, true, PackSprite.STAT_SEA_CREATURE_CHANCE, 20D, 1D),
     FISHING_SPEED("Fishing Speed", NamedTextColor.GREEN, NamedTextColor.AQUA, false, PackSprite.STAT_FISHING_SPEED, 300D),
     TREASURE_CHANCE("Treasure Chance", NamedTextColor.GREEN, NamedTextColor.GOLD, true, PackSprite.STAT_TREASURE_CHANCE, 100D),
     TROPHY_FISH_CHANCE("Trophy Fish Chance", NamedTextColor.GREEN, NamedTextColor.GOLD, true, PackSprite.STAT_TROPHY_CHANCE),

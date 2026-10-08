@@ -104,3 +104,29 @@ seaCreatures:
     requiredFishingLevel: 45
     skillXp: 15000
     tags: [LAVA, CRIMSON, LEGENDARY]
+
+  # ---------- winter (Jerry's Workshop only; weights live in tables.yml) ----------
+  - id: FROZEN_STEVE
+    requiredFishingLevel: 1
+    skillXp: 25
+    tags: [WATER, COMMON]
+  - id: FROSTY_THE_SNOWMAN
+    requiredFishingLevel: 1
+    skillXp: 30
+    tags: [WATER, UNCOMMON]
+  - id: GRINCH
+    requiredFishingLevel: 13
+    skillXp: 312
+    tags: [WATER, RARE]
+  - id: NUTCRACKER
+    requiredFishingLevel: 18
+    skillXp: 1725
+    tags: [WATER, EPIC]
+  - id: YETI
+    requiredFishingLevel: 25
+    skillXp: 3500
+    tags: [WATER, LEGENDARY]
+  - id: REINDRAKE
+    requiredFishingLevel: 35
+    skillXp: 4650
+    tags: [WATER, MYTHIC]

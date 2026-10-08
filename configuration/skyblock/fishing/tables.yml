@@ -204,3 +204,98 @@ tables:
         chance: 1
       - seaCreatureId: RAGNAROK
         chance: 1
+  # Jerry's Workshop's island pool: only Winter Sea Creatures can be caught anywhere on the island.
+  # Sea Creature Chance is rolled once, then a creature is picked by weight (weights sum to 10,000).
+  # The Ice Essence treasure chance and amounts are estimates; the wiki doesn't give them.
+  - id: JERRYS_WORKSHOP
+    serverTypes:
+      - SKYBLOCK_JERRYS_WORKSHOP
+    regions:
+      - JERRYS_WORKSHOP
+      - JERRY_POND
+      - SUNKEN_JERRY_POND
+      - REFLECTIVE_POND
+      - HOT_SPRINGS
+      - MOUNT_JERRY
+      - GLACIAL_CAVE
+      - TERRYS_SHACK
+      - GARYS_SHACK
+      - SHERRYS_SHOWROOM
+      - EINARYS_EMPORIUM
+    mediums:
+      - WATER
+    weightedSeaCreatures: true
+    items:
+      - itemId: RAW_FISH
+        chance: 36
+        amount: 1
+        skillXp: 5
+      - itemId: RAW_SALMON
+        chance: 22
+        amount: 1
+        skillXp: 6
+      - itemId: PUFFERFISH
+        chance: 10
+        amount: 1
+        skillXp: 7
+      - itemId: INK_SAC
+        chance: 8
+        amount: 1
+        skillXp: 5
+      - itemId: LILY_PAD
+        chance: 8
+        amount: 1
+        skillXp: 5
+      - itemId: CLAY_BALL
+        chance: 6
+        amount: 1
+        skillXp: 5
+      - itemId: PRISMARINE_CRYSTALS
+        chance: 4
+        amount: 1
+        skillXp: 6
+      - itemId: PRISMARINE_SHARD
+        chance: 3
+        amount: 1
+        skillXp: 6
+      - itemId: TROPICAL_FISH
+        chance: 2
+        amount: 1
+        skillXp: 8
+      - itemId: SPONGE
+        chance: 1
+        amount: 1
+        skillXp: 10
+    treasures:
+      - itemId: PRISMARINE_CRYSTALS
+        chance: 50
+        amount: 2
+        skillXp: 10
+      - itemId: PRISMARINE_SHARD
+        chance: 35
+        amount: 2
+        skillXp: 10
+      - itemId: SPONGE
+        chance: 15
+        amount: 1
+        skillXp: 12
+    essenceTreasure:
+      type: ICE
+      chance: 25
+      min: 3
+      max: 8
+      skillXp: 10
+    junk: [ ]
+    seaCreatures:
+      - seaCreatureId: FROZEN_STEVE
+        weight: 5000
+      - seaCreatureId: FROSTY_THE_SNOWMAN
+        weight: 2875
+      - seaCreatureId: GRINCH
+        weight: 1500
+      - seaCreatureId: NUTCRACKER
+        weight: 500
+      - seaCreatureId: YETI
+        weight: 100
+      - seaCreatureId: REINDRAKE
+        weight: 25

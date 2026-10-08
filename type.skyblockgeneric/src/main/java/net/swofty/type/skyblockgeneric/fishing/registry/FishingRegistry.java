@@ -14,6 +14,7 @@ import net.swofty.commons.ServerType;
 import net.swofty.commons.YamlFileUtils;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
+import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
 import net.swofty.type.skyblockgeneric.fishing.hotspot.HotspotDefinition;
 import org.jetbrains.annotations.Nullable;
@@ -89,11 +90,14 @@ public final class FishingRegistry {
             TABLES.put(id, new FishingTableDefinition(
                 id,
                 stringList(entry.get("regions")),
+                stringList(entry.get("serverTypes")),
                 parseMediums((List<Object>) entry.get("mediums")),
                 parseLootEntries((List<Map<String, Object>>) entry.get("items")),
                 parseLootEntries((List<Map<String, Object>>) entry.get("treasures")),
                 parseLootEntries((List<Map<String, Object>>) entry.get("junk")),
-                parseSeaCreatureRolls((List<Map<String, Object>>) entry.get("seaCreatures"))
+                parseSeaCreatureRolls((List<Map<String, Object>>) entry.get("seaCreatures")),
+                booleanValue(entry, "weightedSeaCreatures", false),
+                parseEssenceTreasure(castMap(entry.get("essenceTreasure")))
             ));
         }
     }
@@ -390,9 +394,23 @@ public final class FishingRegistry {
         for (Map<String, Object> entry : entries) {
             result.add(new FishingTableDefinition.SeaCreatureRoll(
                 string(entry, "seaCreatureId"),
-                doubleValue(entry, "chance", 0.0D)
+                doubleValue(entry, "chance", 0.0D),
+                doubleValue(entry, "weight", 0.0D)
             ));
         }
         return result;
+    }
+
+    private static FishingTableDefinition.@Nullable EssenceTreasure parseEssenceTreasure(@Nullable Map<String, Object> entry) {
+        if (entry == null) {
+            return null;
+        }
+        return new FishingTableDefinition.EssenceTreasure(
+            EssenceType.valueOf(string(entry, "type").toUpperCase()),
+            doubleValue(entry, "chance", 0.0D),
+            intValue(entry, "min", 1),
+            intValue(entry, "max", 1),
+            doubleValue(entry, "skillXp", 0.0D)
+        );
     }
 }

@@ -6,6 +6,8 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCollection;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointTrophyFish;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureSpawner;
+import net.swofty.type.skyblockgeneric.essence.EssenceType;
+import net.swofty.type.skyblockgeneric.essence.Essences;
 import net.swofty.type.skyblockgeneric.fishing.FishingService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -76,6 +78,7 @@ public sealed interface CatchPayload {
             for (int i = 0; i < spawnCount; i++) {
                 SeaCreatureSpawner.spawn(ctx.player(), seaCreatureId, ctx.hookPosition());
             }
+            SeaCreatureSpawner.announceCatch(ctx.player(), seaCreatureId, spawnCount);
         }
     }
 
@@ -95,6 +98,16 @@ public sealed interface CatchPayload {
 
             ctx.player().sendMessage("<b><l>TROPHY FISH! </l><7>You reeled in a <color:{0}>{1} <a>{2}<7>!",
                     tier.colour(), tier.displayName(), definitionId);
+        }
+    }
+
+    record Essence(EssenceType type, int amount, double skillXp) implements CatchPayload {
+        @Override public String summary() { return "treasure " + amount + "x " + type.getFullName(); }
+
+        @Override
+        public void apply(CatchAwardContext ctx) {
+            Essences.add(ctx.player(), type, amount);
+            ctx.player().sendMessage("<b><l>TREASURE! </l><7>You found <d>{} {}<7>!", amount, type.getFullName());
         }
     }
 

@@ -17,6 +17,7 @@ public enum EnchantItemGroups {
     BOW("Bow"),
     HOE("Hoe"),
     AXE("Axe"),
+    EQUIPMENT("Equipment"),
     ;
 
     private final String displayName;
