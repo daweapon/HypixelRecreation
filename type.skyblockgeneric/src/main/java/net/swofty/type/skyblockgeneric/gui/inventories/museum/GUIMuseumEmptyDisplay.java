@@ -72,7 +72,7 @@ public class GUIMuseumEmptyDisplay extends HypixelPaginatedGUI<Object> {
 
         Map<MuseumEntry, List<SkyBlockItem>> byEntry = new LinkedHashMap<>();
         for (SkyBlockItem item : data.getNotInDisplay()) {
-            MuseumService.entryFor(item).ifPresent(entry -> byEntry.computeIfAbsent(entry, _ -> new ArrayList<>()).add(item));
+            MuseumService.entryFor(data, item).ifPresent(entry -> byEntry.computeIfAbsent(entry, _ -> new ArrayList<>()).add(item));
         }
         byEntry.forEach((entry, items) -> {
             if (entry.isSet() && display.isAcceptsSets() && items.size() == entry.pieces().size()) {

@@ -22,12 +22,14 @@ public final class MuseumCatalogue {
     private final Map<String, MuseumEntry> entries;
     private final Map<MuseumCategory, List<MuseumEntry>> byCategory;
     private final Map<ItemType, MuseumEntry> byItem;
+    private final Map<ItemType, List<MuseumEntry>> allByItem;
     private final Map<String, List<MuseumEntry>> children;
 
     private MuseumCatalogue(List<MuseumEntry> all) {
         this.entries = new LinkedHashMap<>();
         this.byCategory = new EnumMap<>(MuseumCategory.class);
         this.byItem = new HashMap<>();
+        this.allByItem = new HashMap<>();
         this.children = new HashMap<>();
         for (MuseumCategory category : MuseumCategory.values()) byCategory.put(category, new ArrayList<>());
 
@@ -42,7 +44,10 @@ public final class MuseumCatalogue {
 
     private void register(String itemId, MuseumEntry entry) {
         ItemType type = ItemType.get(itemId);
-        if (type != null) byItem.putIfAbsent(type, entry);
+        if (type == null) return;
+        byItem.putIfAbsent(type, entry);
+        List<MuseumEntry> owners = allByItem.computeIfAbsent(type, _ -> new ArrayList<>());
+        if (!owners.contains(entry)) owners.add(entry);
     }
 
     public static MuseumCatalogue get() {
@@ -74,6 +79,10 @@ public final class MuseumCatalogue {
 
     public Optional<MuseumEntry> entryFor(@Nullable ItemType type) {
         return type == null ? Optional.empty() : Optional.ofNullable(byItem.get(type));
+    }
+
+    public List<MuseumEntry> entriesFor(@Nullable ItemType type) {
+        return type == null ? List.of() : Collections.unmodifiableList(allByItem.getOrDefault(type, List.of()));
     }
 
     public List<MuseumEntry> childrenOf(MuseumEntry entry) {
