@@ -1,0 +1,204 @@
+items:
+  - id: DEVOUR_RING
+    material: PLAYER_HEAD
+    name: "Devour Ring"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: DEVOUR_RING
+            text:
+              - "Heal <c>10❤ <7>when killing <2>༕ Undead"
+              - "mobs."
+              - "<8>Cooldown: <a>0.5s"
+          - type: TEXT
+            text:
+              - "<4>☠ <c>Requires <5>Zombie Slayer 5<c>."
+      - id: SKULL_HEAD
+        texture: 8a7d1a52e8c8ddaaf0c428e1fe4901ef33eff251f289de2716395cad20bf309b
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 5
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: REVENANT_HORROR
+            pattern:
+              - " A "
+              - "BCB"
+            ingredients:
+              A:
+                type: ENCHANTED_RAW_CHICKEN
+                amount: 2
+              B:
+                type: ENCHANTED_RAW_SALMON
+                amount: 4
+              C:
+                type: REVENANT_VISCERA
+                amount: 39
+            result:
+              type: DEVOUR_RING
+              amount: 1
+
+  - id: REAPER_ORB
+    material: PLAYER_HEAD
+    name: "Reaper Orb"
+    rarity: LEGENDARY
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: REAPER_ORB
+            text:
+              - "Gain a stack of <c>2 ❁ Strength <7>for"
+              - "every mob killed in the last <a>5"
+              - "<7>seconds."
+          - type: TEXT
+            text:
+              - "<4>☠ <c>Requires <5>Zombie Slayer 8<c>."
+      - id: SKULL_HEAD
+        texture: 3a7cda9004fc197d66afbc2b003a5b9ef13cf4600b1fc7490067590f047181e
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 8
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: REVENANT_HORROR
+            pattern:
+              - "AAA"
+              - "A A"
+              - "AAA"
+            ingredients:
+              A:
+                type: SCYTHE_BLADE
+                amount: 1
+            result:
+              type: REAPER_ORB
+              amount: 1
+
+  - id: TARANTULA_TALISMAN
+    material: PLAYER_HEAD
+    name: "Tarantula Talisman"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: TARANTULA_TENTH_HIT
+            text:
+              - "Every <a>10th <7>melee hit on the same"
+              - "enemy deals <a>+10% <7>damage."
+          - type: TEXT
+            text:
+              - "<4>☠ <c>Requires <5>Spider Slayer 6<c>."
+      - id: SKULL_HEAD
+        texture: 2f0f123f10c9a19665d5561792d2c9aea067418a0f92dc20490dade70ed38cb1
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: TARANTULA_BROODFATHER
+            level: 6
+
+  - id: TARANTULA_RING
+    material: PLAYER_HEAD
+    name: "Tarantula Ring"
+    rarity: LEGENDARY
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: TARANTULA_TENTH_HIT
+            text:
+              - "Every <a>10th <7>melee hit on the same"
+              - "enemy deals <a>+15% <7>damage."
+          - type: TEXT
+            text:
+              - "<4>☠ <c>Requires <5>Spider Slayer 7<c>."
+      - id: SKULL_HEAD
+        texture: 5b522024a992d60a5a8e8911941d143082a304e05107321b09b0b5704b85e8cc
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: TARANTULA_BROODFATHER
+            level: 7
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: TARANTULA_BROODFATHER
+            pattern:
+              - "ABA"
+              - "CDC"
+              - "AEA"
+            ingredients:
+              A:
+                type: TARANTULA_SILK
+                amount: 16
+              B:
+                type: TARANTULA_CATALYST
+                amount: 1
+              C:
+                type: SOUL_STRING
+                amount: 32
+              D:
+                type: TARANTULA_TALISMAN
+                amount: 1
+              E:
+                type: DIGESTED_MOSQUITO
+                amount: 1
+            result:
+              type: TARANTULA_RING
+              amount: 1
+
+  - id: SURVIVOR_CUBE
+    material: PLAYER_HEAD
+    name: "Survivor Cube"
+    rarity: RARE
+    default_statistics:
+      vitality: 3
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<4>☠ <c>Requires <5>Spider Slayer 7<c>."
+      - id: SKULL_HEAD
+        texture: 215b1c76966a29f499219d4c62a85327a8cb64a66e80f79bd66dfb70a109ba5e
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: TARANTULA_BROODFATHER
+            level: 7
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: HANDY_BLOOD_CHALICE
+    material: PLAYER_HEAD
+    name: "Handy Blood Chalice"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Soulflow toggles for accessories aren't in the game yet."
+            text:
+              - "Costs <3>1⸎ Soulflow <7>per <a>5s <7>in combat:"
+              - "<8>⁍ <7>Gain <c>+20 ⫽ Ferocity"
+              - ""
+              - "Enabled: <c>Off"
+              - "<e>Right-click to toggle!"
+          - type: TEXT
+            text:
+              - "<4>☠ <c>Requires <5>Enderman Slayer 5<c>."
+      - id: SKULL_HEAD
+        texture: 431cd7ed4e4bf07c3dfd9ba498708e730e69d807335affabc12d87ff542f6a88
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: VOIDGLOOM_SERAPH
+            level: 5

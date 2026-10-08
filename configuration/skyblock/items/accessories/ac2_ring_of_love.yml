@@ -1,0 +1,186 @@
+items:
+  - id: WEDDING_RING_0
+    material: GOLD_NUGGET
+    name: "Shiny Yellow Rock"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>1,000,000,000,000"
+              - "chance to deal <c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+
+  - id: WEDDING_RING_1
+    material: GOLD_NUGGET
+    name: "Yellow Rock of Love"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>100,000,000,000"
+              - "chance to deal <c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+
+  - id: WEDDING_RING_2
+    material: PLAYER_HEAD
+    name: "Mediocre Ring of Love"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>10,000,000,000"
+              - "chance to deal <c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+      - id: SKULL_HEAD
+        texture: 8690c18e2b8780c927fd121d5a36196a53a72c670a89d785deedee3155024b2a
+
+  - id: WEDDING_RING_3
+    material: PLAYER_HEAD
+    name: "Rubbish Ring of Love"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>1,000,000,000 <7>chance"
+              - "to deal <c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+      - id: SKULL_HEAD
+        texture: 8690c18e2b8780c927fd121d5a36196a53a72c670a89d785deedee3155024b2a
+
+  - id: WEDDING_RING_4
+    material: PLAYER_HEAD
+    name: "Modest Ring of Love"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>100,000,000 <7>chance"
+              - "to deal <c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+      - id: SKULL_HEAD
+        texture: 8690c18e2b8780c927fd121d5a36196a53a72c670a89d785deedee3155024b2a
+
+  - id: WEDDING_RING_5
+    material: PLAYER_HEAD
+    name: "Refined Ring of Love"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>1,000,000 <7>chance to"
+              - "deal <c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+      - id: SKULL_HEAD
+        texture: 8690c18e2b8780c927fd121d5a36196a53a72c670a89d785deedee3155024b2a
+
+  - id: WEDDING_RING_6
+    material: PLAYER_HEAD
+    name: "Classy Ring of Love"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>100,000 <7>chance to"
+              - "deal <c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+      - id: SKULL_HEAD
+        texture: 8690c18e2b8780c927fd121d5a36196a53a72c670a89d785deedee3155024b2a
+
+  - id: WEDDING_RING_7
+    material: PLAYER_HEAD
+    name: "Exquisite Ring of Love"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>10,000 <7>chance to"
+              - "deal <c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+      - id: SKULL_HEAD
+        texture: 8fb265c8cc6136063b4eb15450fe1fe1ab7738b0bf54d265490e1ef49da60b7c
+
+  - id: WEDDING_RING_8
+    material: PLAYER_HEAD
+    name: "Invaluable Ring of Love"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>1,000 <7>chance to deal"
+              - "<c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+      - id: SKULL_HEAD
+        texture: 8fb265c8cc6136063b4eb15450fe1fe1ab7738b0bf54d265490e1ef49da60b7c
+
+  - id: WEDDING_RING_9
+    material: PLAYER_HEAD
+    name: "Legendary Ring of Love"
+    rarity: LEGENDARY
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: RING_OF_LOVE
+            text:
+              - "Grants a <a>1 <7>in <a>100 <7>chance to deal"
+              - "<c>+100% <7>damage."
+          - type: TEXT
+            text:
+              - "<8>True love is tough to find, but"
+              - "<8>finding it hits you hard!"
+      - id: SKULL_HEAD
+        texture: 8fb265c8cc6136063b4eb15450fe1fe1ab7738b0bf54d265490e1ef49da60b7c

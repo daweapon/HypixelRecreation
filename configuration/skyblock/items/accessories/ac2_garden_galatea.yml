@@ -1,0 +1,159 @@
+items:
+  - id: GRATITUDE_TALISMAN
+    material: PLAYER_HEAD
+    name: "Gratitude Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "The Garden isn't in the game yet."
+            text:
+              - "Visitors appear <a>1% <7>faster while"
+              - "you're in <a>The Garden<7>."
+      - id: SKULL_HEAD
+        texture: 70e12ec8547a5450332657b5d2e85504c841386cce2a6a2434cca3d310d14a2
+
+  - id: GRATITUDE_RING
+    material: PLAYER_HEAD
+    name: "Gratitude Ring"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "The Garden isn't in the game yet."
+            text:
+              - "Visitors appear <a>3% <7>faster while"
+              - "you're in <a>The Garden<7>."
+      - id: SKULL_HEAD
+        texture: f003c523dfa6ad51411cedaa1c1b287a1d331e3ec1e7cedaff135e0a0167a619
+
+  - id: GRATITUDE_ARTIFACT
+    material: PLAYER_HEAD
+    name: "Gratitude Artifact"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "The Garden isn't in the game yet."
+            text:
+              - "Visitors appear <a>5% <7>faster while"
+              - "you're in <a>The Garden<7>."
+      - id: SKULL_HEAD
+        texture: 9fba844ff692f1de46d6664a9c6c4d29bbfb862c67df7455f47dee2152ea4c80
+
+  - id: ATMOSPHERIC_FILTER
+    material: PLAYER_HEAD
+    name: "Atmospheric Filter"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "The Garden isn't in the game yet."
+            text:
+              - "While on your <a>Garden<7>, grants a buff"
+              - "depending on the current SkyBlock"
+              - "season."
+              - " <a>✧ Spring"
+              - "    Grants <6>+25☘ Farming Fortune<7>."
+              - " <e>✧ Summer"
+              - "    Grants <3>+20☯ Farming Wisdom<7>."
+              - " <6>✧ Autumn"
+              - "    <2>Pests <7>spawn <a>15% <7>more often."
+              - " <b>✦ Winter"
+              - "    Gain <a>5% <7>more <c>Copper <7>from Garden Visitors."
+      - id: SKULL_HEAD
+        texture: d3cf5cd92c1ba0a7d7bb1f872ccdb951ca897d340040457a324271606c5bbc56
+
+  - id: ACCRETION_TALISMAN
+    material: PAPER
+    name: "Accretion Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Galatea and Pocket Black Holes aren't in the game yet."
+            text:
+              - "Increases the speed of your <5>Pocket"
+              - "<5>Black Holes <7>by <a>5%<7>."
+
+  - id: ACCRETION_RING
+    material: PAPER
+    name: "Accretion Ring"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Galatea and Pocket Black Holes aren't in the game yet."
+            text:
+              - "Increases the speed of your <5>Pocket"
+              - "<5>Black Holes <7>by <a>10%<7>."
+
+  - id: ACCRETION_ARTIFACT
+    material: PAPER
+    name: "Accretion Artifact"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Galatea and Pocket Black Holes aren't in the game yet."
+            text:
+              - "Increases the speed of your <5>Pocket"
+              - "<5>Black Holes <7>by <a>15%<7>."
+
+  - id: WITCH_TALISMAN
+    material: PLAYER_HEAD
+    name: "Witch's Talisman"
+    rarity: COMMON
+    default_statistics:
+      alchemy_wisdom: 0.5
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>Stinks up your entire accessory bag"
+              - "<8>- somebody clearly didn't wash their"
+              - "<8>hands after making a stew."
+      - id: SKULL_HEAD
+        texture: 1f9df6cb9736e2370f4574023b2b6f565514d78e9c4a971d438bebbc1f05ef74
+
+  - id: WITCH_RING
+    material: PLAYER_HEAD
+    name: "Witch's Ring"
+    rarity: UNCOMMON
+    default_statistics:
+      alchemy_wisdom: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>Stinks up your entire accessory bag"
+              - "<8>- somebody clearly didn't wash their"
+              - "<8>hands after making a stew."
+      - id: SKULL_HEAD
+        texture: 9ad3db24bb1e48590e55a6c07d0f4d2d4d83c190d3b7a96a3f560ac5501ed963
+
+  - id: WITCH_ARTIFACT
+    material: PLAYER_HEAD
+    name: "Witch's Artifact"
+    rarity: RARE
+    default_statistics:
+      alchemy_wisdom: 1.5
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>Stinks up your entire accessory bag"
+              - "<8>- somebody clearly didn't wash their"
+              - "<8>hands after making a stew."
+      - id: SKULL_HEAD
+        texture: 90aa9834b3369533018414a13235d55c49b56451dcbc591b409fcfe2d602ee3b

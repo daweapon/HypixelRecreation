@@ -1,0 +1,612 @@
+items:
+  - id: NIGHT_VISION_CHARM
+    material: PLAYER_HEAD
+    name: "Night Vision Charm"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: NIGHT_VISION_CHARM
+            text:
+              - "Grants <9>Night Vision <7>while this item is"
+              - "in your inventory."
+      - id: SKULL_HEAD
+        texture: 7c3289afd2a5e97dc29ddc01baab9ee3489348cebb9f15d4df48c3d46861fd75
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "ABA"
+              - "B B"
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_RED_MUSHROOM
+                amount: 1
+              B:
+                type: ENCHANTED_BROWN_MUSHROOM
+                amount: 1
+            result:
+              type: NIGHT_VISION_CHARM
+              amount: 1
+
+  - id: EXPERIENCE_ARTIFACT
+    material: ENCHANTED_BOOK
+    name: "Experience Artifact"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: EXPERIENCE_ARTIFACT
+            text:
+              - "Increase the experience orbs you"
+              - "gain by <a>25% <7>while this item is in your"
+              - "inventory or accessory bag."
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_LAPIS_LAZULI_BLOCK
+                amount: 1
+            result:
+              type: EXPERIENCE_ARTIFACT
+              amount: 1
+
+  - id: MAGNETIC_TALISMAN
+    material: PLAYER_HEAD
+    name: "Magnetic Talisman"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Item pickup range isn't in the game yet."
+            text:
+              - "Increase the item pick up range by"
+              - "<a>3x<7>."
+      - id: SKULL_HEAD
+        texture: 6b76ea41b3dcf8a48202cec8ab8fb42c671b35ce648d8613859a013a4ca12480
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - " A "
+              - "ABA"
+              - " A "
+            ingredients:
+              A:
+                type: EMERALD
+                amount: 32
+              B:
+                type: REDSTONE
+                amount: 32
+            result:
+              type: MAGNETIC_TALISMAN
+              amount: 1
+
+  - id: POTATO_RING
+    material: PLAYER_HEAD
+    name: "Potato Ring"
+    rarity: UNCOMMON
+    default_statistics:
+      speed: 2
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: POTATO_MINION_SPEED
+            text:
+              - "Your potato minions farm <a>10% <7>faster"
+              - "while wearing on your island."
+          - type: TEXT
+            text:
+              - "<8>Forged by the Potato King after"
+              - "<8>winning the Great Potato War."
+      - id: SKULL_HEAD
+        texture: 262da1758391f34a3b822e38fec7ce53988ff2f391657072208c8de4b9065701
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_BAKED_POTATO
+                amount: 8
+              B:
+                type: POTATO_TALISMAN
+                amount: 1
+            result:
+              type: POTATO_RING
+              amount: 1
+
+  - id: KING_TALISMAN
+    material: PLAYER_HEAD
+    name: "King Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: KING_COMMISSION_XP
+            text:
+              - "Commissions grant <5>+10 HOTM Exp<7>."
+      - id: SKULL_HEAD
+        texture: ba3fe344a6a027b6c66d8541146d4819df36ab91e9fc4df532748a0d76d74b13
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: WOLF_PAW
+    material: PLAYER_HEAD
+    name: "Wolf Paw"
+    rarity: UNCOMMON
+    default_statistics:
+      speed: 1
+    components:
+      - id: ACCESSORY
+      - id: SKULL_HEAD
+        texture: 7afd22704eeb5c67be649ddfe1da0c658158a7058d01739de31c94f6b9808869
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: PIGS_FOOT
+    material: PLAYER_HEAD
+    name: "Pig's Foot"
+    rarity: RARE
+    default_statistics:
+      speed: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>Like a Rabbit's Foot, but more"
+              - "<8>useless."
+      - id: SKULL_HEAD
+        texture: 604faebefd0a8f721403e3142efecb83fbf4b7d1f705d0c9b44d91f0bf40127b
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: JAKE_PLUSHIE
+    material: PLAYER_HEAD
+    name: "Jake's Plushie"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 2
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>A mystery was solved!"
+          - type: INACTIVE
+            reason: "Trevor's pelt hunts aren't in the game yet."
+            text:
+              - "Increases the number of pelts"
+              - "obtained when hunting animals by <a>+1<7>."
+      - id: SKULL_HEAD
+        texture: adece28fa6dec14386791d6fc1ec1f5cad87ad198a6ac754967f961d123288fc
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: TRAPPER_CREST
+    material: PLAYER_HEAD
+    name: "Trapper Crest"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Trevor's pelt hunts aren't in the game yet."
+            text:
+              - "Earn <a>x1.1 <5>Pelts <7>from tracker quests."
+              - ""
+              - "Collect <5>100 Pelts <7>to upgrade this"
+              - "accessory to <a>UNCOMMON<7>."
+              - ""
+              - "Collected: <5>0 pelts"
+      - id: SKULL_HEAD
+        texture: 3ae0da20c8598e91f322b6e8a7b0ee2c81f1b61e74386c437e75f446ffccc5e
+
+  - id: ORGAN_DONOR_TALISMAN
+    material: PLAYER_HEAD
+    name: "Organ Donor Talisman"
+    rarity: COMMON
+    default_statistics:
+      cold_resistance: 0.5
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Glacite Mineshafts and Frozen Corpses aren't in the game yet."
+            text:
+              - "Sends out a <a>Ding <7>when within <a>20"
+              - "blocks of an unlooted <b>Frozen Corpse<7>!"
+          - type: TEXT
+            text:
+              - "<8>It's an opt-out system, after all."
+      - id: SKULL_HEAD
+        texture: ae7007064c35d03389d230aad3f7284eae00817f9cd2f7d5fa88567eaff458b0
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: ORGAN_DONOR_RING
+    material: PLAYER_HEAD
+    name: "Organ Donor Ring"
+    rarity: UNCOMMON
+    default_statistics:
+      cold_resistance: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Glacite Mineshafts and Frozen Corpses aren't in the game yet."
+            text:
+              - "Sends out a <a>Ding <7>when within <a>20"
+              - "blocks of an unlooted <b>Frozen Corpse<7>!"
+          - type: TEXT
+            text:
+              - "<8>It's an opt-out system, after all."
+      - id: SKULL_HEAD
+        texture: 63c1b03b6902b97f4ceeaa6b83bd4780f2e4cf157cd6fbccf30272cbebe97a9b
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: ORGAN_DONOR_ARTIFACT
+    material: PLAYER_HEAD
+    name: "Organ Donor Artifact"
+    rarity: RARE
+    default_statistics:
+      cold_resistance: 1.5
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Glacite Mineshafts and Frozen Corpses aren't in the game yet."
+            text:
+              - "Sends out a <a>Ding <7>when within <a>20"
+              - "blocks of an unlooted <b>Frozen Corpse<7>!"
+          - type: TEXT
+            text:
+              - "<8>It's an opt-out system, after all."
+      - id: SKULL_HEAD
+        texture: 5ce15516b2fb471c035577a3515eeba4a2e35762bfc2b9754b9699e4c48704cc
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: LUCKY_HOOF
+    material: IRON_HORSE_ARMOR
+    name: "Lucky Hoof"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Trick or Treat Chests aren't in the game yet."
+            text:
+              - "Gain <a>1% <7>chance to find <6>Trick or"
+              - "<6>Treat Chests<7>."
+
+  - id: ETERNAL_HOOF
+    material: GOLDEN_HORSE_ARMOR
+    name: "Eternal Hoof"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Trick or Treat Chests aren't in the game yet."
+            text:
+              - "Gain <a>2% <7>chance to find <6>Trick or"
+              - "<6>Treat Chests<7>."
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: SPECIAL
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: SOUL_FRAGMENT
+                amount: 1
+              B:
+                type: LUCKY_HOOF
+                amount: 1
+            result:
+              type: ETERNAL_HOOF
+              amount: 1
+
+  - id: CENTURY_ARTIFACT
+    material: PLAYER_HEAD
+    name: "Artifact of the Century"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Century Cakes and Cake Souls aren't in the game yet."
+            text:
+              - "Increases your chances of finding"
+              - "<d>Cake Souls <7>when eating <d>Century"
+              - "<d>Cakes <7>by <a>3%<7>."
+          - type: TEXT
+            text:
+              - "<8>What's better than a party? A party"
+              - "<8>with free goodies and two accessory"
+              - "<8>upgrades!"
+      - id: SKULL_HEAD
+        texture: dd7fb0926f588d81230093c6feddb48b2e614120363ba9c8678bfb70b5813893
+
+  - id: BLUETOOTH_RING
+    material: PLAYER_HEAD
+    name: "Bluetooth Ring"
+    rarity: RARE
+    default_statistics:
+      intelligence: -1
+      speed: -2
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Player-count damage bonuses and the Ham Radio bonus aren't in the game yet."
+            text:
+              - "Deal <c>+1 Damage <7>if there are at"
+              - "least <a>6 <7>players on the island you're"
+              - "on."
+              - ""
+              - "<a>But wait! There's more..."
+              - "Adds <c>+3 Damage <7>bonus to the"
+              - "<6>Blazetekk™ Ham Radio<7>."
+      - id: SKULL_HEAD
+        texture: efffdb4f75e1678ecfaa5f42a32f11e1cc087946f4857463ae6647cc3e0079e2
+
+  - id: BLUERTOOTH_RING
+    material: PLAYER_HEAD
+    name: "Bluertooth Ring"
+    rarity: EPIC
+    default_statistics:
+      intelligence: -2
+      speed: -3
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Player-count damage bonuses and the Ham Radio bonus aren't in the game yet."
+            text:
+              - "Deal <c>+2 Damage <7>if there are at"
+              - "least <a>6 <7>players on the island you're"
+              - "on."
+              - ""
+              - "<a>But wait! There's more..."
+              - "Adds <c>+4 Damage <7>bonus to the"
+              - "<6>Blazetekk™ Ham Radio<7>."
+          - type: TEXT
+            text:
+              - "<8>Though it may not be bluer visually,"
+              - "<8>it is in spirit."
+      - id: SKULL_HEAD
+        texture: 9702ddc0ef0d1710ab8b17eb910707ac537ed3309ee07a2b1b0f27847b07bc9b
+
+  - id: GENERAL_MEDALLION
+    material: PLAYER_HEAD
+    name: "General's Medallion"
+    rarity: RARE
+    components:
+      - id: ACCESSORY
+        dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "The Catacombs aren't in the game yet."
+            text:
+              - "Increases the base stats of your"
+              - "dungeon items by <a>1% <7>while in <c>The"
+              - "<c>Catacombs <7>for each digit on your"
+              - "secret count. <8>(Max 5%)"
+              - ""
+              - "Counter: <a>0"
+          - type: TEXT
+            text:
+              - "<8>Once worn proudly, now covered in"
+              - "<8>filth and soot."
+      - id: SKULL_HEAD
+        texture: f79132cedb9d784395dade7cbe0ed94e12f055a8dcc331af3ce70f58832ed909
+
+  - id: HOCUS_POCUS_CIPHER
+    material: PLAYER_HEAD
+    name: "Hocus-Pocus Cipher"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "The Rift isn't in the game yet."
+            text:
+              - "While in the rift:"
+              - " <a>+65ф Rift Time"
+              - " <b>+5✎ Intelligence"
+              - " <b>+5⚡ Mana Regen"
+      - id: SKULL_HEAD
+        texture: db6975af70724d6a44fd5946e60b2717737dfdb545b4dab1893351a9c9dd183c
+
+  - id: SHENS_REGALIA
+    material: PLAYER_HEAD
+    name: "Shen's Regalia"
+    rarity: LEGENDARY
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Shen's Auction and its hidden room aren't in the game yet."
+            text:
+              - "According to the rumors, Shen"
+              - "himself is crafting special items. Have"
+              - "this in your inventory to gain access"
+              - "to a unique room hidden below the"
+              - "<6>Auction House<7>."
+      - id: SKULL_HEAD
+        texture: 9c7fb6f414ff0eb6bf5797acb3b3af354ca3af95ceb8f3418125f6b805419f39
+
+  - id: RUNEBOOK
+    material: PLAYER_HEAD
+    name: "Runebook"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        dynamic_max_rarity: LEGENDARY
+        effects:
+          - type: INACTIVE
+            reason: "Runic mobs aren't in the game yet."
+            text:
+              - "Tracks a counter for each <5>Runic"
+              - "mob killed while in your accessory"
+              - "bag or inventory."
+              - ""
+              - "Increase rarity and gain <3>+1☯"
+              - "<3>Runecrafting Wisdom <7>for each digit"
+              - "on the counter. <8>(Max 4 digits)"
+              - ""
+              - "Counter: <c>None yet!"
+      - id: SKULL_HEAD
+        texture: b05cd67221faa4b91f6847157398787f1b00365ba2b4a7a62ea2f63270401489
+
+  - id: BOOK_OF_PROGRESSION
+    material: BOOK
+    name: "Book of Progression"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        dynamic_max_rarity: MYTHIC
+        effects:
+          - type: INACTIVE
+            reason: "Book of Progression modifiers aren't in the game yet."
+            text:
+              - "This book, imbued with great power,"
+              - "upgrades as you do."
+              - ""
+              - "<e>Click to select modifiers!"
+          - type: TEXT
+            text:
+              - "<8>A wise novel once thought to be the"
+              - "<8>cure to all problems."
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: BESTIARY_TALISMAN
+    material: PLAYER_HEAD
+    name: "Bestiary Talisman"
+    rarity: COMMON
+    default_statistics:
+      strength: 1
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Bestiary-milestone accessory scaling isn't in the game yet."
+            text:
+              - "The rarity and stats of this"
+              - "accessory increases every <a>50"
+              - "<3>Bestiary Milestones<7>!"
+          - type: TEXT
+            text:
+              - "<8>The early steps of a hunter's"
+              - "<8>journey."
+      - id: SKULL_HEAD
+        texture: aaef517998b9d93f62d00567cf6bc68851a34bd99f370698f8b6d62d9de4c3e4
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: BEASTSLAYERS_CODEX
+    material: PAPER
+    name: "Beastslayer's Codex"
+    rarity: COMMON
+    default_statistics:
+      strength: 1
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        dynamic_max_rarity: MYTHIC
+        effects:
+          - type: INACTIVE
+            reason: "Bestiary-milestone accessory scaling isn't in the game yet."
+            text:
+              - "The rarity and stats of this"
+              - "accessory increases every <a>50"
+              - "<3>Bestiary Milestones<7>!"
+          - type: TEXT
+            text:
+              - "<8>“Within these pages lie the memories"
+              - "<8>of every creature you've"
+              - "<8>conquered... and those still waiting to"
+              - "<8>meet you.”"
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: BINGO_COMBAT_TALISMAN
+    material: PLAYER_HEAD
+    name: "Bingo Combat Talisman"
+    rarity: COMMON
+    default_statistics:
+      combat_wisdom: 50
+    components:
+      - id: ACCESSORY
+        only_in: BINGO
+      - id: SKULL_HEAD
+        texture: e3e1287c53004362180d1428f7267aeaee78acb4db8342cc59b83e6f7edc3f16
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+
+  - id: COMBO_MANIA_TALISMAN
+    material: PLAYER_HEAD
+    name: "Combo Mania"
+    rarity: UNCOMMON
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        effects:
+          - type: INACTIVE
+            reason: "The Rift isn't in the game yet."
+            text:
+              - "<6>Ability: Combo Mania"
+              - "Combos in the <a>Time Chamber <7>take <a>+0.5"
+              - "seconds to expire."
+      - id: SKULL_HEAD
+        texture: 53ff55f1b8b28231cee3653c9481409d22c5978aedf9a247011c3160c2b36d29
+
+  - id: MINIATURIZED_TUBULATOR
+    material: PLAYER_HEAD
+    name: "Miniaturized Tubulator"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8>Don't hate the player, hate the game."
+              - "<8>- Ice T"
+      - id: SKULL_HEAD
+        texture: bdc7913229cb2e898071b0c2bc8f13bd8dba69dbdccaf4d1da643ab726b925af
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
