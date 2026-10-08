@@ -130,6 +130,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/formatname <name>` | `/getnameformatted` | Gets the format of a players name from their username. | STAFF | No | `type.generic` |
 | `/itemlist [lookup]` | `/e` | Open the E menu. Opens the item browser; optional search. | STAFF | No | `type.skyblockgeneric` |
 | `/itemtrackedinformation` | — | Gets the information of a tracked item in the players hand. | STAFF | No | `type.skyblockgeneric` |
+| `/lagprofile [seconds]` | — | Samples the server's busy threads for 1–30 seconds (default 5) and lists the SkyBlock code they spent the most time in. Run it while TPS is low to find what's causing lag. | STAFF | No | `type.skyblockgeneric` |
 | `/localedata [update]` | — | Locale Data. Inspect locale data or execute the update branch. | STAFF | No | `type.generic` |
 | `/mininginfo` | — | Debug command to display mining handler relationships.  Help uses /miningdebug, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
 | `/mission` | `/missiondata` | Collects mission information. | STAFF | No | `type.skyblockgeneric` |
