@@ -13,12 +13,22 @@ import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public final class WipeSnapshotService {
     private static final String COLLECTION = "wipe_snapshots";
+    private static final String PARTS_COLLECTION = "wipe_snapshot_parts";
+    private static final int FORMAT = 2;
+    private static final String ACCOUNT = "account";
+    private static final String ACCOUNT_VERSION = "accountVersion";
+    private static final String PROFILE = "profile";
+    private static final String PROFILE_VERSION = "profileVersion";
+    private static final String ISLAND = "island";
+    private static final String OWNED = "owned";
     private static final String ACCOUNT_KEY_PREFIX = "hsb:acct:players:";
     private static final String ACCOUNT_VERSION_PREFIX = "hsb:acct:version:players:";
     private static final String PROFILE_KEY_PREFIX = "hsb:prof:players:";
@@ -36,58 +46,51 @@ public final class WipeSnapshotService {
     // Captures the raw Redis documents for a player's account/profiles/islands before a wipe deletes them,
     // rather than individual fields - the account and profile data model each live as one JSON blob per key,
     // so a whole-key copy is the only way to guarantee every field (not just a hand-picked subset) comes back.
+    // Each blob is stored as its own chunked part document, because a staff account with several maxed profiles
+    // and islands can exceed Mongo's 16 MB limit for a single document.
     public static void capture(UUID playerUuid, List<UUID> profileIds) {
         MongoCollection<Document> collection = MongoConnection.collection(COLLECTION);
-        if (collection == null) return;
+        MongoCollection<Document> partCollection = MongoConnection.collection(PARTS_COLLECTION);
+        if (collection == null || partCollection == null) return;
 
-        String accountDocument = rawGet(ACCOUNT_KEY_PREFIX + playerUuid);
-        String accountVersion = rawGet(ACCOUNT_VERSION_PREFIX + playerUuid);
-
-        Document profiles = new Document();
-        Document profileVersions = new Document();
-        Document islands = new Document();
-        for (UUID profileId : profileIds) {
-            String profileDocument = rawGet(PROFILE_KEY_PREFIX + profileId);
-            if (profileDocument != null) profiles.put(profileId.toString(), profileDocument);
-
-            String profileVersion = rawGet(PROFILE_VERSION_PREFIX + profileId);
-            if (profileVersion != null) profileVersions.put(profileId.toString(), profileVersion);
-
-            UUID sharedCoopId = CoopStorage.coopIdOfProfile(profileId);
-            UUID coopId = sharedCoopId == null ? profileId : sharedCoopId;
-            for (UUID islandId : PlayerWipeService.islandIdsOf(profileId, coopId)) {
-                String key = islandId.toString();
-                if (islands.containsKey(key)) continue;
-                String raw = readIslandRaw(islandId);
-                if (raw != null) islands.put(key, raw);
-            }
-        }
-
-        List<String> profileIdStrings = profileIds.stream().map(UUID::toString).toList();
-        Document owned = new Document();
-        for (PlayerWipeService.OwnedCollection ownedCollection : PlayerWipeService.OWNED_COLLECTIONS) {
-            MongoCollection<Document> source = MongoConnection.collection(ownedCollection.name());
-            if (source == null) continue;
-            try {
-                List<Document> rows = new ArrayList<>();
-                source.find(PlayerWipeService.ownedFilter(ownedCollection, playerUuid, profileIdStrings)).into(rows);
-                if (!rows.isEmpty()) owned.put(ownedCollection.name(), rows);
-            } catch (Exception e) {
-                Logger.error(e, "Failed to snapshot the rows of user {} in {}", playerUuid, ownedCollection.name());
-            }
-        }
-
-        Document snapshot = new Document("_id", playerUuid.toString())
-                .append("timestamp", System.currentTimeMillis())
-                .append("account", accountDocument)
-                .append("accountVersion", accountVersion)
-                .append("profiles", profiles)
-                .append("profileVersions", profileVersions)
-                .append("islands", islands)
-                .append("owned", owned);
-
+        WipeSnapshotParts parts = new WipeSnapshotParts(partCollection, playerUuid);
         try {
-            collection.replaceOne(Filters.eq("_id", playerUuid.toString()), snapshot, new ReplaceOptions().upsert(true));
+            collection.deleteOne(Filters.eq("_id", playerUuid.toString()));
+            parts.clear();
+
+            parts.putString(ACCOUNT, "", rawGet(ACCOUNT_KEY_PREFIX + playerUuid));
+            parts.putString(ACCOUNT_VERSION, "", rawGet(ACCOUNT_VERSION_PREFIX + playerUuid));
+
+            Set<String> islands = new HashSet<>();
+            for (UUID profileId : profileIds) {
+                parts.putString(PROFILE, profileId.toString(), rawGet(PROFILE_KEY_PREFIX + profileId));
+                parts.putString(PROFILE_VERSION, profileId.toString(), rawGet(PROFILE_VERSION_PREFIX + profileId));
+
+                UUID sharedCoopId = CoopStorage.coopIdOfProfile(profileId);
+                UUID coopId = sharedCoopId == null ? profileId : sharedCoopId;
+                for (UUID islandId : PlayerWipeService.islandIdsOf(profileId, coopId)) {
+                    if (islands.add(islandId.toString())) parts.putString(ISLAND, islandId.toString(), readIslandRaw(islandId));
+                }
+            }
+
+            List<String> profileIdStrings = profileIds.stream().map(UUID::toString).toList();
+            for (PlayerWipeService.OwnedCollection ownedCollection : PlayerWipeService.OWNED_COLLECTIONS) {
+                MongoCollection<Document> source = MongoConnection.collection(ownedCollection.name());
+                if (source == null) continue;
+                try {
+                    List<Document> rows = new ArrayList<>();
+                    source.find(PlayerWipeService.ownedFilter(ownedCollection, playerUuid, profileIdStrings)).into(rows);
+                    parts.putRows(OWNED, ownedCollection.name(), rows);
+                } catch (Exception e) {
+                    Logger.error(e, "Failed to snapshot the rows of user {} in {}", playerUuid, ownedCollection.name());
+                }
+            }
+
+            collection.replaceOne(Filters.eq("_id", playerUuid.toString()),
+                    new Document("_id", playerUuid.toString())
+                            .append("timestamp", System.currentTimeMillis())
+                            .append("format", FORMAT),
+                    new ReplaceOptions().upsert(true));
         } catch (Exception e) {
             Logger.error(e, "Failed to store the wipe snapshot of user {}", playerUuid);
         }
@@ -100,12 +103,40 @@ public final class WipeSnapshotService {
         Document snapshot = collection.find(Filters.eq("_id", playerUuid.toString())).first();
         if (snapshot == null) return RestoreResult.NOT_FOUND;
 
+        MongoCollection<Document> partCollection = MongoConnection.collection(PARTS_COLLECTION);
+        WipeSnapshotParts parts = partCollection == null ? null : new WipeSnapshotParts(partCollection, playerUuid);
+
         Long timestamp = snapshot.getLong("timestamp");
         if (timestamp == null || System.currentTimeMillis() - timestamp > RESTORE_WINDOW_MILLIS) {
-            collection.deleteOne(Filters.eq("_id", playerUuid.toString()));
+            discard(collection, parts, playerUuid);
             return RestoreResult.EXPIRED;
         }
 
+        if (snapshot.getInteger("format", 1) >= FORMAT && parts != null) {
+            restoreParts(playerUuid, parts);
+        } else {
+            restoreInline(playerUuid, snapshot);
+        }
+
+        discard(collection, parts, playerUuid);
+        return RestoreResult.SUCCESS;
+    }
+
+    private static void restoreParts(UUID playerUuid, WipeSnapshotParts parts) {
+        parts.strings().forEach((key, value) -> {
+            switch (key.kind()) {
+                case ACCOUNT -> rawSet(ACCOUNT_KEY_PREFIX + playerUuid, value);
+                case ACCOUNT_VERSION -> rawSet(ACCOUNT_VERSION_PREFIX + playerUuid, value);
+                case PROFILE -> rawSet(PROFILE_KEY_PREFIX + key.key(), value);
+                case PROFILE_VERSION -> rawSet(PROFILE_VERSION_PREFIX + key.key(), value);
+                case ISLAND -> writeIslandRaw(key.key(), value);
+                default -> Logger.warn("Unknown wipe snapshot part {} for user {}", key.kind(), playerUuid);
+            }
+        });
+        parts.rows().forEach((key, rows) -> restoreRows(playerUuid, key.key(), rows));
+    }
+
+    private static void restoreInline(UUID playerUuid, Document snapshot) {
         rawSet(ACCOUNT_KEY_PREFIX + playerUuid, snapshot.getString("account"));
         rawSet(ACCOUNT_VERSION_PREFIX + playerUuid, snapshot.getString("accountVersion"));
 
@@ -134,19 +165,25 @@ public final class WipeSnapshotService {
         if (owned != null) {
             for (PlayerWipeService.OwnedCollection ownedCollection : PlayerWipeService.OWNED_COLLECTIONS) {
                 List<Document> rows = owned.getList(ownedCollection.name(), Document.class);
-                if (rows == null || rows.isEmpty()) continue;
-                MongoCollection<Document> target = MongoConnection.collection(ownedCollection.name());
-                if (target == null) continue;
-                try {
-                    target.insertMany(rows);
-                } catch (Exception e) {
-                    Logger.error(e, "Failed to restore the rows of user {} into {}", playerUuid, ownedCollection.name());
-                }
+                if (rows != null) restoreRows(playerUuid, ownedCollection.name(), rows);
             }
         }
+    }
 
+    private static void restoreRows(UUID playerUuid, String collectionName, List<Document> rows) {
+        if (rows.isEmpty()) return;
+        MongoCollection<Document> target = MongoConnection.collection(collectionName);
+        if (target == null) return;
+        try {
+            target.insertMany(rows);
+        } catch (Exception e) {
+            Logger.error(e, "Failed to restore the rows of user {} into {}", playerUuid, collectionName);
+        }
+    }
+
+    private static void discard(MongoCollection<Document> collection, WipeSnapshotParts parts, UUID playerUuid) {
         collection.deleteOne(Filters.eq("_id", playerUuid.toString()));
-        return RestoreResult.SUCCESS;
+        if (parts != null) parts.clear();
     }
 
     private static String rawGet(String key) {
