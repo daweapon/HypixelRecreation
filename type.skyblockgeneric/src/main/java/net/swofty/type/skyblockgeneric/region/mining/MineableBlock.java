@@ -72,6 +72,14 @@ public enum MineableBlock {
     MITHRIL_STRONG(Material.LIGHT_BLUE_WOOL, MiningHandlers.pickaxe(1500, 4), MiningBlockClassification.dwarvenMetalBlock()),
     TITANIUM(Material.POLISHED_DIORITE, MiningHandlers.pickaxe(2500, 5), MiningBlockClassification.dwarvenMetalBlock()),
     DWARVEN_GOLD(Material.GOLD_BLOCK, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
+
+    // Crimson Isle
+    MYCELIUM(Material.MYCELIUM, MiningHandlers.hand(12, 6), MiningBlockClassification.blockBlock()),
+    RED_SAND(Material.RED_SAND, MiningHandlers.hand(12, 6), MiningBlockClassification.blockBlock()),
+    GLOWSTONE(Material.GLOWSTONE, MiningHandlers.hand(9, 4), MiningBlockClassification.blockBlock()),
+    ORE_NETHER_QUARTZ(Material.NETHER_QUARTZ_ORE, MiningHandlers.pickaxe(30, 1), MiningBlockClassification.oreBlock()),
+    SULPHUR_ORE(Material.SPONGE, MiningHandlers.pickaxe(500, 8), MiningBlockClassification.oreBlock()),
+    DEAD_BUSH(Material.DEAD_BUSH, MiningHandlers.instant(), MiningBlockClassification.farmingBlock()),
     ;
 
     private final Material material;

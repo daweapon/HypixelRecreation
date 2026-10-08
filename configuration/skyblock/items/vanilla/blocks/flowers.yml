@@ -118,6 +118,19 @@ items:
     components:
       - id: SELLABLE
         value: 2.0
+      - id: CUSTOM_DROP
+        rules:
+          - conditions:
+              broken_with: THORNLEAF_SCYTHE
+            drops:
+              - item: RED_THORNLEAF
+                chance: 1.0
+                amount: 1
+          - conditions: null
+            drops:
+              - item: DEAD_BUSH
+                chance: 1.0
+                amount: 1
   - id: MOONFLOWER
     rarity: COMMON
     material: BLUE_ORCHID

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.event.actions.player.region;
 
+import net.swofty.type.skyblockgeneric.essence.CrimsonEssenceShop;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.event.player.PlayerBlockBreakEvent;
 import net.minestom.server.instance.SharedInstance;
@@ -161,7 +162,8 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                     if (mineableBlock != null) {
                         double baseFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().baseSkillFortune());
                         double specificFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().specificBlockFortune());
-                        double fortune = baseFortune + specificFortune;
+                        double fortune = baseFortune + specificFortune
+                                + CrimsonEssenceShop.miningFortune(player, mineableBlock.getMaterial());
                         double dropMultiplier = (1 + (fortune * 0.01));
                         dropAmount = (int) Math.ceil(dropAmount * dropMultiplier);
                     }

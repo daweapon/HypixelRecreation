@@ -55,6 +55,19 @@ items:
     components:
       - id: SELLABLE
         value: 10.0
+      - id: CUSTOM_DROP
+        rules:
+          - conditions:
+              broken_with: SPORE_HARVESTER
+            drops:
+              - item: MUSHROOM_SPORE
+                chance: 1.0
+                amount: 1
+          - conditions: null
+            drops:
+              - item: BROWN_MUSHROOM
+                chance: 1.0
+                amount: 1
   - id: BROWN_MUSHROOM_BLOCK
     rarity: COMMON
     material: BROWN_MUSHROOM_BLOCK

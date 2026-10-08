@@ -233,6 +233,10 @@ items:
             result:
               type: GLOWSTONE
               amount: 1
+      - id: SKILLABLE_MINE
+        category: MINING
+        mining_value: 7.0
+
   - id: GLOWSTONE_DUST
     material: glowstone_dust
     rarity: COMMON
