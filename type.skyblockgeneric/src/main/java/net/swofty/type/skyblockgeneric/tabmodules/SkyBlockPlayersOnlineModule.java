@@ -14,12 +14,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Function;
 
 public class SkyBlockPlayersOnlineModule extends TablistModule {
     public int page;
+    private final Function<SkyBlockPlayer, String> nameSuffix;
 
     public SkyBlockPlayersOnlineModule(int page) {
+        this(page, ignored -> "");
+    }
+
+    public SkyBlockPlayersOnlineModule(int page, Function<SkyBlockPlayer, String> nameSuffix) {
         this.page = page;
+        this.nameSuffix = nameSuffix;
     }
 
 
@@ -58,7 +65,7 @@ public class SkyBlockPlayersOnlineModule extends TablistModule {
             }
 
             SkyBlockPlayer tablistPlayer = toShow.get(x);
-            entries.add(new TablistEntry(Text.of("{}", tablistPlayer.getRankDisplayName()), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of("{}", tablistPlayer.getRankDisplayName()).append(nameSuffix.apply(tablistPlayer)), TablistSkinRegistry.GRAY));
         }
 
         return entries;
