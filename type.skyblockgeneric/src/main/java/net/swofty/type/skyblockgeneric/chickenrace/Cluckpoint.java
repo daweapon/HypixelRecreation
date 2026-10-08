@@ -4,7 +4,10 @@ import lombok.Getter;
 import net.swofty.commons.skyblock.item.ItemType;
 import org.jetbrains.annotations.Nullable;
 
-/** Gulliver's four Chicken Race rewards, with the wiki's time limits. */
+/**
+ * Gulliver's four Chicken Race rewards, with the wiki's time limits. The cluckpoints are the course's
+ * green time hoops (and the finish), so the race countdown always runs to the next one's limit.
+ */
 @Getter
 public enum Cluckpoint {
     ONE(33, ItemType.RED_GIFT, "<c>Red Gift"),
@@ -26,12 +29,23 @@ public enum Cluckpoint {
         return ordinal() + 1;
     }
 
+    /** Time a passed cluckpoint adds to the countdown: the gap to the next cluckpoint's limit. */
+    public int bonusSeconds() {
+        Cluckpoint next = next(number());
+        return next == null ? 0 : next.secondsToBeat - secondsToBeat;
+    }
+
     public static Cluckpoint of(int number) {
         return values()[number - 1];
     }
 
     public static @Nullable Cluckpoint next(int claimed) {
         return claimed >= values().length ? null : values()[claimed];
+    }
+
+    /** Countdown shown during a run that has already passed {@code passed} cluckpoints. */
+    public static long remainingMillis(int passed, long elapsedMillis) {
+        return of(Math.min(passed + 1, values().length)).secondsToBeat * 1000L - elapsedMillis;
     }
 
     public enum Outcome {

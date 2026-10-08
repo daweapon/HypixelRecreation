@@ -2,6 +2,7 @@ package net.swofty.type.jerrysworkshop.chickenrace;
 
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
+import net.kyori.adventure.title.Title;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
@@ -12,6 +13,7 @@ import net.minestom.server.instance.block.Block;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.HypixelConst;
+import net.swofty.type.skyblockgeneric.chickenrace.ChickenFlight;
 import net.swofty.type.skyblockgeneric.chickenrace.ChickenRaceProgress;
 import net.swofty.type.skyblockgeneric.chickenrace.Cluckpoint;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -20,18 +22,22 @@ import net.swofty.type.skyblockgeneric.mission.missions.jerry.MissionReachCluckp
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.time.Duration;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Gulliver's Chicken Race. The rider's chicken flies wherever they look; flying through the hoops in
- * order leads to the cluckpoints. Touching the ground, leaving the chicken, losing it or running out
- * of time ends the run, as does reaching a cluckpoint for the first time.
+ * Gulliver's Chicken Race. The chicken flies forwards wherever the rider faces, falls under gravity
+ * and flaps upwards on JUMP. Flying through the hoops in order leads to the cluckpoints (the green time
+ * hoops and the finish), each of which tops up the countdown. Reaching an unclaimed cluckpoint ends the
+ * run with its reward; touching a block, leaving the chicken or running out of time cancels it.
  */
 public final class ChickenRace {
-    private static final double CRASH_CLEARANCE = 0.2;
-    private static final int RENDER_EVERY_TICKS = 4;
+    private static final String TITLE = "<6><l>CHICKEN RACING</l>";
+    private static final int RENDER_EVERY_TICKS = 3;
+    private static final double RIDER_HEIGHT = 1.0;
     private static final Map<UUID, Run> RUNS = new ConcurrentHashMap<>();
     private static boolean ticking;
 
@@ -45,7 +51,7 @@ public final class ChickenRace {
     public static synchronized void start(SkyBlockPlayer player) {
         if (isRacing(player) || player.getVehicle() != null) return;
         ChickenRaceCourse course = ChickenRaceCourse.get();
-        if (course.hoops().isEmpty()) {
+        if (course.hoops().isEmpty() || course.finish() == null) {
             player.sendMessage("<c>The Chicken Race course isn't set up.");
             return;
         }
@@ -53,6 +59,7 @@ public final class ChickenRace {
         Instance instance = HypixelConst.getInstanceContainer();
         LivingEntity chicken = new LivingEntity(EntityType.CHICKEN);
         chicken.setNoGravity(true);
+        chicken.setInvulnerable(true);
         Run run = new Run(player, chicken, course);
         RUNS.put(player.getUuid(), run);
         player.teleport(course.start()).thenRun(() -> chicken.setInstance(instance, course.start()).thenRun(() -> {
@@ -61,10 +68,13 @@ public final class ChickenRace {
                 return;
             }
             chicken.addPassenger(player);
-            run.startedAt = System.currentTimeMillis();
-            player.sendMessage("<e><l>CHICKEN RACE!</l> <e>Fly through the hoops - your chicken follows where you look!");
-            player.playSound(Sound.sound(Key.key("entity.chicken.egg"), Sound.Source.NEUTRAL, 1f, 1f));
+            run.begin();
         }));
+    }
+
+    public static void jump(SkyBlockPlayer player) {
+        Run run = RUNS.get(player.getUuid());
+        if (run != null) run.jumpPressed = true;
     }
 
     public static void quit(SkyBlockPlayer player) {
@@ -75,6 +85,11 @@ public final class ChickenRace {
     public static void quitAll() {
         RUNS.values().forEach(run -> run.cleanup(false));
         RUNS.clear();
+    }
+
+    static String clock(long millis) {
+        long clamped = Math.max(0, millis);
+        return String.format("%02d:%02d.%03d", clamped / 60_000, clamped / 1000 % 60, clamped % 1000);
     }
 
     private static void ensureTicking() {
@@ -94,19 +109,42 @@ public final class ChickenRace {
         }
     }
 
+    private static void cancel(Run run, String reason) {
+        end(run, TITLE + " <c>Race cancelled! " + reason);
+        run.player.playSound(Sound.sound(Key.key("block.note_block.bass"), Sound.Source.PLAYER, 1f, 0.6f));
+    }
+
     private static final class Run {
         private final SkyBlockPlayer player;
         private final LivingEntity chicken;
         private final ChickenRaceCourse course;
+        private final List<ChickenRaceCourse.Hoop> gates;
+        private final ChickenFlight flight;
+        private final LowTimeTint tint;
+        private volatile boolean jumpPressed;
         private long startedAt;
-        private int nextHoop;
-        private double bonusSeconds;
+        private Vec lastPosition;
+        private int nextGate;
+        private int cluckpointsPassed;
         private int ticks;
 
         private Run(SkyBlockPlayer player, LivingEntity chicken, ChickenRaceCourse course) {
             this.player = player;
             this.chicken = chicken;
             this.course = course;
+            this.gates = course.gates();
+            this.flight = new ChickenFlight(course.physics());
+            this.tint = new LowTimeTint(player, course.tintStartSeconds(), course.tintFullSeconds());
+        }
+
+        private void begin() {
+            lastPosition = riderPoint();
+            flight.flap();
+            startedAt = System.currentTimeMillis();
+            player.showTitle(Text.of(TITLE), Text.of("<e>Start"),
+                    Title.Times.times(Duration.ZERO, Duration.ofMillis(1500), Duration.ofMillis(500)));
+            player.sendMessage(TITLE + " <e>Race started! Good cluck!");
+            player.playSound(Sound.sound(Key.key("entity.chicken.egg"), Sound.Source.NEUTRAL, 1f, 1f));
         }
 
         private void tick() {
@@ -115,87 +153,101 @@ public final class ChickenRace {
                 quit(player);
                 return;
             }
-            if (chicken.isRemoved() || chicken.isDead()) {
-                end(this, "<c>Your chicken died!");
-                return;
-            }
-            if (player.getVehicle() != chicken || player.inputs().shift()) {
-                end(this, "<c>You left your chicken!");
+            if (chicken.isRemoved() || chicken.isDead() || player.getVehicle() != chicken || player.inputs().shift()) {
+                cancel(this, "You abandoned your Chicken!");
                 return;
             }
             long elapsed = System.currentTimeMillis() - startedAt;
-            double remaining = course.startingSeconds() + bonusSeconds - elapsed / 1000D;
+
+            Vec position = riderPoint();
+            while (nextGate < gates.size() && gates.get(nextGate).crossed(lastPosition, position)) {
+                passGate(gates.get(nextGate++), elapsed);
+                if (!isRacing(player)) return;
+            }
+            lastPosition = position;
+
+            long remaining = Cluckpoint.remainingMillis(cluckpointsPassed, elapsed);
             if (remaining <= 0) {
-                end(this, "<c>You ran out of time!");
+                cancel(this, "You ran out of time!");
+                return;
+            }
+            if (ticks > course.launchGraceTicks() && touchingBlock()) {
+                cancel(this, "Your Chicken touched the ground!");
                 return;
             }
 
-            Pos look = player.getPosition();
-            chicken.setView(look.yaw(), 0);
-            chicken.setVelocity(look.direction().mul(course.speed()));
-            if (touchingGround()) {
-                end(this, "<c>Your chicken touched the ground!");
-                return;
-            }
+            boolean jumping = jumpPressed || player.inputs().jump();
+            jumpPressed = false;
+            double rise = flight.tick(jumping);
+            float yaw = player.getPosition().yaw();
+            Vec forward = new Vec(-Math.sin(Math.toRadians(yaw)), 0, Math.cos(Math.toRadians(yaw)))
+                    .mul(course.physics().blocksPerTick());
+            chicken.setView(yaw, 0);
+            chicken.setVelocity(forward.withY(rise).mul(MinecraftServer.TICK_PER_SECOND));
 
-            ChickenRaceCourse.Hoop hoop = course.hoops().get(nextHoop);
-            if (hoop.contains(chicken.getPosition().asVec().add(0, 0.4, 0), course.hoopRadius())) {
-                passHoop(hoop, elapsed);
-                if (!RUNS.containsKey(player.getUuid())) return;
-            }
-
-            if (ticks++ % RENDER_EVERY_TICKS == 0) {
-                HoopRenderer.render(player, course, nextHoop);
-            }
-            SkyBlockActionBar.getFor(player).addReplacement(SkyBlockActionBar.BarSection.DEFENSE,
-                    Text.of("<e>Time Left: <a>{}s <7>(<f>{}s<7>)", String.format("%.1f", remaining),
-                            String.format("%.1f", elapsed / 1000D)), 5, 5);
+            if (ticks++ % RENDER_EVERY_TICKS == 0) HoopRenderer.render(player, gates, nextGate);
+            showHud(remaining);
+            tint.update(remaining / 1000D);
         }
 
-        private boolean touchingGround() {
+        private Vec riderPoint() {
+            return chicken.getPosition().asVec().add(0, RIDER_HEIGHT, 0);
+        }
+
+        private boolean touchingBlock() {
             if (chicken.isOnGround()) return true;
-            Pos position = chicken.getPosition();
             Instance instance = chicken.getInstance();
             if (instance == null) return true;
-            Block feet = instance.getBlock(position.add(0, -CRASH_CLEARANCE, 0));
+            Pos position = chicken.getPosition();
+            Block feet = instance.getBlock(position.add(0, -0.2, 0));
             Block body = instance.getBlock(position.add(0, 0.5, 0));
             Block head = instance.getBlock(position.add(0, 1.8, 0));
             return !feet.isAir() || !body.isAir() || head.isSolid();
         }
 
-        private void passHoop(ChickenRaceCourse.Hoop hoop, long elapsed) {
-            nextHoop++;
-            if (hoop.green()) {
-                bonusSeconds += course.greenHoopSeconds();
-                player.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.PLAYER, 1f, 1.4f));
-            } else {
-                player.playSound(Sound.sound(Key.key("block.note_block.pling"), Sound.Source.PLAYER, 1f, 1.2f));
-            }
-            if (hoop.cluckpoint() != null) {
-                reachCluckpoint(hoop.cluckpoint(), elapsed);
-                return;
-            }
-            if (nextHoop >= course.hoops().size()) end(this, "<a>You flew the whole course!");
+        private void showHud(long remaining) {
+            int hoopsPassed = Math.min(nextGate, course.hoops().size());
+            Text bar = Text.read(TITLE + " <e>" + clock(remaining) + " <b>" + hoopsPassed + "/" + course.hoops().size()
+                    + " " + (flight.flapReady() ? "<a>" : "<7>") + "JUMP");
+            SkyBlockActionBar actionBar = SkyBlockActionBar.getFor(player);
+            actionBar.addReplacement(SkyBlockActionBar.BarSection.HEALTH, bar, 1, 100);
+            actionBar.addReplacement(SkyBlockActionBar.BarSection.DEFENSE, Text.empty(), 1, 100);
+            actionBar.addReplacement(SkyBlockActionBar.BarSection.MANA, Text.empty(), 1, 100);
         }
 
-        private void reachCluckpoint(Cluckpoint cluckpoint, long elapsed) {
-            String time = String.format("%.2f", elapsed / 1000D);
+        private void passGate(ChickenRaceCourse.Hoop gate, long elapsed) {
+            if (gate.cluckpoint() == null) {
+                player.playSound(Sound.sound(Key.key("entity.experience_orb.pickup"), Sound.Source.PLAYER, 1f, 1.2f));
+                return;
+            }
+            Cluckpoint cluckpoint = gate.cluckpoint();
             switch (Cluckpoint.reach(cluckpoint, ChickenRaceProgress.claimed(player), elapsed,
                     ChickenRaceProgress.hasSpokenToFrosty(player))) {
                 case CLAIM -> {
-                    end(this, "<e><l>CLUCKPOINT " + cluckpoint.number() + "!</l> <e>Reached in <a>" + time + "s<e>!");
+                    end(this, cluckpoint == Cluckpoint.FOUR ? finishedMessage(elapsed)
+                            : TITLE + " <e>You reached <a>Cluckpoint " + cluckpoint.number() + " <e>in " + clock(elapsed) + "!");
                     claim(cluckpoint);
                 }
-                case TOO_SLOW -> end(this, "<c>You reached <e>Cluckpoint " + cluckpoint.number() + " <c>in <e>" + time
-                        + "s<c>, but Gulliver wants it in <e>\\< " + cluckpoint.getSecondsToBeat() + "s<c>!");
+                case TOO_SLOW -> cancel(this, "You reached <e>Cluckpoint " + cluckpoint.number()
+                        + " <c>in <e>" + clock(elapsed) + "<c>, but Gulliver wants it in under <e>"
+                        + cluckpoint.getSecondsToBeat() + "s<c>!");
                 case NEEDS_FROSTY -> end(this, "<e>[NPC] Gulliver<f>: Bukawk! Puk puk... <a>Frosty<f>?"
                         + "\n<7>Talk to <a>Frosty <7>before racing past <e>Cluckpoint 1<7>.");
                 case PASS -> {
-                    bonusSeconds += course.cluckpointSeconds();
-                    player.sendMessage("<e>Cluckpoint " + cluckpoint.number() + " <7>passed in <a>" + time + "s<7>.");
-                    if (nextHoop >= course.hoops().size()) end(this, "<a>You flew the whole course!");
+                    cluckpointsPassed++;
+                    if (cluckpoint == Cluckpoint.FOUR) {
+                        end(this, finishedMessage(elapsed));
+                        player.playSound(Sound.sound(Key.key("ui.toast.challenge_complete"), Sound.Source.PLAYER, 1f, 1f));
+                        return;
+                    }
+                    player.sendMessage("<a>+" + cluckpoint.bonusSeconds() + " Seconds!");
+                    player.playSound(Sound.sound(Key.key("entity.player.levelup"), Sound.Source.PLAYER, 1f, 1.6f));
                 }
             }
+        }
+
+        private String finishedMessage(long elapsed) {
+            return TITLE + " <e>Race finished in " + clock(elapsed) + "!";
         }
 
         private void claim(Cluckpoint cluckpoint) {
@@ -212,7 +264,8 @@ public final class ChickenRace {
         private void cleanup(boolean returnToGulliver) {
             if (chicken.getPassengers().contains(player)) chicken.removePassenger(player);
             chicken.remove();
-            if (returnToGulliver && player.isOnline()) player.teleport(course.finish());
+            tint.clear();
+            if (returnToGulliver && player.isOnline()) player.teleport(course.returnTo());
         }
     }
 }

@@ -40,6 +40,24 @@ class CluckpointTest {
     }
 
     @Test
+    void timeHoopsAddTheGapToTheNextLimit() {
+        assertEquals(19, Cluckpoint.ONE.bonusSeconds());
+        assertEquals(16, Cluckpoint.TWO.bonusSeconds());
+        assertEquals(36, Cluckpoint.THREE.bonusSeconds());
+        assertEquals(0, Cluckpoint.FOUR.bonusSeconds());
+    }
+
+    @Test
+    void countdownRunsToTheNextCluckpointLimit() {
+        assertEquals(33_000, Cluckpoint.remainingMillis(0, 0));
+        assertEquals(32_707, Cluckpoint.remainingMillis(0, 293));
+        assertEquals(52_000 - 30_000, Cluckpoint.remainingMillis(1, 30_000));
+        assertEquals(68_000 - 60_000, Cluckpoint.remainingMillis(2, 60_000));
+        assertEquals(104_000 - 101_883, Cluckpoint.remainingMillis(3, 101_883));
+        assertEquals(104_000 - 101_883, Cluckpoint.remainingMillis(4, 101_883));
+    }
+
+    @Test
     void nextTargetFollowsClaimedCount() {
         assertEquals(Cluckpoint.ONE, Cluckpoint.next(0));
         assertEquals(Cluckpoint.FOUR, Cluckpoint.next(3));
