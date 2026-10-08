@@ -20,7 +20,7 @@ import java.util.UUID;
 final class HarpyAbility implements MythologicalAbility {
     private static final String CURSE = "Harpy's Curse";
     private static final int LEAP_INTERVAL_TICKS = 120;
-    private static final double LEAP_VELOCITY = 16;
+    private static final double LEAP_VELOCITY = 32;
     private static final double MAX_FALL_SPEED = -1.5;
     private static final int SHOT_INTERVAL_TICKS = 12;
     private static final double ARROW_SPEED = 1.6;

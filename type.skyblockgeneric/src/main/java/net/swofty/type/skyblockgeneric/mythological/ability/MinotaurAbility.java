@@ -65,7 +65,7 @@ final class MinotaurAbility implements MythologicalAbility {
     @Override
     public String nameHeader(MythologicalCreatureMob mob) {
         int highest = bleed.highest();
-        return highest > 0 ? "<c>" + highest + " Bleed" : "";
+        return highest > 0 ? Bleed.label(highest) : "";
     }
 
     @Override

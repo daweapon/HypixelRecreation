@@ -240,7 +240,7 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
         burrow.setOpened(true);
 
         String exclamation = DIG_EXCLAMATIONS.get(ThreadLocalRandom.current().nextInt(DIG_EXCLAMATIONS.size()));
-        player.sendMessage("<c><l>" + exclamation + "</l> <e>You dug out a <2>" + variant.nameOf(creature.getDisplayName()) + "<e>!");
+        player.sendMessage("<c><l>" + exclamation + "</l> <e>You dug out a <2>" + creature.getDisplayName() + "<e>!");
     }
 
     private static void dismiss(GriffinBurrow burrow) {

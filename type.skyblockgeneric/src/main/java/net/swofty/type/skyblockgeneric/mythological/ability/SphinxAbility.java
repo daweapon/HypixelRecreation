@@ -71,12 +71,16 @@ public final class SphinxAbility implements MythologicalAbility {
         SkyBlockPlayer digger = SkyBlockGenericLoader.getFromUUID(mob.getDigger());
         if (digger == null) return;
         AWAITING_ANSWER.put(mob.getUuid(), this);
-        digger.sendMessage("<6><l>SPHINX! <e>" + riddle.question());
+        digger.sendMessage("<6><l>Question");
+        digger.sendMessage("<f>" + riddle.question());
         for (int i = 0; i < choices.size(); i++) {
-            digger.sendMessage(Text.of("  <a>" + (char) ('A' + i) + ") <f>" + choices.get(i)).asComponent()
+            digger.sendMessage(Text.of(" <f>" + (char) ('A' + i) + ") " + choices.get(i)).asComponent()
                     .clickEvent(ClickEvent.runCommand("/sphinxanswer " + mob.getUuid() + " " + i))
                     .hoverEvent(HoverEvent.showText(Text.of("<e>Click to answer!").asComponent())));
         }
+        digger.sendMessage(" ");
+        digger.sendMessage("<8>Click your response to answer!");
+        digger.sendMessage(" ");
     }
 
     private void resolve(SkyBlockPlayer player, boolean correct) {
@@ -110,7 +114,7 @@ public final class SphinxAbility implements MythologicalAbility {
     @Override
     public String nameHeader(MythologicalCreatureMob mob) {
         int highest = bleed.highest();
-        return highest > 0 ? "<c>" + highest + " Bleed" : "";
+        return highest > 0 ? Bleed.label(highest) : "";
     }
 
     @Override

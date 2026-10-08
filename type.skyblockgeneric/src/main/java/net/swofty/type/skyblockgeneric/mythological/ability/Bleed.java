@@ -30,6 +30,10 @@ public final class Bleed {
         this.damagePerStack = damagePerStack;
     }
 
+    public static String label(int stacks) {
+        return "<c>☣ <f>Bleeds: <c>" + stacks;
+    }
+
     public void setDamagePerStack(double damagePerStack) {
         this.damagePerStack = damagePerStack;
     }
