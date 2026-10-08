@@ -1,5 +1,6 @@
 package net.swofty.type.crimsonisle.events;
 
+import net.swofty.type.crimsonisle.faction.DuelistNPC;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
@@ -17,6 +18,7 @@ public class ActionFactionQuestProgress implements HypixelEventClass {
     public void onKill(PlayerKilledSkyBlockMobEvent event) {
         CrimsonQuestlines.onMobKilled(event.getPlayer(), event.getKilledMob());
         CrimsonSideQuests.onMobKilled(event.getPlayer(), event.getKilledMob());
+        DuelistNPC.onKill(event.getPlayer(), event.getKilledMob());
     }
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
