@@ -1,0 +1,50 @@
+# Kuudra Keys as sold by the Mage Emissary (wiki Mage_Emissary/UI, 2025-02 revision; 2024-11 changelog).
+# Copy these entries into the Emissary's shop: coins take the reputation discount, materials don't (estimate).
+title: Mage Shop
+slots: DEFAULT
+priceModifier: mage_emissary
+entries:
+  - item: KUUDRA_TIER_KEY
+    name: "<9>Kuudra Key"
+    material: player_head
+    cost:
+      coins: 200000
+      items:
+        ENCHANTED_MYCELIUM: 2
+        CORRUPTED_NETHER_STAR: 2
+  - item: KUUDRA_HOT_TIER_KEY
+    name: "<5>Hot Kuudra Key"
+    material: player_head
+    requires: { faction: MAGE, reputation: 1000 }
+    cost:
+      coins: 400000
+      items:
+        ENCHANTED_MYCELIUM: 4
+        CORRUPTED_NETHER_STAR: 2
+  - item: KUUDRA_BURNING_TIER_KEY
+    name: "<5>Burning Kuudra Key"
+    material: player_head
+    requires: { faction: MAGE, reputation: 3000 }
+    cost:
+      coins: 750000
+      items:
+        ENCHANTED_MYCELIUM: 16
+        CORRUPTED_NETHER_STAR: 2
+  - item: KUUDRA_FIERY_TIER_KEY
+    name: "<5>Fiery Kuudra Key"
+    material: player_head
+    requires: { faction: MAGE, reputation: 7000 }
+    cost:
+      coins: 1500000
+      items:
+        ENCHANTED_MYCELIUM: 40
+        CORRUPTED_NETHER_STAR: 2
+  - item: KUUDRA_INFERNAL_TIER_KEY
+    name: "<6>Infernal Kuudra Key"
+    material: player_head
+    requires: { faction: MAGE, reputation: 12000 }
+    cost:
+      coins: 3000000
+      items:
+        ENCHANTED_MYCELIUM: 80
+        CORRUPTED_NETHER_STAR: 2
