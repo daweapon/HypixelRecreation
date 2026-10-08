@@ -25,6 +25,10 @@ final class MaxwellItems {
         return ItemStacks.copy(new SkyBlockItem(stone).getItemStack());
     }
 
+    static ItemStack.Builder selectedIcon() {
+        return ItemStack.builder(Material.LIME_STAINED_GLASS);
+    }
+
     static ItemStack.Builder withText(ItemStack.Builder builder, String text) {
         return ItemStacks.clearAttributes(ItemStacks.text(builder, text.replace("{", "(").replace("}", ")")));
     }
@@ -51,7 +55,7 @@ final class MaxwellItems {
     }
 
     static ItemStack.Builder noPower(boolean selected) {
-        ItemStack.Builder builder = ItemStacks.item(selected ? Material.LIME_STAINED_GLASS_PANE : Material.GRAY_STAINED_GLASS_PANE, """
+        ItemStack.Builder builder = ItemStacks.item(selected ? Material.LIME_STAINED_GLASS : Material.GRAY_STAINED_GLASS_PANE, """
                 <a>No Power
                 <8>Starter Power
 

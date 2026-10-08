@@ -117,7 +117,7 @@ public class GUIMaxwell implements StatefulView<GUIMaxwell.Page> {
         else if (!AccessoryPowers.meetsRequirement(power, combatLevel))
             action = "<c>Requires <a>Combat Skill " + power.getCombatLevel() + "<c>.";
         else action = "<e>Click to select power!";
-        ItemStack.Builder builder = MaxwellItems.withText(MaxwellItems.icon(power),
+        ItemStack.Builder builder = MaxwellItems.withText(selected ? MaxwellItems.selectedIcon() : MaxwellItems.icon(power),
                 "<a>" + power.getDisplayName() + "\n<8>" + power.getTier().getDisplayName() + "\n\n"
                         + MaxwellItems.stats(power, accessoryPower) + "\n"
                         + MaxwellItems.accessoryPower(accessoryPower) + "\n\n" + action);

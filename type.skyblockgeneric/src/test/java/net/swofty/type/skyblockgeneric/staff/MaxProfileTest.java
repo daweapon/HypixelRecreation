@@ -1,0 +1,157 @@
+package net.swofty.type.skyblockgeneric.staff;
+
+import net.minestom.server.MinecraftServer;
+import net.minestom.server.network.packet.server.SendablePacket;
+import net.minestom.server.network.player.GameProfile;
+import net.minestom.server.network.player.PlayerConnection;
+import net.swofty.commons.YamlFileUtils;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
+import net.swofty.proxyapi.PlayerTransferDataCache;
+import net.swofty.type.generic.data.HypixelDataHandler;
+import net.swofty.type.generic.data.domain.AccountDomain;
+import net.swofty.type.generic.data.domain.PlayerDataService;
+import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowerType;
+import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowers;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDomain;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryBag;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryPowers;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
+import net.swofty.type.skyblockgeneric.item.ItemConfigParser;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelCause;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import org.bson.Document;
+import org.junit.jupiter.api.Assumptions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Base64;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class MaxProfileTest {
+    private static final Path ITEMS = Path.of("../configuration/skyblock/items");
+
+    @BeforeAll
+    @SuppressWarnings("unchecked")
+    static void init() throws IOException {
+        Path configuration = Path.of("configuration");
+        if (!Files.exists(configuration)) Files.createSymbolicLink(configuration, Path.of("../configuration"));
+        Assumptions.assumeTrue(Files.exists(configuration.resolve("skyblock/shards.yml")),
+                "the server configuration must be reachable at ./configuration");
+        MinecraftServer.init();
+        ItemAttribute.registerItemAttributes();
+        try (Stream<Path> files = Files.walk(ITEMS)) {
+            for (Path file : files.filter(path -> path.toString().endsWith(".yml")).toList()) {
+                Object items = YamlFileUtils.loadYaml(file.toFile()).get("items");
+                if (!(items instanceof List<?> list)) continue;
+                for (Object entry : list) ItemConfigParser.parseItem((Map<String, Object>) entry);
+            }
+        }
+        SkyBlockLevelCause.initializeCauses();
+    }
+
+    private static SkyBlockPlayer player() {
+        UUID uuid = UUID.randomUUID();
+        PlayerDataService.store(AccountDomain.KEY, uuid, HypixelDataHandler.initUserWithDefaultData(uuid));
+        PlayerDataService.store(SkyBlockDomain.KEY, uuid, SkyBlockDataHandler.initUserWithDefaultData(uuid, UUID.randomUUID()));
+        PlayerConnection connection = new PlayerConnection() {
+            @Override
+            public void sendPacket(SendablePacket packet) {
+            }
+
+            @Override
+            public SocketAddress getRemoteAddress() {
+                return new InetSocketAddress(0);
+            }
+        };
+        return new SkyBlockPlayer(new GameProfile(uuid, "MaxTester"), connection);
+    }
+
+    @Test
+    void maxProfileFillsPetsBagAndPowersAndTheySurviveAServerSwitch() {
+        SkyBlockPlayer player = player();
+        SkyBlockItem summoned = new SkyBlockItem(ItemType.LION_PET);
+        summoned.getAttributeHandler().setRarity(Rarity.COMMON);
+        player.getPetData().addPet(summoned);
+        player.getPetData().setEnabled(summoned, true);
+
+        long start = System.nanoTime();
+        List<String> failed = MaxStickService.runSteps(player);
+        long millis = (System.nanoTime() - start) / 1_000_000;
+        System.out.println("/maxprofile took " + millis + " ms; failed steps: " + failed);
+        assertTrue(failed.stream().noneMatch(List.of("Pets", "Accessory Bag", "Accessory powers")::contains), failed.toString());
+
+        int pets = MaxPets.petTypes().size();
+        int accessories = player.getAccessoryBag().getAllAccessories().size();
+        assertEquals(pets, player.getPetData().getPetsMap().size());
+        assertTrue(accessories > 100, "only " + accessories + " accessories placed");
+        assertEquals(new HashSet<>(AccessoryPowerType.stonePowers()),
+                new HashSet<>(AccessoryPowers.data(player).getLearned()));
+
+        assertEquals(failed, MaxStickService.runSteps(player));
+        assertEquals(pets, player.getPetData().getPetsMap().size());
+        assertEquals(accessories, player.getAccessoryBag().getAllAccessories().size());
+
+        SkyBlockDataHandler handler = player.getSkyblockDataHandler();
+        String json = handler.toProfileDocument().toJson();
+        System.out.println("profile document: " + json.length() / 1024 + " KB");
+        handler.getDatapoints().values().stream()
+                .sorted((a, b) -> Integer.compare(serializedLength(b), serializedLength(a)))
+                .limit(8)
+                .forEach(dp -> System.out.println("  " + dp.getKey() + ": " + serializedLength(dp) / 1024 + " KB"));
+
+        String transferred = new String(Base64.getDecoder().decode(PlayerTransferDataCache.encodeDocument(json)), StandardCharsets.UTF_8);
+        SkyBlockDataHandler loaded = SkyBlockDataHandler.createFromProfile(player.getUuid(), handler.getCurrentProfileId(),
+                Document.parse(transferred));
+        assertEquals(pets, loaded.get(SkyBlockDataHandler.Data.PET_DATA, DatapointPetData.class).getValue().getPetsMap().size());
+        assertEquals(accessories, loaded.get(SkyBlockDataHandler.Data.ACCESSORY_BAG, DatapointAccessoryBag.class)
+                .getValue().getAllAccessories().size());
+        assertEquals(AccessoryPowerType.stonePowers().size(), loaded.get(SkyBlockDataHandler.Data.ACCESSORY_POWERS,
+                DatapointAccessoryPowers.class).getValue().getLearned().size());
+    }
+
+    @Test
+    void petItemsAndSkinsCanBeGivenByIdAndName() {
+        SkyBlockPlayer player = player();
+        List<String> failures = new java.util.ArrayList<>();
+        for (String input : List.of("PET_SKIN_ELEPHANT_PINK", "pet_skin_elephant_pink", "PET_ITEM_HARDENED_SCALES_UNCOMMON",
+                "Hardened Scales", "PET_ITEM_BIG_TEETH_COMMON", "Big Teeth", "SUPER_SCRUBBER", "Super Scrubber")) {
+            if (net.swofty.type.skyblockgeneric.item.ItemTypeResolver.resolve(input) == null) failures.add(input + ": unresolved");
+        }
+        for (ItemType type : ItemType.values()) {
+            if (!type.name().startsWith("PET_SKIN_") && !type.name().startsWith("PET_ITEM_") && type != ItemType.SUPER_SCRUBBER) continue;
+            try {
+                SkyBlockItem item = new SkyBlockItem(type);
+                net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater.playerUpdate(player, item.getItemStack(), true).build();
+                new net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater(item).getUpdatedItem().build();
+            } catch (RuntimeException exception) {
+                failures.add(type + ": " + exception);
+            }
+        }
+        assertTrue(failures.isEmpty(), String.join("\n", failures));
+    }
+
+    private static int serializedLength(net.swofty.type.generic.data.Datapoint<?> datapoint) {
+        try {
+            return datapoint.getSerializedValue().length();
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+}

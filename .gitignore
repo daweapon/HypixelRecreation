@@ -77,3 +77,4 @@ server/proxy/ViaLoader/
 store/.next
 store/node_modules
 store/next-env.d.ts
+/type.skyblockgeneric/configuration
