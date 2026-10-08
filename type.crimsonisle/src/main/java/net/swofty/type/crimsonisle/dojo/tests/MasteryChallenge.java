@@ -24,11 +24,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Test of Mastery: wool targets appear on wooden pillars around a small platform and ripen from
- * green (8) to yellow (16) to red (32) before vanishing. Shoot them with the arena bow.
+ * green (8) to yellow (16) to red (32) before vanishing. Shoot them with the arena bow. Each arrow's flight is
+ * traced block by block, so a target of any colour counts whichever face the arrow strikes.
  */
 public class MasteryChallenge extends DojoChallenge {
     private static final int PILLARS = 12;
-    private static final double RING_RADIUS = 11;
+    private static final double RING_RADIUS = 13;
     private static final int MAX_TARGETS = 4;
     private static final int SPAWN_INTERVAL = 18;
     private static final Stage[] STAGES = {
@@ -38,6 +39,7 @@ public class MasteryChallenge extends DojoChallenge {
 
     private final List<int[]> pillarTops = new ArrayList<>();
     private final List<Target> targets = new ArrayList<>();
+    private final List<Flight> flights = new ArrayList<>();
 
     public MasteryChallenge(SkyBlockPlayer player) {
         super(player, DojoTest.MASTERY);
@@ -45,7 +47,7 @@ public class MasteryChallenge extends DojoChallenge {
 
     @Override
     protected void build() {
-        arena.square(1, Block.POLISHED_ANDESITE);
+        arena.square(2, Block.POLISHED_ANDESITE);
         ThreadLocalRandom random = ThreadLocalRandom.current();
         for (int index = 0; index < PILLARS; index++) {
             double angle = Math.PI * 2 * index / PILLARS + random.nextDouble(-0.15, 0.15);
@@ -75,6 +77,7 @@ public class MasteryChallenge extends DojoChallenge {
 
     @Override
     protected void tick() {
+        traceArrows();
         if (targets.size() < MAX_TARGETS && ticks % SPAWN_INTERVAL == 0) spawnTarget();
         Iterator<Target> iterator = targets.iterator();
         while (iterator.hasNext()) {
@@ -101,21 +104,52 @@ public class MasteryChallenge extends DojoChallenge {
         arrow.setVelocity(velocity);
         arrow.setInstance(DojoArena.instance(), eye.add(eye.direction().mul(0.5)));
         track(arrow);
+        flights.add(new Flight(arrow, arrow.getPosition(), velocity.normalize()));
         sound("entity.arrow.shoot", 1f);
+    }
+
+    private void traceArrows() {
+        Iterator<Flight> iterator = flights.iterator();
+        while (iterator.hasNext()) {
+            Flight flight = iterator.next();
+            if (flight.arrow.isRemoved()) {
+                iterator.remove();
+                continue;
+            }
+            Pos now = flight.arrow.getPosition();
+            Vec path = now.sub(flight.last).asVec();
+            Vec heading = path.length() > 1e-3 ? path.normalize() : flight.heading;
+            double length = path.length() + 0.6;
+            Target hit = null;
+            for (double step = 0; step <= length && hit == null; step += 0.2) {
+                hit = targetAt(flight.last.add(heading.mul(step)));
+            }
+            flight.last = now;
+            if (hit == null) continue;
+            score(hit);
+            flight.arrow.remove();
+            iterator.remove();
+        }
+    }
+
+    private Target targetAt(Point point) {
+        for (Target target : targets) {
+            if (target.x == point.blockX() && target.y == point.blockY() && target.z == point.blockZ()) return target;
+        }
+        return null;
+    }
+
+    private void score(Target target) {
+        addScore(STAGES[target.stage].points);
+        arena.restore(target.x, target.y, target.z);
+        targets.remove(target);
+        sound("entity.experience_orb.pickup", 0.8f + target.stage * 0.3f);
     }
 
     @Override
     public void onArrowHit(Point block) {
-        Iterator<Target> iterator = targets.iterator();
-        while (iterator.hasNext()) {
-            Target target = iterator.next();
-            if (target.x != block.blockX() || target.y != block.blockY() || target.z != block.blockZ()) continue;
-            addScore(STAGES[target.stage].points);
-            arena.restore(target.x, target.y, target.z);
-            iterator.remove();
-            sound("entity.experience_orb.pickup", 0.8f + target.stage * 0.3f);
-            return;
-        }
+        Target target = targetAt(block);
+        if (target != null) score(target);
     }
 
     private void spawnTarget() {
@@ -129,6 +163,18 @@ public class MasteryChallenge extends DojoChallenge {
     }
 
     private record Stage(Block block, int points, int duration) {
+    }
+
+    private static final class Flight {
+        private final ArrowEntityImpl arrow;
+        private final Vec heading;
+        private Pos last;
+
+        private Flight(ArrowEntityImpl arrow, Pos last, Vec heading) {
+            this.arrow = arrow;
+            this.last = last;
+            this.heading = heading;
+        }
     }
 
     private static final class Target {

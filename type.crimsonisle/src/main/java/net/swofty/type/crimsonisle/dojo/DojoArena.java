@@ -88,6 +88,18 @@ public final class DojoArena {
         }
     }
 
+    /** Clears anything left standing in the open arena, such as the stray wool baked into the map. */
+    public static void clearDebris() {
+        Instance instance = instance();
+        for (int x = MIN_X; x <= MAX_X; x++) {
+            for (int z = MIN_Z; z <= MAX_Z; z++) {
+                for (int y = STAND_Y; y < CEILING_Y; y++) {
+                    if (!instance.getBlock(x, y, z).isAir()) instance.setBlock(x, y, z, Block.AIR);
+                }
+            }
+        }
+    }
+
     public void restoreAll() {
         Instance instance = instance();
         originals.forEach((cell, block) -> instance.setBlock(cell.x(), cell.y(), cell.z(), block));

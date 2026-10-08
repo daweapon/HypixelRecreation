@@ -7,7 +7,6 @@ import net.minestom.server.potion.Potion;
 import net.minestom.server.potion.PotionEffect;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.StringUtility;
-import net.swofty.commons.text.Text;
 import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoChallengeLock;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoDamageProtection;
@@ -16,13 +15,19 @@ import net.swofty.type.skyblockgeneric.crimson.dojo.DojoProgress;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoTest;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoTestCompletedEvent;
 import net.swofty.type.skyblockgeneric.event.actions.player.ActionPlayerChangeHypixelMenuDisplay;
-import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
+import net.swofty.type.skyblockgeneric.region.RegionType;
+import net.swofty.type.skyblockgeneric.region.rules.ZoneRule;
+import net.swofty.type.skyblockgeneric.region.rules.ZoneRuleService;
+import net.swofty.type.skyblockgeneric.user.ChallengeSidebar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Runs Dojo challenges. The Arena is one real hall in the shared world, so one player uses it at a
@@ -45,6 +50,9 @@ public final class DojoService {
         if (started) return;
         started = true;
         DojoDamageProtection.register(DojoProtection::isProtected);
+        ChallengeSidebar.register(DojoService::sidebar);
+        ZoneRuleService.register(ZoneRule.regions("dojo", Set.of(RegionType.DOJO), true, null)
+                .or(DojoService::isInChallenge));
         MinecraftServer.getSchedulerManager().buildTask(DojoService::tick).repeat(TaskSchedule.tick(1)).schedule();
     }
 
@@ -138,7 +146,6 @@ public final class DojoService {
             Logger.error(exception, "Dojo challenge {} failed", session.challenge.getTest());
             session.challenge.fail();
         }
-        if (session.challenge.ticks % 5 == 0) showProgress(session);
         if (session.challenge.isOver()) finish(session, false);
     }
 
@@ -155,16 +162,23 @@ public final class DojoService {
         }
     }
 
-    private static void showProgress(Session session) {
+    private static @Nullable List<String> sidebar(SkyBlockPlayer player) {
+        Session session = active;
+        if (session == null || !session.player.getUuid().equals(player.getUuid())) return null;
         DojoChallenge challenge = session.challenge;
         DojoTest test = challenge.getTest();
+        List<String> lines = new ArrayList<>();
+        lines.add("Challenge: <6>" + test.getDisplayName());
+        String difficulty = challenge.difficulty();
+        if (difficulty != null) lines.add("Difficulty: " + difficulty);
+        int gain = challenge.lastGain();
+        String recent = gain == 0 ? "" : gain > 0 ? " <7>(<a>+" + gain + "<7>)" : " <7>(<c>" + gain + "<7>)";
+        lines.add("Points: <a>" + StringUtility.commaify(challenge.score()) + recent);
         long millis = test.isTimed()
                 ? Math.max(0, test.getTimeLimitSeconds() * 1000L - challenge.elapsedMillis())
                 : challenge.elapsedMillis();
-        String label = test.isTimed() ? "Time Left" : "Time";
-        SkyBlockActionBar.getFor(session.player).addReplacement(SkyBlockActionBar.BarSection.DEFENSE,
-                Text.of("<6>Points: <e>" + StringUtility.commaify(challenge.score()) + "  <7>" + label + ": <a>"
-                        + DojoFormat.clock(millis)), 10, 5);
+        lines.add("Time: <a>" + (millis / 1000) + "s");
+        return lines;
     }
 
     private static void finish(Session session, boolean cancelled) {

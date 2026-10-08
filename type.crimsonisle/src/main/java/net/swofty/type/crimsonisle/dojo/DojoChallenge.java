@@ -9,9 +9,11 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.item.ItemStack;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoTest;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * One run of a Dojo test. The session ticks it every server tick while it runs and cleans up the arena
@@ -28,6 +30,7 @@ public abstract class DojoChallenge {
     protected final List<Entity> entities = new ArrayList<>();
     protected long ticks;
     private double score;
+    private double lastGain;
     private boolean failed;
 
     protected DojoChallenge(SkyBlockPlayer player, DojoTest test) {
@@ -55,16 +58,17 @@ public abstract class DojoChallenge {
     public void onBowRelease(long useTicks) {
     }
 
-    /** Timed tests send a fallen player back to the platform; survival tests end. */
+    /** Falling into the lava ends every test on the spot, keeping the points earned so far. */
     protected void onFall() {
-        if (test.isTimed()) {
-            player.teleport(spawn());
-        } else {
-            fail();
-        }
+        fail();
+    }
+
+    public @Nullable String difficulty() {
+        return null;
     }
 
     public final Pos begin() {
+        DojoArena.clearDebris();
         build();
         List<ItemStack> kit = kit();
         for (int slot = 0; slot < kit.size(); slot++) player.getInventory().setItemStack(slot, kit.get(slot));
@@ -91,6 +95,16 @@ public abstract class DojoChallenge {
 
     protected void addScore(double delta) {
         score += delta;
+        if (Math.abs(delta) >= 1) lastGain = delta;
+    }
+
+    public int lastGain() {
+        return (int) Math.round(lastGain);
+    }
+
+    /** How long an arena mob lives before it vanishes if nobody deals with it: 5 to 7 seconds. */
+    protected static long mobLifetimeTicks() {
+        return ThreadLocalRandom.current().nextLong(5L * TICKS_PER_SECOND, 7L * TICKS_PER_SECOND + 1);
     }
 
     protected void setScore(double value) {
