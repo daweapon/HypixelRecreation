@@ -36,7 +36,7 @@ public class TypeCrimsonIsleLoader implements SkyBlockTypeLoader {
 
     @Override
     public void afterInitialize(MinecraftServer server) {
-
+        CrimsonIsleServices.start();
     }
 
     @Override
