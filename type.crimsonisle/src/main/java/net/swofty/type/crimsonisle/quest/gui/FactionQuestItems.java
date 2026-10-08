@@ -38,7 +38,7 @@ final class FactionQuestItems {
         }
         if (!progress.isEmpty() && !slot.isClaimed()) lore.append(progress).append("\n");
         lore.append("\n<7>Rewards:\n");
-        if (faction != null) FactionQuestRewards.previewLines(quest.tier(), faction, quest.type()).forEach(line -> lore.append(" ").append(line).append("\n"));
+        if (faction != null) FactionQuestRewards.previewLines(quest.tier(), faction, slot.getReward()).forEach(line -> lore.append(" ").append(line).append("\n"));
         lore.append("\n").append(quest.tier().coloured()).append(" ").append(quest.tier().getRarityName().toUpperCase()).append(" QUEST\n\n");
         lore.append(status(player, slot, onBoard));
         return ItemStacks.item(slot.isClaimed() ? Material.MAP : Material.FILLED_MAP, lore.toString());
@@ -50,7 +50,7 @@ final class FactionQuestItems {
         if (slot.isCompleted()) return "<e>Click to claim your rewards!";
         if (quest.type() == FactionQuestType.FETCH) {
             return FactionQuestService.fetchAvailable(player, quest) >= quest.amount()
-                    ? "<e>Click to hand in the items!" : "<c>You don't have enough items yet!";
+                    ? "<e>Click to hand in the items and claim!" : "<c>You don't have enough items yet!";
         }
         return onBoard ? "<e>Click to view details!" : "<c>Not completed yet!";
     }

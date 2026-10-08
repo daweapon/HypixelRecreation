@@ -9,19 +9,30 @@ import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.BitsMultiplier;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.random.RandomGenerator;
 
-/** Pays a claimed quest: the tier's Combat XP, reputation and Bits, plus one item picked from the tier pool. */
+/**
+ * Pays a claimed quest: the tier's Combat XP, reputation and Bits, plus the item rolled from the tier pool when
+ * the board was generated, so the board can name it in advance.
+ */
 public final class FactionQuestRewards {
     private FactionQuestRewards() {
     }
 
-    public static void grant(SkyBlockPlayer player, CrimsonFaction faction, FactionQuest quest) {
+    public static FactionQuestTier.RewardItem roll(@Nullable UUID player, FactionQuest quest, RandomGenerator random) {
+        return LootRoll.pick(player, quest.tier().pool(quest.type()), FactionQuestTier.RewardItem::type, entry -> 1, random);
+    }
+
+    public static void grant(SkyBlockPlayer player, CrimsonFaction faction, FactionQuest quest,
+                             @Nullable FactionQuestTier.RewardItem rolled) {
         FactionQuestTier tier = quest.tier();
-        FactionQuestTier.RewardItem item = LootRoll.pick(player.getUuid(), tier.pool(quest.type()),
-                FactionQuestTier.RewardItem::type, entry -> 1, ThreadLocalRandom.current());
+        FactionQuestTier.RewardItem item = rolled != null ? rolled : roll(player.getUuid(), quest, ThreadLocalRandom.current());
         int bits = (int) Math.round(tier.getBits() * BitsMultiplier.of(player));
 
         player.sendMessage("<6><l>QUEST REWARDS! " + tier.coloured() + " <f>" + quest.tabName());
@@ -34,12 +45,13 @@ public final class FactionQuestRewards {
         CrimsonReputationService.add(player, faction, tier.getReputation(), "Faction Quest");
     }
 
-    public static List<String> previewLines(FactionQuestTier tier, CrimsonFaction faction, FactionQuestType type) {
+    public static List<String> previewLines(FactionQuestTier tier, CrimsonFaction faction,
+                                            @Nullable FactionQuestTier.RewardItem item) {
         List<String> lines = new ArrayList<>();
         lines.add("<8>+<3>" + StringUtility.commaify(tier.getCombatXP()) + " <7>Combat Experience");
         lines.add("<8>+<a>" + tier.getReputation() + " " + faction.coloured() + " Reputation");
         lines.add("<8>+<b>" + tier.getBits() + " Bits");
-        lines.add("<8>+<7>One of " + tier.pool(type).size() + " random " + (type == FactionQuestType.FISHING ? "fishing " : "") + "items");
+        if (item != null) lines.add("<8>+<f>" + item.amount() + "x " + item.displayName());
         return lines;
     }
 
