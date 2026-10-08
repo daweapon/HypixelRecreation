@@ -54,7 +54,7 @@ class BlazeSlayerCatalogueTest {
     void levelsCarryTheirRewards() {
         assertEquals(9, blaze.levels().size());
         assertEquals(1_000_000, blaze.maxXp());
-        assertEquals(22, blaze.levels().stream().mapToInt(level -> level.unlocks().size()).sum());
+        assertEquals(23, blaze.levels().stream().mapToInt(level -> level.unlocks().size()).sum());
         int skyBlockXp = blaze.levels().stream().mapToInt(SlayerLevelReward::skyBlockXp).sum();
         assertEquals(725, skyBlockXp);
         assertEquals(3, blaze.minibosses().size());
