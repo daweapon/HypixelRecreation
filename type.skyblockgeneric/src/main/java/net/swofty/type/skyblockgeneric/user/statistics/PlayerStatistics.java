@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.user.statistics;
 
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -906,7 +907,8 @@ public class PlayerStatistics {
                 if (player.getMana() <= player.getMaxMana()) {
                     float manaPool = player.getMaxMana();
                     player.setMana(Math.min(manaPool, Math.min(manaPool, player.getMana() + (manaPool / 50) +
-                            (int) ((manaPool / 50) * player.getStatistics().getManaRegenerationPercentBonus()))));
+                            (int) ((manaPool / 50) * (player.getStatistics().getManaRegenerationPercentBonus()
+                            + MiscPetHooks.manaRegenPercent(player) / 100D)))));
                 }
             });
             return TaskSchedule.seconds(1);

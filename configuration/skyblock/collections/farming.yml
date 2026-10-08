@@ -564,6 +564,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SHEEP_PET
   - amount: 1000
     rewards:
     - type: XP
@@ -993,6 +996,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: RABBIT_PET
   - amount: 1000
     rewards:
     - type: XP

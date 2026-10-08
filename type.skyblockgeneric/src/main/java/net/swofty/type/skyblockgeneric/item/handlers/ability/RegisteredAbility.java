@@ -10,6 +10,7 @@ import net.swofty.type.generic.data.datapoints.DatapointInteger;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.NotNull;
@@ -100,7 +101,7 @@ public class RegisteredAbility {
 
         @Override
         public boolean canUse(@NotNull SkyBlockPlayer player) {
-            return player.getMana() >= cost;
+            return player.getMana() >= effectiveCost(player);
         }
 
         @Override
@@ -112,8 +113,13 @@ public class RegisteredAbility {
                     2
             );
             if (CombatPetHooks.savesMana(player)) return;
-            player.setMana(player.getMana() - cost);
-            EnchantmentRefrigerate.onManaUsed(player, cost);
+            int spent = effectiveCost(player);
+            player.setMana(player.getMana() - spent);
+            EnchantmentRefrigerate.onManaUsed(player, spent);
+        }
+
+        private int effectiveCost(SkyBlockPlayer player) {
+            return (int) Math.round(cost * MiscPetHooks.manaCostMultiplier(player));
         }
 
         @Override

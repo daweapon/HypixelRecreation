@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.potion;
 
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import net.swofty.type.generic.data.datapoints.DatapointLong;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -61,7 +62,8 @@ public final class GodPotionService {
 
     private static long durationFor(SkyBlockPlayer player) {
         int alchemyLevel = player.getSkills().getCurrentLevel(SkillCategories.ALCHEMY);
-        return BASE_DURATION_MS + Math.round(alchemyLevel * 0.24 * 60 * 60 * 1000);
+        long duration = BASE_DURATION_MS + Math.round(alchemyLevel * 0.24 * 60 * 60 * 1000);
+        return Math.round(duration * MiscPetHooks.godPotionDurationMultiplier(player));
     }
 
     private static long remaining(SkyBlockPlayer player) {

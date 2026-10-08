@@ -12,6 +12,7 @@ import net.minestom.server.particle.Particle;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.SlayerBossMob;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.SlayerMinionMob;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -107,18 +108,20 @@ final class InfernoFirePillar implements SlayerMinionMob.Hooks {
 
     @Override
     public String nameHeader(SlayerMinionMob minion) {
-        return "<6>" + (HITS - hitsTaken) + " hits left";
+        return "<6>" + Math.max(0, HITS - hitsTaken) + " hits left";
     }
 
     @Override
     public float modifyIncomingDamage(SlayerMinionMob minion, Damage damage, float amount) {
-        if (resolved || !(damage.getAttacker() instanceof SkyBlockPlayer)) return 0F;
-        hitsTaken++;
+        if (resolved || !(damage.getAttacker() instanceof SkyBlockPlayer player)) return 0F;
+        int hits = MiscPetHooks.breaksFirePillarsFaster(player) ? 2 : 1;
+        if (hitsTaken < HITS && hitsTaken + hits >= HITS) MiscPetHooks.destroyedFirePillar(player);
+        hitsTaken += hits;
         if (display != null) {
             double height = HEIGHT - Math.floor(hitsTaken / 2D);
             ((BlockDisplayMeta) display.getEntityMeta()).setScale(new Vec(1, Math.max(0.1, height), 1));
         }
-        return minion.getMaxHealth() / HITS;
+        return minion.getMaxHealth() * hits / HITS;
     }
 
     @Override

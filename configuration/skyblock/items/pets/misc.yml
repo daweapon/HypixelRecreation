@@ -1,0 +1,1043 @@
+items:
+  - id: BINGO_PET
+    material: player_head
+    name: "Bingo Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Bingo"
+        source: { text: "Bingo profiles", active: false }
+        pet_type: ALL
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        passive: true
+        xp_offset: 0
+        skull_texture: d4cd9c707c7092d4759fe2b2b6a713215b6e39919ec4e7afb1ae2b6f8576674c
+        statistics:
+          COMMON: { health: { per_level: 1 }, strength: { per_level: 0.25 }, speed: { per_level: 0.75 } }
+        abilities:
+          - name: "Lucky Looting"
+            kind: INACTIVE
+            text:
+              - "<7>Gain <c>{0}% <7>more collection"
+              - "<7>items from any source!"
+            values:
+              - { base: 5, per_level: 0.2 }
+          - name: "Climber"
+            kind: INACTIVE
+            text:
+              - "<7>Gain <c>{0}% <7>more <6>HOTM<7> and <a>HOTF<7> XP."
+            values:
+              - { base: 100, per_level: 1.5 }
+          - name: "Fast Learner"
+            rarity: UNCOMMON
+            kind: INACTIVE
+            text:
+              - "<7>Gain <c>{0}% <7>more Skill Experience and"
+              - "<7>Slayer Experience."
+            values:
+              - { base: 5, per_level: 0.1 }
+          - name: "Chimera"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Increases the base stats of your"
+              - "<7>active pet by <c>{0}%<7>."
+            values:
+              - { base: 10, per_level: 0.3 }
+          - name: "Scavenger"
+            rarity: EPIC
+            kind: INACTIVE
+            text:
+              - "<7>Gain <c>{0} <7>more coins per"
+              - "<7>monster level on kill"
+            values:
+              - { base: 0.1, per_level: 0.009 }
+          - name: "Consumer"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Potion effects you obtain will have"
+              - "<c>{0} <7>more time."
+            values:
+              - { base: 10, per_level: 0.4 }
+          - name: "Power Of Completion"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Gain <c>+2<glyph:stat_strength> Strength<7>, <9>+1<glyph:stat_crit_chance>"
+              - "<9>Crit Chance<7>, and <c>+5<glyph:stat_health>"
+              - "<c>Health<7> per completed Personal"
+              - "<7>Bingo Goal in the current Bingo"
+              - "<7>Event."
+      - id: TRACKED_UNIQUE
+
+  - id: EAGLE_PET
+    material: player_head
+    name: "Eagle Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Eagle"
+        source: { text: "Safari Essence Shop", active: false }
+        pet_type: HUNTING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        fixed_level: true
+        pet_score: false
+        skull_texture: 5acda2e5dc0070affb484a6dbdea5fccb5b2f6790ebe5dc23d85aeb3ca34903c
+        statistics:
+          COMMON: { health: 25, speed: 50 }
+        abilities:
+          - name: "Critter Capturer"
+            kind: INACTIVE
+            text:
+              - "<7>Your <c>Critter Capsules <7>are <a>{0}% <7>more"
+              - "<7>likely to catch <a>Critters<7>."
+            values:
+              - { base: { COMMON: 20, UNCOMMON: 35, EPIC: 50 } }
+          - name: "Seer of the Skies"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Grants <3>+{0} ☯ Hunting Wisdom <7>while in"
+              - "<7>the <2>Critter Safari<7>."
+            values:
+              - { base: { RARE: 15, EPIC: 30 } }
+          - name: "Flock Mentality"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Gain <d>+{0} <glyph:stat_hunter_fortune> Hunting Fortune <7>for"
+              - "<7>every <e>Eagle Pet <7>in the <2>Critter Safari<7>."
+            values:
+              - { base: 2.5 }
+      - id: TRACKED_UNIQUE
+
+  - id: GUARDIAN_PET
+    material: player_head
+    name: "Guardian Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Guardian"
+        source: { text: "Superpairs", active: false }
+        pet_type: ENCHANTING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: 221025434045bda7025b3e514b316a4b770c6faa4ba9adb4be3809526db77f9d
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 1000, EPIC: 100000, LEGENDARY: 250000, MYTHIC: 500000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 20000, time_seconds: 3600 }
+          RARE: { coins: 100000, time_seconds: 21600 }
+          EPIC: { coins: 500000, time_seconds: 172800 }
+          LEGENDARY: { coins: 3000000, time_seconds: 432000, items: { ENCHANTED_PRISMARINE_SHARD: 64 } }
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { GUARDIAN_LUCKY_BLOCK: 1 } }
+        statistics:
+          COMMON: { defense: { per_level: 0.5 }, intelligence: { per_level: 1 } }
+        abilities:
+          - name: "Lazerbeam"
+            kind: HANDLER
+            handler: GUARDIAN_LAZERBEAM
+            triggers: MELEE_HIT
+            text:
+              - "<7>Zaps your enemies for <b>{0}x"
+              - "<b><7>your <b><glyph:stat_intelligence> Intelligence <7>every"
+              - "<7><a>3s."
+            values:
+              - { per_level: { COMMON: 0.02, UNCOMMON: 0.06, RARE: 0.1, EPIC: 0.15, LEGENDARY: 0.2, MYTHIC: 1.2 } }
+          - name: "Enchanting Wisdom Boost"
+            rarity: RARE
+            kind: STAT
+            statistics: { enchanting_wisdom: "{0}" }
+            text:
+              - "<7>Grants <3>+{0}☯ Enchanting"
+              - "<3>Wisdom<7>."
+            values:
+              - { per_level: { RARE: 0.25, EPIC: 0.3 } }
+          - name: "Mana Pool"
+            rarity: LEGENDARY
+            kind: TEXT
+            text:
+              - "<7>Regenerate <b>{0}% <7>extra mana,"
+              - "<7>doubled when near or in water."
+            values:
+              - { per_level: 0.3 }
+          - name: "Lucky Seven"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Gain <b>+{0}% <7>chance to find"
+              - "<5>ultra rare <7>books in"
+              - "<d>Superpairs<7>."
+            values:
+              - { per_level: 0.07 }
+      - id: TRACKED_UNIQUE
+
+  - id: HEDGEHOG_PET
+    material: player_head
+    name: "Hedgehog Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Hedgehog"
+        source: { text: "Pesthunter Phillip", active: false }
+        pet_type: FARMING
+        rarities: [LEGENDARY]
+        skull_texture: 5f5e835c116e8e200e2e06aa593cab8f1a9f8c40e7f005a9c76f12e24f4c6370
+        george_price: { LEGENDARY: 100000 }
+        statistics:
+          LEGENDARY: { speed: { per_level: 0.15 } }
+        abilities:
+          - name: "Spiky Quills"
+            kind: INACTIVE
+            text:
+              - "<7>Deal <a>{0}% <7>more damage to <2><glyph:mobs_pest> Pests<7>."
+            values:
+              - { per_level: 1 }
+          - name: "Fearsome Farmer"
+            kind: INACTIVE
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming Fortune <7>and"
+              - "<e>+{1}<glyph:stat_overbloom> Overbloom<7> <7>on <2><glyph:mobs_pest> Pests<7>."
+            values:
+              - { per_level: 1 }
+              - { per_level: 0.35 }
+          - name: "Hunter's Insight"
+            kind: INACTIVE
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming Fortune<7> per"
+              - "<7>Pest Bestiary Tier."
+            values:
+              - { base: 0.7 }
+      - id: TRACKED_UNIQUE
+
+  - id: JELLYFISH_PET
+    material: player_head
+    name: "Jellyfish Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Jellyfish"
+        pet_type: ALCHEMY
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: 64c9ad5400fa660cbd121d4415a33e07fdf20ecf212a6bd4e68a43c7f646f5c4
+        george_price: { EPIC: 2000, LEGENDARY: 5000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 15000000, time_seconds: 864000, items: { ENCHANTED_SLIME_BALL: 16 } }
+        statistics:
+          EPIC: { health: { per_level: 2 }, health_regeneration: { per_level: 1 } }
+        abilities:
+          - name: "Radiant Scyphozoa"
+            kind: INACTIVE
+            text:
+              - "<7>While in dungeons, reduces the"
+              - "<7>mana cost of"
+              - "<7>Power Orbs by <a>{0}%<7>."
+            values:
+              - { per_level: 0.5 }
+          - name: "Stored Energy"
+            kind: INACTIVE
+            text:
+              - "<7>While in dungeons, for every"
+              - "<c>2,000 HP <7>you heal teammates"
+              - "<7>the cooldown of <a>Wish <7>is"
+              - "<7>reduced by <a>{0}s<7>, up to"
+              - "<a>30s<7>."
+            values:
+              - { per_level: 0.01 }
+          - name: "Powerful Potions"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>While in dungeons, increase"
+              - "<7>the effectiveness of Dungeon"
+              - "<7>Potions by <a>{0}%"
+            values:
+              - { per_level: 0.5 }
+      - id: TRACKED_UNIQUE
+
+  - id: MONTEZUMA_PET
+    material: player_head
+    name: "Montezuma Pet"
+    rarity: RARE
+    components:
+      - id: PET
+        pet_name: "Montezuma"
+        source: { text: "The Rift", active: false }
+        pet_type: FRACTURED_SOUL
+        rarities: [RARE, EPIC]
+        fixed_level: true
+        skull_texture: df656c06e8a5cb4692564ee21748bddec9d785d1834284aaa1439601bba47d6b
+        abilities:
+          - name: "Nine Lives"
+            kind: INACTIVE
+            text:
+              - "<7>Gain <a>+{0}<glyph:stat_rift_time> Rift Time <7>per"
+              - "<7>soul piece."
+            values:
+              - { base: 15 }
+          - name: "Trickery"
+            rarity: EPIC
+            kind: INACTIVE
+            text:
+              - "<7>Gain <b>+{0}<glyph:stat_rift_mana_regen> Mana Regen <7>per"
+              - "<7>soul piece found."
+            values:
+              - { base: 2 }
+      - id: TRACKED_UNIQUE
+
+  - id: MOSQUITO_PET
+    material: player_head
+    name: "Mosquito Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Mosquito"
+        pet_type: FARMING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 52a9fe05bc663efcd12e56a3ccc5ec035bf577b78708548b6f4ffcf1d30eccfe
+        george_price: { COMMON: 10000, UNCOMMON: 250000, RARE: 500000, EPIC: 1000000, LEGENDARY: 2500000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 250000, time_seconds: 86400, items: { TARANTULA_SILK: 8 } }
+          RARE: { coins: 500000, time_seconds: 172800, items: { TARANTULA_SILK: 16 } }
+          EPIC: { coins: 1000000, time_seconds: 259200, items: { TARANTULA_SILK: 32 } }
+          LEGENDARY: { coins: 2500000, time_seconds: 432000, items: { TARANTULA_SILK: 64 } }
+        statistics:
+          COMMON: { speed: { per_level: 0.2 }, bonus_pest_chance: { per_level: 0.5 } }
+        abilities:
+          - name: "Smooth Jazz"
+            kind: INACTIVE
+            text:
+              - "<7>Pest Vinyls are <a>+{0}% <7>more effective."
+            values:
+              - { per_level: { COMMON: 0.25, RARE: 0.35, EPIC: 0.5 } }
+          - name: "Buzzin' Barterer"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Gain <6>+{0}<glyph:stat_farming_fortune> Sugar Cane Fortune <7>for"
+              - "<7>every unique visitor you've served"
+              - "<7>in <a>The Garden<7>."
+              - "<8>Capped at 175 Fortune"
+            values:
+              - { per_level: { RARE: 0.01, EPIC: 0.02 } }
+          - name: "Bloodsucker's Betrayal"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>When collected, <2>Pest Traps <7>will catch"
+              - "<7>the next pest <a>{0}% <7>faster."
+            values:
+              - { per_level: 0.2 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: true
+        recipes:
+          - type: SHAPED
+            recipe-type: TARANTULA_BROODFATHER
+            pattern:
+              - ABA
+              - BEB
+              - ABA
+            ingredients:
+              A:
+                type: TARANTULA_SILK
+                amount: 1
+              B:
+                type: DIGESTED_MOSQUITO
+                amount: 1
+              E:
+                type: SUPER_ENCHANTED_EGG
+                amount: 1
+            result:
+              type: MOSQUITO_PET
+              amount: 1
+
+  - id: ORCHID_MANTIS_PET
+    material: player_head
+    name: "Orchid Mantis Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Orchid Mantis"
+        source: { text: "Floral Gelatin crafting", active: false }
+        pet_type: FARMING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 36903a9520564c22bc66b05d2161b23e54ff961284e63e684065ae0781c9cd97
+        george_price: { COMMON: 10000, UNCOMMON: 250000, RARE: 500000, EPIC: 1000000, LEGENDARY: 2500000 }
+        statistics:
+          COMMON: { speed: { per_level: 0.3 }, overbloom: { per_level: 0.15 } }
+        abilities:
+          - name: "Intelligent Specimen"
+            kind: INACTIVE
+            text:
+              - "<7>Earn <a>+{0}% <7>more Farming Tool Exp."
+            values:
+              - { per_level: { COMMON: 0.1, UNCOMMON: 0.2 } }
+          - name: "Swift Sickles"
+            rarity: RARE
+            kind: STAT_PER_STAT
+            per_stat: { grants: farming_fortune, amount: "{0}", per: speed, every: 3, above: 100 }
+            text:
+              - "<7>Convert every <f>3 <f><glyph:stat_speed> Speed <7>you have"
+              - "<7>above <f>100 <7>into <6>+{0}<glyph:stat_farming_fortune> Farming"
+              - "<6>Fortune."
+            values:
+              - { per_level: { RARE: 0.005, EPIC: 0.01 } }
+          - name: "Orchid Nectar"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>You have a <a>+{0}% <7>chance to find"
+              - "<a>Jelly <7>or <a>Plant Matter <7>when farming"
+              - "<7>crops."
+            values:
+              - { per_level: 0.0002 }
+      - id: TRACKED_UNIQUE
+
+  - id: OWL_PET
+    material: player_head
+    name: "Owl Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Owl"
+        pet_type: TAMING
+        rarities: [LEGENDARY]
+        passive: true
+        skull_texture: da3216da54e7368fb40b721239ad95e07ef4f97d93f1c42ff319bab9a53882af
+        george_price: { LEGENDARY: 200000 }
+        abilities:
+          - name: "Training Refunds"
+            kind: INACTIVE
+            text:
+              - "<7>The more coins to spend on"
+              - "<7>Fann's Sessions, the less coins"
+              - "<7>they will cost. <8>(max 5% off)."
+          - name: "Efficient Trainer"
+            kind: TEXT
+            text:
+              - "<7>Makes training sessions at"
+              - "<7>Fann more efficient when added"
+              - "<7>into a session."
+              - ""
+              - "<7>Increased EXP: <b>+{0}% EXP"
+            values:
+              - { base: 0.1, per_level: 0.099 }
+          - name: "Fast Learner"
+            kind: STAT
+            statistics: { taming_wisdom: "{0}" }
+            text:
+              - "<7>Passively grants <3>+{0}☯ Taming"
+              - "<3>Wisdom"
+            values:
+              - { base: 0.05, per_level: 0.045 }
+      - id: TRACKED_UNIQUE
+
+  - id: PARROT_PET
+    material: player_head
+    name: "Parrot Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Parrot"
+        pet_type: ALCHEMY
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: 5df4b3401a4d06ad66ac8b5c4d189618ae617f9c143071c8ac39a563cf4e4208
+        george_price: { EPIC: 500000, LEGENDARY: 5000000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 15000000, time_seconds: 864000, items: { ENCHANTED_FEATHER: 16 } }
+        statistics:
+          EPIC: { critical_damage: { per_level: 0.1 }, intelligence: { per_level: 1 } }
+        abilities:
+          - name: "Flamboyant"
+            kind: TEXT
+            text:
+              - "<7>Adds <a>{0} <7>levels to"
+              - "<7>intimidation accessories."
+            values:
+              - { base: 1 }
+          - name: "Repeat"
+            kind: TEXT
+            text:
+              - "<7>Boosts potions duration by"
+              - "<7><a>{0}%"
+            values:
+              - { base: 5, per_level: 0.35 }
+          - name: "Bird Discourse"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Gives <c>+{0}<glyph:stat_strength> Strength <7>to"
+              - "<7>players within <a>20 <7>blocks"
+              - "<8>Doesn't stack."
+            values:
+              - { base: 5, per_level: 0.25 }
+          - name: "Parrot Feather Infusion"
+            rarity: LEGENDARY
+            kind: TEXT
+            text:
+              - "<7>When summoned or in your pets"
+              - "<7>menu, boost the duration of"
+              - "<7>consumed <c>God Potions <7>by"
+              - "<7><a>{0}%"
+            values:
+              - { per_level: 0.2 }
+      - id: TRACKED_UNIQUE
+
+  - id: PIG_PET
+    material: player_head
+    name: "Pig Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Pig"
+        source: { text: "Year of the Pig", active: false }
+        pet_type: FARMING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 621668ef7cb79dd9c22ce3d1f3f4cb6e2559893b6df4a469514e667c16aa4
+        george_price: { COMMON: 50, UNCOMMON: 500, RARE: 2500, EPIC: 5000, LEGENDARY: 10000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 100, time_seconds: 60, items: { SMALL_PIG_EAR: 1 } }
+          RARE: { coins: 10000, time_seconds: 3600, items: { MEDIUM_PIG_EAR: 1 } }
+          EPIC: { coins: 250000, time_seconds: 86400, items: { LARGE_PIG_EAR: 1 } }
+          LEGENDARY: { coins: 500000, time_seconds: 259200, items: { GIANT_PIG_EAR: 1 } }
+        statistics:
+          COMMON: { speed: { per_level: 0.15 }, potato_fortune: { per_level: 0.2 } }
+        abilities:
+          - name: "Hamfisted"
+            kind: INACTIVE
+            text:
+              - "<7>Increases <6>Coin <7>gain from <6>Shiny Pigs"
+              - "<7>by <a>{0}%<7>."
+            values:
+              - { per_level: { COMMON: 0.2, UNCOMMON: 0.35, EPIC: 0.5 } }
+          - name: "Shining Stampede"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Potato Fortune <7>per"
+              - "<6>Shiny Pig <3>Bestiary <7>tier."
+            values:
+              - { per_level: { RARE: 0.04, EPIC: 0.05 } }
+          - name: "Pig Parade"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases the base stats of this pet"
+              - "<7>by <a>{0}% <7>during the <d>Year of the Pig<7>."
+            values:
+              - { per_level: 1 }
+      - id: TRACKED_UNIQUE
+
+  - id: RABBIT_PET
+    material: player_head
+    name: "Rabbit Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Rabbit"
+        pet_type: FARMING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
+        skull_texture: 63438555e899bd9a051a95dbea49eb2ecfa52a69dbba8998f3673819e277fdf5
+        george_price: { COMMON: 250, UNCOMMON: 5000, RARE: 10000, EPIC: 25000, LEGENDARY: 50000, MYTHIC: 100000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 5000, time_seconds: 300, items: { RABBIT_FOOT: 256, RABBIT_HIDE: 256, RABBIT: 512 } }
+          RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_RABBIT_FOOT: 4, ENCHANTED_RABBIT_HIDE: 4, ENCHANTED_RAW_RABBIT: 8 } }
+          EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_RABBIT_FOOT: 8, ENCHANTED_RABBIT_HIDE: 8, ENCHANTED_RAW_RABBIT: 16 } }
+          LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_RABBIT_FOOT: 16, ENCHANTED_RABBIT_HIDE: 16, ENCHANTED_RAW_RABBIT: 32 } }
+          MYTHIC: { coins: 100000, time_seconds: 3600, items: { ENCHANTED_RABBIT_FOOT: 32, ENCHANTED_RABBIT_HIDE: 32, ENCHANTED_RAW_RABBIT: 64, PET_ITEM_CHOCOLATE_SYRINGE: 1 } }
+        statistics:
+          COMMON: { health: { per_level: 1 }, speed: { per_level: 0.2 } }
+        abilities:
+          - name: "Happy Feet"
+            kind: STAT
+            statistics: { speed: "{0}" }
+            when: { conditions: [JUMP_BOOST] }
+            text:
+              - "<7>Jump potions also give <a>+{0}"
+              - "<a><7>speed."
+            values:
+              - { per_level: { COMMON: 0.3, UNCOMMON: 0.4, EPIC: 0.5 } }
+          - name: "Farming Wisdom Boost"
+            rarity: RARE
+            kind: STAT
+            statistics: { farming_wisdom: "{0}" }
+            text:
+              - "<7>Gives <3>+{0}☯ Farming"
+              - "<3>Wisdom<7>."
+            values:
+              - { per_level: { RARE: 0.25, EPIC: 0.3 } }
+          - name: "Efficient Farming"
+            rarity: LEGENDARY
+            kind: MINION_SPEED
+            minions: [WHEAT, CARROT, POTATO, PUMPKIN, MELON, MUSHROOM, COCOA_BEANS, CACTUS, SUGAR_CANE, NETHER_WART, CHICKEN, COW, PIG, SHEEP, RABBIT]
+            when: { conditions: [PRIVATE_ISLAND] }
+            text:
+              - "<7>Farming minions work <a>{0}%"
+              - "<a><7>faster while on your island."
+            values:
+              - { per_level: 0.3 }
+          - name: "Chocolate Injections"
+            rarity: MYTHIC
+            kind: INACTIVE
+            text:
+              - "<7>Increases <6>Chocolate Factory"
+              - "<7>production by <a>+{0}x<7>. Duplicate"
+              - "<a>Chocolate Rabbits<7> that you find"
+              - "<7>grant <6>+{1}% Chocolate."
+            values:
+              - { base: 0.01, per_level: 0.0004 }
+              - { base: 1.3, per_level: 0.32 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: RABBIT
+                amount: 32
+              B:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: RABBIT_PET
+              amount: 1
+
+  - id: ROSE_DRAGON_PET
+    material: player_head
+    name: "Rose Dragon Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Rose Dragon"
+        source: { text: "Ludleth in the Garden", active: false }
+        pet_type: FARMING
+        rarities: [LEGENDARY]
+        max_level: 200
+        stats_base_level: 100
+        skull_texture: 9b7c3de075a2bb238ef51431206b10d586cb2a5b1cc41fe851cc5f0b02d357c7
+        george_price: { LEGENDARY: 5000000 }
+        statistics:
+          LEGENDARY: { speed: { base: 50, per_level: 0.5 }, farming_fortune: { base: 20, per_level: 0.2 } }
+        abilities:
+          - name: "Garden Power"
+            kind: HANDLER
+            handler: ROSE_DRAGON_GARDEN_POWER
+            text:
+              - "<7>Grants +<6>{0}<glyph:stat_farming_fortune> Farming Fortune per"
+              - "<a>Farming <7>level."
+            values:
+              - { base: 1.5, per_level: 0.015 }
+          - name: "Rosy Scales"
+            kind: INACTIVE
+            text:
+              - "<7>Grants <6>{0}<glyph:stat_farming_fortune> Farming Fortune <7>and"
+              - "<f>{1}<glyph:stat_speed> Speed<7> per Crop Milestone."
+            values:
+              - { base: 0.075, per_level: 0.00075 }
+              - { base: 0.05, per_level: 0.0005 }
+          - name: "Dragon's Gluttony"
+            kind: STAT
+            statistics: { overbloom: "{0}" }
+            text:
+              - "<7>Grants <e>+{0}<glyph:stat_overbloom> Overbloom<7>."
+            values:
+              - { base: 20, per_level: 0.2 }
+          - name: "Spiritual Perfection"
+            kind: INACTIVE
+            text:
+              - "<7>Gain <a>{0}% <7>more <c>Copper <7>from <a>Garden"
+              - "<a>Visitors<7> and from analyzing <e>Mutations<7>."
+            values:
+              - { base: 10, per_level: 0.1 }
+          - name: "Symbiosis"
+            kind: HANDLER
+            handler: ROSE_DRAGON_SYMBIOSIS
+            text:
+              - "<7>If you own a level <a>200 Rose Dragon<7>,"
+              - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming Fortune for"
+              - "<7>every other unique maxed Farming"
+              - "<7>Pet that you own."
+            values:
+              - 3
+      - id: TRACKED_UNIQUE
+
+  - id: SHEEP_PET
+    material: player_head
+    name: "Sheep Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Sheep"
+        pet_type: ALCHEMY
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: 64e22a46047d272e89a1cfa13e9734b7e12827e235c2012c1a95962874da0
+        george_price: { COMMON: 250, UNCOMMON: 5000, RARE: 10000, EPIC: 25000, LEGENDARY: 50000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 5000, time_seconds: 300, items: { MUTTON: 512, WHITE_WOOL: 512 } }
+          RARE: { coins: 10000, time_seconds: 600, items: { ENCHANTED_MUTTON: 8, ENCHANTED_WOOL: 8 } }
+          EPIC: { coins: 25000, time_seconds: 900, items: { ENCHANTED_MUTTON: 16, ENCHANTED_WOOL: 16 } }
+          LEGENDARY: { coins: 50000, time_seconds: 1800, items: { ENCHANTED_MUTTON: 32, ENCHANTED_WOOL: 32 } }
+        statistics:
+          COMMON: { intelligence: { per_level: 1 }, ability_damage: { per_level: 0.2 } }
+        abilities:
+          - name: "Mana Saver"
+            kind: TEXT
+            text:
+              - "<7>Reduces the mana cost of"
+              - "<7>abilities by <a>{0}%"
+            values:
+              - { per_level: { COMMON: 0.1, EPIC: 0.2 } }
+          - name: "Overheal"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Gives a <a>{0}% <7>shield after"
+              - "<7>not taking damage for 10s."
+            values:
+              - { per_level: 0.1 }
+          - name: "Dungeon Wizard"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases your total mana by"
+              - "<7><a>{0}% <7>while in dungeons."
+            values:
+              - { per_level: 0.25 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: MUTTON
+                amount: 32
+              B:
+                type: ENCHANTED_EGG
+                amount: 1
+            result:
+              type: SHEEP_PET
+              amount: 1
+
+  - id: SLUG_PET
+    material: player_head
+    name: "Slug Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Slug"
+        source: { text: "Slug pests in the Garden", active: false }
+        pet_type: FARMING
+        rarities: [EPIC, LEGENDARY]
+        skull_texture: 7a79d0fd677b54530961117ef84adc206e2cc5045c1344d61d776bf8ac2fe1ba
+        george_price: { EPIC: 500000, LEGENDARY: 5000000 }
+        kat_upgrades:
+          LEGENDARY: { coins: 10000000, time_seconds: 604800, items: { COMPOST_BUNDLE: 1 } }
+        statistics:
+          EPIC: { defense: { per_level: 0.2 }, intelligence: { per_level: 0.25 } }
+        abilities:
+          - name: "Slow and Steady"
+            kind: INACTIVE
+            text:
+              - "<7>When fishing in the <c>Crimson"
+              - "<c>Isle<7>, <a>Slugfish <7>take <a>{0}%"
+              - "<7>less time to catch."
+            values:
+              - { per_level: 0.5 }
+          - name: "Pest Friends"
+            kind: STAT
+            statistics: { bonus_pest_chance: "{0}" }
+            text:
+              - "<7>Grants <2>+{0}<glyph:stat_bonus_pest_chance> Bonus Pest"
+              - "<2>Chance<7>."
+            values:
+              - { per_level: 0.4 }
+          - name: "Repugnant Aroma"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>When farming in a plot"
+              - "<7>affected by a <a>Sprayonator<7>,"
+              - "<7>gain <6>+{0}<glyph:stat_farming_fortune> Farming Fortune<7>."
+            values:
+              - { per_level: 1 }
+      - id: TRACKED_UNIQUE
+
+  - id: DROPLET_WISP_PET
+    material: player_head
+    name: "Droplet Wisp Pet"
+    rarity: UNCOMMON
+    components:
+      - id: PET
+        pet_name: "Droplet Wisp"
+        pet_type: GABAGOOL
+        rarities: [UNCOMMON]
+        skull_texture: b412e70375ec99ee38ae94b30e9b10752d459662b54794dfe66fe6a183c672d3
+        george_price: { UNCOMMON: 12500 }
+        statistics:
+          UNCOMMON: { health: { per_level: 1 }, damage: { per_level: 0.1 } }
+        abilities:
+          - name: "Drophammer"
+            kind: TEXT
+            text:
+              - "<7>Lets you break fire pillars <a>2x"
+              - "<7>faster, healing you for <c>{0}% <7>of your"
+              - "<7>max <c><glyph:stat_health> <7>over <a>3s<7>."
+            values:
+              - 15
+          - name: "Bulwark"
+            kind: INACTIVE
+            text:
+              - "<7>Kill Blazes to gain defense against"
+              - "<7>them and demons."
+              - "<7>Bonus: <a>+0<glyph:stat_defense> & <f>+0<glyph:stat_true_defense>"
+              - "<7>Next Upgrade: <a>+30<glyph:stat_defense> & <f>+3<glyph:stat_true_defense> <8>(<a>0<7>/<c>100<8>)"
+          - name: "Blaze Slayer"
+            kind: HANDLER
+            handler: COMBAT_WISDOM_TOWARDS
+            triggers: KILL
+            mobs: [blaze]
+            text:
+              - "<7>Gain <3>+{0}☯ Combat Wisdom <7>towards"
+              - "<5>Blazes<7>."
+            values:
+              - { per_level: 0.3 }
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: true
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - AAA
+              - AEA
+              - AAA
+            ingredients:
+              A:
+                type: DERELICT_ASHE
+                amount: 1
+              E:
+                type: OMEGA_ENCHANTED_EGG
+                amount: 1
+            result:
+              type: DROPLET_WISP_PET
+              amount: 1
+
+  - id: FROST_WISP_PET
+    material: player_head
+    name: "Frost Wisp Pet"
+    rarity: RARE
+    components:
+      - id: PET
+        pet_name: "Frost Wisp"
+        source: { text: "Wisp Upgrade Stones", active: false }
+        pet_type: GABAGOOL
+        rarities: [RARE]
+        skull_texture: 1d8ad9936d758c5ea30b0b7cc7c67c2bfcea829ecf2425c0b50fc92a26ae23d0
+        george_price: { RARE: 50000 }
+        statistics:
+          RARE: { health: { per_level: 2.5 }, true_defense: { per_level: 0.15 }, damage: { per_level: 0.15 }, intelligence: { per_level: 0.5 } }
+        abilities:
+          - name: "Bulwark"
+            kind: INACTIVE
+            text:
+              - "<7>Kill Blazes to gain defense against"
+              - "<7>them and demons."
+              - "<7>Bonus: <a>+0<glyph:stat_defense> & <f>+0<glyph:stat_true_defense>"
+              - "<7>Next Upgrade: <a>+30<glyph:stat_defense> & <f>+3<glyph:stat_true_defense> <8>(<a>0<7>/<c>100<8>)"
+          - name: "Blaze Slayer"
+            kind: HANDLER
+            handler: COMBAT_WISDOM_TOWARDS
+            triggers: KILL
+            mobs: [blaze]
+            text:
+              - "<7>Gain <3>+{0}☯ Combat Wisdom <7>towards"
+              - "<5>Blazes<7>."
+            values:
+              - { per_level: 0.4 }
+          - name: "Icehammer"
+            kind: TEXT
+            text:
+              - "<7>Lets you break fire pillars <a>2x"
+              - "<7>faster, healing you for <c>{0}% <7>of your"
+              - "<7>max <c><glyph:stat_health> <7>over <a>3s<7>."
+            values:
+              - 25
+          - name: "Extinguish"
+            kind: INACTIVE
+            text:
+              - "<7>While in combat on the Crimson Isle,"
+              - "<7>spawn a pool every <a>8s<7>."
+              - "<7>Bathing in it heals <c>{0}%<glyph:stat_health> <7>now and"
+              - "<c>{1}%<glyph:stat_health><7>/s for <a>8s<7>."
+            values:
+              - 15
+              - 4
+      - id: TRACKED_UNIQUE
+
+  - id: GLACIAL_WISP_PET
+    material: player_head
+    name: "Glacial Wisp Pet"
+    rarity: EPIC
+    components:
+      - id: PET
+        pet_name: "Glacial Wisp"
+        source: { text: "Wisp Upgrade Stones", active: false }
+        pet_type: GABAGOOL
+        rarities: [EPIC]
+        skull_texture: 3e2018feebe1a99177b3cb196d4e44521268b4b3eb56e6419cb0253cdbf0456c
+        george_price: { EPIC: 500000 }
+        statistics:
+          EPIC: { health: { per_level: 4 }, true_defense: { per_level: 0.3 }, damage: { per_level: 0.2 }, intelligence: { per_level: 1.25 } }
+        abilities:
+          - name: "Bulwark"
+            kind: INACTIVE
+            text:
+              - "<7>Kill Blazes to gain defense against"
+              - "<7>them and demons."
+              - "<7>Bonus: <a>+0<glyph:stat_defense> & <f>+0<glyph:stat_true_defense>"
+              - "<7>Next Upgrade: <a>+30<glyph:stat_defense> & <f>+3<glyph:stat_true_defense> <8>(<a>0<7>/<c>100<8>)"
+          - name: "Blaze Slayer"
+            kind: HANDLER
+            handler: COMBAT_WISDOM_TOWARDS
+            triggers: KILL
+            mobs: [blaze]
+            text:
+              - "<7>Gain <3>+{0}☯ Combat Wisdom <7>towards"
+              - "<5>Blazes<7>."
+            values:
+              - { per_level: 0.45 }
+          - name: "Icehammer"
+            kind: TEXT
+            text:
+              - "<7>Lets you break fire pillars <a>2x"
+              - "<7>faster, healing you for <c>{0}% <7>of your"
+              - "<7>max <c><glyph:stat_health> <7>over <a>3s<7>."
+            values:
+              - 40
+          - name: "Extinguish"
+            kind: INACTIVE
+            text:
+              - "<7>While in combat on the Crimson Isle,"
+              - "<7>spawn a pool every <a>8s<7>."
+              - "<7>Bathing in it heals <c>{0}%<glyph:stat_health> <7>now and"
+              - "<c>{1}%<glyph:stat_health><7>/s for <a>8s<7>."
+            values:
+              - 20
+              - 7
+      - id: TRACKED_UNIQUE
+
+  - id: SUBZERO_WISP_PET
+    material: player_head
+    name: "Subzero Wisp Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: "Subzero Wisp"
+        source: { text: "Wisp Upgrade Stones", active: false }
+        pet_type: GABAGOOL
+        rarities: [LEGENDARY]
+        skull_texture: 7a0eb37e58c942eca4d33ab44e26eb1910c783788510b0a53b6f4d18881e237e
+        george_price: { LEGENDARY: 5000000 }
+        statistics:
+          LEGENDARY: { health: { per_level: 6 }, true_defense: { per_level: 0.35 }, damage: { per_level: 0.25 }, intelligence: { per_level: 2.5 } }
+        abilities:
+          - name: "Bulwark"
+            kind: INACTIVE
+            text:
+              - "<7>Kill Blazes to gain defense against"
+              - "<7>them and demons."
+              - "<7>Bonus: <a>+0<glyph:stat_defense> & <f>+0<glyph:stat_true_defense>"
+              - "<7>Next Upgrade: <a>+30<glyph:stat_defense> & <f>+3<glyph:stat_true_defense> <8>(<a>0<7>/<c>100<8>)"
+          - name: "Blaze Slayer"
+            kind: HANDLER
+            handler: COMBAT_WISDOM_TOWARDS
+            triggers: KILL
+            mobs: [blaze]
+            text:
+              - "<7>Gain <3>+{0}☯ Combat Wisdom <7>towards"
+              - "<5>Blazes<7>."
+            values:
+              - { per_level: 0.5 }
+          - name: "Icehammer"
+            kind: TEXT
+            text:
+              - "<7>Lets you break fire pillars <a>2x"
+              - "<7>faster, healing you for <c>{0}% <7>of your"
+              - "<7>max <c><glyph:stat_health> <7>over <a>3s<7>."
+            values:
+              - 50
+          - name: "Extinguish"
+            kind: INACTIVE
+            text:
+              - "<7>While in combat on the Crimson Isle,"
+              - "<7>spawn a pool every <a>8s<7>."
+              - "<7>Bathing in it heals <c>{0}%<glyph:stat_health> <7>now and"
+              - "<c>{1}%<glyph:stat_health><7>/s for <a>8s<7>."
+            values:
+              - 25
+              - 10
+          - name: "Ephemeral Stability"
+            kind: TEXT
+            text:
+              - "<7>Regenerate mana <b>{0}% <7>faster"
+            values:
+              - 40
+      - id: TRACKED_UNIQUE
+
+  - id: WITCH_PET
+    material: player_head
+    name: "Witch Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: "Witch"
+        source: { text: "Year of the Witch", active: false }
+        pet_type: ALCHEMY
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY]
+        skull_texture: baf818b04d6ae98a69ad8d9463d8d0379921d3eb79222e1c6272f65372d80775
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 1000, EPIC: 2000, LEGENDARY: 5000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 100, time_seconds: 60, items: { SMALL_WITCH_CAULDRON: 1 } }
+          RARE: { coins: 10000, time_seconds: 3600, items: { MEDIUM_WITCH_CAULDRON: 1 } }
+          EPIC: { coins: 250000, time_seconds: 86400, items: { LARGE_WITCH_CAULDRON: 1 } }
+          LEGENDARY: { coins: 500000, time_seconds: 259200, items: { GIANT_WITCH_CAULDRON: 1 } }
+        statistics:
+          COMMON: { intelligence: { per_level: 1 }, alchemy_wisdom: { per_level: 0.05 } }
+        abilities:
+          - name: "Toil and Trouble"
+            kind: INACTIVE
+            text:
+              - "<7>Increases your chance of dropping"
+              - "<6>Ingredients <7>during the <5>Year of the"
+              - "<5>Witch by <a>{0}%<7>."
+            values:
+              - { per_level: { COMMON: 0.5, UNCOMMON: 0.75, EPIC: 1 } }
+          - name: "Alchemism"
+            rarity: RARE
+            kind: INACTIVE
+            text:
+              - "<7>Reduces how long <5>Potions <7>take to"
+              - "<7>brew by <a>{0}%<7>."
+            values:
+              - { per_level: { RARE: 0.4, EPIC: 0.5 } }
+          - name: "Witching Hour"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Increases the base stats of this pet"
+              - "<7>by <a>{0}% <7>during the <5>Year of the Witch<7>."
+            values:
+              - { per_level: 1 }
+      - id: TRACKED_UNIQUE

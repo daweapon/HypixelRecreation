@@ -30,7 +30,7 @@ slayers:
       - { level: 4, requiredXp: 1000, title: Destroyer }
       - { level: 5, requiredXp: 5000, title: Bulldozer }
       - { level: 6, requiredXp: 20000, title: Savage }
-      - { level: 7, requiredXp: 100000, title: Pest Control Genius }
+      - { level: 7, requiredXp: 100000, title: Pest Control Genius, unlocks: [MOSQUITO_PET] }
       - { level: 8, requiredXp: 400000, title: Tarantula Exterminator }
       - { level: 9, requiredXp: 1000000, title: Spider Annihilator }
     tiers:
@@ -98,7 +98,7 @@ slayers:
     bossMobTypes: [INFERNAL]
     targetMobIds: [BLAZE, MUTATED_BLAZE, BEZAL, SMOLDERING_BLAZE, MILLENNIA_AGED_BLAZE, INTRO_BLAZE, ASHFANG, INFERNO_FOLLOWER_3, INFERNO_FOLLOWER_4, INFERNO_FOLLOWER_5]
     levels:
-      - { level: 1, requiredXp: 10, title: Noob, stats: { health: 3 }, catalogued: ["<a>Droplet Wisp Pet"] }
+      - { level: 1, requiredXp: 10, title: Noob, stats: { health: 3 }, unlocks: [DROPLET_WISP_PET] }
       - { level: 2, requiredXp: 30, title: Novice, stats: { strength: 1 }, unlocks: [MOLTEN_POWDER, FIREDUST_DAGGER, MAWDUST_DAGGER] }
       - { level: 3, requiredXp: 250, title: Skilled, stats: { health: 4 }, unlocks: [INFERNO_MINION, UPGRADE_STONE_FROST, BURSTSTOPPER_TALISMAN, WARNING_FLARE] }
       - { level: 4, requiredXp: 1500, title: Destroyer, stats: { true_defense: 1 }, unlocks: [BURSTFIRE_DAGGER, BURSTMAW_DAGGER, DEMONLORD_GAUNTLET, TELEPORTER_PILL, SMOLDERING_CHAMBERS_TRAVEL_SCROLL] }
