@@ -17,3 +17,40 @@ hotspots:
         x: 100
         y: 50
         z: 100
+  # Crimson Isle lava hotspots (wiki: Fishing_Hotspots): 3 at a time, ~4 minutes each, one stat per ring.
+  # Hypixel's spawn points aren't published; these sit on the island's open lava pools (estimate).
+  # A hotspot replaces a regular Sea Creature catch with this pool 15% of the time (+20% with Hotspot Bait).
+  - id: CRIMSON_LAVA
+    medium: LAVA
+    serverType: CRIMSON_ISLE
+    durationSeconds: 240
+    maxActive: 3
+    buffs:
+      FISHING_SPEED: 15
+      SEA_CREATURE_CHANCE: 5
+      DOUBLE_HOOK_CHANCE: 2
+      TROPHY_FISH_CHANCE: 5
+      TREASURE_CHANCE: 1
+    seaCreatures:
+      - seaCreatureId: FRIED_CHICKEN
+        weight: 5000
+      - seaCreatureId: VOLCANIC_SNAIL
+        weight: 2875
+      - seaCreatureId: FIREPROOF_WITCH
+        weight: 1500
+      - seaCreatureId: MAGMA_PILLAR
+        weight: 500
+      - seaCreatureId: FIERY_SCUTTLER
+        weight: 100
+      - seaCreatureId: RAGNAROK
+        weight: 25
+    spawnPoints:
+      - { x: -207, y: 98, z: -598 }
+      - { x: -322, y: 81, z: -602 }
+      - { x: -416, y: 83, z: -645 }
+      - { x: -378, y: 73, z: -701 }
+      - { x: -249, y: 73, z: -736 }
+      - { x: -276, y: 98, z: -750 }
+      - { x: -459, y: 98, z: -751 }
+      - { x: -386, y: 73, z: -917 }
+      - { x: -398, y: 43, z: -459 }

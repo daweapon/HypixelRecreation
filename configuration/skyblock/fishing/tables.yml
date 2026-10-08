@@ -181,20 +181,86 @@ tables:
     mediums:
       - LAVA
     weightedSeaCreatures: true
-    items:
-      - itemId: MAGMAFISH
-        chance: 100
-        amount: 1
-        skillXp: 10
-    treasures:
-      - itemId: MAGMAFISH
-        chance: 75
-        amount: 2
-        skillXp: 15
-      - itemId: SULPHUR
-        chance: 25
-        amount: 2
-        skillXp: 15
+    # Normal and treasure catches (wiki: Treasure/Loot/Crimson_Isle). Entries whose item this server lacks
+    # (e.g. Kuudra keys, Grand/Titanic Experience Bottles) stay catalogued and are skipped until the item exists.
+    weightedItems:
+      - { itemId: MAGMAFISH, weight: 100, min: 2, max: 4 }
+      - { itemId: MAGMA_CREAM, weight: 60, min: 16, max: 32 }
+      - { itemId: NETHERRACK, weight: 20, min: 32, max: 64 }
+      - { itemId: BLAZE_ROD, weight: 15, min: 4, max: 8 }
+      - { itemId: COAL, weight: 5, min: 32, max: 64 }
+      - { itemId: GLOWSTONE_DUST, weight: 60, min: 16, max: 32 }
+      - { itemId: SULPHUR, weight: 10, min: 2, max: 4 }
+      - { itemId: RED_SAND, weight: 40, min: 16, max: 32 }
+      - { itemId: MYCELIUM, weight: 40, min: 16, max: 32 }
+      - { itemId: QUARTZ, weight: 60, min: 16, max: 32 }
+      - { itemId: BURNING_EYE, weight: 20, min: 1, max: 1 }
+      - { itemId: WITHER_SOUL, weight: 20, min: 1, max: 1 }
+      - { itemId: SPECTRE_DUST, weight: 20, min: 1, max: 1 }
+      - { itemId: BLAZE_ASHES, weight: 20, min: 1, max: 1 }
+      - { itemId: MUTATED_BLAZE_ASHES, weight: 20, min: 1, max: 1 }
+      - { itemId: MAGMA_CHUNK, weight: 20, min: 1, max: 1 }
+      - { itemId: BEZOS, weight: 20, min: 1, max: 1 }
+      - { itemId: DIGESTED_MUSHROOMS, weight: 20, min: 1, max: 1 }
+      - { itemId: KADA_LEAD, weight: 10, min: 1, max: 1 }
+      - { itemId: MAGMAG, weight: 10, min: 1, max: 1 }
+    treasureQualities:
+      - name: GOOD
+        share: 89
+        entries:
+          - { itemId: GRAND_EXP_BOTTLE, weight: 5, min: 4, max: 8 }
+          - { itemId: SILVER_MAGMAFISH, weight: 3, min: 2, max: 4 }
+          - { itemId: ENCHANTED_RED_SAND, weight: 10, min: 16, max: 32 }
+          - { itemId: ENCHANTED_MYCELIUM, weight: 10, min: 16, max: 32 }
+          - { itemId: SULPHUR, weight: 20, min: 32, max: 64 }
+          - { itemId: ENCHANTED_QUARTZ, weight: 15, min: 4, max: 8 }
+          - { itemId: ENCHANTED_GLOWSTONE_DUST, weight: 15, min: 4, max: 8 }
+          - { itemId: GAZING_PEARL, weight: 5, min: 1, max: 1 }
+          - { itemId: TENTACLE_MEAT, weight: 5, min: 1, max: 1 }
+          - { itemId: FLAMES, weight: 5, min: 1, max: 1 }
+          - { itemId: COINS, weight: 10, min: 25000, max: 50000 }
+          - { itemId: SHARD_INFERNO_KOI, weight: 0.5, min: 1, max: 1 }
+      - name: GREAT
+        share: 10
+        entries:
+          - { itemId: ENCHANTED_MAGMA_CREAM, weight: 80, min: 16, max: 16 }
+          - { itemId: ENCHANTED_BLAZE_POWDER, weight: 80, min: 16, max: 16 }
+          - { itemId: ENCHANTED_NETHER_WART, weight: 80, min: 64, max: 64 }
+          - { itemId: ENCHANTED_QUARTZ, weight: 80, min: 32, max: 32 }
+          - { itemId: ENCHANTED_GLOWSTONE_DUST, weight: 80, min: 32, max: 32 }
+          - { itemId: ENCHANTED_COAL, weight: 60, min: 64, max: 64 }
+          - { itemId: LAVA_SHELL, weight: 250, min: 1, max: 1 }
+          - { itemId: TITANIC_EXP_BOTTLE, weight: 50, min: 1, max: 1 }
+          - { itemId: ENCHANTED_RED_SAND, weight: 100, min: 64, max: 64 }
+          - { itemId: ENCHANTED_MYCELIUM, weight: 100, min: 64, max: 64 }
+          - { itemId: ENCHANTED_SULPHUR, weight: 50, min: 16, max: 16 }
+          - { itemId: ENCHANTED_BLAZE_ROD, weight: 40, min: 1, max: 1 }
+          - { itemId: WHIPPED_MAGMA_CREAM, weight: 40, min: 1, max: 1 }
+          - { itemId: LUMINO_FIBER, weight: 30, min: 1, max: 1 }
+          - { itemId: LEATHER_CLOTH, weight: 30, min: 1, max: 1 }
+          - { itemId: SPELL_POWDER, weight: 30, min: 1, max: 1 }
+          - { itemId: HALLOWED_SKULL, weight: 30, min: 1, max: 1 }
+          - { itemId: REKINDLED_EMBER_FRAGMENT, weight: 30, min: 1, max: 1 }
+          - { itemId: FLAMES, weight: 50, min: 4, max: 8 }
+          - { itemId: NETHER_STAR, weight: 20, min: 1, max: 1 }
+          - { itemId: HEAVY_PEARL, weight: 5, min: 3, max: 3 }
+          - { itemId: KUUDRA_TIER_KEY, weight: 40, min: 1, max: 1 }
+          - { itemId: KUUDRA_HOT_TIER_KEY, weight: 35, min: 1, max: 1 }
+          - { itemId: KUUDRA_BURNING_TIER_KEY, weight: 30, min: 1, max: 1 }
+          - { itemId: KUUDRA_FIERY_TIER_KEY, weight: 25, min: 1, max: 1 }
+          - { itemId: KUUDRA_INFERNAL_TIER_KEY, weight: 20, min: 1, max: 1 }
+          - { itemId: COINS, weight: 5, min: 100000, max: 250000 }
+      - name: OUTSTANDING
+        share: 1
+        entries:
+          - { itemId: COINS, weight: 25, min: 500000, max: 1000000 }
+          - { itemId: LAVA_SHELL, weight: 50, min: 4, max: 4 }
+          - { itemId: FLAMES, weight: 50, min: 16, max: 16 }
+          - { itemId: NETHER_STAR, weight: 25, min: 4, max: 4 }
+          - { itemId: HEAVY_PEARL, weight: 50, min: 9, max: 9 }
+          - { itemId: LAVA_WATER_ORB, weight: 3, min: 1, max: 1 }
+    items: [ ]
+    treasures: [ ]
     junk: [ ]
     seaCreatures:
       - seaCreatureId: MAGMA_SLUG

@@ -26,6 +26,7 @@ import net.swofty.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
 import net.swofty.type.skyblockgeneric.fishing.registry.SeaCreatureDefinition;
+import net.swofty.type.skyblockgeneric.fishing.lava.LavaCatchOverrides;
 import net.swofty.type.skyblockgeneric.fishing.lava.PeaceTreaty;
 import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishRoller;
 import net.swofty.type.skyblockgeneric.fishing.rod.FishingRodPartService;
@@ -132,24 +133,36 @@ public final class FishingLootResolver {
             return Optional.empty();
         }
 
+        List<SeaCreatureWeights.Candidate> eligible = eligibleCandidates(context, table.seaCreatures());
+        if (eligible.isEmpty()) return Optional.empty();
+
+        String picked = SeaCreatureWeights.pick(eligible, weightModifiers(context), ThreadLocalRandom.current()).id();
+        picked = LavaCatchOverrides.override(context).map(pool -> {
+            List<SeaCreatureWeights.Candidate> overridePool = eligibleCandidates(context, pool);
+            return overridePool.isEmpty() ? null
+                : SeaCreatureWeights.pick(overridePool, weightModifiers(context), ThreadLocalRandom.current()).id();
+        }).orElse(picked);
+
+        SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(picked);
+        CatchPayload.SeaCreature payload = new CatchPayload.SeaCreature(picked, definition == null ? 0 : definition.skillXp());
+        if (rollDoubleHook(context)) {
+            payload = payload.withDoubleHook();
+        }
+        return Optional.of(payload);
+    }
+
+    private static List<SeaCreatureWeights.Candidate> eligibleCandidates(FishingContext context,
+                                                                         List<FishingTableDefinition.SeaCreatureRoll> rolls) {
         int fishingLevel = context.player().getSkills().getCurrentLevel(net.swofty.type.skyblockgeneric.skill.SkillCategories.FISHING);
         List<SeaCreatureWeights.Candidate> eligible = new ArrayList<>();
-        for (FishingTableDefinition.SeaCreatureRoll roll : table.seaCreatures()) {
+        for (FishingTableDefinition.SeaCreatureRoll roll : rolls) {
             SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(roll.seaCreatureId());
             if (definition == null || fishingLevel < definition.requiredFishingLevel() || !definition.isAvailable(context)) {
                 continue;
             }
             eligible.add(new SeaCreatureWeights.Candidate(roll.seaCreatureId(), roll.weight(), rarityOf(definition)));
         }
-        if (eligible.isEmpty()) return Optional.empty();
-
-        SeaCreatureWeights.Candidate picked = SeaCreatureWeights.pick(eligible, weightModifiers(context), ThreadLocalRandom.current());
-        SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(picked.id());
-        CatchPayload.SeaCreature payload = new CatchPayload.SeaCreature(picked.id(), definition == null ? 0 : definition.skillXp());
-        if (rollDoubleHook(context)) {
-            payload = payload.withDoubleHook();
-        }
-        return Optional.of(payload);
+        return eligible;
     }
 
     private static SeaCreatureWeights.Modifiers weightModifiers(FishingContext context) {
@@ -193,6 +206,9 @@ public final class FishingLootResolver {
         Optional<FishingTableDefinition> tableOpt = findTable(context);
         if (tableOpt.isEmpty()) return DEFAULT_CATCH;
         FishingTableDefinition table = tableOpt.get();
+        if (table.hasQualityTreasure()) {
+            return QualityTreasureRoller.roll(context, table);
+        }
 
         Optional<CatchPayload> forced = forcedCatch(context, table.treasures(), true)
             .or(() -> forcedCatch(context, table.items(), false))

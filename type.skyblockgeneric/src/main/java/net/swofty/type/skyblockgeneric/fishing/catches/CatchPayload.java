@@ -12,6 +12,8 @@ import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.essence.Essences;
 import net.swofty.type.skyblockgeneric.fishing.FishingService;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
+import net.swofty.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.fishing.registry.TrophyFishDefinition;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -56,8 +58,40 @@ public sealed interface CatchPayload {
                     .get(SkyBlockDataHandler.Data.COLLECTION, DatapointCollection.class)
                     .setValue(ctx.player().getCollection());
 
-            Text prefix = fromTreasure ? Text.of("<b><l>TREASURE! ") : Text.of("<b><l>GOOD CATCH! ");
-            ctx.player().sendMessage(prefix.append("<7>You found {}x <a>{}<7>!", amount, itemId));
+            if (fromTreasure) {
+                ctx.player().sendMessage(Text.of("<6><l>GOOD CATCH!</l> <b>You found {}x <a>{}<b>.", amount, itemId));
+            }
+        }
+    }
+
+    record Treasure(String itemId, int amount, double skillXp, String quality) implements CatchPayload {
+        @Override public String summary() { return quality.toLowerCase() + " treasure " + amount + "x " + itemId; }
+
+        private String header() {
+            return switch (quality) {
+                case "OUTSTANDING" -> "<d><l>OUTSTANDING CATCH!</l>";
+                case "GREAT" -> "<5><l>GREAT CATCH!</l>";
+                default -> "<6><l>GOOD CATCH!</l>";
+            };
+        }
+
+        @Override
+        public void apply(CatchAwardContext ctx) {
+            if (FishingTableDefinition.COINS.equals(itemId)) {
+                ctx.player().addCoins(amount);
+                ctx.player().sendMessage(header() + " <b>You found <6>" + String.format("%,d", amount) + " Coins<b>.");
+                return;
+            }
+            ItemType type = ItemType.valueOf(itemId);
+            SkyBlockItem item = new SkyBlockItem(type);
+            item.setAmount(amount);
+            ctx.player().addAndUpdateItem(item);
+            ctx.player().getCollection().increase(type, amount);
+            ctx.player().getSkyblockDataHandler()
+                    .get(SkyBlockDataHandler.Data.COLLECTION, DatapointCollection.class)
+                    .setValue(ctx.player().getCollection());
+            ctx.player().sendMessage(header() + " <b>You found " + (amount > 1 ? "<8>" + amount + "x " : "")
+                    + "<f>" + item.getDisplayName() + "<b>.");
         }
     }
 

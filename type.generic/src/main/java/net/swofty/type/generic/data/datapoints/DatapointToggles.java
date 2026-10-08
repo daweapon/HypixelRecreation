@@ -162,7 +162,8 @@ public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
             PERSONAL_COMPACTOR_COAL(true),
             PERSONAL_COMPACTOR_REDSTONE(true),
             PERSONAL_COMPACTOR_LAPIS(true),
-            HALVE_DARK_AUCTION_CALENDAR_ENTRIES(false);
+            HALVE_DARK_AUCTION_CALENDAR_ENTRIES(false),
+            HAS_SPOKEN_TO_HATTIE(false);
 
             private final boolean defaultValue;
 

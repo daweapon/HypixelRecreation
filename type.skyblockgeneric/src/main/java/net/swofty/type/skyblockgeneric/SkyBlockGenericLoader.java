@@ -42,6 +42,7 @@ import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
 import net.swofty.type.skyblockgeneric.potion.GodPotionService;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestivalAnnouncer;
+import net.swofty.type.skyblockgeneric.fishing.hotspot.FishingHotspotRenderer;
 import net.swofty.type.skyblockgeneric.stonks.StonksAuctions;
 import net.swofty.type.skyblockgeneric.shen.ShenAuctions;
 import net.swofty.type.generic.event.HypixelEventHandler;
@@ -394,6 +395,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         SkyBlockScoreboard.start();
         FarmingContests.start();
         FishingFestivalAnnouncer.start(MinecraftServer.getSchedulerManager());
+        FishingHotspotRenderer.start(MinecraftServer.getSchedulerManager());
         StonksAuctions.start();
         ShenAuctions.start();
         StashReminder.start(MinecraftServer.getSchedulerManager());

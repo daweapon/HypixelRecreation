@@ -104,7 +104,9 @@ public final class FishingRegistry {
                 parseLootEntries((List<Map<String, Object>>) entry.get("junk")),
                 parseSeaCreatureRolls((List<Map<String, Object>>) entry.get("seaCreatures")),
                 booleanValue(entry, "weightedSeaCreatures", false),
-                parseEssenceTreasure(castMap(entry.get("essenceTreasure")))
+                parseEssenceTreasure(castMap(entry.get("essenceTreasure"))),
+                parseWeightedLoot((List<Map<String, Object>>) entry.get("weightedItems")),
+                parseTreasureQualities((List<Map<String, Object>>) entry.get("treasureQualities"))
             ));
         }
     }
@@ -206,7 +208,7 @@ public final class FishingRegistry {
                 intValue(entry, "maxActive", defaultMaxActiveForServer(serverType)),
                 intValue(entry, "durationSeconds", 120),
                 parseStatistics(buffs, defaultHotspotBuffs()),
-                stringList(entry.get("seaCreatures")),
+                parseSeaCreatureRolls((List<Map<String, Object>>) entry.get("seaCreatures")),
                 spawnPoints
             ));
         }
@@ -393,6 +395,39 @@ public final class FishingRegistry {
             ));
         }
         return result;
+    }
+
+    private static List<FishingTableDefinition.WeightedLoot> parseWeightedLoot(@Nullable List<Map<String, Object>> entries) {
+        if (entries == null || entries.isEmpty()) {
+            return List.of();
+        }
+        List<FishingTableDefinition.WeightedLoot> result = new ArrayList<>();
+        for (Map<String, Object> entry : entries) {
+            int min = intValue(entry, "min", intValue(entry, "amount", 1));
+            result.add(new FishingTableDefinition.WeightedLoot(
+                string(entry, "itemId"),
+                doubleValue(entry, "weight", 0.0D),
+                min,
+                intValue(entry, "max", min)
+            ));
+        }
+        return List.copyOf(result);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<FishingTableDefinition.TreasureQuality> parseTreasureQualities(@Nullable List<Map<String, Object>> entries) {
+        if (entries == null || entries.isEmpty()) {
+            return List.of();
+        }
+        List<FishingTableDefinition.TreasureQuality> result = new ArrayList<>();
+        for (Map<String, Object> entry : entries) {
+            result.add(new FishingTableDefinition.TreasureQuality(
+                string(entry, "name"),
+                doubleValue(entry, "share", 0.0D),
+                parseWeightedLoot((List<Map<String, Object>>) entry.get("entries"))
+            ));
+        }
+        return List.copyOf(result);
     }
 
     private static List<FishingTableDefinition.SeaCreatureRoll> parseSeaCreatureRolls(@Nullable List<Map<String, Object>> entries) {

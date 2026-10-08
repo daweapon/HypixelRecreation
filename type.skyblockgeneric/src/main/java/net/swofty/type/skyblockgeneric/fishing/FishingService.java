@@ -10,6 +10,7 @@ import net.swofty.commons.ServerType;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.generic.HypixelConst;
+import net.minestom.server.coordinate.Pos;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
@@ -63,10 +64,11 @@ public final class FishingService {
         SESSIONS.remove(playerUuid);
     }
 
-    public static long computeWaitTicks(SkyBlockPlayer player, SkyBlockItem rod, @Nullable FishingBaitComponent bait) {
+    public static long computeWaitTicks(SkyBlockPlayer player, SkyBlockItem rod, @Nullable FishingBaitComponent bait, Pos bobber) {
         ItemStatistic speed = ItemStatistic.FISHING_SPEED;
         double fishingSpeed = player.getStatistics().allStatistics().getOverall(speed)
-            + FishingRodPartService.getStatistics(rod).getOverall(speed);
+            + FishingRodPartService.getStatistics(rod).getOverall(speed)
+            + FishingHotspotService.getActiveHotspotBuffs(player, rodMedium(rod), bobber).getOverall(speed);
         ItemType held = new SkyBlockItem(player.getItemInMainHand()).getAttributeHandler().getPotentialType();
         if (held != rod.getAttributeHandler().getPotentialType()) {
             fishingSpeed += rod.getAttributeHandler().getStatistics().getOverall(speed);
@@ -82,6 +84,12 @@ public final class FishingService {
         }
         ServerType server = HypixelConst.getTypeLoader() == null ? null : HypixelConst.getTypeLoader().getType();
         return FishingSpeed.waitTicks(fishingSpeed, FishingSpeed.cap(server), ThreadLocalRandom.current());
+    }
+
+    private static FishingMedium rodMedium(SkyBlockItem rod) {
+        ItemType type = rod.getAttributeHandler().getPotentialType();
+        var metadata = FishingItemSupport.getRodMetadata(type == null ? null : type.name());
+        return metadata == null ? FishingMedium.WATER : metadata.getMedium();
     }
 
     public static @Nullable CatchPayload resolveCatch(SkyBlockPlayer player, SkyBlockItem rod, FishingHook hook) {

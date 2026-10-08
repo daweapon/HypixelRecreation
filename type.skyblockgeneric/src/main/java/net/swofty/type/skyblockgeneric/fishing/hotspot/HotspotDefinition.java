@@ -14,7 +14,7 @@ public record HotspotDefinition(
     int maxActive,
     int durationSeconds,
     ItemStatistics buffs,
-    List<String> seaCreatureIds,
+    List<net.swofty.type.skyblockgeneric.fishing.registry.FishingTableDefinition.SeaCreatureRoll> seaCreatures,
     List<SpawnPoint> spawnPoints
 ) {
     public record SpawnPoint(

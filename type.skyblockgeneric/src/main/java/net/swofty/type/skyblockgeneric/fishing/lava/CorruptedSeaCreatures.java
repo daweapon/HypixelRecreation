@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.fishing.lava;
 
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoEruptionService;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.hunting.AttributeId;
@@ -26,7 +27,7 @@ public final class CorruptedSeaCreatures {
     }
 
     public static double chance(SkyBlockPlayer angler, SkyBlockItem rod) {
-        double chance = LavaConditions.current().isErupting() ? ERUPTION_CHANCE : BASE_CHANCE;
+        double chance = VolcanoEruptionService.isErupting() ? ERUPTION_CHANCE : BASE_CHANCE;
         var corruption = rod.getAttributeHandler().getEnchantment(EnchantmentType.CORRUPTION);
         if (corruption != null) chance += corruption.level();
         chance += AttributeEffectService.value(angler.getHuntingData(), AttributeId.parse("U32"));

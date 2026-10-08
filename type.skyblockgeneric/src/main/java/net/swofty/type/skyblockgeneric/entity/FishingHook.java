@@ -269,7 +269,7 @@ public class FishingHook {
 		FishingSession session = FishingService.beginCast(owner, rod, requiredMedium);
 		sessionStarted = true;
         FishingBaitComponent bait = FishingItemSupport.getBait(session.baitItemId());
-		long waitTicks = FishingService.computeWaitTicks(owner, rod, bait);
+		long waitTicks = FishingService.computeWaitTicks(owner, rod, bait, getSpawnPosition());
 		scheduleNextBite(waitTicks);
 	}
 
@@ -297,7 +297,7 @@ public class FishingHook {
 
 				FishingService.updateSession(activeSession.withBiteReady(false));
                 FishingBaitComponent bait = FishingItemSupport.getBait(activeSession.baitItemId());
-				long nextDelay = FishingService.computeWaitTicks(owner, rod, bait);
+				long nextDelay = FishingService.computeWaitTicks(owner, rod, bait, getSpawnPosition());
 				scheduleNextBite(nextDelay);
 			}).delay(TaskSchedule.tick((int) BITE_WINDOW_TICKS)).schedule();
 		}).delay(TaskSchedule.tick((int) delayTicks)).schedule();
