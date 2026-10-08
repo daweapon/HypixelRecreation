@@ -4,6 +4,8 @@ import lombok.Getter;
 import net.minestom.server.item.Material;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
+import net.swofty.type.skyblockgeneric.entity.mob.CataloguedBestiaryMob;
+import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureMob;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureProfile;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureProfiles;
@@ -219,7 +221,9 @@ public enum FishingBestiaryFamily implements BestiaryEntry {
     public List<BestiaryMob> getMobs() {
         List<BestiaryMob> resolved = mobs;
         if (resolved == null) {
-            resolved = mobKeys.stream().map(FishingBestiaryFamily::spawnable).toList();
+            resolved = mobKeys.isEmpty()
+                    ? List.of(CataloguedBestiaryMob.of(new CataloguedBestiaryMob.Family(name(), familyName, bracket, maxTier, guiMaterial, MobType.AQUATIC)))
+                    : mobKeys.stream().map(FishingBestiaryFamily::spawnable).toList();
             mobs = resolved;
         }
         return resolved;
