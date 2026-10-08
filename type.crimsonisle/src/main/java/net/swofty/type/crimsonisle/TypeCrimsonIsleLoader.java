@@ -11,6 +11,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
+import net.swofty.type.crimsonisle.faction.TownVillagers;
 import net.swofty.type.crimsonisle.tab.CrimsonIsleInfoModule;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonFaction;
@@ -84,10 +85,12 @@ public class TypeCrimsonIsleLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<HypixelNPC> getNPCs() {
-        return new ArrayList<>(SkyBlockGenericLoader.loopThroughPackage(
+        List<HypixelNPC> npcs = new ArrayList<>(SkyBlockGenericLoader.loopThroughPackage(
                 "net.swofty.type.crimsonisle.npcs",
                 HypixelNPC.class
         ).toList());
+        npcs.addAll(TownVillagers.all());
+        return npcs;
     }
 
 

@@ -9,6 +9,7 @@ import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonFaction;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
+import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonScene;
 import net.swofty.type.skyblockgeneric.crimson.questline.UniversalStep;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -31,28 +32,38 @@ public final class FactionVillagers {
     private FactionVillagers() {
     }
 
-    public record Villager(CrimsonNPC npc, CrimsonFaction faction) {
+    public record Villager(String name, String speaker, Pos position, CrimsonFaction faction) {
     }
 
     public static void register(CrimsonNPC npc, CrimsonFaction faction) {
-        VILLAGERS.put(npc.getName(), new Villager(npc, faction));
+        register(npc.getName(), npc.speaker(), npc.home(), faction);
+    }
+
+    /** For faction NPCs that are not {@link CrimsonNPC}s (Alwin and Igor, owned by the blacksmith menus). */
+    public static void register(String name, String speaker, Pos position, CrimsonFaction faction) {
+        VILLAGERS.put(name, new Villager(name, speaker, position, faction));
+    }
+
+    public static boolean intercept(CrimsonNPC npc, SkyBlockPlayer player) {
+        return intercept(npc.getName(), player);
     }
 
     /**
      * Handles a click on a faction villager during the villager step. Returns true when the click
      * was a villager conversation, so the NPC should not also run its own behaviour.
      */
-    public static boolean intercept(CrimsonNPC npc, SkyBlockPlayer player) {
-        Villager villager = VILLAGERS.get(npc.getName());
+    public static boolean intercept(String name, SkyBlockPlayer player) {
+        Villager villager = VILLAGERS.get(name);
         if (villager == null || CrimsonQuestlines.universal(player) != UniversalStep.TALK_TO_VILLAGERS) return false;
         CrimsonFaction faction = villager.faction();
-        if (CrimsonQuestlines.hasSpokenTo(player, faction, npc.getName())) return false;
+        if (CrimsonQuestlines.hasSpokenTo(player, faction, name)) return false;
         if (CrimsonQuestlines.villagersSpokenTo(player, faction) >= CrimsonQuestlines.VILLAGERS_PER_FACTION) {
-            npc.sayRandom(player, ALREADY_SPOKEN);
+            String line = ALREADY_SPOKEN[ThreadLocalRandom.current().nextInt(ALREADY_SPOKEN.length)];
+            CrimsonScene.create().say(villager.speaker(), line).play(player);
             return true;
         }
-        int count = CrimsonQuestlines.markSpokenTo(player, faction, npc.getName());
-        npc.say(player, lines(player, faction, count)).thenRun(() -> {
+        int count = CrimsonQuestlines.markSpokenTo(player, faction, name);
+        CrimsonScene.create().say(villager.speaker(), lines(player, faction, count)).play(player).thenRun(() -> {
             if (CrimsonQuestlines.hasMetVillagers(player)) {
                 CrimsonQuestlines.advance(player, UniversalStep.TALK_TO_VILLAGERS, UniversalStep.CHOOSE_FACTION);
             } else if (count == CrimsonQuestlines.VILLAGERS_PER_FACTION) {
@@ -110,8 +121,8 @@ public final class FactionVillagers {
             if (CrimsonQuestlines.universal(player) != UniversalStep.TALK_TO_VILLAGERS) continue;
             for (Villager villager : VILLAGERS.values()) {
                 if (CrimsonQuestlines.villagersSpokenTo(player, villager.faction()) >= CrimsonQuestlines.VILLAGERS_PER_FACTION) continue;
-                if (CrimsonQuestlines.hasSpokenTo(player, villager.faction(), villager.npc().getName())) continue;
-                Pos pos = villager.npc().home();
+                if (CrimsonQuestlines.hasSpokenTo(player, villager.faction(), villager.name())) continue;
+                Pos pos = villager.position();
                 if (pos.distance(player.getPosition()) > PARTICLE_RANGE) continue;
                 player.sendPacket(new ParticlePacket(Particle.HAPPY_VILLAGER, false, false,
                         (float) pos.x(), (float) pos.y() + 2.2f, (float) pos.z(),

@@ -2,10 +2,13 @@ package net.swofty.type.crimsonisle.npcs;
 
 import net.minestom.server.coordinate.Pos;
 import net.swofty.commons.text.Text;
+import net.swofty.type.crimsonisle.faction.FactionVillagers;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonFaction;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.gui.inventories.essence.GUICrimsonBlacksmith;
 
 // Igor, the Dragontail blacksmith: essence upgrades, salvaging and the Kuudra Armor Type Transfer.
@@ -42,11 +45,13 @@ public class NPCIgor extends HypixelNPC {
                 return true;
             }
         });
+        FactionVillagers.register("Igor", "<c>Igor", new Pos(-549.5, 98, -707.5), CrimsonFaction.BARBARIAN);
     }
 
     @Override
     public void onClick(NPCInteractEvent event) {
         if (isInDialogue(event.player())) return;
+        if (FactionVillagers.intercept("Igor", (SkyBlockPlayer) event.player())) return;
         event.player().openView(new GUICrimsonBlacksmith("Igor"));
     }
 }
