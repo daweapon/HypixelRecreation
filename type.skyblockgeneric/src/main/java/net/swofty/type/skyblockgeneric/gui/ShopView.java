@@ -21,6 +21,7 @@ import net.swofty.type.generic.gui.v2.context.ClickContext;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.skyblockgeneric.gui.inventories.shop.ShopConfirmView;
 import net.swofty.type.skyblockgeneric.gui.inventories.shop.TradingOptionsView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.SellableComponent;
@@ -31,6 +32,7 @@ import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 // Base GUI for NPC shops: paginates purchasable items over a configurable slot layout and handles buy/sell clicks
 public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, ShopView.State> {
@@ -233,9 +235,14 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
                 lore.add(Text.empty());
             }
 
-            lore.add(Text.of("<e>Click to trade!"));
-            if (item.stackable) {
-                lore.add(Text.of("<e>Right-click for more trading options!"));
+            String lockReason = item.lockReason(player);
+            if (lockReason != null) {
+                lore.add(Text.of(lockReason));
+            } else {
+                lore.add(Text.of("<e>Click to trade!"));
+                if (item.stackable) {
+                    lore.add(Text.of("<e>Right-click for more trading options!"));
+                }
             }
 
             return ItemStacks.appendLore(itemStack, lore);
@@ -250,22 +257,35 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
     protected void onItemClick(ClickContext<State> click, ViewContext ctx, ShopItem item, int index) {
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
 
+        String lockReason = item.lockReason(player);
+        if (lockReason != null) {
+            player.sendMessage(lockReason);
+            return;
+        }
+
+        if (item.isStackable() && click.click() instanceof Click.Right) {
+            ctx.navigator().push(new TradingOptionsView(), new TradingOptionsView.State(item, item.price.divide(item.amount)));
+            return;
+        }
+
+        if (item.isConfirmPurchase()) {
+            ctx.navigator().push(new ShopConfirmView(), new ShopConfirmView.State(item));
+            return;
+        }
+
+        if (purchase(player, item)) ctx.session(Object.class).refresh();
+    }
+
+    public static boolean purchase(SkyBlockPlayer player, ShopItem item) {
         if (item.isHasStock() && !player.getShoppingData().canPurchase(item.item.toUnderstandable(), item.amount)) {
             player.sendMessage("<c>You have reached the maximum amount of items you can buy!");
-            return;
+            return false;
         }
 
         ShopPrice price = item.price;
-        ShopPrice stackPrice = item.price.divide(item.amount);
-
-        if (item.isStackable() && click.click() instanceof Click.Right) {
-            ctx.navigator().push(new TradingOptionsView(), new TradingOptionsView.State(item, stackPrice));
-            return;
-        }
-
         if (!price.canAfford(player)) {
             player.sendMessage("<c>You don't have enough {}!", price.getNamePlural());
-            return;
+            return false;
         }
 
         price.processPurchase(player);
@@ -278,8 +298,7 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
         if (item.hasStock) {
             player.getShoppingData().documentPurchase(item.getItem().toUnderstandable(), item.amount);
         }
-
-        ctx.session(Object.class).refresh();
+        return true;
     }
 
     @Override
@@ -349,6 +368,8 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
         @Setter
         private String displayName = null;
         private boolean hasStock = true;
+        private Function<SkyBlockPlayer, String> lock = null;
+        private boolean confirmPurchase = false;
 
         public ShopItem(SkyBlockItem item, int amount, ShopPrice price, boolean stackable, boolean hasStock) {
             this.item = item;
@@ -364,6 +385,20 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
 
         public static ShopItem Single(SkyBlockItem item, int amount, ShopPrice price) {
             return new ShopItem(item, amount, price, false);
+        }
+
+        public ShopItem lockedWhen(Function<SkyBlockPlayer, String> reason) {
+            this.lock = reason;
+            return this;
+        }
+
+        public ShopItem withConfirmation() {
+            this.confirmPurchase = true;
+            return this;
+        }
+
+        public String lockReason(SkyBlockPlayer player) {
+            return lock == null ? null : lock.apply(player);
         }
 
         public void setLore(List<Text> lore) {
