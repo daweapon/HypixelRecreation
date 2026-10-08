@@ -1,0 +1,14 @@
+# Drakuu's shop in The Wasteland (wiki Drakuu/UI). He only opens it to players in full Kuudra
+# Follower Armor during a Cataclysmic eruption of the Blazing Volcano.
+title: Drakuu
+slots: SINGLE_SLOT
+entries:
+  - item: KUUDRA_FOLLOWER_ARTIFACT
+    name: "<5>Kuudra Follower Artifact"
+    material: player_head
+    cost:
+      coins: 100000000
+      items:
+        ENCHANTED_RED_SAND: 1024
+        ENCHANTED_MYCELIUM: 1024
+        KUUDRA_TEETH: 64

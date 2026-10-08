@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.handlers.lore;
 
+import net.swofty.type.skyblockgeneric.crimson.kuudra.follower.KuudraTeethPlaqueLore;
 import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
 import net.swofty.type.skyblockgeneric.gifts.SnowCannon;
 import net.swofty.type.skyblockgeneric.gifts.SnowSuit;
@@ -28,6 +29,7 @@ public class LoreRegistry {
         BottleOfJyrre.registerLore();
         SnowCannon.registerLore();
         SnowSuit.registerLore();
+        KuudraTeethPlaqueLore.register();
         register("ENCHANTED_BOOK", new LoreConfig(
                 (item, player) -> {
                     List<SkyBlockEnchantment> enchantments = item.getAttributeHandler().getEnchantments().toList();
