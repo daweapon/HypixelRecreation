@@ -520,7 +520,12 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
                                 List<SkyBlockRecipe<?>> recipeInstances = recipe.getRecipes();
 
                                 recipeInstances.forEach(recipeInstance -> {
+                                    var previousCheck = recipeInstance.getCanCraft();
                                     recipeInstance.setCanCraft((player) -> {
+                                        if (previousCheck != null) {
+                                            SkyBlockRecipe.CraftingResult previous = previousCheck.apply(player);
+                                            if (!previous.allowed()) return previous;
+                                        }
                                         int amount = player.getCollection().get(collection.type());
                                         return new SkyBlockRecipe.CraftingResult(
                                             amount >= reward.requirement(),

@@ -840,6 +840,48 @@ items:
           - ENCHANTED_GLOWSTONE_DUST:64
           - ENCHANTED_GLOWSTONE:1
           - ENCHANTED_GLOWSTONE:2
+  - id: MYCELIUM_MINION
+    material: PLAYER_HEAD
+    name: "Mycelium Minion"
+    rarity: COMMON
+    components:
+      - id: MINION
+        minion_type: MYCELIUM
+        base_item: WOODEN_SHOVEL
+        default_craftable: false
+        ingredients:
+          - MYCELIUM:10
+          - MYCELIUM:32
+          - MYCELIUM:64
+          - ENCHANTED_MYCELIUM:2
+          - ENCHANTED_MYCELIUM:4
+          - ENCHANTED_MYCELIUM:8
+          - ENCHANTED_MYCELIUM:16
+          - ENCHANTED_MYCELIUM:32
+          - ENCHANTED_MYCELIUM:64
+          - ENCHANTED_MYCELIUM_CUBE:1
+          - ENCHANTED_MYCELIUM_CUBE:2
+  - id: RED_SAND_MINION
+    material: PLAYER_HEAD
+    name: "Red Sand Minion"
+    rarity: COMMON
+    components:
+      - id: MINION
+        minion_type: RED_SAND
+        base_item: WOODEN_SHOVEL
+        default_craftable: false
+        ingredients:
+          - RED_SAND:10
+          - RED_SAND:32
+          - RED_SAND:64
+          - ENCHANTED_RED_SAND:2
+          - ENCHANTED_RED_SAND:4
+          - ENCHANTED_RED_SAND:8
+          - ENCHANTED_RED_SAND:16
+          - ENCHANTED_RED_SAND:32
+          - ENCHANTED_RED_SAND:64
+          - ENCHANTED_RED_SAND_CUBE:1
+          - ENCHANTED_RED_SAND_CUBE:2
   - id: GOLD_MINION
     material: PLAYER_HEAD
     name: "Gold Minion"

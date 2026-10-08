@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreConfig;
 import net.swofty.type.skyblockgeneric.minion.MinionIngredient;
 import net.swofty.type.skyblockgeneric.minion.MinionRecipe;
 import net.swofty.type.skyblockgeneric.minion.MinionRegistry;
+import net.swofty.type.skyblockgeneric.minion.MinionReputationGates;
 import net.swofty.type.skyblockgeneric.minion.SkyBlockMinion;
 
 import java.text.DecimalFormat;
@@ -74,6 +75,9 @@ public class MinionComponent extends SkyBlockItemComponent {
                     )),
                     pattern
             );
+            if (MinionReputationGates.factionFor(getMinionRegistry()) != null) {
+                recipe.setCanCraft(player -> MinionReputationGates.check(player, getMinionRegistry(), tier.tier()));
+            }
             recipe.addExtraRequirement('B', (minionItem) -> {
                 if (minionItem.hasComponent(MinionComponent.class))
                     return minionItem.getAttributeHandler().getMinionData().tier() == Math.max(1, tier.tier() - 1);
@@ -110,6 +114,11 @@ public class MinionComponent extends SkyBlockItemComponent {
         lore.add("<7>Max Storage: <e>" + tier.storage());
         lore.add("<7>Resources Generated: <b>" + data.generatedResources());
 
+        String reputation = MinionReputationGates.requirementLine(minionRegistry, data.tier());
+        if (reputation != null) {
+            lore.add(" ");
+            lore.add(reputation);
+        }
         lore.add(" ");
         lore.add("<9><l>RARE");
         return lore;

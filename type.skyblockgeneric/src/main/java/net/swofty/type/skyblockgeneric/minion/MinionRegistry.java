@@ -32,6 +32,8 @@ public enum MinionRegistry {
     GRAVEL(MinionGravel.class, ItemType.GRAVEL_MINION),
     SAND(MinionSand.class, ItemType.SAND_MINION),
     GLOWSTONE(MinionGlowstone.class, ItemType.GLOWSTONE_MINION),
+    MYCELIUM(MinionMycelium.class, ItemType.MYCELIUM_MINION),
+    RED_SAND(MinionRedSand.class, ItemType.RED_SAND_MINION),
     HARD_STONE(MinionHardStone.class, ItemType.HARD_STONE_MINION),
     MITHRIL(MinionMithril.class, ItemType.MITHRIL_MINION),
 
@@ -76,7 +78,7 @@ public enum MinionRegistry {
 
     private static final Set<MinionRegistry> MINING = EnumSet.of(
             COBBLESTONE, COAL, SNOW, DIAMOND, GOLD, LAPIS, IRON, ENDSTONE, REDSTONE, EMERALD,
-            ICE, QUARTZ, OBSIDIAN, GRAVEL, SAND, GLOWSTONE, HARD_STONE, MITHRIL);
+            ICE, QUARTZ, OBSIDIAN, GRAVEL, SAND, GLOWSTONE, HARD_STONE, MITHRIL, MYCELIUM, RED_SAND);
 
     private final Class<? extends SkyBlockMinion> minionClass;
     @Getter
