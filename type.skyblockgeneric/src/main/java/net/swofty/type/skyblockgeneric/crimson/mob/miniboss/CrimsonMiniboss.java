@@ -28,7 +28,7 @@ public enum CrimsonMiniboss {
             always("SPELL_POWDER", 1), always("GLOWSTONE_DUST", 20), chance("GLOWSTONE_DUST", 10, 70),
             chance("GLOWSTONE_DUST", 5, 50), chance("ENCHANTED_GLOWSTONE_DUST", 50),
             chance("ENCHANTED_GLOWSTONE_DUST", 50), chance("FIRE_FREEZE_STAFF", 0.5), chance("WAND_OF_STRENGTH", 0.5))),
-    BARBARIAN_DUKE_X("Barbarian Duke X", "<8><l>", new Pos(-540.5, 104, -916.5), Duration.ofMinutes(2), 6, 4, List.of(
+    BARBARIAN_DUKE_X("Barbarian Duke X", "<8><l>", new Pos(-527.5, 104, -923.5), Duration.ofMinutes(2), 6, 4, List.of(
             always("LEATHER_CLOTH", 1), always("RAW_PORKCHOP", 20), chance("RAW_PORKCHOP", 10, 70),
             chance("RAW_PORKCHOP", 5, 50), chance("ENCHANTED_PORK", 50), chance("ENCHANTED_PORK", 50),
             chance("FLAMING_FIST", 0.5))),

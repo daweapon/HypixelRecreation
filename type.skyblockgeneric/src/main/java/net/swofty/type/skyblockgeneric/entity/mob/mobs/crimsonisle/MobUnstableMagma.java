@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle;
 
+import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.metadata.cube.MagmaCubeMeta;
 import net.swofty.type.skyblockgeneric.crimson.mob.CrimsonIsleMob;
@@ -13,6 +14,7 @@ import net.swofty.type.skyblockgeneric.crimson.mob.miniboss.CrimsonMiniboss;
  */
 public class MobUnstableMagma extends CrimsonIsleMob {
     private static final int LEAP_INTERVAL = 60;
+    private Pos pit = CrimsonMiniboss.MAGMA_BOSS.getSpawn();
 
     public MobUnstableMagma() {
         this(CrimsonMobs.UNSTABLE_MAGMA_40);
@@ -20,6 +22,11 @@ public class MobUnstableMagma extends CrimsonIsleMob {
 
     public MobUnstableMagma(CrimsonMobProfile profile) {
         super(profile);
+    }
+
+    public MobUnstableMagma pit(Pos pit) {
+        this.pit = pit;
+        return this;
     }
 
     @Override
@@ -40,7 +47,7 @@ public class MobUnstableMagma extends CrimsonIsleMob {
     @Override
     protected void onAiTick(int ticks) {
         if (getInstance() != null && getInstance().getBlock(getPosition()).name().contains("lava")) {
-            Vec out = getPosition().sub(CrimsonMiniboss.MAGMA_BOSS.getSpawn()).asVec().withY(0);
+            Vec out = getPosition().sub(pit).asVec().withY(0);
             if (out.lengthSquared() < 0.01) out = new Vec(1, 0, 0);
             setVelocity(out.normalize().mul(12).withY(12));
             return;
