@@ -59,6 +59,8 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
         private Map<UUID, Long> insertionTimes = new HashMap<>();
         private Map<UUID, Double> calculatedPrices = new HashMap<>();
         private Set<String> donatedEntries = new LinkedHashSet<>();
+        private Map<UUID, String> entryOf = new HashMap<>();
+        private Set<UUID> staffGranted = new LinkedHashSet<>();
         private int claimedMilestone = 0;
 
         @Getter
@@ -75,8 +77,40 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
         public List<SkyBlockItem> itemsFor(MuseumEntry entry, boolean current) {
             return (current ? currentlyInMuseum : previouslyInMuseum).stream()
                     .filter(item -> item.getAttributeHandler().getPotentialType() != null)
-                    .filter(item -> entry.accepts(item.getAttributeHandler().getPotentialType()))
+                    .filter(item -> belongsTo(entry, item))
                     .collect(Collectors.toList());
+        }
+
+        public boolean belongsTo(MuseumEntry entry, SkyBlockItem item) {
+            String owner = ownerId(item);
+            if (owner != null) return owner.equals(entry.id());
+            ItemType type = item.getAttributeHandler().getPotentialType();
+            return type != null && entry.accepts(type);
+        }
+
+        public @Nullable String ownerId(SkyBlockItem item) {
+            UUID id = trackedId(item);
+            return id == null ? null : entryOf.get(id);
+        }
+
+        public void assignOwner(SkyBlockItem item, String entryId) {
+            UUID id = trackedId(item);
+            if (id != null) entryOf.putIfAbsent(id, entryId);
+        }
+
+        public boolean isStaffGranted(SkyBlockItem item) {
+            UUID id = trackedId(item);
+            return id != null && staffGranted.contains(id);
+        }
+
+        public void grant(MuseumEntry entry, SkyBlockItem item) {
+            add(entry, item);
+            staffGranted.add(trackedId(item));
+        }
+
+        private static @Nullable UUID trackedId(SkyBlockItem item) {
+            String id = item.getAttributeHandler().getUniqueTrackedID();
+            return id == null ? null : UUID.fromString(id);
         }
 
         public List<SkyBlockItem> getNotInDisplay() {
@@ -114,15 +148,25 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
             return items;
         }
 
-        public void add(SkyBlockItem item) {
+        public void add(MuseumEntry entry, SkyBlockItem item) {
             ItemType itemType = item.getAttributeHandler().getPotentialType();
-
-            // Remove any existing item of the same type
-            currentlyInMuseum.removeIf(i -> i.getAttributeHandler().getPotentialType().equals(itemType));
-            previouslyInMuseum.removeIf(i -> i.getAttributeHandler().getPotentialType().equals(itemType));
+            UUID itemUuid = trackedId(item);
+            List<SkyBlockItem> replaced = getAllItems().stream()
+                    .filter(existing -> Objects.equals(existing.getAttributeHandler().getPotentialType(), itemType))
+                    .filter(existing -> belongsTo(entry, existing))
+                    .toList();
+            for (SkyBlockItem existing : replaced) {
+                currentlyInMuseum.remove(existing);
+                previouslyInMuseum.remove(existing);
+                UUID existingUuid = trackedId(existing);
+                if (existingUuid == null || existingUuid.equals(itemUuid)) continue;
+                entryOf.remove(existingUuid);
+                staffGranted.remove(existingUuid);
+                insertionTimes.remove(existingUuid);
+            }
 
             currentlyInMuseum.add(item);
-            UUID itemUuid = UUID.fromString(item.getAttributeHandler().getUniqueTrackedID());
+            entryOf.put(itemUuid, entry.id());
             insertionTimes.put(itemUuid, System.currentTimeMillis());
         }
 
@@ -310,6 +354,10 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
             json.put("calculatedPrices", new JSONObject(calculatedPrices).toString());
             json.put("donatedEntries", new ArrayList<>(donatedEntries));
             json.put("claimedMilestone", claimedMilestone);
+            JSONObject owners = new JSONObject();
+            entryOf.forEach((itemUuid, entryId) -> owners.put(itemUuid.toString(), entryId));
+            json.put("entryOf", owners);
+            json.put("staffGranted", staffGranted.stream().map(UUID::toString).toList());
 
             return json;
         }
@@ -366,6 +414,14 @@ public class DatapointMuseum extends SkyBlockDatapoint<DatapointMuseum.MuseumDat
                 donated.toList().forEach(entryId -> data.donatedEntries.add(String.valueOf(entryId)));
             }
             data.claimedMilestone = json.optInt("claimedMilestone", 0);
+            JSONObject owners = json.optJSONObject("entryOf");
+            if (owners != null) {
+                owners.keySet().forEach(itemUuid -> data.entryOf.put(UUID.fromString(itemUuid), owners.getString(itemUuid)));
+            }
+            JSONArray staff = json.optJSONArray("staffGranted");
+            if (staff != null) {
+                staff.toList().forEach(itemUuid -> data.staffGranted.add(UUID.fromString(String.valueOf(itemUuid))));
+            }
 
             return data;
         }

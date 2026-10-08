@@ -58,6 +58,10 @@ public final class MuseumService {
         return catalogue().entryFor(item.getAttributeHandler().getPotentialType());
     }
 
+    public static Optional<MuseumEntry> entryFor(DatapointMuseum.MuseumData data, SkyBlockItem item) {
+        return ownerOf(catalogue(), data, item);
+    }
+
     public static MuseumState stateOf(DatapointMuseum.MuseumData data, MuseumEntry entry) {
         if (!data.itemsFor(entry, true).isEmpty()) return MuseumState.IN_MUSEUM;
         if (!data.itemsFor(entry, false).isEmpty()) return MuseumState.RETRIEVED;
@@ -70,14 +74,15 @@ public final class MuseumService {
         if (clicked.material() == Material.AIR) return;
         SkyBlockItem clickedItem = new SkyBlockItem(clicked);
         ItemType clickedType = clickedItem.getAttributeHandler().getPotentialType();
-        Optional<MuseumEntry> found = catalogue().entryFor(clickedType);
-        if (found.isEmpty()) {
+        List<MuseumEntry> candidates = catalogue().entriesFor(clickedType);
+        if (candidates.isEmpty()) {
             player.sendMessage("<c>This item can't be donated to the Museum!");
             return;
         }
 
-        MuseumEntry entry = found.get();
         DatapointMuseum.MuseumData data = player.getMuseumData();
+        adopt(catalogue(), data);
+        MuseumEntry entry = chooseEntry(player, data, candidates, clickedItem, inventorySlot);
         if (!entry.isAvailable()) {
             player.sendMessage("<c>The rest of the {} isn't in this server yet!", entry.name());
             return;
@@ -113,9 +118,9 @@ public final class MuseumService {
             if (item.getAttributeHandler().getUniqueTrackedID() == null) {
                 item.getAttributeHandler().setUniqueTrackedID(UUID.randomUUID().toString(), player);
             }
-            if (!entry.category().isSpecial()) item.getAttributeHandler().setSoulBound(true);
+            bindOnDonation(data, entry, item);
             player.getInventory().setItemStack(slots.get(index), ItemStack.AIR);
-            data.add(item);
+            data.add(entry, item);
             if (data.isHasBoughtAppraisalService()) {
                 data.getCalculatedPrices().put(trackedId(item), new ItemPriceCalculator(item).calculateCleanPrice());
             }
@@ -129,6 +134,7 @@ public final class MuseumService {
 
     public static boolean retrieve(SkyBlockPlayer player, MuseumEntry entry) {
         DatapointMuseum.MuseumData data = player.getMuseumData();
+        adopt(catalogue(), data);
         List<SkyBlockItem> items = data.itemsFor(entry, true);
         if (items.isEmpty()) return false;
         if (freeSlots(player) < items.size()) {
@@ -140,6 +146,7 @@ public final class MuseumService {
         for (SkyBlockItem item : items) {
             data.moveToRetrieved(item);
             data.getCalculatedPrices().remove(trackedId(item));
+            if (data.isStaffGranted(item)) unbind(item);
             player.addAndUpdateItem(item);
         }
         player.setMuseumData(data);
@@ -173,8 +180,9 @@ public final class MuseumService {
 
     public static void sync(SkyBlockPlayer player) {
         DatapointMuseum.MuseumData data = player.getMuseumData();
+        adopt(catalogue(), data);
         for (SkyBlockItem item : data.getAllItems()) {
-            entryFor(item).ifPresent(entry -> credit(data, entry));
+            entryFor(data, item).ifPresent(entry -> credit(data, entry));
         }
 
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
@@ -199,16 +207,90 @@ public final class MuseumService {
         DatapointMuseum.MuseumData data = player.getMuseumData();
         catalogue().progressEntries().forEach(entry -> data.credit(entry.id()));
         data.setClaimedMilestone(MuseumMilestones.MAX_MILESTONE);
+        grantCopies(catalogue(), data);
+        if (data.isHasBoughtAppraisalService()) {
+            for (SkyBlockItem item : data.getCurrentlyInMuseum()) {
+                data.getCalculatedPrices().computeIfAbsent(trackedId(item), _ -> new ItemPriceCalculator(item).calculateCleanPrice());
+            }
+        }
         player.setMuseumData(data);
         sync(player);
     }
 
+    public static int grantCopies(MuseumCatalogue catalogue, DatapointMuseum.MuseumData data) {
+        adopt(catalogue, data);
+        int granted = 0;
+        for (MuseumEntry entry : catalogue.all()) {
+            if (!entry.isAvailable() || !data.itemsFor(entry, true).isEmpty() || !data.itemsFor(entry, false).isEmpty()) {
+                continue;
+            }
+            for (ItemType type : entry.requiredItemTypes()) {
+                data.grant(entry, staffCopy(type));
+                granted++;
+            }
+            credit(catalogue, data, entry);
+        }
+        return granted;
+    }
+
+    static void bindOnDonation(DatapointMuseum.MuseumData data, MuseumEntry entry, SkyBlockItem item) {
+        if (!entry.category().isSpecial() && !data.isStaffGranted(item)) item.getAttributeHandler().setSoulBound(true);
+    }
+
+    static void adopt(MuseumCatalogue catalogue, DatapointMuseum.MuseumData data) {
+        for (SkyBlockItem item : data.getAllItems()) {
+            if (data.ownerId(item) != null) continue;
+            catalogue.entryFor(item.getAttributeHandler().getPotentialType())
+                    .ifPresent(entry -> data.assignOwner(item, entry.id()));
+        }
+    }
+
+    private static Optional<MuseumEntry> ownerOf(MuseumCatalogue catalogue, DatapointMuseum.MuseumData data, SkyBlockItem item) {
+        String owner = data.ownerId(item);
+        if (owner != null) return catalogue.entry(owner);
+        return catalogue.entryFor(item.getAttributeHandler().getPotentialType());
+    }
+
+    private static MuseumEntry chooseEntry(SkyBlockPlayer player, DatapointMuseum.MuseumData data,
+                                           List<MuseumEntry> candidates, SkyBlockItem clicked, int clickedSlot) {
+        String owner = data.ownerId(clicked);
+        Optional<MuseumEntry> returning = candidates.stream().filter(entry -> entry.id().equals(owner)).findFirst();
+        if (returning.isPresent()) return returning.get();
+
+        List<MuseumEntry> open = candidates.stream()
+                .filter(MuseumEntry::isAvailable)
+                .filter(entry -> data.itemsFor(entry, true).isEmpty())
+                .toList();
+        if (open.isEmpty()) {
+            return candidates.stream().filter(MuseumEntry::isAvailable).findFirst().orElse(candidates.getFirst());
+        }
+        ItemType clickedType = clicked.getAttributeHandler().getPotentialType();
+        return open.stream()
+                .filter(entry -> collectSlots(player, entry, clickedSlot, clickedType).size() >= entry.requiredItemIds().size())
+                .findFirst()
+                .orElse(open.getFirst());
+    }
+
+    private static SkyBlockItem staffCopy(ItemType type) {
+        SkyBlockItem item = new SkyBlockItem(type);
+        item.getAttribute("unique-tracked-id").setValue(UUID.randomUUID().toString());
+        return item;
+    }
+
+    private static void unbind(SkyBlockItem item) {
+        item.getAttribute("soul_bound").setValue(null);
+    }
+
     private static void credit(DatapointMuseum.MuseumData data, MuseumEntry entry) {
-        if (data.isCredited(entry.id()) && catalogue().childrenOf(entry).stream().allMatch(child -> data.isCredited(child.id()))) {
+        credit(catalogue(), data, entry);
+    }
+
+    private static void credit(MuseumCatalogue catalogue, DatapointMuseum.MuseumData data, MuseumEntry entry) {
+        if (data.isCredited(entry.id()) && catalogue.childrenOf(entry).stream().allMatch(child -> data.isCredited(child.id()))) {
             return;
         }
         data.credit(entry.id());
-        catalogue().childrenOf(entry).forEach(child -> credit(data, child));
+        catalogue.childrenOf(entry).forEach(child -> credit(catalogue, data, child));
     }
 
     private static void grant(DatapointSkyBlockExperience.PlayerSkyBlockExperience experience, SkyBlockLevelCauseAbstr cause) {
