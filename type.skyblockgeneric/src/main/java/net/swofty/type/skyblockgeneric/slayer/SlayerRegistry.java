@@ -26,10 +26,14 @@ public final class SlayerRegistry {
     private static final Map<SlayerType, SlayerDefinition> DEFINITIONS = new LinkedHashMap<>();
 
     public static void loadAll() {
+        loadAll(SLAYERS_FILE);
+    }
+
+    public static void loadAll(File file) {
         DEFINITIONS.clear();
 
         try {
-            Map<String, Object> root = YamlFileUtils.loadYaml(SLAYERS_FILE);
+            Map<String, Object> root = YamlFileUtils.loadYaml(file);
             List<Map<String, Object>> slayers = (List<Map<String, Object>>) root.getOrDefault("slayers", Collections.emptyList());
             for (Map<String, Object> entry : slayers) {
                 SlayerType type = SlayerType.valueOf(string(entry, "id"));
