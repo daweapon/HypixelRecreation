@@ -10,6 +10,7 @@ import net.swofty.commons.skyblock.item.PotatoType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.fishing.rod.FishingRodLoreBuilder;
+import net.swofty.type.skyblockgeneric.item.ItemLore;
 import net.swofty.type.skyblockgeneric.spray.SprayCanHandlers;
 import net.swofty.type.skyblockgeneric.utility.groups.EnchantItemGroups;
 
@@ -77,7 +78,7 @@ public class LoreRegistry {
             },
             (item, player) -> {
                 var lore = FishingRodLoreBuilder.build(item, player);
-                return lore == null ? item.getDisplayName() : lore.displayName();
+                return lore == null ? ItemLore.nameMarkup(item) : lore.displayName();
             }
         ));
         register("MIDAS_SWORD", new LoreConfig((item, player) -> {

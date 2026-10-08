@@ -114,6 +114,16 @@ public class PlayerStatistics {
     private final List<TemporaryStatistic> temporaryStatistics = Collections.synchronizedList(new ArrayList<>());
     private final List<TemporaryConditionalStatistic> temporaryConditionalStatistics = Collections.synchronizedList(new ArrayList<>());
     BestiaryData bestiaryData = new BestiaryData();
+    private volatile CachedStatistics cachedAllStatistics;
+
+    /**
+     * Health, defense, mana, speed and the action bar each read the full stat total several times a
+     * tick; the total is reused for one tick instead of rebuilding every item each time.
+     */
+    private static final long ALL_STATISTICS_REUSE_NANOS = 50_000_000L;
+
+    private record CachedStatistics(ItemStatistics statistics, long computedAt) {
+    }
 
     public PlayerStatistics(SkyBlockPlayer player) {
         this.player = player;
@@ -286,7 +296,12 @@ public class PlayerStatistics {
 
 
     public ItemStatistics allStatistics() {
-        return allStatistics(null, null);
+        long now = System.nanoTime();
+        CachedStatistics cached = cachedAllStatistics;
+        if (cached != null && now - cached.computedAt() < ALL_STATISTICS_REUSE_NANOS) return cached.statistics();
+        ItemStatistics computed = allStatistics(null, null);
+        cachedAllStatistics = new CachedStatistics(computed, now);
+        return computed;
     }
 
     public ItemStatistics allStatistics(SkyBlockPlayer causer, LivingEntity enemy) {
@@ -543,6 +558,7 @@ public class PlayerStatistics {
                 item -> calculateExtraItemStatisticsToAdd(item, null, null));
         thaumaturgyStatistics = AccessoryPowers.statistics(AccessoryPowers.data(player), AccessoryPower.of(player));
         AccessoryBagXP.sync(player);
+        invalidateStatistics();
     }
 
     private ItemStatistics calculateExtraItemStatisticsToAdd(SkyBlockItem item, SkyBlockPlayer causer, LivingEntity enemy) {
@@ -695,12 +711,18 @@ public class PlayerStatistics {
 
     public void boostStatistic(TemporaryStatistic temporaryStatistic) {
         temporaryStatistics.add(temporaryStatistic);
+        invalidateStatistics();
     }
 
     public void removeTemporaryStatistics(Predicate<TemporaryStatistic> predicate) {
         synchronized (temporaryStatistics) {
             temporaryStatistics.removeIf(predicate);
         }
+        invalidateStatistics();
+    }
+
+    public void invalidateStatistics() {
+        cachedAllStatistics = null;
     }
 
     /**
@@ -717,6 +739,7 @@ public class PlayerStatistics {
 
     public void boostStatistic(TemporaryConditionalStatistic temporaryStatistic) {
         temporaryConditionalStatistics.add(temporaryStatistic);
+        invalidateStatistics();
     }
 
     public void boostHealthRegeneration(double percent, int ticks) {

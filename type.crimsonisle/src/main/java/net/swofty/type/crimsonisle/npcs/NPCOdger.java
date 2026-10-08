@@ -55,15 +55,18 @@ public class NPCOdger extends HypixelNPC implements NPCAbiphoneTrait {
         SkyBlockPlayer player = (SkyBlockPlayer) event.player();
         if (isInDialogue(player)) return;
         if (player.getTrophyFishData().isOdgerMet()) {
+            giveStarterRod(player);
             if (OdgerQuestTopics.intercept(player, () -> player.openView(new GUITrophyFishing()))) return;
             player.openView(new GUITrophyFishing());
             return;
         }
-        setDialogue(player, "first").thenRun(() -> {
-            if (OdgerRewards.giveStarterRodOnFirstMeeting(player)) {
-                player.sendMessage("<a>You received a <a>Starter Lava Rod<a>!");
-            }
-        });
+        setDialogue(player, "first").thenRun(() -> giveStarterRod(player));
+    }
+
+    private static void giveStarterRod(SkyBlockPlayer player) {
+        if (OdgerRewards.giveStarterRod(player)) {
+            player.sendMessage("<a>You received a <a>Starter Lava Rod<a>!");
+        }
     }
 
     @Override

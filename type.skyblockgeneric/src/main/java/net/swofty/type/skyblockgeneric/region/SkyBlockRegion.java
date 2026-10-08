@@ -171,15 +171,17 @@ public class SkyBlockRegion {
     }
 
     public boolean insideRegion(Pos location) {
-        List<Integer> bounds = getBounds();
-        double x = location.x();
-        double y = location.y();
-        double z = location.z();
-        if (firstLocation == null)
+        Pos first = firstLocation;
+        Pos second = secondLocation;
+        if (first == null || second == null)
             return false;
-        return x >= (double) bounds.get(0) && x <= (double) bounds.get(1) &&
-            y >= (double) bounds.get(2) && y <= (double) bounds.get(3) &&
-            z >= (double) bounds.get(4) && z <= (double) bounds.get(5);
+        return within(location.x(), first.blockX(), second.blockX())
+            && within(location.y(), first.blockY(), second.blockY())
+            && within(location.z(), first.blockZ(), second.blockZ());
+    }
+
+    private static boolean within(double value, int a, int b) {
+        return value >= Math.min(a, b) && value <= Math.max(a, b);
     }
 
     public List<Integer> getBounds() {
