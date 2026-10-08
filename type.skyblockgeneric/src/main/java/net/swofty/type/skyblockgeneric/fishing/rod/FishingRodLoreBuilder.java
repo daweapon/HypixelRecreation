@@ -7,6 +7,7 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.item.ItemLore;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.DefaultSoulboundComponent;
 import net.swofty.type.skyblockgeneric.item.components.FishingRodMetadataComponent;
@@ -81,7 +82,7 @@ public final class FishingRodLoreBuilder {
         }
 
         lore.add(rarityLine(item.getAttributeHandler().getRarity()));
-        return new FishingRodLore(item.getDisplayName(), lore);
+        return new FishingRodLore(ItemLore.nameMarkup(item), lore);
     }
 
     private static String rarityLine(Rarity rarity) {

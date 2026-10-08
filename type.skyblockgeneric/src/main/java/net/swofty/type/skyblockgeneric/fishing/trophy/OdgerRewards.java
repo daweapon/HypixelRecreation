@@ -119,12 +119,17 @@ public final class OdgerRewards {
         return Optional.empty();
     }
 
-    public static boolean giveStarterRodOnFirstMeeting(SkyBlockPlayer player) {
+    /**
+     * Gives the profile its one free Starter Lava Rod. Tracked apart from "met Odger" so a profile
+     * that met him while the rod failed to build still gets it on its next visit.
+     */
+    public static boolean giveStarterRod(SkyBlockPlayer player) {
         DatapointTrophyFish.TrophyFishData data = player.getTrophyFishData();
-        if (data.isOdgerMet()) return false;
-        data.setOdgerMet(true);
-        TrophyFishAwards.save(player, data);
+        if (data.isStarterRodGiven()) return false;
         player.addAndUpdateItem(ItemType.STARTER_LAVA_ROD);
+        data.setOdgerMet(true);
+        data.setStarterRodGiven(true);
+        TrophyFishAwards.save(player, data);
         return true;
     }
 

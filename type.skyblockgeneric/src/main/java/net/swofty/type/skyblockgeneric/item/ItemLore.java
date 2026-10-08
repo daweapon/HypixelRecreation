@@ -497,6 +497,13 @@ public class ItemLore {
 				.line(Text.empty());
 	}
 
+	/** The item's coloured, reforged name, built without rendering its lore. */
+	public static String nameMarkup(SkyBlockItem item) {
+		Rarity rarity = item.getAttributeHandler().getEffectiveRarity();
+		return Text.of("<color:{0}>{1}", rarity.getColor(),
+				reforgedName(item, displayName(item, item.getMaterial()))).serialize();
+	}
+
 	private static Text displayName(SkyBlockItem item, Material material) {
 		if (item.hasComponent(CustomDisplayNameComponent.class)) {
 			return item.getComponent(CustomDisplayNameComponent.class).getDisplayName(item);

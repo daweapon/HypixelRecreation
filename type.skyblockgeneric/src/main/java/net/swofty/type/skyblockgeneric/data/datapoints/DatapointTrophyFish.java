@@ -37,6 +37,7 @@ public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.T
             object.put("fish", fishObject);
             object.put("claimedRanks", new JSONArray(value.getClaimedRanks()));
             object.put("odgerMet", value.isOdgerMet());
+            object.put("starterRodGiven", value.isStarterRodGiven());
             return object.toString();
         }
 
@@ -53,6 +54,7 @@ public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.T
                 for (int i = 0; i < claimed.length(); i++) data.getClaimedRanks().add(claimed.getString(i));
             }
             data.setOdgerMet(object.optBoolean("odgerMet", false));
+            data.setStarterRodGiven(object.optBoolean("starterRodGiven", false));
             JSONObject fishObject = object.optJSONObject("fish");
             if (fishObject == null) {
                 return data;
@@ -86,7 +88,8 @@ public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.T
                     progress.getCatchesSinceGoldPity(),
                     progress.getCatchesSinceDiamondPity()
                 )));
-            return new TrophyFishData(fish, new HashSet<>(value.getClaimedRanks()), value.isOdgerMet());
+            return new TrophyFishData(fish, new HashSet<>(value.getClaimedRanks()), value.isOdgerMet(),
+                value.isStarterRodGiven());
         }
     };
 
@@ -106,6 +109,7 @@ public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.T
         private Map<String, FishProgress> fish = new HashMap<>();
         private Set<String> claimedRanks = new HashSet<>();
         private boolean odgerMet;
+        private boolean starterRodGiven;
 
         public FishProgress getProgress(String fishId) {
             return fish.computeIfAbsent(fishId, ignored -> new FishProgress());
