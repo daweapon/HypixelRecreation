@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.utility.MobAttackService;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Every hit a player lands lowers all of that player's stats by 10%, to at most 40%, until the
@@ -21,11 +22,13 @@ final class MinosInquisitorAbility implements MythologicalAbility {
     private static final String DRAIN = "Inquisitor's Judgement";
     private static final double REDUCTION_PER_HIT = 10;
     private static final double MAX_REDUCTION = 40;
-    private static final int LIGHTNING_INTERVAL_TICKS = 100;
+    private static final int LIGHTNING_MIN_INTERVAL_TICKS = 200;
+    private static final int LIGHTNING_MAX_INTERVAL_TICKS = 300;
     private static final double LIGHTNING_DAMAGE_MULTIPLIER = 2;
     private static final double LIGHTNING_RANGE = 20;
 
     private final Map<UUID, Integer> hits = new HashMap<>();
+    private int nextStrike = nextInterval();
 
     @Override
     public void onDamaged(MythologicalCreatureMob mob, Damage damage, float amount) {
@@ -42,7 +45,8 @@ final class MinosInquisitorAbility implements MythologicalAbility {
 
     @Override
     public void tick(MythologicalCreatureMob mob, int ticksAlive) {
-        if (ticksAlive == 0 || ticksAlive % LIGHTNING_INTERVAL_TICKS != 0) return;
+        if (ticksAlive < nextStrike) return;
+        nextStrike = ticksAlive + nextInterval();
         MythologicalCombat.target(mob)
                 .filter(target -> target.getPosition().distance(mob.getPosition()) <= LIGHTNING_RANGE)
                 .ifPresent(target -> {
@@ -51,6 +55,10 @@ final class MinosInquisitorAbility implements MythologicalAbility {
                     MobAttackService.strike(mob, target,
                             mob.getStatistics().getOverall(ItemStatistic.DAMAGE) * LIGHTNING_DAMAGE_MULTIPLIER);
                 });
+    }
+
+    private static int nextInterval() {
+        return ThreadLocalRandom.current().nextInt(LIGHTNING_MIN_INTERVAL_TICKS, LIGHTNING_MAX_INTERVAL_TICKS + 1);
     }
 
     @Override

@@ -357,6 +357,7 @@ public class ItemAttributeHandler {
     }
 
     public void addEnchantment(SkyBlockEnchantment enchantment) {
+        removeEnchantment(enchantment.type());
         ((ItemAttributeEnchantments) item.getAttribute("enchantments")).getValue()
                 .addEnchantment(enchantment.toUnderstandable());
     }

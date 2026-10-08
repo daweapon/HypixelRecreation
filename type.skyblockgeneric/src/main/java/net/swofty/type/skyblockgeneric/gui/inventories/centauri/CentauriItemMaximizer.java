@@ -53,6 +53,7 @@ public final class CentauriItemMaximizer {
         int applied = 0;
 
         for (EnchantmentType type : EnchantmentType.values()) {
+            if (type == EnchantmentType.KNOCKBACK) continue;
             if (type.getEnch().getGroups().stream().noneMatch(itemGroups::contains)) continue;
             int maximumLevel = type.getEnch().getLevelsToApply(player).maximumLevel();
             var current = item.getAttributeHandler().getEnchantment(type);

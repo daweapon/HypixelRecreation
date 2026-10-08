@@ -68,6 +68,7 @@ import java.util.Map;
 public abstract class SkyBlockMob extends EntityCreature {
     private static final float VANILLA_MAX_HEALTH = 1024;
     private static final double RARE_DROP_CHANCE_PERCENT = 5;
+    private static final int NAME_LINE_WIDTH = 2000;
     private float maxHealth;
     private float health;
     @Getter
@@ -106,6 +107,7 @@ public abstract class SkyBlockMob extends EntityCreature {
         nameDisplayEntity = new TextDisplayEntity(customName, meta -> {
             meta.setTranslation(new Pos(0, getNameDisplayHeightOffset(), 0));
             meta.setBackgroundColor(0);
+            meta.setLineWidth(NAME_LINE_WIDTH);
             meta.setShadow(true);
         });
 

@@ -12,6 +12,8 @@ import lombok.Setter;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalGear;
 import net.swofty.type.skyblockgeneric.mythological.ability.MythologicalAbilities;
 import net.swofty.type.skyblockgeneric.mythological.ability.MythologicalAbility;
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.attribute.Attribute;
 import net.minestom.server.entity.ai.TargetSelector;
@@ -49,6 +51,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
     private static final ThreadLocal<Spec> CONSTRUCTING = new ThreadLocal<>();
     private static final double MAX_RAMPAGE_PERCENT = 600;
     private static final long WARNING_COOLDOWN_MS = 2000;
+    private static final int VOID_RETURN_TICKS = 40;
     private static final int TWIN_PARTICLE_INTERVAL_TICKS = 5;
 
     private record Spec(MythologicalCreature creature, MythologicalVariant variant) {
@@ -79,6 +82,8 @@ public class MythologicalCreatureMob extends BestiaryMob {
     private @Nullable MythologicalCreatureMob twin;
     private boolean twinsTurn;
     private int ticksAlive;
+    private @Nullable Pos home;
+    private int ticksInVoid;
 
     protected MythologicalCreatureMob(MythologicalCreature creature, MythologicalVariant variant) {
         super(begin(new Spec(creature, variant)));
@@ -144,6 +149,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
     @Override
     public void onSpawn() {
         spawnedAt = System.currentTimeMillis();
+        home = getPosition();
         ability().onSpawn(this);
     }
 
@@ -161,6 +167,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
             if (getCreature().rampagePercentPerSecond() > 0 && abilityTicks % 20 == 0) refreshName();
             abilityTicks++;
         }
+        returnFromVoid();
         if (!escaped && !isDead() && rampagePercent() >= MAX_RAMPAGE_PERCENT) {
             escaped = true;
             if (listener != null) listener.onEscaped(this);
@@ -171,6 +178,18 @@ public class MythologicalCreatureMob extends BestiaryMob {
                     (float) getPosition().x(), (float) (getPosition().y() + getEyeHeight() + 0.6), (float) getPosition().z(),
                     0.2f, 0.1f, 0.2f, 0, 1));
         }
+    }
+
+    private void returnFromVoid() {
+        if (home == null || isDead() || getInstance() == null) return;
+        if (getPosition().y() >= getInstance().getCachedDimensionType().minY()) {
+            ticksInVoid = 0;
+            return;
+        }
+        if (++ticksInVoid < VOID_RETURN_TICKS) return;
+        ticksInVoid = 0;
+        setVelocity(Vec.ZERO);
+        teleport(home);
     }
 
     @Override
