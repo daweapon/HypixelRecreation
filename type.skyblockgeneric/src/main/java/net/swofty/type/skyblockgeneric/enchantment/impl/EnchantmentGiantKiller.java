@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.enchantment.impl;
 
+import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.entity.attribute.Attribute;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
@@ -58,7 +59,7 @@ public class EnchantmentGiantKiller implements Ench, EnchFromTable, EventBasedEn
         }
 
         double playerMaxHealth = causer.getStatistics().allStatistics().getOverall(ItemStatistic.HEALTH);
-        double targetMaxHealth = receiver.getAttributeValue(Attribute.MAX_HEALTH);
+        double targetMaxHealth = SkyBlockMob.maxHealthOf(receiver);
 
         if (targetMaxHealth <= playerMaxHealth) {
             return ItemStatistics.empty();

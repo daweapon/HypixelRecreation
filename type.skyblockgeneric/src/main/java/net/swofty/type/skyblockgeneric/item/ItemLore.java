@@ -277,7 +277,9 @@ public class ItemLore {
 		if (!item.hasComponent(EnchantableComponent.class)) return;
 		if (!item.getComponent(EnchantableComponent.class).showEnchantLores()) return;
 
-		List<SkyBlockEnchantment> enchantments = item.getAttributeHandler().getEnchantments().toList();
+		List<SkyBlockEnchantment> enchantments = item.getAttributeHandler().getEnchantments()
+				.sorted(java.util.Comparator.comparing((SkyBlockEnchantment enchantment) -> !enchantment.type().getEnch().isUltimate()))
+				.toList();
 		if (enchantments.isEmpty()) return;
 
 		TextBody.Section section = lore.section(LoreText.Sections.ENCHANTS);

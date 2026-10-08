@@ -4,11 +4,14 @@ import lombok.Getter;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.reforge.Reforge;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.random.RandomGenerator;
 
 /**
@@ -74,15 +77,13 @@ public enum SpadeTier {
         return tier.chainLength + (erudite ? ERUDITE_BONUS_LENGTH : 0);
     }
 
-    public BurrowTreasure roll(RandomGenerator random) {
-        if (random.nextDouble() < MYTHOLOGICAL_DYE_CHANCE) return BurrowTreasure.MYTHOLOGICAL_DYE;
-        if (random.nextDouble() < MYTH_THE_FISH_CHANCE) return BurrowTreasure.MYTH_THE_FISH;
-        int total = treasures.stream().mapToInt(BurrowTreasure::weight).sum();
-        int pick = random.nextInt(total);
-        for (BurrowTreasure treasure : treasures) {
-            pick -= treasure.weight();
-            if (pick < 0) return treasure;
+    public BurrowTreasure roll(@Nullable UUID player, RandomGenerator random) {
+        if (LootRoll.roll(player, ItemType.DYE_MYTHOLOGICAL, MYTHOLOGICAL_DYE_CHANCE * 100, random)) {
+            return BurrowTreasure.MYTHOLOGICAL_DYE;
         }
-        return treasures.getFirst();
+        if (LootRoll.roll(player, ItemType.MYTH_THE_FISH, MYTH_THE_FISH_CHANCE * 100, random)) {
+            return BurrowTreasure.MYTH_THE_FISH;
+        }
+        return LootRoll.pick(player, treasures, BurrowTreasure::item, BurrowTreasure::weight, random);
     }
 }

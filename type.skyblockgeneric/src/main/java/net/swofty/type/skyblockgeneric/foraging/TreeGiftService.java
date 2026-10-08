@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.foraging;
 
+import net.swofty.type.skyblockgeneric.item.components.AttributeShardComponent;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.minestom.server.entity.Player;
 import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
@@ -64,10 +66,12 @@ public final class TreeGiftService {
         rewards.add(Text.of("<a>HOTF Experience <7>x<f>{}", 10 * scaled));
         if (treeType.equals("FIG")) {
             int tender = ThreadLocalRandom.current().nextInt(scaled + 1);
+            if (LootRoll.claim(player.getUuid(), List.of(ItemType.TENDER_WOOD)) != null) tender = Math.max(1, tender);
             if (tender > 0) player.addAndUpdateItem(ItemType.TENDER_WOOD, tender);
             rewards.add(Text.of("<a>Tender Wood <7>x<f>0-{}", scaled));
         } else if (treeType.equals("MANGROVE")) {
             int vinesap = ThreadLocalRandom.current().nextInt(scaled + 1);
+            if (LootRoll.claim(player.getUuid(), List.of(ItemType.VINESAP)) != null) vinesap = Math.max(1, vinesap);
             if (vinesap > 0) player.addAndUpdateItem(ItemType.VINESAP, vinesap);
             rewards.add(Text.of("<a>Vinesap <7>x<f>0-{}", scaled));
         }
@@ -86,9 +90,10 @@ public final class TreeGiftService {
         for (Bonus bonus : bonuses) {
             double chance = bonus.chance * scaled;
             if (bonus.shard != null) chance *= 1 + treeLurker;
-            if (ThreadLocalRandom.current().nextDouble() >= Math.min(1, chance)) continue;
+            AttributeDefinition definition = bonus.shard == null ? null : AttributeRegistry.findByShard(bonus.shard).orElse(null);
+            ItemType bonusItem = definition != null ? AttributeShardComponent.itemType(definition) : bonus.item;
+            if (!LootRoll.roll(player.getUuid(), bonusItem, Math.min(1, chance) * 100)) continue;
             if (bonus.shard != null) {
-                AttributeDefinition definition = AttributeRegistry.findByShard(bonus.shard).orElse(null);
                 if (definition == null) continue;
                 player.getHuntingData().addShards(definition.id(), 1);
                 Text shardText = Text.of("<color:{}>{}", definition.rarity().itemRarity().getColor(), definition.shardName());
@@ -102,7 +107,7 @@ public final class TreeGiftService {
             }
         }
         double signalChance = AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("R7")) / 100D;
-        if (signalChance > 0 && ThreadLocalRandom.current().nextDouble() < signalChance) {
+        if (LootRoll.roll(player.getUuid(), ItemType.SIGNAL_ENHANCER, signalChance * 100)) {
             player.addAndUpdateItem(ItemType.SIGNAL_ENHANCER);
             rewards.add(Text.of("<6>Signal Enhancer"));
             bonusMessages.add(Text.of("<6>Signal Enhancer <7>(<a>{}<7>)", chance(signalChance)));

@@ -160,18 +160,18 @@ public final class MythologicalItemHandlers {
     private static List<String> daedalusLore(SkyBlockItem item, @Nullable SkyBlockPlayer player) {
         int tiers = player == null || player.getSkyblockDataHandler() == null ? 0 : MythologicalBestiary.totalTiers(player);
         return List.of(
-                "<7>Gains <c>+4 Damage <7>per Taming level",
+                "<7>Gains <c>+5❁ Damage <7>per Taming level",
                 "<7>and copies the base <c>Combat <7>stats of",
                 "<7>your active pet.",
                 "",
-                "<7>Grants <c>+1% ❁ Damage <7>and <b>+0.2",
-                "<b>✯ Magic Find <7>on <2>✿ Mythological <7>mobs",
+                "<7>Grants <c>+1.5% ❁ Damage <7>and <b>+0.3✯",
+                "<b>Magic Find <7>on <2>✿ Mythological <7>mobs",
                 "<7>per <3>Bestiary <7>tier you have across",
                 "<7>all of them.",
                 "",
                 "<2>✿ Mythological <7>Bestiary Tiers: <3>" + tiers,
-                "  <c>+" + tiers + "% ❁ Damage",
-                "  <b>+" + format(tiers * 0.2) + " ✯ Magic Find");
+                "  <c>+" + format(tiers * 1.5) + "% ❁ Damage",
+                "  <b>+" + format(tiers * 0.3) + "✯ Magic Find");
     }
 
     private static String tier(String name, int pieces, int of) {

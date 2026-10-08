@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.hunting;
 
+import net.swofty.type.skyblockgeneric.item.components.AttributeShardComponent;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.block.Block;
@@ -78,7 +80,8 @@ public final class HuntrapService {
                 if (trap.caughtShard() == null && trap.catchAt() <= System.currentTimeMillis()) {
                     List<AttributeDefinition> pool = eligible(player, new Pos(trap.x(), trap.y(), trap.z()));
                     if (!pool.isEmpty()) {
-                        AttributeDefinition caught = pool.get(ThreadLocalRandom.current().nextInt(pool.size()));
+                        AttributeDefinition caught = LootRoll.pick(player.getUuid(), pool, AttributeShardComponent::itemType,
+                                definition -> 1, ThreadLocalRandom.current());
                         DatapointHunting.PlacedHuntrap complete = new DatapointHunting.PlacedHuntrap(trap.world(), trap.x(),
                                 trap.y(), trap.z(), trap.tier(), trap.placedAt(), trap.catchAt(), caught.id().toString());
                         traps.set(i, complete);

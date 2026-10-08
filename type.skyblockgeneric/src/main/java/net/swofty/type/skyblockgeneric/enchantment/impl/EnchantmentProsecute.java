@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.enchantment.impl;
 
+import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.minestom.server.entity.attribute.Attribute;
 import net.minestom.server.entity.LivingEntity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
@@ -78,7 +79,7 @@ public class EnchantmentProsecute implements Ench, EnchFromTable, EventBasedEnch
             return ItemStatistics.empty();
         }
 
-        double targetMaxHealth = receiver.getAttributeValue(Attribute.MAX_HEALTH);
+        double targetMaxHealth = SkyBlockMob.maxHealthOf(receiver);
         double targetCurrentHealth = receiver.getHealth();
 
         if (targetMaxHealth <= 0) {

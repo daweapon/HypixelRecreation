@@ -54,7 +54,7 @@ public class ActionRevealHiddenJerry implements HypixelEventClass {
         if (ThreadLocalRandom.current().nextDouble() >= chance) return;
         lastReveal.put(player.getUuid(), now);
 
-        reveal(player, HiddenJerryType.roll());
+        reveal(player, HiddenJerryType.roll(player.getUuid()));
     }
 
     private static void reveal(SkyBlockPlayer player, HiddenJerryType type) {

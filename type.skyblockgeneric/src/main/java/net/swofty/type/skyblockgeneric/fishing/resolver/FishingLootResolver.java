@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing.resolver;
 
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -72,14 +73,17 @@ public final class FishingLootResolver {
 
         eligible.sort(Comparator.comparingDouble(TrophyFishDefinition::catchChance).thenComparing(TrophyFishDefinition::id));
         for (TrophyFishDefinition definition : eligible) {
+            for (TrophyTier tier : TrophyTier.values()) {
+                String itemId = trophyItemId(definition, tier);
+                if (itemId != null && LootRoll.claim(context.player().getUuid(), List.of(ItemType.get(itemId))) != null) {
+                    return Optional.of(new CatchPayload.TrophyFish(definition.id(), tier, itemId, 300.0D));
+                }
+            }
+        }
+        for (TrophyFishDefinition definition : eligible) {
             if (Math.random() * 100 <= effectiveTrophyChance(context, definition, bonus)) {
                 TrophyTier tier = rollTrophyTier(context, definition);
-                String itemId = switch (tier) {
-                    case DIAMOND -> definition.diamondItemId();
-                    case GOLD -> definition.goldItemId();
-                    case SILVER -> definition.silverItemId();
-                    case BRONZE -> definition.bronzeItemId();
-                };
+                String itemId = trophyItemId(definition, tier);
                 if (itemId == null) {
                     continue;
                 }
@@ -151,7 +155,7 @@ public final class FishingLootResolver {
         }
         if (context.player().getShipState().getEngine() != null) return Optional.empty();
         if (context.player().countItem(ItemType.RUSTY_SHIP_ENGINE) > 0) return Optional.empty();
-        if (Math.random() * 100 > 1.0D) return Optional.empty();
+        if (!LootRoll.roll(context.player().getUuid(), ItemType.RUSTY_SHIP_ENGINE, 1.0D)) return Optional.empty();
 
         return Optional.of(new CatchPayload.Quest(
             ItemType.RUSTY_SHIP_ENGINE.name(),
@@ -159,6 +163,15 @@ public final class FishingLootResolver {
             15.0D,
             "You fished up a Rusty Ship Engine!"
         ));
+    }
+
+    private static String trophyItemId(TrophyFishDefinition definition, TrophyTier tier) {
+        return switch (tier) {
+            case DIAMOND -> definition.diamondItemId();
+            case GOLD -> definition.goldItemId();
+            case SILVER -> definition.silverItemId();
+            case BRONZE -> definition.bronzeItemId();
+        };
     }
 
     private static TrophyTier rollTrophyTier(FishingContext context, TrophyFishDefinition definition) {
@@ -219,6 +232,11 @@ public final class FishingLootResolver {
         if (tableOpt.isEmpty()) return DEFAULT_CATCH;
         FishingTableDefinition table = tableOpt.get();
 
+        Optional<CatchPayload> forced = forcedCatch(context, table.treasures(), true)
+            .or(() -> forcedCatch(context, table.items(), false))
+            .or(() -> forcedCatch(context, table.junk(), false));
+        if (forced.isPresent()) return forced.get();
+
         List<FishingTableDefinition.LootEntry> pool = table.items();
         double treasureChance = getTotalStatistic(context, ItemStatistic.TREASURE_CHANCE);
         if (context.bait() != null) {
@@ -236,6 +254,15 @@ public final class FishingLootResolver {
         return pick(pool, false)
             .or(() -> table.junk().isEmpty() ? Optional.empty() : pick(table.junk(), false))
             .orElse(DEFAULT_CATCH);
+    }
+
+    private static Optional<CatchPayload> forcedCatch(FishingContext context, List<FishingTableDefinition.LootEntry> pool,
+                                                      boolean fromTreasure) {
+        ItemType claimed = LootRoll.claim(context.player().getUuid(),
+            pool.stream().map(entry -> ItemType.get(entry.itemId())).toList());
+        if (claimed == null) return Optional.empty();
+        return pool.stream().filter(entry -> ItemType.get(entry.itemId()) == claimed).findFirst()
+            .map(entry -> new CatchPayload.Item(entry.itemId(), entry.amount(), entry.skillXp(), fromTreasure));
     }
 
     private static Optional<CatchPayload> pick(List<FishingTableDefinition.LootEntry> pool, boolean fromTreasure) {

@@ -1,5 +1,6 @@
 package net.swofty.type.jerrysworkshop.defense;
 
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import net.minestom.server.MinecraftServer;
@@ -287,7 +288,7 @@ public final class JerryWorkshopDefenseManager {
         double chance = Carnivals.perkValue(player, CarnivalPerk.RED_FAD) / 100D;
         int converted = 0;
         for (int i = 0; i < gifts; i++) {
-            if (ThreadLocalRandom.current().nextDouble() < chance) converted++;
+            if (LootRoll.roll(player.getUuid(), ItemType.RED_GIFT, chance * 100)) converted++;
         }
         return converted;
     }

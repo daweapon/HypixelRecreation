@@ -237,7 +237,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
         String header = ability().nameHeader(this);
         if (!header.isEmpty()) return header;
         double rampage = rampagePercent();
-        return rampage > 0 ? "<c>+" + Math.round(rampage) + "% damage" : "";
+        return Math.round(rampage) > 0 ? "<c>+" + Math.round(rampage) + "% damage" : "";
     }
 
     public int getFightTicks() {
@@ -245,7 +245,7 @@ public class MythologicalCreatureMob extends BestiaryMob {
     }
 
     public double healthRatio() {
-        return getHealth() / getAttributeValue(Attribute.MAX_HEALTH);
+        return getHealth() / getMaxHealth();
     }
 
     @Override

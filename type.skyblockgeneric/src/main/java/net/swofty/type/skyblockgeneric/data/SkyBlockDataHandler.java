@@ -624,6 +624,9 @@ public class SkyBlockDataHandler extends DataHandler {
         BRAIN_FOOD_CONSUMED("brain_food_consumed", false, false, false,
                 DatapointInteger.class, new DatapointInteger("brain_food_consumed", 0)),
 
+        FORCED_DROPS("forced_drops", false, false, false,
+                DatapointStringList.class, new DatapointStringList("forced_drops")),
+
         MUSEUM_DATA("museum_data", false, false, false,
                 DatapointMuseum.class, new DatapointMuseum("museum_data"),
                 (player, datapoint) -> {

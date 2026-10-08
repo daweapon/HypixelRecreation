@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.*;
 import java.util.function.Function;
 
@@ -74,42 +75,25 @@ public abstract class SkyBlockLootTable {
         CalculationMode mode = getCalculationMode();
 
         if (mode == CalculationMode.PICK_ONE) {
-            double cumulativeChance = 0;
-
-            for (LootRecord record : getLootTable()) {
-                if (record.shouldCalculate.apply(player)) {
-                    cumulativeChance += record.chancePercent;
-                }
-            }
-
-            int random = (int) (Math.random() * cumulativeChance);
-            double current = 0;
-
-            List<LootRecord> records = getLootTable();
-            Collections.shuffle(records);
-
-            for (LootRecord record : records) {
-                if (record.shouldCalculate.apply(player)) {
-                    current += record.chancePercent;
-                    if (random < current) {
-                        loot.put(record.itemType, record);
-                        break;
-                    }
-                }
+            List<LootRecord> eligible = getLootTable().stream()
+                    .filter(record -> record.shouldCalculate.apply(player))
+                    .toList();
+            if (!eligible.isEmpty()) {
+                LootRecord picked = LootRoll.pick(player.getUuid(), eligible, LootRecord::getItemType,
+                        LootRecord::getChancePercent, ThreadLocalRandom.current());
+                loot.put(picked.itemType, picked);
             }
         } else if (mode == CalculationMode.CALCULATE_INDIVIDUAL) {
             for (LootRecord record : getLootTable()) {
+                double adjustedChancePercent = 0;
                 if (record.shouldCalculate.apply(player)) {
-                    double adjustedChancePercent = record.chancePercent;
-
-                    // Apply LootAffectors to the chance percentage
+                    adjustedChancePercent = record.chancePercent;
                     for (LootAffector affector : affectors) {
                         adjustedChancePercent = affector.getAffector().apply(player, adjustedChancePercent, null);
                     }
-
-                    if (Math.random() * 100 < adjustedChancePercent) {
-                        loot.put(record.itemType, record);
-                    }
+                }
+                if (LootRoll.roll(player.getUuid(), record.itemType, adjustedChancePercent)) {
+                    loot.put(record.itemType, record);
                 }
             }
         }

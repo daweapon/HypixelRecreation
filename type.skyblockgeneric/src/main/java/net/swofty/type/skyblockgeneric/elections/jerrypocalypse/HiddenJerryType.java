@@ -1,5 +1,8 @@
 package net.swofty.type.skyblockgeneric.elections.jerrypocalypse;
 
+import java.util.UUID;
+import java.util.List;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import lombok.Getter;
 import net.swofty.commons.skyblock.item.ItemType;
 
@@ -29,15 +32,8 @@ public enum HiddenJerryType {
         this.box = box;
     }
 
-    public static HiddenJerryType roll() {
-        int total = 0;
-        for (HiddenJerryType type : values()) total += type.weight;
-        int roll = ThreadLocalRandom.current().nextInt(total);
-        for (HiddenJerryType type : values()) {
-            roll -= type.weight;
-            if (roll < 0) return type;
-        }
-        return GREEN;
+    public static HiddenJerryType roll(UUID player) {
+        return LootRoll.pick(player, List.of(values()), type -> type.box, type -> type.weight, ThreadLocalRandom.current());
     }
 
     public static HiddenJerryType ofBox(ItemType box) {

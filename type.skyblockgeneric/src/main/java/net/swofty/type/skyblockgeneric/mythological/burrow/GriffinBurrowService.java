@@ -199,7 +199,7 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
     }
 
     public void giveTreasure(SkyBlockPlayer player) {
-        BurrowTreasure treasure = SpadeTier.held(player).orElse(SpadeTier.ANCESTRAL).roll(ThreadLocalRandom.current());
+        BurrowTreasure treasure = SpadeTier.held(player).orElse(SpadeTier.ANCESTRAL).roll(player.getUuid(), ThreadLocalRandom.current());
         if (treasure.item() == null) {
             long coins = MythologicalCoins.fromBurrow(player, treasure.coins());
             if (coins <= 0) {

@@ -49,8 +49,8 @@ final class TarantulaBroodfatherAbility extends SlayerAbilitySupport {
     public float modifyIncomingDamage(SlayerBossMob boss, Damage damage, float amount) {
         if (boss.getProfile().tier().tier().number() >= 5 && !conjoined && amount >= boss.getHealth()) {
             conjoined = true;
+            boss.setMaxHealth((float) (boss.getProfile().tier().bossHealth() * 2D));
             boss.setHealth((float) boss.getProfile().tier().bossHealth());
-            boss.getAttribute(net.minestom.server.entity.attribute.Attribute.MAX_HEALTH).setBaseValue(boss.getProfile().tier().bossHealth() * 2D);
             nearbyPlayers(boss, 16).forEach(player -> player.sendMessage("<5>Til Death Do Us Part! <d>The Conjoined Brood awakens!"));
             return 0F;
         }

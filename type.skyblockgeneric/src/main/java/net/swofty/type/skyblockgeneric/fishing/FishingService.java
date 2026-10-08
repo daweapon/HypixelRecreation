@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing;
 
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -155,8 +156,10 @@ public final class FishingService {
         if (sinker == null || sinker.getMaterializedItemId() == null) {
             return;
         }
-        if (Math.random() <= sinker.getMaterializedChance()) {
-            player.addAndUpdateItem(net.swofty.commons.skyblock.item.ItemType.valueOf(sinker.getMaterializedItemId()));
+        net.swofty.commons.skyblock.item.ItemType materialized =
+                net.swofty.commons.skyblock.item.ItemType.valueOf(sinker.getMaterializedItemId());
+        if (LootRoll.roll(player.getUuid(), materialized, sinker.getMaterializedChance() * 100)) {
+            player.addAndUpdateItem(materialized);
         }
     }
 

@@ -43,9 +43,9 @@ public final class MythologicalGear {
 
     private static final double SWORD_OF_REVELATIONS_DAMAGE = 1.5;
     private static final double SWORD_OF_REVELATIONS_MAGIC_FIND = 5;
-    private static final double DAEDALUS_DAMAGE_PERCENT_PER_TIER = 1;
-    private static final double DAEDALUS_MAGIC_FIND_PER_TIER = 0.2;
-    private static final double DAEDALUS_DAMAGE_PER_TAMING_LEVEL = 4;
+    private static final double DAEDALUS_DAMAGE_PERCENT_PER_TIER = 1.5;
+    private static final double DAEDALUS_MAGIC_FIND_PER_TIER = 0.3;
+    private static final double DAEDALUS_DAMAGE_PER_TAMING_LEVEL = 5;
     private static final double CROWN_OF_GREED_MAGIC_FIND = 10;
     private static final double CROWN_OF_GREED_DAMAGE_TAKEN = 1.25;
     private static final double CROWN_OF_AVARICE_DAMAGE_TAKEN = 1.5;

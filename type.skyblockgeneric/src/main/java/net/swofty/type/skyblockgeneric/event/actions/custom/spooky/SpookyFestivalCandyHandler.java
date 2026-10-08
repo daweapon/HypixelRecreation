@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.event.actions.custom.spooky;
 
+import java.util.List;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.Carnivals;
 import net.swofty.commons.skyblock.item.ItemType;
@@ -47,7 +49,9 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
         int spookyPieces = countSpookyArmorPieces(player);
         double dropChance = CANDY_DROP_CHANCE + (spookyPieces * SPOOKY_ARMOR_PIECE_BONUS) + candyAccessoryBonus(player)
                 + ElectionPerks.bonus(SkyBlockMayor.Perk.SWEET_BENEVOLENCE) / 100D;
+        ItemType forced = LootRoll.claim(player.getUuid(), List.of(ItemType.PURPLE_CANDY, ItemType.GREEN_CANDY));
         int candies = (int) dropChance + (ThreadLocalRandom.current().nextDouble() < dropChance % 1D ? 1 : 0);
+        if (forced != null) candies = Math.max(1, candies);
         if (candies == 0) return;
         candies = Carnivals.boostedCount(player, CarnivalPerk.CANDY_SCAVENGER, candies);
 
@@ -57,7 +61,9 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
                 + (spookyPieces == 4 ? SPOOKY_ARMOR_FULL_SET_BONUS : 0)
                 + Carnivals.perkValue(player, CarnivalPerk.PURPLE_VOGUE) / 100D;
         for (int i = 0; i < candies; i++) {
-            giveCandy(player, ThreadLocalRandom.current().nextDouble() < purpleChance);
+            boolean purple = i == 0 && forced != null ? forced == ItemType.PURPLE_CANDY
+                    : ThreadLocalRandom.current().nextDouble() < purpleChance;
+            giveCandy(player, purple);
         }
     }
 

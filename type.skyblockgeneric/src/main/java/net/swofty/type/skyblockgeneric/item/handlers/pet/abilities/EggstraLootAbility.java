@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.handlers.pet.abilities;
 
+import net.swofty.type.skyblockgeneric.loottable.ForcedDrops;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -66,10 +67,10 @@ public final class EggstraLootAbility implements PetAbility {
         Rarity rarity = context.pet().getAttributeHandler().getRarity();
         int level = context.pet().getAttributeHandler().getPetData().getAsLevel(rarity);
         double chance = CHANCE_PER_LEVEL.getForRarity(rarity) * level;
-        if (Math.random() * 100 >= chance) return;
-
         SkyBlockLootTable lootTable = context.mob().getLootTable();
         if (lootTable == null) return;
+        boolean forced = ForcedDrops.isForced(context.player().getUuid(), lootTable.getLootTableItems());
+        if (!forced && Math.random() * 100 >= chance) return;
 
         Map<ItemType, SkyBlockLootTable.LootRecord> extraDrops = lootTable.runChances(context.player());
         for (Map.Entry<ItemType, SkyBlockLootTable.LootRecord> entry : extraDrops.entrySet()) {

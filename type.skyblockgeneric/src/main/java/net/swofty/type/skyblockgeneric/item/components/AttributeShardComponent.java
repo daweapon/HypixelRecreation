@@ -41,6 +41,10 @@ public class AttributeShardComponent extends SkyBlockItemComponent {
         }, null, null));
     }
 
+    public static net.swofty.commons.skyblock.item.ItemType itemType(AttributeDefinition definition) {
+        return create(definition, 1).getAttributeHandler().getPotentialType();
+    }
+
     public static SkyBlockItem create(AttributeDefinition definition, int amount) {
         String variant = "SHARD_" + definition.shard().toUpperCase(Locale.ROOT).replaceAll("[^A-Z0-9]+", "_")
                 .replaceAll("^_|_$", "");

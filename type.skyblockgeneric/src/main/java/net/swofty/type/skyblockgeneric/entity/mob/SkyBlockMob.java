@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.entity.mob;
 
+import net.minestom.server.entity.LivingEntity;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -46,7 +47,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ArmorComponent;
 import net.swofty.type.skyblockgeneric.loottable.LootAffector;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
-import net.swofty.type.skyblockgeneric.loottable.ForcedDrops;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
@@ -63,6 +64,9 @@ import java.util.Map;
 
 @Setter
 public abstract class SkyBlockMob extends EntityCreature {
+    private static final float VANILLA_MAX_HEALTH = 1024;
+    private float maxHealth;
+    private float health;
     @Getter
     private static List<SkyBlockMob> mobs = new ArrayList<>();
     @Getter
@@ -89,20 +93,12 @@ public abstract class SkyBlockMob extends EntityCreature {
     private void init() {
         this.setCustomNameVisible(true);
 
-        float maxHealth = (float) (getBaseStatistics().getOverall(ItemStatistic.HEALTH)
-                * ElectionPerks.factor(SkyBlockMayor.Perk.DOUBLE_MOBS_HP));
-        this.getAttribute(Attribute.MAX_HEALTH).setBaseValue(maxHealth);
         this.getAttribute(Attribute.MOVEMENT_SPEED)
                 .setBaseValue((float) ((getBaseStatistics().getOverall(ItemStatistic.SPEED).floatValue() / 1000) * 2.5));
-        this.setHealth(maxHealth);
+        setMaxHealth((float) (getBaseStatistics().getOverall(ItemStatistic.HEALTH)
+                * ElectionPerks.factor(SkyBlockMayor.Perk.DOUBLE_MOBS_HP)));
 
-        this.customName = Text.of("<8>[<7>Lv{}<8>] <c>{}<c> {} <a>{}<f>/<a>{}",
-                getLevel(),
-                Text.parse(getMobTypes().getFirst().getColor() + getMobTypes().getFirst().getSymbol()),
-                getDisplayName(),
-                Math.round(getHealth()),
-                Math.round(maxHealth)
-        );
+        this.customName = Text.parse(nameLine());
         this.set(DataComponents.CUSTOM_NAME, customName.asComponent());
         nameDisplayEntity = new TextDisplayEntity(customName, meta -> meta.setTranslation(new Pos(0, getNameDisplayHeightOffset(), 0)));
 
@@ -222,12 +218,73 @@ public abstract class SkyBlockMob extends EntityCreature {
 
     public void refreshName() {
         String header = nameHeader();
-        updateCustomName((header.isEmpty() ? "" : header + "\n") + "<8>[<7>Lv{}<8>] <c>{} <a>{}<f>/<a>{}",
-                getLevel(),
-                getDisplayName(),
-                Math.round(getHealth()),
-                Math.round(this.getAttributeValue(Attribute.MAX_HEALTH))
-        );
+        updateCustomName(Text.parse((header.isEmpty() ? "" : header + "\n") + nameLine()));
+    }
+
+    private String nameLine() {
+        MobType type = getMobTypes().getFirst();
+        return "<8>[<7>Lv" + getLevel() + "<8>] " + type.getColor() + type.getSymbol() + " <c>" + getDisplayName()
+                + " <a>" + shortHealth(getHealth()) + "<f>/<a>" + shortHealth(getMaxHealth()) + "<c>❤";
+    }
+
+    /**
+     * Hypixel's mob health style: 950, 490.2k, 1.2M, 65M, 1.5B.
+     */
+    public static String shortHealth(double health) {
+        double value = Math.max(0, Math.ceil(health));
+        String[] units = {"B", "M", "k"};
+        double[] sizes = {1e9, 1e6, 1e3};
+        for (int i = 0; i < units.length; i++) {
+            if (value >= sizes[i]) {
+                double scaled = Math.floor(value / sizes[i] * 10) / 10;
+                String number = scaled == Math.floor(scaled) ? String.valueOf((long) scaled) : String.valueOf(scaled);
+                return number + units[i];
+            }
+        }
+        return String.valueOf((long) value);
+    }
+
+    /**
+     * Minecraft caps a living entity's health at 1,024, far below most SkyBlock mobs, so the real
+     * health lives here and the vanilla value only mirrors the fraction for the client.
+     */
+    public float getMaxHealth() {
+        return maxHealth;
+    }
+
+    public static double maxHealthOf(LivingEntity entity) {
+        return entity instanceof SkyBlockMob mob ? mob.getMaxHealth() : entity.getAttributeValue(Attribute.MAX_HEALTH);
+    }
+
+    public void setMaxHealth(float maxHealth) {
+        this.maxHealth = Math.max(1, maxHealth);
+        getAttribute(Attribute.MAX_HEALTH).setBaseValue(Math.min(this.maxHealth, VANILLA_MAX_HEALTH));
+        setHealth(this.maxHealth);
+    }
+
+    @Override
+    public float getHealth() {
+        return maxHealth <= 0 ? super.getHealth() : health;
+    }
+
+    @Override
+    public void setHealth(float health) {
+        if (maxHealth <= 0) {
+            super.setHealth(health);
+            return;
+        }
+        this.health = Math.max(0, Math.min(health, maxHealth));
+        float vanillaMax = (float) getAttributeValue(Attribute.MAX_HEALTH);
+        super.setHealth(this.health <= 0 ? 0 : Math.max(1, vanillaMax * this.health / maxHealth));
+    }
+
+    @Override
+    public void heal() {
+        if (maxHealth <= 0) {
+            super.heal();
+            return;
+        }
+        setHealth(maxHealth);
     }
 
     protected String nameHeader() {
@@ -279,8 +336,8 @@ public abstract class SkyBlockMob extends EntityCreature {
                 adjustedChance = affector.getAffector().apply(player, adjustedChance, this);
             }
 
-            if (ForcedDrops.consume(player.getUuid(), itemType)
-                    || (Math.random() * 100 < adjustedChance && record.getShouldCalculate().apply(player))) {
+            double chance = record.getShouldCalculate().apply(player) ? adjustedChance : 0;
+            if (LootRoll.roll(player.getUuid(), itemType, chance)) {
                 drops.put(itemType, record);
             }
         }

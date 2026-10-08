@@ -91,9 +91,9 @@ public final class SphinxAbility implements MythologicalAbility {
         }
         player.sendMessage("<c>Wrong answer! Sphinx is infuriated by your inferior intellect!");
         if (sphinx.isDead() || sphinx.isRemoved()) return;
-        var maxHealth = sphinx.getAttribute(Attribute.MAX_HEALTH);
-        maxHealth.setBaseValue(maxHealth.getBaseValue() * INFURIATED_HEALTH_MULTIPLIER);
-        sphinx.setHealth((float) (sphinx.getHealth() * INFURIATED_HEALTH_MULTIPLIER));
+        float health = sphinx.getHealth();
+        sphinx.setMaxHealth((float) (sphinx.getMaxHealth() * INFURIATED_HEALTH_MULTIPLIER));
+        sphinx.setHealth((float) (health * INFURIATED_HEALTH_MULTIPLIER));
         bleed.setDamagePerStack(DAMAGE_PER_BLEED * INFURIATED_BLEED_MULTIPLIER);
         MythologicalCombat.sound(sphinx, "entity.ravager.roar", 1f, 0.6f);
         sphinx.refreshName();

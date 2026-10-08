@@ -36,7 +36,7 @@ class SpadeTierTest {
     @Test
     void rollingAlwaysReturnsATreasure() {
         Random random = new Random(7);
-        for (int i = 0; i < 10_000; i++) assertNotNull(SpadeTier.DEIFIC.roll(random));
+        for (int i = 0; i < 10_000; i++) assertNotNull(SpadeTier.DEIFIC.roll(null, random));
     }
 
     private static int total(SpadeTier tier) {

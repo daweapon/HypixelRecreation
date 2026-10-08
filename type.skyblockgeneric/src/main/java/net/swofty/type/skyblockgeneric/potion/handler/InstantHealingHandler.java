@@ -32,7 +32,7 @@ public class InstantHealingHandler implements PotionEffectHandler {
             // Healing damages undead
             mob.damage(new Damage(DamageType.MAGIC, null, null, null, (float) healAmount));
         } else {
-            float maxHealth = (float) mob.getAttributeValue(Attribute.MAX_HEALTH);
+            float maxHealth = (float) SkyBlockMob.maxHealthOf(mob);
             float newHealth = Math.min(maxHealth, mob.getHealth() + (float) healAmount);
             mob.setHealth(newHealth);
         }

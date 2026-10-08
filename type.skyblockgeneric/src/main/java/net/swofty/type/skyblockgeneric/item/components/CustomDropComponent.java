@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.components;
 
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import lombok.Getter;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.skyblock.item.ItemType;
@@ -57,7 +58,7 @@ public class CustomDropComponent extends SkyBlockItemComponent {
                 }
 
                 for (Drop drop : rule.drops()) {
-                    if (RANDOM.nextDouble() <= drop.chance()) {
+                    if (LootRoll.roll(player == null ? null : player.getUuid(), drop.item(), drop.chance() * 100, RANDOM)) {
                         int amount = calculateAmount(drop.amount());
                         if (amount > 0) {
                             SkyBlockItem dropItem = new SkyBlockItem(drop.item(), amount);

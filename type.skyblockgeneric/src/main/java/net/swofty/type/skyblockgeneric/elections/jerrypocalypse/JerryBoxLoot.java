@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.elections.jerrypocalypse;
 
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -72,15 +73,7 @@ public final class JerryBoxLoot {
 
     public static void open(SkyBlockPlayer player, HiddenJerryType type) {
         List<Reward> table = table(type);
-        int roll = ThreadLocalRandom.current().nextInt(table.stream().mapToInt(Reward::weight).sum());
-        Reward reward = table.getLast();
-        for (Reward candidate : table) {
-            roll -= candidate.weight();
-            if (roll < 0) {
-                reward = candidate;
-                break;
-            }
-        }
+        Reward reward = LootRoll.pick(player.getUuid(), table, Reward::item, Reward::weight, ThreadLocalRandom.current());
 
         String header = "<a><l>JERRY BOX! " + type.getColor() + type.getName() + " Jerry Box <7>contained ";
         if (reward.item() != null) {
