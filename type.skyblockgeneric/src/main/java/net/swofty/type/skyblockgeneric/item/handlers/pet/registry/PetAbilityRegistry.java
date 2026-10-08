@@ -16,7 +16,8 @@ public final class PetAbilityRegistry {
     private static final Map<String, PetAbilityHandler> HANDLERS = new ConcurrentHashMap<>();
 
     private static final List<Provider> PROVIDERS = List.of(
-            new CorePetAbilities()
+            new CorePetAbilities(),
+            new GatheringPetAbilities()
     );
 
     static {

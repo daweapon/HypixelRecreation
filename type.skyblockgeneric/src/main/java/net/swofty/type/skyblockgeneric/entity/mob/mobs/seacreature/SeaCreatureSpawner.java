@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature;
 
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -98,6 +99,7 @@ public final class SeaCreatureSpawner {
             return null;
         }
         mob.setInstance(instance, position);
+        GatheringPetBonuses.seaCreatureSpawned(angler, mob);
 
         broadcastCatch(angler, profile, instance, position);
         return mob;

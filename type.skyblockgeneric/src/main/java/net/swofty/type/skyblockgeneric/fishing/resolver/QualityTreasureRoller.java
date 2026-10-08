@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing.resolver;
 
+import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
@@ -64,7 +65,7 @@ final class QualityTreasureRoller {
         double bonus = context.bait() == null ? 0 : context.bait().getTreasureQualityBonus();
         var blessing = context.rod().getAttributeHandler().getEnchantment(EnchantmentType.BLESSING);
         if (blessing != null) bonus += blessing.level() * 2D;
-        return bonus;
+        return bonus + PetAbilities.value(context.player(), ItemType.HERMIT_CRAB_PET, "Seafloor Scalper", 0);
     }
 
     static TreasureQuality pickQuality(UUID uuid, List<TreasureQuality> qualities, double bonusPercent) {

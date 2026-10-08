@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.fishing.festival;
 
+import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
+import net.swofty.commons.skyblock.item.ItemType;
 import lombok.Getter;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.Carnivals;
@@ -22,9 +24,8 @@ public enum SharkChanceSource {
     SHARK_SCALE_ARMOR("Shark Scale Armor (Festival Fisher)", 20,
             "Shark Scale Armor and the Sponge Armor it is crafted from aren't in this server yet.",
             context -> 0),
-    MEGALODON_PET("Megalodon Pet (Feeding Frenzy)", 20,
-            "The Megalodon Pet isn't in this server yet.",
-            context -> 0),
+    MEGALODON_PET("Megalodon Pet (Feeding Frenzy)", 20, null,
+            context -> PetAbilities.value(context.player(), ItemType.MEGALODON_PET, "Feeding Frenzy", 0)),
     ;
 
     private final String displayName;
