@@ -68,6 +68,17 @@ public enum EnchantmentType {
     VICIOUS(EnchantmentVicious.class),
     PROSPERITY(EnchantmentProsperity.class),
     REFRIGERATE(EnchantmentRefrigerate.class),
+    MAGMARIZER(EnchantmentPyroclasm.class),
+    CAYENNE(EnchantmentCayenne.class),
+    HABANERO_TACTICS(EnchantmentHabaneroTactics.class),
+    STRONG_MANA(EnchantmentStrongVitality.class),
+    HARDENED_MANA(EnchantmentHardenedVitality.class),
+    FEROCIOUS_MANA(EnchantmentVivaciousVitality.class),
+    MANA_VAMPIRE(EnchantmentVampiricVitality.class),
+    INFERNO(EnchantmentInferno.class),
+    FATAL_TEMPO(EnchantmentFatalTempo.class),
+    FLAME(EnchantmentFlame.class),
+    FIRE_PROTECTION(EnchantmentFireProtection.class),
     ;
 
     private final Class<? extends Ench> clazz;
@@ -101,6 +112,13 @@ public enum EnchantmentType {
     }
 
     public String getName() {
-        return StringUtility.toNormalCase(this.name());
+        return switch (this) {
+            case MAGMARIZER -> "Pyroclasm";
+            case STRONG_MANA -> "Strong Vitality";
+            case HARDENED_MANA -> "Hardened Vitality";
+            case FEROCIOUS_MANA -> "Vivacious Vitality";
+            case MANA_VAMPIRE -> "Vampiric Vitality";
+            default -> StringUtility.toNormalCase(this.name());
+        };
     }
 }
