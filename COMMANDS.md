@@ -162,7 +162,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/giveskyblockxp <cause> [player]` | `/awardskyblockxp` | Gives yourself skyblock xp. | STAFF | No | `type.skyblockgeneric` |
 | `/item <item> [amount] [player]` | `/i`, `/sbitem` | Gives an item to the player. Also accepts /item <item> <player> with the default amount. Target is an online player selector. | STAFF | No | `type.skyblockgeneric` |
 | `/max coa` | — | Fills the Crown of Avarice in your hand (or on your head) to its 1,000,000,000 Coins consumed cap, granting the full Overindulgence bonus. | STAFF | No | `type.skyblockgeneric` |
-| `/maxprofile [player]` | — | Fully maxes out a profile, identical to THE MAX STICK. | STAFF | No | `type.skyblockgeneric` |
+| `/maxprofile [player]` | — | Fully maxes out a profile, identical to THE MAX STICK. Also stores a non-soulbound copy of every donatable Museum item (Special cap bypassed); the copies can be retrieved and traded. | STAFF | No | `type.skyblockgeneric` |
 | `/mithrilinfuse` | — | Mithril Infuses the minion in the players hand. | STAFF | No | `type.skyblockgeneric` |
 | `/recomb` | — | Recombobulates the item in the players hand.  Help uses /recombobulate, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
 | `/reforge` | `/reforgeitem` | Reforges the item in the players hand. | STAFF | No | `type.skyblockgeneric` |
