@@ -648,7 +648,7 @@ items:
               type: CHALLENGER_BOOTS
               amount: 1
   - id: CHALLENGER_NECKLACE
-    material: paper
+    material: gold_nugget
     name: "Challenger's Necklace"
     rarity: EPIC
     default_statistics:
@@ -656,8 +656,6 @@ items:
       defense: 10.0
       strength: 5.0
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/mythological/equipment/challenger_necklace
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
       - id: LORE_UPDATE
@@ -685,7 +683,7 @@ items:
               type: CHALLENGER_NECKLACE
               amount: 1
   - id: CHALLENGER_CLOAK
-    material: paper
+    material: leather
     name: "Challenger's Cloak"
     rarity: EPIC
     default_statistics:
@@ -693,8 +691,6 @@ items:
       defense: 10.0
       strength: 5.0
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/mythological/equipment/challenger_cloak
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
       - id: LORE_UPDATE
@@ -722,7 +718,7 @@ items:
               type: CHALLENGER_CLOAK
               amount: 1
   - id: CHALLENGER_BELT
-    material: paper
+    material: lead
     name: "Challenger's Belt"
     rarity: EPIC
     default_statistics:
@@ -730,8 +726,6 @@ items:
       defense: 10.0
       strength: 5.0
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/mythological/equipment/challenger_belt
       - id: STANDARD_ITEM
         standard_item_type: BELT
       - id: LORE_UPDATE
@@ -758,7 +752,7 @@ items:
               type: CHALLENGER_BELT
               amount: 1
   - id: CHALLENGER_BRACELET
-    material: paper
+    material: iron_chain
     name: "Challenger's Bracelet"
     rarity: EPIC
     default_statistics:
@@ -766,8 +760,6 @@ items:
       defense: 10.0
       strength: 5.0
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/mythological/equipment/challenger_bracelet
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
       - id: LORE_UPDATE
@@ -973,7 +965,7 @@ items:
               type: MYTHOS_BOOTS
               amount: 1
   - id: MYTHOS_NECKLACE
-    material: paper
+    material: gold_nugget
     name: "Mythos Necklace"
     rarity: LEGENDARY
     default_statistics:
@@ -981,8 +973,6 @@ items:
       defense: 15.0
       strength: 15.0
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/mythological/equipment/mythos_necklace
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
       - id: LORE_UPDATE
@@ -1017,7 +1007,7 @@ items:
               type: MYTHOS_NECKLACE
               amount: 1
   - id: MYTHOS_CLOAK
-    material: paper
+    material: leather
     name: "Mythos Cloak"
     rarity: LEGENDARY
     default_statistics:
@@ -1025,8 +1015,6 @@ items:
       defense: 15.0
       strength: 15.0
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/mythological/equipment/mythos_cloak
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
       - id: LORE_UPDATE
@@ -1061,7 +1049,7 @@ items:
               type: MYTHOS_CLOAK
               amount: 1
   - id: MYTHOS_BELT
-    material: paper
+    material: lead
     name: "Mythos Belt"
     rarity: LEGENDARY
     default_statistics:
@@ -1069,8 +1057,6 @@ items:
       defense: 15.0
       strength: 15.0
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/mythological/equipment/mythos_belt
       - id: STANDARD_ITEM
         standard_item_type: BELT
       - id: LORE_UPDATE
@@ -1105,7 +1091,7 @@ items:
               type: MYTHOS_BELT
               amount: 1
   - id: MYTHOS_BRACELET
-    material: paper
+    material: iron_chain
     name: "Mythos Bracelet"
     rarity: LEGENDARY
     default_statistics:
@@ -1113,8 +1099,6 @@ items:
       defense: 15.0
       strength: 15.0
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/mythological/equipment/mythos_bracelet
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
       - id: LORE_UPDATE
