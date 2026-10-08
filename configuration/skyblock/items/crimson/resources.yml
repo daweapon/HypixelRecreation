@@ -1,0 +1,408 @@
+items:
+  - id: RED_THORNLEAF
+    material: dead_bush
+    name: "Red Thornleaf"
+    rarity: UNCOMMON
+    lore:
+      - "§8Machine Fuel"
+      - ""
+      - "§7Adds §2+200 Fuel §7to a refuelable"
+      - "§7machine."
+      - ""
+      - "§8§oA leaf that grows on the ground."
+      - "§8§oReally pushing the envelope."
+  - id: MUSHROOM_SPORE
+    material: brown_mushroom
+    name: "Mushroom Spore"
+    rarity: COMMON
+    lore:
+      - "§7The life cycle of a mushroom starts"
+      - "§7with the spore, which germs and"
+      - "§7becomes Mycelium, which develops"
+      - "§7fruit bodies into a mature mushroom,"
+      - "§7and that mushroom will release"
+      - "§7spores."
+  - id: CORRUPTED_NETHER_STAR
+    material: nether_star
+    name: "Nether Star"
+    rarity: LEGENDARY
+    lore:
+      - "§eRight-click to view recipes!"
+  - id: DYE_CYCLAMEN
+    material: player_head
+    name: "Cyclamen Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §c#F56FA1§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: e679f93531ffb3d6023207763f2d7389d10de3d1c21dd76b0c12b4fec656e255
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_BONE
+    material: player_head
+    name: "Bone Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §f#E3DAC9§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: c71e9683e80383541ef9feff39c8f814a42684149502424c0a9341d726f40d8a
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: MAGMA_URCHIN
+    material: paper
+    name: "Magma Urchin"
+    rarity: EPIC
+    lore:
+      - "§7Combine §ax9 §7of this item at the"
+      - "§6Thaumaturgist §7in the §bHub §7to unlock the"
+      - "§aHurtful §7power."
+      - ""
+      - "§7At §6250 Accessory Power§7:"
+      - "§c+46.28❁ Strength"
+      - "§9+185.13☠ Crit Damage"
+      - ""
+      - "§7Unique Power Bonus:"
+      - "§e+15⚔ Attack Speed"
+    components:
+      - id: POWER_STONE
+  - id: MOLTEN_CUBE
+    material: paper
+    name: "Molten Cube"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Cubic §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§8§oThe center of Magma Cubes is the"
+      - "§8§ohottest part...also the hardest. Giant"
+      - "§8§oones can even create stones like"
+      - "§8§othis one."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c❤ Health"
+      - " §c❁ Strength"
+      - ""
+      - "§9Cubic Bonus"
+      - "§7Take §c-2% ❁ Damage §7from §4♨ Infernal"
+      - "§7mobs."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    components:
+      - id: REFORGE_STONE
+        reforge: cubic
+        required_skill: MINING
+        required_level: 20
+        common_cost: 4000
+        uncommon_cost: 7500
+        rare_cost: 15000
+        epic_cost: 40000
+        legendary_cost: 75000
+        mythic_cost: 150000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: BLAZE_WAX
+    material: paper
+    name: "Blaze Wax"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Waxed §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§8§oUsed by some Master Blacksmiths to"
+      - "§8§oinfuse equipments with an immense"
+      - "§8§opower. It's also a great replacement"
+      - "§8§ofor butter."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c❤ Health"
+      - " §9☣ Crit Chance"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    components:
+      - id: REFORGE_STONE
+        reforge: waxed
+        required_skill: MINING
+        required_level: 24
+        common_cost: 7500
+        uncommon_cost: 15000
+        rare_cost: 30000
+        epic_cost: 75000
+        legendary_cost: 150000
+        mythic_cost: 300000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_BLAZE_POWDER
+                amount: 10
+              B:
+                type: BEZOS
+                amount: 10
+            result:
+              type: BLAZE_WAX
+              amount: 1
+  - id: SEARING_STONE
+    material: paper
+    name: "Searing Stone"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Strengthened §7reforge"
+      - "§7when combined with §9Equipment§7."
+      - ""
+      - "§8§oLegends say this stone will never"
+      - "§8§ocease glowing."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §a❈ Defense"
+      - " §c❁ Strength"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    components:
+      - id: REFORGE_STONE
+        reforge: strengthened
+        required_skill: MINING
+        required_level: 24
+        common_cost: 7500
+        uncommon_cost: 15000
+        rare_cost: 30000
+        epic_cost: 75000
+        legendary_cost: 150000
+        mythic_cost: 300000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "CCC"
+            ingredients:
+              A:
+                type: ENCHANTED_MAGMA_CREAM
+                amount: 10
+              B:
+                type: MAGMA_CHUNK
+                amount: 50
+              C:
+                type: ENCHANTED_NETHERRACK
+                amount: 10
+            result:
+              type: SEARING_STONE
+              amount: 1
+  - id: SHINY_PRISM
+    material: paper
+    name: "Shiny Prism"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Glistening §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§8§oNo matter the angle you look at it,"
+      - "§8§oyou still won't find love."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §f❂ True Defense"
+      - " §b✎ Intelligence"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    components:
+      - id: REFORGE_STONE
+        reforge: glistening
+        required_skill: MINING
+        required_level: 24
+        common_cost: 7500
+        uncommon_cost: 15000
+        rare_cost: 30000
+        epic_cost: 75000
+        legendary_cost: 150000
+        mythic_cost: 300000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_GLOWSTONE_DUST
+                amount: 10
+              B:
+                type: GAZING_PEARL
+                amount: 10
+            result:
+              type: SHINY_PRISM
+              amount: 1
+  - id: METEOR_SHARD
+    material: paper
+    name: "Meteor Chunk"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Fortified §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§8§oA very strange find once found"
+      - "§8§oinside the carcass of a Ghast. It"
+      - "§8§oseems like they enjoy a snack that"
+      - "§8§ois out of this world from time to time."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §a❈ Defense"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    components:
+      - id: REFORGE_STONE
+        reforge: fortified
+        required_skill: MINING
+        required_level: 24
+        common_cost: 7500
+        uncommon_cost: 15000
+        rare_cost: 30000
+        epic_cost: 75000
+        legendary_cost: 150000
+        mythic_cost: 300000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: SILVER_FANG
+                amount: 10
+              B:
+                type: STARFALL
+                amount: 5
+              C:
+                type: TENTACLE_MEAT
+                amount: 10
+            result:
+              type: METEOR_SHARD
+              amount: 1
+  - id: ENTROPY_SUPPRESSOR
+    material: paper
+    name: "Entropy Suppressor"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Coldfused §7reforge when"
+      - "§7combined with a §cMelee Weapon§7."
+      - ""
+      - "§8§oCan be used with Blaze Slayer"
+      - "§8§odaggers."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c❁ Strength"
+      - " §9☠ Crit Damage"
+      - " §b✯ Magic Find"
+      - ""
+      - "§9Coldfused Bonus"
+      - "§8While a Wisp Pet is active:"
+      - "§c+75❁ Strength"
+      - "§9+55☠ Crit Damage"
+      - ""
+      - "§7Deal §c+1❁ Damage §7to Fire Pillars. Breaking one"
+      - "§7grants §f+30❂ True Defense §7and §c+15% ❁"
+      - "§cDamage §7for §a60s§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    components:
+      - id: REFORGE_STONE
+        reforge: coldfused
+        required_skill: MINING
+        required_level: 20
+        common_cost: 60000
+        uncommon_cost: 125000
+        rare_cost: 250000
+        epic_cost: 500000
+        legendary_cost: 1000000
+        mythic_cost: 2000000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: GOLDEN_BALL
+    material: paper
+    name: "Golden Ball"
+    rarity: LEGENDARY
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Bountiful §7reforge when"
+      - "§7combined with a §aFarming Tool§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6☘ Farming Fortune"
+      - " §f✦ Speed"
+      - ""
+      - "§9Bountiful Bonus"
+      - "§7Earn §6+0.2 Coins §7every time you"
+      - "§7harvest a §aCrop§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    components:
+      - id: REFORGE_STONE
+        reforge: bountiful
+        required_skill: MINING
+        required_level: 30
+        common_cost: 20000
+        uncommon_cost: 40000
+        rare_cost: 80000
+        epic_cost: 150000
+        legendary_cost: 300000
+        mythic_cost: 600000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE

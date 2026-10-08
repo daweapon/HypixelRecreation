@@ -1,0 +1,22 @@
+name: "Bountiful"
+prefix: "Bountiful"
+stoneOnly: true
+applicableTypes:
+  - "HOES"
+
+statistics:
+  SPEED:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 5
+    legendary: 8
+    mythic: 13
+
+  FARMING_FORTUNE:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 5
+    legendary: 7
+    mythic: 10

@@ -1,0 +1,14 @@
+name: "Fortified"
+prefix: "Fortified"
+stoneOnly: true
+applicableTypes:
+  - "EQUIPMENT"
+
+statistics:
+  DEFENSE:
+    common: 12
+    uncommon: 14
+    rare: 17
+    epic: 20
+    legendary: 25
+    mythic: 30

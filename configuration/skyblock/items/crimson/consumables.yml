@@ -1,0 +1,285 @@
+items:
+  - id: MATRIARCH_PARFUM
+    material: rabbit_stew
+    name: "Matriarch's Perfume"
+    rarity: SPECIAL
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to apply a pungent smell"
+      - "§7upon yourself, confusing §6§lThe"
+      - "§6§lMatriarch §7in the §cCrimson Isle §7into"
+      - "§7releasing new pearls."
+      - ""
+      - "§8Can be used up to 4 times a day!"
+      - ""
+      - "§eRight-click to consume!"
+  - id: HOT_CHOCOLATE
+    material: player_head
+    name: "Hot Chocolate"
+    rarity: UNCOMMON
+    lore:
+      - "§7Its warm §echocolatey §7goodness"
+      - "§7imbues you with the ability to"
+      - "§7overcome the heat death of the"
+      - "§6Blazing Volcano§7."
+    components:
+      - id: SKULL_HEAD
+        texture: f1fd408718407a48260822066bd199912d190baa5904f2a188a30472ef97475b
+  - id: RED_THORNLEAF_TEA
+    material: player_head
+    name: "Red Thornleaf Tea"
+    rarity: RARE
+    lore:
+      - "§8Basic Brew"
+      - ""
+      - "§7Use this item in place of an"
+      - "§7Awkward Potion for certain"
+      - "§7potions."
+      - ""
+      - "§7Added to Resistance potions."
+      - ""
+      - "§7Upon being hit, reflect §a5% §7of the"
+      - "§7damage back to the attacker."
+    components:
+      - id: SKULL_HEAD
+        texture: 819e473f58ffe55841dfbdaff4832be2ea3bfe0f9f76d3cb1527d0391dd96854
+  - id: SCORNCLAW_BREW
+    material: player_head
+    name: "Scornclaw Brew"
+    rarity: COMMON
+    lore:
+      - "§7The perfect balance between"
+      - "§7sweetness and bitterness, with a"
+      - "§7strange bite to it."
+      - ""
+      - "§eRight-click to consume"
+    components:
+      - id: SKULL_HEAD
+        texture: cc6b4a7bd82441619bbc11d9b8e0e64ae8b95f2e40b3921355fcc5434326017
+  - id: MARSH_SPORE_SOUP
+    material: mushroom_stew
+    name: "Marsh Spore Soup"
+    rarity: RARE
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7A bubbling soup filled with poisonous"
+      - "§7mushrooms."
+      - ""
+      - "§eRight-click to consume!"
+  - id: SCARLETON_PREMIUM
+    material: player_head
+    name: "Scarleton Premium"
+    rarity: RARE
+    lore:
+      - "§8Basic Brew"
+      - ""
+      - "§7Use this item in place of an"
+      - "§7Awkward Potion for certain"
+      - "§7potions."
+      - ""
+      - "§7Increases the effect of §4Wounded"
+      - "§4Potions §7by §a10%§7."
+    components:
+      - id: SKULL_HEAD
+        texture: ac1b17cc6c9c760d78619253ba4f6ccff41524aec105b1d2641a74f356967831
+  - id: SUSPICIOUS_STEW
+    material: player_head
+    name: "Suspicious Stew"
+    rarity: RARE
+    lore:
+      - "§7Comes with a Health Disclaimer:"
+      - "§7\"Expired in the year 87. Do not"
+      - "§7consume.\" §0ඞ"
+    components:
+      - id: SKULL_HEAD
+        texture: aa6c19c45a4026d33518c52fef77b4985b8a2e3637c74543b2af6910081345e4
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - " A "
+              - "BCD"
+              - " E "
+            ingredients:
+              A:
+                type: BROWN_MUSHROOM
+                amount: 1
+              B:
+                type: BURNING_EYE
+                amount: 1
+              C:
+                type: MYCELIUM
+                amount: 1
+              D:
+                type: SPECTRE_DUST
+                amount: 1
+              E:
+                type: BOWL
+                amount: 1
+            result:
+              type: SUSPICIOUS_STEW
+              amount: 1
+  - id: CHYME
+    material: player_head
+    name: "Chyme"
+    rarity: RARE
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Feeding this to your pets gives them"
+      - "§7a boost of §a90,000 Exp§7!"
+      - ""
+      - "§eRight-click on your summoned pet to"
+      - "§efeed it!"
+    components:
+      - id: SKULL_HEAD
+        texture: 43f12a13f9fdb96c258d18f66f7a9b3d1195591fb2c5b31ad6205e8cd46aada9
+  - id: DEAN_LETTER_OF_RECOMMENDATION
+    material: paper
+    name: "Letter of Recommendation"
+    rarity: RARE
+    lore:
+      - "§7A letter of recommendation from"
+      - "§7Dean advocating for §bEisengolem"
+      - "§b§7to join the §5Mage §7faction!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+  - id: REHEATED_GUMMY_POLAR_BEAR
+    material: player_head
+    name: "Re-heated Gummy Polar Bear"
+    rarity: UNCOMMON
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Grants the §aSmoldering Polarization"
+      - "§7effect. §8Consuming multiple stacks the"
+      - "§8duration."
+      - ""
+      - "§aSmoldering Polarization I §f(1:00:00)"
+      - "§7Grants §3+10☯ Combat Wisdom §7against"
+      - "§7Blazes and pacifies nearby Blazes"
+      - "§7while fighting §4Inferno Demonlord§7."
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    components:
+      - id: SKULL_HEAD
+        texture: 4306587ec38c2446d389a581e0691556fa58fce0a02d0846d23fd68e3656a249
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: CHILI_PEPPER
+                amount: 1
+              B:
+                type: ENCHANTED_SLIME_BALL
+                amount: 1
+              C:
+                type: ENCHANTED_SNOW_BLOCK
+                amount: 4
+            result:
+              type: REHEATED_GUMMY_POLAR_BEAR
+              amount: 1
+  - id: CAPSAICIN_EYEDROPS_NO_CHARGES
+    material: player_head
+    name: "Capsaicin Eyedrops"
+    rarity: RARE
+    lore:
+      - "§7Right-click on an Inferno minion with"
+      - "§7this item to boost its chances of"
+      - "§7creating §cunique §7drops from"
+      - "§6Hypergolic §7fuel by §a30% §7for §a24 hours§7."
+    components:
+      - id: SKULL_HEAD
+        texture: c5928c2785027e7bc49fb96ff4801a673d2a59ef30b561f9f2452146b45de899
+  - id: JALAPENO_BOOK
+    material: knowledge_book
+    name: "Jalapeno Book"
+    rarity: EPIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Combine this Book in an Anvil with a"
+      - "§7deployable to gain a small but"
+      - "§7permanent stat boost!"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AA"
+              - "AB"
+            ingredients:
+              A:
+                type: ENCHANTED_PAPER
+                amount: 1
+              B:
+                type: STUFFED_CHILI_PEPPER
+                amount: 1
+            result:
+              type: JALAPENO_BOOK
+              amount: 1
+  - id: GRAND_EXP_BOTTLE
+    material: experience_bottle
+    name: "Grand Experience Bottle"
+    rarity: UNCOMMON
+    lore:
+      - "§7Smash it open to receive experience!"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_LAPIS_LAZULI
+                amount: 1
+              B:
+                type: GLASS_BOTTLE
+                amount: 1
+            result:
+              type: GRAND_EXP_BOTTLE
+              amount: 1
+  - id: TITANIC_EXP_BOTTLE
+    material: experience_bottle
+    name: "Titanic Experience Bottle"
+    rarity: RARE
+    lore:
+      - "§7Smash it open to receive experience!"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_LAPIS_LAZULI_BLOCK
+                amount: 1
+              B:
+                type: GLASS_BOTTLE
+                amount: 1
+            result:
+              type: TITANIC_EXP_BOTTLE
+              amount: 1

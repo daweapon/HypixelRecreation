@@ -1,0 +1,647 @@
+items:
+  - id: TOTEM_OF_CORRUPTION
+    material: white_banner
+    name: "Totem of Corruption"
+    rarity: UNCOMMON
+    lore:
+      - "§8Fishing Deployable"
+      - ""
+      - "§aDeployable Buff: Corrupted"
+      - "§a• §3Sea Creatures §7you fish up will be"
+      - "§5Corrupted§7."
+      - "§8Corrupted Sea Creatures may drop"
+      - "§8an exclusive Trophy Fish."
+      - ""
+      - "§8Only one deployable can be active at"
+      - "§8a time."
+    components:
+      - id: EXTRA_RARITY
+        display: DEPLOYABLE
+      - id: ABILITY
+        abilities:
+          - DEPLOY_TOTEM_OF_CORRUPTION
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - " A "
+              - " A "
+              - "BCB"
+            ingredients:
+              A:
+                type: ENCHANTED_SULPHUR
+                amount: 10
+              B:
+                type: MAGMA_CHUNK
+                amount: 30
+              C:
+                type: CORRUPTED_FRAGMENT
+                amount: 20
+            result:
+              type: TOTEM_OF_CORRUPTION
+              amount: 1
+  - id: CORRUPT_SOIL
+    material: player_head
+    name: "Corrupt Soil"
+    rarity: EPIC
+    lore:
+      - "§8Minion Upgrade"
+      - ""
+      - "§7This item can be used as a minion"
+      - "§7upgrade. Place it in any mob"
+      - "§7spawning minion and it will turn"
+      - "§7nearby mobs into their §5corrupted"
+      - "§7forms."
+    components:
+      - id: SKULL_HEAD
+        texture: cf4624ebf7d419a11e43ed0c2038d32cd09ad1d7a6c6e20f6339cbcfe386fd1c
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_MYCELIUM
+                amount: 20
+              B:
+                type: CORRUPTED_FRAGMENT
+                amount: 20
+            result:
+              type: CORRUPT_SOIL
+              amount: 1
+  - id: MYCELIUM_DUST
+    material: pink_dye
+    name: "Mycelium Dust"
+    rarity: RARE
+    lore:
+      - "§7Instantly grows crops and saplings"
+      - "§7in a 3x3 square."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - " A "
+              - "BCB"
+              - " A "
+            ingredients:
+              A:
+                type: SPECTRE_DUST
+                amount: 1
+              B:
+                type: BLAZE_ASHES
+                amount: 1
+              C:
+                type: ENCHANTED_MYCELIUM
+                amount: 1
+            result:
+              type: MYCELIUM_DUST
+              amount: 32
+  - id: SULPHURIC_COAL
+    material: player_head
+    name: "Sulphuric Coal"
+    rarity: RARE
+    components:
+      - id: SKULL_HEAD
+        texture: b33afd57ea16bc66eeb456a8a7c1234678d595a96046cad336c4fdc81f0dfdf5
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " A "
+              - "ABA"
+              - " A "
+            ingredients:
+              A:
+                type: ENCHANTED_COAL
+                amount: 4
+              B:
+                type: ENCHANTED_SULPHUR
+                amount: 1
+            result:
+              type: SULPHURIC_COAL
+              amount: 4
+  - id: MAGICAL_LAVA_BUCKET
+    material: lava_bucket
+    name: "Magical Lava Bucket"
+    rarity: UNCOMMON
+    lore:
+      - "§7This Magical Lava Bucket holds a tiny"
+      - "§7volcano. Easy infinite lava!"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "ABA"
+              - " A "
+            ingredients:
+              A:
+                type: IRON_INGOT
+                amount: 1
+              B:
+                type: ENCHANTED_NETHERRACK
+                amount: 1
+            result:
+              type: MAGICAL_LAVA_BUCKET
+              amount: 1
+  - id: NETHER_WART_ISLAND
+    material: player_head
+    name: "Nether Wart Island"
+    rarity: COMMON
+    lore:
+      - "§7Place this in your private world to"
+      - "§7spawn a Nether Wart island!"
+    components:
+      - id: SKULL_HEAD
+        texture: 9f86dcbb5f54caaf147f1c02014fe0853b6ebb5941f6d3f18f1657bc487eb2b0
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "BBB"
+              - "BBB"
+            ingredients:
+              A:
+                type: NETHER_WART
+                amount: 5
+              B:
+                type: SOUL_SAND
+                amount: 5
+            result:
+              type: NETHER_WART_ISLAND
+              amount: 1
+  - id: SMALL_NETHER_SACK
+    material: player_head
+    name: "Small Nether Sack"
+    rarity: UNCOMMON
+    lore:
+      - "§7Holds items commonly found on the"
+      - "§cCrimson Isle§7! Items you pickup go"
+      - "§7directly into your sacks."
+      - ""
+      - "§7Capacity: §e2,240 of each item"
+      - "§8Multiple sacks sum their capacity!"
+      - ""
+      - "§eRight Click to open!"
+    components:
+      - id: SKULL_HEAD
+        texture: 305a7e73171b1632c16d879f4e4983261c5f6b64f44272f73b3a349f68b3a296
+      - id: SACK
+        valid_items:
+          - BEZOS
+          - BLAZE_ASHES
+          - BLAZE_ROD
+          - BURNING_EYE
+          - COMPACT_OOZE
+          - CORRUPTED_FRAGMENT
+          - DIGESTED_MUSHROOMS
+          - ENCHANTED_CHARCOAL
+          - FLAMES
+          - GAZING_PEARL
+          - GHAST_TEAR
+          - GLOWSTONE_DUST
+          - HALLOWED_SKULL
+          - HEAVY_PEARL
+          - KADA_LEAD
+          - KUUDRA_TEETH
+          - LEATHER_CLOTH
+          - LUMINO_FIBER
+          - MAGMA_CHUNK
+          - MAGMA_CREAM
+          - MAGMAG
+          - MATCH_STICKS
+          - MILLENIA_OLD_BLAZE_ASHES
+          - MUTATED_BLAZE_ASHES
+          - MYCELIUM
+          - QUARTZ
+          - CORRUPTED_NETHER_STAR
+          - NETHER_WART
+          - NETHERRACK
+          - RED_SAND
+          - REKINDLED_EMBER_FRAGMENT
+          - SPECTRE_DUST
+          - SPELL_POWDER
+          - SULPHUR
+          - SULPHURIC_COAL
+          - TENTACLE_MEAT
+          - WITHER_SOUL
+          - X
+          - Y
+          - Z
+        max_capacity: 2240
+      - id: EXTRA_RARITY
+        display: SACK
+  - id: MEDIUM_NETHER_SACK
+    material: player_head
+    name: "Medium Nether Sack"
+    rarity: RARE
+    lore:
+      - "§7Holds items commonly found on the"
+      - "§cCrimson Isle§7! Items you pickup go"
+      - "§7directly into your sacks."
+      - ""
+      - "§7Capacity: §e6,720 of each item"
+      - "§8Multiple sacks sum their capacity!"
+      - ""
+      - "§eRight Click to open!"
+    components:
+      - id: SKULL_HEAD
+        texture: 3032b678928b9d60ec81e4c0b0809d2c9d08a3d5c0c19dfbba4f47392073b06
+      - id: SACK
+        valid_items:
+          - BEZOS
+          - BLAZE_ASHES
+          - BLAZE_ROD
+          - BURNING_EYE
+          - COMPACT_OOZE
+          - CORRUPTED_FRAGMENT
+          - DIGESTED_MUSHROOMS
+          - ENCHANTED_CHARCOAL
+          - FLAMES
+          - GAZING_PEARL
+          - GHAST_TEAR
+          - GLOWSTONE_DUST
+          - HALLOWED_SKULL
+          - HEAVY_PEARL
+          - KADA_LEAD
+          - KUUDRA_TEETH
+          - LEATHER_CLOTH
+          - LUMINO_FIBER
+          - MAGMA_CHUNK
+          - MAGMA_CREAM
+          - MAGMAG
+          - MATCH_STICKS
+          - MILLENIA_OLD_BLAZE_ASHES
+          - MUTATED_BLAZE_ASHES
+          - MYCELIUM
+          - QUARTZ
+          - CORRUPTED_NETHER_STAR
+          - NETHER_WART
+          - NETHERRACK
+          - RED_SAND
+          - REKINDLED_EMBER_FRAGMENT
+          - SPECTRE_DUST
+          - SPELL_POWDER
+          - SULPHUR
+          - SULPHURIC_COAL
+          - TENTACLE_MEAT
+          - WITHER_SOUL
+          - X
+          - Y
+          - Z
+        max_capacity: 6720
+      - id: EXTRA_RARITY
+        display: SACK
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_SULPHUR
+                amount: 16
+              B:
+                type: KADA_LEAD
+                amount: 40
+              C:
+                type: SMALL_NETHER_SACK
+                amount: 1
+            result:
+              type: MEDIUM_NETHER_SACK
+              amount: 1
+  - id: LARGE_NETHER_SACK
+    material: player_head
+    name: "Large Nether Sack"
+    rarity: EPIC
+    lore:
+      - "§7Holds items commonly found on the"
+      - "§cCrimson Isle§7! Items you pickup go"
+      - "§7directly into your sacks."
+      - ""
+      - "§7Capacity: §e20,160 of each item"
+      - "§8Multiple sacks sum their capacity!"
+      - ""
+      - "§eRight Click to open!"
+    components:
+      - id: SKULL_HEAD
+        texture: e345875e921a145f92038858aeecc3c2f083441ebc5c8265d31a281d268e365b
+      - id: SACK
+        valid_items:
+          - BEZOS
+          - BLAZE_ASHES
+          - BLAZE_ROD
+          - BURNING_EYE
+          - COMPACT_OOZE
+          - CORRUPTED_FRAGMENT
+          - DIGESTED_MUSHROOMS
+          - ENCHANTED_CHARCOAL
+          - FLAMES
+          - GAZING_PEARL
+          - GHAST_TEAR
+          - GLOWSTONE_DUST
+          - HALLOWED_SKULL
+          - HEAVY_PEARL
+          - KADA_LEAD
+          - KUUDRA_TEETH
+          - LEATHER_CLOTH
+          - LUMINO_FIBER
+          - MAGMA_CHUNK
+          - MAGMA_CREAM
+          - MAGMAG
+          - MATCH_STICKS
+          - MILLENIA_OLD_BLAZE_ASHES
+          - MUTATED_BLAZE_ASHES
+          - MYCELIUM
+          - QUARTZ
+          - CORRUPTED_NETHER_STAR
+          - NETHER_WART
+          - NETHERRACK
+          - RED_SAND
+          - REKINDLED_EMBER_FRAGMENT
+          - SPECTRE_DUST
+          - SPELL_POWDER
+          - SULPHUR
+          - SULPHURIC_COAL
+          - TENTACLE_MEAT
+          - WITHER_SOUL
+          - X
+          - Y
+          - Z
+        max_capacity: 20160
+      - id: EXTRA_RARITY
+        display: SACK
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_SULPHUR_CUBE
+                amount: 1
+              B:
+                type: KADA_LEAD
+                amount: 60
+              C:
+                type: MEDIUM_NETHER_SACK
+                amount: 1
+            result:
+              type: LARGE_NETHER_SACK
+              amount: 1
+  - id: MESA_BIOME_STICK
+    material: stick
+    name: "Mesa Biome Stick"
+    rarity: COMMON
+    lore:
+      - "§7Allows you to change the biome at"
+      - "§7the §atargeted block §7on your private"
+      - "§7island to §bMesa§7."
+      - ""
+      - "§7Right-click to use or Left-click to"
+      - "§7change the radius it effects."
+      - ""
+      - "§7Selected Radius: §b3"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "  A"
+              - " B "
+              - "B  "
+            ingredients:
+              A:
+                type: ENCHANTED_RED_SAND
+                amount: 1
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: MESA_BIOME_STICK
+              amount: 1
+  - id: MUSHROOM_BIOME_STICK
+    material: stick
+    name: "Mushroom Biome Stick"
+    rarity: COMMON
+    lore:
+      - "§7Allows you to change the biome at"
+      - "§7the §atargeted block §7on your private"
+      - "§7island to §bMushroom Island§7."
+      - ""
+      - "§7Right-click to use or Left-click to"
+      - "§7change the radius it effects."
+      - ""
+      - "§7Selected Radius: §b3"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "  A"
+              - " B "
+              - "B  "
+            ingredients:
+              A:
+                type: ENCHANTED_MYCELIUM
+                amount: 1
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: MUSHROOM_BIOME_STICK
+              amount: 1
+  - id: NETHER_BIOME_STICK
+    material: stick
+    name: "Nether Biome Stick"
+    rarity: COMMON
+    lore:
+      - "§7Allows you to change the biome at"
+      - "§7the §atargeted block §7on your private"
+      - "§7island to §bNether§7."
+      - ""
+      - "§7Right-click to use or Left-click to"
+      - "§7change the radius it effects."
+      - ""
+      - "§7Selected Radius: §b3"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "  A"
+              - " B "
+              - "B  "
+            ingredients:
+              A:
+                type: MAGMA_CREAM
+                amount: 64
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: NETHER_BIOME_STICK
+              amount: 1
+  - id: DANGER_2_PORTAL
+    material: player_head
+    name: "Portal to the Crimson Isle"
+    rarity: COMMON
+    lore:
+      - "§7Placing this item on your private"
+      - "§7island will create a portal to the"
+      - "§cCrimson Isle§7 for you to use"
+      - "§7whenever you want!"
+      - ""
+      - "§8The portal will spawn facing you on"
+      - "§8the block you click on."
+    components:
+      - id: SKULL_HEAD
+        texture: 64457b2d7acf522d1912f0d6c6139440ba9d333a6bf61a2e9440e7fb3788939e
+      - id: EXTRA_RARITY
+        display: PORTAL
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "BCB"
+              - "BBB"
+            ingredients:
+              A:
+                type: GLOWSTONE
+                amount: 16
+              B:
+                type: NETHERRACK
+                amount: 16
+              C:
+                type: ENDER_PEARL
+                amount: 16
+            result:
+              type: DANGER_2_PORTAL
+              amount: 1
+  - id: DANGER_2_TRAVEL_SCROLL
+    material: map
+    name: "Travel Scroll to the Crimson Isle"
+    rarity: RARE
+    lore:
+      - "§7Consume this item to add its"
+      - "§7destination to your Fast Travel"
+      - "§7options."
+      - ""
+      - "§7Island: §aCrimson Isle"
+      - "§7Teleport: §eSpawn"
+    components:
+      - id: EXTRA_RARITY
+        display: TRAVEL SCROLL
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_GLOWSTONE_DUST
+                amount: 16
+              B:
+                type: ENCHANTED_ENDER_PEARL
+                amount: 16
+            result:
+              type: DANGER_2_TRAVEL_SCROLL
+              amount: 1
+  - id: NIGHT_SAVER
+    material: daylight_detector
+    name: "Night Saver"
+    rarity: UNCOMMON
+    lore:
+      - "§7Control the time on your private"
+      - "§7island when paired with a §aDay Saver§7."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "BBB"
+              - "CCC"
+            ingredients:
+              A:
+                type: GLASS
+                amount: 1
+              B:
+                type: QUARTZ
+                amount: 5
+              C:
+                type: BROWN_MUSHROOM
+                amount: 1
+            result:
+              type: NIGHT_SAVER
+              amount: 1
+  - id: DAY_SAVER
+    material: daylight_detector
+    name: "Day Saver"
+    rarity: UNCOMMON
+    lore:
+      - "§7Control the time on your private"
+      - "§7island when paired with a §aNight Saver§7."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "BBB"
+              - "CCC"
+            ingredients:
+              A:
+                type: GLASS
+                amount: 1
+              B:
+                type: QUARTZ
+                amount: 5
+              C:
+                type: SUNFLOWER
+                amount: 1
+            result:
+              type: DAY_SAVER
+              amount: 1

@@ -1,0 +1,62 @@
+items:
+  - id: MOODY_GRAPPLESHOT
+    material: tripwire_hook
+    name: "Moody Grappleshot"
+    rarity: EPIC
+    components:
+      - id: ABILITY
+        abilities:
+          - BIG_PULL
+  - id: ATOMINIZER
+    material: player_head
+    name: "Atominizer"
+    rarity: EPIC
+    lore:
+      - "§7Right-Click on a Exe, Wai or Zee"
+      - "§7Atom to harvest their orbs."
+    components:
+      - id: SKULL_HEAD
+        texture: 336367597b77db69d3f3e224f497c7d7e08f12c290e0ded15425693f4777fec8
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: CHARMINIZER
+    material: player_head
+    name: "Charminizer"
+    rarity: EPIC
+    lore:
+      - "§7Can be used on Exe, Wai or Zee"
+      - "§7Atoms to charm them into only"
+      - "§7following you."
+    components:
+      - id: SKULL_HEAD
+        texture: 3ae41c37786b0bb16ece70916a28cc53ea31b6cf8fabb04b1d6e62e0cd9f7191
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: THORNLEAF_SCYTHE
+    material: iron_hoe
+    name: "Thornleaf Scythe"
+    rarity: UNCOMMON
+    lore:
+      - "§7A crudely sharpened implement used"
+      - "§7by the §cBarbarians §7to harvest §aRed"
+      - "§aThornleaf§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/thornleaf_scythe
+  - id: SPORE_HARVESTER
+    material: iron_axe
+    name: "Spore Harvester"
+    rarity: UNCOMMON
+    lore:
+      - "§7A magically imbued axe used by"
+      - "§5Mages §7to carefully harvest §aBrown"
+      - "§aMushrooms §7in the §cCrimson Isle§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/spore_harvester

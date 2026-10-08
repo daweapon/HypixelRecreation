@@ -1,0 +1,181 @@
+items:
+  - id: LAMP_BLACK
+    material: player_head
+    name: "Black Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: a26359f07a2b670cee770cda70c8bf051e716800088fc8a2fed304160ff4b249
+  - id: LAMP_BLUE
+    material: player_head
+    name: "Blue Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5662c723c6a88c5a14afff478d2d90423fbe2e4272ab0f948a0e687352dd3b17
+  - id: LAMP_BROWN
+    material: player_head
+    name: "Brown Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: a88a713788813f0c5986e2bb6a09ca3b99365138203235e0f796cb6601d774f8
+  - id: LAMP_CYAN
+    material: player_head
+    name: "Cyan Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: bcc110c2c45e85748ba8d1b0a1d0842fc7fb622631d725385a89712725b16fa7
+  - id: LAMP_GRAY
+    material: player_head
+    name: "Gray Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: 16438271136a6709d3a411bc812d8cb4da742e9fc89de7311e62b84256efcb1d
+  - id: LAMP_GREEN
+    material: player_head
+    name: "Green Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: df70ce4ae20013628aa1974b022c852b3079e525c4ea93ba7d02d65c52b47cdf
+  - id: LAMP_LIGHT_BLUE
+    material: player_head
+    name: "Light Blue Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: c86c180a2170b9780fcf1f0656c4c0bc9bda38b675ad663d373727a441caa144
+  - id: LAMP_LIGHT_GRAY
+    material: player_head
+    name: "Light Gray Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5af738c19874fe93e9f78b33d9ec6bdf515f65a74234041cf361c0bedd28e0b4
+  - id: LAMP_LILAC
+    material: player_head
+    name: "Lilac Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: c0127f3b7e453cbebb869ccbdbb4a61d81a33320e39bf22906e1216be1a39854
+  - id: LAMP_LIME
+    material: player_head
+    name: "Lime Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: ce49d48e4f4497713d560c6eb6357d9bbd6472c596da5cbbfb78223e3201a7ad
+  - id: LAMP_MAGENTA
+    material: player_head
+    name: "Magenta Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: c7053b3de19856b9ad765c76b82fb64f3f6684af5317a580ad62b3b6d4b75783
+  - id: LAMP_ORANGE
+    material: player_head
+    name: "Orange Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: a29b1f0ff625b2cb92adc5208d317533fb83a882b0504d8c3f9e71373e7256e3
+  - id: LAMP_PINK
+    material: player_head
+    name: "Pink Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4ab70180cfbac0c91ed5be71a59baa158dee6fb7b5708df5e8df360a06faace1
+  - id: LAMP_PURPLE
+    material: player_head
+    name: "Purple Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: 341f19d34f5c6237865dba2855ad2030c29111ac9196d5d48797239fee6d2a96
+  - id: LAMP_RAINBOW
+    material: player_head
+    name: "Rainbow Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: 26e73a82a73ff62743852d44b1c56097aa37ae35201af8620e36744ff94c4c7a
+  - id: LAMP_RED
+    material: player_head
+    name: "Red Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: 84eea6c9a3aef2279a8ea4a0139772cb95e037c1770153b5c6a2155b464ca5ac
+  - id: LAMP_WHITE
+    material: player_head
+    name: "White Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: 164628b0612abdf7647e724c0d33dcffc70696fed20459cdf0a504dae944b6b5
+  - id: LAMP_YELLOW
+    material: player_head
+    name: "Yellow Lamp"
+    rarity: COMMON
+    lore:
+      - "§7Decorate your island with this"
+      - "§7eco-friendly lamp!"
+    components:
+      - id: SKULL_HEAD
+        texture: 24250f1b73c7997c3aac37d112a92162246a6a6c93f245d76d7a54b35cdd116a

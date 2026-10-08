@@ -1,0 +1,22 @@
+name: "Cubic"
+prefix: "Cubic"
+stoneOnly: true
+applicableTypes:
+  - "ARMOR"
+
+statistics:
+  STRENGTH:
+    common: 3
+    uncommon: 5
+    rare: 7
+    epic: 10
+    legendary: 12
+    mythic: 15
+
+  HEALTH:
+    common: 5
+    uncommon: 7
+    rare: 10
+    epic: 15
+    legendary: 20
+    mythic: 25

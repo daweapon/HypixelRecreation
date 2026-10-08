@@ -1,0 +1,30 @@
+name: "Coldfused"
+prefix: "Coldfused"
+stoneOnly: true
+applicableTypes:
+  - "SWORDS"
+
+statistics:
+  MAGIC_FIND:
+    common: 2
+    uncommon: 2
+    rare: 2
+    epic: 2
+    legendary: 2
+    mythic: 2
+
+  STRENGTH:
+    common: 15
+    uncommon: 20
+    rare: 25
+    epic: 35
+    legendary: 45
+    mythic: 55
+
+  CRITICAL_DAMAGE:
+    common: 20
+    uncommon: 30
+    rare: 40
+    epic: 50
+    legendary: 60
+    mythic: 75

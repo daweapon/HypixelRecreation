@@ -1,0 +1,647 @@
+items:
+  - id: BLAZE_BELT
+    material: paper
+    name: "Blaze Belt"
+    rarity: RARE
+    default_statistics:
+      defense: 7
+      strength: 7
+    lore:
+      - "§6Ability: Blazing Palisade "
+      - "§7Gain a §a10% §7chance to reflect"
+      - "§cFireballs§7."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_BLAZE_POWDER
+                amount: 3
+              B:
+                type: BLAZE_ASHES
+                amount: 25
+            result:
+              type: BLAZE_BELT
+              amount: 1
+  - id: VANQUISHED_BLAZE_BELT
+    material: paper
+    name: "Vanquished Blaze Belt"
+    rarity: EPIC
+    default_statistics:
+      defense: 20
+      strength: 5
+    lore:
+      - "§6Ability: Blazing Palisade "
+      - "§7Gain a §a20% §7chance to reflect"
+      - "§cFireballs§7."
+      - ""
+      - "§6Piece Bonus: Blaze Consumer"
+      - "§7Kill §aBlazes §7to accumulate §c❁ Strength§7."
+      - "§7Piece Bonus: §c+0❁"
+      - "§7Next Upgrade: §c+1❁ §8(§a0§7/§c1,000§8)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "CCC"
+            ingredients:
+              A:
+                type: ENCHANTED_BLAZE_ROD
+                amount: 1
+              B:
+                type: BLAZE_BELT
+                amount: 1
+              C:
+                type: CORRUPTED_NETHER_STAR
+                amount: 1
+            result:
+              type: VANQUISHED_BLAZE_BELT
+              amount: 1
+  - id: MAGMA_NECKLACE
+    material: paper
+    name: "Magma Necklace"
+    rarity: RARE
+    default_statistics:
+      health: 15
+    lore:
+      - "§6Ability: Cube Fanatic "
+      - "§7Gain §a10% §7more §cMagma Cream §7when"
+      - "§7killing Magma Cubes."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "A A"
+              - " B "
+            ingredients:
+              A:
+                type: ENCHANTED_MAGMA_CREAM
+                amount: 3
+              B:
+                type: MAGMA_CHUNK
+                amount: 20
+            result:
+              type: MAGMA_NECKLACE
+              amount: 1
+  - id: VANQUISHED_MAGMA_NECKLACE
+    material: paper
+    name: "Vanquished Magma Necklace"
+    rarity: EPIC
+    default_statistics:
+      health: 20
+    lore:
+      - "§6Ability: Cube Fanatic "
+      - "§7Gain §a20% §7more §cMagma Cream §7when"
+      - "§7killing Magma Cubes."
+      - ""
+      - "§6Piece Bonus: Magma Cube Absorber"
+      - "§7Kill §aMagma Cubes §7to accumulate §9☠"
+      - "§9Crit Damage§7."
+      - "§7Piece Bonus: §9+0☠"
+      - "§7Next Upgrade: §9+1☠ §8(§a0§7/§c1,000§8)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "ABA"
+              - " C "
+            ingredients:
+              A:
+                type: ENCHANTED_MAGMA_CREAM
+                amount: 64
+              B:
+                type: MAGMA_NECKLACE
+                amount: 1
+              C:
+                type: CORRUPTED_NETHER_STAR
+                amount: 3
+            result:
+              type: VANQUISHED_MAGMA_NECKLACE
+              amount: 1
+  - id: GLOWSTONE_GAUNTLET
+    material: paper
+    name: "Glowstone Gauntlet"
+    rarity: RARE
+    default_statistics:
+      intelligence: 10
+      mining_fortune: 5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: VANQUISHED_GLOWSTONE_GAUNTLET
+    material: paper
+    name: "Vanquished Glowstone Gauntlet"
+    rarity: EPIC
+    default_statistics:
+      intelligence: 15
+      mining_fortune: 7
+    lore:
+      - "§6Piece Bonus: Glowing"
+      - "§7Mine Glowstone to accumulate §b✎"
+      - "§bIntelligence§7."
+      - "§7Piece Bonus: §b+0✎"
+      - "§7Next Upgrade: §b+1✎ §8(§a0§7/§c1,000§8)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "BCB"
+              - "B B"
+            ingredients:
+              A:
+                type: CORRUPTED_NETHER_STAR
+                amount: 1
+              B:
+                type: ENCHANTED_GLOWSTONE
+                amount: 1
+              C:
+                type: GLOWSTONE_GAUNTLET
+                amount: 1
+            result:
+              type: VANQUISHED_GLOWSTONE_GAUNTLET
+              amount: 1
+  - id: GHAST_CLOAK
+    material: paper
+    name: "Ghast Cloak"
+    rarity: RARE
+    default_statistics:
+      health: 7
+      defense: 7
+    lore:
+      - "§6Ability: Blazing Restoration "
+      - "§7Restores §c+5❤ Health §7every second"
+      - "§7while worn."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "A A"
+              - "A A"
+            ingredients:
+              A:
+                type: ENCHANTED_GHAST_TEAR
+                amount: 32
+              B:
+                type: TENTACLE_MEAT
+                amount: 10
+            result:
+              type: GHAST_CLOAK
+              amount: 1
+  - id: VANQUISHED_GHAST_CLOAK
+    material: paper
+    name: "Vanquished Ghast Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 10
+      defense: 10
+    lore:
+      - "§6Ability: Blazing Restoration "
+      - "§7Restores §c+15❤ Health §7every second"
+      - "§7while worn."
+      - ""
+      - "§6Piece Bonus: Ghast Blaster"
+      - "§7Kill §aGhasts §7to accumulate §a❈ Defense§7."
+      - "§7Piece Bonus: §a+0❈"
+      - "§7Next Upgrade: §a+1❈ §8(§a0§7/§c1,000§8)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "BCB"
+              - "B B"
+            ingredients:
+              A:
+                type: CORRUPTED_NETHER_STAR
+                amount: 1
+              B:
+                type: SILVER_FANG
+                amount: 64
+              C:
+                type: GHAST_CLOAK
+                amount: 1
+            result:
+              type: VANQUISHED_GHAST_CLOAK
+              amount: 1
+  - id: IMPLOSION_BELT
+    material: paper
+    name: "Implosion Belt"
+    rarity: EPIC
+    default_statistics:
+      defense: 70
+    lore:
+      - "§6Ability: Consolidated "
+      - "§7Increases all explosion damage dealt by §a25%§7."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "ABA"
+              - "B B"
+              - "ABA"
+            ingredients:
+              A:
+                type: MATCH_STICKS
+                amount: 32
+              B:
+                type: ENCHANTED_SULPHUR_CUBE
+                amount: 1
+            result:
+              type: IMPLOSION_BELT
+              amount: 1
+  - id: GAUNTLET_OF_CONTAGION
+    material: paper
+    name: "Gauntlet of Contagion"
+    rarity: EPIC
+    default_statistics:
+      health: 20
+      defense: 10
+      strength: 15
+    lore:
+      - "§6Ability: Contaminate"
+      - "§7Killing an enemy causes an explosion"
+      - "§7dealing §a10% §7of their total §c❤ Health"
+      - "§7as damage to all enemies within §a2"
+      - "§ablocks§7. Enemies in the blast radius"
+      - "§7will also be §6contaminated §7causing"
+      - "§7them to explode on death."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "BBB"
+              - "BBB"
+            ingredients:
+              A:
+                type: ENCHANTED_MYCELIUM_CUBE
+                amount: 1
+              B:
+                type: LEATHER_CLOTH
+                amount: 6
+            result:
+              type: GAUNTLET_OF_CONTAGION
+              amount: 1
+  - id: ANCIENT_CLOAK
+    material: paper
+    name: "Ancient Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      mining_fortune: 10
+    lore:
+      - "§7Health-consuming abilities deal §a10%"
+      - "§7more damage."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "ABA"
+              - "A A"
+              - "A A"
+            ingredients:
+              A:
+                type: ENCHANTED_RED_SAND_CUBE
+                amount: 1
+              B:
+                type: WITHER_SOUL
+                amount: 64
+            result:
+              type: ANCIENT_CLOAK
+              amount: 1
+  - id: SCOURGE_CLOAK
+    material: paper
+    name: "Scourge Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 25
+      critical_damage: 20
+    lore:
+      - "§7Fire damage taken is increased by"
+      - "§c10,000%§7. Increases your next hit by"
+      - "§c20% §7of the last fire damage you took."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: MUTATED_BLAZE_ASHES
+                amount: 5
+              B:
+                type: COMPACT_OOZE
+                amount: 5
+              C:
+                type: REKINDLED_EMBER_FRAGMENT
+                amount: 5
+            result:
+              type: SCOURGE_CLOAK
+              amount: 1
+  - id: SCOVILLE_BELT
+    material: paper
+    name: "Scoville Belt"
+    rarity: RARE
+    default_statistics:
+      defense: 30
+      strength: 15
+    lore:
+      - "§7Gain §a+50❈ Defense §7per ignited"
+      - "§7enemy within a 10 block radius up to"
+      - "§7a maximum of §a+1,000❈ Defense§7."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "ABA"
+            ingredients:
+              A:
+                type: COMPACT_OOZE
+                amount: 5
+              B:
+                type: REKINDLED_EMBER_FRAGMENT
+                amount: 5
+            result:
+              type: SCOVILLE_BELT
+              amount: 1
+  - id: DELIRIUM_NECKLACE
+    material: paper
+    name: "Delirium Necklace"
+    rarity: EPIC
+    default_statistics:
+      health: 1
+      defense: 1
+      strength: 1
+      critical_damage: 1
+      ferocity: 1
+      intelligence: 1
+      sea_creature_chance: 1
+      speed: 1
+      magic_find: 1
+    lore:
+      - "§7Increase the fire damage you"
+      - "§7receive by §c8% §7per §c+1❁ Strength§7."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "A A"
+              - " B "
+            ingredients:
+              A:
+                type: GAZING_PEARL
+                amount: 5
+              B:
+                type: REKINDLED_EMBER_FRAGMENT
+                amount: 5
+            result:
+              type: DELIRIUM_NECKLACE
+              amount: 1
+  - id: LAVA_SHELL_NECKLACE
+    material: paper
+    name: "Lava Shell Necklace"
+    rarity: EPIC
+    default_statistics:
+      health: 100
+      defense: 30
+      intelligence: 50
+    lore:
+      - "§7Sets your §c❣ Health Regen§7 and §a☄"
+      - "§aMending §7to §c0§7, and you can no longer"
+      - "§7receive healing!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: LAVA_SHELL
+                amount: 1
+              B:
+                type: GAZING_PEARL
+                amount: 5
+            result:
+              type: LAVA_SHELL_NECKLACE
+              amount: 1
+  - id: TERA_SHELL_NECKLACE
+    material: paper
+    name: "Tera Shell Necklace"
+    rarity: EPIC
+    default_statistics:
+      health: 80
+      defense: 30
+      intelligence: 20
+    lore:
+      - "§7You can no longer catch §6Trophies"
+      - "§7while wearing this Necklace."
+      - ""
+      - "§8§oTelling Trophy Fish to pound sand"
+      - "§8§osomehow elicits their deepest,"
+      - "§8§odarkest fears."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "ABA"
+              - "BCB"
+              - "ABA"
+            ingredients:
+              A:
+                type: ENCHANTED_RED_SAND_CUBE
+                amount: 1
+              B:
+                type: ENCHANTED_MYCELIUM_CUBE
+                amount: 1
+              C:
+                type: GAZING_PEARL
+                amount: 5
+            result:
+              type: TERA_SHELL_NECKLACE
+              amount: 1
+  - id: FLAMING_FIST
+    material: paper
+    name: "Flaming Fist"
+    rarity: EPIC
+    default_statistics:
+      health: 30
+      defense: 20
+      strength: 10
+      critical_damage: 10
+      ferocity: 1
+    lore:
+      - "§7When equipped, melee attacks fire"
+      - "§7three §6flaming fists §7dealing §c10,000"
+      - "§7fire damage over time."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22

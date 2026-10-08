@@ -74,6 +74,12 @@ public final class ScaledPetAbility implements PetAbility {
         return new ScaledPetAbility(name, atLevel100, new Effect(List.of(statistic), true, condition), description);
     }
 
+    public static ScaledPetAbility percentagesWhen(Predicate<SkyBlockPlayer> condition, String name,
+                                                   RarityValue<Double> atLevel100, List<ItemStatistic> statistics,
+                                                   String... description) {
+        return new ScaledPetAbility(name, atLevel100, new Effect(statistics, true, condition), description);
+    }
+
     public static ScaledPetAbility statIn(Set<RegionType> regions, String name, RarityValue<Double> atLevel100,
                                           ItemStatistic statistic, String... description) {
         Predicate<SkyBlockPlayer> inRegion = player ->

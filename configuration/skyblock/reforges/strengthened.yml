@@ -1,0 +1,22 @@
+name: "Strengthened"
+prefix: "Strengthened"
+stoneOnly: true
+applicableTypes:
+  - "EQUIPMENT"
+
+statistics:
+  DEFENSE:
+    common: 3
+    uncommon: 4
+    rare: 5
+    epic: 6
+    legendary: 8
+    mythic: 10
+
+  STRENGTH:
+    common: 2
+    uncommon: 3
+    rare: 4
+    epic: 5
+    legendary: 6
+    mythic: 7

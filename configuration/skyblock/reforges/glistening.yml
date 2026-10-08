@@ -1,0 +1,22 @@
+name: "Glistening"
+prefix: "Glistening"
+stoneOnly: true
+applicableTypes:
+  - "EQUIPMENT"
+
+statistics:
+  INTELLIGENCE:
+    common: 5
+    uncommon: 6
+    rare: 8
+    epic: 10
+    legendary: 12
+    mythic: 15
+
+  TRUE_DEFENSE:
+    common: 2
+    uncommon: 2.5
+    rare: 3
+    epic: 3.5
+    legendary: 4
+    mythic: 4.5

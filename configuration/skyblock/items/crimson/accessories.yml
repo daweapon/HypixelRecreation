@@ -1,0 +1,112 @@
+items:
+  - id: BLAZE_TALISMAN
+    material: player_head
+    name: "Blaze Talisman"
+    rarity: RARE
+    default_statistics:
+      true_defense: 3
+    lore:
+      - "§7Reduces the damage taken from §4♨"
+      - "§4Infernal §7mobs by §a5%§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 9de3a407d2be387b45bebdd52d3d4d75a6a1b479e2b8c03267d021d4af31e072
+      - id: TALISMAN
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: MILLENIA_OLD_BLAZE_ASHES
+                amount: 1
+              B:
+                type: ENCHANTED_BLAZE_ROD
+                amount: 8
+            result:
+              type: BLAZE_TALISMAN
+              amount: 1
+  - id: NETHERRACK_LOOKING_SUNSHADE
+    material: player_head
+    name: "Netherrack-Looking Sunshade"
+    rarity: COMMON
+    lore:
+      - "§7Makes you invisible to Dive Ghasts."
+    components:
+      - id: SKULL_HEAD
+        texture: 6c930b0a2d87f2dddb409a302f9591897184f29ecc97b5ca5cdec1cd69839597
+      - id: TALISMAN
+  - id: NETHER_ARTIFACT
+    material: player_head
+    name: "Nether Artifact"
+    rarity: EPIC
+    lore:
+      - "§7Reduces the damage taken from §4♨"
+      - "§4Infernal §7mobs by §a5%§7."
+      - ""
+      - "§7While in the §6Crimson Isle§7, you will receive"
+      - "§7the damage reduction from all mobs."
+    components:
+      - id: SKULL_HEAD
+        texture: 4e6529fbf790301043e48eb43f7a740bdcb0e23854d7204a109ea0ff56436aed
+      - id: TALISMAN
+  - id: NIGHT_CRYSTAL
+    material: paper
+    name: "Night Crystal"
+    rarity: RARE
+    lore:
+      - "§7Increases your §c❁ Strength §7and §a❈"
+      - "§aDefense§7 by §a+5§7 during the Night."
+    components:
+      - id: TALISMAN
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "A A"
+              - " B "
+              - "A A"
+            ingredients:
+              A:
+                type: ENCHANTED_QUARTZ
+                amount: 1
+              B:
+                type: ENCHANTED_QUARTZ_BLOCK
+                amount: 1
+            result:
+              type: NIGHT_CRYSTAL
+              amount: 1
+  - id: DAY_CRYSTAL
+    material: paper
+    name: "Day Crystal"
+    rarity: RARE
+    lore:
+      - "§7Increases your §c❁ Strength §7and §a❈"
+      - "§aDefense§7 by §a+5§7 during the Day."
+    components:
+      - id: TALISMAN
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - " A "
+              - "ABA"
+              - " A "
+            ingredients:
+              A:
+                type: ENCHANTED_QUARTZ
+                amount: 1
+              B:
+                type: ENCHANTED_QUARTZ_BLOCK
+                amount: 1
+            result:
+              type: DAY_CRYSTAL
+              amount: 1

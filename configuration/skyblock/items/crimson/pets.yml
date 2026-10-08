@@ -1,0 +1,77 @@
+items:
+  - id: MAGMA_CUBE_PET
+    material: player_head
+    name: "Magma Cube Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Magma Cube
+        base_statistics: {}
+        per_level_statistics:
+          common: { defense: 0.3333, health: 0.5, strength: 0.2 }
+          uncommon: { defense: 0.3333, health: 0.5, strength: 0.2 }
+          rare: { defense: 0.3333, health: 0.5, strength: 0.2 }
+          epic: { defense: 0.3333, health: 0.5, strength: 0.2 }
+          legendary: { defense: 0.3333, health: 0.5, strength: 0.2 }
+        particle: 3
+        skill_category: COMBAT
+        skull_texture: 38957d5023c937c4c41aa2412d43410bda23cf79a9f6ab36b76fef2d7c429
+        handler_id: MAGMA_CUBE
+      - id: TRACKED_UNIQUE
+  - id: BLAZE_PET
+    material: player_head
+    name: "Blaze Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Blaze
+        base_statistics: {}
+        per_level_statistics:
+          common: { defense: 0.3, intelligence: 1 }
+          uncommon: { defense: 0.3, intelligence: 1 }
+          rare: { defense: 0.3, intelligence: 1 }
+          epic: { defense: 0.3, intelligence: 1 }
+          legendary: { defense: 0.3, intelligence: 1 }
+        particle: 3
+        skill_category: COMBAT
+        skull_texture: b78ef2e4cf2c41a2d14bfde9caff10219f5b1bf5b35a49eb51c6467882cb5f0
+        handler_id: BLAZE
+      - id: TRACKED_UNIQUE
+  - id: MOOSHROOM_COW_PET
+    material: player_head
+    name: "Mooshroom Cow Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Mooshroom Cow
+        base_statistics: {}
+        per_level_statistics:
+          common: { farming_fortune: 1, health: 1 }
+          uncommon: { farming_fortune: 1, health: 1 }
+          rare: { farming_fortune: 1, health: 1 }
+          epic: { farming_fortune: 1, health: 1 }
+          legendary: { farming_fortune: 1, health: 1 }
+        particle: 3
+        skill_category: FARMING
+        skull_texture: 47f1bc3fa91cd86cf4ba7745586d67207b58e7cf27bdf7a717780843785bf9b5
+        handler_id: MOOSHROOM_COW
+      - id: TRACKED_UNIQUE
+  - id: SNAIL_PET
+    material: player_head
+    name: "Snail Pet"
+    rarity: LEGENDARY
+    components:
+      - id: PET
+        pet_name: Snail
+        base_statistics: {}
+        per_level_statistics:
+          common: { intelligence: 1, defense: 1 }
+          uncommon: { intelligence: 1, defense: 1 }
+          rare: { intelligence: 1, defense: 1 }
+          epic: { intelligence: 1, defense: 1 }
+          legendary: { intelligence: 1, defense: 1 }
+        particle: 3
+        skill_category: MINING
+        skull_texture: 50a9933a3b10489d38f6950c4e628bfcf9f7a27f8d84666f04f14d5374252972
+        handler_id: SNAIL
+      - id: TRACKED_UNIQUE

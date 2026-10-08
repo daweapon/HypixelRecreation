@@ -2,6 +2,8 @@ package net.swofty.type.skyblockgeneric.item.handlers.pet;
 
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
+import net.swofty.type.skyblockgeneric.crimson.CrimsonLocation;
+import net.swofty.type.skyblockgeneric.crimson.CrimsonPetStatistics;
 import net.swofty.type.skyblockgeneric.gifts.ReindeerPet;
 import net.swofty.type.skyblockgeneric.gifts.SnowmanPet;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -130,6 +132,39 @@ public enum PetHandler {
                     "<7>Grants <a>+{0}% <7>bonus gift chance", "<7>during the <c>Gift Attack <7>event."), Rarity.LEGENDARY),
             at(LeveledPetAbility.gameplay("Icy Wind", new double[]{0}, new double[]{ReindeerPet.ICY_WIND_PER_LEVEL},
                     "<7>Grants <a>+{0}% <7>chance of getting", "<7>double <b>Ice Essence<7>."), Rarity.LEGENDARY)
+    )),
+    MAGMA_CUBE(List.of(
+            at(ScaledPetAbility.notActive("Slimy Minions", scaling(20, 25, 25, 30, 30),
+                    "<7>Slime and Magma Cube minions work", "<a>{0}% <7>faster while on your island."), Rarity.COMMON),
+            at(ScaledPetAbility.notActive("Salt Blade", scaling(0, 0, 20, 25, 25),
+                    "<7>Deal <a>{0}% <7>more damage to slimes."), Rarity.RARE),
+            at(ScaledPetAbility.notActive("Hot Ember", scaling(0, 0, 0, 0, 50),
+                    "<7>Buffs the stats of <5>Rekindled Ember", "<5>Armor <7>by <a>{0}%<7>."), Rarity.LEGENDARY)
+    )),
+    BLAZE(List.of(
+            at(ScaledPetAbility.percentagesWhen(CrimsonLocation::isOnCrimsonIsle, "Nether Embodiment",
+                    scaling(5, 7, 7, 10, 10), CrimsonPetStatistics.COMBAT_AND_MISC,
+                    "<7>Increases <c>Combat <7>and <a>Miscellaneous", "<7>stats by <a>{0}% <7>while on the <c>Crimson", "<c>Isle<7>."), Rarity.COMMON),
+            at(ScaledPetAbility.notActive("Bling Armor", scaling(0, 0, 40, 40, 40),
+                    "<7>Upgrades <6>Blaze Armor <7>stats and", "<7>ability by <a>{0}%<7>."), Rarity.RARE),
+            at(ScaledPetAbility.notActive("Fusion-Style Potato", scaling(0, 0, 0, 0, 0),
+                    "<7>Double effects of hot potato books."), Rarity.LEGENDARY)
+    )),
+    MOOSHROOM_COW(List.of(
+            at(ScaledPetAbility.notActive("Mushroom Eater", scaling(50, 100, 100, 100, 100),
+                    "<7>You have a <a>{0}% <7>chance to drop a", "<7>Mushroom when farming crops."), Rarity.COMMON),
+            at(ScaledPetAbility.notActive("Farming Strength", scaling(0, 0, 30, 20, 20),
+                    "<7>Grants <6>+0.7 ☘ Farming Fortune <7>for", "<7>every <c>{0} ❁ Strength <7>you have."), Rarity.RARE),
+            at(ScaledPetAbility.notActive("Bovine Blessing", scaling(0, 0, 0, 0, 0.02),
+                    "<7>You have a <a>{0}% <7>chance to find", "<7>Tasty Cheese or Dung when farming", "<7>crops."), Rarity.LEGENDARY)
+    )),
+    SNAIL(List.of(
+            at(ScaledPetAbility.notActive("Red Sand Enjoyer", scaling(10, 20, 20, 30, 30),
+                    "<7>Red Sand Minions work <a>{0}% <7>faster", "<7>while on your Private Island."), Rarity.COMMON),
+            at(ScaledPetAbility.notActive("Slow and Steady", scaling(0, 0, 3, 3, 2),
+                    "<7>Convert every <a>{0} <f>✦ Speed <7>you", "<7>have above <a>100 <7>into <6>+1 Block", "<6>Fortune<7>."), Rarity.RARE),
+            at(ScaledPetAbility.notActive("Slimy Reach", scaling(0, 0, 0, 0, 400),
+                    "<7>Grants <6>+{0} Mining Spread <7>while", "<7>mining Blocks."), Rarity.LEGENDARY)
     )),
     // Black Cat and Skeleton Horse (Spooky Festival rewards) - their ability trees are not
     // implemented, so they carry stats only.

@@ -1,0 +1,711 @@
+items:
+  - id: BLAZE_HELMET
+    material: player_head
+    name: "Blaze Helmet"
+    rarity: EPIC
+    default_statistics:
+      defense: 90
+      strength: 30
+      speed: 2
+    components:
+      - id: SKULL_HEAD
+        texture: 531b2183392ebcffe217a983c96a573cf90dd58687d18fd63036ccc59eb2f47d
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "A A"
+            ingredients:
+              A:
+                type: ENCHANTED_BLAZE_ROD
+                amount: 1
+            result:
+              type: BLAZE_HELMET
+              amount: 1
+  - id: BLAZE_CHESTPLATE
+    material: leather_chestplate
+    name: "Blaze Chestplate"
+    rarity: EPIC
+    default_statistics:
+      defense: 165
+      strength: 30
+      speed: 2
+    components:
+      - id: LEATHER_COLOR
+        r: '247'
+        g: '218'
+        b: '51'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_BLAZE_ROD
+                amount: 1
+            result:
+              type: BLAZE_CHESTPLATE
+              amount: 1
+  - id: BLAZE_LEGGINGS
+    material: leather_leggings
+    name: "Blaze Leggings"
+    rarity: EPIC
+    default_statistics:
+      defense: 130
+      strength: 30
+      speed: 2
+    components:
+      - id: LEATHER_COLOR
+        r: '247'
+        g: '218'
+        b: '51'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "A A"
+              - "A A"
+            ingredients:
+              A:
+                type: ENCHANTED_BLAZE_ROD
+                amount: 1
+            result:
+              type: BLAZE_LEGGINGS
+              amount: 1
+  - id: BLAZE_BOOTS
+    material: leather_boots
+    name: "Blaze Boots"
+    rarity: EPIC
+    default_statistics:
+      defense: 80
+      strength: 30
+      speed: 2
+    components:
+      - id: LEATHER_COLOR
+        r: '247'
+        g: '218'
+        b: '51'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "A A"
+            ingredients:
+              A:
+                type: ENCHANTED_BLAZE_ROD
+                amount: 1
+            result:
+              type: BLAZE_BOOTS
+              amount: 1
+  - id: RAMPART_HELMET
+    material: player_head
+    name: "Rampart Helmet"
+    rarity: RARE
+    default_statistics:
+      health: 150
+      defense: 45
+      strength: 20
+      critical_damage: 15
+      intelligence: 15
+    lore:
+      - "§7Grants §c+50❤ Health§7, §c+20❁ Strength§7,"
+      - "§7and §9+15☠ Crit Damage §7while on the"
+      - "§cCrimson Isle§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 50db6fa8eff25b222a34df5f42ca67a68e6b6f50c0276a8cdb8afb40e3272927
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: RAMPART_CHESTPLATE
+    material: leather_chestplate
+    name: "Rampart Chestplate"
+    rarity: RARE
+    default_statistics:
+      health: 225
+      defense: 60
+      strength: 20
+      critical_damage: 15
+      intelligence: 5
+    lore:
+      - "§7Grants §c+50❤ Health§7, §c+20❁ Strength§7,"
+      - "§7and §9+15☠ Crit Damage §7while on the"
+      - "§cCrimson Isle§7."
+    components:
+      - id: LEATHER_COLOR
+        r: '223'
+        g: '46'
+        b: '6'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: RAMPART_LEGGINGS
+    material: leather_leggings
+    name: "Rampart Leggings"
+    rarity: RARE
+    default_statistics:
+      health: 200
+      defense: 55
+      strength: 20
+      critical_damage: 15
+      intelligence: 5
+    lore:
+      - "§7Grants §c+50❤ Health§7, §c+20❁ Strength§7,"
+      - "§7and §9+15☠ Crit Damage §7while on the"
+      - "§cCrimson Isle§7."
+    components:
+      - id: LEATHER_COLOR
+        r: '223'
+        g: '46'
+        b: '6'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: RAMPART_BOOTS
+    material: leather_boots
+    name: "Rampart Boots"
+    rarity: RARE
+    default_statistics:
+      health: 125
+      defense: 40
+      strength: 20
+      critical_damage: 15
+      intelligence: 5
+    lore:
+      - "§7Grants §c+50❤ Health§7, §c+20❁ Strength§7,"
+      - "§7and §9+15☠ Crit Damage §7while on the"
+      - "§cCrimson Isle§7."
+    components:
+      - id: LEATHER_COLOR
+        r: '223'
+        g: '46'
+        b: '6'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+  - id: BERSERKER_HELMET
+    material: player_head
+    name: "Berserker Helmet"
+    rarity: EPIC
+    default_statistics:
+      strength: 35
+      critical_damage: 35
+    components:
+      - id: SKULL_HEAD
+        texture: fead3b51077eda3dea6f76f18b7ef089e289e87c002a6c8f92e6a340f9ae84a4
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "ABA"
+              - "C C"
+            ingredients:
+              A:
+                type: MAGMA_CHUNK
+                amount: 20
+              B:
+                type: BURNING_EYE
+                amount: 50
+              C:
+                type: ENCHANTED_RED_SAND_CUBE
+                amount: 1
+            result:
+              type: BERSERKER_HELMET
+              amount: 1
+  - id: BERSERKER_CHESTPLATE
+    material: leather_chestplate
+    name: "Berserker Chestplate"
+    rarity: EPIC
+    default_statistics:
+      strength: 60
+      critical_damage: 60
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '163'
+        b: '59'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "A A"
+              - "ABA"
+              - "CAC"
+            ingredients:
+              A:
+                type: ENCHANTED_RED_SAND_CUBE
+                amount: 1
+              B:
+                type: BURNING_EYE
+                amount: 50
+              C:
+                type: MAGMA_CHUNK
+                amount: 20
+            result:
+              type: BERSERKER_CHESTPLATE
+              amount: 1
+  - id: BERSERKER_LEGGINGS
+    material: leather_leggings
+    name: "Berserker Leggings"
+    rarity: EPIC
+    default_statistics:
+      strength: 50
+      critical_damage: 50
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '183'
+        b: '39'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "ABA"
+              - "C C"
+              - "A A"
+            ingredients:
+              A:
+                type: ENCHANTED_RED_SAND_CUBE
+                amount: 1
+              B:
+                type: BURNING_EYE
+                amount: 50
+              C:
+                type: MAGMA_CHUNK
+                amount: 20
+            result:
+              type: BERSERKER_LEGGINGS
+              amount: 1
+  - id: BERSERKER_BOOTS
+    material: leather_boots
+    name: "Berserker Boots"
+    rarity: EPIC
+    default_statistics:
+      strength: 25
+      critical_damage: 25
+    components:
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '212'
+        b: '39'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "A A"
+              - "B B"
+            ingredients:
+              A:
+                type: ENCHANTED_RED_SAND_CUBE
+                amount: 1
+              B:
+                type: MAGMA_CHUNK
+                amount: 20
+            result:
+              type: BERSERKER_BOOTS
+              amount: 1
+  - id: SHIMMERING_LIGHT_HOOD
+    material: player_head
+    name: "Shimmering Light Hood"
+    rarity: RARE
+    default_statistics:
+      health: 80
+      defense: 70
+      intelligence: 70
+      speed: 10
+    components:
+      - id: SKULL_HEAD
+        texture: 764b352f87e7b52291079c12061010f3f53cf15bfb9ce02f647bdf846a5afb4c
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "B B"
+            ingredients:
+              A:
+                type: X
+                amount: 50
+              B:
+                type: ENCHANTED_MYCELIUM_CUBE
+                amount: 1
+            result:
+              type: SHIMMERING_LIGHT_HOOD
+              amount: 1
+  - id: SHIMMERING_LIGHT_TUNIC
+    material: leather_chestplate
+    name: "Shimmering Light Tunic"
+    rarity: RARE
+    default_statistics:
+      health: 130
+      defense: 120
+      intelligence: 120
+    components:
+      - id: LEATHER_COLOR
+        r: '7'
+        g: '3'
+        b: '27'
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "A A"
+              - "BCB"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_MYCELIUM_CUBE
+                amount: 1
+              B:
+                type: Y
+                amount: 30
+              C:
+                type: Z
+                amount: 10
+            result:
+              type: SHIMMERING_LIGHT_TUNIC
+              amount: 1
+  - id: SHIMMERING_LIGHT_TROUSERS
+    material: leather_leggings
+    name: "Shimmering Light Trousers"
+    rarity: RARE
+    default_statistics:
+      health: 120
+      defense: 100
+      intelligence: 100
+    components:
+      - id: LEATHER_COLOR
+        r: '7'
+        g: '3'
+        b: '27'
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "ABA"
+              - "C C"
+              - "A A"
+            ingredients:
+              A:
+                type: ENCHANTED_MYCELIUM_CUBE
+                amount: 1
+              B:
+                type: Z
+                amount: 10
+              C:
+                type: Y
+                amount: 30
+            result:
+              type: SHIMMERING_LIGHT_TROUSERS
+              amount: 1
+  - id: SHIMMERING_LIGHT_SLIPPERS
+    material: leather_boots
+    name: "Shimmering Light Slippers"
+    rarity: RARE
+    default_statistics:
+      health: 70
+      defense: 60
+      intelligence: 60
+    components:
+      - id: LEATHER_COLOR
+        r: '7'
+        g: '3'
+        b: '27'
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "A A"
+              - "B B"
+            ingredients:
+              A:
+                type: ENCHANTED_MYCELIUM_CUBE
+                amount: 1
+              B:
+                type: X
+                amount: 50
+            result:
+              type: SHIMMERING_LIGHT_SLIPPERS
+              amount: 1
+  - id: REKINDLED_EMBER_HELMET
+    material: player_head
+    name: "Rekindled Ember Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 175
+      defense: 50
+      strength: 30
+      critical_damage: 20
+      intelligence: 15
+    components:
+      - id: SKULL_HEAD
+        texture: 7b2991911f452ac341a8933b710e139900b3ef0f0307141a30260c623f029714
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "A A"
+            ingredients:
+              A:
+                type: REKINDLED_EMBER_FRAGMENT
+                amount: 1
+            result:
+              type: REKINDLED_EMBER_HELMET
+              amount: 1
+  - id: REKINDLED_EMBER_CHESTPLATE
+    material: chainmail_chestplate
+    name: "Rekindled Ember Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 250
+      defense: 70
+      strength: 30
+      critical_damage: 20
+      intelligence: 5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: REKINDLED_EMBER_FRAGMENT
+                amount: 1
+            result:
+              type: REKINDLED_EMBER_CHESTPLATE
+              amount: 1
+  - id: REKINDLED_EMBER_LEGGINGS
+    material: chainmail_leggings
+    name: "Rekindled Ember Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 220
+      defense: 70
+      strength: 30
+      critical_damage: 20
+      intelligence: 5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "AAA"
+              - "A A"
+              - "A A"
+            ingredients:
+              A:
+                type: REKINDLED_EMBER_FRAGMENT
+                amount: 1
+            result:
+              type: REKINDLED_EMBER_LEGGINGS
+              amount: 1
+  - id: REKINDLED_EMBER_BOOTS
+    material: chainmail_boots
+    name: "Rekindled Ember Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 140
+      defense: 40
+      strength: 30
+      critical_damage: 15
+      intelligence: 5
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - "A A"
+              - "A A"
+            ingredients:
+              A:
+                type: REKINDLED_EMBER_FRAGMENT
+                amount: 1
+            result:
+              type: REKINDLED_EMBER_BOOTS
+              amount: 1
+  - id: REKINDLED_EMBER_BURNING
+    material: player_head
+    name: "Smoldering Ember Skin"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Rekindled"
+      - "§5Ember Helmet§7 and §5Ember Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: d2309ca29da534d4c0d5b0ea46471ae9be32b49e44e7d1d78dbdfed48df73e7c
+      - id: EXTRA_RARITY
+        display: COSMETIC
