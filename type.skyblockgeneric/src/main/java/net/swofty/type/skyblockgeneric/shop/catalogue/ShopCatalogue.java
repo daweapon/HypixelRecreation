@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.shop.catalogue;
 
 import net.swofty.commons.YamlFileUtils;
 import net.swofty.type.skyblockgeneric.gui.ShopView;
+import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.io.File;
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public record ShopCatalogue(String id, String title, int[] slots, List<CatalogueEntry> entries) {
+public record ShopCatalogue(String id, String title, int[] slots, List<CatalogueEntry> entries, @Nullable String priceModifier) {
     private static final File SHOPS_DIRECTORY = new File("./configuration/skyblock/shops");
     private static final Map<String, ShopCatalogue> CACHE = new ConcurrentHashMap<>();
 
@@ -27,11 +28,12 @@ public record ShopCatalogue(String id, String title, int[] slots, List<Catalogue
                     id,
                     String.valueOf(root.getOrDefault("title", id)),
                     slots(root.get("slots")),
-                    rawEntries.stream().map(CatalogueEntry::parse).toList()
+                    rawEntries.stream().map(CatalogueEntry::parse).toList(),
+                    root.get("priceModifier") == null ? null : String.valueOf(root.get("priceModifier"))
             );
         } catch (Exception exception) {
             Logger.error(exception, "Failed to load shop catalogue {}", id);
-            return new ShopCatalogue(id, id, ShopView.DEFAULT, List.of());
+            return new ShopCatalogue(id, id, ShopView.DEFAULT, List.of(), null);
         }
     }
 
