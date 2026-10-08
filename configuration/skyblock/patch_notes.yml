@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "accessories"
+    name: "The Accessories Update"
+    date: "8th October 2026"
+    material: gold_nugget
+    title: "The Accessories Update"
+    book: "accessories_update.yml"
   - version: "pets"
     name: "The Pets Update"
     date: "8th October 2026"
