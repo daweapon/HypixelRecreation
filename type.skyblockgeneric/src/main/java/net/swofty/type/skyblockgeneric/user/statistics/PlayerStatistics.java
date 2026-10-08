@@ -61,6 +61,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestProfile;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContestStatistics;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalStatistics;
+import net.swofty.type.skyblockgeneric.essence.IceEssenceShop;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalGear;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
 import net.swofty.type.skyblockgeneric.user.pets.PetItems;
@@ -244,6 +245,7 @@ public class PlayerStatistics {
                 .getStatisticsUpTo(experience.getLevel().asInt()));
         spare = ItemStatistics.add(spare, FarmingContestStatistics.all(player));
         spare = ItemStatistics.add(spare, CarnivalStatistics.all(player));
+        spare = ItemStatistics.add(spare, IceEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, PetScore.statistics(player));
         spare = ItemStatistics.add(spare, MythologicalItemHandlers.permanentStatistics(player));
 

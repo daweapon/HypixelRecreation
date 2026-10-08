@@ -1,14 +1,17 @@
 package net.swofty.type.jerrysworkshop.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.commons.text.Text;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
+import net.swofty.type.generic.entity.npc.trait.NPCAbiphoneTrait;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.gui.inventories.essence.GUIFrozenAlex;
 
-// Frozen Alex, in his igloo by Jerry Pond. On Hypixel he runs the Ice Essence shop; Ice Essence has
-// no source on this server yet, so for now he only talks.
-public class NPCFrozenAlex extends HypixelNPC {
+// Frozen Alex, in his igloo by Jerry Pond: Salvage Items and the Ice Essence Shop.
+public class NPCFrozenAlex extends HypixelNPC implements NPCAbiphoneTrait {
 
     public NPCFrozenAlex() {
         super(new HumanConfiguration() {
@@ -28,6 +31,11 @@ public class NPCFrozenAlex extends HypixelNPC {
             }
 
             @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<b>Frozen Alex");
+            }
+
+            @Override
             public Pos position(HypixelPlayer player) {
                 return new Pos(-43, 84, -1);
             }
@@ -41,8 +49,21 @@ public class NPCFrozenAlex extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        if (isInDialogue(event.player())) return;
-        setDialogue(event.player(), "hello");
+        HypixelPlayer player = event.player();
+        if (isInDialogue(player)) return;
+        if (player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_FROZEN_ALEX)) {
+            player.openView(new GUIFrozenAlex());
+            return;
+        }
+        setDialogue(player, "hello").thenRun(() -> {
+            player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_FROZEN_ALEX, true);
+            player.openView(new GUIFrozenAlex());
+        });
+    }
+
+    @Override
+    public String getAbiphoneKey() {
+        return "frozen_alex";
     }
 
     @Override

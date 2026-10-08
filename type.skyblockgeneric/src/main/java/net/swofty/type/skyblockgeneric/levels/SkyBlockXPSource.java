@@ -67,7 +67,7 @@ public enum SkyBlockXPSource {
 
     // ----- Essence Shop Tasks (2,121 XP) -----
     DRAGON_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 185, Availability.NOT_IN_GAME, Material.DRAGON_HEAD),
-    ICE_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 121, Availability.NOT_IN_GAME, Material.ICE),
+    ICE_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 121, Availability.LIVE, Material.ICE),
     SPIDER_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 126, Availability.NOT_IN_GAME, Material.COBWEB),
     UNDEAD_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 128, Availability.NOT_IN_GAME, Material.ZOMBIE_HEAD),
     WITHER_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 161, Availability.NOT_IN_GAME, Material.WITHER_SKELETON_SKULL),
