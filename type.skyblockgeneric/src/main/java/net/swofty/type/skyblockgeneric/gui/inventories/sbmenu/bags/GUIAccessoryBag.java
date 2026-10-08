@@ -4,7 +4,6 @@ import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.text.Text;
-import net.swofty.type.generic.data.datapoints.DatapointInteger;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.Components;
 import net.swofty.type.generic.gui.v2.StatefulView;
@@ -12,48 +11,32 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.ViewSession;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryBag;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryBagPages;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryBagSlots;
 import net.swofty.type.skyblockgeneric.collection.CustomCollectionAward;
-import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryBag;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.AccessoryComponent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
-import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelCause;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
-// GUI for a player's accessory bag, whose slot count grows with collection upgrades
+/**
+ * The Accessory Bag, 45 slots a page. Turning a page saves the open page and reopens the view on the
+ * next one, so every page's slots are loaded fresh from the bag.
+ */
 public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBagState> {
-    private static final SortedMap<CustomCollectionAward, Integer> SLOTS_PER_UPGRADE = new TreeMap<>(Map.of(
-            CustomCollectionAward.ACCESSORY_BAG, 3,
-            CustomCollectionAward.ACCESSORY_BAG_UPGRADE_1, 9,
-            CustomCollectionAward.ACCESSORY_BAG_UPGRADE_2, 15,
-            CustomCollectionAward.ACCESSORY_BAG_UPGRADE_3, 21,
-            CustomCollectionAward.ACCESSORY_BAG_UPGRADE_4, 27,
-            CustomCollectionAward.ACCESSORY_BAG_UPGRADE_5, 33,
-            CustomCollectionAward.ACCESSORY_BAG_UPGRADE_6, 39,
-            CustomCollectionAward.ACCESSORY_BAG_UPGRADE_7, 45,
-            CustomCollectionAward.ACCESSORY_BAG_UPGRADE_8, 51,
-            CustomCollectionAward.ACCESSORY_BAG_UPGRADE_9, 57
-    ));
-
-    public static final int SLOTS_PER_JACOBUS_UPGRADE = 2;
-    public static final int MAX_JACOBUS_UPGRADES = 99;
+    public static final int SLOTS_PER_JACOBUS_UPGRADE = AccessoryBagSlots.PER_JACOBUS_UPGRADE;
+    public static final int MAX_JACOBUS_UPGRADES = AccessoryBagSlots.MAX_JACOBUS_UPGRADES;
     public static final int SKYBLOCK_XP_PER_JACOBUS_UPGRADE = 2;
 
     @Override
     public ViewConfiguration<AccessoryBagState> configuration() {
         return ViewConfiguration.withText(
-                (state, ctx) -> {
-                    SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
-                    int totalSlots = getTotalSlots(player);
-                    int totalPages = Math.max(1, (int) Math.ceil((double) totalSlots / 45));
-                    return Text.key("gui_sbmenu.bags.accessory.title", state.page() + 1, totalPages);
-                },
+                (state, ctx) -> Text.key("gui_sbmenu.bags.accessory.title", state.page() + 1,
+                        AccessoryBagPages.pages(AccessoryBagSlots.total((SkyBlockPlayer) ctx.player()))),
                 InventoryType.CHEST_6_ROW
         );
     }
@@ -71,58 +54,47 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
 
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         int page = state.page();
-        int totalSlots = getTotalSlots(player);
-        int slotsPerPage = 45;
-        int totalPages = Math.max(1, (int) Math.ceil((double) totalSlots / slotsPerPage));
-        int startIndex = page * slotsPerPage;
-        int endSlot = Math.min(totalSlots - startIndex, slotsPerPage);
+        int totalSlots = AccessoryBagSlots.total(player);
+        int totalPages = AccessoryBagPages.pages(totalSlots);
+        int startIndex = AccessoryBagPages.firstSlot(page);
+        int openSlots = AccessoryBagPages.slotsOnPage(page, totalSlots);
 
-        // Editable slots for accessories
-        for (int i = 0; i < endSlot; i++) {
-            int absoluteSlot = i + startIndex;
-            SkyBlockItem item = player.getAccessoryBag().getInSlot(absoluteSlot);
-
-            layout.editable(i, (s, c) -> {
-                SkyBlockPlayer p = (SkyBlockPlayer) c.player();
-                if (item == null) {
-                    return ItemStack.builder(Material.AIR);
-                } else {
-                    return PlayerItemUpdater.playerUpdate(p, item.getItemStack());
-                }
-            }, (slot, oldItem, newItem, s) -> {
-                // Save happens on close
-            });
+        for (int i = 0; i < openSlots; i++) {
+            SkyBlockItem item = player.getAccessoryBag().getInSlot(i + startIndex);
+            layout.editable(i, (s, c) -> item == null
+                    ? ItemStack.builder(Material.AIR)
+                    : PlayerItemUpdater.playerUpdate((SkyBlockPlayer) c.player(), item.getItemStack()),
+                    (slot, oldItem, newItem, s) -> {
+                    });
         }
 
-        // Locked slots
-        for (int i = endSlot; i < slotsPerPage; i++) {
-            int slotIndex = i + startIndex;
-            CustomCollectionAward nextUpgrade = getUpgradeNeededForSlotIndex(slotIndex - getJacobusSlots(player));
-            if (nextUpgrade != null) {
-                layout.slot(i, (s, c) -> ItemStacks.item(Material.RED_STAINED_GLASS_PANE, 1,
+        CustomCollectionAward nextUpgrade = AccessoryBagSlots.nextRedstoneUpgrade(player);
+        for (int i = openSlots; i < AccessoryBagPages.SLOTS_PER_PAGE; i++) {
+            if (nextUpgrade == null) break;
+            layout.slot(i, (s, c) -> ItemStacks.item(Material.RED_STAINED_GLASS_PANE, 1,
                     Text.key("gui_sbmenu.bags.accessory.locked"),
                     Text.keyLines("gui_sbmenu.bags.accessory.locked.lore", nextUpgrade.getDisplay())));
-            }
         }
 
-        // Previous page
         if (page > 0) {
             layout.slot(45, (s, c) -> ItemStacks.item(Material.ARROW, 1,
                             Text.key("gui_sbmenu.bags.accessory.previous_page"), List.of()),
-                    (click, c) -> c.session(AccessoryBagState.class).update(s -> s.withPage(s.page() - 1)));
+                    (click, c) -> c.replace(new GUIAccessoryBag(), new AccessoryBagState(page - 1)));
         }
-
-        // Next page
         if (page < totalPages - 1) {
             layout.slot(53, (s, c) -> ItemStacks.item(Material.ARROW, 1,
                             Text.key("gui_sbmenu.bags.accessory.next_page"), List.of()),
-                    (click, c) -> c.session(AccessoryBagState.class).update(s -> s.withPage(s.page() + 1)));
+                    (click, c) -> c.replace(new GUIAccessoryBag(), new AccessoryBagState(page + 1)));
         }
     }
 
     @Override
     public void onClose(AccessoryBagState state, ViewContext ctx, ViewSession.CloseReason reason) {
-        save((SkyBlockPlayer) ctx.player(), ctx, state.page());
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        DatapointAccessoryBag.PlayerAccessoryBag bag = player.getAccessoryBag();
+        AccessoryBagPages.writePage(bag, state.page(), AccessoryBagSlots.total(player),
+                slot -> new SkyBlockItem(ctx.inventory().getItemStack(slot)));
+        AccessoryBag.save(player, bag);
     }
 
     @Override
@@ -131,81 +103,25 @@ public class GUIAccessoryBag implements StatefulView<GUIAccessoryBag.AccessoryBa
         SkyBlockItem cursorItem = new SkyBlockItem(player.getInventory().getCursorItem());
         SkyBlockItem clickedItem = new SkyBlockItem(player.getInventory().getItemStack(click.slot()));
 
-        if (isItemAllowed(cursorItem, player) && isItemAllowed(clickedItem, player)) {
-            return true;
-        }
+        if (isItemAllowed(cursorItem) && isItemAllowed(clickedItem)) return true;
 
         player.sendMessage(Text.key("gui_sbmenu.bags.accessory.msg.cannot_put"));
         return false;
     }
 
-    private int getTotalSlots(SkyBlockPlayer player) {
-        return getCollectionSlots(player) + getJacobusSlots(player);
-    }
-
     public static int getCollectionSlots(SkyBlockPlayer player) {
-        int totalSlots = 0;
-        for (CustomCollectionAward entry : SLOTS_PER_UPGRADE.keySet()) {
-            if (player.hasCustomCollectionAward(entry)) {
-                totalSlots = Math.max(totalSlots, SLOTS_PER_UPGRADE.get(entry));
-            }
-        }
-        return totalSlots;
+        return AccessoryBagSlots.BASE + AccessoryBagSlots.redstone(player);
     }
 
     public static int getJacobusSlots(SkyBlockPlayer player) {
-        return SLOTS_PER_JACOBUS_UPGRADE * player.getSkyblockDataHandler()
-                .get(SkyBlockDataHandler.Data.JACOBUS_UPGRADES, DatapointInteger.class).getValue();
+        return AccessoryBagSlots.jacobus(player);
     }
 
-    private CustomCollectionAward getUpgradeNeededForSlotIndex(int slotIndex) {
-        for (CustomCollectionAward entry : SLOTS_PER_UPGRADE.keySet()) {
-            if (slotIndex < SLOTS_PER_UPGRADE.get(entry)) {
-                return entry;
-            }
-        }
-        return null;
-    }
-
-    private void save(SkyBlockPlayer player, ViewContext ctx, int page) {
-        DatapointAccessoryBag.PlayerAccessoryBag accessoryBag = player.getAccessoryBag();
-        int totalSlots = getTotalSlots(player);
-        int slotsPerPage = 45;
-        int startIndex = page * slotsPerPage;
-        int endSlot = Math.min(totalSlots - startIndex, slotsPerPage);
-
-        for (int i = 0; i < endSlot; i++) {
-            int absoluteSlot = i + startIndex;
-            SkyBlockItem item = new SkyBlockItem(ctx.inventory().getItemStack(i));
-            if (item.isNA() || item.getMaterial() == Material.AIR) {
-                accessoryBag.removeFromSlot(absoluteSlot);
-            } else {
-                accessoryBag.setInSlot(absoluteSlot, item);
-            }
-        }
-
-        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.ACCESSORY_BAG, DatapointAccessoryBag.class).setValue(accessoryBag);
-    }
-
-    private boolean isItemAllowed(SkyBlockItem item, SkyBlockPlayer player) {
-        if (item.isNA()) return true;
-        if (item.getMaterial().equals(Material.AIR)) return true;
-
-        if (item.hasComponent(AccessoryComponent.class)) {
-            DatapointAccessoryBag.PlayerAccessoryBag accessoryBag = player.getAccessoryBag();
-            accessoryBag.addDiscoveredAccessory(item.getAttributeHandler().getPotentialType());
-            player.getSkyBlockExperience().addExperience(
-                    SkyBlockLevelCause.getAccessoryCause(item.getAttributeHandler().getPotentialType())
-            );
-            return true;
-        } else {
-            return false;
-        }
+    private static boolean isItemAllowed(SkyBlockItem item) {
+        if (item.isNA() || item.getMaterial().equals(Material.AIR)) return true;
+        return item.hasComponent(AccessoryComponent.class);
     }
 
     public record AccessoryBagState(int page) {
-        public AccessoryBagState withPage(int newPage) {
-            return new AccessoryBagState(newPage);
-        }
     }
 }

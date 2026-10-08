@@ -65,8 +65,8 @@ public enum PlayerTemplates {
         return Text.literal(region != null ? region.getName() : "None");
     }),
 
-    // Magical Power & Special Stats
-    MAGICAL_POWER((player, input) -> Text.literal(String.valueOf(player.getMagicalPower()))),
+    // Accessory Power & Special Stats
+    ACCESSORY_POWER((player, input) -> Text.literal(String.valueOf(player.getAccessoryPower()))),
     RUNE_LEVEL((player, input) -> Text.literal(String.valueOf(player.getRuneLevel()))),
 
     // Toggles & Settings

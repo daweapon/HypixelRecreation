@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.slayer.inferno;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.UnderstandableSkyBlockItem;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -36,7 +37,7 @@ public final class BlazeSlayerGear {
         if (damage < player.getMaxHealth() * BURST_THRESHOLD) return damage;
         boolean artifact = false;
         boolean talisman = false;
-        for (SkyBlockItem accessory : player.getAccessoryBag().getUniqueAccessories()) {
+        for (SkyBlockItem accessory : AccessoryOwnership.activeItems(player)) {
             ItemType type = accessory.getAttributeHandler().getPotentialType();
             if (type == ItemType.BURSTSTOPPER_ARTIFACT) artifact = true;
             if (type == ItemType.BURSTSTOPPER_TALISMAN) talisman = true;

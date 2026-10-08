@@ -232,7 +232,7 @@ public class GUILoadouts implements StatefulView<GUILoadouts.LoadoutsState> {
 
                 <7>Every <6>10 MP <7>grants <e>1 Tuning Point<7>.
 
-                <7>Magical Power: <6>425
+                <7>Accessory Power: <6>425
                 <7>Tuning Points: <e>42
 
                 <7>Your tuning:

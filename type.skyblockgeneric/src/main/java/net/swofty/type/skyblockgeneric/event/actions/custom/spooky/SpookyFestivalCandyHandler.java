@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.event.actions.custom.spooky;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 import java.util.List;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
@@ -95,7 +96,7 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
 
     private static double candyAccessoryBonus(SkyBlockPlayer player) {
         boolean hasRelic = false, hasArtifact = false, hasRing = false, hasTalisman = false;
-        for (SkyBlockItem accessory : player.getAccessoryBag().getUniqueAccessories()) {
+        for (SkyBlockItem accessory : AccessoryOwnership.activeItems(player)) {
             ItemType type = accessory.getAttributeHandler().getPotentialType();
             if (type == ItemType.CANDY_RELIC) hasRelic = true;
             else if (type == ItemType.CANDY_ARTIFACT) hasArtifact = true;

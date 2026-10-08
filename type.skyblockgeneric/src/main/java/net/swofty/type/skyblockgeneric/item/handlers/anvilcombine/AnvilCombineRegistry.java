@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandler
 import net.swofty.commons.skyblock.item.PotatoType;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeHotPotatoBookData;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import net.swofty.type.skyblockgeneric.item.Recombobulation;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.EnchantableComponent;
 import net.swofty.type.skyblockgeneric.item.components.HotPotatoableComponent;
@@ -29,6 +30,7 @@ public class AnvilCombineRegistry {
         WinterItemHandlers.registerAnvilCombines();
         CrimsonItemHandlers.registerAnvilCombines();
         HollyDye.registerAnvilCombine();
+        Recombobulation.registerAnvilCombine();
         register("HOT_POTATO_BOOK", new AnvilCombineHandler(
                 (upgradeItem, sacrificeItem) -> {
                     HotPotatoableComponent hotPotatoable = upgradeItem.getComponent(HotPotatoableComponent.class);

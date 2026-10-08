@@ -246,6 +246,26 @@ public class ItemAttributeHandler {
         return ((ItemAttributeRarity) item.getAttribute("rarity")).getValue();
     }
 
+    /**
+     * The rarity the item really has before recombobulation. Accessories with a fixed rarity read it
+     * from their definition, so an accessory saved before its rarity was corrected still counts right.
+     */
+    public Rarity getBaseRarity() {
+        AccessoryComponent accessory = accessoryDefinition();
+        ItemType type = getPotentialType();
+        if (accessory == null || accessory.getDynamicMaxRarity() != null || type == null) return getRarity();
+        return type.rarity;
+    }
+
+    public Rarity getEffectiveRarity() {
+        Rarity base = getBaseRarity();
+        return isRecombobulated() ? base.upgrade() : base;
+    }
+
+    private @Nullable AccessoryComponent accessoryDefinition() {
+        return item.hasComponent(AccessoryComponent.class) ? item.getComponent(AccessoryComponent.class) : null;
+    }
+
     public @Nullable String getUniqueTrackedID() {
         String value = ((ItemAttributeUniqueTrackedID) item.getAttribute("unique-tracked-id")).getValue();
         if (value.equals("none")) return null;
@@ -371,6 +391,8 @@ public class ItemAttributeHandler {
      * This does NOT include extra dynamic statistics like Greed bonus.
      */
     public ItemStatistics getBaseStatistics() {
+        if (accessoryDefinition() != null && item.getConfig() != null && item.getConfig().getDefaultStatistics() != null)
+            return item.getConfig().getDefaultStatistics().clone();
         return ((ItemAttributeStatistics) item.getAttribute("statistics")).getValue().clone();
     }
 

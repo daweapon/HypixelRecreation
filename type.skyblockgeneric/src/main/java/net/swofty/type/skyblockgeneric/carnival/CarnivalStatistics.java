@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.carnival;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.instance.block.Block;
 import net.swofty.commons.ServerType;
@@ -84,7 +85,7 @@ public final class CarnivalStatistics {
 
     private static int intimidationUpgrades(SkyBlockPlayer player) {
         int best = 0;
-        for (SkyBlockItem accessory : player.getAccessoryBag().getUniqueAccessories()) {
+        for (SkyBlockItem accessory : AccessoryOwnership.activeItems(player)) {
             best = Math.max(best, INTIMIDATION_UPGRADES.getOrDefault(accessory.getAttributeHandler().getPotentialType(), 0));
         }
         return best;

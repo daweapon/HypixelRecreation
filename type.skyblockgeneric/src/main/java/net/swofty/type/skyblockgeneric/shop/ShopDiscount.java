@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.shop;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -19,7 +20,7 @@ public final class ShopDiscount {
     }
 
     public static double fraction(SkyBlockPlayer player) {
-        List<ItemType> owned = player.getTalismans();
+        List<ItemType> owned = AccessoryOwnership.ownedTypes(player);
         return SOURCES.stream()
                 .filter(source -> owned.contains(source.accessory()))
                 .mapToDouble(Source::fraction)

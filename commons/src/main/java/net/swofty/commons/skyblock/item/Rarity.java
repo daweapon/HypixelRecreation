@@ -33,25 +33,40 @@ public enum Rarity {
     }
 
     /**
-     * Magical Power an accessory of this rarity contributes to the Accessory Bag, matching real
-     * Hypixel's table. Also drives the SkyBlock XP that accessory is worth, since SkyBlock
-     * Levels grant +1 XP per point of Magical Power.
+     * Accessory Power (formerly Magical Power) an accessory of this rarity adds to the Accessory
+     * Bag. SkyBlock Levels pay +1 XP per point of it.
      */
-    public int getMagicalPower() {
+    public int getAccessoryPower() {
         return switch (this) {
             case COMMON, SPECIAL -> 3;
             case UNCOMMON, VERY_SPECIAL -> 5;
             case RARE -> 8;
             case EPIC -> 12;
             case LEGENDARY -> 16;
-            case MYTHIC -> 22;
-            case DIVINE -> 22;
-            case ADMIN -> 0;
+            case MYTHIC, ADMIN -> 22;
+            case DIVINE -> 28;
         };
     }
 
+    public boolean canUpgrade() {
+        return upgrade() != this;
+    }
+
+    /**
+     * One step up, as a Recombobulator 3000 applies it: Common through Mythic climb one tier and
+     * Special becomes Very Special. Divine, Very Special and Admin are already at the top of their ladder.
+     */
     public Rarity upgrade() {
-        return values()[Math.min(this.ordinal() + 1, values().length - 1)];
+        return switch (this) {
+            case COMMON -> UNCOMMON;
+            case UNCOMMON -> RARE;
+            case RARE -> EPIC;
+            case EPIC -> LEGENDARY;
+            case LEGENDARY -> MYTHIC;
+            case MYTHIC -> DIVINE;
+            case SPECIAL -> VERY_SPECIAL;
+            case DIVINE, VERY_SPECIAL, ADMIN -> this;
+        };
     }
 
     public Rarity downgrade() {

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.compactor;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -89,7 +90,7 @@ public final class PersonalCompactorService {
     }
 
     private static int getEquippedTier(SkyBlockPlayer player) {
-        for (SkyBlockItem accessory : player.getAccessoryBag().getUniqueAccessories()) {
+        for (SkyBlockItem accessory : AccessoryOwnership.activeItems(player)) {
             ItemType type = accessory.getAttributeHandler().getPotentialType();
             if (type == null) continue;
             switch (type) {

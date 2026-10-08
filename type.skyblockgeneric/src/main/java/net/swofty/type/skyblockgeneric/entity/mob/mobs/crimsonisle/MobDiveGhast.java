@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.particle.Particle;
 import net.swofty.commons.skyblock.item.ItemType;
@@ -78,6 +79,7 @@ public class MobDiveGhast extends CrimsonIsleMob {
     }
 
     private static boolean wearsSunshade(SkyBlockPlayer player) {
-        return new SkyBlockItem(player.getHelmet()).getAttributeHandler().getPotentialType() == ItemType.NETHERRACK_LOOKING_SUNSHADE;
+        return new SkyBlockItem(player.getHelmet()).getAttributeHandler().getPotentialType() == ItemType.NETHERRACK_LOOKING_SUNSHADE
+                || AccessoryOwnership.owns(player, ItemType.NETHERRACK_LOOKING_SUNSHADE);
     }
 }

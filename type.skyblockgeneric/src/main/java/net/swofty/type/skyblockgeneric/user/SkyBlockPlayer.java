@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.user;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
+import net.swofty.type.skyblockgeneric.accessory.AccessoryPower;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -269,34 +271,15 @@ public class SkyBlockPlayer extends HypixelPlayer {
     }
 
     public boolean hasTalisman(ItemType talisman) {
-        return getTalismans().stream().anyMatch(talisman1 -> talisman1 == talisman);
+        return AccessoryOwnership.owns(this, talisman);
     }
 
     public List<ItemType> getTalismans() {
-        List<ItemType> inInventory = Stream.of(getAllInventoryItems())
-                .filter(item -> item.hasComponent(AccessoryComponent.class))
-                .map(item -> item.getAttributeHandler().getPotentialType()).toList();
-
-        List<ItemType> inAccessoryBag = getAccessoryBag().getAllAccessories().stream()
-                .filter(item -> item.hasComponent(AccessoryComponent.class))
-                .map(item -> item.getAttributeHandler().getPotentialType()).toList();
-
-        return Stream.concat(inInventory.stream(), inAccessoryBag.stream()).collect(Collectors.toList());
+        return AccessoryOwnership.ownedTypes(this);
     }
 
-    public static final int RIFT_PRISM_IMBUED_MAGICAL_POWER = 11;
-
-    public Integer getMagicalPower() {
-
-        int magicalPower = 0;
-
-        for (SkyBlockItem accessory : getAccessoryBag().getUniqueAccessories()) {
-            magicalPower += accessory.getAttributeHandler().getRarity().getMagicalPower();
-        }
-        if (getSkyblockDataHandler().get(SkyBlockDataHandler.Data.RIFT_PRISM_IMBUED, DatapointBoolean.class).getValue()) {
-            magicalPower += RIFT_PRISM_IMBUED_MAGICAL_POWER;
-        }
-        return magicalPower;
+    public int getAccessoryPower() {
+        return AccessoryPower.of(this);
     }
 
     public void setMuseumData(DatapointMuseum.MuseumData data) {

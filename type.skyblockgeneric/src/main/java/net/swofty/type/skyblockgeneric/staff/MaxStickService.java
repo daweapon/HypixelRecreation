@@ -164,6 +164,7 @@ public final class MaxStickService {
         KuudraFollowerProgress.maxOut(player);
         CrimsonTownProgress.maxOut(player);
         MaxPets.maxOut(player);
+        MaxAccessories.maxOut(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have
         // granted its own SkyBlock XP causes first or the top-up would overshoot.
         maxSkyBlockLevel(player);
