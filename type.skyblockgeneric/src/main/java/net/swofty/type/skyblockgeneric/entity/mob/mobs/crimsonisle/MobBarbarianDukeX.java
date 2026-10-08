@@ -60,7 +60,7 @@ public class MobBarbarianDukeX extends CrimsonMinibossMob {
     }
 
     private boolean insideDomain() {
-        return getPosition().distance(miniboss().getSpawn()) <= DOMAIN_RADIUS;
+        return getPosition().distance(home()) <= DOMAIN_RADIUS;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class MobBarbarianDukeX extends CrimsonMinibossMob {
 
     @Override
     protected void onAiTick(int ticks) {
-        if (ticks % 20 == 0) LavaBeam.ring(getInstance(), miniboss().getSpawn(), DOMAIN_RADIUS, Particle.FLAME);
+        if (ticks % 20 == 0) LavaBeam.ring(getInstance(), home(), DOMAIN_RADIUS, Particle.FLAME);
         List<SkyBlockPlayer> fighters = fighters(24);
         if (leapTarget != null) {
             tickLeap();

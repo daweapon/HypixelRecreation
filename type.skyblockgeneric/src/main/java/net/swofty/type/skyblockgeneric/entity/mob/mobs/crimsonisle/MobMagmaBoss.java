@@ -127,7 +127,7 @@ public class MobMagmaBoss extends CrimsonMinibossMob {
             jumpTarget = fighters.get(ThreadLocalRandom.current().nextInt(fighters.size())).getPosition();
             telegraph = JUMP_TELEGRAPH;
             fireZones.clear();
-            Pos centre = miniboss().getSpawn();
+            Pos centre = home();
             for (int i = 0; i < 3; i++) {
                 Vec away = jumpTarget.sub(centre).asVec().withY(0);
                 if (away.lengthSquared() < 1) away = new Vec(1, 0, 0);
@@ -163,7 +163,7 @@ public class MobMagmaBoss extends CrimsonMinibossMob {
         nextSplitAt -= SPLIT_EVERY;
         jumpsSinceSplit = 0;
         fireZones.clear();
-        teleport(miniboss().getSpawn());
+        teleport(home());
         setInvisible(true);
         Map<UUID, SkyBlockPlayer> attackers = new HashMap<>();
         fighters.stream().filter(this::isProvokedBy).forEach(player -> attackers.put(player.getUuid(), player));
@@ -180,14 +180,14 @@ public class MobMagmaBoss extends CrimsonMinibossMob {
                     case 0 -> CrimsonMobs.UNSTABLE_MAGMA_40;
                     case 1 -> CrimsonMobs.UNSTABLE_MAGMA_60;
                     default -> CrimsonMobs.UNSTABLE_MAGMA_80;
-                }), random);
+                }).pit(home()), random);
             }
         }
         fighters.forEach(player -> player.sendMessage("<4><l>MAGMA BOSS <c>split apart! Kill the Magmas!"));
     }
 
     private void spawnSplit(CrimsonIsleMob mob, ThreadLocalRandom random) {
-        mob.setInstance(getInstance(), miniboss().getSpawn().add(random.nextDouble(-8, 8), 1, random.nextDouble(-8, 8)));
+        mob.setInstance(getInstance(), home().add(random.nextDouble(-8, 8), 1, random.nextDouble(-8, 8)));
         splitMobs.add(mob);
     }
 

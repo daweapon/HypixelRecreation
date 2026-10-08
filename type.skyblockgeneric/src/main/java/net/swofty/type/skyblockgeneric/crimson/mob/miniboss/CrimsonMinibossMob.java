@@ -13,7 +13,9 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrimsonIsle;
 import net.swofty.type.skyblockgeneric.event.custom.CrimsonMinibossKilledEvent;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import org.jetbrains.annotations.Nullable;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.List;
@@ -28,6 +30,9 @@ import java.util.UUID;
 public abstract class CrimsonMinibossMob extends CrimsonIsleMob {
     public static final String DAILY_KEY = "miniboss:day:";
     private static final double LEASH = 30;
+    private static final double NATURAL_SPAWN_TOLERANCE = 2;
+
+    private @Nullable Pos home;
 
     protected CrimsonMinibossMob(CrimsonMobProfile profile) {
         super(profile);
@@ -46,11 +51,29 @@ public abstract class CrimsonMinibossMob extends CrimsonIsleMob {
     }
 
     @Override
+    public void onSpawn() {
+        if (home == null) home = getPosition();
+        super.onSpawn();
+    }
+
+    /** Where this boss fights: its arena when spawned naturally, wherever staff summoned it otherwise. */
+    public Pos home() {
+        return home != null ? home : miniboss().getSpawn();
+    }
+
+    public boolean atNaturalSpawn() {
+        return isAtNaturalSpawn(home(), miniboss());
+    }
+
+    public static boolean isAtNaturalSpawn(Pos home, CrimsonMiniboss miniboss) {
+        return home.distance(miniboss.getSpawn()) <= NATURAL_SPAWN_TOLERANCE;
+    }
+
+    @Override
     public void tick(long time) {
         super.tick(time);
-        if (isDead() || isRemoved() || getInstance() == null || miniboss() == null) return;
-        Pos home = miniboss().getSpawn();
-        if (getPosition().distance(home) > LEASH) teleport(home);
+        if (isDead() || isRemoved() || getInstance() == null) return;
+        if (getPosition().distance(home()) > LEASH) teleport(home());
     }
 
     @Override
@@ -77,12 +100,21 @@ public abstract class CrimsonMinibossMob extends CrimsonIsleMob {
     public static boolean awardDailyReputation(SkyBlockPlayer player, CrimsonMiniboss miniboss) {
         CrimsonFaction faction = CrimsonReputationService.faction(player);
         if (faction == null) return false;
-        long today = LocalDate.now(ZoneOffset.UTC).toEpochDay();
         String key = DAILY_KEY + miniboss.name();
-        if (DatapointCrimsonIsle.of(player).getNumber(key) == today + 1) return false;
-        DatapointCrimsonIsle.edit(player, data -> data.getNumbers().put(key, today + 1));
+        long marker = dailyMarker(Instant.now());
+        if (!isFirstKillToday(DatapointCrimsonIsle.of(player).getNumber(key), marker)) return false;
+        DatapointCrimsonIsle.edit(player, data -> data.getNumbers().put(key, marker));
         CrimsonReputationService.add(player, faction, CrimsonMiniboss.DAILY_REPUTATION, miniboss.getDisplayName());
         return true;
+    }
+
+    /** The stored value for a kill at {@code now}: the UTC day number plus one, so an unset 0 never matches. */
+    public static long dailyMarker(Instant now) {
+        return LocalDate.ofInstant(now, ZoneOffset.UTC).toEpochDay() + 1;
+    }
+
+    public static boolean isFirstKillToday(long stored, long marker) {
+        return stored != marker;
     }
 
     protected void onDefeated() {

@@ -40,6 +40,7 @@ public class MobMageOutlaw extends CrimsonMinibossMob {
     private static final double CRYSTAL_DAMAGE_CAP = 10_000_000;
     private static final int PATTERN_TICKS = 220;
     private static final int REST_TICKS = 60;
+    private static final double SUMMONED_ARENA = 25;
 
     private enum Pattern { CRYSTAL, SHIELD_LIGHTNING, SHIELD_RING, SKULLS }
 
@@ -77,13 +78,17 @@ public class MobMageOutlaw extends CrimsonMinibossMob {
         return region != null && region.getType() == RegionType.COURTYARD;
     }
 
+    private boolean inArena(Pos position) {
+        return atNaturalSpawn() ? inCourtyard(position) : position.distance(home()) <= SUMMONED_ARENA;
+    }
+
     private List<SkyBlockPlayer> courtyardPlayers() {
-        return playersWithin(40).stream().filter(player -> inCourtyard(player.getPosition())).toList();
+        return playersWithin(40).stream().filter(player -> inArena(player.getPosition())).toList();
     }
 
     @Override
     protected boolean acceptsDamageFrom(SkyBlockPlayer player, Damage damage) {
-        if (!inCourtyard(player.getPosition())) return false;
+        if (!inArena(player.getPosition())) return false;
         if (shielded()) {
             trueStrike(player, REFLECT_DAMAGE);
             return false;
@@ -129,10 +134,10 @@ public class MobMageOutlaw extends CrimsonMinibossMob {
             case CRYSTAL -> {
                 crystal = new Entity(EntityType.END_CRYSTAL);
                 crystal.setNoGravity(true);
-                crystal.setInstance(getInstance(), miniboss().getSpawn().add(0, 4, 0));
+                crystal.setInstance(getInstance(), home().add(0, 4, 0));
             }
             case SHIELD_LIGHTNING -> {
-                teleport(miniboss().getSpawn().add(0, 3, 0));
+                teleport(home().add(0, 3, 0));
                 setNoGravity(true);
                 for (SkyBlockPlayer player : players) {
                     Pos under = player.getPosition().sub(0, 1, 0);
@@ -143,13 +148,13 @@ public class MobMageOutlaw extends CrimsonMinibossMob {
                 }
             }
             case SHIELD_RING -> {
-                teleport(miniboss().getSpawn().add(0, 3, 0));
+                teleport(home().add(0, 3, 0));
                 setNoGravity(true);
             }
             case SKULLS -> {
                 for (int side : new int[]{-1, 1}) {
                     MobSummonedSkull skull = new MobSummonedSkull(this, false);
-                    skull.setInstance(getInstance(), miniboss().getSpawn().add(side * 8, 2, 0));
+                    skull.setInstance(getInstance(), home().add(side * 8, 2, 0));
                     skulls.add(skull);
                 }
             }
@@ -163,7 +168,7 @@ public class MobMageOutlaw extends CrimsonMinibossMob {
             strike(player, CRYSTAL_ZAP);
         }
         for (SkyBlockPlayer player : playersWithin(40)) {
-            if (!inCourtyard(player.getPosition()) && isProvokedBy(player)) player.teleport(miniboss().getSpawn().add(4, 0, 0));
+            if (!inArena(player.getPosition()) && isProvokedBy(player)) player.teleport(home().add(4, 0, 0));
         }
     }
 
@@ -181,7 +186,7 @@ public class MobMageOutlaw extends CrimsonMinibossMob {
 
     private void tickRing(List<SkyBlockPlayer> players) {
         double radius = 1 + 11.0 * (PATTERN_TICKS - patternTicks) / PATTERN_TICKS;
-        Pos centre = miniboss().getSpawn();
+        Pos centre = home();
         LavaBeam.ring(getInstance(), centre, radius, Particle.DUST);
         if (patternTicks % 20 != 0) return;
         players.stream().filter(player -> player.getPosition().distance(centre) <= radius)
@@ -195,7 +200,7 @@ public class MobMageOutlaw extends CrimsonMinibossMob {
         strikes.clear();
         if (shielded()) {
             setNoGravity(false);
-            teleport(miniboss().getSpawn());
+            teleport(home());
         }
         pattern = null;
         rest = REST_TICKS;

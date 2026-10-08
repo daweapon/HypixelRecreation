@@ -15,9 +15,12 @@ import net.swofty.type.skyblockgeneric.item.components.ArmorComponent;
 import net.swofty.type.skyblockgeneric.loottable.LootAffector;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.random.RandomGenerator;
 
 /**
  * Rolls a Crimson Isle drop table for one player through {@link LootRoll} and hands the items over the way
@@ -42,13 +45,18 @@ public final class CrimsonMobLoot {
         List<ItemType> items = drop.availableItems();
         if (items.isEmpty()) return null;
         double chance = drop.magicFind() ? boosted(player, mob, items.getFirst(), drop.chancePercent()) : drop.chancePercent();
+        return decide(player.getUuid(), items, chance, ThreadLocalRandom.current());
+    }
+
+    public static @Nullable ItemType decide(UUID player, List<ItemType> items, double chance, RandomGenerator random) {
+        if (items.isEmpty()) return null;
         if (items.size() == 1) {
-            return LootRoll.roll(player.getUuid(), items.getFirst(), chance) ? items.getFirst() : null;
+            return LootRoll.roll(player, items.getFirst(), chance, random) ? items.getFirst() : null;
         }
-        ItemType forced = LootRoll.claim(player.getUuid(), items);
+        ItemType forced = LootRoll.claim(player, items);
         if (forced != null) return forced;
-        if (!LootRoll.roll(player.getUuid(), null, chance)) return null;
-        return LootRoll.pick(player.getUuid(), items, type -> type, type -> 1, ThreadLocalRandom.current());
+        if (!LootRoll.roll(player, null, chance, random)) return null;
+        return LootRoll.pick(player, items, type -> type, type -> 1, random);
     }
 
     private static double boosted(SkyBlockPlayer player, SkyBlockMob mob, ItemType type, double chance) {

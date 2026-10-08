@@ -109,7 +109,7 @@ public class MobAshfang extends CrimsonMinibossMob implements AshfangArena {
     }
 
     private void summon() {
-        Pos centre = miniboss().getSpawn();
+        Pos centre = home();
         for (int i = 0; i < 12; i++) {
             double angle = Math.PI * 2 * i / 12;
             AshfangMinionMob minion = switch (i % 3) {
@@ -139,7 +139,7 @@ public class MobAshfang extends CrimsonMinibossMob implements AshfangArena {
         if (--phaseTicks > 0) {
             if (!healing && SUMMON_TICKS - phaseTicks >= ORBS_AT && orbs.size() < 3 && (SUMMON_TICKS - phaseTicks - ORBS_AT) % 20 == 0) {
                 ThreadLocalRandom random = ThreadLocalRandom.current();
-                orbs.add(miniboss().getSpawn().add(random.nextDouble(-7, 7), 1.5, random.nextDouble(-7, 7)));
+                orbs.add(home().add(random.nextDouble(-7, 7), 1.5, random.nextDouble(-7, 7)));
             }
             return;
         }
@@ -161,7 +161,7 @@ public class MobAshfang extends CrimsonMinibossMob implements AshfangArena {
     }
 
     private void burnBarrier(List<SkyBlockPlayer> nearby) {
-        LavaBeam.ring(getInstance(), miniboss().getSpawn(), BARRIER_RADIUS, Particle.FLAME);
+        LavaBeam.ring(getInstance(), home(), BARRIER_RADIUS, Particle.FLAME);
         nearby.stream().filter(player -> player.getPosition().distance(getPosition()) <= BARRIER_RADIUS)
                 .forEach(player -> trueStrike(player, player.getMaxHealth() * BARRIER_SHARE));
     }
