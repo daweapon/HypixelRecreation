@@ -12,7 +12,7 @@ public enum IceEssencePerk implements EssencePerk {
     COLD_EFFICIENCY("Cold Efficiency", new double[]{2, 4, 6, 8, 10},
             new long[]{1_000, 1_500, 2_000, 3_000, 5_000}, "Dungeon classes aren't in this server yet."),
     COOLED_FORGES("Cooled Forges", new double[]{4, 8, 12, 16, 20},
-            new long[]{100, 1_000, 2_000, 3_000, 5_000}, "Salvaging isn't in this server yet."),
+            new long[]{100, 1_000, 2_000, 3_000, 5_000}, null),
     FROZEN_SKIN("Frozen Skin", new double[]{1, 2, 3, 4, 5},
             new long[]{1_000, 1_500, 2_000, 3_000, 5_000}, null),
     SEASON_OF_JOY("Season of Joy", new double[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},

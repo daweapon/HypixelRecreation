@@ -29,6 +29,8 @@ import java.util.stream.Stream;
 public class ItemAttributeHandler {
     SkyBlockItem item;
 
+    private static final double STAR_STAT_BONUS = 0.02;
+
     public ItemAttributeHandler(SkyBlockItem item) {
         this.item = item;
     }
@@ -377,7 +379,18 @@ public class ItemAttributeHandler {
     public ItemStatistics getStatistics() {
         ItemStatistics baseStats = getBaseStatistics();
         ItemStatistics extraStats = getExtraDynamicStatistics();
-        return ItemStatistics.add(baseStats, extraStats);
+        ItemStatistics statistics = ItemStatistics.add(baseStats, extraStats);
+        int stars = getUpgradeLevel();
+        if (stars <= 0) return statistics;
+        return ItemStatistics.add(statistics, ItemStatistics.multiply(baseStats, stars * STAR_STAT_BONUS));
+    }
+
+    public int getUpgradeLevel() {
+        return ((ItemAttributeUpgradeLevel) item.getAttribute("upgrade_level")).getValue();
+    }
+
+    public void setUpgradeLevel(int stars) {
+        ((ItemAttributeUpgradeLevel) item.getAttribute("upgrade_level")).setValue(stars);
     }
 
     /**

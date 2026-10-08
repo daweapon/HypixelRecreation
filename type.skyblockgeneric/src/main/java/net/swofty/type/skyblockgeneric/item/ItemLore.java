@@ -20,6 +20,7 @@ import net.swofty.commons.text.TextBody;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import net.swofty.type.skyblockgeneric.essence.EssenceStars;
 import net.swofty.type.skyblockgeneric.fishing.rod.FishingRodLoreBuilder;
 import net.swofty.type.skyblockgeneric.gems.GemRarity;
 import net.swofty.type.skyblockgeneric.gems.Gemstone;
@@ -505,9 +506,11 @@ public class ItemLore {
 
 	private static Text reforgedName(SkyBlockItem item, Text displayName) {
 		Reforge reforge = item.getAttributeHandler().getReforge();
-		if (!item.hasComponent(ReforgableComponent.class) || reforge == null) return displayName;
-
-		return Text.of("{} ", Text.parseLenient(reforge.getPrefix())).append(displayName);
+		Text named = !item.hasComponent(ReforgableComponent.class) || reforge == null
+				? displayName
+				: Text.of("{} ", Text.parseLenient(reforge.getPrefix())).append(displayName);
+		int stars = item.getAttributeHandler().getUpgradeLevel();
+		return stars > 0 ? named.append(" " + EssenceStars.display(stars)) : named;
 	}
 
 	private static Text displayRarity(SkyBlockItem item, Rarity rarity) {

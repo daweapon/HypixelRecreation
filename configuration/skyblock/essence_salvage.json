@@ -1,0 +1,26 @@
+{
+ "source": "https://hypixelskyblock.minecraft.wiki/w/Salvaging (Crimson Essence table)",
+ "salvage": {
+  "RUNIC_STAFF": {"type": "CRIMSON", "essence": 500},
+  "HOLLOW_WAND": {"type": "CRIMSON", "essence": 500},
+  "KUUDRA_MANDIBLE": {"type": "CRIMSON", "essence": 500},
+  "MOLTEN_BELT": {"type": "CRIMSON", "essence": 500},
+  "MOLTEN_BRACELET": {"type": "CRIMSON", "essence": 500},
+  "MOLTEN_CLOAK": {"type": "CRIMSON", "essence": 500},
+  "MOLTEN_NECKLACE": {"type": "CRIMSON", "essence": 500},
+  "TORMENTOR": {"type": "CRIMSON", "essence": 500},
+  "FLAMING_FIST": {"type": "CRIMSON", "essence": 50, "items": {"LEATHER_CLOTH": 3}},
+  "TAURUS_HELMET": {"type": "CRIMSON", "essence": 30},
+  "FLAMING_CHESTPLATE": {"type": "CRIMSON", "essence": 25},
+  "MOOGMA_LEGGINGS": {"type": "CRIMSON", "essence": 20},
+  "NETHERRACK_LOOKING_SUNSHADE": {"type": "CRIMSON", "essence": 15},
+  "SLUG_BOOTS": {"type": "CRIMSON", "essence": 15},
+  "BLADE_OF_THE_VOLCANO": {"type": "CRIMSON", "essence": 10},
+  "STAFF_OF_THE_VOLCANO": {"type": "CRIMSON", "essence": 10},
+  "RAMPART_BOOTS": {"type": "CRIMSON", "essence": 5},
+  "RAMPART_CHESTPLATE": {"type": "CRIMSON", "essence": 5},
+  "RAMPART_HELMET": {"type": "CRIMSON", "essence": 5},
+  "RAMPART_LEGGINGS": {"type": "CRIMSON", "essence": 5},
+  "SWORD_OF_BAD_HEALTH": {"type": "CRIMSON", "essence": 5}
+ }
+}
