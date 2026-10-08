@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.staff;
 
+import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.user.categories.Rank;
@@ -141,6 +142,7 @@ public final class MaxStickService {
         meetDamia(player);
         maxCarnival(player);
         MythologicalItemHandlers.setBrainFoodEaten(player, MythologicalItemHandlers.BRAIN_FOOD_LIMIT);
+        BottleOfJyrre.setRefinedConsumed(player, BottleOfJyrre.REFINED_LIMIT);
         IceEssenceShop.maxAvailable(player);
         ChickenRaceProgress.maxOut(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have

@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.item.handlers.interactable;
 
+import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
+import net.swofty.type.skyblockgeneric.gifts.SnowCannon;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
 import net.swofty.type.skyblockgeneric.elections.jerrypocalypse.HiddenJerryType;
 import net.swofty.type.skyblockgeneric.elections.jerrypocalypse.JerryBoxLoot;
@@ -24,6 +26,8 @@ public class InteractableRegistry {
 
     static {
         MythologicalItemHandlers.registerInteractables();
+        BottleOfJyrre.registerInteractables();
+        SnowCannon.registerInteractables();
         register("SKYBLOCK_MENU_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 ((skyBlockPlayer, skyBlockItem) -> skyBlockPlayer.openView(new GUISkyBlockMenu()))
         ).leftClickHandler(

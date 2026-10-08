@@ -435,6 +435,22 @@ public class ItemAttributeHandler {
         return getBreakingPower() != 0;
     }
 
+    public long getJyrreAgeMinutes() {
+        return ((ItemAttributeJyrreAge) item.getAttribute("jyrre_age_minutes")).getValue();
+    }
+
+    public void setJyrreAgeMinutes(long minutes) {
+        ((ItemAttributeJyrreAge) item.getAttribute("jyrre_age_minutes")).setValue(minutes);
+    }
+
+    public int getSnowballAmmo() {
+        return ((ItemAttributeSnowballAmmo) item.getAttribute("ammo")).getValue();
+    }
+
+    public void setSnowballAmmo(int ammo) {
+        ((ItemAttributeSnowballAmmo) item.getAttribute("ammo")).setValue(ammo);
+    }
+
     public long getDarkAuctionPrice() {
         return ((ItemAttributeDarkAuctionPrice) item.getAttribute("dark_auction_price")).getValue();
     }

@@ -190,22 +190,13 @@ items:
     material: player_head
     name: "Snow Suit Helmet"
     rarity: EPIC
-    lore:
-      - "\xA76Full Set Bonus: Cold Thumb"
-      - "\xA77Allows the wearer to shoot unlimited"
-      - "\xA77snowballs when using \xA79Frosty the"
-      - "\xA79Snow Cannon\xA77."
-      - ""
-      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
-      - "\xA77chance for every present you earn"
-      - "\xA77from the \xA7cGift Attack \xA77minigame!"
-      - ""
-      - "\xA77All stats of this armor piece are"
-      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
     default_statistics:
       health: 70
       defense: 30
     components:
+      - id: LORE_UPDATE
+        handler_id: SNOW_SUIT
+        is_absolute: false
       - id: STANDARD_ITEM
         standard_item_type: HELMET
       - id: SKULL_HEAD
@@ -215,22 +206,13 @@ items:
     material: leather_chestplate
     name: "Snow Suit Chestplate"
     rarity: EPIC
-    lore:
-      - "\xA76Full Set Bonus: Cold Thumb"
-      - "\xA77Allows the wearer to shoot unlimited"
-      - "\xA77snowballs when using \xA79Frosty the"
-      - "\xA79Snow Cannon\xA77."
-      - ""
-      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
-      - "\xA77chance for every present you earn"
-      - "\xA77from the \xA7cGift Attack \xA77minigame!"
-      - ""
-      - "\xA77All stats of this armor piece are"
-      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
     default_statistics:
       health: 100
       defense: 40
     components:
+      - id: LORE_UPDATE
+        handler_id: SNOW_SUIT
+        is_absolute: false
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
       - id: LEATHER_COLOR
@@ -242,22 +224,13 @@ items:
     material: leather_leggings
     name: "Snow Suit Leggings"
     rarity: EPIC
-    lore:
-      - "\xA76Full Set Bonus: Cold Thumb"
-      - "\xA77Allows the wearer to shoot unlimited"
-      - "\xA77snowballs when using \xA79Frosty the"
-      - "\xA79Snow Cannon\xA77."
-      - ""
-      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
-      - "\xA77chance for every present you earn"
-      - "\xA77from the \xA7cGift Attack \xA77minigame!"
-      - ""
-      - "\xA77All stats of this armor piece are"
-      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
     default_statistics:
       health: 75
       defense: 30
     components:
+      - id: LORE_UPDATE
+        handler_id: SNOW_SUIT
+        is_absolute: false
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
       - id: LEATHER_COLOR
@@ -269,22 +242,13 @@ items:
     material: leather_boots
     name: "Snow Suit Boots"
     rarity: EPIC
-    lore:
-      - "\xA76Full Set Bonus: Cold Thumb"
-      - "\xA77Allows the wearer to shoot unlimited"
-      - "\xA77snowballs when using \xA79Frosty the"
-      - "\xA79Snow Cannon\xA77."
-      - ""
-      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
-      - "\xA77chance for every present you earn"
-      - "\xA77from the \xA7cGift Attack \xA77minigame!"
-      - ""
-      - "\xA77All stats of this armor piece are"
-      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
     default_statistics:
       health: 65
       defense: 25
     components:
+      - id: LORE_UPDATE
+        handler_id: SNOW_SUIT
+        is_absolute: false
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
       - id: LEATHER_COLOR
@@ -296,23 +260,14 @@ items:
     material: player_head
     name: "Snow Cloak"
     rarity: RARE
-    lore:
-      - "\xA76Full Set Bonus: Cold Thumb"
-      - "\xA77Allows the wearer to shoot unlimited"
-      - "\xA77snowballs when using \xA79Frosty the"
-      - "\xA79Snow Cannon\xA77."
-      - ""
-      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
-      - "\xA77chance for every present you earn"
-      - "\xA77from the \xA7cGift Attack \xA77minigame!"
-      - ""
-      - "\xA77All stats of this armor piece are"
-      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
     default_statistics:
       health: 5
       intelligence: 5
       speed: 2
     components:
+      - id: LORE_UPDATE
+        handler_id: SNOW_SUIT
+        is_absolute: false
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
       - id: SKULL_HEAD
@@ -322,23 +277,14 @@ items:
     material: player_head
     name: "Snow Belt"
     rarity: RARE
-    lore:
-      - "\xA76Full Set Bonus: Cold Thumb"
-      - "\xA77Allows the wearer to shoot unlimited"
-      - "\xA77snowballs when using \xA79Frosty the"
-      - "\xA79Snow Cannon\xA77."
-      - ""
-      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
-      - "\xA77chance for every present you earn"
-      - "\xA77from the \xA7cGift Attack \xA77minigame!"
-      - ""
-      - "\xA77All stats of this armor piece are"
-      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
     default_statistics:
       health: 5
       intelligence: 5
       speed: 2
     components:
+      - id: LORE_UPDATE
+        handler_id: SNOW_SUIT
+        is_absolute: false
       - id: STANDARD_ITEM
         standard_item_type: BELT
       - id: SKULL_HEAD
@@ -348,23 +294,14 @@ items:
     material: player_head
     name: "Snow Gloves"
     rarity: RARE
-    lore:
-      - "\xA76Full Set Bonus: Cold Thumb"
-      - "\xA77Allows the wearer to shoot unlimited"
-      - "\xA77snowballs when using \xA79Frosty the"
-      - "\xA79Snow Cannon\xA77."
-      - ""
-      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
-      - "\xA77chance for every present you earn"
-      - "\xA77from the \xA7cGift Attack \xA77minigame!"
-      - ""
-      - "\xA77All stats of this armor piece are"
-      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
     default_statistics:
       health: 5
       intelligence: 5
       speed: 2
     components:
+      - id: LORE_UPDATE
+        handler_id: SNOW_SUIT
+        is_absolute: false
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
       - id: SKULL_HEAD
@@ -374,23 +311,14 @@ items:
     material: player_head
     name: "Snow Necklace"
     rarity: RARE
-    lore:
-      - "\xA76Full Set Bonus: Cold Thumb"
-      - "\xA77Allows the wearer to shoot unlimited"
-      - "\xA77snowballs when using \xA79Frosty the"
-      - "\xA79Snow Cannon\xA77."
-      - ""
-      - "\xA77Each piece grants a \xA7a5% \xA77bonus gift"
-      - "\xA77chance for every present you earn"
-      - "\xA77from the \xA7cGift Attack \xA77minigame!"
-      - ""
-      - "\xA77All stats of this armor piece are"
-      - "\xA77doubled while on \xA7cJerry's Workshop\xA77!"
     default_statistics:
       health: 5
       intelligence: 5
       speed: 2
     components:
+      - id: LORE_UPDATE
+        handler_id: SNOW_SUIT
+        is_absolute: false
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
       - id: SKULL_HEAD
@@ -437,16 +365,14 @@ items:
     material: potion
     name: "Bottle of Jyrre"
     rarity: RARE
-    lore:
-      - "\xA77Consume to boost your \xA7b"
-      - "\xA7bIntelligence \xA77for \xA7a60m\xA77."
-      - ""
-      - "\xA77Keep this item in your inventory to"
-      - "\xA77increase the bonus up to \xA7b+300"
-      - "\xA7bIntelligence\xA77, at which point the item"
-      - "\xA7c\xA7oevolves\xA77!"
     components:
-      - id: NOT_FINISHED_YET
+      - id: LORE_UPDATE
+        handler_id: BOTTLE_OF_JYRRE
+        is_absolute: false
+      - id: INTERACTABLE
+        handler_id: BOTTLE_OF_JYRRE
+      - id: SELLABLE
+        value: 1000.0
 
   - id: KRAMPUS_HELMET
     material: player_head

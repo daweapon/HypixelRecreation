@@ -6,9 +6,13 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.jerrysworkshop.gui.GUIShopFrosty;
+import net.swofty.type.skyblockgeneric.gifts.SnowCannon;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Decorative NPC for Frosty, found in Jerry's Workshop.
+// Frosty in Jerry's Workshop: gives a free Snow Cannon on the first visit, refills carried cannons at
+// 1 coin per Snowball, and otherwise sells another Snow Cannon.
 public class NPCFrosty extends HypixelNPC {
 
 	public NPCFrosty() {
@@ -44,7 +48,23 @@ public class NPCFrosty extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-		event.player().getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_FROSTY, true);
-		event.player().openView(new GUIShopFrosty());
+		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+		boolean firstVisit = !player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_FROSTY);
+		player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_FROSTY, true);
+
+		if (SnowCannon.hasAnyCannon(player)) {
+			int refilled = SnowCannon.refill(player);
+			player.sendMessage(refilled > 0
+					? "<c>Frosty<f>: Refilled <a>" + String.format("%,d", refilled) + " <f>Snowballs for <6>"
+					+ String.format("%,d", refilled * SnowCannon.COINS_PER_SNOWBALL) + " coins<f>!"
+					: "<c>Frosty<f>: Your Snowballs are already topped up - or you're out of coins!");
+			return;
+		}
+		if (firstVisit) {
+			player.addAndUpdateItem(ItemType.SNOW_CANNON);
+			player.sendMessage("<c>Frosty<f>: Here, take this <9>Frosty the Snow Cannon<f>! It's loaded with 1,000 Snowballs.");
+			return;
+		}
+		player.openView(new GUIShopFrosty());
 	}
 }

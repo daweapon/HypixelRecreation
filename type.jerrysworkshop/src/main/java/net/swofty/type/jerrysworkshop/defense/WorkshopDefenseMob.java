@@ -10,6 +10,7 @@ import net.minestom.server.tag.Tag;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
+import net.swofty.type.skyblockgeneric.gifts.SnowballProjectile;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
@@ -22,14 +23,14 @@ import java.util.List;
 
 /**
  * A Magma Cube marching on the gift piles during Defend Jerry's Workshop. Only snowballs hurt it,
- * via a tag SnowballEntityImpl sets on its damage; everything else is ignored. Its movement is
+ * via a tag SnowballProjectile sets on its damage; everything else is ignored. Its movement is
  * driven by JerryWorkshopDefenseManager rather than goals, since its target is a pile, not a player.
  *
  * SkyBlockMob's constructor reads the name and health before fields are assigned, so the cube
  * travels through a thread-local during construction.
  */
 public class WorkshopDefenseMob extends SkyBlockMob {
-    public static final Tag<Boolean> SNOWBALL_DAMAGE_TAG = Tag.Boolean("workshop_snowball_damage");
+    public static final Tag<Boolean> SNOWBALL_DAMAGE_TAG = SnowballProjectile.SNOWBALL_DAMAGE_TAG;
     private static final ThreadLocal<DefendCube> CONSTRUCTING = new ThreadLocal<>();
 
     private final DefendCube cube;

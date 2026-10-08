@@ -3526,6 +3526,8 @@ public enum ItemType {
 
   RED_WOOL(Material.RED_WOOL, Rarity.COMMON),
 
+  REFINED_BOTTLE_OF_JYRRE(Material.POTION, Rarity.LEGENDARY),
+
   REFINED_DIAMOND(Material.PAPER, Rarity.EPIC),
 
   REFINED_MINERAL(Material.LIGHT_BLUE_DYE, Rarity.RARE),
@@ -4266,6 +4268,8 @@ public enum ItemType {
 
   SNOW_BELT(Material.PLAYER_HEAD, Rarity.RARE),
 
+  SNOW_BLASTER(Material.PLAYER_HEAD, Rarity.EPIC),
+
   SNOW_BLOCK(Material.SNOW_BLOCK, Rarity.COMMON),
 
   SNOW_CANNON(Material.PLAYER_HEAD, Rarity.RARE),
@@ -4273,6 +4277,8 @@ public enum ItemType {
   SNOW_CLOAK(Material.PLAYER_HEAD, Rarity.RARE),
 
   SNOW_GLOVES(Material.PLAYER_HEAD, Rarity.RARE),
+
+  SNOW_HOWITZER(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   SNOW_MINION(Material.PLAYER_HEAD, Rarity.COMMON),
 

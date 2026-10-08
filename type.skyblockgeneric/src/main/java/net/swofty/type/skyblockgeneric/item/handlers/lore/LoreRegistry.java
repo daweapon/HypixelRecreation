@@ -1,5 +1,8 @@
 package net.swofty.type.skyblockgeneric.item.handlers.lore;
 
+import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
+import net.swofty.type.skyblockgeneric.gifts.SnowCannon;
+import net.swofty.type.skyblockgeneric.gifts.SnowSuit;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.PotatoType;
@@ -22,6 +25,9 @@ public class LoreRegistry {
 
     static {
         MythologicalItemHandlers.registerLore();
+        BottleOfJyrre.registerLore();
+        SnowCannon.registerLore();
+        SnowSuit.registerLore();
         register("ENCHANTED_BOOK", new LoreConfig(
                 (item, player) -> {
                     List<SkyBlockEnchantment> enchantments = item.getAttributeHandler().getEnchantments().toList();

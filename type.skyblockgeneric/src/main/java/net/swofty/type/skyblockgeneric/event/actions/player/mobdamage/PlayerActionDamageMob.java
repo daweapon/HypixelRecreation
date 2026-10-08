@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.event.value.events.PlayerDamageMobValueUp
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ItemRequirementsComponent;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.AttackService;
@@ -70,6 +71,7 @@ public class PlayerActionDamageMob implements HypixelEventClass {
 
         float damageAmount = ((Number) valueEvent.getValue()).floatValue();
         if (!AttackService.applyHit(player, mob, damageAmount, critical)) return;
+        player.getPetData().dispatch(new PetEvent.MeleeHit(player, player.getPetData().getEnabledPet(), mob, damageAmount));
 
         double ferocity = player.getStatistics().allStatistics().getOverall(ItemStatistic.FEROCITY);
         if (player.getPosition().distance(mob.getPosition()) <= AttackService.MAX_MELEE_FEROCITY_DISTANCE)
