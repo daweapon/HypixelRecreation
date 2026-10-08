@@ -19,8 +19,8 @@ public enum MineableBlock {
     END_STONE(Material.END_STONE, MiningHandlers.pickaxe(30, 1), MiningBlockClassification.blockBlock()),
     OBSIDIAN(Material.END_STONE, MiningHandlers.pickaxe(500, 4), MiningBlockClassification.blockBlock()),
 
-    // Mineable blocks (same speed for all tools and hand)
-    ICE(Material.ICE, MiningHandlers.hand(10, 1), MiningBlockClassification.blockBlock()),
+    // Mineable blocks (any item or hand, vanilla timings)
+    ICE(Material.ICE, MiningHandlers.hand(15, 8), MiningBlockClassification.blockBlock()),
 
     // Ores (pickaxe)
     ORE_IRON(Material.IRON_ORE, MiningHandlers.pickaxe(30, 2), MiningBlockClassification.oreBlock()),

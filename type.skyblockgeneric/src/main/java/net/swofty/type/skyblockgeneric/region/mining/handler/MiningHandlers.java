@@ -16,8 +16,13 @@ public final class MiningHandlers {
         return new PickaxeMiningHandler(strength, powerRequirement);
     }
 
-    public static SkyBlockMiningHandler hand(double strength, int powerRequirement) {
-        return new PickaxeMiningHandler(strength, powerRequirement);
+    /**
+     * Create a handler for blocks any item (or a bare hand) can break on vanilla timings.
+     * @param handBreakTimeTicks break time in ticks without a pickaxe or drill
+     * @param pickaxeBreakTimeTicks break time in ticks with a pickaxe or drill
+     */
+    public static SkyBlockMiningHandler hand(int handBreakTimeTicks, int pickaxeBreakTimeTicks) {
+        return new HandMiningHandler(handBreakTimeTicks, pickaxeBreakTimeTicks);
     }
 
     /**

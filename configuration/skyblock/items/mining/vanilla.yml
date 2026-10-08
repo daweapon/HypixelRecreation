@@ -339,7 +339,21 @@ items:
     material: ice
     rarity: COMMON
     components:
+      - id: CUSTOM_DROP
+        rules:
+          - conditions:
+              silk_touch: true
+            drops:
+              - item: ICE
+                chance: 1.0
+                amount: 1
+          - conditions:
+              serverType: SKYBLOCK_JERRYS_WORKSHOP
+            drops: []
       - id: PLACEABLE
+      - id: SKILLABLE_MINE
+        category: MINING
+        mining_value: 0.5
       - id: SELLABLE
         value: 0.5
   - id: IRON_BLOCK
