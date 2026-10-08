@@ -1,0 +1,10 @@
+# Abiphone XII models sold by Udel (Scarleton) and Nuvian (Dragontail), per wiki Udel/UI (Aug 2025 revamp, flat prices).
+title: Abiphone XII
+slots: [10, 11]
+entries:
+  - item: ABIPHONE_XII_AMBER
+    material: player_head
+    cost: { coins: 1000000 }
+  - item: ABIPHONE_XII_AMETHYST
+    material: player_head
+    cost: { coins: 1000000 }

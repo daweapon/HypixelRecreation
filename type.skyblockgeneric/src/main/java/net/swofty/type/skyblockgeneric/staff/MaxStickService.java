@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonSideQuests;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.follower.KuudraFollowerProgress;
+import net.swofty.type.skyblockgeneric.crimson.town.CrimsonTownProgress;
 import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
@@ -161,6 +162,7 @@ public final class MaxStickService {
         CrimsonQuestlines.maxOut(player);
         CrimsonSideQuests.maxOut(player);
         KuudraFollowerProgress.maxOut(player);
+        CrimsonTownProgress.maxOut(player);
         // Last: it tops the total up to real Hypixel's maximum, so everything above must have
         // granted its own SkyBlock XP causes first or the top-up would overshoot.
         maxSkyBlockLevel(player);

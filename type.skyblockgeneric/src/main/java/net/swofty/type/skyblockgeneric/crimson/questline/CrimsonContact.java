@@ -30,6 +30,11 @@ public abstract class CrimsonContact extends AbiphoneNPC {
 
     protected abstract void call(SkyBlockPlayer player);
 
+    /** Whether the player has earned this contact, so it can be added (or restored by Ziri). */
+    public boolean isEarned(SkyBlockPlayer player) {
+        return refusal(player) == null;
+    }
+
     @Override
     public void onAdd(SkyBlockPlayer player, int slot) {
         String[] refusal = refusal(player);

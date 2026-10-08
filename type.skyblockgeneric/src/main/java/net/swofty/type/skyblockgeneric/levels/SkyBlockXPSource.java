@@ -133,7 +133,7 @@ public enum SkyBlockXPSource {
     BEACON_TIERS(Group.MISCELLANEOUS, null, 40, Availability.NOT_IN_GAME, Material.BEACON),
     ATTRIBUTE_LEVELS(Group.MISCELLANEOUS, null, 3210, Availability.UNWIRED, Material.PRISMARINE_SHARD),
     FISH_FAMILY(Group.MISCELLANEOUS, null, 45, Availability.NOT_IN_GAME, Material.COD),
-    CARROLYNS_EXPORTABLE_CROPS(Group.MISCELLANEOUS, null, 40, Availability.NOT_IN_GAME, Material.CARROT),
+    CARROLYNS_EXPORTABLE_CROPS(Group.MISCELLANEOUS, null, 40, Availability.LIVE, Material.CARROT),
     THE_DOJO(Group.MISCELLANEOUS, null, 425, Availability.LIVE, Material.LEATHER_CHESTPLATE),
     HARP_SONGS(Group.MISCELLANEOUS, null, 236, Availability.UNWIRED, Material.ENCHANTED_BOOK),
     ABIPHONE_CONTACTS(Group.MISCELLANEOUS, null, 840, Availability.UNWIRED, Material.PAPER),

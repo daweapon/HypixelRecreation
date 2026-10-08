@@ -1,0 +1,13 @@
+# Abiphone XIV models sold by Udel (Scarleton) and Nuvian (Dragontail), per wiki Udel/UI (Aug 2025 revamp, flat prices).
+title: Abiphone XIV
+slots: [10, 11, 12]
+entries:
+  - item: ABIPHONE_XIV_ORANGE
+    material: paper
+    cost: { coins: 25000000 }
+  - item: ABIPHONE_XIV_PURPLE
+    material: paper
+    cost: { coins: 25000000 }
+  - item: ABIPHONE_XIV_BLACK
+    material: paper
+    cost: { coins: 25000000 }

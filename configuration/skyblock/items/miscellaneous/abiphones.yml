@@ -101,3 +101,175 @@ items:
         display_name: Abiphone XII Amethyst
       - id: SKULL_HEAD
         texture: df4de5e522a34a534039c29eee368dfcc1ad0d43a2d8264c1751a8b596cbea7b
+  - id: ABIPHONE_XIII_JADE
+    material: PAPER
+    name: "Abiphone XIII Jade"
+    rarity: RARE
+    components:
+      - id: ABIPHONE
+        max_contacts: 10
+        max_discs: 15
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - SNAKE
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone XIII Jade"
+  - id: ABIPHONE_XIII_SAPPHIRE
+    material: PAPER
+    name: "Abiphone XIII Sapphire"
+    rarity: RARE
+    components:
+      - id: ABIPHONE
+        max_contacts: 10
+        max_discs: 20
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - SNAKE
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone XIII Sapphire"
+  - id: ABIPHONE_XIV_ORANGE
+    material: PAPER
+    name: "Abiphone XIV Orange"
+    rarity: EPIC
+    components:
+      - id: ABIPHONE
+        max_contacts: 11
+        max_discs: 25
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - TIC_TAC_TOE
+          - SNAKE
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone XIV Orange"
+  - id: ABIPHONE_XIV_PURPLE
+    material: PAPER
+    name: "Abiphone XIV Purple"
+    rarity: EPIC
+    components:
+      - id: ABIPHONE
+        max_contacts: 11
+        max_discs: 25
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - TIC_TAC_TOE
+          - SNAKE
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone XIV Purple"
+  - id: ABIPHONE_XIV_BLACK
+    material: PAPER
+    name: "Abiphone XIV Black"
+    rarity: EPIC
+    components:
+      - id: ABIPHONE
+        max_contacts: 11
+        max_discs: 25
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - TIC_TAC_TOE
+          - SNAKE
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone XIV Black"
+  - id: ABIPHONE_FLIP_DRAGON
+    material: PAPER
+    name: "Abiphone Flip: Dragon"
+    rarity: LEGENDARY
+    components:
+      - id: ABIPHONE
+        max_contacts: 12
+        max_discs: 25
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - RINGTONES
+          - TIC_TAC_TOE
+          - SNAKE
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone Flip: Dragon"
+  - id: ABIPHONE_FLIP_NUCLEUS
+    material: PAPER
+    name: "Abiphone Flip: Nucleus"
+    rarity: LEGENDARY
+    components:
+      - id: ABIPHONE
+        max_contacts: 12
+        max_discs: 25
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - RINGTONES
+          - TIC_TAC_TOE
+          - SNAKE
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone Flip: Nucleus"
+  - id: ABIPHONE_FLIP_VOLCANO
+    material: PAPER
+    name: "Abiphone Flip: Volcano"
+    rarity: LEGENDARY
+    components:
+      - id: ABIPHONE
+        max_contacts: 12
+        max_discs: 25
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - RINGTONES
+          - TIC_TAC_TOE
+          - SNAKE
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone Flip: Volcano"
+  - id: ABIPHONE_FLIP_PLUS_FLOWER
+    material: PAPER
+    name: "Abiphone Flip+: Flower"
+    rarity: LEGENDARY
+    components:
+      - id: ABIPHONE
+        max_contacts: 13
+        max_discs: 25
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - RINGTONES
+          - TIC_TAC_TOE
+          - SNAKE
+          - SPEED_DIAL
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone Flip+: Flower"
+  - id: ABIPHONE_FLIP_PLUS_CLOCKWORK
+    material: PAPER
+    name: "Abiphone Flip+: Clockwork"
+    rarity: LEGENDARY
+    components:
+      - id: ABIPHONE
+        max_contacts: 13
+        max_discs: 25
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - RINGTONES
+          - TIC_TAC_TOE
+          - SNAKE
+          - SPEED_DIAL
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone Flip+: Clockwork"
+  - id: ABIPHONE_FLIP_PLUS_LUNAR
+    material: PAPER
+    name: "Abiphone Flip+: Lunar"
+    rarity: LEGENDARY
+    components:
+      - id: ABIPHONE
+        max_contacts: 13
+        max_discs: 25
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+          - RINGTONES
+          - TIC_TAC_TOE
+          - SNAKE
+          - SPEED_DIAL
+      - id: CUSTOM_DISPLAY_NAME
+        display_name: "Abiphone Flip+: Lunar"

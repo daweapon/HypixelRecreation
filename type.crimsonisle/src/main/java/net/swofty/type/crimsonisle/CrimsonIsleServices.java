@@ -4,6 +4,7 @@ import net.swofty.type.crimsonisle.dojo.DojoService;
 import net.swofty.type.crimsonisle.faction.FactionQuestTicker;
 import net.swofty.type.crimsonisle.quest.TownBoard;
 import net.swofty.type.crimsonisle.quest.rescue.RescueService;
+import net.swofty.type.crimsonisle.town.CrimsonTownServices;
 import net.swofty.type.skyblockgeneric.crimson.matriarch.MatriarchService;
 import net.swofty.type.skyblockgeneric.crimson.mob.CrimsonMobSpawner;
 import net.swofty.type.skyblockgeneric.crimson.mob.miniboss.CrimsonMinibossSpawner;
@@ -31,5 +32,6 @@ public final class CrimsonIsleServices {
         FactionQuestService.registerTabWidget();
         TownBoard.spawnAll();
         RescueService.start();
+        CrimsonTownServices.start();
     }
 }

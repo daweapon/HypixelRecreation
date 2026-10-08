@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.EntityFairySoul;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoul;
+import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoulGates;
 
 // Collects a fairy soul for the player when they interact with its entity
 public class ActionPlayerInteractFairySoul implements HypixelEventClass {
@@ -18,7 +19,7 @@ public class ActionPlayerInteractFairySoul implements HypixelEventClass {
 
         if (event.getTarget() instanceof EntityFairySoul entitySoul) {
             FairySoul fairySoul = entitySoul.parent;
-            if (fairySoul == null) return;
+            if (fairySoul == null || !FairySoulGates.mayCollect(player, fairySoul)) return;
 
             fairySoul.collect(player);
         }

@@ -101,7 +101,7 @@ public class TypeCrimsonIsleLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<ServiceType> getRequiredServices() {
-        return new ArrayList<>();
+        return new ArrayList<>(List.of(ServiceType.AUCTION_HOUSE, ServiceType.BAZAAR, ServiceType.ITEM_TRACKER));
     }
 
     @Override
