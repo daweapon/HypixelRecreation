@@ -134,7 +134,7 @@ public enum SkyBlockXPSource {
     ATTRIBUTE_LEVELS(Group.MISCELLANEOUS, null, 3210, Availability.UNWIRED, Material.PRISMARINE_SHARD),
     FISH_FAMILY(Group.MISCELLANEOUS, null, 45, Availability.NOT_IN_GAME, Material.COD),
     CARROLYNS_EXPORTABLE_CROPS(Group.MISCELLANEOUS, null, 40, Availability.NOT_IN_GAME, Material.CARROT),
-    THE_DOJO(Group.MISCELLANEOUS, null, 425, Availability.NOT_IN_GAME, Material.LEATHER_CHESTPLATE),
+    THE_DOJO(Group.MISCELLANEOUS, null, 425, Availability.LIVE, Material.LEATHER_CHESTPLATE),
     HARP_SONGS(Group.MISCELLANEOUS, null, 236, Availability.UNWIRED, Material.ENCHANTED_BOOK),
     ABIPHONE_CONTACTS(Group.MISCELLANEOUS, null, 840, Availability.UNWIRED, Material.PAPER),
     COMMUNITY_SHOP_UPGRADES(Group.MISCELLANEOUS, null, 120, Availability.UNWIRED, Material.EMERALD_BLOCK),
@@ -379,6 +379,10 @@ public enum SkyBlockXPSource {
                     getDisplayName() + "!",
                     "Tier I: <b>+2 XP", "Tier II: <b>+2 XP", "Tier III: <b>+3 XP",
                     "Tier IV: <b>+5 XP", "Tier V: <b>+7 XP");
+            case THE_DOJO -> List.of(
+                    "Gain XP by obtaining Dojo Belts!",
+                    "White Belt: <b>+20 XP", "Yellow Belt: <b>+30 XP", "Green Belt: <b>+50 XP",
+                    "Blue Belt: <b>+75 XP", "Brown Belt: <b>+100 XP", "Black Belt: <b>+150 XP");
             case MAGE_REPUTATION, BARBARIAN_REPUTATION -> List.of(
                     "Gain XP by earning Reputation with",
                     "the " + (this == MAGE_REPUTATION ? "Mage" : "Barbarian") + " Faction!",
