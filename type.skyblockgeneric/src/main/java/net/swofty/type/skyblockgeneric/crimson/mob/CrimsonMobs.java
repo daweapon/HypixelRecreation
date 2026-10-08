@@ -270,6 +270,11 @@ public final class CrimsonMobs {
     public static final CrimsonMobProfile ASHFANG_ACOLYTE = ashfangMinion("ASHFANG_ACOLYTE", "Ashfang Acolyte", 1_000);
     public static final CrimsonMobProfile ASHFANG_UNDERLING = ashfangMinion("ASHFANG_UNDERLING", "Ashfang Underling", 1_000);
 
+    public static final CrimsonMobProfile BLAZING_SOUL = CrimsonMobProfile.builder("BLAZING_SOUL", "Blazing Soul")
+            .level(1).entity(EntityType.ARMOR_STAND).stats(1, 0).speed(0)
+            .types(MobType.INFERNAL).neverCorrupted()
+            .build();
+
     public static final CrimsonMobProfile MAGMA_GLARE = CrimsonMobProfile.builder("MAGMA_GLARE", "Magma Glare")
             .level(195).entity(EntityType.MAGMA_CUBE).stats(2_000_000, 2_000).rewards(292, 65, 214).speed(60)
             .types(MobType.CUBIC, MobType.INFERNAL).neverCorrupted()
