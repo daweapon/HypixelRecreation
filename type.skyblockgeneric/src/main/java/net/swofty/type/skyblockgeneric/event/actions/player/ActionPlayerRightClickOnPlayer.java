@@ -7,7 +7,9 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.gifts.Gift;
+import net.swofty.type.skyblockgeneric.gifts.PartyGift;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIViewPlayerProfile;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.trade.TradeManager;
@@ -24,7 +26,14 @@ public class ActionPlayerRightClickOnPlayer implements HypixelEventClass {
 
         if (!(event.getTarget() instanceof SkyBlockPlayer target)) return;
 
-        Gift gift = Gift.of(new SkyBlockItem(player.getItemInMainHand()).getAttributeHandler().getPotentialType());
+        ItemType held = new SkyBlockItem(player.getItemInMainHand()).getAttributeHandler().getPotentialType();
+        if (PartyGift.isPartyGift(held) && event.getHand() == PlayerHand.MAIN) {
+            player.setItemInMainHand(player.getItemInMainHand().withAmount(player.getItemInMainHand().amount() - 1));
+            PartyGift.give(player, target);
+            return;
+        }
+
+        Gift gift = Gift.of(held);
         if (gift != null && event.getHand() == PlayerHand.MAIN) {
             player.setItemInMainHand(player.getItemInMainHand().withAmount(player.getItemInMainHand().amount() - 1));
             gift.give(player, target);

@@ -7,7 +7,15 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ThreadLocalRandom;
+import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.type.generic.HypixelConst;
+import net.swofty.type.skyblockgeneric.essence.EssencePerks;
+import net.swofty.type.skyblockgeneric.essence.IceEssencePerk;
+import net.swofty.type.skyblockgeneric.fishing.tag.RarityTag;
+import net.swofty.type.skyblockgeneric.fishing.tag.TimeOfDayTag;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
@@ -200,11 +208,14 @@ public final class FishingLootResolver {
         if (tableOpt.isEmpty()) return Optional.empty();
         FishingTableDefinition table = tableOpt.get();
 
-        double seaCreatureChance = getTotalStatistic(context, ItemStatistic.SEA_CREATURE_CHANCE);
         if (context.hook() != null && context.hook().isTreasureOnly()) {
             return Optional.empty();
         }
+        if (table.weightedSeaCreatures()) {
+            return tryResolveWeightedSeaCreature(context, table);
+        }
 
+        double seaCreatureChance = getTotalStatistic(context, ItemStatistic.SEA_CREATURE_CHANCE);
         for (FishingTableDefinition.SeaCreatureRoll roll : table.seaCreatures()) {
             SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(roll.seaCreatureId());
             if (definition != null && context.player().getSkills().getCurrentLevel(net.swofty.type.skyblockgeneric.skill.SkillCategories.FISHING) < definition.requiredFishingLevel()) {
@@ -227,6 +238,64 @@ public final class FishingLootResolver {
         return Optional.empty();
     }
 
+    private static Optional<CatchPayload> tryResolveWeightedSeaCreature(FishingContext context, FishingTableDefinition table) {
+        if (Math.random() * 100 >= playerSeaCreatureChance(context)) {
+            return Optional.empty();
+        }
+
+        int fishingLevel = context.player().getSkills().getCurrentLevel(net.swofty.type.skyblockgeneric.skill.SkillCategories.FISHING);
+        List<SeaCreatureWeights.Candidate> eligible = new ArrayList<>();
+        for (FishingTableDefinition.SeaCreatureRoll roll : table.seaCreatures()) {
+            SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(roll.seaCreatureId());
+            if (definition == null || fishingLevel < definition.requiredFishingLevel() || !definition.isAvailable(context)) {
+                continue;
+            }
+            eligible.add(new SeaCreatureWeights.Candidate(roll.seaCreatureId(), roll.weight(), rarityOf(definition)));
+        }
+        if (eligible.isEmpty()) return Optional.empty();
+
+        SeaCreatureWeights.Candidate picked = SeaCreatureWeights.pick(eligible, weightModifiers(context), ThreadLocalRandom.current());
+        SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(picked.id());
+        CatchPayload.SeaCreature payload = new CatchPayload.SeaCreature(picked.id(), definition == null ? 0 : definition.skillXp());
+        if (rollDoubleHook(context)) {
+            payload = payload.withDoubleHook();
+        }
+        return Optional.of(payload);
+    }
+
+    private static SeaCreatureWeights.Modifiers weightModifiers(FishingContext context) {
+        String hookId = context.hook() == null ? null : context.hook().getItemId();
+        String baitId = context.bait() == null ? null : context.bait().getItemId();
+        double tracking = context.player().getStatistics().allStatistics().getOverall(ItemStatistic.TRACKING);
+        double drakePiper = EssencePerks.value(context.player(), IceEssencePerk.DRAKE_PIPER);
+        return new SeaCreatureWeights.Modifiers(hookId, baitId, TimeOfDayTag.NIGHT.isAvailable(context), tracking,
+            Map.of("REINDRAKE", 1 + drakePiper / 100D));
+    }
+
+    private static Rarity rarityOf(SeaCreatureDefinition definition) {
+        for (FishingTag tag : definition.tags()) {
+            if (tag instanceof RarityTag rarity) return Rarity.valueOf(rarity.id());
+        }
+        return null;
+    }
+
+    private static double playerSeaCreatureChance(FishingContext context) {
+        double total = context.player().getStatistics().allStatistics().getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
+        ItemType held = new SkyBlockItem(context.player().getItemInMainHand()).getAttributeHandler().getPotentialType();
+        if (held != context.rod().getAttributeHandler().getPotentialType()) {
+            total += context.rod().getAttributeHandler().getStatistics().getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
+        }
+        total += FishingRodPartService.getStatistics(context.rod()).getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
+        total += context.hotspotBuffs().getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
+        if (context.bait() != null) {
+            SkyBlockItem baitItem = FishingItemSupport.getItem(context.bait().getItemId());
+            if (baitItem != null) {
+                total += baitItem.getAttributeHandler().getStatistics().getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
+            }
+        }
+        return total;
+    }
+
     private static CatchPayload resolveItem(FishingContext context) {
         Optional<FishingTableDefinition> tableOpt = findTable(context);
         if (tableOpt.isEmpty()) return DEFAULT_CATCH;
@@ -247,6 +316,8 @@ public final class FishingLootResolver {
         }
 
         if (!table.treasures().isEmpty() && Math.random() * 100 <= treasureChance) {
+            Optional<CatchPayload> essence = rollEssenceTreasure(table);
+            if (essence.isPresent()) return essence.get();
             pool = context.sinker() != null && context.sinker().isBayouTreasureToJunk() ? table.junk() : table.treasures();
             return pick(pool, true).orElse(DEFAULT_CATCH);
         }
@@ -254,6 +325,13 @@ public final class FishingLootResolver {
         return pick(pool, false)
             .or(() -> table.junk().isEmpty() ? Optional.empty() : pick(table.junk(), false))
             .orElse(DEFAULT_CATCH);
+    }
+
+    private static Optional<CatchPayload> rollEssenceTreasure(FishingTableDefinition table) {
+        FishingTableDefinition.EssenceTreasure essence = table.essenceTreasure();
+        if (essence == null || Math.random() * 100 >= essence.chance()) return Optional.empty();
+        int amount = ThreadLocalRandom.current().nextInt(essence.min(), essence.max() + 1);
+        return Optional.of(new CatchPayload.Essence(essence.type(), amount, essence.skillXp()));
     }
 
     private static Optional<CatchPayload> forcedCatch(FishingContext context, List<FishingTableDefinition.LootEntry> pool,
@@ -282,6 +360,7 @@ public final class FishingLootResolver {
 
     private static Optional<FishingTableDefinition> findTable(FishingContext context) {
         FishingTableDefinition fallback = null;
+        String serverType = currentServerType();
         for (FishingTableDefinition definition : FishingRegistry.getTables()) {
             if (!definition.mediums().isEmpty() && !definition.mediums().contains(context.medium())) {
                 continue;
@@ -289,11 +368,18 @@ public final class FishingLootResolver {
             if (context.regionId() != null && definition.regions().contains(context.regionId())) {
                 return Optional.of(definition);
             }
+            if (serverType != null && definition.serverTypes().contains(serverType)) {
+                return Optional.of(definition);
+            }
             if (definition.regions().isEmpty() && fallback == null) {
                 fallback = definition;
             }
         }
         return Optional.ofNullable(fallback);
+    }
+
+    private static String currentServerType() {
+        return HypixelConst.getTypeLoader() == null ? null : HypixelConst.getTypeLoader().getType().name();
     }
 
     private static boolean rollDoubleHook(FishingContext context) {

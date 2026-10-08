@@ -28,7 +28,7 @@ public final class PerkAvailability {
                     "visitor copper * ElectionPerks.multiplier(BLOOMING_BUSINESS)"),
             missing(Perk.GRAND_FEAST, "The Harvest Feast isn't in this server yet.",
                     "run the Feast for the whole year when ElectionPerks.isActive(GRAND_FEAST)"),
-            missing(Perk.A_TIME_FOR_GIVING, "Party Chests and Party Gifts aren't in this server yet.",
+            partial(Perk.A_TIME_FOR_GIVING, "Party Chests aren't in this server yet, so only Party Gifts from Winter Sea Creatures are given.",
                     "spawn Party Chests instead of Trick or Treat Chests when ElectionPerks.isActive(A_TIME_FOR_GIVING)"),
             missing(Perk.MARAUDER, DUNGEONS,
                     "dungeon reward chest price * (1 - ElectionPerks.bonus(MARAUDER) / 100)"),

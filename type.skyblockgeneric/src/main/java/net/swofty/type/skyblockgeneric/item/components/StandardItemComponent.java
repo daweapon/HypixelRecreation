@@ -35,11 +35,11 @@ public class StandardItemComponent extends SkyBlockItemComponent {
         CHESTPLATE("CHESTPLATE", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR), RuneableComponent.RuneApplicableTo.CHESTPLATES, PotatoType.ARMOR),
         LEGGINGS("LEGGINGS", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR), RuneableComponent.RuneApplicableTo.LEGGINGS, PotatoType.ARMOR),
         BOOTS("BOOTS", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR), RuneableComponent.RuneApplicableTo.BOOTS, PotatoType.ARMOR),
-        NECKLACE("NECKLACE", ReforgeType.EQUIPMENT, List.of(), null, null),
-        CLOAK("CLOAK", ReforgeType.EQUIPMENT, List.of(), null, null),
-        BELT("BELT", ReforgeType.EQUIPMENT, List.of(), null, null),
-        GLOVES("GLOVES", ReforgeType.EQUIPMENT, List.of(), null, null),
-        BRACELET("BRACELET", ReforgeType.EQUIPMENT, List.of(), null, null);
+        NECKLACE("NECKLACE", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null),
+        CLOAK("CLOAK", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null),
+        BELT("BELT", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null),
+        GLOVES("GLOVES", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null),
+        BRACELET("BRACELET", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null);
 
         private final String rarityDisplay;
         private final ReforgeType reforgeType;

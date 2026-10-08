@@ -66,6 +66,7 @@ public enum EnchantmentType {
     VENOMOUS(EnchantmentVenomous.class),
     CHIMERA(EnchantmentChimera.class),
     VICIOUS(EnchantmentVicious.class),
+    PROSPERITY(EnchantmentProsperity.class),
     ;
 
     private final Class<? extends Ench> clazz;

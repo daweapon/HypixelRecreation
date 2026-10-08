@@ -1,0 +1,102 @@
+items:
+  - id: WALNUT
+    material: player_head
+    name: "Walnut"
+    rarity: UNCOMMON
+    components:
+      - id: SKULL_HEAD
+        texture: 330e035d996e5e9569aa2f5127ba9e52faf5c115ddd085bc7b485580248cdd28
+  - id: HILT_OF_TRUE_ICE
+    material: packed_ice
+    name: "True Ice"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77Though it's the coldest thing"
+      - "\xA77you'll find on \xA7cJerry's Workshop\xA77,"
+      - "\xA77it's oddly comforting."
+  - id: DYE_ICEBERG
+    material: player_head
+    name: "Iceberg Dye"
+    rarity: LEGENDARY
+    lore:
+      - "\xA78Combinable in Anvil"
+      - ""
+      - "\xA77Changes the color of an armor piece"
+      - "\xA77to \xA73#71A6D2\xA77!"
+    components:
+      - id: SKULL_HEAD
+        texture: f731caff2335970cc5c7d345900b21fc57fe79a18a7a6134a32bdf37222d32a9
+      - id: ANVIL_COMBINABLE
+        handler_id: DYE_ICEBERG
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_AQUAMARINE
+    material: player_head
+    name: "Aquamarine Dye"
+    rarity: LEGENDARY
+    lore:
+      - "\xA78Combinable in Anvil"
+      - ""
+      - "\xA77Changes the color of an armor piece"
+      - "\xA77to \xA7b#7FFFD4\xA77!"
+    components:
+      - id: SKULL_HEAD
+        texture: 471915663c27fcc4eb50b334aa03fff175ed0363f4ef3e028b9cc771c81f545f
+      - id: ANVIL_COMBINABLE
+        handler_id: DYE_AQUAMARINE
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: PARTY_GIFT
+    material: player_head
+    name: "Party Gift"
+    rarity: UNCOMMON
+    lore:
+      - "\xA77Click a stranger while holding to gift!"
+      - "\xA77Both players get the rewards!"
+    components:
+      - id: SKULL_HEAD
+        texture: 48aa2f9bffd8853646c1375d3de71b8187bd426332d9f9d712216f7e92a930d
+  - id: BABY_YETI_PET
+    material: player_head
+    name: "Baby Yeti Pet"
+    rarity: COMMON
+    components:
+      - id: PET
+        pet_name: Baby Yeti
+        kat_upgrades:
+          common: null
+          uncommon:
+            time: 86400000
+            coins: 50000
+            item: ICE_HUNK
+            amount: 32
+          rare:
+            time: 172800000
+            coins: 100000
+            item: ICE_HUNK
+            amount: 64
+          epic:
+            time: 259200000
+            coins: 250000
+            item: ICE_HUNK
+            amount: 128
+          legendary:
+            time: 345600000
+            coins: 500000
+            item: BLUE_ICE_HUNK
+            amount: 8
+          mythic: null
+          rest: null
+        base_statistics: {}
+        per_level_statistics:
+          common: { strength: 0.5, fishing_speed: 0.5, sea_creature_chance: 0.05 }
+          uncommon: { strength: 0.5, fishing_speed: 0.5, sea_creature_chance: 0.05 }
+          rare: { strength: 0.5, fishing_speed: 0.5, sea_creature_chance: 0.05 }
+          epic: { strength: 0.75, fishing_speed: 0.5, sea_creature_chance: 0.05 }
+          legendary: { strength: 0.75, fishing_speed: 0.5, sea_creature_chance: 0.05 }
+          mythic: { strength: 0.75, fishing_speed: 0.5, sea_creature_chance: 0.05 }
+        particle: 3
+        skill_category: FISHING
+        skull_texture: ef9f6a57d8f686fedd5185d178550913f48f91b57c9162d70d368b1fd9fe2b52
+        handler_id: BABY_YETI
+      - id: TRACKED_UNIQUE

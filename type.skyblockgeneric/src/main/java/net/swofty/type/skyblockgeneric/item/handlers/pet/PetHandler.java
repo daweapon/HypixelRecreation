@@ -88,6 +88,16 @@ public enum PetHandler {
                     "<7>Grants <d>+1 Tracking <7>on <e>Griffin", "<e>Burrows <7>for each burrow excavated",
                     "<7>in your current chain."), Rarity.MYTHIC)
     )),
+    BABY_YETI(List.of(
+            at(ScaledPetAbility.notActive("Yeti Fury", scaling(50, 75, 75, 100, 100, 100),
+                    "<7>Buffs the <6>Yeti Sword <7>by <a>{0} <c>❁ Damage", "<7>and <b>✎ Intelligence <7>and reduces its",
+                    "<7>cooldown."), Rarity.COMMON),
+            at(ScaledPetAbility.notActive("Cold Breeze", scaling(0, 0, 10, 20, 20, 20),
+                    "<7>Increases <c>Combat Stats <7>and <b>Fishing", "<b>Stats <7>by <a>{0}% <7>while on <c>Jerry's",
+                    "<c>Workshop<7>."), Rarity.RARE),
+            at(ScaledPetAbility.notActive("Frosty Familiarity", scaling(0, 0, 0, 0, 10, 10),
+                    "<7>Grants <b>+{0} ✯ Magic Find <7>against", "<f>Winter Sea Creatures<7>."), Rarity.LEGENDARY)
+    )),
     // Black Cat and Skeleton Horse (Spooky Festival rewards) - their ability trees are not
     // implemented, so they carry stats only.
     SPOOKY(List.of());

@@ -5,7 +5,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.Instance;
@@ -13,6 +15,9 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.fishing.festival.FestivalShark;
 import net.swofty.type.skyblockgeneric.fishing.festival.SharkMob;
+import net.swofty.type.skyblockgeneric.fishing.winter.ReindrakeMob;
+import net.swofty.type.skyblockgeneric.fishing.winter.WinterSeaCreature;
+import net.swofty.type.skyblockgeneric.fishing.winter.WinterSeaCreatureMob;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
@@ -21,13 +26,23 @@ import org.tinylog.Logger;
 public final class SeaCreatureSpawner {
 
     private static final Map<String, SeaCreatureProfile> PROFILES = new LinkedHashMap<>();
-    private static final Map<String, Function<SeaCreatureProfile, SkyBlockMob>> FACTORIES = new HashMap<>();
+    private static final Map<String, BiFunction<SkyBlockPlayer, SeaCreatureProfile, SkyBlockMob>> FACTORIES = new HashMap<>();
+    private static final Map<String, CatchAnnouncer> ANNOUNCERS = new HashMap<>();
 
     static {
         SeaCreatureProfiles.CANONICAL.forEach(SeaCreatureSpawner::register);
         for (FestivalShark shark : FestivalShark.values()) {
             register(shark.getProfile(), profile -> SharkMob.of(shark));
         }
+        for (WinterSeaCreature creature : WinterSeaCreature.values()) {
+            register(creature.getProfile(), (angler, profile) -> WinterSeaCreatureMob.of(creature, angler));
+        }
+        ANNOUNCERS.put(WinterSeaCreature.REINDRAKE.name(), ReindrakeMob::announceCatch);
+    }
+
+    @FunctionalInterface
+    public interface CatchAnnouncer {
+        void announce(SkyBlockPlayer angler, int count);
     }
 
     public static void register(SeaCreatureProfile profile) {
@@ -35,8 +50,21 @@ public final class SeaCreatureSpawner {
     }
 
     public static void register(SeaCreatureProfile profile, Function<SeaCreatureProfile, SkyBlockMob> factory) {
+        register(profile, (angler, spawned) -> factory.apply(spawned));
+    }
+
+    public static void register(SeaCreatureProfile profile, BiFunction<SkyBlockPlayer, SeaCreatureProfile, SkyBlockMob> factory) {
         register(profile);
         FACTORIES.put(profile.id(), factory);
+    }
+
+    public static void announceCatch(SkyBlockPlayer angler, String seaCreatureId, int count) {
+        CatchAnnouncer announcer = ANNOUNCERS.get(seaCreatureId);
+        if (announcer != null) announcer.announce(angler, count);
+    }
+
+    public static List<String> ids() {
+        return List.copyOf(PROFILES.keySet());
     }
 
     public static boolean canSpawn(String seaCreatureId) {
@@ -59,7 +87,8 @@ public final class SeaCreatureSpawner {
             return null;
         }
 
-        SkyBlockMob mob = FACTORIES.getOrDefault(seaCreatureId, SeaCreatureMob::create).apply(profile);
+        SkyBlockMob mob = FACTORIES.getOrDefault(seaCreatureId, (ignored, spawned) -> SeaCreatureMob.create(spawned))
+                .apply(angler, profile);
         mob.setInstance(instance, position);
 
         broadcastCatch(angler, profile, instance, position);

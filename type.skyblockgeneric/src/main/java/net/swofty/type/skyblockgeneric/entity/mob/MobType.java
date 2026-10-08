@@ -24,6 +24,7 @@ public enum MobType {
     SKELETAL("🦴", "<f>", "Skeletal", "Skeleton-based mobs or those with skeletal traits."),
     SPOOKY("☽", "<6>", "Spooky", "Mobs that appear during the Spooky Festival and Great Spook."),
     SUBTERRANEAN("⛏", "<6>", "Subterranean", "Mobs found in Dwarven Mines."),
+    TIMID("☁", "<e>", "Timid", "Enemies of this type will run away if they see you approaching! Try your best to sneak up on them!"),
     UNDEAD("༕", "<2>", "Undead", "Mobs that have risen from their graves."),
     WITHER("☠", "<8>", "Wither", "Mobs related to the Wither or found in the Catacombs."),
     WOODLAND("⸙", "<2>", "Woodland", "Mobs that reside in Galatea.");

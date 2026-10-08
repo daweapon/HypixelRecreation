@@ -120,22 +120,19 @@ public final class GUI13SeaCreatureGuide extends SeaCreatureGuidePage {
             <7>- <b>Water
             <7>- <2>Galatea"""),
         head(19, "54690f5aa6d0e800f9b8d1890fc158b921819a81dfd7342a2170e7efc46b9ed7", """
-            <7>[Lvl 7] Frozen Steve (<f><l>Common</l><7>)
+            <7>[Lvl 1] Frozen Steve (<f><l>Common</l><7>)
             <9>⚓ Aquatic<7>, <f>☃ Frozen<7>, <e>✰ Humanoid
 
             <c>Drops:
-            <7>- <9>Ice Essence
+            <7>- <b>Ice Essence
             <7>- Ice
-            <7>- Lily Pad
-            <7>- Pufferfish
-            <7>- Raw Cod
-            <7>- Raw Salmon
             <7>- White Gift
-            <7>- <a>Hunk of Ice
-            <7>- <9>Icy Sinker
+            <7>- <f>Icy Sinker
+            <7>- <6>Iceberg Dye
+            <7>- <6>Aquamarine Dye
 
             <c>Requirements:
-            <7>- <a>Fishing Skill 5
+            <7>- <a>Fishing Skill 1
             <7>- <b>Water
             <7>- <c>Jerry's Workshop
 
@@ -174,22 +171,22 @@ public final class GUI13SeaCreatureGuide extends SeaCreatureGuidePage {
             <7>- <b>Water
             <7>- <b>Fishing Festival"""),
         block(22, Material.CARVED_PUMPKIN, """
-            <7>[Lvl 13] Frosty (<f><l>Common</l><7>)
-            <9>⚓ Aquatic<7>, <f>☃ Frozen<7>, ⚙ Construct
+            <7>[Lvl 3] Frosty (<a><l>Uncommon</l><7>)
+            <9>⚓ Aquatic<7>, <f>☃ Frozen<7>, <7>⚙ Construct
 
             <c>Drops:
-            <7>- <9>Ice Essence
-            <7>- Carrot
+            <7>- <b>Ice Essence
             <7>- Ice
-            <7>- Lily Pad
-            <7>- Raw Cod
             <7>- Snow Block
-            <7>- Sponge
             <7>- White Gift
+            <7>- <a>Green Gift
             <7>- <a>Hunk of Ice
+            <7>- <a>Enchanted Ice
+            <7>- <a>Enchanted Snow Block
+            <7>- <9>Red Gift
 
             <c>Requirements:
-            <7>- <a>Fishing Skill 6
+            <7>- <a>Fishing Skill 1
             <7>- <b>Water
             <7>- <c>Jerry's Workshop
 
@@ -410,13 +407,16 @@ public final class GUI13SeaCreatureGuide extends SeaCreatureGuidePage {
             <7>- <b>Water
             <7>- <2>Galatea"""),
         head(40, "2508e4a2f88502c019652b2437b76c82fedff9091389d88118ecc673f628b547", """
-            <7>[Lvl 21] Grinch (<a><l>Uncommon</l><7>)
-            <9>⚓ Aquatic<7>, <f>☃ Frozen<7>, <e>✰ Humanoid
+            <7>[Lvl 25] Grinch (<9><l>Rare</l><7>)
+            <e>☁ Timid<7>, <f>☃ Frozen<7>, <e>⛨ Shielded
 
             <c>Drops:
-            <7>- <9>Ice Essence
+            <7>- <b>Ice Essence
+            <7>- Ice
             <7>- White Gift
             <7>- <a>Green Gift
+            <7>- <9>Red Gift
+            <7>- <9>Enchanted Packed Ice
 
             <c>Requirements:
             <7>- <a>Fishing Skill 13

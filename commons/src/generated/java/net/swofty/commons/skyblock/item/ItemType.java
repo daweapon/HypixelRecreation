@@ -200,6 +200,8 @@ public enum ItemType {
 
   AZURE_BLUET(Material.AZURE_BLUET, Rarity.COMMON),
 
+  BABY_YETI_PET(Material.PLAYER_HEAD, Rarity.COMMON),
+
   BAKED_POTATO(Material.BAKED_POTATO, Rarity.COMMON),
 
   BAMBOO(Material.BAMBOO, Rarity.COMMON),
@@ -1236,6 +1238,10 @@ public enum ItemType {
 
   DWARVEN_SACK(Material.PLAYER_HEAD, Rarity.COMMON),
 
+  DYE_AQUAMARINE(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
+  DYE_ICEBERG(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
   DYE_MYTHOLOGICAL(Material.PLAYER_HEAD, Rarity.LEGENDARY),
 
   EARTH_SHARD(Material.STONE_SWORD, Rarity.EPIC),
@@ -2188,6 +2194,8 @@ public enum ItemType {
 
   HILT_OF_REVELATIONS(Material.STICK, Rarity.RARE),
 
+  HILT_OF_TRUE_ICE(Material.PACKED_ICE, Rarity.LEGENDARY),
+
   HOLLOW_WAND(Material.FEATHER, Rarity.LEGENDARY),
 
   HOLOGRAM(Material.PLAYER_HEAD, Rarity.LEGENDARY),
@@ -2264,7 +2272,7 @@ public enum ItemType {
 
   ICE_SPRAY_WAND(Material.STICK, Rarity.RARE),
 
-  ICY_SINKER(Material.PLAYER_HEAD, Rarity.RARE),
+  ICY_SINKER(Material.PLAYER_HEAD, Rarity.COMMON),
 
   IMPLOSION_SCROLL(Material.WRITABLE_BOOK, Rarity.LEGENDARY),
 
@@ -3095,6 +3103,8 @@ public enum ItemType {
   PARKOUR_TIMES(Material.IRON_BLOCK, Rarity.COMMON),
 
   PARROT_MASK(Material.PLAYER_HEAD, Rarity.RARE),
+
+  PARTY_GIFT(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   PEONY(Material.PEONY, Rarity.COMMON),
 
@@ -4795,6 +4805,8 @@ public enum ItemType {
   VOTER_BADGE_SUPREME(Material.PLAYER_HEAD, Rarity.EPIC),
 
   VOTER_BADGE_VIP(Material.PLAYER_HEAD, Rarity.UNCOMMON),
+
+  WALNUT(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   WAND_OF_ATONEMENT(Material.STICK, Rarity.LEGENDARY),
 

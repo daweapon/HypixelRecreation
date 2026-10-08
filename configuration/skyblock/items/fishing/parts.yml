@@ -161,13 +161,11 @@ items:
   - id: ICY_SINKER
     material: PLAYER_HEAD
     name: "Icy Sinker"
-    rarity: RARE
+    rarity: COMMON
     components:
       - id: FISHING_ROD_PART
         category: SINKER
         required_fishing_level: 5
-        tag_bonuses:
-          WINTER: 200
         materialized_item_id: ICE
         texture: 41dfb1861aa0dd49f7bd8a4ecb14fbda35055fbe9b06b4d7be5cdde0fc7cc60e
       - id: SELLABLE
