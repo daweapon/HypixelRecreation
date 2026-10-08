@@ -9,8 +9,10 @@ trophyFish:
     catchChance: 30
     filletMagmafish: [40, 60, 80, 120]
     conditions:
-      - type: REGIONS
-        regions: [BLAZING_VOLCANO]
+      - type: NEAR_BLOCK
+        blocks: [sponge, wet_sponge]
+        radius: 4
+        from: PLAYER
   - id: OBFUSCATED_1
     displayName: Obfuscated-1
     itemStem: OBFUSCATED_FISH_1
@@ -28,7 +30,9 @@ trophyFish:
     filletMagmafish: [20, 28, 40, 60]
     conditions:
       - type: REGIONS
-        regions: [BLAZING_VOLCANO]
+        regions: [BLAZING_VOLCANO, ODGERS_HUT, PLHLEGBLAST_POOL, MAGMA_CHAMBER]
+      - type: NEAR_GEYSER
+        radius: 2
   - id: GUSHER
     displayName: Gusher
     itemStem: GUSHER
@@ -37,7 +41,10 @@ trophyFish:
     filletMagmafish: [32, 48, 64, 96]
     conditions:
       - type: REGIONS
-        regions: [BLAZING_VOLCANO]
+        regions: [BLAZING_VOLCANO, ODGERS_HUT, PLHLEGBLAST_POOL, MAGMA_CHAMBER]
+      - type: AFTER_ERUPTION
+        minMinutes: 7
+        maxMinutes: 16
   - id: BLOBFISH
     displayName: Blobfish
     itemStem: BLOBFISH
@@ -71,7 +78,7 @@ trophyFish:
     filletMagmafish: [32, 48, 64, 96]
     conditions:
       - type: REGIONS
-        regions: [BLAZING_VOLCANO]
+        regions: [BLAZING_VOLCANO, ODGERS_HUT, PLHLEGBLAST_POOL, MAGMA_CHAMBER]
       - type: BOBBER_BELOW_PLAYER
         blocks: 8
   - id: OBFUSCATED_3

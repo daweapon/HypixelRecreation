@@ -1,6 +1,9 @@
 package net.swofty.type.skyblockgeneric.fishing.trophy;
 
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoEruptionService;
 import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 
 import java.util.List;
@@ -58,6 +61,41 @@ public sealed interface TrophyCondition {
         }
     }
 
+    record NearBlock(Set<String> blocks, int radius, boolean fromBobber) implements TrophyCondition {
+        @Override
+        public boolean test(FishingContext context) {
+            Instance instance = context.player().getInstance();
+            if (instance == null) return false;
+            Pos centre = fromBobber ? context.hookPosition() : context.player().getPosition();
+            int cx = centre.blockX();
+            int cy = centre.blockY();
+            int cz = centre.blockZ();
+            for (int dx = -radius; dx <= radius; dx++) {
+                for (int dy = -radius; dy <= radius; dy++) {
+                    for (int dz = -radius; dz <= radius; dz++) {
+                        if (blocks.contains(instance.getBlock(cx + dx, cy + dy, cz + dz).key().value())) return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
+    record NearGeyser(double radius) implements TrophyCondition {
+        @Override
+        public boolean test(FishingContext context) {
+            return VolcanoEruptionService.isNearGeyser(context.hookPosition(), radius);
+        }
+    }
+
+    record AfterEruption(double minMinutes, double maxMinutes) implements TrophyCondition {
+        @Override
+        public boolean test(FishingContext context) {
+            long since = VolcanoEruptionService.millisSinceLastEruption();
+            return since != Long.MAX_VALUE && since >= minMinutes * 60_000D && since <= maxMinutes * 60_000D;
+        }
+    }
+
     static TrophyCondition parse(Map<String, Object> raw) {
         String type = String.valueOf(raw.get("type")).toUpperCase();
         return switch (type) {
@@ -67,6 +105,10 @@ public sealed interface TrophyCondition {
             case "STARTER_ROD_NO_ENCHANTMENTS" -> new StarterRodWithoutEnchantments();
             case "MIN_MANA" -> new MinMaxMana(number(raw, "mana"));
             case "BOBBER_BELOW_PLAYER" -> new BobberBelowPlayer(number(raw, "blocks"));
+            case "NEAR_BLOCK" -> new NearBlock(Set.copyOf(strings(raw.get("blocks"))), (int) number(raw, "radius"),
+                    "BOBBER".equalsIgnoreCase(String.valueOf(raw.get("from"))));
+            case "NEAR_GEYSER" -> new NearGeyser(number(raw, "radius"));
+            case "AFTER_ERUPTION" -> new AfterEruption(number(raw, "minMinutes"), number(raw, "maxMinutes"));
             default -> throw new IllegalArgumentException("Unknown trophy fish condition " + type);
         };
     }
