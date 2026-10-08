@@ -37,6 +37,18 @@ class TrophyRulesTest {
     }
 
     @Test
+    void skyBlockXpCountsLowerTiersAndMaxesAt1080() {
+        var data = new net.swofty.type.skyblockgeneric.data.datapoints.DatapointTrophyFish.TrophyFishData();
+        data.getProgress("BLOBFISH").increment("GOLD");
+        assertEquals(28, TrophyFishAwards.skyBlockXp(data));
+        for (TrophyFishDefinition fish : FishingRegistry.getTrophyFish()) data.getProgress(fish.id()).increment("DIAMOND");
+        assertEquals(1080, TrophyFishAwards.skyBlockXp(data));
+        assertTrue(TrophyFisherRank.NOVICE.achieved(data));
+        assertTrue(TrophyFisherRank.EXPERT.achieved(data));
+        assertEquals(false, TrophyFisherRank.MASTER.achieved(data));
+    }
+
+    @Test
     void anyTierOfTheObfuscatedFishWorksAsBait() {
         TrophyCondition.UsingBait bait = (TrophyCondition.UsingBait) fish("OBFUSCATED_3").conditions().getFirst();
         assertEquals(4, bait.baitIds().size());

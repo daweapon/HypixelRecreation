@@ -111,7 +111,7 @@ public enum SkyBlockXPSource {
     FARMING_CHIPS(Group.SKILL_RELATED, SubArea.FARMING, 410, Availability.NOT_IN_GAME, Material.REPEATER),
     SOWDUST(Group.SKILL_RELATED, SubArea.FARMING, 250, Availability.NOT_IN_GAME, Material.SAND),
 
-    TROPHY_FISH(Group.SKILL_RELATED, SubArea.FISHING, 1080, Availability.NOT_IN_GAME, Material.TROPICAL_FISH),
+    TROPHY_FISH(Group.SKILL_RELATED, SubArea.FISHING, 1080, Availability.LIVE, Material.TROPICAL_FISH),
     TROPHY_FROGS(Group.SKILL_RELATED, SubArea.FISHING, 540, Availability.NOT_IN_GAME, Material.LILY_PAD),
     DOLPHIN_MILESTONES(Group.SKILL_RELATED, SubArea.FISHING, 100, Availability.NOT_IN_GAME, Material.COD),
     SHIP_PARTS(Group.SKILL_RELATED, SubArea.FISHING, 15, Availability.NOT_IN_GAME, Material.OAK_PLANKS),

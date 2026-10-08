@@ -6,12 +6,12 @@ import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.skyblockgeneric.event.custom.SeaCreatureCaughtEvent;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCollection;
-import net.swofty.type.skyblockgeneric.data.datapoints.DatapointTrophyFish;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureSpawner;
 import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.essence.Essences;
 import net.swofty.type.skyblockgeneric.fishing.FishingService;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
+import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishAwards;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.fishing.registry.TrophyFishDefinition;
@@ -130,15 +130,10 @@ public sealed interface CatchPayload {
             ItemType type = ItemType.valueOf(itemId);
             ctx.player().addAndUpdateItem(type, 1);
 
-            DatapointTrophyFish.TrophyFishData data = ctx.player().getTrophyFishData();
-            data.getProgress(definitionId).increment(tier.name());
-            ctx.player().getSkyblockDataHandler()
-                    .get(SkyBlockDataHandler.Data.TROPHY_FISH, DatapointTrophyFish.class)
-                    .setValue(data);
-
             TrophyFishDefinition definition = FishingRegistry.getTrophyFish(definitionId);
             String name = definition == null ? definitionId : definition.coloredName();
             ctx.player().sendMessage("<6><l>TROPHY FISH!</l> <b>You caught a " + name + " " + tier.label() + "<b>.");
+            TrophyFishAwards.record(ctx.player(), definitionId, tier, itemId);
         }
     }
 
