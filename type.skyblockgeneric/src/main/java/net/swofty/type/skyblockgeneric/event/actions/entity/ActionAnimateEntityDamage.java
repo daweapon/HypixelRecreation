@@ -6,16 +6,18 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
+import net.swofty.type.skyblockgeneric.crimson.dojo.DojoDamageProtection;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.island.VisitManager;
 
 // Forces the damage-flash animation packet whenever an entity takes damage. Island visitors are
-// immune to all damage, as on Hypixel since patch 0.6.
+// immune to all damage, as on Hypixel since patch 0.6, and so are players Master Tao protects in the Dojo.
 public class ActionAnimateEntityDamage implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.ENTITY, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
     public void run(EntityDamageEvent event) {
-        if (event.getEntity() instanceof SkyBlockPlayer player && VisitManager.isVisiting(player.getUuid())) {
+        if (event.getEntity() instanceof SkyBlockPlayer player
+                && (VisitManager.isVisiting(player.getUuid()) || DojoDamageProtection.isProtected(player))) {
             event.setCancelled(true);
             return;
         }

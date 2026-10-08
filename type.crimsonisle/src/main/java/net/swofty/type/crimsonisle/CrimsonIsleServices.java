@@ -1,5 +1,6 @@
 package net.swofty.type.crimsonisle;
 
+import net.swofty.type.crimsonisle.dojo.DojoService;
 import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoEruptionService;
 import net.swofty.type.skyblockgeneric.fishing.trophy.GoldenFishService;
 import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishTabWidget;
@@ -15,5 +16,6 @@ public final class CrimsonIsleServices {
         VolcanoEruptionService.start();
         GoldenFishService.start();
         TrophyFishTabWidget.register();
+        DojoService.start();
     }
 }

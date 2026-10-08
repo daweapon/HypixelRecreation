@@ -13,6 +13,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.skyblockgeneric.collection.CustomCollectionAward;
+import net.swofty.type.skyblockgeneric.crimson.dojo.DojoChallengeLock;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointQuiver;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ArrowComponent;
@@ -100,6 +101,10 @@ public class ActionPlayerChangeHypixelMenuDisplay implements HypixelEventClass {
     }
 
     public static void setMainMenu(SkyBlockPlayer player) {
+        if (DojoChallengeLock.isLocked(player)) {
+            player.getInventory().setItemStack(8, DojoChallengeLock.cancelItem());
+            return;
+        }
         for (int index = 0; index < player.getInventory().getSize(); index++) {
             SkyBlockItem item = new SkyBlockItem(player.getInventory().getItemStack(index));
             if (item.hasComponent(ArrowComponent.class)) {
