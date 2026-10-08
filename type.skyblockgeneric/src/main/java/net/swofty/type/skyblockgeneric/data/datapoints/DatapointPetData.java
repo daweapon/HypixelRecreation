@@ -207,7 +207,8 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
                 enabledPetEntityImpl.kill();
                 enabledPetEntityImpl.remove();
             }
-            if (player == null) return;
+            enabledPetEntityImpl = null;
+            if (player == null || player.getInstance() == null) return;
 
             SkyBlockItem enabledPet = getEnabledPet();
             if (enabledPet != null) {

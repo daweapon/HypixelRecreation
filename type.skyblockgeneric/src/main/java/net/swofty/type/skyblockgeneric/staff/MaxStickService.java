@@ -73,10 +73,12 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.warps.TravelScrollIslands;
 import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoul;
 import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoulExchangeLevels;
+import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public final class MaxStickService {
     private static final double MAX_PURSE_COINS = 1_000_000_000_000D;
@@ -126,54 +128,80 @@ public final class MaxStickService {
         maxProfile(player);
     }
 
-    public static void maxProfile(SkyBlockPlayer player) {
-        maxSkills(player);
-        maxCollections(player);
-        maxCoins(player);
-        maxBank(player);
-        maxSlayers(player);
-        maxHotm(player);
-        maxFairySouls(player);
-        maxBestiary(player);
-        maxBackpackSlots(player);
-        maxEnderChestPages(player);
-        maxMinionCrafts(player);
-        maxMissions(player);
-        maxChocolateFactory(player);
-        maxMobTypes(player);
-        maxFame(player);
-        giveMaxBits(player);
-        unlockDarkAuctionCalendar(player);
-        maxFarmingContests(player);
-        maxAccessoryBagUpgrades(player);
-        maxPersonalBank(player);
-        maxHubUpgrades(player);
-        TravelScrollIslands.unlockAll(player);
-        MuseumService.maxOut(player);
-        meetTradeCenter(player);
-        meetDamia(player);
-        maxCarnival(player);
-        MythologicalItemHandlers.setBrainFoodEaten(player, MythologicalItemHandlers.BRAIN_FOOD_LIMIT);
-        BottleOfJyrre.setRefinedConsumed(player, BottleOfJyrre.REFINED_LIMIT);
-        ReaperPepper.setEaten(player, ReaperPepper.LIMIT);
-        IceEssenceShop.maxAvailable(player);
-        CrimsonEssenceShop.maxAvailable(player);
-        ChickenRaceProgress.maxOut(player);
-        CrimsonReputationService.maxOut(player);
-        TrophyFishMax.maxOut(player);
-        DojoProgress.maxOut(player);
-        CrimsonQuestlines.maxOut(player);
-        CrimsonSideQuests.maxOut(player);
-        KuudraFollowerProgress.maxOut(player);
-        CrimsonTownProgress.maxOut(player);
-        MaxPets.maxOut(player);
-        MaxAccessories.maxOut(player);
-        MaxPowers.maxOut(player);
-        // Last: it tops the total up to real Hypixel's maximum, so everything above must have
-        // granted its own SkyBlock XP causes first or the top-up would overshoot.
-        maxSkyBlockLevel(player);
+    private record Step(String name, Consumer<SkyBlockPlayer> action) {
+    }
 
-        player.sendMessage("<a><l>MAXED! <f>Your profile has been fully maxed out.");
+    // Last: maxSkyBlockLevel tops the total up to real Hypixel's maximum, so every step above it
+    // must have granted its own SkyBlock XP causes first or the top-up would overshoot.
+    private static final List<Step> STEPS = List.of(
+            new Step("Skills", MaxStickService::maxSkills),
+            new Step("Collections", MaxStickService::maxCollections),
+            new Step("Coins", MaxStickService::maxCoins),
+            new Step("Bank", MaxStickService::maxBank),
+            new Step("Slayers", MaxStickService::maxSlayers),
+            new Step("Heart of the Mountain", MaxStickService::maxHotm),
+            new Step("Fairy Souls", MaxStickService::maxFairySouls),
+            new Step("Bestiary", MaxStickService::maxBestiary),
+            new Step("Backpack slots", MaxStickService::maxBackpackSlots),
+            new Step("Ender Chest pages", MaxStickService::maxEnderChestPages),
+            new Step("Minion crafts", MaxStickService::maxMinionCrafts),
+            new Step("Missions", MaxStickService::maxMissions),
+            new Step("Chocolate Factory", MaxStickService::maxChocolateFactory),
+            new Step("Mob types", MaxStickService::maxMobTypes),
+            new Step("Fame", MaxStickService::maxFame),
+            new Step("Bits", MaxStickService::giveMaxBits),
+            new Step("Dark Auction calendar", MaxStickService::unlockDarkAuctionCalendar),
+            new Step("Farming contests", MaxStickService::maxFarmingContests),
+            new Step("Accessory Bag upgrades", MaxStickService::maxAccessoryBagUpgrades),
+            new Step("Personal bank", MaxStickService::maxPersonalBank),
+            new Step("Hub upgrades", MaxStickService::maxHubUpgrades),
+            new Step("Fast Travel", TravelScrollIslands::unlockAll),
+            new Step("Museum", MuseumService::maxOut),
+            new Step("Trade Center", MaxStickService::meetTradeCenter),
+            new Step("Damia", MaxStickService::meetDamia),
+            new Step("Carnival", MaxStickService::maxCarnival),
+            new Step("Brain Food", player -> MythologicalItemHandlers.setBrainFoodEaten(player, MythologicalItemHandlers.BRAIN_FOOD_LIMIT)),
+            new Step("Refined Bottle of Jyrre", player -> BottleOfJyrre.setRefinedConsumed(player, BottleOfJyrre.REFINED_LIMIT)),
+            new Step("Reaper Peppers", player -> ReaperPepper.setEaten(player, ReaperPepper.LIMIT)),
+            new Step("Ice Essence shop", IceEssenceShop::maxAvailable),
+            new Step("Crimson Essence shop", CrimsonEssenceShop::maxAvailable),
+            new Step("Chicken Race", ChickenRaceProgress::maxOut),
+            new Step("Crimson reputation", CrimsonReputationService::maxOut),
+            new Step("Trophy Fish", TrophyFishMax::maxOut),
+            new Step("Dojo", DojoProgress::maxOut),
+            new Step("Crimson questlines", CrimsonQuestlines::maxOut),
+            new Step("Crimson side quests", CrimsonSideQuests::maxOut),
+            new Step("Kuudra follower", KuudraFollowerProgress::maxOut),
+            new Step("Crimson town", CrimsonTownProgress::maxOut),
+            new Step("Pets", MaxPets::maxOut),
+            new Step("Accessory Bag", MaxAccessories::maxOut),
+            new Step("Accessory powers", MaxPowers::maxOut),
+            new Step("SkyBlock Level", MaxStickService::maxSkyBlockLevel));
+
+    public static void maxProfile(SkyBlockPlayer player) {
+        List<String> failed = runSteps(player);
+        if (failed.isEmpty()) {
+            player.sendMessage("<a><l>MAXED! <f>Your profile has been fully maxed out.");
+            return;
+        }
+        player.sendMessage("<c><l>PARTLY MAXED! <c>These steps failed: <e>" + String.join(", ", failed)
+                + "<c>. Everything else was maxed; the errors are in the server log.");
+    }
+
+    /** Runs every step even when one throws; returns the names of the steps that failed. */
+    public static List<String> runSteps(SkyBlockPlayer player) {
+        List<String> failed = new ArrayList<>();
+        for (Step step : STEPS) {
+            try {
+                step.action().accept(player);
+            } catch (VirtualMachineError error) {
+                throw error;
+            } catch (Throwable throwable) {
+                Logger.error(throwable, "/maxprofile step '{}' failed for {}", step.name(), player.getUsername());
+                failed.add(step.name());
+            }
+        }
+        return failed;
     }
 
     private static void maxSkills(SkyBlockPlayer player) {
