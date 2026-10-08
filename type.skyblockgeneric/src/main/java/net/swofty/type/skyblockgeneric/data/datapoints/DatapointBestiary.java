@@ -208,7 +208,7 @@ public class DatapointBestiary extends SkyBlockDatapoint<DatapointBestiary.Playe
             for (BestiaryEntry entry : allEntries) {
                 int kills = getAmount(entry.getMobs());
                 if (kills > 0) familiesFound++;
-                if (kills >= bestiaryData.getTotalKillsForMaxTier(entry.getMobs().getFirst())) familiesCompleted++;
+                if (kills > 0 && kills >= bestiaryData.getTotalKillsForMaxTier(entry.getMobs().getFirst())) familiesCompleted++;
             }
 
             lore.add("<7>The Bestiary is a compendium of");

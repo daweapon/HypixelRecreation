@@ -101,7 +101,8 @@ public class GUIBestiaryMob extends StatelessView {
                 List<SkyBlockLootTable.LootRecord> legendaryLoot = new ArrayList<>();
                 List<SkyBlockLootTable.LootRecord> rngesusLoot = new ArrayList<>();
 
-                List<SkyBlockLootTable.LootRecord> lootRecords = mob.getLootTable().getLootTable();
+                SkyBlockLootTable lootTable = mob.getLootTable();
+                List<SkyBlockLootTable.LootRecord> lootRecords = lootTable == null ? List.of() : lootTable.getLootTable();
 
                 for (SkyBlockLootTable.LootRecord lootRecord : lootRecords) {
                     double chance = lootRecord.getChancePercent();

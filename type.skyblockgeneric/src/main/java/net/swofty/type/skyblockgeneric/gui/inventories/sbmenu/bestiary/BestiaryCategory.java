@@ -14,10 +14,6 @@ import net.swofty.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobMinerZombi
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobRedstonePigman;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.deepcaverns.MobSneakyCreeper;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobGraveyardZombie;
-import net.swofty.type.skyblockgeneric.fishing.festival.FestivalShark;
-import net.swofty.type.skyblockgeneric.fishing.festival.SharkMob;
-import net.swofty.type.skyblockgeneric.fishing.winter.WinterSeaCreature;
-import net.swofty.type.skyblockgeneric.fishing.winter.WinterSeaCreatureMob;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobGraveyardZombieVillager;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobRuinsOldWolf;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobRuinsWolf;
@@ -105,39 +101,6 @@ public enum BestiaryCategory {
             this.description = creature.getBestiary().description();
             this.guiMaterial = new GUIMaterial(creature.getIconTexture());
             this.mobs = MythologicalBestiary.family(creature);
-        }
-    }
-
-    @Getter
-    public enum FISHING implements BestiaryEntry {
-        NURSE_SHARK(FestivalShark.NURSE_SHARK),
-        BLUE_SHARK(FestivalShark.BLUE_SHARK),
-        TIGER_SHARK(FestivalShark.TIGER_SHARK),
-        GREAT_WHITE_SHARK(FestivalShark.GREAT_WHITE_SHARK),
-        FROZEN_STEVE(WinterSeaCreature.FROZEN_STEVE),
-        FROSTY(WinterSeaCreature.FROSTY_THE_SNOWMAN),
-        GRINCH(WinterSeaCreature.GRINCH),
-        NUTCRACKER(WinterSeaCreature.NUTCRACKER),
-        YETI(WinterSeaCreature.YETI),
-        REINDRAKE(WinterSeaCreature.REINDRAKE),
-        ;
-
-        private final String name, description;
-        private final GUIMaterial guiMaterial;
-        private final List<BestiaryMob> mobs;
-
-        FISHING(FestivalShark shark) {
-            this.name = "<a>" + shark.getDisplayName();
-            this.description = shark.getBestiary().description();
-            this.guiMaterial = new GUIMaterial(shark.getHeadTexture());
-            this.mobs = List.of(SharkMob.of(shark));
-        }
-
-        FISHING(WinterSeaCreature creature) {
-            this.name = "<a>" + creature.getDisplayName();
-            this.description = creature.getBestiary().description();
-            this.guiMaterial = creature.getGuiMaterial();
-            this.mobs = List.of(WinterSeaCreatureMob.of(creature, null));
         }
     }
 

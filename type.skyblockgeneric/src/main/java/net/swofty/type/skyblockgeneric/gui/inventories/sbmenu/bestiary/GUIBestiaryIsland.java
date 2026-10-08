@@ -32,7 +32,7 @@ public class GUIBestiaryIsland extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(Text.of("Bestiary ➡ {}", Text.of(category.getDisplayName()).plain()), InventoryType.CHEST_6_ROW);
+        return new ViewConfiguration<>(Text.of("{} ➡ {}", category.getParentTitle(), Text.of(category.getDisplayName()).plain()), InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -43,73 +43,18 @@ public class GUIBestiaryIsland extends StatelessView {
 
         BestiaryData bestiaryData = new BestiaryData();
 
-        // Title item
         layout.slot(4, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
-
-            BestiaryEntry[] entries = category.getEntries();
-            int total = entries.length;
-            int found = 0;
-            int completed = 0;
-
-            for (BestiaryEntry entry : entries) {
-                int kills = player.getBestiaryData().getAmount(entry.getMobs());
-                if (kills > 0) {
-                    found++;
-
-                    BestiaryMob mob = entry.getMobs().getFirst();
-                    int mobKills = player.getBestiaryData().getAmount(mob);
-                    int tier = bestiaryData.getCurrentBestiaryTier(mob, mobKills);
-                    if (tier == mob.getMaxBestiaryTier()) completed++;
-                }
-            }
-
-            List<Text> lore = new ArrayList<>();
-            lore.add(Text.of("<7>View all of the mobs that you've"));
-            lore.add(Text.of("<7>found and killed on {}<7>.", Text.of(category.getDisplayName())));
+            List<Text> lore = new ArrayList<>(category.getDescription().stream().map(Text::of).toList());
             lore.add(Text.empty());
-
-            // Families Found
-            int foundPercent = (int) ((double) found / total * 100);
-            lore.add(Text.of(foundPercent == 100
-                    ? "<7>Families Found: <a>{}%"
-                    : "<7>Families Found: <e>{}%", foundPercent));
-
-            String baseBar = "─────────────────";
-            int barLength = baseBar.length();
-            int filled = (int) Math.round(((double) found / total) * barLength);
-
-            lore.add(Text.of("<3><m>{}<f>{}<r> <b>{:,}<3>/<b>{:short}",
-                    baseBar.substring(0, Math.min(filled, barLength)),
-                    baseBar.substring(Math.min(filled, barLength)),
-                    found, total));
-            lore.add(Text.empty());
-
-            // Families Completed
-            int completedPercent = (int) ((double) completed / total * 100);
-            lore.add(Text.of(completedPercent == 100
-                    ? "<7>Families Completed: <a>{}%"
-                    : "<7>Families Completed: <e>{}%", completedPercent));
-
-            int completedFilled = (int) Math.round(((double) completed / total) * barLength);
-
-            lore.add(Text.of("<3><m>{}<f>{}<r> <b>{:,}<3>/<b>{:short}",
-                    baseBar.substring(0, Math.min(completedFilled, barLength)),
-                    baseBar.substring(Math.min(completedFilled, barLength)),
-                    completed, total));
-
-            return ItemStacks.head(
-                    "c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56",
-                    Text.of(category.getDisplayName()),
-                    lore
-            );
+            lore.addAll(BestiaryFamilyProgress.of(player.getBestiaryData(), category.getEntries()).lore());
+            return ItemStacks.of(category.getIcon(), 1, Text.of(category.getDisplayName()), lore);
         });
 
         // Display all mobs
         BestiaryEntry[] bestiaryEntries = category.getEntries();
         for (int i = 0; i < DISPLAY_SLOTS.length && i < bestiaryEntries.length; i++) {
             BestiaryEntry bestiaryEntry = bestiaryEntries[i];
-            BestiaryMob mob = bestiaryEntry.getMobs().getFirst();
             int slot = DISPLAY_SLOTS[i];
 
             layout.slot(slot, (s, c) -> {
@@ -117,6 +62,7 @@ public class GUIBestiaryIsland extends StatelessView {
                 int kills = player.getBestiaryData().getAmount(bestiaryEntry.getMobs());
 
                 if (kills > 0) {
+                    BestiaryMob mob = bestiaryEntry.getMobs().getFirst();
                     int tier = bestiaryData.getCurrentBestiaryTier(mob, kills);
                     ArrayList<String> rendered = new ArrayList<>();
                     GUIMaterial guiMaterial = bestiaryEntry.getGuiMaterial();
@@ -132,13 +78,13 @@ public class GUIBestiaryIsland extends StatelessView {
                     return ItemStacks.item(Material.GRAY_DYE, 1, """
                             <c>{}
                             <7>Kill a mob belonging to this Family to
-                            <7>unlock it in your Bestiary!""", Text.parse(bestiaryEntry.getName()));
+                            <7>unlock it in your Bestiary!""", Text.parse(bestiaryEntry.getName()).plain());
                 }
             }, (click, c) -> {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();
                 int kills = player.getBestiaryData().getAmount(bestiaryEntry.getMobs());
                 if (kills > 0) {
-                    player.openView(new GUIBestiaryMob(category, bestiaryEntry));
+                    c.push(new GUIBestiaryMob(category, bestiaryEntry));
                 }
             });
         }

@@ -37,7 +37,7 @@ public class GUIBestiary extends StatelessView {
         GALATEA("<2>Galatea", new GUIMaterial("9336d7cc95cbf6689f5e8c954294ec8d1efc494a4031325bb427bc81d56a484d"), null, "<7>View all of the mobs that you've", "<7>found and killed in <2>Galatea<7>."),
         SPOOKY_FESTIVAL("<6>Spooky Festival", new GUIMaterial(Material.JACK_O_LANTERN), null, "<7>View all of the mobs that you've", "<7>found and killed during the <6>Spooky", "<6>Festival<7>."),
         CATACOMBS("<c>Catacombs", new GUIMaterial("964e1c3e315c8d8fffc37985b6681c5bd16a6f97ffd07199e8a05efbef103793"), null, "<7>View all of the mobs that you've", "<7>found and killed in <c>The Catacombs<7>."),
-        FISHING("<3>Fishing", new GUIMaterial(Material.FISHING_ROD), BestiaryCategories.FISHING, "<7>View all of the <3>Sea Creatures <7>that", "<7>you've killed while fishing."),
+        FISHING("<3>Fishing", new GUIMaterial(Material.FISHING_ROD), null, "<7>View all of the <3>Sea Creatures <7>that", "<7>you've killed while fishing."),
         MYTHOLOGICAL_CREATURES("<b>Mythological Creatures", new GUIMaterial("83cc1cf672a4b2540be346ead79ac2d9ed19d95b6075bf95be0b6d0da61377be"), BestiaryCategories.MYTHOLOGICAL_CREATURES, "<7>View all of the <b>Mythological", "<b>Creatures <7>that you've killed."),
         JERRY("<6>Jerry", new GUIMaterial("45f729736996a38e186fe9fe7f5a04b387ed03f3871ecc82fa78d8a2bdd31109"), null, "<7>View all of the mobs that you've", "<7>found and killed while fighting <6>Jerry<7>."),
         KUUDRA("<c>Kuudra", new GUIMaterial("5051c83d9ebf69013f1ec8c9efc979ec2d925a921cc877ff64abe09aadd2f6cc"), null, "<7>View all of the mobs that you've", "<7>found and killed while fighting <c>Kuudra<7>.");
@@ -84,8 +84,10 @@ public class GUIBestiary extends StatelessView {
             layout.slot(slot, (s, c) -> ItemStacks.of(region.guiMaterial, 1, Text.of(region.regionName),
                             Arrays.stream(region.lore).map(Text::of).toList()),
                     (click, c) -> {
-                        if (region.category != null) {
-                            c.player().openView(new GUIBestiaryIsland(region.category));
+                        if (region == BestiaryRegions.FISHING) {
+                            c.push(new GUIBestiaryFishing());
+                        } else if (region.category != null) {
+                            c.push(new GUIBestiaryIsland(region.category));
                         }
                     });
         }
