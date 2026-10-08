@@ -16,7 +16,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class MythologicalItemsLoadTest {
-    private static final List<String> FILES = List.of("mythological.yml", "pets/petitems.yml", "accessories/anguish.yml", "weapons.yml");
+    private static final List<String> FILES = List.of("mythological.yml", "pets/petitems.yml", "accessories/anguish.yml", "weapons.yml", "staff.yml");
 
     @BeforeAll
     static void init() {
