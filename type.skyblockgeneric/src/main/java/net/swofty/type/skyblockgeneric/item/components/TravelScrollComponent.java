@@ -39,6 +39,11 @@ public class TravelScrollComponent extends SkyBlockItemComponent {
             return;
         }
 
+        if (item.hasComponent(ItemRequirementsComponent.class)
+                && !item.getComponent(ItemRequirementsComponent.class).ensureCanUse(player)) {
+            return;
+        }
+
         Rank requiredRank = getTravelScrollType().getRequiredRank();
         if (!player.getDataHandler().get(HypixelDataHandler.Data.RANK, DatapointRank.class).getValue().isEqualOrHigherThan(requiredRank)) {
             player.sendMessage("<c>You must be at least {}<c> to unlock this travel scroll!", requiredRank.prefixComponent());

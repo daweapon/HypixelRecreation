@@ -1,0 +1,547 @@
+items:
+  - id: INFERNO_VERTEX
+    material: player_head
+    name: "Inferno Vertex"
+    rarity: EPIC
+    lore:
+      - "§7Created once in a while by Inferno"
+      - "§7minions using Hypergolic-grade fuel."
+      - ""
+      - "§cInferno Minions aren't available yet."
+    components:
+      - id: SKULL_HEAD
+        texture: ae221bb733172207315acedcc5c99836a639862a3727da6d5df36b851fc191c4
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - " A "
+              - "ABA"
+              - " A "
+            ingredients:
+              A:
+                type: MOLTEN_POWDER
+                amount: 16
+              B:
+                type: HYPERGOLIC_IONIZED_CERAMICS
+                amount: 6
+            result:
+              type: INFERNO_VERTEX
+              amount: 1
+  - id: INFERNO_APEX
+    material: player_head
+    name: "Inferno Apex"
+    rarity: LEGENDARY
+    lore:
+      - "§7Created very rarely by Inferno"
+      - "§7minions using Hypergolic-grade fuel."
+      - ""
+      - "§cInferno Minions aren't available yet."
+    components:
+      - id: SKULL_HEAD
+        texture: ed78cc391affb80b2b35eb7364ff762d38424c07e724b99396dee921fbbc9cf
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "VAV"
+              - "ABA"
+              - "VAV"
+            ingredients:
+              V:
+                type: INFERNO_VERTEX
+                amount: 16
+              A:
+                type: MOLTEN_POWDER
+                amount: 16
+              B:
+                type: HYPERGOLIC_IONIZED_CERAMICS
+                amount: 16
+            result:
+              type: INFERNO_APEX
+              amount: 1
+  - id: HYPERGOLIC_IONIZED_CERAMICS
+    material: player_head
+    name: "Hypergolic Ionized Ceramics"
+    rarity: EPIC
+    lore:
+      - "§7Obtained from expired hypergolic"
+      - "§7fuel."
+      - ""
+      - "§8First the gabagool fuel is vitrified"
+      - "§8through calcination, then stabilized"
+      - "§8using a phosphate-based crystalline"
+      - "§8ceramic host through an ion"
+      - "§8exchange, or something..."
+      - ""
+      - "§cInferno Minion fuel isn't available yet."
+    components:
+      - id: SKULL_HEAD
+        texture: 55d5ebef99868a9b6ace9489c9397e979fe0f2b56cafb2f69b94a8c59a856860
+  - id: DYE_FLAME
+    material: player_head
+    name: "Flame Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §6#E25822§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: e072250c6237fba4f7ad795c54c01c02542e2d7950d39203282e0cc51095dede
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: LAVATEARS_RUNE
+    material: player_head
+    name: "Lavatears Rune"
+    rarity: LEGENDARY
+    lore:
+      - "§7Obtained very rarely from slaying"
+      - "§7Inferno Demonlord."
+    components:
+      - id: RUNE
+        required_level: 25
+        color: <c>
+        applicable_to: BOWS
+        skull_texture: 8c8ccd5f863d82bb097b926bc5f4cca97b19f46e11b3a3a59d001adb89886773
+  - id: FIERY_BURST_RUNE
+    material: player_head
+    name: "Fiery Burst Rune"
+    rarity: LEGENDARY
+    lore:
+      - "§7Obtained very rarely from slaying"
+      - "§7Inferno Demonlord."
+    components:
+      - id: RUNE
+        required_level: 25
+        color: <c>
+        applicable_to: HOES
+        skull_texture: 8d620e4e3d3abfed6ad81a58a56bcd085d9e9efc803cabb21fa6c9e3969e2d2e
+  - id: WISP_ICE_FLAVORED_WATER
+    material: splash_potion
+    name: "Wisp's Ice-Flavored Water I Splash Potion"
+    rarity: COMMON
+    lore:
+      - "§bWisp's Ice-Flavored Water I §f(5:00)"
+      - "§7Gain §c+10 Health Regen §7and §f+25"
+      - "§fTrue Defense§7."
+      - ""
+      - "§cThis potion's effect isn't active yet."
+  - id: SCORCHED_BOOKS
+    material: paper
+    name: "Scorched Books"
+    rarity: MYTHIC
+    lore:
+      - "§7Combine §ax9 §7of this item at the"
+      - "§6Thaumaturgist §7in the §bHub §7to unlock the"
+      - "§aScorching §7power."
+      - ""
+      - "§7At §6250 Accessory Power§7:"
+      - "§c+80.99 Strength"
+      - "§9+92.56 Crit Damage"
+      - "§e+17.36 Attack Speed"
+      - ""
+      - "§7Unique Power Bonus:"
+      - "§c+7 Ferocity"
+    components:
+      - id: POWER_STONE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 35
+  - id: WARNING_FLARE
+    material: firework_rocket
+    name: "Warning Flare"
+    rarity: UNCOMMON
+    components:
+      - id: ABILITY
+        abilities:
+          - DEPLOY_FLARE
+      - id: EXTRA_RARITY
+        display: DEPLOYABLE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - " A "
+              - " B "
+              - " B "
+            ingredients:
+              A:
+                type: ENCHANTED_SULPHUR
+                amount: 16
+              B:
+                type: MOLTEN_POWDER
+                amount: 8
+            result:
+              type: WARNING_FLARE
+              amount: 1
+  - id: ALERT_FLARE
+    material: firework_rocket
+    name: "Alert Flare"
+    rarity: RARE
+    components:
+      - id: ABILITY
+        abilities:
+          - DEPLOY_FLARE
+      - id: EXTRA_RARITY
+        display: DEPLOYABLE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 6
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            upgrades_from: WARNING_FLARE
+            pattern:
+              - " AV"
+              - " B "
+              - "VC "
+            ingredients:
+              A:
+                type: ENCHANTED_SULPHUR
+                amount: 32
+              V:
+                type: INFERNO_VERTEX
+                amount: 8
+              B:
+                type: MOLTEN_POWDER
+                amount: 64
+              C:
+                type: WARNING_FLARE
+                amount: 1
+            result:
+              type: ALERT_FLARE
+              amount: 1
+  - id: SOS_FLARE
+    material: firework_rocket
+    name: "SOS Flare"
+    rarity: EPIC
+    components:
+      - id: ABILITY
+        abilities:
+          - DEPLOY_SOS_FLARE
+      - id: EXTRA_RARITY
+        display: DEPLOYABLE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 7
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            upgrades_from: ALERT_FLARE
+            pattern:
+              - "VAX"
+              - "B B"
+              - "WCV"
+            ingredients:
+              V:
+                type: INFERNO_VERTEX
+                amount: 8
+              A:
+                type: ENCHANTED_SULPHUR
+                amount: 32
+              X:
+                type: INFERNO_APEX
+                amount: 1
+              B:
+                type: MOLTEN_POWDER
+                amount: 64
+              W:
+                type: WILSON_ENGINEERING_PLANS
+                amount: 1
+              C:
+                type: ALERT_FLARE
+                amount: 1
+            result:
+              type: SOS_FLARE
+              amount: 1
+  - id: DEMONLORD_GAUNTLET
+    material: paper
+    name: "Demonslayer Gauntlet"
+    rarity: EPIC
+    default_statistics:
+      health: 40
+      defense: 20
+      true_defense: 20
+      critical_damage: 25
+    lore:
+      - "§7Deal §a1.15x §7damage against §4"
+      - "§4Infernal §7Mobs."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 4
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "A A"
+              - "BBB"
+              - "CCC"
+            ingredients:
+              A:
+                type: ENCHANTED_GLOWSTONE
+                amount: 32
+              B:
+                type: MOLTEN_POWDER
+                amount: 32
+              C:
+                type: ENCHANTED_RABBIT_HIDE
+                amount: 64
+            result:
+              type: DEMONLORD_GAUNTLET
+              amount: 1
+  - id: TELEPORTER_PILL
+    material: player_head
+    name: "Teleporter Pill"
+    rarity: RARE
+    lore:
+      - "§7Right-click to consume a really nice,"
+      - "§7really good pill."
+      - ""
+      - "§7Consuming it allows you to use"
+      - "§7teleport pads on your private island"
+      - "§7from anywhere."
+      - ""
+      - "§cTeleport Pads aren't available yet."
+    components:
+      - id: SKULL_HEAD
+        texture: 722058c7cc8521ee1599e89e3e2a13ac6e0fac2ce0b3667f9b7955170f1cae3e
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 4
+  - id: DESTRUCTION_CLOAK
+    material: paper
+    name: "Destruction Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 60
+      strength: 15
+      critical_damage: 15
+      magic_find: 1
+      foraging_wisdom: 1
+    lore:
+      - "§7Heal §c15❤ §7every §a1s §7while worn."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 5
+  - id: ANNIHILATION_CLOAK
+    material: paper
+    name: "Annihilation Cloak"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 80
+      strength: 20
+      critical_damage: 20
+      magic_find: 2
+      foraging_wisdom: 2
+    lore:
+      - "§7Heal §c25❤ §7every §a1s §7while worn."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 7
+  - id: TACTICAL_INSERTION
+    material: blaze_rod
+    name: "Tactical Insertion"
+    rarity: EPIC
+    components:
+      - id: ABILITY
+        abilities:
+          - GORILLA_TACTICS
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 5
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "  T"
+              - " V "
+              - "M  "
+            ingredients:
+              T:
+                type: TESSELLATED_ENDER_PEARL
+                amount: 4
+              V:
+                type: INFERNO_VERTEX
+                amount: 8
+              M:
+                type: MOLTEN_POWDER
+                amount: 48
+            result:
+              type: TACTICAL_INSERTION
+              amount: 1
+  - id: BLAZETEKK_HAM_RADIO
+    material: player_head
+    name: "Blazetekk™ Ham Radio"
+    rarity: LEGENDARY
+    lore:
+      - "§6Ability: Telecommunications "
+      - "§7If exactly two players within §a110 §7blocks are"
+      - "§7on the same channel, both gain:"
+      - " §a+60 Defense"
+      - " §f+40 True Defense"
+      - " §3+5☯ Combat Wisdom"
+      - " §4+10 Vitality"
+      - "§8Earn half stats while alone!"
+      - ""
+      - "§6Ability: Tuning 4 Dummies  §e§lCLICK"
+      - "§7Switches to the next radio channel."
+      - ""
+      - "§cThis ability isn't active yet."
+    components:
+      - id: SKULL_HEAD
+        texture: 11398300d02512a7bebc0f9d7a12d67cdf885c9144b38946944d9ef4202c3836
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 6
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "MVM"
+              - "MLM"
+              - "MVM"
+            ingredients:
+              M:
+                type: MOLTEN_POWDER
+                amount: 16
+              V:
+                type: INFERNO_VERTEX
+                amount: 12
+              L:
+                type: ENCHANTED_REDSTONE_LAMP
+                amount: 64
+            result:
+              type: BLAZETEKK_HAM_RADIO
+              amount: 1
+  - id: UPGRADE_STONE_FROST
+    material: player_head
+    name: "Wisp Upgrade Stone"
+    rarity: RARE
+    lore:
+      - "§8Consumed on use"
+      - ""
+      - "§7Upgrades a §aDroplet Wisp §7pet to a"
+      - "§9Frost Wisp §7pet, resetting its level."
+      - ""
+      - "§cWisp pets aren't available yet."
+    components:
+      - id: SKULL_HEAD
+        texture: 54ea0dfb794fe9b372f5ec529fc8b8a0f077febf4b74f78972f0c82c3c186248
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "MIM"
+              - "VIK"
+              - "MIM"
+            ingredients:
+              M:
+                type: MOLTEN_POWDER
+                amount: 2
+              I:
+                type: ENCHANTED_PACKED_ICE
+                amount: 1
+              V:
+                type: INFERNO_VERTEX
+                amount: 1
+              K:
+                type: KELVIN_INVERTER
+                amount: 1
+            result:
+              type: UPGRADE_STONE_FROST
+              amount: 1
+  - id: UPGRADE_STONE_GLACIAL
+    material: player_head
+    name: "Wisp Upgrade Stone"
+    rarity: EPIC
+    lore:
+      - "§8Consumed on use"
+      - ""
+      - "§7Upgrades a §9Frost Wisp §7pet to a"
+      - "§5Glacial Wisp §7pet, resetting its level."
+      - ""
+      - "§cWisp pets aren't available yet."
+    components:
+      - id: SKULL_HEAD
+        texture: 54ea0dfb794fe9b372f5ec529fc8b8a0f077febf4b74f78972f0c82c3c186248
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - "VIV"
+              - "MKM"
+              - "VIV"
+            ingredients:
+              V:
+                type: INFERNO_VERTEX
+                amount: 2
+              I:
+                type: ENCHANTED_PACKED_ICE
+                amount: 6
+              M:
+                type: MOLTEN_POWDER
+                amount: 24
+              K:
+                type: KELVIN_INVERTER
+                amount: 6
+            result:
+              type: UPGRADE_STONE_GLACIAL
+              amount: 1
+  - id: UPGRADE_STONE_SUBZERO
+    material: player_head
+    name: "Wisp Upgrade Stone"
+    rarity: LEGENDARY
+    lore:
+      - "§8Consumed on use"
+      - ""
+      - "§7Upgrades a §5Glacial Wisp §7pet to a"
+      - "§6Subzero Wisp §7pet, resetting its level."
+      - ""
+      - "§cWisp pets aren't available yet."
+    components:
+      - id: SKULL_HEAD
+        texture: 54ea0dfb794fe9b372f5ec529fc8b8a0f077febf4b74f78972f0c82c3c186248

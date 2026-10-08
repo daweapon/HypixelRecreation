@@ -580,8 +580,9 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=blaze level=4
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 4
       - id: GEMSTONE
         gemstone_slots:
           - gemstone: COMBAT
@@ -590,6 +591,32 @@ items:
             coins: 500000
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/blaze/swords/kindlebane_dagger
+      - id: ABILITY
+        abilities:
+          - BLAZE_DAGGER_ATTUNEMENT
+          - BURNING_VENGEANCE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            upgrades_from: FIREDUST_DAGGER
+            pattern:
+              - " A "
+              - " B "
+              - " C "
+            ingredients:
+              A:
+                type: GOLD_MAGMAFISH
+                amount: 1
+              B:
+                type: MOLTEN_POWDER
+                amount: 8
+              C:
+                type: FIREDUST_DAGGER
+                amount: 1
+            result:
+              type: BURSTFIRE_DAGGER
+              amount: 1
   - id: BURSTMAW_DAGGER
     material: IRON_SWORD
     rarity: EPIC
@@ -603,8 +630,9 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=blaze level=4
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 4
       - id: GEMSTONE
         gemstone_slots:
           - gemstone: COMBAT
@@ -613,6 +641,32 @@ items:
             coins: 500000
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/blaze/swords/mawdredge_dagger
+      - id: ABILITY
+        abilities:
+          - BLAZE_DAGGER_ATTUNEMENT
+          - WRAITH_DRAIN
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            upgrades_from: MAWDUST_DAGGER
+            pattern:
+              - " A "
+              - " B "
+              - " C "
+            ingredients:
+              A:
+                type: ENCHANTED_SULPHUR_CUBE
+                amount: 1
+              B:
+                type: MOLTEN_POWDER
+                amount: 8
+              C:
+                type: MAWDUST_DAGGER
+                amount: 1
+            result:
+              type: BURSTMAW_DAGGER
+              amount: 1
   - id: CELESTE_WAND
     material: STICK
     rarity: UNCOMMON
@@ -1062,14 +1116,40 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=blaze level=2
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 2
       - id: GEMSTONE
         gemstone_slots:
           - gemstone: COMBAT
             coins: 250000
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/blaze/swords/firedust_dagger
+      - id: ABILITY
+        abilities:
+          - BLAZE_DAGGER_ATTUNEMENT
+          - BURNING_VENGEANCE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - " A "
+              - " B "
+              - " C "
+            ingredients:
+              A:
+                type: SILVER_MAGMAFISH
+                amount: 30
+              B:
+                type: MOLTEN_POWDER
+                amount: 1
+              C:
+                type: STICK
+                amount: 1
+            result:
+              type: FIREDUST_DAGGER
+              amount: 1
   - id: FIRE_FREEZE_STAFF
     material: DANDELION
     rarity: EPIC
@@ -1463,8 +1543,9 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=blaze level=6
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 6
       - id: GEMSTONE
         gemstone_slots:
           - gemstone: COMBAT
@@ -1473,6 +1554,35 @@ items:
             coins: 500000
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/blaze/swords/pyrochaos_dagger
+      - id: ABILITY
+        abilities:
+          - BLAZE_DAGGER_ATTUNEMENT
+          - BURNING_VENGEANCE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            upgrades_from: BURSTFIRE_DAGGER
+            pattern:
+              - " A "
+              - " B "
+              - "VCV"
+            ingredients:
+              A:
+                type: GOLD_MAGMAFISH
+                amount: 8
+              B:
+                type: MOLTEN_POWDER
+                amount: 64
+              V:
+                type: INFERNO_VERTEX
+                amount: 8
+              C:
+                type: BURSTFIRE_DAGGER
+                amount: 1
+            result:
+              type: HEARTFIRE_DAGGER
+              amount: 1
   - id: HEARTMAW_DAGGER
     material: IRON_SWORD
     rarity: LEGENDARY
@@ -1487,8 +1597,9 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=blaze level=6
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 6
       - id: GEMSTONE
         gemstone_slots:
           - gemstone: COMBAT
@@ -1497,6 +1608,35 @@ items:
             coins: 500000
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/blaze/swords/deathripper_dagger
+      - id: ABILITY
+        abilities:
+          - BLAZE_DAGGER_ATTUNEMENT
+          - WRAITH_DRAIN
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            upgrades_from: BURSTMAW_DAGGER
+            pattern:
+              - " A "
+              - " B "
+              - "VCV"
+            ingredients:
+              A:
+                type: ENCHANTED_SULPHUR_CUBE
+                amount: 16
+              B:
+                type: MOLTEN_POWDER
+                amount: 64
+              V:
+                type: INFERNO_VERTEX
+                amount: 8
+              C:
+                type: BURSTMAW_DAGGER
+                amount: 1
+            result:
+              type: HEARTMAW_DAGGER
+              amount: 1
   - id: HELLSTORM_STAFF
     material: REDSTONE_TORCH
     rarity: EPIC
@@ -1831,14 +1971,40 @@ items:
         standard_item_type: SWORD
       - id: ITEM_REQUIREMENTS
         requirements:
-          - type: PENDING
-            description: slayer_boss_type=blaze level=2
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 2
       - id: GEMSTONE
         gemstone_slots:
           - gemstone: COMBAT
             coins: 250000
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/blaze/swords/twilight_dagger
+      - id: ABILITY
+        abilities:
+          - BLAZE_DAGGER_ATTUNEMENT
+          - WRAITH_DRAIN
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: INFERNO_DEMONLORD
+            pattern:
+              - " A "
+              - " B "
+              - " C "
+            ingredients:
+              A:
+                type: ENCHANTED_SULPHUR
+                amount: 5
+              B:
+                type: MOLTEN_POWDER
+                amount: 1
+              C:
+                type: STICK
+                amount: 1
+            result:
+              type: MAWDUST_DAGGER
+              amount: 1
   - id: MERCENARY_AXE
     material: IRON_SWORD
     name: "Mercenary Axe"

@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.item.components;
 import lombok.Getter;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
+import net.swofty.type.skyblockgeneric.slayer.SlayerRequirement;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class ItemRequirementsComponent extends SkyBlockItemComponent {
 
     public record Requirement(Type type, String category, int level, String description) {
         public boolean isMet(SkyBlockPlayer player) {
+            if (type == Type.SLAYER) return SlayerRequirement.isMet(player, category, level);
             if (type != Type.SKILL) return true;
             try {
                 SkillCategories skill = SkillCategories.valueOf(category);
@@ -45,6 +47,7 @@ public class ItemRequirementsComponent extends SkyBlockItemComponent {
                 case SKILL -> category.substring(0, 1) + category.substring(1).toLowerCase() + " " + level;
                 case DUNGEON_SKILL -> category + " level " + level;
                 case DUNGEON_TIER -> category + " floor " + level + " completion";
+                case SLAYER -> SlayerRequirement.display(category, level);
                 case PENDING -> description;
             };
         }
@@ -54,6 +57,7 @@ public class ItemRequirementsComponent extends SkyBlockItemComponent {
         SKILL,
         DUNGEON_SKILL,
         DUNGEON_TIER,
+        SLAYER,
         PENDING
     }
 }
