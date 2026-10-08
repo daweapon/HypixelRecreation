@@ -4,7 +4,10 @@ import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.TaskSchedule;
+import net.swofty.type.generic.entity.npc.NPCConversations;
 import net.swofty.type.generic.user.HypixelPlayer;
+import org.jetbrains.annotations.Nullable;
+import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,19 +62,32 @@ public final class CrimsonScene {
     }
 
     public CompletableFuture<Void> play(HypixelPlayer player) {
-        CompletableFuture<Void> future = new CompletableFuture<>();
-        PLAYING.put(player.getUuid(), future);
-        sendFrom(player, 0, future);
-        return future;
+        return play(player, null);
     }
 
-    private void sendFrom(HypixelPlayer player, int index, CompletableFuture<Void> future) {
-        if (!player.isOnline()) {
-            future.complete(null);
-            return;
+    /** Plays the scene as a conversation with {@code speaker}, so clicking that NPC again is not refused. */
+    public CompletableFuture<Void> play(HypixelPlayer player, @Nullable Object speaker) {
+        long expected = Math.max(0, lines.size() - 1) * LINE_TICKS * 50;
+        Playback playback = new Playback(player, new CompletableFuture<>(),
+                NPCConversations.server().begin(player.getUuid(), speaker, expected));
+        PLAYING.put(player.getUuid(), playback.future());
+        sendFrom(playback, 0);
+        return playback.future();
+    }
+
+    private void sendFrom(Playback playback, int index) {
+        try {
+            sendLine(playback, index);
+        } catch (RuntimeException exception) {
+            Logger.error(exception, "Crimson scene line {} failed for {}", index, playback.player().getUsername());
+            playback.finish(exception);
         }
-        if (index >= lines.size()) {
-            future.complete(null);
+    }
+
+    private void sendLine(Playback playback, int index) {
+        HypixelPlayer player = playback.player();
+        if (!player.isOnline() || playback.future().isDone() || index >= lines.size()) {
+            playback.finish(null);
             return;
         }
         String[] line = lines.get(index);
@@ -83,10 +99,22 @@ public final class CrimsonScene {
             player.playSound(Sound.sound(Key.key("entity.villager.celebrate"), Sound.Source.NEUTRAL, 1f, 1f));
         }
         if (index + 1 >= lines.size()) {
-            future.complete(null);
+            playback.finish(null);
             return;
         }
-        MinecraftServer.getSchedulerManager().buildTask(() -> sendFrom(player, index + 1, future))
+        MinecraftServer.getSchedulerManager().buildTask(() -> sendFrom(playback, index + 1))
                 .delay(TaskSchedule.tick((int) LINE_TICKS)).schedule();
+    }
+
+    private record Playback(HypixelPlayer player, CompletableFuture<Void> future, long token) {
+        void finish(@Nullable Throwable failure) {
+            PLAYING.remove(player.getUuid(), future);
+            try {
+                if (failure == null) future.complete(null);
+                else future.completeExceptionally(failure);
+            } finally {
+                NPCConversations.server().end(player.getUuid(), token);
+            }
+        }
     }
 }

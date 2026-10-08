@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonScene;
 import net.swofty.type.skyblockgeneric.crimson.questline.MageStep;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
+import net.swofty.type.skyblockgeneric.user.QuestObjectives;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.HashSet;
@@ -28,6 +29,7 @@ public final class FactionQuestTicker {
 
     public static void start() {
         KuudraProgress.registerQuestlineCheck(CrimsonQuestlines::isReadyForKuudra);
+        QuestObjectives.register(CrimsonQuestObjectives::of);
         MinecraftServer.getSchedulerManager().buildTask(FactionQuestTicker::tick)
                 .repeat(TaskSchedule.tick(10)).schedule();
         FactionVillagers.startParticles();
@@ -49,7 +51,9 @@ public final class FactionQuestTicker {
         RegionType type = region == null ? null : region.getType();
         if (type == RegionType.THRONE_ROOM && !ThroneRoomGate.mayEnter(player)) ThroneRoomGate.turnAway(player);
         if (type == RegionType.CHIEFS_HUT) {
-            if (!ThroneRoomGate.mayEnterChiefsHut(player)) ThroneRoomGate.turnAwayFromChiefsHut(player);
+            if (!ThroneRoomGate.mayEnterChiefsHut(player)) {
+                if (ThroneRoomGate.isInsideChiefsHut(player)) ThroneRoomGate.turnAwayFromChiefsHut(player);
+            }
             else if (CrimsonQuestlines.barbarian(player) == BarbarianStep.ESCORT_UGO) BarbarianScenes.chiefWelcome(player);
         }
         IntroBlazes.check(player);

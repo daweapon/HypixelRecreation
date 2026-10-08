@@ -65,6 +65,7 @@ import net.swofty.type.skyblockgeneric.skill.skills.RunecraftingSkill;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import net.swofty.type.skyblockgeneric.utility.DeathMessageCreator;
+import net.swofty.type.generic.entity.npc.NPCConversations;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -983,6 +984,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
     @Override
     public void kill() {
+        NPCConversations.server().release(getUuid());
         healingModifiers.clear();
         setHealth(getMaxHealth());
         sendTo(HypixelConst.getTypeLoader().getType());

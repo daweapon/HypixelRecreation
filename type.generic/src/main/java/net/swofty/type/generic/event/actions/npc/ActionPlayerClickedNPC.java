@@ -4,6 +4,7 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.PlayerHand;
 import net.minestom.server.event.player.PlayerEntityInteractEvent;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
+import net.swofty.type.generic.entity.npc.NPCConversations;
 import net.swofty.type.generic.entity.npc.impl.NPCAnimalEntityImpl;
 import net.swofty.type.generic.entity.npc.impl.NPCEntityImpl;
 import net.swofty.type.generic.entity.npc.impl.NPCVillagerEntityImpl;
@@ -32,8 +33,21 @@ public class ActionPlayerClickedNPC implements HypixelEventClass {
 		HypixelEventHandler.callCustomEvent(clickEvent);
 		if (clickEvent.isCancelled()) return;
 
+		NPCConversations conversations = NPCConversations.server();
+		if (conversations.blocksClick(player.getUuid(), npc)) {
+			player.sendMessage(NPCConversations.ALREADY_IN_CONVERSATION);
+			return;
+		}
+
 		switch (entity) {
-			case NPCEntityImpl _, NPCVillagerEntityImpl _, NPCAnimalEntityImpl _ -> npc.onClick(clickEvent);
+			case NPCEntityImpl _, NPCVillagerEntityImpl _, NPCAnimalEntityImpl _ -> {
+				conversations.startClick(player.getUuid(), npc);
+				try {
+					npc.onClick(clickEvent);
+				} finally {
+					conversations.finishClick(player.getUuid());
+				}
+			}
 			default -> {
 				// This is not a NPC we can handle here
 				Logger.warn("Player " + player.getUsername() + " clicked on an unknown NPC type: " + entity.getClass().getName());
