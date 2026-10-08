@@ -132,12 +132,31 @@ items:
     name: "Magma Rod"
     rarity: RARE
     default_statistics:
-      DAMAGE: 150
-      STRENGTH: 120
+      DAMAGE: 175
+      STRENGTH: 175
       FISHING_SPEED: 40
       SEA_CREATURE_CHANCE: 6
-      TROPHY_FISH_CHANCE: 10
+      TROPHY_FISH_CHANCE: 15
     components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "  S"
+              - " SM"
+              - "S M"
+            ingredients:
+              S:
+                type: STICK
+                amount: 1
+              M:
+                type: SILVER_MAGMAFISH
+                amount: 5
+            result:
+              type: MAGMA_ROD
+              amount: 1
       - id: FISHING_ROD_METADATA
         subtitle: Lava Rod
         medium: LAVA
@@ -151,12 +170,31 @@ items:
     name: "Inferno Rod"
     rarity: EPIC
     default_statistics:
-      DAMAGE: 210
-      STRENGTH: 150
-      FISHING_SPEED: 60
+      DAMAGE: 200
+      STRENGTH: 200
+      FISHING_SPEED: 50
       SEA_CREATURE_CHANCE: 10
-      TROPHY_FISH_CHANCE: 15
+      TROPHY_FISH_CHANCE: 20
     components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "GGG"
+              - "GRG"
+              - "GGG"
+            ingredients:
+              G:
+                type: GOLD_MAGMAFISH
+                amount: 2
+              R:
+                type: MAGMA_ROD
+                amount: 1
+            result:
+              type: INFERNO_ROD
+              amount: 1
       - id: FISHING_ROD_METADATA
         subtitle: Lava Rod
         medium: LAVA
@@ -174,8 +212,27 @@ items:
       STRENGTH: 225
       FISHING_SPEED: 60
       SEA_CREATURE_CHANCE: 14
-      TROPHY_FISH_CHANCE: 20
+      TROPHY_FISH_CHANCE: 25
     components:
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "GGG"
+              - "GRG"
+              - "GGG"
+            ingredients:
+              G:
+                type: GOLD_MAGMAFISH
+                amount: 10
+              R:
+                type: INFERNO_ROD
+                amount: 1
+            result:
+              type: HELLFIRE_ROD
+              amount: 1
       - id: FISHING_ROD_METADATA
         subtitle: Lava Rod
         medium: LAVA

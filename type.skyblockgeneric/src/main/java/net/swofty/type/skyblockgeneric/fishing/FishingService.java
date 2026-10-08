@@ -5,6 +5,11 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+import net.swofty.commons.ServerType;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.statistics.ItemStatistic;
+import net.swofty.type.generic.HypixelConst;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
@@ -59,20 +64,24 @@ public final class FishingService {
     }
 
     public static long computeWaitTicks(SkyBlockPlayer player, SkyBlockItem rod, @Nullable FishingBaitComponent bait) {
-        double fishingSpeed = player.getStatistics().allStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.FISHING_SPEED)
-            + rod.getAttributeHandler().getStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.FISHING_SPEED)
-            + FishingRodPartService.getStatistics(rod).getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.FISHING_SPEED);
+        ItemStatistic speed = ItemStatistic.FISHING_SPEED;
+        double fishingSpeed = player.getStatistics().allStatistics().getOverall(speed)
+            + FishingRodPartService.getStatistics(rod).getOverall(speed);
+        ItemType held = new SkyBlockItem(player.getItemInMainHand()).getAttributeHandler().getPotentialType();
+        if (held != rod.getAttributeHandler().getPotentialType()) {
+            fishingSpeed += rod.getAttributeHandler().getStatistics().getOverall(speed);
+        }
         if (bait != null) {
             SkyBlockItem baitItem = FishingItemSupport.getItem(bait.getItemId());
             if (baitItem != null) {
-                fishingSpeed += baitItem.getAttributeHandler().getStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.FISHING_SPEED);
+                fishingSpeed += baitItem.getAttributeHandler().getStatistics().getOverall(speed);
             }
             if ("CORRUPTED_BAIT".equals(bait.getItemId())) {
                 fishingSpeed /= 2.0D;
             }
         }
-        long baseTicks = 80L;
-        return Math.max(20L, Math.round(baseTicks - Math.min(50D, fishingSpeed / 2D)));
+        ServerType server = HypixelConst.getTypeLoader() == null ? null : HypixelConst.getTypeLoader().getType();
+        return FishingSpeed.waitTicks(fishingSpeed, FishingSpeed.cap(server), ThreadLocalRandom.current());
     }
 
     public static @Nullable CatchPayload resolveCatch(SkyBlockPlayer player, SkyBlockItem rod, FishingHook hook) {
