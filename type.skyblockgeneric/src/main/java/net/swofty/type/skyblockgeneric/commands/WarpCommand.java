@@ -27,20 +27,25 @@ public class WarpCommand extends HypixelCommand {
         warpArgument.setSuggestionCallback(((sender, context, suggestion) -> {
             for (TravelScrollIslands island : TravelScrollIslands.values()) {
                 suggest(suggestion, island.getInternalName(), island.getDescriptiveName());
+                for (TravelScrollType scroll : island.getAssociatedScrolls()) {
+                    suggest(suggestion, scroll.getInternalName(), scroll.getDisplayName());
+                }
             }
         }));
 
         command.addSyntax((sender, context) -> {
             if (!permissionCheck(sender)) return;
-            final String warp = context.get(warpArgument);
+            final String warp = TravelScrollIslands.resolveAlias(context.get(warpArgument));
             SkyBlockPlayer player = (SkyBlockPlayer) sender;
 
             TravelScrollIslands island = TravelScrollIslands.getFromInternalName(warp);
             if (island != null) {
-                List<String> unlockedIslands = player.getSkyblockDataHandler()
-                        .get(SkyBlockDataHandler.Data.VISITED_ISLANDS, DatapointStringList.class)
-                        .getValue();
-                if (unlockedIslands.contains(warp)) {
+                String blocked = island.entryBlockReason(player);
+                if (blocked != null) {
+                    player.sendMessage(blocked);
+                    return;
+                }
+                if (island.isUnlocked(player)) {
                     player.asProxyPlayer().transferToWithIndication(island.getServerType()).thenRun(() -> {
                         player.asProxyPlayer().sendMessage("<7>You have been warped to {}<7>!", island.getDescriptiveName());
                     });
@@ -57,6 +62,11 @@ public class WarpCommand extends HypixelCommand {
                         .getValue();
                 TravelScrollIslands islandFromScroll = TravelScrollIslands.getFromTravelScroll(scroll);
                 if (unlockedWarps.contains(warp)) {
+                    String blocked = islandFromScroll.entryBlockReason(player);
+                    if (blocked != null) {
+                        player.sendMessage(blocked);
+                        return;
+                    }
                     ServerType serverType = islandFromScroll.getServerType();
 
                     if (HypixelConst.getTypeLoader().getType() == serverType) {

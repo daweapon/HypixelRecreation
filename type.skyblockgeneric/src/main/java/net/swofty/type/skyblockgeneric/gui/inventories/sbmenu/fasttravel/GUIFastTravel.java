@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.fasttravel;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.Material;
+import net.swofty.commons.StringUtility;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.data.datapoints.DatapointStringList;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
@@ -66,10 +67,7 @@ public class GUIFastTravel extends StatelessView {
 
             layout.slot(slot, (s, c) -> {
                 SkyBlockPlayer p = (SkyBlockPlayer) c.player();
-                boolean hasUnlockedIsland = p.getSkyblockDataHandler()
-                        .get(SkyBlockDataHandler.Data.VISITED_ISLANDS, DatapointStringList.class)
-                        .getValue()
-                        .contains(island.getInternalName());
+                boolean hasUnlockedIsland = island.isUnlocked(p);
                 boolean isPaper = p.getToggles().get(DatapointToggles.Toggles.ToggleType.PAPER_ICONS);
 
                 List<Text> lore = new ArrayList<>();
@@ -81,12 +79,13 @@ public class GUIFastTravel extends StatelessView {
 
                 if (island.getAssociatedSkill() != null) {
                     lore.add(Text.of("<7>Main skill: <b>{}", island.getAssociatedSkill()));
-                    lore.add(Text.of("<7>Island tier: <e>{}", island.getIslandTier()));
+                    lore.add(Text.of("<7>Island tier: <e>{}", StringUtility.getAsRomanNumeral(island.getIslandTier())));
                     lore.add(Text.literal(" "));
                 }
 
                 if (!hasUnlockedIsland) {
                     lore.add(Text.of("<c>Warp not unlocked!"));
+                    if (hasSubMenu) lore.add(Text.of("<e>Left-Click to open!"));
                 } else {
                     if (hasSubMenu) {
                         lore.add(Text.of("<8>Right-Click to warp!"));
@@ -106,13 +105,26 @@ public class GUIFastTravel extends StatelessView {
                 }
             }, (click, c) -> {
                 SkyBlockPlayer p = (SkyBlockPlayer) c.player();
-                boolean hasUnlockedIsland = p.getSkyblockDataHandler()
-                        .get(SkyBlockDataHandler.Data.VISITED_ISLANDS, DatapointStringList.class)
-                        .getValue()
-                        .contains(island.getInternalName());
+                boolean hasUnlockedIsland = island.isUnlocked(p);
+
+                if (!hasSubMenu && !hasUnlockedIsland) {
+                    p.sendMessage("<c>You haven't unlocked this fast travel destination!");
+                    return;
+                }
+
+                if (hasSubMenu && !(click.click() instanceof Click.Right)) {
+                    c.push(new GUIFastTravelSubMenu(island));
+                    return;
+                }
 
                 if (!hasUnlockedIsland) {
                     p.sendMessage("<c>You haven't unlocked this fast travel destination!");
+                    return;
+                }
+
+                String blocked = island.entryBlockReason(p);
+                if (blocked != null) {
+                    p.sendMessage(blocked);
                     return;
                 }
 
@@ -125,15 +137,11 @@ public class GUIFastTravel extends StatelessView {
                     return;
                 }
 
-                if (click.click() instanceof Click.Right) {
-                    p.closeInventory();
-                    p.sendMessage("<7>Warping you to {}<7>...", island.getDescriptiveName());
-                    p.asProxyPlayer().transferToWithIndication(island.getServerType()).thenRun(() -> {
-                        p.asProxyPlayer().sendMessage("<7>You have been warped to {}<7>!", island.getDescriptiveName());
-                    });
-                } else {
-                    c.push(new GUIFastTravelSubMenu(island));
-                }
+                p.closeInventory();
+                p.sendMessage("<7>Warping you to {}<7>...", island.getDescriptiveName());
+                p.asProxyPlayer().transferToWithIndication(island.getServerType()).thenRun(() -> {
+                    p.asProxyPlayer().sendMessage("<7>You have been warped to {}<7>!", island.getDescriptiveName());
+                });
             });
         }
     }

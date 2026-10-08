@@ -3,9 +3,12 @@ package net.swofty.type.skyblockgeneric.shop.catalogue;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.shop.ShopPrice;
+import net.swofty.type.skyblockgeneric.shop.type.BitsShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.CombinedShopPrice;
+import net.swofty.type.skyblockgeneric.shop.type.EssenceShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.GemShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.ItemShopPrice;
 import org.jetbrains.annotations.Nullable;
@@ -42,16 +45,33 @@ public record CatalogueCost(double coins, int gems, int bits, Map<String, Intege
         return value instanceof Number number ? number : 0;
     }
 
+    public @Nullable EssenceType essenceKind() {
+        if (essenceType == null) return null;
+        try {
+            return EssenceType.valueOf(essenceType.toUpperCase());
+        } catch (IllegalArgumentException exception) {
+            return null;
+        }
+    }
+
     public boolean purchasable() {
-        return bits == 0 && essence == 0
+        return (essence == 0 || essenceKind() != null)
                 && items.keySet().stream().allMatch(id -> ItemType.get(id) != null);
     }
 
     public ShopPrice toShopPrice() {
+        return toShopPrice(1);
+    }
+
+    /** {@code coinMultiplier} scales only the coin part, the way faction discounts work. */
+    public ShopPrice toShopPrice(double coinMultiplier) {
         List<ShopPrice> parts = new ArrayList<>();
-        if (coins > 0) parts.add(new CoinShopPrice(coins));
+        if (coins > 0) parts.add(new CoinShopPrice(coinMultiplier == 1 ? coins : Math.ceil(coins * coinMultiplier)));
         if (gems > 0) parts.add(new GemShopPrice(gems));
+        if (bits > 0) parts.add(new BitsShopPrice(bits));
+        if (essence > 0 && essenceKind() != null) parts.add(new EssenceShopPrice(essenceKind(), essence));
         items.forEach((id, amount) -> parts.add(new ItemShopPrice(ItemType.get(id), amount)));
+        if (parts.isEmpty()) return new CoinShopPrice(0);
         if (parts.size() == 1) return parts.getFirst();
         return new CombinedShopPrice(parts);
     }

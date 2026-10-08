@@ -783,6 +783,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         SHEN_AUCTIONS("shen_auctions", false, false, false,
                 DatapointShenAuctions.class, new DatapointShenAuctions("shen_auctions")),
+
+        CRIMSON_ISLE("crimson_isle", false, false, false,
+                DatapointCrimsonIsle.class, new DatapointCrimsonIsle("crimson_isle")),
         ;
 
         @Getter

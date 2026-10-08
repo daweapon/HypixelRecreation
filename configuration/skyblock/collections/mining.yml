@@ -724,6 +724,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DANGER_2_TRAVEL_SCROLL
   - amount: 5000
     rewards:
     - type: XP

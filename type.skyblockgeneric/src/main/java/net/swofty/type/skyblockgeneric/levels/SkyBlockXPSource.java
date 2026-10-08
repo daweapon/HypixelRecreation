@@ -139,8 +139,8 @@ public enum SkyBlockXPSource {
     ABIPHONE_CONTACTS(Group.MISCELLANEOUS, null, 840, Availability.UNWIRED, Material.PAPER),
     COMMUNITY_SHOP_UPGRADES(Group.MISCELLANEOUS, null, 120, Availability.UNWIRED, Material.EMERALD_BLOCK),
     PERSONAL_BANK_UPGRADES(Group.MISCELLANEOUS, null, 110, Availability.LIVE, Material.GOLD_BLOCK),
-    MAGE_REPUTATION(Group.MISCELLANEOUS, null, 75, Availability.NOT_IN_GAME, Material.BLUE_BANNER),
-    BARBARIAN_REPUTATION(Group.MISCELLANEOUS, null, 75, Availability.NOT_IN_GAME, Material.RED_BANNER),
+    MAGE_REPUTATION(Group.MISCELLANEOUS, null, 75, Availability.LIVE, Material.BLUE_BANNER),
+    BARBARIAN_REPUTATION(Group.MISCELLANEOUS, null, 75, Availability.LIVE, Material.RED_BANNER),
 
     // ----- Story Tasks (1,132 XP) -----
     RIFT_GUIDE(Group.STORY, null, 360, Availability.NOT_IN_GAME, Material.ENDER_EYE),
@@ -379,6 +379,11 @@ public enum SkyBlockXPSource {
                     getDisplayName() + "!",
                     "Tier I: <b>+2 XP", "Tier II: <b>+2 XP", "Tier III: <b>+3 XP",
                     "Tier IV: <b>+5 XP", "Tier V: <b>+7 XP");
+            case MAGE_REPUTATION, BARBARIAN_REPUTATION -> List.of(
+                    "Gain XP by earning Reputation with",
+                    "the " + (this == MAGE_REPUTATION ? "Mage" : "Barbarian") + " Faction!",
+                    "Friendly Status: <b>+5 XP", "Trusted Status: <b>+10 XP",
+                    "Honored Status: <b>+20 XP", "Hero Status: <b>+40 XP");
             default -> List.of("Gain XP from " + getDisplayName() + "!");
         };
     }

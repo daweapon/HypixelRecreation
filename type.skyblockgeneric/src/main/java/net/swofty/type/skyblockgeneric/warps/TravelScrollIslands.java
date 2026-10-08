@@ -4,12 +4,17 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
 import net.swofty.commons.ServerType;
+import net.swofty.commons.StringUtility;
+import net.swofty.type.generic.data.datapoints.DatapointStringList;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 @Getter
@@ -27,8 +32,21 @@ public enum TravelScrollIslands {
 			(unused) -> "An island that gets progressively deeper and contains 6 layers of dangerous mobs and new resources.", ServerType.SKYBLOCK_DEEP_CAVERNS, SkillCategories.MINING, 2),
 	DWARVEN_MINES("dwarven", "<a>Dwarven Mines <7>- <b>Spawn",
 			"6b20b23c1aa2be0270f016b4c90d6ee6b8330a17cfef87869d6ad60b2ffbf3b5",
-			(unused) -> "An island that gets progressively deeper and contains 6 layers of dangerous mobs and new resources.", ServerType.SKYBLOCK_DWARVEN_MINES, SkillCategories.MINING, 2)
+			(unused) -> "An island that gets progressively deeper and contains 6 layers of dangerous mobs and new resources.", ServerType.SKYBLOCK_DWARVEN_MINES, SkillCategories.MINING, 2),
+	CRIMSON_ISLE("nether", "<a>Crimson Isle <7>- <b>Spawn",
+			"64457b2d7acf522d1912f0d6c6139440ba9d333a6bf61a2e9440e7fb3788939e",
+			(unused) -> "Fight challenging bosses, discover new Sea Creatures, complete epic quests, and join your favorite faction!",
+			ServerType.SKYBLOCK_CRIMSON_ISLE, SkillCategories.COMBAT, 4, 22, "Crimson Isle Warps",
+			TravelScrollType.CRIMSON_ISLE_SPAWN,
+			List.of(TravelScrollType.CRIMSON_ISLE_FORGOTTEN_SKULL, TravelScrollType.CRIMSON_ISLE_WASTELAND,
+					TravelScrollType.CRIMSON_ISLE_DRAGONTAIL, TravelScrollType.CRIMSON_ISLE_SCARLETON,
+					TravelScrollType.CRIMSON_ISLE_SMOLDERING_TOMB))
 	;
+
+	private static final Map<String, String> WARP_ALIASES = Map.of(
+			"isle", "nether", "crimson", "nether", "ci", "nether",
+			"skull", "kuudra",
+			"smoldering", "smold", "smoldering_tomb", "smold");
 
     private final String internalName;
     @Getter(AccessLevel.NONE)
@@ -40,6 +58,26 @@ public enum TravelScrollIslands {
 
 	private final SkillCategories associatedSkill;
 	private final Integer islandTier;
+	private final int requiredSkillLevel;
+	private final @Nullable String warpMenuTitle;
+	/** When set, the island's own warp is unlocked by consuming this scroll rather than by visiting. */
+	private final @Nullable TravelScrollType unlockScroll;
+
+	TravelScrollIslands(String internalName, String descriptiveName, String texture, Function<Boolean, String> description,
+						@NonNull ServerType serverType, SkillCategories associatedSkill, Integer islandTier, int requiredSkillLevel,
+						String warpMenuTitle, TravelScrollType unlockScroll, List<TravelScrollType> associatedScrolls) {
+		this.internalName = internalName;
+		this.descriptiveName = descriptiveName;
+		this.texture = texture;
+		this.description = description;
+		this.serverType = serverType;
+		this.associatedSkill = associatedSkill;
+		this.islandTier = islandTier;
+		this.requiredSkillLevel = requiredSkillLevel;
+		this.warpMenuTitle = warpMenuTitle;
+		this.unlockScroll = unlockScroll;
+		this.associatedScrolls.addAll(associatedScrolls);
+	}
 
 	TravelScrollIslands(String internalName, String descriptiveName, String texture, Function<Boolean, String> description, @NonNull ServerType serverType, SkillCategories associatedSkill, Integer islandTier) {
 		this.internalName = internalName;
@@ -49,6 +87,9 @@ public enum TravelScrollIslands {
 		this.serverType = serverType;
 		this.associatedSkill = associatedSkill;
 		this.islandTier = islandTier;
+		this.requiredSkillLevel = 0;
+		this.warpMenuTitle = null;
+		this.unlockScroll = null;
 	}
 
 	TravelScrollIslands(String internalName, String descriptiveName, String texture, Function<Boolean, String> description, @NonNull ServerType serverType) {
@@ -59,6 +100,9 @@ public enum TravelScrollIslands {
 		this.serverType = serverType;
 		this.associatedSkill = null;
 		this.islandTier = null;
+		this.requiredSkillLevel = 0;
+		this.warpMenuTitle = null;
+		this.unlockScroll = null;
 	}
 
 	TravelScrollIslands(String internalName, String descriptiveName, String texture, Function<Boolean, String> description, @NonNull ServerType serverType, List<TravelScrollType> associatedScrolls) {
@@ -70,10 +114,38 @@ public enum TravelScrollIslands {
 		this.associatedScrolls.addAll(associatedScrolls);
 		this.associatedSkill = null;
 		this.islandTier = null;
+		this.requiredSkillLevel = 0;
+		this.warpMenuTitle = null;
+		this.unlockScroll = null;
 	}
 
 	public Text getDescriptiveName() {
 		return Text.of(descriptiveName);
+	}
+
+	public String getWarpMenuTitle() {
+		return warpMenuTitle != null ? warpMenuTitle : StringUtility.toNormalCase(internalName) + " Warps";
+	}
+
+	public boolean isUnlocked(SkyBlockPlayer player) {
+		if (unlockScroll != null) {
+			return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.USED_SCROLLS, DatapointStringList.class)
+					.getValue().contains(unlockScroll.getInternalName());
+		}
+		return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.VISITED_ISLANDS, DatapointStringList.class)
+				.getValue().contains(internalName);
+	}
+
+	/** The message shown when the player's skill is too low to travel here, or null if they may. */
+	public @Nullable String entryBlockReason(SkyBlockPlayer player) {
+		if (associatedSkill == null || requiredSkillLevel <= 0) return null;
+		if (player.getSkills().getCurrentLevel(associatedSkill) >= requiredSkillLevel) return null;
+		return "<c>You must be at least " + StringUtility.toNormalCase(associatedSkill.name()) + " Level "
+				+ StringUtility.getAsRomanNumeral(requiredSkillLevel) + " to join this island!";
+	}
+
+	public static String resolveAlias(String warp) {
+		return WARP_ALIASES.getOrDefault(warp.toLowerCase(), warp);
 	}
 
 	public static @Nullable TravelScrollIslands getFromType(ServerType type) {

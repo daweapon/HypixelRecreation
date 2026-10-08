@@ -6,13 +6,16 @@ import net.swofty.commons.CustomWorlds;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.redis.RedisMessageHandler;
-import net.swofty.type.generic.tab.AreaServerModule;
 import net.swofty.type.generic.SkyBlockTypeLoader;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
+import net.swofty.type.crimsonisle.tab.CrimsonIsleInfoModule;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
+import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonFaction;
+import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import org.jetbrains.annotations.Nullable;
@@ -36,7 +39,7 @@ public class TypeCrimsonIsleLoader implements SkyBlockTypeLoader {
 
     @Override
     public void afterInitialize(MinecraftServer server) {
-
+        CrimsonIsleServices.start();
     }
 
     @Override
@@ -52,13 +55,18 @@ public class TypeCrimsonIsleLoader implements SkyBlockTypeLoader {
             @Override
             public List<TablistModule> getModules() {
                 return new ArrayList<>(List.of(
-                        new SkyBlockPlayersOnlineModule(1),
-                        new SkyBlockPlayersOnlineModule(2),
-                        new AreaServerModule("tablist.server_info.area.crimson_isle"),
+                        new SkyBlockPlayersOnlineModule(1, TypeCrimsonIsleLoader::factionIcon),
+                        new SkyBlockPlayersOnlineModule(2, TypeCrimsonIsleLoader::factionIcon),
+                        new CrimsonIsleInfoModule(),
                         new AccountInformationModule()
                 ));
             }
         };
+    }
+
+    private static String factionIcon(SkyBlockPlayer player) {
+        CrimsonFaction faction = CrimsonReputationService.faction(player);
+        return faction == null ? "" : " " + faction.getColour() + faction.getIcon();
     }
 
     @Override
