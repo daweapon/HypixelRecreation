@@ -2328,6 +2328,60 @@
       "sources": [ ]
     },
     {
+      "id": "R26",
+      "shard": "Lava Leech",
+      "name": "Essence of Crimson",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "NONE",
+      "skill": "FISHING",
+      "description": "Gain +1% more Crimson Essence",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R26"
+        }
+      ],
+      "sources": [
+        {
+          "type": "SALT",
+          "mobs": [
+            "lava_leech"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R68",
+      "shard": "Thunder",
+      "name": "Thunder Speed",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "ELUSIVE",
+      "skill": "FISHING",
+      "description": "Your Thunder, Storm, and Hurricane Bottles fill +1% faster",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R68"
+        }
+      ],
+      "sources": [
+        {
+          "type": "SALT",
+          "mobs": [
+            "thunder"
+          ]
+        }
+      ]
+    },
+    {
       "id": "R27",
       "shard": "Revenant",
       "name": "Essence of Unliving",

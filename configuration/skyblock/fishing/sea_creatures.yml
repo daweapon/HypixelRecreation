@@ -71,39 +71,80 @@ seaCreatures:
     skillXp: 3200
     tags: [WATER, FISHING_FESTIVAL, SHARK, LEGENDARY]
 
-  # ---------- lava (Crimson Isle) ----------
+  # ---------- lava (Crimson Isle; mobs are LavaSeaCreature, weights in tables.yml) ----------
   - id: MAGMA_SLUG
-    requiredFishingLevel: 21
-    skillXp: 450
-    tags: [LAVA, CRIMSON, COMMON]
+    requiredFishingLevel: 27
+    skillXp: 1860
+    tags: [LAVA, CRIMSON, UNCOMMON]
   - id: MOOGMA
-    requiredFishingLevel: 22
-    skillXp: 500
-    tags: [LAVA, CRIMSON, COMMON]
+    requiredFishingLevel: 28
+    skillXp: 2030
+    tags: [LAVA, CRIMSON, UNCOMMON]
   - id: LAVA_LEECH
-    requiredFishingLevel: 24
-    skillXp: 550
-    tags: [LAVA, CRIMSON, COMMON]
-  - id: PYROCLASTIC_WORM
-    requiredFishingLevel: 28
-    skillXp: 800
-    tags: [LAVA, CRIMSON, UNCOMMON]
-  - id: FIRE_EEL
-    requiredFishingLevel: 28
-    skillXp: 800
-    tags: [LAVA, CRIMSON, UNCOMMON]
-  - id: LAVA_BLAZE
     requiredFishingLevel: 30
-    skillXp: 1000
+    skillXp: 2687
+    tags: [LAVA, CRIMSON, RARE]
+  - id: PYROCLASTIC_WORM
+    requiredFishingLevel: 31
+    skillXp: 2762
+    tags: [LAVA, CRIMSON, RARE]
+  - id: LAVA_FLAME
+    requiredFishingLevel: 33
+    skillXp: 2737
+    tags: [LAVA, CRIMSON, RARE]
+  - id: FIRE_EEL
+    requiredFishingLevel: 34
+    skillXp: 3037
     tags: [LAVA, CRIMSON, RARE]
   - id: TAURUS
-    requiredFishingLevel: 36
-    skillXp: 2500
+    requiredFishingLevel: 35
+    skillXp: 3930
     tags: [LAVA, CRIMSON, EPIC]
+  - id: THUNDER
+    requiredFishingLevel: 36
+    requiredTrophyRank: NOVICE
+    skillXp: 6480
+    tags: [LAVA, CRIMSON, LEGENDARY]
   - id: LORD_JAWBUS
     requiredFishingLevel: 45
-    skillXp: 15000
+    requiredTrophyRank: ADEPT
+    skillXp: 14925
+    tags: [LAVA, CRIMSON, MYTHIC]
+  # hotspot-only lava pool (Crimson Isle hotspots)
+  - id: FRIED_CHICKEN
+    requiredFishingLevel: 14
+    skillXp: 645
+    tags: [LAVA, CRIMSON, COMMON]
+  - id: VOLCANIC_SNAIL
+    requiredFishingLevel: 17
+    skillXp: 900
+    tags: [LAVA, CRIMSON, UNCOMMON]
+  - id: FIREPROOF_WITCH
+    requiredFishingLevel: 22
+    skillXp: 1875
+    tags: [LAVA, CRIMSON, RARE]
+  - id: MAGMA_PILLAR
+    requiredFishingLevel: 31
+    skillXp: 3300
+    tags: [LAVA, CRIMSON, EPIC]
+  - id: FIERY_SCUTTLER
+    requiredFishingLevel: 37
+    skillXp: 5820
     tags: [LAVA, CRIMSON, LEGENDARY]
+  - id: RAGNAROK
+    requiredFishingLevel: 47
+    skillXp: 15300
+    tags: [LAVA, CRIMSON, MYTHIC]
+  # Plhlegblast Pool only
+  - id: PLHLEGBLAST
+    requiredFishingLevel: 36
+    skillXp: 5250
+    tags: [LAVA, CRIMSON, MYTHIC]
+  # Crystal Hollows lava (not catchable on the Crimson Isle)
+  - id: LAVA_BLAZE
+    requiredFishingLevel: 20
+    skillXp: 1000
+    tags: [LAVA, RARE]
 
   # ---------- winter (Jerry's Workshop only; weights live in tables.yml) ----------
   - id: FROZEN_STEVE

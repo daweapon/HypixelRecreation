@@ -443,6 +443,14 @@ public class ItemAttributeHandler {
         ((ItemAttributeJyrreAge) item.getAttribute("jyrre_age_minutes")).setValue(minutes);
     }
 
+    public int getThunderCharge() {
+        return ((ItemAttributeThunderCharge) item.getAttribute("thunder_charge")).getValue();
+    }
+
+    public void setThunderCharge(int charge) {
+        ((ItemAttributeThunderCharge) item.getAttribute("thunder_charge")).setValue(charge);
+    }
+
     public int getSnowballAmmo() {
         return ((ItemAttributeSnowballAmmo) item.getAttribute("ammo")).getValue();
     }

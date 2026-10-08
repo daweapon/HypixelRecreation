@@ -2,6 +2,8 @@ package net.swofty.type.skyblockgeneric.fishing.catches;
 
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
+import net.swofty.type.generic.event.HypixelEventHandler;
+import net.swofty.type.skyblockgeneric.event.custom.SeaCreatureCaughtEvent;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCollection;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointTrophyFish;
@@ -78,7 +80,9 @@ public sealed interface CatchPayload {
                 ctx.player().sendMessage("<a><l>DOUBLE HOOK!");
             }
             for (int i = 0; i < spawnCount; i++) {
-                SeaCreatureSpawner.spawn(ctx.player(), seaCreatureId, ctx.hookPosition());
+                if (SeaCreatureSpawner.spawn(ctx.player(), seaCreatureId, ctx.hookPosition()) != null) {
+                    HypixelEventHandler.callCustomEvent(new SeaCreatureCaughtEvent(ctx.player(), seaCreatureId));
+                }
             }
             SeaCreatureSpawner.announceCatch(ctx.player(), seaCreatureId, spawnCount);
         }

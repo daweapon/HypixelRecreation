@@ -26,6 +26,7 @@ import net.swofty.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
 import net.swofty.type.skyblockgeneric.fishing.registry.SeaCreatureDefinition;
+import net.swofty.type.skyblockgeneric.fishing.lava.PeaceTreaty;
 import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishRoller;
 import net.swofty.type.skyblockgeneric.fishing.rod.FishingRodPartService;
 import net.swofty.type.skyblockgeneric.fishing.tag.FishingTag;
@@ -94,6 +95,9 @@ public final class FishingLootResolver {
         FishingTableDefinition table = tableOpt.get();
 
         if (context.hook() != null && context.hook().isTreasureOnly()) {
+            return Optional.empty();
+        }
+        if (PeaceTreaty.applies(context.player())) {
             return Optional.empty();
         }
         if (table.weightedSeaCreatures()) {

@@ -11,7 +11,7 @@ import net.swofty.type.skyblockgeneric.fishing.FishingContext;
  * condition holds — that's the implementor's job.
  */
 public sealed interface FishingTag
-    permits MediumTag, TimeOfDayTag, WeatherTag, RegionTag, RarityTag, EventTag {
+    permits MediumTag, TimeOfDayTag, WeatherTag, RegionTag, IslandTag, RarityTag, EventTag {
 
     String id();
 

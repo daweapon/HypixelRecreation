@@ -19,6 +19,7 @@ import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
 import net.swofty.type.skyblockgeneric.fishing.hotspot.HotspotDefinition;
 import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyCondition;
+import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFisherRank;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
@@ -154,7 +155,9 @@ public final class FishingRegistry {
                 id,
                 intValue(entry, "requiredFishingLevel", 0),
                 doubleValue(entry, "skillXp", 0.0D),
-                net.swofty.type.skyblockgeneric.fishing.tag.FishingTagRegistry.resolve(stringList(entry.get("tags")))
+                net.swofty.type.skyblockgeneric.fishing.tag.FishingTagRegistry.resolve(stringList(entry.get("tags"))),
+                entry.containsKey("requiredTrophyRank")
+                    ? TrophyFisherRank.valueOf(String.valueOf(entry.get("requiredTrophyRank")).toUpperCase()) : null
             ));
         }
     }

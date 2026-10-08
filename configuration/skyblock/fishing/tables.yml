@@ -172,12 +172,15 @@ tables:
         chance: 1
       - seaCreatureId: TRASH_GOBBLER
         chance: 1
+  # The Crimson Isle lava pool (wiki: Sea_Creatures/List/Crimson_Isle): Sea Creature Chance is rolled once, then
+  # one of the 9 island-wide creatures is picked by weight. Thunder needs Novice and Lord Jawbus Adept Trophy Fisher.
   - id: CRIMSON_ISLE_LAVA
-    regions:
-      - CRIMSON_ISLE
-      - BLAZING_VOLCANO
+    serverTypes:
+      - SKYBLOCK_CRIMSON_ISLE
+    regions: [ ]
     mediums:
       - LAVA
+    weightedSeaCreatures: true
     items:
       - itemId: MAGMAFISH
         chance: 100
@@ -194,16 +197,24 @@ tables:
         skillXp: 15
     junk: [ ]
     seaCreatures:
-      - seaCreatureId: LAVA_BLAZE
-        chance: 3
-      - seaCreatureId: FRIED_CHICKEN
-        chance: 2
-      - seaCreatureId: FIREPROOF_WITCH
-        chance: 2
-      - seaCreatureId: FIERY_SCUTTLER
-        chance: 1
-      - seaCreatureId: RAGNAROK
-        chance: 1
+      - seaCreatureId: MAGMA_SLUG
+        weight: 1600
+      - seaCreatureId: MOOGMA
+        weight: 1200
+      - seaCreatureId: LAVA_LEECH
+        weight: 600
+      - seaCreatureId: PYROCLASTIC_WORM
+        weight: 400
+      - seaCreatureId: LAVA_FLAME
+        weight: 360
+      - seaCreatureId: FIRE_EEL
+        weight: 280
+      - seaCreatureId: TAURUS
+        weight: 160
+      - seaCreatureId: THUNDER
+        weight: 40
+      - seaCreatureId: LORD_JAWBUS
+        weight: 8
   # Jerry's Workshop's island pool: only Winter Sea Creatures can be caught anywhere on the island.
   # Sea Creature Chance is rolled once, then a creature is picked by weight (weights sum to 10,000).
   # The Ice Essence treasure chance and amounts are estimates; the wiki doesn't give them.

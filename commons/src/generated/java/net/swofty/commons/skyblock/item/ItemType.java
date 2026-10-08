@@ -3916,6 +3916,8 @@ public enum ItemType {
 
   SHARD_LAVA_FLAME(Material.PLAYER_HEAD, Rarity.RARE),
 
+  SHARD_LAVA_LEECH(Material.PLAYER_HEAD, Rarity.RARE),
+
   SHARD_LEATHERBACK(Material.PLAYER_HEAD, Rarity.EPIC),
 
   SHARD_LEVIATHAN(Material.PLAYER_HEAD, Rarity.EPIC),
@@ -4065,6 +4067,8 @@ public enum ItemType {
   SHARD_TEWTIL(Material.PLAYER_HEAD, Rarity.UNCOMMON),
 
   SHARD_THORN(Material.PLAYER_HEAD, Rarity.LEGENDARY),
+
+  SHARD_THUNDER(Material.PLAYER_HEAD, Rarity.RARE),
 
   SHARD_THYST(Material.PLAYER_HEAD, Rarity.RARE),
 

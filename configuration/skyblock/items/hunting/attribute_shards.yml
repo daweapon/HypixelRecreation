@@ -1507,3 +1507,19 @@ items:
         shard_id: L51
       - id: SKULL_HEAD
         texture: 7de7bbbdf22bfe17980d4e20687e386f11d59ee1db6f8b4762391b79a5ac532d
+  - id: SHARD_LAVA_LEECH
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R26
+      - id: SKULL_HEAD
+        texture: 18ae7046da98dcb33f3ed42f1dc41d08ac8dfa5db3a3860de5b1b5c056804187
+  - id: SHARD_THUNDER
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R68
+      - id: SKULL_HEAD
+        texture: a3f925d274ec65e002028c898e11aa9b76d6d67aa305ad9c7c69fe61cec5e664
