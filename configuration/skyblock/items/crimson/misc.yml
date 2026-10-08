@@ -248,6 +248,25 @@ items:
         max_capacity: 2240
       - id: EXTRA_RARITY
         display: SACK
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: ENCHANTED_SULPHUR
+                amount: 1
+              B:
+                type: KADA_LEAD
+                amount: 20
+            result:
+              type: SMALL_NETHER_SACK
+              amount: 1
   - id: MEDIUM_NETHER_SACK
     material: player_head
     name: "Medium Nether Sack"

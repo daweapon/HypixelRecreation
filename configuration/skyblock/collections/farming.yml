@@ -646,6 +646,10 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: SKILL_XP
+      data:
+        skill: FARMING
+        xp: 1500
   - amount: 10000
     rewards:
     - type: XP

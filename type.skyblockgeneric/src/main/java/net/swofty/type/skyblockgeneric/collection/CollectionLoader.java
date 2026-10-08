@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.collection;
 
 import lombok.Data;
 import net.minestom.server.item.Material;
+import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.commons.YamlFileUtils;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
@@ -60,6 +61,9 @@ public class CollectionLoader {
 
         // Custom award data
         public String customAward;
+
+        // Skill XP data
+        public String skill;
     }
 
     @Data
@@ -140,6 +144,17 @@ public class CollectionLoader {
                     @Override
                     public CustomCollectionAward getAward() {
                         return CustomCollectionAward.valueOf(r.data.customAward);
+                    }
+                });
+                case "SKILL_XP" -> rewardTypes.add(new CollectionCategory.UnlockSkillXP() {
+                    @Override
+                    public SkillCategories skill() {
+                        return SkillCategories.valueOf(r.data.skill);
+                    }
+
+                    @Override
+                    public int xp() {
+                        return r.data.xp;
                     }
                 });
                 default -> throw new IllegalArgumentException("Unknown reward type: " + r.type);

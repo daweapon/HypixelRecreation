@@ -36,6 +36,8 @@ public enum CustomCollectionAward {
     THUNDERBOLT_DISCOUNT("<9>Thunderbolt <7>Exp Discount <a>(-25%)"),
     EXPERIENCE_DISCOUNT("<9>Experience <7>Exp Discount <a>(-25%)"),
     FIRE_ASPECT_DISCOUNT("<9>Fire Aspect <7>Exp Discount <a>(-25%)"),
+    FLAME_DISCOUNT("<9>Flame <7>Exp Discount <a>(-25%)"),
+    FIRE_PROTECTION_DISCOUNT("<9>Fire Protection <7>Exp Discount <a>(-25%)"),
     KNOCKBACK_DISCOUNT("<9>Knockback <7>Exp Discount <a>(-25%)"),
     LETHALITY_DISCOUNT("<9>Lethality <7>Exp Discount <a>(-25%)"),
     THUNDERLORD_DISCOUNT("<9>Thunderlord <7>Exp Discount <a>(-25%)"),

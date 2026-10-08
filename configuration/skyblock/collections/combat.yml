@@ -32,11 +32,20 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: FIRE_TALISMAN
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BLAZE_BELT
   - amount: 5000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: CUSTOM_AWARD
+      data:
+        customAward: FLAME_DISCOUNT
   - amount: 10000
     rewards:
     - type: XP
@@ -45,16 +54,38 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_BLAZE_ROD
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BLAZE_WAX
   - amount: 25000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BLAZE_HELMET
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BLAZE_CHESTPLATE
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BLAZE_LEGGINGS
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BLAZE_BOOTS
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: VANQUISHED_BLAZE_BELT
   - amount: 50000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: SKILL_XP
+      data:
+        skill: COMBAT
+        xp: 10000
 - itemType: STRING
   rewards:
   - amount: 50
@@ -250,11 +281,17 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: REHEATED_GUMMY_POLAR_BEAR
   - amount: 25
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SULPHURIC_COAL
   - amount: 75
     rewards:
     - type: XP
@@ -265,12 +302,12 @@ collections:
     - type: XP
       data:
         xp: 4
-  - amount: 1000
+  - amount: 500
     rewards:
     - type: XP
       data:
         xp: 4
-  - amount: 2500
+  - amount: 1000
     rewards:
     - type: XP
       data:
@@ -278,17 +315,20 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: STUFFED_CHILI_PEPPER
+  - amount: 2500
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: JALAPENO_BOOK
   - amount: 5000
     rewards:
     - type: XP
       data:
         xp: 4
   - amount: 10000
-    rewards:
-    - type: XP
-      data:
-        xp: 4
-  - amount: 20000
     rewards:
     - type: XP
       data:
@@ -327,6 +367,9 @@ collections:
     - type: CUSTOM_AWARD
       data:
         customAward: VAMPIRISM_DISCOUNT
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: GHAST_CLOAK
   - amount: 5000
     rewards:
     - type: XP
@@ -340,11 +383,17 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: METEOR_SHARD
   - amount: 25000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: VANQUISHED_GHAST_CLOAK
 - itemType: GUNPOWDER
   rewards:
   - amount: 50
@@ -419,6 +468,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: CUSTOM_AWARD
+      data:
+        customAward: FIRE_PROTECTION_DISCOUNT
   - amount: 1000
     rewards:
     - type: XP
@@ -427,11 +479,17 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_MAGMA_CREAM
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: NETHER_BIOME_STICK
   - amount: 2500
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MAGMA_NECKLACE
   - amount: 5000
     rewards:
     - type: XP
@@ -442,11 +500,20 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: LAVA_TALISMAN
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SEARING_STONE
   - amount: 25000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: VANQUISHED_MAGMA_NECKLACE
   - amount: 50000
     rewards:
     - type: XP

@@ -84,6 +84,11 @@ public class ActionCollectionDisplay implements HypixelEventClass {
                         case XP -> {
                             player.sendMessage("    <8>+<b>{} SkyBlock XP", ((CollectionCategory.UnlockXP) unlock).xp());
                         }
+                        case SKILL_XP -> {
+                            CollectionCategory.UnlockSkillXP skillXP = (CollectionCategory.UnlockSkillXP) unlock;
+                            player.getSkills().increase(player, skillXP.skill(), (double) skillXP.xp());
+                            player.sendMessage("    " + skillXP.display());
+                        }
                     }
                 });
             }

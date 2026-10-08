@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.collection;
 
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
@@ -66,6 +67,7 @@ public abstract class CollectionCategory {
                             }
                         });
                     }
+                    case SKILL_XP -> lore.add("<7>  " + ((UnlockSkillXP) unlock).display());
                     case CUSTOM_AWARD -> {
                         lore.add("<7>  " + ((UnlockCustomAward) unlock).getAward().getDisplay());
                     }
@@ -88,7 +90,8 @@ public abstract class CollectionCategory {
         public enum UnlockType {
             RECIPE,
             XP,
-            CUSTOM_AWARD
+            CUSTOM_AWARD,
+            SKILL_XP
         }
     }
 
@@ -163,5 +166,25 @@ public abstract class CollectionCategory {
         }
 
         public abstract CustomCollectionAward getAward();
+    }
+
+    public abstract static class UnlockSkillXP extends Unlock {
+        @Override
+        public UnlockType type() {
+            return UnlockType.SKILL_XP;
+        }
+
+        @Override
+        public ItemStack.Builder getDisplay(SkyBlockPlayer player) {
+            return ItemStacks.item(Material.EXPERIENCE_BOTTLE, display());
+        }
+
+        public String display() {
+            return "<8>+<3>" + StringUtility.commaify(xp()) + " " + StringUtility.toNormalCase(skill().name()) + " XP";
+        }
+
+        public abstract SkillCategories skill();
+
+        public abstract int xp();
     }
 }

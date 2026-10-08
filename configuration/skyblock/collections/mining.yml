@@ -711,6 +711,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DANGER_2_PORTAL
   - amount: 1000
     rewards:
     - type: XP
@@ -724,6 +727,12 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DANGER_2_TRAVEL_SCROLL
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: GLOWSTONE_GAUNTLET
   - amount: 5000
     rewards:
     - type: XP
@@ -740,11 +749,17 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_REDSTONE_LAMP
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SHINY_PRISM
   - amount: 25000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: VANQUISHED_GLOWSTONE_GAUNTLET
 - itemType: HARD_STONE
   rewards:
   - amount: 50
@@ -1023,6 +1038,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SUSPICIOUS_STEW
   - amount: 750
     rewards:
     - type: XP
@@ -1036,16 +1054,25 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MUSHROOM_BIOME_STICK
   - amount: 2500
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MYCELIUM_DUST
   - amount: 10000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: CORRUPT_SOIL
   - amount: 15000
     rewards:
     - type: XP
@@ -1059,16 +1086,35 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: SKILL_XP
+      data:
+        skill: MINING
+        xp: 10000
   - amount: 50000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SHIMMERING_LIGHT_HOOD
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SHIMMERING_LIGHT_TUNIC
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SHIMMERING_LIGHT_TROUSERS
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SHIMMERING_LIGHT_SLIPPERS
   - amount: 100000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: GAUNTLET_OF_CONTAGION
 - itemType: QUARTZ
   rewards:
   - amount: 50
@@ -1084,11 +1130,17 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: NIGHT_SAVER
   - amount: 250
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DAY_SAVER
   - amount: 1000
     rewards:
     - type: XP
@@ -1102,6 +1154,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MINION_EXPANDER
   - amount: 5000
     rewards:
     - type: XP
@@ -1115,16 +1170,25 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: NIGHT_CRYSTAL
   - amount: 25000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DAY_CRYSTAL
   - amount: 50000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SOLAR_PANEL
 - itemType: NETHERRACK
   rewards:
   - amount: 50
@@ -1132,6 +1196,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: NETHER_WART_ISLAND
   - amount: 250
     rewards:
     - type: XP
@@ -1155,6 +1222,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MAGICAL_LAVA_BUCKET
 - itemType: OBSIDIAN
   rewards:
   - amount: 50
@@ -1236,6 +1306,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MESA_BIOME_STICK
   - amount: 10000
     rewards:
     - type: XP
@@ -1249,16 +1322,35 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ANCIENT_CLOAK
   - amount: 25000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: SKILL_XP
+      data:
+        skill: MINING
+        xp: 10000
   - amount: 50000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BERSERKER_HELMET
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BERSERKER_CHESTPLATE
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BERSERKER_LEGGINGS
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BERSERKER_BOOTS
   - amount: 100000
     rewards:
     - type: XP
@@ -1418,6 +1510,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MATCH_STICKS
   - amount: 1000
     rewards:
     - type: XP
@@ -1431,16 +1526,25 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SMALL_NETHER_SACK
   - amount: 5000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: TOTEM_OF_CORRUPTION
   - amount: 10000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MEDIUM_NETHER_SACK
   - amount: 15000
     rewards:
     - type: XP
@@ -1454,13 +1558,22 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SULPHUR_BOW
   - amount: 50000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: LARGE_NETHER_SACK
   - amount: 100000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: IMPLOSION_BELT

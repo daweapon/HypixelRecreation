@@ -179,6 +179,25 @@ items:
           - type: SKILL
             skill: COMBAT
             level: 22
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "AAA"
+              - "BBB"
+              - "BBB"
+            ingredients:
+              A:
+                type: ENCHANTED_LEATHER
+                amount: 3
+              B:
+                type: ENCHANTED_GLOWSTONE_DUST
+                amount: 2
+            result:
+              type: GLOWSTONE_GAUNTLET
+              amount: 1
   - id: VANQUISHED_GLOWSTONE_GAUNTLET
     material: paper
     name: "Vanquished Glowstone Gauntlet"
