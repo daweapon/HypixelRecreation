@@ -25,9 +25,9 @@ import java.util.TreeMap;
 /**
  * {@code /maxprofile}'s accessory step: the best member of every family plus every standalone
  * accessory, recombobulated where allowed and with dynamic accessories at their top state, placed in
- * the Accessory Bag. Rift-only and Bingo-only accessories are skipped. Driven by the item registry
- * and the family data, so new accessories are covered without touching this class. A rerun adds
- * nothing it already placed.
+ * the Accessory Bag, which is then sorted highest rarity first. Rift-only and Bingo-only accessories are
+ * skipped. Driven by the item registry and the family data, so new accessories are covered without
+ * touching this class. A rerun adds nothing it already placed.
  */
 public final class MaxAccessories {
     private MaxAccessories() {
@@ -101,7 +101,17 @@ public final class MaxAccessories {
             }
             bag.setInSlot(slot, maxed(type));
         }
+        sortByRarity(bag);
         return left;
+    }
+
+    public static void sortByRarity(DatapointAccessoryBag.PlayerAccessoryBag bag) {
+        List<SkyBlockItem> sorted = new ArrayList<>(bag.getAllAccessories());
+        sorted.sort(Comparator
+                .comparing((SkyBlockItem item) -> item.getAttributeHandler().getEffectiveRarity()).reversed()
+                .thenComparing(item -> String.valueOf(item.getAttributeHandler().getPotentialType())));
+        bag.getAccessoryMap().clear();
+        for (int slot = 0; slot < sorted.size(); slot++) bag.setInSlot(slot, sorted.get(slot));
     }
 
     private static @Nullable ItemType bestAvailable(AccessoryFamily family, Map<String, ItemType> accessories) {

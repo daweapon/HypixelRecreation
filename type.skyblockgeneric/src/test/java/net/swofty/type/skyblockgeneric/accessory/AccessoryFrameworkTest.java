@@ -232,6 +232,12 @@ class AccessoryFrameworkTest {
         assertEquals(plan.size(), placed);
         assertEquals(0, MaxAccessories.fill(bag, AccessoryBagSlots.MAXIMUM));
         assertEquals(placed, bag.getAccessoryMap().size(), "a rerun adds nothing");
+        for (int slot = 1; slot < placed; slot++) {
+            Rarity previous = bag.getInSlot(slot - 1).getAttributeHandler().getEffectiveRarity();
+            Rarity current = bag.getInSlot(slot).getAttributeHandler().getEffectiveRarity();
+            assertTrue(previous.ordinal() >= current.ordinal(),
+                    "slot " + slot + " (" + current + ") sorts after " + previous);
+        }
         assertEquals(281, AccessoryBagSlots.MAXIMUM);
     }
 }
