@@ -1,5 +1,6 @@
 package net.swofty.type.jerrysworkshop.defense;
 
+import net.swofty.type.skyblockgeneric.gifts.GiftBoosts;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
 import net.swofty.type.skyblockgeneric.carnival.Carnivals;
@@ -266,6 +267,9 @@ public final class JerryWorkshopDefenseManager {
             playerWhite = Carnivals.boostedCount(player, CarnivalPerk.PRESENT_CONNOISSEUR, playerWhite);
             playerGreen = Carnivals.boostedCount(player, CarnivalPerk.PRESENT_CONNOISSEUR, playerGreen);
             playerRed = Carnivals.boostedCount(player, CarnivalPerk.PRESENT_CONNOISSEUR, playerRed);
+            playerWhite = GiftBoosts.withGiftAttackBonus(player, ItemType.WHITE_GIFT, playerWhite);
+            playerGreen = GiftBoosts.withGiftAttackBonus(player, ItemType.GREEN_GIFT, playerGreen);
+            playerRed = GiftBoosts.withGiftAttackBonus(player, ItemType.RED_GIFT, playerRed);
             int whiteToRed = redFad(player, playerWhite);
             int greenToRed = redFad(player, playerGreen);
             playerWhite -= whiteToRed;
