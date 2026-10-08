@@ -27,6 +27,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.pets.PetItems;
 import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import net.swofty.type.skyblockgeneric.user.pets.PetScore;
+import net.swofty.type.skyblockgeneric.user.pets.PetSkins;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -85,12 +86,14 @@ public class PetComponent extends SkyBlockItemComponent {
                 new LoreConfig((item, player) -> getAbsoluteLore(player, item), (item, player) -> {
                     Rarity rarity = item.getAttributeHandler().getRarity();
                     return Text.of("<7>[Lvl {}] <color:{}>{}", PetLevels.level(item), rarity.getColor(), petName)
-                            .serialize();
+                            .serialize() + PetSkins.nameSuffix(item);
                 }), true)
         );
     }
 
     public String textureFor(SkyBlockItem item) {
+        String skin = PetSkins.textureOf(item);
+        if (skin != null) return skin;
         return skullTextureByRarity.getOrDefault(item.getAttributeHandler().getRarity(), skullTexture);
     }
 
@@ -163,7 +166,7 @@ public class PetComponent extends SkyBlockItemComponent {
         Rarity rarity = item.getAttributeHandler().getRarity();
         int level = PetLevels.level(item);
 
-        lore.add("<8>" + petType.getLabel() + " Pet");
+        lore.add("<8>" + petType.getLabel() + " Pet" + PetSkins.loreSuffix(item));
         lore.add(" ");
 
         ItemStatistics statistics = PetItems.statistics(item);
