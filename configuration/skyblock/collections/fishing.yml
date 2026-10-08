@@ -31,6 +31,9 @@ collections:
         xp: 4
   - amount: 1500
     rewards:
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: HOTSPOT_TALISMAN
     - type: XP
       data:
         xp: 4
@@ -41,6 +44,12 @@ collections:
         xp: 4
   - amount: 5000
     rewards:
+      - type: RECIPE_UNLOCK
+        data:
+          unlockedItemType: HOTSPOT_RING
+      - type: RECIPE_UNLOCK
+        data:
+          unlockedItemType: HOTSPOT_ARTIFACT
       - type: XP
         data:
           xp: 4

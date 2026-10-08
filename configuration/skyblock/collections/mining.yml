@@ -288,6 +288,9 @@ collections:
         xp: 4
   - amount: 150000
     rewards:
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: EXPERIENCE_ARTIFACT
     - type: XP
       data:
         xp: 4
@@ -437,6 +440,9 @@ collections:
         xp: 4
   - amount: 250
     rewards:
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MAGNETIC_TALISMAN
     - type: XP
       data:
         xp: 4

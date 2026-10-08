@@ -525,6 +525,9 @@ collections:
         unlockedItemType: ENCHANTED_RED_MUSHROOM
   - amount: 10000
     rewards:
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: NIGHT_VISION_CHARM
     - type: XP
       data:
         xp: 4
