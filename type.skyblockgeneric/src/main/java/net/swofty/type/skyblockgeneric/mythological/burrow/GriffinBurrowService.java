@@ -71,7 +71,7 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
         if (!started.compareAndSet(false, true)) return;
         MinecraftServer.getSchedulerManager().buildTask(this::tick)
                 .delay(TaskSchedule.seconds(5))
-                .repeat(TaskSchedule.tick(10))
+                .repeat(TaskSchedule.tick(4))
                 .schedule();
     }
 

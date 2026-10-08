@@ -32,8 +32,8 @@ public final class BurrowEffects {
     private static final Color MEDIUM = new Color(255, 85, 85);
     private static final Color FAR = new Color(40, 40, 40);
     private static final String FOOTPRINT_MODEL = "hypixel_skyblock:item/mythological/griffin_footprint";
-    private static final double FOOTPRINT_SIZE = 0.6;
-    private static final double FOOTPRINT_SPREAD = 0.35;
+    private static final double FOOTPRINT_SIZE = 0.5;
+    private static final double FOOTPRINT_SPREAD = 0.65;
     private static final int FOOTPRINT_LIFETIME_TICKS = 60;
     private static final int FOOTPRINT_FADE_TICKS = 15;
 
@@ -41,9 +41,10 @@ public final class BurrowEffects {
     }
 
     public static void marker(SkyBlockPlayer player, GriffinBurrow burrow) {
-        Point top = burrow.getPosition().add(0.5, 1.1, 0.5);
-        send(player, Particle.ENCHANT, top.add(0, 0.4, 0), 0.4f, 0.3f, 8);
-        send(player, burrow.getKind().getParticle(), top, 0.45f, 0.1f, 8);
+        Point above = burrow.getPosition().add(0.5, 1.1, 0.5);
+        BurrowKind kind = burrow.getKind();
+        send(player, Particle.ENCHANT, above.add(0, 0.4, 0), 0.5f, 0.4f, 0.05f, 5);
+        send(player, kind.getParticle(), above, kind.getHorizontalSpread(), 0.1f, 0.01f, kind.getParticleCount());
     }
 
     public static void footprint(SkyBlockPlayer player, GriffinBurrow burrow) {
@@ -116,8 +117,13 @@ public final class BurrowEffects {
     }
 
     private static void send(SkyBlockPlayer player, Particle particle, Point at, float spread, float speed, int count) {
+        send(player, particle, at, spread, spread, speed, count);
+    }
+
+    private static void send(SkyBlockPlayer player, Particle particle, Point at, float horizontalSpread,
+                             float verticalSpread, float speed, int count) {
         player.sendPacket(new ParticlePacket(particle, false, true,
                 (float) at.x(), (float) at.y(), (float) at.z(),
-                spread, spread, spread, speed, count));
+                horizontalSpread, verticalSpread, horizontalSpread, speed, count));
     }
 }
