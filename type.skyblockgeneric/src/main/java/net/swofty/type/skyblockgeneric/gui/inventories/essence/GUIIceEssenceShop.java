@@ -20,7 +20,7 @@ import net.swofty.type.skyblockgeneric.essence.Essences;
 import net.swofty.type.skyblockgeneric.essence.IceEssencePerk;
 import net.swofty.type.skyblockgeneric.essence.IceEssenceShop;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
-import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
+import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Map;
@@ -51,7 +51,7 @@ public class GUIIceEssenceShop extends StatelessView {
             buy((SkyBlockPlayer) c.player(), perk);
             c.session(DefaultState.class).refresh();
         }));
-        layout.slot(32, (_, c) -> experienceBookItem(), (_, c) -> {
+        layout.slot(32, (_, c) -> experienceBookItem((SkyBlockPlayer) c.player()), (_, c) -> {
             buyExperienceBook((SkyBlockPlayer) c.player());
             c.session(DefaultState.class).refresh();
         });
@@ -119,8 +119,8 @@ public class GUIIceEssenceShop extends StatelessView {
         };
     }
 
-    private static ItemStack.Builder experienceBookItem() {
-        return ItemStacks.appendLore(new NonPlayerItemUpdater(experienceBook()).getUpdatedItem(), """
+    private static ItemStack.Builder experienceBookItem(SkyBlockPlayer player) {
+        return ItemStacks.appendLore(PlayerItemUpdater.playerUpdate(player, experienceBook().getItemStack()), """
 
                 <7>Cost
                 <d>{} Ice Essence
