@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -146,17 +147,17 @@ public final class MythologicalGear {
     }
 
     public static int unearthedPieces(SkyBlockPlayer player) {
-        return (int) worn(player).stream().map(MythologicalGear::type)
+        return (int) worn(player).stream().map(MythologicalGear::type).filter(Objects::nonNull)
                 .filter(type -> CHALLENGER.contains(type) || MYTHOS_ARMOR.contains(type) || MYTHOS_EQUIPMENT.contains(type))
                 .count();
     }
 
     public static int familiarityPieces(SkyBlockPlayer player) {
-        return (int) armor(player).stream().map(MythologicalGear::type).filter(MYTHOS_ARMOR::contains).count();
+        return (int) armor(player).stream().map(MythologicalGear::type).filter(Objects::nonNull).filter(MYTHOS_ARMOR::contains).count();
     }
 
     public static int greedPieces(SkyBlockPlayer player) {
-        return (int) equipment(player).stream().map(MythologicalGear::type).filter(MYTHOS_EQUIPMENT::contains).count();
+        return (int) equipment(player).stream().map(MythologicalGear::type).filter(Objects::nonNull).filter(MYTHOS_EQUIPMENT::contains).count();
     }
 
     public static double unearthedReduction(int pieces) {
