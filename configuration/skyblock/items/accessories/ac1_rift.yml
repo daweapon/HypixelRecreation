@@ -1,0 +1,104 @@
+items:
+  - id: PUNCHCARD_ARTIFACT
+    material: PLAYER_HEAD
+    name: "Punchcard Artifact"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: The Rift
+            text:
+              - "Rift Time: <a>+30s"
+          - type: INACTIVE
+            reason: The Rift
+            text:
+              - "<6>Ability: Punch in!  <e><l>LEFT CLICK"
+              - "Punch another player while this is in"
+              - "your inventory to both regain <a>+25ф"
+              - "<a>Rift Time<7>."
+              - "<8>Usable once per player per rift visit"
+              - "<8>up to 20 players."
+      - id: SKULL_HEAD
+        texture: 843a4a8fa79f8d1621d5ea490b9e0217962f90594eda89675fc13b29d5290474
+
+  - id: RING_OF_ETERNAL_LOVE
+    material: PLAYER_HEAD
+    name: "Ring of Eternal Love"
+    rarity: LEGENDARY
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: The Rift
+            text:
+              - "Rift Time: <a>+80s"
+          - type: TEXT
+            text:
+              - "Ramero and Joliet's love transcends"
+              - "the boundaries of time, space, and"
+              - "fate itself."
+      - id: SKULL_HEAD
+        texture: c4b3e1f67fcb881d598ce18056cb9eb6cb66af0111f2a5eb68e1e3550c6c3881
+
+  - id: SATELITE
+    material: PLAYER_HEAD
+    name: "Satelite"
+    rarity: LEGENDARY
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: TEXT
+            text:
+              - "High altitude, slow attitude. The"
+              - "procrastinator's dream stone."
+          - type: INACTIVE
+            reason: The Rift
+            text:
+              - "<6>Ability: Bullet Time"
+              - "Slow down the loss of <a>ф Rift Time <7>by"
+              - "<a>20% <7>in elevated areas."
+      - id: SKULL_HEAD
+        texture: 8dcbe854b0386dc389f75f8714b2922acd2421951001cfaba4a81ab67e338b99
+
+  - id: WARDING_TRINKET
+    material: PLAYER_HEAD
+    name: "Warding Trinket"
+    rarity: EPIC
+    default_statistics:
+      intelligence: 5
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: The Rift
+            text:
+              - "Rift Time: <a>+40s"
+      - id: SKULL_HEAD
+        texture: f84c6595a35453e3c6758286efc6b62e745f908e89453e6493c1d90ecb21f8dd
+
+  - id: TINY_DANCER
+    material: PLAYER_HEAD
+    name: "Tiny Dancer"
+    rarity: UNCOMMON
+    default_statistics:
+      critical_damage: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: Rift Transfer
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
+      - id: SKULL_HEAD
+        texture: 511f693f7fbac57eca8a311933b7ded17561695d7ffb8e9a62f04b924a4d52df
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false

@@ -1,0 +1,1236 @@
+items:
+  - id: BALLOON_HAT_2024_AQUA
+    material: PLAYER_HEAD
+    name: "Aqua 5th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 5th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2024"
+      - id: SKULL_HEAD
+        texture: 6432dda190146d4ad7a8569b389aea777684c44fa2624dcf74016467765e9693
+
+  - id: BALLOON_HAT_2024_BLACK
+    material: PLAYER_HEAD
+    name: "Black 5th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 5th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2024"
+      - id: SKULL_HEAD
+        texture: 63bdb1e21a9fdf98aff67f0ff4e7dfada05f340210dd70b688c09c3cf50f6410
+
+  - id: BALLOON_HAT_2024_GREEN
+    material: PLAYER_HEAD
+    name: "Green 5th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 5th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2024"
+      - id: SKULL_HEAD
+        texture: 8ba968d27dd90f67434e818646b2b0042946b67a14c594b31698dae309cb52a4
+
+  - id: BALLOON_HAT_2024_LIME
+    material: PLAYER_HEAD
+    name: "Lime 5th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 5th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2024"
+      - id: SKULL_HEAD
+        texture: fb0209c346e04c3253f492ab904ef6e472faa617c681706f9153a116aa6481c2
+
+  - id: BALLOON_HAT_2024_ORANGE
+    material: PLAYER_HEAD
+    name: "Orange 5th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 5th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2024"
+      - id: SKULL_HEAD
+        texture: 841c5e8e0637acee09b68fab743db66c6714938c73792bc95acb1f393478144b
+
+  - id: BALLOON_HAT_2024_PINK
+    material: PLAYER_HEAD
+    name: "Pink 5th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 5th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2024"
+      - id: SKULL_HEAD
+        texture: 2ad4c874756ab9672aec51d53b9b94e6c9b5c6e7e0a2d44928df2186f4791e96
+
+  - id: BALLOON_HAT_2024_PURPLE
+    material: PLAYER_HEAD
+    name: "Purple 5th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 5th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2024"
+      - id: SKULL_HEAD
+        texture: 98b97944067281fa1361aa43ac522fdf190e50d65479f89a35e8cf87154e005c
+
+  - id: BALLOON_HAT_2024_RED
+    material: PLAYER_HEAD
+    name: "Red 5th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 5th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2024"
+      - id: SKULL_HEAD
+        texture: 567f93963ad7ac3abdc49d02c9861fa2d45d00da1a7b31193ceb246313d39bc5
+
+  - id: BALLOON_HAT_2024_YELLOW
+    material: PLAYER_HEAD
+    name: "Yellow 5th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 5th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2024"
+      - id: SKULL_HEAD
+        texture: a90d9adef4732e5832448973e3557fce8a2e9ec8129ed32143eb666b4fa88ab2
+
+  - id: BALLOON_HAT_2025_AQUA
+    material: PLAYER_HEAD
+    name: "Aqua 6th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 6th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2025"
+      - id: SKULL_HEAD
+        texture: 996177cab9b58634ceb9dea8e2e2f50fdf9081b63188b9526bfe3d7b1b43912f
+
+  - id: BALLOON_HAT_2025_BLACK
+    material: PLAYER_HEAD
+    name: "Black 6th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 6th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2025"
+      - id: SKULL_HEAD
+        texture: d25183de31715a8eb5768cbf2a525432d1fb10e367de5d5eb9bb7cb1bf15e582
+
+  - id: BALLOON_HAT_2025_GREEN
+    material: PLAYER_HEAD
+    name: "Green 6th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 6th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2025"
+      - id: SKULL_HEAD
+        texture: 710298cbd0cd73e3126fd2f20239e04bd5a095df48af8a85cd450cbf7d8581e9
+
+  - id: BALLOON_HAT_2025_LIME
+    material: PLAYER_HEAD
+    name: "Lime 6th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 6th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2025"
+      - id: SKULL_HEAD
+        texture: bdb6ab5ce7071ec654cd0889e9db3b6bb34821d1d53ba1c0d25e0a261e9f72ee
+
+  - id: BALLOON_HAT_2025_ORANGE
+    material: PLAYER_HEAD
+    name: "Orange 6th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 6th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2025"
+      - id: SKULL_HEAD
+        texture: ae93f392dd47fbe43dd115d8b306bcc0260bdcd119136d873fe22cc9a6c12d98
+
+  - id: BALLOON_HAT_2025_PINK
+    material: PLAYER_HEAD
+    name: "Pink 6th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 6th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2025"
+      - id: SKULL_HEAD
+        texture: 2747b18624e86e1d470b6d401062b1fa7568419390d4c91acf5beaec81603b65
+
+  - id: BALLOON_HAT_2025_PURPLE
+    material: PLAYER_HEAD
+    name: "Purple 6th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 6th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2025"
+      - id: SKULL_HEAD
+        texture: 7b94b6ecf9ee5206fe4121f4552f81789ac9c69c1f71804163065aec90dc5a39
+
+  - id: BALLOON_HAT_2025_RED
+    material: PLAYER_HEAD
+    name: "Red 6th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 6th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2025"
+      - id: SKULL_HEAD
+        texture: 88714416a440e49829dc9acc4918c922ffd3c32140df1ad749abd5abf93cc144
+
+  - id: BALLOON_HAT_2025_YELLOW
+    material: PLAYER_HEAD
+    name: "Yellow 6th Anniversary Balloon Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 6th"
+              - "Anniversary with a balloon!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2025"
+      - id: SKULL_HEAD
+        texture: 9040976441fafe9e10e2ff994bdf6baf6603b99ff60c93d8b371499cf79ef5e4
+
+  - id: CAKE_HAT_2026_AQUA
+    material: PLAYER_HEAD
+    name: "Aqua 7th Anniversary Cake Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 7th"
+              - "Anniversary!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2026"
+      - id: SKULL_HEAD
+        texture: ead39d96eb2591b4d239387d43533959f3a1a76d8ba96d27ab3ca7adb8d6522c
+
+  - id: CAKE_HAT_2026_BLACK
+    material: PLAYER_HEAD
+    name: "Black 7th Anniversary Cake Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 7th"
+              - "Anniversary!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2026"
+      - id: SKULL_HEAD
+        texture: e2afec26e477bf8cf2ef450a647a9379dca88d412e59185d9e3becb79b017c1e
+
+  - id: CAKE_HAT_2026_GREEN
+    material: PLAYER_HEAD
+    name: "Green 7th Anniversary Cake Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 7th"
+              - "Anniversary!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2026"
+      - id: SKULL_HEAD
+        texture: e85dabb48909b73750a62062e2107ea250a10f37921f1200fbaf4d9025237b39
+
+  - id: CAKE_HAT_2026_LIME
+    material: PLAYER_HEAD
+    name: "Lime 7th Anniversary Cake Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 7th"
+              - "Anniversary!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2026"
+      - id: SKULL_HEAD
+        texture: 620bfff55d9d6c8650273f1be4a028d044c3ba2527a46acb5f1d5c79ffd4f478
+
+  - id: CAKE_HAT_2026_ORANGE
+    material: PLAYER_HEAD
+    name: "Orange 7th Anniversary Cake Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 7th"
+              - "Anniversary!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2026"
+      - id: SKULL_HEAD
+        texture: e1f87220761ce204b462372e0cb48291023bb28b6d8ad4e7019ac5443a88fd05
+
+  - id: CAKE_HAT_2026_PINK
+    material: PLAYER_HEAD
+    name: "Pink 7th Anniversary Cake Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 7th"
+              - "Anniversary!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2026"
+      - id: SKULL_HEAD
+        texture: fdc8dbd8b8cdd71c170b47bc5bb1ce76346ecd8f3e1400ef5fd8a96aa08650d3
+
+  - id: CAKE_HAT_2026_PURPLE
+    material: PLAYER_HEAD
+    name: "Purple 7th Anniversary Cake Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 7th"
+              - "Anniversary!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2026"
+      - id: SKULL_HEAD
+        texture: c7a3d4feb34081744ac75f7b51a4787da2cd4c6a1d6317e3f7b668fc2bed439c
+
+  - id: CAKE_HAT_2026_RED
+    material: PLAYER_HEAD
+    name: "Red 7th Anniversary Cake Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 7th"
+              - "Anniversary!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2026"
+      - id: SKULL_HEAD
+        texture: 58bb046780b45017ff8d940957faff3cb2cd81b7000a542484928a915c217804
+
+  - id: CAKE_HAT_2026_YELLOW
+    material: PLAYER_HEAD
+    name: "Yellow 7th Anniversary Cake Hat"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "Show your pride for SkyBlock's 7th"
+              - "Anniversary!"
+              - ""
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2026"
+      - id: SKULL_HEAD
+        texture: 174fab98c2ee1744845ec96cd7d1d2f1af6b08ff269ab404c3f3108870cb4cbb
+
+  - id: PARTY_HAT_CRAB_AQUA
+    material: PLAYER_HEAD
+    name: "Aqua Crab Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2020"
+      - id: SKULL_HEAD
+        texture: 2e1556958b1df4fd6228c9dcbd8c053f5d8902a41c4a59376bd0df1c60be8369
+
+  - id: PARTY_HAT_CRAB_AQUA_ANIMATED
+    material: PLAYER_HEAD
+    name: "Aqua Crab Hat of Celebration - 2022 Edition"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2022"
+      - id: SKULL_HEAD
+        texture: beaaec1a49540fd514ee6be0150af18e28333eab36d75d2ec253bc1431c1be0d
+
+  - id: PARTY_HAT_CRAB_BLACK
+    material: PLAYER_HEAD
+    name: "Black Crab Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2020"
+      - id: SKULL_HEAD
+        texture: cb85828267e59e83edc3bef235102e43fb70922622ccc3809a326a8c5632199a
+
+  - id: PARTY_HAT_CRAB_BLACK_ANIMATED
+    material: PLAYER_HEAD
+    name: "Black Crab Hat of Celebration - 2022 Edition"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2022"
+      - id: SKULL_HEAD
+        texture: daab38d6166e6390083336874b00cc24f8eeaa2b17ab3c946d460515ca870b70
+
+  - id: PARTY_HAT_CRAB_GREEN
+    material: PLAYER_HEAD
+    name: "Green Crab Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2020"
+      - id: SKULL_HEAD
+        texture: 98d99983ab5986921251a29bba96c8e734f5de084a296cb627bcd64fd0fba593
+
+  - id: PARTY_HAT_CRAB_GREEN_ANIMATED
+    material: PLAYER_HEAD
+    name: "Green Crab Hat of Celebration - 2022 Edition"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2022"
+      - id: SKULL_HEAD
+        texture: 24c6eeae0b6b2a6335641a1fc5cf9475a3df23078264b571d163c4729f9f67f4
+
+  - id: PARTY_HAT_CRAB_LIME
+    material: PLAYER_HEAD
+    name: "Lime Crab Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2020"
+      - id: SKULL_HEAD
+        texture: 993c60fd0dd130695e378eef010a7d3c5dfde77f6b82b20b8124cfb830017ff
+
+  - id: PARTY_HAT_CRAB_LIME_ANIMATED
+    material: PLAYER_HEAD
+    name: "Lime Crab Hat of Celebration - 2022 Edition"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2022"
+      - id: SKULL_HEAD
+        texture: 59ad36641ddd7c1e7ac31773443f0196f01631be071e620bc7f6523e3c859843
+
+  - id: PARTY_HAT_CRAB_ORANGE
+    material: PLAYER_HEAD
+    name: "Orange Crab Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2020"
+      - id: SKULL_HEAD
+        texture: ae38a15704089676a24e9eeccf4c290644d352c7d8f2b4135fa3538625107db
+
+  - id: PARTY_HAT_CRAB_ORANGE_ANIMATED
+    material: PLAYER_HEAD
+    name: "Orange Crab Hat of Celebration - 2022 Edition"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2022"
+      - id: SKULL_HEAD
+        texture: b8f88e7df2ca0db38e2a0c47de6e3c24cc00c5c3c95a1253bddb11055bce3e87
+
+  - id: PARTY_HAT_CRAB_PINK
+    material: PLAYER_HEAD
+    name: "Pink Crab Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2020"
+      - id: SKULL_HEAD
+        texture: effaf0dc89da58bd1ed08f917407853e58d7bcbf5e6b5f33586389eb863a5bbd
+
+  - id: PARTY_HAT_CRAB_PINK_ANIMATED
+    material: PLAYER_HEAD
+    name: "Pink Crab Hat of Celebration - 2022 Edition"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2022"
+      - id: SKULL_HEAD
+        texture: 67df75185a0dca0b5cede4064b787a3a14004fdd4dca4942246db00c0c03e51b
+
+  - id: PARTY_HAT_CRAB_PURPLE
+    material: PLAYER_HEAD
+    name: "Purple Crab Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2020"
+      - id: SKULL_HEAD
+        texture: 2e3af5824014b57f4a4a84d4bb7fb88cac9e4ac75d00c7adb09dfe5ab737e224
+
+  - id: PARTY_HAT_CRAB_PURPLE_ANIMATED
+    material: PLAYER_HEAD
+    name: "Purple Crab Hat of Celebration - 2022 Edition"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2022"
+      - id: SKULL_HEAD
+        texture: 81e8c4da951506ee084dc5a56be0fb8229cb2ab445ce338c938a584fd6f1ac74
+
+  - id: PARTY_HAT_CRAB_RED
+    material: PLAYER_HEAD
+    name: "Red Crab Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2020"
+      - id: SKULL_HEAD
+        texture: 56b61f826dd6bfc1e3191a8369aeb0435c5a5335563431a538585ad039da1e0c
+
+  - id: PARTY_HAT_CRAB_RED_ANIMATED
+    material: PLAYER_HEAD
+    name: "Red Crab Hat of Celebration - 2022 Edition"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2022"
+      - id: SKULL_HEAD
+        texture: add9165345884409248ee46eb31b2803a6497c4ff6b538fc2abf973e68a5f104
+
+  - id: PARTY_HAT_CRAB_YELLOW
+    material: PLAYER_HEAD
+    name: "Yellow Crab Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2020"
+      - id: SKULL_HEAD
+        texture: 6b92684647051bd27ee04adb4098ee9bccca45a726a7cbf38e98b7e75cb889f4
+
+  - id: PARTY_HAT_CRAB_YELLOW_ANIMATED
+    material: PLAYER_HEAD
+    name: "Yellow Crab Hat of Celebration - 2022 Edition"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2022"
+      - id: SKULL_HEAD
+        texture: 7b5870d52fe830ba9234ef26870739c9324649b20ce0ffbbffe4b500b6d91c90
+
+  - id: PARTY_HAT_SLOTH_CHEEKY
+    material: PLAYER_HEAD
+    name: "Cheeky Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: 95687494468749e1ab5d9394122c82a7751db6b293a7cbbe0ae08ca04f2a7d8b
+
+  - id: PARTY_HAT_SLOTH_COOL
+    material: PLAYER_HEAD
+    name: "Cool Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: bc4faa905d7610f732f62f7cb3776e058fff8bac7eb3313907dfc2b8dec7e26d
+
+  - id: PARTY_HAT_SLOTH_CUTE
+    material: PLAYER_HEAD
+    name: "Cute Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: f9d8ebbc289d954ff6ef1ccef78951fd9a070ca1529cc949ba83e2300f891cd
+
+  - id: PARTY_HAT_SLOTH_DERP
+    material: PLAYER_HEAD
+    name: "Derp Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: 678e14a9e1a5bdc157894d70e33657ee80a61e1a53107e01a44ccc95960f2ac9
+
+  - id: PARTY_HAT_SLOTH_FLUSHED
+    material: PLAYER_HEAD
+    name: "Flushed Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: 8aeea389f0ec9d46076b91f9258733b1cd4335256525e42fd699809c45d1d91b
+
+  - id: PARTY_HAT_SLOTH_GRUMPY
+    material: PLAYER_HEAD
+    name: "Grumpy Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: 7859da10cc9f001bad95f9e4a05f84a695f246bdf1c75c348ce16bb619e29caa
+
+  - id: PARTY_HAT_SLOTH_HAPPY
+    material: PLAYER_HEAD
+    name: "Happy Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: a061074d114d2d01f0ba44ef241c32657896f9119c0cf2b3e89d4ccb26b9991
+
+  - id: PARTY_HAT_SLOTH_REGULAR
+    material: PLAYER_HEAD
+    name: "Regular Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: 70bfaf5ab3f817fbed7263fc1c150b571f01b2f7ef17bc579610a495bc4cfee9
+
+  - id: PARTY_HAT_SLOTH_SHOCK
+    material: PLAYER_HEAD
+    name: "Shock Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: dab318235077c2ba11c6c2d636613074d8fd031122d8b0d481a5ebce008775e7
+
+  - id: PARTY_HAT_SLOTH_TEARS
+    material: PLAYER_HEAD
+    name: "Tears Sloth Hat of Celebration"
+    rarity: SPECIAL
+    default_statistics:
+      magic_find: 1
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HATCESSORY_PARTY_TIME
+            text:
+              - "<6>Ability: Party Time!"
+              - "Gain <b>+1✎ Intelligence <7>while on your"
+              - "head for each SkyBlock year you've"
+              - "been playing."
+              - ""
+              - "<8>Obtained: 2023"
+      - id: SKULL_HEAD
+        texture: 589d10e65fd65fbac5e259cfcb24c8c3672b385597ecdc456d2504b39d52c051

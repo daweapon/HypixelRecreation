@@ -16,6 +16,7 @@ public final class AccessoryHandlers {
             Map.entry("BURSTSTOPPER", "slayer/inferno/BlazeSlayerGear"),
             Map.entry("CANDY_DROP_CHANCE", "event/actions/custom/spooky/SpookyFestivalCandyHandler"),
             Map.entry("GIFT_BOOST", "gifts/GiftBoosts"),
+            Map.entry("HATCESSORY_PARTY_TIME", "accessory/hatcessory/Hatcessories"),
             Map.entry("INTIMIDATION", "entity/mob/ai/Intimidation"),
             Map.entry("PERSONAL_COMPACTOR", "compactor/PersonalCompactorService"),
             Map.entry("PERSONAL_DELETOR", "deletor/PersonalDeletorService"),

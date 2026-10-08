@@ -1251,6 +1251,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: SUNSHINE_CRYSTAL
 - itemType: WILD_ROSE
   rewards:
     - amount: 1000
