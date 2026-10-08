@@ -15,10 +15,14 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.region.RegionType;
+import net.swofty.type.skyblockgeneric.region.rules.ZoneRule;
+import net.swofty.type.skyblockgeneric.region.rules.ZoneRuleService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -26,7 +30,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * The Matriarch (wiki: The_Matriarch). While she has pearls for a player she reels them in from across her lair and
  * swallows them into the Belly of the Beast. Using a Matriarch's Perfume on her refills her to 3 pearls (4 times a
  * day). After escaping she lets the player go for 30 seconds (estimate) so they can walk away; her pull range is
- * an estimate too.
+ * an estimate too. In her lair and belly, effects and the God Potion are paused and Health is capped at 100.
  */
 public final class MatriarchService {
     static final Pos MATRIARCH = new Pos(-533.5, 41, -888.5);
@@ -34,6 +38,7 @@ public final class MatriarchService {
     static final double PULL_RANGE = 12;
     static final double SWALLOW_RANGE = 3;
     static final long ESCAPE_GRACE_MS = 30_000;
+    static final double LAIR_MAX_HEALTH = 100;
     private static final Map<UUID, BellyRun> RUNS = new ConcurrentHashMap<>();
     private static final Map<UUID, Long> GRACE = new ConcurrentHashMap<>();
     private static @Nullable LivingEntity matriarch;
@@ -45,6 +50,9 @@ public final class MatriarchService {
     public static synchronized void start() {
         if (running) return;
         running = true;
+        ZoneRuleService.register(ZoneRule.regions("matriarchs_lair",
+                Set.of(RegionType.MATRIARCHS_LAIR, RegionType.BELLY_OF_THE_BEAST), true, LAIR_MAX_HEALTH)
+                .or(MatriarchService::inBelly));
         MinecraftServer.getSchedulerManager().submitTask(() -> {
             tick();
             return TaskSchedule.tick(1);
@@ -103,6 +111,7 @@ public final class MatriarchService {
     private static void swallow(SkyBlockPlayer player, Instance instance) {
         BellyRun run = new BellyRun(player);
         RUNS.put(player.getUuid(), run);
+        ZoneRuleService.refresh(player);
         run.begin(instance);
     }
 
