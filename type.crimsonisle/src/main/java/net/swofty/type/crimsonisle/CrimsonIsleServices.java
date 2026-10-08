@@ -1,5 +1,6 @@
 package net.swofty.type.crimsonisle;
 
+import net.swofty.type.crimsonisle.dojo.DojoService;
 import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoEruptionService;
 
 /**
@@ -11,5 +12,6 @@ public final class CrimsonIsleServices {
 
     public static void start() {
         VolcanoEruptionService.start();
+        DojoService.start();
     }
 }
