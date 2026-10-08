@@ -2,13 +2,19 @@ package net.swofty.type.skyblockgeneric.fishing.catches;
 
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
+import net.swofty.type.generic.event.HypixelEventHandler;
+import net.swofty.type.skyblockgeneric.event.custom.SeaCreatureCaughtEvent;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCollection;
-import net.swofty.type.skyblockgeneric.data.datapoints.DatapointTrophyFish;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureSpawner;
 import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.essence.Essences;
 import net.swofty.type.skyblockgeneric.fishing.FishingService;
+import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
+import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishAwards;
+import net.swofty.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.fishing.registry.TrophyFishDefinition;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -52,8 +58,40 @@ public sealed interface CatchPayload {
                     .get(SkyBlockDataHandler.Data.COLLECTION, DatapointCollection.class)
                     .setValue(ctx.player().getCollection());
 
-            Text prefix = fromTreasure ? Text.of("<b><l>TREASURE! ") : Text.of("<b><l>GOOD CATCH! ");
-            ctx.player().sendMessage(prefix.append("<7>You found {}x <a>{}<7>!", amount, itemId));
+            if (fromTreasure) {
+                ctx.player().sendMessage(Text.of("<6><l>GOOD CATCH!</l> <b>You found {}x <a>{}<b>.", amount, itemId));
+            }
+        }
+    }
+
+    record Treasure(String itemId, int amount, double skillXp, String quality) implements CatchPayload {
+        @Override public String summary() { return quality.toLowerCase() + " treasure " + amount + "x " + itemId; }
+
+        private String header() {
+            return switch (quality) {
+                case "OUTSTANDING" -> "<d><l>OUTSTANDING CATCH!</l>";
+                case "GREAT" -> "<5><l>GREAT CATCH!</l>";
+                default -> "<6><l>GOOD CATCH!</l>";
+            };
+        }
+
+        @Override
+        public void apply(CatchAwardContext ctx) {
+            if (FishingTableDefinition.COINS.equals(itemId)) {
+                ctx.player().addCoins(amount);
+                ctx.player().sendMessage(header() + " <b>You found <6>" + String.format("%,d", amount) + " Coins<b>.");
+                return;
+            }
+            ItemType type = ItemType.valueOf(itemId);
+            SkyBlockItem item = new SkyBlockItem(type);
+            item.setAmount(amount);
+            ctx.player().addAndUpdateItem(item);
+            ctx.player().getCollection().increase(type, amount);
+            ctx.player().getSkyblockDataHandler()
+                    .get(SkyBlockDataHandler.Data.COLLECTION, DatapointCollection.class)
+                    .setValue(ctx.player().getCollection());
+            ctx.player().sendMessage(header() + " <b>You found " + (amount > 1 ? "<8>" + amount + "x " : "")
+                    + "<f>" + item.getDisplayName() + "<b>.");
         }
     }
 
@@ -76,7 +114,9 @@ public sealed interface CatchPayload {
                 ctx.player().sendMessage("<a><l>DOUBLE HOOK!");
             }
             for (int i = 0; i < spawnCount; i++) {
-                SeaCreatureSpawner.spawn(ctx.player(), seaCreatureId, ctx.hookPosition());
+                if (SeaCreatureSpawner.spawn(ctx.player(), seaCreatureId, ctx.hookPosition()) != null) {
+                    HypixelEventHandler.callCustomEvent(new SeaCreatureCaughtEvent(ctx.player(), seaCreatureId));
+                }
             }
             SeaCreatureSpawner.announceCatch(ctx.player(), seaCreatureId, spawnCount);
         }
@@ -90,14 +130,10 @@ public sealed interface CatchPayload {
             ItemType type = ItemType.valueOf(itemId);
             ctx.player().addAndUpdateItem(type, 1);
 
-            DatapointTrophyFish.TrophyFishData data = ctx.player().getTrophyFishData();
-            data.getProgress(definitionId).increment(tier.name());
-            ctx.player().getSkyblockDataHandler()
-                    .get(SkyBlockDataHandler.Data.TROPHY_FISH, DatapointTrophyFish.class)
-                    .setValue(data);
-
-            ctx.player().sendMessage("<b><l>TROPHY FISH! </l><7>You reeled in a <color:{0}>{1} <a>{2}<7>!",
-                    tier.colour(), tier.displayName(), definitionId);
+            TrophyFishDefinition definition = FishingRegistry.getTrophyFish(definitionId);
+            String name = definition == null ? definitionId : definition.coloredName();
+            ctx.player().sendMessage("<6><l>TROPHY FISH!</l> <b>You caught a " + name + " " + tier.label() + "<b>.");
+            TrophyFishAwards.record(ctx.player(), definitionId, tier, itemId);
         }
     }
 

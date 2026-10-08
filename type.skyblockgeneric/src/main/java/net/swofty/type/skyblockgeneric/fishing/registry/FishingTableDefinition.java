@@ -18,8 +18,24 @@ public record FishingTableDefinition(
     List<LootEntry> junk,
     List<SeaCreatureRoll> seaCreatures,
     boolean weightedSeaCreatures,
-    @Nullable EssenceTreasure essenceTreasure
+    @Nullable EssenceTreasure essenceTreasure,
+    List<WeightedLoot> weightedItems,
+    List<TreasureQuality> treasureQualities
 ) {
+    public static final String COINS = "COINS";
+
+    public boolean hasQualityTreasure() {
+        return !weightedItems.isEmpty() && !treasureQualities.isEmpty();
+    }
+
+    /** A weighted entry rolled for an amount between min and max; {@link #COINS} pays coins instead of an item. */
+    public record WeightedLoot(String itemId, double weight, int min, int max) {
+    }
+
+    /** GOOD / GREAT / OUTSTANDING treasure: its share of treasure catches and its weighted pool. */
+    public record TreasureQuality(String name, double share, List<WeightedLoot> entries) {
+    }
+
     public record LootEntry(String itemId, double chance, int amount, double skillXp) {
     }
 

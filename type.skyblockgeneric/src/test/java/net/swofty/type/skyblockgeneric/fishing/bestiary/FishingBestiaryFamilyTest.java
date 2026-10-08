@@ -103,6 +103,7 @@ class FishingBestiaryFamilyTest {
         SeaCreatureProfiles.CANONICAL.stream().map(SeaCreatureProfile::id).forEach(spawnable::add);
         Arrays.stream(FestivalShark.values()).map(Enum::name).forEach(spawnable::add);
         Arrays.stream(WinterSeaCreature.values()).map(Enum::name).forEach(spawnable::add);
+        Arrays.stream(net.swofty.type.skyblockgeneric.fishing.lava.LavaSeaCreature.values()).map(Enum::name).forEach(spawnable::add);
 
         List<String> keys = Arrays.stream(FishingBestiaryFamily.values())
                 .flatMap(family -> family.getMobKeys().stream()).toList();

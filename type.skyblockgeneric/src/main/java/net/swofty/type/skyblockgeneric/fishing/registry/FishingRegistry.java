@@ -12,11 +12,14 @@ import java.util.List;
 import java.util.Map;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.YamlFileUtils;
+import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
 import net.swofty.type.skyblockgeneric.fishing.hotspot.HotspotDefinition;
+import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyCondition;
+import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFisherRank;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
@@ -32,20 +35,24 @@ public final class FishingRegistry {
     private static final Map<String, HotspotDefinition> HOTSPOTS = new LinkedHashMap<>();
 
     public static void loadAll() {
+        loadAll(FISHING_DIR);
+    }
+
+    public static void loadAll(File directory) {
         TABLES.clear();
         TROPHY_FISH.clear();
         SEA_CREATURES.clear();
         HOTSPOTS.clear();
 
-        if (!YamlFileUtils.ensureDirectoryExists(FISHING_DIR)) {
+        if (!YamlFileUtils.ensureDirectoryExists(directory)) {
             throw new IllegalStateException("Unable to create fishing configuration directory");
         }
 
         try {
-            loadTables(new File(FISHING_DIR, "tables.yml"));
-            loadTrophyFish(new File(FISHING_DIR, "trophy_fish.yml"));
-            loadSeaCreatures(new File(FISHING_DIR, "sea_creatures.yml"));
-            loadHotspots(new File(FISHING_DIR, "hotspots.yml"));
+            loadTables(new File(directory, "tables.yml"));
+            loadTrophyFish(new File(directory, "trophy_fish.yml"));
+            loadSeaCreatures(new File(directory, "sea_creatures.yml"));
+            loadHotspots(new File(directory, "hotspots.yml"));
         } catch (Exception exception) {
             Logger.error(exception, "Failed to load fishing configuration");
         }
@@ -97,7 +104,9 @@ public final class FishingRegistry {
                 parseLootEntries((List<Map<String, Object>>) entry.get("junk")),
                 parseSeaCreatureRolls((List<Map<String, Object>>) entry.get("seaCreatures")),
                 booleanValue(entry, "weightedSeaCreatures", false),
-                parseEssenceTreasure(castMap(entry.get("essenceTreasure")))
+                parseEssenceTreasure(castMap(entry.get("essenceTreasure"))),
+                parseWeightedLoot((List<Map<String, Object>>) entry.get("weightedItems")),
+                parseTreasureQualities((List<Map<String, Object>>) entry.get("treasureQualities"))
             ));
         }
     }
@@ -111,24 +120,25 @@ public final class FishingRegistry {
         List<Map<String, Object>> entries = (List<Map<String, Object>>) root.getOrDefault("trophyFish", Collections.emptyList());
         for (Map<String, Object> entry : entries) {
             String id = string(entry, "id");
+            List<TrophyCondition> conditions = new ArrayList<>();
+            for (Map<String, Object> condition : (List<Map<String, Object>>) entry.getOrDefault("conditions", List.of())) {
+                conditions.add(TrophyCondition.parse(condition));
+            }
+            List<Integer> fillet = new ArrayList<>();
+            for (Object amount : (List<Object>) entry.getOrDefault("filletMagmafish", List.of())) {
+                fillet.add(((Number) amount).intValue());
+            }
             TROPHY_FISH.put(id, new TrophyFishDefinition(
                 id,
                 string(entry, "displayName"),
+                string(entry, "itemStem"),
+                Rarity.valueOf(string(entry, "rarity").toUpperCase()),
                 doubleValue(entry, "catchChance", 0.0D),
-                stringList(entry.get("regions")),
-                intValue(entry, "requiredFishingLevel", 0),
-                longValue(entry, "minimumCastTimeMs", 0L),
-                nullableString(entry, "requiredRodId"),
-                nullableString(entry, "requiredBaitId"),
-                nullableDouble(entry.get("minimumMana")),
-                nullableDouble(entry.get("minimumBobberDepth")),
-                nullableDouble(entry.get("maximumPlayerDistance")),
-                booleanValue(entry, "requiresStarterRodWithoutEnchantments", false),
+                booleanValue(entry, "manaScaled", false),
                 booleanValue(entry, "specialGoldenFish", false),
-                nullableString(entry, "bronzeItemId"),
-                nullableString(entry, "silverItemId"),
-                nullableString(entry, "goldItemId"),
-                nullableString(entry, "diamondItemId")
+                List.copyOf(conditions),
+                List.copyOf(fillet),
+                nullableString(entry, "hint")
             ));
         }
     }
@@ -147,7 +157,9 @@ public final class FishingRegistry {
                 id,
                 intValue(entry, "requiredFishingLevel", 0),
                 doubleValue(entry, "skillXp", 0.0D),
-                net.swofty.type.skyblockgeneric.fishing.tag.FishingTagRegistry.resolve(stringList(entry.get("tags")))
+                net.swofty.type.skyblockgeneric.fishing.tag.FishingTagRegistry.resolve(stringList(entry.get("tags"))),
+                entry.containsKey("requiredTrophyRank")
+                    ? TrophyFisherRank.valueOf(String.valueOf(entry.get("requiredTrophyRank")).toUpperCase()) : null
             ));
         }
     }
@@ -196,7 +208,7 @@ public final class FishingRegistry {
                 intValue(entry, "maxActive", defaultMaxActiveForServer(serverType)),
                 intValue(entry, "durationSeconds", 120),
                 parseStatistics(buffs, defaultHotspotBuffs()),
-                stringList(entry.get("seaCreatures")),
+                parseSeaCreatureRolls((List<Map<String, Object>>) entry.get("seaCreatures")),
                 spawnPoints
             ));
         }
@@ -383,6 +395,39 @@ public final class FishingRegistry {
             ));
         }
         return result;
+    }
+
+    private static List<FishingTableDefinition.WeightedLoot> parseWeightedLoot(@Nullable List<Map<String, Object>> entries) {
+        if (entries == null || entries.isEmpty()) {
+            return List.of();
+        }
+        List<FishingTableDefinition.WeightedLoot> result = new ArrayList<>();
+        for (Map<String, Object> entry : entries) {
+            int min = intValue(entry, "min", intValue(entry, "amount", 1));
+            result.add(new FishingTableDefinition.WeightedLoot(
+                string(entry, "itemId"),
+                doubleValue(entry, "weight", 0.0D),
+                min,
+                intValue(entry, "max", min)
+            ));
+        }
+        return List.copyOf(result);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<FishingTableDefinition.TreasureQuality> parseTreasureQualities(@Nullable List<Map<String, Object>> entries) {
+        if (entries == null || entries.isEmpty()) {
+            return List.of();
+        }
+        List<FishingTableDefinition.TreasureQuality> result = new ArrayList<>();
+        for (Map<String, Object> entry : entries) {
+            result.add(new FishingTableDefinition.TreasureQuality(
+                string(entry, "name"),
+                doubleValue(entry, "share", 0.0D),
+                parseWeightedLoot((List<Map<String, Object>>) entry.get("entries"))
+            ));
+        }
+        return List.copyOf(result);
     }
 
     private static List<FishingTableDefinition.SeaCreatureRoll> parseSeaCreatureRolls(@Nullable List<Map<String, Object>> entries) {

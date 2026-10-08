@@ -11,6 +11,8 @@ import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreaturePr
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureProfiles;
 import net.swofty.type.skyblockgeneric.fishing.festival.FestivalShark;
 import net.swofty.type.skyblockgeneric.fishing.festival.SharkMob;
+import net.swofty.type.skyblockgeneric.fishing.lava.LavaSeaCreature;
+import net.swofty.type.skyblockgeneric.fishing.lava.LavaSeaCreatures;
 import net.swofty.type.skyblockgeneric.fishing.winter.WinterSeaCreature;
 import net.swofty.type.skyblockgeneric.fishing.winter.WinterSeaCreatureMob;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryEntry;
@@ -79,44 +81,28 @@ public enum FishingBestiaryFamily implements BestiaryEntry {
     WIKI_TIKI(FishingBestiarySection.FISHING, "Wiki Tiki", "An ancient fragment of the Kalhuiki tribe, lost from long before they went underground.", 8, 15,
             head("f3c802e580bfefc18c4af94cceb82968b5b4aeab0d832346a633a7473a41dfac")),
 
-    FIERY_SCUTTLER(FishingBestiarySection.LAVA, "Fiery Scuttler", "Small guy, big attitude.", 6, 15,
-            head("55b194025806687642e2bc239895d646a6d8c193d9253b61bfce908f6ce1b84a")),
-    FIRE_EEL(FishingBestiarySection.LAVA, "Fire Eel", "Tastes like battery acid.", 6, 20,
-            head("c63704a7fc7d437f7b923e23e9a08ae3bbe28937df4dafa9e3e8725b2ce4afa5"), "FIRE_EEL"),
-    FIREPROOF_WITCH(FishingBestiarySection.LAVA, "Fireproof Witch", "Her brewing sessions have seen much success as of late.", 6, 20,
-            head("fce6604157fc4ab5591e4bcf507a749918ee9c41e357d47376e0ee7342074c90")),
+    FIERY_SCUTTLER(LavaSeaCreature.FIERY_SCUTTLER),
+    FIRE_EEL(LavaSeaCreature.FIRE_EEL),
+    FIREPROOF_WITCH(LavaSeaCreature.FIREPROOF_WITCH),
     FLAMING_WORM(FishingBestiarySection.LAVA, "Flaming Worm", "Like a regular worm, but on fire.", 6, 20,
             head("da91dab8391af5fda54acd2c0b18fbd819b865e1a8f1d623813fa761e924540")),
-    FRIED_CHICKEN(FishingBestiarySection.LAVA, "Fried Chicken", "Is it ready to eat, then?", 4, 15,
-            new GUIMaterial(Material.COOKED_CHICKEN)),
+    FRIED_CHICKEN(LavaSeaCreature.FRIED_CHICKEN),
     LAVA_BLAZE(FishingBestiarySection.LAVA, "Lava Blaze", "Is it made of lava or does it just live in it?", 7, 20,
             head("b78ef2e4cf2c41a2d14bfde9caff10219f5b1bf5b35a49eb51c6467882cb5f0"), "LAVA_BLAZE"),
-    LAVA_FLAME(FishingBestiarySection.LAVA, "Lava Flame", "Incarnation of pure heat.", 6, 20,
-            head("b78ef2e4cf2c41a2d14bfde9caff10219f5b1bf5b35a49eb51c6467882cb5f0")),
-    LAVA_LEECH(FishingBestiarySection.LAVA, "Lava Leech", "It's hard to love-a leech.", 6, 20,
-            head("5a1a0831aa03afb4212adcbb24e5dfaa7f476a1173fce259ef75a85855"), "LAVA_LEECH"),
+    LAVA_FLAME(LavaSeaCreature.LAVA_FLAME),
+    LAVA_LEECH(LavaSeaCreature.LAVA_LEECH),
     LAVA_PIGMAN(FishingBestiarySection.LAVA, "Lava Pigman", "Normally, dunking pork in lava causes it to get charred. But not this one!", 7, 20,
             head("74e9c6e98582ffd8ff8feb3322cd1849c43fb16b158abb11ca7b42eda7743eb")),
-    LORD_JAWBUS(FishingBestiarySection.LAVA, "Lord Jawbus", "The mighty magma lord.", 8, 15,
-            head("22bcaceeb4162f400d44743315932ac820d3119ac8986a0161a726161ccc93fc"), "LORD_JAWBUS"),
-    MAGMA_PILLAR(FishingBestiarySection.LAVA, "Magma Pillar", "Supa hot fire.", 7, 20,
-            head("38957d5023c937c4c41aa2412d43410bda23cf79a9f6ab36b76fef2d7c429")),
-    MAGMA_SLUG(FishingBestiarySection.LAVA, "Magma Slug", "Moves. Very. Slowly.", 4, 15,
-            head("38957d5023c937c4c41aa2412d43410bda23cf79a9f6ab36b76fef2d7c429"), "MAGMA_SLUG"),
-    MOOGMA(FishingBestiarySection.LAVA, "Moogma", "Produces 100% fresh magma on a daily basis!", 4, 15,
-            head("2b52841f2fd589e0bc84cbabf9e1c27cb70cac98f8d6b3dd065e55a4dcb70d77"), "MOOGMA"),
-    PLHLEGBLAST(FishingBestiarySection.LAVA, "Plhlegblast", "Hard to spell, even harder to find.", 7, 5,
-            head("d8705624daa2956aa45956c81bab5f4fdb2c74a596051e24192039aea3a8b8")),
-    PYROCLASTIC_WORM(FishingBestiarySection.LAVA, "Pyroclastic Worm", "Travels up to 10 miles downhill during eruptions.", 6, 20,
-            head("38957d5023c937c4c41aa2412d43410bda23cf79a9f6ab36b76fef2d7c429"), "PYROCLASTIC_WORM"),
-    RAGNAROK(FishingBestiarySection.LAVA, "Ragnarok", "Once tried to bring about the end of the world, until he was betrayed.", 8, 15,
-            head("a8e1fe214b71f6ea69c541a861c64bafda7bf9b85de5dd17ab2b6ccd1d32b039")),
-    TAURUS(FishingBestiarySection.LAVA, "Taurus", "Could never date a Pisces.", 7, 20,
-            head("1642a06cd75ef307c1913ba7a224fb2082d8a2c5254fd1bf006125a087a9a868"), "TAURUS"),
-    THUNDER(FishingBestiarySection.LAVA, "Thunder", "This is what happens on a bad forecast.", 6, 15,
-            head("e92089618435a0ef63e95ee95a92b83073f8c33fa77dc5365199bad33b6256")),
-    VOLCANIC_SNAIL(FishingBestiarySection.LAVA, "Volcanic Snail", "Moves slow but with great purpose.", 4, 15,
-            head("9bf9d3bd4c3dcca350a438804dd42fae2b3474dc0928fa0ad547ad40702acf71")),
+    LORD_JAWBUS(LavaSeaCreature.LORD_JAWBUS),
+    MAGMA_PILLAR(LavaSeaCreature.MAGMA_PILLAR),
+    MAGMA_SLUG(LavaSeaCreature.MAGMA_SLUG),
+    MOOGMA(LavaSeaCreature.MOOGMA),
+    PLHLEGBLAST(LavaSeaCreature.PLHLEGBLAST),
+    PYROCLASTIC_WORM(LavaSeaCreature.PYROCLASTIC_WORM),
+    RAGNAROK(LavaSeaCreature.RAGNAROK),
+    TAURUS(LavaSeaCreature.TAURUS),
+    THUNDER(LavaSeaCreature.THUNDER),
+    VOLCANIC_SNAIL(LavaSeaCreature.VOLCANIC_SNAIL),
 
     GRIM_REAPER(FishingBestiarySection.SPOOKY_FESTIVAL, "Grim Reaper", "An old friend.", 8, 15,
             head("68a6194a5b217b9f5a3dfecce5f3efe6967405039b82fa0c4e8959175f32e75a")),
@@ -184,6 +170,12 @@ public enum FishingBestiaryFamily implements BestiaryEntry {
                 head(shark.getHeadTexture()), shark.name());
     }
 
+    FishingBestiaryFamily(LavaSeaCreature creature) {
+        this(FishingBestiarySection.LAVA, creature.getDisplayName(), creature.getBestiary().description(),
+                creature.getBestiary().bracket(), creature.getBestiary().maxTier(),
+                creature.getGuiMaterial(), creature.name());
+    }
+
     FishingBestiaryFamily(WinterSeaCreature creature) {
         this(FishingBestiarySection.WINTER, creature.getDisplayName(), creature.getBestiary().description(),
                 creature.getBestiary().bracket(), creature.getBestiary().maxTier(),
@@ -236,6 +228,8 @@ public enum FishingBestiaryFamily implements BestiaryEntry {
         for (WinterSeaCreature creature : WinterSeaCreature.values()) {
             if (creature.name().equals(mobKey)) return WinterSeaCreatureMob.of(creature, null);
         }
+        LavaSeaCreature lava = LavaSeaCreature.byId(mobKey);
+        if (lava != null) return LavaSeaCreatures.create(lava, null, false);
         SeaCreatureProfile profile = SeaCreatureIndex.PROFILES.get(mobKey);
         if (profile == null) throw new IllegalStateException("No sea creature for Bestiary key " + mobKey);
         return SeaCreatureMob.create(profile);

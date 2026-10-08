@@ -33,7 +33,7 @@ public final class FishingTagRegistry {
                 WeatherTag.RAINING,
                 WeatherTag.CLEAR,
                 WeatherTag.THUNDERSTORM,
-                RegionTag.CRIMSON_ISLE,
+                IslandTag.CRIMSON_ISLE,
                 RegionTag.BACKWATER_BAYOU,
                 RegionTag.GALATEA,
                 RegionTag.PRIVATE_ISLAND,

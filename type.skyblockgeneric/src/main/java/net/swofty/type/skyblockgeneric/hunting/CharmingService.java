@@ -39,7 +39,7 @@ public final class CharmingService {
         String mobId = bestiaryMob.getMobID();
         return AttributeRegistry.values().stream()
                 .filter(definition -> definition.sources().stream()
-                        .anyMatch(source -> source.mobIds().contains(mobId)))
+                        .anyMatch(source -> source.mobIds().stream().anyMatch(mobId::equalsIgnoreCase)))
                 .findFirst().orElse(null);
     }
 

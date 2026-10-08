@@ -255,6 +255,7 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, PetScore.statistics(player));
         spare = ItemStatistics.add(spare, MythologicalItemHandlers.permanentStatistics(player));
         spare = ItemStatistics.add(spare, BottleOfJyrre.permanentStatistics(player));
+        spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.statistics(player));
 
         return spare;
     }
@@ -274,6 +275,7 @@ public class PlayerStatistics {
         if (enemy instanceof BestiaryMob bestiaryMob) total = ItemStatistics.add(total, getBestiaryStatistics(causer, bestiaryMob));
         total = ItemStatistics.add(total, CarnivalStatistics.against(player, enemy));
         total = ItemStatistics.add(total, MythologicalGear.against(player, enemy));
+        total = ItemStatistics.add(total, net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.against(player, enemy));
         total = ItemStatistics.add(total, allArmorStatistics(causer, enemy));
         total = ItemStatistics.add(total, equipmentStatistics(causer, enemy));
         total = ItemStatistics.add(total, mainHandStatistics(causer, enemy));

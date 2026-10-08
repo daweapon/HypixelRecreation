@@ -158,62 +158,7 @@ public final class SeaCreatureProfiles {
             .fishingXpReward(20000).xpOrbs(120)
             .build();
 
-    /* ---------- lava (Crimson Isle) ---------- */
-
-    public static final SeaCreatureProfile MAGMA_SLUG = SeaCreatureProfile.builder("MAGMA_SLUG")
-            .displayName("Magma Slug")
-            .level(21)
-            .entityType(EntityType.MAGMA_CUBE)
-            .health(850D).damage(170D).speed(50D)
-            .behaviour(SeaCreatureBehaviour.aggressive(1.6, 20, 14))
-            .mobTypes(MobType.MAGMATIC, MobType.CUBIC)
-            .damageCooldownMs(400)
-            .fishingXpReward(450).xpOrbs(12)
-            .build();
-
-    public static final SeaCreatureProfile MOOGMA = SeaCreatureProfile.builder("MOOGMA")
-            .displayName("Moogma")
-            .level(22)
-            .entityType(EntityType.STRIDER)
-            .health(900D).damage(180D).speed(75D)
-            .behaviour(SeaCreatureBehaviour.aggressive(1.8, 22, 16))
-            .mobTypes(MobType.MAGMATIC, MobType.ANIMAL)
-            .damageCooldownMs(400)
-            .fishingXpReward(500).xpOrbs(14)
-            .build();
-
-    public static final SeaCreatureProfile LAVA_LEECH = SeaCreatureProfile.builder("LAVA_LEECH")
-            .displayName("Lava Leech")
-            .level(24)
-            .entityType(EntityType.SILVERFISH)
-            .health(1100D).damage(200D).speed(100D)
-            .behaviour(SeaCreatureBehaviour.aggressive(2.4, 18, 14))
-            .mobTypes(MobType.MAGMATIC, MobType.ARTHROPOD)
-            .damageCooldownMs(350)
-            .fishingXpReward(550).xpOrbs(14)
-            .build();
-
-    public static final SeaCreatureProfile PYROCLASTIC_WORM = SeaCreatureProfile.builder("PYROCLASTIC_WORM")
-            .displayName("Pyroclastic Worm")
-            .level(28)
-            .entityType(EntityType.ENDERMITE)
-            .health(1400D).damage(240D).speed(95D)
-            .behaviour(SeaCreatureBehaviour.aggressive(2.2, 18, 16))
-            .mobTypes(MobType.MAGMATIC, MobType.ARTHROPOD)
-            .damageCooldownMs(350)
-            .fishingXpReward(800).xpOrbs(16)
-            .build();
-
-    public static final SeaCreatureProfile FIRE_EEL = SeaCreatureProfile.builder("FIRE_EEL")
-            .displayName("Fire Eel")
-            .level(28)
-            .entityType(EntityType.PHANTOM)
-            .health(1300D).damage(220D).speed(100D)
-            .behaviour(SeaCreatureBehaviour.aggressive(2.5, 18, 18))
-            .mobTypes(MobType.MAGMATIC, MobType.AIRBORNE)
-            .damageCooldownMs(350)
-            .fishingXpReward(800).xpOrbs(16)
-            .build();
+    /* ---------- lava (Crystal Hollows; Crimson Isle creatures are LavaSeaCreature) ---------- */
 
     public static final SeaCreatureProfile LAVA_BLAZE = SeaCreatureProfile.builder("LAVA_BLAZE")
             .displayName("Lava Blaze")
@@ -226,35 +171,12 @@ public final class SeaCreatureProfiles {
             .fishingXpReward(1000).xpOrbs(18)
             .build();
 
-    public static final SeaCreatureProfile TAURUS = SeaCreatureProfile.builder("TAURUS")
-            .displayName("Taurus")
-            .level(36)
-            .entityType(EntityType.HOGLIN)
-            .health(6000D).damage(400D).speed(85D)
-            .behaviour(SeaCreatureBehaviour.aggressive(2.4, 22, 22))
-            .mobTypes(MobType.MAGMATIC, MobType.ANIMAL)
-            .damageCooldownMs(400)
-            .fishingXpReward(2500).xpOrbs(32)
-            .build();
-
-    public static final SeaCreatureProfile LORD_JAWBUS = SeaCreatureProfile.builder("LORD_JAWBUS")
-            .displayName("Lord Jawbus")
-            .level(45)
-            .entityType(EntityType.GHAST)
-            .health(40000D).damage(900D).speed(70D)
-            .behaviour(SeaCreatureBehaviour.aggressive(2.0, 25, 30))
-            .mobTypes(MobType.MAGMATIC, MobType.INFERNAL, MobType.ELUSIVE)
-            .damageCooldownMs(350)
-            .fishingXpReward(15000).xpOrbs(80)
-            .build();
-
     public static final List<SeaCreatureProfile> CANONICAL = List.of(
             // Water
             SQUID, SEA_WALKER, NIGHT_SQUID, SEA_GUARDIAN,
             SEA_WITCH, SEA_ARCHER, MONSTER_OF_THE_DEEP, CATFISH, CARROT_KING,
             SEA_LEECH, GUARDIAN_DEFENDER, WATER_HYDRA, THE_SEA_EMPEROR,
             // Lava
-            MAGMA_SLUG, MOOGMA, LAVA_LEECH, PYROCLASTIC_WORM, FIRE_EEL,
-            LAVA_BLAZE, TAURUS, LORD_JAWBUS
+            LAVA_BLAZE
     );
 }

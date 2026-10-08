@@ -14,6 +14,8 @@ import net.minestom.server.instance.Instance;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.fishing.festival.FestivalShark;
+import net.swofty.type.skyblockgeneric.fishing.lava.LavaSeaCreature;
+import net.swofty.type.skyblockgeneric.fishing.lava.LavaSeaCreatures;
 import net.swofty.type.skyblockgeneric.fishing.festival.SharkMob;
 import net.swofty.type.skyblockgeneric.fishing.winter.ReindrakeMob;
 import net.swofty.type.skyblockgeneric.fishing.winter.WinterSeaCreature;
@@ -36,6 +38,9 @@ public final class SeaCreatureSpawner {
         }
         for (WinterSeaCreature creature : WinterSeaCreature.values()) {
             register(creature.getProfile(), (angler, profile) -> WinterSeaCreatureMob.of(creature, angler));
+        }
+        for (LavaSeaCreature creature : LavaSeaCreature.values()) {
+            register(creature.getProfile(), (angler, profile) -> LavaSeaCreatures.spawnFor(creature, angler));
         }
         ANNOUNCERS.put(WinterSeaCreature.REINDRAKE.name(), ReindrakeMob::announceCatch);
     }
@@ -89,6 +94,9 @@ public final class SeaCreatureSpawner {
 
         SkyBlockMob mob = FACTORIES.getOrDefault(seaCreatureId, (ignored, spawned) -> SeaCreatureMob.create(spawned))
                 .apply(angler, profile);
+        if (mob == null) {
+            return null;
+        }
         mob.setInstance(instance, position);
 
         broadcastCatch(angler, profile, instance, position);

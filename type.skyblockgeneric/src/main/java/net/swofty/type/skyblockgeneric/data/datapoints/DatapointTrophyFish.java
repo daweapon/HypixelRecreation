@@ -6,13 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.swofty.commons.protocol.Serializer;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Map;
 
 // Persists a player's trophy fish catches per fish (bronze/silver/gold/diamond counts and
-// pity-timer progress toward the next gold/diamond catch).
+// pity-timer progress toward the next gold/diamond catch), the Odger rank rewards claimed and whether
+// the player has met Odger.
 public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.TrophyFishData> {
     private static final Serializer<TrophyFishData> serializer = new Serializer<>() {
         @Override
@@ -31,6 +35,8 @@ public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.T
                 fishObject.put(fishId, progressObject);
             });
             object.put("fish", fishObject);
+            object.put("claimedRanks", new JSONArray(value.getClaimedRanks()));
+            object.put("odgerMet", value.isOdgerMet());
             return object.toString();
         }
 
@@ -42,6 +48,11 @@ public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.T
             }
 
             JSONObject object = new JSONObject(json);
+            JSONArray claimed = object.optJSONArray("claimedRanks");
+            if (claimed != null) {
+                for (int i = 0; i < claimed.length(); i++) data.getClaimedRanks().add(claimed.getString(i));
+            }
+            data.setOdgerMet(object.optBoolean("odgerMet", false));
             JSONObject fishObject = object.optJSONObject("fish");
             if (fishObject == null) {
                 return data;
@@ -75,7 +86,7 @@ public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.T
                     progress.getCatchesSinceGoldPity(),
                     progress.getCatchesSinceDiamondPity()
                 )));
-            return new TrophyFishData(fish);
+            return new TrophyFishData(fish, new HashSet<>(value.getClaimedRanks()), value.isOdgerMet());
         }
     };
 
@@ -93,6 +104,8 @@ public class DatapointTrophyFish extends SkyBlockDatapoint<DatapointTrophyFish.T
     @AllArgsConstructor
     public static class TrophyFishData {
         private Map<String, FishProgress> fish = new HashMap<>();
+        private Set<String> claimedRanks = new HashSet<>();
+        private boolean odgerMet;
 
         public FishProgress getProgress(String fishId) {
             return fish.computeIfAbsent(fishId, ignored -> new FishProgress());

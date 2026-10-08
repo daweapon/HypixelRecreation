@@ -1,5 +1,6 @@
 package net.swofty.type.backwaterbayou.npcs;
 
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
@@ -51,6 +52,7 @@ public class NPCHattie extends HypixelNPC {
         }
 
         setDialogue(player, "hotspots-" + (1 + (int) (Math.random() * 2)));
+        player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_HATTIE, true);
     }
 
     @Override

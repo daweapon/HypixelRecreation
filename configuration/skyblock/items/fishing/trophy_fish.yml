@@ -1,475 +1,1181 @@
 items:
-  - id: BRONZE_SULPHUR_SKITTER
-    material: PLAYER_HEAD
-    name: "Bronze Sulphur Skitter"
+  - id: SULPHUR_SKITTER_BRONZE
+    material: PAPER
+    name: 'Sulphur Skitter <8><l>BRONZE'
     rarity: COMMON
+    lore:
+      - '<7>Caught near Sulphur blocks.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/sulphur_skitter_bronze
-  - id: SILVER_SULPHUR_SKITTER
-    material: PLAYER_HEAD
-    name: "Silver Sulphur Skitter"
+  - id: SULPHUR_SKITTER_SILVER
+    material: PAPER
+    name: 'Sulphur Skitter <7><l>SILVER'
     rarity: COMMON
+    lore:
+      - '<7>Caught near Sulphur blocks.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/sulphur_skitter_silver
-  - id: GOLD_SULPHUR_SKITTER
-    material: PLAYER_HEAD
-    name: "Gold Sulphur Skitter"
+  - id: SULPHUR_SKITTER_GOLD
+    material: PAPER
+    name: 'Sulphur Skitter <6><l>GOLD'
     rarity: COMMON
+    lore:
+      - '<7>Caught near Sulphur blocks.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/sulphur_skitter_gold
-  - id: DIAMOND_SULPHUR_SKITTER
-    material: PLAYER_HEAD
-    name: "Diamond Sulphur Skitter"
+  - id: SULPHUR_SKITTER_DIAMOND
+    material: PAPER
+    name: 'Sulphur Skitter <b><l>DIAMOND'
     rarity: COMMON
+    lore:
+      - '<7>Caught near Sulphur blocks.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/sulphur_skitter_diamond
-  - id: BRONZE_BLOBFISH
-    material: PLAYER_HEAD
-    name: "Bronze Blobfish"
+  - id: OBFUSCATED_FISH_1_BRONZE
+    material: PAPER
+    name: '<k>Obfuscated-1</k> <8><l>BRONZE'
     rarity: COMMON
+    lore:
+      - '<7>Caught with Corrupted Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/fishing/trophy/lava/blobfish_bronze
-  - id: SILVER_BLOBFISH
-    material: PLAYER_HEAD
-    name: "Silver Blobfish"
-    rarity: COMMON
-    components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/fishing/trophy/lava/blobfish_silver
-  - id: GOLD_BLOBFISH
-    material: PLAYER_HEAD
-    name: "Gold Blobfish"
-    rarity: COMMON
-    components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/fishing/trophy/lava/blobfish_gold
-  - id: DIAMOND_BLOBFISH
-    material: PLAYER_HEAD
-    name: "Diamond Blobfish"
-    rarity: COMMON
-    components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/fishing/trophy/lava/blobfish_diamond
-  - id: BRONZE_OBFUSCATED_1
-    material: PLAYER_HEAD
-    name: "Bronze Obfuscated 1"
-    rarity: COMMON
-    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: FISHING_BAIT
         mediums: [LAVA]
-  - id: SILVER_OBFUSCATED_1
-    material: PLAYER_HEAD
-    name: "Silver Obfuscated 1"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_1_bronze
+  - id: OBFUSCATED_FISH_1_SILVER
+    material: PAPER
+    name: '<k>Obfuscated-1</k> <7><l>SILVER'
     rarity: COMMON
-  - id: GOLD_OBFUSCATED_1
-    material: PLAYER_HEAD
-    name: "Gold Obfuscated 1"
-    rarity: COMMON
-  - id: DIAMOND_OBFUSCATED_1
-    material: PLAYER_HEAD
-    name: "Diamond Obfuscated 1"
-    rarity: COMMON
-  - id: BRONZE_STEAMING_HOT_FLOUNDER
-    material: PLAYER_HEAD
-    name: "Bronze Steaming Hot Flounder"
-    rarity: COMMON
+    lore:
+      - '<7>Caught with Corrupted Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: FISHING_BAIT
+        mediums: [LAVA]
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_1_silver
+  - id: OBFUSCATED_FISH_1_GOLD
+    material: PAPER
+    name: '<k>Obfuscated-1</k> <6><l>GOLD'
+    rarity: COMMON
+    lore:
+      - '<7>Caught with Corrupted Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: FISHING_BAIT
+        mediums: [LAVA]
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_1_gold
+  - id: OBFUSCATED_FISH_1_DIAMOND
+    material: PAPER
+    name: '<k>Obfuscated-1</k> <b><l>DIAMOND'
+    rarity: COMMON
+    lore:
+      - '<7>Caught with Corrupted Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: FISHING_BAIT
+        mediums: [LAVA]
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_1_diamond
+  - id: STEAMING_HOT_FLOUNDER_BRONZE
+    material: PAPER
+    name: 'Steaming-Hot Flounder <8><l>BRONZE'
+    rarity: COMMON
+    lore:
+      - '<7>Found in Volcano Geysers.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/steaming_hot_flounder_bronze
-  - id: SILVER_STEAMING_HOT_FLOUNDER
-    material: PLAYER_HEAD
-    name: "Silver Steaming Hot Flounder"
+  - id: STEAMING_HOT_FLOUNDER_SILVER
+    material: PAPER
+    name: 'Steaming-Hot Flounder <7><l>SILVER'
     rarity: COMMON
+    lore:
+      - '<7>Found in Volcano Geysers.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/steaming_hot_flounder_silver
-  - id: GOLD_STEAMING_HOT_FLOUNDER
-    material: PLAYER_HEAD
-    name: "Gold Steaming Hot Flounder"
+  - id: STEAMING_HOT_FLOUNDER_GOLD
+    material: PAPER
+    name: 'Steaming-Hot Flounder <6><l>GOLD'
     rarity: COMMON
+    lore:
+      - '<7>Found in Volcano Geysers.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/steaming_hot_flounder_gold
-  - id: DIAMOND_STEAMING_HOT_FLOUNDER
-    material: PLAYER_HEAD
-    name: "Diamond Steaming Hot Flounder"
+  - id: STEAMING_HOT_FLOUNDER_DIAMOND
+    material: PAPER
+    name: 'Steaming-Hot Flounder <b><l>DIAMOND'
     rarity: COMMON
+    lore:
+      - '<7>Found in Volcano Geysers.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/steaming_hot_flounder_diamond
-  - id: BRONZE_GUSHER
-    material: PLAYER_HEAD
-    name: "Bronze Gusher"
+  - id: GUSHER_BRONZE
+    material: PAPER
+    name: 'Gusher <8><l>BRONZE'
     rarity: COMMON
+    lore:
+      - '<7>Caught after a volcano eruption.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/gusher_bronze
-  - id: SILVER_GUSHER
-    material: PLAYER_HEAD
-    name: "Silver Gusher"
+  - id: GUSHER_SILVER
+    material: PAPER
+    name: 'Gusher <7><l>SILVER'
     rarity: COMMON
+    lore:
+      - '<7>Caught after a volcano eruption.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/gusher_silver
-  - id: GOLD_GUSHER
-    material: PLAYER_HEAD
-    name: "Gold Gusher"
+  - id: GUSHER_GOLD
+    material: PAPER
+    name: 'Gusher <6><l>GOLD'
     rarity: COMMON
+    lore:
+      - '<7>Caught after a volcano eruption.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/gusher_gold
-  - id: DIAMOND_GUSHER
-    material: PLAYER_HEAD
-    name: "Diamond Gusher"
+  - id: GUSHER_DIAMOND
+    material: PAPER
+    name: 'Gusher <b><l>DIAMOND'
     rarity: COMMON
+    lore:
+      - '<7>Caught after a volcano eruption.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/gusher_diamond
-  - id: BRONZE_OBFUSCATED_2
-    material: PLAYER_HEAD
-    name: "Bronze Obfuscated 2"
+  - id: BLOBFISH_BRONZE
+    material: PAPER
+    name: 'Blobfish <8><l>BRONZE'
     rarity: COMMON
+    lore:
+      - '<7>Caught everywhere.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/blobfish_bronze
+  - id: BLOBFISH_SILVER
+    material: PAPER
+    name: 'Blobfish <7><l>SILVER'
+    rarity: COMMON
+    lore:
+      - '<7>Caught everywhere.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/blobfish_silver
+  - id: BLOBFISH_GOLD
+    material: PAPER
+    name: 'Blobfish <6><l>GOLD'
+    rarity: COMMON
+    lore:
+      - '<7>Caught everywhere.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/blobfish_gold
+  - id: BLOBFISH_DIAMOND
+    material: PAPER
+    name: 'Blobfish <b><l>DIAMOND'
+    rarity: COMMON
+    lore:
+      - '<7>Caught everywhere.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/blobfish_diamond
+  - id: OBFUSCATED_FISH_2_BRONZE
+    material: PAPER
+    name: '<k>Obfuscated-2</k> <8><l>BRONZE'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Caught with <7><k>Obfuscated 1<7> Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: FISHING_BAIT
         mediums: [LAVA]
-  - id: SILVER_OBFUSCATED_2
-    material: PLAYER_HEAD
-    name: "Silver Obfuscated 2"
-    rarity: COMMON
-  - id: GOLD_OBFUSCATED_2
-    material: PLAYER_HEAD
-    name: "Gold Obfuscated 2"
-    rarity: COMMON
-  - id: DIAMOND_OBFUSCATED_2
-    material: PLAYER_HEAD
-    name: "Diamond Obfuscated 2"
-    rarity: COMMON
-  - id: BRONZE_SLUGFISH
-    material: PLAYER_HEAD
-    name: "Bronze Slugfish"
-    rarity: COMMON
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_2_bronze
+  - id: OBFUSCATED_FISH_2_SILVER
+    material: PAPER
+    name: '<k>Obfuscated-2</k> <7><l>SILVER'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Caught with <7><k>Obfuscated 1<7> Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: FISHING_BAIT
+        mediums: [LAVA]
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_2_silver
+  - id: OBFUSCATED_FISH_2_GOLD
+    material: PAPER
+    name: '<k>Obfuscated-2</k> <6><l>GOLD'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Caught with <7><k>Obfuscated 1<7> Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: FISHING_BAIT
+        mediums: [LAVA]
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_2_gold
+  - id: OBFUSCATED_FISH_2_DIAMOND
+    material: PAPER
+    name: '<k>Obfuscated-2</k> <b><l>DIAMOND'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Caught with <7><k>Obfuscated 1<7> Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: FISHING_BAIT
+        mediums: [LAVA]
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_2_diamond
+  - id: SLUGFISH_BRONZE
+    material: PAPER
+    name: 'Slugfish <8><l>BRONZE'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Bobber must be active for <a>20s<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/slugfish_bronze
-  - id: SILVER_SLUGFISH
-    material: PLAYER_HEAD
-    name: "Silver Slugfish"
-    rarity: COMMON
+  - id: SLUGFISH_SILVER
+    material: PAPER
+    name: 'Slugfish <7><l>SILVER'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Bobber must be active for <a>20s<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/slugfish_silver
-  - id: GOLD_SLUGFISH
-    material: PLAYER_HEAD
-    name: "Gold Slugfish"
-    rarity: COMMON
+  - id: SLUGFISH_GOLD
+    material: PAPER
+    name: 'Slugfish <6><l>GOLD'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Bobber must be active for <a>20s<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/slugfish_gold
-  - id: DIAMOND_SLUGFISH
-    material: PLAYER_HEAD
-    name: "Diamond Slugfish"
-    rarity: COMMON
+  - id: SLUGFISH_DIAMOND
+    material: PAPER
+    name: 'Slugfish <b><l>DIAMOND'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Bobber must be active for <a>20s<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/slugfish_diamond
-  - id: BRONZE_OBFUSCATED_3
-    material: PLAYER_HEAD
-    name: "Bronze Obfuscated 3"
-    rarity: COMMON
-  - id: SILVER_OBFUSCATED_3
-    material: PLAYER_HEAD
-    name: "Silver Obfuscated 3"
-    rarity: COMMON
-  - id: GOLD_OBFUSCATED_3
-    material: PLAYER_HEAD
-    name: "Gold Obfuscated 3"
-    rarity: COMMON
-  - id: DIAMOND_OBFUSCATED_3
-    material: PLAYER_HEAD
-    name: "Diamond Obfuscated 3"
-    rarity: COMMON
-  - id: BRONZE_FLYFISH
-    material: PLAYER_HEAD
-    name: "Bronze Flyfish"
-    rarity: COMMON
+  - id: FLYFISH_BRONZE
+    material: PAPER
+    name: 'Flyfish <8><l>BRONZE'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Caught from 8 blocks above.'
+      - '<7>Found in the <6>Blazing Volcano<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/flyfish_bronze
-  - id: SILVER_FLYFISH
-    material: PLAYER_HEAD
-    name: "Silver Flyfish"
-    rarity: COMMON
+  - id: FLYFISH_SILVER
+    material: PAPER
+    name: 'Flyfish <7><l>SILVER'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Caught from 8 blocks above.'
+      - '<7>Found in the <6>Blazing Volcano<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/flyfish_silver
-  - id: GOLD_FLYFISH
-    material: PLAYER_HEAD
-    name: "Gold Flyfish"
-    rarity: COMMON
+  - id: FLYFISH_GOLD
+    material: PAPER
+    name: 'Flyfish <6><l>GOLD'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Caught from 8 blocks above.'
+      - '<7>Found in the <6>Blazing Volcano<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/flyfish_gold
-  - id: DIAMOND_FLYFISH
-    material: PLAYER_HEAD
-    name: "Diamond Flyfish"
-    rarity: COMMON
+  - id: FLYFISH_DIAMOND
+    material: PAPER
+    name: 'Flyfish <b><l>DIAMOND'
+    rarity: UNCOMMON
+    lore:
+      - '<7>Caught from 8 blocks above.'
+      - '<7>Found in the <6>Blazing Volcano<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/flyfish_diamond
-  - id: BRONZE_VANILLE
-    material: PLAYER_HEAD
-    name: "Bronze Vanille"
-    rarity: COMMON
+  - id: OBFUSCATED_FISH_3_BRONZE
+    material: PAPER
+    name: '<k>Obfuscated-3</k> <8><l>BRONZE'
+    rarity: RARE
+    lore:
+      - '<7>Caught with <7><k>Obfuscated 2<7> Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/fishing/trophy/lava/vanille_bronze
-  - id: SILVER_VANILLE
-    material: PLAYER_HEAD
-    name: "Silver Vanille"
-    rarity: COMMON
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_3_bronze
+  - id: OBFUSCATED_FISH_3_SILVER
+    material: PAPER
+    name: '<k>Obfuscated-3</k> <7><l>SILVER'
+    rarity: RARE
+    lore:
+      - '<7>Caught with <7><k>Obfuscated 2<7> Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/fishing/trophy/lava/vanille_silver
-  - id: GOLD_VANILLE
-    material: PLAYER_HEAD
-    name: "Gold Vanille"
-    rarity: COMMON
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_3_silver
+  - id: OBFUSCATED_FISH_3_GOLD
+    material: PAPER
+    name: '<k>Obfuscated-3</k> <6><l>GOLD'
+    rarity: RARE
+    lore:
+      - '<7>Caught with <7><k>Obfuscated 2<7> Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/fishing/trophy/lava/vanille_gold
-  - id: DIAMOND_VANILLE
-    material: PLAYER_HEAD
-    name: "Diamond Vanille"
-    rarity: COMMON
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_3_gold
+  - id: OBFUSCATED_FISH_3_DIAMOND
+    material: PAPER
+    name: '<k>Obfuscated-3</k> <b><l>DIAMOND'
+    rarity: RARE
+    lore:
+      - '<7>Caught with <7><k>Obfuscated 2<7> Bait.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/fishing/trophy/lava/vanille_diamond
-  - id: BRONZE_LAVAHORSE
-    material: PLAYER_HEAD
-    name: "Bronze Lavahorse"
-    rarity: COMMON
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/obfuscated_fish_3_diamond
+  - id: LAVA_HORSE_BRONZE
+    material: PAPER
+    name: 'Lavahorse <8><l>BRONZE'
+    rarity: RARE
+    lore:
+      - '<7>Caught everywhere.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/lava_horse_bronze
-  - id: SILVER_LAVAHORSE
-    material: PLAYER_HEAD
-    name: "Silver Lavahorse"
-    rarity: COMMON
+  - id: LAVA_HORSE_SILVER
+    material: PAPER
+    name: 'Lavahorse <7><l>SILVER'
+    rarity: RARE
+    lore:
+      - '<7>Caught everywhere.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/lava_horse_silver
-  - id: GOLD_LAVAHORSE
-    material: PLAYER_HEAD
-    name: "Gold Lavahorse"
-    rarity: COMMON
+  - id: LAVA_HORSE_GOLD
+    material: PAPER
+    name: 'Lavahorse <6><l>GOLD'
+    rarity: RARE
+    lore:
+      - '<7>Caught everywhere.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/lava_horse_gold
-  - id: DIAMOND_LAVAHORSE
-    material: PLAYER_HEAD
-    name: "Diamond Lavahorse"
-    rarity: COMMON
+  - id: LAVA_HORSE_DIAMOND
+    material: PAPER
+    name: 'Lavahorse <b><l>DIAMOND'
+    rarity: RARE
+    lore:
+      - '<7>Caught everywhere.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/lava_horse_diamond
-  - id: BRONZE_MANA_RAY
-    material: PLAYER_HEAD
-    name: "Bronze Mana Ray"
-    rarity: COMMON
+  - id: MANA_RAY_BRONZE
+    material: PAPER
+    name: 'Mana Ray <8><l>BRONZE'
+    rarity: RARE
+    lore:
+      - '<7>Lured by having a high amount of'
+      - '<7>mana.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/mana_ray_bronze
-  - id: SILVER_MANA_RAY
-    material: PLAYER_HEAD
-    name: "Silver Mana Ray"
-    rarity: COMMON
+  - id: MANA_RAY_SILVER
+    material: PAPER
+    name: 'Mana Ray <7><l>SILVER'
+    rarity: RARE
+    lore:
+      - '<7>Lured by having a high amount of'
+      - '<7>mana.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/mana_ray_silver
-  - id: GOLD_MANA_RAY
-    material: PLAYER_HEAD
-    name: "Gold Mana Ray"
-    rarity: COMMON
+  - id: MANA_RAY_GOLD
+    material: PAPER
+    name: 'Mana Ray <6><l>GOLD'
+    rarity: RARE
+    lore:
+      - '<7>Lured by having a high amount of'
+      - '<7>mana.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/mana_ray_gold
-  - id: DIAMOND_MANA_RAY
-    material: PLAYER_HEAD
-    name: "Diamond Mana Ray"
-    rarity: COMMON
+  - id: MANA_RAY_DIAMOND
+    material: PAPER
+    name: 'Mana Ray <b><l>DIAMOND'
+    rarity: RARE
+    lore:
+      - '<7>Lured by having a high amount of'
+      - '<7>mana.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/mana_ray_diamond
-  - id: BRONZE_VOLCANIC_STONEFISH
-    material: PLAYER_HEAD
-    name: "Bronze Volcanic Stonefish"
-    rarity: COMMON
+  - id: VOLCANIC_STONEFISH_BRONZE
+    material: PAPER
+    name: 'Volcanic Stonefish <8><l>BRONZE'
+    rarity: RARE
+    lore:
+      - '<7>Found in the <6>Blazing Volcano<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/volcanic_stonefish_bronze
-  - id: SILVER_VOLCANIC_STONEFISH
-    material: PLAYER_HEAD
-    name: "Silver Volcanic Stonefish"
-    rarity: COMMON
+  - id: VOLCANIC_STONEFISH_SILVER
+    material: PAPER
+    name: 'Volcanic Stonefish <7><l>SILVER'
+    rarity: RARE
+    lore:
+      - '<7>Found in the <6>Blazing Volcano<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/volcanic_stonefish_silver
-  - id: GOLD_VOLCANIC_STONEFISH
-    material: PLAYER_HEAD
-    name: "Gold Volcanic Stonefish"
-    rarity: COMMON
+  - id: VOLCANIC_STONEFISH_GOLD
+    material: PAPER
+    name: 'Volcanic Stonefish <6><l>GOLD'
+    rarity: RARE
+    lore:
+      - '<7>Found in the <6>Blazing Volcano<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/volcanic_stonefish_gold
-  - id: DIAMOND_VOLCANIC_STONEFISH
-    material: PLAYER_HEAD
-    name: "Diamond Volcanic Stonefish"
-    rarity: COMMON
+  - id: VOLCANIC_STONEFISH_DIAMOND
+    material: PAPER
+    name: 'Volcanic Stonefish <b><l>DIAMOND'
+    rarity: RARE
+    lore:
+      - '<7>Found in the <6>Blazing Volcano<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/volcanic_stonefish_diamond
-  - id: BRONZE_SKELETON_FISH
-    material: PLAYER_HEAD
-    name: "Bronze Skeleton Fish"
-    rarity: COMMON
+  - id: VANILLE_BRONZE
+    material: PAPER
+    name: 'Vanille <8><l>BRONZE'
+    rarity: RARE
+    lore:
+      - '<7>Only caught with <a>Starter Lava Rod'
+      - '<7>with no enchantments.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/vanille_bronze
+  - id: VANILLE_SILVER
+    material: PAPER
+    name: 'Vanille <7><l>SILVER'
+    rarity: RARE
+    lore:
+      - '<7>Only caught with <a>Starter Lava Rod'
+      - '<7>with no enchantments.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/vanille_silver
+  - id: VANILLE_GOLD
+    material: PAPER
+    name: 'Vanille <6><l>GOLD'
+    rarity: RARE
+    lore:
+      - '<7>Only caught with <a>Starter Lava Rod'
+      - '<7>with no enchantments.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/vanille_gold
+  - id: VANILLE_DIAMOND
+    material: PAPER
+    name: 'Vanille <b><l>DIAMOND'
+    rarity: RARE
+    lore:
+      - '<7>Only caught with <a>Starter Lava Rod'
+      - '<7>with no enchantments.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/lava/vanille_diamond
+  - id: SKELETON_FISH_BRONZE
+    material: PAPER
+    name: 'Skeleton Fish <8><l>BRONZE'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <e>Burning Desert<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
+    components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/skeleton_fish_bronze
-  - id: SILVER_SKELETON_FISH
-    material: PLAYER_HEAD
-    name: "Silver Skeleton Fish"
-    rarity: COMMON
+  - id: SKELETON_FISH_SILVER
+    material: PAPER
+    name: 'Skeleton Fish <7><l>SILVER'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <e>Burning Desert<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/skeleton_fish_silver
-  - id: GOLD_SKELETON_FISH
-    material: PLAYER_HEAD
-    name: "Gold Skeleton Fish"
-    rarity: COMMON
+  - id: SKELETON_FISH_GOLD
+    material: PAPER
+    name: 'Skeleton Fish <6><l>GOLD'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <e>Burning Desert<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/skeleton_fish_gold
-  - id: DIAMOND_SKELETON_FISH
-    material: PLAYER_HEAD
-    name: "Diamond Skeleton Fish"
-    rarity: COMMON
+  - id: SKELETON_FISH_DIAMOND
+    material: PAPER
+    name: 'Skeleton Fish <b><l>DIAMOND'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <e>Burning Desert<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/skeleton_fish_diamond
-  - id: BRONZE_MOLDFIN
-    material: PLAYER_HEAD
-    name: "Bronze Moldfin"
-    rarity: COMMON
+  - id: MOLDFIN_BRONZE
+    material: PAPER
+    name: 'Moldfin <8><l>BRONZE'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <d>Mystic Marsh<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/moldfin_bronze
-  - id: SILVER_MOLDFIN
-    material: PLAYER_HEAD
-    name: "Silver Moldfin"
-    rarity: COMMON
+  - id: MOLDFIN_SILVER
+    material: PAPER
+    name: 'Moldfin <7><l>SILVER'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <d>Mystic Marsh<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/moldfin_silver
-  - id: GOLD_MOLDFIN
-    material: PLAYER_HEAD
-    name: "Gold Moldfin"
-    rarity: COMMON
+  - id: MOLDFIN_GOLD
+    material: PAPER
+    name: 'Moldfin <6><l>GOLD'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <d>Mystic Marsh<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/moldfin_gold
-  - id: DIAMOND_MOLDFIN
-    material: PLAYER_HEAD
-    name: "Diamond Moldfin"
-    rarity: COMMON
+  - id: MOLDFIN_DIAMOND
+    material: PAPER
+    name: 'Moldfin <b><l>DIAMOND'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <d>Mystic Marsh<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/moldfin_diamond
-  - id: BRONZE_SOUL_FISH
-    material: PLAYER_HEAD
-    name: "Bronze Soul Fish"
-    rarity: COMMON
+  - id: SOUL_FISH_BRONZE
+    material: PAPER
+    name: 'Soul Fish <8><l>BRONZE'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <5>Stronghold<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/soul_fish_bronze
-  - id: SILVER_SOUL_FISH
-    material: PLAYER_HEAD
-    name: "Silver Soul Fish"
-    rarity: COMMON
+  - id: SOUL_FISH_SILVER
+    material: PAPER
+    name: 'Soul Fish <7><l>SILVER'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <5>Stronghold<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/soul_fish_silver
-  - id: GOLD_SOUL_FISH
-    material: PLAYER_HEAD
-    name: "Gold Soul Fish"
-    rarity: COMMON
+  - id: SOUL_FISH_GOLD
+    material: PAPER
+    name: 'Soul Fish <6><l>GOLD'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <5>Stronghold<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/soul_fish_gold
-  - id: DIAMOND_SOUL_FISH
-    material: PLAYER_HEAD
-    name: "Diamond Soul Fish"
-    rarity: COMMON
+  - id: SOUL_FISH_DIAMOND
+    material: PAPER
+    name: 'Soul Fish <b><l>DIAMOND'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <5>Stronghold<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/soul_fish_diamond
-  - id: BRONZE_KARATE_FISH
-    material: PLAYER_HEAD
-    name: "Bronze Karate Fish"
-    rarity: COMMON
+  - id: KARATE_FISH_BRONZE
+    material: PAPER
+    name: 'Karate Fish <8><l>BRONZE'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <e>Dojo<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/karate_fish_bronze
-  - id: SILVER_KARATE_FISH
-    material: PLAYER_HEAD
-    name: "Silver Karate Fish"
-    rarity: COMMON
+  - id: KARATE_FISH_SILVER
+    material: PAPER
+    name: 'Karate Fish <7><l>SILVER'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <e>Dojo<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/karate_fish_silver
-  - id: GOLD_KARATE_FISH
-    material: PLAYER_HEAD
-    name: "Gold Karate Fish"
-    rarity: COMMON
+  - id: KARATE_FISH_GOLD
+    material: PAPER
+    name: 'Karate Fish <6><l>GOLD'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <e>Dojo<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/karate_fish_gold
-  - id: DIAMOND_KARATE_FISH
-    material: PLAYER_HEAD
-    name: "Diamond Karate Fish"
-    rarity: COMMON
+  - id: KARATE_FISH_DIAMOND
+    material: PAPER
+    name: 'Karate Fish <b><l>DIAMOND'
+    rarity: EPIC
+    lore:
+      - '<7>Found in the <e>Dojo<7>.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/karate_fish_diamond
-  - id: BRONZE_GOLDEN_FISH
-    material: PLAYER_HEAD
-    name: "Bronze Golden Fish"
-    rarity: COMMON
+  - id: GOLDEN_FISH_BRONZE
+    material: PAPER
+    name: 'Golden Fish <8><l>BRONZE'
+    rarity: LEGENDARY
+    lore:
+      - '<7>Found swimming around in the lava.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/golden_fish_bronze
-  - id: SILVER_GOLDEN_FISH
-    material: PLAYER_HEAD
-    name: "Silver Golden Fish"
-    rarity: COMMON
+  - id: GOLDEN_FISH_SILVER
+    material: PAPER
+    name: 'Golden Fish <7><l>SILVER'
+    rarity: LEGENDARY
+    lore:
+      - '<7>Found swimming around in the lava.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/golden_fish_silver
-  - id: GOLD_GOLDEN_FISH
-    material: PLAYER_HEAD
-    name: "Gold Golden Fish"
-    rarity: COMMON
+  - id: GOLDEN_FISH_GOLD
+    material: PAPER
+    name: 'Golden Fish <6><l>GOLD'
+    rarity: LEGENDARY
+    lore:
+      - '<7>Found swimming around in the lava.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/golden_fish_gold
-  - id: DIAMOND_GOLDEN_FISH
-    material: PLAYER_HEAD
-    name: "Diamond Golden Fish"
-    rarity: COMMON
+  - id: GOLDEN_FISH_DIAMOND
+    material: PAPER
+    name: 'Golden Fish <b><l>DIAMOND'
+    rarity: LEGENDARY
+    lore:
+      - '<7>Found swimming around in the lava.'
+      - ''
+      - '<7>Bring this to <f>Odger <7>at the top of the'
+      - '<6>Blazing Volcano<7>.'
     components:
+      - id: EXTRA_RARITY
+        display: TROPHY
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/trophy/lava/golden_fish_diamond

@@ -50,7 +50,7 @@ public final class FishingGuideStackFactory {
             lore.add(Text.of("<7>Increases treasure quality by <a>{}%<7>.", format(bait.getTreasureQualityBonus())));
         }
         if (bait.getTrophyFishChanceBonus() > 0) {
-            lore.add(Text.of("<7>Grants <6>+{} Trophy Fish Chance<7>.", format(bait.getTrophyFishChanceBonus())));
+            lore.add(Text.of("<7>Grants <6>+{} Trophy Chance<7>.", format(bait.getTrophyFishChanceBonus())));
         }
         if (bait.getDoubleHookChanceBonus() > 0) {
             lore.add(Text.of("<7>Grants <9>+{} Double Hook Chance<7>.", format(bait.getDoubleHookChanceBonus())));

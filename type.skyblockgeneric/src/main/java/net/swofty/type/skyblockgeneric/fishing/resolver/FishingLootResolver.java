@@ -5,7 +5,6 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -22,13 +21,14 @@ import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
 import net.swofty.type.skyblockgeneric.fishing.catches.CatchPayload;
-import net.swofty.type.skyblockgeneric.fishing.catches.TrophyTier;
 import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestival;
 import net.swofty.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingRegistry;
 import net.swofty.type.skyblockgeneric.fishing.registry.FishingTableDefinition;
 import net.swofty.type.skyblockgeneric.fishing.registry.SeaCreatureDefinition;
-import net.swofty.type.skyblockgeneric.fishing.registry.TrophyFishDefinition;
+import net.swofty.type.skyblockgeneric.fishing.lava.LavaCatchOverrides;
+import net.swofty.type.skyblockgeneric.fishing.lava.PeaceTreaty;
+import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishRoller;
 import net.swofty.type.skyblockgeneric.fishing.rod.FishingRodPartService;
 import net.swofty.type.skyblockgeneric.fishing.tag.FishingTag;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -48,105 +48,22 @@ public final class FishingLootResolver {
         }
 
         Optional<CatchPayload> seaCreature = tryResolveSeaCreature(context);
-        Optional<CatchPayload> trophyFish = tryResolveTrophyFish(context);
-        if (seaCreature.isPresent() && trophyFish.isPresent()) {
-            return new CatchPayload.Multi(List.of(seaCreature.get(), trophyFish.get()));
-        }
         if (seaCreature.isPresent()) {
             return seaCreature.get();
         }
+        Optional<CatchPayload> trophyFish = TrophyFishRoller.roll(context, trophyChance(context));
         if (trophyFish.isPresent()) {
             return trophyFish.get();
         }
         return resolveItem(context);
     }
 
-    private static Optional<CatchPayload> tryResolveTrophyFish(FishingContext context) {
-        if (context.medium() != FishingMedium.LAVA) {
-            return Optional.empty();
-        }
-
-        double bonus = getTotalStatistic(context, ItemStatistic.TROPHY_FISH_CHANCE);
+    public static double trophyChance(FishingContext context) {
+        double total = playerStatistic(context, ItemStatistic.TROPHY_FISH_CHANCE);
         if (context.bait() != null) {
-            bonus += context.bait().getTrophyFishChanceBonus();
+            total += context.bait().getTrophyFishChanceBonus();
         }
-
-        List<TrophyFishDefinition> eligible = new ArrayList<>();
-        for (TrophyFishDefinition definition : FishingRegistry.getTrophyFish()) {
-            if (!isEligibleForTrophyFish(context, definition)) {
-                continue;
-            }
-            eligible.add(definition);
-        }
-
-        eligible.sort(Comparator.comparingDouble(TrophyFishDefinition::catchChance).thenComparing(TrophyFishDefinition::id));
-        for (TrophyFishDefinition definition : eligible) {
-            for (TrophyTier tier : TrophyTier.values()) {
-                String itemId = trophyItemId(definition, tier);
-                if (itemId != null && LootRoll.claim(context.player().getUuid(), List.of(ItemType.get(itemId))) != null) {
-                    return Optional.of(new CatchPayload.TrophyFish(definition.id(), tier, itemId, 300.0D));
-                }
-            }
-        }
-        for (TrophyFishDefinition definition : eligible) {
-            if (Math.random() * 100 <= effectiveTrophyChance(context, definition, bonus)) {
-                TrophyTier tier = rollTrophyTier(context, definition);
-                String itemId = trophyItemId(definition, tier);
-                if (itemId == null) {
-                    continue;
-                }
-                return Optional.of(new CatchPayload.TrophyFish(definition.id(), tier, itemId, 300.0D));
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    private static boolean isEligibleForTrophyFish(FishingContext context, TrophyFishDefinition definition) {
-        if (!definition.regions().isEmpty() && (context.regionId() == null || !definition.regions().contains(context.regionId()))) {
-            return false;
-        }
-        if (context.player().getSkills().getCurrentLevel(net.swofty.type.skyblockgeneric.skill.SkillCategories.FISHING) < definition.requiredFishingLevel()) {
-            return false;
-        }
-        if (context.castDurationMs() < definition.minimumCastTimeMs()) {
-            return false;
-        }
-        if (definition.requiredRodId() != null && !definition.requiredRodId().equals(context.rod().getAttributeHandler().getPotentialType().name())) {
-            return false;
-        }
-        if (definition.requiredBaitId() != null && (context.bait() == null || !definition.requiredBaitId().equals(context.bait().getItemId()))) {
-            return false;
-        }
-        if (definition.requiresStarterRodWithoutEnchantments()
-            && (!"STARTER_LAVA_ROD".equals(context.rod().getAttributeHandler().getPotentialType().name())
-            || context.rod().getAttributeHandler().getEnchantments().findAny().isPresent())) {
-            return false;
-        }
-        if (definition.minimumMana() != null && context.player().getMaxMana() < definition.minimumMana()) {
-            return false;
-        }
-        if (definition.minimumBobberDepth() != null && context.player().getPosition().y() - context.hookPosition().y() < definition.minimumBobberDepth()) {
-            return false;
-        }
-        if (definition.maximumPlayerDistance() != null && context.player().getPosition().distance(context.hookPosition()) > definition.maximumPlayerDistance()) {
-            return false;
-        }
-        return true;
-    }
-
-    private static double effectiveTrophyChance(FishingContext context, TrophyFishDefinition definition, double bonus) {
-        if (!definition.specialGoldenFish()) {
-            if ("MANA_RAY".equals(definition.id())) {
-                return (context.player().getMaxMana() / 1000.0D) * (1.0D + bonus / 100.0D);
-            }
-            return definition.catchChance() * (1.0D + bonus / 100.0D);
-        }
-        long duration = context.castDurationMs();
-        if (duration < 480_000L) {
-            return 0.0D;
-        }
-        return Math.min(100.0D, ((duration - 480_000L) / 240_000.0D) * 100.0D);
+        return total;
     }
 
     private static Optional<CatchPayload> tryResolveQuestCatch(FishingContext context) {
@@ -173,42 +90,15 @@ public final class FishingLootResolver {
         ));
     }
 
-    private static String trophyItemId(TrophyFishDefinition definition, TrophyTier tier) {
-        return switch (tier) {
-            case DIAMOND -> definition.diamondItemId();
-            case GOLD -> definition.goldItemId();
-            case SILVER -> definition.silverItemId();
-            case BRONZE -> definition.bronzeItemId();
-        };
-    }
-
-    private static TrophyTier rollTrophyTier(FishingContext context, TrophyFishDefinition definition) {
-        var progress = context.player().getTrophyFishData().getProgress(definition.id());
-        if (progress.getTotalCatches() + 1 >= 600 && !progress.hasTier(TrophyTier.DIAMOND.name())) {
-            return TrophyTier.DIAMOND;
-        }
-        if (progress.getTotalCatches() + 1 >= 100 && !progress.hasTier(TrophyTier.GOLD.name())) {
-            return TrophyTier.GOLD;
-        }
-
-        double charmBonus = 0.0D;
-        var charm = context.rod().getAttributeHandler().getEnchantment(net.swofty.type.skyblockgeneric.enchantment.EnchantmentType.CHARM);
-        if (charm != null) {
-            charmBonus = charm.level() * 2.0D;
-        }
-
-        if (Math.random() <= (0.002D * (1 + charmBonus / 100D))) return TrophyTier.DIAMOND;
-        if (Math.random() <= (0.02D * (1 + charmBonus / 100D))) return TrophyTier.GOLD;
-        if (Math.random() <= (0.25D * (1 + charmBonus / 100D))) return TrophyTier.SILVER;
-        return TrophyTier.BRONZE;
-    }
-
     private static Optional<CatchPayload> tryResolveSeaCreature(FishingContext context) {
         Optional<FishingTableDefinition> tableOpt = findTable(context);
         if (tableOpt.isEmpty()) return Optional.empty();
         FishingTableDefinition table = tableOpt.get();
 
         if (context.hook() != null && context.hook().isTreasureOnly()) {
+            return Optional.empty();
+        }
+        if (PeaceTreaty.applies(context.player())) {
             return Optional.empty();
         }
         if (table.weightedSeaCreatures()) {
@@ -243,24 +133,36 @@ public final class FishingLootResolver {
             return Optional.empty();
         }
 
+        List<SeaCreatureWeights.Candidate> eligible = eligibleCandidates(context, table.seaCreatures());
+        if (eligible.isEmpty()) return Optional.empty();
+
+        String picked = SeaCreatureWeights.pick(eligible, weightModifiers(context), ThreadLocalRandom.current()).id();
+        picked = LavaCatchOverrides.override(context).map(pool -> {
+            List<SeaCreatureWeights.Candidate> overridePool = eligibleCandidates(context, pool);
+            return overridePool.isEmpty() ? null
+                : SeaCreatureWeights.pick(overridePool, weightModifiers(context), ThreadLocalRandom.current()).id();
+        }).orElse(picked);
+
+        SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(picked);
+        CatchPayload.SeaCreature payload = new CatchPayload.SeaCreature(picked, definition == null ? 0 : definition.skillXp());
+        if (rollDoubleHook(context)) {
+            payload = payload.withDoubleHook();
+        }
+        return Optional.of(payload);
+    }
+
+    private static List<SeaCreatureWeights.Candidate> eligibleCandidates(FishingContext context,
+                                                                         List<FishingTableDefinition.SeaCreatureRoll> rolls) {
         int fishingLevel = context.player().getSkills().getCurrentLevel(net.swofty.type.skyblockgeneric.skill.SkillCategories.FISHING);
         List<SeaCreatureWeights.Candidate> eligible = new ArrayList<>();
-        for (FishingTableDefinition.SeaCreatureRoll roll : table.seaCreatures()) {
+        for (FishingTableDefinition.SeaCreatureRoll roll : rolls) {
             SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(roll.seaCreatureId());
             if (definition == null || fishingLevel < definition.requiredFishingLevel() || !definition.isAvailable(context)) {
                 continue;
             }
             eligible.add(new SeaCreatureWeights.Candidate(roll.seaCreatureId(), roll.weight(), rarityOf(definition)));
         }
-        if (eligible.isEmpty()) return Optional.empty();
-
-        SeaCreatureWeights.Candidate picked = SeaCreatureWeights.pick(eligible, weightModifiers(context), ThreadLocalRandom.current());
-        SeaCreatureDefinition definition = FishingRegistry.getSeaCreature(picked.id());
-        CatchPayload.SeaCreature payload = new CatchPayload.SeaCreature(picked.id(), definition == null ? 0 : definition.skillXp());
-        if (rollDoubleHook(context)) {
-            payload = payload.withDoubleHook();
-        }
-        return Optional.of(payload);
+        return eligible;
     }
 
     private static SeaCreatureWeights.Modifiers weightModifiers(FishingContext context) {
@@ -280,17 +182,21 @@ public final class FishingLootResolver {
     }
 
     private static double playerSeaCreatureChance(FishingContext context) {
-        double total = context.player().getStatistics().allStatistics().getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
+        return playerStatistic(context, ItemStatistic.SEA_CREATURE_CHANCE);
+    }
+
+    public static double playerStatistic(FishingContext context, ItemStatistic statistic) {
+        double total = context.player().getStatistics().allStatistics().getOverall(statistic);
         ItemType held = new SkyBlockItem(context.player().getItemInMainHand()).getAttributeHandler().getPotentialType();
         if (held != context.rod().getAttributeHandler().getPotentialType()) {
-            total += context.rod().getAttributeHandler().getStatistics().getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
+            total += context.rod().getAttributeHandler().getStatistics().getOverall(statistic);
         }
-        total += FishingRodPartService.getStatistics(context.rod()).getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
-        total += context.hotspotBuffs().getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
+        total += FishingRodPartService.getStatistics(context.rod()).getOverall(statistic);
+        total += context.hotspotBuffs().getOverall(statistic);
         if (context.bait() != null) {
             SkyBlockItem baitItem = FishingItemSupport.getItem(context.bait().getItemId());
             if (baitItem != null) {
-                total += baitItem.getAttributeHandler().getStatistics().getOverall(ItemStatistic.SEA_CREATURE_CHANCE);
+                total += baitItem.getAttributeHandler().getStatistics().getOverall(statistic);
             }
         }
         return total;
@@ -300,6 +206,9 @@ public final class FishingLootResolver {
         Optional<FishingTableDefinition> tableOpt = findTable(context);
         if (tableOpt.isEmpty()) return DEFAULT_CATCH;
         FishingTableDefinition table = tableOpt.get();
+        if (table.hasQualityTreasure()) {
+            return QualityTreasureRoller.roll(context, table);
+        }
 
         Optional<CatchPayload> forced = forcedCatch(context, table.treasures(), true)
             .or(() -> forcedCatch(context, table.items(), false))

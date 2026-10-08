@@ -17,7 +17,10 @@ import net.minestom.server.sound.SoundEvent;
 import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.Task;
 import net.minestom.server.timer.TaskSchedule;
+import net.swofty.commons.ServerType;
+import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.fishing.item.FishingItemSupport;
+import net.swofty.type.skyblockgeneric.fishing.trophy.GoldenFishService;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
 import net.swofty.type.skyblockgeneric.fishing.FishingService;
 import net.swofty.type.skyblockgeneric.fishing.FishingSession;
@@ -232,6 +235,9 @@ public class FishingHook {
 	}
 
 	public void tryRetrieve(SkyBlockItem rodInHand) {
+		if (requiredMedium == FishingMedium.LAVA && GoldenFishService.tryReelIn(owner, rodInHand, getSpawnPosition())) {
+			return;
+		}
 		FishingSession session = FishingService.getSession(owner.getUuid());
 		if (session == null || !session.biteReady() || System.currentTimeMillis() > session.biteWindowEndsAt()) {
 			return;
@@ -268,8 +274,16 @@ public class FishingHook {
 
 		FishingSession session = FishingService.beginCast(owner, rod, requiredMedium);
 		sessionStarted = true;
+		if (requiredMedium == FishingMedium.LAVA && HypixelConst.getTypeLoader() != null
+				&& HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_CRIMSON_ISLE) {
+			GoldenFishService.onLavaCast(owner);
+			if (GoldenFishService.onBobberLanded(owner, getSpawnPosition())) {
+				remove();
+				return;
+			}
+		}
         FishingBaitComponent bait = FishingItemSupport.getBait(session.baitItemId());
-		long waitTicks = FishingService.computeWaitTicks(owner, rod, bait);
+		long waitTicks = FishingService.computeWaitTicks(owner, rod, bait, getSpawnPosition());
 		scheduleNextBite(waitTicks);
 	}
 
@@ -297,7 +311,7 @@ public class FishingHook {
 
 				FishingService.updateSession(activeSession.withBiteReady(false));
                 FishingBaitComponent bait = FishingItemSupport.getBait(activeSession.baitItemId());
-				long nextDelay = FishingService.computeWaitTicks(owner, rod, bait);
+				long nextDelay = FishingService.computeWaitTicks(owner, rod, bait, getSpawnPosition());
 				scheduleNextBite(nextDelay);
 			}).delay(TaskSchedule.tick((int) BITE_WINDOW_TICKS)).schedule();
 		}).delay(TaskSchedule.tick((int) delayTicks)).schedule();
