@@ -53,7 +53,7 @@ public class GUILoadouts implements StatefulView<GUILoadouts.LoadoutsState> {
             layout.slot(11 + component * 9, (s, c) -> currentArmor((SkyBlockPlayer) c.player(), piece),
                     (_, c) -> c.push(new GUIWardrobe()));
         }
-        layout.slot(21, (s, c) -> currentPet((SkyBlockPlayer) c.player()), (_, c) -> c.push(new GUIPets()));
+        layout.slot(21, (s, c) -> currentPet((SkyBlockPlayer) c.player()), (_, c) -> c.push(new GUIPets(), GUIPets.createInitialState((SkyBlockPlayer) c.player())));
         layout.slot(27, powerStone());
         layout.slot(36, statsTuning());
 

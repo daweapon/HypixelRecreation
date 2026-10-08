@@ -123,7 +123,7 @@ public class GUIGeorge extends HypixelInventoryGUI {
                 DatapointDouble coins = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.COINS, DatapointDouble.class);
                 Rarity rarity = item.getAttributeHandler().getRarity();
                 PetComponent petComponent = item.getComponent(PetComponent.class);
-                Integer price = petComponent.getGeorgePrice().getForRarity(rarity);
+                int price = petComponent.georgePrice(rarity);
 
                 if (price == 0) return;
                 coins.setValue(coins.getValue() + price);
@@ -145,8 +145,7 @@ public class GUIGeorge extends HypixelInventoryGUI {
                         <c>remove your pet.
 
                         <e>Click to accept offer!""",
-                        item.getComponent(PetComponent.class).getGeorgePrice()
-                                .getForRarity(item.getAttributeHandler().getRarity()));
+                        item.getComponent(PetComponent.class).georgePrice(item.getAttributeHandler().getRarity()));
             }
         });
         updateItemStacks(getInventory(), getPlayer());

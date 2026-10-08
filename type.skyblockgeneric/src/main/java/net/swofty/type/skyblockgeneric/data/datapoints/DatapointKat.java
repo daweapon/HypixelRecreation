@@ -18,6 +18,7 @@ public class DatapointKat extends SkyBlockDatapoint<DatapointKat.PlayerKat> {
             Map<String, String> serialized = new HashMap<>();
 
             for (Map.Entry<Long, SkyBlockItem> entry : value.katMap().entrySet()) {
+                if (entry.getValue() == null) continue;
                 serialized.put(String.valueOf(entry.getKey()), entry.getValue().toUnderstandable().serialize());
             }
             return new JSONObject(serialized).toString();
@@ -52,8 +53,8 @@ public class DatapointKat extends SkyBlockDatapoint<DatapointKat.PlayerKat> {
     public record PlayerKat(Map<Long, SkyBlockItem> katMap) {
 
         public long getFinishTime() {
-            for (long timestamp : katMap.keySet()) {
-                return timestamp;
+            for (Map.Entry<Long, SkyBlockItem> entry : katMap.entrySet()) {
+                if (entry.getValue() != null) return entry.getKey();
             }
             return 0;
         }
@@ -61,17 +62,23 @@ public class DatapointKat extends SkyBlockDatapoint<DatapointKat.PlayerKat> {
         @Nullable
         public SkyBlockItem getPet() {
             for (SkyBlockItem pet : katMap.values()) {
-                return pet;
+                if (pet != null) return pet;
             }
             return null;
         }
 
-        public void setKatMap(Long timestamp, SkyBlockItem item) {
-            katMap.put(timestamp, item);
+        public void set(long finishTime, SkyBlockItem pet) {
+            katMap.clear();
+            katMap.put(finishTime, pet);
         }
 
-        public void setFinishedTime(Long timestamp) {
-            setKatMap(timestamp, getPet());
+        public void clear() {
+            katMap.clear();
+        }
+
+        public void setFinishedTime(long timestamp) {
+            SkyBlockItem pet = getPet();
+            if (pet != null) set(timestamp, pet);
         }
     }
 }

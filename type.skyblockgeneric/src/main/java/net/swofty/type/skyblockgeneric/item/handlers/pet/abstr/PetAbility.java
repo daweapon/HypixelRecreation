@@ -15,6 +15,6 @@ public interface PetAbility {
         return ItemStatistics.empty();
     }
 
-    default void onEvent(PetEvent event) {
+    default void onEvent(PetEvent event, SkyBlockItem pet) {
     }
 }

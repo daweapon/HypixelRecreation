@@ -36,6 +36,7 @@ public abstract class ItemAttribute<T> {
     public abstract String saveIntoString();
 
     public static void registerItemAttributes() {
+        attributes.clear();
         loopThroughPackage(
                 "net.swofty.commons.skyblock.item.attribute.attributes", ItemAttribute.class
         ).forEach(attributes::add);

@@ -5,12 +5,11 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 
 import java.util.Optional;
 
 public final class GriffinPet {
-    private static final double KING_OF_KINGS_MAGIC_FIND = 20;
-
     private GriffinPet() {
     }
 
@@ -27,7 +26,7 @@ public final class GriffinPet {
     }
 
     public static double kingOfKingsMagicFind(SkyBlockPlayer player) {
-        return equippedRarity(player).map(rarity -> rarity.isAtLeast(Rarity.LEGENDARY) ? KING_OF_KINGS_MAGIC_FIND : 0D).orElse(0D);
+        return PetAbilities.value(player, ItemType.GRIFFIN_PET, "King of Kings", 0);
     }
 
     public static String coloredName(Rarity rarity) {

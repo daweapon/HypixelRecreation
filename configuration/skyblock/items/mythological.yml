@@ -266,47 +266,56 @@ items:
     rarity: MYTHIC
     components:
       - id: PET
-        pet_name: Griffin
-        kat_upgrades:
-          common: null
-          uncommon:
-            time: 60000
-            coins: 100
-            item: GRIFFIN_UPGRADE_STONE_UNCOMMON
-            amount: 1
-          rare:
-            time: 3600000
-            coins: 10000
-            item: GRIFFIN_UPGRADE_STONE_RARE
-            amount: 1
-          epic:
-            time: 86400000
-            coins: 250000
-            item: GRIFFIN_UPGRADE_STONE_EPIC
-            amount: 1
-          legendary:
-            time: 259200000
-            coins: 500000
-            item: GRIFFIN_UPGRADE_STONE_LEGENDARY
-            amount: 1
-          mythic:
-            time: 3600000
-            coins: 1000000
-            item: GRIFFIN_UPGRADE_STONE_MYTHIC
-            amount: 1
-          rest: null
-        base_statistics: {}
-        per_level_statistics:
-          common: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
-          uncommon: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
-          rare: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
-          epic: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
-          legendary: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
-          mythic: { strength: 0.5, critical_chance: 0.1, critical_damage: 0.5, bonus_attack_speed: 0.25 }
-        particle: 3
-        skill_category: COMBAT
+        pet_name: "Griffin"
+        pet_type: COMBAT
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: 4c27e3cb52a64968e60c861ef1ab84e0a0cb5f07be103ac78da67761731f00c8
-        handler_id: GRIFFIN
+        george_price: { COMMON: 100, UNCOMMON: 500, RARE: 1000, EPIC: 500000, LEGENDARY: 2500000, MYTHIC: 10000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 100, time_seconds: 60, items: { GRIFFIN_UPGRADE_STONE_UNCOMMON: 1 } }
+          RARE: { coins: 10000, time_seconds: 3600, items: { GRIFFIN_UPGRADE_STONE_RARE: 1 } }
+          EPIC: { coins: 250000, time_seconds: 86400, items: { GRIFFIN_UPGRADE_STONE_EPIC: 1 } }
+          LEGENDARY: { coins: 500000, time_seconds: 259200, items: { GRIFFIN_UPGRADE_STONE_LEGENDARY: 1 } }
+          MYTHIC: { coins: 1000000, time_seconds: 3600, items: { GRIFFIN_UPGRADE_STONE_MYTHIC: 1 } }
+        statistics:
+          COMMON: { strength: { per_level: 0.5 }, critical_chance: { per_level: 0.1 }, critical_damage: { per_level: 0.5 }, bonus_attack_speed: { per_level: 0.25 } }
+        abilities:
+          - name: "Odyssey"
+            kind: TEXT
+            text:
+              - "<c>{0} <7>types of <2><glyph:mobs_mythological> Mythological <7>can"
+              - "<7>spawn from <e>Griffin Burrows<7>. Their"
+              - "<7>stats scale with your Griffin's"
+              - "<7>rarity."
+            values:
+              - { base: { COMMON: 2, UNCOMMON: 4, RARE: 6, EPIC: 8, LEGENDARY: 10, MYTHIC: 12 } }
+          - name: "Sacred Strength"
+            rarity: RARE
+            kind: PERCENT_STAT
+            statistics: { strength: "{0}" }
+            when: { health_above: 0.85 }
+            text:
+              - "<7>Gain <c>+{0}% <c><glyph:stat_strength> Strength"
+              - "<7>when above <c>85% <7>health."
+            values:
+              - { per_level: 0.15 }
+          - name: "King of Kings"
+            rarity: LEGENDARY
+            kind: TEXT
+            text:
+              - "<7>Grants <b>+{0} <glyph:stat_magic_find> Magic Find <7>on <2><glyph:mobs_mythological>"
+              - "<2>Mythological <7>mobs."
+            values:
+              - { per_level: 0.2 }
+          - name: "Ancient Earth"
+            rarity: MYTHIC
+            kind: TEXT
+            text:
+              - "<7>Grants <d>+{0} <glyph:stat_tracking> Tracking <7>on <e>Griffin"
+              - "<e>Burrows <7>for each burrow excavated"
+              - "<7>in your current chain."
+            values:
+              - { base: 1 }
       - id: TRACKED_UNIQUE
   - id: ANCESTRAL_SPADE
     material: wooden_shovel

@@ -62,41 +62,56 @@ items:
     rarity: COMMON
     components:
       - id: PET
-        pet_name: Baby Yeti
-        kat_upgrades:
-          common: null
-          uncommon:
-            time: 86400000
-            coins: 50000
-            item: ICE_HUNK
-            amount: 32
-          rare:
-            time: 172800000
-            coins: 100000
-            item: ICE_HUNK
-            amount: 64
-          epic:
-            time: 259200000
-            coins: 250000
-            item: ICE_HUNK
-            amount: 128
-          legendary:
-            time: 345600000
-            coins: 500000
-            item: BLUE_ICE_HUNK
-            amount: 8
-          mythic: null
-          rest: null
-        base_statistics: {}
-        per_level_statistics:
-          common: { strength: 0.5, fishing_speed: 0.5, sea_creature_chance: 0.05 }
-          uncommon: { strength: 0.5, fishing_speed: 0.5, sea_creature_chance: 0.05 }
-          rare: { strength: 0.5, fishing_speed: 0.5, sea_creature_chance: 0.05 }
-          epic: { strength: 0.75, fishing_speed: 0.5, sea_creature_chance: 0.05 }
-          legendary: { strength: 0.75, fishing_speed: 0.5, sea_creature_chance: 0.05 }
-          mythic: { strength: 0.75, fishing_speed: 0.5, sea_creature_chance: 0.05 }
-        particle: 3
-        skill_category: FISHING
+        pet_name: "Baby Yeti"
+        pet_type: FISHING
+        rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: ef9f6a57d8f686fedd5185d178550913f48f91b57c9162d70d368b1fd9fe2b52
-        handler_id: BABY_YETI
+        george_price: { COMMON: 1000000, UNCOMMON: 1250000, RARE: 1500000, EPIC: 2000000, LEGENDARY: 2500000, MYTHIC: 5000000 }
+        kat_upgrades:
+          UNCOMMON: { coins: 50000, time_seconds: 86400, items: { ICE_HUNK: 32 } }
+          RARE: { coins: 100000, time_seconds: 172800, items: { ICE_HUNK: 64 } }
+          EPIC: { coins: 250000, time_seconds: 259200, items: { ICE_HUNK: 128 } }
+          LEGENDARY: { coins: 500000, time_seconds: 345600, items: { BLUE_ICE_HUNK: 8 } }
+        statistics:
+          COMMON: { strength: { per_level: 0.5 }, fishing_speed: { per_level: 0.5 }, sea_creature_chance: { per_level: 0.05 } }
+          MYTHIC: { strength: { per_level: 0.5 }, fishing_speed: { per_level: 0.5 }, sea_creature_chance: { per_level: 0.05 }, cold_resistance: { per_level: 0.1 } }
+        abilities:
+          - name: "Yeti Fury"
+            kind: INACTIVE
+            text:
+              - "<7>Buffs the <6>Yeti Sword <7>by <a>{0} <c><glyph:skill_sword>"
+              - "<c>Damage <7>and <b><glyph:stat_intelligence> Intelligence <7>and"
+              - "<7>reduces its cooldown by <a>{1}%<7>."
+            values:
+              - { per_level: { COMMON: 0.5, UNCOMMON: 0.75, EPIC: 1, MYTHIC: 1.5 } }
+              - { per_level: { COMMON: 0.2, UNCOMMON: 0.35, EPIC: 0.5, MYTHIC: 0.75 } }
+          - name: "Cold Breeze"
+            rarity: RARE
+            kind: PERCENT_STAT
+            statistics: [health, defense, strength, intelligence, critical_chance, critical_damage, bonus_attack_speed, ability_damage, true_defense, ferocity, health_regeneration, vitality, mending, swing_range, sea_creature_chance, fishing_speed, treasure_chance, trophy_fish_chance, double_hook_chance]
+            when: { servers: [JERRYS_WORKSHOP] }
+            text:
+              - "<7>Increases <c>Combat Stats <7>and <b>Fishing"
+              - "<b>Stats <7>by <a>{0}% <7>while on <c>Jerry's"
+              - "<c>Workshop<7>."
+            values:
+              - { per_level: { RARE: 0.1, EPIC: 0.2 } }
+          - name: "Frosty Familiarity"
+            rarity: LEGENDARY
+            kind: INACTIVE
+            text:
+              - "<7>Grants <b>+{0}<glyph:stat_magic_find> Magic Find <7>against"
+              - "<f>Winter Sea Creatures<7>."
+            values:
+              - { per_level: 0.1 }
+          - name: "Family Gathering"
+            rarity: MYTHIC
+            kind: STAT
+            statistics: { tracking: "{0}" }
+            when: { servers: [JERRYS_WORKSHOP] }
+            text:
+              - "<7>Grants <d>{0}<glyph:stat_tracking> Tracking <7>while on"
+              - "<c>Jerry's Workshop<7>."
+            values:
+              - { per_level: 0.1 }
       - id: TRACKED_UNIQUE

@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.item.components.MinionUpgradeComponent;
 import net.swofty.type.skyblockgeneric.minion.extension.MinionExtensionData;
 import net.swofty.type.skyblockgeneric.minion.extension.extensions.MinionFuelExtension;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
+import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 import org.tinylog.Logger;
 
 import java.util.*;
@@ -148,6 +149,9 @@ public class IslandMinionData {
             }
 
             percentageSpeedIncrease += minion.asSkyBlockMinion().getBonusSpeedPercentage(this);
+            if (minionEntity != null) {
+                percentageSpeedIncrease += (int) PetAbilities.minionSpeedPercent(minionEntity.getInstance(), minion.name());
+            }
 
             return percentageSpeedIncrease;
         }

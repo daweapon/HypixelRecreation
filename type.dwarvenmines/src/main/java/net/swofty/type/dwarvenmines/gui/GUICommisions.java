@@ -21,6 +21,8 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
+import net.swofty.type.skyblockgeneric.user.pets.PetEvents;
 
 // GUI showing a player's active Dwarven Mines commissions and letting them claim completed rewards.
 public class GUICommisions extends HypixelInventoryGUI {
@@ -77,7 +79,8 @@ public class GUICommisions extends HypixelInventoryGUI {
 						CommissionReward reward = CommissionReward.calculate(hotmTier, isHotmMaxed, isDailyBonus);
 
 						if (reward.hotmXp() > 0) {
-							hotmData.addExperience(reward.hotmXp());
+							hotmData.addExperience(Math.round(PetEvents.xpGained(player, PetEvent.XpType.HOTM, null,
+									reward.hotmXp())));
 							dataHandler.get(SkyBlockDataHandler.Data.HOTM, DatapointHOTM.class).setValue(hotmData);
 						}
 

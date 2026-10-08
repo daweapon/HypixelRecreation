@@ -17,55 +17,127 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreConfig;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.KatUpgrade;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
-import net.swofty.type.skyblockgeneric.item.handlers.pet.PetHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.ConfiguredPetAbility;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetNumbers;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetStatTable;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetType;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.RarityNumbers;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.pets.PetItems;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
 import net.swofty.type.skyblockgeneric.user.pets.PetScore;
-import net.swofty.type.skyblockgeneric.utility.RarityValue;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * A pet, defined entirely in item YAML: its rarities, level cap, stats and abilities. See
+ * {@code PET_FORMAT.md}.
+ */
 @Getter
 public class PetComponent extends SkyBlockItemComponent {
     private final String petName;
-    private final RarityValue<Integer> georgePrice;
-    private final RarityValue<KatUpgrade> katUpgrades;
-    private final ItemStatistics baseStatistics;
-    private final RarityValue<ItemStatistics> perLevelStatistics;
+    private final PetType petType;
+    private final List<Rarity> rarities;
+    private final int maxLevel;
+    private final int statsBaseLevel;
+    private final @Nullable Integer fixedXpOffset;
+    private final boolean fixedLevel;
+    private final boolean countsForPetScore;
+    private final boolean passive;
+    private final RarityNumbers georgePrices;
+    private final EnumMap<Rarity, KatUpgrade> katUpgrades;
+    private final PetStatTable statistics;
+    private final List<ConfiguredPetAbility> abilities;
     private final Particle particleId;
-    private final SkillCategories skillCategory;
     private final String skullTexture;
-    private final String handlerId;
+    private final EnumMap<Rarity, String> skullTextureByRarity;
 
-    public PetComponent(String petName, RarityValue<Integer> georgePrice,
-                        @Nullable RarityValue<KatUpgrade> katUpgrades,
-                        ItemStatistics baseStatistics, RarityValue<ItemStatistics> perLevelStatistics,
-                        Particle particleId, String skillCategory, String skullTexture,
-                        String handlerId) {
+    public PetComponent(String petName, PetType petType, List<Rarity> rarities, int maxLevel, int statsBaseLevel,
+                        @Nullable Integer fixedXpOffset, boolean fixedLevel, boolean countsForPetScore, boolean passive,
+                        RarityNumbers georgePrices, EnumMap<Rarity, KatUpgrade> katUpgrades,
+                        PetStatTable statistics, List<ConfiguredPetAbility> abilities,
+                        Particle particleId, String skullTexture, EnumMap<Rarity, String> skullTextureByRarity) {
         this.petName = petName;
-        this.georgePrice = georgePrice;
+        this.petType = petType;
+        this.rarities = List.copyOf(rarities);
+        this.maxLevel = maxLevel;
+        this.statsBaseLevel = statsBaseLevel;
+        this.fixedXpOffset = fixedXpOffset;
+        this.fixedLevel = fixedLevel;
+        this.countsForPetScore = countsForPetScore;
+        this.passive = passive;
+        this.georgePrices = georgePrices;
         this.katUpgrades = katUpgrades;
-        this.baseStatistics = baseStatistics;
-        this.perLevelStatistics = perLevelStatistics;
+        this.statistics = statistics;
+        this.abilities = List.copyOf(abilities);
         this.particleId = particleId;
-        this.skillCategory = SkillCategories.valueOf(skillCategory);
         this.skullTexture = skullTexture;
-        this.handlerId = handlerId;
+        this.skullTextureByRarity = skullTextureByRarity;
 
-        addInheritedComponent(new SkullHeadComponent((item) -> skullTexture));
+        addInheritedComponent(new SkullHeadComponent(this::textureFor));
         addInheritedComponent(new TrackedUniqueComponent());
         addInheritedComponent(new InteractableComponent(this::interact, this::interact, null));
         addInheritedComponent(new LoreUpdateComponent(
                 new LoreConfig((item, player) -> getAbsoluteLore(player, item), (item, player) -> {
                     Rarity rarity = item.getAttributeHandler().getRarity();
-                    int level = item.getAttributeHandler().getPetData().getAsLevel(rarity);
-                    return Text.of("<7>[Lvl {}] <color:{}>{}", level, rarity.getColor(), petName).serialize();
+                    return Text.of("<7>[Lvl {}] <color:{}>{}", PetLevels.level(item), rarity.getColor(), petName)
+                            .serialize();
                 }), true)
         );
+    }
+
+    public String textureFor(SkyBlockItem item) {
+        return skullTextureByRarity.getOrDefault(item.getAttributeHandler().getRarity(), skullTexture);
+    }
+
+    public Rarity getMinRarity() {
+        return rarities.getFirst();
+    }
+
+    public Rarity getMaxRarity() {
+        return rarities.getLast();
+    }
+
+    public @Nullable Rarity nextRarity(Rarity current) {
+        for (Rarity rarity : rarities) if (rarity.ordinal() > current.ordinal()) return rarity;
+        return null;
+    }
+
+    public @Nullable SkillCategories getSkillCategory() {
+        return petType.getSkill();
+    }
+
+    public int xpOffset(Rarity rarity) {
+        return fixedXpOffset != null ? fixedXpOffset : ItemAttributePetData.rarityOffset(rarity);
+    }
+
+    public int georgePrice(Rarity rarity) {
+        return (int) georgePrices.get(rarity);
+    }
+
+    public @Nullable KatUpgrade katUpgradeTo(Rarity target) {
+        return katUpgrades.get(target);
+    }
+
+    public boolean isEggForm(int level) {
+        return level < statsBaseLevel;
+    }
+
+    public ItemStatistics statisticsAt(Rarity rarity, int level) {
+        if (isEggForm(level)) return ItemStatistics.empty();
+        return statistics.at(rarity, level, statsBaseLevel);
+    }
+
+    public List<PetAbility> abilitiesFor(SkyBlockItem pet) {
+        Rarity rarity = pet.getAttributeHandler().getRarity();
+        if (isEggForm(PetLevels.level(pet))) return List.of();
+        List<PetAbility> unlocked = new ArrayList<>();
+        for (ConfiguredPetAbility ability : abilities) if (ability.appliesAt(rarity)) unlocked.add(ability);
+        return unlocked;
     }
 
     private void interact(SkyBlockPlayer player, SkyBlockItem item) {
@@ -88,29 +160,30 @@ public class PetComponent extends SkyBlockItemComponent {
 
     public List<String> getAbsoluteLore(@Nullable SkyBlockPlayer player, SkyBlockItem item) {
         List<String> lore = new ArrayList<>();
-        ItemAttributePetData.PetData petData = item.getAttributeHandler().getPetData();
         Rarity rarity = item.getAttributeHandler().getRarity();
-        int level = petData.getAsLevel(rarity);
+        int level = PetLevels.level(item);
 
-        List<PetAbility> abilities = PetHandler.valueOf(handlerId.toUpperCase()).getAbilities(item);
-
-        lore.add("<8>" + skillCategory.asCategory().getName() + " Pet");
+        lore.add("<8>" + petType.getLabel() + " Pet");
         lore.add(" ");
 
         ItemStatistics statistics = PetItems.statistics(item);
+        boolean anyStat = false;
         for (ItemStatistic stat : ItemStatistic.values()) {
             double value = statistics.getOverall(stat);
             if (value == 0) continue;
-
-            if (stat.getIsPercentage()) {
-                addPropertyPercent(stat.getDisplayName(), value, lore);
-            } else {
-                addPropertyInt(stat.getDisplayName(), value, lore);
-            }
+            anyStat = true;
+            lore.add("<7>" + stat.getDisplayName() + ": <color:" + stat.getDisplayColor().asHexString() + ">"
+                    + (value >= 0 ? "+" : "") + PetNumbers.floor(value) + (stat.getIsPercentage() ? "%" : ""));
+        }
+        if (isEggForm(level)) {
+            lore.add("<7>This pet hatches at level <a>" + statsBaseLevel + "<7>.");
+            anyStat = true;
         }
 
-        for (PetAbility ability : abilities) {
-            lore.add(" ");
+        boolean first = true;
+        for (PetAbility ability : abilitiesFor(item)) {
+            if (!first || anyStat) lore.add(" ");
+            first = false;
             lore.add("<6>" + ability.getName());
             lore.addAll(ability.getDescription(item));
         }
@@ -124,14 +197,14 @@ public class PetComponent extends SkyBlockItemComponent {
             lore.addAll(held.getDescription());
         }
 
-        if (level < 100) {
-            double experience = petData.getExperienceInCurrentLevel(rarity);
-            int nextLevel = level + 1;
-            long nextLevelExperience = petData.getExperienceForLevel(nextLevel, rarity);
-
-            lore.add(" ");
-            lore.add(progressText("Progress to Level " + nextLevel, experience, nextLevelExperience));
-            lore.add(Text.of("<bar:{}:{}>", experience, nextLevelExperience).serialize());
+        lore.add(" ");
+        if (fixedLevel || level >= maxLevel) {
+            lore.add("<b><l>MAX LEVEL");
+        } else {
+            double experience = PetLevels.experienceIntoLevel(item);
+            long needed = PetLevels.experienceToNextLevel(item);
+            lore.add(progressText("Progress to Level " + (level + 1), experience, needed));
+            lore.add(Text.of("<bar:{}:{}>", experience, needed).serialize());
         }
 
         lore.add(" ");
@@ -140,27 +213,11 @@ public class PetComponent extends SkyBlockItemComponent {
         return lore;
     }
 
-    public ItemStatistics getPerLevelStatistics(Rarity rarity) {
-        return perLevelStatistics.getForRarity(rarity);
-    }
-
     private static String progressText(String label, double current, double max) {
         double percent = max != 0 ? (current / max) * 100.0 : 0.0;
         percent = StringUtility.roundTo(percent, 1);
         return percent < 100.0
                 ? "<7>" + label + ": <e>" + StringUtility.commaify(percent) + "<6>%"
                 : "<7>" + label + ": <a>100.0%";
-    }
-
-    private static void addPropertyInt(String name, double value, List<String> lore) {
-        if (value != 0.0) {
-            lore.add("<7>" + name + ": <a>" + (value >= 0 ? "+" : "") + value);
-        }
-    }
-
-    private static void addPropertyPercent(String name, double value, List<String> lore) {
-        if (value != 0.0) {
-            lore.add("<7>" + name + ": <a>" + (value >= 0 ? "+" : "") + value + "%");
-        }
     }
 }

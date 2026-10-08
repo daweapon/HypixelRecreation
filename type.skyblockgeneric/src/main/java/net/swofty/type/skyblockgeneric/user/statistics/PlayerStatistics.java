@@ -47,9 +47,9 @@ import net.swofty.type.skyblockgeneric.gems.Gemstone;
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ConstantStatisticsComponent;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
-import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
 import net.swofty.type.skyblockgeneric.item.components.StandardItemComponent;
 import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
@@ -228,11 +228,10 @@ public class PlayerStatistics {
 
     private ItemStatistics computePetStatistics() {
         SkyBlockItem pet = player.getPetData().getEnabledPet();
-        if (pet == null) return ItemStatistics.empty();
-        ItemStatistics stats = PetItems.statistics(pet);
+        ItemStatistics stats = pet == null ? ItemStatistics.empty() : PetItems.statistics(pet);
 
-        for (PetAbility ability : player.getPetData().getCachedAbilities(pet)) {
-            stats = ItemStatistics.add(stats, ability.getStatistics(player, pet));
+        for (DatapointPetData.ActiveAbility active : player.getPetData().getActiveAbilities()) {
+            stats = ItemStatistics.add(stats, active.ability().getStatistics(player, active.pet()));
         }
 
         return stats;

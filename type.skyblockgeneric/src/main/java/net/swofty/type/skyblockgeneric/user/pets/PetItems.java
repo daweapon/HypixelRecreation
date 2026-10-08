@@ -1,7 +1,6 @@
 package net.swofty.type.skyblockgeneric.user.pets;
 
 import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -77,10 +76,7 @@ public final class PetItems {
      */
     public static ItemStatistics statistics(SkyBlockItem pet) {
         PetComponent component = pet.getComponent(PetComponent.class);
-        Rarity rarity = pet.getAttributeHandler().getRarity();
-        int level = pet.getAttributeHandler().getPetData().getAsLevel(rarity);
-        ItemStatistics base = ItemStatistics.add(component.getBaseStatistics(),
-                ItemStatistics.multiply(component.getPerLevelStatistics(rarity), level));
+        ItemStatistics base = component.statisticsAt(pet.getAttributeHandler().getRarity(), PetLevels.level(pet));
 
         PetItemComponent item = held(pet);
         if (item == null) return base;

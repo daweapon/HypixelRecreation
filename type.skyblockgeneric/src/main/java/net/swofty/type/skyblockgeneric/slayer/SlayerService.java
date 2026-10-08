@@ -18,6 +18,8 @@ import net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.SlayerBossProfile;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
+import net.swofty.type.skyblockgeneric.user.pets.PetEvents;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SlayerService {
@@ -172,7 +174,8 @@ public final class SlayerService {
 
         DatapointSlayer.SlayerProgress progress = data.progress(quest.type());
         int previousLevel = definition.levelForXp(progress.getXp());
-        int slayerXp = slayerXpReward(tierDefinition);
+        int slayerXp = (int) Math.round(PetEvents.xpGained(player, PetEvent.XpType.SLAYER, bossMob,
+                slayerXpReward(tierDefinition)));
         if (definition.hasDropTable()) {
             SlayerDropTable.award(player, bossMob, definition, quest.tier(), previousLevel, progress);
         }
