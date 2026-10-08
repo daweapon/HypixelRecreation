@@ -6,6 +6,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
 import org.reflections.Reflections;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,6 +19,7 @@ import java.util.stream.Stream;
 // Base class for a single named, string-serializable piece of item metadata, with a registry of all discovered subclasses.
 public abstract class ItemAttribute<T> {
     private static final ArrayList<ItemAttribute> attributes = new ArrayList<>();
+    private static volatile List<Constructor<? extends ItemAttribute>> constructors;
 
     public T value;
 
@@ -40,19 +42,30 @@ public abstract class ItemAttribute<T> {
     }
 
     public static Collection<ItemAttribute> getPossibleAttributes() {
-        // Create a new list to store the results
-        List<ItemAttribute> result = new ArrayList<>();
-
-        // Iterate safely using a traditional for loop
-        for (ItemAttribute attribute : attributes) {
+        List<ItemAttribute> result = new ArrayList<>(constructors().size());
+        for (Constructor<? extends ItemAttribute> constructor : constructors()) {
             try {
-                result.add(attribute.getClass().getDeclaredConstructor().newInstance());
-            } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+                result.add(constructor.newInstance());
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException(e);
             }
         }
-
         return result;
+    }
+
+    private static List<Constructor<? extends ItemAttribute>> constructors() {
+        List<Constructor<? extends ItemAttribute>> cached = constructors;
+        if (cached != null && cached.size() == attributes.size()) return cached;
+        List<Constructor<? extends ItemAttribute>> built = new ArrayList<>(attributes.size());
+        for (ItemAttribute attribute : attributes) {
+            try {
+                built.add(attribute.getClass().getDeclaredConstructor());
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        constructors = List.copyOf(built);
+        return constructors;
     }
 
     public static <T> Stream<T> loopThroughPackage(String packageName, Class<T> clazz) {

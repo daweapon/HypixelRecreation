@@ -34,6 +34,8 @@ import org.tinylog.Logger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class SkyBlockItem {
@@ -174,17 +176,16 @@ public class SkyBlockItem {
 
 		ConfigurableSkyBlockItem config = ConfigurableSkyBlockItem.getFromID(itemType);
 
+		Map<String, ItemAttribute> byKey = new LinkedHashMap<>();
+		for (ItemAttribute attribute : attributes) byKey.put(attribute.getKey(), attribute);
 		for (ItemAttribute attribute : ItemAttribute.getPossibleAttributes()) {
-			if (item.hasTag(Tag.String(attribute.getKey()))) {
-				attribute.setValue(attribute.loadFromString(item.getTag(Tag.String(attribute.getKey()))));
-				attributes.removeIf(a -> a.getKey().equals(attribute.getKey()));
-				attributes.add(attribute);
-			} else {
-				attribute.setValue(attribute.getDefaultValue(statistics));
-				attributes.removeIf(a -> a.getKey().equals(attribute.getKey()));
-				attributes.add(attribute);
-			}
+			String saved = item.getTag(Tag.String(attribute.getKey()));
+			attribute.setValue(saved != null ? attribute.loadFromString(saved) : attribute.getDefaultValue(statistics));
+			byKey.remove(attribute.getKey());
+			byKey.put(attribute.getKey(), attribute);
 		}
+		attributes.clear();
+		attributes.addAll(byKey.values());
 
         migrateLegacyFishingRodState(item);
 
