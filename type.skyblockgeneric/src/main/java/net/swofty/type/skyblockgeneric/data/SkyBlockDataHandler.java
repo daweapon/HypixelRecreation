@@ -712,6 +712,12 @@ public class SkyBlockDataHandler extends DataHandler {
         NORTH_STARS("north_stars", false, false, false,
                 DatapointInteger.class, new DatapointInteger("north_stars", 0)),
 
+        ESSENCE("essence", false, false, false, DatapointMapStringLong.class,
+                new DatapointMapStringLong("essence")),
+
+        ESSENCE_PERKS("essence_perks", false, false, false, DatapointMapStringLong.class,
+                new DatapointMapStringLong("essence_perks")),
+
         ST_JERRY_GREEN_GIFT_YEAR("st_jerry_green_gift_year", false, false, false,
                 DatapointInteger.class, new DatapointInteger("st_jerry_green_gift_year", 0)),
 

@@ -1,0 +1,38 @@
+package net.swofty.type.skyblockgeneric.essence;
+
+import net.swofty.type.generic.data.datapoints.DatapointMapStringLong;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public final class EssencePerks {
+    private EssencePerks() {
+    }
+
+    public static int tier(SkyBlockPlayer player, IceEssencePerk perk) {
+        Number value = datapoint(player).getValue().get(key(perk));
+        return value == null ? 0 : value.intValue();
+    }
+
+    public static double value(SkyBlockPlayer player, IceEssencePerk perk) {
+        return perk.valueAt(tier(player, perk));
+    }
+
+    public static void setTier(SkyBlockPlayer player, IceEssencePerk perk, int tier) {
+        DatapointMapStringLong datapoint = datapoint(player);
+        Map<String, Long> values = new HashMap<>();
+        datapoint.getValue().forEach((key, value) -> values.put(key, ((Number) value).longValue()));
+        values.put(key(perk), (long) Math.clamp(tier, 0, perk.getMaxTier()));
+        datapoint.setValue(values);
+    }
+
+    private static String key(IceEssencePerk perk) {
+        return EssenceType.ICE.name() + ":" + perk.name();
+    }
+
+    private static DatapointMapStringLong datapoint(SkyBlockPlayer player) {
+        return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.ESSENCE_PERKS, DatapointMapStringLong.class);
+    }
+}
