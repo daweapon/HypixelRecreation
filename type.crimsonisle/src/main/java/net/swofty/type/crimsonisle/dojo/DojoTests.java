@@ -1,6 +1,12 @@
 package net.swofty.type.crimsonisle.dojo;
 
+import net.swofty.type.crimsonisle.dojo.tests.ControlChallenge;
+import net.swofty.type.crimsonisle.dojo.tests.DisciplineChallenge;
 import net.swofty.type.crimsonisle.dojo.tests.ForceChallenge;
+import net.swofty.type.crimsonisle.dojo.tests.MasteryChallenge;
+import net.swofty.type.crimsonisle.dojo.tests.StaminaChallenge;
+import net.swofty.type.crimsonisle.dojo.tests.SwiftnessChallenge;
+import net.swofty.type.crimsonisle.dojo.tests.TenacityChallenge;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoTest;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -27,7 +33,12 @@ public final class DojoTests {
     private static @Nullable Function<SkyBlockPlayer, DojoChallenge> factory(DojoTest test) {
         return switch (test) {
             case FORCE -> ForceChallenge::new;
-            default -> null;
+            case STAMINA -> StaminaChallenge::new;
+            case MASTERY -> MasteryChallenge::new;
+            case DISCIPLINE -> DisciplineChallenge::new;
+            case SWIFTNESS -> SwiftnessChallenge::new;
+            case CONTROL -> ControlChallenge::new;
+            case TENACITY -> TenacityChallenge::new;
         };
     }
 }
