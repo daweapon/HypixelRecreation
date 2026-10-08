@@ -12,6 +12,10 @@ items:
       - id: SKULL_HEAD
         texture: 9de3a407d2be387b45bebdd52d3d4d75a6a1b479e2b8c03267d021d4af31e072
       - id: TALISMAN
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 5
+            mob_types: [INFERNAL]
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -40,6 +44,9 @@ items:
       - id: SKULL_HEAD
         texture: 6c930b0a2d87f2dddb409a302f9591897184f29ecc97b5ca5cdec1cd69839597
       - id: TALISMAN
+        effects:
+          - type: HANDLER
+            handler: SUNSHADE
   - id: NETHER_ARTIFACT
     material: player_head
     name: "Nether Artifact"

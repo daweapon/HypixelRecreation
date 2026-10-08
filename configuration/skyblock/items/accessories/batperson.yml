@@ -2,6 +2,7 @@ items:
   - id: BAT_PERSON_TALISMAN
     material: PLAYER_HEAD
     name: "Bat Person Talisman"
+    rarity: COMMON
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Bat Person Talisman

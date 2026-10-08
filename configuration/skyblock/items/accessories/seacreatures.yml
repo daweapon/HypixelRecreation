@@ -2,6 +2,7 @@ items:
   - id: SEA_CREATURE_TALISMAN
     material: PLAYER_HEAD
     name: "Sea Creature Talisman"
+    rarity: COMMON
     default_statistics:
       sea_creature_chance: 0.1
     components:

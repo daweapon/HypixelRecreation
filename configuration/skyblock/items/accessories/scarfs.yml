@@ -2,7 +2,7 @@ items:
   - id: SCARFS_STUDIES
     material: PLAYER_HEAD
     name: "Scarfs Studies"
-    rarity: COMMON
+    rarity: RARE
     lore:
       - "<7>Gain <a>2% <7>more Dungeons class"
       - "<7>experience."
@@ -11,13 +11,14 @@ items:
       - "<7><o>beautiful handwriting!"
     components:
       - id: TALISMAN
+        dungeon: true
       - id: SKULL_HEAD
         texture: 6de4ab129e137f9f4cbf7060318ee1748dc39da9b5d129a8da0e614e2337693
 
   - id: SCARFS_THESIS
     material: PLAYER_HEAD
     name: "Scarfs Thesis"
-    rarity: COMMON
+    rarity: EPIC
     lore:
       - "<7>Gain <a>4% <7>more Dungeons class"
       - "<7>experience."
@@ -26,6 +27,7 @@ items:
       - "<7><o>enhance class abilities in death."
     components:
       - id: TALISMAN
+        dungeon: true
       - id: SKULL_HEAD
         texture: 8ce4c87eb4dde27459e3e7f85921e7e57b11199260caa5ce63f139ee3d188c
       - id: DEFAULT_CRAFTABLE
@@ -47,7 +49,7 @@ items:
   - id: SCARFS_GRIMOIRE
     material: PLAYER_HEAD
     name: "Scarfs Grimoire"
-    rarity: COMMON
+    rarity: LEGENDARY
     lore:
       - "<7>Gain <a>6% <7>more Dungeons class"
       - "<7>experience."
@@ -57,6 +59,7 @@ items:
       - "<7><o>Professor taught him."
     components:
       - id: TALISMAN
+        dungeon: true
       - id: SKULL_HEAD
         texture: bafb195cc75f31b619a077b7853653254ac18f220dc32d1412982ff437b4d57a
       - id: DEFAULT_CRAFTABLE

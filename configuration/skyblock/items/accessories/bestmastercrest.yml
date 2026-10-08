@@ -2,6 +2,7 @@ items:
   - id: BEASTMASTER_CREST_COMMON
     material: PLAYER_HEAD
     name: "Beastmaster Crest Common"
+    rarity: COMMON
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Beastmaster Crest

@@ -4,7 +4,7 @@ items:
     name: "Respiration Talisman"
     rarity: COMMON
     default_statistics:
-      respiration: 10
+      respiration: 5
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Respiration Talisman
@@ -20,7 +20,7 @@ items:
     name: "Respiration Ring"
     rarity: UNCOMMON
     default_statistics:
-      respiration: 20
+      respiration: 10
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Respiration Ring
@@ -36,7 +36,7 @@ items:
     name: "Respiration Artifact"
     rarity: RARE
     default_statistics:
-      respiration: 30
+      respiration: 15
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Respiration Artifact

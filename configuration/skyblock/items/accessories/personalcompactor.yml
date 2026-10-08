@@ -7,6 +7,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Compactor 4000
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: PERSONAL_COMPACTOR
       - id: ENCHANTED
       - id: INTERACTABLE
         handler_id: PERSONAL_COMPACTOR_INTERACT
@@ -41,6 +44,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Compactor 5000
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: PERSONAL_COMPACTOR
       - id: ENCHANTED
       - id: INTERACTABLE
         handler_id: PERSONAL_COMPACTOR_INTERACT
@@ -75,6 +81,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Compactor 6000
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: PERSONAL_COMPACTOR
       - id: ENCHANTED
       - id: INTERACTABLE
         handler_id: PERSONAL_COMPACTOR_INTERACT
@@ -109,6 +118,9 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Personal Compactor 7000
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: PERSONAL_COMPACTOR
       - id: ENCHANTED
       - id: INTERACTABLE
         handler_id: PERSONAL_COMPACTOR_INTERACT

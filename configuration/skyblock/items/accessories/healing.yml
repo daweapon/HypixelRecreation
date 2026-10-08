@@ -2,8 +2,9 @@ items:
   - id: HEALING_TALISMAN
     material: PLAYER_HEAD
     name: "Healing Talisman"
+    rarity: COMMON
     default_statistics:
-      vitality: 5
+      vitality: 2
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Healing Talisman
@@ -19,7 +20,7 @@ items:
     name: "Healing Ring"
     rarity: UNCOMMON
     default_statistics:
-      vitality: 10
+      vitality: 4
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Healing Ring

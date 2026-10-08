@@ -2,6 +2,7 @@ items:
   - id: SOUL_CAMPFIRE_TALISMAN_1
     material: PLAYER_HEAD
     name: "Soul Campfire Talisman"
+    rarity: COMMON
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Soul Campfire Initiate Badge I
@@ -15,6 +16,7 @@ items:
   - id: SOUL_CAMPFIRE_TALISMAN_2
     material: PLAYER_HEAD
     name: "Soul Campfire Talisman"
+    rarity: COMMON
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Soul Campfire Initiate Badge II
@@ -28,6 +30,7 @@ items:
   - id: SOUL_CAMPFIRE_TALISMAN_3
     material: PLAYER_HEAD
     name: "Soul Campfire Talisman"
+    rarity: COMMON
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Soul Campfire Initiate Badge III

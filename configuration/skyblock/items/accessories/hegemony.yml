@@ -1,0 +1,15 @@
+items:
+  - id: HEGEMONY_ARTIFACT
+    material: PLAYER_HEAD
+    name: "Hegemony Artifact"
+    rarity: LEGENDARY
+    components:
+      - id: ACCESSORY
+        power: DOUBLE
+        effects:
+          - type: TEXT
+            text:
+              - "Counts for twice the Accessory"
+              - "Power in your Accessory Bag."
+      - id: SKULL_HEAD
+        texture: 313384a293cfbba3489b483ebc1de7584ca2726d7f5c3a620513474925e87b97

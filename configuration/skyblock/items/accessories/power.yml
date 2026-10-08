@@ -2,6 +2,7 @@ items:
   - id: POWER_TALISMAN
     material: PLAYER_HEAD
     name: "Power Talisman"
+    rarity: COMMON
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Talisman of Power

@@ -10,9 +10,9 @@ items:
   - id: FARMING_TALISMAN
     material: PLAYER_HEAD
     name: "Farming Talisman"
-    rarity: COMMON
+    rarity: UNCOMMON
     default_statistics:
-      speed: 10.0
+      farming_fortune: 3
     components:
       - id: SKULL_HEAD
         texture: ad7a30c82dba9f5a7befd6abc16089e29256e52e06f2a85f2461acd7a557c14a
@@ -94,12 +94,17 @@ items:
     material: PLAYER_HEAD
     name: "Mine Affinity Talisman"
     rarity: COMMON
-    default_statistics:
-      speed: 10.0
     components:
       - id: SKULL_HEAD
         texture: d9563fdc4acab6db324b21bc43b238fe465e530a6327e7eef11d2d0c4ea
       - id: TALISMAN
+        effects:
+          - type: STAT
+            statistics: { speed: 25 }
+            servers: [SKYBLOCK_GOLD_MINE, SKYBLOCK_DEEP_CAVERNS, SKYBLOCK_DWARVEN_MINES]
+            text:
+              - "Grants <f>+25 Speed <7>while on Mining"
+              - "Islands."
   - id: POTATO_TALISMAN
     material: PLAYER_HEAD
     name: "Potato Talisman"
@@ -114,17 +119,30 @@ items:
     material: PLAYER_HEAD
     name: "Village Affinity Talisman"
     rarity: COMMON
-    default_statistics:
-      speed: 10.0
     components:
       - id: SKULL_HEAD
         texture: 9c11d6c79b8a1f18902d783cdda4bdfb9d47337b73791028a126a6e6cf101def
       - id: TALISMAN
+        effects:
+          - type: STAT
+            statistics: { speed: 10 }
+            regions: [VILLAGE]
+            text:
+              - "Increases your <f>Speed <7>by <a>+10"
+              - "while held in the Village."
   - id: SKELETON_TALISMAN
     rarity: COMMON
     material: SKELETON_SKULL
     name: "Skeleton Talisman"
     components:
+      - id: TALISMAN
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 5
+            mob_types: [SKELETAL]
+            text:
+              - "Reduces the damage taken from"
+              - "<f>Skeletal <7>mobs by <a>5%<7>."
       - id: SELLABLE
         value: 50.0
   - id: BLUE_RING
