@@ -205,6 +205,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/regrowtrees <distance> <seed>` | — | Respawns trees in an area with a new seed.  Help uses /respawntreesinarea, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
 | `/sendto <server_type>` | `/transfer` | Transfers a player to another server. | STAFF | No | `type.generic` |
 | `/setvelocity <player> <x> <y> <z>` | — | Sets the velocity of a player. Help says /velocity, which is not a registered label. | STAFF | No | `type.generic` |
+| `/spawnseacreature <creature>` | `/spawnsc` | Spawns a sea creature at your feet as if you had fished it up: you are its angler, its catch message plays, and the Reindrake's server-wide announcement fires. Takes any registered sea creature ID (e.g. `FROZEN_STEVE`, `NUTCRACKER`, `YETI`, `REINDRAKE`, `GREAT_WHITE_SHARK`), suggested by the command. A Reindrake brings Gregory to Jerry Pond while it lives. | STAFF | No | `type.skyblockgeneric` |
 | `/speed <speed> [FLY\|WALK]` | `/flyspeed` | Sets a players speed. Speed range 0–10; defaults to FLY. | STAFF | No | `type.generic` |
 | `/structure <rotation>` | — | Places a test debug structure. Requires an integer rotation omitted from help. | STAFF | No | `type.skyblockgeneric` |
 | `/tp <x> <y> <z>` | `/teleport` | teleports to a player. Coordinate syntax works in the registration. Player-target branch omits its argument from addSyntax; do not rely on /tp <player> until fixed. | STAFF | No | `type.generic` |

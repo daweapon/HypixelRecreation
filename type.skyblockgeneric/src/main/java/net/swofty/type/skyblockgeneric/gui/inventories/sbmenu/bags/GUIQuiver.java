@@ -91,7 +91,7 @@ public class GUIQuiver implements StatefulView<GUIQuiver.QuiverState> {
         save(player, ctx.inventory(), getUnlockedSlots(player));
     }
 
-    private int getUnlockedSlots(SkyBlockPlayer player) {
+    public static int getUnlockedSlots(SkyBlockPlayer player) {
         int amountOfSlots = 0;
         for (Map.Entry<CustomCollectionAward, Integer> entry : SLOTS_PER_UPGRADE.entrySet()) {
             if (player.hasCustomCollectionAward(entry.getKey())) {
