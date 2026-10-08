@@ -132,6 +132,14 @@ public class SkyBlockScoreboard {
                     }
                 }
 
+                List<String> challengeLines = ChallengeSidebar.linesFor(player);
+                boolean challenge = challengeLines != null;
+                TextBody.Section challengeSection = body.section("challenge").when(() -> challenge);
+                if (challenge) {
+                    challengeSection.line(BLANK);
+                    challengeLines.forEach(line -> challengeSection.line(Text.of(line)));
+                }
+
                 boolean darkAuction = !electionRoom
                     && DarkAuctionHandler.isPlayerInAuction(player.getUuid())
                     && DarkAuctionHandler.getLocalState() != null
@@ -210,7 +218,7 @@ public class SkyBlockScoreboard {
                     }
                 }
 
-                boolean objective = !electionRoom && !darkAuction && !seasonalEventActive && !contestShown && region != null
+                boolean objective = !challenge && !electionRoom && !darkAuction && !seasonalEventActive && !contestShown && region != null
                     && !missionData.getActiveMissions(region.getType()).isEmpty();
                 TextBody.Section objectives = body.section("objective").when(() -> objective);
                 if (objective) {

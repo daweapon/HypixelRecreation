@@ -19,7 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * record is already an S starts on 252.
  */
 public class StaminaChallenge extends DojoChallenge {
-    private static final int HALF = 4;
+    private static final int HALF = 7;
     private static final int WALL_HEIGHT = 3;
     private static final double POINTS_PER_TICK = 9.0 / TICKS_PER_SECOND;
     private static final int VETERAN_START = 252;
@@ -54,14 +54,20 @@ public class StaminaChallenge extends DojoChallenge {
     protected void tick() {
         addScore(POINTS_PER_TICK);
         if (wall == null && ticks >= nextWallAt) {
-            wall = Wall.random(difficulty());
+            wall = Wall.random(wallLevel());
             nextStepAt = ticks;
         }
         if (wall != null && ticks >= nextStepAt) step();
         if (touchesWall()) fail();
     }
 
-    private int difficulty() {
+    @Override
+    public String difficulty() {
+        int level = wall != null ? wall.level : wallLevel();
+        return level < 2 ? "<a>Easy" : level < 4 ? "<e>Medium" : level < 6 ? "<c>Hard" : "<4>Insane";
+    }
+
+    private int wallLevel() {
         return Math.min(DIFFICULTY.length - 1, wallsPassed / 4);
     }
 

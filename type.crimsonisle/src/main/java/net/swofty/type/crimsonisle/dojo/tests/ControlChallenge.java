@@ -19,8 +19,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * looking away for two seconds, or falling, ends the test.
  */
 public class ControlChallenge extends DojoChallenge {
-    private static final double PLATFORM_RADIUS = 3.5;
-    private static final double RING_RADIUS = 13;
+    private static final double PLATFORM_RADIUS = 6.5;
+    private static final double RING_RADIUS = 16;
     private static final double GAZE_CONE_DEGREES = 10;
     private static final double MAX_POINTS_PER_TICK = 10.0 / TICKS_PER_SECOND;
     private static final int LOOK_AWAY_LIMIT = 2 * TICKS_PER_SECOND;

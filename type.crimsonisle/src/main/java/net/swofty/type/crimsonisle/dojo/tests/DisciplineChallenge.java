@@ -21,10 +21,10 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Test of Discipline: zombies wear leather, iron, gold or diamond helmets and must be hit with the
  * matching wooden, iron, gold or diamond sword (+8); the wrong sword costs 16. A new sword arrives
- * every 30 seconds.
+ * every 30 seconds. A zombie left alone vanishes after 5 to 7 seconds.
  */
 public class DisciplineChallenge extends DojoChallenge {
-    private static final double PLATFORM_RADIUS = 7.5;
+    private static final double PLATFORM_RADIUS = 10.5;
     private static final int MAX_ZOMBIES = 6;
     private static final int SPAWN_INTERVAL = 10;
     private static final int SWORD_INTERVAL = 30 * TICKS_PER_SECOND;
@@ -32,6 +32,7 @@ public class DisciplineChallenge extends DojoChallenge {
 
     private final Map<EntityCreature, Tier> zombies = new HashMap<>();
     private final Map<EntityCreature, Long> cooldownUntil = new HashMap<>();
+    private final Map<EntityCreature, Long> despawnAt = new HashMap<>();
     private int unlockedTiers = 1;
 
     public DisciplineChallenge(SkyBlockPlayer player) {
@@ -63,10 +64,10 @@ public class DisciplineChallenge extends DojoChallenge {
         }
         if (zombies.size() < MAX_ZOMBIES && ticks % SPAWN_INTERVAL == 0) spawnZombie();
         zombies.keySet().removeIf(zombie -> {
-            if (zombie.isRemoved()) return true;
-            if (DojoArena.isInLava(zombie.getPosition())) {
+            if (zombie.isRemoved()) return forget(zombie);
+            if (DojoArena.isInLava(zombie.getPosition()) || ticks >= despawnAt.getOrDefault(zombie, Long.MAX_VALUE)) {
                 zombie.remove();
-                return true;
+                return forget(zombie);
             }
             if (zombie.isOnGround()) DojoMobs.walkToward(zombie, player.getPosition(), 1.6, 1.5);
             return false;
@@ -82,7 +83,7 @@ public class DisciplineChallenge extends DojoChallenge {
         if (player.getItemInMainHand().material() == needed.sword) {
             addScore(8);
             zombies.remove(zombie);
-            cooldownUntil.remove(zombie);
+            forget(zombie);
             zombie.remove();
             sound("entity.experience_orb.pickup", 1.2f);
         } else {
@@ -97,6 +98,13 @@ public class DisciplineChallenge extends DojoChallenge {
         EntityCreature zombie = DojoMobs.zombie(tier.helmet, false, null);
         zombie.setInstance(DojoArena.instance(), DojoMobs.randomOnDisc(3, PLATFORM_RADIUS - 1.5));
         zombies.put(track(zombie), tier);
+        despawnAt.put(zombie, ticks + mobLifetimeTicks());
+    }
+
+    private boolean forget(EntityCreature zombie) {
+        cooldownUntil.remove(zombie);
+        despawnAt.remove(zombie);
+        return true;
     }
 
     private enum Tier {

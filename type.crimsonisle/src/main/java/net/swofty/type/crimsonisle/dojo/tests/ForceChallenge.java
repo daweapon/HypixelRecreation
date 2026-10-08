@@ -1,38 +1,34 @@
 package net.swofty.type.crimsonisle.dojo.tests;
 
-import net.minestom.server.component.DataComponents;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityCreature;
 import net.minestom.server.instance.block.Block;
-import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.minestom.server.item.component.EnchantmentList;
-import net.minestom.server.item.enchant.Enchantment;
 import net.swofty.type.crimsonisle.dojo.DojoArena;
 import net.swofty.type.crimsonisle.dojo.DojoChallenge;
 import net.swofty.type.crimsonisle.dojo.DojoMobs;
-import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoTest;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Test of Force: knock zombies off a round platform into the lava. Helmet decides the points
- * (iron +10, gold +20, diamond baby +30); bare-headed zombies cost 30 when you hit them.
+ * Test of Force: punch zombies off a round platform into the lava, bare-fisted. Helmet decides the points
+ * (iron +10, gold +20, diamond baby +30); bare-headed zombies cost 30 when you hit them. A zombie left alone
+ * vanishes after 5 to 7 seconds.
  */
 public class ForceChallenge extends DojoChallenge {
-    private static final double PLATFORM_RADIUS = 6.5;
-    private static final int MAX_ZOMBIES = 7;
+    private static final double PLATFORM_RADIUS = 10.5;
+    private static final int MAX_ZOMBIES = 9;
     private static final int SPAWN_INTERVAL = 12;
     private static final int KNOCKBACK_STUN = 12;
 
     private final Map<EntityCreature, Kind> zombies = new HashMap<>();
     private final Map<EntityCreature, Long> stunnedUntil = new HashMap<>();
+    private final Map<EntityCreature, Long> despawnAt = new HashMap<>();
 
     public ForceChallenge(SkyBlockPlayer player) {
         super(player, DojoTest.FORCE);
@@ -49,31 +45,23 @@ public class ForceChallenge extends DojoChallenge {
     }
 
     @Override
-    protected List<ItemStack> kit() {
-        ItemStack.Builder sword = ItemStacks.enchanted(ItemStacks.item(Material.WOODEN_SWORD, """
-                <f>Wooden Sword
-                <9>Knockback III
-
-                <7>Knock the zombies into the lava!"""))
-                .set(DataComponents.ENCHANTMENTS, new EnchantmentList(Enchantment.KNOCKBACK, 3));
-        return List.of(sword.build());
-    }
-
-    @Override
     protected void tick() {
         if (zombies.size() < MAX_ZOMBIES && ticks % SPAWN_INTERVAL == 0) spawnZombie();
 
         zombies.entrySet().removeIf(entry -> {
             EntityCreature zombie = entry.getKey();
-            if (zombie.isRemoved()) return true;
+            if (zombie.isRemoved()) return forget(zombie);
             if (DojoArena.isInLava(zombie.getPosition())) {
                 if (entry.getValue().points > 0) {
                     addScore(entry.getValue().points);
                     sound("entity.experience_orb.pickup", 1.4f);
                 }
                 zombie.remove();
-                stunnedUntil.remove(zombie);
-                return true;
+                return forget(zombie);
+            }
+            if (ticks >= despawnAt.getOrDefault(zombie, Long.MAX_VALUE) && stunnedUntil.getOrDefault(zombie, 0L) < ticks) {
+                zombie.remove();
+                return forget(zombie);
             }
             if (stunnedUntil.getOrDefault(zombie, 0L) < ticks && zombie.isOnGround()) {
                 DojoMobs.walkToward(zombie, player.getPosition(), 2.2, 1.3);
@@ -103,6 +91,13 @@ public class ForceChallenge extends DojoChallenge {
         if (at.distance(player.getPosition()) < 2) at = DojoMobs.randomOnDisc(2, PLATFORM_RADIUS - 1.5);
         zombie.setInstance(DojoArena.instance(), at);
         zombies.put(track(zombie), kind);
+        despawnAt.put(zombie, ticks + mobLifetimeTicks());
+    }
+
+    private boolean forget(EntityCreature zombie) {
+        stunnedUntil.remove(zombie);
+        despawnAt.remove(zombie);
+        return true;
     }
 
     private enum Kind {

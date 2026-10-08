@@ -69,6 +69,7 @@ import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import net.swofty.type.skyblockgeneric.region.rules.ZoneRuleService;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -1043,7 +1044,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
         float maxHealth = statistics.allStatistics().getOverall(ItemStatistic.HEALTH).floatValue();
         MaxHealthValueUpdateEvent event = new MaxHealthValueUpdateEvent(this, maxHealth);
         SkyBlockValueEvent.callValueUpdateEvent(event);
-        return (float) event.getValue();
+        return (float) ZoneRuleService.capMaxHealth(this, ((Number) event.getValue()).doubleValue());
     }
 
     @Override

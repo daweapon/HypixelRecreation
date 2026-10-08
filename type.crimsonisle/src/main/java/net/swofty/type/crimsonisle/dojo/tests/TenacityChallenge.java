@@ -22,7 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * and knock you about. Another ghast joins every 30 seconds, up to four. Five points per second.
  */
 public class TenacityChallenge extends DojoChallenge {
-    private static final double PLATFORM_RADIUS = 6.5;
+    private static final double PLATFORM_RADIUS = 10.5;
     private static final double POINTS_PER_TICK = 5.0 / TICKS_PER_SECOND;
     private static final int NEW_GHAST_INTERVAL = 30 * TICKS_PER_SECOND;
     private static final double FIREBALL_SPEED = 0.55;
