@@ -11,16 +11,20 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 // Standalone HTTP server that builds each known resource pack and serves it by content hash for clients to download.
 public class HypixelPackServer {
     private static final String DEFAULT_HOST = "0.0.0.0";
     private static final int DEFAULT_PORT = 7270;
+    private static final Path MOUNTED_PACKS = Path.of("configuration_files", "resourcepacks");
+    private static final Path BAKED_PACKS = Path.of("configuration", "resourcepacks");
 
     static void main(String[] args) throws IOException {
         String host = DEFAULT_HOST;
@@ -32,6 +36,8 @@ public class HypixelPackServer {
                 case "-p", "--port" -> port = Integer.parseInt(args[++i]);
             }
         }
+
+        overlayMountedPacks();
 
         Map<String, BuiltResourcePack> packs = List.of(
                         RavengardPackDefinition.INSTANCE,
@@ -66,6 +72,25 @@ public class HypixelPackServer {
         try {
             Thread.currentThread().join();
         } catch (InterruptedException ignored) {}
+    }
+
+    /**
+     * Docker bakes the configuration into the image and mounts the live copy at
+     * configuration_files. The game servers overlay that mount before they hash the pack, so the
+     * pack server must build from the same files or it serves a pack whose hash nobody asks for.
+     */
+    private static void overlayMountedPacks() throws IOException {
+        if (!Files.isDirectory(MOUNTED_PACKS)) return;
+        int copied = 0;
+        try (Stream<Path> files = Files.walk(MOUNTED_PACKS)) {
+            for (Path source : files.filter(Files::isRegularFile).toList()) {
+                Path destination = BAKED_PACKS.resolve(MOUNTED_PACKS.relativize(source));
+                Files.createDirectories(destination.getParent());
+                Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+                copied++;
+            }
+        }
+        System.out.println("Applied mounted resource packs over the baked copy: " + copied + " files");
     }
 
     private static boolean packDirectoryExists(PackDefinition definition) {
