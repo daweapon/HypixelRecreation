@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import net.swofty.commons.YamlFileUtils;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
@@ -35,8 +38,12 @@ public final class SlayerRegistry {
                     booleanValue(entry, "enabled", true),
                     unlock((Map<String, Object>) entry.get("unlock")),
                     mobTypes((List<Object>) entry.getOrDefault("targetMobTypes", Collections.emptyList())),
+                    strings(entry.get("targetMobIds")),
+                    mobTypes((List<Object>) entry.getOrDefault("bossMobTypes", entry.getOrDefault("targetMobTypes", Collections.emptyList()))),
                     levels((List<Map<String, Object>>) entry.getOrDefault("levels", Collections.emptyList())),
-                    tiers((List<Map<String, Object>>) entry.getOrDefault("tiers", Collections.emptyList()))
+                    tiers((List<Map<String, Object>>) entry.getOrDefault("tiers", Collections.emptyList())),
+                    SlayerDropParser.drops((List<Map<String, Object>>) entry.getOrDefault("drops", Collections.emptyList())),
+                    SlayerDropParser.minibosses((List<Map<String, Object>>) entry.getOrDefault("minibosses", Collections.emptyList()))
                 ));
             }
         } catch (Exception exception) {
@@ -60,6 +67,20 @@ public final class SlayerRegistry {
         return result;
     }
 
+    private static Set<String> strings(@Nullable Object value) {
+        if (!(value instanceof List<?> list)) return Set.of();
+        Set<String> result = new LinkedHashSet<>();
+        list.forEach(element -> result.add(String.valueOf(element)));
+        return result;
+    }
+
+    private static Map<ItemStatistic, Double> stats(@Nullable Map<String, Object> entry) {
+        if (entry == null) return Map.of();
+        Map<ItemStatistic, Double> result = new EnumMap<>(ItemStatistic.class);
+        entry.forEach((key, value) -> result.put(ItemStatistic.valueOf(key.toUpperCase()), ((Number) value).doubleValue()));
+        return result;
+    }
+
     private static Optional<SlayerUnlockRequirement> unlock(@Nullable Map<String, Object> entry) {
         if (entry == null || entry.isEmpty()) {
             return Optional.empty();
@@ -76,7 +97,11 @@ public final class SlayerRegistry {
             result.add(new SlayerLevelReward(
                 intValue(entry, "level", 0),
                 intValue(entry, "requiredXp", 0),
-                string(entry, "title")
+                string(entry, "title"),
+                stats((Map<String, Object>) entry.get("stats")),
+                strings(entry.get("unlocks")).stream().map(ItemType::get).filter(java.util.Objects::nonNull).toList(),
+                List.copyOf(strings(entry.get("perks"))),
+                List.copyOf(strings(entry.get("catalogued")))
             ));
         }
         return result;

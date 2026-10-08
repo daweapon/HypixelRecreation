@@ -9,6 +9,8 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
+import net.swofty.type.skyblockgeneric.slayer.SlayerDefinition;
+import net.swofty.type.skyblockgeneric.slayer.SlayerRegistry;
 import net.swofty.type.skyblockgeneric.slayer.SlayerTierDefinition;
 import net.swofty.type.skyblockgeneric.slayer.SlayerType;
 
@@ -39,6 +41,10 @@ public record SlayerBossProfile(
     }
 
     public SkyBlockLootTable asLootTable() {
+        SlayerDefinition definition = SlayerRegistry.get(type);
+        if (definition != null && definition.hasDropTable()) {
+            return null;
+        }
         Optional<ItemType> item = tier.tokenItem();
         if (item.isEmpty() || tier.tokenDrops() <= 0) {
             return null;

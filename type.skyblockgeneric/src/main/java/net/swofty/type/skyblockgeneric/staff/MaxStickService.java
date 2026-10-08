@@ -61,7 +61,7 @@ import net.swofty.type.skyblockgeneric.rabbits.ChocolateRabbit;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.skill.SkillCategory;
 import net.swofty.type.skyblockgeneric.slayer.SlayerDefinition;
-import net.swofty.type.skyblockgeneric.slayer.SlayerLevelReward;
+import net.swofty.type.skyblockgeneric.slayer.SlayerProgression;
 import net.swofty.type.skyblockgeneric.slayer.SlayerRegistry;
 import net.swofty.type.skyblockgeneric.slayer.SlayerType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -211,9 +211,14 @@ public final class MaxStickService {
             SlayerDefinition definition = SlayerRegistry.get(type);
             if (definition == null || definition.levels().isEmpty()) continue;
 
-            int maxXp = definition.levels().stream().mapToInt(SlayerLevelReward::requiredXp).max().orElse(0);
-            slayerData.progress(type).setXp(maxXp);
+            DatapointSlayer.SlayerProgress progress = slayerData.progress(type);
+            progress.setXp(Math.max(progress.getXp(), definition.maxXp()));
+            definition.tiers().keySet().forEach(tier -> {
+                if (progress.completions(tier) <= 0) progress.addCompletion(tier);
+            });
         }
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SLAYER, DatapointSlayer.class).setValue(slayerData);
+        SlayerProgression.sync(player);
     }
 
     private static void maxHotm(SkyBlockPlayer player) {

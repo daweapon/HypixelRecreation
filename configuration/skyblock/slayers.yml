@@ -95,19 +95,53 @@ slayers:
   - id: INFERNO_DEMONLORD
     enabled: true
     unlock: { type: VOIDGLOOM_SERAPH, tier: III }
-    targetMobTypes: [INFERNAL, MAGMATIC]
+    bossMobTypes: [INFERNAL]
+    targetMobIds: [BLAZE, MUTATED_BLAZE, BEZAL, SMOLDERING_BLAZE, MILLENNIA_AGED_BLAZE, INTRO_BLAZE, ASHFANG, INFERNO_FOLLOWER_3, INFERNO_FOLLOWER_4, INFERNO_FOLLOWER_5]
     levels:
-      - { level: 1, requiredXp: 10, title: Noob }
-      - { level: 2, requiredXp: 30, title: Novice }
-      - { level: 3, requiredXp: 250, title: Skilled }
-      - { level: 4, requiredXp: 1500, title: Destroyer }
-      - { level: 5, requiredXp: 5000, title: Bulldozer }
-      - { level: 6, requiredXp: 20000, title: Savage }
-      - { level: 7, requiredXp: 100000, title: Hellsplitter }
-      - { level: 8, requiredXp: 400000, title: Demon Eater }
-      - { level: 9, requiredXp: 1000000, title: Gabagool King }
+      - { level: 1, requiredXp: 10, title: Noob, stats: { health: 3 }, catalogued: ["<a>Droplet Wisp Pet"] }
+      - { level: 2, requiredXp: 30, title: Novice, stats: { strength: 1 }, unlocks: [MOLTEN_POWDER, FIREDUST_DAGGER, MAWDUST_DAGGER] }
+      - { level: 3, requiredXp: 250, title: Skilled, stats: { health: 4 }, unlocks: [UPGRADE_STONE_FROST, BURSTSTOPPER_TALISMAN, WARNING_FLARE], catalogued: ["<9>Inferno Minion I"] }
+      - { level: 4, requiredXp: 1500, title: Destroyer, stats: { true_defense: 1 }, unlocks: [BURSTFIRE_DAGGER, BURSTMAW_DAGGER, DEMONLORD_GAUNTLET, TELEPORTER_PILL, SMOLDERING_CHAMBERS_TRAVEL_SCROLL] }
+      - { level: 5, requiredXp: 5000, title: Bulldozer, stats: { health: 5 }, unlocks: [UPGRADE_STONE_GLACIAL, DESTRUCTION_CLOAK, TACTICAL_INSERTION] }
+      - { level: 6, requiredXp: 20000, title: Savage, stats: { strength: 2 }, unlocks: [HEARTFIRE_DAGGER, HEARTMAW_DAGGER, BLAZETEKK_HAM_RADIO, ALERT_FLARE] }
+      - { level: 7, requiredXp: 100000, title: Hellsplitter, stats: { health: 6 }, unlocks: [BURSTSTOPPER_ARTIFACT, UPGRADE_STONE_SUBZERO, ANNIHILATION_CLOAK, SOS_FLARE] }
+      - { level: 8, requiredXp: 400000, title: Demon Eater, stats: { true_defense: 2 }, perks: ["<7>+20% Pet XP when feeding Wisps Gabagool"], catalogued: ["<9>Gabagoey Mixin <7>(sold by the Bartender)"] }
+      - { level: 9, requiredXp: 1000000, title: Gabagool King, stats: { health: 7 }, perks: ["<7>10 Bits discount on Inferno Fuel Blocks"] }
     tiers:
-      - { tier: I, cost: 10000, requiredCombatXp: 6000, slayerXp: 5, bossLevel: 1, bossHealth: 2500000, bossDamage: 1500, bossSpeed: 130, tokenItem: DERELICT_ASHE, tokenDrops: 1 }
-      - { tier: II, cost: 25000, requiredCombatXp: 14400, slayerXp: 25, bossLevel: 2, bossHealth: 12000000, bossDamage: 3600, bossSpeed: 135, tokenItem: DERELICT_ASHE, tokenDrops: 2 }
-      - { tier: III, cost: 60000, requiredCombatXp: 18000, slayerXp: 100, bossLevel: 3, bossHealth: 60000000, bossDamage: 7200, bossSpeed: 145, tokenItem: DERELICT_ASHE, tokenDrops: 3 }
-      - { tier: IV, cost: 150000, requiredCombatXp: 36000, slayerXp: 500, bossLevel: 4, bossHealth: 150000000, bossDamage: 15000, bossSpeed: 150, tokenItem: DERELICT_ASHE, tokenDrops: 4 }
+      - { tier: I, cost: 10000, requiredCombatXp: 6000, slayerXp: 5, bossLevel: 790, bossHealth: 2500000, bossDamage: 1500, bossSpeed: 130 }
+      - { tier: II, cost: 25000, requiredCombatXp: 14400, slayerXp: 25, bossLevel: 1580, bossHealth: 10000000, bossDamage: 3600, bossSpeed: 135 }
+      - { tier: III, cost: 60000, requiredCombatXp: 18000, slayerXp: 100, bossLevel: 3350, bossHealth: 45000000, bossDamage: 7200, bossSpeed: 145 }
+      - { tier: IV, cost: 150000, requiredCombatXp: 36000, slayerXp: 500, bossLevel: 6120, bossHealth: 150000000, bossDamage: 15000, bossSpeed: 150 }
+    # tiers: { TIER: [minAmount, maxAmount, chancePercent] }. MAIN and EXTRA chances are the wiki's
+    # max-level odds, used as weights against a "nothing" weight that fills each pool to 100.
+    drops:
+      - { item: DERELICT_ASHE, pool: TOKEN, level: 0, tiers: { I: [6, 8, 100], II: [12, 22, 100], III: [60, 80, 100], IV: [110, 155, 100] } }
+      - { item: ENCHANTED_BLAZE_POWDER, pool: MAIN, level: 0, rng: 2351, tiers: { I: [1, 1, 13.04], II: [2, 3, 9.26], III: [4, 8, 8.70], IV: [16, 40, 7.91] } }
+      - { item: LAVATEARS_RUNE, pool: EXTRA, level: 1, rng: 21660, tiers: { III: [1, 1, 1.15], IV: [1, 1, 2.31] } }
+      - { item: WISP_ICE_FLAVORED_WATER, pool: MAIN, level: 1, rng: 14270, tiers: { II: [1, 1, 3.09], III: [2, 2, 2.90], IV: [5, 5, 2.64] } }
+      - { item: BUNDLE_OF_MAGMA_ARROWS, pool: MAIN, level: 1, rng: 4756, tiers: { II: [1, 1, 9.26], III: [1, 1, 8.70], IV: [1, 1, 7.91] } }
+      - { item: MANA_DISINTEGRATOR, pool: MAIN, level: 2, rng: 10192, tiers: { II: [1, 1, 4.32], III: [1, 1, 4.06], IV: [1, 1, 3.69] } }
+      - { item: SCORCHED_BOOKS, pool: MAIN, level: 2, rng: 17837, tiers: { II: [1, 1, 2.47], III: [1, 1, 2.32], IV: [1, 1, 2.11] } }
+      - { item: SHARD_INFERNO_DEMONLORD, pool: MAIN, level: 3, tiers: { II: [1, 1, 1.54], III: [1, 1, 2.90], IV: [1, 1, 5.27] } }
+      - { item: KELVIN_INVERTER, pool: MAIN, level: 3, rng: 14270, tiers: { II: [1, 1, 3.09], III: [1, 1, 2.90], IV: [1, 1, 2.64] } }
+      - { item: BLAZE_ROD_DISTILLATE, pool: LOOT_SHARE, level: 3, tiers: { II: [4, 4, 0], III: [10, 14, 0], IV: [24, 32, 0] } }
+      - { item: GLOWSTONE_DISTILLATE, pool: LOOT_SHARE, level: 3, tiers: { II: [4, 4, 0], III: [10, 14, 0], IV: [24, 32, 0] } }
+      - { item: MAGMA_CREAM_DISTILLATE, pool: LOOT_SHARE, level: 3, tiers: { II: [4, 4, 0], III: [10, 14, 0], IV: [24, 32, 0] } }
+      - { item: NETHER_WART_DISTILLATE, pool: LOOT_SHARE, level: 3, tiers: { II: [4, 4, 0], III: [10, 14, 0], IV: [24, 32, 0] } }
+      - { item: GABAGOOL_DISTILLATE, pool: MAIN, level: 3, rng: 10649, tiers: { II: [4, 4, 5.19], III: [10, 14, 4.87], IV: [24, 32, 4.43] } }
+      - { item: SCORCHED_POWER_CRYSTAL, pool: MAIN, level: 4, rng: 12558, tiers: { III: [1, 1, 3.48], IV: [1, 1, 3.16] } }
+      - { item: ARCHFIEND_DICE, pool: MAIN, level: 4, rng: 37675, tiers: { III: [1, 1, 1.16], IV: [1, 1, 1.05] } }
+      - { item: ENCHANTED_BOOK, enchant: FIRE_ASPECT, enchantLevel: 3, name: "<f>Enchanted Book (Fire Aspect III)", pool: MAIN, level: 5, rng: 32508, tiers: { IV: [1, 1, 1.32] } }
+      - { item: FIERY_BURST_RUNE, pool: EXTRA, level: 5, rng: 243675, tiers: { IV: [1, 1, 0.21] } }
+      - { item: FLAWED_OPAL_GEM, pool: MAIN, level: 5, rng: 14776, tiers: { IV: [240, 400, 2.90] } }
+      - { name: "<f>Enchanted Book (Duplex I)", pool: MAIN, level: 6, rng: 23220, unavailable: "The Duplex enchantment isn't in the game yet.", tiers: { IV: [1, 1, 1.84] } }
+      - { item: HIGH_CLASS_ARCHFIEND_DICE, pool: MAIN, level: 7, rng: 194939, tiers: { IV: [1, 1, 0.26] } }
+      - { item: WILSON_ENGINEERING_PLANS, pool: MAIN, level: 7, rng: 478058, tiers: { IV: [1, 1, 0.09] } }
+      - { item: SUBZERO_INVERTER, pool: MAIN, level: 7, rng: 478058, tiers: { IV: [1, 1, 0.09] } }
+      - { name: "<5>Paragon Shard", pool: SEPARATE, level: 5, unavailable: "The Paragon Shard isn't in the game yet.", tiers: { IV: [1, 1, 0.25] } }
+      - { item: DYE_FLAME, pool: SEPARATE, level: 0, rng: 75000000, tiers: { I: [1, 1, 0.00001], II: [1, 1, 0.00004], III: [1, 1, 0.0001], IV: [1, 1, 0.0002] } }
+    # Derelict Ashe bonus applies at Zombie, Spider and Wolf Slayer LVL 6.
+    minibosses:
+      - { id: INFERNO_FOLLOWER_3, name: Flare Demon, tiers: [III], level: 381, health: 8750000, damage: 3000, combatXp: 2857, token: DERELICT_ASHE, tokenAmount: 1 }
+      - { id: INFERNO_FOLLOWER_4, name: Kindleheart Demon, tiers: [IV], level: 456, health: 17500000, damage: 6000, combatXp: 3420, token: DERELICT_ASHE, tokenAmount: 2 }
+      - { id: INFERNO_FOLLOWER_5, name: Burningsoul Demon, tiers: [IV], stronger: true, level: 522, health: 35000000, damage: 9000, combatXp: 3915, token: DERELICT_ASHE, tokenAmount: 5 }
