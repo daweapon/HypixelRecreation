@@ -6,6 +6,12 @@ items:
     components:
       - id: TALISMAN
         dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "Dungeons"
+            text:
+              - "Grants <a>+1% <7>extra loot to end of"
+              - "dungeon chests."
       - id: SKULL_HEAD
         texture: 31f320025142596396032cc0088e2ac36489f24cfa5e9dda13e081cf69f77f4d
       - id: SELLABLE
@@ -17,6 +23,12 @@ items:
     components:
       - id: TALISMAN
         dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "Dungeons"
+            text:
+              - "Grants <a>+2% <7>extra loot to end of"
+              - "dungeon chests."
       - id: SKULL_HEAD
         texture: 6a1cc5525a217a399b5b86c32f0f22dd91378874b5f44d5a383e18bc0f3bc301
       - id: SELLABLE
@@ -28,6 +40,12 @@ items:
     components:
       - id: TALISMAN
         dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "Dungeons"
+            text:
+              - "Grants <a>+3% <7>extra loot to end of"
+              - "dungeon chests."
       - id: SKULL_HEAD
         texture: e10f20a55b6e188ebe7578459b64a6fbd825067bc497b925ca43c2643d059025
       - id: SELLABLE

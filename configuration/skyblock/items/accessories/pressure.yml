@@ -13,7 +13,6 @@ items:
         texture: 4c84e82d57afdc4bfd26a3aedbd4bca7fddf0d9b9a06ed317ce0ff15afe1053c
       - id: SELLABLE
         value: 1000
-      - id: NOT_FINISHED_YET
 
   - id: PRESSURE_RING
     material: PLAYER_HEAD
@@ -29,7 +28,6 @@ items:
         texture: ed387797e8699db520d0cfcf2ac69270542f6fbba408d259b6d8a0e435efd3af
       - id: SELLABLE
         value: 1000
-      - id: NOT_FINISHED_YET
 
   - id: PRESSURE_ARTIFACT
     material: PLAYER_HEAD
@@ -45,4 +43,3 @@ items:
         texture: e76edf328d2f8e8b6532399c82461a4e4880753b6e9f926604884aecf0dd5d33
       - id: SELLABLE
         value: 1000
-      - id: NOT_FINISHED_YET

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetDrops;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import lombok.AccessLevel;
@@ -134,7 +135,7 @@ public final class FishingService {
         if (session.baitItemId() == null) {
             return;
         }
-        if (rollBaitPreservation(rod)) {
+        if (rollBaitPreservation(rod) || AccessoryEconomyHooks.preservesBait(player)) {
             return;
         }
         FishingBaitService.consumeOneBait(player, session.baitItemId());

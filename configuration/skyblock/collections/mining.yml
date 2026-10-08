@@ -1269,6 +1269,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: GRAVITY_TALISMAN
   - amount: 1000
     rewards:
     - type: XP

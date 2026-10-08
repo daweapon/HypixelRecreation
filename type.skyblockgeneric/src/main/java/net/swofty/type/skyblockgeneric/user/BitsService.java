@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.user;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.type.generic.data.datapoints.DatapointInteger;
@@ -58,7 +59,7 @@ public final class BitsService {
         int gained = Math.min(available, (int) Math.round(BITS_PER_SET * BitsMultiplier.of(player)));
         setInt(player, SkyBlockDataHandler.Data.BITS_AVAILABLE, available - gained);
         setLastFarmed(player, now);
-        player.addBits(gained);
+        player.addBits(AccessoryEconomyHooks.bitsGained(player, gained));
     }
 
     private static int getInt(SkyBlockPlayer player, SkyBlockDataHandler.Data data) {

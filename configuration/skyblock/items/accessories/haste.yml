@@ -9,11 +9,16 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Haste Ring
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HASTE
+            statistics: { mining_speed: 100 }
+            text:
+              - "Grants permanent <e>Haste II<7>."
       - id: SKULL_HEAD
         texture: 174b0c35491b660fc9138868bbcb5f02b539cb56b7ab63d6c53a9af2f63d061a
       - id: SELLABLE
         value: 20500
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -44,9 +49,14 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Haste Artifact
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: HASTE
+            statistics: { mining_speed: 150 }
+            text:
+              - "Grants permanent <e>Haste III<7>."
       - id: SKULL_HEAD
         texture: 2fe7a882ffe0d0dd245d91bd8e6dcc1ed450ae13880b12276fbaf66d4a4164c9
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

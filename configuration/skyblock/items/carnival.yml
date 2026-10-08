@@ -45,17 +45,17 @@ items:
     material: player_head
     name: "Carnival Mask Bag"
     rarity: COMMON
-    lore:
-      - "\xA77Holds \xA7eCarnival Masks\xA77. Each unique"
-      - "\xA77Mask within this bag grants \xA7b+1"
-      - "\xA7bIntelligence\xA77."
-      - ""
-      - "\xA7eRight-click to open!"
     components:
       - id: SKULL_HEAD
         texture: 44af943371d76e5db5deb93df2eaf14d9b0e03a1648bee7f90126abf8983c1d6
       - id: ACCESSORY
-      - id: NOT_FINISHED_YET
+        effects:
+          - type: INACTIVE
+            reason: "Accessory sub-bags"
+            text:
+              - "Holds <e>Carnival Masks<7>. Each unique"
+              - "Mask within this bag grants <b>+1"
+              - "<b>Intelligence<7>."
   - id: ZOMBIE_MASK
     material: player_head
     name: "Zombie Mask"

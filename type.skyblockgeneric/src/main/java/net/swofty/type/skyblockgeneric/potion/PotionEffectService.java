@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.potion;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributePotionData;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkills;
@@ -30,7 +31,8 @@ public class PotionEffectService {
         // Get Alchemy skill level for duration bonus
         DatapointSkills.PlayerSkills skills = player.getSkills();
         int alchemyLevel = skills.getCurrentLevel(SkillCategories.ALCHEMY);
-        long durationMs = Math.round(potionData.getFinalDurationMs(alchemyLevel) * MiscPetHooks.potionDurationMultiplier(player));
+        long durationMs = Math.round(potionData.getFinalDurationMs(alchemyLevel) * MiscPetHooks.potionDurationMultiplier(player)
+                * AccessoryEconomyHooks.potionDurationMultiplier(player));
 
         // Delegate to handler
         PotionEffectHandler handler = effectType.getHandler();

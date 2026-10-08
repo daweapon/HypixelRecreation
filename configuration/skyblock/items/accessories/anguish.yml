@@ -3,8 +3,6 @@ items:
     material: PLAYER_HEAD
     name: "Anguish Talisman"
     rarity: RARE
-    lore:
-      - '<8><o>Why are we still here? Just to suffer?'
     default_statistics:
       true_defense: 0.5
       magic_find: 1
@@ -12,6 +10,11 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Anguish Talisman
       - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8><o>Why are we still here? Just to"
+              - "<8><o>suffer?"
       - id: SKULL_HEAD
         texture: 8d4793f4c7df5dbb7c67ac6cc551ee0d9998e15e35a737bc27ee453103a00b14
       - id: DEFAULT_CRAFTABLE
@@ -38,8 +41,6 @@ items:
     material: PLAYER_HEAD
     name: "Anguish Ring"
     rarity: EPIC
-    lore:
-      - '<8><o>Why are we still here? Just to suffer?'
     default_statistics:
       true_defense: 1
       magic_find: 2
@@ -47,6 +48,11 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Anguish Ring
       - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8><o>Why are we still here? Just to"
+              - "<8><o>suffer?"
       - id: SKULL_HEAD
         texture: 73de3d0e0d7d2345a902305196012874411040ebe2c4e95fb2587dd4d1c09f37
       - id: DEFAULT_CRAFTABLE
@@ -77,8 +83,6 @@ items:
     material: PLAYER_HEAD
     name: "Anguish Artifact"
     rarity: LEGENDARY
-    lore:
-      - '<8><o>Why are we still here? Just to suffer?'
     default_statistics:
       true_defense: 1.5
       magic_find: 3
@@ -86,6 +90,11 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Anguish Artifact
       - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8><o>Why are we still here? Just to"
+              - "<8><o>suffer?"
       - id: SKULL_HEAD
         texture: 215e22698071bc74bdfde25f61d8f69028c0e7b8ed82366c287315e56a233efc
       - id: DEFAULT_CRAFTABLE

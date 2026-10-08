@@ -7,54 +7,134 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Beastmaster Crest
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Pet Exp Boost stat"
+            text:
+              - "Pet Exp Boost: <a>+0.1%"
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Gains stats based on how many <2>"
+              - "<2>Mythological <7>mobs and Minos"
+              - "followers you've slain."
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Your kills: <2>0<8>/25"
       - id: SKULL_HEAD
         texture: 53415667de3fb89c5f40c880c39e4971a0caa7f3a9d2c8f712ba37fadcee
-      - id: NOT_FINISHED_YET
 
   - id: BEASTMASTER_CREST_UNCOMMON
     material: PLAYER_HEAD
     name: "Beastmaster Crest Uncommon"
     rarity: UNCOMMON
+    default_statistics:
+      intelligence: 0.1
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Beastmaster Crest
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Pet Exp Boost stat"
+            text:
+              - "Pet Exp Boost: <a>+0.2%"
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Gains stats based on how many <2>"
+              - "<2>Mythological <7>mobs and Minos"
+              - "followers you've slain."
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Your kills: <2>0<8>/25"
       - id: SKULL_HEAD
         texture: 53415667de3fb89c5f40c880c39e4971a0caa7f3a9d2c8f712ba37fadcee
-      - id: NOT_FINISHED_YET
 
   - id: BEASTMASTER_CREST_RARE
     material: PLAYER_HEAD
     name: "Beastmaster Crest Rare"
     rarity: RARE
+    default_statistics:
+      intelligence: 0.2
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Beastmaster Crest
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Pet Exp Boost stat"
+            text:
+              - "Pet Exp Boost: <a>+0.3%"
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Gains stats based on how many <2>"
+              - "<2>Mythological <7>mobs and Minos"
+              - "followers you've slain."
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Your kills: <2>0<8>/25"
       - id: SKULL_HEAD
         texture: 53415667de3fb89c5f40c880c39e4971a0caa7f3a9d2c8f712ba37fadcee
-      - id: NOT_FINISHED_YET
 
   - id: BEASTMASTER_CREST_EPIC
     material: PLAYER_HEAD
     name: "Beastmaster Crest Epic"
     rarity: EPIC
+    default_statistics:
+      health: 0.2
+      intelligence: 0.2
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Beastmaster Crest
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Pet Exp Boost stat"
+            text:
+              - "Pet Exp Boost: <a>+0.4%"
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Gains stats based on how many <2>"
+              - "<2>Mythological <7>mobs and Minos"
+              - "followers you've slain."
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Your kills: <2>0<8>/25"
       - id: SKULL_HEAD
         texture: 53415667de3fb89c5f40c880c39e4971a0caa7f3a9d2c8f712ba37fadcee
-      - id: NOT_FINISHED_YET
 
   - id: BEASTMASTER_CREST_LEGENDARY
     material: PLAYER_HEAD
     name: "Beastmaster Crest Legendary"
     rarity: LEGENDARY
+    default_statistics:
+      health: 0.3
+      intelligence: 0.3
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Beastmaster Crest
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Pet Exp Boost stat"
+            text:
+              - "Pet Exp Boost: <a>+0.5%"
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Gains stats based on how many <2>"
+              - "<2>Mythological <7>mobs and Minos"
+              - "followers you've slain."
+          - type: INACTIVE
+            reason: "Beastmaster kill counter"
+            text:
+              - "Your kills: <2>0<8>/25"
       - id: SKULL_HEAD
         texture: 53415667de3fb89c5f40c880c39e4971a0caa7f3a9d2c8f712ba37fadcee
-      - id: NOT_FINISHED_YET

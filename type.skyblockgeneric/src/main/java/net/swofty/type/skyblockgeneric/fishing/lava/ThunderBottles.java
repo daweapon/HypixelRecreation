@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.fishing.lava;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import net.minestom.server.item.ItemStack;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
@@ -26,7 +27,8 @@ public final class ThunderBottles {
         ItemType empty = ItemType.get(EMPTY_ID);
         ItemType full = ItemType.get(FULL_ID);
         if (empty == null || full == null) return;
-        double speed = 1D + AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("R68")) / 100D;
+        double speed = 1D + AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("R68")) / 100D
+                + AccessoryEconomyHooks.thunderChargeBonus(player);
         for (int slot = 0; slot < INVENTORY_SLOTS; slot++) {
             ItemStack stack = player.getInventory().getItemStack(slot);
             if (stack.isAir()) continue;

@@ -51,25 +51,33 @@ items:
     material: player_head
     name: "Nether Artifact"
     rarity: EPIC
-    lore:
-      - "§7Reduces the damage taken from §4♨"
-      - "§4Infernal §7mobs by §a5%§7."
-      - ""
-      - "§7While in the §6Crimson Isle§7, you will receive"
-      - "§7the damage reduction from all mobs."
     components:
       - id: SKULL_HEAD
         texture: 4e6529fbf790301043e48eb43f7a740bdcb0e23854d7204a109ea0ff56436aed
       - id: TALISMAN
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 5
+            servers: [SKYBLOCK_CRIMSON_ISLE]
+            text:
+              - "Reduces the damage taken from <4>"
+              - "<4>Infernal <7>mobs by <a>5%<7>."
+              - ""
+              - "While in the <6>Crimson Isle<7>, you will receive"
+              - "the damage reduction from all mobs."
   - id: NIGHT_CRYSTAL
     material: paper
     name: "Night Crystal"
     rarity: RARE
-    lore:
-      - "§7Increases your §c❁ Strength §7and §a❈"
-      - "§aDefense§7 by §a+5§7 during the Night."
     components:
       - id: TALISMAN
+        effects:
+          - type: STAT
+            time: NIGHT
+            statistics: { strength: 5, defense: 5 }
+            text:
+              - "Increases your <c> Strength <7>and <a>"
+              - "<a>Defense<7> by <a>+5<7> during the Night."
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -93,11 +101,15 @@ items:
     material: paper
     name: "Day Crystal"
     rarity: RARE
-    lore:
-      - "§7Increases your §c❁ Strength §7and §a❈"
-      - "§aDefense§7 by §a+5§7 during the Day."
     components:
       - id: TALISMAN
+        effects:
+          - type: STAT
+            time: DAY
+            statistics: { strength: 5, defense: 5 }
+            text:
+              - "Increases your <c> Strength <7>and <a>"
+              - "<a>Defense<7> by <a>+5<7> during the Day."
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

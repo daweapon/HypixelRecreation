@@ -1,0 +1,294 @@
+items:
+  - id: CRUX_TALISMAN_1
+    material: PLAYER_HEAD
+    name: "Crux Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Defeat shies to gain <a>+5 Rift Time <7>and <6>+5"
+              - "<6>Crux Fortune <7>per kill milestone."
+              - "<8>Crux Fortune boosts the chance for"
+              - "<8>bonus crux drops."
+              - ""
+              - "Kill Milestones"
+              - "  <2>- Shy<7>: <e>0<7>/<a>10 <7>kills"
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Rift Time: <a>+10s"
+      - id: SKULL_HEAD
+        texture: 7b2254dbbf52c388557849108e93dcc5a9b3b7fa47e64f4ca063dfaa1a302c60
+
+  - id: CRUX_TALISMAN_2
+    material: PLAYER_HEAD
+    name: "Crux Ring"
+    rarity: UNCOMMON
+    default_statistics:
+      intelligence: 2
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Defeat crux mobs to gain <a>+5 Rift Time <7>and"
+              - "<6>+5 Crux Fortune <7>per kill milestone."
+              - "<8>Crux Fortune boosts the chance for"
+              - "<8>bonus crux drops."
+              - ""
+              - "Kill Milestones"
+              - "  <2>- Shy<7>: <e>0<7>/<a>10 <7>kills"
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Rift Time: <a>+20s"
+      - id: SKULL_HEAD
+        texture: bb5cb2c4a028ba71b9c96bde14eef4370623a3252e2545d40e2f4dfa9b154efc
+
+  - id: CRUX_TALISMAN_3
+    material: PLAYER_HEAD
+    name: "Crux Artifact"
+    rarity: RARE
+    default_statistics:
+      intelligence: 5
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Defeat crux mobs to gain <a>+5 Rift Time <7>and"
+              - "<6>+5 Crux Fortune <7>per kill milestone."
+              - "<8>Crux Fortune boosts the chance for"
+              - "<8>bonus crux drops."
+              - ""
+              - "Kill Milestones"
+              - "  <2>- Shy<7>: <e>0<7>/<a>10 <7>kills"
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Rift Time: <a>+35s"
+      - id: SKULL_HEAD
+        texture: 54d663451f350a366e674bb0d9f71fe922c11ff1bb8e583d05d237938afd0c88
+
+  - id: CRUX_TALISMAN_4
+    material: PLAYER_HEAD
+    name: "Crux Relic"
+    rarity: EPIC
+    default_statistics:
+      intelligence: 7
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Defeat crux mobs to gain <a>+5 Rift Time <7>and"
+              - "<6>+5 Crux Fortune <7>per kill milestone."
+              - "<8>Crux Fortune boosts the chance for"
+              - "<8>bonus crux drops."
+              - ""
+              - "Kill Milestones"
+              - "  <2>- Shy<7>: <e>0<7>/<a>10 <7>kills"
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Rift Time: <a>+55s"
+      - id: SKULL_HEAD
+        texture: 5dab2ff9f2b5e2d3692226f638eb9e6764a45b43ba0278c5e0bd8d74942c572d
+
+  - id: CRUX_TALISMAN_5
+    material: PLAYER_HEAD
+    name: "Crux Heirloom"
+    rarity: LEGENDARY
+    default_statistics:
+      intelligence: 10
+      speed: 1
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Defeat crux mobs to gain <a>+5 Rift Time <7>and"
+              - "<6>+5 Crux Fortune <7>per kill milestone."
+              - "<8>Crux Fortune boosts the chance for"
+              - "<8>bonus crux drops."
+              - ""
+              - "Kill Milestones"
+              - "  <2>- Shy<7>: <e>0<7>/<a>10 <7>kills"
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Rift Time: <a>+70s"
+      - id: SKULL_HEAD
+        texture: 21f5074db86b669376e71dd8fe70716f73e0e84f955879a4682ef5fa1ea82d2d
+
+  - id: CRUX_TALISMAN_6
+    material: PLAYER_HEAD
+    name: "Crux Chronomicon"
+    rarity: MYTHIC
+    default_statistics:
+      intelligence: 15
+      speed: 2
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Defeat crux mobs to gain <a>+5ф Rift Time <7>and"
+              - "<6>+5 Crux Fortune <7>per kill milestone."
+              - "<8>Crux Fortune boosts the chance for"
+              - "<8>bonus crux drops."
+              - ""
+              - "Kill Milestones"
+              - "  <2>- Shy<7>: <e>0<7>/<a>10 <7>kills"
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Rift Time: <a>+100s"
+      - id: SKULL_HEAD
+        texture: d3ad5579f6a71591e615cc551301d24e4432c0a17dd4a4fc4dddff0d27641dc6
+
+  - id: CRUX_TALISMAN_7
+    material: PLAYER_HEAD
+    name: "Celestial Starstone"
+    rarity: DIVINE
+    default_statistics:
+      intelligence: 20
+      speed: 3
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Defeat crux mobs to gain <a>+5 Rift Time <7>and"
+              - "<6>+5 Crux Fortune <7>per kill milestone."
+              - "<8>Crux Fortune boosts the chance for"
+              - "<8>bonus crux drops."
+              - ""
+              - "Kill Milestones"
+              - "  <2>- Shy<7>: <e>0<7>/<a>10 <7>kills"
+      - id: SKULL_HEAD
+        texture: cedf4ba5829220e2977629880305b2e54e66eba491c7e2f1254524522c8ba012
+
+  - id: DEFECTIVE_MONITOR
+    material: PLAYER_HEAD
+    name: "Defective Monitor"
+    rarity: EPIC
+    default_statistics:
+      intelligence: 6
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: TEXT
+            text:
+              - "Obtained from a Kloon who doesn't"
+              - "seem too stable."
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Rift Time: <a>+60s"
+      - id: SKULL_HEAD
+        texture: c01a9ca310fb96e6c0aaa3ea1d0585f2f41765d6aa99703bf861f2e769d24dc5
+
+  - id: GARLIC_FLAVORED_GUMMY_BEAR
+    material: PLAYER_HEAD
+    name: "Perma-Jelled Garlic-Flavored Re-Heated Gummy Polar Bear"
+    rarity: EPIC
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Gain <3>+5 Combat Exp <7>from mob kills in"
+              - "the <d>Rift<7>."
+      - id: SKULL_HEAD
+        texture: cb0d1628e42bdfa54d02ea664f2ca9e32a71c0e84aa21db1d32924d3f5e3d352
+
+  - id: HARMONIOUS_SURGERY_TOOLKIT
+    material: PLAYER_HEAD
+    name: "Harmonious Surgery Toolkit"
+    rarity: UNCOMMON
+    default_statistics:
+      speed: 2
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "If you touch a larva which another"
+              - "player touched, you both gain <f>+1"
+              - "<f>Larva Silk <7>once it is harvested."
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Rift Time: <a>+10s"
+      - id: SKULL_HEAD
+        texture: 76790daa4d42c8fdf83f9e8e96e0c04d3b1ccae0bf1d90a3302d26559921ac26
+
+  - id: RING_OF_BROKEN_LOVE
+    material: PLAYER_HEAD
+    name: "Ring of Broken Love"
+    rarity: LEGENDARY
+    components:
+      - id: ACCESSORY
+        only_in: RIFT
+        recombobulate: false
+        effects:
+          - type: TEXT
+            text:
+              - "This time around, fate really got in"
+              - "the way of love."
+          - type: INACTIVE
+            reason: "The Rift"
+            text:
+              - "Rift Time: <a>+80s"
+      - id: SKULL_HEAD
+        texture: 740e7c016a83c7c5806b8eff0fa12f273c036a18e5066bded280fa6bede7cc9d
+
+  - id: BINGO_RIFT_TALISMAN
+    material: PLAYER_HEAD
+    name: "Bingo Rift Talisman"
+    rarity: COMMON
+    components:
+      - id: ACCESSORY
+        only_in: BINGO
+        effects:
+          - type: INACTIVE
+            reason: "Bingo"
+            text:
+              - "While on a <6>Bingo <7>profile, you may join"
+              - "the <d>Rift <7>at <a>no cost<7>."
+      - id: SKULL_HEAD
+        texture: 8a069ddbf2c59541283e14fa6ae445592396f3df459a39eee04ec4bfc728de57
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false

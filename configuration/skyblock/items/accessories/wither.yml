@@ -7,11 +7,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Wither Artifact
       - id: ACCESSORY
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 20
+            mob_types: [WITHER]
+            text:
+              - "Reduces the damage taken from <8>"
+              - "<8>Wither <7>mobs by <a>20%<7>."
       - id: SKULL_HEAD
         texture: 17b8ef7e8e0af19399cc32485f2ee47b2bb4d5802c71b3021f4d5d6b5f3afe03
       - id: SELLABLE
         value: 1000
-      - id: NOT_FINISHED_YET
 
   - id: WITHER_RELIC
     material: PLAYER_HEAD
@@ -22,8 +28,14 @@ items:
         display_name: Wither Relic
       - id: ACCESSORY
         dungeon: true
+        effects:
+          - type: DAMAGE_REDUCTION
+            percent: 25
+            mob_types: [WITHER]
+            text:
+              - "Reduces the damage taken from <8>"
+              - "<8>Wither <7>mobs by <a>25%<7>."
       - id: SKULL_HEAD
         texture: 17b8ef7e8e0af19399cc32485f2ee47b2bb4d5802c71b3021f4d5d6b5f3afe03
       - id: SELLABLE
         value: 1000
-      - id: NOT_FINISHED_YET

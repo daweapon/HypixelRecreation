@@ -7,11 +7,18 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Feather Talisman
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: SAFE_FALL_BLOCKS
+            percent: 5
+            text:
+              - "Increases how high you can fall"
+              - "before taking fall damage by <a>5"
+              - "blocks."
       - id: SKULL_HEAD
         texture: 5120a863869320af4cfa7d1d58d0b2dd8182eb0be834b8caaeb5639421cd893b
       - id: SELLABLE
         value: 160
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -37,11 +44,22 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Feather Ring
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: SAFE_FALL_BLOCKS
+            percent: 7
+            text:
+              - "Increases how high you can fall"
+              - "before taking fall damage by <a>7"
+              - "blocks. Fall damage is also reduced"
+              - "by <a>5%<7>."
+          - type: HANDLER
+            handler: FALL_DAMAGE_REDUCTION
+            percent: 5
       - id: SKULL_HEAD
         texture: cb6851f4e9a87707ad72f5b5cd17efeca36c2c18cc99aaad7121fe72cf79b9b1
       - id: SELLABLE
         value: 1800
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -73,11 +91,22 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Feather Artifact
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: SAFE_FALL_BLOCKS
+            percent: 10
+            text:
+              - "Increases how high you can fall"
+              - "before taking fall damage by <a>10"
+              - "blocks. Fall damage is also reduced"
+              - "by <a>15%<7>."
+          - type: HANDLER
+            handler: FALL_DAMAGE_REDUCTION
+            percent: 15
       - id: SKULL_HEAD
         texture: da239e8b52ed91fe518d7c690b03de9dc69846a8d5c208ac1c102edd68d9ca18
       - id: SELLABLE
         value: 32000
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

@@ -81,26 +81,32 @@ items:
     material: player_head
     name: "Kuudra Follower Artifact"
     rarity: EPIC
-    lore:
-      - "§7Reduces damage taken from Kuudra"
-      - "§7Followers by §a50%§7."
     components:
       - id: SKULL_HEAD
         texture: 772011280b5b9ab18c55703943e7f11a19717974bb9541ca4b2723f7a5fab236
       - id: TALISMAN
+        effects:
+          - type: INACTIVE
+            reason: "Kuudra"
+            text:
+              - "Reduces damage taken from Kuudra"
+              - "Followers by <a>50%<7>."
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
   - id: KUUDRA_FOLLOWER_RELIC
     material: player_head
     name: "Kuudra Follower Relic"
     rarity: LEGENDARY
-    lore:
-      - "§7Reduces damage taken from Kuudra"
-      - "§7Followers by §a65%§7."
     components:
       - id: SKULL_HEAD
         texture: 97528b815fa12da44fd1c0f3f3a2a9034bff2d997bf9324bc1bfadcad3ae1ec4
       - id: TALISMAN
+        effects:
+          - type: INACTIVE
+            reason: "Kuudra"
+            text:
+              - "Reduces damage taken from Kuudra"
+              - "Followers by <a>65%<7>."
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
   - id: KUUDRA_CAVITY

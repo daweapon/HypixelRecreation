@@ -3,15 +3,23 @@ items:
     material: PLAYER_HEAD
     name: "Scarfs Studies"
     rarity: RARE
-    lore:
-      - "<7>Gain <a>2% <7>more Dungeons class"
-      - "<7>experience."
-      - ""
-      - "<7><7><o>The collection of his studies,"
-      - "<7><o>beautiful handwriting!"
     components:
       - id: TALISMAN
         dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "Dungeons"
+            text:
+              - "Gain <a>2% <7>more Dungeons class"
+              - "experience."
+          - type: TEXT
+            text:
+              - "<o>The collection of his studies,"
+              - "<o>beautiful handwriting!"
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
       - id: SKULL_HEAD
         texture: 6de4ab129e137f9f4cbf7060318ee1748dc39da9b5d129a8da0e614e2337693
 
@@ -19,15 +27,23 @@ items:
     material: PLAYER_HEAD
     name: "Scarfs Thesis"
     rarity: EPIC
-    lore:
-      - "<7>Gain <a>4% <7>more Dungeons class"
-      - "<7>experience."
-      - ""
-      - "<7><7><o>A research on how to preserve and"
-      - "<7><o>enhance class abilities in death."
     components:
       - id: TALISMAN
         dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "Dungeons"
+            text:
+              - "Gain <a>4% <7>more Dungeons class"
+              - "experience."
+          - type: TEXT
+            text:
+              - "<o>A research on how to preserve and"
+              - "<o>enhance class abilities in death."
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
       - id: SKULL_HEAD
         texture: 8ce4c87eb4dde27459e3e7f85921e7e57b11199260caa5ce63f139ee3d188c
       - id: DEFAULT_CRAFTABLE
@@ -50,16 +66,24 @@ items:
     material: PLAYER_HEAD
     name: "Scarfs Grimoire"
     rarity: LEGENDARY
-    lore:
-      - "<7>Gain <a>6% <7>more Dungeons class"
-      - "<7>experience."
-      - ""
-      - "<7><7><o>Dark and powerful spells, includes"
-      - '<7><o>his favorite "Barrier" that his'
-      - "<7><o>Professor taught him."
     components:
       - id: TALISMAN
         dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "Dungeons"
+            text:
+              - "Gain <a>6% <7>more Dungeons class"
+              - "experience."
+          - type: TEXT
+            text:
+              - "<o>Dark and powerful spells, includes"
+              - "<o>his favorite \"Barrier\" that his"
+              - "<o>Professor taught him."
+          - type: INACTIVE
+            reason: "Rift Transfer"
+            text:
+              - "<5><l>X <d>Rift-Transferable <5><l>X"
       - id: SKULL_HEAD
         texture: bafb195cc75f31b619a077b7853653254ac18f220dc32d1412982ff437b4d57a
       - id: DEFAULT_CRAFTABLE

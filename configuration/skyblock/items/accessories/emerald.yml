@@ -7,11 +7,16 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Emerald Ring
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: COINS_PER_MINUTE
+            percent: 5
+            text:
+              - "Get <6>+5 coins <7>every minute!"
       - id: SKULL_HEAD
         texture: a8e50d027da90dbea8a66088aba6f978eac8a7beb6561020f0289fcd43d89c68
       - id: SELLABLE
         value: 7600
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -40,8 +45,13 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Emerald Artifact
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: COINS_PER_MINUTE
+            percent: 20
+            text:
+              - "Get <6>+20 coins <7>every minute!"
       - id: SKULL_HEAD
         texture: fd88161a7da12461e260dc7678b94b9c5e62fcd38213d1f808e36b4335808094
       - id: SELLABLE
         value: 7600
-      - id: NOT_FINISHED_YET

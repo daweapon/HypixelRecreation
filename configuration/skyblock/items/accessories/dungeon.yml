@@ -6,6 +6,13 @@ items:
     components:
       - id: ACCESSORY
         dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "Dungeons"
+            text:
+              - "Grants a <a>1% <7>chance to automatically"
+              - "recombobulate drops you get from"
+              - "enemies."
       - id: SKULL_HEAD
         texture: 5dff8dbbab15bfbb11e23b1f50b34ef548ad9832c0bd7f5a13791adad0057e1b
       - id: SELLABLE
@@ -17,5 +24,11 @@ items:
     components:
       - id: ACCESSORY
         dungeon: true
+        effects:
+          - type: INACTIVE
+            reason: "Dungeons"
+            text:
+              - "Increases <c>Catacombs <7>dungeon"
+              - "experience by <a>+10%<7>."
       - id: SKULL_HEAD
         texture: dfcc213d3369b5570edd3549d22277fc496bfce539d19f7583d6d64bb1649cb3

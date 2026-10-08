@@ -20,8 +20,6 @@ items:
     material: PLAYER_HEAD
     name: "Fried Frozen Chicken"
     rarity: EPIC
-    lore:
-      - '<8><o>Fried Frozen?! There is no such thing!'
     default_statistics:
       speed: 1
       heat_resistance: 1
@@ -30,8 +28,12 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Fried Frozen Chicken
       - id: ACCESSORY
+        effects:
+          - type: TEXT
+            text:
+              - "<8><o>Fried Frozen?! There is no such"
+              - "<8><o>thing!"
       - id: SKULL_HEAD
         texture: adf30116f254f60167cee4137122783d2b4a4ccc36373077d507352424045ce4
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET

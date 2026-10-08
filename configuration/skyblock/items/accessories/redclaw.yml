@@ -11,7 +11,6 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 317b51e086f201448a4b45b0b91e97faf4d1739071480be6d5cab0a054512164
-      - id: NOT_FINISHED_YET
 
   - id: RED_CLAW_RING
     material: PLAYER_HEAD
@@ -25,7 +24,6 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: 59d9b327ff82f6e109b8746c48bfb7f641e1552855493dd4118be24d5b02bc0a
-      - id: NOT_FINISHED_YET
 
   - id: RED_CLAW_ARTIFACT
     material: PLAYER_HEAD
@@ -39,4 +37,3 @@ items:
       - id: ACCESSORY
       - id: SKULL_HEAD
         texture: caf59b8aa0f83546ef0d178ccf87e7ed88cf7858caae79b3633cbd75b650525f
-      - id: NOT_FINISHED_YET

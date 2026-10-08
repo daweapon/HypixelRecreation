@@ -7,11 +7,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Potion Affinity Talisman
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: POTION_DURATION
+            percent: 10
+            text:
+              - "Increases the duration of any"
+              - "consumed Potion by <a>10%<7>."
       - id: SKULL_HEAD
         texture: d6a59f4abcf5516e50b5a9b1cf2f7eca78eaf0c07ffb254cd45131b169068a5a
       - id: SELLABLE
         value: 192
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -37,11 +43,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Potion Affinity Ring
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: POTION_DURATION
+            percent: 25
+            text:
+              - "Increases the duration of any"
+              - "consumed Potion by <a>25%<7>."
       - id: SKULL_HEAD
         texture: 46b5cfdd804d76249e7c6946b1d9afa22e9bdc72149f682e71654aee885dffbb
       - id: SELLABLE
         value: 2100
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -70,11 +82,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Potion Affinity Artifact
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: POTION_DURATION
+            percent: 50
+            text:
+              - "Increases the duration of any"
+              - "consumed Potion by <a>50%<7>."
       - id: SKULL_HEAD
         texture: 56f9119a1d1fb01bb97db89aeba56ff5ee112079e432a2b50fa3a80a8954db38
       - id: SELLABLE
         value: 64000
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

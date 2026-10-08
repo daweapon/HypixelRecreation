@@ -15,7 +15,6 @@ items:
         value: 1000
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: LYNX_TALISMAN
     material: PLAYER_HEAD
@@ -33,7 +32,6 @@ items:
         value: 1000
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CHEETAH_TALISMAN
     material: PLAYER_HEAD
@@ -51,4 +49,3 @@ items:
         value: 1000
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET

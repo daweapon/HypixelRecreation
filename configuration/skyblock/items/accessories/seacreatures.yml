@@ -9,11 +9,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Sea Creature Talisman
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: SEA_CREATURE_DAMAGE_REDUCTION
+            percent: 5
+            text:
+              - "Take <a>5%<7> less damage from Sea"
+              - "Creatures."
       - id: SKULL_HEAD
         texture: eb7ae4dd0384543b31623ef19c1b3f886629424efae004b6ea75194ee9b9aa32
       - id: SELLABLE
         value: 180
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -41,11 +47,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Sea Creature Ring
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: SEA_CREATURE_DAMAGE_REDUCTION
+            percent: 10
+            text:
+              - "Take <a>10%<7> less damage from Sea"
+              - "Creatures."
       - id: SKULL_HEAD
         texture: 7ac01f28133c16b73567a77444e29a1475202d974ace29624cb688d2491b0b58
       - id: SELLABLE
         value: 1000
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -79,11 +91,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Sea Creature Artifact
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: SEA_CREATURE_DAMAGE_REDUCTION
+            percent: 15
+            text:
+              - "Take <a>15%<7> less damage from Sea"
+              - "Creatures."
       - id: SKULL_HEAD
         texture: a4270c3655178afe44597b6394708828c292455365bddef971a381f41e47d5d0
       - id: SELLABLE
         value: 25000
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

@@ -126,41 +126,44 @@ items:
     material: player_head
     name: "Kuudra's Kidney"
     rarity: RARE
-    lore:
-      - "§7You pick up crates §a10% §7faster."
-      - "§7You build the ballista §a5% §7faster."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 6768112ce79544de28ffab7c085ecd4368f0194027fe4d5916f748e0aa3b65a1
       - id: TALISMAN
+        effects:
+          - type: INACTIVE
+            reason: "Kuudra"
+            text:
+              - "You pick up crates <a>10% <7>faster."
+              - "You build the ballista <a>5% <7>faster."
   - id: KUUDRAS_LUNG
     material: player_head
     name: "Kuudra's Lung"
     rarity: EPIC
-    lore:
-      - "§7You pick up crates §a20% §7faster."
-      - "§7You build the ballista §a10% §7faster."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 4055a6b8591c46c19c890020b3d2aaef76479513f86802aeedc064c5dc271be
       - id: TALISMAN
+        effects:
+          - type: INACTIVE
+            reason: "Kuudra"
+            text:
+              - "You pick up crates <a>20% <7>faster."
+              - "You build the ballista <a>10% <7>faster."
   - id: KUUDRAS_HEART
     material: player_head
     name: "Kuudra's Heart"
     rarity: LEGENDARY
-    lore:
-      - "§7You pick up crates §a30% §7faster."
-      - "§7You build the ballista §a15% §7faster."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 79c08e7447aecda5c9ab6113eb0efbabfa1bd9f811811208d89875c146ee8844
       - id: TALISMAN
+        effects:
+          - type: INACTIVE
+            reason: "Kuudra"
+            text:
+              - "You pick up crates <a>30% <7>faster."
+              - "You build the ballista <a>15% <7>faster."
   - id: ANANKE_FEATHER
     material: feather
     name: "Ananke Feather"

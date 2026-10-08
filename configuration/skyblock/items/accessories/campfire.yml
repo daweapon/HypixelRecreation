@@ -3,15 +3,20 @@ items:
     material: PLAYER_HEAD
     name: "Campfire Talisman"
     rarity: COMMON
-    lore:
-      - "<7>Heal <c>4❤ <7> per second while burning"
-      - " "
-      - "<6>Trial of Fire II"
-      - "<8><o>\"Fire guy!\""
     components:
       - id: SKULL_HEAD
         texture: 3ada666715bfd2aa9fbd81daef59b9fe1c96c4fa0d08dbc72eae5633177dbf88
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 2 }
+            text:
+              - "Gain <c>+2 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 2"
+              - "<8><o>\"Fire guy!\""
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
       - id: CUSTOM_DISPLAY_NAME
@@ -25,11 +30,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Initiate Badge II
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 3 }
+            text:
+              - "Gain <c>+3 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 3"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 3ada666715bfd2aa9fbd81daef59b9fe1c96c4fa0d08dbc72eae5633177dbf88
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_3
     material: PLAYER_HEAD
@@ -39,11 +53,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Initiate Badge III
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 4 }
+            text:
+              - "Gain <c>+4 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 4"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 3ada666715bfd2aa9fbd81daef59b9fe1c96c4fa0d08dbc72eae5633177dbf88
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_4
     material: PLAYER_HEAD
@@ -53,11 +76,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Adept Badge I
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 5 }
+            text:
+              - "Gain <c>+5 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 5"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 437a7acf6f23c35827acfb0e0d3bcaf8ec3f8548134dd1151128857750812649
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_5
     material: PLAYER_HEAD
@@ -67,11 +99,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Adept Badge II
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 6 }
+            text:
+              - "Gain <c>+6 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 6"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 437a7acf6f23c35827acfb0e0d3bcaf8ec3f8548134dd1151128857750812649
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_6
     material: PLAYER_HEAD
@@ -81,11 +122,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Adept Badge III
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 7 }
+            text:
+              - "Gain <c>+7 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 7"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 437a7acf6f23c35827acfb0e0d3bcaf8ec3f8548134dd1151128857750812649
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_7
     material: PLAYER_HEAD
@@ -95,11 +145,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Adept Badge IV
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 8 }
+            text:
+              - "Gain <c>+8 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 8"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 437a7acf6f23c35827acfb0e0d3bcaf8ec3f8548134dd1151128857750812649
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_8
     material: PLAYER_HEAD
@@ -109,11 +168,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Cultist Badge I
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 9 }
+            text:
+              - "Gain <c>+9 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 9"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9886cc8eed3cbe54fe963679e6c58e4599478304711763f6b728fd8767060350
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_9
     material: PLAYER_HEAD
@@ -123,11 +191,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Cultist Badge II
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 10 }
+            text:
+              - "Gain <c>+10 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 10"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9886cc8eed3cbe54fe963679e6c58e4599478304711763f6b728fd8767060350
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_10
     material: PLAYER_HEAD
@@ -137,11 +214,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Cultist Badge III
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 11 }
+            text:
+              - "Gain <c>+11 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 11"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9886cc8eed3cbe54fe963679e6c58e4599478304711763f6b728fd8767060350
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_11
     material: PLAYER_HEAD
@@ -151,11 +237,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Cultist Badge IV
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 12 }
+            text:
+              - "Gain <c>+12 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 12"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9886cc8eed3cbe54fe963679e6c58e4599478304711763f6b728fd8767060350
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_12
     material: PLAYER_HEAD
@@ -165,11 +260,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Cultist Badge V
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 13 }
+            text:
+              - "Gain <c>+13 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 13"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9886cc8eed3cbe54fe963679e6c58e4599478304711763f6b728fd8767060350
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_13
     material: PLAYER_HEAD
@@ -179,11 +283,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Scion Badge I
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 14 }
+            text:
+              - "Gain <c>+14 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 14"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 2fb5aedfaf157d3dd00383980cd35556aec3767c67d3e8e12244ea2fde198146
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_14
     material: PLAYER_HEAD
@@ -193,11 +306,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Scion Badge II
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 15 }
+            text:
+              - "Gain <c>+15 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 15"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 2fb5aedfaf157d3dd00383980cd35556aec3767c67d3e8e12244ea2fde198146
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_15
     material: PLAYER_HEAD
@@ -207,11 +329,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Scion Badge III
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 16 }
+            text:
+              - "Gain <c>+16 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 16"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 2fb5aedfaf157d3dd00383980cd35556aec3767c67d3e8e12244ea2fde198146
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_16
     material: PLAYER_HEAD
@@ -221,11 +352,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Scion Badge IV
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 17 }
+            text:
+              - "Gain <c>+17 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 17"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 2fb5aedfaf157d3dd00383980cd35556aec3767c67d3e8e12244ea2fde198146
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_17
     material: PLAYER_HEAD
@@ -235,11 +375,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Scion Badge V
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 18 }
+            text:
+              - "Gain <c>+18 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 18"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 2fb5aedfaf157d3dd00383980cd35556aec3767c67d3e8e12244ea2fde198146
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_18
     material: PLAYER_HEAD
@@ -249,11 +398,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Scion Badge VI
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 19 }
+            text:
+              - "Gain <c>+19 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 19"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 2fb5aedfaf157d3dd00383980cd35556aec3767c67d3e8e12244ea2fde198146
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_19
     material: PLAYER_HEAD
@@ -263,11 +421,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Scion Badge VII
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 20 }
+            text:
+              - "Gain <c>+20 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 20"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 2fb5aedfaf157d3dd00383980cd35556aec3767c67d3e8e12244ea2fde198146
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_20
     material: PLAYER_HEAD
@@ -277,11 +444,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire Scion Badge VIII
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 21 }
+            text:
+              - "Gain <c>+21 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 21"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 2fb5aedfaf157d3dd00383980cd35556aec3767c67d3e8e12244ea2fde198146
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_21
     material: PLAYER_HEAD
@@ -293,11 +469,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire God Badge I
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 22 }
+            text:
+              - "Gain <c>+22 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 22"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9e97fe2e0c3a932f76415b24170509ddf3873a44cccfa3c281a92f76cea1a254
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_22
     material: PLAYER_HEAD
@@ -309,11 +494,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire God Badge II
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 23 }
+            text:
+              - "Gain <c>+23 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 23"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9e97fe2e0c3a932f76415b24170509ddf3873a44cccfa3c281a92f76cea1a254
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_23
     material: PLAYER_HEAD
@@ -325,11 +519,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire God Badge III
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 24 }
+            text:
+              - "Gain <c>+24 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 24"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9e97fe2e0c3a932f76415b24170509ddf3873a44cccfa3c281a92f76cea1a254
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_24
     material: PLAYER_HEAD
@@ -341,11 +544,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire God Badge IV
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 25 }
+            text:
+              - "Gain <c>+25 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 25"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9e97fe2e0c3a932f76415b24170509ddf3873a44cccfa3c281a92f76cea1a254
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_25
     material: PLAYER_HEAD
@@ -357,11 +569,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire God Badge V
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 26 }
+            text:
+              - "Gain <c>+26 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 26"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9e97fe2e0c3a932f76415b24170509ddf3873a44cccfa3c281a92f76cea1a254
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_26
     material: PLAYER_HEAD
@@ -373,11 +594,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire God Badge VI
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 27 }
+            text:
+              - "Gain <c>+27 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 27"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9e97fe2e0c3a932f76415b24170509ddf3873a44cccfa3c281a92f76cea1a254
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_27
     material: PLAYER_HEAD
@@ -389,11 +619,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire God Badge VII
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 28 }
+            text:
+              - "Gain <c>+28 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 28"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9e97fe2e0c3a932f76415b24170509ddf3873a44cccfa3c281a92f76cea1a254
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_28
     material: PLAYER_HEAD
@@ -405,11 +644,20 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire God Badge VIII
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 29 }
+            text:
+              - "Gain <c>+29 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 29"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: 9e97fe2e0c3a932f76415b24170509ddf3873a44cccfa3c281a92f76cea1a254
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET
 
   - id: CAMPFIRE_TALISMAN_29
     material: PLAYER_HEAD
@@ -421,8 +669,17 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Campfire God Badge IX
       - id: ACCESSORY
+        effects:
+          - type: HANDLER
+            handler: WHILE_BURNING
+            statistics: { health_regeneration: 30 }
+            text:
+              - "Gain <c>+30 Health Regen <7>while burning."
+          - type: TEXT
+            text:
+              - "<6>Trial of Fire 30"
+              - "<8><o>\"Fire guy!\""
       - id: SKULL_HEAD
         texture: f06818c2368dda8732e26b485acf1897efa4afadc4390cea3359ab104d73ad5e
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
-      - id: NOT_FINISHED_YET

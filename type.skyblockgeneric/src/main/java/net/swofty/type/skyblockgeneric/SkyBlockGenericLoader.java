@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric;
 
+import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -310,6 +311,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
          */
         SkyBlockDataHandler.startRepeatSetValueLoop();
         BitsService.startFarming();
+        AccessoryEconomyHooks.start();
         BottleOfJyrre.startAging();
         SnowmanPet.startBlizzard();
         CoopSync.subscribe();

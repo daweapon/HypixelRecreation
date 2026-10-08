@@ -9,9 +9,18 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Draconic Talisman
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Dragons"
+            text:
+              - "Increases damage dealt to <5>Dragons"
+              - "by <a>2%<7>."
+          - type: TEXT
+            text:
+              - "<8><o>Created from ripping The End of its"
+              - "<8><o>fauna."
       - id: SKULL_HEAD
         texture: 11c51b946cb484b9c76b2c5bf5eab0c74c9ced95f35aa81e699bd5d9b57e20f
-      - id: NOT_FINISHED_YET
 
   - id: DRACONIC_RING
     material: PLAYER_HEAD
@@ -23,9 +32,18 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Draconic Ring
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Dragons"
+            text:
+              - "Increases damage dealt to <5>Dragons"
+              - "by <a>3%<7>."
+          - type: TEXT
+            text:
+              - "<8><o>Created from ripping The End of its"
+              - "<8><o>fauna."
       - id: SKULL_HEAD
         texture: fee1e74047277a70661a8eaf9c4c6ebf83554b275a16816ec79bba1bce320434
-      - id: NOT_FINISHED_YET
 
   - id: DRACONIC_ARTIFACT
     material: PLAYER_HEAD
@@ -37,6 +55,15 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Draconic Artifact
       - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Dragons"
+            text:
+              - "Increases damage dealt to <5>Dragons"
+              - "by <a>5%<7>."
+          - type: TEXT
+            text:
+              - "<8><o>Created from ripping The End of its"
+              - "<8><o>fauna."
       - id: SKULL_HEAD
         texture: ead7dcbe93401b3d3b4e5222ef8097aef4431f48064d0a0531fa0952c211e0e6
-      - id: NOT_FINISHED_YET
