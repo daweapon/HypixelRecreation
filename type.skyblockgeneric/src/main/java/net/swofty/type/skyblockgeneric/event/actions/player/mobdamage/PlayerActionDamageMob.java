@@ -4,6 +4,7 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.event.entity.EntityAttackEvent;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.event.EventNodes;
@@ -46,6 +47,11 @@ public class PlayerActionDamageMob implements HypixelEventClass {
             mob = skyBlockMob;
         else return;
         LivingEntity targetLivingEntity = (LivingEntity) targetEntity;
+
+        if (heldItem.getAttributeHandler().getPotentialType() == ItemType.ONE_HIT_SWORD) {
+            AttackService.obliterate(player, mob);
+            return;
+        }
 
         ItemStatistics entityStats = mob.getStatistics();
         Map.Entry<Double, Boolean> hit = player.getStatistics().runPrimaryDamageFormula(entityStats, player, targetLivingEntity);

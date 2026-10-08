@@ -215,6 +215,12 @@ public class MythologicalCreatureMob extends BestiaryMob {
     }
 
     @Override
+    public void obliterate(SkyBlockPlayer player) {
+        attackers.add(player.getUuid());
+        super.obliterate(player);
+    }
+
+    @Override
     public void remove() {
         cleanUp();
         super.remove();

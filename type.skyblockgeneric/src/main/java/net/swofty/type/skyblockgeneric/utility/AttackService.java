@@ -51,6 +51,17 @@ public final class AttackService {
         return true;
     }
 
+    public static void obliterate(SkyBlockPlayer attacker, SkyBlockMob target) {
+        if (target.isRemoved() || target.isDead()) return;
+        Instance instance = target.getInstance();
+        Pos position = target.getPosition();
+        float health = target.getHealth();
+        target.obliterate(attacker);
+        if (instance != null) {
+            new DamageIndicator().damage(health).pos(position).critical(true).display(instance);
+        }
+    }
+
     public static void scheduleExtraHits(SkyBlockPlayer attacker, SkyBlockMob target,
                                          float damage, boolean critical, double ferocity) {
         double effectiveFerocity = Math.max(0D, Math.min(MAX_FEROCITY, ferocity));

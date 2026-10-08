@@ -18,3 +18,16 @@ items:
     components:
       - id: INTERACTABLE
         handler_id: THE_MAX_STICK_INTERACT
+  - id: ONE_HIT_SWORD
+    material: netherite_sword
+    rarity: ADMIN
+    name: "One Hit Sword"
+    lore:
+      - "<7>Kills any mob in the game in a"
+      - "<7>single hit, ignoring shields,"
+      - "<7>immunities and damage caps."
+      - ""
+      - "<7>Damage: <c>∞"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: SWORD

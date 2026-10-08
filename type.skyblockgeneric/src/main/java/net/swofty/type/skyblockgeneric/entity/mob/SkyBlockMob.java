@@ -20,6 +20,7 @@ import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.entity.attribute.Attribute;
 import net.minestom.server.entity.damage.Damage;
+import net.minestom.server.entity.damage.DamageType;
 import net.minestom.server.entity.metadata.display.TextDisplayMeta;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.network.packet.server.play.EntityHeadLookPacket;
@@ -300,6 +301,13 @@ public abstract class SkyBlockMob extends EntityCreature {
 
     public boolean isImmuneToArrows() {
         return false;
+    }
+
+    public void obliterate(SkyBlockPlayer player) {
+        if (isDead() || isRemoved()) return;
+        lastDamage = new Damage(DamageType.PLAYER_ATTACK, player, player, player.getPosition(), getHealth());
+        setHealth(0);
+        if (!isDead()) kill();
     }
 
     @Override
