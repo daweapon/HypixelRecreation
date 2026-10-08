@@ -426,7 +426,7 @@ items:
     default_statistics:
       health: 175
       defense: 150
-      crit_damage: 20
+      critical_damage: 20
       sea_creature_chance: 3
     components:
       - id: STANDARD_ITEM
@@ -478,7 +478,7 @@ items:
     default_statistics:
       health: 200
       defense: 175
-      crit_damage: 15
+      critical_damage: 15
       sea_creature_chance: 3
     components:
       - id: STANDARD_ITEM
@@ -762,7 +762,7 @@ items:
       health: 225
       defense: 175
       strength: 10
-      crit_damage: 35
+      critical_damage: 35
       sea_creature_chance: 4.5
     components:
       - id: STANDARD_ITEM
@@ -811,7 +811,7 @@ items:
       health: 275
       defense: 225
       strength: 10
-      crit_damage: 35
+      critical_damage: 35
       sea_creature_chance: 4.5
     components:
       - id: STANDARD_ITEM
@@ -863,7 +863,7 @@ items:
       health: 250
       defense: 200
       strength: 10
-      crit_damage: 35
+      critical_damage: 35
       sea_creature_chance: 4.5
     components:
       - id: STANDARD_ITEM
@@ -915,7 +915,7 @@ items:
       health: 200
       defense: 150
       strength: 10
-      crit_damage: 35
+      critical_damage: 35
       sea_creature_chance: 4.5
     components:
       - id: STANDARD_ITEM
