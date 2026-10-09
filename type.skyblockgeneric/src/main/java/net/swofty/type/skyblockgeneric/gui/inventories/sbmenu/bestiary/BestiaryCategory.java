@@ -4,6 +4,8 @@ import lombok.Getter;
 import net.minestom.server.item.Material;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
+import net.swofty.type.skyblockgeneric.entity.mob.CataloguedBestiaryMob;
+import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobAshfang;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBarbarianDukeX;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBezal;
@@ -46,7 +48,10 @@ import net.swofty.type.skyblockgeneric.entity.mob.island.PrivateIslandMob;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalBestiary;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreature;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public enum BestiaryCategory {
@@ -196,6 +201,47 @@ public enum BestiaryCategory {
         @Override
         public GUIMaterial getGuiMaterial() {
             return mobs.getFirst().getGuiMaterial();
+        }
+    }
+
+    /**
+     * The 13 Kuudra Bestiary families with their kill caps and brackets (NEU repo constants, research K1 5.4).
+     * The fight's mobs live on the Kuudra server and record kills under these ids.
+     */
+    @Getter
+    public enum KUUDRA implements BestiaryEntry {
+        BLAZING_GOLEM("BLAZING_GOLEM", "Blazing Golem", "Forged in the heat of Kuudra's Hollow.", 3, 10, Material.IRON_BLOCK, MobType.CONSTRUCT),
+        BLIGHT("BLIGHT", "Blight", "Can't be hurt while it's angry.", 3, 20, Material.LEATHER_CHESTPLATE, MobType.UNDEAD),
+        DROPSHIP("DROPSHIP", "Dropship", "Bombs away!", 3, 10, Material.GHAST_TEAR, MobType.AIRBORNE),
+        EXPLOSIVE_IMP("EXPLOSIVE_IMP", "Explosive Imp", "Goes out with a bang.", 4, 20, Material.TNT, MobType.INFERNAL),
+        INFERNO_MAGMA_CUBE("INFERNO_MAGMA_CUBE", "Inferno Magma Cube", "Hotter than your average Magma Cube.", 3, 20, Material.MAGMA_CREAM, MobType.CUBIC),
+        KUUDRA_BERSERKER("KUUDRA_BERSERKER", "Kuudra Berserker", "Leaves something nasty behind.", 3, 20, Material.GOLDEN_AXE, MobType.INFERNAL),
+        KUUDRA_FOLLOWER("KUUDRA_FOLLOWER", "Kuudra Follower", "Believes in the return of Kuudra.", 2, 20, Material.WITHER_SKELETON_SKULL, MobType.UNDEAD),
+        KUUDRA_KNOCKER("KUUDRA_KNOCKER", "Kuudra Knocker", "Hits like a truck.", 3, 20, Material.PISTON, MobType.INFERNAL),
+        KUUDRA_LANDMINE("KUUDRA_LANDMINE", "Kuudra Landmine", "Watch your step.", 3, 20, Material.STONE_PRESSURE_PLATE, MobType.INFERNAL),
+        KUUDRA_SLASHER("KUUDRA_SLASHER", "Kuudra Slasher", "Leaps from place to place.", 5, 10, Material.IRON_SWORD, MobType.INFERNAL),
+        MAGMA_FOLLOWER("MAGMA_FOLLOWER", "Magma Follower", "Stronger together.", 5, 10, Material.MAGMA_BLOCK, MobType.CUBIC),
+        WANDERING_BLAZE("WANDERING_BLAZE", "Wandering Blaze", "Emerges from Kuudra's mouth.", 4, 20, Material.BLAZE_ROD, MobType.INFERNAL),
+        WITHER_SENTRY("WITHER_SENTRY", "Wither Sentry", "Never leaves its post.", 4, 10, Material.WITHER_SKELETON_SKULL, MobType.WITHER),
+        ;
+
+        private final String name, description;
+        private final List<BestiaryMob> mobs;
+
+        KUUDRA(String mobId, String displayName, String description, int bracket, int maxTier, Material icon, MobType type) {
+            this.name = "<a>" + displayName;
+            this.description = description;
+            this.mobs = List.of(CataloguedBestiaryMob.of(new CataloguedBestiaryMob.Family(
+                    mobId, displayName, bracket, maxTier, new GUIMaterial(icon), type)));
+        }
+
+        @Override
+        public GUIMaterial getGuiMaterial() {
+            return mobs.getFirst().getGuiMaterial();
+        }
+
+        public static Set<String> mobIds() {
+            return Arrays.stream(values()).map(family -> family.getMobs().getFirst().getMobID()).collect(Collectors.toUnmodifiableSet());
         }
     }
 }
