@@ -61,6 +61,11 @@ public class VanillaNavigator {
     * @return {@code true} if a usable (non-empty) path — full or best-effort partial — was produced.
     */
    public boolean pathTo(@Nullable Point target) {
+      return pathTo(target, HARD_ITERATION_CAP);
+   }
+
+   /** As {@link #pathTo(Point)}, expanding at most {@code maxIterations} nodes. */
+   public boolean pathTo(@Nullable Point target, int maxIterations) {
       // Always reset any prior path first.
       stop();
       if (target == null) {
@@ -88,7 +93,8 @@ public class VanillaNavigator {
       }
 
       double straight = generator.heuristic(start, goal);
-      int iterationCap = (int) Math.clamp(ITERATIONS_PER_BLOCK * straight, MIN_ITERATIONS, HARD_ITERATION_CAP);
+      int iterationCap = Math.min(maxIterations,
+         (int) Math.clamp(ITERATIONS_PER_BLOCK * straight, MIN_ITERATIONS, HARD_ITERATION_CAP));
 
       PNode startNode = new PNode(start, 0.0, generator.heuristic(start, goal), PNode.Type.WALK, null);
 
