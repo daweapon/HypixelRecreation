@@ -10,6 +10,7 @@ import net.swofty.commons.redis.RedisEnvelope;
 import net.swofty.commons.redis.RedisMessageBus;
 import net.swofty.commons.redis.RedisMessageContext;
 import net.swofty.commons.redis.RedisMessageHandler;
+import net.swofty.commons.redis.RedisSubscriber;
 import net.swofty.commons.skyblock.item.attribute.ItemAttribute;
 import net.swofty.redisapi.api.RedisAPI;
 import net.swofty.service.generic.redis.PingEndpoint;
@@ -56,7 +57,7 @@ public class ServiceInitializer {
             );
         });
 
-        RedisAPI.getInstance().startListeners();
+        RedisSubscriber.start();
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
                 RedisAPI.getInstance().shutdown();

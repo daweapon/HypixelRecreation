@@ -60,6 +60,7 @@ import net.swofty.commons.redis.ProxyHeartbeat;
 import net.swofty.commons.redis.RedisClient;
 import net.swofty.commons.redis.RedisEndpoint;
 import net.swofty.commons.redis.RedisMessageHandler;
+import net.swofty.commons.redis.RedisSubscriber;
 import net.swofty.commons.text.Text;
 import net.swofty.proxyapi.ProxyService;
 import net.swofty.redisapi.api.RedisAPI;
@@ -289,7 +290,7 @@ public class SkyBlockVelocity {
         loopThroughPackage("net.swofty.commons.protocol.objects", RedisProtocol.class)
             .filter(obj -> !obj.getClass().getPackageName().startsWith("net.swofty.commons.protocol.objects.proxy"))
             .forEach(RedisClient::registerResponseProtocol);
-        RedisAPI.getInstance().startListeners();
+        RedisSubscriber.start();
 
         // Setup GameManager
         GameManager.loopServers(server);

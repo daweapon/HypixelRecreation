@@ -87,6 +87,6 @@ public class ProxyAPI {
     }
 
     public void start() {
-        RedisAPI.getInstance().startListeners();
+        RedisSubscriber.start();
     }
 }
