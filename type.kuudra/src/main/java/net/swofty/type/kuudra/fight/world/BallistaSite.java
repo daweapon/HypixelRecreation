@@ -62,12 +62,13 @@ public final class BallistaSite {
     private final Consumer<SkyBlockPlayer> onSeatUse;
     private @Nullable Entity bodyHitbox;
     private @Nullable SkyBlockPlayer rider;
-    private float facing = NORTH;
+    private float facing;
 
     public BallistaSite(Instance instance, KuudraArena arena, BiConsumer<String, SkyBlockPlayer> onPileUse,
                         Consumer<SkyBlockPlayer> onSeatUse) {
         this.instance = instance;
         this.base = arena.centre();
+        this.facing = restingFacing(base, arena.kuudraSides().get("FRONT"));
         this.piles = arena.piles();
         piles.forEach((name, at) -> {
             pileLabels.put(name, Displays.text(instance, at.add(0, 1.2, 0), "<e><l>BRING SUPPLY CHEST HERE"));
@@ -79,6 +80,12 @@ public final class BallistaSite {
         seat = new Entity(EntityType.ITEM_DISPLAY);
         seat.setNoGravity(true);
         seat.setInstance(instance, placed(SEAT));
+    }
+
+    /** Kuudra first surfaces on the FRONT side, so the idle Ballista points its muzzle there. */
+    public static float restingFacing(Pos base, @Nullable Pos front) {
+        if (front == null) return 0;
+        return (float) Math.toDegrees(Math.atan2(-(front.x() - base.x()), front.z() - base.z()));
     }
 
     /** A model offset turned to where the Ballista faces, as a position whose view matches the turn. */

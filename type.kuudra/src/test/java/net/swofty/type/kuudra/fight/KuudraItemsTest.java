@@ -13,6 +13,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class KuudraItemsTest {
 
@@ -48,5 +49,14 @@ class KuudraItemsTest {
         assertEquals(2.5, south.z(), 1e-9);
         Pos west = BallistaSite.placed(base, 90, muzzle);
         assertEquals(-2.5, west.x(), 1e-9);
+    }
+
+    @Test
+    void theIdleBallistaAimsAtKuudrasFrontSide() {
+        Pos base = new Pos(-102.5, 80, -106.5);
+        Pos front = new Pos(-98, 75, -59);
+        Vec muzzle = new Vec(0, 2.8, -2.5);
+        Pos aimed = BallistaSite.placed(base, BallistaSite.restingFacing(base, front), muzzle);
+        assertTrue(aimed.distance(front) < base.distance(front) - 2, "muzzle should point at Kuudra, was " + aimed);
     }
 }
