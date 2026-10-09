@@ -85,7 +85,10 @@ public class SkyBlockScoreboard {
                     StringUtility.ntify(SkyBlockCalendar.getDay())));
                 location.line(Text.key("scoreboard.skyblock.calendar_time_line",
                     SkyBlockCalendar.getDisplay(SkyBlockCalendar.getElapsed())));
-                try {
+                Text area = AreaSidebar.areaFor(player);
+                if (area != null) {
+                    location.line(Text.key("scoreboard.skyblock.region_line", area));
+                } else try {
                     RegionType type = region.getType();
                     String name = type.getName();
                     if (type == RegionType.PLAYER_MUSEUM) {
