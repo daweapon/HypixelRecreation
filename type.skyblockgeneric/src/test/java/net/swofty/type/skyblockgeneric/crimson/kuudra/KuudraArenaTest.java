@@ -65,6 +65,27 @@ class KuudraArenaTest {
     }
 
     @Test
+    void kuudraSurfacesWellClearOfThePlatformEdge() {
+        double halfWidth = 0.52 * 30 / 2;
+        ARENA.kuudraSides().forEach((name, side) -> {
+            boolean clearX = side.x() + halfWidth < ARENA.platform().minX() || side.x() - halfWidth > ARENA.platform().maxX() + 1;
+            boolean clearZ = side.z() + halfWidth < ARENA.platform().minZ() || side.z() - halfWidth > ARENA.platform().maxZ() + 1;
+            assertTrue(clearX || clearZ, name + " overlaps the platform");
+            double distance = Math.hypot(side.x() - ARENA.centre().x(), side.z() - ARENA.centre().z());
+            assertTrue(distance > 40 && distance < 56, name + " is " + distance + " blocks from the Ballista");
+        });
+    }
+
+    @Test
+    void minionsSurfaceInTheLavaAroundThePlatform() {
+        assertTrue(ARENA.minionSpawns().size() >= 8);
+        ARENA.minionSpawns().forEach(spawn -> {
+            assertTrue(ARENA.sea().containsColumn(spawn.blockX(), spawn.blockZ()), spawn.toString());
+            assertTrue(spawn.y() < ARENA.floorY());
+        });
+    }
+
+    @Test
     void playersReturnToTheForgottenSkull() {
         Pos crag = new Pos(-370.5, 114, -1041.5);
         assertTrue(ARENA.exit().distance(crag) < 6);

@@ -33,8 +33,8 @@ build:
   organ_bonus: {KUUDRAS_KIDNEY: 5, KUUDRAS_LUNG: 10, KUUDRAS_HEART: 15}    # K1 8: % faster Ballista building
 
 fuel:
-  cells: 4                          # K1 3.3
-  load_range: 4                     # EST
+  cells: 4                          # K1 3.3; a full load fires one shot, then the Ballista needs refuelling (user, 2026-10-09)
+  load_range: 5                     # EST: right-click anywhere on the Ballista
   shot_cooldown_ticks: 20           # EST
   aim_tolerance_degrees: 25         # EST: shots aimed further off Kuudra miss
   bolt_speed: 3                     # EST: blocks per tick
@@ -42,9 +42,9 @@ fuel:
 kuudra:
   health: 100000                    # K1 3.6: 100,000 points shown as a percentage
   size: 30                          # K1 3.6
-  shot_damage: {BASIC: 6250, HOT: 5000, BURNING: 4000, FIERY: 3500, INFERNAL: 3000}   # EST: 16 / 20 shots
+  shot_damage: {BASIC: 25000, HOT: 20000, BURNING: 16000, FIERY: 14000, INFERNAL: 12000}   # EST: one shot per load, so 4 loads on Basic, 5 on Hot
   surface_seconds: 30               # CAP: "Submerges In" counted down from 29s
-  shots_per_surface: 4              # EST: a volley this long sends him under early
+  shots_per_surface: 1              # EST: a Ballista hit sends an unstunned Kuudra under while the Ballista is refuelled
   submerged_seconds: 6              # CAP: ~6 s under, then he rises on another side
   move_ticks: 60                    # CAP: rising or sinking took ~3 s
   surfaced_depth: 5                 # CAP: his base sat at Y 69 under the Y 74 lava surface when up

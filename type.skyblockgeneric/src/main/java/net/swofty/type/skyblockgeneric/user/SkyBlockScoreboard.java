@@ -4,6 +4,7 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.entity.Player;
 import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
+import org.tinylog.Logger;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.auctions.DarkAuctionPhase;
 import net.swofty.commons.skyblock.item.ItemType;
@@ -64,207 +65,216 @@ public class SkyBlockScoreboard {
             }
 
             for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
-                Locale l = player.getLocale();
-                SkyBlockDataHandler dataHandler = player.getSkyblockDataHandler();
-                SkyBlockRegion region = player.getRegion();
-                MissionData missionData = player.getMissionData();
-
-                if (dataHandler == null) {
-                    continue;
+                try {
+                    render(player);
+                } catch (Exception exception) {
+                    Logger.error(exception, "Couldn't render {}'s scoreboard", player.getUsername());
                 }
-
-                TextBody body = new TextBody();
-                body.section("date").line(Text.key("scoreboard.common.date_line",
-                    DATE_FORMAT.format(LocalDateTime.now(ZoneId.systemDefault())),
-                    HypixelConst.getServerName()));
-
-                TextBody.Section location = body.section("location");
-                location.line(BLANK);
-                location.line(Text.key("scoreboard.skyblock.calendar_date_line",
-                    SkyBlockCalendar.getMonthName(),
-                    StringUtility.ntify(SkyBlockCalendar.getDay())));
-                location.line(Text.key("scoreboard.skyblock.calendar_time_line",
-                    SkyBlockCalendar.getDisplay(SkyBlockCalendar.getElapsed())));
-                Text area = AreaSidebar.areaFor(player);
-                if (area != null) {
-                    location.line(Text.key("scoreboard.skyblock.region_line", area));
-                } else try {
-                    RegionType type = region.getType();
-                    String name = type.getName();
-                    if (type == RegionType.PLAYER_MUSEUM) {
-                        name = name.formatted(player.getUsername());
-                    }
-                    location.line(Text.key("scoreboard.skyblock.region_line",
-                        Text.of("<color:{}>{}", type.getColor(), name)));
-                } catch (NullPointerException ignored) {
-                    location.line(" {}", Text.key("scoreboard.skyblock.region_unknown"));
-                }
-
-                // TODO: make classes / a manager for regions to display scoreboard information.
-                boolean electionRoom = region != null && region.getType() == RegionType.ELECTION_ROOM;
-                TextBody.Section election = body.section("election").when(() -> electionRoom);
-                if (electionRoom) {
-                    election.line(BLANK);
-                    election.line(Text.key("scoreboard.skyblock.election_votes_title",
-                        SkyBlockCalendar.getYear()));
-                    Map<String, Long> totalVotes = ElectionManager.getElectionData().tallyVotes();
-                    long maxVotes = totalVotes.values().stream().mapToLong(Long::longValue).max().orElse(1);
-                    ElectionManager.getElectionData().getCandidates().forEach(candidate -> {
-                        long votes = totalVotes.getOrDefault(candidate.getMayorName(), 0L);
-                        int barLength = maxVotes > 0 ? (int) Math.round((votes * 15.0) / maxVotes) : 0;
-                        Text bars = Text.of("<color:{0}>{1}", candidate.getColor(), "|".repeat(barLength))
-                            .append("<f>{}", "|".repeat(15 - barLength));
-                        election.line(Text.key("scoreboard.skyblock.election_candidate_line",
-                            bars,
-                            candidate.getColoredName()));
-                    });
-                }
-
-                TextBody.Section purse = body.section("purse").when(() -> !electionRoom);
-                if (!electionRoom) {
-                    purse.line(BLANK);
-                    purse.line(Text.key("scoreboard.skyblock.purse_line",
-                        StringUtility.commaify(dataHandler.get(SkyBlockDataHandler.Data.COINS, DatapointDouble.class).getValue())));
-
-                    Integer bits = dataHandler.get(SkyBlockDataHandler.Data.BITS, DatapointInteger.class).getValue();
-                    boolean hasBits = bits != null && bits > 0;
-                    TextBody.Section bitsLine = purse.child("bits").when(() -> hasBits);
-                    if (hasBits) {
-                        bitsLine.line(Text.key("scoreboard.skyblock.bits_line",
-                            StringUtility.commaify(bits)));
-                    }
-                }
-
-                List<String> challengeLines = ChallengeSidebar.linesFor(player);
-                boolean challenge = challengeLines != null;
-                TextBody.Section challengeSection = body.section("challenge").when(() -> challenge);
-                if (challenge) {
-                    challengeSection.line(BLANK);
-                    challengeLines.forEach(line -> challengeSection.line(Text.of(line)));
-                }
-
-                boolean darkAuction = !electionRoom
-                    && DarkAuctionHandler.isPlayerInAuction(player.getUuid())
-                    && DarkAuctionHandler.getLocalState() != null
-                    && DarkAuctionHandler.getLocalState().getPhase() == DarkAuctionPhase.BIDDING;
-                TextBody.Section auction = body.section("dark_auction").when(() -> darkAuction);
-                if (darkAuction) {
-                    auction.line("<8> ");
-                    DarkAuctionHandler.DarkAuctionLocalState auctionState = DarkAuctionHandler.getLocalState();
-                    int timeRemaining = DarkAuctionHandler.getTimeLeft().get();
-
-                    auction.line(Text.key("scoreboard.skyblock.dark_auction.time_left_line",
-                        timeRemaining));
-                    auction.line(Text.key("scoreboard.skyblock.dark_auction.current_item_label"));
-
-                    String currentItem = auctionState.getCurrentItemType();
-                    if (currentItem != null) {
-                        try {
-                            ItemType itemType = ItemType.valueOf(currentItem);
-                            SkyBlockItem item = new SkyBlockItem(itemType);
-                            auction.line(" {}",
-                                Text.key("scoreboard.skyblock.dark_auction.current_item_line",
-                                    item.getDisplayName()));
-                        } catch (Exception e) {
-                            auction.line(" {}",
-                                Text.key("scoreboard.skyblock.dark_auction.current_item_line",
-                                    currentItem.replace("_", " ")));
-                        }
-                    } else {
-                        auction.line(" {}", Text.key("scoreboard.skyblock.dark_auction.waiting"));
-                    }
-                }
-
-                long timeInYear = SkyBlockCalendar.getElapsed() % SkyBlockCalendar.YEAR;
-                CalendarEvent activeSeasonalEvent = SEASONAL_SCOREBOARD_EVENTS.stream()
-                    .filter(candidate -> candidate.remainingTicksAt(timeInYear) >= 0)
-                    .findFirst().orElse(null);
-                boolean seasonalEventActive = !electionRoom && !darkAuction && activeSeasonalEvent != null;
-                TextBody.Section seasonalEvent = body.section("seasonal_event").when(() -> seasonalEventActive);
-                if (seasonalEventActive) {
-                    seasonalEvent.line(BLANK);
-                    seasonalEvent.line(Text.key("scoreboard.skyblock.event_title"));
-                    seasonalEvent.line(Text.key("scoreboard.skyblock.event_name_line",
-                        activeSeasonalEvent.getDisplayName(SkyBlockCalendar.getYear())));
-                    long remainingMillis = activeSeasonalEvent.remainingTicksAt(timeInYear) * 50L;
-                    seasonalEvent.line(Text.key("scoreboard.skyblock.event_ends_line",
-                        StringUtility.formatTimeLeft(remainingMillis)));
-                    if (activeSeasonalEvent == CalendarEvent.SPOOKY_FESTIVAL) {
-                        SpookyFestivalCandyTally candy = SpookyFestivalCandyTally.of(player);
-                        seasonalEvent.line(Text.key("scoreboard.skyblock.spooky_candy_label"));
-                        seasonalEvent.line(Text.key("scoreboard.skyblock.spooky_candy_line",
-                            StringUtility.commaify(candy.green()),
-                            StringUtility.commaify(candy.purple()),
-                            StringUtility.commaify(candy.points())));
-                    }
-                }
-
-                FarmingContest contest = FarmingContest.active().orElse(null);
-                FarmingContestProfile.Entry contestEntry = contest == null ? null
-                    : FarmingContests.profile(player).entryFor(contest).orElse(null);
-                boolean contestShown = !electionRoom && !darkAuction && !seasonalEventActive && contestEntry != null;
-                TextBody.Section farmingContest = body.section("farming_contest").when(() -> contestShown);
-                if (contestShown) {
-                    farmingContest.line(BLANK);
-                    farmingContest.line(Text.key("scoreboard.skyblock.contest_title",
-                        StringUtility.formatTimeLeft((contest.endElapsed() - SkyBlockCalendar.getElapsed()) * 50L)));
-                    farmingContest.line(Text.key("scoreboard.skyblock.contest_crop_line", "☘",
-                        contestEntry.getCrop().getDisplayName()));
-                    String collected = StringUtility.commaify(contestEntry.getCollected());
-                    ContestBracket bracket = contestEntry.qualifies()
-                        ? FarmingContests.liveBracket(player).filter(ContestBracket::earnsMedal).orElse(null) : null;
-                    if (bracket == null) {
-                        farmingContest.line(Text.key("scoreboard.skyblock.contest_collected_line", collected));
-                    } else {
-                        farmingContest.line(Text.key("scoreboard.skyblock.contest_bracket_line",
-                            Text.of(bracket.formatted()), collected));
-                    }
-                }
-
-                boolean objectiveAllowed = !challenge && !electionRoom && !darkAuction && !seasonalEventActive && !contestShown;
-                boolean missionObjective = objectiveAllowed && region != null
-                    && !missionData.getActiveMissions(region.getType()).isEmpty();
-                QuestObjective questObjective = objectiveAllowed && !missionObjective ? QuestObjectives.current(player) : null;
-                boolean objective = missionObjective || questObjective != null;
-                TextBody.Section objectives = body.section("objective").when(() -> objective);
-                if (missionObjective) {
-                    objectives.line(BLANK);
-                    MissionData.ActiveMission mission = missionData.getActiveMissions(region.getType()).getFirst();
-                    SkyBlockMission skyBlockMission = MissionData.getMissionClass(mission.getMissionID());
-
-                    if (skyBlockMission instanceof LocationAssociatedMission locationAssociatedMission) {
-                        objectives.line(Text.key("scoreboard.skyblock.objective_with_arrow", Text.parse(BlockUtility.getArrow(
-                            player.getPosition(),
-                            locationAssociatedMission.getLocation()
-                        ))));
-                    } else {
-                        objectives.line(Text.key("scoreboard.skyblock.objective_label"));
-                    }
-                    objectives.line("<e>{}", mission.toString());
-
-                    SkyBlockProgressMission progressMission = missionData.getAsProgressMission(mission.getMissionID());
-                    if (progressMission != null) {
-                        objectives.child("progress").line(Text.key("scoreboard.skyblock.objective_progress",
-                            mission.getMissionProgress(),
-                            progressMission.getMaxProgress()));
-                    }
-                } else if (questObjective != null) {
-                    objectives.line(BLANK);
-                    if (questObjective.target() != null) {
-                        objectives.line(Text.key("scoreboard.skyblock.objective_with_arrow",
-                            Text.parse(BlockUtility.getArrow(player.getPosition(), questObjective.target()))));
-                    } else {
-                        objectives.line(Text.key("scoreboard.skyblock.objective_label"));
-                    }
-                    objectives.line("<e>{}", questObjective.text());
-                }
-
-                body.section("footer").line(BLANK).line(Text.key("scoreboard.common.footer"));
-
-                scoreboard.update(player, Text.of("  {}", getSidebarName(skyblockName, false, l)), body);
             }
             return TaskSchedule.tick(4);
         });
+    }
+
+    private static void render(SkyBlockPlayer player) {
+        Locale l = player.getLocale();
+        SkyBlockDataHandler dataHandler = player.getSkyblockDataHandler();
+        SkyBlockRegion region = player.getRegion();
+        MissionData missionData = player.getMissionData();
+
+        if (dataHandler == null) {
+            return;
+        }
+
+        TextBody body = new TextBody();
+        body.section("date").line(Text.key("scoreboard.common.date_line",
+            DATE_FORMAT.format(LocalDateTime.now(ZoneId.systemDefault())),
+            HypixelConst.getServerName()));
+
+        TextBody.Section location = body.section("location");
+        location.line(BLANK);
+        location.line(Text.key("scoreboard.skyblock.calendar_date_line",
+            SkyBlockCalendar.getMonthName(),
+            StringUtility.ntify(SkyBlockCalendar.getDay())));
+        location.line(Text.key("scoreboard.skyblock.calendar_time_line",
+            SkyBlockCalendar.getDisplay(SkyBlockCalendar.getElapsed())));
+        Text area = AreaSidebar.areaFor(player);
+        if (area != null) {
+            location.line(Text.key("scoreboard.skyblock.region_line", area));
+        } else try {
+            RegionType type = region.getType();
+            String name = type.getName();
+            if (type == RegionType.PLAYER_MUSEUM) {
+                name = name.formatted(player.getUsername());
+            }
+            location.line(Text.key("scoreboard.skyblock.region_line",
+                Text.of("<color:{}>{}", type.getColor(), name)));
+        } catch (NullPointerException ignored) {
+            location.line(" {}", Text.key("scoreboard.skyblock.region_unknown"));
+        }
+
+        // TODO: make classes / a manager for regions to display scoreboard information.
+        boolean electionRoom = region != null && region.getType() == RegionType.ELECTION_ROOM;
+        TextBody.Section election = body.section("election").when(() -> electionRoom);
+        if (electionRoom) {
+            election.line(BLANK);
+            election.line(Text.key("scoreboard.skyblock.election_votes_title",
+                SkyBlockCalendar.getYear()));
+            Map<String, Long> totalVotes = ElectionManager.getElectionData().tallyVotes();
+            long maxVotes = totalVotes.values().stream().mapToLong(Long::longValue).max().orElse(1);
+            ElectionManager.getElectionData().getCandidates().forEach(candidate -> {
+                long votes = totalVotes.getOrDefault(candidate.getMayorName(), 0L);
+                int barLength = maxVotes > 0 ? (int) Math.round((votes * 15.0) / maxVotes) : 0;
+                Text bars = Text.of("<color:{0}>{1}", candidate.getColor(), "|".repeat(barLength))
+                    .append("<f>{}", "|".repeat(15 - barLength));
+                election.line(Text.key("scoreboard.skyblock.election_candidate_line",
+                    bars,
+                    candidate.getColoredName()));
+            });
+        }
+
+        boolean purseShown = !electionRoom && !ChallengeSidebar.hidesPurse(player);
+        TextBody.Section purse = body.section("purse").when(() -> purseShown);
+        if (purseShown) {
+            purse.line(BLANK);
+            purse.line(Text.key("scoreboard.skyblock.purse_line",
+                StringUtility.commaify(dataHandler.get(SkyBlockDataHandler.Data.COINS, DatapointDouble.class).getValue())));
+
+            Integer bits = dataHandler.get(SkyBlockDataHandler.Data.BITS, DatapointInteger.class).getValue();
+            boolean hasBits = bits != null && bits > 0;
+            TextBody.Section bitsLine = purse.child("bits").when(() -> hasBits);
+            if (hasBits) {
+                bitsLine.line(Text.key("scoreboard.skyblock.bits_line",
+                    StringUtility.commaify(bits)));
+            }
+        }
+
+        List<String> challengeLines = ChallengeSidebar.linesFor(player);
+        boolean challenge = challengeLines != null;
+        TextBody.Section challengeSection = body.section("challenge").when(() -> challenge);
+        if (challenge) {
+            challengeSection.line(BLANK);
+            challengeLines.forEach(line -> challengeSection.line(Text.of(line)));
+        }
+
+        boolean darkAuction = !electionRoom && !challenge
+            && DarkAuctionHandler.isPlayerInAuction(player.getUuid())
+            && DarkAuctionHandler.getLocalState() != null
+            && DarkAuctionHandler.getLocalState().getPhase() == DarkAuctionPhase.BIDDING;
+        TextBody.Section auction = body.section("dark_auction").when(() -> darkAuction);
+        if (darkAuction) {
+            auction.line("<8> ");
+            DarkAuctionHandler.DarkAuctionLocalState auctionState = DarkAuctionHandler.getLocalState();
+            int timeRemaining = DarkAuctionHandler.getTimeLeft().get();
+
+            auction.line(Text.key("scoreboard.skyblock.dark_auction.time_left_line",
+                timeRemaining));
+            auction.line(Text.key("scoreboard.skyblock.dark_auction.current_item_label"));
+
+            String currentItem = auctionState.getCurrentItemType();
+            if (currentItem != null) {
+                try {
+                    ItemType itemType = ItemType.valueOf(currentItem);
+                    SkyBlockItem item = new SkyBlockItem(itemType);
+                    auction.line(" {}",
+                        Text.key("scoreboard.skyblock.dark_auction.current_item_line",
+                            item.getDisplayName()));
+                } catch (Exception e) {
+                    auction.line(" {}",
+                        Text.key("scoreboard.skyblock.dark_auction.current_item_line",
+                            currentItem.replace("_", " ")));
+                }
+            } else {
+                auction.line(" {}", Text.key("scoreboard.skyblock.dark_auction.waiting"));
+            }
+        }
+
+        long timeInYear = SkyBlockCalendar.getElapsed() % SkyBlockCalendar.YEAR;
+        CalendarEvent activeSeasonalEvent = SEASONAL_SCOREBOARD_EVENTS.stream()
+            .filter(candidate -> candidate.remainingTicksAt(timeInYear) >= 0)
+            .findFirst().orElse(null);
+        boolean seasonalEventActive = !electionRoom && !challenge && !darkAuction && activeSeasonalEvent != null;
+        TextBody.Section seasonalEvent = body.section("seasonal_event").when(() -> seasonalEventActive);
+        if (seasonalEventActive) {
+            seasonalEvent.line(BLANK);
+            seasonalEvent.line(Text.key("scoreboard.skyblock.event_title"));
+            seasonalEvent.line(Text.key("scoreboard.skyblock.event_name_line",
+                activeSeasonalEvent.getDisplayName(SkyBlockCalendar.getYear())));
+            long remainingMillis = activeSeasonalEvent.remainingTicksAt(timeInYear) * 50L;
+            seasonalEvent.line(Text.key("scoreboard.skyblock.event_ends_line",
+                StringUtility.formatTimeLeft(remainingMillis)));
+            if (activeSeasonalEvent == CalendarEvent.SPOOKY_FESTIVAL) {
+                SpookyFestivalCandyTally candy = SpookyFestivalCandyTally.of(player);
+                seasonalEvent.line(Text.key("scoreboard.skyblock.spooky_candy_label"));
+                seasonalEvent.line(Text.key("scoreboard.skyblock.spooky_candy_line",
+                    StringUtility.commaify(candy.green()),
+                    StringUtility.commaify(candy.purple()),
+                    StringUtility.commaify(candy.points())));
+            }
+        }
+
+        FarmingContest contest = FarmingContest.active().orElse(null);
+        FarmingContestProfile.Entry contestEntry = contest == null ? null
+            : FarmingContests.profile(player).entryFor(contest).orElse(null);
+        boolean contestShown = !electionRoom && !challenge && !darkAuction && !seasonalEventActive && contestEntry != null;
+        TextBody.Section farmingContest = body.section("farming_contest").when(() -> contestShown);
+        if (contestShown) {
+            farmingContest.line(BLANK);
+            farmingContest.line(Text.key("scoreboard.skyblock.contest_title",
+                StringUtility.formatTimeLeft((contest.endElapsed() - SkyBlockCalendar.getElapsed()) * 50L)));
+            farmingContest.line(Text.key("scoreboard.skyblock.contest_crop_line", "☘",
+                contestEntry.getCrop().getDisplayName()));
+            String collected = StringUtility.commaify(contestEntry.getCollected());
+            ContestBracket bracket = contestEntry.qualifies()
+                ? FarmingContests.liveBracket(player).filter(ContestBracket::earnsMedal).orElse(null) : null;
+            if (bracket == null) {
+                farmingContest.line(Text.key("scoreboard.skyblock.contest_collected_line", collected));
+            } else {
+                farmingContest.line(Text.key("scoreboard.skyblock.contest_bracket_line",
+                    Text.of(bracket.formatted()), collected));
+            }
+        }
+
+        boolean objectiveAllowed = !challenge && !electionRoom && !darkAuction && !seasonalEventActive && !contestShown;
+        boolean missionObjective = objectiveAllowed && region != null
+            && !missionData.getActiveMissions(region.getType()).isEmpty();
+        QuestObjective questObjective = objectiveAllowed && !missionObjective ? QuestObjectives.current(player) : null;
+        boolean objective = missionObjective || questObjective != null;
+        TextBody.Section objectives = body.section("objective").when(() -> objective);
+        if (missionObjective) {
+            objectives.line(BLANK);
+            MissionData.ActiveMission mission = missionData.getActiveMissions(region.getType()).getFirst();
+            SkyBlockMission skyBlockMission = MissionData.getMissionClass(mission.getMissionID());
+
+            if (skyBlockMission instanceof LocationAssociatedMission locationAssociatedMission) {
+                objectives.line(Text.key("scoreboard.skyblock.objective_with_arrow", Text.parse(BlockUtility.getArrow(
+                    player.getPosition(),
+                    locationAssociatedMission.getLocation()
+                ))));
+            } else {
+                objectives.line(Text.key("scoreboard.skyblock.objective_label"));
+            }
+            objectives.line("<e>{}", mission.toString());
+
+            SkyBlockProgressMission progressMission = missionData.getAsProgressMission(mission.getMissionID());
+            if (progressMission != null) {
+                objectives.child("progress").line(Text.key("scoreboard.skyblock.objective_progress",
+                    mission.getMissionProgress(),
+                    progressMission.getMaxProgress()));
+            }
+        } else if (questObjective != null) {
+            objectives.line(BLANK);
+            if (questObjective.target() != null) {
+                objectives.line(Text.key("scoreboard.skyblock.objective_with_arrow",
+                    Text.parse(BlockUtility.getArrow(player.getPosition(), questObjective.target()))));
+            } else {
+                objectives.line(Text.key("scoreboard.skyblock.objective_label"));
+            }
+            objectives.line("<e>{}", questObjective.text());
+        }
+
+        body.section("footer").line(BLANK).line(Text.key("scoreboard.common.footer"));
+
+        scoreboard.update(player, Text.of("  {}", getSidebarName(skyblockName, false, l)), body);
     }
 
     public static void removeCache(Player player) {

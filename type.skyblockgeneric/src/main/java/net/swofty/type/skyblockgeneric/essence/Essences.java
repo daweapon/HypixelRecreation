@@ -18,9 +18,9 @@ public final class Essences {
 
     public static long get(SkyBlockPlayer player, EssenceType type) {
         if (type == EssenceType.FOREST) return forest(player).getValue();
-        Number value = player.getSkyblockDataHandler()
-                .get(SkyBlockDataHandler.Data.ESSENCE, DatapointMapStringLong.class).getValue().get(type.name());
-        return value == null ? 0 : value.longValue();
+        Object value = stored(player.getSkyblockDataHandler()
+                .get(SkyBlockDataHandler.Data.ESSENCE, DatapointMapStringLong.class)).get(type.name());
+        return value instanceof Number number ? number.longValue() : 0;
     }
 
     public static void set(SkyBlockPlayer player, EssenceType type, long amount) {
@@ -32,7 +32,9 @@ public final class Essences {
         DatapointMapStringLong datapoint = player.getSkyblockDataHandler()
                 .get(SkyBlockDataHandler.Data.ESSENCE, DatapointMapStringLong.class);
         Map<String, Long> values = new HashMap<>();
-        datapoint.getValue().forEach((key, value) -> values.put(key, ((Number) value).longValue()));
+        stored(datapoint).forEach((key, value) -> {
+            if (value instanceof Number number) values.put(key, number.longValue());
+        });
         values.put(type.name(), clamped);
         datapoint.setValue(values);
     }
@@ -46,6 +48,12 @@ public final class Essences {
         if (current < amount) return false;
         set(player, type, current - amount);
         return true;
+    }
+
+    /** Saved profiles can hold Integers in this map, so its values are read untyped. */
+    @SuppressWarnings("unchecked")
+    private static Map<String, ?> stored(DatapointMapStringLong datapoint) {
+        return (Map<String, ?>) (Map<?, ?>) datapoint.getValue();
     }
 
     private static DatapointLong forest(SkyBlockPlayer player) {

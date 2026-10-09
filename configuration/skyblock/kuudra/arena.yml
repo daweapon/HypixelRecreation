@@ -50,11 +50,31 @@ cannons:                                      # CAP: the two "CANNON" holograms
   - [-131, 79, -112, 90, 0]
   - [-70, 79, -103, -90, 0]
 # Where Kuudra surfaces, by the side the mods name (RIGHT x < -128, FRONT z > -84, LEFT x > -72, BACK z < -132).
+# CAP: the size-30 cubes rose at (-54, -108) (Infernal's first rise) and (-98, -59) (Burning's first rise), each about
+# 47 blocks out from the Ballista. RIGHT and BACK mirror them across the Ballista, out in open lava; nothing spawns
+# Kuudra before Elle hooks him.
 kuudra_sides:
   FRONT: [-98, 75, -59]             # CAP
   LEFT: [-54, 75, -108]             # CAP
-  RIGHT: [-150, 75, -106]           # EST
-  BACK: [-80, 75, -152]             # EST
+  RIGHT: [-151, 75, -108]           # EST: LEFT mirrored
+  BACK: [-98, 75, -154]             # EST: FRONT mirrored, where the bridge stood before it collapsed
+
+# CAP: where wave minions appeared in both captures, just under the lava past the platform edge; they jump out onto
+# the platform from here (positions in open lava only; spawns under the rock overhangs are left out).
+minion_spawns:
+  - [-90, 74, -67]
+  - [-119, 74, -70]
+  - [-117, 74, -63]
+  - [-76, 74, -75]
+  - [-62, 74, -108]
+  - [-67, 74, -127]
+  - [-81, 74, -141]
+  - [-95, 74, -145]
+  - [-114, 74, -143]
+  - [-132, 74, -143]
+  - [-133, 74, -115]
+  - [-140, 74, -117]
+  - [-149, 74, -89]
 
 # EST: the Forgotten Skull on the Crimson Isle, next to Crag, where players return after a run.
 exit: [-372.5, 114, -1038.5, 180, 0]
