@@ -6,9 +6,8 @@ import lombok.NoArgsConstructor;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.redisapi.api.ChannelRegistry;
 import net.swofty.redisapi.api.RedisAPI;
-import net.swofty.redisapi.events.EventRegistry;
 import org.tinylog.Logger;
-import redis.clients.jedis.JedisPubSub;
+import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import java.util.List;
 import java.util.Map;
@@ -28,6 +27,7 @@ public final class RedisMessageBus {
     private static final Map<UUID, CompletableFuture<String>> pendingResponses = new ConcurrentHashMap<>();
     private static final Map<UUID, BroadcastCollector> pendingBroadcasts = new ConcurrentHashMap<>();
     private static final Map<String, Boolean> registeredChannels = new ConcurrentHashMap<>();
+    private static final int PUBLISH_ATTEMPTS = 3;
     private static final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(r -> {
         Thread thread = new Thread(r, "redis-message-bus-timeouts");
         thread.setDaemon(true);
@@ -124,14 +124,26 @@ public final class RedisMessageBus {
                                   String target,
                                   String channel,
                                   String payload) {
-        RedisAPI.getInstance().publishMessage(
-                target,
-                ChannelRegistry.getFromName(channel),
-                new RedisEnvelope(requestId.toString(), origin.id(), payload).serialize()
-        ).exceptionally(throwable -> {
+        String message = new RedisEnvelope(requestId.toString(), origin.id(), payload).serialize();
+        publishWithRetry(target, channel, message, PUBLISH_ATTEMPTS).exceptionally(throwable -> {
             Logger.error(throwable, "Failed to publish Redis message on channel {}", channel);
             return null;
         });
+    }
+
+    private static CompletableFuture<Void> publishWithRetry(String target, String channel, String message, int attempts) {
+        return RedisAPI.getInstance().publishMessage(target, ChannelRegistry.getFromName(channel), message)
+                .exceptionallyCompose(throwable -> attempts > 1 && isConnectionFailure(throwable)
+                        ? publishWithRetry(target, channel, message, attempts - 1)
+                        : CompletableFuture.failedFuture(throwable));
+    }
+
+    private static boolean isConnectionFailure(Throwable throwable) {
+        for (Throwable cause = throwable; cause != null; cause = cause.getCause()) {
+            if (cause instanceof JedisConnectionException) return true;
+            if (cause.getCause() == cause) break;
+        }
+        return false;
     }
 
     private static void ensureChannelRegistered(String channel) {
@@ -160,18 +172,7 @@ public final class RedisMessageBus {
             channelHandlers.forEach(handler -> Thread.startVirtualThread(() -> handler.handle(envelope, event.channel)));
         });
 
-        subscribeIfListening(channel);
-    }
-
-    private static void subscribeIfListening(String channel) {
-        JedisPubSub pubSub = EventRegistry.pubSub;
-        if (pubSub == null || !pubSub.isSubscribed()) return;
-
-        try {
-            pubSub.subscribe(channel);
-        } catch (Exception exception) {
-            Logger.error(exception, "Failed to subscribe to Redis channel {}", channel);
-        }
+        RedisSubscriber.subscribe(channel);
     }
 
     private static RedisEnvelope unwrap(String message) {
