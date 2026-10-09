@@ -28,6 +28,11 @@ public interface NPCConfiguration {
 
     Pos position(HypixelPlayer player);
 
+    /** Where the NPC first appears for the player; a {@link #dynamicPosition()} NPC then makes its way to {@link #position}. */
+    default Pos spawnPosition(HypixelPlayer player) {
+        return position(player);
+    }
+
     /**
      * Whether {@link #position(HypixelPlayer)} can return a different value across calls for an
      * already-spawned NPC (e.g. an NPC that relocates based on external state). Defaults to false
@@ -38,7 +43,7 @@ public interface NPCConfiguration {
         return false;
     }
 
-    /** Whether a {@link #dynamicPosition()} NPC walks to its new position in view instead of teleporting. */
+    /** Whether a {@link #dynamicPosition()} NPC walks to its new position while the player is watching instead of teleporting. */
     default boolean walksToNewPosition() {
         return false;
     }

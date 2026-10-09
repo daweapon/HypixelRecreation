@@ -19,6 +19,7 @@ public class NPCUgo extends CrimsonNPC {
     private static final Pos OUTSIDE_HUT = new Pos(-612.5, 107, -688.5);
     private static final Pos TOWN_BOARD = new Pos(-581.5, 100, -684.5);
     private static final Pos WASTELAND = new Pos(-369.5, 117, -977.5);
+    private static final Pos PIG_CAVE = new Pos(-508.5, 98, -633.5);
 
     public NPCUgo() {
         super(UGO, CrimsonSkins.UGO, TOWN_BOARD);
@@ -33,6 +34,11 @@ public class NPCUgo extends CrimsonNPC {
     @Override
     protected boolean moves() {
         return true;
+    }
+
+    @Override
+    protected Pos appearsAt(SkyBlockPlayer player) {
+        return CrimsonQuestlines.barbarian(player) == BarbarianStep.ESCORT_UGO ? PIG_CAVE : position(player);
     }
 
     @Override
