@@ -6,20 +6,26 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.List;
 
 /**
- * The single switch for everything that needs the Kuudra boss fight (Roadmap #11). Until the fight
- * exists, every Kuudra-dependent entry reads its state and wording from here, so turning the fight
- * on later is a one-line change.
+ * The single switch for everything that needs the Kuudra boss fight (Roadmap #11): the queue, Elle's first run,
+ * Faction Quests, and the Defeat Kuudra and Boss Collections SkyBlock XP tasks all read it. It follows
+ * {@link KuudraLaunch}, so launching is setting {@code public: true} in {@code configuration/skyblock/kuudra/launch.yml}.
  */
 public final class KuudraAvailability {
     public static final String UNAVAILABLE_REASON = "Kuudra isn't available yet.";
     public static final String UNAVAILABLE_LORE = "<c>" + UNAVAILABLE_REASON;
     public static final String UNAVAILABLE_CHAT = "<c>Kuudra isn't available yet! <7>The fight is still being built.";
 
+    private static volatile KuudraLaunch launch = new KuudraLaunch(KuudraLaunch.FILE, System::currentTimeMillis);
+
     private KuudraAvailability() {
     }
 
     public static boolean isFightAvailable() {
-        return false;
+        return launch.isPublic();
+    }
+
+    public static void use(KuudraLaunch source) {
+        launch = source;
     }
 
     /** Staff can queue the fight before it opens to everyone, so it can be tested on a live server. */

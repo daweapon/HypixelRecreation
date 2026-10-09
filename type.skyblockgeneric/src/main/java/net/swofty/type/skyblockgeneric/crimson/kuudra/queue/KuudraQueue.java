@@ -59,6 +59,15 @@ public final class KuudraQueue {
     }
 
     public static void queue(SkyBlockPlayer leader, KuudraTier tier) {
+        queue(leader, tier, false);
+    }
+
+    /** Elle's first trip to Kuudra: a Basic run that doesn't need "Have Elle take you to Kuudra!". */
+    public static void queueWithElle(SkyBlockPlayer leader) {
+        queue(leader, KuudraTier.BASIC, true);
+    }
+
+    private static void queue(SkyBlockPlayer leader, KuudraTier tier, boolean elle) {
         if (!KuudraAvailability.canQueue(leader)) {
             leader.sendMessage(KuudraAvailability.UNAVAILABLE_CHAT);
             return;
@@ -69,7 +78,7 @@ public final class KuudraQueue {
         }
         Thread.startVirtualThread(() -> {
             try {
-                prepare(leader, tier);
+                prepare(leader, tier, elle);
             } catch (Exception exception) {
                 Logger.error(exception, "Kuudra queue failed for {}", leader.getUsername());
                 leader.sendMessage("<c>Something went wrong while queueing for Kuudra. Please try again.");
@@ -77,7 +86,7 @@ public final class KuudraQueue {
         });
     }
 
-    private static void prepare(SkyBlockPlayer leader, KuudraTier tier) {
+    private static void prepare(SkyBlockPlayer leader, KuudraTier tier, boolean elle) {
         boolean inParty = PartyManager.isInParty(leader);
         FullParty party = inParty ? PartyManager.getPartyFromPlayer(leader) : null;
         if (inParty && party == null) {
@@ -95,7 +104,7 @@ public final class KuudraQueue {
             if (member != null) members.add(member);
             String name = member != null ? member.getUsername() : HypixelDataHandler.getPotentialIGNFromUUID(uuid);
             checks.add(new KuudraPartyCheck.Member(name, uuid.equals(leader.getUuid()), member != null,
-                    member != null && KuudraProgress.meetsRequirements(member, tier)));
+                    member != null && (elle || KuudraProgress.meetsRequirements(member, tier))));
         }
         List<String> problems = KuudraPartyCheck.problems(isLeader, checks, tier.getDisplayName());
         if (!problems.isEmpty()) {
