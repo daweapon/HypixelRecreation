@@ -3,7 +3,18 @@ items:
     rarity: RARE
     material: BOW
     name: "Artisanal Shortbow"
+    default_statistics:
+      damage: 40
     components:
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.5
+        should-be-arrow: false
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 4
       - id: SELLABLE
         value: 200.0
       - id: ITEM_MODEL
@@ -12,21 +23,65 @@ items:
     rarity: EPIC
     material: BOW
     name: "Juju Shortbow"
+    default_statistics:
+      damage: 310
+      strength: 40
+      critical_chance: 10
+      critical_damage: 110
+    lore:
+      - "§7Hits §c3 §7mobs on impact."
+      - "§7Can damage endermen."
     components:
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.5
+        should-be-arrow: false
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: VOIDGLOOM_SERAPH
+            level: 5
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/enderman/weapons/juju_shortbow
   - id: MOSQUITO_BOW
     rarity: LEGENDARY
     material: BOW
-    name: "Mosquito Bow"
+    name: "Mosquito Shortbow"
+    default_statistics:
+      damage: 319
+      strength: 151
+      critical_damage: 39
+      vitality: 20
     components:
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.5
+        should-be-arrow: false
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: TARANTULA_BROODFATHER
+            level: 7
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/spider/weapons/mosquito_shortbow
   - id: SCORPION_BOW
     rarity: EPIC
     material: BOW
-    name: "Scorpion Bow"
+    name: "Spider Shortbow"
+    default_statistics:
+      damage: 50
+      strength: 25
+      critical_damage: 10
     components:
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.5
+        should-be-arrow: false
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: TARANTULA_BROODFATHER
+            level: 3
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/spider/weapons/spider_shortbow
   - id: TERMINATOR
@@ -43,8 +98,6 @@ items:
       - "§7Can damage endermen."
       - ""
       - "§cDivides your §9☣ Crit Chance §cby 4!"
-      - ""
-      - "§6Shortbow: Instantly shoots!"
     components:
       - id: SHORT_BOW
         handler_id: STANDARD_BOW_HANDLER
@@ -67,7 +120,11 @@ items:
     rarity: UNCOMMON
     material: BOW
     name: "Wither Bow"
+    default_statistics:
+      damage: 30
     components:
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: SELLABLE
         value: 1.0
       - id: ITEM_MODEL

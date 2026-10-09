@@ -23,6 +23,7 @@ public class ActionUseShortBow implements HypixelEventClass {
 
         if (BowShot.tryShortBow(player, item)) {
             event.setCancelled(true);
+            BowShot.stopDrawing(player);
             return;
         }
         if (item.hasComponent(ItemRequirementsComponent.class)

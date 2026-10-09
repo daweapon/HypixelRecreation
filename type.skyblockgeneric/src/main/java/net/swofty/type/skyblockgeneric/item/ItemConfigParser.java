@@ -222,7 +222,8 @@ public class ItemConfigParser {
                         rodPartsEnabled,
                         legacyConversionTarget,
                         subtitle,
-                        extraRequirements
+                        extraRequirements,
+                        safeConfig.getBoolean("soulbound", false)
                     );
                 }
                 case "FISHING_ROD_PART" -> {

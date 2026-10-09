@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.item.components;
 
 import lombok.Getter;
+import net.swofty.commons.skyblock.item.PotatoType;
 import net.swofty.commons.skyblock.item.reforge.ReforgeType;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
@@ -25,6 +26,7 @@ public class BowComponent extends SkyBlockItemComponent {
         addInheritedComponent(new EnchantableComponent(List.of(EnchantItemGroups.BOW), true));
         addInheritedComponent(new RuneableComponent(RuneableComponent.RuneApplicableTo.BOWS));
         addInheritedComponent(new TrackedUniqueComponent());
+        addInheritedComponent(new HotPotatoableComponent(PotatoType.WEAPONS));
     }
 
     public BowComponent(String handlerId, boolean shouldBeArrow) {

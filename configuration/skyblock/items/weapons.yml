@@ -11,8 +11,8 @@ items:
     default_statistics:
       damage: 100
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/broken/broken_bow
   - id: ALCHEMISTS_STAFF
@@ -60,8 +60,8 @@ items:
     material: BOW
     rarity: UNCOMMON
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/broken/broken_bow
@@ -69,27 +69,11 @@ items:
     material: BOW
     rarity: RARE
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/broken/broken_bow
-  - id: ARTISANAL_SHORTBOW
-    material: BOW
-    name: "Artisanal Shortbow"
-    rarity: RARE
-    default_statistics:
-      damage: 40
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
-      - id: ITEM_REQUIREMENTS
-        requirements:
-          - type: SKILL
-            skill: COMBAT
-            level: 4
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/uncategorized/artisanal_shortbow
   - id: ASPECT_OF_THE_DRAGON
     material: DIAMOND_SWORD
     name: "Aspect Of The Dragon"
@@ -534,8 +518,10 @@ items:
     default_statistics:
       damage: 1
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.75
+        should-be-arrow: false
       - id: DUNGEON_ITEM
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/dungeons/spirit_shortbow
@@ -563,14 +549,6 @@ items:
               - FINE_JASPER_GEM:20
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/dungeons/bouqet_of_lies
-  - id: BOW
-    material: BOW
-    rarity: COMMON
-    default_statistics:
-      damage: 30
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
   - id: BURSTFIRE_DAGGER
     material: STONE_SWORD
     name: "Kindlebane Dagger"
@@ -772,8 +750,8 @@ items:
     material: BOW
     rarity: RARE
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -871,8 +849,8 @@ items:
     default_statistics:
       damage: 300
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -887,8 +865,8 @@ items:
     default_statistics:
       damage: 45
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/decent_bow
   - id: DIAMOND_SWORD
@@ -908,8 +886,10 @@ items:
       critical_damage: 50
       critical_chance: 15
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.5
+        should-be-arrow: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/combat_3/dragon_shortbow
   - id: EARTH_SHARD
@@ -987,8 +967,8 @@ items:
     default_statistics:
       damage: 60
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/combat_3/weapons/ender_bow
   - id: END_STONE_BOW
@@ -997,8 +977,8 @@ items:
     default_statistics:
       damage: 140
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_REQUIREMENTS
         requirements:
           - type: SKILL
@@ -1070,8 +1050,8 @@ items:
       damage: 100
       strength: 20
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/explosive_bow
   - id: FANCY_SWORD
@@ -1734,8 +1714,8 @@ items:
       damage: 120
       strength: 50
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/hurricane_bow
   - id: HYPERION
@@ -1843,8 +1823,10 @@ items:
       damage: 210
       strength: 100
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.75
+        should-be-arrow: false
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -1864,24 +1846,6 @@ items:
         standard_item_type: SWORD
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/community_center/mayor/jerry/jerrychine_gun
-  - id: JUJU_SHORTBOW
-    material: BOW
-    name: "Juju Shortbow"
-    rarity: EPIC
-    default_statistics:
-      damage: 310
-      strength: 40
-      critical_damage: 110
-      critical_chance: 10
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
-      - id: ITEM_REQUIREMENTS
-        requirements:
-          - type: PENDING
-            description: slayer_boss_type=enderman level=5
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/slayer/enderman/weapons/juju_shortbow
   - id: LAST_BREATH
     material: BOW
     rarity: LEGENDARY
@@ -1890,8 +1854,8 @@ items:
       strength: 180
       critical_damage: 50
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -1957,8 +1921,10 @@ items:
     material: BOW
     rarity: RARE
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.5
+        should-be-arrow: false
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -1974,8 +1940,8 @@ items:
       damage: 100
       strength: 100
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/magma_bow
   - id: MAWDUST_DAGGER
@@ -2089,27 +2055,10 @@ items:
     material: BOW
     rarity: COMMON
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/rift/zones/mirrorcosm/crafting_room/crafts/wob
-  - id: MOSQUITO_BOW
-    material: BOW
-    name: "Mosquito Bow"
-    rarity: LEGENDARY
-    default_statistics:
-      damage: 319
-      strength: 151
-      critical_damage: 39
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
-      - id: ITEM_REQUIREMENTS
-        requirements:
-          - type: PENDING
-            description: slayer_boss_type=spider level=7
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/slayer/spider/weapons/mosquito_shortbow
   - id: MUSHROOM_COW_AXE
     material: STONE_AXE
     rarity: UNCOMMON
@@ -2311,8 +2260,8 @@ items:
       damage: 50
       strength: 25
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/prismarine_bow
   - id: RABBIT_AXE
@@ -2460,8 +2409,8 @@ items:
       damage: 160
       strength: 50
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/runaans_bow
   - id: RUNIC_STAFF
@@ -2496,27 +2445,10 @@ items:
     default_statistics:
       damage: 50
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/savanna_bow
-  - id: SCORPION_BOW
-    material: BOW
-    name: "Scorpion Bow"
-    rarity: EPIC
-    default_statistics:
-      damage: 50
-      strength: 25
-      critical_chance: 10
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
-      - id: ITEM_REQUIREMENTS
-        requirements:
-          - type: PENDING
-            description: slayer_boss_type=spider level=3
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/slayer/spider/weapons/spider_shortbow
   - id: SCORPION_FOIL
     material: WOODEN_SWORD
     name: "Scorpion Foil"
@@ -2763,16 +2695,16 @@ items:
       damage: 100
       critical_damage: 50
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/slime_bow
   - id: SNIPER_BOW
     material: BOW
     rarity: RARE
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -2788,8 +2720,8 @@ items:
     default_statistics:
       damage: 450
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/souls_rebound
   - id: SOUL_ESOWARD
@@ -2832,8 +2764,8 @@ items:
     default_statistics:
       damage: 360
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/spider_queens_stinger
   - id: SPIDER_SWORD
@@ -3051,8 +2983,10 @@ items:
       damage: 220
       strength: 110
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.7
+        should-be-arrow: false
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -3069,8 +3003,8 @@ items:
       strength: 190
       critical_damage: 50
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -3157,8 +3091,8 @@ items:
     default_statistics:
       damage: 600
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/spider_queens_stinger
   - id: STARRED_STONE_BLADE
@@ -3187,8 +3121,8 @@ items:
       damage: 370
       strength: 180
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/venoms_touch
   - id: STARRED_YETI_SWORD
@@ -3255,8 +3189,8 @@ items:
     material: BOW
     rarity: RARE
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -3315,8 +3249,8 @@ items:
       damage: 200
       strength: 100
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_REQUIREMENTS
         requirements:
           - type: SKILL
@@ -3368,8 +3302,8 @@ items:
     default_statistics:
       damage: 220
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -3482,24 +3416,6 @@ items:
           - gemstone: COMBAT
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/spider/weapons/tarantula_fang
-  - id: TERMINATOR
-    material: BOW
-    name: "Terminator"
-    rarity: LEGENDARY
-    default_statistics:
-      damage: 310
-      strength: 50
-      bonus_attack_speed: 40
-      critical_damage: 250
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
-      - id: ITEM_REQUIREMENTS
-        requirements:
-          - type: PENDING
-            description: slayer_boss_type=enderman level=7
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/slayer/enderman/weapons/terminator
   - id: TEST_WAND_WEAPON
     material: STICK
     rarity: RARE
@@ -3568,8 +3484,8 @@ items:
     default_statistics:
       damage: 80
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: DUNGEON_ITEM
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/undead_bow
@@ -3641,8 +3557,8 @@ items:
       damage: 250
       strength: 100
     components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
+      - id: BOW
+        handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/venoms_touch
   - id: VOIDEDGE_KATANA
@@ -3821,17 +3737,6 @@ items:
             result:
               type: WAND_OF_STRENGTH
               amount: 1
-  - id: WITHER_BOW
-    material: BOW
-    name: "Wither Bow"
-    rarity: UNCOMMON
-    default_statistics:
-      damage: 30
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: BOW
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/uncategorized/wither_bow
   - id: WITHER_CLOAK
     material: STONE_SWORD
     rarity: EPIC

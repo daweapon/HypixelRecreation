@@ -66,11 +66,8 @@ public class ItemLore {
 		Text displayName = displayName(item, stack.material());
 
 		if (item.hasComponent(FishingRodMetadataComponent.class)) {
-			FishingRodLoreBuilder.FishingRodLore rodLore = FishingRodLoreBuilder.build(item, player);
-			if (rodLore != null) {
-				applyFishingRodLore(item, player, rodLore);
-				return;
-			}
+			applyFishingRodLore(item, player, rarity, displayName);
+			return;
 		}
 
 		if (item.hasComponent(LoreUpdateComponent.class)) {
@@ -94,6 +91,7 @@ public class ItemLore {
 		fillConfigLore(lore);
 		fillAccessoryEffects(lore);
 		fillAbilities(lore);
+		fillShortbow(lore, rarity);
 		fillFullSetBonus(lore);
 		fillRecipes(lore);
 		fillReforgeable(lore);
@@ -102,7 +100,10 @@ public class ItemLore {
 		fillUnfinished(lore);
 		fillBazaarPlaceholder(lore);
 		lore.section(LoreText.Sections.RARITY_FOOTER).line("{}", displayRarity(item, rarity));
+		render(item, lore, rarity, displayName);
+	}
 
+	private void render(SkyBlockItem item, LoreText lore, Rarity rarity, Text displayName) {
 		this.stack = ItemStacks.lines(stack.builder(), lore.render())
 				.amount(item.getAmount())
 				.set(DataComponents.CUSTOM_NAME, reforgedName(item, displayName).asComponent()
@@ -110,14 +111,19 @@ public class ItemLore {
 				.build();
 	}
 
-	private void applyFishingRodLore(SkyBlockItem item, @Nullable SkyBlockPlayer player,
-									 FishingRodLoreBuilder.FishingRodLore rodLore) {
+	private void applyFishingRodLore(SkyBlockItem item, @Nullable SkyBlockPlayer player, Rarity rarity, Text displayName) {
 		LoreText lore = new LoreText(item, player);
-		TextBody.Section section = lore.section(LoreText.Sections.ABSOLUTE);
-		rodLore.lore().forEach(line -> section.line(Text.parseLenient(line)));
-
-		this.stack = ItemStacks.name(ItemStacks.lines(stack.builder(), lore.render()),
-				Text.parseLenient(rodLore.displayName())).build();
+		FishingRodLoreBuilder.fillHead(lore, rarity, gemstoneSlots(item));
+		fillEnchantments(lore);
+		fillRune(lore);
+		fillConfigLore(lore);
+		FishingRodLoreBuilder.fillParts(lore);
+		fillAbilities(lore);
+		fillReforgeable(lore);
+		FishingRodLoreBuilder.fillRequirements(lore);
+		fillSoulbound(lore);
+		lore.section(LoreText.Sections.RARITY_FOOTER).line("{}", displayRarity(item, rarity));
+		render(item, lore, rarity, displayName);
 	}
 
 	private void applyAbsoluteLore(SkyBlockItem item, @Nullable SkyBlockPlayer player, LoreConfig loreConfig) {
@@ -222,12 +228,16 @@ public class ItemLore {
 	}
 
 	private static void fillGemstones(LoreText lore) {
-		SkyBlockItem item = lore.item();
-		if (!item.hasComponent(GemstoneComponent.class)) return;
+		Text gemstoneLore = gemstoneSlots(lore.item());
+		if (gemstoneLore != null) lore.section(LoreText.Sections.GEMSTONES).line(Text.of(" ").append(gemstoneLore));
+	}
+
+	private static @Nullable Text gemstoneSlots(SkyBlockItem item) {
+		if (!item.hasComponent(GemstoneComponent.class)) return null;
 
 		GemstoneComponent gemstoneComponent = item.getComponent(GemstoneComponent.class);
 		ItemAttributeGemData.GemData gemData = item.getAttributeHandler().getGemData();
-		Text gemstoneLore = Text.of(" ");
+		Text gemstoneLore = Text.empty();
 
 		int index = -1;
 		for (GemstoneComponent.GemstoneSlot entry : gemstoneComponent.getSlots()) {
@@ -254,8 +264,7 @@ public class ItemLore {
 					gemRarity.getBracketColor(), gemstoneEnum.getColor(), gemstoneSlot.getSymbol());
 		}
 
-		if (gemstoneLore.plain().isBlank()) return;
-		lore.section(LoreText.Sections.GEMSTONES).line(gemstoneLore);
+		return gemstoneLore.plain().isBlank() ? null : gemstoneLore;
 	}
 
 	private static void fillPotion(LoreText lore) {
@@ -415,6 +424,13 @@ public class ItemLore {
 						(double) ability.getCooldownTicks() / 20);
 			}
 		}
+	}
+
+	private static void fillShortbow(LoreText lore, Rarity rarity) {
+		if (!lore.item().hasComponent(ShortBowComponent.class)) return;
+
+		lore.section(LoreText.Sections.CUSTOM_AFTER_ABILITY)
+				.line(Text.of("<color:{}>Shortbow: Instantly shoots!", rarity.getColor()));
 	}
 
 	@SneakyThrows
