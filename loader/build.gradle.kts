@@ -37,6 +37,7 @@ dependencies {
     implementation(project(":type.galatea"))
     implementation(project(":type.backwaterbayou"))
     implementation(project(":type.jerrysworkshop"))
+    implementation(project(":type.kuudra"))
     implementation(project(":type.dungeonhub"))
     implementation(project(":type.skyblockgeneric"))
 
