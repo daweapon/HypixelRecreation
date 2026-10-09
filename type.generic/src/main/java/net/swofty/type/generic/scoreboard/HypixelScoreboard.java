@@ -16,6 +16,8 @@ import java.util.Map;
 import java.util.UUID;
 
 public class HypixelScoreboard {
+    public static final int MAX_LINES = 15;
+
     private final Map<UUID, Sidebar> sidebarCache = new HashMap<>();
     private final Map<UUID, List<Component>> lineCache = new HashMap<>();
 
@@ -72,7 +74,7 @@ public class HypixelScoreboard {
         Sidebar sidebar = sidebarCache.get(player.getUuid());
         if (sidebar == null) return;
 
-        List<Component> lines = render(player, rawLines);
+        List<Component> lines = render(player, visible(rawLines));
         List<Component> cached = lineCache.getOrDefault(player.getUuid(), new ArrayList<>());
         if (cached.equals(lines)) return;
 
@@ -105,6 +107,11 @@ public class HypixelScoreboard {
         }
 
         lineCache.put(player.getUuid(), new ArrayList<>(lines));
+    }
+
+    /** A sidebar shows at most 15 lines; like Hypixel's, the topmost ones give way. */
+    public static <T> List<T> visible(List<T> lines) {
+        return lines.size() <= MAX_LINES ? lines : lines.subList(lines.size() - MAX_LINES, lines.size());
     }
 
     public void removeScoreboard(Player player) {
