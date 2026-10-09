@@ -1,0 +1,146 @@
+# Kuudra fight tunables (Basic and Hot; Burning and up reuse them until the stun phase exists).
+# "K1" cites research K1 (.claude/kuudra-work/research/K1_hypixel_kuudra.md); "CAP" values were read from the
+# 2026-10-08 Burning run capture (.claude/kuudra-work/captures/burning); "EST" values are estimates to tune
+# against more captures. Per-tier values list BASIC, HOT, BURNING, FIERY, INFERNAL.
+
+supplies:
+  crates: 6                         # K1 3.1: six crates, one of the seven spots stays empty
+  crate_distance: 8                 # EST: blocks out into the lava from the platform edge
+  crate_jitter: 3                   # EST: K1 "a tad bit of randomness"
+  hook_radius: 3.5                  # EST: a bobber this close to a crate hooks it
+  reel_pull_blocks: 2               # CAP: a crate moved ~2 blocks per reel; Vulcan's Strongarm adds 10/25% (K1 3.1)
+  pickup_range: 4.5                 # EST: how close the player must stand to start picking up
+  pickup_seconds: {BASIC: 3, HOT: 4, BURNING: 5, FIERY: 5.5, INFERNAL: 6}   # CAP: Burning 5.0 s (20 steps); others EST
+  move_tolerance: 0.35              # EST: blocks a player may drift before "You moved and the Chest slipped"
+  carry_timeout_seconds: 30         # EST (K1 3.1)
+  drop_damage_fraction: 0.25        # EST (K1 3.1: a hit of at least 25% max health drops it)
+  pickup_slowness_amplifier: 2      # CAP: Slowness III while lifting a crate; nothing while carrying it
+  place_range: 4                    # EST: reach for right-clicking a pile (CAP: supplies are delivered by right-click)
+  organ_bonus: {KUUDRAS_KIDNEY: 10, KUUDRAS_LUNG: 20, KUUDRAS_HEART: 30}   # K1 8: % faster crates (best organ counts)
+
+build:
+  pile_seconds: 6                   # CAP: a pile took ~3-8 s of punching; the whole build took 45 s with 1-4 helpers
+  click_hold_ticks: 10              # EST: each sneak + left-click keeps a player building for this long
+  idle_decay_progress: 3            # CAP: unfinished piles nobody is punching lose ~3%...
+  idle_decay_seconds: 2             # CAP: ...every ~2 s
+  build_range: 4.5                  # EST
+  mob_hit_interval_seconds: 2       # EST: how often a mob near the Ballista damages it
+  mob_hit_range: 6                  # EST
+  mob_hit_progress: 2               # EST: percentage points one mob hit knocks off a pile
+  damage_bark_cooldown_seconds: 10  # EST: Elle's "BRUH" lines at most this often
+  fresh_tools_seconds: 10           # K1 3.2: the in-game message says 10 s
+  fresh_tools_roll_seconds: 1       # EST: Fresh Tools rolls at most once a second per builder
+  organ_bonus: {KUUDRAS_KIDNEY: 5, KUUDRAS_LUNG: 10, KUUDRAS_HEART: 15}    # K1 8: % faster Ballista building
+
+fuel:
+  cells: 4                          # K1 3.3
+  load_range: 4                     # EST
+  shot_cooldown_ticks: 20           # EST
+  aim_tolerance_degrees: 25         # EST: shots aimed further off Kuudra miss
+  bolt_speed: 3                     # EST: blocks per tick
+
+kuudra:
+  health: 100000                    # K1 3.6: 100,000 points shown as a percentage
+  size: 30                          # K1 3.6
+  shot_damage: {BASIC: 6250, HOT: 5000, BURNING: 4000, FIERY: 3500, INFERNAL: 3000}   # EST: 16 / 20 shots
+  surface_seconds: 30               # CAP: "Submerges In" counted down from 29s
+  shots_per_surface: 4              # EST: a volley this long sends him under early
+  submerged_seconds: 6              # CAP: ~6 s under, then he rises on another side
+  move_ticks: 60                    # CAP: rising or sinking took ~3 s
+  surfaced_depth: 5                 # CAP: his base sat at Y 69 under the Y 74 lava surface when up
+  submerged_depth: 31               # CAP: and at Y 43 when submerged
+  player_hits_damage: false         # K1 3.6: "Damaging Kuudra directly is futile" outside a stun
+  unstunned_shot_factor: 0.1        # EST (K1 3.3: on Burning and up an unstunned Kuudra takes "very little")
+  futile_cooldown_seconds: 10       # EST
+  shot_tokens: 0                    # EST: K1 4 says damaging Kuudra gives tokens; the amount is unknown
+
+tentacles:
+  active: {BASIC: 3, HOT: 4, BURNING: 4, FIERY: 5, INFERNAL: 6}                # EST (K1 3.7: "about a dozen")
+  health: {BASIC: 10000000, HOT: 15000000, BURNING: 20000000, FIERY: 30000000, INFERNAL: 40000000}   # EST
+  slam_damage: {BASIC: 2000, HOT: 2500, BURNING: 3000, FIERY: 4000, INFERNAL: 5000}   # EST, true damage
+  slam_interval_seconds: 12         # EST
+  telegraph_ticks: 80               # CAP: green, lime, yellow, orange, red terracotta, ~0.8 s each
+  path_length: 14                   # EST
+  path_width: 3                     # EST
+  respawn_seconds: 25               # K1 3.7: 20-30 s
+  build_knockback: 5                # EST: percentage points a slam near the Ballista knocks off a pile
+  grab_range: 8                     # EST: tentacles snatch players picking up supplies this close (K1 3.1)
+
+cannons:
+  cooldown_seconds: 0.8             # K1 3.8
+  damage_percent: 1.5               # K1 3.8: 1.5% of max health ...
+  damage_flat: 100000               # K1 3.8: ... + 100,000
+  blast_radius: 3                   # EST
+  speed: 1.6                        # EST: blocks per tick
+  dropship_multiplier: 1.5          # K1 3.8
+  tentacle_multiplier: 2            # EST (K1 3.8: "bonus damage to tentacles")
+
+tokens:
+  supply_recovered: 0               # EST: K1 4 lists no supply tokens
+  fuel_loaded: 0                    # EST
+
+support:
+  mana_regen_base: 2                # EST: % of max mana a second that Mana Aura's bonus is a share of
+  healing_aura_range: 8             # K1 4
+  mana_aura_range: 35               # K1 4
+  protective_aura_range: 20         # K1 4
+  sweeping_edge_range: 5            # K1 4
+  freezing_touch_range: 8           # K1 4
+  nuke_range: 20                    # K1 4
+  nuke_fraction: 0.8                # K1 4
+
+lives:
+  respawn_seconds: 10               # EST (K1 3.9: a respawn timer exists; Faster Respawn shortens it)
+  revive_invulnerable_seconds: 3    # K1 3.9
+  auto_revive_health: 0.5           # K1 3.9
+  time_limit_seconds: 0             # K1 3: no time limit documented; 0 = none
+
+waves:
+  batch_base: 2                     # EST (K1 5.1: batch sizes unknown)
+  batch_per_extra_player: 1         # EST
+  max_alive: 30                     # EST (K1 5.1: spawning pauses while too many are alive)
+  cycle_growth: 1                   # EST: each repeat of waves 1-20 adds this many per batch
+  dropship_every: 5                 # EST (K1 5.1: Dropships every 5th wave past 20, scaling up)
+  chaosmite_from_wave: 35           # K1 5.1
+
+mobs:
+  blight_phase_seconds: 4           # EST: green, yellow, red (invulnerable)
+  landmine_fuse_ticks: 40           # EST
+  explosion_radius: 4               # EST: Landmine TNT and Explosive Imps
+  knocker_knockback: 30             # EST: velocity of a Knocker hit
+  slasher_leap_seconds: 4           # EST
+  slasher_teleport_chance: 0.15     # EST
+  sentry_skull_seconds: 3           # EST
+  sentry_max_skulls: 6              # EST
+  blaze_fire_seconds: 3             # EST
+  blaze_hit_window_seconds: 20      # K1 5.3
+  blaze_hit_multiplier: 1.0         # K1 5.3 quotes tierDps x hits x 0.01; read here as tierDps x hits (flagged)
+  dropship_loop_seconds: 40         # EST
+  dropship_attack_fraction: 0.75    # K1 5.3
+  dropship_altitude: 30             # EST
+  magma_merge_range: 1.5            # EST
+  omegagma_fuse_seconds: 5          # K1 5.3: "stays still ~5 s"
+  omegagma_look_dot: 0.6            # EST: how directly a player must face it to be hit
+  golem_throw_seconds: 5            # EST
+  golem_leap_seconds: 8             # EST
+  golem_throw_multiplier: 0.6       # K1 5.3
+  golem_leap_multiplier: 1.5        # K1 5.3
+  freeze_seconds: 4                 # K1 4: Freezing Touch
+  # EST: walking speed per mob (SkyBlock Speed stat; 100 is a player's base). Unlisted mobs use 100.
+  speed:
+    KUUDRA_FOLLOWER: 160             # K1 5.3: "rushes players"
+    KUUDRA_LANDMINE: 130
+    INFERNO_MAGMA_CUBE: 110
+    KUUDRA_BERSERKER: 150
+    EXPLOSIVE_IMP: 180               # K1 5.3: "runs at players"
+    BLIGHT: 130
+    KUUDRA_KNOCKER: 110
+    WANDERING_BLAZE: 100
+    DROPSHIP: 0                      # flies its own loop
+    KUUDRA_SLASHER: 60               # K1 5.3: "slowly leaps around"
+    WITHER_SENTRY: 0                 # K1 5.3: stationary
+    MAGMA_FOLLOWER: 120
+    OMEGAGMA: 0
+    BLAZING_GOLEM: 90
+    CHAOSMITE: 260                   # K1 5.3: "runs at players very fast"
+    KUUDRA_TENTACLE: 0

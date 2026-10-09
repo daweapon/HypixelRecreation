@@ -19,12 +19,14 @@ class KuudraArenaTest {
     @Test
     void usesHypixelsOwnCoordinates() {
         assertEquals("kuudra_hollow.polar", ARENA.world());
-        assertEquals(78, ARENA.floorY());
+        assertEquals(79, ARENA.floorY());
         assertEquals(75, ARENA.lavaSurfaceY());
-        assertEquals(new Pos(-101.5, 82, -105.5), ARENA.ballista());
-        assertEquals(new Pos(-98.5, 78.4, -113.5), ARENA.piles().get("SHOP"));
+        assertEquals(new Pos(-102.5, 80, -106.5), ARENA.ballista());
+        assertEquals(new Pos(-98, 79, -112.94), ARENA.piles().get("SHOP"));
         assertEquals(new Pos(-67.5, 77, -122.5), ARENA.supplySpots().get("TRIANGLE").position());
+        assertEquals(new Pos(-133.5, 75, -115.5), ARENA.supplySpots().get("X_CANNON").crate());
         assertEquals(30, ARENA.supplySpots().get("X").radius());
+        assertEquals(new Pos(-101.5, 79, -186.5, 180, 0), ARENA.spawn());
     }
 
     @Test
@@ -47,9 +49,19 @@ class KuudraArenaTest {
         assertFalse(ARENA.onPlatform(ARENA.spawn()));
         assertTrue(ARENA.bridge().containsColumn(ARENA.spawn().blockX(), ARENA.spawn().blockZ()));
         assertTrue(ARENA.bridge().containsColumn(ARENA.elle().blockX(), ARENA.elle().blockZ()));
-        assertEquals(ARENA.platform().maxZ() + 1, ARENA.bridge().minZ());
-        assertEquals(ARENA.floorY() - 1, ARENA.bridge().maxY());
+        assertEquals(ARENA.bridge().maxZ() + 1, ARENA.platform().minZ());
+        assertTrue(ARENA.bridge().minY() <= ARENA.floorY() - 1 && ARENA.bridge().maxY() >= ARENA.floorY() - 1);
         assertTrue(ARENA.onPlatform(ARENA.respawn()));
+    }
+
+    @Test
+    void kuudraSurfacesInTheLavaOnFourSides() {
+        assertEquals(Set.of("FRONT", "LEFT", "RIGHT", "BACK"), ARENA.kuudraSides().keySet());
+        ARENA.kuudraSides().values().forEach(side -> assertFalse(ARENA.platform().containsColumn(side.blockX(), side.blockZ())));
+        assertEquals(2, ARENA.cannons().size());
+        ARENA.cannons().forEach(cannon -> assertTrue(ARENA.onPlatform(cannon)));
+        assertTrue(ARENA.onPlatform(ARENA.perkShop()));
+        assertTrue(ARENA.onPlatform(ARENA.ellePlatform()));
     }
 
     @Test
