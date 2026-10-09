@@ -1,53 +1,75 @@
 package net.swofty.type.skyblockgeneric.entity.mob.ai;
 
-import net.minestom.server.coordinate.Vec;
+import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.EntityCreature;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Drop-in replacement for Minestom's {@code RandomStrollGoal} that wanders to a random nearby block,
  * but drives movement through the mob's {@link net.swofty.type.generic.entity.ai.vanilla.VanillaNavigator}
  * (our own A* + vanilla follow loop) rather than Minestom's built-in navigator.
+ * Strolls are cheap by design: only mobs a player can see wander, each stroll tries a few targets with a
+ * small node budget, start times are jittered, and only a handful of strolls may path in any one tick.
  */
 public class VanillaRandomStrollGoal extends GoalSelector {
+    static final long MIN_DELAY_MS = 2500;
+    static final long DELAY_JITTER_MS = 3000;
+    static final int ATTEMPTS = 3;
+    static final int STROLLS_PER_TICK = 6;
+    private static final int MAX_VERTICAL = 2;
+    private static final long TICK_MS = 50;
 
-    private static final long DELAY = 2500;
+    private static long budgetWindow;
+    private static int budgetUsed;
 
     private final int radius;
-    private final List<Vec> closePositions;
-    private final Random random = new Random();
-
-    private long lastStroll;
+    private final int maxNodes;
+    private long nextStroll;
 
     public VanillaRandomStrollGoal(@NotNull EntityCreature entityCreature, int radius) {
         super(entityCreature);
         this.radius = radius;
-        this.closePositions = getNearbyBlocks(radius);
+        this.maxNodes = nodeBudget(radius);
+        this.nextStroll = System.currentTimeMillis() + ThreadLocalRandom.current().nextLong(MIN_DELAY_MS + DELAY_JITTER_MS);
+    }
+
+    static int nodeBudget(int radius) {
+        return Math.max(64, radius * 25);
     }
 
     @Override
     public boolean shouldStart() {
-        return System.currentTimeMillis() - lastStroll >= DELAY;
+        long now = System.currentTimeMillis();
+        if (now < nextStroll) return false;
+        if (entityCreature.getViewers().isEmpty()) {
+            scheduleNext(now);
+            return false;
+        }
+        return takeBudget(now);
+    }
+
+    static synchronized boolean takeBudget(long now) {
+        long window = now / TICK_MS;
+        if (window != budgetWindow) {
+            budgetWindow = window;
+            budgetUsed = 0;
+        }
+        return budgetUsed++ < STROLLS_PER_TICK;
     }
 
     @Override
     public void start() {
-        int remainingAttempt = closePositions.size();
-        while (remainingAttempt-- > 0) {
-            final int index = random.nextInt(closePositions.size());
-            final Vec position = closePositions.get(index);
-
-            final var target = entityCreature.getPosition().add(position);
-            final boolean result = ((SkyBlockMob) entityCreature).getVanillaNavigator().pathTo(target);
-            if (result) {
-                break;
-            }
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        Pos position = entityCreature.getPosition();
+        for (int attempt = 0; attempt < ATTEMPTS; attempt++) {
+            Pos target = position.add(random.nextInt(-radius, radius + 1),
+                    random.nextInt(0, Math.min(radius, MAX_VERTICAL) + 1),
+                    random.nextInt(-radius, radius + 1));
+            if (((SkyBlockMob) entityCreature).getVanillaNavigator().pathTo(target, maxNodes)) break;
         }
     }
 
@@ -62,22 +84,14 @@ public class VanillaRandomStrollGoal extends GoalSelector {
 
     @Override
     public void end() {
-        this.lastStroll = System.currentTimeMillis();
+        scheduleNext(System.currentTimeMillis());
+    }
+
+    private void scheduleNext(long now) {
+        nextStroll = now + MIN_DELAY_MS + ThreadLocalRandom.current().nextLong(DELAY_JITTER_MS);
     }
 
     public int getRadius() {
         return radius;
-    }
-
-    private static @NotNull List<Vec> getNearbyBlocks(int radius) {
-        List<Vec> blocks = new ArrayList<>();
-        for (int x = -radius; x <= radius; x++) {
-            for (int y = -radius; y <= radius; y++) {
-                for (int z = -radius; z <= radius; z++) {
-                    blocks.add(new Vec(x, y, z));
-                }
-            }
-        }
-        return blocks;
     }
 }

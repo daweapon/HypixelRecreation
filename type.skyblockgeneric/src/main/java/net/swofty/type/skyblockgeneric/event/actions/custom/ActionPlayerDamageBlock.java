@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.event.actions.custom;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Point;
 import net.minestom.server.entity.GameMode;
+import net.minestom.server.instance.Instance;
 import net.minestom.server.item.Material;
 import net.minestom.server.network.packet.client.play.ClientPlayerActionPacket;
 import net.minestom.server.network.packet.server.play.BlockBreakAnimationPacket;
@@ -30,15 +31,21 @@ public class ActionPlayerDamageBlock implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(PlayerDamageSkyBlockBlockEvent event) {
         SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
+        Instance instance = player.getInstance();
+        if (instance == null || !instance.isChunkLoaded(event.getBlockPosition())) {
+            BreakingTask prev = CLICKING.remove(player.getUuid());
+            if (prev != null) prev.cancel();
+            return;
+        }
         SkyBlockRegion region = SkyBlockRegion.getRegionOfPosition(event.getBlockPosition());
 
-        Material currentMaterial = Material.fromKey(player.getInstance().getBlock(event.getBlockPosition()).key());
+        Material currentMaterial = Material.fromKey(instance.getBlock(event.getBlockPosition()).key());
         boolean statusNotStarted = event.getStatus() != ClientPlayerActionPacket.Status.STARTED_DIGGING;
         boolean regionNull = region == null;
         boolean handlerNull = !regionNull && region.getType().getMiningHandler() == null;
         boolean materialNull = currentMaterial == null;
         boolean notMineableHere = !regionNull && !handlerNull && !materialNull
-                && !region.getType().getMiningHandler().getMineableBlocks(player.getInstance(), event.getBlockPosition()).contains(currentMaterial);
+                && !region.getType().getMiningHandler().getMineableBlocks(instance, event.getBlockPosition()).contains(currentMaterial);
         boolean isCreative = player.getGameMode().equals(GameMode.CREATIVE);
 
         if (statusNotStarted || regionNull || handlerNull || materialNull || notMineableHere || isCreative) {
@@ -81,7 +88,7 @@ public class ActionPlayerDamageBlock implements HypixelEventClass {
 
         // Check if the player's tool can break this block using the handler system
         SkyBlockItem item = new SkyBlockItem(player.getItemInMainHand());
-        MineableBlock mineableBlock = MineableBlock.get(player.getInstance().getBlock(event.getBlockPosition()));
+        MineableBlock mineableBlock = MineableBlock.get(instance.getBlock(event.getBlockPosition()));
         if (mineableBlock != null) {
             SkyBlockMiningHandler handler = mineableBlock.getMiningHandler();
             // If block doesn't break instantly and tool can't break it, return
@@ -93,7 +100,7 @@ public class ActionPlayerDamageBlock implements HypixelEventClass {
         BreakingTask task = new BreakingTask(
                 player,
                 new BreakingTask.PositionedBlock(
-                        player.getInstance().getBlock(event.getBlockPosition()),
+                        instance.getBlock(event.getBlockPosition()),
                         event.getBlockPosition().asPos()),
                 item,
                 event.getSequence());

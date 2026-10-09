@@ -18,12 +18,21 @@ public class PacketListenerPlayerDig extends HypixelPacketClientListener {
     @Override
     public void run(PlayerPacketEvent event, ClientPacket packet, HypixelPlayer player) {
         ClientPlayerActionPacket digPacket = (ClientPlayerActionPacket) packet;
-        HypixelEventHandler.callCustomEvent(new PlayerDamageSkyBlockBlockEvent(
-                player,
-                digPacket.blockPosition(),
-                digPacket.status(),
-                digPacket.sequence()));
+        if (isDigging(digPacket.status())) {
+            HypixelEventHandler.callCustomEvent(new PlayerDamageSkyBlockBlockEvent(
+                    player,
+                    digPacket.blockPosition(),
+                    digPacket.status(),
+                    digPacket.sequence()));
+        }
         player.getPlayerConnection().sendPacket(new AcknowledgeBlockChangePacket(digPacket.sequence()));
+    }
+
+    public static boolean isDigging(ClientPlayerActionPacket.Status status) {
+        return switch (status) {
+            case STARTED_DIGGING, CANCELLED_DIGGING, FINISHED_DIGGING -> true;
+            default -> false;
+        };
     }
 
     @Override

@@ -50,6 +50,7 @@ public abstract class CrimsonIsleMob extends BestiaryMob {
 
     private final CrimsonMobProfile profile;
     private final Map<UUID, Double> damageDealt = new ConcurrentHashMap<>();
+    private @Nullable PendingHit pendingHit;
     @Getter
     private boolean corrupted;
 
@@ -149,14 +150,40 @@ public abstract class CrimsonIsleMob extends BestiaryMob {
 
     @Override
     public boolean damage(@NotNull Damage damage) {
-        if (damage.getAttacker() instanceof SkyBlockPlayer player && !acceptsDamageFrom(player, damage)) return false;
-        float before = getHealth();
-        boolean hurt = super.damage(damage);
-        if (hurt && damage.getAttacker() instanceof SkyBlockPlayer player) {
-            damageDealt.merge(player.getUuid(), (double) Math.max(0, before - getHealth()), Double::sum);
-            onDamagedBy(player, damage);
+        if (!(damage.getAttacker() instanceof SkyBlockPlayer player)) return super.damage(damage);
+        if (!acceptsDamageFrom(player, damage)) return false;
+        PendingHit outer = pendingHit;
+        pendingHit = new PendingHit(player.getUuid(), getHealth());
+        boolean hurt;
+        try {
+            hurt = super.damage(damage);
+        } finally {
+            creditPendingHit();
+            pendingHit = outer;
         }
+        if (hurt) onDamagedBy(player, damage);
         return hurt;
+    }
+
+    private record PendingHit(UUID player, float healthBefore) {
+    }
+
+    private void creditPendingHit() {
+        PendingHit hit = pendingHit;
+        if (hit == null) return;
+        pendingHit = null;
+        credit(hit.player(), hit.healthBefore() - getHealth());
+    }
+
+    public void credit(UUID player, double damage) {
+        if (damage > 0) damageDealt.merge(player, damage, Double::sum);
+    }
+
+    @Override
+    public void obliterate(SkyBlockPlayer player) {
+        if (isDead() || isRemoved()) return;
+        credit(player.getUuid(), getHealth());
+        super.obliterate(player);
     }
 
     protected boolean acceptsDamageFrom(SkyBlockPlayer player, Damage damage) {
@@ -198,6 +225,7 @@ public abstract class CrimsonIsleMob extends BestiaryMob {
 
     @Override
     public void kill() {
+        creditPendingHit();
         SkyBlockPlayer killer = killer();
         super.kill();
         if (killer == null) return;

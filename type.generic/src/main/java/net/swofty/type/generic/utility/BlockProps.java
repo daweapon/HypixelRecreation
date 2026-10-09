@@ -4,7 +4,10 @@ import net.minestom.server.instance.block.Block;
 import net.minestom.server.instance.block.BlockTags;
 import net.minestom.server.registry.Registry;
 import net.minestom.server.registry.RegistryTag;
+import net.minestom.server.registry.TagKey;
 import net.swofty.type.generic.entity.ai.vanilla.PathComputationType;
+
+import java.util.BitSet;
 
 /**
  * Static helpers mapping a Minestom {@link Block} to the semantics the walk pathfinder needs.
@@ -22,21 +25,36 @@ public final class BlockProps {
 
    private static final Registry<Block> BLOCKS = Block.staticRegistry();
 
-   private static final RegistryTag<Block> FENCES = BLOCKS.getTag(BlockTags.FENCES);
-   private static final RegistryTag<Block> WALLS = BLOCKS.getTag(BlockTags.WALLS);
-   private static final RegistryTag<Block> FENCE_GATES = BLOCKS.getTag(BlockTags.FENCE_GATES);
-   private static final RegistryTag<Block> DOORS = BLOCKS.getTag(BlockTags.DOORS);
-   private static final RegistryTag<Block> WOODEN_DOORS = BLOCKS.getTag(BlockTags.WOODEN_DOORS);
-   private static final RegistryTag<Block> TRAPDOORS = BLOCKS.getTag(BlockTags.TRAPDOORS);
-   private static final RegistryTag<Block> RAILS = BLOCKS.getTag(BlockTags.RAILS);
-   private static final RegistryTag<Block> CLIMBABLE = BLOCKS.getTag(BlockTags.CLIMBABLE);
-   private static final RegistryTag<Block> LEAVES = BLOCKS.getTag(BlockTags.LEAVES);
-   private static final RegistryTag<Block> FIRE = BLOCKS.getTag(BlockTags.FIRE);
-   private static final RegistryTag<Block> CAMPFIRES = BLOCKS.getTag(BlockTags.CAMPFIRES);
+   private static final BitSet FENCES = members(BlockTags.FENCES, BlockTags.WALLS);
+   private static final BitSet FENCE_GATES = members(BlockTags.FENCE_GATES);
+   private static final BitSet DOORS = members(BlockTags.DOORS);
+   private static final BitSet WOODEN_DOORS = members(BlockTags.WOODEN_DOORS);
+   private static final BitSet TRAPDOORS = members(BlockTags.TRAPDOORS);
+   private static final BitSet RAILS = members(BlockTags.RAILS);
+   private static final BitSet CLIMBABLE = members(BlockTags.CLIMBABLE);
+   private static final BitSet LEAVES = members(BlockTags.LEAVES);
+   private static final BitSet FIRE = members(BlockTags.FIRE);
+   private static final BitSet CAMPFIRES = members(BlockTags.CAMPFIRES);
 
-   /** True when {@code block} is a member of the given vanilla block tag. */
-   private static boolean in(final RegistryTag<Block> blockTag, final Block block) {
-      return blockTag != null && blockTag.contains(BLOCKS.getKey(block));
+   /**
+    * Block ids in any of the given tags. Looking a block up in a {@link RegistryTag} is a linear key search,
+    * far too slow for the pathfinder's per-node checks, so membership is resolved once per block id here.
+    */
+   @SafeVarargs
+   static BitSet members(final TagKey<Block>... tags) {
+      BitSet ids = new BitSet();
+      for (TagKey<Block> tagKey : tags) {
+         RegistryTag<Block> tag = BLOCKS.getTag(tagKey);
+         if (tag == null) continue;
+         for (Block block : Block.values()) {
+            if (tag.contains(BLOCKS.getKey(block))) ids.set(block.id());
+         }
+      }
+      return ids;
+   }
+
+   private static boolean in(final BitSet ids, final Block block) {
+      return ids.get(block.id());
    }
 
    /** True when {@code block} is {@code type}, ignoring block-state properties. */
@@ -74,7 +92,7 @@ public final class BlockProps {
    // ----- gates / doors / trapdoors -----
 
    public static boolean isFence(final Block block) {
-      return in(FENCES, block) || in(WALLS, block);
+      return in(FENCES, block);
    }
 
    public static boolean isFenceGate(final Block block) {
