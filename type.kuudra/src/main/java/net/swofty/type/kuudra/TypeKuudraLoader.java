@@ -21,10 +21,12 @@ import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.kuudra.fight.KuudraFightHooks;
 import net.swofty.type.kuudra.redis.KuudraInstantiateGameHandler;
 import net.swofty.type.kuudra.run.KuudraRun;
+import net.swofty.type.kuudra.run.KuudraRequeue;
 import net.swofty.type.kuudra.run.KuudraRuns;
 import net.swofty.type.kuudra.run.KuudraSidebar;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraConfig;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.queue.KuudraQueue;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import org.jetbrains.annotations.Nullable;
@@ -62,6 +64,7 @@ public class TypeKuudraLoader implements SkyBlockTypeLoader {
         KuudraSidebar.register();
         KuudraFightHooks.register();
         KuudraRuns.startCleanup();
+        KuudraQueue.useLocalRuns(KuudraRequeue::startHere);
         startOrchestratorHeartbeat();
     }
 

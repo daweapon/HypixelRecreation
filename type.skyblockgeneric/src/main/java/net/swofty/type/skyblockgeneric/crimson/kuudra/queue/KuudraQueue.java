@@ -52,6 +52,32 @@ public final class KuudraQueue {
     private record Entry(KuudraTier tier, long since) {
     }
 
+    /** Starts a run on this server instead of asking the orchestrator; the Kuudra server uses it to re-queue in place. */
+    @FunctionalInterface
+    public interface LocalRuns {
+        boolean start(KuudraTier tier, List<UUID> roster, List<SkyBlockPlayer> members);
+    }
+
+    private static volatile @Nullable LocalRuns localRuns;
+
+    public static void useLocalRuns(@Nullable LocalRuns runs) {
+        localRuns = runs;
+    }
+
+    /** The party-wide line every queue prints (both captures). */
+    public static List<String> entered(String leaderName, KuudraTier tier) {
+        String bar = "<9><m>-----------------------------";
+        return List.of(bar, "<a>" + leaderName + " <e>entered <c>Kuudra's Hollow<e>, <e>" + tier.getDisplayName() + " Tier<e>!", bar);
+    }
+
+    /** The queueing leader goes first; the run treats the first player as its instance creator. */
+    public static List<UUID> leaderFirst(UUID leader, List<UUID> members) {
+        List<UUID> ordered = new ArrayList<>();
+        ordered.add(leader);
+        members.stream().filter(member -> !member.equals(leader)).forEach(ordered::add);
+        return List.copyOf(ordered);
+    }
+
     public static boolean isQueued(UUID player) {
         Entry entry = QUEUED.get(player);
         if (entry == null) return false;
@@ -96,7 +122,7 @@ public final class KuudraQueue {
             return;
         }
         List<UUID> roster = party == null ? List.of(leader.getUuid())
-                : party.getMembers().stream().map(FullParty.Member::getUuid).toList();
+                : leaderFirst(leader.getUuid(), party.getMembers().stream().map(FullParty.Member::getUuid).toList());
         boolean isLeader = party == null || party.getLeader().getUuid().equals(leader.getUuid());
         if (!isLeader) {
             MinecraftServer.getSchedulerManager().scheduleNextTick(() -> leader.openView(new GUIKuudraNeedPartyLeader()));
@@ -127,16 +153,26 @@ public final class KuudraQueue {
         long now = System.currentTimeMillis();
         members.forEach(member -> QUEUED.put(member.getUuid(), new Entry(tier, now)));
         members.forEach(member -> member.sendMessage("<e>Starting in " + START_DELAY_SECONDS + " seconds..."));
-        MinecraftServer.getSchedulerManager().buildTask(() -> Thread.startVirtualThread(() -> send(members, roster, tier)))
+        MinecraftServer.getSchedulerManager().buildTask(() -> Thread.startVirtualThread(() -> send(leader, members, roster, tier)))
                 .delay(TaskSchedule.seconds(START_DELAY_SECONDS))
                 .schedule();
     }
 
-    private static void send(List<SkyBlockPlayer> members, List<UUID> roster, KuudraTier tier) {
+    private static void send(SkyBlockPlayer leader, List<SkyBlockPlayer> members, List<UUID> roster, KuudraTier tier) {
         try {
             List<SkyBlockPlayer> present = members.stream().filter(SkyBlockPlayer::isOnline).toList();
             if (present.size() != members.size()) {
                 fail(present, "<c>A party member left, so the queue was cancelled.");
+                return;
+            }
+            List<String> entered = entered(leader.getUsername(), tier);
+            LocalRuns here = localRuns;
+            if (here != null && here.start(tier, roster, present)) {
+                present.forEach(member -> {
+                    entered.forEach(member::sendMessage);
+                    QUEUED.remove(member.getUuid());
+                });
+                delist(roster);
                 return;
             }
             GetServerForMapProtocol.GetServerForMapResponse response = requestRun(roster, tier);
@@ -148,7 +184,10 @@ public final class KuudraQueue {
             }
             register(present, server, response.gameId());
             delist(roster);
-            present.forEach(member -> member.sendMessage("<7>Sending to server " + server.shortName() + "..."));
+            present.forEach(member -> {
+                entered.forEach(member::sendMessage);
+                member.sendMessage("<7>Sending to server " + server.shortName() + "...");
+            });
             for (SkyBlockPlayer member : present) {
                 if (!member.isOnline()) continue;
                 member.asProxyPlayer().transferToWithIndication(server.uuid())
