@@ -15,6 +15,7 @@ import net.swofty.type.generic.user.categories.Rank;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 public class PartyManager {
     private static final ProxyService partyService = new ProxyService(ServiceType.PARTY);
@@ -60,6 +61,14 @@ public class PartyManager {
         }
 
         send(new PartyAction.Invite(PendingParty.create(targetUUID, inviter.getUuid())));
+    }
+
+    /** Puts a player straight into a leader's party (creating it if the leader is solo), as the Party Finder does. */
+    public static CompletableFuture<Void> addToParty(UUID leader, UUID joiner) {
+        if (!partyService.isOnline().join()) return CompletableFuture.failedFuture(new IllegalStateException("The party service is offline"));
+        return partyService.handleRequest(new SendPartyActionProtocol.Request(new PartyAction.Invite(PendingParty.create(joiner, leader))))
+                .thenCompose(_ -> partyService.handleRequest(new SendPartyActionProtocol.Request(new PartyAction.AcceptInvite(joiner, leader))))
+                .thenApply(_ -> null);
     }
 
     public static void acceptInvite(HypixelPlayer player, String inviterName) {

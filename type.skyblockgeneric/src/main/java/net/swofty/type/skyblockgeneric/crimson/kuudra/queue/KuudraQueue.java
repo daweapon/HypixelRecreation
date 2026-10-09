@@ -14,6 +14,8 @@ import net.swofty.type.generic.party.PartyManager;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraAvailability;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraTier;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.partyfinder.KuudraPartyFinder;
+import net.swofty.type.skyblockgeneric.gui.inventories.kuudra.GUIKuudraNeedPartyLeader;
 import net.swofty.type.skyblockgeneric.user.ChallengeSidebar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -96,6 +98,10 @@ public final class KuudraQueue {
         List<UUID> roster = party == null ? List.of(leader.getUuid())
                 : party.getMembers().stream().map(FullParty.Member::getUuid).toList();
         boolean isLeader = party == null || party.getLeader().getUuid().equals(leader.getUuid());
+        if (!isLeader) {
+            MinecraftServer.getSchedulerManager().scheduleNextTick(() -> leader.openView(new GUIKuudraNeedPartyLeader()));
+            return;
+        }
 
         List<SkyBlockPlayer> members = new ArrayList<>();
         List<KuudraPartyCheck.Member> checks = new ArrayList<>();
@@ -141,6 +147,7 @@ public final class KuudraQueue {
                 return;
             }
             register(present, server, response.gameId());
+            delist(roster);
             present.forEach(member -> member.sendMessage("<7>Sending to server " + server.shortName() + "..."));
             for (SkyBlockPlayer member : present) {
                 if (!member.isOnline()) continue;
@@ -173,6 +180,14 @@ public final class KuudraQueue {
                     .join();
         } catch (Exception exception) {
             Logger.warn("Some Kuudra run registrations timed out; the run also knows its roster, so continuing");
+        }
+    }
+
+    private static void delist(List<UUID> roster) {
+        try {
+            roster.forEach(KuudraPartyFinder::leave);
+        } catch (Exception exception) {
+            Logger.warn(exception, "Couldn't take a queued Kuudra party out of the Party Finder");
         }
     }
 

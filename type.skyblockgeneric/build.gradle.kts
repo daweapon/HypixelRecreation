@@ -24,6 +24,7 @@ dependencies {
     implementation(project(":packer"))
     implementation(project(":proxy.api"))
     implementation(project(":type.generic"))
+    implementation(project(":dungeons"))
     implementation(libs.mongodb.bson)
     implementation(libs.mongodb.driver.sync)
     implementation(libs.jedis)

@@ -52,7 +52,7 @@ import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraFightSpec;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraMobSpec;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraPerkShop;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraTierSpec;
-import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrimsonIsle;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.essence.CrimsonEssencePerk;
 import net.swofty.type.skyblockgeneric.essence.EssencePerks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
@@ -102,7 +102,6 @@ public final class KuudraFight {
     private static final int LEAP_TICKS = 16;
     private static final Set<String> FLYERS = Set.of("WANDERING_BLAZE", "DROPSHIP");
 
-    private static final String HIGHEST_WAVE = "kuudra:highest_wave:";
 
     private final KuudraRun run;
     private final KuudraTier tier;
@@ -1311,7 +1310,7 @@ public final class KuudraFight {
         if (cap <= 0) return 0;
         long highest = 0;
         for (KuudraTier each : KuudraTier.values()) {
-            if (each.ordinal() >= tier.ordinal()) highest = Math.max(highest, DatapointCrimsonIsle.of(player).getNumber(HIGHEST_WAVE + each.name()));
+            if (each.ordinal() >= tier.ordinal()) highest = Math.max(highest, KuudraProgress.highestWave(player, each));
         }
         return Math.min(cap, highest * 0.001);
     }
@@ -1320,8 +1319,7 @@ public final class KuudraFight {
         int wave = run.state().wave();
         for (SkyBlockPlayer player : run.onlineMembers()) {
             try {
-                if (DatapointCrimsonIsle.of(player).getNumber(HIGHEST_WAVE + tier.name()) >= wave) continue;
-                DatapointCrimsonIsle.edit(player, data -> data.getNumbers().put(HIGHEST_WAVE + tier.name(), (long) wave));
+                KuudraProgress.recordWave(player, tier, wave);
             } catch (Exception exception) {
                 Logger.error(exception, "Couldn't record {}'s highest Kuudra wave", player.getUsername());
             }
