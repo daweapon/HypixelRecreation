@@ -62,13 +62,6 @@ items:
     rarity: EPIC
     material: WRITTEN_BOOK
     name: "Gloomlock Grimoire"
-  - id: GYROKINETIC_WAND
-    rarity: EPIC
-    material: BLAZE_ROD
-    name: "Gyrokinetic Wand"
-    components:
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/slayer/enderman/support_items/gyrokinetic_wand
   - id: TRANSMISSION_TUNER
     rarity: EPIC
     material: PLAYER_HEAD

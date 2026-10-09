@@ -155,7 +155,10 @@ items:
               amount: 1
       - id: STANDARD_ITEM
         standard_item_type: SWORD
-      - id: NOT_FINISHED_YET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: PENDING
+            description: slayer_boss_type=zombie level=7
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/zombie/weapons/reaper_scythe
   - id: REVENANT_FALCHION

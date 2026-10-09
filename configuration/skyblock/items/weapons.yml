@@ -1,10 +1,4 @@
 items:
-  - id: SILVER_FANG
-    material: IRON_SWORD
-    name: "Silver Fang"
-    rarity: RARE
-    name: "Silver Fang"
-
   - id: AIMING_BOW
     material: BOW
     rarity: EPIC
@@ -869,14 +863,6 @@ items:
         handler_id: STANDARD_BOW_HANDLER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/decent_bow
-  - id: DIAMOND_SWORD
-    material: DIAMOND_SWORD
-    rarity: UNCOMMON
-    default_statistics:
-      damage: 35
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: SWORD
   - id: DRAGON_SHORTBOW
     material: BOW
     rarity: EPIC
@@ -1808,14 +1794,6 @@ items:
         standard_item_type: SWORD
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/ink_wand
-  - id: IRON_SWORD
-    material: IRON_SWORD
-    rarity: COMMON
-    default_statistics:
-      damage: 30
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: SWORD
   - id: ITEM_SPIRIT_BOW
     material: BOW
     rarity: LEGENDARY
@@ -2022,35 +2000,6 @@ items:
         standard_item_type: SWORD
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/community_center/mayor/scorpius/midas_staff
-  - id: MIDAS_SWORD
-    material: GOLDEN_SWORD
-    name: "Midas Sword"
-    rarity: LEGENDARY
-    default_statistics:
-      damage: 170
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: SWORD
-      - id: ITEM_REQUIREMENTS
-        requirements:
-          - type: SKILL
-            skill: COMBAT
-            level: 20
-      - id: GEMSTONE
-        gemstone_slots:
-          - gemstone: JASPER
-            coins: 50000
-            items:
-              - FINE_JASPER_GEM:20
-          - gemstone: COMBAT
-            coins: 100000
-            items:
-              - FINE_JASPER_GEM:40
-              - FINE_SAPPHIRE_GEM:40
-              - FINE_RUBY_GEM:40
-              - FINE_AMETHYST_GEM:40
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/uncategorized/midas_sword
   - id: MIRRORED_BOW
     material: BOW
     rarity: COMMON
@@ -2313,22 +2262,6 @@ items:
         standard_item_type: SWORD
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/raider_sword
-  - id: REAPER_SCYTHE
-    material: DIAMOND_HOE
-    name: "Reaper Scythe"
-    rarity: LEGENDARY
-    default_statistics:
-      speed: 10
-      damage: 333
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: SWORD
-      - id: ITEM_REQUIREMENTS
-        requirements:
-          - type: PENDING
-            description: slayer_boss_type=zombie level=7
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/slayer/zombie/weapons/reaper_scythe
   - id: REAPER_SWORD
     material: DIAMOND_SWORD
     rarity: EPIC
@@ -2630,6 +2563,7 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/silk_edge_sword
   - id: SILVER_FANG
     material: GHAST_TEAR
+    name: "Silver Fang"
     rarity: UNCOMMON
     components:
       - id: DEFAULT_CRAFTABLE
@@ -3218,14 +3152,6 @@ items:
           - gemstone: DEFENSIVE
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/adaptive_blade
-  - id: STONE_SWORD
-    material: STONE_SWORD
-    rarity: COMMON
-    default_statistics:
-      damage: 25
-    components:
-      - id: STANDARD_ITEM
-        standard_item_type: SWORD
   - id: STRETCHING_STICKS
     material: STICK
     name: "Stretching Sticks"

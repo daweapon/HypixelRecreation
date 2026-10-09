@@ -1024,18 +1024,6 @@ items:
       - '<7>Upgrades a <9>Charm V <7>book into'
       - '<9>Charm VI<7>.'
     components:
-  - id: BURNT_TEXTS
-    material: player_head
-    name: 'Burnt Texts'
-    rarity: LEGENDARY
-    lore:
-      - '<8>Consumed on use'
-      - ''
-      - '<7>Grants <9>+5 Double Hook Chance<7>, but'
-      - '<7>reduces your <b>Fishing Speed <7>by <c>50<7>.'
-    components:
-      - id: SKULL_HEAD
-        texture: 78bd1889bf8a635ec71fc05b1ed548763778e3d371926d39a62c29d350c48b49
   - id: SQUID_BOOTS
     material: leather_boots
     name: 'Squid Boots'
