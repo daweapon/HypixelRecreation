@@ -21,6 +21,7 @@ import net.swofty.commons.TestFlow;
 import net.swofty.commons.config.ConfigProvider;
 import net.swofty.commons.config.ConfigurationOverlay;
 import net.swofty.commons.data.SwoftyData;
+import net.swofty.commons.proxy.ProxyLinkSupervisor;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.objects.proxy.to.*;
 import net.swofty.commons.redis.ProxyHeartbeat;
@@ -43,8 +44,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 
@@ -61,7 +60,6 @@ public class Hypixel {
     private static UUID serverUUID;
 
     private static final boolean ENABLE_SPARK = ConfigProvider.settings().getIntegrations().isSpark();
-    private static final long SERVER_NAME_RETRY_MILLIS = 2000;
 
     @SneakyThrows
     static void main(String[] args) {
@@ -221,51 +219,113 @@ public class Hypixel {
 
         // Start the server
         MinecraftServer.setBrandName("Hypixel");
-        CompletableFuture<Integer> startServer = new CompletableFuture<>();
-        startServer.whenComplete((port, throwable) -> {
-            minecraftServer.start(ConfigProvider.settings().getHostName(), port);
+        ProxyHeartbeat.init(ConfigProvider.settings().getRedisUri());
+        ProxyLinkSupervisor proxyLink = createProxyLink(serverType, maxPlayers, options);
+        Logger.info("Registering with the proxy...");
+        int port = proxyLink.connect().join();
 
-            long endTime = System.currentTimeMillis();
-            Logger.info("Started server on port " + port + " in " + (endTime - startTime) + "ms");
-            Logger.info("Server Type: " + serverType.name());
-            Logger.info("Internal ID: " + serverUUID.toString());
-            HypixelConst.setPort(port);
-            HypixelConst.setMaxPlayers(maxPlayers);
-            HypixelConst.setServerUUID(serverUUID);
+        minecraftServer.start(ConfigProvider.settings().getHostName(), port);
 
-            acquireServerName(serverType, maxPlayers, options);
-            checkProxyConnected();
+        long endTime = System.currentTimeMillis();
+        Logger.info("Started server on port " + port + " in " + (endTime - startTime) + "ms");
+        Logger.info("Server Type: " + serverType.name());
+        Logger.info("Internal ID: " + serverUUID.toString());
+        HypixelConst.setPort(port);
+        HypixelConst.setMaxPlayers(maxPlayers);
+        HypixelConst.setServerUUID(serverUUID);
 
-            // Initialize anticheat
-            if (ConfigProvider.settings().getIntegrations().isAnticheat()) {
-                Thread.startVirtualThread(() -> {
-                    Logger.info("Initializing anticheat...");
+        proxyLink.startMonitoring();
 
-                    MinestomLoader minestomLoader = new MinestomLoader();
-                    SwoftyAnticheat.loader(minestomLoader);
-                    SwoftyAnticheat.values(new SwoftyValues());
-                    SwoftyAnticheat.punishmentHandler(new PunishmentHandler() {
-                        @Override
-                        public void onFlag(UUID uuid, FlagType flagType) {
-                            Logger.info("Player " + uuid + " flagged for " + flagType.name());
-                        }
-                    });
-                    SwoftyAnticheat.start();
+        // Initialize anticheat
+        if (ConfigProvider.settings().getIntegrations().isAnticheat()) {
+            Thread.startVirtualThread(() -> {
+                Logger.info("Initializing anticheat...");
 
-                    Logger.info("Anticheat initialized");
+                MinestomLoader minestomLoader = new MinestomLoader();
+                SwoftyAnticheat.loader(minestomLoader);
+                SwoftyAnticheat.values(new SwoftyValues());
+                SwoftyAnticheat.punishmentHandler(new PunishmentHandler() {
+                    @Override
+                    public void onFlag(UUID uuid, FlagType flagType) {
+                        Logger.info("Player " + uuid + " flagged for " + flagType.name());
+                    }
                 });
-            }
+                SwoftyAnticheat.start();
+
+                Logger.info("Anticheat initialized");
+            });
+        }
+    }
+
+    private static ProxyLinkSupervisor createProxyLink(ServerType serverType, int maxPlayers, Map<String, String> options) {
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor(runnable -> {
+            Thread thread = new Thread(runnable, "proxy-link");
+            thread.setDaemon(true);
+            return thread;
         });
 
-        CompletableFuture.delayedExecutor(5, TimeUnit.SECONDS)
-                .execute(() -> {
-                    if (startServer.isDone()) return;
-                    Logger.error("Couldn't connect to proxy. Shutting down...");
-                    System.exit(0);
-                });
+        ProxyLinkSupervisor.ProxyLink link = new ProxyLinkSupervisor.ProxyLink() {
+            @Override
+            public boolean isProxyAlive() {
+                return ProxyHeartbeat.isProxyAlive();
+            }
 
-        registerWithProxy(serverType, maxPlayers, options, null)
-                .thenAccept(response -> startServer.complete(response.port()));
+            @Override
+            public CompletableFuture<ProxyLinkSupervisor.Registration> register(Integer port) {
+                return registerWithProxy(serverType, maxPlayers, options, port)
+                        .thenApply(response -> new ProxyLinkSupervisor.Registration(
+                                response.host(), response.port(), response.success(), response.error()));
+            }
+
+            @Override
+            public CompletableFuture<ProxyLinkSupervisor.AssignedName> requestName() {
+                return RedisClient.requestProxy(new RequestServerNameProtocol(), new RequestServerNameProtocol.Request())
+                        .thenApply(response -> new ProxyLinkSupervisor.AssignedName(
+                                response.serverName(), response.shortenedServerName(),
+                                response.success(), response.error()));
+            }
+        };
+
+        ProxyLinkSupervisor.Listener listener = new ProxyLinkSupervisor.Listener() {
+            @Override
+            public void onNameAssigned(ProxyLinkSupervisor.AssignedName name, boolean initial) {
+                adoptServerName(name, initial, serverType, options);
+            }
+
+            @Override
+            public void onProxyLost() {
+                Logger.warn("{} player(s) still connected; their sessions end and save when the proxy connection closes",
+                        MinecraftServer.getConnectionManager().getOnlinePlayers().size());
+            }
+
+            @Override
+            public void onProxyRestored() {
+                Logger.info("Routable through the proxy again as {}", HypixelConst.getServerName());
+            }
+        };
+
+        return new ProxyLinkSupervisor(link,
+                (delay, task) -> executor.schedule(task, delay.toMillis(), TimeUnit.MILLISECONDS),
+                listener);
+    }
+
+    private static void adoptServerName(ProxyLinkSupervisor.AssignedName name, boolean initial,
+                                        ServerType serverType, Map<String, String> options) {
+        if (options.get("--test-flow") != null) {
+            String serverNameRaw = name.shortName().substring(1);
+            HypixelConst.setServerName("isolated" + serverNameRaw);
+            HypixelConst.setShortenedServerName("i" + serverNameRaw);
+            if (initial) {
+                handleTestFlowRegistration(options.get("--test-flow"), options.get("--test-flow-handler"),
+                        options.get("--test-flow-players"), serverType, options.get("--test-flow-index"),
+                        options.get("--test-flow-total"), options.get("--test-flow-server-configs"));
+            }
+        } else {
+            HypixelConst.setServerName(name.name());
+            HypixelConst.setShortenedServerName(name.shortName());
+        }
+
+        Logger.info("Received server name: " + HypixelConst.getServerName());
     }
 
     @SneakyThrows
@@ -283,51 +343,6 @@ public class Hypixel {
                         isTestFlow ? testFlowName : null,
                         isTestFlow ? options.get("--test-flow-index") : null,
                         isTestFlow ? options.get("--test-flow-total") : null));
-    }
-
-    private static void acquireServerName(ServerType serverType, int maxPlayers, Map<String, String> options) {
-        boolean isTestFlow = options.get("--test-flow") != null;
-
-        RedisClient.requestProxy(new RequestServerNameProtocol(),
-                new RequestServerNameProtocol.Request())
-                .whenComplete((response, throwable) -> {
-                    if (throwable == null && response != null && response.success()) {
-                        if (isTestFlow) {
-                            String serverNameRaw = response.shortenedServerName().substring(1);
-
-                            HypixelConst.setServerName("isolated" + serverNameRaw);
-                            HypixelConst.setShortenedServerName("i" + serverNameRaw);
-
-                            handleTestFlowRegistration(options.get("--test-flow"), options.get("--test-flow-handler"),
-                                    options.get("--test-flow-players"), serverType, options.get("--test-flow-index"),
-                                    options.get("--test-flow-total"), options.get("--test-flow-server-configs"));
-                        } else {
-                            HypixelConst.setServerName(response.serverName());
-                            HypixelConst.setShortenedServerName(response.shortenedServerName());
-                        }
-
-                        Logger.info("Received server name: " + HypixelConst.getServerName());
-                        return;
-                    }
-
-                    Logger.warn("The proxy did not hand out a server name ({}), re-registering and retrying",
-                            describeNameFailure(response, throwable));
-
-                    CompletableFuture.delayedExecutor(SERVER_NAME_RETRY_MILLIS, TimeUnit.MILLISECONDS)
-                            .execute(() -> registerWithProxy(serverType, maxPlayers, options, HypixelConst.getPort())
-                                    .whenComplete((ignored, registerThrowable) -> {
-                                        if (registerThrowable != null) {
-                                            Logger.warn("Could not re-register with the proxy: {}", registerThrowable.toString());
-                                        }
-                                        acquireServerName(serverType, maxPlayers, options);
-                                    }));
-                });
-    }
-
-    private static String describeNameFailure(RequestServerNameProtocol.Response response, Throwable throwable) {
-        if (throwable != null) return throwable.toString();
-        if (response == null) return "no response";
-        return response.error() == null ? "unsuccessful response" : response.error();
     }
 
     private static void handleTestFlowRegistration(String testFlowName, String handler, String players,
@@ -382,44 +397,5 @@ public class Hypixel {
             }
         }
         return options;
-    }
-
-    private static final int PROXY_HEARTBEAT_CHECK_SECONDS = 3;
-    private static final int PROXY_HEARTBEAT_MAX_MISSES = 3;
-
-    private static void checkProxyConnected() {
-        ProxyHeartbeat.init(ConfigProvider.settings().getRedisUri());
-
-        ScheduledExecutorService monitor = Executors.newSingleThreadScheduledExecutor(runnable -> {
-            Thread thread = new Thread(runnable, "proxy-heartbeat-monitor");
-            thread.setDaemon(true);
-            return thread;
-        });
-
-        AtomicInteger missed = new AtomicInteger(0);
-        monitor.scheduleAtFixedRate(() -> {
-            boolean alive;
-            try {
-                alive = ProxyHeartbeat.isProxyAlive();
-            } catch (Exception e) {
-                alive = false;
-            }
-
-            if (alive) {
-                missed.set(0);
-                return;
-            }
-
-            int misses = missed.incrementAndGet();
-            Logger.warn("Proxy heartbeat missing ({}/{})", misses, PROXY_HEARTBEAT_MAX_MISSES);
-            if (misses >= PROXY_HEARTBEAT_MAX_MISSES) {
-                Logger.error("Proxy heartbeat absent for ~{}s. Shutting down...",
-                        PROXY_HEARTBEAT_MAX_MISSES * PROXY_HEARTBEAT_CHECK_SECONDS);
-                MinecraftServer.getConnectionManager().getOnlinePlayers()
-                        .forEach(player -> player.kick("<c>Server has lost connection to the proxy, please rejoin"));
-                CompletableFuture.delayedExecutor(500, TimeUnit.MILLISECONDS)
-                        .execute(() -> System.exit(0));
-            }
-        }, PROXY_HEARTBEAT_CHECK_SECONDS, PROXY_HEARTBEAT_CHECK_SECONDS, TimeUnit.SECONDS);
     }
 }
