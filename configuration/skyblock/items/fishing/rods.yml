@@ -65,6 +65,16 @@ items:
         required_fishing_level: 24
       - id: SELLABLE
         value: 111000.0
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: AQUAMARINE
+            coins: 50000
+            items:
+              - FINE_AQUAMARINE_GEM:1
+          - gemstone: AQUAMARINE
+            coins: 100000
+            items:
+              - FINE_AQUAMARINE_GEM:4
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/rod/rod_of_the_sea
   - id: GIANT_FISHING_ROD
@@ -107,6 +117,11 @@ items:
         subtitle: Lava Rod
         medium: LAVA
         required_fishing_level: 10
+        soulbound: true
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: AQUAMARINE
+            coins: 0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/rod/starter_lava_rod
   - id: POLISHED_TOPAZ_ROD
@@ -124,7 +139,13 @@ items:
         medium: LAVA
         required_fishing_level: 19
         extra_requirements:
-          - "\u2763 Requires Heart of the Mountain Tier 5."
+          - "<4>\u2763 <c>Requires <5>Heart of the Mountain Tier 5<c>."
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: AQUAMARINE
+            coins: 50000
+            items:
+              - FINE_AQUAMARINE_GEM:1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/rod/topaz_rod
   - id: MAGMA_ROD
@@ -163,6 +184,12 @@ items:
         required_fishing_level: 27
       - id: SELLABLE
         value: 8000.0
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: AQUAMARINE
+            coins: 50000
+            items:
+              - FINE_AQUAMARINE_GEM:1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/rod/magma_rod
   - id: INFERNO_ROD
@@ -201,6 +228,12 @@ items:
         required_fishing_level: 30
       - id: SELLABLE
         value: 1028000.0
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: AQUAMARINE
+            coins: 50000
+            items:
+              - FINE_AQUAMARINE_GEM:1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/rod/inferno_rod
   - id: HELLFIRE_ROD
@@ -239,6 +272,16 @@ items:
         required_fishing_level: 35
       - id: SELLABLE
         value: 5634000.0
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: AQUAMARINE
+            coins: 50000
+            items:
+              - FINE_AQUAMARINE_GEM:1
+          - gemstone: AQUAMARINE
+            coins: 100000
+            items:
+              - FINE_AQUAMARINE_GEM:4
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/rod/hellfire_rod
   - id: CHUM_ROD

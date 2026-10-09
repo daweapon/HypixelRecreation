@@ -24,7 +24,8 @@ public class FishingRodMetadataComponent extends SkyBlockItemComponent {
         boolean rodPartsEnabled,
         @Nullable String legacyConversionTarget,
         @Nullable String subtitle,
-        List<String> extraRequirements
+        List<String> extraRequirements,
+        boolean soulbound
     ) {
         this.medium = medium;
         this.requiredFishingLevel = requiredFishingLevel;
@@ -35,8 +36,7 @@ public class FishingRodMetadataComponent extends SkyBlockItemComponent {
         addInheritedComponent(new FishingRodComponent());
         addInheritedComponent(new EnchantableComponent(List.of(EnchantItemGroups.FISHING_ROD), true));
         addInheritedComponent(new ReforgableComponent(ReforgeType.FISHING_RODS));
-        addInheritedComponent(new DefaultSoulboundComponent(true));
+        if (soulbound) addInheritedComponent(new DefaultSoulboundComponent(true));
         addInheritedComponent(new ExtraRarityComponent("FISHING ROD"));
-        addInheritedComponent(new LoreUpdateComponent("FISHING_ROD", true));
     }
 }
