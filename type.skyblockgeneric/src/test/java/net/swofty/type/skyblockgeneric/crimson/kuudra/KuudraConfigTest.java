@@ -81,13 +81,34 @@ class KuudraConfigTest {
     @Test
     void elleDialogueCoversTheFight() {
         for (String key : List.of("idle", "start_first_time", "start_veterans", "supplies", "build", "ballista_ready",
-                "ballista_ready_stun", "stunned", "defeated", "lair_opens", "lair_defeated")) {
+                "ballista_ready_stun", "elle_eaten", "belly_outside", "belly_inside", "belly_bacteria", "stomach_flooding",
+                "stunned", "defeated", "lair_opens", "lair_defeated")) {
             assertFalse(CONFIG.dialogue().lines(key).isEmpty(), key);
         }
+        assertEquals("<a><l>Steve has been eaten by Kuudra!",
+                CONFIG.dialogue().announcement("player_eaten", Map.of("player", "Steve")));
+        assertEquals("<c><l>Steve was FINAL KILLED by Kuudra!",
+                CONFIG.dialogue().announcement("final_killed", Map.of("player", "Steve")));
         assertEquals(List.of("<e>[NPC] <c>Elle<f>: Talk with me to begin!"),
                 CONFIG.dialogue().chat("idle", RandomGenerator.getDefault()));
         assertEquals(1, CONFIG.dialogue().chat("ballista_damaged", RandomGenerator.getDefault()).size());
         assertEquals("Steve <a>recovered one of Elle's supplies! (3/6)",
                 CONFIG.dialogue().announcement("supply_recovered", Map.of("player", "Steve", "count", 3)));
+    }
+
+    @Test
+    void theStunAndLairSectionsLoad() {
+        var fight = CONFIG.fight();
+        assertEquals(10, fight.stun().leanInBlocks());
+        assertEquals(30, fight.stun().chargedSurfaceSeconds(KuudraTier.INFERNAL));
+        assertEquals(2500.0, fight.stun().stunnedHitPoints().get(KuudraTier.BURNING));
+        assertEquals(5, fight.stomach().podHitPercent());
+        assertEquals(240_000_000, fight.lair().health());
+        assertEquals(List.of(132, 292), fight.lair().collapseTicks());
+        assertEquals(310, fight.death().finishTicks());
+        assertNotNull(CONFIG.arena().stomach());
+        assertNotNull(CONFIG.arena().lair());
+        assertEquals(2, CONFIG.arena().lair().collapse().size());
+        assertEquals(2, CONFIG.arena().stomach().bacteria().size());
     }
 }

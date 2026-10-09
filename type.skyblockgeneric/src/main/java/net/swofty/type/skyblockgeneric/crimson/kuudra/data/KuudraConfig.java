@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.crimson.kuudra.data;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 import org.jetbrains.annotations.Nullable;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -50,8 +51,13 @@ public record KuudraConfig(int areaCombatLevel, int maxWave, int routeUnlockToke
                 KuudraPerkShop.parse(Yamls.load(directory.resolve("perks.yml"))),
                 KuudraDialogue.parse(Yamls.load(directory.resolve("dialogue.yml"))),
                 KuudraLootTable.parse(Yamls.load(directory.resolve("loot.yml"))),
-                KuudraArena.parse(Yamls.load(directory.resolve("arena.yml"))),
+                KuudraArena.parse(Yamls.load(directory.resolve("arena.yml")), collapse(directory)),
                 KuudraFightSpec.parse(Yamls.load(directory.resolve("fight.yml"))));
+    }
+
+    private static Map<String, Object> collapse(Path directory) {
+        Path file = directory.resolve("lair_collapse.yml");
+        return Files.isRegularFile(file) ? Yamls.load(file) : Map.of();
     }
 
     public KuudraTierSpec tier(KuudraTier tier) {

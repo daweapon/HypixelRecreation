@@ -51,11 +51,13 @@ elle:
     - "Phew! The Ballista is finally ready! It should be strong enough to tank Kuudra's blows now!"
     - "We need to find the fuel for the Ballista, it <c>must <c>have fallen in the lava<f> with the rest of my supplies!"
     - "Looks like Kuudra has re-emerged! It's time to <c>shoot him with the Ballista<f>!"
+  # The Burning and Infernal captures: the same two lines as Basic and Hot, then elle_eaten on a timer.
   ballista_ready_stun:
     - "Phew! The Ballista is finally ready! It should be strong enough to tank Kuudra's blows now!"
-    - "We need to find fuel for the Ballista, it <c>must be fallen into the lava<f> with the rest of my supplies!"
+    - "We need to find the fuel for the Ballista, it <c>must <c>have fallen in the lava<f> with the rest of my supplies!"
+  elle_eaten:
     - "Huh, what is that noise?"
-    - "Whow...WHOW! What's happening!!"
+    - "Whow.. WHOW! What's happening!!"
   belly_outside:
     - "<8>*muffles*<f>Help! <c>I'm still alive in here<f>! It stinks!"
     - "<8>*muffles*<f>I think I'm in <c>Kuudra's Belly<f>! I was standing too close!"
@@ -64,6 +66,7 @@ elle:
     - "Oh, funny seeing you here."
     - "What? Yes I am still alive. I landed in Kuudra's belly here."
     - "It looks like if we <c>mine these purple pods<f>, we can do some <c>real damage<f> to Kuudra!"
+  belly_bacteria:
     - "Oh come on! What is it this time!"
     - "I'll fight the mobs, you <c>focus on destroying these pods<f>!"
   stomach_flooding:
@@ -72,29 +75,35 @@ elle:
     - "We can <c>escape back out his throat<f> at the top of his stomach!"
     - "<o>aaaaaaaaaaaaaaaaaaaaaaaaaaaaah<f>"
     - "When Kuudra submerges, we will be <c>flushed out of his stomach<f>! We need to <c>get back inside<f> but be careful when he submerges!"
+  # The captures: a comma after "distracted".
   stunned:
-    - "That looks like it hurt! Quickly, while <c>Kuudra is distracted shoot him with the Ballista<f>!"
+    - "That looks like it hurt! Quickly, while <c>Kuudra is distracted, shoot him with the Ballista<f>!"
+  # Sent one line at a time on the death.line_ticks timer (both captures); Infernal goes on with lair_opens.
   defeated:
     - "POW! SURELY THAT'S IT! I don't think he has any more in him!"
     - "I knew you could do it!"
     - "One last flail before admitting defeat, huh?"
-    - "Good job everyone. A hard fought battle come to an end. Let's get out of here before we run into any more trouble!"
+  # The Infernal capture, one line at a time on the lair.lair_line_ticks timer.
   lair_opens:
-    - "POW! SURELY THAT'S IT! I don't think he has any more in him!"
-    - "I knew you could do it!"
-    - "One last flail before admitting defeat, huh?"
     - "What's happening? Why isn't he dying?"
-    - "What just happened? Is this Kuudra's real lair?"
-    - "..."
+    - "What just happened!? Is this Kuudra's real lair?"
+    - "...."
     - "I'm not going down there... that's all you."
+  # After KUUDRA DOWN on every tier.
   lair_defeated:
     - "Good job everyone. A hard fought battle come to an end. Let's get out of here before we run into any more trouble!"
 
-# Non-NPC chat lines. {player} and {count} are filled in by the fight.
+# Non-NPC chat lines. {player} and {count} are filled in by the fight. The eaten, pod and final kill lines are
+# the captures' (bold, plain name).
 announcements:
-  elle_eaten: "<c>Elle has been eaten by Kuudra!"
-  player_eaten: "{player} <c>has been eaten by Kuudra!"
-  pod_destroyed: "{player} <a>destroyed one of Kuudra's pods!"
+  elle_eaten: "<c><l>Elle has been eaten by Kuudra!"
+  player_eaten: "<a><l>{player} has been eaten by Kuudra!"
+  pod_destroyed: "<a><l>{player} destroyed one of Kuudra's pods!"
+  kuudra_stunned: "<a><l>Kuudra is stunned!"
+  final_killed: "<c><l>{player} was FINAL KILLED by Kuudra!"
+  died: "<c> ☠ {player}<7> died and became a ghost<7>."
+  you_died: "<c> ☠ <7>You died and became a ghost<7>."
+  final_revive_denied: "<c>You cannot purchase a revive when you are final killed! Only a Support teammate can revive final killed players!"
   supplies_retrieved: "<a>You retrieved some of Elle's supplies from the Lava!"
   supply_recovered: "{player} <a>recovered one of Elle's supplies! ({count}/6)"
   supplies_dropped: "{player} <c>dropped Elle's supplies back into the lava! Oops!"

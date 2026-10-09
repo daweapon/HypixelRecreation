@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.crimson.kuudra.data;
 import net.minestom.server.coordinate.Pos;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,13 +12,16 @@ import java.util.Map;
 public record KuudraArena(String world, int floorY, int lavaSurfaceY, Pos spawn, Pos elle, Pos respawn, Pos ballista,
                           Box platform, Box bridge, Box sea, Map<String, Pos> piles,
                           Map<String, SupplySpot> supplySpots, Pos ellePlatform, Pos perkShop, List<Pos> cannons,
-                          Map<String, Pos> kuudraSides, Pos exit) {
+                          Map<String, Pos> kuudraSides, Pos exit, @Nullable Stomach stomach, @Nullable Lair lair) {
 
     static KuudraArena parse(Map<String, Object> yaml) {
+        return parse(yaml, Map.of());
+    }
+
+    static KuudraArena parse(Map<String, Object> yaml, Map<String, Object> collapseYaml) {
         Map<String, Pos> piles = new LinkedHashMap<>();
         Yamls.map(yaml.get("piles")).forEach((name, position) -> piles.put(name, pos(position)));
-        Map<String, Pos> sides = new LinkedHashMap<>();
-        Yamls.map(yaml.get("kuudra_sides")).forEach((name, position) -> sides.put(name, pos(position)));
+        Map<String, Pos> sides = positions(yaml.get("kuudra_sides"));
         Map<String, SupplySpot> spots = new LinkedHashMap<>();
         Yamls.map(yaml.get("supply_spots")).forEach((name, spot) -> {
             Map<String, Object> entry = Yamls.map(spot);
@@ -42,7 +46,15 @@ public record KuudraArena(String world, int floorY, int lavaSurfaceY, Pos spawn,
                 pos(yaml.get("perk_shop")),
                 Yamls.list(yaml.get("cannons")).stream().map(KuudraArena::pos).toList(),
                 Map.copyOf(sides),
-                pos(yaml.get("exit")));
+                pos(yaml.get("exit")),
+                Stomach.parse(Yamls.map(yaml.get("stomach"))),
+                Lair.parse(Yamls.map(yaml.get("lair")), collapseYaml));
+    }
+
+    private static Map<String, Pos> positions(Object yaml) {
+        Map<String, Pos> positions = new LinkedHashMap<>();
+        Yamls.map(yaml).forEach((name, position) -> positions.put(name, pos(position)));
+        return positions;
     }
 
     /** The middle of the platform's top, where the Ballista stands. */
@@ -105,6 +117,63 @@ public record KuudraArena(String world, int floorY, int lavaSurfaceY, Pos spawn,
 
         public boolean containsColumn(int x, int z) {
             return x >= minX && x <= maxX && z >= minZ && z <= maxZ;
+        }
+
+        public Pos centre() {
+            return new Pos((minX + maxX + 1) / 2.0, (minY + maxY + 1) / 2.0, (minZ + maxZ + 1) / 2.0);
+        }
+    }
+
+    /** Kuudra's stomach (Burning and up): where eaten players land, the throat out of it, and the three pods. */
+    public record Stomach(Pos landing, Pos elle, Pos throat, Box bounds, Map<String, Box> pods, List<Pos> bacteria) {
+        static @Nullable Stomach parse(Map<String, Object> yaml) {
+            if (yaml.isEmpty()) return null;
+            Map<String, Box> pods = new LinkedHashMap<>();
+            Yamls.map(yaml.get("pods")).forEach((name, box) -> pods.put(name, Box.parse(box)));
+            return new Stomach(pos(yaml.get("landing")), pos(yaml.get("elle")), pos(yaml.get("throat")),
+                    Box.parse(yaml.get("bounds")), Map.copyOf(pods),
+                    Yamls.list(yaml.get("bacteria")).stream().map(KuudraArena::pos).toList());
+        }
+
+        public @Nullable String podAt(int x, int y, int z) {
+            for (Map.Entry<String, Box> pod : pods.entrySet()) {
+                if (pod.getValue().contains(x, y, z)) return pod.getKey();
+            }
+            return null;
+        }
+
+        public boolean contains(Pos position) {
+            return bounds.contains(position.blockX(), position.blockY(), position.blockZ());
+        }
+    }
+
+    /** Kuudra's lair under the platform (Infernal): its floor, where his head pokes out, and the captured collapse. */
+    public record Lair(int floorY, Box bounds, Pos landing, Map<String, Pos> sides, List<List<Run>> collapse) {
+        static @Nullable Lair parse(Map<String, Object> yaml, Map<String, Object> collapseYaml) {
+            if (yaml.isEmpty()) return null;
+            List<List<Run>> stages = new ArrayList<>();
+            for (Object stage : Yamls.list(collapseYaml.get("stages"))) {
+                stages.add(Yamls.list(stage).stream().map(Run::parse).toList());
+            }
+            return new Lair(Yamls.integer(yaml, "floor_y", 6), Box.parse(yaml.get("bounds")), pos(yaml.get("landing")),
+                    Map.copyOf(positions(yaml.get("sides"))), List.copyOf(stages));
+        }
+
+        /** Players are in the lair once they are down in the pit (the mods use Y below 10). */
+        public boolean contains(Pos position) {
+            return bounds.containsColumn(position.blockX(), position.blockZ()) && position.y() < floorY + 4;
+        }
+    }
+
+    /** Blocks {@code xFrom..xTo} at one {@code y} and {@code z}. */
+    public record Run(int y, int z, int xFrom, int xTo) {
+        static Run parse(Object yaml) {
+            List<Integer> numbers = Yamls.integers(yaml);
+            return new Run(numbers.get(0), numbers.get(1), numbers.get(2), numbers.get(3));
+        }
+
+        public int size() {
+            return xTo - xFrom + 1;
         }
     }
 }

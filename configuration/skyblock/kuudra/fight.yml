@@ -1,6 +1,6 @@
-# Kuudra fight tunables (Basic and Hot; Burning and up reuse them until the stun phase exists).
+# Kuudra fight tunables for every tier.
 # "K1" cites research K1 (.claude/kuudra-work/research/K1_hypixel_kuudra.md); "CAP" values were read from the
-# 2026-10-08 Burning run capture (.claude/kuudra-work/captures/burning); "EST" values are estimates to tune
+# 2026-10-08 Burning and Infernal run captures (.claude/kuudra-work/captures/{burning,infernal}); "EST" values are estimates to tune
 # against more captures. Per-tier values list BASIC, HOT, BURNING, FIERY, INFERNAL.
 
 supplies:
@@ -144,3 +144,57 @@ mobs:
     BLAZING_GOLEM: 90
     CHAOSMITE: 260                   # K1 5.3: "runs at players very fast"
     KUUDRA_TENTACLE: 0
+
+# Burning and up: Kuudra must be stunned from inside his stomach before the Ballista or weapons hurt him.
+stun:
+  lean_in_blocks: 10                # CAP: after the build he surfaced 10 blocks nearer the platform (z -59 to -69)
+  fuel_surface_seconds: 60          # CAP: "Submerges In: 59s" right after the build on Burning and Infernal
+  charged_surface_seconds: {BASIC: 30, HOT: 30, BURNING: 40, FIERY: 35, INFERNAL: 30}   # CAP: Burning 40 s, Infernal 29 s once the stun objective shows; Fiery EST
+  stun_seconds: 7                   # CAP: on Infernal he sagged for 7 s after the pod broke
+  sag_blocks: 3                     # CAP: he sinks 3 blocks while stunned
+  stunned_hit_points: {BASIC: 0, HOT: 0, BURNING: 2500, FIERY: 1800, INFERNAL: 1500}   # EST: points per counted hit (K1 3.4: the DPS check counts hits)
+  stunned_hit_cooldown_ticks: 4     # EST: one counted hit per player per 4 ticks
+  stunned_shot_factor: 2            # EST: a Ballista bolt into a stunned Kuudra hits this many times harder
+  elle_eaten_ticks: [110, 30, 50]   # CAP: after Elle's fuel line, "Huh, what is that noise?" 5.5 s, "Whow.. WHOW!" 1.1-1.7 s, eaten 2.2-2.6 s
+
+stomach:
+  pod_hit_percent: 5                # K1 3.4 / wiki: each pickaxe hit takes 5% off a pod
+  pod_hit_cooldown_ticks: 5         # EST: a pickaxe swing counts once every 5 ticks (Mining Frenzy speeds it up)
+  pod_reach: 5                      # EST
+  exit_delay_ticks: 72              # CAP: the stunner came out of Kuudra's mouth 3.6 s after breaking the pod
+  consumption_ticks: 30             # EST: standing this long in the Consumption Zone gets you swallowed
+  consumption_margin: 2             # EST: the zone reaches this far past Kuudra's face onto the platform
+  cannonball_flight_ticks: 25       # EST: Human Cannonball flight time into his mouth
+  bacteria_first_seconds: 8         # CAP: Magma Bacteria appeared 8.7 s after Elle landed in the stomach
+  bacteria_every_seconds: 8         # EST
+  bacteria_max: 3                   # CAP: three Magma Bacteria were seen in the stomach
+  bacteria_fire_seconds: 3          # EST
+  bacteria_knockback: 18            # EST: velocity of a Magma Bacteria projectile's knockback
+  bacteria_range: 30                # EST
+  bark_gap_ticks: 60                # EST: gap between Elle's belly lines
+
+# Infernal: at 25% the platform centre collapses into Kuudra's lair and the fight finishes down there.
+# Timings count from Elle's "POW!" line (the Infernal capture).
+lair:
+  threshold: 0.25                   # K1 3.5
+  health: 240000000                 # K1 3.5 / CAP: the lair hit title reads "/240M"
+  skip_line_ticks: [0, 60, 120]     # CAP: "POW!", "I knew you could do it!", "One last flail..."
+  collapse_ticks: [132, 292]        # CAP: the hidden layer at Y 77 goes at 6.6 s, the floor at Y 78 at 14.6 s
+  kuudra_enters_ticks: 330          # CAP: Kuudra dove into the lair 16.5 s after "POW!"
+  lair_line_ticks: [170, 372, 472, 593]   # CAP: "Why isn't he dying?", "Is this Kuudra's real lair?", "....", "I'm not going down there"
+  peek_seconds: 4                   # CAP: his head stayed out 3-5 s
+  move_seconds: 3                   # CAP: then hid about 3 s before peeking out of another wall
+  move_ticks: 30                    # CAP: pulling back or poking out took about 1.5 s
+  retract_blocks: 18                # CAP: he pulled back 18 blocks into the wall (x -132 to -150)
+  telegraph_every_seconds: 4        # CAP: a new lair telegraph started every 3-7 s
+  area_size: 16                     # CAP: the repeated square telegraph covered x -109..-94, z -114..-99
+  path_length: 30                   # CAP: line telegraphs swept across the pit
+  path_width: 5                     # CAP: about 5 blocks wide
+  flail_slams: 6                    # CAP: about six sweeps crossed the platform during "One last flail"
+  flail_slam_damage: 5000           # EST
+
+# Kuudra's death on every tier but the Infernal lair.
+death:
+  line_ticks: [0, 60, 120]          # CAP: "POW!", "I knew you could do it!" 3 s, "One last flail..." 6 s
+  finish_ticks: 310                 # CAP: KUUDRA DOWN came 15.5 s after his health hit 0 on Burning
+  lair_finish_ticks: 20             # CAP: KUUDRA DOWN 1 s after the lair bar emptied

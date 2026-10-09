@@ -58,3 +58,39 @@ kuudra_sides:
 
 # EST: the Forgotten Skull on the Crimson Isle, next to Crag, where players return after a run.
 exit: [-372.5, 114, -1038.5, 180, 0]
+
+# Kuudra's stomach (Burning and up), a cave far under the platform. It is already built in the captured world.
+stomach:
+  landing: [-160.5, 22, -168.5, 90, 0]   # EST: on the red glass floor between the pods (nobody in our party was eaten)
+  elle: [-152.9, 22, -167.0, 10, 0]      # CAP: where Elle stood after being eaten
+  throat: [-161.5, 49, -186.5]           # K1 (IQ's entry waypoint): the top of his throat; climbing here gets you out
+  bounds:                                # CAP: the cave
+    min: [-180, 14, -192]
+    max: [-140, 57, -145]
+  pods:                                  # CAP: the three purple pods (magenta terracotta and glass around a lava core)
+    RIGHT:
+      min: [-170, 24, -169]
+      max: [-168, 29, -165]
+    LEFT:
+      min: [-154, 24, -173]
+      max: [-150, 31, -170]
+    BACK:
+      min: [-156, 25, -157]
+      max: [-154, 33, -153]
+  bacteria:                              # CAP: where Magma Bacteria stood
+    - [-153.5, 22, -164.5]
+    - [-162.5, 22, -159.5]
+
+# Kuudra's lair (Infernal), the cavity under the platform that opens at 25%. lair_collapse.yml lists the captured
+# blocks that fall away.
+lair:
+  floor_y: 6                             # CAP: players stood at Y 6 in the pit
+  bounds:                                # CAP: the cavity under the 2-block platform slab
+    min: [-128, 5, -134]
+    max: [-78, 76, -80]
+  landing: [-101.5, 6, -105.5, 180, 0]   # CAP: where players landed after dropping in
+  sides:                                 # CAP (SOUTH EST): where his head pokes out of the pit walls
+    WEST: [-132, 9, -105]
+    EAST: [-75, 12, -104]
+    NORTH: [-98, 13, -136]
+    SOUTH: [-98, 13, -77]

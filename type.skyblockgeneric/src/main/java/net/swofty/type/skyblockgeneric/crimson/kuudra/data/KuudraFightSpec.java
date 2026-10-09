@@ -3,11 +3,13 @@ package net.swofty.type.skyblockgeneric.crimson.kuudra.data;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /** The fight's tunable numbers from {@code fight.yml}; most are estimates until real captures arrive. */
 public record KuudraFightSpec(Supplies supplies, Build build, Fuel fuel, Boss boss, Tentacles tentacles,
-                              Cannons cannons, Tokens tokens, Support support, Lives lives, Waves waves, Mobs mobs) {
+                              Cannons cannons, Tokens tokens, Support support, Lives lives, Waves waves, Mobs mobs,
+                              Stun stun, Stomach stomach, Lair lair, Death death) {
 
     static KuudraFightSpec parse(Map<String, Object> yaml) {
         return new KuudraFightSpec(
@@ -21,7 +23,11 @@ public record KuudraFightSpec(Supplies supplies, Build build, Fuel fuel, Boss bo
                 Support.parse(Yamls.map(yaml.get("support"))),
                 Lives.parse(Yamls.map(yaml.get("lives"))),
                 Waves.parse(Yamls.map(yaml.get("waves"))),
-                Mobs.parse(Yamls.map(yaml.get("mobs"))));
+                Mobs.parse(Yamls.map(yaml.get("mobs"))),
+                Stun.parse(Yamls.map(yaml.get("stun"))),
+                Stomach.parse(Yamls.map(yaml.get("stomach"))),
+                Lair.parse(Yamls.map(yaml.get("lair"))),
+                Death.parse(Yamls.map(yaml.get("death"))));
     }
 
     private static Map<KuudraTier, Double> perTier(Object yaml) {
@@ -180,6 +186,66 @@ public record KuudraFightSpec(Supplies supplies, Build build, Fuel fuel, Boss bo
                     Yamls.integer(yaml, "golem_leap_seconds", 8), Yamls.decimal(yaml, "golem_throw_multiplier", 0.6),
                     Yamls.decimal(yaml, "golem_leap_multiplier", 1.5), Yamls.integer(yaml, "freeze_seconds", 4),
                     Map.copyOf(speeds));
+        }
+    }
+
+    public record Stun(double leanInBlocks, int fuelSurfaceSeconds, Map<KuudraTier, Double> chargedSurfaceSeconds,
+                       int stunSeconds, double sagBlocks, Map<KuudraTier, Double> stunnedHitPoints,
+                       int stunnedHitCooldownTicks, double stunnedShotFactor, List<Integer> elleEatenTicks) {
+        static Stun parse(Map<String, Object> yaml) {
+            return new Stun(Yamls.decimal(yaml, "lean_in_blocks", 10), Yamls.integer(yaml, "fuel_surface_seconds", 60),
+                    perTier(yaml.get("charged_surface_seconds")), Yamls.integer(yaml, "stun_seconds", 7),
+                    Yamls.decimal(yaml, "sag_blocks", 3), perTier(yaml.get("stunned_hit_points")),
+                    Yamls.integer(yaml, "stunned_hit_cooldown_ticks", 4), Yamls.decimal(yaml, "stunned_shot_factor", 2),
+                    Yamls.integers(yaml.get("elle_eaten_ticks")));
+        }
+
+        public int chargedSurfaceSeconds(KuudraTier tier) {
+            return chargedSurfaceSeconds.get(tier).intValue();
+        }
+    }
+
+    public record Stomach(double podHitPercent, int podHitCooldownTicks, double podReach, int exitDelayTicks,
+                          int consumptionTicks, double consumptionMargin, int cannonballFlightTicks,
+                          int bacteriaFirstSeconds, int bacteriaEverySeconds, int bacteriaMax,
+                          int bacteriaFireSeconds, double bacteriaKnockback, double bacteriaRange,
+                          int barkGapTicks) {
+        static Stomach parse(Map<String, Object> yaml) {
+            return new Stomach(Yamls.decimal(yaml, "pod_hit_percent", 5), Yamls.integer(yaml, "pod_hit_cooldown_ticks", 5),
+                    Yamls.decimal(yaml, "pod_reach", 5), Yamls.integer(yaml, "exit_delay_ticks", 72),
+                    Yamls.integer(yaml, "consumption_ticks", 30), Yamls.decimal(yaml, "consumption_margin", 2),
+                    Yamls.integer(yaml, "cannonball_flight_ticks", 25), Yamls.integer(yaml, "bacteria_first_seconds", 8),
+                    Yamls.integer(yaml, "bacteria_every_seconds", 8), Yamls.integer(yaml, "bacteria_max", 3),
+                    Yamls.integer(yaml, "bacteria_fire_seconds", 3), Yamls.decimal(yaml, "bacteria_knockback", 18),
+                    Yamls.decimal(yaml, "bacteria_range", 30), Yamls.integer(yaml, "bark_gap_ticks", 60));
+        }
+    }
+
+    public record Lair(double threshold, double health, List<Integer> skipLineTicks, List<Integer> collapseTicks,
+                       int kuudraEntersTicks, List<Integer> lairLineTicks, int peekSeconds, int moveSeconds,
+                       int moveTicks, double retractBlocks, int telegraphEverySeconds, int areaSize, int pathLength,
+                       int pathWidth, int flailSlams, double flailSlamDamage) {
+        static Lair parse(Map<String, Object> yaml) {
+            return new Lair(Yamls.decimal(yaml, "threshold", 0.25), Yamls.decimal(yaml, "health", 240_000_000),
+                    Yamls.integers(yaml.get("skip_line_ticks")), Yamls.integers(yaml.get("collapse_ticks")),
+                    Yamls.integer(yaml, "kuudra_enters_ticks", 330), Yamls.integers(yaml.get("lair_line_ticks")),
+                    Yamls.integer(yaml, "peek_seconds", 4), Yamls.integer(yaml, "move_seconds", 3),
+                    Yamls.integer(yaml, "move_ticks", 30), Yamls.decimal(yaml, "retract_blocks", 18),
+                    Yamls.integer(yaml, "telegraph_every_seconds", 4), Yamls.integer(yaml, "area_size", 16),
+                    Yamls.integer(yaml, "path_length", 30), Yamls.integer(yaml, "path_width", 5),
+                    Yamls.integer(yaml, "flail_slams", 6), Yamls.decimal(yaml, "flail_slam_damage", 5000));
+        }
+
+        /** Real damage per Kuudra health point in the lair: the last {@code threshold} of the bar is {@code health}. */
+        public double damagePerPoint(double maxPoints) {
+            return health / (maxPoints * threshold);
+        }
+    }
+
+    public record Death(List<Integer> lineTicks, int finishTicks, int lairFinishTicks) {
+        static Death parse(Map<String, Object> yaml) {
+            return new Death(Yamls.integers(yaml.get("line_ticks")), Yamls.integer(yaml, "finish_ticks", 310),
+                    Yamls.integer(yaml, "lair_finish_ticks", 20));
         }
     }
 }
