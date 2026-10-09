@@ -21,6 +21,11 @@ import net.swofty.type.generic.gui.v2.ViewComponent;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.collection.CustomCollectionAward;
+import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonFaction;
+import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
+import net.swofty.type.skyblockgeneric.crimson.faction.ReputationTier;
+import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrimsonIsle;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bags.GUISackOfSacks;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraCollectionTier;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
@@ -55,6 +60,7 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MaxProfileTest {
@@ -161,6 +167,26 @@ class MaxProfileTest {
             assertTrue(component.render().apply(sackOfSacks.initialState(), context).build().material() != Material.AIR,
                     "Sack of Sacks slot " + slot + " renders empty");
         }
+    }
+
+    @Test
+    void crimsonFactionProgressBelongsToTheProfile() {
+        SkyBlockPlayer player = player();
+        CrimsonReputationService.setFaction(player, CrimsonFaction.BARBARIAN);
+        CrimsonReputationService.maxOut(player);
+        CrimsonQuestlines.maxOut(player);
+        assertEquals(CrimsonFaction.BARBARIAN, CrimsonReputationService.faction(player));
+
+        SkyBlockDataHandler saved = SkyBlockDataHandler.createFromProfileOnly(player.getSkyblockDataHandler().toProfileDocument());
+        DatapointCrimsonIsle.CrimsonIsleData reloaded = saved.get(SkyBlockDataHandler.Data.CRIMSON_ISLE, DatapointCrimsonIsle.class).getValue();
+        assertEquals(CrimsonFaction.BARBARIAN, reloaded.getFaction());
+        assertEquals(ReputationTier.HERO, ReputationTier.of(reloaded.getReputation(CrimsonFaction.MAGE)));
+
+        SkyBlockDataHandler otherProfile = SkyBlockDataHandler.initUserWithDefaultData(player.getUuid(), UUID.randomUUID());
+        DatapointCrimsonIsle.CrimsonIsleData fresh = otherProfile.get(SkyBlockDataHandler.Data.CRIMSON_ISLE, DatapointCrimsonIsle.class).getValue();
+        assertNull(fresh.getFaction());
+        assertEquals(0, fresh.getReputation(CrimsonFaction.BARBARIAN));
+        assertEquals(0, fresh.getQuestlineStage(CrimsonQuestlines.BARBARIAN));
     }
 
     @Test
