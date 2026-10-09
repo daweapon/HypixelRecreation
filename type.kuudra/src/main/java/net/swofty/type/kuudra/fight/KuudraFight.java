@@ -127,6 +127,7 @@ public final class KuudraFight {
     private final List<Shot> shots = new CopyOnWriteArrayList<>();
     private final List<Leap> leaps = new CopyOnWriteArrayList<>();
     private final List<Entity> props = new ArrayList<>();
+    private static final int MOUNT_GRACE_TICKS = 10;
     private final Map<UUID, Long> shotReady = new ConcurrentHashMap<>();
     private final Map<UUID, Long> cannonReady = new ConcurrentHashMap<>();
     private final Map<UUID, Long> futileReady = new ConcurrentHashMap<>();
@@ -711,6 +712,7 @@ public final class KuudraFight {
                 player.sendMessage("<c>Someone is already using the Ballista!");
                 return;
             }
+            shotReady.put(player.getUuid(), tick + MOUNT_GRACE_TICKS);
             player.sendMessage("<a>You mounted the Ballista! <e>Look to aim, left-click <a>to fire, sneak to get off.");
         }
     }
