@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.tabmodules;
 
+import net.kyori.adventure.text.Component;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
@@ -39,14 +40,19 @@ public class AccountInformationModule extends TablistModule {
         DatapointSkills.PlayerSkills skills = player.getSkills();
         ItemStatistics playerStatistics = player.getStatistics().allStatistics();
         entries.add(new TablistEntry(Text.key("tablist.account_info.skills_label", String.valueOf(skillCategory), String.valueOf(skills.getCurrentLevel(skillCategory)), String.valueOf(skills.getPercentage(skillCategory))), TablistSkinRegistry.GRAY));
-        entries.add(new TablistEntry(Text.key("tablist.account_info.speed", ItemStatistic.SPEED.getColouredSymbol(), String.valueOf(playerStatistics.getOverall(ItemStatistic.SPEED))), TablistSkinRegistry.GRAY));
-        entries.add(new TablistEntry(Text.key("tablist.account_info.strength", ItemStatistic.STRENGTH.getColouredSymbol(), ItemStatistic.STRENGTH.getSymbol().getSprite(), String.valueOf(playerStatistics.getOverall(ItemStatistic.STRENGTH))), TablistSkinRegistry.GRAY));
-        entries.add(new TablistEntry(Text.key("tablist.account_info.crit_chance", ItemStatistic.CRITICAL_CHANCE.getColouredSymbol(), ItemStatistic.CRITICAL_CHANCE.getSymbol().getSprite(), String.valueOf(playerStatistics.getOverall(ItemStatistic.CRITICAL_CHANCE))), TablistSkinRegistry.GRAY));
-        entries.add(new TablistEntry(Text.key("tablist.account_info.crit_damage", ItemStatistic.CRITICAL_DAMAGE.getColouredSymbol(), ItemStatistic.CRITICAL_DAMAGE.getSymbol().getSprite(), String.valueOf(playerStatistics.getOverall(ItemStatistic.CRITICAL_DAMAGE))), TablistSkinRegistry.GRAY));
-        entries.add(new TablistEntry(Text.key("tablist.account_info.attack_speed", ItemStatistic.BONUS_ATTACK_SPEED.getColouredSymbol(), ItemStatistic.BONUS_ATTACK_SPEED.getSymbol().getSprite(), String.valueOf(playerStatistics.getOverall(ItemStatistic.BONUS_ATTACK_SPEED))), TablistSkinRegistry.GRAY));
+        entries.add(new TablistEntry(Text.key("tablist.account_info.speed", stat(ItemStatistic.SPEED, playerStatistics)), TablistSkinRegistry.GRAY));
+        entries.add(new TablistEntry(Text.key("tablist.account_info.strength", stat(ItemStatistic.STRENGTH, playerStatistics)), TablistSkinRegistry.GRAY));
+        entries.add(new TablistEntry(Text.key("tablist.account_info.crit_chance", stat(ItemStatistic.CRITICAL_CHANCE, playerStatistics)), TablistSkinRegistry.GRAY));
+        entries.add(new TablistEntry(Text.key("tablist.account_info.crit_damage", stat(ItemStatistic.CRITICAL_DAMAGE, playerStatistics)), TablistSkinRegistry.GRAY));
+        entries.add(new TablistEntry(Text.key("tablist.account_info.attack_speed", stat(ItemStatistic.BONUS_ATTACK_SPEED, playerStatistics)), TablistSkinRegistry.GRAY));
         entries.add(getGrayEntry());
         fillRestWithGray(entries);
         return entries;
+    }
+
+    static Component stat(ItemStatistic statistic, ItemStatistics statistics) {
+        return statistic.getColouredSymbol()
+                .append(Component.text(StringUtility.commaify(Math.round(statistics.getOverall(statistic))), statistic.getDisplayColor()));
     }
 
     @Override

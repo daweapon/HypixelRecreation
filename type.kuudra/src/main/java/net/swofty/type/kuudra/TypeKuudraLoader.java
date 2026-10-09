@@ -16,6 +16,7 @@ import net.swofty.type.generic.command.HypixelCommand;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.tab.TablistManager;
+import net.swofty.type.generic.tab.AreaServerModule;
 import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.kuudra.fight.KuudraFightHooks;
 import net.swofty.type.kuudra.redis.KuudraInstantiateGameHandler;
@@ -103,6 +104,8 @@ public class TypeKuudraLoader implements SkyBlockTypeLoader {
             public List<TablistModule> getModules() {
                 return new ArrayList<>(List.of(
                         new SkyBlockPlayersOnlineModule(1),
+                        new SkyBlockPlayersOnlineModule(2),
+                        new AreaServerModule("tablist.server_info.area.kuudra"),
                         new AccountInformationModule()
                 ));
             }
