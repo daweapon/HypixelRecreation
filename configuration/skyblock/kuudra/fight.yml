@@ -153,7 +153,9 @@ stun:
   stun_seconds: 7                   # CAP: on Infernal he sagged for 7 s after the pod broke
   sag_blocks: 3                     # CAP: he sinks 3 blocks while stunned
   stunned_hit_points: {BASIC: 0, HOT: 0, BURNING: 2500, FIERY: 1800, INFERNAL: 1500}   # EST: points per counted hit (K1 3.4: the DPS check counts hits)
-  stunned_hit_cooldown_ticks: 4     # EST: one counted hit per player per 4 ticks
+  stunned_hit_cooldown_ticks: 4     # EST: melee counts once per player per 4 ticks (anti-spam)
+  stunned_arrow_hits_per_tick: 5    # EST: every landed arrow counts, up to this many per player per tick (a Terminator volley plus Hydra Strike's 2 extra arrows)
+  stunned_arrow_hit_factor: 0.25    # EST: an arrow scores this share of stunned_hit_points; a Terminator lands ~4-5x the hits melee does. K1 3.4: player melee/bow damage on a stunned Kuudra was halved in Dec 2022 (both alike, so no relative change)
   stunned_shot_factor: 2            # EST: a Ballista bolt into a stunned Kuudra hits this many times harder
   elle_eaten_ticks: [110, 30, 50]   # CAP: after Elle's fuel line, "Huh, what is that noise?" 5.5 s, "Whow.. WHOW!" 1.1-1.7 s, eaten 2.2-2.6 s
 

@@ -898,24 +898,24 @@ public final class KuudraFight {
 
     private void hitKuudra(SkyBlockPlayer player) {
         weaponHit(player, PlayerStatistics.runPrimaryDamageFormula(player.getStatistics().allStatistics(),
-                ItemStatistics.builder().build()).getKey());
+                ItemStatistics.builder().build()).getKey(), false);
     }
 
-    /** An arrow from the player landed on Kuudra. */
+    /** An arrow (or a Salvation beam) from the player landed on Kuudra; each one is its own hit. */
     public void arrowHitKuudra(SkyBlockPlayer player, double damage) {
         synchronized (run) {
-            if (!stopped) weaponHit(player, damage);
+            if (!stopped) weaponHit(player, damage, true);
         }
     }
 
     /** A melee or bow hit: real damage in the lair, a counted hit while stunned, otherwise Elle's "futile" line. */
-    private void weaponHit(SkyBlockPlayer player, double damage) {
+    private void weaponHit(SkyBlockPlayer player, double damage, boolean arrow) {
         if (lives.isGhost(player.getUuid()) || finishing) return;
         if (lair != null && lair.entered()) {
             lair.hit(player, damage);
             return;
         }
-        if (stunCycle != null && stunCycle.stunnedHit(player)) return;
+        if (stunCycle != null && stunCycle.stunnedHit(player, arrow)) return;
         if (spec.boss().playerHitsDamage()) return;
         long ready = futileReady.getOrDefault(player.getUuid(), 0L);
         if (tick < ready) return;

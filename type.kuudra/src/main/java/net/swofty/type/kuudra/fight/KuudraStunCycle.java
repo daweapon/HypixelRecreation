@@ -15,6 +15,7 @@ import net.swofty.type.kuudra.mob.MagmaBacteria;
 import net.swofty.type.kuudra.run.KuudraPhase;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraArena;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraFightSpec;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.DrillComponent;
 import net.swofty.type.skyblockgeneric.item.components.PickaxeComponent;
@@ -45,7 +46,7 @@ final class KuudraStunCycle {
     private final StomachSite site;
     private final List<KuudraMob> bacteria = new ArrayList<>();
     private final Map<UUID, Long> cannonballs = new ConcurrentHashMap<>();
-    private final Map<UUID, Long> hitReady = new ConcurrentHashMap<>();
+    private final StunnedHits hits;
     private final Set<UUID> greeted = ConcurrentHashMap.newKeySet();
     private boolean begun;
     private boolean elleEaten;
@@ -56,6 +57,7 @@ final class KuudraStunCycle {
     KuudraStunCycle(KuudraFight fight, KuudraArena.Stomach geometry) {
         this.fight = fight;
         this.stun = fight.spec().stun();
+        this.hits = new StunnedHits(stun.stunnedHitCooldownTicks(), stun.stunnedArrowHitsPerTick());
         this.rules = fight.spec().stomach();
         this.geometry = geometry;
         this.stomach = new KuudraStomach(geometry.pods().keySet());
@@ -338,13 +340,17 @@ final class KuudraStunCycle {
     }
 
     /** A weapon hit on a stunned Kuudra counts toward the hit-based DPS check (research K1 3.4). */
-    boolean stunnedHit(SkyBlockPlayer player) {
+    boolean stunnedHit(SkyBlockPlayer player, boolean arrow) {
         if (!fight.bossState().isStunned()) return false;
-        long ready = hitReady.getOrDefault(player.getUuid(), Long.MIN_VALUE);
-        if (fight.currentTick() < ready) return true;
-        hitReady.put(player.getUuid(), fight.currentTick() + stun.stunnedHitCooldownTicks());
-        fight.damageKuudraPoints(stun.stunnedHitPoints().get(fight.tier()));
+        long tick = fight.currentTick();
+        boolean counted = arrow ? hits.arrow(player.getUuid(), tick) : hits.melee(player.getUuid(), tick);
+        if (counted) fight.damageKuudraPoints(points(stun, fight.tier(), arrow));
         return true;
+    }
+
+    static double points(KuudraFightSpec.Stun stun, KuudraTier tier, boolean arrow) {
+        double points = stun.stunnedHitPoints().get(tier);
+        return arrow ? points * stun.stunnedArrowHitFactor() : points;
     }
 
     private void tickBacteria(long tick) {

@@ -191,12 +191,14 @@ public record KuudraFightSpec(Supplies supplies, Build build, Fuel fuel, Boss bo
 
     public record Stun(double leanInBlocks, int fuelSurfaceSeconds, Map<KuudraTier, Double> chargedSurfaceSeconds,
                        int stunSeconds, double sagBlocks, Map<KuudraTier, Double> stunnedHitPoints,
-                       int stunnedHitCooldownTicks, double stunnedShotFactor, List<Integer> elleEatenTicks) {
+                       int stunnedHitCooldownTicks, int stunnedArrowHitsPerTick, double stunnedArrowHitFactor,
+                       double stunnedShotFactor, List<Integer> elleEatenTicks) {
         static Stun parse(Map<String, Object> yaml) {
             return new Stun(Yamls.decimal(yaml, "lean_in_blocks", 10), Yamls.integer(yaml, "fuel_surface_seconds", 60),
                     perTier(yaml.get("charged_surface_seconds")), Yamls.integer(yaml, "stun_seconds", 7),
                     Yamls.decimal(yaml, "sag_blocks", 3), perTier(yaml.get("stunned_hit_points")),
-                    Yamls.integer(yaml, "stunned_hit_cooldown_ticks", 4), Yamls.decimal(yaml, "stunned_shot_factor", 2),
+                    Yamls.integer(yaml, "stunned_hit_cooldown_ticks", 4), Yamls.integer(yaml, "stunned_arrow_hits_per_tick", 5),
+                    Yamls.decimal(yaml, "stunned_arrow_hit_factor", 0.25), Yamls.decimal(yaml, "stunned_shot_factor", 2),
                     Yamls.integers(yaml.get("elle_eaten_ticks")));
         }
 

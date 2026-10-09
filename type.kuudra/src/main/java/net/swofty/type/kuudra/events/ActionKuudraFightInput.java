@@ -22,8 +22,9 @@ import net.swofty.type.kuudra.fight.world.KuudraItems;
 import net.swofty.type.kuudra.run.KuudraRun;
 import net.swofty.type.kuudra.run.KuudraRuns;
 import net.swofty.type.skyblockgeneric.entity.ArrowEntityImpl;
+import net.swofty.type.skyblockgeneric.event.custom.SalvationBeamEvent;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowDamage;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
-import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -97,10 +98,15 @@ public class ActionKuudraFightInput implements HypixelEventClass {
         if (!(event.getEntity() instanceof ArrowEntityImpl arrow) || !(arrow.getShooter() instanceof SkyBlockPlayer player)) return;
         KuudraFight fight = fightOf(player);
         if (fight == null || !fight.isKuudra(event.getTarget())) return;
-        ItemStatistics stats = ItemStatistics.add(player.getStatistics().allStatistics(),
-                arrow.getArrowItem().getAttributeHandler().getStatistics());
-        fight.arrowHitKuudra(player, PlayerStatistics.runPrimaryDamageFormula(stats, ItemStatistics.builder().build()).getKey());
+        fight.arrowHitKuudra(player, ArrowDamage.roll(player, arrow, ItemStatistics.empty()).getKey());
+        ArrowDamage.onLanded(player, arrow);
         arrow.remove();
+    }
+
+    @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
+    public void onBeam(SalvationBeamEvent event) {
+        KuudraFight fight = fightOf(event.shooter());
+        if (fight != null && event.targets().stream().anyMatch(fight::isKuudra)) fight.arrowHitKuudra(event.shooter(), event.damage());
     }
 
     @PhasedEvent(node = EventNodes.ENTITY, requireDataLoaded = false, phase = EventPhase.POST_SPAWN)
