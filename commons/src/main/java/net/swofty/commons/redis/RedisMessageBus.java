@@ -7,6 +7,7 @@ import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.redisapi.api.ChannelRegistry;
 import net.swofty.redisapi.api.RedisAPI;
 import org.tinylog.Logger;
+import net.swofty.redisapi.exceptions.MessageFailureException;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import java.util.List;
@@ -141,6 +142,7 @@ public final class RedisMessageBus {
     private static boolean isConnectionFailure(Throwable throwable) {
         for (Throwable cause = throwable; cause != null; cause = cause.getCause()) {
             if (cause instanceof JedisConnectionException) return true;
+            if (cause instanceof MessageFailureException) return true;
             if (cause.getCause() == cause) break;
         }
         return false;
