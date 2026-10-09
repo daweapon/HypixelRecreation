@@ -22,6 +22,7 @@ import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.fishing.item.FishingItemSupport;
 import net.swofty.type.skyblockgeneric.fishing.trophy.GoldenFishService;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
+import net.swofty.type.skyblockgeneric.fishing.FishingReelHooks;
 import net.swofty.type.skyblockgeneric.fishing.FishingService;
 import net.swofty.type.skyblockgeneric.fishing.FishingSession;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -235,6 +236,9 @@ public class FishingHook {
 	}
 
 	public void tryRetrieve(SkyBlockItem rodInHand) {
+		if (FishingReelHooks.consume(owner, getSpawnPosition())) {
+			return;
+		}
 		if (requiredMedium == FishingMedium.LAVA && GoldenFishService.tryReelIn(owner, rodInHand, getSpawnPosition())) {
 			return;
 		}

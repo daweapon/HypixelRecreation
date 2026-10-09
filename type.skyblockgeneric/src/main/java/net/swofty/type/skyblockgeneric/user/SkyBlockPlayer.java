@@ -986,6 +986,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
     @Override
     public void kill() {
+        if (PlayerDeathOverrides.handle(this)) return;
         NPCConversations.server().release(getUuid());
         healingModifiers.clear();
         setHealth(getMaxHealth());
