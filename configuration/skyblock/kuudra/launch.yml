@@ -1,4 +1,4 @@
 # The Kuudra launch switch. false: only staff can queue Kuudra, and the Defeat Kuudra and Boss Collections
 # SkyBlock XP tasks show as "Not in the game yet". true: everyone can queue (Crag, Elle, Party Finder) and both
 # XP tasks are live. Servers pick up a change within a few seconds; no rebuild or restart needed.
-public: false
+public: true
