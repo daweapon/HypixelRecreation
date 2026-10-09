@@ -192,7 +192,6 @@ items:
     material: FISHING_ROD
     rarity: COMMON
     components:
-      - id: FISHING_ROD
       - id: FISHING_ROD_METADATA
         display_name: Fishing Rod
         medium: WATER

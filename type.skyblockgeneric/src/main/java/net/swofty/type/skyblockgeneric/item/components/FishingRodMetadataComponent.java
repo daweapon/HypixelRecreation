@@ -33,7 +33,9 @@ public class FishingRodMetadataComponent extends SkyBlockItemComponent {
         this.legacyConversionTarget = legacyConversionTarget;
         this.subtitle = subtitle;
         this.extraRequirements = List.copyOf(extraRequirements);
-        addInheritedComponent(new FishingRodComponent());
+        FishingRodComponent rod = new FishingRodComponent();
+        addInheritedComponent(rod);
+        rod.getInheritedComponents().forEach(this::addInheritedComponent);
         addInheritedComponent(new EnchantableComponent(List.of(EnchantItemGroups.FISHING_ROD), true));
         addInheritedComponent(new ReforgableComponent(ReforgeType.FISHING_RODS));
         if (soulbound) addInheritedComponent(new DefaultSoulboundComponent(true));

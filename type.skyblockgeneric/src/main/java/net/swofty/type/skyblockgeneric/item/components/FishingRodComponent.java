@@ -11,7 +11,6 @@ public class FishingRodComponent extends SkyBlockItemComponent {
 
 	public FishingRodComponent() {
 		addInheritedComponent(new InteractableComponent(
-				null,
 				(player, item) -> {
 					FishingHook hook = FishingHook.getFishingHookForOwner(player);
 					if (hook != null) {
@@ -36,6 +35,7 @@ public class FishingRodComponent extends SkyBlockItemComponent {
 						new FishingHook(player, item).spawn(player.getInstance());
 					}
 				},
+				null,
 				null
 		));
 	}
