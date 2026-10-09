@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.collision.CollisionUtils;
 import net.minestom.server.collision.EntityCollisionResult;
@@ -19,16 +20,26 @@ import net.swofty.type.generic.utility.ScheduleUtility;
 import net.swofty.type.skyblockgeneric.event.custom.ArrowHitBlockEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
 public class ArrowEntityImpl extends LivingEntity {
+    public static final double LARGEST_TARGET_REACH = 24;
+
     private long cooldown = 0;
     @Getter
     private final Entity shooter;
     @Getter
     private final SkyBlockItem arrowItem;
     private boolean hasHit = false;
+    @Getter
+    @Setter
+    private @Nullable SkyBlockItem bow;
+    @Getter
+    @Setter
+    private double damageFactor = 1;
 
     public ArrowEntityImpl(Entity player, SkyBlockItem arrowItem) {
         super(EntityType.ARROW);
@@ -78,28 +89,22 @@ public class ArrowEntityImpl extends LivingEntity {
             cooldown = System.currentTimeMillis();
         }
 
-        @NotNull Collection<EntityCollisionResult> collided = CollisionUtils.checkEntityCollisions(instance, this.getBoundingBox(), posBefore, diff, 3, (e) -> e != this, result);
+        List<EntityCollisionResult> collided = CollisionUtils.checkEntityCollisions(instance, this.getBoundingBox(), posBefore, diff,
+                LARGEST_TARGET_REACH, (e) -> e != this && e != shooter, result).stream()
+                .sorted(Comparator.comparingDouble(EntityCollisionResult::percentage))
+                .toList();
         for (EntityCollisionResult collisionResult : collided) {
-            if (collisionResult != null && collisionResult.entity() != shooter) {
-                Entity entity = collisionResult.entity();
-                EntityType entityType = entity.getEntityType();
-                if (entityType == EntityType.PLAYER ||
-                        entityType == EntityType.ARMOR_STAND) {
-                    return;
-                }
+            Entity entity = collisionResult.entity();
+            EntityType entityType = entity.getEntityType();
+            if (entityType == EntityType.PLAYER || entityType == EntityType.ARMOR_STAND) continue;
 
-                var e = new ProjectileCollideWithEntityEvent(
-                        this,
-                    collisionResult.collisionPoint().asPos(),
-                        entity
-                );
-                MinecraftServer.getGlobalEventHandler().call(e);
-                if (!e.isCancelled()) {
-                    remove();
-                    kill();
-                }
-                return;
+            var e = new ProjectileCollideWithEntityEvent(this, collisionResult.collisionPoint().asPos(), entity);
+            MinecraftServer.getGlobalEventHandler().call(e);
+            if (!e.isCancelled()) {
+                remove();
+                kill();
             }
+            return;
         }
 
         if (result.hasCollision()) {

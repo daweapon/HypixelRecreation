@@ -10,10 +10,9 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.ArrowEntityImpl;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowDamage;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
-import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import net.swofty.type.skyblockgeneric.utility.AttackService;
 
 import java.util.Map;
@@ -39,14 +38,8 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
             shooter = player;
         else return;
 
-        SkyBlockItem arrowItem = arrow.getArrowItem();
         ItemStatistics entityStats = mob.getStatistics();
-        ItemStatistics playerStats = shooter.getStatistics().allStatistics();
-
-        // Add the arrow's statistics to the player's statistics
-        playerStats = ItemStatistics.add(playerStats, arrowItem.getAttributeHandler().getStatistics());
-
-        Map.Entry<Double, Boolean> hit = PlayerStatistics.runPrimaryDamageFormula(playerStats, entityStats);
+        Map.Entry<Double, Boolean> hit = ArrowDamage.roll(shooter, arrow, entityStats);
         double damage = hit.getKey() * AttributeEffectService.outgoingDamageMultiplier(shooter.getHuntingData(), collidedWith, true)
                 * CombatPetHooks.arrowMultiplier(shooter, collidedWith);
         boolean critical = hit.getValue();
@@ -54,8 +47,9 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
         float damageAmount = (float) damage;
         if (!AttackService.applyHit(shooter, collidedWith, damageAmount, critical)) return;
         CombatPetHooks.bowHit(shooter);
+        ArrowDamage.onLanded(shooter, arrow);
 
-        double ferocity = playerStats.getOverall(ItemStatistic.FEROCITY);
+        double ferocity = ArrowDamage.shooterStatistics(shooter, arrow.getArrowItem()).getOverall(ItemStatistic.FEROCITY);
         AttackService.scheduleExtraHits(shooter, collidedWith, damageAmount, critical, ferocity);
     }
 }

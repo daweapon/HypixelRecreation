@@ -8,37 +8,28 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ArrowComponent;
-import net.swofty.type.skyblockgeneric.item.components.BowComponent;
 import net.swofty.type.skyblockgeneric.item.components.ItemRequirementsComponent;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.BowShot;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-// Fires shortbows instantly on draw and validates arrow availability for regular bows
+// Fires shortbows instantly on right click and validates arrow availability for regular bows
 public class ActionUseShortBow implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void run(PlayerBeginItemUseEvent event) {
+        if (!event.getAnimation().equals(ItemAnimation.BOW)) return;
         SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
-        ItemAnimation type = event.getAnimation();
+        SkyBlockItem item = new SkyBlockItem(player.getItemInMainHand());
 
-        if (type.equals(ItemAnimation.BOW)) {
-            SkyBlockItem item = new SkyBlockItem(player.getItemInMainHand());
-            if (item.hasComponent(ItemRequirementsComponent.class)
-                    && !item.getComponent(ItemRequirementsComponent.class).ensureCanUse(player)) {
-                event.setCancelled(true);
-                return;
-            }
-            BowComponent bow = item.getComponent(BowComponent.class);
-
-            if (!bow.isShouldBeArrow()) {
-                // Bow is a "shortbow", fires instantly at full power
-                bow.onBowShoot(player, item, 1.0);
-                event.setCancelled(true);
-            } else {
-                // If there is an arrow, lets make sure they have one
-                if (player.getAllOfComponentInInventory(ArrowComponent.class).isEmpty()) {
-                    event.setCancelled(true);
-                }
-            }
+        if (BowShot.tryShortBow(player, item)) {
+            event.setCancelled(true);
+            return;
         }
+        if (item.hasComponent(ItemRequirementsComponent.class)
+                && !item.getComponent(ItemRequirementsComponent.class).ensureCanUse(player)) {
+            event.setCancelled(true);
+            return;
+        }
+        if (player.getAllOfComponentInInventory(ArrowComponent.class).isEmpty()) event.setCancelled(true);
     }
 }

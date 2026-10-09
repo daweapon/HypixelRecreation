@@ -27,6 +27,7 @@ public class ActionItemAbilityBlockRightUse implements HypixelEventClass {
             RegisteredAbility ability;
             ability = abilityComponent.getAbility(RegisteredAbility.AbilityActivation.RIGHT_CLICK_BLOCK);
             if (ability != null) {
+                if (!ability.isReady(player, item)) return;
                 if (!ability.getCost().canUse(player)) {
                     ability.getCost().onFail(player);
                     return;

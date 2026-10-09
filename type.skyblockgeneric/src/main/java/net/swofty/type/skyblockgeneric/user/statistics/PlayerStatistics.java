@@ -64,6 +64,8 @@ import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
 import net.swofty.type.skyblockgeneric.item.components.StandardItemComponent;
 import net.swofty.type.skyblockgeneric.accessory.hatcessory.Hatcessories;
 import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
+import net.swofty.type.skyblockgeneric.item.set.sets.terror.HydraStrike;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.Salvation;
 import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
 import net.swofty.type.skyblockgeneric.item.set.impl.TieredArmorSet;
 import net.swofty.type.skyblockgeneric.crimson.CrimsonGear;
@@ -816,6 +818,8 @@ public class PlayerStatistics {
                                 : Text.of("<a>{}❈ Defense", Math.round(player.getDefense())));
                 actionBar.setDefaultDisplay(SkyBlockActionBar.BarSection.MANA,
                         Text.of("<b>{}/{}✎ Mana", Math.round(player.getMana()), Math.round(player.getMaxMana())));
+                actionBar.setDefaultDisplay(SkyBlockActionBar.BarSection.SET_BONUS, HydraStrike.display(player));
+                actionBar.setDefaultDisplay(SkyBlockActionBar.BarSection.ABILITY_CHARGE, Salvation.display(player));
 
                 player.sendActionBar(actionBar.render());
             });

@@ -1,11 +1,7 @@
 package net.swofty.type.skyblockgeneric.item.handlers.bow;
 
 import net.minestom.server.ServerFlag;
-import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
-import net.swofty.type.skyblockgeneric.entity.ArrowEntityImpl;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
-import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,30 +10,7 @@ public class BowRegistry {
     private static final Map<String, BowHandler> REGISTERED_HANDLERS = new HashMap<>();
 
     static {
-        register("STANDARD_BOW_HANDLER", (player, item, power) -> {
-            SkyBlockItem arrow = player.getAndConsumeArrow();
-            if (arrow == null) {
-                return;
-            }
-
-            ArrowEntityImpl arrowEntity = new ArrowEntityImpl(player, arrow);
-            Vec arrowVelocity = calculateArrowVelocity(
-                    player.getPosition().pitch(),
-                    player.getPosition().yaw(),
-                    power
-            );
-
-            // Add player's velocity to arrow (like vanilla)
-            Vec playerVel = player.getVelocity();
-            arrowVelocity = arrowVelocity.add(
-                    playerVel.x(),
-                    player.isOnGround() ? 0.0 : playerVel.y(),
-                    playerVel.z()
-            );
-
-            arrowEntity.setVelocity(arrowVelocity);
-            arrowEntity.setInstance(player.getInstance(), calculateArrowSpawnPosition(player));
-        });
+        register("STANDARD_BOW_HANDLER", BowShot::fire);
     }
 
     public static void register(String id, BowHandler handler) {
@@ -70,10 +43,5 @@ public class BowRegistry {
 
         // Multiply by ticks per second to convert to Minestom velocity
         return new Vec(velocityX, velocityY, velocityZ).mul(ServerFlag.SERVER_TICKS_PER_SECOND);
-    }
-
-    private static Pos calculateArrowSpawnPosition(SkyBlockPlayer player) {
-        // Get the player's eye position (slightly lower like vanilla)
-        return player.getPosition().add(0, player.getEyeHeight() - 0.1, 0);
     }
 }

@@ -5,6 +5,7 @@ import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
 import net.swofty.type.skyblockgeneric.item.set.sets.*;
+import net.swofty.type.skyblockgeneric.item.set.sets.terror.HydraStrikeArmorSet;
 import org.jetbrains.annotations.Nullable;
 
 @Getter
@@ -23,6 +24,11 @@ public enum ArmorSetRegistry {
 	SHIMMERING_LIGHT(ShimmeringLightSet.class, ItemType.SHIMMERING_LIGHT_SLIPPERS, ItemType.SHIMMERING_LIGHT_TROUSERS, ItemType.SHIMMERING_LIGHT_TUNIC, ItemType.SHIMMERING_LIGHT_HOOD),
 	REKINDLED_EMBER(RekindledEmberSet.class, ItemType.REKINDLED_EMBER_BOOTS, ItemType.REKINDLED_EMBER_LEGGINGS, ItemType.REKINDLED_EMBER_CHESTPLATE, ItemType.REKINDLED_EMBER_HELMET),
 	PARK_ARMOR(null, ItemType.MELODY_SHOES, ItemType.CHARLIE_TROUSERS, ItemType.KELLY_TSHIRT, ItemType.MOLE_HAT),
+	TERROR(HydraStrikeArmorSet.Basic.class, ItemType.TERROR_BOOTS, ItemType.TERROR_LEGGINGS, ItemType.TERROR_CHESTPLATE, ItemType.TERROR_HELMET),
+	HOT_TERROR(HydraStrikeArmorSet.Hot.class, ItemType.HOT_TERROR_BOOTS, ItemType.HOT_TERROR_LEGGINGS, ItemType.HOT_TERROR_CHESTPLATE, ItemType.HOT_TERROR_HELMET),
+	BURNING_TERROR(HydraStrikeArmorSet.Burning.class, ItemType.BURNING_TERROR_BOOTS, ItemType.BURNING_TERROR_LEGGINGS, ItemType.BURNING_TERROR_CHESTPLATE, ItemType.BURNING_TERROR_HELMET),
+	FIERY_TERROR(HydraStrikeArmorSet.Fiery.class, ItemType.FIERY_TERROR_BOOTS, ItemType.FIERY_TERROR_LEGGINGS, ItemType.FIERY_TERROR_CHESTPLATE, ItemType.FIERY_TERROR_HELMET),
+	INFERNAL_TERROR(HydraStrikeArmorSet.Infernal.class, ItemType.INFERNAL_TERROR_BOOTS, ItemType.INFERNAL_TERROR_LEGGINGS, ItemType.INFERNAL_TERROR_CHESTPLATE, ItemType.INFERNAL_TERROR_HELMET),
 	;
 
 	private final Class<? extends ArmorSet> clazz;

@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.AbilityDamage;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.Salvation;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.CrimsonAbilities;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ForwardTeleport;
@@ -224,6 +225,16 @@ public class AbilityRegistry {
 
         register(new BuildersWandAbility());
         CrimsonAbilities.register();
+
+        register(new RegisteredAbility(
+                Salvation.ABILITY_ID,
+                "Salvation",
+                (_, _) -> "<7>Can be casted after landing <6>3 <7>hits. Shoot a beam, penetrating up to <e>5 <7>enemies. The beam always crits.",
+                RegisteredAbility.AbilityActivation.LEFT_CLICK,
+                5,
+                new RegisteredAbility.AbilitySoulflowCost(1),
+                (player, _, _, _) -> Salvation.cast(player)
+        ).readyWhen((player, _) -> Salvation.ready(player)));
     }
 
     public static void register(RegisteredAbility ability) {

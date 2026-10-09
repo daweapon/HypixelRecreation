@@ -426,17 +426,7 @@ public class ItemLore {
 		ArmorSet armorSet = registry.getClazz().getDeclaredConstructor().newInstance();
 		SkyBlockPlayer viewer = lore.viewer();
 
-		int wearingAmount = 0;
-		if (viewer != null && viewer.isWearingItem(item)) {
-			for (SkyBlockItem armorItem : viewer.getArmor()) {
-				if (armorItem == null) continue;
-				ArmorSetRegistry armorSetRegistry = ArmorSetRegistry.getArmorSet(armorItem.getAttributeHandler().getPotentialType());
-				if (armorSetRegistry == null) continue;
-				if (armorSetRegistry.getClazz() == armorSet.getClass()) {
-					wearingAmount++;
-				}
-			}
-		}
+		int wearingAmount = viewer != null && viewer.isWearingItem(item) ? armorSet.getWornPieceCount(viewer) : 0;
 
 		ArmorSetRegistry setRegistry = ArmorSetRegistry.getArmorSet(armorSet.getClass());
 		int totalPieces = setRegistry == null ? 4 : ArmorSetRegistry.getPieceCount(setRegistry);

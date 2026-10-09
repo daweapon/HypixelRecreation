@@ -74,8 +74,10 @@ public class SkyBlockActionBar {
 
     public enum BarSection {
         HEALTH("health"),
+        SET_BONUS("set_bonus"),
         DEFENSE("defense"),
         MANA("mana"),
+        ABILITY_CHARGE("ability_charge"),
         ;
 
         private static final BarSection[] VALUES = values();

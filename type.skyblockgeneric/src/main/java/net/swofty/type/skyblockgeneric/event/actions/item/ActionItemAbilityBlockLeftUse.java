@@ -29,6 +29,7 @@ public class ActionItemAbilityBlockLeftUse implements HypixelEventClass {
             if (ability != null) {
                 // Cancelling here will prevent the block from being broken
                 event.setCancelled(true);
+                if (!ability.isReady(player, item)) return;
                 if (!ability.getCost().canUse(player)) {
                     ability.getCost().onFail(player);
                     return;

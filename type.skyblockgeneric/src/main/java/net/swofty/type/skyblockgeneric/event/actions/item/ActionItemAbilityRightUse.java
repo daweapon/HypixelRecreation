@@ -39,6 +39,7 @@ public class ActionItemAbilityRightUse implements HypixelEventClass {
         }
 
         if (ability != null) {
+            if (!ability.isReady(player, item)) return;
             if (!ability.getCost().canUse(player)) {
                 ability.getCost().onFail(player);
                 return;

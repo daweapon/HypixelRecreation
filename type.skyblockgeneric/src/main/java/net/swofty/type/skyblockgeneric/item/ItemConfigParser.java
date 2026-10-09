@@ -584,7 +584,8 @@ public class ItemConfigParser {
 					String handlerId = safeConfig.getString("handler_id");
 					float cooldown = (float) safeConfig.getDouble("cooldown");
 					boolean shouldBeArrow = safeConfig.getBoolean("should-be-arrow", true);
-					yield new ShortBowComponent(cooldown, handlerId, shouldBeArrow);
+					yield new ShortBowComponent(cooldown, handlerId, shouldBeArrow, safeConfig.getInt("arrows", 1),
+							safeConfig.getDouble("spread", 0), safeConfig.getDouble("crit_chance_divisor", 1));
 				}
 				case "SHOVEL" -> new ShovelComponent();
 				case "SKILLABLE_MINE" -> {

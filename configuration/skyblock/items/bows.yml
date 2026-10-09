@@ -33,7 +33,34 @@ items:
     rarity: LEGENDARY
     material: BOW
     name: "Terminator"
+    default_statistics:
+      damage: 310
+      strength: 50
+      critical_damage: 250
+      bonus_attack_speed: 40
+    lore:
+      - "§7Shoots §b3 §7arrows at once."
+      - "§7Can damage endermen."
+      - ""
+      - "§cDivides your §9☣ Crit Chance §cby 4!"
+      - ""
+      - "§6Shortbow: Instantly shoots!"
     components:
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.5
+        should-be-arrow: false
+        arrows: 3
+        spread: 5
+        crit_chance_divisor: 4
+      - id: ABILITY
+        abilities:
+          - SALVATION
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: VOIDGLOOM_SERAPH
+            level: 7
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/enderman/weapons/terminator
   - id: WITHER_BOW

@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
 
 @Getter
 public class RegisteredAbility {
@@ -27,6 +28,7 @@ public class RegisteredAbility {
     private final int cooldownTicks;
     private final AbilityCost cost;
     private final AbilityAction action;
+    private BiPredicate<SkyBlockPlayer, SkyBlockItem> readyWhen = (_, _) -> true;
 
     public RegisteredAbility(String id, String name, BiFunction<SkyBlockPlayer, SkyBlockItem, String> description,
                              AbilityActivation activation, int cooldownTicks,
@@ -38,6 +40,16 @@ public class RegisteredAbility {
         this.cooldownTicks = cooldownTicks;
         this.cost = cost;
         this.action = action;
+    }
+
+    /** Gates the ability before its cost and cooldown are checked, for abilities that need charging first. */
+    public RegisteredAbility readyWhen(BiPredicate<SkyBlockPlayer, SkyBlockItem> condition) {
+        this.readyWhen = condition;
+        return this;
+    }
+
+    public boolean isReady(SkyBlockPlayer player, SkyBlockItem item) {
+        return readyWhen.test(player, item);
     }
 
     public boolean execute(SkyBlockPlayer player, SkyBlockItem item) {
@@ -189,6 +201,44 @@ public class RegisteredAbility {
         @Override
         public String getLoreDisplay() {
             return "<8>Soulflow Cost: <3>" + soulflow + "\n<8>Mana Cost: <3>" + cost;
+        }
+    }
+
+    public static class AbilitySoulflowCost extends AbilityCost {
+        private final int soulflow;
+
+        public AbilitySoulflowCost(int soulflow) {
+            this.soulflow = soulflow;
+        }
+
+        private static DatapointInteger datapoint(SkyBlockPlayer player) {
+            return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class);
+        }
+
+        @Override
+        public boolean canUse(@NotNull SkyBlockPlayer player) {
+            return datapoint(player).getValue() >= soulflow;
+        }
+
+        @Override
+        public void onUse(@NonNull SkyBlockPlayer player, @NonNull RegisteredAbility ability) {
+            DatapointInteger datapoint = datapoint(player);
+            datapoint.setValue(datapoint.getValue() - soulflow);
+        }
+
+        @Override
+        public void onFail(@NonNull SkyBlockPlayer player) {
+            SkyBlockActionBar.getFor(player).addReplacement(
+                    SkyBlockActionBar.BarSection.MANA,
+                    Text.of("<c><l>NOT ENOUGH SOULFLOW"),
+                    20 * 2,
+                    2
+            );
+        }
+
+        @Override
+        public String getLoreDisplay() {
+            return "<8>Soulflow Cost: <3>" + soulflow;
         }
     }
 
