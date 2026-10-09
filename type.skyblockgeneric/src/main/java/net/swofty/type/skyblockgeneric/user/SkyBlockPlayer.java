@@ -21,6 +21,7 @@ import net.minestom.server.network.packet.server.play.UpdateHealthPacket;
 import net.minestom.server.network.player.GameProfile;
 import net.minestom.server.network.player.PlayerConnection;
 import net.minestom.server.tag.Tag;
+import net.swofty.commons.ServerType;
 import net.swofty.commons.skyblock.PlayerShopData;
 import net.swofty.commons.skyblock.SkyBlockPlayerProfiles;
 import net.swofty.commons.skyblock.item.ItemType;
@@ -205,7 +206,8 @@ public class SkyBlockPlayer extends HypixelPlayer {
     }
 
     public boolean isOnIsland() {
-        return getInstance() != null
+        return HypixelConst.isIslandServer()
+                && getInstance() != null
                 && getInstance() != HypixelConst.getInstanceContainer()
                 && getInstance() != HypixelConst.getEmptyInstance();
     }
@@ -998,7 +1000,8 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
         if (HypixelConst.isIslandServer()) return;
 
-        if (!isBoosterCookieActive()
+        if (HypixelConst.getTypeLoader().getType() != ServerType.SKYBLOCK_KUUDRA
+                && !isBoosterCookieActive()
                 && !net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.keepsCoinsOnDeath(this)) {
             double loss = getCoins() / 2;
             double saved = net.swofty.type.skyblockgeneric.accessory.PiggyBank.save(this, loss);

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.crimson.kuudra;
 
+import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -19,6 +20,15 @@ public final class KuudraAvailability {
 
     public static boolean isFightAvailable() {
         return false;
+    }
+
+    /** Staff can queue the fight before it opens to everyone, so it can be tested on a live server. */
+    public static boolean canQueue(SkyBlockPlayer player) {
+        return isFightAvailable() || player.getRank().isEqualOrHigherThan(Rank.STAFF);
+    }
+
+    public static List<String> queueLore(SkyBlockPlayer player) {
+        return canQueue(player) ? List.of() : List.of("", UNAVAILABLE_LORE);
     }
 
     public static List<String> lore() {

@@ -24,6 +24,7 @@ public class OrchestratorCache {
     private static final Map<String, GameServerState> serversByShortName = new ConcurrentHashMap<>();
     private static final Map<UUID, GameWithServer> gamesByGameId = new ConcurrentHashMap<>();
     private static final Map<UUID, List<SlotReservation>> reservationsByGameId = new ConcurrentHashMap<>();
+    private static final Map<UUID, List<SlotReservation>> playerReservationsByServer = new ConcurrentHashMap<>();
     private static final long HEARTBEAT_TTL_MS = 10000; // 10s
     private static final long RESERVATION_TTL_MS = 8000; // 8s
 
@@ -356,8 +357,25 @@ public class OrchestratorCache {
             .add(new SlotReservation(slots, expiresAt));
     }
 
+    /** Holds room on a server for players who were just sent to it but are not in its heartbeat yet. */
+    public static void reservePlayerSlots(UUID serverUuid, int slots) {
+        if (slots <= 0) {
+            return;
+        }
+        playerReservationsByServer
+            .computeIfAbsent(serverUuid, ignored -> new CopyOnWriteArrayList<>())
+            .add(new SlotReservation(slots, Instant.now().toEpochMilli() + RESERVATION_TTL_MS));
+    }
+
+    public static int getReservedPlayerSlots(UUID serverUuid) {
+        return sumActive(playerReservationsByServer.get(serverUuid));
+    }
+
     private static int getReservedSlots(UUID gameId) {
-        List<SlotReservation> reservations = reservationsByGameId.get(gameId);
+        return sumActive(reservationsByGameId.get(gameId));
+    }
+
+    private static int sumActive(List<SlotReservation> reservations) {
         if (reservations == null || reservations.isEmpty()) {
             return 0;
         }
@@ -373,11 +391,13 @@ public class OrchestratorCache {
     }
 
     private static void cleanupReservations(long now) {
-        reservationsByGameId.entrySet().removeIf(entry -> {
-            List<SlotReservation> reservations = entry.getValue();
-            reservations.removeIf(reservation -> reservation.expiresAtMs() <= now);
-            return reservations.isEmpty();
-        });
+        for (Map<UUID, List<SlotReservation>> reservationsByKey : List.of(reservationsByGameId, playerReservationsByServer)) {
+            reservationsByKey.entrySet().removeIf(entry -> {
+                List<SlotReservation> reservations = entry.getValue();
+                reservations.removeIf(reservation -> reservation.expiresAtMs() <= now);
+                return reservations.isEmpty();
+            });
+        }
     }
 
     private record SlotReservation(int slots, long expiresAtMs) {

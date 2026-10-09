@@ -12,7 +12,8 @@ import java.util.Map;
 /** Every Kuudra definition under {@code configuration/skyblock/kuudra/}, loaded once on first use. */
 public record KuudraConfig(int areaCombatLevel, int maxWave, int routeUnlockTokens, int tentacleTokens,
                            Map<KuudraTier, KuudraTierSpec> tiers, List<KuudraWave> waves, List<KuudraMobSpec> mobs,
-                           KuudraPerkShop perkShop, KuudraDialogue dialogue, KuudraLootTable loot) {
+                           KuudraPerkShop perkShop, KuudraDialogue dialogue, KuudraLootTable loot,
+                           KuudraArena arena) {
 
     public static final Path DIRECTORY = Path.of("./configuration/skyblock/kuudra");
     private static volatile KuudraConfig loaded;
@@ -48,7 +49,8 @@ public record KuudraConfig(int areaCombatLevel, int maxWave, int routeUnlockToke
                 Yamls.maps(Yamls.load(directory.resolve("mobs.yml")).get("mobs")).stream().map(KuudraMobSpec::parse).toList(),
                 KuudraPerkShop.parse(Yamls.load(directory.resolve("perks.yml"))),
                 KuudraDialogue.parse(Yamls.load(directory.resolve("dialogue.yml"))),
-                KuudraLootTable.parse(Yamls.load(directory.resolve("loot.yml"))));
+                KuudraLootTable.parse(Yamls.load(directory.resolve("loot.yml"))),
+                KuudraArena.parse(Yamls.load(directory.resolve("arena.yml"))));
     }
 
     public KuudraTierSpec tier(KuudraTier tier) {

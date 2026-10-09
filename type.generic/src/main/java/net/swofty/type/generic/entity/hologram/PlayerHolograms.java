@@ -47,6 +47,7 @@ public enum PlayerHolograms {
     }
 
     public static void spawnAll(HypixelPlayer skyBlockPlayer) {
+        if (HypixelConst.getInstanceContainer() == null) return;
         for (PlayerHolograms hologram : values()) {
             String[] lines = hologram.displayFunction.apply(skyBlockPlayer);
             if (lines != null) {
