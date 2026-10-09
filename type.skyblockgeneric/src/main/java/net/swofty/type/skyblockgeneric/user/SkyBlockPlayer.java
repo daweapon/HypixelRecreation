@@ -932,40 +932,35 @@ public class SkyBlockPlayer extends HypixelPlayer {
     }
 
     public void setExperience(long value) {
-        getSkyblockDataHandler().get(SkyBlockDataHandler.Data.EXPERIENCE, DatapointLong.class).setValue(value);
-
-        int level;
-        float progressToNext;
-
-        // Determine the level from total experience
-        if (value <= 352) {
-            level = (int) (Math.sqrt(value + 9) - 3);
-        } else if (value <= 1507) {
-            level = (int) (8.1 + Math.sqrt((2.0 / 5.0) * (value - 195.975)));
-        } else {
-            level = (int) (18.0555 + Math.sqrt((2.0 / 9.0) * (value - 752.9861)));
-        }
-
-        // Calculate total experience required to reach this level
-        long expAtCurrentLevel;
-        int expToNextLevel;
-
-        if (level <= 16) {
-            expAtCurrentLevel = (long) level * level + 6L * level;
-            expToNextLevel = 2 * level + 7;
-        } else if (level <= 31) {
-            expAtCurrentLevel = (long) (2.5 * level * level - 40.5 * level + 360);
-            expToNextLevel = 5 * level - 38;
-        } else {
-            expAtCurrentLevel = (long) (4.5 * level * level - 162.5 * level + 2220);
-            expToNextLevel = 9 * level - 158;
-        }
-
-        long expIntoLevel = value - expAtCurrentLevel;
-        progressToNext = expToNextLevel > 0 ? (float) expIntoLevel / expToNextLevel : 0f;
-
+        long total = Math.max(0, value);
+        getSkyblockDataHandler().get(SkyBlockDataHandler.Data.EXPERIENCE, DatapointLong.class).setValue(total);
+        int level = experienceLevel(total);
+        long into = total - experienceAtLevel(level);
+        long span = experienceAtLevel(level + 1) - experienceAtLevel(level);
         setLevel(level);
-        setExp(progressToNext);
+        setExp(span > 0 ? Math.clamp((float) into / span, 0f, 0.9999f) : 0f);
+    }
+
+    /** The vanilla level for a total of experience points; the closed form is only a first guess near boundaries. */
+    static int experienceLevel(long total) {
+        int level;
+        if (total <= 352) {
+            level = (int) (Math.sqrt(total + 9) - 3);
+        } else if (total <= 1507) {
+            level = (int) (8.1 + Math.sqrt((2.0 / 5.0) * (total - 195.975)));
+        } else {
+            level = (int) (18.0555 + Math.sqrt((2.0 / 9.0) * (total - 752.9861)));
+        }
+        level = Math.max(0, level);
+        while (level > 0 && experienceAtLevel(level) > total) level--;
+        while (experienceAtLevel(level + 1) <= total) level++;
+        return level;
+    }
+
+    static long experienceAtLevel(int level) {
+        if (level <= 16) return (long) level * level + 6L * level;
+        if (level <= 31) return (long) (2.5 * level * level - 40.5 * level + 360);
+        return (long) (4.5 * level * level - 162.5 * level + 2220);
     }
 
     public void addExperience(long value) {
