@@ -1,0 +1,178 @@
+# Kuudra's minions per tier (wiki mob pages, damage after the July 2026 halving).
+# stats: [level, health, damage, combat_xp, xp_orbs, coins]. first_wave 0 = not wave-spawned (see spawn).
+mobs:
+  - id: KUUDRA_FOLLOWER
+    name: Kuudra Follower
+    tokens: 4
+    first_wave: 1
+    bestiary: {cap: 25000, bracket: 2}
+    stats:
+      BASIC: [217, 4200000, 2000, 325, 238, 72]
+      HOT: [238, 6500000, 2500, 357, 261, 79]
+      BURNING: [252, 8500000, 2900, 378, 277, 84]
+      FIERY: [266, 10500000, 3500, 399, 292, 88]
+      INFERNAL: [281, 12500000, 4500, 421, 309, 93]
+  - id: KUUDRA_LANDMINE
+    name: Kuudra Landmine
+    tokens: 3
+    first_wave: 1
+    bestiary: {cap: 10000, bracket: 3}
+    stats:
+      BASIC: [209, 5000000, 1300, 313, 229, 69]
+      HOT: [224, 7000000, 1500, 336, 246, 74]
+      BURNING: [237, 9000000, 1750, 355, 260, 79]
+      FIERY: [249, 9000000, 2500, 373, 273, 83]
+      INFERNAL: [275, 12000000, 4000, 412, 302, 91]
+  - id: INFERNO_MAGMA_CUBE
+    name: Inferno Magma Cube
+    tokens: 6
+    first_wave: 1
+    bestiary: {cap: 10000, bracket: 3}
+    stats:
+      BASIC: [132, 1000000, 350, 198, 145, 44]
+      HOT: [145, 1250000, 500, 217, 159, 48]
+      BURNING: [158, 1500000, 700, 237, 173, 52]
+      FIERY: [178, 2000000, 1100, 267, 195, 59]
+      INFERNAL: [207, 3000000, 2000, 310, 227, 69]
+  - id: KUUDRA_BERSERKER
+    name: Kuudra Berserker
+    tokens: 8
+    first_wave: 2
+    bestiary: {cap: 10000, bracket: 3}
+    stats:
+      BASIC: [186, 3000000, 1000, 279, 204, 62]
+      HOT: [197, 3500000, 1250, 295, 216, 65]
+      BURNING: [212, 4500000, 1600, 318, 233, 70]
+      FIERY: [235, 6500000, 2300, 352, 258, 78]
+      INFERNAL: [264, 10000000, 3500, 396, 290, 88]
+  - id: BLIGHT
+    name: Blight
+    tokens: 4
+    first_wave: 3
+    bestiary: {cap: 10000, bracket: 3}
+    stats:
+      BASIC: [219, 4000000, 2250, 328, 240, 73]
+      HOT: [223, 3400000, 3000, 334, 245, 74]
+      BURNING: [244, 5500000, 3500, 366, 268, 81]
+      FIERY: [256, 7000000, 4000, 384, 281, 85]
+      INFERNAL: [273, 9000000, 5000, 409, 300, 91]
+  - id: KUUDRA_KNOCKER
+    name: Kuudra Knocker
+    tokens: 10
+    first_wave: 4
+    bestiary: {cap: 10000, bracket: 3}
+    stats:
+      BASIC: [204, 2200000, 2500, 306, 224, 68]
+      HOT: [216, 2700000, 3000, 324, 237, 72]
+      BURNING: [227, 3200000, 3600, 340, 249, 75]
+      FIERY: [239, 4000000, 4250, 358, 262, 79]
+      INFERNAL: [259, 5000000, 6000, 388, 284, 86]
+  - id: WANDERING_BLAZE
+    name: Wandering Blaze
+    tokens: 5
+    first_wave: 5
+    bestiary: {cap: 3000, bracket: 4}
+    stats:
+      BASIC: [172, 4500000, 400, 258, 189, 57]
+      HOT: [186, 6000000, 500, 279, 204, 62]
+      BURNING: [194, 7000000, 550, 291, 213, 64]
+      FIERY: [203, 9000000, 600, 304, 223, 67]
+      INFERNAL: [215, 12000000, 650, 322, 236, 71]
+  - id: DROPSHIP
+    name: Dropship
+    tokens: 150
+    first_wave: 5
+    bestiary: {cap: 300, bracket: 3}
+    stats:
+      BASIC: [337, 40000000, 6000, 505, 370, 112]
+      HOT: [360, 60000000, 7000, 540, 396, 120]
+      BURNING: [378, 80000000, 8000, 567, 415, 126]
+      FIERY: [393, 100000000, 9000, 589, 432, 131]
+      INFERNAL: [430, 200000000, 10000, 645, 473, 143]
+  - id: KUUDRA_SLASHER
+    name: Kuudra Slasher
+    tokens: 20
+    first_wave: 6
+    bestiary: {cap: 30, bracket: 5}
+    stats:
+      BASIC: [124, 1000000, 250, 186, 136, 41]
+      HOT: [138, 1500000, 300, 207, 151, 46]
+      BURNING: [167, 2500000, 600, 250, 183, 55]
+      FIERY: [201, 5000000, 1000, 301, 221, 67]
+      INFERNAL: [228, 8000000, 1500, 342, 250, 76]
+  # Infernal: the wiki row reads "209 / 13,00,000" (typo); the values below are an estimate.
+  - id: WITHER_SENTRY
+    name: Wither Sentry
+    tokens: 10
+    first_wave: 7
+    bestiary: {cap: 75, bracket: 4}
+    stats:
+      BASIC: [198, 2000000, 2250, 297, 217, 66]
+      HOT: [225, 4000000, 2750, 337, 247, 75]
+      BURNING: [246, 6000000, 3500, 369, 270, 82]
+      FIERY: [267, 9000000, 4250, 400, 293, 89]
+      INFERNAL: [288, 13000000, 5000, 432, 316, 96]
+  - id: MAGMA_FOLLOWER
+    name: Magma Follower
+    tokens: 4
+    first_wave: 8
+    bestiary: {cap: 30, bracket: 5}
+    stats:
+      BASIC: [116, 5000000, 35, 174, 127, 38]
+      HOT: [125, 7500000, 35, 187, 137, 41]
+      BURNING: [132, 10000000, 35, 198, 145, 44]
+      FIERY: [137, 12500000, 35, 205, 150, 45]
+      INFERNAL: [141, 15000000, 35, 211, 155, 47]
+  - id: BLAZING_GOLEM
+    name: Blazing Golem
+    tokens: 50
+    first_wave: 16
+    bestiary: {cap: 300, bracket: 3}
+    stats:
+      BASIC: [209, 2000000, 3250, 313, 229, 69]
+      HOT: [241, 4000000, 4500, 361, 265, 80]
+      BURNING: [265, 6500000, 5500, 397, 291, 88]
+      FIERY: [282, 9000000, 6500, 423, 310, 94]
+      INFERNAL: [306, 13000000, 8500, 459, 336, 102]
+  - id: CHAOSMITE
+    name: Chaosmite
+    tokens: 20
+    first_wave: 35
+    stats:
+      BASIC: [406, 60000000, 20000, 609, 446, 135]
+      HOT: [421, 70000000, 24000, 631, 463, 140]
+      BURNING: [435, 80000000, 28000, 652, 478, 145]
+      FIERY: [453, 90000000, 36000, 679, 498, 151]
+      INFERNAL: [468, 100000000, 44000, 702, 514, 156]
+  - id: OMEGAGMA
+    name: Omegagma
+    tokens: 100
+    first_wave: 0
+    spawn: MAGMA_FOLLOWERS_MERGE
+    stats:
+      BASIC: [245, 100000000, 200, 367, 269, 81]
+      HOT: [275, 200000000, 240, 412, 302, 91]
+      BURNING: [296, 300000000, 280, 444, 325, 98]
+      FIERY: [316, 400000000, 360, 474, 347, 105]
+      INFERNAL: [333, 500000000, 440, 499, 366, 111]
+  - id: EXPLOSIVE_IMP
+    name: Explosive Imp
+    tokens: 6
+    first_wave: 0
+    spawn: BERSERKER_DEATH
+    bestiary: {cap: 3000, bracket: 4}
+    stats:
+      BASIC: [128, 200000, 1500, 192, 140, 42]
+      HOT: [144, 300000, 2000, 216, 158, 48]
+      BURNING: [157, 400000, 2500, 235, 172, 52]
+      FIERY: [167, 500000, 3000, 250, 183, 55]
+      INFERNAL: [177, 600000, 3500, 265, 194, 59]
+  - id: MAGMA_BACTERIA
+    name: Magma Bacteria
+    tokens: 15
+    first_wave: 0
+    spawn: STOMACH
+    stats:
+      BURNING: [239, 9500000, 1750, 358, 262, 79]
+      FIERY: [283, 12000000, 5000, 424, 311, 94]
+      INFERNAL: [314, 18000000, 7500, 471, 345, 104]

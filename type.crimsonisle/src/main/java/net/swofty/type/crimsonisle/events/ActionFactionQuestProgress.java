@@ -11,7 +11,6 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoTestCompletedEvent;
 import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestService;
 import net.swofty.type.skyblockgeneric.event.custom.CrimsonMinibossKilledEvent;
-import net.swofty.type.skyblockgeneric.event.custom.KuudraClearedEvent;
 import net.swofty.type.skyblockgeneric.event.custom.TrophyFishCaughtEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -31,11 +30,6 @@ public class ActionFactionQuestProgress implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void onDojo(DojoTestCompletedEvent event) {
         FactionQuestService.onDojo(event.player(), event.test(), event.grade());
-    }
-
-    @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
-    public void onKuudra(KuudraClearedEvent event) {
-        FactionQuestService.onKuudraCleared(event.player(), event.tier());
     }
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)

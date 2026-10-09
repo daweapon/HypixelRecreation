@@ -5,6 +5,7 @@ import net.swofty.type.skyblockgeneric.crimson.dojo.DojoProgress;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonSideQuests;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.follower.KuudraFollowerProgress;
 import net.swofty.type.skyblockgeneric.crimson.town.CrimsonTownProgress;
 import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
@@ -172,6 +173,7 @@ public final class MaxStickService {
             new Step("Crimson questlines", CrimsonQuestlines::maxOut),
             new Step("Crimson side quests", CrimsonSideQuests::maxOut),
             new Step("Kuudra follower", KuudraFollowerProgress::maxOut),
+            new Step("Kuudra clears", KuudraProgress::maxOut),
             new Step("Crimson town", CrimsonTownProgress::maxOut),
             new Step("Pets", MaxPets::maxOut),
             new Step("Accessory Bag", MaxAccessories::maxOut),

@@ -1,0 +1,97 @@
+# Kuudra tier specs (community wiki Kuudra, Kuudra's Hollow, Kuudra/Perk Shop, changelogs up to 2026-10).
+# Key items, key prices and reputation gates live in KuudraTier; the tests check both agree.
+area_combat_level: 22
+max_wave: 100
+route_unlock_tokens: 50
+tentacle_tokens: 50
+
+tiers:
+  BASIC:
+    number: 1
+    seconds_per_wave: 35
+    required_reputation: 0
+    first_clear_skyblock_xp: 20
+    collection_points: 1
+    daily_reputation: 10
+    armor_combat_level: 22
+    kraken_shards: 1.0
+    wandering_blaze_dps: 400
+    tentacle_dye_odds: 100000
+    stun_required: false
+    lair_phase: false
+  HOT:
+    number: 2
+    seconds_per_wave: 30
+    required_reputation: 1000
+    first_clear_skyblock_xp: 40
+    collection_points: 2
+    daily_reputation: 20
+    armor_combat_level: 27
+    kraken_shards: 1.0
+    wandering_blaze_dps: 500
+    tentacle_dye_odds: 80000
+    stun_required: false
+    lair_phase: false
+  BURNING:
+    number: 3
+    seconds_per_wave: 25
+    required_reputation: 3000
+    first_clear_skyblock_xp: 60
+    collection_points: 3
+    daily_reputation: 30
+    armor_combat_level: 32
+    kraken_shards: 1.0
+    wandering_blaze_dps: 550
+    tentacle_dye_odds: 60000
+    stun_required: true
+    lair_phase: false
+  FIERY:
+    number: 4
+    seconds_per_wave: 20
+    required_reputation: 7000
+    first_clear_skyblock_xp: 80
+    collection_points: 4
+    daily_reputation: 40
+    armor_combat_level: 37
+    kraken_shards: 1.25
+    wandering_blaze_dps: 600
+    tentacle_dye_odds: 40000
+    stun_required: true
+    lair_phase: false
+  INFERNAL:
+    number: 5
+    seconds_per_wave: 15
+    required_reputation: 12000
+    first_clear_skyblock_xp: 100
+    collection_points: 5
+    daily_reputation: 50
+    armor_combat_level: 42
+    kraken_shards: 1.5
+    wandering_blaze_dps: 650
+    tentacle_dye_odds: 20000
+    stun_required: true
+    lair_phase: true
+
+# Attempted spawns per wave (wiki Kuudra#Waves). "MOB x5" is a fixed count; otherwise the batch size is
+# not documented. Waves 21-100 are unknown: the fight repeats this list with growing counts.
+waves:
+  - [KUUDRA_FOLLOWER, INFERNO_MAGMA_CUBE, KUUDRA_LANDMINE]
+  - [KUUDRA_FOLLOWER, KUUDRA_BERSERKER, KUUDRA_LANDMINE]
+  - [BLIGHT, INFERNO_MAGMA_CUBE]
+  - [KUUDRA_KNOCKER, KUUDRA_LANDMINE]
+  - [DROPSHIP x1, KUUDRA_KNOCKER, WANDERING_BLAZE]
+  - [KUUDRA_SLASHER, INFERNO_MAGMA_CUBE]
+  - [KUUDRA_FOLLOWER, KUUDRA_SLASHER, WITHER_SENTRY x1]
+  - [INFERNO_MAGMA_CUBE, MAGMA_FOLLOWER]
+  - [BLIGHT, INFERNO_MAGMA_CUBE]
+  - [DROPSHIP x5, BLIGHT, INFERNO_MAGMA_CUBE]
+  - [KUUDRA_FOLLOWER, KUUDRA_BERSERKER, KUUDRA_LANDMINE]
+  - [WITHER_SENTRY, INFERNO_MAGMA_CUBE]
+  - [KUUDRA_KNOCKER, INFERNO_MAGMA_CUBE]
+  - [MAGMA_FOLLOWER x5, INFERNO_MAGMA_CUBE]
+  - [WANDERING_BLAZE]
+  - [BLAZING_GOLEM, WITHER_SENTRY, INFERNO_MAGMA_CUBE]
+  - [BLAZING_GOLEM, BLIGHT, KUUDRA_BERSERKER, KUUDRA_FOLLOWER]
+  - [MAGMA_FOLLOWER x5, BLAZING_GOLEM, INFERNO_MAGMA_CUBE]
+  - [BLAZING_GOLEM, BLIGHT, INFERNO_MAGMA_CUBE]
+  - [DROPSHIP x8]

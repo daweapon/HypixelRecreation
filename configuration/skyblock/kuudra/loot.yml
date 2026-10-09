@@ -1,0 +1,90 @@
+# Kuudra reward chests (wiki Kuudra/Loot, Kuudra_Teeth, Kraken_Shard; the wiki marks the weights "not confirmed").
+# Weights are [Basic, Hot, Burning, Fiery, Infernal]; a single number applies to every tier and 0 means
+# the entry is not in that tier's chest. Entries whose item this server doesn't have are skipped.
+free_chest:
+  essence:
+    BASIC: [1, 2]
+    HOT: [14, 18, 22]
+    BURNING: [25, 30]
+    FIERY: [80, 100, 120]
+    INFERNAL: [200]
+
+paid_chest:
+  guaranteed:
+    BASIC: {essence: 80, teeth: [1, 1]}
+    HOT: {essence: 200, teeth: [1, 1]}
+    BURNING: {essence: 400, teeth: [2, 2]}
+    FIERY: {essence: 800, teeth: [2, 2]}
+    INFERNAL: {essence: 2000, teeth: [3, 4]}
+
+  armor_sets: [CRIMSON, AURORA, TERROR, FERVOR, HOLLOW]
+  armor_pieces: [HELMET, CHESTPLATE, LEGGINGS, BOOTS]
+  armor_weight: 2.875
+
+  primary:
+    - {item: AURORA_STAFF, weight: 0.7}
+    - {item: HOLLOW_WAND, weight: 0.7}
+    - {item: MOLTEN_BELT, weight: [0.8, 0.9, 1.0, 1.1, 1.2]}
+    - {item: MOLTEN_CLOAK, weight: [0.8, 0.9, 1.0, 1.1, 1.2]}
+    - {item: MOLTEN_BRACELET, weight: [0.8, 0.9, 1.0, 1.1, 1.2]}
+    - {item: MOLTEN_NECKLACE, weight: [0.8, 0.9, 1.0, 1.1, 1.2]}
+    - {item: SHARD_BEZAL, weight: 4.5}
+    - {item: SHARD_MAGMA_SLUG, weight: [0, 3.75, 3.75, 3.75, 3.75]}
+    - {item: BURNING_KUUDRA_CORE, weight: [0, 0, 0.1, 0.3, 0.5]}
+    - {item: MANDRAA, weight: [0, 0, 0.8, 1.0, 1.2]}
+    - {item: SHARD_KADA_KNIGHT, weight: [0, 0, 3.05, 3.05, 3.05]}
+    - {item: SHARD_WITHER_SPECTRE, weight: [0, 0, 3.05, 3.05, 3.05]}
+    - {item: SHARD_MATCHO, weight: [0, 0, 3.05, 3.05, 3.05]}
+    - {item: SHARD_LAVA_FLAME, weight: [0, 0, 2.5, 2.5, 2.5]}
+    - {item: SHARD_FIRE_EEL, weight: [0, 0, 0, 1.9, 1.9]}
+    - {item: SHARD_FLARE, weight: [0, 0, 0, 1.9, 1.9]}
+    - {item: SHARD_BARBARIAN_DUKE_X, weight: [0, 0, 0, 1.9, 1.9]}
+    - {item: SHARD_HELLWISP, weight: [0, 0, 0, 1.55, 1.55]}
+    - {item: SHARD_XYZ, weight: [0, 0, 0, 1.25, 1.25]}
+    - {item: SHARD_CINDERBAT, weight: [0, 0, 0, 0, 0.65]}
+    - {item: SHARD_TAURUS, weight: [0, 0, 0, 0, 0.65]}
+    - {item: SHARD_DAEMON, weight: [0, 0, 0, 0, 0.5]}
+    - {item: SHARD_LORD_JAWBUS, weight: [0, 0, 0, 0, 0.5]}
+    - {item: SHARD_MOLTENFISH, weight: [0, 0, 0, 0, 0.5]}
+    # The wiki still lists 0.2625; the 2026-09-01 patch cut the Ananke Feather's rate by 25%.
+    - {item: ANANKE_FEATHER, weight: [0, 0, 0, 0, 0.196875]}
+    - {item: HELLSTORM_STAFF, weight: [0, 0, 0, 0, 0.1]}
+    - {item: TORMENTOR, weight: [0, 0, 0, 0, 0.1]}
+    - {item: SHARD_ANANKE, weight: [0, 0, 0, 0, 0.05]}
+
+  secondary:
+    - {item: ENCHANTED_BOOK, enchantment: STRONG_MANA, level: TIER, weight: 16.5}
+    - {item: ENCHANTED_BOOK, enchantment: HARDENED_MANA, level: TIER, weight: 16.5}
+    - {item: ENCHANTED_BOOK, enchantment: FEROCIOUS_MANA, level: TIER, weight: 16.5}
+    - {item: ENCHANTED_BOOK, enchantment: MANA_VAMPIRE, level: TIER, weight: 16.5}
+    - {item: KUUDRA_TENTACLE, weight: 16}
+    - {item: WHEEL_OF_FATE, weight: [2.2, 2.8, 3.4, 4.0, 4.6]}
+    - {item: ENCHANTED_BOOK, enchantment: INFERNO, level: 1, weight: [0.02, 0.11, 0.2, 0.29, 0.38]}
+    - {item: ENCHANTED_BOOK, enchantment: FATAL_TEMPO, level: 1, weight: [0.02, 0.11, 0.2, 0.29, 0.38]}
+    - {item: SHARD_BEZAL, weight: 9}
+    - {item: SHARD_MAGMA_SLUG, weight: [0, 7.5, 7.5, 7.5, 7.5]}
+    - {item: KUUDRA_TEETH, amount: 5, weight: [0, 0, 10, 10, 10]}
+    - {essence: 500, weight: [0, 0, 10, 10, 10]}
+    - {item: SHARD_KADA_KNIGHT, weight: [0, 0, 6.1, 6.1, 6.1]}
+    - {item: SHARD_WITHER_SPECTRE, weight: [0, 0, 6.1, 6.1, 6.1]}
+    - {item: SHARD_MATCHO, weight: [0, 0, 6.1, 6.1, 6.1]}
+    - {item: SHARD_LAVA_FLAME, weight: [0, 0, 5, 5, 5]}
+    - {item: HEAVY_PEARL, amount: 3, weight: [0, 0, 0, 10, 10]}
+    - {item: KUUDRA_TEETH, amount: 25, weight: [0, 0, 0, 1, 1]}
+    - {essence: 2500, weight: [0, 0, 0, 1, 1]}
+    - {item: SHARD_FIRE_EEL, weight: [0, 0, 0, 3.8, 3.8]}
+    - {item: SHARD_FLARE, weight: [0, 0, 0, 3.8, 3.8]}
+    - {item: SHARD_BARBARIAN_DUKE_X, weight: [0, 0, 0, 3.8, 3.8]}
+    - {item: SHARD_HELLWISP, weight: [0, 0, 0, 3.1, 3.1]}
+    - {item: SHARD_XYZ, weight: [0, 0, 0, 2.5, 2.5]}
+    - {item: HEAVY_PEARL, amount: 10, weight: [0, 0, 0, 0, 1]}
+    - {item: SHARD_LORD_JAWBUS, weight: [0, 0, 0, 0, 1]}
+    - {item: SHARD_DAEMON, weight: [0, 0, 0, 0, 1]}
+    - {item: SHARD_MOLTENFISH, weight: [0, 0, 0, 0, 1]}
+    - {item: SHARD_TAURUS, weight: [0, 0, 0, 0, 1.3]}
+    - {item: SHARD_CINDERBAT, weight: [0, 0, 0, 0, 1.3]}
+    - {item: KUUDRA_SKULL_TRAVEL_SCROLL, weight: [0, 0, 0, 0, 1.5]}
+    - {item: KUUDRA_MANDIBLE, weight: [0, 0, 0, 0, 3], requires: TEETH_PLAQUE}
+    - {item: KUUDRA_TEETH, amount: 100, weight: [0, 0, 0, 0, 0.1]}
+    - {essence: 10000, weight: [0, 0, 0, 0, 0.1]}
+    - {item: SHARD_ANANKE, weight: [0, 0, 0, 0, 0.1]}
