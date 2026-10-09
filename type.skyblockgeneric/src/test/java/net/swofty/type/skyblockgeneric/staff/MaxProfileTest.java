@@ -14,7 +14,14 @@ import net.swofty.type.generic.data.domain.AccountDomain;
 import net.swofty.type.generic.data.domain.PlayerDataService;
 import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowerType;
 import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowers;
+import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.item.Material;
+import net.swofty.type.generic.gui.v2.SlotBehavior;
+import net.swofty.type.generic.gui.v2.ViewComponent;
+import net.swofty.type.generic.gui.v2.ViewLayout;
+import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.collection.CustomCollectionAward;
+import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bags.GUISackOfSacks;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraCollectionTier;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -143,6 +150,17 @@ class MaxProfileTest {
                 .getValue().getAllSacks().size());
         assertEquals(FULL_QUIVER, loaded.get(SkyBlockDataHandler.Data.QUIVER, DatapointQuiver.class)
                 .getValue().getAmountOfArrows(ItemType.FLINT_ARROW));
+
+        ViewLayout<GUISackOfSacks.SackOfSacksState> layout = new ViewLayout<>(InventoryType.CHEST_5_ROW);
+        GUISackOfSacks sackOfSacks = new GUISackOfSacks();
+        ViewContext context = new ViewContext(player, null, null);
+        sackOfSacks.layout(layout, sackOfSacks.initialState(), context);
+        for (int slot = 0; slot < sacks; slot++) {
+            ViewComponent<GUISackOfSacks.SackOfSacksState> component = layout.components().get(slot);
+            assertEquals(SlotBehavior.EDITABLE, component.behavior());
+            assertTrue(component.render().apply(sackOfSacks.initialState(), context).build().material() != Material.AIR,
+                    "Sack of Sacks slot " + slot + " renders empty");
+        }
     }
 
     @Test

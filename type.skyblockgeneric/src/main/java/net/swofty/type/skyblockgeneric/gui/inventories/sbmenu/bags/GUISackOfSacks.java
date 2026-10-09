@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.ViewSession;
 import net.swofty.type.generic.gui.v2.context.ClickContext;
+import net.swofty.type.generic.gui.v2.context.RawClickContext;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.collection.CustomCollectionAward;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -56,30 +57,11 @@ public class GUISackOfSacks implements StatefulView<GUISackOfSacks.SackOfSacksSt
         int totalSlots = getTotalSlots(player);
         int slotsPerPage = 45;
 
-        // Editable slots for sacks
         for (int i = 0; i < totalSlots; i++) {
-            int slotIndex = i;
-            SkyBlockItem item = player.getSackOfSacks().getInSlot(slotIndex);
-
-            layout.slot(slotIndex, (s, c) -> {
-                SkyBlockPlayer p = (SkyBlockPlayer) c.player();
-                if (item == null) {
-                    return ItemStack.builder(Material.AIR);
-                } else {
-                    return PlayerItemUpdater.playerUpdate(p, item.getItemStack());
-                }
-            }, (click, c) -> {
-                SkyBlockPlayer p = (SkyBlockPlayer) c.player();
-                if (click.click() instanceof Click.Right) {
-                    SkyBlockItem skyBlockItem = new SkyBlockItem(c.inventory().getItemStack(slotIndex));
-                    if (skyBlockItem.isNA() || skyBlockItem.isAir()) return;
-                    c.push(new GUISack(skyBlockItem.getAttributeHandler().getPotentialType(), true));
-                }
-            });
-
-            // Also make it editable
-            layout.editable(slotIndex, (slot, oldItem, newItem, s) -> {
-                // Will be saved on close
+            SkyBlockItem item = player.getSackOfSacks().getInSlot(i);
+            layout.editable(i, (s, c) -> item == null
+                    ? ItemStack.builder(Material.AIR)
+                    : PlayerItemUpdater.playerUpdate((SkyBlockPlayer) c.player(), item.getItemStack()), (slot, oldItem, newItem, s) -> {
             });
         }
 
@@ -118,8 +100,22 @@ public class GUISackOfSacks implements StatefulView<GUISackOfSacks.SackOfSacksSt
     }
 
     @Override
+    public boolean onRawClick(RawClickContext<SackOfSacksState> click, ViewContext ctx) {
+        if (!click.inViewInventory() || !(click.click() instanceof Click.Right)) return false;
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        int slot = click.slot();
+        if (slot < 0 || slot >= getTotalSlots(player) || !player.getInventory().getCursorItem().isAir()) return false;
+        SkyBlockItem sack = new SkyBlockItem(ctx.inventory().getItemStack(slot));
+        if (sack.isNA() || sack.isAir() || !sack.hasComponent(SackComponent.class)) return false;
+        click.cancel();
+        ctx.push(new GUISack(sack.getAttributeHandler().getPotentialType(), true));
+        return true;
+    }
+
+    @Override
     public boolean onBottomClick(ClickContext<SackOfSacksState> click, ViewContext ctx) {
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        if (click.slot() < 0 || click.slot() >= player.getInventory().getSize()) return true;
         SkyBlockItem cursorItem = new SkyBlockItem(player.getInventory().getCursorItem());
         SkyBlockItem clickedItem = new SkyBlockItem(player.getInventory().getItemStack(click.slot()));
 
