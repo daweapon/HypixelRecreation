@@ -78,9 +78,8 @@ public abstract class CrimsonMinibossMob extends CrimsonIsleMob {
 
     @Override
     protected void onKilledBy(SkyBlockPlayer killer) {
-        for (Map.Entry<UUID, Double> entry : getDamageDealt().entrySet()) {
-            if (entry.getValue() < CrimsonMiniboss.LOOT_SHARE_DAMAGE) continue;
-            SkyBlockPlayer player = SkyBlockGenericLoader.getFromUUID(entry.getKey());
+        for (UUID sharer : lootSharers()) {
+            SkyBlockPlayer player = sharer.equals(killer.getUuid()) ? killer : SkyBlockGenericLoader.getFromUUID(sharer);
             if (player == null || player.getInstance() != getInstance()) continue;
             if (player != killer) {
                 HypixelEventHandler.callCustomEvent(new PlayerKilledSkyBlockMobEvent(player, this));
@@ -89,6 +88,13 @@ public abstract class CrimsonMinibossMob extends CrimsonIsleMob {
             reward(player);
         }
         onDefeated();
+    }
+
+    public List<UUID> lootSharers() {
+        return getDamageDealt().entrySet().stream()
+                .filter(entry -> entry.getValue() >= CrimsonMiniboss.LOOT_SHARE_DAMAGE)
+                .map(Map.Entry::getKey)
+                .toList();
     }
 
     private void reward(SkyBlockPlayer player) {

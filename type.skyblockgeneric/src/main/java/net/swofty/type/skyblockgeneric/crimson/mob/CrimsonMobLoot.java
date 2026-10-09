@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -32,13 +33,25 @@ public final class CrimsonMobLoot {
     private CrimsonMobLoot() {
     }
 
-    public static void roll(SkyBlockPlayer player, SkyBlockMob mob, List<MobDrop> drops) {
-        for (MobDrop drop : drops) {
-            ItemType won = rollOne(player, mob, drop);
-            if (won == null) continue;
-            SkyBlockItem item = create(won, drop);
-            deliver(player, mob, item, drop.chancePercent() < RARE_DROP_CHANCE_PERCENT);
+    public record Won(MobDrop drop, SkyBlockItem item) {
+        public boolean rare() {
+            return drop.chancePercent() < RARE_DROP_CHANCE_PERCENT;
         }
+    }
+
+    public static List<Won> roll(SkyBlockPlayer player, SkyBlockMob mob, List<MobDrop> drops) {
+        List<Won> won = rollItems(player, mob, drops);
+        won.forEach(entry -> deliver(player, mob, entry.item(), entry.rare()));
+        return won;
+    }
+
+    public static List<Won> rollItems(SkyBlockPlayer player, SkyBlockMob mob, List<MobDrop> drops) {
+        List<Won> won = new ArrayList<>();
+        for (MobDrop drop : drops) {
+            ItemType type = rollOne(player, mob, drop);
+            if (type != null) won.add(new Won(drop, create(type, drop)));
+        }
+        return won;
     }
 
     private static ItemType rollOne(SkyBlockPlayer player, SkyBlockMob mob, MobDrop drop) {
