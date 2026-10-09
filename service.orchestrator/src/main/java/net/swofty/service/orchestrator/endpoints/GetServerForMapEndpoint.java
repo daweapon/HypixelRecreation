@@ -10,14 +10,16 @@ import net.swofty.commons.murdermystery.MurderMysteryGameType;
 import net.swofty.commons.skywars.SkywarsGameType;
 import net.swofty.commons.redis.RedisClient;
 import net.swofty.commons.redis.RedisMessageHandler;
+import net.swofty.service.orchestrator.KuudraServerSelector;
 import net.swofty.service.orchestrator.OrchestratorCache;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import net.swofty.commons.redis.RedisMessageContext;
 
-// Redis endpoint that resolves a matchmaking request into a specific server/game to join, per-game-type (Bedwars, Murder Mystery, Skywars, Ravengard Dungeon), instantiating a new game if none is joinable.
+// Redis endpoint that resolves a matchmaking request into a specific server/game to join, per-game-type (Bedwars, Murder Mystery, Skywars, Ravengard Dungeon, Kuudra), instantiating a new game if none is joinable.
 public class GetServerForMapEndpoint implements RedisMessageHandler
 		<GetServerForMapProtocol.GetServerForMapMessage,
 				GetServerForMapProtocol.GetServerForMapResponse> {
@@ -34,6 +36,7 @@ public class GetServerForMapEndpoint implements RedisMessageHandler
 			case MURDER_MYSTERY_GAME -> handleMurderMystery(body);
 			case SKYWARS_GAME -> handleSkywars(body);
 			case RAVENGARD_DUNGEON -> handleRavengardDungeon(body);
+			case SKYBLOCK_KUUDRA -> handleKuudra(body);
 			default -> new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, null);
 		};
 	}
@@ -152,6 +155,39 @@ public class GetServerForMapEndpoint implements RedisMessageHandler
 			Logger.error(e, "Failed to allocate Ravengard dungeon");
 			return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, e.getMessage());
 		}
+	}
+
+	private GetServerForMapProtocol.GetServerForMapResponse handleKuudra(
+			GetServerForMapProtocol.GetServerForMapMessage body) {
+		String tier = body.mode();
+		if (tier == null || tier.isBlank()) {
+			return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, "No Kuudra tier given");
+		}
+		int neededSlots = Math.max(1, body.neededSlots());
+		List<OrchestratorCache.GameServerState> candidates = KuudraServerSelector.rank(
+				OrchestratorCache.getAllServers(), neededSlots, OrchestratorCache::getReservedPlayerSlots);
+		Logger.info("[matchmaking] SKYBLOCK_KUUDRA tier={} party={} -> {} candidate servers", tier, neededSlots, candidates.size());
+
+		for (OrchestratorCache.GameServerState server : candidates) {
+			try {
+				InstantiateGamePushProtocol.Response response = RedisClient.requestServerFromService(
+						server.uuid(),
+						new InstantiateGamePushProtocol(),
+						new InstantiateGamePushProtocol.Request(tier, body.map())
+				).get(15, java.util.concurrent.TimeUnit.SECONDS);
+				if (response != null && response.success()) {
+					OrchestratorCache.reservePlayerSlots(server.uuid(), neededSlots);
+					return new GetServerForMapProtocol.GetServerForMapResponse(
+							toProxyServer(server), response.gameId(), true, null);
+				}
+				Logger.warn("[matchmaking] SKYBLOCK_KUUDRA {} refused the run: {}", server.shortName(),
+						response == null ? "no response" : response.error());
+			} catch (Exception e) {
+				Logger.error(e, "Failed to start a Kuudra run on {}", server.shortName());
+			}
+		}
+		return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true,
+				candidates.isEmpty() ? "No Kuudra server has room" : "No Kuudra server could start the run");
 	}
 
 	private static UnderstandableProxyServer toProxyServer(OrchestratorCache.GameServerState server) {
