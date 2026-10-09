@@ -48,6 +48,7 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
     private final List<Task> tasks = new CopyOnWriteArrayList<>();
     private volatile long emptySince = System.currentTimeMillis();
     private KuudraElle elle;
+    private volatile @Nullable Pos elleAt;
     private @Nullable KuudraFight fight;
 
     KuudraRun(KuudraTier tier, List<UUID> roster, KuudraHollow hollow, KuudraConfig config) {
@@ -168,6 +169,22 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
         return true;
     }
 
+    /** Back to a phase without Elle's lines, as when Kuudra recovers from a stun. */
+    public synchronized boolean resumePhase(KuudraPhase phase) {
+        return run.enterPhase(phase);
+    }
+
+    /** Where Elle stands from now on, e.g. in Kuudra's stomach once she has been eaten. */
+    public void moveElle(@Nullable Pos position) {
+        elleAt = position;
+    }
+
+    public Pos elleSpot() {
+        Pos moved = elleAt;
+        if (moved != null) return moved;
+        return started() ? arena.ellePlatform() : arena.elle();
+    }
+
     public synchronized boolean finish(KuudraRunState.Outcome outcome) {
         if (!run.finish(outcome)) return false;
         super.end();
@@ -178,7 +195,7 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
         }
         if (outcome == KuudraRunState.Outcome.WIN) {
             if (fight == null) broadcast(dialogue.announcement("kuudra_down", Map.of()));
-            dialogue.chat("defeated", ThreadLocalRandom.current()).forEach(this::broadcast);
+            dialogue.chat("lair_defeated", ThreadLocalRandom.current()).forEach(this::broadcast);
             onlineMembers().forEach(this::reward);
         } else if (fight == null) {
             broadcast(dialogue.announcement("defeat", Map.of()));

@@ -34,6 +34,7 @@ public final class KuudraMobs {
             case "BLAZING_GOLEM" -> new KuudraSpecialists.BlazingGolem(fight, spec);
             case "MAGMA_FOLLOWER" -> new KuudraSpecialists.MagmaFollower(fight, spec, group);
             case "OMEGAGMA" -> new KuudraSpecialists.Omegagma(fight, spec);
+            case MagmaBacteria.ID -> new MagmaBacteria(fight, spec);
             default -> null;
         };
     }

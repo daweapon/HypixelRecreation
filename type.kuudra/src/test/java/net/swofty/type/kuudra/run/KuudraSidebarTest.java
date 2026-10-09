@@ -1,5 +1,6 @@
 package net.swofty.type.kuudra.run;
 
+import net.swofty.type.kuudra.fight.KuudraFight;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -24,6 +25,30 @@ class KuudraSidebarTest {
                 "<f><l>Wave: <c><l>1 <8>- <a>0:09",
                 " ",
                 "<e>Rescue supplies"), KuudraSidebar.lines(state, 2, 2));
+    }
+
+    @Test
+    void theStunTiersShowTheCapturedObjectiveAndTheSubmergeTimer() {
+        KuudraRunState state = new KuudraRunState(true, true, 15, 100, 20);
+        state.start();
+        state.enterPhase(KuudraPhase.FUEL);
+        assertEquals(List.of(
+                "<f>Time Elapsed: <a>0s",
+                "<f><l>Wave: <c><l>1 <8>- <a>0:15",
+                "<f>Tokens: <5>1192",
+                "<f>Submerges In: <e>59s",
+                " ",
+                "<e>Figure out how to",
+                "<e>defeat Kuudra"), KuudraSidebar.lines(state, 4, 4, new KuudraFight.Hud(1192, null, 59, null)));
+    }
+
+    @Test
+    void theInfernalSkipDropsTheWaveAndObjectiveLines() {
+        KuudraRunState state = new KuudraRunState(true, true, 15, 100, 20);
+        state.start();
+        state.enterPhase(KuudraPhase.LAIR);
+        assertEquals(List.of("<f>Time Elapsed: <a>0s", "<f>Tokens: <5>1619"),
+                KuudraSidebar.lines(state, 4, 4, new KuudraFight.Hud(1619, null, -1, null, false, false)));
     }
 
     @Test

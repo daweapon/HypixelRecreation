@@ -48,8 +48,19 @@ class KuudraPlaceholderLayoutTest {
     }
 
     @Test
-    void theLayoutSpansFromTheBedrockToTheFloor() {
-        assertEquals(ARENA.sea().minY() - 1, LAYOUT.minY());
+    void theLayoutSpansFromTheLairFloorToThePlatformFloor() {
+        assertEquals(ARENA.lair().floorY() - 1, LAYOUT.minY());
         assertEquals(ARENA.floorY() - 1, LAYOUT.maxY());
+    }
+
+    @Test
+    void theStomachAndLairHaveFloorsAndPods() {
+        KuudraArena.Stomach stomach = ARENA.stomach();
+        Pos landing = stomach.landing();
+        assertEquals(KuudraPlaceholderLayout.Tile.STOMACH_FLOOR, LAYOUT.tileAt(landing.blockX(), landing.blockY() - 1, landing.blockZ()));
+        stomach.pods().values().forEach(pod -> assertEquals(KuudraPlaceholderLayout.Tile.POD,
+                LAYOUT.tileAt(pod.minX(), pod.minY(), pod.minZ())));
+        Pos lair = ARENA.lair().landing();
+        assertEquals(KuudraPlaceholderLayout.Tile.LAIR_FLOOR, LAYOUT.tileAt(lair.blockX(), ARENA.lair().floorY() - 1, lair.blockZ()));
     }
 }

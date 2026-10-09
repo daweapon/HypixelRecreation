@@ -50,12 +50,14 @@ public final class KuudraSidebar {
             return lines;
         }
         int seconds = state.secondsToNextWave();
-        lines.add("<f><l>Wave: <c><l>" + state.wave() + (seconds > 0 ? " <8>- <a>" + seconds / 60 + ":" + String.format("%02d", seconds % 60) : ""));
+        if (hud == null || hud.waves()) {
+            lines.add("<f><l>Wave: <c><l>" + state.wave() + (seconds > 0 ? " <8>- <a>" + seconds / 60 + ":" + String.format("%02d", seconds % 60) : ""));
+        }
         if (hud != null) {
             lines.add("<f>Tokens: <5>" + hud.tokens());
             if (hud.submergesIn() >= 0) lines.add("<f>Submerges In: <e>" + hud.submergesIn() + "s");
         }
-        if (state.phase() != null) {
+        if (state.phase() != null && (hud == null || hud.objective()) && !state.phase().objective(state.stunRequired()).isEmpty()) {
             lines.add(" ");
             List<String> objective = new ArrayList<>(state.phase().objective(state.stunRequired()));
             if (hud != null && hud.progress() != null && !objective.isEmpty()) {

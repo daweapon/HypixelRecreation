@@ -3,25 +3,29 @@ package net.swofty.type.kuudra.fight;
 /**
  * Kuudra's health and his rise/submerge loop (research K1 3.3, 3.6). Health is 100,000 points shown as a
  * percentage. While the loop runs he stays up for a while or until a volley of Ballista shots lands, sinks,
- * waits under the lava and rises again. He can only be shot while fully up and not about to sink.
+ * waits under the lava and rises again. He can only be shot while fully up and not about to sink. From Burning
+ * up a broken pod stuns him: the surface timer stops until he recovers. On Infernal his health can be held at a
+ * floor (25%) until the lair opens.
  */
 public final class KuudraBossState {
     public enum Stance {DORMANT, RISING, SURFACED, SINKING, SUBMERGED}
 
-    public enum Event {NONE, SURFACED, SUBMERGED}
+    public enum Event {NONE, SURFACED, SUBMERGED, RECOVERED}
 
     public static final int SHOT_GRACE_TICKS = 20;
 
     private final double maxHealth;
-    private final int surfaceTicks;
+    private int surfaceTicks;
     private final int shotsPerSurface;
-    private final int submergedTicks;
-    private final int moveTicks;
+    private int submergedTicks;
+    private int moveTicks;
 
     private double health;
+    private double floor;
     private Stance stance = Stance.DORMANT;
     private int ticksInStance;
     private int shotsThisSurface;
+    private int stunTicks;
     private boolean cycling;
 
     public KuudraBossState(double maxHealth, int surfaceSeconds, int shotsPerSurface, int submergedSeconds, int moveTicks) {
@@ -46,13 +50,56 @@ public final class KuudraBossState {
         if (stance == Stance.SINKING || stance == Stance.SUBMERGED || stance == Stance.DORMANT) return;
         stance = Stance.SINKING;
         ticksInStance = 0;
+        stunTicks = 0;
+    }
+
+    /** Puts him straight under, as when he dives into the lair; the loop raises him again. */
+    public void hide() {
+        stance = Stance.SUBMERGED;
+        ticksInStance = 0;
+        stunTicks = 0;
     }
 
     public void setCycling(boolean cycling) {
         this.cycling = cycling;
     }
 
+    /** New loop timings, used from the next stance on (the stun tiers' 60 s surface, the lair's peeking). */
+    public void retime(int surfaceSeconds, int submergedSeconds, int moveTicks) {
+        if (surfaceSeconds <= 0 || submergedSeconds <= 0 || moveTicks <= 0) {
+            throw new IllegalArgumentException("Kuudra's timings must be positive");
+        }
+        this.surfaceTicks = surfaceSeconds * 20;
+        this.submergedTicks = submergedSeconds * 20;
+        this.moveTicks = moveTicks;
+    }
+
+    /** Shortens the current surfacing so he sinks within {@code seconds} (it never lengthens it). */
+    public void submergeWithin(int seconds) {
+        if (stance != Stance.SURFACED) return;
+        ticksInStance = Math.max(ticksInStance, surfaceTicks - seconds * 20);
+    }
+
+    /** A broken pod stuns him while he is up; false if he isn't up, is already stunned or is dead. */
+    public boolean stun(int ticks) {
+        if (stance != Stance.SURFACED || stunTicks > 0 || health <= 0 || ticks <= 0) return false;
+        stunTicks = ticks;
+        return true;
+    }
+
+    /** Ends a stun early without sinking him (the lair opening mid-stun). */
+    public void recover() {
+        stunTicks = 0;
+    }
+
+    public boolean isStunned() {
+        return stunTicks > 0;
+    }
+
     public Event tick() {
+        if (stance == Stance.SURFACED && stunTicks > 0) {
+            return --stunTicks == 0 ? Event.RECOVERED : Event.NONE;
+        }
         ticksInStance++;
         switch (stance) {
             case RISING -> {
@@ -83,22 +130,32 @@ public final class KuudraBossState {
     }
 
     public boolean canBeShot() {
-        return stance == Stance.SURFACED && (!cycling || surfaceTicks - ticksInStance > SHOT_GRACE_TICKS);
+        if (stance != Stance.SURFACED) return false;
+        return stunTicks > 0 || !cycling || surfaceTicks - ticksInStance > SHOT_GRACE_TICKS;
     }
 
-    /** Applies a Ballista hit; returns true when it brought him to 0. A full volley sends him under. */
+    /** Applies a Ballista hit; returns true when it brought him to 0. A full volley sends an unstunned Kuudra under. */
     public boolean shoot(double damage) {
         if (!canBeShot()) return false;
         boolean dead = damage(damage);
-        if (!dead && cycling && ++shotsThisSurface >= shotsPerSurface) sink();
+        if (!dead && cycling && stunTicks == 0 && ++shotsThisSurface >= shotsPerSurface) sink();
         return dead;
     }
 
-    /** Raw damage, as from a staff command; returns true when it brought him to 0. */
+    /** Raw damage, as from a staff command; returns true when it brought him to 0. It never goes below the floor. */
     public boolean damage(double amount) {
         if (health <= 0) return false;
-        health = Math.max(0, health - Math.max(0, amount));
+        health = Math.max(floor, health - Math.max(0, amount));
         return health <= 0;
+    }
+
+    /** Holds his health at {@code points} or above until the floor is lifted with 0. */
+    public void setFloor(double points) {
+        this.floor = Math.max(0, Math.min(maxHealth, points));
+    }
+
+    public boolean atFloor() {
+        return floor > 0 && health <= floor;
     }
 
     public double health() {

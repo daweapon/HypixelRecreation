@@ -18,15 +18,18 @@ import java.util.function.Consumer;
 
 @CommandParameters(labels = "kuudrarun",
         description = "Controls the Kuudra run you are in",
-        usage = "/kuudrarun <win|lose|start|phase|supplies|build|fuel|damage|tokens|wave|spawn> [value]",
+        usage = "/kuudrarun <win|lose|start|phase|supplies|build|fuel|stun|eat|spit|damage|tokens|wave|spawn> [value]",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class KuudraRunCommand extends HypixelCommand {
-    private static final String USAGE = "<c>Usage: /kuudrarun <win|lose|start|phase|supplies|build|fuel|damage|tokens|wave|spawn> [value]";
+    private static final String USAGE = "<c>Usage: /kuudrarun <win|lose|start|phase|supplies|build|fuel|stun|eat|spit|damage|tokens|wave|spawn> [value]";
 
     @Override
     public void registerUsage(MinestomCommand command) {
-        ArgumentWord action = new ArgumentWord("action").from("win", "lose", "start", "phase", "supplies", "build", "fuel");
+        ArgumentWord action = new ArgumentWord("action").from("win", "lose", "start", "phase", "supplies", "build", "fuel",
+                "stun", "eat", "spit");
+        ArgumentWord stomach = new ArgumentWord("stomach").from("eat", "spit");
+        ArgumentWord who = ArgumentType.Word("player");
         ArgumentWord phase = new ArgumentWord("phase").from(Arrays.stream(KuudraPhase.values())
                 .map(each -> each.name().toLowerCase()).toArray(String[]::new));
         ArgumentWord numeric = new ArgumentWord("numeric").from("damage", "tokens", "wave");
@@ -59,9 +62,27 @@ public class KuudraRunCommand extends HypixelCommand {
                     fight.completeFuel();
                     player.sendMessage("<a>Loaded every Fuel Cell; the run is now in <e>" + run.state().phase() + "<a>.");
                 });
+                case "stun" -> withFight(player, run, fight -> report(player, fight.stun(player),
+                        "<a>Broke a pod: Kuudra is stunned."));
+                case "eat", "spit" -> stomach(player, run, context.get(action), player);
                 default -> player.sendMessage(USAGE);
             }
         }, action);
+
+        command.addSyntax((sender, context) -> {
+            if (!permissionCheck(sender)) return;
+            SkyBlockPlayer player = (SkyBlockPlayer) sender;
+            KuudraRun run = runOf(player);
+            if (run == null) return;
+            String name = context.get(who);
+            SkyBlockPlayer member = run.onlineMembers().stream()
+                    .filter(each -> each.getUsername().equalsIgnoreCase(name)).findFirst().orElse(null);
+            if (member == null) {
+                player.sendMessage("<c>Nobody called " + name + " is in this run.");
+                return;
+            }
+            stomach(player, run, context.get(stomach), member);
+        }, stomach, who);
 
         command.addSyntax((sender, context) -> {
             if (!permissionCheck(sender)) return;
@@ -128,6 +149,24 @@ public class KuudraRunCommand extends HypixelCommand {
             return;
         }
         action.accept(fight);
+    }
+
+    private static void stomach(SkyBlockPlayer player, KuudraRun run, String action, SkyBlockPlayer target) {
+        withFight(player, run, fight -> {
+            if (action.equals("eat")) {
+                report(player, fight.eat(target), "<a>" + target.getUsername() + " was swallowed into Kuudra's stomach.");
+            } else {
+                report(player, fight.spit(target), "<a>Kuudra spat " + target.getUsername() + " out.");
+            }
+        });
+    }
+
+    private static void report(SkyBlockPlayer player, KuudraFight.StaffResult result, String done) {
+        player.sendMessage(switch (result) {
+            case DONE -> done;
+            case NOT_A_STUN_TIER -> "<c>Only Burning, Fiery and Infernal runs have Kuudra's stomach.";
+            case NOT_READY -> "<c>Not right now: Kuudra must be up (he is rising if he wasn't), or the player isn't inside.";
+        });
     }
 
     private static void finish(SkyBlockPlayer player, KuudraRun run, KuudraRunState.Outcome outcome) {

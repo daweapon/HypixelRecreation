@@ -43,7 +43,10 @@ class KuudraPhaseTest {
     void objectivesUseHypixelsScoreboardWording() {
         assertEquals(List.of("<e>Rescue supplies"), KuudraPhase.SUPPLIES.objective(false));
         assertEquals(List.of("<e>Protect Elle"), KuudraPhase.BUILD.objective(true));
-        assertEquals(List.of("<e>Defeat Kuudra", "<e>and stun him"), KuudraPhase.STUN.objective(true));
+        assertEquals(List.of("<e>Figure out how to", "<e>defeat Kuudra"), KuudraPhase.FUEL.objective(true));
+        assertEquals(List.of("<e>Charge Ballista or", "<e>enter Kuudra"), KuudraPhase.STUN.objective(true));
+        assertEquals(List.of("<e>Shoot Ballista at", "<e>Kuudra!"), KuudraPhase.DPS.objective(true));
+        assertEquals(List.of(), KuudraPhase.LAIR.objective(true));
         assertEquals(List.of("<e>Defeat Kuudra"), KuudraPhase.DPS.objective(false));
     }
 }

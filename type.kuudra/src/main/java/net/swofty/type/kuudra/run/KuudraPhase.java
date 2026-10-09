@@ -14,7 +14,7 @@ public enum KuudraPhase {
     FUEL(null),
     STUN(null),
     DPS(null),
-    LAIR("lair_opens");
+    LAIR(null);
 
     private final @Nullable String dialogueKey;
 
@@ -48,13 +48,31 @@ public enum KuudraPhase {
         };
     }
 
-    /** The scoreboard objective lines; quoted Hypixel strings where known (research K1 section 7.1). */
+    /**
+     * The scoreboard objective lines (research K1 section 7.1; the stun tiers' three from the Burning and Infernal
+     * captures). The lair shows none: the captured scoreboard dropped them after "POW!".
+     */
     public List<String> objective(boolean stunRequired) {
+        if (stunRequired) {
+            switch (this) {
+                case FUEL -> {
+                    return List.of("<e>Figure out how to", "<e>defeat Kuudra");
+                }
+                case STUN -> {
+                    return List.of("<e>Charge Ballista or", "<e>enter Kuudra");
+                }
+                case DPS -> {
+                    return List.of("<e>Shoot Ballista at", "<e>Kuudra!");
+                }
+                default -> {
+                }
+            }
+        }
         return switch (this) {
             case SUPPLIES -> List.of("<e>Rescue supplies");
             case BUILD -> List.of("<e>Protect Elle");
-            case FUEL, STUN, DPS -> stunRequired ? List.of("<e>Defeat Kuudra", "<e>and stun him") : List.of("<e>Defeat Kuudra");
-            case LAIR -> List.of("<e>Defeat Kuudra");
+            case FUEL, STUN, DPS -> List.of("<e>Defeat Kuudra");
+            case LAIR -> List.of();
         };
     }
 }

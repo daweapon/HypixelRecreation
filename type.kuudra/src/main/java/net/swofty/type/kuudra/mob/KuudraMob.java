@@ -89,7 +89,7 @@ public abstract class KuudraMob extends CrimsonIsleMob {
 
     @Override
     protected boolean canTarget(SkyBlockPlayer player) {
-        return fight.isTargetable(player);
+        return fight.isTargetable(player) && !fight.isInStomach(player);
     }
 
     @Override

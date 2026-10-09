@@ -3,6 +3,7 @@ package net.swofty.type.kuudra.events;
 import net.minestom.server.entity.Player;
 import net.minestom.server.event.entity.EntityAttackEvent;
 import net.minestom.server.event.entity.EntityDamageEvent;
+import net.minestom.server.event.entity.projectile.ProjectileCollideWithEntityEvent;
 import net.minestom.server.event.item.PlayerBeginItemUseEvent;
 import net.minestom.server.event.player.PlayerBlockInteractEvent;
 import net.minestom.server.event.player.PlayerBlockPlaceEvent;
@@ -11,6 +12,7 @@ import net.minestom.server.event.player.PlayerDisconnectEvent;
 import net.minestom.server.event.player.PlayerHandAnimationEvent;
 import net.minestom.server.event.player.PlayerInputEvent;
 import net.minestom.server.event.player.PlayerUseItemEvent;
+import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
@@ -19,7 +21,9 @@ import net.swofty.type.kuudra.fight.KuudraFight;
 import net.swofty.type.kuudra.fight.world.KuudraItems;
 import net.swofty.type.kuudra.run.KuudraRun;
 import net.swofty.type.kuudra.run.KuudraRuns;
+import net.swofty.type.skyblockgeneric.entity.ArrowEntityImpl;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -86,6 +90,17 @@ public class ActionKuudraFightInput implements HypixelEventClass {
         if (!(event.getEntity() instanceof SkyBlockPlayer player)) return;
         KuudraFight fight = fightOf(player);
         if (fight != null) fight.attack(player, event.getTarget());
+    }
+
+    @PhasedEvent(node = EventNodes.ALL, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
+    public void onArrow(ProjectileCollideWithEntityEvent event) {
+        if (!(event.getEntity() instanceof ArrowEntityImpl arrow) || !(arrow.getShooter() instanceof SkyBlockPlayer player)) return;
+        KuudraFight fight = fightOf(player);
+        if (fight == null || !fight.isKuudra(event.getTarget())) return;
+        ItemStatistics stats = ItemStatistics.add(player.getStatistics().allStatistics(),
+                arrow.getArrowItem().getAttributeHandler().getStatistics());
+        fight.arrowHitKuudra(player, PlayerStatistics.runPrimaryDamageFormula(stats, ItemStatistics.builder().build()).getKey());
+        arrow.remove();
     }
 
     @PhasedEvent(node = EventNodes.ENTITY, requireDataLoaded = false, phase = EventPhase.POST_SPAWN)

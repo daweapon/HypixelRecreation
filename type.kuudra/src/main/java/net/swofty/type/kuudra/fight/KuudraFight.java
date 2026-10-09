@@ -24,6 +24,7 @@ import net.minestom.server.timer.Task;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
+import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.commons.text.Text;
 import net.swofty.type.kuudra.fight.world.BallistaSite;
 import net.swofty.type.kuudra.fight.world.Displays;
@@ -56,6 +57,7 @@ import net.swofty.type.skyblockgeneric.essence.CrimsonEssencePerk;
 import net.swofty.type.skyblockgeneric.essence.EssencePerks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import net.swofty.type.skyblockgeneric.utility.MobAttackService;
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
@@ -76,8 +78,13 @@ import java.time.Duration;
  * Every entry point locks on the run, so the run's state machine and the fight move together.
  */
 public final class KuudraFight {
-    public record Hud(int tokens, @Nullable String progress, int submergesIn, @Nullable String status) {
+    public record Hud(int tokens, @Nullable String progress, int submergesIn, @Nullable String status,
+                      boolean objective, boolean waves) {
+        public Hud(int tokens, @Nullable String progress, int submergesIn, @Nullable String status) {
+            this(tokens, progress, submergesIn, status, true, true);
+        }
     }
+
 
     private record Carried(LavaCargo.Kind kind, String spot, Pos home, CargoCarry carry, ItemStack replaced) {
     }
@@ -122,6 +129,9 @@ public final class KuudraFight {
     private @Nullable TentacleSlams slams;
     private @Nullable ElleLavaRod rod;
     private @Nullable Task task;
+    private @Nullable KuudraStunCycle stunCycle;
+    private @Nullable KuudraFinale deathFinale;
+    private boolean finishing;
     private int suppliesPlaced;
     private int fuelLoaded;
     private boolean armed;
@@ -159,6 +169,7 @@ public final class KuudraFight {
             props.add(Displays.hitbox(instance, arena.perkShop(), 1.2f, 1.2f, this::openPerkShop));
             slams = new TentacleSlams(instance, arena.floorY() - 1, spec.tentacles().telegraphTicks());
             rod = new ElleLavaRod(instance, arena.lavaSurfaceY(), this::reelElleRod);
+            if (tierSpec.stunRequired() && arena.stomach() != null) stunCycle = new KuudraStunCycle(this, arena.stomach());
             task = MinecraftServer.getSchedulerManager().buildTask(this::tickSafely)
                     .repeat(TaskSchedule.tick(1)).schedule();
         }
@@ -208,16 +219,27 @@ public final class KuudraFight {
                     spawnCargo(LavaCargo.Kind.FUEL, spec.fuel().cells() - fuelLoaded);
                     bossState.setCycling(true);
                     bossState.rise();
+                    if (stunCycle != null) stunCycle.begin();
                 }
                 case DPS, STUN -> {
-                    clearCargo();
-                    if (build == null) build = new BallistaBuild(arena.piles().keySet(), spec.build().pileSeconds());
-                    build.completeAll();
-                    fuelLoaded = spec.fuel().cells();
-                    armed = true;
-                    if (ballista != null) ballista.showReady(fuelLoaded, spec.fuel().cells());
-                    bossState.setCycling(true);
-                    bossState.rise();
+                    boolean stunCycleStep = stunCycle != null && stunCycle.begun();
+                    if (!stunCycleStep || phase == KuudraPhase.STUN) {
+                        clearCargo();
+                        if (build == null) build = new BallistaBuild(arena.piles().keySet(), spec.build().pileSeconds());
+                        build.completeAll();
+                        fuelLoaded = spec.fuel().cells();
+                        armed = true;
+                        if (ballista != null) ballista.showReady(fuelLoaded, spec.fuel().cells());
+                        bossState.setCycling(true);
+                        bossState.rise();
+                    }
+                    if (stunCycle != null) {
+                        stunCycle.begin();
+                        if (phase == KuudraPhase.STUN) stunCycle.charged();
+                        if (phase == KuudraPhase.DPS && !bossState.isStunned() && !stunCycle.stunNow()) {
+                            run.broadcast("<c>Kuudra must be up to be stunned; he will be stunned when a pod breaks.");
+                        }
+                    }
                 }
                 case LAIR -> {
                 }
@@ -238,6 +260,7 @@ public final class KuudraFight {
             shots.forEach(shot -> shot.projectile().remove());
             shots.clear();
             if (slams != null) slams.clear();
+            if (stunCycle != null) stunCycle.close();
             if (rod != null) rod.clear();
             cannons.forEach(KuudraCannon::dismount);
             if (ballista != null) ballista.dismount();
@@ -255,6 +278,7 @@ public final class KuudraFight {
             if (task != null) task.cancel();
             if (boss != null) boss.remove();
             if (ballista != null) ballista.remove();
+            if (stunCycle != null) stunCycle.dispose();
             cannons.forEach(KuudraCannon::remove);
             props.forEach(Displays::remove);
         }
@@ -267,11 +291,20 @@ public final class KuudraFight {
 
     public void leave(SkyBlockPlayer player) {
         synchronized (run) {
-            dropCarried(player.getUuid(), true);
-            knockOffCannon(player);
-            if (ballista != null && ballista.isRiding(player)) ballista.dismount();
+            release(player);
+            if (stunCycle != null) stunCycle.leave(player);
             KuudraItems.strip(player);
         }
+    }
+
+    /** Lets go of whatever the player holds or rides: carried cargo, a cannon, the Ballista. */
+    void release(SkyBlockPlayer player) {
+        dropCarried(player.getUuid(), true);
+        knockOffCannon(player);
+        if (ballista != null && ballista.isRiding(player)) ballista.dismount();
+        cargo.forEach(item -> {
+            if (item.pickup() != null && item.pickup().player().equals(player.getUuid())) item.setPickup(null);
+        });
     }
 
     private void tickSafely() {
@@ -290,14 +323,30 @@ public final class KuudraFight {
         List<SkyBlockPlayer> online = run.onlineMembers();
         if (boss != null) {
             KuudraBossState.Event event = bossState.tick();
-            if (event == KuudraBossState.Event.SUBMERGED) boss.moveSide(ThreadLocalRandom.current());
+            if (event == KuudraBossState.Event.SUBMERGED) {
+                boss.moveSide(ThreadLocalRandom.current());
+                if (stunCycle != null && !stopped) stunCycle.onSubmerged();
+            }
             if (event == KuudraBossState.Event.SURFACED) {
                 instance.playSound(Sound.sound(Key.key("entity.wither.ambient"), Sound.Source.HOSTILE, 5f, 0.49f),
                         boss.base().x(), boss.base().y(), boss.base().z());
+                if (stunCycle != null && !stopped) stunCycle.onSurfaced();
             }
+            if (event == KuudraBossState.Event.RECOVERED && stunCycle != null && !stopped) stunCycle.onRecovered();
             boss.tick(online);
         }
         if (stopped) return;
+        if (deathFinale != null) {
+            for (KuudraFinale.Step step : deathFinale.tick()) {
+                if (step.kind() == KuudraFinale.Kind.FINISH) {
+                    run.finish(net.swofty.type.kuudra.run.KuudraRunState.Outcome.WIN);
+                    return;
+                }
+                List<String> lines = dialogue.chat("defeated", ThreadLocalRandom.current());
+                if (step.index() < lines.size()) run.broadcast(lines.get(step.index()));
+            }
+        }
+        if (stunCycle != null) stunCycle.tick(tick);
         if (rod != null) rod.tick(player -> KuudraItems.kindOf(player.getItemInMainHand()) == KuudraItems.Kind.ELLES_LAVA_ROD);
         cargo.forEach(LavaCargo::tick);
         tickPickups();
@@ -314,7 +363,7 @@ public final class KuudraFight {
         if (limit > 0 && run.state().elapsedSeconds() >= limit) run.finish(net.swofty.type.kuudra.run.KuudraRunState.Outcome.LOSE);
     }
 
-    private void later(int ticks, Runnable action) {
+    void later(int ticks, Runnable action) {
         MinecraftServer.getSchedulerManager().buildTask(() -> {
             synchronized (run) {
                 if (!stopped) action.run();
@@ -638,13 +687,14 @@ public final class KuudraFight {
 
     double ballistaDamage(SkyBlockPlayer player) {
         double damage = spec.boss().shotDamage().get(tier) * (1 + perks.fraction(player.getUuid(), "STEADY_AIM"));
+        if (bossState.isStunned()) return damage * spec.stun().stunnedShotFactor();
         return tierSpec.stunRequired() ? damage * spec.boss().unstunnedShotFactor() : damage;
     }
 
     private boolean hitsKuudra(Pos position) {
         if (boss == null) return false;
         Pos base = boss.base();
-        double half = boss.height() / 2;
+        double half = boss.width() / 2;
         return Math.abs(position.x() - base.x()) <= half + 0.5 && Math.abs(position.z() - base.z()) <= half + 0.5
                 && position.y() >= base.y() - 0.5 && position.y() <= base.y() + boss.height() + 0.5;
     }
@@ -667,18 +717,39 @@ public final class KuudraFight {
         ring(bolt.position(), 1.5, Particle.LAVA);
         playAt(bolt.position(), "entity.generic.explode", 0.7f);
         tokens.gain(spec.boss().shotTokens());
-        if (bossState.shoot(ballistaDamage(bolt.shooter()))) killKuudra();
+        bossState.shoot(ballistaDamage(bolt.shooter()));
+        afterDamage();
     }
 
     /** Staff damage in percent of Kuudra's health. */
     public void damageKuudra(double percent) {
         synchronized (run) {
-            if (bossState.damage(bossState.maxHealth() * percent / 100)) killKuudra();
+            damageKuudraPoints(bossState.maxHealth() * percent / 100);
         }
     }
 
-    private void killKuudra() {
-        run.finish(net.swofty.type.kuudra.run.KuudraRunState.Outcome.WIN);
+    void damageKuudraPoints(double points) {
+        if (finishing) return;
+        bossState.damage(points);
+        afterDamage();
+    }
+
+    private void afterDamage() {
+        if (finishing || stopped) return;
+        if (bossState.health() <= 0) beginDeath();
+    }
+
+    /** Elle's three lines while he sinks, then KUUDRA DOWN (the Burning capture: 15.5 s). */
+    private void beginDeath() {
+        finishing = true;
+        closeStomach();
+        bossState.setCycling(false);
+        bossState.sink();
+        deathFinale = KuudraFinale.death(spec.death());
+    }
+
+    void closeStomach() {
+        if (stunCycle != null) stunCycle.close();
     }
 
     // ---- cannons ---------------------------------------------------------------------------------------------
@@ -761,6 +832,7 @@ public final class KuudraFight {
     public boolean swing(SkyBlockPlayer player) {
         synchronized (run) {
             if (stopped) return false;
+            if (stunCycle != null && stunCycle.isInside(player)) return stunCycle.swing(player);
             if (ballista != null && ballista.isRiding(player)) {
                 fireBallista(player);
                 return true;
@@ -803,6 +875,21 @@ public final class KuudraFight {
     }
 
     private void hitKuudra(SkyBlockPlayer player) {
+        weaponHit(player, PlayerStatistics.runPrimaryDamageFormula(player.getStatistics().allStatistics(),
+                ItemStatistics.builder().build()).getKey());
+    }
+
+    /** An arrow from the player landed on Kuudra. */
+    public void arrowHitKuudra(SkyBlockPlayer player, double damage) {
+        synchronized (run) {
+            if (!stopped) weaponHit(player, damage);
+        }
+    }
+
+    /** A melee or bow hit: a counted hit while stunned, otherwise Elle's "futile" line. */
+    private void weaponHit(SkyBlockPlayer player, double damage) {
+        if (lives.isGhost(player.getUuid()) || finishing) return;
+        if (stunCycle != null && stunCycle.stunnedHit(player)) return;
         if (spec.boss().playerHitsDamage()) return;
         long ready = futileReady.getOrDefault(player.getUuid(), 0L);
         if (tick < ready) return;
@@ -812,9 +899,10 @@ public final class KuudraFight {
 
     private void humanCannonball(SkyBlockPlayer player) {
         if (lives.isGhost(player.getUuid()) || !perks.of(player.getUuid()).useHumanCannonball()) return;
+        playAt(player.getPosition(), "entity.generic.explode", 1f);
+        if (stunCycle != null && stunCycle.fireIntoMouth(player)) return;
         Vec look = player.getPosition().direction().normalize();
         player.setVelocity(look.mul(35).withY(22));
-        playAt(player.getPosition(), "entity.generic.explode", 1f);
         player.sendMessage("<a>You were fired out of the cannon!");
     }
 
@@ -888,24 +976,29 @@ public final class KuudraFight {
     /** Handles a death in the run; true always, so the normal SkyBlock death never happens here. */
     public boolean death(SkyBlockPlayer player) {
         synchronized (run) {
-            player.setHealth(player.getMaxHealth());
-            if (stopped || run.state().phase() == null) return true;
-            boolean finalKill = player.getLastDamageSource() != null
-                    && player.getLastDamageSource().getAttacker() instanceof KuudraRushers.Chaosmite;
-            boolean autoRevive = !finalKill && perks.of(player.getUuid()).autoRevives() > 0;
-            KuudraLives.Death death = lives.die(player.getUuid(), tick, finalKill, autoRevive, fasterRespawn());
-            if (death == KuudraLives.Death.AUTO_REVIVED) {
-                perks.of(player.getUuid()).useAutoRevive();
-                player.setHealth((float) (player.getMaxHealth() * spec.lives().autoReviveHealth()));
-                player.sendMessage("<a>Your Auto Revive brought you back to life!");
-                return true;
-            }
-            ghost(player, death == KuudraLives.Death.FINAL);
-            if (lives.wiped(run.onlineMembers().stream().map(SkyBlockPlayer::getUuid).toList())) {
-                run.finish(net.swofty.type.kuudra.run.KuudraRunState.Outcome.LOSE);
-            }
+            return death(player, false);
+        }
+    }
+
+    private boolean death(SkyBlockPlayer player, boolean forcedFinal) {
+        player.setHealth(player.getMaxHealth());
+        if (stopped || run.state().phase() == null) return true;
+        if (lives.isGhost(player.getUuid())) return true;
+        boolean finalKill = forcedFinal || (player.getLastDamageSource() != null
+                && player.getLastDamageSource().getAttacker() instanceof KuudraRushers.Chaosmite);
+        boolean autoRevive = !finalKill && perks.of(player.getUuid()).autoRevives() > 0;
+        KuudraLives.Death death = lives.die(player.getUuid(), tick, finalKill, autoRevive, fasterRespawn());
+        if (death == KuudraLives.Death.AUTO_REVIVED) {
+            perks.of(player.getUuid()).useAutoRevive();
+            player.setHealth((float) (player.getMaxHealth() * spec.lives().autoReviveHealth()));
+            player.sendMessage("<a>Your Auto Revive brought you back to life!");
             return true;
         }
+        ghost(player, death == KuudraLives.Death.FINAL);
+        if (lives.wiped(run.onlineMembers().stream().map(SkyBlockPlayer::getUuid).toList())) {
+            run.finish(net.swofty.type.kuudra.run.KuudraRunState.Outcome.LOSE);
+        }
+        return true;
     }
 
     private double fasterRespawn() {
@@ -913,17 +1006,17 @@ public final class KuudraFight {
     }
 
     private void ghost(SkyBlockPlayer player, boolean finalKill) {
-        dropCarried(player.getUuid(), true);
-        knockOffCannon(player);
-        if (ballista != null && ballista.isRiding(player)) ballista.dismount();
-        cargo.forEach(item -> {
-            if (item.pickup() != null && item.pickup().player().equals(player.getUuid())) item.setPickup(null);
-        });
+        release(player);
+        if (stunCycle != null) stunCycle.leave(player);
         player.setGameMode(GameMode.ADVENTURE);
         player.setAllowFlying(true);
         player.setFlying(true);
         player.setInvisible(true);
-        run.broadcast("<c>☠ <7>" + player.getFullDisplayName() + " <7>died.");
+        for (SkyBlockPlayer member : run.onlineMembers()) {
+            member.sendMessage(member == player ? dialogue.announcement("you_died", Map.of())
+                    : dialogue.announcement("died", Map.of("player", player.getUsername())));
+        }
+        if (finalKill) run.broadcast(dialogue.announcement("final_killed", Map.of("player", player.getUsername())));
         player.sendMessage(finalKill
                 ? "<c>You were final killed! Only a Support's revive can bring you back."
                 : "<e>You will respawn in <a>" + lives.secondsToRespawn(player.getUuid(), tick) + "s<e>. You can still use the <5>Perk Shop<e>.");
@@ -1209,10 +1302,12 @@ public final class KuudraFight {
         String progress = null;
         if (phase == KuudraPhase.SUPPLIES) progress = suppliesPlaced + "/" + spec.supplies().crates();
         else if (phase == KuudraPhase.BUILD && build != null) progress = build.overallPercent() + "%";
-        else if (phase == KuudraPhase.FUEL && !armed) progress = fuelLoaded + "/" + spec.fuel().cells();
+        else if (phase == KuudraPhase.FUEL && !armed && stunCycle == null) progress = fuelLoaded + "/" + spec.fuel().cells();
         String status = null;
         if (lives.isGhost(player.getUuid())) status = lives.isFinal(player.getUuid()) ? "<c>FINAL KILLED" : "<c>DEAD";
-        return new Hud(tokens.balance(player.getUuid()), progress, armed ? bossState.secondsUntilSubmerge() : -1, status);
+        boolean timer = (armed || (stunCycle != null && stunCycle.begun())) && !finishing;
+        return new Hud(tokens.balance(player.getUuid()), progress, timer ? bossState.secondsUntilSubmerge() : -1, status,
+                !finishing, true);
     }
 
     private double organ(SkyBlockPlayer player, Map<String, Double> bonuses) {
@@ -1224,7 +1319,7 @@ public final class KuudraFight {
         return best;
     }
 
-    private @Nullable SkyBlockPlayer member(UUID uuid) {
+    @Nullable SkyBlockPlayer member(UUID uuid) {
         for (SkyBlockPlayer player : run.onlineMembers()) {
             if (player.getUuid().equals(uuid)) return player;
         }
@@ -1307,11 +1402,11 @@ public final class KuudraFight {
         }
     }
 
-    private void playAt(Pos at, String sound, float pitch) {
+    void playAt(Pos at, String sound, float pitch) {
         instance.playSound(Sound.sound(Key.key(sound), Sound.Source.HOSTILE, 1f, pitch), at.x(), at.y(), at.z());
     }
 
-    private void playAll(String sound, float pitch) {
+    void playAll(String sound, float pitch) {
         run.onlineMembers().forEach(player -> player.playSound(Sound.sound(Key.key(sound), Sound.Source.PLAYER, 1f, pitch)));
     }
 
@@ -1402,5 +1497,102 @@ public final class KuudraFight {
 
     public boolean isGhost(SkyBlockPlayer player) {
         return lives.isGhost(player.getUuid());
+    }
+
+    public boolean isKuudra(Entity entity) {
+        return boss != null && boss.is(entity);
+    }
+
+    public boolean isFinalGhost(SkyBlockPlayer player) {
+        return lives.isFinal(player.getUuid());
+    }
+
+    public boolean isInStomach(SkyBlockPlayer player) {
+        return stunCycle != null && stunCycle.isInside(player);
+    }
+
+    public List<SkyBlockPlayer> stomachPlayers() {
+        if (stunCycle == null) return List.of();
+        Set<UUID> inside = stunCycle.inside();
+        return alivePlayers().stream().filter(player -> inside.contains(player.getUuid())).toList();
+    }
+
+    Instance instance() {
+        return instance;
+    }
+
+    KuudraArena arena() {
+        return arena;
+    }
+
+    KuudraDialogue dialogue() {
+        return dialogue;
+    }
+
+    @Nullable KuudraBoss boss() {
+        return boss;
+    }
+
+    long currentTick() {
+        return tick;
+    }
+
+    boolean armed() {
+        return armed;
+    }
+
+    /** Kuudra is dying: no more stun cycles. */
+    boolean finishing() {
+        return finishing;
+    }
+
+    // ---- staff controls for the stun cycle ----------------------------------------------------------------
+
+    public enum StaffResult {DONE, NOT_A_STUN_TIER, NOT_READY}
+
+    private StaffResult stunReady() {
+        if (stunCycle == null) return StaffResult.NOT_A_STUN_TIER;
+        if (!emerged || finishing()) return StaffResult.NOT_READY;
+        KuudraPhase phase = run.state().phase();
+        if (phase == KuudraPhase.SUPPLIES || phase == KuudraPhase.BUILD) {
+            if (build == null) build = new BallistaBuild(arena.piles().keySet(), spec.build().pileSeconds());
+            run.enterPhase(KuudraPhase.FUEL);
+        }
+        stunCycle.begin();
+        if (bossState.stance() != KuudraBossState.Stance.SURFACED) {
+            bossState.setCycling(true);
+            bossState.rise();
+            return StaffResult.NOT_READY;
+        }
+        return StaffResult.DONE;
+    }
+
+    /** Swallows the player (staff), skipping ahead to the stun cycle when needed. */
+    public StaffResult eat(SkyBlockPlayer player) {
+        synchronized (run) {
+            StaffResult ready = stunReady();
+            if (ready != StaffResult.DONE) return ready;
+            stunCycle.stomach().setOpen(true);
+            return stunCycle.eat(player) ? StaffResult.DONE : StaffResult.NOT_READY;
+        }
+    }
+
+    /** Breaks a pod as if the player mined it (staff), stunning Kuudra. */
+    public StaffResult stun(SkyBlockPlayer player) {
+        synchronized (run) {
+            StaffResult ready = stunReady();
+            if (ready != StaffResult.DONE) return ready;
+            return stunCycle.breakAPod(player) ? StaffResult.DONE : StaffResult.NOT_READY;
+        }
+    }
+
+    /** Spits the player out of Kuudra's mouth (staff). */
+    public StaffResult spit(SkyBlockPlayer player) {
+        synchronized (run) {
+            if (stunCycle == null) return StaffResult.NOT_A_STUN_TIER;
+            if (!stunCycle.isInside(player)) return StaffResult.NOT_READY;
+            stunCycle.launchOut(player);
+            return StaffResult.DONE;
+        }
     }
 }

@@ -13,6 +13,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.kuudra.fight.KuudraFight;
 import net.swofty.type.kuudra.fight.KuudraPerks;
 import net.swofty.type.kuudra.fight.world.KuudraItems;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraConfig;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraPerkShop;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -201,6 +202,10 @@ public class GUIKuudraPerkShop extends StatelessView {
     private void buySpecial(SkyBlockPlayer viewer, ViewContext ctx, KuudraPerkShop.Purchase special) {
         boolean revive = special.id().startsWith("REVIVE_");
         boolean finalKilled = special.id().equals("REVIVE_FINAL_KILLED");
+        if (revive && fight.isFinalGhost(viewer)) {
+            viewer.sendMessage(KuudraConfig.get().dialogue().announcement("final_revive_denied", Map.of()));
+            return;
+        }
         if (revive && !fight.hasGhost(finalKilled)) {
             viewer.sendMessage("<c>Nobody needs reviving!");
             return;

@@ -40,6 +40,9 @@ final class KuudraPlaceholderGenerator implements Generator {
             case PILE -> Block.GOLD_BLOCK;
             case SUPPLY_SPOT -> Block.MAGMA_BLOCK;
             case BALLISTA -> Block.IRON_BLOCK;
+            case STOMACH_FLOOR -> Block.RED_STAINED_GLASS;
+            case POD -> Block.MAGENTA_STAINED_GLASS;
+            case LAIR_FLOOR -> Block.NETHER_BRICKS;
         };
     }
 }
