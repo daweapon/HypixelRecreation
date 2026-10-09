@@ -47,6 +47,7 @@ public final class CaptureJson {
     private static final int MAX_DEPTH = 6;
     private static final int MAX_ELEMENTS = 512;
     private static final int MAX_BYTES = 4096;
+    private static final int MAX_OBJECTS = 256;
     private static final Map<Class<?>, List<Field>> FIELD_CACHE = new ConcurrentHashMap<>();
 
     private CaptureJson() {
@@ -176,6 +177,18 @@ public final class CaptureJson {
             case OptionalInt optional -> {
                 return optional.isEmpty() ? JsonNull.INSTANCE : new JsonPrimitive(optional.getAsInt());
             }
+            case net.minecraft.world.entity.EntityType<?> type -> {
+                return new JsonPrimitive(BuiltInRegistries.ENTITY_TYPE.getKey(type).toString());
+            }
+            case net.minecraft.world.level.block.Block block -> {
+                return new JsonPrimitive(BuiltInRegistries.BLOCK.getKey(block).toString());
+            }
+            case net.minecraft.world.level.block.state.BlockState state -> {
+                return new JsonPrimitive(state.toString());
+            }
+            case net.minecraft.world.item.Item item -> {
+                return new JsonPrimitive(BuiltInRegistries.ITEM.getKey(item).toString());
+            }
             case ResourceKey<?> key -> {
                 return new JsonPrimitive(key.identifier().toString());
             }
@@ -230,7 +243,7 @@ public final class CaptureJson {
         if (isOpaque(value)) {
             return new JsonPrimitive(value.getClass().getSimpleName());
         }
-        if (depth >= MAX_DEPTH || !visited.add(value)) {
+        if (depth >= MAX_DEPTH || visited.size() >= MAX_OBJECTS || !visited.add(value)) {
             return new JsonPrimitive(String.valueOf(value));
         }
 
