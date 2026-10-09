@@ -1,0 +1,127 @@
+# Kuudra Perk Shop (wiki Kuudra/Perk_Shop). Tokens are shared by the party; a route unlocks at 50 tokens
+# and is permanent for the run. A perk's level n costs costs[n-1] and gives values[n-1].
+basic:
+  - {id: AUTO_REVIVE, name: Auto Revive, cost: 750, currency: TOKENS, effect: "Revive on death at 50% Health. You can own several."}
+  - {id: HUMAN_CANNONBALL, name: Human Cannonball, cost: 80, currency: TOKENS, effect: "Ride a cannon into Kuudra's mouth or across the platform."}
+  - {id: REMOTE_PERK_SHOP, name: Remote Perk Shop, cost: 100000, currency: COINS, effect: "Open the Perk Shop from anywhere."}
+  - {id: ELLES_LAVA_ROD, name: Elle's Lava Rod, cost: 10, currency: TOKENS, effect: "A lava rod for pulling in supplies and fuel."}
+  - {id: ELLES_PICKAXE, name: Elle's Pickaxe, cost: 10, currency: TOKENS, effect: "A pickaxe for Kuudra's pods."}
+
+routes:
+  - id: CANNONEER
+    name: Cannoneer
+    description: "Protecting your teammates from tentacles, and dealing with flying creatures."
+    perks:
+      - id: ACCELERATED_SHOT
+        name: Accelerated Shot
+        effect: "Cannonball speed"
+        values: ["+20%", "+40%", "+60%", "+80%", "+100%", "+120%", "+140%"]
+        costs: [50, 100, 150, 200, 250, 300, 350]
+      - id: BLAST_RADIUS
+        name: Blast Radius
+        effect: "Cannonball blast radius"
+        values: ["+1", "+2", "+3", "+3.5", "+4", "+4.5", "+5.5"]
+        costs: [80, 160, 240, 320, 400, 480, 560]
+      - id: CANNON_PROFICIENCY
+        name: Cannon Proficiency
+        effect: "Cannonball damage (% of Max Health + flat)"
+        values: ["1.8% + 300,000", "2.1% + 600,000", "2.5% + 900,000", "3% + 1,200,000", "3.4% + 1,500,000", "3.7% + 1,800,000", "4% + 2,200,000"]
+        costs: [160, 240, 340, 420, 520, 600, 680]
+      - id: MULTI_SHOT
+        name: Multi-Shot
+        effect: "Cannonballs per shot"
+        values: ["2", "3", "4", "5", "6"]
+        costs: [180, 270, 380, 470, 580]
+      - id: RAPID_FIRE
+        name: Rapid Fire
+        effect: "Cannon cooldown"
+        values: ["0.7s", "0.6s", "0.5s", "0.4s", "0.3s"]
+        costs: [50, 100, 150, 200, 250]
+      - id: STEADY_AIM
+        name: Steady Aim
+        effect: "Ballista damage to Kuudra"
+        values: ["+5%", "+7.5%", "+10%", "+12.5%", "+15%", "+20%", "+25%"]
+        costs: [80, 160, 240, 320, 400, 480, 560]
+  - id: CROWD_CONTROL
+    name: Crowd Control
+    description: "Dealing with Kuudra's minions."
+    specials:
+      - {id: MINIATURE_NUKE, name: Miniature Nuke, cost: 500, currency: TOKENS, effect: "Deals 80% of Max Health as true damage to every enemy within 20 blocks. Detonate at any time."}
+    perks:
+      - id: SWEEPING_EDGE
+        name: Sweeping Edge
+        effect: "Damage dealt to every enemy within 5 blocks"
+        values: ["1%", "2%", "4%", "6%", "8%", "10%"]
+        costs: [80, 160, 240, 320, 400, 480]
+      - id: FREEZING_TOUCH
+        name: Freezing Touch
+        effect: "Chance on kill to freeze every enemy within 8 blocks for 4s"
+        values: ["2.5%", "5%", "7.5%", "10%", "15%"]
+        costs: [50, 100, 150, 200, 250]
+      - id: BONUS_DAMAGE
+        name: Bonus Damage
+        effect: "Damage to Kuudra's minions"
+        values: ["+10%", "+20%", "+40%", "+60%", "+80%", "+100%"]
+        costs: [160, 240, 340, 420, 520, 600]
+      - id: ANTIBIOTIC
+        name: Antibiotic
+        effect: "Less damage and knockback from Magma Bacteria"
+        values: ["30%", "45%", "60%", "75%", "90%"]
+        costs: [80, 160, 240, 320, 400]
+      - id: BLIGHT_SLAYER
+        name: Blight Slayer
+        effect: "Damage to Blights in their red phase"
+        values: ["30%", "45%", "60%", "75%", "90%"]
+        costs: [160, 240, 340, 420, 520]
+  - id: SPECIALIST
+    name: Specialist
+    description: "Retrieving supplies, building the Ballista and stunning Kuudra."
+    human_cannonball_cost: 40
+    perks:
+      - id: STEADY_HANDS
+        name: Steady Hands
+        effect: "Supply and Fuel Cell retrieval speed"
+        values: ["+10%", "+15%", "+25%", "+35%", "+50%", "+65%", "+75%"]
+        costs: [50, 100, 150, 200, 250, 300, 350]
+      - id: BALLISTA_MECHANIC
+        name: Ballista Mechanic
+        effect: "Ballista build speed"
+        values: ["+10%", "+25%", "+50%", "+75%", "+100%"]
+        costs: [80, 160, 240, 320, 400]
+      - id: BOMBERMAN
+        name: Bomberman
+        effect: "Energized Chunk damage to Kuudra / submerge counter"
+        values: ["+10% / 0.1", "+20% / 0.2", "+30% / 0.3", "+40% / 0.4", "+50% / 0.5"]
+        costs: [80, 160, 240, 320, 400]
+      - id: MINING_FRENZY
+        name: Mining Frenzy
+        effect: "Mining speed / pod damage"
+        values: ["+20% / 1x", "+30% / 1.1x", "+40% / 1.1x", "+50% / 1.25x", "+60% / 1.25x", "+70% / 1.35x", "+80% / 1.5x"]
+        costs: [80, 160, 240, 320, 400, 480, 560]
+  - id: SUPPORT
+    name: Support
+    description: "Keeping your teammates alive."
+    specials:
+      - {id: REVIVE_FINAL_KILLED, name: Revive Final Killed, cost: 750, currency: TOKENS, effect: "Revive a final-killed teammate."}
+      - {id: REVIVE_DEAD, name: Revive Dead, cost: 500, currency: TOKENS, effect: "Revive a dead teammate."}
+    perks:
+      - id: HEALING_AURA
+        name: Healing Aura
+        effect: "Heals allies within 8 blocks (% Max Health per second)"
+        values: ["2.5%", "5%", "7.5%", "9%", "12%", "15%"]
+        costs: [50, 100, 150, 200, 250, 300]
+      - id: MANA_AURA
+        name: Mana Aura
+        effect: "Mana regeneration for allies within 35 blocks"
+        values: ["+25%", "+50%", "+75%", "+100%", "+125%", "+150%", "+175%"]
+        costs: [80, 160, 240, 320, 400, 480, 560]
+      - id: PROTECTIVE_AURA
+        name: Protective Aura
+        effect: "Damage reduction for allies within 20 blocks"
+        values: ["5%", "10%", "15%", "20%", "25%", "30%"]
+        costs: [80, 160, 240, 320, 400, 480]
+      - id: FASTER_RESPAWN
+        name: Faster Respawn
+        effect: "Team respawn timer"
+        values: ["-5%", "-10%", "-15%", "-20%", "-25%"]
+        costs: [80, 160, 240, 320, 400]

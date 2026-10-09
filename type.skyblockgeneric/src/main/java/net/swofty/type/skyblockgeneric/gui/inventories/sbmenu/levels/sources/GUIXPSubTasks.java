@@ -10,6 +10,8 @@ import net.swofty.type.generic.gui.v2.StatefulView;
 import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -49,7 +51,8 @@ public class GUIXPSubTasks implements StatefulView<GUIXPSubTasks.State> {
         int[] slots = XPTaskLayout.slots(subTasks.size(), 1, 4);
         for (int i = 0; i < slots.length; i++) {
             String subTask = subTasks.get(i);
-            layout.slot(slots[i], (s, c) -> subTaskItem(subTask, source));
+            int index = i;
+            layout.slot(slots[i], (s, c) -> subTaskItem(subTask, source, completed(source, index, (SkyBlockPlayer) c.player())));
         }
     }
 
@@ -68,7 +71,14 @@ public class GUIXPSubTasks implements StatefulView<GUIXPSubTasks.State> {
         return GUIXPSources.taskIcon(source, Text.of("<a>{}", source.getDisplayName()), lore);
     }
 
-    private ItemStack.Builder subTaskItem(String subTask, SkyBlockXPSource source) {
+    private static boolean completed(SkyBlockXPSource source, int index, SkyBlockPlayer player) {
+        return source == SkyBlockXPSource.DEFEAT_KUUDRA && KuudraProgress.hasCleared(player, KuudraTier.values()[index]);
+    }
+
+    private ItemStack.Builder subTaskItem(String subTask, SkyBlockXPSource source, boolean completed) {
+        if (completed) {
+            return ItemStacks.item(Material.LIME_DYE, 1, Text.of("<a>{}", subTask), List.of(Text.of("<a>✔ Completed")));
+        }
         List<Text> lore = List.of(
                 Text.of("<c>✖ Not completed"),
                 Text.empty(),

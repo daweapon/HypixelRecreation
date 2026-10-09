@@ -14,6 +14,8 @@ import net.swofty.type.generic.data.domain.AccountDomain;
 import net.swofty.type.generic.data.domain.PlayerDataService;
 import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowerType;
 import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowers;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraCollectionTier;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDomain;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryBag;
@@ -22,6 +24,7 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
 import net.swofty.type.skyblockgeneric.item.ItemConfigParser;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelCause;
+import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.bson.Document;
 import org.junit.jupiter.api.Assumptions;
@@ -66,7 +69,7 @@ class MaxProfileTest {
         SkyBlockLevelCause.initializeCauses();
     }
 
-    private static SkyBlockPlayer player() {
+    static SkyBlockPlayer player() {
         UUID uuid = UUID.randomUUID();
         PlayerDataService.store(AccountDomain.KEY, uuid, HypixelDataHandler.initUserWithDefaultData(uuid));
         PlayerDataService.store(SkyBlockDomain.KEY, uuid, SkyBlockDataHandler.initUserWithDefaultData(uuid, UUID.randomUUID()));
@@ -95,7 +98,9 @@ class MaxProfileTest {
         List<String> failed = MaxStickService.runSteps(player);
         long millis = (System.nanoTime() - start) / 1_000_000;
         System.out.println("/maxprofile took " + millis + " ms; failed steps: " + failed);
-        assertTrue(failed.stream().noneMatch(List.of("Pets", "Accessory Bag", "Accessory powers")::contains), failed.toString());
+        assertTrue(failed.stream().noneMatch(List.of("Pets", "Accessory Bag", "Accessory powers", "Kuudra clears")::contains), failed.toString());
+        assertTrue(KuudraProgress.collectionPoints(player) >= KuudraCollectionTier.V.getRequiredProgress());
+        assertEquals(SkyBlockXPSource.DEFEAT_KUUDRA.getMaxXP(), player.getSkyBlockExperience().getSourceXP(SkyBlockXPSource.DEFEAT_KUUDRA));
 
         int pets = MaxPets.petTypes().size();
         int accessories = player.getAccessoryBag().getAllAccessories().size();

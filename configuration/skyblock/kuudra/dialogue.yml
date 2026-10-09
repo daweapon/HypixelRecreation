@@ -1,0 +1,106 @@
+# Elle in Kuudra's Hollow (wiki Elle, Kuudra dialogue). Lines are sent as "[NPC] Elle: <line>".
+# random_one sets send a single random line instead of the whole set.
+npc_prefix: "<e>[NPC] <c>Elle<f>: "
+random_one: [ballista_damaged]
+
+elle:
+  idle:
+    - "Talk with me to begin!"
+  start_first_time:
+    - "Okay adventurers, I will go and fish up Kuudra!"
+    - "Head over to the main platform, I will join you when I get a bite!"
+    - "Nope, that's just a Magmafish!"
+    - "Wait... I think I've hooked onto something!"
+    - "Whatever it is, it sure is big! This might be it!"
+    - "Uh oh."
+  start_veterans:
+    - "Okay adventurers, I will go and fish up Kuudra!"
+    - "Head over to the main platform, I will join you when I get a bite!"
+    - "Not again!"
+  supplies:
+    - "Phew... that was close!"
+    - "ARGH! All of the <c>supplies fell into the lava<f>! You need to <c>retrieve them quickly<f>!"
+    - "Use your <c>Lava Fishing Rods<f> to <c>pull them closer<f> to the platform and collect them!"
+    - "I'll help you clear out Kuudra's minions, go fetch my supplies!"
+  build:
+    - "OMG! Great work collecting my supplies!"
+    - "Now... please just cover me for a few minutes, I'll put together our special weapon!"
+    - "It's time to build the Ballista again! <c>Cover me<f>!"
+  submerge_after_supplies:
+    - "What the hell is that noise?! I think we've made him mad!"
+    - "Looks like the horde is coming! <c>Cover me<f>!"
+  futile:
+    - "Damaging Kuudra directly is futile. <c>His thick skin is impenetrable<f> with conventional weapons!"
+  ballista_damaged:
+    - "BRUH"
+    - "That's a lot of damage!"
+    - "I'm sure that'll buff out... I hope.."
+    - "Argh, that didn't sound healthy."
+    - "Guys!! You need to focus the tentacles!"
+  energized_chunks:
+    - "Those Energized Chunks really pack a punch when they explode! Try hitting them towards Kuudra!"
+  dropship:
+    - "A <c>Dropship<f> is approaching! Take it down before it's too late!"
+  dropships:
+    - "A fleet of <c>Dropships<f> are approaching! Take them down before it's too late!"
+  magma_followers:
+    - "Look out, <c>Magma Followers<f>! Don't let them merge!"
+  wandering_blazes:
+    - "A group of <c>Wandering Blazes<f> are emerging from Kuudra's mouth!"
+  ballista_ready:
+    - "Phew! The Ballista is finally ready! It should be strong enough to tank Kuudra's blows now!"
+    - "We need to find the fuel for the Ballista, it <c>must <c>have fallen in the lava<f> with the rest of my supplies!"
+    - "Looks like Kuudra has re-emerged! It's time to <c>shoot him with the Ballista<f>!"
+  ballista_ready_stun:
+    - "Phew! The Ballista is finally ready! It should be strong enough to tank Kuudra's blows now!"
+    - "We need to find fuel for the Ballista, it <c>must be fallen into the lava<f> with the rest of my supplies!"
+    - "Huh, what is that noise?"
+    - "Whow...WHOW! What's happening!!"
+  belly_outside:
+    - "<8>*muffles*<f>Help! <c>I'm still alive in here<f>! It stinks!"
+    - "<8>*muffles*<f>I think I'm in <c>Kuudra's Belly<f>! I was standing too close!"
+    - "<8>*muffles*See if you can find a way to <c>get in here too<f>! I see something which may <c>help us kill Kuudra<f>!"
+  belly_inside:
+    - "Oh, funny seeing you here."
+    - "What? Yes I am still alive. I landed in Kuudra's belly here."
+    - "It looks like if we <c>mine these purple pods<f>, we can do some <c>real damage<f> to Kuudra!"
+    - "Oh come on! What is it this time!"
+    - "I'll fight the mobs, you <c>focus on destroying these pods<f>!"
+  stomach_flooding:
+    - "The <c>lava level is rising<f> inside Kuudra! He <c>must have submerged<f> under the lava!"
+    - "We need to <c>get out<f> before we burn in this lava!"
+    - "We can <c>escape back out his throat<f> at the top of his stomach!"
+    - "<o>aaaaaaaaaaaaaaaaaaaaaaaaaaaaah<f>"
+    - "When Kuudra submerges, we will be <c>flushed out of his stomach<f>! We need to <c>get back inside<f> but be careful when he submerges!"
+  stunned:
+    - "That looks like it hurt! Quickly, while <c>Kuudra is distracted shoot him with the Ballista<f>!"
+  defeated:
+    - "POW! SURELY THAT'S IT! I don't think he has any more in him!"
+    - "I knew you could do it!"
+    - "One last flail before admitting defeat, huh?"
+    - "Good job everyone. A hard fought battle come to an end. Let's get out of here before we run into any more trouble!"
+  lair_opens:
+    - "POW! SURELY THAT'S IT! I don't think he has any more in him!"
+    - "I knew you could do it!"
+    - "One last flail before admitting defeat, huh?"
+    - "What's happening? Why isn't he dying?"
+    - "What just happened? Is this Kuudra's real lair?"
+    - "..."
+    - "I'm not going down there... that's all you."
+  lair_defeated:
+    - "Good job everyone. A hard fought battle come to an end. Let's get out of here before we run into any more trouble!"
+
+# Non-NPC chat lines. {player} and {count} are filled in by the fight.
+announcements:
+  elle_eaten: "<c>Elle has been eaten by Kuudra!"
+  player_eaten: "{player} <c>has been eaten by Kuudra!"
+  pod_destroyed: "{player} <a>destroyed one of Kuudra's pods!"
+  supplies_retrieved: "<a>You retrieved some of Elle's supplies from the Lava!"
+  supply_recovered: "{player} <a>recovered one of Elle's supplies! ({count}/6)"
+  supplies_dropped: "{player} <c>dropped Elle's supplies back into the lava! Oops!"
+  supplies_slipped: "<c>You moved and the Chest slipped out of your hands!"
+  supplies_taken: "<c>Someone else is currently trying to pick up these supplies!"
+  fresh_tools: "<a>Your Fresh Tools Perk bonus doubles your building speed for the next 10 seconds!"
+  human_cannonball: "<a>You purchased Human Cannonball!"
+  kuudra_down: "<c><l>KUUDRA DOWN!"
+  defeat: "<c><l>DEFEAT"
