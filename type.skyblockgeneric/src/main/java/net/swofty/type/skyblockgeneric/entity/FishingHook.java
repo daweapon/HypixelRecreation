@@ -3,7 +3,10 @@ package net.swofty.type.skyblockgeneric.entity;
 import lombok.Getter;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
+import net.minestom.server.ServerFlag;
+import net.minestom.server.collision.Aerodynamics;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.metadata.other.FishingHookMeta;
@@ -36,7 +39,8 @@ import java.util.List;
 public class FishingHook {
 
 	public static final List<FishingHook> activeHooks = new ArrayList<>();
-	private static final double INITIAL_SPEED_MULTIPLIER = 10.0;
+	public static final Aerodynamics BOBBER_AERODYNAMICS = new Aerodynamics(0.03, 0.92, 0.92);
+	private static final double MAX_CAST_PITCH_SLOPE = 5.0;
 	private static final double BOB_SPEED = 0.1;
 	private static final double BOB_AMOUNT = 0.09;
 	private static final double SURFACE_OFFSET = -0.02;
@@ -73,6 +77,7 @@ public class FishingHook {
 
 		this.controller = new Entity(EntityType.TEXT_DISPLAY);
 		this.controller.setNoGravity(true);
+		this.controller.setAerodynamics(BOBBER_AERODYNAMICS);
 
 		this.controller.eventNode().addListener(EntityTickEvent.class,
 				event -> tick(event.getEntity()));
@@ -108,7 +113,7 @@ public class FishingHook {
 		this.controller.setInstance(instance, pos);
 		this.hook.setInstance(instance, pos);
 		this.controller.addPassenger(hook);
-		this.controller.setVelocity(owner.getPosition().direction().mul(INITIAL_SPEED_MULTIPLIER));
+		this.controller.setVelocity(castVelocity(owner.getPosition()));
 		float pitch = (float) 1/3 + (float) (Math.random() * (0.5 - 1.0 / 3.0));
 		owner.playSound(
 				Sound.sound()
@@ -118,6 +123,16 @@ public class FishingHook {
 						.pitch(pitch)
 						.build()
 		);
+	}
+
+	/** Vanilla's bobber throw: about 1.1 blocks a tick, steeper when looking up or down, in blocks per second. */
+	public static Vec castVelocity(Pos look) {
+		double yaw = Math.toRadians(look.yaw());
+		double pitch = Math.toRadians(look.pitch());
+		double slope = Math.clamp(-Math.tan(pitch), -MAX_CAST_PITCH_SLOPE, MAX_CAST_PITCH_SLOPE);
+		Vec throwDirection = new Vec(-Math.sin(yaw), slope, Math.cos(yaw));
+		double length = throwDirection.length();
+		return throwDirection.mul((0.6 / length + 0.5) * ServerFlag.SERVER_TICKS_PER_SECOND);
 	}
 
 	private boolean shouldKeepExisting() {
