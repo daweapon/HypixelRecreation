@@ -139,43 +139,31 @@ public class GUISack implements StatefulView<GUISack.SackState> {
 
     private void handleSackItemClick(ClickContext<SackState> click, ViewContext ctx, ItemType linker) {
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
-        Integer amount = player.getSackItems().getAmount(linker);
+        int amount = player.getSackItems().getAmount(linker);
+        if (amount <= 0) return;
+        int stackSize = new SkyBlockItem(linker).getItemStack().maxStackSize();
 
+        int taken;
         if (click.click() instanceof Click.Right) {
-            if (amount == 0) return;
-            if (amount >= 64) {
-                player.getSackItems().decrease(linker, 64);
-                SkyBlockItem itemAdded = new SkyBlockItem(linker);
-                itemAdded.setAmount(64);
-                player.addAndUpdateItem(itemAdded);
-            } else {
-                player.getSackItems().decrease(linker, amount);
-                SkyBlockItem itemAdded = new SkyBlockItem(linker);
-                itemAdded.setAmount(amount);
-                player.addAndUpdateItem(itemAdded);
-            }
-            ctx.session(SackState.class).refresh();
+            taken = Math.min(amount, stackSize);
         } else if (click.click() instanceof Click.Left) {
             int airSlots = 0;
             for (ItemStack itemStack : player.getInventory().getItemStacks()) {
                 if (itemStack.isAir()) airSlots++;
             }
-            int maxSpace = 64 * airSlots;
-            if (amount >= maxSpace) {
-                player.getSackItems().decrease(linker, maxSpace);
-                SkyBlockItem itemAdded = new SkyBlockItem(linker);
-                itemAdded.setAmount(64);
-                for (int i = 0; i < airSlots; i++) {
-                    player.addAndUpdateItem(itemAdded);
-                }
-            } else {
-                player.getSackItems().decrease(linker, amount);
-                SkyBlockItem itemAdded = new SkyBlockItem(linker);
-                itemAdded.setAmount(amount);
-                player.addAndUpdateItem(itemAdded);
-            }
-            ctx.session(SackState.class).refresh();
+            taken = Math.min(amount, stackSize * airSlots);
+        } else {
+            return;
         }
+        if (taken <= 0) return;
+
+        player.getSackItems().decrease(linker, taken);
+        for (int left = taken; left > 0; left -= stackSize) {
+            SkyBlockItem stack = new SkyBlockItem(linker);
+            stack.setAmount(Math.min(left, stackSize));
+            player.addAndUpdateItem(stack);
+        }
+        ctx.session(SackState.class).refresh();
     }
 
     public record SackState() {}
