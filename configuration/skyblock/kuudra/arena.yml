@@ -1,0 +1,50 @@
+# Kuudra's Hollow layout. Coordinates are Hypixel's own, from the Odin, IQ, Drawcoco and Lunar Kuudra
+# waypoints (research K1 section 2.2). Entries marked EST are guesses until the captured map is in; correct
+# them here once it is. Positions are [x, y, z] or [x, y, z, yaw, pitch]; boxes are inclusive block bounds.
+
+# Under configuration/world/. While the file is missing, each run generates a placeholder arena from this layout.
+world: kuudra_hollow.polar
+floor_y: 78
+lava_surface_y: 75
+
+# EST: the far end of the bridge, facing the platform.
+spawn: [-101.5, 78, -38.5, 180, 0]
+# EST: on the bridge between the spawn and the platform.
+elle: [-101.5, 78, -44.5, 0, 0]
+# EST: where the dead and stragglers land, on the platform in front of the Ballista.
+respawn: [-101.5, 78, -92.5, 180, 0]
+ballista: [-101.5, 82, -105.5]
+
+platform:
+  min: [-150, 60, -151]
+  max: [-56, 77, -60]
+# EST: collapses when Elle starts the run.
+bridge:
+  min: [-103, 77, -59]
+  max: [-100, 77, -36]
+# EST: the lava sea around the platform.
+sea:
+  min: [-260, 60, -260]
+  max: [60, 74, 60]
+
+# Supply drop-off piles, which are also the six Ballista build piles (IQ labels; Odin swaps Equals and Slash).
+piles:
+  SHOP: [-98.5, 78.4, -113.5]
+  TRIANGLE: [-94.5, 78.4, -106.5]
+  EQUALS: [-106.5, 78.4, -99.5]
+  SLASH: [-98.5, 78.4, -99.5]
+  X_CANNON: [-110.5, 78.4, -106.5]
+  X: [-106.5, 78.4, -113.5]
+
+# The seven named spots where supply crates float in; one of them is empty each run.
+supply_spots:
+  TRIANGLE: {position: [-67.5, 77, -122.5], radius: 15}
+  X: {position: [-142.5, 77, -151], radius: 30}
+  EQUALS: {position: [-65.5, 76, -87.5], radius: 15}
+  SLASH: {position: [-113.5, 77, -68.5], radius: 15}
+  SHOP: {position: [-81, 76, -143], radius: 18}
+  X_CANNON: {position: [-143, 76, -125], radius: 16}
+  SQUARE: {position: [-143, 76, -80], radius: 20}
+
+# EST: the Forgotten Skull on the Crimson Isle, next to Crag, where players return after a run.
+exit: [-372.5, 114, -1038.5, 180, 0]
