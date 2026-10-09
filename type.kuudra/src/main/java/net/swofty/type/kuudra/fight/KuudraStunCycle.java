@@ -38,6 +38,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * weapons hurt him; the stunner is spat back out of his mouth. He flushes everyone out when he submerges.
  */
 final class KuudraStunCycle {
+    private static final int CHOMPS = 4;
+    private static final int CHOMP_GAP_TICKS = 8;
     private final KuudraFight fight;
     private final KuudraFightSpec.Stun stun;
     private final KuudraFightSpec.Stomach rules;
@@ -81,6 +83,9 @@ final class KuudraStunCycle {
                 String line = lines.get(i);
                 fight.later(at, () -> fight.run().broadcast(line));
             } else {
+                for (int chomp = CHOMPS; chomp >= 1; chomp--) {
+                    fight.later(Math.max(1, at - chomp * CHOMP_GAP_TICKS), () -> fight.playAll("entity.generic.eat", 0.59f));
+                }
                 fight.later(at, this::eatElle);
             }
         }
@@ -234,6 +239,7 @@ final class KuudraStunCycle {
         player.teleport(geometry.landing());
         player.setVelocity(Vec.ZERO);
         fight.run().broadcast(fight.dialogue().announcement("player_eaten", Map.of("player", player.getUsername())));
+        fight.playAt(geometry.landing(), "entity.generic.eat", 0.59f);
         fight.playAt(geometry.landing(), "entity.player.burp", 0.5f);
         if (elleEaten && greeted.add(player.getUuid())) {
             List<String> lines = fight.dialogue().chat("belly_inside", ThreadLocalRandom.current());

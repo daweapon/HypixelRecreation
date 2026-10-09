@@ -29,6 +29,11 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrimsonIsle;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bags.GUISackOfSacks;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraCollectionTier;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraTier;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraConfig;
+import net.swofty.type.skyblockgeneric.bestiary.BestiaryData;
+import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
+import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategory;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDomain;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryBag;
@@ -119,6 +124,14 @@ class MaxProfileTest {
         assertTrue(failed.stream().noneMatch(List.of("Pets", "Accessory Bag", "Accessory powers", "Kuudra clears", "Sack of Sacks", "Quiver")::contains), failed.toString());
         assertTrue(KuudraProgress.collectionPoints(player) >= KuudraCollectionTier.V.getRequiredProgress());
         assertEquals(SkyBlockXPSource.DEFEAT_KUUDRA.getMaxXP(), player.getSkyBlockExperience().getSourceXP(SkyBlockXPSource.DEFEAT_KUUDRA));
+        for (KuudraTier tier : KuudraTier.values()) {
+            assertEquals(KuudraConfig.get().maxWave(), KuudraProgress.highestWave(player, tier), tier + " highest wave");
+        }
+        BestiaryData bestiaryData = new BestiaryData();
+        for (BestiaryCategory.KUUDRA family : BestiaryCategory.KUUDRA.values()) {
+            BestiaryMob mob = family.getMobs().getFirst();
+            assertEquals(bestiaryData.getTotalKillsForMaxTier(mob), player.getBestiaryData().getAmount(mob), family + " bestiary");
+        }
 
         int pets = MaxPets.petTypes().size();
         int accessories = player.getAccessoryBag().getAllAccessories().size();

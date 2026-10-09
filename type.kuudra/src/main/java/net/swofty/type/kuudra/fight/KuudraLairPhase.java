@@ -150,6 +150,8 @@ final class KuudraLairPhase {
             slams.start(new TentacleSlams.Slam(square(target, spec.areaSize()), LAIR_SLAM));
         }
         fight.playAt(target, "entity.ravager.roar", 0.5f);
+        fight.playAt(target, "block.piston.extend", 1f);
+        fight.playAt(target, "block.piston.contract", 1f);
     }
 
     static List<TentacleSlams.Column> square(Pos centre, int size) {

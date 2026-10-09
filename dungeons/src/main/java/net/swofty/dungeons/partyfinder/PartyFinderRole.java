@@ -1,4 +1,4 @@
-package net.swofty.dungeons.catacombs.party;
+package net.swofty.dungeons.partyfinder;
 
 public enum PartyFinderRole {
     LEADER,

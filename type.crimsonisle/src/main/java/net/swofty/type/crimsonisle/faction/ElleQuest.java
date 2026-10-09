@@ -7,7 +7,7 @@ import net.swofty.type.crimsonisle.gui.faction.GUIQuestClaim;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonFaction;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
-import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraAvailability;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.queue.KuudraQueue;
 import net.swofty.type.skyblockgeneric.crimson.questline.BarbarianStep;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonAbiphone;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
@@ -330,7 +330,7 @@ public final class ElleQuest {
         scene.play(player).thenRun(() -> CrimsonChoices.yesNo(player, ID, () -> {
             CrimsonQuestlines.advance(player, MageStep.MEET_AT_FORGOTTEN_SKULL, MageStep.DEFEAT_KUUDRA, 0);
             CrimsonQuestlines.advance(player, BarbarianStep.MEET_AT_FORGOTTEN_SKULL, BarbarianStep.DEFEAT_KUUDRA, 0);
-            elle.say(player, "Perfect! Let's fight!").thenRun(() -> KuudraAvailability.blockIfUnavailable(player));
+            elle.say(player, "Perfect! Let's fight!").thenRun(() -> KuudraQueue.queueWithElle(player));
         }, () -> elle.say(player, "Come back when you are ready, hurry up!")));
     }
 

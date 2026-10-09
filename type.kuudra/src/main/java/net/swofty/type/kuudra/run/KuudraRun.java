@@ -1,5 +1,7 @@
 package net.swofty.type.kuudra.run;
 
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.sound.Sound;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
@@ -7,6 +9,7 @@ import net.minestom.server.instance.block.Block;
 import net.minestom.server.timer.Task;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.ServerType;
+import net.swofty.commons.text.Text;
 import net.swofty.type.game.game.AbstractGame;
 import net.swofty.type.game.game.GameState;
 import net.swofty.type.game.game.event.PlayerPostJoinGameEvent;
@@ -29,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -37,10 +41,15 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
     public static final int SHUTDOWN_SECONDS = 20;
     private static final int DIALOGUE_GAP_TICKS = 40;
     private static final int TRANSFER_GRACE_TICKS = 200;
+    private static final int AUTO_READY_TICKS = 40;
     public static volatile KuudraWaveSpawner waveSpawner = KuudraWaveSpawner.NONE;
 
     private final KuudraTier tier;
     private final Set<UUID> roster;
+    private final UUID creator;
+    private final long createdAt = System.nanoTime();
+    private final Set<UUID> departed = ConcurrentHashMap.newKeySet();
+    private final KuudraReadyCheck readyCheck = new KuudraReadyCheck();
     private final KuudraHollow hollow;
     private final KuudraArena arena;
     private final KuudraDialogue dialogue;
@@ -60,6 +69,7 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
         KuudraTierSpec spec = config.tier(tier);
         this.tier = tier;
         this.roster = Set.copyOf(roster);
+        this.creator = roster.getFirst();
         this.hollow = hollow;
         this.arena = config.arena();
         this.dialogue = config.dialogue();
@@ -115,9 +125,21 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
         player.setRespawnPoint(arena.respawn());
         if (fight != null) fight.join(player);
         player.setInstance(hollow.instance(), arrival).thenRun(() -> {
-            if (waiting) dialogue.chat("idle", ThreadLocalRandom.current()).forEach(player::sendMessage);
+            if (!waiting) return;
+            dialogue.chat("idle", ThreadLocalRandom.current()).forEach(player::sendMessage);
+            if (KuudraProgress.autoReadyUp(player) && KuudraProgress.meetsRequirements(player, tier)) {
+                later(AUTO_READY_TICKS, () -> readyUp(player));
+            }
         });
         return true;
+    }
+
+    /** Leaves for a re-queued run: dropped from this one as if disconnected, and never routed back into it. */
+    public synchronized void depart(SkyBlockPlayer player) {
+        departed.add(player.getUuid());
+        if (fight != null) fight.leave(player);
+        handleDisconnect(player.getUuid());
+        if (started()) broadcast("<c> ☠ <a>" + player.getUsername() + "<7> disconnected and became a ghost<7>.");
     }
 
     public synchronized void handleDisconnect(UUID uuid) {
@@ -129,8 +151,26 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
 
     public void talkToElle(SkyBlockPlayer player) {
         if (!isMember(player.getUuid())) return;
-        if (run.stage() != GameState.WAITING) return;
-        begin();
+        readyUp(player);
+    }
+
+    /** "X is now ready!"; once everyone in the Hollow is ready, a 4 second countdown starts the fight. */
+    public synchronized void readyUp(SkyBlockPlayer player) {
+        if (run.stage() != GameState.WAITING || !player.isOnline() || !readyCheck.ready(player.getUuid())) return;
+        broadcast(Text.of("{}<a> is now ready!", player.getColouredName()));
+        if (!readyCheck.startCountdown(onlineMembers().stream().map(SkyBlockPlayer::getUuid).toList())) return;
+        List<String> countdown = KuudraReadyCheck.countdown();
+        for (int i = 0; i < countdown.size(); i++) {
+            String line = countdown.get(i);
+            later(20 * i + 1, () -> broadcast(line));
+        }
+        later(20 * countdown.size(), () -> {
+            if (run.stage() == GameState.WAITING) begin();
+        });
+    }
+
+    public boolean isReady(UUID player) {
+        return readyCheck.isReady(player);
     }
 
     /** Starts the fight as if someone talked to Elle. */
@@ -194,6 +234,8 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
             onlineMembers().forEach(player -> fight.summary(player, win).forEach(player::sendMessage));
         }
         if (outcome == KuudraRunState.Outcome.WIN) {
+            onlineMembers().forEach(player -> player.playSound(Sound.sound(Key.key("entity.firework_rocket.launch"),
+                    Sound.Source.AMBIENT, 1f, 1f)));
             if (fight == null) broadcast(dialogue.announcement("kuudra_down", Map.of()));
             dialogue.chat("lair_defeated", ThreadLocalRandom.current()).forEach(this::broadcast);
             onlineMembers().forEach(this::reward);
@@ -201,6 +243,8 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
             broadcast(dialogue.announcement("defeat", Map.of()));
         }
         broadcast("<7>Returning to the Crimson Isle in <a>" + SHUTDOWN_SECONDS + " seconds<7>.");
+        onlineMembers().stream().filter(player -> player.getUuid().equals(creator))
+                .forEach(player -> player.sendMessage(KuudraRequeue.prompt(tier)));
         return true;
     }
 
@@ -270,7 +314,17 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
         }).delay(TaskSchedule.tick(Math.max(1, ticks))).schedule());
     }
 
+    /** Sends a line to the party; Elle's lines also play her voice where she stands (both captures). */
     public void broadcast(String message) {
+        onlineMembers().forEach(player -> player.sendMessage(message));
+        if (message.startsWith(dialogue.npcPrefix())) {
+            Pos at = elleSpot();
+            hollow.instance().playSound(Sound.sound(Key.key("entity.villager.yes"), Sound.Source.NEUTRAL, 1f, 2f),
+                    at.x(), at.y(), at.z());
+        }
+    }
+
+    public void broadcast(Text message) {
         onlineMembers().forEach(player -> player.sendMessage(message));
     }
 
@@ -303,7 +357,16 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
     }
 
     public boolean isExpecting(UUID uuid) {
-        return roster.contains(uuid) && (run.stage() == GameState.WAITING || run.stage() == GameState.IN_PROGRESS);
+        return roster.contains(uuid) && !departed.contains(uuid)
+                && (run.stage() == GameState.WAITING || run.stage() == GameState.IN_PROGRESS);
+    }
+
+    public UUID creator() {
+        return creator;
+    }
+
+    public long createdAt() {
+        return createdAt;
     }
 
     public UUID id() {

@@ -14,6 +14,8 @@ import net.swofty.type.generic.party.PartyManager;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraAvailability;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraTier;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.partyfinder.KuudraPartyFinder;
+import net.swofty.type.skyblockgeneric.gui.inventories.kuudra.GUIKuudraNeedPartyLeader;
 import net.swofty.type.skyblockgeneric.user.ChallengeSidebar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -50,6 +52,32 @@ public final class KuudraQueue {
     private record Entry(KuudraTier tier, long since) {
     }
 
+    /** Starts a run on this server instead of asking the orchestrator; the Kuudra server uses it to re-queue in place. */
+    @FunctionalInterface
+    public interface LocalRuns {
+        boolean start(KuudraTier tier, List<UUID> roster, List<SkyBlockPlayer> members);
+    }
+
+    private static volatile @Nullable LocalRuns localRuns;
+
+    public static void useLocalRuns(@Nullable LocalRuns runs) {
+        localRuns = runs;
+    }
+
+    /** The party-wide line every queue prints (both captures). */
+    public static List<String> entered(String leaderName, KuudraTier tier) {
+        String bar = "<9><m>-----------------------------";
+        return List.of(bar, "<a>" + leaderName + " <e>entered <c>Kuudra's Hollow<e>, <e>" + tier.getDisplayName() + " Tier<e>!", bar);
+    }
+
+    /** The queueing leader goes first; the run treats the first player as its instance creator. */
+    public static List<UUID> leaderFirst(UUID leader, List<UUID> members) {
+        List<UUID> ordered = new ArrayList<>();
+        ordered.add(leader);
+        members.stream().filter(member -> !member.equals(leader)).forEach(ordered::add);
+        return List.copyOf(ordered);
+    }
+
     public static boolean isQueued(UUID player) {
         Entry entry = QUEUED.get(player);
         if (entry == null) return false;
@@ -59,6 +87,15 @@ public final class KuudraQueue {
     }
 
     public static void queue(SkyBlockPlayer leader, KuudraTier tier) {
+        queue(leader, tier, false);
+    }
+
+    /** Elle's first trip to Kuudra: a Basic run that doesn't need "Have Elle take you to Kuudra!". */
+    public static void queueWithElle(SkyBlockPlayer leader) {
+        queue(leader, KuudraTier.BASIC, true);
+    }
+
+    private static void queue(SkyBlockPlayer leader, KuudraTier tier, boolean elle) {
         if (!KuudraAvailability.canQueue(leader)) {
             leader.sendMessage(KuudraAvailability.UNAVAILABLE_CHAT);
             return;
@@ -69,7 +106,7 @@ public final class KuudraQueue {
         }
         Thread.startVirtualThread(() -> {
             try {
-                prepare(leader, tier);
+                prepare(leader, tier, elle);
             } catch (Exception exception) {
                 Logger.error(exception, "Kuudra queue failed for {}", leader.getUsername());
                 leader.sendMessage("<c>Something went wrong while queueing for Kuudra. Please try again.");
@@ -77,7 +114,7 @@ public final class KuudraQueue {
         });
     }
 
-    private static void prepare(SkyBlockPlayer leader, KuudraTier tier) {
+    private static void prepare(SkyBlockPlayer leader, KuudraTier tier, boolean elle) {
         boolean inParty = PartyManager.isInParty(leader);
         FullParty party = inParty ? PartyManager.getPartyFromPlayer(leader) : null;
         if (inParty && party == null) {
@@ -85,8 +122,12 @@ public final class KuudraQueue {
             return;
         }
         List<UUID> roster = party == null ? List.of(leader.getUuid())
-                : party.getMembers().stream().map(FullParty.Member::getUuid).toList();
+                : leaderFirst(leader.getUuid(), party.getMembers().stream().map(FullParty.Member::getUuid).toList());
         boolean isLeader = party == null || party.getLeader().getUuid().equals(leader.getUuid());
+        if (!isLeader) {
+            MinecraftServer.getSchedulerManager().scheduleNextTick(() -> leader.openView(new GUIKuudraNeedPartyLeader()));
+            return;
+        }
 
         List<SkyBlockPlayer> members = new ArrayList<>();
         List<KuudraPartyCheck.Member> checks = new ArrayList<>();
@@ -95,7 +136,7 @@ public final class KuudraQueue {
             if (member != null) members.add(member);
             String name = member != null ? member.getUsername() : HypixelDataHandler.getPotentialIGNFromUUID(uuid);
             checks.add(new KuudraPartyCheck.Member(name, uuid.equals(leader.getUuid()), member != null,
-                    member != null && KuudraProgress.meetsRequirements(member, tier)));
+                    member != null && (elle || KuudraProgress.meetsRequirements(member, tier))));
         }
         List<String> problems = KuudraPartyCheck.problems(isLeader, checks, tier.getDisplayName());
         if (!problems.isEmpty()) {
@@ -112,16 +153,26 @@ public final class KuudraQueue {
         long now = System.currentTimeMillis();
         members.forEach(member -> QUEUED.put(member.getUuid(), new Entry(tier, now)));
         members.forEach(member -> member.sendMessage("<e>Starting in " + START_DELAY_SECONDS + " seconds..."));
-        MinecraftServer.getSchedulerManager().buildTask(() -> Thread.startVirtualThread(() -> send(members, roster, tier)))
+        MinecraftServer.getSchedulerManager().buildTask(() -> Thread.startVirtualThread(() -> send(leader, members, roster, tier)))
                 .delay(TaskSchedule.seconds(START_DELAY_SECONDS))
                 .schedule();
     }
 
-    private static void send(List<SkyBlockPlayer> members, List<UUID> roster, KuudraTier tier) {
+    private static void send(SkyBlockPlayer leader, List<SkyBlockPlayer> members, List<UUID> roster, KuudraTier tier) {
         try {
             List<SkyBlockPlayer> present = members.stream().filter(SkyBlockPlayer::isOnline).toList();
             if (present.size() != members.size()) {
                 fail(present, "<c>A party member left, so the queue was cancelled.");
+                return;
+            }
+            List<String> entered = entered(leader.getUsername(), tier);
+            LocalRuns here = localRuns;
+            if (here != null && here.start(tier, roster, present)) {
+                present.forEach(member -> {
+                    entered.forEach(member::sendMessage);
+                    QUEUED.remove(member.getUuid());
+                });
+                delist(roster);
                 return;
             }
             GetServerForMapProtocol.GetServerForMapResponse response = requestRun(roster, tier);
@@ -132,7 +183,11 @@ public final class KuudraQueue {
                 return;
             }
             register(present, server, response.gameId());
-            present.forEach(member -> member.sendMessage("<7>Sending to server " + server.shortName() + "..."));
+            delist(roster);
+            present.forEach(member -> {
+                entered.forEach(member::sendMessage);
+                member.sendMessage("<7>Sending to server " + server.shortName() + "...");
+            });
             for (SkyBlockPlayer member : present) {
                 if (!member.isOnline()) continue;
                 member.asProxyPlayer().transferToWithIndication(server.uuid())
@@ -164,6 +219,14 @@ public final class KuudraQueue {
                     .join();
         } catch (Exception exception) {
             Logger.warn("Some Kuudra run registrations timed out; the run also knows its roster, so continuing");
+        }
+    }
+
+    private static void delist(List<UUID> roster) {
+        try {
+            roster.forEach(KuudraPartyFinder::leave);
+        } catch (Exception exception) {
+            Logger.warn(exception, "Couldn't take a queued Kuudra party out of the Party Finder");
         }
     }
 

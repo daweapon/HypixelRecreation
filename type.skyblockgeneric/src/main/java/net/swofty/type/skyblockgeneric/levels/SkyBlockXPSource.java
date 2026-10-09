@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.levels;
 import lombok.Getter;
 import net.minestom.server.item.Material;
 import net.swofty.commons.StringUtility;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraAvailability;
 import org.jetbrains.annotations.Nullable;
 import net.swofty.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
 import net.swofty.type.skyblockgeneric.levels.causes.CollectedMobTypesCause;
@@ -282,9 +283,17 @@ public enum SkyBlockXPSource {
         };
     }
 
+    /** The Kuudra tasks follow {@link KuudraAvailability}: live once Kuudra is launched, not in the game before. */
+    public Availability getAvailability() {
+        if (this == DEFEAT_KUUDRA || this == BOSS_COLLECTIONS) {
+            return KuudraAvailability.isFightAvailable() ? Availability.LIVE : Availability.NOT_IN_GAME;
+        }
+        return availability;
+    }
+
     /** Whether this server can currently award this source's XP through normal gameplay. */
     public boolean isObtainable() {
-        return availability == Availability.LIVE;
+        return getAvailability() == Availability.LIVE;
     }
 
     /**

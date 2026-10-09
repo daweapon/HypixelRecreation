@@ -52,7 +52,7 @@ import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraFightSpec;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraMobSpec;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraPerkShop;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraTierSpec;
-import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrimsonIsle;
+import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.essence.CrimsonEssencePerk;
 import net.swofty.type.skyblockgeneric.essence.EssencePerks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
@@ -101,8 +101,9 @@ public final class KuudraFight {
 
     private static final int LEAP_TICKS = 16;
     private static final Set<String> FLYERS = Set.of("WANDERING_BLAZE", "DROPSHIP");
+    private static final int REVIVE_TITLE_SECONDS = 5;
+    private static final int LAIR_DEATH_BLASTS = 7;
 
-    private static final String HIGHEST_WAVE = "kuudra:highest_wave:";
 
     private final KuudraRun run;
     private final KuudraTier tier;
@@ -354,6 +355,8 @@ public final class KuudraFight {
         if (deathFinale != null) {
             for (KuudraFinale.Step step : deathFinale.tick()) {
                 if (step.kind() == KuudraFinale.Kind.FINISH) {
+                    if (boss != null) instance.playSound(Sound.sound(Key.key("entity.skeleton_horse.death"), Sound.Source.HOSTILE,
+                            6f, 0.59f), boss.base().x(), boss.base().y(), boss.base().z());
                     run.finish(net.swofty.type.kuudra.run.KuudraRunState.Outcome.WIN);
                     return;
                 }
@@ -377,6 +380,7 @@ public final class KuudraFight {
         tickTentacleRespawns();
         lives.tick(tick).forEach(uuid -> online.stream().filter(p -> p.getUuid().equals(uuid)).findFirst().ifPresent(this::respawn));
         if (tick % 20 == 0) tickAuras();
+        if (tick % 20 == 0) tickReviveTitles(online);
         if (tick % 5 == 0) tickActionBars(online);
         int limit = spec.lives().timeLimitSeconds();
         if (limit > 0 && run.state().elapsedSeconds() >= limit) run.finish(net.swofty.type.kuudra.run.KuudraRunState.Outcome.LOSE);
@@ -812,6 +816,12 @@ public final class KuudraFight {
 
     private void lairKilled() {
         finishing = true;
+        if (boss != null) {
+            for (int i = 0; i < LAIR_DEATH_BLASTS; i++) {
+                instance.playSound(Sound.sound(Key.key("entity.generic.explode"), Sound.Source.HOSTILE, 1.5f, 0.49f),
+                        boss.base().x(), boss.base().y(), boss.base().z());
+            }
+        }
         if (lair != null) lair.stop();
         bossState.setCycling(false);
         bossState.sink();
@@ -1099,7 +1109,22 @@ public final class KuudraFight {
         if (finalKill) run.broadcast(dialogue.announcement("final_killed", Map.of("player", player.getUsername())));
         player.sendMessage(finalKill
                 ? "<c>You were final killed! Only a Support's revive can bring you back."
-                : "<e>You will respawn in <a>" + lives.secondsToRespawn(player.getUuid(), tick) + "s<e>. You can still use the <5>Perk Shop<e>.");
+                : "<c>You died! You will be respawned in " + lives.secondsToRespawn(player.getUuid(), tick) + " seconds.");
+        player.playSound(Sound.sound(Key.key("entity.generic.hurt"), Sound.Source.NEUTRAL, 1f, 0.89f));
+        player.showTitle(Text.parse(finalKill ? "<c><l>FINAL KILLED" : "<e>You became a ghost!"),
+                Text.parse("<7>Hopefully your teammates will be able to revive you!"),
+                Title.Times.times(Duration.ofMillis(250), Duration.ofSeconds(3), Duration.ofMillis(500)));
+    }
+
+    /** "You will be revived in 5s" ... "1s" under the ghost title (the Infernal capture). */
+    private void tickReviveTitles(List<SkyBlockPlayer> online) {
+        for (SkyBlockPlayer player : online) {
+            if (!lives.isGhost(player.getUuid()) || lives.isFinal(player.getUuid())) continue;
+            int seconds = lives.secondsToRespawn(player.getUuid(), tick);
+            if (seconds < 1 || seconds > REVIVE_TITLE_SECONDS) continue;
+            player.showTitle(Text.empty(), Text.parse("<a>You will be revived in " + seconds + "s"),
+                    Title.Times.times(Duration.ZERO, Duration.ofMillis(1100), Duration.ZERO));
+        }
     }
 
     private void respawn(SkyBlockPlayer player) {
@@ -1313,7 +1338,7 @@ public final class KuudraFight {
         if (cap <= 0) return 0;
         long highest = 0;
         for (KuudraTier each : KuudraTier.values()) {
-            if (each.ordinal() >= tier.ordinal()) highest = Math.max(highest, DatapointCrimsonIsle.of(player).getNumber(HIGHEST_WAVE + each.name()));
+            if (each.ordinal() >= tier.ordinal()) highest = Math.max(highest, KuudraProgress.highestWave(player, each));
         }
         return Math.min(cap, highest * 0.001);
     }
@@ -1322,8 +1347,7 @@ public final class KuudraFight {
         int wave = run.state().wave();
         for (SkyBlockPlayer player : run.onlineMembers()) {
             try {
-                if (DatapointCrimsonIsle.of(player).getNumber(HIGHEST_WAVE + tier.name()) >= wave) continue;
-                DatapointCrimsonIsle.edit(player, data -> data.getNumbers().put(HIGHEST_WAVE + tier.name(), (long) wave));
+                KuudraProgress.recordWave(player, tier, wave);
             } catch (Exception exception) {
                 Logger.error(exception, "Couldn't record {}'s highest Kuudra wave", player.getUsername());
             }

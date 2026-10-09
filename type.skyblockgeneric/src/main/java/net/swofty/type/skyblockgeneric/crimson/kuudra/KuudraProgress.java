@@ -36,6 +36,8 @@ public final class KuudraProgress {
     public static final String KUUDRA_CONUNDRUM = "skyblock.kuudra_conundrum";
     private static final String CLEARED = "kuudra:cleared:";
     private static final String COLLECTION_REWARDED = "kuudra:collection_rewarded";
+    public static final String HIGHEST_WAVE = "kuudra:highest_wave:";
+    private static final String AUTO_READY_UP = "kuudra:auto_ready_up";
     private static volatile Predicate<SkyBlockPlayer> questlineCheck =
             player -> CrimsonReputationService.faction(player) != null;
 
@@ -63,6 +65,27 @@ public final class KuudraProgress {
         Set<KuudraTier> cleared = EnumSet.noneOf(KuudraTier.class);
         for (KuudraTier tier : KuudraTier.values()) if (hasCleared(player, tier)) cleared.add(tier);
         return cleared;
+    }
+
+    public static long highestWave(SkyBlockPlayer player, KuudraTier tier) {
+        return DatapointCrimsonIsle.of(player).getNumber(HIGHEST_WAVE + tier.name());
+    }
+
+    /** Raises the highest wave reached on this tier, which Vulcan's Kuudra Master reads. */
+    public static void recordWave(SkyBlockPlayer player, KuudraTier tier, int wave) {
+        if (highestWave(player, tier) >= wave) return;
+        DatapointCrimsonIsle.edit(player, data -> data.getNumbers().put(HIGHEST_WAVE + tier.name(), (long) wave));
+    }
+
+    /** Crag's "Toggle Auto Ready Up": ready up on arrival in the Hollow when the requirements are met. */
+    public static boolean autoReadyUp(SkyBlockPlayer player) {
+        return DatapointCrimsonIsle.of(player).getNumber(AUTO_READY_UP) > 0;
+    }
+
+    public static boolean toggleAutoReadyUp(SkyBlockPlayer player) {
+        boolean enabled = !autoReadyUp(player);
+        DatapointCrimsonIsle.edit(player, data -> data.getNumbers().put(AUTO_READY_UP, enabled ? 1L : 0L));
+        return enabled;
     }
 
     public static long clears(SkyBlockPlayer player, KuudraTier tier) {
@@ -160,6 +183,8 @@ public final class KuudraProgress {
             for (KuudraTier tier : KuudraTier.values()) data.getNumbers().merge(CLEARED + tier.name(), 1L, Math::max);
             long needed = KuudraCollectionTier.V.getRequiredProgress() / KuudraCollectionTier.pointsFor(KuudraTier.INFERNAL);
             data.getNumbers().merge(CLEARED + KuudraTier.INFERNAL.name(), needed, Math::max);
+            long waves = KuudraConfig.get().maxWave();
+            for (KuudraTier tier : KuudraTier.values()) data.getNumbers().merge(HIGHEST_WAVE + tier.name(), waves, Math::max);
         });
         syncSkyBlockXP(player);
         grantCollectionRewards(player);
@@ -170,13 +195,13 @@ public final class KuudraProgress {
         List<Requirement> requirements = new ArrayList<>();
         int reputation = CrimsonReputationService.highest(player);
         switch (tier) {
-            case BASIC -> requirements.add(new Requirement("Have Elle take you to/Kuudra!", hasDefeatedKuudra(player)));
+            case BASIC -> requirements.add(new Requirement("Have Elle take you to Kuudra!", hasDefeatedKuudra(player)));
             case HOT -> requirements.add(new Requirement("Complete the main quest!", isQuestlineReady(player)));
             default -> {
             }
         }
         if (tier != KuudraTier.BASIC) {
-            requirements.add(new Requirement(tier.getRequiredReputation() + " Reputation with/Mages or Barbarians.",
+            requirements.add(new Requirement(String.format("%,d", tier.getRequiredReputation()) + " Reputation in any faction.",
                     reputation >= tier.getRequiredReputation()));
             requirements.add(new Requirement("Beat the previous tier.", hasCleared(player, tier.previous())));
         }
@@ -187,13 +212,13 @@ public final class KuudraProgress {
         return requirements(player, tier).stream().allMatch(Requirement::met);
     }
 
-    /** One wiki requirement line; a "/" marks where Hypixel wraps it in the menu. */
+    /** One requirement line as Crag's Select Tier shows it (the Burning capture); a "/" marks a line wrap. */
     public record Requirement(String text, boolean met) {
         public List<String> lore() {
             String colour = met ? "<a>" : "<c>";
             String[] parts = text.split("/");
             List<String> lines = new ArrayList<>();
-            lines.add(colour + (met ? "✔ " : "✗ ") + parts[0]);
+            lines.add(colour + (met ? "✓ " : "✗ ") + parts[0]);
             for (int i = 1; i < parts.length; i++) lines.add(colour + parts[i]);
             return lines;
         }

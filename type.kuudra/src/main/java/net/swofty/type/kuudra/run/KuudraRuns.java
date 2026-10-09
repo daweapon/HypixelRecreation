@@ -9,6 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -54,7 +55,8 @@ public final class KuudraRuns {
     }
 
     public static @Nullable KuudraRun expecting(UUID player) {
-        return RUNS.values().stream().filter(run -> run.isExpecting(player)).findFirst().orElse(null);
+        return RUNS.values().stream().filter(run -> run.isExpecting(player))
+                .max(Comparator.comparingLong(KuudraRun::createdAt)).orElse(null);
     }
 
     public static @Nullable KuudraRun of(UUID player) {
