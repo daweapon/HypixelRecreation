@@ -85,6 +85,8 @@ public final class KuudraFight {
         }
     }
 
+    private record FlailSource(@Nullable KuudraTentacle tentacle, double damage) {
+    }
 
     private record Carried(LavaCargo.Kind kind, String spot, Pos home, CargoCarry carry, ItemStack replaced) {
     }
@@ -130,6 +132,7 @@ public final class KuudraFight {
     private @Nullable ElleLavaRod rod;
     private @Nullable Task task;
     private @Nullable KuudraStunCycle stunCycle;
+    private @Nullable KuudraLairPhase lair;
     private @Nullable KuudraFinale deathFinale;
     private boolean finishing;
     private int suppliesPlaced;
@@ -155,6 +158,7 @@ public final class KuudraFight {
         KuudraFightSpec.Boss boss = spec.boss();
         this.bossState = new KuudraBossState(boss.health(), boss.surfaceSeconds(), boss.shotsPerSurface(),
                 boss.submergedSeconds(), boss.moveTicks());
+        if (tierSpec.lairPhase() && arena.lair() != null) bossState.setFloor(boss.health() * spec.lair().threshold());
     }
 
     // ---- lifecycle -------------------------------------------------------------------------------------------
@@ -170,6 +174,7 @@ public final class KuudraFight {
             slams = new TentacleSlams(instance, arena.floorY() - 1, spec.tentacles().telegraphTicks());
             rod = new ElleLavaRod(instance, arena.lavaSurfaceY(), this::reelElleRod);
             if (tierSpec.stunRequired() && arena.stomach() != null) stunCycle = new KuudraStunCycle(this, arena.stomach());
+            if (tierSpec.lairPhase() && arena.lair() != null) lair = new KuudraLairPhase(this, arena.lair());
             task = MinecraftServer.getSchedulerManager().buildTask(this::tickSafely)
                     .repeat(TaskSchedule.tick(1)).schedule();
         }
@@ -242,6 +247,7 @@ public final class KuudraFight {
                     }
                 }
                 case LAIR -> {
+                    if (lair != null) lair.begin();
                 }
             }
         }
@@ -261,6 +267,7 @@ public final class KuudraFight {
             shots.clear();
             if (slams != null) slams.clear();
             if (stunCycle != null) stunCycle.close();
+            if (lair != null) lair.stop();
             if (rod != null) rod.clear();
             cannons.forEach(KuudraCannon::dismount);
             if (ballista != null) ballista.dismount();
@@ -347,6 +354,7 @@ public final class KuudraFight {
             }
         }
         if (stunCycle != null) stunCycle.tick(tick);
+        if (lair != null) lair.tick(tick);
         if (rod != null) rod.tick(player -> KuudraItems.kindOf(player.getItemInMainHand()) == KuudraItems.Kind.ELLES_LAVA_ROD);
         cargo.forEach(LavaCargo::tick);
         tickPickups();
@@ -734,9 +742,15 @@ public final class KuudraFight {
         afterDamage();
     }
 
+    /** At 0 he dies (or, in the lair, goes down for good); on Infernal 25% opens the lair. */
     private void afterDamage() {
         if (finishing || stopped) return;
-        if (bossState.health() <= 0) beginDeath();
+        if (bossState.health() <= 0) {
+            if (lair != null && lair.entered()) lairKilled();
+            else beginDeath();
+            return;
+        }
+        if (lair != null && !lair.started() && bossState.atFloor()) lair.begin();
     }
 
     /** Elle's three lines while he sinks, then KUUDRA DOWN (the Burning capture: 15.5 s). */
@@ -746,6 +760,14 @@ public final class KuudraFight {
         bossState.setCycling(false);
         bossState.sink();
         deathFinale = KuudraFinale.death(spec.death());
+    }
+
+    private void lairKilled() {
+        finishing = true;
+        if (lair != null) lair.stop();
+        bossState.setCycling(false);
+        bossState.sink();
+        later(spec.death().lairFinishTicks(), () -> run.finish(net.swofty.type.kuudra.run.KuudraRunState.Outcome.WIN));
     }
 
     void closeStomach() {
@@ -886,9 +908,13 @@ public final class KuudraFight {
         }
     }
 
-    /** A melee or bow hit: a counted hit while stunned, otherwise Elle's "futile" line. */
+    /** A melee or bow hit: real damage in the lair, a counted hit while stunned, otherwise Elle's "futile" line. */
     private void weaponHit(SkyBlockPlayer player, double damage) {
         if (lives.isGhost(player.getUuid()) || finishing) return;
+        if (lair != null && lair.entered()) {
+            lair.hit(player, damage);
+            return;
+        }
         if (stunCycle != null && stunCycle.stunnedHit(player)) return;
         if (spec.boss().playerHitsDamage()) return;
         long ready = futileReady.getOrDefault(player.getUuid(), 0L);
@@ -980,11 +1006,12 @@ public final class KuudraFight {
         }
     }
 
+    /** In the Infernal lair every death is a final kill (research K1 3.5; the Infernal capture). */
     private boolean death(SkyBlockPlayer player, boolean forcedFinal) {
         player.setHealth(player.getMaxHealth());
         if (stopped || run.state().phase() == null) return true;
         if (lives.isGhost(player.getUuid())) return true;
-        boolean finalKill = forcedFinal || (player.getLastDamageSource() != null
+        boolean finalKill = forcedFinal || (lair != null && lair.entered()) || (player.getLastDamageSource() != null
                 && player.getLastDamageSource().getAttacker() instanceof KuudraRushers.Chaosmite);
         boolean autoRevive = !finalKill && perks.of(player.getUuid()).autoRevives() > 0;
         KuudraLives.Death death = lives.die(player.getUuid(), tick, finalKill, autoRevive, fasterRespawn());
@@ -1003,6 +1030,11 @@ public final class KuudraFight {
 
     private double fasterRespawn() {
         return run.onlineMembers().stream().mapToDouble(member -> perks.fraction(member.getUuid(), "FASTER_RESPAWN")).max().orElse(0);
+    }
+
+    /** Kills a player outright from a lair telegraph. */
+    void killInLair(SkyBlockPlayer player) {
+        death(player, true);
     }
 
     private void ghost(SkyBlockPlayer player, boolean finalKill) {
@@ -1024,7 +1056,7 @@ public final class KuudraFight {
 
     private void respawn(SkyBlockPlayer player) {
         unghost(player);
-        player.teleport(arena.respawn());
+        player.teleport(lair != null && lair.entered() && arena.lair() != null ? arena.lair().landing() : arena.respawn());
         player.sendMessage("<a>You have respawned!");
     }
 
@@ -1057,7 +1089,7 @@ public final class KuudraFight {
 
     public void spawnWave(int number) {
         synchronized (run) {
-            if (stopped || !emerged) return;
+            if (stopped || !emerged || (lair != null && lair.started())) return;
             int partySize = Math.max(1, run.onlineMembers().size());
             for (KuudraWavePlan.Batch batch : KuudraWavePlan.plan(number, config.waves(), partySize, spec.waves())) {
                 int alive = (int) mobs.stream().filter(mob -> !(mob instanceof KuudraTentacle)).count();
@@ -1157,7 +1189,26 @@ public final class KuudraFight {
         }
     }
 
+    /** One of "One last flail"'s sweeps from the platform edge across the centre (the Infernal capture). */
+    void flailSlam(Pos from, double damage) {
+        if (slams == null || stopped) return;
+        Pos edge = from.withY(arena.floorY());
+        int length = (int) Math.ceil(horizontal(edge, centre()) * 2);
+        KuudraTentacle source = tentacles().stream().findFirst().orElse(null);
+        slams.start(new TentacleSlams.Slam(TentacleSlams.path(edge, centre(), length, spec.lair().pathWidth()),
+                new FlailSource(source, damage)));
+        playAt(edge, "entity.ravager.roar", 0.6f);
+    }
+
     private void landSlam(TentacleSlams.Slam slam) {
+        if (slam.source() instanceof FlailSource(KuudraTentacle tentacle, double damage)) {
+            if (tentacle == null || tentacle.isDead() || tentacle.isRemoved()) return;
+            for (SkyBlockPlayer player : alivePlayers()) {
+                Pos at = player.getPosition();
+                if (TentacleSlams.covers(slam, at) && at.y() < arena.floorY() + 3) MobAttackService.trueStrike(tentacle, player, damage);
+            }
+            return;
+        }
         if (!(slam.source() instanceof KuudraTentacle tentacle) || tentacle.isDead() || tentacle.isRemoved()) return;
         double damage = spec.tentacles().slamDamage().get(tier);
         for (SkyBlockPlayer player : alivePlayers()) {
@@ -1305,9 +1356,10 @@ public final class KuudraFight {
         else if (phase == KuudraPhase.FUEL && !armed && stunCycle == null) progress = fuelLoaded + "/" + spec.fuel().cells();
         String status = null;
         if (lives.isGhost(player.getUuid())) status = lives.isFinal(player.getUuid()) ? "<c>FINAL KILLED" : "<c>DEAD";
-        boolean timer = (armed || (stunCycle != null && stunCycle.begun())) && !finishing;
+        boolean lairStarted = lair != null && lair.started();
+        boolean timer = (armed || (stunCycle != null && stunCycle.begun())) && !finishing && !lairStarted;
         return new Hud(tokens.balance(player.getUuid()), progress, timer ? bossState.secondsUntilSubmerge() : -1, status,
-                !finishing, true);
+                !finishing && !lairStarted, !lairStarted);
     }
 
     private double organ(SkyBlockPlayer player, Map<String, Double> bonuses) {
@@ -1517,6 +1569,23 @@ public final class KuudraFight {
         return alivePlayers().stream().filter(player -> inside.contains(player.getUuid())).toList();
     }
 
+    List<KuudraTentacle> tentacles() {
+        return mobs.stream().filter(mob -> mob instanceof KuudraTentacle && !mob.isDead())
+                .map(mob -> (KuudraTentacle) mob).toList();
+    }
+
+    Pos randomEdge() {
+        return edgePoint();
+    }
+
+    /** The platform centre falls into the lair, and the Ballista with it. */
+    void removeBallista() {
+        if (ballista == null) return;
+        ballista.dismount();
+        ballista.remove();
+        ballista = null;
+    }
+
     Instance instance() {
         return instance;
     }
@@ -1541,14 +1610,14 @@ public final class KuudraFight {
         return armed;
     }
 
-    /** Kuudra is dying: no more stun cycles. */
+    /** Kuudra is dying or the Infernal skip has begun: no more stun cycles. */
     boolean finishing() {
-        return finishing;
+        return finishing || (lair != null && lair.started());
     }
 
-    // ---- staff controls for the stun cycle ----------------------------------------------------------------
+    // ---- staff controls for the stun cycle and the lair ------------------------------------------------------
 
-    public enum StaffResult {DONE, NOT_A_STUN_TIER, NOT_READY}
+    public enum StaffResult {DONE, NOT_A_STUN_TIER, NOT_INFERNAL, NOT_READY}
 
     private StaffResult stunReady() {
         if (stunCycle == null) return StaffResult.NOT_A_STUN_TIER;
@@ -1593,6 +1662,21 @@ public final class KuudraFight {
             if (!stunCycle.isInside(player)) return StaffResult.NOT_READY;
             stunCycle.launchOut(player);
             return StaffResult.DONE;
+        }
+    }
+
+    /** Takes Kuudra to 25% and starts the Infernal skip; a second use plays the rest of it at once (staff). */
+    public StaffResult lair() {
+        synchronized (run) {
+            if (lair == null) return StaffResult.NOT_INFERNAL;
+            if (!emerged || finishing) return StaffResult.NOT_READY;
+            if (lair.started()) {
+                lair.skip();
+                return StaffResult.DONE;
+            }
+            bossState.damage(bossState.maxHealth());
+            afterDamage();
+            return lair.started() ? StaffResult.DONE : StaffResult.NOT_READY;
         }
     }
 }

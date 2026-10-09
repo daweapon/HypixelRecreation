@@ -18,16 +18,16 @@ import java.util.function.Consumer;
 
 @CommandParameters(labels = "kuudrarun",
         description = "Controls the Kuudra run you are in",
-        usage = "/kuudrarun <win|lose|start|phase|supplies|build|fuel|stun|eat|spit|damage|tokens|wave|spawn> [value]",
+        usage = "/kuudrarun <win|lose|start|phase|supplies|build|fuel|stun|lair|eat|spit|damage|tokens|wave|spawn> [value]",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class KuudraRunCommand extends HypixelCommand {
-    private static final String USAGE = "<c>Usage: /kuudrarun <win|lose|start|phase|supplies|build|fuel|stun|eat|spit|damage|tokens|wave|spawn> [value]";
+    private static final String USAGE = "<c>Usage: /kuudrarun <win|lose|start|phase|supplies|build|fuel|stun|lair|eat|spit|damage|tokens|wave|spawn> [value]";
 
     @Override
     public void registerUsage(MinestomCommand command) {
         ArgumentWord action = new ArgumentWord("action").from("win", "lose", "start", "phase", "supplies", "build", "fuel",
-                "stun", "eat", "spit");
+                "stun", "lair", "eat", "spit");
         ArgumentWord stomach = new ArgumentWord("stomach").from("eat", "spit");
         ArgumentWord who = ArgumentType.Word("player");
         ArgumentWord phase = new ArgumentWord("phase").from(Arrays.stream(KuudraPhase.values())
@@ -64,6 +64,8 @@ public class KuudraRunCommand extends HypixelCommand {
                 });
                 case "stun" -> withFight(player, run, fight -> report(player, fight.stun(player),
                         "<a>Broke a pod: Kuudra is stunned."));
+                case "lair" -> withFight(player, run, fight -> report(player, fight.lair(),
+                        "<a>Kuudra is at 25%; the lair sequence is running (use it again to skip to the lair)."));
                 case "eat", "spit" -> stomach(player, run, context.get(action), player);
                 default -> player.sendMessage(USAGE);
             }
@@ -165,6 +167,7 @@ public class KuudraRunCommand extends HypixelCommand {
         player.sendMessage(switch (result) {
             case DONE -> done;
             case NOT_A_STUN_TIER -> "<c>Only Burning, Fiery and Infernal runs have Kuudra's stomach.";
+            case NOT_INFERNAL -> "<c>Only Infernal runs have the lair.";
             case NOT_READY -> "<c>Not right now: Kuudra must be up (he is rising if he wasn't), or the player isn't inside.";
         });
     }
