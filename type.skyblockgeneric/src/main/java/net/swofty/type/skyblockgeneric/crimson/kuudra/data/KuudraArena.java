@@ -12,7 +12,8 @@ import java.util.Map;
 public record KuudraArena(String world, int floorY, int lavaSurfaceY, Pos spawn, Pos elle, Pos respawn, Pos ballista,
                           Box platform, Box bridge, Box sea, Map<String, Pos> piles,
                           Map<String, SupplySpot> supplySpots, Pos ellePlatform, Pos perkShop, List<Pos> cannons,
-                          Map<String, Pos> kuudraSides, Pos exit, @Nullable Stomach stomach, @Nullable Lair lair) {
+                          Map<String, Pos> kuudraSides, Pos exit, @Nullable Stomach stomach, @Nullable Lair lair,
+                          List<Pos> minionSpawns) {
 
     static KuudraArena parse(Map<String, Object> yaml) {
         return parse(yaml, Map.of());
@@ -48,7 +49,8 @@ public record KuudraArena(String world, int floorY, int lavaSurfaceY, Pos spawn,
                 Map.copyOf(sides),
                 pos(yaml.get("exit")),
                 Stomach.parse(Yamls.map(yaml.get("stomach"))),
-                Lair.parse(Yamls.map(yaml.get("lair")), collapseYaml));
+                Lair.parse(Yamls.map(yaml.get("lair")), collapseYaml),
+                Yamls.list(yaml.get("minion_spawns")).stream().map(KuudraArena::pos).toList());
     }
 
     private static Map<String, Pos> positions(Object yaml) {

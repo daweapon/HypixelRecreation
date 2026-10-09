@@ -20,7 +20,8 @@ import java.util.function.Consumer;
 
 /**
  * The Ballista site: the six drop-off piles with their holograms, the Ballista itself (display entities that
- * appear as the build progresses) and its seat.
+ * appear as the build progresses) and its seat. Its model faces north until someone rides it; then it turns with
+ * the rider's look.
  */
 public final class BallistaSite {
     private record Part(double x, double y, double z, Block block, double sx, double sy, double sz) {
@@ -50,11 +51,18 @@ public final class BallistaSite {
     private final Map<String, Entity> pileLabels = new LinkedHashMap<>();
     private final Map<String, Entity> pileCrates = new LinkedHashMap<>();
     private final Map<String, Entity> pileHitboxes = new LinkedHashMap<>();
+    private static final float NORTH = 180;
+    private static final float TURN_STEP = 1;
+    private static final Vec SEAT = new Vec(0, 1.4, 2.6);
+    private static final Vec MUZZLE = new Vec(0, 2.8, -2.5);
+
     private final List<Entity> parts = new ArrayList<>();
     private final Entity overall;
-    private final Entity seatHitbox;
     private final Entity seat;
+    private final Consumer<SkyBlockPlayer> onSeatUse;
+    private @Nullable Entity bodyHitbox;
     private @Nullable SkyBlockPlayer rider;
+    private float facing = NORTH;
 
     public BallistaSite(Instance instance, KuudraArena arena, BiConsumer<String, SkyBlockPlayer> onPileUse,
                         Consumer<SkyBlockPlayer> onSeatUse) {
@@ -67,10 +75,40 @@ public final class BallistaSite {
                     player -> onPileUse.accept(name, player)));
         });
         overall = Displays.text(instance, base.add(0, 4.2, 0), collectedText(0, piles.size()));
-        seatHitbox = Displays.hitbox(instance, base.add(0, 1.6, 2.6), 1.4f, 1.2f, onSeatUse);
+        this.onSeatUse = onSeatUse;
         seat = new Entity(EntityType.ITEM_DISPLAY);
         seat.setNoGravity(true);
-        seat.setInstance(instance, base.add(0, 1.4, 2.6).withYaw(180));
+        seat.setInstance(instance, placed(SEAT));
+    }
+
+    /** A model offset turned to where the Ballista faces, as a position whose view matches the turn. */
+    Pos placed(Vec offset) {
+        return placed(base, facing, offset);
+    }
+
+    public static Pos placed(Pos base, float facing, Vec offset) {
+        double turn = Math.toRadians(facing - NORTH);
+        double cos = Math.cos(turn);
+        double sin = Math.sin(turn);
+        return base.add(offset.x() * cos - offset.z() * sin, offset.y(), offset.x() * sin + offset.z() * cos)
+                .withView(facing - NORTH, 0);
+    }
+
+    /** While ridden, the Ballista swings round to follow the rider's look. */
+    public void tick() {
+        if (rider == null || !isRiding(rider)) return;
+        float wanted = rider.getPosition().yaw();
+        if (Math.abs(Pos.fixYaw(wanted - facing)) < TURN_STEP) return;
+        facing = wanted;
+        for (int i = 0; i < parts.size(); i++) {
+            Part part = MODEL.get(i);
+            parts.get(i).teleport(placed(new Vec(part.x(), part.y(), part.z())));
+        }
+        seat.teleport(placed(SEAT));
+    }
+
+    public float facing() {
+        return facing;
     }
 
     public void supplyReceived(String pile) {
@@ -118,6 +156,7 @@ public final class BallistaSite {
             Displays.remove(pileHitboxes.get(pile));
         });
         reveal(1);
+        if (bodyHitbox == null) bodyHitbox = Displays.hitbox(instance, base, 3.6f, 3.2f, onSeatUse);
         int charge = needed <= 0 ? 100 : Math.min(100, fuel * 100 / needed);
         Displays.setText(overall, "<f>Energy Charge: <a>" + charge + "%\n<c><l>BALLISTA\n<e><l>RIGHT-CLICK TO MOUNT");
     }
@@ -126,7 +165,7 @@ public final class BallistaSite {
         int wanted = (int) Math.ceil(MODEL.size() * Math.max(0, Math.min(1, fraction)));
         while (parts.size() < wanted) {
             Part part = MODEL.get(parts.size());
-            parts.add(Displays.block(instance, base.add(part.x(), part.y(), part.z()), part.block(),
+            parts.add(Displays.block(instance, placed(new Vec(part.x(), part.y(), part.z())), part.block(),
                     new Vec(part.sx(), part.sy(), part.sz())));
         }
         while (parts.size() > wanted) Displays.remove(parts.removeLast());
@@ -149,7 +188,7 @@ public final class BallistaSite {
     }
 
     public Pos muzzle() {
-        return base.add(0, 2.8, -2.5);
+        return placed(MUZZLE);
     }
 
     public @Nullable String pileOf(Entity entity) {
@@ -172,7 +211,7 @@ public final class BallistaSite {
         pileHitboxes.values().forEach(Displays::remove);
         parts.forEach(Displays::remove);
         Displays.remove(overall);
-        Displays.remove(seatHitbox);
+        if (bodyHitbox != null) Displays.remove(bodyHitbox);
         Displays.remove(seat);
     }
 }

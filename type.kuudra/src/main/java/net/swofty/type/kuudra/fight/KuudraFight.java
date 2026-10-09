@@ -96,6 +96,12 @@ public final class KuudraFight {
     private record Shot(Projectile projectile, ShotKind kind) {
     }
 
+    private record Leap(KuudraMob mob, Pos from, Pos to, long start) {
+    }
+
+    private static final int LEAP_TICKS = 16;
+    private static final Set<String> FLYERS = Set.of("WANDERING_BLAZE", "DROPSHIP");
+
     private static final String HIGHEST_WAVE = "kuudra:highest_wave:";
 
     private final KuudraRun run;
@@ -110,6 +116,7 @@ public final class KuudraFight {
     private final KuudraPerks perks;
     private final KuudraLives lives;
     private final KuudraBossState bossState;
+    private final BallistaFuel fuel;
 
     private final List<LavaCargo> cargo = new CopyOnWriteArrayList<>();
     private final Map<UUID, Carried> carrying = new ConcurrentHashMap<>();
@@ -118,6 +125,7 @@ public final class KuudraFight {
     private final List<Long> tentacleRespawns = new CopyOnWriteArrayList<>();
     private final List<KuudraCannon> cannons = new ArrayList<>();
     private final List<Shot> shots = new CopyOnWriteArrayList<>();
+    private final List<Leap> leaps = new CopyOnWriteArrayList<>();
     private final List<Entity> props = new ArrayList<>();
     private final Map<UUID, Long> shotReady = new ConcurrentHashMap<>();
     private final Map<UUID, Long> cannonReady = new ConcurrentHashMap<>();
@@ -136,8 +144,6 @@ public final class KuudraFight {
     private @Nullable KuudraFinale deathFinale;
     private boolean finishing;
     private int suppliesPlaced;
-    private int fuelLoaded;
-    private boolean armed;
     private boolean emerged;
     private boolean stopped;
     private long tick;
@@ -154,6 +160,7 @@ public final class KuudraFight {
         this.instance = run.getInstance();
         this.tokens = new KuudraTokens();
         this.perks = new KuudraPerks(config.perkShop(), tokens, config.routeUnlockTokens());
+        this.fuel = new BallistaFuel(spec.fuel().cells());
         this.lives = new KuudraLives(spec.lives().respawnSeconds(), spec.lives().reviveInvulnerableSeconds());
         KuudraFightSpec.Boss boss = spec.boss();
         this.bossState = new KuudraBossState(boss.health(), boss.surfaceSeconds(), boss.shotsPerSurface(),
@@ -190,6 +197,7 @@ public final class KuudraFight {
             bossState.rise();
             for (int i = 0; i < spec.tentacles().active(tier); i++) spawnTentacle();
             if (run.state().phase() == KuudraPhase.SUPPLIES) spawnCargo(LavaCargo.Kind.SUPPLIES, spec.supplies().crates());
+            spawnWave(run.state().wave());
         }
     }
 
@@ -220,8 +228,8 @@ public final class KuudraFight {
                     clearCargo();
                     if (build == null) build = new BallistaBuild(arena.piles().keySet(), spec.build().pileSeconds());
                     build.completeAll();
-                    if (ballista != null) ballista.showReady(fuelLoaded, spec.fuel().cells());
-                    spawnCargo(LavaCargo.Kind.FUEL, spec.fuel().cells() - fuelLoaded);
+                    if (ballista != null) ballista.showReady(fuel.loaded(), fuel.cells());
+                    spawnCargo(LavaCargo.Kind.FUEL, missingFuel());
                     bossState.setCycling(true);
                     bossState.rise();
                     if (stunCycle != null) stunCycle.begin();
@@ -232,9 +240,8 @@ public final class KuudraFight {
                         clearCargo();
                         if (build == null) build = new BallistaBuild(arena.piles().keySet(), spec.build().pileSeconds());
                         build.completeAll();
-                        fuelLoaded = spec.fuel().cells();
-                        armed = true;
-                        if (ballista != null) ballista.showReady(fuelLoaded, spec.fuel().cells());
+                        fuel.fill();
+                        if (ballista != null) ballista.showReady(fuel.loaded(), fuel.cells());
                         bossState.setCycling(true);
                         bossState.rise();
                     }
@@ -361,6 +368,9 @@ public final class KuudraFight {
         tickCarries();
         tickBuild();
         tickShots();
+        tickLeaps();
+        if (tick % 20 == 0) rescueFallenMobs();
+        if (ballista != null) ballista.tick();
         cannons.forEach(KuudraCannon::tick);
         if (slams != null) slams.tick(this::landSlam);
         tickTentacleRespawns();
@@ -554,19 +564,50 @@ public final class KuudraFight {
     private boolean tryLoadFuel(SkyBlockPlayer player) {
         Carried carried = carrying.get(player.getUuid());
         if (carried == null || carried.kind() != LavaCargo.Kind.FUEL) return false;
-        if (ballista == null || run.state().phase() != KuudraPhase.FUEL) return true;
-        if (horizontal(player.getPosition(), ballista.base()) > spec.fuel().loadRange()) return true;
+        if (ballista == null || fuel.armed() || !fuelPhase(run.state().phase())) return true;
+        if (horizontal(player.getPosition(), ballista.base()) > spec.fuel().loadRange()) {
+            player.sendMessage("<c>Get closer to the Ballista to load the Fuel Cell!");
+            return true;
+        }
         finishCarry(player.getUuid());
-        fuelLoaded++;
-        run.broadcast(player.getFullDisplayName() + " <a>loaded a Ballista Fuel Cell! <7>(" + fuelLoaded + "/" + spec.fuel().cells() + ")");
+        BallistaFuel.Load load = fuel.load();
+        run.broadcast(player.getFullDisplayName() + " <a>loaded a Ballista Fuel Cell! <7>(" + fuel.loaded() + "/" + fuel.cells() + ")");
         playAll("block.anvil.use", 1.2f);
         tokens.gain(spec.tokens().fuelLoaded());
-        ballista.showReady(fuelLoaded, spec.fuel().cells());
-        if (fuelLoaded >= spec.fuel().cells()) {
-            armed = true;
-            run.advancePhase();
+        ballista.showReady(fuel.loaded(), fuel.cells());
+        boolean fuelling = run.state().phase() == KuudraPhase.FUEL;
+        if (load == BallistaFuel.Load.FIRST_FULL && fuelling) run.advancePhase();
+        if (load == BallistaFuel.Load.REFUELLED) {
+            run.broadcast("<a>The Ballista is fuelled! <e>Mount it and fire at Kuudra!");
+            if (fuelling) run.resumePhase(tierSpec.stunRequired() ? KuudraPhase.STUN : KuudraPhase.DPS);
         }
         return true;
+    }
+
+    private static boolean fuelPhase(@Nullable KuudraPhase phase) {
+        return phase == KuudraPhase.FUEL || phase == KuudraPhase.STUN || phase == KuudraPhase.DPS;
+    }
+
+    /** Fuel Cells still needed for a full load, after those loaded, floating in the lava and being carried. */
+    int missingFuel() {
+        long floating = cargo.stream().filter(item -> item.kind() == LavaCargo.Kind.FUEL).count();
+        long carried = carrying.values().stream().filter(each -> each.kind() == LavaCargo.Kind.FUEL).count();
+        return fuel.missing(floating, carried);
+    }
+
+    /** One shot empties the Ballista: everyone fishes up a fresh load of Fuel Cells before it fires again. */
+    private void spendFuel() {
+        if (!fuel.fire()) return;
+        if (ballista != null) {
+            ballista.dismount();
+            ballista.showReady(0, spec.fuel().cells());
+        }
+        run.broadcast("<e>The Ballista is out of fuel! <c>Fish up " + spec.fuel().cells() + " more Fuel Cells <e>to fire it again.");
+        KuudraPhase phase = run.state().phase();
+        if (phase == KuudraPhase.STUN || (phase == KuudraPhase.DPS && !tierSpec.stunRequired())) {
+            run.resumePhase(KuudraPhase.FUEL);
+        }
+        spawnCargo(LavaCargo.Kind.FUEL, missingFuel());
     }
 
     private void finishCarry(UUID player) {
@@ -641,7 +682,7 @@ public final class KuudraFight {
         }
         if (tick % 5 == 0) ballista.showBuild(build);
         if (build.complete()) {
-            ballista.showReady(fuelLoaded, spec.fuel().cells());
+            ballista.showReady(fuel.loaded(), fuel.cells());
             run.advancePhase();
         }
     }
@@ -655,22 +696,22 @@ public final class KuudraFight {
 
     private void useBallistaSeat(SkyBlockPlayer player) {
         synchronized (run) {
-            if (ballista == null || stopped || lives.isGhost(player.getUuid())) return;
+            if (ballista == null || stopped || lives.isGhost(player.getUuid()) || ballista.isRiding(player)) return;
             if (tryLoadFuel(player) || carrying.containsKey(player.getUuid())) return;
             KuudraPhase phase = run.state().phase();
             if (phase == KuudraPhase.SUPPLIES || phase == KuudraPhase.BUILD) {
                 player.sendMessage("<c>The Ballista isn't built yet!");
                 return;
             }
-            if (!armed) {
-                player.sendMessage("<c>The Ballista needs " + spec.fuel().cells() + " Fuel Cells first! <7>(" + fuelLoaded + "/" + spec.fuel().cells() + ")");
+            if (!fuel.armed()) {
+                player.sendMessage("<c>The Ballista needs " + fuel.cells() + " Fuel Cells to fire! <7>(" + fuel.loaded() + "/" + fuel.cells() + ")");
                 return;
             }
             if (!ballista.mount(player)) {
                 player.sendMessage("<c>Someone is already using the Ballista!");
                 return;
             }
-            player.sendMessage("<a>You mounted the Ballista! <e>Left-click <a>to fire, sneak to get off.");
+            player.sendMessage("<a>You mounted the Ballista! <e>Look to aim, left-click <a>to fire, sneak to get off.");
         }
     }
 
@@ -679,6 +720,10 @@ public final class KuudraFight {
         long ready = shotReady.getOrDefault(player.getUuid(), 0L);
         if (tick < ready) return;
         shotReady.put(player.getUuid(), tick + spec.fuel().shotCooldownTicks());
+        if (!fuel.armed()) {
+            player.sendMessage("<c>The Ballista is out of fuel!");
+            return;
+        }
         if (!bossState.canBeShot()) {
             player.sendMessage("<c>Kuudra is out of reach!");
             return;
@@ -691,6 +736,7 @@ public final class KuudraFight {
         shots.add(new Shot(new Projectile(instance, player, muzzle, direction.mul(spec.fuel().boltSpeed()),
                 ItemStack.of(Material.SPECTRAL_ARROW), 2.5f, 0, 80), ShotKind.BOLT));
         playAt(muzzle, "entity.arrow.shoot", 0.6f);
+        spendFuel();
     }
 
     double ballistaDamage(SkyBlockPlayer player) {
@@ -1101,25 +1147,23 @@ public final class KuudraFight {
                             Title.Times.times(Duration.ofMillis(250), Duration.ofSeconds(2), Duration.ofMillis(250))));
                 }
                 List<KuudraSpecialists.MagmaFollower> group = new ArrayList<>();
-                Pos groupAt = edgePoint();
+                Pos groupFrom = minionSpawn();
+                Pos groupLanding = landingFor(groupFrom);
                 for (int i = 0; i < count; i++) {
-                    Pos at = switch (batch.mobId()) {
+                    String mobId = batch.mobId();
+                    Pos from = mobId.equals("MAGMA_FOLLOWER") ? groupFrom : minionSpawn();
+                    Pos landing = switch (mobId) {
+                        case "MAGMA_FOLLOWER" -> scatter(groupLanding, 3);
                         case "WANDERING_BLAZE" -> boss != null && bossState.stance() == KuudraBossState.Stance.SURFACED
-                                ? boss.mouth() : edgePoint().add(0, 12, 0);
+                                ? boss.mouth() : landingFor(from).add(0, 12, 0);
                         case "WITHER_SENTRY" -> randomPlatformPoint(8);
                         case "DROPSHIP" -> centre().add(loopRadius(), spec.mobs().dropshipAltitude(), 0);
-                        case "MAGMA_FOLLOWER" -> groupAt.add(ThreadLocalRandom.current().nextDouble(-6, 6), 0,
-                                ThreadLocalRandom.current().nextDouble(-6, 6));
-                        default -> edgePoint();
+                        default -> landingFor(from);
                     };
-                    boolean climbs = !Set.of("WANDERING_BLAZE", "DROPSHIP", "WITHER_SENTRY").contains(batch.mobId());
-                    Pos from = climbs ? lavaNear(at) : at;
-                    KuudraMob mob = spawnMob(batch.mobId(), from, group);
+                    boolean climbs = !Set.of("WANDERING_BLAZE", "DROPSHIP", "WITHER_SENTRY").contains(mobId);
+                    KuudraMob mob = spawnMob(mobId, climbs ? from : landing, group);
                     if (mob instanceof KuudraSpecialists.MagmaFollower follower) group.add(follower);
-                    if (mob != null && climbs) {
-                        Vec leap = at.sub(from).asVec().withY(0);
-                        mob.setVelocity(leap.mul(2.5).withY(14));
-                    }
+                    if (mob != null && climbs) leap(mob, from, landing);
                 }
             }
         }
@@ -1353,11 +1397,11 @@ public final class KuudraFight {
         String progress = null;
         if (phase == KuudraPhase.SUPPLIES) progress = suppliesPlaced + "/" + spec.supplies().crates();
         else if (phase == KuudraPhase.BUILD && build != null) progress = build.overallPercent() + "%";
-        else if (phase == KuudraPhase.FUEL && !armed && stunCycle == null) progress = fuelLoaded + "/" + spec.fuel().cells();
+        else if (phase == KuudraPhase.FUEL && !fuel.armed() && stunCycle == null) progress = fuel.loaded() + "/" + fuel.cells();
         String status = null;
         if (lives.isGhost(player.getUuid())) status = lives.isFinal(player.getUuid()) ? "<c>FINAL KILLED" : "<c>DEAD";
         boolean lairStarted = lair != null && lair.started();
-        boolean timer = (armed || (stunCycle != null && stunCycle.begun())) && !finishing && !lairStarted;
+        boolean timer = (fuel.everLoaded() || (stunCycle != null && stunCycle.begun())) && !finishing && !lairStarted;
         return new Hud(tokens.balance(player.getUuid()), progress, timer ? bossState.secondsUntilSubmerge() : -1, status,
                 !finishing && !lairStarted, !lairStarted);
     }
@@ -1397,21 +1441,113 @@ public final class KuudraFight {
         return Math.max(platform.maxX() - platform.minX(), platform.maxZ() - platform.minZ()) / 2.0 + 4;
     }
 
-    /** A random spot on the platform floor at least {@code inset} blocks in from its edge. */
+    /** A random spot on the main platform's floor at least {@code inset} blocks in from the bounding box's edge. */
     public Pos randomPlatformPoint(double inset) {
         KuudraArena.Box platform = arena.platform();
         ThreadLocalRandom random = ThreadLocalRandom.current();
-        for (int attempt = 0; attempt < 12; attempt++) {
+        for (int attempt = 0; attempt < 24; attempt++) {
             double x = random.nextDouble(platform.minX() + inset, platform.maxX() + 1 - inset);
             double z = random.nextDouble(platform.minZ() + inset, platform.maxZ() + 1 - inset);
-            if (!instance.getBlock((int) Math.floor(x), arena.floorY() - 1, (int) Math.floor(z)).isAir()) {
-                return new Pos(x, arena.floorY(), z);
-            }
+            Pos at = new Pos(x, arena.floorY(), z);
+            if (onMainPlatform(at)) return at;
         }
         return arena.respawn();
     }
 
-    /** Minions jump out of the lava onto the platform (the Burning capture); this is the lava they leave. */
+    /** True when a straight walk from the Ballista to here never leaves solid floor: not a rock out in the lava. */
+    boolean onMainPlatform(Pos at) {
+        Pos centre = centre();
+        Vec out = new Vec(at.x() - centre.x(), 0, at.z() - centre.z());
+        double length = out.length();
+        if (length < 0.5) return solidFloor(at);
+        Vec step = out.normalize();
+        for (double distance = 0; distance <= length; distance += 0.5) {
+            if (!solidFloor(centre.add(step.mul(distance)))) return false;
+        }
+        return solidFloor(at);
+    }
+
+    private boolean solidFloor(Pos at) {
+        Block floor = instance.getBlock((int) Math.floor(at.x()), arena.floorY() - 1, (int) Math.floor(at.z()));
+        return floor.isSolid() && !floor.compare(Block.LAVA);
+    }
+
+    /** A captured spot in the lava past the platform edge where a minion surfaces (the captures). */
+    private Pos minionSpawn() {
+        List<Pos> spawns = arena.minionSpawns();
+        if (spawns.isEmpty()) return lavaNear(edgePoint());
+        Pos at = spawns.get(ThreadLocalRandom.current().nextInt(spawns.size()));
+        return at.withY(arena.lavaSurfaceY() - 0.5);
+    }
+
+    /** Where a minion leaving the lava at {@code from} lands: a few blocks in from the main platform's edge. */
+    Pos landingFor(Pos from) {
+        Pos centre = centre();
+        Vec out = new Vec(from.x() - centre.x(), 0, from.z() - centre.z());
+        double length = out.length();
+        if (length < 1) return centre;
+        Vec step = out.normalize();
+        double edge = 0;
+        for (double distance = 0; distance <= length; distance += 0.5) {
+            if (!solidFloor(centre.add(step.mul(distance)))) break;
+            edge = distance;
+        }
+        double inset = ThreadLocalRandom.current().nextDouble(2, 5);
+        return centre.add(step.mul(Math.max(0, edge - inset))).withY(arena.floorY());
+    }
+
+    private Pos scatter(Pos around, double radius) {
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        for (int attempt = 0; attempt < 6; attempt++) {
+            Pos at = around.add(random.nextDouble(-radius, radius), 0, random.nextDouble(-radius, radius));
+            if (onMainPlatform(at)) return at;
+        }
+        return around;
+    }
+
+    /** Minions jump out of the lava onto the platform in an arc (the captures). */
+    private void leap(KuudraMob mob, Pos from, Pos to) {
+        leaps.removeIf(each -> each.mob() == mob);
+        mob.setNoGravity(true);
+        leaps.add(new Leap(mob, from, to, tick));
+    }
+
+    private void tickLeaps() {
+        for (Leap leap : leaps) {
+            KuudraMob mob = leap.mob();
+            if (mob.isDead() || mob.isRemoved()) {
+                leaps.remove(leap);
+                continue;
+            }
+            if (mob.getInstance() == null) continue;
+            double t = Math.min(1, (tick - leap.start()) / (double) LEAP_TICKS);
+            double arc = Math.max(3, leap.to().y() - leap.from().y() + 2.5);
+            Vec path = leap.to().sub(leap.from()).asVec();
+            Pos at = leap.from().add(path.mul(t)).add(0, arc * 4 * t * (1 - t), 0);
+            float yaw = (float) Math.toDegrees(Math.atan2(-path.x(), path.z()));
+            mob.setVelocity(Vec.ZERO);
+            mob.teleport(at.withView(yaw, 0));
+            if (t >= 1) {
+                leaps.remove(leap);
+                mob.setNoGravity(false);
+            }
+        }
+    }
+
+    /** Minions knocked off the platform into the lava climb back out instead of piling up there. */
+    private void rescueFallenMobs() {
+        if (lair != null && lair.started()) return;
+        for (KuudraMob mob : mobs) {
+            if (mob instanceof KuudraTentacle || mob.isDead() || FLYERS.contains(mob.spec().id())) continue;
+            if (leaps.stream().anyMatch(leap -> leap.mob() == mob)) continue;
+            Pos at = mob.getPosition();
+            if (at.y() >= arena.floorY() - 1.5 || at.y() < arena.lavaSurfaceY() - 8) continue;
+            if (!arena.sea().containsColumn(at.blockX(), at.blockZ())) continue;
+            leap(mob, at, landingFor(at));
+        }
+    }
+
+    /** Minions jump out of the lava onto the platform; this is the lava they leave (layouts without captured spots). */
     private Pos lavaNear(Pos onPlatform) {
         Vec out = onPlatform.sub(centre()).asVec().withY(0);
         if (out.lengthSquared() < 1e-4) return onPlatform;
@@ -1423,7 +1559,7 @@ public final class KuudraFight {
         return onPlatform;
     }
 
-    /** Where wave mobs climb onto the platform: a few blocks in from a random edge. */
+    /** A point a few blocks in from a random edge of the platform's bounding box. */
     private Pos edgePoint() {
         KuudraArena.Box platform = arena.platform();
         ThreadLocalRandom random = ThreadLocalRandom.current();
@@ -1438,9 +1574,8 @@ public final class KuudraFight {
                 case 2 -> { z = platform.minZ() + in; x = platform.minX() + along * (platform.maxX() - platform.minX()); }
                 default -> { z = platform.maxZ() + 1 - in; x = platform.minX() + along * (platform.maxX() - platform.minX()); }
             }
-            if (!instance.getBlock((int) Math.floor(x), arena.floorY() - 1, (int) Math.floor(z)).isAir()) {
-                return new Pos(x, arena.floorY(), z);
-            }
+            Pos at = new Pos(x, arena.floorY(), z);
+            if (onMainPlatform(at)) return at;
         }
         return randomPlatformPoint(4);
     }
@@ -1496,8 +1631,7 @@ public final class KuudraFight {
     public void completeFuel() {
         synchronized (run) {
             if (run.state().phase() != KuudraPhase.FUEL) return;
-            fuelLoaded = spec.fuel().cells();
-            armed = true;
+            fuel.fill();
             clearCargo();
             run.advancePhase();
         }
@@ -1607,7 +1741,7 @@ public final class KuudraFight {
     }
 
     boolean armed() {
-        return armed;
+        return fuel.armed();
     }
 
     /** Kuudra is dying or the Infernal skip has begun: no more stun cycles. */
