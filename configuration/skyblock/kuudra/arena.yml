@@ -1,50 +1,60 @@
-# Kuudra's Hollow layout. Coordinates are Hypixel's own, from the Odin, IQ, Drawcoco and Lunar Kuudra
-# waypoints (research K1 section 2.2). Entries marked EST are guesses until the captured map is in; correct
-# them here once it is. Positions are [x, y, z] or [x, y, z, yaw, pitch]; boxes are inclusive block bounds.
+# Kuudra's Hollow layout, read from the 2026-10-08 captures of real Burning and Infernal runs
+# (.claude/kuudra-work/captures/{burning,infernal}); CAP marks values taken from them. Where the capture showed
+# nothing the mods' waypoints are used (research K1 2.2, "K1"), and EST marks guesses.
+# Positions are [x, y, z] or [x, y, z, yaw, pitch]; boxes are inclusive block bounds. Players stand at floor_y.
 
-# Under configuration/world/. While the file is missing, each run generates a placeholder arena from this layout.
+# Under configuration/world/ (the Infernal capture's world: platform, bridge, Kuudra's stomach and the lair cavity
+# under the platform). While the file is missing, each run generates a placeholder arena from this layout.
 world: kuudra_hollow.polar
-floor_y: 78
-lava_surface_y: 75
+floor_y: 79                         # CAP: the platform's top blocks are at Y 78
+lava_surface_y: 75                  # CAP: lava fills Y 69-74
 
-# EST: the far end of the bridge, facing the platform.
-spawn: [-101.5, 78, -38.5, 180, 0]
-# EST: on the bridge between the spawn and the platform.
-elle: [-101.5, 78, -44.5, 0, 0]
-# EST: where the dead and stragglers land, on the platform in front of the Ballista.
-respawn: [-101.5, 78, -92.5, 180, 0]
-ballista: [-101.5, 82, -105.5]
+spawn: [-101.5, 79, -186.5, 180, 0]  # CAP: where the party enters, at the far end of the bridge
+elle: [-101.5, 79, -175.5, 180, 0]   # CAP: Elle's "Talk with me to begin!" spot on the bridge
+respawn: [-104.5, 79, -122.5, 180, 0] # EST: on the platform, south of the Ballista
+ballista: [-102.5, 80, -106.5]       # CAP: the BALLISTA hologram; its blocks fill x -107..-99, z -111..-103
 
-platform:
-  min: [-150, 60, -151]
-  max: [-56, 77, -60]
-# EST: collapses when Elle starts the run.
-bridge:
-  min: [-103, 77, -59]
-  max: [-100, 77, -36]
-# EST: the lava sea around the platform.
-sea:
-  min: [-260, 60, -260]
-  max: [60, 74, 60]
+platform:                           # CAP: the central island's rough bounds
+  min: [-137, 70, -136]
+  max: [-65, 78, -70]
+bridge:                             # CAP: the bridge blocks removed when Elle hooks Kuudra
+  min: [-110, 75, -190]
+  max: [-91, 82, -137]
+sea:                                # CAP: the lava sea (Y 69-74)
+  min: [-184, 69, -180]
+  max: [-21, 74, -34]
 
-# Supply drop-off piles, which are also the six Ballista build piles (IQ labels; Odin swaps Equals and Slash).
+# CAP: the six drop-off piles, which are also the Ballista build piles (named after the IQ waypoints they match).
 piles:
-  SHOP: [-98.5, 78.4, -113.5]
-  TRIANGLE: [-94.5, 78.4, -106.5]
-  EQUALS: [-106.5, 78.4, -99.5]
-  SLASH: [-98.5, 78.4, -99.5]
-  X_CANNON: [-110.5, 78.4, -106.5]
-  X: [-106.5, 78.4, -113.5]
+  SHOP: [-98, 79, -112.94]
+  TRIANGLE: [-94, 79, -106]
+  EQUALS: [-106.03, 79, -99.09]
+  SLASH: [-98.03, 79, -99.09]
+  X_CANNON: [-110, 79, -106.03]
+  X: [-106, 79, -112.94]
 
-# The seven named spots where supply crates float in; one of them is empty each run.
+# The seven named spots (K1 pre-spots) where crates float in; one of them is empty each run. "crate" is where
+# the crate floats (CAP where the capture saw one; otherwise it floats out in the lava past the platform edge).
 supply_spots:
-  TRIANGLE: {position: [-67.5, 77, -122.5], radius: 15}
-  X: {position: [-142.5, 77, -151], radius: 30}
+  TRIANGLE: {position: [-67.5, 77, -122.5], radius: 15, crate: [-58, 75, -124]}
+  X: {position: [-142.5, 77, -151], radius: 30, crate: [-132, 75, -143]}
   EQUALS: {position: [-65.5, 76, -87.5], radius: 15}
   SLASH: {position: [-113.5, 77, -68.5], radius: 15}
   SHOP: {position: [-81, 76, -143], radius: 18}
-  X_CANNON: {position: [-143, 76, -125], radius: 16}
-  SQUARE: {position: [-143, 76, -80], radius: 20}
+  X_CANNON: {position: [-143, 76, -125], radius: 16, crate: [-133.5, 75, -115.5]}
+  SQUARE: {position: [-143, 76, -80], radius: 20, crate: [-144.5, 75, -78.5]}
+
+elle_platform: [-101.5, 79, -117.5, 180, 0]   # EST: Elle roams the platform near the piles during the fight
+perk_shop: [-95.5, 79, -131]                  # CAP: the "Perk Shop" hologram
+cannons:                                      # CAP: the two "CANNON" holograms
+  - [-131, 79, -112, 90, 0]
+  - [-70, 79, -103, -90, 0]
+# Where Kuudra surfaces, by the side the mods name (RIGHT x < -128, FRONT z > -84, LEFT x > -72, BACK z < -132).
+kuudra_sides:
+  FRONT: [-98, 75, -59]             # CAP
+  LEFT: [-54, 75, -108]             # CAP
+  RIGHT: [-150, 75, -106]           # EST
+  BACK: [-80, 75, -152]             # EST
 
 # EST: the Forgotten Skull on the Crimson Isle, next to Crag, where players return after a run.
 exit: [-372.5, 114, -1038.5, 180, 0]

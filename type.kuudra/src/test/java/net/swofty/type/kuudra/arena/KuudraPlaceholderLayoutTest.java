@@ -22,9 +22,9 @@ class KuudraPlaceholderLayoutTest {
     void playersStandOnTheFloorAndLavaSurroundsThePlatform() {
         assertEquals(KuudraPlaceholderLayout.Tile.FLOOR, LAYOUT.tileAt(-120, ARENA.floorY() - 1, -130));
         assertEquals(KuudraPlaceholderLayout.Tile.AIR, LAYOUT.tileAt(-120, ARENA.floorY(), -130));
-        assertEquals(KuudraPlaceholderLayout.Tile.LAVA, LAYOUT.tileAt(-200, ARENA.lavaSurfaceY() - 1, -200));
-        assertEquals(KuudraPlaceholderLayout.Tile.AIR, LAYOUT.tileAt(-200, ARENA.lavaSurfaceY(), -200));
-        assertEquals(KuudraPlaceholderLayout.Tile.BEDROCK, LAYOUT.tileAt(-200, ARENA.sea().minY() - 1, -200));
+        assertEquals(KuudraPlaceholderLayout.Tile.LAVA, LAYOUT.tileAt(-170, ARENA.lavaSurfaceY() - 1, -170));
+        assertEquals(KuudraPlaceholderLayout.Tile.AIR, LAYOUT.tileAt(-170, ARENA.lavaSurfaceY(), -170));
+        assertEquals(KuudraPlaceholderLayout.Tile.BEDROCK, LAYOUT.tileAt(-170, ARENA.sea().minY() - 1, -170));
     }
 
     @Test

@@ -13,7 +13,7 @@ import java.util.Map;
 public record KuudraConfig(int areaCombatLevel, int maxWave, int routeUnlockTokens, int tentacleTokens,
                            Map<KuudraTier, KuudraTierSpec> tiers, List<KuudraWave> waves, List<KuudraMobSpec> mobs,
                            KuudraPerkShop perkShop, KuudraDialogue dialogue, KuudraLootTable loot,
-                           KuudraArena arena) {
+                           KuudraArena arena, KuudraFightSpec fight) {
 
     public static final Path DIRECTORY = Path.of("./configuration/skyblock/kuudra");
     private static volatile KuudraConfig loaded;
@@ -50,7 +50,8 @@ public record KuudraConfig(int areaCombatLevel, int maxWave, int routeUnlockToke
                 KuudraPerkShop.parse(Yamls.load(directory.resolve("perks.yml"))),
                 KuudraDialogue.parse(Yamls.load(directory.resolve("dialogue.yml"))),
                 KuudraLootTable.parse(Yamls.load(directory.resolve("loot.yml"))),
-                KuudraArena.parse(Yamls.load(directory.resolve("arena.yml"))));
+                KuudraArena.parse(Yamls.load(directory.resolve("arena.yml"))),
+                KuudraFightSpec.parse(Yamls.load(directory.resolve("fight.yml"))));
     }
 
     public KuudraTierSpec tier(KuudraTier tier) {

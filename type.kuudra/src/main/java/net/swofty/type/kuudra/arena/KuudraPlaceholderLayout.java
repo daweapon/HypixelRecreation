@@ -39,7 +39,7 @@ public final class KuudraPlaceholderLayout {
             if (platformSpots.contains(column)) return Tile.SUPPLY_SPOT;
         }
         if (arena.platform().contains(x, y, z)) return y == arena.platform().maxY() ? Tile.FLOOR : Tile.FOUNDATION;
-        if (arena.bridge().contains(x, y, z)) return Tile.BRIDGE;
+        if (y == markerY && arena.bridge().contains(x, y, z)) return Tile.BRIDGE;
         if (arena.sea().contains(x, y, z)) {
             return y == arena.sea().maxY() && lavaSpots.contains(column(x, z)) ? Tile.SUPPLY_SPOT : Tile.LAVA;
         }
@@ -48,11 +48,11 @@ public final class KuudraPlaceholderLayout {
     }
 
     public int minY() {
-        return Math.min(arena.sea().minY() - 1, Math.min(arena.platform().minY(), arena.bridge().minY()));
+        return Math.min(arena.sea().minY() - 1, Math.min(arena.platform().minY(), arena.floorY() - 1));
     }
 
     public int maxY() {
-        return Math.max(arena.sea().maxY(), Math.max(arena.platform().maxY(), arena.bridge().maxY()));
+        return Math.max(arena.sea().maxY(), Math.max(arena.platform().maxY(), arena.floorY() - 1));
     }
 
     private static long column(Pos position) {

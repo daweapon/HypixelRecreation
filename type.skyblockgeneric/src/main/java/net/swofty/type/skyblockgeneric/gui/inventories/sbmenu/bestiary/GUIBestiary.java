@@ -40,7 +40,7 @@ public class GUIBestiary extends StatelessView {
         FISHING("<3>Fishing", new GUIMaterial(Material.FISHING_ROD), null, "<7>View all of the <3>Sea Creatures <7>that", "<7>you've killed while fishing."),
         MYTHOLOGICAL_CREATURES("<b>Mythological Creatures", new GUIMaterial("83cc1cf672a4b2540be346ead79ac2d9ed19d95b6075bf95be0b6d0da61377be"), BestiaryCategories.MYTHOLOGICAL_CREATURES, "<7>View all of the <b>Mythological", "<b>Creatures <7>that you've killed."),
         JERRY("<6>Jerry", new GUIMaterial("45f729736996a38e186fe9fe7f5a04b387ed03f3871ecc82fa78d8a2bdd31109"), null, "<7>View all of the mobs that you've", "<7>found and killed while fighting <6>Jerry<7>."),
-        KUUDRA("<c>Kuudra", new GUIMaterial("5051c83d9ebf69013f1ec8c9efc979ec2d925a921cc877ff64abe09aadd2f6cc"), null, "<7>View all of the mobs that you've", "<7>found and killed while fighting <c>Kuudra<7>.");
+        KUUDRA("<c>Kuudra", new GUIMaterial("5051c83d9ebf69013f1ec8c9efc979ec2d925a921cc877ff64abe09aadd2f6cc"), BestiaryCategories.KUUDRA, "<7>View all of the mobs that you've", "<7>found and killed while fighting <c>Kuudra<7>.");
 
         private final String regionName;
         private final GUIMaterial guiMaterial;
