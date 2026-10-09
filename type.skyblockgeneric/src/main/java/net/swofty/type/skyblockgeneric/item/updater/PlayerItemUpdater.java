@@ -47,7 +47,7 @@ public class PlayerItemUpdater {
 
     public static Map.Entry<SkyBlockItem, ItemStack.Builder> playerUpdateFull(SkyBlockPlayer player, ItemStack stack, boolean isOwnedByPlayer) {
         if (ItemAttributeTags.flag(ItemAttributeTags.of(stack), "uneditable"))
-            return Map.entry(new SkyBlockItem(stack), ItemStacks.copy(stack));
+            return Map.entry(new SkyBlockItem(stack), stack.builder());
 
         if (!SkyBlockItem.isSkyBlockItem(stack) || stack.material().equals(Material.AIR)) {
             /*

@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.event.actions.player.gui;
 
 import net.minestom.server.event.inventory.InventoryItemChangeEvent;
+import net.minestom.server.item.ItemStack;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
@@ -17,8 +18,8 @@ public class ActionPlayerClickItemUpdate implements HypixelEventClass {
         final SkyBlockPlayer player = (SkyBlockPlayer) event.getInventory().getViewers().stream().toList().getFirst();
 
         if (!SkyBlockItem.isSkyBlockItem(event.getNewItem())) {
-            player.getInventory().setItemStack(event.getSlot(), PlayerItemUpdater.playerUpdate(
-                    player, event.getNewItem()).build());
+            ItemStack updated = PlayerItemUpdater.playerUpdate(player, event.getNewItem()).build();
+            if (!updated.equals(event.getNewItem())) player.getInventory().setItemStack(event.getSlot(), updated);
         }
     }
 }

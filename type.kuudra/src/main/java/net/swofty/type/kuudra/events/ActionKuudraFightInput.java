@@ -12,6 +12,7 @@ import net.minestom.server.event.player.PlayerDisconnectEvent;
 import net.minestom.server.event.player.PlayerHandAnimationEvent;
 import net.minestom.server.event.player.PlayerInputEvent;
 import net.minestom.server.event.player.PlayerUseItemEvent;
+import net.minestom.server.item.ItemStack;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
@@ -64,7 +65,13 @@ public class ActionKuudraFightInput implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.POST_SPAWN)
     public void onPlace(PlayerBlockPlaceEvent event) {
-        if (KuudraItems.kindOf(event.getPlayer().getItemInMainHand()) != null) event.setCancelled(true);
+        ItemStack held = event.getPlayer().getItemInHand(event.getHand());
+        if (KuudraItems.kindOf(held) == null) return;
+        event.setCancelled(true);
+        if (event.getPlayer() instanceof SkyBlockPlayer player) {
+            KuudraFight fight = fightOf(player);
+            if (fight != null) fight.useItem(player, held);
+        }
     }
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = true, phase = EventPhase.POST_SPAWN)

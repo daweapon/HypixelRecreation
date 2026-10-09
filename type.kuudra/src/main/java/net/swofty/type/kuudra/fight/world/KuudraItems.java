@@ -11,7 +11,8 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * The run-only items, kept out of ItemType: Elle's tools and the route items bought in the Perk Shop. They carry a
- * tag so they can be recognised and are taken away when the player leaves the run.
+ * tag so they can be recognised and are taken away when the player leaves the run, and are marked uneditable so
+ * SkyBlock's item updater leaves them alone instead of rebuilding them as the plain vanilla block.
  */
 public final class KuudraItems {
     public static final Tag<String> TAG = Tag.String("kuudra_item");
@@ -66,7 +67,7 @@ public final class KuudraItems {
 
                     <e>Right-click to open!""");
         };
-        return builder.set(TAG, kind.name()).build();
+        return ItemStacks.notEditable(builder).set(TAG, kind.name()).build();
     }
 
     public static @Nullable Kind kindOf(ItemStack stack) {
