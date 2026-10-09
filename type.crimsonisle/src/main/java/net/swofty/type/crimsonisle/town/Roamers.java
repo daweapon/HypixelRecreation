@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Town NPCs that move between stops on a timer (Pam, Uvia, Azax, Forast, Deng). Each move walks the
- * spawned copies along the navigator; a copy that cannot path there is placed at the stop instead.
+ * Town NPCs that move between stops on a timer (Pam, Uvia, Azax, Forast, Deng). Advancing the stop
+ * changes their position, and each player's copy walks there (see {@code HypixelNPC#updateForPlayer}).
  */
 public final class Roamers {
     private static final List<Route> ROUTES = new CopyOnWriteArrayList<>();
@@ -41,7 +41,6 @@ public final class Roamers {
             if (elapsed < intervalTicks) return;
             elapsed = 0;
             index = (index + 1) % stops.size();
-            npc.walkPath(current()).exceptionally(_ -> null);
         }
     }
 

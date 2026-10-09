@@ -62,6 +62,11 @@ public abstract class CrimsonNPC extends HypixelNPC {
         return true;
     }
 
+    /** Where the NPC appears when it comes into being for the player; it then walks to {@link #position}. */
+    protected Pos appearsAt(SkyBlockPlayer player) {
+        return position(player);
+    }
+
     /** Whether {@link #position} can change while the player is watching (quest NPCs that travel). */
     protected boolean moves() {
         return false;
@@ -135,6 +140,11 @@ public abstract class CrimsonNPC extends HypixelNPC {
         }
 
         @Override
+        public Pos spawnPosition(HypixelPlayer player) {
+            return owner.appearsAt((SkyBlockPlayer) player);
+        }
+
+        @Override
         public boolean dynamicPosition() {
             return owner.moves();
         }
@@ -191,6 +201,11 @@ public abstract class CrimsonNPC extends HypixelNPC {
         @Override
         public Pos position(HypixelPlayer player) {
             return owner.position((SkyBlockPlayer) player);
+        }
+
+        @Override
+        public Pos spawnPosition(HypixelPlayer player) {
+            return owner.appearsAt((SkyBlockPlayer) player);
         }
 
         @Override
