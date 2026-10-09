@@ -24,6 +24,7 @@ var SkyBlockServers = []string{
 	"SKYBLOCK_GALATEA",
 	"SKYBLOCK_BACKWATER_BAYOU",
 	"SKYBLOCK_JERRYS_WORKSHOP",
+	"SKYBLOCK_KUUDRA",
 }
 
 var RequiredServers = []string{"PROTOTYPE_LOBBY"}

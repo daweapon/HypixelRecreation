@@ -1223,3 +1223,12 @@ regions:
     y2: 255
     z2: -846
     serverType: SKYBLOCK_CRIMSON_ISLE
+  - id: kuudras_hollow
+    type: KUUDRA_HOLLOW
+    x1: -400
+    y1: -64
+    z1: -400
+    x2: 200
+    y2: 320
+    z2: 200
+    serverType: SKYBLOCK_KUUDRA
