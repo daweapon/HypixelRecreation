@@ -87,6 +87,20 @@ public enum CustomCollectionAward {
 
     public static final Map<CustomCollectionAward, Map.Entry<ItemType, Integer>> AWARD_CACHE = new HashMap<>();
 
+    public static void cacheFromCollections() {
+        for (CollectionCategory category : CollectionCategories.getCategories()) {
+            for (CollectionCategory.ItemCollection collection : category.getCollections()) {
+                for (CollectionCategory.ItemCollectionReward reward : collection.rewards()) {
+                    for (CollectionCategory.Unlock unlock : reward.unlocks()) {
+                        if (unlock instanceof CollectionCategory.UnlockCustomAward award) {
+                            AWARD_CACHE.put(award.getAward(), Map.entry(collection.type(), reward.requirement()));
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private final Text display;
 
     CustomCollectionAward(String display) {

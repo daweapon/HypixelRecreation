@@ -555,20 +555,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
          * Cache custom collections
          */
         Thread.startVirtualThread(() -> {
-            // Collection Unlocks
-            CollectionCategories.getCategories().forEach(category -> {
-                Arrays.stream(category.getCollections()).forEach(collection -> {
-                    List<CollectionCategory.ItemCollectionReward> rewards = List.of(collection.rewards());
-                    rewards.parallelStream().forEach(reward -> {
-                        Arrays.stream(reward.unlocks()).forEach(unlock -> {
-                            if (unlock instanceof CollectionCategory.UnlockCustomAward award) {
-                                CustomCollectionAward.AWARD_CACHE.put(award.getAward(),
-                                    Map.entry(collection.type(), reward.requirement()));
-                            }
-                        });
-                    });
-                });
-            });
+            CustomCollectionAward.cacheFromCollections();
 
             // Level Unlocks
             Arrays.stream(SkyBlockLevelRequirement.values()).forEach(requirement -> {

@@ -131,7 +131,7 @@ public class GUISackOfSacks implements StatefulView<GUISackOfSacks.SackOfSacksSt
         return false;
     }
 
-    private int getTotalSlots(SkyBlockPlayer player) {
+    public static int getTotalSlots(SkyBlockPlayer player) {
         int totalSlots = 0;
         for (CustomCollectionAward entry : SLOTS_PER_UPGRADE.keySet()) {
             if (player.hasCustomCollectionAward(entry)) {

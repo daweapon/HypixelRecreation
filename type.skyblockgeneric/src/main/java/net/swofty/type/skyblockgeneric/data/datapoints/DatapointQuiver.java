@@ -24,10 +24,8 @@ public class DatapointQuiver extends SkyBlockDatapoint<DatapointQuiver.PlayerQui
             Map<String, String> serialized = new HashMap<>();
 
             for (Map.Entry<Integer, SkyBlockItem> entry : value.getQuiverMap().entrySet()) {
-                serialized.put(
-                        String.valueOf(entry.getKey()),
-                        entry.getValue().toUnderstandable().serialize()
-                ).toString();
+                if (entry.getValue() == null) continue;
+                serialized.put(String.valueOf(entry.getKey()), entry.getValue().toUnderstandable().serialize());
             }
 
             return new JSONObject(serialized).toString();

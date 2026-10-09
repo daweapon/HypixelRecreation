@@ -14,6 +14,7 @@ import net.swofty.type.generic.data.domain.AccountDomain;
 import net.swofty.type.generic.data.domain.PlayerDataService;
 import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowerType;
 import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowers;
+import net.swofty.type.skyblockgeneric.collection.CustomCollectionAward;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraCollectionTier;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -21,6 +22,8 @@ import net.swofty.type.skyblockgeneric.data.SkyBlockDomain;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryBag;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryPowers;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointQuiver;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSackOfSacks;
 import net.swofty.type.skyblockgeneric.item.ItemConfigParser;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockLevelCause;
@@ -48,6 +51,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MaxProfileTest {
+    private static final int FULL_QUIVER = 36 * 64;
     private static final Path ITEMS = Path.of("../configuration/skyblock/items");
 
     @BeforeAll
@@ -67,6 +71,7 @@ class MaxProfileTest {
             }
         }
         SkyBlockLevelCause.initializeCauses();
+        CustomCollectionAward.cacheFromCollections();
     }
 
     static SkyBlockPlayer player() {
@@ -98,7 +103,7 @@ class MaxProfileTest {
         List<String> failed = MaxStickService.runSteps(player);
         long millis = (System.nanoTime() - start) / 1_000_000;
         System.out.println("/maxprofile took " + millis + " ms; failed steps: " + failed);
-        assertTrue(failed.stream().noneMatch(List.of("Pets", "Accessory Bag", "Accessory powers", "Kuudra clears")::contains), failed.toString());
+        assertTrue(failed.stream().noneMatch(List.of("Pets", "Accessory Bag", "Accessory powers", "Kuudra clears", "Sack of Sacks", "Quiver")::contains), failed.toString());
         assertTrue(KuudraProgress.collectionPoints(player) >= KuudraCollectionTier.V.getRequiredProgress());
         assertEquals(SkyBlockXPSource.DEFEAT_KUUDRA.getMaxXP(), player.getSkyBlockExperience().getSourceXP(SkyBlockXPSource.DEFEAT_KUUDRA));
 
@@ -108,10 +113,15 @@ class MaxProfileTest {
         assertTrue(accessories > 100, "only " + accessories + " accessories placed");
         assertEquals(new HashSet<>(AccessoryPowerType.stonePowers()),
                 new HashSet<>(AccessoryPowers.data(player).getLearned()));
+        int sacks = MaxBags.sackPlan().size();
+        assertEquals(sacks, player.getSackOfSacks().getAllSacks().size());
+        assertEquals(FULL_QUIVER, player.getQuiver().getAmountOfArrows(ItemType.FLINT_ARROW));
 
         assertEquals(failed, MaxStickService.runSteps(player));
         assertEquals(pets, player.getPetData().getPetsMap().size());
         assertEquals(accessories, player.getAccessoryBag().getAllAccessories().size());
+        assertEquals(sacks, player.getSackOfSacks().getAllSacks().size());
+        assertEquals(FULL_QUIVER, player.getQuiver().getAmountOfArrows(ItemType.FLINT_ARROW));
 
         SkyBlockDataHandler handler = player.getSkyblockDataHandler();
         String json = handler.toProfileDocument().toJson();
@@ -129,6 +139,21 @@ class MaxProfileTest {
                 .getValue().getAllAccessories().size());
         assertEquals(AccessoryPowerType.stonePowers().size(), loaded.get(SkyBlockDataHandler.Data.ACCESSORY_POWERS,
                 DatapointAccessoryPowers.class).getValue().getLearned().size());
+        assertEquals(sacks, loaded.get(SkyBlockDataHandler.Data.SACK_OF_SACKS, DatapointSackOfSacks.class)
+                .getValue().getAllSacks().size());
+        assertEquals(FULL_QUIVER, loaded.get(SkyBlockDataHandler.Data.QUIVER, DatapointQuiver.class)
+                .getValue().getAmountOfArrows(ItemType.FLINT_ARROW));
+    }
+
+    @Test
+    void sackPlanHoldsTheLargestSackOfEveryFamilyAndFillsTheSackOfSacks() {
+        List<ItemType> plan = MaxBags.sackPlan();
+        assertEquals(plan.size(), plan.stream().map(type -> MaxBags.family(type.name())).distinct().count());
+        assertTrue(plan.containsAll(List.of(ItemType.LARGE_AGRONOMY_SACK, ItemType.LARGE_ENCHANTED_MINING_SACK,
+                ItemType.SILVER_TROPHY_FISHING_SACK, ItemType.RUNE_SACK, ItemType.DUNGEON_SACK)), plan.toString());
+        assertTrue(plan.stream().noneMatch(type -> type.name().startsWith("SMALL_") || type.name().startsWith("MEDIUM_")
+                || type.name().startsWith("BRONZE_")), plan.toString());
+        assertEquals(18, plan.size(), plan.toString());
     }
 
     @Test

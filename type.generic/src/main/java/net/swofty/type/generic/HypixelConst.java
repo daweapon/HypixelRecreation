@@ -49,6 +49,6 @@ public class HypixelConst {
     private static Difficulty vanillaDifficulty = Difficulty.NORMAL;
 
     public static boolean isIslandServer() {
-        return typeLoader.getType() == ServerType.SKYBLOCK_ISLAND;
+        return typeLoader != null && typeLoader.getType() == ServerType.SKYBLOCK_ISLAND;
     }
 }
