@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.item.handlers.bow;
 
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
+import net.minestom.server.entity.metadata.LivingEntityMeta;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.skyblockgeneric.entity.ArrowEntityImpl;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -52,6 +53,19 @@ public final class BowShot {
 
         bowOf(item).onBowShoot(player, item, 1.0);
         return true;
+    }
+
+    /**
+     * The client starts drawing a bow on its own whenever it can see an arrow, so a cancelled use alone leaves the
+     * draw animation running. Re-sending the "hand active" flag as false makes the client let go.
+     */
+    public static void stopDrawing(SkyBlockPlayer player) {
+        LivingEntityMeta meta = player.getLivingEntityMeta();
+        if (meta == null) return;
+        meta.setNotifyAboutChanges(false);
+        meta.setHandActive(true);
+        meta.setHandActive(false);
+        meta.setNotifyAboutChanges(true);
     }
 
     public static void fire(SkyBlockPlayer player, SkyBlockItem bow, double power) {

@@ -10,6 +10,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.BowComponent;
 import net.swofty.type.skyblockgeneric.item.components.ItemRequirementsComponent;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.BowShot;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 // Fires a bow shot with vanilla charge-based power when the player releases the draw
@@ -21,7 +22,7 @@ public class ActionUseBow implements HypixelEventClass {
         SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
         SkyBlockItem item = new SkyBlockItem(event.getItemStack());
 
-        if (item.getItemStack().material() != Material.BOW) return;
+        if (item.getItemStack().material() != Material.BOW || BowShot.isShortBow(item)) return;
         if (item.hasComponent(ItemRequirementsComponent.class)
                 && !item.getComponent(ItemRequirementsComponent.class).ensureCanUse(player)) return;
 
