@@ -6,6 +6,10 @@ import net.swofty.type.skyblockgeneric.crimson.mob.miniboss.CrimsonMiniboss;
 import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoEruptionService;
 import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoExplosivity;
 import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoSpewEvent;
+import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBarbarian;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobFireMage;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobGoliathBarbarian;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobMagmaGlare;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategory;
 import org.junit.jupiter.api.Test;
@@ -32,6 +36,16 @@ class CrimsonMobsTest {
             }
         }
         return profiles;
+    }
+
+    @Test
+    void onlyBestiaryFamilyMobsCountTowardTheBestiary() {
+        for (BestiaryCategory.CRIMSON_ISLE family : BestiaryCategory.CRIMSON_ISLE.values()) {
+            for (BestiaryMob mob : family.getMobs()) assertTrue(mob.countsForBestiary(), mob.getMobID());
+        }
+        assertFalse(new MobFireMage().countsForBestiary());
+        assertFalse(new MobBarbarian().countsForBestiary());
+        assertFalse(new MobGoliathBarbarian().countsForBestiary());
     }
 
     @Test

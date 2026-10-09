@@ -12,4 +12,8 @@ public abstract class BestiaryMob extends SkyBlockMob {
     public abstract int getBestiaryBracket();
     public abstract String getMobID();
     public abstract GUIMaterial getGuiMaterial();
+
+    public boolean countsForBestiary() {
+        return true;
+    }
 }

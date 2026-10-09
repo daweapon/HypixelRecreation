@@ -24,7 +24,7 @@ public class PlayerKilledSkyBlockMobEvent implements PlayerInstanceEvent {
         this.player = player;
         this.killedMob = killedMob;
 
-        if (killedMob instanceof BestiaryMob bestiaryMob) {
+        if (killedMob instanceof BestiaryMob bestiaryMob && bestiaryMob.countsForBestiary()) {
             DatapointBestiary.PlayerBestiary playerBestiary = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.BESTIARY, DatapointBestiary.class).getValue();
             playerBestiary.increase(bestiaryMob, 1);
         }

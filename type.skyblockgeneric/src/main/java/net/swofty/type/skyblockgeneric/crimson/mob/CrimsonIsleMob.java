@@ -17,6 +17,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
+import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bestiary.BestiaryCategory;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.entity.mob.ai.VanillaMeleeAttackGoal;
 import net.swofty.type.skyblockgeneric.entity.mob.ai.VanillaRandomStrollGoal;
@@ -30,13 +31,16 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Base for every Crimson Isle mob. Its numbers come from a {@link CrimsonMobProfile}, handed through a
@@ -108,6 +112,7 @@ public abstract class CrimsonIsleMob extends BestiaryMob {
     @Override public int getMaxBestiaryTier() { return getProfile().maxTier(); }
     @Override public int getBestiaryBracket() { return getProfile().bracket(); }
     @Override public String getMobID() { return getProfile().id(); }
+    @Override public boolean countsForBestiary() { return BestiaryFamilies.IDS.contains(getMobID()); }
     @Override public GUIMaterial getGuiMaterial() { return getProfile().guiMaterial(); }
 
     @Override
@@ -283,5 +288,12 @@ public abstract class CrimsonIsleMob extends BestiaryMob {
     protected void trueStrike(SkyBlockPlayer player, double damage) {
         if (player.isDead()) return;
         MobAttackService.trueStrike(this, player, damage);
+    }
+
+    private static final class BestiaryFamilies {
+        private static final Set<String> IDS = Arrays.stream(BestiaryCategory.CRIMSON_ISLE.values())
+                .flatMap(family -> family.getMobs().stream())
+                .map(BestiaryMob::getMobID)
+                .collect(Collectors.toUnmodifiableSet());
     }
 }
