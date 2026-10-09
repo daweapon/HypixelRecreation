@@ -2,6 +2,7 @@ package net.swofty.type.kuudra.run;
 
 import net.swofty.commons.text.Text;
 import net.swofty.type.game.game.GameState;
+import net.swofty.type.kuudra.fight.KuudraFight;
 import net.swofty.type.skyblockgeneric.user.AreaSidebar;
 import net.swofty.type.skyblockgeneric.user.ChallengeSidebar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -27,10 +28,16 @@ public final class KuudraSidebar {
 
     private static @Nullable List<String> lines(SkyBlockPlayer player) {
         KuudraRun run = KuudraRuns.of(player.getUuid());
-        return run == null ? null : lines(run.state(), run.onlineMembers().size(), run.roster().size());
+        if (run == null) return null;
+        KuudraFight fight = run.fight();
+        return lines(run.state(), run.onlineMembers().size(), run.roster().size(), fight == null ? null : fight.hud(player));
     }
 
     static List<String> lines(KuudraRunState state, int present, int partySize) {
+        return lines(state, present, partySize, null);
+    }
+
+    static List<String> lines(KuudraRunState state, int present, int partySize, KuudraFight.@Nullable Hud hud) {
         List<String> lines = new ArrayList<>();
         if (state.stage() == GameState.WAITING) {
             lines.add("<f>Party: <a>" + present + "<7>/<a>" + partySize);
@@ -44,10 +51,19 @@ public final class KuudraSidebar {
         }
         int seconds = state.secondsToNextWave();
         lines.add("<f><l>Wave: <c><l>" + state.wave() + (seconds > 0 ? " <8>- <a>" + seconds / 60 + ":" + String.format("%02d", seconds % 60) : ""));
+        if (hud != null) {
+            lines.add("<f>Tokens: <5>" + hud.tokens());
+            if (hud.submergesIn() >= 0) lines.add("<f>Submerges In: <e>" + hud.submergesIn() + "s");
+        }
         if (state.phase() != null) {
             lines.add(" ");
-            lines.addAll(state.phase().objective(state.stunRequired()));
+            List<String> objective = new ArrayList<>(state.phase().objective(state.stunRequired()));
+            if (hud != null && hud.progress() != null && !objective.isEmpty()) {
+                objective.set(0, objective.getFirst() + " <7>(<a>" + hud.progress() + "<7>)");
+            }
+            lines.addAll(objective);
         }
+        if (hud != null && hud.status() != null) lines.add(hud.status());
         return lines;
     }
 

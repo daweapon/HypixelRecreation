@@ -17,6 +17,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
+import net.swofty.type.kuudra.fight.KuudraFightHooks;
 import net.swofty.type.kuudra.redis.KuudraInstantiateGameHandler;
 import net.swofty.type.kuudra.run.KuudraRun;
 import net.swofty.type.kuudra.run.KuudraRuns;
@@ -58,6 +59,7 @@ public class TypeKuudraLoader implements SkyBlockTypeLoader {
     public void afterInitialize(MinecraftServer server) {
         KuudraConfig.get();
         KuudraSidebar.register();
+        KuudraFightHooks.register();
         KuudraRuns.startCleanup();
         startOrchestratorHeartbeat();
     }

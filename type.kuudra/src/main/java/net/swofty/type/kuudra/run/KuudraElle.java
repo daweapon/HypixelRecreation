@@ -79,7 +79,17 @@ public final class KuudraElle extends HypixelNPC {
 
         @Override
         public Pos position(HypixelPlayer player) {
-            return run.arena().elle();
+            return run.started() ? run.arena().ellePlatform() : run.arena().elle();
+        }
+
+        @Override
+        public boolean dynamicPosition() {
+            return true;
+        }
+
+        @Override
+        public boolean walksToNewPosition() {
+            return false;
         }
 
         @Override

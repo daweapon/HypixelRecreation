@@ -12,6 +12,7 @@ import net.swofty.type.game.game.GameState;
 import net.swofty.type.game.game.event.PlayerPostJoinGameEvent;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.kuudra.arena.KuudraHollow;
+import net.swofty.type.kuudra.fight.KuudraFight;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraProgress;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.KuudraTier;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraArena;
@@ -47,6 +48,7 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
     private final List<Task> tasks = new CopyOnWriteArrayList<>();
     private volatile long emptySince = System.currentTimeMillis();
     private KuudraElle elle;
+    private @Nullable KuudraFight fight;
 
     KuudraRun(KuudraTier tier, List<UUID> roster, KuudraHollow hollow, KuudraConfig config) {
         super(hollow.instance(), _ -> {
@@ -110,6 +112,7 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
         boolean waiting = run.stage() == GameState.WAITING;
         Pos arrival = waiting ? arena.spawn() : arena.respawn();
         player.setRespawnPoint(arena.respawn());
+        if (fight != null) fight.join(player);
         player.setInstance(hollow.instance(), arrival).thenRun(() -> {
             if (waiting) dialogue.chat("idle", ThreadLocalRandom.current()).forEach(player::sendMessage);
         });
@@ -133,6 +136,8 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
     public synchronized boolean begin() {
         if (!run.start()) return false;
         super.start();
+        fight = new KuudraFight(this, tier, KuudraConfig.get());
+        fight.start();
         boolean veterans = onlineMembers().stream().allMatch(KuudraProgress::hasDefeatedKuudra);
         List<String> intro = dialogue.chat(veterans ? "start_veterans" : "start_first_time", ThreadLocalRandom.current());
         int gap = 0;
@@ -141,7 +146,10 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
             gap += DIALOGUE_GAP_TICKS;
         }
         later(gap, this::collapseBridge);
-        later(gap + DIALOGUE_GAP_TICKS, () -> say(KuudraPhase.SUPPLIES));
+        later(gap + DIALOGUE_GAP_TICKS, () -> {
+            say(KuudraPhase.SUPPLIES);
+            if (fight != null) fight.emerge();
+        });
         spawnWave();
         return true;
     }
@@ -149,23 +157,30 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
     public synchronized boolean advancePhase() {
         if (!run.advancePhase()) return false;
         say(run.phase());
+        if (fight != null) fight.onPhase(run.phase());
         return true;
     }
 
     public synchronized boolean enterPhase(KuudraPhase phase) {
         if (!run.enterPhase(phase)) return false;
         say(phase);
+        if (fight != null) fight.onPhase(phase);
         return true;
     }
 
     public synchronized boolean finish(KuudraRunState.Outcome outcome) {
         if (!run.finish(outcome)) return false;
         super.end();
+        if (fight != null) fight.stop();
+        if (fight != null) {
+            boolean win = outcome == KuudraRunState.Outcome.WIN;
+            onlineMembers().forEach(player -> fight.summary(player, win).forEach(player::sendMessage));
+        }
         if (outcome == KuudraRunState.Outcome.WIN) {
-            broadcast(dialogue.announcement("kuudra_down", Map.of()));
+            if (fight == null) broadcast(dialogue.announcement("kuudra_down", Map.of()));
             dialogue.chat("defeated", ThreadLocalRandom.current()).forEach(this::broadcast);
             onlineMembers().forEach(this::reward);
-        } else {
+        } else if (fight == null) {
             broadcast(dialogue.announcement("defeat", Map.of()));
         }
         broadcast("<7>Returning to the Crimson Isle in <a>" + SHUTDOWN_SECONDS + " seconds<7>.");
@@ -194,6 +209,7 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
     }
 
     private void spawnWave() {
+        if (fight == null) return;
         try {
             waveSpawner.spawn(this, run.wave(), KuudraConfig.get().wave(run.wave()));
         } catch (Exception exception) {
@@ -252,6 +268,7 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
     synchronized void shutDown() {
         if (!run.terminate()) return;
         tasks.forEach(Task::cancel);
+        if (fight != null) fight.dispose();
         if (elle != null) elle.despawn();
         for (Player player : hollow.instance().getPlayers()) {
             player.setInstance(HypixelConst.getEmptyInstance(), new Pos(0.5, 100, 0.5));
@@ -294,6 +311,14 @@ public final class KuudraRun extends AbstractGame<KuudraParticipant> {
 
     public List<UUID> disconnectedMembers() {
         return List.copyOf(disconnectedPlayers.keySet());
+    }
+
+    public @Nullable KuudraFight fight() {
+        return fight;
+    }
+
+    public boolean started() {
+        return run.stage() != GameState.WAITING;
     }
 
     public boolean usesPlaceholderArena() {
