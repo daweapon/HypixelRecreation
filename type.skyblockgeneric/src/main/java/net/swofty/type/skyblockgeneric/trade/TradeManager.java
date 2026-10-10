@@ -162,6 +162,7 @@ public final class TradeManager {
                                   List<ItemStack> received, long coinsReceived,
                                   List<ItemStack> given, long coinsGiven) {
         player.sendMessage("<6>Trade completed with " + other.getUsername() + "<6>!");
+        player.getAchievementHandler().completeAchievement("skyblock.businessman");
         if (coinsReceived > 0) player.sendMessage("<a><l>+ <6>" + StringUtility.commaify(coinsReceived) + " coins");
         received.forEach(stack -> player.sendMessage(Text.of("<a><l>+ <f>{}x ", stack.amount())
                 .append(ItemStacks.nameText(stack)).asComponent()));

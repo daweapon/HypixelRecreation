@@ -279,6 +279,12 @@ public class GUIBrewingStand extends HypixelInventoryGUI implements RefreshingGU
             }
         }
 
+        for (SkyBlockItem potionItem : potionItems) {
+            if (potionItem == null || potionItem.isNA() || potionItem.isAir()) continue;
+            ItemAttributePotionData.PotionData brewed = potionItem.getAttributeHandler().getPotionData();
+            if (brewed != null && brewed.getLevel() >= 8) player.getAchievementHandler().completeAchievement("skyblock.expensive_brew");
+        }
+
         // Award Alchemy XP
         int alchemyXp = brewComp.getAlchemyXp();
         if (alchemyXp > 0) {

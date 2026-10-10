@@ -53,6 +53,8 @@ final class BellyRun {
     private final List<Tonsil> tonsils = new ArrayList<>();
     private StomachAcid acid;
     private int ticks;
+    private int pearlsCollected;
+    private boolean tookDamage;
 
     BellyRun(SkyBlockPlayer player) {
         this.player = player;
@@ -151,6 +153,7 @@ final class BellyRun {
             pig.remove();
         }
         if (tonsils.stream().allMatch(each -> each.popped)) {
+            if (pearlsCollected >= PILES.size() && !tookDamage) player.getAchievementHandler().completeAchievement("skyblock.the_perfect_heist");
             MatriarchService.escape(player);
         } else {
             player.sendMessage("<7>The Matriarch gags! Punch the other tonsil to get out!");
@@ -162,6 +165,7 @@ final class BellyRun {
             player.sendMessage("<c>The Matriarch has no Heavy Pearls left today!");
             return;
         }
+        pearlsCollected++;
         player.addAndUpdateItem(new SkyBlockItem(ItemType.HEAVY_PEARL));
         player.sendMessage("<a>You collected a <6>Heavy Pearl<a>!");
         sound("entity.experience_orb.pickup", 1f);
@@ -189,6 +193,7 @@ final class BellyRun {
         }
         if (ticks % 20 == 0 && acid.touches(player.getPosition(), ticks)) {
             player.sendMessage("<2>The stomach acid burns you!");
+            tookDamage = true;
             if (player.getHealth() <= ACID_DAMAGE_PER_SECOND) {
                 HeavyPearls.startCooldown(player);
                 player.sendMessage("<c>You were digested by the Matriarch! You can't be eaten again for 10 minutes.");

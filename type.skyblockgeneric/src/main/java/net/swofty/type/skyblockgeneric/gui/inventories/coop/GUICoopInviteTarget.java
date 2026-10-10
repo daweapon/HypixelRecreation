@@ -120,6 +120,10 @@ public class GUICoopInviteTarget extends HypixelInventoryGUI {
                 new UserDatabase(player.getUuid()).saveProfiles(profiles);
 
                 notifyOriginator(coop.originator(), Text.key("gui_coop.target.accepted_notify", player.getUsername()));
+                player.getAchievementHandler().completeAchievement("skyblock.combined_efforts");
+                SkyBlockGenericLoader.getLoadedPlayers().stream()
+                        .filter(loaded -> loaded.getUuid().equals(coop.originator()))
+                        .forEach(loaded -> loaded.getAchievementHandler().completeAchievement("skyblock.combined_efforts"));
                 player.closeInventory();
                 ProfileSwitcher.switchTo(player, profileId);
             }

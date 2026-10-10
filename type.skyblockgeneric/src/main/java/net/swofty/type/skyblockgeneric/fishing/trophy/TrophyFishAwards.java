@@ -62,6 +62,20 @@ public final class TrophyFishAwards {
 
     public static void syncSkyBlockXP(SkyBlockPlayer player) {
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.TROPHY_FISH, skyBlockXp(player.getTrophyFishData()));
+        awardAchievements(player, player.getTrophyFishData());
+    }
+
+    private static void awardAchievements(SkyBlockPlayer player, DatapointTrophyFish.TrophyFishData data) {
+        boolean all = true;
+        boolean gold = false;
+        for (TrophyFishDefinition fish : FishingRegistry.getTrophyFish()) {
+            DatapointTrophyFish.FishProgress progress = data.getFish().get(fish.id());
+            TrophyTier highest = progress == null ? null : highestTier(progress);
+            if (highest == null) all = false;
+            else if (highest.ordinal() >= TrophyTier.GOLD.ordinal()) gold = true;
+        }
+        if (all) player.getAchievementHandler().completeAchievement("skyblock.humble_beginnings");
+        if (gold) player.getAchievementHandler().completeAchievement("skyblock.shining_scales");
     }
 
     static TrophyTier highestTier(DatapointTrophyFish.FishProgress progress) {

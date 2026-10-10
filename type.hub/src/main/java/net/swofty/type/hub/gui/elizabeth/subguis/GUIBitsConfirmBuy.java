@@ -1,5 +1,6 @@
 package net.swofty.type.hub.gui.elizabeth.subguis;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import net.minestom.server.event.inventory.InventoryCloseEvent;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.Inventory;
@@ -32,6 +33,7 @@ public class GUIBitsConfirmBuy extends HypixelInventoryGUI {
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p; 
                 player.addAndUpdateItem(item);
+                SkyBlockItemAchievements.onObtained(player, item.getAttributeHandler().getPotentialType());
                 player.removeBits(price);
                 new GUIBitsShop().open(player);
             }

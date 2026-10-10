@@ -3,7 +3,7 @@ achievements:
 
   - id: "skyblock.festive_altruist"
     name: "Festive Altruist"
-    description: "Give gifts to 5 different players"
+    description: "Give gifts to %%value%% different players"
     type: TIERED
     trigger: "skyblock.festive_altruist_trigger"
     tiers:
@@ -25,7 +25,7 @@ achievements:
 
   - id: "skyblock.treasury"
     name: "Treasury"
-    description: "Unlock 10 Collections"
+    description: "Unlock %%value%% Collections"
     type: TIERED
     trigger: "skyblock.treasury_trigger"
     tiers:
@@ -47,7 +47,7 @@ achievements:
 
   - id: "skyblock.gatherer"
     name: "Gatherer"
-    description: "Achieve Foraging Level V"
+    description: "Achieve Foraging Level %%value%%"
     type: TIERED
     trigger: "skyblock.gatherer_trigger"
     tiers:
@@ -69,7 +69,7 @@ achievements:
 
   - id: "skyblock.augmentation"
     name: "Augmentation"
-    description: "Achieve Enchanting Level V"
+    description: "Achieve Enchanting Level %%value%%"
     type: TIERED
     trigger: "skyblock.augmentation_trigger"
     tiers:
@@ -91,7 +91,7 @@ achievements:
 
   - id: "skyblock.domesticator"
     name: "Domesticator"
-    description: "Achieve Taming Level V"
+    description: "Achieve Taming Level %%value%%"
     type: TIERED
     trigger: "skyblock.domesticator_trigger"
     tiers:
@@ -113,7 +113,7 @@ achievements:
 
   - id: "skyblock.harvester"
     name: "Harvester"
-    description: "Achieve Farming Level V"
+    description: "Achieve Farming Level %%value%%"
     type: TIERED
     trigger: "skyblock.harvester_trigger"
     tiers:
@@ -135,7 +135,7 @@ achievements:
 
   - id: "skyblock.excavator"
     name: "Excavator"
-    description: "Achieve Mining Level V"
+    description: "Achieve Mining Level %%value%%"
     type: TIERED
     trigger: "skyblock.excavator_trigger"
     tiers:
@@ -157,7 +157,7 @@ achievements:
 
   - id: "skyblock.hard_working_miner"
     name: "Hard Working Miner"
-    description: "Complete 5 commissions"
+    description: "Complete %%value%% commissions"
     type: TIERED
     trigger: "skyblock.hard_working_miner_trigger"
     tiers:
@@ -179,7 +179,7 @@ achievements:
 
   - id: "skyblock.minion_lover"
     name: "Minion Lover"
-    description: "[Co-op or you] Craft 10 unique minions"
+    description: "[Co-op or you] Craft %%value%% unique minions"
     type: TIERED
     trigger: "skyblock.minion_lover_trigger"
     tiers:
@@ -201,7 +201,7 @@ achievements:
 
   - id: "skyblock.divan_s_treasures"
     name: "Divan's Treasures"
-    description: "Find treasures in the Mines of Divan 30 times"
+    description: "Find treasures in the Mines of Divan %%value%% times"
     type: TIERED
     trigger: "skyblock.divan_s_treasures_trigger"
     tiers:
@@ -223,7 +223,7 @@ achievements:
 
   - id: "skyblock.combat"
     name: "Combat"
-    description: "Achieve Combat Level V"
+    description: "Achieve Combat Level %%value%%"
     type: TIERED
     trigger: "skyblock.combat_trigger"
     tiers:
@@ -245,7 +245,7 @@ achievements:
 
   - id: "skyblock.people_pleaser"
     name: "People Pleaser"
-    description: "Serve 5 Total Visitors in The Garden"
+    description: "Serve %%value%% Total Visitors in The Garden"
     type: TIERED
     trigger: "skyblock.people_pleaser_trigger"
     tiers:
@@ -267,7 +267,7 @@ achievements:
 
   - id: "skyblock.predator"
     name: "Predator"
-    description: "Achieve Hunting Level V"
+    description: "Achieve Hunting Level %%value%%"
     type: TIERED
     trigger: "skyblock.predator_trigger"
     tiers:
@@ -289,7 +289,7 @@ achievements:
 
   - id: "skyblock.climbing_the_ranks"
     name: "Climbing the Ranks"
-    description: "Reach SkyBlock Level 40"
+    description: "Reach SkyBlock Level %%value%%"
     type: TIERED
     trigger: "skyblock.climbing_the_ranks_trigger"
     tiers:
@@ -311,7 +311,7 @@ achievements:
 
   - id: "skyblock.goblin_killer"
     name: "Goblin Killer"
-    description: "Kill 5 Golden Goblins"
+    description: "Kill %%value%% Golden Goblins"
     type: TIERED
     trigger: "skyblock.goblin_killer_trigger"
     tiers:
@@ -333,7 +333,7 @@ achievements:
 
   - id: "skyblock.angler"
     name: "Angler"
-    description: "Achieve Fishing Level V"
+    description: "Achieve Fishing Level %%value%%"
     type: TIERED
     trigger: "skyblock.angler_trigger"
     tiers:
@@ -355,7 +355,7 @@ achievements:
 
   - id: "skyblock.concoctor"
     name: "Concoctor"
-    description: "Achieve Alchemy Level V"
+    description: "Achieve Alchemy Level %%value%%"
     type: TIERED
     trigger: "skyblock.concoctor_trigger"
     tiers:
@@ -377,7 +377,7 @@ achievements:
 
   - id: "skyblock.crystal_nucleus"
     name: "Crystal Nucleus"
-    description: "Complete the Crystal Nucleus 5 times"
+    description: "Complete the Crystal Nucleus %%value%% times"
     type: TIERED
     trigger: "skyblock.crystal_nucleus_trigger"
     tiers:
@@ -399,7 +399,7 @@ achievements:
 
   - id: "skyblock.curator"
     name: "Curator"
-    description: "Donate 10 items/sets to the Museum"
+    description: "Donate %%value%% items/sets to the Museum"
     type: TIERED
     trigger: "skyblock.curator_trigger"
     tiers:
@@ -421,7 +421,7 @@ achievements:
 
   - id: "skyblock.treasure_hunter"
     name: "Treasure Hunter"
-    description: "Find 10 Secrets in dungeons"
+    description: "Find %%value%% Secrets in dungeons"
     type: TIERED
     trigger: "skyblock.treasure_hunter_trigger"
     tiers:
@@ -438,12 +438,12 @@ achievements:
         goal: 250
         points: 20
       - tier: 5
-        goal: 1
+        goal: 1000
         points: 25
 
   - id: "skyblock.slayer"
     name: "Slayer"
-    description: "Get 10k Slayer exp"
+    description: "Get %%value%%k Slayer exp"
     type: TIERED
     trigger: "skyblock.slayer_trigger"
     tiers:
@@ -465,7 +465,7 @@ achievements:
 
   - id: "skyblock.dungeoneer"
     name: "Dungeoneer"
-    description: "Reach Level 15 of any Dungeon Class"
+    description: "Reach Level %%value%% of any Dungeon Class"
     type: TIERED
     trigger: "skyblock.dungeoneer_trigger"
     tiers:

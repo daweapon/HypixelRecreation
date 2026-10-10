@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "achievements"
+    name: "The Achievements Update"
+    date: "10th October 2026"
+    material: diamond
+    title: "The Achievements Update"
+    book: "achievements_update.yml"
   - version: "kuudra"
     name: "The Kuudra Update"
     date: "9th October 2026"

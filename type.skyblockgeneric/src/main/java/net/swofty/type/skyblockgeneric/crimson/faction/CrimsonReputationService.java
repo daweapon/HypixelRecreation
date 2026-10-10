@@ -30,6 +30,7 @@ public final class CrimsonReputationService {
 
     public static void setFaction(SkyBlockPlayer player, @Nullable CrimsonFaction faction) {
         DatapointCrimsonIsle.edit(player, data -> data.setFaction(faction));
+        if (faction != null) player.getAchievementHandler().completeAchievement("skyblock.declaring_allegiance");
     }
 
     public static int get(SkyBlockPlayer player, CrimsonFaction faction) {

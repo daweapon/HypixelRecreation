@@ -1,5 +1,6 @@
 package net.swofty.type.hub.gui.lucius;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import net.minestom.server.inventory.InventoryType;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
@@ -80,6 +81,7 @@ public class GUILucius extends StatelessView {
         if (tier.getTradedIn() != null) player.takeItem(tier.getTradedIn(), 1);
         player.removeCoins(tier.getCoinCost());
         player.addAndUpdateItem(tier.getReward());
+        SkyBlockItemAchievements.onObtained(player, tier.getReward());
         DatapointInteger purchased = LuciusTier.purchasedTiers(player);
         purchased.setValue(purchased.getValue() + 1);
         player.playSuccessSound();

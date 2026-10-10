@@ -725,6 +725,12 @@ public class SkyBlockDataHandler extends DataHandler {
         GIFTS_GIVEN("gifts_given", false, false, false,
                 DatapointInteger.class, new DatapointInteger("gifts_given", 0)),
 
+        GIFT_RECIPIENTS("gift_recipients", false, false, false,
+                DatapointStringList.class, new DatapointStringList("gift_recipients")),
+
+        ACHIEVEMENT_FLAGS("achievement_flags", false, false, false,
+                DatapointStringList.class, new DatapointStringList("achievement_flags")),
+
         JYRRE_BUFF_EXPIRATION("jyrre_buff_expiration", false, false, false,
                 DatapointLong.class, new DatapointLong("jyrre_buff_expiration", 0L),
                 null,

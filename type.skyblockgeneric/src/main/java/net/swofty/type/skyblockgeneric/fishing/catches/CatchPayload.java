@@ -77,6 +77,7 @@ public sealed interface CatchPayload {
 
         @Override
         public void apply(CatchAwardContext ctx) {
+            if (!"GOOD".equals(quality)) ctx.player().getAchievementHandler().completeAchievement("skyblock.treasure_fishing");
             if (FishingTableDefinition.COINS.equals(itemId)) {
                 ctx.player().addCoins(amount);
                 ctx.player().sendMessage(header() + " <b>You found <6>" + String.format("%,d", amount) + " Coins<b>.");

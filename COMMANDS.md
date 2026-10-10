@@ -53,6 +53,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 
 | Command / syntax | Aliases | Purpose and notes | Minimum rank | Console declared | Module |
 | --- | --- | --- | --- | --- | --- |
+| `/achievements` | `/achievement` | Opens the achievements menu. On SkyBlock servers it opens the SkyBlock achievements page (also reachable from Your Equipment and Stats); in lobbies it opens the full achievements menu. The achievement-unlock chat message links here. | DEFAULT | No | `type.generic` |
 | `/attributesmenu` | `/attributes`, `/attributemenu`, `/am` | Opens your Attributes menu. | DEFAULT | No | `type.skyblockgeneric` |
 | `/auctionhouse` | `/ah` | Opens the Auction House remotely. Requires an active Booster Cookie. | DEFAULT | No | `type.skyblockgeneric` |
 | `/bait` | — | Opens the Bait Guide, the same menu Angler Angus shows after he gives you Fish Bait. | DEFAULT | No | `type.skyblockgeneric` |

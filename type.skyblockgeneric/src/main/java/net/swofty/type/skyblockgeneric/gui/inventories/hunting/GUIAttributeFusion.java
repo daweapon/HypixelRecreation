@@ -64,7 +64,10 @@ public class GUIAttributeFusion implements StatefulView<GUIAttributeFusion.State
                 AttributeFusionService.FusionResult result = results.get(i);
                 layout.slot(slots[i], (s, c) -> AttributeGUIItems.shard(result.definition(), result.amount()),
                         (click, c) -> {
+                            boolean newShard = data.shardCount(result.definition().id()) == 0;
                             if (AttributeFusionService.fuse(data, first, second, result)) {
+                                player.getAchievementHandler().addProgressByTrigger("skyblock.evolution_trigger", 1);
+                                if (newShard) player.getAchievementHandler().completeAchievement("skyblock.amalgamation");
                                 player.getSkills().increase(player, SkillCategories.HUNTING, switch (result.definition().rarity()) {
                                     case COMMON -> 75D;
                                     case UNCOMMON -> 150D;

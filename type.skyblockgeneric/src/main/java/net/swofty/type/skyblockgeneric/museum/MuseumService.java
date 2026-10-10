@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.museum;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievementSync;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.item.ItemType;
@@ -201,6 +202,7 @@ public final class MuseumService {
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SKYBLOCK_EXPERIENCE,
                 DatapointSkyBlockExperience.class).setValue(experience);
         writeBankMilestone(player, reached);
+        SkyBlockAchievementSync.syncMuseum(player);
     }
 
     public static void maxOut(SkyBlockPlayer player) {

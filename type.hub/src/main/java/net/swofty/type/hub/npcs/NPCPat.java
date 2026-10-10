@@ -6,6 +6,8 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.hub.gui.GUIShopPat;
+import net.swofty.type.skyblockgeneric.achievement.AchievementFlags;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCPat extends HypixelNPC {
 
@@ -40,6 +42,9 @@ public class NPCPat extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent e) {
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        AchievementFlags.mark(player, "met_pat");
+        if (AchievementFlags.has(player, "met_rick")) player.getAchievementHandler().completeAchievement("skyblock.the_flint_bros");
         e.player().openView(new GUIShopPat());
     }
 

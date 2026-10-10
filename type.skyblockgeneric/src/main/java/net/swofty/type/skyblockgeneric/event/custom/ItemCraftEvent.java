@@ -20,6 +20,7 @@ public class ItemCraftEvent implements PlayerInstanceEvent {
     private final SkyBlockPlayer player;
     private final SkyBlockItem craftedItem;
     private final SkyBlockRecipe<?> recipe;
+    private boolean newMinionSlotUnlocked;
 
     public ItemCraftEvent(SkyBlockPlayer player, SkyBlockItem craftedItem, SkyBlockRecipe<?> recipe) {
         this.player = player;
@@ -29,6 +30,7 @@ public class ItemCraftEvent implements PlayerInstanceEvent {
         if (craftedItem.hasComponent(MinionComponent.class)) {
             var datapoint = player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.MINION_DATA, DatapointMinionData.class);
             DatapointMinionData.ProfileMinionData playerData = datapoint.getValue();
+            int slotsBefore = playerData.getSlots();
             String name = craftedItem.getAttributeHandler().getMinionType().name();
             Integer tier = craftedItem.getAttributeHandler().getMinionData().tier();
             List<Map.Entry<String, List<Integer>>> craftedMinions = new ArrayList<>(playerData.craftedMinions());
@@ -61,7 +63,9 @@ public class ItemCraftEvent implements PlayerInstanceEvent {
                 craftedMinions.add(minion);
             }
 
-            datapoint.setValue(new DatapointMinionData.ProfileMinionData(craftedMinions));
+            DatapointMinionData.ProfileMinionData updated = new DatapointMinionData.ProfileMinionData(craftedMinions);
+            datapoint.setValue(updated);
+            newMinionSlotUnlocked = updated.getSlots() > slotsBefore;
         }
     }
 }

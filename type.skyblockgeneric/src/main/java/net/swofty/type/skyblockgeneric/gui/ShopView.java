@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.gui;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,7 @@ import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 
 // Base GUI for NPC shops: paginates purchasable items over a configurable slot layout and handles buy/sell clicks
@@ -293,11 +295,13 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
         SkyBlockItem toGive = item.item;
         toGive.setAmount(item.amount);
         player.addAndUpdateItem(toGive);
+        SkyBlockItemAchievements.onObtained(player, toGive.getAttributeHandler().getPotentialType());
         player.playSound(Sound.sound(Key.key("block.note_block.pling"), Sound.Source.PLAYER, 1.0f, 2.0f));
 
         if (item.hasStock) {
             player.getShoppingData().documentPurchase(item.getItem().toUnderstandable(), item.amount);
         }
+        if (item.onPurchase != null) item.onPurchase.accept(player);
         return true;
     }
 
@@ -370,6 +374,7 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
         private boolean hasStock = true;
         private Function<SkyBlockPlayer, String> lock = null;
         private boolean confirmPurchase = false;
+        private Consumer<SkyBlockPlayer> onPurchase = null;
 
         public ShopItem(SkyBlockItem item, int amount, ShopPrice price, boolean stackable, boolean hasStock) {
             this.item = item;
@@ -389,6 +394,11 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
 
         public ShopItem lockedWhen(Function<SkyBlockPlayer, String> reason) {
             this.lock = reason;
+            return this;
+        }
+
+        public ShopItem onPurchase(Consumer<SkyBlockPlayer> handler) {
+            this.onPurchase = handler;
             return this;
         }
 

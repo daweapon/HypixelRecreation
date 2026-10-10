@@ -78,16 +78,59 @@ public class AchievementData {
     public int getTotalPoints(AchievementCategory category) {
         int total = 0;
         for (AchievementDefinition def : AchievementRegistry.getByCategory(category)) {
-            AchievementProgress progress = achievements.get(def.getId());
-            if (progress == null) continue;
-
-            if (def.getType() == AchievementType.TIERED) {
-                total += def.getPointsUpToTier(progress.getCurrentTier());
-            } else if (progress.isCompleted()) {
-                total += def.getPoints();
-            }
+            if (def.countsTowardsCompletion()) total += earnedPoints(def);
         }
         return total;
+    }
+
+    private int earnedPoints(AchievementDefinition def) {
+        AchievementProgress progress = achievements.get(def.getId());
+        if (progress == null) return 0;
+        if (def.getType() == AchievementType.TIERED) {
+            return def.getPointsUpToTier(progress.getCurrentTier());
+        }
+        return progress.isCompleted() ? def.getPoints() : 0;
+    }
+
+    private int earnedUnits(AchievementDefinition def) {
+        AchievementProgress progress = achievements.get(def.getId());
+        if (progress == null) return 0;
+        if (def.getType() == AchievementType.TIERED) {
+            return Math.min(progress.getCurrentTier(), def.getMaxTier());
+        }
+        return progress.isCompleted() ? 1 : 0;
+    }
+
+    public int getLegacyUnlockedCount() {
+        int count = 0;
+        for (AchievementDefinition def : AchievementRegistry.getAll()) {
+            if (def.isLegacy()) count += earnedUnits(def);
+        }
+        return count;
+    }
+
+    public int getLegacyPoints() {
+        int total = 0;
+        for (AchievementDefinition def : AchievementRegistry.getAll()) {
+            if (def.isLegacy()) total += earnedPoints(def);
+        }
+        return total;
+    }
+
+    public int getSeasonalPoints() {
+        int total = 0;
+        for (AchievementDefinition def : AchievementRegistry.getAll()) {
+            if (def.getType() == AchievementType.SEASONAL) total += earnedPoints(def);
+        }
+        return total;
+    }
+
+    public int getSeasonalUnlockedCount() {
+        int count = 0;
+        for (AchievementDefinition def : AchievementRegistry.getAll()) {
+            if (def.getType() == AchievementType.SEASONAL) count += earnedUnits(def);
+        }
+        return count;
     }
 
     public int getPoints(AchievementCategory category, AchievementType type) {
@@ -108,14 +151,7 @@ public class AchievementData {
     public int getUnlockedCount(AchievementCategory category) {
         int count = 0;
         for (AchievementDefinition def : AchievementRegistry.getByCategory(category)) {
-            AchievementProgress progress = achievements.get(def.getId());
-            if (progress == null) continue;
-
-            if (def.getType() == AchievementType.TIERED) {
-                count += progress.getCurrentTier();
-            } else if (progress.isCompleted()) {
-                count++;
-            }
+            if (def.countsTowardsCompletion()) count += earnedUnits(def);
         }
         return count;
     }
@@ -136,7 +172,7 @@ public class AchievementData {
     }
 
     public double getCompletionPercentage(AchievementCategory category) {
-        int total = AchievementRegistry.getTotalPoints(category);
+        int total = AchievementRegistry.getCompletionPoints(category);
         if (total == 0) return 0.0;
         return (double) getTotalPoints(category) / total * 100.0;
     }
@@ -147,6 +183,10 @@ public class AchievementData {
             count += getUnlockedCount(category);
         }
         return count;
+    }
+
+    public AchievementProgress peek(String achievementId) {
+        return achievements.get(achievementId);
     }
 
     public void setTrackedAchievement(AchievementCategory category, String achievementId) {
@@ -194,28 +234,35 @@ public class AchievementData {
         private long unlockedTimestamp = 0;
         private boolean completed = false;
 
-        public boolean addProgress(AchievementDefinition def, int amount) {
+        public int addProgress(AchievementDefinition def, int amount) {
             currentProgress += amount;
-
-            if (def.getType() == AchievementType.TIERED) {
-                return checkTierProgress(def);
-            } else {
-                return checkChallengeProgress(def);
-            }
+            return evaluate(def);
         }
 
-        private boolean checkTierProgress(AchievementDefinition def) {
-            boolean newTierUnlocked = false;
+        public int raiseProgress(AchievementDefinition def, int value) {
+            if (value <= currentProgress) return 0;
+            currentProgress = value;
+            return evaluate(def);
+        }
+
+        private int evaluate(AchievementDefinition def) {
+            if (def.getType() == AchievementType.TIERED) {
+                return checkTierProgress(def);
+            }
+            return checkChallengeProgress(def) ? 1 : 0;
+        }
+
+        private int checkTierProgress(AchievementDefinition def) {
+            int previousTier = currentTier;
             for (int tier = currentTier + 1; tier <= def.getMaxTier(); tier++) {
                 if (currentProgress >= def.getGoalForTier(tier)) {
                     currentTier = tier;
                     unlockedTimestamp = System.currentTimeMillis();
-                    newTierUnlocked = true;
                 } else {
                     break;
                 }
             }
-            return newTierUnlocked;
+            return currentTier - previousTier;
         }
 
         private boolean checkChallengeProgress(AchievementDefinition def) {

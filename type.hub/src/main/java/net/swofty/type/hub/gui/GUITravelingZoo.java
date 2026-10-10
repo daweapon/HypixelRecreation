@@ -19,7 +19,8 @@ public class GUITravelingZoo extends ShopView {
         for (TravelingZooManager.PetOffer offer : TravelingZooManager.getCurrentOffers()) {
             SkyBlockItem item = new SkyBlockItem(offer.petType());
             item.getAttributeHandler().setRarity(offer.rarity());
-            ShopItem shopItem = ShopItem.Single(item, 1, offer.price());
+            ShopItem shopItem = ShopItem.Single(item, 1, offer.price())
+                    .onPurchase(player -> player.getAchievementHandler().completeAchievement("skyblock.zookeeper"));
             attachItem(shopItem);
         }
     }

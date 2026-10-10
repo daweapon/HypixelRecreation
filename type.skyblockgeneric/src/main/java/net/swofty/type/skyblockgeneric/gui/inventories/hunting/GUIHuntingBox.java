@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.hunting;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.ItemStack;
@@ -176,7 +177,10 @@ public class GUIHuntingBox extends StatefulPaginatedView<AttributeDefinition, GU
         } else if (player.getSkills().getCurrentLevel(SkillCategories.HUNTING) >= d.rarity().huntingRequirement()) {
             int amount = click instanceof Click.LeftShift ? data.shardCount(d.id()) : 1;
             int used = data.syphon(d.id(), amount);
-            if (used > 0) player.getSkills().increase(player, SkillCategories.HUNTING, used * syphonExperience(d));
+            if (used > 0) {
+                player.getSkills().increase(player, SkillCategories.HUNTING, used * syphonExperience(d));
+                SkyBlockItemAchievements.onSyphon(player);
+            }
         } else
             player.sendMessage("<c>You need Hunting Level {} to Syphon this Attribute!", d.rarity().huntingRequirement());
         refresh(ctx, ctx.session(State.class).state().sort(), ctx.session(State.class).state().query());
@@ -186,6 +190,7 @@ public class GUIHuntingBox extends StatefulPaginatedView<AttributeDefinition, GU
         for (AttributeDefinition d : AttributeRegistry.values())
             if (player.getSkills().getCurrentLevel(SkillCategories.HUNTING) >= d.rarity().huntingRequirement())
                 player.getHuntingData().syphon(d.id(), player.getHuntingData().shardCount(d.id()));
+        SkyBlockItemAchievements.onSyphon(player);
         refresh(ctx, ctx.session(State.class).state().sort(), ctx.session(State.class).state().query());
     }
 

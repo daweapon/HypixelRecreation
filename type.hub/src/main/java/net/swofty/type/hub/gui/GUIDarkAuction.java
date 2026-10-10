@@ -257,6 +257,8 @@ public class GUIDarkAuction extends HypixelInventoryGUI implements RefreshingGUI
                                 if (response instanceof PlaceBidProtocol.PlaceBidResponse(boolean success, String message, String error)) {
                                     if (!success) {
                                         sp.sendMessage("<c>{}", message);
+                                    } else {
+                                        sp.getAchievementHandler().completeAchievement("skyblock.sirius_business");
                                     }
                                 }
                             })

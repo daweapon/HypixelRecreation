@@ -77,6 +77,7 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
         player.sendMessage("<7>You received <a>1x {}<7>!", new SkyBlockItem(candyType).getDisplayName());
 
         SpookyFestivalCandyTally.record(player, purple);
+        if (purple) player.getAchievementHandler().completeAchievement("skyblock.sweet_tooth");
         double points = purple ? SpookyFestivalCandyTally.PURPLE_POINTS : SpookyFestivalCandyTally.GREEN_POINTS;
         String leaderboardKey = "spooky_festival_" + SkyBlockCalendar.getYear();
         Double currentScore = LeaderboardService.getPlayerScore(leaderboardKey, player.getUuid());

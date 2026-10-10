@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievements;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
@@ -174,6 +175,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         PersonalDeletorService.initialize();
         PersonalCompactorService.initialize();
         MaxStickService.initialize();
+        SkyBlockAchievements.initialize();
         Carnival.initialize();
         PlayerItemUpdater.updateLoop(MinecraftServer.getSchedulerManager());
         File configDir = new File("./configuration/skyblock");

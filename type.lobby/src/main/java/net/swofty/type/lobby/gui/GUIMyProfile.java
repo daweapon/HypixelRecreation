@@ -5,6 +5,8 @@ import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.text.Text;
+import net.swofty.type.generic.achievement.gui.AchievementNav;
+import net.swofty.type.generic.achievement.gui.GUIAchievementsMenu;
 import net.swofty.type.generic.command.commands.replay.ReplaysCommand;
 import net.swofty.type.generic.experience.PlayerExperienceHandler;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
@@ -208,7 +210,7 @@ public class GUIMyProfile extends HypixelInventoryGUI {
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                new GUIAchievementsMenu().open(player);
+                new GUIAchievementsMenu(new AchievementNav("My Profile", p -> new GUIMyProfile().open(p))).open(player);
             }
         });
 

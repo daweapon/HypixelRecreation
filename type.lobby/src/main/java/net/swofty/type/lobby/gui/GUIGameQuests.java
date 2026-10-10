@@ -5,6 +5,8 @@ import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.text.Text;
+import net.swofty.type.generic.achievement.gui.AchievementNav;
+import net.swofty.type.generic.achievement.gui.GUIGameAchievements;
 import net.swofty.type.generic.achievement.AchievementCategory;
 import net.swofty.type.generic.achievement.AchievementRegistry;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
@@ -73,7 +75,7 @@ public class GUIGameQuests extends HypixelInventoryGUI {
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                new GUIGameAchievements(category).open(player);
+                new GUIGameAchievements(category, new AchievementNav("Quests & Challenges", p -> new GUIQuestsChallenges().open(p))).open(player);
             }
         });
 

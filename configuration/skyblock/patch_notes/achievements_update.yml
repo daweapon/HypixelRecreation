@@ -1,0 +1,27 @@
+title: "The Achievements Update"
+date: "10th October 2026"
+intro:
+  - "SkyBlock Achievements are now open to everyone. Open Your Equipment and Stats from the SkyBlock Menu and click the diamond named SkyBlock Achievements, or type /achievements."
+  - "Achievement progress belongs to your account, so every profile you play counts towards the same achievements."
+sections:
+  - heading: "The Menu"
+    colour: "<a>"
+    lines:
+      - "The SkyBlock Achievements page has Challenge and Tiered pages, just like Hypixel. Challenge pages now show 28 achievements at a time."
+      - "Unlocked totals count every tier, and seasonal achievements no longer count towards completion."
+      - "Locked secret achievements show as Secret Achievement with ??? until you unlock them."
+      - "Tiered achievements now describe each tier's own goal."
+      - "The Achievement Unlocked message is clickable and opens the menu."
+  - heading: "Earning Achievements"
+    colour: "<e>"
+    lines:
+      - "Tiered achievements always progress. Tracking one only pins it in the menu."
+      - "Skill, SkyBlock Level, Collections, Slayer, Museum, Commissions and Fairy Soul achievements catch up to your progress when you join, so you get credit for tiers you already passed."
+      - "Co-op achievements are now given to every online co-op member."
+      - "Many more achievements can now be earned, including crafting artifacts and minions, potions, anvil and enchanting feats, pets, gifts, Trophy Fish, Hub exploration, and Crimson Isle minibosses."
+      - "34 secret achievements have been added. Treasure Hunter Tier V now needs 1,000 secrets."
+      - "Wow, that's useful! is now a Legacy achievement and can no longer be earned, as on Hypixel."
+  - heading: "Still Locked"
+    colour: "<7>"
+    lines:
+      - "Achievements that need content SkyBlock does not have yet, such as the Rift, the Garden, the Crystal Hollows, Dungeons and the dragon fights, are listed but cannot be earned until that content arrives."

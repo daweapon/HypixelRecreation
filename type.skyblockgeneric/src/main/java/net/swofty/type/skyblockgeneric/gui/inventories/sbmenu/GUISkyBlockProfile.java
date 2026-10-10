@@ -8,6 +8,9 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.UnderstandableSkyBlockItem;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.text.Text;
+import net.swofty.type.generic.achievement.AchievementCategory;
+import net.swofty.type.generic.achievement.AchievementRegistry;
+import net.swofty.type.generic.achievement.PlayerAchievementHandler;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.Components;
 import net.swofty.type.generic.gui.v2.DefaultState;
@@ -15,6 +18,7 @@ import net.swofty.type.generic.gui.v2.StatelessView;
 import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievements;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointInventory;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.stats.GUIGatheringCategoryStats;
@@ -44,6 +48,19 @@ public class GUISkyBlockProfile extends StatelessView {
         Components.fill(layout);
         Components.close(layout, 49);
         Components.back(layout, 48, ctx);
+
+        layout.slot(50, (s, c) -> {
+            PlayerAchievementHandler handler = c.player().getAchievementHandler();
+            AchievementCategory category = AchievementCategory.SKYBLOCK;
+            return ItemStacks.item(Material.DIAMOND, 1, Text.of("<a>SkyBlock Achievements"), List.of(
+                Text.of("<7>View your SkyBlock Achievements"),
+                Text.of("<7>and the points you have earned."),
+                Text.empty(),
+                Text.of("<7>Unlocked: <b>{}<7>/<b>{}", handler.getUnlockedCount(category), AchievementRegistry.getCompletionCount(category)),
+                Text.of("<7>Points: <e>{}<7>/<e>{}", handler.getTotalPoints(category), AchievementRegistry.getCompletionPoints(category)),
+                Text.empty(),
+                Text.of("<e>Click to view!")));
+        }, (_, c) -> SkyBlockAchievements.open(c.player()));
 
         layout.slot(2, (s, c) -> new NonPlayerItemUpdater(new SkyBlockItem(ItemType.SKYBLOCK_MENU))
             .getUpdatedItem());

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.darkauction;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import lombok.Getter;
 import lombok.Setter;
 import net.minestom.server.MinecraftServer;
@@ -346,6 +347,7 @@ public class DarkAuctionHandler {
                     }
 
                     winner.addAndUpdateItem(skyBlockItem);
+                    SkyBlockItemAchievements.onObtained(winner, itemType);
                     DatapointInteger purchases = winner.getSkyblockDataHandler()
                             .get(SkyBlockDataHandler.Data.DARK_AUCTION_PURCHASES, DatapointInteger.class);
                     purchases.setValue(purchases.getValue() + 1);

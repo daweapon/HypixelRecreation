@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.user.fairysouls;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievementSync;
 import lombok.Getter;
 import lombok.Setter;
 import net.minestom.server.coordinate.Pos;
@@ -57,7 +58,7 @@ public class FairySoul {
             player.getSkyblockDataHandler()
                     .get(SkyBlockDataHandler.Data.FAIRY_SOULS, DatapointFairySouls.class)
                     .setValue(fairySouls);
-            player.getAchievementHandler().addProgressByTrigger("skyblock.fairy_soul_found", 1);
+            SkyBlockAchievementSync.syncFairySouls(player);
             return;
         }
 

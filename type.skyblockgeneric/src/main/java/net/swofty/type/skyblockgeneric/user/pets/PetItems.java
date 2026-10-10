@@ -54,6 +54,7 @@ public final class PetItems {
 
         Rarity before = pet.getAttributeHandler().getRarity();
         hold(pet, given);
+        if (given == ItemType.PET_ITEM_TEXTBOOK) player.getAchievementHandler().completeAchievement("skyblock.knowledge_is_power");
         player.setItemInHand(petItem.getAmount() > 1 ? withAmount(petItem, petItem.getAmount() - 1) : null);
         if (previous != null) player.addAndUpdateItem(new SkyBlockItem(previous));
         player.getPetData().refreshCachedAbilities();

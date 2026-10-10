@@ -7,11 +7,19 @@ import net.swofty.type.generic.data.datapoints.DatapointAchievementData;
 import net.swofty.type.generic.user.HypixelPlayer;
 
 import java.util.List;
+import java.util.function.Function;
 
 // Per-player handler for tracking achievement progress and firing unlock notifications.
 @RequiredArgsConstructor
 public class PlayerAchievementHandler {
+    private static volatile Function<HypixelPlayer, List<HypixelPlayer>> coopResolver = p -> List.of();
+
     private final HypixelPlayer player;
+
+    public static void setCoopResolver(Function<HypixelPlayer, List<HypixelPlayer>> resolver) {
+        coopResolver = resolver;
+    }
+
 
     public AchievementData getAchievementData() {
         return player.getDataHandler()
@@ -20,51 +28,77 @@ public class PlayerAchievementHandler {
     }
 
     public boolean addProgress(String achievementId, int amount) {
-        AchievementDefinition def = AchievementRegistry.get(achievementId);
-        if (def == null) return false;
+        return applyProgress(achievementId, amount, false, true);
+    }
 
-        AchievementData data = getAchievementData();
-        AchievementData.AchievementProgress progress = data.getOrCreate(achievementId);
-
-        boolean unlocked = progress.addProgress(def, amount);
-
-        if (unlocked) {
-            onAchievementUnlocked(def, progress);
-        }
-
-        return unlocked;
+    public boolean setProgress(String achievementId, int value) {
+        return applyProgress(achievementId, value, true, true);
     }
 
     public void addProgressByTrigger(String trigger, int amount) {
-        List<AchievementDefinition> achievements = AchievementRegistry.getByTrigger(trigger);
-        AchievementData data = getAchievementData();
-
-        for (AchievementDefinition def : achievements) {
-            if (def.isPerGame()) {
-                continue;
-            }
-
-            if (def.getType() == AchievementType.TIERED) {
-                if (!data.isTracked(def.getId())) {
-                    continue;
-                }
-            }
-
+        for (AchievementDefinition def : AchievementRegistry.getByTrigger(trigger)) {
+            if (def.isPerGame()) continue;
             addProgress(def.getId(), amount);
         }
     }
 
+    public void setProgressByTrigger(String trigger, int value) {
+        for (AchievementDefinition def : AchievementRegistry.getByTrigger(trigger)) {
+            if (def.isPerGame()) continue;
+            setProgress(def.getId(), value);
+        }
+    }
+
     public void completeAchievement(String achievementId) {
+        completeAchievement(achievementId, true);
+    }
+
+    private void completeAchievement(String achievementId, boolean share) {
         AchievementDefinition def = AchievementRegistry.get(achievementId);
-        if (def == null) return;
+        if (def == null || def.isLegacy()) return;
 
-        AchievementData data = getAchievementData();
-        AchievementData.AchievementProgress progress = data.getOrCreate(achievementId);
+        if (def.getType() == AchievementType.TIERED) {
+            applyProgress(achievementId, def.getGoalForTier(def.getMaxTier()), true, share);
+            return;
+        }
 
+        AchievementData.AchievementProgress progress = getAchievementData().getOrCreate(achievementId);
         if (!progress.isCompleted()) {
             progress.complete();
-            onAchievementUnlocked(def, progress);
+            notifyUnlocked(def, 0);
         }
+        if (share && def.isCoop()) {
+            for (PlayerAchievementHandler other : coopHandlers()) other.completeAchievement(achievementId, false);
+        }
+    }
+
+    private boolean applyProgress(String achievementId, int amount, boolean absolute, boolean share) {
+        AchievementDefinition def = AchievementRegistry.get(achievementId);
+        if (def == null || def.isLegacy()) return false;
+
+        AchievementData.AchievementProgress progress = getAchievementData().getOrCreate(achievementId);
+        int previousTier = progress.getCurrentTier();
+        int unlockedUnits = absolute ? progress.raiseProgress(def, amount) : progress.addProgress(def, amount);
+
+        if (unlockedUnits > 0) {
+            if (def.getType() == AchievementType.TIERED) {
+                for (int tier = previousTier + 1; tier <= progress.getCurrentTier(); tier++) notifyUnlocked(def, tier);
+            } else {
+                notifyUnlocked(def, 0);
+            }
+        }
+
+        if (share && def.isCoop()) {
+            for (PlayerAchievementHandler other : coopHandlers()) other.applyProgress(achievementId, amount, absolute, false);
+        }
+        return unlockedUnits > 0;
+    }
+
+    private List<PlayerAchievementHandler> coopHandlers() {
+        return coopResolver.apply(player).stream()
+                .filter(other -> !other.getUuid().equals(player.getUuid()))
+                .map(HypixelPlayer::getAchievementHandler)
+                .toList();
     }
 
     public boolean hasAchievement(String achievementId) {
@@ -149,26 +183,24 @@ public class PlayerAchievementHandler {
         return nowTracking;
     }
 
-    private void onAchievementUnlocked(AchievementDefinition def, AchievementData.AchievementProgress progress) {
-        AchievementStatisticsService.recordUnlock(def, progress);
+    private void notifyUnlocked(AchievementDefinition def, int tier) {
+        AchievementStatisticsService.recordUnlock(def, tier);
 
-        String tierText = "";
-        if (def.getType() == AchievementType.TIERED) {
-            tierText = " " + toRoman(progress.getCurrentTier());
-        }
+        boolean tiered = def.getType() == AchievementType.TIERED;
+        String tierText = tiered ? " " + toRoman(tier) : "";
+        int points = tiered ? def.getPointsForTier(tier) : def.getPoints();
 
-        // TODO: make this actually clickable to open the achievements menu
         Text tierHover = Text.of("""
                 <a>{}{}
                 <7>{}
 
                 <7>Reward:
-                 <8>+<e>5 <7>Achievement Points
+                 <8>+<e>{} <7>Achievement Points
 
                 <e>Click to open achievements menu!""",
-                def.getName(), tierText, def.getDescription());
+                def.getName(), tierText, def.getDescriptionForTier(tier), points);
 
-        player.sendMessage("<e><k>A</k><a>>>   Achievement Unlocked: <6><hover:'{0}'>{1}{2}</hover><a>   \\<\\<<e><k>A",
+        player.sendMessage("<e><k>A</k><a>>>   Achievement Unlocked: <hover:'{0}'><click:run:'/achievements'><6>{1}{2}</click></hover><a>   \\<\\<<e><k>A",
                 tierHover, def.getName(), tierText);
 
         player.playSound(net.kyori.adventure.sound.Sound.sound(

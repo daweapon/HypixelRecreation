@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.minion.extension.extensions;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -47,6 +48,7 @@ public class MinionUpgradeExtension extends MinionExtension {
                         p.getInventory().setCursorItem(ItemStack.AIR);
                         setItemTypePassedIn(itemTypeLinker);
                         minion.getExtensionData().setData(slot, MinionUpgradeExtension.this);
+                        SkyBlockItemAchievements.onMinionUpgrade(player, itemTypeLinker);
                         e.setCancelled(true);
                     } else {
                         player.sendMessage("<c>This item is not a valid Minion Upgrade.");

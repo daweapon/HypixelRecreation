@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.gui.inventories;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockEnchantingAchievements;
 import net.minestom.server.event.inventory.InventoryClickEvent;
 import net.minestom.server.event.inventory.InventoryCloseEvent;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
@@ -394,6 +395,7 @@ public class GUIAnvil extends HypixelInventoryGUI {
 
         SkyBlockItem result = new SkyBlockItem(upgradeItem.getItemStack());
         component.apply(result, sacrificeItem);
+        SkyBlockEnchantingAchievements.onAnvilCombine(player, upgradeItem, sacrificeItem, result, requiredLevels);
 
         upgradeItem = null;
         sacrificeItem = null;

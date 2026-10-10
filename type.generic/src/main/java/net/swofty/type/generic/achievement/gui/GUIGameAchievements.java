@@ -1,4 +1,4 @@
-package net.swofty.type.lobby.gui;
+package net.swofty.type.generic.achievement.gui;
 
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
@@ -17,10 +17,12 @@ import net.swofty.type.generic.user.HypixelPlayer;
 
 public class GUIGameAchievements extends HypixelInventoryGUI {
     private final AchievementCategory category;
+    private final AchievementNav nav;
 
-    public GUIGameAchievements(AchievementCategory category) {
+    public GUIGameAchievements(AchievementCategory category, AchievementNav nav) {
         super(Text.literal(category.getDisplayName() + " Achievements"), InventoryType.CHEST_4_ROW);
         this.category = category;
+        this.nav = nav;
     }
 
     @Override
@@ -29,9 +31,9 @@ public class GUIGameAchievements extends HypixelInventoryGUI {
         PlayerAchievementHandler handler = player.getAchievementHandler();
 
         int totalUnlocked = handler.getUnlockedCount(category);
-        int totalCount = AchievementRegistry.getByCategory(category).size();
+        int totalCount = AchievementRegistry.getCompletionCount(category);
         int totalPoints = handler.getTotalPoints(category);
-        int maxPoints = AchievementRegistry.getTotalPoints(category);
+        int maxPoints = AchievementRegistry.getCompletionPoints(category);
         double unlockedPercent = totalCount > 0 ? (totalUnlocked * 100.0 / totalCount) : 0;
         double pointsPercent = maxPoints > 0 ? (totalPoints * 100.0 / maxPoints) : 0;
 
@@ -62,7 +64,7 @@ public class GUIGameAchievements extends HypixelInventoryGUI {
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                new GUIChallengeAchievements(category).open(player);
+                new GUIChallengeAchievements(category, nav).open(player);
             }
         });
 
@@ -93,7 +95,7 @@ public class GUIGameAchievements extends HypixelInventoryGUI {
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                new GUITieredAchievements(category).open(player);
+                new GUITieredAchievements(category, nav).open(player);
             }
         });
 
@@ -102,12 +104,12 @@ public class GUIGameAchievements extends HypixelInventoryGUI {
             public ItemStack.Builder getItem(HypixelPlayer player) {
                 return ItemStacks.item(Material.ARROW, """
                         <a>Go Back
-                        <7>To Achievements""");
+                        <7>To {}""", nav.label());
             }
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                new GUIAchievementsMenu().open(player);
+                nav.back().accept(player);
             }
         });
 
@@ -142,7 +144,7 @@ public class GUIGameAchievements extends HypixelInventoryGUI {
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                new GUISeasonalAchievements(category).open(player);
+                new GUISeasonalAchievements(category, nav).open(player);
             }
         });
 

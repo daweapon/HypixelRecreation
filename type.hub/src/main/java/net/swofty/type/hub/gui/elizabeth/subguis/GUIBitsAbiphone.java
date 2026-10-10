@@ -1,5 +1,6 @@
 package net.swofty.type.hub.gui.elizabeth.subguis;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import net.minestom.server.event.inventory.InventoryCloseEvent;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.Inventory;
@@ -40,6 +41,7 @@ public class GUIBitsAbiphone extends HypixelInventoryGUI {
                     SkyBlockItem finalItem = new SkyBlockItem(itemStack.build());
                     if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.PURCHASE_CONFIRMATION_BITS)) {
                         player.addAndUpdateItem(finalItem);
+                        SkyBlockItemAchievements.onObtained(player, item);
                         player.removeBits(price);
                     } else {
                         new GUIBitsConfirmBuy(finalItem, price).open(player);

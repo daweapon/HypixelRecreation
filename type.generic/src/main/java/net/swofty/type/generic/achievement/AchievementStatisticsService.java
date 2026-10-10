@@ -69,11 +69,11 @@ public class AchievementStatisticsService {
         }
     }
 
-    public static void recordUnlock(AchievementDefinition def, AchievementData.AchievementProgress progress) {
+    public static void recordUnlock(AchievementDefinition def, int tier) {
         if (SwoftyData.jedisPool() == null) return;
 
         String field = def.getType() == AchievementType.TIERED
-                ? def.getId() + ":" + progress.getCurrentTier()
+                ? def.getId() + ":" + tier
                 : def.getId();
 
         try (Jedis jedis = SwoftyData.jedisPool().getResource()) {

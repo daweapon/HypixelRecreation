@@ -50,6 +50,7 @@ public class ActionDrinkPotion implements HypixelEventClass {
 
         // Apply the potion effect
         PotionEffectService.applyToPlayer(player, potionData);
+        awardDrinkAchievements(player, effectType, potionData.getLevel());
 
         // Replace the potion with a glass bottle
         int heldSlot = player.getHeldSlot();
@@ -66,6 +67,19 @@ public class ActionDrinkPotion implements HypixelEventClass {
         } else {
             // Single potion, replace with glass bottle
             player.getInventory().setItemStack(heldSlot, ItemStack.of(Material.GLASS_BOTTLE));
+        }
+    }
+
+    private static void awardDrinkAchievements(SkyBlockPlayer player, String effectType, int level) {
+        switch (effectType) {
+            case "BURNING" -> player.getAchievementHandler().completeAchievement("skyblock.no_enchants_needed");
+            case "AGILITY" -> player.getAchievementHandler().completeAchievement("skyblock.agile");
+            case "ADRENALINE" -> player.getAchievementHandler().completeAchievement("skyblock.brain_power");
+            case "CRITICAL" -> {
+                if (level >= 3) player.getAchievementHandler().completeAchievement("skyblock.overkill");
+            }
+            default -> {
+            }
         }
     }
 }

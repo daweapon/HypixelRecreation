@@ -1,37 +1,41 @@
-package net.swofty.type.lobby.gui;
+package net.swofty.type.generic.achievement.gui;
 
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.text.Text;
-import net.swofty.type.generic.achievement.*;
+import net.swofty.type.generic.achievement.AchievementCategory;
+import net.swofty.type.generic.achievement.AchievementDefinition;
+import net.swofty.type.generic.achievement.AchievementRegistry;
+import net.swofty.type.generic.achievement.AchievementStatisticsService;
+import net.swofty.type.generic.achievement.AchievementType;
+import net.swofty.type.generic.achievement.PlayerAchievementHandler;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 
-import net.minestom.server.inventory.click.Click;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class GUISeasonalAchievements extends HypixelInventoryGUI {
-    private static final int ACHIEVEMENTS_PER_PAGE = 21;
+public class GUIChallengeAchievements extends HypixelInventoryGUI {
+    private static final int ACHIEVEMENTS_PER_PAGE = 28;
     private static final int[] ACHIEVEMENT_SLOTS = {
             10, 11, 12, 13, 14, 15, 16,
             19, 20, 21, 22, 23, 24, 25,
-            28, 29, 30, 31, 32, 33, 34
+            28, 29, 30, 31, 32, 33, 34,
+            37, 38, 39, 40, 41, 42, 43
     };
 
     private final AchievementCategory category;
+    private final AchievementNav nav;
     private int page = 0;
     private SortMode sortMode = SortMode.A_TO_Z;
     private CompletionSort completionSort = CompletionSort.NO_SORT;
-    private boolean showActiveOnly = true;
 
     private enum SortMode {
         A_TO_Z("A to Z", "Sorts by name from A to Z.", "Z to A"),
@@ -60,9 +64,10 @@ public class GUISeasonalAchievements extends HypixelInventoryGUI {
         }
     }
 
-    public GUISeasonalAchievements(AchievementCategory category) {
-        super(Text.literal(category.getDisplayName() + " Seasonal Achievements"), InventoryType.CHEST_6_ROW);
+    public GUIChallengeAchievements(AchievementCategory category, AchievementNav nav) {
+        super(Text.literal(category.getDisplayName() + " Challenge Achievements"), InventoryType.CHEST_6_ROW);
         this.category = category;
+        this.nav = nav;
     }
 
     @Override
@@ -70,22 +75,20 @@ public class GUISeasonalAchievements extends HypixelInventoryGUI {
         HypixelPlayer player = e.player();
         PlayerAchievementHandler handler = player.getAchievementHandler();
 
-        List<AchievementDefinition> seasonalAchievements = getFilteredAchievements();
-        seasonalAchievements = sortAchievements(seasonalAchievements, handler);
+        List<AchievementDefinition> achievements = AchievementRegistry.getByCategory(category).stream()
+                .filter(a -> a.getType() == AchievementType.CHALLENGE)
+                .toList();
 
-        int totalCount = seasonalAchievements.size();
-        int unlockedCount = (int) seasonalAchievements.stream()
-                .filter(a -> handler.hasAchievement(a.getId()))
-                .count();
+        achievements = sortAchievements(achievements, handler);
 
-        int totalUnlocked = handler.getUnlockedCount(category);
-        int totalAchievements = AchievementRegistry.getByCategory(category).size();
-        int totalPoints = handler.getTotalPoints(category);
-        int maxPoints = AchievementRegistry.getTotalPoints(category);
-        double unlockedPercent = totalAchievements > 0 ? (totalUnlocked * 100.0 / totalAchievements) : 0;
+        int totalCount = achievements.size();
+        int unlockedCount = handler.getUnlockedCount(category, AchievementType.CHALLENGE);
+        int totalPoints = handler.getPoints(category, AchievementType.CHALLENGE);
+        int maxPoints = AchievementRegistry.getTotalPoints(category, AchievementType.CHALLENGE);
+        double unlockedPercent = totalCount > 0 ? (unlockedCount * 100.0 / totalCount) : 0;
         double pointsPercent = maxPoints > 0 ? (totalPoints * 100.0 / maxPoints) : 0;
 
-        populateAchievements(seasonalAchievements, handler);
+        populateAchievements(achievements, handler);
 
         set(new GUIClickableItem(47) {
             @Override
@@ -125,7 +128,7 @@ public class GUISeasonalAchievements extends HypixelInventoryGUI {
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                new GUIGameAchievements(category).open(player);
+                new GUIGameAchievements(category, nav).open(player);
             }
         });
 
@@ -133,12 +136,12 @@ public class GUISeasonalAchievements extends HypixelInventoryGUI {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer player) {
                 return ItemStacks.of(category.getMaterial(), 1, """
-                        <a>Total Completion
+                        <a>Challenge Achievements
                         <8>{}
                         <7>Unlocked: <b>{}<7>/<b>{} <8>({}%)
                         <7>Points: <e>{}<7>/<e>{} <8>({}%)""",
                         category.getDisplayName(),
-                        totalUnlocked, totalAchievements, (int) unlockedPercent,
+                        unlockedCount, totalCount, (int) unlockedPercent,
                         totalPoints, maxPoints, (int) pointsPercent);
             }
         });
@@ -146,19 +149,15 @@ public class GUISeasonalAchievements extends HypixelInventoryGUI {
         set(new GUIClickableItem(50) {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer player) {
-                String toggleText = showActiveOnly ? "Active Seasonal Achievements" : "All Seasonal Achievements";
-                Text actionText = showActiveOnly
-                        ? Text.of("<7>Click to show all achievements!")
-                        : Text.of("<7>Click to show active only!");
-
-                return ItemStacks.item(Material.SUGAR, 1, Text.of("<6>{}", toggleText), List.of(actionText));
+                return ItemStacks.item(Material.DIAMOND_BLOCK, """
+                        <a>Go to Tiered Achievements
+                        <7>Click to view {} Tiered
+                        <7>Achievements.""", category.getDisplayName());
             }
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                showActiveOnly = !showActiveOnly;
-                page = 0;
-                open(player);
+                new GUITieredAchievements(category, nav).open(player);
             }
         });
 
@@ -196,12 +195,6 @@ public class GUISeasonalAchievements extends HypixelInventoryGUI {
         }
 
         updateItemStacks(getInventory(), player);
-    }
-
-    private List<AchievementDefinition> getFilteredAchievements() {
-        return AchievementRegistry.getByCategory(category).stream()
-                .filter(a -> a.getType() == AchievementType.SEASONAL)
-                .collect(Collectors.toList());
     }
 
     private List<AchievementDefinition> sortAchievements(List<AchievementDefinition> achievements, PlayerAchievementHandler handler) {
@@ -250,24 +243,25 @@ public class GUISeasonalAchievements extends HypixelInventoryGUI {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer player) {
                 boolean unlocked = handler.hasAchievement(achievement.getId());
-                SeasonType season = achievement.getSeason();
+
+                if (achievement.isSecret() && !unlocked) {
+                    return ItemStacks.item(Material.COAL, 1, Text.of("<c>Secret Achievement"), List.of(
+                            Text.of("<7>???"),
+                            Text.empty(),
+                            Text.of("<c>Achievement locked!")));
+                }
 
                 Material mat = unlocked ? Material.DIAMOND : Material.COAL;
 
                 List<Text> lore = new ArrayList<>();
-                lore.add(Text.of("<7>{}", achievement.getDescription()));
+                for (String line : achievement.getDescription().split("\n")) lore.add(Text.of("<f>{}", line));
                 lore.add(Text.empty());
                 lore.add(Text.of("<7>Reward:"));
                 lore.add(Text.of("<8>+<e>{} <7>Achievement Points", achievement.getPoints()));
                 lore.add(Text.empty());
 
-                if (season != null) {
-                    lore.add(season.getFormattedName());
-                    lore.add(Text.empty());
-                }
-
                 String unlockPct = AchievementStatisticsService.getFormattedPercentage(achievement.getId());
-                lore.add(Text.of("<7>Unlocked by <f>{}<7>% of players!", unlockPct));
+                lore.add(Text.of("<7>Unlocked by <f>{}<7>% of {} players!", unlockPct, category.getDisplayName()));
                 lore.add(Text.empty());
 
                 if (unlocked) {

@@ -52,6 +52,9 @@ public final class FishingService {
             false
         );
         SESSIONS.put(player.getUuid(), session);
+        if (rod.getAttributeHandler().getPotentialType() == net.swofty.commons.skyblock.item.ItemType.LEGEND_ROD) {
+            player.getAchievementHandler().completeAchievement("skyblock.legendary_rod");
+        }
         return session;
     }
 

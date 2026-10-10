@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.minion;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -70,6 +71,7 @@ public abstract class MinionAction {
                 double percentage = shippingItem.getComponent(MinionShippingComponent.class).getPercentageOfOriginalPrice();
                 double sellValue = sellAmount * item.getAmount() * (percentage / 100);
                 shippingExtension.addCoins(sellValue, item.getAmount());
+                SkyBlockItemAchievements.onMinionSold(islandMinion, shippingExtension.getItemTypePassedIn());
 
                 extensionData.setData(MinionExtensions.SHIPPING_SLOT.getSlots()[0], shippingExtension);
             }

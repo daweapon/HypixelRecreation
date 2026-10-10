@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.minion.extension.extensions;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import lombok.NonNull;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.click.Click;
@@ -100,6 +101,7 @@ public class MinionFuelExtension extends MinionExtension {
                         if (!fits(minion, fuelItem, player)) return;
                         p.getInventory().setCursorItem(ItemStack.AIR);
                         MinionFuelExtension.this.addFuel(minion, slot, fuelItem);
+                        SkyBlockItemAchievements.onMinionUpgrade(player, fuelItem.getAttributeHandler().getPotentialType());
                     } else {
                         player.sendMessage("<c>This item is not a valid Minion Fuel item.");
                     }
@@ -158,8 +160,10 @@ public class MinionFuelExtension extends MinionExtension {
                     player.sendMessage("<a>Replaced your old fuel!");
 
                 int added = MinionFuelExtension.this.addFuel(minion, slot, fuelItem);
-                if (added > 0)
+                if (added > 0) {
+                    SkyBlockItemAchievements.onMinionUpgrade(player, fuelItem.getAttributeHandler().getPotentialType());
                     fuelItem.setAmount(fuelItem.getAmount() - added);
+                }
 
                 if (fuelItem.getAmount() > 0) {
                     p.getInventory().setCursorItem(new NonPlayerItemUpdater(fuelItem.getItemStack()).getUpdatedItem().build());

@@ -27,9 +27,9 @@ class KuudraLaunchTest {
     }
 
     @Test
-    void theShippedSwitchIsOff() throws Exception {
+    void theShippedSwitchIsOn() throws Exception {
         assertTrue(Files.isRegularFile(SHIPPED));
-        assertFalse(KuudraLaunch.read(SHIPPED));
+        assertTrue(KuudraLaunch.read(SHIPPED));
     }
 
     @Test

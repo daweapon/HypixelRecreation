@@ -238,6 +238,7 @@ public class ElectionManager {
         ).thenAccept(response -> {
             if (response.success()) {
                 playerVoteCache.put(accountId, candidateName);
+                if ("Marina".equals(candidateName)) player.getAchievementHandler().completeAchievement("skyblock.cool_off");
                 if (response.tallies() != null) {
                     electionData.updateTallies(response.tallies());
                 }

@@ -7,6 +7,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.achievement.AchievementFlags;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.missions.spidersden.MissionTheFlintBros;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -50,6 +51,8 @@ public class NPCRick extends HypixelNPC {
         SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
         if (isInDialogue(player)) return;
         MissionData missionData = player.getMissionData();
+        AchievementFlags.mark(player, "met_rick");
+        if (AchievementFlags.has(player, "met_pat")) player.getAchievementHandler().completeAchievement("skyblock.the_flint_bros");
 
         if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_RICK)) {
             setDialogue(player, "initial-hello").thenRun(() -> {

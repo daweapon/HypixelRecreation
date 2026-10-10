@@ -111,6 +111,9 @@ public class Present {
 				).setValue(new DatapointPresentYear.YearData(currentYear, value));
 				player.sendMessage("<2><l>GIFT! </l><a>You found a <f>White Gift<a>! <7>(<f>{}<7>/<a>{}<7>)", value.size(), WhiteGiftLocations.GIFTS_PER_YEAR);
 				((SkyBlockPlayer) player).addAndUpdateItem(ItemType.WHITE_GIFT);
+				if (value.size() >= WhiteGiftLocations.GIFTS_PER_YEAR) {
+					((SkyBlockPlayer) player).getAchievementHandler().completeAchievement("skyblock.happy_holidays");
+				}
 			}
 		});
 		entity.setInstance(instance, position.add(0.5, 0, 0.5));

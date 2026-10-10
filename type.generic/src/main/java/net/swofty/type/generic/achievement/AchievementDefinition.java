@@ -21,6 +21,28 @@ public class AchievementDefinition {
     private final List<AchievementTier> tiers;
     private final boolean perGame;
     private final boolean customCheck;
+    private final boolean secret;
+    private final boolean legacy;
+
+    public static final String COOP_PREFIX = "[Co-op or you]";
+    private static final String VALUE_PLACEHOLDER = "%%value%%";
+
+    public boolean isCoop() {
+        return description != null && description.startsWith(COOP_PREFIX);
+    }
+
+    public boolean countsTowardsCompletion() {
+        return type != AchievementType.SEASONAL && !legacy;
+    }
+
+    public String getDescriptionForTier(int tier) {
+        if (type != AchievementType.TIERED || description == null) return description;
+        return description.replace(VALUE_PLACEHOLDER, String.format("%,d", getGoalForTier(Math.max(1, tier))));
+    }
+
+    public int getUnlockableCount() {
+        return type == AchievementType.TIERED ? getMaxTier() : 1;
+    }
 
     public int getTotalPoints() {
         if (type == AchievementType.TIERED && tiers != null) {

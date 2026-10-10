@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
+import net.swofty.type.skyblockgeneric.achievement.PetAchievements;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkyBlockExperience;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
@@ -60,6 +61,7 @@ public final class PetScore {
     }
 
     public static void syncSkyBlockXP(SkyBlockPlayer player) {
+        PetAchievements.refresh(player);
         DatapointSkyBlockExperience.PlayerSkyBlockExperience experience = player.getSkyBlockExperience();
         double earned = (double) of(player) * SKYBLOCK_XP_PER_POINT;
         if (earned > experience.getSourceXP(SkyBlockXPSource.PET_SCORE)) {

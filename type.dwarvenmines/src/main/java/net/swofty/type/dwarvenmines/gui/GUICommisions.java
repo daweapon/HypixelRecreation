@@ -1,5 +1,6 @@
 package net.swofty.type.dwarvenmines.gui;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievementSync;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import net.swofty.type.skyblockgeneric.accessory.handler.UtilityAccessories;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
@@ -100,6 +101,7 @@ public class GUICommisions extends HypixelInventoryGUI {
 						activeCommission.setClaimed(true);
 						commissionData.completeCommission();
 						Commissions.saveCommissionData(player, commissionData);
+						SkyBlockAchievementSync.syncCommissions(player);
 						Commissions.replaceCommissionAt(player, index);
 						new GUICommisions().open(player);
 					}

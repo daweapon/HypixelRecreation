@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.slayer;
 
+import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievementSync;
 import java.util.Optional;
 import java.util.stream.Stream;
 import lombok.AccessLevel;
@@ -182,8 +183,12 @@ public final class SlayerService {
         SlayerRngMeter.addXp(progress, quest.tier(), slayerXp);
         progress.setXp(progress.getXp() + slayerXp);
         progress.addCompletion(quest.tier());
+        if (quest.type() == SlayerType.REVENANT_HORROR && quest.tier() == SlayerTier.V) {
+            player.getAchievementHandler().completeAchievement("skyblock.there_can_only_be_one");
+        }
         data.setActiveQuest(null);
         save(player, data);
+        SkyBlockAchievementSync.syncSlayer(player);
 
         int level = definition.levelForXp(progress.getXp());
         player.sendMessage("<a><l>SLAYER QUEST COMPLETE!");

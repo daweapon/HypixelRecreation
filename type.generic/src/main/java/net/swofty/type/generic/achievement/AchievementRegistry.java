@@ -85,7 +85,9 @@ public class AchievementRegistry {
                     .category(category)
                     .trigger((String) data.get("trigger"))
                     .perGame(Boolean.TRUE.equals(data.get("perGame")))
-                    .customCheck(Boolean.TRUE.equals(data.get("customCheck")));
+                    .customCheck(Boolean.TRUE.equals(data.get("customCheck")))
+                    .secret(Boolean.TRUE.equals(data.get("secret")))
+                    .legacy(Boolean.TRUE.equals(data.get("legacy")));
 
             if (type == AchievementType.SEASONAL && data.containsKey("season")) {
                 builder.season(SeasonType.fromString((String) data.get("season")));
@@ -184,6 +186,34 @@ public class AchievementRegistry {
 
     public static int getTotalPoints(AchievementCategory category, AchievementType type) {
         return getByCategory(category, type).stream()
+                .mapToInt(AchievementDefinition::getTotalPoints)
+                .sum();
+    }
+
+    public static int getCompletionCount(AchievementCategory category) {
+        return getByCategory(category).stream()
+                .filter(AchievementDefinition::countsTowardsCompletion)
+                .mapToInt(AchievementDefinition::getUnlockableCount)
+                .sum();
+    }
+
+    public static int getCompletionPoints(AchievementCategory category) {
+        return getByCategory(category).stream()
+                .filter(AchievementDefinition::countsTowardsCompletion)
+                .mapToInt(AchievementDefinition::getTotalPoints)
+                .sum();
+    }
+
+    public static int getTotalCompletionCount() {
+        return ACHIEVEMENTS.values().stream()
+                .filter(AchievementDefinition::countsTowardsCompletion)
+                .mapToInt(AchievementDefinition::getUnlockableCount)
+                .sum();
+    }
+
+    public static int getTotalCompletionPoints() {
+        return ACHIEVEMENTS.values().stream()
+                .filter(AchievementDefinition::countsTowardsCompletion)
                 .mapToInt(AchievementDefinition::getTotalPoints)
                 .sum();
     }

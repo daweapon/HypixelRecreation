@@ -125,7 +125,7 @@ achievements:
     type: CHALLENGE
     points: 10
     trigger: "skyblock.evolution_trigger"
-    goal: 1
+    goal: 50
 
   - id: "skyblock.agile"
     name: "Agile"
@@ -281,7 +281,7 @@ achievements:
 
   - id: "skyblock.handyman"
     name: "Handyman"
-    description: "Tune the Beacon on Galatea."
+    description: "Tune a Beacon on Galatea"
     type: CHALLENGE
     points: 5
     trigger: "skyblock.handyman_trigger"
@@ -510,6 +510,7 @@ achievements:
     points: 10
     trigger: "skyblock.what_is_this_place_trigger"
     goal: 1
+    secret: true
 
   - id: "skyblock.scam"
     name: "Scam?"
@@ -705,7 +706,7 @@ achievements:
 
   - id: "skyblock.shining_scales"
     name: "Shining Scales"
-    description: "Fish up a gold tier Trophy Fish."
+    description: "Fish up any gold tier Trophy"
     type: CHALLENGE
     points: 5
     trigger: "skyblock.shining_scales_trigger"
@@ -902,6 +903,7 @@ achievements:
     points: 5
     trigger: "skyblock.wow_thats_useful_trigger"
     goal: 1
+    legacy: true
 
   - id: "skyblock.at_the_speed_of_light"
     name: "At the speed of light"
@@ -1030,6 +1032,7 @@ achievements:
     points: 10
     trigger: "skyblock.sirius_business_trigger"
     goal: 1
+    secret: true
 
   - id: "skyblock.the_flash"
     name: "The Flash"
@@ -1182,6 +1185,7 @@ achievements:
     points: 5
     trigger: "skyblock.rebirth_trigger"
     goal: 1
+    secret: true
 
   - id: "skyblock.s_squad"
     name: "S+ Squad"
@@ -1265,7 +1269,7 @@ achievements:
 
   - id: "skyblock.wanderer"
     name: "Wanderer"
-    description: "Discover every Area of the Hub"
+    description: "Discover every Area of the Hub\nNote: Does not include the Regalia Room"
     type: CHALLENGE
     points: 5
     trigger: "skyblock.wanderer_trigger"
@@ -1390,6 +1394,7 @@ achievements:
     points: 5
     trigger: "skyblock.dragon_slayer_trigger"
     goal: 1
+    secret: true
 
   - id: "skyblock.happy_new_year"
     name: "Happy New Year"
@@ -1543,3 +1548,308 @@ achievements:
     trigger: "skyblock.your_adventure_begins_trigger"
     goal: 1
 
+  - id: "skyblock.i_am_superior"
+    name: "I am Superior"
+    description: "Take down a Superior Dragon."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.i_am_superior_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.jake_s_mystery"
+    name: "Jake's Mystery"
+    description: "Complete Beth's Quest."
+    type: CHALLENGE
+    points: 15
+    trigger: "skyblock.jake_s_mystery_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.too_much_joy"
+    name: "Too much joy"
+    description: "Sometimes too much happiness can kill you."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.too_much_joy_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.defeating_death"
+    name: "Defeating Death"
+    description: "Slay a Deathmite."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.defeating_death_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.tragedy_reversed"
+    name: "Tragedy reversed"
+    description: "Murder your past self."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.tragedy_reversed_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.royal_conversation"
+    name: "Royal Conversation"
+    description: "Finish talking to the Royal Resident."
+    type: CHALLENGE
+    points: 15
+    trigger: "skyblock.royal_conversation_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.cleaning_house"
+    name: "Cleaning House"
+    description: "Break all cobwebs in the Critter Safari."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.cleaning_house_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.hasta_la_vista"
+    name: "Hasta la vista!"
+    description: "Receive a Postcard from your minion."
+    type: CHALLENGE
+    points: 15
+    trigger: "skyblock.hasta_la_vista_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.what_the_flip"
+    name: "What the flip?"
+    description: "Flip the iceberg in the Critter Safari."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.what_the_flip_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.nightmare"
+    name: "Nightmare"
+    description: "Complete Bednom's secret quest."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.nightmare_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.the_cult_of_the_fallen_star"
+    name: "The Cult of the Fallen Star"
+    description: "Wear the Fallen Star Helmet to a cult meeting."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.the_cult_of_the_fallen_star_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.zoop"
+    name: "Zoop!"
+    description: "Pop a link of 10 Puffs."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.zoop_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.this_is_the_way"
+    name: "This is the Way"
+    description: "Find the Belly of the Beast."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.this_is_the_way_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.existential_revelations"
+    name: "Existential Revelations"
+    description: "Find the mushroom dream in the Catacombs."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.existential_revelations_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.the_itsy_bitsy_spider"
+    name: "The Itsy Bitsy Spider"
+    description: "Feed a player to Aranya."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.the_itsy_bitsy_spider_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.lily_mania"
+    name: "Lily Mania"
+    description: "Help create a lily pad explosion on the Lotus Atoll."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.lily_mania_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.empty_flower_pot"
+    name: "Empty Flower Pot?"
+    description: "Keep clicking the flower pot in the Birch Park for 5 minutes."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.empty_flower_pot_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.genius"
+    name: "Genius"
+    description: "Obtain a Free Will from Ubik."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.genius_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.the_miracle_in_a_sunbeam"
+    name: "The Miracle in a Sunbeam"
+    description: "Encounter a Rainbug."
+    type: CHALLENGE
+    points: 15
+    trigger: "skyblock.the_miracle_in_a_sunbeam_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.responsible_pet_owner"
+    name: "Responsible Pet Owner"
+    description: "Have your rabbit get squashed in the Half-Eaten Cave."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.responsible_pet_owner_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.the_ultimate_scheme"
+    name: "The ultimate scheme"
+    description: "Secure the final Timecharm in the Rift."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.the_ultimate_scheme_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.shrimp"
+    name: "Shrimp!?!"
+    description: "Obtain Shrimp the Traveler Fish."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.shrimp_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.the_ring"
+    name: "The Ring"
+    description: "Throw the Eternal Flame Ring into a specific pool of lava."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.the_ring_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.that_s_not_the_exit"
+    name: "That's... not the exit..."
+    description: "Help Ikrus."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.that_s_not_the_exit_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.maximum_power"
+    name: "Maximum Power"
+    description: "Defeat Sun Gecko with all 7 modifiers enabled."
+    type: CHALLENGE
+    points: 15
+    trigger: "skyblock.maximum_power_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.geronimo"
+    name: "Geronimo!"
+    description: "Get launched into the air by the Blazing Volcano."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.geronimo_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.meal_fit_for_a_king"
+    name: "Meal fit for a King"
+    description: "Put a Trophy Fish into the Melancholic Viking's furnace."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.meal_fit_for_a_king_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.the_first_to_have_ever_done_it"
+    name: "The first to have ever done it"
+    description: "Return back from the breach."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.the_first_to_have_ever_done_it_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.finally_over"
+    name: "Finally over..."
+    description: "Murder Special Agent Amog."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.finally_over_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.if_you_wish_to_defeat_me"
+    name: "\"If you wish to defeat me...\""
+    description: "Defeat Sun Gecko."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.if_you_wish_to_defeat_me_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.i_knew_it"
+    name: "I knew it!"
+    description: "Unlock a Secret Armor Set."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.i_knew_it_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.wasted_potential"
+    name: "Wasted Potential"
+    description: "Feed a Staff of the Volcano to a Cow."
+    type: CHALLENGE
+    points: 5
+    trigger: "skyblock.wasted_potential_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.end_credits"
+    name: "End Credits"
+    description: "Face your demise with the Temporal Pillar in the Rift."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.end_credits_trigger"
+    goal: 1
+    secret: true
+
+  - id: "skyblock.top_of_the_wizard_food_chain"
+    name: "Top of the Wizard food chain"
+    description: "Become Wizardman."
+    type: CHALLENGE
+    points: 10
+    trigger: "skyblock.top_of_the_wizard_food_chain_trigger"
+    goal: 1
+    secret: true

@@ -1,4 +1,4 @@
-package net.swofty.type.lobby.gui;
+package net.swofty.type.generic.achievement.gui;
 
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
@@ -38,6 +38,7 @@ public class GUITieredAchievements extends HypixelInventoryGUI {
     private static final String LOCKED_HEAD = "967a2f218a6e6e38f2b545f6c17733f4ef9bbb288e75402949c052189ee";
 
     private final AchievementCategory category;
+    private final AchievementNav nav;
     private int page = 0;
     private SortMode sortMode = SortMode.A_TO_Z;
 
@@ -52,9 +53,10 @@ public class GUITieredAchievements extends HypixelInventoryGUI {
         }
     }
 
-    public GUITieredAchievements(AchievementCategory category) {
+    public GUITieredAchievements(AchievementCategory category, AchievementNav nav) {
         super(Text.literal(category.getDisplayName() + " Tiered Achievements"), InventoryType.CHEST_6_ROW);
         this.category = category;
+        this.nav = nav;
     }
 
     @Override
@@ -96,7 +98,7 @@ public class GUITieredAchievements extends HypixelInventoryGUI {
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                new GUIGameAchievements(category).open(player);
+                new GUIGameAchievements(category, nav).open(player);
             }
         });
 
@@ -125,7 +127,7 @@ public class GUITieredAchievements extends HypixelInventoryGUI {
 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-                new GUIChallengeAchievements(category).open(player);
+                new GUIChallengeAchievements(category, nav).open(player);
             }
         });
 
@@ -231,7 +233,7 @@ public class GUITieredAchievements extends HypixelInventoryGUI {
                         achievement.getName(), AchievementTier.toRomanNumeral(tierNum));
 
                 List<Text> lore = new ArrayList<>();
-                lore.add(Text.of("<f>{}", achievement.getDescription()));
+                lore.add(Text.of("<f>{}", achievement.getDescriptionForTier(tierNum)));
                 lore.add(Text.empty());
 
                 if (unlocked) {
@@ -252,7 +254,7 @@ public class GUITieredAchievements extends HypixelInventoryGUI {
 
                 lore.add(Text.empty());
                 String unlockPct = AchievementStatisticsService.getFormattedPercentage(achievement.getId(), tierNum);
-                lore.add(Text.of("<7>Unlocked by <f>{}<7>% of players!", unlockPct));
+                lore.add(Text.of("<7>Unlocked by <f>{}<7>% of {} players!", unlockPct, category.getDisplayName()));
 
                 if (!isFullyCompleted) {
                     lore.add(Text.empty());
@@ -260,7 +262,8 @@ public class GUITieredAchievements extends HypixelInventoryGUI {
                         lore.add(Text.of("<6>Currently tracking this achievement!"));
                         lore.add(Text.of("<e>Click to stop tracking."));
                     } else {
-                        lore.add(Text.of("<7>Track this achievement to gain progress."));
+                        lore.add(Text.of("<7>Track this achievement to show its"));
+                        lore.add(Text.of("<7>progress in this menu."));
                         lore.add(Text.of("<e>Click to track!"));
                     }
                 }

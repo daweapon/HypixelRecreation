@@ -70,7 +70,10 @@ public final class GiftOpening {
         if (hollyDye) {
             broadcastSanta(giver, opener, new SkyBlockItem(ItemType.DYE_HOLLY).getDisplayNameText(), gift);
         }
-        if (isPresent(giver)) SnowSuit.addGiftGiven(giver);
+        if (isPresent(giver)) {
+            SnowSuit.addGiftGiven(giver);
+            GiftAchievements.record(giver, opener);
+        }
     }
 
     private static Text grant(SkyBlockPlayer player, GiftReward reward, SkillCategories skill, PotionEffectType potion,

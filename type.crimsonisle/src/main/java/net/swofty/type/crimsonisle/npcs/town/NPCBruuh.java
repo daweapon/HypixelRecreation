@@ -39,6 +39,7 @@ public class NPCBruuh extends FactionVillagerNPC {
             return;
         }
         player.removeCoins(CrimsonTownProgress.BRUUH_TOLL);
+        player.getAchievementHandler().completeAchievement("skyblock.scam");
         CrimsonSideQuests.flag(player, CrimsonTownProgress.BRUUH_PAID);
         say(player, "Congratulations! You can now come and go as you please!");
     }
