@@ -227,6 +227,73 @@ class MaxProfileTest {
     }
 
     @Test
+    void maxProfileDonatesEveryFossilAndUnlocksTheirPetRecipes() {
+        SkyBlockPlayer player = player();
+        assertNotNull(net.swofty.type.skyblockgeneric.fossil.FossilService.recipeLock(player, "TYRANNOSAURUS;4"));
+        assertNull(net.swofty.type.skyblockgeneric.fossil.FossilService.recipeLock(player, "AMMONITE;4"));
+        assertNull(net.swofty.type.skyblockgeneric.fossil.FossilService.recipeLock(player, "REFINED_MITHRIL"));
+        net.swofty.type.skyblockgeneric.fossil.FossilService.donateAll(player);
+        assertTrue(net.swofty.type.skyblockgeneric.fossil.FossilService.allDonated(player));
+        assertNull(net.swofty.type.skyblockgeneric.fossil.FossilService.recipeLock(player, "TYRANNOSAURUS;4"));
+        assertEquals(80, player.getSkyBlockExperience().getSourceXP(net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource.FOSSIL_RESEARCH));
+    }
+
+    @Test
+    void donatingNeedsTheFossilAndOnlyPaysOnce() {
+        SkyBlockPlayer player = player();
+        var service = net.swofty.type.skyblockgeneric.fossil.FossilService.class;
+        var tusk = net.swofty.type.skyblockgeneric.fossil.FossilType.TUSK;
+        assertEquals(net.swofty.type.skyblockgeneric.fossil.FossilService.Donation.NO_FOSSIL,
+                net.swofty.type.skyblockgeneric.fossil.FossilService.donate(player, tusk));
+        net.swofty.type.skyblockgeneric.fossil.FossilService.markDonated(player, tusk);
+        assertEquals(net.swofty.type.skyblockgeneric.fossil.FossilService.Donation.ALREADY_DONATED,
+                net.swofty.type.skyblockgeneric.fossil.FossilService.donate(player, tusk));
+        assertNotNull(service);
+    }
+
+    @Test
+    void sleightOfHandAddsAStartingCharge() {
+        SkyBlockPlayer player = player();
+        var shop = net.swofty.type.skyblockgeneric.essence.FossilEssenceShop.class;
+        assertEquals(0, net.swofty.type.skyblockgeneric.essence.FossilEssenceShop.startingCharges(player));
+        net.swofty.type.skyblockgeneric.essence.Essences.add(player, net.swofty.type.skyblockgeneric.essence.EssenceType.FOSSIL, 2_000);
+        assertEquals(net.swofty.type.skyblockgeneric.essence.EssenceShop.Result.BOUGHT,
+                net.swofty.type.skyblockgeneric.essence.FossilEssenceShop.buy(player, net.swofty.type.skyblockgeneric.essence.FossilEssencePerk.SLEIGHT_OF_HAND));
+        assertEquals(1, net.swofty.type.skyblockgeneric.essence.FossilEssenceShop.startingCharges(player));
+        assertEquals(0, net.swofty.type.skyblockgeneric.essence.Essences.get(player, net.swofty.type.skyblockgeneric.essence.EssenceType.FOSSIL));
+        assertNotNull(shop);
+    }
+
+    @Test
+    void maxProfileMaxesTheAvailableFossilEssencePerks() {
+        SkyBlockPlayer player = player();
+        net.swofty.type.skyblockgeneric.essence.FossilEssenceShop.maxAvailable(player);
+        assertEquals(10, net.swofty.type.skyblockgeneric.essence.EssencePerks.tier(player, net.swofty.type.skyblockgeneric.essence.FossilEssencePerk.DWARVEN_EXPERTISE));
+        assertEquals(0, net.swofty.type.skyblockgeneric.essence.EssencePerks.tier(player, net.swofty.type.skyblockgeneric.essence.FossilEssencePerk.RESOURCEFUL));
+    }
+
+    @Test
+    void chiselsCarryTheirGemSlotsAndTheForgeCanMakeThem() {
+        var glacite = new SkyBlockItem(ItemType.GLACITE_CHISEL).getComponent(net.swofty.type.skyblockgeneric.item.components.GemstoneComponent.class);
+        assertEquals(2, glacite.getSlots().size());
+        assertEquals(net.swofty.type.skyblockgeneric.gems.Gemstone.Slots.CHISEL, glacite.getSlots().getFirst().slot());
+        assertEquals(3, new SkyBlockItem(ItemType.PERFECT_CHISEL).getComponent(net.swofty.type.skyblockgeneric.item.components.GemstoneComponent.class).getSlots().size());
+        assertTrue(net.swofty.type.skyblockgeneric.forge.ForgeRegistry.get().recipe("REINFORCED_CHISEL").available());
+        assertTrue(net.swofty.type.skyblockgeneric.forge.ForgeRegistry.get().recipe("TYRANNOSAURUS;4").available());
+        var rex = net.swofty.type.skyblockgeneric.forge.ForgeRegistry.get().recipe("TYRANNOSAURUS;4");
+        assertTrue(rex.isPet());
+        assertEquals(ItemType.TYRANNOSAURUS_PET, rex.outputItem().getAttributeHandler().getPotentialType());
+        assertEquals(Rarity.LEGENDARY, rex.outputItem().getAttributeHandler().getRarity());
+    }
+
+    @Test
+    void paleontologistIsAnEnchantmentWithFiveLevels() {
+        var ench = net.swofty.type.skyblockgeneric.enchantment.EnchantmentType.PALEONTOLOGIST.getEnch();
+        assertTrue(ench.getDescription(1).contains("2.5%"));
+        assertTrue(ench.getDescription(5).contains("12.5%"));
+    }
+
+    @Test
     void glaciteWalkerMatchesCurrentHypixelStats() {
         var walker = new net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobGlaciteWalker();
         assertEquals(24, walker.getLevel());

@@ -1,10 +1,21 @@
 package net.swofty.type.dwarvenmines.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM;
+import net.swofty.type.skyblockgeneric.essence.EssenceType;
+import net.swofty.type.skyblockgeneric.essence.Essences;
+import net.swofty.type.skyblockgeneric.fossil.FossilService;
+import net.swofty.type.skyblockgeneric.fossil.FossilType;
+import net.swofty.type.skyblockgeneric.hotm.HotmService;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class NPCFossilMuncher extends AbstractTalkingNPC {
 
@@ -18,25 +29,64 @@ public class NPCFossilMuncher extends AbstractTalkingNPC {
 	public void onClick(NPCInteractEvent event) {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
 		if (isInDialogue(player)) return;
-		var toggles = player.getToggles();
-		if (toggles.get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_FOSSIL_MUNCHER)) {
-			setDialogue(player, "again");
+		DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
+		if (System.currentTimeMillis() < data.getFossilMunchReadyAt()) {
+			setDialogue(player, "cooldown");
 			return;
 		}
-		setDialogue(player, "intro").thenRun(() -> toggles.set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_FOSSIL_MUNCHER, true));
+		FossilType request = request(player, data);
+		var toggles = player.getToggles();
+		if (!toggles.get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_FOSSIL_MUNCHER)) {
+			setDialogue(player, "intro").thenRun(() -> toggles.set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_FOSSIL_MUNCHER, true));
+			return;
+		}
+		SkyBlockItem held = new SkyBlockItem(player.getItemInMainHand());
+		ItemType heldType = held.getAttributeHandler().getPotentialType();
+		FossilType heldFossil = heldType == null ? null : FossilType.byItem(heldType);
+		if (heldFossil == request && player.removeItemsFromPlayer(Map.of(request.getItem(), 1))) {
+			feed(player, data);
+			setDialogue(player, "fed");
+		} else if (heldFossil != null) {
+			setDialogue(player, "wrongFossil");
+		} else if (heldType != null) {
+			setDialogue(player, "notFossil");
+		} else {
+			setDialogue(player, "hint");
+		}
+	}
+
+	private static FossilType request(SkyBlockPlayer player, DatapointHOTM.PlayerHOTMData data) {
+		FossilType[] all = FossilType.values();
+		FossilType current = data.getFossilMunchRequest() == null ? null : FossilType.valueOf(data.getFossilMunchRequest());
+		if (current != null) return current;
+		FossilType picked = all[ThreadLocalRandom.current().nextInt(all.length)];
+		data.setFossilMunchRequest(picked.name());
+		HotmService.save(player, data);
+		return picked;
+	}
+
+	private static void feed(SkyBlockPlayer player, DatapointHOTM.PlayerHOTMData data) {
+		data.addGlacitePowder(FossilService.MUNCHER_POWDER);
+		data.setFossilMunchRequest(null);
+		data.setFossilMunchReadyAt(System.currentTimeMillis() + FossilService.MUNCHER_COOLDOWN_MILLIS);
+		HotmService.save(player, data);
+		Essences.add(player, EssenceType.FOSSIL, FossilService.MUNCHER_ESSENCE);
+		player.sendMessage("<a>You received <b>{} Glacite Powder <a>and <d>{} Fossil Essence<a>!",
+				String.format("%,d", FossilService.MUNCHER_POWDER), FossilService.MUNCHER_ESSENCE);
 	}
 
 	@Override
 	protected DialogueSet[] dialogues(HypixelPlayer player) {
+		SkyBlockPlayer skyBlockPlayer = (SkyBlockPlayer) player;
+		DatapointHOTM.PlayerHOTMData data = HotmService.data(skyBlockPlayer);
+		String hint = data.getFossilMunchRequest() == null ? "..." : FossilType.valueOf(data.getFossilMunchRequest()).getMuncherHint();
 		return new DialogueSet[]{
-				DialogueSet.builder().key("intro").lines(
-						"me so cold. me so hungry.",
-						"u bring me fossil if u dont need them?"
-				).build(),
-				DialogueSet.builder().key("again").lines(
-						"hmmm me no hungry",
-						"come back l8r"
-				).build()
+				DialogueSet.builder().key("intro").lines("me so cold. me so hungry.", "u bring me fossil if u dont need them?", hint).build(),
+				DialogueSet.builder().key("hint").lines("me so cold. me so hungry.", hint).build(),
+				DialogueSet.builder().key("notFossil").lines("errrr", hint, "that is not a fossil", hint).build(),
+				DialogueSet.builder().key("wrongFossil").lines("mmm nope not hungry for that fossil.", hint).build(),
+				DialogueSet.builder().key("fed").lines("mmm quite tasty.", "take powder", "u feed me more fossil tomorrow?").build(),
+				DialogueSet.builder().key("cooldown").lines("hmmm me no hungry", "come back l8r").build()
 		};
 	}
 }

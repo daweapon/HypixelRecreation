@@ -1,0 +1,25 @@
+title: "The Fossil Research Center Update"
+date: "11th October 2026"
+intro:
+  - "The Fossil Research Center in the Dwarven Base Camp is open."
+sections:
+  - heading: "Dr. Stone"
+    colour: "<b>"
+    lines:
+      - "Dr. Stone gives you a Chisel the first time you talk to him. Bring him fossils: each kind pays 25,000 Mining XP, 20,000 Glacite Powder, 100 Fossil Essence, 5,000 Heart of the Mountain XP and 10 SkyBlock XP, once."
+      - "Donating a Footprint, Spine, Ugly, Clubbed, Webbed or Tusk Fossil unlocks that pet's Forge recipe. Donate all eight for an extra 50,000 Glacite Powder and 15,000 Heart of the Mountain XP."
+  - heading: "The Fossil Excavator"
+    colour: "<6>"
+    lines:
+      - "Click the Fossil Excavator, pick a Chisel and a Suspicious Scrap, and start digging. Every dirt tile you clear costs a Chisel charge. About one dig in ten hides a fossil: uncover all of it before the charges run out."
+      - "Treasure is buried too, and you keep what you uncover: gems, Fossil Essence, Glacite Powder, enchanted Umber, Tungsten and Glacite, Paleontologist books and, rarely, Fossil the Fish."
+      - "The Chisel, Reinforced Chisel, Glacite-Plated Chisel and Perfect Chisel have 16, 18, 20 and 22 charges. Slot gemstones into them at the Gemstone Grinder: Aquamarine adds a charge, Citrine highlights treasure, Onyx adds treasure and Peridot adds Fossil Essence."
+  - heading: "Researcher Beryl"
+    colour: "<d>"
+    lines:
+      - "Beryl's Fossil Essence Shop sells Sleight Of Hand (one more starting charge) and Dwarven Expertise (Dwarven Metal Fortune on Mining Islands), plus Suspicious Scrap for 100 Fossil Essence. Her other perks need content that isn't here yet."
+      - "Sor'Hen gives you your first Suspicious Scrap. Fossil Muncher asks for a different fossil every day and pays 25,000 Glacite Powder and 100 Fossil Essence for it."
+  - heading: "Changes"
+    colour: "<c>"
+    lines:
+      - "The Forge can now make pets (Ammonite, Mole, T-Rex, Spinosaurus, Goblin, Ankylosaurus, Penguin, Mammoth and Precursor Drone), and the Chisel upgrades."

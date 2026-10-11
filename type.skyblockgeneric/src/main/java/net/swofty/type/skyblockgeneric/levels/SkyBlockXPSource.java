@@ -75,7 +75,7 @@ public enum SkyBlockXPSource {
     GOLD_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 188, Availability.NOT_IN_GAME, Material.GOLD_BLOCK),
     DIAMOND_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 226, Availability.NOT_IN_GAME, Material.DIAMOND),
     FOREST_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 171, Availability.NOT_IN_GAME, Material.OAK_SAPLING),
-    FOSSIL_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 226, Availability.NOT_IN_GAME, Material.BONE_BLOCK),
+    FOSSIL_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 226, Availability.LIVE, Material.BONE_BLOCK),
     SAFARI_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 395, Availability.NOT_IN_GAME, Material.LEAD),
 
     // ----- Slaying Tasks (12,315 XP) -----
@@ -94,7 +94,7 @@ public enum SkyBlockXPSource {
     COMMISSION_MILESTONES(Group.SKILL_RELATED, SubArea.MINING, 255, Availability.LIVE, Material.PAPER),
     CRYSTAL_NUCLEUS_RUNS(Group.SKILL_RELATED, SubArea.MINING, 200, Availability.NOT_IN_GAME, Material.AMETHYST_SHARD),
     CORE_OF_THE_MOUNTAIN(Group.SKILL_RELATED, SubArea.MINING, 1000, Availability.NOT_IN_GAME, Material.NETHERITE_PICKAXE),
-    FOSSIL_RESEARCH(Group.SKILL_RELATED, SubArea.MINING, 80, Availability.NOT_IN_GAME, Material.BONE),
+    FOSSIL_RESEARCH(Group.SKILL_RELATED, SubArea.MINING, 80, Availability.LIVE, Material.BONE),
     FROZEN_CORPSE_MILESTONES(Group.SKILL_RELATED, SubArea.MINING, 140, Availability.NOT_IN_GAME, Material.PACKED_ICE),
     ROCK_MILESTONES(Group.SKILL_RELATED, SubArea.MINING, 100, Availability.NOT_IN_GAME, Material.COBBLESTONE),
 

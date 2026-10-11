@@ -14,7 +14,7 @@ public enum EssenceType {
     DIAMOND("Diamond", "Dungeons aren't in this server yet."),
     ICE("Ice", null),
     FOREST("Forest", null),
-    FOSSIL("Fossil", "The Fossil Research Center isn't in this server yet."),
+    FOSSIL("Fossil", null),
     SUN_GECKO("Sun Gecko", "The Rift isn't in this server yet."),
     SAFARI("Safari", "Hunting isn't in this server yet.");
 

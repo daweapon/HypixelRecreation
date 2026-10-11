@@ -305,6 +305,15 @@ regions:
     y2: 148
     z2: 254
     serverType: DWARVEN_MINES
+  - id: fossilresearch
+    type: FOSSIL_RESEARCH_CENTER
+    x1: 8
+    y1: 114
+    z1: 218
+    x2: 44
+    y2: 136
+    z2: 246
+    serverType: DWARVEN_MINES
   - id: glacitetunnels
     type: GLACITE_TUNNELS
     x1: -130

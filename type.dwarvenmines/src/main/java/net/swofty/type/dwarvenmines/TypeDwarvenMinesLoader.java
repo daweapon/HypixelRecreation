@@ -11,6 +11,7 @@ import net.swofty.commons.ServerType;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.commons.text.Text;
+import net.swofty.type.dwarvenmines.gui.GUIFossilExcavator;
 import net.swofty.type.dwarvenmines.gui.GUIGemstoneGrinder;
 import net.swofty.type.generic.tab.AreaServerModule;
 import net.swofty.type.skyblockgeneric.glacite.ColdService;
@@ -58,6 +59,14 @@ public class TypeDwarvenMinesLoader implements SkyBlockTypeLoader {
         gemstoneGrinder.setInstance(HypixelConst.getInstanceContainer(), gemstoneGrinderPos);
         gemstoneGrinderText.setInstance(HypixelConst.getInstanceContainer(), gemstoneGrinderPos.add(0, 1.3, 0));
         gemstoneGrinderClick.setInstance(HypixelConst.getInstanceContainer(), gemstoneGrinderPos.add(0, 0.9, 0));
+
+        Point excavatorPos = new Pos(18.5, 121, 227.5);
+        InteractionEntity excavator = new InteractionEntity(1.4f, 1.4f, (p, event) -> p.openView(new GUIFossilExcavator()));
+        TextDisplayEntity excavatorText = new TextDisplayEntity("<6><l>FOSSIL EXCAVATOR", meta -> {});
+        TextDisplayEntity excavatorClick = new TextDisplayEntity("<e>Click to open!", meta -> {});
+        excavator.setInstance(HypixelConst.getInstanceContainer(), excavatorPos);
+        excavatorText.setInstance(HypixelConst.getInstanceContainer(), excavatorPos.add(0, 1.9, 0));
+        excavatorClick.setInstance(HypixelConst.getInstanceContainer(), excavatorPos.add(0, 1.5, 0));
     }
 
 	@Override

@@ -51,6 +51,7 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         action(layout, 37, Material.BEACON, "<5>Max Core of the Mountain", "<8>The heart of it all.", "<7>Set the Core of the Mountain to level 10.", HotmService::maxCore);
         action(layout, 32, Material.REDSTONE_BLOCK, "<c>Reset HOTM Perks", "<8>A fresh start.", "<7>Reset every Heart of the Mountain perk.", HotmService::reset);
         action(layout, 33, Material.FURNACE, "<6>Finish Forge Processes", "<8>Patience is overrated.", "<7>Finish every running <6>Forge<7> process.", p -> net.swofty.type.skyblockgeneric.forge.ForgeService.finishAll(p));
+        action(layout, 38, Material.BONE_BLOCK, "<d>Fossil Essence", "<8>Older than time itself.", "<7>Gain <d>100,000 Fossil Essence<7>.", p -> net.swofty.type.skyblockgeneric.essence.Essences.add(p, net.swofty.type.skyblockgeneric.essence.EssenceType.FOSSIL, 100_000));
         unavailable(layout, 28, Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard.");
         unavailable(layout, 29, Material.GREEN_DYE, "<2>Pile of Sowdust", "<7>Give yourself <2>1,000,000,000 Sowdust<7>.");
         unavailable(layout, 30, Material.BRICKS, "<c>Vault of Copper", "<7>Give yourself <c>1,000,000 Copper<7>.");

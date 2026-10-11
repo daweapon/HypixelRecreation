@@ -130,7 +130,7 @@ items:
         value: 1.0
   - id: HELIX
     material: player_head
-    name: "Helix"
+    name: "Helix Fossil"
     rarity: LEGENDARY
     components:
       - id: SKULL_HEAD

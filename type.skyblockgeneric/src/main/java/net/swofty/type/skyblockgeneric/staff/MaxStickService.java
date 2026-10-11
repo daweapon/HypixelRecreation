@@ -166,6 +166,8 @@ public final class MaxStickService {
             new Step("Refined Bottle of Jyrre", player -> BottleOfJyrre.setRefinedConsumed(player, BottleOfJyrre.REFINED_LIMIT)),
             new Step("Reaper Peppers", player -> ReaperPepper.setEaten(player, ReaperPepper.LIMIT)),
             new Step("Ice Essence shop", IceEssenceShop::maxAvailable),
+            new Step("Fossil Essence shop", net.swofty.type.skyblockgeneric.essence.FossilEssenceShop::maxAvailable),
+            new Step("Fossil Research Center", net.swofty.type.skyblockgeneric.fossil.FossilService::donateAll),
             new Step("Crimson Essence shop", CrimsonEssenceShop::maxAvailable),
             new Step("Chicken Race", ChickenRaceProgress::maxOut),
             new Step("Crimson reputation", CrimsonReputationService::maxOut),

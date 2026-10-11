@@ -46,7 +46,8 @@ public final class ForgeTooltips {
 
     public static String name(ForgeRecipe recipe) {
         ItemType output = recipe.output();
-        return output == null ? "<7>" + recipe.name() : colorTag(output) + new SkyBlockItem(output).getDisplayName();
+        if (output == null || recipe.isPet()) return "<6>" + recipe.name();
+        return colorTag(output) + new SkyBlockItem(output).getDisplayName();
     }
 
     public static String ingredients(ForgeRecipe recipe) {
@@ -66,7 +67,7 @@ public final class ForgeTooltips {
     public static ItemStack.Builder icon(ForgeRecipe recipe) {
         ItemType output = recipe.output();
         if (output == null) return ItemStacks.item(net.minestom.server.item.Material.BARRIER, "<c>" + recipe.name());
-        return new NonPlayerItemUpdater(new SkyBlockItem(output, recipe.amount())).getUpdatedItem();
+        return new NonPlayerItemUpdater(recipe.outputItem()).getUpdatedItem();
     }
 
     public static ItemStack.Builder recipe(SkyBlockPlayer player, ForgeRecipe recipe, String footer) {

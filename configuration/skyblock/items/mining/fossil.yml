@@ -1,0 +1,179 @@
+items:
+  - id: CHISEL
+    material: paper
+    name: "Chisel"
+    rarity: COMMON
+    lore:
+      - "\xA77Can be placed in the \xA76Fossil"
+      - "\xA76Excavator \xA77alongside a \xA79Suspicious"
+      - "\xA79Scrap \xA77to begin the excavation"
+      - "\xA77process!"
+      - ""
+      - "\xA77Charges: \xA7e16"
+    components:
+      - id: SELLABLE
+        value: 1000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/chisel/chisel
+  - id: REINFORCED_CHISEL
+    material: paper
+    name: "Reinforced Chisel"
+    rarity: RARE
+    lore:
+      - "\xA77Can be placed in the \xA76Fossil"
+      - "\xA76Excavator \xA77alongside a \xA79Suspicious"
+      - "\xA79Scrap \xA77to begin the excavation"
+      - "\xA77process!"
+      - ""
+      - "\xA77Charges: \xA7e18"
+    components:
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: CHISEL
+            coins: 0
+      - id: SELLABLE
+        value: 1000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/chisel/reinforced_chisel
+  - id: GLACITE_CHISEL
+    material: paper
+    name: "Glacite-Plated Chisel"
+    rarity: EPIC
+    lore:
+      - "\xA77Can be placed in the \xA76Fossil"
+      - "\xA76Excavator \xA77alongside a \xA79Suspicious"
+      - "\xA79Scrap \xA77to begin the excavation"
+      - "\xA77process!"
+      - ""
+      - "\xA77Charges: \xA7e20"
+    components:
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: CHISEL
+            coins: 0
+          - gemstone: CHISEL
+            coins: 0
+      - id: SELLABLE
+        value: 1000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/chisel/glacite_plated_chisel
+  - id: PERFECT_CHISEL
+    material: paper
+    name: "Perfect Chisel"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77Can be placed in the \xA76Fossil"
+      - "\xA76Excavator \xA77alongside a \xA79Suspicious"
+      - "\xA79Scrap \xA77to begin the excavation"
+      - "\xA77process!"
+      - ""
+      - "\xA77Charges: \xA7e22"
+    components:
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: CHISEL
+            coins: 0
+          - gemstone: CHISEL
+            coins: 0
+          - gemstone: CHISEL
+            coins: 0
+      - id: SELLABLE
+        value: 1000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/chisel/perfect_chisel
+  - id: CLAW_FOSSIL
+    material: paper
+    name: "Claw Fossil"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77A small but sharp claw once used"
+      - "\xA77for digging tunnels."
+    components:
+      - id: SELLABLE
+        value: 10000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/fossils/claw_fossil
+  - id: CLUBBED_FOSSIL
+    material: paper
+    name: "Clubbed Fossil"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77A tail ending in a thick club that was"
+      - "\xA77used to fend off predators."
+    components:
+      - id: SELLABLE
+        value: 10000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/fossils/clubbed_fossil
+  - id: FOOTPRINT_FOSSIL
+    material: paper
+    name: "Footprint Fossil"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77The daunting footprint of what was"
+      - "\xA77once a colossal and bloodthirsty"
+      - "\xA77predator."
+    components:
+      - id: SELLABLE
+        value: 10000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/fossils/footprint_fossil
+  - id: SPINE_FOSSIL
+    material: paper
+    name: "Spine Fossil"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77A well-preserved set of neural"
+      - "\xA77spines. Whatever possessed these"
+      - "\xA77was an adept swimmer."
+    components:
+      - id: SELLABLE
+        value: 10000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/fossils/spine_fossil
+  - id: TUSK_FOSSIL
+    material: paper
+    name: "Tusk Fossil"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77A great and powerful tusk belonging"
+      - "\xA77to a now-extinct creature."
+    components:
+      - id: SELLABLE
+        value: 10000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/fossils/tusk_fossil
+  - id: UGLY_FOSSIL
+    material: paper
+    name: "Ugly Fossil"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77The ugliest fossil to ever exist. It"
+      - "\xA77has a face only a mother could love."
+    components:
+      - id: SELLABLE
+        value: 10000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/fossils/ugly_fossil
+  - id: WEBBED_FOSSIL
+    material: paper
+    name: "Webbed Fossil"
+    rarity: LEGENDARY
+    lore:
+      - "\xA77The webbed foot of a small, agile"
+      - "\xA77creature which was a strong swimmer."
+    components:
+      - id: SELLABLE
+        value: 10000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/fossils/webbed_fossil
+  - id: FOSSIL_THE_FISH
+    material: cooked_cod
+    name: "Fossil the Fish"
+    rarity: SPECIAL
+    lore:
+      - "\xA77Older than time itself yet never"
+      - "\xA77changing, for he was born perfect."
+    components:
+      - id: SELLABLE
+        value: 1.0

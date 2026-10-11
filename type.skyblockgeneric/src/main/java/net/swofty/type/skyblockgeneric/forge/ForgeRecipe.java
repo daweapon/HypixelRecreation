@@ -1,6 +1,8 @@
 package net.swofty.type.skyblockgeneric.forge;
 
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -9,7 +11,19 @@ public record ForgeRecipe(String id, String name, ForgeCategory category, int ho
                           int amount, long coins, Map<String, Integer> inputs) {
 
     public ItemType output() {
-        return ItemType.get(id);
+        ItemType direct = ItemType.get(id);
+        if (direct != null || !isPet()) return direct;
+        return ItemType.get(id.substring(0, id.indexOf(';')) + "_PET");
+    }
+
+    public boolean isPet() {
+        return id.indexOf(';') > 0;
+    }
+
+    public SkyBlockItem outputItem() {
+        SkyBlockItem item = new SkyBlockItem(output(), amount);
+        if (isPet()) item.getAttributeHandler().setRarity(Rarity.values()[Integer.parseInt(id.substring(id.indexOf(';') + 1))]);
+        return item;
     }
 
     public Map<ItemType, Integer> inputTypes() {

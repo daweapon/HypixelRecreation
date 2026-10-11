@@ -48,6 +48,8 @@ public final class ForgeService {
 
     public static String reasonUnavailable(SkyBlockPlayer player, ForgeRecipe recipe) {
         if (!recipe.available()) return "<c>This recipe isn't available on this server yet.";
+        String locked = net.swofty.type.skyblockgeneric.fossil.FossilService.recipeLock(player, recipe.id());
+        if (locked != null) return locked;
         if (HotmService.data(player).getTier() < recipe.hotm()) return "<c>Requires Heart of the Mountain Tier " + recipe.hotm() + ".";
         return null;
     }
@@ -91,7 +93,7 @@ public final class ForgeService {
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
         data.getForgeProcesses().removeIf(existing -> existing.slot() == slot);
         HotmService.save(player, data);
-        player.addAndUpdateItem(recipe.output(), recipe.amount());
+        player.addAndUpdateItem(recipe.outputItem());
         return null;
     }
 

@@ -53,6 +53,7 @@ public enum EnchantmentType {
     FORTUNE(EnchantmentFortune.class),
     CLEAVE(EnchantmentCleave.class),
     EXPERIENCE(EnchantmentExperience.class),
+    PALEONTOLOGIST(EnchantmentPaleontologist.class),
     FIRE_ASPECT(EnchantmentFireAspect.class),
     KNOCKBACK(EnchantmentKnockback.class),
     LETHALITY(EnchantmentLethality.class),

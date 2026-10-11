@@ -31,6 +31,9 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			json.put("dailyCommissionDay", value.dailyCommissionDay);
 			json.put("puzzlerReadyAt", value.puzzlerReadyAt);
 			json.put("dailyGlaciteDay", value.dailyGlaciteDay);
+			json.put("donatedFossils", new org.json.JSONArray(value.donatedFossils));
+			json.put("fossilMunchReadyAt", value.fossilMunchReadyAt);
+			json.put("fossilMunchRequest", value.fossilMunchRequest == null ? "" : value.fossilMunchRequest);
 			json.put("railroadPassShown", value.railroadPassShown);
 			json.put("perkLevels", new JSONObject(value.perkLevels));
 			json.put("disabledPerks", new org.json.JSONArray(value.disabledPerks));
@@ -66,6 +69,10 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 				data.dailyCommissionDay = obj.optLong("dailyCommissionDay", -1L);
 				data.puzzlerReadyAt = obj.optLong("puzzlerReadyAt", 0L);
 				data.dailyGlaciteDay = obj.optLong("dailyGlaciteDay", -1L);
+				org.json.JSONArray donated = obj.optJSONArray("donatedFossils");
+				if (donated != null) for (int i = 0; i < donated.length(); i++) data.donatedFossils.add(donated.getString(i));
+				data.fossilMunchReadyAt = obj.optLong("fossilMunchReadyAt", 0L);
+				data.fossilMunchRequest = obj.optString("fossilMunchRequest", "").isEmpty() ? null : obj.getString("fossilMunchRequest");
 				data.railroadPassShown = obj.optBoolean("railroadPassShown", false);
 				JSONObject perks = obj.optJSONObject("perkLevels");
 				if (perks != null) perks.keySet().forEach(key -> data.perkLevels.put(key, perks.getInt(key)));
@@ -103,6 +110,9 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			cloned.dailyCommissionDay = value.dailyCommissionDay;
 			cloned.puzzlerReadyAt = value.puzzlerReadyAt;
 			cloned.dailyGlaciteDay = value.dailyGlaciteDay;
+			cloned.donatedFossils.addAll(value.donatedFossils);
+			cloned.fossilMunchReadyAt = value.fossilMunchReadyAt;
+			cloned.fossilMunchRequest = value.fossilMunchRequest;
 			cloned.railroadPassShown = value.railroadPassShown;
 			cloned.perkLevels.putAll(value.perkLevels);
 			cloned.disabledPerks.addAll(value.disabledPerks);
@@ -147,6 +157,9 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 		private long puzzlerReadyAt;
 		private long dailyGlaciteDay = -1L;
 		private boolean railroadPassShown;
+		private final java.util.Set<String> donatedFossils = new java.util.LinkedHashSet<>();
+		private long fossilMunchReadyAt;
+		private String fossilMunchRequest;
 		private final Map<String, Integer> perkLevels = new LinkedHashMap<>();
 		private final java.util.Set<String> disabledPerks = new java.util.LinkedHashSet<>();
 		private final Map<String, Long> abilityReadyAt = new LinkedHashMap<>();
