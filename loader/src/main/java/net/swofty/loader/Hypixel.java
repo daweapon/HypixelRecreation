@@ -64,6 +64,7 @@ public class Hypixel {
     @SneakyThrows
     static void main(String[] args) {
         System.setProperty("minestom.automatic-component-translation", "true");
+        sun.misc.Signal.handle(new sun.misc.Signal("TERM"), signal -> System.exit(0));
         if (args.length == 0 || !ServerType.isServerType(args[0])) {
             Logger.error("Please specify a server type.");
             Arrays.stream(ServerType.values()).forEach(serverType -> Logger.error(serverType.name()));
