@@ -20,7 +20,7 @@ public final class AdminCatalog {
     public record Details(Category category, String usage, String description) {}
     public record Action(HelpCatalog.Entry command, Details details) {}
     private static final Map<String,Details> DETAILS=Map.ofEntries(
-            Map.entry("adminbypass", new Details(Category.WORLD, "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable", "Skips a SkyBlock calendar or Auction House timer, or opens a Cookie-gated menu without a Cookie Buff.")),
+            Map.entry("adminbypass", new Details(Category.WORLD, "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skipforgetime [slot]", "Skips a SkyBlock calendar or Auction House timer, or opens a Cookie-gated menu without a Cookie Buff.")),
             Map.entry("adminme", new Details(Category.DEVELOPMENT, "/adminme", "Literally just gives me admin. Developer allowlist only, despite DEFAULT annotation. Resolves allowed UUIDs and grants STAFF; not a general player feature.")),
             Map.entry("ahview", new Details(Category.DEVELOPMENT, "/ahview <uuid>", "Views an auction.")),
             Map.entry("allowaccessforapiauthentication", new Details(Category.DEVELOPMENT, "/allowaccessforapiauthentication <code>", "Allows access for API authentication for the given code.")),

@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointUUIDList;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
+import net.swofty.type.skyblockgeneric.forge.ForgeService;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUIEnchantmentTable;
@@ -28,7 +29,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "adminbypass jumptonextevent skiptoevent",
         description = "Skips the timer to the next occurrence of a SkyBlock event",
-        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear",
+        usage = "/adminbypass <event>|auction [uuid]|bin_grace [uuid]|auctionhouse|bazaar|bank|etable|skiptospecialmayor|forcemayor <mayor>|resetyear|skipforgetime [slot]",
         permission = Rank.STAFF,
         allowsConsole = true)
 public class AdminBypassCommand extends HypixelCommand {
@@ -91,6 +92,9 @@ public class AdminBypassCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> openCookieMenu(sender, "Enchantment Table"), ArgumentType.Literal("etable"));
         command.addSyntax((sender, context) -> forceElectSpecialMayor(sender), ArgumentType.Literal("skiptospecialmayor"));
         command.addSyntax((sender, context) -> resetYear(sender), ArgumentType.Literal("resetyear"));
+        command.addSyntax((sender, context) -> skipForge(sender, null), ArgumentType.Literal("skipforgetime"));
+        command.addSyntax((sender, context) -> skipForge(sender, context.get("forge_slot")),
+                ArgumentType.Literal("skipforgetime"), ArgumentType.Integer("forge_slot").between(1, ForgeService.MAX_SLOTS));
 
         ArgumentString mayorArgument = new ArgumentString("mayor");
         mayorArgument.setSuggestionCallback((sender, context, suggestion) -> {
@@ -100,6 +104,21 @@ public class AdminBypassCommand extends HypixelCommand {
         });
         command.addSyntax((sender, context) -> forceElectMayor(sender, context.get(mayorArgument)),
                 ArgumentType.Literal("forcemayor"), mayorArgument);
+    }
+
+    private static void skipForge(net.minestom.server.command.CommandSender sender, Integer slot) {
+        if (!(sender instanceof SkyBlockPlayer player)) {
+            sender.sendMessage("<c>This admin bypass requires an in-game player.");
+            return;
+        }
+        if (slot != null) {
+            sender.sendMessage(ForgeService.finishSlot(player, slot) == 0
+                    ? "<c>Forge slot " + slot + " has nothing forging."
+                    : "<a>Skipped the time on forge slot " + slot + ".");
+            return;
+        }
+        int skipped = ForgeService.finishAll(player);
+        sender.sendMessage(skipped == 0 ? "<c>You have no active forges." : "<a>Skipped the time on " + skipped + " active forge(s).");
     }
 
     private static void resetYear(net.minestom.server.command.CommandSender sender) {

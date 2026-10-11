@@ -88,6 +88,17 @@ public final class ForgeService {
         return null;
     }
 
+    public static int finishSlot(SkyBlockPlayer player, int slot) {
+        DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
+        ForgeProcess process = processIn(player, slot);
+        if (process == null) return 0;
+        data.getForgeProcesses().removeIf(existing -> existing.slot() == slot);
+        data.getForgeProcesses().add(new ForgeProcess(slot, process.recipeId(), System.currentTimeMillis()));
+        data.getForgeProcesses().sort(Comparator.comparingInt(ForgeProcess::slot));
+        HotmService.save(player, data);
+        return 1;
+    }
+
     public static int finishAll(SkyBlockPlayer player) {
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
         long now = System.currentTimeMillis();
