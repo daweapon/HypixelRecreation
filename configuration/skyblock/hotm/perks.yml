@@ -661,6 +661,22 @@ perks:
       - "Gain a <a>+{value}%<7> chance to get <a>+1<7> item when looting a <b>Frozen Corpse<7>."
     effects:
       - {key: "main", stat: null, base: 0, perLevel: 0.2, cap: null, scope: "ALWAYS"}
+  - id: mining_master
+    name: "Mining Master"
+    kind: "PERK"
+    powder: "GLACITE"
+    tier: 10
+    col: 4
+    maxLevel: 10
+    exponent: 5.0
+    offset: 7
+    available: true
+    requires: null
+    verified: true
+    lore:
+      - "Grants <5>+{value} Pristine<7>."
+    effects:
+      - {key: "main", stat: "PRISTINE", base: 0, perLevel: 0.1, cap: null, scope: "ALWAYS"}
   - id: dead_mans_chest
     name: "Dead Man's Chest"
     kind: "PERK"

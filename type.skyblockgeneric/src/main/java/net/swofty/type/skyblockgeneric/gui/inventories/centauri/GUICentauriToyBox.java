@@ -47,8 +47,8 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         unavailable(layout, 23, Material.GLASS_BOTTLE, "<a>Clear RNG Meter Progress", "<7>Clear every RNG Meter.");
         unavailable(layout, 24, Material.OAK_LOG, "<a>Fill Agatha's Rewards", "<7>Grant 25 contest rewards.");
         action(layout, 25, Material.SEA_LANTERN, "<a>Big ol' chunk o' Whispers!", "<8>To turn your tears to roses.", "<7>Get 1,000,000 Forest Whispers.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.FOREST_WHISPERS, DatapointLong.class).setValue(1_000_000L));
-        action(layout, 26, Material.NETHER_STAR, "<5>Tokens of the Mountain", "<8>Spend them wisely.", "<7>Gain <5>10 Tokens of the Mountain<7>.", p -> HotmService.addTokens(p, 10));
-        action(layout, 27, Material.BEACON, "<5>Max Core of the Mountain", "<8>The heart of it all.", "<7>Set the Core of the Mountain to level 10.", HotmService::maxCore);
+        action(layout, 34, Material.NETHER_STAR, "<5>Tokens of the Mountain", "<8>Spend them wisely.", "<7>Gain <5>10 Tokens of the Mountain<7>.", p -> HotmService.addTokens(p, 10));
+        action(layout, 36, Material.BEACON, "<5>Max Core of the Mountain", "<8>The heart of it all.", "<7>Set the Core of the Mountain to level 10.", HotmService::maxCore);
         action(layout, 32, Material.REDSTONE_BLOCK, "<c>Reset HOTM Perks", "<8>A fresh start.", "<7>Reset every Heart of the Mountain perk.", HotmService::reset);
         action(layout, 33, Material.FURNACE, "<6>Finish Forge Processes", "<8>Patience is overrated.", "<7>Finish every running <6>Forge<7> process.", p -> net.swofty.type.skyblockgeneric.forge.ForgeService.finishAll(p));
         unavailable(layout, 28, Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard.");
