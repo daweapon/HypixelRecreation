@@ -19,14 +19,14 @@
 
 ## Item drops
 
-- Every chance-based item reward (mob loot, rare drops, treasure, fishing, shards, gifts, any future RNG drop) must be decided through `LootRoll` (`type.skyblockgeneric/.../loottable/LootRoll.java`): `roll` for an independent chance, `pick` for a weighted pick-one table, or `claim` before a custom pick. This is what makes staff `/forcedrop` work everywhere; never roll a drop with a bare `Math.random()`/`ThreadLocalRandom`.
+- Every chance-based item reward (mob loot, rare drops, treasure, fishing, shards, gifts, any future RNG drop) must be decided through `LootRoll` (`type.skyblockgeneric/.../loottable/LootRoll.java`): `roll` for an independent chance, `pick` for a weighted pick-one table, or `claim` before a custom pick. This is what makes staff `/force drop` (old name `/forcedrop`) work everywhere; never roll a drop with a bare `Math.random()`/`ThreadLocalRandom`.
 
 ## New-feature checklist
 
 Check every one of these whenever a feature adds currencies, progression, items or commands:
 
 - Centauri Toy Box and Item Maximizer (`gui/inventories/centauri/`): keep the existing buttons working (HOTM XP, powder, and so on), and add a button for any new currency or progression that has a give-style shortcut. Add powders or tokens there as soon as they exist.
-- `/maxprofile` (`MaxStickService.maxProfile`).
+- `/max profile` (old name `/maxprofile`, `MaxStickService.maxProfile`).
 - `COMMANDS.md` for any new or changed command.
 - Patch notes for major content updates.
 - `LootRoll` for every chance-based reward.

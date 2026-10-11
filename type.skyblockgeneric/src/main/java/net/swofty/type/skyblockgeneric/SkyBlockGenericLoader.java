@@ -216,12 +216,14 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
          */
         loopThroughPackage("net.swofty.type.skyblockgeneric.commands", HypixelCommand.class).forEach(command -> {
             try {
-                MinecraftServer.getCommandManager().register(command.getCommand());
+                HypixelCommand.register(command);
             } catch (Exception e) {
                 Logger.error(e, "Failed to register command {} in class {}",
                     command.getCommand().getName(), command.getClass().getSimpleName());
             }
         });
+
+        net.swofty.type.skyblockgeneric.command.SkyBlockCommandGroups.register();
 
         loopThroughPackage("net.swofty.type.skyblockgeneric.abiphone.impl", AbiphoneNPC.class)
             .forEach(AbiphoneRegistry::registerContact);

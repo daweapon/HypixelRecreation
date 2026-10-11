@@ -64,6 +64,16 @@ public abstract class HypixelCommand {
 
     public abstract void registerUsage(MinestomCommand command);
 
+    public List<Command> legacyCommands() {
+        return List.of();
+    }
+
+    public static void register(HypixelCommand command) {
+        var manager = net.minestom.server.MinecraftServer.getCommandManager();
+        manager.register(command.getCommand());
+        command.legacyCommands().forEach(manager::register);
+    }
+
     public static SuggestionEntry suggestion(String value, Text tooltip) {
         return new SuggestionEntry(value, tooltip.asComponent());
     }

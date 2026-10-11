@@ -1,46 +1,29 @@
 package net.swofty.type.skyblockgeneric.commands;
 
-import net.minestom.server.command.builder.arguments.ArgumentType;
-import net.minestom.server.command.builder.arguments.ArgumentWord;
-import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.generic.command.CommandGroup;
 import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
 import net.swofty.type.generic.user.categories.Rank;
-import net.minestom.server.item.ItemStack;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
-import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
-import net.swofty.type.skyblockgeneric.mythological.gear.CrownOfAvarice;
-import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.command.groups.max.MaxCoaCommand;
+import net.swofty.type.skyblockgeneric.command.groups.max.MaxProfileCommand;
+
+import java.util.List;
+import java.util.Map;
 
 @CommandParameters(labels = "max",
-        description = "Maxes out a specific item",
-        usage = "/max <coa>",
+        description = "Maxes out a Crown of Avarice or a whole profile",
+        usage = "/max <coa|profile> ...",
         permission = Rank.STAFF,
         allowsConsole = false)
-public class MaxCommand extends HypixelCommand {
+public class MaxCommand extends CommandGroup {
     @Override
-    public void registerUsage(MinestomCommand command) {
-        ArgumentWord target = ArgumentType.Word("item").from("coa");
-
-        command.addSyntax((sender, context) -> {
-            if (!permissionCheck(sender)) return;
-            SkyBlockPlayer player = (SkyBlockPlayer) sender;
-            if (context.get(target).equalsIgnoreCase("coa")) maxCrownOfAvarice(player);
-        }, target);
+    protected List<HypixelCommand> subcommands() {
+        return List.of(new MaxCoaCommand(),
+                new MaxProfileCommand());
     }
 
-    private static void maxCrownOfAvarice(SkyBlockPlayer player) {
-        PlayerItemOrigin origin = isCrown(player.getItemInMainHand()) ? PlayerItemOrigin.MAIN_HAND
-                : isCrown(player.getHelmet()) ? PlayerItemOrigin.HELMET : null;
-        if (origin == null) {
-            player.sendMessage("<c>Hold or wear a Crown of Avarice to max it!");
-            return;
-        }
-        player.updateItem(origin, item -> item.getAttributeHandler().setCoinsConsumed(CrownOfAvarice.CAPACITY));
-        player.sendMessage("<a>Your <6>Crown of Avarice <a>has now consumed <6>1,000,000,000 Coins<a>.");
-    }
-
-    private static boolean isCrown(ItemStack stack) {
-        return !stack.isAir() && new SkyBlockItem(stack).getAttributeHandler().getPotentialType() == ItemType.CROWN_OF_AVARICE;
+    @Override
+    protected Map<String, String> legacyLabels() {
+        return Map.ofEntries(Map.entry("maxprofile", "max profile"));
     }
 }

@@ -14,11 +14,17 @@ import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.staff.MaxStickService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import net.minestom.server.command.builder.Command;
+import net.swofty.type.generic.command.CommandGroup;
+import net.swofty.type.skyblockgeneric.command.groups.skyblockxp.AwardHypixelXPCommand;
+
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 @CommandParameters(labels = "skyblockxp sbxp",
         description = "Gives, takes or sets a player's SkyBlock XP",
-        usage = "/skyblockxp <give|take|set|setlevel|prestige|max|reset|info|source> [amount] [player]",
+        usage = "/skyblockxp <give|take|set|setlevel|prestige|max|reset|info|source|cause> [amount] [player]",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class SkyBlockXPCommand extends HypixelCommand {
@@ -29,7 +35,14 @@ public class SkyBlockXPCommand extends HypixelCommand {
     private static final String[] SIMPLE_ACTIONS = {"prestige", "max", "reset", "info"};
 
     @Override
+    public List<Command> legacyCommands() {
+        return CommandGroup.legacyCommands(getCommand(),
+                Map.of("giveskyblockxp", "skyblockxp cause", "awardskyblockxp", "skyblockxp cause"));
+    }
+
+    @Override
     public void registerUsage(MinestomCommand command) {
+        command.addSubcommand(new AwardHypixelXPCommand().getCommand());
         ArgumentWord amountAction = ArgumentType.Word("action").from(AMOUNT_ACTIONS);
         ArgumentWord simpleAction = ArgumentType.Word("action").from(SIMPLE_ACTIONS);
         ArgumentDouble amountArgument = ArgumentType.Double("amount");

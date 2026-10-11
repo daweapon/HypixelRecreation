@@ -1,8 +1,8 @@
 # Commands reference
 
-Sorted reference for the current HypixelRecreation source tree. Updated 2026-09-08.
+Sorted reference for the current HypixelRecreation source tree. Updated 2026-10-11.
 
-This catalog covers **154 annotated game-server command definitions**, **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](command-alias-audit.md).
+This catalog covers **129 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](command-alias-audit.md).
 
 ## Contents
 
@@ -11,6 +11,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 - [Staff commands](#staff-commands)
 - [Proxy commands](#proxy-commands)
 - [Subcommand reference](#subcommand-reference)
+- [Merged staff commands](#merged-staff-commands)
 - [Examples](#examples)
 - [Other game modes](#other-game-modes)
 - [Known registration and help discrepancies](#known-registration-and-help-discrepancies)
@@ -107,7 +108,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/instancerequeue` | — | Inside a Kuudra run, queues your party for a new run of the same tier, as the clickable line at the end of a run does. Only the instance creator (the player who queued the run) can use it; anyone else gets "Only the instance creator can re-queue!". Works mid-run too: everyone leaves the old run for the new one. The usual queue checks apply (party leader, party of 1-4, every member meets the tier's requirements), and while Kuudra is staff-only only staff can queue. Only on Kuudra servers. | DEFAULT | No | `type.kuudra` |
 | `/is` | `/island` | Sends the player to their island. | DEFAULT | No | `type.skyblockgeneric` |
 | `/parkour` | — | Parkour related commands. | DEFAULT | No | `type.lobby` |
-| `/sl <number>` | — | Switch to a numbered lobby.  Help uses /swaplobby, but it is not a registered label; use the spelling shown here. | DEFAULT | No | `type.lobby` |
+| `/sl <number>` | — | Switch to a numbered lobby. | DEFAULT | No | `type.lobby` |
 | `/warp <warp>` | `/teleportregion` | Warps to an unlocked island or travel-scroll destination, using Hypixel's warp names and aliases. Islands: `home` (`island`), `hub` (`village`), `dungeon_hub` (`dungeons`, `dhub`, `dh`), `barn` (`farming`), `park` (`trees`, `foraging`), `gold`, `deep`, `dwarven` (`dwarves`, `mines`, `dmines`, `deeper`), `spider` (`spiders`), `end`, `nether` (`isle`, `crimson`, `ci`), `jerry` (`winter`, `workshop`), `bayou` (`backwater`) and `moonglade` (`galatea`, `marsh`). Scroll warps: Hub `museum`, `da`, `castle`, `crypts` (`crypt`), `wizard` (`wiz`, `tower`, `wizard_tower`), `elizabeth`, `stonks`, `taylor`; `desert`, `trapper` (`trap`); `howl` (`howling_cave`, `wolf_cave`), `jungle`; `forge`, `basecamp` (`base`, `camp`, `glacite`, `tunnel`, `tunnels`, `gt`); `nest` (`top`, `mound`), `arachne` (`sanctuary`); `drag` (`dragons`), `void` (`sepulture`); `kuudra` (`skull`), `wasteland`, `dragontail`, `scarleton`, `smold` (`smoldering`, `smoldering_tomb`); `murkwater` (`murk`, `loch`, `murkwater_loch`). The Park unlocks with its Foraging travel scroll and the Crimson Isle with its scroll plus Combat XXII; other islands unlock on the first visit, and each scroll warp needs its own scroll. `crystals`, `nucleus`, `garden`, `rift`, `torrhus`, `springs`, `safari` and `lotus` are listed but answer that the destination isn't in SkyBlock yet. | DEFAULT | No | `type.skyblockgeneric` |
 
 ## Staff commands
@@ -120,68 +121,29 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/adminme` | `/forceadmin` | Literally just gives me admin. Developer allowlist only, despite DEFAULT annotation. Resolves allowed UUIDs and grants STAFF; not a general player feature. | DEFAULT | No | `type.generic` |
 | `/ahview <uuid>` | `/auctionview` | Views an auction. | DEFAULT | No | `type.skyblockgeneric` |
 | `/allowaccessforapiauthentication <code>` | `/verifyapi` | Allows access for API authentication for the given code. | STAFF | No | `type.skyblockgeneric` |
-| `/anvilgui <text>` | `/anvilgraphicaluserinterface` | Opens a graphical user interface. | STAFF | No | `type.skyblockgeneric` |
 | `/centauri` | — | Opens the Centauri menu. | STAFF | No | `type.skyblockgeneric` |
-| `/clearmission` | — | Clears your missions.  Help uses /missionempty, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
-| `/clearmissionset <set> [player]` | `/completemissionset` | Completes the mission set for yourself or an optional online player target. | STAFF | No | `type.skyblockgeneric` |
-| `/displayconfigids` | — | Prints out the item IDs from the config into the console. | STAFF | No | `type.skyblockgeneric` |
-| `/displaymissiondata` | — | Displays the mission data of a player. | STAFF | No | `type.skyblockgeneric` |
-| `/dmgindicdisplaydebugcmd <dmg> <crit>` | — | Display damage indic. | STAFF | No | `type.skyblockgeneric` |
-| `/dragon <spawn\|follow\|stop\|remove> [speed]` | — | Dragon management commands. The handler also registers a numeric speed argument. | STAFF | No | `type.generic` |
-| `/editnbt <key> <value>` | — | Modifies the NBT of the item in your hand.  Help uses /changenbt, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
-| `/explodesimulation <radius> [knockbackStrength]` | — | Simulates an explosion with falling blocks. | STAFF | No | `type.generic` |
-| `/formatname <name>` | `/getnameformatted` | Gets the format of a players name from their username. | STAFF | No | `type.generic` |
+| `/debug <configids\|damageindicator\|lag\|mining\|recipes\|tasks\|headrotation\|mutex\|particles\|anvilgui\|music\|formatname\|localedata\|npcpathfinding\|explosion\|signgui\|component> ...` | `/formatname`, `/getnameformatted`, `/localedata`, `/npcpathfinding`, `/explodesimulation`, `/signgui`, `/signgraphicaluserinterface`, `/translatablecomponent`, `/displayconfigids`, `/dmgindicdisplaydebugcmd`, `/lagprofile`, `/mininginfo`, `/recipedebug`, `/taskcount`, `/testheadrotation`, `/testheadrot`, `/testmutex`, `/testpe`, `/testparticleengine`, `/anvilgui`, `/anvilgraphicaluserinterface`, `/playmusic`, `/playsong` | Diagnostics and test tools. Generic topics work on every server type; SkyBlock topics are added on SkyBlock servers. | STAFF | No | `type.generic` |
 | `/itemlist [lookup]` | `/e` | Open the E menu. Opens the item browser; optional search. | STAFF | No | `type.skyblockgeneric` |
-| `/itemtrackedinformation` | — | Gets the information of a tracked item in the players hand. | STAFF | No | `type.skyblockgeneric` |
-| `/lagprofile [seconds]` | — | Samples the server's busy threads for 1–30 seconds (default 5) and lists the SkyBlock code they spent the most time in. Run it while TPS is low to find what's causing lag. | STAFF | No | `type.skyblockgeneric` |
-| `/localedata [update]` | — | Locale Data. Inspect locale data or execute the update branch. | STAFF | No | `type.generic` |
-| `/mininginfo` | — | Debug command to display mining handler relationships.  Help uses /miningdebug, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
-| `/mission` | `/missiondata` | Collects mission information. | STAFF | No | `type.skyblockgeneric` |
-| `/nbt` | `/iteminfo` | Returns the players held item info. | STAFF | No | `type.skyblockgeneric` |
-| `/npcpathfinding <npc> <x> <y> <z>` | — | NPC Pathfinding test. Position is a relative vector; NPC must exist. | STAFF | No | `type.generic` |
-| `/playmusic <song>` | `/playsong` | Plays a song. | STAFF | No | `type.skyblockgeneric` |
-| `/recipedebug` | — | Prints recipe debug. | STAFF | No | `type.skyblockgeneric` |
-| `/resetmystocksnow` | — | Resets your shop stocks back to MAXIMUM.  Help uses /resetmystocks, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
+| `/mission [info]`<br>`/mission <data\|start\|clear\|clearset> ...` | `/missiondata`, `/displaymissiondata`, `/startmission`, `/clearmission`, `/clearmissionset`, `/completemissionset` | Shows, starts, clears and finishes missions. With no subcommand it runs `info`. | STAFF | No | `type.skyblockgeneric` |
 | `/sc <message>` | `/staffchat` | Sends a message to staff chat. | STAFF | No | `type.generic` |
-| `/signgui <text>` | `/signgraphicaluserinterface` | Opens a graphical user interface. | STAFF | No | `type.generic` |
-| `/spawnhologram <text>` | `/spawnholo` | Rank command. | STAFF | No | `type.skyblockgeneric` |
-| `/startmission <mission_id>` | — | Starts a mission for testing purposes. | STAFF | No | `type.skyblockgeneric` |
-| `/taskcount` | — | Gets the number of tasks currently running on the server. | STAFF | No | `type.skyblockgeneric` |
-| `/testheadrotation <x>` | `/testheadrot` | Tests the head rotation of ArmorStands. Requires a numeric argument omitted from help. | STAFF | No | `type.skyblockgeneric` |
-| `/testpe <radius> <intensity> <duration> <wireframe>` | `/testparticleengine` | Literally just gives me admin. wireframe is a required boolean despite its omission from help. | STAFF | No | `type.skyblockgeneric` |
 | `/throwexception` | — | Throws an exception for testing purposes. | STAFF | Yes | `type.generic` |
-| `/translatablecomponent <string>` | — | Preview a TranslatableComponent. | STAFF | No | `type.generic` |
 
 ### Items and progression
 
 | Command / syntax | Aliases | Purpose and notes | Minimum rank | Console declared | Module |
 | --- | --- | --- | --- | --- | --- |
 | `/addtostash <item> [amount] [player]` | — | Force add an item to your stash. | STAFF | No | `type.skyblockgeneric` |
-| `/bits <amount> [player]` | `/bit` | Sets your bits balance. | STAFF | No | `type.skyblockgeneric` |
 | `/clear` | `/cl` | Rid your inventory of useless items. | STAFF | No | `type.skyblockgeneric` |
-| `/coins <amount> [player]` | — | Sets your purse balance. | STAFF | No | `type.skyblockgeneric` |
-| `/enchant <enchantment_type> <level>` | `/ench` | Enchants the contents o the players hand. | STAFF | No | `type.skyblockgeneric` |
 | `/factionquests <list\|reroll>; /factionquests complete <slot>` | `/fquests` | Lists today's Crimson Isle Faction Quests for your current faction, rolls a fresh Town Board for today (`reroll`), or marks slot 1–5 complete so it can be claimed at the Town Board without doing the task (`complete`). Needs a faction. | STAFF | No | `type.skyblockgeneric` |
-| `/giveskyblockxp <cause> [player]` | `/awardskyblockxp` | Gives yourself skyblock xp. | STAFF | No | `type.skyblockgeneric` |
+| `/hand <enchant\|reforge\|recomb\|mithrilinfuse\|nbt\|setnbt\|tracked> ...` | `/enchant`, `/ench`, `/reforge`, `/reforgeitem`, `/recomb`, `/mithrilinfuse`, `/nbt`, `/iteminfo`, `/editnbt`, `/itemtrackedinformation` | Edits or inspects the item in your hand: enchant, reforge, recombobulate, Mithril Infuse, NBT and tracked-item information. | STAFF | No | `type.skyblockgeneric` |
 | `/item <item> [amount] [player]` | `/i`, `/sbitem` | Gives an item to the player. `<item>` is an item ID (case-insensitive, suggested as you type) or the item's display name written as one word, e.g. `KINDLEBANE_DAGGER` gives the Kindlebane Dagger (ID `BURSTFIRE_DAGGER`). Also accepts /item <item> <player> with the default amount. Target is an online player selector. | STAFF | No | `type.skyblockgeneric` |
 | `/kuudrarun <win\|lose\|start\|phase\|supplies\|build\|fuel\|stun\|lair\|eat\|spit> [phase]`, `/kuudrarun <eat\|spit> <player>`, `/kuudrarun <damage\|tokens\|wave> <amount>`, `/kuudrarun spawn <mob>` | — | Controls the Kuudra run you are standing in, for testing the fight. `start` begins the run at once, skipping the ready check where everyone talks to Elle (intro dialogue, bridge collapse, Kuudra rising, supply crates, tentacles, wave timer). `phase` moves to the phase that naturally follows (Supplies → Build → Fuel → Stun on Burning and up → DPS); `phase <supplies\|build\|fuel\|stun\|dps\|lair>` jumps to a phase the tier has. `supplies` drops off every supply and starts the Build, `build` finishes the Ballista, `fuel` loads every Fuel Cell and arms the Ballista. On Burning, Fiery and Infernal: `eat [player]` swallows you (or a party member) into Kuudra's stomach as the Consumption Zone would, `spit [player]` throws them back out of his mouth, and `stun` breaks one of the stomach's pods as if you had mined it, stunning Kuudra for his damage window; any of the three skips ahead to the Fuel phase first if the Ballista isn't built, and asks you to repeat it while Kuudra rises. On Infernal, `lair` takes Kuudra to 25% and starts the lair sequence (Elle's lines, the platform collapse, Kuudra diving into the lair); using it again plays the rest of the sequence at once. `damage <percent>` takes that share of Kuudra's health (reaching 0% plays his death and wins the run; on Infernal it stops at 25% and opens the lair), `tokens <amount>` gives every party member that many Kuudra Tokens, `wave <number>` spawns that wave's minions now, and `spawn <mob>` spawns one Kuudra minion by its `mobs.yml` id (e.g. `BLIGHT`, `DROPSHIP`, `MAGMA_BACTERIA`) where you stand. `win` ends a started run as a win: every party member in the Hollow gets the full `/kuudrasim` payout and the run's Free and Paid chests, which open straight away and stay at Vesuvius for 72 hours. `lose` ends the run as a defeat, started or not. Either way everyone returns to the Crimson Isle at the Forgotten Skull after 20 seconds. Only on Kuudra servers, and only inside a run. | STAFF | No | `type.kuudra` |
 | `/kuudrasim <tier> [player]` | — | Simulates winning a Kuudra run, for yourself or an online player, so its rewards can be tested before the fight exists. `<tier>` is `BASIC`, `HOT`, `BURNING`, `FIERY`, `INFERNAL` or `1`–`5`. Records the clear (Kuudra boss collection, first-clear and collection SkyBlock XP, collection tier rewards), advances Kuudra Faction Quests, pays that tier's daily reputation once per UTC day, finishes the questline's "Defeat Kuudra" step, grants Kuudra Conundrum, rolls the Tentacle Dye, and rolls the run's Free and Paid chests. The chests open straight away and stay at Vesuvius for 72 hours; only one can be opened, and the Paid chest takes that tier's Kuudra Key. Works on every SkyBlock server. | STAFF | No | `type.skyblockgeneric` |
-| `/max coa` | — | Fills the Crown of Avarice in your hand (or on your head) to its 1,000,000,000 Coins consumed cap, granting the full Overindulgence bonus. | STAFF | No | `type.skyblockgeneric` |
-| `/maxprofile [player]` | — | Fully maxes out a profile, identical to THE MAX STICK. Unlocks every Fast Travel warp, as `/unlockwarps` does. Maxes every Slayer (Revenant, Tarantula, Sven, Voidgloom, Inferno Demonlord, and the catalogued Riftstalker): max level and XP with every level reward, stat and slayer-gated recipe it brings, a kill of every boss tier (unlocking each tier, each boss and the RNG Meter), and a full RNG Meter on the selected drop, or on the rarest drop when none is selected. Also puts every pet in the Pets menu at its highest rarity and level (an owned copy is upgraded in place, so rerunning adds no duplicates), stores a non-soulbound copy of every donatable Museum item (Special cap bypassed; the copies can be retrieved and traded), and fills the Accessory Bag with the best accessory of every upgrade line plus every standalone accessory, recombobulated where allowed (Rift-only and Bingo-only accessories are skipped; rerunning adds nothing already placed), then sorts the whole bag highest rarity first. At Maxwell it learns every stone power, unlocks all four tuning templates, selects the power with the most total stats at the profile's Accessory Power, and puts every Tuning Point into Strength if none are assigned (existing tuning is kept unless it no longer fits). Records a clear of every Kuudra tier and enough Infernal clears to max the Kuudra boss collection (paying its tier rewards and SkyBlock XP once); Kuudra Keys stay unbought. Unlocks the Secret Railroad Pass, so every Ticket Master lets you ride to the Glacite Tunnels without forging one. Donates every fossil at the Fossil Research Center (and so unlocks every fossil pet Forge recipe) and maxes the Fossil Essence shop's available perks. Fills the Sack of Sacks with the largest sack of every sack family (Silver over Bronze for Trophy Fishing) and every unlocked quiver slot with a stack of Flint Arrows. Each step runs on its own: if one fails, the rest still run, the error is logged, and the player sees a red "PARTLY MAXED!" message naming the failed steps instead of "MAXED!". | STAFF | No | `type.skyblockgeneric` |
-| `/mithrilinfuse` | — | Mithril Infuses the minion in the players hand. | STAFF | No | `type.skyblockgeneric` |
-| `/recomb` | — | Toggles the Recombobulated flag on the held item, ignoring the Recombobulator 3000's rules (pets are refused).  Help uses /recombobulate, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
-| `/reforge` | `/reforgeitem` | Reforges the item in the players hand. | STAFF | No | `type.skyblockgeneric` |
-| `/resetchickenrace [player]` | — | Resets the Chicken Race cluckpoints claimed on the profile and the talked-to-Frosty flag, so Gulliver's rewards can be raced for again. Items already won are kept. | STAFF | No | `type.skyblockgeneric` |
-| `/setessence <type> <amount> [player]` | — | Sets the profile's balance of one essence type (`WITHER`, `UNDEAD`, `CRIMSON`, `SPIDER`, `DRAGON`, `GOLD`, `DIAMOND`, `ICE`, `FOREST`, `FOSSIL`, `SUN_GECKO`, `SAFARI`), capped at 2,000,000,000. | STAFF | No | `type.skyblockgeneric` |
-| `/setpetlevel <level>` | `/updatepetlevel` | Sets the held pet's level (1–200, capped at that pet's own max level, 200 for the dragons) using its own rarity; with no pet in hand it levels your active pet. | STAFF | No | `type.skyblockgeneric` |
-| `/setpetrarity <rarity>` | — | Sets the rarity of the pet in your hand; only rarities that pet exists at are accepted, and its XP is kept (the level is recalculated). | STAFF | No | `type.skyblockgeneric` |
-| `/setreputation <faction> <amount> [player]` | `/setrep` | Sets the profile's Crimson Isle reputation with `MAGE` or `BARBARIAN` (floored at 0). Grants the SkyBlock XP of any reputation title reached for the first time. | STAFF | No | `type.skyblockgeneric` |
-| `/setstat <statistic> <value> [player]; /setstat clear <statistic\|all> [player]; /setstat list [player]` | `/setstatistic` | Pins any statistic (Health, Strength, Speed, Magic Find, ...) to an exact final value from 0 to 99,999 for yourself or an online player, overriding gear, pets and buffs. Tab completes every statistic and shows its cap; capped statistics such as Speed still read as their cap. Overrides are saved to the profile and survive server switches until cleared. | STAFF | No | `type.skyblockgeneric` |
-| `/skyblockxp <action> [amount] [player]` | `/sbxp` | Manages SkyBlock XP and SkyBlock Level. See the SkyBlock XP subcommand reference below. | STAFF | No | `type.skyblockgeneric` |
-| `/unlockbestiary [player]` | — | Unlocks the Bestiary menu for yourself or an optional online player without needing to speak to Bramass Beastslayer. | STAFF | No | `type.skyblockgeneric` |
-| `/updatebestiary <mob> <amount> [player]` | — | Updates the bestiary of a player.  Help uses /setbestiary, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
-| `/updatecollection <item_type> <amount> [player]` | — | Updates the collection of a player.  Help uses /setcollection, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
-| `/xp <level> [player]` | `/experience` | Sets your experience levels. | STAFF | No | `type.skyblockgeneric` |
+| `/max coa`<br>`/max profile [player]` | `/maxprofile` | Maxes out a held or worn Crown of Avarice (`coa`) or a whole profile (`profile`, identical to THE MAX STICK). | STAFF | No | `type.skyblockgeneric` |
+| `/reset <chickenrace\|stocks> [player]` | `/resetchickenrace`, `/resetmystocksnow` | Resets the Chicken Race progress on a profile, or your shop stocks back to maximum. | STAFF | No | `type.skyblockgeneric` |
+| `/set <coins\|bits\|xp\|essence\|reputation\|petlevel\|petrarity\|bestiary\|collection\|stat> ...` | `/coins`, `/bits`, `/bit`, `/xp`, `/experience`, `/setessence`, `/setreputation`, `/setrep`, `/setpetlevel`, `/updatepetlevel`, `/setpetrarity`, `/updatebestiary`, `/updatecollection`, `/setstat`, `/setstatistic` | Sets a profile value for yourself or an online player. One subcommand per value; each keeps the arguments of the command it replaced (see Merged staff commands). | STAFF | No | `type.skyblockgeneric` |
+| `/skyblockxp <action> [amount] [player]` | `/sbxp` | Manages SkyBlock XP and SkyBlock Level. Also `cause <cause> [player]`, which awards a single named cause (old `/giveskyblockxp` and `/awardskyblockxp`). See the SkyBlock XP subcommand reference below. | STAFF | No | `type.skyblockgeneric` |
+| `/unlock <warps\|bestiary> [player]` | `/unlockwarps`, `/unlockbestiary` | Unlocks every Fast Travel warp, or the Bestiary, for yourself or an online player. | STAFF | No | `type.skyblockgeneric` |
 
 ### Moderation and accounts
 
@@ -192,7 +154,6 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/mute <player> [duration] <reason>` | `/tempmute` | Mute a player from the server. | STAFF | No | `type.generic` |
 | `/rank <player> <rank>` | `/setrank` | Rank command. | STAFF | Yes | `type.generic` |
 | `/restore <player>` | — | Restores a player's profile if they were wiped within the last hour. Restores a recent wipe snapshot (one-hour window); see handler for online/offline handling. | STAFF | No | `type.generic` |
-| `/testmutex <read\|counter\|stress\|reset> [count]` | — | Test the data mutex service against your own co-op container. | STAFF | No | `type.skyblockgeneric` |
 | `/unban <player>` | `/pardon`, `/unbanip`, `/pardonip` | Unban a player from the server. | STAFF | No | `type.generic` |
 | `/unmute <player>` | — | Unmute a player on the server. | STAFF | No | `type.generic` |
 | `/wipe [player]` | — | Wipes a player's profile data. No target wipes yourself. Captures a snapshot and wipes account/profile ownership data; rank and identity fields are preserved. Target selector resolves locally. | STAFF | No | `type.generic` |
@@ -201,28 +162,16 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 
 | Command / syntax | Aliases | Purpose and notes | Minimum rank | Console declared | Module |
 | --- | --- | --- | --- | --- | --- |
-| `/addcrystal <itemType>` | `/spawncrystal` | Spawns in a crystal at the player's location. Item must provide the orb and skull components the handler uses. | STAFF | No | `type.skyblockgeneric` |
 | `/adminbypass <event>`<br>`/adminbypass auction [uuid]`<br>`/adminbypass bin_grace [uuid]`<br>`/adminbypass <auctionhouse\|bazaar\|bank\|etable>`<br>`/adminbypass skiptospecialmayor`<br>`/adminbypass forcemayor <mayor>`<br>`/adminbypass resetyear`<br>`/adminbypass skipforgetime [slot]` | `/jumptonextevent`, `/skiptoevent` | Skips the selected SkyBlock calendar timer, ends an active Auction House listing, removes a BIN listing's 20-second purchase grace period, opens a Cookie-gated menu without an active Booster Cookie, force-elects the next special mayor (Scorpius/Derpy/Jerry, in rotation) for testing without a real election, force-elects a chosen mayor (by ID, e.g. `DIANA`) with all of their perks for testing perks such as the Mythological Ritual, resets this server's local SkyBlock calendar back to Year 1, Early Spring, Day 1, or finishes your active Forge processes (all of them, or only the given slot 1-7, ready to collect). Omitting the UUID targets your newest owned auction; the Cookie-menu bypasses require an in-game player. Event IDs are suggested by the command. The calendar is per-server (not synced), so `resetyear` only affects the server it's run on. | STAFF | Yes | `type.skyblockgeneric` |
 | `/build` | `/buildmode` | Toggles whether or not you are in build mode. | STAFF | No | `type.skyblockgeneric` |
-| `/deleteorb` | — | Deletes orbs at the player's location.  Help uses /removeorb, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
-| `/forcedarkauction` | — | Force starts a Dark Auction. | STAFF | No | `type.skyblockgeneric` |
-| `/forcedianamob <creature>` | `/dianamob` | Makes your next Griffin Mob burrow spawn the chosen Mythological creature (e.g. `MINOS_INQUISITOR`, `KING_MINOS`) instead of a random roll. Applies once; if your Griffin's rarity can't normally dig that creature, its first variant is used. Burrows only appear during Diana's Mythological Ritual. | STAFF | No | `type.skyblockgeneric` |
-| `/forcedrop <item> [player]` | — | Guarantees the item from the next chance-based drop that could give it to you (or the given online player), once: mob and slayer loot, sea creatures, fishing catches and trophy fish, Griffin burrow treasure, block-break rare drops, pet perk drops, Tree Gifts, attribute shards (`SHARD_<NAME>`), Jerry Boxes, Spooky candy and more. Takes any item ID, plus `chimera` for the Minos Inquisitor's Chimera I book. Forced drops are held in memory on the current server and clear on restart. | STAFF | No | `type.skyblockgeneric` |
-| `/forceeruption [explosivity]` | — | Starts a Blazing Volcano eruption right now, with the given explosivity (`CHILL` … `CATACLYSMIC`) or a random one. The eruption lasts about 20 minutes and spews Sulphur Ore and Matchos in waves throughout. Only works on the Crimson Isle server. | STAFF | No | `type.skyblockgeneric` |
+| `/force <drop\|diana\|darkauction\|eruption> ...` | `/forcedrop`, `/forcedianamob`, `/dianamob`, `/forcedarkauction`, `/forceeruption` | Forces a chance-based or timed event the next time it could happen: an item drop, the next Griffin burrow creature, a Dark Auction or a Blazing Volcano eruption. | STAFF | No | `type.skyblockgeneric` |
 | `/gamemode <gamemode>` | `/gm` | Sets a players gamemode. | STAFF | No | `type.generic` |
-| `/handleminionspeed <NORMAL\|MULTIPLY_2\|MULTIPLY_5\|MULTIPLY_10>` | — | Handle minion speed. Changes the server-side minion speed divisor. | STAFF | No | `type.skyblockgeneric` |
 | `/regions <add\|remove\|wand> ...` | — | Handles regions across the server. See region syntax below. | STAFF | No | `type.skyblockgeneric` |
-| `/regrowtrees <distance> <seed>` | — | Respawns trees in an area with a new seed.  Help uses /respawntreesinarea, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
 | `/sendto <server_type>` | `/transfer` | Transfers a player to another server. | STAFF | No | `type.generic` |
-| `/setvelocity <player> <x> <y> <z>` | — | Sets the velocity of a player. Help says /velocity, which is not a registered label. | STAFF | No | `type.generic` |
-| `/spawncrimsonmob <mob>` | `/spawncm` | Spawns a Crimson Isle mob, miniboss or Magma Boss at your feet by its mob ID (e.g. `BLAZE`, `MATCHO`, `VANQUISHER`, `BLADESOUL`, `MAGMA_BOSS`), suggested by the command. Minibosses spawned this way are extra copies outside their respawn timers. Summons that need a parent (Summoned Skulls, Magma Glares, Blazing Souls) vanish on their own. | STAFF | No | `type.skyblockgeneric` |
-| `/spawnseacreature <creature> [amount]` | `/spawnsc` | Spawns a sea creature at your feet as if you had fished it up: you are its angler, its catch message plays, and the Reindrake's server-wide announcement fires. Takes any of the game's sea creatures, water, Festival sharks, Jerry's Workshop and all 16 Crimson Isle lava creatures (e.g. `FROZEN_STEVE`, `REINDRAKE`, `GREAT_WHITE_SHARK`, `THUNDER`, `LORD_JAWBUS`, `PLHLEGBLAST`, `RAGNAROK`, `FIERY_SCUTTLER`), suggested with their names; case, hyphens and underscores are ignored (`lordjawbus` works). `amount` (1-10, default 1) spawns several at once; lava creatures still respect the 10-per-player cap. A Reindrake brings Gregory to Jerry Pond while it lives. | STAFF | No | `type.skyblockgeneric` |
+| `/spawn <mob> [amount]` | `/spawnseacreature`, `/spawnsc`, `/spawncrimsonmob`, `/spawncm` | Spawns any sea creature, registered SkyBlock mob or Mythological creature at your feet, 1-50 at a time. The id list comes from the game's registries, so new mobs are included automatically. See Spawning below. | STAFF | No | `type.skyblockgeneric` |
 | `/speed <speed> [FLY\|WALK]` | `/flyspeed` | Sets a players speed. Speed range 0–10; defaults to FLY. | STAFF | No | `type.generic` |
-| `/structure <rotation>` | — | Places a test debug structure. Requires an integer rotation omitted from help. | STAFF | No | `type.skyblockgeneric` |
-| `/tp <x> <y> <z>` | `/teleport` | teleports to a player. Coordinate syntax works in the registration. Player-target branch omits its argument from addSyntax; do not rely on /tp <player> until fixed. | STAFF | No | `type.generic` |
-| `/tpnpc <npc>` | `/teleportnpc` | Teleports you to the specified NPC. | STAFF | No | `type.generic` |
-| `/tree <type> [minHeight maxHeight] [minWidth maxWidth]` | — | Generates a tree at your location.  Help uses /generatetree, but it is not a registered label; use the spelling shown here. | STAFF | No | `type.skyblockgeneric` |
-| `/unlockwarps [player]` | — | Unlocks every Fast Travel warp (every island and every travel-scroll destination, including ones added later) on your profile or an online player's current profile. `/maxprofile` does the same. Destinations that aren't in SkyBlock yet are unlocked too but still refuse the warp. | STAFF | No | `type.skyblockgeneric` |
+| `/tp <player>`<br>`/tp <x> <y> <z>`<br>`/tp npc <npc>` | `/teleport`, `/tpnpc`, `/teleportnpc` | Teleports you to an online player, to coordinates or to an NPC. | STAFF | No | `type.generic` |
+| `/world <structure\|tree\|regrow\|hologram\|crystal\|deleteorb\|minionspeed\|dragon\|velocity> ...` | `/dragon`, `/setvelocity`, `/structure`, `/tree`, `/regrowtrees`, `/spawnholo`, `/spawnhologram`, `/spawncrystal`, `/addcrystal`, `/deleteorb`, `/handleminionspeed` | World, structure, hologram, crystal, orb, minion-speed, dragon and velocity tools. Dragon and velocity are on every server type; the rest are added on SkyBlock servers. | STAFF | No | `type.generic` |
 | `/worldtime (tick)` | `/skipworldtime` | Skips the time in the current instance. | STAFF | No | `type.generic` |
 
 ## Proxy commands
@@ -346,6 +295,135 @@ Co-op commands are distinct top-level commands in the player tables, not `/coop 
 
 `/chat` and `/ch` currently select ALL, PARTY, or STAFF, plus the staff-view toggle. `/gc`, `/oc`, and `/cc` send a single message through their respective existing systems; they do not add persistent guild/officer/co-op modes. `/reply` and `/r` are not implemented by this command inventory.
 
+### Merged staff commands
+
+Related staff commands are merged into one command with subcommands (tab-completed). Every old command name is still registered as a hidden alias that forwards to the new form with the same arguments, so existing habits, scripts and the Admin GUI keep working; hidden aliases do not appear in `/help` or the Admin GUI. Permissions are unchanged: every merged command is STAFF and not console-declared.
+
+#### /set
+
+Sets a profile value for yourself or an online player. One subcommand per value; each keeps the arguments of the command it replaced (see Merged staff commands).
+
+| Syntax | Replaces | Behaviour |
+| --- | --- | --- |
+| `/set coins <amount> [player]` | `/coins` | Sets your purse balance. |
+| `/set bits <amount> [player]` | `/bits`, `/bit` | Sets your bits balance. |
+| `/set xp <level> [player]` | `/xp`, `/experience` | Sets your experience levels. |
+| `/set essence <type> <amount> [player]` | `/setessence` | Sets the profile's balance of one essence type (`WITHER`, `UNDEAD`, `CRIMSON`, `SPIDER`, `DRAGON`, `GOLD`, `DIAMOND`, `ICE`, `FOREST`, `FOSSIL`, `SUN_GECKO`, `SAFARI`), capped at 2,000,000,000. |
+| `/set reputation <faction> <amount> [player]` | `/setreputation`, `/setrep` | Sets the profile's Crimson Isle reputation with `MAGE` or `BARBARIAN` (floored at 0). Grants the SkyBlock XP of any reputation title reached for the first time. |
+| `/set petlevel <level>` | `/setpetlevel`, `/updatepetlevel` | Sets the held pet's level (1–200, capped at that pet's own max level, 200 for the dragons) using its own rarity; with no pet in hand it levels your active pet. |
+| `/set petrarity <rarity>` | `/setpetrarity` | Sets the rarity of the pet in your hand; only rarities that pet exists at are accepted, and its XP is kept (the level is recalculated). |
+| `/set bestiary <mob> <amount> [player]` | `/updatebestiary` | Updates the bestiary of a player. |
+| `/set collection <item_type> <amount> [player]` | `/updatecollection` | Updates the collection of a player. |
+| `/set stat <statistic> <value> [player]; /set stat clear <statistic\|all> [player]; /set stat list [player]` | `/setstat`, `/setstatistic` | Pins any statistic (Health, Strength, Speed, Magic Find, ...) to an exact final value from 0 to 99,999 for yourself or an online player, overriding gear, pets and buffs. Tab completes every statistic and shows its cap; capped statistics such as Speed still read as their cap. Overrides are saved to the profile and survive server switches until cleared. |
+
+#### /force
+
+Forces a chance-based or timed event the next time it could happen: an item drop, the next Griffin burrow creature, a Dark Auction or a Blazing Volcano eruption.
+
+| Syntax | Replaces | Behaviour |
+| --- | --- | --- |
+| `/force drop <item> [player]` | `/forcedrop` | Guarantees the item from the next chance-based drop that could give it to you (or the given online player), once: mob and slayer loot, sea creatures, fishing catches and trophy fish, Griffin burrow treasure, block-break rare drops, pet perk drops, Tree Gifts, attribute shards (`SHARD_<NAME>`), Jerry Boxes, Spooky candy and more. Takes any item ID, plus `chimera` for the Minos Inquisitor's Chimera I book. Forced drops are held in memory on the current server and clear on restart. |
+| `/force diana <creature>` | `/forcedianamob`, `/dianamob` | Makes your next Griffin Mob burrow spawn the chosen Mythological creature (e.g. `MINOS_INQUISITOR`, `KING_MINOS`) instead of a random roll. Applies once; if your Griffin's rarity can't normally dig that creature, its first variant is used. Burrows only appear during Diana's Mythological Ritual. |
+| `/force darkauction` | `/forcedarkauction` | Force starts a Dark Auction. |
+| `/force eruption [explosivity]` | `/forceeruption` | Starts a Blazing Volcano eruption right now, with the given explosivity (`CHILL` … `CATACLYSMIC`) or a random one. The eruption lasts about 20 minutes and spews Sulphur Ore and Matchos in waves throughout. Only works on the Crimson Isle server. |
+
+#### /unlock
+
+Unlocks every Fast Travel warp, or the Bestiary, for yourself or an online player.
+
+| Syntax | Replaces | Behaviour |
+| --- | --- | --- |
+| `/unlock warps [player]` | `/unlockwarps` | Unlocks every Fast Travel warp (every island and every travel-scroll destination, including ones added later) on your profile or an online player's current profile. `/maxprofile` does the same. Destinations that aren't in SkyBlock yet are unlocked too but still refuse the warp. |
+| `/unlock bestiary [player]` | `/unlockbestiary` | Unlocks the Bestiary menu for yourself or an optional online player without needing to speak to Bramass Beastslayer. |
+
+#### /reset
+
+Resets the Chicken Race progress on a profile, or your shop stocks back to maximum.
+
+| Syntax | Replaces | Behaviour |
+| --- | --- | --- |
+| `/reset chickenrace [player]` | `/resetchickenrace` | Resets the Chicken Race cluckpoints claimed on the profile and the talked-to-Frosty flag, so Gulliver's rewards can be raced for again. Items already won are kept. |
+| `/reset stocks` | `/resetmystocksnow` | Resets your shop stocks back to MAXIMUM. |
+
+#### /max
+
+Maxes out a held or worn Crown of Avarice (`coa`) or a whole profile (`profile`, identical to THE MAX STICK).
+
+| Syntax | Replaces | Behaviour |
+| --- | --- | --- |
+| `/max coa` | — | Fills the Crown of Avarice in your hand (or on your head) to its 1,000,000,000 Coins consumed cap, granting the full Overindulgence bonus. |
+| `/max profile [player]` | `/maxprofile` | Fully maxes out a profile, identical to THE MAX STICK. Unlocks every Fast Travel warp, as `/unlockwarps` does. Maxes every Slayer (Revenant, Tarantula, Sven, Voidgloom, Inferno Demonlord, and the catalogued Riftstalker): max level and XP with every level reward, stat and slayer-gated recipe it brings, a kill of every boss tier (unlocking each tier, each boss and the RNG Meter), and a full RNG Meter on the selected drop, or on the rarest drop when none is selected. Also puts every pet in the Pets menu at its highest rarity and level (an owned copy is upgraded in place, so rerunning adds no duplicates), stores a non-soulbound copy of every donatable Museum item (Special cap bypassed; the copies can be retrieved and traded), and fills the Accessory Bag with the best accessory of every upgrade line plus every standalone accessory, recombobulated where allowed (Rift-only and Bingo-only accessories are skipped; rerunning adds nothing already placed), then sorts the whole bag highest rarity first. At Maxwell it learns every stone power, unlocks all four tuning templates, selects the power with the most total stats at the profile's Accessory Power, and puts every Tuning Point into Strength if none are assigned (existing tuning is kept unless it no longer fits). Records a clear of every Kuudra tier and enough Infernal clears to max the Kuudra boss collection (paying its tier rewards and SkyBlock XP once); Kuudra Keys stay unbought. Unlocks the Secret Railroad Pass, so every Ticket Master lets you ride to the Glacite Tunnels without forging one. Donates every fossil at the Fossil Research Center (and so unlocks every fossil pet Forge recipe) and maxes the Fossil Essence shop's available perks. Fills the Sack of Sacks with the largest sack of every sack family (Silver over Bronze for Trophy Fishing) and every unlocked quiver slot with a stack of Flint Arrows. Each step runs on its own: if one fails, the rest still run, the error is logged, and the player sees a red "PARTLY MAXED!" message naming the failed steps instead of "MAXED!". |
+
+#### /mission
+
+Shows, starts, clears and finishes missions. With no subcommand it runs `info`.
+
+| Syntax | Replaces | Behaviour |
+| --- | --- | --- |
+| `/mission info` | `/missiondata` | Collects mission information. |
+| `/mission data` | `/displaymissiondata` | Displays the mission data of a player. |
+| `/mission start <mission_id>` | `/startmission` | Starts a mission for testing purposes. |
+| `/mission clear` | `/clearmission` | Clears your missions. |
+| `/mission clearset <set> [player]` | `/clearmissionset`, `/completemissionset` | Completes the mission set for yourself or an optional online player target. |
+
+#### /hand
+
+Edits or inspects the item in your hand: enchant, reforge, recombobulate, Mithril Infuse, NBT and tracked-item information.
+
+| Syntax | Replaces | Behaviour |
+| --- | --- | --- |
+| `/hand enchant <enchantment_type> <level>` | `/enchant`, `/ench` | Enchants the contents o the players hand. |
+| `/hand reforge` | `/reforge`, `/reforgeitem` | Reforges the item in the players hand. |
+| `/hand recomb` | `/recomb` | Toggles the Recombobulated flag on the held item, ignoring the Recombobulator 3000's rules (pets are refused). |
+| `/hand mithrilinfuse` | `/mithrilinfuse` | Mithril Infuses the minion in the players hand. |
+| `/hand nbt` | `/nbt`, `/iteminfo` | Returns the players held item info. |
+| `/hand setnbt <key> <value>` | `/editnbt` | Modifies the NBT of the item in your hand. |
+| `/hand tracked` | `/itemtrackedinformation` | Gets the information of a tracked item in the players hand. |
+
+#### /debug
+
+Diagnostics and test tools. Generic topics work on every server type; SkyBlock topics are added on SkyBlock servers.
+
+| Syntax | Replaces | Behaviour |
+| --- | --- | --- |
+| `/debug formatname <name>` | `/formatname`, `/getnameformatted` | Gets the format of a players name from their username. |
+| `/debug localedata [update]` | `/localedata` | Locale Data. Inspect locale data or execute the update branch. |
+| `/debug npcpathfinding <npc> <x> <y> <z>` | `/npcpathfinding` | NPC Pathfinding test. Position is a relative vector; NPC must exist. |
+| `/debug explosion <radius> [knockbackStrength]` | `/explodesimulation` | Simulates an explosion with falling blocks. |
+| `/debug signgui <text>` | `/signgui`, `/signgraphicaluserinterface` | Opens a graphical user interface. |
+| `/debug component <string>` | `/translatablecomponent` | Preview a TranslatableComponent. |
+| `/debug configids` | `/displayconfigids` | Prints out the item IDs from the config into the console. |
+| `/debug damageindicator <dmg> <crit>` | `/dmgindicdisplaydebugcmd` | Display damage indic. |
+| `/debug lag [seconds]` | `/lagprofile` | Samples the server's busy threads for 1–30 seconds (default 5) and lists the SkyBlock code they spent the most time in. Run it while TPS is low to find what's causing lag. |
+| `/debug mining` | `/mininginfo` | Debug command to display mining handler relationships. |
+| `/debug recipes` | `/recipedebug` | Prints recipe debug. |
+| `/debug tasks` | `/taskcount` | Gets the number of tasks currently running on the server. |
+| `/debug headrotation <x>` | `/testheadrotation`, `/testheadrot` | Tests the head rotation of ArmorStands. |
+| `/debug mutex <read\|counter\|stress\|reset> [count]` | `/testmutex` | Test the data mutex service against your own co-op container. |
+| `/debug particles <radius> <intensity> <duration> <wireframe>` | `/testpe`, `/testparticleengine` | Tests the particle engine. `wireframe` is a required boolean. |
+| `/debug anvilgui <text>` | `/anvilgui`, `/anvilgraphicaluserinterface` | Opens a graphical user interface. |
+| `/debug music <song>` | `/playmusic`, `/playsong` | Plays a song. |
+
+#### /world
+
+World, structure, hologram, crystal, orb, minion-speed, dragon and velocity tools. Dragon and velocity are on every server type; the rest are added on SkyBlock servers.
+
+| Syntax | Replaces | Behaviour |
+| --- | --- | --- |
+| `/world dragon <spawn\|follow\|stop\|remove> [speed]` | `/dragon` | Dragon management commands. The handler also registers a numeric speed argument. |
+| `/world velocity <player> <x> <y> <z>` | `/setvelocity` | Sets the velocity of a player. |
+| `/world structure <rotation>` | `/structure` | Places a test debug structure. |
+| `/world tree <type> [minHeight maxHeight] [minWidth maxWidth]` | `/tree` | Generates a tree at your location. |
+| `/world regrow <distance> <seed>` | `/regrowtrees` | Respawns trees in an area with a new seed. |
+| `/world hologram <text>` | `/spawnholo`, `/spawnhologram` | Spawns a hologram with that text at your position. |
+| `/world crystal <itemType>` | `/spawncrystal`, `/addcrystal` | Spawns in a crystal at the player's location. Item must provide the orb and skull components the handler uses. |
+| `/world deleteorb` | `/deleteorb` | Deletes orbs at the player's location. |
+| `/world minionspeed <NORMAL\|MULTIPLY_2\|MULTIPLY_5\|MULTIPLY_10>` | `/handleminionspeed` | Handle minion speed. Changes the server-side minion speed divisor. |
+
+### Spawning
+
+`/spawn <mob> [amount]` spawns any mob at your feet: every sea creature (as if fished up, with the angler and catch message), every registered SkyBlock mob (Hub, Farming, Deep Caverns, Dwarven Mines, Crimson Isle, Kuudra-free minibosses and so on) and every Mythological creature. The mob list is built from the game's own registries, so new mobs appear automatically. `amount` is 1-50 (default 1); lava sea creatures still respect the 10-per-player cap. Old names `/spawnseacreature`, `/spawnsc`, `/spawncrimsonmob` and `/spawncm` forward to it.
+
 ### SkyBlock XP
 
 `/skyblockxp` (alias `/sbxp`) is STAFF-only and not console-declared. Every form takes an optional trailing online-player selector; omit it to target yourself. One SkyBlock Level is 100 SkyBlock XP.
@@ -360,9 +438,10 @@ Co-op commands are distinct top-level commands in the player tables, not `/coop 
 | `/skyblockxp max [player]` | Grants level 578.74, completes every source, and unlocks every prefix emblem. Same path `/maxprofile` and THE MAX STICK use. |
 | `/skyblockxp reset [player]` | Clears all causes, source progress, and the bonus offset back to zero XP. |
 | `/skyblockxp info [player]` | Prints level, total XP, earned-vs-bonus split, and progress to the next level. |
-| `/skyblockxp source <xpSource> <amount> [player]` | Sets one XP source's progress, clamped to that source's real Hypixel maximum. Rejected for sources backed by their own causes — use `/giveskyblockxp` for those. |
+| `/skyblockxp cause <cause> [player]` | Awards one named cause (a skill level, collection tier, museum reward and so on). Same as `/giveskyblockxp`. |
+| `/skyblockxp source <xpSource> <amount> [player]` | Sets one XP source's progress, clamped to that source's real Hypixel maximum. Rejected for sources backed by their own causes — use `/skyblockxp cause` for those. |
 
-`/giveskyblockxp` remains the way to award a single named cause (a skill level, collection tier, museum reward and so on). `/skyblockxp` works in XP totals and whole sources.
+`/skyblockxp cause` (old name `/giveskyblockxp`) remains the way to award a single named cause (a skill level, collection tier, museum reward and so on). `/skyblockxp` works in XP totals and whole sources.
 
 ## Examples
 
@@ -381,7 +460,7 @@ Replace player names and enum IDs with your intended targets. These are syntax e
 | Visit an island | `/visit FriendName` |
 | Vote on a co-op request | `/coopvote accept` |
 | Deposit shared coins | `/coopbank deposit 1000` |
-| Set a target's purse as staff | `/coins 1000 PlayerName` |
+| Set a target's purse as staff | `/set coins 1000 PlayerName` |
 | Grant a configured item as staff | `/i <ITEM_ID> 16 PlayerName` |
 | Find a player across servers as staff | `/find PlayerName` |
 | Teleport to coordinates as staff | `/tp 0 100 0` |
@@ -416,7 +495,7 @@ These definitions are in the repository but are loaded only for the relevant gam
 | Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
 | --- | --- | --- | --- | --- |
 | `/choosemap <map>` | `/choose`, `/selectmap`, `/select` | Choose a Murder Mystery map to configure. | STAFF | No |
-| `/setup <subcommand>` | `/mapsetup`, `/autosetup` | Murder Mystery map configuration tool.  Help uses /mmsetup, but it is not a registered label; use the spelling shown here. | STAFF | No |
+| `/setup <subcommand>` | `/mapsetup`, `/autosetup` | Murder Mystery map configuration tool. | STAFF | No |
 
 ### type.murdermysterygame
 
@@ -433,7 +512,7 @@ These definitions are in the repository but are loaded only for the relevant gam
 | `/crowns <amount>` | — | Sets your crown balance. | STAFF | No |
 | `/dungeon <join\|list\|generate [seed] [rooms]>` | — | Ravengard dungeon administration. | STAFF | No |
 | `/hub` | `/h` | Sends the player to the Ravengard hub. | DEFAULT | No |
-| `/items [lookup]` | `/e` | Browse every implemented Ravengard item. Opens the item browser; optional search. Help uses /itemlist, but it is not a registered label; use the spelling shown here. | STAFF | No |
+| `/items [lookup]` | `/e` | Browse every implemented Ravengard item. Opens the item browser; optional search. | STAFF | No |
 | `/spawn <mob>` | — | Spawns a Ravengard mob at your position. | STAFF | No |
 | `/spawnsatchel` | — | Drops a loot satchel at your position. | STAFF | No |
 | `/switch <world>` | — | Switches between captured polar worlds. | DEFAULT | No |
@@ -464,12 +543,12 @@ These definitions are in the repository but are loaded only for the relevant gam
 
 | Command / syntax | Aliases | Purpose | Minimum rank | Console declared |
 | --- | --- | --- | --- | --- |
-| `/setswlevel <level>` | — | Set your SkyWars level for testing.  Help uses /setskywarlevel, but it is not a registered label; use the spelling shown here. | STAFF | No |
+| `/setswlevel <level>` | — | Set your SkyWars level for testing. | STAFF | No |
 | `/swadmin <give\|set> <coins\|souls\|tokens> <amount>` | `/skywarsadmin` | Admin command for managing SkyWars currencies. | STAFF | No |
 
 ### Optional Spark profiler
 
-`/spark [arguments...]` is registered when Spark is enabled by the loader. Its subcommands and permissions are delegated to the bundled Spark platform. Use its in-game help for the bundled version. It is not one of the 152 annotated commands.
+`/spark [arguments...]` is registered when Spark is enabled by the loader. Its subcommands and permissions are delegated to the bundled Spark platform. Use its in-game help for the bundled version. It is not one of the annotated commands.
 
 ## Known registration and help discrepancies
 
@@ -477,9 +556,8 @@ This documentation does not change the handlers. The table distinguishes source 
 
 | Finding | Consequence |
 | --- | --- |
-| `/tp` player branch fails to supply `entityArgument` to `addSyntax` | Player-target teleport is not correctly registered; the coordinate form is documented instead. |
-| Several help strings name labels that are not registered | Use the actual labels in the tables: examples include `/mininginfo`, `/editnbt`, `/clearmissionset`, `/clearmission`, `/deleteorb`, `/recomb`, `/setvelocity`, `/regrowtrees`, and `/sl`. |
-| Help omits arguments for crystal, minion-speed, structure, particle, head-rotation, and NPC-option commands | The core tables include the arguments found in registration. |
+| Several help strings name labels that are not registered | Use the actual labels in the tables: examples include `/sl`. The merged staff commands now carry their own usage strings. |
+| Help omits the argument of the NPC-option command | The core tables include the arguments found in registration. |
 | `/coopcheck` help says `/coop` | `/coopcheck` and `/cooperativecheck` are the registered labels for checking invitations. |
 | `allowsConsole=true` can coexist with player casts | Treat Console declared as metadata, not a tested compatibility guarantee. |
 | `/adminme` has DEFAULT entry permission | It has an additional hardcoded developer allowlist; it is grouped with diagnostics, not ordinary player commands. |

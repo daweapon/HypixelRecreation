@@ -10,21 +10,13 @@ public final class HelpCatalog {
     public static final int PAGE_SIZE = 8;
     private static final Set<String> INTERNAL_COMMANDS = Set.of("forceadmin", "selectnpcoption", "sphinxanswer");
     private static final Map<String, String> USAGE_OVERRIDES = Map.ofEntries(
-            Map.entry("tp", "/tp <x> <y> <z>"),
             Map.entry("speed", "/speed <speed> [FLY|WALK]"),
-            Map.entry("npcpathfinding", "/npcpathfinding <npc> <x> <y> <z>"),
             Map.entry("cooperative", "/coop <player> [player ...]"),
             Map.entry("cooperativecheck", "/coopcheck"),
             Map.entry("clearstash", "/clearstash [confirm]"),
-            Map.entry("testpe", "/testpe <radius> <intensity> <duration> <wireframe>"),
-            Map.entry("testheadrot", "/testheadrotation <x>"),
-            Map.entry("structure", "/structure <rotation>"),
             Map.entry("itemlist", "/itemlist [lookup]"),
-            Map.entry("handleminionspeed", "/handleminionspeed <NORMAL|MULTIPLY_2|MULTIPLY_5|MULTIPLY_10>"),
-            Map.entry("spawncrystal", "/addcrystal <itemType>"),
             Map.entry("regions", "/regions <add|remove|wand> ..."),
             Map.entry("selectnpcoption", "/selectnpcoption <npc> <option>"),
-            Map.entry("localedata", "/localedata [update]"),
             Map.entry("fl", "/fl [page|best]"),
             Map.entry("chatmode", "/chat <a|all|p|party|s|staff|sv|staffview>"),
             Map.entry("slayer", "/slayer start <type> <tier> | /slayer status | /slayer cancel")

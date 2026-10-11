@@ -110,7 +110,7 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
         });
         loopThroughPackage("net.swofty.type.generic.command.commands", HypixelCommand.class).forEach(command -> {
             try {
-                MinecraftServer.getCommandManager().register(command.getCommand());
+                HypixelCommand.register(command);
             } catch (Exception e) {
                 Logger.error(e, "Failed to register command {} in class {}",
                         command.getCommand().getName(), command.getClass().getSimpleName());

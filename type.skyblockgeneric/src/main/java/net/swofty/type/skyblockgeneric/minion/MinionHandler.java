@@ -10,7 +10,7 @@ import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.type.generic.entity.hologram.ServerHolograms;
 import net.swofty.type.generic.utility.MathUtility;
-import net.swofty.type.skyblockgeneric.commands.MinionGenerationCommand;
+import net.swofty.type.skyblockgeneric.command.groups.world.MinionGenerationCommand;
 import net.swofty.type.skyblockgeneric.entity.MinionEntityImpl;
 import net.swofty.type.skyblockgeneric.item.ItemQuantifiable;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
