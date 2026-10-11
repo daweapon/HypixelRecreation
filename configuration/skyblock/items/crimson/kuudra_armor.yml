@@ -23,8 +23,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 5051c83d9ebf69013f1ec8c9efc979ec2d925a921cc877ff64abe09aadd2f6cc
@@ -58,8 +56,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -95,8 +91,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -132,8 +126,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -170,8 +162,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: bbe6d66770a61bf56e6d4b476922b1c3b3dc9f78a26e56b36cd965b7ab20b417
@@ -206,8 +196,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -244,8 +232,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -282,8 +268,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -321,8 +305,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: eb034a5d97c24fe0ec902bd02fec52a09d917366be060c51f9a1a276b284a9d7
@@ -358,8 +340,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -397,8 +377,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -436,8 +414,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -475,8 +451,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 91f0c7afff1782465d8cdb5eba261b65423a7a0712ee3a4c572c33f94c68c55
@@ -512,8 +486,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -551,8 +523,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -590,8 +560,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -628,8 +596,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 507d6bf7611190ed9c580d8c87c296059216230c9501eec6359e0d60ec84758e
@@ -664,8 +630,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -702,8 +666,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -740,8 +702,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '230'
@@ -776,8 +736,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 763d2fe93881b4f26cbe1dd3b09da7cc48dbcdc568d19852ad635d5d16859611
@@ -809,8 +767,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '40'
@@ -844,8 +800,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '63'
@@ -879,8 +833,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '97'
@@ -915,8 +867,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 30b6e2d43ee24c9a246a83515f9b7414846f315ad954400c38ca65cdf08e919e
@@ -948,8 +898,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '40'
@@ -983,8 +931,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '63'
@@ -1018,8 +964,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '97'
@@ -1054,8 +998,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: f886b484b750c367107892586930a5e50cd57e9be843bd3db7eb217cb782f0a1
@@ -1087,8 +1029,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '40'
@@ -1122,8 +1062,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '63'
@@ -1157,8 +1095,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '97'
@@ -1193,8 +1129,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 1855aabafa461d35b864291d494ca36a2f46307ceadad3a28774054f86788e8
@@ -1226,8 +1160,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '40'
@@ -1261,8 +1193,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '63'
@@ -1296,8 +1226,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '97'
@@ -1332,8 +1260,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 2cc3ea5345c288c24f1aa7dd8fc63295597d3fb374e314f605640b8dea06fe3f
@@ -1365,8 +1291,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '40'
@@ -1400,8 +1324,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '63'
@@ -1435,8 +1357,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '97'
@@ -1462,8 +1382,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 52af8833697c81b46e83c8f1895266e606efbb3a59f1c3b4ca2816da2bcfa9d6
@@ -1487,8 +1405,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '62'
@@ -1514,8 +1430,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '93'
@@ -1541,8 +1455,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '124'
@@ -1568,8 +1480,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: bdea30e305483713ac9a5295ae698d4109766c9ae2bc744ac58f6bb4cf93a9f1
@@ -1593,8 +1503,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '62'
@@ -1620,8 +1528,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '93'
@@ -1647,8 +1553,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '124'
@@ -1674,8 +1578,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 4482ec351f353445775b439ebc909d5702732f8bae9d32b0b08860b3d6439061
@@ -1699,8 +1601,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '62'
@@ -1726,8 +1626,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '93'
@@ -1753,8 +1651,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '124'
@@ -1780,8 +1676,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: b46902e1756a242f401d0c2567ec6481c65084af9b1aaabb9732f56cade542f3
@@ -1805,8 +1699,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '62'
@@ -1832,8 +1724,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '93'
@@ -1859,8 +1749,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '124'
@@ -1886,8 +1774,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 4eadf2954f1629d793d7f467181c449e18d89aa4941bec3ea5211e5909bb567
@@ -1911,8 +1797,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '62'
@@ -1938,8 +1822,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '93'
@@ -1965,8 +1847,6 @@ items:
     lore:
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '124'
@@ -2006,8 +1886,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: bc6e137e2a6a501dfc854ca900b5b681227dea4d5a9616849a3a68f09c6dc327
@@ -2045,8 +1923,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '240'
@@ -2086,8 +1962,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '23'
@@ -2127,8 +2001,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '7'
@@ -2168,8 +2040,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 3030c3217a2ac070e404cf8c21eafba3a0f6b579dbf4ec9fdc1633ad2180cf28
@@ -2207,8 +2077,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '240'
@@ -2248,8 +2116,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '23'
@@ -2289,8 +2155,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '7'
@@ -2330,8 +2194,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 97e2d177faac867c9e49542aa4ec831b458d8537f20672014c9149e4ddba43d6
@@ -2369,8 +2231,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '240'
@@ -2410,8 +2270,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '23'
@@ -2451,8 +2309,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '7'
@@ -2492,8 +2348,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 73f65fffe8fb4e70ee1c1edb8d8f5ef7bb66d0fd1807fb2568b09f1ab976d64f
@@ -2531,8 +2385,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '240'
@@ -2572,8 +2424,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '23'
@@ -2613,8 +2463,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '7'
@@ -2654,8 +2502,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 1d47cf6e12d12a5eb161759ba95689a9237ec111473e92a140ecab0158dfd258
@@ -2693,8 +2539,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '240'
@@ -2734,8 +2578,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '23'
@@ -2775,8 +2617,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '7'
@@ -2810,8 +2650,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 4aacd705a29b790528a70ee93a1cbd92c029601a762d52805f60460e7a7ff8f7
@@ -2843,8 +2681,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -2878,8 +2714,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -2913,8 +2747,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
       - "§4❣ §cRequires Kuudra Basic Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '227'
@@ -2948,8 +2780,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: cc344d65ae6bc2230ee220d76dda1e080f90282ca0f9f0d9bc9667d22048ce9f
@@ -2981,8 +2811,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -3016,8 +2844,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -3051,8 +2877,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 27§c."
       - "§4❣ §cRequires Kuudra Hot Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '227'
@@ -3086,8 +2910,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 92aa17c32d27b92816b00362c2f69d867cd99ba376d10b097796368287834ea1
@@ -3119,8 +2941,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -3154,8 +2974,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -3189,8 +3007,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 32§c."
       - "§4❣ §cRequires Kuudra Burning Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '227'
@@ -3224,8 +3040,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 28c6bdbff6f033c61bc335dd9a78956e6cdfdd613ebb5a77ec38d271a8332612
@@ -3257,8 +3071,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -3292,8 +3104,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -3327,8 +3137,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 37§c."
       - "§4❣ §cRequires Kuudra Fiery Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '227'
@@ -3362,8 +3170,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 84eee9f23952f9777d0519c111655066851fb4c1793629d3767a00dacee6f250
@@ -3395,8 +3201,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -3430,8 +3234,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -3465,8 +3267,6 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 42§c."
       - "§4❣ §cRequires Kuudra Infernal Tier Completion."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: LEATHER_COLOR
         r: '227'

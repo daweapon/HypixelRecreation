@@ -15,8 +15,6 @@ items:
       - ""
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -40,8 +38,6 @@ items:
       - ""
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -65,8 +61,6 @@ items:
       - ""
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
@@ -90,8 +84,6 @@ items:
       - ""
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -110,8 +102,6 @@ items:
       - "§7a higher rarity one."
       - ""
       - "§8§oMay the eternal luck of Kuudra be in your favor."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 5c87f59b02886fef594eaebb46dc337aabb845b2c41bb4d238c12607d8a09544
@@ -120,8 +110,6 @@ items:
     name: "Kuudra Tentacle"
     rarity: RARE
     lore:
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
   - id: KUUDRAS_KIDNEY
     material: player_head
     name: "Kuudra's Kidney"
@@ -176,8 +164,6 @@ items:
       - "§dRNG Meter §7of your choosing."
       - ""
       - "§eRight-click to consume!"
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
   - id: TENTACLE_DYE
     material: player_head
     name: "Tentacle Dye"
@@ -187,8 +173,6 @@ items:
       - ""
       - "§7Changes the color of an armor piece"
       - "§7to §5#324D6C§7!"
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: 298bba8068091bfb70d7f97983934b0dea6cf91cc99ea9d14af7e811815c4bf7
@@ -219,8 +203,6 @@ items:
       - ""
       - ""
       - "§4❣ §cRequires §aMining Skill 33§c."
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
   - id: MANDRAA
     material: beetroot
     name: "Mandraa"
@@ -243,8 +225,6 @@ items:
       - ""
       - "§eRight-click on your Kuudra Pet to"
       - "§eapply this upgrade!"
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: d09368a0dc03b57a7d68e2b2c05b72047bd65c276c014d993976a747b2446c99
@@ -261,8 +241,6 @@ items:
       - ""
       - "§eRight-click on your Kuudra Pet to"
       - "§eapply this upgrade!"
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: d09368a0dc03b57a7d68e2b2c05b72047bd65c276c014d993976a747b2446c99
@@ -279,8 +257,6 @@ items:
       - ""
       - "§eRight-click on your Kuudra Pet to"
       - "§eapply this upgrade!"
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: d09368a0dc03b57a7d68e2b2c05b72047bd65c276c014d993976a747b2446c99
@@ -297,8 +273,6 @@ items:
       - ""
       - "§eRight-click on your Kuudra Pet to"
       - "§eapply this upgrade!"
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
     components:
       - id: SKULL_HEAD
         texture: d09368a0dc03b57a7d68e2b2c05b72047bd65c276c014d993976a747b2446c99
@@ -313,5 +287,3 @@ items:
       mining_speed: 250
     lore:
       - "§8Breaking Power 5"
-      - ""
-      - "§cObtained from Kuudra (not available yet)"
