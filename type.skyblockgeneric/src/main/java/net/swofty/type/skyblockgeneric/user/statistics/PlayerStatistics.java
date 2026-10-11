@@ -262,6 +262,7 @@ public class PlayerStatistics {
         for (DatapointPetData.ActiveAbility active : player.getPetData().getActiveAbilities()) {
             stats = ItemStatistics.add(stats, active.ability().getStatistics(player, active.pet()));
         }
+        stats = ItemStatistics.add(stats, net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetAuras.statistics(player));
 
         return stats;
     }
@@ -330,7 +331,8 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, MayorPerkStatistics.flatBonuses(perks, !HypixelConst.isIslandServer()));
         total = MayorPerkStatistics.applyScaling(perks, total, enemy instanceof SlayerBossMob);
 
-        return ZoneRuleService.capStatistics(player, StatOverrides.apply(player, total));
+        return ZoneRuleService.capStatistics(player, StatOverrides.apply(player,
+                net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.withRaisedSpeedCap(player, total)));
     }
 
     public List<StatisticSource> statisticSources() {
@@ -596,8 +598,9 @@ public class PlayerStatistics {
             PotatoType potatoType = hotPotatoBookData.getPotatoType();
 
             int appliedBooks = hotPotatoBookData.getTotalAmount();
+            double potatoMultiplier = net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.hotPotatoMultiplier(player);
             potatoType.stats.forEach((statistic, amount) ->
-                    toAdd.withBase(statistic, amount * appliedBooks));
+                    toAdd.withBase(statistic, amount * appliedBooks * potatoMultiplier));
             statistics = ItemStatistics.add(statistics, toAdd.build());
         }
         return statistics;

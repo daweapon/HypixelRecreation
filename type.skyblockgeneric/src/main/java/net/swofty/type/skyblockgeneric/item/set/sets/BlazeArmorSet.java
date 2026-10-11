@@ -9,6 +9,7 @@ import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
 import net.swofty.type.skyblockgeneric.item.set.impl.SetRepeatable;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -55,10 +56,11 @@ public class BlazeArmorSet implements ArmorSet, SetRepeatable {
 
     private void burn(SkyBlockPlayer player) {
         if (player.getInstance() == null) return;
-        int cap = damageCap(player);
+        double boost = CombatPetHooks.blazeArmorMultiplier(player);
+        double cap = damageCap(player) * boost;
         for (Entity entity : player.getInstance().getNearbyEntities(player.getPosition(), RADIUS)) {
             if (!(entity instanceof SkyBlockMob mob) || mob.isDead()) continue;
-            float damage = (float) Math.min(cap, mob.getMaxHealth() * MAX_HEALTH_FRACTION);
+            float damage = (float) Math.min(cap, mob.getMaxHealth() * MAX_HEALTH_FRACTION * boost);
             if (damage <= 0) continue;
             mob.damage(new Damage(DamageType.ON_FIRE, player, player, mob.getPosition(), damage));
         }

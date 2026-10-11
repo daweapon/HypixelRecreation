@@ -75,7 +75,8 @@ items:
               - { per_level: { COMMON: 0.05, UNCOMMON: 0.075, EPIC: 0.1 } }
           - name: "Bling Armor"
             rarity: RARE
-            kind: INACTIVE
+            kind: HANDLER
+            handler: BLAZE_BLING_ARMOR
             text:
               - "<7>Upgrades <c>Blaze Armor <7>stats"
               - "<7>and ability by <a>{0}%"
@@ -83,7 +84,7 @@ items:
               - { per_level: { RARE: 0.35, EPIC: 0.4 } }
           - name: "Fusion-Style Potato"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Double effects of hot potato"
               - "<7>books."

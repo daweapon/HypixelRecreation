@@ -4,6 +4,10 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.ClubbedTailHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.ContrabandHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.FerociousRoarHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.HemorrhageHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.TrampleHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CoinsPerKillHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatWisdomTowardsHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.DragonsGreedHandler;
@@ -38,6 +42,12 @@ import java.util.Set;
 final class CombatPetAbilities implements PetAbilityRegistry.Provider {
     @Override
     public void register(PetAbilityRegistry.Registrar registrar) {
+        registrar.register("TRAMPLE", new TrampleHandler());
+        registrar.register("TYRANNOSAURUS_FEROCIOUS_ROAR", new FerociousRoarHandler());
+        registrar.register("TIGER_HEMORRHAGE", new HemorrhageHandler());
+        registrar.register("PRECURSOR_DRONE_CONTRABAND", new ContrabandHandler());
+        registrar.register("BLAZE_BLING_ARMOR", new ArmorBoostHandler(Set.of(ItemType.BLAZE_HELMET,
+                ItemType.BLAZE_CHESTPLATE, ItemType.BLAZE_LEGGINGS, ItemType.BLAZE_BOOTS)));
         registrar.register("COMBAT_WISDOM_TOWARDS", new CombatWisdomTowardsHandler());
         registrar.register("COINS_PER_KILL", new CoinsPerKillHandler());
         registrar.register("ANKYLOSAURUS_CLUBBED_TAIL", new ClubbedTailHandler());

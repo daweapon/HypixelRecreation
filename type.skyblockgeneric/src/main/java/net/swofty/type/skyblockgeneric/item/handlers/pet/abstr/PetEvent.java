@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import net.minestom.server.item.Material;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 import net.swofty.type.skyblockgeneric.fishing.catches.CatchPayload;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -43,13 +44,19 @@ public sealed interface PetEvent {
     final class FallDamage implements PetEvent {
         private final SkyBlockPlayer player;
         private final SkyBlockItem pet;
+        private final int distance;
         @Setter
         private double damage;
 
-        public FallDamage(SkyBlockPlayer player, SkyBlockItem pet, double damage) {
+        public FallDamage(SkyBlockPlayer player, SkyBlockItem pet, double damage, int distance) {
             this.player = player;
             this.pet = pet;
             this.damage = damage;
+            this.distance = distance;
+        }
+
+        public FallDamage(SkyBlockPlayer player, SkyBlockItem pet, double damage) {
+            this(player, pet, damage, 0);
         }
     }
 
@@ -92,12 +99,20 @@ public sealed interface PetEvent {
         private CatchPayload payload;
         @Nullable
         private final String regionId;
+        @Nullable
+        private final FishingContext context;
 
-        public FishCaught(SkyBlockPlayer player, SkyBlockItem pet, CatchPayload payload, @Nullable String regionId) {
+        public FishCaught(SkyBlockPlayer player, SkyBlockItem pet, CatchPayload payload, @Nullable String regionId,
+                          @Nullable FishingContext context) {
             this.player = player;
             this.pet = pet;
             this.payload = payload;
             this.regionId = regionId;
+            this.context = context;
+        }
+
+        public FishCaught(SkyBlockPlayer player, SkyBlockItem pet, CatchPayload payload, @Nullable String regionId) {
+            this(player, pet, payload, regionId, null);
         }
     }
 

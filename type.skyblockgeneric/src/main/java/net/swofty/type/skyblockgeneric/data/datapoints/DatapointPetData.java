@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.data.datapoints;
 
+import net.swofty.type.skyblockgeneric.user.pets.PetEquipEffects;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -208,7 +209,9 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
                 enabledPetEntityImpl.remove();
             }
             enabledPetEntityImpl = null;
-            if (player == null || player.getInstance() == null) return;
+            if (player == null) return;
+            PetEquipEffects.apply(player);
+            if (player.getInstance() == null) return;
 
             SkyBlockItem enabledPet = getEnabledPet();
             if (enabledPet != null) {

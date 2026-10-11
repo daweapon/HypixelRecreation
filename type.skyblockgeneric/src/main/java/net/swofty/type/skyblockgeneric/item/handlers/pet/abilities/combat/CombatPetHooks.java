@@ -10,6 +10,9 @@ import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
+import net.swofty.commons.skyblock.statistics.ItemStatistic;
+import net.swofty.commons.skyblock.statistics.ItemStatistics;
+import net.swofty.type.skyblockgeneric.entity.mob.MobStatusEffects;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -17,6 +20,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.AbilityRuntime;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.ConfiguredPetAbility;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
+import net.swofty.type.skyblockgeneric.utility.AttackService;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -65,6 +69,10 @@ public final class CombatPetHooks {
             percent += PetAbilities.value(player, ItemType.TYRANNOSAURUS_PET, "Close Combat", 0);
         }
         if (isIsolated(mob)) percent += PetAbilities.value(player, ItemType.TIGER_PET, "Apex Predator", 0);
+        if (mob.isKuudraForce()) percent += PetAbilities.value(player, ItemType.KUUDRA_PET, "Kuudra Specialist", 0);
+        if (MobAggroLog.hasAttacked(player.getUuid(), mob.getUuid(), System.currentTimeMillis())) {
+            percent += PetAbilities.value(player, ItemType.LION_PET, "King of the Jungle", 0);
+        }
         return 1 + percent / 100D;
     }
 
@@ -128,6 +136,7 @@ public final class CombatPetHooks {
     }
 
     public static double mobDamageMultiplier(SkyBlockMob mob) {
+        if (MobStatusEffects.isStunned(mob)) return 0;
         Long until = WEAKENED_UNTIL.get(mob.getUuid());
         if (until == null) return 1;
         if (System.currentTimeMillis() < until) return WEAKENED_DAMAGE;
@@ -145,6 +154,76 @@ public final class CombatPetHooks {
         if (TRANSMISSION_ITEMS.contains(item.getAttributeHandler().getPotentialType())) {
             startBuff(player, ItemType.ENDERMAN_PET, "Teleport Savvy", TELEPORT_SAVVY_MS);
         }
+    }
+
+    public static double kuudraDamageMultiplier(SkyBlockPlayer player) {
+        if (!loaded(player)) return 1;
+        return 1 + PetAbilities.value(player, ItemType.KUUDRA_PET, "Kuudra Specialist", 0) / 100D;
+    }
+
+    public static void mobAttacked(SkyBlockPlayer player, SkyBlockMob mob) {
+        if (loaded(player)) MobAggroLog.record(player.getUuid(), mob.getUuid(), System.currentTimeMillis());
+    }
+
+    public static double firstPounceMultiplier(SkyBlockPlayer player) {
+        if (!loaded(player)) return 1;
+        return 1 + PetAbilities.value(player, ItemType.LION_PET, "First Pounce", 0) / 100D;
+    }
+
+    public static double hotPotatoMultiplier(SkyBlockPlayer player) {
+        return loaded(player) && PetAbilities.has(player, ItemType.BLAZE_PET, "Fusion-Style Potato") ? 2 : 1;
+    }
+
+    public static double blazeArmorMultiplier(SkyBlockPlayer player) {
+        if (!loaded(player)) return 1;
+        return 1 + PetAbilities.value(player, ItemType.BLAZE_PET, "Bling Armor", 0) / 100D;
+    }
+
+    public static ItemStatistics withRaisedSpeedCap(SkyBlockPlayer player, ItemStatistics total) {
+        if (!loaded(player)) return total;
+        double bonus = PetAbilities.value(player, ItemType.BLACK_CAT_PET, "Hunter", 0);
+        if (bonus <= 0) return total;
+        double raw = total.getBase(ItemStatistic.SPEED) * total.getAdditive(ItemStatistic.SPEED)
+                * total.getMultiplicative(ItemStatistic.SPEED);
+        double cap = ItemStatistic.SPEED.getCap() == null ? Double.MAX_VALUE : ItemStatistic.SPEED.getCap();
+        return total.withExactValue(ItemStatistic.SPEED, PetPerkMath.speedWithRaisedCap(raw, cap, bonus));
+    }
+
+    public static void petTick(SkyBlockPlayer player) {
+        if (!loaded(player) || player.getInstance() == null || player.isDead()) return;
+        skeletalDefense(player);
+    }
+
+    private static void skeletalDefense(SkyBlockPlayer player) {
+        DatapointPetData.ActiveAbility active = active(player, ItemType.SKELETON_PET, "Skeletal Defense");
+        if (active == null) return;
+        AbilityRuntime runtime = player.getPetData().getAbilityRuntime(active.ability());
+        long now = System.currentTimeMillis();
+        if (!PetPerkMath.offCooldown(runtime.getLastProc(), now, PetPerkMath.SKELETAL_DEFENSE_COOLDOWN_MS)) return;
+        SkyBlockMob nearest = nearestMob(player, PetPerkMath.SKELETAL_DEFENSE_RANGE);
+        if (nearest == null) return;
+        runtime.setLastProc(now);
+        double critDamage = player.getStatistics().allStatistics().getOverall(ItemStatistic.CRITICAL_DAMAGE);
+        AttackService.applyHit(player, nearest, (float) PetPerkMath.skeletalDefenseDamage(critDamage), true);
+    }
+
+    private static @Nullable SkyBlockMob nearestMob(SkyBlockPlayer player, double range) {
+        SkyBlockMob nearest = null;
+        double best = Double.MAX_VALUE;
+        for (Entity entity : player.getInstance().getNearbyEntities(player.getPosition(), range)) {
+            if (!(entity instanceof SkyBlockMob mob) || mob.isDead() || mob.isRemoved()) continue;
+            double distance = player.getPosition().distance(mob.getPosition());
+            if (distance < best) {
+                best = distance;
+                nearest = mob;
+            }
+        }
+        return nearest;
+    }
+
+    public static int cooldownTicks(SkyBlockPlayer player, int ticks) {
+        if (!loaded(player)) return ticks;
+        return PetPerkMath.reducedCooldown(ticks, PetAbilities.value(player, ItemType.CROW_PET, "Quick Hands", 0));
     }
 
     public static boolean savesMana(SkyBlockPlayer player) {

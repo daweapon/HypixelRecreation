@@ -25,7 +25,7 @@ public final class PetConditions {
 
     static {
         register("PUBLIC_ISLAND", player -> currentServer() != ServerType.SKYBLOCK_ISLAND);
-        register("PRIVATE_ISLAND", player -> currentServer() == ServerType.SKYBLOCK_ISLAND);
+        register("PRIVATE_ISLAND", _ -> onPrivateIsland());
         register("THE_PARK", inRegions(EnumSet.of(
                 RegionType.BIRCH_PARK, RegionType.HOWLING_CAVE, RegionType.SPRUCE_WOODS, RegionType.VIKING_LONGHOUSE,
                 RegionType.DARK_THICKET, RegionType.TRIALS_OF_FIRE, RegionType.SAVANNA_WOODLAND, RegionType.SOUL_CAVE,
@@ -33,6 +33,10 @@ public final class PetConditions {
     }
 
     private PetConditions() {
+    }
+
+    public static boolean onPrivateIsland() {
+        return currentServer() == ServerType.SKYBLOCK_ISLAND;
     }
 
     public static void register(String id, Predicate<SkyBlockPlayer> condition) {

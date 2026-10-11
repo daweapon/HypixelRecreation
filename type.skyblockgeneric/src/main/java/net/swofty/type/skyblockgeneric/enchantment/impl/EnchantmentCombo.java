@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.enchantment.abstr.EventBasedEnchant;
 import net.swofty.type.skyblockgeneric.enchantment.abstr.KillEventEnchant;
 import net.swofty.type.skyblockgeneric.enchantment.catalogue.CatalogueEnchantment;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayDeque;
@@ -55,7 +56,7 @@ public class EnchantmentCombo extends CatalogueEnchantment implements EventBased
             bonus = bonus(level, kills, System.currentTimeMillis());
         }
         if (bonus <= 0) return ItemStatistics.empty();
-        return ItemStatistics.builder().withBase(ItemStatistic.DAMAGE, bonus).build();
+        return ItemStatistics.builder().withBase(ItemStatistic.DAMAGE, bonus * CombatPetHooks.firstPounceMultiplier(causer)).build();
     }
 
     @Override

@@ -211,9 +211,11 @@ items:
           LEGENDARY: { intelligence: { per_level: 0.75 }, speed: { per_level: 1.5 } }
         abilities:
           - name: "High Stride"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Grants permanent <b>Jump Boost IV<7>."
+            values:
+              - 4
           - name: "Stampede"
             kind: HANDLER
             handler: STAMPEDE
@@ -227,7 +229,9 @@ items:
               - { per_level: 0.01 }
               - { per_level: 0.1 }
           - name: "Trample"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: TRAMPLE
+            triggers: FALL_DAMAGE
             text:
               - "<7>After falling <a>20 <7>or more blocks,"
               - "<7>absorb your fall damage and deal <a>{0}%"

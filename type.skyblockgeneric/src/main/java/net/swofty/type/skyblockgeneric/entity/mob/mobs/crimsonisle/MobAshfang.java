@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle;
 
+import net.swofty.type.skyblockgeneric.entity.mob.MobStatusEffects;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.attribute.Attribute;
@@ -152,7 +153,7 @@ public class MobAshfang extends CrimsonMinibossMob implements AshfangArena {
             phaseTicks = HEAL_TICKS;
             orbs.clear();
             heldFollowers.clear();
-            float heal = (float) (HEAL_PER_MINION * minions.size());
+            float heal = MobStatusEffects.healing(this, HEAL_PER_MINION * minions.size());
             minions.forEach(AshfangMinionMob::absorb);
             minions.clear();
             setHealth(Math.min(getMaxHealth(), getHealth() + heal));

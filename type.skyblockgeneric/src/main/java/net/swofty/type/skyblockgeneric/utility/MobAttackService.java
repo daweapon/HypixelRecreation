@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.event.value.SkyBlockValueEvent;
 import net.swofty.type.skyblockgeneric.event.value.events.PlayerDamagedByMobValueUpdateEvent;
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalGear;
@@ -48,6 +49,7 @@ public final class MobAttackService {
                 .dispatch(new PetEvent.DamagedByMob(player, pet, mob, finalDamage));
         finalDamage = (float) damageEvent.damage();
 
+        CombatPetHooks.mobAttacked(player, mob);
         player.damage(new EntityDamage(mob, finalDamage));
 
         new DamageIndicator()
@@ -62,6 +64,7 @@ public final class MobAttackService {
         if (damage <= 0 || player.isRemoved()) return;
         damage *= gearMultiplier(mob, player);
         damage = net.swofty.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.burststop(player, (float) damage);
+        CombatPetHooks.mobAttacked(player, mob);
         player.damage(new EntityDamage(mob, (float) damage));
         new DamageIndicator()
                 .damage((float) damage)

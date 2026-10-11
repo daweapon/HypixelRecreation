@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item;
 
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryPower;
 import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffect;
 import net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments;
@@ -178,7 +179,7 @@ public class ItemLore {
 		TextBody.Section section = lore.section(LoreText.Sections.STATS);
 
 		for (ItemStatistic statistic : RENDERED_STATISTICS) {
-			Text line = statisticLine(item, statistic, statistics.getOverall(statistic), handler.getReforge(), rarity);
+			Text line = statisticLine(item, statistic, statistics.getOverall(statistic), handler.getReforge(), rarity, lore.viewer());
 			if (line != null) section.line(line);
 		}
 
@@ -189,7 +190,7 @@ public class ItemLore {
 	}
 
 	private static @Nullable Text statisticLine(SkyBlockItem item, ItemStatistic statistic, double overallValue,
-												Reforge reforge, Rarity rarity) {
+												Reforge reforge, Rarity rarity, @Nullable SkyBlockPlayer viewer) {
 		if (!statistic.isRendered()) return null;
 
 		double reforgeValue = 0;
@@ -204,7 +205,7 @@ public class ItemLore {
 		ItemAttributeHotPotatoBookData.HotPotatoBookData hotPotatoBookData = item.getAttributeHandler().getHotPotatoBookData();
 		if (hotPotatoBookData.hasAppliedItem()) {
 			for (Map.Entry<ItemStatistic, Double> entry : hotPotatoBookData.getPotatoType().stats.entrySet()) {
-				if (entry.getKey() == statistic) hpbValue += entry.getValue() * hotPotatoBookData.getTotalAmount();
+				if (entry.getKey() == statistic) hpbValue += entry.getValue() * hotPotatoBookData.getTotalAmount() * CombatPetHooks.hotPotatoMultiplier(viewer);
 			}
 		}
 		overallValue += hpbValue;
@@ -419,9 +420,10 @@ public class ItemLore {
 			String costDisplay = ability.getCost().getLoreDisplay();
 			if (costDisplay != null) section.line(Text.parseLenient(costDisplay));
 
-			if (ability.getCooldownTicks() > 20) {
+			int cooldownTicks = CombatPetHooks.cooldownTicks(lore.viewer(), ability.getCooldownTicks());
+			if (cooldownTicks > 20) {
 				section.line("<key:'items.lore.ability_cooldown':'{:.1}'>",
-						(double) ability.getCooldownTicks() / 20);
+						(double) cooldownTicks / 20);
 			}
 		}
 	}

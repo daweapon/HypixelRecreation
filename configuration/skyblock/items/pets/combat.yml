@@ -61,7 +61,7 @@ items:
           COMMON: { intelligence: { per_level: 1.5 }, ability_damage: { per_level: 0.2 } }
         abilities:
           - name: "Quick Hands"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Lowers the cooldown of your <c>Weapon"
               - "<7>abilities by <a>+{0}%<7>."
@@ -482,9 +482,11 @@ items:
           COMMON: { intelligence: { per_level: 0.5 }, speed: { per_level: 1 } }
         abilities:
           - name: "High Stride"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Grants permanent <b>Jump Boost IV<7>."
+            values:
+              - { base: { COMMON: 2, UNCOMMON: 3, RARE: 3, EPIC: 4 } }
             text_by_rarity:
               COMMON:
                 - "<7>Grants permanent <b>Jump Boost II<7>."
@@ -506,7 +508,9 @@ items:
               - { base: 1, per_level: 0.05 }
           - name: "Trample"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: HANDLER
+            handler: TRAMPLE
+            triggers: FALL_DAMAGE
             text:
               - "<7>After falling <a>20 <7>or more blocks,"
               - "<7>absorb your fall damage and deal"
@@ -656,10 +660,12 @@ items:
               - { per_level: 1 }
           - name: "Kuudra Specialist"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Increases all damage to Kuudra and"
-              - "<7>his minions by <c>20%<7>."
+              - "<7>his minions by <c>{0}%<7>."
+            values:
+              - 20
       - id: TRACKED_UNIQUE
 
   - id: MAMMOTH_PET
@@ -748,7 +754,7 @@ items:
               - { base: 2, per_level: { SPECIAL: 0.02, VERY_SPECIAL: 0.03 } }
           - name: "Magic Bird"
             rarity: VERY_SPECIAL
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>You may always fly on your"
               - "<7>private island."
@@ -851,7 +857,9 @@ items:
               - "<8>Precursor Drones may possess up"
               - "<8>to 3 perks at a time, this one included."
           - name: "Contraband"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: PRECURSOR_DRONE_CONTRABAND
+            triggers: FISH_CAUGHT
             text:
               - "<7>When <b>Fishing<7>, catching a <3>Sea"
               - "<3>Creature <7>has a <a>{0}% <7>chance to also"
@@ -869,7 +877,7 @@ items:
             values:
               - { per_level: 1 }
           - name: "Mining Off Camera"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>When <6>Mining<7>, each collection"
               - "<7>progress grants a <a>{0}%"
@@ -994,7 +1002,7 @@ items:
               - { per_level: { RARE: 0.15, EPIC: 0.17, LEGENDARY: 0.2 } }
           - name: "Skeletal Defense"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Your skeleton shoots an arrow"
               - "<7>dealing <a>30x <7>your <9><glyph:stat_crit_damage> Crit Damage"
@@ -1173,7 +1181,9 @@ items:
             values:
               - { per_level: 1 }
           - name: "Ferocious Roar"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: TYRANNOSAURUS_FEROCIOUS_ROAR
+            triggers: MELEE_HIT
             text:
               - "<7>Attacks have a <a>{0}% <7>chance to stun"
               - "<7>the target <8>(10s cooldown)."
@@ -1279,7 +1289,7 @@ items:
             values:
               - { base: 3, per_level: 0.27 }
           - name: "Genius Amniote"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Grants <a>+{0}% <glyph:stat_defense> Defense <7>to 4"
               - "<7>players within 50 blocks of you."

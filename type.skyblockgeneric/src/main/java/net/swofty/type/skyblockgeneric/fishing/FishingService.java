@@ -129,7 +129,7 @@ public final class FishingService {
         }
 
         consumeBait(player, rod, session);
-        awardCatch(player, rod, hook, payload);
+        awardCatch(player, rod, hook, payload, context);
         updateSession(session.withResolved(true));
         return payload;
     }
@@ -155,12 +155,13 @@ public final class FishingService {
                 && Math.random() * 100 < sinker.getBaitPreservationChance();
     }
 
-    private static void awardCatch(SkyBlockPlayer player, SkyBlockItem rod, FishingHook hook, CatchPayload payload) {
+    private static void awardCatch(SkyBlockPlayer player, SkyBlockItem rod, FishingHook hook, CatchPayload payload,
+                                   FishingContext context) {
         markFirstFishToggle(player);
         rollSinkerMaterialize(player, rod);
 
         SkyBlockRegion region = player.getRegion();
-        payload = PetEvents.fishCaught(player, payload, region == null ? null : region.getType().name());
+        payload = PetEvents.fishCaught(player, payload, region == null ? null : region.getType().name(), context);
         payload.apply(new CatchAwardContext(player, rod, hook.getSpawnPosition()));
         GatheringPetDrops.fishCaught(player, rodMedium(rod), payload);
 

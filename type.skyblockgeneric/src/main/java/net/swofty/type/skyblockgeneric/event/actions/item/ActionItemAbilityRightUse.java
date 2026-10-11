@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.event.actions.item;
 
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import lombok.SneakyThrows;
 import net.minestom.server.event.player.PlayerUseItemEvent;
 import net.minestom.server.item.ItemStack;
@@ -46,9 +47,9 @@ public class ActionItemAbilityRightUse implements HypixelEventClass {
             }
 
             PlayerAbilityHandler abilityHandler = player.getAbilityHandler();
-            if (!abilityHandler.canUseAbility(item, ability.getCooldownTicks())) {
+            if (!abilityHandler.canUseAbility(item, CombatPetHooks.cooldownTicks(player, ability.getCooldownTicks()))) {
                 player.sendMessage("<c>This ability is on cooldown for {}s.",
-                        Math.round((float) abilityHandler.getRemainingCooldown(item, ability.getCooldownTicks()) / 1000));
+                        Math.round((float) abilityHandler.getRemainingCooldown(item, CombatPetHooks.cooldownTicks(player, ability.getCooldownTicks())) / 1000));
                 return;
             }
 

@@ -194,7 +194,7 @@ items:
               - { per_level: { COMMON: 0.03, UNCOMMON: 0.05, RARE: 0.1, EPIC: 0.15, LEGENDARY: 0.2 } }
           - name: "First Pounce"
             rarity: RARE
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>First Strike<7>,"
               - "<7>Triple-Strike<7>, and <d><l>Combo"
@@ -203,7 +203,7 @@ items:
               - { per_level: { RARE: 0.75, EPIC: 1 } }
           - name: "King of the Jungle"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Deal <c>+{0}% <c><glyph:skill_sword> Damage"
               - "<c><7>against mobs that have"
@@ -436,7 +436,9 @@ items:
               - { per_level: { COMMON: 0.1, UNCOMMON: 0.2, EPIC: 0.3 } }
           - name: "Hemorrhage"
             rarity: RARE
-            kind: INACTIVE
+            kind: HANDLER
+            handler: TIGER_HEMORRHAGE
+            triggers: MELEE_HIT
             text:
               - "<7>Melee attacks reduce healing"
               - "<7>by <6>{0}% <7>for <a>10s."
@@ -469,7 +471,8 @@ items:
           LEGENDARY: { intelligence: { per_level: 1 }, speed: { per_level: 1.25 }, magic_find: { per_level: 0.15 }, pet_luck: { per_level: 0.15 } }
         abilities:
           - name: "Hunter"
-            kind: INACTIVE
+            kind: STAT
+            statistics: { speed: "{0}" }
             text:
               - "<7>Increases your speed and"
               - "<7>speed cap by +<a>{0}<7>."

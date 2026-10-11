@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.user.pets;
 
 import net.minestom.server.item.Material;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 import net.swofty.type.skyblockgeneric.fishing.catches.CatchPayload;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -23,9 +24,14 @@ public final class PetEvents {
     }
 
     public static CatchPayload fishCaught(SkyBlockPlayer player, CatchPayload payload, @Nullable String regionId) {
+        return fishCaught(player, payload, regionId, null);
+    }
+
+    public static CatchPayload fishCaught(SkyBlockPlayer player, CatchPayload payload, @Nullable String regionId,
+                                          @Nullable FishingContext context) {
         if (!hasPetData(player)) return payload;
         PetEvent.FishCaught event = new PetEvent.FishCaught(player, player.getPetData().getEnabledPet(), payload,
-                regionId);
+                regionId, context);
         return player.getPetData().dispatch(event).payload();
     }
 

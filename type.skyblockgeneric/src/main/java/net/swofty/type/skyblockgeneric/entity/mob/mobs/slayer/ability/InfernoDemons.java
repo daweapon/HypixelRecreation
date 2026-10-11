@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.ability;
 
+import net.swofty.type.skyblockgeneric.entity.mob.MobStatusEffects;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.damage.Damage;
@@ -112,7 +113,7 @@ final class InfernoDemons {
             lastBeamHit.put(player.getUuid(), now);
             ability.hurt(boss, player, ROFLCOPTER_DAMAGE, "ROFLCopter", true);
             quazii.mob.setHealth((float) Math.min(quazii.mob.getMaxHealth(),
-                quazii.mob.getHealth() + quazii.mob.getMaxHealth() * ROFLCOPTER_HEAL));
+                quazii.mob.getHealth() + MobStatusEffects.healing(quazii.mob, quazii.mob.getMaxHealth() * ROFLCOPTER_HEAL)));
             quazii.mob.refreshName();
         }
     }

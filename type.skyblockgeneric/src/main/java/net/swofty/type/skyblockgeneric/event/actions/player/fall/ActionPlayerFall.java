@@ -49,7 +49,7 @@ public class ActionPlayerFall implements HypixelEventClass {
 
                 SkyBlockItem pet = player.getPetData().getEnabledPet();
                 PetEvent.FallDamage fallDamageEvent = player.getPetData()
-                        .dispatch(new PetEvent.FallDamage(player, pet, finalDamage));
+                        .dispatch(new PetEvent.FallDamage(player, pet, finalDamage, fallDistance));
                 finalDamage = (float) fallDamageEvent.damage();
 
                 if (finalDamage > 0)

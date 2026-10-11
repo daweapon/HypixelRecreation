@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.enchantment.abstr.Ench;
 import net.swofty.type.skyblockgeneric.enchantment.abstr.EnchFromTable;
 import net.swofty.type.skyblockgeneric.enchantment.abstr.EventBasedEnchant;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.groups.EnchantItemGroups;
 import org.jetbrains.annotations.NotNull;
@@ -56,7 +57,7 @@ public class EnchantmentFirstStrike implements Ench, EnchFromTable, EventBasedEn
         if (mob.isHasBeenDamaged()) return ItemStatistics.empty();
 
         mob.setHasBeenDamaged(true);
-        return ItemStatistics.builder().withBase(ItemStatistic.DAMAGE, MULTIPLIERS[level - 1]).build();
+        return ItemStatistics.builder().withBase(ItemStatistic.DAMAGE, MULTIPLIERS[level - 1] * CombatPetHooks.firstPounceMultiplier(causer)).build();
     }
 
     @Override

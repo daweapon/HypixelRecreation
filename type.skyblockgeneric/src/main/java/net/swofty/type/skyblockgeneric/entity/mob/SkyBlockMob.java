@@ -309,6 +309,10 @@ public abstract class SkyBlockMob extends EntityCreature {
         return false;
     }
 
+    public boolean isKuudraForce() {
+        return false;
+    }
+
     public void obliterate(SkyBlockPlayer player) {
         if (isDead() || isRemoved()) return;
         lastDamage = new Damage(DamageType.PLAYER_ATTACK, player, player, player.getPosition(), getHealth());

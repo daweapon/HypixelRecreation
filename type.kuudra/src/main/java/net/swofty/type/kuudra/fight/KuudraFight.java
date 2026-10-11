@@ -1,5 +1,6 @@
 package net.swofty.type.kuudra.fight;
 
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
 import net.kyori.adventure.title.Title;
@@ -970,7 +971,7 @@ public final class KuudraFight {
     private void weaponHit(SkyBlockPlayer player, double damage, boolean arrow) {
         if (lives.isGhost(player.getUuid()) || finishing) return;
         if (lair != null && lair.entered()) {
-            lair.hit(player, damage);
+            lair.hit(player, damage * CombatPetHooks.kuudraDamageMultiplier(player));
             return;
         }
         if (stunCycle != null && stunCycle.stunnedHit(player, arrow)) return;

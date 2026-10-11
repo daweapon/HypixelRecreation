@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.event.actions.player.data;
 
+import net.swofty.type.skyblockgeneric.user.pets.PetEquipEffects;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.MobAggroLog;
 import lombok.SneakyThrows;
 import net.minestom.server.event.player.PlayerDisconnectEvent;
 import net.swofty.type.generic.event.EventNodes;
@@ -28,6 +30,8 @@ public class ActionPlayerClearSkyBlockCache implements HypixelEventClass {
         // remove from caches
         SkyBlockScoreboard.removeCache(player);
         player.getPetData().updatePetEntityImpl(null);
+        PetEquipEffects.release(player.getUuid());
+        MobAggroLog.clear(player.getUuid());
         PlayerItemOrigin.clearCache(player.getUuid());
         ActionPlayerStrayTooFar.startedStray.remove(player.getUuid());
         CustomEventCaller.clearCache(player);

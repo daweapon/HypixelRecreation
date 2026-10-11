@@ -59,6 +59,11 @@ public abstract class KuudraMob extends CrimsonIsleMob {
                 .findFirst().orElse(0);
     }
 
+    @Override
+    public boolean isKuudraForce() {
+        return true;
+    }
+
     public KuudraMobSpec spec() {
         return spec;
     }

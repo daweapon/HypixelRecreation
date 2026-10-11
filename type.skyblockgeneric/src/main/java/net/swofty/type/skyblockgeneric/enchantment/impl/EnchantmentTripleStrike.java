@@ -6,6 +6,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.enchantment.abstr.EventBasedEnchant;
 import net.swofty.type.skyblockgeneric.enchantment.catalogue.CatalogueEnchantment;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Collections;
@@ -30,7 +31,7 @@ public class EnchantmentTripleStrike extends CatalogueEnchantment implements Eve
         if (!(receiver instanceof SkyBlockMob mob) || level < 1 || level > PERCENT.length) return ItemStatistics.empty();
         int hit = HITS_TAKEN.merge(mob, 1, Integer::sum);
         if (!boosts(hit)) return ItemStatistics.empty();
-        return ItemStatistics.builder().withBase(ItemStatistic.DAMAGE, PERCENT[level - 1]).build();
+        return ItemStatistics.builder().withBase(ItemStatistic.DAMAGE, PERCENT[level - 1] * CombatPetHooks.firstPounceMultiplier(causer)).build();
     }
 
     @Override

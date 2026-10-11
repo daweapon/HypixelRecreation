@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -47,6 +48,15 @@ final class QualityTreasureRoller {
         List<WeightedLoot> normal = available(table.weightedItems());
         WeightedLoot loot = LootRoll.pick(uuid, normal, QualityTreasureRoller::itemOf, WeightedLoot::weight, ThreadLocalRandom.current());
         return new CatchPayload.Item(loot.itemId(), amount(loot), NORMAL_XP, false);
+    }
+
+    static Optional<CatchPayload> treasure(FishingContext context, FishingTableDefinition table) {
+        UUID uuid = context.player().getUuid();
+        TreasureQuality quality = pickQuality(uuid, table.treasureQualities(), qualityBonus(context));
+        List<WeightedLoot> pool = available(quality.entries());
+        if (pool.isEmpty()) return Optional.empty();
+        WeightedLoot loot = LootRoll.pick(uuid, pool, QualityTreasureRoller::itemOf, WeightedLoot::weight, ThreadLocalRandom.current());
+        return Optional.of(new CatchPayload.Treasure(loot.itemId(), amount(loot), TREASURE_XP, quality.name()));
     }
 
     private static CatchPayload forced(UUID uuid, FishingTableDefinition table) {

@@ -202,6 +202,15 @@ public final class FishingLootResolver {
         return total;
     }
 
+    public static Optional<CatchPayload> treasure(FishingContext context) {
+        Optional<FishingTableDefinition> tableOpt = findTable(context);
+        if (tableOpt.isEmpty()) return Optional.empty();
+        FishingTableDefinition table = tableOpt.get();
+        if (table.hasQualityTreasure()) return QualityTreasureRoller.treasure(context, table);
+        if (table.treasures().isEmpty()) return Optional.empty();
+        return rollEssenceTreasure(table).or(() -> pick(table.treasures(), true));
+    }
+
     private static CatchPayload resolveItem(FishingContext context) {
         Optional<FishingTableDefinition> tableOpt = findTable(context);
         if (tableOpt.isEmpty()) return DEFAULT_CATCH;

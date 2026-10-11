@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.slayer.ability;
 
+import net.swofty.type.skyblockgeneric.entity.mob.MobStatusEffects;
 import java.util.List;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
@@ -94,7 +95,7 @@ abstract class SlayerAbilitySupport implements SlayerBossAbility {
 
     protected void heal(SlayerBossMob boss, double amount) {
         float max = (float) boss.getBaseStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.HEALTH).doubleValue();
-        boss.setHealth(Math.min(max, boss.getHealth() + (float) amount));
+        boss.setHealth(Math.min(max, boss.getHealth() + MobStatusEffects.healing(boss, amount)));
     }
 
     protected double healthRatio(SlayerBossMob boss) {

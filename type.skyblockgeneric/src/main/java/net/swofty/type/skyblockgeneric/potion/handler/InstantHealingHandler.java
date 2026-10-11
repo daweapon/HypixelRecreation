@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.potion.handler;
 
+import net.swofty.type.skyblockgeneric.entity.mob.MobStatusEffects;
 import net.minestom.server.entity.attribute.Attribute;
 import net.minestom.server.entity.damage.Damage;
 import net.minestom.server.entity.damage.DamageType;
@@ -33,7 +34,7 @@ public class InstantHealingHandler implements PotionEffectHandler {
             mob.damage(new Damage(DamageType.MAGIC, null, null, null, (float) healAmount));
         } else {
             float maxHealth = (float) SkyBlockMob.maxHealthOf(mob);
-            float newHealth = Math.min(maxHealth, mob.getHealth() + (float) healAmount);
+            float newHealth = Math.min(maxHealth, mob.getHealth() + MobStatusEffects.healing(mob, healAmount));
             mob.setHealth(newHealth);
         }
     }
