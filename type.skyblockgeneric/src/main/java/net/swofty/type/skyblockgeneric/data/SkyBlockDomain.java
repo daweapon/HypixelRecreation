@@ -11,6 +11,7 @@ import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.data.datapoints.DatapointString;
 import net.swofty.type.generic.data.datapoints.DatapointStringList;
 import net.swofty.type.generic.data.domain.DomainKey;
+import net.swofty.type.generic.data.domain.Leaderboards;
 import net.swofty.type.generic.data.domain.PlayerDataDomain;
 import net.swofty.type.generic.data.domain.PlayerDataService;
 import net.swofty.type.generic.data.mongodb.ProfilesDatabase;
@@ -113,6 +114,7 @@ public final class SkyBlockDomain implements PlayerDataDomain<SkyBlockDataHandle
         if (handler == null) return;
         handler.runOnSave((SkyBlockPlayer) player);
         handler.saveToApi();
+        Leaderboards.sync(player.getUuid(), handler);
     }
 
     @Override

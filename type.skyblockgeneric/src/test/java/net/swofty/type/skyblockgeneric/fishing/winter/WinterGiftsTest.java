@@ -62,10 +62,9 @@ class WinterGiftsTest {
     @Test
     void partyGiftTableMatchesTheWikiTotal() {
         assertEquals(1_674, PartyGift.REWARDS.stream().mapToInt(PartyGift.Reward::weight).sum());
-        Random random = new Random(3);
-        for (int i = 0; i < 10_000; i++) {
-            assertTrue(PartyGift.roll(null, random).available());
-        }
+        assertTrue(PartyGift.REWARDS.stream()
+                .filter(reward -> reward.tier() == PartyGift.Tier.PARTY_TIER && reward.coins() == 0)
+                .allMatch(reward -> reward.item() != null));
     }
 
     @Test

@@ -197,3 +197,64 @@ items:
         texture: 87522a1eadf8996f42a8d2e5fb0ca9bfb3ab483d3fbaf68ef29a42de8cef74c5
       - id: EXTRA_RARITY
         display: CARNIVAL MASK
+  - id: PARTY_HAT
+    material: leather_helmet
+    name: "Party Top Hat"
+    rarity: UNCOMMON
+    components:
+      - id: LORE_UPDATE
+        handler_id: PARTY_EQUIPMENT
+        is_absolute: false
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '255'
+        b: '0'
+  - id: PARTY_NECKLACE
+    material: paper
+    name: "Party Necklace"
+    rarity: UNCOMMON
+    components:
+      - id: LORE_UPDATE
+        handler_id: PARTY_EQUIPMENT
+        is_absolute: false
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: PARTY_CLOAK
+    material: paper
+    name: "Party Cloak"
+    rarity: UNCOMMON
+    components:
+      - id: LORE_UPDATE
+        handler_id: PARTY_EQUIPMENT
+        is_absolute: false
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: PARTY_BELT
+    material: paper
+    name: "Party Belt"
+    rarity: UNCOMMON
+    components:
+      - id: LORE_UPDATE
+        handler_id: PARTY_EQUIPMENT
+        is_absolute: false
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: PARTY_GLOVES
+    material: paper
+    name: "Party Gloves"
+    rarity: UNCOMMON
+    components:
+      - id: LORE_UPDATE
+        handler_id: PARTY_EQUIPMENT
+        is_absolute: false
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: PARTY_THE_FISH
+    material: cod
+    name: "Party the Fish"
+    rarity: SPECIAL
+    lore:
+      - "\xA77Big fan of parties, yet it's hard to"
+      - "\xA77enjoy them without friends."

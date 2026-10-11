@@ -22,9 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * The Party Gift, dropped by Winter Sea Creatures while Foxy's "A Time for Giving" perk is active.
  * Like other Gifts, it is used on another player and both players get the reward. Weights are the
- * wiki's (total 1,674). Party the Fish, the Party Top Hat, Party Cloak and Party Gloves aren't in
- * this server yet, so their rows are skipped and the rest are drawn in their own proportions.
- * Party Gifts give no North Stars.
+ * wiki's (total 1,674). Party Gifts give no North Stars.
  */
 public final class PartyGift {
     private static final double FEELIN_FESTIVE_PERCENT = 10;
@@ -49,25 +47,21 @@ public final class PartyGift {
     }
 
     public record Reward(Tier tier, int weight, long coins, long skillXp, int xpBoostLevel,
-                         @Nullable ItemType item, boolean available) {
+                         @Nullable ItemType item) {
         static Reward coins(Tier tier, int weight, long amount) {
-            return new Reward(tier, weight, amount, 0, 0, null, true);
+            return new Reward(tier, weight, amount, 0, 0, null);
         }
 
         static Reward xp(Tier tier, int weight, long amount) {
-            return new Reward(tier, weight, 0, amount, 0, null, true);
+            return new Reward(tier, weight, 0, amount, 0, null);
         }
 
         static Reward xpBoost(Tier tier, int weight, int level) {
-            return new Reward(tier, weight, 0, 0, level, null, true);
+            return new Reward(tier, weight, 0, 0, level, null);
         }
 
         static Reward item(Tier tier, int weight, ItemType item) {
-            return new Reward(tier, weight, 0, 0, 0, item, true);
-        }
-
-        static Reward missing(Tier tier, int weight) {
-            return new Reward(tier, weight, 0, 0, 0, null, false);
+            return new Reward(tier, weight, 0, 0, 0, item);
         }
     }
 
@@ -81,10 +75,10 @@ public final class PartyGift {
             Reward.xp(Tier.COMMON, 25, 5_000),
             Reward.xpBoost(Tier.COMMON, 75, 2),
             Reward.xpBoost(Tier.RARE, 350, 3),
-            Reward.missing(Tier.PARTY_TIER, 3),
-            Reward.missing(Tier.PARTY_TIER, 5),
-            Reward.missing(Tier.PARTY_TIER, 15),
-            Reward.missing(Tier.PARTY_TIER, 15),
+            Reward.item(Tier.PARTY_TIER, 3, ItemType.PARTY_THE_FISH),
+            Reward.item(Tier.PARTY_TIER, 5, ItemType.PARTY_HAT),
+            Reward.item(Tier.PARTY_TIER, 15, ItemType.PARTY_CLOAK),
+            Reward.item(Tier.PARTY_TIER, 15, ItemType.PARTY_GLOVES),
             Reward.item(Tier.PARTY_TIER, 15, ItemType.SNOWMAN_MASK));
 
     private PartyGift() {
@@ -95,8 +89,7 @@ public final class PartyGift {
     }
 
     public static Reward roll(@Nullable UUID player, RandomGenerator random) {
-        List<Reward> available = REWARDS.stream().filter(Reward::available).toList();
-        return LootRoll.pick(player, available, Reward::item, Reward::weight, random);
+        return LootRoll.pick(player, REWARDS, Reward::item, Reward::weight, random);
     }
 
     public static void give(SkyBlockPlayer giver, SkyBlockPlayer receiver) {

@@ -102,7 +102,7 @@ public final class Carnivals {
         CarnivalProfile profile = profile(player);
         CarnivalProfile.GameStats stats = profile.stats(result.game());
         stats.record(result.score());
-        int earned = Carnival.tokensFor(result.score());
+        int earned = PartyEquipment.boostedTokens(player, Carnival.tokensFor(result.score()));
         profile.setTokens(profile.getTokens() + earned);
 
         List<CarnivalGoal> completed = new ArrayList<>();
