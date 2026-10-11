@@ -36,7 +36,7 @@ public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public Integer getLevel() {
-		return 45;
+		return 24;
 	}
 
 	@Override
@@ -98,7 +98,7 @@ public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator {
 	@Override
 	public ItemStatistics getBaseStatistics() {
 		return ItemStatistics.builder()
-				.withBase(ItemStatistic.HEALTH, 200D)
+				.withBase(ItemStatistic.HEALTH, 888D)
 				.withBase(ItemStatistic.DAMAGE, 50D)
 				.withBase(ItemStatistic.SPEED, 100D)
 				.build();

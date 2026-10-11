@@ -17,6 +17,7 @@ import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.DroppedItemEntityImpl;
+import net.swofty.type.skyblockgeneric.glacite.GlaciteOre;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.foraging.ForagingTreeManager;
@@ -88,7 +89,7 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
             }
 
             // Check if player's tool can break this block using the handler system
-            MineableBlock mineableBlock = MineableBlock.get(block);
+            MineableBlock mineableBlock = MineableBlock.get(block, type);
             SkyBlockItem heldItem = new SkyBlockItem(player.getItemInMainHand());
             if (mineableBlock != null) {
                 SkyBlockMiningHandler handler = mineableBlock.getMiningHandler();
@@ -145,6 +146,12 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                     HypixelConst.isIslandServer()
             );
 
+            GlaciteOre glaciteOre = GlaciteOre.of(material, region == null ? null : region.getType());
+            if (glaciteOre != null) {
+                customDrops.clear();
+                customDrops.add(new SkyBlockItem(glaciteOre.getDrop(), 1));
+            }
+
             // Call custom break event
             boolean playerPlaced = block.hasTag(Tag.Boolean("player_placed")) && block.getTag(Tag.Boolean("player_placed"));
 
@@ -158,7 +165,7 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                 int dropAmount = dropItem.getAmount(); // Base amount from CustomDropComponent
 
                 try {
-                    MineableBlock mineableBlock = MineableBlock.get(block);
+                    MineableBlock mineableBlock = MineableBlock.get(block, region == null ? null : region.getType());
                     if (mineableBlock != null) {
                         double baseFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().baseSkillFortune());
                         double specificFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().specificBlockFortune());

@@ -41,7 +41,7 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         action(layout, 15, Material.DIAMOND_SWORD, "<6>Max Skills", "<8>Gotta collect 'em all.", "<7>Max every skill.", this::maxSkills);
         action(layout, 16, Material.ROTTEN_FLESH, "<6>Max Slayers", "<8>Gotta collect 'em all.", "<7>Impress Maddox!", this::maxSlayers);
         action(layout, 19, Material.PRISMARINE_CRYSTALS, "<5>50k HOTM Exp", "<8>The power of a pickaxe.", "<7>Gain <5>50,000 HOTM Experience<7>.", p -> HotmService.addExperience(p, 50_000));
-        action(layout, 20, Material.GUNPOWDER, "<a>Big ol' chunk o' Powder!", "<8>Mindcraft.", "<7>Get 2,000,000 of each powder.", p -> HotmService.addPowderToAll(p, 2_000_000));
+        action(layout, 20, Material.GUNPOWDER, "<a>Give 2m powder of each type", "<8>Mindcraft.", "<7>Get 2,000,000 of each powder type: <2>Mithril<7>, <d>Gemstone <7>and <b>Glacite<7>.", p -> HotmService.addPowderToAll(p, 2_000_000));
         action(layout, 21, Material.EMERALD, "<a>5k Gems", "<8>Get rich quick.", "<7>Set your gem purse to 5,000.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.GEMS, DatapointInteger.class).setValue(5_000));
         unavailable(layout, 22, Material.EXPERIENCE_BOTTLE, "<a>Set RNG Meter Progress", "<7>Set every RNG Meter to a custom value.");
         unavailable(layout, 23, Material.GLASS_BOTTLE, "<a>Clear RNG Meter Progress", "<7>Clear every RNG Meter.");

@@ -201,6 +201,7 @@ public final class HotmService {
         DatapointHOTM.PlayerHOTMData data = data(player);
         data.setExperience(1_247_000L);
         data.setCoreLevel(registry.maxCoreLevel());
+        data.setRailroadPassShown(true);
         int tokensSpent = 0;
         for (HotmPerk perk : registry.perks().values()) {
             data.getPerkLevels().put(perk.id(), perk.maxLevel());
@@ -231,6 +232,16 @@ public final class HotmService {
 
     public static long dailyPowderAmount(SkyBlockPlayer player) {
         return (long) DAILY_POWDER_PER_TIER * data(player).getTier();
+    }
+
+    public static boolean claimDailyGlacite(SkyBlockPlayer player) {
+        DatapointHOTM.PlayerHOTMData data = data(player);
+        long today = dailyBonusDay();
+        if (data.getDailyGlaciteDay() == today) return false;
+        data.setDailyGlaciteDay(today);
+        data.addGlacitePowder(dailyPowderAmount(player));
+        save(player, data);
+        return true;
     }
 
     public static boolean claimDailyGrind(SkyBlockPlayer player) {

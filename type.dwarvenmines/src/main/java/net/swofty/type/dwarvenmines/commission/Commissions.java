@@ -90,6 +90,43 @@ public class Commissions {
 			)
 	);
 
+	public static List<Commission> GLACITE_TUNNELS = List.of(
+			new Commission("Umber Collector", CommissionCategory.CONSISTENT,
+					new Objective(ObjectiveType.MINE, Objective.BlockTarget.UMBER, 1500, LocationSelector.glaciteTunnels(), EventType.NONE),
+					false
+			),
+
+			new Commission("Tungsten Collector", CommissionCategory.CONSISTENT,
+					new Objective(ObjectiveType.MINE, Objective.BlockTarget.TUNGSTEN, 1500, LocationSelector.glaciteTunnels(), EventType.NONE),
+					false
+			),
+
+			new Commission("Glacite Collector", CommissionCategory.CONSISTENT,
+					new Objective(ObjectiveType.MINE, Objective.BlockTarget.GLACITE, 1500, LocationSelector.glaciteTunnels(), EventType.NONE),
+					false
+			),
+
+			new Commission("Aquamarine Collector", CommissionCategory.CONSISTENT,
+					new Objective(ObjectiveType.MINE, Objective.BlockTarget.AQUAMARINE, 1500, LocationSelector.glaciteTunnels(), EventType.NONE),
+					false
+			),
+
+			new Commission("Citrine Collector", CommissionCategory.CONSISTENT,
+					new Objective(ObjectiveType.MINE, Objective.BlockTarget.CITRINE, 1500, LocationSelector.glaciteTunnels(), EventType.NONE),
+					false
+			),
+
+			new Commission("Onyx Collector", CommissionCategory.CONSISTENT,
+					new Objective(ObjectiveType.MINE, Objective.BlockTarget.ONYX, 1500, LocationSelector.glaciteTunnels(), EventType.NONE),
+					false
+			),
+
+			new Commission("Peridot Collector", CommissionCategory.CONSISTENT,
+					new Objective(ObjectiveType.MINE, Objective.BlockTarget.PERIDOT, 1500, LocationSelector.glaciteTunnels(), EventType.NONE),
+					false
+			)
+	);
+
 	public static List<Commission> SITUATIONAL = List.of(
 			new Commission("Goblin Raid Slayer", CommissionCategory.SITUATIONAL,
 					new Objective(ObjectiveType.SLAY, Objective.BlockTarget.GOBLIN, 20, LocationSelector.any(), EventType.GOBLIN_RAID),
@@ -176,11 +213,11 @@ public class Commissions {
 			Commission commission;
 
 			if (i % 2 == 0) {
-				commission = selectRandomCommission(CONSISTENT, usedNames);
+				commission = selectRandomCommission(consistentPool(player), usedNames);
 			} else {
 				commission = selectRandomCommission(SITUATIONAL, usedNames);
 				if (commission == null) {
-					commission = selectRandomCommission(CONSISTENT, usedNames);
+					commission = selectRandomCommission(consistentPool(player), usedNames);
 				}
 			}
 
@@ -191,6 +228,15 @@ public class Commissions {
 		}
 
 		saveCommissionData(player, data);
+	}
+
+	public static List<Commission> consistentPool(SkyBlockPlayer player) {
+		List<Commission> pool = new ArrayList<>(CONSISTENT);
+		int tier = HotmService.data(player).getTier();
+		for (Commission commission : GLACITE_TUNNELS) {
+			if (tier >= commission.requiredHotmTier()) pool.add(commission);
+		}
+		return pool;
 	}
 
 	private static Commission selectRandomCommission(List<Commission> pool, List<String> usedNames) {
@@ -213,6 +259,9 @@ public class Commissions {
 			if (c.name.equals(name)) return c;
 		}
 		for (Commission c : SITUATIONAL) {
+			if (c.name.equals(name)) return c;
+		}
+		for (Commission c : GLACITE_TUNNELS) {
 			if (c.name.equals(name)) return c;
 		}
 		for (Commission c : TUTORIAL) {
@@ -263,10 +312,10 @@ public class Commissions {
 
 		Commission newComm;
 		if (slotIndex % 2 == 0) {
-			newComm = selectRandomCommission(CONSISTENT, usedNames);
+			newComm = selectRandomCommission(consistentPool(player), usedNames);
 		} else {
 			newComm = selectRandomCommission(SITUATIONAL, usedNames);
-			if (newComm == null) newComm = selectRandomCommission(CONSISTENT, usedNames);
+			if (newComm == null) newComm = selectRandomCommission(consistentPool(player), usedNames);
 		}
 
 		if (newComm == null) {

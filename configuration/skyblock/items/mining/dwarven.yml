@@ -417,6 +417,17 @@ items:
       - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/uncategorized/skeleton_key
+  - id: SECRET_RAILROAD_PASS
+    material: paper
+    name: "Secret Railroad Pass"
+    rarity: SPECIAL
+    lore:
+      - "\xA78Quest Item"
+      - ""
+      - "\xA77Show this pass to the \xA7bTicket Master\xA77."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
   - id: SUSPICIOUS_SCRAP
     material: paper
     name: "Suspicious Scrap"

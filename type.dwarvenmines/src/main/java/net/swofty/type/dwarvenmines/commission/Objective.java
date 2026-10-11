@@ -30,6 +30,17 @@ public class Objective {
 		GOLDEN_GOBLIN,
 		STAR_SENTRY,
 		MITHRIL,
-		TITANIUM
+		TITANIUM,
+		UMBER,
+		TUNGSTEN,
+		GLACITE,
+		AQUAMARINE,
+		CITRINE,
+		ONYX,
+		PERIDOT;
+
+		public boolean isGlacite() {
+			return ordinal() >= UMBER.ordinal();
+		}
 	}
 }

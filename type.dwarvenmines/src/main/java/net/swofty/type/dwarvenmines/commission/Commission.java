@@ -10,6 +10,14 @@ public class Commission {
     public final Objective objective;
     public final boolean oneTimeOnly;
 
+    public boolean isGlacite() {
+        return objective.target.isGlacite();
+    }
+
+    public int requiredHotmTier() {
+        return isGlacite() ? 7 : 0;
+    }
+
     public Commission(
             String name,
             CommissionCategory category,
@@ -24,7 +32,7 @@ public class Commission {
 
     public Text generateDescription() {
         return switch (objective.type) {
-            case MINE -> withSuffix(Text.of("Mine <a>{} <7>{} Ore",
+            case MINE -> withSuffix(Text.of(objective.target.isGlacite() ? "Mine <a>{} <7>{}" : "Mine <a>{} <7>{} Ore",
                     objective.amount, getTargetName(objective.target)), true, false);
             case SLAY -> withSuffix(Text.of("Slay <a>{} <7>{}",
                     objective.amount, getTargetNamePlural(objective.target)), true, true);
@@ -61,6 +69,13 @@ public class Commission {
             case TREASURE_HOARDER -> "Treasure Hoarder";
             case GOLDEN_GOBLIN -> "Golden Goblin";
             case STAR_SENTRY -> "Star Sentry";
+            case UMBER -> "Umber";
+            case TUNGSTEN -> "Tungsten";
+            case GLACITE -> "Glacite";
+            case AQUAMARINE -> "Aquamarine";
+            case CITRINE -> "Citrine";
+            case ONYX -> "Onyx";
+            case PERIDOT -> "Peridot";
             case NONE -> "";
         };
     }
@@ -74,6 +89,7 @@ public class Commission {
             case TREASURE_HOARDER -> Text.of("<c>Treasure Hoarders");
             case GOLDEN_GOBLIN -> Text.of("<6>Golden Goblin");
             case STAR_SENTRY -> Text.of("Star Sentrys");
+            case UMBER, TUNGSTEN, GLACITE, AQUAMARINE, CITRINE, ONYX, PERIDOT -> Text.of(getTargetName(target));
             case NONE -> Text.empty();
         };
     }

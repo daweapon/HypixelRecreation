@@ -3,6 +3,8 @@ package net.swofty.type.skyblockgeneric.region.mining;
 import lombok.Getter;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.item.Material;
+import net.swofty.type.skyblockgeneric.glacite.GlaciteOre;
+import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.mining.handler.MiningHandlers;
 import net.swofty.type.skyblockgeneric.region.mining.handler.SkyBlockMiningHandler;
 
@@ -73,6 +75,15 @@ public enum MineableBlock {
     TITANIUM(Material.POLISHED_DIORITE, MiningHandlers.pickaxe(2500, 5), MiningBlockClassification.dwarvenMetalBlock()),
     DWARVEN_GOLD(Material.GOLD_BLOCK, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
 
+    // Glacite Tunnels
+    UMBER_ORE(Material.BROWN_TERRACOTTA, MiningHandlers.pickaxe(5600, 9), MiningBlockClassification.dwarvenMetalBlock()),
+    TUNGSTEN_ORE(Material.CLAY, MiningHandlers.pickaxe(5600, 9), MiningBlockClassification.dwarvenMetalBlock()),
+    GLACITE_ORE(Material.PACKED_ICE, MiningHandlers.pickaxe(6000, 9), MiningBlockClassification.dwarvenMetalBlock()),
+    AQUAMARINE_ORE(Material.BLUE_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
+    CITRINE_ORE(Material.YELLOW_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
+    ONYX_ORE(Material.BLACK_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
+    PERIDOT_ORE(Material.LIME_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
+
     // Crimson Isle
     MYCELIUM(Material.MYCELIUM, MiningHandlers.hand(12, 6), MiningBlockClassification.blockBlock()),
     RED_SAND(Material.RED_SAND, MiningHandlers.hand(12, 6), MiningBlockClassification.blockBlock()),
@@ -104,6 +115,11 @@ public enum MineableBlock {
      */
     public int getMiningPowerRequirement() {
         return miningHandler.getMiningPowerRequirement();
+    }
+
+    public static MineableBlock get(Block block, RegionType region) {
+        GlaciteOre ore = GlaciteOre.of(block, region);
+        return ore != null ? ore.getMineable() : get(block);
     }
 
     public static MineableBlock get(Block block) {

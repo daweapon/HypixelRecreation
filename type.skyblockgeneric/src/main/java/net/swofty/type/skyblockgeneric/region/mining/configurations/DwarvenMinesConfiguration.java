@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.region.SkyBlockRegenConfiguration;
 import java.util.List;
 
 public class DwarvenMinesConfiguration extends SkyBlockRegenConfiguration {
+    public static final long REGENERATION_MILLIS = 3000;
 
     @Override
     public MiningTask handleStageOne(MiningTask task, Pos brokenBlock) {
@@ -34,6 +35,6 @@ public class DwarvenMinesConfiguration extends SkyBlockRegenConfiguration {
 
     @Override
     public long getRegenerationTime() {
-        return 3000;
+        return REGENERATION_MILLIS;
     }
 }

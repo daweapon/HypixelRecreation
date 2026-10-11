@@ -105,7 +105,7 @@ public final class HotmAbilities {
                     if (x * x + y * y + z * z > radius * radius) continue;
                     Point position = target.add(x, y, z);
                     Block block = instance.getBlock(position);
-                    MineableBlock mineable = MineableBlock.get(block);
+                    MineableBlock mineable = MineableBlock.get(block, player.getRegion() == null ? null : player.getRegion().getType());
                     if (mineable == null || !isOre(mineable)) continue;
                     if (!mineable.getMiningHandler().canToolBreak(held)
                             || mineable.getMiningHandler().getMiningPowerRequirement() > power) continue;

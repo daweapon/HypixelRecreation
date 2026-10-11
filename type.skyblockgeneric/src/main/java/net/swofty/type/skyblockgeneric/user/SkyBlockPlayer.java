@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.user;
 
+import net.swofty.type.skyblockgeneric.glacite.ColdService;
 import net.swofty.type.skyblockgeneric.hotm.HotmAbilities;
 import net.swofty.type.skyblockgeneric.hotm.HotmStatistics;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
@@ -774,9 +775,9 @@ public class SkyBlockPlayer extends HypixelPlayer {
     }
 
     public double getTimeToMine(SkyBlockItem item, Block b) {
-        MineableBlock block = MineableBlock.get(b);
-        if (block == null) return -1;
         if (getRegion() == null) return -1;
+        MineableBlock block = MineableBlock.get(b, getRegion().getType());
+        if (block == null) return -1;
 
         SkyBlockMiningHandler handler = block.getMiningHandler();
 
@@ -806,6 +807,9 @@ public class SkyBlockPlayer extends HypixelPlayer {
             if (handler.getSpeedStatistic() == ItemStatistic.MINING_SPEED) {
                 speed += GatheringPetBonuses.miningSpeed(this, block);
                 speed += HotmStatistics.miningSpeedFor(this, block);
+            }
+            if (handler.getSpeedStatistic() == ItemStatistic.MINING_SPEED) {
+                speed *= ColdService.miningSpeedMultiplier(this);
             }
             double time = Math.round(handler.getStrength() * 30) / (Math.max(speed, 1));
             ValueUpdateEvent event = new MiningValueUpdateEvent(this, time, item);

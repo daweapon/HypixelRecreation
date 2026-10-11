@@ -82,7 +82,9 @@ public class GUICommisions extends HypixelInventoryGUI {
 						boolean isHotmMaxed = hotmData.isMaxed();
 						boolean isDailyBonus = commissionData.hasDailyBonus();
 
-						CommissionReward reward = CommissionReward.calculate(hotmTier, isHotmMaxed, isDailyBonus);
+						CommissionReward reward = commission.isGlacite()
+								? CommissionReward.calculateGlacite(hotmTier, isHotmMaxed, isDailyBonus)
+								: CommissionReward.calculate(hotmTier, isHotmMaxed, isDailyBonus);
 
 						if (reward.hotmXp() > 0) {
 							HotmService.addExperience(player, Math.round(PetEvents.xpGained(player, PetEvent.XpType.HOTM, null,
@@ -91,6 +93,10 @@ public class GUICommisions extends HypixelInventoryGUI {
 
 						if (reward.mithrilPowder() > 0) {
 							HotmService.gainPowder(player, HotmPowder.MITHRIL, reward.mithrilPowder());
+						}
+
+						if (reward.glacitePowder() > 0) {
+							HotmService.gainPowder(player, HotmPowder.GLACITE, reward.glacitePowder());
 						}
 
 						if (HotmService.claimDailyGrind(player)) {
@@ -129,7 +135,9 @@ public class GUICommisions extends HypixelInventoryGUI {
 
 					lore.add(Text.empty());
 					lore.add(Text.of("<9>Rewards"));
-					lore.addAll(CommissionReward.getRewardLore(hotmTier, isHotmMaxed, willGetDailyBonus));
+					lore.addAll(commission.isGlacite()
+							? CommissionReward.getGlaciteRewardLore(hotmTier, isHotmMaxed, willGetDailyBonus)
+							: CommissionReward.getRewardLore(hotmTier, isHotmMaxed, willGetDailyBonus));
 
 					lore.add(Text.literal(" "));
 

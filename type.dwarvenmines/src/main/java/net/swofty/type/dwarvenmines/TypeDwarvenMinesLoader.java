@@ -13,6 +13,7 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.commons.text.Text;
 import net.swofty.type.dwarvenmines.gui.GUIGemstoneGrinder;
 import net.swofty.type.generic.tab.AreaServerModule;
+import net.swofty.type.skyblockgeneric.glacite.ColdService;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.SkyBlockTypeLoader;
 import net.swofty.type.generic.entity.InteractionEntity;
@@ -45,6 +46,7 @@ public class TypeDwarvenMinesLoader implements SkyBlockTypeLoader {
 
     @Override
     public void afterInitialize(MinecraftServer server) {
+        ColdService.start();
         Point gemstoneGrinderPos = new Pos(85.5, 199, -116.5);
 
         InteractionEntity gemstoneGrinder = new InteractionEntity(1.1f, 1.1f, (p, event) -> {

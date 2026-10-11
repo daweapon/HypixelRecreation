@@ -12,6 +12,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCommissions;
+import net.swofty.type.skyblockgeneric.glacite.GlaciteOre;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -32,17 +33,20 @@ public class ActionPlayerCommissions implements HypixelEventClass {
 		Material brokenMaterial = event.getBlock().material();
 		if (brokenMaterial == null) return;
 
+		SkyBlockRegion region = player.getRegion();
+		RegionType regionType = region != null ? region.getType() : null;
+
 		Objective.BlockTarget target = null;
-		if (MITHRIL_BLOCKS.contains(brokenMaterial)) {
+		GlaciteOre glaciteOre = GlaciteOre.of(brokenMaterial, regionType);
+		if (glaciteOre != null) {
+			target = Objective.BlockTarget.valueOf(glaciteOre.name());
+		} else if (MITHRIL_BLOCKS.contains(brokenMaterial)) {
 			target = Objective.BlockTarget.MITHRIL;
 		} else if (TITANIUM_BLOCKS.contains(brokenMaterial)) {
 			target = Objective.BlockTarget.TITANIUM;
 		}
 
 		if (target == null) return;
-
-		SkyBlockRegion region = player.getRegion();
-		RegionType regionType = region != null ? region.getType() : null;
 
 		updateCommissionProgress(player, ObjectiveType.MINE, target, 1, regionType);
 	}

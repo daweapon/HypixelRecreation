@@ -24,7 +24,14 @@ public final class LocationSelector {
 		return new LocationSelector(region);
 	}
 
+	public static LocationSelector glaciteTunnels() {
+		return new LocationSelector(RegionType.GLACITE_TUNNELS);
+	}
+
 	public boolean allows(RegionType region) {
+		if (this.region == RegionType.GLACITE_TUNNELS) {
+			return region == RegionType.GLACITE_TUNNELS || region == RegionType.GREAT_GLACITE_LAKE || region == RegionType.GRANDPA_WOLFS_CAVE;
+		}
 		return this.region == null || this.region == region;
 	}
 

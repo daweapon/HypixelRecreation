@@ -296,6 +296,42 @@ regions:
     y2: 114
     z2: 56
     serverType: DWARVEN_MINES
+  - id: basecamp
+    type: DWARVEN_BASE_CAMP
+    x1: -50
+    y1: 112
+    z1: 194
+    x2: 52
+    y2: 148
+    z2: 254
+    serverType: DWARVEN_MINES
+  - id: glacitetunnels
+    type: GLACITE_TUNNELS
+    x1: -130
+    y1: 100
+    z1: 254
+    x2: 140
+    y2: 175
+    z2: 470
+    serverType: DWARVEN_MINES
+  - id: glacitelake
+    type: GREAT_GLACITE_LAKE
+    x1: -60
+    y1: 110
+    z1: 372
+    x2: 30
+    y2: 136
+    z2: 426
+    serverType: DWARVEN_MINES
+  - id: grandpawolf
+    type: GRANDPA_WOLFS_CAVE
+    x1: -76
+    y1: 114
+    z1: 318
+    x2: -34
+    y2: 142
+    z2: 346
+    serverType: DWARVEN_MINES
   - id: barn_1
     type: THE_BARN
     x1: 82

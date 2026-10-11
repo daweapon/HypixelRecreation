@@ -65,6 +65,7 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -213,6 +214,32 @@ class MaxProfileTest {
         registry.perks().values().forEach(perk -> assertEquals(perk.maxLevel(), data.perkLevel(perk.id()), perk.id()));
         assertTrue(data.getAvailableTokens() >= 0);
         for (var powder : net.swofty.type.skyblockgeneric.hotm.HotmPowder.values()) assertTrue(data.powder(powder) > 0, powder.name());
+    }
+
+    @Test
+    void maxProfileUnlocksTheSecretRailroadPass() {
+        SkyBlockPlayer player = player();
+        assertFalse(net.swofty.type.skyblockgeneric.glacite.RailroadPass.isUnlocked(player));
+        net.swofty.type.skyblockgeneric.hotm.HotmService.maxOut(player);
+        assertTrue(net.swofty.type.skyblockgeneric.glacite.RailroadPass.isUnlocked(player));
+        assertTrue(net.swofty.type.skyblockgeneric.glacite.RailroadPass.meetsRequirement(player));
+    }
+
+    @Test
+    void glaciteWalkerMatchesCurrentHypixelStats() {
+        var walker = new net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobGlaciteWalker();
+        assertEquals(24, walker.getLevel());
+        assertEquals(888D, walker.getBaseStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.HEALTH));
+    }
+
+    @Test
+    void dailyGlacitePowderIsClaimedOncePerDay() {
+        SkyBlockPlayer player = player();
+        net.swofty.type.skyblockgeneric.hotm.HotmService.maxOut(player);
+        long before = net.swofty.type.skyblockgeneric.hotm.HotmService.data(player).getGlacitePowder();
+        assertTrue(net.swofty.type.skyblockgeneric.hotm.HotmService.claimDailyGlacite(player));
+        assertFalse(net.swofty.type.skyblockgeneric.hotm.HotmService.claimDailyGlacite(player));
+        assertEquals(before + 500L * 10, net.swofty.type.skyblockgeneric.hotm.HotmService.data(player).getGlacitePowder());
     }
 
     @Test
