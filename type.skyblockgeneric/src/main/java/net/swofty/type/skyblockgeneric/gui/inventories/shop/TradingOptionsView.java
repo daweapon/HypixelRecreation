@@ -51,9 +51,11 @@ public final class TradingOptionsView implements View<TradingOptionsView.State> 
         lore.add(Text.key("gui_shop.trading_options.cost_label"));
         lore.addAll(totalPrice.getGUIDisplay());
         lore.add(Text.empty());
-        lore.add(Text.key("gui_shop.trading_options.stock_label"));
-        lore.add(Text.key("gui_shop.trading_options.stock_remaining", player.getShoppingData().getStock(item.getItem().toUnderstandable())));
-        lore.add(Text.empty());
+        if (item.isHasStock()) {
+            lore.add(Text.key("gui_shop.trading_options.stock_label"));
+            lore.add(Text.key("gui_shop.trading_options.stock_remaining", player.getShoppingData().getStock(item.getItem().toUnderstandable())));
+            lore.add(Text.empty());
+        }
         lore.add(Text.key("gui_shop.trading_options.click_to_purchase"));
 
         Text displayName = ItemStacks.nameText(itemStack, Text.literal(sbItem.getDisplayName()))
@@ -65,7 +67,7 @@ public final class TradingOptionsView implements View<TradingOptionsView.State> 
     private void attemptBuy(State state, int amount, ViewContext ctx) {
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
 
-        if (!player.getShoppingData().canPurchase(state.item.getItem().toUnderstandable(), amount)) {
+        if (state.item.isHasStock() && !player.getShoppingData().canPurchase(state.item.getItem().toUnderstandable(), amount)) {
             player.sendMessage(Text.key("gui_shop.trading_options.max_reached"));
             return;
         }
@@ -83,7 +85,7 @@ public final class TradingOptionsView implements View<TradingOptionsView.State> 
         cleanStack.amount(amount);
         player.addAndUpdateItem(cleanStack.build());
         player.playSound(Sound.sound(Key.key("block.note_block.pling"), Sound.Source.PLAYER, 1.0f, 2.0f));
-        player.getShoppingData().documentPurchase(state.item.getItem().toUnderstandable(), amount);
+        if (state.item.isHasStock()) player.getShoppingData().documentPurchase(state.item.getItem().toUnderstandable(), amount);
 
         ctx.session(Object.class).refresh();
     }

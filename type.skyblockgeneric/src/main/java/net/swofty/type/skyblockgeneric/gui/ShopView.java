@@ -3,7 +3,6 @@ package net.swofty.type.skyblockgeneric.gui;
 import net.swofty.type.skyblockgeneric.achievement.SkyBlockItemAchievements;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
@@ -28,6 +27,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.SellableComponent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.shop.ShopPrice;
+import net.swofty.type.skyblockgeneric.shop.ShopStockLimits;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
@@ -362,7 +362,6 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
 
     @Getter
     @AllArgsConstructor
-    @RequiredArgsConstructor
     public static class ShopItem {
         private final SkyBlockItem item;
         private final int amount;
@@ -371,17 +370,21 @@ public abstract class ShopView extends StatefulPaginatedView<ShopView.ShopItem, 
         private List<Text> lore = null;
         @Setter
         private String displayName = null;
-        private boolean hasStock = true;
+        private boolean hasStock;
         private Function<SkyBlockPlayer, String> lock = null;
         private boolean confirmPurchase = false;
         private Consumer<SkyBlockPlayer> onPurchase = null;
+
+        public ShopItem(SkyBlockItem item, int amount, ShopPrice price, boolean stackable) {
+            this(item, amount, price, stackable, true);
+        }
 
         public ShopItem(SkyBlockItem item, int amount, ShopPrice price, boolean stackable, boolean hasStock) {
             this.item = item;
             this.amount = amount;
             this.price = price;
             this.stackable = stackable;
-            this.hasStock = hasStock;
+            this.hasStock = hasStock && ShopStockLimits.applies(item);
         }
 
         public static ShopItem Stackable(SkyBlockItem item, int amount, ShopPrice price) {

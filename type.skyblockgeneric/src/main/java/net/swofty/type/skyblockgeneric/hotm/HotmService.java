@@ -267,7 +267,8 @@ public final class HotmService {
             data.setSkyMallDay(today);
             data.setSkyMallBuff(rolled.name());
             save(player, data);
-            player.sendMessage("<2><b>SKY MALL <r><7>New day! Your Sky Mall buff today: {}<7>.", rolled.getDescription());
+            player.sendMessage("<b>New day! Your <2>Sky Mall<b> buff changed!");
+            player.sendMessage("<b>New buff: <7>Gain " + rolled.getDescription() + "<7>.");
             return rolled;
         }
         return HotmSkyMallBuff.byId(data.getSkyMallBuff());

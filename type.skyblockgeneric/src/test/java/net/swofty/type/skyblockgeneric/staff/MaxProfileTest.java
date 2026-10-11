@@ -298,6 +298,13 @@ class MaxProfileTest {
     }
 
     @Test
+    void onlyBazaarCommoditiesCarryAShopStockLimit() {
+        assertTrue(net.swofty.type.skyblockgeneric.shop.ShopStockLimits.applies(new SkyBlockItem(ItemType.ENCHANTED_COBBLESTONE)));
+        assertTrue(!net.swofty.type.skyblockgeneric.shop.ShopStockLimits.applies(new SkyBlockItem(ItemType.FRACTURED_MITHRIL_PICKAXE)));
+        assertTrue(!net.swofty.type.skyblockgeneric.shop.ShopStockLimits.applies(new SkyBlockItem(ItemType.TORCH)));
+    }
+
+    @Test
     void buyingAPerkSpendsTokensAndPowderAndResetRefundsThem() {
         SkyBlockPlayer player = player();
         var data = net.swofty.type.skyblockgeneric.hotm.HotmService.data(player);
