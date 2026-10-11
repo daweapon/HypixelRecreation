@@ -53,7 +53,7 @@ public sealed interface CatchPayload {
         public void apply(CatchAwardContext ctx) {
             ItemType type = ItemType.valueOf(itemId);
             ctx.player().addAndUpdateItem(type, amount);
-            ctx.player().getCollection().increase(type, amount);
+            ctx.player().getCollection().increase(ctx.player(), type, amount);
             ctx.player().getSkyblockDataHandler()
                     .get(SkyBlockDataHandler.Data.COLLECTION, DatapointCollection.class)
                     .setValue(ctx.player().getCollection());
@@ -87,7 +87,7 @@ public sealed interface CatchPayload {
             SkyBlockItem item = new SkyBlockItem(type);
             item.setAmount(amount);
             ctx.player().addAndUpdateItem(item);
-            ctx.player().getCollection().increase(type, amount);
+            ctx.player().getCollection().increase(ctx.player(), type, amount);
             ctx.player().getSkyblockDataHandler()
                     .get(SkyBlockDataHandler.Data.COLLECTION, DatapointCollection.class)
                     .setValue(ctx.player().getCollection());
@@ -165,7 +165,7 @@ public sealed interface CatchPayload {
         public void apply(CatchAwardContext ctx) {
             ItemType type = ItemType.valueOf(itemId);
             ctx.player().addAndUpdateItem(type, amount);
-            ctx.player().getCollection().increase(type, amount);
+            ctx.player().getCollection().increase(ctx.player(), type, amount);
             Text prefix = corrupted ? Text.of("<5><l>CORRUPTED! ") : Text.of("<d><l>WONDROUS CATCH! ");
             ctx.player().sendMessage(prefix.append("<7>You found <a>{}<7>!", itemId));
         }

@@ -124,6 +124,15 @@ items:
         value: 100.0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pests/honey_jar
+  - id: JELLY
+    material: paper
+    name: "Jelly"
+    rarity: UNCOMMON
+    components:
+      - id: SELLABLE
+        value: 100.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/jelly
   - id: PLANT_MATTER
     material: oak_leaves
     name: "Plant Matter"

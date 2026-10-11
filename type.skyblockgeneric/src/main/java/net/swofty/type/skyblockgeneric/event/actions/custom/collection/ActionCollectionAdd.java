@@ -35,8 +35,7 @@ public class ActionCollectionAdd implements HypixelEventClass {
             if (type == null) continue;
 
             int oldAmount = player.getCollection().get(type);
-            int dropAmount = drop.getAmount();
-            player.getCollection().increase(type, dropAmount);
+            int dropAmount = player.getCollection().increase(player, type, drop.getAmount());
             CoopContributionTracker.record(player.getUuid(), dropAmount);
 
             player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.COLLECTION, DatapointCollection.class).setValue(

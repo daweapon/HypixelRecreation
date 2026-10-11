@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkills;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import net.swofty.type.skyblockgeneric.item.components.SkillableMineComponent;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 
@@ -25,6 +26,9 @@ public class ActionSkillMiningHandler implements HypixelEventClass {
         SkillCategories skillCategory = skillableMine.getCategory();
         DatapointSkills.PlayerSkills skills = event.getPlayer().getSkills();
 
-        skills.increase(event.getPlayer(), skillCategory, skillableMine.getMiningValue());
+        double experience = skillCategory == SkillCategories.MINING
+                ? MiningPetBonuses.miningSkillExperience(event.getPlayer(), skillableMine.getMiningValue())
+                : skillableMine.getMiningValue();
+        skills.increase(event.getPlayer(), skillCategory, experience);
     }
 }

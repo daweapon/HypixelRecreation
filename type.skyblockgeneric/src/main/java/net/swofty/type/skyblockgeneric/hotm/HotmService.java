@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -223,6 +224,7 @@ public final class HotmService {
         if (skyMallBuff(player) == HotmSkyMallBuff.POWDER) bonusPercent += 15;
         long amount = Math.round(base * (1 + bonusPercent / 100));
         if (powder == HotmPowder.MITHRIL) amount = GatheringPetBonuses.mithrilPowder(player, amount);
+        else amount = MiningPetBonuses.powder(player, powder, amount);
         amount = AccessoryEconomyHooks.powderGained(player, amount);
         DatapointHOTM.PlayerHOTMData data = data(player);
         data.addPowder(powder, amount);

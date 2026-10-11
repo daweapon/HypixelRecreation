@@ -7,6 +7,7 @@ import lombok.experimental.UtilityClass;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointChocolateFactory;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointChocolateFactory.EmployeeType;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.text.DecimalFormat;
@@ -43,6 +44,7 @@ public class ChocolateFactoryHelper {
                 double multiplier = data.getShrineMultiplier() * data.getTimeTowerMultiplier() * data.getCoachMultiplier();
                 data.setPartialChocolate(data.getPartialChocolate() + accessoryPerSecond * multiplier * seconds);
             }
+            data.setPetMultiplier(MiscPetHooks.chocolateMultiplierBonus(player));
             data.updateChocolateFromProduction();
         });
     }

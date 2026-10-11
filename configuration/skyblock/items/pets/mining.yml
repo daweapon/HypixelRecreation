@@ -36,7 +36,7 @@ items:
               - "<7>your held item."
           - name: "Rolling Miner"
             rarity: RARE
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Every <a>{0} <7>seconds, the next"
               - "<d>Gemstone <7>you mine gives <a>2x <7>drops."
@@ -228,7 +228,7 @@ items:
               - { per_level: { COMMON: 0.5, UNCOMMON: 0.8, EPIC: 1 } }
           - name: "Daily Commuter"
             rarity: RARE
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<9>Transmission Abilities"
               - "<7>cost <a>{0}% <7>less mana."
@@ -296,7 +296,7 @@ items:
           COMMON: { cold_resistance: { per_level: 0.1 }, mining_speed: { per_level: 1.25 } }
         abilities:
           - name: "Powder-powered"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain <a>+{0}%<7> more <b>Glacite Powder <7>from"
               - "<7>most sources."
@@ -372,7 +372,7 @@ items:
             values:
               - { per_level: 1 }
           - name: "Free-range Eggs"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Increases the chance of finding"
               - "<7>rare goblin eggs by <a>{0}%<7>."
@@ -585,7 +585,7 @@ items:
               - { per_level: { EPIC: 1, LEGENDARY: 1.25 } }
           - name: "Bejeweled Eyes"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Earn <a>+{0}% <d>Gemstone Powder <7>from all"
               - "<7>sources."
@@ -612,7 +612,7 @@ items:
           COMMON: { defense: { per_level: 1 }, mining_fortune: { per_level: 0.2 } }
         abilities:
           - name: "Magnetic"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Earn <a>+{0}% <7>more Exp when mining."
             values:
@@ -692,7 +692,9 @@ items:
               - { per_level: 1 }
           - name: "Death's Touch"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: HANDLER
+            handler: WITHER_SKELETON_DEATHS_TOUCH
+            triggers: MELEE_HIT
             text:
               - "<7>Upon hitting an enemy inflict"
               - "<7>the wither effect for <a>{0}%"

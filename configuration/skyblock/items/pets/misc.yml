@@ -16,21 +16,23 @@ items:
           COMMON: { health: { per_level: 1 }, strength: { per_level: 0.25 }, speed: { per_level: 0.75 } }
         abilities:
           - name: "Lucky Looting"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain <c>{0}% <7>more collection"
               - "<7>items from any source!"
             values:
               - { base: 5, per_level: 0.2 }
           - name: "Climber"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: BINGO_CLIMBER
+            triggers: XP_GAIN
             text:
               - "<7>Gain <c>{0}% <7>more <6>HOTM<7> and <a>HOTF<7> XP."
             values:
               - { base: 100, per_level: 1.5 }
           - name: "Fast Learner"
             rarity: UNCOMMON
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain <c>{0}% <7>more Skill Experience and"
               - "<7>Slayer Experience."
@@ -38,7 +40,8 @@ items:
               - { base: 5, per_level: 0.1 }
           - name: "Chimera"
             rarity: RARE
-            kind: INACTIVE
+            kind: HANDLER
+            handler: BINGO_CHIMERA
             text:
               - "<7>Increases the base stats of your"
               - "<7>active pet by <c>{0}%<7>."
@@ -46,7 +49,9 @@ items:
               - { base: 10, per_level: 0.3 }
           - name: "Scavenger"
             rarity: EPIC
-            kind: INACTIVE
+            kind: HANDLER
+            handler: COINS_PER_MOB_LEVEL
+            triggers: KILL
             text:
               - "<7>Gain <c>{0} <7>more coins per"
               - "<7>monster level on kill"
@@ -54,7 +59,7 @@ items:
               - { base: 0.1, per_level: 0.009 }
           - name: "Consumer"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Potion effects you obtain will have"
               - "<c>{0} <7>more time."
@@ -401,7 +406,10 @@ items:
               - { per_level: { RARE: 0.005, EPIC: 0.01 } }
           - name: "Orchid Nectar"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: DROP
+            triggers: CROP_HARVESTED
+            items: [JELLY, PLANT_MATTER]
+            chance: "{0}"
             text:
               - "<7>You have a <a>+{0}% <7>chance to find"
               - "<a>Jelly <7>or <a>Plant Matter <7>when farming"
@@ -424,7 +432,7 @@ items:
         george_price: { LEGENDARY: 200000 }
         abilities:
           - name: "Training Refunds"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>The more coins to spend on"
               - "<7>Fann's Sessions, the less coins"
@@ -481,7 +489,7 @@ items:
               - { base: 5, per_level: 0.35 }
           - name: "Bird Discourse"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gives <c>+{0}<glyph:stat_strength> Strength <7>to"
               - "<7>players within <a>20 <7>blocks"
@@ -598,7 +606,7 @@ items:
               - { per_level: 0.3 }
           - name: "Chocolate Injections"
             rarity: MYTHIC
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Increases <6>Chocolate Factory"
               - "<7>production by <a>+{0}x<7>. Duplicate"
@@ -717,7 +725,7 @@ items:
               - { per_level: { COMMON: 0.1, EPIC: 0.2 } }
           - name: "Overheal"
             rarity: RARE
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gives a <a>{0}% <7>shield after"
               - "<7>not taking damage for 10s."
@@ -771,7 +779,7 @@ items:
           EPIC: { defense: { per_level: 0.2 }, intelligence: { per_level: 0.25 } }
         abilities:
           - name: "Slow and Steady"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>When fishing in the <c>Crimson"
               - "<c>Isle<7>, <a>Slugfish <7>take <a>{0}%"
@@ -821,7 +829,8 @@ items:
             values:
               - 15
           - name: "Bulwark"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: WISP_BULWARK
             text:
               - "<7>Kill Blazes to gain defense against"
               - "<7>them and demons."
@@ -874,7 +883,8 @@ items:
           RARE: { health: { per_level: 2.5 }, true_defense: { per_level: 0.15 }, damage: { per_level: 0.15 }, intelligence: { per_level: 0.5 } }
         abilities:
           - name: "Bulwark"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: WISP_BULWARK
             text:
               - "<7>Kill Blazes to gain defense against"
               - "<7>them and demons."
@@ -899,7 +909,8 @@ items:
             values:
               - 25
           - name: "Extinguish"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: WISP_EXTINGUISH
             text:
               - "<7>While in combat on the Crimson Isle,"
               - "<7>spawn a pool every <a>8s<7>."
@@ -926,7 +937,8 @@ items:
           EPIC: { health: { per_level: 4 }, true_defense: { per_level: 0.3 }, damage: { per_level: 0.2 }, intelligence: { per_level: 1.25 } }
         abilities:
           - name: "Bulwark"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: WISP_BULWARK
             text:
               - "<7>Kill Blazes to gain defense against"
               - "<7>them and demons."
@@ -951,7 +963,8 @@ items:
             values:
               - 40
           - name: "Extinguish"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: WISP_EXTINGUISH
             text:
               - "<7>While in combat on the Crimson Isle,"
               - "<7>spawn a pool every <a>8s<7>."
@@ -978,7 +991,8 @@ items:
           LEGENDARY: { health: { per_level: 6 }, true_defense: { per_level: 0.35 }, damage: { per_level: 0.25 }, intelligence: { per_level: 2.5 } }
         abilities:
           - name: "Bulwark"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: WISP_BULWARK
             text:
               - "<7>Kill Blazes to gain defense against"
               - "<7>them and demons."
@@ -1003,7 +1017,8 @@ items:
             values:
               - 50
           - name: "Extinguish"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: WISP_EXTINGUISH
             text:
               - "<7>While in combat on the Crimson Isle,"
               - "<7>spawn a pool every <a>8s<7>."

@@ -8,6 +8,8 @@ import net.minestom.server.entity.attribute.AttributeModifier;
 import net.minestom.server.entity.attribute.AttributeOperation;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetPerkMath;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.utility.AttackService;
 
 import java.util.Map;
 import java.util.UUID;
@@ -17,6 +19,7 @@ public final class MobStatusEffects {
     private static final Key STUN_MODIFIER = Key.key("skyblock", "mob_stun");
     private static final Map<UUID, Long> STUNNED_UNTIL = new ConcurrentHashMap<>();
     private static final Map<UUID, HealingReduction> HEALING_REDUCED = new ConcurrentHashMap<>();
+    private static final Map<UUID, Long> WITHERED_UNTIL = new ConcurrentHashMap<>();
 
     private record HealingReduction(double percent, long until) {
     }
@@ -49,6 +52,27 @@ public final class MobStatusEffects {
         if (now < until) return true;
         STUNNED_UNTIL.remove(id);
         return false;
+    }
+
+    public static boolean tryWither(UUID id, long millis, long now) {
+        WITHERED_UNTIL.values().removeIf(until -> until <= now);
+        Long current = WITHERED_UNTIL.get(id);
+        if (current != null && current > now) return false;
+        WITHERED_UNTIL.put(id, now + millis);
+        return true;
+    }
+
+    public static void wither(SkyBlockPlayer attacker, SkyBlockMob mob, double damagePerSecond) {
+        if (damagePerSecond <= 0) return;
+        long duration = PetPerkMath.WITHER_SECONDS * 1000L;
+        if (!tryWither(mob.getUuid(), duration, System.currentTimeMillis())) return;
+        for (int second = 1; second <= PetPerkMath.WITHER_SECONDS; second++) {
+            MinecraftServer.getSchedulerManager().scheduleTask(() -> {
+                if (!mob.isDead() && !mob.isRemoved() && attacker.isOnline()) {
+                    AttackService.applyHit(attacker, mob, (float) damagePerSecond, false);
+                }
+            }, TaskSchedule.seconds(second), TaskSchedule.stop());
+        }
     }
 
     public static void reduceHealing(SkyBlockMob mob, double percent, long millis) {

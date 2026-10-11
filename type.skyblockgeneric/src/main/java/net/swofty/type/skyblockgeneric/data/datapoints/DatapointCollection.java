@@ -10,6 +10,8 @@ import net.swofty.type.generic.leaderboard.MapLeaderboardTracked;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
 import net.swofty.type.skyblockgeneric.collection.CollectionCategory;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.json.JSONObject;
 
 import java.util.*;
@@ -129,6 +131,12 @@ public class DatapointCollection extends SkyBlockDatapoint<DatapointCollection.P
 
         public void increase(ItemType type) {
             items.put(type, get(type) + 1);
+        }
+
+        public int increase(SkyBlockPlayer player, ItemType type, int amount) {
+            int credited = MiscPetHooks.collectionAmount(player, type, amount);
+            items.put(type, get(type) + credited);
+            return credited;
         }
 
         public void increase(ItemType type, int amount) {

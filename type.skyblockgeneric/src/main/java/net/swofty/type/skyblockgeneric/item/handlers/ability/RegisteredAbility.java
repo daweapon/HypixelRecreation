@@ -106,14 +106,26 @@ public class RegisteredAbility {
     }
 
     public static int effectiveManaCost(SkyBlockPlayer player, int baseCost) {
-        return (int) Math.round(baseCost * MiscPetHooks.manaCostMultiplier(player) * EnchantmentWise.costMultiplier(player));
+        return effectiveManaCost(player, baseCost, false);
+    }
+
+    public static int effectiveManaCost(SkyBlockPlayer player, int baseCost, boolean transmission) {
+        double transmissionFactor = transmission ? MiscPetHooks.transmissionManaMultiplier(player) : 1;
+        return (int) Math.round(baseCost * MiscPetHooks.manaCostMultiplier(player) * EnchantmentWise.costMultiplier(player)
+                * transmissionFactor);
     }
 
     public static class AbilityManaCost extends AbilityCost {
         private final int cost;
+        private boolean transmission;
 
         public AbilityManaCost(int cost) {
             this.cost = cost;
+        }
+
+        public AbilityManaCost transmission() {
+            this.transmission = true;
+            return this;
         }
 
         @Override
@@ -136,7 +148,7 @@ public class RegisteredAbility {
         }
 
         private int effectiveCost(SkyBlockPlayer player) {
-            return effectiveManaCost(player, cost);
+            return effectiveManaCost(player, cost, transmission);
         }
 
         @Override
@@ -158,20 +170,26 @@ public class RegisteredAbility {
     public static class AbilityManaSoulflowCost extends AbilityCost {
         private final int cost;
         private final int soulflow;
+        private boolean transmission;
 
         public AbilityManaSoulflowCost(int cost, int soulflow) {
             this.cost = cost;
             this.soulflow = soulflow;
         }
 
+        public AbilityManaSoulflowCost transmission() {
+            this.transmission = true;
+            return this;
+        }
+
         @Override
         public boolean canUse(@NotNull SkyBlockPlayer player) {
-            return (player.getMana() >= effectiveManaCost(player, cost)) && (player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue() >= soulflow);
+            return (player.getMana() >= effectiveManaCost(player, cost, transmission)) && (player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue() >= soulflow);
         }
 
         @Override
         public void onUse(@NonNull SkyBlockPlayer player, @NonNull RegisteredAbility ability) {
-            int spent = effectiveManaCost(player, cost);
+            int spent = effectiveManaCost(player, cost, transmission);
             SkyBlockActionBar.getFor(player).addReplacement(
                     SkyBlockActionBar.BarSection.MANA,
                     Text.of("<b>-{} (<6>{}</6>)", spent, ability.getName()),

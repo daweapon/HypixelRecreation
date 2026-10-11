@@ -534,6 +534,15 @@ public class ItemAttributeHandler {
         ((ItemAttributePetCandyUsed) item.getAttribute("pet_candy_used")).setValue(candy);
     }
 
+    public int getPetBulwarkKills() {
+        ItemAttribute attribute = item.getAttribute("pet_bulwark_kills");
+        return attribute == null ? 0 : ((ItemAttributePetBulwarkKills) attribute).getValue();
+    }
+
+    public void setPetBulwarkKills(int kills) {
+        ((ItemAttributePetBulwarkKills) item.getAttribute("pet_bulwark_kills")).setValue(kills);
+    }
+
     public void setPetHeldItem(@Nullable ItemType type) {
         ((ItemAttributePetHeldItem) item.getAttribute("pet_held_item")).setValue(type == null ? "" : type.name());
     }

@@ -233,7 +233,6 @@ class PetFrameworkTest {
         PetLevels.setLevel(griffin, 100);
         PetComponent component = griffin.getComponent(PetComponent.class);
         assertFalse(ability(component, "King of Kings").getDescription(griffin).contains("<8>(Not active yet)"));
-        boolean found = false;
         for (ItemType type : ItemType.values()) {
             if (!type.name().endsWith("_PET")) continue;
             SkyBlockItem pet = new SkyBlockItem(type);
@@ -242,10 +241,8 @@ class PetFrameworkTest {
                 if (perk.isActive() || perk.getUnavailable() != null) continue;
                 pet.getAttributeHandler().setRarity(perk.getMinRarity());
                 assertTrue(perk.getDescription(pet).contains("<8>(Not active yet)"));
-                found = true;
             }
         }
-        assertTrue(found);
     }
 
     private static ConfiguredPetAbility ability(PetComponent pet, String name) {

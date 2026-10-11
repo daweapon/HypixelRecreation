@@ -39,6 +39,10 @@ public final class PetConditions {
         return currentServer() == ServerType.SKYBLOCK_ISLAND;
     }
 
+    public static boolean onCrimsonIsle() {
+        return currentServer() == ServerType.SKYBLOCK_CRIMSON_ISLE;
+    }
+
     public static void register(String id, Predicate<SkyBlockPlayer> condition) {
         NAMED.put(id.toUpperCase(), condition);
     }

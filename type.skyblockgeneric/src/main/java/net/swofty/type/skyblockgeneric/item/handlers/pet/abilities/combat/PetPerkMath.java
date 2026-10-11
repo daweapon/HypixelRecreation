@@ -22,6 +22,19 @@ public final class PetPerkMath {
     public static final int AURA_TARGETS = 4;
     public static final double BASE_JUMP_STRENGTH = 0.42;
     public static final double JUMP_STRENGTH_PER_LEVEL = 0.1;
+    public static final double BIRD_DISCOURSE_RANGE = 20;
+    public static final long OVERHEAL_QUIET_MS = 10_000;
+    public static final long EXTINGUISH_INTERVAL_MS = 8_000;
+    public static final long EXTINGUISH_COMBAT_MS = 10_000;
+    public static final double EXTINGUISH_RADIUS = 2.5;
+    public static final int WITHER_SECONDS = 3;
+    public static final long TRAINING_REFUND_STEP_COINS = 1_000_000;
+    public static final double TRAINING_REFUND_MAX_PERCENT = 5;
+    private static final int[] BULWARK_KILLS = {100, 200, 300, 500, 800, 1200, 1750, 2500, 3500, 5000, 10000, 25000,
+            50000, 100000, 125000, 150000, 200000};
+    private static final int[] BULWARK_DEFENSE = {30, 60, 90, 135, 180, 225, 270, 315, 360, 405, 465, 500, 535, 570,
+            585, 595, 600};
+    private static final int[] BULWARK_TRUE_DEFENSE = {3, 6, 9, 14, 18, 23, 27, 32, 36, 41, 47, 50, 53, 57, 58, 59, 60};
 
     private PetPerkMath() {
     }
@@ -104,5 +117,88 @@ public final class PetPerkMath {
 
     public static double speedWithRaisedCap(double rawSpeed, double baseCap, double capBonus) {
         return Math.min(rawSpeed, baseCap + Math.max(0, capBonus));
+    }
+
+    public static int bulwarkTier(int kills) {
+        int tier = 0;
+        while (tier < BULWARK_KILLS.length && kills >= BULWARK_KILLS[tier]) tier++;
+        return tier;
+    }
+
+    public static int bulwarkDefense(int kills) {
+        int tier = bulwarkTier(kills);
+        return tier == 0 ? 0 : BULWARK_DEFENSE[tier - 1];
+    }
+
+    public static int bulwarkTrueDefense(int kills) {
+        int tier = bulwarkTier(kills);
+        return tier == 0 ? 0 : BULWARK_TRUE_DEFENSE[tier - 1];
+    }
+
+    public static int bulwarkNextKills(int kills) {
+        int tier = bulwarkTier(kills);
+        return tier >= BULWARK_KILLS.length ? -1 : BULWARK_KILLS[tier];
+    }
+
+    public static int bulwarkNextDefense(int kills) {
+        int tier = bulwarkTier(kills);
+        return tier >= BULWARK_KILLS.length ? -1 : BULWARK_DEFENSE[tier];
+    }
+
+    public static int bulwarkNextTrueDefense(int kills) {
+        int tier = bulwarkTier(kills);
+        return tier >= BULWARK_KILLS.length ? -1 : BULWARK_TRUE_DEFENSE[tier];
+    }
+
+    public static double bulwarkDamage(double damage, double playerDefense, double bonusDefense, double bonusTrueDefense) {
+        double defense = Math.max(0, playerDefense);
+        double afterDefense = damage * (100 + defense) / (100 + defense + Math.max(0, bonusDefense));
+        return afterDefense * 100 / (100 + Math.max(0, bonusTrueDefense));
+    }
+
+    public static double coinsPerMobLevel(double perLevel, @org.jetbrains.annotations.Nullable Integer mobLevel) {
+        if (mobLevel == null || mobLevel <= 0 || perLevel <= 0) return 0;
+        return Math.floor(perLevel * mobLevel);
+    }
+
+    public static float overhealShield(double maxHealth, double percent) {
+        return (float) (Math.max(0, maxHealth) * Math.max(0, percent) / 100D);
+    }
+
+    public static boolean overheals(long lastDamageAt, long now, boolean shieldActive) {
+        return !shieldActive && now - lastDamageAt >= OVERHEAL_QUIET_MS;
+    }
+
+    public static double witherDamagePerSecond(double hitDamage, double percent) {
+        return Math.max(0, hitDamage) * Math.max(0, percent) / 100D / WITHER_SECONDS;
+    }
+
+    public static double reducedBobberSeconds(double seconds, double lessTimePercent) {
+        return seconds * (1 - Math.clamp(lessTimePercent, 0, 100) / 100D);
+    }
+
+    public static double manaCostFactor(double lessPercent) {
+        return 1 - Math.clamp(lessPercent, 0, 100) / 100D;
+    }
+
+    public static double trainingRefundPercent(double coinCost) {
+        double steps = Math.floor(Math.max(0, coinCost) / TRAINING_REFUND_STEP_COINS);
+        return Math.min(TRAINING_REFUND_MAX_PERCENT, steps);
+    }
+
+    public static long discountedTrainingCost(double coinCost, double percent) {
+        return Math.round(coinCost * (1 - Math.clamp(percent, 0, 100) / 100D));
+    }
+
+    public static double chocolateMultiplier(double baseMultiplier, double petBonus) {
+        return baseMultiplier + Math.max(0, petBonus);
+    }
+
+    public static double bestAura(double current, double candidate) {
+        return Math.max(current, candidate);
+    }
+
+    public static boolean inAuraRange(double distance) {
+        return distance <= BIRD_DISCOURSE_RANGE;
     }
 }

@@ -46,7 +46,7 @@ public enum BazaarCategories {
             new BazaarItemSet(ItemType.COMPOST, "Garden",
                     ItemType.COMPOST, ItemType.COMPOST_BUNDLE, ItemType.CROPIE, ItemType.SQUASH, ItemType.FERMENTO, ItemType.CONDENSED_FERMENTO),
             new BazaarItemSet(ItemType.DUNG, "Garden Resources",
-                    ItemType.DUNG, ItemType.TASTY_CHEESE, ItemType.PLANT_MATTER, ItemType.HONEY_JAR, ItemType.WRIGGLING_LARVA, ItemType.FINE_FLOUR)
+                    ItemType.DUNG, ItemType.TASTY_CHEESE, ItemType.PLANT_MATTER, ItemType.JELLY, ItemType.HONEY_JAR, ItemType.WRIGGLING_LARVA, ItemType.FINE_FLOUR)
 
     ),
     MINING(Material.DIAMOND_PICKAXE, Material.BLUE_STAINED_GLASS_PANE, "<b>",

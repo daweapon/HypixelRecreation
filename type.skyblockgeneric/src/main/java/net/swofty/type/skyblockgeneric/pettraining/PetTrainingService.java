@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.pettraining;
 
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetPerkMath;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetTraining;
@@ -63,15 +64,21 @@ public final class PetTrainingService {
         return now >= session.endsAt();
     }
 
+    public static long coinCost(SkyBlockPlayer player, PetTrainingType type, int days) {
+        double full = type.getCoinsPerDay() * days;
+        return PetPerkMath.discountedTrainingCost(full, MiscPetHooks.trainingRefundPercent(player, full));
+    }
+
     public static void start(SkyBlockPlayer player, int slot, SkyBlockItem pet, PetTrainingType type, int days) {
         double xpPerDay = type.xpPerDay(tamingLevel(player)) * MiscPetHooks.trainingXpMultiplier(pet);
         long now = System.currentTimeMillis();
-        player.removeCoins(type.getCoinsPerDay() * days);
+        long coins = coinCost(player, type, days);
+        player.removeCoins(coins);
         if (type.getBitsPerDay() > 0) player.removeBits(type.getBitsPerDay() * days);
 
         PetTrainingData data = data(player);
         data.getSessions().put(slot, new Session(pet, type, now, now + days * DAY_MILLIS,
-                xpPerDay, type.getCoinsPerDay(), type.getBitsPerDay()));
+                xpPerDay, (double) coins / days, type.getBitsPerDay()));
         datapoint(player).setValue(data);
     }
 

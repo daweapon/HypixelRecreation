@@ -6,6 +6,12 @@ import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.CountScaledStatHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BingoChimeraHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BingoClimberHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BulwarkHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.CoinsPerMobLevelHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.DeathsTouchHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.ExtinguishHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.LazerbeamHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetConditions;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetType;
@@ -26,6 +32,12 @@ final class MiscPetAbilities implements PetAbilityRegistry.Provider {
         PetConditions.register("JUMP_BOOST", player -> player.hasEffect(PotionEffect.JUMP_BOOST));
 
         registrar.register("GUARDIAN_LAZERBEAM", new LazerbeamHandler());
+        registrar.register("BINGO_CLIMBER", new BingoClimberHandler());
+        registrar.register("BINGO_CHIMERA", new BingoChimeraHandler());
+        registrar.register("COINS_PER_MOB_LEVEL", new CoinsPerMobLevelHandler());
+        registrar.register("WISP_BULWARK", new BulwarkHandler());
+        registrar.register("WISP_EXTINGUISH", new ExtinguishHandler());
+        registrar.register("WITHER_SKELETON_DEATHS_TOUCH", new DeathsTouchHandler());
         registrar.register("ROSE_DRAGON_GARDEN_POWER", CountScaledStatHandler.flat(
                 player -> player.getSkills().getCurrentLevel(SkillCategories.FARMING), ItemStatistic.FARMING_FORTUNE));
         registrar.register("ROSE_DRAGON_SYMBIOSIS",

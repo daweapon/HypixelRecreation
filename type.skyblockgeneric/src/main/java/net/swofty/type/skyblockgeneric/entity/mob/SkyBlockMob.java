@@ -49,6 +49,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ArmorComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import net.swofty.type.skyblockgeneric.loottable.LootAffector;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
@@ -367,6 +368,7 @@ public abstract class SkyBlockMob extends EntityCreature {
             }
 
             if (item.hasComponent(ArmorComponent.class)) adjustedChance = CombatPetHooks.armorDropChance(player, adjustedChance);
+            adjustedChance = MiningPetBonuses.goblinEggChance(player, this, itemType, adjustedChance);
 
             double chance = record.getShouldCalculate().apply(player) ? adjustedChance : 0;
             if (LootRoll.roll(player.getUuid(), itemType, chance)) {

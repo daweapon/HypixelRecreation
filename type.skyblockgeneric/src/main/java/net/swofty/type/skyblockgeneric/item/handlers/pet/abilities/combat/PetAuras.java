@@ -13,7 +13,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Pet abilities that buff other players. Turtle's Genius Amniote gives its owner's nearest four other players within
+ * Pet abilities that buff other players. Parrot's Bird Discourse gives +{0} Strength to every player within 20 blocks, the best one counting. Turtle's Genius Amniote gives its owner's nearest four other players within
  * 50 blocks +{0}% Defense; when several turtles reach a player, the best one counts.
  */
 public final class PetAuras {
@@ -22,8 +22,24 @@ public final class PetAuras {
 
     public static ItemStatistics statistics(SkyBlockPlayer receiver) {
         double percent = geniusAmniotePercent(receiver);
-        if (percent <= 0) return ItemStatistics.empty();
-        return ItemStatistics.builder().withAdditivePercentage(ItemStatistic.DEFENSE, percent).build();
+        double strength = birdDiscourseStrength(receiver);
+        if (percent <= 0 && strength <= 0) return ItemStatistics.empty();
+        ItemStatistics.Builder builder = ItemStatistics.builder();
+        if (percent > 0) builder.withAdditivePercentage(ItemStatistic.DEFENSE, percent);
+        if (strength > 0) builder.withBase(ItemStatistic.STRENGTH, strength);
+        return builder.build();
+    }
+
+    public static double birdDiscourseStrength(SkyBlockPlayer receiver) {
+        Instance instance = receiver.getInstance();
+        if (instance == null) return 0;
+        double best = 0;
+        for (Player other : instance.getPlayers()) {
+            if (!(other instanceof SkyBlockPlayer owner) || owner.getSkyblockDataHandler() == null) continue;
+            if (!PetPerkMath.inAuraRange(owner.getPosition().distance(receiver.getPosition()))) continue;
+            best = PetPerkMath.bestAura(best, PetAbilities.value(owner, ItemType.PARROT_PET, "Bird Discourse", 0));
+        }
+        return best;
     }
 
     public static double geniusAmniotePercent(SkyBlockPlayer receiver) {

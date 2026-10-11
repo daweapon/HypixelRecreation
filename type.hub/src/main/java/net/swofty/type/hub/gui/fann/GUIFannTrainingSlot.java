@@ -146,7 +146,7 @@ public class GUIFannTrainingSlot implements StatefulView<GUIFannTrainingSlot.Sta
         lore.add(Text.of("<7>Total EXP: <b>{:,}", (long) (state.type().xpPerDay(taming) * days)));
         lore.add(Text.empty());
         lore.add(Text.of("<7>Cost"));
-        lore.add(Text.of("<6>{:,} Coins", (long) (state.type().getCoinsPerDay() * days)));
+        lore.add(Text.of("<6>{:,} Coins", PetTrainingService.coinCost(player, state.type(), days)));
         if (state.type().getBitsPerDay() > 0) lore.add(Text.of("<b>{:,} Bits", state.type().getBitsPerDay() * days));
         lore.add(Text.empty());
         lore.add(Text.of("<e>Click to start training!"));
@@ -174,7 +174,7 @@ public class GUIFannTrainingSlot implements StatefulView<GUIFannTrainingSlot.Sta
         }
 
         int days = PetTrainingService.days(state.pet(), state.type().xpPerDay(taming), state.duration());
-        if (player.getCoins() < state.type().getCoinsPerDay() * days) {
+        if (player.getCoins() < PetTrainingService.coinCost(player, state.type(), days)) {
             player.sendMessage("<c>You don't have enough coins!");
             return;
         }

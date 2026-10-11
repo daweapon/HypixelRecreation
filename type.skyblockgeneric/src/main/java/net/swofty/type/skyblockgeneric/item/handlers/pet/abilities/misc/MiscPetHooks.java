@@ -6,12 +6,17 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetPerkMath;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.ConfiguredPetAbility;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
+
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Where game systems honour the {@code kind: TEXT} abilities of the Farming, Alchemy, Enchanting,
@@ -39,7 +44,8 @@ public final class MiscPetHooks {
 
     public static double potionDurationMultiplier(SkyBlockPlayer player) {
         if (!loaded(player)) return 1;
-        return 1 + PetAbilities.value(player, ItemType.PARROT_PET, "Repeat", 0) / 100D;
+        double repeat = PetAbilities.value(player, ItemType.PARROT_PET, "Repeat", 0);
+        return 1 + (repeat + PetAbilities.value(player, ItemType.BINGO_PET, "Consumer", 0)) / 100D;
     }
 
     public static double godPotionDurationMultiplier(SkyBlockPlayer player) {
@@ -49,7 +55,51 @@ public final class MiscPetHooks {
             if (pet.getAttributeHandler().getPotentialType() != ItemType.PARROT_PET) continue;
             best = Math.max(best, ownValue(pet, "Parrot Feather Infusion"));
         }
-        return 1 + best / 100D;
+        return 1 + (best + PetAbilities.value(player, ItemType.BINGO_PET, "Consumer", 0)) / 100D;
+    }
+
+    public static double transmissionManaMultiplier(SkyBlockPlayer player) {
+        if (!loaded(player)) return 1;
+        return PetPerkMath.manaCostFactor(PetAbilities.value(player, ItemType.ENDERMITE_PET, "Daily Commuter", 0));
+    }
+
+    public static int collectionAmount(SkyBlockPlayer player, ItemType item, int amount) {
+        if (!loaded(player) || CollectionCategories.getCategory(item) == null) return amount;
+        double extra = PetAbilities.value(player, ItemType.BINGO_PET, "Lucky Looting", 0);
+        return PetPerkMath.scaledAmount(amount, extra, ThreadLocalRandom.current());
+    }
+
+    public static double learningMultiplier(SkyBlockPlayer player) {
+        if (!loaded(player)) return 1;
+        return 1 + PetAbilities.value(player, ItemType.BINGO_PET, "Fast Learner", 0) / 100D;
+    }
+
+    public static double trainingRefundPercent(SkyBlockPlayer player, double coinCost) {
+        if (!loaded(player) || !PetAbilities.has(player, ItemType.OWL_PET, "Training Refunds")) return 0;
+        return PetPerkMath.trainingRefundPercent(coinCost);
+    }
+
+    public static double slugfishBobberPercent(SkyBlockPlayer player) {
+        if (!loaded(player)) return 0;
+        return PetAbilities.value(player, ItemType.SLUG_PET, "Slow and Steady", 0);
+    }
+
+    public static double chocolateMultiplierBonus(SkyBlockPlayer player) {
+        if (!loaded(player)) return 0;
+        return PetAbilities.value(player, ItemType.RABBIT_PET, "Chocolate Injections", 0);
+    }
+
+    public static void petTick(SkyBlockPlayer player) {
+        if (!loaded(player) || player.getInstance() == null || player.isDead()) return;
+        long now = System.currentTimeMillis();
+        OverhealShield.tick(player, now);
+        ExtinguishPools.tick(player, now);
+    }
+
+    public static void release(UUID player) {
+        OverhealShield.release(player);
+        ExtinguishPools.release(player);
+        CombatState.release(player);
     }
 
     public static int intimidationBonusLevels(SkyBlockPlayer player) {

@@ -37,7 +37,7 @@ public final class BaseStatBoostHandler implements PetAbilityHandler {
         return scaled(base, percent.applyAsDouble(context) / 100D);
     }
 
-    static ItemStatistics scaled(ItemStatistics statistics, double factor) {
+    public static ItemStatistics scaled(ItemStatistics statistics, double factor) {
         ItemStatistics.Builder builder = ItemStatistics.builder();
         statistics.getOverall().forEach((statistic, value) -> {
             if (value != 0) builder.withBase(statistic, value * factor);

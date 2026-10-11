@@ -5,6 +5,8 @@ import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.crimson.volcano.VolcanoEruptionService;
 import net.swofty.type.skyblockgeneric.fishing.FishingContext;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetPerkMath;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 
 import java.util.List;
 import java.util.Map;
@@ -28,7 +30,8 @@ public sealed interface TrophyCondition {
     record MinBobberSeconds(double seconds) implements TrophyCondition {
         @Override
         public boolean test(FishingContext context) {
-            return context.castDurationMs() >= seconds * 1000D;
+            double required = PetPerkMath.reducedBobberSeconds(seconds, MiscPetHooks.slugfishBobberPercent(context.player()));
+            return context.castDurationMs() >= required * 1000D;
         }
     }
 

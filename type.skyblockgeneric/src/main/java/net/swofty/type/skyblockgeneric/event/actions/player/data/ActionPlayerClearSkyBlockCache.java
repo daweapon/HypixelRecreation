@@ -31,6 +31,7 @@ public class ActionPlayerClearSkyBlockCache implements HypixelEventClass {
         SkyBlockScoreboard.removeCache(player);
         player.getPetData().updatePetEntityImpl(null);
         PetEquipEffects.release(player.getUuid());
+        net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks.release(player.getUuid());
         MobAggroLog.clear(player.getUuid());
         PlayerItemOrigin.clearCache(player.getUuid());
         ActionPlayerStrayTooFar.startedStray.remove(player.getUuid());

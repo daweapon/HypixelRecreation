@@ -123,7 +123,7 @@ public class AbilityRegistry {
             (player, item) -> "<7>Teleports <a>8 Blocks <7>ahead of you and gain <a>+50 <f>Speed for <a>3 seconds<7>.",
             RegisteredAbility.AbilityActivation.RIGHT_CLICK,
             5,
-            new RegisteredAbility.AbilityManaCost(50),
+            new RegisteredAbility.AbilityManaCost(50).transmission(),
             (player, _, _, _) -> {
                 ForwardTeleport.teleport(player, 8);
                 ItemStatistics speedStats = ItemStatistics.builder().withBase(ItemStatistic.SPEED, 50.0).build();
@@ -139,7 +139,7 @@ public class AbilityRegistry {
             (_, _) -> "<7>Teleport to your targeted block up to <a>57 <7>blocks away.",
             RegisteredAbility.AbilityActivation.SNEAK_RIGHT_CLICK,
             5,
-            new RegisteredAbility.AbilityManaSoulflowCost(180, 1),
+            new RegisteredAbility.AbilityManaSoulflowCost(180, 1).transmission(),
             (player, _, _, _) -> {
                 // TODO: should not be able to go through 1 block holes.
                 Point targetedBlock = player.getTargetBlockPosition(57);

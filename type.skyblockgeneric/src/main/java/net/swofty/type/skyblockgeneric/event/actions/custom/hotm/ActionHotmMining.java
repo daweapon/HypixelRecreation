@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.hotm.HotmPowder;
 import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.hotm.HotmSkyMallBuff;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
@@ -36,12 +37,12 @@ public class ActionHotmMining implements HypixelEventClass {
 
         HotmAbilities.onBlockMined(player);
         if (ore != null) {
-            mineGlacite(player, ore);
+            mineGlacite(player, ore, event);
             return;
         }
         ItemStatistic specific = block.getBlockType().specificBlockFortune();
         if (specific == ItemStatistic.DWARVEN_METAL_FORTUNE) mineDwarvenMetal(player, block, event);
-        if (specific == ItemStatistic.GEMSTONE_FORTUNE) mineGemstone(player);
+        if (specific == ItemStatistic.GEMSTONE_FORTUNE) mineGemstone(player, event);
     }
 
     private void mineDwarvenMetal(SkyBlockPlayer player, MineableBlock block, CustomBlockBreakEvent event) {
@@ -69,9 +70,9 @@ public class ActionHotmMining implements HypixelEventClass {
         }
     }
 
-    private void mineGlacite(SkyBlockPlayer player, GlaciteOre ore) {
+    private void mineGlacite(SkyBlockPlayer player, GlaciteOre ore, CustomBlockBreakEvent event) {
         if (ore.getMineable().getBlockType().specificBlockFortune() == ItemStatistic.GEMSTONE_FORTUNE) {
-            mineGemstone(player);
+            mineGemstone(player, event);
             return;
         }
         HotmService.gainPowder(player, HotmPowder.GLACITE, ore.basePowder() + HotmService.baseBonus(player, HotmPowder.GLACITE));
@@ -81,7 +82,10 @@ public class ActionHotmMining implements HypixelEventClass {
         }
     }
 
-    private void mineGemstone(SkyBlockPlayer player) {
+    private void mineGemstone(SkyBlockPlayer player, CustomBlockBreakEvent event) {
+        if (MiningPetBonuses.rollingMinerReady(player, System.currentTimeMillis())) {
+            event.getDrops().forEach(drop -> drop.setAmount(drop.getAmount() * 2));
+        }
         HotmService.gainPowder(player, HotmPowder.GEMSTONE, 1 + HotmService.baseBonus(player, HotmPowder.GEMSTONE));
     }
 

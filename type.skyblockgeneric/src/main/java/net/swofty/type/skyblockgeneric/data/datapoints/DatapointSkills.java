@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.skill.SkillCategory;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -168,7 +169,8 @@ public class DatapointSkills extends SkyBlockDatapoint<DatapointSkills.PlayerSki
          */
         public void increase(SkyBlockPlayer player, SkillCategories category, Double value) {
             double wisdom = player.getStatistics().allStatistics().getOverall(category.getWisdomStatistic());
-            double modifiedValue = value * (1D + wisdom / 100D) * ElectionPerks.multiplier(SkyBlockMayor.Perk.MOAR_SKILLZ);
+            double modifiedValue = value * (1D + wisdom / 100D) * ElectionPerks.multiplier(SkyBlockMayor.Perk.MOAR_SKILLZ)
+                    * MiscPetHooks.learningMultiplier(player);
             setRaw(player, category, getRaw(category) + modifiedValue);
         }
 

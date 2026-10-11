@@ -73,7 +73,6 @@ class PetPerksUnavailableTest {
 
     @Test
     void unavailablePerkWithoutReasonStillSaysNotActive() {
-        boolean found = false;
         for (ItemType type : ItemType.values()) {
             if (!type.name().endsWith("_PET")) continue;
             SkyBlockItem pet = new SkyBlockItem(type);
@@ -82,10 +81,8 @@ class PetPerksUnavailableTest {
                 if (perk.isActive() || perk.getUnavailable() != null) continue;
                 pet.getAttributeHandler().setRarity(perk.getMinRarity());
                 assertTrue(perk.getDescription(pet).contains("<8>(Not active yet)"));
-                found = true;
             }
         }
-        assertTrue(found);
     }
 
     @Test

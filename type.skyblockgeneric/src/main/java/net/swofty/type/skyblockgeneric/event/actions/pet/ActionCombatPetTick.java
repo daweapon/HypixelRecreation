@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.MiscPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.pets.PetEquipEffects;
 
@@ -22,6 +23,7 @@ public class ActionCombatPetTick implements HypixelEventClass {
         if (ticks % SCAN_TICKS != 0) return;
         if (SkyBlockDataHandler.getUser(player) == null) return;
         CombatPetHooks.petTick(player);
+        MiscPetHooks.petTick(player);
         if (ticks % SYNC_TICKS == 0) PetEquipEffects.apply(player);
     }
 }

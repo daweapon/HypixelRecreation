@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.swofty.commons.protocol.Serializer;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetPerkMath;
 import net.swofty.type.skyblockgeneric.rabbits.ChocolateRabbit;
 import net.swofty.type.skyblockgeneric.rabbits.HoppityEggType;
 import org.json.JSONArray;
@@ -194,6 +195,7 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
         private static final double SHRINE_MULTIPLIER_PER_LEVEL = 0.1;
         private static final double TIME_TOWER_MULTIPLIER_PER_LEVEL = 0.1;
         private static final double COACH_MULTIPLIER_PER_LEVEL = 0.01;
+        private final java.util.concurrent.atomic.AtomicReference<Double> petMultiplier = new java.util.concurrent.atomic.AtomicReference<>(0D);
         private static final long TIME_TOWER_DURATION_MS = 60L * 60L * 1000L;
         private static final double MILLIS_PER_SECOND = 1000.0;
         private long chocolate;
@@ -270,6 +272,10 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             return BASE_MULTIPLIER + (coachJackrabbitLevel * COACH_MULTIPLIER_PER_LEVEL);
         }
 
+        public void setPetMultiplier(double petMultiplier) {
+            this.petMultiplier.set(petMultiplier);
+        }
+
         public double getChocolatePerSecond() {
             double baseProduction = 0;
 
@@ -279,9 +285,8 @@ public class DatapointChocolateFactory extends SkyBlockDatapoint<DatapointChocol
             }
 
             // Apply multipliers
-            baseProduction *= getShrineMultiplier();
-            baseProduction *= getTimeTowerMultiplier();
-            baseProduction *= getCoachMultiplier();
+            baseProduction *= PetPerkMath.chocolateMultiplier(
+                    getShrineMultiplier() * getTimeTowerMultiplier() * getCoachMultiplier(), petMultiplier.get());
 
             return baseProduction;
         }
