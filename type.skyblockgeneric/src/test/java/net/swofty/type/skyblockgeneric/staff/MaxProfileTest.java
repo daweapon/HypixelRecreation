@@ -229,6 +229,7 @@ class MaxProfileTest {
     void glaciteWalkerMatchesCurrentHypixelStats() {
         var walker = new net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobGlaciteWalker();
         assertEquals(24, walker.getLevel());
+        assertEquals(net.minestom.server.entity.EntityType.ZOMBIE, walker.getEntityType());
         assertEquals(888D, walker.getBaseStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.HEALTH));
     }
 

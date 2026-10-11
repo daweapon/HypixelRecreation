@@ -31,6 +31,7 @@ import net.swofty.type.skyblockgeneric.mission.LocationAssociatedMission;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.SkyBlockMission;
 import net.swofty.type.skyblockgeneric.mission.SkyBlockProgressMission;
+import net.swofty.type.skyblockgeneric.glacite.ColdService;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 
@@ -110,6 +111,10 @@ public class SkyBlockScoreboard {
                 Text.of("<color:{}>{}", type.getColor(), name)));
         } catch (NullPointerException ignored) {
             location.line(" {}", Text.key("scoreboard.skyblock.region_unknown"));
+        }
+        double cold = ColdService.cold(player);
+        if (cold < 0) {
+            location.line(Text.of("<b>Cold: {}❄", (int) Math.floor(cold)));
         }
 
         // TODO: make classes / a manager for regions to display scoreboard information.

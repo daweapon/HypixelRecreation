@@ -31,7 +31,7 @@ import java.util.List;
 public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator {
 
 	public MobGlaciteWalker() {
-		super(EntityType.PLAYER);
+		super(EntityType.ZOMBIE);
 	}
 
 	@Override
