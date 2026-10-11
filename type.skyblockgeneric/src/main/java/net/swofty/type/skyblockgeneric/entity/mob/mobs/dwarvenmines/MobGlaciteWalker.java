@@ -1,7 +1,11 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines;
 
 import lombok.NonNull;
+import net.minestom.server.color.Color;
+import net.minestom.server.component.DataComponents;
 import net.minestom.server.entity.EntityType;
+import net.minestom.server.item.ItemStack;
+import net.minestom.server.item.Material;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.entity.ai.target.LastEntityDamagerTarget;
@@ -28,10 +32,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator, net.swofty.type.skyblockgeneric.entity.mob.impl.MobPlayerSkin {
+public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator {
+	private static final int LIGHT_BLUE = 0x3AB3DA;
+
 
 	public MobGlaciteWalker() {
-		super(EntityType.PLAYER);
+		super(EntityType.ZOMBIE);
 	}
 
 	@Override
@@ -56,16 +62,14 @@ public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator, ne
 
 	@Override
 	public void onInit() {
+		setBoots(dyedLeather(Material.LEATHER_BOOTS));
+		setLeggings(dyedLeather(Material.LEATHER_LEGGINGS));
+		setChestplate(dyedLeather(Material.LEATHER_CHESTPLATE));
+		setHelmet(ItemStack.of(Material.PACKED_ICE));
 	}
 
-	@Override
-	public String getSkinTexture() {
-		return "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzQzODk0ZGNhMmMyNzk3NWYzMTY0MzFiYmI1NGE2ZWM1MWZmNDdiZWYyMzk5MTUxMTNhNDMzMmIxYTJlZDk0N2EifX19";
-	}
-
-	@Override
-	public String getSkinSignature() {
-		return null;
+	private static ItemStack dyedLeather(Material material) {
+		return ItemStack.builder(material).set(DataComponents.DYED_COLOR, new Color(LIGHT_BLUE)).build();
 	}
 
 	@Override

@@ -124,7 +124,7 @@ public abstract class SkyBlockMob extends EntityCreature {
         super.updateNewViewer(player);
         if (this instanceof MobPlayerSkin skin) {
             List<PlayerInfoUpdatePacket.Property> properties = new ArrayList<>();
-            if (skin.getSkinTexture() != null) {
+            if (skin.getSkinTexture() != null && skin.getSkinSignature() != null) {
                 properties.add(new PlayerInfoUpdatePacket.Property("textures", skin.getSkinTexture(), skin.getSkinSignature()));
             }
             player.sendPackets(

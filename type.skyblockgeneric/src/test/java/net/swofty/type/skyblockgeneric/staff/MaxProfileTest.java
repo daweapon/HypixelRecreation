@@ -230,8 +230,13 @@ class MaxProfileTest {
     void glaciteWalkerMatchesCurrentHypixelStats() {
         var walker = new net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobGlaciteWalker();
         assertEquals(24, walker.getLevel());
-        assertEquals(net.minestom.server.entity.EntityType.PLAYER, walker.getEntityType());
-        assertNotNull(((net.swofty.type.skyblockgeneric.entity.mob.impl.MobPlayerSkin) walker).getSkinTexture());
+        assertEquals(net.minestom.server.entity.EntityType.ZOMBIE, walker.getEntityType());
+        assertEquals(net.minestom.server.item.Material.PACKED_ICE, walker.getEquipment(net.minestom.server.entity.EquipmentSlot.HELMET).material());
+        for (var slot : new net.minestom.server.entity.EquipmentSlot[]{net.minestom.server.entity.EquipmentSlot.CHESTPLATE, net.minestom.server.entity.EquipmentSlot.LEGGINGS, net.minestom.server.entity.EquipmentSlot.BOOTS}) {
+            var piece = walker.getEquipment(slot);
+            assertTrue(piece.material().name().startsWith("minecraft:leather_"), slot.name());
+            assertNotNull(piece.get(net.minestom.server.component.DataComponents.DYED_COLOR), slot.name());
+        }
         assertEquals(888D, walker.getBaseStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.HEALTH));
     }
 
