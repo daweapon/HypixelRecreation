@@ -33,20 +33,24 @@ public class NPCRomero extends CrimsonNPC {
                     "I need some decent mushrooms.");
             return;
         }
-        switch (held) {
-            case ENCHANTED_RED_MUSHROOM_BLOCK -> {
-                player.removeItemFromPlayer(ItemType.ENCHANTED_RED_MUSHROOM_BLOCK, 1);
-                say(player, "<a>Fantastic!", "There's some stew for <e>Juliette<f>!", "<a>Mmh! <fTastes great!")
-                        .thenRun(() -> RomeroCrimsonStep.complete(player));
-            }
-            case RED_MUSHROOM -> say(player, "I can't cook a gourmet stew with tiny mushrooms!", "I need bigger ones!");
-            case BROWN_MUSHROOM -> say(player, "That's not the color of mushroom I'm looking for.");
-            case RED_MUSHROOM_BLOCK -> say(player, "<a>Sweet! <fJust what I need!", "<c>EXCEPT<f>... Could you enchant it?",
+        if (held == ItemType.ENCHANTED_RED_MUSHROOM_BLOCK) {
+            player.removeItemFromPlayer(ItemType.ENCHANTED_RED_MUSHROOM_BLOCK, 1);
+            say(player, "<a>Fantastic!", "There's some stew for <e>Juliette<f>!", "<a>Mmh! <fTastes great!")
+                    .thenRun(() -> RomeroCrimsonStep.complete(player));
+        } else if (held == ItemType.RED_MUSHROOM) {
+            say(player, "I can't cook a gourmet stew with tiny mushrooms!", "I need bigger ones!");
+        } else if (held == ItemType.BROWN_MUSHROOM) {
+            say(player, "That's not the color of mushroom I'm looking for.");
+        } else if (held == ItemType.RED_MUSHROOM_BLOCK) {
+            say(player, "<a>Sweet! <fJust what I need!", "<c>EXCEPT<f>... Could you enchant it?",
                     "I need the perfect stew for my beloved <e>Juliette<f>.");
-            case BROWN_MUSHROOM_BLOCK -> say(player, "That's a big mushroom that I don't need.",
+        } else if (held == ItemType.BROWN_MUSHROOM_BLOCK) {
+            say(player, "That's a big mushroom that I don't need.",
                     "It's well known that good stews aren't made from brown mushrooms.");
-            case ENCHANTED_BROWN_MUSHROOM_BLOCK -> say(player, "I need <c>red mushrooms<f>.");
-            default -> say(player, "Hey, you again!", "I wanted mushrooms to concoct a stew,",
+        } else if (held == ItemType.ENCHANTED_BROWN_MUSHROOM_BLOCK) {
+            say(player, "I need <c>red mushrooms<f>.");
+        } else {
+            say(player, "Hey, you again!", "I wanted mushrooms to concoct a stew,",
                     "but these <c>big red <fones won't cut it.", "I need some decent mushrooms.");
         }
     }

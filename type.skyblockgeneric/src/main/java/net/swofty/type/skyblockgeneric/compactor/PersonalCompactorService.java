@@ -89,17 +89,13 @@ public final class PersonalCompactorService {
         }
     }
 
+    private static final Map<ItemType, Integer> TIERS = Map.of(
+            ItemType.PERSONAL_COMPACTOR_4000, 1, ItemType.PERSONAL_COMPACTOR_5000, 2, ItemType.PERSONAL_COMPACTOR_6000, 3, ItemType.PERSONAL_COMPACTOR_7000, 4);
+
     private static int getEquippedTier(SkyBlockPlayer player) {
         for (SkyBlockItem accessory : AccessoryOwnership.activeItems(player)) {
-            ItemType type = accessory.getAttributeHandler().getPotentialType();
-            if (type == null) continue;
-            switch (type) {
-                case PERSONAL_COMPACTOR_4000 -> { return 1; }
-                case PERSONAL_COMPACTOR_5000 -> { return 2; }
-                case PERSONAL_COMPACTOR_6000 -> { return 3; }
-                case PERSONAL_COMPACTOR_7000 -> { return 4; }
-                default -> {}
-            }
+            Integer tier = TIERS.get(accessory.getAttributeHandler().getPotentialType());
+            if (tier != null) return tier;
         }
         return 0;
     }

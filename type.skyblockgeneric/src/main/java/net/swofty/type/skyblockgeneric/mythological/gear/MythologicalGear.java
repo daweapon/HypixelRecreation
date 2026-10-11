@@ -80,16 +80,16 @@ public final class MythologicalGear {
     }
 
     private static ItemStatistics petCopy(ItemType type, @Nullable SkyBlockItem pet, SkyBlockPlayer wearer) {
-        return switch (type) {
-            case MANTICORE_CLAW -> pet == null ? ItemStatistics.empty()
+        if (type == ItemType.MANTICORE_CLAW) {
+            return pet == null ? ItemStatistics.empty()
                     : PetItems.combatStatistics(PetItems.statistics(pet), MANTICORE_CLAW_COPY);
-            case DAEDALUS_AXE -> {
-                ItemStatistics taming = ItemStatistics.builder().withBase(ItemStatistic.DAMAGE,
-                        DAEDALUS_DAMAGE_PER_TAMING_LEVEL * wearer.getSkills().getCurrentLevel(SkillCategories.TAMING)).build();
-                yield pet == null ? taming : ItemStatistics.add(taming, PetItems.combatStatistics(PetItems.statistics(pet), 1));
-            }
-            default -> ItemStatistics.empty();
-        };
+        }
+        if (type == ItemType.DAEDALUS_AXE) {
+            ItemStatistics taming = ItemStatistics.builder().withBase(ItemStatistic.DAMAGE,
+                    DAEDALUS_DAMAGE_PER_TAMING_LEVEL * wearer.getSkills().getCurrentLevel(SkillCategories.TAMING)).build();
+            return pet == null ? taming : ItemStatistics.add(taming, PetItems.combatStatistics(PetItems.statistics(pet), 1));
+        }
+        return ItemStatistics.empty();
     }
 
     public static ItemStatistics against(SkyBlockPlayer player, @Nullable LivingEntity enemy) {

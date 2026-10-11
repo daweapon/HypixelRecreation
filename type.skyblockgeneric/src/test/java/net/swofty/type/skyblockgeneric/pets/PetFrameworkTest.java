@@ -146,7 +146,7 @@ class PetFrameworkTest {
 
     @Test
     void maxPetsCoversEveryPetAndIsIdempotent() {
-        Set<String> candidates = new TreeSet<>(MaxPets.petTypes().stream().map(Enum::name).toList());
+        Set<String> candidates = new TreeSet<>(MaxPets.petTypes().stream().map(ItemType::name).toList());
         assertEquals(YAML_PETS, candidates);
 
         DatapointPetData.UserPetData data = new DatapointPetData.UserPetData(new HashMap<>());

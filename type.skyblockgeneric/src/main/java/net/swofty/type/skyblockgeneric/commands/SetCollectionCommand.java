@@ -1,6 +1,5 @@
 package net.swofty.type.skyblockgeneric.commands;
 
-import net.minestom.server.command.builder.arguments.ArgumentEnum;
 import net.minestom.server.command.builder.arguments.ArgumentType;
 import net.minestom.server.command.builder.arguments.minecraft.ArgumentEntity;
 import net.minestom.server.command.builder.arguments.number.ArgumentInteger;
@@ -21,7 +20,7 @@ import net.swofty.type.generic.user.categories.Rank;
 public class SetCollectionCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {
-        ArgumentEnum<ItemType> itemType = new ArgumentEnum("item_type", ItemType.class);
+        ArgumentItemType itemType = new ArgumentItemType("item_type");
         ArgumentInteger amountArgument = new ArgumentInteger("amount");
         ArgumentEntity targetArgument = ArgumentType.Entity("player").onlyPlayers(true).singleEntity(true);
 

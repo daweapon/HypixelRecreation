@@ -1,6 +1,5 @@
 package net.swofty.type.skyblockgeneric.commands;
 
-import net.minestom.server.command.builder.arguments.ArgumentEnum;
 import net.minestom.server.command.builder.arguments.ArgumentType;
 import net.minestom.server.command.builder.arguments.minecraft.ArgumentEntity;
 import net.minestom.server.command.builder.arguments.number.ArgumentInteger;
@@ -21,7 +20,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 public class AddToStashCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {
-        ArgumentEnum<ItemType> itemArgument = ArgumentType.Enum("item", ItemType.class);
+        ArgumentItemType itemArgument = new ArgumentItemType("item");
         ArgumentInteger amountArgument = ArgumentType.Integer("amount");
         ArgumentEntity targetArgument = ArgumentType.Entity("player").onlyPlayers(true).singleEntity(true);
 

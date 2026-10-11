@@ -23,7 +23,7 @@ public class DatapointAccessoryBag extends SkyBlockDatapoint<DatapointAccessoryB
         @Override
         public String serialize(DatapointAccessoryBag.PlayerAccessoryBag value) {
             JSONObject json = new JSONObject();
-            json.put("discoveredAccessories", new JSONArray(value.getDiscoveredAccessories().stream().map(Enum::name).toList()));
+            json.put("discoveredAccessories", new JSONArray(value.getDiscoveredAccessories().stream().map(ItemType::name).toList()));
 
             for (Map.Entry<Integer, SkyBlockItem> entry : value.getAccessoryMap().entrySet()) {
                 json.put(String.valueOf(entry.getKey()), entry.getValue().toUnderstandable().serialize());

@@ -13,7 +13,6 @@ gson = "2.14.0"
 guava = "33.6.0-jre"
 jackson-annotations = "2.22"
 jackson-bom = "3.2.1"
-javapoet = "0.18.0"
 jedis = "8.0.0"
 joml = "1.10.9"
 json = "20260814"
@@ -76,7 +75,6 @@ jackson-bom = { module = "tools.jackson:jackson-bom", version.ref = "jackson-bom
 jackson-core = { module = "tools.jackson.core:jackson-core" }
 jackson-databind = { module = "tools.jackson.core:jackson-databind" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobuf" }
-javapoet = { module = "com.palantir.javapoet:javapoet", version.ref = "javapoet" }
 jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
 swofty-datahandler = { module = "net.swofty:SwoftyDataHandler", version.ref = "swoftyDataHandler" }
 json = { module = "org.json:json", version.ref = "json" }

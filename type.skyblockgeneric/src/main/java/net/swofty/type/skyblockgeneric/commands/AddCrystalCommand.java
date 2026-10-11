@@ -1,6 +1,5 @@
 package net.swofty.type.skyblockgeneric.commands;
 
-import net.minestom.server.command.builder.arguments.ArgumentEnum;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
@@ -20,7 +19,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 public class AddCrystalCommand extends HypixelCommand {
     @Override
     public void registerUsage(MinestomCommand command) {
-        ArgumentEnum<ItemType> itemType = new ArgumentEnum<>("itemType", ItemType.class);
+        ArgumentItemType itemType = new ArgumentItemType("itemType");
 
         command.addSyntax((sender, context) -> {
             if (!permissionCheck(sender)) return;

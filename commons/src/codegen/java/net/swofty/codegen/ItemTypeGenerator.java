@@ -1,14 +1,7 @@
 package net.swofty.codegen;
 
-import com.palantir.javapoet.ArrayTypeName;
-import com.palantir.javapoet.ClassName;
-import com.palantir.javapoet.FieldSpec;
-import com.palantir.javapoet.JavaFile;
-import com.palantir.javapoet.MethodSpec;
-import com.palantir.javapoet.TypeSpec;
 import org.yaml.snakeyaml.Yaml;
 
-import javax.lang.model.element.Modifier;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,6 +16,10 @@ import java.util.stream.Stream;
 public class ItemTypeGenerator {
     private static final String ALPHABET =
             "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+,-./:;<=>?@[]^_{|}~";
+    private static final String PACKAGE = "net.swofty.commons.skyblock.item";
+    private static final String CONSTANTS_PREFIX = "ItemTypeConstants";
+    private static final int CHUNK_SIZE = 1000;
+    private static final String HEADER = "// AUTO-GENERATED FILE. DO NOT EDIT.\npackage " + PACKAGE + ";\n\n";
     static void main(String[] args) throws Exception {
         if (args.length < 2) {
             throw new IllegalArgumentException("Expected args: <inputDir> <outputDir>");
@@ -40,7 +37,7 @@ public class ItemTypeGenerator {
             }
         }
 
-        generateEnum(items.values(), outputDir);
+        generateItemTypes(items.values(), outputDir);
     }
 
     static List<Path> findYamlFiles(Path root) throws IOException {
@@ -76,136 +73,166 @@ public class ItemTypeGenerator {
         return result;
     }
 
-    static void generateEnum(
+    static void generateItemTypes(
             Collection<ItemYaml> items,
             Path outputDir
     ) throws IOException {
+        Path packageDir = outputDir.resolve(PACKAGE.replace('.', '/'));
+        Files.createDirectories(packageDir);
+        try (Stream<Path> stale = Files.list(packageDir)) {
+            for (Path file : stale.filter(f -> f.getFileName().toString().startsWith(CONSTANTS_PREFIX)).toList()) {
+                Files.delete(file);
+            }
+        }
 
-        ClassName material = ClassName.get("net.minestom.server.item", "Material");
-        ClassName rarity = ClassName.get("net.swofty.commons.skyblock.item", "Rarity");
-        ClassName nullable = ClassName.get("org.jetbrains.annotations", "Nullable");
-
-        TypeSpec.Builder enumBuilder = TypeSpec.enumBuilder("ItemType")
-                .addModifiers(Modifier.PUBLIC);
-
+        List<String> names = new ArrayList<>();
         List<String> materials = new ArrayList<>();
         List<String> rarities = new ArrayList<>();
         StringBuilder table = new StringBuilder();
         for (ItemYaml item : items) {
-            enumBuilder.addEnumConstant(toEnumConstantName(item.id()));
+            names.add(toEnumConstantName(item.id()));
             int materialIndex = indexOf(materials, item.material().toUpperCase(Locale.ROOT));
             table.append(ALPHABET.charAt(materialIndex / ALPHABET.length()))
                     .append(ALPHABET.charAt(materialIndex % ALPHABET.length()))
                     .append(ALPHABET.charAt(indexOf(rarities, resolveRarity(item))));
         }
 
-        enumBuilder.addField(material, "material",
-                Modifier.PUBLIC, Modifier.FINAL);
-        enumBuilder.addField(rarity, "rarity",
-                Modifier.PUBLIC, Modifier.FINAL);
+        int chunks = (names.size() + CHUNK_SIZE - 1) / CHUNK_SIZE;
+        for (int chunk = 0; chunk < chunks; chunk++) {
+            StringBuilder body = new StringBuilder();
+            for (int ordinal = chunk * CHUNK_SIZE; ordinal < Math.min(names.size(), (chunk + 1) * CHUNK_SIZE); ordinal++) {
+                body.append("    ItemType ").append(names.get(ordinal)).append(" = new ItemType(\"")
+                        .append(names.get(ordinal)).append("\", ").append(ordinal).append(");\n");
+            }
+            Files.writeString(packageDir.resolve(CONSTANTS_PREFIX + chunk + ".java"), HEADER
+                    + "public interface " + CONSTANTS_PREFIX + chunk + " {\n" + body + "}\n");
+        }
 
-        // Constants take no arguments because every argument adds bytecode to the enum's static
-        // initializer, which the JVM caps at 64 KB. Each constant's material and rarity are three
-        // characters of TABLE: two for its index in MATERIALS, one for its index in RARITIES.
-        enumBuilder.addType(TypeSpec.classBuilder("Defaults")
-                .addModifiers(Modifier.PRIVATE, Modifier.STATIC, Modifier.FINAL)
-                .addField(FieldSpec.builder(ArrayTypeName.of(material), "MATERIALS", Modifier.STATIC, Modifier.FINAL)
-                        .initializer("{$L}", String.join(", ", materials.stream().map(m -> "Material." + m).toList()))
-                        .build())
-                .addField(FieldSpec.builder(ArrayTypeName.of(rarity), "RARITIES", Modifier.STATIC, Modifier.FINAL)
-                        .initializer("{$L}", String.join(", ", rarities.stream().map(r -> "Rarity." + r).toList()))
-                        .build())
-                .addField(FieldSpec.builder(String.class, "ALPHABET", Modifier.STATIC, Modifier.FINAL)
-                        .initializer("$S", ALPHABET)
-                        .build())
-                .addField(FieldSpec.builder(String.class, "TABLE", Modifier.STATIC, Modifier.FINAL)
-                        .initializer("$S", table.toString())
-                        .build())
-                .addMethod(MethodSpec.methodBuilder("index")
-                        .addModifiers(Modifier.STATIC)
-                        .returns(int.class)
-                        .addParameter(int.class, "at")
-                        .addStatement("return ALPHABET.indexOf(TABLE.charAt(at))")
-                        .build())
-                .build());
+        List<String> interfaces = new ArrayList<>();
+        StringBuilder loadAll = new StringBuilder();
+        for (int chunk = 0; chunk < chunks; chunk++) {
+            interfaces.add(CONSTANTS_PREFIX + chunk);
+            loadAll.append("        Objects.requireNonNull(").append(CONSTANTS_PREFIX).append(chunk).append('.')
+                    .append(names.get(chunk * CHUNK_SIZE)).append(");\n");
+        }
 
-        enumBuilder.addMethod(MethodSpec.constructorBuilder()
-                .addStatement("int at = 3 * ordinal()")
-                .addStatement("this.material = Defaults.MATERIALS[Defaults.index(at) * Defaults.ALPHABET.length() + Defaults.index(at + 1)]")
-                .addStatement("this.rarity = Defaults.RARITIES[Defaults.index(at + 2)]")
-                .build()
-        );
+        String source = HEADER + """
+                import java.util.HashMap;
+                import java.util.Map;
+                import java.util.Objects;
+                import net.minestom.server.item.Material;
+                import net.swofty.commons.StringUtility;
+                import org.jetbrains.annotations.Nullable;
 
-        // get(String)
-        enumBuilder.addMethod(MethodSpec.methodBuilder("get")
-                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                .addAnnotation(nullable)
-                .returns(ClassName.bestGuess("ItemType"))
-                .addParameter(String.class, "name")
-                .beginControlFlow("try")
-                .addStatement(
-                        "return ItemType.valueOf(name.replace($S, $S).toUpperCase())",
-                        "minecraft:", ""
-                )
-                .nextControlFlow("catch ($T e)", Exception.class)
-                .addStatement("return null")
-                .endControlFlow()
-                .build()
-        );
+                /**
+                 * Every SkyBlock item. This is a class, not an enum: an enum builds every constant in one static
+                 * initializer, which the JVM caps at 64 KB (about 4,000 constants). The constants are declared
+                 * %1$d per interface in %2$sN, each with its own initializer, and inherited from here, so
+                 * {@code ItemType.X}, {@code ==}, name(), ordinal(), values() and valueOf() behave as they did.
+                 */
+                public final class ItemType implements Comparable<ItemType>, %3$s {
+                    private static final ItemType[] VALUES = new ItemType[%4$d];
+                    private static volatile Map<String, ItemType> byName;
 
-        enumBuilder.addMethod(MethodSpec.methodBuilder("isVanillaReplaced")
-                .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                .returns(boolean.class)
-                .addParameter(String.class, "item")
-                .addStatement("return get(item) != null")
-                .build()
-        );
+                    public final Material material;
+                    public final Rarity rarity;
+                    private final String name;
+                    private final int ordinal;
 
-        enumBuilder.addMethod(
-                MethodSpec.methodBuilder("fromMaterial")
-                        .addModifiers(Modifier.PUBLIC, Modifier.STATIC)
-                        .addAnnotation(nullable)
-                        .returns(ClassName.bestGuess("ItemType"))
-                        .addParameter(material, "material")
-                        .addStatement(
-                                "String materialName = material.key().value()"
-                        )
-                        .addStatement(
-                                "String formattedItemName = $T.toNormalCase(materialName)",
-                                ClassName.get("net.swofty.commons", "StringUtility")
-                        )
-                        .beginControlFlow("for (ItemType itemType : ItemType.values())")
-                        .beginControlFlow(
-                                "if (itemType.material == material && formattedItemName.equals($T.toNormalCase(itemType.getDisplayName())))",
-                                ClassName.get("net.swofty.commons", "StringUtility")
-                        )
-                        .addStatement("return itemType")
-                        .endControlFlow()
-                        .endControlFlow()
-                        .addStatement("return null")
-                        .build()
-        );
+                    ItemType(String name, int ordinal) {
+                        this.name = name;
+                        this.ordinal = ordinal;
+                        int at = 3 * ordinal;
+                        this.material = Defaults.MATERIALS[Defaults.index(at) * Defaults.ALPHABET.length() + Defaults.index(at + 1)];
+                        this.rarity = Defaults.RARITIES[Defaults.index(at + 2)];
+                        VALUES[ordinal] = this;
+                    }
 
-        enumBuilder.addMethod(
-                MethodSpec.methodBuilder("getDisplayName")
-                        .addModifiers(Modifier.PUBLIC)
-                        .returns(String.class)
-                        .addStatement(
-                                "return $T.toNormalCase(this.name())",
-                                ClassName.get("net.swofty.commons", "StringUtility")
-                        )
-                        .build()
-        );
+                    public String name() {
+                        return name;
+                    }
 
-        Files.createDirectories(outputDir);
-        String source = JavaFile.builder("net.swofty.commons.skyblock.item", enumBuilder.build())
-                .addFileComment("AUTO-GENERATED FILE. DO NOT EDIT.")
-                .build()
-                .toString()
-                .replaceAll("(?m)^  ([A-Z0-9_]+)([,;])$", "  $1()$2");
-        Path file = outputDir.resolve("net/swofty/commons/skyblock/item/ItemType.java");
-        Files.createDirectories(file.getParent());
-        Files.writeString(file, source);
+                    public int ordinal() {
+                        return ordinal;
+                    }
+
+                    @Override
+                    public String toString() {
+                        return name;
+                    }
+
+                    @Override
+                    public int compareTo(ItemType other) {
+                        return Integer.compare(ordinal, other.ordinal);
+                    }
+
+                    public static ItemType[] values() {
+                        loadAll();
+                        return VALUES.clone();
+                    }
+
+                    public static ItemType valueOf(String name) {
+                        Objects.requireNonNull(name, "Name is null");
+                        ItemType type = byName().get(name);
+                        if (type == null) throw new IllegalArgumentException("No ItemType " + name);
+                        return type;
+                    }
+
+                    public static @Nullable ItemType get(String name) {
+                        if (name == null) return null;
+                        return byName().get(name.replace("minecraft:", "").toUpperCase());
+                    }
+
+                    public static boolean isVanillaReplaced(String item) {
+                        return get(item) != null;
+                    }
+
+                    public static @Nullable ItemType fromMaterial(Material material) {
+                        String formattedItemName = StringUtility.toNormalCase(material.key().value());
+                        for (ItemType itemType : values()) {
+                            if (itemType.material == material && formattedItemName.equals(StringUtility.toNormalCase(itemType.getDisplayName()))) {
+                                return itemType;
+                            }
+                        }
+                        return null;
+                    }
+
+                    public String getDisplayName() {
+                        return StringUtility.toNormalCase(name);
+                    }
+
+                    private static Map<String, ItemType> byName() {
+                        Map<String, ItemType> map = byName;
+                        if (map == null) {
+                            map = new HashMap<>();
+                            for (ItemType type : values()) map.put(type.name, type);
+                            byName = map;
+                        }
+                        return map;
+                    }
+
+                    private static void loadAll() {
+                %5$s    }
+
+                    // Each constant's material and rarity are three characters of TABLE: two for its index in
+                    // MATERIALS, one for its index in RARITIES.
+                    private static final class Defaults {
+                        static final Material[] MATERIALS = {%6$s};
+                        static final Rarity[] RARITIES = {%7$s};
+                        static final String ALPHABET = "%8$s";
+                        static final String TABLE = "%9$s";
+
+                        static int index(int at) {
+                            return ALPHABET.indexOf(TABLE.charAt(at));
+                        }
+                    }
+                }
+                """.formatted(CHUNK_SIZE, CONSTANTS_PREFIX, String.join(", ", interfaces), names.size(),
+                loadAll,
+                String.join(", ", materials.stream().map(m -> "Material." + m).toList()),
+                String.join(", ", rarities.stream().map(r -> "Rarity." + r).toList()),
+                ALPHABET, table);
+        Files.writeString(packageDir.resolve("ItemType.java"), source);
     }
 
     private static int indexOf(List<String> values, String value) {

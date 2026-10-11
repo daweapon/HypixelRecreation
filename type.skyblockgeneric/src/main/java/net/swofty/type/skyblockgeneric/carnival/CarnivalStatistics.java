@@ -58,17 +58,19 @@ public final class CarnivalStatistics {
     private static ItemStatistics mask(SkyBlockPlayer player) {
         ItemType helmet = helmetOf(player);
         if (helmet == null) return ItemStatistics.empty();
-        return switch (helmet) {
-            case SALMON_MASK -> inWater(player)
+        if (helmet == ItemType.SALMON_MASK) {
+            return inWater(player)
                     ? ItemStatistics.builder().withBase(ItemStatistic.SPEED, 10D).withBase(ItemStatistic.FISHING_SPEED, 10D).build()
                     : ItemStatistics.empty();
-            case ARMADILLO_MASK -> single(ItemStatistic.BLOCK_FORTUNE, 50);
-            case FROG_MASK -> inStickAroundRegion(player)
+        }
+        if (helmet == ItemType.ARMADILLO_MASK) return single(ItemStatistic.BLOCK_FORTUNE, 50);
+        if (helmet == ItemType.FROG_MASK) {
+            return inStickAroundRegion(player)
                     ? ItemStatistics.builder().withBase(ItemStatistic.FORAGING_FORTUNE, 20D).withBase(ItemStatistic.FORAGING_WISDOM, 5D).build()
                     : ItemStatistics.empty();
-            case BEE_MASK -> beePetBaseStatistics(player);
-            default -> ItemStatistics.empty();
-        };
+        }
+        if (helmet == ItemType.BEE_MASK) return beePetBaseStatistics(player);
+        return ItemStatistics.empty();
     }
 
     private static ItemStatistics partyFlock(SkyBlockPlayer player) {

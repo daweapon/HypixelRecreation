@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.user.island.IslandMembers;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 
 import java.util.Map;
+import java.util.Set;
 
 public final class SkyBlockItemAchievements {
     private static final Map<ItemType, String> CRAFTED = Map.ofEntries(
@@ -32,6 +33,8 @@ public final class SkyBlockItemAchievements {
             ItemType.SUPER_COMPACTOR_3000, "skyblock.time_to_go_on_vacation"
     );
 
+    private static final Set<ItemType> MIDAS_ITEMS = Set.of(
+            ItemType.MIDAS_SWORD, ItemType.MIDAS_STAFF, ItemType.STARRED_MIDAS_SWORD, ItemType.STARRED_MIDAS_STAFF);
     private static final int SYPHON_GOAL = 50;
     private static final int MASS_PRODUCTION_TIER = 11;
 
@@ -66,13 +69,12 @@ public final class SkyBlockItemAchievements {
     public static void onObtained(SkyBlockPlayer player, ItemType type) {
         if (type == null) return;
         PlayerAchievementHandler handler = player.getAchievementHandler();
-        switch (type) {
-            case MIDAS_SWORD, MIDAS_STAFF, STARRED_MIDAS_SWORD, STARRED_MIDAS_STAFF ->
-                    handler.completeAchievement("skyblock.united_in_blood");
-            case SEAL_OF_THE_FAMILY -> handler.completeAchievement("skyblock.lifelong_contract");
-            default -> {
-                if (type.name().startsWith("ABIPHONE_")) handler.completeAchievement("skyblock.ring_ring_who_s_this");
-            }
+        if (MIDAS_ITEMS.contains(type)) {
+            handler.completeAchievement("skyblock.united_in_blood");
+        } else if (type == ItemType.SEAL_OF_THE_FAMILY) {
+            handler.completeAchievement("skyblock.lifelong_contract");
+        } else if (type.name().startsWith("ABIPHONE_")) {
+            handler.completeAchievement("skyblock.ring_ring_who_s_this");
         }
     }
 

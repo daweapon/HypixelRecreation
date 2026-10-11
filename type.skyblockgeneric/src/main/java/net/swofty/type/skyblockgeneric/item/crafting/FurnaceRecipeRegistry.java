@@ -4,7 +4,7 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 
 import java.util.Collections;
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -14,7 +14,7 @@ import java.util.Optional;
  */
 public final class FurnaceRecipeRegistry {
     private static final int DEFAULT_COOK_TIME = 200;
-    private static final Map<ItemType, FurnaceRecipe> RECIPES = new EnumMap<>(ItemType.class);
+    private static final Map<ItemType, FurnaceRecipe> RECIPES = new HashMap<>();
 
     static {
         registerVanillaRecipes();
