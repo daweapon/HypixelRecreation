@@ -87,26 +87,26 @@ public class GUIHotm extends StatelessView {
         }
 
         Components.close(layout, 45);
-        layout.slot(47, ItemStacks.item(Material.CHEST, """
+        layout.slot(47, ItemStacks.item(Material.CHEST, HotmTooltips.wrap("""
                 <a>Heart of the Mountain Slot
                 <7>Quickly swap between saved trees.
 
                 <7>Current: <a>Heart of the Mountain 1
                 <c>Swapping trees has a 10m cooldown!
 
-                <8>Saved trees are not available yet."""));
+                <8>Saved trees are not available yet.""")));
         Components.back(layout, 48, ctx);
         layout.slot(49, (_, _) -> ItemStacks.item(Material.ENDER_EYE, HotmTooltips.heart(player)));
-        layout.slot(50, ItemStacks.item(Material.ORANGE_DYE, """
+        layout.slot(50, ItemStacks.item(Material.ORANGE_DYE, HotmTooltips.wrap("""
                 <d>Crystal Hollows Crystals
                 <7>Crystals are used to forge Gems into <d>Perfect<7> Gems. They can be found hidden within the <5>Crystal Hollows<7>.
 
-                <8>The Crystal Hollows is not available yet."""));
-        layout.slot(51, ItemStacks.item(Material.HEART_OF_THE_SEA, """
+                <8>The Crystal Hollows is not available yet.""")));
+        layout.slot(51, ItemStacks.item(Material.HEART_OF_THE_SEA, HotmTooltips.wrap("""
                 <d>Crystal Nucleus RNG Meter
                 <7>Your <d>Crystal Nucleus RNG Meter<7> fills with <9>1,000 Nucleus XP<7> every time you complete the <5>Crystal Nucleus<7>!
 
-                <8>The Crystal Hollows is not available yet."""));
+                <8>The Crystal Hollows is not available yet.""")));
         layout.slot(52, (_, _) -> ItemStacks.item(Material.CAULDRON, HotmTooltips.reset(player)), (_, c) -> c.push(new GUIHotmReset()));
     }
 
@@ -139,7 +139,7 @@ public class GUIHotm extends StatelessView {
 
     private static ItemStack.Builder tierLabel(SkyBlockPlayer player, int tier) {
         boolean reached = HotmService.data(player).getTier() >= tier;
-        return ItemStacks.item(reached ? Material.GREEN_STAINED_GLASS_PANE : Material.GRAY_STAINED_GLASS_PANE, HotmTooltips.tier(player, tier)).amount(tier);
+        return ItemStacks.item(reached ? Material.LIME_STAINED_GLASS_PANE : Material.GRAY_STAINED_GLASS_PANE, HotmTooltips.tier(player, tier)).amount(tier);
     }
 
     private static ItemStack.Builder perkItem(SkyBlockPlayer player, HotmPerk perk) {

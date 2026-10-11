@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Locale;
 
 public final class HotmTooltips {
+    private static final int WRAP_WIDTH = 38;
+    private static final java.util.regex.Pattern TAG = java.util.regex.Pattern.compile("<[^>]*>");
     private static final String TOKEN = "<5>Token of the Mountain";
     private static final String PICKAXE_NOTE = "<7>Pickaxe Abilities apply to all of your Pickaxes. You can select a Pickaxe Ability from your Heart of the Mountain.\n\n<7>Upgrade your Pickaxe Abilities by unlocking <c>Core of the Mountain<7> in this menu!";
 
@@ -24,6 +26,10 @@ public final class HotmTooltips {
     }
 
     public static String perk(SkyBlockPlayer player, HotmPerk perk) {
+        return wrap(buildPerk(player, perk));
+    }
+
+    private static String buildPerk(SkyBlockPlayer player, HotmPerk perk) {
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
         int level = data.perkLevel(perk.id());
         boolean single = perk.maxLevel() == 1;
@@ -122,6 +128,10 @@ public final class HotmTooltips {
     }
 
     public static String tier(SkyBlockPlayer player, int tier) {
+        return wrap(buildTier(player, tier));
+    }
+
+    private static String buildTier(SkyBlockPlayer player, int tier) {
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
         HotmTierReward reward = HotmRegistry.get().tierReward(tier);
         boolean reached = data.getTier() >= tier;
@@ -144,6 +154,10 @@ public final class HotmTooltips {
     }
 
     public static String core(SkyBlockPlayer player) {
+        return wrap(buildCore(player));
+    }
+
+    private static String buildCore(SkyBlockPlayer player) {
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
         HotmRegistry registry = HotmRegistry.get();
         int owned = data.getCoreLevel();
@@ -170,6 +184,10 @@ public final class HotmTooltips {
     }
 
     public static String heart(SkyBlockPlayer player) {
+        return wrap(buildHeart(player));
+    }
+
+    private static String buildHeart(SkyBlockPlayer player) {
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
         StringBuilder text = new StringBuilder("<5>Heart of the Mountain\n<7>" + TOKEN + "<7>: <5>" + data.getAvailableTokens());
         text.append("\n\n<7>Unlock more ").append(TOKEN).append(" <7>by leveling up your Heart of the Mountain tiers.\n");
@@ -188,6 +206,10 @@ public final class HotmTooltips {
     }
 
     public static String reset(SkyBlockPlayer player) {
+        return wrap(buildReset(player));
+    }
+
+    private static String buildReset(SkyBlockPlayer player) {
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
         HotmRegistry registry = HotmRegistry.get();
         long[] refund = new long[HotmPowder.values().length];
@@ -203,6 +225,42 @@ public final class HotmTooltips {
         text.append("\n\n<7>You will <a>keep<7> any Tiers and <c>Core of the Mountain<7> that you have unlocked.");
         text.append("\n\n<c><b>WARNING: This is permanent. You can not go back after resetting your Heart of the Mountain!");
         return text.toString();
+    }
+
+    public static String wrap(String text) {
+        StringBuilder out = new StringBuilder();
+        String[] lines = text.split("\n", -1);
+        for (int i = 0; i < lines.length; i++) {
+            if (i > 0) out.append('\n');
+            out.append(wrapLine(lines[i]));
+        }
+        return out.toString();
+    }
+
+    private static String wrapLine(String line) {
+        if (visibleLength(line) <= WRAP_WIDTH) return line;
+        StringBuilder out = new StringBuilder();
+        String colour = "";
+        int length = 0;
+        for (String word : line.split(" ")) {
+            int wordLength = visibleLength(word);
+            if (length > 0 && length + 1 + wordLength > WRAP_WIDTH) {
+                out.append('\n').append(colour);
+                length = 0;
+            } else if (length > 0) {
+                out.append(' ');
+                length++;
+            }
+            out.append(word);
+            length += wordLength;
+            java.util.regex.Matcher matcher = TAG.matcher(word);
+            while (matcher.find()) colour = matcher.group();
+        }
+        return out.toString();
+    }
+
+    private static int visibleLength(String text) {
+        return TAG.matcher(text).replaceAll("").length();
     }
 
     public static String format(double value) {
