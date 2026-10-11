@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "dwarven-village"
+    name: "The Dwarven Village Update"
+    date: "10th October 2026"
+    material: lantern
+    title: "The Dwarven Village Update"
+    book: "dwarven_village_update.yml"
   - version: "forge"
     name: "The Forge Update"
     date: "10th October 2026"

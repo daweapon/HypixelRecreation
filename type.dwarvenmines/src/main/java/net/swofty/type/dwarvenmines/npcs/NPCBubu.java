@@ -1,6 +1,8 @@
 package net.swofty.type.dwarvenmines.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
+import net.swofty.type.dwarvenmines.gui.GUIShopBubu;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
@@ -41,6 +43,19 @@ public class NPCBubu extends HypixelNPC {
 	@Override
 	public void onClick(NPCInteractEvent event) {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
-		player.notImplemented();
+		if (isInDialogue(player)) return;
+		if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_BUBU)) {
+			setDialogue(player, "hello").thenRun(() -> player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_BUBU, true));
+			return;
+		}
+		player.openView(new GUIShopBubu());
+	}
+
+	@Override
+	public DialogueSet[] dialogues(HypixelPlayer player) {
+		return new DialogueSet[]{DialogueSet.builder().key("hello").lines(
+				"You'll be needing some stronger pickaxes to mine down here!",
+				"Conveniently for you, I've got just what you need!"
+		).build()};
 	}
 }

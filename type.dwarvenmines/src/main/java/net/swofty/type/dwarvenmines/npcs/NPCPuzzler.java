@@ -1,6 +1,7 @@
 package net.swofty.type.dwarvenmines.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.dwarvenmines.puzzler.PuzzlerService;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
@@ -8,6 +9,8 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCPuzzler extends HypixelNPC {
+
+	private static final Pos POSITION = new Pos(181.5, 196, 135.5, 0, 0);
 
 	public NPCPuzzler() {
 		super(new HumanConfiguration() {
@@ -28,7 +31,7 @@ public class NPCPuzzler extends HypixelNPC {
 
 			@Override
 			public Pos position(HypixelPlayer player) {
-				return new Pos(181.5, 196, 135.5, 0, 0);
+				return POSITION;
 			}
 
 			@Override
@@ -41,7 +44,21 @@ public class NPCPuzzler extends HypixelNPC {
 	@Override
 	public void onClick(NPCInteractEvent event) {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
-		player.notImplemented();
+		if (PuzzlerService.millisUntilReady(player) > 0) {
+			say(player, "<f>▶▲Come▲ ◀back◀ ▼▶tomorrow▶▶");
+			return;
+		}
+		PuzzlerService.Puzzle puzzle = PuzzlerService.generate(player, POSITION);
+		if (puzzle == null) {
+			say(player, "<f>╳ (╯°□°）╯︵ ┻━┻");
+			return;
+		}
+		say(player, "<f>" + puzzle.arrows());
+		player.sendMessage("<7>Start on the <e>Glowstone <7>block and face the room's entrance. Each arrow is one block. Mine the block you end on.");
+	}
+
+	public static void say(SkyBlockPlayer player, String text) {
+		player.sendMessage(net.swofty.commons.text.Text.of("<e>[NPC] <d>Puzzler<f>: ").append(net.swofty.commons.text.Text.read(text)));
 	}
 
 }

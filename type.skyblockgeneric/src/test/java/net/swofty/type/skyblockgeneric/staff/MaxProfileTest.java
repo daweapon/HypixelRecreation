@@ -283,6 +283,21 @@ class MaxProfileTest {
     }
 
     @Test
+    void bubusPickaxesExistAndPuzzlerCooldownPersists() {
+        for (String id : List.of("FRACTURED_MITHRIL_PICKAXE", "BANDAGED_MITHRIL_PICKAXE", "MITHRIL_PICKAXE", "REFINED_MITHRIL_PICKAXE",
+                "RUSTY_TITANIUM_PICKAXE", "TITANIUM_PICKAXE", "REFINED_TITANIUM_PICKAXE")) {
+            assertTrue(ItemType.get(id) != null, id);
+            assertTrue(new SkyBlockItem(ItemType.get(id)).getDisplayName().length() > 0, id);
+        }
+        var data = new net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM.PlayerHOTMData();
+        data.setPuzzlerReadyAt(123_456L);
+        var datapoint = new net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM("hotm", data);
+        var copy = new net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM("hotm");
+        copy.deserializeValue(datapoint.getSerializedValue());
+        assertEquals(123_456L, copy.getValue().getPuzzlerReadyAt());
+    }
+
+    @Test
     void buyingAPerkSpendsTokensAndPowderAndResetRefundsThem() {
         SkyBlockPlayer player = player();
         var data = net.swofty.type.skyblockgeneric.hotm.HotmService.data(player);

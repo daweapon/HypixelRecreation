@@ -1,0 +1,22 @@
+title: "The Dwarven Village Update"
+date: "10th October 2026"
+intro:
+  - "The four quiet NPCs of the Dwarven Village now do something."
+sections:
+  - heading: "Bubu"
+    colour: "<9>"
+    lines:
+      - "Bubu sells the early mining pickaxes: Fractured, Bandaged, Refined and plain Mithril Pickaxes, and Rusty, Titanium and Polished Titanium Pickaxes. Each one upgrades the one before it. He also sells Biofuel."
+  - heading: "Bulvar"
+    colour: "<5>"
+    lines:
+      - "Bulvar sells Tier XII minions for Cobblestone, Obsidian, Coal, Iron, Gold, Diamond, Lapis, Emerald, Redstone, Mithril and Hard Stone. Each costs the Tier XI minion, a stack of materials and 2,000,000 coins."
+  - heading: "The Puzzler"
+    colour: "<d>"
+    lines:
+      - "Click the Puzzler in the room next to the Grand Library. He gives you a line of arrows. Start on the Glowstone block, follow the arrows one block each, and mine the block you end on."
+      - "Solve it for 2,500 Mithril Powder. You can solve one puzzle every 24 hours, counted from when you finish."
+  - heading: "The Lift Operator"
+    colour: "<a>"
+    lines:
+      - "The Lift Operator in the Dwarven Village takes you down to the Deep Caverns, as long as you have discovered the layer."

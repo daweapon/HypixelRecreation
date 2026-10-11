@@ -29,6 +29,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			json.put("skyMallBuff", value.skyMallBuff == null ? "" : value.skyMallBuff);
 			json.put("dailyPowderDay", value.dailyPowderDay);
 			json.put("dailyCommissionDay", value.dailyCommissionDay);
+			json.put("puzzlerReadyAt", value.puzzlerReadyAt);
 			json.put("perkLevels", new JSONObject(value.perkLevels));
 			json.put("disabledPerks", new org.json.JSONArray(value.disabledPerks));
 			json.put("abilityReadyAt", new JSONObject(value.abilityReadyAt));
@@ -61,6 +62,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 				data.skyMallBuff = obj.optString("skyMallBuff", "").isEmpty() ? null : obj.getString("skyMallBuff");
 				data.dailyPowderDay = obj.optLong("dailyPowderDay", -1L);
 				data.dailyCommissionDay = obj.optLong("dailyCommissionDay", -1L);
+				data.puzzlerReadyAt = obj.optLong("puzzlerReadyAt", 0L);
 				JSONObject perks = obj.optJSONObject("perkLevels");
 				if (perks != null) perks.keySet().forEach(key -> data.perkLevels.put(key, perks.getInt(key)));
 				org.json.JSONArray disabled = obj.optJSONArray("disabledPerks");
@@ -95,6 +97,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			cloned.skyMallBuff = value.skyMallBuff;
 			cloned.dailyPowderDay = value.dailyPowderDay;
 			cloned.dailyCommissionDay = value.dailyCommissionDay;
+			cloned.puzzlerReadyAt = value.puzzlerReadyAt;
 			cloned.perkLevels.putAll(value.perkLevels);
 			cloned.disabledPerks.addAll(value.disabledPerks);
 			cloned.abilityReadyAt.putAll(value.abilityReadyAt);
@@ -135,6 +138,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 		private String skyMallBuff;
 		private long dailyPowderDay = -1L;
 		private long dailyCommissionDay = -1L;
+		private long puzzlerReadyAt;
 		private final Map<String, Integer> perkLevels = new LinkedHashMap<>();
 		private final java.util.Set<String> disabledPerks = new java.util.LinkedHashSet<>();
 		private final Map<String, Long> abilityReadyAt = new LinkedHashMap<>();

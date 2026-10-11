@@ -1,6 +1,8 @@
 package net.swofty.type.dwarvenmines.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.generic.data.datapoints.DatapointToggles;
+import net.swofty.type.dwarvenmines.gui.GUILiftOperator;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
@@ -41,6 +43,22 @@ public class NPCLiftOperator extends HypixelNPC {
 	@Override
 	public void onClick(NPCInteractEvent event) {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
-        player.notImplemented();
+		if (isInDialogue(player)) return;
+		if (!player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_LIFT_OPERATOR)) {
+			setDialogue(player, "hello").thenRun(() -> player.getToggles().set(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_LIFT_OPERATOR, true));
+			return;
+		}
+		player.openView(new GUILiftOperator());
+	}
+
+	@Override
+	public DialogueSet[] dialogues(HypixelPlayer player) {
+		return new DialogueSet[]{DialogueSet.builder().key("hello").lines(
+				"Hey Feller!",
+				"I control this lift here behind me.",
+				"Once you've explored an area I can give you a safe ride back there.",
+				"Be careful not to fall down the shaft though, it's a long fall!",
+				"Good luck on your adventures."
+		).build()};
 	}
 }

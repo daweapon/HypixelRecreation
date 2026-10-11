@@ -1,6 +1,7 @@
 package net.swofty.type.dwarvenmines.npcs;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.type.dwarvenmines.gui.GUIShopBulvar;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
@@ -40,7 +41,6 @@ public class NPCBulvar extends HypixelNPC {
 
 	@Override
 	public void onClick(NPCInteractEvent event) {
-		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
-		player.notImplemented();
+		((SkyBlockPlayer) event.player()).openView(new GUIShopBulvar());
 	}
 }
