@@ -139,7 +139,7 @@ public class GUIHotm extends StatelessView {
 
     private static ItemStack.Builder tierLabel(SkyBlockPlayer player, int tier) {
         boolean reached = HotmService.data(player).getTier() >= tier;
-        return ItemStacks.item(reached ? Material.LIME_BANNER : Material.RED_BANNER, HotmTooltips.tier(player, tier)).amount(tier);
+        return ItemStacks.item(reached ? Material.GREEN_STAINED_GLASS_PANE : Material.GRAY_STAINED_GLASS_PANE, HotmTooltips.tier(player, tier)).amount(tier);
     }
 
     private static ItemStack.Builder perkItem(SkyBlockPlayer player, HotmPerk perk) {
