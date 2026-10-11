@@ -251,7 +251,7 @@ class MaxProfileTest {
         assertEquals(20D, net.swofty.type.skyblockgeneric.forge.ForgeService.reductionPercent(player), 0.0001);
         assertEquals(17_280_000L, net.swofty.type.skyblockgeneric.forge.ForgeService.durationMillis(player, refinedMithril));
         assertEquals(7, net.swofty.type.skyblockgeneric.forge.ForgeService.slots(player));
-        assertTrue(net.swofty.type.skyblockgeneric.forge.ForgeService.start(player, refinedMithril) != null);
+        assertTrue(net.swofty.type.skyblockgeneric.forge.ForgeService.start(player, refinedMithril, 1) != null);
 
         var data = net.swofty.type.skyblockgeneric.hotm.HotmService.data(player);
         data.getForgeProcesses().add(new net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM.ForgeProcess(1, "REFINED_MITHRIL", System.currentTimeMillis() + 60_000));
@@ -264,11 +264,12 @@ class MaxProfileTest {
         ViewContext context = new ViewContext(player, null, null);
         var views = new java.util.ArrayList<net.swofty.type.generic.gui.v2.StatelessView>();
         views.add(new net.swofty.type.skyblockgeneric.gui.inventories.forge.GUIForge());
+        views.add(new net.swofty.type.skyblockgeneric.gui.inventories.forge.GUIForgeProcess(1));
         for (var category : net.swofty.type.skyblockgeneric.forge.ForgeCategory.values()) {
-            views.add(new net.swofty.type.skyblockgeneric.gui.inventories.forge.GUIForgeRecipes(category, 0));
-            views.add(new net.swofty.type.skyblockgeneric.gui.inventories.forge.GUIForgeRecipes(category, 1));
+            views.add(new net.swofty.type.skyblockgeneric.gui.inventories.forge.GUIForgeRecipes(category, 0, 1));
+            views.add(new net.swofty.type.skyblockgeneric.gui.inventories.forge.GUIForgeRecipes(category, 1, 1));
         }
-        views.add(new net.swofty.type.skyblockgeneric.gui.inventories.forge.GUIForgeConfirm(refinedMithril));
+        views.add(new net.swofty.type.skyblockgeneric.gui.inventories.forge.GUIForgeConfirm(refinedMithril, 1));
         for (int pass = 0; pass < 2; pass++) {
             for (var view : views) {
                 ViewLayout<net.swofty.type.generic.gui.v2.DefaultState> layout = new ViewLayout<>(view.configuration().getInventoryType());

@@ -49,22 +49,17 @@ public final class ForgeTooltips {
         return output == null ? "<7>" + recipe.name() : colorTag(output) + new SkyBlockItem(output).getDisplayName();
     }
 
-    public static String ingredients(SkyBlockPlayer player, ForgeRecipe recipe) {
+    public static String ingredients(ForgeRecipe recipe) {
         StringBuilder out = new StringBuilder();
         for (Map.Entry<String, Integer> input : recipe.inputs().entrySet()) {
             ItemType type = ItemType.get(input.getKey());
-            if (type == null) {
-                out.append("<8>").append(input.getKey().toLowerCase(Locale.ROOT).replace('_', ' ')).append(" <8>x").append(input.getValue()).append('\n');
-                continue;
-            }
-            int have = player.getAmountInInventory(type) + player.getSackItems().getAmount(type);
-            out.append(colorTag(type)).append(new SkyBlockItem(type).getDisplayName()).append(" <8>x").append(input.getValue())
-                    .append(have >= input.getValue() ? " <a>✔" : " <c>✘").append('\n');
+            String name = type == null ? "<8>" + input.getKey().toLowerCase(Locale.ROOT).replace('_', ' ')
+                    : colorTag(type) + new SkyBlockItem(type).getDisplayName();
+            out.append(name);
+            if (input.getValue() > 1) out.append(" <7>x").append(input.getValue());
+            out.append('\n');
         }
-        if (recipe.coins() > 0) {
-            boolean enough = player.getCoins() >= recipe.coins();
-            out.append("<6>").append(NumberFormat.getIntegerInstance().format(recipe.coins())).append(" Coins").append(enough ? " <a>✔" : " <c>✘").append('\n');
-        }
+        if (recipe.coins() > 0) out.append("<6>").append(NumberFormat.getIntegerInstance().format(recipe.coins())).append(" Coins\n");
         return out.toString();
     }
 
@@ -76,12 +71,13 @@ public final class ForgeTooltips {
 
     public static ItemStack.Builder recipe(SkyBlockPlayer player, ForgeRecipe recipe, String footer) {
         long duration = ForgeService.durationMillis(player, recipe);
-        StringBuilder lore = new StringBuilder("\n<7>Duration: <a>").append(duration(duration)).append("\n\n<7>Requires:\n")
-                .append(ingredients(player, recipe));
-        if (recipe.hasRequirement()) lore.append("<7>Requires: <c>").append(recipe.requirement()).append('\n');
-        lore.append("<7>Heart of the Mountain: ").append(HotmService.data(player).getTier() >= recipe.hotm() ? "<a>" : "<c>")
-                .append("Tier ").append(recipe.hotm()).append('\n');
-        if (!recipe.available()) lore.append("\n<8>Not available on this server yet.");
+        StringBuilder lore = new StringBuilder("\n<e>Items Required\n").append(ingredients(recipe))
+                .append("\n<7>Duration: <b>").append(duration(duration));
+        if (HotmService.data(player).getTier() < recipe.hotm()) {
+            lore.append("\n\n<c>Requires Heart of the Mountain Tier ").append(recipe.hotm()).append('.');
+        }
+        if (recipe.hasRequirement()) lore.append("\n<c>Requires ").append(recipe.requirement()).append('.');
+        if (!recipe.available()) lore.append("\n\n<8>Not available on this server yet.");
         if (footer != null) lore.append("\n\n").append(footer);
         return ItemStacks.appendLore(icon(recipe), lore.toString());
     }

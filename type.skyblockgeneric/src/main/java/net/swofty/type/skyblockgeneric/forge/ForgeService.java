@@ -57,11 +57,17 @@ public final class ForgeService {
         return -1;
     }
 
-    public static String start(SkyBlockPlayer player, ForgeRecipe recipe) {
+    public static boolean canAfford(SkyBlockPlayer player, ForgeRecipe recipe) {
+        if (player.getCoins() < recipe.coins()) return false;
+        return recipe.inputTypes().entrySet().stream()
+                .allMatch(input -> player.getAmountInInventory(input.getKey()) + player.getSackItems().getAmount(input.getKey()) >= input.getValue());
+    }
+
+    public static String start(SkyBlockPlayer player, ForgeRecipe recipe, int slot) {
         String unavailable = reasonUnavailable(player, recipe);
         if (unavailable != null) return unavailable;
-        int slot = firstFreeSlot(player);
-        if (slot < 0) return "<c>All of your forge slots are in use!";
+        if (slot < 1 || slot > slots(player)) return "<c>That forge slot is locked.";
+        if (processIn(player, slot) != null) return "<c>That forge slot is already in use!";
         if (player.getCoins() < recipe.coins()) return "<c>You don't have enough coins to forge this!";
         if (!player.removeItemsFromPlayer(recipe.inputTypes())) return "<c>You don't have the ingredients to forge this!";
         if (recipe.coins() > 0) player.removeCoins(recipe.coins());
