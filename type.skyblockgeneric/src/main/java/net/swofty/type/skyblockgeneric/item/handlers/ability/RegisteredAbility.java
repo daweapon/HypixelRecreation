@@ -105,6 +105,10 @@ public class RegisteredAbility {
         public abstract @Nullable String getLoreDisplay();
     }
 
+    public static int effectiveManaCost(SkyBlockPlayer player, int baseCost) {
+        return (int) Math.round(baseCost * MiscPetHooks.manaCostMultiplier(player) * EnchantmentWise.costMultiplier(player));
+    }
+
     public static class AbilityManaCost extends AbilityCost {
         private final int cost;
 
@@ -119,20 +123,20 @@ public class RegisteredAbility {
 
         @Override
         public void onUse(@NonNull SkyBlockPlayer player, @NonNull RegisteredAbility ability) {
+            int spent = effectiveCost(player);
             SkyBlockActionBar.getFor(player).addReplacement(
                     SkyBlockActionBar.BarSection.MANA,
-                    Text.of("<b>-{} (<6>{}</6>)", cost, ability.getName()),
+                    Text.of("<b>-{} (<6>{}</6>)", spent, ability.getName()),
                     20,
                     2
             );
             if (CombatPetHooks.savesMana(player)) return;
-            int spent = effectiveCost(player);
             player.setMana(player.getMana() - spent);
             EnchantmentRefrigerate.onManaUsed(player, spent);
         }
 
         private int effectiveCost(SkyBlockPlayer player) {
-            return (int) Math.round(cost * MiscPetHooks.manaCostMultiplier(player) * EnchantmentWise.costMultiplier(player));
+            return effectiveManaCost(player, cost);
         }
 
         @Override
@@ -162,19 +166,20 @@ public class RegisteredAbility {
 
         @Override
         public boolean canUse(@NotNull SkyBlockPlayer player) {
-            return (player.getMana() >= cost) && (player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue() >= soulflow);
+            return (player.getMana() >= effectiveManaCost(player, cost)) && (player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue() >= soulflow);
         }
 
         @Override
         public void onUse(@NonNull SkyBlockPlayer player, @NonNull RegisteredAbility ability) {
+            int spent = effectiveManaCost(player, cost);
             SkyBlockActionBar.getFor(player).addReplacement(
                     SkyBlockActionBar.BarSection.MANA,
-                    Text.of("<b>-{} (<6>{}</6>)", cost, ability.getName()),
+                    Text.of("<b>-{} (<6>{}</6>)", spent, ability.getName()),
                     20,
                     2
             );
-            player.setMana(player.getMana() - cost);
-            EnchantmentRefrigerate.onManaUsed(player, cost);
+            player.setMana(player.getMana() - spent);
+            EnchantmentRefrigerate.onManaUsed(player, spent);
             player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).setValue(
                     player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue() - soulflow
             );
