@@ -355,7 +355,7 @@ items:
               - { per_level: 0.0015 }
           - name: "Long Neck"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Increases your melee damage by"
               - "<c>{0} <7>if you are more than 3 blocks"
@@ -444,7 +444,7 @@ items:
               - { per_level: { RARE: 0.3, EPIC: 0.55 } }
           - name: "Apex Predator"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Deal <c>+{0}% <7>damage against"
               - "<7>targets with no other mobs"
@@ -489,7 +489,7 @@ items:
               - { per_level: 0.15 }
           - name: "Looting"
             rarity: MYTHIC
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain <c>{0}% <7>more collection"
               - "<7>items from monsters!"

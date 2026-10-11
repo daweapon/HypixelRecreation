@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.crimson.quest.FactionQuestService;
 import net.swofty.type.skyblockgeneric.crimson.questline.CrimsonQuestlines;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrimsonIsle;
 import net.swofty.type.skyblockgeneric.essence.EssenceType;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.essence.Essences;
 import net.swofty.type.skyblockgeneric.event.custom.KuudraClearedEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -166,7 +167,7 @@ public final class KuudraProgress {
             if (type == ItemType.KUUDRA_PET) item.getAttributeHandler().setRarity(Rarity.COMMON);
             player.addAndUpdateItem(item);
         }
-        Essences.add(player, EssenceType.CRIMSON, tier.getEssence());
+        Essences.add(player, EssenceType.CRIMSON, CombatPetHooks.crimsonEssence(player, tier.getEssence()));
         player.addAndUpdateItem(ItemType.KUUDRA_TEETH, tier.getTeeth());
     }
 

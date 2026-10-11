@@ -29,14 +29,15 @@ items:
               - { per_level: { COMMON: 0.2, RARE: 0.25, EPIC: 0.3 } }
           - name: "Salt Blade"
             rarity: RARE
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Deal <a>{0}% <7>more damage to slimes"
             values:
               - { per_level: { RARE: 0.2, EPIC: 0.25 } }
           - name: "Hot Ember"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: HANDLER
+            handler: MAGMA_CUBE_HOT_EMBER
             text:
               - "<7>Buffs the stats of <5>Rekindled Ember"
               - "<5>Armor <7>by <a>{0}%."

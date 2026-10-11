@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentExperience;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -51,7 +52,8 @@ public class VanillaExperienceHandler implements HypixelEventClass {
         }
 
         xpOrbsDropped = Math.round((baseXpOrbs) * bestiaryBoost * experienceEnchBoost
-                * UtilityAccessories.experienceOrbMultiplier(player));
+                * UtilityAccessories.experienceOrbMultiplier(player)
+                * CombatPetHooks.experienceOrbMultiplier(player));
 
         player.addExperience(xpOrbsDropped);
     }

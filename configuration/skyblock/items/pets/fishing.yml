@@ -238,7 +238,7 @@ items:
           EPIC: { strength: { per_level: 0.5 }, ferocity: { base: 5, per_level: 0.05 }, magic_find: { per_level: 0.1 }, fishing_speed: { base: 10, per_level: 0.3 }, sea_creature_chance: { base: 5, per_level: 0.05 } }
         abilities:
           - name: "Blood Scent"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Deal up to <c>+{0}% <c><glyph:skill_sword> Damage <7>based on"
               - "<7>the enemy's missing health."

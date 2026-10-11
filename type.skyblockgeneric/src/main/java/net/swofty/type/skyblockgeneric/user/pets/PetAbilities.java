@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.user.pets;
 import net.minestom.server.entity.Player;
 import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.ConfiguredPetAbility;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -18,6 +19,11 @@ public final class PetAbilities {
 
     public static boolean has(SkyBlockPlayer player, ItemType pet, String ability) {
         return find(player, pet, ability) != null;
+    }
+
+    public static boolean hasAtLeast(SkyBlockPlayer player, ItemType pet, String ability, Rarity rarity) {
+        DatapointPetData.ActiveAbility active = find(player, pet, ability);
+        return active != null && active.pet().getAttributeHandler().getRarity().isAtLeast(rarity);
     }
 
     public static double value(SkyBlockPlayer player, ItemType pet, String ability, int index) {

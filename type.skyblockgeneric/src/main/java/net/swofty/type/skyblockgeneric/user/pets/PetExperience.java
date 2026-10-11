@@ -28,7 +28,6 @@ public final class PetExperience {
     private static final double FISHING_MULTIPLIER = 1.5;
     private static final double TAMING_MULTIPLIER_PER_LEVEL = 0.01;
     private static final double TAMING_SHARE_PER_LEVEL = 0.002;
-    private static final double WINTER_SPRINT_MULTIPLIER = 2;
 
     private PetExperience() {
     }
@@ -37,7 +36,7 @@ public final class PetExperience {
         return baseRate(pet.getComponent(PetComponent.class), skill, skillXP)
                 * (1 + tamingLevel(player) * TAMING_MULTIPLIER_PER_LEVEL)
                 * PetItems.expMultiplier(pet, skill)
-                * (ReindeerPet.isReindeer(pet) ? WINTER_SPRINT_MULTIPLIER : 1)
+                * ReindeerPet.winterSprintMultiplier(pet)
                 * ElectionPerks.multiplier(SkyBlockMayor.Perk.PET_XP_BUFF);
     }
 

@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.item.ItemLore;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ArmorComponent;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.loottable.LootAffector;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -49,7 +50,7 @@ public final class CrimsonMobLoot {
         List<Won> won = new ArrayList<>();
         for (MobDrop drop : drops) {
             ItemType type = rollOne(player, mob, drop);
-            if (type != null) won.add(new Won(drop, create(type, drop)));
+            if (type != null) won.add(new Won(drop, create(player, type, drop)));
         }
         return won;
     }
@@ -76,11 +77,12 @@ public final class CrimsonMobLoot {
         double adjusted = LootAffector.MAGIC_FIND.getAffector().apply(player, chance, mob);
         LootAffector enchant = new SkyBlockItem(type).hasComponent(ArmorComponent.class)
                 ? LootAffector.ENCHANTMENT_LUCK : LootAffector.ENCHANTMENT_LOOTING;
-        return enchant.getAffector().apply(player, adjusted, mob);
+        double enchanted = enchant.getAffector().apply(player, adjusted, mob);
+        return new SkyBlockItem(type).hasComponent(ArmorComponent.class) ? CombatPetHooks.armorDropChance(player, enchanted) : enchanted;
     }
 
-    private static SkyBlockItem create(ItemType type, MobDrop drop) {
-        SkyBlockItem item = new SkyBlockItem(type, drop.rollAmount());
+    private static SkyBlockItem create(SkyBlockPlayer player, ItemType type, MobDrop drop) {
+        SkyBlockItem item = new SkyBlockItem(type, CombatPetHooks.collectionDropAmount(player, type, drop.rollAmount()));
         if (drop.rarity() != null) item.getAttributeHandler().setRarity(drop.rarity());
         EnchantmentType enchantment = drop.enchantmentType();
         if (enchantment != null) {

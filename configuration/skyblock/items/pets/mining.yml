@@ -145,7 +145,7 @@ items:
               - { per_level: { RARE: 0.4, EPIC: 0.5 } }
           - name: "Wings of Steel"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Deals <a>+{0}% <7>damage to <6>Spooky"
               - "<7>enemies during the <6>Spooky Festival<7>."
@@ -684,7 +684,7 @@ items:
               - { per_level: { COMMON: 0.1, UNCOMMON: 0.2, EPIC: 0.3 } }
           - name: "Wither Blood"
             rarity: EPIC
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Deal <a>{0}% <7>more damage to <8><glyph:mobs_wither> Wither"
               - "<7>mobs."

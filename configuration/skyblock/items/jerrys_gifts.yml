@@ -532,6 +532,8 @@ items:
             kind: TEXT
             text:
               - "<7>Gain <d>double <7>pet <a>EXP<7>."
+            values:
+              - { base: 2 }
           - name: "Infused"
             kind: STAT
             statistics: { fishing_speed: "{0}", treasure_chance: 5 }

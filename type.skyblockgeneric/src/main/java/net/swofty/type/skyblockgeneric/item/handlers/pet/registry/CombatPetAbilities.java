@@ -28,6 +28,9 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.TuskLu
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.TyrantHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.WebBattlefieldHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.WebWeaverHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.ArmorBoostHandler;
+
+import java.util.Set;
 
 /**
  * Handlers for the Combat pets added in the Pets update.
@@ -41,6 +44,10 @@ final class CombatPetAbilities implements PetAbilityRegistry.Provider {
         registrar.register("CROW_CAMOUFLAGE", new TimedBuffHandler(ItemStatistic.DEFENSE));
         registrar.register("ENDERMAN_ENDERIAN", new MobTypeDamageReductionHandler(MobType.ENDER));
         registrar.register("ENDERMAN_TELEPORT_SAVVY", new TimedBuffHandler(ItemStatistic.DAMAGE));
+        registrar.register("ENDER_DRAGON_ONE_WITH_THE_DRAGONS",
+                new HeldItemStatsHandler(ItemType.ASPECT_OF_THE_DRAGON, ItemStatistic.DAMAGE, ItemStatistic.STRENGTH));
+        registrar.register("MAGMA_CUBE_HOT_EMBER", new ArmorBoostHandler(Set.of(ItemType.REKINDLED_EMBER_HELMET,
+                ItemType.REKINDLED_EMBER_CHESTPLATE, ItemType.REKINDLED_EMBER_LEGGINGS, ItemType.REKINDLED_EMBER_BOOTS)));
         registrar.register("GOLDEN_DRAGON_GOLDS_POWER", new GoldsPowerHandler());
         registrar.register("GOLDEN_DRAGON_SHINING_SCALES", new ShiningScalesHandler());
         registrar.register("GOLDEN_DRAGON_DRAGONS_GREED", new DragonsGreedHandler());

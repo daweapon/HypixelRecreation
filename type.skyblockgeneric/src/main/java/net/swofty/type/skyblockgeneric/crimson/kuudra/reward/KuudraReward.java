@@ -8,6 +8,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.essence.EssenceType;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.essence.Essences;
 import net.swofty.type.skyblockgeneric.item.ItemLore;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -72,7 +73,7 @@ public record KuudraReward(@Nullable String itemId, int amount, @Nullable String
 
     public void deliver(SkyBlockPlayer player) {
         if (isEssence()) {
-            Essences.add(player, EssenceType.CRIMSON, essence);
+            Essences.add(player, EssenceType.CRIMSON, CombatPetHooks.crimsonEssence(player, essence));
             return;
         }
         SkyBlockItem item = createItem();

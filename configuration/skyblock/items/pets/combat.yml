@@ -175,7 +175,8 @@ items:
             values:
               - { per_level: 2 }
           - name: "One with the Dragons"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: ENDER_DRAGON_ONE_WITH_THE_DRAGONS
             text:
               - "<7>Buffs the <6>Aspect of the Dragons"
               - "<7>sword by <a>{0} <c><glyph:skill_sword> Damage <7>and <a>{1} <c><glyph:stat_strength>"
@@ -442,7 +443,7 @@ items:
             values:
               - { per_level: 1 }
           - name: "Finder"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Increases the chance for monsters"
               - "<7>to drop their armor by <a>{0}%<7>."
@@ -577,7 +578,7 @@ items:
               - { per_level: { LEGENDARY: 0.1, MYTHIC: 0.5 } }
           - name: "Jerry"
             rarity: MYTHIC
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Tiny chance to find Jerry"
               - "<7>Candies when killing mobs."
@@ -637,7 +638,7 @@ items:
               - { per_level: { UNCOMMON: 0.15, EPIC: 0.2 } }
           - name: "Crimson"
             rarity: RARE
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Grants <a>{0}% <7>extra Crimson"
               - "<7>Essence."
@@ -946,7 +947,7 @@ items:
           EPIC: { speed: { per_level: 0.5 }, intelligence: { per_level: -0.02 } }
         abilities:
           - name: "Orbs are Fun"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain <a>+{0}% <7>experience from"
               - "<b>XP Orbs<7>."

@@ -47,6 +47,7 @@ import net.swofty.type.skyblockgeneric.entity.mob.impl.RegionPopulator;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ArmorComponent;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.loottable.LootAffector;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
@@ -360,6 +361,8 @@ public abstract class SkyBlockMob extends EntityCreature {
                 adjustedChance = affector.getAffector().apply(player, adjustedChance, this);
             }
 
+            if (item.hasComponent(ArmorComponent.class)) adjustedChance = CombatPetHooks.armorDropChance(player, adjustedChance);
+
             double chance = record.getShouldCalculate().apply(player) ? adjustedChance : 0;
             if (LootRoll.roll(player.getUuid(), itemType, chance)) {
                 drops.put(itemType, record);
@@ -371,12 +374,13 @@ public abstract class SkyBlockMob extends EntityCreature {
 
             if (SkyBlockLootTable.LootRecord.isNone(record)) continue;
 
-            SkyBlockItem item = createDrop(itemType, record.getAmount());
+            int amount = CombatPetHooks.collectionDropAmount(player, itemType, record.getAmount());
+            SkyBlockItem item = createDrop(itemType, amount);
             ItemType droppedItemLinker = item.getAttributeHandler().getPotentialType();
             if (record.getChancePercent() < RARE_DROP_CHANCE_PERCENT) announceRareDrop(player, item);
 
-            if (player.canInsertItemIntoSacks(droppedItemLinker, record.getAmount())) {
-                player.getSackItems().increase(droppedItemLinker, record.getAmount());
+            if (player.canInsertItemIntoSacks(droppedItemLinker, amount)) {
+                player.getSackItems().increase(droppedItemLinker, amount);
             } else if (player.getSkyBlockExperience().getLevel().asInt() >= 6) {
                 player.addAndUpdateItem(item);
             } else {

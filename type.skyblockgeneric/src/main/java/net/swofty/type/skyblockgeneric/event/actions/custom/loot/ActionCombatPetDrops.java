@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.event.actions.custom.loot;
 
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
@@ -12,6 +13,7 @@ import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobRuinsOldWolf;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobRuinsWolf;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.hub.MobSewerRat;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,8 @@ import java.util.List;
 // Rolls the Combat pets that drop from existing mobs: Hound from the Ruins wolves, Rat from Hub rats and
 // Phoenix from any mob
 public class ActionCombatPetDrops implements HypixelEventClass {
+    public static final double JERRY_CANDY_CHANCE_PERCENT = 0.5;
+
     private static final List<MobDrop> EVERY_MOB = List.of(
             MobDrop.pet("PHOENIX_PET", Rarity.VERY_SPECIAL, 0.000003),
             MobDrop.pet("PHOENIX_PET", Rarity.SPECIAL, 0.000017));
@@ -37,6 +41,9 @@ public class ActionCombatPetDrops implements HypixelEventClass {
         List<MobDrop> drops = new ArrayList<>(EVERY_MOB);
         drops.addAll(dropsFor(mob));
         CrimsonMobLoot.roll(event.getPlayer(), mob, drops);
+        if (CombatPetHooks.findsJerryCandy(event.getPlayer(), JERRY_CANDY_CHANCE_PERCENT)) {
+            event.getPlayer().addAndUpdateItem(ItemType.JERRY_CANDY, 1);
+        }
     }
 
     private static List<MobDrop> dropsFor(SkyBlockMob mob) {

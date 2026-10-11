@@ -178,8 +178,10 @@ public class RegisteredAbility {
                     20,
                     2
             );
-            player.setMana(player.getMana() - spent);
-            EnchantmentRefrigerate.onManaUsed(player, spent);
+            if (!CombatPetHooks.savesMana(player)) {
+                player.setMana(player.getMana() - spent);
+                EnchantmentRefrigerate.onManaUsed(player, spent);
+            }
             player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).setValue(
                     player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SOULFLOW, DatapointInteger.class).getValue() - soulflow
             );

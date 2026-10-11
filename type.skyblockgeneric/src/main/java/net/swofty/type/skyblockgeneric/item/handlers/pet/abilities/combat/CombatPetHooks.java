@@ -1,6 +1,14 @@
 package net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat;
 
+import net.minestom.server.entity.Entity;
+import net.minestom.server.entity.EntityType;
+import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.type.skyblockgeneric.calendar.CalendarEvent;
+import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
@@ -42,10 +50,64 @@ public final class CombatPetHooks {
             percent += PetAbilities.value(player, ItemType.ZOMBIE_PET, "Rotten Blade", 0);
         }
         if (PetAbilities.has(player, ItemType.PIGMAN_PET, "Giant Slayer")) percent += giantSlayer(mob.getLevel());
+        if (mob.getMobTypes().contains(MobType.WITHER)) {
+            percent += PetAbilities.value(player, ItemType.WITHER_SKELETON_PET, "Wither Blood", 0);
+        }
+        if (mob.getEntityType() == EntityType.SLIME) {
+            percent += PetAbilities.value(player, ItemType.MAGMA_CUBE_PET, "Salt Blade", 0);
+        }
+        if (SkyBlockCalendar.getCurrentEvents().contains(CalendarEvent.SPOOKY_FESTIVAL)) {
+            percent += PetAbilities.value(player, ItemType.BAT_PET, "Wings of Steel", 0);
+        }
+        percent += PetPerkMath.missingHealthPercent(PetAbilities.value(player, ItemType.MEGALODON_PET, "Blood Scent", 0),
+                mob.getHealth(), mob.getMaxHealth());
         if (player.getPosition().distance(mob.getPosition()) <= CLOSE_COMBAT_RANGE) {
             percent += PetAbilities.value(player, ItemType.TYRANNOSAURUS_PET, "Close Combat", 0);
         }
+        if (isIsolated(mob)) percent += PetAbilities.value(player, ItemType.TIGER_PET, "Apex Predator", 0);
         return 1 + percent / 100D;
+    }
+
+    public static double flatMeleeDamage(SkyBlockPlayer player, SkyBlockMob mob) {
+        if (!loaded(player)) return 0;
+        return PetPerkMath.longNeckDamage(PetAbilities.value(player, ItemType.GIRAFFE_PET, "Long Neck", 0),
+                player.getPosition().distance(mob.getPosition()));
+    }
+
+    public static double armorDropChance(SkyBlockPlayer player, double chancePercent) {
+        if (!loaded(player)) return chancePercent;
+        return PetPerkMath.boostChance(chancePercent, PetAbilities.value(player, ItemType.HOUND_PET, "Finder", 0));
+    }
+
+    public static int collectionDropAmount(SkyBlockPlayer player, ItemType item, int amount) {
+        if (!loaded(player) || CollectionCategories.getCategory(item) == null) return amount;
+        double extra = PetAbilities.value(player, ItemType.BLACK_CAT_PET, "Looting", 0);
+        return PetPerkMath.scaledAmount(amount, extra, ThreadLocalRandom.current());
+    }
+
+    public static double experienceOrbMultiplier(SkyBlockPlayer player) {
+        if (!loaded(player)) return 1;
+        return 1 + PetAbilities.value(player, ItemType.RIFT_FERRET_PET, "Orbs are Fun", 0) / 100D;
+    }
+
+    public static long crimsonEssence(SkyBlockPlayer player, long amount) {
+        if (!loaded(player)) return amount;
+        double extra = PetAbilities.value(player, ItemType.KUUDRA_PET, "Crimson", 0);
+        return PetPerkMath.scaledAmount(amount, extra, ThreadLocalRandom.current());
+    }
+
+    public static boolean findsJerryCandy(SkyBlockPlayer player, double chancePercent) {
+        if (!loaded(player) || !PetAbilities.hasAtLeast(player, ItemType.JERRY_PET, "Jerry", Rarity.MYTHIC)) return false;
+        return LootRoll.roll(player.getUuid(), ItemType.JERRY_CANDY, chancePercent);
+    }
+
+    private static boolean isIsolated(SkyBlockMob target) {
+        Instance instance = target.getInstance();
+        if (instance == null) return false;
+        for (Entity entity : instance.getNearbyEntities(target.getPosition(), PetPerkMath.APEX_PREDATOR_RADIUS)) {
+            if (entity != target && entity instanceof SkyBlockMob other && !other.isDead()) return false;
+        }
+        return true;
     }
 
     public static double arrowMultiplier(SkyBlockPlayer player, SkyBlockMob mob) {
@@ -88,7 +150,7 @@ public final class CombatPetHooks {
     public static boolean savesMana(SkyBlockPlayer player) {
         if (!loaded(player)) return false;
         double chance = PetAbilities.value(player, ItemType.CROW_PET, "Insightful", 0);
-        return chance > 0 && ThreadLocalRandom.current().nextDouble(100) < chance;
+        return chance > 0 && LootRoll.roll(null, null, chance);
     }
 
     public static boolean keepsCoinsOnDeath(SkyBlockPlayer player) {

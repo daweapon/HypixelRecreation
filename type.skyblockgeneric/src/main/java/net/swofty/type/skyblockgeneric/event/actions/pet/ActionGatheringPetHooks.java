@@ -13,8 +13,10 @@ import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 
-// Gathering pet drops from mobs, and the Endermite's extra End Stone
+// Gathering pet drops from mobs, and the Endermite's extra End Stone and experience orbs
 public class ActionGatheringPetHooks implements HypixelEventClass {
+    public static final long END_STONE_ORB_EXPERIENCE = 1;
+
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
     public void onKill(PlayerKilledSkyBlockMobEvent event) {
@@ -26,7 +28,9 @@ public class ActionGatheringPetHooks implements HypixelEventClass {
         if (event.getMaterial() != Material.END_STONE || Boolean.TRUE.equals(event.getPlayerPlaced())) return;
         SkyBlockPlayer player = event.getPlayer();
         double chance = PetAbilities.value(player, ItemType.ENDERMITE_PET, "More Stonks", 0);
-        if (chance > 0 && LootRoll.roll(player.getUuid(), ItemType.END_STONE, chance)) {
+        if (chance <= 0) return;
+        player.addExperience(END_STONE_ORB_EXPERIENCE);
+        if (LootRoll.roll(player.getUuid(), ItemType.END_STONE, chance)) {
             player.addAndUpdateItem(ItemType.END_STONE, 1);
         }
     }

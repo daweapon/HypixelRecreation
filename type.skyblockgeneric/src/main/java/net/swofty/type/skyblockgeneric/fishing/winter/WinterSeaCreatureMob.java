@@ -11,7 +11,6 @@ import net.minestom.server.network.player.ResolvableProfile;
 import net.minestom.server.timer.Task;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
@@ -21,7 +20,9 @@ import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.essence.Essences;
+import net.swofty.type.skyblockgeneric.gifts.ReindeerPet;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
@@ -43,8 +44,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class WinterSeaCreatureMob extends BestiaryMob {
     private static final ThreadLocal<WinterSeaCreature> CONSTRUCTING = new ThreadLocal<>();
     private static final byte ALL_SKIN_PARTS = 127;
-    static final String REINDEER_PET = "REINDEER_PET";
-    static final double REINDEER_DOUBLE_ESSENCE_CHANCE = 20;
 
     private final WinterSeaCreature creature;
     @Getter
@@ -147,10 +146,7 @@ public class WinterSeaCreatureMob extends BestiaryMob {
     }
 
     static boolean doublesIceEssence(SkyBlockPlayer player) {
-        SkyBlockItem pet = player.getPetData().getEnabledPet();
-        if (pet == null || !REINDEER_PET.equals(pet.getAttributeHandler().getPotentialType().name())) return false;
-        if (!pet.getAttributeHandler().getRarity().isAtLeast(Rarity.LEGENDARY)) return false;
-        return ThreadLocalRandom.current().nextDouble(100) < REINDEER_DOUBLE_ESSENCE_CHANCE;
+        return LootRoll.roll(null, null, ReindeerPet.icyWindPercent(player));
     }
 
     protected List<SkyBlockLootTable.LootRecord> rollDrops() {

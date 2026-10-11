@@ -221,7 +221,7 @@ public final class GriffinBurrowService implements MythologicalCreatureMob.Liste
         double tracking = player.getStatistics().allStatistics().getOverall(ItemStatistic.TRACKING)
                 + Carnivals.perkValue(player, CarnivalPerk.ELUSIVE_HUNTER)
                 + MythologicalGear.burrowTracking(player);
-        if (GriffinPet.isMythic(player)) tracking += chain.getExcavated();
+        tracking += GriffinPet.ancientEarthTracking(player) * chain.getExcavated();
 
         MythologicalCreature forced = forcedCreatures.remove(player.getUuid());
         MythologicalCreature creature = forced != null ? forced

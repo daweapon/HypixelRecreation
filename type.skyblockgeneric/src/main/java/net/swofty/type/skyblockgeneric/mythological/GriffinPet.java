@@ -25,6 +25,10 @@ public final class GriffinPet {
         return equippedRarity(player).map(rarity -> rarity.isAtLeast(Rarity.MYTHIC)).orElse(false);
     }
 
+    public static double ancientEarthTracking(SkyBlockPlayer player) {
+        return PetAbilities.value(player, ItemType.GRIFFIN_PET, "Ancient Earth", 0);
+    }
+
     public static double kingOfKingsMagicFind(SkyBlockPlayer player) {
         return PetAbilities.value(player, ItemType.GRIFFIN_PET, "King of Kings", 0);
     }
