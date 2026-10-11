@@ -66,6 +66,7 @@ public class ItemConfigParser {
 			}
 
 			ConfigurableSkyBlockItem item = new ConfigurableSkyBlockItem(id, material, lore, name, statistics);
+			item.setCentauriCategory(safeConfig.getString("centauri_category", null));
 
 			List<Map<String, Object>> components = safeConfig.getMapList("components");
 			for (Map<String, Object> componentConfig : components) {

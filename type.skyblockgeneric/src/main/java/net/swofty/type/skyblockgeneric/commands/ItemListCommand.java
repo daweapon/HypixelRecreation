@@ -5,11 +5,12 @@ import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
 import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUICreative;
+import net.swofty.type.skyblockgeneric.gui.inventories.centauri.GUICentauriItemCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "itemlist e",
-        description = "Open the E menu",
-        usage = "/e",
+        description = "Opens the item categories, or searches every category",
+        usage = "/e [lookup]",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class ItemListCommand extends HypixelCommand {
@@ -18,7 +19,7 @@ public class ItemListCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> {
             if (!permissionCheck(sender)) return;
 
-            ((SkyBlockPlayer) sender).openView(new GUICreative(), GUICreative.createInitialState());
+            ((SkyBlockPlayer) sender).openView(new GUICentauriItemCategories(), new GUICentauriItemCategories.State());
         });
 
         ArgumentString lookup = new ArgumentString("lookup");

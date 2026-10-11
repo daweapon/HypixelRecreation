@@ -8,7 +8,6 @@ import net.swofty.type.generic.gui.v2.View;
 import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
-import net.swofty.type.skyblockgeneric.gui.inventories.GUICreative;
 
 // Developer/cheat menu linking to the creative item list, coin generator, and toy box
 public final class GUICentauri implements View<GUICentauri.State> {
@@ -21,8 +20,8 @@ public final class GUICentauri implements View<GUICentauri.State> {
     public void layout(ViewLayout<State> layout, State state, ViewContext ctx) {
         Components.fill(layout);
         layout.slot(11, (s, c) -> item("<a>Item List", Material.STICK,
-                "<7>Claim featured items related to this", "<7>update.", " ", "<e>Click to view!"),
-                (click, c) -> c.push(new GUICreative(), GUICreative.createInitialState()));
+                "<7>Browse and claim items by category:", "<7>Regular, Pets, Talismans, Materials.", " ", "<e>Click to view!"),
+                (click, c) -> c.push(new GUICentauriItemCategories(), new GUICentauriItemCategories.State()));
         layout.slot(13, (s, c) -> item("<a>Coin Generator", Material.GOLD_BLOCK,
                 "<7>Generate Coins at the click of a", "<7>button!", " ", "<e>Click to view!"),
                 (click, c) -> c.push(new GUICentauriCoinGenerator(), new GUICentauriCoinGenerator.State()));

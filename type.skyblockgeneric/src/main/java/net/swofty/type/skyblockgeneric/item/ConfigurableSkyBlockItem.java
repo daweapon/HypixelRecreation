@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.item;
 
 
 import lombok.Getter;
+import lombok.Setter;
 import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
@@ -30,6 +31,10 @@ public class ConfigurableSkyBlockItem {
     private final List<String> lore;
     @Getter
     private final ItemStatistics defaultStatistics;
+    @Getter
+    @Setter
+    @Nullable
+    private String centauriCategory;
 
     private final Map<Class<? extends SkyBlockItemComponent>, ComponentEntry> components = new HashMap<>();
     private final Set<Class<? extends SkyBlockItemComponent>> explicitComponents = new HashSet<>();
@@ -193,7 +198,7 @@ public class ConfigurableSkyBlockItem {
     }
 
     public ConfigurableSkyBlockItem clone() {
-        return new ConfigurableSkyBlockItem(
+        ConfigurableSkyBlockItem copy = new ConfigurableSkyBlockItem(
                 this.id,
                 this.material,
                 this.lore,
@@ -202,6 +207,8 @@ public class ConfigurableSkyBlockItem {
                 this.components,
                 this.explicitComponents
         );
+        copy.centauriCategory = this.centauriCategory;
+        return copy;
     }
 
     public static @Nullable String getConfiguredName(String id) {

@@ -36,7 +36,7 @@ public final class AdminCatalog {
             Map.entry("ahview", new Details(Category.DEVELOPMENT, "/ahview <uuid>", "Views an auction.")),
             Map.entry("allowaccessforapiauthentication", new Details(Category.DEVELOPMENT, "/allowaccessforapiauthentication <code>", "Allows access for API authentication for the given code.")),
             Map.entry("centauri", new Details(Category.DEVELOPMENT, "/centauri", "Opens the Centauri menu.")),
-            Map.entry("itemlist", new Details(Category.DEVELOPMENT, "/itemlist [lookup]", "Open the E menu. Opens the item browser; optional search.")),
+            Map.entry("itemlist", new Details(Category.DEVELOPMENT, "/itemlist [lookup]", "Opens the Item List categories (Regular, Pets, Talismans, Materials), or searches every category when given a lookup.")),
             Map.entry("sc", new Details(Category.DEVELOPMENT, "/sc <message>", "Sends a message to staff chat.")),
             Map.entry("throwexception", new Details(Category.DEVELOPMENT, "/throwexception", "Throws an exception for testing purposes.")),
             Map.entry("addtostash", new Details(Category.ITEMS, "/addtostash <item> [amount] [player]", "Force add an item to your stash.")),

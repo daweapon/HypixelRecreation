@@ -1,5 +1,6 @@
 items:
   - id: SMALL_HONEY_DIPPER
+    centauri_category: PETS
     material: paper
     name: "Small Honey Dipper"
     rarity: UNCOMMON
@@ -7,6 +8,7 @@ items:
       - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
       - "<f>Common <7>to <a>Uncommon."
   - id: MEDIUM_HONEY_DIPPER
+    centauri_category: PETS
     material: paper
     name: "Medium Honey Dipper"
     rarity: RARE
@@ -14,6 +16,7 @@ items:
       - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
       - "<a>Uncommon <7>to <9>Rare."
   - id: LARGE_HONEY_DIPPER
+    centauri_category: PETS
     material: paper
     name: "Large Honey Dipper"
     rarity: EPIC
@@ -21,6 +24,7 @@ items:
       - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
       - "<9>Rare <7>to <5>Epic."
   - id: GIANT_HONEY_DIPPER
+    centauri_category: PETS
     material: paper
     name: "Giant Honey Dipper"
     rarity: LEGENDARY
@@ -28,6 +32,7 @@ items:
       - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
       - "<5>Epic <7>to <6>Legendary."
   - id: SMALL_FROG_TREAT
+    centauri_category: PETS
     material: player_head
     name: "Small Frog Treat"
     rarity: UNCOMMON
@@ -38,6 +43,7 @@ items:
       - id: SKULL_HEAD
         texture: efd8881d02fe9cee859ac597731b2df46bee6d52c446205f9da9dfa7bd111694
   - id: MEDIUM_FROG_TREAT
+    centauri_category: PETS
     material: player_head
     name: "Medium Frog Treat"
     rarity: RARE
@@ -48,6 +54,7 @@ items:
       - id: SKULL_HEAD
         texture: c245036782c6a7e25ff84c5087a65966d650c033ba37e00965e8b99021b3ecae
   - id: LARGE_FROG_TREAT
+    centauri_category: PETS
     material: player_head
     name: "Large Frog Treat"
     rarity: EPIC
@@ -58,6 +65,7 @@ items:
       - id: SKULL_HEAD
         texture: e1f27337d1e1a97b67bf33d4517ce0c21de82b70e3bfd45a22201a4d056b600c
   - id: GIANT_FROG_TREAT
+    centauri_category: PETS
     material: player_head
     name: "Giant Frog Treat"
     rarity: LEGENDARY
@@ -68,6 +76,7 @@ items:
       - id: SKULL_HEAD
         texture: 38e3d6aa9880b5ba632e3c2f4766c3071936073a75dcedd445ae7aa572a5098e
   - id: SMALL_PIG_EAR
+    centauri_category: PETS
     material: player_head
     name: "Small Pig's Ear"
     rarity: UNCOMMON
@@ -80,6 +89,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: MEDIUM_PIG_EAR
+    centauri_category: PETS
     material: player_head
     name: "Medium Pig's Ear"
     rarity: RARE
@@ -92,6 +102,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: LARGE_PIG_EAR
+    centauri_category: PETS
     material: player_head
     name: "Large Pig's Ear"
     rarity: EPIC
@@ -104,6 +115,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: GIANT_PIG_EAR
+    centauri_category: PETS
     material: player_head
     name: "Giant Pig's Ear"
     rarity: LEGENDARY
@@ -116,6 +128,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: SMALL_SEAL_PLUSHIE
+    centauri_category: PETS
     material: player_head
     name: "Small Seal Plushie"
     rarity: UNCOMMON
@@ -128,6 +141,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: MEDIUM_SEAL_PLUSHIE
+    centauri_category: PETS
     material: player_head
     name: "Medium Seal Plushie"
     rarity: RARE
@@ -140,6 +154,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: LARGE_SEAL_PLUSHIE
+    centauri_category: PETS
     material: player_head
     name: "Large Seal Plushie"
     rarity: EPIC
@@ -152,6 +167,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: GIANT_SEAL_PLUSHIE
+    centauri_category: PETS
     material: player_head
     name: "Giant Seal Plushie"
     rarity: LEGENDARY
@@ -164,6 +180,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: SMALL_SLOTH_CLAW
+    centauri_category: PETS
     material: paper
     name: "Small Sloth Claw"
     rarity: UNCOMMON
@@ -174,6 +191,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: MEDIUM_SLOTH_CLAW
+    centauri_category: PETS
     material: paper
     name: "Medium Sloth Claw"
     rarity: RARE
@@ -184,6 +202,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: LARGE_SLOTH_CLAW
+    centauri_category: PETS
     material: paper
     name: "Large Sloth Claw"
     rarity: EPIC
@@ -194,6 +213,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: GIANT_SLOTH_CLAW
+    centauri_category: PETS
     material: paper
     name: "Giant Sloth Claw"
     rarity: LEGENDARY
@@ -204,6 +224,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: SMALL_WITCH_CAULDRON
+    centauri_category: PETS
     material: player_head
     name: "Small Witch Cauldron"
     rarity: UNCOMMON
@@ -216,6 +237,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: MEDIUM_WITCH_CAULDRON
+    centauri_category: PETS
     material: player_head
     name: "Medium Witch Cauldron"
     rarity: RARE
@@ -228,6 +250,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: LARGE_WITCH_CAULDRON
+    centauri_category: PETS
     material: player_head
     name: "Large Witch Cauldron"
     rarity: EPIC
@@ -240,6 +263,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: GIANT_WITCH_CAULDRON
+    centauri_category: PETS
     material: player_head
     name: "Giant Witch Cauldron"
     rarity: LEGENDARY
@@ -252,6 +276,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: EERIE_TREAT
+    centauri_category: PETS
     material: player_head
     name: "Eerie Treat"
     rarity: RARE
@@ -270,6 +295,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: EERIE_TOY
+    centauri_category: PETS
     material: player_head
     name: "Eerie Toy"
     rarity: EPIC
@@ -288,6 +314,7 @@ items:
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: ROYAL_JELLY
+    centauri_category: PETS
     material: player_head
     name: "Royal Jelly"
     rarity: MYTHIC
@@ -298,6 +325,7 @@ items:
       - id: SKULL_HEAD
         texture: f9c80e32c56a04139d050752414ccbf5b092f3811a6cdfd66f95e4263c1cb3fd
   - id: BLACK_WOOLEN_YARN
+    centauri_category: PETS
     material: black_wool
     name: "Black Woolen Yarn"
     rarity: MYTHIC
@@ -305,6 +333,7 @@ items:
       - "<7>Use at <b>Kat <7>to upgrade <e>Black Cat Pets"
       - "<7>to <d>Mythic <7>rarity."
   - id: TRUNK_POLISH
+    centauri_category: PETS
     material: player_head
     name: "Trunk Polish"
     rarity: MYTHIC
@@ -315,6 +344,7 @@ items:
       - id: SKULL_HEAD
         texture: 7ff7dd2bdf418b40336da1ecbd9315b58b20627a94aee69adaf01f5d4eac80d9
   - id: POCKET_SIZED_IGLOO
+    centauri_category: PETS
     material: player_head
     name: "Pocket-sized Igloo"
     rarity: MYTHIC
@@ -329,6 +359,7 @@ items:
       - id: SKULL_HEAD
         texture: 66961549079708f6debbbd380a947b1ec32a3c836b0bec93b145497366f09f22
   - id: FROZEN_SCUTE
+    centauri_category: PETS
     material: player_head
     name: "Frozen Scute"
     rarity: MYTHIC
@@ -339,6 +370,7 @@ items:
       - id: SKULL_HEAD
         texture: 3fd163fb127bc2fd02cb6f60c2ba03a5dc5ac8c7655f9166afbff10a53217064
   - id: PET_ITEM_VAMPIRE_FANG
+    centauri_category: PETS
     material: ghast_tear
     name: "Vampire Fang"
     rarity: MYTHIC
@@ -348,6 +380,7 @@ items:
     components:
       - id: ENCHANTED
   - id: ENDERMAN_CORTEX_REWRITER
+    centauri_category: PETS
     material: player_head
     name: "Enderman Cortex Rewriter"
     rarity: MYTHIC
@@ -358,6 +391,7 @@ items:
       - id: SKULL_HEAD
         texture: eb07594e2df273921a77c101d0bfdfa1115abed5b9b2029eb496ceba9bdbb4b3
   - id: MIXED_MITE_GEL
+    centauri_category: PETS
     material: orange_dye
     name: "Mixed Mite Gel"
     rarity: MYTHIC
@@ -386,6 +420,7 @@ items:
               type: MIXED_MITE_GEL
               amount: 1
   - id: BUCKET_OF_FROGSPAWN
+    centauri_category: PETS
     material: paper
     name: "Frogspawn Bucket"
     rarity: MYTHIC
@@ -396,6 +431,7 @@ items:
       - "<8><o>Who cares about massive frogs when"
       - "<8><o>you can have lots of tiny ones?"
   - id: GUARDIAN_LUCKY_BLOCK
+    centauri_category: PETS
     material: player_head
     name: "Guardian Lucky Block"
     rarity: MYTHIC
@@ -406,6 +442,7 @@ items:
       - id: SKULL_HEAD
         texture: 46ef21c8575a306999142b0814f163cb403ec0fa51beca81dd074b02dfe266af
   - id: PET_ITEM_PURE_MITHRIL_GEM
+    centauri_category: PETS
     material: player_head
     name: "Pure Mithril Gem"
     rarity: MYTHIC
@@ -416,6 +453,7 @@ items:
       - id: SKULL_HEAD
         texture: bdb7fc2b69bcd429abfd1ceb1aea10cebf1749a80680c63cd8b60f3a4c7e4ffd
   - id: PET_ITEM_CHOCOLATE_SYRINGE
+    centauri_category: PETS
     material: player_head
     name: "Chocolate Syringe"
     rarity: MYTHIC
@@ -426,6 +464,7 @@ items:
       - id: SKULL_HEAD
         texture: 7dcb67a72c01f3ca75da846f957ffed6417f0c45ad814fb3e340c317cf316718
   - id: RAT_JETPACK
+    centauri_category: PETS
     material: player_head
     name: "Rat Jetpack"
     rarity: MYTHIC
@@ -436,6 +475,7 @@ items:
       - id: SKULL_HEAD
         texture: 250de7097d939e447ca2d398441cba1d2a5e1a69052ac99c19ff20ad5a3f01ab
   - id: FAKE_NEUROSCIENCE_DEGREE
+    centauri_category: PETS
     material: player_head
     name: "Fake Neuroscience Degree"
     rarity: RARE
@@ -453,18 +493,21 @@ items:
       - id: DEFAULT_SOULBOUND
         coop_allowed: false
   - id: PET_ITEM_TIER_BOOST_DROP
+    centauri_category: PETS
     material: red_dye
     name: "Tier Boost Core"
     rarity: LEGENDARY
     lore:
       - "<7>Used to craft the Tier Boost pet item."
   - id: PET_ITEM_EXP_SHARE_DROP
+    centauri_category: PETS
     material: yellow_dye
     name: "Exp Share Core"
     rarity: EPIC
     lore:
       - "<7>Used to craft the Exp Share pet item."
   - id: PET_ITEM_LUCKY_CLOVER_DROP
+    centauri_category: PETS
     material: lime_dye
     name: "Lucky Clover Core"
     rarity: EPIC
@@ -472,6 +515,7 @@ items:
       - "<7>Used to craft the Lucky Clover pet"
       - "<7>item."
   - id: SIMPLE_CARROT_CANDY
+    centauri_category: PETS
     material: carrot
     name: "Simple Carrot Candy"
     rarity: UNCOMMON
@@ -503,6 +547,7 @@ items:
               type: SIMPLE_CARROT_CANDY
               amount: 1
   - id: GREAT_CARROT_CANDY
+    centauri_category: PETS
     material: carrot
     name: "Great Carrot Candy"
     rarity: RARE
@@ -538,6 +583,7 @@ items:
               type: GREAT_CARROT_CANDY
               amount: 1
   - id: SUPERB_CARROT_CANDY
+    centauri_category: PETS
     material: golden_carrot
     name: "Superb Carrot Candy"
     rarity: EPIC
@@ -573,6 +619,7 @@ items:
               type: SUPERB_CARROT_CANDY
               amount: 1
   - id: ULTIMATE_CARROT_CANDY
+    centauri_category: PETS
     material: golden_carrot
     name: "Ultimate Carrot Candy"
     rarity: LEGENDARY
@@ -608,6 +655,7 @@ items:
               type: ULTIMATE_CARROT_CANDY
               amount: 10
   - id: PET_CAKE
+    centauri_category: PETS
     material: cake
     name: "Pet Cake"
     rarity: COMMON
@@ -622,6 +670,7 @@ items:
         experience: 10000
         counts_towards_cap: false
   - id: SUPER_SCRUBBER
+    centauri_category: PETS
     material: player_head
     name: "Super Scrubber"
     rarity: RARE

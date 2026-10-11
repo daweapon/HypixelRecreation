@@ -10,6 +10,7 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.HypixelSignGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
+import net.swofty.type.generic.gui.v2.Components;
 import net.swofty.type.generic.gui.v2.Layouts;
 import net.swofty.type.generic.gui.v2.PaginatedView;
 import net.swofty.type.generic.gui.v2.ViewConfiguration;
@@ -17,6 +18,7 @@ import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ClickContext;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.gui.inventories.centauri.ItemCategory;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.TrackedUniqueComponent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
@@ -26,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// GUI for browsing and searching every SkyBlock and vanilla item to spawn in creative mode
+// GUI for browsing and searching SkyBlock items, optionally within one Centauri category
 public class GUICreative extends PaginatedView<SkyBlockItem, GUICreative.CreativeState> {
 
     @Override
@@ -45,12 +47,13 @@ public class GUICreative extends PaginatedView<SkyBlockItem, GUICreative.Creativ
     }
 
     public static CreativeState createInitialState(String query, int pageZeroBased) {
-        List<SkyBlockItem> items = new ArrayList<>(Arrays.stream(ItemType.values()).map(SkyBlockItem::new).toList());
-        List<SkyBlockItem> vanilla = new ArrayList<>(Material.values().stream().map(SkyBlockItem::new).toList());
-        vanilla.removeIf((element) -> ItemType.isVanillaReplaced(element.getAttributeHandler().getTypeAsString()));
-        items.addAll(vanilla);
+        return createInitialState(null, query, pageZeroBased);
+    }
 
-        return new CreativeState(items, Math.max(0, pageZeroBased), query == null ? "" : query);
+    public static CreativeState createInitialState(ItemCategory category, String query, int pageZeroBased) {
+        List<ItemType> types = category == null ? Arrays.asList(ItemType.values()) : ItemCategory.items(category);
+        List<SkyBlockItem> items = new ArrayList<>(types.stream().map(SkyBlockItem::new).toList());
+        return new CreativeState(items, Math.max(0, pageZeroBased), query == null ? "" : query, category);
     }
 
     @Override
@@ -75,6 +78,7 @@ public class GUICreative extends PaginatedView<SkyBlockItem, GUICreative.Creativ
 
     @Override
     protected void layoutCustom(ViewLayout<CreativeState> layout, CreativeState state, ViewContext ctx) {
+        Components.back(layout, 48, ctx);
         layout.slot(49, (s, c) -> ItemStacks.item(Material.BARRIER, 1,
                         Text.key("gui_misc.creative.close_button"), List.of()),
                 (_, c) -> c.player().closeInventory());
@@ -87,7 +91,7 @@ public class GUICreative extends PaginatedView<SkyBlockItem, GUICreative.Creativ
                     return;
                 }
 
-                c.replace(new GUICreative(), GUICreative.createInitialState(line, 0));
+                c.replace(new GUICreative(), GUICreative.createInitialState(state.category(), line, 0));
             });
         });
     }
@@ -143,15 +147,15 @@ public class GUICreative extends PaginatedView<SkyBlockItem, GUICreative.Creativ
         return !item.getAttributeHandler().getTypeAsString().toLowerCase().contains(state.query().replaceAll(" ", "_").toLowerCase());
     }
 
-    public record CreativeState(List<SkyBlockItem> items, int page, String query) implements PaginatedState<SkyBlockItem> {
+    public record CreativeState(List<SkyBlockItem> items, int page, String query, ItemCategory category) implements PaginatedState<SkyBlockItem> {
         @Override
         public PaginatedState<SkyBlockItem> withPage(int page) {
-            return new CreativeState(items, page, query);
+            return new CreativeState(items, page, query, category);
         }
 
         @Override
         public PaginatedState<SkyBlockItem> withItems(List<SkyBlockItem> items) {
-            return new CreativeState(items, page, query);
+            return new CreativeState(items, page, query, category);
         }
     }
 }
