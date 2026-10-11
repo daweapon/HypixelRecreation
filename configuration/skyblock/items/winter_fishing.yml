@@ -78,6 +78,7 @@ items:
           MYTHIC: { strength: { per_level: 0.5 }, fishing_speed: { per_level: 0.5 }, sea_creature_chance: { per_level: 0.05 }, cold_resistance: { per_level: 0.1 } }
         abilities:
           - name: "Yeti Fury"
+            unavailable: "Needs the Yeti Sword ability"
             kind: INACTIVE
             text:
               - "<7>Buffs the <6>Yeti Sword <7>by <a>{0} <c><glyph:skill_sword>"

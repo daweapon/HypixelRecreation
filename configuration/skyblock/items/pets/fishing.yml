@@ -24,6 +24,7 @@ items:
             values:
               - { per_level: 0.01 }
           - name: "Expert Cave Fisher"
+            unavailable: "Needs Crystal Hollows content"
             kind: INACTIVE
             text:
               - "<7>Grants <9>+{0}<glyph:stat_double_hook_chance> Double Hook Chance"
@@ -126,6 +127,7 @@ items:
             values:
               - { per_level: { RARE: 0.8, EPIC: 1 } }
           - name: "Deep Sea Diver"
+            unavailable: "Needs Diver and Abyssal armor"
             rarity: LEGENDARY
             max_rarity: LEGENDARY
             kind: INACTIVE
@@ -153,6 +155,7 @@ items:
             values:
               - { per_level: 0.2 }
           - name: "Rapid Decay"
+            unavailable: "Needs a Flash proc"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -318,6 +321,7 @@ items:
           COMMON: { fishing_speed: { per_level: 0.35 }, sea_creature_chance: { per_level: 0.05 }, treasure_chance: { per_level: 0.01 } }
         abilities:
           - name: "Showboater"
+            unavailable: "Needs Year of the X events"
             kind: INACTIVE
             text:
               - "<7>Increases your chance of catching"
@@ -340,6 +344,7 @@ items:
             values:
               - { per_level: { RARE: 0.035, EPIC: 0.05 } }
           - name: "Amphibious"
+            unavailable: "Needs Year of the X events"
             rarity: LEGENDARY
             kind: INACTIVE
             text:

@@ -24,6 +24,7 @@ items:
               - { per_level: 0.5 }
               - { per_level: 0.005 }
           - name: "Unyielding"
+            unavailable: "Needs Last Stand and Lifeline"
             kind: INACTIVE
             text:
               - "<7>Increase the effectiveness of <d><l>Last"
@@ -122,12 +123,14 @@ items:
           COMMON: { speed: { per_level: 0.1 }, intelligence: { per_level: 0.5 } }
         abilities:
           - name: "Fearnesy"
+            unavailable: "Needs Primal Fears"
             kind: INACTIVE
             text:
               - "<5>Fear <7>from <5>Great Spook Armor <7>in"
               - "<7>your <b>wardrobe <7>applies to you, even"
               - "<7>if you aren't wearing it."
           - name: "Fearama"
+            unavailable: "Needs Primal Fears"
             rarity: RARE
             kind: INACTIVE
             text:
@@ -135,6 +138,7 @@ items:
               - "<7>Fears and Spooky Mobs by <a>1% <7>for"
               - "<7>every <5>Fear <7>you have."
           - name: "Fearcreasing"
+            unavailable: "Needs Primal Fears"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -230,6 +234,7 @@ items:
             values:
               - { per_level: { RARE: 0.4, EPIC: 0.5 } }
           - name: "Zealot Madness"
+            unavailable: "Needs Zealots"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -278,6 +283,7 @@ items:
             values:
               - { per_level: 0.5 }
           - name: "Army of the Dead"
+            unavailable: "Needs Necromancy"
             kind: INACTIVE
             text:
               - "<7>Increases the amount of souls you"
@@ -286,6 +292,7 @@ items:
             values:
               - { per_level: 0.2 }
           - name: "Reaper Soul"
+            unavailable: "Needs Necromancy"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -670,6 +677,7 @@ items:
           LEGENDARY: { defense: { per_level: 0.5 }, cold_resistance: { per_level: 0.1 } }
         abilities:
           - name: "Wooly Coat"
+            unavailable: "Needs Glacite Mineshafts"
             kind: INACTIVE
             text:
               - "<7>Gain a <a>{0}% <7>chance for mobs to not"
@@ -688,6 +696,7 @@ items:
             values:
               - { per_level: 0.005 }
           - name: "Corpse Crusher"
+            unavailable: "Needs Glacite Mineshafts"
             kind: INACTIVE
             text:
               - "<7>Gain <6>+{0}<glyph:stat_mining_fortune> Mining Fortune <7>for each"
@@ -832,6 +841,7 @@ items:
           LEGENDARY: { speed: { per_level: 0.25 }, sea_creature_chance: { base: 7.5 }, foraging_fortune: { base: 50 }, mining_fortune: { base: 75 } }
         abilities:
           - name: "Creative Mind"
+            unavailable: "Needs Drone Mods"
             kind: INACTIVE
             text:
               - "<7>This pet can have <b>Drone Mods"
@@ -848,6 +858,7 @@ items:
             values:
               - { per_level: 0.1 }
           - name: "Grungle"
+            unavailable: "Needs axe throwing"
             kind: INACTIVE
             text:
               - "<7>When <2>Foraging<7>, you can now <c><l>ONLY"
@@ -885,16 +896,19 @@ items:
           LEGENDARY: { health: { per_level: 1.25 }, strength: { per_level: 0.6 }, critical_damage: { per_level: 0.25 } }
         abilities:
           - name: "Morph"
+            unavailable: "Needs Rat morphing"
             kind: INACTIVE
             text:
               - "<7>Right-click your summoned pet"
               - "<7>to morph into it!"
           - name: "CHEESE!"
+            unavailable: "Needs cheese"
             kind: INACTIVE
             text:
               - "<7>As a Rat, you smell"
               - "<7><e><l>CHEESE<r><7> nearby! Yummy!"
           - name: "Rat's Blessing"
+            unavailable: "Needs Rat morphing"
             kind: INACTIVE
             text:
               - "<7>Has a chance to grant a random"
@@ -908,6 +922,7 @@ items:
               - { base: 2, per_level: 0.05 }
               - { base: 20, per_level: 0.4 }
           - name: "Extreme Speed"
+            unavailable: "Needs Rat morphing"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -1026,6 +1041,7 @@ items:
           COMMON: { strength: { per_level: 0.5 }, critical_chance: { per_level: 0.1 } }
         abilities:
           - name: "One With the Spider"
+            unavailable: "Needs Arachnal gear"
             kind: INACTIVE
             text:
               - "<7>Applies <c>{0} <glyph:stat_strength> Strength <7>to all"
@@ -1108,11 +1124,13 @@ items:
           EPIC: { intelligence: { per_level: 1 }, speed: { per_level: 0.3 } }
         abilities:
           - name: "Spirit Assistance"
+            unavailable: "Needs Dungeons"
             kind: INACTIVE
             text:
               - "<7>Spawns and assists you when"
               - "<7>you are a ghost in Dungeons."
           - name: "Spirit Cooldowns"
+            unavailable: "Needs Dungeons"
             kind: INACTIVE
             text:
               - "<7>Reduces the cooldown of your"
@@ -1121,6 +1139,7 @@ items:
             values:
               - { base: 5, per_level: 0.45 }
           - name: "Half Life"
+            unavailable: "Needs Dungeons"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -1188,6 +1207,7 @@ items:
           EPIC: { strength: { per_level: 0.1 }, critical_chance: { per_level: 0.1 }, critical_damage: { per_level: 0.3 } }
         abilities:
           - name: "Webbed Cells"
+            unavailable: "Needs Broodfather Vitality reduction"
             kind: INACTIVE
             text:
               - "<c>Tarantula Broodfather's <4><glyph:stat_vitality> Vitality"
@@ -1196,6 +1216,7 @@ items:
             values:
               - { per_level: 0.3 }
           - name: "Eight Legs"
+            unavailable: "Needs Spider, Tarantula and Spirit boots"
             kind: INACTIVE
             text:
               - "<7>Decreases the mana cost of"
@@ -1387,6 +1408,7 @@ items:
             values:
               - { base: 25, per_level: 1.25 }
           - name: "Living Dead"
+            unavailable: "Needs Undead armor"
             rarity: LEGENDARY
             kind: INACTIVE
             text:

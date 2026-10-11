@@ -21,12 +21,14 @@ items:
           COMMON: { defense: { per_level: 2 } }
         abilities:
           - name: "Ridable"
+            unavailable: "Needs pet riding"
             kind: INACTIVE
             text:
               - "<7>Right-click your summoned pet to"
               - "<7>ride it! Moves faster based on your"
               - "<f><glyph:stat_speed> Speed<7>."
           - name: "Tunneller"
+            unavailable: "Needs Crystal Hollows content"
             kind: INACTIVE
             text:
               - "<7>While in the <5>Crystal Hollows<7>, this Pet"
@@ -41,6 +43,7 @@ items:
             values:
               - { base: 60, per_level: { RARE: -0.2, EPIC: -0.3, LEGENDARY: -0.4 } }
           - name: "Long Claws"
+            unavailable: "Needs Mining Spread"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -49,6 +52,7 @@ items:
             values:
               - { per_level: 3 }
           - name: "Well-Worked"
+            unavailable: "Needs Crystal Hollows content"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -75,6 +79,7 @@ items:
           EPIC: { heat_resistance: { per_level: 1.5 }, mining_fortune: { per_level: 1 } }
         abilities:
           - name: "Furnace"
+            unavailable: "Needs Crystal Hollows content"
             kind: INACTIVE
             text:
               - "<7>Grants <5>+{0}<glyph:stat_pristine> Pristine <7>while in the"
@@ -82,6 +87,7 @@ items:
             values:
               - { per_level: { EPIC: 0.02, LEGENDARY: 0.03 } }
           - name: "Dispersion"
+            unavailable: "Needs Crystal Hollows content"
             kind: INACTIVE
             text:
               - "<7>While in the <5>Crystal Hollows<7>, killing"
@@ -89,6 +95,7 @@ items:
             values:
               - { per_level: 0.04 }
           - name: "Cannibal"
+            unavailable: "Needs Crystal Hollows content"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -145,6 +152,7 @@ items:
             values:
               - { per_level: 0.5 }
           - name: "Sonar"
+            unavailable: "Needs Spooky sea creatures"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -227,6 +235,7 @@ items:
             values:
               - { per_level: { RARE: 0.3, EPIC: 0.4 } }
           - name: "Mite Bait"
+            unavailable: "Needs Nest Endermites"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -237,6 +246,7 @@ items:
             values:
               - { per_level: 0.03 }
           - name: "Sacrificer"
+            unavailable: "Needs the Draconic Altar"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -293,6 +303,7 @@ items:
             values:
               - { per_level: { COMMON: 0.1, UNCOMMON: 0.15, EPIC: 0.2 } }
           - name: "Iceborn"
+            unavailable: "Needs Glacite Mineshafts"
             rarity: RARE
             kind: INACTIVE
             text:
@@ -301,6 +312,7 @@ items:
             values:
               - { per_level: { RARE: 0.75, EPIC: 1 } }
           - name: "Frozen Perfection"
+            unavailable: "Needs Glacite Mineshafts"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -352,6 +364,7 @@ items:
             values:
               - { per_level: 2.5 }
           - name: "Fetid Thief"
+            unavailable: "Needs Crystal Hollows content"
             kind: INACTIVE
             text:
               - "<7>Gain <e>+{0}<glyph:stat_mining_spread> Mining Spread <7>while in the"
@@ -457,6 +470,7 @@ items:
           LEGENDARY: { intelligence: { per_level: 1 }, magic_find: { per_level: 0.05 }, mining_speed: { per_level: 1.5 } }
         abilities:
           - name: "Archaeologist"
+            unavailable: "Needs Crystal Hollows content"
             kind: INACTIVE
             text:
               - "<7>Increase your chance of finding"
@@ -465,6 +479,7 @@ items:
             values:
               - { per_level: 0.25 }
           - name: "Magnetic Nose"
+            unavailable: "Needs Crystal Hollows content"
             kind: INACTIVE
             text:
               - "<9>Automatons <7>drop their parts <a>{0}%"
@@ -472,6 +487,7 @@ items:
             values:
               - { per_level: 0.5 }
           - name: "Nucleic Explorer"
+            unavailable: "Needs Crystal Hollows content"
             kind: INACTIVE
             text:
               - "<7>Gain a <a>{0}% <7>chance to receive an"
@@ -501,16 +517,19 @@ items:
           COMMON: { defense: { per_level: 2 }, true_defense: { per_level: 0.1 } }
         abilities:
           - name: "Rideable"
+            unavailable: "Needs pet riding"
             kind: INACTIVE
             text:
               - "<7>Right-click your summoned pet"
               - "<7>to ride it!"
           - name: "Sailing Stone"
+            unavailable: "Needs pet riding"
             kind: INACTIVE
             text:
               - "<7>Sneak to move your rock to"
               - "<7>your location (15s cooldown)."
           - name: "Fortify"
+            unavailable: "Needs pet riding"
             rarity: RARE
             kind: INACTIVE
             text:
@@ -519,6 +538,7 @@ items:
             values:
               - { per_level: { RARE: 0.2, EPIC: 0.25 } }
           - name: "Steady Ground"
+            unavailable: "Needs pet riding"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -546,6 +566,7 @@ items:
           RARE: { mining_speed: { per_level: 1 }, mining_fortune: { per_level: 1.25 } }
         abilities:
           - name: "Burrowing"
+            unavailable: "Needs Crystal Hollows content"
             kind: INACTIVE
             text:
               - "<7>Grants a <a>+{0}% <7>chance to find"

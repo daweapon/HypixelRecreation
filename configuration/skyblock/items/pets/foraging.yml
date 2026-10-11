@@ -57,6 +57,7 @@ items:
               - { base: { RARE: 0.075, EPIC: 0.1 }, per_level: { RARE: 0.07425, EPIC: 0.099 } }
               - { base: { RARE: 0, MYTHIC: 0.02 }, per_level: { RARE: 0, MYTHIC: 0.0198 } }
           - name: "Hunting Enjoyer"
+            unavailable: "Needs water Shard fishing"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -66,6 +67,7 @@ items:
             values:
               - { base: 0.5, per_level: 0.495 }
           - name: "Home Sweet Home"
+            unavailable: "Needs Trophy Frogs"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -234,6 +236,7 @@ items:
               - { per_level: { COMMON: 0.15, UNCOMMON: 0.2, EPIC: 0.25 } }
               - { per_level: { COMMON: 0.3, UNCOMMON: 0.4, EPIC: 0.5 } }
           - name: "Stronk Arm"
+            unavailable: "Needs axe throwing"
             rarity: RARE
             kind: INACTIVE
             text:
@@ -243,6 +246,7 @@ items:
               - { per_level: { RARE: 0.2, EPIC: 0.4 } }
               - { per_level: { RARE: 0.5, EPIC: 1 } }
           - name: "Starlyn's Favorite"
+            unavailable: "Needs Starlyn contests"
             rarity: LEGENDARY
             kind: INACTIVE
             text:

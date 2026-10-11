@@ -113,6 +113,8 @@ public final class PetComponentParser {
         PetAbilityKind kind = raw.containsKey("kind")
                 ? PetAbilityKind.valueOf(String.valueOf(raw.get("kind")).trim().toUpperCase())
                 : PetAbilityKind.INACTIVE;
+        String unavailable = string(raw, "unavailable", null);
+        if (unavailable != null) kind = PetAbilityKind.INACTIVE;
 
         List<PetValue> values = new ArrayList<>();
         if (raw.get("values") instanceof List<?> list) {
@@ -192,7 +194,7 @@ public final class PetComponentParser {
         if (kind == PetAbilityKind.MINION_SPEED) require(!minions.isEmpty() && valueCount > 0, where, "needs minions and a value");
 
         return new ConfiguredPetAbility(name, minRarity, maxRarity, text, textByRarity, values, kind, statistics,
-                perStat, triggers, items, chance, mobs, minions, condition, handlerId, handler, baseLevel);
+                perStat, triggers, items, chance, mobs, minions, condition, handlerId, handler, baseLevel, unavailable);
     }
 
     private static void validate(PetAbilityKind kind, Map<ItemStatistic, ValueRef> statistics,

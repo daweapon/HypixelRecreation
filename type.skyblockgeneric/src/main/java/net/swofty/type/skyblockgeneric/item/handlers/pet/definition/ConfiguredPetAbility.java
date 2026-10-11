@@ -53,6 +53,7 @@ public final class ConfiguredPetAbility implements PetAbility {
     private final @Nullable String handlerId;
     private final @Nullable PetAbilityHandler handler;
     private final int baseLevel;
+    private final @Nullable String unavailable;
 
     public record PerStat(ItemStatistic grants, ValueRef amount, ItemStatistic per, ValueRef every, double above,
                           @Nullable Double max) {
@@ -70,7 +71,7 @@ public final class ConfiguredPetAbility implements PetAbility {
                          Map<ItemStatistic, ValueRef> statistics, @Nullable PerStat perStat, Set<PetTrigger> triggers,
                          List<ItemType> items, @Nullable ValueRef chance, Set<EntityType> mobs, Set<String> minions,
                          Predicate<SkyBlockPlayer> condition, @Nullable String handlerId,
-                         @Nullable PetAbilityHandler handler, int baseLevel) {
+                         @Nullable PetAbilityHandler handler, int baseLevel, @Nullable String unavailable) {
         this.name = name;
         this.minRarity = minRarity;
         this.maxRarity = maxRarity;
@@ -89,6 +90,7 @@ public final class ConfiguredPetAbility implements PetAbility {
         this.handlerId = handlerId;
         this.handler = handler;
         this.baseLevel = baseLevel;
+        this.unavailable = unavailable;
     }
 
     public boolean appliesAt(Rarity rarity) {
@@ -96,7 +98,7 @@ public final class ConfiguredPetAbility implements PetAbility {
     }
 
     public boolean isActive() {
-        return kind.isActive() && (kind != PetAbilityKind.HANDLER || handler != null);
+        return unavailable == null && kind.isActive() && (kind != PetAbilityKind.HANDLER || handler != null);
     }
 
     public double minionSpeedPercent(String minion, SkyBlockItem pet, SkyBlockPlayer player) {
@@ -130,7 +132,8 @@ public final class ConfiguredPetAbility implements PetAbility {
         }
         List<String> lines = new ArrayList<>();
         for (String line : textByRarity.getOrDefault(rarity, text)) lines.add(fill(line, evaluated));
-        if (!isActive()) lines.add(NOT_ACTIVE);
+        if (unavailable != null) lines.add("<8>(Unavailable: " + unavailable + ")");
+        else if (!isActive()) lines.add(NOT_ACTIVE);
         return lines;
     }
 

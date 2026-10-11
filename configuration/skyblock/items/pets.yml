@@ -58,6 +58,7 @@ items:
             values:
               - { per_level: 0.0002 }
           - name: "Powered by Pollen"
+            unavailable: "Needs the Garden"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -307,6 +308,7 @@ items:
             values:
               - { per_level: 1.5 }
           - name: "Abundant Harvest"
+            unavailable: "Needs the Garden"
             rarity: MYTHIC
             kind: INACTIVE
             text:

@@ -61,6 +61,7 @@ items:
             values:
               - { base: 10, per_level: 0.4 }
           - name: "Power Of Completion"
+            unavailable: "Needs Bingo events"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -88,6 +89,7 @@ items:
           COMMON: { health: 25, speed: 50 }
         abilities:
           - name: "Critter Capturer"
+            unavailable: "Needs Critter Safari"
             kind: INACTIVE
             text:
               - "<7>Your <c>Critter Capsules <7>are <a>{0}% <7>more"
@@ -95,6 +97,7 @@ items:
             values:
               - { base: { COMMON: 20, UNCOMMON: 35, EPIC: 50 } }
           - name: "Seer of the Skies"
+            unavailable: "Needs Critter Safari"
             rarity: RARE
             kind: INACTIVE
             text:
@@ -103,6 +106,7 @@ items:
             values:
               - { base: { RARE: 15, EPIC: 30 } }
           - name: "Flock Mentality"
+            unavailable: "Needs Critter Safari"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -161,6 +165,7 @@ items:
             values:
               - { per_level: 0.3 }
           - name: "Lucky Seven"
+            unavailable: "Needs Superpairs"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -187,12 +192,14 @@ items:
           LEGENDARY: { speed: { per_level: 0.15 } }
         abilities:
           - name: "Spiky Quills"
+            unavailable: "Needs the Garden"
             kind: INACTIVE
             text:
               - "<7>Deal <a>{0}% <7>more damage to <2><glyph:mobs_pest> Pests<7>."
             values:
               - { per_level: 1 }
           - name: "Fearsome Farmer"
+            unavailable: "Needs the Garden"
             kind: INACTIVE
             text:
               - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming Fortune <7>and"
@@ -201,6 +208,7 @@ items:
               - { per_level: 1 }
               - { per_level: 0.35 }
           - name: "Hunter's Insight"
+            unavailable: "Needs the Garden"
             kind: INACTIVE
             text:
               - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming Fortune<7> per"
@@ -226,6 +234,7 @@ items:
           EPIC: { health: { per_level: 2 }, health_regeneration: { per_level: 1 } }
         abilities:
           - name: "Radiant Scyphozoa"
+            unavailable: "Needs Dungeons"
             kind: INACTIVE
             text:
               - "<7>While in dungeons, reduces the"
@@ -234,6 +243,7 @@ items:
             values:
               - { per_level: 0.5 }
           - name: "Stored Energy"
+            unavailable: "Needs Dungeons"
             kind: INACTIVE
             text:
               - "<7>While in dungeons, for every"
@@ -244,6 +254,7 @@ items:
             values:
               - { per_level: 0.01 }
           - name: "Powerful Potions"
+            unavailable: "Needs Dungeons"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -268,6 +279,7 @@ items:
         skull_texture: df656c06e8a5cb4692564ee21748bddec9d785d1834284aaa1439601bba47d6b
         abilities:
           - name: "Nine Lives"
+            unavailable: "Needs the Rift"
             kind: INACTIVE
             text:
               - "<7>Gain <a>+{0}<glyph:stat_rift_time> Rift Time <7>per"
@@ -275,6 +287,7 @@ items:
             values:
               - { base: 15 }
           - name: "Trickery"
+            unavailable: "Needs the Rift"
             rarity: EPIC
             kind: INACTIVE
             text:
@@ -304,12 +317,14 @@ items:
           COMMON: { speed: { per_level: 0.2 }, bonus_pest_chance: { per_level: 0.5 } }
         abilities:
           - name: "Smooth Jazz"
+            unavailable: "Needs the Garden"
             kind: INACTIVE
             text:
               - "<7>Pest Vinyls are <a>+{0}% <7>more effective."
             values:
               - { per_level: { COMMON: 0.25, RARE: 0.35, EPIC: 0.5 } }
           - name: "Buzzin' Barterer"
+            unavailable: "Needs the Garden"
             rarity: RARE
             kind: INACTIVE
             text:
@@ -320,6 +335,7 @@ items:
             values:
               - { per_level: { RARE: 0.01, EPIC: 0.02 } }
           - name: "Bloodsucker's Betrayal"
+            unavailable: "Needs the Garden"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -367,6 +383,7 @@ items:
           COMMON: { speed: { per_level: 0.3 }, overbloom: { per_level: 0.15 } }
         abilities:
           - name: "Intelligent Specimen"
+            unavailable: "Needs the Garden"
             kind: INACTIVE
             text:
               - "<7>Earn <a>+{0}% <7>more Farming Tool Exp."
@@ -504,6 +521,7 @@ items:
           COMMON: { speed: { per_level: 0.15 }, potato_fortune: { per_level: 0.2 } }
         abilities:
           - name: "Hamfisted"
+            unavailable: "Needs the Garden"
             kind: INACTIVE
             text:
               - "<7>Increases <6>Coin <7>gain from <6>Shiny Pigs"
@@ -511,6 +529,7 @@ items:
             values:
               - { per_level: { COMMON: 0.2, UNCOMMON: 0.35, EPIC: 0.5 } }
           - name: "Shining Stampede"
+            unavailable: "Needs the Garden"
             rarity: RARE
             kind: INACTIVE
             text:
@@ -519,6 +538,7 @@ items:
             values:
               - { per_level: { RARE: 0.04, EPIC: 0.05 } }
           - name: "Pig Parade"
+            unavailable: "Needs Year of the X events"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -634,6 +654,7 @@ items:
             values:
               - { base: 1.5, per_level: 0.015 }
           - name: "Rosy Scales"
+            unavailable: "Needs the Garden"
             kind: INACTIVE
             text:
               - "<7>Grants <6>{0}<glyph:stat_farming_fortune> Farming Fortune <7>and"
@@ -649,6 +670,7 @@ items:
             values:
               - { base: 20, per_level: 0.2 }
           - name: "Spiritual Perfection"
+            unavailable: "Needs the Garden"
             kind: INACTIVE
             text:
               - "<7>Gain <a>{0}% <7>more <c>Copper <7>from <a>Garden"
@@ -702,6 +724,7 @@ items:
             values:
               - { per_level: 0.1 }
           - name: "Dungeon Wizard"
+            unavailable: "Needs Dungeons"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -764,6 +787,7 @@ items:
             values:
               - { per_level: 0.4 }
           - name: "Repugnant Aroma"
+            unavailable: "Needs the Garden"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
@@ -1017,6 +1041,7 @@ items:
           COMMON: { intelligence: { per_level: 1 }, alchemy_wisdom: { per_level: 0.05 } }
         abilities:
           - name: "Toil and Trouble"
+            unavailable: "Needs Year of the X events"
             kind: INACTIVE
             text:
               - "<7>Increases your chance of dropping"
@@ -1025,6 +1050,7 @@ items:
             values:
               - { per_level: { COMMON: 0.5, UNCOMMON: 0.75, EPIC: 1 } }
           - name: "Alchemism"
+            unavailable: "Needs brewing timers"
             rarity: RARE
             kind: INACTIVE
             text:
@@ -1033,6 +1059,7 @@ items:
             values:
               - { per_level: { RARE: 0.4, EPIC: 0.5 } }
           - name: "Witching Hour"
+            unavailable: "Needs Year of the X events"
             rarity: LEGENDARY
             kind: INACTIVE
             text:
