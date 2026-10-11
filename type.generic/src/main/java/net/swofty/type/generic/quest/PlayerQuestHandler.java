@@ -127,7 +127,7 @@ public class PlayerQuestHandler {
                 player.getExperienceHandler().addExperience(reward.getHypixelExperience());
             }
             if (reward.getCoins() > 0) {
-                player.sendMessage("<8>+<6>{} <7>Coins", reward.getCoins());
+                player.sendMessage("<8>+<6>{:,} <7>Coins", reward.getCoins());
             }
             if (reward.getGameExperience() > 0) {
                 player.sendMessage("<8>+<b>{} <7>Game Experience", reward.getGameExperience());
