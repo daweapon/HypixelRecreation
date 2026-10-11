@@ -66,6 +66,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -229,7 +230,8 @@ class MaxProfileTest {
     void glaciteWalkerMatchesCurrentHypixelStats() {
         var walker = new net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobGlaciteWalker();
         assertEquals(24, walker.getLevel());
-        assertEquals(net.minestom.server.entity.EntityType.ZOMBIE, walker.getEntityType());
+        assertEquals(net.minestom.server.entity.EntityType.PLAYER, walker.getEntityType());
+        assertNotNull(((net.swofty.type.skyblockgeneric.entity.mob.impl.MobPlayerSkin) walker).getSkinTexture());
         assertEquals(888D, walker.getBaseStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.HEALTH));
     }
 

@@ -28,10 +28,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator {
+public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator, net.swofty.type.skyblockgeneric.entity.mob.impl.MobPlayerSkin {
 
 	public MobGlaciteWalker() {
-		super(EntityType.ZOMBIE);
+		super(EntityType.PLAYER);
 	}
 
 	@Override
@@ -56,10 +56,16 @@ public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public void onInit() {
-		setBoots(new SkyBlockItem(ItemType.LAPIS_ARMOR_BOOTS).getItemStack());
-		setLeggings(new SkyBlockItem(ItemType.LAPIS_ARMOR_LEGGINGS).getItemStack());
-		setChestplate(new SkyBlockItem(ItemType.LAPIS_ARMOR_CHESTPLATE).getItemStack());
-		setHelmet(new SkyBlockItem(ItemType.LAPIS_ARMOR_HELMET).getItemStack());
+	}
+
+	@Override
+	public String getSkinTexture() {
+		return "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzQzODk0ZGNhMmMyNzk3NWYzMTY0MzFiYmI1NGE2ZWM1MWZmNDdiZWYyMzk5MTUxMTNhNDMzMmIxYTJlZDk0N2EifX19";
+	}
+
+	@Override
+	public String getSkinSignature() {
+		return null;
 	}
 
 	@Override
