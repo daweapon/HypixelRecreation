@@ -48,6 +48,7 @@ import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ArmorComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
 import net.swofty.type.skyblockgeneric.loottable.LootAffector;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
@@ -378,7 +379,8 @@ public abstract class SkyBlockMob extends EntityCreature {
 
             if (SkyBlockLootTable.LootRecord.isNone(record)) continue;
 
-            int amount = CombatPetHooks.collectionDropAmount(player, itemType, record.getAmount());
+            int amount = GatheringPetBonuses.squidDropAmount(player, this,
+                    CombatPetHooks.collectionDropAmount(player, itemType, record.getAmount()));
             SkyBlockItem item = createDrop(itemType, amount);
             ItemType droppedItemLinker = item.getAttributeHandler().getPotentialType();
             if (record.getChancePercent() < RARE_DROP_CHANCE_PERCENT) announceRareDrop(player, item);

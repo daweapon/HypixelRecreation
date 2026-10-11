@@ -39,7 +39,7 @@ public final class GatheringPetDrops {
     }
 
     public static void fishCaught(SkyBlockPlayer player, FishingMedium medium, CatchPayload payload) {
-        if (medium != FishingMedium.WATER || payload instanceof CatchPayload.SeaCreature) return;
+        if (medium != FishingMedium.WATER || includesSeaCreature(payload)) return;
         if (player.getRegion() != null && player.getRegion().getType() == RegionType.TOMB_FLOODWAY) return;
         SkyBlockItem pet = roll(player, ItemType.SQUID_PET, SQUID);
         if (pet == null) return;
@@ -47,6 +47,11 @@ public final class GatheringPetDrops {
         boolean outstanding = pet.getAttributeHandler().getRarity().isAtLeast(Rarity.EPIC);
         player.sendMessage((outstanding ? "<d><l>OUTSTANDING CATCH!</l>" : "<5><l>GREAT CATCH!</l>")
                 + " <b>You found a <f>" + pet.getDisplayName() + "<b>.");
+    }
+
+    private static boolean includesSeaCreature(CatchPayload payload) {
+        if (payload instanceof CatchPayload.Multi multi) return multi.payloads().stream().anyMatch(GatheringPetDrops::includesSeaCreature);
+        return payload instanceof CatchPayload.SeaCreature;
     }
 
     private static @Nullable SkyBlockItem roll(SkyBlockPlayer player, ItemType type, Map<Rarity, Double> chances) {

@@ -383,7 +383,9 @@ items:
           COMMON: { health: { per_level: 2 } }
         abilities:
           - name: "Ingest"
-            kind: INACTIVE
+            kind: DAMAGE_REDUCTION
+            triggers: [DAMAGED_BY_MOB]
+            when: { conditions: [ABSORPTION_ACTIVE] }
             text:
               - "<7>If you have any absorption active,"
               - "<7>gain <a>+{0}% Damage Reduction<7>."

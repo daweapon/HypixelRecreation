@@ -45,6 +45,7 @@ public final class GatheringPetAbilities implements PetAbilityRegistry.Provider 
         PetConditions.register("NIGHT", _ -> SkyBlockCalendar.getHour() < 6 || SkyBlockCalendar.getHour() >= 20);
         PetConditions.register("HOLDING_AXE", player -> holding(player, AxeComponent.class));
         PetConditions.register("HOLDING_DRILL", player -> holding(player, DrillComponent.class));
+        PetConditions.register("ABSORPTION_ACTIVE", player -> player.getAdditionalHearts() > 0);
         PetConditions.register("HOLDING_INK_WAND", player -> holdingType(player) == ItemType.INK_WAND);
 
         registrar.register("AMMONITE_HEART_OF_THE_SEA",

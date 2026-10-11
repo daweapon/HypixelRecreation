@@ -9,6 +9,7 @@ import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.minestom.server.tag.Tag;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.entity.drop.ItemDrops;
 import net.swofty.type.generic.event.EventNodes;
@@ -111,11 +112,12 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
             // Authored Park/Galatea trees are handled as a single tracked structure so Sweep can
             // harvest connected logs and the exact original blocks can grow back bottom-up.
             if (ForagingTreeManager.isTreeLog(block)) {
+                GatheringPetBonuses.SlowStart slowStart = GatheringPetBonuses.consumeSlowStart(player);
                 List<ForagingTreeManager.HarvestedLog> harvested = ForagingTreeManager.breakLogs(
-                        player, event.getBlockPosition(), heldItem
+                        player, event.getBlockPosition(), heldItem, slowStart.sweep()
                 );
                 for (ForagingTreeManager.HarvestedLog log : harvested) {
-                    processTreeLog(player, heldItem, region, log);
+                    processTreeLog(player, heldItem, region, log, slowStart.foragingFortune());
                 }
                 return;
             }
@@ -229,7 +231,7 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
     }
 
     private void processTreeLog(SkyBlockPlayer player, SkyBlockItem heldItem, SkyBlockRegion region,
-                                ForagingTreeManager.HarvestedLog harvested) {
+                                ForagingTreeManager.HarvestedLog harvested, double extraFortune) {
         Material originalMaterial = Material.fromKey(harvested.originalBlock().key());
         if (originalMaterial == null) return;
 
@@ -248,6 +250,8 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
         double fortune = player.getStatistics().allStatistics().getOverall(
                 net.swofty.commons.skyblock.statistics.ItemStatistic.FORAGING_FORTUNE
         );
+        fortune += extraFortune;
+        if (GatheringPetBonuses.treeEssenceProcs(player)) player.addExperience(1);
         if (harvested.dropType() == ItemType.FIG_LOG) {
             fortune += player.getStatistics().allStatistics().getOverall(
                     net.swofty.commons.skyblock.statistics.ItemStatistic.FIG_FORTUNE

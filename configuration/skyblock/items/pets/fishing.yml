@@ -86,7 +86,7 @@ items:
               - { per_level: { RARE: 0.07, EPIC: 0.1 } }
           - name: "Splash Surprise"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Stun sea creatures for <a>5s"
               - "<a><7>after fishing them up."
@@ -214,7 +214,7 @@ items:
               - { per_level: 0.002 }
           - name: "Hotspot Hazard"
             rarity: MYTHIC
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Increases the chance of catching"
               - "<d>Hotspot Sea Creatures <7>by <a>{0}%<7>."
@@ -275,7 +275,7 @@ items:
           LEGENDARY: { sea_creature_chance: { per_level: 0.1 }, cold_resistance: { per_level: 0.15 } }
         abilities:
           - name: "Thick Blubber"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Each time you catch a Sea Creature,"
               - "<7>reduce your <b><glyph:stat_cold_resistance> Cold <7>by <a>{0}<7>."
@@ -412,7 +412,7 @@ items:
           COMMON: { health: { per_level: 0.5 }, intelligence: { per_level: 0.5 } }
         abilities:
           - name: "More Ink"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain a <a>{0}% <7>chance to get"
               - "<7>double drops from squids."

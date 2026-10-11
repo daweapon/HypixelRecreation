@@ -100,7 +100,7 @@ items:
               - { per_level: { RARE: 0.1, EPIC: 0.2 } }
           - name: "Frosty Familiarity"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Grants <b>+{0}<glyph:stat_magic_find> Magic Find <7>against"
               - "<f>Winter Sea Creatures<7>."

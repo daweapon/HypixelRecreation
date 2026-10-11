@@ -99,6 +99,10 @@ public final class ForagingTreeManager {
      * Breaks the initially hit log plus all logs selected by Sweep.
      */
     public static List<HarvestedLog> breakLogs(SkyBlockPlayer player, Point hitPoint, SkyBlockItem tool) {
+        return breakLogs(player, hitPoint, tool, 0);
+    }
+
+    public static List<HarvestedLog> breakLogs(SkyBlockPlayer player, Point hitPoint, SkyBlockItem tool, double extraSweep) {
         Instance instance = player.getInstance();
         BlockPosition hit = BlockPosition.from(hitPoint);
         Block hitBlock = instance.getBlock(hitPoint);
@@ -108,7 +112,7 @@ public final class ForagingTreeManager {
         TrackedTree tree = getOrDiscoverTree(instance, hit, hitBlock, kind);
 
         double sweep = tool.hasComponent(AxeComponent.class)
-                ? player.getStatistics().allStatistics().getOverall(ItemStatistic.SWEEP)
+                ? player.getStatistics().allStatistics().getOverall(ItemStatistic.SWEEP) + extraSweep
                 : 0;
         if (tool.hasComponent(AxeComponent.class)) {
             if (kind == TreeKind.FIG)

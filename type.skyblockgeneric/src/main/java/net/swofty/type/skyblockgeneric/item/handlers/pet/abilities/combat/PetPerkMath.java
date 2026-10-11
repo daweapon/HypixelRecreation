@@ -14,6 +14,9 @@ public final class PetPerkMath {
     public static final long SKELETAL_DEFENSE_COOLDOWN_MS = 5_000;
     public static final long HEMORRHAGE_MS = 10_000;
     public static final long STUN_MS = 10_000;
+    public static final long SPLASH_SURPRISE_STUN_MS = 5_000;
+    public static final long SLOW_START_COOLDOWN_MS = 60_000;
+    public static final double HOTSPOT_CHANCE_CAP = 85;
     public static final long STUN_COOLDOWN_MS = 10_000;
     public static final double AURA_RANGE = 50;
     public static final int AURA_TARGETS = 4;
@@ -89,6 +92,14 @@ public final class PetPerkMath {
 
     public static double jumpStrength(int jumpBoostLevel) {
         return BASE_JUMP_STRENGTH + JUMP_STRENGTH_PER_LEVEL * Math.max(0, jumpBoostLevel);
+    }
+
+    public static double hotspotChance(double baseChance, double petBonus, double cap) {
+        return Math.min(cap, baseChance + Math.max(0, petBonus));
+    }
+
+    public static boolean doublesSquidDrops(String seaCreatureId) {
+        return "SQUID".equals(seaCreatureId) || "NIGHT_SQUID".equals(seaCreatureId);
     }
 
     public static double speedWithRaisedCap(double rawSpeed, double baseCap, double capBonus) {

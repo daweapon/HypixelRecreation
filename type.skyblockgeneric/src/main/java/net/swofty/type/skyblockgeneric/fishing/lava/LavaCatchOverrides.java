@@ -1,6 +1,9 @@
 package net.swofty.type.skyblockgeneric.fishing.lava;
 
 import net.minestom.server.coordinate.Pos;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.PetPerkMath;
+import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 import net.swofty.type.skyblockgeneric.fishing.FishingContext;
 import net.swofty.type.skyblockgeneric.fishing.FishingMedium;
 import net.swofty.type.skyblockgeneric.fishing.hotspot.FishingHotspotService;
@@ -44,7 +47,8 @@ public final class LavaCatchOverrides {
     static double hotspotChance(FishingContext context) {
         double chance = HOTSPOT_BASE_CHANCE;
         if (context.bait() != null && "HOTSPOT_BAIT".equals(context.bait().getItemId())) chance += HOTSPOT_BAIT_BONUS;
-        return Math.min(HOTSPOT_CAP, chance);
+        double petBonus = PetAbilities.value(context.player(), ItemType.HERMIT_CRAB_PET, "Hotspot Hazard", 0);
+        return PetPerkMath.hotspotChance(chance, petBonus, HOTSPOT_CAP);
     }
 
     private static boolean inPlhlegblastPool(FishingContext context) {

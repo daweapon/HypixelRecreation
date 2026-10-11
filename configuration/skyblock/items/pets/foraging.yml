@@ -180,7 +180,7 @@ items:
               - { per_level: 0.3 }
           - name: "Tree Essence"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain a <a>{0}% <7>chance to get"
               - "<7>exp from breaking a log."
@@ -227,7 +227,7 @@ items:
           COMMON: { sweep: { per_level: 0.25 }, foraging_fortune: { per_level: 0.25 } }
         abilities:
           - name: "Slow Start"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Every <a>60s<7>, your next cut gains"
               - "<2>+{0} <glyph:stat_sweep> Sweep <7>and <6>+{1} <glyph:stat_foraging_fortune> Foraging"

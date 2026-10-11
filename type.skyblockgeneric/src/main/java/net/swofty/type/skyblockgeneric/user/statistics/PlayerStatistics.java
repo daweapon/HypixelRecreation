@@ -316,6 +316,7 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, CarnivalStatistics.against(player, enemy));
         total = ItemStatistics.add(total, MythologicalGear.against(player, enemy));
         total = ItemStatistics.add(total, net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.against(player, enemy));
+        total = ItemStatistics.add(total, net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses.against(player, enemy));
         total = ItemStatistics.add(total, allArmorStatistics(causer, enemy));
         total = ItemStatistics.add(total, equipmentStatistics(causer, enemy));
         total = ItemStatistics.add(total, mainHandStatistics(causer, enemy));

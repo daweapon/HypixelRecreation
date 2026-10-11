@@ -5,6 +5,7 @@ import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointPetData;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.AbilityRuntime;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.ConfiguredPetAbility;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -31,6 +32,11 @@ public final class PetAbilities {
         if (active == null) return 0;
         double[] values = ((ConfiguredPetAbility) active.ability()).valuesFor(active.pet());
         return index < values.length ? values[index] : 0;
+    }
+
+    public static AbilityRuntime runtime(SkyBlockPlayer player, ItemType pet, String ability) {
+        DatapointPetData.ActiveAbility active = find(player, pet, ability);
+        return active == null ? null : player.getPetData().getAbilityRuntime(active.ability());
     }
 
     public static double minionSpeedPercent(Instance island, String minion) {
