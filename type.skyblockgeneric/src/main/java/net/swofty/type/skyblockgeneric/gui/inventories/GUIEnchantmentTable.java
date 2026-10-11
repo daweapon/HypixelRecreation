@@ -77,6 +77,9 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
         set(new GUIClickableItem(50) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                e.setCancelled(true);
+                p.closeInventory();
+                HypixelInventoryGUI.GUI_MAP.remove(p.getUuid());
                 ViewNavigator.get(p).push(new GUIEnchantmentGuide());
             }
 

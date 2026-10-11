@@ -20,7 +20,7 @@ import java.util.List;
 // One enchantment in the Enchantments Guide: a book per level with its effect and Exp Level apply cost.
 public class GUIEnchantmentLevels extends StatelessView {
     private static final int[] LEVEL_SLOTS = {19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34};
-    private final EnchantmentType type;
+    final EnchantmentType type;
 
     public GUIEnchantmentLevels(EnchantmentType type) {
         this.type = type;
@@ -46,7 +46,7 @@ public class GUIEnchantmentLevels extends StatelessView {
         }
     }
 
-    private ItemStack.Builder summary(SkyBlockPlayer player) {
+    ItemStack.Builder summary(SkyBlockPlayer player) {
         List<Text> lore = new ArrayList<>();
         lore.add(Text.parseLenient("<8>" + (type.getEnch().isUltimate() ? "Ultimate Enchantment" : "Enchantment")));
         lore.add(Text.empty());
@@ -66,7 +66,7 @@ public class GUIEnchantmentLevels extends StatelessView {
         return ItemStacks.item(Material.BOOK, 1, Text.parseLenient(type.getEnch().isUltimate() ? "<d><l>" + type.getName() : "<9>" + type.getName()), lore);
     }
 
-    private ItemStack.Builder levelBook(int level, SkyBlockPlayer player) {
+    ItemStack.Builder levelBook(int level, SkyBlockPlayer player) {
         List<Text> lore = new ArrayList<>(EnchantmentGuideLore.description(type, level, player));
         if (level <= type.getEnch().getLevelsToApply(player).maximumLevel()) {
             lore.add(Text.empty());

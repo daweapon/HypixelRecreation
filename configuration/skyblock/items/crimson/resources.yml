@@ -61,7 +61,7 @@ items:
       - id: ANVIL_COMBINABLE
         handler_id: DYE_BONE
   - id: MAGMA_URCHIN
-    material: paper
+    material: magma_block
     name: "Magma Urchin"
     rarity: EPIC
     components:

@@ -222,7 +222,7 @@ items:
       - ""
       - "§cObtained from Kuudra (not available yet)"
   - id: MANDRAA
-    material: paper
+    material: beetroot
     name: "Mandraa"
     rarity: RARE
     components:

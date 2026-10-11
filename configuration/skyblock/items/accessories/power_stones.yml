@@ -1,7 +1,7 @@
 # Tooltips come from AccessoryPowerType. Magma Urchin, Scorched Books, Mandraa and Luxurious Spool live with their sources.
 items:
   - id: ACACIA_BIRDHOUSE
-    material: paper
+    material: acacia_planks
     name: "Acacia Birdhouse"
     rarity: RARE
     components:
@@ -23,73 +23,73 @@ items:
               type: ACACIA_BIRDHOUSE
               amount: 1
   - id: BEATING_HEART
-    material: paper
+    material: redstone
     name: "Beating Heart"
     rarity: RARE
     components:
       - id: POWER_STONE
   - id: BUBBA_BLISTER
-    material: paper
+    material: magma_cream
     name: "Bubba Blister"
     rarity: LEGENDARY
     components:
       - id: POWER_STONE
   - id: CHOCOLATE_CHIP
-    material: paper
+    material: cocoa_beans
     name: "Fang-tastic Chocolate Chip"
     rarity: LEGENDARY
     components:
       - id: POWER_STONE
   - id: DARK_ORB
-    material: paper
+    material: ender_pearl
     name: "Dark Orb"
     rarity: RARE
     components:
       - id: POWER_STONE
   - id: DISPLACED_LEECH
-    material: paper
+    material: slime_ball
     name: "Displaced Leech"
     rarity: UNCOMMON
     components:
       - id: POWER_STONE
   - id: ECCENTRIC_PAINTING
-    material: paper
+    material: painting
     name: "Eccentric Painting"
     rarity: LEGENDARY
     components:
       - id: POWER_STONE
   - id: ENDER_MONOCLE
-    material: paper
+    material: ender_eye
     name: "Ender Monocle"
     rarity: RARE
     components:
       - id: POWER_STONE
   - id: END_STONE_SHULKER
-    material: paper
+    material: shulker_shell
     name: "End Stone Shulker"
     rarity: RARE
     components:
       - id: POWER_STONE
   - id: FURBALL
-    material: paper
+    material: string
     name: "Furball"
     rarity: RARE
     components:
       - id: POWER_STONE
   - id: GLACITE_SHARD
-    material: paper
+    material: amethyst_shard
     name: "Glacite Chunk"
     rarity: LEGENDARY
     components:
       - id: POWER_STONE
   - id: HAZMAT_ENDERMAN
-    material: paper
+    material: yellow_dye
     name: "Hazmat Enderman"
     rarity: LEGENDARY
     components:
       - id: POWER_STONE
   - id: HORNS_OF_TORMENT
-    material: paper
+    material: goat_horn
     name: "Horns of Torment"
     rarity: EPIC
     components:
@@ -114,7 +114,7 @@ items:
               type: HORNS_OF_TORMENT
               amount: 1
   - id: OBSIDIAN_TABLET
-    material: paper
+    material: obsidian
     name: "Obsidian Tablet"
     rarity: RARE
     components:
@@ -139,25 +139,25 @@ items:
               type: OBSIDIAN_TABLET
               amount: 1
   - id: PRECIOUS_PEARL
-    material: paper
+    material: heart_of_the_sea
     name: "Precious Pearl"
     rarity: EPIC
     components:
       - id: POWER_STONE
   - id: ROCK_CANDY
-    material: paper
+    material: sugar
     name: "Rock Candy"
     rarity: UNCOMMON
     components:
       - id: POWER_STONE
   - id: SUNFLOWER_BUTTER
-    material: paper
+    material: sunflower
     name: "Sunflower Butter"
     rarity: RARE
     components:
       - id: POWER_STONE
   - id: VITAMIN_DEATH
-    material: paper
+    material: honey_bottle
     name: "Vitamin Death"
     rarity: LEGENDARY
     components:

@@ -125,7 +125,7 @@ items:
       - ""
       - "§cThis potion's effect isn't active yet."
   - id: SCORCHED_BOOKS
-    material: paper
+    material: book
     name: "Scorched Books"
     rarity: MYTHIC
     components:
