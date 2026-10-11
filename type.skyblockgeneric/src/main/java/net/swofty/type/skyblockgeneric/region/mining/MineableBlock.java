@@ -80,9 +80,9 @@ public enum MineableBlock {
     TUNGSTEN_ORE(Material.CLAY, MiningHandlers.pickaxe(5600, 9), MiningBlockClassification.dwarvenMetalBlock()),
     GLACITE_ORE(Material.PACKED_ICE, MiningHandlers.pickaxe(6000, 9), MiningBlockClassification.dwarvenMetalBlock()),
     AQUAMARINE_ORE(Material.BLUE_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
-    CITRINE_ORE(Material.YELLOW_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
+    CITRINE_ORE(Material.BROWN_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
     ONYX_ORE(Material.BLACK_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
-    PERIDOT_ORE(Material.LIME_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
+    PERIDOT_ORE(Material.GREEN_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
 
     // Crimson Isle
     MYCELIUM(Material.MYCELIUM, MiningHandlers.hand(12, 6), MiningBlockClassification.blockBlock()),

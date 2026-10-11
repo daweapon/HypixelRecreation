@@ -7,6 +7,7 @@ public final class ColdMath {
     public static final double BASE_SECONDS_PER_POINT = 5;
     public static final double WATER_VULNERABILITY = 3;
     public static final double CAMPFIRE_COLD = 50;
+    public static final double BASE_SPEED_CAP = 400;
 
     public static final List<Threshold> THRESHOLDS = List.of(
             new Threshold(-25, "<9><l>BRRR! <r><b>It's getting really cold in here! But you've got to keep moving..."),
@@ -22,9 +23,11 @@ public final class ColdMath {
 
     public static double miningSpeedMultiplier(double cold, double resistance) {
         double effective = Math.min(0, cold + Math.max(0, resistance));
-        double penalty = -effective * 0.005;
-        double cap = Math.floor(-cold / 25) * 0.25;
-        return Math.max(0, 1 - Math.max(penalty, cap));
+        return Math.max(0, 1 + effective * 0.005);
+    }
+
+    public static double speedCapMultiplier(double cold) {
+        return Math.max(0, 1 - Math.floor(-cold / 25) * 0.25);
     }
 
     public static double clamp(double cold) {

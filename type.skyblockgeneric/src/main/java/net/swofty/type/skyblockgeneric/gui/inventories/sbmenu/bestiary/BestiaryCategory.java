@@ -7,6 +7,14 @@ import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.CataloguedBestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobAshfang;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.DiamondGoblin;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.GoldenGoblin;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobGlaciteWalker;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobTreasureHoarder;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.goblin.MobFireslinger;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.goblin.MobGoblin;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.goblin.MobGoblinFlamethrower;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.goblin.MobKnifethrower;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBarbarianDukeX;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBezal;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobBladesoul;
@@ -158,6 +166,31 @@ public enum BestiaryCategory {
             this.description = description;
             this.guiMaterial = guiMaterial;
             this.mobs = mobs;
+        }
+    }
+
+    @Getter
+    public enum DWARVEN_MINES implements BestiaryEntry {
+        DIAMOND_GOBLIN("<a>Diamond Goblin", "Does nothing but steal, even from its fellow goblins.", List.of(new DiamondGoblin())),
+        GLACITE_WALKER("<a>Glacite Walker", "Guardians of the Gate to the icy caves below.", List.of(new MobGlaciteWalker())),
+        GOBLIN("<a>Goblin", "The Goblins have plagued the Dwarven Mines for centuries.",
+                List.of(new MobGoblin(), new MobFireslinger(), new MobKnifethrower(), new MobGoblinFlamethrower())),
+        GOLDEN_GOBLIN("<a>Golden Goblin", "Take the things you love in life, and run with them.", List.of(new GoldenGoblin())),
+        TREASURE_HOARDER("<a>Treasure Hoarder", "The real treasure was the gold we found along the way.", List.of(new MobTreasureHoarder())),
+        ;
+
+        private final String name, description;
+        private final List<BestiaryMob> mobs;
+
+        DWARVEN_MINES(String name, String description, List<BestiaryMob> mobs) {
+            this.name = name;
+            this.description = description;
+            this.mobs = mobs;
+        }
+
+        @Override
+        public GUIMaterial getGuiMaterial() {
+            return mobs.getFirst().getGuiMaterial();
         }
     }
 

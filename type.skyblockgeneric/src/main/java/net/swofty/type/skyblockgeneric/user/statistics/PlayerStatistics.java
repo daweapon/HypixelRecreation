@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.user.statistics;
 
+import net.swofty.type.skyblockgeneric.glacite.ColdService;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryPower;
 import net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments;
 import net.swofty.type.skyblockgeneric.accessory.power.AccessoryPowerType;
@@ -847,7 +848,7 @@ public class PlayerStatistics {
         scheduler.submitTask(() -> {
             SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
                 Thread.startVirtualThread(() -> {
-                    double speed = player.getStatistics().allStatistics().getOverall(ItemStatistic.SPEED);
+                    double speed = Math.min(player.getStatistics().allStatistics().getOverall(ItemStatistic.SPEED), ColdService.speedCap(player));
                     if (player.isSpeedManaged()) return; // if the Speed is currently managed by another source, don't override it
                     player.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue((float) (speed / 1000));
                 });

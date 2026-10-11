@@ -32,9 +32,21 @@ class ColdMathTest {
     }
 
     @Test
-    void everyTwentyFiveColdCapsSpeedByAnotherQuarterRegardlessOfResistance() {
-        assertEquals(0.75, ColdMath.miningSpeedMultiplier(-25, 1000), 1e-9);
-        assertEquals(0.5, ColdMath.miningSpeedMultiplier(-50, 1000), 1e-9);
+    void miningSpeedPenaltyMatchesTheColdEnjoyerExample() {
+        assertEquals(0.675, ColdMath.miningSpeedMultiplier(-70, 5), 1e-9);
+    }
+
+    @Test
+    void resistanceAtLeastColdMeansNoMiningPenalty() {
+        assertEquals(1.0, ColdMath.miningSpeedMultiplier(-99, 99), 1e-9);
+    }
+
+    @Test
+    void everyTwentyFiveColdCutsTheSpeedCapByAnotherQuarter() {
+        assertEquals(1.0, ColdMath.speedCapMultiplier(-24), 1e-9);
+        assertEquals(0.75, ColdMath.speedCapMultiplier(-25), 1e-9);
+        assertEquals(0.25, ColdMath.speedCapMultiplier(-75), 1e-9);
+        assertEquals(0, ColdMath.speedCapMultiplier(-100), 1e-9);
     }
 
     @Test

@@ -13,16 +13,16 @@ import java.util.Set;
 public enum GlaciteOre {
     UMBER(MineableBlock.UMBER_ORE, ItemType.UMBER, true,
             Material.BROWN_TERRACOTTA, Material.TERRACOTTA, Material.RED_SANDSTONE, Material.SMOOTH_RED_SANDSTONE),
-    TUNGSTEN(MineableBlock.TUNGSTEN_ORE, ItemType.TUNGSTEN, true, Material.COBBLESTONE, Material.CLAY),
+    TUNGSTEN(MineableBlock.TUNGSTEN_ORE, ItemType.TUNGSTEN, true, Material.COBBLESTONE, Material.INFESTED_COBBLESTONE, Material.CLAY),
     GLACITE(MineableBlock.GLACITE_ORE, ItemType.GLACITE, true, Material.PACKED_ICE),
     AQUAMARINE(MineableBlock.AQUAMARINE_ORE, ItemType.ROUGH_AQUAMARINE_GEM, false,
             Material.BLUE_STAINED_GLASS, Material.BLUE_STAINED_GLASS_PANE),
     CITRINE(MineableBlock.CITRINE_ORE, ItemType.ROUGH_CITRINE_GEM, false,
-            Material.YELLOW_STAINED_GLASS, Material.YELLOW_STAINED_GLASS_PANE),
+            Material.BROWN_STAINED_GLASS, Material.BROWN_STAINED_GLASS_PANE),
     ONYX(MineableBlock.ONYX_ORE, ItemType.ROUGH_ONYX_GEM, false,
             Material.BLACK_STAINED_GLASS, Material.BLACK_STAINED_GLASS_PANE),
     PERIDOT(MineableBlock.PERIDOT_ORE, ItemType.ROUGH_PERIDOT_GEM, false,
-            Material.LIME_STAINED_GLASS, Material.LIME_STAINED_GLASS_PANE);
+            Material.GREEN_STAINED_GLASS, Material.GREEN_STAINED_GLASS_PANE);
 
     public static final long BASE_GLACITE_POWDER = 2;
 

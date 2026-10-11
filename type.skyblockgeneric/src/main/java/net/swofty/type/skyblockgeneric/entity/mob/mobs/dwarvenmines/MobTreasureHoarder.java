@@ -49,7 +49,7 @@ public class MobTreasureHoarder extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public GUIMaterial getGuiMaterial() {
-		return null;
+		return new GUIMaterial("374c6b90ceedba3d8bb1d1a84dff402115964ef333de563bcd6799f3738bed06");
 	}
 
 	@Override

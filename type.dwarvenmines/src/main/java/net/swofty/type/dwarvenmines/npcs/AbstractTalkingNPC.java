@@ -1,7 +1,6 @@
 package net.swofty.type.dwarvenmines.npcs;
 
 import net.minestom.server.coordinate.Pos;
-import net.swofty.commons.text.Text;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
@@ -40,7 +39,7 @@ public abstract class AbstractTalkingNPC extends HypixelNPC {
 
 			@Override
 			public @NonNull String chatName(HypixelPlayer player) {
-				return Text.of("{}{}", color, name).serialize();
+				return color + name;
 			}
 		});
 		this.lines = lines;
@@ -55,6 +54,10 @@ public abstract class AbstractTalkingNPC extends HypixelNPC {
 
 	@Override
 	protected DialogueSet[] dialogues(HypixelPlayer player) {
-		return new DialogueSet[]{DialogueSet.builder().key("talk").lines(lines).build()};
+		return new DialogueSet[]{DialogueSet.builder().key("talk").lines(lines(player)).build()};
+	}
+
+	protected String[] lines(HypixelPlayer player) {
+		return lines;
 	}
 }

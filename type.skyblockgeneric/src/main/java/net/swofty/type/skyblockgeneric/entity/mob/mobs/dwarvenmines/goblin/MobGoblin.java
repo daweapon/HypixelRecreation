@@ -145,7 +145,7 @@ public class MobGoblin extends BestiaryMob implements RegionPopulator, MobPlayer
 
 	@Override
 	public List<Populator> getPopulators() {
-		return List.of(new Populator(RegionType.GOBLIN_BURROWS, 20));
+		return List.of(new Populator(RegionType.GOBLIN_BURROWS, 13));
 	}
 
 	@Override

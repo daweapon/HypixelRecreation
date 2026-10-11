@@ -11,12 +11,12 @@ sections:
   - heading: "The Cold"
     colour: "<9>"
     lines:
-      - "Cold builds up while you are in the Glacite Tunnels: 1 point every 5 seconds, faster if you swim in the Great Glacite Lake. Each point costs 0.5% Mining Speed, and every 25 Cold caps your Mining Speed a further 25% lower."
+      - "Cold builds up while you are in the Glacite Tunnels: 1 point every 5 seconds, faster if you swim in the Great Glacite Lake. Each point past your Cold Resistance costs 0.5% Mining Speed, and every 25 Cold cuts your Speed cap by 25%, down to a crawl at -75."
       - "Cold Resistance slows it down. At -100 Cold you freeze to death and wake up in the Dwarven Base Camp, which also resets your Cold."
   - heading: "New ores"
     colour: "<6>"
     lines:
-      - "Mine Umber, Tungsten and Glacite for Glacite Powder, and Aquamarine, Citrine, Onyx and Peridot gemstones. All need Breaking Power 9. They grow back 15 seconds after Mithril would."
+      - "Mine Umber, Tungsten and Glacite for Glacite Powder, and Aquamarine (blue), Citrine (brown), Onyx (black) and Peridot (green) gemstones. All need Breaking Power 9. They grow back 15 seconds after Mithril would."
       - "Your first Glacite mined each day pays 500 Glacite Powder per Heart of the Mountain tier."
   - heading: "Dwarven Base Camp"
     colour: "<a>"
@@ -27,3 +27,5 @@ sections:
     colour: "<c>"
     lines:
       - "Glacite Walkers are now Level 24 with 888 health, like on Hypixel."
+      - "The Dwarven Mines Bestiary now works, with the Goblin, Diamond Goblin, Golden Goblin, Glacite Walker and Treasure Hoarder families."
+      - "There are about a third fewer Goblins in the Goblin Burrows."

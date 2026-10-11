@@ -53,6 +53,11 @@ public final class ColdService {
         return ColdMath.miningSpeedMultiplier(cold, resistance(player));
     }
 
+    public static double speedCap(SkyBlockPlayer player) {
+        double cold = cold(player);
+        return cold >= 0 ? Double.MAX_VALUE : ColdMath.BASE_SPEED_CAP * ColdMath.speedCapMultiplier(cold);
+    }
+
     private static double resistance(SkyBlockPlayer player) {
         return player.getStatistics().allStatistics().getOverall(ItemStatistic.COLD_RESISTANCE);
     }

@@ -20,6 +20,20 @@ class GlaciteOreTest {
     }
 
     @Test
+    void gemstonesUseTheSameGlassColoursAsHypixel() {
+        assertEquals(GlaciteOre.AQUAMARINE, GlaciteOre.of(Material.BLUE_STAINED_GLASS, RegionType.GLACITE_TUNNELS));
+        assertEquals(GlaciteOre.CITRINE, GlaciteOre.of(Material.BROWN_STAINED_GLASS, RegionType.GLACITE_TUNNELS));
+        assertEquals(GlaciteOre.ONYX, GlaciteOre.of(Material.BLACK_STAINED_GLASS, RegionType.GLACITE_TUNNELS));
+        assertEquals(GlaciteOre.PERIDOT, GlaciteOre.of(Material.GREEN_STAINED_GLASS, RegionType.GLACITE_TUNNELS));
+        assertNull(GlaciteOre.of(Material.YELLOW_STAINED_GLASS, RegionType.GLACITE_TUNNELS));
+    }
+
+    @Test
+    void theMapsInfestedCobblestoneIsTungsten() {
+        assertEquals(GlaciteOre.TUNGSTEN, GlaciteOre.of(Material.INFESTED_COBBLESTONE, RegionType.GLACITE_TUNNELS));
+    }
+
+    @Test
     void everyColdZoneMinesTheSameOres() {
         for (RegionType zone : new RegionType[]{RegionType.GLACITE_TUNNELS, RegionType.GREAT_GLACITE_LAKE, RegionType.GRANDPA_WOLFS_CAVE}) {
             assertEquals(GlaciteOre.GLACITE, GlaciteOre.of(Material.PACKED_ICE, zone), zone.name());
@@ -62,7 +76,7 @@ class GlaciteOreTest {
 
     @Test
     void glassPanesMineAsTheirGemstone() {
-        assertEquals(GlaciteOre.CITRINE, GlaciteOre.of(Material.YELLOW_STAINED_GLASS_PANE, RegionType.GLACITE_TUNNELS));
+        assertEquals(GlaciteOre.CITRINE, GlaciteOre.of(Material.BROWN_STAINED_GLASS_PANE, RegionType.GLACITE_TUNNELS));
     }
 
     @Test
