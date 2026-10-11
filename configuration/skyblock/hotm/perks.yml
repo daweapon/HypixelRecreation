@@ -1,4 +1,4 @@
-# Heart of the Mountain perks. Cost to reach level N (N >= 2) = floor((N + offset) ^ exponent) in the perk's powder; level 1 costs only the token cost.
+# Heart of the Mountain perks. tier is the tree row (1 at the bottom) and col the column (1-7, 4 is the centre). Cost to reach level N (N >= 2) = floor((N + offset) ^ exponent) in the perk's powder; level 1 costs only the token cost.
 # Effect value at level L = min(cap, base + perLevel * L). Layout and tier gating are approximated (the wiki gives no tree positions).
 tokenCostPerPerk: 1
 perks:
@@ -6,11 +6,11 @@ perks:
     name: "Mining Speed"
     powder: "MITHRIL"
     tier: 1
+    col: 4
     maxLevel: 50
     exponent: 3.0
     offset: 1
     icon: "IRON_PICKAXE"
-    slot: 36
     available: true
     description: "Grants <6>+{value} Mining Speed<7>."
     effects:
@@ -19,11 +19,11 @@ perks:
     name: "Mining Fortune"
     powder: "MITHRIL"
     tier: 2
+    col: 2
     maxLevel: 50
     exponent: 3.05
     offset: 1
     icon: "GOLD_INGOT"
-    slot: 37
     available: true
     description: "Grants <6>+{value} Mining Fortune<7>."
     effects:
@@ -31,12 +31,12 @@ perks:
   - id: titanium_insanium
     name: "Titanium Insanium"
     powder: "MITHRIL"
-    tier: 3
+    tier: 2
+    col: 3
     maxLevel: 50
     exponent: 3.1
     offset: 1
     icon: "POLISHED_DIORITE"
-    slot: 38
     available: true
     description: "When mining Mithril Ore, you have a <a>{value}%<7> chance to convert the block into Titanium Ore."
     effects:
@@ -44,12 +44,12 @@ perks:
   - id: luck_of_the_cave
     name: "Luck of the Cave"
     powder: "MITHRIL"
-    tier: 3
+    tier: 2
+    col: 5
     maxLevel: 45
     exponent: 3.07
     offset: 1
     icon: "RABBIT_FOOT"
-    slot: 39
     available: true
     description: "Increases the chance for Golden Goblins, Fallen Stars and Powder Ghasts to appear in the Dwarven Mines by <a>{value}%<7>."
     effects:
@@ -57,12 +57,12 @@ perks:
   - id: efficient_miner
     name: "Efficient Miner"
     powder: "MITHRIL"
-    tier: 3
+    tier: 2
+    col: 4
     maxLevel: 100
     exponent: 2.6
     offset: 1
     icon: "DIAMOND_PICKAXE"
-    slot: 40
     available: true
     description: "Grants <e>+{value} Mining Spread<7>."
     effects:
@@ -70,12 +70,12 @@ perks:
   - id: quick_forge
     name: "Quick Forge"
     powder: "MITHRIL"
-    tier: 4
+    tier: 2
+    col: 6
     maxLevel: 20
     exponent: 3.2
     offset: 1
     icon: "ANVIL"
-    slot: 41
     available: false
     description: "Decreases the time it takes to forge by <a>{value}%<7>."
     effects:
@@ -83,12 +83,12 @@ perks:
   - id: sky_mall
     name: "Sky Mall"
     powder: null
-    tier: 5
+    tier: 3
+    col: 2
     maxLevel: 1
     exponent: 0
     offset: 0
     icon: "EMERALD"
-    slot: 42
     available: true
     description: "Every SkyBlock day, you receive a random buff in the Dwarven Mines."
     effects:
@@ -96,12 +96,12 @@ perks:
   - id: magic_find
     name: "Miner's Luck"
     powder: null
-    tier: 6
+    tier: 3
+    col: 4
     maxLevel: 1
     exponent: 0
     offset: 0
     icon: "STICK"
-    slot: 43
     available: true
     description: "Grants <b>+{value} Magic Find<7> on the Mining Islands."
     effects:
@@ -110,11 +110,11 @@ perks:
     name: "Mineshaft Mayhem"
     powder: null
     tier: 8
+    col: 5
     maxLevel: 1
     exponent: 0
     offset: 0
     icon: "PACKED_ICE"
-    slot: 44
     available: false
     description: "Entering a Glacite Mineshaft gives you a random buff."
     effects:
@@ -122,12 +122,12 @@ perks:
   - id: ore_fortune
     name: "Ore Fortune"
     powder: "GEMSTONE"
-    tier: 4
+    tier: 3
+    col: 6
     maxLevel: 20
     exponent: 4.0
     offset: 1
     icon: "DIAMOND_ORE"
-    slot: 18
     available: true
     description: "Grants <6>+{value} Ore Fortune<7>."
     effects:
@@ -136,11 +136,11 @@ perks:
     name: "Gemstone Mining Speed"
     powder: "GEMSTONE"
     tier: 4
+    col: 1
     maxLevel: 140
     exponent: 2.3
     offset: 1
     icon: "AMETHYST_SHARD"
-    slot: 19
     available: true
     description: "Grants <6>+{value} Mining Speed<7> while mining Gemstones."
     effects:
@@ -148,12 +148,12 @@ perks:
   - id: mole
     name: "Mole"
     powder: "GEMSTONE"
-    tier: 5
+    tier: 4
+    col: 2
     maxLevel: 200
     exponent: 2.17883
     offset: 1
     icon: "STONE_PICKAXE"
-    slot: 20
     available: true
     description: "Grants <e>+{value} Mining Spread<7> while mining Hard Stone."
     effects:
@@ -161,12 +161,12 @@ perks:
   - id: gemstone_fortune
     name: "Gemstone Fortune"
     powder: "GEMSTONE"
-    tier: 5
+    tier: 4
+    col: 3
     maxLevel: 20
     exponent: 4.0
     offset: 1
     icon: "EMERALD_BLOCK"
-    slot: 21
     available: true
     description: "Grants <6>+{value} Gemstone Fortune<7>."
     effects:
@@ -174,12 +174,12 @@ perks:
   - id: mining_wisdom
     name: "Mining Wisdom"
     powder: "GEMSTONE"
-    tier: 5
+    tier: 4
+    col: 4
     maxLevel: 100
     exponent: 2.3
     offset: 1
     icon: "EXPERIENCE_BOTTLE"
-    slot: 23
     available: true
     description: "Grants <3>+{value} Mining Wisdom<7>."
     effects:
@@ -187,12 +187,12 @@ perks:
   - id: block_fortune
     name: "Block Fortune"
     powder: "GEMSTONE"
-    tier: 6
+    tier: 4
+    col: 5
     maxLevel: 20
     exponent: 4.0
     offset: 1
     icon: "COBBLESTONE"
-    slot: 24
     available: true
     description: "Grants <6>+{value} Block Fortune<7>."
     effects:
@@ -200,12 +200,12 @@ perks:
   - id: mining_island_fishing
     name: "Mining Island Fishing"
     powder: "GEMSTONE"
-    tier: 6
+    tier: 4
+    col: 6
     maxLevel: 40
     exponent: 3.07
     offset: 1
     icon: "FISHING_ROD"
-    slot: 25
     available: true
     description: "Grants <b>+{value} Fishing Speed<7> and <3>+{value2} Sea Creature Chance<7> on the Mining Islands."
     effects:
@@ -214,12 +214,12 @@ perks:
   - id: warm_heart
     name: "Warm Heart"
     powder: "GEMSTONE"
-    tier: 6
+    tier: 4
+    col: 7
     maxLevel: 50
     exponent: 3.07
     offset: 1
     icon: "MAGMA_BLOCK"
-    slot: 26
     available: true
     description: "Grants <c>+{value} Heat Resistance<7>."
     effects:
@@ -227,12 +227,12 @@ perks:
   - id: great_explorer
     name: "Great Explorer"
     powder: "GEMSTONE"
-    tier: 7
+    tier: 5
+    col: 2
     maxLevel: 20
     exponent: 4.0
     offset: 1
     icon: "CHEST"
-    slot: 27
     available: false
     description: "Grants <a>{value}%<7> Treasure Chest spawn chance and <a>{value2}<7> fewer chest locks."
     effects:
@@ -241,12 +241,12 @@ perks:
   - id: mining_speed_ii
     name: "Mining Speed II"
     powder: "GEMSTONE"
-    tier: 7
+    tier: 5
+    col: 4
     maxLevel: 50
     exponent: 3.2
     offset: 1
     icon: "GOLDEN_PICKAXE"
-    slot: 28
     available: true
     description: "Grants <6>+{value} Mining Speed<7>."
     effects:
@@ -254,12 +254,12 @@ perks:
   - id: mining_fortune_ii
     name: "Mining Fortune II"
     powder: "GEMSTONE"
-    tier: 7
+    tier: 5
+    col: 6
     maxLevel: 50
     exponent: 3.2
     offset: 1
     icon: "GOLD_BLOCK"
-    slot: 30
     available: true
     description: "Grants <6>+{value} Mining Fortune<7>."
     effects:
@@ -267,12 +267,12 @@ perks:
   - id: powder_buff
     name: "Powder Buff"
     powder: "GEMSTONE"
-    tier: 7
+    tier: 6
+    col: 4
     maxLevel: 50
     exponent: 3.2
     offset: 1
     icon: "GUNPOWDER"
-    slot: 32
     available: true
     description: "Gain <a>{value}%<7> more Powder from any source."
     effects:
@@ -281,11 +281,11 @@ perks:
     name: "Dwarven Metal Speed"
     powder: "GLACITE"
     tier: 8
+    col: 2
     maxLevel: 100
     exponent: 2.3
     offset: 1
     icon: "IRON_BLOCK"
-    slot: 0
     available: true
     description: "Grants <6>+{value} Mining Speed<7> when mining Dwarven Metals."
     effects:
@@ -294,11 +294,11 @@ perks:
     name: "Cold Resistance"
     powder: "GLACITE"
     tier: 8
+    col: 3
     maxLevel: 50
     exponent: 3.1
     offset: 1
     icon: "BLUE_ICE"
-    slot: 1
     available: true
     description: "Grants <b>+{value} Cold Resistance<7>."
     effects:
@@ -307,11 +307,11 @@ perks:
     name: "Dwarven Metal Fortune"
     powder: "GLACITE"
     tier: 8
+    col: 4
     maxLevel: 20
     exponent: 4.0
     offset: 1
     icon: "RAW_IRON"
-    slot: 2
     available: true
     description: "Grants <6>+{value} Dwarven Metal Fortune<7>."
     effects:
@@ -320,11 +320,11 @@ perks:
     name: "Mineshaft Chance"
     powder: "GLACITE"
     tier: 9
+    col: 2
     maxLevel: 20
     exponent: 4.0
     offset: 1
     icon: "COMPASS"
-    slot: 3
     available: false
     description: "Grants <a>+{value}%<7> chance for a Glacite Mineshaft to appear."
     effects:
@@ -333,11 +333,11 @@ perks:
     name: "Mineshaft Fortune"
     powder: "GLACITE"
     tier: 9
+    col: 4
     maxLevel: 50
     exponent: 3.05
     offset: 1
     icon: "GOLD_NUGGET"
-    slot: 4
     available: false
     description: "Grants <6>+{value} Mining Fortune<7> in Glacite Mineshafts."
     effects:
@@ -346,11 +346,11 @@ perks:
     name: "Mineshaft Speed"
     powder: "GLACITE"
     tier: 9
+    col: 6
     maxLevel: 100
     exponent: 2.3
     offset: 1
     icon: "IRON_INGOT"
-    slot: 5
     available: false
     description: "Grants <6>+{value} Mining Speed<7> in Glacite Mineshafts."
     effects:
@@ -358,12 +358,12 @@ perks:
   - id: gemstone_spread
     name: "Gemstone Spread"
     powder: "GLACITE"
-    tier: 9
+    tier: 10
+    col: 1
     maxLevel: 100
     exponent: 2.6
     offset: 1
     icon: "AMETHYST_CLUSTER"
-    slot: 6
     available: false
     description: "Grants <e>+{value} Gemstone Spread<7> in Glacite Mineshafts."
     effects:
@@ -372,11 +372,11 @@ perks:
     name: "Crystal Chance"
     powder: "GLACITE"
     tier: 10
+    col: 2
     maxLevel: 50
     exponent: 3.3
     offset: 1
     icon: "AMETHYST_BLOCK"
-    slot: 7
     available: false
     description: "Grants <a>+{value}%<7> Crystal chance in Glacite Mineshafts."
     effects:
@@ -385,11 +385,11 @@ perks:
     name: "Frozen Corpse Loot"
     powder: "GLACITE"
     tier: 10
+    col: 3
     maxLevel: 100
     exponent: 2.45
     offset: 1
     icon: "SKELETON_SKULL"
-    slot: 8
     available: false
     description: "Grants <a>+{value}%<7> chance for an extra item when looting Frozen Corpses."
     effects:
@@ -398,11 +398,11 @@ perks:
     name: "Pristine"
     powder: "GLACITE"
     tier: 10
+    col: 4
     maxLevel: 10
     exponent: 5.0
     offset: 7
     icon: "DIAMOND"
-    slot: 10
     available: true
     description: "Grants <5>+{value} Pristine<7>."
     effects:
@@ -411,11 +411,11 @@ perks:
     name: "Extra Frozen Corpse"
     powder: "GLACITE"
     tier: 10
+    col: 5
     maxLevel: 50
     exponent: 3.2
     offset: 1
     icon: "BONE"
-    slot: 12
     available: false
     description: "Grants <a>+{value}%<7> chance for 1 extra Frozen Corpse to spawn."
     effects:
@@ -424,11 +424,11 @@ perks:
     name: "Vanguard Corpse"
     powder: "GLACITE"
     tier: 10
+    col: 6
     maxLevel: 50
     exponent: 3.1
     offset: 1
     icon: "LAPIS_BLOCK"
-    slot: 14
     available: false
     description: "Grants <a>+{value}%<7> chance for a Vanguard Corpse Mineshaft."
     effects:
@@ -437,11 +437,11 @@ perks:
     name: "Suspicious Scrap"
     powder: "GLACITE"
     tier: 10
+    col: 7
     maxLevel: 50
     exponent: 3.05
     offset: 1
     icon: "DEAD_BUSH"
-    slot: 16
     available: false
     description: "Grants <a>+{value}%<7> Suspicious Scrap chance in Glacite Mineshafts."
     effects:

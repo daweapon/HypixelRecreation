@@ -92,7 +92,7 @@ public final class HotmRegistry {
                 number(entry.get("exponent"), 0).doubleValue(),
                 number(entry.get("offset"), 0).intValue(),
                 material((String) entry.get("icon")),
-                number(entry.get("slot"), 0).intValue(),
+                number(entry.get("col"), 4).intValue(),
                 !Boolean.FALSE.equals(entry.get("available")),
                 (String) entry.get("description"),
                 number(entry.get("tokens"), defaultTokens).intValue(),

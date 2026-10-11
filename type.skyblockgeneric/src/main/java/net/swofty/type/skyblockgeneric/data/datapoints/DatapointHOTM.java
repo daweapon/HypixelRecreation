@@ -30,6 +30,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			json.put("dailyPowderDay", value.dailyPowderDay);
 			json.put("dailyCommissionDay", value.dailyCommissionDay);
 			json.put("perkLevels", new JSONObject(value.perkLevels));
+			json.put("disabledPerks", new org.json.JSONArray(value.disabledPerks));
 			json.put("abilityReadyAt", new JSONObject(value.abilityReadyAt));
 			return json.toString();
 		}
@@ -57,6 +58,8 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 				data.dailyCommissionDay = obj.optLong("dailyCommissionDay", -1L);
 				JSONObject perks = obj.optJSONObject("perkLevels");
 				if (perks != null) perks.keySet().forEach(key -> data.perkLevels.put(key, perks.getInt(key)));
+				org.json.JSONArray disabled = obj.optJSONArray("disabledPerks");
+				if (disabled != null) for (int i = 0; i < disabled.length(); i++) data.disabledPerks.add(disabled.getString(i));
 				JSONObject cooldowns = obj.optJSONObject("abilityReadyAt");
 				if (cooldowns != null) cooldowns.keySet().forEach(key -> data.abilityReadyAt.put(key, cooldowns.getLong(key)));
 				return data;
@@ -81,6 +84,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			cloned.dailyPowderDay = value.dailyPowderDay;
 			cloned.dailyCommissionDay = value.dailyCommissionDay;
 			cloned.perkLevels.putAll(value.perkLevels);
+			cloned.disabledPerks.addAll(value.disabledPerks);
 			cloned.abilityReadyAt.putAll(value.abilityReadyAt);
 			return cloned;
 		}
@@ -111,10 +115,19 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 		private long dailyPowderDay = -1L;
 		private long dailyCommissionDay = -1L;
 		private final Map<String, Integer> perkLevels = new LinkedHashMap<>();
+		private final java.util.Set<String> disabledPerks = new java.util.LinkedHashSet<>();
 		private final Map<String, Long> abilityReadyAt = new LinkedHashMap<>();
 
 		public int perkLevel(String perkId) {
 			return perkLevels.getOrDefault(perkId, 0);
+		}
+
+		public boolean isPerkActive(String perkId) {
+			return perkLevel(perkId) > 0 && !disabledPerks.contains(perkId);
+		}
+
+		public int activeLevel(String perkId) {
+			return isPerkActive(perkId) ? perkLevel(perkId) : 0;
 		}
 
 		public void addGlacitePowder(long amount) {

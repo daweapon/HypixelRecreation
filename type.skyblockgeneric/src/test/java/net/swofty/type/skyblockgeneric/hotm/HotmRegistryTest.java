@@ -23,14 +23,13 @@ class HotmRegistryTest {
     }
 
     @Test
-    void everyPerkHasItsOwnSlotInsideTheTree() {
-        Set<Integer> slots = new HashSet<>();
+    void everyPerkHasItsOwnCellInsideTheTree() {
+        Set<String> cells = new HashSet<>();
         for (HotmPerk perk : registry.perks().values()) {
-            assertTrue(perk.slot() >= 0 && perk.slot() < 45, perk.id());
-            assertTrue(slots.add(perk.slot()), perk.id());
+            assertTrue(perk.col() >= 1 && perk.col() <= 7, perk.id());
             assertTrue(perk.tier() >= 1 && perk.tier() <= 10, perk.id());
+            assertTrue(cells.add(perk.tier() + ":" + perk.col()), perk.id());
         }
-        assertTrue(slots.add(22), "the Core of the Mountain keeps slot 22");
     }
 
     @Test

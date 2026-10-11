@@ -18,7 +18,7 @@ public final class HotmStatistics {
         ItemStatistics total = ItemStatistics.empty();
         for (Map.Entry<String, Integer> entry : data.getPerkLevels().entrySet()) {
             HotmPerk perk = HotmRegistry.get().perk(entry.getKey());
-            if (perk == null || !perk.available()) continue;
+            if (perk == null || !perk.available() || data.getDisabledPerks().contains(entry.getKey())) continue;
             for (HotmPerk.Effect effect : perk.effects()) {
                 if (effect.statistic() == null || !effect.scope().isGlobal()) continue;
                 if (effect.scope() == HotmScope.MINING_ISLAND && !onMiningIsland) continue;
@@ -35,7 +35,7 @@ public final class HotmStatistics {
         double total = 0;
         for (Map.Entry<String, Integer> entry : HotmService.data(player).getPerkLevels().entrySet()) {
             HotmPerk perk = HotmRegistry.get().perk(entry.getKey());
-            if (perk == null || !perk.available()) continue;
+            if (perk == null || !perk.available() || HotmService.data(player).getDisabledPerks().contains(entry.getKey())) continue;
             for (HotmPerk.Effect effect : perk.effects()) {
                 if (effect.statistic() != statistic || effect.scope().isGlobal() || !effect.scope().matches(block)) continue;
                 total += effect.value(entry.getValue());

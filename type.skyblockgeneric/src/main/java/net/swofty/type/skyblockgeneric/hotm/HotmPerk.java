@@ -6,7 +6,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import java.util.List;
 
 public record HotmPerk(String id, String name, HotmPowder powder, int tier, int maxLevel, double exponent, int offset,
-                       Material icon, int slot, boolean available, String description, int tokenCost,
+                       Material icon, int col, boolean available, String description, int tokenCost,
                        List<Effect> effects) {
 
     public record Effect(String key, ItemStatistic statistic, double base, double perLevel, Double cap, HotmScope scope) {

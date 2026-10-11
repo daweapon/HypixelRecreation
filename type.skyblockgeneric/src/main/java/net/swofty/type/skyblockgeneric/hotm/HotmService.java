@@ -39,12 +39,20 @@ public final class HotmService {
     }
 
     public static boolean hasPerk(SkyBlockPlayer player, String perkId) {
-        return perkLevel(player, perkId) > 0;
+        return data(player).isPerkActive(perkId);
+    }
+
+    public static boolean togglePerk(SkyBlockPlayer player, String perkId) {
+        DatapointHOTM.PlayerHOTMData data = data(player);
+        if (data.perkLevel(perkId) <= 0) return false;
+        if (!data.getDisabledPerks().remove(perkId)) data.getDisabledPerks().add(perkId);
+        save(player, data);
+        return true;
     }
 
     public static double perkValue(SkyBlockPlayer player, String perkId) {
         HotmPerk perk = HotmRegistry.get().perk(perkId);
-        return perk == null ? 0 : perk.value(perkLevel(player, perkId));
+        return perk == null ? 0 : perk.value(data(player).activeLevel(perkId));
     }
 
     public static boolean onMiningIsland() {
@@ -148,6 +156,7 @@ public final class HotmService {
             if (perk != null && perk.usesPowder()) data.addPowder(perk.powder(), perk.totalCost(level));
         });
         data.getPerkLevels().clear();
+        data.getDisabledPerks().clear();
         data.setTokensSpent(0);
         save(player, data);
     }
