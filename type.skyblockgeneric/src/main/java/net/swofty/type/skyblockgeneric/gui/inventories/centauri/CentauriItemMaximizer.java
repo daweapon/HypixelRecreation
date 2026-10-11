@@ -6,6 +6,8 @@ import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeHotPot
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentConflicts;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import net.swofty.type.skyblockgeneric.enchantment.UltimateEnchantChoice;
+import net.swofty.type.skyblockgeneric.utility.groups.EnchantItemGroups;
 import net.swofty.type.skyblockgeneric.gems.Gemstone;
 import net.swofty.type.skyblockgeneric.item.ItemAttributeHandler;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -53,6 +55,8 @@ public final class CentauriItemMaximizer {
         var itemGroups = item.getComponent(EnchantableComponent.class).groupsFor(item);
         int applied = 0;
 
+        applied += applyUltimate(player, item, itemGroups);
+
         for (EnchantmentType type : EnchantmentType.values()) {
             if (type == EnchantmentType.KNOCKBACK) continue;
             if (EnchantmentConflicts.blockedBy(item, type)) continue;
@@ -65,6 +69,18 @@ public final class CentauriItemMaximizer {
             applied++;
         }
         return applied;
+    }
+
+    private static int applyUltimate(SkyBlockPlayer player, SkyBlockItem item, List<EnchantItemGroups> itemGroups) {
+        ItemType itemType = item.getAttributeHandler().getPotentialType();
+        EnchantmentType ultimate = UltimateEnchantChoice.forItem(itemType == null ? null : itemType.name(), itemGroups);
+        if (ultimate == null) return 0;
+        int maximumLevel = ultimate.getEnch().getLevelsToApply(player).maximumLevel();
+        var current = item.getAttributeHandler().getEnchantment(ultimate);
+        if (current != null && current.level() >= maximumLevel) return 0;
+        EnchantmentConflicts.applyTo(item, ultimate);
+        item.getAttributeHandler().addEnchantment(new SkyBlockEnchantment(ultimate, maximumLevel));
+        return 1;
     }
 
     private static int maximizePotatoBooks(SkyBlockItem item) {

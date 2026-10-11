@@ -39,7 +39,7 @@ public interface Ench {
     default List<EnchantmentSource> getSources(SkyBlockPlayer player) {
         List<EnchantmentSource> sources = new ArrayList<>(List.of());
 
-        if (this instanceof EnchFromTable tableEnchant)
+        if (this instanceof EnchFromTable tableEnchant && !tableEnchant.getLevelsFromTableToApply(player).levelsFromTableToApply().isEmpty())
             sources.add(new EnchantmentSource(EnchantmentSource.SourceType.ENCHANTMENT_TABLE,
                     tableEnchant.getLevelsFromTableToApply(player).minimumLevel(),
                     tableEnchant.getLevelsFromTableToApply(player).maximumLevel()));

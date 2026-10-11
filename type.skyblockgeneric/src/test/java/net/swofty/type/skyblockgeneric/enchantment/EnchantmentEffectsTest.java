@@ -7,7 +7,9 @@ import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentInfiniteQuive
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentPiercing;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentPunch;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentSnipe;
+import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentSoulEater;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentSwarm;
+import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentWise;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentTitanKiller;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentTripleStrike;
 import net.swofty.type.skyblockgeneric.item.events.EnchantmentFeatherFallingEvent;
@@ -136,5 +138,34 @@ class EnchantmentEffectsTest {
         assertFalse(necklace.contains(EnchantItemGroups.BELT));
         var unknown = EnchantableComponent.expand(List.of(EnchantItemGroups.EQUIPMENT), "PLAYER_HEAD", "SOMETHING");
         assertTrue(unknown.containsAll(List.of(EnchantItemGroups.NECKLACE, EnchantItemGroups.BELT, EnchantItemGroups.GLOVES)));
+    }
+
+    @Test
+    void wiseCutsManaCostByTenPercentPerLevel() {
+        assertEquals(1.0, EnchantmentWise.costMultiplier(0), 1e-9);
+        assertEquals(0.5, EnchantmentWise.costMultiplier(5), 1e-9);
+        for (int level = 1; level <= 5; level++) assertTrue(says("WISE", level, (level * 10) + ""));
+    }
+
+    @Test
+    void soulEaterScalesWithLevelAndCaps() {
+        assertEquals(200, EnchantmentSoulEater.bonus(1, 100));
+        assertEquals(1000, EnchantmentSoulEater.bonus(5, 100));
+        assertEquals(EnchantmentSoulEater.MAX_BONUS, EnchantmentSoulEater.bonus(5, 1e9));
+        assertEquals(0, EnchantmentSoulEater.bonus(5, -4));
+    }
+
+    @Test
+    void maximizingPicksTheUltimateThatBelongsToTheItem() {
+        var swordGroups = List.of(EnchantItemGroups.SWORD);
+        assertEquals(EnchantmentType.WISE, UltimateEnchantChoice.forItem("HYPERION", swordGroups));
+        assertEquals(EnchantmentType.CHIMERA, UltimateEnchantChoice.forItem("RAGNAROCK_AXE", List.of(EnchantItemGroups.TOOLS, EnchantItemGroups.AXE, EnchantItemGroups.SWORD)));
+        assertEquals(EnchantmentType.CHIMERA, UltimateEnchantChoice.forItem("DAEDALUS_AXE", List.of(EnchantItemGroups.AXE, EnchantItemGroups.SWORD)));
+        assertEquals(EnchantmentType.SOUL_EATER, UltimateEnchantChoice.forItem("MIDAS_SWORD", swordGroups));
+        assertEquals(EnchantmentType.REITERATE, UltimateEnchantChoice.forItem("TERMINATOR", List.of(EnchantItemGroups.BOW)));
+        assertEquals(EnchantmentType.FLOWSTATE, UltimateEnchantChoice.forItem("DIAMOND_PICKAXE", List.of(EnchantItemGroups.PICKAXE)));
+        assertEquals(EnchantmentType.FLASH, UltimateEnchantChoice.forItem("ROD", List.of(EnchantItemGroups.FISHING_ROD)));
+        assertEquals(EnchantmentType.FIRST_IMPRESSION, UltimateEnchantChoice.forItem("IRON_AXE", List.of(EnchantItemGroups.TOOLS, EnchantItemGroups.AXE)));
+        assertEquals(null, UltimateEnchantChoice.forItem("X", List.of()));
     }
 }

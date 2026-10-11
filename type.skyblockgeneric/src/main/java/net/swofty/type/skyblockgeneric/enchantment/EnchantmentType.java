@@ -131,7 +131,6 @@ public enum EnchantmentType {
     SMARTY_PANTS(StatEnchantment.of("SMARTY_PANTS").linear(ItemStatistic.INTELLIGENCE, 5)),
     SNIPE(EnchantmentSnipe.class),
     STEALTH(CatalogueEnchantment.of("STEALTH")),
-    TELEKINESIS(CatalogueEnchantment.of("TELEKINESIS")),
     THORNS(CatalogueEnchantment.active("THORNS")),
     TIDAL(CatalogueEnchantment.active("TIDAL")),
     TITAN_KILLER(EnchantmentTitanKiller.class),
@@ -163,15 +162,15 @@ public enum EnchantmentType {
     LEGION(CatalogueEnchantment.of("LEGION")),
     MISSILE(CatalogueEnchantment.of("MISSILE")),
     NO_PAIN_NO_GAIN(CatalogueEnchantment.of("NO_PAIN_NO_GAIN")),
-    ONE_FOR_ALL(CatalogueEnchantment.of("ONE_FOR_ALL")),
+    ONE_FOR_ALL(StatEnchantment.of("ONE_FOR_ALL").linear(ItemStatistic.DAMAGE, 500)),
     REITERATE(CatalogueEnchantment.of("REITERATE")),
     REND(CatalogueEnchantment.of("REND")),
-    SOUL_EATER(CatalogueEnchantment.of("SOUL_EATER")),
+    SOUL_EATER(EnchantmentSoulEater.class),
     SUNSET(CatalogueEnchantment.of("SUNSET")),
     SWARM(EnchantmentSwarm.class),
     THE_ONE(CatalogueEnchantment.of("THE_ONE")),
     WISDOM(CatalogueEnchantment.of("WISDOM")),
-    WISE(CatalogueEnchantment.of("WISE")),
+    WISE(EnchantmentWise.class),
     ;
 
     private final Class<? extends Ench> clazz;

@@ -11,10 +11,10 @@ sections:
       - "Each entry shows its top level effect, where it comes from, which items it goes on and what it conflicts with."
       - "Click an enchantment to see every level with its effect and its Exp Level apply cost."
       - "The hopper narrows the list to Ultimate, Melee, Bows, Armor, Equipment, Mining, Farming, Foraging or Fishing."
-  - heading: "87 New Enchantments"
+  - heading: "86 New Enchantments"
     colour: "<d>"
     lines:
-      - "Added every missing enchantment, including Power, Snipe, Piercing, Punch, Infinite Quiver, Titan Killer, Triple-Strike, Divine Gift, Feather Falling, Thorns, Tidal, Rejuvenate, Big Brain, Small Brain, Smarty Pants, Ice Cold, Scuba, Respiration, Prismatic, Harvesting and all thirteen Turbo-Crop enchantments."
+      - "Added every missing enchantment except Telekinesis, which is a leveling reward now, including Power, Snipe, Piercing, Punch, Infinite Quiver, Titan Killer, Triple-Strike, Divine Gift, Feather Falling, Thorns, Tidal, Rejuvenate, Big Brain, Small Brain, Smarty Pants, Ice Cold, Scuba, Respiration, Prismatic, Harvesting and all thirteen Turbo-Crop enchantments."
       - "Added the ultimates Combo, Swarm, Soul Eater, Wisdom, Last Stand, Legion, Bank and the rest, plus the tiered Champion, Compact, Cultivating, Absorb, Hecatomb and Toxophilite."
       - "Pristine is now called Prismatic and gives half as much Pristine per level, like the real game."
   - heading: "Working Effects"
@@ -39,4 +39,7 @@ sections:
     lines:
       - "Sharpness VI and VII can now be applied, Scavenger VI works and Sugar Rush has levels II and III."
       - "Woodsplitter now does the full damage the real game does to Woodland mobs."
-      - "The Toy Box has an Enchantment Library button that gives a top level book of every enchantment."
+      - "The Enchantments Guide pages now turn."
+      - "Maximizing a weapon in the Toy Box now picks its own Ultimate: Wise on Hyperion and its siblings, Chimera on the Ragnarock and Daedalus axes, Duplex on the Terminator, Flash on rods and so on."
+      - "Ultimate Wise cuts your ability mana cost, Soul Eater adds the damage of the last monster you killed to your next hit, and One For All adds 500 percent damage."
+      - "Wither Impact now ends with an explosion sound."

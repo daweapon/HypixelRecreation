@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.item.handlers.ability;
 
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentRefrigerate;
+import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentWise;
 import lombok.Getter;
 import lombok.NonNull;
 import net.minestom.server.coordinate.Point;
@@ -131,7 +132,7 @@ public class RegisteredAbility {
         }
 
         private int effectiveCost(SkyBlockPlayer player) {
-            return (int) Math.round(cost * MiscPetHooks.manaCostMultiplier(player));
+            return (int) Math.round(cost * MiscPetHooks.manaCostMultiplier(player) * EnchantmentWise.costMultiplier(player));
         }
 
         @Override

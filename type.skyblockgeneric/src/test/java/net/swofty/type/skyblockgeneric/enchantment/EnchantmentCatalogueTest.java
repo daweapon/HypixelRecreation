@@ -142,9 +142,9 @@ class EnchantmentCatalogueTest {
     @Test
     void wiredEnchantmentsAreActiveAndTheRestSayTheyAreNot() {
         List<String> wired = List.of("POWER", "TITAN_KILLER", "TRIPLE_STRIKE", "COMBO", "SWARM", "WOODSPLITTER", "GRAVITY",
-                "FEATHER_FALLING", "THORNS", "TIDAL", "INFINITE_QUIVER", "SNIPE", "PIERCING", "PUNCH", "BIG_BRAIN", "TURBO_WHEAT");
+                "FEATHER_FALLING", "THORNS", "TIDAL", "INFINITE_QUIVER", "SNIPE", "PIERCING", "PUNCH", "BIG_BRAIN", "TURBO_WHEAT", "WISE", "SOUL_EATER", "ONE_FOR_ALL");
         for (String key : wired) assertTrue(EnchantmentType.valueOf(key).getEnch().isEffectActive(), key);
-        for (String key : List.of("WISE", "ONE_FOR_ALL", "REND", "HECATOMB", "TELEKINESIS"))
+        for (String key : List.of("LAST_STAND", "REND", "HECATOMB", "LEGION"))
             assertFalse(EnchantmentType.valueOf(key).getEnch().isEffectActive(), key);
     }
 }

@@ -3118,35 +3118,6 @@
    500
   ]
  },
- "TELEKINESIS": {
-  "key": "TELEKINESIS",
-  "neuId": "TELEKINESIS",
-  "name": "Telekinesis",
-  "ultimate": false,
-  "maxLevel": 1,
-  "minLevel": 1,
-  "levels": {
-   "1": "<7>Block and mob drops go directly <7>into your inventory."
-  },
-  "sources": [
-   "<a>I: <7>Enchantment Table,",
-   "<7>Rusty"
-  ],
-  "appliedTo": [
-   "Fishing Weapon",
-   "Fishing Rod",
-   "Axe",
-   "Hoe",
-   "Bow",
-   "Drill",
-   "Pickaxe",
-   "Sword",
-   "Shovel",
-   "Shears",
-   "Gauntlet"
-  ],
-  "conflicts": []
- },
  "THORNS": {
   "key": "THORNS",
   "neuId": "THORNS",

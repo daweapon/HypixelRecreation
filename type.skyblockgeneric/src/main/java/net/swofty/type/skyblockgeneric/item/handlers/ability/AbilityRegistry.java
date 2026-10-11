@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.AbilityDa
 import net.swofty.type.skyblockgeneric.item.handlers.bow.Salvation;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.CrimsonAbilities;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ExplosionSound;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ForwardTeleport;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.JingleBellsAbility;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ShadowWarpAbility;
@@ -71,6 +72,7 @@ public class AbilityRegistry {
             new RegisteredAbility.AbilityManaCost(300),
             (player, _, _, _) -> {
                 Pos landed = ForwardTeleport.teleport(player, 10);
+                ExplosionSound.play(player, landed);
                 AbilityDamage.hitArea(player, landed, 6, "Implosion", 10000, 0.3);
                 WitherShieldEffect.apply(player);
                 return true;
