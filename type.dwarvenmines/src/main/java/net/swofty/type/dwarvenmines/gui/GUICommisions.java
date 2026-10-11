@@ -93,6 +93,11 @@ public class GUICommisions extends HypixelInventoryGUI {
 							HotmService.gainPowder(player, HotmPowder.MITHRIL, reward.mithrilPowder());
 						}
 
+						if (HotmService.claimDailyGrind(player)) {
+							player.sendMessage("<2><b>DAILY GRIND <r><7>You earned <2>{} Mithril Powder<7> for your first commission of the day.",
+									String.format("%,d", HotmService.dailyPowderAmount(player)));
+						}
+
 						if (reward.miningXp() > 0) {
 							player.getSkills().increase(player, SkillCategories.MINING, (double) reward.miningXp());
 						}

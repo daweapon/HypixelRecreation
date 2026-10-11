@@ -1,13 +1,21 @@
 package net.swofty.type.skyblockgeneric.hotm;
 
-import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 
 import java.util.List;
 
-public record HotmPerk(String id, String name, HotmPowder powder, int tier, int maxLevel, double exponent, int offset,
-                       Material icon, int col, boolean available, String description, int tokenCost,
-                       List<Effect> effects) {
+public record HotmPerk(String id, String name, Kind kind, HotmPowder powder, int tier, int col, int maxLevel, double exponent,
+                       int offset, boolean available, String requires, List<String> lore, int tokenCost, List<Effect> effects) {
+
+    public enum Kind {
+        PERK,
+        ABILITY
+    }
+
+    public boolean isAbility() {
+        return kind == Kind.ABILITY;
+    }
+
 
     public record Effect(String key, ItemStatistic statistic, double base, double perLevel, Double cap, HotmScope scope) {
         public double value(int level) {

@@ -41,14 +41,13 @@ public class ActionHotmMining implements HypixelEventClass {
             }
             return;
         }
-        int core = HotmService.data(player).getCoreLevel();
         long base = switch (block) {
             case MITHRIL_WEAK, MITHRIL_WEAK2 -> 1;
             case MITHRIL_STRONG -> 5;
             default -> 2;
-        } + (core >= 4 ? 1 : 0);
+        } + HotmService.baseBonus(player, HotmPowder.MITHRIL);
         HotmService.gainPowder(player, HotmPowder.MITHRIL, base);
-        awardDailyPowder(player);
+        if (HotmService.hasPerk(player, "daily_powder")) awardDailyPowder(player);
 
         double chance = HotmService.perkValue(player, "titanium_insanium");
         if (chance > 0 && LootRoll.roll(player.getUuid(), ItemType.TITANIUM, chance)) {
@@ -61,15 +60,14 @@ public class ActionHotmMining implements HypixelEventClass {
     }
 
     private void mineGemstone(SkyBlockPlayer player) {
-        int core = HotmService.data(player).getCoreLevel();
-        HotmService.gainPowder(player, HotmPowder.GEMSTONE, 1 + (core >= 6 ? 2 : 0));
+        HotmService.gainPowder(player, HotmPowder.GEMSTONE, 1 + HotmService.baseBonus(player, HotmPowder.GEMSTONE));
     }
 
     private void awardDailyPowder(SkyBlockPlayer player) {
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
         long today = HotmService.dailyBonusDay();
         if (data.getDailyPowderDay() == today) return;
-        long bonus = (long) HotmService.DAILY_POWDER_PER_TIER * data.getTier();
+        long bonus = HotmService.dailyPowderAmount(player);
         data.setDailyPowderDay(today);
         data.addMithrilPowder(bonus);
         HotmService.save(player, data);

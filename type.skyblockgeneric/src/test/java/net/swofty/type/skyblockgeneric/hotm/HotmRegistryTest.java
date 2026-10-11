@@ -17,7 +17,7 @@ class HotmRegistryTest {
     void perkCostsMatchTheWikiCumulativeTotals() {
         assertEquals(1_758_267L, registry.perk("mining_speed").totalCost(50));
         assertEquals(2_114_821L, registry.perk("mining_fortune").totalCost(50));
-        assertEquals(917_130L, registry.perk("ore_fortune").totalCost(20));
+        assertEquals(917_130L, registry.perk("old_school").totalCost(20));
         assertEquals(4_644_659L, registry.perk("efficient_miner").totalCost(100));
         assertEquals(4_705_857L, registry.perk("pristine").totalCost(10));
     }
@@ -27,9 +27,24 @@ class HotmRegistryTest {
         Set<String> cells = new HashSet<>();
         for (HotmPerk perk : registry.perks().values()) {
             assertTrue(perk.col() >= 1 && perk.col() <= 7, perk.id());
+            assertTrue(perk.requires() == null || registry.perk(perk.requires()) != null, perk.id());
             assertTrue(perk.tier() >= 1 && perk.tier() <= 10, perk.id());
             assertTrue(cells.add(perk.tier() + ":" + perk.col()), perk.id());
         }
+    }
+
+    @Test
+    void perksSitOnlyInCellsOfTheRealTree() {
+        java.util.Map<Integer, java.util.Set<Integer>> cells = java.util.Map.of(
+                1, Set.of(4), 2, Set.of(2, 3, 4, 5, 6), 3, Set.of(2, 4, 6), 4, Set.of(1, 2, 3, 4, 5, 6, 7),
+                5, Set.of(2, 6), 6, Set.of(1, 2, 3, 4, 5, 6, 7), 7, Set.of(2, 4, 6), 8, Set.of(1, 2, 3, 4, 5, 6, 7),
+                9, Set.of(2, 4, 6), 10, Set.of(1, 2, 3, 4, 5, 6, 7));
+        for (HotmPerk perk : registry.perks().values()) {
+            assertTrue(cells.get(perk.tier()).contains(perk.col()), perk.id() + " at tier " + perk.tier() + " col " + perk.col());
+        }
+        assertEquals(2, registry.perks().values().stream().filter(perk -> perk.tier() == 2 && perk.isAbility()).count());
+        assertEquals(2, registry.perks().values().stream().filter(perk -> perk.tier() == 6 && perk.isAbility()).count());
+        assertEquals(2, registry.perks().values().stream().filter(perk -> perk.tier() == 10 && perk.isAbility()).count());
     }
 
     @Test

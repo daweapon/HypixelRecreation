@@ -10,16 +10,16 @@ public enum HotmAbility {
             "Grants <a>+{value}% <6>Mining Speed<7> for <a>{duration}s<7>."),
     PICKOBULUS("Pickobulus", 2, Material.TNT,
             new int[]{0, 0, 0}, new int[]{60, 50, 40}, new double[]{3, 3, 3},
-            "Throw your pickaxe to create an explosion on impact, mining ores within a <a>{value}<7> block radius."),
+            "Throw your pickaxe to create an explosion mining all ores in a <a>{value}<7> block radius."),
     TUNNEL_VISION("Tunnel Vision", 6, Material.ENDER_EYE,
             new int[]{30, 30, 30}, new int[]{120, 110, 110}, new double[]{30, 40, 50},
-            "Grants <a>+{value}%<7> chance for rare Dwarven Mines events for <a>{duration}s<7>."),
+            "Increases the chances of triggering rare occurrences by <a>{value}%<7> for <a>{duration}s<7>."),
     MANIAC_MINER("Maniac Miner", 6, Material.NETHERITE_PICKAXE,
             new int[]{25, 30, 35}, new int[]{120, 120, 120}, new double[]{5, 10, 15},
-            "Grants <a>+1 Breaking Power<7> and <6>+{value} Mining Fortune<7> per block mined, up to <6>500<7>, for <a>{duration}s<7>. Costs <b>20 Mana<7> per block."),
+            "Grants <a>+1 Breaking Power<7> and a stack of <6>+{value} Mining Fortune<7> (caps at <6>500<7>) per block broken for <a>{duration}s<7>. Each block broken consumes <b>20 Mana<7>."),
     GEMSTONE_INFUSION("Gemstone Infusion", 10, Material.AMETHYST_SHARD,
             new int[]{20, 25, 30}, new int[]{120, 120, 120}, new double[]{100, 100, 100},
-            "Grants <a>+{value}%<7> Gemstone effectiveness for <a>{duration}s<7>."),
+            "Increases the effectiveness of every <d>Gemstone<7> in your drill's Gemstone Slots by <a>{value}%<7> for <a>{duration}s<7>."),
     SHEER_FORCE("Sheer Force", 10, Material.IRON_PICKAXE,
             new int[]{20, 25, 30}, new int[]{120, 120, 120}, new double[]{200, 200, 200},
             "Grants <e>+{value} Mining Spread<7> for <a>{duration}s<7>.");
@@ -45,6 +45,10 @@ public enum HotmAbility {
         this.cooldownSeconds = cooldownSeconds;
         this.values = values;
         this.description = description;
+    }
+
+    public String perkId() {
+        return name().toLowerCase();
     }
 
     public int duration(int level) {

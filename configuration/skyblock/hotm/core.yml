@@ -11,13 +11,13 @@ levels:
   - {level: 9, powder: GLACITE, cost: 1000000, skyBlockXp: 175, reward: "<a>+10% chance for Glacite Mineshafts to spawn"}
   - {level: 10, powder: GLACITE, cost: 1250000, tokens: 2, skyBlockXp: 200, reward: "<5>+2 Tokens of the Mountain"}
 tiers:
-  - {tier: 1, tokens: 1, forgeSlots: 0, skyBlockXp: 35}
-  - {tier: 2, tokens: 2, forgeSlots: 2, skyBlockXp: 45}
-  - {tier: 3, tokens: 2, forgeSlots: 3, skyBlockXp: 60}
-  - {tier: 4, tokens: 2, forgeSlots: 4, skyBlockXp: 60}
-  - {tier: 5, tokens: 2, forgeSlots: 5, skyBlockXp: 90}
-  - {tier: 6, tokens: 2, forgeSlots: 6, skyBlockXp: 110}
-  - {tier: 7, tokens: 3, forgeSlots: 7, skyBlockXp: 130}
-  - {tier: 8, tokens: 2, forgeSlots: 7, skyBlockXp: 180}
-  - {tier: 9, tokens: 2, forgeSlots: 7, skyBlockXp: 210}
-  - {tier: 10, tokens: 2, forgeSlots: 7, skyBlockXp: 240}
+  - {tier: 1, tokens: 1, forgeSlots: 0, skyBlockXp: 35, rewards: []}
+  - {tier: 2, tokens: 2, forgeSlots: 2, skyBlockXp: 45, rewards: ["<6>Access to the Forge", "<6>+New Forgeable Items"]}
+  - {tier: 3, tokens: 2, forgeSlots: 3, skyBlockXp: 60, rewards: ["<a>+1 Forge Slot", "<6>+New Forgeable Items"]}
+  - {tier: 4, tokens: 2, forgeSlots: 4, skyBlockXp: 75, rewards: ["<a>+1 Forge Slot", "<6>+New Forgeable Items", "<d>Access to the Crystal Hollows"]}
+  - {tier: 5, tokens: 2, forgeSlots: 5, skyBlockXp: 90, rewards: ["<a>+1 Forge Slot", "<6>+New Forgeable Items", "<a>+Mining Helix Emblem"]}
+  - {tier: 6, tokens: 2, forgeSlots: 6, skyBlockXp: 110, rewards: ["<a>+1 Forge Slot", "<6>+New Forgeable Items"]}
+  - {tier: 7, tokens: 3, forgeSlots: 7, skyBlockXp: 130, rewards: ["<a>+1 Forge Slot", "<6>+New Forgeable Items", "<a>+Golden Mining Helix Emblem"]}
+  - {tier: 8, tokens: 2, forgeSlots: 7, skyBlockXp: 180, rewards: ["<6>+New Forgeable Items"]}
+  - {tier: 9, tokens: 2, forgeSlots: 7, skyBlockXp: 210, rewards: ["<6>+New Forgeable Items"]}
+  - {tier: 10, tokens: 2, forgeSlots: 7, skyBlockXp: 240, rewards: ["<6>+New Forgeable Items", "<a>+Diamond Mining Helix Emblem"]}

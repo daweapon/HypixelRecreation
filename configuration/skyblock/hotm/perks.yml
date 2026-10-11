@@ -1,448 +1,709 @@
-# Heart of the Mountain perks. tier is the tree row (1 at the bottom) and col the column (1-7, 4 is the centre). Cost to reach level N (N >= 2) = floor((N + offset) ^ exponent) in the perk's powder; level 1 costs only the token cost.
-# Effect value at level L = min(cap, base + perLevel * L). Layout and tier gating are approximated (the wiki gives no tree positions).
+# Heart of the Mountain perks and abilities, laid out as on Hypixel: tier is the tree row (1 at the bottom), col the column (1-7).
+# Cost to reach level N (N >= 2) = floor((N + offset) ^ exponent) in the perk's powder; level 1 costs only the token cost.
+# Effect value at level L = min(cap, base + perLevel * L). verified: false marks entries whose name or position was not seen in
+# a capture of real Hypixel (the cell is known, the perk is a best guess).
 tokenCostPerPerk: 1
 perks:
   - id: mining_speed
     name: "Mining Speed"
+    kind: "PERK"
     powder: "MITHRIL"
     tier: 1
     col: 4
     maxLevel: 50
     exponent: 3.0
     offset: 1
-    icon: "IRON_PICKAXE"
     available: true
-    description: "Grants <6>+{value} Mining Speed<7>."
+    requires: null
+    verified: true
+    lore:
+      - "Grants <6>+{value} Mining Speed<7>."
     effects:
       - {key: "main", stat: "MINING_SPEED", base: 0, perLevel: 20, cap: null, scope: "ALWAYS"}
-  - id: mining_fortune
-    name: "Mining Fortune"
-    powder: "MITHRIL"
+  - id: mining_speed_boost
+    name: "Mining Speed Boost"
+    kind: "ABILITY"
+    powder: null
     tier: 2
     col: 2
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: true
+    requires: null
+    verified: false
+    lore: []
+    effects: []
+  - id: precision_mining
+    name: "Precision Mining"
+    kind: "PERK"
+    powder: null
+    tier: 2
+    col: 3
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: false
+    requires: null
+    verified: true
+    lore:
+      - "When Mining <6>Ores<7> or <6>Dwarven Metals<7>, a particle target appears on the block that increases your <6>Mining Speed<7> by <a>30%<7> when aiming at it."
+    effects: []
+  - id: mining_fortune
+    name: "Mining Fortune"
+    kind: "PERK"
+    powder: "MITHRIL"
+    tier: 2
+    col: 4
     maxLevel: 50
     exponent: 3.05
     offset: 1
-    icon: "GOLD_INGOT"
     available: true
-    description: "Grants <6>+{value} Mining Fortune<7>."
+    requires: null
+    verified: true
+    lore:
+      - "Grants <6>+{value} Mining Fortune<7>."
     effects:
       - {key: "main", stat: "MINING_FORTUNE", base: 0, perLevel: 2, cap: null, scope: "ALWAYS"}
   - id: titanium_insanium
     name: "Titanium Insanium"
-    powder: "MITHRIL"
-    tier: 2
-    col: 3
-    maxLevel: 50
-    exponent: 3.1
-    offset: 1
-    icon: "POLISHED_DIORITE"
-    available: true
-    description: "When mining Mithril Ore, you have a <a>{value}%<7> chance to convert the block into Titanium Ore."
-    effects:
-      - {key: "main", stat: null, base: 2, perLevel: 0.1, cap: null, scope: "ALWAYS"}
-  - id: luck_of_the_cave
-    name: "Luck of the Cave"
+    kind: "PERK"
     powder: "MITHRIL"
     tier: 2
     col: 5
+    maxLevel: 50
+    exponent: 3.1
+    offset: 1
+    available: true
+    requires: null
+    verified: false
+    lore:
+      - "When mining <f>Mithril Ore<7>, you have a <a>{value}%<7> chance to convert the block into <f>Titanium Ore<7>."
+    effects:
+      - {key: "main", stat: null, base: 2, perLevel: 0.1, cap: null, scope: "ALWAYS"}
+  - id: pickobulus
+    name: "Pickobulus"
+    kind: "ABILITY"
+    powder: null
+    tier: 2
+    col: 6
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: true
+    requires: null
+    verified: true
+    lore: []
+    effects: []
+  - id: luck_of_the_cave
+    name: "Luck of the Cave"
+    kind: "PERK"
+    powder: "MITHRIL"
+    tier: 3
+    col: 2
     maxLevel: 45
     exponent: 3.07
     offset: 1
-    icon: "RABBIT_FOOT"
     available: true
-    description: "Increases the chance for Golden Goblins, Fallen Stars and Powder Ghasts to appear in the Dwarven Mines by <a>{value}%<7>."
+    requires: null
+    verified: true
+    lore:
+      - "Increases the chance for you to trigger rare occurrences in the <a>Dwarven Mines<7> by <a>{value}%<7>."
+      - ""
+      - "Rare occurrences include:"
+      - "<8>• <6>Golden Goblins"
+      - "<8>• <5>Fallen Stars"
+      - "<8>• <6>Powder Ghasts"
     effects:
       - {key: "main", stat: null, base: 5, perLevel: 1, cap: null, scope: "ALWAYS"}
   - id: efficient_miner
     name: "Efficient Miner"
+    kind: "PERK"
     powder: "MITHRIL"
-    tier: 2
+    tier: 3
     col: 4
     maxLevel: 100
     exponent: 2.6
     offset: 1
-    icon: "DIAMOND_PICKAXE"
     available: true
-    description: "Grants <e>+{value} Mining Spread<7>."
+    requires: null
+    verified: false
+    lore:
+      - "Grants <e>+{value} Mining Spread<7>."
     effects:
       - {key: "main", stat: "MINING_SPREAD", base: 0, perLevel: 3, cap: null, scope: "ALWAYS"}
   - id: quick_forge
     name: "Quick Forge"
+    kind: "PERK"
     powder: "MITHRIL"
-    tier: 2
+    tier: 3
     col: 6
     maxLevel: 20
     exponent: 3.2
     offset: 1
-    icon: "ANVIL"
     available: false
-    description: "Decreases the time it takes to forge by <a>{value}%<7>."
+    requires: null
+    verified: true
+    lore:
+      - "Decreases the time it takes to forge by <a>{value}%<7>."
     effects:
       - {key: "main", stat: null, base: 10, perLevel: 0.5, cap: 30, scope: "ALWAYS"}
   - id: sky_mall
     name: "Sky Mall"
+    kind: "PERK"
     powder: null
-    tier: 3
-    col: 2
+    tier: 4
+    col: 1
     maxLevel: 1
     exponent: 0
     offset: 0
-    icon: "EMERALD"
     available: true
-    description: "Every SkyBlock day, you receive a random buff in the Dwarven Mines."
+    requires: null
+    verified: true
+    lore:
+      - "Every <e>SkyBlock<7> day, you receive a random buff while on any <6>Mining Island<7>."
+      - ""
+      - "<7>Possible Buffs"
+      - "<8>■ <7>Gain <6>+100 Mining Speed<7>."
+      - "<8>■ <7>Gain <6>+50 Mining Fortune<7>."
+      - "<8>■ <7>Gain <a>+15%<7> more <9>Powder<7> while mining."
+      - "<8>■ <a>-20%<7> Pickaxe Ability cooldowns."
+      - "<8>■ <a>10x<7> chance to find <6>Golden<7> and <b>Diamond Goblins<7>."
+      - "<8>■ <7>Gain <a>5x<7> <9>Titanium<7> drops."
     effects:
       - {key: "main", stat: null, base: 1, perLevel: 0, cap: null, scope: "ALWAYS"}
-  - id: magic_find
-    name: "Miner's Luck"
-    powder: null
-    tier: 3
-    col: 4
-    maxLevel: 1
-    exponent: 0
-    offset: 0
-    icon: "STICK"
-    available: true
-    description: "Grants <b>+{value} Magic Find<7> on the Mining Islands."
-    effects:
-      - {key: "main", stat: "MAGIC_FIND", base: 30, perLevel: 0, cap: null, scope: "MINING_ISLAND"}
-  - id: mineshaft_mayhem
-    name: "Mineshaft Mayhem"
-    powder: null
-    tier: 8
-    col: 5
-    maxLevel: 1
-    exponent: 0
-    offset: 0
-    icon: "PACKED_ICE"
-    available: false
-    description: "Entering a Glacite Mineshaft gives you a random buff."
-    effects:
-      - {key: "main", stat: null, base: 1, perLevel: 0, cap: null, scope: "ALWAYS"}
-  - id: ore_fortune
-    name: "Ore Fortune"
+  - id: old_school
+    name: "Old-School"
+    kind: "PERK"
     powder: "GEMSTONE"
-    tier: 3
-    col: 6
+    tier: 4
+    col: 2
     maxLevel: 20
     exponent: 4.0
     offset: 1
-    icon: "DIAMOND_ORE"
     available: true
-    description: "Grants <6>+{value} Ore Fortune<7>."
+    requires: null
+    verified: true
+    lore:
+      - "Grants <6>+{value} Ore Fortune<7>."
     effects:
       - {key: "main", stat: "ORE_FORTUNE", base: 0, perLevel: 5, cap: null, scope: "ALWAYS"}
-  - id: gemstone_mining_speed
-    name: "Gemstone Mining Speed"
-    powder: "GEMSTONE"
-    tier: 4
-    col: 1
-    maxLevel: 140
-    exponent: 2.3
-    offset: 1
-    icon: "AMETHYST_SHARD"
-    available: true
-    description: "Grants <6>+{value} Mining Speed<7> while mining Gemstones."
-    effects:
-      - {key: "main", stat: "MINING_SPEED", base: 50, perLevel: 5, cap: null, scope: "GEMSTONE"}
   - id: mole
     name: "Mole"
+    kind: "PERK"
     powder: "GEMSTONE"
     tier: 4
-    col: 2
+    col: 4
     maxLevel: 200
     exponent: 2.17883
     offset: 1
-    icon: "STONE_PICKAXE"
     available: true
-    description: "Grants <e>+{value} Mining Spread<7> while mining Hard Stone."
+    requires: null
+    verified: true
+    lore:
+      - "Grants <e>+{value} Mining Spread<7> when mining <f>Hard Stone<7>."
     effects:
       - {key: "main", stat: "MINING_SPREAD", base: 48.241, perLevel: 1.759, cap: null, scope: "HARD_STONE"}
-  - id: gemstone_fortune
-    name: "Gemstone Fortune"
-    powder: "GEMSTONE"
-    tier: 4
-    col: 3
-    maxLevel: 20
-    exponent: 4.0
-    offset: 1
-    icon: "EMERALD_BLOCK"
-    available: true
-    description: "Grants <6>+{value} Gemstone Fortune<7>."
-    effects:
-      - {key: "main", stat: "GEMSTONE_FORTUNE", base: 20, perLevel: 4, cap: null, scope: "ALWAYS"}
-  - id: mining_wisdom
-    name: "Mining Wisdom"
-    powder: "GEMSTONE"
-    tier: 4
-    col: 4
-    maxLevel: 100
-    exponent: 2.3
-    offset: 1
-    icon: "EXPERIENCE_BOTTLE"
-    available: true
-    description: "Grants <3>+{value} Mining Wisdom<7>."
-    effects:
-      - {key: "main", stat: "MINING_WISDOM", base: 5, perLevel: 0.1, cap: null, scope: "ALWAYS"}
-  - id: block_fortune
-    name: "Block Fortune"
+  - id: gem_lover
+    name: "Gem Lover"
+    kind: "PERK"
     powder: "GEMSTONE"
     tier: 4
     col: 5
     maxLevel: 20
     exponent: 4.0
     offset: 1
-    icon: "COBBLESTONE"
     available: true
-    description: "Grants <6>+{value} Block Fortune<7>."
+    requires: null
+    verified: true
+    lore:
+      - "Grants <6>+{value} Gemstone Fortune<7>."
     effects:
-      - {key: "main", stat: "BLOCK_FORTUNE", base: 0, perLevel: 5, cap: null, scope: "ALWAYS"}
-  - id: mining_island_fishing
-    name: "Mining Island Fishing"
+      - {key: "main", stat: "GEMSTONE_FORTUNE", base: 20, perLevel: 4, cap: null, scope: "ALWAYS"}
+  - id: seasoned_mineman
+    name: "Seasoned Mineman"
+    kind: "PERK"
     powder: "GEMSTONE"
     tier: 4
     col: 6
-    maxLevel: 40
-    exponent: 3.07
+    maxLevel: 100
+    exponent: 2.3
     offset: 1
-    icon: "FISHING_ROD"
     available: true
-    description: "Grants <b>+{value} Fishing Speed<7> and <3>+{value2} Sea Creature Chance<7> on the Mining Islands."
+    requires: null
+    verified: true
+    lore:
+      - "Grants <3>+{value} Mining Wisdom<7>."
     effects:
-      - {key: "main", stat: "FISHING_SPEED", base: 5, perLevel: 0.5, cap: null, scope: "MINING_ISLAND"}
-      - {key: "second", stat: "SEA_CREATURE_CHANCE", base: 1, perLevel: 0.1, cap: null, scope: "MINING_ISLAND"}
-  - id: warm_heart
-    name: "Warm Heart"
-    powder: "GEMSTONE"
+      - {key: "main", stat: "MINING_WISDOM", base: 5, perLevel: 0.1, cap: null, scope: "ALWAYS"}
+  - id: front_loaded
+    name: "Front Loaded"
+    kind: "PERK"
+    powder: null
     tier: 4
     col: 7
-    maxLevel: 50
-    exponent: 3.07
-    offset: 1
-    icon: "MAGMA_BLOCK"
-    available: true
-    description: "Grants <c>+{value} Heat Resistance<7>."
-    effects:
-      - {key: "main", stat: "HEAT_RESISTANCE", base: 0, perLevel: 0.4, cap: null, scope: "ALWAYS"}
-  - id: great_explorer
-    name: "Great Explorer"
-    powder: "GEMSTONE"
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: false
+    requires: null
+    verified: true
+    lore:
+      - "Grants the following buffs for the first <a>2,500 <d>Gemstones<7> you mine each day."
+      - ""
+      - "<8>■ <d>3x Gemstone Powder"
+      - "<8>■ <6>+150 Gemstone Fortune"
+      - "<8>■ <6>+250 Mining Speed"
+      - ""
+      - "Blocks remaining: <a>2,500"
+      - "<c>Resets daily"
+    effects: []
+  - id: daily_grind
+    name: "Daily Grind"
+    kind: "PERK"
+    powder: null
     tier: 5
+    col: 2
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: true
+    requires: null
+    verified: true
+    lore:
+      - "Your first daily commission on each <6>Mining Island<7> grants <9>+500 Powder<7>, multiplied by your <5>HOTM<7> level."
+      - ""
+      - "{daily_grind_lines}"
+      - ""
+      - "{resets}"
+    effects:
+      - {key: "main", stat: null, base: 500, perLevel: 0, cap: null, scope: "ALWAYS"}
+  - id: daily_powder
+    name: "Daily Powder"
+    kind: "PERK"
+    powder: null
+    tier: 5
+    col: 6
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: true
+    requires: null
+    verified: true
+    lore:
+      - "The first ore you mine each day grants <9>+500 Powder<7>, multiplied by your <5>HOTM<7> level."
+      - ""
+      - "{daily_powder_lines}"
+      - ""
+      - "{resets}"
+    effects:
+      - {key: "main", stat: null, base: 500, perLevel: 0, cap: null, scope: "ALWAYS"}
+  - id: tunnel_vision
+    name: "Tunnel Vision"
+    kind: "ABILITY"
+    powder: null
+    tier: 6
+    col: 1
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: true
+    requires: "blockhead"
+    verified: true
+    lore: []
+    effects: []
+  - id: blockhead
+    name: "Blockhead"
+    kind: "PERK"
+    powder: "GEMSTONE"
+    tier: 6
     col: 2
     maxLevel: 20
     exponent: 4.0
     offset: 1
-    icon: "CHEST"
-    available: false
-    description: "Grants <a>{value}%<7> Treasure Chest spawn chance and <a>{value2}<7> fewer chest locks."
-    effects:
-      - {key: "main", stat: null, base: 16, perLevel: 4, cap: null, scope: "ALWAYS"}
-      - {key: "second", stat: null, base: 1, perLevel: 0.2, cap: null, scope: "ALWAYS"}
-  - id: mining_speed_ii
-    name: "Mining Speed II"
-    powder: "GEMSTONE"
-    tier: 5
-    col: 4
-    maxLevel: 50
-    exponent: 3.2
-    offset: 1
-    icon: "GOLDEN_PICKAXE"
     available: true
-    description: "Grants <6>+{value} Mining Speed<7>."
+    requires: null
+    verified: false
+    lore:
+      - "Grants <6>+{value} Block Fortune<7>."
     effects:
-      - {key: "main", stat: "MINING_SPEED", base: 0, perLevel: 40, cap: null, scope: "ALWAYS"}
-  - id: mining_fortune_ii
-    name: "Mining Fortune II"
+      - {key: "main", stat: "BLOCK_FORTUNE", base: 0, perLevel: 5, cap: null, scope: "ALWAYS"}
+  - id: subterranean_fisher
+    name: "Subterranean Fisher"
+    kind: "PERK"
     powder: "GEMSTONE"
-    tier: 5
-    col: 6
-    maxLevel: 50
-    exponent: 3.2
+    tier: 6
+    col: 3
+    maxLevel: 40
+    exponent: 3.07
     offset: 1
-    icon: "GOLD_BLOCK"
     available: true
-    description: "Grants <6>+{value} Mining Fortune<7>."
+    requires: null
+    verified: true
+    lore:
+      - "Grants <b>+{value} Fishing Speed<7> and <3>+{value2} Sea Creature Chance<7> while on <6>Mining Islands<7>."
     effects:
-      - {key: "main", stat: "MINING_FORTUNE", base: 0, perLevel: 3, cap: null, scope: "ALWAYS"}
-  - id: powder_buff
-    name: "Powder Buff"
+      - {key: "main", stat: "FISHING_SPEED", base: 5, perLevel: 0.5, cap: null, scope: "MINING_ISLAND"}
+      - {key: "second", stat: "SEA_CREATURE_CHANCE", base: 1, perLevel: 0.1, cap: null, scope: "MINING_ISLAND"}
+  - id: keep_it_cool
+    name: "Keep It Cool"
+    kind: "PERK"
     powder: "GEMSTONE"
     tier: 6
     col: 4
     maxLevel: 50
+    exponent: 3.07
+    offset: 1
+    available: true
+    requires: null
+    verified: true
+    lore:
+      - "Grants <c>+{value} Heat Resistance<7>."
+    effects:
+      - {key: "main", stat: "HEAT_RESISTANCE", base: 0, perLevel: 0.4, cap: null, scope: "ALWAYS"}
+  - id: lonesome_miner
+    name: "Lonesome Miner"
+    kind: "PERK"
+    powder: "GEMSTONE"
+    tier: 6
+    col: 5
+    maxLevel: 45
+    exponent: 3.07
+    offset: 1
+    available: true
+    requires: null
+    verified: false
+    lore:
+      - "Increases <c>Strength<7>, <9>Crit Chance<7>, <9>Crit Damage<7>, <a>Defense<7>, and <c>Health<7> statistics gain by <a>{value}%<7> while on <6>Mining Islands<7>."
+    effects:
+      - {key: "main", stat: null, base: 4.75, perLevel: 0.25, cap: null, scope: "MINING_ISLAND"}
+  - id: great_explorer
+    name: "Great Explorer"
+    kind: "PERK"
+    powder: "GEMSTONE"
+    tier: 6
+    col: 6
+    maxLevel: 20
+    exponent: 4.0
+    offset: 1
+    available: false
+    requires: null
+    verified: false
+    lore:
+      - "Grants <a>{value}%<7> chance to spawn <6>Treasure Chests<7> and <a>{value2}<7> fewer locks on them."
+    effects:
+      - {key: "main", stat: null, base: 16, perLevel: 4, cap: null, scope: "ALWAYS"}
+      - {key: "second", stat: null, base: 1, perLevel: 0.2, cap: null, scope: "ALWAYS"}
+  - id: maniac_miner
+    name: "Maniac Miner"
+    kind: "ABILITY"
+    powder: null
+    tier: 6
+    col: 7
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: true
+    requires: "great_explorer"
+    verified: true
+    lore: []
+    effects: []
+  - id: speedy_mineman
+    name: "Speedy Mineman"
+    kind: "PERK"
+    powder: "GEMSTONE"
+    tier: 7
+    col: 2
+    maxLevel: 50
     exponent: 3.2
     offset: 1
-    icon: "GUNPOWDER"
     available: true
-    description: "Gain <a>{value}%<7> more Powder from any source."
+    requires: null
+    verified: true
+    lore:
+      - "Grants <6>+{value} Mining Speed<7>."
+    effects:
+      - {key: "main", stat: "MINING_SPEED", base: 0, perLevel: 40, cap: null, scope: "ALWAYS"}
+  - id: powder_buff
+    name: "Powder Buff"
+    kind: "PERK"
+    powder: "GEMSTONE"
+    tier: 7
+    col: 4
+    maxLevel: 50
+    exponent: 3.2
+    offset: 1
+    available: true
+    requires: null
+    verified: false
+    lore:
+      - "Gain <a>{value}%<7> more <9>Powder<7> from any source."
     effects:
       - {key: "main", stat: null, base: 0, perLevel: 1, cap: null, scope: "ALWAYS"}
-  - id: metal_speed
-    name: "Dwarven Metal Speed"
+  - id: fortunate_mineman
+    name: "Fortunate Mineman"
+    kind: "PERK"
+    powder: "GEMSTONE"
+    tier: 7
+    col: 6
+    maxLevel: 50
+    exponent: 3.2
+    offset: 1
+    available: true
+    requires: null
+    verified: true
+    lore:
+      - "Grants <6>+{value} Mining Fortune<7>."
+    effects:
+      - {key: "main", stat: "MINING_FORTUNE", base: 0, perLevel: 3, cap: null, scope: "ALWAYS"}
+  - id: mineshaft_mayhem
+    name: "Mineshaft Mayhem"
+    kind: "PERK"
+    powder: null
+    tier: 8
+    col: 1
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: false
+    requires: null
+    verified: false
+    lore:
+      - "Entering a <b>Glacite Mineshaft<7> gives you a random buff."
+    effects: []
+  - id: no_stone_unturned
+    name: "No Stone Unturned"
+    kind: "PERK"
     powder: "GLACITE"
     tier: 8
     col: 2
-    maxLevel: 100
-    exponent: 2.3
+    maxLevel: 50
+    exponent: 3.05
     offset: 1
-    icon: "IRON_BLOCK"
-    available: true
-    description: "Grants <6>+{value} Mining Speed<7> when mining Dwarven Metals."
+    available: false
+    requires: null
+    verified: true
+    lore:
+      - "Increases your chances of finding a <9>Suspicious Scrap<7> when mining in a <b>Glacite Mineshaft<7> by <a>{value}%<7>."
     effects:
-      - {key: "main", stat: "MINING_SPEED", base: 0, perLevel: 5, cap: null, scope: "DWARVEN_METAL"}
-  - id: cold_resistance
-    name: "Cold Resistance"
+      - {key: "main", stat: null, base: 0, perLevel: 0.5, cap: null, scope: "ALWAYS"}
+  - id: strong_arm
+    name: "Strong Arm"
+    kind: "PERK"
     powder: "GLACITE"
     tier: 8
     col: 3
-    maxLevel: 50
-    exponent: 3.1
+    maxLevel: 100
+    exponent: 2.3
     offset: 1
-    icon: "BLUE_ICE"
     available: true
-    description: "Grants <b>+{value} Cold Resistance<7>."
+    requires: null
+    verified: true
+    lore:
+      - "Gain <6>+{value} Mining Speed<7> when mining <6>Dwarven Metals<7>."
     effects:
-      - {key: "main", stat: "COLD_RESISTANCE", base: 0, perLevel: 0.4, cap: null, scope: "ALWAYS"}
-  - id: dwarven_metal_fortune
-    name: "Dwarven Metal Fortune"
-    powder: "GLACITE"
-    tier: 8
-    col: 4
-    maxLevel: 20
-    exponent: 4.0
-    offset: 1
-    icon: "RAW_IRON"
-    available: true
-    description: "Grants <6>+{value} Dwarven Metal Fortune<7>."
-    effects:
-      - {key: "main", stat: "DWARVEN_METAL_FORTUNE", base: 0, perLevel: 5, cap: null, scope: "ALWAYS"}
-  - id: mineshaft_chance
-    name: "Mineshaft Chance"
-    powder: "GLACITE"
-    tier: 9
-    col: 2
-    maxLevel: 20
-    exponent: 4.0
-    offset: 1
-    icon: "COMPASS"
-    available: false
-    description: "Grants <a>+{value}%<7> chance for a Glacite Mineshaft to appear."
-    effects:
-      - {key: "main", stat: null, base: 0, perLevel: 0.75, cap: null, scope: "ALWAYS"}
+      - {key: "main", stat: "MINING_SPEED", base: 0, perLevel: 5, cap: null, scope: "DWARVEN_METAL"}
   - id: mineshaft_fortune
     name: "Mineshaft Fortune"
+    kind: "PERK"
     powder: "GLACITE"
-    tier: 9
+    tier: 8
     col: 4
     maxLevel: 50
     exponent: 3.05
     offset: 1
-    icon: "GOLD_NUGGET"
     available: false
-    description: "Grants <6>+{value} Mining Fortune<7> in Glacite Mineshafts."
+    requires: null
+    verified: false
+    lore:
+      - "Grants <6>+{value} Mining Fortune<7> in a <b>Glacite Mineshaft<7>."
     effects:
       - {key: "main", stat: "MINING_FORTUNE", base: 0, perLevel: 4, cap: null, scope: "MINESHAFT"}
-  - id: mineshaft_speed
-    name: "Mineshaft Speed"
+  - id: warm_heart
+    name: "Warm Heart"
+    kind: "PERK"
+    powder: "GLACITE"
+    tier: 8
+    col: 5
+    maxLevel: 50
+    exponent: 3.1
+    offset: 1
+    available: true
+    requires: null
+    verified: true
+    lore:
+      - "Grants <b>+{value} Cold Resistance<7>."
+    effects:
+      - {key: "main", stat: "COLD_RESISTANCE", base: 0, perLevel: 0.4, cap: null, scope: "ALWAYS"}
+  - id: surveyor
+    name: "Surveyor"
+    kind: "PERK"
+    powder: "GLACITE"
+    tier: 8
+    col: 6
+    maxLevel: 20
+    exponent: 4.0
+    offset: 1
+    available: false
+    requires: null
+    verified: true
+    lore:
+      - "Increases your chances of finding a <b>Glacite Mineshaft<7> when mining in the <b>Glacite Tunnels<7> by <a>{value}%<7>."
+    effects:
+      - {key: "main", stat: null, base: 0, perLevel: 0.75, cap: null, scope: "ALWAYS"}
+  - id: pristine
+    name: "Pristine"
+    kind: "PERK"
+    powder: "GLACITE"
+    tier: 8
+    col: 7
+    maxLevel: 10
+    exponent: 5.0
+    offset: 7
+    available: true
+    requires: null
+    verified: false
+    lore:
+      - "Grants <5>+{value} Pristine<7>."
+    effects:
+      - {key: "main", stat: "PRISTINE", base: 0, perLevel: 0.1, cap: null, scope: "ALWAYS"}
+  - id: metal_head
+    name: "Metal Head"
+    kind: "PERK"
+    powder: "GLACITE"
+    tier: 9
+    col: 2
+    maxLevel: 20
+    exponent: 4.0
+    offset: 1
+    available: true
+    requires: null
+    verified: true
+    lore:
+      - "Grants <6>+{value} Dwarven Metal Fortune<7>."
+    effects:
+      - {key: "main", stat: "DWARVEN_METAL_FORTUNE", base: 0, perLevel: 5, cap: null, scope: "ALWAYS"}
+  - id: gemstone_spread
+    name: "Gemstone Spread"
+    kind: "PERK"
+    powder: "GLACITE"
+    tier: 9
+    col: 4
+    maxLevel: 100
+    exponent: 2.6
+    offset: 1
+    available: false
+    requires: null
+    verified: false
+    lore:
+      - "Grants <e>+{value} Gemstone Spread<7> in a <b>Glacite Mineshaft<7>."
+    effects:
+      - {key: "main", stat: "GEMSTONE_SPREAD", base: 0, perLevel: 0.1, cap: null, scope: "MINESHAFT"}
+  - id: eager_adventurer
+    name: "Eager Adventurer"
+    kind: "PERK"
     powder: "GLACITE"
     tier: 9
     col: 6
     maxLevel: 100
     exponent: 2.3
     offset: 1
-    icon: "IRON_INGOT"
     available: false
-    description: "Grants <6>+{value} Mining Speed<7> in Glacite Mineshafts."
+    requires: null
+    verified: true
+    lore:
+      - "Grants <6>+{value} Mining Speed<7> while in a <b>Glacite Mineshaft<7>."
     effects:
       - {key: "main", stat: "MINING_SPEED", base: 0, perLevel: 4, cap: null, scope: "MINESHAFT"}
-  - id: gemstone_spread
-    name: "Gemstone Spread"
-    powder: "GLACITE"
+  - id: gemstone_infusion
+    name: "Gemstone Infusion"
+    kind: "ABILITY"
+    powder: null
     tier: 10
     col: 1
-    maxLevel: 100
-    exponent: 2.6
-    offset: 1
-    icon: "AMETHYST_CLUSTER"
-    available: false
-    description: "Grants <e>+{value} Gemstone Spread<7> in Glacite Mineshafts."
-    effects:
-      - {key: "main", stat: "GEMSTONE_SPREAD", base: 0, perLevel: 0.1, cap: null, scope: "MINESHAFT"}
-  - id: crystal_chance
-    name: "Crystal Chance"
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: true
+    requires: "crystalline"
+    verified: true
+    lore: []
+    effects: []
+  - id: crystalline
+    name: "Crystalline"
+    kind: "PERK"
     powder: "GLACITE"
     tier: 10
     col: 2
     maxLevel: 50
     exponent: 3.3
     offset: 1
-    icon: "AMETHYST_BLOCK"
     available: false
-    description: "Grants <a>+{value}%<7> Crystal chance in Glacite Mineshafts."
+    requires: null
+    verified: false
+    lore:
+      - "Grants <a>+{value}%<7> chance to find a <d>Crystal<7> in a <b>Glacite Mineshaft<7>."
     effects:
       - {key: "main", stat: null, base: 0, perLevel: 0.5, cap: null, scope: "ALWAYS"}
-  - id: frozen_corpse_loot
-    name: "Frozen Corpse Loot"
+  - id: gifts_from_the_departed
+    name: "Gifts from the Departed"
+    kind: "PERK"
     powder: "GLACITE"
     tier: 10
     col: 3
     maxLevel: 100
     exponent: 2.45
     offset: 1
-    icon: "SKELETON_SKULL"
     available: false
-    description: "Grants <a>+{value}%<7> chance for an extra item when looting Frozen Corpses."
+    requires: null
+    verified: true
+    lore:
+      - "Gain a <a>+{value}%<7> chance to get <a>+1<7> item when looting a <b>Frozen Corpse<7>."
     effects:
       - {key: "main", stat: null, base: 0, perLevel: 0.2, cap: null, scope: "ALWAYS"}
-  - id: pristine
-    name: "Pristine"
-    powder: "GLACITE"
-    tier: 10
-    col: 4
-    maxLevel: 10
-    exponent: 5.0
-    offset: 7
-    icon: "DIAMOND"
-    available: true
-    description: "Grants <5>+{value} Pristine<7>."
-    effects:
-      - {key: "main", stat: "PRISTINE", base: 0, perLevel: 0.1, cap: null, scope: "ALWAYS"}
-  - id: extra_corpse
-    name: "Extra Frozen Corpse"
+  - id: dead_mans_chest
+    name: "Dead Man's Chest"
+    kind: "PERK"
     powder: "GLACITE"
     tier: 10
     col: 5
     maxLevel: 50
     exponent: 3.2
     offset: 1
-    icon: "BONE"
     available: false
-    description: "Grants <a>+{value}%<7> chance for 1 extra Frozen Corpse to spawn."
+    requires: null
+    verified: true
+    lore:
+      - "Gain a <a>+{value}%<7> chance to spawn <a>+1<7> <b>Frozen Corpse<7> when entering a <b>Glacite Mineshaft<7> you summoned."
     effects:
       - {key: "main", stat: null, base: 0, perLevel: 0.5, cap: null, scope: "ALWAYS"}
-  - id: vanguard_corpse
-    name: "Vanguard Corpse"
+  - id: vanguard_seeker
+    name: "Vanguard Seeker"
+    kind: "PERK"
     powder: "GLACITE"
     tier: 10
     col: 6
     maxLevel: 50
     exponent: 3.1
     offset: 1
-    icon: "LAPIS_BLOCK"
     available: false
-    description: "Grants <a>+{value}%<7> chance for a Vanguard Corpse Mineshaft."
+    requires: null
+    verified: true
+    lore:
+      - "Increases your chances of finding a <b>Glacite Mineshaft<7> containing a <b>Vanguard Corpse<7> by <a>{value}%<7>."
     effects:
       - {key: "main", stat: null, base: 0, perLevel: 1, cap: null, scope: "ALWAYS"}
-  - id: suspicious_scrap
-    name: "Suspicious Scrap"
-    powder: "GLACITE"
+  - id: sheer_force
+    name: "Sheer Force"
+    kind: "ABILITY"
+    powder: null
     tier: 10
     col: 7
-    maxLevel: 50
-    exponent: 3.05
-    offset: 1
-    icon: "DEAD_BUSH"
-    available: false
-    description: "Grants <a>+{value}%<7> Suspicious Scrap chance in Glacite Mineshafts."
-    effects:
-      - {key: "main", stat: null, base: 0, perLevel: 0.5, cap: null, scope: "ALWAYS"}
+    maxLevel: 1
+    exponent: 0
+    offset: 0
+    available: true
+    requires: null
+    verified: true
+    lore: []
+    effects: []

@@ -1,6 +1,5 @@
 package net.swofty.type.skyblockgeneric.hotm;
 
-import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import org.yaml.snakeyaml.Yaml;
 
@@ -64,7 +63,8 @@ public final class HotmRegistry {
                     number(entry.get("tier"), 0).intValue(),
                     number(entry.get("tokens"), 0).intValue(),
                     number(entry.get("forgeSlots"), 0).intValue(),
-                    number(entry.get("skyBlockXp"), 0).intValue()));
+                    number(entry.get("skyBlockXp"), 0).intValue(),
+                    strings(entry.get("rewards"))));
         }
         return new HotmRegistry(Map.copyOf(perks), List.copyOf(core), List.copyOf(tiers));
     }
@@ -83,27 +83,27 @@ public final class HotmRegistry {
                     cap == null ? null : number(cap, 0).doubleValue(),
                     HotmScope.valueOf((String) effect.get("scope"))));
         }
+        String requires = (String) entry.get("requires");
         return new HotmPerk(
                 (String) entry.get("id"),
                 (String) entry.get("name"),
+                HotmPerk.Kind.valueOf((String) entry.getOrDefault("kind", "PERK")),
                 powder == null ? null : HotmPowder.valueOf(powder),
                 number(entry.get("tier"), 1).intValue(),
+                number(entry.get("col"), 4).intValue(),
                 number(entry.get("maxLevel"), 1).intValue(),
                 number(entry.get("exponent"), 0).doubleValue(),
                 number(entry.get("offset"), 0).intValue(),
-                material((String) entry.get("icon")),
-                number(entry.get("col"), 4).intValue(),
                 !Boolean.FALSE.equals(entry.get("available")),
-                (String) entry.get("description"),
+                requires,
+                strings(entry.get("lore")),
                 number(entry.get("tokens"), defaultTokens).intValue(),
                 List.copyOf(effects));
     }
 
-    private static Material material(String key) {
-        if (key == null) return Material.PAPER;
-        String lowered = key.toLowerCase();
-        Material material = Material.fromKey(lowered.contains(":") ? lowered : "minecraft:" + lowered);
-        return material == null ? Material.PAPER : material;
+    @SuppressWarnings("unchecked")
+    private static List<String> strings(Object value) {
+        return value instanceof List<?> list ? List.copyOf((List<String>) list) : List.of();
     }
 
     private static Number number(Object value, Number fallback) {

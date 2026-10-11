@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM;
 import net.swofty.type.skyblockgeneric.region.mining.MineableBlock;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.util.List;
 import java.util.Map;
 
 public final class HotmStatistics {
@@ -24,6 +25,15 @@ public final class HotmStatistics {
                 if (effect.scope() == HotmScope.MINING_ISLAND && !onMiningIsland) continue;
                 total = total.addBase(effect.statistic(), effect.value(entry.getValue()));
             }
+        }
+        if (onMiningIsland && HotmService.hasPerk(player, "lonesome_miner")) {
+            double percent = HotmService.perkValue(player, "lonesome_miner");
+            ItemStatistics.Builder builder = ItemStatistics.builder();
+            for (ItemStatistic statistic : List.of(ItemStatistic.STRENGTH, ItemStatistic.CRITICAL_CHANCE,
+                    ItemStatistic.CRITICAL_DAMAGE, ItemStatistic.DEFENSE, ItemStatistic.HEALTH)) {
+                builder.withMultiplicativePercentage(statistic, percent);
+            }
+            total = ItemStatistics.add(total, builder.build());
         }
         HotmSkyMallBuff buff = HotmService.skyMallBuff(player);
         if (buff == HotmSkyMallBuff.MINING_SPEED) total = total.addBase(ItemStatistic.MINING_SPEED, 100D);

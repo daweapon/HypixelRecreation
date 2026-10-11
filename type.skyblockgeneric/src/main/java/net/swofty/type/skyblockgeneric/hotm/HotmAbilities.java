@@ -28,7 +28,7 @@ public final class HotmAbilities {
     }
 
     public static boolean isUnlocked(SkyBlockPlayer player, HotmAbility ability) {
-        return HotmService.data(player).getTier() >= ability.getUnlockTier();
+        return HotmService.data(player).perkLevel(ability.perkId()) > 0;
     }
 
     public static HotmAbility selected(SkyBlockPlayer player) {

@@ -67,6 +67,15 @@ public final class HotmService {
         return data(player).getCoreLevel() >= 3 ? 1 : 0;
     }
 
+    public static int baseBonus(SkyBlockPlayer player, HotmPowder powder) {
+        int core = data(player).getCoreLevel();
+        return switch (powder) {
+            case MITHRIL -> core >= 4 ? 1 : 0;
+            case GEMSTONE -> core >= 6 ? 2 : 0;
+            case GLACITE -> core >= 8 ? 3 : 0;
+        };
+    }
+
     public static int abilityLevel(SkyBlockPlayer player) {
         return Math.min(HotmAbility.MAX_LEVEL, 1 + (data(player).getCoreLevel() >= 2 ? 1 : 0));
     }
@@ -91,22 +100,47 @@ public final class HotmService {
     }
 
     public static String buyPerk(SkyBlockPlayer player, String perkId) {
+        return buyPerkLevels(player, perkId, 1).error();
+    }
+
+    public record Purchase(int levels, String error) {
+    }
+
+    public static Purchase buyPerkLevels(SkyBlockPlayer player, String perkId, int count) {
         HotmPerk perk = HotmRegistry.get().perk(perkId);
-        if (perk == null) return "<c>That perk does not exist.";
+        if (perk == null) return new Purchase(0, "<c>That perk does not exist.");
         DatapointHOTM.PlayerHOTMData data = data(player);
+        int bought = 0;
+        String error = null;
+        for (int i = 0; i < count; i++) {
+            error = purchaseOne(data, perk);
+            if (error != null) break;
+            bought++;
+        }
+        if (bought > 0) {
+            if (perk.isAbility() && data.getSelectedAbility() == null) data.setSelectedAbility(perk.id().toUpperCase());
+            save(player, data);
+        }
+        return new Purchase(bought, bought > 0 && count > 1 ? null : error);
+    }
+
+    private static String purchaseOne(DatapointHOTM.PlayerHOTMData data, HotmPerk perk) {
         if (perk.tier() > data.getTier()) return "<c>You need Heart of the Mountain Tier " + perk.tier() + " to unlock this perk.";
-        int level = data.perkLevel(perkId);
+        int level = data.perkLevel(perk.id());
         if (level >= perk.maxLevel()) return "<c>This perk is already at its maximum level.";
+        if (level == 0 && perk.requires() != null && data.perkLevel(perk.requires()) <= 0) {
+            HotmPerk required = HotmRegistry.get().perk(perk.requires());
+            return "<c>Requires " + (required == null ? perk.requires() : required.name()) + ".";
+        }
         int next = level + 1;
-        if (level == 0 && data.getAvailableTokens() < perk.tokenCost()) return "<c>You need " + perk.tokenCost() + " Token of the Mountain to unlock this perk.";
+        if (level == 0 && data.getAvailableTokens() < perk.tokenCost()) return "<c>You don't have enough Token of the Mountain!";
         long cost = perk.costToReach(next);
         if (perk.usesPowder() && data.powder(perk.powder()) < cost) {
             return "<c>You need " + String.format("%,d", cost) + " " + perk.powder().getDisplayName() + " to upgrade this perk.";
         }
         if (level == 0) data.setTokensSpent(data.getTokensSpent() + perk.tokenCost());
         if (perk.usesPowder()) data.addPowder(perk.powder(), -cost);
-        data.getPerkLevels().put(perkId, next);
-        save(player, data);
+        data.getPerkLevels().put(perk.id(), next);
         return null;
     }
 
@@ -157,6 +191,7 @@ public final class HotmService {
         });
         data.getPerkLevels().clear();
         data.getDisabledPerks().clear();
+        data.setSelectedAbility(null);
         data.setTokensSpent(0);
         save(player, data);
     }
@@ -171,6 +206,7 @@ public final class HotmService {
             data.getPerkLevels().put(perk.id(), perk.maxLevel());
             tokensSpent += perk.tokenCost();
         }
+        if (data.getSelectedAbility() == null) data.setSelectedAbility(HotmAbility.PICKOBULUS.name());
         int earned = Arrays.stream(new int[]{1, 2, 2, 2, 2, 2, 3, 2, 2, 2}).sum()
                 + registry.coreLevels().stream().mapToInt(HotmCoreLevel::tokens).sum();
         data.setTokensSpent(tokensSpent);
@@ -191,6 +227,30 @@ public final class HotmService {
         data.addPowder(powder, amount);
         save(player, data);
         return amount;
+    }
+
+    public static long dailyPowderAmount(SkyBlockPlayer player) {
+        return (long) DAILY_POWDER_PER_TIER * data(player).getTier();
+    }
+
+    public static boolean claimDailyGrind(SkyBlockPlayer player) {
+        if (!hasPerk(player, "daily_grind")) return false;
+        DatapointHOTM.PlayerHOTMData data = data(player);
+        long today = dailyBonusDay();
+        if (data.getDailyCommissionDay() == today) return false;
+        data.setDailyCommissionDay(today);
+        data.addMithrilPowder(dailyPowderAmount(player));
+        save(player, data);
+        return true;
+    }
+
+    public static long millisUntilDailyReset() {
+        return REAL_DAY_MILLIS - System.currentTimeMillis() % REAL_DAY_MILLIS;
+    }
+
+    public static String formatDuration(long millis) {
+        long minutes = millis / 60_000L;
+        return (minutes >= 60 ? minutes / 60 + "h " : "") + minutes % 60 + "m";
     }
 
     public static long dailyBonusDay() {

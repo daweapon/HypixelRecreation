@@ -222,9 +222,14 @@ class MaxProfileTest {
             if (pass == 1) net.swofty.type.skyblockgeneric.hotm.HotmService.maxOut(player);
             ViewContext context = new ViewContext(player, null, null);
             var views = List.<net.swofty.type.generic.gui.v2.StatelessView>of(
-                    new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotm(),
-                    new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotmAbilities(),
+                    new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotm(1),
+                    new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotm(5),
+                    new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotm(6),
                     new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotmReset());
+            for (var perk : net.swofty.type.skyblockgeneric.hotm.HotmRegistry.get().perks().values()) {
+                String tooltip = net.swofty.type.skyblockgeneric.gui.inventories.hotm.HotmTooltips.perk(player, perk);
+                assertTrue(!tooltip.contains("{"), perk.id() + ": " + tooltip);
+            }
             for (var view : views) {
                 ViewLayout<net.swofty.type.generic.gui.v2.DefaultState> layout = new ViewLayout<>(view.configuration().getInventoryType());
                 view.layout(layout, new net.swofty.type.generic.gui.v2.DefaultState(), context);

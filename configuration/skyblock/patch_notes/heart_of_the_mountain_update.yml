@@ -7,8 +7,8 @@ sections:
   - heading: "The Perk Tree"
     colour: "<5>"
     lines:
-      - "34 perks across Mithril, Gemstone and Glacite Powder, with the real Hypixel level costs and effects."
-      - "Unlock a perk with a Token of the Mountain, then upgrade it with Powder. Perks open up as your Heart of the Mountain Tier rises."
+      - "The tree now looks like Hypixel's: tier rows with a banner for each tier, scroll arrows to reach the higher tiers, and perks coloured coal, emerald or diamond for unbought, bought and maxed."
+      - "Unlock a perk with a Token of the Mountain, then upgrade it with Powder. Left-click to upgrade, Shift Left-click to upgrade 10 levels and right-click to disable a perk."
       - "Mining Speed, Mining Fortune, Ore Fortune, Gemstone Fortune, Block Fortune, Mining Wisdom, Powder Buff and more now change your stats."
       - "Titanium Insanium can turn Mithril into Titanium."
       - "Reset your perks any time. Every Powder and Token you spent on them comes back, and your Tier and Core stay."
@@ -20,8 +20,8 @@ sections:
   - heading: "Pickaxe Abilities"
     colour: "<6>"
     lines:
-      - "Tier 2 unlocks Mining Speed Boost and Pickobulus, Tier 6 unlocks Tunnel Vision and Maniac Miner, and Tier 10 unlocks Gemstone Infusion and Sheer Force."
-      - "Choose one in the Pickaxe Abilities menu, then right-click with a pickaxe or drill to use it."
+      - "Tier 2 has Mining Speed Boost and Pickobulus, Tier 6 has Tunnel Vision and Maniac Miner, and Tier 10 has Gemstone Infusion and Sheer Force. Some need another perk first."
+      - "Unlock them in the tree with a Token of the Mountain, click an unlocked one to select it, then right-click with a pickaxe or drill to use it."
       - "Core of the Mountain level 2 raises your ability level by one."
   - heading: "Powder and Sky Mall"
     colour: "<2>"
