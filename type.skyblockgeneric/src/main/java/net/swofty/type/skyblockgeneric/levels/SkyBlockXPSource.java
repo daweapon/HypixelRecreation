@@ -90,7 +90,7 @@ public enum SkyBlockXPSource {
     DEFEAT_ARACHNE(Group.SLAYING, null, 60, Availability.NOT_IN_GAME, Material.SPIDER_EYE),
 
     // ----- Skill Related Tasks (11,732 XP) -----
-    HEART_OF_THE_MOUNTAIN(Group.SKILL_RELATED, SubArea.MINING, 3117, Availability.UNWIRED, Material.REDSTONE),
+    HEART_OF_THE_MOUNTAIN(Group.SKILL_RELATED, SubArea.MINING, 3117, Availability.LIVE, Material.REDSTONE),
     COMMISSION_MILESTONES(Group.SKILL_RELATED, SubArea.MINING, 255, Availability.LIVE, Material.PAPER),
     CRYSTAL_NUCLEUS_RUNS(Group.SKILL_RELATED, SubArea.MINING, 200, Availability.NOT_IN_GAME, Material.AMETHYST_SHARD),
     CORE_OF_THE_MOUNTAIN(Group.SKILL_RELATED, SubArea.MINING, 1000, Availability.NOT_IN_GAME, Material.NETHERITE_PICKAXE),

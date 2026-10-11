@@ -203,6 +203,55 @@ class MaxProfileTest {
     }
 
     @Test
+    void maxProfileMaxesTheHeartOfTheMountain() {
+        SkyBlockPlayer player = player();
+        net.swofty.type.skyblockgeneric.hotm.HotmService.maxOut(player);
+        var data = net.swofty.type.skyblockgeneric.hotm.HotmService.data(player);
+        var registry = net.swofty.type.skyblockgeneric.hotm.HotmRegistry.get();
+        assertEquals(10, data.getTier());
+        assertEquals(registry.maxCoreLevel(), data.getCoreLevel());
+        registry.perks().values().forEach(perk -> assertEquals(perk.maxLevel(), data.perkLevel(perk.id()), perk.id()));
+        assertTrue(data.getAvailableTokens() >= 0);
+        for (var powder : net.swofty.type.skyblockgeneric.hotm.HotmPowder.values()) assertTrue(data.powder(powder) > 0, powder.name());
+    }
+
+    @Test
+    void everyHotmMenuRendersEverySlotBeforeAndAfterMaxing() {
+        SkyBlockPlayer player = player();
+        for (int pass = 0; pass < 2; pass++) {
+            if (pass == 1) net.swofty.type.skyblockgeneric.hotm.HotmService.maxOut(player);
+            ViewContext context = new ViewContext(player, null, null);
+            var views = List.<net.swofty.type.generic.gui.v2.StatelessView>of(
+                    new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotm(),
+                    new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotmAbilities(),
+                    new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotmReset());
+            for (var view : views) {
+                ViewLayout<net.swofty.type.generic.gui.v2.DefaultState> layout = new ViewLayout<>(view.configuration().getInventoryType());
+                view.layout(layout, new net.swofty.type.generic.gui.v2.DefaultState(), context);
+                for (var component : layout.components().values()) {
+                    assertTrue(component.render().apply(new net.swofty.type.generic.gui.v2.DefaultState(), context).build() != null);
+                }
+            }
+        }
+    }
+
+    @Test
+    void buyingAPerkSpendsTokensAndPowderAndResetRefundsThem() {
+        SkyBlockPlayer player = player();
+        var data = net.swofty.type.skyblockgeneric.hotm.HotmService.data(player);
+        data.setMithrilPowder(1_000);
+        assertEquals(null, net.swofty.type.skyblockgeneric.hotm.HotmService.buyPerk(player, "mining_speed"));
+        assertEquals(1, data.perkLevel("mining_speed"));
+        assertEquals(0, data.getAvailableTokens());
+        assertEquals(null, net.swofty.type.skyblockgeneric.hotm.HotmService.buyPerk(player, "mining_speed"));
+        assertEquals(1_000 - 27, data.getMithrilPowder());
+        net.swofty.type.skyblockgeneric.hotm.HotmService.reset(player);
+        assertEquals(1_000, data.getMithrilPowder());
+        assertEquals(1, data.getAvailableTokens());
+        assertEquals(0, data.perkLevel("mining_speed"));
+    }
+
+    @Test
     void sackPlanHoldsTheLargestSackOfEveryFamilyAndFillsTheSackOfSacks() {
         List<ItemType> plan = MaxBags.sackPlan();
         assertEquals(plan.size(), plan.stream().map(type -> MaxBags.family(type.name())).distinct().count());

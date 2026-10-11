@@ -64,6 +64,7 @@ This catalog covers **154 annotated game-server command definitions**, **7 proxy
 | `/clearstash [confirm]` | — | Clear your stash. Confirmation is required before deleting the stash. | DEFAULT | No | `type.skyblockgeneric` |
 | `/etable` | `/et`, `/enchantingtable`, `/enchantmenttable`, `/enchantingtablemenu`, `/enchantmenttablemenu` | Opens an Enchantment Table remotely. Requires an active Booster Cookie. | DEFAULT | No | `type.skyblockgeneric` |
 | `/help [page\|command]` | — | Alphabetical chat command list, eight per page, with clickable navigation. Click a command or look up its alias for usage and aliases. Filters by minimum rank and loaded game-server commands; includes proxy travel commands. | DEFAULT | No | `type.generic` |
+| `/hotm` | `/heartofthemountain` | Opens the Heart of the Mountain: spend Tokens and Powder on mining perks, upgrade the Core of the Mountain, choose a pickaxe ability and reset perks. Also reachable from the Mining skill menu. Perks that need Glacite Mineshafts, the Forge or Crystal Hollows can be bought but have no effect until that content exists. | DEFAULT | No | `type.skyblockgeneric` |
 | `/huntingbox` | `/hb` | Opens your Hunting Box. | DEFAULT | No | `type.skyblockgeneric` |
 | `/pets` | `/petsmenu`, `/petmenu`, `/viewpetsmenu` | Opens your Pets menu. | DEFAULT | No | `type.skyblockgeneric` |
 | `/pickupstash [item\|material]` | — | Pickup items from your stash. | DEFAULT | No | `type.skyblockgeneric` |

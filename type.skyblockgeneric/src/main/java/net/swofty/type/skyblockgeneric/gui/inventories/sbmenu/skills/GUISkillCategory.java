@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.skills;
 
+import net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotm;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
 import net.swofty.commons.text.Text;
@@ -49,6 +50,15 @@ public class GUISkillCategory extends StatelessView {
         DatapointSkills.PlayerSkills skills = player.getSkills();
         int level = skills.getCurrentLevel(category);
         Integer nextLevel = skills.getNextLevel(category);
+
+        if (category == SkillCategories.MINING) {
+            layout.slot(39, ItemStacks.item(Material.EMERALD, """
+                    <a>Heart of the Mountain
+                    <7>Spend Tokens of the Mountain and
+                    <7>Powder on permanent mining perks.
+
+                    <e>Click to open!"""), (_, c) -> c.push(new GUIHotm()));
+        }
 
         // Bestiary button for combat
         if (category == SkillCategories.COMBAT && player.getToggles().get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_BRAMASS_BEASTSLAYER)) {

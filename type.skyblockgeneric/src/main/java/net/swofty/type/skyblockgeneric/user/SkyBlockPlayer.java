@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.user;
 
+import net.swofty.type.skyblockgeneric.hotm.HotmAbilities;
+import net.swofty.type.skyblockgeneric.hotm.HotmStatistics;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryOwnership;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryPower;
 import lombok.Getter;
@@ -789,7 +791,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
         }
 
         // Check breaking power requirement
-        if (handler.getMiningPowerRequirement() > item.getAttributeHandler().getBreakingPower()) {
+        if (handler.getMiningPowerRequirement() > item.getAttributeHandler().getBreakingPower() + HotmAbilities.breakingPowerBonus(this)) {
             return -1;
         }
 
@@ -801,7 +803,10 @@ public class SkyBlockPlayer extends HypixelPlayer {
         if (handler.getStrength() > 0) {
             // Use handler's speed statistic
             double speed = this.getStatistics().allStatistics().getOverall(handler.getSpeedStatistic());
-            if (handler.getSpeedStatistic() == ItemStatistic.MINING_SPEED) speed += GatheringPetBonuses.miningSpeed(this, block);
+            if (handler.getSpeedStatistic() == ItemStatistic.MINING_SPEED) {
+                speed += GatheringPetBonuses.miningSpeed(this, block);
+                speed += HotmStatistics.miningSpeedFor(this, block);
+            }
             double time = Math.round(handler.getStrength() * 30) / (Math.max(speed, 1));
             ValueUpdateEvent event = new MiningValueUpdateEvent(this, time, item);
             SkyBlockValueEvent.callValueUpdateEvent(event);

@@ -21,6 +21,7 @@ import net.minestom.server.entity.Player;
 import net.minestom.server.entity.attribute.Attribute;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.swofty.type.skyblockgeneric.hotm.HotmStatistics;
 import net.minestom.server.timer.ExecutionType;
 import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
@@ -384,6 +385,8 @@ public class PlayerStatistics {
 
         addItemModifiers(modifiers, getMainHandItem(), StatisticSourceType.HELD_ITEM);
         addProgressionModifiers(modifiers);
+        addModifier(modifiers, "Heart of the Mountain", HotmStatistics.statistics(player),
+                StatisticSourceType.HEART_OF_THE_MOUNTAIN, StatisticModifierType.PROGRESSION, null, Material.EMERALD, null);
         addModifier(modifiers, "Attributes", AttributeEffectService.statistics(player),
                 StatisticSourceType.ATTRIBUTE, StatisticModifierType.ATTRIBUTE, null, Material.PRISMARINE_SHARD, null);
         addTemporaryModifiers(modifiers);

@@ -1,5 +1,6 @@
 package net.swofty.type.dwarvenmines.commission;
 
+import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCommissions;
 import net.swofty.type.skyblockgeneric.region.RegionType;
@@ -151,7 +152,7 @@ public class Commissions {
 
 	public static int getCommissionSlots(SkyBlockPlayer player) {
 		DatapointCommissions.PlayerCommissionData data = getCommissionData(player);
-		return data.getCommissionSlots();
+		return data.getCommissionSlots() + HotmService.bonusCommissionSlots(player);
 	}
 
 	public static DatapointCommissions.PlayerCommissionData getCommissionData(SkyBlockPlayer player) {
@@ -168,7 +169,7 @@ public class Commissions {
 		DatapointCommissions.PlayerCommissionData data = getCommissionData(player);
 
 		data.getActiveCommissions().clear();
-		int slots = data.getCommissionSlots();
+		int slots = getCommissionSlots(player);
 		List<String> usedNames = new ArrayList<>();
 
 		for (int i = 0; i < slots; i++) {

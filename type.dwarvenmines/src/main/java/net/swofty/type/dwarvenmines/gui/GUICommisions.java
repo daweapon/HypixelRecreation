@@ -1,5 +1,7 @@
 package net.swofty.type.dwarvenmines.gui;
 
+import net.swofty.type.skyblockgeneric.hotm.HotmPowder;
+import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievementSync;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import net.swofty.type.skyblockgeneric.accessory.handler.UtilityAccessories;
@@ -48,7 +50,7 @@ public class GUICommisions extends HypixelInventoryGUI {
 			commissionData = Commissions.getCommissionData(player); // refresh
 		}
 
-		int slotCount = commissionData.getCommissionSlots();
+		int slotCount = Commissions.getCommissionSlots(player);
 		int[] slots = Commissions.getGuiSlots(slotCount);
 
 		List<DatapointCommissions.ActiveCommission> activeCommissions = commissionData.getActiveCommissions();
@@ -83,15 +85,12 @@ public class GUICommisions extends HypixelInventoryGUI {
 						CommissionReward reward = CommissionReward.calculate(hotmTier, isHotmMaxed, isDailyBonus);
 
 						if (reward.hotmXp() > 0) {
-							hotmData.addExperience(Math.round(PetEvents.xpGained(player, PetEvent.XpType.HOTM, null,
+							HotmService.addExperience(player, Math.round(PetEvents.xpGained(player, PetEvent.XpType.HOTM, null,
 									reward.hotmXp() + UtilityAccessories.commissionHotmXp(player))));
-							dataHandler.get(SkyBlockDataHandler.Data.HOTM, DatapointHOTM.class).setValue(hotmData);
 						}
 
 						if (reward.mithrilPowder() > 0) {
-							hotmData.addMithrilPowder(AccessoryEconomyHooks.powderGained(player,
-									GatheringPetBonuses.mithrilPowder(player, reward.mithrilPowder())));
-							dataHandler.get(SkyBlockDataHandler.Data.HOTM, DatapointHOTM.class).setValue(hotmData);
+							HotmService.gainPowder(player, HotmPowder.MITHRIL, reward.mithrilPowder());
 						}
 
 						if (reward.miningXp() > 0) {

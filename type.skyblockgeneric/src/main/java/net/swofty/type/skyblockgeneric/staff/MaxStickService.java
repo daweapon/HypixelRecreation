@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.staff;
 
+import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.fishing.trophy.TrophyFishMax;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoProgress;
 import net.swofty.type.skyblockgeneric.crimson.faction.CrimsonReputationService;
@@ -269,16 +270,7 @@ public final class MaxStickService {
     }
 
     private static void maxHotm(SkyBlockPlayer player) {
-        DatapointHOTM datapoint = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.HOTM, DatapointHOTM.class);
-
-        synchronized (datapoint) {
-            DatapointHOTM.PlayerHOTMData hotm = datapoint.getValue();
-            hotm.setExperience(1_247_000L);
-            hotm.setMithrilPowder(1_000_000L);
-            hotm.setGemstonePowder(1_000_000L);
-            hotm.setTokens(100);
-            datapoint.setValue(hotm);
-        }
+        HotmService.maxOut(player);
     }
 
     private static void maxFairySouls(SkyBlockPlayer player) {

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric;
 
+import net.swofty.type.skyblockgeneric.hotm.HotmRegistry;
 import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievements;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
 import com.mongodb.ConnectionString;
@@ -208,6 +209,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         }
         FishingRegistry.loadAll();
         SlayerRegistry.loadAll();
+        HotmRegistry.get();
 
         /**
          * Register commands

@@ -1,12 +1,14 @@
 package net.swofty.type.skyblockgeneric.data.datapoints;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.swofty.commons.protocol.Serializer;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDatapoint;
 import org.json.JSONObject;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 // Persists a player's Heart of the Mountain progress: XP/tier, mithril and gemstone powder
 // balances, and HOTM skill tokens earned/spent.
@@ -20,6 +22,15 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			json.put("gemstonePowder", value.gemstonePowder);
 			json.put("tokens", value.tokens);
 			json.put("tokensSpent", value.tokensSpent);
+			json.put("glacitePowder", value.glacitePowder);
+			json.put("coreLevel", value.coreLevel);
+			json.put("selectedAbility", value.selectedAbility == null ? "" : value.selectedAbility);
+			json.put("skyMallDay", value.skyMallDay);
+			json.put("skyMallBuff", value.skyMallBuff == null ? "" : value.skyMallBuff);
+			json.put("dailyPowderDay", value.dailyPowderDay);
+			json.put("dailyCommissionDay", value.dailyCommissionDay);
+			json.put("perkLevels", new JSONObject(value.perkLevels));
+			json.put("abilityReadyAt", new JSONObject(value.abilityReadyAt));
 			return json.toString();
 		}
 
@@ -37,6 +48,17 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 				data.gemstonePowder = obj.optLong("gemstonePowder", 0L);
 				data.tokens = obj.optInt("tokens", 0);
 				data.tokensSpent = obj.optInt("tokensSpent", 0);
+				data.glacitePowder = obj.optLong("glacitePowder", 0L);
+				data.coreLevel = obj.optInt("coreLevel", 0);
+				data.selectedAbility = obj.optString("selectedAbility", "").isEmpty() ? null : obj.getString("selectedAbility");
+				data.skyMallDay = obj.optLong("skyMallDay", -1L);
+				data.skyMallBuff = obj.optString("skyMallBuff", "").isEmpty() ? null : obj.getString("skyMallBuff");
+				data.dailyPowderDay = obj.optLong("dailyPowderDay", -1L);
+				data.dailyCommissionDay = obj.optLong("dailyCommissionDay", -1L);
+				JSONObject perks = obj.optJSONObject("perkLevels");
+				if (perks != null) perks.keySet().forEach(key -> data.perkLevels.put(key, perks.getInt(key)));
+				JSONObject cooldowns = obj.optJSONObject("abilityReadyAt");
+				if (cooldowns != null) cooldowns.keySet().forEach(key -> data.abilityReadyAt.put(key, cooldowns.getLong(key)));
 				return data;
 			} catch (Exception e) {
 				return PlayerHOTMData.createDefault();
@@ -51,6 +73,15 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			cloned.gemstonePowder = value.gemstonePowder;
 			cloned.tokens = value.tokens;
 			cloned.tokensSpent = value.tokensSpent;
+			cloned.glacitePowder = value.glacitePowder;
+			cloned.coreLevel = value.coreLevel;
+			cloned.selectedAbility = value.selectedAbility;
+			cloned.skyMallDay = value.skyMallDay;
+			cloned.skyMallBuff = value.skyMallBuff;
+			cloned.dailyPowderDay = value.dailyPowderDay;
+			cloned.dailyCommissionDay = value.dailyCommissionDay;
+			cloned.perkLevels.putAll(value.perkLevels);
+			cloned.abilityReadyAt.putAll(value.abilityReadyAt);
 			return cloned;
 		}
 	};
@@ -66,13 +97,53 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 	@Getter
 	@Setter
 	@NoArgsConstructor
-	@AllArgsConstructor
 	public static class PlayerHOTMData {
 		private long experience;
 		private long mithrilPowder;
 		private long gemstonePowder;
 		private int tokens;
 		private int tokensSpent;
+		private long glacitePowder;
+		private int coreLevel;
+		private String selectedAbility;
+		private long skyMallDay = -1L;
+		private String skyMallBuff;
+		private long dailyPowderDay = -1L;
+		private long dailyCommissionDay = -1L;
+		private final Map<String, Integer> perkLevels = new LinkedHashMap<>();
+		private final Map<String, Long> abilityReadyAt = new LinkedHashMap<>();
+
+		public int perkLevel(String perkId) {
+			return perkLevels.getOrDefault(perkId, 0);
+		}
+
+		public void addGlacitePowder(long amount) {
+			glacitePowder += amount;
+		}
+
+		public long powder(net.swofty.type.skyblockgeneric.hotm.HotmPowder powder) {
+			return switch (powder) {
+				case MITHRIL -> mithrilPowder;
+				case GEMSTONE -> gemstonePowder;
+				case GLACITE -> glacitePowder;
+			};
+		}
+
+		public void setPowderBalance(net.swofty.type.skyblockgeneric.hotm.HotmPowder powder, long amount) {
+			switch (powder) {
+				case MITHRIL -> mithrilPowder = amount;
+				case GEMSTONE -> gemstonePowder = amount;
+				case GLACITE -> glacitePowder = amount;
+			}
+		}
+
+		public void addPowder(net.swofty.type.skyblockgeneric.hotm.HotmPowder powder, long amount) {
+			switch (powder) {
+				case MITHRIL -> mithrilPowder += amount;
+				case GEMSTONE -> gemstonePowder += amount;
+				case GLACITE -> glacitePowder += amount;
+			}
+		}
 
 		public static PlayerHOTMData createDefault() {
 			PlayerHOTMData data = new PlayerHOTMData();
