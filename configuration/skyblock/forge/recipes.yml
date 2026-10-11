@@ -1,0 +1,1432 @@
+# Forge recipes (NEU repo forge data, current Hypixel). available is derived at load: every input and the output must exist as an item.
+recipes:
+  - id: "REFINED_MITHRIL"
+    name: "Refined Mithril"
+    category: REFINING
+    hotm: 2
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_MITHRIL: 160
+  - id: "REFINED_DIAMOND"
+    name: "Refined Diamond"
+    category: REFINING
+    hotm: 2
+    requirement: ""
+    seconds: 28800
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_DIAMOND_BLOCK: 2
+  - id: "REFINED_TITANIUM"
+    name: "Refined Titanium"
+    category: REFINING
+    hotm: 2
+    requirement: ""
+    seconds: 43200
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_TITANIUM: 16
+  - id: "REFINED_TUNGSTEN"
+    name: "Refined Tungsten"
+    category: REFINING
+    hotm: 7
+    requirement: "Tungsten III"
+    seconds: 3600
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_TUNGSTEN: 160
+  - id: "REFINED_UMBER"
+    name: "Refined Umber"
+    category: REFINING
+    hotm: 7
+    requirement: "Umber III"
+    seconds: 3600
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_UMBER: 160
+  - id: "BEJEWELED_HANDLE"
+    name: "Bejeweled Handle"
+    category: FORGING
+    hotm: 2
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      GLACITE_JEWEL: 3
+  - id: "GOLDEN_PLATE"
+    name: "Golden Plate"
+    category: FORGING
+    hotm: 2
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_GOLD_BLOCK: 2
+      REFINED_DIAMOND: 1
+      GLACITE_JEWEL: 5
+  - id: "MITHRIL_PLATE"
+    name: "Mithril Plate"
+    category: FORGING
+    hotm: 3
+    requirement: ""
+    seconds: 64800
+    amount: 1
+    coins: 0
+    inputs:
+      GOLDEN_PLATE: 1
+      REFINED_TITANIUM: 1
+      REFINED_MITHRIL: 5
+      ENCHANTED_IRON_BLOCK: 1
+  - id: "GEMSTONE_MIXTURE"
+    name: "Gemstone Mixture"
+    category: FORGING
+    hotm: 4
+    requirement: ""
+    seconds: 14400
+    amount: 1
+    coins: 0
+    inputs:
+      FINE_JADE_GEM: 4
+      SLUDGE_JUICE: 320
+      FINE_AMBER_GEM: 4
+      FINE_SAPPHIRE_GEM: 4
+      FINE_AMETHYST_GEM: 4
+  - id: "TUNGSTEN_PLATE"
+    name: "Tungsten Plate"
+    category: FORGING
+    hotm: 7
+    requirement: "Tungsten VI"
+    seconds: 10800
+    amount: 1
+    coins: 0
+    inputs:
+      GLACITE_AMALGAMATION: 1
+      REFINED_TUNGSTEN: 4
+  - id: "UMBER_PLATE"
+    name: "Umber Plate"
+    category: FORGING
+    hotm: 7
+    requirement: "Umber VI"
+    seconds: 10800
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_UMBER: 4
+      GLACITE_AMALGAMATION: 1
+  - id: "GLACITE_AMALGAMATION"
+    name: "Glacite Amalgamation"
+    category: FORGING
+    hotm: 7
+    requirement: "Glacite III"
+    seconds: 14400
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_GLACITE: 256
+      FINE_PERIDOT_GEM: 4
+      FINE_AQUAMARINE_GEM: 4
+      FINE_CITRINE_GEM: 4
+      FINE_ONYX_GEM: 4
+  - id: "PERFECT_PLATE"
+    name: "Perfect Plate"
+    category: FORGING
+    hotm: 10
+    requirement: ""
+    seconds: 1800
+    amount: 1
+    coins: 0
+    inputs:
+      UMBER_PLATE: 1
+      TUNGSTEN_PLATE: 1
+      MITHRIL_PLATE: 1
+  - id: "MITHRIL_DRILL_1"
+    name: "Mithril Drill SX-R226"
+    category: TOOLS
+    hotm: 2
+    requirement: ""
+    seconds: 14400
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_MITHRIL: 3
+      DRILL_ENGINE: 1
+      FUEL_TANK: 1
+  - id: "MITHRIL_DRILL_2"
+    name: "Mithril Drill SX-R326"
+    category: TOOLS
+    hotm: 3
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      GOLDEN_PLATE: 1
+      MITHRIL_DRILL_1: 1
+      MITHRIL_PLATE: 1
+  - id: "GEMSTONE_DRILL_2"
+    name: "Gemstone Drill LT-522"
+    category: TOOLS
+    hotm: 4
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      GEMSTONE_DRILL_1: 1
+      GEMSTONE_MIXTURE: 3
+  - id: "GEMSTONE_DRILL_1"
+    name: "Ruby Drill TX-15"
+    category: TOOLS
+    hotm: 4
+    requirement: ""
+    seconds: 14400
+    amount: 1
+    coins: 0
+    inputs:
+      DRILL_ENGINE: 1
+      FUEL_TANK: 1
+      FINE_RUBY_GEM: 6
+  - id: "GEMSTONE_DRILL_3"
+    name: "Topaz Drill KGR-12"
+    category: TOOLS
+    hotm: 5
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_TOPAZ_GEM: 1
+      GEMSTONE_MIXTURE: 3
+      GEMSTONE_DRILL_2: 1
+      MAGMA_CORE: 8
+  - id: "TITANIUM_DRILL_2"
+    name: "Titanium Drill DR-X455"
+    category: TOOLS
+    hotm: 5
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      MITHRIL_PLATE: 5
+      REFINED_TITANIUM: 12
+      REFINED_DIAMOND: 10
+      TITANIUM_DRILL_1: 1
+  - id: "TITANIUM_DRILL_3"
+    name: "Titanium Drill DR-X555"
+    category: TOOLS
+    hotm: 5
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_DIAMOND: 20
+      ENCHANTED_IRON_BLOCK: 2
+      PLASMA: 20
+      TITANIUM_DRILL_2: 1
+      REFINED_TITANIUM: 16
+      MITHRIL_PLATE: 10
+  - id: "TITANIUM_DRILL_1"
+    name: "Titanium Drill DR-X355"
+    category: TOOLS
+    hotm: 5
+    requirement: ""
+    seconds: 14400
+    amount: 1
+    coins: 0
+    inputs:
+      FUEL_TANK: 1
+      DRILL_ENGINE: 1
+      REFINED_MITHRIL: 8
+      REFINED_TITANIUM: 8
+      GOLDEN_PLATE: 6
+  - id: "POLISHED_TOPAZ_ROD"
+    name: "Topaz Rod"
+    category: TOOLS
+    hotm: 5
+    requirement: ""
+    seconds: 43200
+    amount: 1
+    coins: 0
+    inputs:
+      BEJEWELED_HANDLE: 3
+      FLAWLESS_TOPAZ_GEM: 2
+  - id: "GEMSTONE_DRILL_4"
+    name: "Jasper Drill X"
+    category: TOOLS
+    hotm: 6
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      TREASURITE: 100
+      FLAWLESS_JASPER_GEM: 1
+      GEMSTONE_DRILL_3: 1
+      MAGMA_CORE: 16
+  - id: "TITANIUM_DRILL_4"
+    name: "Titanium Drill DR-X655"
+    category: TOOLS
+    hotm: 6
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      GEMSTONE_MIXTURE: 16
+      FLAWLESS_RUBY_GEM: 1
+      MITHRIL_PLATE: 10
+      REFINED_TITANIUM: 32
+      CORLEONITE: 30
+      TITANIUM_DRILL_3: 1
+      REFINED_DIAMOND: 5
+  - id: "DIVAN_DRILL"
+    name: "Divan's Drill"
+    category: TOOLS
+    hotm: 7
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 50000000
+    inputs:
+      TITANIUM_DRILL_4: 1
+      DIVAN_ALLOY: 1
+  - id: "REINFORCED_CHISEL"
+    name: "Reinforced Chisel"
+    category: TOOLS
+    hotm: 8
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_TUNGSTEN: 2
+      BEJEWELED_HANDLE: 1
+      REFINED_UMBER: 2
+      CHISEL: 1
+  - id: "GLACITE_CHISEL"
+    name: "Glacite-Plated Chisel"
+    category: TOOLS
+    hotm: 9
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      REINFORCED_CHISEL: 1
+      BEJEWELED_HANDLE: 1
+      GLACITE_AMALGAMATION: 8
+      MITHRIL_PLATE: 1
+  - id: "PERFECT_CHISEL"
+    name: "Perfect Chisel"
+    category: TOOLS
+    hotm: 10
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      BEJEWELED_HANDLE: 1
+      GLACITE_CHISEL: 1
+      PERFECT_PLATE: 1
+  - id: "MITHRIL_BELT"
+    name: "Mithril Belt"
+    category: GEAR
+    hotm: 1
+    requirement: ""
+    seconds: 3600
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_MITHRIL: 3
+  - id: "MITHRIL_CLOAK"
+    name: "Mithril Cloak"
+    category: GEAR
+    hotm: 1
+    requirement: ""
+    seconds: 3600
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_MITHRIL: 3
+  - id: "MITHRIL_GAUNTLET"
+    name: "Mithril Gauntlet"
+    category: GEAR
+    hotm: 1
+    requirement: ""
+    seconds: 3600
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_MITHRIL: 3
+  - id: "MITHRIL_NECKLACE"
+    name: "Mithril Necklace"
+    category: GEAR
+    hotm: 1
+    requirement: ""
+    seconds: 3600
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_MITHRIL: 3
+  - id: "MITHRIL_LANTERN"
+    name: "Mithril Lantern"
+    category: GEAR
+    hotm: 2
+    requirement: ""
+    seconds: 1800
+    amount: 1
+    coins: 0
+    inputs:
+      LANTERN: 1
+      REFINED_MITHRIL: 1
+      ENCHANTED_EMERALD: 16
+  - id: "TITANIUM_TALISMAN"
+    name: "Titanium Talisman"
+    category: GEAR
+    hotm: 2
+    requirement: ""
+    seconds: 50400
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_TITANIUM: 2
+  - id: "TITANIUM_BELT"
+    name: "Titanium Belt"
+    category: GEAR
+    hotm: 3
+    requirement: ""
+    seconds: 16200
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_TITANIUM: 1
+      REFINED_MINERAL: 16
+      MITHRIL_BELT: 1
+  - id: "TITANIUM_CLOAK"
+    name: "Titanium Cloak"
+    category: GEAR
+    hotm: 3
+    requirement: ""
+    seconds: 16200
+    amount: 1
+    coins: 0
+    inputs:
+      MITHRIL_CLOAK: 1
+      REFINED_TITANIUM: 1
+      REFINED_MINERAL: 16
+  - id: "TITANIUM_GAUNTLET"
+    name: "Titanium Gauntlet"
+    category: GEAR
+    hotm: 3
+    requirement: ""
+    seconds: 16200
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_MINERAL: 16
+      MITHRIL_GAUNTLET: 1
+      REFINED_TITANIUM: 1
+  - id: "TITANIUM_NECKLACE"
+    name: "Titanium Necklace"
+    category: GEAR
+    hotm: 3
+    requirement: ""
+    seconds: 16200
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_TITANIUM: 1
+      MITHRIL_NECKLACE: 1
+      REFINED_MINERAL: 16
+  - id: "TITANIUM_RING"
+    name: "Titanium Ring"
+    category: GEAR
+    hotm: 3
+    requirement: ""
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      TITANIUM_TALISMAN: 1
+      REFINED_TITANIUM: 6
+  - id: "TITANIUM_ARTIFACT"
+    name: "Titanium Artifact"
+    category: GEAR
+    hotm: 4
+    requirement: ""
+    seconds: 129600
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_TITANIUM: 12
+      TITANIUM_RING: 1
+  - id: "TITANIUM_LANTERN"
+    name: "Titanium Lantern"
+    category: GEAR
+    hotm: 5
+    requirement: ""
+    seconds: 14400
+    amount: 1
+    coins: 0
+    inputs:
+      MITHRIL_LANTERN: 1
+      REFINED_TITANIUM: 2
+      ENCHANTED_EMERALD_BLOCK: 1
+  - id: "AMBER_NECKLACE"
+    name: "Amber Necklace"
+    category: GEAR
+    hotm: 5
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      GLOSSY_GEMSTONE: 32
+      FLAWLESS_AMBER_GEM: 2
+  - id: "AMETHYST_GAUNTLET"
+    name: "Amethyst Gauntlet"
+    category: GEAR
+    hotm: 5
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      GLOSSY_GEMSTONE: 32
+      FLAWLESS_AMETHYST_GEM: 2
+  - id: "JADE_BELT"
+    name: "Jade Belt"
+    category: GEAR
+    hotm: 5
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      GLOSSY_GEMSTONE: 32
+      FLAWLESS_JADE_GEM: 2
+  - id: "SAPPHIRE_CLOAK"
+    name: "Sapphire Cloak"
+    category: GEAR
+    hotm: 5
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_SAPPHIRE_GEM: 2
+      GLOSSY_GEMSTONE: 32
+  - id: "TITANIUM_RELIC"
+    name: "Titanium Relic"
+    category: GEAR
+    hotm: 5
+    requirement: ""
+    seconds: 259200
+    amount: 1
+    coins: 0
+    inputs:
+      TITANIUM_ARTIFACT: 1
+      REFINED_TITANIUM: 20
+  - id: "DIVAN_BOOTS"
+    name: "Boots of Divan"
+    category: GEAR
+    hotm: 6
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      GEMSTONE_MIXTURE: 10
+      FLAWLESS_RUBY_GEM: 1
+      DIVAN_FRAGMENT: 4
+  - id: "DIVAN_CHESTPLATE"
+    name: "Chestplate of Divan"
+    category: GEAR
+    hotm: 6
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      GEMSTONE_MIXTURE: 10
+      FLAWLESS_RUBY_GEM: 1
+      DIVAN_FRAGMENT: 8
+  - id: "DIVAN_HELMET"
+    name: "Helmet of Divan"
+    category: GEAR
+    hotm: 6
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_RUBY_GEM: 1
+      GEMSTONE_MIXTURE: 10
+      DIVAN_FRAGMENT: 5
+  - id: "DIVAN_LEGGINGS"
+    name: "Leggings of Divan"
+    category: GEAR
+    hotm: 6
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      DIVAN_FRAGMENT: 7
+      FLAWLESS_RUBY_GEM: 1
+      GEMSTONE_MIXTURE: 10
+  - id: "GLACITE_LANTERN"
+    name: "Glacite Lantern"
+    category: GEAR
+    hotm: 8
+    requirement: ""
+    seconds: 43200
+    amount: 1
+    coins: 0
+    inputs:
+      TITANIUM_LANTERN: 1
+      GLACITE_AMALGAMATION: 4
+      ENCHANTED_EMERALD_BLOCK: 2
+  - id: "TUNGSTEN_KEYCHAIN"
+    name: "Tungsten Regulator"
+    category: GEAR
+    hotm: 8
+    requirement: ""
+    seconds: 64800
+    amount: 1
+    coins: 0
+    inputs:
+      PERFECT_OPAL_GEM: 1
+      FUEL_TANK: 5
+      TUNGSTEN_PLATE: 5
+  - id: "POWER_RELIC"
+    name: "Relic of Power"
+    category: GEAR
+    hotm: 10
+    requirement: ""
+    seconds: 28800
+    amount: 1
+    coins: 0
+    inputs:
+      POWER_ARTIFACT: 1
+      PERFECT_PLATE: 1
+      GLACITE_AMALGAMATION: 32
+  - id: "DIVAN_PENDANT"
+    name: "Pendant of Divan"
+    category: GEAR
+    hotm: 10
+    requirement: ""
+    seconds: 604800
+    amount: 1
+    coins: 0
+    inputs:
+      PERFECT_PLATE: 1
+      DIVAN_FRAGMENT: 10
+      SHATTERED_PENDANT: 1
+  - id: "POWER_CRYSTAL"
+    name: "Power Crystal"
+    category: REFORGE_STONES
+    hotm: 2
+    requirement: ""
+    seconds: 7200
+    amount: 1
+    coins: 0
+    inputs:
+      STARFALL: 256
+  - id: "DIAMONITE"
+    name: "Diamonite"
+    category: REFORGE_STONES
+    hotm: 2
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_DIAMOND: 3
+  - id: "POCKET_ICEBERG"
+    name: "Pocket Iceberg"
+    category: REFORGE_STONES
+    hotm: 2
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      GLACITE_JEWEL: 5
+  - id: "STARFALL_SEASONING"
+    name: "Starfall Seasoning"
+    category: REFORGE_STONES
+    hotm: 2
+    requirement: ""
+    seconds: 64800
+    amount: 1
+    coins: 0
+    inputs:
+      TREASURITE: 16
+      STARFALL: 64
+  - id: "PETRIFIED_STARFALL"
+    name: "Petrified Starfall"
+    category: REFORGE_STONES
+    hotm: 3
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      STARFALL: 512
+  - id: "PURE_MITHRIL"
+    name: "Pure Mithril"
+    category: REFORGE_STONES
+    hotm: 3
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_MITHRIL: 2
+  - id: "ROCK_GEMSTONE"
+    name: "Dwarven Geode"
+    category: REFORGE_STONES
+    hotm: 3
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      TREASURITE: 64
+      ENCHANTED_COBBLESTONE: 128
+  - id: "TITANIUM_TESSERACT"
+    name: "Titanium Tesseract"
+    category: REFORGE_STONES
+    hotm: 3
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_LAPIS_LAZULI: 16
+      REFINED_TITANIUM: 1
+  - id: "GLEAMING_CRYSTAL"
+    name: "Gleaming Crystal"
+    category: REFORGE_STONES
+    hotm: 4
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      GLOSSY_GEMSTONE: 32
+      REFINED_MITHRIL: 1
+      REFINED_DIAMOND: 2
+  - id: "HOT_STUFF"
+    name: "Scorched Topaz"
+    category: REFORGE_STONES
+    hotm: 4
+    requirement: "Hard Stone IV"
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_TOPAZ_GEM: 1
+      ENCHANTED_HARD_STONE: 128
+  - id: "DIVAN_POWDER_COATING"
+    name: "Divan's Powder Coating"
+    category: REFORGE_STONES
+    hotm: 4
+    requirement: ""
+    seconds: 129600
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_MINERAL: 32
+      GLOSSY_GEMSTONE: 32
+      ENCHANTED_GOLD_BLOCK: 16
+      DIVAN_FRAGMENT: 5
+  - id: "AMBER_MATERIAL"
+    name: "Amber Material"
+    category: REFORGE_STONES
+    hotm: 6
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      GOLDEN_PLATE: 1
+      FINE_AMBER_GEM: 12
+  - id: "FRIGID_HUSK"
+    name: "Frigid Husk"
+    category: REFORGE_STONES
+    hotm: 7
+    requirement: "Glacite V"
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_ONYX_GEM: 1
+      GLACITE_AMALGAMATION: 4
+  - id: "PORTABLE_CAMPFIRE"
+    name: "Portable Campfire"
+    category: REFORGE_STONES
+    hotm: 8
+    requirement: ""
+    seconds: 1800
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_UMBER: 1
+      MATCH_STICKS: 16
+  - id: "DWARVEN_HANDWARMERS"
+    name: "Dwarven Handwarmers"
+    category: REFORGE_STONES
+    hotm: 8
+    requirement: ""
+    seconds: 14400
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_JADE_GEM: 1
+      UMBER_PLATE: 1
+      FLAWLESS_AMBER_GEM: 1
+      TUNGSTEN_PLATE: 1
+  - id: "DWARVEN_METAL"
+    name: "Dwarven Metal Talisman"
+    category: REFORGE_STONES
+    hotm: 8
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_TUNGSTEN: 4
+      REFINED_UMBER: 4
+      GLACITE_AMALGAMATION: 4
+  - id: "BEJEWELED_COLLAR"
+    name: "Bejeweled Collar"
+    category: DRILL_PARTS
+    hotm: 2
+    requirement: ""
+    seconds: 7200
+    amount: 1
+    coins: 0
+    inputs:
+      BEJEWELED_HANDLE: 1
+      REFINED_MITHRIL: 4
+  - id: "FUEL_TANK"
+    name: "Fuel Canister"
+    category: DRILL_PARTS
+    hotm: 2
+    requirement: ""
+    seconds: 36000
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_COAL_BLOCK: 2
+  - id: "MITHRIL_DRILL_ENGINE"
+    name: "Mithril-Plated Drill Engine"
+    category: DRILL_PARTS
+    hotm: 3
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      MITHRIL_PLATE: 1
+      DRILL_ENGINE: 2
+  - id: "MITHRIL_FUEL_TANK"
+    name: "Mithril-Infused Fuel Tank"
+    category: DRILL_PARTS
+    hotm: 3
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_DIAMOND: 5
+      REFINED_MITHRIL: 10
+      FUEL_TANK: 5
+  - id: "DRILL_ENGINE"
+    name: "Drill Motor"
+    category: DRILL_PARTS
+    hotm: 3
+    requirement: ""
+    seconds: 108000
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_IRON_BLOCK: 1
+      ENCHANTED_REDSTONE_BLOCK: 3
+      TREASURITE: 10
+      GOLDEN_PLATE: 1
+  - id: "TITANIUM_DRILL_ENGINE"
+    name: "Titanium-Plated Drill Engine"
+    category: DRILL_PARTS
+    hotm: 5
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      DRILL_ENGINE: 2
+      MITHRIL_DRILL_ENGINE: 1
+      REFINED_TITANIUM: 8
+  - id: "TITANIUM_FUEL_TANK"
+    name: "Titanium-Infused Fuel Tank"
+    category: DRILL_PARTS
+    hotm: 5
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_DIAMOND: 5
+      REFINED_TITANIUM: 10
+      FUEL_TANK: 5
+      MITHRIL_FUEL_TANK: 1
+  - id: "GEMSTONE_CHAMBER"
+    name: "Gemstone Chamber"
+    category: DRILL_PARTS
+    hotm: 5
+    requirement: ""
+    seconds: 14400
+    amount: 1
+    coins: 25000
+    inputs:
+      WORM_MEMBRANE: 100
+      GEMSTONE_MIXTURE: 1
+  - id: "GEMSTONE_FUEL_TANK"
+    name: "Gemstone Fuel Tank"
+    category: DRILL_PARTS
+    hotm: 7
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      GEMSTONE_MIXTURE: 10
+      TITANIUM_FUEL_TANK: 1
+      PRECURSOR_APPARATUS: 4
+  - id: "RUBY_POLISHED_DRILL_ENGINE"
+    name: "Ruby-Polished Drill Engine"
+    category: DRILL_PARTS
+    hotm: 7
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      PERFECT_RUBY_GEM: 1
+      PRECURSOR_APPARATUS: 4
+      TITANIUM_DRILL_ENGINE: 1
+      DRILL_ENGINE: 5
+  - id: "PERFECTLY_CUT_FUEL_TANK"
+    name: "Perfectly-Cut Fuel Tank"
+    category: DRILL_PARTS
+    hotm: 8
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      GEMSTONE_FUEL_TANK: 1
+      PRECURSOR_APPARATUS: 16
+      GEMSTONE_MIXTURE: 25
+      PLASMA: 32
+  - id: "SAPPHIRE_POLISHED_DRILL_ENGINE"
+    name: "Sapphire-Polished Drill Engine"
+    category: DRILL_PARTS
+    hotm: 8
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      PERFECT_SAPPHIRE_GEM: 3
+      DRILL_ENGINE: 5
+      RUBY_POLISHED_DRILL_ENGINE: 1
+      PLASMA: 16
+      PRECURSOR_APPARATUS: 8
+  - id: "AMBER_POLISHED_DRILL_ENGINE"
+    name: "Amber-Polished Drill Engine"
+    category: DRILL_PARTS
+    hotm: 9
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      DRILL_ENGINE: 5
+      PERFECT_AMBER_GEM: 5
+      PRECURSOR_APPARATUS: 16
+      SAPPHIRE_POLISHED_DRILL_ENGINE: 1
+      PLASMA: 32
+  - id: "PERFECT_JASPER_GEM"
+    name: " Perfect Jasper Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 1
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_JASPER_GEM: 5
+      JASPER_CRYSTAL: 1
+  - id: "PERFECT_AMBER_GEM"
+    name: " Perfect Amber Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      AMBER_CRYSTAL: 1
+      FLAWLESS_AMBER_GEM: 5
+  - id: "PERFECT_AMETHYST_GEM"
+    name: " Perfect Amethyst Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      AMETHYST_CRYSTAL: 1
+      FLAWLESS_AMETHYST_GEM: 5
+  - id: "PERFECT_AQUAMARINE_GEM"
+    name: " Perfect Aquamarine Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      AQUAMARINE_CRYSTAL: 1
+      FLAWLESS_AQUAMARINE_GEM: 5
+  - id: "PERFECT_CITRINE_GEM"
+    name: " Perfect Citrine Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_CITRINE_GEM: 5
+      CITRINE_CRYSTAL: 1
+  - id: "PERFECT_JADE_GEM"
+    name: " Perfect Jade Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_JADE_GEM: 5
+      JADE_CRYSTAL: 1
+  - id: "PERFECT_ONYX_GEM"
+    name: " Perfect Onyx Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_ONYX_GEM: 5
+      ONYX_CRYSTAL: 1
+  - id: "PERFECT_OPAL_GEM"
+    name: " Perfect Opal Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_OPAL_GEM: 5
+      OPAL_CRYSTAL: 1
+  - id: "PERFECT_PERIDOT_GEM"
+    name: " Perfect Peridot Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      PERIDOT_CRYSTAL: 1
+      FLAWLESS_PERIDOT_GEM: 5
+  - id: "PERFECT_RUBY_GEM"
+    name: " Perfect Ruby Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      RUBY_CRYSTAL: 1
+      FLAWLESS_RUBY_GEM: 5
+  - id: "PERFECT_SAPPHIRE_GEM"
+    name: " Perfect Sapphire Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_SAPPHIRE_GEM: 5
+      SAPPHIRE_CRYSTAL: 1
+  - id: "PERFECT_TOPAZ_GEM"
+    name: " Perfect Topaz Gemstone"
+    category: PERFECT_GEMSTONES
+    hotm: 5
+    requirement: "Gemstone X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_TOPAZ_GEM: 5
+      TOPAZ_CRYSTAL: 1
+  - id: "PRECURSOR_DRONE;4"
+    name: "Precursor Drone"
+    category: PETS
+    hotm: 1
+    requirement: ""
+    seconds: 259200
+    amount: 1
+    coins: 300000
+    inputs:
+      PRECURSOR_APPARATUS: 1
+  - id: "AMMONITE;4"
+    name: "Ammonite"
+    category: PETS
+    hotm: 4
+    requirement: ""
+    seconds: 259200
+    amount: 1
+    coins: 300000
+    inputs:
+      HELIX: 1
+  - id: "MOLE;4"
+    name: "Mole"
+    category: PETS
+    hotm: 4
+    requirement: ""
+    seconds: 259200
+    amount: 1
+    coins: 300000
+    inputs:
+      CLAW_FOSSIL: 1
+  - id: "ANKYLOSAURUS;4"
+    name: "Ankylosaurus"
+    category: PETS
+    hotm: 7
+    requirement: ""
+    seconds: 604800
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_OPAL_GEM: 1
+      CLUBBED_FOSSIL: 1
+  - id: "GOBLIN;4"
+    name: "Goblin"
+    category: PETS
+    hotm: 7
+    requirement: ""
+    seconds: 604800
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_AMBER_GEM: 1
+      UGLY_FOSSIL: 1
+  - id: "MAMMOTH;4"
+    name: "Mammoth"
+    category: PETS
+    hotm: 7
+    requirement: ""
+    seconds: 604800
+    amount: 1
+    coins: 0
+    inputs:
+      TUSK_FOSSIL: 1
+      FLAWLESS_ONYX_GEM: 1
+  - id: "PENGUIN;4"
+    name: "Penguin"
+    category: PETS
+    hotm: 7
+    requirement: ""
+    seconds: 604800
+    amount: 1
+    coins: 0
+    inputs:
+      WEBBED_FOSSIL: 1
+      FLAWLESS_AQUAMARINE_GEM: 1
+  - id: "SPINOSAURUS;4"
+    name: "Spinosaurus"
+    category: PETS
+    hotm: 7
+    requirement: ""
+    seconds: 604800
+    amount: 1
+    coins: 0
+    inputs:
+      SPINE_FOSSIL: 1
+      FLAWLESS_AQUAMARINE_GEM: 1
+  - id: "TYRANNOSAURUS;4"
+    name: "T-Rex"
+    category: PETS
+    hotm: 7
+    requirement: ""
+    seconds: 604800
+    amount: 1
+    coins: 0
+    inputs:
+      FOOTPRINT_FOSSIL: 1
+      FLAWLESS_ONYX_GEM: 1
+  - id: "BASE_CAMP_TRAVEL_SCROLL"
+    name: "Travel Scroll to the Dwarven Base Camp"
+    category: OTHER
+    hotm: 1
+    requirement: ""
+    seconds: 36000
+    amount: 1
+    coins: 500000
+    inputs:
+      FLAWLESS_ONYX_GEM: 1
+      ENCHANTED_ENDER_PEARL: 16
+  - id: "CRYSTAL_HOLLOWS_TRAVEL_SCROLL"
+    name: "Travel Scroll to the Crystal Hollows"
+    category: OTHER
+    hotm: 1
+    requirement: ""
+    seconds: 36000
+    amount: 1
+    coins: 50000
+    inputs:
+      FLAWED_RUBY_GEM: 48
+      ENCHANTED_ENDER_PEARL: 16
+      FINE_RUBY_GEM: 80
+  - id: "POWDER_OF_ONE"
+    name: "Powder of One"
+    category: OTHER
+    hotm: 2
+    requirement: ""
+    seconds: 3600
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_MITHRIL: 1
+      REFINED_TITANIUM: 1
+  - id: "FORGE_TRAVEL_SCROLL"
+    name: "Travel Scroll to the Dwarven Forge"
+    category: OTHER
+    hotm: 2
+    requirement: ""
+    seconds: 18000
+    amount: 1
+    coins: 25000
+    inputs:
+      ENCHANTED_ENDER_PEARL: 16
+      MITHRIL_ORE: 48
+      TITANIUM_ORE: 80
+  - id: "BEACON_2"
+    name: "Beacon II"
+    category: OTHER
+    hotm: 2
+    requirement: "Mithril X"
+    seconds: 72000
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_MITHRIL: 5
+      BEACON_1: 1
+  - id: "GOBLIN_OMELETTE"
+    name: "Goblin Omelette"
+    category: OTHER
+    hotm: 3
+    requirement: ""
+    seconds: 64800
+    amount: 1
+    coins: 0
+    inputs:
+      GOBLIN_EGG: 96
+  - id: "BEACON_3"
+    name: "Beacon III"
+    category: OTHER
+    hotm: 3
+    requirement: "Mithril X"
+    seconds: 108000
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_MITHRIL: 10
+      BEACON_2: 1
+  - id: "BEACON_4"
+    name: "Beacon IV"
+    category: OTHER
+    hotm: 4
+    requirement: "Mithril X"
+    seconds: 144000
+    amount: 1
+    coins: 0
+    inputs:
+      REFINED_MITHRIL: 20
+      BEACON_3: 1
+      PLASMA: 1
+  - id: "POWDER_OF_THE_FEW"
+    name: "Powder of the Few"
+    category: OTHER
+    hotm: 5
+    requirement: ""
+    seconds: 3600
+    amount: 1
+    coins: 0
+    inputs:
+      POWDER_OF_ONE: 1
+      GEMSTONE_MIXTURE: 4
+      REFINED_MINERAL: 32
+  - id: "GOBLIN_OMELETTE_BLUE_CHEESE"
+    name: "Blue Cheese Goblin Omelette"
+    category: OTHER
+    hotm: 5
+    requirement: ""
+    seconds: 64800
+    amount: 1
+    coins: 0
+    inputs:
+      GOBLIN_OMELETTE: 1
+      FLAWLESS_SAPPHIRE_GEM: 1
+      GOBLIN_EGG_BLUE: 96
+  - id: "GOBLIN_OMELETTE_PESTO"
+    name: "Pesto Goblin Omelette"
+    category: OTHER
+    hotm: 5
+    requirement: ""
+    seconds: 64800
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_JADE_GEM: 1
+      GOBLIN_EGG_GREEN: 96
+      GOBLIN_OMELETTE: 1
+  - id: "GOBLIN_OMELETTE_SPICY"
+    name: "Spicy Goblin Omelette"
+    category: OTHER
+    hotm: 5
+    requirement: ""
+    seconds: 64800
+    amount: 1
+    coins: 0
+    inputs:
+      FLAWLESS_RUBY_GEM: 1
+      GOBLIN_OMELETTE: 1
+      GOBLIN_EGG_RED: 96
+  - id: "GOBLIN_OMELETTE_SUNNY_SIDE"
+    name: "Sunny Side Goblin Omelette"
+    category: OTHER
+    hotm: 5
+    requirement: ""
+    seconds: 64800
+    amount: 1
+    coins: 0
+    inputs:
+      GOBLIN_EGG_YELLOW: 96
+      FLAWLESS_TOPAZ_GEM: 1
+      GOBLIN_OMELETTE: 1
+  - id: "BEACON_5"
+    name: "Beacon V"
+    category: OTHER
+    hotm: 5
+    requirement: "Mithril X"
+    seconds: 180000
+    amount: 1
+    coins: 0
+    inputs:
+      BEACON_4: 1
+      REFINED_MITHRIL: 40
+      PLASMA: 5
+  - id: "SECRET_RAILROAD_PASS"
+    name: "Secret Railroad Pass"
+    category: OTHER
+    hotm: 7
+    requirement: ""
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      CORLEONITE: 8
+      REFINED_MITHRIL: 2
+      FLAWLESS_RUBY_GEM: 1
+  - id: "TUNGSTEN_KEY"
+    name: "Tungsten Key"
+    category: OTHER
+    hotm: 7
+    requirement: "Tungsten IV"
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      ENCHANTED_TUNGSTEN: 192
+      BEJEWELED_HANDLE: 1
+  - id: "UMBER_KEY"
+    name: "Umber Key"
+    category: OTHER
+    hotm: 7
+    requirement: "Umber IV"
+    seconds: 30
+    amount: 1
+    coins: 0
+    inputs:
+      BEJEWELED_HANDLE: 1
+      ENCHANTED_UMBER: 192
+  - id: "POWDER_OF_THE_MANY"
+    name: "Powder of the Many"
+    category: OTHER
+    hotm: 8
+    requirement: ""
+    seconds: 21600
+    amount: 1
+    coins: 0
+    inputs:
+      POWDER_OF_THE_FEW: 1
+      GLACITE_AMALGAMATION: 4
+      GLOSSY_GEMSTONE: 32
+  - id: "SKELETON_KEY"
+    name: "Skeleton Key"
+    category: OTHER
+    hotm: 10
+    requirement: ""
+    seconds: 1800
+    amount: 1
+    coins: 0
+    inputs:
+      BEJEWELED_HANDLE: 1
+      PERFECT_PLATE: 1
+  - id: "WILL_O_WISP"
+    name: "Will-o'-wisp"
+    category: OTHER
+    hotm: 10
+    requirement: ""
+    seconds: 86400
+    amount: 1
+    coins: 0
+    inputs:
+      GLACITE_LANTERN: 1
+      CAGED_WISP: 1
+      PERFECT_PLATE: 1
+      EVERBURNING_FLAME: 1
+      ENCHANTED_EMERALD_BLOCK: 8

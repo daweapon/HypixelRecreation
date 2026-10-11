@@ -18,8 +18,6 @@ public final class PerkAvailability {
     private static final Map<Perk, Gap> GAPS = new EnumMap<>(Map.ofEntries(
             missing(Perk.MINING_FIESTA, "The Mining Fiesta event isn't in this server yet.",
                     "a MINING_FIESTA CalendarEvent gated on ElectionPerks.isActive(MINING_FIESTA)"),
-            missing(Perk.MOLTEN_FORGE, "The Forge isn't in this server yet.",
-                    "forge duration * (1 - ElectionPerks.bonus(MOLTEN_FORGE) / 100)"),
             missing(Perk.SHOPPING_SPREE, "NPC shops have no daily buy limits in this server yet.",
                     "daily NPC buy limit * ElectionPerks.factor(SHOPPING_SPREE)"),
             missing(Perk.PEST_ERADICATOR, GARDEN,

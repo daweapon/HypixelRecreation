@@ -1,0 +1,21 @@
+title: "The Forge Update"
+date: "10th October 2026"
+intro:
+  - "The Dwarven Forge is open. Turn your ores into Refined metals, plates, drill parts and more, and let the Forge work while you mine."
+sections:
+  - heading: "The Forge"
+    colour: "<6>"
+    lines:
+      - "Click the Forge in the Forge Basin of the Dwarven Mines to open it."
+      - "Pick a category, pick a recipe, and confirm. The ingredients come from your inventory and sacks, and the item is ready after its forging time. Forging can't be cancelled."
+      - "Every Hypixel recipe is listed with its real ingredients and time. Recipes that need items this server doesn't have yet are greyed out and say so."
+  - heading: "Forge Slots"
+    colour: "<5>"
+    lines:
+      - "You get 2 slots at Heart of the Mountain Tier 2, and one more for each Tier up to 7 slots at Tier 7."
+      - "Each recipe also needs a Heart of the Mountain Tier."
+  - heading: "Faster Forging"
+    colour: "<a>"
+    lines:
+      - "The Quick Forge perk in the Heart of the Mountain now shortens forging time."
+      - "Cole's Molten Forge perk takes another 25% off while he is Mayor."

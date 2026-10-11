@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "forge"
+    name: "The Forge Update"
+    date: "10th October 2026"
+    material: furnace
+    title: "The Forge Update"
+    book: "forge_update.yml"
   - version: "hotm"
     name: "The Heart of the Mountain Update"
     date: "10th October 2026"

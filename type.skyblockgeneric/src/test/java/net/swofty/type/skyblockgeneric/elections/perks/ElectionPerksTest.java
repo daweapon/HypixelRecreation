@@ -29,7 +29,7 @@ class ElectionPerksTest {
     @Test
     void perksLeftToOtherWorkstreamsStayAvailable() {
         for (Perk perk : new Perk[]{Perk.MYTHOLOGICAL_RITUAL, Perk.CHIVALROUS_CARNIVAL, Perk.FISHING_FESTIVAL, Perk.GOATED,
-                Perk.STOCK_EXCHANGE, Perk.VOLUME_TRADING}) {
+                Perk.STOCK_EXCHANGE, Perk.VOLUME_TRADING, Perk.MOLTEN_FORGE}) {
             assertTrue(PerkAvailability.isFullyAvailable(perk), perk.name());
         }
     }
@@ -37,7 +37,7 @@ class ElectionPerksTest {
     @Test
     void perksWithoutTheirSystemCarryAReason() {
         for (Perk perk : new Perk[]{Perk.MARAUDER, Perk.EZPZ, Perk.BENEDICTION, Perk.PEST_ERADICATOR,
-                Perk.BLOOMING_BUSINESS, Perk.MOLTEN_FORGE}) {
+                Perk.BLOOMING_BUSINESS}) {
             assertTrue(PerkAvailability.isMissing(perk), perk.name());
             assertFalse(PerkAvailability.gap(perk).orElseThrow().reason().isBlank(), perk.name());
         }

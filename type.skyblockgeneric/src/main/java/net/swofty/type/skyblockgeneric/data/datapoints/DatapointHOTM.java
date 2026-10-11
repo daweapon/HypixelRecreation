@@ -32,6 +32,11 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			json.put("perkLevels", new JSONObject(value.perkLevels));
 			json.put("disabledPerks", new org.json.JSONArray(value.disabledPerks));
 			json.put("abilityReadyAt", new JSONObject(value.abilityReadyAt));
+			org.json.JSONArray processes = new org.json.JSONArray();
+			for (ForgeProcess process : value.forgeProcesses) {
+				processes.put(new JSONObject().put("slot", process.slot()).put("recipe", process.recipeId()).put("endsAt", process.endsAt()));
+			}
+			json.put("forgeProcesses", processes);
 			return json.toString();
 		}
 
@@ -62,6 +67,13 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 				if (disabled != null) for (int i = 0; i < disabled.length(); i++) data.disabledPerks.add(disabled.getString(i));
 				JSONObject cooldowns = obj.optJSONObject("abilityReadyAt");
 				if (cooldowns != null) cooldowns.keySet().forEach(key -> data.abilityReadyAt.put(key, cooldowns.getLong(key)));
+				org.json.JSONArray processes = obj.optJSONArray("forgeProcesses");
+				if (processes != null) {
+					for (int i = 0; i < processes.length(); i++) {
+						JSONObject process = processes.getJSONObject(i);
+						data.forgeProcesses.add(new ForgeProcess(process.getInt("slot"), process.getString("recipe"), process.getLong("endsAt")));
+					}
+				}
 				return data;
 			} catch (Exception e) {
 				return PlayerHOTMData.createDefault();
@@ -86,6 +98,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			cloned.perkLevels.putAll(value.perkLevels);
 			cloned.disabledPerks.addAll(value.disabledPerks);
 			cloned.abilityReadyAt.putAll(value.abilityReadyAt);
+			cloned.forgeProcesses.addAll(value.forgeProcesses);
 			return cloned;
 		}
 	};
@@ -97,6 +110,8 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 	public DatapointHOTM(String key) {
 		super(key, PlayerHOTMData.createDefault(), serializer);
 	}
+
+	public record ForgeProcess(int slot, String recipeId, long endsAt) {}
 
 	@Getter
 	@Setter
@@ -117,6 +132,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 		private final Map<String, Integer> perkLevels = new LinkedHashMap<>();
 		private final java.util.Set<String> disabledPerks = new java.util.LinkedHashSet<>();
 		private final Map<String, Long> abilityReadyAt = new LinkedHashMap<>();
+		private final java.util.List<ForgeProcess> forgeProcesses = new java.util.ArrayList<>();
 
 		public int perkLevel(String perkId) {
 			return perkLevels.getOrDefault(perkId, 0);

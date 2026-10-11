@@ -141,7 +141,7 @@ perks:
     maxLevel: 20
     exponent: 3.2
     offset: 1
-    available: false
+    available: true
     requires: null
     verified: true
     lore:
