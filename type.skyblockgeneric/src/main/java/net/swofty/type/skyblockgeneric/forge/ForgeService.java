@@ -73,7 +73,8 @@ public final class ForgeService {
         if (recipe.coins() > 0) player.removeCoins(recipe.coins());
 
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
-        data.getForgeProcesses().add(new ForgeProcess(slot, recipe.id(), System.currentTimeMillis() + durationMillis(player, recipe)));
+        long now = System.currentTimeMillis();
+        data.getForgeProcesses().add(new ForgeProcess(slot, recipe.id(), now, now + durationMillis(player, recipe)));
         data.getForgeProcesses().sort(Comparator.comparingInt(ForgeProcess::slot));
         HotmService.save(player, data);
         return null;
@@ -99,7 +100,7 @@ public final class ForgeService {
         ForgeProcess process = processIn(player, slot);
         if (process == null) return 0;
         data.getForgeProcesses().removeIf(existing -> existing.slot() == slot);
-        data.getForgeProcesses().add(new ForgeProcess(slot, process.recipeId(), System.currentTimeMillis()));
+        data.getForgeProcesses().add(new ForgeProcess(slot, process.recipeId(), process.startedAt(), System.currentTimeMillis()));
         data.getForgeProcesses().sort(Comparator.comparingInt(ForgeProcess::slot));
         HotmService.save(player, data);
         return 1;
@@ -108,7 +109,7 @@ public final class ForgeService {
     public static int finishAll(SkyBlockPlayer player) {
         DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
         long now = System.currentTimeMillis();
-        List<ForgeProcess> finished = data.getForgeProcesses().stream().map(process -> new ForgeProcess(process.slot(), process.recipeId(), now)).toList();
+        List<ForgeProcess> finished = data.getForgeProcesses().stream().map(process -> new ForgeProcess(process.slot(), process.recipeId(), process.startedAt(), now)).toList();
         data.getForgeProcesses().clear();
         data.getForgeProcesses().addAll(finished);
         HotmService.save(player, data);

@@ -17,6 +17,8 @@ import net.swofty.type.skyblockgeneric.forge.ForgeService;
 import net.swofty.type.skyblockgeneric.forge.ForgeTooltips;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.time.Duration;
+
 public class GUIForge extends StatelessView {
     private static final int FIRST_FURNACE_SLOT = 10;
     private static final int[] LANE_ROWS = {2, 3, 4};
@@ -31,30 +33,29 @@ public class GUIForge extends StatelessView {
         Components.fill(layout);
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
 
-        for (int row : LANE_ROWS) {
-            for (int col = 1; col <= ForgeService.MAX_SLOTS; col++) {
-                layout.slot(row * 9 + col, ItemStacks.item(Material.RED_STAINED_GLASS_PANE, " "));
+        for (int col = 1; col <= ForgeService.MAX_SLOTS; col++) {
+            int forgeSlot = col;
+            for (int index = 0; index < LANE_ROWS.length; index++) {
+                int lane = index;
+                layout.autoUpdating(LANE_ROWS[index] * 9 + col, (_, _) -> ItemStacks.item(lanePane(player, forgeSlot, lane), " "), Duration.ofSeconds(1));
             }
         }
 
         for (int forgeSlot = 1; forgeSlot <= ForgeService.MAX_SLOTS; forgeSlot++) {
             int slot = forgeSlot;
-            layout.slot(FIRST_FURNACE_SLOT + forgeSlot - 1, (_, _) -> furnace(player, slot), (_, c) -> {
+            layout.autoUpdating(FIRST_FURNACE_SLOT + forgeSlot - 1, (_, _) -> furnace(player, slot), (_, c) -> {
                 if (slot > ForgeService.slots(player)) return;
                 ForgeProcess process = ForgeService.processIn(player, slot);
                 if (process == null) {
                     c.push(new GUIForgeProcess(slot));
                     return;
                 }
-                if (!ForgeService.isFinished(process)) {
-                    c.session(Object.class).refresh();
-                    return;
-                }
+                if (!ForgeService.isFinished(process)) return;
                 ForgeRecipe recipe = ForgeRegistry.get().recipe(process.recipeId());
                 String error = ForgeService.claim(player, slot);
                 player.sendMessage(error != null ? error : "<a>You collected " + ForgeTooltips.name(recipe) + "<a> from the Forge!");
                 c.session(Object.class).refresh();
-            });
+            }, Duration.ofSeconds(1));
         }
 
         layout.slot(48, ItemStacks.item(Material.CHEST, "<a>Collect Finished Items\n<7>Collect every finished forge process.\n\n<e>Click to collect!"),
@@ -72,6 +73,13 @@ public class GUIForge extends StatelessView {
                 + "\n<7>Time reduction: <a>" + (int) ForgeService.reductionPercent(player) + "%\n\n<8>Forging can't be cancelled."));
     }
 
+    private static Material lanePane(SkyBlockPlayer player, int forgeSlot, int lane) {
+        ForgeProcess process = forgeSlot > ForgeService.slots(player) ? null : ForgeService.processIn(player, forgeSlot);
+        if (process == null) return Material.RED_STAINED_GLASS_PANE;
+        int lime = (int) Math.floor(process.progress(System.currentTimeMillis()) * LANE_ROWS.length + 1e-9);
+        return lane < lime ? Material.LIME_STAINED_GLASS_PANE : Material.YELLOW_STAINED_GLASS_PANE;
+    }
+
     private static ItemStack.Builder furnace(SkyBlockPlayer player, int forgeSlot) {
         if (forgeSlot > ForgeService.slots(player)) {
             return ItemStacks.item(Material.RED_STAINED_GLASS_PANE, "<c>Locked Slot #" + forgeSlot
@@ -86,7 +94,8 @@ public class GUIForge extends StatelessView {
         if (ForgeService.isFinished(process)) {
             return ItemStacks.appendLore(ForgeTooltips.icon(recipe), "\n<a>Slot #" + forgeSlot + "\n<a>Finished!\n\n<e>Click to collect!");
         }
-        return ItemStacks.appendLore(ForgeTooltips.icon(recipe), "\n<a>Slot #" + forgeSlot + "\n<7>Time remaining: <b>"
-                + ForgeTooltips.duration(ForgeService.remainingMillis(process)) + "\n\n<e>Click to refresh!");
+        String name = ForgeTooltips.name(recipe);
+        return ItemStacks.text(ForgeTooltips.icon(recipe), "<a>" + recipe.name() + "\n<7>Currently making: " + name
+                + "\n<7>Time Remaining: <a>" + ForgeTooltips.duration(ForgeService.remainingMillis(process)));
     }
 }

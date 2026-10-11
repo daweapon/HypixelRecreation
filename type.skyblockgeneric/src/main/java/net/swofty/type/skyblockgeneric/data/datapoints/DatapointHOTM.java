@@ -34,7 +34,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 			json.put("abilityReadyAt", new JSONObject(value.abilityReadyAt));
 			org.json.JSONArray processes = new org.json.JSONArray();
 			for (ForgeProcess process : value.forgeProcesses) {
-				processes.put(new JSONObject().put("slot", process.slot()).put("recipe", process.recipeId()).put("endsAt", process.endsAt()));
+				processes.put(new JSONObject().put("slot", process.slot()).put("recipe", process.recipeId()).put("endsAt", process.endsAt()).put("startedAt", process.startedAt()));
 			}
 			json.put("forgeProcesses", processes);
 			return json.toString();
@@ -71,7 +71,7 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 				if (processes != null) {
 					for (int i = 0; i < processes.length(); i++) {
 						JSONObject process = processes.getJSONObject(i);
-						data.forgeProcesses.add(new ForgeProcess(process.getInt("slot"), process.getString("recipe"), process.getLong("endsAt")));
+						data.forgeProcesses.add(new ForgeProcess(process.getInt("slot"), process.getString("recipe"), process.optLong("startedAt", 0L), process.getLong("endsAt")));
 					}
 				}
 				return data;
@@ -111,7 +111,13 @@ public class DatapointHOTM extends SkyBlockDatapoint<DatapointHOTM.PlayerHOTMDat
 		super(key, PlayerHOTMData.createDefault(), serializer);
 	}
 
-	public record ForgeProcess(int slot, String recipeId, long endsAt) {}
+	public record ForgeProcess(int slot, String recipeId, long startedAt, long endsAt) {
+		public double progress(long now) {
+			if (now >= endsAt) return 1;
+			if (startedAt <= 0 || endsAt <= startedAt) return 0;
+			return Math.max(0, (double) (now - startedAt) / (endsAt - startedAt));
+		}
+	}
 
 	@Getter
 	@Setter

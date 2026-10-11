@@ -254,7 +254,7 @@ class MaxProfileTest {
         assertTrue(net.swofty.type.skyblockgeneric.forge.ForgeService.start(player, refinedMithril, 1) != null);
 
         var data = net.swofty.type.skyblockgeneric.hotm.HotmService.data(player);
-        data.getForgeProcesses().add(new net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM.ForgeProcess(1, "REFINED_MITHRIL", System.currentTimeMillis() + 60_000));
+        data.getForgeProcesses().add(new net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM.ForgeProcess(1, "REFINED_MITHRIL", System.currentTimeMillis(), System.currentTimeMillis() + 60_000));
         net.swofty.type.skyblockgeneric.hotm.HotmService.save(player, data);
         var datapoint = net.swofty.type.skyblockgeneric.hotm.HotmService.datapoint(player);
         var copy = new net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM("hotm");
