@@ -8,6 +8,8 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
 import net.swofty.type.skyblockgeneric.item.components.*;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -45,7 +47,7 @@ public enum ItemCategory {
         this.description = description;
     }
 
-    public static ItemCategory of(ItemType type) {
+    public static @Nullable ItemCategory of(ItemType type) {
         SkyBlockItem item = new SkyBlockItem(type);
         ConfigurableSkyBlockItem config = ConfigurableSkyBlockItem.getFromID(type.name());
         if (config != null && config.getCentauriCategory() != null) {
@@ -53,6 +55,10 @@ public enum ItemCategory {
         }
         if (hasAny(item, PET_COMPONENTS)) return PETS;
         if (item.hasComponent(AccessoryComponent.class)) return TALISMANS;
+        if (isVanillaBacked(type, item)) {
+            return isBuildingBlock(item) || isVanillaGear(item.getMaterial()) || item.hasComponent(StandardItemComponent.class)
+                    ? null : MATERIALS;
+        }
         if (hasAny(item, FUNCTIONAL_COMPONENTS) || isVanillaGear(item.getMaterial())) return REGULAR;
         if (item.hasComponent(EnchantedComponent.class)) return MATERIALS;
         return isBuildingBlock(item) ? REGULAR : MATERIALS;
@@ -62,7 +68,10 @@ public enum ItemCategory {
         if (cache == null) {
             Map<ItemCategory, List<ItemType>> built = new EnumMap<>(ItemCategory.class);
             for (ItemCategory value : values()) built.put(value, new ArrayList<>());
-            for (ItemType type : ItemType.values()) built.get(of(type)).add(type);
+            for (ItemType type : ItemType.values()) {
+                ItemCategory sorted = of(type);
+                if (sorted != null) built.get(sorted).add(type);
+            }
             cache = built;
         }
         return cache.get(category);
@@ -76,6 +85,16 @@ public enum ItemCategory {
     static boolean isVanillaGear(Material material) {
         String name = material.key().value();
         return GEAR_MATERIALS.contains(name) || GEAR_MATERIAL_SUFFIXES.stream().anyMatch(name::endsWith);
+    }
+
+    public static List<ItemType> allListed() {
+        List<ItemType> listed = new ArrayList<>();
+        for (ItemCategory category : values()) listed.addAll(items(category));
+        return listed;
+    }
+
+    static boolean isVanillaBacked(ItemType type, SkyBlockItem item) {
+        return type.name().equals(item.getMaterial().key().value().toUpperCase());
     }
 
     static boolean isBuildingBlock(SkyBlockItem item) {

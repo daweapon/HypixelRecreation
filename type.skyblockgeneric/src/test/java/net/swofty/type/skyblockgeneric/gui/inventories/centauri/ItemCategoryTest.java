@@ -46,12 +46,35 @@ class ItemCategoryTest {
     }
 
     @Test
-    void everyItemLandsInExactlyOneCategory() {
+    void everyItemLandsInExactlyOneCategoryOrIsPlainVanilla() {
         int total = 0;
         for (ItemCategory category : ItemCategory.values()) total += ItemCategory.items(category).size();
-        assertEquals(ItemType.values().length, total);
+        List<String> unlisted = new ArrayList<>();
         for (ItemType type : ItemType.values()) {
-            assertTrue(ItemCategory.items(ItemCategory.of(type)).contains(type), type.name() + " is missing from its category");
+            ItemCategory category = ItemCategory.of(type);
+            if (category == null) {
+                unlisted.add(type.name());
+                assertTrue(ItemCategory.isVanillaBacked(type, new SkyBlockItem(type)), type.name() + " is hidden but is not vanilla");
+            } else {
+                assertTrue(ItemCategory.items(category).contains(type), type.name() + " is missing from its category");
+            }
+        }
+        assertEquals(ItemType.values().length, total + unlisted.size());
+        assertEquals(total, ItemCategory.allListed().size());
+    }
+
+    @Test
+    void plainVanillaItemsAreNotListedAnywhere() {
+        for (String id : List.of("ACACIA_BOAT", "OAK_PLANKS", "ACACIA_DOOR", "GLASS", "DIAMOND_BLOCK", "COAL_ORE", "COBBLESTONE", "ANVIL", "CHEST", "DIAMOND_SWORD", "AIR")) {
+            ItemType type = ItemType.get(id);
+            if (type == null) continue;
+            assertEquals(null, ItemCategory.of(type), id + " should not be in the item list");
+        }
+        for (ItemType type : ItemCategory.allListed()) {
+            SkyBlockItem item = new SkyBlockItem(type);
+            if (ItemCategory.isVanillaBacked(type, item)) {
+                assertEquals(ItemCategory.MATERIALS, ItemCategory.of(type), type.name() + " is vanilla and not a material");
+            }
         }
     }
 
@@ -61,6 +84,7 @@ class ItemCategoryTest {
         assertEquals(ItemCategory.MATERIALS, of("DIAMOND"));
         assertEquals(ItemCategory.MATERIALS, of("MITHRIL"));
         assertEquals(ItemCategory.MATERIALS, of("ENCHANTED_ACACIA_LOG"));
+        assertEquals(ItemCategory.MATERIALS, of("COAL"));
         assertEquals(ItemCategory.REGULAR, of("ASPECT_OF_THE_END"));
         assertEquals(ItemCategory.REGULAR, of("HYPERION"));
         assertEquals(ItemCategory.PETS, of("BEE_PET"));
@@ -71,10 +95,6 @@ class ItemCategoryTest {
 
     @Test
     void buildingBlocksAreNeverMaterials() {
-        for (String id : List.of("OAK_PLANKS", "GLASS", "DIAMOND_BLOCK", "COAL_ORE", "COBBLESTONE", "ANVIL", "CHEST")) {
-            if (ItemType.get(id) == null) continue;
-            assertEquals(ItemCategory.REGULAR, of(id), id + " is a building block");
-        }
         List<String> blocks = new ArrayList<>();
         for (ItemType type : ItemCategory.items(ItemCategory.MATERIALS)) {
             SkyBlockItem item = new SkyBlockItem(type);
@@ -91,7 +111,7 @@ class ItemCategoryTest {
             GUICreative.createInitialState(category, "", 0).items()
                     .forEach(item -> assertNotNull(item.getAttributeHandler().getPotentialType()));
         }
-        assertEquals(ItemType.values().length, GUICreative.createInitialState("", 0).items().size());
+        assertEquals(ItemCategory.allListed().size(), GUICreative.createInitialState("", 0).items().size());
     }
 
     @Test

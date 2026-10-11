@@ -25,7 +25,6 @@ import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 // GUI for browsing and searching SkyBlock items, optionally within one Centauri category
@@ -51,7 +50,7 @@ public class GUICreative extends PaginatedView<SkyBlockItem, GUICreative.Creativ
     }
 
     public static CreativeState createInitialState(ItemCategory category, String query, int pageZeroBased) {
-        List<ItemType> types = category == null ? Arrays.asList(ItemType.values()) : ItemCategory.items(category);
+        List<ItemType> types = category == null ? ItemCategory.allListed() : ItemCategory.items(category);
         List<SkyBlockItem> items = new ArrayList<>(types.stream().map(SkyBlockItem::new).toList());
         return new CreativeState(items, Math.max(0, pageZeroBased), query == null ? "" : query, category);
     }
