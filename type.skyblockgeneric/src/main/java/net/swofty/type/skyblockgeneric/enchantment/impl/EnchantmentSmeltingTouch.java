@@ -31,10 +31,7 @@ public class EnchantmentSmeltingTouch implements Ench, EnchFromTable, Conflictin
 
     @Override
     public List<EnchantItemGroups> getGroups() {
-        return List.of(
-                EnchantItemGroups.PICKAXE,
-                EnchantItemGroups.TOOLS
-        );
+        return List.of(EnchantItemGroups.PICKAXE, EnchantItemGroups.TOOLS, EnchantItemGroups.AXE, EnchantItemGroups.DRILL, EnchantItemGroups.GAUNTLET, EnchantItemGroups.SHOVEL);
     }
 
     @Override

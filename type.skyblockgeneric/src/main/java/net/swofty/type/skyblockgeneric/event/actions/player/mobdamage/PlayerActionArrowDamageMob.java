@@ -7,7 +7,13 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
+import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
+import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentPiercing;
+import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentPunch;
+import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentSnipe;
 import net.swofty.type.skyblockgeneric.entity.ArrowEntityImpl;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowDamage;
@@ -38,18 +44,46 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
             shooter = player;
         else return;
 
+        SkyBlockItem bow = arrow.getBow();
+        double pierceFactor = 1;
+        if (bow != null && bow.getAttributeHandler().getEnchantment(EnchantmentType.PIERCING) != null) {
+            event.setCancelled(true);
+            int targetsAlreadyHit = arrow.pierceTarget(collidedWith);
+            if (targetsAlreadyHit < 0) return;
+            pierceFactor = EnchantmentPiercing.damageFactor(targetsAlreadyHit);
+        }
+
         ItemStatistics entityStats = mob.getStatistics();
         Map.Entry<Double, Boolean> hit = ArrowDamage.roll(shooter, arrow, entityStats);
-        double damage = hit.getKey() * AttributeEffectService.outgoingDamageMultiplier(shooter.getHuntingData(), collidedWith, true)
+        double damage = hit.getKey() * pierceFactor * snipeMultiplier(arrow, bow, collidedWith)
+                * AttributeEffectService.outgoingDamageMultiplier(shooter.getHuntingData(), collidedWith, true)
                 * CombatPetHooks.arrowMultiplier(shooter, collidedWith);
         boolean critical = hit.getValue();
 
         float damageAmount = (float) damage;
         if (!AttackService.applyHit(shooter, collidedWith, damageAmount, critical)) return;
         CombatPetHooks.bowHit(shooter);
+        punch(arrow, bow, collidedWith);
         ArrowDamage.onLanded(shooter, arrow);
 
         double ferocity = ArrowDamage.shooterStatistics(shooter, arrow.getArrowItem()).getOverall(ItemStatistic.FEROCITY);
         AttackService.scheduleExtraHits(shooter, collidedWith, damageAmount, critical, ferocity);
+    }
+
+    private static double snipeMultiplier(ArrowEntityImpl arrow, SkyBlockItem bow, SkyBlockMob target) {
+        if (bow == null || arrow.getOrigin() == null) return 1;
+        SkyBlockEnchantment snipe = bow.getAttributeHandler().getEnchantment(EnchantmentType.SNIPE);
+        if (snipe == null) return 1;
+        return EnchantmentSnipe.multiplier(snipe.level(), arrow.getOrigin().distance(target.getPosition()));
+    }
+
+    private static void punch(ArrowEntityImpl arrow, SkyBlockItem bow, SkyBlockMob target) {
+        if (bow == null) return;
+        SkyBlockEnchantment punch = bow.getAttributeHandler().getEnchantment(EnchantmentType.PUNCH);
+        if (punch == null) return;
+        var velocity = arrow.getVelocity();
+        double length = Math.hypot(velocity.x(), velocity.z());
+        if (length == 0) return;
+        target.takeKnockback(EnchantmentPunch.knockback(punch.level()), -velocity.x() / length, -velocity.z() / length);
     }
 }

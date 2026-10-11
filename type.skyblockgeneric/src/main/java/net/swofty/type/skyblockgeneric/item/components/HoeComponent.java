@@ -14,7 +14,7 @@ public class HoeComponent extends SkyBlockItemComponent {
     public HoeComponent() {
         addInheritedComponent(new ExtraRarityComponent("HOE"));
         addInheritedComponent(new ReforgableComponent(ReforgeType.HOES));
-        addInheritedComponent(new EnchantableComponent(List.of(EnchantItemGroups.TOOLS), true));
+        addInheritedComponent(new EnchantableComponent(List.of(EnchantItemGroups.TOOLS, EnchantItemGroups.HOE), true));
         addInheritedComponent(new TrackedUniqueComponent());
     }
 }

@@ -23,7 +23,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 public class ArrowEntityImpl extends LivingEntity {
     public static final double LARGEST_TARGET_REACH = 24;
@@ -40,6 +43,10 @@ public class ArrowEntityImpl extends LivingEntity {
     @Getter
     @Setter
     private double damageFactor = 1;
+    @Getter
+    @Setter
+    private @Nullable Pos origin;
+    private final Set<UUID> piercedTargets = new HashSet<>();
 
     public ArrowEntityImpl(Entity player, SkyBlockItem arrowItem) {
         super(EntityType.ARROW);
@@ -53,6 +60,11 @@ public class ArrowEntityImpl extends LivingEntity {
         ArrowMeta arrowMeta = (ArrowMeta) getEntityMeta();
         arrowMeta.setShooter(player);
         arrowMeta.setPiercingLevel((byte) 5);
+    }
+
+    public int pierceTarget(Entity target) {
+        if (!piercedTargets.add(target.getUuid())) return -1;
+        return piercedTargets.size() - 1;
     }
 
     @Override

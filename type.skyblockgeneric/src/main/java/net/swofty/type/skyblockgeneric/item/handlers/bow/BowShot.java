@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.metadata.LivingEntityMeta;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
+import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentInfiniteQuiver;
 import net.swofty.type.skyblockgeneric.entity.ArrowEntityImpl;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.BowComponent;
@@ -69,7 +70,7 @@ public final class BowShot {
     }
 
     public static void fire(SkyBlockPlayer player, SkyBlockItem bow, double power) {
-        SkyBlockItem arrow = player.getAndConsumeArrow();
+        SkyBlockItem arrow = EnchantmentInfiniteQuiver.saves(player, bow) ? player.peekArrow() : player.getAndConsumeArrow();
         if (arrow == null) return;
 
         ShortBowComponent shortBow = bow.hasComponent(ShortBowComponent.class) ? bow.getComponent(ShortBowComponent.class) : null;
@@ -100,6 +101,8 @@ public final class BowShot {
         Vec playerVelocity = player.getVelocity();
         velocity = velocity.add(playerVelocity.x(), player.isOnGround() ? 0.0 : playerVelocity.y(), playerVelocity.z());
         entity.setVelocity(velocity);
-        entity.setInstance(player.getInstance(), at.add(0, player.getEyeHeight() - 0.1, 0));
+        Pos spawnAt = at.add(0, player.getEyeHeight() - 0.1, 0);
+        entity.setOrigin(spawnAt);
+        entity.setInstance(player.getInstance(), spawnAt);
     }
 }

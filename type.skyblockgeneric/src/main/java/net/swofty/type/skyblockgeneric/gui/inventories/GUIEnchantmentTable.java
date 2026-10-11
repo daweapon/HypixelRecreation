@@ -19,10 +19,12 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.generic.gui.v2.ViewNavigator;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentSource;
+import net.swofty.type.skyblockgeneric.gui.inventories.enchantment.GUIEnchantmentGuide;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
-import net.swofty.type.skyblockgeneric.enchantment.abstr.ConflictingEnch;
+import net.swofty.type.skyblockgeneric.enchantment.EnchantmentConflicts;
 import net.swofty.type.skyblockgeneric.item.ItemAttributeHandler;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.EnchantableComponent;
@@ -72,7 +74,12 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
             }
         });
 
-        set(new GUIItem(50) {
+        set(new GUIClickableItem(50) {
+            @Override
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                ViewNavigator.get(p).push(new GUIEnchantmentGuide());
+            }
+
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 return ItemStacks.item(Material.BOOK, 1, Text.key("gui_enchantment.enchantments_guide"),
@@ -95,7 +102,7 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
     public void updateFromItem(SkyBlockItem item, EnchantmentType selected) {
         setTitle(selected == null
             ? Text.key("gui_enchantment.title")
-            : Text.key("gui_enchantment.title_selected", StringUtility.toNormalCase(selected.name())));
+            : Text.key("gui_enchantment.title_selected", selected.getName()));
 
         Arrays.stream(PAGINATED_SLOTS_LIST_ENCHANTS).forEach(slot -> set(slot, ItemStacks.named(
                 Material.BLACK_STAINED_GLASS_PANE, "<7> "
@@ -179,7 +186,7 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
             return;
         }
 
-        List<EnchantItemGroups> enchantItemGroups = item.getComponent(EnchantableComponent.class).getEnchantItemGroups();
+        List<EnchantItemGroups> enchantItemGroups = item.getComponent(EnchantableComponent.class).groupsFor(item);
         List<EnchantmentType> enchantments = Arrays.stream(EnchantmentType.values())
                 .filter(enchantmentType -> enchantmentType.getEnch().getGroups().stream().anyMatch(enchantItemGroups::contains))
                 .filter(enchantmentType -> enchantmentType.getEnchFromTable() != null)
@@ -226,10 +233,10 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
 
                         if (itemAttributeHandler.hasEnchantment(enchantmentType)) {
                             lore.add(Text.of("<a>  {} {:roman} <l>✓",
-                                    StringUtility.toNormalCase(enchantmentType.name()),
+                                    enchantmentType.getName(),
                                     itemAttributeHandler.getEnchantment(enchantmentType).level()));
                         } else {
-                            lore.add(Text.of("<c>  {} <l>✖", StringUtility.toNormalCase(enchantmentType.name())));
+                            lore.add(Text.of("<c>  {} <l>✖", enchantmentType.getName()));
                         }
 
                         lore.add(Text.of("<a> "));
@@ -241,7 +248,7 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
                         }
 
                         return ItemStacks.item(Material.ENCHANTED_BOOK, 1,
-                                Text.of("<a>{}", StringUtility.toNormalCase(enchantmentType.name())),
+                                Text.of("<a>{}", enchantmentType.getName()),
                                 lore
                         );
                     }
@@ -278,12 +285,10 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
 
                     lore.add(Text.of("<a> "));
 
-                    if (selected.getEnch() instanceof ConflictingEnch conflictingEnch) {
-                        for (EnchantmentType enchantmentType : conflictingEnch.getConflictingEnchantments()) {
-                            if (item.getAttributeHandler().hasEnchantment(enchantmentType)) {
-                                lore.add(Text.key("gui_enchantment.warning_remove_conflicting", StringUtility.toNormalCase(enchantmentType.name())));
-                                break;
-                            }
+                    for (EnchantmentType enchantmentType : EnchantmentConflicts.of(selected)) {
+                        if (item.getAttributeHandler().hasEnchantment(enchantmentType)) {
+                            lore.add(Text.key("gui_enchantment.warning_remove_conflicting", enchantmentType.getName()));
+                            break;
                         }
                     }
 
@@ -347,17 +352,12 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
                                 new SkyBlockEnchantment(selected, finalLevel)
                         );
 
-                        if (selected.getEnch() instanceof ConflictingEnch conflictingEnch) {
-                            for (EnchantmentType enchant : conflictingEnch.getConflictingEnchantments()) {
-                                System.out.printf("conflicting enchant: " + enchant.name());
-                                if (item.getAttributeHandler().hasEnchantment(enchant)) item.getAttributeHandler().removeEnchantment(enchant);
-                            }
-                        }
+                        EnchantmentConflicts.applyTo(item, selected);
 
                         int levelsSpent = selected.getEnchFromTable().getLevelsFromTableToApply(player).get(finalLevel);
                         player.setLevel(player.getLevel() - levelsSpent);
                         SkyBlockEnchantingAchievements.onTableEnchant(player, selected, finalLevel, levelsSpent);
-                        player.sendMessage(Text.key("gui_enchantment.enchanted_message", itemName, StringUtility.toNormalCase(selected.name()), StringUtility.getAsRomanNumeral(finalLevel)));
+                        player.sendMessage(Text.key("gui_enchantment.enchanted_message", itemName, selected.getName(), StringUtility.getAsRomanNumeral(finalLevel)));
                     } else {
                         int difference = finalHasLevel - finalLevel;
 
@@ -368,7 +368,7 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
                         }
 
                         player.setLevel(player.getLevel() - selected.getEnchFromTable().getLevelsFromTableToApply(player).get(finalLevel));
-                        player.sendMessage(Text.key("gui_enchantment.removed_message", StringUtility.toNormalCase(selected.name()), itemName));
+                        player.sendMessage(Text.key("gui_enchantment.removed_message", selected.getName(), itemName));
                     }
 
                     updateFromItem(item, selected);

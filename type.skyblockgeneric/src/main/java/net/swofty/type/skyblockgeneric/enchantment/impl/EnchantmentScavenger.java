@@ -42,13 +42,13 @@ public class EnchantmentScavenger implements Ench, EnchFromTable, HypixelEventCl
     }
 
     @Override
+    public int getEndcapLevel() {
+        return 6;
+    }
+
+    @Override
     public List<EnchantItemGroups> getGroups() {
-        return List.of(
-                EnchantItemGroups.SWORD,
-                EnchantItemGroups.FISHING_WEAPON,
-                EnchantItemGroups.LONG_SWORD,
-                EnchantItemGroups.GAUNTLET
-        );
+        return List.of(EnchantItemGroups.SWORD, EnchantItemGroups.LONG_SWORD, EnchantItemGroups.GAUNTLET);
     }
 
     @Override

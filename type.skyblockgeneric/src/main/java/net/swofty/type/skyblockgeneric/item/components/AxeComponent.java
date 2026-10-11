@@ -19,7 +19,7 @@ public class AxeComponent extends SkyBlockItemComponent {
         this.axeStrength = axeStrength;
         addInheritedComponent(new ExtraRarityComponent("AXE"));
         addInheritedComponent(new ReforgableComponent(ReforgeType.AXES));
-        addInheritedComponent(new EnchantableComponent(List.of(EnchantItemGroups.TOOLS), true));
+        addInheritedComponent(new EnchantableComponent(List.of(EnchantItemGroups.TOOLS, EnchantItemGroups.AXE), true));
         addInheritedComponent(new TrackedUniqueComponent());
     }
 

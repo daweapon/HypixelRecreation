@@ -48,6 +48,6 @@ public class EnchantmentExpertise implements Ench {
 
     @Override
     public List<EnchantItemGroups> getGroups() {
-        return List.of(EnchantItemGroups.FISHING_ROD);
+        return List.of(EnchantItemGroups.FISHING_ROD, EnchantItemGroups.FISHING_WEAPON);
     }
 }

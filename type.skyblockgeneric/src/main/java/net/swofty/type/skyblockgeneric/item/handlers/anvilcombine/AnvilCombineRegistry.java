@@ -6,6 +6,7 @@ import net.swofty.type.skyblockgeneric.gifts.HollyDye;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalItemHandlers;
 import net.swofty.commons.skyblock.item.PotatoType;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeHotPotatoBookData;
+import net.swofty.type.skyblockgeneric.enchantment.EnchantmentConflicts;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.item.Recombobulation;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -65,6 +66,7 @@ public class AnvilCombineRegistry {
 
                     // Add new enchantments
                     enchantments.forEach(enchantment -> {
+                        EnchantmentConflicts.applyTo(upgradeItem, enchantment.type());
                         upgradeItem.getAttributeHandler().addEnchantment(new SkyBlockEnchantment(
                                 enchantment.type(),
                                 enchantment.level()));
@@ -77,7 +79,7 @@ public class AnvilCombineRegistry {
                         Set<EnchantItemGroups> sourceTypes = enchantments.stream()
                                 .flatMap(enchantment -> enchantment.type().getEnch().getGroups().stream()).collect(Collectors.toSet());
 
-                        List<EnchantItemGroups> applicableTypes = enchantable.getEnchantItemGroups();
+                        List<EnchantItemGroups> applicableTypes = enchantable.groupsFor(upgradeItem);
                         return sourceTypes.stream().anyMatch(applicableTypes::contains);
                     }
                     return false;

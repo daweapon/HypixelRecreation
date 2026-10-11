@@ -243,6 +243,15 @@ public class SkyBlockPlayer extends HypixelPlayer {
         return getAmountOfEmptySlots() >= amount;
     }
 
+    public @Nullable SkyBlockItem peekArrow() {
+        for (int i = 0; i < 36; i++) {
+            SkyBlockItem item = new SkyBlockItem(getInventory().getItemStack(i));
+            if (item.hasComponent(ArrowComponent.class)) return item;
+        }
+        if (!hasCustomCollectionAward(CustomCollectionAward.QUIVER)) return null;
+        return getQuiver().getFirstItemInQuiver();
+    }
+
     public @Nullable SkyBlockItem getAndConsumeArrow() {
         // Check Inventory first
         for (int i = 0; i < 36; i++) {

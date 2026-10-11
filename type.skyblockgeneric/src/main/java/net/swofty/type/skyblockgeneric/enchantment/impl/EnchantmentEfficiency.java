@@ -43,7 +43,7 @@ public class EnchantmentEfficiency extends SkyBlockValueEvent implements Ench, E
 
     @Override
     public List<EnchantItemGroups> getGroups() {
-        return Collections.singletonList(EnchantItemGroups.PICKAXE);
+        return List.of(EnchantItemGroups.TOOLS, EnchantItemGroups.PICKAXE, EnchantItemGroups.DRILL, EnchantItemGroups.GAUNTLET, EnchantItemGroups.AXE, EnchantItemGroups.HOE, EnchantItemGroups.SHOVEL);
     }
 
     @Override

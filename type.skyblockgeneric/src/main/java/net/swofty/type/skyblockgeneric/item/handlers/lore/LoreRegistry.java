@@ -39,7 +39,7 @@ public class LoreRegistry {
 
                     enchantments.forEach(enchantment -> {
                         lore.add(Text.of(enchantment.type().getEnch().isUltimate() ? "<d><l>{} {:roman}" : "<9>{} {:roman}",
-                                StringUtility.toNormalCase(enchantment.type().name()),
+                                enchantment.type().getName(),
                                 enchantment.level()).serialize());
                         Text.of("<7><wrap:30>{}</wrap>",
                                         Text.parseLenient(enchantment.type().getDescription(enchantment.level(), player)))

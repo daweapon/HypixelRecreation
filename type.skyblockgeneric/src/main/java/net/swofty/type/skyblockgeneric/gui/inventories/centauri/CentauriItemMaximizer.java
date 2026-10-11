@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.gui.inventories.centauri;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeGemData;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeHotPotatoBookData;
+import net.swofty.type.skyblockgeneric.enchantment.EnchantmentConflicts;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.gems.Gemstone;
@@ -49,11 +50,12 @@ public final class CentauriItemMaximizer {
 
     private static int maximizeEnchantments(SkyBlockPlayer player, SkyBlockItem item) {
         if (!item.hasComponent(EnchantableComponent.class)) return 0;
-        var itemGroups = item.getComponent(EnchantableComponent.class).getEnchantItemGroups();
+        var itemGroups = item.getComponent(EnchantableComponent.class).groupsFor(item);
         int applied = 0;
 
         for (EnchantmentType type : EnchantmentType.values()) {
             if (type == EnchantmentType.KNOCKBACK) continue;
+            if (EnchantmentConflicts.blockedBy(item, type)) continue;
             if (type.getEnch().getGroups().stream().noneMatch(itemGroups::contains)) continue;
             int maximumLevel = type.getEnch().getLevelsToApply(player).maximumLevel();
             var current = item.getAttributeHandler().getEnchantment(type);

@@ -20,12 +20,17 @@ public class EnchantmentPaleontologist implements Ench {
     }
 
     @Override
+    public boolean isEffectActive() {
+        return false;
+    }
+
+    @Override
     public ApplyLevels getLevelsToApply(@NotNull SkyBlockPlayer player) {
         return new ApplyLevels(new HashMap<>(Map.of(1, 0, 2, 0, 3, 0, 4, 0, 5, 0)));
     }
 
     @Override
     public List<EnchantItemGroups> getGroups() {
-        return List.of(EnchantItemGroups.DRILL, EnchantItemGroups.GAUNTLET);
+        return List.of(EnchantItemGroups.DRILL, EnchantItemGroups.GAUNTLET, EnchantItemGroups.PICKAXE);
     }
 }

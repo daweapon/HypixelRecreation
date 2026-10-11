@@ -1,0 +1,42 @@
+title: "The Enchantments Update"
+date: "11th October 2026"
+intro:
+  - "Every enchantment from SkyBlock is now in the game, and the Enchanting Table finally has its Enchantments Guide."
+  - "Enchantments whose home isn't built yet, like Dungeons, Rift and Mineshafts, are already catalogued. Their tooltips say Not active yet."
+sections:
+  - heading: "Enchantments Guide"
+    colour: "<9>"
+    lines:
+      - "Click the Enchantments Guide book in the Enchanting Table to see every enchantment."
+      - "Each entry shows its top level effect, where it comes from, which items it goes on and what it conflicts with."
+      - "Click an enchantment to see every level with its effect and its Exp Level apply cost."
+      - "The hopper narrows the list to Ultimate, Melee, Bows, Armor, Equipment, Mining, Farming, Foraging or Fishing."
+  - heading: "87 New Enchantments"
+    colour: "<d>"
+    lines:
+      - "Added every missing enchantment, including Power, Snipe, Piercing, Punch, Infinite Quiver, Titan Killer, Triple-Strike, Divine Gift, Feather Falling, Thorns, Tidal, Rejuvenate, Big Brain, Small Brain, Smarty Pants, Ice Cold, Scuba, Respiration, Prismatic, Harvesting and all thirteen Turbo-Crop enchantments."
+      - "Added the ultimates Combo, Swarm, Soul Eater, Wisdom, Last Stand, Legion, Bank and the rest, plus the tiered Champion, Compact, Cultivating, Absorb, Hecatomb and Toxophilite."
+      - "Pristine is now called Prismatic and gives half as much Pristine per level, like the real game."
+  - heading: "Working Effects"
+    colour: "<a>"
+    lines:
+      - "Power, Divine Gift, Overload, Reflection and the armor stat enchantments grant their stats."
+      - "Titan Killer, Triple-Strike, Combo and Swarm boost your melee damage."
+      - "Snipe boosts far shots, Piercing lets arrows pass through enemies, Punch knocks them back and Infinite Quiver saves your arrows."
+      - "Feather Falling lowers fall damage, Thorns rebound damage on attackers and Tidal toughens you against Sea Creatures."
+  - heading: "Item Types"
+    colour: "<6>"
+    lines:
+      - "Helmets, chestplates, leggings, boots, axes, hoes, shovels and each equipment piece now count as their own item type, so Big Brain only goes on helmets and Sugar Rush only on boots."
+      - "Efficiency now works on drills, axes, hoes and shovels, and Smelting Touch on axes, drills and shovels."
+  - heading: "Rules"
+    colour: "<c>"
+    lines:
+      - "Conflicting enchantments like Protection and Fire Protection replace each other."
+      - "An item can only have one Ultimate enchantment. One For All removes every other enchantment."
+  - heading: "Fixes"
+    colour: "<e>"
+    lines:
+      - "Sharpness VI and VII can now be applied, Scavenger VI works and Sugar Rush has levels II and III."
+      - "Woodsplitter now does the full damage the real game does to Woodland mobs."
+      - "The Toy Box has an Enchantment Library button that gives a top level book of every enchantment."

@@ -32,7 +32,7 @@ public final class EnchantmentPyroclasm implements Ench, MobTypeDamageEnchantmen
 
     @Override
     public List<EnchantItemGroups> getGroups() {
-        return List.of(EnchantItemGroups.SWORD, EnchantItemGroups.FISHING_WEAPON, EnchantItemGroups.LONG_SWORD, EnchantItemGroups.GAUNTLET, EnchantItemGroups.FISHING_ROD);
+        return List.of(EnchantItemGroups.FISHING_ROD, EnchantItemGroups.SWORD, EnchantItemGroups.LONG_SWORD, EnchantItemGroups.GAUNTLET);
     }
 
     @Override

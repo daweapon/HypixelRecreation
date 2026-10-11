@@ -24,6 +24,10 @@ public interface Ench {
         return false;
     }
 
+    default boolean isEffectActive() {
+        return true;
+    }
+
     default int getEndcapLevel() {
         return 0;
     }

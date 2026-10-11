@@ -1,0 +1,4556 @@
+{
+ "ABSORB": {
+  "key": "ABSORB",
+  "neuId": "ABSORB",
+  "name": "Absorb",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!",
+   "2": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!",
+   "3": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!",
+   "4": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!",
+   "5": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!",
+   "6": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!",
+   "7": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!",
+   "8": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!",
+   "9": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!",
+   "10": "<7>Grants <3>+1☯ Foraging Wisdom <7>and <6>+2☘ Foraging Fortune<7>. <8>1k logs to tier up!"
+  },
+  "sources": [],
+  "appliedTo": [
+   "Axe"
+  ],
+  "conflicts": []
+ },
+ "DRAGON_TRACER": {
+  "key": "DRAGON_TRACER",
+  "neuId": "AIMING",
+  "name": "Dragon Tracer",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Arrows home towards dragons if <7>they are within <a>2 <7>blocks.",
+   "2": "<7>Arrows home towards dragons if <7>they are within <a>4 <7>blocks.",
+   "3": "<7>Arrows home towards dragons if <7>they are within <a>6 <7>blocks.",
+   "4": "<7>Arrows home towards dragons if <7>they are within <a>8 <7>blocks.",
+   "5": "<7>Arrows home towards dragons if <7>they are within <a>10 <7>blocks."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table,",
+   "<7>Feather Collection"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "ANGLER": {
+  "key": "ANGLER",
+  "neuId": "ANGLER",
+  "name": "Angler",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <3>+1 Sea Creature <3>Chance<7>.",
+   "2": "<7>Grants <3>+2 Sea Creature <3>Chance<7>.",
+   "3": "<7>Grants <3>+3 Sea Creature <3>Chance<7>.",
+   "4": "<7>Grants <3>+4 Sea Creature <3>Chance<7>.",
+   "5": "<7>Grants <3>+5 Sea Creature <3>Chance<7>.",
+   "6": "<7>Grants <3>+6 Sea Creature <3>Chance<7>."
+  },
+  "sources": [
+   "<a>VI: <7>Fishing,"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Fishing Weapon"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   75
+  ]
+ },
+ "AQUA_AFFINITY": {
+  "key": "AQUA_AFFINITY",
+  "neuId": "AQUA_AFFINITY",
+  "name": "Aqua Affinity",
+  "ultimate": false,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases your underwater mining <7>rate."
+  },
+  "sources": [
+   "<a>I: <7>Enchantment Table"
+  ],
+  "appliedTo": [
+   "Helmet"
+  ],
+  "conflicts": [],
+  "costs": [
+   15
+  ]
+ },
+ "WOODSPLITTER": {
+  "key": "WOODSPLITTER",
+  "neuId": "ARCANE",
+  "name": "Woodsplitter",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt to <2>⸙ <2>Woodland<7> mobs by <a>10%<7>.",
+   "2": "<7>Increases damage dealt to <2>⸙ <2>Woodland<7> mobs by <a>20%<7>.",
+   "3": "<7>Increases damage dealt to <2>⸙ <2>Woodland<7> mobs by <a>30%<7>.",
+   "4": "<7>Increases damage dealt to <2>⸙ <2>Woodland<7> mobs by <a>40%<7>.",
+   "5": "<7>Increases damage dealt to <2>⸙ <2>Woodland<7> mobs by <a>60%<7>.",
+   "6": "<7>Increases damage dealt to <2>⸙ <2>Woodland<7> mobs by <a>80%<7>."
+  },
+  "sources": [],
+  "appliedTo": [
+   "Axe"
+  ],
+  "conflicts": []
+ },
+ "BANE_OF_ARTHROPODS": {
+  "key": "BANE_OF_ARTHROPODS",
+  "neuId": "BANE_OF_ARTHROPODS",
+  "name": "Bane of Arthropods",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt to <4>Ж <4>Arthropod<7> mobs by <a>5%<7>.",
+   "2": "<7>Increases damage dealt to <4>Ж <4>Arthropod<7> mobs by <a>10%<7>.",
+   "3": "<7>Increases damage dealt to <4>Ж <4>Arthropod<7> mobs by <a>15%<7>.",
+   "4": "<7>Increases damage dealt to <4>Ж <4>Arthropod<7> mobs by <2>0%<7>.",
+   "5": "<7>Increases damage dealt to <4>Ж <4>Arthropod<7> mobs by <a>30%<7>.",
+   "6": "<7>Increases damage dealt to <4>Ж <4>Arthropod<7> mobs by <a>40%<7>.",
+   "7": "<7>Increases damage dealt to <4>Ж <4>Arthropod<7> mobs by <a>50%<7>."
+  },
+  "sources": [],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   100,
+   200
+  ]
+ },
+ "BIG_BRAIN": {
+  "key": "BIG_BRAIN",
+  "neuId": "BIG_BRAIN",
+  "name": "Big Brain",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 3,
+  "levels": {
+   "3": "<7>Grants <b>+15✎ Intelligence<7>.",
+   "4": "<7>Grants <b>+20✎ Intelligence<7>.",
+   "5": "<7>Grants <b>+25✎ Intelligence<7>."
+  },
+  "sources": [
+   "<a>III-V: <7>Dark Auction."
+  ],
+  "appliedTo": [
+   "Helmet"
+  ],
+  "conflicts": [
+   "Small Brain"
+  ],
+  "costs": [
+   0,
+   0,
+   60,
+   80,
+   100
+  ]
+ },
+ "BLAST_PROTECTION": {
+  "key": "BLAST_PROTECTION",
+  "neuId": "BLAST_PROTECTION",
+  "name": "Blast Protection",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>+30 ❈ Defense <7>against explosions.",
+   "2": "<7>Grants <a>+60 ❈ Defense <7>against explosions.",
+   "3": "<7>Grants <a>+90 ❈ Defense <7>against explosions.",
+   "4": "<7>Grants <a>+120 ❈ Defense <7>against explosions.",
+   "5": "<7>Grants <a>+150 ❈ Defense <7>against explosions.",
+   "6": "<7>Grants <a>+180 ❈ Defense <7>against explosions.",
+   "7": "<7>Grants <a>+210 ❈ Defense <7>against explosions."
+  },
+  "sources": [
+   "<a>VII: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Fire Protection",
+   "Protection",
+   "Projectile Protection"
+  ],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   100,
+   200
+  ]
+ },
+ "BLESSING": {
+  "key": "BLESSING",
+  "neuId": "BLESSING",
+  "name": "Blessing",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases the chance for <6>Treasure <7>catches to be <6><l>GREAT <7>or <d><l>OUTSTANDING <7>by <a>2%<7>.",
+   "2": "<7>Increases the chance for <6>Treasure <7>catches to be <6><l>GREAT <7>or <d><l>OUTSTANDING <7>by <a>4%<7>.",
+   "3": "<7>Increases the chance for <6>Treasure <7>catches to be <6><l>GREAT <7>or <d><l>OUTSTANDING <7>by <a>6%<7>.",
+   "4": "<7>Increases the chance for <6>Treasure <7>catches to be <6><l>GREAT <7>or <d><l>OUTSTANDING <7>by <a>8%<7>.",
+   "5": "<7>Increases the chance for <6>Treasure <7>catches to be <6><l>GREAT <7>or <d><l>OUTSTANDING <7>by <a>10%<7>.",
+   "6": "<7>Increases the chance for <6>Treasure <7>catches to be <6><l>GREAT <7>or <d><l>OUTSTANDING <7>by <a>12%<7>."
+  },
+  "sources": [
+   "<a>VI: <7>Fishing"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Fishing Weapon"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "BUG_BLENDER": {
+  "key": "BUG_BLENDER",
+  "neuId": "BUG_BLENDER",
+  "name": "Bug Blender",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+20 Farming Fortune <7>when <7>vacuuming <2> Pests<7>.",
+   "2": "<7>Grants <6>+40 Farming Fortune <7>when <7>vacuuming <2> Pests<7>.",
+   "3": "<7>Grants <6>+60 Farming Fortune <7>when <7>vacuuming <2> Pests<7>.",
+   "4": "<7>Grants <6>+80 Farming Fortune <7>when <7>vacuuming <2> Pests<7>.",
+   "5": "<7>Grants <6>+100 Farming Fortune <7>when <7>vacuuming <2> Pests<7>."
+  },
+  "sources": [
+   "<a>I: <7>Crafting",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Vacuum"
+  ],
+  "conflicts": []
+ },
+ "CASTER": {
+  "key": "CASTER",
+  "neuId": "CASTER",
+  "name": "Caster",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<a>5%<7> chance to not consume <7>bait.",
+   "2": "<a>10%<7> chance to not consume <7>bait.",
+   "3": "<a>15%<7> chance to not consume <7>bait.",
+   "4": "<a>20%<7> chance to not consume <7>bait.",
+   "5": "<a>25%<7> chance to not consume <7>bait.",
+   "6": "<a>30%<7> chance to not consume <7>bait."
+  },
+  "sources": [
+   "<a>VI: <7>Fishing"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Fishing Weapon"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   75
+  ]
+ },
+ "CAYENNE": {
+  "key": "CAYENNE",
+  "neuId": "CAYENNE",
+  "name": "Cayenne",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 4,
+  "levels": {
+   "4": "<7>Grants <c>+0.8 Health <7>and <f>+0.4 True <f>Defense <7>per digit in your <6>Accessory <6>Power<7>.",
+   "5": "<7>Grants <c>+1 Health <7>and <f>+0.5 True <f>Defense <7>per digit in your <6>Accessory <6>Power<7>."
+  },
+  "sources": [
+   "<a>IV-V: <7>Chili Pepper Collection"
+  ],
+  "appliedTo": [
+   "Gloves",
+   "Belt",
+   "Necklace",
+   "Bracelet",
+   "Cloak"
+  ],
+  "conflicts": [],
+  "costs": [
+   100,
+   100,
+   100,
+   100,
+   200
+  ]
+ },
+ "CHAMPION": {
+  "key": "CHAMPION",
+  "neuId": "CHAMPION",
+  "name": "Champion",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!",
+   "2": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!",
+   "3": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!",
+   "4": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!",
+   "5": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!",
+   "6": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!",
+   "7": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!",
+   "8": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!",
+   "9": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!",
+   "10": "<7>Gain <a>3% <7>extra Combat XP. The <7>2nd hit on a mob grants <6>+1.4 <6>coins <7>& <3>+7 <7>exp orbs.\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Champion cannot be combined!"
+  },
+  "sources": [
+   "<a>I: <7>Community Shop"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10
+  ]
+ },
+ "CHANCE": {
+  "key": "CHANCE",
+  "neuId": "CHANCE",
+  "name": "Chance",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases the chance of a <7>Monster dropping an item by <a>15%<7>.",
+   "2": "<7>Increases the chance of a <7>Monster dropping an item by <a>30%<7>.",
+   "3": "<7>Increases the chance of a <7>Monster dropping an item by <a>45%<7>.",
+   "4": "<7>Increases the chance of a <7>Monster dropping an item by <a>60%<7>.",
+   "5": "<7>Increases the chance of a <7>Monster dropping an item by <a>75%<7>."
+  },
+  "sources": [
+   "<a>V: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   15,
+   30,
+   45,
+   100,
+   200
+  ]
+ },
+ "CHARM": {
+  "key": "CHARM",
+  "neuId": "CHARM",
+  "name": "Charm",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases the chance to catch <7>higher-tiered <6>Trophies <7>by <a>2%<7>.",
+   "2": "<7>Increases the chance to catch <7>higher-tiered <6>Trophies <7>by <a>4%<7>.",
+   "3": "<7>Increases the chance to catch <7>higher-tiered <6>Trophies <7>by <a>6%<7>.",
+   "4": "<7>Increases the chance to catch <7>higher-tiered <6>Trophies <7>by <a>8%<7>.",
+   "5": "<7>Increases the chance to catch <7>higher-tiered <6>Trophies <7>by <a>10%<7>.",
+   "6": "<7>Increases the chance to catch <7>higher-tiered <6>Trophies <7>by <a>12%<7>."
+  },
+  "sources": [
+   "<a>I: <7>Fishing",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Chain of the End Times"
+  ],
+  "appliedTo": [
+   "Fishing Rod"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50
+  ]
+ },
+ "CLEAVE": {
+  "key": "CLEAVE",
+  "neuId": "CLEAVE",
+  "name": "Cleave",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Deals <a>5% <7>of your damage <7>dealt to other monsters within <a>3.3 <7>blocks of the target.",
+   "2": "<7>Deals <a>10% <7>of your damage <7>dealt to other monsters within <a>3.6 <7>blocks of the target.",
+   "3": "<7>Deals <a>15% <7>of your damage <7>dealt to other monsters within <a>3.9 <7>blocks of the target.",
+   "4": "<7>Deals <a>20% <7>of your damage <7>dealt to other monsters within <a>4.2 <7>blocks of the target.",
+   "5": "<7>Deals <a>25% <7>of your damage <7>dealt to other monsters within <a>4.5 <7>blocks of the target.",
+   "6": "<7>Deals <a>30% <7>of your damage <7>dealt to other monsters within <a>4.8 <7>blocks of the target."
+  },
+  "sources": [
+   "<a>VI: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   200
+  ]
+ },
+ "COMPACT": {
+  "key": "COMPACT",
+  "neuId": "COMPACT",
+  "name": "Compact",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!",
+   "2": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!",
+   "3": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!",
+   "4": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!",
+   "5": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!",
+   "6": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!",
+   "7": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!",
+   "8": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!",
+   "9": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!",
+   "10": "<7>Gain <3>+1☯ Mining Wisdom <7>and a <a>0.25% <7>chance to drop an <7>enchanted item.\n<8>Break 100 blocks for Tier II <8>Break 500 blocks for Tier III <8>Break 1,5k blocks for Tier IV <8>Break 5k blocks for Tier V <8>Break 15k blocks for Tier VI <8>Break 50k blocks for Tier VII <8>Break 150k blocks for Tier VIII <8>Break 500k blocks for Tier IX <8>Break 1M blocks for Tier X\n<e>▲ <7>Compact cannot be combined!"
+  },
+  "sources": [
+   "<a>I: <7>Community Shop"
+  ],
+  "appliedTo": [
+   "Pickaxe",
+   "Drill",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   25
+  ]
+ },
+ "CORRUPTION": {
+  "key": "CORRUPTION",
+  "neuId": "CORRUPTION",
+  "name": "Corruption",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Gain a <a>1% <7>chance to spawn a <7>Corrupted Sea Creature.",
+   "2": "<7>Gain a <a>2% <7>chance to spawn a <7>Corrupted Sea Creature.",
+   "3": "<7>Gain a <a>3% <7>chance to spawn a <7>Corrupted Sea Creature.",
+   "4": "<7>Gain a <a>4% <7>chance to spawn a <7>Corrupted Sea Creature.",
+   "5": "<7>Gain a <a>5% <7>chance to spawn a <7>Corrupted Sea Creature."
+  },
+  "sources": [
+   "<a>I: <7>Crafting Recipe",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Fishing Rod"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50
+  ]
+ },
+ "COUNTER_STRIKE": {
+  "key": "COUNTER_STRIKE",
+  "neuId": "COUNTER_STRIKE",
+  "name": "Counter-Strike",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 5,
+  "levels": {
+   "5": "<7>Gain <a>+10❈ Defense <7>for <a>7s <7>on the first hit from an <7>enemy."
+  },
+  "sources": [
+   "<a>V: <7>Dark Auction"
+  ],
+  "appliedTo": [
+   "Chestplate"
+  ],
+  "conflicts": [],
+  "costs": [
+   0,
+   0,
+   60,
+   80,
+   100
+  ]
+ },
+ "CRITICAL": {
+  "key": "CRITICAL",
+  "neuId": "CRITICAL",
+  "name": "Critical",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases <9>☠ Crit Damage <7>by <a>10%<7>.",
+   "2": "<7>Increases <9>☠ Crit Damage <7>by <a>20%<7>.",
+   "3": "<7>Increases <9>☠ Crit Damage <7>by <a>30%<7>.",
+   "4": "<7>Increases <9>☠ Crit Damage <7>by <a>40%<7>.",
+   "5": "<7>Increases <9>☠ Crit Damage <7>by <a>50%<7>.",
+   "6": "<7>Increases <9>☠ Crit Damage <7>by <a>70%<7>.",
+   "7": "<7>Increases <9>☠ Crit Damage <7>by <a>100%<7>."
+  },
+  "sources": [
+   "<a>VII: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   75,
+   200
+  ]
+ },
+ "CUBISM": {
+  "key": "CUBISM",
+  "neuId": "CUBISM",
+  "name": "Cubism",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt to <7>Magma Cubes, Slimes, and <7>Creepers by <a>5%<7>.",
+   "2": "<7>Increases damage dealt to <7>Magma Cubes, Slimes, and <7>Creepers by <a>10%<7>.",
+   "3": "<7>Increases damage dealt to <7>Magma Cubes, Slimes, and <7>Creepers by <a>15%<7>.",
+   "4": "<7>Increases damage dealt to <7>Creepers, Slimes, and <7>Magma Cubes by <a>20%<7>.",
+   "5": "<7>Increases damage dealt to <7>Slimes, Magma Cubes, and <7>Creepers by <a>30%<7>.",
+   "6": "<7>Increases damage dealt to <7>Magma Cubes, Slimes, and <7>Creepers by <a>40%<7>."
+  },
+  "sources": [
+   "<a>VI: <7>Experiments,"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Bow",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   200
+  ]
+ },
+ "CULTIVATING": {
+  "key": "CULTIVATING",
+  "neuId": "CULTIVATING",
+  "name": "Cultivating",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!",
+   "2": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!",
+   "3": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!",
+   "4": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!",
+   "5": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!",
+   "6": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!",
+   "7": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!",
+   "8": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!",
+   "9": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!",
+   "10": "<7>Gain <3>+1☯ Farming Wisdom <7>and <6>+2☘ Farming Fortune<7>.\n<8>Harvest 1k crops for Tier II <8>Harvest 5k crops for Tier III <8>Harvest 25k crops for Tier IV <8>Harvest 100k crops for Tier V <8>Harvest 300k crops for Tier VI <8>Harvest 1.5M crops for Tier VII <8>Harvest 5M crops for Tier VIII <8>Harvest 20M crops for Tier IX <8>Harvest 50M crops for Tier X\n<e>▲ <7>Cultivating cannot be combined!"
+  },
+  "sources": [
+   "<a>I: <7>Community Shop",
+   "<a>I: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": []
+ },
+ "DEDICATION": {
+  "key": "DEDICATION",
+  "neuId": "DEDICATION",
+  "name": "Dedication",
+  "ultimate": false,
+  "maxLevel": 4,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>0.5☘ Farming Fortune <7>for <7>crops, multiplied by your <a>Garden <7>milestone for that crop.\n<7>Can be applied to Axes and Hoes.",
+   "2": "<7>Grants <6>0.75☘ Farming Fortune <7>for <7>crops, multiplied by your <a>Garden <7>milestone for that crop.\n<7>Can be applied to Axes and Hoes.",
+   "3": "<7>Grants <6>1☘ Farming Fortune <7>for <7>crops, multiplied by your <a>Garden <7>milestone for that crop.\n<7>Can be applied to Axes and Hoes.",
+   "4": "<7>Grants <6>2☘ Farming Fortune <7>for <7>crops, multiplied by your <a>Garden <7>milestone for that crop.\n<7>Can be applied to Axes and Hoes."
+  },
+  "sources": [
+   "<a>I: <7>SkyMart",
+   "<a>I-IV: <7>Bazaar",
+   "<a>IV: <7>Librarian Garden Visitor",
+   "<a>IV: <7>Ravenous Rhino Garden Visitor"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30,
+   100
+  ]
+ },
+ "DELICATE": {
+  "key": "DELICATE",
+  "neuId": "DELICATE",
+  "name": "Delicate",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 5,
+  "levels": {
+   "5": "<7>Avoids breaking stems and baby <7>crops.\n<e>▲ <7>Delicate cannot be combined!"
+  },
+  "sources": [
+   "<a>V: <7>Anita"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": []
+ },
+ "DEPTH_STRIDER": {
+  "key": "DEPTH_STRIDER",
+  "neuId": "DEPTH_STRIDER",
+  "name": "Depth Strider",
+  "ultimate": false,
+  "maxLevel": 3,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Reduces how much you are slowed <7>in the water by <a>33%<7>.",
+   "2": "<7>Reduces how much you are slowed <7>in the water by <a>67%<7>.",
+   "3": "<7>Reduces how much you are slowed <7>in the water by <a>100%<7>."
+  },
+  "sources": [
+   "<a>I-III: <7>Enchantment Table,",
+   "<7>Pufferfish Collection"
+  ],
+  "appliedTo": [
+   "Boots"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30
+  ]
+ },
+ "DIVINE_GIFT": {
+  "key": "DIVINE_GIFT",
+  "neuId": "DIVINE_GIFT",
+  "name": "Divine Gift",
+  "ultimate": false,
+  "maxLevel": 3,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <b>+2 Magic Find.",
+   "2": "<7>Grants <b>+4 Magic Find.",
+   "3": "<7>Grants <b>+6 Magic Find."
+  },
+  "sources": [
+   "<a>I: <7>Regalia Room",
+   "<a>III-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Longsword",
+   "Bow",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   50,
+   100,
+   150
+  ]
+ },
+ "GRAVITY": {
+  "key": "GRAVITY",
+  "neuId": "DRAGON_HUNTER",
+  "name": "Gravity",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt to ✈ <7>Airborne mobs by <a>5%<7>.",
+   "2": "<7>Increases damage dealt to ✈ <7>Airborne mobs by <a>10%<7>.",
+   "3": "<7>Increases damage dealt to ✈ <7>Airborne mobs by <a>15%<7>.",
+   "4": "<7>Increases damage dealt to ✈ <7>Airborne mobs by <a>20%<7>.",
+   "5": "<7>Increases damage dealt to ✈ <7>Airborne mobs by <a>30%<7>.",
+   "6": "<7>Increases damage dealt to ✈ <7>Airborne mobs by <a>40%<7>."
+  },
+  "sources": [],
+  "appliedTo": [
+   "Sword",
+   "Longsword",
+   "Gauntlet",
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   50,
+   100,
+   150,
+   200,
+   250
+  ]
+ },
+ "EFFICIENCY": {
+  "key": "EFFICIENCY",
+  "neuId": "EFFICIENCY",
+  "name": "Efficiency",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases how quickly your tool <7>breaks blocks.",
+   "2": "<7>Increases how quickly your tool <7>breaks blocks.",
+   "3": "<7>Increases how quickly your tool <7>breaks blocks.",
+   "4": "<7>Increases how quickly your tool <7>breaks blocks.",
+   "5": "<7>Increases how quickly your tool <7>breaks blocks."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table,",
+   "<7>Redstone Dust Collection"
+  ],
+  "appliedTo": [
+   "Tools"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30
+  ]
+ },
+ "ENDER_SLAYER": {
+  "key": "ENDER_SLAYER",
+  "neuId": "ENDER_SLAYER",
+  "name": "Ender Slayer",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt to <5>⊙ Ender <7>mobs by <a>5%<7>.",
+   "2": "<7>Increases damage dealt to <5>⊙ Ender <7>mobs by <a>10%<7>.",
+   "3": "<7>Increases damage dealt to <5>⊙ Ender <7>mobs by <a>15%<7>.",
+   "4": "<7>Increases damage dealt to <5>⊙ Ender <7>mobs by <a>20%<7>.",
+   "5": "<7>Increases damage dealt to <5>⊙ Ender <7>mobs by <a>30%<7>.",
+   "6": "<7>Increases damage dealt to <5>⊙ Ender <7>mobs by <a>40%<7>.",
+   "7": "<7>Increases damage dealt to <5>⊙ Ender <7>mobs by <a>50%<7>."
+  },
+  "sources": [
+   "<a>VII: <7>Ender Slayer,",
+   "<7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   25,
+   30,
+   40,
+   75,
+   200
+  ]
+ },
+ "EXECUTE": {
+  "key": "EXECUTE",
+  "neuId": "EXECUTE",
+  "name": "Execute",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt by <a>0.2% <7>for each percent of health <7>missing on your target.",
+   "2": "<7>Increases damage dealt by <a>0.4% <7>for each percent of health <7>missing on your target.",
+   "3": "<7>Increases damage dealt by <a>0.6% <7>for each percent of health <7>missing on your target.",
+   "4": "<7>Increases damage dealt by <a>0.8% <7>for each percent of health <7>missing on your target.",
+   "5": "<7>Increases damage dealt by <a>1% <7>for each percent of health <7>missing on your target.",
+   "6": "<7>Increases damage dealt by <a>1.25% <7>for each percent of health <7>missing on your target."
+  },
+  "sources": [
+   "<a>VI: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Prosecute"
+  ],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   200
+  ]
+ },
+ "EXPERIENCE": {
+  "key": "EXPERIENCE",
+  "neuId": "EXPERIENCE",
+  "name": "Experience",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants a <a>12.5% <7>chance for mobs <7>and ores to drop double <7>experience.",
+   "2": "<7>Grants a <a>25% <7>chance for mobs <7>and ores to drop double <7>experience.",
+   "3": "<7>Grants a <a>37.5% <7>chance for <7>mobs and ores to drop double <7>experience.",
+   "4": "<7>Grants a <a>50% <7>chance for mobs <7>and ores to drop double <7>experience.",
+   "5": "<7>Grants a <a>62.5% <7>chance for <7>mobs and ores to drop double <7>experience."
+  },
+  "sources": [
+   "<a>V: <7>Frozen Alex"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Pickaxe",
+   "Longsword",
+   "Drill",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   15,
+   30,
+   45,
+   75
+  ]
+ },
+ "EXPERTISE": {
+  "key": "EXPERTISE",
+  "neuId": "EXPERTISE",
+  "name": "Expertise",
+  "ultimate": false,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <3>+0.6 Sea Creature <3>Chance <7>and <3>+2☯ Fishing <3>Wisdom <7>when killing Sea <7>Creatures.\n<8>Kill 50 Sea Creatures for Tier II <8>Kill 100 Sea Creatures for Tier III <8>Kill 250 Sea Creatures for Tier IV <8>Kill 500 Sea Creatures for Tier V <8>Kill 1k Sea Creatures for Tier VI <8>Kill 2,5k Sea Creatures for Tier VII <8>Kill 5,5k Sea Creatures for Tier VIII <8>Kill 10k Sea Creatures for Tier IX <8>Kill 15k Sea Creatures for Tier X\n<e>▲ <7>Expertise cannot be combined!"
+  },
+  "sources": [
+   "<a>I: <7>Community Shop"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Fishing Weapon"
+  ],
+  "conflicts": [],
+  "costs": [
+   25
+  ]
+ },
+ "FEAST": {
+  "key": "FEAST",
+  "neuId": "FEAST",
+  "name": "Feast",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <e>+2 Overbloom<7>.",
+   "2": "<7>Grants <e>+4 Overbloom<7>.",
+   "3": "<7>Grants <e>+6 Overbloom<7>.",
+   "4": "<7>Grants <e>+8 Overbloom<7>.",
+   "5": "<7>Grants <e>+10 Overbloom<7>."
+  },
+  "sources": [
+   "<a>I: <7>Grand Bakery",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": []
+ },
+ "FEATHER_FALLING": {
+  "key": "FEATHER_FALLING",
+  "neuId": "FEATHER_FALLING",
+  "name": "Feather Falling",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases how high you can fall <7>before taking fall damage by <a>1<7> and reduces fall damage by <a>5%<7>.",
+   "2": "<7>Increases how high you can fall <7>before taking fall damage by <a>2<7> and reduces fall damage by <a>10%<7>.",
+   "3": "<7>Increases how high you can fall <7>before taking fall damage by <a>3<7> and reduces fall damage by <a>15%<7>.",
+   "4": "<7>Increases how high you can fall <7>before taking fall damage by <a>4<7> and reduces fall damage by <a>20%<7>.",
+   "5": "<7>Increases how high you can fall <7>before taking fall damage by <a>5<7> and reduces fall damage by <a>25%<7>.",
+   "6": "<7>Increases how high you can fall <7>before taking fall damage by <a>6<7> and reduces fall damage by <a>30%<7>.",
+   "7": "<7>Increases how high you can fall <7>before taking fall damage by <a>7<7> and reduces fall damage by <a>35%<7>.",
+   "8": "<7>Increases how high you can fall <7>before taking fall damage by <a>8<7> and reduces fall damage by <a>40%<7>.",
+   "9": "<7>Increases how high you can fall <7>before taking fall damage by <a>9<7> and reduces fall damage by <a>45%<7>.",
+   "10": "<7>Increases how high you can fall <7>before taking fall damage by <a>10<7> and reduces fall damage <7>by <a>50%<7>."
+  },
+  "sources": [
+   "<a>VI-X: <7>Dungeon"
+  ],
+  "appliedTo": [
+   "Boots"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   60,
+   80,
+   100,
+   120,
+   140
+  ]
+ },
+ "FEROCIOUS_MANA": {
+  "key": "FEROCIOUS_MANA",
+  "neuId": "FEROCIOUS_MANA",
+  "name": "Vivacious Vitality",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Convert <a>1% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed).",
+   "2": "<7>Convert <a>2% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed).",
+   "3": "<7>Convert <a>3% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed).",
+   "4": "<7>Convert <a>4% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed).",
+   "5": "<7>Convert <a>5% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed).",
+   "6": "<7>Convert <a>6% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed).",
+   "7": "<7>Convert <a>7% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed).",
+   "8": "<7>Convert <a>8% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed).",
+   "9": "<7>Convert <a>9% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed).",
+   "10": "<7>Convert <a>10% <7>of <4> Vitality <7>used as <e> <e>Attack Speed <7>for <a>10s<7>. <8>(Max 5 <8>Attack Speed)."
+  },
+  "sources": [
+   "<a>I-X: <7>Kuudra",
+   "<a>I-X: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Strong Vitality",
+   "Vampiric Vitality",
+   "Hardened Vitality"
+  ],
+  "costs": [
+   30,
+   45,
+   60,
+   75,
+   90,
+   180,
+   240,
+   300,
+   360,
+   420
+  ]
+ },
+ "FIRE_ASPECT": {
+  "key": "FIRE_ASPECT",
+  "neuId": "FIRE_ASPECT",
+  "name": "Fire Aspect",
+  "ultimate": false,
+  "maxLevel": 3,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Ignites your enemies for <a>3s<7>, <7>dealing <a>3% <7>of your damage <7>per second.",
+   "2": "<7>Ignites your enemies for <a>4s<7>, <7>dealing <a>6% <7>of your damage <7>per second.",
+   "3": "<7>Ignites your enemies for <a>4s<7>, <7>dealing <a>9% <7>of your damage <7>per second."
+  },
+  "sources": [
+   "<a>III: <7>Slayer"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   15,
+   30
+  ]
+ },
+ "FIRE_PROTECTION": {
+  "key": "FIRE_PROTECTION",
+  "neuId": "FIRE_PROTECTION",
+  "name": "Fire Protection",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <f>+2 True Defense <7>against <7>fire and lava.",
+   "2": "<7>Grants <f>+4 True Defense <7>against <7>fire and lava.",
+   "3": "<7>Grants <f>+6 True Defense <7>against <7>fire and lava.",
+   "4": "<7>Grants <f>+8 True Defense <7>against <7>fire and lava.",
+   "5": "<7>Grants <f>+10 True Defense <7>against <7>fire and lava.",
+   "6": "<7>Grants <f>+12 True Defense <7>against <7>fire and lava.",
+   "7": "<7>Grants <f>+14 True Defense <7>against <f>ire and lava."
+  },
+  "sources": [
+   "<a>VII<7>: Experiments,",
+   "<a>VII<7>: Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Protection",
+   "Blast Protection",
+   "Projectile Protection"
+  ],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   100,
+   200
+  ]
+ },
+ "FIRST_STRIKE": {
+  "key": "FIRST_STRIKE",
+  "neuId": "FIRST_STRIKE",
+  "name": "First Strike",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases melee damage dealt by <a>25% <7>for the first hit on a <7>mob.",
+   "2": "<7>Increases melee damage dealt by <a>50% <7>for the first hit on a <7>mob.",
+   "3": "<7>Increases melee damage dealt by <a>75% <7>for the first hit on a <7>mob.",
+   "4": "<7>Increases melee damage dealt by <a>100% <7>for the first hit on a <7>mob.",
+   "5": "<7>Increases melee damage dealt by <a>125% <7>for the first hit on a <7>mob."
+  },
+  "sources": [
+   "<a>V: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Triple-Strike"
+  ],
+  "costs": [
+   20,
+   30,
+   40,
+   75,
+   200
+  ]
+ },
+ "FLAME": {
+  "key": "FLAME",
+  "neuId": "FLAME",
+  "name": "Flame",
+  "ultimate": false,
+  "maxLevel": 2,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Arrows ignite your enemies for <a>3s<7>.",
+   "2": "<7>Arrows ignite your enemies for <a>4s<7>."
+  },
+  "sources": [
+   "<a>I-II: <7>Enchantment Table,",
+   "<7>Blaze Rod Collection"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   25,
+   50
+  ]
+ },
+ "FOREST_PLEDGE": {
+  "key": "FOREST_PLEDGE",
+  "neuId": "FOREST_PLEDGE",
+  "name": "Forest Pledge",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 3,
+  "levels": {
+   "3": "<7>Grants <6>+6☘ Foraging Fortune<7>.",
+   "4": "<7>Grants <6>+8☘ Foraging Fortune<7>.",
+   "5": "<7>Grants <6>+10☘ Foraging Fortune<7>."
+  },
+  "sources": [],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "FORTUNE": {
+  "key": "FORTUNE",
+  "neuId": "FORTUNE",
+  "name": "Fortune",
+  "ultimate": false,
+  "maxLevel": 4,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>+10 <6>☘ Mining <6>Fortune<7>, which increases your <7>chance for multiple drops.",
+   "2": "<7>Grants <a>+20 <6>☘ Mining <6>Fortune<7>, which increases your <7>chance for multiple drops.",
+   "3": "<7>Grants <a>+30 <6>☘ Mining <6>Fortune<7>, which increases your <7>chance for multiple drops.",
+   "4": "<7>Grants <a>+45 <6>☘ Mining <6>Fortune<7>, which increases your <7>chance for multiple drops."
+  },
+  "sources": [
+   "<a>IV: <7>Experiments,",
+   "<7>Crystal Nucleus"
+  ],
+  "appliedTo": [
+   "Pickaxe",
+   "Drill",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Silk Touch"
+  ],
+  "costs": [
+   15,
+   30,
+   45
+  ]
+ },
+ "FRAIL": {
+  "key": "FRAIL",
+  "neuId": "FRAIL",
+  "name": "Frail",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Sea creatures start with <a>2.5% <7>reduced health.",
+   "2": "<7>Sea creatures start with <a>5% <7>reduced health.",
+   "3": "<7>Sea creatures start with <a>7.5% <7>reduced health.",
+   "4": "<7>Sea creatures start with <a>10% <7>reduced health.",
+   "5": "<7>Sea creatures start with <a>12.5% <7>reduced health.",
+   "6": "<7>Sea creatures start with <a>15% <7>reduced health.",
+   "7": "<7>Sea creatures start with <a>17.5% <7>reduced health."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table",
+   "<a>VI: <7>Fishing, Bazaar",
+   "<a>VII: <6>Severed Pincer"
+  ],
+  "appliedTo": [
+   "Fishing Rod"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   75
+  ]
+ },
+ "GIANT_KILLER": {
+  "key": "GIANT_KILLER",
+  "neuId": "GIANT_KILLER",
+  "name": "Giant Killer",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt by <a>0.1% <7>for each percent of extra <7>health that your target has <7>above you up to <a>5%<7>.",
+   "2": "<7>Increases damage dealt by <a>0.2% <7>for each percent of extra <7>health that your target has <7>above you up to <a>10%<7>.",
+   "3": "<7>Increases damage dealt by <a>0.3% <7>for each percent of extra <7>health that your target has <7>above you up to <a>15%<7>.",
+   "4": "<7>Increases damage dealt by <a>0.4% <7>for each percent of extra <7>health that your target has <7>above you up to <a>20%<7>.",
+   "5": "<7>Increases damage dealt by <a>0.6% <7>for each percent of extra <7>health that your target has <7>above you up to <a>30%<7>.",
+   "6": "<7>Increases damage dealt by <a>0.9% <7>for each percent of extra <7>health that your target has <7>above you up to <a>45%<7>.",
+   "7": "<7>Increases damage dealt by <a>1.2% <7>for each percent of extra <7>health that your target has <7>above you up to <a>65%<7>."
+  },
+  "sources": [
+   "<a>VII: <7>Experiments,",
+   "<7>Scorpius"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Titan Killer"
+  ],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   100,
+   200
+  ]
+ },
+ "GREAT_SPOOK": {
+  "key": "GREAT_SPOOK",
+  "neuId": "GREAT_SPOOK",
+  "name": "Great Spook",
+  "ultimate": false,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>+1 <5>Fear <7>on <5>Great Spook Armor<7>."
+  },
+  "sources": [],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "GREEN_THUMB": {
+  "key": "GREEN_THUMB",
+  "neuId": "GREEN_THUMB",
+  "name": "Green Thumb",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>0.05☘ Farming Fortune <7>per unique visitor served.\n<7>Can be applied to Equipment.",
+   "2": "<7>Grants <6>0.1☘ Farming Fortune <7>per unique visitor served.\n<7>Can be applied to Equipment.",
+   "3": "<7>Grants <6>0.15☘ Farming Fortune <7>per unique visitor served.\n<7>Can be applied to Equipment.",
+   "4": "<7>Grants <6>0.2☘ Farming Fortune <7>per unique visitor served.\n<7>Can be applied to Equipment.",
+   "5": "<7>Grants <6>0.25☘ Farming Fortune <7>per unique visitor served.\n<7>Can be applied to Equipment."
+  },
+  "sources": [
+   "<a>I-V: <7>SkyMart"
+  ],
+  "appliedTo": [
+   "Gloves",
+   "Belt",
+   "Necklace",
+   "Bracelet",
+   "Cloak"
+  ],
+  "conflicts": []
+ },
+ "GROWTH": {
+  "key": "GROWTH",
+  "neuId": "GROWTH",
+  "name": "Growth",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>+15 <c>❤ Health<7>.",
+   "2": "<7>Grants <a>+30 <c>❤ Health<7>.",
+   "3": "<7>Grants <a>+45 <c>❤ Health<7>.",
+   "4": "<7>Grants <a>+60 <c>❤ Health<7>.",
+   "5": "<7>Grants <a>+75 <c>❤ Health<7>.",
+   "6": "<7>Grants <a>+90 <c>❤ Health<7>.",
+   "7": "<7>Grants <a>+105 <c>❤ Health<7>."
+  },
+  "sources": [
+   "<a>VII: <7>Experiments",
+   "<7>Scorpius"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   95,
+   199
+  ]
+ },
+ "HARDENED_MANA": {
+  "key": "HARDENED_MANA",
+  "neuId": "HARDENED_MANA",
+  "name": "Hardened Vitality",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Convert <a>4% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense).",
+   "2": "<7>Convert <a>8% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense).",
+   "3": "<7>Convert <a>12% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense).",
+   "4": "<7>Convert <a>16% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense).",
+   "5": "<7>Convert <a>20% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense).",
+   "6": "<7>Convert <a>24% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense).",
+   "7": "<7>Convert <a>28% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense).",
+   "8": "<7>Convert <a>32% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense).",
+   "9": "<7>Convert <a>36% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense).",
+   "10": "<7>Convert <a>40% <7>of <4> Vitality <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 25 Defense)."
+  },
+  "sources": [
+   "<a>I-X: <7>Kuudra",
+   "<a>I-X: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Strong Vitality",
+   "Vivacious Vitality",
+   "Vampiric Vitality"
+  ],
+  "costs": [
+   30,
+   45,
+   60,
+   75,
+   90,
+   180,
+   240,
+   300,
+   360,
+   420
+  ]
+ },
+ "HARVESTING": {
+  "key": "HARVESTING",
+  "neuId": "HARVESTING",
+  "name": "Harvesting",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>+12.5 <6>☘ Farming <6>Fortune<7>, which increases your <7>chance for multiple crops.",
+   "2": "<7>Grants <a>+25 <6>☘ Farming <6>Fortune<7>, which increases your <7>chance for multiple crops.",
+   "3": "<7>Grants <a>+37.5 <6>☘ Farming <6>Fortune<7>, which increases your <7>chance for multiple crops.",
+   "4": "<7>Grants <a>+50 <6>☘ Farming <6>Fortune<7>, which increases your <7>chance for multiple crops.",
+   "5": "<7>Grants <a>+62.5 <6>☘ Farming <6>Fortune<7>, which increases your <7>chance for multiple crops.",
+   "6": "<7>Grants <a>+75 <6>☘ Farming <6>Fortune<7>, which increases your <7>chance for multiple crops."
+  },
+  "sources": [
+   "<a>VI: <7>Shiny Pigs"
+  ],
+  "appliedTo": [
+   "Hoe"
+  ],
+  "conflicts": [],
+  "costs": [
+   5,
+   10,
+   15,
+   20,
+   25
+  ]
+ },
+ "HECATOMB": {
+  "key": "HECATOMB",
+  "neuId": "HECATOMB",
+  "name": "Hecatomb",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!",
+   "2": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!",
+   "3": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!",
+   "4": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!",
+   "5": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!",
+   "6": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!",
+   "7": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!",
+   "8": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!",
+   "9": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!",
+   "10": "<7>Gain <a>+0.28% <c>Catacombs <7>XP & <a>+0.56% <3>Class <7>XP, doubled on <b><l>S+ <7>runs. <7>Grants <c>+2.6❤ <7>per 10 <c>Catacombs <7>levels.\n<8>Complete 2 S runs for Tier II <8>Complete 5 S runs for Tier III <8>Complete 10 S runs for Tier IV <8>Complete 20 S runs for Tier V <8>Complete 30 S runs for Tier VI <8>Complete 40 S runs for Tier VII <8>Complete 60 S runs for Tier VIII <8>Complete 80 S runs for Tier IX <8>Complete 100 S runs for Tier X\n<e>▲ <7>Hecatomb cannot be combined!"
+  },
+  "sources": [
+   "<a>I: <7>Community Shop"
+  ],
+  "appliedTo": [
+   "Helmet"
+  ],
+  "conflicts": [],
+  "costs": [
+   25
+  ]
+ },
+ "ICE_COLD": {
+  "key": "ICE_COLD",
+  "neuId": "ICE_COLD",
+  "name": "Ice Cold",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <b>+1❄ Cold Resistance<7>.",
+   "2": "<7>Grants <b>+2❄ Cold Resistance<7>.",
+   "3": "<7>Grants <b>+3❄ Cold Resistance<7>.",
+   "4": "<7>Grants <b>+4❄ Cold Resistance<7>.",
+   "5": "<7>Grants <b>+5❄ Cold Resistance<7>."
+  },
+  "sources": [
+   "<a>I: <b>Frozen Corpses"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [],
+  "costs": [
+   27,
+   41,
+   55,
+   68,
+   82
+  ]
+ },
+ "IMPALING": {
+  "key": "IMPALING",
+  "neuId": "IMPALING",
+  "name": "Impaling",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt to <9>⚓ <9>Aquatic<7> mobs by <a>5%<7>.",
+   "2": "<7>Increases damage dealt to <9>⚓ <9>Aquatic<7> mobs by <a>10%<7>.",
+   "3": "<7>Increases damage dealt to <9>⚓ <9>Aquatic<7> mobs by <a>15%<7>.",
+   "4": "<7>Increases damage dealt to <9>⚓ <9>Aquatic<7> mobs by <a>20%<7>.",
+   "5": "<7>Increases damage dealt to <9>⚓ <9>Aquatic<7> mobs by <a>30%<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet",
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   30,
+   40,
+   50
+  ]
+ },
+ "INFINITE_QUIVER": {
+  "key": "INFINITE_QUIVER",
+  "neuId": "INFINITE_QUIVER",
+  "name": "Infinite Quiver",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Saves arrows <a>3%<7> of the time <7>when you fire your bow.",
+   "2": "<7>Saves arrows <a>6%<7> of the time <7>when you fire your bow.",
+   "3": "<7>Saves arrows <a>9%<7> of the time <7>when you fire your bow.",
+   "4": "<7>Saves arrows <a>12%<7> of the time <7>when you fire your bow.",
+   "5": "<7>Saves arrows <a>15%<7> of the time <7>when you fire your bow.",
+   "6": "<7>Saves arrows <a>18%<7> of the time <7>when you fire your bow.",
+   "7": "<7>Saves arrows <a>21%<7> of the time <7>when you fire your bow.",
+   "8": "<7>Saves arrows <a>24%<7> of the time <7>when you fire your bow.",
+   "9": "<7>Saves arrows <a>27%<7> of the time <7>when you fire your bow.",
+   "10": "<7>Saves arrows <a>30%<7> of the time <7>when you fire your bow."
+  },
+  "sources": [
+   "<a>X: <7>Dungeon"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   60,
+   80,
+   100,
+   120,
+   140
+  ]
+ },
+ "KARMA": {
+  "key": "KARMA",
+  "neuId": "KARMA",
+  "name": "Karma",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants a <a>1% <7>chance for <2>Tree Gifts <7>to contain double loot.",
+   "2": "<7>Grants a <a>2% <7>chance for <2>Tree Gifts <7>to contain double loot.",
+   "3": "<7>Grants a <a>3% <7>chance for <2>Tree Gifts <7>to contain double loot.",
+   "4": "<7>Grants a <a>4% <7>chance for <2>Tree Gifts <7>to contain double loot.",
+   "5": "<7>Grants a <a>5% <7>chance for <2>Tree Gifts <7>to contain double loot."
+  },
+  "sources": [
+   "<a>I: <7>Tree Gifts",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <7>Distant Echo"
+  ],
+  "appliedTo": [
+   "Axe"
+  ],
+  "conflicts": []
+ },
+ "KNOCKBACK": {
+  "key": "KNOCKBACK",
+  "neuId": "KNOCKBACK",
+  "name": "Knockback",
+  "ultimate": false,
+  "maxLevel": 2,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases knockback by <a>3 <7>blocks.",
+   "2": "<7>Increases knockback by <a>6 <7>blocks."
+  },
+  "sources": [
+   "<a>I-II: <7>Enchantment Table,",
+   "<7>Slimeball Collection"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   15,
+   30
+  ]
+ },
+ "LAPIDARY": {
+  "key": "LAPIDARY",
+  "neuId": "LAPIDARY",
+  "name": "Lapidary",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+10☘ Gemstone Fortune <7>and <6>+20⸕ Mining Speed <7>while mining <7>Gemstones.",
+   "2": "<7>Grants <6>+20☘ Gemstone Fortune <7>and <6>+40⸕ Mining Speed <7>while mining <7>Gemstones.",
+   "3": "<7>Grants <6>+30☘ Gemstone Fortune <7>and <6>+60⸕ Mining Speed <7>while mining <7>Gemstones.",
+   "4": "<7>Grants <6>+40☘ Gemstone Fortune <7>and <6>+80⸕ Mining Speed <7>while mining <7>Gemstones.",
+   "5": "<7>Grants <6>+50☘ Gemstone Fortune <7>and <6>+100⸕ Mining Speed <7>while mining <7>Gemstones."
+  },
+  "sources": [
+   "<a>I-V: <7>Crystal Nucleus,",
+   "<7>Bazaar"
+  ],
+  "appliedTo": [
+   "Pickaxe",
+   "Drill",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   25,
+   50,
+   100,
+   150,
+   200
+  ]
+ },
+ "LETHALITY": {
+  "key": "LETHALITY",
+  "neuId": "LETHALITY",
+  "name": "Lethality",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Reduces the <a>❈ Defense <7>of <7>your target by <a>1.2% <7>for <6>4s <7>each time you hit them with <7>melee. Stacks up to <a>4 <7>times.",
+   "2": "<7>Reduces the <a>❈ Defense <7>of <7>your target by <a>2.4% <7>for <6>4s <7>each time you hit them with <7>melee. Stacks up to <a>4 <7>times.",
+   "3": "<7>Reduces the <a>❈ Defense <7>of <7>your target by <a>3.6% <7>for <6>4s <7>each time you hit them with <7>melee. Stacks up to <a>4 <7>times.",
+   "4": "<7>Reduces the <a>❈ Defense <7>of <7>your target by <a>4.8% <7>for <6>4s <7>each time you hit them with <7>melee. Stacks up to <a>4 <7>times.",
+   "5": "<7>Reduces the <a>❈ Defense <7>of <7>your target by <a>6% <7>for <6>4s <7>each time you hit them with <7>melee. Stacks up to <a>4 <7>times.",
+   "6": "<7>Reduces the <a>❈ Defense <7>of <7>your target by <a>9% <7>for <6>4s <7>each time you hit them with <7>melee. Stacks up to <a>4 <7>times."
+  },
+  "sources": [
+   "<a>VI: <7>Dungeons,",
+   "<7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   200
+  ]
+ },
+ "LIFE_STEAL": {
+  "key": "LIFE_STEAL",
+  "neuId": "LIFE_STEAL",
+  "name": "Life Steal",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Heal <c>2.4❤ <7>every time you hit a mob.",
+   "2": "<7>Heal <c>4.8❤ <7>every time you hit a mob.",
+   "3": "<7>Heal <c>7.2❤ <7>every time you hit a mob.",
+   "4": "<7>Heal <c>9.6❤ <7>every time you hit a mob.",
+   "5": "<7>Heal <c>12❤ <7>every time you hit a mob."
+  },
+  "sources": [
+   "<a>I-III: <7>Enchantment Table",
+   "<a>IV: <7>Spooky Festival",
+   "<a>IV-V: <7>Experiments",
+   "<a>IV-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Drain",
+   "Mana Steal"
+  ],
+  "costs": [
+   20,
+   25,
+   30,
+   50,
+   200
+  ]
+ },
+ "LOOTING": {
+  "key": "LOOTING",
+  "neuId": "LOOTING",
+  "name": "Looting",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases the chance of a <7>Monster dropping an item by <a>15%<7>.",
+   "2": "<7>Increases the chance of a <7>Monster dropping an item by <a>30%<7>.",
+   "3": "<7>Increases the chance of a <7>Monster dropping an item by <a>45%<7>.",
+   "4": "<7>Increases the chance of a <7>Monster dropping an item by <a>60%<7>.",
+   "5": "<7>Increases the chance of a <7>Monster dropping an item by <a>75%<7>."
+  },
+  "sources": [
+   "<a>V: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   15,
+   30,
+   45,
+   100,
+   200
+  ]
+ },
+ "LUCK": {
+  "key": "LUCK",
+  "neuId": "LUCK",
+  "name": "Luck",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases the chance for <7>Monsters to drop their armor by <a>5%",
+   "2": "<7>Increases the chance for <7>Monsters to drop their armor by <a>10%",
+   "3": "<7>Increases the chance for <7>Monsters to drop their armor by <a>15%",
+   "4": "<7>Increases the chance for <7>Monsters to drop their armor by <a>20%",
+   "5": "<7>Increases the chance for <7>Monsters to drop their armor by <a>25%",
+   "6": "<7>Increases the chance for <7>Monsters to drop their armor by <a>30%",
+   "7": "<7>Increases the chance for <7>Monsters to drop their armor by <a>35%"
+  },
+  "sources": [
+   "<a>VII: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   75,
+   200
+  ]
+ },
+ "LUCK_OF_THE_SEA": {
+  "key": "LUCK_OF_THE_SEA",
+  "neuId": "LUCK_OF_THE_SEA",
+  "name": "Luck of the Sea",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+0.5 Treasure Chance<7>, which <7>increases the chance of fishing <7>treasure.",
+   "2": "<7>Grants <6>+1 Treasure Chance<7>, which <7>increases the chance of fishing <7>treasure.",
+   "3": "<7>Grants <6>+1.5 Treasure Chance<7>, which <7>increases the chance of fishing <7>treasure.",
+   "4": "<7>Grants <6>+2 Treasure Chance<7>, which <7>increases the chance of fishing <7>treasure.",
+   "5": "<7>Grants <6>+2.5 Treasure Chance<7>, which <7>increases the chance of fishing <7>treasure.",
+   "6": "<7>Grants <6>+3 Treasure Chance<7>, which <7>increases the chance of fishing <7>treasure.",
+   "7": "<7>Grants <6>+3.5 Treasure Chance<7>, which <7>increases the chance of fishing <7>treasure."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table",
+   "<a>VI: <7>Bazaar, Junker Joel",
+   "<a>VII: <6>Golden Bottle Cap"
+  ],
+  "appliedTo": [
+   "Fishing Rod"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   50
+  ]
+ },
+ "LURE": {
+  "key": "LURE",
+  "neuId": "LURE",
+  "name": "Lure",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Shortens the maximum time it <7>takes to catch something by <7><a>5%<7>.",
+   "2": "<7>Shortens the maximum time it <7>takes to catch something by <a>10%<7>.",
+   "3": "<7>Shortens the maximum time it <7>takes to catch something by <a>15%<7>.",
+   "4": "<7>Shortens the maximum time it <7>takes to catch something by <a>20%<7>.",
+   "5": "<7>Shortens the maximum time it <7>takes to catch something by <a>25%<7>.",
+   "6": "<7>Shortens the maximum time it <7>takes to catch something by <a>30%<7>."
+  },
+  "sources": [
+   "<a>VI: <7>Fishing"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Fishing Weapon"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   50
+  ]
+ },
+ "MAGMARIZER": {
+  "key": "MAGMARIZER",
+  "neuId": "MAGMARIZER",
+  "name": "Pyroclasm",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt to <c>♆ <c>Magmatic <7>mobs by <a>10%<7>.",
+   "2": "<7>Increases damage dealt to <c>♆ <c>Magmatic <7>mobs by <a>20%<7>.",
+   "3": "<7>Increases damage dealt to <c>♆ <c>Magmatic <7>mobs by <a>30%<7>.",
+   "4": "<7>Increases damage dealt to <c>♆ <c>Magmatic <7>mobs by <a>40%<7>.",
+   "5": "<7>Increases damage dealt to <c>♆ <c>Magmatic <7>mobs by <a>60%<7>.",
+   "6": "<7>Increases damage dealt to <c>♆ <c>Magmatic <7>mobs by <a>80%<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table",
+   "<a>VI: <7>Fishing, Bazaar"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Sword",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": []
+ },
+ "MAGNET": {
+  "key": "MAGNET",
+  "neuId": "MAGNET",
+  "name": "Magnet",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>1 <7>additional <7>experience orb every time you <7>successfully catch a fish.",
+   "2": "<7>Grants <a>2 <7>additional <7>experience orb every time you <7>successfully catch a fish.",
+   "3": "<7>Grants <a>3 <7>additional <7>experience orb every time you <7>successfully catch a fish.",
+   "4": "<7>Grants <a>4 <7>additional <7>experience orbs every time you <7>successfully catch a fish.",
+   "5": "<7>Grants <a>5 <7>additional <7>experience orbs every time you <7>successfully catch a fish.",
+   "6": "<7>Grants <a>6 <7>additional <7>experience orbs every time you <7>successfully catch a fish."
+  },
+  "sources": [
+   "<a>VI: <7>Fishing"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Fishing Weapon"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   75
+  ]
+ },
+ "MANA_STEAL": {
+  "key": "MANA_STEAL",
+  "neuId": "MANA_STEAL",
+  "name": "Mana Steal",
+  "ultimate": false,
+  "maxLevel": 3,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Regain <b>0.25% <7>of your mana on <7>hit.",
+   "2": "<7>Regain <b>0.5% <7>of your mana on <7>hit.",
+   "3": "<7>Regain <b>0.75% <7>of your mana on <7>hit."
+  },
+  "sources": [
+   "<a>I-III: <7>Enderman Slayer"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Life Steal",
+   "Drain"
+  ],
+  "costs": [
+   20,
+   25,
+   30
+  ]
+ },
+ "MANA_VAMPIRE": {
+  "key": "MANA_VAMPIRE",
+  "neuId": "MANA_VAMPIRE",
+  "name": "Vampiric Vitality",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Heal for <c>0.6❤ <7>per <4> Vitality <7>used.",
+   "2": "<7>Heal for <c>0.6❤ <7>per <4> Vitality <7>used.",
+   "3": "<7>Heal for <c>0.7❤ <7>per <4> Vitality <7>used.",
+   "4": "<7>Heal for <c>0.7❤ <7>per <4> Vitality <7>used.",
+   "5": "<7>Heal for <c>0.8❤ <7>per <4> Vitality <7>used.",
+   "6": "<7>Heal for <c>0.8❤ <7>per <4> Vitality <7>used.",
+   "7": "<7>Heal for <c>0.9❤ <7>per <4> Vitality <7>used.",
+   "8": "<7>Heal for <c>0.9❤ <7>per <4> Vitality <7>used.",
+   "9": "<7>Heal for <c>0.9❤ <7>per <4> Vitality <7>used.",
+   "10": "<7>Heal for <c>1❤ <7>per <4> Vitality <7>used."
+  },
+  "sources": [
+   "<a>I-X: <7>Kuudra",
+   "<a>I-X: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Strong Vitality",
+   "Vivacious Vitality",
+   "Hardened Vitality"
+  ],
+  "costs": [
+   30,
+   45,
+   60,
+   75,
+   90,
+   180,
+   240,
+   300,
+   360,
+   420
+  ]
+ },
+ "OVERLOAD": {
+  "key": "OVERLOAD",
+  "neuId": "OVERLOAD",
+  "name": "Overload",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases <9>☠ Crit Damage <7>by <a>1%<7> and <9>☣ Crit Chance <7>by <a>1%<7>. Having a Critical chance <7>above <9>100% <7>grants a chance <7>to perform a Mega Critical Hit <7>dealing <9>10% <7>extra damage.",
+   "2": "<7>Increases <9>☠ Crit Damage <7>by <a>2%<7> and <9>☣ Crit Chance <7>by <a>2%<7>. Having a Critical chance <7>above <9>100% <7>grants a chance <7>to perform a Mega Critical Hit <7>dealing <9>20% <7>extra damage.",
+   "3": "<7>Increases <9>☠ Crit Damage <7>by <a>3%<7> and <9>☣ Crit Chance <7>by <a>3%<7>. Having a Critical chance <7>above <9>100% <7>grants a chance <7>to perform a Mega Critical Hit <7>dealing <9>30% <7>extra damage.",
+   "4": "<7>Increases <9>☠ Crit Damage <7>by <a>4%<7> and <9>☣ Crit Chance <7>by <a>4%<7>. Having a Critical chance <7>above <9>100% <7>grants a chance <7>to perform a Mega Critical Hit <7>dealing <9>40% <7>extra damage.",
+   "5": "<7>Increases <9>☠ Crit Damage <7>by <a>5%<7> and <9>☣ Crit Chance <7>by <a>5%<7>. Having a Critical chance <7>above <9>100% <7>grants a chance <7>to perform a Mega Critical Hit <7>dealing <9>50% <7>extra damage."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeon"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   50,
+   100,
+   150,
+   200,
+   250
+  ]
+ },
+ "PALEONTOLOGIST": {
+  "key": "PALEONTOLOGIST",
+  "neuId": "PALEONTOLOGIST",
+  "name": "Paleontologist",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases chances of finding a <9>Suspicious Scrap <7>when mining in <b>Glacite Mineshafts <7>by <a>2.5%<7>.",
+   "2": "<7>Increases chances of finding a <9>Suspicious Scrap <7>when mining in <b>Glacite Mineshafts <7>by <a>5%<7>.",
+   "3": "<7>Increases chances of finding a <9>Suspicious Scrap <7>when mining in <b>Glacite Mineshafts <7>by <a>7.5%<7>.",
+   "4": "<7>Increases chances of finding a <9>Suspicious Scrap <7>when mining in <b>Glacite Mineshafts <7>by <a>10%<7>.",
+   "5": "<7>Increases chances of finding a <9>Suspicious Scrap <7>when mining in <b>Glacite Mineshafts <7>by <a>12.5%<7>."
+  },
+  "sources": [
+   "<a>I: <b>Frozen Corpses<7>,",
+   "<6>Fossil Excavator"
+  ],
+  "appliedTo": [
+   "Drill",
+   "Gauntlet",
+   "Pickaxe"
+  ],
+  "conflicts": [],
+  "costs": [
+   23,
+   45,
+   91,
+   136,
+   179
+  ]
+ },
+ "PESTERMINATOR": {
+  "key": "PESTERMINATOR",
+  "neuId": "PESTERMINATOR",
+  "name": "Pesterminator",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+2 Farming Fortune <7>and <2>+1 Bonus Pest Chance<7>, which <7>increases your chance to spawn <7>bonus <2> Pests <7>on <a>The Garden<7>.",
+   "2": "<7>Grants <6>+4 Farming Fortune <7>and <2>+2 Bonus Pest Chance<7>, which <7>increases your chance to spawn <7>bonus <2>Pests <7>on <a>The Garden<7>.",
+   "3": "<7>Grants <6>+6 Farming Fortune <7>and <2>+3 Bonus Pest Chance<7>, which <7>increases your chance to spawn <7>bonus <2>Pests <7>on <a>The Garden<7>.",
+   "4": "<7>Grants <6>+8 Farming Fortune <7>and <2>+4 Bonus Pest Chance<7>, which <7>increases your chance to spawn <7>bonus <2>Pests <7>on <a>The Garden<7>.",
+   "5": "<7>Grants <6>+10 Farming Fortune <7>and <2>+5 Bonus Pest Chance<7>, which <7>increases your chance to spawn <7>bonus <2>Pests <7>on <a>The Garden<7>.",
+   "6": "<7>Grants <6>+12 Farming Fortune <7>and <2>+6 Bonus Pest Chance<7>, which <7>increases your chance to spawn <7>bonus <2>Pests <7>on <a>The Garden<7>."
+  },
+  "sources": [
+   "<a>I: <6>Beetle Pests",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>A Beginner's Guide to Pesthunting"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [],
+  "costs": [
+   5,
+   9,
+   13,
+   18,
+   23
+  ]
+ },
+ "PETALFALL": {
+  "key": "PETALFALL",
+  "neuId": "PETALFALL",
+  "name": "Petalfall",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <4>+0.2 Timber<7>.",
+   "2": "<7>Grants <4>+0.4 Timber<7>.",
+   "3": "<7>Grants <4>+0.6 Timber<7>.",
+   "4": "<7>Grants <4>+0.8 Timber<7>.",
+   "5": "<7>Grants <4>+1 Timber<7>."
+  },
+  "sources": [
+   "<a>I: <7>Miria's Shop (Level 3+)",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Axe"
+  ],
+  "conflicts": []
+ },
+ "PIERCING": {
+  "key": "PIERCING",
+  "neuId": "PIERCING",
+  "name": "Piercing",
+  "ultimate": false,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Arrows travel through enemies. <7>The extra targets hit take <a>25% <7>of the damage."
+  },
+  "sources": [
+   "<a>I: <7>Enchantment Table"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   30
+  ]
+ },
+ "PISCARY": {
+  "key": "PISCARY",
+  "neuId": "PISCARY",
+  "name": "Piscary",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <b>+1 Fishing Speed<7>.",
+   "2": "<7>Grants <b>+2 Fishing Speed<7>.",
+   "3": "<7>Grants <b>+3 Fishing Speed<7>.",
+   "4": "<7>Grants <b>+4 Fishing Speed<7>.",
+   "5": "<7>Grants <b>+5 Fishing Speed<7>.",
+   "6": "<7>Grants <b>+6 Fishing Speed<7>.",
+   "7": "<7>Grants <b>+7 Fishing Speed<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table",
+   "<a>VI: <7>Fishing, Bazaar",
+   "<a>VII: <6>Troubled Bubble"
+  ],
+  "appliedTo": [
+   "Fishing Rod"
+  ],
+  "conflicts": [],
+  "costs": [
+   8,
+   16,
+   24,
+   36,
+   48,
+   60
+  ]
+ },
+ "POWER": {
+  "key": "POWER",
+  "neuId": "POWER",
+  "name": "Power",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases bow damage by <a>8%<7>.",
+   "2": "<7>Increases bow damage by <a>16%<7>.",
+   "3": "<7>Increases bow damage by <a>24%<7>.",
+   "4": "<7>Increases bow damage by <a>32%<7>.",
+   "5": "<7>Increases bow damage by <a>40%<7>.",
+   "6": "<7>Increases bow damage by <a>50%<7>.",
+   "7": "<7>Increases bow damage by <a>65%<7>."
+  },
+  "sources": [
+   "<a>VII: <7>Scorpius,",
+   "<7>Experiments"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   95,
+   200
+  ]
+ },
+ "PRISMATIC": {
+  "key": "PRISMATIC",
+  "neuId": "PRISTINE",
+  "name": "Prismatic",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <5>+0.5 ✧ Pristine<7>, which <7>increases the chance to improve the <7>quality of dropped <d>Gemstones<7>.",
+   "2": "<7>Grants <5>+1 ✧ Pristine<7>, which <7>increases the chance to improve the <7>quality of dropped <d>Gemstones<7>.",
+   "3": "<7>Grants <5>+1.5 ✧ Pristine<7>, which <7>increases the chance to improve the <7>quality of dropped <d>Gemstones<7>.",
+   "4": "<7>Grants <5>+2 ✧ Pristine<7>, which <7>increases the chance to improve the <7>quality of dropped <d>Gemstones<7>.",
+   "5": "<7>Grants <5>+2.5 ✧ Pristine<7>, which <7>increases the chance to improve the <7>quality of dropped <d>Gemstones<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Gemstone Collection,",
+   "<7>Bazaar"
+  ],
+  "appliedTo": [
+   "Pickaxe",
+   "Drill",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   25,
+   50,
+   100,
+   150,
+   200
+  ]
+ },
+ "PROJECTILE_PROTECTION": {
+  "key": "PROJECTILE_PROTECTION",
+  "neuId": "PROJECTILE_PROTECTION",
+  "name": "Projectile Protection",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>+7 ❈ Defense <7>against projectiles.",
+   "2": "<7>Grants <a>+14 ❈ Defense <7>against projectiles.",
+   "3": "<7>Grants <a>+21 ❈ Defense <7>against projectiles.",
+   "4": "<7>Grants <a>+28 ❈ Defense <7>against projectiles.",
+   "5": "<7>Grants <a>+35 ❈ Defense <7>against projectiles.",
+   "6": "<7>Grants <a>+42 ❈ Defense <7>against projectiles.",
+   "7": "<7>Grants <a>+49 ❈ Defense <7>against projectiles."
+  },
+  "sources": [
+   "<a>VII: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Blast Protection",
+   "Fire Protection",
+   "Protection"
+  ],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   100,
+   200
+  ]
+ },
+ "PROSECUTE": {
+  "key": "PROSECUTE",
+  "neuId": "PROSECUTE",
+  "name": "Prosecute",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt by <a>0.1% <7>for each percent of health <7>your target has.",
+   "2": "<7>Increases damage dealt by <a>0.2% <7>for each percent of health <7>your target has.",
+   "3": "<7>Increases damage dealt by <a>0.3% <7>for each percent of health <7>your target has.",
+   "4": "<7>Increases damage dealt by <a>0.4% <7>for each percent of health <7>your target has.",
+   "5": "<7>Increases damage dealt by <a>0.7% <7>for each percent of health <7>your target has.",
+   "6": "<7>Increases damage dealt by <a>1% <7>for each percent of health <7>your target has."
+  },
+  "sources": [
+   "<a>VI: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Execute"
+  ],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   200
+  ]
+ },
+ "PROSPERITY": {
+  "key": "PROSPERITY",
+  "neuId": "PROSPERITY",
+  "name": "Prosperity",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>+3 <c>❤ Health<7>.",
+   "2": "<7>Grants <a>+6 <c>❤ Health<7>.",
+   "3": "<7>Grants <a>+9 <c>❤ Health<7>.",
+   "4": "<7>Grants <a>+12 <c>❤ Health<7>.",
+   "5": "<7>Grants <a>+15 <c>❤ Health<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Fishing"
+  ],
+  "appliedTo": [
+   "Gloves",
+   "Belt",
+   "Necklace",
+   "Bracelet",
+   "Cloak"
+  ],
+  "conflicts": [],
+  "costs": [
+   100,
+   100,
+   100,
+   100,
+   200
+  ]
+ },
+ "PROTECTION": {
+  "key": "PROTECTION",
+  "neuId": "PROTECTION",
+  "name": "Protection",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>+4 ❈ Defense<7>.",
+   "2": "<7>Grants <a>+8 ❈ Defense<7>.",
+   "3": "<7>Grants <a>+12 ❈ Defense<7>.",
+   "4": "<7>Grants <a>+16 ❈ Defense<7>.",
+   "5": "<7>Grants <a>+20 ❈ Defense<7>.",
+   "6": "<7>Grants <a>+25 ❈ Defense<7>.",
+   "7": "<7>Grants <a>+30 ❈ Defense<7>."
+  },
+  "sources": [
+   "<a>VI: <7>Scorpius,",
+   "<7>Experiments"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Blast Protection",
+   "Fire Protection",
+   "Projectile Protection"
+  ],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   100,
+   200
+  ]
+ },
+ "PUNCH": {
+  "key": "PUNCH",
+  "neuId": "PUNCH",
+  "name": "Punch",
+  "ultimate": false,
+  "maxLevel": 2,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases arrow knockback by <a>3<7> blocks.",
+   "2": "<7>Increases arrow knockback by <a>6<7> blocks."
+  },
+  "sources": [
+   "<a>I-II: <7>Enchantment Table,",
+   "<7>Slime Collection"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   15,
+   30
+  ]
+ },
+ "QUANTUM": {
+  "key": "QUANTUM",
+  "neuId": "QUANTUM",
+  "name": "Quantum",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 3,
+  "levels": {
+   "3": "<7>Grants <4>+1 Vitality <7>on weekdays and <3>+1.2☯ <7>of a random <3>Wisdom <7>stat on <7>weekends.",
+   "4": "<7>Grants <4>+2 Vitality <7>on weekdays and <3>+1.6☯ <7>of a random <3>Wisdom <7>stat on <7>weekends.",
+   "5": "<7>Grants <4>+3 Vitality <7>on weekdays and <3>+2☯ <7>of a random <3>Wisdom <7>stat on <7>weekends."
+  },
+  "sources": [
+   "<a>III: <7>Riftwalker Bloodfiend",
+   "<a>III-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Necklace"
+  ],
+  "conflicts": [],
+  "costs": [
+   50,
+   50,
+   100
+  ]
+ },
+ "QUICK_BITE": {
+  "key": "QUICK_BITE",
+  "neuId": "QUICK_BITE",
+  "name": "Quick Bite",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Makes fish swim <a>5% <7>faster towards <7>your bobber.",
+   "2": "<7>Makes fish swim <a>10% <7>faster towards <7>your bobber.",
+   "3": "<7>Makes fish swim <a>15% <7>faster towards <7>your bobber.",
+   "4": "<7>Makes fish swim <a>20% <7>faster towards <7>your bobber.",
+   "5": "<7>Makes fish swim <a>25% <7>faster towards <7>your bobber."
+  },
+  "sources": [
+   "<a>I-V: <7>Fishing"
+  ],
+  "appliedTo": [
+   "Fishing Rod"
+  ],
+  "conflicts": [],
+  "costs": [
+   18,
+   23,
+   27,
+   36,
+   45
+  ]
+ },
+ "RAINBOW": {
+  "key": "RAINBOW",
+  "neuId": "RAINBOW",
+  "name": "Rainbow",
+  "ultimate": false,
+  "maxLevel": 3,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Causes sheep to drop a random <7>wool colour when sheared.",
+   "2": "<7>Grants a <a>50% <7>chance to <7>change the color of a sheep when <7>shearing it.",
+   "3": "<7>Grants an <a>80% <7>chance to <7>change the color of a sheep when <7>shearing it, which will also <7>flip it, of course."
+  },
+  "sources": [
+   "<a>III: <7>Obtained from the",
+   "<7>Raffle Of The Century"
+  ],
+  "appliedTo": [
+   "Shears"
+  ],
+  "conflicts": [],
+  "costs": [
+   10
+  ]
+ },
+ "REFLECTION": {
+  "key": "REFLECTION",
+  "neuId": "REFLECTION",
+  "name": "Reflection",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <b>+2 Intelligence<7>. <7>Grants <f>+1 True Defense<7>. <7>When damaged by an arrow, deal <b>2x <7>your <b>✎ Intelligence <7>to its shooter.",
+   "2": "<7>Grants <b>+4 Intelligence<7>. <7>Grants <f>+2 True Defense<7>. <7>When damaged by an arrow, deal <b>5x <7>your <b>✎ Intelligence <7>to its shooter.",
+   "3": "<7>Grants <b>+6 Intelligence<7>. <7>Grants <f>+3 True Defense<7>. <7>When damaged by an arrow, deal <b>10x <7>your <b>✎ Intelligence <7>to its shooter.",
+   "4": "<7>Grants <b>+8 Intelligence<7>. <7>Grants <f>+4 True Defense<7>. <7>When damaged by an arrow, deal <b>20x <7>your <b>✎ Intelligence <7>to its shooter.",
+   "5": "<7>Grants <b>+10 Intelligence<7>. <7>Grants <f>+5 True Defense<7>. <7>When damaged by an arrow, deal <b>30x <7>your <b>✎ Intelligence <7>to its shooter."
+  },
+  "sources": [
+   "<a>I-V: <7>Rift Mirrorverse"
+  ],
+  "appliedTo": [
+   "Chestplate"
+  ],
+  "conflicts": [
+   "Thorns"
+  ],
+  "costs": [
+   20,
+   40,
+   60,
+   80,
+   100
+  ]
+ },
+ "REJUVENATE": {
+  "key": "REJUVENATE",
+  "neuId": "REJUVENATE",
+  "name": "Rejuvenate",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <c>+1 Health Regen<7>.",
+   "2": "<7>Grants <c>+2 Health Regen<7>.",
+   "3": "<7>Grants <c>+3 Health Regen<7>.",
+   "4": "<7>Grants <c>+4 Health Regen<7>.",
+   "5": "<7>Grants <c>+5 Health Regen<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Catacombs",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Respite"
+  ],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "REPLENISH": {
+  "key": "REPLENISH",
+  "neuId": "REPLENISH",
+  "name": "Replenish",
+  "ultimate": false,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Upon breaking crops, nether wart, <7>cocoa, wild rose, or sunflower, <7>automatically replant from materials <7>in your inventory."
+  },
+  "sources": [
+   "<a>I: <7>Cocoa Beans Collection"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   50
+  ]
+ },
+ "RESPIRATION": {
+  "key": "RESPIRATION",
+  "neuId": "RESPIRATION",
+  "name": "Respiration",
+  "ultimate": false,
+  "maxLevel": 4,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <3>+15⚶ Respiration<7>, which <7>increases the amount of time you <7>can stay under water.",
+   "2": "<7>Grants <3>+30⚶ Respiration<7>, which <7>increases the amount of time you <7>can stay under water.",
+   "3": "<7>Grants <3>+45⚶ Respiration<7>, which <7>increases the amount of time you <7>can stay under water.",
+   "4": "<7>Grants <3>+60⚶ Respiration<7>, which <7>increases the amount of time you <7>can stay under water."
+  },
+  "sources": [],
+  "appliedTo": [
+   "Helmet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30
+  ]
+ },
+ "RESPITE": {
+  "key": "RESPITE",
+  "neuId": "RESPITE",
+  "name": "Respite",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <c>+3 Health Regen <7>while out <7>of combat.",
+   "2": "<7>Grants <c>+6 Health Regen <7>while out <7>of combat.",
+   "3": "<7>Grants <c>+9 Health Regen <7>while out <7>of combat.",
+   "4": "<7>Grants <c>+12 Health Regen <7>while out <7>of combat.",
+   "5": "<7>Grants <c>+15 Health Regen <7>while out <7>of combat."
+  },
+  "sources": [
+   "<a>I: <7>Bayou Sludge",
+   "<a>I-V: <7>Experiments",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Rejuvenate"
+  ],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "SCAVENGER": {
+  "key": "SCAVENGER",
+  "neuId": "SCAVENGER",
+  "name": "Scavenger",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Scavenge <6>0.3 Coins <7>per monster <7>level on kill.",
+   "2": "<7>Scavenge <6>0.6 Coins <7>per monster <7>level on kill.",
+   "3": "<7>Scavenge <6>0.9 Coins <7>per monster <7>level on kill.",
+   "4": "<7>Scavenge <6>1.2 Coins <7>per monster <7>level on kill.",
+   "5": "<7>Scavenge <6>1.5 Coins <7>per monster <7>level on kill.",
+   "6": "<7>Scavenge <6>1.8 Coins <7>per monster <7>level on kill."
+  },
+  "sources": [
+   "<a>I-III: <7>Enchantment Table",
+   "<a>IV: <7>Season of Jerry",
+   "<a>IV-V: <7>Experiments, Bazaar",
+   "<a>V: <7>Catacombs",
+   "<a>VI: <6>Golden Bounty"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "SCUBA": {
+  "key": "SCUBA",
+  "neuId": "SCUBA",
+  "name": "Scuba",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <9>+1 Pressure Resistance<7>.",
+   "2": "<7>Grants <9>+2 Pressure Resistance<7>.",
+   "3": "<7>Grants <9>+3 Pressure Resistance<7>.",
+   "4": "<7>Grants <9>+4 Pressure Resistance<7>.",
+   "5": "<7>Grants <9>+5 Pressure Resistance<7>."
+  },
+  "sources": [],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "SHARPNESS": {
+  "key": "SHARPNESS",
+  "neuId": "SHARPNESS",
+  "name": "Sharpness",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases melee damage dealt by <a>5%",
+   "2": "<7>Increases melee damage dealt by <a>10%",
+   "3": "<7>Increases melee damage dealt by <a>15%",
+   "4": "<7>Increases melee damage dealt by <a>20%",
+   "5": "<7>Increases melee damage dealt by <a>30%",
+   "6": "<7>Increases melee damage dealt by <a>45%",
+   "7": "<7>Increases melee damage dealt by <a>65%"
+  },
+  "sources": [
+   "<a>VII: <7>Scorpius,",
+   "<7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   100,
+   200
+  ]
+ },
+ "SILK_TOUCH": {
+  "key": "SILK_TOUCH",
+  "neuId": "SILK_TOUCH",
+  "name": "Silk Touch",
+  "ultimate": false,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Allows you to collect normally <7>unobtainable block drops."
+  },
+  "sources": [
+   "<a>I: <7>Enchantment Table,",
+   "<7>String Collection"
+  ],
+  "appliedTo": [
+   "Tools"
+  ],
+  "conflicts": [
+   "Fortune",
+   "Smelting Touch"
+  ],
+  "costs": [
+   10
+  ]
+ },
+ "SMALL_BRAIN": {
+  "key": "SMALL_BRAIN",
+  "neuId": "SMALL_BRAIN",
+  "name": "Small Brain",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 3,
+  "levels": {
+   "3": "<7>Grants <b>-5 Intelligence<7> and <f>+1 <f>True Defense<7>.",
+   "4": "<7>Grants <b>-10 Intelligence<7> and <f>+2 <f>True Defense<7>.",
+   "5": "<7>Grants <b>-15 Intelligence<7> and <f>+3 <f>True Defense<7>."
+  },
+  "sources": [
+   "<a>III-V: <7>Raffle of the Century."
+  ],
+  "appliedTo": [
+   "Helmet"
+  ],
+  "conflicts": [
+   "Big Brain"
+  ],
+  "costs": [
+   60,
+   80,
+   100
+  ]
+ },
+ "SMARTY_PANTS": {
+  "key": "SMARTY_PANTS",
+  "neuId": "SMARTY_PANTS",
+  "name": "Smarty Pants",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <b>+5✎ Intelligence<7>.",
+   "2": "<7>Grants <b>+10✎ Intelligence<7>.",
+   "3": "<7>Grants <b>+15✎ Intelligence<7>.",
+   "4": "<7>Grants <b>+20✎ Intelligence<7>.",
+   "5": "<7>Grants <b>+25✎ Intelligence<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Enderman Slayer"
+  ],
+  "appliedTo": [
+   "Leggings"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   40,
+   60,
+   80,
+   100
+  ]
+ },
+ "SMELTING_TOUCH": {
+  "key": "SMELTING_TOUCH",
+  "neuId": "SMELTING_TOUCH",
+  "name": "Smelting Touch",
+  "ultimate": false,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Automatically smelts broken <7>blocks into their smelted form."
+  },
+  "sources": [
+   "<a>I: <7>Enchantment Table,",
+   "<7>Coal Collection"
+  ],
+  "appliedTo": [
+   "Axe",
+   "Drill",
+   "Pickaxe",
+   "Shovel",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Silk Touch"
+  ],
+  "costs": [
+   5
+  ]
+ },
+ "SMITE": {
+  "key": "SMITE",
+  "neuId": "SMITE",
+  "name": "Smite",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt to <8>☠ Wither<7>, <2>༕ Undead <7>and <f>🦴 Skeletal<7> mobs by <a>5%<7>.",
+   "2": "<7>Increases damage dealt to <8>☠ Wither<7>, <2>༕ Undead <7>and <f>🦴 Skeletal<7> mobs by <a>10%<7>.",
+   "3": "<7>Increases damage dealt to <8>☠ Wither<7>, <2>༕ Undead <7>and <f>🦴 Skeletal<7> mobs by <a>15%<7>.",
+   "4": "<7>Increases damage dealt to <8>☠ Wither<7>, <2>༕ Undead <7>and <f>🦴 Skeletal<7> mobs by <a>20%<7>.",
+   "5": "<7>Increases damage dealt to <8>☠ Wither<7>, <2>༕ Undead <7>and <f>🦴 Skeletal<7> mobs by <a>30%<7>.",
+   "6": "<7>Increases damage dealt to <8>☠ Wither<7>, <2>༕ Undead <7>and <f>🦴 Skeletal<7> mobs by <a>40%<7>.",
+   "7": "<7>Increases damage dealt to <8>☠ Wither<7>, <2>༕ Undead <7>and <f>🦴 Skeletal<7> mobs by <a>50%<7>."
+  },
+  "sources": [],
+  "appliedTo": [
+   "Sword",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   15,
+   20,
+   25,
+   30,
+   100,
+   200
+  ]
+ },
+ "SMOLDERING": {
+  "key": "SMOLDERING",
+  "neuId": "SMOLDERING",
+  "name": "Smoldering",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt to <4>♨ <4>Infernal<7> mobs by <a>5%<7>.",
+   "2": "<7>Increases damage dealt to <4>♨ <4>Infernal<7> mobs by <a>10%<7>.",
+   "3": "<7>Increases damage dealt to <4>♨ <4>Infernal<7> mobs by <a>15%<7>.",
+   "4": "<7>Increases damage dealt to <4>♨ <4>Infernal<7> mobs by <a>20%<7>.",
+   "5": "<7>Increases damage dealt to <4>♨ <4>Infernal<7> mobs by <a>30%<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Smoldering Blazes"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Bow",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "SNIPE": {
+  "key": "SNIPE",
+  "neuId": "SNIPE",
+  "name": "Snipe",
+  "ultimate": false,
+  "maxLevel": 4,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Arrows deal <a>+1% <7>damage for <7>every <a>10 <7>blocks travelled.",
+   "2": "<7>Arrows deal <a>+2% <7>damage for <7>every <a>10 <7>blocks travelled.",
+   "3": "<7>Arrows deal <a>+3% <7>damage for <7>every <a>10 <7>blocks travelled.",
+   "4": "<7>Arrows deal <a>+4% <7>damage for <7>every <a>10 <7>blocks travelled."
+  },
+  "sources": [
+   "<a>IV: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30
+  ]
+ },
+ "SPIKED_HOOK": {
+  "key": "SPIKED_HOOK",
+  "neuId": "SPIKED_HOOK",
+  "name": "Spiked Hook",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Fishing rod deals <a>5%<7> more damage <7>to monsters.",
+   "2": "<7>Fishing rod deals <a>10%<7> more damage <7>to monsters.",
+   "3": "<7>Fishing rod deals <a>15%<7> more damage <7>to monsters.",
+   "4": "<7>Fishing rod deals <a>20%<7> more damage <7>to monsters.",
+   "5": "<7>Fishing rod deals <a>25%<7> more damage <7>to monsters.",
+   "6": "<7>Fishing rod deals <a>30%<7> more damage <7>to monsters.",
+   "7": "<7>Fishing rod deals <a>35%<7> more damage <7>to monsters."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table",
+   "<a>VI: <7>Fishing, Bazaar",
+   "<a>VII: <6>Octopus Tendril"
+  ],
+  "appliedTo": [
+   "Fishing Rod"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   75
+  ]
+ },
+ "STEALTH": {
+  "key": "STEALTH",
+  "neuId": "STEALTH",
+  "name": "Stealth",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<e> Timid <7>mobs have a <a>10% <7>chance to <7>remain still instead of fleeing.",
+   "2": "<e> Timid <7>mobs have a <a>20% <7>chance to <7>remain still instead of fleeing.",
+   "3": "<e> Timid <7>mobs have a <a>30% <7>chance to <7>remain still instead of fleeing.",
+   "4": "<e> Timid <7>mobs have a <a>40% <7>chance to <7>remain still instead of fleeing.",
+   "5": "<e> Timid <7>mobs have a <a>50% <7>chance to <7>remain still instead of fleeing.",
+   "6": "<e> Timid <7>mobs have a <a>60% <7>chance to <7>remain still instead of fleeing."
+  },
+  "sources": [
+   "<a>I: <7>Chillblade and Chillshot",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <7>Distant Echo"
+  ],
+  "appliedTo": [
+   "Boots"
+  ],
+  "conflicts": []
+ },
+ "STRONG_MANA": {
+  "key": "STRONG_MANA",
+  "neuId": "STRONG_MANA",
+  "name": "Strong Vitality",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Convert <a>2% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "2": "<7>Convert <a>4% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "3": "<7>Convert <a>6% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "4": "<7>Convert <a>8% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "5": "<7>Convert <a>10% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "6": "<7>Convert <a>12% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "7": "<7>Convert <a>14% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "8": "<7>Convert <a>16% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "9": "<7>Convert <a>18% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar",
+   "10": "<7>Convert <a>20% <7>of <4> Vitality <7>used as <c> <c>Strength <7>for <a>10s<7>. <8>(Max 30 <8>Strength).\n<a>I-X: <7>Kuudra <a>I-X: <7>Bazaar"
+  },
+  "sources": [],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Hardened Vitality",
+   "Vivacious Vitality",
+   "Vampiric Vitality"
+  ],
+  "costs": [
+   30,
+   45,
+   60,
+   75,
+   90,
+   180,
+   240,
+   300,
+   360,
+   420
+  ]
+ },
+ "SUGAR_RUSH": {
+  "key": "SUGAR_RUSH",
+  "neuId": "SUGAR_RUSH",
+  "name": "Sugar Rush",
+  "ultimate": false,
+  "maxLevel": 3,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <a>+2 <f> Speed<7>.",
+   "2": "<7>Grants <a>+4 <f> Speed<7>.",
+   "3": "<7>Grants <a>+6 <f> Speed<7>."
+  },
+  "sources": [
+   "<a>I: <7>Spooky Festival",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Boots"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30
+  ]
+ },
+ "DRAIN": {
+  "key": "DRAIN",
+  "neuId": "SYPHON",
+  "name": "Drain",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Regen <4>+0.5 Vitality <7>every time you <7>hit a mob. <8>(1s Cooldown).",
+   "2": "<7>Regen <4>+1 Vitality <7>every time you <7>hit a mob. <8>(1s Cooldown).",
+   "3": "<7>Regen <4>+1.5 Vitality <7>every time you <7>hit a mob. <8>(1s Cooldown).",
+   "4": "<7>Regen <4>+2 Vitality <7>every time you <7>hit a mob. <8>(1s Cooldown).",
+   "5": "<7>Regen <4>+2.5 Vitality <7>every time you <7>hit a mob. <8>(1s Cooldown)."
+  },
+  "sources": [
+   "<a>I-III: <7>Enchantment Table",
+   "<a>I-V: <7>Experiments",
+   "<a>IV-V: <7>Bazaar",
+   "<a>V: <7>Vargul"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Life Steal",
+   "Mana Steal"
+  ],
+  "costs": [
+   20,
+   25,
+   30,
+   45,
+   200
+  ]
+ },
+ "TABASCO": {
+  "key": "TABASCO",
+  "neuId": "TABASCO",
+  "name": "Tabasco",
+  "ultimate": false,
+  "maxLevel": 3,
+  "minLevel": 2,
+  "levels": {
+   "2": "<7>Grants <f>+2 <7>weapon damage if <7>you don't have a <5>Dragon <7>pet <7>equipped.",
+   "3": "<7>Grants <f>+3 <7>weapon damage if <7>you don't have a <5>Dragon <7>pet <7>equipped."
+  },
+  "sources": [
+   "<a>II-III: <7>Chili Pepper Collection"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Sword",
+   "Fishing Weapon",
+   "Axe",
+   "Longsword",
+   "Gauntlet",
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   500,
+   500,
+   500
+  ]
+ },
+ "TELEKINESIS": {
+  "key": "TELEKINESIS",
+  "neuId": "TELEKINESIS",
+  "name": "Telekinesis",
+  "ultimate": false,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Block and mob drops go directly <7>into your inventory."
+  },
+  "sources": [
+   "<a>I: <7>Enchantment Table,",
+   "<7>Rusty"
+  ],
+  "appliedTo": [
+   "Fishing Weapon",
+   "Fishing Rod",
+   "Axe",
+   "Hoe",
+   "Bow",
+   "Drill",
+   "Pickaxe",
+   "Sword",
+   "Shovel",
+   "Shears",
+   "Gauntlet"
+  ],
+  "conflicts": []
+ },
+ "THORNS": {
+  "key": "THORNS",
+  "neuId": "THORNS",
+  "name": "Thorns",
+  "ultimate": false,
+  "maxLevel": 4,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants a <a>50% <7>chance to rebound <a>3% <7>of damage dealt back at the attacker.",
+   "2": "<7>Grants a <a>50% <7>chance to rebound <a>6% <7>of damage dealt back at the attacker.",
+   "3": "<7>Grants a <a>50% <7>chance to rebound <a>9% <7>of damage dealt back at the attacker.",
+   "4": "<7>Grants a <a>50% <7>chance to rebound <a>12% <7>of damage dealt back at the attacker."
+  },
+  "sources": [
+   "<a>I-III: <7>Enchantment Table",
+   "<a>IV: <6>Prickly Creeper"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": [
+   "Reflection"
+  ],
+  "costs": [
+   15,
+   30,
+   45
+  ]
+ },
+ "THUNDERBOLT": {
+  "key": "THUNDERBOLT",
+  "neuId": "THUNDERBOLT",
+  "name": "Thunderbolt",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>4% <7>of the hit's damage to up <7>to 10 monsters within 2 blocks.",
+   "2": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>8% <7>of the hit's damage to up <7>to 10 monsters within 2 blocks.",
+   "3": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>12% <7>of the hit's damage to up <7>to 10 monsters within 2 blocks.",
+   "4": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>16% <7>of the hit's damage to up <7>to 10 monsters within 2 blocks.",
+   "5": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>20% <7>of the hit's damage to up <7>to 10 monsters within 2 blocks.",
+   "6": "<7>Every <c>3 <7>hits on a monster, strike <e>lightning<7>, dealing <a>25% <7>of the hit's <7>damage to up to 10 monsters within 2 <7>blocks.",
+   "7": "<7>Every <c>3 <7>hits on a monster, strike <e>lightning<7>, dealing <a>30% <7>of the hit's <7>damage to up to 10 monsters within 2 <7>blocks."
+  },
+  "sources": [
+   "<a>VII: <7>Catacombs"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Thunderlord"
+  ],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   200
+  ]
+ },
+ "THUNDERLORD": {
+  "key": "THUNDERLORD",
+  "neuId": "THUNDERLORD",
+  "name": "Thunderlord",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>8% <7>of the hit's damage.",
+   "2": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>16% <7>of the hit's damage.",
+   "3": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>24% <7>of the hit's damage.",
+   "4": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>32% <7>of the hit's damage.",
+   "5": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>40% <7>of the hit's damage.",
+   "6": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>50% <7>of the hit's damage.",
+   "7": "<7>Every <c>3 <7>hits on a monster, <7>strike <e>lightning<7>, dealing <a>60% <7>of the hit's damage."
+  },
+  "sources": [
+   "<a>VII: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Thunderbolt"
+  ],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   200,
+   0
+  ]
+ },
+ "TIDAL": {
+  "key": "TIDAL",
+  "neuId": "TIDAL",
+  "name": "Tidal",
+  "ultimate": false,
+  "maxLevel": 3,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases your <a>❈ Defense <7>by <a>+5% <7>against Sea Creatures.",
+   "2": "<7>Increases your <a>❈ Defense <7>by <a>+10% <7>against Sea Creatures.",
+   "3": "<7>Increases your <a>❈ Defense <7>by <a>+15% <7>against Sea Creatures."
+  },
+  "sources": [
+   "<a>I: <7>Lukas the Aquarist",
+   "<a>I-III: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Leggings"
+  ],
+  "conflicts": [],
+  "costs": [
+   25,
+   40,
+   55
+  ]
+ },
+ "TITAN_KILLER": {
+  "key": "TITAN_KILLER",
+  "neuId": "TITAN_KILLER",
+  "name": "Titan Killer",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases damage dealt by <a>2% <7>for every 100 defense your <7>target has up to <a>6%<7>.",
+   "2": "<7>Increases damage dealt by <a>4% <7>for every 100 defense your <7>target has up to <a>12%<7>.",
+   "3": "<7>Increases damage dealt by <a>6% <7>for every 100 defense your <7>target has up to <a>18%<7>.",
+   "4": "<7>Increases damage dealt by <a>8% <7>for every 100 defense your <7>target has up to <a>24%<7>.",
+   "5": "<7>Increases damage dealt by <a>12% <7>for every 100 defense your <7>target has up to <a>40%<7>.",
+   "6": "<7>Increases damage dealt by <a>16% <7>for every 100 defense your <7>target has up to <a>60%<7>.",
+   "7": "<7>Increases damage dealt by <a>20% <7>for every 100 defense your <7>target has up to <a>80%<7>."
+  },
+  "sources": [
+   "<a>VII: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "Giant Killer"
+  ],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50,
+   100,
+   200
+  ]
+ },
+ "TOXOPHILITE": {
+  "key": "TOXOPHILITE",
+  "neuId": "TOXOPHILITE",
+  "name": "Toxophilite",
+  "ultimate": false,
+  "maxLevel": 10,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!",
+   "2": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!",
+   "3": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!",
+   "4": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!",
+   "5": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!",
+   "6": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!",
+   "7": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!",
+   "8": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!",
+   "9": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!",
+   "10": "<7>Gain <a>3% <7>extra Combat XP. Grants <9>+3.7☣ Crit Chance<7>. <8>50k Combat XP to tier up!\n<8>Gain 50k Combat XP for Tier II <8>Gain 100k Combat XP for Tier III <8>Gain 250k Combat XP for Tier IV <8>Gain 500k Combat XP for Tier V <8>Gain 1m Combat XP for Tier VI <8>Gain 1,5m Combat XP for Tier VII <8>Gain 2m Combat XP for Tier VIII <8>Gain 2,5m Combat XP for Tier IX <8>Gain 3m Combat XP for Tier X\n<e>▲ <7>Toxophilite cannot be combined!"
+  },
+  "sources": [
+   "<a>I: <7>Community Shop"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   25
+  ]
+ },
+ "TRANSYLVANIAN": {
+  "key": "TRANSYLVANIAN",
+  "neuId": "TRANSYLVANIAN",
+  "name": "Transylvanian",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 4,
+  "levels": {
+   "4": "<7>Heal <c>2❤<7>/s per enemy within <a>10 <7>blocks, up to <c>20❤<7>/s.",
+   "5": "<7>Heal <c>4❤<7>/s per enemy within <a>10 <7>blocks, up to <c>40❤<7>/s."
+  },
+  "sources": [
+   "<a>IV: <7>Hemovibe Collection",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Helmet"
+  ],
+  "conflicts": [],
+  "costs": [
+   100,
+   150
+  ]
+ },
+ "TRIPLE_STRIKE": {
+  "key": "TRIPLE_STRIKE",
+  "neuId": "TRIPLE_STRIKE",
+  "name": "Triple-Strike",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases melee damage dealt by <a>10% <7>for the first three hits <7>on a mob.",
+   "2": "<7>Increases melee damage dealt by <a>20% <7>for the first three hits <7>on a mob.",
+   "3": "<7>Increases melee damage dealt by <a>30% <7>for the first three hits <7>on a mob.",
+   "4": "<7>Increases melee damage dealt by <a>40% <7>for the first three hits <7>on a mob.",
+   "5": "<7>Increases melee damage dealt by <a>50% <7>for the first three hits <7>on a mob."
+  },
+  "sources": [
+   "<a>V: <7>Experiments"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [
+   "First Strike"
+  ],
+  "costs": [
+   20,
+   30,
+   40,
+   75,
+   200
+  ]
+ },
+ "TRUE_PROTECTION": {
+  "key": "TRUE_PROTECTION",
+  "neuId": "TRUE_PROTECTION",
+  "name": "True Protection",
+  "ultimate": false,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <f>+5 True Defense<7>."
+  },
+  "sources": [
+   "<a>I: <7>Bought from the Old Shaman Nyko,",
+   "<7>for 900k."
+  ],
+  "appliedTo": [
+   "Chestplate"
+  ],
+  "conflicts": [],
+  "costs": [
+   40
+  ]
+ },
+ "TURBO_CACTUS": {
+  "key": "TURBO_CACTUS",
+  "neuId": "TURBO_CACTUS",
+  "name": "Turbo-Cacti",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Cactus Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Cactus Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Cactus Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Cactus Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Cactus Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Cactus Fortune<7>. <7>Requires <f>Silver <7>in a <a>Cactus Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Cactus Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Cactus Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "TURBO_CANE": {
+  "key": "TURBO_CANE",
+  "neuId": "TURBO_CANE",
+  "name": "Turbo-Cane",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Sugar Cane Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Sugar Cane Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Sugar Cane Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Sugar Cane Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Sugar Cane Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Sugar Cane Fortune<7>. <7>Requires <f>Silver <7>in a <a>Sugar Cane Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Sugar Cane Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Sugar Cane Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "TURBO_CARROT": {
+  "key": "TURBO_CARROT",
+  "neuId": "TURBO_CARROT",
+  "name": "Turbo-Carrot",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Carrot Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Carrot Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Carrot Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Carrot Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Carrot Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Carrot Fortune<7>. <7>Requires <f>Silver <7>in a <a>Carrot Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Carrot Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Carrot Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "TURBO_COCO": {
+  "key": "TURBO_COCO",
+  "neuId": "TURBO_COCO",
+  "name": "Turbo-Cocoa",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Cocoa Beans Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Cocoa Beans Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Cocoa Beans Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Cocoa Beans Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Cocoa Beans Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Cocoa Beans Fortune<7>. <7>Requires <f>Silver <7>in a <a>Cocoa Beans Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Cocoa Beans Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Cocoa Beans Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "TURBO_MELON": {
+  "key": "TURBO_MELON",
+  "neuId": "TURBO_MELON",
+  "name": "Turbo-Melon",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Melon Slice Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Melon Slice Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Melon Slice Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Melon Slice Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Melon Slice Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Melon Slice Fortune<7>. <7>Requires <f>Silver <7>in a <a>Melon Slice Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Melon Slice Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Melon Slice Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "TURBO_MOONFLOWER": {
+  "key": "TURBO_MOONFLOWER",
+  "neuId": "TURBO_MOONFLOWER",
+  "name": "Turbo-Moonflower",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Moonflower Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Moonflower Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Moonflower Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Moonflower Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Moonflower Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Moonflower Fortune<7>. <7>Requires <f>Silver <7>in a <a>Moonflower Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Moonflower Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Moonflower Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": []
+ },
+ "TURBO_MUSHROOMS": {
+  "key": "TURBO_MUSHROOMS",
+  "neuId": "TURBO_MUSHROOMS",
+  "name": "Turbo-Mushrooms",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Mushroom Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Mushroom Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Mushroom Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Mushroom Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Mushroom Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Mushroom Fortune<7>. <7>Requires <f>Silver <7>in a <a>Mushroom Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Mushroom Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Mushroom Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "TURBO_POTATO": {
+  "key": "TURBO_POTATO",
+  "neuId": "TURBO_POTATO",
+  "name": "Turbo-Potato",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Potato Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Potato Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Potato Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Potato Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Potato Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Potato Fortune<7>. <7>Requires <f>Silver <7>in a <a>Potato Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Potato Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Potato Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "TURBO_PUMPKIN": {
+  "key": "TURBO_PUMPKIN",
+  "neuId": "TURBO_PUMPKIN",
+  "name": "Turbo-Pumpkin",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Pumpkin Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Pumpkin Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Pumpkin Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Pumpkin Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Pumpkin Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Pumpkin Fortune<7>. <7>Requires <f>Silver <7>in a <a>Pumpkin Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Pumpkin Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Pumpkin Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "TURBO_ROSE": {
+  "key": "TURBO_ROSE",
+  "neuId": "TURBO_ROSE",
+  "name": "Turbo-Rose",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Wild Rose Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Wild Rose Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Wild Rose Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Wild Rose Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Wild Rose Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Wild Rose Fortune<7>. <7>Requires <f>Silver <7>in a <a>Wild Rose Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Wild Rose Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Wild Rose Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": []
+ },
+ "TURBO_SUNFLOWER": {
+  "key": "TURBO_SUNFLOWER",
+  "neuId": "TURBO_SUNFLOWER",
+  "name": "Turbo-Sunflower",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Sunflower Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Sunflower Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Sunflower Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Sunflower Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Sunflower Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Sunflower Fortune<7>. <7>Requires <f>Silver <7>in a <a>Sunflower Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Sunflower Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Sunflower Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": []
+ },
+ "TURBO_WARTS": {
+  "key": "TURBO_WARTS",
+  "neuId": "TURBO_WARTS",
+  "name": "Turbo-Warts",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Nether Wart Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Nether Wart Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Nether Wart Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Nether Wart Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Nether Warts Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Nether Wart Fortune<7>. <7>Requires <f>Silver <7>in a <a>Nether Warts Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Nether Wart Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Nether Wart Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "TURBO_WHEAT": {
+  "key": "TURBO_WHEAT",
+  "neuId": "TURBO_WHEAT",
+  "name": "Turbo-Wheat",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <6>+5☘ Wheat Fortune<7>.",
+   "2": "<7>Grants <6>+10☘ Wheat Fortune<7>.",
+   "3": "<7>Grants <6>+15☘ Wheat Fortune<7>.",
+   "4": "<7>Grants <6>+20☘ Wheat Fortune<7>. <7>Requires <c>Bronze <7>in a <a>Wheat Contest<7>!",
+   "5": "<7>Grants <6>+25☘ Wheat Fortune<7>. <7>Requires <f>Silver <7>in a <a>Wheat Contest<7>!",
+   "6": "<7>Grants <6>+30☘ Wheat Fortune<7>.",
+   "7": "<7>Grants <6>+35☘ Wheat Fortune<7>."
+  },
+  "sources": [
+   "<a>I: <7>Jacob's Farming Contest",
+   "<a>I-V: <7>Bazaar",
+   "<a>VI: <6>Turbo Gourd",
+   "<a>VII: <d>Enchanted Turbo Gourd"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": [],
+  "costs": [
+   10,
+   20,
+   30,
+   40,
+   50
+  ]
+ },
+ "BANK": {
+  "key": "BANK",
+  "neuId": "ULTIMATE_BANK",
+  "name": "Bank",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Saves <6>10% <7>of your coins on <7>death. Additionally, enemies <7>drop <6>+0.5 coins <7>when killed.",
+   "2": "<7>Saves <6>20% <7>of your coins on <7>death. Additionally, enemies <7>drop <6>+1.0 coins <7>when killed.",
+   "3": "<7>Saves <6>30% <7>of your coins on <7>death. Additionally, enemies <7>drop <6>+1.5 coins <7>when killed.",
+   "4": "<7>Saves <6>40% <7>of your coins on <7>death. Additionally, enemies <7>drop <6>+2.0 coins <7>when killed.",
+   "5": "<7>Saves <6>50% <7>of your coins on <7>death. Additionally, enemies <7>drop <6>+2.5 coins <7>when killed."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeon"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "BOBBIN_TIME": {
+  "key": "BOBBIN_TIME",
+  "neuId": "ULTIMATE_BOBBIN_TIME",
+  "name": "Bobbin' Time",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 3,
+  "levels": {
+   "3": "<7>Increases all <b>Fishing Stats <7>and <b> Magic Find <7>by <b>+0.6% <7>per fishing bobber within <a>30 blocks<7>, up to <b>5 <7>bobbers.",
+   "4": "<7>Increases all <b>Fishing Stats <7>and <b> Magic Find <7>by <b>+0.8% <7>per fishing bobber within <a>30 blocks<7>, up to <b>5 <7>bobbers.",
+   "5": "<7>Increases all <b>Fishing Stats <7>and <b> Magic Find <7>by <b>1.0% <7>per fishing bobber within <a>30 blocks<7>, up to <b>5 <7>bobbers."
+  },
+  "sources": [
+   "<a>III: <7>Fishing",
+   "<a>III-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "CHIMERA": {
+  "key": "CHIMERA",
+  "neuId": "ULTIMATE_CHIMERA",
+  "name": "Chimera",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Copies <a>20% <7>of your active <7>pet's stats.",
+   "2": "<7>Copies <a>40% <7>of your active <7>pet's stats.",
+   "3": "<7>Copies <a>60% <7>of your active <7>pet's stats.",
+   "4": "<7>Copies <a>80% <7>of your active <7>pet's stats.",
+   "5": "<7>Copies <a>100% <7>of your active <7>pet's stats."
+  },
+  "sources": [
+   "<a>I-V: <7>Mythological Event"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": []
+ },
+ "COMBO": {
+  "key": "COMBO",
+  "neuId": "ULTIMATE_COMBO",
+  "name": "Combo",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases your damage by <c>+1% <7>per kill up to <a>2 <7>kills <7>within <a>2s<7>.",
+   "2": "<7>Increases your damage by <c>+2% <7>per kill up to <a>4 <7>kills <7>within <a>4s<7>.",
+   "3": "<7>Increases your damage by <c>+3% <7>per kill up to <a>6 <7>kills <7>within <a>6s<7>.",
+   "4": "<7>Increases your damage by <c>+4% <7>per kill up to <a>8 <7>kills <7>within <a>8s<7>.",
+   "5": "<7>Increases your damage by <c>+5% <7>per kill up to <a>10 <7>kills <7>within <a>10s<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": []
+ },
+ "CROP_FEVER": {
+  "key": "CROP_FEVER",
+  "neuId": "ULTIMATE_CROP_FEVER",
+  "name": "Crop Fever",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>When breaking crops, there is a <a>0.001% <7>chance to trigger <d><l>Crop <d><l>Fever <7>for <a>60s <7>which grants: <8>- <7>Additional crop rolls <8>- <e>+15 Overbloom <8>- <6>+100☘ Farming Fortune",
+   "2": "<7>When breaking crops, there is a <a>0.002% <7>chance to trigger <d><l>Crop <d><l>Fever <7>for <a>60s <7>which grants: <8>- <7>Additional crop rolls <8>- <e>+15 Overbloom <8>- <6>+100☘ Farming Fortune",
+   "3": "<7>When breaking crops, there is a <a>0.003% <7>chance to trigger <d><l>Crop <d><l>Fever <7>for <a>60s <7>which grants: <8>- <7>Additional crop rolls <8>- <e>+15 Overbloom <8>- <6>+100☘ Farming Fortune",
+   "4": "<7>When breaking crops, there is a <a>0.004% <7>chance to trigger <d><l>Crop <d><l>Fever <7>for <a>60s <7>which grants: <8>- <7>Additional crop rolls <8>- <e>+15 Overbloom <8>- <6>+100☘ Farming Fortune",
+   "5": "<7>When breaking crops, there is a <a>0.005% <7>chance to trigger <d><l>Crop <d><l>Fever <7>for <a>60s <7>which grants: <8>- <7>Additional crop rolls <8>- <e>+15 Overbloom <8>- <6>+100☘ Farming Fortune"
+  },
+  "sources": [
+   "<a>I-V: <7>Moonflower Collection"
+  ],
+  "appliedTo": [
+   "Farming Tool"
+  ],
+  "conflicts": []
+ },
+ "FATAL_TEMPO": {
+  "key": "FATAL_TEMPO",
+  "neuId": "ULTIMATE_FATAL_TEMPO",
+  "name": "Fatal Tempo",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Attacking increases your <c>⫽ <c>Ferocity <7>by <c>10% <7>per hit, <7>capped at <c>200% <7>for 3 seconds <7>after your last attack.",
+   "2": "<7>Attacking increases your <c>⫽ <c>Ferocity <7>by <c>20% <7>per hit, <7>capped at <c>200% <7>for 3 seconds <7>after your last attack.",
+   "3": "<7>Attacking increases your <c>⫽ <c>Ferocity <7>by <c>30% <7>per hit, <7>capped at <c>200% <7>for 3 seconds <7>after your last attack.",
+   "4": "<7>Attacking increases your <c>⫽ <c>Ferocity <7>by <c>40% <7>per hit, <7>capped at <c>200% <7>for 3 seconds <7>after your last attack.",
+   "5": "<7>Attacking increases your <c>⫽ <c>Ferocity <7>by <c>50% <7>per hit, <7>capped at <c>200% <7>for 3 seconds <7>after your last attack."
+  },
+  "sources": [
+   "<a>I-V: <7>Kuudra"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Sword",
+   "Fishing Weapon",
+   "Axe",
+   "Longsword",
+   "Gauntlet",
+   "Bow"
+  ],
+  "conflicts": []
+ },
+ "FIRST_IMPRESSION": {
+  "key": "FIRST_IMPRESSION",
+  "neuId": "ULTIMATE_FIRST_IMPRESSION",
+  "name": "First Impression",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Grants <2>+1∮ Sweep <7>on melee Log <7>Breaks, and your first melee Log <7>Break on a tree grants you <2>+2∮ <2>Sweep<7>.",
+   "2": "<7>Grants <2>+2∮ Sweep <7>on melee Log <7>Breaks, and your first melee Log <7>Break on a tree grants you <2>+4∮ <2>Sweep<7>.",
+   "3": "<7>Grants <2>+3∮ Sweep <7>on melee Log <7>Breaks, and your first melee Log <7>Break on a tree grants you <2>+6∮ <2>Sweep<7>.",
+   "4": "<7>Grants <2>+4∮ Sweep <7>on melee Log <7>Breaks, and your first melee Log <7>Break on a tree grants you <2>+8∮ <2>Sweep<7>.",
+   "5": "<7>Grants <2>+5∮ Sweep <7>on melee Log <7>Breaks, and your first melee Log <7>Break on a tree grants you <2>+10∮ <2>Sweep<7>."
+  },
+  "sources": [],
+  "appliedTo": [
+   "Axe"
+  ],
+  "conflicts": []
+ },
+ "FLASH": {
+  "key": "FLASH",
+  "neuId": "ULTIMATE_FLASH",
+  "name": "Flash",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Gain a <a>1%<7> chance to <7>instantly attract a fish.",
+   "2": "<7>Gain a <a>2%<7> chance to <7>instantly attract a fish.",
+   "3": "<7>Gain a <a>3%<7> chance to <7>instantly attract a fish.",
+   "4": "<7>Gain a <a>4%<7> chance to <7>instantly attract a fish.",
+   "5": "<7>Gain a <a>5%<7> chance to <7>instantly attract a fish."
+  },
+  "sources": [
+   "<a>I-V: <7>Fishing"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Fishing Weapon"
+  ],
+  "conflicts": []
+ },
+ "FLOWSTATE": {
+  "key": "FLOWSTATE",
+  "neuId": "ULTIMATE_FLOWSTATE",
+  "name": "Flowstate",
+  "ultimate": true,
+  "maxLevel": 3,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Consecutive blocks broken grant <6>+1⸕ Mining Speed<7>. Stops after <a>10s <7>of not mining and caps at <a>200 <7>blocks.",
+   "2": "<7>Consecutive blocks broken grant <6>+2⸕ Mining Speed<7>. Stops after <a>10s <7>of not mining and caps at <a>200 <7>blocks.",
+   "3": "<7>Consecutive blocks broken grant <6>+3⸕ Mining Speed<7>. Stops after <a>10s <7>of not mining and caps at <a>200 <7>blocks."
+  },
+  "sources": [
+   "<a>I-III: <7>Mining Events,",
+   "<7>Bazaar"
+  ],
+  "appliedTo": [
+   "Pickaxe",
+   "Drill",
+   "Gauntlet"
+  ],
+  "conflicts": []
+ },
+ "HABANERO_TACTICS": {
+  "key": "HABANERO_TACTICS",
+  "neuId": "ULTIMATE_HABANERO_TACTICS",
+  "name": "Habanero Tactics",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 4,
+  "levels": {
+   "4": "<8>ℏ <7>Heal <a>+6% <7>more from wands. <8>ℏ <7>Deal <c>+20% damage <7>against Slayer Bosses <7>with Slayer weapons. <8>ℏ <7>Gain <3>+2.5☯ Combat Wisdom <7>with Slayer <7>weapons. <8>ℏ <7>With <a>Smoldering Polarization<7>, gain <b>+10 <b>Magic Find <7>on your slayer weapon.",
+   "5": "<8>ℏ <7>Heal <a>+7.5% <7>more from wands. <8>ℏ <7>Deal <c>+25% damage <7>against Slayer Bosses <7>with Slayer weapons. <8>ℏ <7>Gain <3>+5☯ Combat Wisdom <7>with Slayer <7>weapons. <8>ℏ <7>With <a>Smoldering Polarization<7>, gain <b>+15 <b>Magic Find <7>on your slayer weapon."
+  },
+  "sources": [
+   "<a>IV-V: <7>Chili Pepper Collection"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "INFERNO": {
+  "key": "INFERNO",
+  "neuId": "ULTIMATE_INFERNO",
+  "name": "Inferno",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Every <c>10th <7>hit on a mob <7>spawns an inferno which traps <7>the mob and deals <c>125% <7>of <7>your last hit.",
+   "2": "<7>Every <c>10th <7>hit on a mob <7>spawns an inferno which traps <7>the mob and deals <c>150% <7>of <7>your last hit.",
+   "3": "<7>Every <c>10th <7>hit on a mob <7>spawns an inferno which traps <7>the mob and deals <c>175% <7>of <7>your last hit.",
+   "4": "<7>Every <c>10th <7>hit on a mob <7>spawns an inferno which traps <7>the mob and deals <c>200% <7>of <7>your last hit.",
+   "5": "<7>Every <c>10th <7>hit on a mob <7>spawns an inferno which traps <7>the mob and deals <c>225% <7>of <7>your last hit."
+  },
+  "sources": [
+   "<a>I-V: <7>Kuudra"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Sword",
+   "Fishing Weapon",
+   "Axe",
+   "Longsword",
+   "Gauntlet",
+   "Bow"
+  ],
+  "conflicts": []
+ },
+ "JERRY": {
+  "key": "JERRY",
+  "neuId": "ULTIMATE_JERRY",
+  "name": "Ultimate Jerry",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases the base damage of <f>Aspect of the Jerry<7> by <a>1000%<7>.",
+   "2": "<7>Increases the base damage of <f>Aspect of the Jerry<7> by <a>2000%<7>.",
+   "3": "<7>Increases the base damage of <f>Aspect of the Jerry<7> by <a>3000%<7>.",
+   "4": "<7>Increases the base damage of <f>Aspect of the Jerry<7> by <a>4000%<7>.",
+   "5": "<7>Increases the base damage of <f>Aspect of the Jerry<7> by <a>5000%<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Aspect of the Jerry"
+  ],
+  "conflicts": []
+ },
+ "LAST_STAND": {
+  "key": "LAST_STAND",
+  "neuId": "ULTIMATE_LAST_STAND",
+  "name": "Last Stand",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>When falling below <c>40% ❤ Health<7>: <8>- <7>Gain <a>+2.5% Defense <7>for <a>10s<7>. <8>- <7>Regen <4>2 Vitality<7>. <8>Cooldown: 30s",
+   "2": "<7>When falling below <c>40% ❤ Health<7>: <8>- <7>Gain <a>+5% Defense <7>for <a>10s<7>. <8>- <7>Regen <4>4 Vitality<7>. <8>Cooldown: 30s",
+   "3": "<7>When falling below <c>40% ❤ Health<7>: <8>- <7>Gain <a>+7.5% Defense <7>for <a>10s<7>. <8>- <7>Regen <4>6 Vitality<7>. <8>Cooldown: 30s",
+   "4": "<7>When falling below <c>40% ❤ Health<7>: <8>- <7>Gain <a>+10% Defense <7>for <a>10s<7>. <8>- <7>Regen <4>8 Vitality<7>. <8>Cooldown: 30s",
+   "5": "<7>When falling below <c>40% ❤ Health<7>: <8>- <7>Gain <a>+12.5% Defense <7>for <a>10s<7>. <8>- <7>Regen <4>10 Vitality<7>. <8>Cooldown: 30s"
+  },
+  "sources": [
+   "<a>I-V: <7>Catacombs",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "LEGION": {
+  "key": "LEGION",
+  "neuId": "ULTIMATE_LEGION",
+  "name": "Legion",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases all <c>Combat <7>stats and <b> <b>Magic Find <7>by <e>0.07% <7>per player within <b>30 <7>blocks of you, up to <c>20 <7>players.",
+   "2": "<7>Increases all <c>Combat <7>stats and <b> <b>Magic Find <7>by <e>0.14% <7>per player within <b>30 <7>blocks of you, up to <c>20 <7>players.",
+   "3": "<7>Increases all <c>Combat <7>stats and <b> <b>Magic Find <7>by <e>0.21% <7>per player within <b>30 <7>blocks of you, up to <c>20 <7>players.",
+   "4": "<7>Increases all <c>Combat <7>stats and <b> <b>Magic Find <7>by <e>0.28% <7>per player within <b>30 <7>blocks of you, up to <c>20 <7>players.",
+   "5": "<7>Increases all <c>Combat <7>stats and <b> <b>Magic Find <7>by <e>0.35% <7>per player within <b>30 <7>blocks of you, up to <c>20 <7>players."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "MISSILE": {
+  "key": "MISSILE",
+  "neuId": "ULTIMATE_MISSILE",
+  "name": "Missile",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>The Log penalty on Throwing Axe is <7>reduced by <a>10%<7>.",
+   "2": "<7>The Log penalty on Throwing Axe is <7>reduced by <a>20%<7>.",
+   "3": "<7>The Log penalty on Throwing Axe is <7>reduced by <a>30%<7>.",
+   "4": "<7>The Log penalty on Throwing Axe is <7>reduced by <a>40%<7>.",
+   "5": "<7>The Log penalty on Throwing Axe is <7>reduced by <a>50%<7>.\n<7>Applicable on: <9>Axe <7>Apply Cost: <3>250 Exp Levels"
+  },
+  "sources": [],
+  "appliedTo": [
+   "Throwing Axe"
+  ],
+  "conflicts": []
+ },
+ "NO_PAIN_NO_GAIN": {
+  "key": "NO_PAIN_NO_GAIN",
+  "neuId": "ULTIMATE_NO_PAIN_NO_GAIN",
+  "name": "No Pain No Gain",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>You have <e>20% <7>chance to gain <b>2 <7>experience orb every time <7>you take hits from mobs.",
+   "2": "<7>You have <e>40% <7>chance to gain <b>10 <7>experience orbs every <7>time you take hits from mobs.",
+   "3": "<7>You have <e>60% <7>chance to gain <b>10 <7>experience orbs every <7>time you take hits from mobs.",
+   "4": "<7>You have <e>80% <7>chance to gain <b>10 <7>experience orbs every <7>time you take hits from mobs.",
+   "5": "<7>You have <e>100% <7>chance to gain <b>10 <7>experience orbs every <7>time you take hits from mobs."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "ONE_FOR_ALL": {
+  "key": "ONE_FOR_ALL",
+  "neuId": "ULTIMATE_ONE_FOR_ALL",
+  "name": "One For All",
+  "ultimate": true,
+  "maxLevel": 1,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Removes all other enchants but <7>increases your weapon damage by <a>500%<7>.\n<e>▲ <d><l>One For All cannot be combined!"
+  },
+  "sources": [
+   "<a>I: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Longsword"
+  ],
+  "conflicts": []
+ },
+ "REFRIGERATE": {
+  "key": "REFRIGERATE",
+  "neuId": "ULTIMATE_REFRIGERATE",
+  "name": "Refrigerate",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Convert <a>3% <7>of <b> Mana <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 150 Defense)",
+   "2": "<7>Convert <a>3.75% <7>of <b> Mana <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 150 Defense)",
+   "3": "<7>Convert <a>4.5% <7>of <b> Mana <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 150 Defense)",
+   "4": "<7>Convert <a>5.25% <7>of <b> Mana <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 150 Defense)",
+   "5": "<7>Convert <a>6% <7>of <b> Mana <7>used as <a> <a>Defense <7>for <a>10s<7>. <8>(Max 150 Defense)"
+  },
+  "sources": [
+   "<a>I: <7>Einary's Shop",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "REITERATE": {
+  "key": "REITERATE",
+  "neuId": "ULTIMATE_REITERATE",
+  "name": "Duplex",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Shoot a second arrow dealing <c>4% <7>of <7>the first arrow's damage. <7>Targets hit take <c>1.1x <7>fire <7>damage for <a>60s<7>.",
+   "2": "<7>Shoot a second arrow dealing <c>8% <7>of <7>the first arrow's damage. <7>Targets hit take <c>1.2x <7>fire <7>damage for <a>60s<7>.",
+   "3": "<7>Shoot a second arrow dealing <c>12% <7>of the first arrow's damage. <7>Targets hit take <c>1.3x <7>fire <7>damage for <a>60s<7>.",
+   "4": "<7>Shoot a second arrow dealing <c>16% <7>of the first arrow's damage. <7>Targets hit take <c>1.4x <7>fire <7>damage for <a>60s<7>.",
+   "5": "<7>Shoot a second arrow dealing <c>20% <7>of the first arrow's damage. <7>Targets hit take <c>1.5x <7>fire <7>damage for <a>60s<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Blaze Slayer"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": []
+ },
+ "REND": {
+  "key": "REND",
+  "neuId": "ULTIMATE_REND",
+  "name": "Rend",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Use Left Click ability to rip <7>your arrows out of nearby <7>enemies. Each arrow deals <c>5% <7>of your last critical shot on <7>the target, up to <c>5 <7>arrows. <a>2s <7>Cooldown.",
+   "2": "<7>Use Left Click ability to rip <7>your arrows out of nearby <7>enemies. Each arrow deals <c>10% <7>of your last critical shot on <7>the target, up to <c>5 <7>arrows. <a>2s <7>Cooldown.",
+   "3": "<7>Use Left Click ability to rip <7>your arrows out of nearby <7>enemies. Each arrow deals <c>15% <7>of your last critical shot on <7>the target, up to <c>5 <7>arrows. <a>2s <7>Cooldown.",
+   "4": "<7>Use Left Click ability to rip <7>your arrows out of nearby <7>enemies. Each arrow deals <c>20% <7>of your last critical shot on <7>the target, up to <c>5 <7>arrows. <a>2s <7>Cooldown.",
+   "5": "<7>Use Left Click ability to rip <7>your arrows out of nearby <7>enemies. Each arrow deals <c>25% <7>of your last critical shot on <7>the target, up to <c>5 <7>arrows. <a>2s <7>Cooldown."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Bow"
+  ],
+  "conflicts": []
+ },
+ "SOUL_EATER": {
+  "key": "SOUL_EATER",
+  "neuId": "ULTIMATE_SOUL_EATER",
+  "name": "Soul Eater",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Your weapon gains <c>2x <7>the Damage of <7>the latest monster killed and adds it <7>at the end of your next critical hit. <7><8>(Max 1M outside Dungeons).",
+   "2": "<7>Your weapon gains <c>4x <7>the Damage of <7>the latest monster killed and adds it <7>at the end of your next critical hit. <7><8>(Max 1M outside Dungeons).",
+   "3": "<7>Your weapon gains <c>6x <7>the Damage of <7>the latest monster killed and adds it <7>at the end of your next critical hit. <7><8>(Max 1M outside Dungeons).",
+   "4": "<7>Your weapon gains <c>8x <7>the Damage of <7>the latest monster killed and adds it <7>at the end of your next critical hit. <7><8>(Max 1M outside Dungeons).",
+   "5": "<7>Your weapon gains <c>10x <7>the Damage of <7>the latest monster killed and adds it <7>at the end of your next critical hit. <7><8>(Max 1M outside Dungeons)."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Longsword",
+   "Bow"
+  ],
+  "conflicts": []
+ },
+ "SUNSET": {
+  "key": "SUNSET",
+  "neuId": "ULTIMATE_SUNSET",
+  "name": "Sunset",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>During the day, <e>+1 Overbloom<7>. <7>During the night, <b>-1% Visitor Cooldown.",
+   "2": "<7>During the day, <e>+2 Overbloom<7>. <7>During the night, <b>-2% Visitor Cooldown.",
+   "3": "<7>During the day, <e>+3 Overbloom<7>. <7>During the night, <b>-3% Visitor Cooldown.",
+   "4": "<7>During the day, <e>+4 Overbloom<7>. <7>During the night, <b>-4% Visitor Cooldown.",
+   "5": "<7>During the day, <e>+5 Overbloom<7>. <7>During the night, <b>-5% Visitor Cooldown."
+  },
+  "sources": [
+   "<a>I: <6>Lunar Moth Pest",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "SWARM": {
+  "key": "SWARM",
+  "neuId": "ULTIMATE_SWARM",
+  "name": "Swarm",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Increases your damage by <c>2% <7>for each enemy within <e>10 <7>blocks. Maximum of <c>10 <7>enemies.",
+   "2": "<7>Increases your damage by <c>4% <7>for each enemy within <e>10 <7>blocks. Maximum of <c>10 <7>enemies.",
+   "3": "<7>Increases your damage by <c>6% <7>for each enemy within <e>10 <7>blocks. Maximum of <c>10 <7>enemies.",
+   "4": "<7>Increases your damage by <c>8% <7>for each enemy within <e>10 <7>blocks. Maximum of <c>10 <7>enemies.",
+   "5": "<7>Increases your damage by <c>10% <7>for each enemy within <e>10 <7>blocks. Maximum of <c>10 <7>enemies."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Longsword",
+   "Bow"
+  ],
+  "conflicts": []
+ },
+ "THE_ONE": {
+  "key": "THE_ONE",
+  "neuId": "ULTIMATE_THE_ONE",
+  "name": "The One",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 4,
+  "levels": {
+   "4": "<7>Grants <c>+0.5❤ Health <7>and <c>+0.1❁ Strength <7>per maxed out <7>collection. You have <a><k>73 <a>collections <7>maxed.",
+   "5": "<7>Grants <c>+1❤ Health <7>and <c>+0.2❁ Strength <7>per maxed out <7>collection. You have <a><k>73 <a>collections <7>maxed."
+  },
+  "sources": [
+   "<a>IV-V: <7>Riftstalker bloodfiend"
+  ],
+  "appliedTo": [
+   "Necklace"
+  ],
+  "conflicts": []
+ },
+ "WISDOM": {
+  "key": "WISDOM",
+  "neuId": "ULTIMATE_WISDOM",
+  "name": "Wisdom",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Gain <b>1 <7>Intelligence for <7>every <b>5 <7>levels of exp you <7>have on you. Capped at <b>20 <7>Intelligence.",
+   "2": "<7>Gain <b>2 <7>Intelligence for <7>every <b>5 <7>levels of exp you <7>have on you. Capped at <b>40 <7>Intelligence.",
+   "3": "<7>Gain <b>3 <7>Intelligence for <7>every <b>5 <7>levels of exp you <7>have on you. Capped at <b>60 <7>Intelligence.",
+   "4": "<7>Gain <b>4 <7>Intelligence for <7>every <b>5 <7>levels of exp you <7>have on you. Capped at <b>80 <7>Intelligence.",
+   "5": "<7>Gain <b>5 <7>Intelligence for <7>every <b>5 <7>levels of exp you <7>have on you. Capped at <b>100 <7>Intelligence."
+  },
+  "sources": [
+   "<a>I-V: <7>Dungeons"
+  ],
+  "appliedTo": [
+   "Armor"
+  ],
+  "conflicts": []
+ },
+ "WISE": {
+  "key": "WISE",
+  "neuId": "ULTIMATE_WISE",
+  "name": "Ultimate Wise",
+  "ultimate": true,
+  "maxLevel": 5,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Reduces the ability mana cost of <7>this item by <a>10%<7>.",
+   "2": "<7>Reduces the ability mana cost of <7>this item by <a>20%<7>.",
+   "3": "<7>Reduces the ability mana cost of <7>this item by <a>30%<7>.",
+   "4": "<7>Reduces the ability mana cost of <7>this item by <a>40%<7>.",
+   "5": "<7>Reduces the ability mana cost of <7>this item by <a>50%<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Catacombs",
+   "<a>I-V: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Fishing Rod",
+   "Wand",
+   "Shovel",
+   "Pickaxe",
+   "Farming Tool",
+   "Precursor Eye",
+   "Drill",
+   "Shears",
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet",
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   50,
+   100,
+   150,
+   200,
+   250
+  ]
+ },
+ "VAMPIRISM": {
+  "key": "VAMPIRISM",
+  "neuId": "VAMPIRISM",
+  "name": "Vampirism",
+  "ultimate": false,
+  "maxLevel": 6,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Heal <c>5❤ <7>every time you kill a mob. <8>(0.5s Cooldown).",
+   "2": "<7>Heal <c>10❤ <7>every time you kill a mob. <8>(0.5s Cooldown).",
+   "3": "<7>Heal <c>15❤ <7>every time you kill a mob. <8>(0.5s Cooldown).",
+   "4": "<7>Heal <c>20❤ <7>every time you kill a mob. <8>(0.5s Cooldown).",
+   "5": "<7>Heal <c>25❤ <7>every time you kill a mob. <8>(0.5s Cooldown).",
+   "6": "<7>Heal <c>30❤ <7>every time you kill a mob. <8>(0.5s Cooldown)."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table",
+   "<a>VI: <7>Spooky Festival",
+   "<a>VI: <7>Bazaar"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   200
+  ]
+ },
+ "VENOMOUS": {
+  "key": "VENOMOUS",
+  "neuId": "VENOMOUS",
+  "name": "Venomous",
+  "ultimate": false,
+  "maxLevel": 7,
+  "minLevel": 1,
+  "levels": {
+   "1": "<7>Reduces the target's walk speed by <a>2% <7>and deals <2>+0.2% <7>of your damage <7>per second per hit, stacking globally <7>up to <2>40 <7>hits. Lasts <6>5s<7>.",
+   "2": "<7>Reduces the target's walk speed by <a>4% <7>and deals <2>+0.4% <7>of your damage <7>per second per hit, stacking globally <7>up to <2>40 <7>hits. Lasts <6>5s<7>.",
+   "3": "<7>Reduces the target's walk speed by <a>6% <7>and deals <2>+0.6% <7>of your damage <7>per second per hit, stacking globally <7>up to <2>40 <7>hits. Lasts <6>5s<7>.",
+   "4": "<7>Reduces the target's walk speed by <a>8% <7>and deals <2>+0.8% <7>of your damage <7>per second per hit, stacking globally <7>up to <2>40 <7>hits. Lasts <6>5s<7>.",
+   "5": "<7>Reduces the target's walk speed by <a>12% <7>and deals <2>+1.2% <7>of your damage <7>per second per hit, stacking globally <7>up to <2>40 <7>hits. Lasts <6>5s<7>.",
+   "6": "<7>Reduces the target's walk speed by <a>15% <7>and deals <2>+1.6% <7>of your damage <7>per second per hit, stacking globally <7>up to <2>40 <7>hits. Lasts <6>5s<7>.",
+   "7": "<7>Reduces the target's walk speed by <a>20% <7>and deals <2>+2% <7>of your damage <7>per second per hit, stacking globally <7>up to <2>40 <7>hits. Lasts <6>5s<7>."
+  },
+  "sources": [
+   "<a>I-V: <7>Enchantment Table",
+   "<a>VI: <7>Experiments, Bazaar",
+   "<a>VII: <6>Fateful Stinger"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Longsword",
+   "Gauntlet"
+  ],
+  "conflicts": [],
+  "costs": [
+   20,
+   25,
+   30,
+   40,
+   50,
+   200
+  ]
+ },
+ "VICIOUS": {
+  "key": "VICIOUS",
+  "neuId": "VICIOUS",
+  "name": "Vicious",
+  "ultimate": false,
+  "maxLevel": 5,
+  "minLevel": 3,
+  "levels": {
+   "3": "<7>Grants <c>+3⫽ Ferocity<7>.",
+   "4": "<7>Grants <c>+4⫽ Ferocity<7>.",
+   "5": "<7>Grants <c>+5⫽ Ferocity<7>."
+  },
+  "sources": [
+   "<a>III-V: <7>Obtained from the Dark Auction"
+  ],
+  "appliedTo": [
+   "Sword",
+   "Fishing Weapon",
+   "Longsword",
+   "Gauntlet",
+   "Bow"
+  ],
+  "conflicts": [],
+  "costs": [
+   0,
+   0,
+   60,
+   80,
+   100
+  ]
+ }
+}

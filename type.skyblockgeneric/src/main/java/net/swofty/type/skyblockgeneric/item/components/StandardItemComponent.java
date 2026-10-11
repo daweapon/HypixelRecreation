@@ -29,17 +29,17 @@ public class StandardItemComponent extends SkyBlockItemComponent {
     public enum StandardItemType {
         SWORD("SWORD", ReforgeType.SWORDS, List.of(EnchantItemGroups.SWORD), RuneableComponent.RuneApplicableTo.WEAPONS, PotatoType.WEAPONS),
         BOW("BOW", ReforgeType.BOWS, List.of(EnchantItemGroups.BOW), RuneableComponent.RuneApplicableTo.WEAPONS, PotatoType.WEAPONS),
-        PICKAXE("PICKAXE", ReforgeType.PICKAXES, List.of(EnchantItemGroups.TOOLS), RuneableComponent.RuneApplicableTo.WEAPONS, null),
-        HOE("HOE", ReforgeType.HOES, List.of(EnchantItemGroups.TOOLS), RuneableComponent.RuneApplicableTo.HOES, null),
-        HELMET("HELMET", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR), RuneableComponent.RuneApplicableTo.HELMETS, PotatoType.ARMOR),
-        CHESTPLATE("CHESTPLATE", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR), RuneableComponent.RuneApplicableTo.CHESTPLATES, PotatoType.ARMOR),
-        LEGGINGS("LEGGINGS", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR), RuneableComponent.RuneApplicableTo.LEGGINGS, PotatoType.ARMOR),
-        BOOTS("BOOTS", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR), RuneableComponent.RuneApplicableTo.BOOTS, PotatoType.ARMOR),
-        NECKLACE("NECKLACE", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null),
-        CLOAK("CLOAK", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null),
-        BELT("BELT", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null),
-        GLOVES("GLOVES", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null),
-        BRACELET("BRACELET", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT), null, null);
+        PICKAXE("PICKAXE", ReforgeType.PICKAXES, List.of(EnchantItemGroups.TOOLS, EnchantItemGroups.PICKAXE), RuneableComponent.RuneApplicableTo.WEAPONS, null),
+        HOE("HOE", ReforgeType.HOES, List.of(EnchantItemGroups.TOOLS, EnchantItemGroups.HOE), RuneableComponent.RuneApplicableTo.HOES, null),
+        HELMET("HELMET", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR, EnchantItemGroups.HELMET), RuneableComponent.RuneApplicableTo.HELMETS, PotatoType.ARMOR),
+        CHESTPLATE("CHESTPLATE", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR, EnchantItemGroups.CHESTPLATE), RuneableComponent.RuneApplicableTo.CHESTPLATES, PotatoType.ARMOR),
+        LEGGINGS("LEGGINGS", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR, EnchantItemGroups.LEGGINGS), RuneableComponent.RuneApplicableTo.LEGGINGS, PotatoType.ARMOR),
+        BOOTS("BOOTS", ReforgeType.ARMOR, List.of(EnchantItemGroups.ARMOR, EnchantItemGroups.BOOTS), RuneableComponent.RuneApplicableTo.BOOTS, PotatoType.ARMOR),
+        NECKLACE("NECKLACE", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT, EnchantItemGroups.NECKLACE), null, null),
+        CLOAK("CLOAK", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT, EnchantItemGroups.CLOAK), null, null),
+        BELT("BELT", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT, EnchantItemGroups.BELT), null, null),
+        GLOVES("GLOVES", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT, EnchantItemGroups.GLOVES), null, null),
+        BRACELET("BRACELET", ReforgeType.EQUIPMENT, List.of(EnchantItemGroups.EQUIPMENT, EnchantItemGroups.BRACELET), null, null);
 
         private final String rarityDisplay;
         private final ReforgeType reforgeType;

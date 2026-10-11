@@ -49,8 +49,7 @@ public class EnchantmentVenomous implements Ench, EnchFromTable, DamageEventEnch
 
     @Override
     public List<EnchantItemGroups> getGroups() {
-        return List.of(EnchantItemGroups.SWORD, EnchantItemGroups.FISHING_WEAPON,
-                EnchantItemGroups.GAUNTLET, EnchantItemGroups.LONG_SWORD);
+        return List.of(EnchantItemGroups.SWORD, EnchantItemGroups.LONG_SWORD, EnchantItemGroups.GAUNTLET);
     }
 
 

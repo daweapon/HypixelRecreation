@@ -32,7 +32,7 @@ public class EnchantmentFrail implements Ench, EnchFromTable {
 
     @Override
     public List<EnchantItemGroups> getGroups() {
-        return List.of(EnchantItemGroups.FISHING_ROD, EnchantItemGroups.FISHING_WEAPON);
+        return List.of(EnchantItemGroups.FISHING_ROD);
     }
 
     @Override
