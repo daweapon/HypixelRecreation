@@ -1,0 +1,33 @@
+title: "The Pet Perks Update"
+date: "11th October 2026"
+intro:
+  - "Pets finally do what their perks say. Of the 310 pet perks, 228 now work, and the other 82 need parts of SkyBlock that are not here yet, so each one says what it is waiting for."
+sections:
+  - heading: "Combat pets"
+    colour: "<c>"
+    lines:
+      - "New damage perks: Ender Dragon (One with the Dragons), Magma Cube (Salt Blade, Hot Ember), Tiger (Apex Predator, Hemorrhage), Wither Skeleton (Wither Blood), Bat (Wings of Steel), Megalodon (Blood Scent), Giraffe (Long Neck) and Lion (King of the Jungle, First Pounce)."
+      - "Horse and Skeleton Horse now have High Stride and Trample. Phoenix can fly on your island with Magic Bird. Tyrannosaurus stuns with Ferocious Roar, Skeleton fires Skeletal Defense arrows and Turtle shares Defense with nearby players."
+      - "Crow lowers weapon ability cooldowns. Kuudra adds Kuudra Specialist and extra Crimson Essence. Blaze boosts Blaze Armor and doubles Hot Potato Books. Black Cat raises your Speed cap, Hound finds more armor drops and Jerry can drop Jerry Candy."
+      - "Precursor Drone's Contraband and Mining Off Camera now work."
+  - heading: "Gathering pets"
+    colour: "<b>"
+    lines:
+      - "Fishing: Blue Whale (Ingest), Baby Yeti (Frosty Familiarity), Hermit Crab (Hotspot Hazard), Squid (More Ink), Dolphin (Splash Surprise) and Penguin (Thick Blubber)."
+      - "Foraging: Ocelot's Tree Essence and Sloth's Slow Start."
+      - "Mining: Armadillo's Rolling Miner, Endermite's Daily Commuter, Glacite Golem's Powder-powered, Scatha's Bejeweled Eyes, Silverfish's Magnetic, Goblin's Free-range Eggs and Wither Skeleton's Death's Touch."
+      - "Farming and Alchemy: Orchid Mantis's Orchid Nectar (and the new Jelly item), Slug's Slow and Steady, Parrot's Bird Discourse, Sheep's Overheal and Rabbit's Chocolate Injections."
+  - heading: "Wisps, Bingo and Owl"
+    colour: "<d>"
+    lines:
+      - "Wisps gain Bulwark, which grows as you kill Blazes, and Extinguish pools on the Crimson Isle."
+      - "The Bingo pet's Lucky Looting, Climber, Fast Learner, Chimera, Scavenger and Consumer all work. The Owl takes up to 5 percent off Fann's sessions."
+  - heading: "Fixes"
+    colour: "<a>"
+    lines:
+      - "Reindeer Icy Wind and Winter Sprint, Griffin Ancient Earth, Crow Insightful and Endermite More Stonks now use their real values."
+      - "A Precursor Drone catch with treasure no longer rolls the Squid pet drop twice."
+  - heading: "Not here yet"
+    colour: "<8>"
+    lines:
+      - "82 perks that need Dungeons, the Garden, Glacite Mineshafts, the Rift, Crystal Hollows, riding pets and other unbuilt content now say what they need instead of Not active yet."
