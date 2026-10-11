@@ -379,6 +379,7 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
         Set<Class<? extends T>> subTypes = reflections.getSubTypesOf(clazz);
 
         return subTypes.stream()
+                .filter(subClass -> !java.lang.reflect.Modifier.isAbstract(subClass.getModifiers()))
                 .map(subClass -> {
                     try {
                         return clazz.cast(subClass.getDeclaredConstructor().newInstance());
