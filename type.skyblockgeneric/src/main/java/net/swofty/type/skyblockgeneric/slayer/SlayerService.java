@@ -291,7 +291,7 @@ public final class SlayerService {
         }
 
         public static StartResult notEnoughCoins(int cost) {
-            return new StartResult(false, "You need " + cost + " coins to start this quest.", Optional.empty());
+            return new StartResult(false, "You need " + net.swofty.commons.StringUtility.commaify(cost) + " coins to start this quest.", Optional.empty());
         }
 
         public static StartResult locked(SlayerUnlockRequirement requirement) {

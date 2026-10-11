@@ -149,7 +149,7 @@ public class GUIFearMongerer implements View<GUIFearMongerer.State> {
         lore.add(Text.of(requirement));
         lore.add(Text.empty());
         lore.add(Text.of("<7>Rewards:"));
-        lore.add(Text.of("<7>- <6>{} Coins", tier.coins()));
+        lore.add(Text.of("<7>- <6>{:,} Coins", tier.coins()));
         lore.add(Text.of("<7>- <a>{}x Carnival Ticket", tier.carnivalTickets()));
         if (tier.spookyPie()) lore.add(Text.of("<7>- <a>Spooky Pie"));
         if (tier.spookyDisc()) lore.add(Text.of("<7>- <a>Spooky Disc"));

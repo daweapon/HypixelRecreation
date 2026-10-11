@@ -74,7 +74,7 @@ public class GUIBanker extends HypixelInventoryGUI implements RefreshingGUI {
                 return ItemStacks.item(Material.CHEST, 1,
                     Text.key("gui_banker.main.deposit"),
                     Text.keyLines("gui_banker.main.deposit.lore",
-                        StringUtility.decimalify(bankData.getAmount(), 1),
+                        StringUtility.coinAmount(bankData.getAmount(), 1),
                         SkyBlockCalendar.getHoursUntilNextInterest()));
             }
         });
@@ -91,7 +91,7 @@ public class GUIBanker extends HypixelInventoryGUI implements RefreshingGUI {
                 return ItemStacks.item(Material.DISPENSER, 1,
                     Text.key("gui_banker.main.withdraw"),
                     Text.keyLines("gui_banker.main.withdraw.lore",
-                        StringUtility.decimalify(bankData.getAmount(), 1)));
+                        StringUtility.coinAmount(bankData.getAmount(), 1)));
             }
         });
 
@@ -110,7 +110,7 @@ public class GUIBanker extends HypixelInventoryGUI implements RefreshingGUI {
 
                         lore.add(Text.key("gui_banker.main.transaction_entry",
                             Text.of(isNegative ? "<c>-" : "<a>+"),
-                            StringUtility.decimalify(Math.abs(transaction.amount), 1),
+                            StringUtility.coinAmount(Math.abs(transaction.amount), 1),
                             StringUtility.formatTimeAsAgo(transaction.timestamp),
                             transaction.originator));
                     }

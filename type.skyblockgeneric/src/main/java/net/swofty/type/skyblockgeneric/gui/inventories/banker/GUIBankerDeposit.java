@@ -42,9 +42,9 @@ public class GUIBankerDeposit extends HypixelInventoryGUI {
                         List.of(
                                 Text.key("gui_banker.deposit.whole_purse_subtitle"),
                                 Text.literal(" "),
-                            Text.key("gui_banker.deposit.current_balance", StringUtility.decimalify(
+                            Text.key("gui_banker.deposit.current_balance", StringUtility.coinAmount(
                                 player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.BANK_DATA, DatapointBankData.class).getValue().getAmount(), 1)),
-                            Text.key("gui_banker.deposit.amount_to_deposit", StringUtility.decimalify(player.getCoins(), 1)),
+                            Text.key("gui_banker.deposit.amount_to_deposit", StringUtility.coinAmount(player.getCoins(), 1)),
                                 Text.literal(" "),
                                 Text.key("gui_banker.deposit.click")
                         ));
@@ -67,9 +67,9 @@ public class GUIBankerDeposit extends HypixelInventoryGUI {
                         List.of(
                                 Text.key("gui_banker.deposit.whole_purse_subtitle"),
                                 Text.literal(" "),
-                            Text.key("gui_banker.deposit.current_balance", StringUtility.decimalify(
+                            Text.key("gui_banker.deposit.current_balance", StringUtility.coinAmount(
                                 player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.BANK_DATA, DatapointBankData.class).getValue().getAmount(), 1)),
-                            Text.key("gui_banker.deposit.amount_to_deposit", StringUtility.decimalify(player.getCoins() / 2, 1)),
+                            Text.key("gui_banker.deposit.amount_to_deposit", StringUtility.coinAmount(player.getCoins() / 2, 1)),
                                 Text.literal(" "),
                                 Text.key("gui_banker.deposit.click")
                         ));
@@ -88,7 +88,7 @@ public class GUIBankerDeposit extends HypixelInventoryGUI {
             public HypixelInventoryGUI onQueryFinish(String query, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
                 try {
-                    double amount = Double.parseDouble(query);
+                    double amount = net.swofty.type.skyblockgeneric.utility.CoinAmountParser.parseDouble(query);
                     if (amount > player.getCoins()) {
                         player.sendMessage(Text.key("gui_banker.deposit.not_enough_coins"));
                         return null;
@@ -114,7 +114,7 @@ public class GUIBankerDeposit extends HypixelInventoryGUI {
                         List.of(
                                 Text.key("gui_banker.deposit.whole_purse_subtitle"),
                                 Text.literal(" "),
-                            Text.key("gui_banker.deposit.current_balance", StringUtility.decimalify(
+                            Text.key("gui_banker.deposit.current_balance", StringUtility.coinAmount(
                                 player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.BANK_DATA, DatapointBankData.class).getValue().getAmount(), 1)),
                                 Text.key("gui_banker.deposit.custom_amount_label"),
                                 Text.literal(" "),
@@ -160,7 +160,7 @@ public class GUIBankerDeposit extends HypixelInventoryGUI {
             datapoint.setValue(bankData);
             player.removeCoins(amount);
 
-            player.sendMessage(Text.key("gui_banker.deposit.success", StringUtility.decimalify(amount, 1), StringUtility.decimalify(bankData.getAmount(), 1)));
+            player.sendMessage(Text.key("gui_banker.deposit.success", StringUtility.coinAmount(amount, 1), StringUtility.coinAmount(bankData.getAmount(), 1)));
             return;
         }
 
@@ -189,7 +189,7 @@ public class GUIBankerDeposit extends HypixelInventoryGUI {
             case APPLIED -> {
                 player.removeCoins(amount);
                 player.sendMessage(Text.key("gui_banker.deposit.success",
-                        StringUtility.decimalify(amount, 1), StringUtility.decimalify(newBalance[0], 1)));
+                        StringUtility.coinAmount(amount, 1), StringUtility.coinAmount(newBalance[0], 1)));
             }
             case UNCHANGED -> player.sendMessage(Text.key("gui_banker.deposit.exceed_limit",
                     StringUtility.commaify(hitLimit[0])));

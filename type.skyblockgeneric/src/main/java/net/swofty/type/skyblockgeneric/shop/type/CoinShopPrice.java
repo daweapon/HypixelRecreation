@@ -22,7 +22,7 @@ public class CoinShopPrice implements ShopPrice {
 
     @Override
     public List<Text> getGUIDisplay() {
-        return List.of(Text.of("<6>{} Coin{}", StringUtility.decimalify(amount, 1), amount != 1 ? "s" : ""));
+        return List.of(Text.of("<6>{} Coin{}", StringUtility.coinAmount(amount), amount != 1 ? "s" : ""));
     }
 
     @Override

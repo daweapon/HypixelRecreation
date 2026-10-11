@@ -74,16 +74,16 @@ public record AuctionItemLoreHandler(AuctionItem auctionItem) {
         details.line("<7>Seller: {}", SkyBlockPlayer.getDisplayName(auctionItem.getOriginator()));
 
         if (auctionItem.isBin()) {
-            details.line("<7>Buy it now: <6>{} coins", auctionItem.getStartingPrice());
+            details.line("<7>Buy it now: <6>{:,} coins", auctionItem.getStartingPrice());
         } else if (auctionItem.getBids().isEmpty()) {
-            details.line("<7>Starting bid: <6>{} coins", auctionItem.getStartingPrice());
+            details.line("<7>Starting bid: <6>{:,} coins", auctionItem.getStartingPrice());
         } else {
             details.line("<7>Bids: <a>{} bid{}", auctionItem.getBids().size(),
                     auctionItem.getBids().size() == 1 ? "" : "s");
 
             AuctionItem.Bid topBid = auctionItem.getBids().stream().max(Comparator.comparing(AuctionItem.Bid::value)).orElse(null);
             lore.section(TOP_BID, TOP_BID_ORDER).separated()
-                    .line("<7>Top bid: <6>{} coins", topBid.value())
+                    .line("<7>Top bid: <6>{:,} coins", topBid.value())
                     .line("<7>Bidder: {}", SkyBlockPlayer.getDisplayName(topBid.uuid()));
         }
 

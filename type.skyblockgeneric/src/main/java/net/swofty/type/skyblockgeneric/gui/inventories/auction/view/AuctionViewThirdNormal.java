@@ -127,7 +127,7 @@ public class AuctionViewThirdNormal implements AuctionView {
             public HypixelInventoryGUI onQueryFinish(String query, HypixelPlayer player) {
                 long val;
                 try {
-                    val = Long.parseLong(query);
+                    val = net.swofty.type.skyblockgeneric.utility.CoinAmountParser.parseLong(query);
                 } catch (NumberFormatException ex) {
                     player.sendMessage(Text.key("gui_auction.view_third_normal.number_parse_error"));
                     return gui;

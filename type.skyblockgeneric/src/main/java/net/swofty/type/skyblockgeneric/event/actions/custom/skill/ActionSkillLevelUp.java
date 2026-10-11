@@ -52,7 +52,7 @@ public class ActionSkillLevelUp implements HypixelEventClass {
 					case XP ->
 							player.sendMessage("    <8>+<b>{} SkyBlock XP", ((SkillCategory.XPReward) unlock).getXP());
 					case COINS ->
-							player.sendMessage("    <8>+<6>{} <7>Coins", ((SkillCategory.CoinReward) unlock).getCoins());
+							player.sendMessage("    <8>+<6>{:,} <7>Coins", ((SkillCategory.CoinReward) unlock).getCoins());
 					case STATS_BASE -> {
 						ItemStatistic statistic = ((SkillCategory.BaseStatisticReward) unlock).getStatistic();
 						player.sendMessage("    <8>+<a>{:.1}{} {}", ((SkillCategory.BaseStatisticReward) unlock).amountAdded(),

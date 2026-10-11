@@ -37,7 +37,7 @@ public class CoopBankCommand extends HypixelCommand {
 
             long amount;
             try {
-                amount = Long.parseLong(amountText);
+                amount = net.swofty.type.skyblockgeneric.utility.CoinAmountParser.parseLong(amountText);
             } catch (NumberFormatException e) {
                 player.sendMessage("<c>Usage: {}", "/coopbank <deposit|withdraw> <amount>");
                 return;
@@ -62,7 +62,7 @@ public class CoopBankCommand extends HypixelCommand {
             player.sendMessage("<c>You are not in a co-op!");
             return;
         }
-        player.sendMessage("<b>[Co-op Bank] <e>Balance: <6>{} coins", coop.bankBalance());
+        player.sendMessage("<b>[Co-op Bank] <e>Balance: <6>{:,} coins", coop.bankBalance());
     }
 
     private void deposit(SkyBlockPlayer player, long amount) {
@@ -80,7 +80,7 @@ public class CoopBankCommand extends HypixelCommand {
 
         coins.setValue(coins.getValue() - amount);
         CoopDatabase.Coop updated = CoopDatabase.adjustBankBalance(coop.coopUUID(), amount);
-        player.sendMessage("<b>[Co-op Bank] <e>Deposited <6>{} coins<e>. Balance: <6>{}", amount, updated.bankBalance());
+        player.sendMessage("<b>[Co-op Bank] <e>Deposited <6>{:,} coins<e>. Balance: <6>{:,}", amount, updated.bankBalance());
     }
 
     private void withdraw(SkyBlockPlayer player, long amount) {
@@ -94,12 +94,12 @@ public class CoopBankCommand extends HypixelCommand {
         // can never together push the balance negative.
         CoopDatabase.Coop updated = CoopDatabase.tryWithdraw(coop.coopUUID(), amount);
         if (updated == null) {
-            player.sendMessage("<c>The co-op bank only has {} coins!", coop.bankBalance());
+            player.sendMessage("<c>The co-op bank only has {:,} coins!", coop.bankBalance());
             return;
         }
 
         DatapointDouble coins = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.COINS, DatapointDouble.class);
         coins.setValue(coins.getValue() + amount);
-        player.sendMessage("<b>[Co-op Bank] <e>Withdrew <6>{} coins<e>. Balance: <6>{}", amount, updated.bankBalance());
+        player.sendMessage("<b>[Co-op Bank] <e>Withdrew <6>{:,} coins<e>. Balance: <6>{:,}", amount, updated.bankBalance());
     }
 }

@@ -53,7 +53,7 @@ public abstract class SkillCategory {
             Arrays.stream(unlocks).forEach(unlock -> {
                 switch (unlock.type()) {
                     case XP -> lore.add("<7>  <8>+<b>" + ((XPReward) unlock).getXP() + " SkyBlock XP");
-                    case COINS -> lore.add("<7>  <8>+<6>" + ((CoinReward) unlock).getCoins() + " <7>Coins");
+                    case COINS -> lore.add("<7>  <8>+<6>" + net.swofty.commons.StringUtility.commaify(((CoinReward) unlock).getCoins()) + " <7>Coins");
                     case REGION_ACCESS -> {
                         RegionType region = ((RegionReward) unlock).getRegion();
                         lore.add(Text.of("<7>  <8>+<a>Access to <color:{}>{}",

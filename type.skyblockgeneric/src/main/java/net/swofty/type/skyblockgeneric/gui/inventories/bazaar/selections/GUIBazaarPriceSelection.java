@@ -153,7 +153,7 @@ public class GUIBazaarPriceSelection extends HypixelInventoryGUI implements Refr
                 @Override
                 public HypixelInventoryGUI onQueryFinish(String query, HypixelPlayer player) {
                     try {
-                        double price = Double.parseDouble(query);
+                        double price = net.swofty.type.skyblockgeneric.utility.CoinAmountParser.parseDouble(query);
                         if (price <= 0) {
                             throw new NumberFormatException();
                         }

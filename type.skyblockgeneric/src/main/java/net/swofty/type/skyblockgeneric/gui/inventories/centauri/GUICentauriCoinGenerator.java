@@ -45,7 +45,7 @@ public final class GUICentauriCoinGenerator implements View<GUICentauriCoinGener
             new HypixelSignGUI(player).open(new String[]{"Enter amount", ""}).thenAccept(input -> {
                 if (input == null) return;
                 try {
-                    double amount = Double.parseDouble(input.replace(",", ""));
+                    double amount = net.swofty.type.skyblockgeneric.utility.CoinAmountParser.parseDouble(input);
                     if (!Double.isFinite(amount) || amount < 0) throw new NumberFormatException();
                     award(player, amount);
                 } catch (NumberFormatException ignored) {

@@ -42,8 +42,8 @@ public class GUIBankerWithdraw extends HypixelInventoryGUI {
                         List.of(
                                 Text.key("gui_banker.withdraw.everything_subtitle"),
                                 Text.literal(" "),
-                            Text.key("gui_banker.withdraw.current_balance", StringUtility.decimalify(bankBalance, 1)),
-                            Text.key("gui_banker.withdraw.amount_to_withdraw", StringUtility.decimalify(bankBalance, 1)),
+                            Text.key("gui_banker.withdraw.current_balance", StringUtility.coinAmount(bankBalance, 1)),
+                            Text.key("gui_banker.withdraw.amount_to_withdraw", StringUtility.coinAmount(bankBalance, 1)),
                                 Text.literal(" "),
                                 Text.key("gui_banker.withdraw.click")
                         ));
@@ -65,8 +65,8 @@ public class GUIBankerWithdraw extends HypixelInventoryGUI {
                         List.of(
                                 Text.key("gui_banker.withdraw.everything_subtitle"),
                                 Text.literal(" "),
-                            Text.key("gui_banker.withdraw.current_balance", StringUtility.decimalify(bankBalance, 1)),
-                            Text.key("gui_banker.withdraw.amount_to_withdraw", StringUtility.decimalify(bankBalance / 2, 1)),
+                            Text.key("gui_banker.withdraw.current_balance", StringUtility.coinAmount(bankBalance, 1)),
+                            Text.key("gui_banker.withdraw.amount_to_withdraw", StringUtility.coinAmount(bankBalance / 2, 1)),
                                 Text.literal(" "),
                                 Text.key("gui_banker.withdraw.click")
                         ));
@@ -95,8 +95,8 @@ public class GUIBankerWithdraw extends HypixelInventoryGUI {
                         List.of(
                                 Text.key("gui_banker.withdraw.everything_subtitle"),
                                 Text.literal(" "),
-                            Text.key("gui_banker.withdraw.current_balance", StringUtility.decimalify(bankBalance, 1)),
-                            Text.key("gui_banker.withdraw.amount_to_withdraw", StringUtility.decimalify(bankBalance / 5, 1)),
+                            Text.key("gui_banker.withdraw.current_balance", StringUtility.coinAmount(bankBalance, 1)),
+                            Text.key("gui_banker.withdraw.amount_to_withdraw", StringUtility.coinAmount(bankBalance / 5, 1)),
                                 Text.literal(" "),
                                 Text.key("gui_banker.withdraw.click")
                         ));
@@ -108,7 +108,7 @@ public class GUIBankerWithdraw extends HypixelInventoryGUI {
             public HypixelInventoryGUI onQueryFinish(String query, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
                 try {
-                    double amount = Double.parseDouble(query);
+                    double amount = net.swofty.type.skyblockgeneric.utility.CoinAmountParser.parseDouble(query);
                     if (amount > bankBalance) {
                         player.sendMessage(Text.key("gui_banker.withdraw.not_enough_coins"));
                         return null;
@@ -134,7 +134,7 @@ public class GUIBankerWithdraw extends HypixelInventoryGUI {
                         List.of(
                                 Text.key("gui_banker.withdraw.everything_subtitle"),
                                 Text.literal(" "),
-                            Text.key("gui_banker.withdraw.current_balance", StringUtility.decimalify(
+                            Text.key("gui_banker.withdraw.current_balance", StringUtility.coinAmount(
                                 player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.BANK_DATA, DatapointBankData.class).getValue().getAmount(), 1)),
                                 Text.literal(" "),
                                 Text.key("gui_banker.withdraw.click")
@@ -173,7 +173,7 @@ public class GUIBankerWithdraw extends HypixelInventoryGUI {
             datapoint.setValue(bankData);
 
             player.addCoins(amount);
-            player.sendMessage(Text.key("gui_banker.withdraw.success", StringUtility.decimalify(amount, 1), StringUtility.decimalify(bankData.getAmount(), 1)));
+            player.sendMessage(Text.key("gui_banker.withdraw.success", StringUtility.coinAmount(amount, 1), StringUtility.coinAmount(bankData.getAmount(), 1)));
             return;
         }
 
@@ -196,7 +196,7 @@ public class GUIBankerWithdraw extends HypixelInventoryGUI {
             case APPLIED -> {
                 player.addCoins(amount);
                 player.sendMessage(Text.key("gui_banker.withdraw.success",
-                        StringUtility.decimalify(amount, 1), StringUtility.decimalify(newBalance[0], 1)));
+                        StringUtility.coinAmount(amount, 1), StringUtility.coinAmount(newBalance[0], 1)));
             }
             case UNCHANGED -> player.sendMessage(Text.key("gui_banker.withdraw.not_enough_coins"));
             default -> player.sendMessage(Text.key("gui_banker.withdraw.coop_busy"));

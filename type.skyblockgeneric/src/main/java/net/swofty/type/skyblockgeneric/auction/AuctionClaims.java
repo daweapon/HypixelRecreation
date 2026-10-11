@@ -96,7 +96,7 @@ public final class AuctionClaims {
             throw failure;
         }
         player.closeInventory();
-        player.sendMessage("<a>Auction claim collected!"+(receipt.coins()>0 ? " <6>+"+receipt.coins()+" coins" : ""));
+        player.sendMessage("<a>Auction claim collected!"+(receipt.coins()>0 ? " <6>+"+net.swofty.commons.StringUtility.commaify(receipt.coins())+" coins" : ""));
     }
 
     static boolean settle(Receipt receipt, DatapointDouble purse, List<UUID> delivered,

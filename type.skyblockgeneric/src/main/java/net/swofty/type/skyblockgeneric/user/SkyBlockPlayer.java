@@ -1019,8 +1019,8 @@ public class SkyBlockPlayer extends HypixelPlayer {
                 && !net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.keepsCoinsOnDeath(this)) {
             double loss = getCoins() / 2;
             double saved = net.swofty.type.skyblockgeneric.accessory.PiggyBank.save(this, loss);
-            if (saved > 0) sendMessage("<a>Your Piggy Bank saved {:.1} coins!", saved);
-            if (loss - saved > 0) sendMessage("<c>You died and lost {:.1} coins!", loss - saved);
+            if (saved > 0) sendMessage("<a>Your Piggy Bank saved {:,} coins!", saved);
+            if (loss - saved > 0) sendMessage("<c>You died and lost {:,} coins!", loss - saved);
             setCoins(getCoins() - (loss - saved));
         }
 

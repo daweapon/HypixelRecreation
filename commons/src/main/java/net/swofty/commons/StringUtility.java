@@ -284,6 +284,16 @@ public final class StringUtility {
 		return d < 1 ? "0" : INTEGER_FORMAT.format(d);
 	}
 
+	public static String coinAmount(double d) {
+		return coinAmount(d, 1);
+	}
+
+	public static String coinAmount(double d, int decimalPlaces) {
+		DecimalFormat df = new DecimalFormat("#,##0." + "#".repeat(Math.max(1, decimalPlaces)));
+		df.setRoundingMode(RoundingMode.CEILING);
+		return df.format(d);
+	}
+
 	public static String decimalify(double d, int decimalPlaces) {
 		if (decimalPlaces < 1)
 			throw new IllegalArgumentException();

@@ -43,10 +43,10 @@ public class CoinsCommand extends HypixelCommand {
         target.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.COINS, DatapointDouble.class).setValue(amount);
 
         if (target == sender) {
-            sender.sendMessage("<a>Successfully set coins to to <e>{}<a>.", amount);
+            sender.sendMessage("<a>Successfully set coins to to <e>{:,}<a>.", amount);
         } else {
-            target.sendMessage("<a>Your coins were set to <e>{}<a>.", amount);
-            sender.sendMessage("<a>Set <e>{}<a>'s coins to <e>{}<a>.", target.getUsername(), amount);
+            target.sendMessage("<a>Your coins were set to <e>{:,}<a>.", amount);
+            sender.sendMessage("<a>Set <e>{}<a>'s coins to <e>{:,}<a>.", target.getUsername(), amount);
         }
     }
 }

@@ -179,7 +179,7 @@ public class GUIAuctionCreateItem extends HypixelInventoryGUI implements Refresh
             public HypixelInventoryGUI onQueryFinish(String query, HypixelPlayer player) {
                 long val;
                 try {
-                    val = Long.parseLong(query);
+                    val = net.swofty.type.skyblockgeneric.utility.CoinAmountParser.parseLong(query);
                 } catch (NumberFormatException ex) {
                     player.sendMessage(Text.key("gui_auction.create.number_parse_error"));
                     return GUIAuctionCreateItem.this;
