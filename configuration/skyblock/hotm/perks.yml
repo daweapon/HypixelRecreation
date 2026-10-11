@@ -188,6 +188,22 @@ perks:
       - "Grants <6>+{value} Ore Fortune<7>."
     effects:
       - {key: "main", stat: "ORE_FORTUNE", base: 0, perLevel: 5, cap: null, scope: "ALWAYS"}
+  - id: professional
+    name: "Professional"
+    kind: "PERK"
+    powder: "GEMSTONE"
+    tier: 4
+    col: 3
+    maxLevel: 140
+    exponent: 2.3
+    offset: 1
+    available: true
+    requires: null
+    verified: true
+    lore:
+      - "Gain <6>+{value} Mining Speed<7> when mining <d>Gemstones<7>."
+    effects:
+      - {key: "main", stat: "MINING_SPEED", base: 50, perLevel: 5, cap: null, scope: "GEMSTONE"}
   - id: mole
     name: "Mole"
     kind: "PERK"

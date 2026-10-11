@@ -145,6 +145,14 @@ public class GUISkyBlockMenu extends StatelessView {
                 Text.key("gui_sbmenu.main.calendar"), getCalendarLore(ctx)),
             (click, c) -> c.push(new GUICalendar()), Duration.ofSeconds(1));
 
+        if (onMiningIsland()) {
+            layout.slot(10, (s, c) -> {
+                SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+                int tier = net.swofty.type.skyblockgeneric.hotm.HotmService.data(player).getTier();
+                return ItemStacks.item(Material.ENDER_EYE, "<5>Heart of the Mountain\n<7>Spend Tokens and Powder on mining perks.\n\n<7>Tier: <5>" + tier + "\n\n<e>Click to view!");
+            }, (click, c) -> c.push(new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotm()));
+        }
+
         layout.slot(19, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             double average = java.util.Arrays.stream(SkillCategories.values())
@@ -327,4 +335,10 @@ public class GUISkyBlockMenu extends StatelessView {
         return eventEndTime - currentElapsedInYear;
     }
 
+
+    private static boolean onMiningIsland() {
+        if (net.swofty.type.generic.HypixelConst.getTypeLoader() == null) return false;
+        ServerType type = net.swofty.type.generic.HypixelConst.getTypeLoader().getType();
+        return type == ServerType.SKYBLOCK_DWARVEN_MINES || type == ServerType.SKYBLOCK_DEEP_CAVERNS || type == ServerType.SKYBLOCK_GOLD_MINE;
+    }
 }
