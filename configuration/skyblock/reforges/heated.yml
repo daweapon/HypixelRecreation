@@ -1,0 +1,22 @@
+name: "Heated"
+id: heated
+prefix: "Heated"
+stoneOnly: true
+applicableTypes:
+  - PICKAXES
+
+statistics:
+  MINING_SPEED:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 25
+    legendary: 40
+    mythic: 55
+  MINING_FORTUNE:
+    common: 3
+    uncommon: 6
+    rare: 9
+    epic: 13
+    legendary: 16
+    mythic: 20

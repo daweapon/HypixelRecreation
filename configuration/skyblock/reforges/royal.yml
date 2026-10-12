@@ -1,0 +1,22 @@
+name: "Royal"
+id: royal
+prefix: "Royal"
+stoneOnly: true
+applicableTypes:
+  - EQUIPMENT
+
+statistics:
+  MINING_SPEED:
+    common: 4
+    uncommon: 6
+    rare: 8
+    epic: 10
+    legendary: 14
+    mythic: 18
+  MINING_FORTUNE:
+    common: 1
+    uncommon: 1
+    rare: 2
+    epic: 2
+    legendary: 3
+    mythic: 3

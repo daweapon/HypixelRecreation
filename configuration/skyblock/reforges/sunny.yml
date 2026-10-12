@@ -1,0 +1,22 @@
+name: "Sunny"
+id: sunny
+prefix: "Sunny"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  SPEED:
+    common: 2
+    uncommon: 3
+    rare: 4
+    epic: 6
+    legendary: 8
+    mythic: 10
+  FARMING_WISDOM:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 4
+    legendary: 5
+    mythic: 6

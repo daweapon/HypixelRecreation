@@ -1,0 +1,29 @@
+name: "Headstrong"
+id: headstrong
+prefix: "Headstrong"
+stoneOnly: true
+applicableTypes:
+  - BOWS
+
+statistics:
+  STRENGTH:
+    common: 2
+    uncommon: 5
+    rare: 10
+    epic: 16
+    legendary: 23
+    mythic: 33
+  CRITICAL_CHANCE:
+    common: 10
+    uncommon: 11
+    rare: 12
+    epic: 13
+    legendary: 15
+    mythic: 17
+  CRITICAL_DAMAGE:
+    common: 4
+    uncommon: 8
+    rare: 16
+    epic: 28
+    legendary: 42
+    mythic: 60

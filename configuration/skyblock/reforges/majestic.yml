@@ -1,0 +1,46 @@
+name: "Majestic"
+id: majestic
+prefix: "Majestic"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+  - EQUIPMENT
+  - SWORDS
+  - BOWS
+  - FISHING_RODS
+  - PICKAXES
+  - AXES
+  - HOES
+  - SPADES
+applicableItems:
+  - SAFARI_BELT
+
+statistics:
+  SWEEP:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2
+    legendary: 3
+    mythic: 4
+  FORAGING_FORTUNE:
+    common: 2
+    uncommon: 4
+    rare: 6
+    epic: 8
+    legendary: 12
+    mythic: 16
+  HUNTER_FORTUNE:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2
+    legendary: 3
+    mythic: 4
+  HUNTING_WISDOM:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2
+    legendary: 3
+    mythic: 4

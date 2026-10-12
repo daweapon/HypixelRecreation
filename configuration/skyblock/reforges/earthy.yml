@@ -1,0 +1,15 @@
+name: "Earthy"
+id: earthy
+prefix: "Earthy"
+stoneOnly: true
+applicableTypes:
+  - HOES
+
+statistics:
+  FARMING_FORTUNE:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 20
+    legendary: 25
+    mythic: 30

@@ -27,6 +27,7 @@ public class ReforgeLoader {
         public String prefix;
         public List<String> applicableTypes;
         public boolean stoneOnly;
+        public List<String> applicableItems;
         public Map<String, ReforgeStatisticData> statistics;
     }
 
@@ -109,7 +110,8 @@ public class ReforgeLoader {
         BiFunction<ItemStatistics, Integer, ItemStatistics> calculation = createCalculationFunction(config.statistics);
 
         String id = config.id == null || config.id.isBlank() ? config.name : config.id;
-        return new Reforge(id, config.name, config.prefix, applicableTypes, config.stoneOnly, calculation);
+        Set<String> applicableItems = config.applicableItems == null ? Set.of() : Set.copyOf(config.applicableItems);
+        return new Reforge(id, config.name, config.prefix, applicableTypes, applicableItems, config.stoneOnly, calculation);
     }
 
     private static BiFunction<ItemStatistics, Integer, ItemStatistics> createCalculationFunction(

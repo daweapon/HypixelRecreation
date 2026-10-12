@@ -1,0 +1,22 @@
+name: "Jaded"
+id: jaded
+prefix: "Jaded"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  MINING_SPEED:
+    common: 5
+    uncommon: 12
+    rare: 20
+    epic: 30
+    legendary: 45
+    mythic: 60
+  MINING_FORTUNE:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 20
+    legendary: 25
+    mythic: 30

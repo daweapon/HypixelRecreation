@@ -1,0 +1,42 @@
+name: "Gilded"
+id: gilded
+prefix: "Gilded"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+  - EQUIPMENT
+  - SWORDS
+  - BOWS
+  - FISHING_RODS
+  - PICKAXES
+  - AXES
+  - HOES
+  - SPADES
+applicableItems:
+  - MIDAS_SWORD
+  - MIDAS_STAFF
+  - STARRED_MIDAS_STAFF
+  - STARRED_MIDAS_SWORD
+
+statistics:
+  DAMAGE:
+    common: 0
+    uncommon: 0
+    rare: 0
+    epic: 0
+    legendary: 75
+    mythic: 90
+  STRENGTH:
+    common: 0
+    uncommon: 0
+    rare: 0
+    epic: 0
+    legendary: 75
+    mythic: 90
+  ABILITY_DAMAGE:
+    common: 0
+    uncommon: 0
+    rare: 0
+    epic: 0
+    legendary: 8
+    mythic: 10

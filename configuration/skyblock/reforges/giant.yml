@@ -1,0 +1,15 @@
+name: "Giant"
+id: giant
+prefix: "Giant"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  HEALTH:
+    common: 50
+    uncommon: 60
+    rare: 80
+    epic: 120
+    legendary: 180
+    mythic: 240

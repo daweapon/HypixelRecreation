@@ -28,7 +28,8 @@ public class ReforgeStoneComponent extends SkyBlockItemComponent {
                     if (!upgradeItem.hasComponent(ReforgableComponent.class)) return false;
                     Reforge reforge = ReforgeLoader.getReforge(reforgeId);
                     return reforge != null && reforge.isApplicableTo(
-                            upgradeItem.getComponent(ReforgableComponent.class).getReforgeType());
+                            upgradeItem.getComponent(ReforgableComponent.class).getReforgeType(),
+                            upgradeItem.getAttributeHandler().getTypeAsString());
                 },
                 (upgradeItem, sacrificeItem, player) -> 0,
                 (player, upgradeItem, sacrificeItem) -> {

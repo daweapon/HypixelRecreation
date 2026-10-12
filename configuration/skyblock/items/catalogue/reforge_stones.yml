@@ -1,0 +1,2812 @@
+items:
+  - id: AMBER_MATERIAL
+    material: paper
+    name: "Amber Material"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Ambered §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§8§oPut a bunch of Amber together and"
+      - "§8§oit'll make more Amber - Throin the"
+      - "§8§oForger."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - ""
+      - "§9Ambered Bonus"
+      - "§7Find §6Goblins §7from mining §a40% §7more"
+      - "§7often."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 30§c."
+    source: "Forged in the Dwarven Mines Forge (HotM VI; 12 Fine Amber Gemstone + Golden Plate; 6h)"
+    components:
+      - id: REFORGE_STONE
+        reforge: ambered
+        required_skill: MINING
+        required_level: 30
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: AOTE_STONE
+    material: paper
+    name: "Warped Stone"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Warped §7reforge when"
+      - "§7combined with §9Aspect of the End§7 and"
+      - "§5Aspect of the Void§7."
+      - ""
+      - "§8§oIf you look deep inside, you risk"
+      - "§8§ofinding yourself somewhere else."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Damage"
+      - " §c Strength"
+      - " §b Intelligence"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 26§c."
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Reward Chests, Catacombs Floor V (also Master Mode); about 0.06% Emerald, 0.3% Obsidian, 0.8% Bedrock chest without bonuses"
+    components:
+      - id: REFORGE_STONE
+        reforge: warped
+        required_skill: MINING
+        required_level: 26
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: BEADY_EYES
+    material: paper
+    name: "Beady Eyes"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Beady §7reforge when"
+      - "§7combined with a §aVacuum§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Damage"
+      - " §b Intelligence"
+      - ""
+      - "§9Beady Bonus"
+      - "§7Grants §6+100 Farming Fortune"
+      - "§7towards §2 Pests§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 15§c."
+    unavailable: "Needs Garden Pests"
+    source: "Rare Pest drop from Fly, 3%"
+    components:
+      - id: REFORGE_STONE
+        reforge: beady
+        required_skill: MINING
+        required_level: 15
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: BLAZEN_SPHERE
+    material: paper
+    name: "Blazen Sphere"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Blazing §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Fortune"
+      - " §c Heat Resistance"
+      - ""
+      - "§9Blazing Bonus"
+      - "§7For every §c1♨ Heat§7, you are §a0.05%"
+      - "§7more likely to find §6Worms§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 27§c."
+    unavailable: "Needs Crystal Hollows"
+    source: "Lava Blaze drop, 1% (Crystal Hollows lava mob)"
+    components:
+      - id: REFORGE_STONE
+        reforge: blazing
+        required_skill: MINING
+        required_level: 27
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: BLESSED_FRUIT
+    material: paper
+    name: "Blessed Fruit"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Blessed §7reforge when"
+      - "§7combined with a §aFarming Tool§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Farming Fortune"
+      - " §f Speed"
+      - " §3☯ Farming Wisdom"
+      - ""
+      - "§9Blessed Bonus"
+      - "§7You have a §a0.25% §7chance to find"
+      - "§7enchanted forms of items when"
+      - "§7harvesting §aCrops§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 25§c."
+    source: "Smithmonger sells it for 1,000,000 coins"
+    components:
+      - id: REFORGE_STONE
+        reforge: blessed
+        required_skill: MINING
+        required_level: 25
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: BLOOMING_THORNS
+    material: paper
+    name: "Blooming Thorns"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Thorny §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §e Overbloom"
+      - " §6 Farming Fortune"
+      - ""
+      - "§9Thorny Bonus"
+      - "§7Grants an additional §e+0.1"
+      - "§eOverbloom §7per tier of §9Thorns §7on all"
+      - "§7of your armor pieces."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 24§c."
+    unavailable: "Thornshade/Thorn Fragment ingredients not built"
+    source: "Crafted: 18 Cactus Flower, 18 Compacted Wild Rose, 4 Thorn Fragment, 2 Thornshade"
+    components:
+      - id: REFORGE_STONE
+        reforge: thorny
+        required_skill: MINING
+        required_level: 24
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: BOO_STONE
+    material: player_head
+    name: "Boo Stone"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§7§8Combinable in Reforge Anvil"
+      - ""
+      - "§7Applies the §9Greater Spook §7reforge"
+      - "§7when combined with §5Great Spook"
+      - "§5§7armor and equipment§7."
+      - ""
+      - "§9Greater Spook §7(§6Legendary§7):"
+      - "§7Fear: §a+5"
+      - ""
+      - "§9Greater Spook Bonus"
+      - "§7Grants §a+1 §5Fear§7."
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    unavailable: "Needs Great Spook event/Tyashoi shop (only a pet-file mention exists)"
+    source: "Bought from Tyashoi Alchemist for 10,000 coins after Great Spook Reforging Manual; Great Spook event only"
+    components:
+      - id: SKULL_HEAD
+        texture: b04ad2524b961d20794575c67da928650a9ade1a0e60e7fde0fb30e577612d84
+      - id: REFORGE_STONE
+        reforge: greater_spook
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: BULKY_STONE
+    material: paper
+    name: "Bulky Stone"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Bulky §7reforge when"
+      - "§7combined with a §cMelee Weapon§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 25§c."
+    unavailable: "Treasure Hunter NPC is a stub (onClick calls notImplemented); treasure mechanic missing; wiki gives no rate"
+    source: "Rare treasure from the Treasure Hunter NPC (rate not listed on wiki)"
+    components:
+      - id: REFORGE_STONE
+        reforge: bulky
+        required_skill: MINING
+        required_level: 25
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: BURROWING_SPORES
+    material: paper
+    name: "Burrowing Spores"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Rooted §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §6 Farming Fortune"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 24§c."
+    unavailable: "Needs Garden/Greenhouse"
+    source: "Garden mushroom breaking (~1/350,000) or Greenhouse Harvest Bounty (~1/500); wiki may be outdated"
+    components:
+      - id: REFORGE_STONE
+        reforge: rooted
+        required_skill: MINING
+        required_level: 24
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: CALCIFIED_HEART
+    material: paper
+    name: "Calcified Heart"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Calcified §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §a Defense"
+      - " §b Fishing Speed"
+      - ""
+      - "§9Calcified Bonus"
+      - "§7Grants §a+25 Defense §7towards §3Sea"
+      - "§3Creatures§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§8§oA cold and hardened heart that was"
+      - "§8§oonce brimming with eager love."
+    source: "Banshee fishing sea creature (Backwater Bayou), 0.1% (was 1%; wiki page possibly outdated)"
+    components:
+      - id: REFORGE_STONE
+        reforge: calcified
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: CANDY_CORN
+    material: paper
+    name: "Candy Corn"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Candied §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - ""
+      - "§9Candied Bonus"
+      - "§7Mobs are §a1%§7 more likely to drop"
+      - "§7candy during the §6Spooky Festival§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    unavailable: "Needs Spooky Festival trick-or-treat chests (only Fear Mongerer leaderboard NPC exists)"
+    source: "Spooky Festival Trick or Treat Chest, about 3.13% per chest (Party Chest rolls 2-4 times at 3.105%)"
+    components:
+      - id: REFORGE_STONE
+        reforge: candied
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: CLIPPED_WINGS
+    material: paper
+    name: "Clipped Wings"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Buzzing §7reforge when"
+      - "§7combined with a §aVacuum§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Farming Fortune"
+      - ""
+      - "§9Buzzing Bonus"
+      - "§7This item deals §cx2 Damage §7towards"
+      - "§2 Pests§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 15§c."
+    unavailable: "Needs Garden Pests"
+    source: "Rare Pest drop from Mosquito, 2%"
+    components:
+      - id: REFORGE_STONE
+        reforge: buzzing
+        required_skill: MINING
+        required_level: 15
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: DEEP_SEA_ORB
+    material: paper
+    name: "Deep Sea Orb"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Submerged §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§8§oThe smell of the deep sea attracts"
+      - "§8§osea monsters."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §9 Crit Chance"
+      - " §b Fishing Speed"
+      - " §3 Sea Creature Chance"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    unavailable: "Needs Spooky Festival sea creatures (not in fishing tables)"
+    source: "Grim Reaper 1%, Phantom Fisher 1% (Spooky Festival fishing), Werewolf 0.1%"
+    components:
+      - id: REFORGE_STONE
+        reforge: submerged
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: DIAMOND_ATOM
+    material: paper
+    name: "Diamond Atom"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Perfect §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§8§oThis miniscule stone is the dream of"
+      - "§8§oevery blacksmith."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §a Defense"
+      - ""
+      - "§9Perfect Bonus"
+      - "§7Grants §a+2%  Defense§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 22§c."
+    unavailable: "Needs Dungeons (Angry Archaeologist is a Catacombs miniboss)"
+    source: "Angry Archaeologist rare loot, 0.2% per kill"
+    components:
+      - id: REFORGE_STONE
+        reforge: perfect
+        required_skill: MINING
+        required_level: 22
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: DIAMONITE
+    material: paper
+    name: "Diamonite"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Fleet §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§8§oMagical form of diamond."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - " §6 Block Fortune"
+      - ""
+      - "§9Fleet Bonus"
+      - "§7Grants §e+50%  Mining Spread"
+      - "§7towards §9Blocks§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 15§c."
+    source: "Forged at The Forge: 3 Refined Diamond, 6h, HotM 2"
+    components:
+      - id: REFORGE_STONE
+        reforge: fleet
+        required_skill: MINING
+        required_level: 15
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: DIRT_BOTTLE
+    material: paper
+    name: "Dirt Bottle"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Dirty §7reforge when"
+      - "§7combined with a §cMelee Weapon§7 or"
+      - "§bFishing Rod§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §e Attack Speed"
+      - " §c Ferocity"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 10§c."
+    source: "Bought from Smithmonger for 100,000 coins"
+    components:
+      - id: REFORGE_STONE
+        reforge: dirty
+        required_skill: MINING
+        required_level: 10
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: DRAGON_CLAW
+    material: paper
+    name: "Dragon Claw"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Fabled §7reforge when"
+      - "§7combined with a §cMelee Weapon§7."
+      - ""
+      - "§8§oDragons rarely use their claws."
+      - "§8§oThey should."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §9 Crit Damage"
+      - ""
+      - "§9Fabled Bonus"
+      - "§9 Crits §7have a chance to deal up to"
+      - "§c+15% §7more §c Damage§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 22§c."
+    unavailable: "Needs the Dragon's Nest Ender Dragon fight and Draconic Altar (neither exists)"
+    source: "Ender Dragon drop at 2% x Summoning Eyes placed (needs over 446 dragon weight); or 2.35% bonus item when sacrificing an Aspect of the Dragons at the Draconic Altar"
+    components:
+      - id: REFORGE_STONE
+        reforge: fabled
+        required_skill: MINING
+        required_level: 22
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: DRAGON_HORN
+    material: paper
+    name: "Dragon Horn"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Renowned §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - " §c Strength"
+      - " §9 Crit Chance"
+      - " §9 Crit Damage"
+      - " §e Attack Speed"
+      - " §b Intelligence"
+      - " §f Speed"
+      - ""
+      - "§9Renowned Bonus"
+      - "§7Grants §b+1%  Magic Find §7and §c+1% §7to"
+      - "§7ALL §cCombat Stats§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 25§c."
+    unavailable: "Dragon fight drop table not found in repo (only DragonEntity); verify End dragon fight"
+    source: "Superior Dragon drop, 30% base once 448+ Dragon Weight"
+    components:
+      - id: REFORGE_STONE
+        reforge: renowned
+        required_skill: MINING
+        required_level: 25
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: DRAGON_SCALE
+    material: paper
+    name: "Dragon Scale"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Spiked §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§8§oSome people say it is harder than"
+      - "§8§odiamond. Hard to tell, really."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - " §c Strength"
+      - " §9 Crit Chance"
+      - " §9 Crit Damage"
+      - " §e Attack Speed"
+      - " §b Intelligence"
+      - " §f Speed"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 20§c."
+    unavailable: "Needs Dungeons/Dragons Nest (Dragon Weight not implemented)"
+    source: "Young Dragon drop (30% base at 296+ Dragon Weight); Superior Lost Adventurer in Catacombs 0.1%"
+    components:
+      - id: REFORGE_STONE
+        reforge: spiked
+        required_skill: MINING
+        required_level: 20
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: DWARVEN_TREASURE
+    material: paper
+    name: "Dwarven Treasure"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Royal §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - " §6 Mining Fortune"
+      - ""
+      - "§9Royal Bonus"
+      - "§7Earn §2+15% ᠅ Mithril Powder §7from"
+      - "§bMining Events §7in the §2Dwarven Mines§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 14§c."
+    unavailable: "Mining events (Goblin Raid, Raffle, Double Powder) only exist as an enum for commissions, no running events"
+    source: "Dwarven Mines Mining Event participation, 20% chance per event"
+    components:
+      - id: REFORGE_STONE
+        reforge: royal
+        required_skill: MINING
+        required_level: 14
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: ENDSTONE_GEODE
+    material: paper
+    name: "End Stone Geode"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Hyper §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §e Attack Speed"
+      - " §f Speed"
+      - ""
+      - "§9Hyper Bonus"
+      - "§7Grants §f+5 Speed §7for §a5s §7after"
+      - "§7using a §6Transmission §7ability."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 14§c."
+    unavailable: "Ender Nodes not built"
+    source: "Mining End Stone Ender Nodes in The End, ~1.43%"
+    components:
+      - id: REFORGE_STONE
+        reforge: hyper
+        required_skill: MINING
+        required_level: 14
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: EXTREMELY_MILD_ADHESIVE
+    material: paper
+    name: "Extremely Mild Adhesive"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Sticky §7reforge when"
+      - "§7combined with a §bFishing Net§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §b Pull"
+      - ""
+      - "§9Sticky Bonus"
+      - "§7Grants §d+2.5 Hunting Fortune"
+      - "§7towards §9Water Shards§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 10§c."
+    unavailable: "Miria NPC/coupon shop not built"
+    source: "Bought from Miria for 100 Miria's Coupons"
+    components:
+      - id: REFORGE_STONE
+        reforge: sticky
+        required_skill: MINING
+        required_level: 10
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: FLOWERING_BOUQUET
+    material: paper
+    name: "Flowering Bouquet"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Blooming §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Farming Fortune"
+      - " §f Speed"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 13§c."
+    unavailable: "Needs the Garden and Garden Visitors (not built)"
+    source: "Garden Visitor offer completion, 2% (1/50) chance"
+    components:
+      - id: REFORGE_STONE
+        reforge: blooming
+        required_skill: MINING
+        required_level: 13
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: FRIGID_HUSK
+    material: paper
+    name: "Frigid Husk"
+    rarity: LEGENDARY
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Glacial §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§8§oSpread like a sickness through the"
+      - "§8§otunnels, sucking the life from"
+      - "§8§oeverything it covered."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Fortune"
+      - ""
+      - "§9Glacial Bonus"
+      - "§7Grants §6+2 Mining Fortune §7for"
+      - "§7every §b1❄ Cold §7you have."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 30§c."
+    source: "Forged: 4 Glacite Amalgamation + 1 Flawless Onyx, 6h, Glacite 5 & HotM 7"
+    components:
+      - id: REFORGE_STONE
+        reforge: glacial
+        required_skill: MINING
+        required_level: 30
+        common_cost: 500000
+        uncommon_cost: 500000
+        rare_cost: 500000
+        epic_cost: 500000
+        legendary_cost: 500000
+        mythic_cost: 500000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: FROZEN_BAUBLE
+    material: paper
+    name: "Frozen Bauble"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Festive §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §b Intelligence"
+      - " §b Fishing Speed"
+      - " §3 Sea Creature Chance"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 20§c."
+    unavailable: "Terry NPC is decorative only, no shop"
+    source: "Bought from Terry at Jerry's Workshop for 64 Hunk of Ice + 32 Hunk of Blue Ice"
+    components:
+      - id: REFORGE_STONE
+        reforge: festive
+        required_skill: MINING
+        required_level: 20
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: FULL_JAW_FANGING_KIT
+    material: paper
+    name: "Full-Jaw Fanging Kit"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Fanged §7reforge when"
+      - "§7combined with a §cMelee Weapon§7."
+      - ""
+      - "§8§oFangs! Very menacing."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §9 Crit Chance"
+      - " §e Attack Speed"
+      - " §4 Vitality"
+      - ""
+      - "§9Fanged Bonus"
+      - "§7Every §c7th §7melee hit on a mob deals"
+      - "§c+100%  Damage§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 13§c."
+    unavailable: "Needs Hemovibe/Hemoglass (Glacite Mineshaft content); not a drop"
+    source: "Crafted: 3 Enchanted Bone Block, 3 Enchanted Redstone Block, 32 Hemoglass; requires Hemovibe VII"
+    components:
+      - id: REFORGE_STONE
+        reforge: fanged
+        required_skill: MINING
+        required_level: 13
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: GEOMETRIC_ODDITY
+    material: paper
+    name: "Geometric Oddity"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Geometric §7reforge when"
+      - "§7combined with §aFroggles§7, §9Silver"
+      - "§9Froggles§7, §5Golden Froggles§7, and"
+      - "§6Diamond Froggles§7."
+      - ""
+      - "§8§oA man, who knows not where he is"
+      - "§8§onor where he has been, reaches into"
+      - "§8§ohis pocket."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §b Fishing Speed"
+      - " §6 Trophy Chance"
+      - ""
+      - "§9Geometric Bonus"
+      - "§7Gain a §a+5%§7 chance to catch a bonus"
+      - "§6Trophy §7while fishing in a §dWormhole§f."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 15§c."
+    unavailable: "Rusty Coin/Frogcoin ingredients not built"
+    source: "Crafted: 64 Treasure Bait, 32 Ink Sac, 16 Rusty Coin, 8 Frogcoin, 1 Reforge Stone (reversed)"
+    components:
+      - id: REFORGE_STONE
+        reforge: geometric
+        required_skill: MINING
+        required_level: 15
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: GIANT_TOOTH
+    material: paper
+    name: "Giant Tooth"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Giant §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§8§oSuper clean, great hygiene."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 25§c."
+    unavailable: "Needs Dungeons"
+    source: "Catacombs F6 / Master F6 reward chests (~2.2-11.9%); Sadan collection claim"
+    components:
+      - id: REFORGE_STONE
+        reforge: giant
+        required_skill: MINING
+        required_level: 25
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: GLEAMING_CRYSTAL
+    material: paper
+    name: "Gleaming Crystal"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Lustrous §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - " §6 Mining Fortune"
+      - ""
+      - "§9Lustrous Bonus"
+      - "§7Grants §e+25 Mining Spread §7while"
+      - "§bMayor Cole's §6Mining Fiesta §7perk is"
+      - "§7active."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 24§c."
+    source: "Forged in the Forge (8h; 32 Glossy Gemstone, 1 Refined Mithril, 2 Refined Diamond; needs HotM IV); also a Raffle of the Century medium reward"
+    components:
+      - id: REFORGE_STONE
+        reforge: lustrous
+        required_skill: MINING
+        required_level: 24
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: HARDENED_WOOD
+    material: paper
+    name: "Hardened Wood"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Stiff §7reforge when"
+      - "§7combined with a §bFishing Rod§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §3 Sea Creature Chance"
+      - ""
+      - "§9Stiff Bonus"
+      - "§3Sea Creatures §7killed with this §bFishing"
+      - "§bRod §7drop §a+1 Chum§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 12§c."
+    unavailable: "Jake/Oasis animals not built"
+    source: "Bought from Jake for 15,000 coins after delivering an Oasis Sheep"
+    components:
+      - id: REFORGE_STONE
+        reforge: stiff
+        required_skill: MINING
+        required_level: 12
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: HASHBROWN
+    material: paper
+    name: "Hashbrown"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Deep Fried §7reforge when"
+      - "§7combined with a §aFarming Tool§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Farming Fortune"
+      - ""
+      - "§9Deep Fried Bonus"
+      - "§7Find Seasonings §a25% §7more often"
+      - "§7during the §eFeast§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    unavailable: "Sunflower Oil / Deepfry items not present"
+    source: "Crafted from 8 Sunflower Oil, 12 Deepfries, 16 Enchanted Baked Potatoes"
+    components:
+      - id: REFORGE_STONE
+        reforge: deep_fried
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: HOT_STUFF
+    material: paper
+    name: "Scorched Topaz"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Heated §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§8§oOooh, das hot!"
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - " §6 Mining Fortune"
+      - ""
+      - "§9Heated Bonus"
+      - "§7Grants §6+1 Mining Fortune §7and §6+4"
+      - "§6Mining Speed §7per §c1♨ Heat §7you have."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    source: "Forged in the Forge (6h; 128 Enchanted Hard Stone, 1 Flawless Topaz Gemstone; needs HotM IV and Hard Stone IV)"
+    components:
+      - id: REFORGE_STONE
+        reforge: heated
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: JADERALD
+    material: paper
+    name: "Jaderald"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Jaded §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§8§oExtremely rare stone, only found in"
+      - "§8§othe Crystal Hollows."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - " §6 Mining Fortune"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 30§c."
+    unavailable: "Needs Crystal Hollows"
+    source: "Crystal Nucleus Treasure Stash, ~0.47%"
+    components:
+      - id: REFORGE_STONE
+        reforge: jaded
+        required_skill: MINING
+        required_level: 30
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: LAPIS_CRYSTAL
+    material: paper
+    name: "Lapis Crystal"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Magnetic §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - ""
+      - "§9Magnetic Bonus"
+      - "§7Earn §a+100% §7more Exp when mining."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    source: "Lapis Zombie drop, 1% (Deep Caverns/Gold Mine)"
+    components:
+      - id: REFORGE_STONE
+        reforge: magnetic
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: LARGE_WALNUT
+    material: paper
+    name: "Large Walnut"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Earthy §7reforge when"
+      - "§7combined with a §aFarming Tool§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Farming Fortune"
+      - ""
+      - "§9Earthy Bonus"
+      - "§7Earn §2+5% Sowdust §7from farming."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 12§c."
+    unavailable: "Needs Garden Copper currency and SkyMart (not built)"
+    source: "Bought from SkyMart for 150 Copper"
+    components:
+      - id: REFORGE_STONE
+        reforge: earthy
+        required_skill: MINING
+        required_level: 12
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: LUCKY_DICE
+    material: paper
+    name: "Lucky Dice"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Lucky §7reforge when"
+      - "§7combined with a §bFishing Rod§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §3 Sea Creature Chance"
+      - " §b Magic Find"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 24§c."
+    unavailable: "Jake/Oasis animals not built"
+    source: "Bought from Jake for 1,000,000 coins after delivering an Oasis Rabbit"
+    components:
+      - id: REFORGE_STONE
+        reforge: lucky
+        required_skill: MINING
+        required_level: 24
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: MANGROVE_GEM
+    material: paper
+    name: "Mangrove Gem"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Groovy §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Foraging Fortune"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 30§c."
+    source: "Crafted from 144 Enchanted Mangrove Logs, needs Mangrove Log collection V"
+    components:
+      - id: REFORGE_STONE
+        reforge: groovy
+        required_skill: MINING
+        required_level: 30
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: MANTID_CLAW
+    material: paper
+    name: "Mantid Claw"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Mantid §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §2 Bonus Pest Chance"
+      - " §6 Farming Fortune"
+      - ""
+      - "§9Mantid Bonus"
+      - "§7Grants §2+0.25 Bonus Pest Chance"
+      - "§7per §2 Pest §7killed for §a10 minutes§7."
+      - "§7Caps at §25 Bonus Pest Chance§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 22§c."
+    unavailable: "Needs Garden pests / Praying Mantis mob (only exists as a hunting shard)"
+    source: "Praying Mantis drop, 2% (wiki links to Pest rare drops, so likely a Garden pest drop)"
+    components:
+      - id: REFORGE_STONE
+        reforge: mantid
+        required_skill: MINING
+        required_level: 22
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: MARSHROOM
+    material: paper
+    name: "Marshroom"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Marshy §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§8§oA rare type of mushroom native to"
+      - "§8§othe Moonglade Marsh."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §b Fishing Speed"
+      - " §3 Sea Creature Chance"
+      - " §6 Foraging Fortune"
+      - ""
+      - "§9Marshy Bonus"
+      - "§7Earn §3+1% Forest Whispers §7from"
+      - "§7foraging."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    unavailable: "Wet Water/Stretching Sticks not built"
+    source: "Crafted (Vinesap 8): 4 Enchanted Vinesap, 16 Wet Water, 64 Stretching Sticks"
+    components:
+      - id: REFORGE_STONE
+        reforge: marshy
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: MIDAS_JEWEL
+    material: paper
+    name: "Midas Jewel"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Gilded §7reforge when"
+      - "§7combined with §6Midas Staff§7, §6 Midas"
+      - "§6Staff§7, §6Midas' Sword§7, and §6 Midas'"
+      - "§6Sword§7."
+      - ""
+      - "§8§oMidas' most prized possession - a"
+      - "§8§ogift from his older brother, whose"
+      - "§8§oboundless generosity got the better"
+      - "§8§oof him. While he always admired his"
+      - "§8§obrother, Midas swore his kingdom"
+      - "§8§owould not end the same way."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Damage"
+      - " §c Strength"
+      - " §c Ability Damage"
+      - ""
+      - "§9Byron's Compassion §8(Gilded)"
+      - "§7Killing a mob has a rare chance to"
+      - "§7grant §6Coins §7to a nearby player."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 25§c."
+    unavailable: "King Midas mob not built (only price/anvil code)"
+    source: "King Midas drop, 1% (Dark Auction/Midas fight)"
+    components:
+      - id: REFORGE_STONE
+        reforge: gilded
+        required_skill: MINING
+        required_level: 25
+        common_cost: 0
+        uncommon_cost: 0
+        rare_cost: 0
+        epic_cost: 0
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: MOIL_LOG
+    material: paper
+    name: "Moil Log"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Moil §7reforge when"
+      - "§7combined with an §2Axe§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Foraging Fortune"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 5§c."
+    source: "Smithmonger sells it for 50,000 coins"
+    components:
+      - id: REFORGE_STONE
+        reforge: moil
+        required_skill: MINING
+        required_level: 5
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: MOONGLADE_JEWEL
+    material: paper
+    name: "Moonglade Jewel"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Moonglade §7reforge when"
+      - "§7combined with an §2Axe§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Foraging Fortune"
+      - " §3☯ Foraging Wisdom"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 12§c."
+    unavailable: "Agatha's shop/coupons not built"
+    source: "Bought from Agatha for 50 Agatha's Coupons"
+    components:
+      - id: REFORGE_STONE
+        reforge: moonglade
+        required_skill: MINING
+        required_level: 12
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: MOONSTONE
+    material: paper
+    name: "Moonstone"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Lunar §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §f Speed"
+      - " §3☯ Farming Wisdom"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 11§c."
+    source: "Crafted: 8 Fine Amethyst Gemstone + 8 Compacted Moonflower, needs Moonflower VII"
+    components:
+      - id: REFORGE_STONE
+        reforge: lunar
+        required_skill: MINING
+        required_level: 11
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: MORNING_DEW
+    material: paper
+    name: "Morning Dew"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Majestic §7reforge when"
+      - "§7combined with §fSafari Belt§7."
+      - ""
+      - "§8§oThat, too, soon fades away, along"
+      - "§8§owith a single tear, like morning dew."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §2 Sweep"
+      - " §6 Foraging Fortune"
+      - " §d Hunting Fortune"
+      - " §3☯ Hunting Wisdom"
+      - ""
+      - "§9Majestic Bonus"
+      - "§7Grants §f+50 Speed §7while in the "
+      - "§2Critter Safari§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    unavailable: "Needs Hunting / Critter Safari (the essence shop JSON exists but there is no Archie NPC or Safari)"
+    source: "Safari Essence Shop (Archie) for 2,500 Safari Essence"
+    components:
+      - id: REFORGE_STONE
+        reforge: majestic
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: NECROMANCER_BROOCH
+    material: paper
+    name: "Necromancer's Brooch"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Necrotic §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§8§oRewarded to every Necromancer who"
+      - "§8§opasses the final exam."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §b Intelligence"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 19§c."
+    unavailable: "Needs Dungeons"
+    source: "Dungeon reward chests, Catacombs F1-F4 and Master"
+    components:
+      - id: REFORGE_STONE
+        reforge: necrotic
+        required_skill: MINING
+        required_level: 19
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: ONYX
+    material: paper
+    name: "Black Diamond"
+    rarity: COMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Fruitful §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - " §6 Mining Fortune"
+      - ""
+      - "§9Fruitful Bonus"
+      - "§7Grants §a+75 Defense §7while on §6Mining"
+      - "§6Islands§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    source: "Bought from Mining Merchant (Hub) for 100 coins"
+    components:
+      - id: REFORGE_STONE
+        reforge: fruitful
+        common_cost: 5000
+        uncommon_cost: 5000
+        rare_cost: 5000
+        epic_cost: 5000
+        legendary_cost: 5000
+        mythic_cost: 5000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: OPTICAL_LENS
+    material: paper
+    name: "Optical Lens"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Precise §7reforge when"
+      - "§7combined with a §cBow§7."
+      - ""
+      - "§8§oThis vicious material can sometimes"
+      - "§8§obe found on the floor of The"
+      - "§8§oCatacombs."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §9 Crit Chance"
+      - " §9 Crit Damage"
+      - ""
+      - "§9Precise Bonus"
+      - "§7Deal §c+10%  Damage §7when hitting a"
+      - "§7mob's head."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 22§c."
+    unavailable: "Needs Dungeons"
+    source: "The Watcher (Catacombs miniboss) drop, 1.23% per kill"
+    components:
+      - id: REFORGE_STONE
+        reforge: precise
+        required_skill: MINING
+        required_level: 22
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: OVERFLOWING_TRASH_CAN
+    material: paper
+    name: "Overflowing Trash Can"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Trashy §7reforge when"
+      - "§7combined with a §bFishing Rod§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §b Fishing Speed"
+      - " §3 Sea Creature Chance"
+      - ""
+      - "§9Trashy Bonus"
+      - "§7Grants §6+1 Treasure Chance §7while"
+      - "§7in the  §2Backwater Bayou§7."
+      - ""
+      - "§4❣ §cRequires §aMining Skill 3§c."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    source: "Dumpster Diver sea creature drop (wiki says 0.5%, changelog says 1%: inconsistent)"
+    components:
+      - id: REFORGE_STONE
+        reforge: trashy
+        required_skill: MINING
+        required_level: 3
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: OVERGROWN_GRASS
+    material: paper
+    name: "Overgrown Grass"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Mossy §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Farming Fortune"
+      - " §f Speed"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 23§c."
+    unavailable: "Garden visitors/Greenhouse not built"
+    source: "Garden Visitors 0.1% / Greenhouse Harvest Bounties 0.1% / DNA Analysis milestone II"
+    components:
+      - id: REFORGE_STONE
+        reforge: mossy
+        required_skill: MINING
+        required_level: 23
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: OVERPRICED_DRINK
+    material: paper
+    name: "Overpriced Drink"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Overpriced §7reforge when"
+      - "§7combined with a §aFarming Tool§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §e Overbloom"
+      - " §6 Farming Fortune"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    unavailable: "Needs Aggourdian / Designer Coffee Beans (Hunting or Rift-era content, not built); not a drop"
+    source: "Crafted: 8 Aggourdian, 8 Designer Coffee Beans, 1 Glass Bottle (recipe changed July 2026)"
+    components:
+      - id: REFORGE_STONE
+        reforge: overpriced
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: PETRIFIED_STARFALL
+    material: paper
+    name: "Petrified Starfall"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Stellar §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§8§oIt's not actually a star."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - " §6 Mining Fortune"
+      - ""
+      - "§9Stellar Bonus"
+      - "§7Earn §2+20% ᠅ Mithril Powder §7and"
+      - "§6+75 Mining Fortune §7when mining"
+      - "§7near §5 Fallen Stars§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 26§c."
+    source: "Forged at The Forge: 512 Starfall, 6h, HotM 3"
+    components:
+      - id: REFORGE_STONE
+        reforge: stellar
+        required_skill: MINING
+        required_level: 26
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: POCKET_ICEBERG
+    material: paper
+    name: "Pocket Iceberg"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Scraped §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§8§oWoah, woah, too many drops!"
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §2 Breaking Power"
+      - " §3☯ Mining Wisdom"
+      - ""
+      - "§9Scraped Bonus"
+      - "§7If the block you are mining has the"
+      - "§7same §2 Breaking Power §7as this item,"
+      - "§6+25 Mining Fortune§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 25§c."
+    source: "Forged (HotM II; 5 Glacite Jewel; 6h)"
+    components:
+      - id: REFORGE_STONE
+        reforge: scraped
+        required_skill: MINING
+        required_level: 25
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: PRECURSOR_GEAR
+    material: paper
+    name: "Precursor Gear"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Ancient §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - " §c Strength"
+      - " §9 Crit Chance"
+      - " §b Intelligence"
+      - ""
+      - "§9Ancient Bonus"
+      - "§7Grants §9+1 Crit Damage §7per"
+      - "§cCatacombs §7skill level you have."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 30§c."
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Reward Chests, Catacombs Floor VII (and Master Mode); about 3.7% Gold up to about 20.7% Bedrock chest"
+    components:
+      - id: REFORGE_STONE
+        reforge: ancient
+        required_skill: MINING
+        required_level: 30
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: PREMIUM_FLESH
+    material: paper
+    name: "Premium Flesh"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Undead §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§8§oThe Zombie it came from was"
+      - "§8§oprobably a great warrior before its"
+      - "§8§odeath."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - " §c Strength"
+      - " §e Attack Speed"
+      - ""
+      - "§9Undead Bonus"
+      - "§7Take §c-2%  Damage §7from §2 Undead"
+      - "§7mobs."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 16§c."
+    unavailable: "Needs Dungeons"
+    source: "Dungeon zombies (Zombie Knight 0.2%, others 0.1%)"
+    components:
+      - id: REFORGE_STONE
+        reforge: undead
+        required_skill: MINING
+        required_level: 16
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: PRESUMED_GALLON_OF_RED_PAINT
+    material: paper
+    name: "Presumed Gallon of Red Paint"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Blood-Soaked §7reforge"
+      - "§7when combined with a §9Cloak§7."
+      - ""
+      - "§8§oNot sure if paint."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - " §4 Vitality"
+      - ""
+      - "§9Blood-Soaked Bonus"
+      - "§7Adds §d+1 Level §7to your §9Life Steal§7,"
+      - "§9Drain§7, and §9Vampirism §7enchantments."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 24§c."
+    unavailable: "Hemoglass/Hemovibe (Rift) not built"
+    source: "Crafted: 32 Hemoglass, 32 Ench Cobblestone, 80 Ench Dark Oak Log; Hemovibe VIII"
+    components:
+      - id: REFORGE_STONE
+        reforge: blood_soaked
+        required_skill: MINING
+        required_level: 24
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: PURE_MITHRIL
+    material: paper
+    name: "Pure Mithril"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Mithraic §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§8§oIt takes a few hours of forging to"
+      - "§8§opurify Mithril - the impurities extract"
+      - "§8§othemselves while the Mithril coalesces."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Fortune"
+      - ""
+      - "§9Mithraic Bonus"
+      - "§7Grants §6+50 Mining Fortune §7towards"
+      - "§aMithril §7and §aTitanium§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 18§c."
+    source: "Forged in the Forge (6h; 2 Refined Mithril; needs HotM III)"
+    components:
+      - id: REFORGE_STONE
+        reforge: mithraic
+        required_skill: MINING
+        required_level: 18
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: RARE_DIAMOND
+    material: paper
+    name: "Rare Diamond"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Reinforced §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §a Defense"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 8§c."
+    source: "0.2% when mining Diamonds in Diamond Reserve / Obsidian Sanctuary (Deep Caverns)"
+    components:
+      - id: REFORGE_STONE
+        reforge: reinforced
+        required_skill: MINING
+        required_level: 8
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: RED_NOSE
+    material: paper
+    name: "Red Nose"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Ridiculous §7reforge when"
+      - "§7combined with a §cHelmet§7."
+      - ""
+      - "§8§oBonzo never wears it in the"
+      - "§8§opresence of other Necromancers."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - " §9 Crit Chance"
+      - ""
+      - "§9Ridiculous Bonus"
+      - "§e§lSNEAK§7: Fart, granting §a+30 Defense"
+      - "§7and §b+50 Mana §7for §a5s§7, but inflicts"
+      - "§9-20%  Crit Chance §7for §a20s§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 17§c."
+    unavailable: "Needs Dungeons"
+    source: "Bonzo (Catacombs F1) drop / F1 chests, ~1.2-9%; Bonzo collection claim"
+    components:
+      - id: REFORGE_STONE
+        reforge: ridiculous
+        required_skill: MINING
+        required_level: 17
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: RED_SCARF
+    material: paper
+    name: "Red Scarf"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Loving §7reforge when"
+      - "§7combined with a §cChestplate§7."
+      - ""
+      - "§8§oGiven by his mother. Scarf always"
+      - "§8§ostudied harder than everyone else,"
+      - "§8§ohoping that one day he could bring"
+      - "§8§oher back."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - " §b Intelligence"
+      - ""
+      - "§9Loving Bonus"
+      - "§7Grants §c+5%  Ability Damage§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 21§c."
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Reward Chests, Catacombs Floor II (about 0.6-2.8%); or claim one from Scarf collection tier I after defeating Scarf 25 times"
+    components:
+      - id: REFORGE_STONE
+        reforge: loving
+        required_skill: MINING
+        required_level: 21
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: REFINED_AMBER
+    material: paper
+    name: "Andesite Whetstone"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Refined §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §3☯ Mining Wisdom"
+      - ""
+      - "§9Refined Bonus"
+      - "§7You have a §a0.25% §7chance to find"
+      - "§7enchanted forms of items when mining"
+      - "§6Ores§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 25§c."
+    source: "Bought from Smithmonger for 1,000,000 coins (item is Andesite Whetstone)"
+    components:
+      - id: REFORGE_STONE
+        reforge: refined
+        required_skill: MINING
+        required_level: 25
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: ROCK_GEMSTONE
+    material: paper
+    name: "Dwarven Geode"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Auspicious §7reforge when"
+      - "§7combined with a §6Mining Tool§7."
+      - ""
+      - "§8§oThe lowest gemstone in the food"
+      - "§8§ochain."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - " §6 Mining Fortune"
+      - ""
+      - "§9Auspicious Bonus"
+      - "§7Grants §6+1%  Mining Fortune§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 21§c."
+    source: "Forged (HotM III; 128 Ench Cobblestone + 64 Treasurite; 6h)"
+    components:
+      - id: REFORGE_STONE
+        reforge: auspicious
+        required_skill: MINING
+        required_level: 21
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: RUSTY_ANCHOR
+    material: paper
+    name: "Rusty Anchor"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Treacherous §7reforge"
+      - "§7when combined with a §bFishing Rod§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §3 Sea Creature Chance"
+      - " §6 Treasure Chance"
+      - ""
+      - "§9Treacherous Bonus"
+      - "§7Earn §b+20% Ice Essence §7from"
+      - "§6§lTREASURE §7catches."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    unavailable: "Terry NPC exists but is decorative only; no Hunk of Blue Ice shop"
+    source: "Bought from Terry for 64 Hunk of Blue Ice (Jerry's Workshop ice fishing)"
+    components:
+      - id: REFORGE_STONE
+        reforge: treacherous
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: SADAN_BROOCH
+    material: paper
+    name: "Sadan's Brooch"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Empowered §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§8§oVery original..."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Health"
+      - " §a Defense"
+      - ""
+      - "§9Empowered Bonus"
+      - "§7Grants §a+10 Mending §7while in"
+      - "§7 §cDungeons§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 25§c."
+    unavailable: "Needs Dungeons"
+    source: "Dungeon reward chests, Catacombs F6 and Master (1-3.6%)"
+    components:
+      - id: REFORGE_STONE
+        reforge: empowered
+        required_skill: MINING
+        required_level: 25
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: SALMON_OPAL
+    material: paper
+    name: "Kaleidoscopic Mineral"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Headstrong §7reforge"
+      - "§7when combined with a §cBow§7."
+      - ""
+      - "§8§ohttps://en.wikipedia.org/wiki/Opal."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §9 Crit Chance"
+      - " §9 Crit Damage"
+      - ""
+      - "§9Headstrong Bonus"
+      - "§7Deal §c+8%  Damage §7when hitting a"
+      - "§7mob's head."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 15§c."
+    source: "Treasure Hoarder drop, 1% (Dwarven Mines)"
+    components:
+      - id: REFORGE_STONE
+        reforge: headstrong
+        required_skill: MINING
+        required_level: 15
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: SALT_CUBE
+    material: paper
+    name: "Salt Cube"
+    rarity: UNCOMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Salty §7reforge when"
+      - "§7combined with a §bFishing Rod§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §3 Sea Creature Chance"
+      - ""
+      - "§9Salty Bonus"
+      - "§7This gives §ax2 stats §7while on "
+      - "§cJerry's Workshop§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+    unavailable: "Terry NPC exists but is decorative only; no Hunk of Ice shop"
+    source: "Bought from Terry for 64 Hunk of Ice (Jerry's Workshop ice fishing)"
+    components:
+      - id: REFORGE_STONE
+        reforge: salty
+        common_cost: 25000
+        uncommon_cost: 25000
+        rare_cost: 25000
+        epic_cost: 25000
+        legendary_cost: 25000
+        mythic_cost: 25000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: SHRIVELED_CORNEA
+    material: paper
+    name: "Shriveled Cornea"
+    rarity: LEGENDARY
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Bloodshot §7reforge when"
+      - "§7combined with a §9Belt§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §9 Crit Chance"
+      - " §9 Crit Damage"
+      - ""
+      - "§9Bloodshot Bonus"
+      - "§7When killing an enemy, you have a"
+      - "§a2.5%§7 chance to cocoon them!"
+      - "§7Cocooned enemies will quickly hatch,"
+      - "§7and can be killed again."
+      - "§8(Cannot trigger in Dungeons, Kuudra,"
+      - "§8or on Bosses)."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 26§c."
+    unavailable: "Shriveled Wasp not built"
+    source: "Crafted (Spider Slayer 8): 4 Shriveled Wasp + 64 Enchanted Eye of Ender; or Raffle of the Century"
+    components:
+      - id: REFORGE_STONE
+        reforge: bloodshot
+        required_skill: MINING
+        required_level: 26
+        common_cost: 500000
+        uncommon_cost: 500000
+        rare_cost: 500000
+        epic_cost: 500000
+        legendary_cost: 500000
+        mythic_cost: 500000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: SKYMART_BROCHURE
+    material: paper
+    name: "SkyMart Brochure"
+    rarity: COMMON
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Bustling §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Farming Fortune"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 9§c."
+    unavailable: "Garden SkyMart/Copper shop not built"
+    source: "Bought from SkyMart for 100 Copper (Garden)"
+    components:
+      - id: REFORGE_STONE
+        reforge: bustling
+        required_skill: MINING
+        required_level: 9
+        common_cost: 5000
+        uncommon_cost: 5000
+        rare_cost: 5000
+        epic_cost: 5000
+        legendary_cost: 5000
+        mythic_cost: 5000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: SPIRIT_DECOY
+    material: paper
+    name: "Spirit Stone"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Spiritual §7reforge when"
+      - "§7combined with a §cBow§7."
+      - ""
+      - "§8§oAs light as a feather, and you can"
+      - "§8§oalmost see through it. Some people"
+      - "§8§osay looking at it for too long can"
+      - "§8§ochange your personality."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - " §9 Crit Chance"
+      - " §9 Crit Damage"
+      - ""
+      - "§9Spiritual Bonus"
+      - "§7Killing an enemy has a §a10% §7chance to"
+      - "§7spawn a Spirit Decoy while in "
+      - "§cDungeons§7."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 24§c."
+    unavailable: "Needs Dungeons"
+    source: "Thorn I collection reward (kill Thorn 50 times) or Dungeon Reward Chests, Catacombs Floor IV (about 1% to 7%)"
+    components:
+      - id: REFORGE_STONE
+        reforge: spiritual
+        required_skill: MINING
+        required_level: 24
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: SQUEAKY_TOY
+    material: paper
+    name: "Squeaky Toy"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Squeaky §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§8§oSo lifelike!"
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §2 Bonus Pest Chance"
+      - " §6 Farming Fortune"
+      - ""
+      - "§9Squeaky Bonus"
+      - "§2 Pests §7spawn §a2.5% §7faster."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 21§c."
+    unavailable: "Needs Garden Pests"
+    source: "Rare Pest drop from Field Mouse, 5%"
+    components:
+      - id: REFORGE_STONE
+        reforge: squeaky
+        required_skill: MINING
+        required_level: 21
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: SUNSTONE
+    material: paper
+    name: "Sunstone"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Sunny §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §f Speed"
+      - " §3☯ Farming Wisdom"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 11§c."
+    source: "Crafted: 8 Compacted Sunflower + 8 Fine Topaz Gemstone, needs Sunflower VII"
+    components:
+      - id: REFORGE_STONE
+        reforge: sunny
+        required_skill: MINING
+        required_level: 11
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: SUSPICIOUS_VIAL
+    material: paper
+    name: "Suspicious Vial"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Suspicious §7reforge when"
+      - "§7combined with a §cMelee Weapon§7."
+      - ""
+      - "§8§oSmells like fish."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §9 Crit Chance"
+      - " §9 Crit Damage"
+      - ""
+      - "§9Suspicious Bonus"
+      - "§7Adds §c+15 Damage §7to this item's"
+      - "§7base stats."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 23§c."
+    unavailable: "Needs Dungeons"
+    source: "The Professor I collection reward (kill 25 times) or Dungeon Reward Chests, Catacombs Floor III (about 3% to 18%)"
+    components:
+      - id: REFORGE_STONE
+        reforge: suspicious
+        required_skill: MINING
+        required_level: 23
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: TERRY_SNOWGLOBE
+    material: paper
+    name: "Terry's Snowglobe"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Snowy §7reforge when"
+      - "§7combined with §9Equipment§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §b Fishing Speed"
+      - " §3 Sea Creature Chance"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 15§c."
+    source: "Bought from Terry in Jerry's Workshop for 32 Hunk of Ice + 8 Hunk of Blue Ice"
+    components:
+      - id: REFORGE_STONE
+        reforge: snowy
+        required_skill: MINING
+        required_level: 15
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: TITANIUM_TESSERACT
+    material: paper
+    name: "Titanium Tesseract"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Dimensional §7reforge when"
+      - "§7combined with §cArmor§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §6 Mining Speed"
+      - " §3☯ Mining Wisdom"
+      - ""
+      - "§9Dimensional Bonus"
+      - "§aTitanium §7drops §2+10 ᠅ Mithril Powder"
+      - "§7when mined."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 20§c."
+    source: "Forged (HotM III; Refined Titanium + 16 Ench Lapis Lazuli; 6h)"
+    components:
+      - id: REFORGE_STONE
+        reforge: dimensional
+        required_skill: MINING
+        required_level: 20
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: TOIL_LOG
+    material: paper
+    name: "Rotting Branch"
+    rarity: RARE
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Toil §7reforge when"
+      - "§7combined with an §2Axe§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §3☯ Foraging Wisdom"
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 25§c."
+    source: "Smithmonger sells it (Rotting Branch) for 1,000,000 coins"
+    components:
+      - id: REFORGE_STONE
+        reforge: toil
+        required_skill: MINING
+        required_level: 25
+        common_cost: 100000
+        uncommon_cost: 100000
+        rare_cost: 100000
+        epic_cost: 100000
+        legendary_cost: 100000
+        mythic_cost: 100000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE
+  - id: WITHER_BLOOD
+    material: paper
+    name: "Wither Blood"
+    rarity: EPIC
+    lore:
+      - "§8Reforge Stone"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §9Withered §7reforge when"
+      - "§7combined with a §cMelee Weapon§7."
+      - ""
+      - "§7Grants the following stats that scale"
+      - "§7with the item's rarity:"
+      - " §c Strength"
+      - ""
+      - "§9Withered Bonus"
+      - "§7Grants §c+1 Strength §7per §cCatacombs"
+      - "§7skill level you have."
+      - ""
+      - "§eRight-click to view rarity scaling!"
+      - ""
+      - "§4❣ §cRequires §aMining Skill 30§c."
+    unavailable: "Needs Dungeons"
+    source: "Necron I collection reward or Catacombs F7 chests (~1-7%)"
+    components:
+      - id: REFORGE_STONE
+        reforge: withered
+        required_skill: MINING
+        required_level: 30
+        common_cost: 250000
+        uncommon_cost: 250000
+        rare_cost: 250000
+        epic_cost: 250000
+        legendary_cost: 250000
+        mythic_cost: 250000
+      - id: EXTRA_RARITY
+        display: REFORGE STONE

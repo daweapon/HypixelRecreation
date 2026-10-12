@@ -1,0 +1,29 @@
+name: "Marshy"
+id: marshy
+prefix: "Marshy"
+stoneOnly: true
+applicableTypes:
+  - EQUIPMENT
+
+statistics:
+  FISHING_SPEED:
+    common: 0.2
+    uncommon: 0.4
+    rare: 0.6
+    epic: 1
+    legendary: 1.4
+    mythic: 1.8
+  SEA_CREATURE_CHANCE:
+    common: 0.1
+    uncommon: 0.2
+    rare: 0.3
+    epic: 0.5
+    legendary: 0.7
+    mythic: 0.9
+  FORAGING_FORTUNE:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2.5
+    legendary: 3.5
+    mythic: 4.5

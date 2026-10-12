@@ -1,0 +1,22 @@
+name: "Snowy"
+id: snowy
+prefix: "Snowy"
+stoneOnly: true
+applicableTypes:
+  - EQUIPMENT
+
+statistics:
+  FISHING_SPEED:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2
+    legendary: 2.5
+    mythic: 3
+  SEA_CREATURE_CHANCE:
+    common: 0.2
+    uncommon: 0.2
+    rare: 0.4
+    epic: 0.6
+    legendary: 0.8
+    mythic: 1

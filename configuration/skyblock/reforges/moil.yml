@@ -1,0 +1,15 @@
+name: "Moil"
+id: moil
+prefix: "Moil"
+stoneOnly: true
+applicableTypes:
+  - AXES
+
+statistics:
+  FORAGING_FORTUNE:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 4
+    legendary: 6
+    mythic: 8

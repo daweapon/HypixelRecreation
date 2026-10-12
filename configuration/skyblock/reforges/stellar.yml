@@ -1,0 +1,22 @@
+name: "Stellar"
+id: stellar
+prefix: "Stellar"
+stoneOnly: true
+applicableTypes:
+  - PICKAXES
+
+statistics:
+  MINING_SPEED:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 25
+    legendary: 40
+    mythic: 55
+  MINING_FORTUNE:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 20
+    legendary: 25
+    mythic: 35

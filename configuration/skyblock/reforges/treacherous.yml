@@ -1,0 +1,29 @@
+name: "Treacherous"
+id: treacherous
+prefix: "Treacherous"
+stoneOnly: true
+applicableTypes:
+  - FISHING_RODS
+
+statistics:
+  STRENGTH:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 20
+    legendary: 25
+    mythic: 30
+  SEA_CREATURE_CHANCE:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2
+    legendary: 2.5
+    mythic: 3.5
+  TREASURE_CHANCE:
+    common: 0.1
+    uncommon: 0.2
+    rare: 0.3
+    epic: 0.4
+    legendary: 0.6
+    mythic: 0.8

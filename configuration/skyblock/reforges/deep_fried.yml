@@ -1,0 +1,15 @@
+name: "Deep Fried"
+id: deep_fried
+prefix: "Deep Fried"
+stoneOnly: true
+applicableTypes:
+  - HOES
+
+statistics:
+  FARMING_FORTUNE:
+    common: 3
+    uncommon: 6
+    rare: 10
+    epic: 15
+    legendary: 20
+    mythic: 25

@@ -13,6 +13,7 @@ public class Reforge {
     private final String name;
     private final String prefix;
     private final Set<ReforgeType> applicableTypes;
+    private final Set<String> applicableItems;
     private final boolean stoneOnly;
     private final BiFunction<ItemStatistics, Integer, ItemStatistics> calculation;
 
@@ -23,6 +24,13 @@ public class Reforge {
 
     public Reforge(String id, String name, String prefix, Set<ReforgeType> applicableTypes, boolean stoneOnly,
                    BiFunction<ItemStatistics, Integer, ItemStatistics> calculation) {
+        this(id, name, prefix, applicableTypes, Set.of(), stoneOnly, calculation);
+    }
+
+    public Reforge(String id, String name, String prefix, Set<ReforgeType> applicableTypes,
+                   Set<String> applicableItems, boolean stoneOnly,
+                   BiFunction<ItemStatistics, Integer, ItemStatistics> calculation) {
+        this.applicableItems = applicableItems;
         this.id = id;
         this.name = name;
         this.prefix = prefix;
@@ -37,6 +45,11 @@ public class Reforge {
 
     public boolean isApplicableTo(ReforgeType type) {
         return applicableTypes.contains(type);
+    }
+
+    public boolean isApplicableTo(ReforgeType type, String itemId) {
+        if (!applicableItems.isEmpty()) return applicableItems.contains(itemId);
+        return isApplicableTo(type);
     }
 
     @Override

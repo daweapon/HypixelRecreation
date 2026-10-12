@@ -1,0 +1,29 @@
+name: "Spiritual"
+id: spiritual
+prefix: "Spiritual"
+stoneOnly: true
+applicableTypes:
+  - BOWS
+
+statistics:
+  STRENGTH:
+    common: 4
+    uncommon: 8
+    rare: 14
+    epic: 20
+    legendary: 28
+    mythic: 38
+  CRITICAL_CHANCE:
+    common: 7
+    uncommon: 8
+    rare: 9
+    epic: 10
+    legendary: 12
+    mythic: 14
+  CRITICAL_DAMAGE:
+    common: 10
+    uncommon: 15
+    rare: 23
+    epic: 37
+    legendary: 55
+    mythic: 75

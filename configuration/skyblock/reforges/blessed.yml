@@ -1,0 +1,29 @@
+name: "Blessed"
+id: blessed
+prefix: "Blessed"
+stoneOnly: true
+applicableTypes:
+  - HOES
+
+statistics:
+  FARMING_FORTUNE:
+    common: 5
+    uncommon: 7
+    rare: 10
+    epic: 13
+    legendary: 16
+    mythic: 20
+  SPEED:
+    common: 5
+    uncommon: 7
+    rare: 9
+    epic: 13
+    legendary: 16
+    mythic: 20
+  FARMING_WISDOM:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 4
+    legendary: 5
+    mythic: 6

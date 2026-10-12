@@ -1,0 +1,15 @@
+name: "Salty"
+id: salty
+prefix: "Salty"
+stoneOnly: true
+applicableTypes:
+  - FISHING_RODS
+
+statistics:
+  SEA_CREATURE_CHANCE:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2
+    legendary: 3
+    mythic: 4

@@ -1,0 +1,35 @@
+name: "Geometric"
+id: geometric
+prefix: "Geometric"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+  - EQUIPMENT
+  - SWORDS
+  - BOWS
+  - FISHING_RODS
+  - PICKAXES
+  - AXES
+  - HOES
+  - SPADES
+applicableItems:
+  - FROGGLES
+  - SILVER_FROGGLES
+  - GOLDEN_FROGGLES
+  - DIAMOND_FROGGLES
+
+statistics:
+  FISHING_SPEED:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2
+    legendary: 3
+    mythic: 4
+  TROPHY_FISH_CHANCE:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2
+    legendary: 3
+    mythic: 4

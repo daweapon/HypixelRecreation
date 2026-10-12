@@ -1,0 +1,22 @@
+name: "Fruitful"
+id: fruitful
+prefix: "Fruitful"
+stoneOnly: true
+applicableTypes:
+  - PICKAXES
+
+statistics:
+  MINING_SPEED:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 25
+    legendary: 40
+    mythic: 55
+  MINING_FORTUNE:
+    common: 2
+    uncommon: 4
+    rare: 6
+    epic: 8
+    legendary: 10
+    mythic: 12

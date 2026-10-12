@@ -1,0 +1,22 @@
+name: "Auspicious"
+id: auspicious
+prefix: "Auspicious"
+stoneOnly: true
+applicableTypes:
+  - PICKAXES
+
+statistics:
+  MINING_SPEED:
+    common: 10
+    uncommon: 20
+    rare: 30
+    epic: 40
+    legendary: 50
+    mythic: 75
+  MINING_FORTUNE:
+    common: 3
+    uncommon: 6
+    rare: 9
+    epic: 13
+    legendary: 16
+    mythic: 20

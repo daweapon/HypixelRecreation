@@ -1,0 +1,22 @@
+name: "Overpriced"
+id: overpriced
+prefix: "Overpriced"
+stoneOnly: true
+applicableTypes:
+  - HOES
+
+statistics:
+  OVERBLOOM:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 5
+    legendary: 7
+    mythic: 9
+  FARMING_FORTUNE:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 20
+    legendary: 25
+    mythic: 30

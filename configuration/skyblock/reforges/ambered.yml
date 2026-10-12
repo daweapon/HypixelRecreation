@@ -1,0 +1,15 @@
+name: "Ambered"
+id: ambered
+prefix: "Ambered"
+stoneOnly: true
+applicableTypes:
+  - PICKAXES
+
+statistics:
+  MINING_SPEED:
+    common: 25
+    uncommon: 35
+    rare: 50
+    epic: 75
+    legendary: 100
+    mythic: 150

@@ -1,0 +1,22 @@
+name: "Candied"
+id: candied
+prefix: "Candied"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  HEALTH:
+    common: 1
+    uncommon: 2
+    rare: 4
+    epic: 6
+    legendary: 8
+    mythic: 10
+  DEFENSE:
+    common: 1
+    uncommon: 1
+    rare: 2
+    epic: 3
+    legendary: 4
+    mythic: 5

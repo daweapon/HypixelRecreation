@@ -1,0 +1,15 @@
+name: "Buzzing"
+id: buzzing
+prefix: "Buzzing"
+stoneOnly: true
+applicableTypes:
+  - VACUUMS
+
+statistics:
+  FARMING_FORTUNE:
+    common: 2
+    uncommon: 3
+    rare: 5
+    epic: 7
+    legendary: 9
+    mythic: 11

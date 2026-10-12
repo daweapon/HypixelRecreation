@@ -1,0 +1,22 @@
+name: "Mossy"
+id: mossy
+prefix: "Mossy"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  FARMING_FORTUNE:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 20
+    legendary: 25
+    mythic: 30
+  SPEED:
+    common: 3
+    uncommon: 3
+    rare: 5
+    epic: 5
+    legendary: 7
+    mythic: 7

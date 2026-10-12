@@ -1,0 +1,29 @@
+name: "Loving"
+id: loving
+prefix: "Loving"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  HEALTH:
+    common: 4
+    uncommon: 5
+    rare: 6
+    epic: 8
+    legendary: 10
+    mythic: 14
+  DEFENSE:
+    common: 4
+    uncommon: 5
+    rare: 6
+    epic: 7
+    legendary: 10
+    mythic: 14
+  INTELLIGENCE:
+    common: 20
+    uncommon: 40
+    rare: 60
+    epic: 80
+    legendary: 100
+    mythic: 120

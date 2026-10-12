@@ -67,6 +67,8 @@ public class ItemConfigParser {
 
 			ConfigurableSkyBlockItem item = new ConfigurableSkyBlockItem(id, material, lore, name, statistics);
 			item.setCentauriCategory(safeConfig.getString("centauri_category", null));
+			item.setSource(safeConfig.getString("source", null));
+			item.setUnavailable(safeConfig.getString("unavailable", null));
 
 			List<Map<String, Object>> components = safeConfig.getMapList("components");
 			for (Map<String, Object> componentConfig : components) {
@@ -140,6 +142,7 @@ public class ItemConfigParser {
 							requiredSkill == null ? null : SkillCategories.valueOf(requiredSkill.toUpperCase()),
 							safeConfig.getInt("required_level", 0));
 				}
+				case "DYE" -> new DyeComponent(itemId, safeConfig.getString("color"));
 				case "ARMOR" -> new ArmorComponent();
 				case "ARROW" -> new ArrowComponent();
 				case "AUCTION_CATEGORY" -> {

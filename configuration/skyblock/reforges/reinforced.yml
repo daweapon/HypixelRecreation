@@ -1,0 +1,15 @@
+name: "Reinforced"
+id: reinforced
+prefix: "Reinforced"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  DEFENSE:
+    common: 25
+    uncommon: 35
+    rare: 50
+    epic: 65
+    legendary: 80
+    mythic: 110

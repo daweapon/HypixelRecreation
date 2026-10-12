@@ -1,0 +1,22 @@
+name: "Blooming"
+id: blooming
+prefix: "Blooming"
+stoneOnly: true
+applicableTypes:
+  - EQUIPMENT
+
+statistics:
+  FARMING_FORTUNE:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 4
+    legendary: 5
+    mythic: 6
+  SPEED:
+    common: 4
+    uncommon: 4
+    rare: 5
+    epic: 5
+    legendary: 6
+    mythic: 6

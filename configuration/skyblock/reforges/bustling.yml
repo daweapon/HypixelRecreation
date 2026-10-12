@@ -1,0 +1,15 @@
+name: "Bustling"
+id: bustling
+prefix: "Bustling"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  FARMING_FORTUNE:
+    common: 1
+    uncommon: 2
+    rare: 4
+    epic: 6
+    legendary: 8
+    mythic: 10

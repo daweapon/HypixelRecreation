@@ -1,0 +1,32 @@
+name: "Greater Spook"
+id: greater_spook
+prefix: "Greater Spook"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+  - EQUIPMENT
+  - SWORDS
+  - BOWS
+  - FISHING_RODS
+  - PICKAXES
+  - AXES
+  - HOES
+  - SPADES
+applicableItems:
+  - GREAT_SPOOK_HELMET
+  - GREAT_SPOOK_CHESTPLATE
+  - GREAT_SPOOK_LEGGINGS
+  - GREAT_SPOOK_BOOTS
+  - GREAT_SPOOK_BELT
+  - GREAT_SPOOK_CLOAK
+  - GREAT_SPOOK_NECKLACE
+  - GREAT_SPOOK_GLOVES
+
+statistics:
+  FEAR:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 4
+    legendary: 5
+    mythic: 6

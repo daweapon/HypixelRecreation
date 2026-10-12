@@ -1,0 +1,22 @@
+name: "Bulky"
+id: bulky
+prefix: "Bulky"
+stoneOnly: true
+applicableTypes:
+  - SWORDS
+
+statistics:
+  HEALTH:
+    common: 4
+    uncommon: 6
+    rare: 9
+    epic: 12
+    legendary: 15
+    mythic: 20
+  DEFENSE:
+    common: 2
+    uncommon: 3
+    rare: 5
+    epic: 8
+    legendary: 13
+    mythic: 21

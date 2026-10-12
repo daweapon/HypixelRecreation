@@ -1,0 +1,22 @@
+name: "Scraped"
+id: scraped
+prefix: "Scraped"
+stoneOnly: true
+applicableTypes:
+  - PICKAXES
+
+statistics:
+  BREAKING_POWER:
+    common: 1
+    uncommon: 1
+    rare: 1
+    epic: 1
+    legendary: 1
+    mythic: 1
+  MINING_WISDOM:
+    common: 1
+    uncommon: 1
+    rare: 1
+    epic: 2
+    legendary: 2
+    mythic: 2

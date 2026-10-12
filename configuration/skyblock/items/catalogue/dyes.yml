@@ -1,0 +1,1026 @@
+items:
+  - id: DYE_ARCHFIEND
+    material: player_head
+    name: "Archfiend Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §4#B80036§7!"
+    unavailable: "Dice items exist but roll mechanic is not implemented"
+    source: "Rolling a Fancy Dice: 1/6.6k (Archfiend Dice), 1/666 (High Class Archfiend Dice)"
+    components:
+      - id: SKULL_HEAD
+        texture: 18d9ae6fb80377b22e12592e95cf914b88f491306035c4fbcfa286fb9d36e21e
+      - id: DYE
+        color: "#B80036"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_AURORA
+    material: player_head
+    name: "Aurora Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §c#048F95§7 and §c#088D97§7!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Dec 24 2024), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: 85cffb7bb6383bba263c9471b50e413b1e6a0c7380c12308cc8c09760291b33b
+      - id: DYE
+        color: "#048F95"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_BEACH
+    material: player_head
+    name: "Beach Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §b#43ECC6§7 and §b#57ECC7§7!"
+    source: "Taylor's Summer 2026 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: de3b3a32bf6bef23627e9899f179466dda8321959e22fb1c1e51e98483794bf5
+      - id: DYE
+        color: "#43ECC6"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_BINGO_BLUE
+    material: player_head
+    name: "Bingo Blue Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §1#002FA7§7!"
+    unavailable: "Needs Bingo"
+    source: "Bingo Shop purchase"
+    components:
+      - id: SKULL_HEAD
+        texture: 430078d8fe96ca69f63f46b980ce137ba89e9f93f394c0bf9fecf1cd483f75de
+      - id: DYE
+        color: "#002FA7"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_BLACK_ICE
+    material: player_head
+    name: "Black Ice Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §8#0B2031§7 and §8#091B2C§7!"
+    source: "Taylor's Winter 2024 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 62ff0822c03d20cc12da483bb9998469efbce85d99e1ba4ee7ec8ce0cd07ead0
+      - id: DYE
+        color: "#0B2031"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_BLACK_OPAL
+    material: player_head
+    name: "Black Opal Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §8#0B1C5D§7 and §8#0E1B5C§7!"
+      - ""
+      - "§7This dye also displays a §6special"
+      - "§6particle effect §7when equipped!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Mar 28 2026), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: 3e8248ffe708528aa75f7584adfee814e6dff696931e7ad90d2e2ccfe628f292
+      - id: DYE
+        color: "#0B1C5D"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_BRICK_RED
+    material: player_head
+    name: "Brick Red Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §c#CB4154§7!"
+    source: "Tarantula Broodfather slayer drop: 1/10M (Tier I), 1/2.5M (II), 1/1M (III), 1/500k (IV)"
+    components:
+      - id: SKULL_HEAD
+        texture: ce113198a558946ae36e880db9c51857221b2cbec09f4ff5192e1385e8f8ec2a
+      - id: DYE
+        color: "#CB4154"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_BYZANTIUM
+    material: player_head
+    name: "Byzantium Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §5#702963§7!"
+    source: "Voidgloom Seraph slayer drop: 1/10M (Tier I), 1/2.5M (II), 1/1M (III), 1/500k (IV)"
+    components:
+      - id: SKULL_HEAD
+        texture: 9f18c05e12cfa4108ce0d9aaf9332ac3e27c883e8f4ed238349fe7fcd0ba5971
+      - id: DYE
+        color: "#702963"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_CELADON
+    material: player_head
+    name: "Celadon Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §a#ACE1AF§7!"
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    unavailable: "Needs the Rift"
+    source: "Rift: 1/100k from Blobbercysts in the Bacte fight, 1/10k from Bacte"
+    components:
+      - id: SKULL_HEAD
+        texture: db490f36fbbe4063f46126b7e4f3ac9eb793facb8f693031f5302a84bfd15811
+      - id: DYE
+        color: "#ACE1AF"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_CELESTE
+    material: player_head
+    name: "Celeste Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §b#B2FFFF§7!"
+    source: "Sven Packmaster slayer drop: 1/10M (Tier I), 1/2.5M (II), 1/1M (III), 1/500k (IV)"
+    components:
+      - id: SKULL_HEAD
+        texture: 802891812a52ed6ed437672b3e6b214495b9651800aef87544ac5bd193758297
+      - id: DYE
+        color: "#B2FFFF"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_CHARCOAL
+    material: player_head
+    name: "Charcoal Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §8#21262A§7 and §8#202429§7!"
+      - ""
+      - "§7This dye also displays a §6special"
+      - "§6particle effect §7when equipped!"
+    source: "Taylor's Summer 2026 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: f6ce6a055800864595b72e72a5bda106fff7597989575c21ef9ee950c76d469d
+      - id: DYE
+        color: "#21262A"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_CHOCOLATE
+    material: player_head
+    name: "Chocolate Dye"
+    rarity: EPIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §6#7B3F00§7!"
+    source: "Chocolate Shop purchase (price not confirmed)"
+    components:
+      - id: SKULL_HEAD
+        texture: a15e7208539306f65d68df9be6c3124c48027e307739fc8dc35526febd643c21
+      - id: DYE
+        color: "#7B3F00"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_COPPER
+    material: player_head
+    name: "Copper Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §8#B87333§7!"
+    unavailable: "Needs Garden visitors"
+    source: "Garden visitor trade drop: 1/100k Uncommon, 1/50k Rare, 1/25k Legendary, 1/5k Mythic, 1/500 Special"
+    components:
+      - id: SKULL_HEAD
+        texture: cbab9b9598c44b55db29d19a22832ea5d7e01ae922bb3c65eb8d5210834b8469
+      - id: DYE
+        color: "#B87333"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_DUNG
+    material: player_head
+    name: "Dung Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §8#4F2A2A§7!"
+    unavailable: "Needs Garden pests"
+    source: "1/250k from vacuuming a Garden Pest (0.0004%)"
+    components:
+      - id: SKULL_HEAD
+        texture: b361e864864936e683b4fe0a4d4131e3f7ae22fe90084747173e3071ef0ddc82
+      - id: DYE
+        color: "#4F2A2A"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_DUSK
+    material: player_head
+    name: "Dusk Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §5#4F238A§7 and §5#542594§7!"
+    source: "Taylor's Spring 2026 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 833dfa617ca7446da099d0dcfc56836d0e538c492f604cddb8b883758b6611e8
+      - id: DYE
+        color: "#4F238A"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_EMERALD
+    material: player_head
+    name: "Emerald Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §2#50C878§7!"
+    source: "1/5M when mining Emeralds (0.00002%)"
+    components:
+      - id: SKULL_HEAD
+        texture: 97a7e23ecd874d8156dd99a1aee977d691a2ac62cde09fc675295c175981680
+      - id: DYE
+        color: "#50C878"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_FOREST
+    material: player_head
+    name: "Forest Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §2#1D3451§7 and §2#1E3953§7!"
+    source: "Taylor's Spring 2026 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 9e2b24a8ac53661a2c4809f3bc5baf21693e0fdcaa4b8c345193e6acdbb98900
+      - id: DYE
+        color: "#1D3451"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_FOSSIL
+    material: player_head
+    name: "Fossil Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §8#866F12§7!"
+    source: "1/500k from the Fossil Excavator (0.0002%)"
+    components:
+      - id: SKULL_HEAD
+        texture: 9cc61d06eecb97b6bec2fb990118223b753894c22f02e03dc335f33d0644c213
+      - id: DYE
+        color: "#866F12"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_FROG
+    material: player_head
+    name: "Frog Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §a#64D400§7 and §a#65D400§7!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Jul 19 2025), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: 92724df29666da0274735cc9c29cad1fdd96e5aaa9a0bc0246f9a2b45285212c
+      - id: DYE
+        color: "#64D400"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_FROSTBITTEN
+    material: player_head
+    name: "Frostbitten Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §3#09D8EB§7!"
+    unavailable: "Needs Glacite Mineshafts (Frozen Corpses not built)"
+    source: "Looting Frozen Corpses: 1/250k Lapis, 1/100k Umber/Tungsten, 1/10k Vanguard"
+    components:
+      - id: SKULL_HEAD
+        texture: e22b92e8c9b9db35f5ac2ad1235655cead444e50753c56e9a7184bca3a745729
+      - id: DYE
+        color: "#09D8EB"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_HELLEBORE
+    material: player_head
+    name: "Hellebore Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §c#E20F99§7 and §c#E3179D§7!"
+    source: "Taylor's Winter 2025 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 1f841da48cd25ac60ea01cefdbf3fecb07fd0aacee6f5ba00236aa7da89ea92d
+      - id: DYE
+        color: "#E20F99"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_JADE
+    material: player_head
+    name: "Jade Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §2#00A86B§7!"
+    unavailable: "Needs Crystal Hollows"
+    source: "1/500k per Crystal Nucleus run (0.0002%)"
+    components:
+      - id: SKULL_HEAD
+        texture: 8b215ff671f111e98d17a473fda8e5e9d0425ccd6e79426654ccb55f3f0cc652
+      - id: DYE
+        color: "#00A86B"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_JERRY
+    material: player_head
+    name: "Jerry Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §a#6F5753§7 and §a#715854§7!"
+      - ""
+      - "§7This dye also displays a §6special"
+      - "§6particle effect §7when equipped!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Apr 1 2026), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: e58aa10cdcdf6caa5abca1d552dacc73341b22d991326e3888f7149e050769f
+      - id: DYE
+        color: "#6F5753"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_KINGFISHER
+    material: player_head
+    name: "Kingfisher Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §c#004C57§7 and §c#014F59§7!"
+      - ""
+      - "§7This dye also displays a §6special"
+      - "§6particle effect §7when equipped!"
+    source: "Taylor's Winter 2025 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 92b3b6a5b1659bdbdbd8a748c2112bc789008fd933b73ad31ec4b1bd15f9f681
+      - id: DYE
+        color: "#004C57"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_LAVA
+    material: player_head
+    name: "Lava Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §c#CA3B00§7 and §c#C63900§7!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Oct 26 2024), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: 46e036e0b31ac2e515d023693b4faa8a3b0a17ddc143a21607258f63a044caa5
+      - id: DYE
+        color: "#CA3B00"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_LIVID
+    material: player_head
+    name: "Livid Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to #CEB7AA!"
+    unavailable: "Needs Dungeons"
+    source: "1/5k from Bedrock Chests on Catacombs F5 (0.02%)"
+    components:
+      - id: SKULL_HEAD
+        texture: 88b0214189b5af8e735c9d22ebcbf6e297a650e87ee53a9270fd724c7b328ffa
+      - id: DYE
+        color: "#CEB7AA"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_LUCKY
+    material: player_head
+    name: "Lucky Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §a#87FF37§7 and §a#006944§7!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Mar 2024), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: 2d87701ae93c2ddf5ddfe045c45fe49677d88abd1717bf161832e6c1d935e05f
+      - id: DYE
+        color: "#87FF37"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_MANGO
+    material: player_head
+    name: "Mango Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §6#FDBE02§7!"
+    source: "1/10M breaking any log on a public island (0.00001%)"
+    components:
+      - id: SKULL_HEAD
+        texture: 857ae6f197aa2007f2d68142d5678ca9abeee252f48343d1502bf89a189e93a5
+      - id: DYE
+        color: "#FDBE02"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_MARINE
+    material: player_head
+    name: "Marine Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §9#162875§7 and §9#162876§7!"
+    source: "Taylor's Fall 2025 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 8f32cca6b1f208b6613f004bd99870df6c7c51f6de09b485b7093440bcc90441
+      - id: DYE
+        color: "#162875"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_MATCHA
+    material: player_head
+    name: "Matcha Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §2#74A12E§7!"
+    source: "Revenant Horror slayer drop: 1/10M (Tier I), 1/2.5M (II), 1/1M (III), 1/500k (IV), 1/250k (V)"
+    components:
+      - id: SKULL_HEAD
+        texture: 86402b7f728ff299df1238721264131860f239cd8015e3f026005197307d53ea
+      - id: DYE
+        color: "#74A12E"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_MIDNIGHT
+    material: player_head
+    name: "Midnight Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §5#50216C§7!"
+    source: "1/1M to 1/50k from Spooky mobs and Spooky sea creatures"
+    components:
+      - id: SKULL_HEAD
+        texture: 1bfc85960f4fdb57bbfa00c5ba76c21bab1b9f4fb744673e5b5e38b4f3a1a8a8
+      - id: DYE
+        color: "#50216C"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_MOCHA
+    material: player_head
+    name: "Mocha Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §8#967969§7!"
+    source: "Brewing potions: 1/100M (Tier I), 1/5M, 1/2.5M, 1/1M, 1/750k, 1/500k, 1/250k, 1/100k (Tier VIII)"
+    components:
+      - id: SKULL_HEAD
+        texture: 88acceffd61c972fb0986b38ad012e3ae23974e903fc6c9faa0631404968bb63
+      - id: DYE
+        color: "#967969"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_NADESHIKO
+    material: player_head
+    name: "Nadeshiko Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §d#F6ADC6§7!"
+    unavailable: "Needs Experimentation Table"
+    source: "Superpairs: 1/75k Supreme, 1/50k Transcendent, 1/25k Metaphysical Experiments"
+    components:
+      - id: SKULL_HEAD
+        texture: 34e5f13bd7f2b9e5dd8c00c1d245995d2b33ba4f841e3c37da663997ab01251f
+      - id: DYE
+        color: "#F6ADC6"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_NECRON
+    material: player_head
+    name: "Necron Dye"
+    rarity: EPIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §6#E7413C§7!"
+    unavailable: "Needs Dungeons"
+    source: "1/2.5k from Master Mode Catacombs F7 (0.04%)"
+    components:
+      - id: SKULL_HEAD
+        texture: 3770f6ccaf8861da3c8812825afaec5a95c5f336f728a26f135a2594b4875402
+      - id: DYE
+        color: "#E7413C"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_NYANZA
+    material: player_head
+    name: "Nyanza Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §a#E9FFDB§7!"
+    source: "1/250k from claiming a Mining Commission (0.0004%)"
+    components:
+      - id: SKULL_HEAD
+        texture: 182e623be99b3771803e7896e9a58e95220e0d4b60fb88e81032155e96bbdbfa
+      - id: DYE
+        color: "#E9FFDB"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_OASIS
+    material: player_head
+    name: "Oasis Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §b#BAFF81§7 and §b#B7FF84§7!"
+    source: "Taylor's Spring 2025 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 2e6d41de6ae5463a7765adbf86e1e18f9a8dc094f891de033ecc325b6f04c5a7
+      - id: DYE
+        color: "#BAFF81"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_OCEAN
+    material: player_head
+    name: "Ocean Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §b#064DC3§7 and §b#0554C9§7!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Mar 15 2025), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: a38e31be47cf17d4ca3d26bed612bac6e30ad158628f074f31cf0efb53b25f71
+      - id: DYE
+        color: "#064DC3"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_PASTEL_SKY
+    material: player_head
+    name: "Pastel Sky Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §d#FB87FF§7 and §d#ED87FF§7!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Sep 2024), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: 66bcd2efec439f02c51a3e41ca93816bdbc15a6580e4f7ba1721343e1e1f940
+      - id: DYE
+        color: "#FB87FF"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_PEARLESCENT
+    material: player_head
+    name: "Pearlescent Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §2#115555§7!"
+    unavailable: "The End has no mobs yet"
+    source: "1/10M to 1/50k from killing mobs in The End"
+    components:
+      - id: SKULL_HEAD
+        texture: 5396ecd3b0f9f2d64397f9c0cea4e30e278aea77bd887236302843879aa4645d
+      - id: DYE
+        color: "#115555"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_PELT
+    material: player_head
+    name: "Pelt Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to #50414C!"
+    unavailable: "Trevor's Trapper quest not built (NPC is a stub)"
+    source: "Trapper animals in the Mushroom Desert: 1/250k Trackable ... 1/10k Elusive"
+    components:
+      - id: SKULL_HEAD
+        texture: 6ff0a1171af85b48605871bb66d1d04c9f60531b61cb0b181f4c096f05dc2e54
+      - id: DYE
+        color: "#50414C"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_PERIWINKLE
+    material: player_head
+    name: "Periwinkle Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §3#CCCCFF§7!"
+    unavailable: "Runic mob variants not built"
+    source: "Runic mobs: 1/500k (Lv1-99) down to 1/100k (Lv400+)"
+    components:
+      - id: SKULL_HEAD
+        texture: fc829f56f7cf4b40221e6e5d38d457ab3cf50c073d946e128f4034843fa2f85e
+      - id: DYE
+        color: "#CCCCFF"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_PORTAL
+    material: player_head
+    name: "Portal Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §5#5909C1§7 and §5#D412F0§7!"
+      - ""
+      - "§7This dye also displays a §6special"
+      - "§6particle effect §7when equipped!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Jul 2024), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: fc01b128783c4590fc5e2829f8ce1f9f9d24aa02561f92ffdb744a0775fb04de
+      - id: DYE
+        color: "#5909C1"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_PURE_BLUE
+    material: player_head
+    name: "Pure Blue Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §1#0013FF§7!"
+    unavailable: "Needs Raffle of the Century event"
+    source: "Raffle of the Century reward"
+    components:
+      - id: SKULL_HEAD
+        texture: 800970cdecfa0bc53659ea28f994870155f0d4e2526a513392455939e50cc8ab
+      - id: DYE
+        color: "#0013FF"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_PURE_YELLOW
+    material: player_head
+    name: "Pure Yellow Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §e#FFF700§7!"
+    unavailable: "Needs Raffle of the Century event"
+    source: "Raffle of the Century reward"
+    components:
+      - id: SKULL_HEAD
+        texture: c218de2edf15bd24e75997ea33e3b946bdbe621cbd04ffd68e1cabcf7ebecea
+      - id: DYE
+        color: "#FFF700"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_RED_TULIP
+    material: player_head
+    name: "Red Tulip Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §c#8C0014§7 and §c#8D0015§7!"
+    source: "Taylor's Summer 2025 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 7a4f1f122d488aab080d34928386d7f290287362747ecfd51286c349973ea52c
+      - id: DYE
+        color: "#8C0014"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_ROSE
+    material: player_head
+    name: "Rose Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §c#F06766§7 and §c#310417§7!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (May 2024), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: 9e88214694d09941e27855bf3a2a6d8f78050e30eb9f0bcb31ab9ac8f756b234
+      - id: DYE
+        color: "#F06766"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_SANGRIA
+    material: player_head
+    name: "Sangria Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §4#D40808§7!"
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    unavailable: "Needs the Rift (Vampire slayer)"
+    source: "Riftstalker Bloodfiend (Vampire) slayer drop: 1/100k (I), 1/80k, 1/60k, 1/40k, 1/10k (V)"
+    components:
+      - id: SKULL_HEAD
+        texture: e2fc1b982a6206adb80760a28cbed0a8350062768a04106519093a4de0448629
+      - id: DYE
+        color: "#D40808"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_SECRET
+    material: player_head
+    name: "Secret Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to #7D7D7D!"
+    unavailable: "Needs Dungeons"
+    source: "1/1M from Dungeon Secrets (0.00003%)"
+    components:
+      - id: SKULL_HEAD
+        texture: 282fcacb0e76b8d95e8643de7a41c94cd3a90334bc519651bd039ae1b914e41a
+      - id: DYE
+        color: "#7D7D7D"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_SLUDGE
+    material: player_head
+    name: "Sludge Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §a#72D159§7 and §a#6FCD58§7!"
+      - ""
+      - "§7This dye also displays a §6special"
+      - "§6particle effect §7when equipped!"
+    source: "Taylor's Fall 2026 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: b16b462c6a8a9e06e52a9074ff3235a464e7c222584550d4011ebf03576553c7
+      - id: DYE
+        color: "#72D159"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_SNOWFLAKE
+    material: player_head
+    name: "Snowflake Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §f#ACE5FF§7 and §f#B2EAFE§7!"
+    source: "Taylor's Winter 2024 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 818cfff452b0ed6f2f9c2b7a91aa9f1640703d62a774b7fc52c6500b533edbfa
+      - id: DYE
+        color: "#ACE5FF"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_SPIRIT
+    material: player_head
+    name: "Spirit Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §3#00AFB9§7 and §3#00A9B4§7!"
+      - ""
+      - "§7This dye also displays a §6special"
+      - "§6particle effect §7when equipped!"
+    source: "Taylor's Fall 2026 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: abacdb6dda04358affc4cd0ed27c754f8fc4e0f5500770cf64181ec613322fc4
+      - id: DYE
+        color: "#00AFB9"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_SPOOKY
+    material: player_head
+    name: "Spooky Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §5#5118A5§7 and §5#5219A8§7!"
+      - ""
+      - "§7This dye also displays a §6special"
+      - "§6particle effect §7when equipped!"
+    source: "Taylor's Fall 2025 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 3b1ee229759a2c01c0273518f07afcbb2606a690596ad260e1c7e8e08c35fbea
+      - id: DYE
+        color: "#5118A5"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_SUNFLOWER
+    material: player_head
+    name: "Sunflower Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §c#FFE507§7 and §c#FFE107§7!"
+    source: "Taylor's Summer 2025 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 84eed30c89fa806bc624bbe5665c2130bd92ef182c94b22301408bf974edfa4f
+      - id: DYE
+        color: "#FFE507"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_SUNSET
+    material: player_head
+    name: "Sunset Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §d#FFCC00§7 and §d#FFC910§7!"
+    source: "Taylor's Spring 2025 Seasonal Bundle, 375 SkyBlock Gems (rotating; wiki lists no other source)"
+    components:
+      - id: SKULL_HEAD
+        texture: 9f35b302a4badd7c84e1ab41e2387e911d66af38f2631e2d53fa1d63d5cc47b0
+      - id: DYE
+        color: "#FFCC00"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_TREASURE
+    material: player_head
+    name: "Treasure Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §6#FCD12A§7!"
+    source: "Fishing treasure: 1/1M Good, 1/100k Great, 1/10k Outstanding (rates x10 after Mar 19 2025 per wiki)"
+    components:
+      - id: SKULL_HEAD
+        texture: fcb8622a9ea4dc44fec8804fa075f75ff7c4d9e71de1debfd21d683975437f36
+      - id: DYE
+        color: "#FCD12A"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_WARDEN
+    material: player_head
+    name: "Warden Dye"
+    rarity: MYTHIC
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Animates the color of an armor piece"
+      - "§7between §9#034150§7 and §9#009295§7!"
+    unavailable: "Needs Fire Sales (legacy, no Fire Sale system)"
+    source: "Legacy Fire Sale item (Feb 2024), 375 SkyBlock Gems; no longer obtainable except trading"
+    components:
+      - id: SKULL_HEAD
+        texture: 62022037d62a5c27ad7629842176945ac2077c6dd4d8acdf431ddd19b12611c9
+      - id: DYE
+        color: "#034150"
+      - id: EXTRA_RARITY
+        display: DYE
+  - id: DYE_WILD_STRAWBERRY
+    material: player_head
+    name: "Wild Strawberry Dye"
+    rarity: LEGENDARY
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Changes the color of an armor piece"
+      - "§7to §d#FF43A4§7!"
+    source: "1/150M from farming crops (0.0000007%)"
+    components:
+      - id: SKULL_HEAD
+        texture: c9d50ab4b7dd1527f347e8c251e8ef93bf47a6465b936d413d915a85772fba9b
+      - id: DYE
+        color: "#FF43A4"
+      - id: EXTRA_RARITY
+        display: DYE

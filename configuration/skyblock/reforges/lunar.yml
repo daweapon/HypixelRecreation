@@ -1,0 +1,22 @@
+name: "Lunar"
+id: lunar
+prefix: "Lunar"
+stoneOnly: true
+applicableTypes:
+  - EQUIPMENT
+
+statistics:
+  SPEED:
+    common: 1
+    uncommon: 1
+    rare: 2
+    epic: 2
+    legendary: 3
+    mythic: 4
+  FARMING_WISDOM:
+    common: 1
+    uncommon: 1
+    rare: 2
+    epic: 2
+    legendary: 3
+    mythic: 4

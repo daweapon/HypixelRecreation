@@ -1,0 +1,22 @@
+name: "Beady"
+id: beady
+prefix: "Beady"
+stoneOnly: true
+applicableTypes:
+  - VACUUMS
+
+statistics:
+  DAMAGE:
+    common: 5
+    uncommon: 10
+    rare: 15
+    epic: 20
+    legendary: 25
+    mythic: 30
+  INTELLIGENCE:
+    common: 10
+    uncommon: 20
+    rare: 30
+    epic: 40
+    legendary: 50
+    mythic: 60

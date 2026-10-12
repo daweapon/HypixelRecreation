@@ -1,0 +1,29 @@
+name: "Ridiculous"
+id: ridiculous
+prefix: "Ridiculous"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  HEALTH:
+    common: 10
+    uncommon: 15
+    rare: 20
+    epic: 25
+    legendary: 35
+    mythic: 50
+  DEFENSE:
+    common: 10
+    uncommon: 15
+    rare: 20
+    epic: 25
+    legendary: 35
+    mythic: 50
+  CRITICAL_CHANCE:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 4
+    legendary: 5
+    mythic: 6

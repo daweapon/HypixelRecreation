@@ -1,0 +1,22 @@
+name: "Blazing"
+id: blazing
+prefix: "Blazing"
+stoneOnly: true
+applicableTypes:
+  - EQUIPMENT
+
+statistics:
+  MINING_FORTUNE:
+    common: 3
+    uncommon: 4
+    rare: 5
+    epic: 6
+    legendary: 7
+    mythic: 8
+  HEAT_RESISTANCE:
+    common: 1
+    uncommon: 1
+    rare: 2
+    epic: 2
+    legendary: 3
+    mythic: 3

@@ -35,6 +35,14 @@ public class ConfigurableSkyBlockItem {
     @Setter
     @Nullable
     private String centauriCategory;
+    @Getter
+    @Setter
+    @Nullable
+    private String source;
+    @Getter
+    @Setter
+    @Nullable
+    private String unavailable;
 
     private final Map<Class<? extends SkyBlockItemComponent>, ComponentEntry> components = new HashMap<>();
     private final Set<Class<? extends SkyBlockItemComponent>> explicitComponents = new HashSet<>();
@@ -208,6 +216,8 @@ public class ConfigurableSkyBlockItem {
                 this.explicitComponents
         );
         copy.centauriCategory = this.centauriCategory;
+        copy.source = this.source;
+        copy.unavailable = this.unavailable;
         return copy;
     }
 

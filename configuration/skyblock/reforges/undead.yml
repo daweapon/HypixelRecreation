@@ -1,0 +1,36 @@
+name: "Undead"
+id: undead
+prefix: "Undead"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  HEALTH:
+    common: 6
+    uncommon: 8
+    rare: 12
+    epic: 18
+    legendary: 25
+    mythic: 33
+  DEFENSE:
+    common: 6
+    uncommon: 8
+    rare: 12
+    epic: 18
+    legendary: 25
+    mythic: 33
+  STRENGTH:
+    common: 1
+    uncommon: 2
+    rare: 2
+    epic: 3
+    legendary: 5
+    mythic: 7
+  BONUS_ATTACK_SPEED:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 4
+    legendary: 5
+    mythic: 6

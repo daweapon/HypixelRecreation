@@ -1,0 +1,15 @@
+name: "Mithraic"
+id: mithraic
+prefix: "Mithraic"
+stoneOnly: true
+applicableTypes:
+  - PICKAXES
+
+statistics:
+  MINING_FORTUNE:
+    common: 3
+    uncommon: 6
+    rare: 9
+    epic: 13
+    legendary: 16
+    mythic: 20

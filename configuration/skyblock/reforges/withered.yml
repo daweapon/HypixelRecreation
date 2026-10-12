@@ -1,0 +1,15 @@
+name: "Withered"
+id: withered
+prefix: "Withered"
+stoneOnly: true
+applicableTypes:
+  - SWORDS
+
+statistics:
+  STRENGTH:
+    common: 60
+    uncommon: 75
+    rare: 90
+    epic: 110
+    legendary: 135
+    mythic: 170

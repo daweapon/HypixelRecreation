@@ -1,0 +1,15 @@
+name: "Sticky"
+id: sticky
+prefix: "Sticky"
+stoneOnly: true
+applicableTypes:
+  - FISHING_RODS
+
+statistics:
+  PULL:
+    common: 2.5
+    uncommon: 5
+    rare: 7.5
+    epic: 10
+    legendary: 15
+    mythic: 20

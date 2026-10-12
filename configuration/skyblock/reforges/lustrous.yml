@@ -1,0 +1,22 @@
+name: "Lustrous"
+id: lustrous
+prefix: "Lustrous"
+stoneOnly: true
+applicableTypes:
+  - PICKAXES
+
+statistics:
+  MINING_SPEED:
+    common: 10
+    uncommon: 20
+    rare: 30
+    epic: 40
+    legendary: 50
+    mythic: 60
+  MINING_FORTUNE:
+    common: 10
+    uncommon: 20
+    rare: 30
+    epic: 40
+    legendary: 50
+    mythic: 60

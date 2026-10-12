@@ -1,0 +1,15 @@
+name: "Necrotic"
+id: necrotic
+prefix: "Necrotic"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  INTELLIGENCE:
+    common: 30
+    uncommon: 60
+    rare: 90
+    epic: 120
+    legendary: 150
+    mythic: 200

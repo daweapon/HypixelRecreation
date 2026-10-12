@@ -1,0 +1,22 @@
+name: "Dimensional"
+id: dimensional
+prefix: "Dimensional"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  MINING_SPEED:
+    common: 10
+    uncommon: 15
+    rare: 20
+    epic: 30
+    legendary: 40
+    mythic: 50
+  MINING_WISDOM:
+    common: 1
+    uncommon: 1
+    rare: 1
+    epic: 2
+    legendary: 2
+    mythic: 3

@@ -1,0 +1,22 @@
+name: "Trashy"
+id: trashy
+prefix: "Trashy"
+stoneOnly: true
+applicableTypes:
+  - FISHING_RODS
+
+statistics:
+  FISHING_SPEED:
+    common: 1
+    uncommon: 2
+    rare: 3
+    epic: 4
+    legendary: 6
+    mythic: 8
+  SEA_CREATURE_CHANCE:
+    common: 0.5
+    uncommon: 1
+    rare: 1.5
+    epic: 2
+    legendary: 3
+    mythic: 4

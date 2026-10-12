@@ -1,0 +1,43 @@
+name: "Ancient"
+id: ancient
+prefix: "Ancient"
+stoneOnly: true
+applicableTypes:
+  - ARMOR
+
+statistics:
+  HEALTH:
+    common: 7
+    uncommon: 7
+    rare: 7
+    epic: 7
+    legendary: 7
+    mythic: 7
+  DEFENSE:
+    common: 7
+    uncommon: 7
+    rare: 7
+    epic: 7
+    legendary: 7
+    mythic: 7
+  STRENGTH:
+    common: 4
+    uncommon: 8
+    rare: 12
+    epic: 18
+    legendary: 25
+    mythic: 35
+  CRITICAL_CHANCE:
+    common: 3
+    uncommon: 5
+    rare: 7
+    epic: 9
+    legendary: 12
+    mythic: 15
+  INTELLIGENCE:
+    common: 6
+    uncommon: 9
+    rare: 12
+    epic: 16
+    legendary: 20
+    mythic: 25
