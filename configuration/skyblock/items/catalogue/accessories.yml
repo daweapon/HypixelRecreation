@@ -75,7 +75,6 @@ items:
     default_statistics:
       fishing_speed: 1
       sea_creature_chance: 0.5
-    unavailable: "Fishing Merchant shop not wired and item not defined"
     source: "Bought from the Fishing Merchant for 100 Coins."
     lore:
       - "§8Tiered Bonus: Depth Champion (0/8)"
@@ -276,7 +275,6 @@ items:
       fishing_speed: 2
       sea_creature_chance: 1
       treasure_chance: 0.1
-    unavailable: "Angler Bracelet ingredient item not defined (Junker Joel NPC exists)"
     source: "Junker Joel: 1 Angler Bracelet + 4 Rusty Coins"
     lore:
       - "§8Tiered Bonus: Swamp Soldier (0/8)"
@@ -731,6 +729,7 @@ items:
     default_statistics:
       fishing_speed: 2
       trophy_fish_chance: 1
+    unavailable: "Recipe quantities for Clay Balls and Enchanted Clay Balls are not confirmed"
     source: "Crafted from Clay Balls and Enchanted Clay Balls (Clay collection IV)"
     lore:
       - "§eRight-click to equip!"
@@ -754,6 +753,18 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: FISHING
+            ingredients:
+              - type: TROPICAL_FISH
+                amount: 128
+              - type: ENCHANTED_TROPICAL_FISH
+                amount: 3
+            result:
+              type: CLOWNFISH_CLOAK
+              amount: 1
   - id: COMMON_FROG_BRONZE
     material: paper
     name: "Common Frog BRONZE"
@@ -825,6 +836,7 @@ items:
     default_statistics:
       health: 50
       magic_find: 2
+    unavailable: "Needs David Hunterborough's hunting training (not built)"
     source: "Claim from David Hunterborough at the Fusion House after finishing his training; replaceable from Rusty."
     lore:
       - "§7The more you Hunt, the stronger this"
@@ -860,6 +872,7 @@ items:
       mining_speed: 100
       mining_fortune: 25
       cold_resistance: 10
+    unavailable: "Needs the Shattered Locket item (not defined)"
     source: "Forge (HotM 10, 7 days): 10 Divan Fragments + Perfect Plate + Shattered Locket"
     lore:
       - "§7Gemstones: §8[] []"
@@ -888,6 +901,7 @@ items:
       health: 30
       defense: 5
       strength: 5
+    unavailable: "Ritual Residue and Mite Gel have no obtainable source yet (Draconic Sacrifice not built)"
     source: "Craft: 3 Ritual Residue + 32 Absolute Ender Pearl + 64 Mite Gel"
     lore:
       - "§7All stats on this piece of equipment"
@@ -911,6 +925,7 @@ items:
       health: 30
       defense: 5
       critical_damage: 5
+    unavailable: "Ritual Residue and Mite Gel have no obtainable source yet (Draconic Sacrifice not built)"
     source: "Craft: 4 Ritual Residue, 48 Absolute Ender Pearl, 72 Mite Gel."
     lore:
       - "§7While equipped, upgrades the §6Aspect"
@@ -1034,6 +1049,7 @@ items:
     default_statistics:
       health: 15
       defense: 10
+    unavailable: "Needs Enderman mobs in The End (not built)"
     source: "0.5% rare drop from Endermen (Lv35-59)"
     lore:
       - "§7All stats on this piece of equipment"
@@ -1073,6 +1089,7 @@ items:
     material: player_head
     name: "Expensive Toy"
     rarity: SPECIAL
+    unavailable: "Needs unique-player gift tracking and Generow's claim (only total gifts given is counted)"
     source: "Give 600 Gifts to unique players, then claim from Generow."
     components:
       - id: SKULL_HEAD
@@ -1525,6 +1542,20 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: FISHING
+            ingredients:
+              - type: ENCHANTED_SHARK_FIN
+                amount: 4
+              - type: BLUE_SHARK_TOOTH
+                amount: 16
+              - type: NURSE_SHARK_TOOTH
+                amount: 32
+            result:
+              type: ICHTHYIC_BELT
+              amount: 1
   - id: ICHTHYIC_CLOAK
     material: paper
     name: "Ichthyic Cloak"
@@ -1556,6 +1587,20 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: FISHING
+            ingredients:
+              - type: ENCHANTED_SHARK_FIN
+                amount: 4
+              - type: BLUE_SHARK_TOOTH
+                amount: 12
+              - type: NURSE_SHARK_TOOTH
+                amount: 32
+            result:
+              type: ICHTHYIC_GLOVES
+              amount: 1
   - id: JADE_BELT
     material: paper
     name: "Jade Belt"
@@ -1827,7 +1872,7 @@ items:
         standard_item_type: BRACELET
   - id: MAGMA_LORD_GAUNTLET
     material: paper
-    name: "Magma Lord Necklace"
+    name: "Magma Lord Gauntlet"
     rarity: LEGENDARY
     default_statistics:
       health: 45
@@ -1855,7 +1900,17 @@ items:
       - "§4❣ §cRequires §aFishing Skill 45§c."
     components:
       - id: STANDARD_ITEM
-        standard_item_type: NECKLACE
+        standard_item_type: GLOVES
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: FISHING
+            ingredients:
+              - type: MAGMA_LORD_FRAGMENT
+                amount: 5
+            result:
+              type: MAGMA_LORD_GAUNTLET
+              amount: 1
   - id: MANGROVE_GRIPPERS
     material: paper
     name: "Mangrove Grippers"
@@ -1889,6 +1944,18 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: FORAGING
+            ingredients:
+              - type: ENCHANTED_MANGROVE_LOG
+                amount: 20
+              - type: SEA_LUMIES
+                amount: 32
+            result:
+              type: MANGROVE_LOCKET
+              amount: 1
   - id: MANGROVE_VINE
     material: paper
     name: "Moonglade Belt"
@@ -1908,6 +1975,20 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: FORAGING
+            ingredients:
+              - type: ENCHANTED_SEA_LUMIES
+                amount: 1
+              - type: STRETCHING_STICKS
+                amount: 64
+              - type: ENCHANTED_MANGROVE_LOG
+                amount: 64
+            result:
+              type: MANGROVE_VINE
+              amount: 1
   - id: MEDIOCRE_FISH_DRAWING
     material: filled_map
     name: "Mediocre Drawing of a Fish"
@@ -1940,7 +2021,7 @@ items:
     default_statistics:
       mining_speed: 20
       mining_fortune: 5
-    source: "Forged in The Forge (HotM 2, 1 hour): 480 Mithril + 3 Enchanted Mithril."
+    source: "Forged in The Forge (HotM 1, 1 hour): 3 Enchanted Mithril."
     lore:
       - "§7Grants §6+5 Mining Fortune §7while"
       - "§7mining §2Mithril§7."
@@ -2052,6 +2133,7 @@ items:
     rarity: RARE
     default_statistics:
       bonus_pest_chance: 5
+    unavailable: "Pesthunter Phillip NPC and pest-kill trade are not built"
     source: "Pesthunter Phillip for 40 Pests"
     lore:
       - "§7Decreases the spawn cooldown of §2"
@@ -2167,6 +2249,18 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: FISHING
+            ingredients:
+              - type: ENCHANTED_PRISMARINE_CRYSTALS
+                amount: 1
+              - type: ENCHANTED_PRISMARINE_SHARD
+                amount: 4
+            result:
+              type: PRISMARINE_NECKLACE
+              amount: 1
   - id: PUDDLE_JUMPER_BRONZE
     material: paper
     name: "Puddle Jumper BRONZE"
@@ -2679,6 +2773,18 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: FISHING
+            ingredients:
+              - type: SPONGE
+                amount: 64
+              - type: ENCHANTED_SPONGE
+                amount: 6
+            result:
+              type: SPONGE_BELT
+              amount: 1
   - id: SUNS_GRASP
     material: paper
     name: "Sun's Grasp"
@@ -3115,6 +3221,7 @@ items:
       ferocity: 2
       farming_fortune: 10
       farming_wisdom: 1
+    unavailable: "Needs Zorro in Hoppity's Collection (Zorro rabbit not obtainable yet)"
     source: "Chocolate Shop for 20 billion Chocolate (Chocolate Factory 5, Zorro in Hoppity's Collection)."
     lore:
       - "§7The stats of this Cape §adouble "

@@ -39,6 +39,7 @@ final class QualityTreasureRoller {
         if (context.bait() != null) treasureChance += context.bait().getTreasureChanceBonus();
         if (LootRoll.roll(uuid, null, treasureChance)) {
             TreasureQuality quality = pickQuality(uuid, table.treasureQualities(), qualityBonus(context));
+            if (rollTreasureDye(uuid, quality)) return treasureDye(quality);
             List<WeightedLoot> pool = available(quality.entries());
             if (!pool.isEmpty()) {
                 WeightedLoot loot = LootRoll.pick(uuid, pool, QualityTreasureRoller::itemOf, WeightedLoot::weight, ThreadLocalRandom.current());
@@ -53,10 +54,25 @@ final class QualityTreasureRoller {
     static Optional<CatchPayload> treasure(FishingContext context, FishingTableDefinition table) {
         UUID uuid = context.player().getUuid();
         TreasureQuality quality = pickQuality(uuid, table.treasureQualities(), qualityBonus(context));
+        if (rollTreasureDye(uuid, quality)) return Optional.of(treasureDye(quality));
         List<WeightedLoot> pool = available(quality.entries());
         if (pool.isEmpty()) return Optional.empty();
         WeightedLoot loot = LootRoll.pick(uuid, pool, QualityTreasureRoller::itemOf, WeightedLoot::weight, ThreadLocalRandom.current());
         return Optional.of(new CatchPayload.Treasure(loot.itemId(), amount(loot), TREASURE_XP, quality.name()));
+    }
+
+    private static boolean rollTreasureDye(UUID uuid, TreasureQuality quality) {
+        double chance = switch (quality.name()) {
+            case "GOOD" -> 1D / 100_000 * 100;
+            case "GREAT" -> 1D / 10_000 * 100;
+            case "OUTSTANDING" -> 1D / 1_000 * 100;
+            default -> 0;
+        };
+        return LootRoll.roll(uuid, ItemType.DYE_TREASURE, chance);
+    }
+
+    private static CatchPayload treasureDye(TreasureQuality quality) {
+        return new CatchPayload.Treasure(ItemType.DYE_TREASURE.name(), 1, TREASURE_XP, quality.name());
     }
 
     private static CatchPayload forced(UUID uuid, FishingTableDefinition table) {

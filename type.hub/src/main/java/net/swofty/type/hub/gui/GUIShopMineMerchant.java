@@ -25,7 +25,7 @@ public class GUIShopMineMerchant extends ShopView {
         attachItem(ShopItem.Stackable(new SkyBlockItem(Material.GRAVEL), 2, new CoinShopPrice(12)));
         attachItem(ShopItem.Stackable(new SkyBlockItem(Material.COBBLESTONE), 1, new CoinShopPrice(3)));
         attachItem(ShopItem.Stackable(new SkyBlockItem(Material.STONE), 2, new CoinShopPrice(4)));
-        //attachItem(ShopItem.Single(new SkyBlockItem(Material.ONYX), 1, new CoinShopPrice(100)));
+        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ONYX), 1, new CoinShopPrice(100)));
     }
 
 }

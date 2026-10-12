@@ -94,9 +94,8 @@ public class MobLapisZombie extends BestiaryMob implements RegionPopulator {
 						new LootRecord(ItemType.LAPIS_ARMOR_BOOTS, 1, 1),
 						new LootRecord(ItemType.LAPIS_ARMOR_LEGGINGS, 1, 1),
 						new LootRecord(ItemType.LAPIS_ARMOR_CHESTPLATE, 1, 1),
-						new LootRecord(ItemType.LAPIS_ARMOR_HELMET, 1, 1)
-						//new LootRecord(ItemType.EXP_SHARE_CORE, 1, 0.01),
-						//new LootRecord(ItemType.LAPIS_CRYSTAL, 1, 1)
+						new LootRecord(ItemType.LAPIS_ARMOR_HELMET, 1, 1),
+						new LootRecord(ItemType.LAPIS_CRYSTAL, 1, 1)
 				);
 			}
 

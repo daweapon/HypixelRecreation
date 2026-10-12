@@ -10,7 +10,9 @@ import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.loottable.RareDropAward;
 import net.swofty.type.dwarvenmines.commission.Commission;
 import net.swofty.type.dwarvenmines.commission.CommissionMilestone;
 import net.swofty.type.dwarvenmines.commission.CommissionReward;
@@ -107,6 +109,8 @@ public class GUICommisions extends HypixelInventoryGUI {
 						if (reward.miningXp() > 0) {
 							player.getSkills().increase(player, SkillCategories.MINING, (double) reward.miningXp());
 						}
+
+						RareDropAward.tryAward(player, ItemType.DYE_NYANZA, 1.0 / 250_000 * 100);
 
 						activeCommission.setClaimed(true);
 						commissionData.completeCommission();

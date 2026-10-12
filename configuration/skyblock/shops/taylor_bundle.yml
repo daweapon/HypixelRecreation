@@ -36,3 +36,11 @@ entries:
     name: "<9>Cat-o-Lantern Skin"
     material: player_head
     cost: { gems: 350 }
+  - item: DYE_SPIRIT
+    name: "<d>Spirit Dye"
+    material: player_head
+    cost: { gems: 375 }
+  - item: DYE_SLUDGE
+    name: "<d>Sludge Dye"
+    material: player_head
+    cost: { gems: 375 }

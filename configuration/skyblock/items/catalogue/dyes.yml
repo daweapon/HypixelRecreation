@@ -547,6 +547,7 @@ items:
       - "§7Changes the color of an armor piece"
       - "§7to §5#50216C§7!"
     source: "1/1M to 1/50k from Spooky mobs and Spooky sea creatures"
+    unavailable: "Spooky mobs and Spooky sea creatures are not built yet"
     components:
       - id: SKULL_HEAD
         texture: 1bfc85960f4fdb57bbfa00c5ba76c21bab1b9f4fb744673e5b5e38b4f3a1a8a8

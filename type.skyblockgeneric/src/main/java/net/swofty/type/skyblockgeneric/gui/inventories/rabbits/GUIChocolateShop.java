@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.gui.inventories.rabbits;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.Components;
@@ -308,7 +309,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
 
                     <e>Click to trade!""",
                     ChocolateFactoryHelper.formatChocolate(40_000_000_000L));
-        }, (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 40_000_000_000L, "<6>Chocolate Dye", 5, c));
+        }, (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 40_000_000_000L, "<6>Chocolate Dye", 5, c, ItemType.DYE_CHOCOLATE));
 
         // Slot 21: Chocolate Factory Barn Skin
         layout.slot(21, (s, c) -> {
@@ -549,6 +550,10 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
     }
 
     private void handlePurchase(SkyBlockPlayer player, long cost, String itemName, int requiredPrestige, ViewContext c) {
+        handlePurchase(player, cost, itemName, requiredPrestige, c, null);
+    }
+
+    private void handlePurchase(SkyBlockPlayer player, long cost, String itemName, int requiredPrestige, ViewContext c, ItemType reward) {
         DatapointChocolateFactory.ChocolateFactoryData data = ChocolateFactoryHelper.getData(player);
 
         if (data.getPrestigeLevel() < requiredPrestige) {
@@ -560,6 +565,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
             data.removeChocolate(cost);
             data.addChocolateSpent(cost);
             ChocolateFactoryHelper.saveData(player, data);
+            if (reward != null) player.addAndUpdateItem(reward);
             player.sendMessage("<a>Purchased {} <a>for <6>{} Chocolate<a>!", Text.of(itemName),
                     ChocolateFactoryHelper.formatChocolate(cost));
             c.session(State.class).refresh();

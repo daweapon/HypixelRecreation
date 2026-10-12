@@ -40,8 +40,7 @@ public enum ShenAuctionItem {
 
     HOE_OF_NO_TILLING(Section.VOLUME_TRADING, "<a>Hoe of No Tilling", 20, 10, Material.GOLDEN_HOE, null,
             "The Hoe of No Tilling isn't in this server yet."),
-    KNUCKLE_SANDWICH(Section.VOLUME_TRADING, "<6>Knuckle Sandwich", 20, 10, Material.PAPER, null,
-            "The Knuckle Sandwich isn't in this server yet."),
+    KNUCKLE_SANDWICH(Section.VOLUME_TRADING, "<6>Knuckle Sandwich", 20, 10, Material.PAPER, null, null),
     PUZZLE_CUBE(Section.VOLUME_TRADING, "<6>Puzzle Cube", 20, 10, Material.PLAYER_HEAD,
             "243178db2a9f5af604fda72dc4f83e754fcc8fe9ca034e6227268a90eb1e70d7",
             "The Puzzle Cube isn't in this server yet."),

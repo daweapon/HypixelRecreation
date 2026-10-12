@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.fossil;
 import net.minestom.server.item.ItemStack;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.loottable.RareDropAward;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM;
 import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
@@ -21,6 +22,8 @@ import java.util.Map;
 import java.util.Set;
 
 public final class FossilService {
+    private static final double DYE_FOSSIL_CHANCE = 1.0 / 500_000 * 100;
+
     public static final String ESSENCE_TEXTURE = "93a1b830399ab432a5178fdaf3939b24bf25c724a66be947296c503352bc380d";
     public static final int DONATION_MINING_XP = 25_000;
     public static final int DONATION_POWDER = 20_000;
@@ -153,6 +156,7 @@ public final class FossilService {
         }
         if (game.isCompleted() && game.fossil() != null) player.addAndUpdateItem(new SkyBlockItem(game.fossil().getItem()));
         sendSummary(player, game, drops);
+        RareDropAward.tryAward(player, ItemType.DYE_FOSSIL, DYE_FOSSIL_CHANCE);
     }
 
     public static SkyBlockItem paleontologistBook() {

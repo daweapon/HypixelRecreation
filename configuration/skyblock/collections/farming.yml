@@ -1207,6 +1207,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: MOONSTONE
     - amount: 1000000
       rewards:
         - type: XP
@@ -1258,6 +1261,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: SUNSTONE
     - amount: 1000000
       rewards:
         - type: XP

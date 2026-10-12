@@ -20,6 +20,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.block.SkyBlockBlock;
 import net.swofty.type.skyblockgeneric.block.attribute.attributes.BlockAttributeBrewingData;
+import net.swofty.type.skyblockgeneric.loottable.RareDropAward;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointSkills;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.BrewingIngredientComponent;
@@ -283,6 +284,7 @@ public class GUIBrewingStand extends HypixelInventoryGUI implements RefreshingGU
             if (potionItem == null || potionItem.isNA() || potionItem.isAir()) continue;
             ItemAttributePotionData.PotionData brewed = potionItem.getAttributeHandler().getPotionData();
             if (brewed != null && brewed.getLevel() >= 8) player.getAchievementHandler().completeAchievement("skyblock.expensive_brew");
+            if (brewed != null) rollMochaDye(player, brewed);
         }
 
         // Award Alchemy XP
@@ -304,6 +306,15 @@ public class GUIBrewingStand extends HypixelInventoryGUI implements RefreshingGU
 
         // Reset brewing state
         cancelBrewing();
+    }
+
+    private static final double[] MOCHA_DYE_ODDS = {100_000_000, 5_000_000, 2_500_000, 1_000_000, 750_000, 500_000, 250_000, 100_000};
+
+    private void rollMochaDye(SkyBlockPlayer player, ItemAttributePotionData.PotionData brewed) {
+        String effect = brewed.getEffectType();
+        if (effect.equals("WATER") || effect.equals("AWKWARD") || effect.equals("THICK") || effect.equals("MUNDANE")) return;
+        int level = Math.min(Math.max(brewed.getLevel(), 1), MOCHA_DYE_ODDS.length);
+        RareDropAward.tryAward(player, ItemType.DYE_MOCHA, 100D / MOCHA_DYE_ODDS[level - 1]);
     }
 
     private SkyBlockItem applyBrewingEffect(SkyBlockItem potion, BrewingIngredientComponent brewComp) {

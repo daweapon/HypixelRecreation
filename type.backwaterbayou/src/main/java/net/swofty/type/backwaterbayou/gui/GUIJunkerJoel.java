@@ -16,6 +16,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 // TODO: use ShopView
 public class GUIJunkerJoel extends StatelessView {
     private static final int HERMIT_CRAB_PRICE = 32;
+    private static final int RUSTY_COIN_PRICE = 4;
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -238,7 +239,7 @@ public class GUIJunkerJoel extends StatelessView {
                     <a>Rusty Coin <8>x4
 
                     <e>Click to trade!"""
-        ));
+        ), (click, c) -> trade((SkyBlockPlayer) c.player(), ItemType.ANGLER_NECKLACE, ItemType.BACKWATER_NECKLACE));
         layout.slot(23, ItemStacks.head(
             "f2adeecbf20b58fd4cad8aaa3b4653d7165e07aa167be48a321b096d56a9fe35",
             """
@@ -259,7 +260,7 @@ public class GUIJunkerJoel extends StatelessView {
                     <a>Rusty Coin <8>x4
 
                     <e>Click to trade!"""
-        ));
+        ), (click, c) -> trade((SkyBlockPlayer) c.player(), ItemType.ANGLER_CLOAK, ItemType.BACKWATER_CLOAK));
         layout.slot(24, ItemStacks.head(
             "3c150be849a39208a38a83c5605e79aef93a12b37072b931693990192cb77a19",
             """
@@ -280,7 +281,7 @@ public class GUIJunkerJoel extends StatelessView {
                     <a>Rusty Coin <8>x4
 
                     <e>Click to trade!"""
-        ));
+        ), (click, c) -> trade((SkyBlockPlayer) c.player(), ItemType.ANGLER_BELT, ItemType.BACKWATER_BELT));
         layout.slot(25, ItemStacks.head(
             "9a6c887b86b2a59fdea5052413eab74d434c07f52231ce7ac33af5b395beded0",
             """
@@ -301,7 +302,7 @@ public class GUIJunkerJoel extends StatelessView {
                     <a>Rusty Coin <8>x4
 
                     <e>Click to trade!"""
-        ));
+        ), (click, c) -> trade((SkyBlockPlayer) c.player(), ItemType.ANGLER_BRACELET, ItemType.BACKWATER_GLOVES));
         layout.slot(28, ItemStacks.head(
             "26629dfa3fdfef04054024e0156d5e19da5401b1911f59b4bd3982685fe54c2c",
             """
@@ -444,6 +445,18 @@ public class GUIJunkerJoel extends StatelessView {
                 <a>Sell Item
                 <7>Click items in your inventory to sell
                 <7>them to this Shop!"""));
+    }
+
+    private static void trade(SkyBlockPlayer player, ItemType ingredient, ItemType result) {
+        if (player.getAmountInInventory(ingredient) < 1 || player.getAmountInInventory(ItemType.RUSTY_COIN) < RUSTY_COIN_PRICE) {
+            player.sendMessage("<c>You don't have the required items!");
+            return;
+        }
+        player.removeItemFromPlayer(ingredient, 1);
+        player.removeItemFromPlayer(ItemType.RUSTY_COIN, RUSTY_COIN_PRICE);
+        SkyBlockItem item = new SkyBlockItem(result);
+        player.addAndUpdateItem(item);
+        player.sendMessage("<a>You bought a " + item.getDisplayName() + "<a>!");
     }
 
     private static void buyHermitCrab(SkyBlockPlayer player) {

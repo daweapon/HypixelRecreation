@@ -19,6 +19,9 @@ public class GUIShopFishMerchant extends ShopView {
         attachItem(ShopItem.Stackable(new SkyBlockItem(Material.SALMON), 1, new CoinShopPrice(30)));
         attachItem(ShopItem.Stackable(new SkyBlockItem(Material.TROPICAL_FISH), 1, new CoinShopPrice(100)));
         attachItem(ShopItem.Stackable(new SkyBlockItem(Material.PUFFERFISH), 1, new CoinShopPrice(40)));
-
+        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ANGLER_NECKLACE), 1, new CoinShopPrice(100)));
+        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ANGLER_CLOAK), 1, new CoinShopPrice(100)));
+        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ANGLER_BELT), 1, new CoinShopPrice(100)));
+        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ANGLER_BRACELET), 1, new CoinShopPrice(100)));
     }
 }

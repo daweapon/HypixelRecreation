@@ -15,7 +15,7 @@ entries:
     name: "<9>Toil Log"
     material: paper
     cost: { coins: 1000000 }
-  - item: ANDESITE_WHETSTONE
+  - item: REFINED_AMBER
     name: "<9>Andesite Whetstone"
     material: player_head
     cost: { coins: 1000000 }

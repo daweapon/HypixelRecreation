@@ -103,7 +103,8 @@ public class MobTreasureHoarder extends BestiaryMob implements RegionPopulator {
 				return List.of(
 						new LootRecord(ItemType.STARFALL, 1, 100),
 						new LootRecord(ItemType.STARFALL, 1, 50),
-						new LootRecord(ItemType.TREASURITE, 1, 0.5)
+						new LootRecord(ItemType.TREASURITE, 1, 0.5),
+						new LootRecord(ItemType.SALMON_OPAL, 1, 1)
 				);
 			}
 
