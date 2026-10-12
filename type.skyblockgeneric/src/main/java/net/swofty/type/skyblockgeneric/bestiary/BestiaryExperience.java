@@ -21,7 +21,8 @@ public final class BestiaryExperience {
 
     public static double skyBlockXp(int totalTiers) {
         int rewardedMilestoneGroups = totalTiers / (TIERS_PER_MILESTONE * MILESTONES_PER_REWARD);
-        return totalTiers + (double) rewardedMilestoneGroups * MILESTONE_REWARD_XP;
+        double xp = totalTiers + (double) rewardedMilestoneGroups * MILESTONE_REWARD_XP;
+        return Math.min(xp, SkyBlockXPSource.BESTIARY_PROGRESS.getMaxXP());
     }
 
     public static int totalTiers(DatapointBestiary.PlayerBestiary bestiary) {

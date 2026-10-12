@@ -11,10 +11,6 @@ entries:
     name: "<4>Super Plushie Ender Dragon Skin"
     material: player_head
     cost: { gems: 1800 }
-  - item: MERCENARY_KNIGHT
-    name: "<d>Knight Skin"
-    material: player_head
-    cost: { gems: 1350 }
   - item: NECRON_DIAMOND_KNIGHT
     name: "<d>Knight Skin"
     material: player_head

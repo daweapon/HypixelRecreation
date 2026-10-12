@@ -244,7 +244,7 @@ items:
   - id: CAMPFIRE_FLUX
     material: player_head
     name: "Campfire Power Orb Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -278,7 +278,7 @@ items:
   - id: CHAOS_TERROR
     material: player_head
     name: "Chaos Terror Helmet Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -382,7 +382,7 @@ items:
   - id: CROWN_OF_AVARICE_ROYAL
     material: player_head
     name: "Grand Royal Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -909,7 +909,7 @@ items:
   - id: GREAT_SHARK_MAGMA_LORD
     material: player_head
     name: "Great Shark Magma Lord Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1852,7 +1852,7 @@ items:
   - id: WARDEN_SPARTAN
     material: player_head
     name: "Spartan Warden Helmet Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"

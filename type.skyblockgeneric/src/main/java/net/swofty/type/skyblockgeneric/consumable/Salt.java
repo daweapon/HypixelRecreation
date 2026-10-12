@@ -16,7 +16,7 @@ import java.util.function.Predicate;
 public enum Salt {
     CANDYCOMB("Candycomb", 1.25, 12, (player, mob) -> DungeonAccessoryHook.isInDungeon(player)),
     OCEANDY("Oceandy", 1.25, 12, (player, mob) -> mob instanceof SeaCreatureMob),
-    BRINE_TONIC("Brine Tonic", 2.75, 24, (player, mob) -> {
+    BRINE_TONIC("Brine Tonic", 2.5, 24, (player, mob) -> {
         SkyBlockRegion region = player.getRegion();
         return mob instanceof SeaCreatureMob && region != null && region.getType() == RegionType.MOONGLADE_MARSH;
     }),

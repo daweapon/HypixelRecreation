@@ -17,7 +17,7 @@ public final class AbiphoneContactXP {
     }
 
     public static int total(int unlockedContacts) {
-        return unlockedContacts * XP_PER_CONTACT;
+        return Math.min(unlockedContacts * XP_PER_CONTACT, SkyBlockXPSource.ABIPHONE_CONTACTS.getMaxXP());
     }
 
     public static List<String> unlocked(SkyBlockPlayer player) {

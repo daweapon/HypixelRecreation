@@ -169,7 +169,7 @@ items:
   - id: BLAZING_CRIMSON
     material: player_head
     name: "Blazing Crimson Helmet Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
@@ -252,7 +252,7 @@ items:
   - id: CADUCEUS_MENDING_CROWN
     material: player_head
     name: "Caduceus Mender Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
@@ -340,7 +340,7 @@ items:
   - id: CORRUPT_WITHER_GOGGLES
     material: player_head
     name: "Corrupt Wither Goggles Helmet Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
@@ -533,7 +533,7 @@ items:
   - id: FERMENTO_ULTIMATE
     material: player_head
     name: "Harvester Helmet Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
@@ -731,7 +731,7 @@ items:
   - id: GLACIAL_DIVAN
     material: player_head
     name: "Glacial Divan Helmet Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:
@@ -1490,7 +1490,7 @@ items:
   - id: SENTINEL_WARDEN
     material: player_head
     name: "Sentinel Warden Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
     source: "SkyBlock Gems cosmetic from the store / Fire Sale"
     lore:

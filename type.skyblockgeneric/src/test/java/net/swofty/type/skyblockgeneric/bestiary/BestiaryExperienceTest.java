@@ -16,6 +16,6 @@ class BestiaryExperienceTest {
     @Test
     void wikiCapIsReachedAtItsTierTotal() {
         assertEquals(5_635, BestiaryExperience.skyBlockXp(5_125));
-        assertEquals(5_655, BestiaryExperience.skyBlockXp(5_145));
+        assertEquals(5_635, BestiaryExperience.skyBlockXp(5_145));
     }
 }

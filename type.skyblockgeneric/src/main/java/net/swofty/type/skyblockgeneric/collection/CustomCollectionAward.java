@@ -69,11 +69,11 @@ public enum CustomCollectionAward {
     POTION_BAG_UPGRADE_3("<a>Giant Potion Bag <7>(+9 slots)"),
     POTION_BAG_UPGRADE_4("<a>Massive Potion Bag <7>(+9 slots)"),
     SACK_OF_SACKS("<a>Small Sack of Sacks"),
-    SACK_OF_SACKS_UPGRADE_1("<a>Medium Sack of Sacks Upgrade <7>(+3 slots)"),
-    SACK_OF_SACKS_UPGRADE_2("<a>Large Sack of Sacks Upgrade <7>(+3 slots)"),
-    SACK_OF_SACKS_UPGRADE_3("<a>Greater Sack of Sacks Upgrade <7>(+3 slots)"),
-    SACK_OF_SACKS_UPGRADE_4("<a>Giant Sack of Sacks Upgrade <7>(+3 slots)"),
-    SACK_OF_SACKS_UPGRADE_5("<a>Massive Sack of Sacks Upgrade <7>(+3 slots)"),
+    SACK_OF_SACKS_UPGRADE_1("<a>Medium Sack of Sacks Upgrade <7>(+4 slots)"),
+    SACK_OF_SACKS_UPGRADE_2("<a>Large Sack of Sacks Upgrade <7>(+4 slots)"),
+    SACK_OF_SACKS_UPGRADE_3("<a>Greater Sack of Sacks Upgrade <7>(+4 slots)"),
+    SACK_OF_SACKS_UPGRADE_4("<a>Giant Sack of Sacks Upgrade <7>(+4 slots)"),
+    SACK_OF_SACKS_UPGRADE_5("<a>Massive Sack of Sacks Upgrade <7>(+5 slots)"),
 
     // FORAGING LEVEL CAP
     FIG_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),

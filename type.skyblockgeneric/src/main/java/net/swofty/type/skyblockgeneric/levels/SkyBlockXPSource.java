@@ -40,7 +40,7 @@ public enum SkyBlockXPSource {
     FAIRY_SOULS(Group.CORE, null, 570, Availability.LIVE, Material.LIGHT_BLUE_DYE),
     ACCESSORY_BAG(Group.CORE, null, 0, Availability.LIVE, Material.FLOWER_POT),
     PET_SCORE(Group.CORE, null, 0, Availability.LIVE, Material.BONE),
-    COLLECTIONS(Group.CORE, null, 3160, Availability.LIVE, Material.PAINTING),
+    COLLECTIONS(Group.CORE, null, 3172, Availability.LIVE, Material.PAINTING),
     CRAFT_MINIONS(Group.CORE, null, 3164, Availability.LIVE, Material.PLAYER_HEAD),
     BANK_UPGRADES(Group.CORE, null, 200, Availability.LIVE, Material.GOLD_INGOT),
     FAST_TRAVELS_UNLOCKED(Group.CORE, null, 360, Availability.LIVE, Material.MAP),
@@ -76,12 +76,12 @@ public enum SkyBlockXPSource {
     DIAMOND_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 226, Availability.NOT_IN_GAME, Material.DIAMOND),
     FOREST_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 171, Availability.NOT_IN_GAME, Material.OAK_SAPLING),
     FOSSIL_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 226, Availability.LIVE, Material.BONE_BLOCK),
-    SAFARI_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 395, Availability.NOT_IN_GAME, Material.LEAD),
+    SAFARI_ESSENCE_SHOP(Group.ESSENCE_SHOP, null, 414, Availability.NOT_IN_GAME, Material.LEAD),
 
     // ----- Slaying Tasks (12,315 XP) -----
     SLAYER_LEVEL_UP(Group.SLAYING, null, 3825, Availability.LIVE, Material.POTION),
     BOSS_COLLECTIONS(Group.SLAYING, null, 1015, Availability.NOT_IN_GAME, Material.BONE_BLOCK),
-    BESTIARY_PROGRESS(Group.SLAYING, null, 5655, Availability.LIVE, Material.WRITTEN_BOOK),
+    BESTIARY_PROGRESS(Group.SLAYING, null, 5635, Availability.LIVE, Material.WRITTEN_BOOK),
     MYTHOLOGICAL_KILLS(Group.SLAYING, null, 100, Availability.LIVE, Material.BONE_MEAL),
     COLLECT_MOB_TYPES(Group.SLAYING, null, 35, Availability.LIVE, Material.ZOMBIE_SPAWN_EGG),
     SLAY_DRAGONS(Group.SLAYING, null, 200, Availability.NOT_IN_GAME, Material.DRAGON_EGG),
@@ -100,7 +100,7 @@ public enum SkyBlockXPSource {
 
     ANITAS_SHOP_UPGRADES(Group.SKILL_RELATED, SubArea.FARMING, 250, Availability.LIVE, Material.GOLDEN_HOE),
     GARDEN_LEVEL(Group.SKILL_RELATED, SubArea.FARMING, 140, Availability.NOT_IN_GAME, Material.WHEAT),
-    GARDEN_VISITORS_SERVED(Group.SKILL_RELATED, SubArea.FARMING, 96, Availability.NOT_IN_GAME, Material.VILLAGER_SPAWN_EGG),
+    GARDEN_VISITORS_SERVED(Group.SKILL_RELATED, SubArea.FARMING, 48, Availability.NOT_IN_GAME, Material.VILLAGER_SPAWN_EGG),
     OFFERS_ACCEPTED(Group.SKILL_RELATED, SubArea.FARMING, 90, Availability.NOT_IN_GAME, Material.EMERALD),
     CROP_UPGRADES(Group.SKILL_RELATED, SubArea.FARMING, 117, Availability.NOT_IN_GAME, Material.CARROT),
     GARDEN_CROP_MILESTONES_REACHED(Group.SKILL_RELATED, SubArea.FARMING, 598, Availability.NOT_IN_GAME, Material.HAY_BLOCK),
@@ -131,12 +131,12 @@ public enum SkyBlockXPSource {
     HOOTIE_UPGRADES(Group.MISCELLANEOUS, null, 65, Availability.NOT_IN_GAME, Material.FEATHER),
     STARLYN_SISTER_LEVELS(Group.MISCELLANEOUS, null, 40, Availability.NOT_IN_GAME, Material.NETHER_STAR),
     BEACON_TIERS(Group.MISCELLANEOUS, null, 40, Availability.NOT_IN_GAME, Material.BEACON),
-    ATTRIBUTE_LEVELS(Group.MISCELLANEOUS, null, 3210, Availability.LIVE, Material.PRISMARINE_SHARD),
+    ATTRIBUTE_LEVELS(Group.MISCELLANEOUS, null, 3240, Availability.LIVE, Material.PRISMARINE_SHARD),
     FISH_FAMILY(Group.MISCELLANEOUS, null, 45, Availability.NOT_IN_GAME, Material.COD),
     CARROLYNS_EXPORTABLE_CROPS(Group.MISCELLANEOUS, null, 40, Availability.LIVE, Material.CARROT),
     THE_DOJO(Group.MISCELLANEOUS, null, 425, Availability.LIVE, Material.LEATHER_CHESTPLATE),
     HARP_SONGS(Group.MISCELLANEOUS, null, 236, Availability.NOT_IN_GAME, Material.ENCHANTED_BOOK),
-    ABIPHONE_CONTACTS(Group.MISCELLANEOUS, null, 840, Availability.LIVE, Material.PAPER),
+    ABIPHONE_CONTACTS(Group.MISCELLANEOUS, null, 850, Availability.LIVE, Material.PAPER),
     COMMUNITY_SHOP_UPGRADES(Group.MISCELLANEOUS, null, 120, Availability.NOT_IN_GAME, Material.EMERALD_BLOCK),
     PERSONAL_BANK_UPGRADES(Group.MISCELLANEOUS, null, 110, Availability.LIVE, Material.GOLD_BLOCK),
     MAGE_REPUTATION(Group.MISCELLANEOUS, null, 75, Availability.LIVE, Material.BLUE_BANNER),
@@ -182,7 +182,7 @@ public enum SkyBlockXPSource {
 
     /**
      * Real Hypixel's total obtainable SkyBlock XP, summed from the category totals shown in the
-     * live Ways to Level Up menu: 57,874 XP == SkyBlock Level 578.74. Uncapped tasks are
+     * live Ways to Level Up menu: 57,877 XP == SkyBlock Level 578.77. Uncapped tasks are
      * excluded, exactly as Hypixel excludes them.
      */
     public static final int TOTAL_MAX_XP;

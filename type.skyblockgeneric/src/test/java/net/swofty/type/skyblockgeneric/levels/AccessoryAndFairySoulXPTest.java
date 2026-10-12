@@ -58,8 +58,8 @@ class AccessoryAndFairySoulXPTest {
     void accessoryBagKeepsAccruingWithoutACeiling() {
         // Hypixel pays 1 XP per Accessory Power and sets no ceiling: the live Core tooltip shows
         // the task with a running total and no bar, and its seven capped siblings sum to the
-        // whole 19,810 category total on their own.
+        // whole 19,822 category total on their own.
         assertTrue(SkyBlockXPSource.ACCESSORY_BAG.isUncapped());
-        assertEquals(19810, SkyBlockXPSource.getTotalXPFor(SkyBlockXPSource.Group.CORE));
+        assertEquals(19822, SkyBlockXPSource.getTotalXPFor(SkyBlockXPSource.Group.CORE));
     }
 }

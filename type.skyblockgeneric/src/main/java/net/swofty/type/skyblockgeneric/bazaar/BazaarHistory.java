@@ -4,20 +4,16 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
+import net.swofty.type.skyblockgeneric.data.datapoints.DatapointBazaarHistory;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 // The instant buys and instant sells made on a profile, newest first, shown by the Bazaar History button.
 public final class BazaarHistory {
     public static final int CAPACITY = 20;
-
-    private static final Map<UUID, Deque<Entry>> BY_PROFILE = new ConcurrentHashMap<>();
 
     private BazaarHistory() {
     }
@@ -49,32 +45,26 @@ public final class BazaarHistory {
         }
     }
 
-    public static void record(UUID profile, Kind kind, ItemType item, int amount, double coins, Text player) {
-        record(profile, kind, BazaarProducts.of(item), amount, coins, player);
+    public static void record(SkyBlockPlayer player, Kind kind, BazaarProduct item, int amount, double coins, Text name) {
+        record(player, new Entry(System.currentTimeMillis(), kind, item, amount, coins, name));
     }
 
-    public static void record(UUID profile, Kind kind, BazaarProduct item, int amount, double coins, Text player) {
-        record(profile, new Entry(System.currentTimeMillis(), kind, item, amount, coins, player));
+    public static void record(SkyBlockPlayer player, Entry entry) {
+        DatapointBazaarHistory history = player.getSkyblockDataHandler()
+                .get(SkyBlockDataHandler.Data.BAZAAR_HISTORY, DatapointBazaarHistory.class);
+        history.setValue(withLatest(history.getValue(), entry));
     }
 
-    public static void record(UUID profile, Entry entry) {
-        Deque<Entry> entries = BY_PROFILE.computeIfAbsent(profile, key -> new ArrayDeque<>());
-        synchronized (entries) {
-            entries.addFirst(entry);
-            while (entries.size() > CAPACITY) {
-                entries.removeLast();
-            }
-        }
+    public static List<Entry> entries(SkyBlockPlayer player) {
+        return List.copyOf(player.getSkyblockDataHandler()
+                .get(SkyBlockDataHandler.Data.BAZAAR_HISTORY, DatapointBazaarHistory.class).getValue());
     }
 
-    public static List<Entry> entries(UUID profile) {
-        Deque<Entry> entries = BY_PROFILE.get(profile);
-        if (entries == null) {
-            return List.of();
-        }
-        synchronized (entries) {
-            return new ArrayList<>(entries);
-        }
+    public static List<Entry> withLatest(List<Entry> entries, Entry entry) {
+        List<Entry> updated = new ArrayList<>(Math.min(entries.size() + 1, CAPACITY));
+        updated.add(entry);
+        updated.addAll(entries);
+        return new ArrayList<>(updated.subList(0, Math.min(updated.size(), CAPACITY)));
     }
 
     public static String ago(long millis) {

@@ -632,7 +632,7 @@ items:
   - id: GEMSTONE_DIVAN
     material: player_head
     name: "Gemstone Divan Helmet Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     unavailable: "Animated skin; animated head textures are not supported yet (sold in Taylor / Fire Sale store content)"
     lore:
       - "§7Item skins give your gear a fresh"
@@ -1093,7 +1093,7 @@ items:
     material: player_head
     name: "Knight Skin"
     rarity: EPIC
-    source: "Taylor's Collection for 1,350 Gems"
+    source: "Event Shop (Summer 2025): 100 Event Silver"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1931,7 +1931,7 @@ items:
   - id: WITHER_AWAKENED
     material: player_head
     name: "Awakened Wither Helmet Skin"
-    rarity: MYTHIC
+    rarity: SPECIAL
     unavailable: "Target the Wither armour set is not in the game yet; also SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
     lore:
       - "§7Item skins give your gear a fresh"

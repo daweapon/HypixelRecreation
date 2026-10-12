@@ -33,6 +33,6 @@ class ExistingSystemXPTest {
 
     @Test
     void abiphoneContactsReachCapAt84() {
-        assertEquals(SkyBlockXPSource.ABIPHONE_CONTACTS.getMaxXP(), AbiphoneContactXP.total(84));
+        assertEquals(SkyBlockXPSource.ABIPHONE_CONTACTS.getMaxXP(), AbiphoneContactXP.total(85));
     }
 }

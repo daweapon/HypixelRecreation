@@ -21,13 +21,13 @@ class SkyBlockXPSourceTest {
      * exactly as Hypixel counts.
      */
     private static final Map<SkyBlockXPSource.Group, Integer> EXPECTED_GROUP_TOTALS = Map.of(
-            SkyBlockXPSource.Group.CORE, 19810,
+            SkyBlockXPSource.Group.CORE, 19822,
             SkyBlockXPSource.Group.EVENT, 1439,
             SkyBlockXPSource.Group.DUNGEON, 2760,
-            SkyBlockXPSource.Group.ESSENCE_SHOP, 2121,
-            SkyBlockXPSource.Group.SLAYING, 12315,
-            SkyBlockXPSource.Group.SKILL_RELATED, 11732,
-            SkyBlockXPSource.Group.MISCELLANEOUS, 6266,
+            SkyBlockXPSource.Group.ESSENCE_SHOP, 2140,
+            SkyBlockXPSource.Group.SLAYING, 12295,
+            SkyBlockXPSource.Group.SKILL_RELATED, 11684,
+            SkyBlockXPSource.Group.MISCELLANEOUS, 6306,
             SkyBlockXPSource.Group.STORY, 1132,
             SkyBlockXPSource.Group.CONSUMABLES, 299
     );
@@ -41,8 +41,8 @@ class SkyBlockXPSourceTest {
 
     @Test
     void totalXPReachesTheRealMaximumLevel() {
-        assertEquals(57874, SkyBlockXPSource.TOTAL_MAX_XP);
-        assertEquals(578.74, SkyBlockXPSource.getMaxLevel(), 1e-9);
+        assertEquals(57877, SkyBlockXPSource.TOTAL_MAX_XP);
+        assertEquals(578.77, SkyBlockXPSource.getMaxLevel(), 1e-9);
     }
 
     @Test
@@ -130,7 +130,7 @@ class SkyBlockXPSourceTest {
     @Test
     void skillRelatedSubAreasMatchTheirPublishedSubtotals() {
         assertEquals(4892, subAreaTotal(SkyBlockXPSource.SubArea.MINING));
-        assertEquals(2566, subAreaTotal(SkyBlockXPSource.SubArea.FARMING));
+        assertEquals(2518, subAreaTotal(SkyBlockXPSource.SubArea.FARMING));
         assertEquals(1755, subAreaTotal(SkyBlockXPSource.SubArea.FISHING));
         assertEquals(2519, subAreaTotal(SkyBlockXPSource.SubArea.FORAGING));
     }

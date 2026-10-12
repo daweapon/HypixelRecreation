@@ -167,7 +167,7 @@ final class BazaarMenuButtons {
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
                 List<Text> lore = new ArrayList<>();
-                List<BazaarHistory.Entry> entries = BazaarHistory.entries(player.getProfiles().getCurrentlySelected());
+                List<BazaarHistory.Entry> entries = BazaarHistory.entries(player);
                 if (entries.isEmpty()) {
                     lore.add(Text.key("gui_bazaar.buttons.history.empty"));
                 }

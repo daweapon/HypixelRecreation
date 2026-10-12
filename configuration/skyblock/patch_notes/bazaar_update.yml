@@ -12,6 +12,7 @@ sections:
       - "Enchanted books can be traded at every level, normal and ultimate, and so can the 11 essences."
       - "Items that were just Bazaar placeholders are now real items with a source, recipe or reason."
       - "Diana's Mythological drops are no longer sold on the Bazaar, like the real one."
+      - "Bazaar History and Settings are now saved, so they survive restarts."
   - heading: "Power Orbs and Deployables"
     colour: "<d>"
     lines:
@@ -36,3 +37,12 @@ sections:
     colour: "<c>"
     lines:
       - "Max profile now puts one copy of every Museum variant into the Museum, not only the top tier."
+  - heading: "Fixes and Balance"
+    colour: "<e>"
+    lines:
+      - "The Sack of Sacks now gains 8, 12, 16, 20, 24 and 29 slots from Tropical Fish collection tiers IV to IX, like the wiki."
+      - "Brine Tonic charm value now matches the wiki (2.5)."
+      - "The duplicate Mercenary Knight skin was removed from Taylor's Collection."
+      - "Four random Taylor's Collection skins are now shown in Taylor's display cases."
+      - "Thirteen Ultimate skins now have Special rarity."
+      - "SkyBlock XP sources for Collections, Safari Essence Shop, Bestiary, Unique Visitors, Abiphone Contacts and Attributes now follow the newest community values."

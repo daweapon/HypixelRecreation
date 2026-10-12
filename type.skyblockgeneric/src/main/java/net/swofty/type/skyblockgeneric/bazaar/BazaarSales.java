@@ -155,7 +155,7 @@ public final class BazaarSales {
                 refund(player, source, line, restore);
                 return false;
             }
-            BazaarHistory.record(player.getProfiles().getCurrentlySelected(), BazaarHistory.Kind.INSTANT_SELL,
+            BazaarHistory.record(player, BazaarHistory.Kind.INSTANT_SELL,
                     product, amount, line.coins(), player.getFullDisplayName());
             return true;
         });

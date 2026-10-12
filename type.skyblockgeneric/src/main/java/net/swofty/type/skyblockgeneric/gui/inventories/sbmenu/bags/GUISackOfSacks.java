@@ -29,12 +29,12 @@ import java.util.TreeMap;
 
 public class GUISackOfSacks implements StatefulView<GUISackOfSacks.SackOfSacksState> {
     private static final SortedMap<CustomCollectionAward, Integer> SLOTS_PER_UPGRADE = new TreeMap<>(Map.of(
-            CustomCollectionAward.SACK_OF_SACKS, 3,
-            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_1, 6,
-            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_2, 9,
-            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_3, 12,
-            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_4, 15,
-            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_5, 18
+            CustomCollectionAward.SACK_OF_SACKS, 8,
+            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_1, 12,
+            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_2, 16,
+            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_3, 20,
+            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_4, 24,
+            CustomCollectionAward.SACK_OF_SACKS_UPGRADE_5, 29
     ));
 
     @Override

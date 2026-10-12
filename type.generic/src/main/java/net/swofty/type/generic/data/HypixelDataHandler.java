@@ -339,6 +339,9 @@ public class HypixelDataHandler extends DataHandler {
         HYPIXEL_EXPERIENCE("hypixel_experience",
                 DatapointHypixelExperience.class, new DatapointHypixelExperience("hypixel_experience", 0L)),
 
+        BAZAAR_DIRECT_MODE("bazaar_direct_mode", DatapointBoolean.class, new DatapointBoolean("bazaar_direct_mode", true)),
+        BAZAAR_IGNORED_ITEMS("bazaar_ignored_items", DatapointStringList.class, new DatapointStringList("bazaar_ignored_items")),
+
         RANK_COLOR("rank_color", DatapointString.class, new DatapointString("rank_color", "RED")),
         MVP_PLUS_PLUS_AQUA("mvp_plus_plus_aqua", DatapointBoolean.class, new DatapointBoolean("mvp_plus_plus_aqua", false)),
         RANKS_GIFTED("ranks_gifted", DatapointInteger.class, new DatapointInteger("ranks_gifted", 0)),
