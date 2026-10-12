@@ -1,0 +1,19 @@
+title: "The SkyBlock XP Update"
+date: "11th October 2026"
+intro:
+  - "Thirteen more tasks in the Ways to Level Up menu now give SkyBlock XP, and existing profiles are credited the first time they join."
+sections:
+  - heading: "New XP sources"
+    colour: "<a>"
+    lines:
+      - "Bestiary progress, Attribute levels, Crafting minions, Defeating slayers, Fast travel scrolls, Bank upgrades, Abiphone contacts, Hoppity's Hunt, Spooky Festival, Ship parts, Tree Gift milestones, Brain Food and the Collected Mob Types rewards."
+      - "The Core of the Mountain now has its own task, separate from the Heart of the Mountain."
+      - "The Fishing Festival perk shop now counts too."
+  - heading: "Essence shops"
+    colour: "<d>"
+    lines:
+      - "The Wither, Undead, Gold, Diamond, Spider, Dragon, Forest, Safari and Sun Gecko shops give SkyBlock XP for each perk tier bought. Their NPCs are not open yet."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Tasks for Dungeons, the Garden, Crystal Hollows, the Rift, Heart of the Forest and the rest still wait on that content."

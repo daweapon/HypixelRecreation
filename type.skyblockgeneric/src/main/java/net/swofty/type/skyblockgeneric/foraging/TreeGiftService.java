@@ -58,6 +58,7 @@ public final class TreeGiftService {
             case "HELIX" -> 1500;
             default -> 1000;
         } * scaled;
+        TreeGiftMilestones.recordGift(player, treeType);
         increase(player, SkyBlockDataHandler.Data.FOREST_ESSENCE, essence);
         increase(player, SkyBlockDataHandler.Data.HOTF_EXPERIENCE, 10L * scaled);
         player.getSkills().increase(player, SkillCategories.FORAGING, (double) foragingXp);

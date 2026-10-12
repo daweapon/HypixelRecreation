@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.banker;
 
+import net.swofty.type.skyblockgeneric.bank.BankUpgradeAwards;
 import net.kyori.adventure.text.format.TextColor;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
@@ -147,6 +148,7 @@ public class GUIBankUpgrades extends HypixelInventoryGUI {
         player.getSkyblockDataHandler()
             .get(SkyBlockDataHandler.Data.BANK_DATA, DatapointBankData.class)
             .setValue(data);
+        BankUpgradeAwards.syncSkyBlockXP(player);
         player.sendMessage("<a>Upgraded your bank account to <color:{0}>{1}<a>!",
             selected.getColor(), selected.getDisplayName());
         new GUIBankUpgrades().open(player);

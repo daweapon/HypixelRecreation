@@ -82,6 +82,7 @@ public class SkyBlockLevelCause {
         for (MobType mobType : MobType.values()) {
             CAUSES.put("mob-type-" + mobType.name(), new CollectedMobTypesCause(mobType.name()));
         }
+        CAUSES.put("mob-type-" + CollectedMobTypesCause.ALL_TYPES, new CollectedMobTypesCause(CollectedMobTypesCause.ALL_TYPES));
 
         // Register all Mission rewards
         for (String missionID : MissionData.getAllMissionIDs()) {

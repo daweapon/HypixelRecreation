@@ -59,6 +59,7 @@ public class ChocolateFactoryHelper {
         player.getSkyblockDataHandler()
                 .get(SkyBlockDataHandler.Data.CHOCOLATE_FACTORY, DatapointChocolateFactory.class)
                 .setValue(data);
+        HoppitysHuntXP.syncSkyBlockXP(player);
     }
 
     public static void handleClick(SkyBlockPlayer player) {
@@ -409,6 +410,7 @@ public class ChocolateFactoryHelper {
         DatapointChocolateFactory.ChocolateFactoryData data = datapoint.getValue();
         mutator.accept(data);
         datapoint.setValue(data);
+        HoppitysHuntXP.syncSkyBlockXP(player);
     }
 
     private static EmployeeType getEmployeeType(String employeeName) {

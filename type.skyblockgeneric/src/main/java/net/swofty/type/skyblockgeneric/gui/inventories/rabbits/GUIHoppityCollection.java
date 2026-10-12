@@ -15,6 +15,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointChocolateFactory;
 import net.swofty.type.skyblockgeneric.rabbits.ChocolateRabbit;
+import net.swofty.type.skyblockgeneric.rabbits.HoppitysHuntXP;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.*;
@@ -100,6 +101,7 @@ public class GUIHoppityCollection implements StatefulView<GUIHoppityCollection.S
                         } else {
                             clickerData.addFoundRabbit(rabbit);
                         }
+                        HoppitysHuntXP.syncSkyBlockXP(clicker);
                         c.session(State.class).setState(state);
                     });
                 } else {

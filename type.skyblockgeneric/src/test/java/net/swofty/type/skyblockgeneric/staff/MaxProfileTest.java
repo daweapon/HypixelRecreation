@@ -461,4 +461,40 @@ class MaxProfileTest {
             return -1;
         }
     }
+
+    @Test
+    void buyingAnEssencePerkAwardsItsSkyBlockXPAndItsStat() {
+        net.swofty.type.skyblockgeneric.essence.EssenceShops.load(Path.of("../configuration/skyblock/essence_shops.json"));
+        SkyBlockPlayer player = player();
+        var shop = net.swofty.type.skyblockgeneric.essence.EssenceShops
+                .shop(net.swofty.type.skyblockgeneric.essence.EssenceType.WITHER).orElseThrow();
+        var health = shop.perks().stream().filter(p -> p.id().equals("permanent_health")).findFirst().orElseThrow();
+        net.swofty.type.skyblockgeneric.essence.Essences.add(player, net.swofty.type.skyblockgeneric.essence.EssenceType.WITHER, 100);
+        double before = player.getSkyBlockExperience().getTotalXP();
+
+        assertEquals(net.swofty.type.skyblockgeneric.essence.EssenceShop.Result.BOUGHT, shop.buy(player, health));
+
+        int expected = shop.skyBlockXP(perk -> perk == health ? 1 : 0);
+        assertTrue(expected > 0);
+        assertEquals(expected, player.getSkyBlockExperience().getSourceXP(SkyBlockXPSource.WITHER_ESSENCE_SHOP), 0.001);
+        assertEquals(before + expected, player.getSkyBlockExperience().getTotalXP(), 0.001);
+        assertEquals(health.valueAt(1), net.swofty.type.skyblockgeneric.essence.EssenceShops.statistics(player)
+                .getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.HEALTH), 0.001);
+        assertEquals(0, net.swofty.type.skyblockgeneric.essence.Essences.get(player, net.swofty.type.skyblockgeneric.essence.EssenceType.WITHER));
+    }
+
+    @Test
+    void maxProfileFillsEveryEssenceShopTask() {
+        SkyBlockPlayer player = player();
+        MaxStickService.runSteps(player);
+        for (SkyBlockXPSource source : List.of(SkyBlockXPSource.ICE_ESSENCE_SHOP, SkyBlockXPSource.CRIMSON_ESSENCE_SHOP,
+                SkyBlockXPSource.FOSSIL_ESSENCE_SHOP)) {
+            assertTrue(player.getSkyBlockExperience().getSourceXP(source) > 0, source + " not filled");
+        }
+        for (var entry : net.swofty.type.skyblockgeneric.essence.EssenceShops.shops().entrySet()) {
+            SkyBlockXPSource source = net.swofty.type.skyblockgeneric.essence.EssenceShops.xpSource(entry.getKey());
+            if (source == null) continue;
+            assertEquals(source.getMaxXP(), player.getSkyBlockExperience().getSourceXP(source), 0.001, entry.getKey().name());
+        }
+    }
 }

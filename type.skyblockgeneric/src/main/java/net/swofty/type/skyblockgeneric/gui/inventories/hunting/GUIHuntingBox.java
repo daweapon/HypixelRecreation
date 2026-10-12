@@ -17,6 +17,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointHunting;
 import net.swofty.type.skyblockgeneric.hunting.AttributeDefinition;
+import net.swofty.type.skyblockgeneric.hunting.AttributeLevelAwards;
 import net.swofty.type.skyblockgeneric.hunting.AttributeRegistry;
 import net.swofty.type.skyblockgeneric.item.components.AttributeShardComponent;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
@@ -180,6 +181,7 @@ public class GUIHuntingBox extends StatefulPaginatedView<AttributeDefinition, GU
             if (used > 0) {
                 player.getSkills().increase(player, SkillCategories.HUNTING, used * syphonExperience(d));
                 SkyBlockItemAchievements.onSyphon(player);
+                AttributeLevelAwards.syncSkyBlockXP(player);
             }
         } else
             player.sendMessage("<c>You need Hunting Level {} to Syphon this Attribute!", d.rarity().huntingRequirement());
@@ -191,6 +193,7 @@ public class GUIHuntingBox extends StatefulPaginatedView<AttributeDefinition, GU
             if (player.getSkills().getCurrentLevel(SkillCategories.HUNTING) >= d.rarity().huntingRequirement())
                 player.getHuntingData().syphon(d.id(), player.getHuntingData().shardCount(d.id()));
         SkyBlockItemAchievements.onSyphon(player);
+        AttributeLevelAwards.syncSkyBlockXP(player);
         refresh(ctx, ctx.session(State.class).state().sort(), ctx.session(State.class).state().query());
     }
 

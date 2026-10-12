@@ -6,6 +6,18 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "skyblock-xp"
+    name: "The SkyBlock XP Update"
+    date: "11th October 2026"
+    material: experience_bottle
+    title: "The SkyBlock XP Update"
+    book: "skyblock_xp_update.yml"
+  - version: "essence-shops"
+    name: "The Essence Shops Update"
+    date: "11th October 2026"
+    material: nether_star
+    title: "The Essence Shops Update"
+    book: "essence_shops_update.yml"
   - version: "pet-perks"
     name: "The Pet Perks Update"
     date: "11th October 2026"

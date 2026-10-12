@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.components;
 
+import net.swofty.type.skyblockgeneric.warps.TravelScrollAwards;
 import lombok.Getter;
 import net.swofty.type.generic.data.HypixelDataHandler;
 import net.swofty.type.generic.data.datapoints.DatapointRank;
@@ -54,6 +55,7 @@ public class TravelScrollComponent extends SkyBlockItemComponent {
 
         scrolls.add(getTravelScrollType().getInternalName());
         player.getSkyblockDataHandler().get(net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler.Data.USED_SCROLLS, DatapointStringList.class).setValue(scrolls);
+        TravelScrollAwards.syncSkyBlockXP(player);
         player.sendMessage("<a>You have unlocked the {} <a>travel scroll!", getTravelScrollType().getDisplayName());
 
     }

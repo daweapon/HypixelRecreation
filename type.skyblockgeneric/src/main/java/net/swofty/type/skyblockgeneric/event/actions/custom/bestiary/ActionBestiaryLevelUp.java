@@ -6,6 +6,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.bestiary.BestiaryData;
+import net.swofty.type.skyblockgeneric.bestiary.BestiaryExperience;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.event.custom.BestiaryUpdateEvent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -30,6 +31,8 @@ public class ActionBestiaryLevelUp implements HypixelEventClass {
 
 		int oldTier = bestiaryData.getCurrentBestiaryTier(mob, oldKills);
 		int newTier = bestiaryData.getCurrentBestiaryTier(mob, newKills);
+
+		if (oldTier != newTier) BestiaryExperience.syncSkyBlockXP(player);
 
 		if (newKills == 1) {
 			player.sendMessage("  <3><l>BESTIARY FAMILY UNLOCKED </l><b>{}", mobName);

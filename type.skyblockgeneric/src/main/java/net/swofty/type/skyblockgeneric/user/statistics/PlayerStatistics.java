@@ -284,6 +284,7 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, IceEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.essence.FossilEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, CrimsonEssenceShop.statistics(player));
+        spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.essence.EssenceShops.statistics(player));
         spare = ItemStatistics.add(spare, SlayerProgression.statistics(player));
         spare = ItemStatistics.add(spare, CarrolynExports.statistics(player));
         spare = ItemStatistics.add(spare, PetScore.statistics(player));

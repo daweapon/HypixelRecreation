@@ -38,6 +38,7 @@ public record SpookyFestivalCandyTally(int green, int purple) {
                 .setValue(updated.green);
         data.get(SkyBlockDataHandler.Data.SPOOKY_FESTIVAL_PURPLE_CANDY, DatapointInteger.class)
                 .setValue(updated.purple);
+        SpookyFestivalXP.syncSkyBlockXP(player);
         return updated;
     }
 }

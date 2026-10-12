@@ -205,6 +205,7 @@ public enum TravelScrollIslands {
 		DatapointStringList scrolls = player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.USED_SCROLLS, DatapointStringList.class);
 		visited.setValue(withAll(visited.getValue(), Arrays.stream(values()).map(TravelScrollIslands::getInternalName).toList()));
 		scrolls.setValue(withAll(scrolls.getValue(), Arrays.stream(TravelScrollType.values()).map(TravelScrollType::getInternalName).toList()));
+		TravelScrollAwards.syncSkyBlockXP(player);
 	}
 
 	private static List<String> withAll(List<String> current, List<String> additions) {

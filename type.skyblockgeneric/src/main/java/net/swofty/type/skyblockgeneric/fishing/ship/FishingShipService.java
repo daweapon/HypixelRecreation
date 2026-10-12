@@ -24,6 +24,7 @@ public final class FishingShipService {
             case HULL -> state.setHull(itemId);
         }
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SHIP_STATE, DatapointShipState.class).setValue(state);
+        ShipPartAwards.syncSkyBlockXP(player);
     }
 
     public static void unlockDestination(SkyBlockPlayer player, String destinationId) {

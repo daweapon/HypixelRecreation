@@ -59,6 +59,7 @@ public final class EssenceShop<P extends EssencePerk> {
     }
 
     public void syncSkyBlockXP(SkyBlockPlayer player) {
+        if (xpSource == null) return;
         player.getSkyBlockExperience().setSourceXP(xpSource, skyBlockXP(perk -> EssencePerks.tier(player, perk)));
     }
 

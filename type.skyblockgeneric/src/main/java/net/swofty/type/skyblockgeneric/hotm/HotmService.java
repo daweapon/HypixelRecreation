@@ -94,10 +94,12 @@ public final class HotmService {
     public static void syncSkyBlockXp(SkyBlockPlayer player) {
         DatapointHOTM.PlayerHOTMData data = data(player);
         HotmRegistry registry = HotmRegistry.get();
-        double total = 0;
-        for (int tier = 1; tier <= data.getTier(); tier++) total += registry.tierReward(tier).skyBlockXp();
-        for (int level = 1; level <= data.getCoreLevel(); level++) total += registry.coreLevel(level).skyBlockXp();
-        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.HEART_OF_THE_MOUNTAIN, total);
+        double tierXp = 0;
+        for (int tier = 1; tier <= data.getTier(); tier++) tierXp += registry.tierReward(tier).skyBlockXp();
+        double coreXp = 0;
+        for (int level = 1; level <= data.getCoreLevel(); level++) coreXp += registry.coreLevel(level).skyBlockXp();
+        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.HEART_OF_THE_MOUNTAIN, tierXp);
+        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.CORE_OF_THE_MOUNTAIN, coreXp);
     }
 
     public static String buyPerk(SkyBlockPlayer player, String perkId) {

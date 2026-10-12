@@ -527,6 +527,9 @@ public class SkyBlockDataHandler extends DataHandler {
         VISITED_REGIONS("visited_regions", false, false, false,
                 DatapointStringList.class, new DatapointStringList("visited_regions")),
 
+        ABIPHONE_CONTACTS_UNLOCKED("abiphone_contacts_unlocked", false, false, false,
+                DatapointStringList.class, new DatapointStringList("abiphone_contacts_unlocked")),
+
         AUCTION_STATISTICS("auction_statistics", false, false, false,
                 DatapointAuctionStatistics.class, new DatapointAuctionStatistics("auction_statistics")),
 
@@ -567,6 +570,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         SHIP_STATE("ship_state", false, false, false,
                 DatapointShipState.class, new DatapointShipState("ship_state")),
+
+        TREE_GIFTS("tree_gifts", false, false, false,
+                DatapointTreeGifts.class, new DatapointTreeGifts("tree_gifts")),
 
         TROPHY_FISH("trophy_fish", false, false, false,
                 DatapointTrophyFish.class, new DatapointTrophyFish("trophy_fish")),
@@ -709,6 +715,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         SPOOKY_FESTIVAL_PURPLE_CANDY("spooky_festival_purple_candy", false, false, false,
                 DatapointInteger.class, new DatapointInteger("spooky_festival_purple_candy", 0)),
+
+        SPOOKY_FESTIVAL_BEST_BRACKET("spooky_festival_best_bracket", false, false, false,
+                DatapointInteger.class, new DatapointInteger("spooky_festival_best_bracket", 0)),
 
         NORTH_STARS("north_stars", false, false, false,
                 DatapointInteger.class, new DatapointInteger("north_stars", 0)),

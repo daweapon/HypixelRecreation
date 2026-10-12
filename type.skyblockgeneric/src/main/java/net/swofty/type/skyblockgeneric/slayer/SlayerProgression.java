@@ -58,7 +58,28 @@ public final class SlayerProgression {
         return total;
     }
 
+    public static int firstDefeatXp(SlayerTier tier) {
+        return switch (tier) {
+            case I, II -> 25;
+            case III, IV -> 50;
+            case V -> 75;
+        };
+    }
+
+    public static int defeatSkyBlockXp(SkyBlockPlayer player) {
+        DatapointSlayer.SlayerData data = player.getSlayerData();
+        int total = 0;
+        for (SlayerDefinition definition : SlayerRegistry.all()) {
+            DatapointSlayer.SlayerProgress progress = data.progress(definition.type());
+            for (SlayerTier tier : definition.tiers().keySet()) {
+                if (progress.completions(tier) > 0) total += firstDefeatXp(tier);
+            }
+        }
+        return total;
+    }
+
     public static void sync(SkyBlockPlayer player) {
         player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.SLAYER_LEVEL_UP, skyBlockXp(player));
+        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.DEFEAT_SLAYERS, defeatSkyBlockXp(player));
     }
 }

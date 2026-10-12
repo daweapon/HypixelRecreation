@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.crimson.questline;
 
 import net.minestom.server.item.ItemStack;
+import net.swofty.type.skyblockgeneric.abiphone.AbiphoneContactXP;
 import net.swofty.type.skyblockgeneric.abiphone.AbiphoneNPC;
 import net.swofty.type.skyblockgeneric.abiphone.AbiphoneRegistry;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -38,6 +39,7 @@ public final class CrimsonAbiphone {
         AbiphoneNPC contact = AbiphoneRegistry.getFromId(contactId);
         if (slot < 0 || contact == null || hasContact(player, contactId)) return false;
         player.updateItemInSlot(slot, item -> item.getAttributeHandler().addAbiphoneNPC(contact));
+        AbiphoneContactXP.unlock(player, contact.getId());
         player.sendMessage("<b>✆ {} <f>has been added to your Abiphone's contacts!", contact.getName());
         return true;
     }

@@ -35,6 +35,7 @@ public abstract class AbiphoneNPC {
 		player.updateItemInSlot(slot, (i) -> {
 			if (!i.hasComponent(AbiphoneComponent.class)) return;
 			i.getAttributeHandler().addAbiphoneNPC(this);
+			AbiphoneContactXP.unlock(player, this.getId());
 			player.sendMessage("<b>✆ {} <f>has been added to your Abiphone's contacts!", getName());
 		});
 	}

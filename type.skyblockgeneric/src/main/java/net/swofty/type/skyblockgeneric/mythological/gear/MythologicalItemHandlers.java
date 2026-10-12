@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableRe
 import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreConfig;
 import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreRegistry;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalBestiary;
+import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,6 +31,7 @@ import java.util.Set;
  */
 public final class MythologicalItemHandlers {
     public static final int BRAIN_FOOD_LIMIT = 5;
+    public static final int BRAIN_FOOD_XP = 5;
     private static final String MYTHOLOGICAL_DYE_COLOR = "#6F6F0C";
     private static final int FATEFUL_STINGER_FROM = 6;
     private static final int FATEFUL_STINGER_TO = 7;
@@ -75,6 +77,15 @@ public final class MythologicalItemHandlers {
 
     public static void setBrainFoodEaten(SkyBlockPlayer player, int eaten) {
         player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.BRAIN_FOOD_CONSUMED, DatapointInteger.class).setValue(eaten);
+        syncSkyBlockXP(player);
+    }
+
+    public static int brainFoodSkyBlockXp(int eaten) {
+        return Math.min(eaten, BRAIN_FOOD_LIMIT) * BRAIN_FOOD_XP;
+    }
+
+    public static void syncSkyBlockXP(SkyBlockPlayer player) {
+        player.getSkyBlockExperience().setSourceXP(SkyBlockXPSource.BRAIN_FOOD, brainFoodSkyBlockXp(brainFoodEaten(player)));
     }
 
     public static ItemStatistics permanentStatistics(SkyBlockPlayer player) {

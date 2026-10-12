@@ -52,6 +52,7 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         action(layout, 32, Material.REDSTONE_BLOCK, "<c>Reset HOTM Perks", "<8>A fresh start.", "<7>Reset every Heart of the Mountain perk.", HotmService::reset);
         action(layout, 33, Material.FURNACE, "<6>Finish Forge Processes", "<8>Patience is overrated.", "<7>Finish every running <6>Forge<7> process.", p -> net.swofty.type.skyblockgeneric.forge.ForgeService.finishAll(p));
         action(layout, 38, Material.BONE_BLOCK, "<d>Fossil Essence", "<8>Older than time itself.", "<7>Gain <d>100,000 Fossil Essence<7>.", p -> net.swofty.type.skyblockgeneric.essence.Essences.add(p, net.swofty.type.skyblockgeneric.essence.EssenceType.FOSSIL, 100_000));
+        action(layout, 39, Material.NETHER_STAR, "<d>Every Essence", "<8>The full collection.", "<7>Gain <d>100,000<7> of every essence type.", p -> { for (net.swofty.type.skyblockgeneric.essence.EssenceType type : net.swofty.type.skyblockgeneric.essence.EssenceType.values()) net.swofty.type.skyblockgeneric.essence.Essences.add(p, type, 100_000); });
         unavailable(layout, 28, Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard.");
         unavailable(layout, 29, Material.GREEN_DYE, "<2>Pile of Sowdust", "<7>Give yourself <2>1,000,000,000 Sowdust<7>.");
         unavailable(layout, 30, Material.BRICKS, "<c>Vault of Copper", "<7>Give yourself <c>1,000,000 Copper<7>.");

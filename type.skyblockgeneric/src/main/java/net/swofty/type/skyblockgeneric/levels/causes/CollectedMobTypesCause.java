@@ -5,6 +5,9 @@ import net.swofty.type.skyblockgeneric.levels.abstr.SkyBlockLevelCauseAbstr;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class CollectedMobTypesCause extends SkyBlockLevelCauseAbstr {
+    public static final String ALL_TYPES = "ALL";
+    public static final double ALL_TYPES_XP = 10;
+
     private String mobType;
 
     public CollectedMobTypesCause(String mobType) {
@@ -13,12 +16,16 @@ public class CollectedMobTypesCause extends SkyBlockLevelCauseAbstr {
 
     @Override
     public String displayName() {
-        return StringUtility.toNormalCase(mobType);
+        return isAllTypes() ? "All Mob Types" : StringUtility.toNormalCase(mobType);
     }
 
     @Override
     public double xpReward() {
-        return 1;
+        return isAllTypes() ? ALL_TYPES_XP : 1;
+    }
+
+    private boolean isAllTypes() {
+        return ALL_TYPES.equals(mobType);
     }
 
     @Override

@@ -10,6 +10,7 @@ public enum MobType {
     ARCANE("♃", "<5>", "Arcane", "Mobs that specialize in magic or have high magical density."),
     ARTHROPOD("Ж", "<4>", "Arthropod", "Mainly consists of spiders and other invertebrate-adjacent mobs."),
     CONSTRUCT("⚙", "<7>", "Construct", "Mobs that are summoned by other enemies or are artificially created."),
+    CRITTER("🐛", "<a>", "Critter", "Mobs found in Galatea that must be defeated using Galatea tools."),
     CUBIC("⚂", "<a>", "Cubic", "Mobs that have cube-like or blocky appearances."),
     ELUSIVE("♣", "<d>", "Elusive", "Mobs that are rare and hard to find."),
     ENDER("⊙", "<5>", "Ender", "Mobs related to the End dimension."),

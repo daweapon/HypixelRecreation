@@ -11,6 +11,7 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
+import net.swofty.type.skyblockgeneric.entity.mob.CollectedMobTypes;
 import net.swofty.type.skyblockgeneric.entity.mob.MobRegistry;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
@@ -59,7 +60,7 @@ public class GUICollectedMobTypes extends HypixelInventoryGUI {
 
                     player.getSkills().increase(player, SkillCategories.COMBAT, 1000D);
                     player.addCoins(1000);
-                    player.getCollectedMobTypesData().claim(mobType.mobType.name());
+                    CollectedMobTypes.claim(player, mobType.mobType);
 
                     new GUICollectedMobTypes().open(player);
                 }
@@ -145,6 +146,11 @@ public class GUICollectedMobTypes extends HypixelInventoryGUI {
                 "<7>from the <9>Bane of Arthropods",
                 "<7>enchantment."
         ),
+        CRITTER(MobType.CRITTER, new GUIMaterial(Material.SPORE_BLOSSOM),
+                "<7>Enemies of this type are typically",
+                "<7>found in <2>Galatea <7>and must be",
+                "<7>defeated using <d>Galatea <7>tools."
+        ),
         CONSTRUCT(MobType.CONSTRUCT, new GUIMaterial("4271913a3fc8f56bdf6b90a4b4ed6a05c562ce0076b5344d444fb2b040ae57d"),
                 "<7>Enemies of this type are typically",
                 "<7>summoned by other enemies - or by",
@@ -216,6 +222,10 @@ public class GUICollectedMobTypes extends HypixelInventoryGUI {
         SUBTERRANEAN(MobType.SUBTERRANEAN, new GUIMaterial("b2b12a814ced8af02cddf29a37e7f3011e430e8a18b38b706f27c6bd31650b65"),
                 "<7>Enemies of this type are typically",
                 "<7>found in the <2>Dwarven Mines<7>."
+        ),
+        TIMID(MobType.TIMID, new GUIMaterial(Material.RABBIT_FOOT),
+                "<7>Enemies of this type will run away",
+                "<7>if they see you approaching!"
         ),
         UNDEAD(MobType.UNDEAD, new GUIMaterial(Material.ZOMBIE_HEAD),
                 "<7>Enemies of this type are typically",

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.event.custom;
 
+import net.swofty.type.skyblockgeneric.minion.MinionAwards;
 import lombok.Getter;
 import net.minestom.server.event.trait.PlayerInstanceEvent;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointMinionData;
@@ -65,6 +66,7 @@ public class ItemCraftEvent implements PlayerInstanceEvent {
 
             DatapointMinionData.ProfileMinionData updated = new DatapointMinionData.ProfileMinionData(craftedMinions);
             datapoint.setValue(updated);
+            MinionAwards.syncSkyBlockXP(player);
             newMinionSlotUnlocked = updated.getSlots() > slotsBefore;
         }
     }

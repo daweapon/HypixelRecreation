@@ -169,6 +169,7 @@ public final class MaxStickService {
             new Step("Fossil Essence shop", net.swofty.type.skyblockgeneric.essence.FossilEssenceShop::maxAvailable),
             new Step("Fossil Research Center", net.swofty.type.skyblockgeneric.fossil.FossilService::donateAll),
             new Step("Crimson Essence shop", CrimsonEssenceShop::maxAvailable),
+            new Step("Other Essence shops", net.swofty.type.skyblockgeneric.essence.EssenceShops::maxAvailable),
             new Step("Chicken Race", ChickenRaceProgress::maxOut),
             new Step("Crimson reputation", CrimsonReputationService::maxOut),
             new Step("Trophy Fish", TrophyFishMax::maxOut),

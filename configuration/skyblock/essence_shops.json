@@ -1,0 +1,1463 @@
+{
+  "WITHER": {
+    "seller": "Malik (Catacombs Entrance and Dungeon Hub)",
+    "perks": [
+      {
+        "id": "permanent_health",
+        "name": "Forbidden Health",
+        "description": "<7>Increases your Health by {value}.",
+        "icon": "GOLDEN_APPLE",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          100,
+          250,
+          500,
+          1000,
+          1500
+        ],
+        "stat": "HEALTH",
+        "scope": "ANYWHERE",
+        "unavailable": null
+      },
+      {
+        "id": "permanent_defense",
+        "name": "Forbidden Defense",
+        "description": "<7>Increases your Defense by {value}.",
+        "icon": "IRON_CHESTPLATE",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "costs": [
+          100,
+          250,
+          500,
+          1000,
+          1500
+        ],
+        "stat": "DEFENSE",
+        "scope": "ANYWHERE",
+        "unavailable": null
+      },
+      {
+        "id": "permanent_speed",
+        "name": "Forbidden Speed",
+        "description": "<7>Increases your Speed by {value}.",
+        "icon": "SUGAR",
+        "values": [
+          1,
+          2
+        ],
+        "costs": [
+          100,
+          250
+        ],
+        "stat": "SPEED",
+        "scope": "ANYWHERE",
+        "unavailable": null
+      },
+      {
+        "id": "permanent_intelligence",
+        "name": "Forbidden Intelligence",
+        "description": "<7>Increases your Intelligence by\n<7>{value}.",
+        "icon": "ENCHANTED_BOOK",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          100,
+          250,
+          500,
+          1000,
+          1500
+        ],
+        "stat": "INTELLIGENCE",
+        "scope": "ANYWHERE",
+        "unavailable": null
+      },
+      {
+        "id": "permanent_strength",
+        "name": "Forbidden Strength",
+        "description": "<7>Increases your Strength by\n<7>{value}.",
+        "icon": "BLAZE_POWDER",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "costs": [
+          100,
+          250,
+          500,
+          1000,
+          1500
+        ],
+        "stat": "STRENGTH",
+        "scope": "ANYWHERE",
+        "unavailable": null
+      },
+      {
+        "id": "forbidden_blessing",
+        "name": "Forbidden Blessing",
+        "description": "<7>Blessings are {value}% more\n<7>effective on you.",
+        "icon": "ENCHANTED_GOLDEN_APPLE",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "costs": [
+          200,
+          400,
+          600,
+          800,
+          1000,
+          1200,
+          1400,
+          1600,
+          1800,
+          2000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      },
+      {
+        "id": "dungeonbreaker_secrets",
+        "name": "Echoes of the Lost",
+        "description": "<7>Restore {value} charge(s) on your\n<7>Dungeonbreaker after collecting a\n<7>secret.",
+        "icon": "GOLDEN_PICKAXE",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "costs": [
+          250,
+          500,
+          1000,
+          2000,
+          5000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      }
+    ],
+    "totalXP": 161
+  },
+  "UNDEAD": {
+    "seller": "Malik (Catacombs Entrance and Dungeon Hub)",
+    "perks": [
+      {
+        "id": "catacombs_boss_luck",
+        "name": "Boss Luck",
+        "description": "<7>Increases the quality of boss\n<7>rewards in The Catacombs by\n<7>{value}%.",
+        "icon": "CHEST",
+        "values": [
+          1,
+          3,
+          5,
+          10
+        ],
+        "costs": [
+          100,
+          1000,
+          10000,
+          100000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      },
+      {
+        "id": "catacombs_looting",
+        "name": "Looting",
+        "description": "<7>Increases the quality of mob loot\n<7>drops in The Catacombs by\n<7>{value}%.",
+        "icon": "RABBIT_FOOT",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          1000,
+          2000,
+          3000,
+          4000,
+          5000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      },
+      {
+        "id": "revive_stone",
+        "name": "Help of the Fairies",
+        "description": "<7>Start every run in The Catacombs\n<7>with an invisible Revive Stone.",
+        "icon": "TOTEM_OF_UNDYING",
+        "values": [
+          1
+        ],
+        "costs": [
+          200000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      },
+      {
+        "id": "catacombs_health",
+        "name": "Health Essence",
+        "description": "<7>Increases your base Health while\n<7>in The Catacombs by {value}.",
+        "icon": "GOLDEN_APPLE",
+        "values": [
+          25,
+          50,
+          75,
+          100,
+          125
+        ],
+        "costs": [
+          1000,
+          2500,
+          5000,
+          10000,
+          25000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      },
+      {
+        "id": "catacombs_defense",
+        "name": "Defense Essence",
+        "description": "<7>Increases your base Defense while\n<7>in The Catacombs by {value}.",
+        "icon": "IRON_CHESTPLATE",
+        "values": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "costs": [
+          1000,
+          4000,
+          6000,
+          8000,
+          10000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      },
+      {
+        "id": "catacombs_strength",
+        "name": "Strength Essence",
+        "description": "<7>Increases your base Strength while\n<7>in The Catacombs by {value}.",
+        "icon": "BLAZE_POWDER",
+        "values": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "costs": [
+          1000,
+          4000,
+          6000,
+          8000,
+          10000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      },
+      {
+        "id": "catacombs_intelligence",
+        "name": "Intelligence Essence",
+        "description": "<7>Increases your base Intelligence\n<7>while in The Catacombs by {value}.",
+        "icon": "ENCHANTED_BOOK",
+        "values": [
+          15,
+          30,
+          45,
+          60,
+          75
+        ],
+        "costs": [
+          1000,
+          4000,
+          6000,
+          8000,
+          10000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      },
+      {
+        "id": "catacombs_crit_damage",
+        "name": "Critical Essence",
+        "description": "<7>Increases your base Crit Damage\n<7>while in The Catacombs by {value}.",
+        "icon": "IRON_SWORD",
+        "values": [
+          10,
+          20,
+          30,
+          40,
+          50
+        ],
+        "costs": [
+          1000,
+          3000,
+          10000,
+          20000,
+          50000
+        ],
+        "unavailable": "Dungeons aren't in this server yet."
+      }
+    ],
+    "totalXP": 128
+  },
+  "GOLD": {
+    "seller": "Marigold (Royal Mines)",
+    "perks": [
+      {
+        "id": "heart_of_gold",
+        "name": "Heart of Gold",
+        "description": "<7>Increases [Healer] class\n<7>experience gain by {value}%.",
+        "icon": "YELLOW_BANNER",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          1000,
+          1500,
+          2000,
+          3000,
+          5000
+        ],
+        "unavailable": "Dungeon classes aren't in this server yet."
+      },
+      {
+        "id": "treasures_of_the_earth",
+        "name": "Treasure of the Earth",
+        "description": "<7>Increases your chances of spawning\n<7>a Worm or Scatha when mining Hard\n<7>Stone by {value}%.",
+        "icon": "RAW_GOLD",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          150,
+          500,
+          1250,
+          2000,
+          3000
+        ],
+        "unavailable": "Worms and Scatha aren't in this server yet."
+      },
+      {
+        "id": "dwarven_training",
+        "name": "Dwarven Training",
+        "description": "<7>Increases your ☯ Mining Wisdom by\n<7>{value} while on Mining Islands.",
+        "icon": "WRITABLE_BOOK",
+        "values": [
+          3,
+          5,
+          10
+        ],
+        "costs": [
+          250,
+          1250,
+          5000
+        ],
+        "stat": "MINING_WISDOM",
+        "scope": "MINING",
+        "unavailable": null
+      },
+      {
+        "id": "unbreaking",
+        "name": "Unbreaking",
+        "description": "<7>Increases your Vitality by\n<7>{value}.",
+        "icon": "GLISTERING_MELON_SLICE",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "costs": [
+          150,
+          500,
+          1250,
+          2000,
+          3000
+        ],
+        "stat": "VITALITY",
+        "scope": "ANYWHERE",
+        "unavailable": null
+      },
+      {
+        "id": "eager_miner",
+        "name": "Eager Miner",
+        "description": "<7>Increases your Mining Speed by\n<7>{value} while on Mining Islands.",
+        "icon": "DIAMOND_PICKAXE",
+        "values": [
+          10,
+          20,
+          30,
+          40,
+          50,
+          60,
+          70,
+          80,
+          90,
+          100
+        ],
+        "costs": [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900,
+          1000
+        ],
+        "stat": "MINING_SPEED",
+        "scope": "MINING",
+        "unavailable": null
+      },
+      {
+        "id": "midas_lure",
+        "name": "Midas Lure",
+        "description": "<7>Increases your chance of catching\n<7>GOLD tier Trophies by {value}%.",
+        "icon": "GOLD_INGOT",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20
+        ],
+        "costs": [
+          200,
+          400,
+          600,
+          800,
+          1000,
+          1200,
+          1400,
+          1600,
+          1800,
+          2000
+        ],
+        "unavailable": "Trophy fish tiers can't be boosted on this server yet."
+      }
+    ],
+    "totalXP": 188
+  },
+  "DIAMOND": {
+    "seller": "Gemma (Crystal Nucleus (Crystal Hollows))",
+    "perks": [
+      {
+        "id": "radiant_fisher",
+        "name": "Radiant Fisher",
+        "description": "<7>Increases the chance of catching\n<7>DIAMOND tier Trophies by {value}%.",
+        "icon": "FISHING_ROD",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20
+        ],
+        "costs": [
+          200,
+          400,
+          600,
+          800,
+          1000,
+          1200,
+          1400,
+          1600,
+          1800,
+          2000
+        ],
+        "unavailable": "Trophy fish tiers can't be boosted on this server yet."
+      },
+      {
+        "id": "diamond_in_the_rough",
+        "name": "Diamond in the Rough",
+        "description": "<7>Increases [Tank] class experience\n<7>gain by {value}%.",
+        "icon": "GREEN_BANNER",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          1000,
+          1500,
+          2000,
+          3000,
+          5000
+        ],
+        "unavailable": "Dungeon classes aren't in this server yet."
+      },
+      {
+        "id": "rhinestone_infusion",
+        "name": "Rhinestone Infusion",
+        "description": "<7>Increases Gemstone Fortune by\n<7>{value} while on Mining Islands.",
+        "icon": "AMETHYST_SHARD",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20
+        ],
+        "costs": [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900,
+          1000
+        ],
+        "stat": "GEMSTONE_FORTUNE",
+        "scope": "MINING",
+        "unavailable": null
+      },
+      {
+        "id": "under_pressure",
+        "name": "Under Pressure",
+        "description": "<7>Increase your Strength by {value}\n<7>while on Mining Islands.",
+        "icon": "BLAZE_POWDER",
+        "values": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "costs": [
+          125,
+          250,
+          500,
+          1000,
+          1500
+        ],
+        "stat": "STRENGTH",
+        "scope": "MINING",
+        "unavailable": null
+      },
+      {
+        "id": "high_roller",
+        "name": "High Roller",
+        "description": "<7>Gain {value} extra random drop\n<7>when obtaining a Crystal Nucleus\n<7>Bundle.",
+        "icon": "COMPASS",
+        "values": [
+          1
+        ],
+        "costs": [
+          5000
+        ],
+        "unavailable": "Crystal Hollows isn't in this server yet."
+      },
+      {
+        "id": "return_to_sender",
+        "name": "Return to Sender",
+        "description": "<7>Increases the chances of a Diamond\n<7>Goblin spawning by {value}%.",
+        "icon": "DIAMOND",
+        "values": [
+          10,
+          20,
+          30,
+          40,
+          50,
+          60,
+          70,
+          80,
+          90,
+          100
+        ],
+        "costs": [
+          50,
+          75,
+          100,
+          150,
+          250,
+          400,
+          750,
+          1000,
+          1750,
+          2500
+        ],
+        "unavailable": "Crystal Hollows isn't in this server yet."
+      }
+    ],
+    "totalXP": 226
+  },
+  "SPIDER": {
+    "seller": "Spider Tamer (Arachne's Burrow (Arachne's Sanctuary))",
+    "perks": [
+      {
+        "id": "empowered_agility",
+        "name": "Empowered Agility",
+        "description": "<7>Reduces the ❍ Mana cost of some\n<7>movement abilities by {value}%.",
+        "icon": "SUGAR",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "costs": [
+          50,
+          75,
+          100,
+          150,
+          250,
+          400,
+          750,
+          1000,
+          1750,
+          2500
+        ],
+        "unavailable": "This perk's effect isn't wired up on this server yet."
+      },
+      {
+        "id": "vermin_control",
+        "name": "Vermin Control",
+        "description": "<7>Receive {value}% less damage from\n<7>Spiders.",
+        "icon": "STRING",
+        "values": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "costs": [
+          100,
+          500,
+          1000,
+          3000,
+          5000
+        ],
+        "unavailable": "This perk's effect isn't wired up on this server yet."
+      },
+      {
+        "id": "bane",
+        "name": "Bane",
+        "description": "<7>Increases damage dealt to Spiders\n<7>by {value}%.",
+        "icon": "SPIDER_EYE",
+        "values": [
+          3,
+          6,
+          9,
+          12,
+          15
+        ],
+        "costs": [
+          100,
+          500,
+          1000,
+          3000,
+          5000
+        ],
+        "unavailable": "This perk's effect isn't wired up on this server yet."
+      },
+      {
+        "id": "spider_training",
+        "name": "Spider Training",
+        "description": "<7>Increases your ☯ Combat Wisdom by\n<7>{value} while on the Spider's Den.",
+        "icon": "EXPERIENCE_BOTTLE",
+        "values": [
+          3,
+          5,
+          10
+        ],
+        "costs": [
+          250,
+          1250,
+          5000
+        ],
+        "stat": "COMBAT_WISDOM",
+        "scope": "SPIDERS_DEN",
+        "unavailable": null
+      },
+      {
+        "id": "toxophilite",
+        "name": "Toxophilite",
+        "description": "<7>Increases your Archer class\n<7>experience gain by {value}%.",
+        "icon": "BOW",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          1000,
+          1500,
+          2000,
+          3000,
+          5000
+        ],
+        "unavailable": "Dungeon classes aren't in this server yet."
+      }
+    ],
+    "totalXP": 126
+  },
+  "DRAGON": {
+    "seller": "Tyzzo (Void Slate (The End))",
+    "perks": [
+      {
+        "id": "flat_damage_vs_ender",
+        "name": "One Punch",
+        "description": "<7>After all other damage, add\n<7>{value} damage to the first strike\n<7>against Endermen and Endermites.",
+        "icon": "IRON_SWORD",
+        "values": [
+          500,
+          1000,
+          1500,
+          2000,
+          2500
+        ],
+        "costs": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "unavailable": "The Ender Dragon fight isn't in this server yet."
+      },
+      {
+        "id": "mana_after_ender_kill",
+        "name": "Recharge",
+        "description": "<7>Regain {value} Mana after killing\n<7>an Enderman or Endermite.",
+        "icon": "PRISMARINE_CRYSTALS",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20
+        ],
+        "costs": [
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "unavailable": "The Ender Dragon fight isn't in this server yet."
+      },
+      {
+        "id": "fero_vs_dragons",
+        "name": "Rageborn",
+        "description": "<7>Gain ⫽ Ferocity +{value} against\n<7>Dragons.",
+        "icon": "RED_DYE",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          125,
+          250,
+          500,
+          1000,
+          1500
+        ],
+        "unavailable": "The Ender Dragon fight isn't in this server yet."
+      },
+      {
+        "id": "inc_zealots_odds",
+        "name": "Zealuck",
+        "description": "<7>Increases the chance to find a\n<7>special Zealot by {value}%.",
+        "icon": "SPIDER_EYE",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          150,
+          500,
+          1250,
+          2000,
+          3000
+        ],
+        "unavailable": "The Ender Dragon fight isn't in this server yet."
+      },
+      {
+        "id": "combat_wisdom_in_end",
+        "name": "Ender Training",
+        "description": "<7>Gain ☯ Combat Wisdom +{value}\n<7>while in The End.",
+        "icon": "DIAMOND_HORSE_ARMOR",
+        "values": [
+          3,
+          5,
+          7
+        ],
+        "costs": [
+          250,
+          1250,
+          5000
+        ],
+        "stat": "COMBAT_WISDOM",
+        "scope": "THE_END",
+        "unavailable": null
+      },
+      {
+        "id": "edrag_cd",
+        "name": "Infused Dragon",
+        "description": "<7>Increases the ☠ Crit Damage of\n<7>your Ender Dragon pet by\n<7>+{value}%.",
+        "icon": "DRAGON_HEAD",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          500,
+          1500,
+          2500,
+          3500,
+          4500
+        ],
+        "unavailable": "The Ender Dragon fight isn't in this server yet."
+      },
+      {
+        "id": "dragon_reforges_buff",
+        "name": "Two-Headed Strike",
+        "description": "<7>Renowned and Spiked reforges apply\n<7>an extra +{value} Base Ability\n<7>Damage... (wiki stat icon 'bas')",
+        "icon": "DRAGON_BREATH",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          1500,
+          2250,
+          3250,
+          4500,
+          6500
+        ],
+        "unavailable": "The Ender Dragon fight isn't in this server yet."
+      },
+      {
+        "id": "increased_sup_chances",
+        "name": "Dragon Piper",
+        "description": "<7>Summoning Eyes you drop have a\n<7>+{value}% chance to be\n<7>recombobulated.",
+        "icon": "ENDER_EYE",
+        "values": [
+          5
+        ],
+        "costs": [
+          5000
+        ],
+        "unavailable": "The Ender Dragon fight isn't in this server yet."
+      },
+      {
+        "id": "unbridled_rage",
+        "name": "Unbridled Rage",
+        "description": "<7>Increases Berserk class experience\n<7>gain by {value}%.",
+        "icon": "RED_BANNER",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          1000,
+          1500,
+          2000,
+          3000,
+          5000
+        ],
+        "unavailable": "Dungeon classes aren't in this server yet."
+      }
+    ],
+    "totalXP": 185
+  },
+  "FOREST": {
+    "seller": "Rosemary (Murkwater Outpost (Galatea))",
+    "perks": [
+      {
+        "id": "trapped",
+        "name": "Trapped",
+        "description": "<7>Your traps now catch creatures\n<7>{value}% faster.",
+        "icon": "COBWEB",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "costs": [
+          100,
+          200,
+          300,
+          400,
+          500
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "axed",
+        "name": "Axed",
+        "description": "<7>All the stats on your axes are\n<7>{value}% stronger.",
+        "icon": "IRON_AXE",
+        "values": [
+          2
+        ],
+        "costs": [
+          10000
+        ],
+        "unavailable": "Axe stat scaling isn't in this server yet."
+      },
+      {
+        "id": "extreme_pressure",
+        "name": "Extreme Pressure",
+        "description": "<7>Increases your Pressure Resistance\n<7>by {value}.",
+        "icon": "GLASS_BOTTLE",
+        "values": [
+          3,
+          6,
+          9,
+          12,
+          15,
+          18,
+          21,
+          24,
+          27,
+          30
+        ],
+        "costs": [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800,
+          900,
+          1000
+        ],
+        "stat": "PRESSURE_RESISTANCE",
+        "scope": "ANYWHERE",
+        "unavailable": null
+      },
+      {
+        "id": "lumberjack",
+        "name": "Lumberjack",
+        "description": "<7>Increase your ☘ Foraging Fortune\n<7>by {value}.",
+        "icon": "FERN",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20
+        ],
+        "costs": [
+          125,
+          250,
+          500,
+          1000,
+          1500,
+          2000,
+          2500,
+          3000,
+          3500,
+          4000
+        ],
+        "stat": "FORAGING_FORTUNE",
+        "scope": "ANYWHERE",
+        "unavailable": null
+      },
+      {
+        "id": "tasty",
+        "name": "Tasty",
+        "description": "<7>Your berry items are now {value}%\n<7>stronger.",
+        "icon": "SWEET_BERRIES",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10
+        ],
+        "costs": [
+          125,
+          250,
+          500,
+          1000,
+          1500
+        ],
+        "unavailable": "Berry items aren't in this server yet."
+      },
+      {
+        "id": "forest_training",
+        "name": "Forest Training",
+        "description": "<7>Increases your Foraging Wisdom by\n<7>{value} while on Foraging Islands.",
+        "icon": "OAK_LOG",
+        "values": [
+          2,
+          4,
+          6
+        ],
+        "costs": [
+          250,
+          1250,
+          5000
+        ],
+        "stat": "FORAGING_WISDOM",
+        "scope": "FORAGING",
+        "unavailable": null
+      }
+    ],
+    "totalXP": 171
+  },
+  "SAFARI": {
+    "seller": "Archie (Critter Safari Entrance (and Critter Safari), Hunting)",
+    "perks": [
+      {
+        "id": "critter_catcher",
+        "name": "Critter Catcher",
+        "description": "<7>Start the Critter Safari with\n<7>{value} additional Critter\n<7>Capsules.",
+        "icon": "LEAD",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "costs": [
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "critter_master",
+        "name": "Critter Master",
+        "description": "<7>Start the Critter Safari with a\n<7>Masterful Critter Capsule, which\n<7>will always catch the critter it's\n<7>used on.",
+        "icon": "NETHER_STAR",
+        "values": [
+          1
+        ],
+        "costs": [
+          10000
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "floortunate",
+        "name": "Floortunate",
+        "description": "<7>An additional +{value} Floor Drops\n<7>will spawn in the Critter Safari.",
+        "icon": "CHEST",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "costs": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "fresh_footprints",
+        "name": "Fresh Footprints",
+        "description": "<7>Grants +{value} Tracking while in\n<7>the Critter Safari.",
+        "icon": "LEATHER_BOOTS",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "costs": [
+          50,
+          100,
+          150,
+          200,
+          250,
+          300,
+          350,
+          400,
+          450,
+          500
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "head_start",
+        "name": "Head Start",
+        "description": "<7>Start the Critter Safari with a\n<7>random Quest Item.",
+        "icon": "CLOCK",
+        "values": [
+          1
+        ],
+        "costs": [
+          5000
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "hunting_hotspot",
+        "name": "Hunting Hotspot",
+        "description": "<7>Highlight a random zone each time\n<7>you enter the Critter Safari. Gain\n<7>+{value} Hunting Fortune while in\n<7>it.",
+        "icon": "MAP",
+        "values": [
+          5,
+          10,
+          15,
+          20,
+          25
+        ],
+        "costs": [
+          200,
+          400,
+          600,
+          800,
+          1000
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "thawing",
+        "name": "Thawing",
+        "description": "<7>Grants +{value} Cold Resistance\n<7>while in the Critter Safari.",
+        "icon": "SNOWBALL",
+        "values": [
+          2.5,
+          5.0,
+          7.5,
+          10.0,
+          12.5,
+          15.0,
+          17.5,
+          20.0,
+          22.5,
+          25.0
+        ],
+        "costs": [
+          50,
+          100,
+          150,
+          200,
+          250,
+          300,
+          350,
+          400,
+          450,
+          500
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "deep_diver",
+        "name": "Deep Diver",
+        "description": "<7>Grants +{value} Respiration while\n<7>in the Critter Safari.",
+        "icon": "HEART_OF_THE_SEA",
+        "values": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20
+        ],
+        "costs": [
+          50,
+          100,
+          150,
+          200,
+          250,
+          300,
+          350,
+          400,
+          450,
+          500
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "quickdraw",
+        "name": "Quickdraw",
+        "description": "<7>Your Critter Capsules catch\n<7>Critters {value}% faster.",
+        "icon": "BOW",
+        "values": [
+          5,
+          10,
+          15,
+          20,
+          25,
+          30,
+          35,
+          40,
+          45,
+          50
+        ],
+        "costs": [
+          50,
+          100,
+          150,
+          200,
+          250,
+          300,
+          350,
+          400,
+          450,
+          500
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "amateur_hour",
+        "name": "Amateur Hour",
+        "description": "<7>Grants +{value} Hunting Wisdom\n<7>while in the Critter Safari.",
+        "icon": "WRITABLE_BOOK",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "costs": [
+          50,
+          100,
+          150,
+          200,
+          250,
+          300,
+          350,
+          400,
+          450,
+          500
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "eagle_advantage",
+        "name": "Eagle's Advantage",
+        "description": "<7>Starts the Critter Safari with an\n<7>Eagle Pet at diverse rarities.",
+        "icon": "FEATHER",
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "costs": [
+          500,
+          1000,
+          1500,
+          2000,
+          2500
+        ],
+        "labels": [
+          "Common",
+          "Uncommon",
+          "Rare",
+          "Epic",
+          "Legendary"
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      },
+      {
+        "id": "sparkling_specialist",
+        "name": "Sparkling Specialist",
+        "description": "<7>Start the Critter Safari with a\n<7>Sparkling Amulet, which increases\n<7>the chance of Critters being\n<7>Sparkling by 2x. Sparkling Amulet\n<7>bonuses do not stack.",
+        "icon": "GLOWSTONE_DUST",
+        "values": [
+          2
+        ],
+        "costs": [
+          10000
+        ],
+        "unavailable": "Hunting isn't in this server yet."
+      }
+    ],
+    "totalXP": 395
+  },
+  "SUN_GECKO": {
+    "seller": "Oruo the Almighty (Continuum, The Rift (38, 89, 20))",
+    "perks": [
+      {
+        "id": "blessing_of_time",
+        "name": "Blessing of Time",
+        "description": "<7>Gain bonus stats while in the\n<7>Rift. Each tier adds more Speed,\n<7>Rift Time, Mana Regen, Strength,\n<7>Health, Intelligence and Defense.",
+        "icon": "CLOCK",
+        "values": [
+          1,
+          2,
+          3
+        ],
+        "costs": [
+          5,
+          50,
+          100
+        ],
+        "unavailable": "The Rift isn't in this server yet."
+      },
+      {
+        "id": "combo_mania",
+        "name": "Combo Mania",
+        "description": "<7>Combos in the Time Chamber take\n<7>0.5 seconds longer to expire.",
+        "icon": "BLAZE_ROD",
+        "values": [
+          1
+        ],
+        "costs": [
+          50
+        ],
+        "unavailable": "The Rift isn't in this server yet."
+      },
+      {
+        "id": "enigma_soul",
+        "name": "Enigma Soul",
+        "description": "<7>Unlock an Enigma Soul.",
+        "icon": "ENDER_EYE",
+        "values": [
+          1
+        ],
+        "costs": [
+          25
+        ],
+        "unavailable": "The Rift isn't in this server yet."
+      },
+      {
+        "id": "emblem_of_burning_strength",
+        "name": "Emblem of Burning Strength",
+        "description": "<7>Unlocks the Emblem of Burning\n<7>Strength (☀).",
+        "icon": "FIRE_CHARGE",
+        "values": [
+          1
+        ],
+        "costs": [
+          100
+        ],
+        "unavailable": "The Rift isn't in this server yet."
+      }
+    ]
+  }
+}

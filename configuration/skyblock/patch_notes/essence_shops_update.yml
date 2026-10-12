@@ -1,0 +1,16 @@
+title: "The Essence Shops Update"
+date: "11th October 2026"
+intro:
+  - "Nine more essence shops now exist: Wither, Undead, Gold, Diamond, Spider, Dragon, Forest, Safari and Sun Gecko. Their perks, tiers and costs follow the wiki, and every essence now has a shop menu."
+sections:
+  - heading: "Working perks"
+    colour: "<a>"
+    lines:
+      - "Wither: Forbidden Health, Defense, Speed, Intelligence and Strength give permanent stats."
+      - "Gold and Diamond: Dwarven Training, Eager Miner, Unbreaking, Rhinestone Infusion and Under Pressure."
+      - "Spider Training, Ender Training, Lumberjack, Forest Training and Extreme Pressure also work."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "The other perks need Dungeons, the Ender Dragon fight, Crystal Hollows, Hunting or the Rift. Each says what it is waiting for."
+      - "The shops are not open to players yet, because their NPCs are not placed."
