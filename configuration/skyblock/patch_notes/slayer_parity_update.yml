@@ -1,0 +1,19 @@
+title: "The Slayer Parity Update"
+date: "11th October 2026"
+intro:
+  - "Slayers now follow the wiki more closely, and the Wolf Slayer can finally be finished."
+sections:
+  - heading: "Fixes"
+    colour: "<a>"
+    lines:
+      - "Sven Packmaster quests now fill their Combat XP bar from the Ruins wolves. Before this, nothing counted, which also locked Voidgloom Seraph and Inferno Demonlord behind it."
+      - "Defeating a Tier V Slayer boss for the first time now gives +2 Combat Wisdom, like Tier IV."
+  - heading: "Balance"
+    colour: "<e>"
+    lines:
+      - "Combat XP needed to spawn a boss now matches the wiki for Revenant Horror, Tarantula Broodfather and Sven Packmaster."
+      - "Tarantula Broodfather and Voidgloom Seraph boss health now matches the wiki."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Riftstalker Bloodfiend needs the Rift. The Conjoined Brood phase of Tarantula Tier V and the minibosses of four slayers are not built."

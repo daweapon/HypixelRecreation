@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "slayer-parity"
+    name: "The Slayer Parity Update"
+    date: "11th October 2026"
+    material: rotten_flesh
+    title: "The Slayer Parity Update"
+    book: "slayer_parity_update.yml"
   - version: "skyblock-xp"
     name: "The SkyBlock XP Update"
     date: "11th October 2026"
