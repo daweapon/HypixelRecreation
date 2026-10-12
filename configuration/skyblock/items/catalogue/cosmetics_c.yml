@@ -1,0 +1,2028 @@
+items:
+  - id: APOTHEJERRY_PERSONALITY
+    material: player_head
+    name: "Apothejerry Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Apothejerry"
+        helmet:
+          material: player_head
+          skull_texture: 28c456c9bd879ed222abe8dcc8f1b0591df5abdfe4c237874980523fd6640135
+      - id: SKULL_HEAD
+        texture: 28c456c9bd879ed222abe8dcc8f1b0591df5abdfe4c237874980523fd6640135
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Fall 2026 Seasonal Bundle: 250 SkyBlock Gems"
+  - id: AWAKENED_EYE_BACKPACK
+    material: player_head
+    name: "Awakened Eye Backpack Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Backpacks."
+    components:
+      - id: SKULL_HEAD
+        texture: 8d59f4ddbb2a094c1da7654c1ebf9d8515a2b75a220fd73a65135072e38d4f60
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: 8d59f4ddbb2a094c1da7654c1ebf9d8515a2b75a220fd73a65135072e38d4f60
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Spring 2024 Seasonal Bundle: 350 SkyBlock Gems"
+  - id: BACKPACK_CAULDRON
+    material: player_head
+    name: "Cauldron Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Backpacks."
+    components:
+      - id: SKULL_HEAD
+        texture: dde2553ef1b424c02d4ecdf0f66e0e68525fb1d246160ba9753fa28be4989f88
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: dde2553ef1b424c02d4ecdf0f66e0e68525fb1d246160ba9753fa28be4989f88
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Fall 2025 Seasonal Bundle: 375 SkyBlock Gems"
+  - id: BAMBOO_BARN_SKIN
+    material: stick
+    name: "Bamboo Barn Skin"
+    rarity: EPIC
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Bamboo Barn Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "SkyMart: 7,500 Copper"
+  - id: BAT_PERSON_HERO
+    material: player_head
+    name: "Hero Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Bat"
+      - "§7Person Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: b2a579e72d4ae0d42b48ada87d4cb323c548e6954a32451a3872c1b2ee1cdaa
+      - id: ITEM_SKIN
+        targets:
+          - BAT_PERSON_HELMET
+        texture: b2a579e72d4ae0d42b48ada87d4cb323c548e6954a32451a3872c1b2ee1cdaa
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Hypixel Event Shop (Event Silver is not implemented)"
+    source: "Halloween 2023 Event Shop: 100 Event Silver"
+  - id: BEACH_BALL_FLUX
+    material: player_head
+    name: "Beach Ball Power Orb Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Radiant"
+      - "§7Power Orb, Mana Flux Power Orb,"
+      - "§7Overflux Power Orb, and Plasmaflux"
+      - "§7Power Orb."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: a794284953646833c49db0bae137cc93a774cb6ec8c53d1bcef6cd124a5a71ca
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: a794284953646833c49db0bae137cc93a774cb6ec8c53d1bcef6cd124a5a71ca
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Summer 2024 Seasonal Bundle: 1,350 SkyBlock Gems"
+  - id: BINGO_DISPLAY
+    material: coal_block
+    name: "Bingo Display"
+    rarity: COMMON
+    lore:
+      - "§7Show off your total Bingo Points!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Bingo and the Bingo Shop; the display has no Bingo Points to show"
+    source: "Bingo Shop: 50 Bingo Points"
+  - id: BIOHAZARD_SPACE_BLACK_ICE
+    material: player_head
+    name: "Black Ice Space Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Biohazard"
+      - "§7Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 4779324d60c125c4714929d706b1f2dd57ebefa7d6a0a0e6da07f50c88e8610
+      - id: ITEM_SKIN
+        targets:
+          - BIOHAZARD_HELMET
+        texture: 4779324d60c125c4714929d706b1f2dd57ebefa7d6a0a0e6da07f50c88e8610
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on December 13, 2025: 650 SkyBlock Gems, limited stock 950"
+  - id: BIOHAZARD_SPACE_TEAL
+    material: player_head
+    name: "Teal Space Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Biohazard"
+      - "§7Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 426e493964bcb91075989e270ea45fa4e2f38b8fc4faf8794e1659716d18955c
+      - id: ITEM_SKIN
+        targets:
+          - BIOHAZARD_HELMET
+        texture: 426e493964bcb91075989e270ea45fa4e2f38b8fc4faf8794e1659716d18955c
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on December 13, 2025: 650 SkyBlock Gems, limited stock 950"
+  - id: BLOOD_MOON_FISH_ORB
+    material: player_head
+    name: "Blood Moon Fishing Deployable Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Umberella."
+      - ""
+      - "§7This skin is animated, and adapts to"
+      - "§7the day-night cycle!"
+    components:
+      - id: SKULL_HEAD
+        texture: 1048febe4604c326f19a62c96d072705793a4b94c69bd50cf92d101b708399ef
+      - id: ITEM_SKIN
+        targets:
+          - UMBERELLA
+        texture: 1048febe4604c326f19a62c96d072705793a4b94c69bd50cf92d101b708399ef
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Hypixel Store (real-money promotion)"
+    source: "Hypixel Store, 2026 Halloween promotion"
+  - id: BONZO_STATUE
+    material: player_head
+    name: "Bonzo Statue"
+    rarity: UNCOMMON
+    lore:
+      - "§7Spawn a statue of Bonzo."
+    components:
+      - id: SKULL_HEAD
+        texture: cb534168c52618e477015df7eed79d2d5fe4d7f72f00d4b7136fcfb9261f402c
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Bingo and the Bingo Shop; the placeable statue entity is not built"
+    source: "Bingo Shop: 30 Bingo Points"
+  - id: BUNNY_PERSONALITY
+    material: player_head
+    name: "Bunny Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Bunny"
+        helmet:
+          material: player_head
+          skull_texture: 520a37b5d079eb79d87ed5eda2cf95a5ae761062eb09499ef33078410883ca72
+      - id: SKULL_HEAD
+        texture: 520a37b5d079eb79d87ed5eda2cf95a5ae761062eb09499ef33078410883ca72
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Easter Reward Bundle (MVP+ rank reward)"
+  - id: CAMPFIRE_FLUX
+    material: player_head
+    name: "Campfire Power Orb Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Radiant"
+      - "§7Power Orb, Mana Flux Power Orb,"
+      - "§7Overflux Power Orb, and Plasmaflux"
+      - "§7Power Orb."
+      - ""
+      - "§7Features!"
+      - "§7▶ This skin is swappable between 15"
+      - "§7blazing campfires!"
+      - "§7▶ Displays the amount of players"
+      - "§7that have been buffed by this orb!"
+    components:
+      - id: SKULL_HEAD
+        texture: f4c08c53a18f26a21ca87138b97f58ccb58bd71ac712d68686312c724b52e271
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: f4c08c53a18f26a21ca87138b97f58ccb58bd71ac712d68686312c724b52e271
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Fall 2025 Seasonal Bundle: 1,800 SkyBlock Gems"
+  - id: CHAOS_TERROR
+    material: player_head
+    name: "Chaos Terror Helmet Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to any tier"
+      - "§7of Crimson Helmet, Aurora Helmet,"
+      - "§7Terror Helmet, Fervor Helmet, and"
+      - "§7Hollow Helmet."
+      - ""
+      - "§7Features!"
+      - "§7▶ This skin is swappable between 20"
+      - "§7chaotic variants."
+      - "§7▶ Keeps track of the total Kuudra"
+      - "§7Chests opened while wearing this skin."
+      - "§7▶ Adds a particle trail to your"
+      - "§7bonus Terror Arrows depending on"
+      - "§7your selected skin."
+    components:
+      - id: SKULL_HEAD
+        texture: 19b74ff302f1aa327435c9f6708a36dbc375bb23b7539d068ae1c409fc3e27f
+      - id: ITEM_SKIN
+        targets:
+          - CRIMSON_HELMET
+          - HOT_CRIMSON_HELMET
+          - BURNING_CRIMSON_HELMET
+          - FIERY_CRIMSON_HELMET
+          - INFERNAL_CRIMSON_HELMET
+          - AURORA_HELMET
+          - HOT_AURORA_HELMET
+          - BURNING_AURORA_HELMET
+          - FIERY_AURORA_HELMET
+          - INFERNAL_AURORA_HELMET
+          - TERROR_HELMET
+          - HOT_TERROR_HELMET
+          - BURNING_TERROR_HELMET
+          - FIERY_TERROR_HELMET
+          - INFERNAL_TERROR_HELMET
+          - FERVOR_HELMET
+          - HOT_FERVOR_HELMET
+          - BURNING_FERVOR_HELMET
+          - FIERY_FERVOR_HELMET
+          - INFERNAL_FERVOR_HELMET
+          - HOLLOW_HELMET
+          - HOT_HOLLOW_HELMET
+          - BURNING_HOLLOW_HELMET
+          - FIERY_HOLLOW_HELMET
+          - INFERNAL_HOLLOW_HELMET
+        texture: 19b74ff302f1aa327435c9f6708a36dbc375bb23b7539d068ae1c409fc3e27f
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on March 14, 2026: 1,800 SkyBlock Gems, limited stock 10,000"
+  - id: CHOCOLATE_FACTORY_BARN_SKIN
+    material: player_head
+    name: "Chocolate Factory Barn Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Chocolate Factory Barn Skin on The"
+      - "§7Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: af90da40c557af4ac01d39b6733e204c74ae9fee8c2bc40be1fd4f28f837d52
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Chocolate Shop: 7,000,000,000 Chocolate (Chocolate Factory V)"
+  - id: CLOWNFISH_PERSONALITY
+    material: player_head
+    name: "Tropical Fish Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Tropical Fish"
+        helmet:
+          material: player_head
+          skull_texture: 119812cc57b78c3366d076778745f7d81e936769a8d28cac68d4836ffe958121
+      - id: SKULL_HEAD
+        texture: 119812cc57b78c3366d076778745f7d81e936769a8d28cac68d4836ffe958121
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Summer Reward Bundle (rank reward)"
+  - id: COUNTRY_GREENHOUSE_SKIN
+    material: oak_fence_gate
+    name: "Country Greenhouse Skin"
+    rarity: UNCOMMON
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Country Greenhouse Skin on The"
+      - "§7Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "SkyMart: 250 SkyBlock Gems"
+  - id: CROWN_OF_AVARICE_ROYAL
+    material: player_head
+    name: "Grand Royal Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Crown of"
+      - "§7Avarice."
+      - ""
+      - "§7Features!"
+      - "§7▶ This skin is swappable between 21"
+      - "§7animated royal variants."
+      - "§7▶ Keeps track of the total RARE"
+      - "§7DROPS! found while wearing this skin."
+    components:
+      - id: SKULL_HEAD
+        texture: 21239b454d7720d615cc339c1b15595f04d3409f26e084691898a73e4114d57b
+      - id: ITEM_SKIN
+        targets:
+          - CROWN_OF_AVARICE
+        texture: 21239b454d7720d615cc339c1b15595f04d3409f26e084691898a73e4114d57b
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Hypixel Store (real-money promotion)"
+    source: "Hypixel Store, 2026 Halloween promotion"
+  - id: DANTE_GREENHOUSE_SKIN
+    material: player_head
+    name: "Dante's Uprising Greenhouse Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Dante's Corporate Uprising"
+      - "§7Greenhouse Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 3e703a38d93cdb990501e52e4d730ca5881ce0d7bcecc3ed144354ee99d1d970
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Fire Sale: 950 SkyBlock Gems"
+  - id: DIVER_FROZEN
+    material: player_head
+    name: "Frozen Diver Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Diver's"
+      - "§7Mask and Abyssal Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: a3098bf9df4a68f30af1cec4e721f1a0e1d2d7bbfdd5b1791570724550f7ae9e
+      - id: ITEM_SKIN
+        targets:
+          - DIVER_HELMET
+          - ABYSSAL_HELMET
+        texture: a3098bf9df4a68f30af1cec4e721f1a0e1d2d7bbfdd5b1791570724550f7ae9e
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Winter 2024 Seasonal Bundle: 650 SkyBlock Gems"
+  - id: DOUBLE_ICE_CREAM_FLUX
+    material: player_head
+    name: "Ice Cream Cone Power Orb Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Radiant"
+      - "§7Power Orb, Mana Flux Power Orb,"
+      - "§7Overflux Power Orb, and Plasmaflux"
+      - "§7Power Orb."
+      - ""
+      - "§7This skin is stacked two tall, and"
+      - "§7swappable between 12 variants!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2064c57fef495b1dc133210c215e743b0903f49f1c28d08141d8823ccc480ee2
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: 2064c57fef495b1dc133210c215e743b0903f49f1c28d08141d8823ccc480ee2
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Summer 2025 Seasonal Bundle: 1,350 SkyBlock Gems"
+  - id: DRAGON_WYVERN
+    material: player_head
+    name: "Wyvern Dragon Helmet Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to any type"
+      - "§7of Dragon Helmet."
+      - ""
+      - "§7This skin is swappable between 21"
+      - "§7flying Wyvern variants!"
+    components:
+      - id: SKULL_HEAD
+        texture: 3d536f51069e991e870db812f116aa0ccca5f404cf6ce5dad32e923be101718
+      - id: ITEM_SKIN
+        targets:
+          - OLD_DRAGON_HELMET
+          - YOUNG_DRAGON_HELMET
+          - STRONG_DRAGON_HELMET
+          - WISE_DRAGON_HELMET
+          - SUPERIOR_DRAGON_HELMET
+          - UNSTABLE_DRAGON_HELMET
+          - PROTECTOR_DRAGON_HELMET
+          - HOLY_DRAGON_HELMET
+        texture: 3d536f51069e991e870db812f116aa0ccca5f404cf6ce5dad32e923be101718
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Hypixel Store (real-money promotion)"
+    source: "Hypixel Store, 2026 Summer Legacy Bundle"
+  - id: ENCHANTED_NOOK_BARN_SKIN
+    material: white_stained_glass
+    name: "Enchanted Nook Barn Skin"
+    rarity: EPIC
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Enchanted Nook Barn Skin on The"
+      - "§7Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Taylor's Spring 2024 Seasonal Bundle: 650 SkyBlock Gems"
+  - id: ESTATE_GREENHOUSE_SKIN
+    material: quartz_block
+    name: "Estate Greenhouse Skin"
+    rarity: EPIC
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Estate Greenhouse Skin on The"
+      - "§7Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Reward for DNA Analysis Milestone V"
+  - id: FERMENTO_BLOOM
+    material: player_head
+    name: "Bloom Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Fermento"
+      - "§7Helmet."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: 6c09ab35d232fe57e0c6218241a7b2fc31e02171d9253402bbcbf4e2a1f36a40
+      - id: ITEM_SKIN
+        targets:
+          - FERMENTO_HELMET
+          - HELIANTHUS_HELMET
+        texture: 6c09ab35d232fe57e0c6218241a7b2fc31e02171d9253402bbcbf4e2a1f36a40
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on August 20, 2023: 1,350 SkyBlock Gems, limited stock 12,500"
+  - id: FESTIVE_JERRY_PERSONALITY
+    material: player_head
+    name: "Festive Jerry Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Festive Jerry"
+        helmet:
+          material: player_head
+          skull_texture: 82dc3d2f0d57db39d0d0453e2b0def91daae15eee318cfae8c0866331430d114
+      - id: SKULL_HEAD
+        texture: 82dc3d2f0d57db39d0d0453e2b0def91daae15eee318cfae8c0866331430d114
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Holidays Reward Bundle (rank reward)"
+  - id: FIG_TRUNK
+    material: player_head
+    name: "Trunk Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Fig Cap."
+      - ""
+      - "§7This skin is swappable between 21"
+      - "§7wood-worked trunk variants!"
+    components:
+      - id: SKULL_HEAD
+        texture: 6a77aebe68ecc78cdfffaeffc04fa97e2339941e3aff41cdaa1ebc5ba44628a1
+      - id: ITEM_SKIN
+        targets:
+          - FIG_HELMET
+        texture: 6a77aebe68ecc78cdfffaeffc04fa97e2339941e3aff41cdaa1ebc5ba44628a1
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on May 2, 2026: 950 SkyBlock Gems, limited stock 4,000"
+  - id: FISHY_PENGUIN_PERSONALITY
+    material: player_head
+    name: "Fishy Penguin Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Fishy Penguin"
+        helmet:
+          material: player_head
+          skull_texture: b3983cd47149d76b89f89a58450b9f798911c80299ab5a13fc4bde95fc04d509
+      - id: SKULL_HEAD
+        texture: b3983cd47149d76b89f89a58450b9f798911c80299ab5a13fc4bde95fc04d509
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's 2025 Winter Bundle"
+  - id: FLOWER_POT_BARN_SKIN
+    material: player_head
+    name: "Flower Pot Barn Skin"
+    rarity: EPIC
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Flower Pot Barn Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5f69db915963010a67330439845a98d2f08a15a0e1de461719767775d15ef844
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Taylor's Spring 2025 Seasonal Bundle: 650 SkyBlock Gems"
+  - id: FROZEN_BLAZE_FROST_KNIGHT
+    material: player_head
+    name: "Frost Knight Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Frozen"
+      - "§7Blaze Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 46c419999da5ff4167f7d90c929e01e3c822832e1bee01069325d3991ec61fb3
+      - id: ITEM_SKIN
+        targets:
+          - FROZEN_BLAZE_HELMET
+        texture: 46c419999da5ff4167f7d90c929e01e3c822832e1bee01069325d3991ec61fb3
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on June 1, 2024: 650 SkyBlock Gems, limited stock 4,000"
+  - id: GARDEN_WARRIOR_FERMENTO
+    material: player_head
+    name: "Garden Warrior Fermento Helmet Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Fermento"
+      - "§7Helmet and Helianthus Helmet."
+      - ""
+      - "§7This skin is swappable between 20"
+      - "§7garden themed variants!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5b4a3754e82cbbaa1dae0d207e90fcbad67d02d72baae35003b6dfd075518ecb
+      - id: ITEM_SKIN
+        targets:
+          - FERMENTO_HELMET
+          - HELIANTHUS_HELMET
+        texture: 5b4a3754e82cbbaa1dae0d207e90fcbad67d02d72baae35003b6dfd075518ecb
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Hypixel Store (real-money promotion)"
+    source: "Hypixel Store, 2026 Summer SkyBlock Bundle"
+  - id: GHOST_PERSONALITY
+    material: player_head
+    name: "Ghost Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Ghost"
+        helmet:
+          material: player_head
+          skull_texture: ff63e81efc0310b7dab2b1f3f7861f6cdffa36c43f95af7808a3e71eba76c82c
+      - id: SKULL_HEAD
+        texture: ff63e81efc0310b7dab2b1f3f7861f6cdffa36c43f95af7808a3e71eba76c82c
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Halloween Reward Bundle (rank reward)"
+  - id: GIFT_GOLD_BACKPACK
+    material: player_head
+    name: "Gold Gift Backpack Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Backpacks."
+    components:
+      - id: SKULL_HEAD
+        texture: 9d5c38fb56320fa13637acfe82077b6d780b889f7742d69bcc6e5ae035eafd27
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: 9d5c38fb56320fa13637acfe82077b6d780b889f7742d69bcc6e5ae035eafd27
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Hypixel Event Shop (Event Silver is not implemented)"
+    source: "Holidays 2023 Event Shop: 45 Event Silver"
+  - id: GIFT_WHITE_BACKPACK
+    material: player_head
+    name: "White Gift Backpack Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Backpacks."
+    components:
+      - id: SKULL_HEAD
+        texture: 5df2835975acee173426c5c65233f4c1b506a76dfcd418e30076536c8ef3d39c
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: 5df2835975acee173426c5c65233f4c1b506a76dfcd418e30076536c8ef3d39c
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Hypixel Event Shop (Event Silver is not implemented)"
+    source: "Holidays 2023 Event Shop: 45 Event Silver"
+  - id: GLACITE_GUARDIAN_CYAN
+    material: player_head
+    name: "Cyan Guardian Glacite Helmet Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Glacite"
+      - "§7Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: b95b38b9b6260b123b637e08839f6cf29c8fdc3b3eb4dcbb30982de307e851db
+      - id: ITEM_SKIN
+        targets:
+          - GLACITE_HELMET
+        texture: b95b38b9b6260b123b637e08839f6cf29c8fdc3b3eb4dcbb30982de307e851db
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on October 3, 2026: 650 SkyBlock Gems, limited stock 950"
+  - id: GLACITE_GUARDIAN_LIGHT
+    material: player_head
+    name: "Light Guardian Glacite Helmet Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Glacite"
+      - "§7Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: c572ecc2ad428ea04f6a7cdb33ac1192fab59cc32b74c8251f0dda8513d8501c
+      - id: ITEM_SKIN
+        targets:
+          - GLACITE_HELMET
+        texture: c572ecc2ad428ea04f6a7cdb33ac1192fab59cc32b74c8251f0dda8513d8501c
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on October 3, 2026: 650 SkyBlock Gems, limited stock 950"
+  - id: GLISTENING_MELON_FLUX
+    material: player_head
+    name: "Glistening Melon Power Orb Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Radiant"
+      - "§7Power Orb, Mana Flux Power Orb,"
+      - "§7Overflux Power Orb, and Plasmaflux"
+      - "§7Power Orb."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: c91229c5220db0756b8248cc2920c077f2edad6afb397cc26138296309c200bb
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: c91229c5220db0756b8248cc2920c077f2edad6afb397cc26138296309c200bb
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on March 10, 2023: 1,350 SkyBlock Gems, limited stock unlimited"
+  - id: GOBLIN_HELMET_BABY
+    material: player_head
+    name: "Baby Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Goblin"
+      - "§7Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 7bc069645a0fa512d9cd724048fb418e03e042397870116c3e44a3a76d9f759
+      - id: ITEM_SKIN
+        targets:
+          - GOBLIN_HELMET
+        texture: 7bc069645a0fa512d9cd724048fb418e03e042397870116c3e44a3a76d9f759
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: GOBLIN_HELMET_GOLDEN
+    material: player_head
+    name: "Golden Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Goblin"
+      - "§7Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: d16c0c551f586893e9397c8886bf090ad54857da0a0bbca1b194e9a229933c2d
+      - id: ITEM_SKIN
+        targets:
+          - GOBLIN_HELMET
+        texture: d16c0c551f586893e9397c8886bf090ad54857da0a0bbca1b194e9a229933c2d
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: GOLDEN_APPLE_FLUX
+    material: player_head
+    name: "Golden Apple Power Orb Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Radiant"
+      - "§7Power Orb, Mana Flux Power Orb,"
+      - "§7Overflux Power Orb, and Plasmaflux"
+      - "§7Power Orb."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: b54a09c8e36cc093e3753287a5cac4b37e5654ca518c6582ab99caa95134595e
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: b54a09c8e36cc093e3753287a5cac4b37e5654ca518c6582ab99caa95134595e
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on March 10, 2023: 1,350 SkyBlock Gems, limited stock unlimited"
+  - id: GREAT_SHARK_MAGMA_LORD
+    material: player_head
+    name: "Great Shark Magma Lord Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Magma"
+      - "§7Lord Helmet."
+      - ""
+      - "§7Features!"
+      - "§7▶ This skin is swappable between 14"
+      - "§7extraordinarily colorful sharks!"
+      - "§7▶ Modifies the look of fished up Fire"
+      - "§7Eel and Taurus Sea Creatures"
+      - "§7based on the currently selected skin!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5fe4b98c1ceeb067f2e84d24115e5216b5d725c616d66a22aaab377c2a7b2615
+      - id: ITEM_SKIN
+        targets:
+          - MAGMA_LORD_HELMET
+        texture: 5fe4b98c1ceeb067f2e84d24115e5216b5d725c616d66a22aaab377c2a7b2615
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on August 10, 2024: 1,800 SkyBlock Gems, limited stock 17,500"
+  - id: HARVEST_BARN_SKIN
+    material: player_head
+    name: "Harvest Barn Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Harvest Barn Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: a9652faaf4439a1800a96f6ef513860c2ce83cc488bf94dd18b9278bfe4f4a67
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Taylor's Fall 2026 Seasonal Bundle: 950 SkyBlock Gems"
+  - id: HELIANTHUS_FLORAL
+    material: player_head
+    name: "Floral Helianthus Helmet Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to"
+      - "§7Helianthus Helmet."
+      - ""
+      - "§7This skin will allow you to swap"
+      - "§7between 20 beautiful flower themed"
+      - "§7colors!"
+    components:
+      - id: SKULL_HEAD
+        texture: f53448fc2bb6971664ea96a23199d0097be49df7fe3f5b7a4062ccc8d2a5e419
+      - id: ITEM_SKIN
+        targets:
+          - HELIANTHUS_HELMET
+        texture: f53448fc2bb6971664ea96a23199d0097be49df7fe3f5b7a4062ccc8d2a5e419
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Spring 2026 Seasonal Bundle: 950 SkyBlock Gems"
+  - id: HIVE_BARN_SKIN
+    material: terracotta
+    name: "Hive Barn Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this item to unlock the Hive"
+      - "§7Barn Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "SkyMart: 10,000 Copper"
+  - id: HOLIDAY_CHEST_RED_BACKPACK
+    material: player_head
+    name: "Red Holiday Chest Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Backpacks."
+    components:
+      - id: SKULL_HEAD
+        texture: f5c9d31743f4d36c5a8917a1819f2fae0ab083822e4fabf16e88912811e676e0
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: f5c9d31743f4d36c5a8917a1819f2fae0ab083822e4fabf16e88912811e676e0
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Hypixel Event Shop (Event Silver is not implemented)"
+    source: "Holidays 2024 Event Shop: 45 Event Silver"
+  - id: HOLY_BABY
+    material: player_head
+    name: "Baby Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Holy"
+      - "§7Dragon Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 1266946f84b27796a1c7b1b6068efb77481b8ad8ba4fc1eef35cc975e06afb42
+      - id: ITEM_SKIN
+        targets:
+          - HOLY_DRAGON_HELMET
+        texture: 1266946f84b27796a1c7b1b6068efb77481b8ad8ba4fc1eef35cc975e06afb42
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: HOT_COCOA_BACKPACK
+    material: player_head
+    name: "Hot Cocoa Backpack Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Backpacks."
+    components:
+      - id: SKULL_HEAD
+        texture: a17ebaab0e04858220a62ec14032f947fcba3c31f3dd7a641eda6c372ce96cc6
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: a17ebaab0e04858220a62ec14032f947fcba3c31f3dd7a641eda6c372ce96cc6
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Winter 2024 Seasonal Bundle: 350 SkyBlock Gems"
+  - id: JERRY_NEW_YEAR_26
+    material: player_head
+    name: "A Very Jerry New Year 2026"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this item to unlock the A"
+      - "§7Very Jerry New Year 2026 Barn Skin"
+      - "§7on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 96370bd0502bf31d8e2ee34a926a9a43a74778720d9b53415b0809c253cb46c0
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Fire Sale hosted on January 3, 2026: 950 SkyBlock Gems, limited stock 3,000"
+  - id: LADY_BUG_PERSONALITY
+    material: player_head
+    name: "Lady Bug Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Lady Bug"
+        helmet:
+          material: player_head
+          skull_texture: 5b78c5dd4e856989c3c946cb861d73b327660f07a98eec67588ce7d754cb08ba
+      - id: SKULL_HEAD
+        texture: 5b78c5dd4e856989c3c946cb861d73b327660f07a98eec67588ce7d754cb08ba
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Easter Reward Bundle (MVP++ rank reward)"
+  - id: LUNAR_RABBIT_HAT
+    material: player_head
+    name: "Lunar Rabbit Hat Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Rabbit Hat."
+    components:
+      - id: SKULL_HEAD
+        texture: 550ce17991dcf18ce223cdf2103025a18b9d1750db2ad0924d6186b18dacb288
+      - id: ITEM_SKIN
+        targets:
+          - RABBIT_HAT
+        texture: 550ce17991dcf18ce223cdf2103025a18b9d1750db2ad0924d6186b18dacb288
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on January 22, 2023: 650 SkyBlock Gems, limited stock 8,000"
+  - id: MAIN_STREET_BARN_SKIN
+    material: player_head
+    name: "Main Street Barn Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this item to unlock the Main"
+      - "§7Street Barn Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: cfe2449d227fa991f2a7102709d9982de1f78f41182628bdae39462254c681a3
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Taylor's Winter 2024 Seasonal Bundle: 650 SkyBlock Gems"
+  - id: MELON_BARN_SKIN
+    material: melon
+    name: "Melon Barn Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this item to unlock the Melon"
+      - "§7Barn Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "SkyMart: 950 SkyBlock Gems"
+  - id: MOON_BLOSSOM_FLUX
+    material: player_head
+    name: "Moon Blossom Power Orb Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Radiant"
+      - "§7Power Orb, Mana Flux Power Orb,"
+      - "§7Overflux Power Orb, and Plasmaflux"
+      - "§7Power Orb."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: a77eb6ed3f557e35788eb548560c16916ac800d575dab6270649383753c6314e
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: a77eb6ed3f557e35788eb548560c16916ac800d575dab6270649383753c6314e
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Spring 2026 Seasonal Bundle: 1,350 SkyBlock Gems"
+  - id: MUSHROOM_BARN_SKIN
+    material: red_mushroom
+    name: "Mushroom Barn Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Mushroom Barn Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Fire Sale: 2,000 SkyBlock Gems"
+  - id: NECRON_DIAMOND_KNIGHT
+    material: player_head
+    name: "Knight Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Diamond"
+      - "§7Necron Head."
+      - ""
+      - "§7This skin will allow you to swap"
+      - "§7between 15 shiny versions!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5a7834d46e7739bfdc942b660492d590f6f1034437c6e6804eadcc2e83152941
+      - id: ITEM_SKIN
+        targets:
+          - DIAMOND_NECRON_HEAD
+        texture: 5a7834d46e7739bfdc942b660492d590f6f1034437c6e6804eadcc2e83152941
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    source: "Taylor's Collection (permanent): 1,350 SkyBlock Gems"
+  - id: OLD_BABY
+    material: player_head
+    name: "Baby Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Old"
+      - "§7Dragon Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 2eaf836b7183554269647827289c67a3855e8d0b345719328188defdbd05a64b
+      - id: ITEM_SKIN
+        targets:
+          - OLD_DRAGON_HELMET
+        texture: 2eaf836b7183554269647827289c67a3855e8d0b345719328188defdbd05a64b
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: ORCHARD_GREENHOUSE_SKIN
+    material: apple
+    name: "Orchard Greenhouse Skin"
+    rarity: UNCOMMON
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Orchard Greenhouse Skin on The"
+      - "§7Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "SkyMart: 3,000 Copper"
+  - id: PANDA_SPIRIT
+    material: player_head
+    name: "Panda Spirit Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Spirit"
+      - "§7Mask and  Spirit Mask."
+      - ""
+      - "§7This skin adapts to the day-night"
+      - "§7cycle!"
+    components:
+      - id: SKULL_HEAD
+        texture: 9649fad8b25b7ddaa1b99b7ee86573ea5a948df4453bfde7d1fe016516ee3e34
+      - id: ITEM_SKIN
+        targets:
+          - SPIRIT_MASK
+        texture: 9649fad8b25b7ddaa1b99b7ee86573ea5a948df4453bfde7d1fe016516ee3e34
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on June 15, 2024: 950 SkyBlock Gems, limited stock 7,500"
+  - id: PENGUIN_PERSONALITY
+    material: player_head
+    name: "Penguin Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Penguin"
+        helmet:
+          material: player_head
+          skull_texture: a67f533f64b5ed4970adb79a8ac33c0d61c6d8043bc9d22e72104644a4a4218b
+      - id: SKULL_HEAD
+        texture: a67f533f64b5ed4970adb79a8ac33c0d61c6d8043bc9d22e72104644a4a4218b
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Holidays Reward Bundle (rank reward)"
+  - id: PESTHUNTERS_LAIR_BARN_SKIN
+    material: dirt
+    name: "Pesthunter's Lair Barn Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Pesthunter's Lair Barn Skin on The"
+      - "§7Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "Pesthunter Phillip: 1,500 Pests"
+  - id: PINK_DONUT_PERSONALITY
+    material: player_head
+    name: "Pink Donut Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Pink Donut"
+        helmet:
+          material: player_head
+          skull_texture: 525206c31e6754810cd37ecec9a9fbcbf98e7d547ab827cbdaa817918af7c61d
+      - id: SKULL_HEAD
+        texture: 525206c31e6754810cd37ecec9a9fbcbf98e7d547ab827cbdaa817918af7c61d
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Gifting 100 server ranks to other players"
+  - id: POLAR_BEAR_PERSONALITY
+    material: player_head
+    name: "Polar Bear Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Polar Bear"
+        helmet:
+          material: player_head
+          skull_texture: beb13a2b616c967ed23d8b036beea180abe6a4a994c3112b05eb2de3c84bcfa5
+      - id: SKULL_HEAD
+        texture: beb13a2b616c967ed23d8b036beea180abe6a4a994c3112b05eb2de3c84bcfa5
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's 2025 Winter Bundle"
+  - id: PRECURSOR_EYE_OCULUS
+    material: player_head
+    name: "Oculus Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to"
+      - "§7Precursor Eye."
+      - ""
+      - "§7Features!"
+      - "§7▶ This skin is swappable between 19"
+      - "§7variants!"
+      - "§7▶ Changes the color of your Eye"
+      - "§7Beam depending on your selected"
+      - "§7skin!"
+    components:
+      - id: SKULL_HEAD
+        texture: 64577d9e5a5adc8e0936295eb6300fde0ff9b023f20befc153b28deeea8047a1
+      - id: ITEM_SKIN
+        targets:
+          - PRECURSOR_EYE
+        texture: 64577d9e5a5adc8e0936295eb6300fde0ff9b023f20befc153b28deeea8047a1
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on December 6, 2025: 1,350 SkyBlock Gems, limited stock 4,000"
+  - id: PROTECTOR_BABY
+    material: player_head
+    name: "Baby Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Protector"
+      - "§7Dragon Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 979c9144496d21f3334b32437deeb63379766399d0a92bc06712ba592bc237e6
+      - id: ITEM_SKIN
+        targets:
+          - PROTECTOR_DRAGON_HELMET
+        texture: 979c9144496d21f3334b32437deeb63379766399d0a92bc06712ba592bc237e6
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: PUFFERFISH_PERSONALITY
+    material: player_head
+    name: "Pufferfish Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Pufferfish"
+        helmet:
+          material: player_head
+          skull_texture: 5b2026c57676bc9577bc7d1ed6a3f8aba8c3ccadae896a5414d0315e7ee103ff
+      - id: SKULL_HEAD
+        texture: 5b2026c57676bc9577bc7d1ed6a3f8aba8c3ccadae896a5414d0315e7ee103ff
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Summer Reward Bundle (rank reward)"
+  - id: PURPLE_EGG
+    material: player_head
+    name: "Purple Egged Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Backpacks."
+    components:
+      - id: SKULL_HEAD
+        texture: 286023508f6fa4feb8be4bb8153f4a26fe26edd6f1307c6f8044cd2c653a08be
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: 286023508f6fa4feb8be4bb8153f4a26fe26edd6f1307c6f8044cd2c653a08be
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on April 5, 2021: 650 SkyBlock Gems, limited stock unlimited"
+  - id: REAPER_ONI_MASK
+    material: player_head
+    name: "Oni Reaper Mask Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Reaper"
+      - "§7Mask."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: e6ff8158f218f7683262443db5ad438d19d9bbc5d45d6c45ce543c8a473aadff
+      - id: ITEM_SKIN
+        targets:
+          - REAPER_MASK
+        texture: e6ff8158f218f7683262443db5ad438d19d9bbc5d45d6c45ce543c8a473aadff
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on August 26, 2023: 1,350 SkyBlock Gems, limited stock 9,000"
+  - id: REAPER_SPIRIT
+    material: player_head
+    name: "Spirit Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Reaper"
+      - "§7Mask."
+      - ""
+      - "§7This skin adapts to the day-night"
+      - "§7cycle!"
+    components:
+      - id: SKULL_HEAD
+        texture: 724d2072918054a95a4f4bbc931bf3929d01cb012368bc4c78d0a3acc9cdbeea
+      - id: ITEM_SKIN
+        targets:
+          - REAPER_MASK
+        texture: 724d2072918054a95a4f4bbc931bf3929d01cb012368bc4c78d0a3acc9cdbeea
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on September 19, 2020: 1,250 SkyBlock Gems, limited stock 1,000"
+  - id: ROBOT_PERSONALITY
+    material: player_head
+    name: "Robot Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Robot"
+        helmet:
+          material: player_head
+          skull_texture: 909011385f19c680f8bb39cb6b75991dd47c1712dcc2763489bb82ec0c9cf442
+      - id: SKULL_HEAD
+        texture: 909011385f19c680f8bb39cb6b75991dd47c1712dcc2763489bb82ec0c9cf442
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's 2026 Spring Bundle"
+  - id: SCARECROW_PERSONALITY
+    material: player_head
+    name: "Scarecrow Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Scarecrow"
+        helmet:
+          material: player_head
+          skull_texture: 1ebc6bd15bebd1193f78c12d35afec0be6a07a2eaa9180c3f499dc3662898961
+      - id: SKULL_HEAD
+        texture: 1ebc6bd15bebd1193f78c12d35afec0be6a07a2eaa9180c3f499dc3662898961
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Halloween Reward Bundle (rank reward)"
+  - id: SHADOW_ASSASSIN_ADMIRAL
+    material: player_head
+    name: "Admiral Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Shadow"
+      - "§7Assassin Helmet and  Shadow"
+      - "§7Assassin Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: d7fcfa5b0af855f314606a5cd2b597475286a152d1ee08d9949a6386cbc46a8e
+      - id: ITEM_SKIN
+        targets:
+          - SHADOW_ASSASSIN_HELMET
+        texture: d7fcfa5b0af855f314606a5cd2b597475286a152d1ee08d9949a6386cbc46a8e
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on March 30, 2021: 650 SkyBlock Gems, limited stock unlimited"
+  - id: SHADOW_ASSASSIN_SLY_FOX
+    material: player_head
+    name: "Sly Fox Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Shadow"
+      - "§7Assassin Helmet and  Shadow"
+      - "§7Assassin Helmet."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: cfc75423a2a5773319792c96d9359d42067efa1c7093010131c4056948abf490
+      - id: ITEM_SKIN
+        targets:
+          - SHADOW_ASSASSIN_HELMET
+        texture: cfc75423a2a5773319792c96d9359d42067efa1c7093010131c4056948abf490
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on May 6, 2023: 1,350 SkyBlock Gems, limited stock 6,500"
+  - id: SHARK_SCALE_HOODIE_PENGUIN
+    material: player_head
+    name: "Penguin Hoodie Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Shark"
+      - "§7Scale Helmet."
+      - ""
+      - "§7Features!"
+      - "§7▶ This skin is swappable between 20"
+      - "§7hoodie variants."
+    components:
+      - id: SKULL_HEAD
+        texture: 81b25293befcf336ec9fea082479b7071d3c8a7ab29f94c33d7727712ac729fd
+      - id: ITEM_SKIN
+        targets:
+          - SHARK_SCALE_HELMET
+        texture: 81b25293befcf336ec9fea082479b7071d3c8a7ab29f94c33d7727712ac729fd
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 7, 2026: 950 SkyBlock Gems, limited stock 2,000"
+  - id: SKULL_PERSONALITY
+    material: player_head
+    name: "Skull Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Skull"
+        helmet:
+          material: player_head
+          skull_texture: 6f2e776757064382d28a518b88d98bd48c66a14168b57e6b6576efe30014111a
+      - id: SKULL_HEAD
+        texture: 6f2e776757064382d28a518b88d98bd48c66a14168b57e6b6576efe30014111a
+    unavailable: "Needs Hypixel rank reward bundles"
+    source: "Halloween Reward Bundle (rank reward)"
+  - id: SNOW_SNOWGLOBE
+    material: player_head
+    name: "Snowglobe Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Snow Suit"
+      - "§7Helmet."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: 13229f8525726684fb0227dad7621f05f0b8b5d58a8693fd0ea0688349f1d53c
+      - id: ITEM_SKIN
+        targets:
+          - SNOW_SUIT_HELMET
+        texture: 13229f8525726684fb0227dad7621f05f0b8b5d58a8693fd0ea0688349f1d53c
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on December 25, 2020: 650 SkyBlock Gems, limited stock 1,000"
+  - id: SPRING_BARN_BARN_SKIN
+    material: hay_block
+    name: "Spring Barn Skin"
+    rarity: UNCOMMON
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Spring Barn Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "2025 Spring Event Shop"
+  - id: STRONG_BABY
+    material: player_head
+    name: "Baby Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Strong"
+      - "§7Dragon Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: aec10b0dceb5bb34af2cb953733f01f20bb3aafd5f21fe0eadf1cc4ce7f4dab4
+      - id: ITEM_SKIN
+        targets:
+          - STRONG_DRAGON_HELMET
+        texture: aec10b0dceb5bb34af2cb953733f01f20bb3aafd5f21fe0eadf1cc4ce7f4dab4
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: SUPERIOR_BABY
+    material: player_head
+    name: "Baby Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Superior"
+      - "§7Dragon Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 52a770459fa6d65e22aa95679d93a2870aafea70f9f1c6a0f78eb641e92890
+      - id: ITEM_SKIN
+        targets:
+          - SUPERIOR_DRAGON_HELMET
+        texture: 52a770459fa6d65e22aa95679d93a2870aafea70f9f1c6a0f78eb641e92890
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: TARANTULA_BLACK_WIDOW
+    material: player_head
+    name: "Black Widow Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Tarantula"
+      - "§7Helmet and Primordial Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: b2b6732eaa9788458468f5976943986464974af35feafb4fcad05a7a308c2a67
+      - id: ITEM_SKIN
+        targets:
+          - TARANTULA_HELMET
+          - PRIMORDIAL_HELMET
+        texture: b2b6732eaa9788458468f5976943986464974af35feafb4fcad05a7a308c2a67
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on October 23, 2020: 650 SkyBlock Gems, limited stock 1,500"
+  - id: THERMAL_THERMODYNAMIC
+    material: player_head
+    name: "Thermal Thermodynamic Helmet Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to"
+      - "§7Thermodynamic Helmet."
+      - ""
+      - "§7This skin is swappable between 19"
+      - "§7Thermal variants!"
+    components:
+      - id: SKULL_HEAD
+        texture: a27c4d0ff326d477a052d7fb2f9969828103add67e98500e2b55f7ddb2bec4e4
+      - id: ITEM_SKIN
+        targets:
+          - THERMODYNAMIC_HELMET
+        texture: a27c4d0ff326d477a052d7fb2f9969828103add67e98500e2b55f7ddb2bec4e4
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Summer 2026 Seasonal Bundle: 950 SkyBlock Gems"
+  - id: THUNDER_BIKER_AZURE
+    material: player_head
+    name: "Thunder Azure Biker Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Thunder"
+      - "§7Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: c272558d1e4dd95807158145753c138309b3d5ee12a6e5dd4cae84ce15b66353
+      - id: ITEM_SKIN
+        targets:
+          - THUNDER_HELMET
+        texture: c272558d1e4dd95807158145753c138309b3d5ee12a6e5dd4cae84ce15b66353
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on November 8, 2025: 650 SkyBlock Gems, limited stock 950"
+  - id: THUNDER_BIKER_TEAL
+    material: player_head
+    name: "Thunder Teal Biker Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Thunder"
+      - "§7Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 6640bba00cbc1fae890507012ccb4a4ab7d2d0ec53929032b4329ed868ac4a18
+      - id: ITEM_SKIN
+        targets:
+          - THUNDER_HELMET
+        texture: 6640bba00cbc1fae890507012ccb4a4ab7d2d0ec53929032b4329ed868ac4a18
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on November 8, 2025: 650 SkyBlock Gems, limited stock 950"
+  - id: TRADING_POST_BARN_SKIN
+    material: oak_fence
+    name: "Trading Post Barn Skin"
+    rarity: UNCOMMON
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Trading Post Barn Skin on The"
+      - "§7Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "SkyMart: 1,000 Copper"
+  - id: TRUE_WARDEN
+    material: player_head
+    name: "True Warden Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Warden"
+      - "§7Helmet."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: 1cafe848fd755d998a06a58321912244cf76eef1ce78a51228fdd1020ab73a68
+      - id: ITEM_SKIN
+        targets:
+          - WARDEN_HELMET
+        texture: 1cafe848fd755d998a06a58321912244cf76eef1ce78a51228fdd1020ab73a68
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on May 27, 2022: 1,350 SkyBlock Gems, limited stock 7,500"
+  - id: UNSTABLE_BABY
+    material: player_head
+    name: "Baby Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a"
+      - "§7fresh new look! Apply them just"
+      - "§7like an enchant book using the"
+      - "§7anvil."
+      - ""
+      - "§7This skin can be applied to"
+      - "§7Unstable Dragon Helmet"
+    components:
+      - id: SKULL_HEAD
+        texture: 42a023636a7f0300a74cc50d3e4dbb81a7bc1485f0daf6e9a7c0f4d8a2e3a18f
+      - id: ITEM_SKIN
+        targets:
+          - UNSTABLE_DRAGON_HELMET
+        texture: 42a023636a7f0300a74cc50d3e4dbb81a7bc1485f0daf6e9a7c0f4d8a2e3a18f
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: WARDEN_SPARTAN
+    material: player_head
+    name: "Spartan Warden Helmet Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Warden"
+      - "§7Helmet."
+      - ""
+      - "§7Features!"
+      - "§7▶ This skin is swappable between"
+      - "§7320 Spartan variants."
+      - "§7▶ Keeps track of distance walked"
+      - "§7while wearing this skin."
+    components:
+      - id: SKULL_HEAD
+        texture: a256936e7d379fb49bdf134db79d770dd5b4b55d9519f24b3a46c524f366445b
+      - id: ITEM_SKIN
+        targets:
+          - WARDEN_HELMET
+        texture: a256936e7d379fb49bdf134db79d770dd5b4b55d9519f24b3a46c524f366445b
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Summer 2026 Seasonal Bundle: 1,800 SkyBlock Gems"
+  - id: WATER_HYDRA_HEAD_ICE_HYDRA
+    material: player_head
+    name: "Ice Hydra Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Water"
+      - "§7Hydra Head."
+    components:
+      - id: SKULL_HEAD
+        texture: 73be7ad9ad6933b36bfb368e22e70b096f3455cbd807afb80f8c78d2c5a0b278
+      - id: ITEM_SKIN
+        targets:
+          - WATER_HYDRA_HEAD
+        texture: 73be7ad9ad6933b36bfb368e22e70b096f3455cbd807afb80f8c78d2c5a0b278
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Hypixel Event Shop (Event Silver is not implemented)"
+    source: "Holidays 2024 Event Shop: 150 Event Silver"
+  - id: WINDMILL_BARN_SKIN
+    material: feather
+    name: "Windmill Barn Skin"
+    rarity: UNCOMMON
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§7Windmill Barn Skin on The Garden!"
+      - ""
+      - "§7Click to consume!"
+    components:
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs the Garden Barn/Greenhouse skin system and The Desk (consuming this has no effect yet)"
+    source: "SkyMart: 250 SkyBlock Gems"
+  - id: WISE_BABY
+    material: player_head
+    name: "Baby Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Wise"
+      - "§7Dragon Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 94c6834c8bf0b81f92cf0da4bd99ad764154d5368a38e03c85adda10e518890a
+      - id: ITEM_SKIN
+        targets:
+          - WISE_DRAGON_HELMET
+        texture: 94c6834c8bf0b81f92cf0da4bd99ad764154d5368a38e03c85adda10e518890a
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: WISP_SPIRIT
+    material: player_head
+    name: "Wisp Spirit Skin"
+    rarity: LEGENDARY
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Spirit"
+      - "§7Mask and  Spirit Mask."
+      - ""
+      - "§7This skin is swappable between 21"
+      - "§7wispy spirited variants!"
+    components:
+      - id: SKULL_HEAD
+        texture: 111b1c166d1eb3325278a911d5dc1d94d570f70f7d326ee8a0450adb64d78eab
+      - id: ITEM_SKIN
+        targets:
+          - SPIRIT_MASK
+        texture: 111b1c166d1eb3325278a911d5dc1d94d570f70f7d326ee8a0450adb64d78eab
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Fall 2026 Seasonal Bundle: 950 SkyBlock Gems"
+  - id: WITHER_GOGGLES_CYBERPUNK
+    material: player_head
+    name: "Cyberpunk Wither Goggles Skin"
+    rarity: MYTHIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Wither"
+      - "§7Goggles."
+      - ""
+      - "§7This skin is animated!"
+    components:
+      - id: SKULL_HEAD
+        texture: 84046578650f0b44e6dc570555d61163be03201b717bd9f758244f83d941ffd2
+      - id: ITEM_SKIN
+        targets:
+          - WITHER_GOGGLES
+        texture: 84046578650f0b44e6dc570555d61163be03201b717bd9f758244f83d941ffd2
+        animated: true
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on January 13, 2023: 1,350 SkyBlock Gems, limited stock 10,000"
+  - id: YOUNG_BABY
+    material: player_head
+    name: "Baby Skin"
+    rarity: EPIC
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to Young"
+      - "§7Dragon Helmet."
+    components:
+      - id: SKULL_HEAD
+        texture: 43503dcaae6a6cde027316a3ce6e203b64327b7de72441865cfd3cdb45d5ef44
+      - id: ITEM_SKIN
+        targets:
+          - YOUNG_DRAGON_HELMET
+        texture: 43503dcaae6a6cde027316a3ce6e203b64327b7de72441865cfd3cdb45d5ef44
+        animated: false
+      - id: EXTRA_RARITY
+        display: COSMETIC
+    unavailable: "Needs Fire Sales (no Fire Sale system; past sale that is no longer purchasable)"
+    source: "Fire Sale hosted on February 3, 2024: 650 SkyBlock Gems, limited stock 1,000"
+  - id: ZOMBIE_EYE_PERSONALITY
+    material: player_head
+    name: "Zombie Eye Minion Skin"
+    rarity: COMMON
+    components:
+      - id: MINION_SKIN
+        name: "Zombie Eye"
+        helmet:
+          material: player_head
+          skull_texture: 3ccdec4a9ea0845d383c8de0c6abea56f2edf0160e5d912b9ca7d7569f3be5ef
+      - id: SKULL_HEAD
+        texture: 3ccdec4a9ea0845d383c8de0c6abea56f2edf0160e5d912b9ca7d7569f3be5ef
+    unavailable: "Needs Taylor's seasonal bundle rotation (Gems cannot be earned in game and this bundle is not stocked)"
+    source: "Taylor's Fall 2026 Seasonal Bundle: 250 SkyBlock Gems"

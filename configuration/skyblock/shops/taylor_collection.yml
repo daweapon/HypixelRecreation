@@ -11,42 +11,54 @@ entries:
     name: "<4>Super Plushie Ender Dragon Skin"
     material: player_head
     cost: { gems: 1800 }
-  - item: KNIGHT_SKIN
+  - item: MERCENARY_KNIGHT
     name: "<d>Knight Skin"
     material: player_head
     cost: { gems: 1350 }
-  - item: SUPERIOR_DRAKE_SKIN
+  - item: NECRON_DIAMOND_KNIGHT
+    name: "<d>Knight Skin"
+    material: player_head
+    cost: { gems: 1350 }
+  - item: SUPERIOR_DRAGON_DRAKE
     name: "<d>Superior Drake Skin"
     material: player_head
     cost: { gems: 1350 }
-  - item: UNSTABLE_DRAKE_SKIN
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: UNSTABLE_DRAGON_DRAKE
     name: "<d>Unstable Drake Skin"
     material: player_head
     cost: { gems: 1350 }
-  - item: WISE_DRAKE_SKIN
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: WISE_DRAGON_DRAKE
     name: "<d>Wise Drake Skin"
     material: player_head
     cost: { gems: 1350 }
-  - item: STRONG_DRAKE_SKIN
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: STRONG_DRAGON_DRAKE
     name: "<d>Strong Drake Skin"
     material: player_head
     cost: { gems: 1350 }
-  - item: YOUNG_DRAKE_SKIN
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: YOUNG_DRAGON_DRAKE
     name: "<d>Young Drake Skin"
     material: player_head
     cost: { gems: 1350 }
-  - item: PROTECTOR_DRAKE_SKIN
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: PROTECTOR_DRAGON_DRAKE
     name: "<d>Protector Drake Skin"
     material: player_head
     cost: { gems: 1350 }
-  - item: OLD_DRAKE_SKIN
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: OLD_DRAGON_DRAKE
     name: "<d>Old Drake Skin"
     material: player_head
     cost: { gems: 1350 }
-  - item: HOLY_DRAKE_SKIN
+    unavailable: "Animated skin; animated head textures are not supported yet"
+  - item: HOLY_DRAGON_DRAKE
     name: "<d>Holy Drake Skin"
     material: player_head
     cost: { gems: 1350 }
+    unavailable: "Animated skin; animated head textures are not supported yet"
   - item: DRAGON_HYDRA_SKIN
     name: "<5>Dragon Hydra Skin"
     material: player_head

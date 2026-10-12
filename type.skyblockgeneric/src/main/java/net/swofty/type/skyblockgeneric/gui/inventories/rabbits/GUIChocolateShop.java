@@ -336,7 +336,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
 
                     <e>Click to trade!""",
                     ChocolateFactoryHelper.formatChocolate(7_000_000_000L));
-        }, (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 7_000_000_000L, "<6>Chocolate Factory Barn Skin", 4, c));
+        }, (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 7_000_000_000L, "<6>Chocolate Factory Barn Skin", 4, c, ItemType.get("CHOCOLATE_FACTORY_BARN_SKIN")));
 
         // Slot 22: Chocolate Syringe
         layout.slot(22, (s, c) -> {

@@ -1,0 +1,1920 @@
+items:
+  - id: ANGLER_DEEP_SEA
+    material: player_head
+    name: "Deep Sea Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §fAngler"
+      - "§fHelmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - ANGLER_HELMET
+        texture: afb849463dcb35acf1d88287606a13a17efe6697ee4c88fda072591beda60d2a
+      - id: SKULL_HEAD
+        texture: afb849463dcb35acf1d88287606a13a17efe6697ee4c88fda072591beda60d2a
+  - id: AUTUMN_HUT_BARN_SKIN
+    material: oak_leaves
+    name: "Autumn Hut Barn Skin"
+    rarity: UNCOMMON
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "SkyMart, 2,000 Copper"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§aAutumn Hut Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+  - id: BACKPACK_CAT_O_LANTERN
+    material: player_head
+    name: "Cat-o-Lantern Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Taylor Fall 2024 seasonal bundle, 350 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: 389b56b5f1eb9b7d6f3be300d7ebf337a40c21f9c88e68e7d1ef7d333050030
+      - id: SKULL_HEAD
+        texture: 389b56b5f1eb9b7d6f3be300d7ebf337a40c21f9c88e68e7d1ef7d333050030
+  - id: BAG_OF_COAL_BACKPACK
+    material: player_head
+    name: "Bag of Coal Backpack Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Taylor Winter 2023 seasonal bundle, 350 SkyBlock Gems"
+    lore:
+      - "§7§7Item skins give your gear a"
+      - "§7fresh new look! Apply them just"
+      - "§7like an enchant book using the"
+      - "§7anvil."
+      - ""
+      - "§7§7This skin can be applied to"
+      - "§7§aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: e92dfa61a324207488e45c79d0355d2163b7a3b35f0e958f88f5423484360978
+      - id: SKULL_HEAD
+        texture: e92dfa61a324207488e45c79d0355d2163b7a3b35f0e958f88f5423484360978
+  - id: BASKETBALL_PERSONALITY
+    material: player_head
+    name: "Basketball Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP+ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Basketball"
+        helmet:
+          material: player_head
+          skull_texture: cd3fe0a9540e604f1249e16c105cda45812b203707cf93fe66fba5119e387883
+      - id: SKULL_HEAD
+        texture: cd3fe0a9540e604f1249e16c105cda45812b203707cf93fe66fba5119e387883
+  - id: BEACH_BALL_BARN_SKIN
+    material: player_head
+    name: "Beach Ball Barn Skin"
+    rarity: LEGENDARY
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "Taylor Summer 2024 seasonal bundle, 650 SkyBlock Gems"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§6Beach Ball Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: d2057057b7095cdd8a60a5c4edec2cd7f1fd5d6479ebed0add4ce115a3338c2f
+  - id: BERSERKER_SANDSTORM_CAT
+    material: player_head
+    name: "Sandstorm Cat Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to"
+      - "§5Berserker Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - BERSERKER_HELMET
+        texture: 620d52f4b9510c96d6e962e5a302a993f16a427453a723700f9138032f0c3d13
+      - id: SKULL_HEAD
+        texture: 620d52f4b9510c96d6e962e5a302a993f16a427453a723700f9138032f0c3d13
+  - id: BIOHAZARD_PUMPKIN_SPICE
+    material: player_head
+    name: "Pumpkin Spice Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBiohazard"
+      - "§aHelmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - BIOHAZARD_HELMET
+        texture: 18827cfc8c504d00ad676fe7a5ebf70ac4826e6db90a00eb282e5738a6cd558e
+      - id: SKULL_HEAD
+        texture: 18827cfc8c504d00ad676fe7a5ebf70ac4826e6db90a00eb282e5738a6cd558e
+  - id: BIOHAZARD_SPACE_SNOWFLAKE
+    material: player_head
+    name: "Snowflake Space Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBiohazard"
+      - "§aHelmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - BIOHAZARD_HELMET
+        texture: b1c813e9cfc81a0e76e6127db76402ccc518a6d8d00147e155b29be2b0e8470e
+      - id: SKULL_HEAD
+        texture: b1c813e9cfc81a0e76e6127db76402ccc518a6d8d00147e155b29be2b0e8470e
+  - id: BLAZING_CRIMSON
+    material: player_head
+    name: "Blazing Crimson Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to any tier"
+      - "§7of §6Crimson Helmet§7, §6Aurora Helmet§7,"
+      - "§6Terror Helmet§7, §6Fervor Helmet§7, and"
+      - "§6Hollow Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - CRIMSON_HELMET
+          - HOT_CRIMSON_HELMET
+          - BURNING_CRIMSON_HELMET
+          - FIERY_CRIMSON_HELMET
+          - INFERNAL_CRIMSON_HELMET
+          - AURORA_HELMET
+          - HOT_AURORA_HELMET
+          - BURNING_AURORA_HELMET
+          - FIERY_AURORA_HELMET
+          - INFERNAL_AURORA_HELMET
+          - TERROR_HELMET
+          - HOT_TERROR_HELMET
+          - BURNING_TERROR_HELMET
+          - FIERY_TERROR_HELMET
+          - INFERNAL_TERROR_HELMET
+          - FERVOR_HELMET
+          - HOT_FERVOR_HELMET
+          - BURNING_FERVOR_HELMET
+          - FIERY_FERVOR_HELMET
+          - INFERNAL_FERVOR_HELMET
+          - HOLLOW_HELMET
+          - HOT_HOLLOW_HELMET
+          - BURNING_HOLLOW_HELMET
+          - FIERY_HOLLOW_HELMET
+          - INFERNAL_HOLLOW_HELMET
+        texture: a029882e71a945db3d9f07cf1261f73f8b73788dc6694536909a9ebcb25aab1e
+      - id: SKULL_HEAD
+        texture: a029882e71a945db3d9f07cf1261f73f8b73788dc6694536909a9ebcb25aab1e
+  - id: BONZO_MASK_JESTER
+    material: player_head
+    name: "Jester Bonzo's Mask Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §9Bonzo's"
+      - "§9Mask§7 and §9 Bonzo's Mask§7."
+      - ""
+      - "§aThis skin is animated and has a"
+      - "§aspecial ability effect!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - BONZO_MASK
+          - STARRED_BONZO_MASK
+        texture: 1d93b180a1c707825bb901c6dcd8d16e761b37994527f7f75e3f32feafea9484
+        animated: true
+      - id: SKULL_HEAD
+        texture: 1d93b180a1c707825bb901c6dcd8d16e761b37994527f7f75e3f32feafea9484
+  - id: BOTANICAL_GREENHOUSE_SKIN
+    material: bricks
+    name: "Botanical Garden Greenhouse Skin"
+    rarity: RARE
+    unavailable: "Greenhouse skins are not built (the Greenhouse is not built)"
+    source: "Greenhouse skin cosmetic"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§9Botanical Garden Greenhouse Skin §7on"
+      - "§aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+  - id: CADUCEUS_MENDING_CROWN
+    material: player_head
+    name: "Caduceus Mender Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §9Mender"
+      - "§9Helmet§7, §5Mender Fedora§7, and §5Mender"
+      - "§5Crown§7."
+      - ""
+      - "§aThis skin is swappable between 5"
+      - "§asnakelike variants!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - MENDER_HELMET
+          - MENDER_FEDORA
+          - MENDER_CROWN
+        texture: d2ee5c06d71793c0605ed71017296c3059101942f45336677ef3ecd4aefec078
+      - id: SKULL_HEAD
+        texture: d2ee5c06d71793c0605ed71017296c3059101942f45336677ef3ecd4aefec078
+  - id: CASTLE_BARN_SKIN
+    material: cobblestone
+    name: "Castle Barn Skin"
+    rarity: LEGENDARY
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "SkyMart, 15,000 Copper"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§6Castle Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+  - id: CHERRY_BLOSSOM_FLUX
+    material: player_head
+    name: "Cherry Blossom Power Orb Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Spring 2024 Fire Sale, 1,350 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aRadiant"
+      - "§aPower Orb§7, §9Mana Flux Power Orb§7,"
+      - "§5Overflux Power Orb§7, and §6Plasmaflux"
+      - "§6Power Orb§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: 301743bef1504246202d4144e641b00cea07f82d703c6c2aa469f4ef7e54d6d0
+        animated: true
+      - id: SKULL_HEAD
+        texture: 301743bef1504246202d4144e641b00cea07f82d703c6c2aa469f4ef7e54d6d0
+  - id: CHRISTMAS_STOCKING_BACKPACK
+    material: player_head
+    name: "Christmas Stocking Backpack Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Taylor Winter 2023 seasonal bundle, 350 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: d4f9072d99d13fb6f955fee01b30774967d2a2e0a80a91b889b85c79dc8a5a55
+      - id: SKULL_HEAD
+        texture: d4f9072d99d13fb6f955fee01b30774967d2a2e0a80a91b889b85c79dc8a5a55
+  - id: CORRUPT_WITHER_GOGGLES
+    material: player_head
+    name: "Corrupt Wither Goggles Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §9Dark"
+      - "§9Goggles§7, §5Shadow Goggles§7, and §5Wither"
+      - "§5Goggles§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - DARK_GOGGLES
+          - SHADOW_GOGGLES
+          - WITHER_GOGGLES
+        texture: f9c0e9be800a69107ba0e56d1264df0eb92dff0d21814f6767b26a378086b503
+      - id: SKULL_HEAD
+        texture: f9c0e9be800a69107ba0e56d1264df0eb92dff0d21814f6767b26a378086b503
+  - id: CRIMSON_SPOOKY
+    material: player_head
+    name: "Spooky Skin"
+    rarity: LEGENDARY
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to any tier"
+      - "§7of §6Crimson Helmet§7, §6Aurora Helmet§7,"
+      - "§6Terror Helmet§7, §6Fervor Helmet§7, and"
+      - "§6Hollow Helmet§7."
+      - ""
+      - "§aThis skin is swappable between 21"
+      - "§acreepy variants!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - CRIMSON_HELMET
+          - HOT_CRIMSON_HELMET
+          - BURNING_CRIMSON_HELMET
+          - FIERY_CRIMSON_HELMET
+          - INFERNAL_CRIMSON_HELMET
+          - AURORA_HELMET
+          - HOT_AURORA_HELMET
+          - BURNING_AURORA_HELMET
+          - FIERY_AURORA_HELMET
+          - INFERNAL_AURORA_HELMET
+          - TERROR_HELMET
+          - HOT_TERROR_HELMET
+          - BURNING_TERROR_HELMET
+          - FIERY_TERROR_HELMET
+          - INFERNAL_TERROR_HELMET
+          - FERVOR_HELMET
+          - HOT_FERVOR_HELMET
+          - BURNING_FERVOR_HELMET
+          - FIERY_FERVOR_HELMET
+          - INFERNAL_FERVOR_HELMET
+          - HOLLOW_HELMET
+          - HOT_HOLLOW_HELMET
+          - BURNING_HOLLOW_HELMET
+          - FIERY_HOLLOW_HELMET
+          - INFERNAL_HOLLOW_HELMET
+        texture: fd649cf5339f4416c11ba3bc59fd3178476b0ed355b59319d72aa1caddc62fea
+      - id: SKULL_HEAD
+        texture: fd649cf5339f4416c11ba3bc59fd3178476b0ed355b59319d72aa1caddc62fea
+  - id: CYCLOPS_PERSONALITY
+    material: player_head
+    name: "Cyclops Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP++ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Cyclops"
+        helmet:
+          material: player_head
+          skull_texture: 743d8f7744019f23b7fd64bcbc8a2a16f8ac21eedd11865d97b6b6c190fb1af0
+      - id: SKULL_HEAD
+        texture: 743d8f7744019f23b7fd64bcbc8a2a16f8ac21eedd11865d97b6b6c190fb1af0
+  - id: DITTO_SKULL
+    material: player_head
+    name: "Ditto Skull"
+    rarity: EPIC
+    unavailable: "Bingo Rank II cosmetic; Bingo is not built, and copying a player's skull is not implemented"
+    source: "Bingo Rank II cosmetic"
+    lore:
+      - "§6Ability: Copycat  §e§lRIGHT CLICK"
+      - "§7Click on a player to copy their skin's"
+      - "§7skull to this item!"
+      - "§8Skin stays until changed again."
+      - "§8Cooldown: §a10s"
+      - ""
+      - "§cRequires §9Ⓑ Bingo Rank II§c!"
+    components:
+      - id: SKULL_HEAD
+        texture: 75aa859ec3f565eb006ed7df26419deac9a15420d09cfd3bdeec40ea07d1366a
+  - id: DOUBLE_GUMBALL_FLUX
+    material: player_head
+    name: "Gumball Machine Power Orb Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Winter Taylor seasonal bundle, 1,350 SkyBlock Gems (Gumball Machine skin)"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aRadiant"
+      - "§aPower Orb§7, §9Mana Flux Power Orb§7,"
+      - "§5Overflux Power Orb§7, and §6Plasmaflux"
+      - "§6Power Orb§7."
+      - ""
+      - "§aThis skin is stacked two tall, and"
+      - "§aswappable between 16 variants!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: f5132d454e3f092c8af1c5c24c5a537d9d91ee7250d33edd43d76dc19df330da
+      - id: SKULL_HEAD
+        texture: f5132d454e3f092c8af1c5c24c5a537d9d91ee7250d33edd43d76dc19df330da
+  - id: DRAGON_EGG_BACKPACK
+    material: player_head
+    name: "Dragon Egg Backpack Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Fire Sale (July 29, 2023), 650 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: ee3a8aa855541e1852c129ab80b185fdaeb84f0db7f8ba7c14df0150c7d24b9d
+      - id: SKULL_HEAD
+        texture: ee3a8aa855541e1852c129ab80b185fdaeb84f0db7f8ba7c14df0150c7d24b9d
+  - id: EASTER_EGG_PERSONALITY
+    material: player_head
+    name: "Easter Egg Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP+ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Easter Egg"
+        helmet:
+          material: player_head
+          skull_texture: eceddc23f9d96baaa0d2d7b9ec180cd7bea5447d39c425ca9e44d8808ea11ea0
+      - id: SKULL_HEAD
+        texture: eceddc23f9d96baaa0d2d7b9ec180cd7bea5447d39c425ca9e44d8808ea11ea0
+  - id: END_BARN_SKIN
+    material: end_stone
+    name: "The End Barn Skin"
+    rarity: LEGENDARY
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "Fire Sale, 950 SkyBlock Gems"
+    lore:
+      - "§7Consume this item to unlock the §fThe"
+      - "§fEnd Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+  - id: FAST_FOOD_BARN_SKIN
+    material: player_head
+    name: "Fast Food Barn Skin"
+    rarity: LEGENDARY
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "Garden visitor Taylor: 256 Deepfries, 256 Salted Sunflower Seeds, 3,200 Enchanted Baked Potato"
+    lore:
+      - "§7Consume this item to unlock the §6Fast"
+      - "§6Food Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: d55a12afc51c5380fd0a4de22bf3e3a598e2fa6f8f833051719cd1ea0074fdb3
+  - id: FERMENTO_ULTIMATE
+    material: player_head
+    name: "Harvester Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Fermento"
+      - "§5Helmet§7 and §6Helianthus Helmet§7."
+      - ""
+      - "§7This skin is swappable between 117"
+      - "§7variants, unlocked from your §aCrop"
+      - "§aCollection §7progress!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - FERMENTO_HELMET
+          - HELIANTHUS_HELMET
+        texture: 6cc7a104895951c15ec2f5ed0091e45f3467e78249b3369c269a3c570d3d3af7
+      - id: SKULL_HEAD
+        texture: 6cc7a104895951c15ec2f5ed0091e45f3467e78249b3369c269a3c570d3d3af7
+  - id: FESTIVE_ZOMBIE_PERSONALITY
+    material: player_head
+    name: "Festive Zombie Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP+ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Festive Zombie"
+        helmet:
+          material: player_head
+          skull_texture: accb415f87a173221d1a99ee78d19fb98c126e23a0677dd0ee17803d17ba4b5c
+      - id: SKULL_HEAD
+        texture: accb415f87a173221d1a99ee78d19fb98c126e23a0677dd0ee17803d17ba4b5c
+  - id: FIREWORKS_SHADOW_ASSASSIN
+    material: player_head
+    name: "Fireworks Shadow Assassin Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Shadow"
+      - "§5Assassin Helmet§7 and §6 Shadow"
+      - "§6Assassin Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SHADOW_ASSASSIN_HELMET
+          - STARRED_SHADOW_ASSASSIN_HELMET
+        texture: fc0c1c5b9d0f65da2f7a5a3eda892480e2f9d283c69e0b656fba5518a14d38c2
+      - id: SKULL_HEAD
+        texture: fc0c1c5b9d0f65da2f7a5a3eda892480e2f9d283c69e0b656fba5518a14d38c2
+  - id: FLORAL_FLUX
+    material: player_head
+    name: "Floral Power Orb Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Spring 2025 Fire Sale, 1,350 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aRadiant"
+      - "§aPower Orb§7, §9Mana Flux Power Orb§7,"
+      - "§5Overflux Power Orb§7, and §6Plasmaflux"
+      - "§6Power Orb§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: 112f8aba55b16a526ccfe9effc65900118ba31bd501c82df3f80b47f1480693a
+        animated: true
+      - id: SKULL_HEAD
+        texture: 112f8aba55b16a526ccfe9effc65900118ba31bd501c82df3f80b47f1480693a
+  - id: FROG_BARN_SKIN
+    material: player_head
+    name: "Frog Barn Skin"
+    rarity: LEGENDARY
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "Fire Sale, 2,000 SkyBlock Gems"
+    lore:
+      - "§7Consume this item to unlock the §6Frog"
+      - "§6Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: a55c1ba898398f95fce3c81924dcf5776701cf20de9fe910618d5839ba4b35a7
+  - id: FROZEN_BLAZE_ICICLE
+    material: player_head
+    name: "Icicle Skin"
+    rarity: LEGENDARY
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Frozen"
+      - "§6Blaze Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - FROZEN_BLAZE_HELMET
+        texture: e13c25640705136cf776784910c63a0f160f5af6a38ccacfbb3071f247b82004
+      - id: SKULL_HEAD
+        texture: e13c25640705136cf776784910c63a0f160f5af6a38ccacfbb3071f247b82004
+  - id: GEM_FLUX
+    material: player_head
+    name: "Gem Power Orb Skin"
+    rarity: MYTHIC
+    unavailable: "Hypixel Black Friday 2024 store bundle; the store is not built"
+    source: "Hypixel Black Friday 2024 bundle"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aRadiant"
+      - "§aPower Orb§7, §9Mana Flux Power Orb§7,"
+      - "§5Overflux Power Orb§7, and §6Plasmaflux"
+      - "§6Power Orb§7."
+      - ""
+      - "§aThis skin is animated, and frequently"
+      - "§athrows items all over the place!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: 6cd9fed8b9384278adb61cf0d7298906cbd5dd5452df7c551c6b3e2c17311b89
+        animated: true
+      - id: SKULL_HEAD
+        texture: 6cd9fed8b9384278adb61cf0d7298906cbd5dd5452df7c551c6b3e2c17311b89
+  - id: GIFT_BLUE_BACKPACK
+    material: player_head
+    name: "Blue Gift Backpack Skin"
+    rarity: EPIC
+    unavailable: "Hypixel Event Shop item (Event Silver); the Hypixel event shop is not built"
+    source: "Hypixel Event Shop (Holidays 2023), 45 Event Silver"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: bb09df8f3875b95c9d057728152f9f44e540fd7af825df44b3db4155cceec429
+      - id: SKULL_HEAD
+        texture: bb09df8f3875b95c9d057728152f9f44e540fd7af825df44b3db4155cceec429
+  - id: GIFT_PURPLE_BACKPACK
+    material: player_head
+    name: "Purple Gift Backpack Skin"
+    rarity: EPIC
+    unavailable: "Hypixel Event Shop item (Event Silver); the Hypixel event shop is not built"
+    source: "Hypixel Event Shop (Holidays 2023), 45 Event Silver"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: 40894781820f81b706a081577d7391a6c30f2c474b087aca14d54b6f659f2ea7
+      - id: SKULL_HEAD
+        texture: 40894781820f81b706a081577d7391a6c30f2c474b087aca14d54b6f659f2ea7
+  - id: GLACIAL_DIVAN
+    material: player_head
+    name: "Glacial Divan Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Helmet of"
+      - "§6Divan§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - DIVAN_HELMET
+        texture: 673dadedfd0675dc741c4da98518d861f3883c5e3cc2eb640257d06720e449d5
+      - id: SKULL_HEAD
+        texture: 673dadedfd0675dc741c4da98518d861f3883c5e3cc2eb640257d06720e449d5
+  - id: GLACITE_GUARDIAN_GLACIAL
+    material: player_head
+    name: "Glacial Guardian Glacite Helmet Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Glacite"
+      - "§5Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - GLACITE_HELMET
+        texture: fc50044ad04f01405abdf2bac0d80d77c553f844c1caff6ab52780335a8f7919
+      - id: SKULL_HEAD
+        texture: fc50044ad04f01405abdf2bac0d80d77c553f844c1caff6ab52780335a8f7919
+  - id: GLACITE_PALACE_GREENHOUSE_SKIN
+    material: player_head
+    name: "Glacite Palace Greenhouse Skin"
+    rarity: LEGENDARY
+    unavailable: "Greenhouse skins are not built (the Greenhouse is not built)"
+    source: "Greenhouse skin cosmetic"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§6Glacite Palace Greenhouse Skin §7on"
+      - "§aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 39a1d83c1b380a5bd6ab8fadd7869a163a50ed6ef0730c0bcf105e684bc4bd80
+  - id: GLOWING_GRAPE_FLUX
+    material: player_head
+    name: "Glowing Grape Power Orb Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Fire Sale, 1,350 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aRadiant"
+      - "§aPower Orb§7, §9Mana Flux Power Orb§7,"
+      - "§5Overflux Power Orb§7, and §6Plasmaflux"
+      - "§6Power Orb§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: e44c359f6f28c5fa6c5a09d8c57fa4174da4e8ae110e5f2cd7e93f2e76176cd5
+        animated: true
+      - id: SKULL_HEAD
+        texture: e44c359f6f28c5fa6c5a09d8c57fa4174da4e8ae110e5f2cd7e93f2e76176cd5
+  - id: GOBLIN_HELMET_GENIE
+    material: player_head
+    name: "Genie Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §9Goblin"
+      - "§9Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - GOBLIN_HELMET
+        texture: 60414fa9c0a42f3aad83b1dce7e5706c4a34413d8cbb1d49ccd2b4ba1089bef1
+      - id: SKULL_HEAD
+        texture: 60414fa9c0a42f3aad83b1dce7e5706c4a34413d8cbb1d49ccd2b4ba1089bef1
+  - id: GOLDEN_ANCIENT_EGG_FLUX
+    material: player_head
+    name: "Golden Turtle Egg Power Orb Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Fire Sale (September 3, 2023), 1,350 SkyBlock Gems (Golden Turtle Egg skin)"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aRadiant"
+      - "§aPower Orb§7, §9Mana Flux Power Orb§7,"
+      - "§5Overflux Power Orb§7, and §6Plasmaflux"
+      - "§6Power Orb§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: ff71afd87f7d2eddd26f4351b9156356743418c34d1348c9b3c5afb99c6b8339
+        animated: true
+      - id: SKULL_HEAD
+        texture: ff71afd87f7d2eddd26f4351b9156356743418c34d1348c9b3c5afb99c6b8339
+  - id: GOLDOR_CELESTIAL
+    material: player_head
+    name: "Celestial Goldor's Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Goldor's"
+      - "§6Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - TANK_WITHER_HELMET
+        texture: 8e406f4b1311ecc998b4d7775579d8cc51846fa66f2e4b7637f5593dd8bcdc1e
+        animated: true
+      - id: SKULL_HEAD
+        texture: 8e406f4b1311ecc998b4d7775579d8cc51846fa66f2e4b7637f5593dd8bcdc1e
+  - id: HAMBAGGER_BACKPACK
+    material: player_head
+    name: "Hambagger Backpack Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Taylor Summer 2024 seasonal bundle, 350 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: e1b0e992037ae3793e46e1fb255204c020504603ce9e8e40813197085d905556
+      - id: SKULL_HEAD
+        texture: e1b0e992037ae3793e46e1fb255204c020504603ce9e8e40813197085d905556
+  - id: HEADLESS_PERSONALITY
+    material: player_head
+    name: "Beheaded Minion Skin"
+    rarity: COMMON
+    unavailable: "Hypixel Black Friday 2025 store bundle; the store is not built"
+    source: "Hypixel Black Friday 2025 bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Beheaded"
+        helmet:
+          material: player_head
+          skull_texture: d1222b76f7bcaedf58dc207b388d0db5c7e4f035cef4fb6aba66b2b3a97cf79f
+      - id: SKULL_HEAD
+        texture: d1222b76f7bcaedf58dc207b388d0db5c7e4f035cef4fb6aba66b2b3a97cf79f
+  - id: HERMIT_CRAB_PERSONALITY
+    material: player_head
+    name: "Hermit Crab Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP+ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Hermit Crab"
+        helmet:
+          material: player_head
+          skull_texture: 529dd69dc6d5c9f10361d35fea50165b0abcfab0230d588eb9d6e2a68d8c30d3
+      - id: SKULL_HEAD
+        texture: 529dd69dc6d5c9f10361d35fea50165b0abcfab0230d588eb9d6e2a68d8c30d3
+  - id: HOLIDAY_CHEST_GREEN_BACKPACK
+    material: player_head
+    name: "Green Holiday Chest Skin"
+    rarity: EPIC
+    unavailable: "Hypixel Event Shop item (Event Silver); the Hypixel event shop is not built"
+    source: "Hypixel Event Shop (Holidays 2024), 45 Event Silver"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: 9cfabb355903c2bc53f88852d4df0966c9499b74c2473899ddd5f77273e68681
+      - id: SKULL_HEAD
+        texture: 9cfabb355903c2bc53f88852d4df0966c9499b74c2473899ddd5f77273e68681
+  - id: HOLIDAY_CHEST_YELLOW_BACKPACK
+    material: player_head
+    name: "Yellow Holiday Chest Skin"
+    rarity: EPIC
+    unavailable: "Hypixel Event Shop item (Event Silver); the Hypixel event shop is not built"
+    source: "Hypixel Event Shop (Holidays 2024), 45 Event Silver"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: d0d3c304ff018fce65099eaed9d68a4c49014ae706176f8ee18772a7b362f585
+      - id: SKULL_HEAD
+        texture: d0d3c304ff018fce65099eaed9d68a4c49014ae706176f8ee18772a7b362f585
+  - id: HOLY_SHIMMER
+    material: player_head
+    name: "Shimmer Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Holy"
+      - "§6Dragon Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - HOLY_DRAGON_HELMET
+        texture: c96696eb13cced8f5c521892d90fe8e2b129469520ade8d1d9f87225e7179761
+        animated: true
+      - id: SKULL_HEAD
+        texture: c96696eb13cced8f5c521892d90fe8e2b129469520ade8d1d9f87225e7179761
+  - id: JERRY_CASTLE_GREENHOUSE_SKIN
+    material: player_head
+    name: "Jerry Castle Greenhouse Skin"
+    rarity: LEGENDARY
+    unavailable: "Greenhouse skins are not built (the Greenhouse is not built)"
+    source: "Greenhouse skin cosmetic"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§6Jerry Castle Greenhouse Skin §7on"
+      - "§aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: c2a703e8ae87a1e3cf2fd2d65bd9a9b544d2109df1d727d227669185ac90156c
+  - id: KITSUNE_TIKI_MASK
+    material: player_head
+    name: "Kitsune Tiki Mask Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Tiki Mask§7."
+      - ""
+      - "§aThis skin is swappable between 19"
+      - "§akitsune variants!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - TIKI_MASK
+        texture: e37ea13409e20427e83b29b7772e8d314b62c7ea20fa408b09976014732dbcb8
+      - id: SKULL_HEAD
+        texture: e37ea13409e20427e83b29b7772e8d314b62c7ea20fa408b09976014732dbcb8
+  - id: LUCKY_BARN_SKIN
+    material: player_head
+    name: "Lucky Barn Skin"
+    rarity: LEGENDARY
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "SkyMart, 950 SkyBlock Gems"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§6Lucky Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 54998a5affa48cd39a82fd1d99242c57f14990bb139a0da1083e0f8b1bbf0852
+  - id: MAGMA_LORD_RAGNAROK
+    material: player_head
+    name: "Ragnarok's Bane Magma Lord Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Magma"
+      - "§6Lord Helmet§7."
+      - ""
+      - "§aThis skin will allow you to swap"
+      - "§abetween 15 favorite fishy versions!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - MAGMA_LORD_HELMET
+        texture: c552f85426e7c97dd8333ab2f44b1634b315a1dd3f51f931b0e7bfed517e60a4
+      - id: SKULL_HEAD
+        texture: c552f85426e7c97dd8333ab2f44b1634b315a1dd3f51f931b0e7bfed517e60a4
+  - id: MAXOR_CELESTIAL
+    material: player_head
+    name: "Celestial Maxor's Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Maxor's"
+      - "§6Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - POWER_WITHER_HELMET
+        texture: 238bff3640cc3ac4db012c50179d2cabba518e5e4522eb3cdc37fe2daf94e49f
+        animated: true
+      - id: SKULL_HEAD
+        texture: 238bff3640cc3ac4db012c50179d2cabba518e5e4522eb3cdc37fe2daf94e49f
+  - id: METEOR_MAGMA_LORD
+    material: player_head
+    name: "Meteor Magma Lord Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Magma"
+      - "§6Lord Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - MAGMA_LORD_HELMET
+        texture: 63e59250c968e508539bf2e8492f56a2f664efb309f495a07dc3a54c8b6a249e
+        animated: true
+      - id: SKULL_HEAD
+        texture: 63e59250c968e508539bf2e8492f56a2f664efb309f495a07dc3a54c8b6a249e
+  - id: MUMMY_PERSONALITY
+    material: player_head
+    name: "Mummy Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP++ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Mummy"
+        helmet:
+          material: player_head
+          skull_texture: ff057d25abc8082c9acf53c771bf4bff5953b9397d87faa7d0b8ab612d599efb
+      - id: SKULL_HEAD
+        texture: ff057d25abc8082c9acf53c771bf4bff5953b9397d87faa7d0b8ab612d599efb
+  - id: NECRON_CELESTIAL
+    material: player_head
+    name: "Celestial Necron's Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Necron's"
+      - "§6Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - WITHER_HELMET
+        texture: ee8cb45614e83c1bdfc23f45364f6533a446a13b812d83038669ebc10305e3b5
+        animated: true
+      - id: SKULL_HEAD
+        texture: ee8cb45614e83c1bdfc23f45364f6533a446a13b812d83038669ebc10305e3b5
+  - id: NUTCRACKER_KNIGHT
+    material: player_head
+    name: "Nutcracker Knight Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to"
+      - "§6Nutcracker Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - NUTCRACKER_HELMET
+        texture: 7455ecb0279b373623c9a60f5c4ca0528ddc08cc166eca98bf741e70910495ae
+      - id: SKULL_HEAD
+        texture: 7455ecb0279b373623c9a60f5c4ca0528ddc08cc166eca98bf741e70910495ae
+  - id: OLD_SHIMMER
+    material: player_head
+    name: "Shimmer Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Old"
+      - "§6Dragon Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - OLD_DRAGON_HELMET
+        texture: 78bf606f5ace4e3cfb81a14742992ff5a868d1f0f9d14b4bec9393859e0e0a00
+        animated: true
+      - id: SKULL_HEAD
+        texture: 78bf606f5ace4e3cfb81a14742992ff5a868d1f0f9d14b4bec9393859e0e0a00
+  - id: PALADIN_MINERAL
+    material: player_head
+    name: "Paladin Mineral Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Mineral"
+      - "§5Helmet§7 and §6Glossy Mineral Helmet§7."
+      - ""
+      - "§7This skin is swappable between §a20"
+      - "§7holy paladin variants!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - MINERAL_HELMET
+          - GLOSSY_MINERAL_HELMET
+        texture: 6900715bf3e4744abe0d531e610c8b7c72d100dc17cce1b0b61f9067f8f963e1
+      - id: SKULL_HEAD
+        texture: 6900715bf3e4744abe0d531e610c8b7c72d100dc17cce1b0b61f9067f8f963e1
+  - id: PENGUIN_BACKPACK
+    material: player_head
+    name: "Penguin Backpack Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Fire Sale (December 24, 2022), 650 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aBackpacks§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SMALL_BACKPACK
+          - MEDIUM_BACKPACK
+          - LARGE_BACKPACK
+          - GREATER_BACKPACK
+          - JUMBO_BACKPACK
+        texture: c25a27b12e547de8fe58e27521f493ff2298aba48de0d3d4de9d94cdec03a258
+      - id: SKULL_HEAD
+        texture: c25a27b12e547de8fe58e27521f493ff2298aba48de0d3d4de9d94cdec03a258
+  - id: PERFECT_PALADIN
+    material: player_head
+    name: "Paladin Perfect Helmet Skin"
+    rarity: LEGENDARY
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to any tier"
+      - "§7of §6Perfect Helmet§7."
+      - ""
+      - "§aThis skin will allow you to swap"
+      - "§abetween 20 powerful paladin themed"
+      - "§acolors!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - PERFECT_HELMET_1
+          - PERFECT_HELMET_2
+          - PERFECT_HELMET_3
+          - PERFECT_HELMET_4
+          - PERFECT_HELMET_5
+          - PERFECT_HELMET_6
+          - PERFECT_HELMET_7
+          - PERFECT_HELMET_8
+          - PERFECT_HELMET_9
+          - PERFECT_HELMET_10
+          - PERFECT_HELMET_11
+          - PERFECT_HELMET_12
+          - PERFECT_HELMET_13
+        texture: a312968fb8fded612b256b353599ec2abbfb5d65e87e231bdb8be2bd040dc950
+      - id: SKULL_HEAD
+        texture: a312968fb8fded612b256b353599ec2abbfb5d65e87e231bdb8be2bd040dc950
+  - id: PINK_BUNNY_PERSONALITY
+    material: player_head
+    name: "Pink Bunny Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP++ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Pink Bunny"
+        helmet:
+          material: player_head
+          skull_texture: d7cddf5b20cb50d6600e5333c6bb3fb15b4741f17e3675fc2bfc09c2cd09e619
+      - id: SKULL_HEAD
+        texture: d7cddf5b20cb50d6600e5333c6bb3fb15b4741f17e3675fc2bfc09c2cd09e619
+  - id: PIRATE_BOMB_FLUX
+    material: player_head
+    name: "Pirate Bomb Power Orb Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Fire Sale (July 15, 2023), 1,350 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aRadiant"
+      - "§aPower Orb§7, §9Mana Flux Power Orb§7,"
+      - "§5Overflux Power Orb§7, and §6Plasmaflux"
+      - "§6Power Orb§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: 64f815bcbac237340464b777807f26b5e9317c19d579da2dd94cbbc6a0de5138
+        animated: true
+      - id: SKULL_HEAD
+        texture: 64f815bcbac237340464b777807f26b5e9317c19d579da2dd94cbbc6a0de5138
+  - id: POLAR_NIGHTS_POWER_FLUX
+    material: player_head
+    name: "Polar Nights Power Orb Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "Winter 2024 Fire Sale, 1,350 SkyBlock Gems"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §aRadiant"
+      - "§aPower Orb§7, §9Mana Flux Power Orb§7,"
+      - "§5Overflux Power Orb§7, and §6Plasmaflux"
+      - "§6Power Orb§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - RADIANT_POWER_ORB
+          - MANA_FLUX_POWER_ORB
+          - OVERFLUX_POWER_ORB
+          - PLASMAFLUX_POWER_ORB
+        texture: d9884fa7cb66b1cc5308703b693e5b3cb94c2f4368c61877d02da1e9a0ee4597
+        animated: true
+      - id: SKULL_HEAD
+        texture: d9884fa7cb66b1cc5308703b693e5b3cb94c2f4368c61877d02da1e9a0ee4597
+  - id: PRIMORDIAL_HUNTER
+    material: player_head
+    name: "Hunter Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Primordial"
+      - "§6Helmet§7."
+      - ""
+      - "§aThis skin will allow you to swap"
+      - "§abetween 21 favorite hunted versions!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - PRIMORDIAL_HELMET
+        texture: c823860eeb68180b991648d021820e4cd81b742a77dda8d125c07e3ad2513665
+      - id: SKULL_HEAD
+        texture: c823860eeb68180b991648d021820e4cd81b742a77dda8d125c07e3ad2513665
+  - id: PROTECTOR_SHIMMER
+    material: player_head
+    name: "Shimmer Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Protector"
+      - "§6Dragon Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - PROTECTOR_DRAGON_HELMET
+        texture: 72cd120841228d2812ca07433a3ec4640de81fa1f4bb9b42269c741403196fdb
+        animated: true
+      - id: SKULL_HEAD
+        texture: 72cd120841228d2812ca07433a3ec4640de81fa1f4bb9b42269c741403196fdb
+  - id: PUMPKIN_PERSONALITY
+    material: player_head
+    name: "Pumpkin Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP+ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Pumpkin"
+        helmet:
+          material: player_head
+          skull_texture: 5f6dc5652012eea926c0f638b6820e0d20eb94cf0a08b16b3e109d5e549aefb9
+      - id: SKULL_HEAD
+        texture: 5f6dc5652012eea926c0f638b6820e0d20eb94cf0a08b16b3e109d5e549aefb9
+  - id: REAPER_BLUE_ONI_MASK
+    material: player_head
+    name: "Blue Oni Reaper Mask Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Reaper"
+      - "§6Mask§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - REAPER_MASK
+        texture: 899e239f27f35761b5726dc77b6b5a3db377d25f7e4ef846daaec76e35cba373
+      - id: SKULL_HEAD
+        texture: 899e239f27f35761b5726dc77b6b5a3db377d25f7e4ef846daaec76e35cba373
+  - id: REAPER_SPECTRE
+    material: player_head
+    name: "Spectre Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Reaper"
+      - "§6Mask§7."
+      - ""
+      - "§aThis skin will allow you to swap"
+      - "§abetween 18 favorite reaper"
+      - "§aspectres!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - REAPER_MASK
+        texture: c9a95c9d7d94a947d2d83cfbc2cbaca66e679f556b120fc2ed8b7c7c7af78fe1
+      - id: SKULL_HEAD
+        texture: c9a95c9d7d94a947d2d83cfbc2cbaca66e679f556b120fc2ed8b7c7c7af78fe1
+  - id: REINDEER_PERSONALITY
+    material: player_head
+    name: "Reindeer Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Reindeer"
+        helmet:
+          material: player_head
+          skull_texture: 2edd5b00a5fbc2daab58f33d86bbc4ff8d258c9bda65755c0305890bba09601f
+      - id: SKULL_HEAD
+        texture: 2edd5b00a5fbc2daab58f33d86bbc4ff8d258c9bda65755c0305890bba09601f
+  - id: SAND_CASTLE_BARN_SKIN
+    material: player_head
+    name: "Sand Castle Barn Skin"
+    rarity: LEGENDARY
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "Fire Sale, 950 SkyBlock Gems"
+    lore:
+      - "§7Consume this item to unlock the §6Sand"
+      - "§6Castle Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: c8543c961cc531b906ce4fa45c3c4fcea72d70291d517e01f14d4905a686139b
+  - id: SENTINEL_WARDEN
+    material: player_head
+    name: "Sentinel Warden Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Warden"
+      - "§6Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - WARDEN_HELMET
+        texture: e9c588a8b62affd74643e0d6641bda3a0784a304c579c067fa495e2c43ec9462
+      - id: SKULL_HEAD
+        texture: e9c588a8b62affd74643e0d6641bda3a0784a304c579c067fa495e2c43ec9462
+  - id: SHADOW_ASSASSIN_MAUVE
+    material: player_head
+    name: "Mauve Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Shadow"
+      - "§5Assassin Helmet§7 and §6 Shadow"
+      - "§6Assassin Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SHADOW_ASSASSIN_HELMET
+          - STARRED_SHADOW_ASSASSIN_HELMET
+        texture: ebd50bb833ccc84e70a2469f6e47d5d51ac60aae5b9f651ee7ae383fea4a40ed
+      - id: SKULL_HEAD
+        texture: ebd50bb833ccc84e70a2469f6e47d5d51ac60aae5b9f651ee7ae383fea4a40ed
+  - id: SHARK_SCALE_HOODIE_FOX
+    material: player_head
+    name: "Fox Hoodie Skin"
+    rarity: LEGENDARY
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Shark"
+      - "§6Scale Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SHARK_SCALE_HELMET
+        texture: a7dd90c5b68579d5b5f024d60317756005d4ee5809643d80f8e6b32bf088055b
+      - id: SKULL_HEAD
+        texture: a7dd90c5b68579d5b5f024d60317756005d4ee5809643d80f8e6b32bf088055b
+  - id: SHIPWRECK_GREENHOUSE_SKIN
+    material: player_head
+    name: "Shipwreck Greenhouse Skin"
+    rarity: LEGENDARY
+    unavailable: "Greenhouse skins are not built (the Greenhouse is not built)"
+    source: "Greenhouse skin cosmetic"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§6Shipwreck Greenhouse Skin §7on §aThe"
+      - "§aGarden§7!"
+      - ""
+      - "§eClick to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: a1cbb5a89a49a881507c8c26ebf0df3433733c61c4bbb37cbc0eab19f5b5c2af
+  - id: SNOWMAN_PERSONALITY
+    material: player_head
+    name: "Snowman Minion Skin"
+    rarity: COMMON
+    unavailable: "Advent Calendar day 25 reward; the Advent Calendar is not built"
+    source: "Day 25 reward of the Advent Calendar"
+    components:
+      - id: MINION_SKIN
+        name: "Snowman"
+        helmet:
+          material: player_head
+          skull_texture: 958561c027e0368a83f849463d42a3056e709764c4c3b40d81c8f3ea7a0d6d07
+      - id: SKULL_HEAD
+        texture: 958561c027e0368a83f849463d42a3056e709764c4c3b40d81c8f3ea7a0d6d07
+  - id: SORROW_SAMURAI
+    material: player_head
+    name: "Sorrowful Samurai Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Sorrow"
+      - "§6Helmet§7."
+      - ""
+      - "§aThis skin will allow you to swap"
+      - "§abetween 18 tearful versions!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SORROW_HELMET
+        texture: b939aa2daf532d5fdb305a3df62aa3f49466e84d74785cd94ef30cf847a52145
+      - id: SKULL_HEAD
+        texture: b939aa2daf532d5fdb305a3df62aa3f49466e84d74785cd94ef30cf847a52145
+  - id: STORM_CELESTIAL
+    material: player_head
+    name: "Celestial Storm's Helmet Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Storm's"
+      - "§6Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SPEED_WITHER_HELMET
+        texture: 1447cad8e79e1ecab885ff89c07ee6d9fe8a2ba8d2ce649403c950810d837556
+        animated: true
+      - id: SKULL_HEAD
+        texture: 1447cad8e79e1ecab885ff89c07ee6d9fe8a2ba8d2ce649403c950810d837556
+  - id: STRONG_SHIMMER
+    material: player_head
+    name: "Shimmer Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Strong"
+      - "§6Dragon Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - STRONG_DRAGON_HELMET
+        texture: ad3241f4419f06d17d88b21cc8e412f4ef11d7cfadd882e269da5a490e08f0e4
+        animated: true
+      - id: SKULL_HEAD
+        texture: ad3241f4419f06d17d88b21cc8e412f4ef11d7cfadd882e269da5a490e08f0e4
+  - id: SUPERIOR_SHIMMER
+    material: player_head
+    name: "Shimmer Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Superior"
+      - "§6Dragon Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - SUPERIOR_DRAGON_HELMET
+        texture: cb3deae44a93acf001ae6bef1e1f4d56e4b7eca4ba14699d071023a24eed2c2e
+        animated: true
+      - id: SKULL_HEAD
+        texture: cb3deae44a93acf001ae6bef1e1f4d56e4b7eca4ba14699d071023a24eed2c2e
+  - id: TAVERN_BARN_SKIN
+    material: oak_log
+    name: "Tavern Barn Skin"
+    rarity: UNCOMMON
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "SkyMart, 250 SkyBlock Gems"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§aTavern Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+  - id: THUNDER_BIKER_AQUA
+    material: player_head
+    name: "Thunder Aqua Biker Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Thunder"
+      - "§5Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - THUNDER_HELMET
+        texture: 137d3c068fae54240ae976270d59d4bc9a2d06456f5d9a1ed6691c05940dedb8
+      - id: SKULL_HEAD
+        texture: 137d3c068fae54240ae976270d59d4bc9a2d06456f5d9a1ed6691c05940dedb8
+  - id: THUNDER_BIKER_PINK
+    material: player_head
+    name: "Thunder Pink Biker Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Thunder"
+      - "§5Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - THUNDER_HELMET
+        texture: ecff35c76b518c31e290c0862efaf128e9d590f2c6680691403539a7c033d93c
+      - id: SKULL_HEAD
+        texture: ecff35c76b518c31e290c0862efaf128e9d590f2c6680691403539a7c033d93c
+  - id: TOWN_HALL_BARN_SKIN
+    material: gold_block
+    name: "Town Hall Barn Skin"
+    rarity: LEGENDARY
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "Taylor Winter 2023 seasonal bundle, 1,350 SkyBlock Gems"
+    lore:
+      - "§7Consume this item to unlock the §6Town"
+      - "§6Hall Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+  - id: TROPICAL_BIRD_2_PERSONALITY
+    material: player_head
+    name: "Blue Gold Tropical Bird Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP++ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Blue Gold Tropical Bird"
+        helmet:
+          material: player_head
+          skull_texture: 7d3cc169847b4ef2938fcf7f8c84701125f9faf910cd0820ecd6fdcfcaf5b8b
+      - id: SKULL_HEAD
+        texture: 7d3cc169847b4ef2938fcf7f8c84701125f9faf910cd0820ecd6fdcfcaf5b8b
+  - id: UNDEAD_PERSONALITY
+    material: player_head
+    name: "Undead Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP+ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "Undead"
+        helmet:
+          material: player_head
+          skull_texture: 42cefd02b7498a3e0bf9d05964e1c521be7fb263a272a7e16177da35a9368b3b
+      - id: SKULL_HEAD
+        texture: 42cefd02b7498a3e0bf9d05964e1c521be7fb263a272a7e16177da35a9368b3b
+  - id: UNSTABLE_SHIMMER
+    material: player_head
+    name: "Shimmer Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Unstable"
+      - "§6Dragon Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - UNSTABLE_DRAGON_HELMET
+        texture: 17397c1603be4bcf52eae0d2ad66e1663aad724a8f069ba87aa41aa8d2b48820
+        animated: true
+      - id: SKULL_HEAD
+        texture: 17397c1603be4bcf52eae0d2ad66e1663aad724a8f069ba87aa41aa8d2b48820
+  - id: WATER_HYDRA_DRAGON
+    material: player_head
+    name: "Dragon Hydra Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Water"
+      - "§5Hydra Head§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - WATER_HYDRA_HEAD
+        texture: e4cbba3345850a6981afd89a0748a48845b861ae5bce42b109e9baef78c1133b
+      - id: SKULL_HEAD
+        texture: e4cbba3345850a6981afd89a0748a48845b861ae5bce42b109e9baef78c1133b
+  - id: WHITE_TIGER_PERSONALITY
+    material: player_head
+    name: "White Tiger Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP+ rank reward bundle"
+    components:
+      - id: MINION_SKIN
+        name: "White Tiger"
+        helmet:
+          material: player_head
+          skull_texture: 88157c72d7d4fb951617fc6a8a301f7cd0ee6a3786d6ea2279499462124f335b
+      - id: SKULL_HEAD
+        texture: 88157c72d7d4fb951617fc6a8a301f7cd0ee6a3786d6ea2279499462124f335b
+  - id: WINTER_HOMESTEAD_BARN_SKIN
+    material: packed_ice
+    name: "Winter Homestead Barn Skin"
+    rarity: RARE
+    unavailable: "Garden barn skins (unlocking and applying them to the Barn) are not built"
+    source: "Taylor Winter 2023 seasonal bundle, 650 SkyBlock Gems"
+    lore:
+      - "§7§7Consume this item to unlock the"
+      - "§7§5Winter Homestead Barn Skin §7on §aThe"
+      - "§aGarden§7!"
+      - ""
+      - "§eClick to consume!"
+  - id: WISE_SHIMMER
+    material: player_head
+    name: "Shimmer Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Wise"
+      - "§6Dragon Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - WISE_DRAGON_HELMET
+        texture: 25d7c5909f742e2e85ba7f2c7449f9e12a5c42c5a1132974df7f4ef204d6ca1e
+        animated: true
+      - id: SKULL_HEAD
+        texture: 25d7c5909f742e2e85ba7f2c7449f9e12a5c42c5a1132974df7f4ef204d6ca1e
+  - id: WITHER_GOGGLES_CELESTIAL
+    material: player_head
+    name: "Celestial Wither Goggles Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Wither"
+      - "§5Goggles§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - WITHER_GOGGLES
+        texture: dc1e2d4bd39ea253dda6a36f6bc352f69ef169facc2b767798c1816aaf70f498
+        animated: true
+      - id: SKULL_HEAD
+        texture: dc1e2d4bd39ea253dda6a36f6bc352f69ef169facc2b767798c1816aaf70f498
+  - id: YOG_ABLAZE
+    material: player_head
+    name: "Ablaze Skin"
+    rarity: EPIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §5Yog"
+      - "§5Helmet§7."
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - YOG_HELMET
+        texture: ac23b0bfa4e0393d6a598b3990c916507bbbf477d7ee20dca0c9b7625165b4f2
+      - id: SKULL_HEAD
+        texture: ac23b0bfa4e0393d6a598b3990c916507bbbf477d7ee20dca0c9b7625165b4f2
+  - id: YOUNG_SHIMMER
+    material: player_head
+    name: "Shimmer Skin"
+    rarity: MYTHIC
+    unavailable: "Sold for SkyBlock Gems in the Fire Sale / Taylor's store; there is no gem store or Fire Sale"
+    source: "SkyBlock Gems cosmetic from the store / Fire Sale"
+    lore:
+      - "§7Item skins give your gear a fresh"
+      - "§7new look! Apply them just like an"
+      - "§7enchant book using the anvil."
+      - ""
+      - "§7This skin can be applied to §6Young"
+      - "§6Dragon Helmet§7."
+      - ""
+      - "§aThis skin is animated!"
+    components:
+      - id: ITEM_SKIN
+        targets:
+          - YOUNG_DRAGON_HELMET
+        texture: e1ad5d83e55890290f52e4ad06e4351a2e87998d1cb3e76cc952a076deb7882b
+        animated: true
+      - id: SKULL_HEAD
+        texture: e1ad5d83e55890290f52e4ad06e4351a2e87998d1cb3e76cc952a076deb7882b

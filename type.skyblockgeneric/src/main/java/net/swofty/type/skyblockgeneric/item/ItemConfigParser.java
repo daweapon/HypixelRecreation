@@ -144,6 +144,7 @@ public class ItemConfigParser {
 							safeConfig.getInt("required_level", 0));
 				}
 				case "DYE" -> new DyeComponent(itemId, safeConfig.getString("color"));
+				case "ITEM_SKIN" -> ItemSkinComponent.parse(itemId, safeConfig);
 				case "ARMOR" -> new ArmorComponent();
 				case "ARROW" -> {
 					String effect = safeConfig.getString("effect", null);

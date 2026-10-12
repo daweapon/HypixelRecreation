@@ -30,7 +30,7 @@ class ItemTypeRegistryTest {
     @Test
     void constantsFromEveryChunkResolveToTheSameInstances() {
         ItemType[] values = ItemType.values();
-        assertSame(ItemType.AATROX_BATPHONE, values[0]);
+        assertSame(ItemType.AATROX_BATPHONE, ItemType.valueOf("AATROX_BATPHONE"));
         assertSame(ItemType.ZOMBIE_TALISMAN, ItemType.valueOf("ZOMBIE_TALISMAN"));
         assertSame(ItemType.PARTY_THE_FISH, ItemType.get("minecraft:party_the_fish"));
         assertTrue(ItemType.AATROX_BATPHONE.compareTo(ItemType.ZOMBIE_TALISMAN) < 0);

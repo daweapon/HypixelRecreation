@@ -22,6 +22,7 @@ import net.swofty.type.skyblockgeneric.item.ItemLore;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.GemstoneComponent;
 import net.swofty.type.skyblockgeneric.item.components.ItemModelComponent;
+import net.swofty.type.skyblockgeneric.item.components.ItemSkinComponent;
 import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
 import net.swofty.type.skyblockgeneric.item.components.TrackedUniqueComponent;
 import net.swofty.type.skyblockgeneric.potion.PotionEffectType;
@@ -78,6 +79,9 @@ public class PlayerItemUpdater {
             baseMaterial = getPotionMaterial(potionData, baseMaterial);
         }
 
+        String skinTexture = ItemSkinComponent.textureOf(item);
+        if (skinTexture != null) baseMaterial = Material.PLAYER_HEAD;
+
         ItemStack.Builder toReturn = ItemStack.builder(baseMaterial).amount(stack.amount());
 
         /*
@@ -119,14 +123,15 @@ public class PlayerItemUpdater {
             handler.setUniqueTrackedID(handler.getUniqueTrackedID(), player);
         }
 
-        if (item.hasComponent(SkullHeadComponent.class)) {
-            SkullHeadComponent skullHeadComponent = item.getComponent(SkullHeadComponent.class);
+        if (skinTexture != null || item.hasComponent(SkullHeadComponent.class)) {
+            String headTexture = skinTexture != null ? skinTexture
+                    : item.getComponent(SkullHeadComponent.class).getSkullTexture(item);
 
             JSONObject json = new JSONObject();
             json.put("isPublic", true);
             json.put("signatureRequired", false);
             json.put("textures", new JSONObject().put("SKIN", new JSONObject()
-                .put("url", "https://textures.minecraft.net/texture/" + skullHeadComponent.getSkullTexture(item))
+                .put("url", "https://textures.minecraft.net/texture/" + headTexture)
                     .put("metadata", new JSONObject().put("model", "slim"))));
 
             String texturesEncoded = Base64.getEncoder().encodeToString(json.toString().getBytes());

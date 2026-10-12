@@ -558,6 +558,17 @@ public class ItemAttributeHandler {
         ((ItemAttributePetSkin) item.getAttribute("pet_skin")).setValue(skin == null ? "" : skin.name());
     }
 
+    public @Nullable ItemType getItemSkin() {
+        ItemAttribute attribute = item.getAttribute("item_skin");
+        if (attribute == null) return null;
+        String id = ((ItemAttributeItemSkin) attribute).getValue();
+        return id == null || id.isEmpty() ? null : ItemType.get(id);
+    }
+
+    public void setItemSkin(@Nullable ItemType skin) {
+        ((ItemAttributeItemSkin) item.getAttribute("item_skin")).setValue(skin == null ? "" : skin.name());
+    }
+
     public List<AbiphoneNPC> getAbiphoneNPCs() {
         return ((ItemAttributeAbiphoneContacts) item.getAttribute("abiphone_contacts")).getValue().stream()
                 .map(AbiphoneRegistry::getFromId)
