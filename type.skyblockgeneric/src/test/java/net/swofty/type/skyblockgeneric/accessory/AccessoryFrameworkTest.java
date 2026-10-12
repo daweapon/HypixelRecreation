@@ -10,6 +10,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointAccessoryBag;
 import net.swofty.type.skyblockgeneric.item.ItemConfigParser;
 import net.swofty.type.skyblockgeneric.item.Recombobulation;
+import net.swofty.type.skyblockgeneric.item.ConfigurableSkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.AccessoryComponent;
 import net.swofty.type.skyblockgeneric.staff.MaxAccessories;
@@ -208,6 +209,10 @@ class AccessoryFrameworkTest {
         for (String id : YAML_ACCESSORIES) {
             ItemType type = ItemType.get(id);
             AccessoryComponent definition = new SkyBlockItem(type).getComponent(AccessoryComponent.class);
+            if (ConfigurableSkyBlockItem.getFromID(id).getUnavailable() != null) {
+                if (plan.contains(type)) failures.add(id + ": unavailable accessory was given");
+                continue;
+            }
             if (!definition.getRealm().countsForPower()) {
                 if (plan.contains(type)) failures.add(id + ": Rift/Bingo-only accessory was given");
                 continue;

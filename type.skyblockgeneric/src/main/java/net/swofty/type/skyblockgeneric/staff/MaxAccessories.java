@@ -25,8 +25,8 @@ import java.util.TreeMap;
 /**
  * {@code /maxprofile}'s accessory step: the best member of every family plus every standalone
  * accessory, recombobulated where allowed and with dynamic accessories at their top state, placed in
- * the Accessory Bag, which is then sorted highest rarity first. Rift-only and Bingo-only accessories are
- * skipped. Driven by the item registry and the family data, so new accessories are covered without
+ * the Accessory Bag, which is then sorted highest rarity first. Rift-only and Bingo-only accessories and those
+ * whose source content is not built yet (marked unavailable) are skipped. Driven by the item registry and the family data, so new accessories are covered without
  * touching this class. A rerun adds nothing it already placed.
  */
 public final class MaxAccessories {
@@ -40,6 +40,7 @@ public final class MaxAccessories {
             ItemType type = ItemType.get(id);
             if (config == null || type == null || !config.hasComponent(AccessoryComponent.class)) continue;
             if (!config.getComponent(AccessoryComponent.class).getRealm().countsForPower()) continue;
+            if (config.getUnavailable() != null) continue;
             accessories.put(id, type);
         }
 
