@@ -388,7 +388,7 @@ public class ItemLore {
 		for (AccessoryEffect effect : item.getComponent(AccessoryComponent.class).getEffects()) {
 			if (effect.text().isEmpty()) continue;
 			if (!section.isEmpty()) section.line(Text.empty());
-			effect.text().forEach(line -> section.line(LoreText.gray(line)));
+			effect.text().forEach(line -> LoreText.grayWrapped(line).forEach(section::line));
 			if (!effect.kind().isActive()) section.line(LoreText.darkGray("Not active yet"));
 		}
 	}
@@ -398,7 +398,8 @@ public class ItemLore {
 		if (configLore == null) return;
 
 		TextBody.Section section = lore.section(LoreText.Sections.CONFIG_LORE);
-		configLore.forEach(line -> section.line(LoreText.gray(line)));
+		RequirementLines.withoutMetRequirements(configLore, lore.viewer())
+				.forEach(line -> LoreText.grayWrapped(line).forEach(section::line));
 	}
 
 	private static void fillReforgeAbility(LoreText lore) {

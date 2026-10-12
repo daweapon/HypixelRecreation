@@ -98,8 +98,21 @@ public final class LoreText {
         declare();
     }
 
+    private static final int WRAP_AFTER = 50;
+    private static final int WRAP_WIDTH = 42;
+
     public static Text gray(String markup) {
         return Text.of("<7>{}", Text.parseLenient(markup));
+    }
+
+    public static List<Text> grayWrapped(String markup) {
+        if (visibleLength(markup) <= WRAP_AFTER) return List.of(gray(markup));
+        Text body = markup.contains("§") ? Text.legacy(markup) : Text.parseLenient(markup);
+        return Text.of("<7><wrap:" + WRAP_WIDTH + ">{}</wrap>", body).lines();
+    }
+
+    static int visibleLength(String markup) {
+        return markup.replaceAll("§.", "").replaceAll("<[^>]*>", "").length();
     }
 
     public static Text darkGray(String markup) {
