@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.handlers.ability;
 
+import net.swofty.type.skyblockgeneric.item.set.sets.WiseDragonArmorSet;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentRefrigerate;
 import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentWise;
@@ -118,6 +119,7 @@ public class RegisteredAbility {
     public static int effectiveManaCost(SkyBlockPlayer player, int baseCost, boolean transmission) {
         double transmissionFactor = transmission ? MiscPetHooks.transmissionManaMultiplier(player) : 1;
         return (int) Math.round(baseCost * MiscPetHooks.manaCostMultiplier(player) * EnchantmentWise.costMultiplier(player)
+                * WiseDragonArmorSet.manaCostMultiplier(player)
                 * transmissionFactor);
     }
 

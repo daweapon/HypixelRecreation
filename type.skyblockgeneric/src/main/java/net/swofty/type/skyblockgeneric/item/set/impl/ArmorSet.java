@@ -19,6 +19,10 @@ public interface ArmorSet {
         return ItemStatistics.empty();
     }
 
+    default ItemStatistics getStatistics(SkyBlockPlayer player) {
+        return getStatistics();
+    }
+
     default boolean isWearingSet(SkyBlockPlayer player) {
         return player.getArmorSet() != null && player.getArmorSet().equals(ArmorSetRegistry.getArmorSet(this.getClass()));
     }

@@ -187,7 +187,7 @@ public class PlayerStatistics {
             try {
                 Constructor<? extends ArmorSet> constructor = armorSetRegistry.getClazz().getConstructor();
                 ArmorSet armorSet = constructor.newInstance();
-                total = ItemStatistics.add(total, armorSet.getStatistics());
+                total = ItemStatistics.add(total, armorSet.getStatistics(player));
             } catch (Exception _) {
             }
         }
@@ -374,7 +374,7 @@ public class PlayerStatistics {
             try {
                 ArmorSet armorSet = player.getArmorSet().getClazz().getConstructor().newInstance();
                 addModifier(modifiers, player.getArmorSet().getDisplayName() + " Set Bonus",
-                    armorSet.getStatistics(), StatisticSourceType.ARMOR,
+                    armorSet.getStatistics(player), StatisticSourceType.ARMOR,
                     StatisticModifierType.ABILITY_PASSIVE, null, Material.IRON_CHESTPLATE, null);
             } catch (ReflectiveOperationException ignored) {
             }
@@ -589,6 +589,8 @@ public class PlayerStatistics {
         statistics = ItemStatistics.add(statistics, CrimsonGear.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, ReforgeLoadout.statistics(item, player));
         statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.tool.ToolPassives.extraItemStatistics(item, player));
+        statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.armor.ArmorPassives.extraItemStatistics(item, player));
+        statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.armor.PieceBonuses.extraItemStatistics(item, player));
 
         return statistics;
     }

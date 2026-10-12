@@ -1,0 +1,3310 @@
+items:
+  - id: SALMON_BOOTS
+    material: leather_boots
+    name: "Salmon Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 85
+      defense: 20
+      sea_creature_chance: 1.5
+    unavailable: "Legacy pre-rework Salmon armor, no longer obtainable (replaced by the crafted Salmon armor)"
+    lore:
+      - "§6Ability: Water Burst  §e§lSNEAK"
+      - "§7When wearing the full set, grants the"
+      - "§7wearer with the ability to §aburst"
+      - "§aforward§7 when sneaking in water."
+      - "§8Mana Cost: §b20"
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 13§c."
+      - ""
+      - "§8Not active yet: Water Burst needs water bursting"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '193'
+        g: '60'
+        b: '15'
+  - id: SALMON_CHESTPLATE
+    material: leather_chestplate
+    name: "Salmon Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 130
+      defense: 55
+      sea_creature_chance: 1.5
+    unavailable: "Legacy pre-rework Salmon armor, no longer obtainable (replaced by the crafted Salmon armor)"
+    lore:
+      - "§6Ability: Water Burst  §e§lSNEAK"
+      - "§7When wearing the full set, grants the"
+      - "§7wearer with the ability to §aburst"
+      - "§aforward§7 when sneaking in water."
+      - "§8Mana Cost: §b20"
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 13§c."
+      - ""
+      - "§8Not active yet: Water Burst needs water bursting"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '168'
+        g: '43'
+        b: '118'
+  - id: SALMON_HAT
+    material: player_head
+    name: "Salmon Hat"
+    rarity: COMMON
+    default_statistics:
+      strength: 15
+      speed: 2
+    source: "Crafted from 8 Raw Salmon"
+    lore:
+      - "§6Ability: Water Burst  §e§lSNEAK"
+      - "§7When wearing the full set, grants the"
+      - "§7wearer with the ability to §aburst"
+      - "§aforward§7 when sneaking in water."
+      - "§8Mana Cost: §b20"
+      - ""
+      - "§8Not active yet: Water Burst needs water bursting"
+    components:
+      - id: SKULL_HEAD
+        texture: a5b43503b10f52f48f4bcc4715b4a0a56e7ef39533a181e25b48f5c38affe71
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AAA
+            ingredients:
+              A:
+                type: RAW_SALMON
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SALMON_HAT
+              amount: 1
+  - id: SALMON_HELMET
+    material: leather_helmet
+    name: "Salmon Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 100
+      defense: 30
+      sea_creature_chance: 1.5
+    unavailable: "Legacy pre-rework Salmon armor, no longer obtainable (replaced by the crafted Salmon armor)"
+    lore:
+      - "§6Ability: Water Burst  §e§lSNEAK"
+      - "§7When wearing the full set, grants the"
+      - "§7wearer with the ability to §aburst"
+      - "§aforward§7 when sneaking in water."
+      - "§8Mana Cost: §b20"
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 13§c."
+      - ""
+      - "§8Not active yet: Water Burst needs water bursting"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '193'
+        g: '60'
+        b: '15'
+  - id: SALMON_LEGGINGS
+    material: leather_leggings
+    name: "Salmon Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 115
+      defense: 45
+      sea_creature_chance: 1.5
+    unavailable: "Legacy pre-rework Salmon armor, no longer obtainable (replaced by the crafted Salmon armor)"
+    lore:
+      - "§6Ability: Water Burst  §e§lSNEAK"
+      - "§7When wearing the full set, grants the"
+      - "§7wearer with the ability to §aburst"
+      - "§aforward§7 when sneaking in water."
+      - "§8Mana Cost: §b20"
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 13§c."
+      - ""
+      - "§8Not active yet: Water Burst needs water bursting"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '168'
+        g: '43'
+        b: '118'
+  - id: ARMOR_OF_YOG_BOOTS
+    material: leather_boots
+    name: "Yog Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 50
+      defense: 15
+      mining_speed: 0
+      mining_fortune: 20
+      heat_resistance: 10
+    source: "Crafted from 40 Yoggie, 1 Flame Breaker Boots"
+    lore:
+      - "§6Full Set Bonus: Absorb §7(0/4)"
+      - "§7Every §95 Yogs killed§7 grants the"
+      - "§7wearer §6+1 Mining Speed§7. §8(Max 500)."
+      - ""
+      - "§7Yogs Killed: §a0"
+      - ""
+      - "§4❣ §cRequires §aHard Stone Collection V§c."
+      - ""
+      - "§8Not active yet: Absorb needs Yog kills"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '200'
+        g: '50'
+        b: '0'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: YOGGIE
+                amount: 5
+              B:
+                type: FLAME_BREAKER_BOOTS
+                amount: 1
+            result:
+              type: ARMOR_OF_YOG_BOOTS
+              amount: 1
+  - id: ARMOR_OF_YOG_CHESTPLATE
+    material: leather_chestplate
+    name: "Yog Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 50
+      defense: 15
+      mining_speed: 0
+      mining_fortune: 20
+      heat_resistance: 10
+    source: "Crafted from 40 Yoggie, 1 Flame Breaker Chestplate"
+    lore:
+      - "§6Full Set Bonus: Absorb §7(0/4)"
+      - "§7Every §95 Yogs killed§7 grants the"
+      - "§7wearer §6+1 Mining Speed§7. §8(Max 500)."
+      - ""
+      - "§7Yogs Killed: §a0"
+      - ""
+      - "§4❣ §cRequires §aHard Stone Collection V§c."
+      - ""
+      - "§8Not active yet: Absorb needs Yog kills"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '200'
+        g: '50'
+        b: '0'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: YOGGIE
+                amount: 5
+              B:
+                type: FLAME_BREAKER_CHESTPLATE
+                amount: 1
+            result:
+              type: ARMOR_OF_YOG_CHESTPLATE
+              amount: 1
+  - id: ARMOR_OF_YOG_HELMET
+    material: leather_helmet
+    name: "Yog Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 50
+      defense: 15
+      mining_speed: 0
+      mining_fortune: 20
+      heat_resistance: 10
+    source: "Crafted from 40 Yoggie, 1 Flame Breaker Helmet"
+    lore:
+      - "§6Full Set Bonus: Absorb §7(0/4)"
+      - "§7Every §95 Yogs killed§7 grants the"
+      - "§7wearer §6+1 Mining Speed§7. §8(Max 500)."
+      - ""
+      - "§7Yogs Killed: §a0"
+      - ""
+      - "§4❣ §cRequires §aHard Stone Collection V§c."
+      - ""
+      - "§8Not active yet: Absorb needs Yog kills"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '200'
+        g: '50'
+        b: '0'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: YOGGIE
+                amount: 5
+              B:
+                type: FLAME_BREAKER_HELMET
+                amount: 1
+            result:
+              type: ARMOR_OF_YOG_HELMET
+              amount: 1
+  - id: ARMOR_OF_YOG_LEGGINGS
+    material: leather_leggings
+    name: "Yog Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 50
+      defense: 15
+      mining_speed: 0
+      mining_fortune: 20
+      heat_resistance: 10
+    source: "Crafted from 40 Yoggie, 1 Flame Breaker Leggings"
+    lore:
+      - "§6Full Set Bonus: Absorb §7(0/4)"
+      - "§7Every §95 Yogs killed§7 grants the"
+      - "§7wearer §6+1 Mining Speed§7. §8(Max 500)."
+      - ""
+      - "§7Yogs Killed: §a0"
+      - ""
+      - "§4❣ §cRequires §aHard Stone Collection V§c."
+      - ""
+      - "§8Not active yet: Absorb needs Yog kills"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '200'
+        g: '50'
+        b: '0'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: YOGGIE
+                amount: 5
+              B:
+                type: FLAME_BREAKER_LEGGINGS
+                amount: 1
+            result:
+              type: ARMOR_OF_YOG_LEGGINGS
+              amount: 1
+  - id: CANOPY_BOOTS
+    material: leather_boots
+    name: "Canopy Sandals"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 50
+      defense: 20
+      sweep: 6
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 12§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '51'
+        g: '25'
+        b: '0'
+  - id: CANOPY_CHESTPLATE
+    material: leather_chestplate
+    name: "Canopy Shirt"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 120
+      defense: 40
+      sweep: 6
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 12§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '102'
+        b: '51'
+  - id: CANOPY_HELMET
+    material: player_head
+    name: "Canopy Mask"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 60
+      defense: 25
+      sweep: 6
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 12§c."
+    components:
+      - id: SKULL_HEAD
+        texture: 93da8ca9a62856d5c0ee7808f12fa850594294a9755ca527dbc6679bacc3f7bb
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: CANOPY_LEGGINGS
+    material: leather_leggings
+    name: "Canopy Pants"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 110
+      defense: 30
+      sweep: 6
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 12§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '102'
+        b: '0'
+  - id: DIVER_BOOTS
+    material: golden_boots
+    name: "Diver's Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 125
+      defense: 40
+      sea_creature_chance: 2
+      respiration: 3
+      pressure_resistance: 15
+    source: "Crafted from 8 Enchanted Sea Lumies, 32 Gill Membrane, 1 Snorkeling Boots"
+    lore:
+      - "§6Full Set Bonus: One with the Fish §7(0/4)"
+      - "§7Grants the ability to breathe"
+      - "§9permanently §7while §9underwater§7."
+      - ""
+      - "§8Tiered Bonus: Deep Sea Diver (0/4)"
+      - "§7Grants §6+0 Treasure Chance §7while"
+      - "§9underwater§7."
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 20§c."
+      - ""
+      - "§8Not active yet: underwater set bonuses need diving content"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - BCB
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_SEA_LUMIES
+                amount: 4
+              B:
+                type: GILL_MEMBRANE
+                amount: 16
+              C:
+                type: SNORKELING_BOOTS
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: DIVER_BOOTS
+              amount: 1
+  - id: DIVER_CHESTPLATE
+    material: golden_chestplate
+    name: "Diver's Shirt"
+    rarity: EPIC
+    default_statistics:
+      health: 200
+      defense: 100
+      sea_creature_chance: 2
+      respiration: 3
+      pressure_resistance: 15
+    source: "Crafted from 8 Enchanted Sea Lumies, 32 Gill Membrane, 1 Snorkeling Chestplate"
+    lore:
+      - "§6Full Set Bonus: One with the Fish §7(0/4)"
+      - "§7Grants the ability to breathe"
+      - "§9permanently §7while §9underwater§7."
+      - ""
+      - "§8Tiered Bonus: Deep Sea Diver (0/4)"
+      - "§7Grants §6+0 Treasure Chance §7while"
+      - "§9underwater§7."
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 20§c."
+      - ""
+      - "§8Not active yet: underwater set bonuses need diving content"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - BCB
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_SEA_LUMIES
+                amount: 4
+              B:
+                type: GILL_MEMBRANE
+                amount: 16
+              C:
+                type: SNORKELING_CHESTPLATE
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: DIVER_CHESTPLATE
+              amount: 1
+  - id: DIVER_HELMET
+    material: player_head
+    name: "Diver's Mask"
+    rarity: EPIC
+    default_statistics:
+      health: 150
+      defense: 60
+      sea_creature_chance: 2
+      respiration: 3
+      pressure_resistance: 15
+    source: "Crafted from 8 Enchanted Sea Lumies, 32 Gill Membrane, 1 Snorkeling Helmet"
+    lore:
+      - "§6Full Set Bonus: One with the Fish §7(0/4)"
+      - "§7Grants the ability to breathe"
+      - "§9permanently §7while §9underwater§7."
+      - ""
+      - "§8Tiered Bonus: Deep Sea Diver (0/4)"
+      - "§7Grants §6+0 Treasure Chance §7while"
+      - "§9underwater§7."
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 20§c."
+      - ""
+      - "§8Not active yet: underwater set bonuses need diving content"
+    components:
+      - id: SKULL_HEAD
+        texture: d8f11c2b1eb0568cac64f976e50e0e45f3c09a65801e7ed72734b1a99f1606ca
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - BCB
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_SEA_LUMIES
+                amount: 4
+              B:
+                type: GILL_MEMBRANE
+                amount: 16
+              C:
+                type: SNORKELING_HELMET
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: DIVER_HELMET
+              amount: 1
+  - id: DIVER_LEGGINGS
+    material: golden_leggings
+    name: "Diver's Trunks"
+    rarity: EPIC
+    default_statistics:
+      health: 175
+      defense: 80
+      sea_creature_chance: 2
+      respiration: 3
+      pressure_resistance: 15
+    source: "Crafted from 8 Enchanted Sea Lumies, 32 Gill Membrane, 1 Snorkeling Leggings"
+    lore:
+      - "§6Full Set Bonus: One with the Fish §7(0/4)"
+      - "§7Grants the ability to breathe"
+      - "§9permanently §7while §9underwater§7."
+      - ""
+      - "§8Tiered Bonus: Deep Sea Diver (0/4)"
+      - "§7Grants §6+0 Treasure Chance §7while"
+      - "§9underwater§7."
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 20§c."
+      - ""
+      - "§8Not active yet: underwater set bonuses need diving content"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - BCB
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_SEA_LUMIES
+                amount: 4
+              B:
+                type: GILL_MEMBRANE
+                amount: 16
+              C:
+                type: SNORKELING_LEGGINGS
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: DIVER_LEGGINGS
+              amount: 1
+  - id: END_BOOTS
+    material: chainmail_boots
+    name: "Ender Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      defense: 25
+    unavailable: "Legacy Ender armor, no confirmed current source"
+    lore:
+      - "§7All stats on this armor piece are"
+      - "§7multiplied by §52x §7while on the End"
+      - "§7Island!"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 12§c."
+      - ""
+      - "§8Not active yet: the 2x stats on the End Island are not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: END_CHESTPLATE
+    material: chainmail_chestplate
+    name: "Ender Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 30
+      defense: 60
+    unavailable: "Legacy Ender armor, no confirmed current source"
+    lore:
+      - "§7All stats on this armor piece are"
+      - "§7multiplied by §52x §7while on the End"
+      - "§7Island!"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 12§c."
+      - ""
+      - "§8Not active yet: the 2x stats on the End Island are not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: END_HELMET
+    material: player_head
+    name: "Ender Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 20
+      defense: 35
+    unavailable: "Legacy Ender armor, no confirmed current source"
+    lore:
+      - "§7All stats on this armor piece are"
+      - "§7multiplied by §52x §7while on the End"
+      - "§7Island!"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 12§c."
+      - ""
+      - "§8Not active yet: the 2x stats on the End Island are not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: f715ca0f742544ae3ca104297578c2ed700ea3a54980413512f5e7a0bc06729a
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: END_LEGGINGS
+    material: chainmail_leggings
+    name: "Ender Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 25
+      defense: 50
+    unavailable: "Legacy Ender armor, no confirmed current source"
+    lore:
+      - "§7All stats on this armor piece are"
+      - "§7multiplied by §52x §7while on the End"
+      - "§7Island!"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 12§c."
+      - ""
+      - "§8Not active yet: the 2x stats on the End Island are not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: FIG_BOOTS
+    material: leather_boots
+    name: "Fig Striders"
+    rarity: RARE
+    default_statistics:
+      health: 65
+      defense: 25
+      sweep: 10
+      foraging_fortune: 30
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 15§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '28'
+        g: '151'
+        b: '89'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - ABA
+              - AOA
+            ingredients:
+              A:
+                type: FIGSTONE
+                amount: 1
+              B:
+                type: CANOPY_BOOTS
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: FIG_BOOTS
+              amount: 1
+  - id: FIG_CHESTPLATE
+    material: leather_chestplate
+    name: "Figmail"
+    rarity: RARE
+    default_statistics:
+      health: 160
+      defense: 45
+      sweep: 10
+      foraging_fortune: 30
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 15§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '28'
+        g: '151'
+        b: '89'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: FIGSTONE
+                amount: 1
+              B:
+                type: CANOPY_CHESTPLATE
+                amount: 1
+            result:
+              type: FIG_CHESTPLATE
+              amount: 1
+  - id: FIG_HELMET
+    material: player_head
+    name: "Fig Cap"
+    rarity: RARE
+    default_statistics:
+      health: 80
+      defense: 30
+      sweep: 10
+      foraging_fortune: 30
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 15§c."
+    components:
+      - id: SKULL_HEAD
+        texture: 531d3f448491a35d711b877973e5da5d0e72a2ecfdc98dede71bfa1b537bb4eb
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+            ingredients:
+              A:
+                type: FIGSTONE
+                amount: 1
+              B:
+                type: CANOPY_HELMET
+                amount: 1
+            result:
+              type: FIG_HELMET
+              amount: 1
+  - id: FIG_LEGGINGS
+    material: leather_leggings
+    name: "Fig Trousers"
+    rarity: RARE
+    default_statistics:
+      health: 140
+      defense: 35
+      sweep: 10
+      foraging_fortune: 30
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 15§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '28'
+        g: '151'
+        b: '89'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AOA
+            ingredients:
+              A:
+                type: FIGSTONE
+                amount: 1
+              B:
+                type: CANOPY_LEGGINGS
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: FIG_LEGGINGS
+              amount: 1
+  - id: FROZEN_BLAZE_BOOTS
+    material: leather_boots
+    name: "Frozen Blaze Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 95
+      strength: 40
+      speed: 2
+    source: "Crafted from 64 Enchanted Packed Ice, 1 Blaze Boots"
+    lore:
+      - "§6Full Set Bonus: Frozen Blazing Aura §7(0/4)"
+      - "§7Damages mobs in a §a5§7 block range for"
+      - "§a300 §7base damage + §a3%§7 of their max"
+      - "§c Health §7every second and applies"
+      - "§bSlowness I §7for §e4 §7seconds."
+      - ""
+      - "§7Max §c500 §7damage/s"
+      - "§7Blaze Rod Collection: §60"
+      - "§8+100 per 5,000 rods"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§8Not active yet: Frozen Blazing Aura is not implemented (Slowness on mobs)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '160'
+        g: '218'
+        b: '239'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_PACKED_ICE
+                amount: 8
+              B:
+                type: BLAZE_BOOTS
+                amount: 1
+            result:
+              type: FROZEN_BLAZE_BOOTS
+              amount: 1
+  - id: FROZEN_BLAZE_CHESTPLATE
+    material: leather_chestplate
+    name: "Frozen Blaze Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 180
+      strength: 40
+      speed: 2
+    source: "Crafted from 64 Enchanted Packed Ice, 1 Blaze Chestplate"
+    lore:
+      - "§6Full Set Bonus: Frozen Blazing Aura §7(0/4)"
+      - "§7Damages mobs in a §a5§7 block range for"
+      - "§a300 §7base damage + §a3%§7 of their max"
+      - "§c Health §7every second and applies"
+      - "§bSlowness I §7for §e4 §7seconds."
+      - ""
+      - "§7Max §c500 §7damage/s"
+      - "§7Blaze Rod Collection: §60"
+      - "§8+100 per 5,000 rods"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§8Not active yet: Frozen Blazing Aura is not implemented (Slowness on mobs)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '160'
+        g: '218'
+        b: '239'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_PACKED_ICE
+                amount: 8
+              B:
+                type: BLAZE_CHESTPLATE
+                amount: 1
+            result:
+              type: FROZEN_BLAZE_CHESTPLATE
+              amount: 1
+  - id: FROZEN_BLAZE_HELMET
+    material: player_head
+    name: "Frozen Blaze Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 105
+      strength: 40
+      speed: 2
+    source: "Crafted from 64 Enchanted Packed Ice, 1 Blaze Helmet"
+    lore:
+      - "§6Full Set Bonus: Frozen Blazing Aura §7(0/4)"
+      - "§7Damages mobs in a §a5§7 block range for"
+      - "§a300 §7base damage + §a3%§7 of their max"
+      - "§c Health §7every second and applies"
+      - "§bSlowness I §7for §e4 §7seconds."
+      - ""
+      - "§7Max §c500 §7damage/s"
+      - "§7Blaze Rod Collection: §60"
+      - "§8+100 per 5,000 rods"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§8Not active yet: Frozen Blazing Aura is not implemented (Slowness on mobs)"
+    components:
+      - id: SKULL_HEAD
+        texture: 70310b55eed958fee8ffaaf718467167deb1a7c9046d67b25887b596925636bb
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_PACKED_ICE
+                amount: 8
+              B:
+                type: BLAZE_HELMET
+                amount: 1
+            result:
+              type: FROZEN_BLAZE_HELMET
+              amount: 1
+  - id: FROZEN_BLAZE_LEGGINGS
+    material: leather_leggings
+    name: "Frozen Blaze Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 140
+      strength: 40
+      speed: 2
+    source: "Crafted from 64 Enchanted Packed Ice, 1 Blaze Leggings"
+    lore:
+      - "§6Full Set Bonus: Frozen Blazing Aura §7(0/4)"
+      - "§7Damages mobs in a §a5§7 block range for"
+      - "§a300 §7base damage + §a3%§7 of their max"
+      - "§c Health §7every second and applies"
+      - "§bSlowness I §7for §e4 §7seconds."
+      - ""
+      - "§7Max §c500 §7damage/s"
+      - "§7Blaze Rod Collection: §60"
+      - "§8+100 per 5,000 rods"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§8Not active yet: Frozen Blazing Aura is not implemented (Slowness on mobs)"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '160'
+        g: '218'
+        b: '239'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_PACKED_ICE
+                amount: 8
+              B:
+                type: BLAZE_LEGGINGS
+                amount: 1
+            result:
+              type: FROZEN_BLAZE_LEGGINGS
+              amount: 1
+  - id: GOBLIN_BOOTS
+    material: leather_boots
+    name: "Goblin Boots"
+    rarity: RARE
+    default_statistics:
+      health: 60
+      intelligence: -1
+      mining_speed: 10
+      mining_fortune: 4
+    unavailable: "Dropped by Goblins on Hypixel; Goblin armor drops are not wired up yet"
+    lore:
+      - "§6Full Set Bonus: Smart Miner §7(0/4)"
+      - "§7Converts your Intelligence into"
+      - "§7Mining Speed. §6+1 Mining Speed §7for"
+      - "§7every §b15 Intelligence §7removed."
+      - ""
+      - "§8Not active yet: Smart Miner needs per-player Intelligence conversion"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '55'
+        g: '176'
+        b: '66'
+  - id: GOBLIN_CHESTPLATE
+    material: leather_chestplate
+    name: "Goblin Chestplate"
+    rarity: RARE
+    default_statistics:
+      health: 140
+      intelligence: -1
+      mining_speed: 10
+      mining_fortune: 4
+    unavailable: "Dropped by Goblins on Hypixel; Goblin armor drops are not wired up yet"
+    lore:
+      - "§6Full Set Bonus: Smart Miner §7(0/4)"
+      - "§7Converts your Intelligence into"
+      - "§7Mining Speed. §6+1 Mining Speed §7for"
+      - "§7every §b15 Intelligence §7removed."
+      - ""
+      - "§8Not active yet: Smart Miner needs per-player Intelligence conversion"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '55'
+        g: '176'
+        b: '66'
+  - id: GOBLIN_HELMET
+    material: player_head
+    name: "Goblin Helmet"
+    rarity: RARE
+    default_statistics:
+      health: 70
+      intelligence: -1
+      mining_speed: 10
+      mining_fortune: 4
+    unavailable: "Dropped by Goblins on Hypixel; Goblin armor drops are not wired up yet"
+    lore:
+      - "§6Full Set Bonus: Smart Miner §7(0/4)"
+      - "§7Converts your Intelligence into"
+      - "§7Mining Speed. §6+1 Mining Speed §7for"
+      - "§7every §b15 Intelligence §7removed."
+      - ""
+      - "§8Not active yet: Smart Miner needs per-player Intelligence conversion"
+    components:
+      - id: SKULL_HEAD
+        texture: 82cbb800ce0bd9ea4cecc0ecce3c9528cdef396f3fd779a287dc6d5cb99e2394
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: GOBLIN_LEGGINGS
+    material: leather_leggings
+    name: "Goblin Leggings"
+    rarity: RARE
+    default_statistics:
+      health: 125
+      intelligence: -1
+      mining_speed: 10
+      mining_fortune: 4
+    unavailable: "Dropped by Goblins on Hypixel; Goblin armor drops are not wired up yet"
+    lore:
+      - "§6Full Set Bonus: Smart Miner §7(0/4)"
+      - "§7Converts your Intelligence into"
+      - "§7Mining Speed. §6+1 Mining Speed §7for"
+      - "§7every §b15 Intelligence §7removed."
+      - ""
+      - "§8Not active yet: Smart Miner needs per-player Intelligence conversion"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '55'
+        g: '176'
+        b: '66'
+  - id: GROWTH_BOOTS
+    material: leather_boots
+    name: "Boots of Growth"
+    rarity: RARE
+    default_statistics:
+      health: 50
+      defense: 25
+    source: "Crafted from 256 Enchanted Dark Oak Log"
+    lore:
+      - "§6Ability: Growth "
+      - "§7Heals you for §a1% §c Health §7after"
+      - "§7killing a Monster, and also increases"
+      - "§7the §c Health §7bonus of a piece of"
+      - "§7the armor by §a1§8 (Max 100)"
+      - "§8Cooldown: §a4s"
+      - ""
+      - "§7Bonus HP: §a0/100"
+      - ""
+      - "§8Not active yet: Growth is not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '190'
+        b: '0'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_DARK_OAK_LOG
+                amount: 64
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: GROWTH_BOOTS
+              amount: 1
+  - id: GROWTH_CHESTPLATE
+    material: leather_chestplate
+    name: "Chestplate of Growth"
+    rarity: RARE
+    default_statistics:
+      health: 100
+      defense: 50
+    source: "Crafted from 512 Enchanted Dark Oak Log"
+    lore:
+      - "§6Ability: Growth "
+      - "§7Heals you for §a1% §c Health §7after"
+      - "§7killing a Monster, and also increases"
+      - "§7the §c Health §7bonus of a piece of"
+      - "§7the armor by §a1§8 (Max 100)"
+      - "§8Cooldown: §a4s"
+      - ""
+      - "§7Bonus HP: §a0/100"
+      - ""
+      - "§8Not active yet: Growth is not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '190'
+        b: '0'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AAA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_DARK_OAK_LOG
+                amount: 64
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: GROWTH_CHESTPLATE
+              amount: 1
+  - id: GROWTH_HELMET
+    material: leather_helmet
+    name: "Helmet of Growth"
+    rarity: RARE
+    default_statistics:
+      health: 50
+      defense: 30
+    source: "Crafted from 320 Enchanted Dark Oak Log"
+    lore:
+      - "§6Ability: Growth "
+      - "§7Heals you for §a1% §c Health §7after"
+      - "§7killing a Monster, and also increases"
+      - "§7the §c Health §7bonus of a piece of"
+      - "§7the armor by §a1§8 (Max 100)"
+      - "§8Cooldown: §a4s"
+      - ""
+      - "§7Bonus HP: §a0/100"
+      - ""
+      - "§8Not active yet: Growth is not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '190'
+        b: '0'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_DARK_OAK_LOG
+                amount: 64
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: GROWTH_HELMET
+              amount: 1
+  - id: GROWTH_LEGGINGS
+    material: leather_leggings
+    name: "Leggings of Growth"
+    rarity: RARE
+    default_statistics:
+      health: 80
+      defense: 40
+    source: "Crafted from 448 Enchanted Dark Oak Log"
+    lore:
+      - "§6Ability: Growth "
+      - "§7Heals you for §a1% §c Health §7after"
+      - "§7killing a Monster, and also increases"
+      - "§7the §c Health §7bonus of a piece of"
+      - "§7the armor by §a1§8 (Max 100)"
+      - "§8Cooldown: §a4s"
+      - ""
+      - "§7Bonus HP: §a0/100"
+      - ""
+      - "§8Not active yet: Growth is not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '190'
+        b: '0'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_DARK_OAK_LOG
+                amount: 64
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: GROWTH_LEGGINGS
+              amount: 1
+  - id: HELIX_ARMOR_BOOTS
+    material: leather_boots
+    name: "Helix Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 85
+      defense: 30
+      sweep: 20
+      foraging_fortune: 45
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 25§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '226'
+        g: '90'
+        b: '22'
+  - id: HELIX_ARMOR_CHESTPLATE
+    material: leather_chestplate
+    name: "Helix Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 190
+      defense: 55
+      sweep: 20
+      foraging_fortune: 45
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 25§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '226'
+        g: '90'
+        b: '22'
+  - id: HELIX_ARMOR_HELMET
+    material: player_head
+    name: "Helix Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 100
+      defense: 35
+      sweep: 20
+      foraging_fortune: 45
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 25§c."
+    components:
+      - id: SKULL_HEAD
+        texture: b2ad235b9458cc26c9dd794a35c1100e1b5bbe4a0c6c3da6ffd4830006683cb9
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: HELIX_ARMOR_LEGGINGS
+    material: leather_leggings
+    name: "Helix Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 165
+      defense: 45
+      sweep: 20
+      foraging_fortune: 45
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§4❣ §cRequires §aForaging Skill 25§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '226'
+        g: '90'
+        b: '22'
+  - id: MINERAL_BOOTS
+    material: leather_boots
+    name: "Mineral Boots"
+    rarity: EPIC
+    default_statistics:
+      defense: 70
+      block_fortune: 25
+      speed: 10
+    source: "Crafted from 4 Refined Mineral, 1 Hardened Diamond Boots"
+    lore:
+      - "§8Tiered Bonus: Mineralworks (0/4)"
+      - "§7Grants §e+0 Mining Spread §7on §6Ores"
+      - "§7and §9Blocks§7."
+      - ""
+      - "§8Not active yet: Mineralworks (Mining Spread) is not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '204'
+        g: '229'
+        b: '255'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - ABA
+            ingredients:
+              A:
+                type: REFINED_MINERAL
+                amount: 1
+              B:
+                type: HARDENED_DIAMOND_BOOTS
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: MINERAL_BOOTS
+              amount: 1
+  - id: MINERAL_CHESTPLATE
+    material: leather_chestplate
+    name: "Mineral Chestplate"
+    rarity: EPIC
+    default_statistics:
+      defense: 125
+      block_fortune: 25
+      speed: 15
+    source: "Crafted from 8 Refined Mineral, 1 Hardened Diamond Chestplate"
+    lore:
+      - "§8Tiered Bonus: Mineralworks (0/4)"
+      - "§7Grants §e+0 Mining Spread §7on §6Ores"
+      - "§7and §9Blocks§7."
+      - ""
+      - "§8Not active yet: Mineralworks (Mining Spread) is not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '204'
+        g: '229'
+        b: '255'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: REFINED_MINERAL
+                amount: 1
+              B:
+                type: HARDENED_DIAMOND_CHESTPLATE
+                amount: 1
+            result:
+              type: MINERAL_CHESTPLATE
+              amount: 1
+  - id: MINERAL_HELMET
+    material: player_head
+    name: "Mineral Helmet"
+    rarity: EPIC
+    default_statistics:
+      defense: 70
+      block_fortune: 25
+      speed: 10
+    source: "Crafted from 5 Refined Mineral, 1 Hardened Diamond Helmet"
+    lore:
+      - "§8Tiered Bonus: Mineralworks (0/4)"
+      - "§7Grants §e+0 Mining Spread §7on §6Ores"
+      - "§7and §9Blocks§7."
+      - ""
+      - "§8Not active yet: Mineralworks (Mining Spread) is not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: a95280a7b21b06e3887f165c8ca7a03bfac96378acd96cdf5944bcd08a0b6587
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+            ingredients:
+              A:
+                type: REFINED_MINERAL
+                amount: 1
+              B:
+                type: HARDENED_DIAMOND_HELMET
+                amount: 1
+            result:
+              type: MINERAL_HELMET
+              amount: 1
+  - id: MINERAL_LEGGINGS
+    material: leather_leggings
+    name: "Mineral Leggings"
+    rarity: EPIC
+    default_statistics:
+      defense: 125
+      block_fortune: 25
+      speed: 15
+    source: "Crafted from 7 Refined Mineral, 1 Hardened Diamond Leggings"
+    lore:
+      - "§8Tiered Bonus: Mineralworks (0/4)"
+      - "§7Grants §e+0 Mining Spread §7on §6Ores"
+      - "§7and §9Blocks§7."
+      - ""
+      - "§8Not active yet: Mineralworks (Mining Spread) is not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '204'
+        g: '229'
+        b: '255'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AOA
+            ingredients:
+              A:
+                type: REFINED_MINERAL
+                amount: 1
+              B:
+                type: HARDENED_DIAMOND_LEGGINGS
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: MINERAL_LEGGINGS
+              amount: 1
+  - id: PROTECTOR_DRAGON_BOOTS
+    material: leather_boots
+    name: "Protector Dragon Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 60
+      defense: 115
+    source: "Crafted from 40 Protector Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '153'
+        g: '151'
+        b: '139'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: PROTECTOR_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PROTECTOR_DRAGON_BOOTS
+              amount: 1
+  - id: PROTECTOR_DRAGON_CHESTPLATE
+    material: leather_chestplate
+    name: "Protector Dragon Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 120
+      defense: 185
+    source: "Crafted from 80 Protector Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '153'
+        g: '151'
+        b: '139'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AAA
+              - AAA
+            ingredients:
+              A:
+                type: PROTECTOR_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PROTECTOR_DRAGON_CHESTPLATE
+              amount: 1
+  - id: PROTECTOR_DRAGON_HELMET
+    material: player_head
+    name: "Protector Dragon Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 70
+      defense: 135
+    source: "Crafted from 50 Protector Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+    components:
+      - id: SKULL_HEAD
+        texture: 1f1a1ccbb024ed1d28471bc4b3c28d093277161a3871d2699d68e5d2c387964
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+            ingredients:
+              A:
+                type: PROTECTOR_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PROTECTOR_DRAGON_HELMET
+              amount: 1
+  - id: PROTECTOR_DRAGON_LEGGINGS
+    material: leather_leggings
+    name: "Protector Dragon Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 100
+      defense: 165
+    source: "Crafted from 70 Protector Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '153'
+        g: '151'
+        b: '139'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: PROTECTOR_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PROTECTOR_DRAGON_LEGGINGS
+              amount: 1
+  - id: SPEEDSTER_BOOTS
+    material: leather_boots
+    name: "Speedster Boots"
+    rarity: UNCOMMON
+    default_statistics:
+      defense: 35
+      speed: 15
+    source: "Crafted from 4 Enchanted Sugar"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '224'
+        g: '252'
+        b: '247'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_SUGAR
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SPEEDSTER_BOOTS
+              amount: 1
+  - id: SPEEDSTER_CHESTPLATE
+    material: leather_chestplate
+    name: "Speedster Chestplate"
+    rarity: UNCOMMON
+    default_statistics:
+      defense: 70
+      speed: 15
+    source: "Crafted from 8 Enchanted Sugar"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '224'
+        g: '252'
+        b: '247'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AAA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_SUGAR
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SPEEDSTER_CHESTPLATE
+              amount: 1
+  - id: SPEEDSTER_HELMET
+    material: leather_helmet
+    name: "Speedster Helmet"
+    rarity: UNCOMMON
+    default_statistics:
+      defense: 45
+      speed: 15
+    source: "Crafted from 5 Enchanted Sugar"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '224'
+        g: '252'
+        b: '247'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_SUGAR
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SPEEDSTER_HELMET
+              amount: 1
+  - id: SPEEDSTER_LEGGINGS
+    material: leather_leggings
+    name: "Speedster Leggings"
+    rarity: UNCOMMON
+    default_statistics:
+      defense: 60
+      speed: 15
+    source: "Crafted from 7 Enchanted Sugar"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '224'
+        g: '252'
+        b: '247'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_SUGAR
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SPEEDSTER_LEGGINGS
+              amount: 1
+  - id: SUPERIOR_DRAGON_BOOTS
+    material: leather_boots
+    name: "Superior Dragon Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 80
+      defense: 110
+      strength: 10
+      critical_chance: 2
+      critical_damage: 10
+      intelligence: 25
+      speed: 3
+    source: "Crafted from 40 Superior Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 20§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '242'
+        g: '93'
+        b: '24'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: SUPERIOR_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SUPERIOR_DRAGON_BOOTS
+              amount: 1
+  - id: SUPERIOR_DRAGON_CHESTPLATE
+    material: leather_chestplate
+    name: "Superior Dragon Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 150
+      defense: 190
+      strength: 10
+      critical_chance: 2
+      critical_damage: 10
+      intelligence: 25
+      speed: 3
+    source: "Crafted from 80 Superior Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 20§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '242'
+        g: '223'
+        b: '17'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AAA
+              - AAA
+            ingredients:
+              A:
+                type: SUPERIOR_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SUPERIOR_DRAGON_CHESTPLATE
+              amount: 1
+  - id: SUPERIOR_DRAGON_HELMET
+    material: player_head
+    name: "Superior Dragon Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 90
+      defense: 130
+      strength: 10
+      critical_chance: 2
+      critical_damage: 10
+      intelligence: 25
+      speed: 3
+    source: "Crafted from 50 Superior Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 20§c."
+    components:
+      - id: SKULL_HEAD
+        texture: 1e0329f42192ee7c1a0c704f82dbbbe7c00fbfa3f020c1067a208630b991b988
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+            ingredients:
+              A:
+                type: SUPERIOR_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SUPERIOR_DRAGON_HELMET
+              amount: 1
+  - id: SUPERIOR_DRAGON_LEGGINGS
+    material: leather_leggings
+    name: "Superior Dragon Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 130
+      defense: 170
+      strength: 10
+      critical_chance: 2
+      critical_damage: 10
+      intelligence: 25
+      speed: 3
+    source: "Crafted from 70 Superior Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 20§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '242'
+        g: '223'
+        b: '17'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: SUPERIOR_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SUPERIOR_DRAGON_LEGGINGS
+              amount: 1
+  - id: UNSTABLE_DRAGON_BOOTS
+    material: leather_boots
+    name: "Unstable Dragon Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 60
+      defense: 90
+      critical_chance: 5
+      critical_damage: 15
+    source: "Crafted from 40 Unstable Fragment"
+    lore:
+      - "§6Full Set Bonus: Unstable Blood §7(0/4)"
+      - "§7Sometimes strikes nearby mobs with"
+      - "§7lightning. It's unstable!"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+      - ""
+      - "§8Not active yet: Unstable Blood lightning strikes are not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '178'
+        g: '18'
+        b: '227'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: UNSTABLE_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: UNSTABLE_DRAGON_BOOTS
+              amount: 1
+  - id: UNSTABLE_DRAGON_CHESTPLATE
+    material: leather_chestplate
+    name: "Unstable Dragon Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 120
+      defense: 160
+      critical_chance: 5
+      critical_damage: 15
+    source: "Crafted from 80 Unstable Fragment"
+    lore:
+      - "§6Full Set Bonus: Unstable Blood §7(0/4)"
+      - "§7Sometimes strikes nearby mobs with"
+      - "§7lightning. It's unstable!"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+      - ""
+      - "§8Not active yet: Unstable Blood lightning strikes are not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '178'
+        g: '18'
+        b: '227'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AAA
+              - AAA
+            ingredients:
+              A:
+                type: UNSTABLE_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: UNSTABLE_DRAGON_CHESTPLATE
+              amount: 1
+  - id: UNSTABLE_DRAGON_HELMET
+    material: player_head
+    name: "Unstable Dragon Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 70
+      defense: 110
+      critical_chance: 5
+      critical_damage: 15
+      intelligence: 25
+    source: "Crafted from 50 Unstable Fragment"
+    lore:
+      - "§6Full Set Bonus: Unstable Blood §7(0/4)"
+      - "§7Sometimes strikes nearby mobs with"
+      - "§7lightning. It's unstable!"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+      - ""
+      - "§8Not active yet: Unstable Blood lightning strikes are not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: 605fc4e2b68c45059afef3999e9a95aa3d8943597a7894e569397d6cf5d1672a
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+            ingredients:
+              A:
+                type: UNSTABLE_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: UNSTABLE_DRAGON_HELMET
+              amount: 1
+  - id: UNSTABLE_DRAGON_LEGGINGS
+    material: leather_leggings
+    name: "Unstable Dragon Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 100
+      defense: 140
+      critical_chance: 5
+      critical_damage: 15
+    source: "Crafted from 70 Unstable Fragment"
+    lore:
+      - "§6Full Set Bonus: Unstable Blood §7(0/4)"
+      - "§7Sometimes strikes nearby mobs with"
+      - "§7lightning. It's unstable!"
+      - ""
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+      - ""
+      - "§8Not active yet: Unstable Blood lightning strikes are not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '178'
+        g: '18'
+        b: '227'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: UNSTABLE_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: UNSTABLE_DRAGON_LEGGINGS
+              amount: 1
+  - id: YOUNG_DRAGON_BOOTS
+    material: leather_boots
+    name: "Young Dragon Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 60
+      defense: 90
+      speed: 20
+    source: "Crafted from 40 Young Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '221'
+        g: '228'
+        b: '240'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: YOUNG_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: YOUNG_DRAGON_BOOTS
+              amount: 1
+  - id: YOUNG_DRAGON_CHESTPLATE
+    material: leather_chestplate
+    name: "Young Dragon Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 120
+      defense: 160
+      speed: 20
+    source: "Crafted from 80 Young Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '221'
+        g: '228'
+        b: '240'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AAA
+              - AAA
+            ingredients:
+              A:
+                type: YOUNG_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: YOUNG_DRAGON_CHESTPLATE
+              amount: 1
+  - id: YOUNG_DRAGON_HELMET
+    material: player_head
+    name: "Young Dragon Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 70
+      defense: 110
+      speed: 20
+    source: "Crafted from 50 Young Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+    components:
+      - id: SKULL_HEAD
+        texture: a0e81ed07dfb0244d56f4d5f2b37553ec026fb4796f0fb0c57a8eb264983e1e0
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+            ingredients:
+              A:
+                type: YOUNG_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: YOUNG_DRAGON_HELMET
+              amount: 1
+  - id: YOUNG_DRAGON_LEGGINGS
+    material: leather_leggings
+    name: "Young Dragon Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 100
+      defense: 140
+      speed: 20
+    source: "Crafted from 70 Young Fragment"
+    lore:
+      - "§4❣ §cRequires §aCombat Skill 16§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '221'
+        g: '228'
+        b: '240'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: YOUNG_FRAGMENT
+                amount: 10
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: YOUNG_DRAGON_LEGGINGS
+              amount: 1
+  - id: REVENANT_BOOTS
+    material: diamond_boots
+    name: "Revenant Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 100
+      defense: 30
+    source: "Crafted from 64 Enchanted Diamond, 2 Revenant Viscera"
+    lore:
+      - "§6Full Set Bonus: Trolling The Reaper §7(0/3)"
+      - "§7Healing Wands heal §a+50%§7."
+      - "§7Gain §a+100 §7against §2 Undead §7mobs."
+      - ""
+      - "§6Piece Bonus: Zombie Bulwark"
+      - "§7Kill Zombies to accumulate defense"
+      - "§7against them."
+      - "§7Piece Bonus: §a+0"
+      - "§7Next Upgrade: §a+20 §8(§a0§7/§c50§8)"
+      - ""
+      - "§2This item is Undead !"
+      - ""
+      - "§4☠ §cRequires §5Zombie Slayer 4§c."
+      - ""
+      - "§8Not active yet: Trolling The Reaper and Zombie Bulwark are not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - BOB
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND
+                amount: 32
+              B:
+                type: REVENANT_VISCERA
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: REVENANT_BOOTS
+              amount: 1
+  - id: REVENANT_CHESTPLATE
+    material: diamond_chestplate
+    name: "Revenant Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 180
+      defense: 70
+    source: "Crafted from 128 Enchanted Diamond, 4 Revenant Viscera"
+    lore:
+      - "§6Full Set Bonus: Trolling The Reaper §7(0/3)"
+      - "§7Healing Wands heal §a+50%§7."
+      - "§7Gain §a+100 §7against §2 Undead §7mobs."
+      - ""
+      - "§6Piece Bonus: Zombie Bulwark"
+      - "§7Kill Zombies to accumulate defense"
+      - "§7against them."
+      - "§7Piece Bonus: §a+0"
+      - "§7Next Upgrade: §a+20 §8(§a0§7/§c50§8)"
+      - ""
+      - "§2This item is Undead !"
+      - ""
+      - "§4☠ §cRequires §5Zombie Slayer 4§c."
+      - ""
+      - "§8Not active yet: Trolling The Reaper and Zombie Bulwark are not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - ABA
+              - BBB
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND
+                amount: 32
+              B:
+                type: REVENANT_VISCERA
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: REVENANT_CHESTPLATE
+              amount: 1
+  - id: REVENANT_LEGGINGS
+    material: diamond_leggings
+    name: "Revenant Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 120
+      defense: 50
+    source: "Crafted from 3 Revenant Viscera, 64 Enchanted Diamond"
+    lore:
+      - "§6Full Set Bonus: Trolling The Reaper §7(0/3)"
+      - "§7Healing Wands heal §a+50%§7."
+      - "§7Gain §a+100 §7against §2 Undead §7mobs."
+      - ""
+      - "§6Piece Bonus: Zombie Bulwark"
+      - "§7Kill Zombies to accumulate defense"
+      - "§7against them."
+      - "§7Piece Bonus: §a+0"
+      - "§7Next Upgrade: §a+20 §8(§a0§7/§c50§8)"
+      - ""
+      - "§2This item is Undead !"
+      - ""
+      - "§4☠ §cRequires §5Zombie Slayer 4§c."
+      - ""
+      - "§8Not active yet: Trolling The Reaper and Zombie Bulwark are not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - BOB
+              - BOB
+            ingredients:
+              A:
+                type: REVENANT_VISCERA
+                amount: 1
+              B:
+                type: ENCHANTED_DIAMOND
+                amount: 16
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: REVENANT_LEGGINGS
+              amount: 1
+  - id: SPIDER_BOOTS
+    material: iron_boots
+    name: "Spider's Boots"
+    rarity: RARE
+    default_statistics:
+      defense: 45
+      intelligence: 50
+      speed: 5
+    source: "Crafted from 256 Enchanted String"
+    lore:
+      - "§6Ability: Double Jump  §e§lDOUBLE TAP JUMP"
+      - "§7Allows you to double jump mid air!"
+      - "§8Mana Cost: §b50"
+      - ""
+      - "§4This item is Arachnal !"
+      - ""
+      - "§8Not active yet: Double Jump is not implemented"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_STRING
+                amount: 64
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SPIDER_BOOTS
+              amount: 1
+  - id: SPIDER_HAT
+    material: player_head
+    name: "Spider Hat"
+    rarity: COMMON
+    default_statistics:
+      critical_chance: 25
+    source: "Crafted from 8 Spider Eye"
+    lore:
+      - "§7When worn, §4Ж Arthropod §7mobs deal"
+      - "§a-30%§7 damage."
+    components:
+      - id: SKULL_HEAD
+        texture: 9d83d0494939dba5f27a1dcba7031d5feff44d6efe8d8623e12052470d0a6674
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AAA
+            ingredients:
+              A:
+                type: SPIDER_EYE
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SPIDER_HAT
+              amount: 1
+  - id: BIOHAZARD_SUIT
+    material: leather_chestplate
+    name: "Biohazard Suit"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 20
+      defense: 20
+      bonus_pest_chance: 16.5
+    unavailable: "Needs Garden Level 5 and the Garden pest shop"
+    lore:
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '172'
+        b: '0'
+  - id: BURNED_PANTS
+    material: leather_leggings
+    name: "Burned Pants"
+    rarity: RARE
+    unavailable: "Source unconfirmed"
+    lore:
+      - "§7Rift Time: §a-4s"
+      - ""
+      - "§7§8Maybe encouraging him wasn't a"
+      - "§8great idea."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '12'
+        g: '12'
+        b: '150'
+  - id: CHICKEN_LEGGS
+    material: leather_leggings
+    name: "Chicken Leggs"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    lore:
+      - "§7Rift Time: §a+35s"
+      - ""
+      - "§8Sometimes you pretend to be a"
+      - "§8dolphin, sometimes a chicken. Cluck"
+      - "§8cluck!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '242'
+        b: '0'
+  - id: DCTR_SPACE_HELM
+    material: red_stained_glass
+    name: "Space Helmet"
+    rarity: SPECIAL
+    unavailable: "Special item; source unconfirmed"
+    lore:
+      - "§7§oA rare space helmet forged from"
+      - "§7§oshards of moon glass."
+      - ""
+      - "§7To: §c[ADMIN] Dctr§f"
+      - "§7From: §c[ADMIN] Dctr§f"
+      - ""
+      - "§8Edition #1"
+      - "§8December 2020"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: ENDERMAN_MASK
+    material: player_head
+    name: "Enderman Mask"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 1
+      defense: 1
+      strength: 1
+      intelligence: -99
+    unavailable: "Source unconfirmed"
+    components:
+      - id: SKULL_HEAD
+        texture: 5bc4c2cb99f647217baa7c19d74ee1f0257cfdfc1befab4304d3455d466e841
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: FARMER_BOOTS
+    material: leather_boots
+    name: "Farmer Boots"
+    rarity: UNCOMMON
+    default_statistics:
+      health: 40
+      defense: 34
+      speed: 38
+    source: "Crafted from 256 Enchanted Pumpkin"
+    lore:
+      - "§7These boots gain §a+2 Defense §7and"
+      - "§f+4 Speed§7 for every Farming Skill"
+      - "§7level you have. While on §aThe Garden§7,"
+      - "§7these boots instead gain §6+1"
+      - "§6Farming Fortune §7for every Farming"
+      - "§7Skill level."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 18§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '204'
+        g: '85'
+        b: '0'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_PUMPKIN
+                amount: 64
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: FARMER_BOOTS
+              amount: 1
+  - id: FROGGLES
+    material: player_head
+    name: "Froggles"
+    rarity: UNCOMMON
+    default_statistics:
+      fishing_speed: 1
+    unavailable: "Needs Lotus Atoll wormholes"
+    lore:
+      - "§6Ability: Reality Check "
+      - "§7Allows you to conceptualize and"
+      - "§7interact with §dWormholes §7on the §3Lotus"
+      - "§3Atoll §7and §cCrimson Isle§7."
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 5§c."
+      - ""
+      - "§8Not active yet: Reality Check needs Wormholes"
+    components:
+      - id: SKULL_HEAD
+        texture: abe42a481ce4419604910531aaca9d5bff2f7b430585103189d476f558c85e7e
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: GHAST_HEAD
+    material: player_head
+    name: "Ghast Head"
+    rarity: COMMON
+    default_statistics:
+      health: 100
+    unavailable: "Source unconfirmed"
+    lore:
+      - "§7Restores §c+5 Health §7every second"
+      - "§7while worn."
+    components:
+      - id: SKULL_HEAD
+        texture: 7a8b714d32d7f6cf8b37e221b758b9c599ff76667c7cd45bbc49c5ef19858646
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: GUNTHER_SNEAKERS
+    material: leather_boots
+    name: "Gunther's Sneakers"
+    rarity: RARE
+    default_statistics:
+      speed: 4
+    unavailable: "Needs the Rift"
+    lore:
+      - "§7Rift Time: §a+30s"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '79'
+        g: '40'
+        b: '134'
+  - id: KALHUIKI_MASK
+    material: player_head
+    name: "Kalhuiki Mask"
+    rarity: COMMON
+    default_statistics:
+      health: 100
+      defense: 50
+    unavailable: "Needs Galatea foraging content"
+    lore:
+      - "§7A ceremonial mask worn by the"
+      - "§7members of the Kalhuiki Tribe."
+      - ""
+      - "§7While wearing this mask, members of"
+      - "§7the Kalhuiki Tribe will not attack you!"
+    components:
+      - id: SKULL_HEAD
+        texture: d65870619b0c2db822479d2cb382126bd799c582378b5b1df93e75b7d01551b7
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: MAGMA_CUBE_HEAD
+    material: player_head
+    name: "Magma Cube Head"
+    rarity: COMMON
+    default_statistics:
+      health: 25
+      defense: 25
+    unavailable: "Source unconfirmed"
+    components:
+      - id: SKULL_HEAD
+        texture: 38957d5023c937c4c41aa2412d43410bda23cf79a9f6ab36b76fef2d7c429
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: NOT_DEADGEHOG_MASK
+    material: player_head
+    name: "Not-Dead-Gehog Mask"
+    rarity: UNCOMMON
+    default_statistics:
+      intelligence: 15
+    unavailable: "Needs the Rift"
+    lore:
+      - "§7Rift Time: §a+30s"
+      - ""
+      - "§6Ability: Helmets All The Way Up "
+      - "§7Regain §a+1ф §7when killing a monster."
+    components:
+      - id: SKULL_HEAD
+        texture: 79a8a0b2fc34576b13c7af02079074f75e26bb49244eea5e8841f0b13fa7f062
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: OXFORD_SHOES
+    material: leather_boots
+    name: "Oxford Shoes"
+    rarity: RARE
+    default_statistics:
+      health: 25
+      defense: 10
+    unavailable: "Source unconfirmed"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '25'
+        g: '169'
+        b: '206'
+  - id: PERFECT_BOOTS_12
+    material: diamond_boots
+    name: "Perfect Boots - Tier XII"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 310
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Boots 11"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_BOOTS_11
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_BOOTS_12
+              amount: 1
+  - id: PERFECT_BOOTS_4
+    material: diamond_boots
+    name: "Perfect Boots - Tier IV"
+    rarity: EPIC
+    default_statistics:
+      defense: 150
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Boots 3"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_BOOTS_3
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_BOOTS_4
+              amount: 1
+  - id: PERFECT_BOOTS_8
+    material: diamond_boots
+    name: "Perfect Boots - Tier VIII"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 230
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Boots 7"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_BOOTS_7
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_BOOTS_8
+              amount: 1
+  - id: PERFECT_CHESTPLATE_11
+    material: diamond_chestplate
+    name: "Perfect Chestplate - Tier XI"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 360
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Chestplate 10"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_CHESTPLATE_10
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_CHESTPLATE_11
+              amount: 1
+  - id: PERFECT_CHESTPLATE_3
+    material: diamond_chestplate
+    name: "Perfect Chestplate - Tier III"
+    rarity: RARE
+    default_statistics:
+      defense: 200
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Chestplate 2"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_CHESTPLATE_2
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_CHESTPLATE_3
+              amount: 1
+  - id: PERFECT_CHESTPLATE_7
+    material: diamond_chestplate
+    name: "Perfect Chestplate - Tier VII"
+    rarity: EPIC
+    default_statistics:
+      defense: 280
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Chestplate 6"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_CHESTPLATE_6
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_CHESTPLATE_7
+              amount: 1
+  - id: PERFECT_HELMET_10
+    material: diamond_helmet
+    name: "Perfect Helmet - Tier X"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 290
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Helmet 9"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_HELMET_9
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_HELMET_10
+              amount: 1
+  - id: PERFECT_HELMET_2
+    material: diamond_helmet
+    name: "Perfect Helmet - Tier II"
+    rarity: RARE
+    default_statistics:
+      defense: 130
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Helmet 1"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_HELMET_1
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_HELMET_2
+              amount: 1
+  - id: PERFECT_HELMET_6
+    material: diamond_helmet
+    name: "Perfect Helmet - Tier VI"
+    rarity: EPIC
+    default_statistics:
+      defense: 210
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Helmet 5"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_HELMET_5
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_HELMET_6
+              amount: 1
+  - id: PERFECT_LEGGINGS_1
+    material: diamond_leggings
+    name: "Perfect Leggings - Tier I"
+    rarity: RARE
+    default_statistics:
+      defense: 140
+    source: "Crafted from 7 Enchanted Diamond Block"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_LEGGINGS_1
+              amount: 1
+  - id: PERFECT_LEGGINGS_13
+    material: diamond_leggings
+    name: "Perfect Leggings - Tier XIII"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 380
+    unavailable: "Source unconfirmed"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+  - id: PERFECT_LEGGINGS_5
+    material: diamond_leggings
+    name: "Perfect Leggings - Tier V"
+    rarity: EPIC
+    default_statistics:
+      defense: 220
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Leggings 4"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_LEGGINGS_4
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_LEGGINGS_5
+              amount: 1
+  - id: PERFECT_LEGGINGS_9
+    material: diamond_leggings
+    name: "Perfect Leggings - Tier IX"
+    rarity: LEGENDARY
+    default_statistics:
+      defense: 300
+    source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Leggings 8"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_DIAMOND_BLOCK
+                amount: 1
+              B:
+                type: PERFECT_LEGGINGS_8
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: PERFECT_LEGGINGS_9
+              amount: 1
+  - id: PUFFERFISH_HAT_CELEBRATION
+    material: player_head
+    name: "Pufferfish Hat"
+    rarity: COMMON
+    default_statistics:
+      health: 20
+      strength: 10
+    unavailable: "Needs the Fishing Festival"
+    lore:
+      - "§9Thorns V"
+      - "§7Grants a §a50% §7chance to rebound §a15%"
+      - "§7of damage dealt back at the attacker."
+      - ""
+      - "§6Ability: Spiky "
+      - "§7While wearing, your attacks have a"
+      - "§7chance to deal §a10 damage plus 20%"
+      - "§7of your Strength to nearby enemies!"
+      - ""
+      - "§8Not active yet: Thorns V and Spiky are not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: 44f7f2203e3a850b6c83dce47fd6714a62e4d7648c16ed1fd9dc8168ab3c484f
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: RETRO_ENCABULATING_VISOR
+    material: player_head
+    name: "Retro-Encabulating Visor"
+    rarity: MYTHIC
+    default_statistics:
+      intelligence: -50
+    unavailable: "Needs the Rift"
+    lore:
+      - "§7Lets you see presumably invisible"
+      - "§7cables when worn."
+      - ""
+      - "§8Kloon built this in a cave!"
+      - "§8With a bunch of scraps!"
+    components:
+      - id: SKULL_HEAD
+        texture: 6e21a315121df0199ac831642e8a546adbb5ed361651ffa4d69466d992796128
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: SALMON_HELMET_NEW
+    material: leather_helmet
+    name: "Salmon Helmet"
+    rarity: RARE
+    default_statistics:
+      health: 100
+      defense: 30
+      sea_creature_chance: 1.5
+    source: "Crafted from 5 Enchanted Raw Salmon"
+    lore:
+      - "§6Ability: Water Burst  §e§lSNEAK"
+      - "§7When wearing the full set, grants the"
+      - "§7wearer with the ability to §aburst"
+      - "§aforward§7 when sneaking in water."
+      - "§8Mana Cost: §b20"
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 13§c."
+      - ""
+      - "§8Not active yet: Water Burst needs water bursting"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '193'
+        g: '60'
+        b: '15'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+            ingredients:
+              A:
+                type: ENCHANTED_RAW_SALMON
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SALMON_HELMET_NEW
+              amount: 1
+  - id: SLIME_HAT
+    material: player_head
+    name: "Slime Hat"
+    rarity: COMMON
+    default_statistics:
+      health: 50
+    source: "Crafted from 8 Slime Ball"
+    lore:
+      - "§7Grants immunity to knockback from"
+      - "§7mobs."
+    components:
+      - id: SKULL_HEAD
+        texture: a20e84d32d1e9c919d3fdbb53f2b37ba274c121c57b2810e5a472f40dacf004f
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AAA
+            ingredients:
+              A:
+                type: SLIME_BALL
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SLIME_HAT
+              amount: 1
+  - id: SUNFLOWER_HEAD
+    material: player_head
+    name: "Sunflower Head"
+    rarity: UNCOMMON
+    default_statistics:
+      farming_fortune: 10
+    source: "Crafted from 8 Enchanted Sunflower"
+    lore:
+      - "§6Ability: Sparkle  §e§lRIGHT CLICK"
+      - "§7Spread happiness to someone one §cs§6p§ea§ar§bk§dl§ce §7at"
+      - "§7a time."
+      - "§8Cooldown: §a5s"
+      - ""
+      - "§8Not active yet: Sparkle is not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: f34c2716a56557cc79333ab50391ca7a04bb27389198b57f41b244b001dff050
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_SUNFLOWER
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SUNFLOWER_HEAD
+              amount: 1
+  - id: VAMPIRE_MASK
+    material: player_head
+    name: "Vampire Mask"
+    rarity: RARE
+    default_statistics:
+      defense: 111
+    unavailable: "Needs the Rift"
+    lore:
+      - "§6Ability: Rejuvenate "
+      - "§7While wearing, drains §a5 §7health per"
+      - "§7second from all monsters within §e8"
+      - "§7blocks."
+    components:
+      - id: SKULL_HEAD
+        texture: 8d44756e0b4ece8d746296a3d5e297e1415f4ba17647ffe228385383d161a9
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: WARM_WIZARD_FACE_2
+    material: player_head
+    name: "Warmer Wizard Face"
+    rarity: MYTHIC
+    default_statistics:
+      intelligence: 26
+    unavailable: "Needs the Rift"
+    lore:
+      - "§7Rift Time: §a+130s"
+      - "§7Hearts: §c+1"
+      - ""
+      - "§6Ability: Wizards All The Way Around "
+      - "§7Regain §a+2ф §7when killing a monster."
+      - ""
+      - "§7If you would take §c❤ §7damage, take"
+      - "§c0.5❤ §7less."
+      - ""
+      - "§4☠ §cRequires §5Vampire Slayer 4§c."
+    components:
+      - id: SKULL_HEAD
+        texture: 5d98a12f32a0284b74fefb9e982a1e9ec2487766470aa1230f6f26f9aace3de6
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - A
+              - B
+            ingredients:
+              A:
+                type: WIZARD_FACE
+                amount: 1
+              B:
+                type: ANTI_BITE_SCARF_2
+                amount: 1
+            result:
+              type: WARM_WIZARD_FACE_2
+              amount: 1

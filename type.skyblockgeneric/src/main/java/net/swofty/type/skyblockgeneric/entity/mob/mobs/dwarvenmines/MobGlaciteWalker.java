@@ -120,7 +120,11 @@ public class MobGlaciteWalker extends BestiaryMob implements RegionPopulator {
 			@Override
 			public @NonNull List<LootRecord> getLootTable() {
 				return List.of(
-						new LootRecord(ItemType.GLACITE_JEWEL, 1, 0.5)
+						new LootRecord(ItemType.GLACITE_JEWEL, 1, 0.5),
+						new LootRecord(ItemType.GLACITE_HELMET, 1, 0.125),
+						new LootRecord(ItemType.GLACITE_CHESTPLATE, 1, 0.125),
+						new LootRecord(ItemType.GLACITE_LEGGINGS, 1, 0.125),
+						new LootRecord(ItemType.GLACITE_BOOTS, 1, 0.125)
 				);
 			}
 

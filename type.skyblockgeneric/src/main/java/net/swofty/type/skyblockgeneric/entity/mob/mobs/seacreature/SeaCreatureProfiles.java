@@ -70,6 +70,11 @@ public final class SeaCreatureProfiles {
             .mobTypes(MobType.AQUATIC, MobType.ARCANE)
             .damageCooldownMs(450)
             .fishingXpReward(150).xpOrbs(12)
+            .lootTable(drops(
+                    new SkyBlockLootTable.LootRecord(ItemType.FAIRY_HELMET, 1, 1.25),
+                    new SkyBlockLootTable.LootRecord(ItemType.FAIRY_CHESTPLATE, 1, 1.25),
+                    new SkyBlockLootTable.LootRecord(ItemType.FAIRY_LEGGINGS, 1, 1.25),
+                    new SkyBlockLootTable.LootRecord(ItemType.FAIRY_BOOTS, 1, 1.25)))
             .build();
 
     public static final SeaCreatureProfile SEA_ARCHER = SeaCreatureProfile.builder("SEA_ARCHER")
@@ -148,7 +153,8 @@ public final class SeaCreatureProfiles {
             .mobTypes(MobType.AQUATIC, MobType.ELUSIVE)
             .damageCooldownMs(300)
             .fishingXpReward(7500).xpOrbs(60)
-            .lootTable(drops(new SkyBlockLootTable.LootRecord(ItemType.FISH_AFFINITY_TALISMAN, 1, 30)))
+            .lootTable(drops(new SkyBlockLootTable.LootRecord(ItemType.FISH_AFFINITY_TALISMAN, 1, 30),
+                    new SkyBlockLootTable.LootRecord(ItemType.WATER_HYDRA_HEAD, 1, 14)))
             .build();
 
     public static final SeaCreatureProfile THE_SEA_EMPEROR = SeaCreatureProfile.builder("THE_SEA_EMPEROR")
