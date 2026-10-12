@@ -39,8 +39,8 @@ class MuseumMaxGrantTest {
         int expected = 0;
         for (MuseumEntry entry : CATALOGUE.all()) {
             if (!entry.isAvailable()) continue;
-            expected += entry.requiredItemTypes().size();
-            assertEquals(entry.requiredItemTypes().size(), data.itemsFor(entry, true).size(), entry.id());
+            expected += entry.grantableItemTypes().size();
+            assertEquals(entry.grantableItemTypes().size(), data.itemsFor(entry, true).size(), entry.id());
             assertTrue(data.isCredited(entry.id()), entry.id());
         }
         assertEquals(expected, granted);
@@ -52,6 +52,37 @@ class MuseumMaxGrantTest {
         assertTrue(specials > MuseumCategory.SPECIAL_ITEM_LIMIT, "the Special cap is bypassed only if it is exceeded");
         assertEquals(specials, CATALOGUE.entries(MuseumCategory.SPECIAL).stream()
                 .filter(entry -> data.isCredited(entry.id())).count());
+    }
+
+    @Test
+    void maxProfileGivesEveryAlternateVariantNotOnlyTheTopItem() {
+        DatapointMuseum.MuseumData data = new DatapointMuseum.MuseumData();
+        MuseumService.grantCopies(CATALOGUE, data);
+
+        int alternates = 0;
+        for (MuseumEntry entry : CATALOGUE.all()) {
+            if (!entry.isAvailable() || entry.mapped().isEmpty()) continue;
+            Set<ItemType> held = new HashSet<>();
+            data.itemsFor(entry, true).forEach(item -> held.add(item.getAttributeHandler().getPotentialType()));
+            for (String mappedId : entry.mapped()) {
+                ItemType type = ItemType.get(mappedId);
+                if (type == null) continue;
+                alternates++;
+                assertTrue(held.contains(type), entry.id() + " is missing " + mappedId);
+            }
+        }
+        assertTrue(alternates > 0);
+        assertTrue(data.getCurrentlyInMuseum().stream().noneMatch(item -> soulBound(item) != null));
+    }
+
+    @Test
+    void anExistingMainItemDoesNotBlockTheAlternatesOnARerun() {
+        MuseumEntry entry = CATALOGUE.all().stream().filter(found -> found.isAvailable() && !found.isSet() && !found.mapped().isEmpty())
+                .findFirst().orElseThrow();
+        DatapointMuseum.MuseumData data = new DatapointMuseum.MuseumData();
+        data.grant(entry, tracked(ItemType.get(entry.id())));
+        MuseumService.grantCopies(CATALOGUE, data);
+        assertEquals(entry.grantableItemTypes().size(), data.itemsFor(entry, true).size(), entry.id());
     }
 
     @Test

@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public record MuseumEntry(
         String id,
@@ -28,6 +29,11 @@ public record MuseumEntry(
 
     public List<ItemType> requiredItemTypes() {
         return requiredItemIds().stream().map(ItemType::get).filter(Objects::nonNull).toList();
+    }
+
+    public List<ItemType> grantableItemTypes() {
+        return Stream.concat(requiredItemIds().stream(), isSet() ? Stream.<String>empty() : mapped.stream())
+                .map(ItemType::get).filter(Objects::nonNull).distinct().toList();
     }
 
     public boolean isAvailable() {

@@ -15,6 +15,8 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.ItemPriceCalculator;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -223,10 +225,13 @@ public final class MuseumService {
         adopt(catalogue, data);
         int granted = 0;
         for (MuseumEntry entry : catalogue.all()) {
-            if (!entry.isAvailable() || !data.itemsFor(entry, true).isEmpty() || !data.itemsFor(entry, false).isEmpty()) {
-                continue;
+            if (!entry.isAvailable()) continue;
+            Set<ItemType> held = new HashSet<>();
+            for (boolean current : new boolean[]{true, false}) {
+                data.itemsFor(entry, current).forEach(item -> held.add(item.getAttributeHandler().getPotentialType()));
             }
-            for (ItemType type : entry.requiredItemTypes()) {
+            for (ItemType type : entry.grantableItemTypes()) {
+                if (!held.add(type)) continue;
                 data.grant(entry, staffCopy(type));
                 granted++;
             }
