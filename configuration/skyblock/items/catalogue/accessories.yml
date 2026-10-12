@@ -22,6 +22,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/amber_necklace
   - id: AMETHYST_GAUNTLET
     material: paper
     name: "Amethyst Gauntlet"
@@ -45,6 +47,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/amethyst_gauntlet
   - id: ANGLER_BELT
     material: paper
     name: "Angler Belt"
@@ -68,6 +72,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/angler/angler_belt
   - id: ANGLER_BRACELET
     material: paper
     name: "Angler Bracelet"
@@ -91,6 +97,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/angler/angler_bracelet
   - id: ANGLER_CLOAK
     material: paper
     name: "Angler Cloak"
@@ -114,6 +122,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/angler/angler_cloak
   - id: ANGLER_NECKLACE
     material: paper
     name: "Angler Necklace"
@@ -137,6 +147,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/angler/angler_necklace
   - id: ARACHNE_BELT
     material: paper
     name: "Arachne's Belt"
@@ -159,6 +171,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/combat_1/arachne_belt
   - id: ARACHNE_CLOAK
     material: paper
     name: "Arachne's Cloak"
@@ -181,6 +195,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/combat_1/arachne_cloak
   - id: ARACHNE_GLOVES
     material: paper
     name: "Arachne's Gloves"
@@ -203,6 +219,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/combat_1/arachne_gloves
   - id: ARACHNE_NECKLACE
     material: paper
     name: "Arachne's Necklace"
@@ -225,6 +243,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/combat_1/arachne_necklace
   - id: BACKWATER_BELT
     material: paper
     name: "Backwater Belt"
@@ -246,6 +266,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/bayou/backwater_belt
   - id: BACKWATER_CLOAK
     material: paper
     name: "Backwater Cloak"
@@ -267,6 +289,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/bayou/backwater_cloak
   - id: BACKWATER_GLOVES
     material: paper
     name: "Backwater Gloves"
@@ -288,6 +312,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/bayou/backwater_gloves
   - id: BACKWATER_NECKLACE
     material: paper
     name: "Backwater Necklace"
@@ -309,6 +335,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/bayou/backwater_necklace
   - id: BLESSED_FROG_BRONZE
     material: paper
     name: "Blessed Frog BRONZE"
@@ -328,6 +356,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/blessed_frog_bronze
   - id: BLESSED_FROG_DIAMOND
     material: paper
     name: "Blessed Frog DIAMOND"
@@ -347,6 +377,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/blessed_frog_diamond
   - id: BLESSED_FROG_GOLD
     material: paper
     name: "Blessed Frog GOLD"
@@ -366,6 +398,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/blessed_frog_gold
   - id: BLESSED_FROG_SILVER
     material: paper
     name: "Blessed Frog SILVER"
@@ -385,6 +419,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/blessed_frog_silver
   - id: BLOSSOM_BELT
     material: paper
     name: "Blossom Belt"
@@ -410,6 +446,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/blossom/blossom_belt
   - id: BLOSSOM_BRACELET
     material: paper
     name: "Blossom Bracelet"
@@ -435,6 +473,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/blossom/blossom_bracelet
   - id: BLOSSOM_CLOAK
     material: paper
     name: "Blossom Cloak"
@@ -460,6 +500,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/blossom/blossom_cloak
   - id: BLOSSOM_NECKLACE
     material: paper
     name: "Blossom Necklace"
@@ -485,6 +527,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/blossom/blossom_necklace
   - id: BULLFROG_BRONZE
     material: paper
     name: "Bullfrog BRONZE"
@@ -501,6 +545,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/bullfrog_bronze
   - id: BULLFROG_DIAMOND
     material: paper
     name: "Bullfrog DIAMOND"
@@ -517,6 +563,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/bullfrog_diamond
   - id: BULLFROG_GOLD
     material: paper
     name: "Bullfrog GOLD"
@@ -533,6 +581,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/bullfrog_gold
   - id: BULLFROG_SILVER
     material: paper
     name: "Bullfrog SILVER"
@@ -549,6 +599,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/bullfrog_silver
   - id: CAMPAIGN_POSTER
     material: filled_map
     name: "Campaign Poster"
@@ -584,6 +636,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/cave_frog_bronze
   - id: CAVE_FROG_DIAMOND
     material: paper
     name: "Cave Frog DIAMOND"
@@ -600,6 +654,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/cave_frog_diamond
   - id: CAVE_FROG_GOLD
     material: paper
     name: "Cave Frog GOLD"
@@ -616,6 +672,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/cave_frog_gold
   - id: CAVE_FROG_SILVER
     material: paper
     name: "Cave Frog SILVER"
@@ -632,6 +690,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/cave_frog_silver
   - id: CENTURY_MEMENTO_BLUE
     material: player_head
     name: "Cake Slice of the Century"
@@ -738,6 +798,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/collections/clay/clay_bracelet
   - id: CLOWNFISH_CLOAK
     material: paper
     name: "Tropical Cloak"
@@ -765,6 +827,8 @@ items:
             result:
               type: CLOWNFISH_CLOAK
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/collections/clownfish/clownfish_cloak
   - id: COMMON_FROG_BRONZE
     material: paper
     name: "Common Frog BRONZE"
@@ -781,6 +845,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/common_frog_bronze
   - id: COMMON_FROG_DIAMOND
     material: paper
     name: "Common Frog DIAMOND"
@@ -797,6 +863,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/common_frog_diamond
   - id: COMMON_FROG_GOLD
     material: paper
     name: "Common Frog GOLD"
@@ -813,6 +881,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/common_frog_gold
   - id: COMMON_FROG_SILVER
     material: paper
     name: "Common Frog SILVER"
@@ -829,6 +899,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/common_frog_silver
   - id: DAVIDS_CLOAK
     material: paper
     name: "David's Cloak"
@@ -851,6 +923,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/equipment/davids_cloak_1
   - id: DISINFESTOR_GLOVES
     material: paper
     name: "Disinfestor Gloves"
@@ -864,6 +938,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/equipment/t1/disinfestor_gloves
   - id: DIVAN_PENDANT
     material: paper
     name: "Pendant of Divan"
@@ -893,6 +969,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/uncategorized/divan_pendant
   - id: DRAGONFADE_CLOAK
     material: paper
     name: "Dragonfade Cloak"
@@ -917,6 +995,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/combat_3/equipment/dragonfade_cloak
   - id: DRAGONFUSE_GLOVE
     material: paper
     name: "Dragonfuse Glove"
@@ -941,6 +1021,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/combat_3/equipment/dragonfuse_glove
   - id: DREAMSPIRE_TORCH
     material: redstone_torch
     name: "Dreamspire Torch"
@@ -976,6 +1058,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/uncategorized/dwarven_handwarmers
   - id: ENDER_BELT
     material: paper
     name: "Ender Belt"
@@ -998,6 +1082,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/combat_3/equipment/ender_belt
   - id: ENDER_CLOAK
     material: paper
     name: "Ender Cloak"
@@ -1020,6 +1106,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/combat_3/equipment/ender_cloak
   - id: ENDER_GAUNTLET
     material: paper
     name: "Ender Gauntlet"
@@ -1042,6 +1130,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/combat_3/equipment/ender_gauntlet
   - id: ENDER_NECKLACE
     material: paper
     name: "Ender Necklace"
@@ -1064,6 +1154,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/combat_3/equipment/ender_necklace
   - id: ENIGMA_CLOAK
     material: paper
     name: "Enigma Cloak"
@@ -1085,6 +1177,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/equipment/enigma_cloak
   - id: EXPENSIVE_TOY
     material: player_head
     name: "Expensive Toy"
@@ -1130,6 +1224,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/exploding_frog_bronze
   - id: EXPLODING_FROG_DIAMOND
     material: paper
     name: "Exploding Frog DIAMOND"
@@ -1148,6 +1244,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/exploding_frog_diamond
   - id: EXPLODING_FROG_GOLD
     material: paper
     name: "Exploding Frog GOLD"
@@ -1166,6 +1264,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/exploding_frog_gold
   - id: EXPLODING_FROG_SILVER
     material: paper
     name: "Exploding Frog SILVER"
@@ -1184,6 +1284,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/exploding_frog_silver
   - id: FINWAVE_BELT
     material: paper
     name: "Finwave Belt"
@@ -1201,6 +1303,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/fishing_equipment/finwave_belt
   - id: FINWAVE_CLOAK
     material: paper
     name: "Finwave Cloak"
@@ -1218,6 +1322,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/fishing_equipment/finwave_cloak
   - id: FINWAVE_GLOVES
     material: paper
     name: "Finwave Gloves"
@@ -1235,6 +1341,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/fishing_equipment/finwave_gloves
   - id: FRENCH_BREAD
     material: player_head
     name: "French Bread"
@@ -1277,6 +1385,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/frozen_amulet
   - id: GILLSPLASH_BELT
     material: paper
     name: "Gillsplash Belt"
@@ -1294,6 +1404,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/fishing_equipment/gillsplash_belt
   - id: GILLSPLASH_CLOAK
     material: paper
     name: "Gillsplash Cloak"
@@ -1311,6 +1423,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/fishing_equipment/gillsplash_cloak
   - id: GILLSPLASH_GLOVES
     material: paper
     name: "Gillsplash Gloves"
@@ -1328,6 +1442,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/fishing_equipment/gillsplash_gloves
   - id: GOLDEN_BELT
     material: paper
     name: "Golden Belt"
@@ -1351,6 +1467,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/zones/mountaintop/misc/golden_belt
   - id: GOLDEN_COLLAR
     material: player_head
     name: "Golden Collar"
@@ -1392,6 +1510,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/great_spook/great_spook_belt
   - id: GREAT_SPOOK_CLOAK
     material: paper
     name: "Great Spook Cloak"
@@ -1410,6 +1530,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/great_spook/great_spook_cloak
   - id: GREAT_SPOOK_GLOVES
     material: paper
     name: "Great Spook Gloves"
@@ -1428,6 +1550,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/great_spook/great_spook_gloves
   - id: GREAT_SPOOK_NECKLACE
     material: paper
     name: "Great Spook Necklace"
@@ -1446,6 +1570,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/great_spook/great_spook_necklace
   - id: HIGHLANDS_FROG_BRONZE
     material: paper
     name: "Highlands Frog BRONZE"
@@ -1462,6 +1588,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/highlands_frog_bronze
   - id: HIGHLANDS_FROG_DIAMOND
     material: paper
     name: "Highlands Frog DIAMOND"
@@ -1478,6 +1606,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/highlands_frog_diamond
   - id: HIGHLANDS_FROG_GOLD
     material: paper
     name: "Highlands Frog GOLD"
@@ -1494,6 +1624,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/highlands_frog_gold
   - id: HIGHLANDS_FROG_SILVER
     material: paper
     name: "Highlands Frog SILVER"
@@ -1510,6 +1642,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/highlands_frog_silver
   - id: HONEYCOMB_NECKLACE
     material: paper
     name: "Honeycomb Necklace"
@@ -1527,6 +1661,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/equipment/honeycomb_necklace
   - id: ICHTHYIC_BELT
     material: paper
     name: "Ichthyic Belt"
@@ -1556,6 +1692,8 @@ items:
             result:
               type: ICHTHYIC_BELT
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/fishing_equipment/ichthyic_belt
   - id: ICHTHYIC_CLOAK
     material: paper
     name: "Ichthyic Cloak"
@@ -1572,6 +1710,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/fishing_equipment/ichthyic_cloak
   - id: ICHTHYIC_GLOVES
     material: paper
     name: "Ichthyic Gloves"
@@ -1601,6 +1741,8 @@ items:
             result:
               type: ICHTHYIC_GLOVES
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/fishing_equipment/ichthyic_gloves
   - id: JADE_BELT
     material: paper
     name: "Jade Belt"
@@ -1624,6 +1766,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/jade_belt
   - id: KNUCKLE_SANDWICH
     material: paper
     name: "Knuckle Sandwich"
@@ -1642,6 +1786,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/knuckle_sandwich
   - id: LEAP_FROG_BRONZE
     material: paper
     name: "Leap Frog BRONZE"
@@ -1658,6 +1804,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/leap_frog_bronze
   - id: LEAP_FROG_DIAMOND
     material: paper
     name: "Leap Frog DIAMOND"
@@ -1674,6 +1822,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/leap_frog_diamond
   - id: LEAP_FROG_GOLD
     material: paper
     name: "Leap Frog GOLD"
@@ -1690,6 +1840,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/leap_frog_gold
   - id: LEAP_FROG_SILVER
     material: paper
     name: "Leap Frog SILVER"
@@ -1706,6 +1858,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/leap_frog_silver
   - id: LEECH_BELT
     material: paper
     name: "Leech Belt"
@@ -1725,6 +1879,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/equipment/t2/leech_belt
   - id: LOCKED_BALLOT_BOX
     material: player_head
     name: "Locked Ballot Box"
@@ -1774,6 +1930,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/lotus/lotus_belt
   - id: LOTUS_BRACELET
     material: paper
     name: "Peony Bracelet"
@@ -1799,6 +1957,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/lotus/lotus_bracelet
   - id: LOTUS_CLOAK
     material: paper
     name: "Peony Cloak"
@@ -1824,6 +1984,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/lotus/lotus_cloak
   - id: LOTUS_NECKLACE
     material: paper
     name: "Peony Necklace"
@@ -1849,6 +2011,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/lotus/lotus_necklace
   - id: LUMINOUS_BRACELET
     material: paper
     name: "Luminous Bracelet"
@@ -1870,6 +2034,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/farming_1/luminous_bracelet
   - id: MAGMA_LORD_GAUNTLET
     material: paper
     name: "Magma Lord Gauntlet"
@@ -1911,6 +2077,8 @@ items:
             result:
               type: MAGMA_LORD_GAUNTLET
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/magma_lord_gauntlet
   - id: MANGROVE_GRIPPERS
     material: paper
     name: "Mangrove Grippers"
@@ -1928,6 +2096,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/equipment/mangrove/mangrove_grippers
   - id: MANGROVE_LOCKET
     material: paper
     name: "Mangrove Locket"
@@ -1956,6 +2126,8 @@ items:
             result:
               type: MANGROVE_LOCKET
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/equipment/mangrove/mangrove_locket
   - id: MANGROVE_VINE
     material: paper
     name: "Moonglade Belt"
@@ -1989,6 +2161,8 @@ items:
             result:
               type: MANGROVE_VINE
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/equipment/mangrove/mangrove_vine
   - id: MEDIOCRE_FISH_DRAWING
     material: filled_map
     name: "Mediocre Drawing of a Fish"
@@ -2038,6 +2212,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/mithril_cloak
   - id: MOLDY_MUFFIN
     material: player_head
     name: "Moldy Muffin"
@@ -2104,6 +2280,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/farming_1/pelt_belt
   - id: PESTHUNTERS_BELT
     material: paper
     name: "Pesthunter's Belt"
@@ -2127,6 +2305,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/pesthunters/pesthunters_belt
   - id: PESTHUNTERS_CLOAK
     material: paper
     name: "Pesthunter's Cloak"
@@ -2150,6 +2330,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/pesthunters/pesthunters_cloak
   - id: PESTHUNTERS_GLOVES
     material: paper
     name: "Pesthunter's Gloves"
@@ -2173,6 +2355,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/pesthunters/pesthunters_gloves
   - id: PESTHUNTERS_NECKLACE
     material: paper
     name: "Pesthunter's Necklace"
@@ -2196,6 +2380,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/equipment/pesthunters/pesthunters_necklace
   - id: PEST_VEST
     material: paper
     name: "Pest Vest"
@@ -2214,6 +2400,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/community_center/mayor/finnegan/pest_vest
   - id: POTATO_BASKET
     material: player_head
     name: "Basket of Hope from the Great Potato War"
@@ -2261,6 +2449,8 @@ items:
             result:
               type: PRISMARINE_NECKLACE
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/collections/prismarine/prismarine_necklace
   - id: PUDDLE_JUMPER_BRONZE
     material: paper
     name: "Puddle Jumper BRONZE"
@@ -2278,6 +2468,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/puddle_jumper_bronze
   - id: PUDDLE_JUMPER_DIAMOND
     material: paper
     name: "Puddle Jumper DIAMOND"
@@ -2295,6 +2487,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/puddle_jumper_diamond
   - id: PUDDLE_JUMPER_GOLD
     material: paper
     name: "Puddle Jumper GOLD"
@@ -2312,6 +2506,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/puddle_jumper_gold
   - id: PUDDLE_JUMPER_SILVER
     material: paper
     name: "Puddle Jumper SILVER"
@@ -2329,6 +2525,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/puddle_jumper_silver
   - id: REALITY_HOPPER_BRONZE
     material: paper
     name: "Reality Hopper BRONZE"
@@ -2346,6 +2544,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/reality_hopper_bronze
   - id: REALITY_HOPPER_DIAMOND
     material: paper
     name: "Reality Hopper DIAMOND"
@@ -2363,6 +2563,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/reality_hopper_diamond
   - id: REALITY_HOPPER_GOLD
     material: paper
     name: "Reality Hopper GOLD"
@@ -2380,6 +2582,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/reality_hopper_gold
   - id: REALITY_HOPPER_SILVER
     material: paper
     name: "Reality Hopper SILVER"
@@ -2397,6 +2601,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/reality_hopper_silver
   - id: RED_BELT
     material: paper
     name: "Red Belt"
@@ -2418,6 +2624,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/events/april_fools/red_belt
   - id: RIFT_COMPLETION_MEMENTO
     material: book
     name: "There and Back Again"
@@ -2466,6 +2674,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/equipment/necklace/rift_necklace_inside
   - id: RIFT_NECKLACE_OUTSIDE
     material: player_head
     name: "Rift Necklace"
@@ -2535,6 +2745,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/safari/safari_belt_common
   - id: SAPPHIRE_CLOAK
     material: paper
     name: "Sapphire Cloak"
@@ -2558,6 +2770,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/sapphire_cloak
   - id: SEA_FROG_BRONZE
     material: paper
     name: "Sea Frog BRONZE"
@@ -2574,6 +2788,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/sea_frog_bronze
   - id: SEA_FROG_DIAMOND
     material: paper
     name: "Sea Frog DIAMOND"
@@ -2590,6 +2806,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/sea_frog_diamond
   - id: SEA_FROG_GOLD
     material: paper
     name: "Sea Frog GOLD"
@@ -2606,6 +2824,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/sea_frog_gold
   - id: SEA_FROG_SILVER
     material: paper
     name: "Sea Frog SILVER"
@@ -2622,6 +2842,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/sea_frog_silver
   - id: SECRET_BINGO_MEMENTO
     material: player_head
     name: "Bingo's Secrets"
@@ -2665,6 +2887,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/zones/mountaintop/misc/shens_ringalia
   - id: SHINY_RELIC
     material: player_head
     name: "Shiny Relic #1-7"
@@ -2707,6 +2931,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/combat_1/shriveled_bracelet
   - id: SILKRIDER_SAFETY_BELT
     material: paper
     name: "Silkrider Safety Belt"
@@ -2725,6 +2951,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/equipment/t1/silkrider_safety_belt
   - id: SPARKLING_AMULET
     material: paper
     name: "Sparkling Amulet"
@@ -2738,6 +2966,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/safari/sparkling_amulet
   - id: SPLENDID_FISH_DRAWING
     material: filled_map
     name: "Splendid Drawing of a Fish"
@@ -2785,6 +3015,8 @@ items:
             result:
               type: SPONGE_BELT
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/collections/sponge/sponge_belt
   - id: SUNS_GRASP
     material: paper
     name: "Sun's Grasp"
@@ -2812,6 +3044,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/community_center/mayor/finnegan/suns_grasp
   - id: SYNTHESIZER_V1
     material: paper
     name: "Synthesizer v1"
@@ -2834,6 +3068,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/synthesizer_v1
   - id: SYNTHESIZER_V2
     material: paper
     name: "Synthesizer v2"
@@ -2858,6 +3094,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/synthesizer_v2
   - id: SYNTHESIZER_V3
     material: paper
     name: "Synthesizer v3"
@@ -2883,6 +3121,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/synthesizer_v3
   - id: THE_PRIMORDIAL
     material: paper
     name: "The Primordial"
@@ -2910,6 +3150,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/spider/accessories/the_primordial
   - id: TITANIUM_BELT
     material: paper
     name: "Titanium Belt"
@@ -2934,6 +3176,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_belt
   - id: TITANIUM_CLOAK
     material: paper
     name: "Titanium Cloak"
@@ -2958,6 +3202,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_cloak
   - id: TITANIUM_GAUNTLET
     material: paper
     name: "Titanium Gauntlet"
@@ -2982,6 +3228,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_gauntlet
   - id: TITANIUM_NECKLACE
     material: paper
     name: "Titanium Necklace"
@@ -3006,6 +3254,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_necklace
   - id: TORRHUS_BELT
     material: paper
     name: "Torrhus Belt"
@@ -3026,6 +3276,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/equipment/torrhus_belt
   - id: TREE_FROG_BRONZE
     material: paper
     name: "Tree Frog BRONZE"
@@ -3042,6 +3294,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/tree_frog_bronze
   - id: TREE_FROG_DIAMOND
     material: paper
     name: "Tree Frog DIAMOND"
@@ -3058,6 +3312,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/tree_frog_diamond
   - id: TREE_FROG_GOLD
     material: paper
     name: "Tree Frog GOLD"
@@ -3074,6 +3330,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/tree_frog_gold
   - id: TREE_FROG_SILVER
     material: paper
     name: "Tree Frog SILVER"
@@ -3090,6 +3348,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/tree_frog_silver
   - id: VEILSHROOM_BRACELET
     material: paper
     name: "Veilshroom Bracelet"
@@ -3107,6 +3367,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/equipment/veilshroom_bracelet
   - id: VERMIN_BELT
     material: paper
     name: "Vermin Belt"
@@ -3126,6 +3388,8 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/equipment/t3/vermin_belt
   - id: WETLANDS_FROG_BRONZE
     material: paper
     name: "Wetlands Frog BRONZE"
@@ -3142,6 +3406,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/wetlands_frog_bronze
   - id: WETLANDS_FROG_DIAMOND
     material: paper
     name: "Wetlands Frog DIAMOND"
@@ -3158,6 +3424,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/wetlands_frog_diamond
   - id: WETLANDS_FROG_GOLD
     material: paper
     name: "Wetlands Frog GOLD"
@@ -3174,6 +3442,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/wetlands_frog_gold
   - id: WETLANDS_FROG_SILVER
     material: paper
     name: "Wetlands Frog SILVER"
@@ -3190,6 +3460,8 @@ items:
               - "§7Bring this to §2Researcher Ribery §7on"
               - "§7the §3Lotus Atoll§7."
               - "§8§l* §8Soulbound §8§l*"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/trophy/frog/wetlands_frog_silver
   - id: WIZARD_PORTAL_MEMENTO
     material: player_head
     name: "Piece of Wizard Portal"
@@ -3239,3 +3511,5 @@ items:
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/events/easter/zorros_cape

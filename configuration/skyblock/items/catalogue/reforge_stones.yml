@@ -39,6 +39,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/amber_material
   - id: AOTE_STONE
     material: paper
     name: "Warped Stone"
@@ -78,6 +80,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/aote_stone
   - id: BEADY_EYES
     material: paper
     name: "Beady Eyes"
@@ -116,6 +120,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/beady_eyes
   - id: BLAZEN_SPHERE
     material: paper
     name: "Blazen Sphere"
@@ -154,6 +160,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/blazen_sphere
   - id: BLESSED_FRUIT
     material: paper
     name: "Blessed Fruit"
@@ -193,6 +201,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/blessed_fruit
   - id: BLOOMING_THORNS
     material: paper
     name: "Blooming Thorns"
@@ -232,6 +242,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/blooming_thorns
   - id: BOO_STONE
     material: player_head
     name: "Boo Stone"
@@ -300,6 +312,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/bulky_stone
   - id: BURROWING_SPORES
     material: paper
     name: "Burrowing Spores"
@@ -334,6 +348,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/burrowing_spores
   - id: CALCIFIED_HEART
     material: paper
     name: "Calcified Heart"
@@ -371,6 +387,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/calcified_heart
   - id: CANDY_CORN
     material: paper
     name: "Candy Corn"
@@ -405,6 +423,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/candy_corn
   - id: CLIPPED_WINGS
     material: paper
     name: "Clipped Wings"
@@ -442,6 +462,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/clipped_wings
   - id: DEEP_SEA_ORB
     material: paper
     name: "Deep Sea Orb"
@@ -476,6 +498,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/deep_sea_orb
   - id: DIAMOND_ATOM
     material: paper
     name: "Diamond Atom"
@@ -515,6 +539,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/diamond_atom
   - id: DIAMONITE
     material: paper
     name: "Diamonite"
@@ -554,6 +580,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/diamonite
   - id: DIRT_BOTTLE
     material: paper
     name: "Dirt Bottle"
@@ -589,6 +617,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/dirt_bottle
   - id: DRAGON_CLAW
     material: paper
     name: "Dragon Claw"
@@ -630,6 +660,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/dragon_claw
   - id: DRAGON_HORN
     material: paper
     name: "Dragon Horn"
@@ -674,6 +706,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/dragon_horn
   - id: DRAGON_SCALE
     material: paper
     name: "Dragon Scale"
@@ -717,6 +751,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/dragon_scale
   - id: DWARVEN_TREASURE
     material: paper
     name: "Dwarven Treasure"
@@ -755,6 +791,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/dwarven_treasure
   - id: ENDSTONE_GEODE
     material: paper
     name: "End Stone Geode"
@@ -794,6 +832,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/endstone_geode
   - id: EXTREMELY_MILD_ADHESIVE
     material: paper
     name: "Extremely Mild Adhesive"
@@ -831,6 +871,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/reforge_stones/extremely_mild_adhesive
   - id: FLOWERING_BOUQUET
     material: paper
     name: "Flowering Bouquet"
@@ -865,6 +907,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/flowering_bouquet
   - id: FRIGID_HUSK
     material: paper
     name: "Frigid Husk"
@@ -905,6 +949,8 @@ items:
         mythic_cost: 500000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/frigid_husk
   - id: FROZEN_BAUBLE
     material: paper
     name: "Frozen Bauble"
@@ -940,6 +986,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/frozen_bauble
   - id: FULL_JAW_FANGING_KIT
     material: paper
     name: "Full-Jaw Fanging Kit"
@@ -982,6 +1030,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/full_jaw_fanging_kit
   - id: GEOMETRIC_ODDITY
     material: paper
     name: "Geometric Oddity"
@@ -1026,6 +1076,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/geometric_oddity
   - id: GIANT_TOOTH
     material: paper
     name: "Giant Tooth"
@@ -1061,6 +1113,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/giant_tooth
   - id: GLEAMING_CRYSTAL
     material: paper
     name: "Gleaming Crystal"
@@ -1099,6 +1153,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/gleaming_crystal
   - id: HARDENED_WOOD
     material: paper
     name: "Hardened Wood"
@@ -1137,6 +1193,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/hardened_wood
   - id: HASHBROWN
     material: paper
     name: "Hashbrown"
@@ -1170,6 +1228,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/hashbrown
   - id: HOT_STUFF
     material: paper
     name: "Scorched Topaz"
@@ -1205,6 +1265,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/hot_stuff
   - id: JADERALD
     material: paper
     name: "Jaderald"
@@ -1242,6 +1304,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/jaderald
   - id: LAPIS_CRYSTAL
     material: paper
     name: "Lapis Crystal"
@@ -1273,6 +1337,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/lapis_crystal
   - id: LARGE_WALNUT
     material: paper
     name: "Large Walnut"
@@ -1309,6 +1375,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/large_walnut
   - id: LUCKY_DICE
     material: paper
     name: "Lucky Dice"
@@ -1343,6 +1411,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/lucky_dice
   - id: MANGROVE_GEM
     material: paper
     name: "Mangrove Gem"
@@ -1386,6 +1456,8 @@ items:
             result:
               type: MANGROVE_GEM
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/mangrove_gem
   - id: MANTID_CLAW
     material: paper
     name: "Mantid Claw"
@@ -1425,6 +1497,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/mantid_claw
   - id: MARSHROOM
     material: paper
     name: "Marshroom"
@@ -1463,6 +1537,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/reforge_stones/marshroom
   - id: MIDAS_JEWEL
     material: paper
     name: "Midas Jewel"
@@ -1511,6 +1587,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/midas_jewel
   - id: MOIL_LOG
     material: paper
     name: "Moil Log"
@@ -1543,6 +1621,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/moil_log
   - id: MOONGLADE_JEWEL
     material: paper
     name: "Moonglade Jewel"
@@ -1577,6 +1657,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/moonglade_jewel
   - id: MOONSTONE
     material: paper
     name: "Moonstone"
@@ -1623,6 +1705,8 @@ items:
             result:
               type: MOONSTONE
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/moonstone
   - id: MORNING_DEW
     material: paper
     name: "Morning Dew"
@@ -1662,6 +1746,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/safari/morning_dew
   - id: NECROMANCER_BROOCH
     material: paper
     name: "Necromancer's Brooch"
@@ -1698,6 +1784,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/necromancer_brooch
   - id: ONYX
     material: paper
     name: "Black Diamond"
@@ -1731,6 +1819,8 @@ items:
         mythic_cost: 5000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/onyx
   - id: OPTICAL_LENS
     material: paper
     name: "Optical Lens"
@@ -1774,6 +1864,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/optical_lens
   - id: OVERFLOWING_TRASH_CAN
     material: paper
     name: "Overflowing Trash Can"
@@ -1812,6 +1904,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/overflowing_trash_can
   - id: OVERGROWN_GRASS
     material: paper
     name: "Overgrown Grass"
@@ -1846,6 +1940,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/overgrown_grass
   - id: OVERPRICED_DRINK
     material: paper
     name: "Overpriced Drink"
@@ -1876,6 +1972,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/overpriced_drink
   - id: PETRIFIED_STARFALL
     material: paper
     name: "Petrified Starfall"
@@ -1916,6 +2014,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/petrified_starfall
   - id: POCKET_ICEBERG
     material: paper
     name: "Pocket Iceberg"
@@ -1956,6 +2056,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/pocket_iceberg
   - id: PRECURSOR_GEAR
     material: paper
     name: "Precursor Gear"
@@ -1997,6 +2099,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/precursor_gear
   - id: PREMIUM_FLESH
     material: paper
     name: "Premium Flesh"
@@ -2041,6 +2145,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/premium_flesh
   - id: PRESUMED_GALLON_OF_RED_PAINT
     material: paper
     name: "Presumed Gallon of Red Paint"
@@ -2082,6 +2188,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/presumed_gallon_of_red
   - id: PURE_MITHRIL
     material: paper
     name: "Pure Mithril"
@@ -2122,6 +2230,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/pure_mithril
   - id: RARE_DIAMOND
     material: paper
     name: "Rare Diamond"
@@ -2154,6 +2264,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/rare_diamond
   - id: RED_NOSE
     material: paper
     name: "Red Nose"
@@ -2197,6 +2309,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/red_nose
   - id: RED_SCARF
     material: paper
     name: "Red Scarf"
@@ -2240,6 +2354,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/red_scarf
   - id: REFINED_AMBER
     material: paper
     name: "Andesite Whetstone"
@@ -2277,6 +2393,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/refined_amber
   - id: ROCK_GEMSTONE
     material: paper
     name: "Dwarven Geode"
@@ -2316,6 +2434,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/rock_gemstone
   - id: RUSTY_ANCHOR
     material: paper
     name: "Rusty Anchor"
@@ -2351,6 +2471,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/rusty_anchor
   - id: SADAN_BROOCH
     material: paper
     name: "Sadan's Brooch"
@@ -2391,6 +2513,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/sadan_brooch
   - id: SALMON_OPAL
     material: paper
     name: "Kaleidoscopic Mineral"
@@ -2431,6 +2555,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/salmon_opal
   - id: SALT_CUBE
     material: paper
     name: "Salt Cube"
@@ -2464,6 +2590,8 @@ items:
         mythic_cost: 25000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/salt_cube
   - id: SHRIVELED_CORNEA
     material: paper
     name: "Shriveled Cornea"
@@ -2507,6 +2635,8 @@ items:
         mythic_cost: 500000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/shriveled_cornea
   - id: SKYMART_BROCHURE
     material: paper
     name: "SkyMart Brochure"
@@ -2540,6 +2670,8 @@ items:
         mythic_cost: 5000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/skymart_brochure
   - id: SPIRIT_DECOY
     material: paper
     name: "Spirit Stone"
@@ -2585,6 +2717,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/spirit_decoy
   - id: SQUEAKY_TOY
     material: paper
     name: "Squeaky Toy"
@@ -2624,6 +2758,8 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/squeaky_toy
   - id: SUNSTONE
     material: paper
     name: "Sunstone"
@@ -2670,6 +2806,8 @@ items:
             result:
               type: SUNSTONE
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/sunstone
   - id: SUSPICIOUS_VIAL
     material: paper
     name: "Suspicious Vial"
@@ -2710,6 +2848,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/suspicious_vial
   - id: TERRY_SNOWGLOBE
     material: paper
     name: "Terry's Snowglobe"
@@ -2744,6 +2884,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/terry_snowglobe
   - id: TITANIUM_TESSERACT
     material: paper
     name: "Titanium Tesseract"
@@ -2781,6 +2923,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/titanium_tesseract
   - id: TOIL_LOG
     material: paper
     name: "Rotting Branch"
@@ -2813,6 +2957,8 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/toil_log
   - id: WITHER_BLOOD
     material: paper
     name: "Wither Blood"
@@ -2850,3 +2996,5 @@ items:
         mythic_cost: 250000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/wither_blood
