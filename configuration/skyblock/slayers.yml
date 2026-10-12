@@ -46,7 +46,8 @@ slayers:
   - id: SVEN_PACKMASTER
     enabled: true
     unlock: { type: TARANTULA_BROODFATHER, tier: II }
-    targetMobTypes: [WOODLAND]
+    bossMobTypes: [WOODLAND]
+    targetMobIds: [RUIN_WOLF, OLD_WOLF]
     levels:
       - { level: 1, requiredXp: 10, title: Noob }
       - { level: 2, requiredXp: 30, title: Novice }
