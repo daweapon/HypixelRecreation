@@ -62,6 +62,7 @@ public class PlayerActionDamageMob implements HypixelEventClass {
                 * AttributeEffectService.outgoingDamageMultiplier(player.getHuntingData(), mob, false)
                 * net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.outgoingMultiplier(player, mob)
                 * net.swofty.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.outgoingMultiplier(player, mob)
+                * net.swofty.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.outgoingMultiplier(player, mob)
                 * net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.outgoingMultiplier(player, mob);
         boolean critical = hit.getValue();
 
@@ -79,6 +80,7 @@ public class PlayerActionDamageMob implements HypixelEventClass {
         if (!AttackService.applyHit(player, mob, damageAmount, critical)) return;
         net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.afterMeleeHit(player, mob, damageAmount, critical);
         net.swofty.type.skyblockgeneric.item.armor.ArmorHitEffects.onMeleeHit(player, mob);
+        net.swofty.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.onMeleeHit(player);
         player.getPetData().dispatch(new PetEvent.MeleeHit(player, player.getPetData().getEnabledPet(), mob, damageAmount));
 
         double ferocity = player.getStatistics().allStatistics().getOverall(ItemStatistic.FEROCITY);

@@ -28,7 +28,7 @@ public class BuildersWandAbility extends RegisteredAbility {
     private static boolean fillConnectedFaces(SkyBlockPlayer player, Pos origin, BlockFace face) {
         Material fillMaterial = Material.fromKey(player.getInstance().getBlock(origin).key());
         int blocksInInventory = player.countItem(ItemType.fromMaterial(fillMaterial));
-        int blockLimit = 164;
+        int blockLimit = 241;
         if (blocksInInventory < blockLimit)
             blockLimit = blocksInInventory;
 

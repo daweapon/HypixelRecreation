@@ -20,6 +20,13 @@ class EnchantLevelBoostTest {
     }
 
     @Test
+    void goldenBountyRaisesScavengerFiveToSix() {
+        assertEquals(6, EnchantLevelBoost.GOLDEN_BOUNTY.boosted(Map.of(EnchantmentType.SCAVENGER, 5)).get(EnchantmentType.SCAVENGER));
+        assertFalse(EnchantLevelBoost.GOLDEN_BOUNTY.appliesTo(Map.of(EnchantmentType.SCAVENGER, 4)));
+        assertFalse(EnchantLevelBoost.GOLDEN_BOUNTY.appliesTo(Map.of(EnchantmentType.SCAVENGER, 6)));
+    }
+
+    @Test
     void boostCanOnlyBeAppliedOnce() {
         Map<EnchantmentType, Integer> applied = EnchantLevelBoost.ENSNARED_SNAIL.boosted(Map.of(EnchantmentType.BANE_OF_ARTHROPODS, 6));
         assertFalse(EnchantLevelBoost.ENSNARED_SNAIL.appliesTo(applied));

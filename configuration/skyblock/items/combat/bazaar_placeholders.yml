@@ -3,30 +3,95 @@ items:
     material: paper
     name: "Amalgamated Crimsonite"
     rarity: RARE
+    source: "Crafted from Crimson Isle materials: 2 per craft from Enchanted Mycelium, Red Sand, Glowstone Dust, Magma Cream, Blaze Powder and Nether Wart, or 40 per craft from their compacted forms"
     components:
       - id: SELLABLE
         value: 33860.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " BC"
+              - "A D"
+              - "EF "
+            ingredients:
+              B:
+                type: ENCHANTED_GLOWSTONE_DUST
+                amount: 32
+              C:
+                type: ENCHANTED_MYCELIUM
+                amount: 8
+              A:
+                type: ENCHANTED_MAGMA_CREAM
+                amount: 32
+              D:
+                type: ENCHANTED_BLAZE_POWDER
+                amount: 32
+              E:
+                type: ENCHANTED_RED_SAND
+                amount: 8
+              F:
+                type: ENCHANTED_NETHER_WART
+                amount: 32
+            result:
+              type: AMALGAMATED_CRIMSONITE_NEW
+              amount: 2
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - " BC"
+              - "A D"
+              - "EF "
+            ingredients:
+              B:
+                type: ENCHANTED_GLOWSTONE
+                amount: 4
+              C:
+                type: ENCHANTED_MYCELIUM_CUBE
+                amount: 1
+              A:
+                type: WHIPPED_MAGMA_CREAM
+                amount: 4
+              D:
+                type: ENCHANTED_BLAZE_ROD
+                amount: 4
+              E:
+                type: ENCHANTED_RED_SAND_CUBE
+                amount: 1
+              F:
+                type: MUTANT_NETHER_WART
+                amount: 4
+            result:
+              type: AMALGAMATED_CRIMSONITE_NEW
+              amount: 40
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/slayer/blaze/tokens/amalgamated_crimsonite
   - id: ARACHNE_FANG
     material: paper
     name: "Arachne's Fang"
     rarity: UNCOMMON
+    unavailable: "Needs the Arachne boss fight (Arachne's Sanctuary and Arachne's Calling are not built)"
+    source: "10% drop from the Lv 300 Arachne (summoned with 4 Arachne's Calling in Arachne's Sanctuary)"
+    lore:
+      - "§7Straight from the spider's mouth."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/combat_1/arachnes_fang
   - id: ARACHNE_FRAGMENT
     material: paper
     name: "Arachne Fragment"
     rarity: RARE
+    unavailable: "Needs the Arachne boss fight and Garden visitors (neither is built)"
+    source: "Dropped by the Lv 300 Arachne in Spider's Den; Shaggy also gives one as a Garden visitor reward"
+    lore:
+      - "§7A fragment imbued with the power of"
+      - "§4Arachne§7."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/combat_1/arachne_fragment
   - id: BEZOS
@@ -97,10 +162,11 @@ items:
     material: quartz
     name: "Crystal Fragment"
     rarity: EPIC
+    unavailable: "Needs Zealots, the End Stone Protector fight and the Ender Dragon fight (none are built)"
+    source: "12.2% drop from Zealots holding an Ender Chest, End Stone Protector rewards (3 for 1st place, 1 for 2nd-5th) and destroying Ender Crystals in the Ender Dragon fight"
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/crystal_fragment
   - id: DIGESTED_MUSHROOMS
@@ -118,40 +184,70 @@ items:
     material: paper
     name: "Dungeon Chest Key"
     rarity: RARE
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "0.6% from Dungeon secrets on Catacombs Floor IV and above; also a minor Raffle of the Century reward"
+    lore:
+      - "§7Allows you to open an additional"
+      - "§7treasure chest at the end of a"
+      - "§7dungeon!"
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 5000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/dungeon_chest_key
   - id: DUNGEON_DECOY
     material: paper
     name: "Decoy"
     rarity: UNCOMMON
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon secrets"
+    lore:
+      - "§7Runs around and draws attention"
+      - "§7from nearby mobs, very handy for"
+      - "§7creating a distraction!"
+      - ""
+      - "§cDungeons only!"
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/decoy
   - id: DUNGEON_TRAP
     material: paper
     name: "Trap"
     rarity: UNCOMMON
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon secrets"
+    lore:
+      - "§7Place an explosive trap that"
+      - "§7triggers when mobs walk over it"
+      - "§7dealing §c20,000§7-§c250,000 §7damage"
+      - "§7based on the dungeon floor you are"
+      - "§7on."
+      - ""
+      - "§cDungeons only!"
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/trap
   - id: FEL_PEARL
     material: paper
     name: "Fel Pearl"
     rarity: RARE
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "4% drop from Fels on Catacombs Floor V and above"
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 10000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/fel_pearl
   - id: GAZING_PEARL
@@ -170,10 +266,11 @@ items:
     material: glowstone_dust
     name: "Golden Powder"
     rarity: EPIC
+    unavailable: "Needs the Golden Ghoul mob (not built)"
+    source: "Dropped by Golden Ghouls"
     components:
       - id: SELLABLE
         value: 14060.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/golden_powder
   - id: HALLOWED_SKULL
@@ -193,10 +290,13 @@ items:
     material: rotten_flesh
     name: "Healing Tissue"
     rarity: RARE
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "5% drop from Healthy undead spawned by The Watcher on Catacombs Floor V and above"
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 5000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/healing_tissue
   - id: HEAVY_PEARL
@@ -218,20 +318,29 @@ items:
     material: paper
     name: "Holy Dragon Fragment"
     rarity: EPIC
+    unavailable: "Needs the Ender Dragon fight (not built); Lost Adventurers need Dungeons"
+    source: "Ender Dragon kills in The End, scaled by dragon weight; also from Lost Adventurers wearing the matching Dragon Armor in Dungeons"
     components:
       - id: SELLABLE
         value: 2500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/holy_dragon_fragment
   - id: INFLATABLE_JERRY
     material: paper
     name: "Inflatable Jerry"
-    rarity: RARE
+    rarity: COMMON
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon secrets"
+    lore:
+      - "§7May it be a light to you in dark"
+      - "§7places, when all other lights go out."
+      - ""
+      - "§cDungeons only!"
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/inflatable_jerry
   - id: KADA_LEAD
@@ -251,10 +360,12 @@ items:
     material: paper
     name: "Kuudra Teeth"
     rarity: EPIC
+    source: "Kuudra Paid Reward Chests (1 on Basic/Hot, 2 on Burning/Fiery, 3 on Infernal) and Kuudra boss collection rewards"
+    lore:
+      - "§7Also known as mandibles."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/kuudra_teeth
   - id: LEATHER_CLOTH
@@ -359,32 +470,45 @@ items:
     material: paper
     name: "Mimic Fragment"
     rarity: RARE
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dropped by the Mimic in Catacombs dungeon chests"
+    lore:
+      - "§8§oFool me once, shame on you. Fool me"
+      - "§8§o9 times, and you can craft a §5Lesser"
+      - "§5Orb of Healing§8§o."
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 1000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/mimic_fragment
   - id: MITE_GEL
     material: ink_sac
     name: "Mite Gel"
     rarity: EPIC
+    unavailable: "Needs the Endermite mob (not built)"
+    source: "Dropped by Endermites"
+    lore:
+      - "§8§oSticky goo scraped off an Endermite."
     components:
       - id: SELLABLE
         value: 2000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/combat_3/mite_gel
   - id: MOLTEN_POWDER
     material: blaze_powder
     name: "Molten Powder"
     rarity: RARE
+    source: "Crafted from 128 Derelict Ashe and 1 Amalgamated Crimsonite once Blaze Slayer 2 is reached"
     components:
       - id: SELLABLE
         value: 370634.0
-      - id: BAZAAR_PLACEHOLDER
-      - id: ITEM_MODEL
-        item_model: hypixel_skyblock:item/slayer/blaze/tokens/molten_powder
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: INFERNO_DEMONLORD
+            level: 2
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -403,6 +527,8 @@ items:
             result:
               type: MOLTEN_POWDER
               amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/tokens/molten_powder
   - id: MUTATED_BLAZE_ASHES
     material: paper
     name: "Mutated Blaze Ashes"
@@ -421,38 +547,46 @@ items:
     material: nether_star
     name: "Nether Star"
     rarity: LEGENDARY
+    source: "Dropped by the Vanquisher on the Crimson Isle (3 to the spawner, 1 per contributor, 1 extra to the killer) and caught by treasure fishing on the Crimson Isle"
+    lore:
+      - "§8§l* §8Co-op Soulbound §8§l*"
     components:
       - id: SELLABLE
         value: 1.0
-      - id: BAZAAR_PLACEHOLDER
   - id: OLD_FRAGMENT
     material: paper
     name: "Old Dragon Fragment"
     rarity: EPIC
+    unavailable: "Needs the Ender Dragon fight (not built)"
+    source: "Ender Dragon kills in The End, scaled by dragon weight"
     components:
       - id: SELLABLE
         value: 2500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/old_dragon_fragment
   - id: POISON_SAMPLE
     material: paper
     name: "Poison Sample"
     rarity: UNCOMMON
+    unavailable: "Needs Backwater Bayou slimes (the Bayou has no mobs yet)"
+    source: "Dropped by toxic Slimes in the Backwater Bayou"
+    lore:
+      - "§7Dropped from §aSlimes§7, but only the"
+      - "§7especially toxic ones!"
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/combat_1/poison_sample
   - id: PROTECTOR_FRAGMENT
     material: paper
     name: "Protector Dragon Fragment"
     rarity: EPIC
+    unavailable: "Needs the Ender Dragon fight (not built)"
+    source: "Ender Dragon kills in The End, scaled by dragon weight"
     components:
       - id: SELLABLE
         value: 2500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/protector_dragon_fragment
   - id: REKINDLED_EMBER_FRAGMENT
@@ -468,10 +602,14 @@ items:
     material: paper
     name: "Ritual Residue"
     rarity: EPIC
+    unavailable: "Needs the Draconic Altar (not built)"
+    source: "10.84% from sacrificing Dragon Armor and 10.59% from sacrificing an Aspect of the Dragons at the Draconic Altar"
+    lore:
+      - "§8§oIt's all that's left from a draconic"
+      - "§8§osacrifice."
     components:
       - id: SELLABLE
         value: 10000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/combat_3/ritual_residue
   - id: SPECTRE_DUST
@@ -502,60 +640,95 @@ items:
     material: paper
     name: "Spirit Bone"
     rarity: EPIC
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Reward Chests on Catacombs Floor IV"
+    lore:
+      - "§7A Wolf Spirit is attached to this bone."
+      - "§7Wolf Spirits always come back to"
+      - "§7their masters."
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 1968134.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/spirit_bone
   - id: SPIRIT_LEAP
     material: ender_pearl
     name: "Spirit Leap"
     rarity: RARE
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon secrets (stacks of 5 from secret bats, chests or the ground)"
+    lore:
+      - "§6Ability: Spirit Leap  §e§lRIGHT CLICK"
+      - "§7Allows you to teleport to any teammate! Grants"
+      - "§a1 §7second of immunity after teleporting,"
+      - "§7immunity is cancelled upon dealing damage."
+      - "§8Cooldown: §a5s"
+      - ""
+      - "§cDungeons only!"
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 100.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/dungeons/spirit_leap
   - id: SPIRIT_WING
     material: paper
     name: "Spirit Wing"
     rarity: EPIC
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Reward Chests on Catacombs Floor IV"
+    lore:
+      - "§7Spirits of bats often take refuge in"
+      - "§7their own wings. They sometimes grow"
+      - "§7in power and gain tremendous"
+      - "§7magical properties."
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 2098480.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/spirit_wing
   - id: STRONG_FRAGMENT
     material: paper
     name: "Strong Dragon Fragment"
     rarity: EPIC
+    unavailable: "Needs the Ender Dragon fight (not built)"
+    source: "Ender Dragon kills in The End, scaled by dragon weight"
     components:
       - id: SELLABLE
         value: 2500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/strong_dragon_fragment
   - id: SUPERIOR_FRAGMENT
     material: paper
     name: "Superior Dragon Fragment"
     rarity: EPIC
+    unavailable: "Needs the Ender Dragon fight (not built); Lost Adventurers need Dungeons"
+    source: "Ender Dragon kills in The End, scaled by dragon weight; also from Lost Adventurers wearing the matching Dragon Armor in Dungeons"
     components:
       - id: SELLABLE
         value: 5000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/superior_dragon_fragment
   - id: TARANTULA_CATALYST
     material: paper
     name: "Tarantula Catalyst"
     rarity: EPIC
+    unavailable: "The wiki gives no drop rate for it, so it is not on the Tarantula Broodfather table yet"
+    source: "Rare drop from Tarantula Broodfather Tier III and above once Spider Slayer IV is reached"
+    lore:
+      - "§7Drops rarely from Tarantula"
+      - "§7Broodfather when you are at least"
+      - "§7Spider Slayer LVL 6."
+      - ""
+      - "§5Catalysts upgrade other items!"
     components:
       - id: SELLABLE
         value: 10000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/combat_1/tarantula_catalyst
   - id: TENTACLE_MEAT
@@ -571,40 +744,46 @@ items:
     material: paper
     name: "Unstable Dragon Fragment"
     rarity: EPIC
+    unavailable: "Needs the Ender Dragon fight (not built); Lost Adventurers need Dungeons"
+    source: "Ender Dragon kills in The End, scaled by dragon weight; also from Lost Adventurers wearing the matching Dragon Armor in Dungeons"
     components:
       - id: SELLABLE
         value: 2500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/unstable_dragon_fragment
   - id: WEAK_WOLF_CATALYST
     material: bone
     name: "Weak Wolf Catalyst"
     rarity: RARE
+    unavailable: "Needs the Soul of the Alpha mob (not built)"
+    source: "0.089% (1 in 1,013) drop from the Soul of the Alpha"
     components:
       - id: SELLABLE
         value: 45004.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/weak_wolf_catalyst
   - id: WISE_FRAGMENT
     material: paper
     name: "Wise Dragon Fragment"
     rarity: EPIC
+    unavailable: "Needs the Ender Dragon fight (not built)"
+    source: "Ender Dragon kills in The End, scaled by dragon weight"
     components:
       - id: SELLABLE
         value: 2500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/wise_dragon_fragment
   - id: WITHER_CATALYST
     material: paper
     name: "Wither Catalyst"
     rarity: RARE
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Reward Chests on Catacombs Floor VII"
     components:
+      - id: EXTRA_RARITY
+        display: DUNGEON ITEM
       - id: SELLABLE
         value: 1017013.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/wither_catalyst
   - id: WITHER_SOUL
@@ -645,10 +824,11 @@ items:
     material: paper
     name: "Young Dragon Fragment"
     rarity: EPIC
+    unavailable: "Needs the Ender Dragon fight (not built); Lost Adventurers need Dungeons"
+    source: "Ender Dragon kills in The End, scaled by dragon weight; also from Lost Adventurers wearing the matching Dragon Armor in Dungeons"
     components:
       - id: SELLABLE
         value: 2500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/young_dragon_fragment
   - id: Z

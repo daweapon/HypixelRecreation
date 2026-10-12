@@ -34,6 +34,8 @@ public class InteractableRegistry {
         net.swofty.type.skyblockgeneric.consumable.ItemBundle.registerInteractables();
         net.swofty.type.skyblockgeneric.consumable.DwarvenOs.registerInteractables();
         net.swofty.type.skyblockgeneric.consumable.GreatSpookPotion.registerInteractables();
+        net.swofty.type.skyblockgeneric.consumable.JerryCandy.registerInteractables();
+        net.swofty.type.skyblockgeneric.spookyfestival.BlastOLantern.registerInteractables();
         SnowCannon.registerInteractables();
         CrimsonItemHandlers.registerInteractables();
         ReaperPepper.registerInteractables();

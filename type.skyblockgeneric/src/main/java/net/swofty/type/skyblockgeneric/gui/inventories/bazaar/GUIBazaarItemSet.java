@@ -31,30 +31,29 @@ import java.util.concurrent.CompletableFuture;
 
 // GUI listing the items within one bazaar item set, arranged for the set's size
 public class GUIBazaarItemSet extends HypixelInventoryGUI implements RefreshingGUI {
-    private static final Map<Integer, int[]> SLOTS = Map.of(
-            1, new int[]{13},
-            2, new int[]{12, 14},
-            3, new int[]{11, 13, 15},
-            4, new int[]{10, 12, 14, 16},
-            5, new int[]{11, 12, 13, 14, 15},
-            6, new int[]{11, 12, 13, 14, 15, 22},
-            7, new int[]{10, 11, 12, 13, 14, 15, 16},
-            8, new int[]{11, 12, 13, 14, 15, 21, 22, 23},
-            9, new int[]{10, 11, 12, 13, 14, 15, 16, 21, 23},
-            10, new int[]{11, 12, 13, 14, 15, 20, 21, 22, 23, 24}
-    );
-
+    private final BazaarCategories category;
     private final BazaarItemSet itemSet;
+    private final BazaarSetLayout layout;
+    private final int page;
 
     public GUIBazaarItemSet(BazaarCategories category, BazaarItemSet itemSet) {
-        super(Text.key("gui_bazaar.item_set.title", StringUtility.toNormalCase(category.name()), itemSet.displayName), InventoryType.CHEST_4_ROW);
+        this(category, itemSet, 0);
+    }
 
+    public GUIBazaarItemSet(BazaarCategories category, BazaarItemSet itemSet, int page) {
+        super(Text.key("gui_bazaar.item_set.title", StringUtility.toNormalCase(category.name()), itemSet.displayName),
+                new BazaarSetLayout(itemSet.items.size()).inventoryType());
+
+        this.category = category;
         this.itemSet = itemSet;
+        this.layout = new BazaarSetLayout(itemSet.items.size());
+        this.page = layout.clampPage(page);
 
         fill(ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, ""));
-        set(GUIClickableItem.getCloseItem(31));
-        set(GUIClickableItem.getGoBackItem(30, new GUIBazaar(category)));
-        set(new GUIClickableItem(32) {
+        set(GUIClickableItem.getCloseItem(layout.closeSlot()));
+        set(GUIClickableItem.getGoBackItem(layout.backSlot(), new GUIBazaar(category)));
+        addPageButtons();
+        set(new GUIClickableItem(layout.ordersSlot()) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
@@ -73,13 +72,38 @@ public class GUIBazaarItemSet extends HypixelInventoryGUI implements RefreshingG
         });
     }
 
+    private void addPageButtons() {
+        if (page > 0) {
+            set(pageButton(layout.previousPageSlot(), page - 1, "gui_bazaar.item_set.previous_page"));
+        }
+        if (page < layout.pageCount() - 1) {
+            set(pageButton(layout.nextPageSlot(), page + 1, "gui_bazaar.item_set.next_page"));
+        }
+    }
+
+    private GUIClickableItem pageButton(int slot, int targetPage, String key) {
+        return new GUIClickableItem(slot) {
+            @Override
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                new GUIBazaarItemSet(category, itemSet, targetPage).open((SkyBlockPlayer) p);
+            }
+
+            @Override
+            public ItemStack.Builder getItem(HypixelPlayer p) {
+                return ItemStacks.item(Material.ARROW, 1, Text.key(key, targetPage + 1, layout.pageCount()), List.of());
+            }
+        };
+    }
+
     @Override
     public void onOpen(InventoryGUIOpenEvent e) {
         List<CompletableFuture<Void>> futures = new ArrayList<>();
 
-        int i = 0;
-        for (ItemType itemType : itemSet.items) {
-            int slot = SLOTS.get(itemSet.items.size())[i];
+        int[] slots = layout.slots(page);
+        int firstIndex = layout.firstIndex(page);
+        for (int i = 0; i < slots.length; i++) {
+            ItemType itemType = itemSet.items.get(firstIndex + i);
+            int slot = slots[i];
 
             CompletableFuture<Void> future = ((SkyBlockPlayer) e.player()).getBazaarConnector().getItemStatistics(itemType)
                     .thenAccept(stats -> {
@@ -159,7 +183,6 @@ public class GUIBazaarItemSet extends HypixelInventoryGUI implements RefreshingG
                     });
 
             futures.add(future);
-            i++;
         }
 
         CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))

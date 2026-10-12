@@ -136,6 +136,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ENCHANTED_CARROT_ON_A_STICK
   - amount: 10000
     rewards:
     - type: XP
@@ -154,6 +157,18 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: PUMPKIN_HELMET
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: PUMPKIN_CHESTPLATE
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: PUMPKIN_LEGGINGS
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: PUMPKIN_BOOTS
   - amount: 100000
     rewards:
     - type: XP
@@ -813,18 +828,6 @@ collections:
         xp: 4
     - type: RECIPE_UNLOCK
       data:
-        unlockedItemType: PUMPKIN_HELMET
-    - type: RECIPE_UNLOCK
-      data:
-        unlockedItemType: PUMPKIN_CHESTPLATE
-    - type: RECIPE_UNLOCK
-      data:
-        unlockedItemType: PUMPKIN_LEGGINGS
-    - type: RECIPE_UNLOCK
-      data:
-        unlockedItemType: PUMPKIN_BOOTS
-    - type: RECIPE_UNLOCK
-      data:
         unlockedItemType: FARMER_ORB
   - amount: 250
     rewards:
@@ -1064,6 +1067,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ENCHANTED_COOKED_RABBIT
   - amount: 25000
     rewards:
     - type: XP

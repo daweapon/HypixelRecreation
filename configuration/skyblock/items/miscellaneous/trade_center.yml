@@ -47,7 +47,8 @@ items:
         texture: 8e6e10a9ef1b2cdd998557554b209f369ada7bc50b47c81ed14ab2632dab3834
       - id: SELLABLE
         value: 1000000.0
-      - id: NOT_FINISHED_YET
+      - id: ANVIL_COMBINABLE
+        handler_id: GOLDEN_BOUNTY
   - id: AVARICIOUS_CHALICE
     material: player_head
     name: "Avaricious Chalice"

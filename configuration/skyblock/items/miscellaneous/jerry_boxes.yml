@@ -75,7 +75,8 @@ items:
     components:
       - id: SKULL_HEAD
         texture: 17f0e6352b57d6fac8d5c1e7882588927e1b197b32fbd33cf5f3ff9de961193d
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: JERRY_CANDY
   - id: JERRY_STONE
     material: player_head
     name: "Jerry Stone"
@@ -85,6 +86,8 @@ items:
       - ""
       - "\xA77Applies the \xA79Jerry's \xA77reforge when"
       - "\xA77combined with \xA7fAspect of the Jerry\xA77."
+      - ""
+      - "\xA78Not active yet: the Jerry's reforge and its No Parley ability are not built"
     default_statistics: { }
     components:
       - id: SKULL_HEAD

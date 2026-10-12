@@ -26,8 +26,8 @@ items:
         value: 25000.0
   - id: BLAST_O_LANTERN
     material: player_head
-    name: "Blast O Lantern"
-    rarity: UNCOMMON
+    name: "Blast o' Lantern"
+    rarity: RARE
     lore:
       - "\xA77Throwable explosive. Deals \xA7a2"
       - "\xA7a\xA77damage to \xA76Spooky \xA77enemies"
@@ -37,7 +37,8 @@ items:
     components:
       - id: SKULL_HEAD
         texture: 68f2ffc6fb4e9959b9a7a317f51a6775a159ddc2241dbd6c774d3ac08b6
-      - id: NOT_FINISHED_YET
+      - id: INTERACTABLE
+        handler_id: BLAST_O_LANTERN
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -425,8 +426,8 @@ items:
       - "\xA77Imbued with the pure essence of"
       - "\xA77terror, this shard pulsates with an"
       - "\xA77unsettling energy."
+    unavailable: "Sold by Vargul the Unearthed for 10 Dark Candy, who is not built"
     default_statistics: { }
     components:
       - id: SELLABLE
         value: 1000.0
-      - id: NOT_FINISHED_YET

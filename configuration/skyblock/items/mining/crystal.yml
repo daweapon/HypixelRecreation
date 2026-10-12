@@ -7,6 +7,7 @@ items:
     material: player_head
     name: "Bob Omb"
     rarity: RARE
+    unavailable: "Source content not built: Crystal Hollows"
     components:
       - id: SKULL_HEAD
         texture: a76a2811d1e176a07b6d0a657b910f134896ce30850f6e80c7c83732d85381ea
@@ -173,6 +174,7 @@ items:
     material: diamond_pickaxe
     name: "Pickonimbus 2000"
     rarity: COMMON
+    unavailable: "Source content not built: Crystal Hollows"
     default_statistics:
       damage: 30.0
       mining_speed: 1500.0
@@ -198,6 +200,7 @@ items:
     material: player_head
     name: "Recall Potion"
     rarity: EPIC
+    unavailable: "Source content not built: Crystal Hollows"
     components:
       - id: SKULL_HEAD
         texture: 1af8151deb39553292b9a69674832dda8001780ca98180a06eaf9b368930b5bb
@@ -254,6 +257,7 @@ items:
     material: player_head
     name: "Wishing Compass"
     rarity: UNCOMMON
+    unavailable: "Source content not built: Crystal Hollows"
     components:
       - id: SKULL_HEAD
         texture: b8a065588c7dbf1294595aba77791c3ad65f19bf1c9ad7a5c23da40b82860b7

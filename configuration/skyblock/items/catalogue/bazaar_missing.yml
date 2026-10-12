@@ -1,0 +1,44 @@
+items:
+  - id: FLYCATCHER_UPGRADE
+    material: cobweb
+    name: "Flycatcher"
+    rarity: EPIC
+    source: "Crafted from 6 stacks of 17 Tarantula Silk and a Fly Swatter (requires Spider Slayer 6)"
+    lore:
+      - "§8Minion Upgrade"
+      - ""
+      - "§7This item can be used as a minion"
+      - "§7upgrade. Prevents your minions from"
+      - "§7getting distracted by flies."
+      - "§7Increases the speed of your minion"
+      - "§7by §a20%§7."
+    components:
+      - id: MINION_UPGRADE
+        speed_increase: 20.0
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: TARANTULA_BROODFATHER
+            level: 6
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: SLAYER
+            pattern:
+              - OAO
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: TARANTULA_SILK
+                amount: 17
+              O:
+                type: AIR
+                amount: 1
+              B:
+                type: FLY_SWATTER
+                amount: 1
+            result:
+              type: FLYCATCHER_UPGRADE
+              amount: 1

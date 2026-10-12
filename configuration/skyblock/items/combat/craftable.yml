@@ -7,6 +7,8 @@ items:
       health: 50.0
       defense: 10.0
       intelligence: 50.0
+      vitality: 40.0
+      mending: 40.0
     components:
       - id: SKULL_HEAD
         texture: 87dfb7c1ee4de31f54931eac5c657c145e4fa7fa09e3f52b1788a682b65ac75
@@ -31,15 +33,20 @@ items:
             result:
               type: CRYSTALLIZED_HEART
               amount: 1
-      - id: NOT_FINISHED_YET
   - id: REAPER_FALCHION
     material: diamond_sword
     name: "Reaper Falchion"
-    rarity: COMMON
+    rarity: EPIC
     default_statistics:
       damage: 120.0
       strength: 100.0
       intelligence: 200.0
+    lore:
+      - "§7Heal §c10❤ §7per hit."
+      - "§7Deals §a+200% §7damage to Undead mobs."
+      - "§7Gain §3+45☯ Combat Wisdom §7against Undead mobs."
+      - ""
+      - "§4☠ §cRequires §5Zombie Slayer 6§c."
     components:
       - id: DEFAULT_CRAFTABLE
         recipes:
@@ -62,6 +69,11 @@ items:
             result:
               type: REAPER_FALCHION
               amount: 1
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 6
       - id: STANDARD_ITEM
         standard_item_type: SWORD
       - id: GEMSTONE
@@ -70,7 +82,6 @@ items:
             coins: 50000
             items:
               - FINE_JASPER_GEM:20
-      - id: NOT_FINISHED_YET
   - id: REAPER_MASK
     material: player_head
     name: "Reaper Mask"
@@ -79,6 +90,12 @@ items:
       health: 150.0
       defense: 100.0
       intelligence: 100.0
+      vitality: 60.0
+      mending: 60.0
+    lore:
+      - "§8Not active yet: Evil Incarnate needs Zombie Armor and Necromancer souls"
+      - ""
+      - "§4☠ §cRequires §5Zombie Slayer 7§c."
     components:
       - id: SKULL_HEAD
         texture: 1fc0184473fe882d2895ce7cbc8197bd40ff70bf10d3745de97b6c2a9c5fc78f
@@ -118,6 +135,11 @@ items:
             items:
               - FINE_SAPPHIRE_GEM:20
       - id: TRACKED_UNIQUE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 7
       - id: STANDARD_ITEM
         standard_item_type: HELMET
       - id: NOT_FINISHED_YET
@@ -164,11 +186,15 @@ items:
   - id: REVENANT_FALCHION
     material: diamond_sword
     name: "Revenant Falchion"
-    rarity: COMMON
+    rarity: RARE
     default_statistics:
       damage: 90.0
       strength: 50.0
       intelligence: 100.0
+    lore:
+      - "§7Deals §a+150% §7damage to Undead mobs."
+      - ""
+      - "§4☠ §cRequires §5Zombie Slayer 3§c."
     components:
       - id: DEFAULT_CRAFTABLE
         recipes:
@@ -189,11 +215,15 @@ items:
                 type: UNDEAD_SWORD
                 amount: 1
             result:
-              type: REAPER_FALCHION
+              type: REVENANT_FALCHION
               amount: 1
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 3
       - id: STANDARD_ITEM
         standard_item_type: SWORD
-      - id: NOT_FINISHED_YET
   - id: REVIVED_HEART
     material: player_head
     name: "Revived Heart"
@@ -202,6 +232,10 @@ items:
       health: 100.0
       defense: 35.0
       intelligence: 100.0
+      vitality: 50.0
+      mending: 50.0
+    lore:
+      - "§4☠ §cRequires §5Zombie Slayer 6§c."
     components:
       - id: SKULL_HEAD
         texture: 4a61b4f8b070e4bc30a86b2290db6e57e2681c44e0250d1906a89adb8fc455b1
@@ -224,13 +258,17 @@ items:
             result:
               type: REVIVED_HEART
               amount: 1
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 6
       - id: STANDARD_ITEM
         standard_item_type: HELMET
       - id: GEMSTONE
         gemstone_slots:
           - gemstone: RUBY
             coins: 50000
-      - id: NOT_FINISHED_YET
   - id: WARDEN_HELMET
     material: player_head
     name: "Warden Helmet"
@@ -238,6 +276,11 @@ items:
     default_statistics:
       health: 300.0
       defense: 100.0
+    lore:
+      - "§6Brute Force"
+      - "§7Halves your §f✦ Speed §7but grants §c+20% §7base weapon damage for every §a25 §f✦ Speed§7."
+      - ""
+      - "§4☠ §cRequires §5Zombie Slayer 8§c."
     components:
       - id: SKULL_HEAD
         texture: e5eb0bd85aaddf0d29ed082eac03fcade43d0ee803b0e8162add28a6379fb54e
@@ -265,6 +308,10 @@ items:
               type: WARDEN_HELMET
               amount: 1
       - id: TRACKED_UNIQUE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 8
       - id: STANDARD_ITEM
         standard_item_type: HELMET
-      - id: NOT_FINISHED_YET

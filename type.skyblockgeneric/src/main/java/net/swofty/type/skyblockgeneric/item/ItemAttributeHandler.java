@@ -623,6 +623,22 @@ public class ItemAttributeHandler {
         return ((ItemAttributeLogsCut) item.getAttribute("logs_cut")).getValue();
     }
 
+    public int getSackUpgrades() {
+        return ((ItemAttributeSackUpgrades) item.getAttribute("sack_upgrades")).getValue();
+    }
+
+    public void setSackUpgrades(int upgrades) {
+        ((ItemAttributeSackUpgrades) item.getAttribute("sack_upgrades")).setValue(upgrades);
+    }
+
+    public int getAbiphoneExtraContacts() {
+        return ((ItemAttributeAbiphoneExtraContacts) item.getAttribute("abiphone_extra_contacts")).getValue();
+    }
+
+    public void setAbiphoneExtraContacts(int extraContacts) {
+        ((ItemAttributeAbiphoneExtraContacts) item.getAttribute("abiphone_extra_contacts")).setValue(extraContacts);
+    }
+
     public SkyBlockItem asSkyBlockItem() {
         return item;
     }

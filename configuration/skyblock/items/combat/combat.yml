@@ -19,12 +19,13 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/soul_string
   - id: ZOMBIE_HEART
     material: player_head
-    name: "Zombie Heart"
+    name: "Zombie's Heart"
     rarity: RARE
     default_statistics:
       health: 50.0
+      vitality: 30.0
+      mending: 30.0
     components:
-      - id: NOT_FINISHED_YET
       - id: SELLABLE
         value: 123000.0
       - id: SKULL_HEAD

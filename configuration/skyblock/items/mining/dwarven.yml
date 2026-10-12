@@ -261,160 +261,238 @@ items:
     material: paper
     name: "Drill Motor"
     rarity: RARE
+    source: "Forge (HotM 3): 1 Enchanted Iron Block, 3 Enchanted Redstone Block, 10 Treasurite and 1 Golden Plate, 1 day 6 hours"
     components:
       - id: SELLABLE
         value: 5884.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/drill_motor
   - id: BEJEWELED_HANDLE
     material: paper
     name: "Bejeweled Handle"
     rarity: RARE
+    source: "Forge (HotM 2): 3 Glacite Jewel, 30 seconds; also dropped by Frozen Corpses in the Glacite Mineshafts"
     components:
       - id: SELLABLE
         value: 100.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/bejeweled_handle
   - id: MITHRIL_PLATE
     material: paper
     name: "Mithril Plate"
     rarity: RARE
+    source: "Forge (HotM 3): 1 Golden Plate, 1 Refined Titanium, 5 Refined Mithril and 1 Enchanted Iron Block, 18 hours; also dropped by Frozen Corpses"
     components:
       - id: SELLABLE
         value: 10108.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/mithril_plate
   - id: GOLDEN_PLATE
     material: paper
     name: "Golden Plate"
     rarity: RARE
+    source: "Forge (HotM 2): 2 Enchanted Gold Block, 1 Refined Diamond and 5 Glacite Jewel, 6 hours"
     components:
       - id: SELLABLE
         value: 3068.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/golden_plate
   - id: PRECURSOR_APPARATUS
     material: paper
     name: "Precursor Apparatus"
     rarity: EPIC
+    source: "Crafted from one of each robot part (Control Switch, Electron Transmitter, FTX 3070, Robotron Reflector, Superlite Motor, Synthetic Heart)"
+    lore:
+      - "§7Can be given to §9Professor Robot §7to"
+      - "§7complete the §bSapphire Crystal Quest§7."
+      - ""
+      - "§8This decaying piece of machinery"
+      - "§8was once a part of a large robot"
+      - "§8known as Automaton Prime. There's"
+      - "§8still a lot of good stuff in here."
     components:
       - id: SELLABLE
         value: 900000.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - "ABC"
+              - "DEF"
+              - "   "
+            ingredients:
+              A:
+                type: CONTROL_SWITCH
+                amount: 1
+              B:
+                type: ELECTRON_TRANSMITTER
+                amount: 1
+              C:
+                type: FTX_3070
+                amount: 1
+              D:
+                type: ROBOTRON_REFLECTOR
+                amount: 1
+              E:
+                type: SUPERLITE_MOTOR
+                amount: 1
+              F:
+                type: SYNTHETIC_HEART
+                amount: 1
+            result:
+              type: PRECURSOR_APPARATUS
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/precursor_apparatus
   - id: JUNGLE_HEART
     material: paper
     name: "Jungle Heart"
     rarity: LEGENDARY
+    unavailable: "Needs the Crystal Hollows (not built)"
+    source: "Loot and treasure chests in the Jungle of the Crystal Hollows (about 1 in 476 per chest)"
+    lore:
+      - "§7Found in the deepest layers of the"
+      - "§7Jungle Temple."
     components:
       - id: SELLABLE
         value: 100000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/jungle_heart
   - id: YOGGIE
     material: paper
     name: "Yoggie"
     rarity: UNCOMMON
+    unavailable: "Needs the Crystal Hollows Magma Fields (not built)"
+    source: "Dropped by Yogs and found in treasure chests in the Magma Fields of the Crystal Hollows"
+    lore:
+      - "§7Harvested from the core of Yogs."
+      - "§7Used to upgrade Magma equipment."
     components:
       - id: SELLABLE
         value: 100.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/yoggie
   - id: REFINED_UMBER
     material: paper
     name: "Refined Umber"
     rarity: EPIC
+    source: "Forge (HotM 7, Umber III): 160 Enchanted Umber, 1 hour; also dropped by Frozen Corpses"
+    lore:
+      - "§8Collection Item"
     components:
+      - id: EXTRA_RARITY
+        display: DWARVEN METAL
       - id: SELLABLE
         value: 256000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/umber/refined_umber
   - id: UMBER_PLATE
     material: paper
     name: "Umber Plate"
     rarity: RARE
+    source: "Forge (HotM 7, Umber VI): 4 Refined Umber and 1 Glacite Amalgamation, 3 hours; also dropped by Frozen Corpses"
     components:
       - id: SELLABLE
         value: 11000000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/umber/umber_plate
   - id: UMBER_KEY
     material: dead_bush
     name: "Umber Key"
     rarity: EPIC
+    source: "Forge (HotM 7, Umber IV): 192 Enchanted Umber and 1 Bejeweled Handle, 30 seconds; also dropped by Frozen Corpses"
+    lore:
+      - "§7Can be used to open backpacks with"
+      - "§7an Umber lock held by §bFrozen"
+      - "§bCorpses §7in the §bGlacite Mineshafts§7."
     components:
       - id: SELLABLE
         value: 2400000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/umber/umber_key
   - id: REFINED_TUNGSTEN
     material: paper
     name: "Refined Tungsten"
     rarity: EPIC
+    source: "Forge (HotM 7, Tungsten III): 160 Enchanted Tungsten, 1 hour; also dropped by Frozen Corpses"
+    lore:
+      - "§8Collection Item"
     components:
+      - id: EXTRA_RARITY
+        display: DWARVEN METAL
       - id: SELLABLE
         value: 256000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/tungsten/refined_tungsten
   - id: TUNGSTEN_PLATE
     material: paper
     name: "Tungsten Plate"
     rarity: RARE
+    source: "Forge (HotM 7, Tungsten VI): 4 Refined Tungsten and 1 Glacite Amalgamation, 3 hours; also dropped by Frozen Corpses"
     components:
       - id: SELLABLE
         value: 10500000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/tungsten/tungsten_plate
   - id: TUNGSTEN_KEY
     material: paper
     name: "Tungsten Key"
     rarity: EPIC
+    source: "Forge (HotM 7, Tungsten IV): 192 Enchanted Tungsten and 1 Bejeweled Handle, 30 seconds; also dropped by Frozen Corpses"
+    lore:
+      - "§7Can be used to open backpacks with"
+      - "§7a Tungsten lock held by §bFrozen"
+      - "§bCorpses §7in the §bGlacite Mineshafts§7."
     components:
       - id: SELLABLE
         value: 2400000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/tungsten/tungsten_key
   - id: GLACITE_AMALGAMATION
     material: paper
     name: "Glacite Amalgamation"
     rarity: EPIC
+    source: "Forge (HotM 7, Glacite III): 256 Enchanted Glacite and 4 each of Fine Peridot, Aquamarine, Citrine and Onyx Gemstones, 4 hours; also dropped by Frozen Corpses"
+    lore:
+      - "§7Glacite resists even the heat of the"
+      - "§7great Dwarven Forge. The key is to"
+      - "§7combine rather than to try to reduce."
     components:
       - id: SELLABLE
         value: 1300000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/glacite/glacite_amalgamation
   - id: PERFECT_PLATE
     material: paper
     name: "Perfect Plate"
     rarity: LEGENDARY
+    source: "Forge (HotM 10): 1 each of Umber, Tungsten and Mithril Plate, 30 minutes"
+    lore:
+      - "§7A plate forged from an assortment"
+      - "§7of the most durable materials found"
+      - "§7in this world."
     components:
       - id: SELLABLE
         value: 28000000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/uncategorized/perfect_plate
   - id: SKELETON_KEY
     material: paper
     name: "Skeleton Key"
     rarity: LEGENDARY
+    source: "Forge (HotM 10): 1 Perfect Plate and 1 Bejeweled Handle, 30 minutes; also dropped by Frozen Corpses"
+    lore:
+      - "§7Can be used to open backpacks with"
+      - "§7a Skeleton lock held by §bFrozen"
+      - "§bCorpses §7in the §bGlacite Mineshafts§7."
+      - ""
+      - "§8Forged by the finest Dwarven"
+      - "§8Blacksmith around. The name would"
+      - "§8come to be quite ironic."
     components:
       - id: SELLABLE
         value: 10000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/uncategorized/skeleton_key
   - id: SECRET_RAILROAD_PASS
@@ -432,9 +510,16 @@ items:
     material: paper
     name: "Suspicious Scrap"
     rarity: RARE
+    source: "Mining in the Glacite Mineshafts (0.5% base, halving per scrap found); bought from the Fossil Essence shop; given by Sor Hen"
+    lore:
+      - "§7Found within the deepest depths of"
+      - "§7the §bGlacite Tunnels§7. Place in the"
+      - "§6Fossil Excavator §7to begin excavating!"
+      - ""
+      - "§8It's pretty heavy... maybe something"
+      - "§8valuable lies within?"
     components:
       - id: SELLABLE
         value: 113000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/suspicious_scrap

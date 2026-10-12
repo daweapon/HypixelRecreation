@@ -744,7 +744,10 @@ public class SkyBlockDataHandler extends DataHandler {
         TIMED_CONSUMABLES("timed_consumables", false, false, false,
                 DatapointMapStringLong.class, new DatapointMapStringLong("timed_consumables"),
                 null,
-                (player, datapoint) -> GreatSpookPotion.restore(player)),
+                (player, datapoint) -> {
+                    GreatSpookPotion.restore(player);
+                    net.swofty.type.skyblockgeneric.consumable.JerryCandy.restore(player);
+                }),
 
         JYRRE_BUFF_EXPIRATION("jyrre_buff_expiration", false, false, false,
                 DatapointLong.class, new DatapointLong("jyrre_buff_expiration", 0L),

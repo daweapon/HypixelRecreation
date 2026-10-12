@@ -21,7 +21,6 @@ items:
         r: '122'
         g: '121'
         b: '100'
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -63,7 +62,6 @@ items:
         r: '122'
         g: '121'
         b: '100'
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -106,7 +104,6 @@ items:
         r: '122'
         g: '121'
         b: '100'
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -149,7 +146,6 @@ items:
         r: '122'
         g: '121'
         b: '100'
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:

@@ -50,6 +50,7 @@ public class PlaceEventRegistry {
                     minionData.getMinions().size(), playerData.getSlots());
         });
         register(SprayCanHandlers.HANDLER_ID, SprayCanHandlers.place());
+        register(InfiniTorchPlacement.HANDLER_ID, InfiniTorchPlacement.handler());
         register("CARROT_CRYSTAL_PLACE", (event, player, item) -> {
 
         });

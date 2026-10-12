@@ -34,6 +34,11 @@ public class ActionPlayerInteractNPC implements HypixelEventClass {
 					player.sendMessage("<7>[<b>✆<7>] This NPC is already in your contacts list!");
 					return;
 				}
+				if (item.getAttributeHandler().getAbiphoneNPCs().size() >= item.getComponent(AbiphoneComponent.class).contactLimit(item)) {
+					player.sendMessage("<7>[<b>✆<7>] <c>Your Abiphone has no free contact slots! Use an <9>Abiphone Contacts Trio <c>to add more.");
+					event.setCancelled(true);
+					return;
+				}
 				abiphoneNPC.onAdd(player, player.getHeldSlot());
 			} else {
 				Logger.warn("NPC " + npc.getClass().getName() + " has an invalid Abiphone key: " + trait.getAbiphoneKey());

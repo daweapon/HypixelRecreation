@@ -60,6 +60,10 @@ public final class GodPotionService {
         if (remaining > 0) applyEffects(player, remaining);
     }
 
+    public static boolean isActive(SkyBlockPlayer player) {
+        return remaining(player) > 0;
+    }
+
     public static void pauseClock(SkyBlockPlayer player) {
         remaining(player);
     }
@@ -92,6 +96,7 @@ public final class GodPotionService {
         for (PotionEffectType effect : EFFECTS) {
             effect.getHandler().applyToPlayer(player, effect.getMaxLevel(), duration);
         }
+        net.swofty.type.skyblockgeneric.consumable.JerryCandy.apply(player, duration);
     }
 
     private static long getRemaining(SkyBlockPlayer player) {

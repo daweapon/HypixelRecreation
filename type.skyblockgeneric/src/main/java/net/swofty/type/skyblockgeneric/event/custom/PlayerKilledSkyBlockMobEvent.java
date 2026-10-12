@@ -39,6 +39,14 @@ public class PlayerKilledSkyBlockMobEvent implements PlayerInstanceEvent {
             }
         }
 
+        double reaperXp = net.swofty.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.bonusCombatXp(player, killedMob,
+                killedMob.getOtherLoot() == null ? 0 : killedMob.getOtherLoot().getSkillXPAmount());
+        if (reaperXp > 0) {
+            var skills = player.getSkills();
+            skills.setRaw(player, net.swofty.type.skyblockgeneric.skill.SkillCategories.COMBAT,
+                    skills.getRaw(net.swofty.type.skyblockgeneric.skill.SkillCategories.COMBAT) + reaperXp);
+        }
+
         // Handle kill event pets
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         player.getPetData().dispatch(new PetEvent.Kill(player, pet, killedMob));

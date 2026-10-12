@@ -26,6 +26,16 @@ items:
     material: PLAYER_HEAD
     name: "Lantern"
     rarity: COMMON
+    lore:
+      - "§6Ability: Deploy  §e§lRIGHT CLICK"
+      - "§7Place an orb for §a5m §7buffing up to §b5"
+      - "§7players within §a30 §7blocks."
+      - "§8Costs 50% of max mana."
+      - ""
+      - "§fOrb Buff: Dwarven Lantern"
+      - "§f• §7Grants §6+20 Mining Speed§7."
+      - ""
+      - "§8Only one deployable buff applies."
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Lantern
@@ -36,8 +46,13 @@ items:
     material: TORCH
     name: "Infini Torch"
     rarity: EPIC
+    lore:
+      - "<gray>Places a torch for <gold>2 coins<gray>."
+      - ""
+      - "<yellow>Right-Click a block to use!"
     components:
       - id: CUSTOM_DISPLAY_NAME
         display_name: "InfiniTorch\u2122"
-      - id: NOT_FINISHED_YET
+      - id: PLACE_EVENT
+        handler_id: INFINI_TORCH_PLACE
       - id: ENCHANTED

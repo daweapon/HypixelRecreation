@@ -123,12 +123,25 @@ class ItemCategoryTest {
     }
 
     @Test
-    void categoryButtonsAreEvenlySpacedAcrossTheMenu() {
+    void categoryButtonsAreEvenlySpacedInCentredRowsOfThree() {
         int[] slots = GUICentauriItemCategories.CATEGORY_SLOTS;
         assertEquals(ItemCategory.values().length, slots.length);
-        for (int i = 1; i < slots.length; i++) assertEquals(slots[1] - slots[0], slots[i] - slots[i - 1]);
-        assertEquals(slots[0] % 9, 8 - slots[slots.length - 1] % 9);
-        assertEquals(slots[0] / 9, slots[slots.length - 1] / 9);
+        for (int row = 0; row < slots.length; row += 3) {
+            assertEquals(slots[row + 1] - slots[row], slots[row + 2] - slots[row + 1]);
+            assertEquals(slots[row] % 9, 8 - slots[row + 2] % 9);
+            assertEquals(slots[row] / 9, slots[row + 2] / 9);
+        }
+    }
+
+    @Test
+    void minionsAndAttributeShardsHaveTheirOwnCategories() {
+        assertEquals(ItemCategory.MINIONS, of("COBBLESTONE_MINION"));
+        assertEquals(ItemCategory.MINIONS, of("AUTO_SMELTER"));
+        assertTrue(ItemCategory.items(ItemCategory.ATTRIBUTE_SHARDS).size() >= 300);
+        assertTrue(ItemCategory.items(ItemCategory.MINIONS).size() >= 100);
+        for (ItemType type : ItemCategory.items(ItemCategory.ATTRIBUTE_SHARDS)) {
+            assertTrue(new SkyBlockItem(type).hasComponent(net.swofty.type.skyblockgeneric.item.components.AttributeShardComponent.class), type.name());
+        }
     }
 
     @Test

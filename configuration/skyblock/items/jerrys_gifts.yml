@@ -414,6 +414,8 @@ items:
     lore:
       - "\xA77Place this in your private world to"
       - "\xA77spawn a Winter island!"
+      - ""
+      - "\xA78Not active yet: placing it does not spawn an island"
     components:
       - id: SKULL_HEAD
         texture: e19510d7dd09ecd679cb709ead894d49a08be6bea4f91fa05fb6b19eca2a5574

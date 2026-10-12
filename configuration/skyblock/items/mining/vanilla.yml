@@ -73,10 +73,13 @@ items:
     material: paper
     name: "Refined Diamond"
     rarity: EPIC
+    source: "Forge (HotM 2): 2 Enchanted Diamond Block, 8 hours"
+    lore:
+      - "§7Looking at it for too long may cause"
+      - "§7eye trauma."
     components:
       - id: SELLABLE
         value: 4096.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/refined_diamond
   - id: DIAMOND_ORE

@@ -992,14 +992,14 @@ public interface ItemTypeConstants1 {
     ItemType FLOWER_POT_BARN_SKIN = new ItemType("FLOWER_POT_BARN_SKIN", 1987);
     ItemType FLOWER_SACK = new ItemType("FLOWER_SACK", 1988);
     ItemType FLOWING_FALL_RUNE = new ItemType("FLOWING_FALL_RUNE", 1989);
-    ItemType FLYFISH_BRONZE = new ItemType("FLYFISH_BRONZE", 1990);
-    ItemType FLYFISH_DIAMOND = new ItemType("FLYFISH_DIAMOND", 1991);
-    ItemType FLYFISH_GOLD = new ItemType("FLYFISH_GOLD", 1992);
-    ItemType FLYFISH_SILVER = new ItemType("FLYFISH_SILVER", 1993);
-    ItemType FLYING_BATS = new ItemType("FLYING_BATS", 1994);
-    ItemType FLYING_FISH_PET = new ItemType("FLYING_FISH_PET", 1995);
-    ItemType FLY_CATCHER = new ItemType("FLY_CATCHER", 1996);
-    ItemType FLY_SWATTER = new ItemType("FLY_SWATTER", 1997);
-    ItemType FOOD_TROUGH = new ItemType("FOOD_TROUGH", 1998);
-    ItemType FOOTPRINT_FOSSIL = new ItemType("FOOTPRINT_FOSSIL", 1999);
+    ItemType FLYCATCHER_UPGRADE = new ItemType("FLYCATCHER_UPGRADE", 1990);
+    ItemType FLYFISH_BRONZE = new ItemType("FLYFISH_BRONZE", 1991);
+    ItemType FLYFISH_DIAMOND = new ItemType("FLYFISH_DIAMOND", 1992);
+    ItemType FLYFISH_GOLD = new ItemType("FLYFISH_GOLD", 1993);
+    ItemType FLYFISH_SILVER = new ItemType("FLYFISH_SILVER", 1994);
+    ItemType FLYING_BATS = new ItemType("FLYING_BATS", 1995);
+    ItemType FLYING_FISH_PET = new ItemType("FLYING_FISH_PET", 1996);
+    ItemType FLY_CATCHER = new ItemType("FLY_CATCHER", 1997);
+    ItemType FLY_SWATTER = new ItemType("FLY_SWATTER", 1998);
+    ItemType FOOD_TROUGH = new ItemType("FOOD_TROUGH", 1999);
 }

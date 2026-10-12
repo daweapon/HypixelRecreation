@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public enum EnchantLevelBoost {
+    GOLDEN_BOUNTY(List.of(EnchantmentType.SCAVENGER), 5),
     ENDSTONE_IDOL(List.of(EnchantmentType.ENDER_SLAYER), 6),
     ENSNARED_SNAIL(List.of(EnchantmentType.BANE_OF_ARTHROPODS), 6),
     DISTANT_ECHO(List.of(EnchantmentType.STEALTH), 5),

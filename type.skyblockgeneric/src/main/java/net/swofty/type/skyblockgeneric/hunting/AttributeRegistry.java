@@ -55,7 +55,9 @@ public final class AttributeRegistry {
 
     @SuppressWarnings("unchecked")
     private static Map<AttributeId, AttributeDefinition> load() {
-        Path path = Path.of("./configuration/skyblock/shards.yml");
+        Path path = Files.exists(Path.of("./configuration/skyblock/shards.yml"))
+                ? Path.of("./configuration/skyblock/shards.yml")
+                : Path.of("../configuration/skyblock/shards.yml");
         try (InputStream stream = Files.newInputStream(path)) {
             Map<String, Object> root = new Yaml().load(stream);
             if (root == null) {

@@ -3,6 +3,7 @@ items:
     material: light_weighted_pressure_plate
     name: "Parkour Start/End"
     rarity: COMMON
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Create the start/end of parkour'
       - '<7>courses on your private island!'
@@ -15,6 +16,7 @@ items:
     material: heavy_weighted_pressure_plate
     name: "Parkour Checkpoint"
     rarity: COMMON
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Create checkpoints for parkour'
       - '<7>courses on your private island!'
@@ -27,6 +29,7 @@ items:
     material: iron_block
     name: "Parkour Times"
     rarity: COMMON
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Places a hologram displaying the top'
       - '<7>parkour times of players on your'
@@ -41,6 +44,7 @@ items:
     material: gold_block
     name: "Social Display"
     rarity: UNCOMMON
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Places a hologram displaying the top'
       - '<7>players on your island by points.'
@@ -53,6 +57,7 @@ items:
     material: PLAYER_HEAD
     name: "Egg Hunt"
     rarity: COMMON
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Place an egg which can be found on'
       - '<7>your island by guests for island'
@@ -70,6 +75,7 @@ items:
     material: polar_bear_spawn_egg
     name: "Island NPC"
     rarity: RARE
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Spawn island NPCs for your private'
       - '<7>world! Right-Click one to edit its'
@@ -83,6 +89,7 @@ items:
     material: PLAYER_HEAD
     name: "Tic Tac Toe"
     rarity: UNCOMMON
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Click another player to initiate a'
       - '<7>game of Tic Tac Toe!'
@@ -97,6 +104,7 @@ items:
     material: PLAYER_HEAD
     name: "Four in a Row"
     rarity: UNCOMMON
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Click another player to initiate a'
       - '<7>game of Four in a Row!'
@@ -111,6 +119,7 @@ items:
     material: shears
     name: "Rock Paper Shears"
     rarity: UNCOMMON
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Click this item to initiate a tournament'
       - '<7>of Rock Paper Shears with all of the'
@@ -129,6 +138,7 @@ items:
     material: glass
     name: "Showcase Block"
     rarity: UNCOMMON
+    unavailable: "Source content not built: Social skill and island social features"
     lore:
       - '<7>Show off an item in this fancy glass'
       - '<7>display box! <e><l>RIGHT CLICK <7>to put in'

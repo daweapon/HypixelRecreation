@@ -37,20 +37,39 @@ items:
     material: paper
     name: "Condensed Fermento"
     rarity: EPIC
+    unavailable: "Fermento is not obtainable yet (the Tater, Cropie and Squash armor drop chain needs Tater Armor, which is not built)"
+    source: "Crafted from 9 Fermento"
     components:
       - id: SELLABLE
         value: 2250000.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "AAA"
+              - "AAA"
+            ingredients:
+              A:
+                type: FERMENTO
+                amount: 1
+            result:
+              type: CONDENSED_FERMENTO
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/condensed_fermento
   - id: CROPIE
-    material: wheat
+    material: player_head
     name: "Cropie"
     rarity: UNCOMMON
+    unavailable: "Needs Tater Armor and the Garden armor tiered-bonus crop drops (not built)"
+    source: "Chance on breaking mature Wheat, Carrot or Potato while wearing 2+ pieces of Tater, Fermento or Helianthus Armor (0.03% / 0.04% / 0.05% for 2/3/4 pieces, boosted by Overbloom)"
     components:
+      - id: SKULL_HEAD
+        texture: dd01cba23ede2cd2895107f0c0258e971d2485538fe9649ef2853bd26e6232dc
       - id: SELLABLE
         value: 25000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/cropie
   - id: DUNG
@@ -66,38 +85,68 @@ items:
     material: carrot_on_a_stick
     name: "Enchanted Carrot on a Stick"
     rarity: UNCOMMON
+    source: "Crafted from 32 Enchanted Carrot, 3 Sticks (unlocked at Carrot V)"
     components:
-      - id: ENCHANTED
       - id: SELLABLE
         value: 10300.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "  A"
+              - " AB"
+              - "A B"
+            ingredients:
+              A:
+                type: STICK
+                amount: 1
+              B:
+                type: ENCHANTED_CARROT
+                amount: 32
+            result:
+              type: ENCHANTED_CARROT_ON_A_STICK
+              amount: 1
   - id: ENCHANTED_COOKED_RABBIT
     material: cooked_rabbit
     name: "Enchanted Cooked Rabbit"
     rarity: RARE
+    source: "Crafted from 160 Enchanted Raw Rabbit (unlocked at Raw Rabbit VII)"
+    lore:
+      - "§8Collection Item"
     components:
-      - id: ENCHANTED
       - id: SELLABLE
         value: 102400.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: ENCHANTED
+        recipe_type: FARMING
+        item_id: ENCHANTED_RAW_RABBIT
   - id: FERMENTO
-    material: brown_mushroom
+    material: player_head
     name: "Fermento"
     rarity: EPIC
+    unavailable: "Needs Squash Armor and the Garden armor tiered-bonus crop drops (not built)"
+    source: "Chance on breaking mature Sugar Cane, Cactus, Mushrooms or Nether Wart while wearing 2+ pieces of Squash, Fermento or Helianthus Armor"
     components:
+      - id: SKULL_HEAD
+        texture: cb41daeb57d2ae62c66e58eb6debb2a7d446e34541a771350728c9db15beafba
       - id: SELLABLE
         value: 250000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/fermento
   - id: FINE_FLOUR
     material: paper
     name: "Fine Flour"
     rarity: UNCOMMON
+    unavailable: "Needs Garden visitors and Finnegan's mayor perk (not built)"
+    source: "Garden visitor requests while Finnegan's Blooming Business perk is active (1/3/5/10 by visitor rarity)"
+    lore:
+      - "§7Bring §63,000 §7of these to §5Carrolyn §7in"
+      - "§5Scarleton §7on the §cCrimson Isle §7to"
+      - "§7permanently gain §c+5 Health §7and"
+      - "§6+12 Wheat Fortune§7."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/community_center/mayor/finnegan/fine_flour
   - id: FLOWER_CRYSTAL
@@ -179,13 +228,16 @@ items:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/rookie_hoe
   - id: SQUASH
-    material: pumpkin
+    material: player_head
     name: "Squash"
     rarity: RARE
+    unavailable: "Needs Cropie Armor and the Garden armor tiered-bonus crop drops (not built)"
+    source: "Chance on breaking mature Pumpkin, Melon or Cocoa Beans while wearing 2+ pieces of Cropie, Fermento or Helianthus Armor (0.01% / 0.02% / 0.03% for 2/3/4 pieces)"
     components:
+      - id: SKULL_HEAD
+        texture: 36ae076649ef22f60e8511831c68fd2b6ea63c32164dab33a8aebc18ff2a54c8
       - id: SELLABLE
         value: 75000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/squash
   - id: TIGHTLY_TIED_HAY_BALE
@@ -215,9 +267,22 @@ items:
     material: paper
     name: "Wriggling Larva"
     rarity: EPIC
+    unavailable: "Needs Garden Pests (not built)"
+    source: "Dropped by Garden Pests"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this wriggling, disgusting"
+      - "§7larva to permanently gain §2+2"
+      - "§2Bonus Pest Chance§7."
+      - ""
+      - "§7You can consume up to §a5 §7larvae"
+      - "§7before the sight of them makes you"
+      - "§7too sick to consume more."
+      - ""
+      - "§eRight-click to consume!"
     components:
       - id: SELLABLE
         value: 250000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pests/wriggling_larva

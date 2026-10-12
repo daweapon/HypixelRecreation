@@ -34,6 +34,8 @@ public class AnvilCombineRegistry {
         EnchantLevelBoost.registerAnvilCombines();
         net.swofty.type.skyblockgeneric.item.utility.SilexUpgrade.registerAnvilCombine();
         Recombobulation.registerAnvilCombine();
+        net.swofty.type.skyblockgeneric.item.utility.PocketSackInASack.registerAnvilCombine();
+        net.swofty.type.skyblockgeneric.abiphone.AbiphoneContactsTrio.registerAnvilCombine();
         net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments.registerAnvilCombine();
         register("HOT_POTATO_BOOK", new AnvilCombineHandler(
                 (upgradeItem, sacrificeItem) -> {

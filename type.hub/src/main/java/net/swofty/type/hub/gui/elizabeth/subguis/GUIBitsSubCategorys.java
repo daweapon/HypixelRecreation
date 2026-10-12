@@ -51,7 +51,7 @@ public class GUIBitsSubCategorys extends HypixelInventoryGUI {
                         public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
                             if (player.getBits() >= price) {
-                                SkyBlockItem skyBlockItem = new SkyBlockItem(item);
+                                SkyBlockItem skyBlockItem = shopItem.createItem();
                                 ItemStack.Builder itemStack = new NonPlayerItemUpdater(skyBlockItem).getUpdatedItem();
                                 itemStack.amount(amount);
                                 SkyBlockItem finalItem = new SkyBlockItem(itemStack.build());
@@ -69,7 +69,7 @@ public class GUIBitsSubCategorys extends HypixelInventoryGUI {
 
                         @Override
                         public ItemStack.Builder getItem(HypixelPlayer p) {
-                            SkyBlockItem skyBlockItem = new SkyBlockItem(item);
+                            SkyBlockItem skyBlockItem = shopItem.createItem();
                             ItemStack.Builder itemStack = new NonPlayerItemUpdater(skyBlockItem).getUpdatedItem();
                             itemStack.amount(amount);
                             return ItemStacks.appendLore(itemStack, """

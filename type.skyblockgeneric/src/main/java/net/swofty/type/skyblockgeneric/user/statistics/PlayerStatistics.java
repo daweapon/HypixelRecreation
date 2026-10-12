@@ -602,6 +602,7 @@ public class PlayerStatistics {
         statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.armor.ArmorPassives.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.armor.PieceBonuses.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.pieceStatistics(item, player));
+        statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.slayer.zombie.ZombieSlayerGear.pieceStatistics(item));
 
         return statistics;
     }

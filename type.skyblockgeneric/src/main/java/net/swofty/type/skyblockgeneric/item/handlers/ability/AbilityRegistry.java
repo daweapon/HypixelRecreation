@@ -10,6 +10,9 @@ import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
+import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
+import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import net.swofty.type.skyblockgeneric.item.tool.AxeLogDrops;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.AbilityDamage;
@@ -218,6 +221,29 @@ public class AbilityRegistry {
                     });
                 },
                 RegisteredPassiveAbility.Action.createDefaultCondition("STORED_POTENTIAL")
+            ))
+        ));
+
+        register(new RegisteredPassiveAbility(
+            "PROMISING_AXE_EFFICIENCY",
+            "Promising Axe",
+            (_, item) -> """
+                <7>Gains <9>Efficiency I <7>after breaking <a>%d
+                <a>blocks<7>!
+
+                <7>Blocks Broken: <a>%d""".formatted(AxeLogDrops.PROMISING_AXE_BLOCKS_FOR_EFFICIENCY, item.getAttributeHandler().getStoredPotential()),
+            List.of(new RegisteredPassiveAbility.Action<>(
+                CustomBlockBreakEvent.class,
+                EventNodes.CUSTOM,
+                event -> event.getPlayer().updateItemInSlot(event.getPlayer().getHeldSlot(), (item) -> {
+                    int broken = item.getAttributeHandler().getStoredPotential() + 1;
+                    item.getAttributeHandler().setStoredPotential(broken);
+                    if (AxeLogDrops.promisingAxeEarnsEfficiency(broken)
+                            && !item.getAttributeHandler().hasEnchantment(EnchantmentType.EFFICIENCY)) {
+                        item.getAttributeHandler().addEnchantment(new SkyBlockEnchantment(EnchantmentType.EFFICIENCY, 1));
+                    }
+                }),
+                RegisteredPassiveAbility.Action.createDefaultCondition("PROMISING_AXE_EFFICIENCY")
             ))
         ));
 

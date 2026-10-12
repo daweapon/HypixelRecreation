@@ -5,8 +5,14 @@ items:
     rarity: COMMON
     default_statistics:
       health: 20.0
+    lore:
+      - "§4❣ §cRequires §aFarming Skill 7§c."
     components:
-      - id: NOT_FINISHED_YET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FARMING
+            level: 7
       - id: SELLABLE
         value: 10.0
       - id: STANDARD_ITEM
@@ -41,8 +47,14 @@ items:
     default_statistics:
       health: 10.0
       defense: 10.0
+    lore:
+      - "§4❣ §cRequires §aFarming Skill 7§c."
     components:
-      - id: NOT_FINISHED_YET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FARMING
+            level: 7
       - id: SELLABLE
         value: 16.0
       - id: STANDARD_ITEM
@@ -78,8 +90,14 @@ items:
     default_statistics:
       health: 10.0
       defense: 5.0
+    lore:
+      - "§4❣ §cRequires §aFarming Skill 7§c."
     components:
-      - id: NOT_FINISHED_YET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FARMING
+            level: 7
       - id: SELLABLE
         value: 14.0
       - id: STANDARD_ITEM
@@ -114,8 +132,14 @@ items:
     rarity: COMMON
     default_statistics:
       health: 15.0
+    lore:
+      - "§4❣ §cRequires §aFarming Skill 7§c."
     components:
-      - id: NOT_FINISHED_YET
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FARMING
+            level: 7
       - id: SELLABLE
         value: 8.0
       - id: STANDARD_ITEM

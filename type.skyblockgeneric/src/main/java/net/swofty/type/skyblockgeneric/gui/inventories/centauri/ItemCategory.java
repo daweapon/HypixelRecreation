@@ -7,6 +7,7 @@ import net.swofty.type.skyblockgeneric.item.ConfigurableSkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
 import net.swofty.type.skyblockgeneric.item.components.*;
+import net.swofty.type.skyblockgeneric.minion.inferno.InfernoMinionFuelComponent;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -20,10 +21,15 @@ public enum ItemCategory {
     REGULAR("Regular Items", Material.DIAMOND_SWORD, "weapons, armor, tools, blocks and everything else"),
     PETS("Pets", Material.BONE, "pets, pet items, candy, skins and pet upgrade items"),
     TALISMANS("Talismans", Material.EMERALD, "talismans, rings, artifacts and other accessories"),
-    MATERIALS("Materials", Material.IRON_INGOT, "crafting materials, drops, ores, fish and compacted items");
+    MATERIALS("Materials", Material.IRON_INGOT, "crafting materials, drops, ores, fish and compacted items"),
+    MINIONS("Minions", Material.COBBLESTONE, "minions, minion fuels, upgrades and skins"),
+    ATTRIBUTE_SHARDS("Attribute Shards", Material.AMETHYST_SHARD, "attribute shards from Hunting and fusions");
 
     private static final List<Class<? extends SkyBlockItemComponent>> PET_COMPONENTS = List.of(
             PetComponent.class, PetItemComponent.class, PetCandyComponent.class, PetSkinComponent.class);
+
+    private static final List<Class<? extends SkyBlockItemComponent>> MINION_COMPONENTS = List.of(
+            MinionComponent.class, MinionUpgradeComponent.class, MinionSkinComponent.class, InfernoMinionFuelComponent.class);
 
     private static final List<Class<? extends SkyBlockItemComponent>> FUNCTIONAL_COMPONENTS = List.of(
             ArmorComponent.class, AxeComponent.class, BowComponent.class, ShortBowComponent.class, PickaxeComponent.class,
@@ -53,6 +59,8 @@ public enum ItemCategory {
         if (config != null && config.getCentauriCategory() != null) {
             return valueOf(config.getCentauriCategory().toUpperCase());
         }
+        if (item.hasComponent(AttributeShardComponent.class)) return ATTRIBUTE_SHARDS;
+        if (hasAny(item, MINION_COMPONENTS) || isMinionOnlyFuel(type, item)) return MINIONS;
         if (hasAny(item, PET_COMPONENTS)) return PETS;
         if (item.hasComponent(AccessoryComponent.class)) return TALISMANS;
         if (isVanillaBacked(type, item)) {
@@ -91,6 +99,11 @@ public enum ItemCategory {
         List<ItemType> listed = new ArrayList<>();
         for (ItemCategory category : values()) listed.addAll(items(category));
         return listed;
+    }
+
+    private static boolean isMinionOnlyFuel(ItemType type, SkyBlockItem item) {
+        return item.hasComponent(MinionFuelComponent.class) && !isVanillaBacked(type, item)
+                && !item.hasComponent(EnchantedComponent.class);
     }
 
     static boolean isVanillaBacked(ItemType type, SkyBlockItem item) {

@@ -3,293 +3,695 @@ items:
     material: paper
     name: "Bayou Water Orb"
     rarity: LEGENDARY
+    unavailable: "Needs Backwater Bayou drops (Poison Sample, Condensed Lily Pad) that are not built, so the recipe is not wired"
+    source: "Crafted from Backwater Bayou materials and a Water Orb"
+    lore:
+      - "§7A green mass of coagulated swamp."
     components:
       - id: SELLABLE
         value: 5388528.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/crimson_isle/bobbin_time/bayou_water_orb
   - id: BLUE_ICE_HUNK
     material: paper
     name: "Hunk of Blue Ice"
     rarity: RARE
+    source: "Crafted from 160 Hunk of Ice; dropped by Yetis and caught by treasure fishing in Jerry's Workshop"
+    lore:
+      - "§8Collection Item"
     components:
       - id: SELLABLE
         value: 25000.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: ENCHANTED
+        recipe_type: FISHING
+        item_id: ICE_HUNK
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/hunk_of_blue_ice
   - id: BOBBIN_SCRIPTURES
     material: paper
     name: "Bobbin' Scriptures"
     rarity: RARE
+    source: "Rare drop from Lord Jawbus, Ragnarok, Plhlegblast and the Reindrake"
+    lore:
+      - "§7The sacred ways of bobbin', written"
+      - "§7by a long-forgotten worshipper of"
+      - "§7Kuudra."
     components:
       - id: SELLABLE
         value: 250000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/crimson_isle/bobbin_time/bobbin_scriptures
   - id: BRIMSTONE_HANDLE
     material: stick
     name: "Brimstone Handle"
     rarity: EPIC
+    source: "0.5% drop from Ragnarok"
+    lore:
+      - "§7A splendid handle belonging to a"
+      - "§7feared foe. In exchange for"
+      - "§7granting them immense power, it saps"
+      - "§7the life force from its wielder."
     components:
       - id: SELLABLE
         value: 25000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/misc/brimstone_handle
   - id: CUP_OF_BLOOD
     material: paper
     name: "Cup of Blood"
     rarity: RARE
+    source: "Always dropped by Lava Leeches; Crimson Isle faction quest reward"
+    lore:
+      - "§7§oEww"
     components:
       - id: SELLABLE
         value: 200.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/cup_of_blood
   - id: EMPTY_CHUM_BUCKET
-    material: paper
+    material: player_head
     name: "Empty Chum Bucket"
     rarity: COMMON
+    unavailable: "Needs Moby's Chum Bucket shop and Chum Bucket placement (not built)"
+    source: "Bought from Moby for 8 Glowing Mushroom and 2,000 coins"
+    lore:
+      - "§7Place it down next to water."
+      - ""
+      - "§7Sea Creatures slain nearby will drop"
+      - "§a+1 Chum§7."
+      - "§8Up to +4 total from buckets!"
     components:
+      - id: SKULL_HEAD
+        texture: 11bfd536fb2d01fc87dee9d4f8a7248ab1a59387719400513153dbfd06965b22
       - id: SELLABLE
         value: 9663.0
-      - id: BAZAAR_PLACEHOLDER
   - id: EXALTED_LUSHLILAC_BONBON
     material: paper
     name: "Exalted Lushlilac Bonbon"
     rarity: UNCOMMON
+    source: "Crafted from 64 Lushlilac and 4 Enchanted Sea Lumies (unlocked at Lushlilac V)"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§7Grants §b1❣ Charm Chance§7."
+      - "§7Duration: §624h"
+      - ""
+      - "§eLeft-click to consume!"
     components:
+      - id: EXTRA_RARITY
+        display: SALT
       - id: SELLABLE
         value: 1280.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - "ABA"
+              - "B B"
+              - "ABA"
+            ingredients:
+              A:
+                type: LUSHLILAC
+                amount: 16
+              B:
+                type: ENCHANTED_SEA_LUMIES
+                amount: 1
+            result:
+              type: EXALTED_LUSHLILAC_BONBON
+              amount: 1
+      - id: INTERACTABLE
+        handler_id: EXALTED_LUSHLILAC_BONBON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_2/salts/exalted_lushlilac_bonbon
   - id: FLAMING_HEART
     material: paper
     name: "Flaming Heart"
     rarity: RARE
+    source: "Always dropped by Lava Flames"
+    lore:
+      - "§7Burning passion."
     components:
       - id: SELLABLE
         value: 200.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/flaming_heart
   - id: FRIED_FEATHER
     material: feather
     name: "Fried Feather"
     rarity: UNCOMMON
+    source: "10% drop from Fried Chickens"
+    lore:
+      - "§7A greasy feather, somehow still in"
+      - "§7one piece despite having been"
+      - "§7doused in boiling-hot lava."
     components:
       - id: SELLABLE
         value: 1000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/misc/fried_feather
   - id: FULL_CHUM_BUCKET
-    material: paper
+    material: player_head
     name: "Full Chum Bucket"
     rarity: UNCOMMON
+    unavailable: "Needs Moby and Chum Bucket placement (not built)"
+    source: "Filled by depositing 10 Chum into a placed Empty Chum Bucket, or crafted from 10 Chum and an Empty Chum Bucket"
+    lore:
+      - "§7The result of a hard day's labor!"
+      - "§7Trade it with Moby."
     components:
+      - id: SKULL_HEAD
+        texture: 7a257396f89a3f23dc705951ebb339fd7c6690592df755efc48b0d81229e084e
       - id: SELLABLE
         value: 12452.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - " A "
+              - " B "
+              - "   "
+            ingredients:
+              A:
+                type: CHUM
+                amount: 10
+              B:
+                type: EMPTY_CHUM_BUCKET
+                amount: 1
+            result:
+              type: FULL_CHUM_BUCKET
+              amount: 1
   - id: HORN_OF_TAURUS
     material: paper
     name: "Horn of Taurus"
     rarity: EPIC
+    source: "Always dropped by Taurus"
+    lore:
+      - "§7Popular among Piglins, often used as"
+      - "§7a war charm."
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/horn_of_taurus
   - id: HOTSPOT_WATER_ORB
     material: paper
     name: "Hotspot Water Orb"
     rarity: LEGENDARY
+    source: "Crafted from Half-Eaten Mushroom, Scorched Crab Stick, Fried Feather, Broken Radar, Singed Powder, Ink Splat, Blue Ring, Seared Escargot and a Water Orb"
+    lore:
+      - "§7Radiating some weird energy."
+      - ""
+      - "§8Probably safe to hold?"
     components:
       - id: SELLABLE
         value: 23669920.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "ABC"
+              - "DEF"
+              - "GHI"
+            ingredients:
+              A:
+                type: HALF_EATEN_MUSHROOM
+                amount: 64
+              B:
+                type: SCORCHED_CRAB_STICK
+                amount: 8
+              C:
+                type: FRIED_FEATHER
+                amount: 64
+              D:
+                type: BROKEN_RADAR
+                amount: 8
+              E:
+                type: WATER_ORB
+                amount: 1
+              F:
+                type: SINGED_POWDER
+                amount: 8
+              G:
+                type: INK_SPLAT
+                amount: 16
+              H:
+                type: BLUE_RING
+                amount: 8
+              I:
+                type: SEARED_ESCARGOT
+                amount: 16
+            result:
+              type: HOTSPOT_WATER_ORB
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/crimson_isle/bobbin_time/hotspot_water_orb
   - id: ICE_HUNK
     material: paper
     name: "Hunk of Ice"
     rarity: UNCOMMON
+    source: "Always dropped by Frosty and other Jerry's Workshop sea creatures; small chance when fishing in Jerry's Workshop"
     components:
       - id: SELLABLE
         value: 500.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/hunk_of_ice
   - id: LAVA_SHELL
     material: paper
     name: "Lava Shell"
     rarity: EPIC
+    source: "Crimson Isle treasure fishing (4 on Outstanding catches, 1 on Great catches)"
     components:
       - id: SELLABLE
         value: 3000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/lava_shell
   - id: LAVA_WATER_ORB
     material: paper
     name: "Lava Water Orb"
     rarity: LEGENDARY
+    source: "Crafted from Silver Magmafish, Thunder Fragment, Moogma Pelt, Lump of Magma, Cup of Blood, Horn of Taurus, Flaming Heart and a Water Orb; rare Crimson Isle treasure fishing catch"
+    lore:
+      - "§7Extremely hot to the touch."
+      - ""
+      - "§8Shouldn't this be steam..?"
     components:
       - id: SELLABLE
         value: 5000.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "ABA"
+              - "CDE"
+              - "FGH"
+            ingredients:
+              A:
+                type: SILVER_MAGMAFISH
+                amount: 16
+              B:
+                type: THUNDER_SHARDS
+                amount: 2
+              C:
+                type: MOOGMA_PELT
+                amount: 64
+              D:
+                type: WATER_ORB
+                amount: 1
+              E:
+                type: LUMP_OF_MAGMA
+                amount: 64
+              F:
+                type: CUP_OF_BLOOD
+                amount: 32
+              G:
+                type: HORN_OF_TAURUS
+                amount: 16
+              H:
+                type: FLAMING_HEART
+                amount: 32
+            result:
+              type: LAVA_WATER_ORB
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/crimson_isle/bobbin_time/lava_water_orb
   - id: LUMP_OF_MAGMA
     material: paper
     name: "Lump of Magma"
     rarity: UNCOMMON
+    source: "Always dropped by Magma Slugs"
+    lore:
+      - "§7Self explanatory."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/lump_of_magma
   - id: LUSHLILAC_BONBON
     material: paper
     name: "Lushlilac Bonbon"
     rarity: UNCOMMON
+    source: "Crafted from 4 Lushlilac and 4 Sea Lumies (unlocked at Lushlilac I)"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§7Grants §b0.625❣ Charm Chance§7."
+      - "§7Duration: §612h"
+      - ""
+      - "§eLeft-click to consume!"
     components:
+      - id: EXTRA_RARITY
+        display: SALT
       - id: SELLABLE
         value: 26.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - "ABA"
+              - "B B"
+              - "ABA"
+            ingredients:
+              A:
+                type: LUSHLILAC
+                amount: 1
+              B:
+                type: SEA_LUMIES
+                amount: 1
+            result:
+              type: LUSHLILAC_BONBON
+              amount: 1
+      - id: INTERACTABLE
+        handler_id: LUSHLILAC_BONBON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_2/salts/lushlilac_bonbon
   - id: MAGMA_LORD_FRAGMENT
     material: paper
     name: "Magma Lord Fragment"
     rarity: LEGENDARY
+    source: "Always dropped by Lord Jawbus"
     components:
       - id: SELLABLE
         value: 200000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/magma_lord_fragment
   - id: MOOGMA_PELT
     material: leather
     name: "Moogma Pelt"
     rarity: UNCOMMON
+    source: "1-2 dropped by Moogmas; Crimson Isle faction quest reward"
+    lore:
+      - "§7The bottom of the volcano is filled"
+      - "§7with it, Moogmas keep on moulting. It's"
+      - "§7a problem."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/moogma_pelt
   - id: ORB_OF_ENERGY
     material: paper
     name: "Orb of Energy"
     rarity: RARE
+    source: "Always dropped by Fire Eels"
+    lore:
+      - "§7According to Professor Selta they"
+      - "§7are 9V batteries and can supply"
+      - "§7about 50mA of current. Professor"
+      - "§7Selta is currently in a mental asylum."
     components:
       - id: SELLABLE
         value: 200.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/orb_of_energy
   - id: PRIME_LUSHLILAC_BONBON
     material: paper
     name: "Prime Lushlilac Bonbon"
     rarity: UNCOMMON
+    source: "Crafted from 12 Lushlilac and 64 Sea Lumies (unlocked at Lushlilac III)"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§7Grants §b0.75❣ Charm Chance§7."
+      - "§7Duration: §618h"
+      - ""
+      - "§eLeft-click to consume!"
     components:
+      - id: EXTRA_RARITY
+        display: SALT
       - id: SELLABLE
         value: 156.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - "ABA"
+              - "B B"
+              - "ABA"
+            ingredients:
+              A:
+                type: SEA_LUMIES
+                amount: 16
+              B:
+                type: LUSHLILAC
+                amount: 3
+            result:
+              type: PRIME_LUSHLILAC_BONBON
+              amount: 1
+      - id: INTERACTABLE
+        handler_id: PRIME_LUSHLILAC_BONBON
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_2/salts/prime_lushlilac_bonbon
   - id: PYROCLASTIC_SCALE
     material: prismarine_shard
     name: "Pyroclastic Scale"
     rarity: UNCOMMON
+    source: "Always dropped by Pyroclastic Worms; Crimson Isle faction quest reward"
+    lore:
+      - "§7Makes pretty \"drip\" necklaces,"
+      - "§7according to the local youth."
     components:
       - id: SELLABLE
         value: 50.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/pyroclastic_scale
   - id: SCORCHED_CRAB_STICK
     material: paper
     name: "Scorched Crab Stick"
     rarity: RARE
+    source: "Always dropped by Fiery Scuttlers"
+    lore:
+      - "§7Sometimes, well-done just isn't"
+      - "§7enough."
     components:
       - id: SELLABLE
         value: 25000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/misc/scorched_crab_stick
   - id: SHARK_WATER_ORB
     material: paper
     name: "Shark Water Orb"
     rarity: LEGENDARY
+    source: "Crafted from Enchanted Shark Fin, shark teeth and a Water Orb"
+    lore:
+      - "§7A disgusting ball of mushed shark"
+      - "§7matter."
+      - ""
+      - "§8Are those teeth sticking out?"
     components:
       - id: SELLABLE
         value: 5000.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "ABA"
+              - "CDE"
+              - "AFA"
+            ingredients:
+              A:
+                type: ENCHANTED_SHARK_FIN
+                amount: 1
+              B:
+                type: GREAT_WHITE_SHARK_TOOTH
+                amount: 1
+              C:
+                type: BLUE_SHARK_TOOTH
+                amount: 6
+              D:
+                type: WATER_ORB
+                amount: 1
+              E:
+                type: NURSE_SHARK_TOOTH
+                amount: 12
+              F:
+                type: TIGER_SHARK_TOOTH
+                amount: 4
+            result:
+              type: SHARK_WATER_ORB
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/crimson_isle/bobbin_time/shark_water_orb
   - id: SINGED_POWDER
     material: paper
     name: "Singed Powder"
     rarity: UNCOMMON
+    source: "1% drop from Fireproof Witches"
+    lore:
+      - "§7Before she mastered this ingredient,"
+      - "§7the §5Fireproof Witch §7was but a mere"
+      - "§7witch."
     components:
       - id: SELLABLE
         value: 1000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/fishing/misc/singed_powder
   - id: SPOOKY_WATER_ORB
     material: paper
     name: "Spooky Water Orb"
     rarity: LEGENDARY
+    source: "Crafted from Purple Candy, Soul Fragment, Werewolf Skin and a Water Orb"
+    lore:
+      - "§7A terrifying sphere of extreme"
+      - "§7spookiness."
     components:
       - id: SELLABLE
         value: 5000.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "ABA"
+              - "CDC"
+              - "ACA"
+            ingredients:
+              A:
+                type: PURPLE_CANDY
+                amount: 16
+              B:
+                type: SOUL_FRAGMENT
+                amount: 1
+              C:
+                type: WEREWOLF_SKIN
+                amount: 8
+              D:
+                type: WATER_ORB
+                amount: 1
+            result:
+              type: SPOOKY_WATER_ORB
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/crimson_isle/bobbin_time/spooky_water_orb
   - id: THUNDER_SHARDS
     material: paper
     name: "Thunder Fragment"
     rarity: EPIC
+    source: "Always dropped by Thunder"
+    lore:
+      - "§7Wear gloves when handling, and be"
+      - "§7cautious around water pools."
     components:
       - id: SELLABLE
         value: 50000.0
-      - id: BAZAAR_PLACEHOLDER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/thunder_fragment
   - id: TITANOBOA_SHED
     material: paper
     name: "Titanoboa Shed"
     rarity: LEGENDARY
+    unavailable: "Needs the Backwater Bayou Titanoboa (not built)"
+    source: "Dropped by the Titanoboa; medium Raffle of the Century reward"
+    lore:
+      - "§7A massive set of discarded snake"
+      - "§7skin. There's so much of it that it's"
+      - "§7hard to lift."
     components:
       - id: SELLABLE
         value: 500000.0
-      - id: BAZAAR_PLACEHOLDER
   - id: WATER_ORB
     material: paper
     name: "Water Orb"
     rarity: EPIC
+    source: "Crafted from Enchanted Raw Fish, Sponge, Raw Salmon, Prismarine Shard, Lily Pad, Prismarine Crystals, Clay Ball, Pufferfish and Tropical Fish"
+    lore:
+      - "§7A perfectly smooth, highly"
+      - "§7condensed orb of pure fish matter."
+      - ""
+      - "§7Used as a core ingredient in high"
+      - "§7level fishing crafts."
+      - ""
+      - "§8Smells like fish..."
     components:
       - id: SELLABLE
         value: 3000.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "ABC"
+              - "DEF"
+              - "GHI"
+            ingredients:
+              A:
+                type: ENCHANTED_RAW_FISH
+                amount: 16
+              B:
+                type: ENCHANTED_SPONGE
+                amount: 8
+              C:
+                type: ENCHANTED_RAW_SALMON
+                amount: 16
+              D:
+                type: ENCHANTED_PRISMARINE_SHARD
+                amount: 16
+              E:
+                type: ENCHANTED_LILY_PAD
+                amount: 16
+              F:
+                type: ENCHANTED_PRISMARINE_CRYSTALS
+                amount: 16
+              G:
+                type: ENCHANTED_CLAY_BALL
+                amount: 16
+              H:
+                type: ENCHANTED_PUFFERFISH
+                amount: 16
+              I:
+                type: ENCHANTED_TROPICAL_FISH
+                amount: 16
+            result:
+              type: WATER_ORB
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/crimson_isle/bobbin_time/water_orb
   - id: WINTER_WATER_ORB
     material: paper
     name: "Winter Water Orb"
     rarity: LEGENDARY
+    source: "Crafted from Hunk of Ice, Enchanted Snow Block, White and Green Gift, Hunk of Blue Ice and a Water Orb"
+    lore:
+      - "§7A collection of frozen substances,"
+      - "§7potentially including ice cream."
     components:
       - id: SELLABLE
         value: 5000.0
-      - id: BAZAAR_PLACEHOLDER
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FISHING
+            pattern:
+              - "ABA"
+              - "CDE"
+              - "AFA"
+            ingredients:
+              A:
+                type: ICE_HUNK
+                amount: 32
+              B:
+                type: ENCHANTED_SNOW_BLOCK
+                amount: 64
+              C:
+                type: WHITE_GIFT
+                amount: 64
+              D:
+                type: WATER_ORB
+                amount: 1
+              E:
+                type: GREEN_GIFT
+                amount: 16
+              F:
+                type: BLUE_ICE_HUNK
+                amount: 32
+            result:
+              type: WINTER_WATER_ORB
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/crimson_isle/bobbin_time/winter_water_orb

@@ -5,12 +5,13 @@ items:
     rarity: UNCOMMON
     default_statistics:
       damage: 25.0
+    lore:
+      - "<gray>Drops <green>5 <gray>Planks from chopping Logs."
     components:
       - id: AXE
         axe_strength: 6
       - id: REFORGABLE
         reforge_type: AXES
-      - id: NOT_FINISHED_YET
       - id: SELLABLE
         value: 25.0
       - id: ITEM_MODEL
@@ -26,7 +27,9 @@ items:
         axe_strength: 6
       - id: REFORGABLE
         reforge_type: AXES
-      - id: NOT_FINISHED_YET
+      - id: ABILITY
+        abilities:
+          - PROMISING_AXE_EFFICIENCY
       - id: SELLABLE
         value: 20.0
       - id: ITEM_MODEL
@@ -60,7 +63,6 @@ items:
         axe_strength: 6
       - id: REFORGABLE
         reforge_type: AXES
-      - id: NOT_FINISHED_YET
       - id: SELLABLE
         value: 25.0
       - id: ITEM_MODEL

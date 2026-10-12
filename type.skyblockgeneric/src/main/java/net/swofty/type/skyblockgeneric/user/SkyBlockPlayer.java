@@ -700,7 +700,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
             if (matcher.find()) {
                 String otherCategory = matcher.group(2);
                 if (sackCategory.equals(otherCategory) && skyBlockItem.hasComponent(SackComponent.class)) {
-                    maxStorage += skyBlockItem.getComponent(SackComponent.class).getMaxCapacity();
+                    maxStorage += skyBlockItem.getComponent(SackComponent.class).capacityOf(skyBlockItem);
                 }
             }
         }

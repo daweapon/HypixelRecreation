@@ -38,6 +38,7 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
             29, 30, 31, 32, 33, 34,
             38, 39, 40, 41, 42, 43
     };
+    private static final int PREVIEW_LINES = 12;
     private static final long CACHE_TTL_MS = 30_000L;
 
     private static final Map<BazaarCategories, CacheEntry> CACHE = new ConcurrentHashMap<>();
@@ -149,11 +150,19 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
         // types under one "Gemstones" tile, since a category grid only has so many slots.
         Map<String, List<BazaarItemSet>> grouped = new java.util.LinkedHashMap<>();
         List<BazaarItemSet> ungrouped = new ArrayList<>();
+        List<List<BazaarItemSet>> tiles = new ArrayList<>();
         for (BazaarItemSet set : allSets) {
             if (set.nestedGroup != null) {
-                grouped.computeIfAbsent(set.nestedGroup, k -> new ArrayList<>()).add(set);
+                List<BazaarItemSet> members = grouped.get(set.nestedGroup);
+                if (members == null) {
+                    members = new ArrayList<>();
+                    grouped.put(set.nestedGroup, members);
+                    tiles.add(members);
+                }
+                members.add(set);
             } else {
                 ungrouped.add(set);
+                tiles.add(List.of(set));
             }
         }
 
@@ -168,7 +177,7 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
         List<CompletableFuture<Void>> allFutures = new ArrayList<>();
 
         for (BazaarItemSet set : ungrouped) {
-            for (ItemType type : set.items) {
+            for (ItemType type : set.items.stream().limit(PREVIEW_LINES).toList()) {
                 CompletableFuture<Void> future = player.getBazaarConnector().getItemStatistics(type)
                         .thenAccept(stats -> {
                             // Store the price data thread-safely
@@ -193,17 +202,28 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
                     List<CacheEntry.CachedSlot> slotData = new ArrayList<>();
                     int slotIndex = 0;
 
-                    for (BazaarItemSet set : ungrouped) {
+                    for (List<BazaarItemSet> tile : tiles) {
                         if (slotIndex >= SLOTS.length) break;
                         int slot = SLOTS[slotIndex++];
+                        BazaarItemSet first = tile.getFirst();
+
+                        if (first.nestedGroup != null) {
+                            int totalProducts = tile.stream().mapToInt(s -> s.items.size()).sum();
+                            List<Text> lore = List.of(
+                                    Text.key("gui_bazaar.main.item_set_products", totalProducts),
+                                    Text.literal(" "),
+                                    Text.key("gui_bazaar.main.item_set_click")
+                            );
+                            slotData.add(new CacheEntry.CachedSlot(slot, first.nestedGroup, tile, lore));
+                            continue;
+                        }
 
                         List<Text> lore = new ArrayList<>();
-                        lore.add(Text.key("gui_bazaar.main.item_set_products", set.items.size()));
+                        lore.add(Text.key("gui_bazaar.main.item_set_products", first.items.size()));
                         lore.add(Text.literal(" "));
 
-                        // Add price data for each item in the set
-                        Map<ItemType, PriceData> priceDataMap = setDataMap.get(set);
-                        for (ItemType type : set.items) {
+                        Map<ItemType, PriceData> priceDataMap = setDataMap.get(first);
+                        for (ItemType type : first.items.stream().limit(PREVIEW_LINES).toList()) {
                             PriceData priceData = priceDataMap.get(type);
                             if (priceData != null) {
                                 lore.add(Text.of("<color:{}>▶ <7>{} <c>{:short} <8>| <a>{:short}",
@@ -216,20 +236,7 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
 
                         lore.add(Text.literal(" "));
                         lore.add(Text.key("gui_bazaar.main.item_set_click"));
-                        slotData.add(new CacheEntry.CachedSlot(slot, null, List.of(set), lore));
-                    }
-
-                    for (Map.Entry<String, List<BazaarItemSet>> group : grouped.entrySet()) {
-                        if (slotIndex >= SLOTS.length) break;
-                        int slot = SLOTS[slotIndex++];
-
-                        int totalProducts = group.getValue().stream().mapToInt(s -> s.items.size()).sum();
-                        List<Text> lore = List.of(
-                                Text.key("gui_bazaar.main.item_set_products", totalProducts),
-                                Text.literal(" "),
-                                Text.key("gui_bazaar.main.item_set_click")
-                        );
-                        slotData.add(new CacheEntry.CachedSlot(slot, group.getKey(), group.getValue(), lore));
+                        slotData.add(new CacheEntry.CachedSlot(slot, null, List.of(first), lore));
                     }
 
                     // Cache it

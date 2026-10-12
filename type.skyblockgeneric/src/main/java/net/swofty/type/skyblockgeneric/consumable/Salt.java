@@ -19,7 +19,10 @@ public enum Salt {
     BRINE_TONIC("Brine Tonic", 2.75, 24, (player, mob) -> {
         SkyBlockRegion region = player.getRegion();
         return mob instanceof SeaCreatureMob && region != null && region.getType() == RegionType.MOONGLADE_MARSH;
-    });
+    }),
+    LUSHLILAC_BONBON("Lushlilac Bonbon", 0.625, 12, (player, mob) -> true),
+    PRIME_LUSHLILAC_BONBON("Prime Lushlilac Bonbon", 0.75, 18, (player, mob) -> true),
+    EXALTED_LUSHLILAC_BONBON("Exalted Lushlilac Bonbon", 1, 24, (player, mob) -> true);
 
     private final String displayName;
     private final double charmChance;

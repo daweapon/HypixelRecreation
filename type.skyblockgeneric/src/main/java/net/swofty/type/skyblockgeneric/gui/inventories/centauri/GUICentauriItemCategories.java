@@ -9,11 +9,11 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.gui.inventories.GUICreative;
 
 public final class GUICentauriItemCategories implements View<GUICentauriItemCategories.State> {
-    static final int[] CATEGORY_SLOTS = {10, 12, 14, 16};
+    static final int[] CATEGORY_SLOTS = {11, 13, 15, 20, 22, 24};
 
     @Override
     public ViewConfiguration<State> configuration() {
-        return ViewConfiguration.withString((state, ctx) -> "Item List", InventoryType.CHEST_3_ROW);
+        return ViewConfiguration.withString((state, ctx) -> "Item List", InventoryType.CHEST_4_ROW);
     }
 
     @Override
@@ -27,7 +27,7 @@ public final class GUICentauriItemCategories implements View<GUICentauriItemCate
                             "<7>Items: <b>" + ItemCategory.items(category).size(), " ", "<e>Click to view!"),
                     (click, c) -> c.push(new GUICreative(), GUICreative.createInitialState(category, "", 0)));
         }
-        Components.backOrClose(layout, 22, ctx);
+        Components.backOrClose(layout, 31, ctx);
     }
 
     public record State() {}

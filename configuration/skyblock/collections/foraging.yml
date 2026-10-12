@@ -595,6 +595,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: LUSHLILAC_BONBON
     - amount: 50
       rewards:
         - type: XP
@@ -605,6 +608,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: PRIME_LUSHLILAC_BONBON
     - amount: 250
       rewards:
         - type: XP
@@ -615,6 +621,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: EXALTED_LUSHLILAC_BONBON
 - itemType: SEA_LUMIES
   rewards:
     - amount: 25

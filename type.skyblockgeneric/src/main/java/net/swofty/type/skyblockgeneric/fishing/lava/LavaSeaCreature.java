@@ -64,7 +64,7 @@ public enum LavaSeaCreature {
     THUNDER("Thunder", Rarity.LEGENDARY, 324, 35_000_000, 5_000, 6_480, 811, 648,
             "<c><l>You hear a massive rumble as Thunder emerges.",
             List.of(MobType.MAGMATIC, MobType.ARCANE, MobType.ELUSIVE), EntityType.GUARDIAN, 90,
-            List.of(always("THUNDER_FRAGMENT", 1), always("SILVER_MAGMAFISH", 8, 16), book("FLASH", 1, 1.5)),
+            List.of(always("THUNDER_SHARDS", 1), always("SILVER_MAGMAFISH", 8, 16), book("FLASH", 1, 1.5)),
             new Bestiary("This is what happens on a bad forecast.", 6, 15), "e92089618435a0ef63e95ee95a92b83073f8c33fa77dc5365199bad33b6256"),
     LORD_JAWBUS("Lord Jawbus", Rarity.MYTHIC, 597, 100_000_000, 10_000, 14_925, 2_985, 2_985,
             "<c><l>You have angered a legendary creature... Lord Jawbus has arrived.",

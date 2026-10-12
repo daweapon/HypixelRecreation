@@ -1,11 +1,17 @@
 items:
   - id: FARM_SUIT_HELMET
     material: leather_helmet
-    name: "Farm Suit Helmet"
+    name: "Farmhand Helmet"
     rarity: COMMON
     default_statistics:
-      defense: 15.0
+      defense: 10.0
       farming_fortune: 5.0
+    lore:
+      - "§a⚑ §a§lTIP!"
+      - "§7The more §6☘ Farming Fortune §7you"
+      - "§7have, the more crops you will drop."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 3§c."
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -13,9 +19,13 @@ items:
         r: '255'
         g: '255'
         b: '0'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FARMING
+            level: 3
       - id: SELLABLE
         value: 25.0
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -26,8 +36,8 @@ items:
               - AOA
             ingredients:
               A:
-                type: HAY_BALE
-                amount: 1
+                type: WHEAT
+                amount: 8
               O:
                 type: AIR
                 amount: 1
@@ -37,11 +47,17 @@ items:
 
   - id: FARM_SUIT_CHESTPLATE
     material: leather_chestplate
-    name: "Farm Suit Chestplate"
+    name: "Farmhand Chestplate"
     rarity: COMMON
     default_statistics:
-      defense: 40.0
+      defense: 10.0
       farming_fortune: 5.0
+    lore:
+      - "§a⚑ §a§lTIP!"
+      - "§7The more §6☘ Farming Fortune §7you"
+      - "§7have, the more crops you will drop."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 3§c."
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -49,9 +65,13 @@ items:
         r: '255'
         g: '255'
         b: '0'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FARMING
+            level: 3
       - id: SELLABLE
         value: 40.0
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -63,8 +83,8 @@ items:
               - AAA
             ingredients:
               A:
-                type: HAY_BALE
-                amount: 1
+                type: WHEAT
+                amount: 8
               O:
                 type: AIR
                 amount: 1
@@ -74,11 +94,17 @@ items:
 
   - id: FARM_SUIT_LEGGINGS
     material: leather_leggings
-    name: "Farm Suit Leggings"
+    name: "Farmhand Leggings"
     rarity: COMMON
     default_statistics:
-      defense: 15.0
+      defense: 10.0
       farming_fortune: 5.0
+    lore:
+      - "§a⚑ §a§lTIP!"
+      - "§7The more §6☘ Farming Fortune §7you"
+      - "§7have, the more crops you will drop."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 3§c."
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -86,9 +112,13 @@ items:
         r: '255'
         g: '255'
         b: '0'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FARMING
+            level: 3
       - id: SELLABLE
         value: 32.0
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -100,8 +130,8 @@ items:
               - AOA
             ingredients:
               A:
-                type: HAY_BALE
-                amount: 1
+                type: WHEAT
+                amount: 8
               O:
                 type: AIR
                 amount: 1
@@ -111,11 +141,17 @@ items:
 
   - id: FARM_SUIT_BOOTS
     material: leather_boots
-    name: "Farm Suit Boots"
+    name: "Farmhand Boots"
     rarity: COMMON
     default_statistics:
-      defense: 15.0
+      defense: 10.0
       farming_fortune: 5.0
+    lore:
+      - "§a⚑ §a§lTIP!"
+      - "§7The more §6☘ Farming Fortune §7you"
+      - "§7have, the more crops you will drop."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 3§c."
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -123,9 +159,13 @@ items:
         r: '255'
         g: '255'
         b: '0'
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: FARMING
+            level: 3
       - id: SELLABLE
         value: 20.0
-      - id: NOT_FINISHED_YET
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
         recipes:
@@ -136,8 +176,8 @@ items:
               - AOA
             ingredients:
               A:
-                type: HAY_BALE
-                amount: 1
+                type: WHEAT
+                amount: 8
               O:
                 type: AIR
                 amount: 1

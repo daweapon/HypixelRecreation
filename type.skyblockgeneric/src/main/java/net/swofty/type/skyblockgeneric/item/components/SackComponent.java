@@ -5,6 +5,7 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.gui.inventories.sbmenu.bags.GUISack;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
+import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreConfig;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -21,7 +22,22 @@ public class SackComponent extends SkyBlockItemComponent {
                 .toList();
         this.maxCapacity = maxCapacity;
         addInheritedComponent(new TrackedUniqueComponent());
+        addInheritedComponent(new LoreUpdateComponent(new LoreConfig(
+                (item, player) -> upgradeLore(item), null, LoreConfig.LoreConfigLocation.AFTER_ABILITY), false));
         addInheritedComponent(new InteractableComponent(this::onInteract, null, null));
+    }
+
+    public static final int MAX_UPGRADES = 3;
+    private static final int UPGRADE_CAPACITY_MULTIPLIER = 2;
+
+    public int capacityOf(SkyBlockItem sack) {
+        return maxCapacity * (1 + UPGRADE_CAPACITY_MULTIPLIER * sack.getAttributeHandler().getSackUpgrades());
+    }
+
+    private static List<String> upgradeLore(SkyBlockItem sack) {
+        int upgrades = sack.getAttributeHandler().getSackUpgrades();
+        if (upgrades == 0) return List.of();
+        return List.of("<7>Capacity upgrades: <c>+" + upgrades * UPGRADE_CAPACITY_MULTIPLIER * 100 + "% <8>(" + upgrades + "/" + MAX_UPGRADES + ")");
     }
 
     private void onInteract(SkyBlockPlayer player, SkyBlockItem item) {

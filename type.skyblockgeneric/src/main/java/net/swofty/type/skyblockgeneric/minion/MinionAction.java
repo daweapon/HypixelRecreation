@@ -83,6 +83,10 @@ public abstract class MinionAction {
             MinionCompaction.compact(islandMinion);
         }
 
+        if (extensionData.hasMinionUpgrade(ItemType.COMPACTOR)) {
+            MinionBlockCompaction.compact(islandMinion);
+        }
+
         if (extensionData.hasMinionUpgrade(ItemType.DIAMOND_SPREADING)) {
             int baseDrops = items.stream().mapToInt(SkyBlockItem::getAmount).sum();
             int diamonds = 0;
