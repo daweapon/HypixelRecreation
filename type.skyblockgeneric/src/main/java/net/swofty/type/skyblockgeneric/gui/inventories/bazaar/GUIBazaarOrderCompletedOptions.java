@@ -12,9 +12,10 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarConnector;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProduct;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProducts;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCompletedBazaarTransactions;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.text.DecimalFormat;
@@ -89,18 +90,10 @@ public class GUIBazaarOrderCompletedOptions extends HypixelInventoryGUI {
         if (completions == null || completions.isEmpty()) return;
 
         var firstCompletion = completions.getFirst();
-        String itemName = firstCompletion.getItemName();
-        ItemType itemType;
-
-        try {
-            itemType = ItemType.valueOf(itemName);
-        } catch (IllegalArgumentException e) {
-            itemType = ItemType.STONE;
-        }
+        BazaarProduct product = getProduct();
 
         boolean isSell = isSellOrder();
 
-        ItemType finalItemType = itemType;
         set(new GUIItem(13) {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
@@ -108,7 +101,7 @@ public class GUIBazaarOrderCompletedOptions extends HypixelInventoryGUI {
 
                 lore.add(Text.key("gui_bazaar.order_completed.order_completed_label"));
                 lore.add(Text.literal(" "));
-                lore.add(Text.key("gui_bazaar.order_completed.completed_count", (int) summary.totalQuantity, finalItemType.getDisplayName()));
+                lore.add(Text.key("gui_bazaar.order_completed.completed_count", (int) summary.totalQuantity, product.name()));
                 lore.add(Text.key("gui_bazaar.order_completed.transactions_count", summary.transactionCount));
                 lore.add(Text.literal(" "));
 
@@ -124,11 +117,12 @@ public class GUIBazaarOrderCompletedOptions extends HypixelInventoryGUI {
                     }
                 }
 
-                return ItemStacks.item(
-                        finalItemType.material,
+                return BazaarIcons.of(
+                        product,
                         Math.max(1, (int) summary.totalQuantity),
-                        Text.key("gui_bazaar.order_completed.order_name", finalItemType.getDisplayName()),
-                        lore
+                        Text.key("gui_bazaar.order_completed.order_name", product.name()),
+                        lore,
+                        false
                 );
             }
         });
@@ -197,7 +191,7 @@ public class GUIBazaarOrderCompletedOptions extends HypixelInventoryGUI {
                 if (isSell) {
                     lore.add(Text.of("<6>▶ +{} coins", FORMATTER.format(Math.abs(summary.totalValue))));
                 } else {
-                    lore.add(Text.of("<a>▶ +{}x {}", (int) summary.totalQuantity, getItemType().getDisplayName()));
+                    lore.add(Text.of("<a>▶ +{}x {}", (int) summary.totalQuantity, getProduct().name()));
                     if (summary.totalSecondaryAmount > 0) {
                         lore.add(Text.of("<6>▶ +{} coins refund", FORMATTER.format(summary.totalSecondaryAmount)));
                     }
@@ -236,17 +230,15 @@ public class GUIBazaarOrderCompletedOptions extends HypixelInventoryGUI {
         }
 
         boolean isSell = isSellOrder();
-        ItemType itemType = getItemType();
+        BazaarProduct product = getProduct();
 
         try {
             if (isSell) {
                 player.addCoins(Math.abs(summary.totalValue));
                 player.sendMessage(Text.key("gui_bazaar.order_completed.received_coins", FORMATTER.format(Math.abs(summary.totalValue))));
             } else {
-                SkyBlockItem item = new SkyBlockItem(itemType);
-                item.setAmount((int) summary.totalQuantity);
-                player.addAndUpdateItem(item);
-                player.sendMessage(Text.key("gui_bazaar.order_completed.received_items", (int) summary.totalQuantity, itemType.getDisplayName()));
+                product.give(player, (int) summary.totalQuantity);
+                player.sendMessage(Text.key("gui_bazaar.order_completed.received_items", (int) summary.totalQuantity, product.name()));
 
                 if (summary.totalSecondaryAmount > 0) {
                     player.addCoins(summary.totalSecondaryAmount);
@@ -283,13 +275,9 @@ public class GUIBazaarOrderCompletedOptions extends HypixelInventoryGUI {
                 firstCompletion.getType() == DatapointCompletedBazaarTransactions.TransactionType.SELL_ORDER_EXPIRED;
     }
 
-    private ItemType getItemType() {
-        if (completions == null || completions.isEmpty()) return ItemType.STONE;
-        try {
-            return ItemType.valueOf(completions.getFirst().getItemName());
-        } catch (IllegalArgumentException e) {
-            return ItemType.STONE;
-        }
+    private BazaarProduct getProduct() {
+        BazaarProduct product = completions == null || completions.isEmpty() ? null : BazaarProducts.byId(completions.getFirst().getItemName());
+        return product != null ? product : BazaarProducts.of(ItemType.STONE);
     }
 
     @Override

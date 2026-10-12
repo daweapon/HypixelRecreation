@@ -49,7 +49,7 @@ public class GUIBazaarNestedGroup extends GUIBazaarMenu {
                 continue;
             }
             int slot = slots[i];
-            player.getBazaarConnector().getItemStatistics(set.items.getFirst())
+            player.getBazaarConnector().getItemStatistics(set.products().getFirst())
                     .thenAccept((BazaarConnector.BazaarStatistics stats) -> {
                         setGroupTile(slot, set, stats);
                         updateItemStacks(getInventory(), getPlayer());

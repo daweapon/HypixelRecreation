@@ -7,7 +7,7 @@ import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.ServiceType;
-import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProduct;
 import net.swofty.commons.text.Text;
 import net.swofty.proxyapi.ProxyService;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
@@ -26,7 +26,7 @@ import java.util.concurrent.CompletableFuture;
 public class GUIBazaarPriceSelection extends HypixelInventoryGUI implements RefreshingGUI {
     private CompletableFuture<Double> future = new CompletableFuture<>();
     private final boolean isSellOrder;
-    private final ItemType itemTypeLinker;
+    private final BazaarProduct itemTypeLinker;
     private final Double lowestPrice;
     private final Double highestPrice;
     private final Integer amount;
@@ -34,7 +34,7 @@ public class GUIBazaarPriceSelection extends HypixelInventoryGUI implements Refr
 
     public GUIBazaarPriceSelection(HypixelInventoryGUI previousGUI, Integer amount,
                                    Double lowestPrice, Double highestPrice,
-                                   ItemType itemTypeLinker, boolean isSellOrder) {
+                                   BazaarProduct itemTypeLinker, boolean isSellOrder) {
         super(Text.key(isSellOrder ? "gui_bazaar.price_selection.title_sell" : "gui_bazaar.price_selection.title_buy"), InventoryType.CHEST_4_ROW);
 
         this.lowestPrice = lowestPrice;
@@ -145,7 +145,7 @@ public class GUIBazaarPriceSelection extends HypixelInventoryGUI implements Refr
                     lore.add(Text.key("gui_bazaar.price_selection.total", bestOffer * amount));
                     lore.add(Text.literal(" "));
                     lore.add(Text.key("gui_bazaar.price_selection.click_to_use"));
-                    return ItemStacks.item(itemTypeLinker.material, 1,
+                    return ItemStacks.item(itemTypeLinker.material(), 1,
                             Text.key("gui_bazaar.price_selection.same_as_best"), lore);
                 }
             });

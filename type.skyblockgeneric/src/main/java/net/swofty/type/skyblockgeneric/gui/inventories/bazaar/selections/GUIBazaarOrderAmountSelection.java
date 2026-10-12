@@ -5,7 +5,7 @@ import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProduct;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
@@ -25,14 +25,14 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
 
     private final boolean isBuy;
     private final boolean isInstant;    // NEW: instant-buy vs limit-order
-    private final ItemType itemType;
+    private final BazaarProduct itemType;
     private final int maxAmount;
     private final double unitPrice;     // for instant this includes fee; for limit this is bestAsk or bestBid
     private CompletableFuture<Integer> future;
 
     public GUIBazaarOrderAmountSelection(
             HypixelInventoryGUI previous,
-            ItemType itemType,
+            BazaarProduct itemType,
             boolean isBuy,
             boolean isInstant,
             int maxAmount,
@@ -111,7 +111,7 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
                         ? "gui_bazaar.amount_selection.click_buy"
                         : "gui_bazaar.amount_selection.click_sell"));
                 return ItemStacks.item(
-                        itemType.material, qty,
+                        itemType.material(), qty,
                         Text.of(isBuy ? "<a>{}" : "<6>{}", title),
                         lore
                 );
@@ -137,7 +137,7 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
                 lore.add(Text.literal(" "));
                 lore.add(Text.key("gui_bazaar.amount_selection.limit_click"));
                 return ItemStacks.item(
-                        slot == 13 ? Material.CHEST : itemType.material,
+                        slot == 13 ? Material.CHEST : itemType.material(),
                         qty,
                         Text.of("<b>{}", title),
                         lore

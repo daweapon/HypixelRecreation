@@ -1,0 +1,38 @@
+title: "The Bazaar Update"
+date: "12th October 2026"
+intro:
+  - "The Bazaar now matches Hypixel's menus tile for tile, and many items that were only placeholders are real."
+sections:
+  - heading: "Bazaar"
+    colour: "<6>"
+    lines:
+      - "The category menus, group menus, tooltips and the bottom row now follow the real Bazaar: Search, Sell Inventory Now, Sell Sacks Now, Manage Orders, Bazaar History and Settings."
+      - "Big groups now have pages, so Reforge Stones and other long lists show everything."
+      - "Every item that exists in the game and sells on Hypixel's Bazaar is listed."
+      - "Enchanted books can be traded at every level, normal and ultimate, and so can the 11 essences."
+      - "Items that were just Bazaar placeholders are now real items with a source, recipe or reason."
+      - "Diana's Mythological drops are no longer sold on the Bazaar, like the real one."
+  - heading: "Power Orbs and Deployables"
+    colour: "<d>"
+    lines:
+      - "Radiant, Mana Flux, Overflux and Plasmaflux Power Orbs can be placed and buff nearby players."
+      - "Lanterns, the Will-o'-wisp and the Umberella work too. The highest buff in range wins."
+  - heading: "Item List"
+    colour: "<a>"
+    lines:
+      - "The Centauri item list has two new categories: Minions and Attribute Shards."
+  - heading: "Item Tooltips"
+    colour: "<e>"
+    lines:
+      - "Very long lore lines now wrap instead of running off the screen."
+      - "Requirement notes such as Requires Mining Skill 30 disappear once you meet them."
+      - "Divine items no longer show a broken pink tooltip border."
+  - heading: "Items Finished"
+    colour: "<b>"
+    lines:
+      - "The ITEM IS NOT FINISHED label was removed from about 40 items. Most only had old lore, and about 20 were finished: Compactor, Efficient Axe, Sweet Axe, Promising Axe, Infini-Torch, Zombie, Crystallized and Revived Heart, both Falchions, Warden Helmet, Golden Bounty, Jerry Candy, Blast o Lantern, Pocket Sack-in-a-Sack and Abiphone Contacts Trio."
+      - "Items that are really unfinished keep the label and now say why."
+  - heading: "Max Profile"
+    colour: "<c>"
+    lines:
+      - "Max profile now puts one copy of every Museum variant into the Museum, not only the top tier."

@@ -10,7 +10,7 @@ public record BazaarTile(String name, List<BazaarItemSet> sets, boolean nested, 
     }
 
     public int productCount() {
-        return nested ? sets.size() : first().items.size();
+        return nested ? sets.size() : first().productCount();
     }
 
     public boolean isSingleProduct() {

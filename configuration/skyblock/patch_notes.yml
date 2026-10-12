@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "bazaar-update"
+    name: "The Bazaar Update"
+    date: "12th October 2026"
+    material: gold_ingot
+    title: "The Bazaar Update"
+    book: "bazaar_update.yml"
   - version: "item-catalogue"
     name: "The Item Catalogue Update"
     date: "12th October 2026"

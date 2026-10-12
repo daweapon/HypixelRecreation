@@ -11,7 +11,6 @@ import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.gui.inventory.item.GUIQueryItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarHistory;
-import net.swofty.type.skyblockgeneric.bazaar.BazaarNames;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarSales;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarSettings;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -120,8 +119,8 @@ final class BazaarMenuButtons {
                 } else {
                     for (BazaarSales.Line line : summary.listed()) {
                         lore.add(Text.of("<green>{}x <color:{}>{} <gray>for <gold>{} coins",
-                                String.format("%,d", line.amount()), line.type().rarity.getColor(),
-                                BazaarNames.of(line.type()), String.format("%,d", Math.round(line.coins()))));
+                                String.format("%,d", line.amount()), line.product().rarity().getColor(),
+                                line.product().name(), String.format("%,d", Math.round(line.coins()))));
                     }
                     if (summary.hasOthers()) {
                         lore.add(Text.of("<yellow>{}x <white>Other items <gray>for <gold>{} coins",
@@ -180,7 +179,7 @@ final class BazaarMenuButtons {
                     }
                     lore.add(Text.of("<gray>{} ago <color:{}>{}<gray> of <green>{}x<gray> {}",
                             BazaarHistory.ago(now - entry.at()), entry.kind().colour(), entry.kind().label(),
-                            String.format("%,d", entry.amount()), BazaarNames.of(entry.item())));
+                            String.format("%,d", entry.amount()), entry.item().name()));
                     lore.add(Text.of(" <gray>for <gold>{} coins<gray> by ", shortCoins(entry.coins())).append(entry.player()));
                 }
                 return ItemStacks.item(Material.MAP, 1, Text.key("gui_bazaar.buttons.history"), lore);

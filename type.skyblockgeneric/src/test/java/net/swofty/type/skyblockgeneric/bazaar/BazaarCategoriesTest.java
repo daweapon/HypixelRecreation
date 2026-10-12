@@ -34,9 +34,9 @@ class BazaarCategoriesTest {
             BazaarCategories.WOODS_AND_FISHES, List.of("Wood", "Fish", "Flowers", "Prismarine", "Clay", "Sponge",
                     "Lily Pad", "Ink Sac", "Baits", "Mob Drops", "Magmafish", "Lava Fishing", "Water Orbs",
                     "Chum Fishing", "Backwater Bayou", "Moonglade Marsh", "Torrhus Canyon", "Lotus Atoll"),
-            BazaarCategories.ODDITIES, List.of("Booster Cookie", "Modifiers", "EXP Bottles", "Shards",
+            BazaarCategories.ODDITIES, List.of("Booster Cookie", "Modifiers", "Enchantments", "EXP Bottles", "Shards",
                     "Reforge Stones", "Power Stones", "Stock of Stonks", "Pet Upgrades", "Inferno Minion",
-                    "Minion Upgrades", "Fuels", "Events", "Consumables", "Cross-Dimensional", "Upgrade Fragments")
+                    "Minion Upgrades", "Fuels", "Essence", "Events", "Consumables", "Cross-Dimensional", "Upgrade Fragments")
     );
 
     @Test
@@ -44,7 +44,7 @@ class BazaarCategoriesTest {
         Map<ItemType, String> owner = new HashMap<>();
         for (BazaarCategories category : BazaarCategories.values()) {
             for (BazaarItemSet set : category.getItems()) {
-                assertFalse(set.items.isEmpty(), set.displayName);
+                assertFalse(set.products().isEmpty(), set.name());
                 for (ItemType type : set.items) {
                     assertNotNull(type, set.displayName);
                     String where = category + "/" + set.displayName;
@@ -71,7 +71,7 @@ class BazaarCategoriesTest {
     void displayItemIsPartOfItsSet() {
         for (BazaarCategories category : BazaarCategories.values()) {
             for (BazaarItemSet set : category.getItems()) {
-                if (set.items.contains(set.displayMaterial)) continue;
+                if (set.displayMaterial == null || set.items.contains(set.displayMaterial)) continue;
                 assertNotNull(ItemType.valueOf(set.displayMaterial.name()));
             }
         }

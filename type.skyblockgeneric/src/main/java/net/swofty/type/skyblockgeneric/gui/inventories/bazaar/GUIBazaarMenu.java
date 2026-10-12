@@ -3,7 +3,6 @@ package net.swofty.type.skyblockgeneric.gui.inventories.bazaar;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
-import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
@@ -13,6 +12,9 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarConnector;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarItemSet;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProduct;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProductGroup;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProducts;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarTile;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -77,18 +79,40 @@ abstract class GUIBazaarMenu extends HypixelInventoryGUI implements RefreshingGU
         };
     }
 
-    protected void setProductTile(int slot, ItemType type, BazaarConnector.BazaarStatistics stats) {
+    protected void setProductTile(int slot, BazaarProduct product, BazaarConnector.BazaarStatistics stats) {
         set(new GUIClickableItem(slot) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                new GUIBazaarItem(type).open((SkyBlockPlayer) p);
+                new GUIBazaarItem(product).open((SkyBlockPlayer) p);
             }
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
-                return BazaarIcons.of(type, BazaarTooltips.productName(type),
-                        BazaarTooltips.productLore(type, stats == null ? null : stats.bestAsk(), stats == null ? null : stats.bestBid()),
+                return BazaarIcons.of(product, BazaarTooltips.productName(product),
+                        BazaarTooltips.productLore(product, stats == null ? null : stats.bestAsk(), stats == null ? null : stats.bestBid()),
                         true);
+            }
+        });
+    }
+
+    protected void setProductGroupTile(int slot, BazaarProductGroup group, BazaarConnector.BazaarStatistics stats,
+                                       Supplier<HypixelInventoryGUI> opening) {
+        set(new GUIClickableItem(slot) {
+            @Override
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                if (group.isSingle()) {
+                    new GUIBazaarItem(group.first()).open((SkyBlockPlayer) p);
+                } else {
+                    opening.get().open(p);
+                }
+            }
+
+            @Override
+            public ItemStack.Builder getItem(HypixelPlayer p) {
+                List<Text> lore = group.isSingle()
+                        ? BazaarTooltips.priceLore(stats == null ? null : stats.bestAsk(), stats == null ? null : stats.bestBid())
+                        : BazaarTooltips.groupLore(group);
+                return BazaarIcons.of(group.first(), Text.parse(category.getColor() + group.label()), lore, false);
             }
         });
     }
@@ -99,9 +123,9 @@ abstract class GUIBazaarMenu extends HypixelInventoryGUI implements RefreshingGU
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 if (tile.isSingleProduct()) {
-                    new GUIBazaarItem(set.items.getFirst()).open((SkyBlockPlayer) p);
+                    new GUIBazaarItem(set.products().getFirst()).open((SkyBlockPlayer) p);
                 } else {
-                    new GUIBazaarItemSet(category, set).open(p);
+                    GUIBazaarItemSet.opening(category, set).open(p);
                 }
             }
 
@@ -110,7 +134,7 @@ abstract class GUIBazaarMenu extends HypixelInventoryGUI implements RefreshingGU
                 List<Text> lore = tile.isSingleProduct()
                         ? BazaarTooltips.priceLore(stats == null ? null : stats.bestAsk(), stats == null ? null : stats.bestBid())
                         : BazaarTooltips.groupLore(tile);
-                return BazaarIcons.of(set.displayMaterial, Text.parse(category.getColor() + set.name()), lore, false);
+                return BazaarIcons.of(set.icon(), Text.parse(category.getColor() + set.name()), lore, false);
             }
         });
     }
@@ -155,14 +179,20 @@ abstract class GUIBazaarMenu extends HypixelInventoryGUI implements RefreshingGU
         if (clickedItem.isNA()) {
             return;
         }
-        ItemType type = clickedItem.getAttributeHandler().getPotentialType();
-        if (type == null) {
+        BazaarProduct product = BazaarProducts.fromStack(e.getClickedItem());
+        if (product == null) {
             return;
         }
-        Map.Entry<BazaarCategories, BazaarItemSet> entry = BazaarCategories.getFromItem(type);
+        Map.Entry<BazaarCategories, BazaarItemSet> entry = BazaarCategories.getFromProduct(product);
         if (entry == null) {
             return;
         }
-        Thread.startVirtualThread(() -> new GUIBazaarItemSet(entry.getKey(), entry.getValue()).open((SkyBlockPlayer) e.getPlayer()));
+        Thread.startVirtualThread(() -> {
+            if (product.itemType() == null) {
+                new GUIBazaarItem(product).open((SkyBlockPlayer) e.getPlayer());
+            } else {
+                new GUIBazaarItemSet(entry.getKey(), entry.getValue()).open((SkyBlockPlayer) e.getPlayer());
+            }
+        });
     }
 }

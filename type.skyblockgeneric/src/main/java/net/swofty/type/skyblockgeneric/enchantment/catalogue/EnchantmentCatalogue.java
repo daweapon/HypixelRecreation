@@ -6,6 +6,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,12 +15,18 @@ import java.util.TreeMap;
 // Loads enchantments/catalogue.json, the Hypixel reference data every enchantment's text and metadata comes from.
 public final class EnchantmentCatalogue {
     private static final String RESOURCE = "/enchantments/catalogue.json";
+    private static final Map<String, String> KEYS_BY_NEU_ID = new HashMap<>();
     private static final Map<String, CatalogueEntry> ENTRIES = load();
 
     private EnchantmentCatalogue() {}
 
     public static CatalogueEntry find(String key) {
         return ENTRIES.get(key);
+    }
+
+    public static CatalogueEntry findByNeuId(String neuId) {
+        String key = KEYS_BY_NEU_ID.get(neuId);
+        return key == null ? null : ENTRIES.get(key);
     }
 
     public static CatalogueEntry require(String key) {
@@ -43,6 +50,7 @@ public final class EnchantmentCatalogue {
             raw.forEach((key, data) -> {
                 Map<Integer, String> levels = new TreeMap<>();
                 ((Map<String, String>) data.get("levels")).forEach((level, text) -> levels.put(Integer.parseInt(level), text));
+                KEYS_BY_NEU_ID.put((String) data.getOrDefault("neuId", key), key);
                 entries.put(key, new CatalogueEntry(key, (String) data.get("name"), (Boolean) data.get("ultimate"),
                         (Integer) data.get("maxLevel"), levels, strings(data.get("sources")), strings(data.get("appliedTo")),
                         strings(data.get("conflicts")), ints(data.get("costs"))));

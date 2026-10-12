@@ -1,10 +1,10 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.bazaar;
 
-import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarConnector;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarItemSet;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProduct;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
@@ -29,11 +29,15 @@ public class GUIBazaarItemSet extends GUIBazaarMenu {
 
     public GUIBazaarItemSet(BazaarCategories category, BazaarItemSet itemSet, int page, String titleParent,
                             String backLabel, Supplier<HypixelInventoryGUI> back) {
-        super(category, titleParent, itemSet.name(), new BazaarSetLayout(itemSet.items.size()), page, backLabel, back);
+        super(category, titleParent, itemSet.name(), new BazaarSetLayout(itemSet.products().size()), page, backLabel, back);
         this.itemSet = itemSet;
         this.titleParent = titleParent;
         this.backLabel = backLabel;
         this.back = back;
+    }
+
+    static HypixelInventoryGUI opening(BazaarCategories category, BazaarItemSet itemSet) {
+        return itemSet.isGrouped() ? new GUIBazaarEnchantments(category, itemSet) : new GUIBazaarItemSet(category, itemSet);
     }
 
     static HypixelInventoryGUI parentOf(BazaarCategories category, BazaarItemSet itemSet) {
@@ -55,16 +59,16 @@ public class GUIBazaarItemSet extends GUIBazaarMenu {
         int[] slots = layout.slots(page);
         int first = layout.firstIndex(page);
         for (int i = 0; i < slots.length; i++) {
-            ItemType itemType = itemSet.items.get(first + i);
+            BazaarProduct product = itemSet.products().get(first + i);
             int slot = slots[i];
-            setProductTile(slot, itemType, null);
-            player.getBazaarConnector().getItemStatistics(itemType)
+            setProductTile(slot, product, null);
+            player.getBazaarConnector().getItemStatistics(product)
                     .thenAccept((BazaarConnector.BazaarStatistics stats) -> {
-                        setProductTile(slot, itemType, stats);
+                        setProductTile(slot, product, stats);
                         updateItemStacks(getInventory(), getPlayer());
                     })
                     .exceptionally(throwable -> {
-                        Logger.error(throwable, "Failed to fetch bazaar data for {}", itemType.name());
+                        Logger.error(throwable, "Failed to fetch bazaar data for {}", product.id());
                         return null;
                     });
         }

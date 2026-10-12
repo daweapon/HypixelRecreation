@@ -101,6 +101,7 @@ class BazaarGridLayoutTest {
 
         assertEquals(11, slotOf(BazaarCategories.ODDITIES, "Booster Cookie"));
         assertEquals(12, slotOf(BazaarCategories.ODDITIES, "Modifiers"));
+        assertEquals(13, slotOf(BazaarCategories.ODDITIES, "Enchantments"));
         assertEquals(14, slotOf(BazaarCategories.ODDITIES, "EXP Bottles"));
         assertEquals(15, slotOf(BazaarCategories.ODDITIES, "Shards"));
         assertEquals(16, slotOf(BazaarCategories.ODDITIES, "Reforge Stones"));
@@ -110,6 +111,7 @@ class BazaarGridLayoutTest {
         assertEquals(23, slotOf(BazaarCategories.ODDITIES, "Inferno Minion"));
         assertEquals(24, slotOf(BazaarCategories.ODDITIES, "Minion Upgrades"));
         assertEquals(25, slotOf(BazaarCategories.ODDITIES, "Fuels"));
+        assertEquals(29, slotOf(BazaarCategories.ODDITIES, "Essence"));
         assertEquals(31, slotOf(BazaarCategories.ODDITIES, "Consumables"));
         assertEquals(32, slotOf(BazaarCategories.ODDITIES, "Cross-Dimensional"));
         assertEquals(33, slotOf(BazaarCategories.ODDITIES, "Upgrade Fragments"));

@@ -13,6 +13,8 @@ import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarConnector;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProduct;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProducts;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCompletedBazaarTransactions;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -224,13 +226,9 @@ public class GUIBazaarOrders extends HypixelInventoryGUI {
 
         private ItemStack.Builder createCompletedOrderDisplay() {
             var firstCompletion = completions.getFirst();
-            String itemName = firstCompletion.getItemName();
-            ItemType itemType;
-
-            try {
-                itemType = ItemType.valueOf(itemName);
-            } catch (IllegalArgumentException e) {
-                itemType = ItemType.STONE;
+            BazaarProduct product = BazaarProducts.byId(firstCompletion.getItemName());
+            if (product == null) {
+                product = BazaarProducts.of(ItemType.STONE);
             }
 
             List<Text> lore = new ArrayList<>();
@@ -256,7 +254,7 @@ public class GUIBazaarOrders extends HypixelInventoryGUI {
             if (isSell) {
                 lore.add(Text.of("  ").append(Text.key("gui_bazaar.orders.completed_receive_coins", FORMATTER.format(Math.abs(totalValue)))));
             } else {
-                lore.add(Text.of("  ").append(Text.key("gui_bazaar.orders.completed_receive_items", (int) totalQuantity, itemType.getDisplayName())));
+                lore.add(Text.of("  ").append(Text.key("gui_bazaar.orders.completed_receive_items", (int) totalQuantity, product.name())));
                 if (totalValue > 0) {
                     lore.add(Text.of("  ").append(Text.key("gui_bazaar.orders.completed_receive_refund", FORMATTER.format(totalRefund))));
                 }
@@ -265,18 +263,22 @@ public class GUIBazaarOrders extends HypixelInventoryGUI {
             lore.add(Text.literal(" "));
             lore.add(Text.key("gui_bazaar.orders.completed_click"));
 
-            return ItemStacks.item(
-                    itemType.material,
+            return BazaarIcons.of(
+                    product,
                     Math.max(1, (int) totalQuantity),
-                    Text.of("<a><l>{} </l><f>{}", isSell ? "SELL" : "BUY", itemType.getDisplayName()),
-                    lore
+                    Text.of("<a><l>{} </l><f>{}", isSell ? "SELL" : "BUY", product.name()),
+                    lore,
+                    false
             );
         }
 
         private ItemStack.Builder createActiveOrderDisplay() {
             List<Text> lore = new ArrayList<>();
             boolean isSell = activeOrder.side() == BazaarConnector.OrderSide.SELL;
-            ItemType itemType = activeOrder.getItemType();
+            BazaarProduct product = activeOrder.getProduct();
+            if (product == null) {
+                product = BazaarProducts.of(ItemType.STONE);
+            }
 
             lore.add(Text.key("gui_bazaar.orders.active_worth", FORMATTER.format(activeOrder.getTotalValue())));
             lore.add(Text.literal(" "));
@@ -286,12 +288,13 @@ public class GUIBazaarOrders extends HypixelInventoryGUI {
             lore.add(Text.literal(" "));
             lore.add(Text.key("gui_bazaar.orders.active_click"));
 
-            return ItemStacks.item(
-                    itemType.material,
+            return BazaarIcons.of(
+                    product,
                     1,
                     Text.of(isSell ? "<6><l>{} </l><f>{}" : "<a><l>{} </l><f>{}",
-                            activeOrder.side(), itemType.getDisplayName()),
-                    lore
+                            activeOrder.side(), product.name()),
+                    lore,
+                    false
             );
         }
     }

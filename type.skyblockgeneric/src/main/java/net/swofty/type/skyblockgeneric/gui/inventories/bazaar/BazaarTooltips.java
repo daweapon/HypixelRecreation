@@ -2,9 +2,12 @@ package net.swofty.type.skyblockgeneric.gui.inventories.bazaar;
 
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarItemSet;
-import net.swofty.type.skyblockgeneric.bazaar.BazaarNames;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProduct;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProductGroup;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProducts;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarTile;
 
 import java.text.DecimalFormat;
@@ -30,8 +33,8 @@ final class BazaarTooltips {
         return count == 1 ? Text.key("gui_bazaar.tile.product_count_one") : Text.key("gui_bazaar.tile.product_count", count);
     }
 
-    static Text arrow(ItemType type, String name) {
-        return Text.of("<color:{}>▶ <white>{}", type.rarity.getColor(), name);
+    static Text arrow(Rarity rarity, String name) {
+        return Text.of("<color:{}>▶ <white>{}", rarity.getColor(), name);
     }
 
     static List<Text> groupLore(BazaarTile tile) {
@@ -43,11 +46,11 @@ final class BazaarTooltips {
             lore.addAll(Text.keyLines(description));
         } else if (tile.nested()) {
             for (BazaarItemSet set : tile.sets()) {
-                lore.add(arrow(set.displayMaterial, set.name()));
+                lore.add(arrow(set.arrowRarity(), set.name()));
             }
         } else {
-            for (ItemType type : tile.first().items) {
-                lore.add(arrow(type, BazaarNames.of(type)));
+            for (BazaarProduct product : tile.first().products()) {
+                lore.add(arrow(product.rarity(), product.name()));
             }
         }
         lore.add(Text.literal(" "));
@@ -76,9 +79,21 @@ final class BazaarTooltips {
         return lines;
     }
 
-    static List<Text> productLore(ItemType type, Double buy, Double sell) {
+    static List<Text> groupLore(BazaarProductGroup group) {
         List<Text> lore = new ArrayList<>();
-        lore.add(Text.key("gui_bazaar.tile.commodity", StringUtility.toNormalCase(type.rarity.name())));
+        lore.add(productCount(group.products().size()));
+        lore.add(Text.literal(" "));
+        for (BazaarProduct product : group.products()) {
+            lore.add(arrow(product.rarity(), product.name()));
+        }
+        lore.add(Text.literal(" "));
+        lore.add(Text.key("gui_bazaar.tile.click_to_view_products"));
+        return lore;
+    }
+
+    static List<Text> productLore(BazaarProduct product, Double buy, Double sell) {
+        List<Text> lore = new ArrayList<>();
+        lore.add(Text.key("gui_bazaar.tile.commodity", StringUtility.toNormalCase(product.rarity().name())));
         lore.add(Text.literal(" "));
         lore.addAll(prices(buy, sell));
         lore.add(Text.literal(" "));
@@ -87,6 +102,10 @@ final class BazaarTooltips {
     }
 
     static Text productName(ItemType type) {
-        return Text.of("<color:{}>{}", type.rarity.getColor(), BazaarNames.of(type));
+        return productName(BazaarProducts.of(type));
+    }
+
+    static Text productName(BazaarProduct product) {
+        return Text.of("<color:{}>{}", product.rarity().getColor(), product.name());
     }
 }

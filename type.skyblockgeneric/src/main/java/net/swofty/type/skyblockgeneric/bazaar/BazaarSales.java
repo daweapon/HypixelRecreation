@@ -1,8 +1,6 @@
 package net.swofty.type.skyblockgeneric.bazaar;
 
-import net.minestom.server.item.ItemStack;
 import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -24,7 +22,10 @@ public final class BazaarSales {
         INVENTORY, SACKS
     }
 
-    public record Line(ItemType type, int amount, double coins) {
+    public record Line(BazaarProduct product, int amount, double coins) {
+        public Line(ItemType type, int amount, double coins) {
+            this(BazaarProducts.of(type), amount, coins);
+        }
     }
 
     public record Summary(List<Line> sellable, int unsellableProducts, double total) {
@@ -56,37 +57,37 @@ public final class BazaarSales {
     public record Sold(int products, int items, double coins) {
     }
 
-    public static Map<ItemType, Integer> holdings(SkyBlockPlayer player, Source source) {
-        Map<ItemType, Integer> held = new LinkedHashMap<>();
+    public static Map<BazaarProduct, Integer> holdings(SkyBlockPlayer player, Source source) {
+        Map<BazaarProduct, Integer> held = new LinkedHashMap<>();
         if (source == Source.SACKS) {
             player.getSackItems().getItems().forEach((type, amount) -> {
-                if (amount != null && amount > 0 && isListed(player, type)) {
-                    held.put(type, amount);
+                if (amount != null && amount > 0 && isListed(player, BazaarProducts.of(type))) {
+                    held.put(BazaarProducts.of(type), amount);
                 }
             });
             return held;
         }
         for (int slot = 0; slot < INVENTORY_SLOTS; slot++) {
-            ItemStack stack = player.getInventory().getItemStack(slot);
-            if (stack.isAir()) {
-                continue;
-            }
-            ItemType type = new SkyBlockItem(stack).getAttributeHandler().getPotentialType();
-            if (type != null && !held.containsKey(type) && isListed(player, type)) {
-                held.put(type, player.getAmountInInventory(type));
+            BazaarProduct product = BazaarProducts.fromStack(player.getInventory().getItemStack(slot));
+            if (product != null && !held.containsKey(product) && isListed(player, product)) {
+                held.put(product, product.held(player));
             }
         }
         return held;
     }
 
-    private static boolean isListed(SkyBlockPlayer player, ItemType type) {
+    private static boolean isListed(SkyBlockPlayer player, BazaarProduct product) {
+        ItemType type = product.itemType();
+        if (type == null) {
+            return true;
+        }
         return BazaarCategories.getFromItem(type) != null && !BazaarSettings.isIgnored(player.getUuid(), type);
     }
 
     public static CompletableFuture<Summary> summarize(SkyBlockPlayer player, Source source) {
-        Map<ItemType, Integer> held = holdings(player, source);
+        Map<BazaarProduct, Integer> held = holdings(player, source);
         List<CompletableFuture<Line>> lookups = new ArrayList<>();
-        for (Map.Entry<ItemType, Integer> entry : held.entrySet()) {
+        for (Map.Entry<BazaarProduct, Integer> entry : held.entrySet()) {
             lookups.add(player.getBazaarConnector().getItemStatistics(entry.getKey())
                     .thenApply(stats -> new Line(entry.getKey(), entry.getValue(), stats.bestBid() * entry.getValue()))
                     .exceptionally(throwable -> new Line(entry.getKey(), entry.getValue(), 0)));
@@ -122,32 +123,40 @@ public final class BazaarSales {
         });
     }
 
-    private static void refund(SkyBlockPlayer player, Source source, Line line) {
+    private static void refund(SkyBlockPlayer player, Source source, Line line, Runnable undo) {
         if (source == Source.SACKS) {
-            player.getSackItems().increase(line.type(), line.amount());
+            player.getSackItems().increase(line.product().itemType(), line.amount());
         } else {
-            player.addAndUpdateItem(line.type(), line.amount());
+            undo.run();
         }
     }
 
     private static CompletableFuture<Boolean> sellLine(SkyBlockPlayer player, Source source, Line line) {
         int amount = line.amount();
+        BazaarProduct product = line.product();
+        Runnable undo = () -> {
+        };
         if (source == Source.SACKS) {
-            if (player.getSackItems().getAmount(line.type()) < amount) {
+            if (player.getSackItems().getAmount(product.itemType()) < amount) {
                 return CompletableFuture.completedFuture(false);
             }
-            player.getSackItems().decrease(line.type(), amount);
-        } else if (player.takeItem(line.type(), amount) == null) {
-            return CompletableFuture.completedFuture(false);
+            player.getSackItems().decrease(product.itemType(), amount);
+        } else {
+            Runnable taken = product.take(player, amount);
+            if (taken == null) {
+                return CompletableFuture.completedFuture(false);
+            }
+            undo = taken;
         }
+        Runnable restore = undo;
         double each = line.coins() / amount;
-        return player.getBazaarConnector().createSellOrder(line.type(), each, amount).thenApply(result -> {
+        return player.getBazaarConnector().createSellOrder(product, each, amount).thenApply(result -> {
             if (!result.success()) {
-                refund(player, source, line);
+                refund(player, source, line, restore);
                 return false;
             }
             BazaarHistory.record(player.getProfiles().getCurrentlySelected(), BazaarHistory.Kind.INSTANT_SELL,
-                    line.type(), amount, line.coins(), player.getFullDisplayName());
+                    product, amount, line.coins(), player.getFullDisplayName());
             return true;
         });
     }

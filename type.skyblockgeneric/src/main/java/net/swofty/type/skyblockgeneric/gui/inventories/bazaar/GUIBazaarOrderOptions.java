@@ -12,9 +12,10 @@ import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarConnector;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProduct;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProducts;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCompletedBazaarTransactions;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.text.DecimalFormat;
@@ -31,7 +32,7 @@ public class GUIBazaarOrderOptions extends HypixelInventoryGUI {
             .withZone(ZoneId.systemDefault());
 
     public GUIBazaarOrderOptions(BazaarConnector.BazaarOrder order) {
-        super(Text.key("gui_bazaar.order_options.title", order.getItemType().getDisplayName()), InventoryType.CHEST_4_ROW);
+        super(Text.key("gui_bazaar.order_options.title", productOf(order).name()), InventoryType.CHEST_4_ROW);
         this.order = order;
 
         fill(ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, ""));
@@ -41,9 +42,13 @@ public class GUIBazaarOrderOptions extends HypixelInventoryGUI {
         setupItems();
     }
 
+    private static BazaarProduct productOf(BazaarConnector.BazaarOrder order) {
+        BazaarProduct product = order.getProduct();
+        return product != null ? product : BazaarProducts.of(ItemType.STONE);
+    }
+
     private void setupItems() {
-        ItemType itemType = order.getItemType();
-        if (itemType == null) return;
+        BazaarProduct product = productOf(order);
 
         boolean isSell = order.side() == BazaarConnector.OrderSide.SELL;
 
@@ -76,11 +81,12 @@ public class GUIBazaarOrderOptions extends HypixelInventoryGUI {
                 lore.add(Text.literal(" "));
                 lore.add(Text.key("gui_bazaar.order_options.order_id", order.orderId().toString().substring(0, 8)));
 
-                return ItemStacks.item(
-                        itemType.material,
+                return BazaarIcons.of(
+                        product,
                         Math.max(1, (int) order.amount()),
-                        Text.of(isSell ? "<6>{} Order" : "<a>{} Order", itemType.getDisplayName()),
-                        lore
+                        Text.of(isSell ? "<6>{} Order" : "<a>{} Order", product.name()),
+                        lore,
+                        false
                 );
             }
         });
@@ -207,7 +213,7 @@ public class GUIBazaarOrderOptions extends HypixelInventoryGUI {
     }
 
     private void setupActionButtons() {
-        ItemType itemType = order.getItemType();
+        BazaarProduct product = productOf(order);
         boolean isSell = order.side() == BazaarConnector.OrderSide.SELL;
 
         set(new GUIClickableItem(20) {
@@ -222,10 +228,8 @@ public class GUIBazaarOrderOptions extends HypixelInventoryGUI {
                                 p.sendMessage(Text.key("gui_bazaar.order_options.cancel_success"));
 
                                 if (isSell) {
-                                    SkyBlockItem item = new SkyBlockItem(order.getItemType());
-                                    item.setAmount((int) order.amount());
-                                    player.addAndUpdateItem(item);
-                                    p.sendMessage(Text.key("gui_bazaar.order_options.cancel_return_items", (int) order.amount(), itemType.getDisplayName()));
+                                    product.give(player, (int) order.amount());
+                                    p.sendMessage(Text.key("gui_bazaar.order_options.cancel_return_items", (int) order.amount(), product.name()));
                                 } else {
                                     double refund = order.price() * order.amount();
                                     player.addCoins(refund);
@@ -245,7 +249,7 @@ public class GUIBazaarOrderOptions extends HypixelInventoryGUI {
                 lore.add(Text.literal(" "));
 
                 if (isSell) {
-                    lore.add(Text.of("<a>▶ {}x {}", (int) order.amount(), itemType.getDisplayName()));
+                    lore.add(Text.of("<a>▶ {}x {}", (int) order.amount(), product.name()));
                 } else {
                     lore.add(Text.of("<6>▶ {} coins", FORMATTER.format(order.amount() * order.price())));
                 }
@@ -263,13 +267,13 @@ public class GUIBazaarOrderOptions extends HypixelInventoryGUI {
         set(new GUIClickableItem(24) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                new GUIBazaarItem(itemType).open(p);
+                new GUIBazaarItem(product).open(p);
             }
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 return ItemStacks.item(Material.EMERALD, 1, Text.key("gui_bazaar.order_options.view_market"),
-                        Text.keyLines("gui_bazaar.order_options.view_market.lore", itemType.getDisplayName()));
+                        Text.keyLines("gui_bazaar.order_options.view_market.lore", product.name()));
             }
         });
     }

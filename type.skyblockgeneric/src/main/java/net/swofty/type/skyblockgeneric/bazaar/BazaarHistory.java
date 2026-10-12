@@ -43,10 +43,17 @@ public final class BazaarHistory {
         }
     }
 
-    public record Entry(long at, Kind kind, ItemType item, int amount, double coins, Text player) {
+    public record Entry(long at, Kind kind, BazaarProduct item, int amount, double coins, Text player) {
+        public Entry(long at, Kind kind, ItemType item, int amount, double coins, Text player) {
+            this(at, kind, BazaarProducts.of(item), amount, coins, player);
+        }
     }
 
     public static void record(UUID profile, Kind kind, ItemType item, int amount, double coins, Text player) {
+        record(profile, kind, BazaarProducts.of(item), amount, coins, player);
+    }
+
+    public static void record(UUID profile, Kind kind, BazaarProduct item, int amount, double coins, Text player) {
         record(profile, new Entry(System.currentTimeMillis(), kind, item, amount, coins, player));
     }
 

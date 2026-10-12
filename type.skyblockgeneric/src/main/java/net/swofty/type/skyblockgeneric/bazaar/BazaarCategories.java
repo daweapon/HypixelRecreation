@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.minestom.server.item.Material;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.skyblock.item.Rarity;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -318,6 +319,15 @@ public enum BazaarCategories {
             new BazaarItemSet(ItemType.FIGHTING_BOOSTER, "Foraging Boosters", "Modifiers",
                     ItemType.FIGHTING_BOOSTER, ItemType.FIGHTING_BOOSTER_UNCOMMON, ItemType.FORAGING_FORTUNE_BOOSTER, ItemType.FORAGING_FORTUNE_BOOSTER_UNCOMMON, ItemType.FORAGING_WISDOM_BOOSTER, ItemType.FORAGING_WISDOM_BOOSTER_UNCOMMON,
                     ItemType.SWEEP_BOOSTER, ItemType.SWEEP_BOOSTER_UNCOMMON, ItemType.HUNTING_WISDOM_BOOSTER_COMMON, ItemType.HUNTING_WISDOM_BOOSTER_UNCOMMON),
+            BazaarItemSet.ofGroups(BazaarProducts.of(ItemType.ENCHANTED_BOOK), "Normal Enchantments", "Enchantments",
+                            () -> BazaarProducts.enchantmentGroups(false))
+                    .described("gui_bazaar.tile.normal_enchantments")
+                    .arrow(Rarity.LEGENDARY)
+                    .at(2),
+            BazaarItemSet.ofGroups(BazaarProducts.of(ItemType.ENCHANTED_BOOK), "Ultimate Enchantments", "Enchantments",
+                            () -> BazaarProducts.enchantmentGroups(true))
+                    .described("gui_bazaar.tile.ultimate_enchantments")
+                    .arrow(Rarity.MYTHIC),
             new BazaarItemSet(ItemType.EXPERIENCE_BOTTLE, "EXP Bottles",
                     ItemType.EXPERIENCE_BOTTLE, ItemType.GRAND_EXP_BOTTLE, ItemType.TITANIC_EXP_BOTTLE, ItemType.COLOSSAL_EXP_BOTTLE)
                     .at(3),
@@ -421,6 +431,8 @@ public enum BazaarCategories {
                     ItemType.ENCHANTED_LAVA_BUCKET, ItemType.MAGMA_BUCKET, ItemType.PLASMA_BUCKET, ItemType.HAMSTER_WHEEL, ItemType.FOUL_FLESH, ItemType.POWER_CRYSTAL,
                     ItemType.CATALYST, ItemType.HYPER_CATALYST, ItemType.SOLAR_PANEL, ItemType.OIL_BARREL, ItemType.SCORCHED_POWER_CRYSTAL, ItemType.VOLTA,
                     ItemType.DAYSWITCH, ItemType.NIGHTSWITCH, ItemType.THORNY_VINES, ItemType.SUNFLOWER_OIL),
+            BazaarItemSet.ofProducts(BazaarProducts.essences().getFirst(), "Essence", null, BazaarProducts.essences())
+                    .at(12),
             new BazaarItemSet(ItemType.GREEN_CANDY, "Spooky", "Events",
                     ItemType.GREEN_CANDY, ItemType.PURPLE_CANDY, ItemType.DARK_CANDY, ItemType.ECTOPLASM, ItemType.PUMPKIN_GUTS, ItemType.SPOOKY_SHARD,
                     ItemType.WEREWOLF_SKIN, ItemType.SOUL_FRAGMENT, ItemType.BAT_FIREWORK, ItemType.HORSEMAN_CANDLE, ItemType.EXPIRED_PUMPKIN, ItemType.BLAST_O_LANTERN)
@@ -529,8 +541,29 @@ public enum BazaarCategories {
         return Lookup.BY_ITEM.get(itemType);
     }
 
+    public static Map.Entry<BazaarCategories, BazaarItemSet> getFromProduct(BazaarProduct product) {
+        ItemType itemType = product.itemType();
+        return itemType != null ? Lookup.BY_ITEM.get(itemType) : Lookup.BY_OTHER_PRODUCT.get(product.id());
+    }
+
     private static final class Lookup {
         private static final Map<ItemType, Map.Entry<BazaarCategories, BazaarItemSet>> BY_ITEM = build();
+        private static final Map<String, Map.Entry<BazaarCategories, BazaarItemSet>> BY_OTHER_PRODUCT = buildOther();
+
+        private static Map<String, Map.Entry<BazaarCategories, BazaarItemSet>> buildOther() {
+            Map<String, Map.Entry<BazaarCategories, BazaarItemSet>> index = new HashMap<>();
+            for (BazaarCategories category : values()) {
+                for (BazaarItemSet itemSet : category.items) {
+                    if (!itemSet.items.isEmpty()) {
+                        continue;
+                    }
+                    for (BazaarProduct product : itemSet.products()) {
+                        index.putIfAbsent(product.id(), new AbstractMap.SimpleEntry<>(category, itemSet));
+                    }
+                }
+            }
+            return index;
+        }
 
         private static Map<ItemType, Map.Entry<BazaarCategories, BazaarItemSet>> build() {
             Map<ItemType, Map.Entry<BazaarCategories, BazaarItemSet>> index = new HashMap<>();

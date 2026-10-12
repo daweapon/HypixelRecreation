@@ -6,9 +6,9 @@ import org.jetbrains.annotations.Nullable;
 // Icon, colour, flavour text and Essence Guide slot per essence, from the wiki's Essence Guide/UI
 // and the NEU repo's ESSENCE_* heads. The guide has no Sun Gecko button or flavour text, so it
 // takes the free slot between Forest and Fossil.
-record EssenceGuideEntry(EssenceType type, String texture, String colour, @Nullable String flavour, int slot) {
+public record EssenceGuideEntry(EssenceType type, String texture, String colour, @Nullable String flavour, int slot) {
 
-    static EssenceGuideEntry of(EssenceType type) {
+    public static EssenceGuideEntry of(EssenceType type) {
         return switch (type) {
             case WITHER -> new EssenceGuideEntry(type, "c4db4adfa9bf48ff5d41707ae34ea78bd2371659fcd8cd8934749af4cce9b",
                     "<8>", "Why are we still here? Just to suffer...", 19);

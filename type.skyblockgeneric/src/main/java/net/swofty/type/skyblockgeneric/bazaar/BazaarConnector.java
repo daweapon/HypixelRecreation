@@ -68,7 +68,11 @@ public class BazaarConnector {
     }
 
     public CompletableFuture<BazaarItemData> getItemData(ItemType itemType) {
-        var message = new BazaarGetItemProtocol.BazaarGetItemMessage(itemType.name());
+        return getItemData(BazaarProducts.of(itemType));
+    }
+
+    public CompletableFuture<BazaarItemData> getItemData(BazaarProduct product) {
+        var message = new BazaarGetItemProtocol.BazaarGetItemMessage(product.id());
 
         return bazaarService.<BazaarGetItemProtocol.BazaarGetItemMessage,
                         BazaarGetItemProtocol.BazaarGetItemResponse>handleRequest(message)
@@ -96,7 +100,11 @@ public class BazaarConnector {
     }
 
     public CompletableFuture<BazaarStatistics> getItemStatistics(ItemType itemType) {
-        return getItemData(itemType).thenApply(data -> {
+        return getItemStatistics(BazaarProducts.of(itemType));
+    }
+
+    public CompletableFuture<BazaarStatistics> getItemStatistics(BazaarProduct product) {
+        return getItemData(product).thenApply(data -> {
             var buyStats = calculateBuyStatistics(data.buyOrders());
             var sellStats = calculateSellStatistics(data.sellOrders());
 
@@ -112,8 +120,12 @@ public class BazaarConnector {
     }
 
     public CompletableFuture<BazaarResult> createBuyOrder(ItemType itemType, double pricePerUnit, int quantity) {
+        return createBuyOrder(BazaarProducts.of(itemType), pricePerUnit, quantity);
+    }
+
+    public CompletableFuture<BazaarResult> createBuyOrder(BazaarProduct product, double pricePerUnit, int quantity) {
         var message = new BazaarBuyProtocol.BazaarBuyMessage(
-                itemType.name(),
+                product.id(),
                 quantity,
                 pricePerUnit,
                 player.getUuid(),
@@ -129,8 +141,12 @@ public class BazaarConnector {
     }
 
     public CompletableFuture<BazaarResult> createSellOrder(ItemType itemType, double pricePerUnit, int quantity) {
+        return createSellOrder(BazaarProducts.of(itemType), pricePerUnit, quantity);
+    }
+
+    public CompletableFuture<BazaarResult> createSellOrder(BazaarProduct product, double pricePerUnit, int quantity) {
         var message = new BazaarSellProtocol.BazaarSellMessage(
-                itemType.name(),
+                product.id(),
                 player.getUuid(),
                 getPlayerProfileUUID(),
                 pricePerUnit,
@@ -146,7 +162,11 @@ public class BazaarConnector {
     }
 
     public CompletableFuture<BazaarResult> instantBuy(ItemType itemType, int quantity) {
-        return getItemStatistics(itemType).thenCompose(stats -> {
+        return instantBuy(BazaarProducts.of(itemType), quantity);
+    }
+
+    public CompletableFuture<BazaarResult> instantBuy(BazaarProduct product, int quantity) {
+        return getItemStatistics(product).thenCompose(stats -> {
             if (stats.bestAsk() <= 0) {
                 return CompletableFuture.completedFuture(
                         new BazaarResult(false, "No sell offers available!")
@@ -162,7 +182,7 @@ public class BazaarConnector {
                 );
             }
 
-            int maxSpace = player.maxItemFit(itemType);
+            int maxSpace = product.room(player);
             if (quantity > maxSpace) {
                 return CompletableFuture.completedFuture(
                         new BazaarResult(false, "Not enough inventory space!")
@@ -171,11 +191,11 @@ public class BazaarConnector {
 
             player.removeCoins(totalCost);
 
-            return createBuyOrder(itemType, priceWithFee, quantity)
+            return createBuyOrder(product, priceWithFee, quantity)
                     .thenApply(result -> {
                         if (result.success()) {
                             BazaarHistory.record(getPlayerProfileUUID(), BazaarHistory.Kind.INSTANT_BUY,
-                                    itemType, quantity, totalCost, player.getFullDisplayName());
+                                    product, quantity, totalCost, player.getFullDisplayName());
                         }
                         player.getBazaarConnector().processAllPendingTransactions();
                         return result;
@@ -184,32 +204,38 @@ public class BazaarConnector {
     }
 
     public CompletableFuture<BazaarResult> instantSell(ItemType itemType) {
-        int availableAmount = player.getAmountInInventory(itemType);
+        return instantSell(BazaarProducts.of(itemType));
+    }
+
+    public CompletableFuture<BazaarResult> instantSell(BazaarProduct product) {
+        int availableAmount = product.held(player);
         if (availableAmount <= 0) {
             return CompletableFuture.completedFuture(
-                    new BazaarResult(false, "You don't have any " + itemType.getDisplayName() + "!")
+                    new BazaarResult(false, "You don't have any " + product.name() + "!")
             );
         }
 
-        return getItemStatistics(itemType).thenCompose(stats -> {
+        return getItemStatistics(product).thenCompose(stats -> {
             if (stats.bestBid() <= 0) {
                 return CompletableFuture.completedFuture(
                         new BazaarResult(false, "No buy orders available!")
                 );
             }
 
-            var takenItems = player.takeItem(itemType, availableAmount);
-            if (takenItems == null) {
+            Runnable undo = product.take(player, availableAmount);
+            if (undo == null) {
                 return CompletableFuture.completedFuture(
                         new BazaarResult(false, "Failed to remove items from inventory!")
                 );
             }
 
-            return createSellOrder(itemType, stats.bestBid(), availableAmount)
+            return createSellOrder(product, stats.bestBid(), availableAmount)
                     .thenApply(result -> {
                         if (result.success()) {
                             BazaarHistory.record(getPlayerProfileUUID(), BazaarHistory.Kind.INSTANT_SELL,
-                                    itemType, availableAmount, stats.bestBid() * availableAmount, player.getFullDisplayName());
+                                    product, availableAmount, stats.bestBid() * availableAmount, player.getFullDisplayName());
+                        } else {
+                            undo.run();
                         }
                         player.getBazaarConnector().processAllPendingTransactions();
                         return result;
@@ -384,12 +410,8 @@ public class BazaarConnector {
             double amount,
             UUID profileUUID
     ) {
-        public ItemType getItemType() {
-            try {
-                return ItemType.valueOf(itemName);
-            } catch (IllegalArgumentException e) {
-                return null;
-            }
+        public BazaarProduct getProduct() {
+            return BazaarProducts.byId(itemName);
         }
 
         public double getTotalValue() {
@@ -409,12 +431,8 @@ public class BazaarConnector {
             List<MarketOrder> buyOrders,
             List<MarketOrder> sellOrders
     ) {
-        public ItemType getItemType() {
-            try {
-                return ItemType.valueOf(itemName);
-            } catch (IllegalArgumentException e) {
-                return null;
-            }
+        public BazaarProduct getProduct() {
+            return BazaarProducts.byId(itemName);
         }
 
         public boolean hasBuyOrders() {

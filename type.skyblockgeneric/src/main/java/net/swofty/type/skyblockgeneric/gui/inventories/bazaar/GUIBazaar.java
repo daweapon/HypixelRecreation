@@ -4,7 +4,6 @@ import lombok.Getter;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
-import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
@@ -14,7 +13,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarConnector;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarItemSet;
-import net.swofty.type.skyblockgeneric.bazaar.BazaarNames;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarProduct;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarTile;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
@@ -67,12 +66,12 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
 
     private HypixelInventoryGUI search(String query, HypixelPlayer player) {
         String needle = query.toLowerCase(Locale.ROOT);
-        List<ItemType> found = new ArrayList<>();
+        List<BazaarProduct> found = new ArrayList<>();
         for (BazaarCategories each : BazaarCategories.values()) {
             for (BazaarItemSet set : each.getItems()) {
-                for (ItemType type : set.items) {
-                    if (BazaarNames.of(type).toLowerCase(Locale.ROOT).contains(needle) && !found.contains(type)) {
-                        found.add(type);
+                for (BazaarProduct product : set.products()) {
+                    if (product.name().toLowerCase(Locale.ROOT).contains(needle) && !found.contains(product)) {
+                        found.add(product);
                     }
                 }
             }
@@ -81,7 +80,7 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
             player.sendMessage(Text.key("gui_bazaar.search.no_results", query));
             return this;
         }
-        BazaarItemSet results = new BazaarItemSet(found.getFirst(), "Search", found.toArray(new ItemType[0]));
+        BazaarItemSet results = BazaarItemSet.ofProducts(found.getFirst(), "Search", null, found);
         return new GUIBazaarItemSet(category, results, 0, "Bazaar", "Bazaar", () -> new GUIBazaar(category));
     }
 
@@ -130,9 +129,9 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
                 if (tile.nested()) {
                     new GUIBazaarNestedGroup(category, tile.name(), tile.sets()).open(p);
                 } else if (tile.isSingleProduct()) {
-                    new GUIBazaarItem(tile.first().items.getFirst()).open((SkyBlockPlayer) p);
+                    new GUIBazaarItem(tile.first().products().getFirst()).open((SkyBlockPlayer) p);
                 } else {
-                    new GUIBazaarItemSet(category, tile.first()).open(p);
+                    GUIBazaarItemSet.opening(category, tile.first()).open(p);
                 }
             }
 
@@ -146,7 +145,7 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
                 } else {
                     lore = BazaarTooltips.groupLore(tile);
                 }
-                return BazaarIcons.of(icon.displayMaterial, Text.parse(category.getColor() + tile.name()), lore, false);
+                return BazaarIcons.of(icon.icon(), Text.parse(category.getColor() + tile.name()), lore, false);
             }
         };
     }
@@ -162,7 +161,7 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
             if (!tile.isSingleProduct()) {
                 continue;
             }
-            player.getBazaarConnector().getItemStatistics(tile.first().items.getFirst())
+            player.getBazaarConnector().getItemStatistics(tile.first().products().getFirst())
                     .thenAccept(stats -> prices.put(tile, stats))
                     .exceptionally(throwable -> {
                         Logger.error(throwable, "Failed to fetch bazaar data for {}", tile.name());
