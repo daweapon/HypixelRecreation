@@ -173,6 +173,10 @@ public class BazaarConnector {
 
             return createBuyOrder(itemType, priceWithFee, quantity)
                     .thenApply(result -> {
+                        if (result.success()) {
+                            BazaarHistory.record(getPlayerProfileUUID(), BazaarHistory.Kind.INSTANT_BUY,
+                                    itemType, quantity, totalCost, player.getFullDisplayName());
+                        }
                         player.getBazaarConnector().processAllPendingTransactions();
                         return result;
                     });
@@ -203,6 +207,10 @@ public class BazaarConnector {
 
             return createSellOrder(itemType, stats.bestBid(), availableAmount)
                     .thenApply(result -> {
+                        if (result.success()) {
+                            BazaarHistory.record(getPlayerProfileUUID(), BazaarHistory.Kind.INSTANT_SELL,
+                                    itemType, availableAmount, stats.bestBid() * availableAmount, player.getFullDisplayName());
+                        }
                         player.getBazaarConnector().processAllPendingTransactions();
                         return result;
                     });

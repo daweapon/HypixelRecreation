@@ -17,6 +17,8 @@ import lombok.NonNull;
 import lombok.Setter;
 import net.kyori.adventure.bossbar.BossBar;
 import net.minestom.server.MinecraftServer;
+import net.swofty.type.skyblockgeneric.deployable.DeployableBuffs;
+import net.swofty.type.skyblockgeneric.deployable.DeployableMath;
 import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.entity.Player;
 import net.minestom.server.entity.attribute.Attribute;
@@ -893,8 +895,9 @@ public class PlayerStatistics {
                     player.setHealth(player.getMaxHealth());
 
                 if (player.getHealth() < player.getMaxHealth()) {
-                    float healthToIncreaseBy = (float) (1.5 + ((int) player.getMaxHealth() * 0.01) +
-                            ((1.5 + ((int) player.getMaxHealth() * 0.01)) * player.getStatistics().getHealthRegenerationPercentBonus()));
+                    float healthToIncreaseBy = DeployableMath.regenPerPulse(player.getMaxHealth(),
+                            player.getStatistics().allStatistics().getOverall(ItemStatistic.HEALTH_REGENERATION),
+                            player.getStatistics().getHealthRegenerationPercentBonus());
 
                     RegenerationValueUpdateEvent event = new RegenerationValueUpdateEvent(player, healthToIncreaseBy);
                     SkyBlockValueEvent.callValueUpdateEvent(event);
@@ -967,7 +970,8 @@ public class PlayerStatistics {
                     float manaPool = player.getMaxMana();
                     player.setMana(Math.min(manaPool, Math.min(manaPool, player.getMana() + (manaPool / 50) +
                             (int) ((manaPool / 50) * (player.getStatistics().getManaRegenerationPercentBonus()
-                            + MiscPetHooks.manaRegenPercent(player) / 100D)))));
+                            + MiscPetHooks.manaRegenPercent(player) / 100D
+                            + DeployableBuffs.manaRegenFraction(player))))));
                 }
             });
             return TaskSchedule.seconds(1);

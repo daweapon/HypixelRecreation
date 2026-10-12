@@ -1797,7 +1797,7 @@ items:
       bonus_pest_chance: 15
       farming_fortune: 30
       speed: 5
-    source: "Crafted from 20 Squash, 1 Cropie Chestplate, 48 Enchanted Melon Block, 8 Polished Pumpkin, 30 Enchanted Cookie"
+    source: "Crafted from 20 Squash, 1 Cropie Chestplate, 48 Enchanted Melon, 8 Polished Pumpkin, 30 Enchanted Cookie"
     lore:
       - "§8Tiered Bonus: Mento Fermento (0/4)"
       - "§7Farming Sugar Cane, Cacti,"
@@ -1860,7 +1860,7 @@ items:
       bonus_pest_chance: 15
       farming_fortune: 25
       speed: 4
-    source: "Crafted from 20 Squash, 8 Polished Pumpkin, 48 Enchanted Melon Block, 1 Cropie Helmet"
+    source: "Crafted from 20 Squash, 8 Polished Pumpkin, 48 Enchanted Melon, 1 Cropie Helmet"
     lore:
       - "§8Tiered Bonus: Mento Fermento (0/4)"
       - "§7Farming Sugar Cane, Cacti,"
@@ -1917,7 +1917,7 @@ items:
       bonus_pest_chance: 15
       farming_fortune: 30
       speed: 5
-    source: "Crafted from 20 Squash, 8 Polished Pumpkin, 48 Enchanted Melon Block, 1 Cropie Leggings, 20 Enchanted Cookie"
+    source: "Crafted from 20 Squash, 8 Polished Pumpkin, 48 Enchanted Melon, 1 Cropie Leggings, 20 Enchanted Cookie"
     lore:
       - "§8Tiered Bonus: Mento Fermento (0/4)"
       - "§7Farming Sugar Cane, Cacti,"

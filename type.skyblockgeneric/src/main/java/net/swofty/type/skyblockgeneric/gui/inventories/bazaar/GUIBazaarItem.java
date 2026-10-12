@@ -15,6 +15,7 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarConnector;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarItemSet;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarNames;
 import net.swofty.type.skyblockgeneric.gui.inventories.bazaar.selections.GUIBazaarOrderAmountSelection;
 import net.swofty.type.skyblockgeneric.gui.inventories.bazaar.selections.GUIBazaarPriceSelection;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -38,15 +39,21 @@ public class GUIBazaarItem extends HypixelInventoryGUI implements RefreshingGUI 
     }
 
     public GUIBazaarItem(ItemType itemType, boolean specialBazaar) {
-        super(Text.key("gui_bazaar.item.title", BazaarCategories.getFromItem(itemType).getValue().displayName, itemType.getDisplayName()), InventoryType.CHEST_4_ROW);
+        super(Text.key("gui_bazaar.item.title", groupName(itemType), BazaarNames.of(itemType)), InventoryType.CHEST_4_ROW);
         this.itemType = itemType;
         this.specialBazaar = specialBazaar;
 
         fill(ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, ""));
 
         Map.Entry<BazaarCategories, BazaarItemSet> bazaarCategory = BazaarCategories.getFromItem(itemType);
-        set(GUIClickableItem.getGoBackItem(30,
-                new GUIBazaarItemSet(bazaarCategory.getKey(), bazaarCategory.getValue())));
+        if (bazaarCategory != null) {
+            BazaarItemSet parentSet = bazaarCategory.getValue();
+            BazaarCategories parentCategory = bazaarCategory.getKey();
+            set(BazaarMenuButtons.back(30, parentSet.isSingleProduct() ? backLabel(parentCategory, parentSet) : parentSet.name(),
+                    () -> parentSet.isSingleProduct()
+                            ? GUIBazaarItemSet.parentOf(parentCategory, parentSet)
+                            : new GUIBazaarItemSet(parentCategory, parentSet)));
+        }
 
         if (!specialBazaar) set(new GUIClickableItem(32) {
             @Override
@@ -69,7 +76,8 @@ public class GUIBazaarItem extends HypixelInventoryGUI implements RefreshingGUI 
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
-                new GUIBazaar(BazaarCategories.getFromItem(itemType).getKey()).open(p);
+                var entry = BazaarCategories.getFromItem(itemType);
+                new GUIBazaar(entry == null ? BazaarCategories.FARMING : entry.getKey()).open(p);
             }
 
             @Override
@@ -88,6 +96,15 @@ public class GUIBazaarItem extends HypixelInventoryGUI implements RefreshingGUI 
                 return new NonPlayerItemUpdater(new SkyBlockItem(itemType)).getUpdatedItem();
             }
         });
+    }
+
+    private static String groupName(ItemType itemType) {
+        var entry = BazaarCategories.getFromItem(itemType);
+        return entry == null ? "Bazaar" : entry.getValue().name();
+    }
+
+    private static String backLabel(BazaarCategories category, BazaarItemSet set) {
+        return set.nestedGroup == null ? "Bazaar" : set.nestedGroup;
     }
 
     @Override

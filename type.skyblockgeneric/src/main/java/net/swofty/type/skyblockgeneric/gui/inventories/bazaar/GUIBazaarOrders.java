@@ -11,6 +11,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
 import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarConnector;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCompletedBazaarTransactions;
@@ -31,27 +32,50 @@ public class GUIBazaarOrders extends HypixelInventoryGUI {
 
     public GUIBazaarOrders() {
         super(Text.key("gui_bazaar.orders.title"), InventoryType.CHEST_4_ROW);
-        fill(ItemStacks.named(Material.GRAY_STAINED_GLASS_PANE, ""));
+        fill(ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, ""));
+        clearSlots();
 
-        set(new GUIItem(4) {
+        set(BazaarMenuButtons.back(30, "Bazaar", () -> new GUIBazaar(BazaarCategories.FARMING)));
+        set(GUIClickableItem.getCloseItem(31));
+        set(new GUIClickableItem(32) {
             @Override
-            public ItemStack.Builder getItem(HypixelPlayer p) {
-                return ItemStacks.item(Material.GOLD_INGOT, 1, Text.key("gui_bazaar.orders.sell_orders_header"),
-                        Text.keyLines("gui_bazaar.orders.sell_orders_header.lore"));
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                claimAllCoins((SkyBlockPlayer) p);
             }
-        });
 
-        set(new GUIItem(31) {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
-                return ItemStacks.item(Material.EMERALD, 1, Text.key("gui_bazaar.orders.buy_orders_header"),
-                        Text.keyLines("gui_bazaar.orders.buy_orders_header.lore"));
+                return ItemStacks.item(Material.HOPPER, 1, Text.key("gui_bazaar.orders.claim_all"),
+                        Text.keyLines("gui_bazaar.orders.claim_all.lore"));
             }
         });
     }
 
+    private void claimAllCoins(SkyBlockPlayer player) {
+        var completed = player.getSkyblockDataHandler().get(
+                SkyBlockDataHandler.Data.COMPLETED_BAZAAR_TRANSACTIONS,
+                DatapointCompletedBazaarTransactions.class
+        ).getValue();
+        var sold = completed.getUnclaimedTransactions().stream()
+                .filter(tx -> tx.getType() == DatapointCompletedBazaarTransactions.TransactionType.SELL_COMPLETED)
+                .toList();
+        if (sold.isEmpty()) {
+            player.sendMessage(Text.key("gui_bazaar.order_completed.no_rewards"));
+            return;
+        }
+        double coins = sold.stream().mapToDouble(tx -> Math.abs(tx.getTotalValue())).sum();
+        player.addCoins(coins);
+        completed.claimTransactions(sold.stream().map(DatapointCompletedBazaarTransactions.CompletedBazaarTransaction::getId).toList());
+        player.sendMessage(Text.key("gui_bazaar.order_completed.received_coins", FORMATTER.format(coins)));
+        player.playSuccessSound();
+        new GUIBazaarOrders().open(player);
+    }
+
     @Override
     public void onOpen(InventoryGUIOpenEvent e) {
+        if (!((SkyBlockPlayer) e.player()).isCoop()) {
+            setTitle(Text.key("gui_bazaar.orders.title_solo"));
+        }
         ((SkyBlockPlayer) e.player()).getBazaarConnector().getPendingOrders()
                 .thenAccept(orders -> loadAndDisplayOrders(((SkyBlockPlayer) e.player()), orders));
     }
@@ -110,28 +134,6 @@ public class GUIBazaarOrders extends HypixelInventoryGUI {
 
             int slot = slots[index];
             set(createOrderItem(slot, item));
-        }
-
-        if (sellIndex == 0) {
-            set(new GUIItem(SELL_SLOTS[0]) {
-                @Override
-                public ItemStack.Builder getItem(HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    return ItemStacks.item(Material.BARRIER, 1, Text.key("gui_bazaar.orders.no_sell_orders"),
-                            Text.keyLines("gui_bazaar.orders.no_sell_orders.lore"));
-                }
-            });
-        }
-
-        if (buyIndex == 0) {
-            set(new GUIItem(BUY_SLOTS[0]) {
-                @Override
-                public ItemStack.Builder getItem(HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    return ItemStacks.item(Material.BARRIER, 1, Text.key("gui_bazaar.orders.no_buy_orders"),
-                            Text.keyLines("gui_bazaar.orders.no_buy_orders.lore"));
-                }
-            });
         }
 
         updateItemStacks(getInventory(), getPlayer());

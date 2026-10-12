@@ -41,7 +41,6 @@ items:
         display_name: Lantern
       - id: SKULL_HEAD
         texture: b7b06b329237e7469d0650ba167aa9611ef1373c3c2c6bbdda7b13773c6aa69f
-      - id: NOT_FINISHED_YET
   - id: INFINI_TORCH
     material: TORCH
     name: "Infini Torch"

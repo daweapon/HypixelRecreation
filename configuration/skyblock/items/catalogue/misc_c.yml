@@ -3254,7 +3254,7 @@ items:
         texture: 6de2a08e71d0b5326a597df028dd7c15fa4cf221caac2810e2891fb84ee57c9f
   - id: ISOPOD_HUSK
     material: paper
-    name: "Isopod Husk"
+    name: "Isopod Musk"
     rarity: EPIC
     unavailable: "Needs Giant Isopods and permanent Respiration consumables"
     source: "Giant Isopod (Lv186) drop (2%)"

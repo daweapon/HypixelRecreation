@@ -120,12 +120,14 @@ items:
         item_model: hypixel_skyblock:item/island_relevant/foraging_2/traps/astral_huntrap
   - id: SWEEP_BOOSTER
     material: PLAYER_HEAD
+    name: "Common Sweep Booster"
     rarity: COMMON
     components:
       - id: SKULL_HEAD
         texture: bd6a0624b440449a5719518392fa182a91cb890db35ad4410aae47f85c2d619b
   - id: FORAGING_WISDOM_BOOSTER
     material: PLAYER_HEAD
+    name: "Common Foraging Wisdom Booster"
     rarity: COMMON
     components:
       - id: SKULL_HEAD

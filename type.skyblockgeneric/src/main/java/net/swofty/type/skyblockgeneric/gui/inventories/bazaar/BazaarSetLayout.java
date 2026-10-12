@@ -29,6 +29,10 @@ public final class BazaarSetLayout {
             37, 38, 39, 40, 41, 42, 43
     };
 
+    public static int[] pagedSlots() {
+        return PAGED_SLOTS.clone();
+    }
+
     private final int totalItems;
 
     public BazaarSetLayout(int totalItems) {
@@ -77,6 +81,14 @@ public final class BazaarSetLayout {
 
     public int ordersSlot() {
         return isPaged() ? 50 : 32;
+    }
+
+    public int sellInventorySlot() {
+        return isPaged() ? 47 : 29;
+    }
+
+    public int settingsSlot() {
+        return isPaged() ? 52 : 34;
     }
 
     public int previousPageSlot() {

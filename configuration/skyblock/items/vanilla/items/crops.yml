@@ -90,7 +90,7 @@ items:
         alchemy_xp: 20
   - id: MELON_BLOCK
     material: melon
-    name: "Melon Block"
+    name: "Melon"
     rarity: COMMON
     components:
       - id: CUSTOM_DROP

@@ -398,7 +398,7 @@ items:
     material: player_head
     name: "Phone Booth Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "Power orbs are not placeable yet; also SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"
@@ -1386,7 +1386,7 @@ items:
     material: player_head
     name: "Pumpkin Power Orb Skin"
     rarity: MYTHIC
-    unavailable: "Power orbs are not placeable yet; also SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
+    unavailable: "SkyBlock Gems store content (Fire Sale / seasonal Taylor bundle); the store is not built"
     lore:
       - "§7Item skins give your gear a fresh"
       - "§7new look! Apply them just like an"

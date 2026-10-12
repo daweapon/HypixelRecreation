@@ -1,332 +1,174 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.bazaar;
 
 import lombok.Getter;
-import net.minestom.server.component.DataComponents;
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
-import net.minestom.server.item.Material;
-import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.RefreshingGUI;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
-import net.swofty.type.generic.gui.inventory.item.GUIItem;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.generic.utility.ScheduleUtility;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarCategories;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarConnector;
 import net.swofty.type.skyblockgeneric.bazaar.BazaarItemSet;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
-import net.swofty.type.skyblockgeneric.item.components.ItemModelComponent;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarNames;
+import net.swofty.type.skyblockgeneric.bazaar.BazaarTile;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Getter
-// GUI listing bazaar item sets for a category, with a short-lived cache of rendered items
+// A category of the Bazaar: the category tabs on the left, the tiles of its groups and the shared button row
 public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
-    private static final int[] SLOTS = {
-            11, 12, 13, 14, 15, 16,
-            20, 21, 22, 23, 24, 25,
-            29, 30, 31, 32, 33, 34,
-            38, 39, 40, 41, 42, 43
-    };
-    private static final int PREVIEW_LINES = 12;
-    private static final long CACHE_TTL_MS = 30_000L;
-
-    private static final Map<BazaarCategories, CacheEntry> CACHE = new ConcurrentHashMap<>();
+    private static final long STATE_REFRESH_MS = 5_000L;
 
     private final BazaarCategories category;
+    private final List<BazaarTile> tiles;
+    private final BazaarMenuState state = new BazaarMenuState();
+    private final Map<BazaarTile, BazaarConnector.BazaarStatistics> prices = new ConcurrentHashMap<>();
+    private long lastStateRefresh;
 
     public GUIBazaar(BazaarCategories category) {
-        super(Text.key("gui_bazaar.main.title", StringUtility.toNormalCase(category.name())),
-                InventoryType.CHEST_6_ROW);
+        super(Text.key("gui_bazaar.main.title", category.displayName()), InventoryType.CHEST_6_ROW);
         this.category = category;
+        this.tiles = category.tiles();
 
-        fill(ItemStacks.named(category.getGlassItem(), ""));
-        set(GUIClickableItem.getCloseItem(49));
+        for (int slot : BazaarGridLayout.PANE_SLOTS) {
+            set(BazaarMenuButtons.pane(slot, category.getGlassItem()));
+        }
+        int[] slots = BazaarGridLayout.assign(tiles);
+        for (int slot : BazaarGridLayout.unusedTileSlots(slots)) {
+            set(BazaarMenuButtons.empty(slot));
+        }
+        renderCategoryTabs();
+        for (int i = 0; i < tiles.size(); i++) {
+            set(tileItem(slots[i], tiles.get(i)));
+        }
+        renderButtonRow();
+    }
 
-        set(new GUIClickableItem(50) {
-            @Override
-            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p;
-                new GUIBazaarOrders().open(p);
+    private void renderButtonRow() {
+        set(BazaarMenuButtons.search(BazaarGridLayout.SEARCH_SLOT, this::search));
+        set(BazaarMenuButtons.sellInventory(BazaarGridLayout.SELL_INVENTORY_SLOT, state));
+        set(BazaarMenuButtons.sellSacks(BazaarGridLayout.SELL_SACKS_SLOT, state));
+        set(GUIClickableItem.getCloseItem(BazaarGridLayout.CLOSE_SLOT));
+        set(BazaarMenuButtons.manageOrders(BazaarGridLayout.ORDERS_SLOT, state));
+        set(BazaarMenuButtons.history(BazaarGridLayout.HISTORY_SLOT));
+        set(BazaarMenuButtons.settings(BazaarGridLayout.SETTINGS_SLOT));
+    }
+
+    private HypixelInventoryGUI search(String query, HypixelPlayer player) {
+        String needle = query.toLowerCase(Locale.ROOT);
+        List<ItemType> found = new ArrayList<>();
+        for (BazaarCategories each : BazaarCategories.values()) {
+            for (BazaarItemSet set : each.getItems()) {
+                for (ItemType type : set.items) {
+                    if (BazaarNames.of(type).toLowerCase(Locale.ROOT).contains(needle) && !found.contains(type)) {
+                        found.add(type);
+                    }
+                }
             }
-
-            @Override
-            public ItemStack.Builder getItem(HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p;
-                return ItemStacks.item(Material.BOOK, """
-                        <key:gui_bazaar.main.manage_orders_button>
-                        <key:gui_bazaar.main.manage_orders_button.lore.1>
-                        <key:gui_bazaar.main.manage_orders_button.lore.2>""");
-            }
-        });
+        }
+        if (found.isEmpty()) {
+            player.sendMessage(Text.key("gui_bazaar.search.no_results", query));
+            return this;
+        }
+        BazaarItemSet results = new BazaarItemSet(found.getFirst(), "Search", found.toArray(new ItemType[0]));
+        return new GUIBazaarItemSet(category, results, 0, "Bazaar", "Bazaar", () -> new GUIBazaar(category));
     }
 
     @Override
     public void onOpen(InventoryGUIOpenEvent e) {
-        if (((SkyBlockPlayer) e.player()).isIronman()) {
-            e.player().openView(new GUISpecialBazaar());
+        SkyBlockPlayer player = (SkyBlockPlayer) e.player();
+        if (player.isIronman()) {
+            player.openView(new GUISpecialBazaar());
             return;
         }
-        // Tabs at top
-        renderCategoryTabs();
-
-        long now = System.currentTimeMillis();
-        CacheEntry entry = CACHE.get(category);
-
-        if (entry != null && now - entry.timestamp <= CACHE_TTL_MS) {
-            // fresh cache: render immediately
-            renderSlots(entry.slots);
-        } else {
-            // expired or missing: clear cache & show placeholders
-            CACHE.remove(category);
-            renderPlaceholders();
-            // async rebuild & render
-            CompletableFuture.runAsync(() -> rebuildCacheAndRender((SkyBlockPlayer) e.player()));
-        }
+        refreshLiveData(player, true);
     }
 
     private void renderCategoryTabs() {
-        int idx = 0;
-        for (BazaarCategories cat : BazaarCategories.values()) {
-            int slot = idx * 9;
+        int index = 0;
+        for (BazaarCategories each : BazaarCategories.values()) {
+            int slot = BazaarGridLayout.TAB_SLOTS[index++];
             set(new GUIClickableItem(slot) {
                 @Override
                 public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    new GUIBazaar(cat).open(p);
+                    new GUIBazaar(each).open(p);
                 }
 
                 @Override
                 public ItemStack.Builder getItem(HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    var b = ItemStacks.item(
-                            cat.getDisplayItem(), 1,
-                            Text.parse(cat.getColor() + StringUtility.toNormalCase(cat.name())),
+                    boolean viewing = category == each;
+                    var builder = ItemStacks.item(
+                            each.getDisplayItem(), 1,
+                            Text.parse(each.getColor() + each.displayName()),
                             List.of(
                                     Text.key("gui_bazaar.main.category_subtitle"),
                                     Text.literal(" "),
-                                    category == cat
-                                            ? Text.key("gui_bazaar.main.category_viewing")
-                                            : Text.key("gui_bazaar.main.category_click")
+                                    viewing ? Text.key("gui_bazaar.main.category_viewing") : Text.key("gui_bazaar.main.category_click")
                             )
                     );
-                    if (category == cat) b = ItemStacks.enchanted(b);
-                    return b;
-                }
-            });
-            idx++;
-        }
-        updateItemStacks(getInventory(), getPlayer());
-    }
-
-    private void renderPlaceholders() {
-        for (int slot : SLOTS) {
-            set(new GUIItem(slot) {
-                @Override
-                public ItemStack.Builder getItem(HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    return ItemStacks.item(Material.GRAY_STAINED_GLASS_PANE, "<key:gui_bazaar.main.loading>");
+                    return viewing ? ItemStacks.enchanted(builder) : builder;
                 }
             });
         }
-        updateItemStacks(getInventory(), getPlayer());
     }
 
-    private void rebuildCacheAndRender(SkyBlockPlayer player) {
-        List<BazaarItemSet> allSets = category.getItems().stream().toList();
-
-        // Sets sharing a non-null nestedGroup collapse into a single tile (see
-        // BazaarItemSet.nestedGroup) - real Hypixel does this for e.g. Mining's 12 gemstone
-        // types under one "Gemstones" tile, since a category grid only has so many slots.
-        Map<String, List<BazaarItemSet>> grouped = new java.util.LinkedHashMap<>();
-        List<BazaarItemSet> ungrouped = new ArrayList<>();
-        List<List<BazaarItemSet>> tiles = new ArrayList<>();
-        for (BazaarItemSet set : allSets) {
-            if (set.nestedGroup != null) {
-                List<BazaarItemSet> members = grouped.get(set.nestedGroup);
-                if (members == null) {
-                    members = new ArrayList<>();
-                    grouped.put(set.nestedGroup, members);
-                    tiles.add(members);
+    private GUIClickableItem tileItem(int slot, BazaarTile tile) {
+        return new GUIClickableItem(slot) {
+            @Override
+            public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                if (tile.nested()) {
+                    new GUIBazaarNestedGroup(category, tile.name(), tile.sets()).open(p);
+                } else if (tile.isSingleProduct()) {
+                    new GUIBazaarItem(tile.first().items.getFirst()).open((SkyBlockPlayer) p);
+                } else {
+                    new GUIBazaarItemSet(category, tile.first()).open(p);
                 }
-                members.add(set);
-            } else {
-                ungrouped.add(set);
-                tiles.add(List.of(set));
             }
-        }
 
-        // Create a thread-safe map to collect results - only ungrouped (directly rendered) sets
-        // need price data fetched, since a grouped tile just shows a summary, not per-item prices.
-        Map<BazaarItemSet, Map<ItemType, PriceData>> setDataMap = new ConcurrentHashMap<>();
-        for (BazaarItemSet set : ungrouped) {
-            setDataMap.put(set, new ConcurrentHashMap<>());
-        }
-
-        // Collect all futures for price fetching
-        List<CompletableFuture<Void>> allFutures = new ArrayList<>();
-
-        for (BazaarItemSet set : ungrouped) {
-            for (ItemType type : set.items.stream().limit(PREVIEW_LINES).toList()) {
-                CompletableFuture<Void> future = player.getBazaarConnector().getItemStatistics(type)
-                        .thenAccept(stats -> {
-                            // Store the price data thread-safely
-                            setDataMap.get(set).put(type, new PriceData(
-                                    type,
-                                    stats.averageAsk(),  // Average sell price
-                                    stats.averageBid()    // Average buy price
-                            ));
-                        })
-                        .exceptionally(throwable -> {
-                            Logger.error(throwable, "Failed to fetch bazaar data for {}", type.name());
-                            setDataMap.get(set).put(type, new PriceData(type, 0, 0));
-                            return null;
-                        });
-                allFutures.add(future);
+            @Override
+            public ItemStack.Builder getItem(HypixelPlayer p) {
+                BazaarItemSet icon = tile.first();
+                List<Text> lore;
+                if (tile.isSingleProduct()) {
+                    BazaarConnector.BazaarStatistics stats = prices.get(tile);
+                    lore = BazaarTooltips.priceLore(stats == null ? null : stats.bestAsk(), stats == null ? null : stats.bestBid());
+                } else {
+                    lore = BazaarTooltips.groupLore(tile);
+                }
+                return BazaarIcons.of(icon.displayMaterial, Text.parse(category.getColor() + tile.name()), lore, false);
             }
-        }
-
-        // When all price data is collected, build the cache entry
-        CompletableFuture.allOf(allFutures.toArray(new CompletableFuture[0]))
-                .thenRun(() -> {
-                    List<CacheEntry.CachedSlot> slotData = new ArrayList<>();
-                    int slotIndex = 0;
-
-                    for (List<BazaarItemSet> tile : tiles) {
-                        if (slotIndex >= SLOTS.length) break;
-                        int slot = SLOTS[slotIndex++];
-                        BazaarItemSet first = tile.getFirst();
-
-                        if (first.nestedGroup != null) {
-                            int totalProducts = tile.stream().mapToInt(s -> s.items.size()).sum();
-                            List<Text> lore = List.of(
-                                    Text.key("gui_bazaar.main.item_set_products", totalProducts),
-                                    Text.literal(" "),
-                                    Text.key("gui_bazaar.main.item_set_click")
-                            );
-                            slotData.add(new CacheEntry.CachedSlot(slot, first.nestedGroup, tile, lore));
-                            continue;
-                        }
-
-                        List<Text> lore = new ArrayList<>();
-                        lore.add(Text.key("gui_bazaar.main.item_set_products", first.items.size()));
-                        lore.add(Text.literal(" "));
-
-                        Map<ItemType, PriceData> priceDataMap = setDataMap.get(first);
-                        for (ItemType type : first.items.stream().limit(PREVIEW_LINES).toList()) {
-                            PriceData priceData = priceDataMap.get(type);
-                            if (priceData != null) {
-                                lore.add(Text.of("<color:{}>▶ <7>{} <c>{:short} <8>| <a>{:short}",
-                                        type.rarity.getColor(),
-                                        type.getDisplayName(),
-                                        priceData.sellPrice(),
-                                        priceData.buyPrice()));
-                            }
-                        }
-
-                        lore.add(Text.literal(" "));
-                        lore.add(Text.key("gui_bazaar.main.item_set_click"));
-                        slotData.add(new CacheEntry.CachedSlot(slot, null, List.of(first), lore));
-                    }
-
-                    // Cache it
-                    CACHE.put(category, new CacheEntry(System.currentTimeMillis(), slotData));
-
-                    // Schedule UI update on main thread
-                    ScheduleUtility.delay(() -> {
-                        renderSlots(slotData);
-                    }, 1);
-                })
-                .exceptionally(throwable -> {
-                    Logger.error(throwable, "Failed to rebuild bazaar cache");
-
-                    // Fallback: render with "Error loading" placeholders
-                    ScheduleUtility.delay(() -> {
-                        for (int slot : SLOTS) {
-                            set(new GUIItem(slot) {
-                                @Override
-                                public ItemStack.Builder getItem(HypixelPlayer p) {
-                                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                                    return ItemStacks.item(Material.BARRIER, """
-                                            <key:gui_bazaar.main.error_loading>
-                                            <key:gui_bazaar.main.error_loading.lore.1>
-                                            <key:gui_bazaar.main.error_loading.lore.2>""");
-                                }
-                            });
-                        }
-                        updateItemStacks(getInventory(), getPlayer());
-                    }, 1);
-                    return null;
-                });
+        };
     }
 
-    private void renderSlots(List<CacheEntry.CachedSlot> slots) {
-        // Clear existing slots first
-        for (int slot : SLOTS) {
-            set(new GUIItem(slot) {
-                @Override
-                public ItemStack.Builder getItem(HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    return ItemStack.builder(Material.AIR);
-                }
-            });
+    private void refreshLiveData(SkyBlockPlayer player, boolean force) {
+        long now = System.currentTimeMillis();
+        if (!force && now - lastStateRefresh < STATE_REFRESH_MS) {
+            return;
         }
-
-        // Set the new slots
-        for (CacheEntry.CachedSlot cs : slots) {
-            set(new GUIClickableItem(cs.slot()) {
-                @Override
-                public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    if (cs.groupName() != null) {
-                        new GUIBazaarNestedGroup(category, cs.groupName(), cs.sets()).open(p);
-                    } else {
-                        new GUIBazaarItemSet(category, cs.sets().getFirst()).open(p);
-                    }
-                }
-
-                @Override
-                public ItemStack.Builder getItem(HypixelPlayer p) {
-                    SkyBlockPlayer player = (SkyBlockPlayer) p;
-                    BazaarItemSet displaySet = cs.sets().getFirst();
-                    String label = cs.groupName() != null ? cs.groupName() : displaySet.displayName;
-                    ItemStack.Builder builder = ItemStacks.item(
-                            displaySet.displayMaterial.material,
-                            1,
-                            Text.parse(category.getColor() + label),
-                            cs.lore()
-                    );
-
-                    // ItemStacks.item() only sets the base material - a custom ITEM_MODEL on the
-                    // set's display item would otherwise be silently ignored, leaving this category
-                    // tile showing the plain vanilla material instead of its real icon.
-                    SkyBlockItem displayItem = new SkyBlockItem(displaySet.displayMaterial);
-                    if (displayItem.hasComponent(ItemModelComponent.class)) {
-                        builder = builder.set(DataComponents.ITEM_MODEL,
-                                displayItem.getComponent(ItemModelComponent.class).getItemModel());
-                    }
-
-                    return builder;
-                }
-            });
+        lastStateRefresh = now;
+        state.refresh(player);
+        for (BazaarTile tile : tiles) {
+            if (!tile.isSingleProduct()) {
+                continue;
+            }
+            player.getBazaarConnector().getItemStatistics(tile.first().items.getFirst())
+                    .thenAccept(stats -> prices.put(tile, stats))
+                    .exceptionally(throwable -> {
+                        Logger.error(throwable, "Failed to fetch bazaar data for {}", tile.name());
+                        return null;
+                    });
         }
-        updateItemStacks(getInventory(), getPlayer());
-    }
-
-    /**
-     * Thread-safe price data holder
-     */
-    private record PriceData(ItemType itemType, double sellPrice, double buyPrice) {
     }
 
     @Override
@@ -355,12 +197,6 @@ public class GUIBazaar extends HypixelInventoryGUI implements RefreshingGUI {
                 player.getBazaarConnector().processAllPendingTransactions();
             }
         });
-    }
-
-    private record CacheEntry(long timestamp, List<CachedSlot> slots) {
-        // groupName is null for a normal tile (sets has exactly one element, opens directly);
-        // non-null for a collapsed nested-group tile (sets has every member, opens a sub-menu).
-        record CachedSlot(int slot, String groupName, List<BazaarItemSet> sets, List<Text> lore) {
-        }
+        refreshLiveData(player, false);
     }
 }

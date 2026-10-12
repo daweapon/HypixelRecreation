@@ -629,7 +629,7 @@ items:
         alchemy_xp: 100
   - id: ENCHANTED_GLISTERING_MELON
     material: GLISTERING_MELON_SLICE
-    name: "Enchanted Glistering Melon"
+    name: "Enchanted Glistering Melon Slice"
     rarity: RARE
     default_statistics: {}
     components:
@@ -896,7 +896,7 @@ items:
         value: 1280
   - id: ENCHANTED_MELON
     material: MELON_SLICE
-    name: "Enchanted Melon"
+    name: "Enchanted Melon Slice"
     rarity: UNCOMMON
     default_statistics: {}
     components:
@@ -913,7 +913,7 @@ items:
         alchemy_xp: 250
   - id: ENCHANTED_MELON_BLOCK
     material: MELON
-    name: "Enchanted Melon Block"
+    name: "Enchanted Melon"
     rarity: RARE
     default_statistics: {}
     components:

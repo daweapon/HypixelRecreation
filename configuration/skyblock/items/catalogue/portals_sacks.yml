@@ -894,7 +894,6 @@ items:
       - "§8Only one deployable buff applies."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 8§c."
-    unavailable: "Needs deployable orb system"
     source: "Forged at The Forge (needs HotM 8)"
     components:
       - id: SKULL_HEAD
@@ -1706,11 +1705,16 @@ items:
       - "§8Only one deployable buff applies."
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 6§c."
-    unavailable: "Needs deployable orb system"
     source: "Crafted; recipe 4x ENCHANTED_LAPIS_LAZULI_BLOCK, 32x GOLDEN_TOOTH, 1x RADIANT_POWER_ORB (needs Wolf Slayer 6)"
     components:
       - id: SKULL_HEAD
         texture: 82ada1c7fcc8cf35defeb944a4f8ffa9a9d260560fc7f5f5826de8085435967c
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: SVEN_PACKMASTER
+            level: 6
+
   - id: MEDIUM_BAIT_SACK
     material: player_head
     name: "Medium Bait Sack"
@@ -2337,7 +2341,6 @@ items:
       - "§8Only one deployable buff applies."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 2§c."
-    unavailable: "Needs deployable orb system"
     source: "Forged at The Forge (needs HotM 2)"
     components:
       - id: SKULL_HEAD
@@ -2427,11 +2430,16 @@ items:
       - "§8Only one deployable buff applies."
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 7§c."
-    unavailable: "Needs deployable orb system"
     source: "Crafted; recipe 128x GOLDEN_TOOTH, 1x OVERFLUX_CAPACITOR, 24x ENCHANTED_REDSTONE_BLOCK, 1x MANA_FLUX_POWER_ORB (needs Wolf Slayer 7)"
     components:
       - id: SKULL_HEAD
         texture: 20de5e8974940375934d32f71c91ad2d5728d38e51647dcc8f39206c099a54c2
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: SVEN_PACKMASTER
+            level: 7
+
   - id: PARK_CAVE_TRAVEL_SCROLL
     material: map
     name: "Travel Scroll to Howling Cave"
@@ -2479,11 +2487,16 @@ items:
       - "§8Only one deployable buff applies."
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 7§c."
-    unavailable: "Needs deployable orb system"
     source: "Crafted; recipe 256x ENCHANTED_OBSIDIAN, 1x PLASMA_NUCLEUS, 72x GOLDEN_TOOTH, 1x OVERFLUX_POWER_ORB (needs Wolf Slayer 8)"
     components:
       - id: SKULL_HEAD
         texture: 83ed4ce23933e66e04df16070644f7599eeb55307f7eafe8d92f40fb3520863c
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: SVEN_PACKMASTER
+            level: 7
+
   - id: RADIANT_POWER_ORB
     material: player_head
     name: "Radiant Power Orb"
@@ -2503,11 +2516,16 @@ items:
       - "§8Only one deployable buff applies."
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 2§c."
-    unavailable: "Needs deployable orb system"
     source: "Crafted; recipe 16x WOLF_TOOTH, 8x ENCHANTED_EMERALD (needs Wolf Slayer 2)"
     components:
       - id: SKULL_HEAD
         texture: c94d0a068ea50a9de2cef23a92bca4b3678d12ca8a1815d13beac94dfd557125
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: SVEN_PACKMASTER
+            level: 2
+
   - id: RIFT_WIZARD_TOWER_PORTAL
     material: player_head
     name: "Portal to The Rift"
@@ -3050,7 +3068,6 @@ items:
       - "§8Only one deployable buff applies."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
-    unavailable: "Needs deployable orb system"
     source: "Forged at The Forge (needs HotM 5)"
     components:
       - id: SKULL_HEAD
@@ -3204,7 +3221,6 @@ items:
       - "§8Only one deployable buff applies."
       - ""
       - "§4❣ §cRequires §aUmber Collection IX§c."
-    unavailable: "Needs deployable orb system"
     source: "Crafted; recipe 6x REFINED_UMBER, 2x STICK (needs Umber IX)"
     components:
       - id: SKULL_HEAD
@@ -3290,7 +3306,6 @@ items:
       - "§8Only one deployable buff applies."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 10§c."
-    unavailable: "Needs deployable orb system"
     source: "Forged at The Forge (needs HotM 10)"
     components:
       - id: SKULL_HEAD

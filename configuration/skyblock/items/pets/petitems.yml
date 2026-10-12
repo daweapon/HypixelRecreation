@@ -686,7 +686,6 @@ items:
         description:
           - "<7>Your pet fuses its power with placed"
           - "<9>Deployables <7>to give them <a>2x <7>duration."
-        inactive: true
       - id: SKULL_HEAD
         texture: d05584c5394eb90ff5fbd1b25909371258b1526e6a47f72455a3f84dd7603a8c
   - id: PET_ITEM_EXP_SHARE

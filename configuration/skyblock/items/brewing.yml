@@ -46,7 +46,7 @@ items:
   - id: RABBIT_FOOT
     rarity: COMMON
     material: rabbit_foot
-    name: "Rabbit Foot"
+    name: "Rabbit's Foot"
     components:
       - id: BREWING_INGREDIENT
         brewing_time_seconds: 20
