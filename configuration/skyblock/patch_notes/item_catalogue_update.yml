@@ -1,0 +1,60 @@
+title: "The Item Catalogue Update"
+date: "12th October 2026"
+intro:
+  - "Over 2,600 SkyBlock items that were missing are now in the game, with their real stats, lore, rarity and recipes. Items whose content is not built yet are still listed, and say why you cannot get them."
+  - "Use the Centauri Toy Box item list to browse them. Anything marked unavailable will become obtainable when its content arrives."
+sections:
+  - heading: "Reforge Stones"
+    colour: "<9>"
+    lines:
+      - "75 new Reforge Stones with all of their reforges, stats and anvil costs."
+      - "Reforge abilities now work for 25 reforges, such as the Fruitful Defense bonus on Mining Islands. The Bonus text shows on the item."
+      - "Stones that fit only certain items, like Warped for the Aspect of the End, now only apply to those items."
+  - heading: "Dyes"
+    colour: "<d>"
+    lines:
+      - "57 new dyes that recolour leather armour in the anvil."
+      - "Dyes drop from slayers, fossils, commissions, fishing treasure, brewing, mining and farming. Taylor sells the Fall 2026 bundle dyes."
+  - heading: "Accessories and Equipment"
+    colour: "<6>"
+    lines:
+      - "159 accessories, belts, cloaks, gloves, necklaces, bracelets and mementos."
+      - "Mithril, Titanium, Angler and Backwater equipment now has its bonuses. Angler gear is sold by the Fish Merchant and Backwater gear by Junker Joel."
+  - heading: "Weapons and Tools"
+    colour: "<c>"
+    lines:
+      - "Drills, pickaxes, axes, shovels and more, including Bingolibur, Zombie Pickaxe, Jungle Axe, Treecapitator, Stonk and Lapis Pickaxe passives."
+      - "Throwing Axes, Frenzy axes and the Sculptor's Axe now work."
+  - heading: "Armour"
+    colour: "<a>"
+    lines:
+      - "413 armour pieces with set bonuses where they can be built: Speedster, Young, Protector, Superior and Wise Dragon, Fairy, Sponge, Shark Scale, Holy Dragon, Emerald, Cactus, Rabbit, Glacite, Golem, Angler, Backwater and Snorkeling."
+      - "Sneaking now triggers armour abilities like the Golem Hat and Fish Hat."
+  - heading: "Skins and Cosmetics"
+    colour: "<5>"
+    lines:
+      - "279 new skins. Helmet, backpack and power orb skins apply at the anvil. Minion skins work like before."
+  - heading: "Sacks, Scrolls and Arrows"
+    colour: "<e>"
+    lines:
+      - "Many new sacks, plus Island and warp travel scrolls."
+      - "Special arrows: Armorshred, Icy, Glue, Nansorb, Bouncy and Explosive."
+      - "Salts, item bundles, Dwarven O's, Vial of Venom, level pet candies and Personal Bank items all work."
+  - heading: "Runes"
+    colour: "<b>"
+    lines:
+      - "63 new runes with particle effects. Bite, Darkness Within, Spirit, Couture, Endersnake, End and Enchant runes drop from slayers."
+  - heading: "Attributes"
+    colour: "<3>"
+    lines:
+      - "All 325 attribute shards are now in the game. Many can only be fused until their Hunting content is built."
+  - heading: "Fixes"
+    colour: "<a>"
+    lines:
+      - "Pets, enchantments and their books were checked against Hypixel. Small enchantment data differences were corrected."
+      - "The Sack of Sacks now fills with the largest sacks first when you use max profile."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "About 2,000 of these items need content that is not built yet, such as Dungeons, the Rift, the Garden, Hunting, Carpentry and furniture, Critter Safari and event shops. They are listed with the reason."
+      - "Many armour and equipment abilities also wait on those systems."

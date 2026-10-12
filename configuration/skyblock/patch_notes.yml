@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "item-catalogue"
+    name: "The Item Catalogue Update"
+    date: "12th October 2026"
+    material: chest
+    title: "The Item Catalogue Update"
+    book: "item_catalogue_update.yml"
   - version: "slayer-parity"
     name: "The Slayer Parity Update"
     date: "11th October 2026"
