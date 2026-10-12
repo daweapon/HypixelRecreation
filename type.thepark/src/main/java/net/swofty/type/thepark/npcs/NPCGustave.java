@@ -69,8 +69,9 @@ public class NPCGustave extends HypixelNPC {
 		}
 		if (missionData.isCurrentlyActive(MissionTalkToGustaveAgain.class)) {
 			setDialogue(player, "completed-1").thenRun(() -> {
-				// TODO: give polished pebble
-				missionData.endMission(MissionTalkToGustaveAgain.class);
+				player.openView(new ClaimRewardView(), new ClaimRewardView.State(ItemType.get("POLISHED_PEBBLE"), () -> {
+					missionData.endMission(MissionTalkToGustaveAgain.class);
+				}));
 			});
 			return;
 		}

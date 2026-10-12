@@ -1,0 +1,3786 @@
+items:
+  - id: STARFALL_SEASONING
+    material: paper
+    name: "Starfall Seasoning"
+    rarity: RARE
+    unavailable: "Needs the Drill Mechanic (upgrade module slot)"
+    source: "Forge (Heart of the Mountain 2, 18 hours): 64 Starfall and 16 Treasurite"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§7Grants §6+25 Mining Speed §7and §6+10"
+      - "§6Mining Fortune§7. Doubled when within"
+      - "§a20 §7blocks of a §5Fallen Star§7."
+      - ""
+      - "§7Put this item in the §6Upgrade Module"
+      - "§7slot of a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 2§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/uncategorized/starfall_seasoning
+  - id: STAR_DECORATIONS
+    material: player_head
+    name: "Star Decorations"
+    rarity: RARE
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Winter reward bundle furniture (VIP+, 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: db16243c225ec8a5162260ffb8d21dd4b6680a7cad8b128ea9eff0bdd7efe2cc
+  - id: STEAMED_CHOCOLATE_FISH
+    material: player_head
+    name: "Fish Chocolat à la Vapeur"
+    rarity: EPIC
+    unavailable: "Needs Hoppity's Abiphone contact and Rabbit the Fish; the Chocolate Shop entry does not hand it out yet"
+    source: "Chocolate Shop: 50,000,000,000 Chocolate and Rabbit the Fish (Chocolate Factory VI)"
+    lore:
+      - "§7Give this dish to §aHoppity §7to obtain his"
+      - "§3Abiphone Contact§7."
+      - ""
+      - "§8§oSavory fish with a chocolate twist."
+      - "§8§oMwah! C'est magnifique, no?"
+    components:
+      - id: SKULL_HEAD
+        texture: 422b0e5faa97ca109cd45f1fba2d84ca2b9b601de50b47f4add2d835aa360f78
+  - id: STEEL_CHESTPLATE
+    material: leather_chestplate
+    name: "Steel Chestplate"
+    rarity: EPIC
+    default_statistics:
+      defense: 330
+    unavailable: "Needs Dungeons"
+    source: "Ophelia: 5,000,000 coins and a Metal Chestplate after completing Catacombs Floor VI"
+    lore:
+      - "§7Gear Score: §d680"
+      - ""
+      - "§7While in Dungeons, players within §e10"
+      - "§7blocks of you take §c10% §7less damage."
+      - "§7This range is extended to §e30 §7blocks"
+      - "§7while playing as a Tank."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VI Completion."
+      - ""
+      - "§8Not active yet: The nearby-ally damage reduction needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '217'
+        g: '217'
+        b: '217'
+  - id: STEW_THE_FISH
+    material: cod
+    name: "Stew the Fish"
+    rarity: SPECIAL
+    unavailable: "Suspicious Stew has no drinking handler yet"
+    source: "0.4264% chance from drinking a Suspicious Stew (Mycelium II)"
+    lore:
+      - "§7The stew was expired."
+  - id: STOCKING
+    material: player_head
+    name: "Stocking"
+    rarity: COMMON
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Winter reward bundle furniture (VIP, 2019)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 91bf5bced7137ca6474979152f64f3a87177dc6298a794bfc032cf2ced487705
+  - id: STONE_BRIDGE
+    material: egg
+    name: "Stone Platform"
+    rarity: COMMON
+    unavailable: "Needs the stone platform placement ability"
+    source: "Crafting (Cobblestone II): 8 Stone Bricks around an Egg"
+    lore:
+      - "§7Creates a stone platform in the air"
+      - "§7after traveling 10 blocks. Perfect"
+      - "§7for building below your island!"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: STONE_BRICKS
+                amount: 8
+              B:
+                type: EGG
+                amount: 1
+            result:
+              type: STONE_BRIDGE
+              amount: 1
+  - id: STONE_CHESTPLATE
+    material: leather_chestplate
+    name: "Stone Chestplate"
+    rarity: RARE
+    default_statistics:
+      defense: 130
+    source: "Ophelia: 80,000 coins"
+    lore:
+      - "§7Gear Score: §d260"
+      - ""
+      - "§7While in Dungeons, players within §e10"
+      - "§7blocks of you take §c5% §7less damage."
+      - "§7This range is extended to §e30 §7blocks"
+      - "§7while playing as a Tank."
+      - ""
+      - "§8Not active yet: The nearby-ally damage reduction needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '217'
+        g: '217'
+        b: '217'
+  - id: STOOL
+    material: player_head
+    name: "Stool"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and private island furniture placement"
+    source: "Carpentry Table (no Carpentry level needed): 4 Stick, Dark Oak Planks, White Wool"
+    lore:
+      - "§8Furniture"
+      - "§8Seat"
+      - ""
+      - "§7This simple stool can be sat on by a"
+      - "§7player."
+    components:
+      - id: SKULL_HEAD
+        texture: 48d9c8ce9052fa91ac7acf6a998e964c6b192c154738d01009e3f6128fdedc71
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: CARPENTRY
+            ingredients:
+              - type: STICK
+                amount: 4
+              - type: DARK_OAK_PLANKS
+                amount: 1
+              - type: WHITE_WOOL
+                amount: 1
+            result:
+              type: STOOL
+              amount: 1
+  - id: STORM_IN_A_BOTTLE
+    material: player_head
+    name: "Storm in a Bottle"
+    rarity: EPIC
+    source: "Fully charging an Empty Storm Bottle (500,000 charge)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7What happens if you open it? The"
+      - "§7answer may shock you."
+      - ""
+      - "§7Charge: §e500,000§6/§e500,000"
+      - ""
+      - "§8Not active yet: Pulse Ring upgrades are not built"
+    components:
+      - id: SKULL_HEAD
+        texture: cc6ea8da2ce3da32b3140b0728be09c06f6c37e0c2ed923e06c032c853208a4
+  - id: STORM_IN_A_BOTTLE_EMPTY
+    material: player_head
+    name: "Empty Storm Bottle"
+    rarity: EPIC
+    source: "Crafting: 4 Orb of Energy around an Empty Thunder Bottle (8 total orbs)"
+    lore:
+      - "§7This bottle is empty, I wonder if"
+      - "§7there is a way to charge it up..."
+      - ""
+      - "§7Fills to §e500,000 §7charge."
+      - ""
+      - "§8Not active yet: Hurricane Bottle upgrades are not built"
+    components:
+      - id: SKULL_HEAD
+        texture: 6afffe759a2b6d548a052e5b4234e5d4fdaadeefab469a86789088c388bafe80
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ORB_OF_ENERGY
+                amount: 4
+              B:
+                type: THUNDER_IN_A_BOTTLE_EMPTY
+                amount: 1
+            result:
+              type: STORM_IN_A_BOTTLE_EMPTY
+              amount: 1
+  - id: STORM_THE_FISH
+    material: player_head
+    name: "Storm the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs Dungeons"
+    source: "Catacombs Floor VII Reward Chests (Bedrock Chests)"
+    lore:
+      - "§7Be glad you'll never have to face me!"
+    components:
+      - id: SKULL_HEAD
+        texture: 14b0e504006ca28d853e43fdcecdbe757a64ead29bb86b5c4198e5b713de7817
+  - id: SUBLIME_SILK
+    material: paper
+    name: "Sublime Silk"
+    rarity: EPIC
+    unavailable: "Needs Galatea fishing sea creatures (Torrhus and Moonglade sea creatures are not built)"
+    source: "Silkbreeze drop (Torrhus Canyon)"
+    lore:
+      - "§7Dropped by the §6Silkbreeze §7in"
+      - "§6Torrhus Canyon§7."
+      - ""
+      - "§8§oA type of silk woven by the"
+      - "§8§oSilkbreeze. It's so soft that it"
+      - "§8§opractically trickles through your"
+      - "§8§ofingers as you hold it."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/sublime_silk
+  - id: SUMMONING_RING
+    material: player_head
+    name: "Summoning Ring"
+    rarity: RARE
+    unavailable: "Needs Dungeons"
+    source: "Catacombs Floor VI Reward Chests"
+    lore:
+      - "§6Ability: Raise Souls  §e§lRIGHT CLICK"
+      - "§7Monsters you kill while you have this item will"
+      - "§7drop their soul. You can click on their souls"
+      - "§7on the ground using this item to absorb them"
+      - "§7and then spawn them to fight by your side."
+      - ""
+      - "§7Mana cost is based on the power of the"
+      - "§7monsters that you summon. Shift right-click to"
+      - "§7view and remove souls from this item. If your"
+      - "§7summoned monster dies the soul will be"
+      - "§7removed."
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§7Max Souls: §d2"
+      - ""
+      - "§8Not active yet: Raise Souls needs Dungeons mobs"
+    components:
+      - id: SKULL_HEAD
+        texture: 770d1599eefd5621d10ab69963d2a9b1b0c9a1e8999ea88a59772445ed2f0396
+  - id: SUNDIAL
+    material: player_head
+    name: "Sundial"
+    rarity: EPIC
+    unavailable: "Needs the Garden"
+    source: "Crafting (Sunflower VII): 2 Compacted Sunflower in each ring slot and 5 Chloronite"
+    lore:
+      - "§7Give this item to §bSam §7to permanently"
+      - "§7unlock §fCrop Speed §7settings in your"
+      - "§aGarden§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 9c82717d00aa016330e11dd0507499e343473cef61b9d8cf9cdb3f2727289fb1
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: COMPACTED_SUNFLOWER
+                amount: 2
+              B:
+                type: CHLORONITE
+                amount: 5
+            result:
+              type: SUNDIAL
+              amount: 1
+  - id: SUNFLOWER_OIL
+    material: paper
+    name: "Sunflower Oil"
+    rarity: RARE
+    unavailable: "Needs the Drill Mechanic (machine fuel)"
+    source: "Crafting (Sunflower V): 9 Enchanted Sunflower"
+    lore:
+      - "§8Machine Fuel"
+      - ""
+      - "§7Adds §2+20,000 Fuel §7to a refuelable"
+      - "§7machine."
+      - ""
+      - "§8§oCan be used in your daily diet or in"
+      - "§8§oheavy machinery."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AAA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_SUNFLOWER
+                amount: 1
+            result:
+              type: SUNFLOWER_OIL
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/greenhouse/sunflower/sunflower_oil
+  - id: SUN_PERSONALITY
+    material: player_head
+    name: "Sun Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundle cosmetic; ranks and reward bundles are not built"
+    source: "MVP rank reward bundle (every Summer since 2019)"
+    lore:
+      - "§8Minion Skin"
+      - ""
+      - "§7This Minion skin changes your"
+      - "§7minion's appearance to a §eSun§7."
+      - ""
+      - "§7You can place this item in any minion"
+      - "§7of your choice!"
+    components:
+      - id: MINION_SKIN
+        name: Sun
+        helmet:
+          material: player_head
+          skull_texture: 73a37c586e85614daebbd8cd4ebc53a0c3acea6366dd04ce4823c7e7255bd475
+      - id: SKULL_HEAD
+        texture: 73a37c586e85614daebbd8cd4ebc53a0c3acea6366dd04ce4823c7e7255bd475
+  - id: SUPER_HEAVY_BOOTS
+    material: leather_boots
+    name: "Super Heavy Boots"
+    rarity: EPIC
+    default_statistics:
+      defense: 63
+      speed: -10
+    unavailable: "Needs Dungeons"
+    source: "Dungeon mob drop (Super Heavy Armor piece)"
+    lore:
+      - "§7Gear Score: §d136"
+      - ""
+      - "§7Each piece of this armor reduces"
+      - "§7the cooldown of §9Seismic Wave §7by §a1s§7."
+      - ""
+      - "§6Full Set Bonus: Vindicate §7(0/4)"
+      - "§7Grants §f+1 walk speed §7for every §a50"
+      - "§7defense that you have."
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 15."
+      - ""
+      - "§8Not active yet: Seismic Wave cooldown reduction and Vindicate need Dungeons and the Heavy Armor set"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '230'
+        b: '230'
+  - id: SUPER_HEAVY_CHESTPLATE
+    material: leather_chestplate
+    name: "Super Heavy Chestplate"
+    rarity: EPIC
+    default_statistics:
+      defense: 112
+      speed: -10
+    unavailable: "Needs Dungeons"
+    source: "Dungeon mob drop (Super Heavy Armor piece)"
+    lore:
+      - "§7Gear Score: §d234"
+      - ""
+      - "§7Each piece of this armor reduces"
+      - "§7the cooldown of §9Seismic Wave §7by §a1s§7."
+      - ""
+      - "§6Full Set Bonus: Vindicate §7(0/4)"
+      - "§7Grants §f+1 walk speed §7for every §a50"
+      - "§7defense that you have."
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 15."
+      - ""
+      - "§8Not active yet: Seismic Wave cooldown reduction and Vindicate need Dungeons and the Heavy Armor set"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '90'
+        g: '100'
+        b: '100'
+  - id: SUPER_HEAVY_HELMET
+    material: leather_helmet
+    name: "Super Heavy Helmet"
+    rarity: EPIC
+    default_statistics:
+      defense: 70
+      speed: -10
+    unavailable: "Needs Dungeons"
+    source: "Dungeon mob drop (Super Heavy Armor piece)"
+    lore:
+      - "§7Gear Score: §d150"
+      - ""
+      - "§7Each piece of this armor reduces"
+      - "§7the cooldown of §9Seismic Wave §7by §a1s§7."
+      - ""
+      - "§6Full Set Bonus: Vindicate §7(0/4)"
+      - "§7Grants §f+1 walk speed §7for every §a50"
+      - "§7defense that you have."
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 15."
+      - ""
+      - "§8Not active yet: Seismic Wave cooldown reduction and Vindicate need Dungeons and the Heavy Armor set"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '230'
+        g: '230'
+        b: '230'
+  - id: SUPER_HEAVY_LEGGINGS
+    material: leather_leggings
+    name: "Super Heavy Leggings"
+    rarity: EPIC
+    default_statistics:
+      defense: 98
+      speed: -10
+    unavailable: "Needs Dungeons"
+    source: "Dungeon mob drop (Super Heavy Armor piece)"
+    lore:
+      - "§7Gear Score: §d206"
+      - ""
+      - "§7Each piece of this armor reduces"
+      - "§7the cooldown of §9Seismic Wave §7by §a1s§7."
+      - ""
+      - "§6Full Set Bonus: Vindicate §7(0/4)"
+      - "§7Grants §f+1 walk speed §7for every §a50"
+      - "§7defense that you have."
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 15."
+      - ""
+      - "§8Not active yet: Seismic Wave cooldown reduction and Vindicate need Dungeons and the Heavy Armor set"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '90'
+        g: '100'
+        b: '100'
+  - id: SUPER_JACOB_SYSTEM
+    material: paper
+    name: "Super Jacob Entertainment System"
+    rarity: EPIC
+    unavailable: "Needs Farming minion upgrades that generate Jacob's Tickets"
+    source: "Crafting: Chirping Stereo, PlantBoy Advance, Botroot, Enchanted Paper and Enchanted Iron Block"
+    lore:
+      - "§8Minion Upgrade"
+      - ""
+      - "§7This item can be used as a minion"
+      - "§7upgrade. Place it in ONE §aFarming"
+      - "§aMinion §7and it will generate a §aJacob's"
+      - "§aTicket §7once every §a3h§7."
+      - ""
+      - "§8§oThe console spits out a Jacob's"
+      - "§8§oTicket every time the player manages"
+      - "§8§oto beat the last level of Jacob's"
+      - "§8§oHarvest III -- Dull Plows."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - ABA
+              - CDC
+              - EEE
+            ingredients:
+              A:
+                type: CHIRPING_STEREO
+                amount: 1
+              B:
+                type: PLANTBOY_ADVANCE
+                amount: 1
+              C:
+                type: BOTROOT
+                amount: 32
+              D:
+                type: ENCHANTED_PAPER
+                amount: 32
+              E:
+                type: ENCHANTED_IRON_BLOCK
+                amount: 1
+            result:
+              type: SUPER_JACOB_SYSTEM
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/super_jacob_system
+  - id: SUPER_LEECH_MODIFIER
+    material: slime_ball
+    name: "Super Leech Modifier"
+    rarity: RARE
+    unavailable: "Needs Oruo The Almighty (Continuum) and the Aspect of the Leech"
+    source: "Oruo The Almighty: 25 Sun Gecko Essence for 2"
+    lore:
+      - "§7Can be combined with an §9Aspect of"
+      - "§9the Leech §7in a Crafting Table to"
+      - "§7increase its range from §a4 blocks §7to"
+      - "§a5 blocks §7and decrease its §bMana Cost"
+      - "§7from §b60 §7to §b50§7."
+  - id: SUPER_MAGIC_MUSHROOM_SOUP
+    material: player_head
+    name: "Mystical Mushroom Soup"
+    rarity: RARE
+    unavailable: "Needs private island flight"
+    source: "Crafting (Mushroom VII)"
+    lore:
+      - "§7Consuming this soup on your private"
+      - "§7island or garden allows the player"
+      - "§7to fly for §a200 minutes§7."
+      - ""
+      - "§7Leaving the island will pause the"
+      - "§7effect!"
+      - ""
+      - "§8Not active yet: The flying effect is not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: 91e5d0c23ec1a1f813c0c63f112e55b7b1c87fecd3269c0fdbce96d03b558c08
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - BCD
+              - OEO
+            ingredients:
+              A:
+                type: ENCHANTED_GLOWSTONE_DUST
+                amount: 1
+              B:
+                type: ENCHANTED_RED_MUSHROOM
+                amount: 1
+              C:
+                type: ENCHANTED_BROWN_MUSHROOM
+                amount: 1
+              D:
+                type: ENCHANTED_REDSTONE
+                amount: 1
+              E:
+                type: BOWL
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SUPER_MAGIC_MUSHROOM_SOUP
+              amount: 1
+  - id: SUPER_SCORCHER
+    material: player_head
+    name: "Super Scorcher"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Plumber Joe (Rift) for 5,000 Motes"
+    lore:
+      - "§8Consumed on use"
+      - ""
+      - "§7Can be used to remove §aPet Items"
+      - "§7from your active Pet. You will be"
+      - "§7refunded the Pet Item."
+      - ""
+      - "§8§oThe small text mentions something"
+      - "§8§oabout Plumber Joe not being"
+      - "§8§oculpable for any damage done to"
+      - "§8§opets. It's probably a good thing"
+      - "§8§oMontezuma's already dead."
+      - ""
+      - "§eRight-click on your summoned pet to"
+      - "§eremove its item!"
+    components:
+      - id: SKULL_HEAD
+        texture: 34c9052ac42ffdba348802bf60fe809d997cf51bc046f61d102d6df3f35d7cd9
+  - id: SUPREME_CHOCOLATE_BAR
+    material: player_head
+    name: "Supreme Chocolate Bar"
+    rarity: UNCOMMON
+    source: "Chocolate Shop: 2,000,000 Chocolate (500 per SkyBlock year); bring 3,000 to Carrolyn"
+    lore:
+      - "§7Bring §63,000 §7of these to §5Carrolyn §7in"
+      - "§5Scarleton §7on the §cCrimson Isle §7to"
+      - "§7permanently gain §c+5 Health §7and"
+      - "§6+12 Cocoa Beans Fortune§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 254b7f3f2a6f0d1c2c054678128ec2322619aefff0f450c390d6a41b5950302e
+  - id: SURFBOARD
+    material: player_head
+    name: "Surfboard"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Summer reward bundle furniture (MVP++, 2021)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: b2239ccec4c93c16a7109941014df061cb3e370866688b15291bfd842521e861
+  - id: SUSPICIOUS_RED_GIFT
+    material: player_head
+    name: "Suspicious Red Gift"
+    rarity: SPECIAL
+    unavailable: "Needs the April Fools event A Honk and Seek Adventure"
+    source: "Chuckleton during A Honk and Seek Adventure (April Fools event)"
+    lore:
+      - "§7A suspiciously heavy gift given to"
+      - "§7you by §cChuckleton§7."
+      - ""
+      - "§7Obtained from the §dA Honk and Seek"
+      - "§dAdventure §7event during April Fools."
+      - ""
+      - "§eRight-click to open!"
+      - ""
+      - "§8§oAll suspicious things come in red."
+    components:
+      - id: SKULL_HEAD
+        texture: 349b2f08ac4e984ec999b5ee264854cc6a6dff23cbc97578ed10521fdcd0e832
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: SWAMP_THE_FISH
+    material: cooked_salmon
+    name: "Swamp the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs Moonglade Marsh fishing (not built)"
+    source: "0.05% (1 in 2,000) replacement of a non-sea-creature catch in Moonglade Marsh"
+    lore:
+      - "§7I once tried a clear pond. Too shiny."
+      - "§7Never again."
+  - id: SWEET_FLESH
+    material: player_head
+    name: "Sweet Flesh"
+    rarity: UNCOMMON
+    unavailable: "Needs the Sweet Axe"
+    source: "Killing Zombies with a Sweet Axe"
+    lore:
+      - "§7It's strangely sweet and somewhat"
+      - "§7sticky..."
+    components:
+      - id: SKULL_HEAD
+        texture: 2756922c21bc1518bf6035350930c3b1f4c9b74b10b0d621babaa4e41109c17f
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: S_LOGO_FRAGMENT
+    material: player_head
+    name: "W Logo Fragment"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Beating Wizardman in the Wizard Brawl trial"
+    lore:
+      - "§7§oEven wizards can have branding"
+      - "§7§ofailures."
+    components:
+      - id: SKULL_HEAD
+        texture: 33ffef7d4413473f5319993bf919348924a944dbeb1a8ef194f9ac8df78c405f
+  - id: TAIGA_BIOME_STICK
+    material: stick
+    name: "Taiga Biome Stick"
+    rarity: COMMON
+    unavailable: "Needs private island biome changing"
+    source: "Crafting: 64 Spruce Leaves and 2 Sticks"
+    lore:
+      - "§7Allows you to change the biome at"
+      - "§7the §atargeted block §7on your private"
+      - "§7island to §bTaiga§7."
+      - ""
+      - "§7Right-click to use or Left-click to"
+      - "§7change the radius it effects."
+      - ""
+      - "§7Selected Radius: §b3"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OOA
+              - OBO
+              - BOO
+            ingredients:
+              A:
+                type: SPRUCE_LEAVES
+                amount: 64
+              B:
+                type: STICK
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: TAIGA_BIOME_STICK
+              amount: 1
+  - id: TALBOTS_THEODOLITE
+    material: repeater
+    name: "Talbot's Theodolite"
+    rarity: RARE
+    unavailable: "Needs Talbot's Mushroom Desert hunt and Pelts"
+    source: "Talbot: 80 Pelts"
+    lore:
+      - "§6Ability: Track  §e§lRIGHT CLICK"
+      - "§7Indicates the approximate height difference"
+      - "§7and angle between you and your tracked mob."
+      - "§8Mana Cost: §b100"
+      - "§8Cooldown: §a10s"
+  - id: TALL_NUTCRACKER
+    material: player_head
+    name: "Extra Large Nutcracker"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Rank reward bundle furniture cosmetic (rank and year not documented on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: f30026f3f14eda13f96070e2bb501d7b919169a6d1582f4121633b37798aead
+  - id: TANK_DUNGEON_ABILITY_1
+    material: player_head
+    name: "Stun Potion"
+    rarity: UNCOMMON
+    unavailable: "Needs Dungeons"
+    source: "Class ability item given to Tank players in Dungeons"
+    lore:
+      - "§6Ability: Stun Potion  §e§lRIGHT CLICK"
+      - "§7Throw a potion which temporarily stuns all"
+      - "§7monsters in a §a10§7 block radius."
+      - "§8Cooldown: §a20s"
+    components:
+      - id: SKULL_HEAD
+        texture: c041d3da1b8a7a02840666d8a5e130aa058afda6a3116552d93223bdfa7d7b63
+  - id: TANK_DUNGEON_ABILITY_2
+    material: player_head
+    name: "Absorption Potion"
+    rarity: UNCOMMON
+    unavailable: "Needs Dungeons"
+    source: "Class ability item given to Tank players in Dungeons"
+    lore:
+      - "§6Ability: Absorption Potion  §e§lRIGHT CLICK"
+      - "§7Throw a potion which gives all teammates in a"
+      - "§a10§7 block radius §a200§7 HP worth of absorption"
+      - "§7for §a3§7 seconds."
+      - "§8Cooldown: §a20s"
+    components:
+      - id: SKULL_HEAD
+        texture: 7d608d337ede3ac62ebe675dbbc69c7d53c3e5ac8b647f8c9188aad89911fd17
+  - id: TANK_WITHER_BOOTS
+    material: leather_boots
+    name: "Goldor's Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 190
+      defense: 165
+      intelligence: 20
+    unavailable: "Needs Dungeons"
+    source: "Crafting: 8 Jolly Pink Rock around the matching Wither, Maxor's, Storm's or Necron's piece"
+    lore:
+      - "§7Gear Score: §d555"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '136'
+        g: '131'
+        b: '126'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: GIANT_FRAGMENT_BOULDER
+                amount: 1
+              B:
+                type: WITHER_BOOTS
+                amount: 1
+            result:
+              type: TANK_WITHER_BOOTS
+              amount: 1
+  - id: TANK_WITHER_CHESTPLATE
+    material: leather_chestplate
+    name: "Goldor's Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 310
+      defense: 275
+      intelligence: 20
+    unavailable: "Needs Dungeons"
+    source: "Crafting: 8 Jolly Pink Rock around the matching Wither, Maxor's, Storm's or Necron's piece"
+    lore:
+      - "§7Gear Score: §d895"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '69'
+        g: '65'
+        b: '60'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: GIANT_FRAGMENT_BOULDER
+                amount: 1
+              B:
+                type: WITHER_CHESTPLATE
+                amount: 1
+            result:
+              type: TANK_WITHER_CHESTPLATE
+              amount: 1
+  - id: TANK_WITHER_HELMET
+    material: player_head
+    name: "Goldor's Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 210
+      defense: 180
+      intelligence: 30
+    unavailable: "Needs Dungeons"
+    source: "Crafting: 8 Jolly Pink Rock around the matching Wither, Maxor's, Storm's or Necron's piece"
+    lore:
+      - "§7Gear Score: §d610"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: SKULL_HEAD
+        texture: d4923e28a187fe6af2278b7394ef253a96331fa2dc0731879c780bfee244228a
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: GIANT_FRAGMENT_BOULDER
+                amount: 1
+              B:
+                type: WITHER_HELMET
+                amount: 1
+            result:
+              type: TANK_WITHER_HELMET
+              amount: 1
+  - id: TANK_WITHER_LEGGINGS
+    material: leather_leggings
+    name: "Goldor's Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 260
+      defense: 240
+      intelligence: 20
+    unavailable: "Needs Dungeons"
+    source: "Crafting: 8 Jolly Pink Rock around the matching Wither, Maxor's, Storm's or Necron's piece"
+    lore:
+      - "§7Gear Score: §d775"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '101'
+        g: '96'
+        b: '90'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: GIANT_FRAGMENT_BOULDER
+                amount: 1
+              B:
+                type: WITHER_LEGGINGS
+                amount: 1
+            result:
+              type: TANK_WITHER_LEGGINGS
+              amount: 1
+  - id: TEDS_CONTACT_BAKED_IN_BREAD
+    material: name_tag
+    name: "Ted's Contact Baked In Bread"
+    rarity: EPIC
+    unavailable: "Needs the Feast event shop (Feast Baker Scott, Kernels)"
+    source: "Feast Baker Scott: 500 Kernels"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this item to get §fFeast Chef"
+      - "§fTed §7as an Abiphone contact!"
+      - ""
+      - "§7Players with §fFeast Chef Ted §7as a"
+      - "§7contact can call him to find out what"
+      - "§7in-season crop drops §2Seasoning §a10%"
+      - "§7more often!"
+      - ""
+      - "§eRight-click to consume!"
+  - id: TELEPORT_PAD
+    material: end_portal_frame
+    name: "Teleport Pad"
+    rarity: UNCOMMON
+    unavailable: "Needs private island block placement of Teleport Pads"
+    source: "Trade 1 Enchanted Eye of Ender for 2 (Ender Pearl VII)"
+    lore:
+      - "§7Places a Teleport Pad down,"
+      - "§7allowing you to teleport to any"
+      - "§7other Teleport Pad on your"
+      - "§7private island!"
+      - "§8Maximum of 56 per island."
+  - id: THEORETICAL_HOE
+    material: iron_hoe
+    name: "Mathematical Hoe Blueprint"
+    rarity: COMMON
+    unavailable: "Legacy item, no longer obtainable"
+    source: "Anita (legacy): Gold Medal and 32 Jacob's Ticket"
+    lore:
+      - "§7An ancient blueprint."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/theoretical_hoe
+  - id: THE_ART_OF_PEACE
+    material: book
+    name: "The Art of Peace"
+    rarity: LEGENDARY
+    unavailable: "Needs the Regalia Room (Gilded Museum rank and Shen's Regalia) and anvil stat modifiers"
+    source: "Regalia Room for 50,000,000 coins when it is selling"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Grants §c+40❤ Health §7when applied to"
+      - "§7an armor piece. Can only be applied"
+      - "§7to an item once."
+      - ""
+      - "§8Stop quoting my cousin."
+      - "§8 - Moon Tzu"
+  - id: THE_ART_OF_WAR
+    material: book
+    name: "The Art of War"
+    rarity: LEGENDARY
+    unavailable: "Needs the Year of the Pig event (Piggy) and anvil stat modifiers"
+    source: "Piggy during the Year of the Pig: 5,000,000 coins, 256 Shiny Token and an Enchanted Cooked Porkchop"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Grants §c+5 Strength §7when applied"
+      - "§7to a weapon. Can only be applied to"
+      - "§7an item once."
+      - ""
+      - "§8In the midst of chaos, there is also"
+      - "§8opportunity."
+      - "§8 - Sun Tzu"
+  - id: THE_CAKE
+    material: cake
+    name: "The Cake"
+    rarity: SPECIAL
+    unavailable: "Needs the Royal Resident NPC (Barracks of Heroes) and Rusty's shop"
+    source: "Royal Resident after about 20 minutes of conversation, then Rusty for 1,333,337 coins"
+    lore:
+      - "§dThere is no cake."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: THE_SOUP_PAINTING
+    material: paper
+    name: "The Soup"
+    rarity: UNCOMMON
+    unavailable: "Needs Pablo's soup trade"
+    source: "Pablo after giving him any soup"
+    lore:
+      - "§7From a painter in hard times..."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: THIRD_MASTER_STAR
+    material: player_head
+    name: "Third Master Star"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Master Mode Catacombs Reward Chests (rare)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Upgrade a Dungeon Item's §cMaster"
+      - "§cStars §7from §c➋§8➜§c➌§7, increasing all"
+      - "§7stats by an additional §a+5%§7 in §cMaster"
+      - "§cMode§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: d71b954e89aed156f90fafce6dc7788ac76b6466cecca3a4f4ec1e463eb914a1
+  - id: THORNS_BOOTS
+    material: leather_boots
+    name: "Spirit Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 150
+      defense: 50
+      strength: 25
+      intelligence: 50
+      speed: 25
+    unavailable: "Needs Dungeons"
+    source: "Thorn collection V (400 kills) or Catacombs Floor IV Reward Chests"
+    lore:
+      - "§7Gear Score: §d330"
+      - ""
+      - "§6Ability: Spirit Glide "
+      - "§7Press and hold Sneak to fly around"
+      - "§7as a spirit."
+      - "§8Mana Cost: §b250"
+      - "§8Cooldown: §a60s"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor IV Completion."
+      - ""
+      - "§8Not active yet: Spirit Glide needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '191'
+        g: '191'
+        b: '191'
+  - id: THORN_FRAGMENT
+    material: ghast_tear
+    name: "Thorn Fragment"
+    rarity: RARE
+    unavailable: "Needs Dungeons"
+    source: "50% drop from Spirit Bears spawned by The Watcher on Catacombs Floor V and above"
+  - id: TIGHT_PANTS_FRAGMENT
+    material: player_head
+    name: "Tight Pants Fragment"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Beating Wizardman in the Quad Link Legacy trial"
+    lore:
+      - "§7§oTrue power lies in cutting off your"
+      - "§7§oown circulation."
+    components:
+      - id: SKULL_HEAD
+        texture: e1f36c58cf57e61452bc96592fcf46f2ddf57d37e5d6efcfc13be23ddd5ee9db
+  - id: TIKI_TORCH
+    material: player_head
+    name: "Tiki Torch"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and private island furniture placement"
+    source: "Carpentry Table (Carpentry 12): 4 Stick, Flint and Steel, Netherrack"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7This cosmetic furniture adds a"
+      - "§7tropical atmosphere to any build."
+    components:
+      - id: SKULL_HEAD
+        texture: 18c7f83f9d49283a55c59d7145169cc3a58d54250e4656b617e8e15cb9fe3e7b
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: CARPENTRY
+            ingredients:
+              - type: STICK
+                amount: 4
+              - type: FLINT_AND_STEEL
+                amount: 1
+              - type: NETHERRACK
+                amount: 1
+            result:
+              type: TIKI_TORCH
+              amount: 1
+  - id: TIME_GUN
+    material: diamond_horse_armor
+    name: "Time Gun"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Crafting (Timite I): 8 Youngite and a Berberis Blowgun"
+    lore:
+      - "§6Ability: Quantum Projection  §e§lRIGHT CLICK"
+      - "§7Aim at §9Timite Ores §7to wackify their time."
+      - "§8Mana Cost: §b2"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAA
+              - ABO
+              - AOO
+            ingredients:
+              A:
+                type: YOUNGITE
+                amount: 8
+              B:
+                type: BERBERIS_BLOWGUN
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: TIME_GUN
+              amount: 1
+  - id: TIMITE
+    material: player_head
+    name: "Timite"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Mining Time-warped Youngite ore in the Rift with an Eon or Chrono Pickaxe"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7Older, wiser, but refusing to admit"
+      - "§7it's just a phase."
+    components:
+      - id: SKULL_HEAD
+        texture: 42177ac997ff970900cd17927fb31c4e20fac263649b1b558555bcc6f0d5b5dd
+  - id: TINY_HAMMER
+    material: iron_axe
+    name: "remmaH yniT"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafted in the third Mirrorverse room of the Rift"
+    lore:
+      - "§7.wohemoS"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AB
+              - BC
+              - OC
+            ingredients:
+              A:
+                type: MIRRORED_LEASH
+                amount: 1
+              B:
+                type: MIRRORED_BOW
+                amount: 1
+              C:
+                type: MIRRORED_FISHING_ROD
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: TINY_HAMMER
+              amount: 1
+  - id: TINY_SCAFFOLDING
+    material: player_head
+    name: "Tiny Scaffolding"
+    rarity: UNCOMMON
+    unavailable: "Needs the Climb scaffolding ability"
+    source: "Crafting (Fig Log I): 16 Fig Log in the corners and 4 Stretching Sticks"
+    lore:
+      - "§6Ability: Climb!  §e§lRIGHT CLICK"
+      - "§7Each click allows you to climb §a2§7 blocks, up to §a4§7."
+      - ""
+      - "§7Jumping out will delete the scaffolding."
+    components:
+      - id: SKULL_HEAD
+        texture: 6d913b9f9851d83e254e05cc5520012408aa42682aba3bc592afe7880a22f515
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - ABA
+              - BOB
+              - ABA
+            ingredients:
+              A:
+                type: FIG_LOG
+                amount: 16
+              B:
+                type: STRETCHING_STICKS
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: TINY_SCAFFOLDING
+              amount: 1
+  - id: TITANIUM_DRILL_ENGINE
+    material: paper
+    name: "Titanium-Plated Drill Engine"
+    rarity: RARE
+    unavailable: "Needs the Drill Mechanic (engine slot)"
+    source: "Forge (Heart of the Mountain 5, 30 seconds): 2 Drill Motor, Mithril-Plated Drill Engine and 8 Refined Titanium"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§6+150 Mining Speed"
+      - "§6+15 Mining Fortune"
+      - ""
+      - "§7Put this item in the §6Drill Engine §7slot"
+      - "§7of a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_plated_drill_engine
+  - id: TITANIUM_FUEL_TANK
+    material: paper
+    name: "Titanium-Infused Fuel Tank"
+    rarity: RARE
+    unavailable: "Needs the Drill Mechanic (fuel tank slot)"
+    source: "Forge (Heart of the Mountain 5, 30 seconds): 5 Refined Diamond, 10 Refined Titanium, 5 Fuel Tank and a Mithril-Infused Fuel Tank"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§225,000 Max Fuel Capacity"
+      - "§a-4% Pickaxe Ability Cooldown"
+      - ""
+      - "§7Put this item in the §6Fuel Tank §7slot of"
+      - "§7a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_infused_fuel_tank
+  - id: TNT_CHARGE
+    material: player_head
+    name: "TNT Charge"
+    rarity: EPIC
+    unavailable: "Admin-only item (listed among the wiki's admin-only items); no player source"
+    source: "Admin-only"
+    lore:
+      - "§7A powerful charge, capable of"
+      - "§7damaging §cKuudra's§7 tentacles!"
+    components:
+      - id: SKULL_HEAD
+        texture: a76a2811d1e176a07b6d0a657b910f134896ce30850f6e80c7c83732d85381ea
+  - id: TOKEN_OF_THE_CENTURY
+    material: player_head
+    name: "Token of the Century"
+    rarity: UNCOMMON
+    unavailable: "Needs the Raffle of the Century and Cake Slices"
+    source: "6.25% chance in a Cake Slice during the Raffle of the Century"
+    components:
+      - id: SKULL_HEAD
+        texture: 2088f2eb8628c4c9a91350636766dea22cd6fde8240c64b43a2ccffbbb36928d
+  - id: TOOL_EXP_CAPSULE
+    material: paper
+    name: "Tool Exp Capsule"
+    rarity: RARE
+    unavailable: "Needs Farming Tool experience (max level farming tools overflow)"
+    source: "Maximum level Farming Tool overflow (every 200,000 experience)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Grants §b+100,000 Exp §7to any of your"
+      - "§eFarming Tools§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/tool_xp_capsule
+  - id: TOPAZ_CRYSTAL
+    material: paper
+    name: "Topaz Crystal"
+    rarity: SPECIAL
+    unavailable: "Needs the Crystal Hollows (Bal in Khazad-dum, Magma Fields)"
+    source: "Defeating Bal in Khazad-dum (Crystal Hollows)"
+    lore:
+      - "§7Energetic crystal found deep in the"
+      - "§5Crystal Hollows§7."
+      - ""
+      - "§7Some say that it can be infused with"
+      - "§dgemstones§7, and it is rumored to"
+      - "§7unlock §etreasure§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/topaz_crystal
+  - id: TOTEM
+    material: player_head
+    name: "Totem"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Summer reward bundle furniture, 3 per bundle (MVP++, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+      - ""
+      - "§8Not active yet: Not the Totem of Corruption"
+    components:
+      - id: SKULL_HEAD
+        texture: 4d359da4f70f1bcbe81545fc3a97b65c1d70f3f90198d757845aab198b6e0059
+  - id: TOY
+    material: player_head
+    name: "Toy"
+    rarity: COMMON
+    unavailable: "Suus's toy quest is tracked as a quest flag; the Toy item is never dropped"
+    source: "10% drop from the Magma Cube Rider type Suus names"
+    lore:
+      - "§7Return to §dSuus §7in §2Dragontail §7on the"
+      - "§cCrimson Isle§7."
+      - ""
+      - "§8Not active yet: Return it to Suus on the Crimson Isle"
+    components:
+      - id: SKULL_HEAD
+        texture: 8d17eebfac473f4d842c4da2f7a8da4d88cad278af6edea1f56cc25619f78000
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: TOY_BOX
+    material: player_head
+    name: "Toy Box"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Rank reward bundle furniture cosmetic (rank and year not documented on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 277a4e2690ba570d982f4930bc9476d24506efa776a01b828564648eacd22656
+  - id: TRAINING_DUMMY
+    material: polar_bear_spawn_egg
+    name: "Training Dummy"
+    rarity: UNCOMMON
+    unavailable: "Needs placeable Training Dummies on the private island"
+    source: "Crafting (Pumpkin V): 32 Sponge around an Enchanted Pumpkin and an Armor Stand (Furniture)"
+    lore:
+      - "§7Places a Training Dummy that can be"
+      - "§7used to test out weapons and other"
+      - "§7damage sources. A Training Dummy"
+      - "§7can take the form of almost any mob."
+      - "§7Right-click to access its settings."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - ABA
+              - ACA
+              - AAA
+            ingredients:
+              A:
+                type: SPONGE
+                amount: 32
+              B:
+                type: ENCHANTED_PUMPKIN
+                amount: 1
+              C:
+                type: ARMOR_SHOWCASE
+                amount: 1
+            result:
+              type: TRAINING_DUMMY
+              amount: 1
+  - id: TRAINING_WEIGHTS
+    material: player_head
+    name: "Training Weights"
+    rarity: UNCOMMON
+    unavailable: "Needs Dungeons"
+    source: "Catacombs Dungeon Secrets"
+    lore:
+      - "§7The longer you hold this in your"
+      - "§7inventory, the stronger you'll"
+      - "§7become for §a2 minutes§7 after removing"
+      - "§7it from your inventory! Max +50."
+      - ""
+      - "§fTime Held: §a0 Minutes"
+      - "§fStrength Gain: §c+1"
+    components:
+      - id: SKULL_HEAD
+        texture: 2f2cfaad6f8b62c992c3b55ce3169ffa4005aaee2db35a63f4b3790e4a596c35
+  - id: TROUBLED_BUBBLE
+    material: player_head
+    name: "Troubled Bubble"
+    rarity: LEGENDARY
+    unavailable: "Needs the Wiki Tiki sea creature and Superpairs (not built)"
+    source: "Wiki Tiki drop (0.2%) or Superpairs"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to a fishing rod,"
+      - "§7increases its §9Piscary §7level by §a1§7!"
+      - "§8Can be applied once."
+      - "§8Requires Piscary VI!"
+      - ""
+      - "§8§oSomething is troubling this bubble,"
+      - "§8§operhaps the lingering threat of the"
+      - "§8§oWiki-Tiki."
+    components:
+      - id: SKULL_HEAD
+        texture: bdfcc530ad4f645a201abc05912f194862611c33739a0826a8bb9ad0d9b98375
+      - id: ANVIL_COMBINABLE
+        handler_id: TROUBLED_BUBBLE
+  - id: TRUE_ESSENCE
+    material: gray_dye
+    name: "True Essence"
+    rarity: COMMON
+    source: "Old Shaman Nyko (Howling Cave): 25,000 coins"
+    lore:
+      - "§8Brewing Ingredient"
+    components:
+      - id: BREWING_INGREDIENT
+        brewing_time_seconds: 20
+        effect: TRUE_RESISTANCE
+        effect_duration: 180
+        effect_amplifier: 0
+        alchemy_xp: 5
+  - id: TUNGSTEN_KEYCHAIN
+    material: paper
+    name: "Tungsten Regulator"
+    rarity: RARE
+    unavailable: "Needs the Drill Mechanic (upgrade module slot)"
+    source: "Forge (Heart of the Mountain 8, 18 hours): Perfect Opal Gemstone, 5 Fuel Tank and 5 Tungsten Plate"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§7Decreases your §c♨ Heat §7or §b❄ Cold"
+      - "§7by §a1 §7for every §2500 Fuel §7used."
+      - ""
+      - "§7Put this item in the §6Upgrade Module"
+      - "§7slot of a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 8§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/glacite/uncategorized/tungsten_regulator
+  - id: TUNING_FORK
+    material: birch_fence
+    name: "Tuning Fork"
+    rarity: RARE
+    unavailable: "Needs the Personal Harp"
+    source: "Perfect score on Pachelbel on the Personal Harp"
+    lore:
+      - "§7Left-Click: §ePick tune!"
+      - "§7Right-Click Note Block: §bTune it!"
+      - ""
+      - "§7Tuning: §bC#"
+      - ""
+      - "§8Earned from perfecting Pachelbel on"
+      - "§8the personal harp."
+  - id: TURBOMAX_VACUUM
+    material: hopper_minecart
+    name: "Turbomax Vacuum Cleaner"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Kat in the Infested House (Rift)"
+    lore:
+      - "§7Lended to you by Kat the Potentially"
+      - "§7Fake Neuroscientist."
+      - ""
+      - "§6Ability: Vacuum  §e§lHOLD RIGHT CLICK"
+      - "§7Creates an air pressure differential"
+      - "§7to efficiently collect dust and vermin."
+      - ""
+      - "§fVacuum Bag: §70 Silverfishes"
+      - "§fVacuum Bag: §70 Spiders"
+      - "§fVacuum Bag: §70 Flies"
+      - ""
+      - "§8It's not an industrial model, but it"
+      - "§8should do the trick."
+  - id: TURBO_GOURD
+    material: player_head
+    name: "Turbo Gourd"
+    rarity: LEGENDARY
+    source: "Crafting: 2 each of Aggourdian, Gloomgourd, Squash and Polished Pumpkin"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to Farming Tool,"
+      - "§7increases ALL §9Turbo-Crop V"
+      - "§7enchantments to §9Turbo-Crop VI§7."
+      - "§8Requires at least one Turbo-Crop V"
+      - "§8enchantment!"
+    components:
+      - id: SKULL_HEAD
+        texture: d94a59dcc359cb692a7a867262e8dd725a35de385a06be483b4552b566f5172f
+      - id: ANVIL_COMBINABLE
+        handler_id: TURBO_GOURD
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - BOC
+              - ODO
+            ingredients:
+              A:
+                type: AGGOURDIAN
+                amount: 2
+              B:
+                type: GLOOMGOURD
+                amount: 2
+              C:
+                type: SQUASH
+                amount: 2
+              D:
+                type: POLISHED_PUMPKIN
+                amount: 2
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: TURBO_GOURD
+              amount: 1
+  - id: TURTLE_SANDBOX
+    material: player_head
+    name: "Turtle Sandbox"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Summer reward bundle furniture, 2 per bundle (MVP, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 761cd3e5f7a9bb58a0ed24df94e27513ea61c7a41f33e0180ad9c85f5327f7c5
+  - id: TUTTI_FRUTTI_POISON
+    material: player_head
+    name: "Tutti-Frutti Flavored Poison"
+    rarity: COMMON
+    source: "Shifty: 1,000 coins"
+    lore:
+      - "§8Basic Brew"
+      - ""
+      - "§7Use this item in place of an"
+      - "§7Awkward Potion for certain"
+      - "§7potions."
+      - ""
+      - "§7Adds §c+5% §7to the damage of"
+      - "§7Archery potions."
+      - ""
+      - "§8Not active yet: Archery potion damage bonus is not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: 459ab57c91c1cc6638e1662eee319ca2b0ab1bbdc2807d680401d5fc6e1e986c
+  - id: UBIKS_CUBE
+    material: player_head
+    name: "Ubik's Cube"
+    rarity: LEGENDARY
+    unavailable: "Needs the Rift"
+    source: "Ubik Von Neumann in the Mountaintop after Split or Steal"
+    lore:
+      - "§6Ability: Split or Steal  §e§lRIGHT CLICK"
+      - "§7Click a Player or NPC to challenge"
+      - "§7them to a game of §aSplit §7or §cSteal§7."
+      - "§8Cooldown: §a2h"
+      - ""
+      - "§6Ability: Stats  §e§lLEFT CLICK"
+      - "§7View the §aSplit §7or §cSteal §7stats of other"
+      - "§7players and NPCs."
+    components:
+      - id: SKULL_HEAD
+        texture: 320544d16cf08876912cca088bd855c3c3be313cb087e8538a15a2a177532ea7
+  - id: UGLY_BOOTS_FRAGMENT
+    material: player_head
+    name: "Ugly Boots Fragment"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Beating Wizardman in the Temporal Race trial"
+    lore:
+      - "§7§oUse these in your armor to truly"
+      - "§7§oembrace the art of not caring."
+    components:
+      - id: SKULL_HEAD
+        texture: a3fecead97e96c1c977d727b6b829d4e6364b5b82ee4e49b08751165724ecdc
+  - id: UNFANGED_VAMPIRE_PART
+    material: player_head
+    name: "Unfanged Vampire Part"
+    rarity: LEGENDARY
+    unavailable: "Needs the Rift"
+    source: "Riftstalker Bloodfiend tier IV and above (1.2195%) at Vampire Slayer V"
+    components:
+      - id: SKULL_HEAD
+        texture: e1883eb5e47ceeed02063fb8ec0f7584717ac8c79521ae32cf0606ebcf740e70
+  - id: UNFULFILLED_JERRYSEED
+    material: player_head
+    name: "Unfulfilled Jerryseed"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Visitors (Jerry)"
+    source: "Given by Jerry after serving him in the Garden"
+    lore:
+      - "§7A special seed from Jerry himself!"
+      - "§7However it's missing something..."
+    components:
+      - id: SKULL_HEAD
+        texture: 538a2bbe9e5de2924e72db6db9c1aa569d89766090ce75f5308423a031cf7be2
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: UNLUCKY_DOUBLOON
+    material: paper
+    name: "Unlucky Doubloon"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll fishing (not built)"
+    source: "Drowned Captain drop (Lotus Atoll)"
+    lore:
+      - "§7The prized possession of an"
+      - "§7ill-fated captain. It was thought by"
+      - "§7his crew to bring him good luck."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/lotus_atoll/unlucky_doubloon
+  - id: VAMPIRE_BED
+    material: player_head
+    name: "Vampire Bed"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Rank reward bundle furniture cosmetic (rank and year not documented on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 5aa3837b01b2943b3d112507f00288a787b1ffe19c48b8c60d031022993b6708
+  - id: VAMPIRE_CANDELABRA
+    material: player_head
+    name: "Vampire Candelabra"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Rank reward bundle furniture cosmetic (rank and year not documented on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: d7ab512029667b4ccf8b537403d9289a3187dfef4ecde18062b102339ab89b77
+  - id: VAMPIRE_SOFA
+    material: player_head
+    name: "Vampire Sofa"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Rank reward bundle furniture cosmetic (rank and year not documented on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 5aa3837b01b2943b3d112507f00288a787b1ffe19c48b8c60d031022993b6708
+  - id: VAMPIRE_TABLE
+    material: player_head
+    name: "Vampire Table"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Rank reward bundle furniture cosmetic (rank and year not documented on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 5aa3837b01b2943b3d112507f00288a787b1ffe19c48b8c60d031022993b6708
+  - id: VAMPIRE_THRONE
+    material: player_head
+    name: "Vampire Throne"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Rank reward bundle furniture cosmetic (rank and year not documented on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 5aa3837b01b2943b3d112507f00288a787b1ffe19c48b8c60d031022993b6708
+  - id: VAMPIRIC_MELON
+    material: melon
+    name: "Vampiric Melon"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Thrall and Fledgling drops in Stillgore Chateau (Rift)"
+    lore:
+      - "§7Perfect ingredient for a healing"
+      - "§7melon."
+  - id: VEILSHROOM_BUNCH
+    material: paper
+    name: "Veilshroom Bunch"
+    rarity: RARE
+    source: "Crafting (Ruby Veilshroom VI): 32 Enchanted Ruby Veilshroom, or Torrhus sea creature drops"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7A bouquet of ruby veilshrooms. The"
+      - "§7heat emanating from them can be felt"
+      - "§7even through the wrapping - best to"
+      - "§7handle with care."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - AAA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_RUBY_VEILSHROOM
+                amount: 32
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: VEILSHROOM_BUNCH
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/resources/veilshroom_bunch
+  - id: VERMIN_PEST_TRAP
+    material: paper
+    name: "Vermin Trap"
+    rarity: LEGENDARY
+    unavailable: "Needs Garden Pests"
+    source: "Pesthunter Phillip: 200 Pests, Mouse Trap and Fire in a Bottle"
+    lore:
+      - "§7Place in a §aGarden §7plot and fill with"
+      - "§7bait to catch §2 Pests §7while offline."
+      - "§8Maximum Capacity: 4 Pests"
+      - "§8Limit of 3 Traps"
+      - ""
+      - "§6Field Mice §7are §a4x §7more likely to be"
+      - "§7caught in this type of trap!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/pests/vermin_pest_trap
+  - id: VERY_MOLDY_BREAD
+    material: bread
+    name: "Very Moldy Bread"
+    rarity: LEGENDARY
+    unavailable: "Needs the Garden"
+    source: "Evolves from Not Very Moldy Bread at 30 bonus Farming Wisdom (Cornucopia and Fine Flour)"
+    lore:
+      - "§7Consume to gain §3+30☯ Farming"
+      - "§3Wisdom §7for §a60m§7!"
+      - ""
+      - "§6Aged Like Fine Mold"
+      - "§7Consuming this grants permanent"
+      - "§3+1☯ Farming Wisdom§7."
+      - ""
+      - "§7You may consume §a5 §7of these before"
+      - "§7they lose their magical energy."
+  - id: VERY_OFFICIAL_YELLOW_ROCK
+    material: gold_nugget
+    name: "Very Official Yellow Rock of Love!"
+    rarity: LEGENDARY
+    unavailable: "Needs the Romero and Juliette quest (The Park NPCs have no quest yet)"
+    source: "Romero and Juliette quest item"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Bring it to §eJuliette §7in §aThe Park§7."
+      - ""
+      - "§8§oA majestic, one-of-a-kind mineral"
+      - "§8§othat glistens in the morning sun."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: VERY_SCIENTIFIC_PAPER
+    material: filled_map
+    name: "Very Scientific Paper"
+    rarity: RARE
+    unavailable: "Needs Kay and Dr. Hibble"
+    source: "Kay after speaking with Dr. Hibble"
+    lore:
+      - "§7Authored, peer-reviewed and"
+      - "§7published by Kay."
+  - id: VIAL_OF_SPRING_WATER
+    material: paper
+    name: "Vial of Spring Water"
+    rarity: LEGENDARY
+    unavailable: "Needs Miria and her milestones"
+    source: "Miria's shop: 10 Miria's Prize at Milestone V"
+    lore:
+      - "§7A vial of particularly clear water,"
+      - "§7gathered from Torrhus Spring by"
+      - "§7Miria herself. It exudes a faint"
+      - "§7warmth when pressed against your"
+      - "§7chest, reminding you of fond"
+      - "§7memories of days gone by."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/vial_of_spring_water
+  - id: VIAL_OF_VENOM
+    material: player_head
+    name: "Vial of Venom"
+    rarity: EPIC
+    source: "Tarantula Broodfather tier IV (0.083%) or V (0.14%) drop at Spider Slayer 6"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this item to permanently"
+      - "§7gain §9+1 Crit Damage§7."
+      - ""
+      - "§7You can only consume §a5§7 of this item"
+      - "§7before the damage to your internal"
+      - "§7organs becomes too extensive to"
+      - "§7drink more."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 778067c034da7bfe4988e0bf515b0499f8ac2c992fd7fd0606fa02259f5a8c6f
+      - id: INTERACTABLE
+        handler_id: VIAL_OF_VENOM
+  - id: VIBRANT_CORAL
+    material: player_head
+    name: "Vibrant Coral"
+    rarity: LEGENDARY
+    unavailable: "Needs Galatea fishing sea creatures (Torrhus and Moonglade sea creatures are not built)"
+    source: "Nessie drop (0.5%) or Superpairs"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to armor, increases its"
+      - "§9Scuba §7level by §a1§7!"
+      - "§8Can be applied once."
+      - "§8Requires Scuba V!"
+      - ""
+      - "§8§oCoral flourishes under the immense"
+      - "§8§opressure of the Murkwater Loch. It"
+      - "§8§ois believed to be the favorite food"
+      - "§8§oof Nessie."
+    components:
+      - id: SKULL_HEAD
+        texture: 453dd6c6add09c11ff19f5fe75370b6cec17324945cac05c0e2c4631ff418672
+      - id: ANVIL_COMBINABLE
+        handler_id: VIBRANT_CORAL
+  - id: VIKING_TEAR
+    material: player_head
+    name: "Viking's Tear"
+    rarity: RARE
+    unavailable: "Needs the Melancholic Viking's shop quest (Fish Hat Splash, Magical Water Bucket)"
+    source: "Melancholic Viking's shop in The Park after his sea quest"
+    lore:
+      - "§8Basic Brew"
+      - ""
+      - "§7Use this item in place of an"
+      - "§7Awkward Potion for certain"
+      - "§7potions."
+      - ""
+      - "§7Experience potions:"
+      - " §a+20% §7experience orbs."
+      - " §3+10☯ Combat Wisdom"
+      - ""
+      - "§8Not active yet: Experience potion bonus is not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: 242446763e2b40d0f4cf7daf8599317036fca82af31b8d3e9bfcf3eb483917a
+  - id: VINYL_BEETLE
+    material: music_disc_mellohi
+    name: "Not Just a Pest Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Beetle Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts"
+      - "§2Beetle Pests§7."
+  - id: VINYL_BUZZIN_BEATS
+    material: music_disc_ward
+    name: "Buzzin' Beats Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Mosquito Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts"
+      - "§2Mosquito Pests§7."
+  - id: VINYL_CICADA_SYMPHONY
+    material: music_disc_blocks
+    name: "Cicada Symphony Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Locust Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts"
+      - "§2Locust Pests§7."
+  - id: VINYL_CRICKET_CHOIR
+    material: music_disc_chirp
+    name: "Cricket Choir Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Cricket Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts"
+      - "§2Cricket Pests§7."
+  - id: VINYL_DYNAMITES
+    material: music_disc_strad
+    name: "DynaMITES Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Mite Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts §2Mite"
+      - "§2Pests§7."
+  - id: VINYL_EARTHWORM_ENSEMBLE
+    material: music_disc_mall
+    name: "Earthworm Ensemble Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Earthworm Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts"
+      - "§2Earthworm Pests§7."
+  - id: VINYL_FIREFLY
+    material: music_disc_blocks
+    name: "Firefly in the Hole Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Firefly Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts"
+      - "§2Firefly Pests§7."
+  - id: VINYL_IMAGINE_DRAGONFLIES
+    material: music_disc_cat
+    name: "Imagine Dragonflies Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Dragonfly Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts"
+      - "§2Dragonfly Pests§7."
+  - id: VINYL_PRAY_FOR_ME
+    material: music_disc_mellohi
+    name: "Pray For Me Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Praying Mantis Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts"
+      - "§2Praying Mantis Pests§7."
+  - id: VINYL_PRETTY_FLY
+    material: music_disc_stal
+    name: "Pretty Fly Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Fly Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts §2Fly"
+      - "§2Pests§7."
+  - id: VINYL_RODENT_REVOLUTION
+    material: music_disc_13
+    name: "Rodent Revolution Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Rat Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts §2Rat"
+      - "§2Pests§7."
+  - id: VINYL_SLOW_AND_GROOVY
+    material: music_disc_far
+    name: "Slow and Groovy Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Slug Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts §2Slug"
+      - "§2Pests§7."
+  - id: VINYL_WINGS_OF_HARMONY
+    material: music_disc_wait
+    name: "Wings of Harmony Vinyl"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Pests and the Chirping Stereo"
+    source: "Garden Moth Pest drop"
+    lore:
+      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7funky tunes for §2 Pests§7."
+      - ""
+      - "§7When playing, this vinyl attracts §2Moth"
+      - "§2Pests§7."
+  - id: VISITORS_GRATITUDE
+    material: paper
+    name: "Visitors' Gratitude"
+    rarity: COMMON
+    unavailable: "Needs Garden Visitors"
+    source: "Charming a Garden Visitor with a Carrot-Colored Vinyl Set"
+    lore:
+      - "§7You made someone smile today! §d❤"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/community_center/mayor/finnegan/visitors_gratitude
+  - id: VOID_OOZE
+    material: player_head
+    name: "Void Ooze"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event (Alcina's stews)"
+    source: "5% drop from the matching mob type during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §5⊙ Ender§7 mobs"
+      - "§7during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: c866bd2fc7f9ecc58da01d846bfee751b883a566ee8c0f8cbeba4ce309315bb1
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: VOLLEYBALL
+    material: player_head
+    name: "Volleyball Court"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Summer reward bundle furniture (MVP, 2022)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: d61dc4b8a6d317e723997ee280e528d6b35c6ad979cb28897fe7ddd6b1bd3a80
+  - id: VOLT_CRUX
+    material: player_head
+    name: "Volt Crux"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Volt drop in the Dreadfarm (Rift)"
+    lore:
+      - "§7Watt is this?"
+    components:
+      - id: SKULL_HEAD
+        texture: 6e02b7acb3ccc0a7229a8dee24f59f316df05c61e5ecc79e29a5358adbd2fbae
+  - id: VOODOO_DOLL
+    material: pufferfish
+    name: "Voodoo Doll"
+    rarity: RARE
+    unavailable: "Recipe needs a Pumpkin Minion IX ingredient, which recipes cannot express yet"
+    source: "Crafting (Zombie Slayer V)"
+    lore:
+      - "§6Ability: Acupuncture  §e§lRIGHT CLICK"
+      - "§7Shoot arrows from every direction around"
+      - "§7the targeted monster."
+      - ""
+      - "§7Monsters hit by at least one arrow are slowed"
+      - "§7and receive §c1,500 §7damage/s for §a10s§7."
+      - "§8Mana Cost: §b200"
+      - "§8Cooldown: §a5s"
+      - ""
+      - "§8Who do you voodoo?"
+      - ""
+      - "§4☠ §cRequires §5Zombie Slayer 5§c."
+    components:
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: REVENANT_HORROR
+            level: 5
+  - id: VOODOO_DOLL_WILTED
+    material: pufferfish
+    name: "Jinxed Voodoo Doll"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Crafting (Wilted Berberis III): Voodoo Doll, Voidling Minion II, Zombie's Heart and more"
+    lore:
+      - "§6Ability: Acupuncture  §e§lRIGHT CLICK"
+      - "§7Shoot arrows from every direction around"
+      - "§7the targeted monster."
+      - ""
+      - "§7Monsters hit by at least one arrow are slowed"
+      - "§7and receive §c2,222 §7damage/s for §a12s§7."
+      - "§8Mana Cost: §b180"
+      - "§8Cooldown: §a3s"
+      - ""
+      - "§8Who do you voodoo?"
+      - ""
+      - "§4☠ §cRequires §5Zombie Slayer 5§c."
+  - id: WAND_OF_WARDING
+    material: diamond
+    name: "Warding Diamathame"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Sorcerer Okron after imbuing the Glyphs of his house (1,000 Motes)"
+    lore:
+      - "§7A powerful artifact ingrained with"
+      - "§7protective properties."
+      - ""
+      - "§6Ability: Glyph Incantation "
+      - "§7Activate §5Glyphs §7to imbue them with a"
+      - "§9Warding Spell§7."
+  - id: WARDEN_ART
+    material: filled_map
+    name: "Warden Art"
+    rarity: SPECIAL
+    unavailable: "Needs the April Fools event A Honk and Seek Adventure"
+    source: "2% drop from any Revenant Horror tier during A Honk and Seek Adventure"
+    lore:
+      - "§7Obtained from the §dA Honk and Seek"
+      - "§dAdventure §7event during April Fools."
+      - ""
+      - "§8§oArt so good, even the bars took a"
+      - "§8§obreak to appreciate it!"
+  - id: WARMED_FLAKES
+    material: player_head
+    name: "Warmed Flakes"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event (Alcina's stews)"
+    source: "5% drop from the matching mob type during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §c♆ Magmatic"
+      - "§7mobs during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: 50f47856f229740dbbe2b088afbb41208b8583d459d9e5bab114aff9210169f5
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: WARTS_STEW
+    material: rabbit_stew
+    name: "Mushroom & Warts Stew"
+    rarity: RARE
+    unavailable: "Needs the Romero and Juliette quest (The Park NPCs have no quest yet)"
+    source: "Romero and Juliette quest item"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Bring it to §eJuliette §7in §aThe Park§7."
+      - ""
+      - "§8§oMade with love, and an array of"
+      - "§8§oslightly more questionable"
+      - "§8§oingredients."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: WARTY
+    material: paper
+    name: "Warty"
+    rarity: EPIC
+    unavailable: "The Wart Eater attribute drop on nether wart harvests is not wired (Carrolyn exports already accept it)"
+    source: "Nether wart harvest chance with the Wart Eater attribute (0.01% per level, up to 0.1%)"
+    lore:
+      - "§7Bring §63,000 §7of these to §5Carrolyn §7in"
+      - "§5Scarleton §7on the §cCrimson Isle §7to"
+      - "§7permanently gain §c+5 Health §7and"
+      - "§6+12 Nether Wart Fortune§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/warty
+  - id: WATERBORNE_LICE
+    material: player_head
+    name: "Waterbourne Lice"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event (Alcina's stews)"
+    source: "5% drop from the matching mob type during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §9⚓ Aquatic"
+      - "§7mobs during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: 63712efa1e7a8aaa106a1a2772f70708c72641f1e92288538e1c8066cf1b8fa9
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: WATER_HYACINTH
+    material: paper
+    name: "Water Hyacinth"
+    rarity: LEGENDARY
+    unavailable: "Needs Galatea fishing sea creatures (Torrhus and Moonglade sea creatures are not built)"
+    source: "Torrid drop (1%) in Torrhus Canyon"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to armor, increases its"
+      - "§9Forest Pledge §7level by §a1§7!"
+      - "§8Can be applied once."
+      - "§8Requires Forest Pledge V!"
+      - ""
+      - "§8§oThe Torrid is born when a water"
+      - "§8§ohyacinth blooms for the first time."
+    components:
+      - id: ANVIL_COMBINABLE
+        handler_id: WATER_HYACINTH
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/enchantmentupgrades/water_hyacinth
+  - id: WATER_TROUGH
+    material: player_head
+    name: "Water Trough"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and private island furniture placement"
+    source: "Carpentry Table (Carpentry 17): 2 Stone, 4 Dark Oak Planks, 2 Water Bucket"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7An infinite source of water for"
+      - "§7buckets and bottles."
+    components:
+      - id: SKULL_HEAD
+        texture: 71465300d5d6f79c52ca93c08d54b85aa830d4373a246681abe6d76692b5d0d4
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: CARPENTRY
+            ingredients:
+              - type: STONE
+                amount: 2
+              - type: DARK_OAK_PLANKS
+                amount: 4
+              - type: WATER_BUCKET
+                amount: 2
+            result:
+              type: WATER_TROUGH
+              amount: 1
+  - id: WEAPON_RACK
+    material: player_head
+    name: "Weapon Rack"
+    rarity: UNCOMMON
+    unavailable: "Needs the Carpentry Table and private island furniture placement"
+    source: "Carpentry Table (Carpentry 10): 8 Stick, 4 Stone"
+    lore:
+      - "§8Furniture"
+      - "§8Item Showcase"
+      - "§8Storage"
+      - ""
+      - "§7This weapon rack lets you show off"
+      - "§74 weapons (swords, pickaxes, or"
+      - "§7axes)."
+    components:
+      - id: SKULL_HEAD
+        texture: 834ebcc7d1a187156adce27cbf5d4e1f368c18b36aa4ccee6c20b3c2ecf38e56
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: CARPENTRY
+            ingredients:
+              - type: STICK
+                amount: 8
+              - type: STONE
+                amount: 4
+            result:
+              type: WEAPON_RACK
+              amount: 1
+  - id: WEATHER_NODE
+    material: lapis_block
+    name: "Weather Node"
+    rarity: UNCOMMON
+    unavailable: "Needs a Block of Lapis Lazuli item and island weather settings"
+    source: "Crafting (Prismarine Shard VI): 8 Enchanted Redstone around a Block of Lapis Lazuli"
+    lore:
+      - "§7Change the weather on your private"
+      - "§7island."
+  - id: WEIRDER_TUBA
+    material: paper
+    name: "Weirder Tuba"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Crafting (Vampire Slayer IV and Wolf Slayer V): 4 Living Metal Heart, a Weird Tuba and a Bloodbadge"
+    lore:
+      - "§6Ability: Howl  §e§lRIGHT CLICK"
+      - "§7You and 4 nearby players gain:"
+      - "§7 §c+40 Strength"
+      - "§7 §e+5 Attack Speed"
+      - "§7 §9+10 Crit Damage"
+      - "§7 §f+30 Speed"
+      - "§7for §a30 §7seconds."
+      - "§8Effect doesn't stack."
+      - "§8Mana Cost: §b150"
+      - "§8Cooldown: §a20s"
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+      - ""
+      - "§4☠ §cRequires §5Wolf Slayer 5§c."
+      - "§4☠ §cRequires §5Vampire Slayer 4§c."
+    components:
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SLAYER
+            slayer: RIFTSTALKER_BLOODFIEND
+            level: 4
+          - type: SLAYER
+            slayer: SVEN_PACKMASTER
+            level: 5
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - ABA
+              - OCO
+            ingredients:
+              A:
+                type: METAL_HEART
+                amount: 4
+              B:
+                type: WEIRD_TUBA
+                amount: 1
+              C:
+                type: BLOODBADGE
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: WEIRDER_TUBA
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/wolf/weirder_tuba
+  - id: WET_BOOK
+    material: book
+    name: "Wet Book"
+    rarity: EPIC
+    unavailable: "Needs the Lost and Found attribute Great Catch and anvil fishing speed modifiers"
+    source: "Great Catch (0-1%) with the Lost and Found attribute"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to Fishing Rods, grants"
+      - "§b+1 Fishing Speed§7."
+      - ""
+      - "§7This can be applied to an item up to"
+      - "§a5 §7times!"
+  - id: WET_PUMPKIN
+    material: player_head
+    name: "Wet Pumpkin"
+    rarity: EPIC
+    unavailable: "Needs the Appalled Pumpkin quest (wearing it and submerging in water)"
+    source: "Wearing an Appalled Pumpkin from the Builder and submerging in water"
+    lore:
+      - "§7§7A squishy moist mess."
+    components:
+      - id: SKULL_HEAD
+        texture: 9357f25dcca5fad1d9b9d76a2a8d1ba5df89360e642c7fb31718087a851571eb
+  - id: WHOLESALE_WHEAT
+    material: wheat
+    name: "Wholesale Wheat"
+    rarity: SPECIAL
+    unavailable: "Needs the Critter Safari (Hunting), which is not built"
+    source: "Critter Safari quest item"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Looks delicious. Perhaps a certain §a"
+      - "§aCritter§7 would like it?"
+      - ""
+      - "§8§oIts use is unclear. Perhaps some of"
+      - "§8§othe other Hunters might know?"
+      - ""
+      - "§6This item will vanish from your"
+      - "§6inventory after leaving the §2Critter"
+      - "§2Safari§6!"
+  - id: WIKI_JOURNAL
+    material: book
+    name: "Wiki Journal"
+    rarity: SPECIAL
+    unavailable: "Staff-granted contributor item"
+    source: "Given to contributors of the Hypixel Wiki"
+    lore:
+      - "§7§7Given to special members of"
+      - "§7the community who assisted in"
+      - "§7the creation of the §6Official"
+      - "§6Hypixel Wiki§7!"
+      - ""
+      - "§7Awarded To: Unknown"
+      - "§7From: Unknown"
+      - "§7Date: §e1st January 1970"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: WILTED_BERBERIS
+    material: dead_bush
+    name: "Wilted Berberis"
+    rarity: COMMON
+    unavailable: "Needs the Rift"
+    source: "Harvesting Wilted Berberis with a Wand of Farming in the Dreadfarm (Rift)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7The plant equivalent of an alien"
+      - "§7zombie."
+  - id: WILTED_BERBERIS_BUNCH
+    material: dead_bush
+    name: "Wilted Berberis Bunch"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafting (Wilted Berberis I): 4 Wilted Berberis"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7The plant equivalent of... ALIEN"
+      - "§7revenant viscera?"
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - AAA
+              - OAO
+            ingredients:
+              A:
+                type: WILTED_BERBERIS
+                amount: 4
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: WILTED_BERBERIS_BUNCH
+              amount: 1
+  - id: WIND_CHIMES
+    material: player_head
+    name: "Wind Chimes"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Easter reward bundle furniture, 2 per bundle (MVP, 2022)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 29f29ffa4c5b1582c21aef53e406b4e466ae146b07d29ba30de455716fb9e743
+  - id: WINTER_ISLAND_CRYSTAL
+    material: player_head
+    name: "Winter Crystal"
+    rarity: EPIC
+    unavailable: "Needs private island crystal placement and the Winter Island"
+    source: "Spawns when the Winter Island item is placed on a private island"
+    lore:
+      - "§7Can be placed on your §bPrivate Island§7."
+      - ""
+      - "§7While placed down, §9Snow Minions §7will"
+      - "§7work §a5% §7faster. Once every SkyBlock"
+      - "§7Year, a present will spawn"
+      - "§7somewhere on the island."
+    components:
+      - id: SKULL_HEAD
+        texture: d00cf10f4fae11b0e057c10197f70ed2e45da1ff1f111cfc99bb34d1e40af1b6
+  - id: WISE_WITHER_BOOTS
+    material: leather_boots
+    name: "Storm's Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 145
+      defense: 65
+      intelligence: 250
+    unavailable: "Needs Dungeons"
+    source: "Crafting: 8 L.A.S.R.'s Eye around the matching Wither, Maxor's, Goldor's or Necron's piece"
+    lore:
+      - "§7Gear Score: §d425"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '28'
+        g: '212'
+        b: '228'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: GIANT_FRAGMENT_LASER
+                amount: 1
+              B:
+                type: WITHER_BOOTS
+                amount: 1
+            result:
+              type: WISE_WITHER_BOOTS
+              amount: 1
+  - id: WISE_WITHER_CHESTPLATE
+    material: leather_chestplate
+    name: "Storm's Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 260
+      defense: 120
+      intelligence: 250
+    unavailable: "Needs Dungeons"
+    source: "Crafting: 8 L.A.S.R.'s Eye around the matching Wither, Maxor's, Goldor's or Necron's piece"
+    lore:
+      - "§7Gear Score: §d650"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '23'
+        g: '147'
+        b: '196'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: GIANT_FRAGMENT_LASER
+                amount: 1
+              B:
+                type: WITHER_CHESTPLATE
+                amount: 1
+            result:
+              type: WISE_WITHER_CHESTPLATE
+              amount: 1
+  - id: WISE_WITHER_HELMET
+    material: player_head
+    name: "Storm's Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 180
+      defense: 80
+      intelligence: 400
+    unavailable: "Needs Dungeons"
+    source: "Crafting: 8 L.A.S.R.'s Eye around the matching Wither, Maxor's, Goldor's or Necron's piece"
+    lore:
+      - "§7Gear Score: §d565"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: SKULL_HEAD
+        texture: f83159c5bb7d80454d2d646b15774b7116aabcb3af5b6777a27573fc45f7854f
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: GIANT_FRAGMENT_LASER
+                amount: 1
+              B:
+                type: WITHER_HELMET
+                amount: 1
+            result:
+              type: WISE_WITHER_HELMET
+              amount: 1
+  - id: WISE_WITHER_LEGGINGS
+    material: leather_leggings
+    name: "Storm's Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 230
+      defense: 105
+      intelligence: 250
+    unavailable: "Needs Dungeons"
+    source: "Crafting: 8 L.A.S.R.'s Eye around the matching Wither, Maxor's, Goldor's or Necron's piece"
+    lore:
+      - "§7Gear Score: §d590"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '23'
+        g: '168'
+        b: '196'
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: GIANT_FRAGMENT_LASER
+                amount: 1
+              B:
+                type: WITHER_LEGGINGS
+                amount: 1
+            result:
+              type: WISE_WITHER_LEGGINGS
+              amount: 1
+  - id: WITCH_BELONGINGS
+    material: player_head
+    name: "Witch's Belongings"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Rank reward bundle furniture cosmetic (rank and year not documented on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 95a35a499e5389e73f5507245e2a94ffa773d77de9097edb77da008aee976cf5
+  - id: WITCH_BROOMSTICK
+    material: player_head
+    name: "Witch's Broomstick"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Halloween reward bundle furniture (MVP, 2021)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: bd2ca8c2d537cd58e81d9f05b8022c7940bce6091c6d05c6b26cfb82b0c6b90d
+  - id: WITCH_HAT
+    material: player_head
+    name: "Witch Hat"
+    rarity: RARE
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Halloween reward bundle furniture (VIP+, 2022)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 80cf6495ff4a360aa1d681a4f3aa34aad87409c5f7c7dbc920c74d069f6488c8
+  - id: WITHER_BOOTS
+    material: leather_boots
+    name: "Wither Boots"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 180
+      defense: 150
+      intelligence: 10
+    unavailable: "Needs Dungeons"
+    source: "Catacombs Floor VII Reward Chests"
+    lore:
+      - "§7Gear Score: §d510"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '0'
+        b: '0'
+  - id: WITHER_CHESTPLATE
+    material: leather_chestplate
+    name: "Wither Chestplate"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 300
+      defense: 250
+      intelligence: 10
+    unavailable: "Needs Dungeons"
+    source: "Necron collection VI (750 kills) or Catacombs Floor VII Reward Chests"
+    lore:
+      - "§7Gear Score: §d830"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '0'
+        b: '0'
+  - id: WITHER_GOGGLES
+    material: player_head
+    name: "Wither Goggles"
+    rarity: EPIC
+    default_statistics:
+      intelligence: 300
+      ability_damage: 45
+    unavailable: "Needs Dungeons"
+    source: "Ophelia: 5,000,000 coins and Shadow Goggles after completing Catacombs Floor VI"
+    lore:
+      - "§7Gear Score: §d255"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VI Completion."
+    components:
+      - id: SKULL_HEAD
+        texture: 37ceb8f0758e2d8ac49de6f977603c7bfc23fd82a8574810a45f5e97c6436d79
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: WITHER_HELMET
+    material: player_head
+    name: "Wither Helmet"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 200
+      defense: 100
+      intelligence: 30
+    unavailable: "Needs Dungeons"
+    source: "Necron collection III (150 kills) or Catacombs Floor VII Reward Chests"
+    lore:
+      - "§7Gear Score: §d440"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: SKULL_HEAD
+        texture: 691129409789589ae1b43e1d828c06fc9a213b78348a68b7313bdd401d7485cc
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: WITHER_LEGGINGS
+    material: leather_leggings
+    name: "Wither Leggings"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 250
+      defense: 220
+      intelligence: 10
+    unavailable: "Needs Dungeons"
+    source: "Necron collection V (500 kills) or Catacombs Floor VII Reward Chests"
+    lore:
+      - "§7Gear Score: §d720"
+      - ""
+      - "§7Reduces the damage you take from"
+      - "§7withers by §c10%§7."
+      - ""
+      - "§6Full Set Bonus: Witherborn §7(0/4)"
+      - "§7Spawns a wither minion every §e30"
+      - "§7seconds up to a maximum §a1 §7wither."
+      - "§7Your withers will travel to and"
+      - "§7explode on nearby enemies."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - ""
+      - "§8Not active yet: Wither damage reduction and Witherborn need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '0'
+        g: '0'
+        b: '0'
+  - id: WITHER_SCROLL_IN_A_BOTTLE
+    material: player_head
+    name: "Wither Scroll in a Bottle"
+    rarity: LEGENDARY
+    unavailable: "Needs the Raffle of the Century (Year 500)"
+    source: "Major reward of the Year 500 Raffle of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Open the lid and pull out the §5Wither"
+      - "§5Scroll §7stored within. Can be any of"
+      - "§7the following:"
+      - "§7• §5Implosion"
+      - "§7• §5Shadow Warp"
+      - "§7• §5Wither Shield"
+      - ""
+      - "§8§oFancy-looking bottles aren't the"
+      - "§8§obest place to store magical scrolls"
+      - "§8§oof unthinkable power, as they might"
+      - "§8§ojust get swept up and thrown into"
+      - "§8§othe prize pool of a raffle."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: f7efbdfecf720c80a0bbc5d71200454bdce113071398b7308977508c25ab2f6b
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: WIZARD_BREADCRUMBS
+    material: glowstone_dust
+    name: "Wizard's Breadcrumbs"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Wizard But Weird in the Wizard Tower (Rift)"
+    lore:
+      - "§6Ability: Future Footsteps §e§lRIGHT CLICK"
+      - "§7Use while looking at §eyellow"
+      - "§eparticles §7in the world to mark"
+      - "§7a path to take in the §dRift§7."
+  - id: WOODCUTTING_CRYSTAL
+    material: player_head
+    name: "Woodcutting Crystal"
+    rarity: RARE
+    unavailable: "Needs floating crystal placement on the private island"
+    source: "Crafting (Birch Log VII): 12 Enchanted Spruce Log around an Enchanted Quartz"
+    lore:
+      - "§7Can be placed on your §bPrivate Island§7."
+      - ""
+      - "§7While placed down, §9Foraging Minions"
+      - "§7will work §a10% §7faster."
+    components:
+      - id: SKULL_HEAD
+        texture: 5dc3b9a4c591cd7bbed3e16b34ad8d507608fbe44dc728a7ed141f2e1729d82
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_SPRUCE_LOG
+                amount: 12
+              B:
+                type: ENCHANTED_QUARTZ
+                amount: 1
+            result:
+              type: WOODCUTTING_CRYSTAL
+              amount: 1
+  - id: WOOD_CHEST
+    material: player_head
+    name: "Wood Chest+"
+    rarity: UNCOMMON
+    unavailable: "Needs the Carpentry Table and private island furniture placement"
+    source: "Carpentry Table (Carpentry 20): 12 Chest, 64 Oak Planks, or the Furniture Shop for 15,000 coins"
+    lore:
+      - "§8Furniture"
+      - "§8Storage"
+      - ""
+      - "§7You can store three pages of items"
+      - "§7in this chest!"
+    components:
+      - id: SKULL_HEAD
+        texture: e24a4d32d43d1c2a946be64635c31a07d0300cfdcabf6f23c4f8242077ccdb6e
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: CARPENTRY
+            ingredients:
+              - type: CHEST
+                amount: 12
+              - type: OAK_PLANKS
+                amount: 64
+            result:
+              type: WOOD_CHEST
+              amount: 1
+  - id: WOOD_SINGULARITY
+    material: player_head
+    name: "Wood Singularity"
+    rarity: LEGENDARY
+    unavailable: "Applying it to an axe (+25 Foraging Fortune) is not implemented"
+    source: "Master Tactician Funk: 1,464,000 coins and 320 each of six Enchanted Logs"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to an §9Axe§7, grants §6+25"
+      - "§6Foraging Fortune§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 680c3b5445afc44184d289eaa78a5a3cd4943b15b422e10def158f888eaa9c57
+  - id: WORM_THE_FISH
+    material: player_head
+    name: "Worm the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs fishing in Dirt with a Dirt Rod (dirt fishing is not built)"
+    source: "0.5% chance when fishing in Dirt with a Dirt Rod"
+    lore:
+      - "§7I come from a land down under."
+    components:
+      - id: SKULL_HEAD
+        texture: 19af95be3dda9f6a0e651558cfe32320b0564639d7cee22a9fe331a24ba5b2b4
+  - id: WRAPPED_GIFT_FOR_JULIETTE
+    material: player_head
+    name: "Secret Gift for Juliette"
+    rarity: EPIC
+    unavailable: "Needs the Romero and Juliette quest (The Park NPCs have no quest yet)"
+    source: "Romero and Juliette quest item"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Bring it to §eJuliette §7in §aThe Park§7."
+      - ""
+      - "§8§oA well-wrapped present that's hot to"
+      - "§8§othe touch."
+    components:
+      - id: SKULL_HEAD
+        texture: bdac9a51813abcb666ee2c2ca84cefcfb21e58b7b01ae0ea7e99d35f323a
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: WREATH
+    material: player_head
+    name: "Wreath"
+    rarity: RARE
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Winter reward bundle furniture (MVP++, 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 2984559bfbc40140a9fb474f787f3b686cca3802cb8d2036089dd89a6ee5058d
+  - id: WRIGGLEWORM
+    material: paper
+    name: "Wriggleworm"
+    rarity: SPECIAL
+    unavailable: "Needs the Critter Safari (Hunting), which is not built"
+    source: "Critter Safari quest item"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Can be placed in the §eBirdfeeder§7 to"
+      - "§7attract §eBirds§7."
+      - ""
+      - "§8§oSome odd-looking worm, and it's still"
+      - "§8§oalive!"
+      - ""
+      - "§6This item will vanish from your"
+      - "§6inventory after leaving the §2Critter"
+      - "§2Safari§6!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/safari/quest/wriggleworm
+  - id: XLARGE_ENCHANTED_CHEST
+    material: chest
+    name: "X-Large Storage"
+    rarity: EPIC
+    unavailable: "Needs minion storage chests"
+    source: "Crafting (Oak Log IV): Large Storage under a Minion Storage Expander"
+    lore:
+      - "§8Minion Storage"
+      - ""
+      - "§7Place this chest next to a minion and"
+      - "§7the minion will store items inside once"
+      - "§7its storage is full!"
+      - ""
+      - "§7Storage space: §b21 §7items"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - A
+              - B
+            ingredients:
+              A:
+                type: MINION_STORAGE_EXPANDER
+                amount: 1
+              B:
+                type: LARGE_ENCHANTED_CHEST
+                amount: 1
+            result:
+              type: XLARGE_ENCHANTED_CHEST
+              amount: 1
+  - id: XXLARGE_ENCHANTED_CHEST
+    material: chest
+    name: "XX-Large Storage"
+    rarity: SPECIAL
+    unavailable: "Needs minion storage chests"
+    source: "Crafting (Oak Log IV): X-Large Storage under a Minion Storage Expander"
+    lore:
+      - "§8Minion Storage"
+      - ""
+      - "§7Place this chest next to a minion and"
+      - "§7the minion will store items inside once"
+      - "§7its storage is full!"
+      - ""
+      - "§7Storage space: §b27 §7items"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - A
+              - B
+            ingredients:
+              A:
+                type: MINION_STORAGE_EXPANDER
+                amount: 1
+              B:
+                type: XLARGE_ENCHANTED_CHEST
+                amount: 1
+            result:
+              type: XXLARGE_ENCHANTED_CHEST
+              amount: 1
+  - id: YELLOW_ROCK
+    material: gold_nugget
+    name: "Yellow Rock"
+    rarity: COMMON
+    unavailable: "Needs the Romero and Juliette quest (The Park NPCs have no quest yet)"
+    source: "Romero and Juliette quest item"
+    lore:
+      - "§8Quest Item"
+      - " "
+      - "§7Bring it to §eRomero §7in §aThe Park§7."
+      - " "
+      - "§8§oA little rough around the edges, but"
+      - "§8§obeauty can be found within."
+  - id: YOGI_BERRY
+    material: paper
+    name: "Yogi Berry"
+    rarity: SPECIAL
+    unavailable: "Needs the Critter Safari (Hunting), which is not built"
+    source: "Critter Safari quest item"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Can be placed in the §eBirdfeeder§7 to"
+      - "§7attract §eBirds§7."
+      - ""
+      - "§8§oA large, tasty berry. Whatever"
+      - "§8§ocritter eats this won't be hungry"
+      - "§8§oanytime soon."
+      - ""
+      - "§6This item will vanish from your"
+      - "§6inventory after leaving the §2Critter"
+      - "§2Safari§6!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/safari/quest/yogi_berry
+  - id: YOUNGITE
+    material: player_head
+    name: "Youngite"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Breaking Youngite ore with an Anti-Sentient Pickaxe in the Rift"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7All sparkle and no substance."
+    components:
+      - id: SKULL_HEAD
+        texture: 6fad7028e879a638207bed5435a8e5dacd48306e5c56da223149636e03e338b
+  - id: YULE_LOG
+    material: player_head
+    name: "Yule Log"
+    rarity: EPIC
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Rank reward bundle furniture cosmetic (rank and year not documented on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 59bd45aad69bd305c55d7c93b1b34f2f47dca8af2e064b2bf5b8dbe09f54a0b8
+  - id: ZOMBIE_COMMANDER_BOOTS
+    material: leather_boots
+    name: "Zombie Commander Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 32
+      defense: 17
+      strength: 8
+      intelligence: 4
+    unavailable: "Needs Dungeons"
+    source: "Zombie Commander drop (Catacombs Floors VI-VII)"
+    lore:
+      - "§7Gear Score: §d116"
+      - ""
+      - "§6Full Set Bonus: Training §7(0/4)"
+      - "§7Every §950 Zombies killed§7 gives the"
+      - "§7wearer §a+5 §c❤ Health§7 while wearing"
+      - "§7the set. Max 500."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 18."
+      - ""
+      - "§8Not active yet: Training and the Undead tag need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '213'
+        g: '18'
+        b: '48'
+  - id: ZOMBIE_COMMANDER_CHESTPLATE
+    material: leather_chestplate
+    name: "Zombie Commander Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 59
+      defense: 35
+      strength: 8
+      intelligence: 4
+    unavailable: "Needs Dungeons"
+    source: "Zombie Commander drop (Catacombs Floors VI-VII)"
+    lore:
+      - "§7Gear Score: §d179"
+      - ""
+      - "§6Full Set Bonus: Training §7(0/4)"
+      - "§7Every §950 Zombies killed§7 gives the"
+      - "§7wearer §a+5 §c❤ Health§7 while wearing"
+      - "§7the set. Max 500."
+      - ""
+      - "§7Zombies Killed: §a0"
+      - "§7Bonus HP: §a0"
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 18."
+      - ""
+      - "§8Not active yet: Training and the Undead tag need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '213'
+        g: '18'
+        b: '48'
+  - id: ZOMBIE_COMMANDER_HELMET
+    material: leather_helmet
+    name: "Zombie Commander Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 39
+      defense: 22
+      strength: 8
+      intelligence: 4
+    unavailable: "Needs Dungeons"
+    source: "Zombie Commander drop (Catacombs Floors VI-VII)"
+    lore:
+      - "§7Gear Score: §d133"
+      - ""
+      - "§6Full Set Bonus: Training §7(0/4)"
+      - "§7Every §950 Zombies killed§7 gives the"
+      - "§7wearer §a+5 §c❤ Health§7 while wearing"
+      - "§7the set. Max 500."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 18."
+      - ""
+      - "§8Not active yet: Training and the Undead tag need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '213'
+        g: '18'
+        b: '48'
+  - id: ZOMBIE_COMMANDER_LEGGINGS
+    material: leather_leggings
+    name: "Zombie Commander Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 51
+      defense: 30
+      strength: 8
+      intelligence: 4
+    unavailable: "Needs Dungeons"
+    source: "Zombie Commander drop (Catacombs Floors VI-VII)"
+    lore:
+      - "§7Gear Score: §d161"
+      - ""
+      - "§6Full Set Bonus: Training §7(0/4)"
+      - "§7Every §950 Zombies killed§7 gives the"
+      - "§7wearer §a+5 §c❤ Health§7 while wearing"
+      - "§7the set. Max 500."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 18."
+      - ""
+      - "§8Not active yet: Training and the Undead tag need Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '213'
+        g: '18'
+        b: '48'
+  - id: ZOMBIE_GRAVE
+    material: player_head
+    name: "Zombie Grave"
+    rarity: COMMON
+    unavailable: "Needs Hypixel rank reward bundles and private island furniture placement"
+    source: "Halloween reward bundle furniture (MVP++, 2019)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 6f7631ab7eb4941ad1c0389d4d051f0918288a52adf0df70a279183a22b12577
+  - id: ZOMBIE_KNIGHT_BOOTS
+    material: golden_boots
+    name: "Zombie Knight Boots"
+    rarity: EPIC
+    default_statistics:
+      defense: 46
+      strength: 10
+      speed: 5
+    unavailable: "Needs Dungeons"
+    source: "Zombie Knight drop (Catacombs Floor III and above)"
+    lore:
+      - "§7Gear Score: §d112"
+      - ""
+      - "§6Full Set Bonus: Zombie Knight §7(0/4)"
+      - "§7Gains §a+50❈ Defense §7when used with"
+      - "§7the Zombie Knight Sword"
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 14."
+      - ""
+      - "§8Not active yet: Zombie Knight set bonus needs Dungeons and the Zombie Knight Sword"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+  - id: ZOMBIE_KNIGHT_CHESTPLATE
+    material: golden_chestplate
+    name: "Zombie Knight Chestplate"
+    rarity: EPIC
+    default_statistics:
+      defense: 96
+      strength: 20
+      speed: 5
+    unavailable: "Needs Dungeons"
+    source: "Zombie Knight drop (Catacombs Floor III and above)"
+    lore:
+      - "§7Gear Score: §d222"
+      - ""
+      - "§6Full Set Bonus: Zombie Knight §7(0/4)"
+      - "§7Gains §a+50❈ Defense §7when used with"
+      - "§7the Zombie Knight Sword"
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 14."
+      - ""
+      - "§8Not active yet: Zombie Knight set bonus needs Dungeons and the Zombie Knight Sword"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+  - id: ZOMBIE_KNIGHT_HELMET
+    material: golden_helmet
+    name: "Zombie Knight Helmet"
+    rarity: EPIC
+    default_statistics:
+      defense: 54
+      strength: 10
+      speed: 5
+    unavailable: "Needs Dungeons"
+    source: "Zombie Knight drop (Catacombs Floor III and above)"
+    lore:
+      - "§7Gear Score: §d128"
+      - ""
+      - "§6Full Set Bonus: Zombie Knight §7(0/4)"
+      - "§7Gains §a+50❈ Defense §7when used with"
+      - "§7the Zombie Knight Sword"
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 14."
+      - ""
+      - "§8Not active yet: Zombie Knight set bonus needs Dungeons and the Zombie Knight Sword"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: ZOMBIE_KNIGHT_LEGGINGS
+    material: golden_leggings
+    name: "Zombie Knight Leggings"
+    rarity: EPIC
+    default_statistics:
+      defense: 85
+      strength: 15
+      speed: 5
+    unavailable: "Needs Dungeons"
+    source: "Zombie Knight drop (Catacombs Floor III and above)"
+    lore:
+      - "§7Gear Score: §d195"
+      - ""
+      - "§6Full Set Bonus: Zombie Knight §7(0/4)"
+      - "§7Gains §a+50❈ Defense §7when used with"
+      - "§7the Zombie Knight Sword"
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 14."
+      - ""
+      - "§8Not active yet: Zombie Knight set bonus needs Dungeons and the Zombie Knight Sword"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+  - id: ZOMBIE_LORD_BOOTS
+    material: leather_boots
+    name: "Zombie Lord Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 45
+      defense: 19
+      strength: 7
+      intelligence: 7
+    unavailable: "Needs Dungeons"
+    source: "Zombie Lord drop (Catacombs)"
+    lore:
+      - "§7Gear Score: §d119"
+      - ""
+      - "§6Full Set Bonus: Dungeon Lord §7(0/4)"
+      - "§7Gains §c+10❁ Strength §7and §a+10❈"
+      - "§aDefense §7every minute spent in the"
+      - "§7Dungeon."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 25."
+      - ""
+      - "§8Not active yet: Dungeon Lord needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '155'
+        g: '1'
+        b: '193'
+  - id: ZOMBIE_LORD_CHESTPLATE
+    material: leather_chestplate
+    name: "Zombie Lord Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 85
+      defense: 39
+      strength: 7
+      intelligence: 7
+    unavailable: "Needs Dungeons"
+    source: "Zombie Lord drop (Catacombs)"
+    lore:
+      - "§7Gear Score: §d199"
+      - ""
+      - "§6Full Set Bonus: Dungeon Lord §7(0/4)"
+      - "§7Gains §c+10❁ Strength §7and §a+10❈"
+      - "§aDefense §7every minute spent in the"
+      - "§7Dungeon."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 25."
+      - ""
+      - "§8Not active yet: Dungeon Lord needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '155'
+        g: '1'
+        b: '193'
+  - id: ZOMBIE_LORD_HELMET
+    material: golden_helmet
+    name: "Zombie Lord Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 56
+      defense: 25
+      strength: 7
+      intelligence: 7
+    unavailable: "Needs Dungeons"
+    source: "Zombie Lord drop (Catacombs)"
+    lore:
+      - "§7Gear Score: §d142"
+      - ""
+      - "§6Full Set Bonus: Dungeon Lord §7(0/4)"
+      - "§7Gains §c+10❁ Strength §7and §a+10❈"
+      - "§aDefense §7every minute spent in the"
+      - "§7Dungeon."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 25."
+      - ""
+      - "§8Not active yet: Dungeon Lord needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: ZOMBIE_LORD_LEGGINGS
+    material: leather_leggings
+    name: "Zombie Lord Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 73
+      defense: 33
+      strength: 7
+      intelligence: 7
+    unavailable: "Needs Dungeons"
+    source: "Zombie Lord drop (Catacombs)"
+    lore:
+      - "§7Gear Score: §d175"
+      - ""
+      - "§6Full Set Bonus: Dungeon Lord §7(0/4)"
+      - "§7Gains §c+10❁ Strength §7and §a+10❈"
+      - "§aDefense §7every minute spent in the"
+      - "§7Dungeon."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 25."
+      - ""
+      - "§8Not active yet: Dungeon Lord needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '155'
+        g: '1'
+        b: '193'
+  - id: ZOMBIE_SOLDIER_BOOTS
+    material: leather_boots
+    name: "Zombie Soldier Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 17
+      defense: 36
+    unavailable: "Needs Dungeons"
+    source: "Zombie Soldier drop (Catacombs Floor III and above)"
+    lore:
+      - "§7Gear Score: §d94"
+      - ""
+      - "§6Full Set Bonus: §cShoal §7(0/4)"
+      - "§7Gain §a+30❈ Defense §7for each §cZombie"
+      - "§cSoldier Set §7within §a30 §7blocks."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 9."
+      - ""
+      - "§8Not active yet: Shoal needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '208'
+        g: '127'
+        b: '0'
+  - id: ZOMBIE_SOLDIER_CHESTPLATE
+    material: leather_chestplate
+    name: "Zombie Soldier Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 43
+      defense: 81
+    unavailable: "Needs Dungeons"
+    source: "Zombie Soldier drop (Catacombs Floor III and above)"
+    lore:
+      - "§7Gear Score: §d210"
+      - ""
+      - "§6Full Set Bonus: §cShoal §7(0/4)"
+      - "§7Gain §a+30 Defense §7for each §cZombie"
+      - "§cSoldier Set §7within §a30 §7blocks."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 9."
+      - ""
+      - "§8Not active yet: Shoal needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '208'
+        g: '127'
+        b: '0'
+  - id: ZOMBIE_SOLDIER_HELMET
+    material: leather_helmet
+    name: "Zombie Soldier Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 21
+      defense: 43
+    unavailable: "Needs Dungeons"
+    source: "Zombie Soldier drop (Catacombs Floor III and above)"
+    lore:
+      - "§7Gear Score: §d112"
+      - ""
+      - "§6Full Set Bonus: §cShoal §7(0/4)"
+      - "§7Gain §a+30❈ Defense §7for each §cZombie"
+      - "§cSoldier Set §7within §a30 §7blocks."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 9."
+      - ""
+      - "§8Not active yet: Shoal needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '208'
+        g: '127'
+        b: '0'
+  - id: ZOMBIE_SOLDIER_LEGGINGS
+    material: leather_leggings
+    name: "Zombie Soldier Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 34
+      defense: 71
+    unavailable: "Needs Dungeons"
+    source: "Zombie Soldier drop (Catacombs Floor III and above)"
+    lore:
+      - "§7Gear Score: §d181"
+      - ""
+      - "§6Full Set Bonus: §cShoal §7(0/4)"
+      - "§7Gain §a+30❈ Defense §7for each §cZombie"
+      - "§cSoldier Set §7within §a30 §7blocks."
+      - ""
+      - "§2This item is Undead ༕!"
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 9."
+      - ""
+      - "§8Not active yet: Shoal needs Dungeons"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '208'
+        g: '127'
+        b: '0'
+  - id: ZOOP_THE_FISH
+    material: salmon
+    name: "Zoop the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs the Rift"
+    source: "Finplex in the West Village for 99,999 Motes"
+    lore:
+      - "§7Send me back please."
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"

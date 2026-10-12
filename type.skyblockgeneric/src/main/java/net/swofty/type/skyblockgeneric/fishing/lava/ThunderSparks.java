@@ -53,7 +53,7 @@ final class ThunderSparks {
         if (spark.isRemoved()) return;
         SkyBlockItem held = new SkyBlockItem(player.getItemInMainHand());
         if (held.getAttributeHandler().getPotentialType() == null
-                || !ThunderBottles.EMPTY_ID.equals(held.getAttributeHandler().getPotentialType().name())) {
+                || ThunderBottles.tierOfEmpty(held.getAttributeHandler().getPotentialType().name()).isEmpty()) {
             player.sendMessage("<c>You need to hold an Empty Thunder Bottle to collect this spark!");
             return;
         }

@@ -73,6 +73,11 @@ public final class FurnaceRecipeRegistry {
         recipe("RABBIT", "COOKED_RABBIT", 0.35f);
         recipe("COD", "COOKED_COD", 0.35f);
         recipe("SALMON", "COOKED_SALMON", 0.35f);
+        recipe("RAW_BEEF", "COOKED_BEEF", 0.35f);
+        recipe("RAW_CHICKEN", "COOKED_CHICKEN", 0.35f);
+        recipe("RAW_FISH", "COOKED_FISH", 0.35f);
+        recipe("RAW_RABBIT", "COOKED_RABBIT", 0.35f);
+        recipe("CLAY_BALL", "CLAY_BRICK", 0.3f);
         for (String wood : new String[]{"OAK", "SPRUCE", "BIRCH", "JUNGLE", "ACACIA", "DARK_OAK", "MANGROVE", "CHERRY", "PALE_OAK"}) {
             recipe(wood + "_LOG", "CHARCOAL", 0.15f);
             recipe(wood + "_WOOD", "CHARCOAL", 0.15f);

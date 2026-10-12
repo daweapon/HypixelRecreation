@@ -30,8 +30,23 @@ public final class PetCandy {
         if (candy.isCountsTowardsCap()) {
             pet.getAttributeHandler().setPetCandyUsed(pet.getAttributeHandler().getPetCandyUsed() + 1);
         }
-        PetLevels.addExperience(pet, candy.getExperience());
+        if (candy.grantsLevels()) {
+            PetLevels.setLevel(pet, targetLevel(pet, candy));
+        } else {
+            PetLevels.addExperience(pet, candy.getExperience());
+        }
         return true;
+    }
+
+    public static int targetLevel(SkyBlockItem pet, PetCandyComponent candy) {
+        int max = PetLevels.maxLevel(pet);
+        return candy.isToMaxLevel() ? max : Math.min(max, PetLevels.level(pet) + candy.getLevels());
+    }
+
+    static String gainDescription(SkyBlockItem pet, PetCandyComponent candy) {
+        if (candy.isToMaxLevel()) return "reached <6>max level";
+        if (candy.grantsLevels()) return "gained <6>" + (targetLevel(pet, candy) - PetLevels.level(pet)) + " level(s)";
+        return "gained <6>" + String.format("%,d", (long) candy.getExperience()) + " <a>Pet Exp";
     }
 
     public static void feed(SkyBlockPlayer player, SkyBlockItem candyItem, PetCandyComponent candy) {
@@ -46,13 +61,14 @@ public final class PetCandy {
             return;
         }
         int before = PetLevels.level(pet);
+        String gain = gainDescription(pet, candy);
         apply(pet, candy);
         SkyBlockItem remaining = candyItem.getAmount() > 1 ? candyItem.clone() : null;
         if (remaining != null) remaining.setAmount(candyItem.getAmount() - 1);
         player.setItemInHand(remaining);
         player.sendMessage("<a>Your <color:" + pet.getAttributeHandler().getRarity().getColor().asHexString() + ">"
                 + pet.getComponent(PetComponent.class).getPetName() + " <a>ate " + candyItem.getDisplayName()
-                + " <a>and gained <6>" + String.format("%,d", (long) candy.getExperience()) + " <a>Pet Exp!");
+                + " <a>and " + gain + "<a>!");
         if (PetLevels.level(pet) > before) {
             player.getPetData().refreshCachedAbilities();
             PetScore.syncSkyBlockXP(player);

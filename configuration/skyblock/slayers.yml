@@ -44,6 +44,8 @@ slayers:
     drops:
       - { item: TARANTULA_WEB, pool: TOKEN, level: 0, tiers: { I: [1, 3, 100], II: [9, 18, 100], III: [16, 32, 100], IV: [32, 48, 100], V: [64, 64, 100] } }
       - { item: TARANTULA_TALISMAN, pool: MAIN, level: 6, tiers: { III: [1, 1, 0.0825], IV: [1, 1, 0.1663], V: [1, 1, 0.2120] } }
+      - { item: VIAL_OF_VENOM, pool: MAIN, level: 6, tiers: { IV: [1, 1, 0.083], V: [1, 1, 0.14] } }
+      - { item: PRIMORDIAL_EYE, pool: MAIN, level: 7, tiers: { V: [1, 1, 0.014] } }
       - { item: DYE_BRICK_RED, pool: SEPARATE, level: 0, tiers: { I: [1, 1, 0.00001], II: [1, 1, 0.00004], III: [1, 1, 0.0001], IV: [1, 1, 0.0002] } }
 
   - id: SVEN_PACKMASTER
@@ -97,6 +99,7 @@ slayers:
       - { item: HANDY_BLOOD_CHALICE, pool: MAIN, level: 5, tiers: { IV: [1, 1, 0.1764] } }
       - { item: POCKET_ESPRESSO_MACHINE, pool: SEPARATE, level: 4, tiers: { IV: [1, 1, 0.3882] } }
       - { item: DYE_BYZANTIUM, pool: SEPARATE, level: 0, tiers: { I: [1, 1, 0.00001], II: [1, 1, 0.00004], III: [1, 1, 0.0001], IV: [1, 1, 0.0002] } }
+      - { item: ENDSTONE_IDOL, pool: SEPARATE, level: 7, tiers: { IV: [1, 1, 0.014] } }
 
   - id: RIFTSTALKER_BLOODFIEND
     enabled: false

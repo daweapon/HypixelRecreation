@@ -37,7 +37,7 @@ public final class CarnivalStatistics {
     public static ItemStatistics all(SkyBlockPlayer player) {
         if (player.getSkyblockDataHandler() == null) return ItemStatistics.empty();
         ItemStatistics total = ItemStatistics.add(mask(player), partyFlock(player));
-        if (HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_JERRYS_WORKSHOP) {
+        if (HypixelConst.getTypeLoader() != null && HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_JERRYS_WORKSHOP) {
             total = ItemStatistics.add(total, single(ItemStatistic.SEA_CREATURE_CHANCE,
                     Carnivals.perkValue(player, CarnivalPerk.ICY_HOOK)));
         }

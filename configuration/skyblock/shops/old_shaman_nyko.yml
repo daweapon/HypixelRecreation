@@ -1,0 +1,9 @@
+# Old Shaman Nyko in the Howling Cave (wiki Old Shaman Nyko/UI). The True Protection I book needs a book listing in shops.
+title: Old Shaman Nyko
+slots: DEFAULT
+entries:
+  - item: TRUE_ESSENCE
+    name: "<f>True Essence"
+    material: gray_dye
+    cost: { coins: 25000 }
+    stackable: true

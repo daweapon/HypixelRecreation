@@ -1,0 +1,3543 @@
+items:
+  - id: FANCY_FLOWER_POT
+    material: player_head
+    name: "Flower Pot"
+    rarity: COMMON
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Carpentry / Furniture Shop (the wiki lists Flower Pot, Carpentry II or 150 Coins; Fancy variant unconfirmed)"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7This cosmetic flower pot looks great"
+      - "§7in a garden."
+    components:
+      - id: SKULL_HEAD
+        texture: 5b463bcc47419302f232c78019e42a30d509b22966d054f514b76feed152d43e
+  - id: FARMING_FOR_DUMMIES
+    material: book
+    name: "Farming for Dummies"
+    rarity: EPIC
+    unavailable: "Needs the Year of the Pig event (Shiny Pig)"
+    source: "Shiny Pig drop (4.83%) during the Year of the Pig"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Grants §6+1☘ Farming Fortune §7when"
+      - "§7applied to a Farming Tool or Vacuum."
+      - "§7Can be applied to an item up to §a5"
+      - "§7times."
+  - id: FARMING_ISLAND
+    material: player_head
+    name: "Farming Island"
+    rarity: COMMON
+    unavailable: "Legacy island item; farming island spawning isn't built"
+    source: "Crafted from 96 Wheat and 30 Dirt (Wheat VI), added 2019"
+    lore:
+      - "§7Place this in your private world to"
+      - "§7spawn a Farming island!"
+    components:
+      - id: SKULL_HEAD
+        texture: ad7a30c82dba9f5a7befd6abc16089e29256e52e06f2a85f2461acd7a557c14a
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - AAA
+              - BBB
+              - BBB
+            ingredients:
+              A:
+                type: WHEAT
+                amount: 32
+              B:
+                type: DIRT
+                amount: 5
+            result:
+              type: FARMING_ISLAND
+              amount: 1
+  - id: FARMING_TOOLKIT
+    material: player_head
+    name: "Farming Toolkit"
+    rarity: RARE
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
+    source: "SkyMart for 500 Copper"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Store all of your Farming Tools in"
+      - "§7one convenient place and swap"
+      - "§7between them with ease."
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 5§c."
+    components:
+      - id: SKULL_HEAD
+        texture: 7418c74e0d7d56bdaf5fb5018a738d4300b8b33a0ea8875fb876123943089f5d
+  - id: FARM_CRYSTAL
+    material: player_head
+    name: "Farm Crystal"
+    rarity: RARE
+    unavailable: "Island crystals (placeable minion boosts) are not built"
+    source: "Crafted from 96 Enchanted Pumpkin and 1 Enchanted Quartz (Pumpkin VIII)"
+    lore:
+      - "§7Can be placed on your §bPrivate Island§7."
+      - ""
+      - "§7While placed down, §9Farming Minions §7will"
+      - "§7work §a10% §7faster."
+    components:
+      - id: SKULL_HEAD
+        texture: 29180c05ccb5a5e6435aa5c198742166ab981904c56be86943f8fac1534690f6
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_PUMPKIN
+                amount: 12
+              B:
+                type: ENCHANTED_QUARTZ
+                amount: 1
+            result:
+              type: FARM_CRYSTAL
+              amount: 1
+  - id: FEASTFUNGUS
+    material: paper
+    name: "Feastfungus"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Rare drop from Mushroom during the Harvest Feast"
+    lore:
+      - "§7Dropped rarely from §bMushroom"
+      - "§7during the §eHarvest Feast §7event."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/feastfungus
+  - id: FEAST_BURGER
+    material: paper
+    name: "Feast Burger with a Side of Deepfries"
+    rarity: EPIC
+    unavailable: "Needs the Harvest Feast event"
+    source: "Crafted from 12 Feastfungus, 12 Deepfries, 12 Cornucopia and 24 Enchanted Hay Bale (Harvest Feast)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this item to permanently"
+      - "§7gain §e+1 Overbloom§7."
+      - ""
+      - "§7You can only consume §a5 §7of these"
+      - "§7before the texture just becomes"
+      - "§7too unbearable."
+      - ""
+      - "§8§oStraight from the counter of the"
+      - "§8§oFast Food Barn Skin!"
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/feast_burger
+  - id: FEAST_FLASK
+    material: player_head
+    name: "Feast Flask"
+    rarity: EPIC
+    unavailable: "Needs the Harvest Feast event"
+    source: "Harvest Feast milestone rewards"
+    lore:
+      - "§7A cup of soup from the §eCommunal"
+      - "§eStew§7."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: 79801f971926107f76117bb716ad919022a059e25ae971bc57f734c8bc99c0
+  - id: FELTHORN_REAPER
+    material: iron_sword
+    name: "Felthorn Reaper"
+    rarity: LEGENDARY
+    default_statistics:
+      damage: 275
+      critical_damage: 115
+      swing_range: 1
+    unavailable: "Needs Dungeons"
+    source: "Crafted from 1 Fel Skull, 1 Bone Reaver and 5 Fel Rose"
+    lore:
+      - "§7Gear Score: §d367"
+      - ""
+      - "§6Ability: Reaving Strike  §e§lRIGHT CLICK"
+      - "§7Slash in a huge arc, dealing §c135% §7melee"
+      - "§7damage to all enemies hit!"
+      - ""
+      - "§7Deals §c+1% §7damage for every §a1% §7of"
+      - "§7missing health on the target."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Catacombs Floor VI Completion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: SWORD
+      - id: DUNGEON_ITEM
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/dungeons/felthorn_reaper
+  - id: FEL_ROSE
+    material: blue_orchid
+    name: "Fel Rose"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Crafted from 16 Fel Pearl and 3 Ancient Rose"
+    lore:
+      - "§eRight-click to view recipes!"
+    components:
+      - id: DUNGEON_ITEM
+  - id: FEL_SKULL
+    material: player_head
+    name: "Fel Skull"
+    rarity: LEGENDARY
+    unavailable: "Needs Dungeons"
+    source: "Floor VI reward chests (Bedrock chest 6,000,000 Coins)"
+    lore:
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: 3e7d5984701198b5f17c5b9307481c73f6ecb63ebcaed41c1ea85c99c2044cae
+      - id: DUNGEON_ITEM
+  - id: FERTILIZED_JERRYSEED
+    material: player_head
+    name: "Fertilized Jerryseed"
+    rarity: EPIC
+    unavailable: "Needs the Dirt Guy Unripe Jerryseed exchange, which isn't built"
+    source: "Dirt Guy, for an Unripe Jerryseed reforged to Dirty"
+    lore:
+      - "§7A seed full of promise, but it thirsts"
+      - "§7for an odd, egg-shaped gift to"
+      - "§7awaken."
+      - ""
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: d6a223c5610763ed43cecf187ff1cb061eb1049eca0596ab424379f9106890fb
+  - id: FESTERING_FLY
+    material: player_head
+    name: "Festering Fly"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event (Alcina stews)"
+    source: "5% drop from Undead mobs during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §2༕ Undead"
+      - "§7mobs during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: f0968370479661b7465ce2da41895a418b03816ab0f2a98cce7fde2071445f32
+  - id: FESTERING_MAGGOT
+    material: player_head
+    name: "Festering Maggot"
+    rarity: EPIC
+    unavailable: "Needs the Revenant Horror Tier IV+ drop table and permanent defense consumables"
+    source: "Revenant Horror Tier IV+ rare drop (0.5%)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this item to permanently"
+      - "§7gain §a+1 Defense."
+      - ""
+      - "§7You can only consume §a5§7 of this item"
+      - "§7before the awful taste becomes too"
+      - "§7much to bear."
+      - ""
+      - "§8§oA large, inflamed maggot, having"
+      - "§8§ogorged itself on the flesh of the"
+      - "§8§oRevenant Horror to such an extent"
+      - "§8§othat it no longer possesses the"
+      - "§8§ostrength to drag itself along."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: e828af3fa80154ccee135c64cd57412feda895cd1d21f240d876773ba9d6a56d
+  - id: FESTIVE_MAILBOX
+    material: player_head
+    name: "Festive Mailbox"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Advent Calendar holiday reward"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: e3446d5462e2a29471bf4a861ecc25aaf6e796c33dcb96c0a6c7106add201068
+  - id: FIESTA_FLASK
+    material: player_head
+    name: "Fiesta Flask"
+    rarity: LEGENDARY
+    unavailable: "Needs Brynmor (Dwarven Tavern) and Mayor Cole's Mining Fiesta perk"
+    source: "Brynmor for 2,500,000 Coins while Mining Fiesta is active"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Grants §6+25%  Mining Fortune §7while"
+      - "§bMayor Cole's §6Mining Fiesta §7perk is"
+      - "§7active."
+      - "§7Duration: §a60m"
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: f2f917860f0d1065a1eacc1c803808fa938cfb8952caca16ee647c1d38ab175c
+  - id: FIFTH_MASTER_STAR
+    material: player_head
+    name: "Fifth Master Star"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Master Mode Catacombs Floor VII reward chests (floor = star + 2)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Upgrade a Dungeon Item's §cMaster"
+      - "§cStars §7from §c➍§8➜§c➎§7, increasing all"
+      - "§7stats by an additional §a+5%§7 in §cMaster"
+      - "§cMode§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: 71c8042527f81c8e293e2810113489f4394cc6efe15d1afac431571c73b62dc4
+      - id: DUNGEON_ITEM
+  - id: FILET_O_FORTUNE
+    material: cooked_cod
+    name: "Filet O' Fortune"
+    rarity: RARE
+    unavailable: "Needs Brynmor (Dwarven Tavern)"
+    source: "Brynmor for 100,000 Coins (Heart of the Mountain Tier 4)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Effect: §6+20 Mining Fortune"
+      - "§7Duration: §a60m"
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 4§c."
+  - id: FILLED_ROSEWATER_FLASK
+    material: paper
+    name: "Filled Rosewater Flask"
+    rarity: LEGENDARY
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
+    source: "Crafted from 32 Compacted Wild Rose and a Bottle of Jyrre (Wild Rose VI)"
+    lore:
+      - "§7Consume to grow crops within the"
+      - "§aGreenhouse §7by §24 Growth Stages§7."
+      - ""
+      - "§6Aged Like Fine Wine"
+      - "§7Consuming this grants permanent"
+      - "§6+1 Farming Fortune§7."
+      - ""
+      - "§7You may consume §a5 §7of these before"
+      - "§7they lose their magical energy."
+      - ""
+      - "§8Co-op wide 2h cooldown."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/greenhouse/wild_rose/filled_rosewater_flask
+  - id: FINNS_FOCACCIA
+    material: bread
+    name: "Finn's Focaccia"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Feast Baker Scott for 50 Kernels during the Grand Feast"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Effect: §e+5 Overbloom§7."
+      - "§7Duration: §6Until Event End"
+      - "§8Effects are only active during"
+      - "§8Grand Feast."
+      - ""
+      - "§eRight-click to consume!"
+  - id: FIREPLACE
+    material: player_head
+    name: "Fireplace"
+    rarity: COMMON
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Carpentry XIII"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7This cosmetic fireplace looks great"
+      - "§7in any build."
+    components:
+      - id: SKULL_HEAD
+        texture: 164226245a2cabd91fa51535cca98e917987e4642a6ad9943217b330d7c91e51
+  - id: FIRE_IN_A_BOTTLE
+    material: paper
+    name: "Fire in a Bottle"
+    rarity: LEGENDARY
+    unavailable: "Needs Pesthunter Phillip's Vermin Trap upgrade and Fireflies"
+    source: "2% drop from Fireflies; trade to Pesthunter Phillip for the Vermin Trap"
+    lore:
+      - "§7Can be used at §6Phillip §7to upgrade the"
+      - "§5Mouse Trap §7into the §6Vermin Trap§7."
+      - ""
+      - "§8§oWho thought to bottle a firefly's"
+      - "§8§oglow? Whoever it was, they certainly"
+      - "§8§oknew what they were doing."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/fire_in_a_bottle
+  - id: FIRST_MASTER_STAR
+    material: player_head
+    name: "First Master Star"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Master Mode Catacombs Floor III reward chests (floor = star + 2)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Imbue a §65✪§7 Dungeon Item with a"
+      - "§cMaster Star ➊§7, increasing all stats"
+      - "§7by an additional §a+5%§7 in §cMaster Mode§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: 6136724745c8c9abc75cdf2205f2cd1d33e6bfefa415f995be76922912169ec9
+      - id: DUNGEON_ITEM
+  - id: FISHERMAN_COOLER
+    material: player_head
+    name: "Fisherman's Cooler"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Summer reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: b07081568ca5f26c0ac98e1d7866382d3eeaa3bb6bbd244ac84c01ac3f694b06
+  - id: FISHING_CRYSTAL
+    material: player_head
+    name: "Fishing Crystal"
+    rarity: UNCOMMON
+    unavailable: "Island crystals (placeable fishing boost) are not built"
+    source: "Crafted at the crafting table (Prismarine collection)"
+    lore:
+      - "§7Can be placed on your §bPrivate Island§7."
+      - ""
+      - "§7While placed down, nearby water can"
+      - "§7have Prismarine Shards and"
+      - "§7Crystals fished out of it."
+      - ""
+      - "§7Effective Radius: §b15"
+    components:
+      - id: SKULL_HEAD
+        texture: 81c44a8f68a0133c9a94bf294733ab3ff7b50d73350dc5902f0bba5a3876c9fa
+  - id: FISHY_TREAT
+    material: player_head
+    name: "Fishy Treat"
+    rarity: RARE
+    unavailable: "Needs the Year of the Seal event (Lukas the Aquarist)"
+    source: "Bouncing Bouncy Beach Balls during the Year of the Seal"
+    lore:
+      - "§7Can be earned during the §9Year of"
+      - "§9the Seal §7and can be spent at §bLukas"
+      - "§bthe Aquarist's Shop§7!"
+      - ""
+      - "§8A savory snack given to those who"
+      - "§8skillfully entertain and impress with"
+      - "§8their tricks!"
+      - ""
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 8d565686eca6ecf92cf767a82091a85514de72e439802753febfa427b98ce7f4
+  - id: FISH_FOOD
+    material: cod
+    name: "Fish Food"
+    rarity: COMMON
+    source: "Feed to a summoned pet for 2,000 Pet EXP (SkyBlock event/shop item)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Despite its name, can be given to any"
+      - "§7pet! Feeding this to your pet will not"
+      - "§7increase its candy count."
+      - ""
+      - "§7Grants §a2,000 §ePet EXP§7."
+      - ""
+      - "§eRight-click on your summoned pet to"
+      - "§efeed it!"
+    components:
+      - id: PET_CANDY
+        experience: 2000
+        counts_towards_cap: false
+  - id: FISH_THE_FISH
+    material: player_head
+    name: "Fish the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs Torrhus Canyon fishing (not built)"
+    source: "Fished in Torrhus Canyon (0.05%, pity guarantee after 2,500 treasure catches)"
+    lore:
+      - "§7Shrimp was the GOAT!"
+    components:
+      - id: SKULL_HEAD
+        texture: b8c574ef682e6c9c4f568ed1b708d0fe280a38990542991c5d3eb7aba3128b7d
+  - id: FLAMINGO
+    material: player_head
+    name: "Flamingo Float"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Summer reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 8d9e637e8e6ff3f2edddff595402de324fcf451ad550f690ad18ede050f2a5f2
+  - id: FLAVOR_PACKED_FISH
+    material: cod
+    name: "Flavor-packed Fish"
+    rarity: SPECIAL
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Critter Safari Cavern pond (quest item for Scrappy)"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Looks flavorsome. Perhaps a certain"
+      - "§a Critter§7 would like it?"
+      - ""
+      - "§8§oIts use is unclear. Perhaps some of"
+      - "§8§othe other Hunters might know?"
+      - ""
+      - "§6This item will vanish from your"
+      - "§6inventory after leaving the §2Critter"
+      - "§2Safari§6!"
+  - id: FLORAL_GELATIN
+    material: paper
+    name: "Floral Gelatin"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Rare drop from Wild Rose during the Harvest Feast"
+    lore:
+      - "§7Dropped rarely from §bWild Rose"
+      - "§7during the §eHarvest Feast §7event."
+      - ""
+      - "§eRight-click to view recipes!"
+  - id: FLORAL_LAMPPOST
+    material: player_head
+    name: "Floral Lamppost"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Easter reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 484a869ae27c2e2f0b1fb80a934a0c0f40635ce75f639b9a02e8c74c418e79de
+  - id: FLORAL_WHEELBARROW
+    material: player_head
+    name: "Floral Wheelbarrow"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Easter reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 709ec0d645d0d5aa27100a886ab764f25f7f9d0a60349813c467cfe0ddfbd8ec
+  - id: FLOWER_BED
+    material: player_head
+    name: "Flower Bed"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Easter reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: e38d3edcd6f5a060eccee2ff89fd74a426065d43546c8553e251099d9db85a35
+  - id: FLOWER_MAELSTROM
+    material: player_head
+    name: "Flower Maelstrom"
+    rarity: EPIC
+    unavailable: "Needs the Romero and Juliette quest line"
+    source: "Step 9 of the Romero and Juliette quest"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Bring it to §eJuliette §7in §aThe Park§7."
+      - ""
+      - "§8§oA handcrafted bouquet made with"
+      - "§8§olove and some of the finest flowers"
+      - "§8§oaround."
+      - ""
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: bcb2f12cf4f34a8adfe3d75b7ff489b91aba3c8b1995213fa461d68490a51
+  - id: FLYING_BATS
+    material: player_head
+    name: "Flying Bats"
+    rarity: COMMON
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Halloween reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a85f31382591d2dab0efed4dd31ed385494ad9563409c8a2e0efd05492d60b55
+  - id: FOOD_TROUGH
+    material: player_head
+    name: "Food Trough"
+    rarity: COMMON
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Carpentry XVII"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7This purely cosmetic item looks great"
+      - "§7as part of an animal farm."
+    components:
+      - id: SKULL_HEAD
+        texture: 780186b7e1142e5fc640611d6788428b66a2eb0ee94d820268a132ad2cb769a9
+  - id: FORESTS_FAVOR
+    material: paper
+    name: "Forest's Favor"
+    rarity: LEGENDARY
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Helix Log Tree Gift (0.02%)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to an item, increases its"
+      - "§9Karma §7level by §a1§7!"
+      - "§8Can be applied once."
+      - "§8Requires Karma V!"
+      - ""
+      - "§8§oThe will of the forest materializes"
+      - "§8§ointo this item, which it has bestowed"
+      - "§8§oupon you. May fortune smile upon"
+      - "§8§othee, and may thy axe be ever-sharp."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/enchantmentupgrades/forests_favor
+  - id: FOREST_BIOME_STICK
+    material: stick
+    name: "Forest Biome Stick"
+    rarity: COMMON
+    unavailable: "Private island biome changing isn't built"
+    source: "Crafted from 64 Oak Leaves and 2 Sticks (Oak Log V)"
+    lore:
+      - "§7Allows you to change the biome at"
+      - "§7the §atargeted block §7on your private"
+      - "§7island to §bForest§7."
+      - ""
+      - "§7Right-click to use or Left-click to"
+      - "§7change the radius it effects."
+      - ""
+      - "§7Selected Radius: §b3"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - OOA
+              - OBO
+              - BOO
+            ingredients:
+              A:
+                type: OAK_LEAVES
+                amount: 64
+              B:
+                type: STICK
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: FOREST_BIOME_STICK
+              amount: 1
+  - id: FOURTH_MASTER_STAR
+    material: player_head
+    name: "Fourth Master Star"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Master Mode Catacombs Floor VI reward chests (floor = star + 2)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Upgrade a Dungeon Item's §cMaster"
+      - "§cStars §7from §c➌§8➜§c➍§7, increasing all"
+      - "§7stats by an additional §a+5%§7 in §cMaster"
+      - "§cMode§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: d37a159687be36877d4e3b05f61bb598d8331c79108acc3c1af80f2253892bb2
+      - id: DUNGEON_ITEM
+  - id: FRAGRANCED_BROWN_MUSHROOM_PASTE
+    material: paper
+    name: "\"Fragranced\" Brown Mushroom \"Paste\""
+    rarity: RARE
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built) and the Harvest Feast"
+    source: "Crafted from 1 Enchanted Brown Mushroom Block and 2 Feastfungus"
+    lore:
+      - "§7Give this item to a §bVisitor §7for no"
+      - "§7reward, scaring them off for §a24h§7."
+      - "§8Max 2 Visitors"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/community_center/mayor/finnegan/fragranced_brown_mushroom
+  - id: FREE_COOKIE
+    material: cookie
+    name: "Booster Cookie (FREE)"
+    rarity: LEGENDARY
+    unavailable: "Booster Cookie grants from Elizabeth and the Security Hall quest aren't built"
+    source: "Elizabeth (one untradable cookie per account) and the Security Hall quest (one per profile)"
+    lore:
+      - "§7Consume to gain the §dCookie Buff §7for"
+      - "§b4 §7days:"
+      - ""
+      - "§8‣ §7Ability to gain §bBits§7!"
+      - "§8‣ §3+25☯ §7on all §3Wisdom §7stats"
+      - "§8‣ §b+15 §7Magic Find"
+      - "§8‣ §7Keep §6coins §7on death"
+      - "§8‣ §ePermafly §7on private islands and gardens"
+      - "§8‣ §7Quick access to some menus using their"
+      - "§7respective commands:"
+      - "  §6/ah§7, §6/bazaar§7, §a/bank§7, §6/accessorybag§7,"
+      - "  §b/fishingbag§7, §d/timepocket§7, §f/anvil§7, §d/hex§7,"
+      - "  §b/etable§7, §d/potionbag§7, and §e/quiver"
+      - "§8‣ §7Sell items directly to the trades and cookie menu"
+      - "§8‣ §7AFK §aimmunity §7on your island and garden"
+      - "§8‣ §7Toggle specific §dpotion effects"
+      - "§8‣ §7Link your items in chat using §e/show"
+      - "§8‣ §7Insta-sell your Material stash to the §6Bazaar"
+      - "§8‣ §7Increases §6Chocolate Factory §7production by §6+0.25x"
+      - "§8‣ §7Allows consuming §9Mixins §7directly from your inventory"
+      - "§8‣ §7Call §3Abiphone Contacts §7with §b/call"
+      - ""
+      - "§8Cookie given for free! (Untradable!)"
+  - id: FREE_SPIDER
+    material: player_head
+    name: "Free Spider"
+    rarity: EPIC
+    unavailable: "Needs the Great Spook event"
+    source: "Hit the Trapped Spiders' iron bars in the Spider's Den with a Scavenged Iron Hammer"
+    lore:
+      - "§7Free at last!"
+      - ""
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: c1d30aee0d2412a6f536090e1be74c407031a8409b7aab2a1c7bd8f457a20f8f
+  - id: FREE_WILL
+    material: blaze_powder
+    name: "Free Will"
+    rarity: LEGENDARY
+    unavailable: "Needs the Rift"
+    source: "Ubik's Averages reward in the Rift Mountaintop"
+    lore:
+      - "§7Giving this to a minion will give them"
+      - "§7the illusion of §dFree Will§7. They will be"
+      - "§7met with the most important choice of"
+      - "§7their minion life."
+      - ""
+      - "§7They will either §astay §7and become"
+      - "§7loyal, granting §a+10% Minion Speed §7or"
+      - "§cleave you forever §7and send you a"
+      - "§dPostcard§7."
+      - ""
+      - "§7Loyalty Chance:"
+      - "§a50% §7at Minion Tier I, §a+4% §7per minion"
+      - "§7tier."
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/zones/mountaintop/misc/free_will
+  - id: FREE_WILL_REFUND
+    material: blaze_powder
+    name: "Free Will (Refund)"
+    rarity: LEGENDARY
+    unavailable: "Needs the Rift"
+    source: "Ubik's Averages refund variant in the Rift Mountaintop"
+    lore:
+      - "§7Giving this to a minion will give them"
+      - "§7the illusion of §dFree Will§7. They will be"
+      - "§7met with the most important choice of"
+      - "§7their minion life."
+      - ""
+      - "§7Loyalty Chance: §a100%"
+      - ""
+      - "§8§l* §8Co-op Soulbound §8§l*"
+  - id: FRENCH_FRIES
+    material: player_head
+    name: "French Fries"
+    rarity: COMMON
+    unavailable: "Needs the Great Spook event"
+    source: "Potato Minion with a Hunter Knife upgrade"
+    lore:
+      - "§7A perfect side."
+      - ""
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: f0a510db84c018d8d250ab1ee564418529e88d3af3aec16fc1bdef408d1d4ec8
+  - id: FROGCOIN
+    material: paper
+    name: "Frogcoin"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll Lotus Guardian mobs (not built)"
+    source: "Lotus Guardian (Lv55) drop (5%)"
+    lore:
+      - "§7Throw this into the §bwaters §7of the"
+      - "§2Lotus Eater's Cave §7to gain"
+      - "§7temporary stat bonuses while on the"
+      - "§3Lotus Atoll§7!"
+      - ""
+      - "§8§oA small coin depicting a wrinkly,"
+      - "§8§obearded frog. Coins of this nature"
+      - "§8§oare said to bring good luck when"
+      - "§8§othrown into small fountains or ponds."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/misc/frogcoin
+  - id: FROG_LEGS
+    material: player_head
+    name: "Frog Legs"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event (Alcina stews)"
+    source: "5% drop from Animal mobs during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §a☮ Animal§7 mobs"
+      - "§7during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: c07616816cbfb9c287dd6445a1267831ebed70e88a74decd24b8daa661d498e4
+  - id: FROSTY_CRUX
+    material: player_head
+    name: "Frosty Crux"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Frozille drop (100%) in the Rift"
+    lore:
+      - "§7The illest of the chillest."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: e8e89ec59229cf52bd0cfd5f79f7b7768b4c496c0e87184b78b2f7c66856199b
+  - id: FROSTY_SNOW_BALL
+    material: snowball
+    name: "Frosty Snowball"
+    rarity: COMMON
+    unavailable: "Legacy item no longer obtainable"
+    source: "Frosty the Snow Cannon (Dec 2019, legacy)"
+    lore:
+      - "§8§l* §8Co-op Soulbound §8§l*"
+  - id: FROZEN_SPIDER
+    material: player_head
+    name: "Frozen Spider"
+    rarity: LEGENDARY
+    unavailable: "Needs the Great Spook event"
+    source: "Fished in the Spider's Den with an Icy Sinker and Spooky Bait during the Great Spook"
+    lore:
+      - "§7One lonely spider sitting in the pond."
+      - "§7Then down came the hook that pulled"
+      - "§7the spider out."
+      - ""
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: ffb18848e3ae28ad2f818b5107abf90a23a4da733604bffcf6cae10274850ac4
+  - id: FROZEN_WATER
+    material: ice
+    name: "Frozen Water"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Mine Ice in the Living Stillness"
+    lore:
+      - "§7One could say it's... ice cold."
+      - ""
+      - "§eRight-click to view recipes!"
+  - id: FROZEN_WATER_PUNGI
+    material: spider_eye
+    name: "Frozen Water Pungi"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Crafted from 128 Frozen Water and 8 Nullified Metal"
+    lore:
+      - "§6Ability: Snake Taming  §e§lHOLD RIGHT CLICK"
+      - "§7Aim at a §9Living Metal Snake §7to deeply"
+      - "§7calm it, allowing §eanother player §7to"
+      - "§7mine it."
+  - id: FRUIT_BOWL
+    material: player_head
+    name: "Fruit Bowl"
+    rarity: RARE
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built) and the Century events"
+    source: "Garden visitor offer (0.2%), Raffle of the Century or Gift Bag of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Click on a player while holding this"
+      - "§7item to add the name of their profile"
+      - "§7to this item."
+      - ""
+      - "§7Find one of each default profile"
+      - "§7name to permanently consume this"
+      - "§7item and permanently gain §3+1☯"
+      - "§3Farming Wisdom §7and §6250,000 Coins§7."
+      - ""
+      - "§7Names missing:"
+      - "§bApple§7, §bBanana§7, §bBlueberry§7, §bCucumber§7, §bCoconut§7,"
+      - "§bGrapes§7, §bKiwi§7, §bLemon§7, §bLime§7, §bMango§7, §bOrange§7,"
+      - "§bPapaya§7, §bPineapple§7, §bPeach§7, §bPear§7, §bPomegranate§7,"
+      - "§bRaspberry§7, §bStrawberry§7, §bTomato§7, §bWatermelon§7,"
+      - "§bZucchini"
+      - ""
+      - "§8You may only gain the bonus once!"
+    components:
+      - id: SKULL_HEAD
+        texture: 9a18af665f8652f1be3adcb7d76e6ee6439d20ae018e9edcce3894bf51350ead
+  - id: FUDGE_MINT_CORE
+    material: cocoa_beans
+    name: "Fudge Mint Core"
+    rarity: SPECIAL
+    unavailable: "Needs the A Honk and Seek Adventure April Fools event"
+    source: "A Honk and Seek Adventure (April Fools event)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this awesome fudge"
+      - "§7flavored mint to permanently gain"
+      - "§3+1☯ Social Wisdom §cwhile not playing"
+      - "§cSkyBlock§7."
+      - ""
+      - "§7Obtained from the §dA Honk and Seek"
+      - "§dAdventure §7event during April Fools."
+      - ""
+      - "§eRight-click to consume!"
+  - id: FUEL_TANK
+    material: paper
+    name: "Fuel Canister"
+    rarity: RARE
+    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
+    source: "Forge: 2 Enchanted Coal Block, 10h (Heart of the Mountain 2)"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/fuel_canister
+  - id: FULL_CENTURY_CAKE_PACK
+    material: player_head
+    name: "Complete Century Cake Bundle"
+    rarity: MYTHIC
+    unavailable: "Needs the Century events (Raffle of the Century)"
+    source: "Raffle of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to unwrap a §dCentury Cake"
+      - "§7of §devery color§7!"
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 560fabb18cdeb276bbf368dd971918a5da8b97bb88668370ac5c31ffd0e64c1c
+  - id: FUNGAL_TIP_JAR
+    material: flower_pot
+    name: "Fungal Tip Jar"
+    rarity: RARE
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built) and the Harvest Feast"
+    source: "Crafted from 96 Enchanted Red Mushroom Block and 128 Feastfungus"
+    lore:
+      - "§7Give this item to §bSam §7to permanently"
+      - "§7unlock a tip jar that §bVisitors §7can tip"
+      - "§cCopper §7in."
+  - id: FUNNY_BONE
+    material: player_head
+    name: "Funny Bone"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event (Alcina stews)"
+    source: "5% drop from Skeletal mobs during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §f🦴 Skeletal"
+      - "§7mobs during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 1e8f36b2715ae4d897acda7f06cb2b053de5328869e3fa7608ef5ec75238ad2d
+  - id: FUN_SIZED_POT_OF_HONEYCOMB
+    material: paper
+    name: "Fun-Sized Pot of Honeycomb"
+    rarity: UNCOMMON
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Crafted from 64 Honeycomb and 64 Helix Log (Honeycomb I)"
+    lore:
+      - "§8Consumed on use"
+      - ""
+      - "§7Use on a §aTree §7with an active §cTree"
+      - "§cProtection Order §7to lather it with"
+      - "§6Honeycomb§7!"
+      - ""
+      - "§7After §a60m§7, a unique §a Critter §7will be"
+      - "§7attracted to the §6Honeycomb§7!"
+      - "§8Type of mob depends upon type of"
+      - "§8tree lathered."
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§4❣ §cRequires §aHoneycomb Collection I§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/honey/pots/honey_pot_fun_sized
+  - id: FURNACE_PLUS
+    material: player_head
+    name: "Furnace+"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Carpentry XIII or 15,000 Coins from the Furniture Shop"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Opens the Furnace!"
+    components:
+      - id: SKULL_HEAD
+        texture: ac94993a9c88025eaaeccca8d61a71d812cac5cf7361ccfd29187993193429be
+  - id: GARDEN_SCYTHE
+    material: iron_hoe
+    name: "Garden Scythe"
+    rarity: UNCOMMON
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
+    source: "SkyMart for 1 Sam's Scythe and 20 Copper"
+    lore:
+      - "§7Cleans a §95x5 §7area of grass, leaves"
+      - "§7and flowers."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/garden_scythe
+  - id: GARLAND
+    material: player_head
+    name: "Garland"
+    rarity: COMMON
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: b80c852a263dc58b95fd0a553ae3a203dd5b8db1617a31657667ac238654714
+  - id: GELATINOUS_GLOOP
+    material: player_head
+    name: "Gelatinous Gloop"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event (Alcina stews)"
+    source: "5% drop from Cubic mobs during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §a⚂ Cubic§7 mobs"
+      - "§7during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 43e9e9b0a9b57a47d42cb5da61e6e634bd3cd5a7ac67412542d551d945b051f7
+  - id: GEMSTONE_CHAMBER
+    material: player_head
+    name: "Gemstone Chamber"
+    rarity: EPIC
+    unavailable: "Gemstone Grinder slot unlocking isn't built"
+    source: "Forge: 100 Worm Membrane, 25,000 Coins and 1 Gemstone Mixture, 4h (Heart of the Mountain 5)"
+    lore:
+      - "§7Used in the §dGemstone Grinder §7to"
+      - "§7unlock §dGemstone §7slots for §6Divan §7items."
+    components:
+      - id: SKULL_HEAD
+        texture: 5e0aa40856ae0b41e4c84ff656139a7ce8f43e9eb77b805c7b9c04d9d4b7ba7
+  - id: GEMSTONE_FUEL_TANK
+    material: paper
+    name: "Gemstone Fuel Tank"
+    rarity: RARE
+    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
+    source: "Forge: Titanium-Infused Fuel Tank, 4 Precursor Apparatus and 10 Gemstone Mixture, 30s (Heart of the Mountain 7)"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§250,000 Max Fuel Capacity"
+      - "§a-6% Pickaxe Ability Cooldown"
+      - ""
+      - "§7Put this item in the §6Fuel Tank §7slot of"
+      - "§7a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 7§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/gemstone_fuel_tank
+  - id: GENERATOR_UPGRADE_STONE_ACACIA_12
+    material: player_head
+    name: "Acacia Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Ant in Torrhus Springs"
+    lore:
+      - "§7Use this item to upgrade a §bAcacia"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §2Ant §7in §bTorrhus"
+      - "§bSprings§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 75b7a42e4c1d65d31d646709811660d98d6b4f8e0f0af680a6aa43699d38c506
+  - id: GENERATOR_UPGRADE_STONE_BIRCH_12
+    material: player_head
+    name: "Birch Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Ant in Torrhus Springs"
+    lore:
+      - "§7Use this item to upgrade a §bBirch"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §2Ant §7in §bTorrhus"
+      - "§bSprings§7."
+    components:
+      - id: SKULL_HEAD
+        texture: ed041d5fa79b697815b696c2d6c39b843391d4cd30a0010be27b7fa6b5ddbd84
+  - id: GENERATOR_UPGRADE_STONE_CLAY_12
+    material: player_head
+    name: "Clay Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs the Year of the Seal event (Lukas the Aquarist)"
+    source: "Lukas the Aquarist during the Year of the Seal"
+    lore:
+      - "§7Use this item to upgrade a §bClay"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §eLukas the Aquarist"
+      - "§7during §9Year of the Seal§7."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: 8d208e7c7178292e3b16c88d59a2ed032519c31ac5a27e6066c5f9ae6d5e5a58
+  - id: GENERATOR_UPGRADE_STONE_DARK_OAK_12
+    material: player_head
+    name: "Dark Oak Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Ant in Torrhus Springs"
+    lore:
+      - "§7Use this item to upgrade a §bDark Oak"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §2Ant §7in §bTorrhus"
+      - "§bSprings§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 79b7f98652781d75084826f30bfeb7f21da5ff076a09ac181d76b9562cc7f09e
+  - id: GENERATOR_UPGRADE_STONE_FISHING_12
+    material: player_head
+    name: "Fishing Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs the Year of the Seal event (Lukas the Aquarist)"
+    source: "Lukas the Aquarist during the Year of the Seal"
+    lore:
+      - "§7Use this item to upgrade a §bFishing"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §eLukas the Aquarist"
+      - "§7during §9Year of the Seal§7."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: cb09853abe3e3f7ce9992d03a52623d047b55fe6ba8e7bad95750cf3e6082a55
+  - id: GENERATOR_UPGRADE_STONE_JUNGLE_12
+    material: player_head
+    name: "Jungle Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Ant in Torrhus Springs"
+    lore:
+      - "§7Use this item to upgrade a §bJungle"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §2Ant §7in §bTorrhus"
+      - "§bSprings§7."
+    components:
+      - id: SKULL_HEAD
+        texture: ddaa667f43bc87137e48dc7798e0e9d43f18fcac5cbc51064c1c426ad2ff40e1
+  - id: GENERATOR_UPGRADE_STONE_LILY_PAD_12
+    material: player_head
+    name: "Lily Pad Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs Lotus Atoll (not built)"
+    source: "The Lotus Eater on the Lotus Atoll"
+    lore:
+      - "§7Use this item to upgrade a §bLily Pad"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §2The Lotus Eater §7on"
+      - "§7the §3Lotus Atoll§7."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: d875db1aff654a6a6e951c86e3836c3232aaee248a395674eb72785815d315fd
+  - id: GENERATOR_UPGRADE_STONE_OAK_12
+    material: player_head
+    name: "Oak Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Ant in Torrhus Springs for 1,024 Enchanted Oak Log and 2,000,000 Coins"
+    lore:
+      - "§7Use this item to upgrade a §bOak Minion"
+      - "§7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §2Ant §7in §bTorrhus"
+      - "§bSprings§7."
+    components:
+      - id: SKULL_HEAD
+        texture: b2376f6ac6e200e58b35ff50448215243fc2ca50e362bb2346abecf6ad239956
+  - id: GENERATOR_UPGRADE_STONE_REVENANT_12
+    material: player_head
+    name: "Revenant Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs the Bartender shop and Tier XII minions"
+    source: "Bartender"
+    lore:
+      - "§7Use this item to upgrade a §bRevenant"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §fBartender§7."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4e575e13c5f833cb9eb3dc203eb11a857a607cae6419f9641335d0ca6877ca8b
+  - id: GENERATOR_UPGRADE_STONE_SPRUCE_12
+    material: player_head
+    name: "Spruce Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Ant in Torrhus Springs"
+    lore:
+      - "§7Use this item to upgrade a §bSpruce"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §2Ant §7in §bTorrhus"
+      - "§bSprings§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 1e919c97c16ddd4f7930db12d1809b45c63635f131fde035aa0d33302f8bf8b9
+  - id: GENERATOR_UPGRADE_STONE_TARANTULA_12
+    material: player_head
+    name: "Tarantula Minion XII Upgrade Stone"
+    rarity: LEGENDARY
+    unavailable: "Needs the Bartender shop and Tier XII minions"
+    source: "Bartender"
+    lore:
+      - "§7Use this item to upgrade a §bTarantula"
+      - "§bMinion §7from §aTier XI §7to §aTier XII§7."
+      - ""
+      - "§7Purchased from §fBartender§7."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: 73724a0fa4900006ef0451735f610401f29190c9d60c6f848457379716f84713
+  - id: GHOST_BOOK
+    material: player_head
+    name: "Ghost Book"
+    rarity: COMMON
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Halloween reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a79bcadfe2438c7cc3f3045e3a49270223ebd01c094fe30e536bd80e368a99bd
+  - id: GIANTS_EYE_SWORD
+    material: iron_sword
+    name: "Giant's Eye Sword"
+    rarity: LEGENDARY
+    default_statistics:
+      damage: 500
+      swing_range: 1
+    unavailable: "Removed Alpha content that was never obtainable normally; also needs Dungeons"
+    source: "Removed Master Mode Floor VI Bedrock chest drop (trade only)"
+    lore:
+      - "§7Gear Score: §d500"
+      - ""
+      - "§6Ability: Eye Beam  §e§lRIGHT CLICK"
+      - "§7Fire a laser in front of you"
+      - "§7dealing §c4000 §7damage and"
+      - "§7costing §b40 §7mana. The damage"
+      - "§7increases by §c100% §7every"
+      - "§7second for §b5 §7seconds and the"
+      - "§7mana cost increases by §d25%"
+      - "§d§7every second. You can"
+      - "§7right-click again to de-activate"
+      - "§7the laser. Damage of the laser"
+      - "§7is increased by §cx1.5 §7while"
+      - "§7wearing §6Precursor Eye§7."
+      - ""
+      - "§7§8This item can be reforged!"
+      - "§7§4❣ §cRequires §aMaster Mode"
+      - "§aCatacombs Floor VI Completion§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: SWORD
+      - id: DUNGEON_ITEM
+  - id: GIANTS_SWORD
+    material: iron_sword
+    name: "Giant's Sword"
+    rarity: LEGENDARY
+    default_statistics:
+      damage: 500
+      swing_range: 1
+    unavailable: "Needs Dungeons"
+    source: "Floor VI reward chests (Bedrock chest 25,000,000 Coins) and Raffle of the Century"
+    lore:
+      - "§7Gear Score: §d600"
+      - "§7Gemstones: §8[] []"
+      - ""
+      - "§6Ability: Giant's Slam  §e§lRIGHT CLICK"
+      - "§7Slam your sword into the ground dealing"
+      - "§c100,000 §7damage to nearby enemies."
+      - "§8Mana Cost: §b100"
+      - "§8Cooldown: §a30s"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Catacombs Floor VI Completion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: SWORD
+      - id: DUNGEON_ITEM
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/giants_sword
+  - id: GIANT_BOUNCY_BEACH_BALL
+    material: player_head
+    name: "Giant Bouncy Beach Ball"
+    rarity: LEGENDARY
+    unavailable: "Needs the Year of the Seal event (Lukas the Aquarist)"
+    source: "Fishing during the Year of the Seal (replaces Great Catch/Junk)"
+    lore:
+      - "§7Can be fished up during the §9Year of"
+      - "§9the Seal§7."
+      - ""
+      - "§6Ability: Bounce Bonanza EX  §e§lRIGHT CLICK"
+      - "§7Toss this ball and try bouncing it on"
+      - "§7your head as many times as you can"
+      - "§7in §a60s §7to earn §9Fishy Treats§7. The"
+      - "§7more players that participate, the"
+      - "§7bigger the rewards!"
+      - ""
+      - "§8This item is consumed on use."
+    components:
+      - id: SKULL_HEAD
+        texture: 84bc6840f00d8ae486dad6e47e942c9d47e7a30c54947821eba7b8b16cc0f857
+  - id: GIANT_FRAGMENT_BIGFOOT
+    material: lead
+    name: "Bigfoot's Bola"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "50% drop from Bigfoot (Watcher giant) on Floor VII"
+    lore:
+      - "§8Precursor Relic"
+      - ""
+      - "§7Hard to throw, even harder to catch."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: DUNGEON_ITEM
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/bigfoots_bola
+  - id: GIANT_FRAGMENT_BOULDER
+    material: paper
+    name: "Jolly Pink Rock"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "50% drop from Jolly Pink Giant on Floor VII"
+    lore:
+      - "§8Precursor Relic"
+      - ""
+      - "§7The hottest shade of pink ever worn"
+      - "§7by a Giant."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: DUNGEON_ITEM
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/jolly_pink_rock
+  - id: GIANT_FRAGMENT_DIAMOND
+    material: paper
+    name: "Diamante's Handle"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "50% drop from Diamante Giant on Floor VII"
+    lore:
+      - "§8Precursor Relic"
+      - ""
+      - "§7The hilt of the largest sword known"
+      - "§7to humankind."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: DUNGEON_ITEM
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/diamantes_handle
+  - id: GIANT_FRAGMENT_LASER
+    material: paper
+    name: "L.A.S.R.'s Eye"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "50% drop from L.A.S.R. on Floor VII"
+    lore:
+      - "§8Precursor Relic"
+      - ""
+      - "§7The eye is mightier than the sword."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: DUNGEON_ITEM
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/lasr_eye
+  - id: GIANT_TEDDY_BEAR
+    material: player_head
+    name: "Giant Teddy Bear"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: ce82083308d6f1380eb54aea1bbfc3f5018e27cca00f63726ba41aabcb0f1f9f
+  - id: GIFTBAG_OF_THE_CENTURY
+    material: player_head
+    name: "Gift Bag of the Century"
+    rarity: EPIC
+    unavailable: "Needs the Century events (Raffle of the Century)"
+    source: "Raffle of the Century (Milestone VI)"
+    lore:
+      - "§7Been out of luck? Open this gift bag"
+      - "§7and pick §a1 §7item from a curated"
+      - "§7selection of minor rewards!"
+      - ""
+      - "§8§oCake, raffles, and now gift bags too?"
+      - "§8§oMaybe we're doing too much..."
+      - ""
+      - "§eRight-click to open!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: d1c3e87f30290045d019506c805834ba971f5aeec0d7d0505261f314a5465638
+  - id: GIFT_OF_LEARNING
+    material: player_head
+    name: "Gift of Learning"
+    rarity: RARE
+    unavailable: "Needs Generow Gift milestones and the Century events"
+    source: "Generow Gift Milestone XXV or Raffle/Gift Bag of the Century minor reward"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this handy item to receive"
+      - "§310,000 EXP §7in a §3Skill §7of your choosing!"
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 2e9b335c0b131aa4cef78203d8f5ba52d26f58452ccb155798acd4bdc745173
+  - id: GINGERBREAD_BED
+    material: player_head
+    name: "Gingerbread Bed"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 4bf2c01acb834f113613affc56365dfdef954289bfde65d3a3c42443b01f3291
+  - id: GINGERBREAD_HOUSE
+    material: player_head
+    name: "Gingerbread House"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: e30cbfef20549638c8ab005a7c9d922b5a5b481ecdbc41060b84a98ffad05ac9
+  - id: GLACIATED_BRAINS
+    material: player_head
+    name: "Glaciated Brains"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event (Alcina stews)"
+    source: "5% drop from Glacial mobs during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §b❄ Glacial§7 mobs"
+      - "§7during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 1252c1dd94a6a6b6e0db56aea8b2e97a67bcec52e2d838469d7b6591176cf6f9
+  - id: GLYPH_CONCLAMATUS
+    material: filled_map
+    name: "Conclamatus Glyph"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Sorcerer Okron's Rift quest"
+    lore:
+      - "§7§oA scroll ingrained with an ancient"
+      - "§7§osymbol."
+      - ""
+      - "§7If the pattern is mimicked with a"
+      - "§bpowerful artifact§7, it may be possible"
+      - "§7to cast a §9Warding Spell§7."
+  - id: GLYPH_FIRMITAS
+    material: filled_map
+    name: "Firmitas Glyph"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Sorcerer Okron's Rift quest"
+    lore:
+      - "§7§oA scroll ingrained with an ancient"
+      - "§7§osymbol."
+      - ""
+      - "§7If the pattern is mimicked with a"
+      - "§bpowerful artifact§7, it may be possible"
+      - "§7to cast a §9Warding Spell§7."
+  - id: GLYPH_FORTIS
+    material: filled_map
+    name: "Fortis Glyph"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Sorcerer Okron's Rift quest"
+    lore:
+      - "§7§oA scroll ingrained with an ancient"
+      - "§7§osymbol."
+      - ""
+      - "§7If the pattern is mimicked with a"
+      - "§bpowerful artifact§7, it may be possible"
+      - "§7to cast a §9Warding Spell§7."
+  - id: GLYPH_PERNIMIUS
+    material: filled_map
+    name: "Pernimius Glyph"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Sorcerer Okron's Rift quest"
+    lore:
+      - "§7§oA scroll ingrained with an ancient"
+      - "§7§osymbol."
+      - ""
+      - "§7If the pattern is mimicked with a"
+      - "§bpowerful artifact§7, it may be possible"
+      - "§7to cast a §9Warding Spell§7."
+  - id: GLYPH_POTENTIA
+    material: filled_map
+    name: "Potentia Glyph"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Sorcerer Okron's Rift quest"
+    lore:
+      - "§7§oA scroll ingrained with an ancient"
+      - "§7§osymbol."
+      - ""
+      - "§7If the pattern is mimicked with a"
+      - "§bpowerful artifact§7, it may be possible"
+      - "§7to cast a §9Warding Spell§7."
+  - id: GLYPH_ROBUR
+    material: filled_map
+    name: "Robur Glyph"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Sorcerer Okron's Rift quest"
+    lore:
+      - "§7§oA scroll ingrained with an ancient"
+      - "§7§osymbol."
+      - ""
+      - "§7If the pattern is mimicked with a"
+      - "§bpowerful artifact§7, it may be possible"
+      - "§7to cast a §9Warding Spell§7."
+  - id: GLYPH_VALIDUS
+    material: filled_map
+    name: "Validus Glyph"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Sorcerer Okron's Rift quest"
+    lore:
+      - "§7§oA scroll ingrained with an ancient"
+      - "§7§osymbol."
+      - ""
+      - "§7If the pattern is mimicked with a"
+      - "§bpowerful artifact§7, it may be possible"
+      - "§7to cast a §9Warding Spell§7."
+  - id: GLYPH_VIS
+    material: filled_map
+    name: "Vis Glyph"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Sorcerer Okron's Rift quest"
+    lore:
+      - "§7§oA scroll ingrained with an ancient"
+      - "§7§osymbol."
+      - ""
+      - "§7If the pattern is mimicked with a"
+      - "§bpowerful artifact§7, it may be possible"
+      - "§7to cast a §9Warding Spell§7."
+  - id: GOBLIN_OMELETTE
+    material: paper
+    name: "Goblin Omelette"
+    rarity: RARE
+    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
+    source: "Forge: 96 Goblin Egg, 18h (Heart of the Mountain 3)"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§7Grants a §a25% §7chance to not consume"
+      - "§2Fuel §7when mining."
+      - ""
+      - "§7Put this item in the §6Upgrade Module"
+      - "§7slot of a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§7§oMay cause diseases"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/mining_3/forge/omelettes/goblin_omelette
+  - id: GOBLIN_OMELETTE_BLUE_CHEESE
+    material: paper
+    name: "Blue Cheese Goblin Omelette"
+    rarity: RARE
+    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
+    source: "Forge: 96 Blue Goblin Egg and a Flawless Sapphire Gemstone (Heart of the Mountain 5)"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§7Adds §a+1 Level §7to all of your"
+      - "§7unlocked §5Heart of the Mountain §7perks."
+      - ""
+      - "§7Put this item in the §6Upgrade Module"
+      - "§7slot of a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§7§oMay cause illness"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/mining_3/forge/omelettes/blue_cheese_goblin_omelette
+  - id: GOBLIN_OMELETTE_PESTO
+    material: paper
+    name: "Pesto Goblin Omelette"
+    rarity: RARE
+    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
+    source: "Forge: 96 Green Goblin Egg and a Flawless Jade Gemstone (Heart of the Mountain 5)"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§7Grants a §a75% §7chance to not consume"
+      - "§2Fuel §7when mining."
+      - ""
+      - "§7Put this item in the §6Upgrade Module"
+      - "§7slot of a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§7§oMay cause nausea"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/mining_3/forge/omelettes/pesto_goblin_omelette
+  - id: GOBLIN_OMELETTE_SPICY
+    material: paper
+    name: "Spicy Goblin Omelette"
+    rarity: RARE
+    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
+    source: "Forge: 96 Red Goblin Egg and a Flawless Ruby Gemstone (Heart of the Mountain 5)"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§7Earn §9+20% Powder §7from all sources."
+      - ""
+      - "§7Put this item in the §6Upgrade Module"
+      - "§7slot of a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§7§oMay cause infections"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/mining_3/forge/omelettes/spicy_goblin_omelette
+  - id: GOBLIN_OMELETTE_SUNNY_SIDE
+    material: paper
+    name: "Sunny Side Goblin Omelette"
+    rarity: RARE
+    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
+    source: "Forge: 96 Yellow Goblin Egg and a Flawless Topaz Gemstone (Heart of the Mountain 5)"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§7Grants §6+50 Mining Fortune§7, but this"
+      - "§7Drill consumes quadruple the §2Fuel§7."
+      - ""
+      - "§7Put this item in the §6Upgrade Module"
+      - "§7slot of a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§7§oMay cause inflammation"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/mining_3/forge/omelettes/sunny_side_goblin_omelette
+  - id: GOLDOR_THE_FISH
+    material: player_head
+    name: "Goldor the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs Dungeons"
+    source: "Floor VII Bedrock chest (2,000,000 Coins)"
+    lore:
+      - "§7Two things are infinite, the universe"
+      - "§7and my ego."
+    components:
+      - id: SKULL_HEAD
+        texture: 30a5bc72f376faf865f3e017d93303384ebfbded4cdf2a6491a2617fbe31f625
+      - id: DUNGEON_ITEM
+  - id: GOLD_BONZO_HEAD
+    material: player_head
+    name: "Golden Bonzo Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 20
+      defense: 10
+      strength: 5
+    unavailable: "Needs Dungeons"
+    source: "Ophelia (1 Gold Essence) or the reward for beating Bonzo 100 times in the Catacombs"
+    lore:
+      - "§7Gear Score: §d45"
+      - ""
+      - "§7Obtained from killing §cBonzo §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor I§7."
+      - ""
+      - "§8Involved in the dark arts due to his"
+      - "§8parents' insistence. Originally worked"
+      - "§8as a Circus clown."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Catacombs Floor I Completion."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 15e75eae869bf0c298ee48790a62c2d6140790bd481b1de89b768d52f28c74a9
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DUNGEON_ITEM
+  - id: GOLD_BOTTLE_CAP
+    material: player_head
+    name: "Gold Bottle Cap"
+    rarity: LEGENDARY
+    unavailable: "Anvil combining for Luck of the Sea isn't wired; Junker Joel's shop is built but this item is not stocked"
+    source: "Junker Joel for 512 Rusty Coins, 64 Busted Belt Buckles and 8 Old Leather Boots; Superpairs reward"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to a fishing rod,"
+      - "§7increases its §9Luck of the Sea §7level"
+      - "§7by §a1§7!"
+      - "§8Can be applied once."
+      - "§8Requires Luck of the Sea VI!"
+      - ""
+      - "§8§oOne man's trash is, indeed, another"
+      - "§8§oman's treasure."
+    components:
+      - id: SKULL_HEAD
+        texture: 269698fd92fb14827af97e54a3f28f5e2685d7e94bd128c0c27f259df996717c
+  - id: GOLD_CHEST
+    material: player_head
+    name: "Gold Chest+"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Carpentry (chest furniture)"
+    lore:
+      - "§8Furniture"
+      - "§8Storage"
+      - ""
+      - "§7You can store three pages of items"
+      - "§7in this chest!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2be9c344af2aa6f12a42045a849c31c5230d4658eef31d0a794fc8903e1f74d1
+  - id: GOLD_LIVID_HEAD
+    material: player_head
+    name: "Golden Livid Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 60
+      defense: 30
+      strength: 15
+    unavailable: "Needs Dungeons"
+    source: "Ophelia (1 Gold Essence) or the reward for beating Livid 100 times in the Catacombs"
+    lore:
+      - "§7Gear Score: §d135"
+      - ""
+      - "§7Obtained from killing §cLivid §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor V§7."
+      - ""
+      - "§8Strongly believes he will become the"
+      - "§8Lord one day. Subject of mockeries,"
+      - "§8even from his disciples."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Catacombs Floor V Completion."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 62512ac6cc5d8c7ae3dddeee2c429d4a2d6a8341bde056e18e5ae21011bbe643
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DUNGEON_ITEM
+  - id: GOLD_NECRON_HEAD
+    material: player_head
+    name: "Golden Necron Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 80
+      defense: 40
+      strength: 15
+    unavailable: "Needs Dungeons"
+    source: "Ophelia (1 Gold Essence) or the reward for beating Necron 100 times in the Catacombs"
+    lore:
+      - "§7Gear Score: §d175"
+      - ""
+      - "§7Obtained from killing §cMaxor, Storm,"
+      - "§cGoldor, and Necron §7in §cThe Catacombs"
+      - "§7lots of times. Grants §a2x §7stats on §cThe"
+      - "§cCatacombs Floor VII§7."
+      - ""
+      - "§8Disciples of the Wither King. Inherited"
+      - "§8the Catacombs eons ago. Never"
+      - "§8defeated, feared by anything living"
+      - "§8AND dead."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Catacombs Floor VII Completion."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 1669e0b41da4fd58f625bfd140bb5b24f84d56ede6658b68f124478042cdafe6
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DUNGEON_ITEM
+  - id: GOLD_PROFESSOR_HEAD
+    material: player_head
+    name: "Golden Professor Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 40
+      defense: 20
+      strength: 10
+    unavailable: "Needs Dungeons"
+    source: "Ophelia (1 Gold Essence) or the reward for beating The Professor 100 times in the Catacombs"
+    lore:
+      - "§7Gear Score: §d90"
+      - ""
+      - "§7Obtained from killing §cThe Professor"
+      - "§7in §cThe Catacombs §7lots of times."
+      - "§7Grants §a2x §7stats on §cThe Catacombs"
+      - "§cFloor III§7."
+      - ""
+      - "§8Despite his great technique, he failed"
+      - "§8the Masters exam three times. Works"
+      - "§8from 8 to 5. Cares about his"
+      - "§8students."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Catacombs Floor III Completion."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 68ca03d78d157df34e8c42881ff57ea89818367e40e288da7f8b41cca5c1d406
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DUNGEON_ITEM
+  - id: GOLD_SADAN_HEAD
+    material: player_head
+    name: "Golden Sadan Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 70
+      defense: 35
+      strength: 15
+    unavailable: "Needs Dungeons"
+    source: "Ophelia (1 Gold Essence) or the reward for beating Sadan 100 times in the Catacombs"
+    lore:
+      - "§7Gear Score: §d155"
+      - ""
+      - "§7Obtained from killing §cSadan §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor VI§7."
+      - ""
+      - "§8Necromancy was always strong in his"
+      - "§8family. Says he once beat a Wither in"
+      - "§8a duel. Likes to brag."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Catacombs Floor VI Completion."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 5766a0d21d261c878763ca8264cd2dd0b17ecfac342411db07886b078e6cb013
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DUNGEON_ITEM
+  - id: GOLD_SCARF_HEAD
+    material: player_head
+    name: "Golden Scarf Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 30
+      defense: 15
+      strength: 10
+    unavailable: "Needs Dungeons"
+    source: "Ophelia (1 Gold Essence) or the reward for beating Scarf 100 times in the Catacombs"
+    lore:
+      - "§7Gear Score: §d70"
+      - ""
+      - "§7Obtained from killing §cScarf §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor II§7."
+      - ""
+      - "§8First of his class. His teacher said"
+      - "§8he will do \"great things\"."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Catacombs Floor II Completion."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 612f90a2a66d7f937cf9fb15c7d8aef97d38f562bd9678b24f4c904b65bcc60c
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DUNGEON_ITEM
+  - id: GOLD_THORN_HEAD
+    material: player_head
+    name: "Golden Thorn Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 50
+      defense: 25
+      strength: 15
+    unavailable: "Needs Dungeons"
+    source: "Ophelia (1 Gold Essence) or the reward for beating Thorn 100 times in the Catacombs"
+    lore:
+      - "§7Gear Score: §d115"
+      - ""
+      - "§7Obtained from killing §cThorn §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor IV§7."
+      - ""
+      - "§8Powerful Necromancer that"
+      - "§8specializes in animals. Calls himself a"
+      - "§8vegetarian, go figure."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Catacombs Floor IV Completion."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: a40168e7f7bccd19b5a1ede9a196b41c57c91985ec723bcf4220967525582158
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DUNGEON_ITEM
+  - id: GORF_THE_FISH
+    material: player_head
+    name: "hsiF ehT gorF"
+    rarity: SPECIAL
+    unavailable: "Needs Exploding Lily Pads (Backwater Bayou/Lotus content not built)"
+    source: "0.2% drop from Exploding Lily Pads"
+    lore:
+      - "§7⸮tibbiR"
+    components:
+      - id: SKULL_HEAD
+        texture: 85b28f8320795995261a6b384b8b4b46f1a99c8be065449217ba128e38644632
+  - id: GRANDFATHER_CLOCK
+    material: player_head
+    name: "Grandfather Clock"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Carpentry XXV"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7This ultimate furniture achievement"
+      - "§7accurately tells the time in your"
+      - "§7SkyBlock island."
+    components:
+      - id: SKULL_HEAD
+        texture: 54779d4338d1032018deeff9f17347098c77e2321e29cffcca542eca0bbe4526
+  - id: GRAPPLING_HOOK
+    material: fishing_rod
+    name: "Grappling Hook"
+    rarity: UNCOMMON
+    unavailable: "The grappling hook pull ability isn't built"
+    source: "Crafted from 3 Enchanted String and 2 Sticks (String IV)"
+    lore:
+      - "§7Travel around in style using this"
+      - "§7Grappling Hook."
+      - "§82 Second Cooldown"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: COMBAT
+            pattern:
+              - AAO
+              - ABO
+              - OOB
+            ingredients:
+              A:
+                type: ENCHANTED_STRING
+                amount: 1
+              B:
+                type: STICK
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: GRAPPLING_HOOK
+              amount: 1
+  - id: GREAT_SPOOK_REFORGING_MANUAL
+    material: book
+    name: "Great Spook Reforging Manual"
+    rarity: EPIC
+    unavailable: "Needs the Great Spook event"
+    source: "Tyashoi the Alchemist for 1 The Soup"
+    lore:
+      - "§7Obtained during the §e2023 §5Alchemist"
+      - "§7experiments!"
+      - ""
+      - "§8Edition #203"
+      - ""
+      - "§7Unlocks the Boo Stone in the Tyashoi"
+      - "§7Alchemist's shop."
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+  - id: GREAT_SPOOK_STAFF
+    material: dead_bush
+    name: "Great Spook Staff"
+    rarity: LEGENDARY
+    default_statistics:
+      fear: 10
+    unavailable: "Needs the Great Spook event"
+    source: "Tyashoi the Alchemist for 10 Frozen Spiders"
+    lore:
+      - "§6Ability: Spooker §e§lLEFT CLICK"
+      - "§7Will spook other players with a §8§oscary §7message when you"
+      - "§cpunch §7them while wearing full §5Great Spook Armor§7."
+      - "§8Cooldown: §a1m"
+      - ""
+      - "§6Ability: Spook  §e§lRIGHT CLICK"
+      - "§7Will make you appear as a §eDead Bush §7to other"
+      - "§7players."
+      - "§8Cooldown: §a15s"
+      - ""
+      - "§7Obtained during the §5Alchemist"
+      - "§7experiments!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/great_spook/great_spook_staff
+  - id: GREAT_WHITE_TOOTH_MEAL
+    material: bone_meal
+    name: "Great White Tooth Meal"
+    rarity: LEGENDARY
+    unavailable: "Needs Finwave armor and Shark fishing content"
+    source: "Crafted from 4 Great White Shark Tooth and 1 Enchanted Bone"
+    lore:
+      - "§7It smells like blood and fear."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: GREAT_WHITE_SHARK_TOOTH
+                amount: 1
+              B:
+                type: ENCHANTED_BONE
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: GREAT_WHITE_TOOTH_MEAL
+              amount: 1
+  - id: GREENHOUSE
+    material: player_head
+    name: "Greenhouse Planter"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Summer reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 8eb5eee42535d68cce5bf9520137b7a36cb313dc65bdcd8804353a29194f922c
+  - id: GREENHOUSE_BLUEPRINT
+    material: filled_map
+    name: "Greenhouse Blueprint"
+    rarity: RARE
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
+    source: "Carpenter, first time you serve them in the Garden"
+    lore:
+      - "§7This blueprint depicts some sort of"
+      - "§aGreenhouse §7structure, maybe §bSam"
+      - "§7would find some use with it."
+      - ""
+      - "§8§l* §8Co-op Soulbound §8§l*"
+  - id: GUNTHESIZER_LICHEN
+    material: green_dye
+    name: "Gunthesizer Lichen"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Gunther, after a Rift Race under 35 seconds"
+    lore:
+      - "§eRight-click to view recipes!"
+  - id: HALF_EATEN_CARROT
+    material: carrot
+    name: "Half-Eaten Carrot"
+    rarity: COMMON
+    unavailable: "Needs the Rift"
+    source: "Lead a rabbit to the carrots in the Half-Eaten Cave (Rift)"
+  - id: HALLOWEEN_CANDLES
+    material: player_head
+    name: "Halloween Candles"
+    rarity: COMMON
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Halloween reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: e99fcc2f7b01a8c4baa225b5c825918cb0fc2eb44e79ffd8b48ddb3484ba5c3d
+  - id: HALLOWEEN_SCARECROW
+    material: player_head
+    name: "Halloween Scarecrow"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Halloween reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 5254f337cd64397973a6ee1032835ad1cf4861e77bd6faaf008cb2669fb685d6
+  - id: HAMMOCK
+    material: player_head
+    name: "Hammock"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Summer reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 2faa10596f8dcdfd57c839ab532c1d95275f5eb66e1d0ea7f8b7804e201a7269
+  - id: HANGING_REAPER
+    material: player_head
+    name: "Hanging Reaper"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Halloween reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 9933485335fc9c38ab32e6bd2cd480c3baf61b0e3f6bca61e0e3cf1f7747c9da
+  - id: HAPPY_SNOWMAN
+    material: player_head
+    name: "Happy Snowman"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 875de593b67fe9e751fda5983a31b827b43eacde43d55a5ac514e88edb64
+  - id: HARD_GLASS
+    material: gray_stained_glass
+    name: "Hard Glass"
+    rarity: COMMON
+    unavailable: "Explosion immunity isn't built"
+    source: "Crafted from 1 Enchanted Sand and 8 Coal (Sand VII)"
+    lore:
+      - "§7Special hardened glass which"
+      - "§7doesn't break to explosions."
+    components:
+      - id: PLACEABLE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: COAL
+                amount: 1
+              B:
+                type: ENCHANTED_SAND
+                amount: 1
+            result:
+              type: HARD_GLASS
+              amount: 1
+  - id: HARP
+    material: player_head
+    name: "Personal Harp"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Melody (Personal Harp) for 600,000 Coins after completing the required songs"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Your very own!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4d238ccc818ab0c0fdebd07d4a56c353ff5eb541c85d386362161781d1dd74cc
+  - id: HASTE_BLOCK
+    material: end_stone
+    name: "Haste Block"
+    rarity: UNCOMMON
+    unavailable: "Speed boost from standing on the block isn't built"
+    source: "Crafted from 8 Enchanted End Stone and 1 Enchanted Feather (End Stone VI)"
+    lore:
+      - "§7Gives §a+100 §f Speed§7 when standing"
+      - "§7on top of this block."
+    components:
+      - id: PLACEABLE
+  - id: HAY_BED
+    material: player_head
+    name: "Hay Bed"
+    rarity: COMMON
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Carpentry XVI"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Use to set your spawn location!"
+    components:
+      - id: SKULL_HEAD
+        texture: 1e52619ea4ab42fc036ebcdf507720e17cc4aeaf00e4f9bf06ba8ad24464b140
+  - id: HEALING_MELON
+    material: glistering_melon_slice
+    name: "Healing Melon"
+    rarity: UNCOMMON
+    unavailable: "Needs Vampire Slayer content (Vampiric Melon is Rift)"
+    source: "Crafted from 12 Vampiric Melon"
+    lore:
+      - "§6Ability: Succulence  §e§lRIGHT CLICK"
+      - "§7Take a bite and heal §c7❤§7."
+      - "§8Mana Cost: §b50"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOO
+              - AAO
+              - AAA
+            ingredients:
+              A:
+                type: VAMPIRIC_MELON
+                amount: 2
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: HEALING_MELON
+              amount: 1
+  - id: HEAVY_BOOTS
+    material: leather_boots
+    name: "Heavy Boots"
+    rarity: RARE
+    default_statistics:
+      defense: 57
+      speed: -5
+    unavailable: "Needs Dungeons"
+    source: "Tank Zombie drop (5%) in the Catacombs"
+    lore:
+      - "§7Gear Score: §d124"
+      - ""
+      - "§6Full Set Bonus: Vindicate §7(0/4)"
+      - "§7Grants §f+1 walk speed §7for every §a50"
+      - "§7defense that you have."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Catacombs Skill 2."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: DUNGEON_ITEM
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '255'
+        b: '255'
+  - id: HEAVY_CHESTPLATE
+    material: leather_chestplate
+    name: "Heavy Chestplate"
+    rarity: RARE
+    default_statistics:
+      defense: 112
+      speed: -5
+    unavailable: "Needs Dungeons"
+    source: "Tank Zombie drop (5%) in the Catacombs"
+    lore:
+      - "§7Gear Score: §d234"
+      - ""
+      - "§6Full Set Bonus: Vindicate §7(0/4)"
+      - "§7Grants §f+1 walk speed §7for every §a50"
+      - "§7defense that you have."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Catacombs Skill 2."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: DUNGEON_ITEM
+      - id: LEATHER_COLOR
+        r: '130'
+        g: '130'
+        b: '130'
+  - id: HEAVY_HELMET
+    material: leather_helmet
+    name: "Heavy Helmet"
+    rarity: RARE
+    default_statistics:
+      defense: 62
+      speed: -5
+    unavailable: "Needs Dungeons"
+    source: "Tank Zombie drop (5%) in the Catacombs"
+    lore:
+      - "§7Gear Score: §d134"
+      - ""
+      - "§6Full Set Bonus: Vindicate §7(0/4)"
+      - "§7Grants §f+1 walk speed §7for every §a50"
+      - "§7defense that you have."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Catacombs Skill 2."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: DUNGEON_ITEM
+      - id: LEATHER_COLOR
+        r: '255'
+        g: '255'
+        b: '255'
+  - id: HEAVY_LEGGINGS
+    material: leather_leggings
+    name: "Heavy Leggings"
+    rarity: RARE
+    default_statistics:
+      defense: 92
+      speed: -5
+    unavailable: "Needs Dungeons"
+    source: "Tank Zombie drop (5%) in the Catacombs"
+    lore:
+      - "§7Gear Score: §d194"
+      - ""
+      - "§6Full Set Bonus: Vindicate §7(0/4)"
+      - "§7Grants §f+1 walk speed §7for every §a50"
+      - "§7defense that you have."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Catacombs Skill 2."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: DUNGEON_ITEM
+      - id: LEATHER_COLOR
+        r: '130'
+        g: '130'
+        b: '130'
+  - id: HELIANTHUS
+    material: player_head
+    name: "Helianthus"
+    rarity: LEGENDARY
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
+    source: "Garden farming and Greenhouse harvest drop (0.002%-0.004%, Greenhouse 0.8%-1.6%)"
+    lore:
+      - "§7The Crème de la Crop"
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: a98ac9224491a9dd480531bd971591724ce29921ec8f141461276f1bf3a59ed3
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/helianthus
+  - id: HELIXIS
+    material: paper
+    name: "Helixis"
+    rarity: RARE
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Crafted from 160 Enchanted Helix Log (Helix Log VI) or Torrhus mob drops"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7§oPerhaps even the trees of Galatea"
+      - "§7§ohave something to say about its"
+      - "§7§otechnological intricacies."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FORAGING
+            pattern:
+              - OAO
+              - AAA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_HELIX_LOG
+                amount: 32
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: HELIXIS
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/logs/helixis
+  - id: HELIX_LOG
+    material: paper
+    name: "Helix Log"
+    rarity: COMMON
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Helix Trees and 100% mob drops in Torrhus Canyon"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7A particularly resilient type of log"
+      - "§7that, should they not know the"
+      - "§7secret to cutting it, will outlast most"
+      - "§7foragers."
+      - ""
+      - "§eRight-click to view recipes!"
+  - id: HEMOBOMB
+    material: player_head
+    name: "Hemobomb"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Crafted from 15 Hemoglass (Hemovibe IX)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§5§kX§5 Rift-Transferable §r§5§kX"
+    components:
+      - id: SKULL_HEAD
+        texture: 909878b7ec239bc1586e220b6c1337d226268ed99d11ffec02dfe3e60ccb7060
+  - id: HEMOGLASS
+    material: player_head
+    name: "Hemoglass"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Crafted from 160 Hemovibe (Hemovibe III)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    components:
+      - id: SKULL_HEAD
+        texture: b448a4bae16402bc95fd2c1e1ae6a632c8475d72bdf986d36f0b76b1b706663c
+  - id: HEMOVIBE
+    material: redstone_ore
+    name: "Hemovibe"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Stillgore Chateau vampires in the Rift (~100%)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7Dropped by vampires from the"
+      - "§7multiverse coven."
+      - ""
+      - "§5§kX§5 Rift-Transferable §r§5§kX"
+  - id: HEPHAESTUS_LUCKY_DIP
+    material: player_head
+    name: "Hephaestus' Lucky Dip"
+    rarity: LEGENDARY
+    unavailable: "Needs the Century events (Raffle of the Century)"
+    source: "Year 500 Raffle of the Century (medium reward)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Dip your hand in and reach around"
+      - "§7to find a random §6Hephaestus Pet"
+      - "§6Item§7. Can be any of the following:"
+      - "§7• §6Hephaestus Plushie"
+      - "§7• §6Hephaestus Relic"
+      - "§7• §6Hephaestus Remedies"
+      - "§7• §6Hephaestus Shelmet"
+      - "§7• §6Hephaestus Souvenir"
+      - "§7• §6Hephaestus Urn"
+      - ""
+      - "§8§oStep right up and try your luck - will"
+      - "§8§oyou win big or win even bigger?"
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: a4abeb009ed4c5475b8447bdff1961ff2ea0a3163c481144543f095b13b7abbf
+  - id: HIGHLITE
+    material: player_head
+    name: "Highlite"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Rift craft from Obsolite, Timite and Youngite (Timite IV)"
+    lore:
+      - "§7This is what happens when time does"
+      - "§7a victory lap."
+      - ""
+      - "§eRight-click to view recipes!"
+      - ""
+      - "§5§kX§5 Rift-Exportable §5§kX"
+      - "§8Loses motes value when crossing"
+      - "§8dimensions."
+    components:
+      - id: SKULL_HEAD
+        texture: c6bc67ef36618d2099b9ff4df843661bad1b6541ef1cb46b03124b649d386c44
+  - id: HOE_OF_GREATER_TILLING
+    material: iron_hoe
+    name: "Hoe of Greater Tilling"
+    rarity: RARE
+    unavailable: "Area tilling isn't built"
+    source: "Anita (upgrade of Hoe of Great Tilling, Farming V)"
+    lore:
+      - "§7Tills a §95x5 §7area of farmland at a time."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HOE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoe_of_greater_tilling
+  - id: HOE_OF_GREATEST_TILLING
+    material: iron_hoe
+    name: "Hoe of Greatest Tilling"
+    rarity: EPIC
+    unavailable: "Area tilling isn't built"
+    source: "Anita (upgrade of Hoe of Greater Tilling, Farming X)"
+    lore:
+      - "§7Tills a row of farmland. The perfect"
+      - "§7accessory to the §5Basket of Seeds§7!"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HOE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/hoe_of_greatest_tilling
+  - id: HOE_OF_GREAT_TILLING
+    material: iron_hoe
+    name: "Hoe of Great Tilling"
+    rarity: UNCOMMON
+    unavailable: "Area tilling isn't built"
+    source: "Anita for 1 Bronze Medal and 5 Jacob's Tickets (Farming II)"
+    lore:
+      - "§7Tills a §93x3 §7area of farmland at a time."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 2§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HOE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoe_of_great_tilling
+  - id: HOE_OF_NO_TILLING
+    material: golden_hoe
+    name: "Hoe of No Tilling"
+    rarity: UNCOMMON
+    unavailable: "Untilling isn't built"
+    source: "Shen's Auction (top bidders) while Diaz is mayor with Volume Trading"
+    lore:
+      - "§7Untills farmland!"
+      - ""
+      - "§8§oMathematically proven to be more"
+      - "§8§oefficient than jumping on it!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HOE
+  - id: HOLIDAY_FIREPLACE
+    material: player_head
+    name: "Holiday Fireplace"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: e6b4e92f30935a141328580dda6662f329dc9a522bec5b3d0627b2a3e58fcb44
+  - id: HOLIDAY_TRAIN
+    material: player_head
+    name: "Holiday Train"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Advent Calendar holiday reward"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 6ef3599c145d372ea986987763e2498d21b567d71fbf7e23d5fa8197e9ad1d
+  - id: HOLY_ICE
+    material: diamond
+    name: "Holy Ice"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Crafted from 16 Coven Seal and 100 Frozen Water (Vampire Slayer I)"
+    lore:
+      - "§6Ability: Splash Yo Face  §e§lRIGHT CLICK"
+      - "§7For the next §a1.5s§7, reduce §c❤ §7damage taken by"
+      - "§a80%§7."
+      - "§8Mana Cost: §b20"
+      - "§8Cooldown: §a4s"
+  - id: HOPSCOTCH
+    material: player_head
+    name: "Hopscotch"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Summer reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 66aa82842300419d99b094cf46ac90de33bf7b222d34200bf9050521bb2dc9bb
+  - id: HORSEZOOKA
+    material: furnace_minecart
+    name: "Horsezooka"
+    rarity: EPIC
+    unavailable: "Needs Cowboy Nick's hay clearing event"
+    source: "Cowboy Nick in the Village Plaza (soulbound)"
+    lore:
+      - "§6Ability: Shoot  §e§lRIGHT CLICK"
+      - "§7Launches a horse to clear out hay."
+      - "§8Mana Cost: §b1"
+  - id: HOTSPOT_RADAR
+    material: paper
+    name: "Hotspot Radar"
+    rarity: RARE
+    unavailable: "Fishing Hotspots aren't built"
+    source: "Crafted from Broken Radar, 2 Bronze Bowl, 2 Redstone and 3 Iron Ingot"
+    lore:
+      - "§7A radar that can be used to detect"
+      - "§7active §dFishing Hotspots§7. Some §3Sea"
+      - "§3Creatures §7are exclusive to §dHotspots§7."
+      - ""
+      - "§6Ability: Hotspotter  §e§lRIGHT CLICK"
+      - "§7Points towards the nearest §dFishing Hotspot§7."
+      - "§8Cooldown: §a2s"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - BCB
+              - DDD
+            ingredients:
+              A:
+                type: BRONZE_BOWL
+                amount: 1
+              B:
+                type: REDSTONE
+                amount: 1
+              C:
+                type: BROKEN_RADAR
+                amount: 1
+              D:
+                type: IRON_INGOT
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: HOTSPOT_RADAR
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/misc/hotspot_radar
+  - id: HOTSPOT_TONIC_MIXIN
+    material: player_head
+    name: "Hotspot Tonic Mixin"
+    rarity: RARE
+    unavailable: "Fishing Hotspots and Mixins on God Potions aren't built"
+    source: "Crafted from 8 Ink Splat and 64 Half-Eaten Mushroom"
+    lore:
+      - "§8Brewing Ingredient"
+      - ""
+      - "§7Mixins provide a buff that can be"
+      - "§7added to §cGod Potions §7in a brewing"
+      - "§7stand and lasts for the full duration."
+      - ""
+      - "§7Grants a §a+10% §7chance to catch"
+      - "§dHotspot Sea Creatures §7while fishing"
+      - "§7in a §dHotspot§7."
+      - ""
+      - "§7Duration: §a36h 0m"
+      - ""
+      - "§7The duration of Mixins can be stacked!"
+      - ""
+      - "§eRight-click to consume!"
+      - "§8(Requires active Booster Cookie)"
+    components:
+      - id: SKULL_HEAD
+        texture: b09651d5c25f86db3db11a6dc879497b4e113a48d3cdcdf96ef13419671d96ff
+  - id: HOT_CHOCOLATE_AND_COOKIES
+    material: player_head
+    name: "Hot Chocolate and Cookies"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 268d81f2a495cf767e97d56ebcb4df7bb1df0559d2735cbc99f7c78eeff4f68f
+  - id: HOT_CHOCOLATE_MIXIN
+    material: player_head
+    name: "Hot Chocolate Mixin"
+    rarity: RARE
+    unavailable: "Needs the Chocolate Factory shop and Mixins on God Potions"
+    source: "Chocolate Shop for 1.5B Chocolate (max 4, Chocolate Factory VI)"
+    lore:
+      - "§8Brewing Ingredient"
+      - ""
+      - "§7Mixins provide a buff that can be"
+      - "§7added to §cGod Potions §7in a brewing"
+      - "§7stand and lasts for the full duration."
+      - ""
+      - "§7Gain §d+15 Pet Luck §7and §6+0.05x"
+      - "§6Chocolate §7per second."
+      - ""
+      - "§7Duration: §a36h 0m"
+      - ""
+      - "§7The duration of Mixins can be stacked!"
+      - ""
+      - "§eRight-click to consume!"
+      - "§8(Requires active Booster Cookie)"
+      - ""
+      - "§4❣ §cRequires Chocolate Factory VI."
+    components:
+      - id: SKULL_HEAD
+        texture: 4fde9c68bc5a89f01a5e5203eecc5367d494d55a47c81e6b1d689a0c4488b6e
+  - id: HOT_DOG
+    material: player_head
+    name: "Hot Dog"
+    rarity: COMMON
+    unavailable: "Needs the Rift"
+    source: "Chef's Hot Dog eating competition in the Rift"
+    lore:
+      - "§7Deposit on Joey's plate."
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 824c8667e1e6709524d8f763d1add05a845e5ba0a4fe9076fe0b587191ef5c0
+  - id: HUB_DA_TRAVEL_SCROLL
+    material: map
+    name: "Travel Scroll to Dark Auction"
+    rarity: EPIC
+    unavailable: "Needs the Dark Auction travel scroll auction stock"
+    source: "Dark Auction (minimum bid 1,000,000 Coins)"
+    lore:
+      - "§7Consume this item to add its"
+      - "§7destination to your Fast Travel"
+      - "§7options."
+      - ""
+      - "§7Requires §bMVP§c+ §7to consume!"
+      - ""
+      - "§7Island: §aSkyBlock Hub"
+      - "§7Teleport: §eSirius' Shack"
+  - id: HUNTING_TOOLKIT
+    material: paper
+    name: "Hunting Toolkit"
+    rarity: RARE
+    unavailable: "Hunting Toolkit swapping isn't built"
+    source: "David Hunterborough for 1,000,000 Coins"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Store all of your Hunting Tools in"
+      - "§7one convenient place and swap"
+      - "§7between them with ease."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting_toolkit
+  - id: HURRICANE_IN_A_BOTTLE
+    material: player_head
+    name: "Hurricane in a Bottle"
+    rarity: LEGENDARY
+    unavailable: "Needs Hurricane Bottle charging and Orbs of Energy (Fishing content not built)"
+    source: "Crafted from an Empty Hurricane Bottle charged with Orbs of Energy"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7What happens if you open it? The"
+      - "§7answer may shock you."
+      - ""
+      - "§7Charge: §e5,000,000§6/§e5,000,000"
+    components:
+      - id: SKULL_HEAD
+        texture: 59d58b3112656b539063ac75a36f6359e256f3fcf755f5d8c8c5a00493f98651
+  - id: HURRICANE_IN_A_BOTTLE_EMPTY
+    material: player_head
+    name: "Empty Hurricane Bottle"
+    rarity: LEGENDARY
+    unavailable: "Needs Hurricane Bottle charging (not built)"
+    source: "Crafted from 1 Empty Storm Bottle and 320 Orbs of Energy"
+    lore:
+      - "§7This bottle is empty, I wonder if"
+      - "§7there is a way to charge it up..."
+      - ""
+      - "§7Charge: §e0§6/§e5,000,000"
+    components:
+      - id: SKULL_HEAD
+        texture: 4d3cab6b5c6eea4b7acff0fae554dfeffbcdd979c1e54f615cbb7cdd46ec55eb
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ORB_OF_ENERGY
+                amount: 40
+              B:
+                type: STORM_IN_A_BOTTLE_EMPTY
+                amount: 1
+            result:
+              type: HURRICANE_IN_A_BOTTLE_EMPTY
+              amount: 1
+  - id: HYPER_CATALYST_UPGRADE
+    material: player_head
+    name: "Hyper Catalyst Upgrade"
+    rarity: SPECIAL
+    unavailable: "Current-name duplicate of the existing HYPER_CATALYST_UPGRADER (Bits Shop item); the catalyst upgrade combining isn't built"
+    source: "Elizabeth's Bits Shop for 300 Bits"
+    lore:
+      - "§7Combine with §9Catalysts§7, buffing the"
+      - "§7fuel to §ax4 §7for 6 hours duration."
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: SKULL_HEAD
+        texture: 12e4eb8a903c585a7959efe3d7af09acd119ef0a68df861152c8480804f82281
+  - id: HYPIXEL_CASTLE
+    material: player_head
+    name: "Hypixel Sandcastle"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Summer reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 738ab35064199d9898806a9e4c8eba11ae5e7a1f90c58f1940376be856c2c689
+  - id: ICE_CHAIR
+    material: player_head
+    name: "Ice Chair"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 38b3fbb6be9fe77f3153a426b63c8566e127ec12c781c54af0e9e509296b38e9
+  - id: ICE_CREAM_CART
+    material: player_head
+    name: "Ice Cream Cart"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Summer reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 36df9c212a8ad82545f0e59410bfa990ff3e7aabe8ba8c9fdc3d4a5ea2722648
+  - id: ICE_CREAM_PERSONALITY
+    material: player_head
+    name: "Ice Cream Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundles are not built"
+    source: "Rank reward bundle (VIP+, MVP, MVP++)"
+    lore:
+      - "§8Minion Skin"
+      - ""
+      - "§7This Minion skin changes your"
+      - "§7minion's appearance to an §eIce Cream§7."
+      - ""
+      - "§7You can place this item in any minion"
+      - "§7of your choice!"
+    components:
+      - id: SKULL_HEAD
+        texture: 828f490388ec7f54bc9755b4c1db0e908f40829aa5268c66cca6e6fabcbcf693
+  - id: ICE_CUBE
+    material: packed_ice
+    name: "Ice Cube"
+    rarity: RARE
+    unavailable: "Ice melting prevention isn't built"
+    source: "Crafted from 1 Packed Ice and 8 Enchanted Ice (Ice VII)"
+    lore:
+      - "§7Prevents all ice from melting on your"
+      - "§7private island."
+    components:
+      - id: PLACEABLE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_ICE
+                amount: 1
+              B:
+                type: PACKED_ICE
+                amount: 1
+            result:
+              type: ICE_CUBE
+              amount: 1
+  - id: ICE_DINNER_TABLE
+    material: player_head
+    name: "Ice Dinner Table"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 38b3fbb6be9fe77f3153a426b63c8566e127ec12c781c54af0e9e509296b38e9
+  - id: ICE_FIREPLACE
+    material: player_head
+    name: "Ice Fireplace"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 38b3fbb6be9fe77f3153a426b63c8566e127ec12c781c54af0e9e509296b38e9
+  - id: ICE_KNIGHT_STATUE
+    material: player_head
+    name: "Ice Knight Statue"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: db1e9c71bfd51b60ea606e797d0b2c1fd776cac0a0573fd960021155cb40d65
+  - id: ICE_LOLLY_PERSONALITY
+    material: player_head
+    name: "Ice Lolly Minion Skin"
+    rarity: COMMON
+    unavailable: "Rank reward bundles are not built"
+    source: "Rank reward bundle (VIP, MVP, MVP++)"
+    lore:
+      - "§8Minion Skin"
+      - ""
+      - "§7This Minion skin changes your"
+      - "§7minion's appearance to an §eIce Lolly§7."
+      - ""
+      - "§7You can place this item in any minion"
+      - "§7of your choice!"
+    components:
+      - id: SKULL_HEAD
+        texture: a50902cdf1507de85fe1e605713d6526226e26adf464dcc23371a7e46b5cec6e
+  - id: ICE_SOFA
+    material: player_head
+    name: "Ice Sofa"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Holiday reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 38b3fbb6be9fe77f3153a426b63c8566e127ec12c781c54af0e9e509296b38e9
+  - id: ILLUSION_GLASS
+    material: player_head
+    name: "Illusion Glass"
+    rarity: COMMON
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Halloween reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - "§8Mysterious Powers"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 31119530b4902f7a190b54b7b4cb725a511529db45f22b72b6431f6842c25151
+  - id: INFINIDIRT_WAND
+    material: stick
+    name: "InfiniDirt™ Wand"
+    rarity: UNCOMMON
+    unavailable: "Needs the Builder's Wand and the dirt placing ability"
+    source: "Anita for 1 Jacob's Ticket"
+    lore:
+      - "§6Ability: Place Dirt  §e§lRIGHT CLICK"
+      - "§7Place a dirt block."
+      - "§7Costs §61 coin§7."
+      - ""
+      - "§7Can be used within the Builder's Wand!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/infinidirt_wand
+  - id: INFINITE_SPIRIT_LEAP
+    material: player_head
+    name: "Infinileap"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Malik's Wither Essence shop for 25,000 Wither Essence"
+    lore:
+      - "§6Ability: Spirit Leap  §e§lRIGHT CLICK"
+      - "§7Allows you to teleport to any teammate! Grants"
+      - "§a1 §7second of immunity after teleporting,"
+      - "§7immunity is cancelled upon dealing damage."
+      - "§8Cooldown: §a2s"
+      - ""
+      - "§cDungeons only!"
+    components:
+      - id: SKULL_HEAD
+        texture: 377d4a206d7757f479f332ec1a2bbbee57cef97568dd88df81f4864aee7d3d98
+      - id: DUNGEON_ITEM
+  - id: INFINITE_SUPERBOOM_TNT
+    material: tnt
+    name: "Infinityboom TNT"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Malik's Undead Essence shop for 50,000 Undead Essence"
+    lore:
+      - "§7Instantly breaks weak walls. Can be"
+      - "§7used to blow up Crypts in §cThe"
+      - "§cCatacombs §7and §5Crystal Hollows§7."
+      - ""
+      - "§8Cooldown: §a2s"
+  - id: INK_SPLAT
+    material: paper
+    name: "Ink Splat"
+    rarity: RARE
+    unavailable: "Needs the Ink Splat source (squid/fishing content not built)"
+    source: "Item used in the Hotspot Tonic Mixin recipe"
+    lore:
+      - "§7Avoid getting in eyes. It’ll hurt!"
+      - ""
+      - "§eRight-click to view recipes!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/misc/ink_splat
+  - id: IRIDIUM
+    material: paper
+    name: "Iridium"
+    rarity: LEGENDARY
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
+    source: "Greenhouse Harvest Bounty drop (0.2%)"
+    lore:
+      - "§7Can be used at §aSkyMart §7to upgrade"
+      - "§7the §5AquaMaster X §7to the §6AquaMaster"
+      - "§6HydroMax§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/iridium
+  - id: IRON_CHEST
+    material: player_head
+    name: "Iron Chest+"
+    rarity: RARE
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Carpentry (chest furniture)"
+    lore:
+      - "§8Furniture"
+      - "§8Storage"
+      - ""
+      - "§7You can store three pages of items"
+      - "§7in this chest!"
+    components:
+      - id: SKULL_HEAD
+        texture: 6de2a08e71d0b5326a597df028dd7c15fa4cf221caac2810e2891fb84ee57c9f
+  - id: ISOPOD_HUSK
+    material: paper
+    name: "Isopod Husk"
+    rarity: EPIC
+    unavailable: "Needs Giant Isopods and permanent Respiration consumables"
+    source: "Giant Isopod (Lv186) drop (2%)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this item to permanently"
+      - "§7gain §3+1 Respiration§7."
+      - ""
+      - "§7You can only consume §a5 §7of this item"
+      - "§7before the scratching at the back"
+      - "§7of your throat becomes too much to"
+      - "§7ignore."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/isopod_husk
+  - id: JACOBS_PARTICIPATION_MEDAL
+    material: paper
+    name: "Jacob's Participation Medal"
+    rarity: EPIC
+    unavailable: "Legacy item replaced by the Super Jacob Entertainment System"
+    source: "Legacy: crafted from 32 Botroot and 1 Jacob's Ticket"
+    lore:
+      - "§8Minion Fuel"
+      - "§8Legacy Item"
+      - ""
+      - "§7Use this as Fuel on ONE Farming"
+      - "§7minion, and it will occasionally"
+      - "§7generate §aJacob's Tickets §7for §a3d§7."
+      - ""
+      - "§8A recreation of a medal Jacob used"
+      - "§8to give out for his contests. They"
+      - "§8are too popular now to be given out."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - AOA
+              - OBO
+            ingredients:
+              A:
+                type: BOTROOT
+                amount: 8
+              B:
+                type: JACOBS_TICKET
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: JACOBS_PARTICIPATION_MEDAL
+              amount: 1
+  - id: JADE_CRYSTAL
+    material: paper
+    name: "Jade Crystal"
+    rarity: SPECIAL
+    unavailable: "Not a standalone obtainable item"
+    source: "Heart of the Mountain achievement (Keepers in the Mines of Divan)"
+    lore:
+      - "§7Energetic crystal found deep in the"
+      - "§5Crystal Hollows§7."
+      - ""
+      - "§7Some say that it can be infused with"
+      - "§dgemstones§7, and it is rumored to"
+      - "§7unlock §etreasure§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/jade_crystal
+  - id: JAR_OF_SAND
+    material: player_head
+    name: "Jar of Sand"
+    rarity: LEGENDARY
+    unavailable: "Needs the Carnival Fruit Digging leaderboard reward"
+    source: "Chivalrous Carnival Fruit Digging top 500"
+    lore:
+      - "§8Decoration item"
+      - ""
+      - "§7Obtained during the §eCarnival§7 for"
+      - "§7placing within the §aTop 500 §7in §6Fruit"
+      - "§6Digging§7."
+    components:
+      - id: SKULL_HEAD
+        texture: ffb2eb0b6f1da7f018ed31887d3f8ca0ef07f4c76fae1b9a37e077f389dfb4af
+  - id: JASPER_CRYSTAL
+    material: paper
+    name: "Jasper Crystal"
+    rarity: SPECIAL
+    unavailable: "Removed as an item in 2021; Crystal Hollows/Glacite Mineshaft crystal"
+    source: "Fairy Grotto chests, Nucleus stash and Glacite Mineshafts (legacy)"
+    lore:
+      - "§7Exquisite crystal found deep in the"
+      - "§bGlacite Mineshafts§7 and §5Crystal"
+      - "§5Hollows."
+      - ""
+      - "§7Some say that it can be infused with"
+      - "§dgemstones§7, §eunlock treasure§7, and"
+      - "§7hold the secrets to a §7§otime long past§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/jasper_crystal
+  - id: JASPER_POWER_SCROLL
+    material: paper
+    name: "Jasper Power Scroll"
+    rarity: EPIC
+    unavailable: "Power scroll anvil application isn't built"
+    source: "Crafted from 48 Enchanted Paper and 16 Fine Jasper Gemstone (Gemstone VII)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Gain §c+10 Strength §7for §a5s §7when using your"
+      - "§e§lRIGHT CLICK §6Item Ability§7."
+      - ""
+      - "§7Can be combined with any §bitem §7with a §e§lRIGHT"
+      - "§e§lCLICK §6Item Ability §7at an anvil."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - AA
+              - AB
+            ingredients:
+              A:
+                type: ENCHANTED_PAPER
+                amount: 16
+              B:
+                type: FINE_JASPER_GEM
+                amount: 16
+            result:
+              type: JASPER_POWER_SCROLL
+              amount: 1
+  - id: JAWBREAKER
+    material: player_head
+    name: "Jawbreaker"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event (Alcina stews)"
+    source: "5% drop from Subterranean mobs during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §6⛏"
+      - "§6Subterranean§7 mobs during the §5Year"
+      - "§5of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 5701c505adaccef0db933e0f4061763f80ec3507defe5df68eb2c21828196bc3
+  - id: JERRY_BARN_SKIN
+    material: player_head
+    name: "Jerry Barn Skin"
+    rarity: LEGENDARY
+    unavailable: "Needs Fire Sales (past sale) and the Garden barn skin system"
+    source: "Fire Sale on 31 Mar 2023 for 2,000 Gems"
+    lore:
+      - "§7Consume this item to unlock the"
+      - "§6Jerry Barn Skin §7on §aThe Garden§7!"
+      - ""
+      - "§eClick to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 45f729736996a38e186fe9fe7f5a04b387ed03f3871ecc82fa78d8a2bdd31109
+  - id: JUICY_HEALING_MELON
+    material: melon
+    name: "Juicy Healing Melon"
+    rarity: EPIC
+    unavailable: "Needs Vampire Slayer content"
+    source: "Crafted from Healing Melon and 16 Coven Seal (Vampire Slayer II)"
+    lore:
+      - "§6Ability: Succulence  §e§lRIGHT CLICK"
+      - "§7Take a bite and heal §c9❤§7."
+      - "§8Mana Cost: §b50"
+      - ""
+      - "§4☠ §cRequires §5Vampire Slayer 2§c."
+  - id: JUICY_NOZZLE
+    material: paper
+    name: "Juicy Nozzle"
+    rarity: RARE
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
+    source: "Crafted from 192 Enchanted Melon Slice"
+    lore:
+      - "§7Can be used at §aSkyMart §7to upgrade"
+      - "§7the §aSprayonator §7to the §9Juicy"
+      - "§9Sprayonator§7."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - AAA
+              - AAO
+            ingredients:
+              A:
+                type: ENCHANTED_MELON
+                amount: 32
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: JUICY_NOZZLE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/pests/juicy_nozzle
+  - id: JUICY_SPRAYONATOR
+    material: paper
+    name: "Juicy Sprayonator"
+    rarity: RARE
+    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
+    source: "SkyMart for 1 Sprayonator, 1 Juicy Nozzle and 1,000 Copper (Garden V)"
+    lore:
+      - "§6Ability: Configure  §e§lLEFT CLICK"
+      - "§7Select a nozzle and material for"
+      - "§7spraying. Certain materials attract"
+      - "§7certain types of §2 Pests§7."
+      - ""
+      - "§7Selected Nozzle: §9Juicy"
+      - "§7Selected Material: §aCompost"
+      - "§7Attracts: §6Earthworm§7, §6Mosquito"
+      - ""
+      - "§6Ability: Spray  §e§lRIGHT CLICK"
+      - "§7Sprays your selected material onto"
+      - "§7the §aGarden §7plot you are on. Lasts"
+      - "§7for §a45m§7."
+      - ""
+      - "§9Juicy Nozzle Bonus:"
+      - "§8➜ §2+50 Bonus Pest Chance §7while"
+      - "§7   in a sprayed plot."
+      - "§8➜ §2 Pests §7are §a2x §7more likely to"
+      - "§7   spawn in sprayed plots."
+      - "§8Cooldown: §a3s"
+      - ""
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/pests/juicy_sprayonator
+  - id: JUMBO_POT_OF_HONEYCOMB
+    material: paper
+    name: "Jumbo Pot of Honeycomb"
+    rarity: EPIC
+    unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
+    source: "Crafted from 16 Enchanted Honeycomb and 1 Helixis (Honeycomb V)"
+    lore:
+      - "§8Consumed on use"
+      - ""
+      - "§7Use on a §aTree §7with an active §cTree"
+      - "§cProtection Order §7to lather it with"
+      - "§6Honeycomb§7!"
+      - ""
+      - "§7After §a15m§7, a unique §a Critter §7will be"
+      - "§7attracted to the §6Honeycomb§7!"
+      - "§8Type of mob depends upon type of"
+      - "§8tree lathered."
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§4❣ §cRequires §aHoneycomb Collection V§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/honey/pots/honey_pot_jumbo
+  - id: JUNGLE_BED
+    material: player_head
+    name: "Jungle Bed"
+    rarity: EPIC
+    unavailable: "Furniture and the Carpentry/Furniture Shop systems are not built"
+    source: "Summer reward bundle cosmetic"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - "§8Spawnpoint"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 85e1d308dc3d7253f32e300eda4d0003fe64a56bf3a5466fd2011b35f403da3b

@@ -7,7 +7,7 @@ entries:
     material: player_head
     cost: { coins: 1000 }
     stackable: true
-  - item: DCTR_PAPER
+  - item: DR_PAPER
     name: "<a>Dctr. Paper"
     material: player_head
     cost: { coins: 4000 }

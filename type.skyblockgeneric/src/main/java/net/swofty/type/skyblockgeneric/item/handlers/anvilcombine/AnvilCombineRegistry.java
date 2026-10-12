@@ -31,6 +31,7 @@ public class AnvilCombineRegistry {
         WinterItemHandlers.registerAnvilCombines();
         CrimsonItemHandlers.registerAnvilCombines();
         HollyDye.registerAnvilCombine();
+        EnchantLevelBoost.registerAnvilCombines();
         Recombobulation.registerAnvilCombine();
         net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments.registerAnvilCombine();
         register("HOT_POTATO_BOOK", new AnvilCombineHandler(

@@ -1,0 +1,3180 @@
+items:
+  - id: AATROX_BADPHONE
+    material: player_head
+    name: "Maddox Badphone"
+    rarity: RARE
+    unavailable: "Needs the Vampire Slayer (Riftstalker Bloodfiend), which is disabled"
+    source: "Crafted from 8 Coven Seal and a Maddox Batphone (Vampire Slayer 2)"
+    lore:
+      - "§6Ability: Wasssaaaaa?  §e§lRIGHT CLICK"
+      - "§7Instantly calls §5Maddox§7!"
+      - ""
+      - "§4☠ §cRequires §5Wolf Slayer 3§c."
+      - "§4☠ §cRequires §5Vampire Slayer 2§c."
+    components:
+      - id: SKULL_HEAD
+        texture: e040124f22a842966beb55c9e698fe3a2c8b713190c26e03d37f4074bd503031
+      - id: INTERACTABLE
+        handler_id: MADDOX_BATPHONE_CALL
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: AATROX_PHONE_NUMBER
+    material: paper
+    name: "Maddox's Phone Number"
+    rarity: UNCOMMON
+    unavailable: "Unobtainable legacy item with no use (wiki)"
+    source: "Former Wolf Slayer III reward, replaced by the Maddox Batphone"
+  - id: ABINGOPHONE
+    material: player_head
+    name: "AⒷiphone"
+    rarity: SPECIAL
+    unavailable: "Needs the Bingo event"
+    source: "Bingo event reward (exact source not confirmed on the wiki)"
+    components:
+      - id: SKULL_HEAD
+        texture: 6c3377e04d7a28e9302574ab609fb7ac4e72bdeda10189f3e560cfa5f9f16efb
+      - id: ABIPHONE
+        max_contacts: 20
+        max_discs: 0
+        features:
+          - CONTACTS_DIRECTORY
+          - DO_NOT_DISTURB_MODE
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: ADAPTIVE_BELT
+    material: paper
+    name: "Adaptive Belt"
+    rarity: EPIC
+    default_statistics:
+      health: 10
+      defense: 5
+      strength: 5
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Reward Chests: The Catacombs Floor II"
+    lore:
+      - "§7Grants additional bonuses based on your"
+      - "§7selected dungeon class!"
+      - ""
+      - "§bBerserk§7: +§c10 Strength"
+      - "§bHealer§7: +§c10 Health§7, +§a5 Mending"
+      - "§bMage§7: +§b25 Intelligence"
+      - "§bTank§7: +§c5 Health§7, +§a10 Defense"
+      - "§bArcher§7: +§92 Crit Chance§7, +§95 Crit Damage"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor II Completion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/dungeons/adaptive_belt
+  - id: ADAPTIVE_BOOTS
+    material: leather_boots
+    name: "Adaptive Boots"
+    rarity: EPIC
+    default_statistics:
+      health: 90
+      defense: 45
+      strength: 15
+      intelligence: 15
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Reward Chests: The Catacombs Floor III"
+    lore:
+      - "§7Gear Score: §d253"
+      - ""
+      - "§6Full Set Bonus: Efficient training §7(0/4)"
+      - "§7Every §b5 §7Catacombs levels, this armor piece"
+      - "§7gains +§a2% §7stats."
+      - ""
+      - "§7Grants additional bonuses based on your"
+      - "§7selected dungeon class!"
+      - ""
+      - "§bBerserk§7: +§c20 Strength"
+      - "§bHealer§7: +§a5 Mending§7, +§c40 Health"
+      - "§bMage§7: +§b50 Intelligence"
+      - "§bTank§7: +§a30 Defense§7 and reduces damage"
+      - "§7taken by §b5% §7for each piece you have equipped"
+      - "§7if you are hit by the same monster within §e10"
+      - "§7seconds."
+      - "§bArcher§7: +§95 Crit Chance§7, +§915 Crit Damage"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor III Completion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '191'
+        g: '188'
+        b: '178'
+  - id: ADAPTIVE_CHESTPLATE
+    material: leather_chestplate
+    name: "Adaptive Chestplate"
+    rarity: EPIC
+    default_statistics:
+      health: 170
+      defense: 85
+      strength: 15
+      intelligence: 15
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Reward Chests: The Catacombs Floor III, or The Professor Collection IV (150 kills)"
+    lore:
+      - "§7Gear Score: §d413"
+      - ""
+      - "§6Full Set Bonus: Efficient training §7(0/4)"
+      - "§7Every §b5 §7Catacombs levels, this armor piece"
+      - "§7gains +§a2% §7stats."
+      - ""
+      - "§7Grants additional bonuses based on your"
+      - "§7selected dungeon class!"
+      - ""
+      - "§bBerserk§7: +§c20 Strength"
+      - "§bHealer§7: +§a5 Mending§7, +§c40 Health"
+      - "§bMage§7: +§b50 Intelligence"
+      - "§bTank§7: +§a30 Defense§7 and reduces damage"
+      - "§7taken by §b5% §7for each piece you have equipped"
+      - "§7if you are hit by the same monster within §e10"
+      - "§7seconds."
+      - "§bArcher§7: +§95 Crit Chance§7, +§915 Crit Damage"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor III Completion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '191'
+        g: '188'
+        b: '178'
+  - id: ADAPTIVE_HELMET
+    material: player_head
+    name: "Adaptive Helmet"
+    rarity: EPIC
+    default_statistics:
+      health: 110
+      defense: 50
+      strength: 15
+      intelligence: 15
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Reward Chests: The Catacombs Floor III"
+    lore:
+      - "§7Gear Score: §d283"
+      - ""
+      - "§6Full Set Bonus: Efficient training §7(0/4)"
+      - "§7Every §b5 §7Catacombs levels, this armor piece"
+      - "§7gains +§a2% §7stats."
+      - ""
+      - "§7Grants additional bonuses based on your"
+      - "§7selected dungeon class!"
+      - ""
+      - "§bBerserk§7: +§c20 Strength"
+      - "§bHealer§7: +§a5 Mending§7, +§c40 Health"
+      - "§bMage§7: +§b50 Intelligence"
+      - "§bTank§7: +§a30 Defense§7 and reduces damage"
+      - "§7taken by §b5% §7for each piece you have equipped"
+      - "§7if you are hit by the same monster within §e10"
+      - "§7seconds."
+      - "§bArcher§7: +§95 Crit Chance§7, +§915 Crit Damage"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor III Completion."
+    components:
+      - id: SKULL_HEAD
+        texture: 16f0d34aaa714377983701c1bbe9b3f6e7b30cb38571bc0a2fd7541d7edb1637
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: ADAPTIVE_LEGGINGS
+    material: leather_leggings
+    name: "Adaptive Leggings"
+    rarity: EPIC
+    default_statistics:
+      health: 145
+      defense: 65
+      strength: 15
+      intelligence: 15
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Reward Chests: The Catacombs Floor III, or The Professor Collection II (50 kills)"
+    lore:
+      - "§7Gear Score: §d348"
+      - ""
+      - "§6Full Set Bonus: Efficient training §7(0/4)"
+      - "§7Every §b5 §7Catacombs levels, this armor piece"
+      - "§7gains +§a2% §7stats."
+      - ""
+      - "§7Grants additional bonuses based on your"
+      - "§7selected dungeon class!"
+      - ""
+      - "§bBerserk§7: +§c20 Strength"
+      - "§bHealer§7: +§a5 Mending§7, +§c40 Health"
+      - "§bMage§7: +§b50 Intelligence"
+      - "§bTank§7: +§a30 Defense§7 and reduces damage"
+      - "§7taken by §b5% §7for each piece you have equipped"
+      - "§7if you are hit by the same monster within §e10"
+      - "§7seconds."
+      - "§bArcher§7: +§95 Crit Chance§7, +§915 Crit Damage"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor III Completion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '191'
+        g: '188'
+        b: '178'
+  - id: ADVENT_CALENDAR_DISPLAY
+    material: player_head
+    name: "Advent Calendar Display"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (Private Island furniture), which isn't built"
+    source: "Advent Calendar: Day 1 of the 2022 calendar (all ranks)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 3125a00621b3e2fe2282d120d05c5e0f587a5456f87cb32e3584476f53491515
+  - id: AGARICUS_CAP
+    material: player_head
+    name: "Agaricus Cap"
+    rarity: COMMON
+    unavailable: "Needs the Rift"
+    source: "Harvested with a Wand of Farming in Dreadfarm (Rift Dimension)"
+    lore:
+      - "§8Collection Item"
+    components:
+      - id: SKULL_HEAD
+        texture: ebaf10e81b5d86b24cb5bebfb7b6dc3e5d4fc6d469a7ae627b703b36f15a49de
+  - id: AGARICUS_CAP_BUNCH
+    material: player_head
+    name: "Agaricus Cap Bunch"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafted from 4 Agaricus Cap (Agaricus Cap I)"
+    lore:
+      - "§7It's one nether of a cap!"
+    components:
+      - id: SKULL_HEAD
+        texture: afb9b93b4c3737a010d02465b990d145627f8e63e77956e0df4ba61e157a429c
+  - id: AGARICUS_CHUM_CAP
+    material: player_head
+    name: "Agaricus Chumcap"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafted from 8 Agaricus Cap and a Plumber's Bucket (Agaricus Cap IV)"
+    components:
+      - id: SKULL_HEAD
+        texture: dec13263dcdeb397925627917dffa718044988613c8ca8903cb84415c5237cdb
+  - id: AGARICUS_SOUP
+    material: rabbit_stew
+    name: "Agaricus Soup"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafted from 4 Agaricus Cap and a Plumber's Bucket (Agaricus Cap II)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to gain §fSpeed I §7for §a60s§7."
+      - "§8Cooldown: §a60s"
+      - ""
+      - "§eRight-click to consume!"
+  - id: AGATHA_COUPON
+    material: name_tag
+    name: "Agatha's Coupon"
+    rarity: UNCOMMON
+    unavailable: "Needs Agatha's Starlyn Contest"
+    source: "Starlyn Contest rewards (10-45 coupons by bracket); spent in Agatha's shop"
+    components:
+      - id: SELLABLE
+        value: 10000.0
+  - id: AGGOURDIAN
+    material: paper
+    name: "Aggourdian"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Pumpkin)"
+    lore:
+      - "§7Dropped rarely from §bPumpkin §7during"
+      - "§7the §eHarvest Feast §7event."
+    components:
+      - id: SELLABLE
+        value: 50000.0
+  - id: ALCHEMIST_RECIPE
+    material: paper
+    name: "Alchemist Recipe"
+    rarity: EPIC
+    unavailable: "Needs the Great Spook Alchemist experiments (2023 event)"
+    source: "Tyashoi Alchemist: 1 Secret Potion (2023 Alchemist experiments)"
+    lore:
+      - "§7Obtained during the §e2023 §5Alchemist"
+      - "§7experiments!"
+      - ""
+      - "§8Edition #466"
+      - ""
+      - "§7Unlocks the Great Spook Potion in"
+      - "§7the Tyashoi Alchemist's shop."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: ALL_IN_ALOE_FRAGMENT
+    material: gold_nugget
+    name: "All-in Aloe Fragment"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden mutations"
+    source: "Harvested from the All-in Aloe Garden mutation"
+    lore:
+      - "§7Hope you hit it big!"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: AMALGAMATED_CRIMSONITE
+    material: paper
+    name: "Amalgamated Crimsonite (Old)"
+    rarity: RARE
+    unavailable: "Legacy item replaced by the new Amalgamated Crimsonite"
+    source: "Crafted from Enchanted Glowstone Dust, Enchanted Mycelium, Enchanted Magma Cream, Enchanted Blaze Powder, Enchanted Red Sand and Enchanted Nether Wart (old recipe)"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/tokens/amalgamated_crimsonite
+  - id: AMBER_POLISHED_DRILL_ENGINE
+    material: paper
+    name: "Amber-Polished Drill Engine"
+    rarity: RARE
+    unavailable: "Drill Engine slot parts and the Plasma/Precursor Apparatus inputs need the Crystal Hollows and the Drill Mechanic engine slot, which aren't built"
+    source: "Forge: Heart of the Mountain 9, 30 seconds (5 Drill Motor, 5 Perfect Amber Gemstone, 16 Precursor Apparatus, Sapphire-Polished Drill Engine, 32 Plasma)"
+    lore:
+      - "§8Drill Part"
+      - ""
+      - "§6+600 Mining Speed"
+      - "§6+100 Mining Fortune"
+      - ""
+      - "§7Put this item in the §6Drill Engine §7slot"
+      - "§7of a Drill at a §2Drill Mechanic§7!"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 9§c."
+    components:
+      - id: SELLABLE
+        value: 103000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/amber_polished_drill_engine
+  - id: AMBER_POWER_SCROLL
+    material: paper
+    name: "Amber Power Scroll"
+    rarity: EPIC
+    unavailable: "Power Scroll anvil application is not built"
+    source: "Crafted from 48 Enchanted Paper and 16 Fine Amber Gemstone (Gemstone VII)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Gain §6+30 Mining Speed §7for §a5s §7when using"
+      - "§7your §e§lRIGHT CLICK §6Item Ability§7."
+      - ""
+      - "§7Can be combined with any §bitem §7with a §e§lRIGHT"
+      - "§e§lCLICK §6Item Ability §7at an anvil."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - AB
+            ingredients:
+              A:
+                type: ENCHANTED_PAPER
+                amount: 16
+              B:
+                type: FINE_AMBER_GEM
+                amount: 16
+            result:
+              type: AMBER_POWER_SCROLL
+              amount: 1
+  - id: AMETHYST_POWER_SCROLL
+    material: paper
+    name: "Amethyst Power Scroll"
+    rarity: EPIC
+    unavailable: "Power Scroll anvil application is not built"
+    source: "Crafted from 48 Enchanted Paper and 16 Fine Amethyst Gemstone (Gemstone VII)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Gain §a+10 Defense §7for §a5s §7when using your"
+      - "§e§lRIGHT CLICK §6Item Ability§7."
+      - ""
+      - "§7Can be combined with any §bitem §7with a §e§lRIGHT"
+      - "§e§lCLICK §6Item Ability §7at an anvil."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - AB
+            ingredients:
+              A:
+                type: ENCHANTED_PAPER
+                amount: 16
+              B:
+                type: FINE_AMETHYST_GEM
+                amount: 16
+            result:
+              type: AMETHYST_POWER_SCROLL
+              amount: 1
+  - id: ANCIENT_ELEVATOR
+    material: quartz_stairs
+    name: "Ancient Elevator"
+    rarity: SPECIAL
+    unavailable: "Needs the Barrier Street auction event (September 2020 admin gift)"
+    source: "Won at Barrier Street auctions: top 15 bidders"
+    lore:
+      - "§7§oManual operation."
+      - ""
+      - "§7To: §c[ADMIN] Minikloon"
+      - "§7From: §c[ADMIN] Minikloon"
+      - ""
+      - "§8Edition #1"
+      - "§8September 2020"
+  - id: ARACHNE_CRYSTAL
+    material: player_head
+    name: "Arachne Crystal"
+    rarity: EPIC
+    unavailable: "Needs Arachne's Sanctuary and the Arachne fight (Spider's Den), which aren't built"
+    source: "Shaggy: 2 Arachne Fragment, 16 Enchanted Spider Eye, 16 Enchanted String after his Arachne quest"
+    lore:
+      - "§7Place this at the §5Altar §7in §4Arachne's"
+      - "§4Sanctuary §7to call forth the true"
+      - "§7strength of §4Arachne§7."
+      - ""
+      - "§7§o\"What have we done?\" §7- Unknown Spider"
+    components:
+      - id: SKULL_HEAD
+        texture: aa11ba288bd6aa7d49360b03bdc618189154c44e588516ea29caff22946cee00
+      - id: SELLABLE
+        value: 1000.0
+  - id: ARACHNE_KEEPER_FRAGMENT
+    material: paper
+    name: "Arachne's Calling"
+    rarity: RARE
+    unavailable: "Needs Arachne's Keepers and the Arachne altar summoning, which aren't built"
+    source: "Arachne's Keeper mob drop (Spider's Den)"
+    lore:
+      - "§7Place §a4 §7of these at the §5Altar §7in"
+      - "§4Arachne's Sanctuary §7to summon her."
+      - ""
+      - "§7§o\"It's time.\" §7- Uninformed Spider"
+    components:
+      - id: SELLABLE
+        value: 400.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/combat_1/arachnes_calling
+  - id: ARCHERY_CUBE
+    material: player_head
+    name: "Archery Cube"
+    rarity: LEGENDARY
+    unavailable: "Needs the Carnival Zombie Shootout leaderboard rewards"
+    source: "Carnival: Top 500 in Zombie Shootout"
+    lore:
+      - "§8Decoration item"
+      - ""
+      - "§7Obtained during the §eCarnival§7 for"
+      - "§7placing within the §aTop 500 §7in §cZombie"
+      - "§cShootout§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 6f751e54d7cc90d1617b82154e5fab72d97a9bcc76221348d736fa287bb61e84
+  - id: ARMOR_SHOWCASE
+    material: player_head
+    name: "Armor Stand"
+    rarity: UNCOMMON
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Carpentry Table: Iron Ingot 6, Stick 6, Stone (Carpentry 5); Furniture Shop for 100 coins"
+    lore:
+      - "§8Furniture"
+      - "§8Item Showcase"
+      - "§8Storage"
+      - ""
+      - "§7This armor showcase lets you show"
+      - "§7off a full set of armor, plus a single"
+      - "§7weapon (sword, pickaxe, or axe)."
+    components:
+      - id: SKULL_HEAD
+        texture: 70f50ea46644bedf8dfa53af977f8c206e7f3ee4e0faae6e5c8278d77c207ad7
+  - id: ARMOR_STAND
+    material: armor_stand
+    name: "Armor Stand"
+    rarity: COMMON
+    source: "Crafted from 6 Stick and a Smooth Stone Slab (vanilla recipe)"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - OAO
+              - ABA
+            ingredients:
+              A:
+                type: STICK
+                amount: 1
+              B:
+                type: STONE_SLAB
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: ARMOR_STAND
+              amount: 1
+  - id: ARROW_SWAPPER
+    material: paper
+    name: "Arrow Swapper"
+    rarity: UNCOMMON
+    unavailable: "Quiver arrow priority switching (the Arrow Swapper actions) isn't implemented"
+    source: "Jax: 1,000 coins"
+    lore:
+      - "§7Select the arrow type you want to"
+      - "§7take priority in your quiver."
+      - ""
+      - "§aSelected: §cNone"
+      - ""
+      - "§eLeft-click: Previous arrow"
+      - "§eRight-click: Next arrow"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/arrow_swapper
+  - id: ASPIRING_LEAP
+    material: player_head
+    name: "Aspiring Leap"
+    rarity: EPIC
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Crafted from 16 Spirit Leap"
+    lore:
+      - "§6Ability: Aspiring Leap  §e§lRIGHT CLICK"
+      - "§7Allows you to teleport to co-op members on"
+      - "§7your private island or garden!"
+      - "§8Cooldown: §a5s"
+    components:
+      - id: SKULL_HEAD
+        texture: a3826181ce9012b665865f3ac0066307b4d02da281540104e0461ffefa7459fd
+      - id: SELLABLE
+        value: 16000.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - AAA
+              - OAO
+            ingredients:
+              A:
+                type: SPIRIT_LEAP
+                amount: 16
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: ASPIRING_LEAP
+              amount: 1
+  - id: AUTO_REVIVE_PERK_ITEM
+    material: player_head
+    name: "Purchase Revive"
+    rarity: SPECIAL
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Perk menu: 300 Tokens per revive"
+    lore:
+      - "§7Right-click this item to purchase a revive."
+      - ""
+      - "§8Cost: §5300 Tokens"
+    components:
+      - id: SKULL_HEAD
+        texture: b6a76cc22e7c2ab9c540d1244eadba581f5dd9e18f9adacf05280a5b48b8f618
+  - id: BACHELOR_ROSE
+    material: poppy
+    name: "Bachelor's Rose"
+    rarity: SPECIAL
+    unavailable: "Needs Garden visitors and Wild Rose compacting"
+    source: "Crafted from 8 Compacted Wild Rose and 64 Poppy (Wild Rose VII)"
+    lore:
+      - "§7Can be gifted to any eligible NPC to"
+      - "§7invite them to visit your §aGarden§7."
+      - ""
+      - "§eRight-click on an NPC to use!"
+    components:
+      - id: SELLABLE
+        value: 512000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/greenhouse/wild_rose/bachelors_rose
+  - id: BACTE_FRAGMENT
+    material: player_head
+    name: "Bacte Fragment"
+    rarity: RARE
+    unavailable: "Needs the Vampire Slayer, which is disabled"
+    source: "Bacte (Vampire Slayer) mob drop"
+    components:
+      - id: SKULL_HEAD
+        texture: 958b0861f337ed75d1fe6badfc35d2f3aa5b24d42607f81fc86abe53855870f7
+  - id: BAG_OF_CASH
+    material: player_head
+    name: "Bag of Cash"
+    rarity: RARE
+    unavailable: "No longer obtainable (wiki)"
+    source: "Formerly a rare Ghost drop in The Mist"
+    lore:
+      - "§6Sold to shops for 1,000,000 coins!"
+    components:
+      - id: SKULL_HEAD
+        texture: e36e94f6c34a35465fce4a90f2e25976389eb9709a12273574ff70fd4daa6852
+      - id: SELLABLE
+        value: 1000000.0
+  - id: BAG_OF_SEEDS
+    material: paper
+    name: "Bag of Seeds"
+    rarity: SPECIAL
+    unavailable: "Critter Safari hunting isn't built"
+    source: "Floor drop in the Critter Safari"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Can be placed in the §eBirdfeeder§7 to"
+      - "§7attract §eBirds§7."
+      - ""
+      - "§8§oA small bag containing a large"
+      - "§8§oamount of birdseed."
+      - ""
+      - "§6This item will vanish from your"
+      - "§6inventory after leaving the §2Critter"
+      - "§2Safari§6!"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/safari/quest/bag_of_seeds
+  - id: BALLOON_CART
+    material: player_head
+    name: "Balloon Cart"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Summer Reward Bundle (Salesman, rank reward, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: ac96d34a3cced4e4bba25119f74ea31f50f43f90cca2fbcbc6bae8625d60dede
+  - id: BALLOON_SNAKE
+    material: paper
+    name: "Balloon Snake"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      intelligence: 10
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon Reward Chests: The Catacombs Floor I"
+    lore:
+      - "§7Grants §bJump Boost II §7while equipped."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor I Completion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/dungeons/balloon_snake
+  - id: BARRY_PEN
+    material: lever
+    name: "Barry's Montgray Pen"
+    rarity: UNCOMMON
+    unavailable: "Needs the Barry Center protestor mission"
+    source: "Barry: handle every protestor in the Barry Center"
+    lore:
+      - "§7Use at the old election box in"
+      - "§7the back of the HQ."
+      - "§7"
+      - "§7§8Signature Edition - get it?"
+  - id: BASKET_OF_SEEDS
+    material: paper
+    name: "Basket of Seeds"
+    rarity: EPIC
+    unavailable: "Seed Storage and Farmer's Delight abilities aren't built (Anita's shop lists it as unavailable)"
+    source: "Anita: 2 Silver Medal and 30 Jacob's Ticket"
+    lore:
+      - "§6Ability: Seed Storage  §e§lLEFT CLICK"
+      - "§7Place seeds in the basket."
+      - ""
+      - "§6Ability: Farmer's Delight  §e§lRIGHT CLICK"
+      - "§7Automatically seed a row of farmland."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/basket_of_seeds
+  - id: BAT_THE_FISH
+    material: cooked_cod
+    name: "Bat the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs the Spooky Festival Bat Piñata"
+    source: "Bat Piñata drop: 2%"
+    lore:
+      - "§7Where is my cape!"
+  - id: BBQ
+    material: player_head
+    name: "BBQ Grill"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Summer Reward Bundle (Salesman, rank reward, 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 91eaea25f3df8e5f0287def72d446bcdfa97be29cb9e615f77601f1591d4c652
+  - id: BEACH_BALL
+    material: player_head
+    name: "Beach Ball"
+    rarity: COMMON
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Summer Reward Bundle (Salesman, rank reward, 2019)"
+    lore:
+      - "§8Decoration Item"
+    components:
+      - id: SKULL_HEAD
+        texture: 5a5ab05ea254c32e3c48f3fdcf9fd9d77d3cba04e6b5ec2e68b3cbdcfac3fd
+  - id: BEACH_BALL_PERSONALITY
+    material: player_head
+    name: "Beach Ball Minion Skin"
+    rarity: COMMON
+    unavailable: "Needs Reward Bundles"
+    source: "Summer Reward Bundle (Salesman, rank reward)"
+    components:
+      - id: MINION_SKIN
+        name: "Beach Ball"
+        helmet:
+          material: player_head
+          skull_texture: 14fb65ec80d119e8f657ee675a2738801ad7330f2c61cd60fa5b8a88c06956e
+      - id: SKULL_HEAD
+        texture: 14fb65ec80d119e8f657ee675a2738801ad7330f2c61cd60fa5b8a88c06956e
+  - id: BEACH_CHAIR
+    material: player_head
+    name: "Beach Chair"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Summer Reward Bundle (Salesman, rank reward, 2019)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 3bf7611882dcf8969e481fe6662a81cb2d332b7501e7b98e8fae30fb34f964a7
+  - id: BEACH_CHAIR_PLUS
+    material: player_head
+    name: "Beach Chair+"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Summer Reward Bundle (Salesman, rank reward, 2019)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 711eea9e2530acc7794c856438f18af66e80670a188cd52c4d178fddaa33a5f6
+  - id: BEACH_UMBRELLA
+    material: player_head
+    name: "Beach Umbrella"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Summer Reward Bundle (Salesman, rank reward, 2021)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 5a5ab05ea254c32e3c48f3fdcf9fd9d77d3cba04e6b5ec2e68b3cbdcfac3fd
+  - id: BEACON_1
+    material: beacon
+    name: "Beacon I"
+    rarity: RARE
+    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
+    source: "Crafted from 192 Enchanted Mithril, 64 Starfall and 5 Sand (Mithril IX, Heart of the Mountain 1)"
+    lore:
+      - "§7Tier: §bI"
+      - ""
+      - "§7Can be placed on your private island."
+      - ""
+      - "§7Grants special buffs to the island"
+      - "§7owners when powered by §dPower"
+      - "§dCrystals §7obtained from the forge in"
+      - "§7the §2Dwarven Mines§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 1§c."
+  - id: BEACON_2
+    material: beacon
+    name: "Beacon II"
+    rarity: RARE
+    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
+    source: "Forge: upgrade of the previous Beacon tier with Refined Mithril (and Plasma for IV-V)"
+    lore:
+      - "§7Tier: §bII"
+      - ""
+      - "§7Can be placed on your private island."
+      - ""
+      - "§7Grants special buffs to the island"
+      - "§7owners when powered by §dPower"
+      - "§dCrystals §7obtained from the forge in"
+      - "§7the §2Dwarven Mines§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 2§c."
+  - id: BEACON_3
+    material: beacon
+    name: "Beacon III"
+    rarity: EPIC
+    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
+    source: "Forge: upgrade of the previous Beacon tier with Refined Mithril (and Plasma for IV-V)"
+    lore:
+      - "§7Tier: §bIII"
+      - ""
+      - "§7Can be placed on your private island."
+      - ""
+      - "§7Grants special buffs to the island"
+      - "§7owners when powered by §dPower"
+      - "§dCrystals §7obtained from the forge in"
+      - "§7the §2Dwarven Mines§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
+  - id: BEACON_4
+    material: beacon
+    name: "Beacon IV"
+    rarity: EPIC
+    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
+    source: "Forge: upgrade of the previous Beacon tier with Refined Mithril (and Plasma for IV-V)"
+    lore:
+      - "§7Tier: §bIV"
+      - ""
+      - "§7Can be placed on your private island."
+      - ""
+      - "§7Grants special buffs to the island"
+      - "§7owners when powered by §dPower"
+      - "§dCrystals §7obtained from the forge in"
+      - "§7the §2Dwarven Mines§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 4§c."
+  - id: BEACON_5
+    material: beacon
+    name: "Beacon V"
+    rarity: EPIC
+    unavailable: "Needs the Beacon block and Power Crystals on the Private Island, which aren't built"
+    source: "Forge: upgrade of the previous Beacon tier with Refined Mithril (and Plasma for IV-V)"
+    lore:
+      - "§7Tier: §bV"
+      - ""
+      - "§7Can be placed on your private island."
+      - ""
+      - "§7Grants special buffs to the island"
+      - "§7owners when powered by §dPower"
+      - "§dCrystals §7obtained from the forge in"
+      - "§7the §2Dwarven Mines§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+  - id: BEAR_BED
+    material: player_head
+    name: "Bear Bed"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
+  - id: BEAR_BENCH
+    material: player_head
+    name: "Bear Bench"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
+  - id: BEAR_BOOKSHELF
+    material: player_head
+    name: "Bear Bookshelf"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
+  - id: BEAR_CHAIR
+    material: player_head
+    name: "Bear Chair"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
+  - id: BEAR_SIDE_TABLE
+    material: player_head
+    name: "Bear Side Table"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a100e177e2624ba949588eff81389332eec1d39085aa11c05b3f41c702416e89
+  - id: BEDWARS_WOOL
+    material: brown_wool
+    name: "Tree-like Wool"
+    rarity: COMMON
+    unavailable: "Needs the \"Your\" Island zone (joke tree)"
+    source: "Break the tree on \"Your\" Island"
+    lore:
+      - "§7Good for bridging."
+  - id: BEE_HIVE
+    material: player_head
+    name: "Bee Hive"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2023)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: d710f9aa326c7205038392aeb12f45ce22cf6a1336b82129668bea1fc46d4285
+  - id: BEE_SALIVA
+    material: paper
+    name: "Bee Saliva"
+    rarity: EPIC
+    unavailable: "Needs Enchanted Helix Log and Enchanted Honeycomb, which aren't in the game"
+    source: "Crafted from 64 Enchanted Helix Log and an Enchanted Honeycomb Block (Honeycomb VIII)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this item to permanently"
+      - "§7gain §6+1 Foraging Fortune§7."
+      - ""
+      - "§7You can only consume §a5 §7of this item"
+      - "§7before the scratching at the back"
+      - "§7of your throat becomes too much to"
+      - "§7ignore."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/bee_saliva
+  - id: BEHEMOTH_POT_OF_HONEYCOMB
+    material: paper
+    name: "Behemoth Pot of Honeycomb"
+    rarity: LEGENDARY
+    unavailable: "Tree Protection Orders and critter attraction aren't built"
+    source: "Mob drop (Galatea)"
+    lore:
+      - "§8Consumed on use"
+      - ""
+      - "§7Use on a §aTree §7with an active §cTree"
+      - "§cProtection Order §7to lather it with"
+      - "§6Honeycomb§7!"
+      - ""
+      - "§7Upon use, a unique §a Critter §7will"
+      - "§a§lINSTANTLY §7be attracted to the"
+      - "§6Honeycomb§7!"
+      - "§8Type of mob depends upon type of"
+      - "§8tree lathered."
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§4❣ §cRequires §aForaging Skill 30§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/honey/pots/honey_pot_behemoth
+  - id: BERBERIS_BLOWGUN
+    material: stick
+    name: "Berberis Blowgun"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Crafted from 60 Wilted Berberis (Wilted Berberis 2)"
+    lore:
+      - "§6Ability: Swhooomp  §e§lRIGHT CLICK"
+      - "§7Shoot an arrow. Doesn't deal damage. Except"
+      - "§7to chickens and Puffs."
+      - "§8Mana Cost: §b5"
+  - id: BERBERIS_FUEL_INJECTOR
+    material: oak_trapdoor
+    name: "Berberis Fuel Injector"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Crafted from 288 Wilted Berberis (Wilted Berberis IV)"
+    lore:
+      - "§8Minion Upgrade"
+      - ""
+      - "§7This item can be used as a minion"
+      - "§7upgrade, only for §efarming §7minions."
+      - ""
+      - "§7Increases the speed of your minion"
+      - "§7by §a15%§7."
+      - ""
+      - "§7Your minion will occasionally"
+      - "§7generate §aLush Berberis §7items."
+  - id: BERRY_THE_FISH
+    material: player_head
+    name: "Berry the Fish"
+    rarity: SPECIAL
+    unavailable: "Lushlilac bush gathering on Moonglade Marsh isn't built"
+    source: "Lushlilac bush: 0.1% on Moonglade Marsh"
+    lore:
+      - "§7One berry a day. Yeah."
+    components:
+      - id: SKULL_HEAD
+        texture: d9a52673c77ac079ed3472b69fe4e91bd28019f28f3e9d85bf94dfad6e398c4f
+      - id: SELLABLE
+        value: 50000.0
+  - id: BEST_WEAPON_RACK
+    material: player_head
+    name: "Weapon Rack+"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Carpentry Table: Oak Planks 3, Red Carpet 3, Stone 2, Enchantment Table, Enchanted Eye of Ender (Carpentry 15)"
+    lore:
+      - "§8Furniture"
+      - "§8Item Showcase"
+      - "§8Storage"
+      - ""
+      - "§7Show off your best weapon (sword,"
+      - "§7pickaxe, or axe) including a hologram"
+      - "§7with stats!"
+    components:
+      - id: SKULL_HEAD
+        texture: 8a62f131b750866c8de2bfc7e23498fbb5fd21309aae67534bdc2f69fce17e86
+  - id: BINGO_CARD
+    material: paper
+    name: "Bingo Card"
+    rarity: SPECIAL
+    unavailable: "Needs the Bingo event"
+    source: "Bingo event reward: completed the full Bingo Card (18th Bingo, May 2023)"
+    lore:
+      - "§7Obtained during the §618th Bingo Event"
+      - "§7during §aMay 2023 §7for completing the"
+      - "§7entire Bingo Card!"
+      - ""
+      - "§7Player: §6Eisengolem"
+      - "§7Playtime: §a15h"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: BIRCH_FOREST_BIOME_STICK
+    material: stick
+    name: "Birch Forest Biome Stick"
+    rarity: COMMON
+    unavailable: "Needs the Biome Sticks system on the Private Island"
+    source: "Biome Stick (Private Island)"
+    lore:
+      - "§7Allows you to change the biome at"
+      - "§7the §atargeted block §7on your private"
+      - "§7island to §bBirch Forest§7."
+      - ""
+      - "§7Right-click to use or Left-click to"
+      - "§7change the radius it effects."
+      - ""
+      - "§7Selected Radius: §b3"
+  - id: BIRD_HOUSE
+    material: player_head
+    name: "Bird House"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2022)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 6cd1e977c2633e2bc4b2809146464cfc7de3ad4f3fe8fc84c102c30adb90e03c
+  - id: BLACKSMITH_PLUS
+    material: player_head
+    name: "Blacksmith+"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Carpentry Table: Dark Oak Planks 20, Oak Planks 3, Stone 5, Stick, Anvil, Iron Shovel, Iron Pickaxe (Carpentry 23)"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Opens the Anvil menu!"
+    components:
+      - id: SKULL_HEAD
+        texture: 6254a059231f986b7bbf843700e87295a4fce2d79dd98f67b064430c28070c83
+  - id: BLACK_CAT_PLUSH
+    material: player_head
+    name: "Black Cat Plush"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Halloween Reward Bundle (Salesman, rank reward, 2021)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 4137db546ab5991704ea03c53a0592e8d43521f2c9973ff76cb0bd9e910c24a4
+  - id: BLACK_CAT_PLUSHIE
+    material: player_head
+    name: "Black Cat Plushie"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Halloween Reward Bundle (Salesman, rank reward, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: aa3a8adcfdb53e93f0ca1b068d759d8c651578f737dc65f2269dd33968c3cf95
+  - id: BLAZETEKK_HAM
+    material: cooked_porkchop
+    name: "Blazetekk™ Ham"
+    rarity: SPECIAL
+    unavailable: "Removed legacy drop; no longer obtainable (wiki)"
+    source: "Formerly 1% drop from any Crimson Isle mob; A Honk and Seek Adventure (April Fools)"
+    lore:
+      - "§7Savory meat processed by the"
+      - "§4Blazetekk™ Corporation§7, a"
+      - "§7convenient and tasty treat amongst"
+      - "§7the populace."
+      - ""
+      - "§7Obtained from the §dA Honk and Seek"
+      - "§dAdventure §7event during April Fools."
+      - ""
+      - "§8§oLocally sourced."
+  - id: BLENDED_FISH_MIXIN
+    material: player_head
+    name: "Blended Fish Mixin"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event; Mixins need God Potion brewing with the Booster Cookie, which isn't built"
+    source: "Agnes: 128 Waterbourne Lice, up to 3 (Year of the Witch)"
+    lore:
+      - "§8Brewing Ingredient"
+      - ""
+      - "§7Mixins provide a buff that can be"
+      - "§7added to §cGod Potions §7in a brewing"
+      - "§7stand and lasts for the full duration."
+      - ""
+      - "§7Grants §a+3§7 §9Fishy Treats§7 from"
+      - "§7bouncing §5Bouncy Beach Ball§7 and"
+      - "§6Giant Bouncy Beach Ball§7."
+      - ""
+      - "§7Duration: §a36h 0m"
+      - ""
+      - "§7The duration of Mixins can be stacked!"
+      - ""
+      - "§eRight-click to consume!"
+      - "§8(Requires active Booster Cookie)"
+    components:
+      - id: SKULL_HEAD
+        texture: e1155c8fc630dcee6322f6c280fab6b3cefb816c7e0210bf86c4ff97836c9d7b
+  - id: BLIZZARD_BOTTLE
+    material: paper
+    name: "Blizzard in a Bottle Mixin"
+    rarity: RARE
+    unavailable: "Mixins need God Potion brewing with the Booster Cookie, which isn't built"
+    source: "Crafted from 4 Walnut, 64 Hunk of Ice and a True Ice"
+    lore:
+      - "§8Brewing Ingredient"
+      - ""
+      - "§7Mixins provide a buff that can be"
+      - "§7added to §cGod Potions §7in a brewing"
+      - "§7stand and lasts for the full duration."
+      - ""
+      - "§7Increases the effects of §bWeather"
+      - "§7by §a10%§7."
+      - ""
+      - "§7Duration: §a36h 0m"
+      - ""
+      - "§7The duration of Mixins can be stacked!"
+      - ""
+      - "§eRight-click to consume!"
+      - "§8(Requires active Booster Cookie)"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - BCB
+              - OBO
+            ingredients:
+              A:
+                type: WALNUT
+                amount: 4
+              B:
+                type: ICE_HUNK
+                amount: 16
+              C:
+                type: HILT_OF_TRUE_ICE
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: BLIZZARD_BOTTLE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/mixin_blizzard_in_a_bottle
+  - id: BLOODBADGE
+    material: red_dye
+    name: "Bloodbadge"
+    rarity: RARE
+    unavailable: "Needs the Vampire Slayer, which is disabled"
+    source: "Crafted from Coven Seal, Bacte Fragment, Cruxmotion and Leech Supreme Fragment (Vampire Slayer 3)"
+    lore:
+      - "§7You and killing stuff in the rift, name"
+      - "§7a more iconic duo."
+      - ""
+      - "§4☠ §cRequires §5Vampire Slayer 3§c."
+  - id: BLOOD_SOAKED_COINS
+    material: player_head
+    name: "Blood-Soaked Coins"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Crafted from Blood-Stained Coins and 32 Hemoglass (Outside)"
+    lore:
+      - "§7When you pay through the nose,"
+      - "§7you'll end up with a nosebleed."
+    components:
+      - id: SKULL_HEAD
+        texture: f8bb26d18befad40a7535ebac0e18be20f362c000cc508f2b33b43abcc2723e9
+  - id: BLOOD_STAINED_COINS
+    material: player_head
+    name: "Blood-Stained Coins"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Crafted from Freshly-Minted Coins and 4 Hemoglass (Outside)"
+    lore:
+      - "§7This is probably not what they meant"
+      - "§7by \"§cblood money§7\"."
+    components:
+      - id: SKULL_HEAD
+        texture: bbe4898219dbd916c9dfee066084b813ed8f63ff58f2e0b2328c9098e0fd1485
+  - id: BONE_NECKLACE
+    material: paper
+    name: "Bone Necklace"
+    rarity: EPIC
+    default_statistics:
+      defense: 35
+      critical_chance: 3
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Crafted from 96 Soul String, 2 Spirit Bone and a Spirit Wing"
+    lore:
+      - "§6Ability: Gladiator's Will "
+      - "§7Gain §a+3 Defense §7for each enemy"
+      - "§7within §e10 §7blocks up to §a+30 Defense§7."
+      - "§7Range increases to §e30 §7blocks and"
+      - "§7the cap increases to §a+60 Defense"
+      - "§7when you play as a §aTank §7in dungeons."
+      - ""
+      - "§7Increases the range of your"
+      - "§aDiversion §7passive by §e15 §7blocks."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor IV Completion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/dungeons/bone_necklace
+  - id: BONE_REAVER
+    material: iron_sword
+    name: "Bone Reaver"
+    rarity: EPIC
+    default_statistics:
+      damage: 235
+      strength: 90
+      swing_range: 0.5
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Crafted from 20 Enchanted Bone Block, 5 Spirit Bone and a Spirit Sword"
+    lore:
+      - "§7Gear Score: §d325"
+      - ""
+      - "§6Ability: Reaving Strike  §e§lRIGHT CLICK"
+      - "§7Slash in a huge arc, dealing §c125% §7melee"
+      - "§7damage to all enemies hit!"
+      - ""
+      - "§7Deals §c+1% §7damage to §aUndead"
+      - "§amonsters §7for every §a1% §7of your"
+      - "§7missing health."
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor IV Completion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: SWORD
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/dungeons/bone_reaver
+  - id: BONZO_MASK
+    material: player_head
+    name: "Bonzo's Mask"
+    rarity: RARE
+    default_statistics:
+      health: 100
+      defense: 100
+      intelligence: 100
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Bonzo Collection II (50 kills) or Dungeon Reward Chests: The Catacombs Floor I"
+    lore:
+      - "§7Gear Score: §d350"
+      - ""
+      - "§6Ability: Clownin' Around "
+      - "§7Instead of dying, gain damage"
+      - "§7immunity and §a+20 §c Strength §7for §a3s"
+      - "§7and fully replenish your health. The"
+      - "§7cooldown and Strength bonus you"
+      - "§7receive improve based on your"
+      - "§aDungeoneering Skill §7level. This ability"
+      - "§7only works while in §cThe Catacombs§7!"
+      - "§8Cooldown: §a360s"
+      - ""
+      - "§4❣ §cRequires The Catacombs Floor I Completion."
+    components:
+      - id: SKULL_HEAD
+        texture: 12716ecbf5b8da00b05f316ec6af61e8bd02805b21eb8e440151468dc656549c
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: BOOKCASE
+    material: player_head
+    name: "Bookcase"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Carpentry Table: Dark Oak Planks 12, Bookshelf 4 (Carpentry 8)"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7This cosmetic bookcase will make you"
+      - "§7appear smarter to your friends."
+    components:
+      - id: SKULL_HEAD
+        texture: f5596680fd1f838a94dc638ab6893f9395c1df2802718b0ebba19a997a2d9b3f
+  - id: BOOKWORM_BOOK
+    material: book
+    name: "Bookworm's Favorite Book"
+    rarity: RARE
+    unavailable: "Needs the Vacuum and its Bookworm drop"
+    source: "Mob drop (Bookworm)"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to a vacuum, grants"
+      - "§c+10❁ Damage§7."
+      - ""
+      - "§7This can be applied to a vacuum up"
+      - "§7to §a5 §7times!"
+    components:
+      - id: SELLABLE
+        value: 10000.0
+  - id: BOOK_AND_QUILL
+    material: writable_book
+    name: "Book and Quill"
+    rarity: COMMON
+    source: "Crafted from Book, Ink Sac and Feather (vanilla recipe)"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - ABC
+            ingredients:
+              A:
+                type: BOOK
+                amount: 1
+              B:
+                type: INK_SAC
+                amount: 1
+              C:
+                type: FEATHER
+                amount: 1
+            result:
+              type: BOOK_AND_QUILL
+              amount: 1
+  - id: BOTROOT
+    material: paper
+    name: "Botroot"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Nether Wart)"
+    lore:
+      - "§7Dropped rarely from §bNether Wart"
+      - "§7during the §eHarvest Feast §7event."
+    components:
+      - id: SELLABLE
+        value: 50000.0
+  - id: BOTTLED_MISCHIEF
+    material: paper
+    name: "Bottled Mischief"
+    rarity: RARE
+    unavailable: "The Puck mob in Torrhus Canyon isn't built"
+    source: "Puck drop in Torrhus Canyon"
+    lore:
+      - "§7Dropped by the §9Puck §7in §6Torrhus"
+      - "§6Canyon§7."
+      - ""
+      - "§8§oThe very essence of a Puck is"
+      - "§8§omischief. Though it seldom means"
+      - "§8§oharm, it should never be trusted."
+    components:
+      - id: SELLABLE
+        value: 25000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/bottled_mischief
+  - id: BOTTLED_ODONATA
+    material: experience_bottle
+    name: "Bottled Odonata"
+    rarity: RARE
+    unavailable: "Needs the Odonata mob and Empty Odonata Bottle"
+    source: "Catch an Odonata with an Empty Odonata Bottle"
+    lore:
+      - "§7There's an §9Odonata §7in there!"
+      - "§7Look:"
+      - "§b+---------------+"
+      - "§b| §e█§9████████§e█§b |"
+      - "§b| §e█§9████████§e█§b |"
+      - "§b| §e█§9████████§e█§b |"
+      - "§b| §e█§9████████§e█§b |"
+      - "§b| §9███§e████§9███§b |"
+      - "§b| §9██████████§b |"
+      - "§b+---------------+"
+  - id: BOTTLE_OF_JYRRE
+    material: potion
+    name: "Lost Bottle of Jyrre"
+    rarity: COMMON
+    unavailable: "Unobtainable legacy item replaced by the new Bottle of Jyrre (wiki)"
+    source: "Formerly Sherry: 50,000 coins"
+    lore:
+      - "§7Provides a boost to your §b✎"
+      - "§bIntelligence§7! The longer this item"
+      - "§7stays in your inventory, the more"
+      - "§7intelligent you will be after drinking"
+      - "§7it. Must be kept in your inventory at"
+      - "§7all times!"
+      - ""
+      - "§7Intelligence Bonus: §b0"
+      - "§7Duration: §b10 Minutes"
+  - id: BOUNCY_BEACH_BALL
+    material: player_head
+    name: "Bouncy Beach Ball"
+    rarity: EPIC
+    unavailable: "Needs the Year of the Seal event"
+    source: "Fishing during the Year of the Seal: 25% to replace a Good Catch"
+    lore:
+      - "§7Can be fished up during the §9Year of"
+      - "§9the Seal§7."
+      - ""
+      - "§6Ability: Bounce Bonanza  §e§lRIGHT CLICK"
+      - "§7Toss this ball into the air and try"
+      - "§7bouncing it on your head to earn"
+      - "§9Fishy Treats§7. The more bounces, the"
+      - "§7bigger the rewards!"
+      - ""
+      - "§8This item is consumed on use."
+    components:
+      - id: SKULL_HEAD
+        texture: 2adf9d71367cd6e505fb48caaa5acdcdff2a09f66c488daf04d045ee0bf528e1
+  - id: BOUNCY_BOOTS
+    material: leather_boots
+    name: "Bouncy Boots"
+    rarity: RARE
+    default_statistics:
+      health: 55
+      critical_chance: 5
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon mob drop (Bouncy Armor Piece)"
+    lore:
+      - "§7Gear Score: §d75"
+      - ""
+      - "§6Full Set Bonus: Bouncing Arrow §7(0/4)"
+      - "§7Your arrows have a §e25% §7chance to"
+      - "§7bounce to another target after it"
+      - "§7hits something."
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 12."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '173'
+        g: '255'
+        b: '47'
+  - id: BOUNCY_CHESTPLATE
+    material: leather_chestplate
+    name: "Bouncy Chestplate"
+    rarity: RARE
+    default_statistics:
+      health: 120
+      critical_chance: 5
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon mob drop (Bouncy Armor Piece)"
+    lore:
+      - "§7Gear Score: §d140"
+      - ""
+      - "§6Full Set Bonus: Bouncing Arrow §7(0/4)"
+      - "§7Your arrows have a §e25% §7chance to"
+      - "§7bounce to another target after it"
+      - "§7hits something."
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 12."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '173'
+        g: '255'
+        b: '47'
+  - id: BOUNCY_HELMET
+    material: leather_helmet
+    name: "Bouncy Helmet"
+    rarity: RARE
+    default_statistics:
+      health: 65
+      critical_chance: 5
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon mob drop (Bouncy Armor Piece)"
+    lore:
+      - "§7Gear Score: §d85"
+      - ""
+      - "§6Full Set Bonus: Bouncing Arrow §7(0/4)"
+      - "§7Your arrows have a §e25% §7chance to"
+      - "§7bounce to another target after it"
+      - "§7hits something."
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 12."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '173'
+        g: '255'
+        b: '47'
+  - id: BOUNCY_LEGGINGS
+    material: leather_leggings
+    name: "Bouncy Leggings"
+    rarity: RARE
+    default_statistics:
+      health: 105
+      critical_chance: 5
+    unavailable: "Needs Dungeons (The Catacombs)"
+    source: "Dungeon mob drop (Bouncy Armor Piece)"
+    lore:
+      - "§7Gear Score: §d125"
+      - ""
+      - "§6Full Set Bonus: Bouncing Arrow §7(0/4)"
+      - "§7Your arrows have a §e25% §7chance to"
+      - "§7bounce to another target after it"
+      - "§7hits something."
+      - ""
+      - "§4❣ §cRequires Catacombs Skill 12."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '173'
+        g: '255'
+        b: '47'
+  - id: BOX_OF_JUNK
+    material: player_head
+    name: "Box of Junk"
+    rarity: RARE
+    unavailable: "Needs the Raffle of the Century event"
+    source: "Raffle of the Century (minor reward / Gift Bag of the Century)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume this item to unwrap it and"
+      - "§7find some §2Junk§7. Contains a random"
+      - "§7selection of §a5 §7of the following:"
+      - "§7• §aRusty Coin"
+      - "§7• §9Busted Belt Buckle"
+      - "§7• §5Old Leather Boot"
+      - ""
+      - "§8§oFound dumped around the corner by"
+      - "§8§othe raffle box. Unclear if it was"
+      - "§8§ointended to be used as a reward."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: dc88bf05a9a87f2f2f43cbfb780147a4a44cf4d55ce011f77c81e008e2c07ef0
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: BREAD_BOWL
+    material: player_head
+    name: "Bread Bowl"
+    rarity: SPECIAL
+    unavailable: "Needs the Harvest Feast and Kernels"
+    source: "Feast Baker Scott: 10,000 Kernels"
+    lore:
+      - "§7Can be gifted to another player to"
+      - "§7show your appreciation towards them."
+      - ""
+      - "§8Back in the time of Helios, being"
+      - "§8gifted a Bread Bowl was seen as an"
+      - "§8immense honor."
+      - ""
+      - "§eRight-click a player to gift!"
+    components:
+      - id: SKULL_HEAD
+        texture: f764d48532bd39bf41a58d98b1ed6a764dc16c95aaa8639c45c88acbbfc0848
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: BREWING_PLUS
+    material: player_head
+    name: "Brewing+"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Carpentry Table: Brewing Stand, Oak Planks 4, Stone 4, Water Bottle 5 (Carpentry 21)"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Opens the Brewing Stand menu!"
+    components:
+      - id: SKULL_HEAD
+        texture: 3b1b5b765d437082a6d5e086f03ee1f39e76c3f36bcbd29cb7322097f6d7a149
+  - id: BRIDGE_EGG
+    material: egg
+    name: "Bridge Egg"
+    rarity: COMMON
+    source: "Crafted from 8 Stone and 5 Egg (Raw Chicken II)"
+    lore:
+      - "§7Creates a path of stone blocks as it"
+      - "§7travels through the air!"
+    components:
+      - id: SELLABLE
+        value: 10.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: STONE
+                amount: 1
+              B:
+                type: EGG
+                amount: 5
+            result:
+              type: BRIDGE_EGG
+              amount: 1
+  - id: BRITTLE_POWDER
+    material: player_head
+    name: "Brittle Powder"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event"
+    source: "Wither mob drop during the Year of the Witch: 5%"
+    lore:
+      - "§7Drops sometimes from §8☠ Wither§7 mobs"
+      - "§7during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: aec273e91938c253258193e06796174e8397ea60b115f09233343b1b6293a3e5
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: BRONZE_TROPHY_FROG_SACK
+    material: player_head
+    name: "Bronze Trophy Frog Sack"
+    rarity: UNCOMMON
+    unavailable: "Needs Researcher Ribery's Frog Collector milestones"
+    source: "Researcher Ribery: Novice Frog Collector reward (replacement 50,000 coins)"
+    lore:
+      - "§2Trophy Frog §7pickups of §8§lBRONZE"
+      - "§7quality go directly into your sacks."
+      - ""
+      - "§7Capacity: §e512 per trophy"
+      - "§8Sacks sum their capacity."
+      - ""
+      - "§eRight Click to open sack!"
+      - ""
+      - "§4❣ §cRequires Novice Frog Collector."
+    components:
+      - id: SKULL_HEAD
+        texture: 20732e7fb4694c6777948d3bfa3d02b3d5c15ccb1ca2eace9dbc2d6283b41bf1
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: BUBBLES_OF_AIR
+    material: paper
+    name: "Bubbles of Air"
+    rarity: RARE
+    unavailable: "The Inhale ability (refilling air bubbles underwater) isn't implemented"
+    source: "Crafted from 56 Gill Membrane and an Enchanted Sea Lumies (Sea Lumies III)"
+    lore:
+      - "§6Ability: Inhale  §e§lRIGHT CLICK"
+      - "§7Refill your air bubbles when under water on"
+      - "§2Galatea§7! This item will be consumed on use."
+      - "§8Cooldown: §a30s"
+    components:
+      - id: SELLABLE
+        value: 1000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/bubbles_of_air
+  - id: BUCKET
+    material: bucket
+    name: "Bucket"
+    rarity: COMMON
+    source: "Crafted from 3 Iron Ingot (vanilla recipe)"
+    components:
+      - id: SELLABLE
+        value: 4.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AOA
+              - OAO
+            ingredients:
+              A:
+                type: IRON_INGOT
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: BUCKET
+              amount: 1
+  - id: BUILDERS_RULER
+    material: paper
+    name: "Builder's Ruler"
+    rarity: LEGENDARY
+    unavailable: "Needs SkyMart (Copper shop), which isn't built"
+    source: "SkyMart: 20 Copper"
+    lore:
+      - "§6Ability: Area Planner  §e§lRIGHT CLICK"
+      - "§7Right-Click the top of a block to"
+      - "§7place a line of blocks."
+      - ""
+      - "§6Ability: Organized Builder  §e§lSNEAK RIGHT CLICK"
+      - "§7Sneak Right-Click a block to collect"
+      - "§7all blocks in a line."
+      - ""
+      - "§6Ability: Built-in Storage  §e§lLEFT CLICK"
+      - "§7Opens the ruler storage. Blocks will"
+      - "§7be placed from your inventory or"
+      - "§7the ruler storage."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/builders_ruler
+  - id: BUNDLED_SNOWMAN
+    material: player_head
+    name: "Bundled Snowman"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (Private Island furniture), which isn't built"
+    source: "Advent Calendar: Day 20 of the 2022 calendar (all ranks)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: e0d6af15a0f3c30d7e71c1941c337430fc095437a6624509d965697aeb26fa08
+  - id: BUNNY
+    material: player_head
+    name: "Bunny"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: cec242e667aee44492413ef461b810cac356b74d8718e5cec1f892a6b43e5e1
+  - id: BUNNY_ARMCHAIR
+    material: player_head
+    name: "Bunny Armchair"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 3586e0407b8e0c390c0473d85c211aab8368ae03063cc56c022f44513bf9f16c
+  - id: BUNNY_BENCH
+    material: player_head
+    name: "Bunny Bench"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2024)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 4c4fb6a873944747b0e7f135bed633c7c9027a88c90d179843c0d20b4e9e76a0
+  - id: BUNNY_CABINET
+    material: player_head
+    name: "Bunny Cabinet"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 93e668005f5e52f24504e270f20eba7848d8c34bfa39afe6aede016ca2c2907a
+  - id: BUNNY_COFFEE_TABLE
+    material: player_head
+    name: "Bunny Coffee Table"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 3586e0407b8e0c390c0473d85c211aab8368ae03063cc56c022f44513bf9f16c
+  - id: BUNNY_JERRY
+    material: player_head
+    name: "Bunny Jerry"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 822d8e751c8f2fd4c8942c44bdb2f5ca4d8ae8e575ed3eb34c18a86e93b
+  - id: BUNNY_PLUSH
+    material: player_head
+    name: "Bunny Plush"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a58bc7e5b178ce2db72ff347373d2a807be6ed431a25cc170149de60f41eb6bd
+  - id: BUNNY_SOFA
+    material: player_head
+    name: "Bunny Sofa"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 3586e0407b8e0c390c0473d85c211aab8368ae03063cc56c022f44513bf9f16c
+  - id: BUNNY_TV
+    material: player_head
+    name: "Bunny TV"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2025)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: fdea84f6da9d4958d3b3ad38a86202fc26aa654deac2fa0e6839650cc9820dd5
+  - id: BUZZYBEES_FANTABULOUS_DISCO_DESTINATION
+    material: spawner
+    name: "Buzzybee's Fantabulous Disco Destination"
+    rarity: UNCOMMON
+    unavailable: "Needs Pest Vinyls and Botroot (Harvest Feast)"
+    source: "Crafted from 3 Cheesebite, 80 Botroot and a Jukebox"
+    lore:
+      - "§7Place this in your §2Garden §7and fill it"
+      - "§7with Pest Vinyls."
+      - ""
+      - "§7Offline §2 Pests §7will spawn within §a10"
+      - "§7blocks of this if their Pest Vinyl has"
+      - "§7been placed in this."
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - BCB
+              - BBB
+            ingredients:
+              A:
+                type: CHEESEBITE
+                amount: 1
+              B:
+                type: BOTROOT
+                amount: 16
+              C:
+                type: JUKEBOX
+                amount: 1
+            result:
+              type: BUZZYBEES_FANTABULOUS_DISCO_DESTINATION
+              amount: 1
+  - id: CACTUS_FLOWER
+    material: paper
+    name: "Cactus Flower"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Cactus)"
+    lore:
+      - "§7Dropped rarely from §bCactus §7during"
+      - "§7the §eHarvest Feast §7event."
+    components:
+      - id: SELLABLE
+        value: 50000.0
+  - id: CADUCOUS_EXTRACT
+    material: player_head
+    name: "Caducous Extract"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafted from 20 Caducous Stem and 3 Plumber's Bucket (Caducous Stem III)"
+    lore:
+      - "§7Bundling what bees find attractive"
+      - "§7together in an industrial production"
+      - "§7process is definitely what nature"
+      - "§7planned."
+    components:
+      - id: SKULL_HEAD
+        texture: b2c6b57b2d0e778b139ebcd518816e4bd0aeaecdaa0944bb3fef6ff7e1f3d2f1
+  - id: CADUCOUS_FEEDER
+    material: bowl
+    name: "Caducous Feeder"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Crafted from 384 Caducous Stem (Caducous Stem IV)"
+    lore:
+      - "§7Use on a pet to consume an §6Ultimate"
+      - "§6Carrot Candy §7and grant it §a1,650,000"
+      - "§7pet Exp."
+      - ""
+      - "§7Has §e2 charges§7, reloading after §a20h§7."
+      - ""
+      - "§4❣ §cRequires §aProfile older than 7 days§c."
+  - id: CADUCOUS_LEGUME
+    material: sugar_cane
+    name: "Caducous Legume"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafted from 30 Caducous Stem (Caducous Stem II)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to gain §a+90ф Rift Time§7."
+      - "§7May only be used once per visit in the §dRift§7."
+      - "§aConsumed automatically when joining!"
+      - ""
+      - "§eRight-click to consume!"
+  - id: CADUCOUS_STEM
+    material: rose_bush
+    name: "Caducous Stem"
+    rarity: COMMON
+    unavailable: "Needs the Rift"
+    source: "Harvested with a Wand of Farming in Dreadfarm (Rift Dimension)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7The color and shape of flowers are"
+      - "§7a precise record of what bees find"
+      - "§7attractive."
+  - id: CADUCOUS_STEM_BUNCH
+    material: player_head
+    name: "Caducous Stem Bunch"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafted from 4 Caducous Stem (Caducous Stem I)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7Bundling what bees find attractive"
+      - "§7together in an industrial production"
+      - "§7process is definitely what nature"
+      - "§7planned."
+    components:
+      - id: SKULL_HEAD
+        texture: e767391598680b465f2106b70e21ef5196da14f087d1e779dd650d4320b6962a
+  - id: CAGED_WISP
+    material: player_head
+    name: "Caged Wisp"
+    rarity: LEGENDARY
+    unavailable: "Needs Glacite Mineshafts and the Raffle of the Century"
+    source: "Frozen Corpses (Glacite Mineshafts): 0.03%-0.28%; Raffle of the Century"
+    lore:
+      - "§7Loyal companions to the dwarves"
+      - "§7since the beginning, wisps were once"
+      - "§7famously used to light the way down"
+      - "§7in the darkest depths. This one"
+      - "§7seems to have been stuck in a"
+      - "§7broken lantern for a long, long time."
+    components:
+      - id: SKULL_HEAD
+        texture: eaf9810a74e7a82c0c2c44566d13e050519ac3520f0da58c074ae07f0385b479
+      - id: SELLABLE
+        value: 5000000.0
+  - id: CAKE
+    material: cake
+    name: "Cake"
+    rarity: COMMON
+    source: "Crafted from 3 Milk Bucket, 2 Sugar, Egg and 3 Wheat (vanilla recipe)"
+    components:
+      - id: SELLABLE
+        value: 10.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - BCB
+              - DDD
+            ingredients:
+              A:
+                type: MILK_BUCKET
+                amount: 1
+              B:
+                type: SUGAR
+                amount: 1
+              C:
+                type: EGG
+                amount: 1
+              D:
+                type: WHEAT
+                amount: 1
+            result:
+              type: CAKE
+              amount: 1
+  - id: CAKE_COUNTER
+    material: player_head
+    name: "Cake Counter"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (Private Island furniture), which isn't built; needs the Raffle of the Century"
+    source: "Raffle of the Century (minor reward / Gift Bag of the Century)"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Counts and displays the number of"
+      - "§7century cakes eaten on your island."
+    components:
+      - id: SKULL_HEAD
+        texture: 21185676416653bf70603c723ff7a48e080db649a8ce5d65b461bf654874935a
+  - id: CAKE_SOUL
+    material: orange_dye
+    name: "Cake Soul (Random Color)"
+    rarity: MYTHIC
+    unavailable: "Needs Century Cakes and the Raffle of the Century"
+    source: "0.1% chance when eating a Century Cake (8+ hours played)"
+    lore:
+      - "§7Quickly click on a player several"
+      - "§7times while holding this item to"
+      - "§7capture their §dSoul§7 in it!"
+      - ""
+      - "§8Capturing a soul will soulbind this item."
+  - id: CAMPFIRE
+    material: player_head
+    name: "Fire Pit"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Carpentry Table: Stick 16, Enchanted Iron Ingot (Carpentry 11)"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Right-click to toggle the campfire!"
+    components:
+      - id: SKULL_HEAD
+        texture: 3f13df626cfaffdc36458372bab57a263c00b0772bac26c5174cf375b8d44761
+  - id: CANDLE_ARCH
+    material: player_head
+    name: "Candle Arch"
+    rarity: COMMON
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Winter Reward Bundle (Salesman, rank reward, 2019)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: d547c44a25b7e4882078efcc6e22663f41d5a292c5679ab373cdcb7d11aff7c3
+  - id: CANDLE_TABLE
+    material: player_head
+    name: "Candle Table"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Halloween Reward Bundle (Salesman, rank reward, 2021)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: d7ab512029667b4ccf8b537403d9289a3187dfef4ecde18062b102339ab89b77
+  - id: CANDY_BOWL
+    material: player_head
+    name: "Candy Bowl"
+    rarity: COMMON
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Halloween Reward Bundle (Salesman, rank reward, 2019)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 526f95ad09322d5d977a5c7bc0d6e4df4e2bd532532e76850aea7f142ff0bfc6
+  - id: CANDY_CANE_CHAIR
+    material: player_head
+    name: "Candy Cane Bench"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: f046efbda962604416591d10bd14b3c75797b0a77c50b8b7842ab406d499b504
+  - id: CANDY_CANE_TABLE
+    material: player_head
+    name: "Candy Cane Table"
+    rarity: EPIC
+    unavailable: "Needs the placeable furniture system (not built); source not confirmed on the wiki"
+    source: "Seasonal furniture (exact Reward Bundle not confirmed on the wiki)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 27c7140dad90e301aa58a464ca841c9785dce2e0b3cd22378dd3bb0a35e7473b
+  - id: CANDY_THE_FISH
+    material: player_head
+    name: "Candy the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs the Spooky Festival Trick or Treat Chests"
+    source: "Trick or Treat Chest: 0.21%"
+    lore:
+      - "§7Fish flavored."
+    components:
+      - id: SKULL_HEAD
+        texture: 75ba393b926ee69a14d4d853b25d285a868b16c56c919d2b824413e6566d4e55
+  - id: CANE_KNOT
+    material: paper
+    name: "Cane Knot"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Sugar Cane)"
+    lore:
+      - "§7Dropped rarely from §bSugar Cane"
+      - "§7during the §eHarvest Feast §7event."
+      - ""
+      - "§7A bundle of Sugar Cane so tied up"
+      - "§7that it questions our understanding"
+      - "§7of friction and thermodynamics."
+    components:
+      - id: SELLABLE
+        value: 50000.0
+  - id: CARPENTRY_BENCH
+    material: player_head
+    name: "Carpentry Table"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Crafted from 10 Oak Planks, 2 Crafting Table and 4 Stick"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Used for crafting furniture for"
+      - "§7your world. View and craft all of"
+      - "§7your unlocked furniture through the"
+      - "§7Carpentry Table."
+    components:
+      - id: SKULL_HEAD
+        texture: f39d778f398861446f55bba98fb7fc65bd6ba238f6ca85015ee0d132a44931fd
+  - id: CARROT_BED
+    material: player_head
+    name: "Carrot Bed"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a1c217bf43b4d3ef2bfe6e74643e74b1985d312cdc853c135a2c7181f64a6ea4
+  - id: CARROT_BEDSIDE_TABLE
+    material: player_head
+    name: "Carrot Bedside Table"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a1c217bf43b4d3ef2bfe6e74643e74b1985d312cdc853c135a2c7181f64a6ea4
+  - id: CARROT_BENCH
+    material: player_head
+    name: "Carrot Bench"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a1c217bf43b4d3ef2bfe6e74643e74b1985d312cdc853c135a2c7181f64a6ea4
+  - id: CARROT_COLORED_VINYL_SET
+    material: hopper_minecart
+    name: "Carrot-Colored Vinyl Set"
+    rarity: RARE
+    unavailable: "Needs Pest Vinyls, Garden visitors and Carrot Zest (Harvest Feast)"
+    source: "Crafted from 9 Carrot Zest and 15 Enchanted Oak Log"
+    lore:
+      - "§7Fill this with any §a5 §7Pest Vinyls."
+      - ""
+      - "§7Once full, you may gift this to a"
+      - "§bVisitor §7to §dcharm §7them."
+      - ""
+      - "§dCharmed Visitors §7can give better"
+      - "§7rewards next time they visit!"
+      - ""
+      - "§7Vinyls: §a0§8/5"
+      - ""
+      - "§eRight-click to open!"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - BOB
+              - BBB
+            ingredients:
+              A:
+                type: CARROT_ZEST
+                amount: 3
+              B:
+                type: ENCHANTED_OAK_LOG
+                amount: 3
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: CARROT_COLORED_VINYL_SET
+              amount: 1
+  - id: CARROT_PATCH
+    material: player_head
+    name: "Carrot Patch"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2021)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 5bb84ab26528868487253d85ad70aefef1e386c27f5caee376c81d6f7689e48d
+  - id: CARROT_STICK
+    material: carrot_on_a_stick
+    name: "Carrot on a Stick"
+    rarity: COMMON
+    source: "Crafted from Fishing Rod and Carrot (vanilla recipe)"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AO
+              - OB
+            ingredients:
+              A:
+                type: FISHING_ROD
+                amount: 1
+              B:
+                type: CARROT
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: CARROT_STICK
+              amount: 1
+  - id: CARROT_TABLE
+    material: player_head
+    name: "Carrot Table"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: a1c217bf43b4d3ef2bfe6e74643e74b1985d312cdc853c135a2c7181f64a6ea4
+  - id: CARROT_ZEST
+    material: paper
+    name: "Carrot Zest"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Carrot)"
+    lore:
+      - "§7Dropped rarely from §bCarrot §7during"
+      - "§7the §eHarvest Feast §7event."
+    components:
+      - id: SELLABLE
+        value: 50000.0
+  - id: CAULDRON
+    material: player_head
+    name: "Cauldron"
+    rarity: COMMON
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Halloween Reward Bundle (Salesman, rank reward, 2019)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 601d97ff7731bde0e0253286b8c2936fd7e633f137931a4bf41e51e3f8c7d84e
+      - id: SELLABLE
+        value: 10.0
+  - id: CELESTIAL_MASON_JAR
+    material: player_head
+    name: "Celestial Mason Jar"
+    rarity: LEGENDARY
+    unavailable: "Needs the Harvest Feast event; Mixins need God Potion brewing with the Booster Cookie, which isn't built"
+    source: "Crafted from 4 Feast Flask and a Glass Bottle"
+    lore:
+      - "§8Brewing Ingredient"
+      - ""
+      - "§7Mixins provide a buff that can be"
+      - "§7added to §cGod Potions §7in a brewing"
+      - "§7stand and lasts for the full duration."
+      - ""
+      - "§7Grants the following:"
+      - "§8- §b+3 Magic Find"
+      - "§8- §d+5 Tracking"
+      - "§8- §3+3☯ Global Wisdom"
+      - "§8- §6+15 Farming Fortune"
+      - "§8- §6+15 Foraging Fortune"
+      - "§8- §6+15 Mining Fortune"
+      - ""
+      - "§7Duration: §a36h 0m"
+      - ""
+      - "§7The duration of Mixins can be stacked!"
+      - ""
+      - "§eRight-click to consume!"
+      - "§8(Requires active Booster Cookie)"
+    components:
+      - id: SKULL_HEAD
+        texture: 5e3864795cc0c947d43a5cfd19df24c08a07ed7fdae1a9f9ada99d2f86454a08
+  - id: CENTURY_PARTY_INVITATION
+    material: paper
+    name: "Century Party Invitation"
+    rarity: RARE
+    unavailable: "Needs the Raffle of the Century"
+    source: "Raffle of the Century (minor reward / Gift Bag of the Century)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Click on a player while holding this"
+      - "§7item to add their SkyBlock Level"
+      - "§7color to this item."
+      - ""
+      - "§7Find one of each SkyBlock Level"
+      - "§7color to permanently consume this"
+      - "§7item and permanently gain §3+1☯ Social"
+      - "§3Wisdom §7and §6250,000 Coins§7."
+      - ""
+      - "§7Level colors missing:"
+      - "§8[§70§8] - [§739§8] §7Gray"
+      - "§8[§f40§8] - [§f79§8] §fWhite"
+      - "§8[§e80§8] - [§e119§8] §eYellow"
+      - "§8[§a120§8] - [§a159§8] §aGreen"
+      - "§8[§2160§8] - [§2199§8] §2Dark Green"
+      - "§8[§b200§8] - [§b239§8] §bAqua"
+      - "§8[§3240§8] - [§3279§8] §3Cyan"
+      - "§8[§9280§8] - [§9319§8] §9Blue"
+      - "§8[§d320§8] - [§d359§8] §dPink"
+      - "§8[§5360§8] - [§5399§8] §5Purple"
+      - "§8[§6400§8] - [§6439§8] §6Gold"
+      - "§8[§c440§8] - [§c479§8] §cRed"
+      - "§8[§4480§8]+ §4Dark Red"
+      - ""
+      - "§8You may only gain the bonus once!"
+  - id: CENTURY_THE_FISH
+    material: tropical_fish
+    name: "Century the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs the Raffle of the Century"
+    source: "Raffle of the Century: Milestone VII (400 tickets)"
+    lore:
+      - "§7The term 'century' was actually"
+      - "§7named after him, or so he says."
+  - id: CHEST_SHELVES
+    material: player_head
+    name: "Chest Storage"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Carpentry Table: Dark Oak Planks 12, Wooden Trapdoor 2, Chest 4 (Carpentry 14); Furniture Shop for 15,000 coins"
+    lore:
+      - "§8Furniture"
+      - "§8Storage"
+      - ""
+      - "§7This extra large chest looks great"
+      - "§7in any build."
+    components:
+      - id: SKULL_HEAD
+        texture: a280d9e5a4a4c98af0ae94cf109808a91d0a80b5cd3fbbffdf64ad5924210ed7
+  - id: CHICKEN_COOP
+    material: player_head
+    name: "Chicken Coop"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2021)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: f04c153c0a6e255adf62ea8f8c0d4ce1f968974390bcefc52c1312c2395f3f09
+  - id: CHICK_BED
+    material: player_head
+    name: "Little Chick Bed"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2024)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - "§8Spawnpoint"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 40014ce074ea6e719287e74a79615d5929fc6ff42ac81a7e1e45a005f7642179
+  - id: CHICK_DRESSER
+    material: player_head
+    name: "Little Chick Dresser"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2024)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 8f2a517387904329016a8e256c4b55192a6c9b1720e49b5a44019276c9c2fbb3
+  - id: CHICK_NEST
+    material: player_head
+    name: "Chick Nest"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 1ff0699cbc491d71e49f702137f4a3ac117c008941a5ccba1203dc27ff30d0
+  - id: CHICK_TEA_TABLE
+    material: player_head
+    name: "Little Chick Tea Table"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Easter Reward Bundle (Bunny Man, rank reward, 2024)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 64ea584455202be52cc953b9f98d81902b674c6c6d06880a27102358b71d79e1
+  - id: CHILLED_PRISTINE_POTATO
+    material: baked_potato
+    name: "Chilled Pristine Potato"
+    rarity: EPIC
+    unavailable: "Its Pristine effect only applies in Glacite Mineshafts, which aren't built"
+    source: "Brynmor (Dwarven Tavern): 250,000 coins after Heart of the Mountain VII"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Effect: §5+0.1 Pristine §7while in §bGlacite"
+      - "§bMineshafts§7."
+      - "§7Duration: §a60m"
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 7§c."
+  - id: CHILL_THE_FISH
+    material: cooked_cod
+    name: "Chill the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs the Main Lobby holiday fishing event"
+    source: "Fished in the Main Lobby during the holidays, claimed from Jerry"
+    lore:
+      - "§7This fish was found frozen solid in"
+      - "§7the lake of the Main Lobby during"
+      - "§7the Holiday months."
+  - id: CHILL_THE_FISH_2
+    material: cooked_cod
+    name: "Chill the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs the Main Lobby holiday fishing event"
+    source: "Fished in the Main Lobby during the holidays, claimed from Jerry"
+    lore:
+      - "§7This fish was found frozen solid in"
+      - "§7the lake of the Main Lobby during"
+      - "§7the Holiday months."
+  - id: CHIRPING_STEREO
+    material: paper
+    name: "Chirping Stereo"
+    rarity: LEGENDARY
+    unavailable: "Needs the InfiniVacuum Hooverius upgrade (SkyMart)"
+    source: "Mob drop (Galatea)"
+    lore:
+      - "§7Can be used at §aSkyMart §7to upgrade"
+      - "§7the §5InfiniVacuum™ §7to the"
+      - "§6InfiniVacuum™ Hooverius§7, which"
+      - "§7applies the §6Stereo Harmony §7ability."
+      - ""
+      - "§8§oWhile nobody is sure who came up"
+      - "§8§owith the genius design, everyone"
+      - "§8§oagrees that they are one of the"
+      - "§8§otrue engineering greats."
+    components:
+      - id: SELLABLE
+        value: 100000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/pests/chirping_stereo
+  - id: CLAY_BRICK
+    material: brick
+    name: "Brick"
+    rarity: COMMON
+    source: "Smelted from Clay Ball in a furnace"
+    components:
+      - id: SELLABLE
+        value: 2.0
+  - id: COCONUT_DRINK
+    material: player_head
+    name: "Coconut Drink"
+    rarity: EPIC
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Summer Reward Bundle (Salesman, rank reward, 2026)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: e403eeb88ac2ae56afb1aeb7322ea067b676576ce37687f5a39fc55e9b752858
+  - id: COFFEE_TABLE
+    material: player_head
+    name: "Coffee Table"
+    rarity: COMMON
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Carpentry Table: Stick 4, Dark Oak Planks 4, White Wool 4"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7This cosmetic smaller table fits well"
+      - "§7with a single chair."
+    components:
+      - id: SKULL_HEAD
+        texture: f0950b05122a0b51e9ce91485f2f7c179964696a9e36386d49005e9e51d39a9f
+  - id: COFFIN
+    material: player_head
+    name: "Coffin"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Halloween Reward Bundle (Salesman, rank reward, 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween §7cosmetic"
+      - "§7can be placed on your island or"
+      - "§7traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 8d44756e0b4ece8d746296a3d5e297e1415f4ba17647ffe228385383d161a9
+  - id: COLD_ONES
+    material: player_head
+    name: "Cola Cooler"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Summer Reward Bundle (Salesman, rank reward, 2019)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 4524ddfe598f00d643c84fbdc25a91e6a15c2e5b0cf87f32ed4840d49ebc388b
+  - id: COLOSSAL_EXP_BOTTLE
+    material: experience_bottle
+    name: "Colossal Experience Bottle"
+    rarity: EPIC
+    unavailable: "Needs Experience Bottle upgrades (Experimentation Table)"
+    source: "Crafted from Titanic Experience Bottle and a Colossal Experience Bottle Upgrade"
+    lore:
+      - "§7Smash it open to receive experience!"
+    components:
+      - id: SELLABLE
+        value: 5000.0
+  - id: COMMEMORATIVE_MASON_JAR
+    material: player_head
+    name: "Commemorative Mason Jar"
+    rarity: SPECIAL
+    unavailable: "Needs the Harvest Feast event"
+    source: "Harvest Feast: final Feast Milestone"
+    lore:
+      - "§7Obtained during the §61st Harvest"
+      - "§6Feast §7for reaching the highest"
+      - "§bDonation Tier §7possible."
+    components:
+      - id: SKULL_HEAD
+        texture: cad10592b211cd625403e89b0a244c673e7d4429e5df878ccb72a5080a6e468e
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: COMPASS
+    material: compass
+    name: "Compass"
+    rarity: COMMON
+    source: "Crafted from 4 Iron Ingot and Redstone Dust (vanilla recipe)"
+    components:
+      - id: SELLABLE
+        value: 12.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - ABA
+              - OAO
+            ingredients:
+              A:
+                type: IRON_INGOT
+                amount: 1
+              B:
+                type: REDSTONE
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: COMPASS
+              amount: 1
+  - id: CONDENSED_HELIANTHUS
+    material: paper
+    name: "Condensed Helianthus"
+    rarity: LEGENDARY
+    unavailable: "Needs Helianthus (Garden mutation)"
+    source: "Crafted from 9 Helianthus"
+    lore:
+      - "§7The Crème de la Crop"
+    components:
+      - id: SELLABLE
+        value: 2475000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/condensed_helianthus
+  - id: CONDENSED_HONEYCOMB
+    material: player_head
+    name: "Condensed Honeycomb"
+    rarity: RARE
+    unavailable: "Needs Enchanted Honeycomb, which isn't in the game"
+    source: "Crafted from 32 Enchanted Honeycomb (Honeycomb VI)"
+    lore:
+      - "§7A solid chunk of sweet-smelling"
+      - "§7honey. Its smell attracts all sorts of"
+      - "§7critters."
+    components:
+      - id: SKULL_HEAD
+        texture: 176dfeaab20066396a39adca8ebeed367300c445a14d43548106b4dcae61cb55
+  - id: CONDENSED_WATER_LILY
+    material: paper
+    name: "Condensed Lily Pad"
+    rarity: RARE
+    source: "Crafted from 5 stacks of 32 Enchanted Lily Pad (Lily Pad X)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7A truly massive amount of Lily Pads"
+      - "§7mashed into a large ball."
+    components:
+      - id: SELLABLE
+        value: 256000.0
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - AAA
+              - OAO
+            ingredients:
+              A:
+                type: ENCHANTED_LILY_PAD
+                amount: 32
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: CONDENSED_WATER_LILY
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/collections/lily_pad/condensed_lily_pad
+  - id: CONSOLE_PANEL
+    material: player_head
+    name: "Console Panel"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event"
+    source: "Construct mob drop during the Year of the Witch: 5%"
+    lore:
+      - "§7Drops sometimes from ⚙ Construct"
+      - "§7mobs during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: e479d4ef2413fcdc4b39cdc20c5564b5b8d24c1edf4dcec1d063b3e2d8c25f53
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: COOKED_BEEF
+    material: cooked_beef
+    name: "Cooked Beef"
+    rarity: COMMON
+    source: "Smelted from Raw Beef"
+    components:
+      - id: SELLABLE
+        value: 4.0
+  - id: COOKED_CHICKEN
+    material: cooked_chicken
+    name: "Cooked Chicken"
+    rarity: COMMON
+    source: "Smelted from Raw Chicken"
+    components:
+      - id: SELLABLE
+        value: 4.0
+  - id: COOKED_FISH
+    material: cooked_cod
+    name: "Cooked Fish"
+    rarity: COMMON
+    source: "Smelted from Raw Fish"
+    components:
+      - id: SELLABLE
+        value: 8.0
+  - id: COOKED_MUTTON
+    material: cooked_mutton
+    name: "Cooked Mutton"
+    rarity: COMMON
+    source: "Smelted from Raw Mutton"
+    components:
+      - id: SELLABLE
+        value: 5.0
+  - id: COOKED_RABBIT
+    material: cooked_rabbit
+    name: "Cooked Rabbit"
+    rarity: COMMON
+    source: "Smelted from Raw Rabbit"
+    components:
+      - id: SELLABLE
+        value: 4.0
+  - id: COOKIE
+    material: cookie
+    name: "Cookie"
+    rarity: COMMON
+    source: "Crafted from 2 Wheat and Cocoa Beans (vanilla recipe)"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - ABA
+            ingredients:
+              A:
+                type: WHEAT
+                amount: 1
+              B:
+                type: COCOA_BEANS
+                amount: 1
+            result:
+              type: COOKIE
+              amount: 8
+  - id: CORNUCOPIA
+    material: paper
+    name: "Cornucopia"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Wheat)"
+    lore:
+      - "§7Dropped rarely from §bWheat §7during"
+      - "§7the §eHarvest Feast §7event."
+    components:
+      - id: SELLABLE
+        value: 50000.0
+  - id: CORNUCOPIA_CRYSTAL
+    material: player_head
+    name: "Cornucopia Crystal"
+    rarity: EPIC
+    unavailable: "Needs Cornucopia (Harvest Feast) and Farm Crystals"
+    source: "Crafted from 64 Cornucopia and a Farm Crystal"
+    lore:
+      - "§7Can be placed on your §bPrivate Island§7."
+      - ""
+      - "§7While placed down, §9Farming Minions §7will"
+      - "§7work §a10% §7faster. For each unique"
+      - "§9Farming Minion §7placed down, they will"
+      - "§7work an additional §a1% §7faster."
+    components:
+      - id: SKULL_HEAD
+        texture: 2e8a41ded9e9d2693e18bd2cc1a709319156234c376c37ece124234bbdadf37f
+  - id: COVEN_SEAL
+    material: nether_wart
+    name: "Coven Seal"
+    rarity: UNCOMMON
+    unavailable: "Needs the Vampire Slayer, which is disabled"
+    source: "Riftstalker Bloodfiend guaranteed drop (8-128 by tier)"
+    lore:
+      - "§7Given to you by a powerful"
+      - "§7vampire, proving you bested them"
+      - "§7in combat."
+  - id: CRAB
+    material: player_head
+    name: "Crab"
+    rarity: RARE
+    unavailable: "Needs Reward Bundles (rank-gated seasonal rewards) and the placeable furniture system, which aren't built"
+    source: "Summer Reward Bundle (Salesman, rank reward, 2022)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: b797fe5499191ddec94f50fa6ab9cbc18c9cd6fa1b97e36b4d519b623193d5
+  - id: CRAFTING_PLUS
+    material: player_head
+    name: "Crafting Table+"
+    rarity: RARE
+    unavailable: "Needs the Carpentry Table and the placeable furniture system, which aren't built"
+    source: "Carpentry Table: Dark Oak Planks 14, Oak Planks 4, Stone 10, Stick 3, Iron Hoe 2 (Carpentry 19); Furniture Shop for 10,000 coins"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Opens the Crafting menu!"
+    components:
+      - id: SKULL_HEAD
+        texture: 40ded1ffc6e9b3cd284102a22bd396d68cf70df263240407f17db8587eb4710d
+  - id: CREATIVE_MIND
+    material: painting
+    name: "Creative Mind"
+    rarity: SPECIAL
+    unavailable: "Staff-granted trophy; no in-game source"
+    source: "Awarded for a suggestion implemented into SkyBlock"
+    lore:
+      - "§7§oOriginal, visionary, inventive"
+      - "§7§oand innovative! I would even add"
+      - "§7§oingenious, clever! A"
+      - "§7§omasterpiece!"
+      - ""
+      - "§7§8§oThis painting is a relic of"
+      - "§8§othe past, the writing on the"
+      - "§8§oback is unreadable."
+  - id: CRUNCHY_BUG
+    material: paper
+    name: "Crunchy Bug"
+    rarity: RARE
+    unavailable: "Needs the Year of the Witch event"
+    source: "Critter mob drop during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §a Critter"
+      - "§7mobs during the §5Year of the Witch§7!"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/crunchy_bug
+  - id: CRUXMOTION
+    material: player_head
+    name: "Cruxmotion"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Crafted from 6 different Crux items"
+    lore:
+      - "§7Ultimately, it's life that is weird."
+    components:
+      - id: SKULL_HEAD
+        texture: 1e82a10a7da23e3e1b1954529d43d85bc196a951f5c5caca244421a6e3b05f
+  - id: CRYPT_WITHERLORD_BOOTS
+    material: leather_boots
+    name: "Crypt Witherlord Boots"
+    rarity: EPIC
+    default_statistics:
+      defense: 65
+      speed: 5
+    unavailable: "Unobtainable Dungeon armor (wiki); needs Dungeons"
+    source: "Essence upgrade (Essence Guide only)"
+    lore:
+      - "§7Gear Score: §d140"
+      - ""
+      - "§7Reduces damage from Withers by"
+      - "§75%"
+      - ""
+      - "§c18§c."
+      - ""
+      - "§7§4❣ §cRequires §cCatacombs Skill"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BOOTS
+      - id: LEATHER_COLOR
+        r: '69'
+        g: '1'
+        b: '1'
+  - id: CRYPT_WITHERLORD_CHESTPLATE
+    material: leather_chestplate
+    name: "Crypt Witherlord Chestplate"
+    rarity: EPIC
+    default_statistics:
+      defense: 120
+      speed: 5
+    unavailable: "Unobtainable Dungeon armor (wiki); needs Dungeons"
+    source: "Essence upgrade (Essence Guide only)"
+    lore:
+      - "§7Gear Score: §d250"
+      - ""
+      - "§7Reduces damage from Withers by"
+      - "§75%"
+      - ""
+      - "§c18§c."
+      - ""
+      - "§7§4❣ §cRequires §cCatacombs Skill"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CHESTPLATE
+      - id: LEATHER_COLOR
+        r: '69'
+        g: '1'
+        b: '1'
+  - id: CRYPT_WITHERLORD_HELMET
+    material: leather_helmet
+    name: "Crypt Witherlord Helmet"
+    rarity: EPIC
+    default_statistics:
+      defense: 70
+      speed: 5
+    unavailable: "Unobtainable Dungeon armor (wiki); needs Dungeons"
+    source: "Essence upgrade (Essence Guide only)"
+    lore:
+      - "§7Gear Score: §d150"
+      - ""
+      - "§7Reduces damage from Withers by"
+      - "§75%"
+      - ""
+      - "§c18§c."
+      - ""
+      - "§7§4❣ §cRequires §cCatacombs Skill"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+      - id: LEATHER_COLOR
+        r: '69'
+        g: '1'
+        b: '1'
+  - id: CRYPT_WITHERLORD_LEGGINGS
+    material: leather_leggings
+    name: "Crypt Witherlord Leggings"
+    rarity: EPIC
+    default_statistics:
+      defense: 95
+      speed: 5
+    unavailable: "Unobtainable Dungeon armor (wiki); needs Dungeons"
+    source: "Essence upgrade (Essence Guide only)"
+    lore:
+      - "§7Gear Score: §d200"
+      - ""
+      - "§7Reduces damage from Withers by"
+      - "§75%"
+      - ""
+      - "§c18§c."
+      - ""
+      - "§7§4❣ §cRequires §cCatacombs Skill"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: LEGGINGS
+      - id: LEATHER_COLOR
+        r: '69'
+        g: '1'
+        b: '1'
+  - id: CRYSTALIZED_MOONLIGHT
+    material: paper
+    name: "Crystalized Moonlight"
+    rarity: UNCOMMON
+    unavailable: "Needs the Harvest Feast event"
+    source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Moonflower)"
+    lore:
+      - "§7Dropped rarely from §bMoonflower"
+      - "§7during the §eHarvest Feast §7event."
+    components:
+      - id: SELLABLE
+        value: 50000.0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/community_center/mayor/finnegan/crystalized_moonlight

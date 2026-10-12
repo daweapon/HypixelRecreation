@@ -31,11 +31,15 @@ public class InteractableRegistry {
         MythologicalItemHandlers.registerInteractables();
         BottleOfJyrre.registerInteractables();
         net.swofty.type.skyblockgeneric.consumable.Salt.registerInteractables();
+        net.swofty.type.skyblockgeneric.consumable.ItemBundle.registerInteractables();
+        net.swofty.type.skyblockgeneric.consumable.DwarvenOs.registerInteractables();
         net.swofty.type.skyblockgeneric.consumable.GreatSpookPotion.registerInteractables();
         SnowCannon.registerInteractables();
         CrimsonItemHandlers.registerInteractables();
         ReaperPepper.registerInteractables();
+        net.swofty.type.skyblockgeneric.consumable.VialOfVenom.registerInteractables();
         PetItems.registerInteractables();
+        net.swofty.type.skyblockgeneric.bank.PersonalBankItem.registerInteractables();
         net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments.registerInteractables();
         register("SKYBLOCK_MENU_INTERACT", InteractableItemConfig.builder().rightClickHandler(
                 ((skyBlockPlayer, skyBlockItem) -> skyBlockPlayer.openView(new GUISkyBlockMenu()))

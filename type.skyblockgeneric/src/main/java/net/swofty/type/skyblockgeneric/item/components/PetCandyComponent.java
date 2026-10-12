@@ -17,15 +17,24 @@ public class PetCandyComponent extends SkyBlockItemComponent {
 
     private final double experience;
     private final boolean countsTowardsCap;
+    private final int levels;
+    private final boolean toMaxLevel;
 
-    private PetCandyComponent(double experience, boolean countsTowardsCap) {
+    private PetCandyComponent(double experience, boolean countsTowardsCap, int levels, boolean toMaxLevel) {
         this.experience = experience;
         this.countsTowardsCap = countsTowardsCap;
+        this.levels = levels;
+        this.toMaxLevel = toMaxLevel;
         addInheritedComponent(new InteractableComponent(this::feed, null, null));
     }
 
     public static PetCandyComponent parse(SafeConfig config) {
-        return new PetCandyComponent(config.getDouble("experience", 0.0), config.getBoolean("counts_towards_cap", true));
+        return new PetCandyComponent(config.getDouble("experience", 0.0), config.getBoolean("counts_towards_cap", true),
+                config.getInt("levels", 0), config.getBoolean("to_max_level", false));
+    }
+
+    public boolean grantsLevels() {
+        return levels > 0 || toMaxLevel;
     }
 
     private void feed(SkyBlockPlayer player, SkyBlockItem candy) {

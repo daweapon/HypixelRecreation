@@ -152,7 +152,7 @@ public enum SkyBlockXPSource {
     REAPER_PEPPERS(Group.CONSUMABLES, null, 50, Availability.LIVE, Material.RED_DYE),
     MCGRUBBERS_BURGER(Group.CONSUMABLES, null, 25, Availability.NOT_IN_GAME, Material.COOKED_BEEF),
     WRIGGLING_LARVA(Group.CONSUMABLES, null, 25, Availability.NOT_IN_GAME, Material.PAPER),
-    VIAL_OF_VENOM(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.POTION),
+    VIAL_OF_VENOM(Group.CONSUMABLES, null, 10, Availability.LIVE, Material.POTION),
     FESTERING_MAGGOT(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.WHITE_DYE),
     REFINED_JYRRE(Group.CONSUMABLES, null, 10, Availability.LIVE, Material.POTION),
     REFINED_DARK_CACAO_TRUFFLE(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.COCOA_BEANS),

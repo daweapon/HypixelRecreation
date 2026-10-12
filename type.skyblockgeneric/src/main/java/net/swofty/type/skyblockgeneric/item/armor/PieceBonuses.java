@@ -42,7 +42,7 @@ public final class PieceBonuses {
         if (wearer == null || item == null || item.isAir()) return ItemStatistics.empty();
         String id = item.getAttributeHandler().getTypeAsString();
         if (id == null) return ItemStatistics.empty();
-        ServerType server = HypixelConst.getTypeLoader().getType();
+        ServerType server = HypixelConst.getTypeLoader() == null ? null : HypixelConst.getTypeLoader().getType();
         if (TANK_MINER.contains(id)) {
             double bonus = depthCoating(item.getAttributeHandler().getStatistics().getOverall(ItemStatistic.DEFENSE),
                     isOnMiningIsland(server));

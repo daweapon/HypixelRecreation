@@ -1,0 +1,3525 @@
+items:
+  - id: CRYSTAL_BALL
+    material: player_head
+    name: "Crystal Ball"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
+    source: "Reward Bundle (MVP++ rank, available since 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Halloween Cosmetic"
+      - ""
+      - "§7This exclusive §6Halloween"
+      - "§6§7cosmetic can be placed on your"
+      - "§7island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 4c77dfd21598a3974fa85919a15c0949fec734451b122189ba215d0a9d8bebf
+  - id: DARK_CACAO_TRUFFLE
+    material: player_head
+    name: "Dark Cacao Truffle"
+    rarity: RARE
+    source: "Chocolate Shop: 2.5B Chocolate each, up to 3 per SkyBlock year, needs Chocolate Factory IV"
+    lore:
+      - "§7Consume to boost your §6 Cocoa"
+      - "§6Beans Fortune §7for §a60m§7."
+      - ""
+      - "§7Keep this item in your inventory to"
+      - "§7increase the bonus up to §6+30"
+      - "§6Cocoa Beans Fortune§7, at which point"
+      - "§7the item §c§oevolves§7!"
+      - ""
+      - "§7Current Bonus: §6+0 Cocoa Beans Fortune"
+      - ""
+      - ""
+      - "§8Not active yet: Consume effect and evolving bonus are not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: db9db373cadbec1912a9ab386d31ceb3e0cd4d6a64f222426588a3b2eb31ed29
+  - id: DARK_CANDY
+    material: player_head
+    name: "Dark Candy"
+    rarity: RARE
+    unavailable: "The Great Spook's Vargul the Unearthed and Primal Fears aren't built"
+    source: "Drops from Primal Fears and the mobs they become; traded to Vargul the Unearthed"
+    lore:
+      - "§7Can be brought to §cVargul the"
+      - "§cUnearthed §7at the back of the Hub"
+      - "§7island during the §5Great Spook§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 7c866e4239551428f9c814d9dc11e7002e043b87f590f1fdcb4ff6bb497b8e18
+  - id: DARK_CLAYMORE
+    material: stone_sword
+    name: "Dark Claymore"
+    rarity: LEGENDARY
+    default_statistics:
+      damage: 500
+      strength: 100
+      critical_damage: 100
+      swing_range: 2
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Reward Chests of The Catacombs Master Mode Floor VII (150,000,000 Coins), or Raffle of the Century"
+    lore:
+      - "§7Gear Score: §d680"
+      - "§7Gemstones: §8[⚔] [⚔]"
+      - ""
+      - "§8§oThat thing was too big to be called a"
+      - "§8§osword, it was more like a large hunk"
+      - "§8§oof stone."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Master Mode The Catacombs Floor VII"
+      - "§cCompletion."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: SWORD
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/dark_claymore
+  - id: DARK_GOGGLES
+    material: player_head
+    name: "Dark Goggles"
+    rarity: RARE
+    default_statistics:
+      intelligence: 150
+      ability_damage: 25
+    source: "Ophelia (Catacombs Entrance) for 80,000 Coins"
+    lore:
+      - "§7Gear Score: §d100"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: SKULL_HEAD
+        texture: 29319525825f1f30727eb940d3a06426bc4cec07fbd80af5cd146e3eb3879f68
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: DARK_PEBBLE
+    material: flint
+    name: "Dark Pebble"
+    rarity: COMMON
+    unavailable: "Needs the Rift"
+    source: "Rift crafting material (exact source unverified)"
+    lore:
+      - "§5§kX§5 Rift-Transferable §5§kX"
+  - id: DARK_QUEENS_SOUL_DROP
+    material: clay_ball
+    name: "Dark Queen's Soul"
+    rarity: EPIC
+    unavailable: "Needs Arachne (Spider's Den boss), which isn't built"
+    source: "Dropped by Arachne"
+    lore:
+      - "§7A portion of Arachne's Soul that can"
+      - "§7be used to craft items."
+  - id: DEADGEHOG_SPINE
+    material: arrow
+    name: "Deadgehog Spine"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Drops from Deadgehogs in the Rift"
+    lore:
+      - "§7Contrary to popular belief,"
+      - "§7Deadgehogs aren't rodents."
+      - ""
+      - "§7They are in fact mangled wraith"
+      - "§7remnants of warriors who couldn't"
+      - "§7find true love."
+  - id: DEAD_CAT_DETECTOR
+    material: poppy
+    name: "Dead Cat Detector"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Cat Detector from Sad Jacquelle's quest evolves after finding a piece of Montezuma's soul"
+    lore:
+      - "§6Ability: Meownar  §e§lRIGHT CLICK"
+      - "§7Ping the §5Rift §7for parts of"
+      - "§9Montezuma§7's soul."
+      - "§8Cooldown: §a9s"
+      - ""
+      - "§7Found: §99/9 Soul Pieces"
+  - id: DEAD_MANS_CHESTPLATE
+    material: chainmail_chestplate
+    name: "Dead Man's Chestplate"
+    rarity: RARE
+    unavailable: "Needs Glacite Mineshafts (Frozen Corpses), which aren't built"
+    source: "Drops from Frozen Corpses (about 1.5% from Umber and Tungsten Corpses)"
+    lore:
+      - "§7\"That horribly rigid, overfrozen"
+      - "§7water in nearby lake almost kills"
+      - "§7everything.\""
+  - id: DEAD_MANS_JOURNAL
+    material: paper
+    name: "Dead Man's Journal"
+    rarity: EPIC
+    unavailable: "Needs Glacite Mineshafts and the Great Glacite Lake throw interaction, which aren't built"
+    source: "Throw a Dead Man's Chestplate into the Great Glacite Lake"
+    lore:
+      - "§7A soggy journal that you retrieved"
+      - "§7from the §bGreat Glacite Lake§7."
+      - ""
+      - "§eRight-click to view!"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/dead_mans_journal
+  - id: DEAD_PLANT
+    material: dead_bush
+    name: "Dead Plant"
+    rarity: UNCOMMON
+    unavailable: "Needs the Garden Greenhouse, which isn't built"
+    source: "Forms in the Greenhouse when a plant's water reaches -100 or a mutation decays"
+    lore:
+      - "§7Once full of life, now a reminder of"
+      - "§7your terrible gardening skills."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/greenhouse/dead_plant
+  - id: DEAD_SEED
+    material: player_head
+    name: "Dead Seed"
+    rarity: RARE
+    unavailable: "Using Enchanted Bone Meal on Dead Bushes isn't built"
+    source: "Use Enchanted Bone Meal on a Dead Bush"
+    lore:
+      - "§7What came first, the dead bush or"
+      - "§7the dead seed?"
+    components:
+      - id: SKULL_HEAD
+        texture: e655da51a9d6f657db2f7373abfaa40741c81e8e1bebc1bc6ff961bcbf89d0c8
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: DECAYED_BAT
+    material: player_head
+    name: "Decayed Bat"
+    rarity: RARE
+    unavailable: "The 2021 Great Spook Roofed Forest Island bat isn't built"
+    source: "Hit the Bat on a Roofed Forest Island with a Wither Bow firing Icy Arrows (Great Spook 2021)"
+    lore:
+      - "§7A withering husk of its former self."
+    components:
+      - id: SKULL_HEAD
+        texture: acc1950461d54687f40162e4ecffacf60a46e416f2534fa23a0091d0ea6f2ec1
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: DECK_CHAIR
+    material: player_head
+    name: "Deck Chair"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
+    source: "Reward Bundle (MVP rank, 2 per bundle, available since 2021)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 3bf7611882dcf8969e481fe6662a81cb2d332b7501e7b98e8fae30fb34f964a7
+  - id: DEEPFRIES
+    material: paper
+    name: "Deepfries"
+    rarity: UNCOMMON
+    unavailable: "The Harvest Feast event and Garden pests aren't built"
+    source: "Harvest Feast rare drop (about 0.006% of mature Potatoes, 15% from Locusts, 30% from Field Mice)"
+    lore:
+      - "§7Dropped rarely from §bPotato §7during"
+      - "§7the §eHarvest Feast §7event."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/deepfries
+  - id: DEEPTERROR_MIXIN
+    material: player_head
+    name: "Deepterror Mixin"
+    rarity: RARE
+    unavailable: "Mixins (God Potion buffs) aren't built"
+    source: "Crafted from 1 Ritual Residue and 64 Mite Gel"
+    lore:
+      - "§8Brewing Ingredient"
+      - ""
+      - "§7Mixins provide a buff that can be"
+      - "§7added to §cGod Potions §7in a brewing"
+      - "§7stand and lasts for the full duration."
+      - ""
+      - "§7Gain §c+210 Health §7and §a+40"
+      - "§aDefense §7in §dThe End §7and the §cCrimson"
+      - "§cIsle§7."
+      - ""
+      - "§7Duration: §a36h 0m"
+      - ""
+      - "§7The duration of Mixins can be stacked!"
+      - ""
+      - "§eRight-click to consume!"
+      - "§8(Requires active Booster Cookie)"
+    components:
+      - id: SKULL_HEAD
+        texture: 5b8ec9e72a2962d9c12b7853aac8721770840f5145cdfe1e47a580fd8bd7f136
+  - id: DEEP_OCEAN_BIOME_STICK
+    material: stick
+    name: "Deep Ocean Biome Stick"
+    rarity: COMMON
+    unavailable: "Changing the biome of a private island isn't built"
+    source: "Crafted from an Enchanted Ink Sac and 2 Sticks"
+    lore:
+      - "§7Allows you to change the biome at"
+      - "§7the §atargeted block §7on your private"
+      - "§7island to §bDeep Ocean§7."
+      - ""
+      - "§7Right-click to use or Left-click to"
+      - "§7change the radius it effects."
+      - ""
+      - "§7Selected Radius: §b3"
+  - id: DEFUSE_KIT
+    material: shears
+    name: "Defuse Kit"
+    rarity: UNCOMMON
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Secrets"
+    lore:
+      - "§7Can be used to defuse Dungeon"
+      - "§7traps. Successful defusing of traps"
+      - "§7may increase your §b Intelligence§7!"
+      - "§7(Maximum +10)"
+      - ""
+      - "§7Traps Defused: §a0"
+    components:
+      - id: DUNGEON_ITEM
+  - id: DESERT_BIOME_STICK
+    material: stick
+    name: "Desert Biome Stick"
+    rarity: COMMON
+    unavailable: "Changing the biome of a private island isn't built"
+    source: "Crafted from 64 Sand and 2 Sticks"
+    lore:
+      - "§7Allows you to change the biome at"
+      - "§7the §atargeted block §7on your private"
+      - "§7island to §bDesert§7."
+      - ""
+      - "§7Right-click to use or Left-click to"
+      - "§7change the radius it effects."
+      - ""
+      - "§7Selected Radius: §b3"
+  - id: DESERT_ISLAND
+    material: player_head
+    name: "Desert Island"
+    rarity: COMMON
+    unavailable: "Spawning island biomes from a placed item isn't built"
+    source: "Crafted from 10 Cactus, 5 Sugar Cane and 30 Sand (needs Cactus V)"
+    lore:
+      - "§7Place this in your private world to"
+      - "§7spawn a Desert island!"
+    components:
+      - id: SKULL_HEAD
+        texture: 8314053891fb8a2ad7a69ef43329360aadea81ad515c5f875c02bd0cd92333be
+  - id: DESERT_ISLAND_CRYSTAL
+    material: player_head
+    name: "Desert Crystal"
+    rarity: UNCOMMON
+    unavailable: "Spawning island biomes from a placed item isn't built"
+    source: "Spawned by placing a Desert Island"
+    lore:
+      - "§7Can be placed on your §bPrivate Island§7."
+      - ""
+      - "§7While placed down, spawns Sugar"
+      - "§7Cane, Cactus, and Dead Bushes on"
+      - "§7nearby Sand."
+      - ""
+      - "§7Effective Radius: §b16"
+    components:
+      - id: SKULL_HEAD
+        texture: f35ae57695353e335ddee24ccbb582324dd06896609b34cb72ef416eceecfd0c
+  - id: DESIGNER_COFFEE_BEANS
+    material: paper
+    name: "Designer Coffee Beans"
+    rarity: UNCOMMON
+    unavailable: "The Harvest Feast event and Garden pests aren't built"
+    source: "Harvest Feast rare drop from Cocoa Beans"
+    lore:
+      - "§7Dropped rarely from §bCocoa Beans"
+      - "§7during the §eHarvest Feast §7event."
+  - id: DESK
+    material: player_head
+    name: "Desk"
+    rarity: COMMON
+    unavailable: "Furniture placement and the Carpentry Table aren't built"
+    source: "Crafted at the Carpentry Table (Carpentry VII)"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+    components:
+      - id: SKULL_HEAD
+        texture: 4c3e8c194c9f14fd98c2347a4cc4fcc3d755d948bdc58e42926d9d6f45b620a5
+  - id: DETECTIVE_SCANNER
+    material: player_head
+    name: "Detective Scanner"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Claimed from Detective Amog"
+    lore:
+      - "§6Ability: Detect!  §e§lRIGHT CLICK"
+      - "§7Investigate a clue or abnormality."
+      - "§8Mana Cost: §b10"
+      - "§8Cooldown: §a4s"
+    components:
+      - id: SKULL_HEAD
+        texture: 4578493b5697ab29a196d35acfa44054b44f3e5498efa22ef5b0851b2477e090
+  - id: DETECTIVE_WALLET
+    material: player_head
+    name: "Wallet"
+    rarity: EPIC
+    unavailable: "Needs the Rift"
+    source: "Rift quest reward (exact source unverified)"
+    lore:
+      - "§7§oIt belonged to a world-renowned"
+      - "§7§odetective whose lifelong dream has"
+      - "§7§oalways been to investigate his own"
+      - "§7§omurder case."
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    components:
+      - id: SKULL_HEAD
+        texture: bb57aeb7a86818e3fab639821c0f76de024b43a35e7f0002fb48444b8bc77f19
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: DIAMOND_BONZO_HEAD
+    material: player_head
+    name: "Diamond Bonzo Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 50
+      defense: 20
+      strength: 10
+    unavailable: "Needs Dungeons"
+    source: "Crafted from the Golden Bonzo Head and 8 Enchanted Diamond Blocks after defeating the boss 1,000 times"
+    lore:
+      - "§7Gear Score: §d100"
+      - ""
+      - "§7Obtained from killing §cBonzo §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor I§7."
+      - ""
+      - "§8Involved in the dark arts due to his"
+      - "§8parents' insistence. Originally worked"
+      - "§8as a Circus clown."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Bonzo Collection 7."
+    components:
+      - id: SKULL_HEAD
+        texture: 2ae201b06f10b5b4eb0130ecd7d59fac7e4e013bbd4f5d5d0463580fb0549a8b
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: DIAMOND_CHEST
+    material: player_head
+    name: "Diamond Chest+"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built"
+    source: "Crafted at the Carpentry Table (Carpentry XX) from 12 Chests and 64 Enchanted Diamond"
+    lore:
+      - "§8Furniture"
+      - "§8Storage"
+      - ""
+      - "§7You can store three pages of items"
+      - "§7in this chest!"
+    components:
+      - id: SKULL_HEAD
+        texture: e6eb06ba8d6c09320bf754bb98e75090a02a49456e117e9af666b24fe7647bb8
+  - id: DIAMOND_LIVID_HEAD
+    material: player_head
+    name: "Diamond Livid Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 160
+      defense: 60
+      strength: 30
+    unavailable: "Needs Dungeons"
+    source: "Crafted from the Golden Livid Head and 8 Enchanted Diamond Blocks after defeating the boss 1,000 times"
+    lore:
+      - "§7Gear Score: §d310"
+      - ""
+      - "§7Obtained from killing §cLivid §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor V§7."
+      - ""
+      - "§8Strongly believes he will become the"
+      - "§8Lord one day. Subject of mockeries,"
+      - "§8even from his disciples."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Livid Collection 7."
+    components:
+      - id: SKULL_HEAD
+        texture: 9268e36505f1312384eb36ed477f4c2053576c60058fd26bede24d90cb4cf7bf
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: DIAMOND_NECRON_HEAD
+    material: player_head
+    name: "Diamond Necron Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 220
+      defense: 80
+      strength: 40
+    unavailable: "Needs Dungeons"
+    source: "Crafted from the Golden Necron Head and 8 Enchanted Diamond Blocks after defeating the boss 1,000 times"
+    lore:
+      - "§7Gear Score: §d420"
+      - ""
+      - "§7Obtained from killing §cMaxor, Storm,"
+      - "§cGoldor, and Necron §7in §cThe Catacombs"
+      - "§7lots of times. Grants §a2x §7stats on §cThe"
+      - "§cCatacombs Floor VII§7."
+      - ""
+      - "§8Disciples of the Wither King. Inherited"
+      - "§8the Catacombs eons ago. Never"
+      - "§8defeated, feared by anything living"
+      - "§8AND dead."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Maxor, Storm, Goldor, and Necron"
+      - "§cCollection 7."
+    components:
+      - id: SKULL_HEAD
+        texture: 8b115cdc45fd84f21fba7ac0f2bc77bc3b6302be670842f6e11f66eb557f13ee
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: DIAMOND_PROFESSOR_HEAD
+    material: player_head
+    name: "Diamond Professor Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 100
+      defense: 40
+      strength: 20
+    unavailable: "Needs Dungeons"
+    source: "Crafted from the Golden Professor Head and 8 Enchanted Diamond Blocks after defeating the boss 1,000 times"
+    lore:
+      - "§7Gear Score: §d200"
+      - ""
+      - "§7Obtained from killing §cThe Professor"
+      - "§7in §cThe Catacombs §7lots of times."
+      - "§7Grants §a2x §7stats on §cThe Catacombs"
+      - "§cFloor III§7."
+      - ""
+      - "§8Despite his great technique, he failed"
+      - "§8the Masters exam three times. Works"
+      - "§8from 8 to 5. Cares about his"
+      - "§8students."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires The Professor Collection 7."
+    components:
+      - id: SKULL_HEAD
+        texture: b23c3ad8c4410145095280779293cc1e7904b6fce93d70378ac5f32032ba1d86
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: DIAMOND_SADAN_HEAD
+    material: player_head
+    name: "Diamond Sadan Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 190
+      defense: 70
+      strength: 35
+    unavailable: "Needs Dungeons"
+    source: "Crafted from the Golden Sadan Head and 8 Enchanted Diamond Blocks after defeating the boss 1,000 times"
+    lore:
+      - "§7Gear Score: §d365"
+      - ""
+      - "§7Obtained from killing §cSadan §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor VI§7."
+      - ""
+      - "§8Necromancy was always strong in his"
+      - "§8family. Says he once beat a Wither in"
+      - "§8a duel. Likes to brag."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Sadan Collection 7."
+    components:
+      - id: SKULL_HEAD
+        texture: 3c63c4f7f8f5b8c5fe1bac9a708e5a62ccd04970072aab5e323b1b7d4004f4a2
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: DIAMOND_SCARF_HEAD
+    material: player_head
+    name: "Diamond Scarf Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 70
+      defense: 30
+      strength: 15
+    unavailable: "Needs Dungeons"
+    source: "Crafted from the Golden Scarf Head and 8 Enchanted Diamond Blocks after defeating the boss 1,000 times"
+    lore:
+      - "§7Gear Score: §d145"
+      - ""
+      - "§7Obtained from killing §cScarf §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor II§7."
+      - ""
+      - "§8First of his class. His teacher said"
+      - "§8he will do \"great things\"."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Scarf Collection 7."
+    components:
+      - id: SKULL_HEAD
+        texture: 4da5ca2f6800516a63d25878eb7a713e80d63b62f9f6cab3f31097f9494b6121
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: DIAMOND_THORN_HEAD
+    material: player_head
+    name: "Diamond Thorn Head"
+    rarity: SPECIAL
+    default_statistics:
+      health: 130
+      defense: 50
+      strength: 25
+    unavailable: "Needs Dungeons"
+    source: "Crafted from the Golden Thorn Head and 8 Enchanted Diamond Blocks after defeating the boss 1,000 times"
+    lore:
+      - "§7Gear Score: §d255"
+      - ""
+      - "§7Obtained from killing §cThorn §7in §cThe"
+      - "§cCatacombs §7lots of times. Grants §a2x"
+      - "§7stats on §cThe Catacombs Floor IV§7."
+      - ""
+      - "§8Powerful Necromancer that"
+      - "§8specializes in animals. Calls himself a"
+      - "§8vegetarian, go figure."
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires Thorn Collection 7."
+    components:
+      - id: SKULL_HEAD
+        texture: 383a1ffadcc6ccc54905f2a79b963a339bb9e0b0bcea428252a17f01e317bec0
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+      - id: STANDARD_ITEM
+        standard_item_type: HELMET
+  - id: DIANAS_BOOKSHELF
+    material: bookshelf
+    name: "Diana's Bookshelf"
+    rarity: RARE
+    source: "Regalia Room (Shen's Auction) for 75,000,000 Coins, or Raffle of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7While in your inventory, counts the"
+      - "§7number of §d§lChimera I §7books that"
+      - "§7you obtain from the §2Mythological"
+      - "§2Ritual §7event."
+      - ""
+      - "§7If you obtain §a6 §7books you can"
+      - "§7consume this item to permanently gain:"
+      - " §b+1 Magic Find"
+      - " §d+1 Tracking"
+      - " §3+1☯ Taming Wisdom"
+      - ""
+      - "§7Books obtained: §a0§7/§c6"
+      - ""
+      - "§8You may only gain this bonus once!"
+      - ""
+      - ""
+      - "§8Not active yet: Counting Chimera I books and the permanent reward are not implemented"
+  - id: DIFFICULT_ITEM
+    material: player_head
+    name: "An Extremely Difficult Item For You To Find"
+    rarity: SPECIAL
+    unavailable: "April Fools event item; the event isn't built"
+    source: "A Honk and Seek Adventure (April Fools event)"
+    lore:
+      - "§7You found it!"
+      - ""
+      - "§7Obtained from the §dA Honk and Seek"
+      - "§dAdventure §7event during April Fools."
+    components:
+      - id: SKULL_HEAD
+        texture: cd29fba81f8cf356e66b416db8020ad347b9ecf0b976e7aebdaf82a0c08c1ad4
+  - id: DINGY
+    material: player_head
+    name: "Dingy"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
+    source: "Reward Bundle (MVP++ rank, available since 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: bfb3c6e6655486e767a60d87811ca5cddc33ccff12649a34cb696861a63c8c5d
+  - id: DINING_CHAIR
+    material: player_head
+    name: "Dining Chair"
+    rarity: COMMON
+    unavailable: "Furniture placement and the Carpentry Table aren't built"
+    source: "Crafted at the Carpentry Table"
+    lore:
+      - "§8Furniture"
+      - "§8Seat"
+      - ""
+      - "§7This simple dining chair can be sat"
+      - "§7on by a single player."
+    components:
+      - id: SKULL_HEAD
+        texture: 2735f2301d0810bdceb3f8dd256ef0c0c02eedc6e047ba3e59edeb037c8fdf2f
+  - id: DINING_TABLE
+    material: player_head
+    name: "Dining Table"
+    rarity: COMMON
+    unavailable: "Furniture placement and the Carpentry Table aren't built"
+    source: "Crafted at the Carpentry Table"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7This purely cosmetic item is great to"
+      - "§7place chairs around."
+    components:
+      - id: SKULL_HEAD
+        texture: 8a6d4d516a9b40530c278d7f13a506326ac0a742e50693b1a1c10ae4c1470216
+  - id: DIRTY_FINGERNAILS
+    material: player_head
+    name: "Dirty Fingernails"
+    rarity: RARE
+    unavailable: "The Year of the Witch event and Alcina's stews aren't built"
+    source: "5% drop from Humanoid mobs during the Year of the Witch"
+    lore:
+      - "§7Drops sometimes from §e✰ Humanoid"
+      - "§7mobs during the §5Year of the Witch§7!"
+      - ""
+      - "§7Drop Chance: §a5%"
+      - ""
+      - "§7Bring to §dAlcina§7 in the §aHub§7 to craft it"
+      - "§7into §dStews§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: c466d5196e0cc4747dc852d48e73313571fb7428ff5e069ee134841ef18ac02b
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: DISCRITE
+    material: player_head
+    name: "Discrite"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Crafted from Youngite, Timite and Obsolite (Timite IV)"
+    lore:
+      - "§7Consume to boost your §c Health §7and"
+      - "§a Rift Time §7for §a60m§7."
+      - ""
+      - "§7Keep this item in your inventory to"
+      - "§7increase the bonus up to §c+150"
+      - "§cHealth §7and §a+150 Rift Time§7, at which"
+      - "§7point the item §c§oevolves§7!"
+      - ""
+      - "§7Current Bonus: §c+0 Health"
+      - ""
+      - "§9§lPRO TIP!"
+      - "§7Bonus §a Rift Time §7will be granted"
+      - "§7whenever you enter the §dRift§7- only"
+      - "§7while this item is active!"
+      - ""
+      - "§5§kX§5 Rift-Exportable §5§kX"
+      - "§8Loses motes value when crossing"
+      - "§8dimensions."
+    components:
+      - id: SKULL_HEAD
+        texture: 71ec292b3aa665d6001a998313966212eac5417ea90f83baa46b48a9942698f3
+  - id: DISTANT_ECHO
+    material: paper
+    name: "Distant Echo"
+    rarity: LEGENDARY
+    unavailable: "Needs the Silkbreeze mob (Galatea), which isn't built"
+    source: "1% drop from the level 105 Silkbreeze"
+    lore:
+      - "§7When applied to an item, increases its"
+      - "§9Stealth §7level by §a1§7!"
+      - "§8Can be applied once."
+      - "§8Requires Stealth V!"
+      - ""
+      - "§8§oThe Silkbreeze passes through the"
+      - "§8§oforest at such speed that, in most"
+      - "§8§ocases, it can only be heard, not seen."
+    components:
+      - id: ANVIL_COMBINABLE
+        handler_id: DISTANT_ECHO
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/enchantmentupgrades/distant_echo
+  - id: DIVAN_POWDER_COATING
+    material: player_head
+    name: "Divan's Powder Coating"
+    rarity: LEGENDARY
+    source: "Forged in the Forge (32 Refined Mineral, 32 Glossy Gemstone, 16 Enchanted Gold Block, 5 Divan Fragment), or Raffle of the Century"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7When applied to §6Armor of Divan§7,"
+      - "§7grants §6+10 Mining Fortune§7."
+      - ""
+      - "§7When applied to a drill, grants"
+      - "§6+500 Mining Speed§7."
+      - ""
+      - "§7When applied to §9Powder of the Many§7,"
+      - "§7upgrades it to §5Powder of the People§7."
+      - ""
+      - "§7Can only be applied to an item once."
+      - ""
+      - "§8§oA recreation of the coating found on"
+      - "§8§oDivan's tools from his greatest"
+      - "§8§oexpeditions."
+      - ""
+      - ""
+      - "§8Not active yet: Its anvil coating effects are not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: 41e064a0e32a806112678d78b561537dfa5ccb65ba43ccb8bc3dd7c5e676853b
+  - id: DOLLHOUSE
+    material: player_head
+    name: "Dollhouse"
+    rarity: EPIC
+    unavailable: "Furniture placement and the Carpentry Table aren't built; seasonal source unverified"
+    source: "Holiday cosmetic reward (exact source unverified)"
+    lore:
+      - "§8Furniture"
+      - "§8Holiday Cosmetic"
+      - ""
+      - "§7This exclusive §cHoliday §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 718699bae9f1e02a7a65183bd0079489e4e615daddce3c92649cded312b226dc
+  - id: DRAGON_EGG_IN_A_BOX
+    material: player_head
+    name: "Dragon Egg in a Box"
+    rarity: LEGENDARY
+    unavailable: "Needs the Golden, Jade and Rose Dragon Egg items, which aren't in the game"
+    source: "Event reward (exact source unverified)"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to unwrap a random §5Dragon"
+      - "§5Egg§7. Can be any of the following:"
+      - "§7• §6Golden Dragon Egg"
+      - "§7• §aJade Dragon Egg"
+      - "§7• §cRose Dragon Egg"
+      - ""
+      - "§8§oA truly magnificent egg is nestled"
+      - "§8§owithin - that much you can tell by"
+      - "§8§oweight alone."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 7b4bc0908806a2a603d88922593e5f7605c4e4a934ce39e29769d3f5c8aa6730
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: DR_PAPER
+    material: player_head
+    name: "Dctr. Paper"
+    rarity: UNCOMMON
+    source: "Shifty (Wilderness tavern) for 4,000 Coins"
+    lore:
+      - "§8Basic Brew"
+      - ""
+      - "§7Use this item in place of an"
+      - "§7Awkward Potion for certain"
+      - "§7potions."
+      - ""
+      - "§7Adds §6+75 Absorption ❤ §7to potions"
+      - "§7with that stat."
+      - ""
+      - ""
+      - "§8Not active yet: Its Basic Brew potion use is not implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: 7066bf60450226a4be3c2c7c2678bed32288091b8043b9f9b2064fcde5fda5bb
+  - id: DUNGEONBREAKER
+    material: diamond_pickaxe
+    name: "Dungeonbreaker"
+    rarity: SPECIAL
+    default_statistics:
+      speed: 20
+    unavailable: "Needs Dungeons"
+    source: "Ophelia for 500 Wither Essence after completing The Catacombs Floor III"
+    lore:
+      - "§6Ability: Dungeon Breaker §e§lDIG"
+      - "§7While in §cThe Catacombs§7, consume §e1§c⸕"
+      - "§7charge to break a block. §320§7 blocks can"
+      - "§7be broken at a time, and re-appear after"
+      - "§a10s§7. §e2§c⸕§7 charges are regenerated each"
+      - "§7second."
+      - ""
+      - "§7Charges: §e20§7/§e20§c⸕"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: PICKAXE
+  - id: DUNGEON_DISC_1
+    material: music_disc_stal
+    name: "Dungeon Disc"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Reward Chests: 2% chance to replace an Essence drop in Obsidian and Bedrock chests"
+    lore:
+      - "§7Place this inside a jukebox to play a"
+      - "§7dungeon song!"
+      - ""
+      - "§6Dungeon Drama"
+      - "  §7By ShinkoNet"
+  - id: DUNGEON_DISC_2
+    material: music_disc_mellohi
+    name: "Clown Disc"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Reward Chests (exact source unverified)"
+    lore:
+      - "§7Place this inside a jukebox to play a"
+      - "§7dungeon song!"
+      - ""
+      - "§6Superior Judgement"
+      - "  §7By SirCatcelot"
+  - id: DUNGEON_DISC_3
+    material: music_disc_strad
+    name: "Watcher Disc"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Reward Chests (exact source unverified)"
+    lore:
+      - "§7Place this inside a jukebox to play a"
+      - "§7dungeon song!"
+      - ""
+      - "§6The Watcher"
+      - "  §7By ShinkoNet"
+  - id: DUNGEON_DISC_4
+    material: music_disc_11
+    name: "Old Disc"
+    rarity: LEGENDARY
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Reward Chests (exact source unverified)"
+    lore:
+      - "§7Place this inside a jukebox to play a"
+      - "§7dungeon song!"
+      - ""
+      - "§6The Wither King"
+      - "  §7By ShinkoNet"
+  - id: DUNGEON_DISC_5
+    material: music_disc_13
+    name: "Necron Disc"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Dungeon Reward Chests (exact source unverified)"
+    lore:
+      - "§7Place this inside a jukebox to play a"
+      - "§7dungeon song!"
+      - ""
+      - "§6Necron Doom"
+      - "  §7By ShinkoNet"
+  - id: DUNGEON_LORE_PAPER
+    material: book
+    name: "The Expedition Volume 1"
+    rarity: RARE
+    unavailable: "Needs Dungeons"
+    source: "Dungeon lore drop (exact source unverified)"
+    lore:
+      - "§eClick to read!"
+    components:
+      - id: DUNGEON_ITEM
+  - id: DUNGEON_STONE
+    material: player_head
+    name: "Dungeon Orb"
+    rarity: LEGENDARY
+    unavailable: "Needs Dungeons"
+    source: "Mort gives one after a Catacombs run on Floor III or lower if you lack one"
+    lore:
+      - "§7When entering a Dungeon, this stone"
+      - "§7adapts to its user and allows them to"
+      - "§7use their class abilities."
+    components:
+      - id: SKULL_HEAD
+        texture: ba49f9de12c813329f38d0af2da0f32f32a6dcd52c3221d19090c256376c418c
+      - id: DUNGEON_ITEM
+  - id: DUNGEON_WIZARD_CRYSTAL
+    material: player_head
+    name: "Wizard's Crystal"
+    rarity: RARE
+    unavailable: "Needs Dungeons"
+    source: "Wizard Room on Catacombs Floors IV to VII"
+    components:
+      - id: SKULL_HEAD
+        texture: f8ce6b7e3381ab715fefe61b9fdc94efc12ac4280b5e075081848f2b2c45a4cc
+      - id: DUNGEON_ITEM
+  - id: DUST_THE_FISH
+    material: cooked_cod
+    name: "Dust the Fish"
+    rarity: SPECIAL
+    source: "Museum Milestone 10 reward"
+    lore:
+      - "§7Pretty sure they forgot about me..."
+  - id: DWARVEN_COMPACTOR
+    material: dropper
+    name: "Dwarven Super Compactor"
+    rarity: RARE
+    source: "Crafted from Super Compactor 3000, Auto Smelter and 56 Enchanted Mithril (needs Mithril VI)"
+    lore:
+      - "§8Minion Upgrade"
+      - ""
+      - "§7This item can be used as a minion"
+      - "§7upgrade."
+      - "§7Automatically smelts materials"
+      - "§7produced by minions before"
+      - "§7compacting them into their enchanted"
+      - "§7form."
+      - ""
+      - ""
+      - "§8Not active yet: Smelting and compacting minion output isn't implemented"
+    components:
+      - id: MINION_UPGRADE
+        speed_increase: 0.0
+      - id: ENCHANTED
+      - id: NOT_FINISHED_YET
+      - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: MINING
+            pattern:
+              - MAM
+              - MCM
+              - MMM
+            ingredients:
+              M:
+                type: ENCHANTED_MITHRIL
+                amount: 8
+              A:
+                type: AUTO_SMELTER
+                amount: 1
+              C:
+                type: SUPER_COMPACTOR_3000
+                amount: 1
+            result:
+              type: DWARVEN_COMPACTOR
+              amount: 1
+  - id: DWARVEN_DIAMOND_AXE
+    material: diamond_axe
+    name: "Scavenged Diamond Axe"
+    rarity: SPECIAL
+    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Bring to the §6Keeper of Diamond §7in"
+      - "§7the §2Mines of Divan§7."
+  - id: DWARVEN_EMERALD_HAMMER
+    material: wooden_axe
+    name: "Scavenged Emerald Hammer"
+    rarity: SPECIAL
+    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Bring to the §6Keeper of Emerald §7in"
+      - "§7the §2Mines of Divan§7."
+  - id: DWARVEN_GOLD_HAMMER
+    material: golden_axe
+    name: "Scavenged Golden Hammer"
+    rarity: SPECIAL
+    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Bring to the §6Keeper of Gold §7in the"
+      - "§2Mines of Divan§7."
+  - id: DWARVEN_IRON_HAMMER
+    material: iron_axe
+    name: "Scavenged Iron Hammer"
+    rarity: SPECIAL
+    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    source: "Anvil combination of a Scavenged Golden Hammer and a Scavenged Emerald Hammer in the Gold Mine"
+    lore:
+      - "§7Strong enough to break the"
+      - "§7toughest bars."
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: DWARVEN_LAPIS_SWORD
+    material: diamond_sword
+    name: "Scavenged Lapis Sword"
+    rarity: SPECIAL
+    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Bring to the §6Keeper of Lapis §7in the"
+      - "§2Mines of Divan§7."
+  - id: DWARVEN_METAL_DETECTOR
+    material: iron_hoe
+    name: "Metal Detector"
+    rarity: SPECIAL
+    unavailable: "The Mines of Divan Keepers quest isn't built"
+    source: "Given by the Keepers of Gold, Emerald, Diamond and Lapis"
+    lore:
+      - "§7Used to find lost Dwarven treasures"
+      - "§7in the §2Mines of Divan§7. The Metal"
+      - "§7Detector beeps louder and faster"
+      - "§7the closer you are to a buried"
+      - "§7treasure."
+  - id: DWARVEN_OS_BLOCK_BRAN
+    material: player_head
+    name: "Dwarven O's Block Bran"
+    rarity: RARE
+    unavailable: "Dwarven Mines Mining Events (the drop source) aren't built"
+    source: "Rare drop during Dwarven Mines Mining Events"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7The first §a5 §7times you consume this,"
+      - "§7gain a permanent §6+2 Block Fortune§7."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4f6bddba1e3d014fc75e70e27223ca30cbfa42990d448d9a940e500a6435bec
+      - id: INTERACTABLE
+        handler_id: DWARVEN_OS_BLOCK_BRAN
+  - id: DWARVEN_OS_GEMSTONE_GRAHAMS
+    material: player_head
+    name: "Dwarven O's Gemstone Grahams"
+    rarity: EPIC
+    unavailable: "Dwarven Mines Mining Events (the drop source) aren't built"
+    source: "Rare drop during Dwarven Mines Mining Events"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7The first §a5 §7times you consume this,"
+      - "§7gain a permanent §6+2 Gemstone"
+      - "§6Fortune§7."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 566c50f1aa917239b179dcc03dfb1ed6b5d2844eb8c8fa779f1223d6cbba5063
+      - id: INTERACTABLE
+        handler_id: DWARVEN_OS_GEMSTONE_GRAHAMS
+  - id: DWARVEN_OS_METALLIC_MINIS
+    material: player_head
+    name: "Dwarven O's Metallic Minis"
+    rarity: LEGENDARY
+    unavailable: "Dwarven Mines Mining Events (the drop source) aren't built"
+    source: "Rare drop during Dwarven Mines Mining Events"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7The first §a5 §7times you consume this,"
+      - "§7gain a permanent §6+2 Dwarven Metal"
+      - "§6Fortune§7."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 96663b544ae8f8a4ce4cb0cbb6f9190efe5cd9996047520705c276695ad1734
+      - id: INTERACTABLE
+        handler_id: DWARVEN_OS_METALLIC_MINIS
+  - id: DWARVEN_OS_ORE_OATS
+    material: player_head
+    name: "Dwarven O's Ore Oats"
+    rarity: UNCOMMON
+    unavailable: "Dwarven Mines Mining Events (the drop source) aren't built"
+    source: "Rare drop during Dwarven Mines Mining Events"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7The first §a5 §7times you consume this,"
+      - "§7gain a permanent §6+2 Ore Fortune§7."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: fda793b4095892b01d954ca10db0d6e1d366d6b4e7612dedc273dfa579ecb227
+      - id: INTERACTABLE
+        handler_id: DWARVEN_OS_ORE_OATS
+  - id: DWARVEN_TANKARD
+    material: player_head
+    name: "Dwarven Tankard"
+    rarity: EPIC
+    unavailable: "The Dwarven Tavern NPC and chat trigger aren't built"
+    source: "Talk to the Dwarven Tavern NPC, then type burp in public chat"
+    lore:
+      - "§8Decoration Item"
+      - ""
+      - "§7The most stylish Dwarven drinking"
+      - "§7implement built to hold as much ale as"
+      - "§7possible."
+    components:
+      - id: SKULL_HEAD
+        texture: e33d162cae73339f775919fb1b508b7f1c28fd46549e66390946d87abf6715c6
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: EASTER_BASKET
+    material: player_head
+    name: "Easter Basket"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
+    source: "Reward Bundle (VIP+ rank, available since 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 83c25a7a188196b18717264ffe837ca348cf719e827179edc4b78cbcb8c7dd8
+  - id: ECCENTRIC_PAINTING_BUNDLE
+    material: player_head
+    name: "Eccentric Painting Bundle"
+    rarity: LEGENDARY
+    source: "Dark Auction (4.87% in rounds 1, 3 and 4, 20,000,000 Coins starting bid), or Raffle of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to unwrap the bundle"
+      - "§7containing §a9x §6Eccentric Painting§7."
+      - ""
+      - "§8§oA peculiar set of paintings, all of"
+      - "§8§owhich are said to be originals."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 824f769c9450f22e484e089ca02e324fe37b18f4c18ef296021871ba4ad0c396
+      - id: INTERACTABLE
+        handler_id: ECCENTRIC_PAINTING_BUNDLE
+  - id: EDITOR_PENCIL
+    material: feather
+    name: "Editor's Pencil"
+    rarity: SPECIAL
+    unavailable: "Wiki-editor reward that is no longer obtainable on Hypixel"
+    source: "Reward for Hypixel Wiki editors"
+    lore:
+      - "§7A truly remarkable pencil."
+      - "§7Refined, sharpened, and polished"
+      - "§7over time."
+      - ""
+      - "§7Given to those who went above and beyond."
+      - ""
+      - "§7Awarded To: Unknown"
+      - "§7From: Unknown"
+      - "§7Date: §e1st January 1970"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: EGGLOCATOR
+    material: player_head
+    name: "Egglocator"
+    rarity: COMMON
+    source: "Chocolate Shop for 7,500,000 Chocolate (Chocolate Factory level 2)"
+    lore:
+      - "§7Uses the magic of §aHoppity §7to"
+      - "§7uncover hidden §aChocolate Rabbit"
+      - "§aEggs§7."
+      - ""
+      - "§6Ability: Egglocator  §e§lRIGHT CLICK"
+      - "§7Points towards the nearest unclaimed"
+      - "§aChocolate Rabbit Egg§7!"
+      - "§8Cooldown: §a5s"
+      - ""
+      - "§7Only works during §dHoppity's Hunt§7."
+      - ""
+      - ""
+      - "§8Not active yet: Pointing at Chocolate Rabbit Eggs isn't implemented"
+    components:
+      - id: SKULL_HEAD
+        texture: 14a7ff9a10fdae14446499ef3bc1df13b7888d6cd2e311ccab51b8352c6093b4
+  - id: EGG_PAINTING_STATION
+    material: player_head
+    name: "Egg Painting Station"
+    rarity: EPIC
+    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
+    source: "Reward Bundle (MVP++ rank, available since 2024)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - "§8Workbench"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: dae84f1478cb4b3b48717c325cb44b37d6ac679b9c734146d2bc4585ffec591c
+  - id: EGG_PILE
+    material: player_head
+    name: "Egg Pile"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
+    source: "Reward Bundle (VIP rank, available since 2020)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: eeb335182db5f3be80fccf6eabe599f4107d4ff0e9f44f34174cefa6e2b5768
+  - id: EGG_STACK
+    material: player_head
+    name: "Egg Stack"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
+    source: "Reward Bundle (VIP rank, available since 2021)"
+    lore:
+      - "§8Furniture"
+      - "§8Easter Cosmetic"
+      - ""
+      - "§7This exclusive §dEaster §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: c0e9fcc017bca025fdfe15ee7b8247ddc65ef05ffc440727f80e608bb16dfc34
+  - id: EGG_THE_FISH
+    material: cooked_cod
+    name: "Egg the Fish"
+    rarity: SPECIAL
+    unavailable: "Needs the Main Lobby Easter fishing event"
+    source: "Caught in the Main Lobby during the Easter event and collected from Jerry"
+    lore:
+      - "§7This delicate, painted fish was found"
+      - "§7in the depths of the Main Lobby"
+      - "§7during the Easter season."
+  - id: EINARY_RED_HOODIE
+    material: player_head
+    name: "Einary's Red Hoodie"
+    rarity: RARE
+    unavailable: "Frozen Treasure and Generow's Gift Milestones aren't built"
+    source: "About 0.04% Frozen Treasure drop in the Glacial Cave, or Generow's Gift Milestone XX (December 2023 to 2025)"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Lost but never forgotten. This was"
+      - "§6Einary's §7favorite hoodie. Slip it on"
+      - "§7and maybe you'll feel the love and"
+      - "§7courage he left behind. Don't tell him"
+      - "§7you wore it!"
+    components:
+      - id: SKULL_HEAD
+        texture: 951f0405cd9768530f913899a9623a9a1e6a4d276aa97514034754dcddf6c619
+  - id: EMBER_FRAGMENT
+    material: player_head
+    name: "Ember Fragment"
+    rarity: RARE
+    unavailable: "No longer obtainable on Hypixel except through trades"
+    source: "Formerly dropped by the Magma Cube Boss; replaced by the Rekindled Ember Fragment"
+    lore:
+      - "§7Material Extracted from the heart of"
+      - "§7giant Magma Cubes. It can be used to"
+      - "§7craft powerful items."
+    components:
+      - id: SKULL_HEAD
+        texture: 26c50e8976c9f8905754dd45f30d412b8c59fe56d397599f7ba7605f2bf5518f
+  - id: EMERALD_CHEST
+    material: player_head
+    name: "Emerald Chest+"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built"
+    source: "Crafted at the Carpentry Table (Carpentry XX) from 12 Chests and 64 Enchanted Emerald"
+    lore:
+      - "§8Furniture"
+      - "§8Storage"
+      - ""
+      - "§7You can store three pages of items"
+      - "§7in this chest!"
+    components:
+      - id: SKULL_HEAD
+        texture: 81c5aae6aea09400d2718a21e62de40e23ab530b6f8f486cd33b6614c1f47da0
+  - id: EMMETT_POINTER
+    material: blaze_rod
+    name: "Emmett Pointer"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Dr. Emmett gives it on entering the seventh Mirrorverse puzzle"
+    lore:
+      - "§6Ability: Lazer §e§lRIGHT CLICK"
+      - "§7Point something."
+      - "§8Cooldown: §a2s"
+      - ""
+      - "§8He's not a vampire, he's a"
+      - "§8scientist."
+  - id: EMPTY_CHUMCAP_BUCKET
+    material: player_head
+    name: "Empty Chumcap Bucket"
+    rarity: UNCOMMON
+    unavailable: "Needs Agaricus Chumcap (Galatea), which isn't built"
+    source: "Crafted from 8 Agaricus Chumcap around an Empty Chum Bucket"
+    lore:
+      - "§7Place it down next to water."
+      - ""
+      - "§7Sea Creatures slain nearby will drop"
+      - "§a+1 Chum§7."
+      - "§8Up to +4 total from buckets!"
+      - ""
+      - "§7You gain a good chance to fish up"
+      - "§7an §cAgarimoo §3Sea Creature§7."
+      - "§7You and other nearby fishers gain"
+      - "§b+4 Fishing Speed§7."
+      - "§8Up to +16 from buckets!"
+      - ""
+      - "§4❣ §cRequires §aFishing Skill 15§c."
+    components:
+      - id: SKULL_HEAD
+        texture: 3c25c1f333a731bc34358f55c05185114153c3f3d474076f21cc1621b9994662
+  - id: EMPTY_ODONATA_BOTTLE
+    material: glass_bottle
+    name: "Empty Odonata Bottle"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Argofay Bugshopper for 2 Shy Crux and 400 Motes after buying a Larva Hook"
+    lore:
+      - "§7Hold this and look at an §9Odonata §7for"
+      - "§a3s §7while very close to bottle it."
+  - id: ENCHANTED_BOOK_BUNDLE_BIG_BRAIN
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: UNCOMMON
+    unavailable: "The Darker Auction (Scorpius mayor) isn't built"
+    source: "Darker Auction while Scorpius is mayor"
+    lore:
+      - "§9Big Brain III"
+      - "§7Grants §b+15✎ Intelligence§7."
+      - ""
+      - "§7Right-click to open this bundle"
+      - "§7containing §f5 §7enchanted"
+      - "§7books."
+    components:
+      - id: SKULL_HEAD
+        texture: e5be22b5d4a875d77df3f7710ff4578ef27939a9684cbdb3d31d973f166849
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_BIG_BRAIN
+  - id: ENCHANTED_BOOK_BUNDLE_CHIMERA
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: LEGENDARY
+    unavailable: "The Raffle of the Century isn't built"
+    source: "Raffle of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to unwrap the bundle"
+      - "§7containing §91x §d§lChimera V Book§7."
+      - ""
+      - "§8§oIt seems to react to your touch, as"
+      - "§8§oif adjusting to you in some way."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: cc581a97eb69061231ae1ab193a5bd0f115e00311e6d6fb4e51e90ce5fa00c97
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_CHIMERA
+  - id: ENCHANTED_BOOK_BUNDLE_ICE_COLD
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: LEGENDARY
+    unavailable: "The Raffle of the Century isn't built"
+    source: "Raffle of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to unwrap the bundle"
+      - "§7containing §94x Ice Cold V Book§7."
+      - ""
+      - "§8§oFrosty to the touch - wherever this"
+      - "§8§ocame from probably isn't a popular"
+      - "§8§osummer vacation spot."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5fdef686bbce66092c73f4c86bda48731f2be05b60c70ea33bdb88853e1fcd1d
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_ICE_COLD
+  - id: ENCHANTED_BOOK_BUNDLE_POWER
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: EPIC
+    unavailable: "The Raffle of the Century isn't built"
+    source: "Raffle of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to unwrap the bundle"
+      - "§7containing §91x Power VII Book§7."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 9d89cc34b47906e9ef135a4bb47dd4ab214fb0f98186106a85bcf1fa47f850e1
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_POWER
+  - id: ENCHANTED_BOOK_BUNDLE_PRISMATIC
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: EPIC
+    unavailable: "Removed from Hypixel (only the Year 400 raffle gave it)"
+    source: "Raffle of the Century in Year 400 only; removed from the game"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to unwrap the bundle"
+      - "§7containing §91x Prismatic V Book§7."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4df0c78998bba32b376571cff920fd753c2e9a3ba1432a76382e26b234c7b94d
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_PRISMATIC
+  - id: ENCHANTED_BOOK_BUNDLE_QUANTUM
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Occasional drop from Tier II+ Riftstalker Bloodfiends"
+    lore:
+      - "§9Quantum III"
+      - "§7Grants §4+2.4♨ Vitality §7on weekdays"
+      - "§7and §3+1.2☯ §7of a random §3Wisdom §7stat"
+      - "§7on weekends."
+      - ""
+      - "§7Right-click to open this bundle"
+      - "§7containing §f1 §7enchanted book."
+      - ""
+      - "§5§kX§5 Rift-Exportable §5§kX"
+      - "§8Loses motes value when crossing"
+      - "§8dimensions."
+    components:
+      - id: SKULL_HEAD
+        texture: e5be22b5d4a875d77df3f7710ff4578ef27939a9684cbdb3d31d973f166849
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_QUANTUM
+  - id: ENCHANTED_BOOK_BUNDLE_RAINBOW
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: UNCOMMON
+    unavailable: "The Raffle of the Century isn't built"
+    source: "Raffle of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to unwrap the bundle"
+      - "§7containing §91x Rainbow III Book§7."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: e5d727b69ca0f0b16f655047e48fb2b4df10aa64065118274d4f9f8c5b054496
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_RAINBOW
+  - id: ENCHANTED_BOOK_BUNDLE_REFLECTION
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Mirrorverse reward"
+    lore:
+      - "§9Reflection I"
+      - "§7Grants §b+2 Intelligence§7."
+      - "§7Grants §f+1 True Defense§7."
+      - "§7When damaged by an arrow, deal §b2x §7your"
+      - "§b✎ Intelligence §7to its shooter."
+      - ""
+      - "§7Right-click to open this bundle"
+      - "§7containing §f3 §7enchanted"
+      - "§7books."
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    components:
+      - id: SKULL_HEAD
+        texture: 82ae19107086dd314daf31d86618e51948a6e3e20d96dca17d21b25d42d2b24
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_REFLECTION
+  - id: ENCHANTED_BOOK_BUNDLE_SMALL_BRAIN
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: UNCOMMON
+    unavailable: "The Raffle of the Century isn't built"
+    source: "Raffle of the Century"
+    lore:
+      - "§8Consumable"
+      - ""
+      - "§7Consume to unwrap the bundle"
+      - "§7containing §91x Small Brain III Book§7."
+      - ""
+      - "§eRight-click to consume!"
+    components:
+      - id: SKULL_HEAD
+        texture: 6f9c7e59a2cebc0584f3bf71bbdaaf199c4921c2310723efdcb4eb6bcb9a13fc
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_SMALL_BRAIN
+  - id: ENCHANTED_BOOK_BUNDLE_THE_ONE
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: LEGENDARY
+    unavailable: "Needs the Rift"
+    source: "Rare drop from Tier V Riftstalker Bloodfiends"
+    lore:
+      - "§d§lThe One IV"
+      - "§7Grants §c+0.5❤ Health §7and §c+0.1❁"
+      - "§cStrength §7per maxed out collection."
+      - "§7You have §a§k76§a collections §7maxed."
+      - ""
+      - "§7Right-click to open this bundle"
+      - "§7containing §f1 §7enchanted book."
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    components:
+      - id: SKULL_HEAD
+        texture: e5be22b5d4a875d77df3f7710ff4578ef27939a9684cbdb3d31d973f166849
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_THE_ONE
+  - id: ENCHANTED_BOOK_BUNDLE_VICIOUS
+    material: player_head
+    name: "Enchanted Book Bundle"
+    rarity: UNCOMMON
+    unavailable: "The Darker Auction (Scorpius mayor) isn't built"
+    source: "Darker Auction while Scorpius is mayor"
+    lore:
+      - "§9Vicious III"
+      - "§7Grants §c+3⫽ Ferocity§7."
+      - ""
+      - "§7Right-click to open this bundle"
+      - "§7containing §f5 §7enchanted"
+      - "§7books."
+    components:
+      - id: SKULL_HEAD
+        texture: 7261bf5c7ffa254c1828448032115e5cc154436dec0998c4d7abd996ae1d927
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: ENCHANTED_BOOK_BUNDLE_VICIOUS
+  - id: ENCHANTED_HELIX_LOG
+    material: paper
+    name: "Enchanted Helix Log"
+    rarity: UNCOMMON
+    unavailable: "The Helix Log collection item isn't in the game"
+    source: "Crafted from 160 Helix Log (Helix Log collection II)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7A hardened mass of helix logs all"
+      - "§7wrapped around each other in a"
+      - "§7spiral."
+  - id: ENCHANTED_HONEYCOMB
+    material: paper
+    name: "Enchanted Honeycomb"
+    rarity: UNCOMMON
+    source: "Crafted from 160 Honeycomb (Honeycomb collection II)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7A block of sparkling honey. It smells"
+      - "§7incredible."
+    components:
+      - id: ENCHANTED
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - OAO
+              - AAA
+              - OAO
+            ingredients:
+              A:
+                type: HONEYCOMB
+                amount: 32
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: ENCHANTED_HONEYCOMB
+              amount: 1
+  - id: ENCHANTED_HONEYCOMB_BLOCK
+    material: paper
+    name: "Enchanted Honeycomb Block"
+    rarity: RARE
+    unavailable: "The Honeycomb collection and the recipe for this item aren't built"
+    source: "Honeycomb collection VI reward"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7A solid chunk of sweet-smelling"
+      - "§7honey. Its smell attracts all sorts of"
+      - "§7critters."
+  - id: ENCHANTED_LUSH_BERBERIS
+    material: large_fern
+    name: "Enchanted Lush Berberis"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Crafted from 160 Lush Berberis"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7A wonderful enchanted plant!"
+  - id: ENCHANTED_RUBY_VEILSHROOM
+    material: paper
+    name: "Enchanted Ruby Veilshroom"
+    rarity: UNCOMMON
+    unavailable: "The Ruby Veilshroom collection item isn't in the game"
+    source: "Crafted from 160 Ruby Veilshroom (Ruby Veilshroom collection II)"
+    lore:
+      - "§8Collection Item"
+      - ""
+      - "§7Ruby Veilshrooms only grow in"
+      - "§7Torrhus Canyon, nurtured by the"
+      - "§7relentless heat of the blazing sun"
+      - "§7beating down upon them."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/resources/ruby_veilshroom
+  - id: ENCHANTED_TIME_CLOCK
+    material: clock
+    name: "Enchanted Clock"
+    rarity: LEGENDARY
+    unavailable: "Needs Highlite, which isn't in the game, and the Time Warp ability isn't built"
+    source: "Crafted from 64 Enchanted Redstone Block, 64 Enchanted Gold Block and 64 Highlite"
+    lore:
+      - "§6Ability: Time Warp  §e§lRIGHT CLICK"
+      - "§7Advance Time by §d1 hour§7!"
+      - "§8Cooldown: §a48 hours"
+      - ""
+      - "§7Impacts your Minions, Chocolate"
+      - "§7Factory, Aging Items, Kat, Fann,"
+      - "§7Greenhouse, and The Forge."
+      - ""
+      - "§4❣ §cRequires §aGold Ingot Collection X§c."
+  - id: ENCHANTED_TURBO_GOURD
+    material: player_head
+    name: "Enchanted Turbo Gourd"
+    rarity: MYTHIC
+    unavailable: "The Turbo Gourd base item isn't in the game"
+    source: "Crafted from 5 Turbo Gourds"
+    lore:
+      - "§7When applied to Farming Tool,"
+      - "§7increases ALL §9Turbo-Crop VI"
+      - "§7enchantments to §9Turbo-Crop VII§7."
+      - "§8Requires at least one Turbo-Crop VI"
+      - "§8enchantment!"
+    components:
+      - id: SKULL_HEAD
+        texture: 8f6071ba2bfeba70aa124071d748ff7cd6ab8fbf64e0327353f8eb13f6c871f0
+      - id: ANVIL_COMBINABLE
+        handler_id: ENCHANTED_TURBO_GOURD
+  - id: ENCHANTED_VAMPIRIC_MELON
+    material: melon
+    name: "Enchanted Vampiric Melon"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafted from 160 Vampiric Melon"
+    lore:
+      - "§7Worth more §dMotes §7than the sum of its"
+      - "§7parts, because it's glowing!"
+  - id: ENCHANTING_PLUS
+    material: player_head
+    name: "Enchanting Table+"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built"
+    source: "Crafted at the Carpentry Table (Carpentry XXII), or bought from the Furniture Shop for 10,000 Coins"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Opens the Enchantment Table!"
+    components:
+      - id: SKULL_HEAD
+        texture: 9ec83ab2059ccfeaa36c3f4f20daa9503d483a530fbdb80f940940aa81d2c61
+  - id: ENDER_PLUS
+    material: player_head
+    name: "Ender Chest+"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built"
+    source: "Crafted at the Carpentry Table (Carpentry XX) from 12 Chests and 64 Enchanted Obsidian"
+    lore:
+      - "§8Furniture"
+      - "§8Storage"
+      - ""
+      - "§7You can store three pages of items"
+      - "§7in this chest!"
+    components:
+      - id: SKULL_HEAD
+        texture: 51c772096fff488474064a2b49a56377ad5000bb6093b5b16cee1fe50875603a
+  - id: ENDSTONE_CHEST
+    material: player_head
+    name: "End Stone Chest+"
+    rarity: RARE
+    unavailable: "Furniture placement and the Carpentry Table aren't built"
+    source: "Crafted at the Carpentry Table (Carpentry XX) from 12 Chests and 64 Enchanted End Stone"
+    lore:
+      - "§8Furniture"
+      - "§8Storage"
+      - ""
+      - "§7You can store three pages of items"
+      - "§7in this chest!"
+    components:
+      - id: SKULL_HEAD
+        texture: fb19d10a32df93a139150b6fb75bacd55ca48ebbb8e1ac230cb9287d015dbdb2
+  - id: ENDSTONE_IDOL
+    material: player_head
+    name: "End Stone Idol"
+    rarity: LEGENDARY
+    source: "Rare Voidgloom Seraph Tier IV drop (0.014% at Enderman Slayer VII), Superpairs reward, or Legacy Trades for an Ender Slayer VII book"
+    lore:
+      - "§7When applied to a weapon, increases"
+      - "§7its §9Ender Slayer §7level by §a1§7!"
+      - "§8Can be applied once."
+      - "§8Requires Ender Slayer VI!"
+    components:
+      - id: SKULL_HEAD
+        texture: c24d46459b70b9ad641506f97b8d93349d8705d0935ebbf16012fad3aca32cb4
+      - id: ANVIL_COMBINABLE
+        handler_id: ENDSTONE_IDOL
+  - id: END_BIOME_STICK
+    material: stick
+    name: "End Biome Stick"
+    rarity: COMMON
+    unavailable: "Changing the biome of a private island isn't built"
+    source: "Crafted from 64 End Stone and 2 Sticks"
+    lore:
+      - "§7Allows you to change the biome at"
+      - "§7the §atargeted block §7on your private"
+      - "§7island to §bEnd§7."
+      - ""
+      - "§7Right-click to use or Left-click to"
+      - "§7change the radius it effects."
+      - ""
+      - "§7Selected Radius: §b3"
+  - id: ENSNARED_SNAIL
+    material: player_head
+    name: "Ensnared Snail"
+    rarity: LEGENDARY
+    unavailable: "Drop odds from the Tarantula Broodfather aren't verified and Superpairs/Legacy Trades aren't built"
+    source: "Rare Tarantula Broodfather drop (Spider Slayer VII), Superpairs reward, or Legacy Trades for a Bane of Arthropods VII book"
+    lore:
+      - "§7When applied to to a sword,"
+      - "§7increases its §9Bane of Arthropods"
+      - "§7level by §a1§7!"
+      - "§8Can be applied once."
+      - "§8Requires Bane of Arthropods VI!"
+      - ""
+      - "§8§oThe remains of a snail, tightly"
+      - "§8§owrapped in webbing by a fiend of"
+      - "§8§oEldritch proportions. Maybe it will"
+      - "§8§ohave its revenge - in the next life."
+    components:
+      - id: SKULL_HEAD
+        texture: 64532b7e0fbd976d559fbb218d9f4e53c9354f68b1f363c0482127092724274d
+      - id: ANVIL_COMBINABLE
+        handler_id: ENSNARED_SNAIL
+  - id: EON_THE_FISH
+    material: cod
+    name: "Eon the Fish"
+    rarity: SPECIAL
+    source: "Museum Milestone 20 reward"
+    lore:
+      - "§7Back in my day, we swam upstream"
+      - "§7for hours to get to school, and we"
+      - "§7didn't complain!"
+  - id: EPHEMERAL_GRATITUDE
+    material: player_head
+    name: "Ephemeral Gratitude"
+    rarity: UNCOMMON
+    unavailable: "Needs Garden Visitors, which aren't built"
+    source: "Accept a Garden Visitor's commission within two seconds of it appearing"
+    lore:
+      - "§7Traded in a blink and missed the wink,"
+      - "§7it's for those who click first and ask"
+      - "§7questions never!"
+    components:
+      - id: SKULL_HEAD
+        texture: 432629611c1f8c7d5c7b84a848e5d5001806dfaf2d04f407141a5107ad17ca1b
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: EPOCH_CAKE_AQUA
+    material: player_head
+    name: "Barry Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §b+5"
+      - "§bIntelligence §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 5eff0904d5ec691dd8e38d1f63d38bef0492013ece93d32af90dc0320116c597
+  - id: EPOCH_CAKE_BLACK
+    material: player_head
+    name: "Century Cake of the Next Dungeon Floor"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §b+1"
+      - "§bMagic Find §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 64592746cc35672ee29bb3a153d74f7a5d0e5fe8612729a34fad252fe7904283
+  - id: EPOCH_CAKE_BLUE
+    material: player_head
+    name: "Sea Emperor Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §3+1"
+      - "§3Sea Creature Chance §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: e12a28e69da5e43ce8fdecc6a823c92fff84719e0147caac71c5c8d99da5781c
+  - id: EPOCH_CAKE_BROWN
+    material: player_head
+    name: "Chocolate Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §6+5"
+      - "§6Farming Fortune §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: b237cdfd7d3f20e0f5b697a20c85324fbb7bcd409e653337ccd5a9ce8ccafc1d
+  - id: EPOCH_CAKE_CYAN
+    material: player_head
+    name: "Century Cake of Hype"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §6+5"
+      - "§6Mining Fortune §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: fb7cfbb6af700e49bfdb60236920c522084bb808ab612474fb1f83ea410d5484
+  - id: EPOCH_CAKE_DARK_GREEN
+    material: player_head
+    name: "Undead Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §4+1"
+      - "§4Vitality §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: c3830d235c9de703946864c281f42f9d45647691ee353fbbb0722717706b8bda
+  - id: EPOCH_CAKE_EXPIRED
+    material: player_head
+    name: "Long-Expired Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §2+5"
+      - "§2Sweep §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 4545c6bfd773024511e235e12f6a2a2ede060cb8dbba95e1fc245c16010676ab
+  - id: EPOCH_CAKE_GRAY
+    material: player_head
+    name: "Not-a-lie Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §f+1"
+      - "§fTrue Defense §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: d40f9299508387618cfad6db35c9f6d807c49337d333d6ec3b13d9e87d0d488f
+  - id: EPOCH_CAKE_GREEN
+    material: player_head
+    name: "Pet Rock Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §a+3"
+      - "§aDefense §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: ba7bfa80a85e707eedf945b88905942f5f7795ea5264d692a22e707fc577a88b
+  - id: EPOCH_CAKE_HEPHAESTUS
+    material: player_head
+    name: "Hephaestus' Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §d+1"
+      - "§dTracking §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 3b8a3e22d97c031a3f2f87c85f831b4abfa47358d3249cac043abe999f549ab6
+  - id: EPOCH_CAKE_MAGENTA
+    material: player_head
+    name: "ekaC yrutneC tfiR"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants"
+      - "§a+10 Rift Time §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: d37b1fb4d0981901a292c42c653946ca0e2dea18be9cafa2f2f9933fdabaa984
+  - id: EPOCH_CAKE_ORANGE
+    material: player_head
+    name: "Latest Update Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §c+2"
+      - "§cFerocity §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: f58cd2750884471c0836343343ec6e188229da054ef3671013ae8d43d6b02548
+  - id: EPOCH_CAKE_PINK
+    material: player_head
+    name: "Crab-Colored Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants"
+      - "§c+10 Health §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 21185676416653bf70603c723ff7a48e080db649a8ce5d65b461bf654874935a
+  - id: EPOCH_CAKE_PURPLE
+    material: player_head
+    name: "Streamer's Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §d+1"
+      - "§dPet Luck §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 25d9243c61e2c3e1e0f9931843cadbd0dff4a646225ef54c557979cf39bb2057
+  - id: EPOCH_CAKE_RED
+    material: player_head
+    name: "Fruit Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §c+2"
+      - "§cStrength §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 100§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 50f144fd4d7c89e03f35d7efe41d39783968235916a009e4d0f882ec2c8e6eb7
+  - id: EPOCH_CAKE_SEVEN_SEAS
+    material: player_head
+    name: "Century Cake of the Seven Seas"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §6+1"
+      - "§6Treasure Chance §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 63d220f235f284fcc5fdc45ddd9f97d66604da2a6ad41ab894a63fde8b7e4995
+  - id: EPOCH_CAKE_SILVER
+    material: player_head
+    name: "Corpse-Flavored Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §b+1"
+      - "§bCold Resistance §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 498c88dafe133e797f2994acc053b3926e9291d0b7093598b39d272c7c94a366
+  - id: EPOCH_CAKE_STARBORN
+    material: player_head
+    name: "Starborn Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §d+1"
+      - "§dHunting Fortune §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: f0939cc98cee20d84889ca0dcbc83e35df70c3c98245bf2e6e6f6a3ad284cc7e
+  - id: EPOCH_CAKE_WHITE
+    material: player_head
+    name: "Cloudy Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants §6+5"
+      - "§6Foraging Fortune §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 100§7."
+    components:
+      - id: SKULL_HEAD
+        texture: ba0a5b510a8d824ff4910ca5b2698aa3d030f837810e8d7f0bbca8cf06ce2023
+  - id: EPOCH_CAKE_YELLOW
+    material: player_head
+    name: "Potato-Style Century Cake"
+    rarity: UNCOMMON
+    unavailable: "Century celebrations (every 100 SkyBlock years) and island cake placement aren't built"
+    source: "Simon every 100 SkyBlock years, Raffle of the Century, Century Cake Bundles, Gift Bag of the Century"
+    lore:
+      - "§8Furniture"
+      - ""
+      - "§7Furniture can be placed on your"
+      - "§7world. Some furniture is interactable"
+      - "§7while some are purely cosmetic."
+      - ""
+      - "§7Invite your friends to share a slice"
+      - "§7of cake! Eating this cake grants"
+      - "§f+10 Speed §7for 48 hours."
+      - ""
+      - "§7Obtained in §fYear 500§7."
+    components:
+      - id: SKULL_HEAD
+        texture: e25588999b674b399a1980a25d9ca323639d033e3f85040c1de7ffb428bca095
+  - id: ETHEREAL_VINE
+    material: vine
+    name: "Ethereal Vine"
+    rarity: EPIC
+    unavailable: "Needs the Garden Greenhouse, which isn't built"
+    source: "Harvesting Mutations in the Greenhouse (15% Common to 40% Legendary)"
+    lore:
+      - "§7Allows you to unlock additional plant"
+      - "§7slots in the §aGreenhouse §7by"
+      - "§7right-clicking on a locked plant slot."
+      - ""
+      - "§8§oThis elusive vine seems to grow"
+      - "§8§owherever it pleases, bending the"
+      - "§8§orules of nature."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/greenhouse/ethereal_vine
+  - id: EXPERIMENTATION_TABLE
+    material: player_head
+    name: "Experimentation Table"
+    rarity: RARE
+    unavailable: "The Experimentation Table and Superpairs aren't built"
+    source: "Crafted from 8 Logs and an Experience Bottle"
+    lore:
+      - "§7Place this item on your island!"
+      - ""
+      - "§7Conduct wild enchanting experiments to"
+      - "§7gain bonus §bEnchanting Exp §7and §eitems§7!"
+    components:
+      - id: SKULL_HEAD
+        texture: 81b843451184a8ccd8e6e49d0edf3451d3dea50fde5b6a2f98ab7cf1138bcece
+  - id: EXPERIMENT_THE_FISH
+    material: cod
+    name: "Experiment the Fish"
+    rarity: SPECIAL
+    unavailable: "The Experimentation Table and Superpairs aren't built"
+    source: "Superpairs reward at the Experimentation Table (about 5.28%)"
+    lore:
+      - "§7Fish me once, shame on you. Fish me"
+      - "§7twice, shame on me."
+  - id: EXPIRED_PUMPKIN
+    material: player_head
+    name: "Expired Pumpkin"
+    rarity: UNCOMMON
+    unavailable: "The Great Spook's Vargul the Unearthed and Primal Fears aren't built"
+    source: "Great Spook: Vargul the Unearthed sells 30 per Dark Candy"
+    lore:
+      - "§7Bring §63,000 §7of these to §5Carrolyn §7in"
+      - "§5Scarleton §7on the §cCrimson Isle §7to"
+      - "§7permanently gain §c+5 Health §7and"
+      - "§6+12 Pumpkin Fortune§7."
+    components:
+      - id: SKULL_HEAD
+        texture: 8289209920d5f19175d79ae6aa6aa7bb899144a7bc4f3612f4347eca25e572fa
+  - id: EXPORTABLE_CARROTS
+    material: player_head
+    name: "Exportable Carrots"
+    rarity: UNCOMMON
+    unavailable: "Needs the Rift"
+    source: "Crafted in the Rift from Half-Eaten Carrots"
+    lore:
+      - "§7Bring §63,000 §7of these to §5Carrolyn §7in"
+      - "§5Scarleton §7on the §cCrimson Isle §7to"
+      - "§7permanently gain §c+5 Health §7and"
+      - "§6+12 Carrot Fortune§7."
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    components:
+      - id: SKULL_HEAD
+        texture: 2e51db6f6955e5e53e7df3086838796679770f9470c792ae1ba9e7f45762b987
+  - id: EXTRA_LARGE_GEMSTONE_SACK
+    material: player_head
+    name: "Extra Large Gemstone Sack"
+    rarity: EPIC
+    unavailable: "Recipe was removed on Hypixel"
+    source: "Briefly craftable after the Crystal Hollows update (42 Rough Ruby, 16 Enchanted String, 4 Enchanted Leather)"
+    components:
+      - id: SKULL_HEAD
+        texture: 8a89de1811115e1aee373f6a7845bd3f81c7dbe302e4afc7e8d6b8a1200c7213
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: EXTREME_BINGO_CARD
+    material: paper
+    name: "Extreme Bingo Card (Extreme Bingo #1)"
+    rarity: SPECIAL
+    unavailable: "Event reward that is no longer obtainable; Bingo isn't built"
+    source: "Reward for completing the whole card in the 1st Extreme Bingo (December 2022)"
+    lore:
+      - "§7Obtained during the §61st"
+      - "§6§cExtreme Bingo Event §7during"
+      - "§7§aDecember 2022 §7for completing"
+      - "§7the entire Bingo Card!"
+      - ""
+      - "§7Player: §c§kEisengolem"
+      - "§7Playtime: §a§k69§ah"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: FACTION_RABBIT_ALLEY
+    material: player_head
+    name: "Alley"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
+  - id: FACTION_RABBIT_ANCHOR
+    material: player_head
+    name: "Anchor"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: f68fde9832946f6da9f3748640a9a77620bc4136b744a2b0974ce26ebca189ab
+  - id: FACTION_RABBIT_ASTER
+    material: player_head
+    name: "Aster"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: d3bc348ca8157a9b4dd60e3037018675429364b1b2e1afff8525235e1f93a5c4
+  - id: FACTION_RABBIT_AVALANCHE
+    material: player_head
+    name: "Avalanche"
+    rarity: EPIC
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+10 Chocolate §7and §60.005x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 380d094420f29d202c5fdf39b262b84147a5b2529f7bc18b1d4cdef35e62d292
+  - id: FACTION_RABBIT_CANYON
+    material: player_head
+    name: "Canyon"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: eb5984d2058120122d8d3648d6295b941d080f6715a6387dcad76121c8ea3913
+  - id: FACTION_RABBIT_CHASM
+    material: player_head
+    name: "Chasm"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
+  - id: FACTION_RABBIT_CLOVER
+    material: player_head
+    name: "Clover"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: efa14575f5cfe41424b37cd1f10eb8845bf8e34b6e6bb7236b5bc9c367c0eda1
+  - id: FACTION_RABBIT_COBBLE
+    material: player_head
+    name: "Cobble"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
+  - id: FACTION_RABBIT_COCONUT
+    material: player_head
+    name: "Coconut"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 8a298640e5d2d8c9e2bac1a4f8369f214b7e17aea45dbd8f01c7262a32b18889
+  - id: FACTION_RABBIT_CRAG
+    material: player_head
+    name: "Crag"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 520d38b2d9b12d62a73e2f47ba71a45e2a6902bfabc162ea0a0051cfef2eb883
+  - id: FACTION_RABBIT_DAISY
+    material: player_head
+    name: "Daisy"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
+  - id: FACTION_RABBIT_DUNE
+    material: player_head
+    name: "Dune"
+    rarity: EPIC
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+10 Chocolate §7and §60.005x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: ad0a0fbeb894ccba677012fa09d6e745e03b520daae2fb627a37bd6d6dfb82e2
+  - id: FACTION_RABBIT_EAGLE
+    material: player_head
+    name: "Eagle"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 520d38b2d9b12d62a73e2f47ba71a45e2a6902bfabc162ea0a0051cfef2eb883
+  - id: FACTION_RABBIT_GLACIER
+    material: player_head
+    name: "Glacier"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
+  - id: FACTION_RABBIT_GRAFFITI
+    material: player_head
+    name: "Graffiti"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4be2ee656303abf312db62ed70baacb6547c2a5f79a089d1bdc0eca97976f77d
+  - id: FACTION_RABBIT_GRANITE
+    material: player_head
+    name: "Granite"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
+  - id: FACTION_RABBIT_HAYBALE
+    material: player_head
+    name: "Haybale"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
+  - id: FACTION_RABBIT_HAZEL
+    material: player_head
+    name: "Hazel"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
+  - id: FACTION_RABBIT_HORIZON
+    material: player_head
+    name: "Horizon"
+    rarity: LEGENDARY
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+0.02x Chocolate §7per second"
+      - "§7to your §6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: bbba21f229f94f8d53ca7e6e6e9936aee61a3b9c525a82f6212ff4dbae4109c3
+  - id: FACTION_RABBIT_ICEFUR
+    material: player_head
+    name: "Icefur"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: eb5984d2058120122d8d3648d6295b941d080f6715a6387dcad76121c8ea3913
+  - id: FACTION_RABBIT_IRIS
+    material: player_head
+    name: "Iris"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: d3bc348ca8157a9b4dd60e3037018675429364b1b2e1afff8525235e1f93a5c4
+  - id: FACTION_RABBIT_JUNIPER
+    material: player_head
+    name: "Juniper"
+    rarity: EPIC
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+10 Chocolate §7and §60.005x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: fa10030e8e13549ce79841cfaab3470aa5ada8b6a474e3756e61974b8717e935
+  - id: FACTION_RABBIT_LAGOON
+    material: player_head
+    name: "Lagoon"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: f68fde9832946f6da9f3748640a9a77620bc4136b744a2b0974ce26ebca189ab
+  - id: FACTION_RABBIT_LAVENDER
+    material: player_head
+    name: "Lavender"
+    rarity: EPIC
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+10 Chocolate §7and §60.005x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: fa10030e8e13549ce79841cfaab3470aa5ada8b6a474e3756e61974b8717e935
+  - id: FACTION_RABBIT_MARIGOLD
+    material: player_head
+    name: "Marigold"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: efa14575f5cfe41424b37cd1f10eb8845bf8e34b6e6bb7236b5bc9c367c0eda1
+  - id: FACTION_RABBIT_MAYOR
+    material: player_head
+    name: "Mayor"
+    rarity: LEGENDARY
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+0.02x Chocolate §7per second"
+      - "§7to your §6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: b04d59adf2fd6729abf58353de480c25ca3534c47bdf622362224a483b481e78
+  - id: FACTION_RABBIT_MINISTER
+    material: player_head
+    name: "Minister"
+    rarity: EPIC
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+10 Chocolate §7and §60.005x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 86cb757b0a933edfdf8eb4101dd435b3dbf6624327c1fd0965afe0a3a55051e8
+  - id: FACTION_RABBIT_MISTRAL
+    material: player_head
+    name: "Mistral"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
+  - id: FACTION_RABBIT_MOCKTAIL
+    material: player_head
+    name: "Mocktail"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: f68fde9832946f6da9f3748640a9a77620bc4136b744a2b0974ce26ebca189ab
+  - id: FACTION_RABBIT_MOSS
+    material: player_head
+    name: "Moss"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: efa14575f5cfe41424b37cd1f10eb8845bf8e34b6e6bb7236b5bc9c367c0eda1
+  - id: FACTION_RABBIT_NECTAR
+    material: player_head
+    name: "Nectar"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: efa14575f5cfe41424b37cd1f10eb8845bf8e34b6e6bb7236b5bc9c367c0eda1
+  - id: FACTION_RABBIT_NEON
+    material: player_head
+    name: "Neon"
+    rarity: EPIC
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+10 Chocolate §7and §60.005x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 86cb757b0a933edfdf8eb4101dd435b3dbf6624327c1fd0965afe0a3a55051e8
+  - id: FACTION_RABBIT_OASIS
+    material: player_head
+    name: "Oasis"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 8a298640e5d2d8c9e2bac1a4f8369f214b7e17aea45dbd8f01c7262a32b18889
+  - id: FACTION_RABBIT_PALM
+    material: player_head
+    name: "Palm"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
+  - id: FACTION_RABBIT_PEON
+    material: player_head
+    name: "Peon"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
+  - id: FACTION_RABBIT_ROOT
+    material: player_head
+    name: "Root"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
+  - id: FACTION_RABBIT_ROSEBUD
+    material: player_head
+    name: "Rosebud"
+    rarity: LEGENDARY
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+0.02x Chocolate §7per second"
+      - "§7to your §6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 222ffb651c5ff25a28fcce15d6f8c958c5f8f983c9dfe9ec083e079dc700435e
+  - id: FACTION_RABBIT_SANDY
+    material: player_head
+    name: "Sandy"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
+  - id: FACTION_RABBIT_SCREE
+    material: player_head
+    name: "Scree"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: eb5984d2058120122d8d3648d6295b941d080f6715a6387dcad76121c8ea3913
+  - id: FACTION_RABBIT_SEABUN
+    material: player_head
+    name: "Seabun"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: f68fde9832946f6da9f3748640a9a77620bc4136b744a2b0974ce26ebca189ab
+  - id: FACTION_RABBIT_SEASHELL
+    material: player_head
+    name: "Seashell"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
+  - id: FACTION_RABBIT_SHORTCUT
+    material: player_head
+    name: "Shortcut"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5e6541e3b3d1515824a05ea09ab067f89a7f08ca39a8937a884b73404d05553d
+  - id: FACTION_RABBIT_SILO
+    material: player_head
+    name: "Silo"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: d3bc348ca8157a9b4dd60e3037018675429364b1b2e1afff8525235e1f93a5c4
+  - id: FACTION_RABBIT_SKYRISE
+    material: player_head
+    name: "Skyrise"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4be2ee656303abf312db62ed70baacb6547c2a5f79a089d1bdc0eca97976f77d
+  - id: FACTION_RABBIT_SPEEDY
+    material: player_head
+    name: "Speedy"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
+  - id: FACTION_RABBIT_SPLASH
+    material: player_head
+    name: "Splash"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
+  - id: FACTION_RABBIT_STARFISH
+    material: player_head
+    name: "Starfish"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 8a298640e5d2d8c9e2bac1a4f8369f214b7e17aea45dbd8f01c7262a32b18889
+  - id: FACTION_RABBIT_SUBWAY
+    material: player_head
+    name: "Subway"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2677b1461a750731f7191db6fe4714d7b55f6777a4d68cccdb79c2a26eaadcd3
+  - id: FACTION_RABBIT_SUMMIT
+    material: player_head
+    name: "Summit"
+    rarity: EPIC
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+10 Chocolate §7and §60.005x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 380d094420f29d202c5fdf39b262b84147a5b2529f7bc18b1d4cdef35e62d292
+  - id: FACTION_RABBIT_SUNSET
+    material: player_head
+    name: "Sunset"
+    rarity: LEGENDARY
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+0.02x Chocolate §7per second"
+      - "§7to your §6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 785c52ed4b820711853c5b281c037939934389e7b0eb809ced1ce5026473227c
+  - id: FACTION_RABBIT_SURF
+    material: player_head
+    name: "Surf"
+    rarity: EPIC
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+10 Chocolate §7and §60.005x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: ad0a0fbeb894ccba677012fa09d6e745e03b520daae2fb627a37bd6d6dfb82e2
+  - id: FACTION_RABBIT_TAN
+    material: player_head
+    name: "Tan"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Beach Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2623311e39bd3d0732a5dd1e07e767622d2b974c448398a49456db4ac9619b69
+  - id: FACTION_RABBIT_TAXI
+    material: player_head
+    name: "Taxi"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5e6541e3b3d1515824a05ea09ab067f89a7f08ca39a8937a884b73404d05553d
+  - id: FACTION_RABBIT_TIMBER
+    material: player_head
+    name: "Timber"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: c955b3e96f20b6e3086d1f0e7e8b43c1ad586f246796545c061ecb5bf563b151
+  - id: FACTION_RABBIT_TRAFFIC
+    material: player_head
+    name: "Traffic"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4be2ee656303abf312db62ed70baacb6547c2a5f79a089d1bdc0eca97976f77d
+  - id: FACTION_RABBIT_TUNDRA
+    material: player_head
+    name: "Tundra"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 520d38b2d9b12d62a73e2f47ba71a45e2a6902bfabc162ea0a0051cfef2eb883
+  - id: FACTION_RABBIT_TUNNEL
+    material: player_head
+    name: "Tunnel"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4be2ee656303abf312db62ed70baacb6547c2a5f79a089d1bdc0eca97976f77d
+  - id: FACTION_RABBIT_TWIGY
+    material: player_head
+    name: "Twigy"
+    rarity: COMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Country Faction Rabbit!"
+      - ""
+      - "§7Grants §6+1 Chocolate §7and §60.002x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5f2d0275341960044ac0646a17c22dfa82e8dd315eb48f4d901bf513b9967425
+  - id: FACTION_RABBIT_VALLEY
+    material: player_head
+    name: "Valley"
+    rarity: UNCOMMON
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a Mountain Faction Rabbit!"
+      - ""
+      - "§7Grants §6+2 Chocolate §7and §60.003x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: eb5984d2058120122d8d3648d6295b941d080f6715a6387dcad76121c8ea3913
+  - id: FACTION_RABBIT_WALKER
+    material: player_head
+    name: "Walker"
+    rarity: RARE
+    unavailable: "Rabbit Factions (Chocolate Factory level 5) aren't built"
+    source: "Rabbit Faction rabbit item (Chocolate Factory level 5+, higher rarities need faction tier upgrades); sellable on the Bazaar"
+    lore:
+      - "§7This is a City Faction Rabbit!"
+      - ""
+      - "§7Grants §6+4 Chocolate §7and §60.004x"
+      - "§6Chocolate §7per second to your"
+      - "§6Chocolate Factory§7."
+      - ""
+      - "§eRight click to add to your Factory!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5e6541e3b3d1515824a05ea09ab067f89a7f08ca39a8937a884b73404d05553d
+  - id: FAIRY_WINGS
+    material: player_head
+    name: "Fairy Wings"
+    rarity: EPIC
+    unavailable: "Needs Dungeons"
+    source: "Hit Fairies in The Catacombs with Enchanted Shears while the Tyashoi Alchemist is in the Village"
+    lore:
+      - "§7No fairies were harmed in the"
+      - "§7obtaining of this item."
+    components:
+      - id: SKULL_HEAD
+        texture: 5e6e39996cea6b0366b6d8f835a919bcb82622d06f46afb0a6ed771a82a3db76
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: FAKE_EMERALD_ALTAR
+    material: emerald_block
+    name: "Fake Emerald Altar"
+    rarity: UNCOMMON
+    unavailable: "The Romero and Juliette quest isn't built"
+    source: "Romero gives it for 64 Emerald during the Romero and Juliette quest"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Bring it to §eJuliette §7in §aThe Park§7."
+      - ""
+      - "§8§oCan't bring the girl to the altar?"
+      - "§8§oBring the altar to the girl!"
+    components:
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: FAKE_SHURIKEN
+    material: nether_star
+    name: "Extremely Real Shuriken"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Oruo the Almighty sells 16 for 32 Sun Gecko Essence"
+    lore:
+      - "§7Can be thrown at §cEnemies §7to tag"
+      - "§7them. Grants §b+5%  Magic Find §7when"
+      - "§7a tagged §cEnemy §7is killed."
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/rift/weapons/time_shuriken
+  - id: FALLEN_STAR_TRACKER
+    material: diamond
+    name: "Fallen Star Lozenge"
+    rarity: EPIC
+    unavailable: "The Cult of the Fallen Star claim and the Rezonate ability aren't built"
+    source: "Talk to Silnar while wearing a Fallen Star Helmet"
+    lore:
+      - "§6Ability: Rezonate  §e§lRIGHT CLICK"
+      - "§7Leads you to the nearest §5Fallen Star §7while in"
+      - "§7the §2Dwarven Mines§7."
+      - "§8Mana Cost: §b18"
+  - id: FAMILY_DOUBLOON
+    material: gold_nugget
+    name: "Doubloon of the Family"
+    rarity: RARE
+    unavailable: "Needs the Rift"
+    source: "Claimed from Inverted Sirius in the Rift Dimension after handing over a Stability Elixir"
+    lore:
+      - "§7Just sell it, it's easy coins!"
+      - ""
+      - "§8A precious trinket from a powerful"
+      - "§8member of The Family who doesn't"
+      - "§8really need it anymore...."
+      - ""
+      - "§5§kX§5 Rift-Transferable §5§kX"
+  - id: FAMILY_SIZED_POT_OF_HONEYCOMB
+    material: paper
+    name: "Family-Sized Pot of Honeycomb"
+    rarity: RARE
+    unavailable: "Needs Enchanted Helix Log and Tree Protection Orders (Galatea), which aren't built"
+    source: "Crafted from 8 Enchanted Honeycomb and 32 Enchanted Helix Log (Honeycomb III)"
+    lore:
+      - "§8Consumed on use"
+      - ""
+      - "§7Use on a §aTree §7with an active §cTree"
+      - "§cProtection Order §7to lather it with"
+      - "§6Honeycomb§7!"
+      - ""
+      - "§7After §a30m§7, a unique §a Critter §7will be"
+      - "§7attracted to the §6Honeycomb§7!"
+      - "§8Type of mob depends upon type of"
+      - "§8tree lathered."
+      - ""
+      - "§eRight-click to consume!"
+      - ""
+      - "§4❣ §cRequires §aHoneycomb Collection III§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/honey/pots/honey_pot_family_sized
+  - id: FANCY_BEACH_CHAIR
+    material: player_head
+    name: "Fancy Beach Chair"
+    rarity: EPIC
+    unavailable: "Furniture placement and the Carpentry Table aren't built; Hypixel rank Reward Bundles aren't built"
+    source: "Reward Bundle (MVP rank, 2 per bundle)"
+    lore:
+      - "§8Furniture"
+      - "§8Summer Cosmetic"
+      - ""
+      - "§7This exclusive §aSummer §7cosmetic can"
+      - "§7be placed on your island or traded."
+    components:
+      - id: SKULL_HEAD
+        texture: 9e59f84677092143691a5b612ec388ab62b879bd4f7980d355ec77e7f0c7b49c

@@ -74,6 +74,9 @@ items:
     components:
       - id: SELLABLE
         value: 3.0
+  - id: FLINT_AND_STEEL
+    rarity: COMMON
+    material: FLINT_AND_STEEL
   - id: WATER_BOTTLE
     rarity: COMMON
     material: POTION

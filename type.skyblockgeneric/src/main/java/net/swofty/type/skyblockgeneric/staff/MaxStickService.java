@@ -165,6 +165,8 @@ public final class MaxStickService {
             new Step("Brain Food", player -> MythologicalItemHandlers.setBrainFoodEaten(player, MythologicalItemHandlers.BRAIN_FOOD_LIMIT)),
             new Step("Refined Bottle of Jyrre", player -> BottleOfJyrre.setRefinedConsumed(player, BottleOfJyrre.REFINED_LIMIT)),
             new Step("Reaper Peppers", player -> ReaperPepper.setEaten(player, ReaperPepper.LIMIT)),
+            new Step("Vials of Venom", player -> net.swofty.type.skyblockgeneric.consumable.VialOfVenom.setConsumed(player, net.swofty.type.skyblockgeneric.consumable.VialOfVenom.LIMIT)),
+            new Step("Dwarven O's", net.swofty.type.skyblockgeneric.consumable.DwarvenOs::maxAll),
             new Step("Ice Essence shop", IceEssenceShop::maxAvailable),
             new Step("Fossil Essence shop", net.swofty.type.skyblockgeneric.essence.FossilEssenceShop::maxAvailable),
             new Step("Fossil Research Center", net.swofty.type.skyblockgeneric.fossil.FossilService::donateAll),

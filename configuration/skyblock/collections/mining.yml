@@ -1050,6 +1050,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DWARVEN_COMPACTOR
   - amount: 250000
     rewards:
     - type: XP

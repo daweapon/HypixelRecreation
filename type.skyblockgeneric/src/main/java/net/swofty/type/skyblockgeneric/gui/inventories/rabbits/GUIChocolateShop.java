@@ -72,7 +72,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
                 <e>Click to trade!
                 <e>Right-click for more trading options!""",
                 ChocolateFactoryHelper.formatChocolate(2_000_000L)),
-                (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 2_000_000L, "<a>Supreme Chocolate Bar", 0, c));
+                (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 2_000_000L, "<a>Supreme Chocolate Bar", 0, c, ItemType.get("SUPREME_CHOCOLATE_BAR")));
 
         // Slot 11: Egglocator
         layout.slot(11, (s, c) -> ItemStacks.head(EGGLOCATOR_TEXTURE, """
@@ -98,7 +98,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
 
                 <e>Click to trade!""",
                 ChocolateFactoryHelper.formatChocolate(7_500_000L)),
-                (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 7_500_000L, "<f>Egglocator", 0, c));
+                (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 7_500_000L, "<f>Egglocator", 0, c, ItemType.get("EGGLOCATOR")));
 
         // Slot 12: Nibble Chocolate Stick
         layout.slot(12, (s, c) -> {
@@ -283,7 +283,7 @@ public class GUIChocolateShop implements StatefulView<GUIChocolateShop.State> {
 
                     <e>Click to trade!""",
                     ChocolateFactoryHelper.formatChocolate(2_500_000_000L));
-        }, (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 2_500_000_000L, "<9>Dark Cacao Truffle", 3, c));
+        }, (click, c) -> handlePurchase((SkyBlockPlayer) c.player(), 2_500_000_000L, "<9>Dark Cacao Truffle", 3, c, ItemType.get("DARK_CACAO_TRUFFLE")));
 
         // Slot 20: Chocolate Dye
         layout.slot(20, (s, c) -> {

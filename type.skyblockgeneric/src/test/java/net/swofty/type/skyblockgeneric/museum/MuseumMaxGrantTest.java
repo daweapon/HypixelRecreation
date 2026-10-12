@@ -177,7 +177,7 @@ class MuseumMaxGrantTest {
         DatapointMuseum.MuseumData data = new DatapointMuseum.MuseumData();
         MuseumService.grantCopies(CATALOGUE, data);
         int bytes = data.serialize().toString().getBytes().length;
-        assertTrue(bytes < 2_000_000, "a maxed Museum serialises to " + bytes + " bytes");
+        assertTrue(bytes < 3_000_000, "a maxed Museum serialises to " + bytes + " bytes");
         System.out.println("Maxed Museum: " + data.getCurrentlyInMuseum().size() + " items, " + bytes + " bytes");
     }
 

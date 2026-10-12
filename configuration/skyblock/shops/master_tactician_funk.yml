@@ -1,0 +1,21 @@
+# Master Tactician Funk in the Savanna Woodland (wiki Master Tactician Funk/UI).
+title: Master Tactician
+slots: DEFAULT
+entries:
+  - item: TACTICIAN_SWORD
+    name: "<9>Tactician's Sword"
+    material: wooden_sword
+    cost: { coins: 35000 }
+  - item: WOOD_SINGULARITY
+    name: "<6>Wood Singularity"
+    material: player_head
+    cost:
+      coins: 1464000
+      items:
+        ENCHANTED_OAK_LOG: 320
+        ENCHANTED_SPRUCE_LOG: 320
+        ENCHANTED_BIRCH_LOG: 320
+        ENCHANTED_DARK_OAK_LOG: 320
+        ENCHANTED_ACACIA_LOG: 320
+        ENCHANTED_JUNGLE_LOG: 320
+    unavailable: "<c>Applying a Wood Singularity to an axe is not implemented yet!"

@@ -292,6 +292,8 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, MythologicalItemHandlers.permanentStatistics(player));
         spare = ItemStatistics.add(spare, BottleOfJyrre.permanentStatistics(player));
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.minion.inferno.ReaperPepper.permanentStatistics(player));
+        spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.consumable.VialOfVenom.permanentStatistics(player));
+        spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.consumable.DwarvenOs.statistics(player));
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.statistics(player));
 
         return spare;
