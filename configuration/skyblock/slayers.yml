@@ -13,11 +13,11 @@ slayers:
       - { level: 8, requiredXp: 400000, title: Necromancer, unlocks: [REAPER_ORB] }
       - { level: 9, requiredXp: 1000000, title: Grim Reaper }
     tiers:
-      - { tier: I, cost: 2000, requiredCombatXp: 150, slayerXp: 5, bossLevel: 1, bossHealth: 500, bossDamage: 15, bossSpeed: 100, tokenItem: REVENANT_FLESH, tokenDrops: 1 }
-      - { tier: II, cost: 7500, requiredCombatXp: 1440, slayerXp: 25, bossLevel: 2, bossHealth: 20000, bossDamage: 50, bossSpeed: 110, tokenItem: REVENANT_FLESH, tokenDrops: 8, requiredCombatLevel: 5 }
-      - { tier: III, cost: 20000, requiredCombatXp: 2400, slayerXp: 100, bossLevel: 3, bossHealth: 400000, bossDamage: 120, bossSpeed: 120, tokenItem: REVENANT_FLESH, tokenDrops: 32, requiredCombatLevel: 10 }
-      - { tier: IV, cost: 50000, requiredCombatXp: 4800, slayerXp: 500, bossLevel: 4, bossHealth: 1500000, bossDamage: 400, bossSpeed: 130, tokenItem: REVENANT_FLESH, tokenDrops: 64, requiredCombatLevel: 15 }
-      - { tier: V, cost: 100000, requiredCombatXp: 6000, slayerXp: 1500, bossLevel: 5, bossHealth: 10000000, bossDamage: 2400, bossSpeed: 135, tokenItem: REVENANT_FLESH, tokenDrops: 128, requiredCombatLevel: 25, requiredSlayerLevel: 7 }
+      - { tier: I, cost: 2000, requiredCombatXp: 100, slayerXp: 5, bossLevel: 1, bossHealth: 500, bossDamage: 15, bossSpeed: 100, tokenItem: REVENANT_FLESH, tokenDrops: 1 }
+      - { tier: II, cost: 7500, requiredCombatXp: 1000, slayerXp: 25, bossLevel: 2, bossHealth: 20000, bossDamage: 50, bossSpeed: 110, tokenItem: REVENANT_FLESH, tokenDrops: 8, requiredCombatLevel: 5 }
+      - { tier: III, cost: 20000, requiredCombatXp: 2500, slayerXp: 100, bossLevel: 3, bossHealth: 400000, bossDamage: 120, bossSpeed: 120, tokenItem: REVENANT_FLESH, tokenDrops: 32, requiredCombatLevel: 10 }
+      - { tier: IV, cost: 50000, requiredCombatXp: 5000, slayerXp: 500, bossLevel: 4, bossHealth: 1500000, bossDamage: 400, bossSpeed: 130, tokenItem: REVENANT_FLESH, tokenDrops: 64, requiredCombatLevel: 15 }
+      - { tier: V, cost: 100000, requiredCombatXp: 10000, slayerXp: 1500, bossLevel: 5, bossHealth: 10000000, bossDamage: 2400, bossSpeed: 135, tokenItem: REVENANT_FLESH, tokenDrops: 128, requiredCombatLevel: 25, requiredSlayerLevel: 7 }
 
   - id: TARANTULA_BROODFATHER
     enabled: true
@@ -34,10 +34,10 @@ slayers:
       - { level: 8, requiredXp: 400000, title: Tarantula Exterminator }
       - { level: 9, requiredXp: 1000000, title: Spider Annihilator }
     tiers:
-      - { tier: I, cost: 2000, requiredCombatXp: 225, slayerXp: 5, bossLevel: 1, bossHealth: 750, bossDamage: 35, bossSpeed: 120, tokenItem: TARANTULA_WEB, tokenDrops: 1 }
-      - { tier: II, cost: 7500, requiredCombatXp: 540, slayerXp: 25, bossLevel: 2, bossHealth: 30000, bossDamage: 110, bossSpeed: 125, tokenItem: TARANTULA_WEB, tokenDrops: 8 }
-      - { tier: III, cost: 20000, requiredCombatXp: 1320, slayerXp: 100, bossLevel: 3, bossHealth: 900000, bossDamage: 525, bossSpeed: 135, tokenItem: TARANTULA_WEB, tokenDrops: 32 }
-      - { tier: IV, cost: 50000, requiredCombatXp: 2000, slayerXp: 500, bossLevel: 4, bossHealth: 2400000, bossDamage: 1325, bossSpeed: 145, tokenItem: TARANTULA_WEB, tokenDrops: 64 }
+      - { tier: I, cost: 2000, requiredCombatXp: 250, slayerXp: 5, bossLevel: 1, bossHealth: 2500, bossDamage: 35, bossSpeed: 120, tokenItem: TARANTULA_WEB, tokenDrops: 1 }
+      - { tier: II, cost: 7500, requiredCombatXp: 650, slayerXp: 25, bossLevel: 2, bossHealth: 50000, bossDamage: 110, bossSpeed: 125, tokenItem: TARANTULA_WEB, tokenDrops: 8 }
+      - { tier: III, cost: 20000, requiredCombatXp: 1500, slayerXp: 100, bossLevel: 3, bossHealth: 1000000, bossDamage: 525, bossSpeed: 135, tokenItem: TARANTULA_WEB, tokenDrops: 32 }
+      - { tier: IV, cost: 50000, requiredCombatXp: 3000, slayerXp: 500, bossLevel: 4, bossHealth: 2500000, bossDamage: 1325, bossSpeed: 145, tokenItem: TARANTULA_WEB, tokenDrops: 64 }
       - { tier: V, cost: 100000, requiredCombatXp: 10000, slayerXp: 1500, bossLevel: 5, bossHealth: 10000000, bossDamage: 3500, bossSpeed: 150, tokenItem: TARANTULA_WEB, tokenDrops: 128, requiredCombatLevel: 25, requiredSlayerLevel: 7 }
     drops:
       - { item: TARANTULA_WEB, pool: TOKEN, level: 0, tiers: { I: [1, 3, 100], II: [9, 18, 100], III: [16, 32, 100], IV: [32, 48, 100], V: [64, 64, 100] } }
@@ -59,10 +59,10 @@ slayers:
       - { level: 8, requiredXp: 400000, title: Pack Leader }
       - { level: 9, requiredXp: 1000000, title: Alpha Wolf }
     tiers:
-      - { tier: I, cost: 2000, requiredCombatXp: 270, slayerXp: 5, bossLevel: 1, bossHealth: 2000, bossDamage: 60, bossSpeed: 130, tokenItem: WOLF_TOOTH, tokenDrops: 1 }
-      - { tier: II, cost: 7500, requiredCombatXp: 648, slayerXp: 25, bossLevel: 2, bossHealth: 40000, bossDamage: 200, bossSpeed: 135, tokenItem: WOLF_TOOTH, tokenDrops: 4 }
-      - { tier: III, cost: 20000, requiredCombatXp: 1584, slayerXp: 100, bossLevel: 3, bossHealth: 750000, bossDamage: 450, bossSpeed: 145, tokenItem: WOLF_TOOTH, tokenDrops: 16 }
-      - { tier: IV, cost: 50000, requiredCombatXp: 3168, slayerXp: 500, bossLevel: 4, bossHealth: 2000000, bossDamage: 1100, bossSpeed: 155, tokenItem: WOLF_TOOTH, tokenDrops: 64 }
+      - { tier: I, cost: 2000, requiredCombatXp: 250, slayerXp: 5, bossLevel: 1, bossHealth: 2000, bossDamage: 60, bossSpeed: 130, tokenItem: WOLF_TOOTH, tokenDrops: 1 }
+      - { tier: II, cost: 7500, requiredCombatXp: 650, slayerXp: 25, bossLevel: 2, bossHealth: 40000, bossDamage: 200, bossSpeed: 135, tokenItem: WOLF_TOOTH, tokenDrops: 4 }
+      - { tier: III, cost: 20000, requiredCombatXp: 1500, slayerXp: 100, bossLevel: 3, bossHealth: 750000, bossDamage: 450, bossSpeed: 145, tokenItem: WOLF_TOOTH, tokenDrops: 16 }
+      - { tier: IV, cost: 50000, requiredCombatXp: 3000, slayerXp: 500, bossLevel: 4, bossHealth: 2000000, bossDamage: 1100, bossSpeed: 155, tokenItem: WOLF_TOOTH, tokenDrops: 64 }
     drops:
       - { item: WOLF_TOOTH, pool: TOKEN, level: 0, tiers: { I: [1, 1, 100], II: [4, 4, 100], III: [16, 16, 100], IV: [64, 64, 100] } }
       - { item: FURBALL, pool: MAIN, level: 4, tiers: { III: [1, 1, 0.82], IV: [1, 1, 1.62] } }
@@ -83,9 +83,9 @@ slayers:
       - { level: 9, requiredXp: 1000000, title: Definition of End }
     tiers:
       - { tier: I, cost: 2000, requiredCombatXp: 2750, slayerXp: 5, bossLevel: 1, bossHealth: 300000, bossDamage: 1200, bossSpeed: 140, tokenItem: NULL_SPHERE, tokenDrops: 1 }
-      - { tier: II, cost: 7500, requiredCombatXp: 6600, slayerXp: 25, bossLevel: 2, bossHealth: 15000000, bossDamage: 5000, bossSpeed: 145, tokenItem: NULL_SPHERE, tokenDrops: 2 }
-      - { tier: III, cost: 20000, requiredCombatXp: 11000, slayerXp: 100, bossLevel: 3, bossHealth: 66000000, bossDamage: 12000, bossSpeed: 150, tokenItem: NULL_SPHERE, tokenDrops: 3 }
-      - { tier: IV, cost: 50000, requiredCombatXp: 22000, slayerXp: 500, bossLevel: 4, bossHealth: 300000000, bossDamage: 21000, bossSpeed: 160, tokenItem: NULL_SPHERE, tokenDrops: 4 }
+      - { tier: II, cost: 7500, requiredCombatXp: 6600, slayerXp: 25, bossLevel: 2, bossHealth: 12000000, bossDamage: 5000, bossSpeed: 145, tokenItem: NULL_SPHERE, tokenDrops: 2 }
+      - { tier: III, cost: 20000, requiredCombatXp: 11000, slayerXp: 100, bossLevel: 3, bossHealth: 50000000, bossDamage: 12000, bossSpeed: 150, tokenItem: NULL_SPHERE, tokenDrops: 3 }
+      - { tier: IV, cost: 50000, requiredCombatXp: 22000, slayerXp: 500, bossLevel: 4, bossHealth: 210000000, bossDamage: 21000, bossSpeed: 160, tokenItem: NULL_SPHERE, tokenDrops: 4 }
     # tiers: { TIER: [minAmount, maxAmount, chancePercent] }
     drops:
       - { item: NULL_SPHERE, pool: TOKEN, level: 0, tiers: { I: [2, 3, 100], II: [14, 24, 100], III: [60, 80, 100], IV: [105, 155, 100] } }

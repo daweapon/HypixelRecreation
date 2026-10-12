@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * What slayer levels and first kills give permanently: the per-level stat rewards, Combat Wisdom for
- * each tier's first kill (+1 for Tiers I-III, +2 for Tier IV) and the SkyBlock XP for each level.
+ * each tier's first kill (+1 for Tiers I-III, +2 for Tiers IV and V) and the SkyBlock XP for each level.
  */
 public final class SlayerProgression {
     private SlayerProgression() {
@@ -43,6 +43,7 @@ public final class SlayerProgression {
             if (progress.completions(tier) > 0) wisdom += 1;
         }
         if (progress.completions(SlayerTier.IV) > 0) wisdom += 2;
+        if (progress.completions(SlayerTier.V) > 0) wisdom += 2;
         return wisdom;
     }
 
