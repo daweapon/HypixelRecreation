@@ -104,18 +104,22 @@ public class BazaarConnector {
     }
 
     public CompletableFuture<BazaarStatistics> getItemStatistics(BazaarProduct product) {
+        return getItemView(product).thenApply(ItemView::statistics);
+    }
+
+    public CompletableFuture<ItemView> getItemView(BazaarProduct product) {
         return getItemData(product).thenApply(data -> {
             var buyStats = calculateBuyStatistics(data.buyOrders());
             var sellStats = calculateSellStatistics(data.sellOrders());
 
-            return new BazaarStatistics(
+            return new ItemView(new BazaarStatistics(
                     buyStats.highestPrice(),
                     buyStats.lowestPrice(),
                     buyStats.averagePrice(),
                     sellStats.lowestPrice(),
                     sellStats.highestPrice(),
                     sellStats.averagePrice()
-            );
+            ), data);
         });
     }
 
@@ -452,6 +456,8 @@ public class BazaarConnector {
             double worstAsk,
             double averageAsk
     ) {}
+
+    public record ItemView(BazaarStatistics statistics, BazaarItemData data) {}
 
     public record BazaarResult(
             boolean success,

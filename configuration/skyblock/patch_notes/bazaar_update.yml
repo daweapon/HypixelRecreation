@@ -44,4 +44,8 @@ sections:
       - "Brine Tonic charm value now matches the wiki (2.5)."
       - "The duplicate Mercenary Knight skin was removed from Taylor's Collection."
       - "Thirteen Ultimate skins now have Special rarity."
+      - "Bazaar product pages now match Hypixel: Buy Instantly shows the price per unit and stack price, Sell Instantly shows your inventory, and Create Buy Order and Create Sell Offer list the Top Orders and Top Offers."
+      - "Manage Orders shows how many orders you have for the product, and a new Instasell Ignore button toggles the product for bulk instasells."
+      - "A View Graphs button was added. Bazaar graphs are not added yet."
+      - "Instant buy and sell screens now show the product name in the title instead of Cobblestone, with Buy only one, Buy a stack, Fill my inventory and Custom Amount."
       - "SkyBlock XP sources for Collections, Safari Essence Shop, Bestiary, Unique Visitors, Abiphone Contacts and Attributes now follow the newest community values."

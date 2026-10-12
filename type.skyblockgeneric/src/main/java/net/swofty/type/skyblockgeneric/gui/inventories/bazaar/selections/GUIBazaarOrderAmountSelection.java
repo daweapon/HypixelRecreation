@@ -24,7 +24,7 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
     private static final DecimalFormat F = new DecimalFormat("#,###.##");
 
     private final boolean isBuy;
-    private final boolean isInstant;    // NEW: instant-buy vs limit-order
+    private final boolean isInstant;
     private final BazaarProduct itemType;
     private final int maxAmount;
     private final double unitPrice;     // for instant this includes fee; for limit this is bestAsk or bestBid
@@ -38,9 +38,9 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
             int maxAmount,
             double unitPrice
     ) {
-        super(Text.key(isInstant
-                        ? (isBuy ? "gui_bazaar.amount_selection.title_instant_buy" : "gui_bazaar.amount_selection.title_instant_sell")
-                        : (isBuy ? "gui_bazaar.amount_selection.title_buy" : "gui_bazaar.amount_selection.title_sell")),
+        super(isInstant
+                        ? Text.key(isBuy ? "gui_bazaar.amount_selection.title_instant_buy" : "gui_bazaar.amount_selection.title_instant_sell", itemType.name())
+                        : Text.key(isBuy ? "gui_bazaar.amount_selection.title_buy" : "gui_bazaar.amount_selection.title_sell"),
                 InventoryType.CHEST_4_ROW);
 
         this.isBuy = isBuy;
@@ -50,7 +50,12 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
         this.unitPrice = unitPrice;
 
         fill(ItemStacks.named(Material.BLACK_STAINED_GLASS_PANE, ""));
-        set(GUIClickableItem.getGoBackItem(31, previous));
+        if (isInstant) {
+            set(GUIClickableItem.getGoBackItem(30, previous));
+            set(GUIClickableItem.getCloseItem(31));
+        } else {
+            set(GUIClickableItem.getGoBackItem(31, previous));
+        }
     }
 
     public CompletableFuture<Integer> openAmountSelection(SkyBlockPlayer player) {
@@ -68,12 +73,12 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
     }
 
     private void buildInstantUI(SkyBlockPlayer p) {
-        // exactly the 4 buttons you already liked (One, Stack, All, Custom)
-        addButton(9, 1, "One", "Buy one unit", 1, p);
-        addButton(11, Math.min(64, maxAmount), "Stack",
-                "Buy a stack!", Math.min(64, maxAmount), p);
-        addButton(13, maxAmount, "All", "Fill my inventory!", maxAmount, p);
-        addCustom(15);
+        String verb = isBuy ? "buy" : "sell";
+        addInstantButton(10, 1, Material.AIR, "gui_bazaar.amount_selection.instant_one_" + verb);
+        addInstantButton(12, Math.min(itemType.material().maxStackSize(), maxAmount), Material.AIR,
+                "gui_bazaar.amount_selection.instant_stack_" + verb);
+        addInstantButton(14, maxAmount, Material.CHEST, "gui_bazaar.amount_selection.instant_all_" + verb);
+        addCustom(16);
     }
 
     private void buildLimitUI(SkyBlockPlayer p) {
@@ -88,31 +93,28 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
         addCustom(15);
     }
 
-    private void addButton(int slot, int qty, String title, String subtitle, int amount, SkyBlockPlayer p) {
+    private void addInstantButton(int slot, int qty, Material icon, String titleKey) {
         set(new GUIClickableItem(slot) {
             @Override
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p;
-                future.complete(amount);
-                player.closeInventory();
+                future.complete(qty);
+                p.closeInventory();
             }
 
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
-                SkyBlockPlayer player = (SkyBlockPlayer) p;
                 List<Text> lore = new ArrayList<>();
-                lore.add(Text.of("<7>{}", subtitle));
-                lore.add(Text.key("gui_bazaar.amount_selection.per_unit", F.format(unitPrice)));
-                lore.add(Text.key(isBuy
-                        ? "gui_bazaar.amount_selection.total_cost"
-                        : "gui_bazaar.amount_selection.total_rev", F.format(unitPrice * qty)));
+                lore.add(Text.of("<7>{}", itemType.name()));
+                lore.add(Text.literal(" "));
+                lore.add(Text.key("gui_bazaar.amount_selection.amount_line", F.format(qty)));
+                lore.add(Text.key("gui_bazaar.amount_selection.price_line", F.format(unitPrice * qty)));
                 lore.add(Text.literal(" "));
                 lore.add(Text.key(isBuy
                         ? "gui_bazaar.amount_selection.click_buy"
                         : "gui_bazaar.amount_selection.click_sell"));
                 return ItemStacks.item(
-                        itemType.material(), qty,
-                        Text.of(isBuy ? "<a>{}" : "<6>{}", title),
+                        icon == Material.AIR ? itemType.material() : icon, Math.max(1, Math.min(qty, 64)),
+                        Text.key(titleKey),
                         lore
                 );
             }
@@ -166,10 +168,10 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
             @Override
             public ItemStack.Builder getItem(HypixelPlayer p) {
                 List<Text> lore = new ArrayList<>();
+                lore.add(Text.key("gui_bazaar.amount_selection.custom_limit"));
                 lore.add(Text.key(isInstant
-                        ? "gui_bazaar.amount_selection.custom_instant"
-                        : "gui_bazaar.amount_selection.custom_limit"));
-                lore.add(Text.key("gui_bazaar.amount_selection.custom_max", maxAmount));
+                        ? (isBuy ? "gui_bazaar.amount_selection.custom_max_buy" : "gui_bazaar.amount_selection.custom_max_sell")
+                        : "gui_bazaar.amount_selection.custom_max", F.format(maxAmount)));
                 lore.add(Text.literal(" "));
                 lore.add(Text.key("gui_bazaar.amount_selection.custom_click"));
                 return ItemStacks.item(
