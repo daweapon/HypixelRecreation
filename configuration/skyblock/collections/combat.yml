@@ -195,6 +195,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_EYE_OF_ENDER
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MEDIUM_DRAGON_SACK
   - amount: 15000
     rewards:
     - type: XP
@@ -546,6 +549,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BEGINNER_COMBAT_SACK
   - amount: 250
     rewards:
     - type: XP

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.hunting;
 
+import net.swofty.type.skyblockgeneric.consumable.Salt;
 import net.swofty.type.skyblockgeneric.item.components.AttributeShardComponent;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.commons.text.Text;
@@ -25,7 +26,7 @@ public final class CharmingService {
         double charmedChance = AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("L11")) / 100D;
         boolean guaranteed = mob.getMobTypes().contains(MobType.ELUSIVE);
         if (!guaranteed && !LootRoll.roll(player.getUuid(), AttributeShardComponent.itemType(definition),
-                (skillChance + charmedChance) * 100)) return false;
+                (skillChance + charmedChance) * 100 + Salt.charmChanceBonus(player, mob))) return false;
         int amount = AttributeEffectService.fortunateAmount(player, definition);
         player.getHuntingData().addShards(definition.id(), amount);
         player.getSkills().increase(player, SkillCategories.HUNTING, huntingExperience(definition));

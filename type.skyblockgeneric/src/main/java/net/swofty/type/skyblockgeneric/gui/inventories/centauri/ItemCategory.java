@@ -31,7 +31,7 @@ public enum ItemCategory {
             FishingRodPartComponent.class, FishingShipPartComponent.class, AbilityComponent.class,
             StandardItemComponent.class, BackpackComponent.class, SackComponent.class, MinionComponent.class,
             MinionUpgradeComponent.class, MinionFuelComponent.class, MinionSkinComponent.class, PotionDataComponent.class,
-            RuneComponent.class, TravelScrollComponent.class, PowerStoneComponent.class, InteractableComponent.class,
+            RuneComponent.class, TravelScrollComponent.class, IslandTravelScrollComponent.class, PowerStoneComponent.class, InteractableComponent.class,
             ArrowComponent.class, FishingBaitComponent.class, GemstoneComponent.class, ReforgeStoneComponent.class,
             AttributeShardComponent.class, DecorationHeadComponent.class, AbiphoneComponent.class, KatComponent.class);
 

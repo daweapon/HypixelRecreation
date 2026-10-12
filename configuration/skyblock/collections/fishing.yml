@@ -275,6 +275,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SMALL_LAVA_FISHING_SACK
   - amount: 30000
     rewards:
     - type: XP
@@ -296,6 +299,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MEDIUM_LAVA_FISHING_SACK
   - amount: 100000
     rewards:
     - type: XP
@@ -309,6 +315,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: LARGE_LAVA_FISHING_SACK
   - amount: 500000
     rewards:
     - type: XP
@@ -418,6 +427,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_PUFFERFISH
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BEGINNER_FISHING_SACK
   - amount: 100
     rewards:
     - type: XP
@@ -496,6 +508,9 @@ collections:
     - type: CUSTOM_AWARD
       data:
         customAward: FISHING_BAG
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SMALL_BAIT_SACK
   - amount: 250
     rewards:
     - type: XP
@@ -506,6 +521,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MEDIUM_BAIT_SACK
   - amount: 1000
     rewards:
     - type: XP
@@ -522,6 +540,9 @@ collections:
     - type: CUSTOM_AWARD
       data:
         customAward: FISHING_BAG_UPGRADE_1
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: LARGE_BAIT_SACK
   - amount: 15000
     rewards:
     - type: XP

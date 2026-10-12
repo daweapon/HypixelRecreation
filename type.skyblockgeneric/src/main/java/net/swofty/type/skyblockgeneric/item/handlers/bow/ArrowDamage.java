@@ -24,7 +24,8 @@ public final class ArrowDamage {
 
     public static Map.Entry<Double, Boolean> roll(SkyBlockPlayer shooter, ArrowEntityImpl arrow, ItemStatistics enemyStatistics) {
         ItemStatistics stats = divideCritChance(shooterStatistics(shooter, arrow.getArrowItem()), critChanceDivisor(arrow.getBow()));
-        Map.Entry<Double, Boolean> hit = PlayerStatistics.runPrimaryDamageFormula(stats, enemyStatistics);
+        Map.Entry<Double, Boolean> hit = PlayerStatistics.runPrimaryDamageFormula(stats,
+                ArrowEffects.enemyStatistics(ArrowEffects.of(arrow.getArrowItem()), enemyStatistics));
         double damage = hit.getKey() * arrow.getDamageFactor() * HydraStrike.damageMultiplier(shooter);
         return new AbstractMap.SimpleEntry<>(damage, hit.getValue());
     }

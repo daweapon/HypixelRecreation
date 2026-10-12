@@ -19,6 +19,9 @@ collections:
     - type: CUSTOM_AWARD
       data:
         customAward: HARVESTING_DISCOUNT
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BEGINNER_AGRONOMY_SACK
   - amount: 250
     rewards:
     - type: XP
@@ -245,6 +248,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: FARMING_2_TRAVEL_SCROLL
   - amount: 10000
     rewards:
     - type: XP
@@ -562,6 +568,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BEGINNER_HUSBANDRY_SACK
   - amount: 250
     rewards:
     - type: XP
@@ -583,6 +592,9 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: ENCHANTED_MUTTON
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SMALL_HUSBANDRY_SACK
   - amount: 5000
     rewards:
     - type: XP
@@ -593,6 +605,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MEDIUM_HUSBANDRY_SACK
   - amount: 25000
     rewards:
     - type: XP
@@ -609,11 +624,17 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: HORNS_OF_TORMENT
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: LARGE_HUSBANDRY_SACK
   - amount: 100000
     rewards:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: LARGE_ENCHANTED_HUSBANDRY_SACK
 - itemType: NETHER_WART
   rewards:
   - amount: 50
@@ -751,6 +772,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: FARMING_1_TRAVEL_SCROLL
   - amount: 25000
     rewards:
     - type: XP

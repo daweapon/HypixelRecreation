@@ -588,6 +588,7 @@ public class PlayerStatistics {
         statistics = ItemStatistics.add(statistics, SnowSuit.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, CrimsonGear.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, ReforgeLoadout.statistics(item, player));
+        statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.tool.ToolPassives.extraItemStatistics(item, player));
 
         return statistics;
     }

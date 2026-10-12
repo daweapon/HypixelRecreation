@@ -224,6 +224,7 @@ public final class HotmService {
         if (base <= 0) return 0;
         double bonusPercent = perkValue(player, "powder_buff");
         if (skyMallBuff(player) == HotmSkyMallBuff.POWDER) bonusPercent += 15;
+        bonusPercent += net.swofty.type.skyblockgeneric.item.tool.ToolPassives.heldPowderPercent(player, powder);
         long amount = Math.round(base * (1 + bonusPercent / 100));
         if (powder == HotmPowder.MITHRIL) amount = GatheringPetBonuses.mithrilPowder(player, amount);
         else amount = MiningPetBonuses.powder(player, powder, amount);

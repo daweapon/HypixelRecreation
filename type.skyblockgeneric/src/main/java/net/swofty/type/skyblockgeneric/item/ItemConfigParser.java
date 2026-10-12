@@ -23,6 +23,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetComponent
 import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryComponentParser;
 import net.swofty.type.skyblockgeneric.item.crafting.SkyBlockRecipe;
 import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowEffect;
 import net.swofty.type.skyblockgeneric.minion.MinionIngredient;
 import net.swofty.type.skyblockgeneric.minion.MinionTierRecipe;
 import net.swofty.type.skyblockgeneric.minion.inferno.InfernoFuelGrade;
@@ -144,7 +145,10 @@ public class ItemConfigParser {
 				}
 				case "DYE" -> new DyeComponent(itemId, safeConfig.getString("color"));
 				case "ARMOR" -> new ArmorComponent();
-				case "ARROW" -> new ArrowComponent();
+				case "ARROW" -> {
+					String effect = safeConfig.getString("effect", null);
+					yield new ArrowComponent(effect == null ? null : ArrowEffect.valueOf(effect.toUpperCase()));
+				}
 				case "AUCTION_CATEGORY" -> {
 					String category = safeConfig.getString("category");
 					yield new AuctionCategoryComponent(category);
@@ -626,6 +630,10 @@ public class ItemConfigParser {
 					yield new PotionDataComponent(effect, level, duration, splash, extended);
 				}
 				case "TRAVEL_SCROLL" -> {
+					String island = safeConfig.getString("island", "");
+					if (!island.isEmpty()) {
+						yield new IslandTravelScrollComponent(island);
+					}
 					String scrollType = safeConfig.getString("scroll_type");
 					yield new TravelScrollComponent(scrollType);
 				}

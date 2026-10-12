@@ -141,7 +141,7 @@ class MaxProfileTest {
         assertTrue(accessories > 100, "only " + accessories + " accessories placed");
         assertEquals(new HashSet<>(AccessoryPowerType.stonePowers()),
                 new HashSet<>(AccessoryPowers.data(player).getLearned()));
-        int sacks = MaxBags.sackPlan().size();
+        int sacks = Math.min(MaxBags.sackPlan().size(), GUISackOfSacks.getTotalSlots(player));
         assertEquals(sacks, player.getSackOfSacks().getAllSacks().size());
         assertEquals(FULL_QUIVER, player.getQuiver().getAmountOfArrows(ItemType.FLINT_ARROW));
 
@@ -430,7 +430,7 @@ class MaxProfileTest {
                 ItemType.SILVER_TROPHY_FISHING_SACK, ItemType.RUNE_SACK, ItemType.DUNGEON_SACK)), plan.toString());
         assertTrue(plan.stream().noneMatch(type -> type.name().startsWith("SMALL_") || type.name().startsWith("MEDIUM_")
                 || type.name().startsWith("BRONZE_")), plan.toString());
-        assertEquals(18, plan.size(), plan.toString());
+        assertEquals(35, plan.size(), plan.toString());
     }
 
     @Test

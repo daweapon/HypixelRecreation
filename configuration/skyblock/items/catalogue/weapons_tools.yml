@@ -1,0 +1,1841 @@
+items:
+  - id: APEX_PRAEDATOR
+    material: golden_axe
+    name: "Savage Huntaxe - Praedator"
+    rarity: EPIC
+    default_statistics:
+      damage: 20
+    source: "Crafted from 3 Enchanted Vinesap, 1 Cursus Ferae, 32 Stretching Sticks"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Absorptio  §e§lRIGHT CLICK"
+      - "§7This weapon lets you absorb §c20% §7of"
+      - "§7the basic combat stats of any"
+      - "§7weapon."
+      - ""
+      - "§6Ability: Vis Temperata "
+      - "§7Each strike of this weapon has its"
+      - "§7damage capped at §c33% §7of the"
+      - "§7enemy's max Health. This weapon"
+      - "§7cannot cause a fatal blow."
+      - ""
+      - "§8§oSupra omnes, Apex Praedator solus"
+      - "§8§oregnat."
+      - ""
+      - "§8Not active yet: Absorptio and Vis Temperata need Hunting"
+    components:
+      - id: AXE
+        axe_strength: 12
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - BA
+              - CO
+            ingredients:
+              A:
+                type: ENCHANTED_VINESAP
+                amount: 1
+              B:
+                type: CURSUS_FERAE
+                amount: 1
+              C:
+                type: STRETCHING_STICKS
+                amount: 32
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: APEX_PRAEDATOR
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting_weapons/savage_huntaxe
+  - id: BINGBOW
+    material: bow
+    name: "Bingbow"
+    rarity: EPIC
+    default_statistics:
+      damage: 210
+      strength: 100
+    unavailable: "Needs Bingo"
+    lore:
+      - "§7Your arrows have a §e20% §7chance to"
+      - "§7bounce to another target after it"
+      - "§7hits something. §8(max 2 bounces)"
+      - ""
+      - "§8Not active yet: Arrow bounce is not implemented"
+    components:
+      - id: SHORT_BOW
+        handler_id: STANDARD_BOW_HANDLER
+        cooldown: 0.5
+        should-be-arrow: false
+  - id: BINGOLIBUR
+    material: golden_sword
+    name: "Bingolibur"
+    rarity: RARE
+    default_statistics:
+      damage: 80
+      strength: 80
+    unavailable: "Needs Bingo"
+    lore:
+      - "§7§7Gives §b+1 Magic Find §7for"
+      - "§7each SkyBlock Level (Max 50)."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: SWORD
+  - id: CURSUS_FERAE
+    material: golden_axe
+    name: "Reinforced Huntaxe - Cursus"
+    rarity: RARE
+    default_statistics:
+      damage: 15
+    source: "Crafted from 192 Vinesap, 1 Silva Dominus, 16 Stretching Sticks"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Absorptio  §e§lRIGHT CLICK"
+      - "§7This weapon lets you absorb §c15% §7of"
+      - "§7the basic combat stats of any"
+      - "§7weapon."
+      - ""
+      - "§6Ability: Vis Temperata "
+      - "§7Each strike of this weapon has its"
+      - "§7damage capped at §c25% §7of the"
+      - "§7enemy's max Health. This weapon"
+      - "§7cannot cause a fatal blow."
+      - ""
+      - "§8§oFera fugit, cursus sequitur."
+      - ""
+      - "§8Not active yet: Absorptio and Vis Temperata need Hunting"
+    components:
+      - id: AXE
+        axe_strength: 12
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - BA
+              - CO
+            ingredients:
+              A:
+                type: VINESAP
+                amount: 64
+              B:
+                type: SILVA_DOMINUS
+                amount: 1
+              C:
+                type: STRETCHING_STICKS
+                amount: 16
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: CURSUS_FERAE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting_weapons/reinforced_huntaxe
+  - id: DECENT_AXE
+    material: wooden_axe
+    name: "Decent Axe"
+    rarity: RARE
+    default_statistics:
+      damage: 20
+      sweep: 24
+      foraging_fortune: 5
+    unavailable: "Source unconfirmed; Throwing Axe needs Galatea"
+    lore:
+      - "§6Ability: Throwing Axe  §e§lRIGHT CLICK"
+      - "§7While on §2Foraging Islands§7, throw your Axe at a"
+      - "§7tree! It will sweep §c50% §7of the logs it normally"
+      - "§7would!"
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§4❣ §cRequires §aForaging Skill 15§c."
+      - ""
+      - "§8Not active yet: Throwing Axe needs Foraging Islands tree throwing"
+    components:
+      - id: AXE
+        axe_strength: 2
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/axes/decent_axe
+  - id: FIGSTONE_AXE
+    material: stone_axe
+    name: "Figstone Splitter"
+    rarity: RARE
+    default_statistics:
+      damage: 50
+      strength: 15
+      sweep: 25
+      foraging_fortune: 35
+    source: "Crafted from 4 Figstone, 1 Fig Axe"
+    lore:
+      - "§6Ability: Super Frenzy "
+      - "§7Gains §21 Sweep §7every §a10,000 Logs"
+      - "§7cut on §2Galatea§7. §8(max 20)"
+      - "§7Current Bonus: §2+0"
+      - "§7Next Upgrade: §2+1 §8(§a0§7/§c10,000§8)"
+      - ""
+      - "§7Logs Cut: §b0"
+      - ""
+      - "§4❣ §cRequires §aForaging Skill 15§c."
+      - ""
+      - "§8Not active yet: Super Frenzy needs Galatea log tracking"
+    components:
+      - id: AXE
+        axe_strength: 4
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - BA
+              - AO
+            ingredients:
+              A:
+                type: FIGSTONE
+                amount: 1
+              B:
+                type: FIG_AXE
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: FIGSTONE_AXE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/axes/figstone_splitter
+  - id: FIG_AXE
+    material: wooden_axe
+    name: "Fig Hew"
+    rarity: UNCOMMON
+    default_statistics:
+      damage: 30
+      strength: 10
+      sweep: 15
+      foraging_fortune: 20
+    source: "Crafted from 30 Enchanted Fig Log, 8 Stretching Sticks"
+    lore:
+      - "§6Ability: Frenzy "
+      - "§7Gains §21 Sweep §7every §a2,000 Logs"
+      - "§7cut on §2Galatea§7. §8(max 20)"
+      - "§7Current Bonus: §2+0"
+      - "§7Next Upgrade: §2+1 §8(§a0§7/§c2,000§8)"
+      - ""
+      - "§7Logs Cut: §b0"
+      - ""
+      - "§4❣ §cRequires §aForaging Skill 12§c."
+      - ""
+      - "§8Not active yet: Frenzy needs Galatea log tracking"
+    components:
+      - id: AXE
+        axe_strength: 2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - BA
+              - BO
+            ingredients:
+              A:
+                type: ENCHANTED_FIG_LOG
+                amount: 10
+              B:
+                type: STRETCHING_STICKS
+                amount: 4
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: FIG_AXE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/axes/fig_hew
+  - id: HELIX_CHOPPER
+    material: stone_axe
+    name: "Helix Chopper"
+    rarity: EPIC
+    default_statistics:
+      damage: 75
+      strength: 25
+      sweep: 50
+      foraging_fortune: 50
+    unavailable: "Needs Helixis and Helix logs (Galatea)"
+    lore:
+      - "§6Ability: Mega Frenzy "
+      - "§7Gains §21 Sweep §7every §a20,000 Logs"
+      - "§7cut on §2Galatea§7. §8(max 40)"
+      - "§7Current Bonus: §2+0"
+      - "§7Next Upgrade: §2+1 §8(§a0§7/§c20,000§8)"
+      - ""
+      - "§7Logs Cut: §b0"
+      - ""
+      - "§4❣ §cRequires §aForaging Skill 20§c."
+      - ""
+      - "§8Not active yet: Mega Frenzy needs Galatea log tracking"
+    components:
+      - id: AXE
+        axe_strength: 4
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/axes/helix_chopper
+  - id: JUNGLE_AXE
+    material: wooden_axe
+    name: "Spruce Axe"
+    rarity: UNCOMMON
+    default_statistics:
+      sweep: 4
+    source: "Crafted from 96 Spruce Log, 2 Stick"
+    lore:
+      - "§6Ability: Throwing Axe  §e§lRIGHT CLICK"
+      - "§7While on §2Foraging Islands§7, throw your Axe at a"
+      - "§7tree! It will sweep §c50% §7of the logs it normally"
+      - "§7would!"
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§6Ability: Park Enjoyer "
+      - "§7Gain §6+50 Foraging Fortune §7while in §aThe Park§7."
+      - ""
+      - "§8Not active yet: Throwing Axe needs Foraging Islands tree throwing"
+    components:
+      - id: AXE
+        axe_strength: 2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - BA
+              - BO
+            ingredients:
+              A:
+                type: SPRUCE_LOG
+                amount: 32
+              B:
+                type: STICK
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: JUNGLE_AXE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/axes/spruce_axe
+  - id: NEX_TITANUM
+    material: golden_axe
+    name: "Prime Huntaxe - Nex Titanum"
+    rarity: LEGENDARY
+    default_statistics:
+      damage: 25
+    source: "Crafted from 6 Enchanted Vinesap, 1 Apex Praedator, 64 Stretching Sticks"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Absorptio  §e§lRIGHT CLICK"
+      - "§7This weapon lets you absorb §c25% §7of"
+      - "§7the basic combat stats of any"
+      - "§7weapon."
+      - ""
+      - "§6Ability: Vis Temperata "
+      - "§7Each strike of this weapon has its"
+      - "§7damage capped at §c50% §7of the"
+      - "§7enemy's max Health. This weapon"
+      - "§7cannot cause a fatal blow."
+      - ""
+      - "§8§oTitanum ruina, mundi mutatio."
+      - ""
+      - "§8Not active yet: Absorptio and Vis Temperata need Hunting"
+    components:
+      - id: AXE
+        axe_strength: 12
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - BA
+              - CO
+            ingredients:
+              A:
+                type: ENCHANTED_VINESAP
+                amount: 2
+              B:
+                type: APEX_PRAEDATOR
+                amount: 1
+              C:
+                type: STRETCHING_STICKS
+                amount: 64
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: NEX_TITANUM
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting_weapons/prime_huntaxe
+  - id: SCULPTORS_AXE
+    material: stone_axe
+    name: "Sculptor's Axe"
+    rarity: COMMON
+    source: "Crafted from 192 Birch Log, 2 Stick"
+    lore:
+      - "§7Right-click on any log on your island"
+      - "§7to turn it into a 6 sided log!"
+      - ""
+      - "§8Not active yet: Right-click log conversion is not implemented"
+    components:
+      - id: AXE
+        axe_strength: 4
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAA
+              - OBA
+              - BOO
+            ingredients:
+              A:
+                type: BIRCH_LOG
+                amount: 64
+              B:
+                type: STICK
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SCULPTORS_AXE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/sculptors_axe
+  - id: SERIOUSLY_DAMAGED_AXE
+    material: wooden_axe
+    name: "Seriously Damaged Axe"
+    rarity: UNCOMMON
+    default_statistics:
+      damage: 10
+      sweep: 10
+      foraging_fortune: 5
+    unavailable: "Source unconfirmed; Throwing Axe needs Galatea"
+    lore:
+      - "§6Ability: Throwing Axe  §e§lRIGHT CLICK"
+      - "§7While on §2Foraging Islands§7, throw your Axe at a"
+      - "§7tree! It will sweep §c50% §7of the logs it normally"
+      - "§7would!"
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§4❣ §cRequires §aForaging Skill 12§c."
+      - ""
+      - "§8Not active yet: Throwing Axe needs Foraging Islands tree throwing"
+    components:
+      - id: AXE
+        axe_strength: 2
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/axes/seriously_damaged_axe
+  - id: SILVA_DOMINUS
+    material: golden_axe
+    name: "Sharpened Huntaxe - Dominus"
+    rarity: UNCOMMON
+    default_statistics:
+      damage: 10
+    source: "Crafted from 48 Vinesap, 1 Venator Genesis, 8 Stretching Sticks"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Absorptio  §e§lRIGHT CLICK"
+      - "§7This weapon lets you absorb §c10% §7of"
+      - "§7the basic combat stats of any"
+      - "§7weapon."
+      - ""
+      - "§6Ability: Vis Temperata "
+      - "§7Each strike of this weapon has its"
+      - "§7damage capped at §c20% §7of the"
+      - "§7enemy's max Health. This weapon"
+      - "§7cannot cause a fatal blow."
+      - ""
+      - "§8§oSilva vocat, Dominus respondet."
+      - ""
+      - "§8Not active yet: Absorptio and Vis Temperata need Hunting"
+    components:
+      - id: AXE
+        axe_strength: 12
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - BA
+              - CO
+            ingredients:
+              A:
+                type: VINESAP
+                amount: 16
+              B:
+                type: VENATOR_GENESIS
+                amount: 1
+              C:
+                type: STRETCHING_STICKS
+                amount: 8
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SILVA_DOMINUS
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting_weapons/sharpened_huntaxe
+  - id: SPELLING_STICK
+    material: stick
+    name: "Spelling Stick"
+    rarity: LEGENDARY
+    default_statistics:
+      damage: 1
+    unavailable: "Needs the Typo mechanic and a confirmed source"
+    lore:
+      - "§6Ability: Typo "
+      - "§7Mobs hit by this stick will gain §c+1 Typo§7."
+      - "§8Cooldown: §a5s"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: SWORD
+  - id: STRANDED_TREECAPITATOR
+    material: golden_axe
+    name: "Stranded Treecapitator"
+    rarity: EPIC
+    unavailable: "Needs Stranded game mode"
+    lore:
+      - "§7A forceful Gold Axe which can break"
+      - "§7a large amount of logs in a single hit!"
+      - "§7Only available for Stranded players."
+      - "§8Cooldown: §a2s"
+    components:
+      - id: AXE
+        axe_strength: 12
+  - id: TREECAPITATOR_AXE
+    material: golden_axe
+    name: "Treecapitator"
+    rarity: EPIC
+    default_statistics:
+      sweep: 25
+    source: "Crafted from 32 Enchanted Jungle Log, 1 Jungle Axe"
+    lore:
+      - "§6Ability: Throwing Axe  §e§lRIGHT CLICK"
+      - "§7While on §2Foraging Islands§7, throw your Axe at a"
+      - "§7tree! It will sweep §c50% §7of the logs it normally"
+      - "§7would!"
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§6Ability: Park Enthusiast "
+      - "§7Gain §6+100 Foraging Fortune §7while in §aThe Park§7."
+      - ""
+      - "§8Not active yet: Throwing Axe needs Foraging Islands tree throwing"
+    components:
+      - id: AXE
+        axe_strength: 12
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: ENCHANTED_JUNGLE_LOG
+                amount: 4
+              B:
+                type: JUNGLE_AXE
+                amount: 1
+            result:
+              type: TREECAPITATOR_AXE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/axes/treecapitator
+  - id: UNRIPE_JERRYSEED
+    material: player_head
+    name: "Unripe Jerryseed"
+    rarity: RARE
+    unavailable: "Source unconfirmed"
+    lore:
+      - "§7Untouched. Unworthy, It yearns for"
+      - "§7something... beneath it."
+    components:
+      - id: SKULL_HEAD
+        texture: 62936c9ef75706d837a4afdbd2b106975c5c73662aff26a0967f84ada9249dff
+      - id: STANDARD_ITEM
+        standard_item_type: SWORD
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: VENATOR_GENESIS
+    material: golden_axe
+    name: "Worn Huntaxe - Genesis"
+    rarity: COMMON
+    default_statistics:
+      damage: 5
+    source: "Crafted from 3 Vinesap, 2 Stretching Sticks"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Absorptio  §e§lRIGHT CLICK"
+      - "§7This weapon lets you absorb §c5% §7of"
+      - "§7the basic combat stats of any"
+      - "§7weapon."
+      - ""
+      - "§6Ability: Vis Temperata "
+      - "§7Each strike of this weapon has its"
+      - "§7damage capped at §c15% §7of the"
+      - "§7enemy's max Health. This weapon"
+      - "§7cannot cause a fatal blow."
+      - ""
+      - "§8§oEx tenebris, primus venator surgit."
+      - ""
+      - "§8Not active yet: Absorptio and Vis Temperata need Hunting"
+    components:
+      - id: AXE
+        axe_strength: 12
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AA
+              - BA
+              - BO
+            ingredients:
+              A:
+                type: VINESAP
+                amount: 1
+              B:
+                type: STRETCHING_STICKS
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: VENATOR_GENESIS
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting_weapons/worn_huntaxe
+  - id: WEATHER_STICK
+    material: stick
+    name: "Weather Wand"
+    rarity: UNCOMMON
+    source: "Crafted from 2 Enchanted Redstone, 1 Stick"
+    lore:
+      - "§6Ability: Weather  §e§lRIGHT CLICK"
+      - "§7Allows you to change the weather on your"
+      - "§7island."
+      - "§8Cooldown: §a5s"
+      - ""
+      - "§8Not active yet: Weather is not implemented on islands"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - A
+              - A
+              - B
+            ingredients:
+              A:
+                type: ENCHANTED_REDSTONE
+                amount: 1
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: WEATHER_STICK
+              amount: 1
+  - id: ABYSMAL_LASSO
+    material: paper
+    name: "Abysmal Lasso"
+    rarity: COMMON
+    source: "Crafted from 5 Vinesap"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§7§oThis is barely holding together,"
+      - "§7§oseriously who made this?"
+      - ""
+      - "§6Ability: Throw  §e§lRIGHT CLICK"
+      - "§7Throw the Lasso at §2Forest"
+      - "§7creatures and hold them still until"
+      - "§7they lose all their §9stamina§7."
+      - ""
+      - "§6Ability: Reel In  §e§lRIGHT CLICK"
+      - "§7Reel in creatures caught by the"
+      - "§7Lasso each time their §9stamina"
+      - "§7depletes."
+      - ""
+      - "§8Not active yet: Lasso needs Hunting"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAA
+              - OAA
+              - AOO
+            ingredients:
+              A:
+                type: VINESAP
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: ABYSMAL_LASSO
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/abysmal_lasso
+  - id: ALPHA_PICK
+    material: wooden_pickaxe
+    name: "Pioneer Pickaxe"
+    rarity: SPECIAL
+    default_statistics:
+      breaking_power: 1
+      mining_speed: 1
+    unavailable: "Unobtainable Pioneer item"
+    lore:
+      - "§8§oThe very first pickaxe model!"
+      - "§8§oInvented by the famous Thomas"
+      - "§8§oPickson."
+    components:
+      - id: PICKAXE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/alpha_pick
+  - id: AQUAMASTER_HYDROMAX
+    material: carrot_on_a_stick
+    name: "AquaMaster™ Hydromax"
+    rarity: LEGENDARY
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Use it on plants in the §aGreenhouse"
+      - "§7to keep them watered."
+      - ""
+      - "§6Ability: Hydrate  §e§lHOLD RIGHT CLICK"
+      - "§7Aim and hold in the direction of a"
+      - "§2plant §7to water it. Dispenses §b350"
+      - "§7water per second."
+      - ""
+      - "§6Ability: Fill  §e§lRIGHT CLICK"
+      - "§7When aiming at a water source, fills"
+      - "§7your can back up with water."
+      - ""
+      - "§6Ability: Aquaburst EX "
+      - "§7Spreads water in a larger area at"
+      - "§7once."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/aquamaster_hydromax
+  - id: AQUAMASTER_X
+    material: carrot_on_a_stick
+    name: "AquaMaster™ X"
+    rarity: EPIC
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Use it on plants in the §aGreenhouse"
+      - "§7to keep them watered."
+      - ""
+      - "§6Ability: Hydrate  §e§lHOLD RIGHT CLICK"
+      - "§7Aim and hold in the direction of a"
+      - "§2plant §7to water it. Dispenses §b300"
+      - "§7water per second."
+      - ""
+      - "§6Ability: Fill  §e§lRIGHT CLICK"
+      - "§7When aiming at a water source, fills"
+      - "§7your can back up with water."
+      - ""
+      - "§6Ability: Aquaburst "
+      - "§7Spreads water in a larger area at"
+      - "§7once."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/aquamaster_x
+  - id: BASIC_FISHING_NET
+    material: paper
+    name: "Basic Fishing Net"
+    rarity: UNCOMMON
+    default_statistics:
+      pull: 5
+    source: "Crafted from 32 Sea Lumies"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Yoink  §e§lRIGHT CLICK"
+      - "§7Throw your fishing net at swimming"
+      - "§7fish to catch them!"
+      - "§8Cooldown: §a0.5s"
+      - ""
+      - "§8Not active yet: Fishing nets need Hunting"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - AOA
+              - AAA
+            ingredients:
+              A:
+                type: SEA_LUMIES
+                amount: 4
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: BASIC_FISHING_NET
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/nets/basic_fishing_net
+  - id: BINGONIMBUS_2000
+    material: golden_pickaxe
+    name: "Bingonimbus 2000"
+    rarity: EPIC
+    default_statistics:
+      breaking_power: 7
+      damage: 30
+      mining_speed: 1500
+      mining_fortune: 100
+    unavailable: "Needs Bingo"
+    lore:
+      - "§7A powerful tool that doesn't"
+      - "§7seem to break."
+    components:
+      - id: PICKAXE
+  - id: BINGO_LAVA_ROD
+    material: fishing_rod
+    name: "Bingo Lava Rod"
+    rarity: RARE
+    default_statistics:
+      damage: 100
+      strength: 100
+      fishing_speed: 100
+      sea_creature_chance: 15
+    unavailable: "Needs Bingo"
+    lore:
+      - "§bTrophy Hunter V"
+      - "§7Increases the chance to catch"
+      - "§7§6Trophy Fish §7by §a10%§7."
+    components:
+      - id: FISHING_ROD_METADATA
+        subtitle: Lava Rod
+        medium: LAVA
+        required_fishing_level: 0
+        soulbound: true
+  - id: BINGO_ROD
+    material: fishing_rod
+    name: "Bingo Rod"
+    rarity: RARE
+    default_statistics:
+      damage: 125
+      strength: 125
+      fishing_speed: 100
+      sea_creature_chance: 15
+    unavailable: "Needs Bingo"
+    components:
+      - id: FISHING_ROD_METADATA
+        medium: WATER
+        required_fishing_level: 0
+        soulbound: true
+  - id: DIVAN_DRILL
+    material: diamond_pickaxe
+    name: "Divan's Drill"
+    rarity: MYTHIC
+    default_statistics:
+      breaking_power: 10
+      damage: 75
+      mining_speed: 1800
+      mining_fortune: 150
+    source: "Forge (HotM 7): Titanium Drill DR-X655, 50,000,000 coins, Divan's Alloy"
+    lore:
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 7§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/divans_drill
+  - id: ELLES_LAVA_ROD
+    material: fishing_rod
+    name: "Elle's Lava Rod"
+    rarity: SPECIAL
+    default_statistics:
+      damage: 50
+      strength: 50
+      fishing_speed: 8
+    unavailable: "Source unconfirmed"
+    components:
+      - id: FISHING_ROD_METADATA
+        subtitle: Lava Rod
+        medium: LAVA
+        required_fishing_level: 0
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/crimson_isle/kuudra/elles_lava_rod
+  - id: ENCHANTED_SHEARS
+    material: shears
+    name: "Enchanted Shears"
+    rarity: COMMON
+    source: "Crafted from 2 Enchanted Iron Ingot"
+    lore:
+      - "§7This item can be used as a"
+      - "§7minion upgrade for sheep"
+      - "§7generators. This will"
+      - "§7automatically shear sheep for"
+      - "§7you as they spawn."
+      - ""
+      - "§8Not active yet: Sheep minion upgrade is not supported"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OA
+              - AO
+            ingredients:
+              A:
+                type: ENCHANTED_IRON_INGOT
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: ENCHANTED_SHEARS
+              amount: 1
+  - id: ENTANGLER_LASSO
+    material: paper
+    name: "Entangler Lasso"
+    rarity: RARE
+    source: "Crafted from 96 Vinesap, 1 Vinerip Lasso, 1 Mangcore"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Throw  §e§lRIGHT CLICK"
+      - "§7Throw the Lasso at §2Forest"
+      - "§7creatures and hold them still until"
+      - "§7they lose all their §9stamina§7."
+      - ""
+      - "§6Ability: Reel In  §e§lRIGHT CLICK"
+      - "§7Reel in creatures caught by the"
+      - "§7Lasso each time their §9stamina"
+      - "§7depletes."
+      - ""
+      - "§a Critters §7lose stamina §240% §7faster."
+      - ""
+      - "§6Ability: Tug "
+      - "§7Grants §d+2.5 Hunting Fortune §7on"
+      - "§2Forest Shards §7caught with this Lasso."
+      - ""
+      - "§8Not active yet: Lasso needs Hunting"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAA
+              - OBA
+              - COO
+            ingredients:
+              A:
+                type: VINESAP
+                amount: 32
+              B:
+                type: VINERIP_LASSO
+                amount: 1
+              C:
+                type: MANGCORE
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: ENTANGLER_LASSO
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting/entangler_lasso
+  - id: EVERSTRETCH_LASSO
+    material: paper
+    name: "Everstretch Lasso"
+    rarity: EPIC
+    source: "Crafted from 3 Enchanted Vinesap, 1 Entangler Lasso, 8 Mangcore"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Throw  §e§lRIGHT CLICK"
+      - "§7Throw the Lasso at §2Forest"
+      - "§7creatures and hold them still until"
+      - "§7they lose all their §9stamina§7."
+      - ""
+      - "§6Ability: Reel In  §e§lRIGHT CLICK"
+      - "§7Reel in creatures caught by the"
+      - "§7Lasso each time their §9stamina"
+      - "§7depletes."
+      - ""
+      - "§a Critters §7lose stamina §260% §7faster."
+      - ""
+      - "§6Ability: Wrangle "
+      - "§7Grants §d+5 Hunting Fortune §7on"
+      - "§2Forest Shards §7caught with this Lasso."
+      - ""
+      - "§8Not active yet: Lasso needs Hunting"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAA
+              - OBA
+              - COO
+            ingredients:
+              A:
+                type: ENCHANTED_VINESAP
+                amount: 1
+              B:
+                type: ENTANGLER_LASSO
+                amount: 1
+              C:
+                type: MANGCORE
+                amount: 8
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: EVERSTRETCH_LASSO
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting/everstretch_lasso
+  - id: FLINT_SHOVEL
+    material: iron_shovel
+    name: "Flint Shovel"
+    rarity: COMMON
+    source: "Crafted from 10 Flint, 2 Stick"
+    lore:
+      - "§8Minion Upgrade"
+      - ""
+      - "§7Grants a §a100% §7chance of receiving"
+      - "§7flint from gravel."
+      - ""
+      - "§7This item can be also used as a"
+      - "§7minion upgrade to allow gravel"
+      - "§7minions to always receive flint."
+      - ""
+      - "§8Not active yet: Gravel minion upgrade is not supported"
+    components:
+      - id: SHOVEL
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - A
+              - B
+              - B
+            ingredients:
+              A:
+                type: FLINT
+                amount: 10
+              B:
+                type: STICK
+                amount: 1
+            result:
+              type: FLINT_SHOVEL
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/flint_shovel
+  - id: GEMSTONE_DRILL_1
+    material: diamond_pickaxe
+    name: "Ruby Drill TX-15"
+    rarity: RARE
+    default_statistics:
+      breaking_power: 7
+      damage: 75
+      mining_speed: 150
+      pristine: 0.5
+      gemstone_fortune: 60
+    source: "Forge (HotM 4, 4 hours): Drill Motor, Fuel Tank, 6 Fine Ruby Gemstone"
+    lore:
+      - "§7Grants §d+5% Gemstone Powder§7, and"
+      - "§6+800 Mining Speed §7when mining"
+      - "§dGemstones§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 4§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/ruby_drill_tx_15
+  - id: GEMSTONE_DRILL_2
+    material: diamond_pickaxe
+    name: "Gemstone Drill LT-522"
+    rarity: RARE
+    default_statistics:
+      breaking_power: 8
+      damage: 75
+      mining_speed: 300
+      pristine: 1
+      gemstone_fortune: 80
+    source: "Forge (HotM 4): Ruby Drill TX-15, 3 Gemstone Mixture"
+    lore:
+      - "§7Grants §d+10% Gemstone Powder§7, and"
+      - "§6+800 Mining Speed §7when mining"
+      - "§dGemstones§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 4§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/gemstone_drill_lt_522
+  - id: GEMSTONE_DRILL_3
+    material: diamond_pickaxe
+    name: "Topaz Drill KGR-12"
+    rarity: EPIC
+    default_statistics:
+      breaking_power: 9
+      damage: 75
+      mining_speed: 450
+      pristine: 1.5
+      gemstone_fortune: 100
+    source: "Forge (HotM 5): Gemstone Drill LT-522, Flawless Topaz, 3 Gemstone Mixture, 8 Magma Core"
+    lore:
+      - "§7Grants §d+15% Gemstone Powder§7, and"
+      - "§6+800 Mining Speed §7when mining"
+      - "§dGemstones§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/topaz_drill_kgr_12
+  - id: GEMSTONE_DRILL_4
+    material: diamond_pickaxe
+    name: "Jasper Drill X"
+    rarity: EPIC
+    default_statistics:
+      breaking_power: 9
+      damage: 75
+      mining_speed: 600
+      pristine: 2
+      gemstone_fortune: 120
+    source: "Forge (HotM 6): Topaz Drill KGR-12, 100 Treasurite, Flawless Jasper, 16 Magma Core"
+    lore:
+      - "§7Grants §d+20% Gemstone Powder§7, and"
+      - "§6+800 Mining Speed §7when mining"
+      - "§dGemstones§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 6§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/jasper_drill_x
+  - id: GIGANTIC_FISHING_NET
+    material: paper
+    name: "Gigantic Fishing Net"
+    rarity: LEGENDARY
+    default_statistics:
+      pull: 100
+    unavailable: "Needs Reinforced Netting, Sublime Silk (not in the game yet)"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Yoink  §e§lRIGHT CLICK"
+      - "§7Throw your fishing net at swimming"
+      - "§7fish to catch them!"
+      - "§8Cooldown: §a0.5s"
+      - ""
+      - "§7Throw Distance: §a+150%"
+      - ""
+      - "§6Ability: Overhaul "
+      - "§7Grants §d+10 Hunting Fortune §7on"
+      - "§9Water Shards §7caught with this net."
+      - ""
+      - "§8Not active yet: Fishing nets need Hunting"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/nets/gigantic_fishing_net
+  - id: HYDRO_CAN_1000
+    material: carrot_on_a_stick
+    name: "HydroCan™ 1000"
+    rarity: COMMON
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Use it on plants in the §aGreenhouse"
+      - "§7to keep them watered."
+      - ""
+      - "§6Ability: Hydrate  §e§lHOLD RIGHT CLICK"
+      - "§7Aim and hold in the direction of a"
+      - "§2plant §7to water it. Dispenses §b150"
+      - "§7water per second."
+      - ""
+      - "§6Ability: Fill  §e§lRIGHT CLICK"
+      - "§7When aiming at a water source, fills"
+      - "§7your can back up with water."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/hydro_can_1000
+  - id: HYDRO_CAN_TURBO_2000
+    material: carrot_on_a_stick
+    name: "HydroCan™ Turbo 2000"
+    rarity: UNCOMMON
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Use it on plants in the §aGreenhouse"
+      - "§7to keep them watered."
+      - ""
+      - "§6Ability: Hydrate  §e§lHOLD RIGHT CLICK"
+      - "§7Aim and hold in the direction of a"
+      - "§2plant §7to water it. Dispenses §b200"
+      - "§7water per second."
+      - ""
+      - "§6Ability: Fill  §e§lRIGHT CLICK"
+      - "§7When aiming at a water source, fills"
+      - "§7your can back up with water."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/hydro_can_turbo_2000
+  - id: HYDRO_CAN_ULTRA_3000
+    material: carrot_on_a_stick
+    name: "HydroCan™ Ultra 3000"
+    rarity: RARE
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Use it on plants in the §aGreenhouse"
+      - "§7to keep them watered."
+      - ""
+      - "§6Ability: Hydrate  §e§lHOLD RIGHT CLICK"
+      - "§7Aim and hold in the direction of a"
+      - "§2plant §7to water it. Dispenses §b250"
+      - "§7water per second."
+      - ""
+      - "§6Ability: Fill  §e§lRIGHT CLICK"
+      - "§7When aiming at a water source, fills"
+      - "§7your can back up with water."
+      - ""
+      - "§6Ability: Aquaburst "
+      - "§7Spreads water in a larger area at"
+      - "§7once."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/hydro_can_ultra_3000
+  - id: ICEBREAKER
+    material: diamond_pickaxe
+    name: "Icebreaker"
+    rarity: SPECIAL
+    unavailable: "Needs the Critter Safari"
+    lore:
+      - "§8Quest Item"
+      - ""
+      - "§7Found in the §9Icy Biome§7. Perhaps it"
+      - "§7has a use there?"
+      - ""
+      - "§6This item will vanish from your"
+      - "§6inventory after leaving the §2Critter"
+      - "§2Safari§6!"
+    components:
+      - id: PICKAXE
+  - id: INFINI_VACUUM
+    material: paper
+    name: "InfiniVacuum™"
+    rarity: EPIC
+    default_statistics:
+      damage: 300
+      farming_fortune: 20
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Can be used to damage §2 Pests§7."
+      - ""
+      - "§6Ability: Vacuum  §e§lHOLD RIGHT CLICK"
+      - "§7Deals §c300  Damage §7per second to"
+      - "§7nearby §2 Pests§7."
+      - ""
+      - "§6Ability: Pest Tracker  §e§lLEFT CLICK"
+      - "§7Leads you in the direction of the"
+      - "§7nearest §2 Pest§7."
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§7Vacuum Bag: §20 Pests"
+      - "§8Vacuum  Pests in your Garden to"
+      - "§8increase!"
+      - ""
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/infini_vacuum
+  - id: INFINI_VACUUM_HOOVERIUS
+    material: paper
+    name: "InfiniVacuum™ Hooverius"
+    rarity: LEGENDARY
+    default_statistics:
+      damage: 400
+      farming_fortune: 25
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Can be used to damage §2 Pests§7."
+      - ""
+      - "§6Ability: Vacuum  §e§lHOLD RIGHT CLICK"
+      - "§7Deals §c400  Damage §7per second to"
+      - "§7nearby §2 Pests§7."
+      - ""
+      - "§6Ability: Pest Tracker  §e§lLEFT CLICK"
+      - "§7Leads you in the direction of the"
+      - "§7nearest §2 Pest§7."
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§6Ability: Stereo Harmony  §e§lSNEAK LEFT CLICK"
+      - "§7Plays vinyls at a frequency only §2"
+      - "§2Pests §7can hear. Certain Pests are"
+      - "§7more likely to appear when certain"
+      - "§7vinyls are playing."
+      - ""
+      - "§7Now Playing: §cNone"
+      - ""
+      - "§7Vacuum Bag: §20 Pests"
+      - "§8Vacuum  Pests in your Garden to"
+      - "§8increase!"
+      - ""
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/infini_vacuum_hooverius
+  - id: JUNGLE_PICKAXE
+    material: wooden_pickaxe
+    name: "Jungle Pickaxe"
+    rarity: UNCOMMON
+    default_statistics:
+      breaking_power: 5
+      damage: 50
+      mining_speed: 330
+    unavailable: "Needs the Crystal Hollows"
+    lore:
+      - "§7Gives a chance to drop §aSludge Juice"
+      - "§7when mining in the §2Jungle §7of the"
+      - "§5Crystal Hollows§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 4§c."
+      - ""
+      - "§8Not active yet: Sludge Juice drop needs the Crystal Hollows Jungle"
+    components:
+      - id: PICKAXE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/jungle_pickaxe
+  - id: LAPIS_PICKAXE
+    material: diamond_pickaxe
+    name: "Lapis Pickaxe"
+    rarity: UNCOMMON
+    default_statistics:
+      breaking_power: 4
+      damage: 20
+      mining_speed: 200
+    source: "Crafted from 64 Lapis Lazuli around an Iron Pickaxe"
+    lore:
+      - "§7Grants a §a25% §7chance to gain double"
+      - "§7experience when mining ores."
+    components:
+      - id: PICKAXE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - ABA
+              - AAA
+            ingredients:
+              A:
+                type: LAPIS_LAZULI
+                amount: 64
+              B:
+                type: IRON_PICKAXE
+                amount: 1
+            result:
+              type: LAPIS_PICKAXE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/lapis_pickaxe
+  - id: LOTUS_SINKER
+    material: paper
+    name: "Lotus Sinker"
+    rarity: RARE
+    unavailable: "Needs Lotus items (Lotus collection)"
+    lore:
+      - "§7Materializes §aLotus §7in your inventory"
+      - "§7whenever you catch something."
+    components:
+      - id: FISHING_ROD_PART
+        display_name: "Lotus Sinker"
+        category: SINKER
+        required_fishing_level: 15
+        tag_bonuses: {}
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/rod_part/sinker/lotus_sinker
+  - id: MEDIUM_FISHING_NET
+    material: paper
+    name: "Medium Fishing Net"
+    rarity: RARE
+    default_statistics:
+      pull: 25
+    source: "Crafted from 8 Flexbone, 8 Enchanted Sea Lumies, 1 Basic Fishing Net, 32 Sturdy Bone"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Yoink  §e§lRIGHT CLICK"
+      - "§7Throw your fishing net at swimming"
+      - "§7fish to catch them!"
+      - "§8Cooldown: §a0.5s"
+      - ""
+      - "§7Throw Distance: §a+50%"
+      - ""
+      - "§6Ability: Grab "
+      - "§7Grants §d+2.5 Hunting Fortune §7on"
+      - "§9Water Shards §7caught with this net."
+      - ""
+      - "§8Not active yet: Fishing nets need Hunting"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - ABA
+              - BCB
+              - DBD
+            ingredients:
+              A:
+                type: FLEXBONE
+                amount: 4
+              B:
+                type: ENCHANTED_SEA_LUMIES
+                amount: 2
+              C:
+                type: BASIC_FISHING_NET
+                amount: 1
+              D:
+                type: STURDY_BONE
+                amount: 16
+            result:
+              type: MEDIUM_FISHING_NET
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/nets/medium_fishing_net
+  - id: MITHRIL_DRILL_1
+    material: diamond_pickaxe
+    name: "Mithril Drill SX-R226"
+    rarity: RARE
+    default_statistics:
+      breaking_power: 5
+      damage: 65
+      mining_speed: 450
+      mining_fortune: 15
+    source: "Forge (HotM 2, 4 hours): 3 Refined Mithril, Drill Motor, Fuel Tank"
+    lore:
+      - "§7Grants §2+20% Mithril Powder§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 2§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/mithril_drill_sx_r226
+  - id: MITHRIL_DRILL_2
+    material: diamond_pickaxe
+    name: "Mithril Drill SX-R326"
+    rarity: RARE
+    default_statistics:
+      breaking_power: 6
+      damage: 65
+      mining_speed: 600
+      mining_fortune: 20
+    source: "Forge (HotM 3): Mithril Drill SX-R226, Golden Plate, Mithril Plate"
+    lore:
+      - "§7Grants §2+40% Mithril Powder§7."
+      - ""
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/mithril_drill_sx_r326
+  - id: MOBYS_SHEARS
+    material: shears
+    name: "Moby's Shears"
+    rarity: RARE
+    unavailable: "Needs Galatea (Moby)"
+    lore:
+      - "§7Collects §a+1 Glowing Mushroom§7!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/farming_1/mobys_shears
+  - id: PUDDLE_JUMPER_HOOK
+    material: paper
+    name: "Puddle Jumper Hook"
+    rarity: RARE
+    unavailable: "Needs Lotus items and the Puddle Jumper catch"
+    lore:
+      - "§7Increases the chance to catch a"
+      - "§6Puddle Jumper §7by §a400%§7."
+    components:
+      - id: FISHING_ROD_PART
+        display_name: "Puddle Jumper Hook"
+        category: HOOK
+        required_fishing_level: 25
+        tag_bonuses: {}
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/rod_part/hook/puddle_jumper_hook
+  - id: SKYMART_HYPER_VACUUM
+    material: paper
+    name: "SkyMart Hyper Vacuum"
+    rarity: RARE
+    default_statistics:
+      damage: 200
+      farming_fortune: 15
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Can be used to damage §2 Pests§7."
+      - ""
+      - "§6Ability: Vacuum  §e§lHOLD RIGHT CLICK"
+      - "§7Deals §c200  Damage §7per second to"
+      - "§7nearby §2 Pests§7."
+      - ""
+      - "§6Ability: Pest Tracker  §e§lLEFT CLICK"
+      - "§7Leads you in the direction of the"
+      - "§7nearest §2 Pest§7."
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§7Vacuum Bag: §20 Pests"
+      - "§8Vacuum  Pests in your Garden to"
+      - "§8increase!"
+      - ""
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/skymart_hyper_vacuum
+  - id: SKYMART_TURBO_VACUUM
+    material: paper
+    name: "SkyMart Turbo Vacuum"
+    rarity: UNCOMMON
+    default_statistics:
+      damage: 150
+      farming_fortune: 10
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Can be used to damage §2 Pests§7."
+      - ""
+      - "§6Ability: Vacuum  §e§lHOLD RIGHT CLICK"
+      - "§7Deals §c150  Damage §7per second to"
+      - "§7nearby §2 Pests§7."
+      - ""
+      - "§6Ability: Pest Tracker  §e§lLEFT CLICK"
+      - "§7Leads you in the direction of the"
+      - "§7nearest §2 Pest§7."
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§7Vacuum Bag: §20 Pests"
+      - "§8Vacuum  Pests in your Garden to"
+      - "§8increase!"
+      - ""
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/skymart_turbo_vacuum
+  - id: SKYMART_VACUUM
+    material: paper
+    name: "SkyMart Vacuum"
+    rarity: COMMON
+    default_statistics:
+      damage: 100
+      farming_fortune: 5
+    unavailable: "Needs the Garden"
+    lore:
+      - "§7Can be used to damage §2 Pests§7."
+      - ""
+      - "§6Ability: Vacuum  §e§lHOLD RIGHT CLICK"
+      - "§7Deals §c100  Damage §7per second to"
+      - "§7nearby §2 Pests§7."
+      - ""
+      - "§6Ability: Pest Tracker  §e§lLEFT CLICK"
+      - "§7Leads you in the direction of the"
+      - "§7nearest §2 Pest§7."
+      - "§8Cooldown: §a1s"
+      - ""
+      - "§7Vacuum Bag: §20 Pests"
+      - "§8Vacuum  Pests in your Garden to"
+      - "§8increase!"
+      - ""
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/skymart_vacuum
+  - id: STONK_PICKAXE
+    material: golden_pickaxe
+    name: "Fortunate Stonk"
+    rarity: EPIC
+    default_statistics:
+      breaking_power: 1
+      mining_speed: 380
+      mining_fortune: 0
+    unavailable: "Trade NPC unconfirmed (32 Enchanted Emerald)"
+    lore:
+      - "§9Efficiency VI"
+      - "§7Increases how quickly your tool"
+      - "§7breaks blocks."
+      - ""
+      - "§7When mining End Stone with this"
+      - "§7pickaxe, Endermites won't spawn,"
+      - "§7experience will be dropped!"
+      - "§a5%§7 chance to drop an extra End"
+      - "§7Stone block."
+      - ""
+      - "§8Not active yet: Efficiency VI and no Endermite spawns are not applied"
+    components:
+      - id: PICKAXE
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/stonk
+  - id: TITANIUM_DRILL_1
+    material: diamond_pickaxe
+    name: "Titanium Drill DR-X355"
+    rarity: EPIC
+    default_statistics:
+      breaking_power: 7
+      damage: 75
+      mining_speed: 700
+      mining_fortune: 25
+    source: "Forge (HotM 5, 4 hours): Fuel Tank, Drill Motor, 8 Refined Mithril, 8 Refined Titanium, 6 Golden Plate"
+    lore:
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_drill_dr_x355
+  - id: TITANIUM_DRILL_2
+    material: diamond_pickaxe
+    name: "Titanium Drill DR-X455"
+    rarity: EPIC
+    default_statistics:
+      breaking_power: 8
+      damage: 75
+      mining_speed: 900
+      mining_fortune: 40
+    source: "Forge (HotM 5): Titanium Drill DR-X355, 5 Mithril Plate, 12 Refined Titanium, 10 Refined Diamond"
+    lore:
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_drill_dr_x455
+  - id: TITANIUM_DRILL_3
+    material: diamond_pickaxe
+    name: "Titanium Drill DR-X555"
+    rarity: EPIC
+    default_statistics:
+      breaking_power: 9
+      damage: 75
+      mining_speed: 1200
+      mining_fortune: 70
+    source: "Forge (HotM 5): Titanium Drill DR-X455, 20 Refined Diamond, 2 Enchanted Iron Block, 20 Plasma, 16 Refined Titanium, 10 Mithril Plate"
+    lore:
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_drill_dr_x555
+  - id: TITANIUM_DRILL_4
+    material: diamond_pickaxe
+    name: "Titanium Drill DR-X655"
+    rarity: LEGENDARY
+    default_statistics:
+      breaking_power: 9
+      damage: 75
+      mining_speed: 1600
+      mining_fortune: 120
+    source: "Forge (HotM 6): Titanium Drill DR-X555, 16 Gemstone Mixture, Flawless Ruby, 10 Mithril Plate, 32 Refined Titanium, 30 Corleonite, 5 Refined Diamond"
+    lore:
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 6§c."
+      - ""
+      - "§8Fuel and drill parts are not active yet"
+    components:
+      - id: DRILL
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/titanium_drill_dr_x655
+  - id: TROPHY_LINE
+    material: paper
+    name: "Trophy Line"
+    rarity: RARE
+    default_statistics:
+      trophy_fish_chance: 5
+    unavailable: "Needs Lotus items (Lotus Gold)"
+    components:
+      - id: FISHING_ROD_PART
+        display_name: "Trophy Line"
+        category: LINE
+        required_fishing_level: 20
+        tag_bonuses: {}
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/rod_part/line/trophy_line
+  - id: TURBO_FISHING_NET
+    material: paper
+    name: "Turbo Fishing Net"
+    rarity: EPIC
+    default_statistics:
+      pull: 50
+    source: "Crafted from 32 Flexbone, 32 Enchanted Sea Lumies, 1 Medium Fishing Net, 128 Sturdy Bone"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Yoink  §e§lRIGHT CLICK"
+      - "§7Throw your fishing net at swimming"
+      - "§7fish to catch them!"
+      - "§8Cooldown: §a0.5s"
+      - ""
+      - "§7Throw Distance: §a+100%"
+      - ""
+      - "§6Ability: Haul "
+      - "§7Grants §d+5 Hunting Fortune §7on"
+      - "§9Water Shards §7caught with this net."
+      - ""
+      - "§8Not active yet: Fishing nets need Hunting"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - ABA
+              - BCB
+              - DBD
+            ingredients:
+              A:
+                type: FLEXBONE
+                amount: 16
+              B:
+                type: ENCHANTED_SEA_LUMIES
+                amount: 8
+              C:
+                type: MEDIUM_FISHING_NET
+                amount: 1
+              D:
+                type: STURDY_BONE
+                amount: 64
+            result:
+              type: TURBO_FISHING_NET
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/nets/turbo_fishing_net
+  - id: VINERIP_LASSO
+    material: paper
+    name: "Vinerip Lasso"
+    rarity: UNCOMMON
+    source: "Crafted from 12 Vinesap, 1 Abysmal Lasso, 1 Enchanted Mangrove Log"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Throw  §e§lRIGHT CLICK"
+      - "§7Throw the Lasso at §2Forest"
+      - "§7creatures and hold them still until"
+      - "§7they lose all their §9stamina§7."
+      - ""
+      - "§6Ability: Reel In  §e§lRIGHT CLICK"
+      - "§7Reel in creatures caught by the"
+      - "§7Lasso each time their §9stamina"
+      - "§7depletes."
+      - ""
+      - "§a Critters §7lose stamina §220% §7faster."
+      - ""
+      - "§8Not active yet: Lasso needs Hunting"
+    components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAA
+              - OBA
+              - COO
+            ingredients:
+              A:
+                type: VINESAP
+                amount: 4
+              B:
+                type: ABYSMAL_LASSO
+                amount: 1
+              C:
+                type: ENCHANTED_MANGROVE_LOG
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: VINERIP_LASSO
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/hunting/vinerip_lasso
+  - id: ZOMBIE_PICKAXE
+    material: iron_pickaxe
+    name: "Zombie Pickaxe"
+    rarity: COMMON
+    default_statistics:
+      breaking_power: 3
+      mining_speed: 190
+    source: "Crafted from 3 Rotten Flesh and 2 Sticks (Rotten Flesh collection II)"
+    lore:
+      - "§6Ability: Rotten "
+      - "§7Grants §6+5 Mining Fortune §7per"
+      - "§7Undead mob within 30 blocks of you."
+      - "§8(Max 25 Mining Fortune)"
+    components:
+      - id: PICKAXE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - AAA
+              - OBO
+              - OBO
+            ingredients:
+              A:
+                type: ROTTEN_FLESH
+                amount: 1
+              B:
+                type: STICK
+                amount: 1
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: ZOMBIE_PICKAXE
+              amount: 1
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/zombie_pickaxe

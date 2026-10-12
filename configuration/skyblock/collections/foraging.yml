@@ -140,6 +140,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BEGINNER_FORAGING_SACK
   - amount: 250
     rewards:
     - type: XP
@@ -483,6 +486,9 @@ collections:
         - type: XP
           data:
             xp: 4
+        - type: RECIPE_UNLOCK
+          data:
+            unlockedItemType: MURKWATER_TRAVEL_SCROLL
     - amount: 1000
       rewards:
         - type: XP

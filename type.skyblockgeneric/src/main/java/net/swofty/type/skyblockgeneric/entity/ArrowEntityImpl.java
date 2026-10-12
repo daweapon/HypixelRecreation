@@ -19,6 +19,8 @@ import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.generic.utility.ScheduleUtility;
 import net.swofty.type.skyblockgeneric.event.custom.ArrowHitBlockEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowEffect;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowEffects;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,6 +29,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ArrowEntityImpl extends LivingEntity {
     public static final double LARGEST_TARGET_REACH = 24;
@@ -37,6 +40,7 @@ public class ArrowEntityImpl extends LivingEntity {
     @Getter
     private final SkyBlockItem arrowItem;
     private boolean hasHit = false;
+    private final AtomicBoolean exploded = new AtomicBoolean();
     @Getter
     @Setter
     private @Nullable SkyBlockItem bow;
@@ -62,6 +66,14 @@ public class ArrowEntityImpl extends LivingEntity {
         arrowMeta.setPiercingLevel((byte) 5);
     }
 
+    public boolean claimExplosion() {
+        return exploded.compareAndSet(false, true);
+    }
+
+    private void explodeIfExplosive() {
+        if (ArrowEffects.of(arrowItem) == ArrowEffect.EXPLOSIVE) ArrowEffects.explode(this, getPosition());
+    }
+
     public int pierceTarget(Entity target) {
         if (!piercedTargets.add(target.getUuid())) return -1;
         return piercedTargets.size() - 1;
@@ -74,6 +86,7 @@ public class ArrowEntityImpl extends LivingEntity {
 
         MinecraftServer.getSchedulerManager().scheduleTask(() -> {
             if (!isRemoved()) {
+                explodeIfExplosive();
                 kill();
                 remove();
             }
@@ -134,6 +147,7 @@ public class ArrowEntityImpl extends LivingEntity {
                     ArrowHitBlockEvent arrowHitBlockEvent = new ArrowHitBlockEvent(shooter, arrowItem, hitBlock, hitPosition);
                     HypixelEventHandler.callCustomEvent(arrowHitBlockEvent);
                     hasHit = true;
+                    explodeIfExplosive();
                 }
             }
 

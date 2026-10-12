@@ -1,0 +1,557 @@
+items:
+  - id: ANTI_MORPH_POTION
+    material: player_head
+    name: "Anti-Morph Potion"
+    rarity: EPIC
+    unavailable: "April Fools joke item; the morph mechanic does not exist"
+    source: "April Fools event reward (legacy)"
+    lore:
+      - "§7Right-click to throw the potion"
+      - "§7at §2ugly §7people."
+    components:
+      - id: SKULL_HEAD
+        texture: eadd309ecefdb1df18eef6f8d4083b47b3ee227286c0f375f45369d83fb30bd
+  - id: ARMORSHRED_ARROW
+    material: arrow
+    name: "Armorshred Arrow"
+    rarity: RARE
+    source: "Jax (Archery Range) forging: 2 Enchanted Sand per 64 arrows"
+    default_statistics:
+      damage: 5
+    lore:
+      - "§6Passive: Defense Reduction"
+      - "§7Hits ignore §a5% §7of target's §a❈ Defense§7."
+    components:
+      - id: ARROW
+        effect: ARMORSHRED
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 22
+          - type: PENDING
+            description: "Sand Collection VII"
+          - type: PENDING
+            description: "Target Practice III"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/armorshred_arrow
+  - id: BOUNCY_ARROW
+    material: arrow
+    name: "Bouncy Arrow"
+    rarity: RARE
+    source: "Jax (Archery Range) forging: 2 Enchanted Slimeball per 64 arrows"
+    default_statistics:
+      damage: 5
+    lore:
+      - "§6Passive: Bouncy!"
+      - "§7Arrows have a §e50% §7chance to"
+      - "§7bounce to another target."
+      - "§7Bounces up to §c4 §7targets, each"
+      - "§7bounce dealing §c15% §7less damage."
+    components:
+      - id: ARROW
+        effect: BOUNCY
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 20
+          - type: PENDING
+            description: "Slimeball Collection VII"
+          - type: PENDING
+            description: "Target Practice II"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/bouncy_arrow
+  - id: BRINE_TONIC
+    material: paper
+    name: "Brine Tonic"
+    rarity: RARE
+    source: "Crafting (Galatea salts)"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§7Grants §b2.75❣ Charm Chance §7on"
+      - "§2Moonglade Marsh Sea Creatures §7and"
+      - "§6Torrhus Canyon Sea Creatures§7."
+      - "§7Duration: §624h"
+      - ""
+      - "§eLeft-click to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: BRINE_TONIC
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/salts/brine_tonic
+  - id: CANDYCOMB
+    material: paper
+    name: "Candycomb"
+    rarity: RARE
+    unavailable: "Needs Dungeons (Catacombs mobs); the salt is wired and activates once dungeons can be detected"
+    source: "Dungeon Secrets"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§7Grants §b1.25❣ Charm Chance §7towards"
+      - "§7mobs inside §cThe Catacombs§7."
+      - "§7Duration: §612h"
+      - ""
+      - "§eLeft-click to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: CANDYCOMB
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/salts/candycomb
+  - id: CRITTER_CAPSULE
+    material: paper
+    name: "Critter Capsule"
+    rarity: SPECIAL
+    unavailable: "Needs the Critter Safari (Galatea hunting) which isn't built"
+    source: "Critter Safari"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Capture  §e§lRIGHT CLICK"
+      - "§7Throw your §cCritter Capsule§7 in the"
+      - "§7direction you're facing. If it hits a §a"
+      - "§aCritter§7, the capsule will attempt to"
+      - "§7catch them. Critters that drop a"
+      - "§7more valuable §3Shard§7 are less likely"
+      - "§7to be caught."
+      - ""
+      - "§6This item will vanish from your"
+      - "§6inventory after leaving the §2Critter"
+      - "§2Safari§6!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/safari/critter_capsule
+  - id: EMERALD_TIPPED_ARROW
+    material: arrow
+    name: "Emerald-tipped Arrow"
+    rarity: UNCOMMON
+    source: "Jax (Archery Range) forging: 1 Enchanted Emerald per 64 arrows, needs Target Practice II"
+    default_statistics:
+      damage: 20
+    components:
+      - id: ARROW
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 18
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/emerald_tipped_arrow
+  - id: EXPLOSIVE_ARROW
+    material: arrow
+    name: "Explosive Arrow"
+    rarity: RARE
+    source: "Jax (Archery Range) forging: 2 Enchanted Gunpowder per 64 arrows"
+    default_statistics:
+      damage: 3
+    lore:
+      - "§6Passive: Explosive"
+      - "§7This arrow explodes after §a2s §7or on"
+      - "§7impact."
+      - ""
+      - "§7The explosion deals the arrow's"
+      - "§7damage split to mobs within §e2.5 §7blocks."
+      - ""
+      - "§7You will lose §c10% §7of your §c❤ Health §7if"
+      - "§7you are in the explosion."
+    components:
+      - id: ARROW
+        effect: EXPLOSIVE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 23
+          - type: PENDING
+            description: "Coal Collection VII"
+          - type: PENDING
+            description: "Target Practice III"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/explosive_arrow
+  - id: FIGHTING_BOOSTER
+    material: paper
+    name: "Common Fighting Booster"
+    rarity: COMMON
+    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
+    source: "Galatea booster rewards"
+    lore:
+      - "§8Booster"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §b४ Fighting §7booster when"
+      - "§7combined with Foraging Armor,"
+      - "§7Equipment, or Axes."
+      - ""
+      - "§7Increases damage against Foraging"
+      - "§7Island creatures."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/boosters/common/booster_fighting
+  - id: FIGHTING_BOOSTER_UNCOMMON
+    material: paper
+    name: "Uncommon Fighting Booster Upgrade"
+    rarity: UNCOMMON
+    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
+    source: "Upgrade of a Common Fighting Booster"
+    lore:
+      - "§8Booster"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Apply to an item with a §fCommon"
+      - "§fFighting Booster §7to upgrade it to an"
+      - "§aUncommon Fighting Booster§7, which"
+      - "§7increases damage against §2Foraging"
+      - "§2Island §7mobs."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/boosters/uncommon/booster_fighting_upgraded
+  - id: FORAGING_FORTUNE_BOOSTER
+    material: paper
+    name: "Common Foraging Fortune Booster"
+    rarity: COMMON
+    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
+    source: "Galatea booster rewards"
+    lore:
+      - "§8Booster"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §b⎋ Foraging Fortune"
+      - "§7booster when combined with Foraging"
+      - "§7Armor, Equipment, or Axes."
+      - ""
+      - "§7Grants §6 Foraging Fortune§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/boosters/common/booster_foraging_fortune
+  - id: FORAGING_FORTUNE_BOOSTER_UNCOMMON
+    material: paper
+    name: "Uncommon Foraging Fortune Booster Upgrade"
+    rarity: UNCOMMON
+    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
+    source: "Upgrade of a Common Foraging Fortune Booster"
+    lore:
+      - "§8Booster"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Apply to an item with a §fCommon"
+      - "§fForaging Fortune Booster §7to"
+      - "§7upgrade it to an §aUncommon Foraging"
+      - "§aFortune Booster§7, which increases"
+      - "§7the amount of §6 Foraging Fortune §7it"
+      - "§7gives."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/boosters/uncommon/booster_foraging_fortune_upgraded
+  - id: FORAGING_WISDOM_BOOSTER_UNCOMMON
+    material: paper
+    name: "Uncommon Foraging Wisdom Booster Upgrade"
+    rarity: UNCOMMON
+    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
+    source: "Upgrade of a Common Foraging Wisdom Booster"
+    lore:
+      - "§8Booster"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Apply to an item with a §fCommon"
+      - "§fForaging Wisdom Booster §7to upgrade"
+      - "§7it to an §aUncommon Foraging Wisdom"
+      - "§aBooster§7, which increases the amount"
+      - "§7of §3☯ Foraging Wisdom §7it gives."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/boosters/uncommon/booster_foraging_wisdom_upgraded
+  - id: FROGS_SPIRIT_SCROLL
+    material: paper
+    name: "Frog's Spirit"
+    rarity: UNCOMMON
+    unavailable: "Leapfrog double jump on Foraging Islands isn't implemented"
+    source: "Galatea ability scroll"
+    lore:
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §6Leapfrog Ability §7when"
+      - "§7combined with §aCanopy Sandals§7, §9Fig"
+      - "§9Striders§7, or §5Helix Boots§7."
+      - ""
+      - "§6Ability: Leapfrog  §e§lDOUBLE TAP JUMP"
+      - "§7Grants you the abilities of a §aFrog"
+      - "§7while on §2Foraging Islands§7, allowing"
+      - "§7you to §6Double Jump§7."
+      - "§8Mana Cost: §b25"
+    components: []
+  - id: GLUE_ARROW
+    material: arrow
+    name: "Glue Arrow"
+    rarity: RARE
+    source: "Jax (Archery Range) forging: 2 Enchanted String per 64 arrows"
+    default_statistics:
+      damage: 15
+    lore:
+      - "§6Passive: Stuck in goo"
+      - "§7Prevents victims from walking for"
+      - "§21.5s §7when hit."
+      - "§86s cooldown per victim"
+    components:
+      - id: ARROW
+        effect: GLUE
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 24
+          - type: SLAYER
+            slayer: TARANTULA_BROODFATHER
+            level: 3
+          - type: PENDING
+            description: "Target Practice III"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/glue_arrow
+  - id: GOLD_TIPPED_ARROW
+    material: arrow
+    name: "Gold-tipped Arrow"
+    rarity: COMMON
+    source: "Jax (Archery Range) forging: 1 Enchanted Gold Ingot per 64 arrows, needs Target Practice I"
+    default_statistics:
+      damage: 10
+    components:
+      - id: ARROW
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 8
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/gold_tipped_arrow
+  - id: GREAT_SPOOK_POTION
+    material: player_head
+    name: "Great Spook Potion"
+    rarity: COMMON
+    source: "Great Spook event (legacy)"
+    lore:
+      - "§7§7Consuming this potion grants"
+      - "§7§a+3 §5Fear §7for §b24 hours§7."
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 85fd30c60964f1d165417ffdb0b865488126abe48077e8b29f2378ae202daf5e
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+      - id: INTERACTABLE
+        handler_id: GREAT_SPOOK_POTION
+  - id: HUNTING_WISDOM_BOOSTER_COMMON
+    material: paper
+    name: "Common Hunting Wisdom Booster"
+    rarity: COMMON
+    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
+    source: "Galatea booster rewards"
+    lore:
+      - "§8Booster"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Applies the §b☯ Common Hunting Wisdom"
+      - "§7booster when combined with Foraging"
+      - "§7Armor, Equipment, or Axes."
+      - ""
+      - "§7Grants §3☯ Hunting Wisdom§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/boosters/common/booster_hunting_wisdom
+  - id: HUNTING_WISDOM_BOOSTER_UNCOMMON
+    material: paper
+    name: "Uncommon Hunting Wisdom Booster Upgrade"
+    rarity: UNCOMMON
+    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
+    source: "Upgrade of a Common Hunting Wisdom Booster"
+    lore:
+      - "§8Booster"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Apply to an item with a §fCommon"
+      - "§fHunting Wisdom Booster §7to upgrade it"
+      - "§7to an §aUncommon Hunting Wisdom"
+      - "§aBooster§7, which increases the amount"
+      - "§7of §3☯ Hunting Wisdom §7it gives."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/boosters/uncommon/booster_hunting_wisdom_upgraded
+  - id: ICY_ARROW
+    material: arrow
+    name: "Icy Arrow"
+    rarity: RARE
+    source: "Jax (Archery Range) forging: 2 Enchanted Ice per 64 arrows"
+    default_statistics:
+      damage: 24
+    lore:
+      - "§6Passive: Muscle Freeze"
+      - "§7Applies §bSlowness 1 §7for §a3s §7to targets."
+    components:
+      - id: ARROW
+        effect: ICY
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 21
+          - type: PENDING
+            description: "Ice Collection VII"
+          - type: PENDING
+            description: "Target Practice II"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/icy_arrow
+  - id: MAGMA_ARROW
+    material: arrow
+    name: "Magma Arrow"
+    rarity: EPIC
+    source: "Bundle of Magma Arrows (256 arrows), Blaze Slayer I reward"
+    default_statistics:
+      damage: 40
+      critical_chance: 10
+    components:
+      - id: ARROW
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/arrows/magma_arrow
+  - id: MASTERFUL_CRITTER_CAPSULE
+    material: paper
+    name: "Masterful Critter Capsule"
+    rarity: SPECIAL
+    unavailable: "Needs the Critter Safari (Galatea hunting) which isn't built"
+    source: "Critter Safari"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§6Ability: Certain Capture  §e§lRIGHT CLICK"
+      - "§7Throw your §cMasterful Critter"
+      - "§cCapsule§7 in the direction you're"
+      - "§7facing. If it hits a §a Critter§7, it will"
+      - "§7catch them."
+      - ""
+      - "§6This item will vanish from your"
+      - "§6inventory after leaving the §2Critter"
+      - "§2Safari§6!"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/safari/masterful_critter_capsule
+  - id: NANSORB_ARROW
+    material: arrow
+    name: "Nansorb Arrow"
+    rarity: RARE
+    source: "Jax (Archery Range) forging: 8 Enchanted Cactus Green per 64 arrows"
+    default_statistics:
+      damage: 5
+    lore:
+      - "§7Replaces the damage reduction from"
+      - "§7the §9Piercing §7enchant to §6Skewer§7."
+      - ""
+      - "§6Passive: Skewer"
+      - "§7Hits through §9Piercing §7deal §c+7.5%"
+      - "§7damage than the previous one, up to"
+      - "§e5 §7victims."
+    components:
+      - id: ARROW
+        effect: NANSORB
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 25
+          - type: PENDING
+            description: "Cactus Collection VII"
+          - type: PENDING
+            description: "Target Practice III"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/nansorb_arrow
+  - id: OCEANDY
+    material: paper
+    name: "Oceandy"
+    rarity: RARE
+    source: "Lushlilac II (Galatea attribute reward)"
+    lore:
+      - "§8Hunting Tool"
+      - ""
+      - "§7Grants §b1.25❣ Charm Chance §7towards"
+      - "§aSea Creatures§7."
+      - "§7Duration: §612h"
+      - ""
+      - "§eLeft-click to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: OCEANDY
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_2/salts/oceandy
+  - id: REDSTONE_TIPPED_ARROW
+    material: arrow
+    name: "Redstone-tipped Arrow"
+    rarity: UNCOMMON
+    source: "Jax (Archery Range) forging: 1 Enchanted Redstone Dust per 64 arrows, needs Target Practice I"
+    default_statistics:
+      damage: 15
+    components:
+      - id: ARROW
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 13
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/redstone_tipped_arrow
+  - id: REINFORCED_IRON_ARROW
+    material: arrow
+    name: "Reinforced Iron Arrow"
+    rarity: COMMON
+    source: "Jax (Archery Range) forging: 1 Enchanted Iron Ingot per 64 arrows, needs Target Practice I"
+    default_statistics:
+      damage: 5
+    components:
+      - id: ARROW
+      - id: ITEM_REQUIREMENTS
+        requirements:
+          - type: SKILL
+            skill: COMBAT
+            level: 4
+  - id: SWEEP_BOOSTER_UNCOMMON
+    material: paper
+    name: "Uncommon Sweep Booster Upgrade"
+    rarity: UNCOMMON
+    unavailable: "Booster system (Galatea boosters combined onto foraging gear) isn't built"
+    source: "Upgrade of a Common Sweep Booster"
+    lore:
+      - "§8Booster"
+      - "§8Combinable in Anvil"
+      - ""
+      - "§7Apply to an item with a §fCommon Sweep"
+      - "§fBooster §7to upgrade it to an"
+      - "§aUncommon Sweep Booster§7, which"
+      - "§7increases the amount of §2 Sweep §7it"
+      - "§7gives."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/boosters/uncommon/booster_sweep_upgraded
+  - id: VITAMIN_LIFE
+    material: player_head
+    name: "Vitamin Life"
+    rarity: SPECIAL
+    unavailable: "April Fools power stone needing 99,999,999 stones and Combat level MCCXII"
+    source: "A Honk and Seek Adventure (April Fools event)"
+    lore:
+      - "§8Power Stone"
+      - ""
+      - "§7Combine §a99,999,999x §7of this stone at"
+      - "§7Maxwell to permanently unlock the"
+      - "§cUnhealthy §7power."
+      - ""
+      - "§7At §6250 Accessory Power§7:"
+      - "§c-324 Health"
+      - ""
+      - "§7Unique Power Bonus:"
+      - "§c-200 Health"
+      - ""
+      - "§7Requires §aCombat Skill Level MCCXII§7!"
+      - ""
+      - "§7Obtained from the §dA Honk and Seek"
+      - "§dAdventure §7event during April Fools."
+    components:
+      - id: SKULL_HEAD
+        texture: abbe1dd6cdf2dba2db4bbeb94088c3cd2447f4632fc2f9e9efe515ca00df8b0c

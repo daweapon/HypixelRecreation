@@ -95,6 +95,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: BEGINNER_MINING_SACK
   - amount: 250
     rewards:
     - type: XP
@@ -127,6 +130,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MINING_1_TRAVEL_SCROLL
   - amount: 10000
     rewards:
     - type: XP
@@ -353,6 +359,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DANGER_1_TRAVEL_SCROLL
   - amount: 50000
     rewards:
     - type: XP
@@ -536,6 +545,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: DANGER_3_TRAVEL_SCROLL
   - amount: 25000
     rewards:
     - type: XP
@@ -553,6 +565,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: SMALL_GEMSTONE_SACK
   - amount: 250
     rewards:
     - type: XP
@@ -599,6 +614,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MEDIUM_GEMSTONE_SACK
   - amount: 2500
     rewards:
     - type: XP
@@ -650,6 +668,9 @@ collections:
     - type: XP
       data:
         xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: LARGE_GEMSTONE_SACK
   - amount: 100000
     rewards:
     - type: XP
@@ -1443,6 +1464,9 @@ collections:
     - type: CUSTOM_AWARD
       data:
         customAward: ACCESSORY_BAG_UPGRADE_5
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: MINING_2_TRAVEL_SCROLL
   - amount: 5000
     rewards:
     - type: XP

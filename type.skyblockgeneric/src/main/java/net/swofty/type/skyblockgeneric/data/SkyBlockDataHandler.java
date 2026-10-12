@@ -30,6 +30,7 @@ import net.swofty.type.skyblockgeneric.item.updater.NonPlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemUpdater;
 import net.swofty.type.skyblockgeneric.potion.CookieBuffService;
+import net.swofty.type.skyblockgeneric.consumable.GreatSpookPotion;
 import net.swofty.type.skyblockgeneric.gifts.BottleOfJyrre;
 import net.swofty.type.skyblockgeneric.potion.GodPotionService;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
@@ -739,6 +740,11 @@ public class SkyBlockDataHandler extends DataHandler {
 
         ACHIEVEMENT_FLAGS("achievement_flags", false, false, false,
                 DatapointStringList.class, new DatapointStringList("achievement_flags")),
+
+        TIMED_CONSUMABLES("timed_consumables", false, false, false,
+                DatapointMapStringLong.class, new DatapointMapStringLong("timed_consumables"),
+                null,
+                (player, datapoint) -> GreatSpookPotion.restore(player)),
 
         JYRRE_BUFF_EXPIRATION("jyrre_buff_expiration", false, false, false,
                 DatapointLong.class, new DatapointLong("jyrre_buff_expiration", 0L),

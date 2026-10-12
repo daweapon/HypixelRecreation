@@ -30,6 +30,8 @@ public class InteractableRegistry {
     static {
         MythologicalItemHandlers.registerInteractables();
         BottleOfJyrre.registerInteractables();
+        net.swofty.type.skyblockgeneric.consumable.Salt.registerInteractables();
+        net.swofty.type.skyblockgeneric.consumable.GreatSpookPotion.registerInteractables();
         SnowCannon.registerInteractables();
         CrimsonItemHandlers.registerInteractables();
         ReaperPepper.registerInteractables();

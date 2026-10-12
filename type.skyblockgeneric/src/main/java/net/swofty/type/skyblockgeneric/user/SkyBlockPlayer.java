@@ -53,6 +53,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.Gat
 import net.swofty.type.skyblockgeneric.item.SkyBlockItemComponent;
 import net.swofty.type.skyblockgeneric.item.components.AccessoryComponent;
 import net.swofty.type.skyblockgeneric.item.components.ArrowComponent;
+import net.swofty.type.skyblockgeneric.item.components.ItemRequirementsComponent;
 import net.swofty.type.skyblockgeneric.item.components.SackComponent;
 import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
@@ -219,7 +220,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
         for (int i = 0; i < 36; i++) {
             ItemStack stack = getInventory().getItemStack(i);
             SkyBlockItem item = new SkyBlockItem(stack);
-            if (item.hasComponent(ArrowComponent.class)) {
+            if (item.hasComponent(ArrowComponent.class) && canUseArrow(item)) {
                 return item;
             }
         }
@@ -243,10 +244,15 @@ public class SkyBlockPlayer extends HypixelPlayer {
         return getAmountOfEmptySlots() >= amount;
     }
 
+    private boolean canUseArrow(SkyBlockItem arrow) {
+        return !arrow.hasComponent(ItemRequirementsComponent.class)
+                || arrow.getComponent(ItemRequirementsComponent.class).canUse(this);
+    }
+
     public @Nullable SkyBlockItem peekArrow() {
         for (int i = 0; i < 36; i++) {
             SkyBlockItem item = new SkyBlockItem(getInventory().getItemStack(i));
-            if (item.hasComponent(ArrowComponent.class)) return item;
+            if (item.hasComponent(ArrowComponent.class) && canUseArrow(item)) return item;
         }
         if (!hasCustomCollectionAward(CustomCollectionAward.QUIVER)) return null;
         return getQuiver().getFirstItemInQuiver();
@@ -257,7 +263,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
         for (int i = 0; i < 36; i++) {
             ItemStack stack = getInventory().getItemStack(i);
             SkyBlockItem item = new SkyBlockItem(stack);
-            if (item.hasComponent(ArrowComponent.class)) {
+            if (item.hasComponent(ArrowComponent.class) && canUseArrow(item)) {
                 if (item.getAmount() > 1) {
                     item.setAmount(item.getAmount() - 1);
                     getInventory().setItemStack(i, PlayerItemUpdater.playerUpdate(this, item.getItemStack()).build());
@@ -816,6 +822,8 @@ public class SkyBlockPlayer extends HypixelPlayer {
             if (handler.getSpeedStatistic() == ItemStatistic.MINING_SPEED) {
                 speed += GatheringPetBonuses.miningSpeed(this, block);
                 speed += HotmStatistics.miningSpeedFor(this, block);
+                speed += net.swofty.type.skyblockgeneric.item.tool.ToolPassives.miningSpeedBonus(item,
+                        block.getBlockType().specificBlockFortune() == ItemStatistic.GEMSTONE_FORTUNE);
             }
             if (handler.getSpeedStatistic() == ItemStatistic.MINING_SPEED) {
                 speed *= ColdService.miningSpeedMultiplier(this);

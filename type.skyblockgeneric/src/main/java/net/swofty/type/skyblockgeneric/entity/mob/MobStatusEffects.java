@@ -17,6 +17,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class MobStatusEffects {
     private static final Key STUN_MODIFIER = Key.key("skyblock", "mob_stun");
+    private static final Key SLOW_MODIFIER = Key.key("skyblock", "mob_slow");
+    private static final Map<UUID, Long> SLOWED_UNTIL = new ConcurrentHashMap<>();
     private static final Map<UUID, Long> STUNNED_UNTIL = new ConcurrentHashMap<>();
     private static final Map<UUID, HealingReduction> HEALING_REDUCED = new ConcurrentHashMap<>();
     private static final Map<UUID, Long> WITHERED_UNTIL = new ConcurrentHashMap<>();
@@ -35,6 +37,24 @@ public final class MobStatusEffects {
         speed.addModifier(new AttributeModifier(STUN_MODIFIER, -1, AttributeOperation.ADD_MULTIPLIED_TOTAL));
         MinecraftServer.getSchedulerManager().scheduleTask(() -> release(mob), TaskSchedule.millis(millis),
                 TaskSchedule.stop());
+    }
+
+    public static void slow(SkyBlockMob mob, double fraction, long millis) {
+        long now = System.currentTimeMillis();
+        SLOWED_UNTIL.values().removeIf(until -> until <= now);
+        SLOWED_UNTIL.put(mob.getUuid(), now + millis);
+        AttributeInstance speed = mob.getAttribute(Attribute.MOVEMENT_SPEED);
+        speed.removeModifier(SLOW_MODIFIER);
+        speed.addModifier(new AttributeModifier(SLOW_MODIFIER, -fraction, AttributeOperation.ADD_MULTIPLIED_TOTAL));
+        MinecraftServer.getSchedulerManager().scheduleTask(() -> releaseSlow(mob), TaskSchedule.millis(millis),
+                TaskSchedule.stop());
+    }
+
+    private static void releaseSlow(SkyBlockMob mob) {
+        Long until = SLOWED_UNTIL.get(mob.getUuid());
+        if (until != null && until > System.currentTimeMillis()) return;
+        SLOWED_UNTIL.remove(mob.getUuid());
+        if (!mob.isRemoved()) mob.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(SLOW_MODIFIER);
     }
 
     public static boolean isStunned(SkyBlockMob mob) {

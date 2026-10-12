@@ -27,6 +27,7 @@ public class GUIShopFarmMerchant extends ShopView {
         attachItem(ShopItem.Stackable(new SkyBlockItem(Material.CACTUS), 1, new CoinShopPrice(15)));
         attachItem(ShopItem.Stackable(new SkyBlockItem(ItemType.ENCHANTED_BONE_MEAL), 3, new CoinShopPrice(6)));
         attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ROOKIE_HOE), 1, new CoinShopPrice(10)));
+        attachItem(ShopItem.Single(new SkyBlockItem(ItemType.ROOKIE_FARMING_AXE), 1, new CoinShopPrice(10)));
 
     }
 }

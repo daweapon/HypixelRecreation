@@ -17,6 +17,8 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowDamage;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowEffect;
+import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowEffects;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.AttackService;
@@ -44,13 +46,20 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
             shooter = player;
         else return;
 
+        ArrowEffect effect = ArrowEffects.of(arrow.getArrowItem());
+        if (effect == ArrowEffect.EXPLOSIVE) {
+            ArrowEffects.explode(arrow, collidedWith.getPosition());
+            return;
+        }
+
         SkyBlockItem bow = arrow.getBow();
         double pierceFactor = 1;
         if (bow != null && bow.getAttributeHandler().getEnchantment(EnchantmentType.PIERCING) != null) {
             event.setCancelled(true);
             int targetsAlreadyHit = arrow.pierceTarget(collidedWith);
             if (targetsAlreadyHit < 0) return;
-            pierceFactor = EnchantmentPiercing.damageFactor(targetsAlreadyHit);
+            pierceFactor = ArrowEffects.pierceFactor(effect, targetsAlreadyHit, EnchantmentPiercing.damageFactor(targetsAlreadyHit));
+            if (pierceFactor <= 0) return;
         }
 
         ItemStatistics entityStats = mob.getStatistics();
@@ -63,6 +72,7 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
         float damageAmount = (float) damage;
         if (!AttackService.applyHit(shooter, collidedWith, damageAmount, critical)) return;
         CombatPetHooks.bowHit(shooter);
+        ArrowEffects.onHit(shooter, arrow, collidedWith, damageAmount, critical);
         punch(arrow, bow, collidedWith);
         ArrowDamage.onLanded(shooter, arrow);
 

@@ -1,0 +1,1918 @@
+items:
+  - id: ADVANCED_GARDENING_AXE
+    material: golden_axe
+    name: "Advanced Gardening Axe"
+    rarity: RARE
+    default_statistics:
+      farming_fortune: 15
+    unavailable: "Upgraded at SkyMart from a Basic Gardening Axe plus 20 Copper; SkyMart and Copper are Garden content"
+    lore:
+      - "§9Replenish I"
+      - "§7Upon breaking crops, nether wart,"
+      - "§7cocoa, wild rose, or sunflower,"
+      - "§7automatically replant from materials"
+      - "§7in your inventory."
+      - ""
+      - "§4❣ §cRequires §aGarden Level 6§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/advanced_gardening_axe
+  - id: ADVANCED_GARDENING_HOE
+    material: iron_hoe
+    name: "Advanced Gardening Hoe"
+    rarity: RARE
+    default_statistics:
+      farming_fortune: 15
+    unavailable: "Upgraded at SkyMart from a Basic Gardening Hoe plus 20 Copper; SkyMart and Copper are Garden content"
+    lore:
+      - "§9Replenish I"
+      - "§7Upon breaking crops, nether wart,"
+      - "§7cocoa, wild rose, or sunflower,"
+      - "§7automatically replant from materials"
+      - "§7in your inventory."
+      - ""
+      - "§4❣ §cRequires §aGarden Level 3§c."
+      - "§4❣ §cRequires §aFarming Skill 7§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/advanced_gardening_hoe
+  - id: BASIC_GARDENING_AXE
+    material: iron_axe
+    name: "Basic Gardening Axe"
+    rarity: UNCOMMON
+    default_statistics:
+      farming_fortune: 10
+    unavailable: "Sold at SkyMart for 5 Copper; SkyMart and Copper are Garden content"
+    lore:
+      - "§4❣ §cRequires §aGarden Level 4§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/basic_gardening_axe
+  - id: BASIC_GARDENING_HOE
+    material: iron_hoe
+    name: "Basic Gardening Hoe"
+    rarity: UNCOMMON
+    default_statistics:
+      farming_fortune: 10
+    unavailable: "Sold at SkyMart for 5 Copper; SkyMart and Copper are Garden content"
+    lore:
+      - "§4❣ §cRequires §aFarming Skill 5§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/tools/basic_gardening_hoe
+  - id: BINGHOE
+    material: golden_axe
+    name: "Binghoe"
+    rarity: EPIC
+    default_statistics:
+      farming_fortune: 25
+    unavailable: "Reward of a Special Bingo after completing a set number of goals; Bingo is not built"
+    lore:
+      - "§9Dedication IV"
+      - "§7Grants §62☘ Farming Fortune §7for"
+      - "§7crops, multiplied by your §aGarden"
+      - "§7milestone for that crop."
+      - "§9Delicate V"
+      - "§7Avoids breaking stems and baby"
+      - "§7crops."
+      - "§9Replenish I"
+      - "§7Upon breaking crops, nether wart,"
+      - "§7or cocoa, automatically replant from"
+      - "§7materials in your inventory."
+      - ""
+      - "§7Gives §6+3☘ Farming Fortune §7for each"
+      - "§7SkyBlock Level (Max 25)."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: CACTUS_KNIFE
+    material: iron_sword
+    name: "Cactus Knife Mk. I"
+    rarity: UNCOMMON
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§7Slices through §acactus§7 instantly!"
+      - ""
+      - "§6Ability: Swift Slicer "
+      - "§7Increases your speed cap by 100"
+      - "§7while in §aThe Garden§7."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 7§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/cactus_knife
+  - id: CACTUS_KNIFE_2
+    material: iron_sword
+    name: "Cactus Knife Mk. II"
+    rarity: RARE
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§7Slices through §acactus§7 instantly!"
+      - ""
+      - "§6Ability: Swift Slicer "
+      - "§7Increases your speed cap by 100"
+      - "§7while in §aThe Garden§7."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 7§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/cactus_knife_2
+  - id: CACTUS_KNIFE_3
+    material: iron_sword
+    name: "Cactus Knife Mk. III"
+    rarity: EPIC
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§7Slices through §acactus§7 instantly!"
+      - ""
+      - "§6Ability: Swift Slicer "
+      - "§7Increases your speed cap by 100"
+      - "§7while in §aThe Garden§7."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 7§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/cactus_knife_3
+  - id: COCO_CHOPPER
+    material: golden_axe
+    name: "Cocoa Chopper Mk. I"
+    rarity: UNCOMMON
+    default_statistics:
+      cocoa_beans_fortune: 4
+      farming_wisdom: 1
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 8§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/coco_chopper
+  - id: COCO_CHOPPER_2
+    material: golden_axe
+    name: "Cocoa Chopper Mk. II"
+    rarity: RARE
+    default_statistics:
+      cocoa_beans_fortune: 4
+      farming_wisdom: 1
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 8§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/coco_chopper_2
+  - id: COCO_CHOPPER_3
+    material: golden_axe
+    name: "Cocoa Chopper Mk. III"
+    rarity: EPIC
+    default_statistics:
+      cocoa_beans_fortune: 4
+      farming_wisdom: 1
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 8§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/coco_chopper_3
+  - id: FUNGI_CUTTER
+    material: iron_hoe
+    name: "Fungi Cutter Mk. I"
+    rarity: UNCOMMON
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 9§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/fungi_cutter
+  - id: FUNGI_CUTTER_2
+    material: iron_hoe
+    name: "Fungi Cutter Mk. II"
+    rarity: RARE
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 9§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/fungi_cutter_2
+  - id: FUNGI_CUTTER_3
+    material: iron_hoe
+    name: "Fungi Cutter Mk. III"
+    rarity: EPIC
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 9§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/fungi_cutter_3
+  - id: MELON_DICER
+    material: melon
+    name: "Melon Dicer Mk. I"
+    rarity: UNCOMMON
+    default_statistics:
+      melon_fortune: 4
+      farming_wisdom: 1
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 6§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/melon_dicer
+  - id: MELON_DICER_2
+    material: golden_axe
+    name: "Melon Dicer Mk. II"
+    rarity: RARE
+    default_statistics:
+      melon_fortune: 4
+      farming_wisdom: 1
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§7§oSame as the Melon Dicer Mk. I, just"
+      - "§7§obetter!"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 6§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/melon_dicer_2
+  - id: MELON_DICER_3
+    material: golden_axe
+    name: "Melon Dicer Mk. III"
+    rarity: EPIC
+    default_statistics:
+      melon_fortune: 4
+      farming_wisdom: 1
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§7§oAlmost identical to the Melon Dicer Mk."
+      - "§7§oII, but it has Mk. III in the name!"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 6§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/melon_dicer_3
+  - id: PUMPKIN_DICER
+    material: pumpkin
+    name: "Pumpkin Dicer Mk. I"
+    rarity: UNCOMMON
+    default_statistics:
+      pumpkin_fortune: 4
+      farming_wisdom: 1
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 4§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/pumpkin_dicer
+  - id: PUMPKIN_DICER_2
+    material: golden_axe
+    name: "Pumpkin Dicer Mk. II"
+    rarity: RARE
+    default_statistics:
+      pumpkin_fortune: 4
+      farming_wisdom: 1
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§7§oSomeone once said, II is always"
+      - "§7§obetter than I!"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 4§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/pumpkin_dicer_2
+  - id: PUMPKIN_DICER_3
+    material: golden_axe
+    name: "Pumpkin Dicer Mk. III"
+    rarity: EPIC
+    default_statistics:
+      pumpkin_fortune: 4
+      farming_wisdom: 1
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§7§o\"III is better than the II version\" -"
+      - "§7§oCEO of PumpkinDicer LLC."
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 4§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/pumpkin_dicer_3
+  - id: ROOKIE_FARMING_AXE
+    material: stone_axe
+    name: "Rookie Farming Axe"
+    rarity: COMMON
+    default_statistics:
+      farming_fortune: 5
+    source: "Bought from the Farm Merchant for 10 coins."
+    lore:
+      - "§6 Farming Fortune §7increases your"
+      - "§7chance of dropping multiple crops"
+      - "§7when farming!"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 1§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/rookie_farming_axe
+  - id: THEORETICAL_HOE_CANE_1
+    material: iron_hoe
+    name: "Turing Sugar Cane Cutter Mk. I"
+    rarity: UNCOMMON
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_cane_1
+  - id: THEORETICAL_HOE_CARROT_1
+    material: iron_hoe
+    name: "Gauss Carrot Shovel Mk. I"
+    rarity: UNCOMMON
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 2§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_carrot_1
+  - id: THEORETICAL_HOE_POTATO_1
+    material: iron_hoe
+    name: "Pythagorean Potato Shovel Mk. I"
+    rarity: UNCOMMON
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 3§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_potato_1
+  - id: THEORETICAL_HOE_SUNFLOWER_1
+    material: iron_hoe
+    name: "Eclipse Sickle Mk. I"
+    rarity: UNCOMMON
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 11§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_sunflower_1
+  - id: THEORETICAL_HOE_WARTS_1
+    material: iron_hoe
+    name: "Newton Nether Wart Cutter Mk. I"
+    rarity: UNCOMMON
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 10§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_warts_1
+  - id: THEORETICAL_HOE_WHEAT_1
+    material: iron_hoe
+    name: "Euclid's Wheat Sickle Mk. I"
+    rarity: UNCOMMON
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wheat_1
+  - id: THEORETICAL_HOE_WILD_ROSE_1
+    material: iron_hoe
+    name: "Wild Rose Cutter Mk. I"
+    rarity: UNCOMMON
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+      - "§4❣ §cRequires §aGarden Level 12§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wild_rose_1
+  - id: ALL_IN_ALOE
+    material: player_head
+    name: "All-in Aloe"
+    rarity: LEGENDARY
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7This bold plant grows bigger the"
+      - "§7longer you wait, but wait too long and"
+      - "§7it's gone. Time your harvest right"
+      - "§7for big rewards."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 241163612258d30dc6ef63b21f61ba89c622e5dcebd99fd36a3b507e80cdc725
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: ASHWREATH
+    material: player_head
+    name: "Ashwreath"
+    rarity: COMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7It rises from ashen ground, gray"
+      - "§7and whispering."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 5890f50780fdecedaa85aa40bf3399e9439ee68594c6d022688165608171681d
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: BLASTBERRY
+    material: player_head
+    name: "Blastberry"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7Only harvest at your own risk."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: bacae0e87ffeadb750260c2e6531004d69d14473376cb22577fafe70569349f3
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: CHEESEBITE
+    material: player_head
+    name: "Cheesebite"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A smell so aromatic that even"
+      - "§7rodents can't resist."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 411f19c783959807338e2bf7080b1e34abb8c452464c0dce5bdf434cdc250717
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: CHLORONITE
+    material: player_head
+    name: "Chloronite"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A plant that hardens into a shining"
+      - "§7green gemstone as it matures, ready"
+      - "§7to be mined."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 98056b960ff385c20cffc3d1524500fcd3bf8c31b6dcafd8520f41dfa749dd28
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: CHOCOBERRY
+    material: player_head
+    name: "Chocoberry"
+    rarity: UNCOMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7It looks incredibly tasty, taking a"
+      - "§7small bite wouldn't hurt the plant,"
+      - "§7right? Right?"
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 167bb9880a3ab37435a21b1f135a01a96cca45b49daeb4a1e91baf358e37d89d
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: CHOCONUT
+    material: player_head
+    name: "Choconut"
+    rarity: COMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7Its shell is tough, but inside, it's"
+      - "§7filled with pure chocolate."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 2a8d74b77a0e510d058c544c7292a8844e70b9293880caffc562ce5ab5a49ad8
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: CHORUS_FRUIT
+    material: player_head
+    name: "Chorus Fruit"
+    rarity: EPIC
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7This tricky plant has a mind of its"
+      - "§7own, teleporting to a new spot every"
+      - "§7time you think you've found it."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: e044238503102f64f30f4d58f0843b215d8dd54fc9f1f70cc17d8dd891bb3e5e
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: CINDERSHADE
+    material: player_head
+    name: "Cindershade"
+    rarity: UNCOMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A hazy flower that glows like dying"
+      - "§7embers, stuck somewhere between"
+      - "§7fire and life."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: a0646bc0558155207204711cf5d3d07920e0e98c9b2be0b6107becb409a97427
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: COALROOT
+    material: player_head
+    name: "Coalroot"
+    rarity: UNCOMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§8Machine Fuel"
+      - ""
+      - "§7Adds §2+5,000♢ Fuel §7to a refuelable"
+      - "§7machine."
+      - ""
+      - "§7A smoldering root that oddly can"
+      - "§7also be used as fuel."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: f946443fa0039354edd31a70c749c4f963464744dc20b79137bd9910356ee90
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: CREAMBLOOM
+    material: player_head
+    name: "Creambloom"
+    rarity: UNCOMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A flower so soft and creamy, it could"
+      - "§7almost pass for milk. Just don't be"
+      - "§7tempted to try drinking it."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 60e98c0b598e2f5ce7c5ee8183ed157c5436a00585da711f8a87f24ea1ff055b
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: CROPSHOT_GARDEN_CHIP
+    material: paper
+    name: "Cropshot Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "Bought from SkyMart for 500 Copper"
+    lore:
+      - "§6Ability: Cropshot "
+      - "§7Grants §6+3 Farming Fortune §7per"
+      - "§9Chip §7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/cropshot_chip
+  - id: DEVOURER
+    material: player_head
+    name: "Devourer"
+    rarity: LEGENDARY
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A relentless plant that spreads its"
+      - "§7root far and wide, consuming and"
+      - "§7destroying everything in its path."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4100d3b81c8dd0af22af3b42c97045bd844438d2f0297b0f267a46bd35ffb33f
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: DO_NOT_EAT_SHROOM
+    material: player_head
+    name: "Do-not-eat-shroom"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7It's clearly labeled, but who can"
+      - "§7resist? Eat at your own risk - things"
+      - "§7get strange when this one's"
+      - "§7consumed."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 3f22178e2e72d6929a6ef9199795a93cfbad999bbee0aba235b277d0b18e0e94
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: DUSKBLOOM
+    material: player_head
+    name: "Duskbloom"
+    rarity: UNCOMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7It turns to neither day nor night,"
+      - "§7lost somewhere in between."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 7dca7951b36f5f749e883758b379c8008ca55f245987e4ef0c3788cf0c903d5
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: DUSTGRAIN
+    material: player_head
+    name: "Dustgrain"
+    rarity: COMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7Fragile and dry, it crumbles with the"
+      - "§7slightest touch."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 8698331f183a586ae7258d6b3c83ccd3620bb2411d803123bd6706444c1efdf3
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: EVERGREEN_GARDEN_CHIP
+    material: paper
+    name: "Evergreen Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "3% drop from a Greenhouse Harvest Bounty"
+    lore:
+      - "§6Ability: Evergreen "
+      - "§7Gain §a2% §7more base crops when"
+      - "§7harvesting in the §aGreenhouse §7per"
+      - "§9Chip §7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/evergreen_chip
+  - id: FLESHTRAP
+    material: player_head
+    name: "Fleshtrap"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A twisted version of the Venus"
+      - "§7flytrap, this plant thrives on feeding"
+      - "§7its insatiable hunger for flesh. It"
+      - "§7requires regular offerings to stay"
+      - "§7alive, or it withers away."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: c7f45f6cb2e4bbf45c5537c4dc3055a323021d62db7d91cc60beb02956401fb9
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: GLASSCORN
+    material: player_head
+    name: "Glasscorn"
+    rarity: LEGENDARY
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7This delicate, crystal-like corn"
+      - "§7needs to be handled with care. If not"
+      - "§7harvested at the right time, it will"
+      - "§7shatter into a million pieces."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 297de27338b9f876e570d1cc01fe1beccfc940467c5c97c467e93e79c81c25ee
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: GLOOMGOURD
+    material: player_head
+    name: "Gloomgourd"
+    rarity: COMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7Heavy and strange, it seems to"
+      - "§7carry a hidden weight."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 7f693e42ba3b763292e7de26fd2b0a08fcee3bec2e017075dc66dfc4a932aa64
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: GODSEED
+    material: player_head
+    name: "Godseed"
+    rarity: LEGENDARY
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A seed so powerful, it feels like it"
+      - "§7shouldn't exist. Its growth knows no"
+      - "§7limits."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 9d6bdd07abe3f398720e5f010648c2c194a2ba0f5ef3e27013b0670336eb4f3c
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: HYPERCHARGE_GARDEN_CHIP
+    material: paper
+    name: "Hypercharge Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "2% drop from Visitor offers"
+    lore:
+      - "§6Ability: Hypercharge "
+      - "§7Temporary §6 Farming Fortune §7buffs"
+      - "§7are §a3% §7stronger per §9Chip §7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/hypercharge_chip
+  - id: JERRYFLOWER
+    material: player_head
+    name: "Jerryflower"
+    rarity: LEGENDARY
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7Jerryflower never sleeps,"
+      - "§7Jerryflower never stops,"
+      - "§7Jerryflower is always watching."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 185f06d98a3f44adb8968ca490b5a7190a7d7472b00a3016a840b944ba917b72
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: true
+  - id: LONELILY
+    material: player_head
+    name: "Lonelily"
+    rarity: COMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A delicate flower that only blooms"
+      - "§7when left alone, thriving in the"
+      - "§7stillness of its own space."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: f4672d5fb128c63197da27f40d7143818d318665b3ab2335121e9ae8f9ecc2e3
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: MAGIC_JELLYBEAN
+    material: player_head
+    name: "Magic Jellybean"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A strange bean that starts growing"
+      - "§7in unexpected ways, stretching"
+      - "§7higher and higher."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: c526a56b80f56a6870f891d1d46fa7f8c71494cad24e94326da84b3829417b81
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: MECHAMIND_GARDEN_CHIP
+    material: paper
+    name: "Mechamind Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "Bought from Anita's shop for 1 Gold Medal"
+    lore:
+      - "§6Ability: Mechamind "
+      - "§7Grants §a1.5% §7more §eFarming Tool"
+      - "§7Experience per §9Chip §7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/mechamind_chip
+  - id: NOCTILUME
+    material: player_head
+    name: "Noctilume"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A delicate flower that needs just"
+      - "§7the right balance of day and night,"
+      - "§7changing colors to show when it's"
+      - "§7craving more light or darkness."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: b1b18493d50ff8972f7ef359893d9063fdc54cb822c679002957c294fc8b0005
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: OVERDRIVE_GARDEN_CHIP
+    material: paper
+    name: "Overdrive Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "Bought from Anita's shop for 2 Gold Medals"
+    lore:
+      - "§6Ability: Overdrive "
+      - "§7Grants §6+5 Crop Fortune §7for the"
+      - "§7active crop during §eJacob's Farming"
+      - "§eContest §7per §9Chip §7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/overdrive_chip
+  - id: PHANTOMLEAF
+    material: player_head
+    name: "Phantomleaf"
+    rarity: LEGENDARY
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7It hides in plain sight, blending in with"
+      - "§7its surroundings until it's ready to"
+      - "§7reveal itself. If you listen closely,"
+      - "§7you can hear its pulse guiding you"
+      - "§7to the right spot."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: e1c206ab05cbac4a22f54f8778c3bfbd870f19c380176f288614c77d19b5d122
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: PLANTBOY_ADVANCE
+    material: player_head
+    name: "PlantBoy Advance"
+    rarity: EPIC
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7This plant loves a good challenge."
+      - "§7Every time you harvest it, it'll"
+      - "§7challenge you to a quick game. Win,"
+      - "§7and it thrives. Lose, though, and it's"
+      - "§7game over for this little guy."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 765accb195aad0d7212eedd647e3f80ed5d4acdffe4329ead074f7587f366457
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: PUFFERCLOUD
+    material: player_head
+    name: "Puffercloud"
+    rarity: EPIC
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7Puffercloud looks harmless, but step"
+      - "§7too close and it releases a toxic"
+      - "§7cloud. Probably best to stay away."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 9a488340c3d9131b6e97bae6279aac852037367cb93a6b50c60a7d328aec173e
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: QUICKDRAW_GARDEN_CHIP
+    material: paper
+    name: "Quickdraw Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "2% drop from Visitor offers"
+    lore:
+      - "§6Ability: Quickdraw "
+      - "§7Decreases the time for §bVisitors §7to"
+      - "§7appear when harvesting crops by"
+      - "§a1.5% §7per §9Chip §7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/quickdraw_chip
+  - id: RAREFINDER_GARDEN_CHIP
+    material: paper
+    name: "Rarefinder Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "0.0005% chance when farming crops in the Garden"
+    lore:
+      - "§6Ability: Rarefinder "
+      - "§7Grants §e+1.5 Overbloom §7per §9Chip"
+      - "§7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/rarefinder_chip
+  - id: SCOURROOT
+    material: player_head
+    name: "Scourroot"
+    rarity: COMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7Bitter to the core, as if cursed by"
+      - "§7the soil."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: a9da3b8dcffbb5dd9708b83e54746fced475f0ee16c6c0ce4668cca7999c4d1e
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: SHADEVINE
+    material: player_head
+    name: "Shadevine"
+    rarity: COMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7Tough and tangled, it grows where"
+      - "§7few others can."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: c3c6d9dcb8fbd73de6171a2c2155314d097a9c99d09c9fce9cba068d7e5aedf7
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: SHELLFRUIT
+    material: player_head
+    name: "Shellfruit"
+    rarity: EPIC
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7When the shell cracks open, sweet,"
+      - "§7refreshing juice spills out, revealing"
+      - "§7the fruit inside."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 72d802cd207f1971a2eb826f1a7477740833c920db00cd5c992176c67672dbf5
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: SNOOZLING
+    material: player_head
+    name: "Snoozling"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7This sluggish plant takes its sweet"
+      - "§7time to grow. Every now and then,"
+      - "§7you'll need to give it a little nudge"
+      - "§7(or punch) to keep it from dozing"
+      - "§7off for too long."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 24c64afa58bef69ff567b012a2b1638cf475c5bdb050d382308399ffa0b06a8d
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: SOGGYBUD
+    material: player_head
+    name: "Soggybud"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A plant that drinks it all in, then"
+      - "§7expands like a water balloon."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: b4bdf477d2f417f75798ad6377b131aca787be9bc05a2fddc1972d81d40c7356
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: SOWLEDGE_GARDEN_CHIP
+    material: paper
+    name: "Sowledge Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "Bought from SkyMart for 200 Copper"
+    lore:
+      - "§6Ability: Sowledge "
+      - "§7Grants §3+1☯ Farming Wisdom §7per §9Chip"
+      - "§7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/sowledge_chip
+  - id: STARTLEVINE
+    material: player_head
+    name: "Startlevine"
+    rarity: EPIC
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7This skittish plant bolts the moment"
+      - "§7you get too close, disappearing into"
+      - "§7the ground. You'll need to figure out"
+      - "§7how to get near without scaring it off."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 62e94fc2b6024db86b82266fedef39696af591b27830973199fe9097acc340a0
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: STOPLIGHT_PETAL
+    material: player_head
+    name: "Stoplight Petal"
+    rarity: EPIC
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7This flower switches between green"
+      - "§7and red as you try to harvest it."
+      - "§7Break it when it's green, but don't"
+      - "§7touch it when it turns red or it'll"
+      - "§7wither!"
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 4c2b797e7172a05169e313739908515864d6b372f9a5ecc772f81d9c4e402a54
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: SYNTHESIS_GARDEN_CHIP
+    material: paper
+    name: "Synthesis Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "3% drop from a Greenhouse Harvest Bounty"
+    lore:
+      - "§6Ability: Synthesis "
+      - "§7Analyzing a mutation in the §eCrop"
+      - "§eAnalyzer §7gives §a1% §7more §cCopper §7per"
+      - "§9Chip §7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/synthesis_chip
+  - id: THORNSHADE
+    material: player_head
+    name: "Thornshade"
+    rarity: UNCOMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A rose with thick vines and thorns"
+      - "§7sharper than they should be."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: dcc9a4a7aadb373adc3be05242924c8985e2f993dd8e4d96f20721052ff7e7a8
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: THUNDERLING
+    material: player_head
+    name: "Thunderling"
+    rarity: EPIC
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7This plant hums with electricity"
+      - "§7growing more volatile the longer it's"
+      - "§7left unchecked. If you don't release"
+      - "§7its charge in time, it'll shock anything"
+      - "§7nearby, yourself included."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 63650fc953438755b13b6d0b72e77e43d183cf8d911f8fe12ca4d66168308d46
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: TIMESTALK
+    material: player_head
+    name: "Timestalk"
+    rarity: LEGENDARY
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7The timestalk is a mysterious plant"
+      - "§7that defies time itself, starting fully"
+      - "§7grown and slowly aging backwards."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 1b9add43e0e770b7c4ccdcf6708f8b9e875ff13b2a75ab63ff69f2f0e57af9e5
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: TURTLELLINI
+    material: player_head
+    name: "Turtlellini"
+    rarity: RARE
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7Outside, it's smooth, but there's more"
+      - "§7to it than meets the eye."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 1d1bd06a6738d0da5053eae49a1362b89489d1ac004c222504536f7bcd07679d
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: TUTORIAL_GARDEN_CHIP
+    material: player_head
+    name: "Cropshot Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "Garden Tutorial reward"
+    lore:
+      - "§6Ability: Cropshot "
+      - "§7Grants §6+3☘ Farming Fortune §7per"
+      - "§9Chip §7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: SKULL_HEAD
+        texture: e85b6f92f03867f835d3179a42557b4c4bdd3545c9a8e9285bdd32dab464d08f
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: DEFAULT_SOULBOUND
+        coop_allowed: false
+  - id: VEILSHROOM
+    material: player_head
+    name: "Veilshroom"
+    rarity: COMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7It hides from the light, shrouded in"
+      - "§7mystery."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: 266754af4859ef6f0adb03e6c58e9e348a507debce6b5a7f660d1269401de674
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: VERMIN_VAPORIZER_GARDEN_CHIP
+    material: paper
+    name: "Vermin Vaporizer Chip"
+    rarity: RARE
+    unavailable: "Garden Chips need the Garden, which is not built"
+    source: "2% drop from Dragonfly pests"
+    lore:
+      - "§6Ability: Vermin Vaporizer "
+      - "§7Grants §2+3 Bonus Pest Chance §7per"
+      - "§9Chip §7Level!"
+      - ""
+      - "§7Redeem Chips to increase their rarity!"
+      - ""
+      - "§eRight-Click to redeem!"
+      - "§eShift Right-Click to redeem all!"
+    components:
+      - id: EXTRA_RARITY
+        display: "GARDEN CHIP"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/garden/chips/vermin_vaporizer_chip
+  - id: WITHERBLOOM
+    material: player_head
+    name: "Witherbloom"
+    rarity: COMMON
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7A plant that only thrives in the"
+      - "§7presence of decay, its petals"
+      - "§7growing strong where life once was."
+      - "§7Only death thrives the living."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: ef831051cf18a4c3ea7a2a83311f218f43b032712799cc81910ab67ee7397b32
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: ZOMBUD
+    material: player_head
+    name: "Zombud"
+    rarity: EPIC
+    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
+    source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
+    lore:
+      - "§7No one really understands how it"
+      - "§7works, but somehow this flower can"
+      - "§7bring the dead back to life,"
+      - "§7transforming them into... well, zombies."
+      - ""
+      - "§7Complete Visitor §6Beth's§7 quest to"
+      - "§eAnalyze§7 this crop!"
+    components:
+      - id: SKULL_HEAD
+        texture: c7c683a98b7d62c109ca3cd428459de57085366c2e4e59436e161ff74c0b0d4a
+      - id: EXTRA_RARITY
+        display: "MUTATION"
+  - id: THEORETICAL_HOE_CANE_2
+    material: iron_hoe
+    name: "Turing Sugar Cane Cutter Mk. II"
+    rarity: RARE
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_cane_2
+  - id: THEORETICAL_HOE_CANE_3
+    material: iron_hoe
+    name: "Turing Sugar Cane Cutter Mk. III"
+    rarity: EPIC
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_cane_3
+  - id: THEORETICAL_HOE_CARROT_2
+    material: iron_hoe
+    name: "Gauss Carrot Shovel Mk. II"
+    rarity: RARE
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 2§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_carrot_2
+  - id: THEORETICAL_HOE_CARROT_3
+    material: iron_hoe
+    name: "Gauss Carrot Shovel Mk. III"
+    rarity: EPIC
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 2§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_carrot_3
+  - id: THEORETICAL_HOE_POTATO_2
+    material: iron_hoe
+    name: "Pythagorean Potato Shovel Mk. II"
+    rarity: RARE
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 3§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_potato_2
+  - id: THEORETICAL_HOE_POTATO_3
+    material: iron_hoe
+    name: "Pythagorean Potato Shovel Mk. III"
+    rarity: EPIC
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 3§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_potato_3
+  - id: THEORETICAL_HOE_SUNFLOWER_2
+    material: iron_hoe
+    name: "Eclipse Sickle Mk. II"
+    rarity: RARE
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 11§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_sunflower_2
+  - id: THEORETICAL_HOE_SUNFLOWER_3
+    material: iron_hoe
+    name: "Eclipse Sickle Mk. III"
+    rarity: EPIC
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 11§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_sunflower_3
+  - id: THEORETICAL_HOE_WARTS_2
+    material: iron_hoe
+    name: "Newton Nether Wart Cutter Mk. II"
+    rarity: RARE
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 10§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_warts_2
+  - id: THEORETICAL_HOE_WARTS_3
+    material: iron_hoe
+    name: "Newton Nether Wart Cutter Mk. III"
+    rarity: EPIC
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 10§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_warts_3
+  - id: THEORETICAL_HOE_WHEAT_2
+    material: iron_hoe
+    name: "Euclid's Wheat Sickle Mk. II"
+    rarity: RARE
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wheat_2
+  - id: THEORETICAL_HOE_WHEAT_3
+    material: iron_hoe
+    name: "Euclid's Wheat Sickle Mk. III"
+    rarity: EPIC
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wheat_3
+  - id: THEORETICAL_HOE_WILD_ROSE_2
+    material: iron_hoe
+    name: "Wild Rose Cutter Mk. II"
+    rarity: RARE
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 15§c."
+      - "§4❣ §cRequires §aGarden Level 12§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wild_rose_2
+  - id: THEORETICAL_HOE_WILD_ROSE_3
+    material: iron_hoe
+    name: "Wild Rose Cutter Mk. III"
+    rarity: EPIC
+    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    lore:
+      - "§8Farming Tool"
+      - ""
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+      - "§4❣ §cRequires §aGarden Level 12§c."
+    components:
+      - id: REFORGABLE
+        reforge_type: HOES
+      - id: ENCHANTABLE
+        enchant_groups:
+          - TOOLS
+          - HOE
+      - id: EXTRA_RARITY
+        display: "FARMING TOOL"
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wild_rose_3

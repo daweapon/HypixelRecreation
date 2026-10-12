@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.tinylog.Logger;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +42,9 @@ public final class MaxBags {
             capacity.put(type, config.getComponent(SackComponent.class).getMaxCapacity());
             best.merge(family(id), type, (current, candidate) -> capacity.get(candidate) > capacity.get(current) ? candidate : current);
         }
-        return List.copyOf(best.values());
+        return best.values().stream()
+                .sorted(Comparator.comparingInt((ItemType type) -> capacity.get(type)).reversed().thenComparing(ItemType::name))
+                .toList();
     }
 
     static String family(String sackId) {
