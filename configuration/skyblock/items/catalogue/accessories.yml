@@ -1,0 +1,3134 @@
+items:
+  - id: AMBER_NECKLACE
+    material: paper
+    name: "Amber Necklace"
+    rarity: EPIC
+    default_statistics:
+      mining_speed: 30
+      mining_fortune: 10
+    source: "Forge (HotM 5, 1 day): 32 Glossy Gemstone + 2 Flawless Amber Gemstone"
+    lore:
+      - "§7Grants §6+30 Mining Fortune §7while"
+      - "§7mining §6Amber§7."
+      - ""
+      - "§6Full Set Bonus: Gemstone Gatherer §7(0/4)"
+      - "§7Grants §6+25 Mining Fortune §7while in"
+      - "§7the §5Crystal Hollows§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: AMETHYST_GAUNTLET
+    material: paper
+    name: "Amethyst Gauntlet"
+    rarity: EPIC
+    default_statistics:
+      mining_speed: 30
+      mining_fortune: 10
+    source: "Forged at The Forge (Heart of the Mountain 5, 1 day unless noted): 32 Glossy Gemstone + 2 Flawless Amethyst Gemstone"
+    lore:
+      - "§7Grants §6+30 Mining Fortune §7while"
+      - "§7mining §5Amethyst§7."
+      - ""
+      - "§6Full Set Bonus: Gemstone Gatherer §7(0/4)"
+      - "§7Grants §6+25 Mining Fortune §7while in"
+      - "§7the §5Crystal Hollows§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: ANGLER_BELT
+    material: paper
+    name: "Angler Belt"
+    rarity: COMMON
+    default_statistics:
+      fishing_speed: 1
+      sea_creature_chance: 0.5
+    source: "Bought from the Fish Merchant for 100 coins."
+    lore:
+      - "§8Tiered Bonus: Depth Champion (0/8)"
+      - "§7Reduces the damage taken from §3Sea"
+      - "§3Creatures §7by §a3%§7."
+      - ""
+      - "§8Tiered Bonus: Deepness Within (0/4)"
+      - "§7Gain §c6❤ §7per Fishing level."
+      - "§7Fishing: §eLevel 0"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: ANGLER_BRACELET
+    material: paper
+    name: "Angler Bracelet"
+    rarity: COMMON
+    default_statistics:
+      fishing_speed: 1
+      sea_creature_chance: 0.5
+    unavailable: "Fishing Merchant shop not wired and item not defined"
+    source: "Bought from the Fishing Merchant for 100 Coins."
+    lore:
+      - "§8Tiered Bonus: Depth Champion (0/8)"
+      - "§7Reduces the damage taken from §3Sea"
+      - "§3Creatures §7by §a3%§7."
+      - ""
+      - "§8Tiered Bonus: Deepness Within (0/4)"
+      - "§7Gain §c6❤ §7per Fishing level."
+      - "§7Fishing: §eLevel 0"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+  - id: ANGLER_CLOAK
+    material: paper
+    name: "Angler Cloak"
+    rarity: COMMON
+    default_statistics:
+      fishing_speed: 1
+      sea_creature_chance: 0.5
+    source: "Bought from the Fish Merchant for 100 coins"
+    lore:
+      - "§8Tiered Bonus: Depth Champion (0/8)"
+      - "§7Reduces the damage taken from §3Sea"
+      - "§3Creatures §7by §a3%§7."
+      - ""
+      - "§8Tiered Bonus: Deepness Within (0/4)"
+      - "§7Gain §c6❤ §7per Fishing level."
+      - "§7Fishing: §eLevel 0"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: ANGLER_NECKLACE
+    material: paper
+    name: "Angler Necklace"
+    rarity: COMMON
+    default_statistics:
+      fishing_speed: 1
+      sea_creature_chance: 0.5
+    source: "Buy from the Fish Merchant for 100 coins"
+    lore:
+      - "§8Tiered Bonus: Depth Champion (0/8)"
+      - "§7Reduces the damage taken from §3Sea"
+      - "§3Creatures §7by §a3%§7."
+      - ""
+      - "§8Tiered Bonus: Deepness Within (0/4)"
+      - "§7Gain §c6❤ §7per Fishing level."
+      - "§7Fishing: §eLevel 0"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: ARACHNE_BELT
+    material: paper
+    name: "Arachne's Belt"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      defense: 5
+    unavailable: "Needs Arachne's Keeper (Arachne content not built)"
+    source: "Drops from Arachne's Keeper at 2.5% (not auctionable)."
+    lore:
+      - "§8Tiered Bonus: Arachne's Faithful (0/8)"
+      - "§7Grants §c+5 Health §7and §a+5 Defense§7."
+      - ""
+      - "§4This item is Arachnal !"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: ARACHNE_CLOAK
+    material: paper
+    name: "Arachne's Cloak"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      defense: 5
+    unavailable: "Arachne's Keeper mob not built"
+    source: "Drops from Arachne's Keeper at 2.5%."
+    lore:
+      - "§8Tiered Bonus: Arachne's Faithful (0/8)"
+      - "§7Grants §c+5 Health §7and §a+5 Defense§7."
+      - ""
+      - "§4This item is Arachnal !"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: ARACHNE_GLOVES
+    material: paper
+    name: "Arachne's Gloves"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      defense: 5
+    unavailable: "Needs Arachne's Keeper (not built)"
+    source: "2.5% drop from Arachne's Keeper"
+    lore:
+      - "§8Tiered Bonus: Arachne's Faithful (0/8)"
+      - "§7Grants §c+5 Health §7and §a+5 Defense§7."
+      - ""
+      - "§4This item is Arachnal !"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: ARACHNE_NECKLACE
+    material: paper
+    name: "Arachne's Necklace"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      defense: 5
+    unavailable: "Arachne boss not built"
+    source: "2.5% drop from Arachne's Keeper"
+    lore:
+      - "§8Tiered Bonus: Arachne's Faithful (0/8)"
+      - "§7Grants §c+5 Health §7and §a+5 Defense§7."
+      - ""
+      - "§4This item is Arachnal !"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: BACKWATER_BELT
+    material: paper
+    name: "Backwater Belt"
+    rarity: UNCOMMON
+    default_statistics:
+      fishing_speed: 2
+      sea_creature_chance: 1
+      treasure_chance: 0.1
+    source: "Junker Joel: 1 Angler Belt + 4 Rusty Coins."
+    lore:
+      - "§8Tiered Bonus: Swamp Soldier (0/8)"
+      - "§7Increases damage dealt to §3Sea"
+      - "§3Creatures §7by §a5%§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aFishing Skill 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: BACKWATER_CLOAK
+    material: paper
+    name: "Backwater Cloak"
+    rarity: UNCOMMON
+    default_statistics:
+      fishing_speed: 2
+      sea_creature_chance: 1
+      treasure_chance: 0.1
+    source: "Bought from Junker Joel for 1 Angler Cloak + 4 Rusty Coins."
+    lore:
+      - "§8Tiered Bonus: Swamp Soldier (0/8)"
+      - "§7Increases damage dealt to §3Sea"
+      - "§3Creatures §7by §a5%§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aFishing Skill 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: BACKWATER_GLOVES
+    material: paper
+    name: "Backwater Gloves"
+    rarity: UNCOMMON
+    default_statistics:
+      fishing_speed: 2
+      sea_creature_chance: 1
+      treasure_chance: 0.1
+    unavailable: "Angler Bracelet ingredient item not defined (Junker Joel NPC exists)"
+    source: "Junker Joel: 1 Angler Bracelet + 4 Rusty Coins"
+    lore:
+      - "§8Tiered Bonus: Swamp Soldier (0/8)"
+      - "§7Increases damage dealt to §3Sea"
+      - "§3Creatures §7by §a5%§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aFishing Skill 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: BACKWATER_NECKLACE
+    material: paper
+    name: "Backwater Necklace"
+    rarity: UNCOMMON
+    default_statistics:
+      fishing_speed: 2
+      sea_creature_chance: 1
+      treasure_chance: 0.1
+    source: "Junker Joel sells it for 1 Angler Necklace + 4 Rusty Coins"
+    lore:
+      - "§8Tiered Bonus: Swamp Soldier (0/8)"
+      - "§7Increases damage dealt to §3Sea"
+      - "§3Creatures §7by §a5%§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aFishing Skill 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: BLESSED_FROG_BRONZE
+    material: paper
+    name: "Blessed Frog BRONZE"
+    rarity: RARE
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while having an active"
+              - "§dBlessing §7from throwing a §aFrogcoin"
+              - "§7into the waters of the §2Lotus Eater's"
+              - "§2Cave§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: BLESSED_FROG_DIAMOND
+    material: paper
+    name: "Blessed Frog DIAMOND"
+    rarity: RARE
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while having an active"
+              - "§dBlessing §7from throwing a §aFrogcoin"
+              - "§7into the waters of the §2Lotus Eater's"
+              - "§2Cave§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: BLESSED_FROG_GOLD
+    material: paper
+    name: "Blessed Frog GOLD"
+    rarity: RARE
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing on Lotus Atoll with Frogcoin Blessing active, 10% (Gold tier ~2% of frogs, pity at 100th catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while having an active"
+              - "§dBlessing §7from throwing a §aFrogcoin"
+              - "§7into the waters of the §2Lotus Eater's"
+              - "§2Cave§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: BLESSED_FROG_SILVER
+    material: paper
+    name: "Blessed Frog SILVER"
+    rarity: RARE
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 10% roll, needs Frogcoin blessing in Lotus Eater's Cave; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while having an active"
+              - "§dBlessing §7from throwing a §aFrogcoin"
+              - "§7into the waters of the §2Lotus Eater's"
+              - "§2Cave§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: BLOSSOM_BELT
+    material: paper
+    name: "Blossom Belt"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      farming_fortune: 7
+    unavailable: "Needs SkyMart Copper shop and Peony Belt"
+    source: "SkyMart (Garden): 5,000 Copper + 1 Peony Belt."
+    lore:
+      - "§6Piece Bonus: Florist"
+      - "§7Complete §aGarden Visitor Offers §7to"
+      - "§7gain §6 Farming Fortune§7."
+      - ""
+      - "§7Piece Bonus: §6+0"
+      - "§7Next Upgrade: §6+1.5 §8(§a0§7/§c1§8)"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 7§c."
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: BLOSSOM_BRACELET
+    material: paper
+    name: "Blossom Bracelet"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      farming_fortune: 7
+    unavailable: "Needs SkyMart (Garden Copper shop) not built"
+    source: "Bought from SkyMart in the Garden for 2,500 Copper plus a Peony Bracelet."
+    lore:
+      - "§6Piece Bonus: Florist"
+      - "§7Complete §aGarden Visitor Offers §7to"
+      - "§7gain §6 Farming Fortune§7."
+      - ""
+      - "§7Piece Bonus: §6+0"
+      - "§7Next Upgrade: §6+1.5 §8(§a0§7/§c1§8)"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 6§c."
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+  - id: BLOSSOM_CLOAK
+    material: paper
+    name: "Blossom Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      farming_fortune: 7
+    unavailable: "Needs Garden SkyMart copper shop and Peony Cloak (not built)"
+    source: "SkyMart: 10,000 Copper + 1 Peony Cloak"
+    lore:
+      - "§6Piece Bonus: Florist"
+      - "§7Complete §aGarden Visitor Offers §7to"
+      - "§7gain §6 Farming Fortune§7."
+      - ""
+      - "§7Piece Bonus: §6+0"
+      - "§7Next Upgrade: §6+1.5 §8(§a0§7/§c1§8)"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 9§c."
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: BLOSSOM_NECKLACE
+    material: paper
+    name: "Blossom Necklace"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      farming_fortune: 7
+    unavailable: "SkyMart/Copper not built"
+    source: "Bought from SkyMart (Garden) for 7,500 Copper + 1 Peony Necklace"
+    lore:
+      - "§6Piece Bonus: Florist"
+      - "§7Complete §aGarden Visitor Offers §7to"
+      - "§7gain §6 Farming Fortune§7."
+      - ""
+      - "§7Piece Bonus: §6+0"
+      - "§7Next Upgrade: §6+1.5 §8(§a0§7/§c1§8)"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 8§c."
+      - "§4❣ §cRequires §aFarming Skill 20§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: BULLFROG_BRONZE
+    material: paper
+    name: "Bullfrog BRONZE"
+    rarity: RARE
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond); requires wearing a Red Sweater"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while wearing a §cRed Sweater§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: BULLFROG_DIAMOND
+    material: paper
+    name: "Bullfrog DIAMOND"
+    rarity: RARE
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch); Bullfrog requires wearing a Red Sweater"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while wearing a §cRed Sweater§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: BULLFROG_GOLD
+    material: paper
+    name: "Bullfrog GOLD"
+    rarity: RARE
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing on Lotus Atoll wearing a Red Sweater, 5% (Gold ~2%, pity 100th catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while wearing a §cRed Sweater§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: BULLFROG_SILVER
+    material: paper
+    name: "Bullfrog SILVER"
+    rarity: RARE
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 5% roll, while wearing a Red Sweater; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while wearing a §cRed Sweater§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: CAMPAIGN_POSTER
+    material: filled_map
+    name: "Campaign Poster"
+    rarity: SPECIAL
+    unavailable: "Legacy/unobtainable event reward"
+    source: "Legacy: reward for the Alpha Better Mayors checklist; no longer obtainable except by trade."
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7If these posters are being dropped"
+              - "§7en-masse, who's responsible for"
+              - "§7picking them all up?"
+              - "§7Unlocked for all players who"
+              - "§7participated in the Better Mayors"
+              - "§7alpha test."
+  - id: CAVE_FROG_BRONZE
+    material: paper
+    name: "Cave Frog BRONZE"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Found in the §2Lotus Eater's Cave§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: CAVE_FROG_DIAMOND
+    material: paper
+    name: "Cave Frog DIAMOND"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing in Lotus Eater's Cave, 2% (Diamond 0.2%, pity 600th catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Found in the §2Lotus Eater's Cave§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: CAVE_FROG_GOLD
+    material: paper
+    name: "Cave Frog GOLD"
+    rarity: EPIC
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 2% roll, in Lotus Eater's Cave; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Found in the §2Lotus Eater's Cave§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: CAVE_FROG_SILVER
+    material: paper
+    name: "Cave Frog SILVER"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Found in the §2Lotus Eater's Cave§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: CENTURY_MEMENTO_BLUE
+    material: player_head
+    name: "Cake Slice of the Century"
+    rarity: SPECIAL
+    unavailable: "Past event (Raffle of the Century) not built"
+    source: "Reward at the end of the Raffle of the Century for players who joined the Blue team via Rezzus."
+    components:
+      - id: SKULL_HEAD
+        texture: d56580a1c103f00e73dc50a68b36beeba5b75d7e518fa78932c2d02ee5d921d7
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates the victory of the"
+              - "§a§lGREEN §7team in the §bYear 300"
+              - "§7celebrations."
+  - id: CENTURY_MEMENTO_GREEN
+    material: player_head
+    name: "Cake Slice of the Century"
+    rarity: SPECIAL
+    unavailable: "Limited-time event, not obtainable"
+    source: "Reward for Raffle of the Century team (Rezzus); century celebration only"
+    components:
+      - id: SKULL_HEAD
+        texture: e95728a05ace54ea27bd467fb7130f02ff397a2936828468aef806cdeeffd4a5
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates the victory of the"
+              - "§a§lGREEN §7team in the §bYear 300"
+              - "§7celebrations."
+  - id: CENTURY_MEMENTO_PINK
+    material: player_head
+    name: "Cake Slice of the Century"
+    rarity: SPECIAL
+    unavailable: "Century Celebration event not built"
+    source: "Reward for joining a team via Rezzus and finishing the Raffle of the Century; only during century celebrations"
+    components:
+      - id: SKULL_HEAD
+        texture: a6a3488d50d465cc3e0f9b0bdd2ee7f50e1002fec140e0a1ab5f4f18e19979cb
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates the victory of the"
+              - "§a§lGREEN §7team in the §bYear 300"
+              - "§7celebrations."
+  - id: CENTURY_MEMENTO_RED
+    material: player_head
+    name: "Cake Slice of the Century"
+    rarity: SPECIAL
+    unavailable: "Needs Century Celebration event"
+    source: "Received at the end of the Raffle of the Century (century celebrations only, after joining a team via Rezzus)."
+    components:
+      - id: SKULL_HEAD
+        texture: ac5d1ee2f8b53a079436d94d17d0d08ef5563bcbefdba8e2a456199367c10fb0
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates the victory of the"
+              - "§a§lGREEN §7team in the §bYear 300"
+              - "§7celebrations."
+  - id: CENTURY_MEMENTO_YELLOW
+    material: player_head
+    name: "Cake Slice of the Century"
+    rarity: SPECIAL
+    unavailable: "Past event (Raffle of the Century) not built"
+    source: "Reward at the end of the Raffle of the Century for players who joined the Yellow team via Rezzus."
+    components:
+      - id: SKULL_HEAD
+        texture: b58c047878f5c6c93544095f748f96e7ade44fad57438148a0a1bb55eece69
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates the victory of the"
+              - "§9§lBLUE §7team in the §bYear 400"
+              - "§7celebrations."
+  - id: CLAY_BRACELET
+    material: paper
+    name: "Clay Bracelet"
+    rarity: RARE
+    default_statistics:
+      fishing_speed: 2
+      trophy_fish_chance: 1
+    source: "Crafted from Clay Balls and Enchanted Clay Balls (Clay collection IV)"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+  - id: CLOWNFISH_CLOAK
+    material: paper
+    name: "Tropical Cloak"
+    rarity: RARE
+    default_statistics:
+      fishing_speed: 2
+      trophy_fish_chance: 1
+    source: "Craft: 128 Tropical Fish + Enchanted Tropical Fish (wiki says 3, changelog says 1; unclear), needs Tropical Fish Collection VII"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: COMMON_FROG_BRONZE
+    material: paper
+    name: "Common Frog BRONZE"
+    rarity: COMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught everywhere."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: COMMON_FROG_DIAMOND
+    material: paper
+    name: "Common Frog DIAMOND"
+    rarity: COMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch); Common Frog 25% catch chance everywhere"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught everywhere."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: COMMON_FROG_GOLD
+    material: paper
+    name: "Common Frog GOLD"
+    rarity: COMMON
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing on Lotus Atoll anywhere, 25% (Gold ~2%, pity 100th catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught everywhere."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: COMMON_FROG_SILVER
+    material: paper
+    name: "Common Frog SILVER"
+    rarity: COMMON
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 25% roll, anywhere; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught everywhere."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: DAVIDS_CLOAK
+    material: paper
+    name: "David's Cloak"
+    rarity: COMMON
+    default_statistics:
+      health: 50
+      magic_find: 2
+    source: "Claim from David Hunterborough at the Fusion House after finishing his training; replaceable from Rusty."
+    lore:
+      - "§7The more you Hunt, the stronger this"
+      - "§7cloak gets!"
+      - ""
+      - "§7Talk to §bDavid §7to view your progress!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: DISINFESTOR_GLOVES
+    material: paper
+    name: "Disinfestor Gloves"
+    rarity: RARE
+    unavailable: "Needs Vermin Bin / Kat / Shadow Crux (not built)"
+    source: "Bought from Neuroscientist Kat for 12 Shadow Crux after depositing 4 Flies, 4 Spiders and 4 Silverfish in the Vermin Bin with a Turbomax Vacuum."
+    lore:
+      - "§7Rift Time: §a+30s"
+      - ""
+      - "§eRight-click to equip!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: DIVAN_PENDANT
+    material: paper
+    name: "Pendant of Divan"
+    rarity: LEGENDARY
+    default_statistics:
+      mining_speed: 100
+      mining_fortune: 25
+      cold_resistance: 10
+    source: "Forge (HotM 10, 7 days): 10 Divan Fragments + Perfect Plate + Shattered Locket"
+    lore:
+      - "§7Gemstones: §8[] []"
+      - ""
+      - "§8Tiered Bonus: Legacy (0/1)"
+      - "§7Grants §5+0.25 Pristine §7and §e+2.5"
+      - "§eGemstone Spread §7while inside the"
+      - "§bGlacite Mineshafts§7."
+      - ""
+      - "§8§oAn item treasured by the greatest"
+      - "§8§oDwarf who ever lived. Why would he"
+      - "§8§oleave it behind?"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 10§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: DRAGONFADE_CLOAK
+    material: paper
+    name: "Dragonfade Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 30
+      defense: 5
+      strength: 5
+    source: "Craft: 3 Ritual Residue + 32 Absolute Ender Pearl + 64 Mite Gel"
+    lore:
+      - "§7All stats on this piece of equipment"
+      - "§7are multiplied by §53x §7while on §dThe End§7!"
+      - ""
+      - "§7Multiplies damage dealt to §5Dragons"
+      - "§7by §c1.01x§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aCombat Skill 15§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: DRAGONFUSE_GLOVE
+    material: paper
+    name: "Dragonfuse Glove"
+    rarity: EPIC
+    default_statistics:
+      health: 30
+      defense: 5
+      critical_damage: 5
+    source: "Craft: 4 Ritual Residue, 48 Absolute Ender Pearl, 72 Mite Gel."
+    lore:
+      - "§7While equipped, upgrades the §6Aspect"
+      - "§6of the Dragons §7with:"
+      - " §c+35 Damage"
+      - " §c+50 Strength"
+      - " §dVery reduced ability knockback"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aCombat Skill 15§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: DREAMSPIRE_TORCH
+    material: redstone_torch
+    name: "Dreamspire Torch"
+    rarity: SPECIAL
+    unavailable: "Hugh Pixel NPC not built"
+    source: "Memento from talking to Hugh Pixel."
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7This torch replica representing the"
+              - "§7passion and dreams at §6Hypixel §7is now"
+              - "§7in your hands."
+              - "§7Thank you for an amazing §b12 years"
+              - "§7and beyond!"
+  - id: DWARVEN_HANDWARMERS
+    material: paper
+    name: "Dwarven Handwarmers"
+    rarity: EPIC
+    default_statistics:
+      mining_speed: 45
+      mining_fortune: 30
+      cold_resistance: 5
+    source: "Forge (HotM 8, 4h): Tungsten Plate, Umber Plate, Flawless Jade + Flawless Amber"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 8§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: ENDER_BELT
+    material: paper
+    name: "Ender Belt"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      defense: 10
+    unavailable: "Obsidian Defender mob not found in repo"
+    source: "1% rare drop from Obsidian Defender (Lv44)"
+    lore:
+      - "§7All stats on this piece of equipment"
+      - "§7are multiplied by §52x §7while on the End"
+      - "§7Island!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aCombat Skill 12§c."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: ENDER_CLOAK
+    material: paper
+    name: "Ender Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      defense: 10
+    unavailable: "Seer mob not built"
+    source: "Seer (Lv55) rare drop, 1%."
+    lore:
+      - "§7All stats on this piece of equipment"
+      - "§7are multiplied by §52x §7while on the End"
+      - "§7Island!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aCombat Skill 12§c."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: ENDER_GAUNTLET
+    material: paper
+    name: "Ender Gauntlet"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      defense: 10
+    unavailable: "Ender Nodes (End mining) not built"
+    source: "Drops from Ender Nodes: 3.32% (End Stone), 3.05% (Obsidian)."
+    lore:
+      - "§7All stats on this piece of equipment"
+      - "§7are multiplied by §52x §7while on the End"
+      - "§7Island!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aCombat Skill 12§c."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: ENDER_NECKLACE
+    material: paper
+    name: "Ender Necklace"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      defense: 10
+    source: "0.5% rare drop from Endermen (Lv35-59)"
+    lore:
+      - "§7All stats on this piece of equipment"
+      - "§7are multiplied by §52x §7while on the End"
+      - "§7Island!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aCombat Skill 12§c."
+      - "§8§l* §8Co-op Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: ENIGMA_CLOAK
+    material: paper
+    name: "Enigma Cloak"
+    rarity: EPIC
+    unavailable: "Needs Rift"
+    source: "Claimed from Enigma for 100 Motes"
+    lore:
+      - "§7Find §5Enigma Souls §7across the Rift"
+      - "§7Dimension."
+      - ""
+      - "§7Each adds §a+20 Rift Time §7to this item."
+      - ""
+      - "§7Every §54 Souls§7, go back to §5Enigma §7for"
+      - "§7more upgrades."
+      - ""
+      - "§7You found: §d§k0§5/42 Souls"
+      - ""
+      - "§eRight-click to equip!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: EXPENSIVE_TOY
+    material: player_head
+    name: "Expensive Toy"
+    rarity: SPECIAL
+    source: "Give 600 Gifts to unique players, then claim from Generow."
+    components:
+      - id: SKULL_HEAD
+        texture: f4abd70f7d9dfa47c30a0992d3b7f53d74e73edcbb3f5fa8063b91486ac9ff4c
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates your participation in"
+              - "§7the §9Winter 2023 §7event."
+              - "§7Earned by: §b[MVP§9+§b] efefury§f"
+              - "§8Edition #§k25"
+              - "§8November 28th 2023"
+              - "§7§8Memento acquirer name becomes"
+              - "§8hidden if traded."
+              - "§8§oThis toy is said to bring"
+              - "§8§oextraordinary luck and prosperity"
+              - "§8§oto its owner. But remember, with"
+              - "§8§ogreat power comes an even greater"
+              - "§8§oprice tag."
+  - id: EXPLODING_FROG_BRONZE
+    material: paper
+    name: "Exploding Frog BRONZE"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch) (pity 51st/301st for this frog)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Obtained by combining §2Lily Pads"
+              - "§7together until they get so big they"
+              - "§c§lEXPLODE!!"
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: EXPLODING_FROG_DIAMOND
+    material: paper
+    name: "Exploding Frog DIAMOND"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Made by combining Lily Pads on Lotus Atoll, 100% (Diamond 0.2%, pity 300th)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Obtained by combining §2Lily Pads"
+              - "§7together until they get so big they"
+              - "§c§lEXPLODE!!"
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: EXPLODING_FROG_GOLD
+    material: paper
+    name: "Exploding Frog GOLD"
+    rarity: UNCOMMON
+    unavailable: "Lotus Atoll Lily Pad mechanic not built"
+    source: "Trophy frog made by combining Lily Pads until they explode on the Lotus Atoll; caught separately at 100%, tier odds as other frogs, pity at 51st/301st"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Obtained by combining §2Lily Pads"
+              - "§7together until they get so big they"
+              - "§c§lEXPLODE!!"
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: EXPLODING_FROG_SILVER
+    material: paper
+    name: "Exploding Frog SILVER"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Obtained by combining §2Lily Pads"
+              - "§7together until they get so big they"
+              - "§c§lEXPLODE!!"
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: FINWAVE_BELT
+    material: paper
+    name: "Finwave Belt"
+    rarity: EPIC
+    default_statistics:
+      health: 18
+      health_regeneration: 1
+      fishing_speed: 10
+    unavailable: "Ichthyic Belt / Great White Tooth Meal items not built"
+    source: "Crafted from 1 Ichthyic Belt, 2 Great White Tooth Meal and 12 Tiger Shark Teeth."
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: FINWAVE_CLOAK
+    material: paper
+    name: "Finwave Cloak"
+    rarity: EPIC
+    default_statistics:
+      health: 15
+      health_regeneration: 1
+      fishing_speed: 10
+    unavailable: "Needs Great White Tooth Meal and Ichthyic Cloak items (not defined)"
+    source: "Crafted: Ichthyic Cloak + 2 Great White Tooth Meal + 24 Tiger Shark Tooth"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: FINWAVE_GLOVES
+    material: paper
+    name: "Finwave Gloves"
+    rarity: EPIC
+    default_statistics:
+      health: 12
+      health_regeneration: 1
+      fishing_speed: 10
+    unavailable: "Great White Tooth Meal and Ichthyic Gloves ingredients not built"
+    source: "Craft: Ichthyic Gloves + 2 Great White Tooth Meal + 18 Tiger Shark Tooth"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: FRENCH_BREAD
+    material: player_head
+    name: "French Bread"
+    rarity: SPECIAL
+    unavailable: "Legacy/unobtainable"
+    source: "Legacy: Alpha test drop from Bonzo/Scarf; trade only now."
+    components:
+      - id: SKULL_HEAD
+        texture: 478f7a68e2004e8f3f8ae5919d6a3d8860be03cefeb3cd5237edefa771e87a01
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7It is known that scientists and other"
+              - "§7experts always find ways to"
+              - "§7disagree on every subject known to"
+              - "§7humankind. However, they can all"
+              - "§7agree on one thing - that this is the"
+              - "§7greatest meal ever created in"
+              - "§7history."
+              - "§7Awarded to those who participated in"
+              - "§7Dungeons on the Alpha Hypixel"
+              - "§7Network."
+  - id: FROZEN_AMULET
+    material: paper
+    name: "Frozen Amulet"
+    rarity: RARE
+    default_statistics:
+      fishing_speed: 3
+      sea_creature_chance: 1
+      treasure_chance: 0.5
+    unavailable: "Year of the Seal event / Fishy Treats not built"
+    source: "Bought from Lukas the Aquarist for 256 Fishy Treats; only during Year of the Seal."
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: GILLSPLASH_BELT
+    material: paper
+    name: "Gillsplash Belt"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 30
+      health_regeneration: 2
+      fishing_speed: 14
+    unavailable: "Finwave Belt not defined as item"
+    source: "Crafted: Finwave Belt + 2 Diamond Magmafish + 6 Lava Shell"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: GILLSPLASH_CLOAK
+    material: paper
+    name: "Gillsplash Cloak"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 25
+      health_regeneration: 2
+      fishing_speed: 14
+    unavailable: "Finwave Cloak not built as an item"
+    source: "Craft: Finwave Cloak + 2 Diamond Magmafish + 4 Lava Shell"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: GILLSPLASH_GLOVES
+    material: paper
+    name: "Gillsplash Gloves"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 20
+      health_regeneration: 2
+      fishing_speed: 14
+    unavailable: "Finwave Gloves item not found in items"
+    source: "Craft: 1 Finwave Gloves, 2 Diamond Magmafish, 3 Lava Shell."
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: GOLDEN_BELT
+    material: paper
+    name: "Golden Belt"
+    rarity: LEGENDARY
+    default_statistics:
+      intelligence: 10
+      speed: 4
+    unavailable: "Cerebral Citadel not built"
+    source: "Reward from Shen Magnum Opus for completing the Fifth Sequence of the Cerebral Citadel."
+    lore:
+      - "§7Rift Time: §a+100s"
+      - ""
+      - "§6Ability: Gravity Falls "
+      - "§7Increases your total §a Rift Time §7by"
+      - "§a5%§7 but it goes down §c3% §7faster."
+      - ""
+      - "§7Monster melee attacks reduce §a1 §7less"
+      - "§a Rift Time§7."
+      - ""
+      - "§eRight-click to equip!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: GOLDEN_COLLAR
+    material: player_head
+    name: "Golden Collar"
+    rarity: SPECIAL
+    unavailable: "Legacy city project reward"
+    source: "Legacy: Pet Care Expansion city project (20 contributions); trade only"
+    components:
+      - id: SKULL_HEAD
+        texture: 1ddb37784d83dbb607096a36ffa1a278f633b0770d162741e988627043ffb197
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates your participation in"
+              - "§7the §bPet Care Expansion §7city project."
+              - "§7Earned by: §b[MVP§3+§b] whalker"
+              - "§7Total Contributions: §a20"
+              - "§8Edition #§k10"
+              - "§8December 9, 2023"
+              - "§8Memento acquirer name becomes"
+              - "§8hidden if traded."
+  - id: GREAT_SPOOK_BELT
+    material: paper
+    name: "Great Spook Belt"
+    rarity: EPIC
+    default_statistics:
+      fear: 5
+    unavailable: "Great Spook event/Tyashoi Alchemist not built"
+    source: "Tyashoi Alchemist sells it for 2 Rogue Flesh during The Great Spook (first purchase each year not soulbound)"
+    lore:
+      - "§7Obtained during the §5Alchemist"
+      - "§7experiments!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: GREAT_SPOOK_CLOAK
+    material: paper
+    name: "Great Spook Cloak"
+    rarity: EPIC
+    default_statistics:
+      fear: 5
+    unavailable: "Needs Great Spook event shop (Tyashoi Alchemist)"
+    source: "Bought from the Tyashoi Alchemist for 1 Precious during The Great Spook event."
+    lore:
+      - "§7Obtained during the §5Alchemist"
+      - "§7experiments!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: GREAT_SPOOK_GLOVES
+    material: paper
+    name: "Great Spook Gloves"
+    rarity: EPIC
+    default_statistics:
+      fear: 5
+    unavailable: "Great Spook event shop not built"
+    source: "Bought from Tyashoi Alchemist for 1 Head of Betrayal during The Great Spook event only."
+    lore:
+      - "§7Obtained during the §5Alchemist"
+      - "§7experiments!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: GREAT_SPOOK_NECKLACE
+    material: paper
+    name: "Great Spook Necklace"
+    rarity: EPIC
+    default_statistics:
+      fear: 5
+    unavailable: "Needs Great Spook event shop and Obscure Ending"
+    source: "Great Spook event only: Tyashoi Alchemist for 1 Obscure Ending"
+    lore:
+      - "§7Obtained during the §5Alchemist"
+      - "§7experiments!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: HIGHLANDS_FROG_BRONZE
+    material: paper
+    name: "Highlands Frog BRONZE"
+    rarity: EPIC
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 2% roll, in Lotus Highlands; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Found in the §bLotus Highlands§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: HIGHLANDS_FROG_DIAMOND
+    material: paper
+    name: "Highlands Frog DIAMOND"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Found in the §bLotus Highlands§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: HIGHLANDS_FROG_GOLD
+    material: paper
+    name: "Highlands Frog GOLD"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Found in the §bLotus Highlands§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: HIGHLANDS_FROG_SILVER
+    material: paper
+    name: "Highlands Frog SILVER"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing in Lotus Highlands, 2% (Silver ~24%)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Found in the §bLotus Highlands§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: HONEYCOMB_NECKLACE
+    material: paper
+    name: "Honeycomb Necklace"
+    rarity: EPIC
+    default_statistics:
+      sweep: 5
+      foraging_fortune: 25
+    unavailable: "Mangrove Locket not built"
+    source: "Craft: Vial of Spring Water + Mangrove Locket + 2 Enchanted Honeycomb Block + 4 Helixis; Honeycomb Collection IX, Foraging 30"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aForaging Skill 30§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: ICHTHYIC_BELT
+    material: paper
+    name: "Ichthyic Belt"
+    rarity: RARE
+    default_statistics:
+      health: 12
+      fishing_speed: 6
+    source: "Craft: 4 Enchanted Shark Fin, 16 Blue Shark Tooth, 32 Nurse Shark Tooth."
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: ICHTHYIC_CLOAK
+    material: paper
+    name: "Ichthyic Cloak"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      fishing_speed: 6
+    unavailable: "Blue Shark Tooth / Enchanted Shark Fin sources and recipe not wired"
+    source: "Crafted from 4 Enchanted Shark Fin, 16 Blue Shark Tooth and 32 Nurse Shark Tooth."
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: ICHTHYIC_GLOVES
+    material: paper
+    name: "Ichthyic Gloves"
+    rarity: RARE
+    default_statistics:
+      health: 8
+      fishing_speed: 6
+    source: "Crafted: 4 Enchanted Shark Fin, 12 Blue Shark Tooth, 32 Nurse Shark Tooth"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: JADE_BELT
+    material: paper
+    name: "Jade Belt"
+    rarity: EPIC
+    default_statistics:
+      mining_speed: 30
+      mining_fortune: 10
+    source: "Forged at The Forge (Heart of the Mountain 5, 1 day unless noted): 32 Glossy Gemstone + 2 Flawless Jade Gemstone"
+    lore:
+      - "§7Grants §6+30 Mining Fortune §7while"
+      - "§7mining §aJade§7."
+      - ""
+      - "§6Full Set Bonus: Gemstone Gatherer §7(0/4)"
+      - "§7Grants §6+25 Mining Fortune §7while in"
+      - "§7the §5Crystal Hollows§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: KNUCKLE_SANDWICH
+    material: paper
+    name: "Knuckle Sandwich"
+    rarity: LEGENDARY
+    source: "Top bidders in Shen's Auction when Diaz's Volume Trading perk is active (top 20; Ironman top 10)."
+    lore:
+      - "§7Increases the melee damage of your"
+      - "§7fists by §a500%§7!"
+      - ""
+      - "§8§oNot recommended for breakfast,"
+      - "§8§olunch, or dinner."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: LEAP_FROG_BRONZE
+    material: paper
+    name: "Leap Frog BRONZE"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while midair."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: LEAP_FROG_DIAMOND
+    material: paper
+    name: "Leap Frog DIAMOND"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing midair on Lotus Atoll, 20% (Diamond 0.2%, pity 600th)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while midair."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: LEAP_FROG_GOLD
+    material: paper
+    name: "Leap Frog GOLD"
+    rarity: UNCOMMON
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 20% roll, caught midair; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while midair."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: LEAP_FROG_SILVER
+    material: paper
+    name: "Leap Frog SILVER"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while midair."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: LEECH_BELT
+    material: paper
+    name: "Leech Belt"
+    rarity: RARE
+    default_statistics:
+      intelligence: 5
+      speed: 3
+    unavailable: "Needs Rift"
+    source: "Rift only: crafted from Silkrider Safety Belt + 8 Leech Supreme Fragments."
+    lore:
+      - "§7Rift Time: §a+80s"
+      - ""
+      - "§7Monster melee attacks reduce §a1 §7less"
+      - "§a Rift Time§7."
+      - ""
+      - "§eRight-click to equip!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: LOCKED_BALLOT_BOX
+    material: player_head
+    name: "Locked Ballot Box"
+    rarity: SPECIAL
+    unavailable: "Legacy city project reward"
+    source: "Legacy: Community Center Refurbishment city project (20 contributions); trade only"
+    components:
+      - id: SKULL_HEAD
+        texture: 526cac100a88aaf5ec42a29bcf78b94a2b580434edc135a13d31e74fc78d8825
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates your participation in"
+              - "§7the §bCommunity Center Refurbishment"
+              - "§7city project."
+              - "§7Earned by: §b[MVP§2+§b] CalMWolfs§f"
+              - "§7Total Contributions: §a20"
+              - "§8Edition #§k6"
+              - "§8March 23, 2024"
+              - "§8Memento acquirer name becomes"
+              - "§8hidden if traded."
+  - id: LOTUS_BELT
+    material: paper
+    name: "Peony Belt"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      farming_fortune: 5
+    unavailable: "SkyMart/Copper not built"
+    source: "Bought from SkyMart (Garden) for 100 Copper"
+    lore:
+      - "§6Piece Bonus: Salesperson"
+      - "§7Complete §aGarden Visitor Offers §7to"
+      - "§7gain §6 Farming Fortune§7."
+      - ""
+      - "§7Piece Bonus: §6+0"
+      - "§7Next Upgrade: §6+1 §8(§a0§7/§c1§8)"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 3§c."
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: LOTUS_BRACELET
+    material: paper
+    name: "Peony Bracelet"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      farming_fortune: 5
+    unavailable: "Needs SkyMart Copper shop"
+    source: "Bought from SkyMart (Garden) for 50 Copper."
+    lore:
+      - "§6Piece Bonus: Salesperson"
+      - "§7Complete §aGarden Visitor Offers §7to"
+      - "§7gain §6 Farming Fortune§7."
+      - ""
+      - "§7Piece Bonus: §6+0"
+      - "§7Next Upgrade: §6+1 §8(§a0§7/§c1§8)"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 2§c."
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+  - id: LOTUS_CLOAK
+    material: paper
+    name: "Peony Cloak"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      farming_fortune: 5
+    unavailable: "Needs SkyMart (Garden Copper shop) not built"
+    source: "Bought from SkyMart in the Garden for 500 Copper."
+    lore:
+      - "§6Piece Bonus: Salesperson"
+      - "§7Complete §aGarden Visitor Offers §7to"
+      - "§7gain §6 Farming Fortune§7."
+      - ""
+      - "§7Piece Bonus: §6+0"
+      - "§7Next Upgrade: §6+1 §8(§a0§7/§c1§8)"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 5§c."
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: LOTUS_NECKLACE
+    material: paper
+    name: "Peony Necklace"
+    rarity: RARE
+    default_statistics:
+      health: 10
+      farming_fortune: 5
+    unavailable: "Needs Garden SkyMart copper shop (not built)"
+    source: "SkyMart (Garden): 200 Copper"
+    lore:
+      - "§6Piece Bonus: Salesperson"
+      - "§7Complete §aGarden Visitor Offers §7to"
+      - "§7gain §6 Farming Fortune§7."
+      - ""
+      - "§7Piece Bonus: §6+0"
+      - "§7Next Upgrade: §6+1 §8(§a0§7/§c1§8)"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 4§c."
+      - "§4❣ §cRequires §aFarming Skill 10§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: LUMINOUS_BRACELET
+    material: paper
+    name: "Luminous Bracelet"
+    rarity: UNCOMMON
+    default_statistics:
+      fishing_speed: 1
+      sea_creature_chance: 1
+    unavailable: "Moby shop stock and Full Chum Bucket only placeholders"
+    source: "Moby sells it for 2 Full Chum Buckets + 10 Glowing Mushrooms"
+    lore:
+      - "§7Earn §6+20 Coins §7and §3+10 Fishing XP"
+      - "§7when depositing §aChum §7in someone"
+      - "§7ELSE's bucket."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aFishing Skill 12§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+  - id: MAGMA_LORD_GAUNTLET
+    material: paper
+    name: "Magma Lord Necklace"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 45
+      strength: 10
+      ferocity: 2
+      sea_creature_chance: 2.5
+    source: "Craft from 5 Magma Lord Fragments (fished in the Crimson Isle)."
+    lore:
+      - "§8Tiered Bonus: Fireproof (0/2)"
+      - "§7Provides immunity to §cCrimson Isle"
+      - "§cLava§7."
+      - ""
+      - "§8Tiered Bonus: Lord's Blessing (0/5)"
+      - "§7Grants §3+1 Sea Creature Chance§7."
+      - "§7Grants §b+20 Magic Find §7on §c"
+      - "§cMagmatic§7 mobs."
+      - ""
+      - "§7Damage taken from §c Magmatic§7 mobs"
+      - "§7is reduced by §a15% §7and damage dealt"
+      - "§7is increased by §c1.3x§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aFishing Skill 45§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: MANGROVE_GRIPPERS
+    material: paper
+    name: "Mangrove Grippers"
+    rarity: RARE
+    default_statistics:
+      sweep: 1
+      foraging_fortune: 5
+    unavailable: "Mangrove/Sea Lumies recipe not wired"
+    source: "Crafted from 6 Enchanted Sea Lumies + 6 Mangcore (Mangrove Log VIII, Foraging XII)."
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aForaging Skill 12§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: MANGROVE_LOCKET
+    material: paper
+    name: "Mangrove Locket"
+    rarity: RARE
+    default_statistics:
+      sweep: 1
+      foraging_fortune: 5
+    source: "Crafted (Mangrove Log III, Foraging XII): 20 Enchanted Mangrove Log + 32 Sea Lumies"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aForaging Skill 12§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: MANGROVE_VINE
+    material: paper
+    name: "Moonglade Belt"
+    rarity: RARE
+    default_statistics:
+      sweep: 1
+      foraging_fortune: 5
+    source: "Craft: Enchanted Sea Lumies + 64 Stretching Sticks + 64 Enchanted Mangrove Log; Mangrove Log IV, Foraging 12 (wiki grid unclear)"
+    lore:
+      - "§7Grants §a+5% §7more points towards"
+      - "§dStarlyn Contests§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aForaging Skill 12§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: MEDIOCRE_FISH_DRAWING
+    material: filled_map
+    name: "Mediocre Drawing of a Fish"
+    rarity: SPECIAL
+    unavailable: "Fishing Outpost city project not found"
+    source: "Reward for contributing to the Fishing Outpost City Project 20 times."
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates your participation in"
+              - "§7the §bFishing Outpost §7city project."
+              - "§7Earned by: §b[MVP§3+§b] Eisengolem"
+              - "§7Total Contributions: §a20"
+              - "§8March 4, 2025"
+              - "§8Memento acquirer name becomes"
+              - "§8hidden if traded."
+              - "§8§oFound underneath the fridge in the"
+              - "§8§oFisherman's Hut during renovations."
+              - "§8§oThough it leaves a lot to be desired,"
+              - "§8§ovisually speaking, a lot of love was"
+              - "§8§oprobably put into it."
+  - id: MITHRIL_CLOAK
+    material: paper
+    name: "Mithril Cloak"
+    rarity: UNCOMMON
+    default_statistics:
+      mining_speed: 20
+      mining_fortune: 5
+    source: "Forged in The Forge (HotM 2, 1 hour): 480 Mithril + 3 Enchanted Mithril."
+    lore:
+      - "§7Grants §6+5 Mining Fortune §7while"
+      - "§7mining §2Mithril§7."
+      - ""
+      - "§6Full Set Bonus: Dwarf Wannabe §7(0/4)"
+      - "§7Grants §6+30 Mining Speed §7and §6+5"
+      - "§6Mining Fortune §7while in the §2Dwarven"
+      - "§2Mines§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 2§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: MOLDY_MUFFIN
+    material: player_head
+    name: "Moldy Muffin"
+    rarity: SPECIAL
+    unavailable: "Alpha-only reward"
+    source: "Alpha-only reward for finishing the Modernized Mining checklist; unobtainable"
+    components:
+      - id: SKULL_HEAD
+        texture: d89d09e87e8d40231322f4981a3a33cfbc71970af0fa95b5f17935400a085a78
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7While most muffins don't mold, even"
+              - "§7over many months, these mysterious"
+              - "§7munches were manufactured with"
+              - "§7minimal shelf life in mind."
+              - "§7Mass-produced for miners who"
+              - "§7participated in the Many More Major"
+              - "§7and Minor Modifications Meticulously"
+              - "§7Made to Modernize Mining alpha test."
+  - id: PAINTERS_PALETTE
+    material: player_head
+    name: "Painter's Palette"
+    rarity: SPECIAL
+    unavailable: "Legacy item, not obtainable"
+    source: "Legacy: was reward for 20 contributions to Artist's Abode City Project; trade only now"
+    components:
+      - id: SKULL_HEAD
+        texture: 633548c69b8f5cd0931da6b11ed4c1756c15f0f896e109561e75aab42444dc29
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates your participation in"
+              - "§7the §bArtist's Abode §7city project."
+              - "§7Earned by: §b[MVP§5+§b] Alea1337§f"
+              - "§7Total Contributions: §a20"
+              - "§8Edition #§K719"
+              - "§8July 14, 2024"
+              - "§7§8Memento acquirer name becomes"
+              - "§8hidden if traded."
+  - id: PELT_BELT
+    material: paper
+    name: "Pelt Belt"
+    rarity: EPIC
+    default_statistics:
+      speed: 30
+      farming_wisdom: 1
+    unavailable: "Pelts (Trapper) currency not built; NPCTalbot has no shop"
+    source: "Bought from Talbot for 250 Pelts."
+    lore:
+      - "§7Gain §f+30 Speed §7while in the"
+      - "§eMushroom Desert§7."
+      - "§7Earn §5+1 pelt §7from tracker quests."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: PESTHUNTERS_BELT
+    material: paper
+    name: "Pesthunter's Belt"
+    rarity: RARE
+    default_statistics:
+      bonus_pest_chance: 5
+    unavailable: "Garden pests / Pesthunter Phillip not built"
+    source: "Bought from Pesthunter Phillip for 40 Pests."
+    lore:
+      - "§7Decreases the spawn cooldown of §2"
+      - "§2Pests §7by §a10%§7."
+      - ""
+      - "§8Tiered Bonus: Eradicator (0/4)"
+      - "§7Grants §6+0 Farming Fortune §7when"
+      - "§7vacuuming up §2 Pests"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: PESTHUNTERS_CLOAK
+    material: paper
+    name: "Pesthunter's Cloak"
+    rarity: RARE
+    default_statistics:
+      bonus_pest_chance: 5
+    source: "Pesthunter Phillip for 40 Pests"
+    lore:
+      - "§7Decreases the spawn cooldown of §2"
+      - "§2Pests §7by §a10%§7."
+      - ""
+      - "§8Tiered Bonus: Eradicator (0/4)"
+      - "§7Grants §6+0 Farming Fortune §7when"
+      - "§7vacuuming up §2 Pests"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: PESTHUNTERS_GLOVES
+    material: paper
+    name: "Pesthunter's Gloves"
+    rarity: RARE
+    default_statistics:
+      bonus_pest_chance: 5
+    unavailable: "Pesthunter Phillip shop not found"
+    source: "Pesthunter Phillip sells it for 40 Pests"
+    lore:
+      - "§7Decreases the spawn cooldown of §2"
+      - "§2Pests §7by §a10%§7."
+      - ""
+      - "§8Tiered Bonus: Eradicator (0/4)"
+      - "§7Grants §6+0 Farming Fortune §7when"
+      - "§7vacuuming up §2 Pests"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: PESTHUNTERS_NECKLACE
+    material: paper
+    name: "Pesthunter's Necklace"
+    rarity: RARE
+    default_statistics:
+      bonus_pest_chance: 5
+    unavailable: "Pesthunter Phillip shop not built"
+    source: "Bought from Pesthunter Phillip for 40 Pests."
+    lore:
+      - "§7Decreases the spawn cooldown of §2"
+      - "§2Pests §7by §a10%§7."
+      - ""
+      - "§8Tiered Bonus: Eradicator (0/4)"
+      - "§7Grants §6+0 Farming Fortune §7when"
+      - "§7vacuuming up §2 Pests"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aGarden Level 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: PEST_VEST
+    material: paper
+    name: "Pest Vest"
+    rarity: EPIC
+    default_statistics:
+      bonus_pest_chance: 10
+    unavailable: "Pests / Pelts not built; Talbot NPC is a stub"
+    source: "Bought from Talbot for 250 Pelts."
+    lore:
+      - "§7Decreases the spawn cooldown of §2"
+      - "§2Pests §7by §a15%§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: POTATO_BASKET
+    material: player_head
+    name: "Basket of Hope from the Great Potato War"
+    rarity: SPECIAL
+    unavailable: "Legacy event reward"
+    source: "Legacy: top 1000 Potato Collection in the Great Potato War; trade only"
+    components:
+      - id: SKULL_HEAD
+        texture: 68e60ebd80b6063a96e9aaf84f038257058e762f1bec3bf5c0f6251e65d5c5ee
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Leaderboard Position: §e#§k169"
+              - "§7Awarded to: §kIRONM00N"
+              - "§7§d§oThe greatest victory is that"
+              - "§d§owhich requires no battle."
+              - "§8- Sun Tzu, The Art of War"
+  - id: PRISMARINE_NECKLACE
+    material: paper
+    name: "Prismarine Necklace"
+    rarity: RARE
+    default_statistics:
+      fishing_speed: 2
+      trophy_fish_chance: 1
+    source: "Craft: Enchanted Prismarine Crystals + 4 Enchanted Prismarine Shard; Prismarine Shard Collection VII"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: PUDDLE_JUMPER_BRONZE
+    material: paper
+    name: "Puddle Jumper BRONZE"
+    rarity: LEGENDARY
+    unavailable: "Needs Lotus Atoll"
+    source: "Guaranteed drop from the Puddle Jumper sea creature on the Lotus Atoll (Fishing 10)."
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught when flying around the §3Lotus"
+              - "§3Atoll§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: PUDDLE_JUMPER_DIAMOND
+    material: paper
+    name: "Puddle Jumper DIAMOND"
+    rarity: LEGENDARY
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Fished in water on Lotus Atoll at Fishing 10 (~1% base catch); Diamond tier ~0.2%, pity Diamond on 301st."
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught when flying around the §3Lotus"
+              - "§3Atoll§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: PUDDLE_JUMPER_GOLD
+    material: paper
+    name: "Puddle Jumper GOLD"
+    rarity: LEGENDARY
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Fish up the Puddle Jumper sea creature on Lotus Atoll (Fishing 10, ~1% base weight), guaranteed frog (Gold ~2%)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught when flying around the §3Lotus"
+              - "§3Atoll§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: PUDDLE_JUMPER_SILVER
+    material: paper
+    name: "Puddle Jumper SILVER"
+    rarity: LEGENDARY
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog dropped by the Puddle Jumper sea creature (Legendary, ~1% base catch, Fishing 10) fished on the Lotus Atoll"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught when flying around the §3Lotus"
+              - "§3Atoll§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: REALITY_HOPPER_BRONZE
+    material: paper
+    name: "Reality Hopper BRONZE"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught in §dWormholes §7on the §3Lotus"
+              - "§3Atoll§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: REALITY_HOPPER_DIAMOND
+    material: paper
+    name: "Reality Hopper DIAMOND"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught in §dWormholes §7on the §3Lotus"
+              - "§3Atoll§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: REALITY_HOPPER_GOLD
+    material: paper
+    name: "Reality Hopper GOLD"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing in Wormholes on Lotus Atoll, 10% (Gold ~2%)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught in §dWormholes §7on the §3Lotus"
+              - "§3Atoll§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: REALITY_HOPPER_SILVER
+    material: paper
+    name: "Reality Hopper SILVER"
+    rarity: UNCOMMON
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 10% roll, in Wormholes; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught in §dWormholes §7on the §3Lotus"
+              - "§3Atoll§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: RED_BELT
+    material: paper
+    name: "Red Belt"
+    rarity: SPECIAL
+    default_statistics:
+      health: 0.1
+      defense: 0.1
+    unavailable: "Legacy event reward"
+    source: "Legacy: failing a Dojo challenge during A Honk and Seek Adventure; trade only."
+    lore:
+      - "§7Reduces damage taken by §c0%§7."
+      - ""
+      - "§7Obtained from the §dA Honk and Seek"
+      - "§dAdventure §7event during April Fools."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item §8§lCANNOT§8 be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: RIFT_COMPLETION_MEMENTO
+    material: book
+    name: "There and Back Again"
+    rarity: SPECIAL
+    unavailable: "Needs Rift"
+    source: "Talk to the Wizard after finishing the Rift Dimension questline."
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates your participation in"
+              - "§7the §5Breach Close §7event."
+              - "§7Earned by: §b[MVP§3+§b] Eisengolem"
+              - "§8December 10, 2024"
+              - "§8Memento acquirer name becomes"
+              - "§8hidden if traded."
+              - "§7§oThis book will never find a publisher."
+  - id: RIFT_NECKLACE_INSIDE
+    material: paper
+    name: "Rift Necklace"
+    rarity: MYTHIC
+    default_statistics:
+      rift_damage: 1
+      intelligence: 10
+      speed: 6
+    unavailable: "Needs Rift"
+    source: "Rift: Elise after placing Supreme Timecharm in Rift Gallery"
+    lore:
+      - "§7Rift Time: §a+380s"
+      - "§7Hearts: §c+1"
+      - "§7Mana Regen: §b+25%"
+      - ""
+      - "§7The most powerful necklace ever"
+      - "§7created by §dElise MDCCCXIV§7."
+      - ""
+      - "§7Becomes more powerful as you fill"
+      - "§7the §dRift Gallery§7."
+      - "§7Secured: §c8/8 Timecharms"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: RIFT_NECKLACE_OUTSIDE
+    material: player_head
+    name: "Rift Necklace"
+    rarity: LEGENDARY
+    default_statistics:
+      health: 150
+      defense: 30
+      strength: 25
+      intelligence: 85
+      magic_find: 8
+      combat_wisdom: 1
+      farming_wisdom: 1
+      enchanting_wisdom: 1
+    unavailable: "Needs Rift"
+    source: "Elise in Wizard Tower, keyword CARAMEL, after claiming Mythic Rift Necklace (Supreme Timecharm in Rift Gallery)"
+    lore:
+      - "§7A very powerful piece of equipment"
+      - "§7originating from the §dRift Dimension§7."
+      - ""
+      - "§7Becomes more powerful as you fill"
+      - "§7the §dRift Gallery§7."
+      - "§7Secured: §c8/8 Timecharms"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: SKULL_HEAD
+        texture: 9c0894931a510387e4f613828f0239ca4d90853499637f6079d39327f146f0e9
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: RUSTY_SPOON
+    material: wooden_shovel
+    name: "Rusty Spoon"
+    rarity: SPECIAL
+    unavailable: "Legacy/unobtainable"
+    source: "Legacy: 10,000 coins from Corrupt Goon while Aura was mayor; trade only."
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Tetanus Chance: §c+1%"
+              - "§7Determination: §a+2"
+              - "§8§oThe tried and true tool in an escape"
+              - "§8§oartist's arsenal."
+  - id: SAFARI_BELT
+    material: paper
+    name: "Safari Belt"
+    rarity: COMMON
+    unavailable: "Needs Critter Safari"
+    source: "Claimed from Andrea or the Safari Manager at the Critter Safari entrance."
+    lore:
+      - "§7The more §2Safari Milestones§7 you have,"
+      - "§7the stronger this belt gets!"
+      - ""
+      - "§7Talk to §aAndrea§7 to view your"
+      - "§7progress!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: SAPPHIRE_CLOAK
+    material: paper
+    name: "Sapphire Cloak"
+    rarity: EPIC
+    default_statistics:
+      mining_speed: 30
+      mining_fortune: 10
+    source: "Forge (HotM 5, 1 day): 32 Glossy Gemstone + 2 Flawless Sapphire Gemstone"
+    lore:
+      - "§7Grants §6+30 Mining Fortune §7while"
+      - "§7mining §bSapphire§7."
+      - ""
+      - "§6Full Set Bonus: Gemstone Gatherer §7(0/4)"
+      - "§7Grants §6+25 Mining Fortune §7while in"
+      - "§7the §5Crystal Hollows§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: SEA_FROG_BRONZE
+    material: paper
+    name: "Sea Frog BRONZE"
+    rarity: RARE
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 5% roll, caught underwater; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while underwater."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: SEA_FROG_DIAMOND
+    material: paper
+    name: "Sea Frog DIAMOND"
+    rarity: RARE
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while underwater."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: SEA_FROG_GOLD
+    material: paper
+    name: "Sea Frog GOLD"
+    rarity: RARE
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while underwater."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: SEA_FROG_SILVER
+    material: paper
+    name: "Sea Frog SILVER"
+    rarity: RARE
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing underwater on Lotus Atoll, 5% (Silver ~24%)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while underwater."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: SECRET_BINGO_MEMENTO
+    material: player_head
+    name: "Bingo's Secrets"
+    rarity: SPECIAL
+    unavailable: "Needs Bingo"
+    source: "Reward for first player completing a goal in the Secret Bingo Event (20 per event)"
+    components:
+      - id: SKULL_HEAD
+        texture: 5d34fb8ed76f55d1d559c33aaa50f83fe361f1e4bee915de52eb8602aeff2a97
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7A quaint box holding a trove of"
+              - "§7whimsy and woe: from Bingo's"
+              - "§7cherished childhood memories to"
+              - "§7his most profound mysteries."
+              - "§7§7Earned by §b[MVP§f+§b]"
+              - "§bhannibal2§f §7in the §61st §dSecret"
+              - "§dBingo Event §7during §aDecember"
+              - "§a2023 §7for being the first to"
+              - "§7complete the §6§kSweet Collection"
+              - "§6§7Secret Bingo Goal."
+  - id: SHENS_RINGALIA
+    material: paper
+    name: "Shen's Ringalia"
+    rarity: LEGENDARY
+    unavailable: "Needs Rift"
+    source: "Madame Eleanor Q. Goldsworth X after her puzzle: 25,000 Motes, 64 Puff Crux, 20 each Youngite/Timite/Obsolite, 1 Disinfestor Gloves."
+    lore:
+      - "§7Rift Time: §a+50s"
+      - ""
+      - "§7§oNo matter the place or when, anyone"
+      - "§7§omarked by Shen will gain control."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8§l* §8Soulbound §8§l*"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+  - id: SHINY_RELIC
+    material: player_head
+    name: "Shiny Relic #1-7"
+    rarity: SPECIAL
+    unavailable: "Legacy, effectively unobtainable"
+    source: "Legacy item from Shiny Orbs (about 1/20,000,000); now only via player trading."
+    components:
+      - id: SKULL_HEAD
+        texture: 522dc618e396f96b0ff7bb50135e3cb00b71f0d62f392ecb0f82732ce339f102
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7A perfect replica of the Shiny"
+              - "§7Relic deposited on the Blood God"
+              - "§7Shrine following the Dante"
+              - "§7fight."
+              - "§bExceedingly rare item!"
+              - "§7Found by: §7§kIIIIIII"
+              - "§7Date: §e§k1111§e-§k11§e-§kee"
+  - id: SHRIVELED_BRACELET
+    material: paper
+    name: "Shriveled Bracelet"
+    rarity: EPIC
+    default_statistics:
+      strength: 10
+      critical_damage: 15
+    unavailable: "Needs Shriveled Wasp item (not defined)"
+    source: "Crafted after Spider Slayer VII: Shriveled Wasp + 64 Tarantula Silk + 128 Soul String"
+    lore:
+      - "§7Grants §3+5☯ Combat Wisdom§7 and §b+10"
+      - "§bMagic Find§7 on §4 Arthropod§7 mobs."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4☠ §cRequires §5Spider Slayer 7§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+  - id: SILKRIDER_SAFETY_BELT
+    material: paper
+    name: "Silkrider Safety Belt"
+    rarity: UNCOMMON
+    default_statistics:
+      speed: 2
+    unavailable: "Argofay Bughunter/Bottled Odonata not built"
+    source: "Argofay Bughunter quest: give 8 Bottled Odonata"
+    lore:
+      - "§7Rift Time: §a+60s"
+      - ""
+      - "§7Monster melee attacks reduce §a1 §7less"
+      - "§a Rift Time§7."
+      - ""
+      - "§eRight-click to equip!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: SPARKLING_AMULET
+    material: paper
+    name: "Sparkling Amulet"
+    rarity: SPECIAL
+    unavailable: "Needs Critter Safari"
+    source: "Sparkling Specialist perk from Archie; spawn in Critter Safari wearing it."
+    lore:
+      - "§7Increases your chance of finding"
+      - "§6§lSPARKLING §a Critters§7 by §a2x§7."
+      - "§bSparkling Amulet §8bonuses do not stack."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: SPLENDID_FISH_DRAWING
+    material: filled_map
+    name: "Splendid Drawing of a Fish"
+    rarity: SPECIAL
+    unavailable: "Backwater Bayou checklist not built"
+    source: "Complete Centauri's Backwater Bayou update checklist; Jerry delivers it."
+    components:
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Awarded to those who participated in"
+              - "§7the §2Backwater Bayou §7on the Hypixel"
+              - "§7Alpha Network."
+              - "§8§oFound laminated and stuck to the"
+              - "§8§ofridge in the Fisherman's Hut during"
+              - "§8§orenovations. Its creator is evidently"
+              - "§8§oa visionary of sorts, wow!"
+  - id: SPONGE_BELT
+    material: paper
+    name: "Sponge Belt"
+    rarity: RARE
+    default_statistics:
+      fishing_speed: 2
+      trophy_fish_chance: 1
+    source: "Crafted: 64 Sponge + 6 Enchanted Sponge (Sponge collection V)"
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: SUNS_GRASP
+    material: paper
+    name: "Sun's Grasp"
+    rarity: LEGENDARY
+    default_statistics:
+      farming_fortune: 12
+    unavailable: "Harvest Feast ingredients not built"
+    source: "Craft: Ray of Helios + 3 Godseed + 3 All-in Aloe + 128 Compacted Sunflower (Harvest Feast)"
+    lore:
+      - "§7While breaking crops with your fist:"
+      - "  §7Grants §ex2  Overbloom"
+      - "  §7Capped at §6500 Farming Fortune"
+      - "  §7Crops automatically replanted"
+      - ""
+      - "§8§oA farmer of legend, said to be born"
+      - "§8§oof the sun’s grace itself. With bare"
+      - "§8§ohands he cultivated the earth, and"
+      - "§8§ofrom his harvests baked humble"
+      - "§8§obread bowls, gifted only to those"
+      - "§8§oheld close to his heart."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: SYNTHESIZER_V1
+    material: paper
+    name: "Synthesizer v1"
+    rarity: EPIC
+    unavailable: "Recipe unclear"
+    source: "Crafted (320 of an ingredient the wiki scrape left unnamed)."
+    lore:
+      - "§7Can synthesize X items increasing"
+      - "§7the stats of this necklace."
+      - ""
+      - "§7Current Bonuses:"
+      - "§80/30 §c Health"
+      - ""
+      - "§eRight-click to open!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: SYNTHESIZER_V2
+    material: paper
+    name: "Synthesizer v2"
+    rarity: EPIC
+    unavailable: "Synthesizer v1 / recipe not built"
+    source: "Crafted from Synthesizer v1 surrounded by 512 total Y items (wiki wording unclear)."
+    lore:
+      - "§7Can synthesize X and Y items"
+      - "§7increasing the stats of this"
+      - "§7necklace."
+      - ""
+      - "§7Current Bonuses:"
+      - "§80/30 §c Health"
+      - "§80/30 §a Defense"
+      - ""
+      - "§eRight-click to open!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: SYNTHESIZER_V3
+    material: paper
+    name: "Synthesizer v3"
+    rarity: EPIC
+    unavailable: "Synthesizer v2 and Z items not defined"
+    source: "Crafted from Synthesizer v2 with 512 Z items; wiki unclear"
+    lore:
+      - "§7Can synthesize X, Y, and Z items"
+      - "§7increasing the stats of this"
+      - "§7necklace."
+      - ""
+      - "§7Current Bonuses:"
+      - "§80/40 §c Health"
+      - "§80/40 §a Defense"
+      - "§80/60 §b Intelligence"
+      - ""
+      - "§eRight-click to open!"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aCombat Skill 22§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: THE_PRIMORDIAL
+    material: paper
+    name: "The Primordial"
+    rarity: LEGENDARY
+    default_statistics:
+      strength: 15
+      critical_damage: 20
+    unavailable: "Primordial Eye and Shriveled Wasp not built"
+    source: "Craft: Primordial Eye + 2 Shriveled Wasp + 128 Tarantula Silk + 192 Soul String; Spider Slayer 8"
+    lore:
+      - "§6Ability: Forced Metamorphosis "
+      - "§7When killing a §cSlayer Boss§7 or §cSlayer Miniboss§7,"
+      - "§7have a §a10%§7 chance to cocoon them!"
+      - "§7Cocooned enemies will quickly hatch, and can be"
+      - "§7killed again."
+      - ""
+      - "§8§oAn eye torn from the Primordial Brood sits dead"
+      - "§8§ocenter, patiently observing. Are you truly the"
+      - "§8§oone in control here?"
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4☠ §cRequires §5Spider Slayer 8§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: TITANIUM_BELT
+    material: paper
+    name: "Titanium Belt"
+    rarity: RARE
+    default_statistics:
+      mining_speed: 30
+      mining_fortune: 10
+    source: "Forge (HotM III, 4h30m): 16 Refined Mineral, 1 Refined Titanium, 1 Mithril Belt."
+    lore:
+      - "§7Grants §6+10 Mining Fortune §7while"
+      - "§7mining §2Mithril §7and §fTitanium§7."
+      - ""
+      - "§6Full Set Bonus: True Dwarf §7(0/4)"
+      - "§7Grants §6+50 Mining Speed §7and §6+40"
+      - "§6Mining Fortune §7while in the §2Dwarven"
+      - "§2Mines§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: TITANIUM_CLOAK
+    material: paper
+    name: "Titanium Cloak"
+    rarity: RARE
+    default_statistics:
+      mining_speed: 30
+      mining_fortune: 10
+    source: "Forged in The Forge (HotM 3, 4.5 hours): Mithril Cloak + 1 Refined Titanium + 16 Refined Mineral."
+    lore:
+      - "§7Grants §6+10 Mining Fortune §7while"
+      - "§7mining §2Mithril §7and §fTitanium§7."
+      - ""
+      - "§6Full Set Bonus: True Dwarf §7(0/4)"
+      - "§7Grants §6+50 Mining Speed §7and §6+40"
+      - "§6Mining Fortune §7while in the §2Dwarven"
+      - "§2Mines§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
+  - id: TITANIUM_GAUNTLET
+    material: paper
+    name: "Titanium Gauntlet"
+    rarity: RARE
+    default_statistics:
+      mining_speed: 30
+      mining_fortune: 10
+    source: "Forge (HotM 3, 4h30): Mithril Gauntlet + Refined Titanium + 16 Refined Mineral"
+    lore:
+      - "§7Grants §6+10 Mining Fortune §7while"
+      - "§7mining §2Mithril §7and §fTitanium§7."
+      - ""
+      - "§6Full Set Bonus: True Dwarf §7(0/4)"
+      - "§7Grants §6+50 Mining Speed §7and §6+40"
+      - "§6Mining Fortune §7while in the §2Dwarven"
+      - "§2Mines§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: GLOVES
+  - id: TITANIUM_NECKLACE
+    material: paper
+    name: "Titanium Necklace"
+    rarity: RARE
+    default_statistics:
+      mining_speed: 30
+      mining_fortune: 10
+    source: "Forged at The Forge (Heart of the Mountain 3, 1 day unless noted): 4h30m: Mithril Necklace + Refined Titanium + 16 Refined Mineral"
+    lore:
+      - "§7Grants §6+10 Mining Fortune §7while"
+      - "§7mining §2Mithril §7and §fTitanium§7."
+      - ""
+      - "§6Full Set Bonus: True Dwarf §7(0/4)"
+      - "§7Grants §6+50 Mining Speed §7and §6+40"
+      - "§6Mining Fortune §7while in the §2Dwarven"
+      - "§2Mines§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: NECKLACE
+  - id: TORRHUS_BELT
+    material: paper
+    name: "Torrhus Belt"
+    rarity: EPIC
+    default_statistics:
+      sweep: 2
+      foraging_fortune: 10
+    unavailable: "Moonglade Belt / Ruby Veilshroom not found"
+    source: "Craft: 1 Moonglade Belt, 2 Helixis, 16 Bottled Mischief, 40 Enchanted Ruby Veilshroom (Foraging 24)."
+    lore:
+      - "§7Grants §a+10% §7more points towards"
+      - "§dStarlyn Contests§7."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aForaging Skill 24§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: TREE_FROG_BRONZE
+    material: paper
+    name: "Tree Frog BRONZE"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while standing on leaves."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: TREE_FROG_DIAMOND
+    material: paper
+    name: "Tree Frog DIAMOND"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing on leaves on Lotus Atoll, 2% (Diamond 0.2%, pity 600th)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while standing on leaves."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: TREE_FROG_GOLD
+    material: paper
+    name: "Tree Frog GOLD"
+    rarity: EPIC
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 2% roll, while standing on leaves; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while standing on leaves."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: TREE_FROG_SILVER
+    material: paper
+    name: "Tree Frog SILVER"
+    rarity: EPIC
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond); caught while standing on leaves"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught while standing on leaves."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: VEILSHROOM_BRACELET
+    material: paper
+    name: "Veilshroom Bracelet"
+    rarity: EPIC
+    default_statistics:
+      sweep: 5
+      foraging_fortune: 25
+    unavailable: "Veilshroom/Mangrove Grippers chain not wired"
+    source: "Crafted from Vial of Spring Water, Mangrove Grippers, 2 Veilshroom Bunch and 4 Helixis (Ruby Veilshroom IX)."
+    lore:
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §aForaging Skill 30§c."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BRACELET
+  - id: VERMIN_BELT
+    material: paper
+    name: "Vermin Belt"
+    rarity: EPIC
+    default_statistics:
+      intelligence: 10
+      speed: 4
+    unavailable: "Needs Neuroscientist Kat / Vermin Bin / Leech Belt (not built)"
+    source: "Neuroscientist Kat: 1 Leech Belt after depositing 15 Flies in Vermin Bin; or craft 8 Leech Supreme Fragment + Silkrider Safety Belt + Leech Belt"
+    lore:
+      - "§7Rift Time: §a+100s"
+      - ""
+      - "§7Monster melee attacks reduce §a1 §7less"
+      - "§a Rift Time§7."
+      - ""
+      - "§eRight-click to equip!"
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: BELT
+  - id: WETLANDS_FROG_BRONZE
+    material: paper
+    name: "Wetlands Frog BRONZE"
+    rarity: UNCOMMON
+    unavailable: "Lotus Atoll fishing/Trophy Frogs not built"
+    source: "Trophy frog caught fishing on the Lotus Atoll; 15% roll, during rain; tier odds Bronze ~73%, Silver ~24%, Gold ~2%, Diamond 0.2%, pity Gold at 101st/Diamond at 601st catch"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught during §brain§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: WETLANDS_FROG_DIAMOND
+    material: paper
+    name: "Wetlands Frog DIAMOND"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing"
+    source: "Trophy Frog fished up on the Lotus Atoll (each frog has its own catch condition; Bronze most common, up to Diamond); during rain"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught during §brain§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: WETLANDS_FROG_GOLD
+    material: paper
+    name: "Wetlands Frog GOLD"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll Trophy Frog fishing (not built)"
+    source: "Rare Trophy Frog caught while fishing on Lotus Atoll (each frog has its own catch condition; tier odds about 73% Bronze, 24% Silver, 2% Gold, 0.2% Diamond; pity Gold on 101st and Diamond on 601st catch)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught during §brain§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: WETLANDS_FROG_SILVER
+    material: paper
+    name: "Wetlands Frog SILVER"
+    rarity: UNCOMMON
+    unavailable: "Needs Lotus Atoll trophy frog fishing (not built)"
+    source: "Trophy fishing during rain on Lotus Atoll, 15% (Silver ~24%)"
+    components:
+      - id: ACCESSORY
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Caught during §brain§7."
+              - "§7Bring this to §2Researcher Ribery §7on"
+              - "§7the §3Lotus Atoll§7."
+              - "§8§l* §8Soulbound §8§l*"
+  - id: WIZARD_PORTAL_MEMENTO
+    material: player_head
+    name: "Piece of Wizard Portal"
+    rarity: SPECIAL
+    unavailable: "Legacy item, not obtainable"
+    source: "Legacy: reward for 10+ contributions to Repair Wizard Portal City Project; trade only now"
+    components:
+      - id: SKULL_HEAD
+        texture: 4365780e89ee27a53950e02bce7af6cb5a04cdf5d1fd3ac00cf56f7156faa31c
+      - id: ACCESSORY
+        recombobulate: false
+        effects:
+          - type: INACTIVE
+            reason: "Not wired up yet"
+            text:
+              - "§7Commemorates your participation in"
+              - "§7the §bRepair Wizard Portal §7city project."
+              - "§7Earned by: §b[MVP§d+§b] lrg89§f"
+              - "§8Edition §k1"
+              - "§8May 28th 2023"
+              - "§7§8Memento acquirer name becomes"
+              - "§8hidden if traded."
+  - id: ZORROS_CAPE
+    material: paper
+    name: "Zorro's Cape"
+    rarity: LEGENDARY
+    default_statistics:
+      strength: 10
+      ferocity: 2
+      farming_fortune: 10
+      farming_wisdom: 1
+    source: "Chocolate Shop for 20 billion Chocolate (Chocolate Factory 5, Zorro in Hoppity's Collection)."
+    lore:
+      - "§7The stats of this Cape §adouble "
+      - "§7during §eJacob's Farming Contest§7."
+      - "§7Additionally, you have a §a20% §7chance"
+      - "§7to obtain an extra medal from"
+      - "§7contests."
+      - ""
+      - "§8§oNot all Rabbits wear capes."
+      - ""
+      - "§eRight-click to equip!"
+      - ""
+      - "§8This item can be reforged!"
+      - "§4❣ §cRequires §dZorro §cin Hoppity's Collection."
+    components:
+      - id: STANDARD_ITEM
+        standard_item_type: CLOAK
