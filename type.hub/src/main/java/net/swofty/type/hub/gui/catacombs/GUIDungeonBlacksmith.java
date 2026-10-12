@@ -10,6 +10,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.hub.util.UnreleasedContent;
+import net.swofty.type.skyblockgeneric.gui.inventories.essence.GUIDungeonEssenceShops;
 
 public class GUIDungeonBlacksmith extends StatelessView {
 
@@ -32,10 +33,12 @@ public class GUIDungeonBlacksmith extends StatelessView {
                 <7>Upgrade items or convert regular
                 <7>items into Dungeon items using
                 <d>Essence<7>!""");
-        UnreleasedContent.DUNGEONS.slot(layout, 24, Material.WITHER_SKELETON_SKULL, """
+        layout.slot(24, ItemStacks.item(Material.WITHER_SKELETON_SKULL, """
                 <a>Essence Shop
                 <7>Exchange <d>Undead Essence <7>and
                 <d>Wither Essence <7>for items and
-                <7>perks!""");
+                <7>perks!
+
+                <e>Click to view!"""), (_, c) -> c.push(new GUIDungeonEssenceShops()));
     }
 }

@@ -5,8 +5,9 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.essence.EssenceType;
+import net.swofty.type.skyblockgeneric.gui.inventories.essence.GUIEssenceShop;
 
-// Decorative Spider Tamer NPC, found in the Spider's Den.
 public class NPCSpiderTamer extends HypixelNPC {
     public NPCSpiderTamer() {
         super(new HumanConfiguration() {
@@ -42,6 +43,6 @@ public class NPCSpiderTamer extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-
+        event.player().openView(new GUIEssenceShop(EssenceType.SPIDER));
     }
 }

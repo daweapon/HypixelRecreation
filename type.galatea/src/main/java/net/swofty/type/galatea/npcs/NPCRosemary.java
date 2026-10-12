@@ -5,8 +5,9 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.essence.EssenceType;
+import net.swofty.type.skyblockgeneric.gui.inventories.essence.GUIEssenceShop;
 
-// Decorative Rosemary NPC, found in Galatea.
 public class NPCRosemary extends HypixelNPC {
 
     public NPCRosemary() {
@@ -40,6 +41,6 @@ public class NPCRosemary extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        event.player().notImplemented();
+        event.player().openView(new GUIEssenceShop(EssenceType.FOREST));
     }
 }
