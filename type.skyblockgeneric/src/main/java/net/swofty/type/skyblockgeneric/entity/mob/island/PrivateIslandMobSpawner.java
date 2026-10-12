@@ -6,6 +6,8 @@ import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.timer.Scheduler;
 import net.minestom.server.timer.TaskSchedule;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.island.IslandUtilityBlocks;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
@@ -74,7 +76,11 @@ public final class PrivateIslandMobSpawner {
             return farFromEveryone;
         });
 
+        boolean silenced = IslandUtilityBlocks.has(instance, ItemType.SILENCE_BLOCK);
+        mobs.forEach(mob -> mob.setSilent(silenced));
+
         if (players.isEmpty() || !isNight(instance.getTime())) return;
+        if (IslandUtilityBlocks.has(instance, ItemType.REPELLING_CANDLE)) return;
 
         int level = IslandMobSpecies.levelForCombat(ownerCombatLevel(players));
         for (int i = 0; i < SPAWNS_PER_CYCLE && mobs.size() < MAX_MOBS_PER_ISLAND; i++) {
@@ -83,6 +89,7 @@ public final class PrivateIslandMobSpawner {
             if (position == null) continue;
 
             PrivateIslandMob mob = PrivateIslandMob.of(pickSpecies(), level);
+            mob.setSilent(silenced);
             mob.setInstance(instance, position);
             mobs.add(mob);
         }

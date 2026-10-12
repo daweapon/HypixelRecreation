@@ -333,6 +333,14 @@ items:
     material: gravel
     rarity: COMMON
     components:
+      - id: CUSTOM_DROP
+        rules:
+          - conditions:
+              broken_with: FLINT_SHOVEL
+            drops:
+              - item: FLINT
+                chance: 1.0
+                amount: 1
       - id: PLACEABLE
       - id: SKILLABLE_MINE
         category: MINING

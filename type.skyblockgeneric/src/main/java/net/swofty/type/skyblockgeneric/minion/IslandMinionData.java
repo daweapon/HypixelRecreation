@@ -153,6 +153,7 @@ public class IslandMinionData {
             if (minionEntity != null) {
                 percentageSpeedIncrease += (int) PetAbilities.minionSpeedPercent(minionEntity.getInstance(), minion.name());
                 percentageSpeedIncrease += (int) AccessoryEconomyHooks.potatoMinionSpeedPercent(minionEntity.getInstance(), minion.name());
+                percentageSpeedIncrease += (int) net.swofty.type.skyblockgeneric.island.IslandUtilityBlocks.minionSpeedPercent(minionEntity.getInstance(), minion.isMining());
             }
 
             return percentageSpeedIncrease;

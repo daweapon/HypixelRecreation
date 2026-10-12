@@ -67,7 +67,7 @@ items:
       - ""
       - "§4❣ §cRequires The Catacombs Floor VI Completion."
       - ""
-      - "§8Not active yet: The nearby-ally damage reduction needs Dungeons"
+      - "§8Not active yet: Needs Dungeons: no Dungeon run exists on the SkyBlock servers, so there is no in-Dungeon state for the nearby-ally damage reduction"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -142,7 +142,7 @@ items:
       - "§7This range is extended to §e30 §7blocks"
       - "§7while playing as a Tank."
       - ""
-      - "§8Not active yet: The nearby-ally damage reduction needs Dungeons"
+      - "§8Not active yet: Needs Dungeons: no Dungeon run exists on the SkyBlock servers, so there is no in-Dungeon state for the nearby-ally damage reduction"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -192,7 +192,7 @@ items:
       - ""
       - "§7Charge: §e500,000§6/§e500,000"
       - ""
-      - "§8Not active yet: Pulse Ring upgrades are not built"
+      - "§8Not active yet: Needs Pulse Ring charging (the Pulse Ring has no charge counter yet)"
     components:
       - id: SKULL_HEAD
         texture: cc6ea8da2ce3da32b3140b0728be09c06f6c37e0c2ed923e06c032c853208a4
@@ -207,7 +207,7 @@ items:
       - ""
       - "§7Fills to §e500,000 §7charge."
       - ""
-      - "§8Not active yet: Hurricane Bottle upgrades are not built"
+      - "§8Not active yet: Needs the Hurricane Bottle (not in the game)"
     components:
       - id: SKULL_HEAD
         texture: 6afffe759a2b6d548a052e5b4234e5d4fdaadeefab469a86789088c388bafe80
@@ -558,7 +558,7 @@ items:
       - "§7Leaving the island will pause the"
       - "§7effect!"
       - ""
-      - "§8Not active yet: The flying effect is not implemented"
+      - "§8Not active yet: Needs private island flight (not built)"
     components:
       - id: SKULL_HEAD
         texture: 91e5d0c23ec1a1f813c0c63f112e55b7b1c87fecd3269c0fdbce96d03b558c08
@@ -1644,7 +1644,7 @@ items:
       - "§7Adds §c+5% §7to the damage of"
       - "§7Archery potions."
       - ""
-      - "§8Not active yet: Archery potion damage bonus is not implemented"
+      - "§8Not active yet: Needs Basic Brew base-potion substitution in the Brewing Stand (Archery brews only from an Awkward Potion)"
     components:
       - id: SKULL_HEAD
         texture: 459ab57c91c1cc6638e1662eee319ca2b0ab1bbdc2807d680401d5fc6e1e986c
@@ -1972,7 +1972,7 @@ items:
       - " §a+20% §7experience orbs."
       - " §3+10☯ Combat Wisdom"
       - ""
-      - "§8Not active yet: Experience potion bonus is not implemented"
+      - "§8Not active yet: Needs the Melancholic Viking quest items and an experience potion bonus hook"
     components:
       - id: SKULL_HEAD
         texture: 242446763e2b40d0f4cf7daf8599317036fca82af31b8d3e9bfcf3eb483917a

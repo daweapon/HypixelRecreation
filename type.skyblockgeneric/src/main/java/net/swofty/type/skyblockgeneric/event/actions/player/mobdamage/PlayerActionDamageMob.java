@@ -77,6 +77,8 @@ public class PlayerActionDamageMob implements HypixelEventClass {
         float damageAmount = ((Number) valueEvent.getValue()).floatValue()
                 * (float) ReforgeLoadout.outgoingMultiplier(player, mob, critical);
         if (!AttackService.applyHit(player, mob, damageAmount, critical)) return;
+        net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.afterMeleeHit(player, mob, damageAmount, critical);
+        net.swofty.type.skyblockgeneric.item.armor.ArmorHitEffects.onMeleeHit(player, mob);
         player.getPetData().dispatch(new PetEvent.MeleeHit(player, player.getPetData().getEnabledPet(), mob, damageAmount));
 
         double ferocity = player.getStatistics().allStatistics().getOverall(ItemStatistic.FEROCITY);

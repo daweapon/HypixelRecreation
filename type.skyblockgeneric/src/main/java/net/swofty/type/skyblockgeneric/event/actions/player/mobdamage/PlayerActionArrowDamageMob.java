@@ -72,8 +72,10 @@ public class PlayerActionArrowDamageMob implements HypixelEventClass {
         float damageAmount = (float) damage;
         if (!AttackService.applyHit(shooter, collidedWith, damageAmount, critical)) return;
         CombatPetHooks.bowHit(shooter);
+        net.swofty.type.skyblockgeneric.item.armor.ArmorHitEffects.onArrowHit(shooter, collidedWith);
         ArrowEffects.onHit(shooter, arrow, collidedWith, damageAmount, critical);
         punch(arrow, bow, collidedWith);
+        net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowBounce.chain(shooter, bow, collidedWith, damageAmount, critical);
         ArrowDamage.onLanded(shooter, arrow);
 
         double ferocity = ArrowDamage.shooterStatistics(shooter, arrow.getArrowItem()).getOverall(ItemStatistic.FEROCITY);

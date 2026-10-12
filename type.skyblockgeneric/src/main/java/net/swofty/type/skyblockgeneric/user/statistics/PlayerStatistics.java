@@ -196,6 +196,7 @@ public class PlayerStatistics {
             }
         }
         total = ItemStatistics.add(total, Hatcessories.wornStatistics(player, cache.get(PlayerItemOrigin.HELMET)));
+        total = ItemStatistics.add(total, net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.setStatistics(player));
         return ItemStatistics.add(total, TieredArmorSet.statistics(player));
     }
 
@@ -325,8 +326,10 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, MythologicalGear.against(player, enemy));
         total = ItemStatistics.add(total, net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.against(player, enemy));
         total = ItemStatistics.add(total, net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses.against(player, enemy));
+        total = ItemStatistics.add(total, net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.againstStatistics(player, enemy));
         total = ItemStatistics.add(total, allArmorStatistics(causer, enemy));
         total = ItemStatistics.add(total, equipmentStatistics(causer, enemy));
+        total = ItemStatistics.add(total, net.swofty.type.skyblockgeneric.item.equipment.EquipmentBonuses.statistics(player, enemy));
         total = ItemStatistics.add(total, mainHandStatistics(causer, enemy));
         total = ItemStatistics.add(total, spareStatistics());
         total = ItemStatistics.add(total, getTemporaryStatistics());
@@ -340,6 +343,7 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, MayorPerkStatistics.flatBonuses(perks, !HypixelConst.isIslandServer()));
         total = MayorPerkStatistics.applyScaling(perks, total, enemy instanceof SlayerBossMob);
 
+        total = net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.finalise(player, total);
         return ZoneRuleService.capStatistics(player, StatOverrides.apply(player,
                 net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.withRaisedSpeedCap(player, total)));
     }
@@ -597,6 +601,7 @@ public class PlayerStatistics {
         statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.tool.ToolPassives.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.armor.ArmorPassives.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.armor.PieceBonuses.extraItemStatistics(item, player));
+        statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.pieceStatistics(item, player));
 
         return statistics;
     }

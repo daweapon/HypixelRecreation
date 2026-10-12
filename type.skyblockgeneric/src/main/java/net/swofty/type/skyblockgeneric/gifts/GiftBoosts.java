@@ -36,7 +36,9 @@ public final class GiftBoosts {
     }
 
     public static double giftAttackBonusPercent(SkyBlockPlayer player) {
-        return SnowSuit.wornPieces(player) * SNOW_SUIT_GIFT_ATTACK_PERCENT_PER_PIECE + ReindeerPet.snowPowerPercent(player);
+        return SnowSuit.wornPieces(player) * SNOW_SUIT_GIFT_ATTACK_PERCENT_PER_PIECE + ReindeerPet.snowPowerPercent(player)
+                + net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.nutcrackerPieces(player)
+                * net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityMath.NUTCRACKER_GIFT_PERCENT_PER_PIECE;
     }
 
     public static int withGiftAttackBonus(SkyBlockPlayer player, ItemType gift, int earned) {

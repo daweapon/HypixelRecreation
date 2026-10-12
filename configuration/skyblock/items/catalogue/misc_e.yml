@@ -211,10 +211,8 @@ items:
       - "§7from spawning on your island!"
       - ""
       - "§dEmits life-scarring aroma!"
-      - ""
-      - "§8Not active yet: Blocking mob spawns on the island is not wired up yet"
     components:
-      - id: SKULL_HEAD
+      - id: DECORATION_HEAD
         texture: dcaed035c76163faef9895a7bb0a7c54e186a1ee290e656c9b601a523af31071
       - id: DEFAULT_CRAFTABLE
         recipes:
@@ -533,9 +531,9 @@ items:
       - "§7change the radius it effects."
       - ""
       - "§7Selected Radius: §b3"
-      - ""
-      - "§8Not active yet: Changing the island biome is not wired up yet"
     components:
+      - id: INTERACTABLE
+        handler_id: ROOFED_FOREST_BIOME_STICK
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -1055,9 +1053,9 @@ items:
       - "§7change the radius it effects."
       - ""
       - "§7Selected Radius: §b3"
-      - ""
-      - "§8Not active yet: Changing the island biome is not wired up yet"
     components:
+      - id: INTERACTABLE
+        handler_id: SAVANA_BIOME_STICK
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -1090,7 +1088,7 @@ items:
       - "§7private island when you are about to"
       - "§7die. This item will be consumed on use."
       - ""
-      - "§8Not active yet: Death prevention is not wired up yet"
+      - "§8Not active yet: Needs the Enchanted Golden Apple and teleport-on-death prevention (not built)"
   - id: SCARECROW
     material: player_head
     name: "Scarecrow"
@@ -1654,9 +1652,9 @@ items:
     lore:
       - "§7Prevents all mobs from making noise"
       - "§7on your private island."
-      - ""
-      - "§8Not active yet: Muting mob sounds on the island is not wired up yet"
     components:
+      - id: PLACEABLE
+        block_type: ISLAND_UTILITY
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -1685,7 +1683,7 @@ items:
       - "§7Enderman from spawning when"
       - "§7thrown on §dThe End §7Island!"
       - ""
-      - "§8Not active yet: Preventing pearl damage and Endermen spawns is not wired up yet"
+      - "§8Not active yet: Needs thrown Ender Pearls on The End island (pearl teleport, pearl damage and Enderman spawns are not built)"
     components:
       - id: DEFAULT_CRAFTABLE
         recipes:
@@ -1765,15 +1763,13 @@ items:
     rarity: EPIC
     source: "Crafted from 9 Concentrated Stone (Hard Stone VII)"
     lore:
-      - "§8Combinable in Anvil"
-      - ""
       - "§7When applied to a pickaxe or a drill,"
       - "§7increases its §9Efficiency §7level by §a1§7!"
       - "§8Can be applied up to Efficiency X."
       - "§8Requires Efficiency V!"
-      - ""
-      - "§8Not active yet: Anvil Efficiency upgrade is not wired up yet"
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: SIL_EX
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED

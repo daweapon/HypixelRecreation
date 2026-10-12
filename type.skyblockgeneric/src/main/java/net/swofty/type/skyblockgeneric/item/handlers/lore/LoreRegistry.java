@@ -31,6 +31,7 @@ public class LoreRegistry {
         SnowCannon.registerLore();
         SnowSuit.registerLore();
         PartyEquipment.registerLore();
+        net.swofty.type.skyblockgeneric.foraging.FrenzyAxes.registerLore();
         KuudraTeethPlaqueLore.register();
         register("ENCHANTED_BOOK", new LoreConfig(
                 (item, player) -> {

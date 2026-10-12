@@ -67,6 +67,7 @@ public final class AttackService {
                                          float damage, boolean critical, double ferocity) {
         double effectiveFerocity = Math.max(0D, Math.min(MAX_FEROCITY, ferocity));
         int extraHits = calculateExtraHits(effectiveFerocity, ThreadLocalRandom.current().nextDouble(100D));
+        if (extraHits > 0) net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.onFerocityActivated(attacker);
 
         for (int hit = 0; hit < extraHits; hit++) {
             int delay = EXTRA_HIT_DELAY_TICKS * (hit + 1);

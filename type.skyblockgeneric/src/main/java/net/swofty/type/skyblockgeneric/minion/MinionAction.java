@@ -50,8 +50,10 @@ public abstract class MinionAction {
                 : fuel.getComponent(MinionFuelComponent.class).getOutputMultiplier();
         double outputMultiplier = fuelMultiplier * ElectionPerks.factor(SkyBlockMayor.Perk.TURBO_MINIONS);
 
+        boolean flintShovel = extensionData.hasMinionUpgrade(ItemType.FLINT_SHOVEL);
         for (SkyBlockItem item : items) {
-            if (extensionData.hasMinionUpgrade(ItemType.AUTO_SMELTER)) {
+            item = MinionUpgradeEffects.convert(item, minion, flintShovel);
+            if (extensionData.hasMinionUpgrade(ItemType.AUTO_SMELTER) || extensionData.hasMinionUpgrade(ItemType.DWARVEN_COMPACTOR)) {
                 item = FurnaceRecipeRegistry.smelt(item).orElse(item);
             }
             if (outputMultiplier > 1.0) {
@@ -75,6 +77,10 @@ public abstract class MinionAction {
 
                 extensionData.setData(MinionExtensions.SHIPPING_SLOT.getSlots()[0], shippingExtension);
             }
+        }
+
+        if (extensionData.hasMinionUpgrade(ItemType.SUPER_COMPACTOR_3000) || extensionData.hasMinionUpgrade(ItemType.DWARVEN_COMPACTOR)) {
+            MinionCompaction.compact(islandMinion);
         }
 
         if (extensionData.hasMinionUpgrade(ItemType.DIAMOND_SPREADING)) {

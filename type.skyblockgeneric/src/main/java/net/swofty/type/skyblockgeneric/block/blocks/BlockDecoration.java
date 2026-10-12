@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.block.SkyBlockBlock;
 import net.swofty.type.skyblockgeneric.block.impl.BlockBreakable;
 import net.swofty.type.skyblockgeneric.block.impl.BlockPlaceable;
 import net.swofty.type.skyblockgeneric.block.impl.CustomSkyBlockBlock;
+import net.swofty.type.skyblockgeneric.island.IslandUtilityBlocks;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -58,6 +59,7 @@ public class BlockDecoration implements CustomSkyBlockBlock, BlockPlaceable, Blo
                 BlockUtility.applyTexture(block.toBlock(), texture).
                         withTag(ITEM_TYPE_TAG, item.getAttributeHandler().getTypeAsString())
         );
+        IslandUtilityBlocks.place(instance, position, item.getAttributeHandler().getPotentialType());
         ItemStack itemInHand = player.getItemInMainHand().withAmount(player.getItemInMainHand().amount() - 1);
         player.setItemInMainHand(itemInHand);
     }
@@ -69,6 +71,7 @@ public class BlockDecoration implements CustomSkyBlockBlock, BlockPlaceable, Blo
         if (type == null) return;
 
         event.setResultBlock(Block.AIR);
+        IslandUtilityBlocks.remove(event.getInstance(), event.getBlockPosition());
 
         SkyBlockItem skyBlockItem = new SkyBlockItem(ItemType.valueOf(type));
 

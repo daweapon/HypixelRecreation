@@ -103,6 +103,11 @@ public final class ForagingTreeManager {
     }
 
     public static List<HarvestedLog> breakLogs(SkyBlockPlayer player, Point hitPoint, SkyBlockItem tool, double extraSweep) {
+        return breakLogs(player, hitPoint, tool, extraSweep, 1.0);
+    }
+
+    public static List<HarvestedLog> breakLogs(SkyBlockPlayer player, Point hitPoint, SkyBlockItem tool, double extraSweep,
+                                               double sweepScale) {
         Instance instance = player.getInstance();
         BlockPosition hit = BlockPosition.from(hitPoint);
         Block hitBlock = instance.getBlock(hitPoint);
@@ -123,6 +128,8 @@ public final class ForagingTreeManager {
                     .filter(definition -> definition.rarity() == AttributeRarity.COMMON)
                     .filter(definition -> player.getHuntingData().level(definition.id()) > 0).count();
             sweep += AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("C20")) * commonAttributes;
+            sweep += FrenzyAxes.bonusSweep(tool);
+            sweep *= sweepScale;
         }
         TreePart hitPart = tree.parts.getOrDefault(hit, TreePart.TRUNK);
         boolean correctOrder = tree.isCorrectPart(hitPart);

@@ -23,6 +23,8 @@ public final class PieceBonuses {
     private static final Set<String> NUTCRACKER = Set.of("NUTCRACKER_HELMET", "NUTCRACKER_CHESTPLATE",
             "NUTCRACKER_LEGGINGS", "NUTCRACKER_BOOTS");
 
+    private static final Set<String> END_ARMOR = Set.of("END_HELMET", "END_CHESTPLATE", "END_LEGGINGS", "END_BOOTS");
+
     private PieceBonuses() {
     }
 
@@ -51,11 +53,31 @@ public final class PieceBonuses {
         if (NUTCRACKER.contains(id)) {
             return server == ServerType.SKYBLOCK_JERRYS_WORKSHOP ? item.getAttributeHandler().getStatistics() : ItemStatistics.empty();
         }
+        if (END_ARMOR.contains(id)) {
+            return server == ServerType.SKYBLOCK_THE_END ? item.getAttributeHandler().getStatistics() : ItemStatistics.empty();
+        }
+        if ("BOOTS_OF_THE_PACK".equals(id)) {
+            int members = ArmorAbilities.packMembers(packmatesNear(wearer));
+            return ItemStatistics.builder()
+                    .withBase(ItemStatistic.TRUE_DEFENSE, ArmorAbilities.PACK_TRUE_DEFENSE)
+                    .withBase(ItemStatistic.STRENGTH, members * ArmorAbilities.PACK_STRENGTH)
+                    .withBase(ItemStatistic.DEFENSE, members * ArmorAbilities.PACK_DEFENSE).build();
+        }
         if ("ZOMBIE_HAT".equals(id)) {
             double bonus = zombieHatDefense(zombiesNear(wearer));
             return bonus == 0 ? ItemStatistics.empty() : ItemStatistics.builder().withBase(ItemStatistic.DEFENSE, bonus).build();
         }
         return ItemStatistics.empty();
+    }
+
+    private static int packmatesNear(SkyBlockPlayer player) {
+        if (player.getInstance() == null) return 0;
+        int count = 0;
+        for (Entity entity : player.getInstance().getNearbyEntities(player.getPosition(), ArmorAbilities.PACK_RANGE)) {
+            if (entity != player && entity instanceof SkyBlockPlayer other
+                    && "BOOTS_OF_THE_PACK".equals(ArmorWorn.idOf(other.getBoots()))) count++;
+        }
+        return count;
     }
 
     private static int zombiesNear(SkyBlockPlayer player) {

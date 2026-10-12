@@ -38,6 +38,7 @@ public class InteractableRegistry {
         CrimsonItemHandlers.registerInteractables();
         ReaperPepper.registerInteractables();
         net.swofty.type.skyblockgeneric.consumable.VialOfVenom.registerInteractables();
+        net.swofty.type.skyblockgeneric.item.utility.BiomeSticks.registerInteractables();
         PetItems.registerInteractables();
         net.swofty.type.skyblockgeneric.bank.PersonalBankItem.registerInteractables();
         net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments.registerInteractables();

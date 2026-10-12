@@ -32,7 +32,7 @@ items:
       - "§7Current Bonus: §6+0 Cocoa Beans Fortune"
       - ""
       - ""
-      - "§8Not active yet: Consume effect and evolving bonus are not implemented"
+      - "§8Not active yet: Needs the Refined Dark Cacao Truffle (not in the game) and an in-inventory evolving bonus counter"
     components:
       - id: SKULL_HEAD
         texture: db9db373cadbec1912a9ab386d31ceb3e0cd4d6a64f222426588a3b2eb31ed29
@@ -637,7 +637,7 @@ items:
       - "§8You may only gain this bonus once!"
       - ""
       - ""
-      - "§8Not active yet: Counting Chimera I books and the permanent reward are not implemented"
+      - "§8Not active yet: Needs a per-item Chimera I book counter that Mythological Ritual book drops report to"
   - id: DIFFICULT_ITEM
     material: player_head
     name: "An Extremely Difficult Item For You To Find"
@@ -787,7 +787,7 @@ items:
       - "§8§oexpeditions."
       - ""
       - ""
-      - "§8Not active yet: Its anvil coating effects are not implemented"
+      - "§8Not active yet: Needs a per-item coating attribute with Armor of Divan, drill and Powder of the Many hooks"
     components:
       - id: SKULL_HEAD
         texture: 41e064a0e32a806112678d78b561537dfa5ccb65ba43ccb8bc3dd7c5e676853b
@@ -847,7 +847,7 @@ items:
       - "§7with that stat."
       - ""
       - ""
-      - "§8Not active yet: Its Basic Brew potion use is not implemented"
+      - "§8Not active yet: Needs Basic Brew base-potion substitution in the Brewing Stand (Absorption brews only from an Awkward Potion)"
     components:
       - id: SKULL_HEAD
         texture: 7066bf60450226a4be3c2c7c2678bed32288091b8043b9f9b2064fcde5fda5bb
@@ -987,13 +987,10 @@ items:
       - "§7compacting them into their enchanted"
       - "§7form."
       - ""
-      - ""
-      - "§8Not active yet: Smelting and compacting minion output isn't implemented"
     components:
       - id: MINION_UPGRADE
         speed_increase: 0.0
       - id: ENCHANTED
-      - id: NOT_FINISHED_YET
       - id: TRACKED_UNIQUE
       - id: DEFAULT_CRAFTABLE
         default-craftable: false
@@ -1248,7 +1245,7 @@ items:
       - "§7Only works during §dHoppity's Hunt§7."
       - ""
       - ""
-      - "§8Not active yet: Pointing at Chocolate Rabbit Eggs isn't implemented"
+      - "§8Not active yet: Needs Hoppity's Hunt eggs placed in the world (no egg spawns exist to point at)"
     components:
       - id: SKULL_HEAD
         texture: 14a7ff9a10fdae14446499ef3bc1df13b7888d6cd2e311ccab51b8352c6093b4

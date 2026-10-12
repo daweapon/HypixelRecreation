@@ -74,8 +74,6 @@ items:
     unavailable: "Source unconfirmed (Easter event hat)"
     lore:
       - "§7Grants §bJump Boost IV §7while equipped."
-      - ""
-      - "§8Not active yet: Jump Boost IV helmet effect is not implemented"
     components:
       - id: SKULL_HEAD
         texture: b50459bcb08db5ce93e021079c1cfc038c9ebe7ad9a149516efe4d5ee8afb59f
@@ -158,7 +156,7 @@ items:
       - "§7fighting against Dante, and reduces"
       - "§7damage taken from Dante."
       - ""
-      - "§8Not active yet: Power of the Resistance needs Dante"
+      - "§8Not active yet: Power of the Resistance needs the Dante boss event"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -180,7 +178,7 @@ items:
       - "§7fighting against Dante, and reduces"
       - "§7damage taken from Dante."
       - ""
-      - "§8Not active yet: Power of the Resistance needs Dante"
+      - "§8Not active yet: Power of the Resistance needs the Dante boss event"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -198,7 +196,7 @@ items:
       - "§7fighting against Dante, and reduces"
       - "§7damage taken from Dante."
       - ""
-      - "§8Not active yet: Power of the Resistance needs Dante"
+      - "§8Not active yet: Power of the Resistance needs the Dante boss event"
     components:
       - id: SKULL_HEAD
         texture: 74cf3c5f24c9bf8b9031e8aed5337b6a07f819cde8c622085545162f8a693060
@@ -218,7 +216,7 @@ items:
       - "§7fighting against Dante, and reduces"
       - "§7damage taken from Dante."
       - ""
-      - "§8Not active yet: Power of the Resistance needs Dante"
+      - "§8Not active yet: Power of the Resistance needs the Dante boss event"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -605,7 +603,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 40§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -670,7 +668,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 40§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -742,7 +740,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 40§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: SKULL_HEAD
         texture: 5086ddbe960f33480ca229da7402391ab417d32ebb21770430ea610de5801fe3
@@ -805,7 +803,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 40§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -999,7 +997,7 @@ items:
       - "§7Grants §e+0 Mining Spread §7on §6Ores"
       - "§7and §9Blocks§7."
       - ""
-      - "§8Not active yet: Glossy Mineralworks (Mining Spread) is not implemented"
+      - "§8Not active yet: Needs the Mining Spread mechanic (the stat exists but no block-breaking code consumes it)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1039,7 +1037,7 @@ items:
       - "§7Grants §e+0 Mining Spread §7on §6Ores"
       - "§7and §9Blocks§7."
       - ""
-      - "§8Not active yet: Glossy Mineralworks (Mining Spread) is not implemented"
+      - "§8Not active yet: Needs the Mining Spread mechanic (the stat exists but no block-breaking code consumes it)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1079,7 +1077,7 @@ items:
       - "§7Grants §e+0 Mining Spread §7on §6Ores"
       - "§7and §9Blocks§7."
       - ""
-      - "§8Not active yet: Glossy Mineralworks (Mining Spread) is not implemented"
+      - "§8Not active yet: Needs the Mining Spread mechanic (the stat exists but no block-breaking code consumes it)"
     components:
       - id: SKULL_HEAD
         texture: 6528b235c607467c369ca9c3f2bf89014fe2ea45f88df28d029a581ff4bb1721
@@ -1117,7 +1115,7 @@ items:
       - "§7Grants §e+0 Mining Spread §7on §6Ores"
       - "§7and §9Blocks§7."
       - ""
-      - "§8Not active yet: Glossy Mineralworks (Mining Spread) is not implemented"
+      - "§8Not active yet: Needs the Mining Spread mechanic (the stat exists but no block-breaking code consumes it)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1163,7 +1161,7 @@ items:
       - "§7Obtained during the §5Alchemist"
       - "§7experiments!"
       - ""
-      - "§8Not active yet: Spooky and Fearsome need the Great Spook event"
+      - "§8Not active yet: Needs the Great Spook event and the Fear stat"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1191,7 +1189,7 @@ items:
       - "§7Obtained during the §5Alchemist"
       - "§7experiments!"
       - ""
-      - "§8Not active yet: Spooky and Fearsome need the Great Spook event"
+      - "§8Not active yet: Needs the Great Spook event and the Fear stat"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1219,7 +1217,7 @@ items:
       - "§7Obtained during the §5Alchemist"
       - "§7experiments!"
       - ""
-      - "§8Not active yet: Spooky and Fearsome need the Great Spook event"
+      - "§8Not active yet: Needs the Great Spook event and the Fear stat"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -1247,7 +1245,7 @@ items:
       - "§7Obtained during the §5Alchemist"
       - "§7experiments!"
       - ""
-      - "§8Not active yet: Spooky and Fearsome need the Great Spook event"
+      - "§8Not active yet: Needs the Great Spook event and the Fear stat"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1279,7 +1277,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 50§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1309,7 +1307,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 50§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1339,7 +1337,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 50§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: SKULL_HEAD
         texture: 46e48a6eff318dcda57d5d76a9b2656be25973e3d472b6d2e446a8e60f60a78a
@@ -1371,7 +1369,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 50§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1409,7 +1407,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1462,7 +1460,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1515,7 +1513,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: SKULL_HEAD
         texture: 8208669e699d6f0d3a77f74b2b27228ce51b9359678d26f9c3408764b2e779aa
@@ -1566,7 +1564,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - ""
-      - "§8Not active yet: Tiered bonus and Farmer's Grace need the Garden (Cropie drops, Greenhouse, trampling)"
+      - "§8Not active yet: Needs the Garden (no Garden, Greenhouse or Cropie system exists)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1629,7 +1627,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Spider Slayer 7§c."
       - ""
-      - "§8Not active yet: Set bonus, Spider Bulwark, Double Jump and extra bonuses are not implemented"
+      - "§8Not active yet: Needs double-tap jump detection, per-item Spider kill counters and the Venom healing-reduction debuff"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1697,7 +1695,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Spider Slayer 7§c."
       - ""
-      - "§8Not active yet: Set bonus, Spider Bulwark, Double Jump and extra bonuses are not implemented"
+      - "§8Not active yet: Needs double-tap jump detection, per-item Spider kill counters and the Venom healing-reduction debuff"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1764,7 +1762,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Spider Slayer 7§c."
       - ""
-      - "§8Not active yet: Set bonus, Spider Bulwark, Double Jump and extra bonuses are not implemented"
+      - "§8Not active yet: Needs double-tap jump detection, per-item Spider kill counters and the Venom healing-reduction debuff"
     components:
       - id: SKULL_HEAD
         texture: 307cefa20028878ef529d6b9208d2812010d086f961b964c328f09b3f6573d6
@@ -1829,7 +1827,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Spider Slayer 7§c."
       - ""
-      - "§8Not active yet: Set bonus, Spider Bulwark, Double Jump and extra bonuses are not implemented"
+      - "§8Not active yet: Needs double-tap jump detection, per-item Spider kill counters and the Venom healing-reduction debuff"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1883,8 +1881,6 @@ items:
       - "§c0.6x§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
-      - ""
-      - "§8Not active yet: Mist Aura (ghost damage reduction) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1922,8 +1918,6 @@ items:
       - "§c0.6x§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
-      - ""
-      - "§8Not active yet: Mist Aura (ghost damage reduction) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1962,8 +1956,6 @@ items:
       - "§c0.6x§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
-      - ""
-      - "§8Not active yet: Mist Aura (ghost damage reduction) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -2001,8 +1993,6 @@ items:
       - "§c0.6x§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
-      - ""
-      - "§8Not active yet: Mist Aura (ghost damage reduction) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2034,18 +2024,7 @@ items:
       strength: 25
     source: "Crafted from 40 Strong Fragment"
     lore:
-      - "§6Full Set Bonus: Strong Blood §7(0/4)"
-      - "§7Improves §9Aspect of the End"
-      - "§8⋗ §c+75 Damage"
-      - ""
-      - "§7Instant Transmission:"
-      - "§8⋗ §a+2 §7teleport range"
-      - "§8⋗ §a+3 §7seconds"
-      - "§8⋗ §c+5 Strength §7on cast"
-      - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
-      - ""
-      - "§8Not active yet: Strong Blood (Aspect of the End boost) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2085,18 +2064,7 @@ items:
       strength: 25
     source: "Crafted from 80 Strong Fragment"
     lore:
-      - "§6Full Set Bonus: Strong Blood §7(0/4)"
-      - "§7Improves §9Aspect of the End"
-      - "§8⋗ §c+75 Damage"
-      - ""
-      - "§7Instant Transmission:"
-      - "§8⋗ §a+2 §7teleport range"
-      - "§8⋗ §a+3 §7seconds"
-      - "§8⋗ §c+5 Strength §7on cast"
-      - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
-      - ""
-      - "§8Not active yet: Strong Blood (Aspect of the End boost) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2137,18 +2105,7 @@ items:
       strength: 25
     source: "Crafted from 50 Strong Fragment"
     lore:
-      - "§6Full Set Bonus: Strong Blood §7(0/4)"
-      - "§7Improves §9Aspect of the End"
-      - "§8⋗ §c+75 Damage"
-      - ""
-      - "§7Instant Transmission:"
-      - "§8⋗ §a+2 §7teleport range"
-      - "§8⋗ §a+3 §7seconds"
-      - "§8⋗ §c+5 Strength §7on cast"
-      - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
-      - ""
-      - "§8Not active yet: Strong Blood (Aspect of the End boost) is not implemented"
     components:
       - id: SKULL_HEAD
         texture: 78bc6551beb2148d939b69925140d2379fe0fab6e7d31f65df50b59e9f77a0e4
@@ -2186,18 +2143,7 @@ items:
       strength: 25
     source: "Crafted from 70 Strong Fragment"
     lore:
-      - "§6Full Set Bonus: Strong Blood §7(0/4)"
-      - "§7Improves §9Aspect of the End"
-      - "§8⋗ §c+75 Damage"
-      - ""
-      - "§7Instant Transmission:"
-      - "§8⋗ §a+2 §7teleport range"
-      - "§8⋗ §a+3 §7seconds"
-      - "§8⋗ §c+5 Strength §7on cast"
-      - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
-      - ""
-      - "§8Not active yet: Strong Blood (Aspect of the End boost) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2243,7 +2189,7 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 30§c."
       - ""
-      - "§8Not active yet: Newton's Demise (attack speed cap) is not implemented"
+      - "§8Not active yet: Needs a raisable Attack Speed cap (the cap is fixed) and Cane Knot"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2271,7 +2217,7 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 30§c."
       - ""
-      - "§8Not active yet: Newton's Demise (attack speed cap) is not implemented"
+      - "§8Not active yet: Needs a raisable Attack Speed cap (the cap is fixed) and Cane Knot"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2299,7 +2245,7 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 30§c."
       - ""
-      - "§8Not active yet: Newton's Demise (attack speed cap) is not implemented"
+      - "§8Not active yet: Needs a raisable Attack Speed cap (the cap is fixed) and Cane Knot"
     components:
       - id: SKULL_HEAD
         texture: cad67cf33188a54b6f55d2ef5248cd3b72176994e1d203731e86b365a8581726
@@ -2325,7 +2271,7 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 30§c."
       - ""
-      - "§8Not active yet: Newton's Demise (attack speed cap) is not implemented"
+      - "§8Not active yet: Needs a raisable Attack Speed cap (the cap is fixed) and Cane Knot"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2346,7 +2292,7 @@ items:
     lore:
       - "§7Rift Time: §a+15s"
       - ""
-      - "§8Not active yet: Rift Time and the helmet ability need the Rift"
+      - "§8Not active yet: Needs the Rift"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2362,7 +2308,7 @@ items:
     lore:
       - "§7Rift Time: §a+15s"
       - ""
-      - "§8Not active yet: Rift Time and the helmet ability need the Rift"
+      - "§8Not active yet: Needs the Rift"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2381,7 +2327,7 @@ items:
       - "§8Note: Monsters already grant time on"
       - "§8death."
       - ""
-      - "§8Not active yet: Rift Time and the helmet ability need the Rift"
+      - "§8Not active yet: Needs the Rift"
     components:
       - id: SKULL_HEAD
         texture: fc8593b91058ff24a0f6845130ed3e449569ce9c6b22fa9cd1ed7360b5045ea3
@@ -2395,7 +2341,7 @@ items:
     lore:
       - "§7Rift Time: §a+15s"
       - ""
-      - "§8Not active yet: Rift Time and the helmet ability need the Rift"
+      - "§8Not active yet: Needs the Rift"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2435,7 +2381,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 7§c."
       - ""
-      - "§8Not active yet: Enrage, Trolling The Reaper and Zombie Bulwark are not implemented"
+      - "§8Not active yet: Healing Wands bonus needs functional healing wands (the wands have no heal ability yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2504,7 +2450,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 7§c."
       - ""
-      - "§8Not active yet: Enrage, Trolling The Reaper and Zombie Bulwark are not implemented"
+      - "§8Not active yet: Healing Wands bonus needs functional healing wands (the wands have no heal ability yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2573,7 +2519,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 7§c."
       - ""
-      - "§8Not active yet: Enrage, Trolling The Reaper and Zombie Bulwark are not implemented"
+      - "§8Not active yet: Healing Wands bonus needs functional healing wands (the wands have no heal ability yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2623,8 +2569,6 @@ items:
       - "§7explode on impact dealing §a50 §7base"
       - "§7Magic Damage to enemies within §a8"
       - "§7blocks."
-      - ""
-      - "§8Not active yet: Exploding arrows are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -2659,8 +2603,6 @@ items:
       - "§7nullifying damage you take but"
       - "§7consuming a bone in the process."
       - "§7Bones regenerate every §a30§7 seconds."
-      - ""
-      - "§8Not active yet: Bone Shield is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -2715,8 +2657,6 @@ items:
       - "§8Max of 3 players!"
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 6§c."
-      - ""
-      - "§8Not active yet: Pack bonuses and the Animal defense are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2756,8 +2696,6 @@ items:
       - "§7Lay eggs when you sneak! Has a"
       - "§7cooldown of §a5 §7seconds. Also"
       - "§7reduces fall damage by §a5%§7."
-      - ""
-      - "§8Not active yet: Egg laying and the fall damage reduction are not implemented"
     components:
       - id: SKULL_HEAD
         texture: 1638469a599ceef7207537603248a9ab11ff591fd378bea4735b346a7fae893
@@ -2791,8 +2729,6 @@ items:
     lore:
       - "§7Grants immunity to de-buffs while"
       - "§7equipped."
-      - ""
-      - "§8Not active yet: Debuff immunity is not implemented"
     components:
       - id: SKULL_HEAD
         texture: 5d6c6eda942f7f5f71c3161c7306f4aed307d82895f9d2b07ab4525718edc5
@@ -2896,7 +2832,7 @@ items:
       - ""
       - "§5§kX§5 Rift-Transferable §r§5§kX"
       - ""
-      - "§8Not active yet: Coin upkeep and animal picking are not implemented"
+      - "§8Not active yet: Needs a per-second coin drain and a pet-style animal selector"
     components:
       - id: SKULL_HEAD
         texture: 6d18bcec40faeb9d8dde0ef43d3a8de14743b554ea43bc39237a179bffadfc7e
@@ -2986,7 +2922,7 @@ items:
       - "§7Obtained from the §dA Honk and Seek"
       - "§dAdventure §7event during April Fools."
       - ""
-      - "§8Not active yet: Think has no effect"
+      - "§8Not active yet: Needs the April Fools event; Think has no gameplay effect to implement"
     components:
       - id: SKULL_HEAD
         texture: 822d8e751c8f2fd4c8942c44bdb2f5ca4d8ae8e575ed3eb34c18a86e93b
@@ -3006,7 +2942,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Vampire Slayer 5§c."
       - ""
-      - "§8Not active yet: Rift Time, Hearts and Mana Regen need the Rift"
+      - "§8Not active yet: Needs the Rift"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -3026,7 +2962,7 @@ items:
       - "§7While worn, grants a small chance to"
       - "§7catch §aMusic Discs §7while fishing."
       - ""
-      - "§8Not active yet: Music Disc fishing and the nearby music are not implemented"
+      - "§8Not active yet: Needs Music Discs in the fishing loot and nearby note-block playback"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -3066,7 +3002,7 @@ items:
       - "§7Rift Time: §a+45s"
       - "§7Mana Regen: §b+10%"
       - ""
-      - "§8Not active yet: Rift Time, Hearts and Mana Regen need the Rift"
+      - "§8Not active yet: Needs the Rift"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -3081,11 +3017,14 @@ items:
     default_statistics:
       defense: 290
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Boots 10"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3114,11 +3053,14 @@ items:
     default_statistics:
       defense: 130
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Boots 2"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3147,11 +3089,14 @@ items:
     default_statistics:
       defense: 210
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Boots 6"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3180,11 +3125,14 @@ items:
     default_statistics:
       defense: 340
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Chestplate 9"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3213,11 +3161,14 @@ items:
     default_statistics:
       defense: 180
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Chestplate 1"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3246,11 +3197,14 @@ items:
     default_statistics:
       defense: 260
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Chestplate 5"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3279,11 +3233,14 @@ items:
     default_statistics:
       defense: 110
     source: "Crafted from 5 Enchanted Diamond Block"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3308,11 +3265,14 @@ items:
     default_statistics:
       defense: 350
     unavailable: "Source unconfirmed (no known recipe)"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
   - id: PERFECT_HELMET_5
     material: diamond_helmet
     name: "Perfect Helmet - Tier V"
@@ -3320,11 +3280,14 @@ items:
     default_statistics:
       defense: 190
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Helmet 4"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3353,11 +3316,14 @@ items:
     default_statistics:
       defense: 270
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Helmet 8"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3386,11 +3352,14 @@ items:
     default_statistics:
       defense: 360
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Leggings 11"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3419,11 +3388,14 @@ items:
     default_statistics:
       defense: 200
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Leggings 3"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3452,11 +3424,14 @@ items:
     default_statistics:
       defense: 280
     source: "Crafted from 4 Enchanted Diamond Block, 1 Perfect Leggings 7"
-    lore:
-      - "§8Not active yet: Gemstone slots are not active yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
+      - id: GEMSTONE
+        gemstone_slots:
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
+          - gemstone: UNIVERSAL
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -3491,8 +3466,6 @@ items:
       - "§7While wearing, your attacks have a"
       - "§7chance to deal §a10 damage plus 20%"
       - "§7of your Strength to nearby enemies!"
-      - ""
-      - "§8Not active yet: Spiky is not implemented"
     components:
       - id: SKULL_HEAD
         texture: 44f7f2203e3a850b6c83dce47fd6714a62e4d7648c16ed1fd9dc8168ab3c484f
@@ -3527,7 +3500,7 @@ items:
       - "§7Seems to attract §aBullfrogs §7due to its"
       - "§7red hue."
       - ""
-      - "§8Not active yet: Needs Lotus Atoll materials"
+      - "§8Not active yet: Needs the Lotus Atoll and the Bullfrog"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -3555,8 +3528,6 @@ items:
       - "§7wearer with the ability to §aburst"
       - "§aforward§7 when sneaking in water."
       - "§8Mana Cost: §b20"
-      - ""
-      - "§8Not active yet: Water Burst is not implemented"
     components:
       - id: SKULL_HEAD
         texture: a5b43503b10f52f48f4bcc4715b4a0a56e7ef39533a181e25b48f5c38affe71
@@ -3573,7 +3544,7 @@ items:
       - "§7Breathe §a5x §7as long underwater when"
       - "§7wearing!"
       - ""
-      - "§8Not active yet: Extended underwater breathing is not implemented"
+      - "§8Not active yet: Needs an air and drowning system (players cannot drown yet)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -3604,7 +3575,7 @@ items:
     lore:
       - "§7Extra chance to fish up Squids!"
       - ""
-      - "§8Not active yet: Extra Squid catches are not implemented"
+      - "§8Not active yet: Needs a per-player sea creature weighting hook in fishing"
     components:
       - id: SKULL_HEAD
         texture: 32581d564f01d712255125e1f101e534217f76e3599dab7f4ae0ffe328f729eb
@@ -3661,7 +3632,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Vampire Slayer 1§c."
       - ""
-      - "§8Not active yet: Rift Time, Hearts and Mana Regen need the Rift"
+      - "§8Not active yet: Needs the Rift"
     components:
       - id: SKULL_HEAD
         texture: 5d98a12f32a0284b74fefb9e982a1e9ec2487766470aa1230f6f26f9aace3de6
@@ -3695,7 +3666,7 @@ items:
       - "§7Rift Time: §a+130s"
       - "§7Hearts: §c+1"
       - ""
-      - "§8Not active yet: Rift Time, Hearts and Mana Regen need the Rift"
+      - "§8Not active yet: Needs the Rift"
     components:
       - id: SKULL_HEAD
         texture: 43b797ae013d2b882db3163465b912f03d57c82d44df0486df032e7bab86479a

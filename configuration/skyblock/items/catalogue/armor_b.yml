@@ -16,8 +16,6 @@ items:
       - "§8Mana Cost: §b20"
       - ""
       - "§4❣ §cRequires §aFishing Skill 13§c."
-      - ""
-      - "§8Not active yet: Water Burst needs water bursting"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -42,8 +40,6 @@ items:
       - "§8Mana Cost: §b20"
       - ""
       - "§4❣ §cRequires §aFishing Skill 13§c."
-      - ""
-      - "§8Not active yet: Water Burst needs water bursting"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -65,8 +61,6 @@ items:
       - "§7wearer with the ability to §aburst"
       - "§aforward§7 when sneaking in water."
       - "§8Mana Cost: §b20"
-      - ""
-      - "§8Not active yet: Water Burst needs water bursting"
     components:
       - id: SKULL_HEAD
         texture: a5b43503b10f52f48f4bcc4715b4a0a56e7ef39533a181e25b48f5c38affe71
@@ -107,8 +101,6 @@ items:
       - "§8Mana Cost: §b20"
       - ""
       - "§4❣ §cRequires §aFishing Skill 13§c."
-      - ""
-      - "§8Not active yet: Water Burst needs water bursting"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -133,8 +125,6 @@ items:
       - "§8Mana Cost: §b20"
       - ""
       - "§4❣ §cRequires §aFishing Skill 13§c."
-      - ""
-      - "§8Not active yet: Water Burst needs water bursting"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -162,7 +152,7 @@ items:
       - ""
       - "§4❣ §cRequires §aHard Stone Collection V§c."
       - ""
-      - "§8Not active yet: Absorb needs Yog kills"
+      - "§8Not active yet: Needs the Yog mob and a per-item kill counter"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -208,7 +198,7 @@ items:
       - ""
       - "§4❣ §cRequires §aHard Stone Collection V§c."
       - ""
-      - "§8Not active yet: Absorb needs Yog kills"
+      - "§8Not active yet: Needs the Yog mob and a per-item kill counter"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -254,7 +244,7 @@ items:
       - ""
       - "§4❣ §cRequires §aHard Stone Collection V§c."
       - ""
-      - "§8Not active yet: Absorb needs Yog kills"
+      - "§8Not active yet: Needs the Yog mob and a per-item kill counter"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -300,7 +290,7 @@ items:
       - ""
       - "§4❣ §cRequires §aHard Stone Collection V§c."
       - ""
-      - "§8Not active yet: Absorb needs Yog kills"
+      - "§8Not active yet: Needs the Yog mob and a per-item kill counter"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -418,7 +408,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFishing Skill 20§c."
       - ""
-      - "§8Not active yet: underwater set bonuses need diving content"
+      - "§8Not active yet: Needs an air and drowning system (players cannot drown yet) and a Treasure Chance underwater condition"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -468,7 +458,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFishing Skill 20§c."
       - ""
-      - "§8Not active yet: underwater set bonuses need diving content"
+      - "§8Not active yet: Needs an air and drowning system (players cannot drown yet) and a Treasure Chance underwater condition"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -518,7 +508,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFishing Skill 20§c."
       - ""
-      - "§8Not active yet: underwater set bonuses need diving content"
+      - "§8Not active yet: Needs an air and drowning system (players cannot drown yet) and a Treasure Chance underwater condition"
     components:
       - id: SKULL_HEAD
         texture: d8f11c2b1eb0568cac64f976e50e0e45f3c09a65801e7ed72734b1a99f1606ca
@@ -570,7 +560,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFishing Skill 20§c."
       - ""
-      - "§8Not active yet: underwater set bonuses need diving content"
+      - "§8Not active yet: Needs an air and drowning system (players cannot drown yet) and a Treasure Chance underwater condition"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -612,8 +602,6 @@ items:
       - "§7Island!"
       - ""
       - "§4❣ §cRequires §aCombat Skill 12§c."
-      - ""
-      - "§8Not active yet: the 2x stats on the End Island are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -633,8 +621,6 @@ items:
       - "§7Island!"
       - ""
       - "§4❣ §cRequires §aCombat Skill 12§c."
-      - ""
-      - "§8Not active yet: the 2x stats on the End Island are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -654,8 +640,6 @@ items:
       - "§7Island!"
       - ""
       - "§4❣ §cRequires §aCombat Skill 12§c."
-      - ""
-      - "§8Not active yet: the 2x stats on the End Island are not implemented"
     components:
       - id: SKULL_HEAD
         texture: f715ca0f742544ae3ca104297578c2ed700ea3a54980413512f5e7a0bc06729a
@@ -677,8 +661,6 @@ items:
       - "§7Island!"
       - ""
       - "§4❣ §cRequires §aCombat Skill 12§c."
-      - ""
-      - "§8Not active yet: the 2x stats on the End Island are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -855,8 +837,6 @@ items:
       - "§8+100 per 5,000 rods"
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
-      - ""
-      - "§8Not active yet: Frozen Blazing Aura is not implemented (Slowness on mobs)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -903,8 +883,6 @@ items:
       - "§8+100 per 5,000 rods"
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
-      - ""
-      - "§8Not active yet: Frozen Blazing Aura is not implemented (Slowness on mobs)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -951,8 +929,6 @@ items:
       - "§8+100 per 5,000 rods"
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
-      - ""
-      - "§8Not active yet: Frozen Blazing Aura is not implemented (Slowness on mobs)"
     components:
       - id: SKULL_HEAD
         texture: 70310b55eed958fee8ffaaf718467167deb1a7c9046d67b25887b596925636bb
@@ -997,8 +973,6 @@ items:
       - "§8+100 per 5,000 rods"
       - ""
       - "§4❣ §cRequires §aCombat Skill 22§c."
-      - ""
-      - "§8Not active yet: Frozen Blazing Aura is not implemented (Slowness on mobs)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1040,7 +1014,7 @@ items:
       - "§7Mining Speed. §6+1 Mining Speed §7for"
       - "§7every §b15 Intelligence §7removed."
       - ""
-      - "§8Not active yet: Smart Miner needs per-player Intelligence conversion"
+      - "§8Not active yet: Needs a post-aggregation stat conversion hook (Intelligence into Mining Speed)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1064,7 +1038,7 @@ items:
       - "§7Mining Speed. §6+1 Mining Speed §7for"
       - "§7every §b15 Intelligence §7removed."
       - ""
-      - "§8Not active yet: Smart Miner needs per-player Intelligence conversion"
+      - "§8Not active yet: Needs a post-aggregation stat conversion hook (Intelligence into Mining Speed)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1088,7 +1062,7 @@ items:
       - "§7Mining Speed. §6+1 Mining Speed §7for"
       - "§7every §b15 Intelligence §7removed."
       - ""
-      - "§8Not active yet: Smart Miner needs per-player Intelligence conversion"
+      - "§8Not active yet: Needs a post-aggregation stat conversion hook (Intelligence into Mining Speed)"
     components:
       - id: SKULL_HEAD
         texture: 82cbb800ce0bd9ea4cecc0ecce3c9528cdef396f3fd779a287dc6d5cb99e2394
@@ -1110,7 +1084,7 @@ items:
       - "§7Mining Speed. §6+1 Mining Speed §7for"
       - "§7every §b15 Intelligence §7removed."
       - ""
-      - "§8Not active yet: Smart Miner needs per-player Intelligence conversion"
+      - "§8Not active yet: Needs a post-aggregation stat conversion hook (Intelligence into Mining Speed)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1136,7 +1110,7 @@ items:
       - ""
       - "§7Bonus HP: §a0/100"
       - ""
-      - "§8Not active yet: Growth is not implemented"
+      - "§8Not active yet: Needs per-item stat counters stored on armour pieces (+1 Health per kill)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1179,7 +1153,7 @@ items:
       - ""
       - "§7Bonus HP: §a0/100"
       - ""
-      - "§8Not active yet: Growth is not implemented"
+      - "§8Not active yet: Needs per-item stat counters stored on armour pieces (+1 Health per kill)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1223,7 +1197,7 @@ items:
       - ""
       - "§7Bonus HP: §a0/100"
       - ""
-      - "§8Not active yet: Growth is not implemented"
+      - "§8Not active yet: Needs per-item stat counters stored on armour pieces (+1 Health per kill)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -1266,7 +1240,7 @@ items:
       - ""
       - "§7Bonus HP: §a0/100"
       - ""
-      - "§8Not active yet: Growth is not implemented"
+      - "§8Not active yet: Needs per-item stat counters stored on armour pieces (+1 Health per kill)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1380,7 +1354,7 @@ items:
       - "§7Grants §e+0 Mining Spread §7on §6Ores"
       - "§7and §9Blocks§7."
       - ""
-      - "§8Not active yet: Mineralworks (Mining Spread) is not implemented"
+      - "§8Not active yet: Needs the Mining Spread mechanic (the stat exists but no block-breaking code consumes it)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1422,7 +1396,7 @@ items:
       - "§7Grants §e+0 Mining Spread §7on §6Ores"
       - "§7and §9Blocks§7."
       - ""
-      - "§8Not active yet: Mineralworks (Mining Spread) is not implemented"
+      - "§8Not active yet: Needs the Mining Spread mechanic (the stat exists but no block-breaking code consumes it)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1462,7 +1436,7 @@ items:
       - "§7Grants §e+0 Mining Spread §7on §6Ores"
       - "§7and §9Blocks§7."
       - ""
-      - "§8Not active yet: Mineralworks (Mining Spread) is not implemented"
+      - "§8Not active yet: Needs the Mining Spread mechanic (the stat exists but no block-breaking code consumes it)"
     components:
       - id: SKULL_HEAD
         texture: a95280a7b21b06e3887f165c8ca7a03bfac96378acd96cdf5944bcd08a0b6587
@@ -1499,7 +1473,7 @@ items:
       - "§7Grants §e+0 Mining Spread §7on §6Ores"
       - "§7and §9Blocks§7."
       - ""
-      - "§8Not active yet: Mineralworks (Mining Spread) is not implemented"
+      - "§8Not active yet: Needs the Mining Spread mechanic (the stat exists but no block-breaking code consumes it)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1966,8 +1940,6 @@ items:
       - "§7lightning. It's unstable!"
       - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
-      - ""
-      - "§8Not active yet: Unstable Blood lightning strikes are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2008,8 +1980,6 @@ items:
       - "§7lightning. It's unstable!"
       - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
-      - ""
-      - "§8Not active yet: Unstable Blood lightning strikes are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2052,8 +2022,6 @@ items:
       - "§7lightning. It's unstable!"
       - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
-      - ""
-      - "§8Not active yet: Unstable Blood lightning strikes are not implemented"
     components:
       - id: SKULL_HEAD
         texture: 605fc4e2b68c45059afef3999e9a95aa3d8943597a7894e569397d6cf5d1672a
@@ -2092,8 +2060,6 @@ items:
       - "§7lightning. It's unstable!"
       - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
-      - ""
-      - "§8Not active yet: Unstable Blood lightning strikes are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2282,7 +2248,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 4§c."
       - ""
-      - "§8Not active yet: Trolling The Reaper and Zombie Bulwark are not implemented"
+      - "§8Not active yet: Healing Wands bonus and Zombie Bulwark need functional healing wands and per-item Zombie kill counters"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2329,7 +2295,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 4§c."
       - ""
-      - "§8Not active yet: Trolling The Reaper and Zombie Bulwark are not implemented"
+      - "§8Not active yet: Healing Wands bonus and Zombie Bulwark need functional healing wands and per-item Zombie kill counters"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2377,7 +2343,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Zombie Slayer 4§c."
       - ""
-      - "§8Not active yet: Trolling The Reaper and Zombie Bulwark are not implemented"
+      - "§8Not active yet: Healing Wands bonus and Zombie Bulwark need functional healing wands and per-item Zombie kill counters"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2418,7 +2384,7 @@ items:
       - ""
       - "§4This item is Arachnal !"
       - ""
-      - "§8Not active yet: Double Jump is not implemented"
+      - "§8Not active yet: Needs double-tap jump input detection"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2616,7 +2582,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFishing Skill 5§c."
       - ""
-      - "§8Not active yet: Reality Check needs Wormholes"
+      - "§8Not active yet: Reality Check needs the Lotus Atoll wormholes"
     components:
       - id: SKULL_HEAD
         texture: abe42a481ce4419604910531aaca9d5bff2f7b430585103189d476f558c85e7e
@@ -3114,7 +3080,7 @@ items:
       - "§7chance to deal §a10 damage plus 20%"
       - "§7of your Strength to nearby enemies!"
       - ""
-      - "§8Not active yet: Thorns V and Spiky are not implemented"
+      - "§8Not active yet: Thorns V innate enchantment is not applied to this piece"
     components:
       - id: SKULL_HEAD
         texture: 44f7f2203e3a850b6c83dce47fd6714a62e4d7648c16ed1fd9dc8168ab3c484f
@@ -3155,8 +3121,6 @@ items:
       - "§8Mana Cost: §b20"
       - ""
       - "§4❣ §cRequires §aFishing Skill 13§c."
-      - ""
-      - "§8Not active yet: Water Burst needs water bursting"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -3227,7 +3191,7 @@ items:
       - "§7a time."
       - "§8Cooldown: §a5s"
       - ""
-      - "§8Not active yet: Sparkle is not implemented"
+      - "§8Not active yet: Needs the cosmetic Sparkle right-click handler"
     components:
       - id: SKULL_HEAD
         texture: f34c2716a56557cc79333ab50391ca7a04bb27389198b57f41b244b001dff050

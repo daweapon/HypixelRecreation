@@ -19,6 +19,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+      - ""
+      - "§8Not active yet: Gemstone Gatherer and the gemstone Mining Fortune need gemstone ores and the Crystal Hollows, which do not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -44,6 +46,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+      - ""
+      - "§8Not active yet: Gemstone Gatherer and the gemstone Mining Fortune need gemstone ores and the Crystal Hollows, which do not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
@@ -69,6 +73,8 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8This item can be reforged!"
+      - ""
+      - "§8Not active yet: Depth Champion and Deepness Within count armour pieces only; equipment pieces are not added to the tier yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -94,6 +100,8 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8This item can be reforged!"
+      - ""
+      - "§8Not active yet: Depth Champion and Deepness Within count armour pieces only; equipment pieces are not added to the tier yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
@@ -119,6 +127,8 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8This item can be reforged!"
+      - ""
+      - "§8Not active yet: Depth Champion and Deepness Within count armour pieces only; equipment pieces are not added to the tier yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -144,6 +154,8 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8This item can be reforged!"
+      - ""
+      - "§8Not active yet: Depth Champion and Deepness Within count armour pieces only; equipment pieces are not added to the tier yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -168,6 +180,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§8§l* §8Co-op Soulbound §8§l*"
+      - ""
+      - "§8Not active yet: Arachne's Faithful needs Arachne's Keeper and the Arachnal tier, which are not built"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -192,6 +206,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§8§l* §8Co-op Soulbound §8§l*"
+      - ""
+      - "§8Not active yet: Arachne's Faithful needs Arachne's Keeper and the Arachnal tier, which are not built"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -216,6 +232,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§8§l* §8Co-op Soulbound §8§l*"
+      - ""
+      - "§8Not active yet: Arachne's Faithful needs Arachne's Keeper and the Arachnal tier, which are not built"
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
@@ -240,6 +258,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§8§l* §8Co-op Soulbound §8§l*"
+      - ""
+      - "§8Not active yet: Arachne's Faithful needs Arachne's Keeper and the Arachnal tier, which are not built"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -263,6 +283,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aFishing Skill 5§c."
+      - ""
+      - "§8Not active yet: Swamp Soldier counts armour pieces only; equipment pieces are not added to the tier yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -286,6 +308,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aFishing Skill 5§c."
+      - ""
+      - "§8Not active yet: Swamp Soldier counts armour pieces only; equipment pieces are not added to the tier yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -309,6 +333,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aFishing Skill 5§c."
+      - ""
+      - "§8Not active yet: Swamp Soldier counts armour pieces only; equipment pieces are not added to the tier yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
@@ -332,6 +358,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aFishing Skill 5§c."
+      - ""
+      - "§8Not active yet: Swamp Soldier counts armour pieces only; equipment pieces are not added to the tier yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -346,8 +374,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while having an active"
               - "§dBlessing §7from throwing a §aFrogcoin"
@@ -367,8 +394,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while having an active"
               - "§dBlessing §7from throwing a §aFrogcoin"
@@ -388,8 +414,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while having an active"
               - "§dBlessing §7from throwing a §aFrogcoin"
@@ -409,8 +434,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while having an active"
               - "§dBlessing §7from throwing a §aFrogcoin"
@@ -443,6 +467,8 @@ items:
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 7§c."
       - "§4❣ §cRequires §aFarming Skill 20§c."
+      - ""
+      - "§8Not active yet: Needs the Garden Visitor offers system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -470,6 +496,8 @@ items:
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 6§c."
       - "§4❣ §cRequires §aFarming Skill 20§c."
+      - ""
+      - "§8Not active yet: Needs the Garden Visitor offers system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
@@ -497,6 +525,8 @@ items:
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 9§c."
       - "§4❣ §cRequires §aFarming Skill 20§c."
+      - ""
+      - "§8Not active yet: Needs the Garden Visitor offers system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -524,6 +554,8 @@ items:
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 8§c."
       - "§4❣ §cRequires §aFarming Skill 20§c."
+      - ""
+      - "§8Not active yet: Needs the Garden Visitor offers system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -538,8 +570,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while wearing a §cRed Sweater§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -556,8 +587,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while wearing a §cRed Sweater§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -574,8 +604,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while wearing a §cRed Sweater§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -592,8 +621,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while wearing a §cRed Sweater§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -611,8 +639,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7If these posters are being dropped"
               - "§7en-masse, who's responsible for"
@@ -629,8 +656,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Found in the §2Lotus Eater's Cave§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -647,8 +673,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Found in the §2Lotus Eater's Cave§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -665,8 +690,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Found in the §2Lotus Eater's Cave§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -683,8 +707,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Found in the §2Lotus Eater's Cave§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -704,8 +727,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates the victory of the"
               - "§a§lGREEN §7team in the §bYear 300"
@@ -722,8 +744,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates the victory of the"
               - "§a§lGREEN §7team in the §bYear 300"
@@ -740,8 +761,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates the victory of the"
               - "§a§lGREEN §7team in the §bYear 300"
@@ -758,8 +778,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates the victory of the"
               - "§a§lGREEN §7team in the §bYear 300"
@@ -776,8 +795,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates the victory of the"
               - "§9§lBLUE §7team in the §bYear 400"
@@ -838,8 +856,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught everywhere."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -856,8 +873,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught everywhere."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -874,8 +890,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught everywhere."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -892,8 +907,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught everywhere."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -920,6 +934,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§8§l* §8Soulbound §8§l*"
+      - ""
+      - "§8Not active yet: Needs David Hunterborough's hunting training progress, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -935,6 +951,8 @@ items:
       - "§7Rift Time: §a+30s"
       - ""
       - "§eRight-click to equip!"
+      - ""
+      - "§8Not active yet: Needs the Rift (Rift Time does not exist)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
@@ -966,6 +984,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §5Heart of the Mountain Tier 10§c."
+      - ""
+      - "§8Not active yet: Legacy needs Glacite Mineshafts, which are excluded"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -992,6 +1012,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aCombat Skill 15§c."
+      - ""
+      - "§8Not active yet: The 3x stats on The End are active; the 1.01x damage to Dragons is not applied (no Dragon mob type)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -1018,6 +1040,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aCombat Skill 15§c."
+      - ""
+      - "§8Not active yet: The Aspect of the Dragons upgrade is active; the reduced ability knockback is not applied"
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
@@ -1033,8 +1057,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7This torch replica representing the"
               - "§7passion and dreams at §6Hypixel §7is now"
@@ -1174,6 +1197,8 @@ items:
       - "§7You found: §d§k0§5/42 Souls"
       - ""
       - "§eRight-click to equip!"
+      - ""
+      - "§8Not active yet: Needs the Rift (Rift Time does not exist)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -1191,8 +1216,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates your participation in"
               - "§7the §9Winter 2023 §7event."
@@ -1215,8 +1239,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Obtained by combining §2Lily Pads"
               - "§7together until they get so big they"
@@ -1235,8 +1258,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Obtained by combining §2Lily Pads"
               - "§7together until they get so big they"
@@ -1255,8 +1277,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Obtained by combining §2Lily Pads"
               - "§7together until they get so big they"
@@ -1275,8 +1296,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Obtained by combining §2Lily Pads"
               - "§7together until they get so big they"
@@ -1355,8 +1375,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7It is known that scientists and other"
               - "§7experts always find ways to"
@@ -1464,6 +1483,8 @@ items:
       - "§a Rift Time§7."
       - ""
       - "§eRight-click to equip!"
+      - ""
+      - "§8Not active yet: Needs the Rift (Rift Time does not exist)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -1481,8 +1502,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates your participation in"
               - "§7the §bPet Care Expansion §7city project."
@@ -1581,8 +1601,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Found in the §bLotus Highlands§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -1599,8 +1618,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Found in the §bLotus Highlands§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -1617,8 +1635,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Found in the §bLotus Highlands§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -1635,8 +1652,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Found in the §bLotus Highlands§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -1763,6 +1779,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+      - ""
+      - "§8Not active yet: Gemstone Gatherer and the gemstone Mining Fortune need gemstone ores and the Crystal Hollows, which do not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -1797,8 +1815,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while midair."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -1815,8 +1832,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while midair."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -1833,8 +1849,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while midair."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -1851,8 +1866,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while midair."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -1876,6 +1890,8 @@ items:
       - "§a Rift Time§7."
       - ""
       - "§eRight-click to equip!"
+      - ""
+      - "§8Not active yet: Needs the Rift (Rift Time does not exist)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -1893,8 +1909,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates your participation in"
               - "§7the §bCommunity Center Refurbishment"
@@ -1927,6 +1942,8 @@ items:
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 3§c."
       - "§4❣ §cRequires §aFarming Skill 10§c."
+      - ""
+      - "§8Not active yet: Needs the Garden Visitor offers system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -1954,6 +1971,8 @@ items:
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 2§c."
       - "§4❣ §cRequires §aFarming Skill 10§c."
+      - ""
+      - "§8Not active yet: Needs the Garden Visitor offers system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
@@ -1981,6 +2000,8 @@ items:
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 5§c."
       - "§4❣ §cRequires §aFarming Skill 10§c."
+      - ""
+      - "§8Not active yet: Needs the Garden Visitor offers system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -2008,6 +2029,8 @@ items:
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 4§c."
       - "§4❣ §cRequires §aFarming Skill 10§c."
+      - ""
+      - "§8Not active yet: Needs the Garden Visitor offers system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -2031,6 +2054,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aFishing Skill 12§c."
+      - ""
+      - "§8Not active yet: Needs the Chum Bucket deposit system for other players' buckets"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
@@ -2064,6 +2089,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aFishing Skill 45§c."
+      - ""
+      - "§8Not active yet: Fireproof and Lord's Blessing count armour pieces only; equipment pieces are not added to the tier yet"
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
@@ -2144,6 +2171,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aForaging Skill 12§c."
+      - ""
+      - "§8Not active yet: Needs Starlyn Contests, which do not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -2173,8 +2202,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates your participation in"
               - "§7the §bFishing Outpost §7city project."
@@ -2226,8 +2254,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7While most muffins don't mold, even"
               - "§7over many months, these mysterious"
@@ -2249,8 +2276,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates your participation in"
               - "§7the §bArtist's Abode §7city project."
@@ -2277,6 +2303,8 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8This item can be reforged!"
+      - ""
+      - "§8Not active yet: The Mushroom Desert Speed is active; Pelts from tracker quests do not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -2302,6 +2330,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 5§c."
+      - ""
+      - "§8Not active yet: Needs the Garden pest system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -2327,6 +2357,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 5§c."
+      - ""
+      - "§8Not active yet: Needs the Garden pest system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -2352,6 +2384,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 5§c."
+      - ""
+      - "§8Not active yet: Needs the Garden pest system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
@@ -2377,6 +2411,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 5§c."
+      - ""
+      - "§8Not active yet: Needs the Garden pest system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -2397,6 +2433,8 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8This item can be reforged!"
+      - ""
+      - "§8Not active yet: Needs the Garden pest system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -2414,8 +2452,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Leaderboard Position: §e#§k169"
               - "§7Awarded to: §kIRONM00N"
@@ -2460,8 +2497,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught when flying around the §3Lotus"
               - "§3Atoll§7."
@@ -2479,8 +2515,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught when flying around the §3Lotus"
               - "§3Atoll§7."
@@ -2498,8 +2533,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught when flying around the §3Lotus"
               - "§3Atoll§7."
@@ -2517,8 +2551,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught when flying around the §3Lotus"
               - "§3Atoll§7."
@@ -2536,8 +2569,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught in §dWormholes §7on the §3Lotus"
               - "§3Atoll§7."
@@ -2555,8 +2587,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught in §dWormholes §7on the §3Lotus"
               - "§3Atoll§7."
@@ -2574,8 +2605,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught in §dWormholes §7on the §3Lotus"
               - "§3Atoll§7."
@@ -2593,8 +2623,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught in §dWormholes §7on the §3Lotus"
               - "§3Atoll§7."
@@ -2636,8 +2665,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates your participation in"
               - "§7the §5Breach Close §7event."
@@ -2671,6 +2699,8 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8§l* §8Soulbound §8§l*"
+      - ""
+      - "§8Not active yet: Needs the Rift (Rift Time does not exist)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -2703,6 +2733,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§8§l* §8Soulbound §8§l*"
+      - ""
+      - "§8Not active yet: Needs the Rift (Rift Time does not exist)"
     components:
       - id: SKULL_HEAD
         texture: 9c0894931a510387e4f613828f0239ca4d90853499637f6079d39327f146f0e9
@@ -2719,7 +2751,7 @@ items:
         recombobulate: false
         effects:
           - type: INACTIVE
-            reason: "Not wired up yet"
+            reason: "Needs the Tetanus Chance and Determination stats, which do not exist"
             text:
               - "§7Tetanus Chance: §c+1%"
               - "§7Determination: §a+2"
@@ -2742,6 +2774,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§8§l* §8Soulbound §8§l*"
+      - ""
+      - "§8Not active yet: Needs the Critter Safari, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -2767,6 +2801,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
+      - ""
+      - "§8Not active yet: Gemstone Gatherer and the gemstone Mining Fortune need gemstone ores and the Crystal Hollows, which do not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -2781,8 +2817,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while underwater."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -2799,8 +2834,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while underwater."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -2817,8 +2851,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while underwater."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -2835,8 +2868,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while underwater."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -2856,8 +2888,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7A quaint box holding a trove of"
               - "§7whimsy and woe: from Bingo's"
@@ -2884,6 +2915,8 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8§l* §8Soulbound §8§l*"
+      - ""
+      - "§8Not active yet: Needs the Rift (Rift Time does not exist)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BRACELET
@@ -2901,8 +2934,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7A perfect replica of the Shiny"
               - "§7Relic deposited on the Blood God"
@@ -2948,6 +2980,8 @@ items:
       - "§a Rift Time§7."
       - ""
       - "§eRight-click to equip!"
+      - ""
+      - "§8Not active yet: Needs the Rift (Rift Time does not exist)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -2963,6 +2997,8 @@ items:
       - "§7Increases your chance of finding"
       - "§6§lSPARKLING §a Critters§7 by §a2x§7."
       - "§bSparkling Amulet §8bonuses do not stack."
+      - ""
+      - "§8Not active yet: Needs the Critter Safari, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -2978,8 +3014,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Awarded to those who participated in"
               - "§7the §2Backwater Bayou §7on the Hypixel"
@@ -3041,6 +3076,8 @@ items:
       - "§eRight-click to equip!"
       - ""
       - "§8This item can be reforged!"
+      - ""
+      - "§8Not active yet: Overbloom and crop replanting while fist-harvesting need the Garden Overbloom system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
@@ -3065,6 +3102,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§8Not active yet: Needs the Synthesizer item-feeding system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -3091,6 +3130,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§8Not active yet: Needs the Synthesizer item-feeding system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -3118,6 +3159,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aCombat Skill 22§c."
+      - ""
+      - "§8Not active yet: Needs the Synthesizer item-feeding system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
@@ -3147,6 +3190,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4☠ §cRequires §5Spider Slayer 8§c."
+      - ""
+      - "§8Not active yet: Forced Metamorphosis needs the Spider Slayer cocoon mechanic, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -3273,6 +3318,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aForaging Skill 24§c."
+      - ""
+      - "§8Not active yet: Needs Starlyn Contests, which do not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -3287,8 +3334,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while standing on leaves."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -3305,8 +3351,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while standing on leaves."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -3323,8 +3368,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while standing on leaves."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -3341,8 +3385,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught while standing on leaves."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -3385,6 +3428,8 @@ items:
       - "§a Rift Time§7."
       - ""
       - "§eRight-click to equip!"
+      - ""
+      - "§8Not active yet: Needs the Rift (Rift Time does not exist)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -3399,8 +3444,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught during §brain§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -3417,8 +3461,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught during §brain§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -3435,8 +3478,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught during §brain§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -3453,8 +3495,7 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Caught during §brain§7."
               - "§7Bring this to §2Researcher Ribery §7on"
@@ -3474,8 +3515,7 @@ items:
       - id: ACCESSORY
         recombobulate: false
         effects:
-          - type: INACTIVE
-            reason: "Not wired up yet"
+          - type: TEXT
             text:
               - "§7Commemorates your participation in"
               - "§7the §bRepair Wizard Portal §7city project."
@@ -3508,6 +3548,8 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §dZorro §cin Hoppity's Collection."
+      - ""
+      - "§8Not active yet: The doubled stats during Jacob's Farming Contest are active; the 20% extra medal is not applied"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK

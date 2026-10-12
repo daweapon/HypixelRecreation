@@ -150,7 +150,7 @@ items:
       - ""
       - "§aThis skin is swappable between 21"
       - "§ahazard control variants!"
-      - "§8Not active yet: swapping between the 21 variants"
+      - "§8Not active yet: swapping between the 21 variants (no skin-variant swap menu exists)"
     components:
       - id: SKULL_HEAD
         texture: a3e847bf1bac7044cdb36d0e7301027063fc99d750166aa12fc3f151acaac295
@@ -411,7 +411,7 @@ items:
       - ""
       - "§aThis skin is stacked two tall, and"
       - "§aswappable between 18 variants!"
-      - "§8Not active yet: swapping between the 18 variants"
+      - "§8Not active yet: swapping between the 18 variants (no skin-variant swap menu exists)"
     components:
       - id: SKULL_HEAD
         texture: b1744c14303f7af1d12b79e84111a5102d90fb786fdb6f556d025c5b296f6ad7
@@ -440,7 +440,7 @@ items:
       - ""
       - "§7This skin is swappable between §a20"
       - "§7dumpster divin' variants!"
-      - "§8Not active yet: swapping between the 20 variants"
+      - "§8Not active yet: swapping between the 20 variants (no skin-variant swap menu exists)"
     components:
       - id: SKULL_HEAD
         texture: c390f2a38400a44bf6c131938e32c17de5d2ddeef6bbec1a17dc1e156867f33a
@@ -558,7 +558,7 @@ items:
       - "§6Destination Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: f6eaa1fd9d2d49d06a894798d3b145d3ae4dcca038b7da718c7b83a66ef264f0
@@ -645,8 +645,8 @@ items:
       - "§aThis skin will allow you to swap"
       - "§abetween 12 favorite animated"
       - "§agemstones!"
-      - "§8Not active yet: swapping between the 12 variants"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: swapping between the 12 variants (no skin-variant swap menu exists)"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: 3917458bb844a8b330710207f333519cb231997c6a772998fdf8eeda9b32aa7
@@ -975,7 +975,7 @@ items:
       - "§6Dragon Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: 105d89acc6bdd0a954a13cb210c4df9ad8f881763084d92e6777ddaa71f302d1
@@ -1053,7 +1053,7 @@ items:
       - "§6Power Orb§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: 838100e8151b4033918935b6dd00f0709a3fa8167d4c2ecba59ef41727031bc
@@ -1141,7 +1141,7 @@ items:
       - ""
       - "§aThis skin is animated, and adapts to"
       - "§athe day-night cycle!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: 866852112051b1cf5ad958ac84975bff2b3da302e71ed986670f907bf1ce185f
@@ -1194,7 +1194,7 @@ items:
       - "§6Dragon Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: 3aad6ba02684d975d3e3686705261fea560f18d44183140afbaf3579e0ac8287
@@ -1324,7 +1324,7 @@ items:
       - "§6Power Orb§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: a113e6745b76f22a056f55fb68616b082bb63330fb3b7f356fd830de6a8b4f71
@@ -1371,7 +1371,7 @@ items:
       - "§6Dragon Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: f9d8d582bd1a94313e5d0000bc3a60b7a96ff65834ce90af9048824192bf4882
@@ -1401,7 +1401,7 @@ items:
       - "§8▶ §7This skin is swappable between §a17"
       - "§7spooooooooky pumpkins!"
       - "§8▶ §7Throws candy all over the place!"
-      - "§8Not active yet: swapping between the 17 variants"
+      - "§8Not active yet: swapping between the 17 variants (no skin-variant swap menu exists)"
     components:
       - id: SKULL_HEAD
         texture: 48cbd8e56e57370ba4372a0852853cee72d74084cea2e4023c371d875ccbf888
@@ -1574,7 +1574,7 @@ items:
       - "§aFeatures!"
       - "§8▶ §7This skin is swappable between 20"
       - "§7hoodie variants."
-      - "§8Not active yet: swapping between the 20 variants"
+      - "§8Not active yet: swapping between the 20 variants (no skin-variant swap menu exists)"
     components:
       - id: SKULL_HEAD
         texture: 156ec8e1dffcbb36daa6ffb9ae133615ac8e8c18044eea420b6ebb8907249153
@@ -1662,7 +1662,7 @@ items:
       - "§6Dragon Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: 626e13659f0ac7f4f50adaf698d4b632ee0acbd014e17cacaf18e3b1081e786c
@@ -1687,7 +1687,7 @@ items:
       - "§6Dragon Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: ff234183b6964f0593a9b9c8e79807d8c65da210ba3fd06805d71ab895bf8152
@@ -1712,7 +1712,7 @@ items:
       - "§5Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: 972e9200bb4b2cc35b974acc7c9078fc588504ed88c56c9cbbf2016cc032f6f5
@@ -1831,7 +1831,7 @@ items:
       - "§6Dragon Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: 9e4a8a071b6540ee8569cfd6a25c48090dcc076114391681aa5d1ce6c94ab27c
@@ -1879,7 +1879,7 @@ items:
       - ""
       - "§aThis skin will allow you to swap"
       - "§abetween 18 favorite wolf packs!"
-      - "§8Not active yet: swapping between the 18 variants"
+      - "§8Not active yet: swapping between the 18 variants (no skin-variant swap menu exists)"
     components:
       - id: SKULL_HEAD
         texture: 97cb30773039940c7376af2a260ee2316476ae23173d46a664600a1b30f5cb6f
@@ -1917,7 +1917,7 @@ items:
       - "§6Dragon Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: 468b1e281c03e57f4737757cda26f993bc407da7170473863429956dd135b95
@@ -1948,7 +1948,7 @@ items:
       - "§7awoke variants."
       - "§8▶ §7Keeps track of the total §cDungeon"
       - "§cChests §7opened while wearing this skin."
-      - "§8Not active yet: swapping between the 22 variants"
+      - "§8Not active yet: swapping between the 22 variants (no skin-variant swap menu exists)"
     components:
       - id: SKULL_HEAD
         texture: 20724a1373c479e676527b679a37bac6466a04633724c5c5def9b15cdc018218
@@ -1992,7 +1992,7 @@ items:
       - "§6Dragon Helmet§7."
       - ""
       - "§aThis skin is animated!"
-      - "§8Not active yet: animated skins cannot be applied"
+      - "§8Not active yet: animated skins cannot be applied (animated head textures are not supported)"
     components:
       - id: SKULL_HEAD
         texture: fdf709f82e96981665421d753208fb8e7f89d38c41ae5c60dc5b428ff0725f93

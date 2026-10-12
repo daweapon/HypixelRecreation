@@ -41,7 +41,8 @@ public final class FishingHotspotService {
         if (hotspot.isEmpty()) return ItemStatistics.empty();
         double value = hotspot.get().value() * sinkerMultiplier(player);
         return ItemStatistics.add(ItemStatistics.builder().withBase(hotspot.get().statistic(), value).build(),
-                UtilityAccessories.hotspotBuffs(player));
+                ItemStatistics.add(UtilityAccessories.hotspotBuffs(player),
+                        net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.hotspotBuffs(player)));
     }
 
     public static Optional<ActiveHotspot> activeAt(SkyBlockPlayer player, FishingMedium medium, Pos bobberPos) {

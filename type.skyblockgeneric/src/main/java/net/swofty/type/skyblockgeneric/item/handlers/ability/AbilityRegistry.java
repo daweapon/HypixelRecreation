@@ -125,10 +125,15 @@ public class AbilityRegistry {
             5,
             new RegisteredAbility.AbilityManaCost(50).transmission(),
             (player, _, _, _) -> {
-                ForwardTeleport.teleport(player, 8);
+                boolean strongBlood = net.swofty.type.skyblockgeneric.item.set.sets.StrongDragonSet.isWearing(player);
+                ForwardTeleport.teleport(player, strongBlood ? 8 + (int) net.swofty.type.skyblockgeneric.item.armor.ArmorAbilities.STRONG_BLOOD_RANGE : 8);
                 ItemStatistics speedStats = ItemStatistics.builder().withBase(ItemStatistic.SPEED, 50.0).build();
-                TemporaryStatistic speedBoost = TemporaryStatistic.builder().withStatistics(speedStats).withExpirationInMs(3000).withDisplayName("Instant Transmission").build();
+                TemporaryStatistic speedBoost = TemporaryStatistic.builder().withStatistics(speedStats).withExpirationInMs(strongBlood ? 6000 : 3000).withDisplayName("Instant Transmission").build();
                 player.getStatistics().boostStatistic(speedBoost);
+                if (strongBlood) {
+                    ItemStatistics strength = ItemStatistics.builder().withBase(ItemStatistic.STRENGTH, net.swofty.type.skyblockgeneric.item.armor.ArmorAbilities.STRONG_BLOOD_STRENGTH).build();
+                    player.getStatistics().boostStatistic(TemporaryStatistic.builder().withStatistics(strength).withExpirationInMs(6000).withDisplayName("Strong Blood").build());
+                }
                 return true;
             }
         ));

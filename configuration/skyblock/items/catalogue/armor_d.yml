@@ -7,16 +7,6 @@ items:
       defense: 15
       sea_creature_chance: 1
     source: "Bought from the Fishing Merchant for 100 Coins"
-    lore:
-      - "§8Tiered Bonus: Depth Champion (0/8)"
-      - "§7Reduces the damage taken from §3Sea"
-      - "§3Creatures §7by §a3%§7."
-      - ""
-      - "§8Tiered Bonus: Deepness Within (0/4)"
-      - "§7Gain §c6❤ §7per Fishing level."
-      - "§7Fishing: §eLevel §k00"
-      - ""
-      - "§8Not active yet: Depth Champion and Deepness Within tier values are not wired"
     components:
       - id: LEATHER_COLOR
         r: '11'
@@ -32,16 +22,6 @@ items:
       defense: 40
       sea_creature_chance: 1
     source: "Bought from the Fishing Merchant for 100 Coins"
-    lore:
-      - "§8Tiered Bonus: Depth Champion (0/8)"
-      - "§7Reduces the damage taken from §3Sea"
-      - "§3Creatures §7by §a3%§7."
-      - ""
-      - "§8Tiered Bonus: Deepness Within (0/4)"
-      - "§7Gain §c6❤ §7per Fishing level."
-      - "§7Fishing: §eLevel §k00"
-      - ""
-      - "§8Not active yet: Depth Champion and Deepness Within tier values are not wired"
     components:
       - id: LEATHER_COLOR
         r: '11'
@@ -57,16 +37,6 @@ items:
       defense: 20
       sea_creature_chance: 1
     source: "Bought from the Fishing Merchant for 100 Coins"
-    lore:
-      - "§8Tiered Bonus: Depth Champion (0/8)"
-      - "§7Reduces the damage taken from §3Sea"
-      - "§3Creatures §7by §a3%§7."
-      - ""
-      - "§8Tiered Bonus: Deepness Within (0/4)"
-      - "§7Gain §c6❤ §7per Fishing level."
-      - "§7Fishing: §eLevel §e§k00"
-      - ""
-      - "§8Not active yet: Depth Champion and Deepness Within tier values are not wired"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -78,16 +48,6 @@ items:
       defense: 30
       sea_creature_chance: 1
     source: "Bought from the Fishing Merchant for 100 Coins"
-    lore:
-      - "§8Tiered Bonus: Depth Champion (0/8)"
-      - "§7Reduces the damage taken from §3Sea"
-      - "§3Creatures §7by §a3%§7."
-      - ""
-      - "§8Tiered Bonus: Deepness Within (0/4)"
-      - "§7Gain §c6❤ §7per Fishing level."
-      - "§7Fishing: §eLevel §k00"
-      - ""
-      - "§8Not active yet: Depth Champion and Deepness Within tier values are not wired"
     components:
       - id: LEATHER_COLOR
         r: '11'
@@ -111,7 +71,7 @@ items:
       - "§bIntelligence§7 while wearing the set."
       - "§7Max 200 each."
       - ""
-      - "§8Not active yet: Absorb needs Magma Cube kill tracking per set"
+      - "§8Not active yet: Absorb needs a per-piece Magma Cube kill counter item attribute"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -139,7 +99,7 @@ items:
       - "§7Bonus HP: §a0"
       - "§7Bonus Intelligence: §a0"
       - ""
-      - "§8Not active yet: Absorb needs Magma Cube kill tracking per set"
+      - "§8Not active yet: Absorb needs a per-piece Magma Cube kill counter item attribute"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -163,7 +123,7 @@ items:
       - "§bIntelligence§7 while wearing the set."
       - "§7Max 200 each."
       - ""
-      - "§8Not active yet: Absorb needs Magma Cube kill tracking per set"
+      - "§8Not active yet: Absorb needs a per-piece Magma Cube kill counter item attribute"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -187,7 +147,7 @@ items:
       - "§bIntelligence§7 while wearing the set."
       - "§7Max 200 each."
       - ""
-      - "§8Not active yet: Absorb needs Magma Cube kill tracking per set"
+      - "§8Not active yet: Absorb needs a per-piece Magma Cube kill counter item attribute"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -218,7 +178,7 @@ items:
       - ""
       - "§8§oYou are the hero this world needs."
       - ""
-      - "§8Not active yet: Night and Spooky Festival stat multiplier and the grappling hook upgrade are not implemented"
+      - "§8Not active yet: The grappling hook upgrade and the Spooky Festival candy chance need their own hooks (no grapple upgrade or Bat Person candy bonus)"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -269,7 +229,7 @@ items:
       - ""
       - "§8§oYou are the hero this world needs."
       - ""
-      - "§8Not active yet: Night and Spooky Festival stat multiplier and the grappling hook upgrade are not implemented"
+      - "§8Not active yet: The grappling hook upgrade and the Spooky Festival candy chance need their own hooks (no grapple upgrade or Bat Person candy bonus)"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -318,7 +278,7 @@ items:
       - ""
       - "§8§oYou are the hero this world needs."
       - ""
-      - "§8Not active yet: Night and Spooky Festival stat multiplier and the grappling hook upgrade are not implemented"
+      - "§8Not active yet: The grappling hook upgrade and the Spooky Festival candy chance need their own hooks (no grapple upgrade or Bat Person candy bonus)"
     components:
       - id: SKULL_HEAD
         texture: a83b3f04fc16bc2c2cb36a12044265b0b933f3dfa2b342eb45798ff7d715b0d8
@@ -364,7 +324,7 @@ items:
       - ""
       - "§8§oYou are the hero this world needs."
       - ""
-      - "§8Not active yet: Night and Spooky Festival stat multiplier and the grappling hook upgrade are not implemented"
+      - "§8Not active yet: The grappling hook upgrade and the Spooky Festival candy chance need their own hooks (no grapple upgrade or Bat Person candy bonus)"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -410,7 +370,7 @@ items:
       - "§7Current Light Level"
       - "§c0§8 (0%)"
       - ""
-      - "§8Not active yet: Refraction needs light levels"
+      - "§8Not active yet: Refraction needs a per-block light level lookup"
     components:
       - id: LEATHER_COLOR
         r: '252'
@@ -452,7 +412,7 @@ items:
       - "§7Current Light Level"
       - "§c0§8 (0%)"
       - ""
-      - "§8Not active yet: Refraction needs light levels"
+      - "§8Not active yet: Refraction needs a per-block light level lookup"
     components:
       - id: LEATHER_COLOR
         r: '252'
@@ -495,7 +455,7 @@ items:
       - "§7Current Light Level"
       - "§c0§8 (0%)"
       - ""
-      - "§8Not active yet: Refraction needs light levels"
+      - "§8Not active yet: Refraction needs a per-block light level lookup"
     components:
       - id: LEATHER_COLOR
         r: '252'
@@ -537,7 +497,7 @@ items:
       - "§7Current Light Level"
       - "§c0§8 (0%)"
       - ""
-      - "§8Not active yet: Refraction needs light levels"
+      - "§8Not active yet: Refraction needs a per-block light level lookup"
     components:
       - id: LEATHER_COLOR
         r: '252'
@@ -583,8 +543,6 @@ items:
       - "§8Fishing Hotspots."
       - ""
       - "§4❣ §cRequires §aCombat Skill 8§c."
-      - ""
-      - "§8Not active yet: Nether Lord lava immunity and obsidian walking are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -613,8 +571,6 @@ items:
       - "§8Fishing Hotspots."
       - ""
       - "§4❣ §cRequires §aCombat Skill 8§c."
-      - ""
-      - "§8Not active yet: Nether Lord lava immunity and obsidian walking are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -643,8 +599,6 @@ items:
       - "§8Fishing Hotspots."
       - ""
       - "§4❣ §cRequires §aCombat Skill 8§c."
-      - ""
-      - "§8Not active yet: Nether Lord lava immunity and obsidian walking are not implemented"
     components:
       - id: SKULL_HEAD
         texture: 38d199e23c17488a01a07005a41fe330b1d22b04e99943c9f8c897d156e9555a
@@ -675,8 +629,6 @@ items:
       - "§8Fishing Hotspots."
       - ""
       - "§4❣ §cRequires §aCombat Skill 8§c."
-      - ""
-      - "§8Not active yet: Nether Lord lava immunity and obsidian walking are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1145,7 +1097,7 @@ items:
       - ""
       - "§4❣ §cRequires §aHard Stone Collection II§c."
       - ""
-      - "§8Not active yet: Pressurized Coating and Heat Shield need the Heat mechanic"
+      - "§8Not active yet: Heat Shield needs the Crystal Hollows Heat mechanic"
     components:
       - id: LEATHER_COLOR
         r: '179'
@@ -1197,7 +1149,7 @@ items:
       - ""
       - "§4❣ §cRequires §aHard Stone Collection II§c."
       - ""
-      - "§8Not active yet: Pressurized Coating and Heat Shield need the Heat mechanic"
+      - "§8Not active yet: Heat Shield needs the Crystal Hollows Heat mechanic"
     components:
       - id: LEATHER_COLOR
         r: '179'
@@ -1249,7 +1201,7 @@ items:
       - ""
       - "§4❣ §cRequires §aHard Stone Collection II§c."
       - ""
-      - "§8Not active yet: Pressurized Coating and Heat Shield need the Heat mechanic"
+      - "§8Not active yet: Heat Shield needs the Crystal Hollows Heat mechanic"
     components:
       - id: LEATHER_COLOR
         r: '179'
@@ -1301,7 +1253,7 @@ items:
       - ""
       - "§4❣ §cRequires §aHard Stone Collection II§c."
       - ""
-      - "§8Not active yet: Pressurized Coating and Heat Shield need the Heat mechanic"
+      - "§8Not active yet: Heat Shield needs the Crystal Hollows Heat mechanic"
     components:
       - id: LEATHER_COLOR
         r: '179'
@@ -1352,7 +1304,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 4§c."
       - ""
-      - "§8Not active yet: Absolute Unit is not implemented"
+      - "§8Not active yet: Absolute Unit heal-on-hit needs a Vitality-consumption mechanic"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1403,7 +1355,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 4§c."
       - ""
-      - "§8Not active yet: Absolute Unit is not implemented"
+      - "§8Not active yet: Absolute Unit heal-on-hit needs a Vitality-consumption mechanic"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1434,7 +1386,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 4§c."
       - ""
-      - "§8Not active yet: Absolute Unit is not implemented"
+      - "§8Not active yet: Absolute Unit heal-on-hit needs a Vitality-consumption mechanic"
     components:
       - id: SKULL_HEAD
         texture: 3285950fd67858e76c439b0b5b87c69a6c52a4df936e224d843b14c22565949e
@@ -1465,7 +1417,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 4§c."
       - ""
-      - "§8Not active yet: Absolute Unit is not implemented"
+      - "§8Not active yet: Absolute Unit heal-on-hit needs a Vitality-consumption mechanic"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1511,7 +1463,7 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
       - ""
-      - "§8Not active yet: Old Blood enchantment boost values are unconfirmed"
+      - "§8Not active yet: Old Blood needs the enchantment boost values, which the wiki does not publish"
     components:
       - id: LEATHER_COLOR
         r: '240'
@@ -1557,7 +1509,7 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
       - ""
-      - "§8Not active yet: Old Blood enchantment boost values are unconfirmed"
+      - "§8Not active yet: Old Blood needs the enchantment boost values, which the wiki does not publish"
     components:
       - id: LEATHER_COLOR
         r: '240'
@@ -1604,7 +1556,7 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
       - ""
-      - "§8Not active yet: Old Blood enchantment boost values are unconfirmed"
+      - "§8Not active yet: Old Blood needs the enchantment boost values, which the wiki does not publish"
     components:
       - id: SKULL_HEAD
         texture: 524c4da6ab27e9c93fbf49ea1b1fefaefbe2d4c0c8b222e2ff6b18179fb5addf
@@ -1648,7 +1600,7 @@ items:
       - ""
       - "§4❣ §cRequires §aCombat Skill 16§c."
       - ""
-      - "§8Not active yet: Old Blood enchantment boost values are unconfirmed"
+      - "§8Not active yet: Old Blood needs the enchantment boost values, which the wiki does not publish"
     components:
       - id: LEATHER_COLOR
         r: '240'
@@ -1690,12 +1642,7 @@ items:
     unavailable: "Needs the Nemo NPC shop"
     source: "Bought from Nemo (Visor 50,000, Vest 80,000, Pants 70,000, Shoes 40,000 Coins)"
     lore:
-      - "§8Tiered Bonus: Long Tuba (0/4)"
-      - "§7Grants §3+2 Respiration§7."
-      - ""
       - "§4❣ §cRequires §aForaging Skill 16§c."
-      - ""
-      - "§8Not active yet: Long Tuba needs underwater breathing"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -1719,12 +1666,7 @@ items:
     unavailable: "Needs the Nemo NPC shop"
     source: "Bought from Nemo (Visor 50,000, Vest 80,000, Pants 70,000, Shoes 40,000 Coins)"
     lore:
-      - "§8Tiered Bonus: Long Tuba (0/4)"
-      - "§7Grants §3+2 Respiration§7."
-      - ""
       - "§4❣ §cRequires §aForaging Skill 16§c."
-      - ""
-      - "§8Not active yet: Long Tuba needs underwater breathing"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -1748,12 +1690,7 @@ items:
     unavailable: "Needs the Nemo NPC shop"
     source: "Bought from Nemo (Visor 50,000, Vest 80,000, Pants 70,000, Shoes 40,000 Coins)"
     lore:
-      - "§8Tiered Bonus: Long Tuba (0/4)"
-      - "§7Grants §3+2 Respiration§7."
-      - ""
       - "§4❣ §cRequires §aForaging Skill 16§c."
-      - ""
-      - "§8Not active yet: Long Tuba needs underwater breathing"
     components:
       - id: SKULL_HEAD
         texture: 875478f91a51c281255545fd700d3155d9628ac7f6ecacb96110416cbc3849d3
@@ -1775,12 +1712,7 @@ items:
     unavailable: "Needs the Nemo NPC shop"
     source: "Bought from Nemo (Visor 50,000, Vest 80,000, Pants 70,000, Shoes 40,000 Coins)"
     lore:
-      - "§8Tiered Bonus: Long Tuba (0/4)"
-      - "§7Grants §3+2 Respiration§7."
-      - ""
       - "§4❣ §cRequires §aForaging Skill 16§c."
-      - ""
-      - "§8Not active yet: Long Tuba needs underwater breathing"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -1819,7 +1751,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 35§c."
       - ""
-      - "§8Not active yet: Mento Fermento is not implemented"
+      - "§8Not active yet: Mento Fermento needs the Greenhouse and Fermento drops; Farmer's Grace is inert because farmland trampling is not in the game"
     components:
       - id: LEATHER_COLOR
         r: '19'
@@ -1878,7 +1810,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 35§c."
       - ""
-      - "§8Not active yet: Mento Fermento is not implemented"
+      - "§8Not active yet: Mento Fermento needs the Greenhouse and Fermento drops; Farmer's Grace is inert because farmland trampling is not in the game"
     components:
       - id: LEATHER_COLOR
         r: '3'
@@ -1941,7 +1873,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 35§c."
       - ""
-      - "§8Not active yet: Mento Fermento is not implemented"
+      - "§8Not active yet: Mento Fermento needs the Greenhouse and Fermento drops; Farmer's Grace is inert because farmland trampling is not in the game"
     components:
       - id: SKULL_HEAD
         texture: de1087c0c519a9a1dcee4325410b19a1be4855eac5a662ae1b523329f90faecd
@@ -1998,7 +1930,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 35§c."
       - ""
-      - "§8Not active yet: Mento Fermento is not implemented"
+      - "§8Not active yet: Mento Fermento needs the Greenhouse and Fermento drops; Farmer's Grace is inert because farmland trampling is not in the game"
     components:
       - id: LEATHER_COLOR
         r: '12'
@@ -2071,7 +2003,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Spider Slayer 4§c."
       - ""
-      - "§8Not active yet: Octodexterity, Spider Bulwark, Anti-Toxin and Radioactive are not implemented"
+      - "§8Not active yet: Spider Bulwark needs a per-piece Spider kill counter attribute and Anti-Toxin needs the Tarantula Broodfather Vitality reduction"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -2138,7 +2070,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Spider Slayer 4§c."
       - ""
-      - "§8Not active yet: Octodexterity, Spider Bulwark, Anti-Toxin and Radioactive are not implemented"
+      - "§8Not active yet: Spider Bulwark needs a per-piece Spider kill counter attribute and Anti-Toxin needs the Tarantula Broodfather Vitality reduction"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -2201,7 +2133,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Spider Slayer 4§c."
       - ""
-      - "§8Not active yet: Octodexterity, Spider Bulwark, Anti-Toxin and Radioactive are not implemented"
+      - "§8Not active yet: Spider Bulwark needs a per-piece Spider kill counter attribute and Anti-Toxin needs the Tarantula Broodfather Vitality reduction"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -2263,7 +2195,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Spider Slayer 4§c."
       - ""
-      - "§8Not active yet: Octodexterity, Spider Bulwark, Anti-Toxin and Radioactive are not implemented"
+      - "§8Not active yet: Spider Bulwark needs a per-piece Spider kill counter attribute and Anti-Toxin needs the Tarantula Broodfather Vitality reduction"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -2539,7 +2471,7 @@ items:
     lore:
       - "§7Grants immunity to explosion damage."
       - ""
-      - "§8Not active yet: Explosion immunity is not implemented"
+      - "§8Not active yet: Explosion immunity needs an explosion damage source (creeper explosions are not built)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -2576,7 +2508,7 @@ items:
       - "§7back all monsters around you."
       - "§8Cooldown: §a60s"
       - ""
-      - "§8Not active yet: Explosion immunity is not implemented"
+      - "§8Not active yet: Explosion immunity needs an explosion damage source (creeper explosions are not built)"
     components:
       - id: LEATHER_COLOR
         r: '122'
@@ -2624,7 +2556,7 @@ items:
       - ""
       - "§4☠ §cRequires §5Vampire Slayer 4§c."
       - ""
-      - "§8Not active yet: Helmets All The Way Around is not implemented"
+      - "§8Not active yet: Helmets All The Way Around needs the Rift"
     components:
       - id: STANDARD_ITEM
         standard_item_type: HELMET
@@ -2682,8 +2614,6 @@ items:
       - "§8Max of 3 players!"
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 6§c."
-      - ""
-      - "§8Not active yet: Armor of the Pack and the animal defense bonus are not implemented"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -2796,8 +2726,6 @@ items:
       - "§7Crouch to splash some water around."
       - "§8Mana Cost: §b10"
       - "§8Cooldown: §a1s"
-      - ""
-      - "§8Not active yet: Splash is not implemented"
     components:
       - id: SKULL_HEAD
         texture: 5023c4325ee03f3e7eb7a447dec779f9af762b963d0fa2a2bd039edeae8e3ba2
@@ -2845,7 +2773,7 @@ items:
       - ""
       - "§4❣ §cRequires §aFishing Skill 15§c."
       - ""
-      - "§8Not active yet: Wormhole abilities are not implemented"
+      - "§8Not active yet: Reality Check, Hi-Vis Wormhole Helmet and wormhole trophy bonuses need Lotus Atoll wormholes (no wormhole system)"
     components:
       - id: SKULL_HEAD
         texture: 98090ff60d1692455f162d8712dca32f449dae3d309f67148b1a346f926722e6
@@ -2864,8 +2792,6 @@ items:
     lore:
       - "§7Drops an §airon ingot §7when you sneak!"
       - "§8Cooldown: §a5s"
-      - ""
-      - "§8Not active yet: Dropping iron when sneaking is not implemented"
     components:
       - id: SKULL_HEAD
         texture: 89091d79ea0f59ef7ef94d7bba6e5f17f2f7d4572c44f90f76c4819a714
@@ -2908,8 +2834,6 @@ items:
       - "§8Max of 3 players!"
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 6§c."
-      - ""
-      - "§8Not active yet: Armor of the Pack and the animal defense bonus are not implemented"
     components:
       - id: LEATHER_COLOR
         r: '255'
@@ -2962,8 +2886,6 @@ items:
       - "§8Max of 3 players!"
       - ""
       - "§4☠ §cRequires §5Wolf Slayer 6§c."
-      - ""
-      - "§8Not active yet: Armor of the Pack and the animal defense bonus are not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -3006,8 +2928,6 @@ items:
       - "§7Any damage taken is max §a40% §7of the wearer's"
       - "§c❤ Health§7. Gain §cRegeneration §7when this ability"
       - "§7activates."
-      - ""
-      - "§8Not active yet: Mithril's Protection is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -3047,8 +2967,6 @@ items:
       - "§7Immune to Wither effect."
       - ""
       - "§4❣ §cRequires §aCombat Skill 14§c."
-      - ""
-      - "§8Not active yet: Speed per obsidian and Wither immunity are not implemented"
     components:
       - id: LEATHER_COLOR
         r: '0'
@@ -3537,8 +3455,6 @@ items:
       - "§8Mana Cost: §b20"
       - ""
       - "§4❣ §cRequires §aFishing Skill 13§c."
-      - ""
-      - "§8Not active yet: Water Burst is not implemented"
     components:
       - id: LEATHER_COLOR
         r: '168'
@@ -3624,8 +3540,6 @@ items:
       - "  §6+2 Treasure Chance"
       - ""
       - "§4❣ §cRequires §aFishing Skill 40§c."
-      - ""
-      - "§8Not active yet: Fishing Hotspot buffs are not implemented"
     components:
       - id: SKULL_HEAD
         texture: f3c802e580bfefc18c4af94cceb82968b5b4aeab0d832346a633a7473a41dfac

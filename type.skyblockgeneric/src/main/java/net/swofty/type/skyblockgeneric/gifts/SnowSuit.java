@@ -87,7 +87,9 @@ public final class SnowSuit {
     }
 
     public static boolean hasColdThumb(SkyBlockPlayer player) {
-        return player.getSkyblockDataHandler() != null && wornPieces(player) >= TOTAL_PIECES;
+        return player.getSkyblockDataHandler() != null
+                && (wornPieces(player) >= TOTAL_PIECES
+                || net.swofty.type.skyblockgeneric.item.armor.ArmorAbilityEffects.nutcrackerPieces(player) >= 4);
     }
 
     public static void registerLore() {

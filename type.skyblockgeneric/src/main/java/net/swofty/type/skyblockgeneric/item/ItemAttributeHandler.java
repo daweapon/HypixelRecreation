@@ -615,6 +615,14 @@ public class ItemAttributeHandler {
         return ((ItemAttributeStoredPotential) item.getAttribute("stored_potential")).getValue();
     }
 
+    public void setLogsCut(int logsCut) {
+        ((ItemAttributeLogsCut) item.getAttribute("logs_cut")).setValue(logsCut);
+    }
+
+    public int getLogsCut() {
+        return ((ItemAttributeLogsCut) item.getAttribute("logs_cut")).getValue();
+    }
+
     public SkyBlockItem asSkyBlockItem() {
         return item;
     }

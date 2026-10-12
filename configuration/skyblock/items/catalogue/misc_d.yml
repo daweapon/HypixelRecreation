@@ -13,9 +13,9 @@ items:
       - "§7change the radius it effects."
       - ""
       - "§7Selected Radius: §b3"
-      - ""
-      - "§8Not active yet: Changing the island biome is not wired up yet"
     components:
+      - id: INTERACTABLE
+        handler_id: JUNGLE_BIOME_STICK
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -1665,10 +1665,8 @@ items:
       - ""
       - "§7While placed down, §9Mining Minions §7will"
       - "§7work §a10% §7faster."
-      - ""
-      - "§8Not active yet: Placing it on the island to speed up Mining Minions is not wired up yet"
     components:
-      - id: SKULL_HEAD
+      - id: DECORATION_HEAD
         texture: 9fee33cc5f022d9cb802b7eeb05917ae75f8d99fe6024fae1087444c10ad863f
       - id: DEFAULT_CRAFTABLE
         recipes:
@@ -1704,7 +1702,7 @@ items:
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
       - ""
-      - "§8Not active yet: Drill parts are not built (needs the Drill Mechanic)"
+      - "§8Not active yet: Needs the Drill Mechanic NPC and drill part slots (not built)"
     components:
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -1730,7 +1728,7 @@ items:
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
       - ""
-      - "§8Not active yet: Drill parts are not built (needs the Drill Mechanic)"
+      - "§8Not active yet: Needs the Drill Mechanic NPC and drill part slots (not built)"
     components:
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -2753,7 +2751,7 @@ items:
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 8§c."
       - ""
-      - "§8Not active yet: Drill parts are not built (needs the Drill Mechanic)"
+      - "§8Not active yet: Needs the Drill Mechanic NPC and drill part slots (not built)"
     components:
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -3287,9 +3285,9 @@ items:
       - "§aminutes§7."
       - ""
       - "§cConsumed on use!"
-      - ""
-      - "§8Not active yet: Placing it in the Glacite Tunnels to remove Cold is not wired up yet"
     components:
+      - id: PLACEABLE
+        block_type: PORTABLE_CAMPFIRE
       - id: SELLABLE
         value: 200.0
   - id: PORTABLE_WASHER
@@ -3408,7 +3406,7 @@ items:
       - ""
       - "§7Has a single use and can be stacked."
       - ""
-      - "§8Not active yet: Powering Beacons is not wired up yet"
+      - "§8Not active yet: Needs Beacons (the Beacon block and its power timer are not built)"
     components:
       - id: SELLABLE
         value: 1920.0

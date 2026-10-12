@@ -20,7 +20,7 @@ items:
       - "§7Grants §6+0 Treasure Chance §7while"
       - "§9underwater§7."
       - ""
-      - "§8Not active yet: One with the Fish (underwater breathing) and Deep Sea Diver need underwater mechanics"
+      - "§8Not active yet: One with the Fish needs an air-supply (drowning) system and Deep Sea Diver needs an underwater Treasure Chance hook"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -54,7 +54,7 @@ items:
       - "§7Grants §6+0 Treasure Chance §7while"
       - "§9underwater§7."
       - ""
-      - "§8Not active yet: One with the Fish (underwater breathing) and Deep Sea Diver need underwater mechanics"
+      - "§8Not active yet: One with the Fish needs an air-supply (drowning) system and Deep Sea Diver needs an underwater Treasure Chance hook"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -88,7 +88,7 @@ items:
       - "§7Grants §6+0 Treasure Chance §7while"
       - "§9underwater§7."
       - ""
-      - "§8Not active yet: One with the Fish (underwater breathing) and Deep Sea Diver need underwater mechanics"
+      - "§8Not active yet: One with the Fish needs an air-supply (drowning) system and Deep Sea Diver needs an underwater Treasure Chance hook"
     components:
       - id: SKULL_HEAD
         texture: 29c1fb923e363b02929de8207c8013ea3c7e4b3933047fc9ca2bb08b8dc07254
@@ -120,7 +120,7 @@ items:
       - "§7Grants §6+0 Treasure Chance §7while"
       - "§9underwater§7."
       - ""
-      - "§8Not active yet: One with the Fish (underwater breathing) and Deep Sea Diver need underwater mechanics"
+      - "§8Not active yet: One with the Fish needs an air-supply (drowning) system and Deep Sea Diver needs an underwater Treasure Chance hook"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -147,8 +147,6 @@ items:
       - "§7Grants §c+5❤ Health §7and §a+5❈ Defense§7."
       - ""
       - "§4This item is Arachnal Ж!"
-      - ""
-      - "§8Not active yet: Arachne's Faithful needs Arachnal item counting"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -172,8 +170,6 @@ items:
       - "§7Grants §c+5❤ Health §7and §a+5❈ Defense§7."
       - ""
       - "§4This item is Arachnal Ж!"
-      - ""
-      - "§8Not active yet: Arachne's Faithful needs Arachnal item counting"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -197,8 +193,6 @@ items:
       - "§7Grants §c+5❤ Health §7and §a+5❈ Defense§7."
       - ""
       - "§4This item is Arachnal Ж!"
-      - ""
-      - "§8Not active yet: Arachne's Faithful needs Arachnal item counting"
     components:
       - id: SKULL_HEAD
         texture: 10505f1e9765e47e7fb9208e2ad8f171668decf39465ec40d3a589f8cbeb9722
@@ -220,8 +214,6 @@ items:
       - "§7Grants §c+5❤ Health §7and §a+5❈ Defense§7."
       - ""
       - "§4This item is Arachnal Ж!"
-      - ""
-      - "§8Not active yet: Arachne's Faithful needs Arachnal item counting"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -242,12 +234,6 @@ items:
       treasure_chance: 0.1
     unavailable: "Junker Joel trade cost unconfirmed"
     source: "Junker Joel (Backwater Bayou): bought for Rusty Coins, requires Fishing 5."
-    lore:
-      - "§8Tiered Bonus: Swamp Soldier (0/8)"
-      - "§7Increases damage dealt to §3Sea"
-      - "§3Creatures §7by §a5%§7."
-      - ""
-      - "§8Not active yet: Swamp Soldier (sea creature damage bonus) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -271,12 +257,6 @@ items:
       treasure_chance: 0.1
     unavailable: "Junker Joel trade cost unconfirmed"
     source: "Junker Joel (Backwater Bayou): bought for Rusty Coins, requires Fishing 5."
-    lore:
-      - "§8Tiered Bonus: Swamp Soldier (0/8)"
-      - "§7Increases damage dealt to §3Sea"
-      - "§3Creatures §7by §a5%§7."
-      - ""
-      - "§8Not active yet: Swamp Soldier (sea creature damage bonus) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -300,12 +280,6 @@ items:
       treasure_chance: 0.1
     unavailable: "Junker Joel trade cost unconfirmed"
     source: "Junker Joel (Backwater Bayou): bought for Rusty Coins, requires Fishing 5."
-    lore:
-      - "§8Tiered Bonus: Swamp Soldier (0/8)"
-      - "§7Increases damage dealt to §3Sea"
-      - "§3Creatures §7by §a5%§7."
-      - ""
-      - "§8Not active yet: Swamp Soldier (sea creature damage bonus) is not implemented"
     components:
       - id: SKULL_HEAD
         texture: f6f6c3ebab908a184d49a0f8c85edd3ed48a65d69213bc0367db67a7a1c0c3a7
@@ -327,12 +301,6 @@ items:
       treasure_chance: 0.1
     unavailable: "Junker Joel trade cost unconfirmed"
     source: "Junker Joel (Backwater Bayou): bought for Rusty Coins, requires Fishing 5."
-    lore:
-      - "§8Tiered Bonus: Swamp Soldier (0/8)"
-      - "§7Increases damage dealt to §3Sea"
-      - "§3Creatures §7by §a5%§7."
-      - ""
-      - "§8Not active yet: Swamp Soldier (sea creature damage bonus) is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -368,7 +336,7 @@ items:
       - "§6Ability: Farmer's Grace "
       - "§7Grants immunity to trampling crops."
       - ""
-      - "§8Not active yet: Squashbuckle needs Squash drops and the Greenhouse; Farmer's Grace trample immunity is not implemented"
+      - "§8Not active yet: Squashbuckle needs the Greenhouse and Squash drops; Farmer's Grace is inert because farmland trampling is not in the game"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -424,7 +392,7 @@ items:
       - "§7drop one from any crop grown"
       - "§7inside. Grants §60 Farming Fortune§7."
       - ""
-      - "§8Not active yet: Squashbuckle needs Squash drops and the Greenhouse; Farmer's Grace trample immunity is not implemented"
+      - "§8Not active yet: Squashbuckle needs the Greenhouse and Squash drops; Farmer's Grace is inert because farmland trampling is not in the game"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -484,7 +452,7 @@ items:
       - "§7drop one from any crop grown"
       - "§7inside. Grants §60 Farming Fortune§7."
       - ""
-      - "§8Not active yet: Squashbuckle needs Squash drops and the Greenhouse; Farmer's Grace trample immunity is not implemented"
+      - "§8Not active yet: Squashbuckle needs the Greenhouse and Squash drops; Farmer's Grace is inert because farmland trampling is not in the game"
     components:
       - id: SKULL_HEAD
         texture: e4bacb96734e244b9f7331d453e686fa2e32522a411aa568f960e741d74b3289
@@ -538,7 +506,7 @@ items:
       - "§7drop one from any crop grown"
       - "§7inside. Grants §60 Farming Fortune§7."
       - ""
-      - "§8Not active yet: Squashbuckle needs Squash drops and the Greenhouse; Farmer's Grace trample immunity is not implemented"
+      - "§8Not active yet: Squashbuckle needs the Greenhouse and Squash drops; Farmer's Grace is inert because farmland trampling is not in the game"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -795,7 +763,7 @@ items:
       - "§7Piece Bonus: §a+0"
       - "§7Next Upgrade: §a+20 §8(§a0§7/§c100§8)"
       - ""
-      - "§8Not active yet: Vivacious Darkness and Enderman Bulwark need Soulflow combat tracking"
+      - "§8Not active yet: Enderman Bulwark needs a per-piece Enderman kill counter item attribute"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -854,7 +822,7 @@ items:
       - "§7Piece Bonus: §a+0"
       - "§7Next Upgrade: §a+20 §8(§a0§7/§c100§8)"
       - ""
-      - "§8Not active yet: Vivacious Darkness and Enderman Bulwark need Soulflow combat tracking"
+      - "§8Not active yet: Enderman Bulwark needs a per-piece Enderman kill counter item attribute"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -914,7 +882,7 @@ items:
       - "§7Piece Bonus: §a+0"
       - "§7Next Upgrade: §a+20 §8(§a0§7/§c100§8)"
       - ""
-      - "§8Not active yet: Vivacious Darkness and Enderman Bulwark need Soulflow combat tracking"
+      - "§8Not active yet: Enderman Bulwark needs a per-piece Enderman kill counter item attribute"
     components:
       - id: SKULL_HEAD
         texture: 6217c56bbd77f647b8403803ed7ed982dd7afcf8a2ca4133d2c357ee0896efe2
@@ -971,7 +939,7 @@ items:
       - "§7Piece Bonus: §a+0"
       - "§7Next Upgrade: §a+20 §8(§a0§7/§c100§8)"
       - ""
-      - "§8Not active yet: Vivacious Darkness and Enderman Bulwark need Soulflow combat tracking"
+      - "§8Not active yet: Enderman Bulwark needs a per-piece Enderman kill counter item attribute"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -1493,8 +1461,6 @@ items:
       - ""
       - "§7All stats of this armor piece are"
       - "§7doubled while on §cJerry's Workshop§7!"
-      - ""
-      - "§8Not active yet: Cold Thumb, Battalion and bonus gift chance are not implemented (stats are doubled on Jerry's Workshop)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -1553,8 +1519,6 @@ items:
       - ""
       - "§7All stats of this armor piece are"
       - "§7doubled while on §cJerry's Workshop§7!"
-      - ""
-      - "§8Not active yet: Cold Thumb, Battalion and bonus gift chance are not implemented (stats are doubled on Jerry's Workshop)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -1611,8 +1575,6 @@ items:
       - ""
       - "§7All stats of this armor piece are"
       - "§7doubled while on §cJerry's Workshop§7!"
-      - ""
-      - "§8Not active yet: Cold Thumb, Battalion and bonus gift chance are not implemented (stats are doubled on Jerry's Workshop)"
     components:
       - id: SKULL_HEAD
         texture: c2407e66c81b1443c2e7dfc4d6583eb19c622fa22f34fbf99fe6c45f76a
@@ -1666,8 +1628,6 @@ items:
       - ""
       - "§7All stats of this armor piece are"
       - "§7doubled while on §cJerry's Workshop§7!"
-      - ""
-      - "§8Not active yet: Cold Thumb, Battalion and bonus gift chance are not implemented (stats are doubled on Jerry's Workshop)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2094,8 +2054,6 @@ items:
       - "§6Full Set Bonus: Regenerative Howl §7(0/4)"
       - "§7Upon activating §c Ferocity §7gain §a50"
       - "§aDefense §7for 5s (up to 10 stacks)."
-      - ""
-      - "§8Not active yet: Regenerative Howl needs a Ferocity activation hook"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2133,8 +2091,6 @@ items:
       - "§6Full Set Bonus: Regenerative Howl §7(0/4)"
       - "§7Upon activating §c Ferocity §7gain §a50"
       - "§aDefense §7for 5s (up to 10 stacks)."
-      - ""
-      - "§8Not active yet: Regenerative Howl needs a Ferocity activation hook"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2173,8 +2129,6 @@ items:
       - "§6Full Set Bonus: Regenerative Howl §7(0/4)"
       - "§7Upon activating §c Ferocity §7gain §a50"
       - "§aDefense §7for 5s (up to 10 stacks)."
-      - ""
-      - "§8Not active yet: Regenerative Howl needs a Ferocity activation hook"
     components:
       - id: SKULL_HEAD
         texture: ce4606c6d973a999aec1687c7e075f7d37db8185e88b844507f16b3e2b3eb690
@@ -2210,8 +2164,6 @@ items:
       - "§6Full Set Bonus: Regenerative Howl §7(0/4)"
       - "§7Upon activating §c Ferocity §7gain §a50"
       - "§aDefense §7for 5s (up to 10 stacks)."
-      - ""
-      - "§8Not active yet: Regenerative Howl needs a Ferocity activation hook"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2251,7 +2203,7 @@ items:
       - "§7for §a5§7 seconds when hit by a"
       - "§7projectile."
       - ""
-      - "§8Not active yet: Projectile Absorption is not implemented"
+      - "§8Not active yet: Projectile Absorption needs mob projectile attacks (mob arrows are not modelled)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -2289,7 +2241,7 @@ items:
       - "§7for §a5§7 seconds when hit by a"
       - "§7projectile."
       - ""
-      - "§8Not active yet: Projectile Absorption is not implemented"
+      - "§8Not active yet: Projectile Absorption needs mob projectile attacks (mob arrows are not modelled)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CHESTPLATE
@@ -2359,7 +2311,7 @@ items:
       - "§7for §a5§7 seconds when hit by a"
       - "§7projectile."
       - ""
-      - "§8Not active yet: Projectile Absorption is not implemented"
+      - "§8Not active yet: Projectile Absorption needs mob projectile attacks (mob arrows are not modelled)"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -2475,8 +2427,6 @@ items:
       - "§7anyone possess in varying amounts."
       - "§7Sometimes, it is necessary to give up"
       - "§7on other skills to improve it."
-      - ""
-      - "§8Not active yet: All Other Stats -5% is not applied"
     components:
       - id: SKULL_HEAD
         texture: 598949f4d546bd504376f79f8425b57ecf77be672976ee82aef5c86ec0db5d49
@@ -2644,8 +2594,6 @@ items:
       - "§7Crouch to splash some magma around."
       - "§8Mana Cost: §b20"
       - "§8Cooldown: §a1s"
-      - ""
-      - "§8Not active yet: Splash (sneak magma burst) is not implemented"
     components:
       - id: SKULL_HEAD
         texture: d184df9f7615f719103b9d1b0fd3f545c885746fade2cb81e965856eb2a3a948
@@ -3077,8 +3025,6 @@ items:
       - ""
       - "§8§oWhen horses are not fast enough,"
       - "§8§ouse a Racing Helmet instead."
-      - ""
-      - "§8Not active yet: +100 Speed Cap is not applied"
     components:
       - id: SKULL_HEAD
         texture: 2ce0746b12ee4053958e140ba29593272bd84ca34baf50d0d80b5bc3c615e9c6
@@ -3099,8 +3045,6 @@ items:
       - "§7wearer with the ability to §aburst"
       - "§aforward§7 when sneaking in water."
       - "§8Mana Cost: §b20"
-      - ""
-      - "§8Not active yet: Water Burst is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BOOTS
@@ -3145,8 +3089,6 @@ items:
       - "§7wearer with the ability to §aburst"
       - "§aforward§7 when sneaking in water."
       - "§8Mana Cost: §b20"
-      - ""
-      - "§8Not active yet: Water Burst is not implemented"
     components:
       - id: STANDARD_ITEM
         standard_item_type: LEGGINGS
@@ -3231,7 +3173,7 @@ items:
       - "§7second from all monsters within §e8"
       - "§7blocks."
       - ""
-      - "§8Not active yet: Bat Swarm and Rejuvenate are not implemented"
+      - "§8Not active yet: Bat Swarm needs summonable bat minions"
     components:
       - id: SKULL_HEAD
         texture: 6cfccc10953eeb73300b7bfcafcd3fd641ae739558662f625667a2e9d33cde74

@@ -22,6 +22,7 @@ import net.swofty.type.skyblockgeneric.glacite.GlaciteOre;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
 import net.swofty.type.skyblockgeneric.foraging.ForagingTreeManager;
+import net.swofty.type.skyblockgeneric.foraging.FrenzyAxes;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.CustomDropComponent;
 import net.swofty.type.skyblockgeneric.item.components.RegionSelectorComponent;
@@ -112,13 +113,7 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
             // Authored Park/Galatea trees are handled as a single tracked structure so Sweep can
             // harvest connected logs and the exact original blocks can grow back bottom-up.
             if (ForagingTreeManager.isTreeLog(block)) {
-                GatheringPetBonuses.SlowStart slowStart = GatheringPetBonuses.consumeSlowStart(player);
-                List<ForagingTreeManager.HarvestedLog> harvested = ForagingTreeManager.breakLogs(
-                        player, event.getBlockPosition(), heldItem, slowStart.sweep()
-                );
-                for (ForagingTreeManager.HarvestedLog log : harvested) {
-                    processTreeLog(player, heldItem, region, log, slowStart.foragingFortune());
-                }
+                harvestTree(player, heldItem, region, event.getBlockPosition(), 1.0);
                 return;
             }
 
@@ -172,7 +167,8 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                         double baseFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().baseSkillFortune());
                         double specificFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().specificBlockFortune());
                         double fortune = baseFortune + specificFortune
-                                + CrimsonEssenceShop.miningFortune(player, mineableBlock.getMaterial());
+                                + CrimsonEssenceShop.miningFortune(player, mineableBlock.getMaterial())
+                                + net.swofty.type.skyblockgeneric.item.equipment.EquipmentBonuses.miningFortune(player, mineableBlock);
                         double dropMultiplier = (1 + (fortune * 0.01));
                         dropAmount = (int) Math.ceil(dropAmount * dropMultiplier);
                     }
@@ -230,7 +226,19 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
         }
     }
 
-    private void processTreeLog(SkyBlockPlayer player, SkyBlockItem heldItem, SkyBlockRegion region,
+    public static void harvestTree(SkyBlockPlayer player, SkyBlockItem heldItem, SkyBlockRegion region,
+                                   net.minestom.server.coordinate.Point position, double sweepScale) {
+        GatheringPetBonuses.SlowStart slowStart = GatheringPetBonuses.consumeSlowStart(player);
+        List<ForagingTreeManager.HarvestedLog> harvested = ForagingTreeManager.breakLogs(
+                player, position, heldItem, slowStart.sweep(), sweepScale
+        );
+        for (ForagingTreeManager.HarvestedLog log : harvested) {
+            processTreeLog(player, heldItem, region, log, slowStart.foragingFortune());
+        }
+        FrenzyAxes.recordLogs(player, player.getHeldSlot(), harvested.size());
+    }
+
+    private static void processTreeLog(SkyBlockPlayer player, SkyBlockItem heldItem, SkyBlockRegion region,
                                 ForagingTreeManager.HarvestedLog harvested, double extraFortune) {
         Material originalMaterial = Material.fromKey(harvested.originalBlock().key());
         if (originalMaterial == null) return;
@@ -282,7 +290,7 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
         }
     }
 
-    private void distributeDrop(SkyBlockPlayer player, SkyBlockItem dropItem, Pos source) {
+    private static void distributeDrop(SkyBlockPlayer player, SkyBlockItem dropItem, Pos source) {
         int amount = dropItem.getAmount();
         ItemType type = dropItem.getAttributeHandler().getPotentialType();
         if (player.canInsertItemIntoSacks(type, amount)) {
