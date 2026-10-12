@@ -20,7 +20,7 @@ import java.util.Set;
 
 /**
  * Hypixel's Pet Score: each unique pet scores its rarity (Common 1 to Mythic 6) plus 1 at its max
- * level, counting only the best copy of duplicates (the four Wisp forms are one pet). Pets flagged {@code pet_score: false} (Eagle,
+ * level, counting only the best copy of duplicates (the four Wisp forms are one pet). Pets flagged {@code pet_score: false} (Eagle, Bingo,
  * Phoenix) never count. Thresholds grant Magic Find, and every point
  * is worth 3 SkyBlock XP.
  */

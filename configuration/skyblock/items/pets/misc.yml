@@ -8,6 +8,7 @@ items:
         pet_name: "Bingo"
         source: { text: "Bingo profiles", active: false }
         pet_type: ALL
+        pet_score: false
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         passive: true
         xp_offset: 0
