@@ -16,10 +16,11 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Hypixel's Pet Score: each unique pet scores its rarity (Common 1 to Mythic 6) plus 1 at its max
- * level, counting only the best copy of duplicates. Pets flagged {@code pet_score: false} (Eagle,
+ * level, counting only the best copy of duplicates (the four Wisp forms are one pet). Pets flagged {@code pet_score: false} (Eagle,
  * Phoenix) never count. Thresholds grant Magic Find, and every point
  * is worth 3 SkyBlock XP.
  */
@@ -27,6 +28,9 @@ public final class PetScore {
     public static final List<Integer> MAGIC_FIND_THRESHOLDS =
             List.of(10, 25, 50, 75, 100, 130, 175, 225, 275, 325, 375, 450, 500);
     public static final int SKYBLOCK_XP_PER_POINT = 3;
+
+    private static final Set<ItemType> WISP_FORMS = Set.of(ItemType.DROPLET_WISP_PET, ItemType.FROST_WISP_PET,
+            ItemType.GLACIAL_WISP_PET, ItemType.SUBZERO_WISP_PET);
 
     private static final Comparator<SkyBlockItem> BEST_COPY = Comparator
             .comparingInt((SkyBlockItem pet) -> pet.getAttributeHandler().getRarity().ordinal())
@@ -41,7 +45,7 @@ public final class PetScore {
             if (!pet.hasComponent(PetComponent.class) || !pet.getComponent(PetComponent.class).isCountsForPetScore()) {
                 continue;
             }
-            best.merge(pet.getAttributeHandler().getPotentialType(), pet,
+            best.merge(scoreKey(pet.getAttributeHandler().getPotentialType()), pet,
                     (a, b) -> BEST_COPY.compare(a, b) >= 0 ? a : b);
         }
         return best.values().stream().mapToInt(PetScore::pointsFor).sum();
@@ -67,6 +71,10 @@ public final class PetScore {
         if (earned > experience.getSourceXP(SkyBlockXPSource.PET_SCORE)) {
             experience.setSourceXP(SkyBlockXPSource.PET_SCORE, earned);
         }
+    }
+
+    private static ItemType scoreKey(ItemType type) {
+        return WISP_FORMS.contains(type) ? ItemType.SUBZERO_WISP_PET : type;
     }
 
     private static int pointsFor(SkyBlockItem pet) {
