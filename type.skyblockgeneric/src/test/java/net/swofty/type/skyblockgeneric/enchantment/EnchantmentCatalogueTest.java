@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EnchantmentCatalogueTest {
-    private static final Set<String> ITEMS_WITHOUT_A_GROUP = Set.of("Throwing Axe", "Aspect of the Jerry", "Wand",
+    private static final Set<String> ITEMS_WITHOUT_A_GROUP = Set.of("Throwing Axe", "Aspect of the Jerry", "Wand", "Shiny Rod",
             "Precursor Eye", "Vacuum", "Shears");
     private static final Set<String> NOT_IN_CATALOGUE = Set.of();
 
@@ -146,5 +146,17 @@ class EnchantmentCatalogueTest {
         for (String key : wired) assertTrue(EnchantmentType.valueOf(key).getEnch().isEffectActive(), key);
         for (String key : List.of("LAST_STAND", "REND", "HECATOMB", "LEGION"))
             assertFalse(EnchantmentType.valueOf(key).getEnch().isEffectActive(), key);
+    }
+
+    @Test
+    void forestPledgeReachesLevelSixAndGrantsTwelveForagingFortune() {
+        CatalogueEntry entry = EnchantmentCatalogue.require("FOREST_PLEDGE");
+        assertEquals(6, entry.maxLevel());
+        assertEquals(12, ((StatEnchantment) EnchantmentType.FOREST_PLEDGE.getEnch()).grantAt(ItemStatistic.FORAGING_FORTUNE, 6));
+    }
+
+    @Test
+    void sharpnessIsNotAppliedToFishingWeapons() {
+        assertFalse(EnchantmentCatalogue.require("SHARPNESS").appliedTo().contains("Fishing Weapon"));
     }
 }

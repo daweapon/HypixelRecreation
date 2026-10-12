@@ -22,5 +22,7 @@ public class RuneableComponent extends SkyBlockItemComponent {
         LEGGINGS,
         BOOTS,
         HOES,
+        AXES,
+        THROWING_AXES,
     }
 }

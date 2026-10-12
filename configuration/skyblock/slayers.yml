@@ -46,6 +46,8 @@ slayers:
       - { item: TARANTULA_TALISMAN, pool: MAIN, level: 6, tiers: { III: [1, 1, 0.0825], IV: [1, 1, 0.1663], V: [1, 1, 0.2120] } }
       - { item: VIAL_OF_VENOM, pool: MAIN, level: 6, tiers: { IV: [1, 1, 0.083], V: [1, 1, 0.14] } }
       - { item: PRIMORDIAL_EYE, pool: MAIN, level: 7, tiers: { V: [1, 1, 0.014] } }
+      - { item: BITE_RUNE, pool: EXTRA, level: 0, tiers: { II: [1, 1, 0.69], III: [1, 1, 2.67], IV: [1, 1, 6.45], V: [1, 1, 5.52] } }
+      - { item: DARKNESS_WITHIN_RUNE, pool: EXTRA, level: 0, tiers: { IV: [1, 1, 0.39], V: [1, 1, 0.66] } }
       - { item: DYE_BRICK_RED, pool: SEPARATE, level: 0, tiers: { I: [1, 1, 0.00001], II: [1, 1, 0.00004], III: [1, 1, 0.0001], IV: [1, 1, 0.0002] } }
 
   - id: SVEN_PACKMASTER
@@ -71,6 +73,8 @@ slayers:
     drops:
       - { item: WOLF_TOOTH, pool: TOKEN, level: 0, tiers: { I: [1, 1, 100], II: [4, 4, 100], III: [16, 16, 100], IV: [64, 64, 100] } }
       - { item: FURBALL, pool: MAIN, level: 4, tiers: { III: [1, 1, 0.82], IV: [1, 1, 1.62] } }
+      - { item: SPIRIT_RUNE, pool: EXTRA, level: 0, tiers: { II: [1, 1, 0.68], III: [1, 1, 2.66], IV: [1, 1, 6.37] } }
+      - { item: COUTURE_RUNE, pool: EXTRA, level: 6, tiers: { IV: [1, 1, 0.24] } }
       - { item: DYE_CELESTE, pool: SEPARATE, level: 0, tiers: { I: [1, 1, 0.00001], II: [1, 1, 0.00004], III: [1, 1, 0.0001], IV: [1, 1, 0.0002] } }
 
   - id: VOIDGLOOM_SERAPH
@@ -97,6 +101,9 @@ slayers:
       - { item: NULL_SPHERE, pool: TOKEN, level: 0, tiers: { I: [2, 3, 100], II: [14, 24, 100], III: [60, 80, 100], IV: [105, 155, 100] } }
       - { item: HAZMAT_ENDERMAN, pool: MAIN, level: 4, tiers: { III: [1, 1, 1.04], IV: [1, 1, 1.55] } }
       - { item: HANDY_BLOOD_CHALICE, pool: MAIN, level: 5, tiers: { IV: [1, 1, 0.1764] } }
+      - { item: ENDERSNAKE_RUNE, pool: EXTRA, level: 0, tiers: { III: [1, 1, 2.42], IV: [1, 1, 5.30] } }
+      - { item: DRAGON_RUNE, pool: EXTRA, level: 5, tiers: { IV: [1, 1, 0.66] } }
+      - { item: ENCHANT_RUNE, pool: EXTRA, level: 7, tiers: { IV: [1, 1, 0.046] } }
       - { item: POCKET_ESPRESSO_MACHINE, pool: SEPARATE, level: 4, tiers: { IV: [1, 1, 0.3882] } }
       - { item: DYE_BYZANTIUM, pool: SEPARATE, level: 0, tiers: { I: [1, 1, 0.00001], II: [1, 1, 0.00004], III: [1, 1, 0.0001], IV: [1, 1, 0.0002] } }
       - { item: ENDSTONE_IDOL, pool: SEPARATE, level: 7, tiers: { IV: [1, 1, 0.014] } }

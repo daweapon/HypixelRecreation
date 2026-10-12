@@ -39,6 +39,14 @@ items:
         shard_id: C5
       - id: SKULL_HEAD
         texture: a5eef52a468f681fab6a56bf5cc9986c1868ff0795d115c6ab0009d8faf972a4
+  - id: SHARD_HOWLING_SPIRIT
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C6
+      - id: SKULL_HEAD
+        texture: f4cb7a6bf6c32c49f2589147e6f0f888e9e35875dd1ea2a8af379ca710589e6b
   - id: SHARD_PHANFLARE
     material: PLAYER_HEAD
     rarity: COMMON
@@ -47,6 +55,14 @@ items:
         shard_id: C7
       - id: SKULL_HEAD
         texture: 413be22d27756501bf11acab0b89ededd05d19397bc2cf7f922a698f51aa2f1b
+  - id: SHARD_DUMPSTER_DIVER
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C8
+      - id: SKULL_HEAD
+        texture: f5c5eb5ee072c06580986d12a029e28010c1290875534810c53140bc76dabfeb
   - id: SHARD_LAPIS_ZOMBIE
     material: SEA_LANTERN
     rarity: COMMON
@@ -77,6 +93,14 @@ items:
         shard_id: C12
       - id: SKULL_HEAD
         texture: 6572747a639d2240feeae5c81c6874e6ee7547b599e74546490dc75fa2089186
+  - id: SHARD_FLY
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C13
+      - id: SKULL_HEAD
+        texture: 9d90e777826a52461368e26d1b2e19bfa1ba582d602483e545f4124d0f731842
   - id: SHARD_BOGGED
     material: PLAYER_HEAD
     rarity: COMMON
@@ -141,6 +165,14 @@ items:
         shard_id: C21
       - id: SKULL_HEAD
         texture: 9f31c9b5a2bfe7443645b4e7e8ea408b04d554a9200b00afd574ce924b555ecb
+  - id: SHARD_RABBIT_MAFIOSO
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C22
+      - id: SKULL_HEAD
+        texture: 703d54750a8a78d258979a6fc206b668c468ef67a0b1622d5f5816165ff32323
   - id: SHARD_CORALOT
     material: PLAYER_HEAD
     rarity: COMMON
@@ -181,6 +213,14 @@ items:
         shard_id: C27
       - id: SKULL_HEAD
         texture: 69be1cf0639c6b7db506686f26af222671ce52321e1c921b296933cd40ac4c62
+  - id: SHARD_LOCUST
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C28
+      - id: SKULL_HEAD
+        texture: 4b24a482a32db1ea78fb98060b0c2fa4a373cbd18a68edddeb7419455a59cda9
   - id: SHARD_AZURE
     material: PLAYER_HEAD
     rarity: COMMON
@@ -197,6 +237,14 @@ items:
         shard_id: C30
       - id: SKULL_HEAD
         texture: 2690d3097a97da8fd872680f3fb897c77e40b1b1eb88d082a7e2f6a48179dc6c
+  - id: SHARD_STAG_BEETLE
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C31
+      - id: SKULL_HEAD
+        texture: 754b54e5bfffe7250aa3a091b68f1dd3f51ffc7697d2e3f21ad0392589eb6131
   - id: SHARD_INKLING
     material: PLAYER_HEAD
     rarity: COMMON
@@ -235,6 +283,22 @@ items:
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: C36
+  - id: SHARD_FLITTER
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C37
+      - id: SKULL_HEAD
+        texture: a89a76deedd42b410344100df2fa79b6eeac7e6f287745d656179368340ffade
+  - id: SHARD_TEPID
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C38
+      - id: SKULL_HEAD
+        texture: 9a4293f2a8a7aaf2ff0fd5e88ef3f5349fd6594015d5f975862a2a9b5856b25a
   - id: SHARD_CRETAN_BULL
     material: PLAYER_HEAD
     rarity: COMMON
@@ -243,14 +307,142 @@ items:
         shard_id: C39
       - id: SKULL_HEAD
         texture: db5fbd57a880f6f8bb473c217d08ee7ba47bf291185f4b2971305de496521f84
-  - id: SHARD_MINOS_HUNTER
+  - id: SHARD_ANT
     material: PLAYER_HEAD
-    rarity: UNCOMMON
+    rarity: COMMON
     components:
       - id: ATTRIBUTE_SHARD
-        shard_id: U60
+        shard_id: C40
       - id: SKULL_HEAD
-        texture: 4e7ab5fa7ce74e34fa0bdbb783d905ba91a3300d24fe15a156c06d8237ac52a9
+        texture: 88a51208885548fbbe08271148db3691f59e275a8d723be094b44d34ccfd9c85
+  - id: SHARD_CAVERNFISH
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C41
+      - id: SKULL_HEAD
+        texture: f11eb51c44f20a6648679fe9ef9840decce43231a6aa2163f0b3a111b097ccc6
+  - id: SHARD_STRONGARM
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C42
+      - id: SKULL_HEAD
+        texture: 6cd265c4b9a1326253e66b3f9cf1e0b8de8d077eb5cbda87654c6dbac875c8db
+  - id: SHARD_HIDEONSUN
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C43
+      - id: SKULL_HEAD
+        texture: 633781da53be04cd7b48335de7211215d79968dc762270aaa992c3e354d70451
+  - id: SHARD_HAGGARD
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C44
+      - id: SKULL_HEAD
+        texture: 837be7781a3ae4454f4670e1686dc17a07dd321d6f670ba80f91e391f0763321
+  - id: SHARD_HONEYHOG
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C45
+      - id: SKULL_HEAD
+        texture: 287be45e453b832f9accee5709b94313f716554e93bfadb6d367a83e43ad6d97
+  - id: SHARD_SHYWORM
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C46
+      - id: SKULL_HEAD
+        texture: b4287b8a0a642dac535a6ee29459efd17d5cee1eb359e436bc8e7abba3da14b7
+  - id: SHARD_BRINELING
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C47
+      - id: SKULL_HEAD
+        texture: 18ddf45f2a16e662c667541422cbbd944398b1a90c500b03308b1c99c10003d3
+  - id: SHARD_CHOCOBUN
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C48
+      - id: SKULL_HEAD
+        texture: 9a815398e7da89b1bc08f646cafc8e7b813da0be0eec0cce6d3eff5207801026
+  - id: SHARD_FOXTROT
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C49
+      - id: SKULL_HEAD
+        texture: 8f1a6afbf65a8717425f804c95f9de503d95b43dbe4974613bf42788e3cdcad6
+  - id: SHARD_FIREFOX
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C52
+      - id: SKULL_HEAD
+        texture: 322fc024810164588fc153a8e5160e1d03c7509dbbf88b870addbe6f5a292647
+  - id: SHARD_GROUNDHOG
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C55
+      - id: SKULL_HEAD
+        texture: 5c71ad1742a51378559b0521e44ddbd5c788c734ae5fbdd58d10443cf09677c8
+  - id: SHARD_TIMIL
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C56
+      - id: SKULL_HEAD
+        texture: c5c024aeec1c8dc98f2b42add5b0f020788c3f980dff5e863636761e60c5effe
+  - id: SHARD_BLUE_JAY
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C58
+      - id: SKULL_HEAD
+        texture: 5a8c405ca17f8a96d7a08814f02f0a7c72dcb0e3f6605fbbcd90e56cc1c28650
+  - id: SHARD_BUNBUN
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C61
+      - id: SKULL_HEAD
+        texture: 63187a774f746b59f143bc05c46845117a695402ab6a901cdb662bd53aec918f
+  - id: SHARD_HONEYBUZZ
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C64
+      - id: SKULL_HEAD
+        texture: 890efc8aa5aac2742ab04564501c4f56e9c7169b272d0530f78c209865577928
+  - id: SHARD_POLLENDART
+    material: PLAYER_HEAD
+    rarity: COMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: C67
+      - id: SKULL_HEAD
+        texture: 8150aba106944804c390e7dc702da36455efdc01696f33df14d7f144669ab1a6
   - id: SHARD_BRAMBLE
     material: PLAYER_HEAD
     rarity: UNCOMMON
@@ -323,14 +515,14 @@ items:
         shard_id: U9
       - id: SKULL_HEAD
         texture: 8f8024c687b1914b8ba488e7e1d61499c15b219144c3c6d683c07825a8d80715
-  - id: SHARD_PEST
+  - id: SHARD_FIELD_MOUSE
     material: PLAYER_HEAD
     rarity: UNCOMMON
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: U10
       - id: SKULL_HEAD
-        texture: 65485c4b34e5b5470be94de100e61f7816f81bc5a11dfdf0eccf890172da5d0a
+        texture: f379e09252817314bd0b694f7d53b48af2c7fa8499109802a41bb294d2f93e3e
   - id: SHARD_MOSSYBIT
     material: PLAYER_HEAD
     rarity: UNCOMMON
@@ -347,6 +539,14 @@ items:
         shard_id: U12
       - id: SKULL_HEAD
         texture: 55aa7895830f566618a71af691124654abc1cdfc18bbd6a6631dfbdc6a648b2
+  - id: SHARD_WETWING
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U14
+      - id: SKULL_HEAD
+        texture: e4654095755fa5fb994e69d5661b0ca2286815b006f8d3d18933f2aa7ec44f56
   - id: SHARD_SEER
     material: PLAYER_HEAD
     rarity: UNCOMMON
@@ -363,12 +563,28 @@ items:
         shard_id: U16
       - id: SKULL_HEAD
         texture: 2ee53b7626a836d26d7ddca5f0c2b0dd87519a84769cf3500d01a3c6eca0a69c
+  - id: SHARD_SEA_WITCH
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U17
+      - id: SKULL_HEAD
+        texture: fce6604157fc4ab5591e4bcf507a749918ee9c41e357d47376e0ee7342074c90
   - id: SHARD_OBSIDIAN_DEFENDER
     material: OBSIDIAN
     rarity: UNCOMMON
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: U18
+  - id: SHARD_CRICKET
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U19
+      - id: SKULL_HEAD
+        texture: a24c69f96ce556221e195c8ef2bfad71ebf7f95f5ae914a484a8d0ec21672674
   - id: SHARD_SALMON
     material: PLAYER_HEAD
     rarity: UNCOMMON
@@ -392,7 +608,7 @@ items:
       - id: ATTRIBUTE_SHARD
         shard_id: U22
       - id: SKULL_HEAD
-        texture: a4f41324c22e247dd2777a95ad6cf205854cedce3733303d08a9c176cc31de77
+        texture: 1e04bb6367caa4e88f5fd0ee80f0745d137a6060223dbbc42a16471fdf64bb83
   - id: SHARD_LOTUM
     material: PLAYER_HEAD
     rarity: UNCOMMON
@@ -415,6 +631,14 @@ items:
         shard_id: U25
       - id: SKULL_HEAD
         texture: c5d80d20d21e2ca37f68df91aff9974cb51a9d590c0fa141b544d7ef90568232
+  - id: SHARD_TREASURE_HOARDER
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U26
+      - id: SKULL_HEAD
+        texture: 374c6b90ceedba3d8bb1d1a84dff402115964ef333de563bcd6799f3738bed06
   - id: SHARD_SYCOPHANT
     material: PLAYER_HEAD
     rarity: UNCOMMON
@@ -479,7 +703,7 @@ items:
         shard_id: U34
       - id: SKULL_HEAD
         texture: d13c77ba3677851f570895c6d9a065d66c3610f0050a2f43d6f0d6330ad4585
-  - id: SHARD_BRUISER
+  - id: SHARD_ZEALOT_BRUISER
     material: PLAYER_HEAD
     rarity: UNCOMMON
     components:
@@ -503,14 +727,14 @@ items:
         shard_id: U39
       - id: SKULL_HEAD
         texture: 43607e931eea8f27fa19f6f3859469820a21f574361f190d1a8b3813ce33e39d
-  - id: SHARD_TERMITE
+  - id: SHARD_EARTHWORM
     material: PLAYER_HEAD
     rarity: UNCOMMON
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: U40
       - id: SKULL_HEAD
-        texture: 9bdd587bcc2542892b98c0288a357307888e9d87cd0651e0aa035a95f8e36b45
+        texture: 6403ba4027a333d8d2fd32ab59d1cfdbaa7d908d80d2381db2a69cbe65450ad8
   - id: SHARD_FLIPFLOPPER
     material: PLAYER_HEAD
     rarity: UNCOMMON
@@ -519,6 +743,134 @@ items:
         shard_id: U41
       - id: SKULL_HEAD
         texture: 6ae202393a3060274a7d780b7ac40f2e5653dc0cf42c2cf6d5b6c83591dd58de
+  - id: SHARD_POLARIS
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U42
+      - id: SKULL_HEAD
+        texture: 941458db27210e8905795b0f3368015cd0f27f688fb0a14f58b7a447079aed8f
+  - id: SHARD_TREEFROG
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U43
+      - id: SKULL_HEAD
+        texture: ee895a756c71381a40b94923acc9c68687c9a41a34c9530655c4e4b0c2494c19
+  - id: SHARD_BAYOU_SLUDGE
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U44
+      - id: SKULL_HEAD
+        texture: 895aeec6b842ada8669f846d65bc49762597824ab944f22f45bf3bbb941abe6c
+  - id: SHARD_AREITA
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U45
+      - id: SKULL_HEAD
+        texture: c38cc10ce2f1185f3d21eb1f0106fefac50dd80be0967f934ad71a107e04cbf4
+  - id: SHARD_BLUEBIRD
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U46
+      - id: SKULL_HEAD
+        texture: 2bdb27b35a5eab52134a1a337ef518676415b9ed840183175d059bc157bea72b
+  - id: SHARD_OSEDAX
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U47
+      - id: SKULL_HEAD
+        texture: 538a963bd073229d8148f9edadc5cd1841a1e151e75994ec04af231722610b1c
+  - id: SHARD_DUPLICO
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U48
+      - id: SKULL_HEAD
+        texture: 697bb94d511f412fb683d5c73924dd7c9dc8dfc64b439f50466f5a10c9aed393
+  - id: SHARD_LITTERBUG
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U49
+      - id: SKULL_HEAD
+        texture: d878c579771b80247030c0fea12211f3e006a2d9e65d4ed896ba6e5a1ed961da
+  - id: SHARD_WATER_SNAKE
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U50
+      - id: SKULL_HEAD
+        texture: 1b06d15155c60d0f0f267be05c8436c5a1e764a8c8aca236bb37223f49d9a1d0
+  - id: SHARD_GAZER
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U51
+      - id: SKULL_HEAD
+        texture: 407b3c3d2c3fe259d69207a14ca5cd99713c7096ba122bb40326f3489e5d0d6c
+  - id: SHARD_HONEYBUG
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U52
+      - id: SKULL_HEAD
+        texture: 763ac656e2ad477e81215d50cf578341985b9ee4073ee7f1d3ed5a8a6f4e6fc1
+  - id: SHARD_SHUDDERSQUID
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U53
+      - id: SKULL_HEAD
+        texture: 5a4dfb0b6ca7ea12ebf406c29101cce6187fb8fadfe4e82664a225f4574e29e9
+  - id: SHARD_SOLSNATCHER
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U55
+      - id: SKULL_HEAD
+        texture: 195d858ca94634e515b105d5ee45269f7c4675d877b338ac5c1c38158e547058
+  - id: SHARD_SEPIALOT
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U56
+      - id: SKULL_HEAD
+        texture: 76ae1d9fe7b6ac50ea46541fa01d6ff75a236f2a337d84565e91878f2e79fede
+  - id: SHARD_HONEY_BADGER
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U57
+      - id: SKULL_HEAD
+        texture: e517aa9d2daeea4115a0c79702699d0ef7a50e9db002e2697dafb7c289458205
+  - id: SHARD_DRIFTLING
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U58
+      - id: SKULL_HEAD
+        texture: f4c4f8e5fce1ec2d299cb8a395792ecddc497a1d8af86faaa5e20373016c7225
   - id: SHARD_TEWTIL
     material: PLAYER_HEAD
     rarity: UNCOMMON
@@ -527,6 +879,214 @@ items:
         shard_id: U59
       - id: SKULL_HEAD
         texture: 48957b505a21e33aa092e2aa47d81e8815eda5803d14b33990f24effb7417198
+  - id: SHARD_MINOS_HUNTER
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U60
+      - id: SKULL_HEAD
+        texture: 4e7ab5fa7ce74e34fa0bdbb783d905ba91a3300d24fe15a156c06d8237ac52a9
+  - id: SHARD_WOODCHUCKER
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U61
+      - id: SKULL_HEAD
+        texture: 52a2b4674c4735aceeaf56bc1c832306ccb7d58c0a3d6d23a09521cca4f678fc
+  - id: SHARD_SOLAR
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U62
+      - id: SKULL_HEAD
+        texture: 7b6b187df67414b5e922b34f0b0f7aa5801c31ac6e211234cef09fc6ec892628
+  - id: SHARD_PARCHED
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U63
+      - id: SKULL_HEAD
+        texture: 3bab26ea1e954681e5fd82f73d015c53702121cc1cc218eba51cb7cfb1061abc
+  - id: SHARD_BLOODBAT
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U64
+      - id: SKULL_HEAD
+        texture: 88d9e98eda6e2087be6a368a8754e5052688f770268e083fb47066d3ff5519c4
+  - id: SHARD_DUSTYBIT
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U65
+      - id: SKULL_HEAD
+        texture: 9bcb6540869212c0f96261f71c6f199675b223447385a2654a11f41dc56a377e
+  - id: SHARD_WOODLOUSE
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U67
+      - id: SKULL_HEAD
+        texture: 70556d44c1a9cb5e49abe4db81d5b7750d8f018f3abd16efecb9e72ea8e8a7c8
+  - id: SHARD_EMBER
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U68
+      - id: SKULL_HEAD
+        texture: 6f51dc48f14107235da406018762e8b319c1036c7858ab74599efb93d3af70ef
+  - id: SHARD_CHEEKY_TIKI
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U69
+      - id: SKULL_HEAD
+        texture: bb19e5b72167db517ff8b9e2dd0735996641bdb6b6267a758ad2864022023cb7
+  - id: SHARD_RED_PANDA
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U70
+      - id: SKULL_HEAD
+        texture: 34af0a707e649e70b1d71a3c19650d23cb6b8fa4aebdab3960c0464bab463d3f
+  - id: SHARD_SPRAWL
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U71
+      - id: SKULL_HEAD
+        texture: 6bbe6a78b8b9b1bee4458fae633deca7dc9da31589b98903c9e871efcb416aea
+  - id: SHARD_SNEAKY_TIKI
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U72
+      - id: SKULL_HEAD
+        texture: d0fad0c1eb42633610df7e3f27d7c38ca9c3e6530bfe1bab5a3d5238824a7307
+  - id: SHARD_PACKRAT
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U73
+      - id: SKULL_HEAD
+        texture: 2ad542423695be31ef8aa1659b64097c3da10efc2fc50bc2bc9f1a5e4bc11c8
+  - id: SHARD_SHRIEKY_TIKI
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U75
+      - id: SKULL_HEAD
+        texture: f62bef8ca58d83766c7e26f9fb4fe06c11b93542a9c10f36f460a3b427748223
+  - id: SHARD_WOODPECKER
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U76
+      - id: SKULL_HEAD
+        texture: bff3a1fe8d0791325ccebeba45d85396afbe9aca45a7e72cb76b8c52c0400b0
+  - id: SHARD_HONEYMITE
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U78
+      - id: SKULL_HEAD
+        texture: 32192070b09dd85f7660965a70474f628c877c07aff14df56f37bd61df2e08c2
+  - id: SHARD_QUEEN_ANT
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U79
+      - id: SKULL_HEAD
+        texture: 321fcf90d9090de8fd720cb2817a4dfdc2283e828fd44f8bfdc7ff9a8505cc
+  - id: SHARD_HAWK
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U82
+      - id: SKULL_HEAD
+        texture: f202164427ad2dadf175e3fd8c81335a30b2c7e1d5e2f93a57b81570d1c461db
+  - id: SHARD_JUNE_BUG
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U85
+      - id: SKULL_HEAD
+        texture: 972104e509e6a5e65d02a5b1d9ff88ad5d65fc6a11920ce2e615293a0f46dff1
+  - id: SHARD_DUNG_BEETLE
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U88
+      - id: SKULL_HEAD
+        texture: 9d2a5d91cc84f24ed354ad9ff6cc33f06c47128be03fb0896fb995f7a81540af
+  - id: SHARD_RAT
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U91
+      - id: SKULL_HEAD
+        texture: a8abb471db0ab78703011979dc8b40798a941f3a4dec3ec61cbeec2af8cffe8
+  - id: SHARD_KEELED_SLUG
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U94
+      - id: SKULL_HEAD
+        texture: 2186bfad77fd8306d2937ef44e92bd6c433cdcc6d7c75eda85c621d6d94bfaaf
+  - id: SHARD_MITE
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U97
+      - id: SKULL_HEAD
+        texture: be6baf6431a9daa2ca604d5a3c26e9a761d5952f0817174a4fe0b764616e21ff
+  - id: SHARD_MOTH
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U100
+      - id: SKULL_HEAD
+        texture: 65485c4b34e5b5470be94de100e61f7816f81bc5a11dfdf0eccf890172da5d0a
+  - id: SHARD_MOSQUITO
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U103
+      - id: SKULL_HEAD
+        texture: 52a9fe05bc663efcd12e56a3ccc5ec035bf577b78708548b6f4ffcf1d30eccfe
+  - id: SHARD_RABBIT_CAT
+    material: PLAYER_HEAD
+    rarity: UNCOMMON
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: U106
+      - id: SKULL_HEAD
+        texture: 3dbebdae006fbedf03ef94e1a5181a2f09004387f83cddeda401fffdc98f5924
   - id: SHARD_SYLVAN
     material: PLAYER_HEAD
     rarity: RARE
@@ -629,14 +1189,14 @@ items:
         shard_id: R15
       - id: SKULL_HEAD
         texture: b914cf5106aaa82409fdd9213fbdb1479b4d65aecc5d5e22b1f25e5744c4c4f7
-  - id: SHARD_CROPEETLE
+  - id: SHARD_BEETLE
     material: PLAYER_HEAD
     rarity: RARE
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: R16
       - id: SKULL_HEAD
-        texture: ee3a40c4b8d65ee3f1337692b2b47839ebc78340180c928b36cbb7524ec25260
+        texture: 70a1e836bf1968b2eaa4837227a19204f17295d870ee9e754bd6b6d60ddbed3c
   - id: SHARD_DROWNED
     material: PLAYER_HEAD
     rarity: RARE
@@ -645,6 +1205,14 @@ items:
         shard_id: R18
       - id: SKULL_HEAD
         texture: 862f40833734f7d9ffa5e81005e9b31234815188628980077267f13c0e560ec6
+  - id: SHARD_VULTURE
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R19
+      - id: SKULL_HEAD
+        texture: 7020b49319a6b7db29730744dbb948a0e540cba6a66df69c6010378f1caa8b96
   - id: SHARD_STAR_SENTRY
     material: PLAYER_HEAD
     rarity: RARE
@@ -685,6 +1253,14 @@ items:
         shard_id: R25
       - id: SKULL_HEAD
         texture: 31202f2e6b408231b4698723971ab39ea615d2da3cc641307bf1c08a0b7f0dca
+  - id: SHARD_LAVA_LEECH
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R26
+      - id: SKULL_HEAD
+        texture: 18ae7046da98dcb33f3ed42f1dc41d08ac8dfa5db3a3860de5b1b5c056804187
   - id: SHARD_REVENANT
     material: PLAYER_HEAD
     rarity: RARE
@@ -693,6 +1269,14 @@ items:
         shard_id: R27
       - id: SKULL_HEAD
         texture: 1fc0184473fe882d2895ce7cbc8197bd40ff70bf10d3745de97b6c2a9c5fc78f
+  - id: SHARD_FOLF
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R28
+      - id: SKULL_HEAD
+        texture: 9f4297e76fe24f9d9012e41eb70c9e0e026985780376adabf561a4b2f7745e08
   - id: SHARD_SILENTDEPTH
     material: PLAYER_HEAD
     rarity: RARE
@@ -757,6 +1341,14 @@ items:
         shard_id: R36
       - id: SKULL_HEAD
         texture: 74e9c6e98582ffd8ff8feb3322cd1849c43fb16b158abb11ca7b42eda7743eb
+  - id: SHARD_HUMMINGBIRD
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R37
+      - id: SKULL_HEAD
+        texture: 313f5d81bbe255764b7f2b5875ba5851066c9479717999123482f90bf2f75da3
   - id: SHARD_CARROT_KING
     material: PLAYER_HEAD
     rarity: RARE
@@ -765,7 +1357,7 @@ items:
         shard_id: R38
       - id: SKULL_HEAD
         texture: b50459bcb08db5ce93e021079c1cfc038c9ebe7ad9a149516efe4d5ee8afb59f
-  - id: SHARD_WITHER_SPECTER
+  - id: SHARD_WITHER_SPECTRE
     material: PLAYER_HEAD
     rarity: RARE
     components:
@@ -773,6 +1365,14 @@ items:
         shard_id: R39
       - id: SKULL_HEAD
         texture: f6aa5acfd973f67ba8e249ae07a11ae7ca713c900d90d09ce0903c79ddd7dd9e
+  - id: SHARD_BADGER
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R40
+      - id: SKULL_HEAD
+        texture: c9421175cb2d6f9731cc99d48c275eeb853c4fb32b579420a1fab22fbb0f05e0
   - id: SHARD_MATCHO
     material: PLAYER_HEAD
     rarity: RARE
@@ -805,12 +1405,20 @@ items:
         shard_id: R45
       - id: SKULL_HEAD
         texture: c307eb7b115e84e9b51dd1b4f874337757a061770c63670145f84eb5f4583835
-  - id: SHARD_BULLFROG
+  - id: SHARD_WILD_HOG
     material: PLAYER_HEAD
     rarity: RARE
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: R46
+      - id: SKULL_HEAD
+        texture: 9113ad62b82f78836ba737f3a0fac50b3453497b2d9d5d09cb465d30c2c77418
+  - id: SHARD_BULLFROG
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R47
       - id: SKULL_HEAD
         texture: 720e0c5640009c56ae61dddfa8d1d4e8a3c8ce7bd1f7e89399b17ee248cad913
   - id: SHARD_DREADWING
@@ -861,6 +1469,14 @@ items:
         shard_id: R54
       - id: SKULL_HEAD
         texture: f638bf02f51ad4fd0456a703f1d31f4fa87eef01b40851b4781b11ea63873d24
+  - id: SHARD_HEWVER
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R55
+      - id: SKULL_HEAD
+        texture: a3a034e7ed269fb4b7d3cd8662cd997be84605e029b9e70c184b7e597eb41b36
   - id: SHARD_LAVA_FLAME
     material: PLAYER_HEAD
     rarity: RARE
@@ -907,6 +1523,14 @@ items:
         shard_id: R61
       - id: SKULL_HEAD
         texture: 9a4bd41f37def2f5b068d96d1a4705d72bfc3979c7fd09ac3be7fc8ba3483cf9
+  - id: SHARD_WIKI_TIKI
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R62
+      - id: SKULL_HEAD
+        texture: f3c802e580bfefc18c4af94cceb82968b5b4aeab0d832346a633a7473a41dfac
   - id: SHARD_MINOTAUR
     material: PLAYER_HEAD
     rarity: RARE
@@ -915,14 +1539,246 @@ items:
         shard_id: R63
       - id: SKULL_HEAD
         texture: d68af96ca408abcf8493e165eea83e2e938dd8eae06e29dd65abbd21542e2baa
-  - id: SHARD_HUMMINGBIRD
+  - id: SHARD_HIVETHIEF
     material: PLAYER_HEAD
     rarity: RARE
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: R64
       - id: SKULL_HEAD
-        texture: 313f5d81bbe255764b7f2b5875ba5851066c9479717999123482f90bf2f75da3
+        texture: 60c7aae21ef8807f69a7ec8e2945e62eae249692bbbe93b33c8dae1500b93857
+  - id: SHARD_MAGGOT
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R65
+      - id: SKULL_HEAD
+        texture: b43c43a07209b5c342c4166e5b660a417f788a06f6d7cf548c098f26641fb896
+  - id: SHARD_SNOOZLE
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R66
+      - id: SKULL_HEAD
+        texture: 6f1a3e699081d63df71c5cb1fa0cd4357935d80c69e07f12f18108931ffc64ef
+  - id: SHARD_PARAKEET
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R67
+      - id: SKULL_HEAD
+        texture: 7f39c3cd96772c4eed3ccb5dd0fcd1fc9664a92f5b22283ae05aaaebaf77f254
+  - id: SHARD_THUNDER
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R68
+      - id: SKULL_HEAD
+        texture: a3f925d274ec65e002028c898e11aa9b76d6d67aa305ad9c7c69fe61cec5e664
+  - id: SHARD_ROCKMITE
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R69
+      - id: SKULL_HEAD
+        texture: 5dbaab74d1acd0abe9d04abe9928725de5d4495fcb63b647228caf6944c20800
+  - id: SHARD_ANTEATER
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R70
+      - id: SKULL_HEAD
+        texture: edd7806715160665c69be43bc1de8a27ebac29161174cadf7550b36f9b69f649
+  - id: SHARD_SCRAPPY
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R72
+      - id: SKULL_HEAD
+        texture: bc0412fe081058b67c70bae1a543b53a5feeeb34f6d7861f6e3487f077d0afad
+  - id: SHARD_HIDEYHO
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R73
+      - id: SKULL_HEAD
+        texture: 3504f1f2327a5110e643bb8667082512815fa434a29ed37f4ca83bb16d2db533
+  - id: SHARD_MANTIS_SHRIMP
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R74
+      - id: SKULL_HEAD
+        texture: 9924c105aa431dabd47952dc1dddd6f751f883423f4db1487d9bacc2cfe99c7a
+  - id: SHARD_CHUCKWALLA
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R75
+      - id: SKULL_HEAD
+        texture: fc63cd0d480971a7beae5fd503e5d51658cd906330843cbad92018f5b98b4fe5
+  - id: SHARD_HIDEONFLOOR
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R76
+      - id: SKULL_HEAD
+        texture: 65db0a6d0cbd788f8f7332a660d889ccf88e2a03f508d3f90d935391956960b0
+  - id: SHARD_GIMMIEGOLD
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R77
+      - id: SKULL_HEAD
+        texture: 8b329e108ac28b0bec8d47b7cdce253df1db80b46052b5915d963e1bcbab0db4
+  - id: SHARD_BILLYGOAT
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R78
+      - id: SKULL_HEAD
+        texture: f1978b0e77b2a66e4a9420ddf1fc3911381ec7b2cd960074545f4926a9d50dfb
+  - id: SHARD_HIDEONWALL
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R79
+      - id: SKULL_HEAD
+        texture: 682f650fcf1657b5515214b0973144ef9809c89bc68f54a76b9a2f8931f0f176
+  - id: SHARD_NOZZLENOSE
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R80
+      - id: SKULL_HEAD
+        texture: 560883fd8f9b5e8f421a3a8b0918ac0dd7e6a3dedb31a3b288327d6da896c0c9
+  - id: SHARD_STONEWORM
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R81
+      - id: SKULL_HEAD
+        texture: 81807fd066600290842afc30f0152ab9d8528312463c6b57c8db6503a9d95397
+  - id: SHARD_FLUFFLING
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R82
+      - id: SKULL_HEAD
+        texture: e0be21ca17413346f26bc0e2659f6f957d9fa37c6e808c7938ef471f4e6e3f4f
+  - id: SHARD_STINGRAY
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R83
+      - id: SKULL_HEAD
+        texture: d6d1dc2a886daa9c767f075437cc766e3c7b479b6265beaf575e8c75f77b426f
+  - id: SHARD_ZOMBUDDY
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R84
+      - id: SKULL_HEAD
+        texture: c7c683a98b7d62c109ca3cd428459de57085366c2e4e59436e161ff74c0b0d4a
+  - id: SHARD_PUCK
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R85
+      - id: SKULL_HEAD
+        texture: 46902abbf5267e985e3e0d4eba0358093133441bb08cee44ed3136878d307af8
+  - id: SHARD_TROODON
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R86
+      - id: SKULL_HEAD
+        texture: 53de4135a3b19a2187029c86a0020e58c907c7bdd4e37b7643f120e16a0aa9ab
+  - id: SHARD_BLACK_WIDOW
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R87
+      - id: SKULL_HEAD
+        texture: ba06b0f4911dcea137fb8b4e4da2e2ac18e39ae7b7465c2acb4d608cb6480347
+  - id: SHARD_PANGOLIN
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R88
+      - id: SKULL_HEAD
+        texture: 5380c1015a19a4b6f2f45c2bc78e878752eda2fc263a68da39876afdd0b049dd
+  - id: SHARD_GIANT_WATER_BUG
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R89
+      - id: SKULL_HEAD
+        texture: 91044c8039247b1421081bc5f0dd15cc5cca66fc255cbcb19d2f257e59e9380a
+  - id: SHARD_MURKBAT
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R91
+      - id: SKULL_HEAD
+        texture: aea3b0020d03a3aef72ba18f9b190939683a6a5a02c13023eea67fafaae66d4
+  - id: SHARD_GOLDOLOT
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R92
+      - id: SKULL_HEAD
+        texture: 44235da7b3a0aacccdba3d8e13c61ecc874c7aefa49433903b8cf4374a9bf56a
+  - id: SHARD_RABBIT_NEIGHBOR
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R94
+      - id: SKULL_HEAD
+        texture: bb025a293555b78e82432649116900bfdb66e986736398919a15a0c3f4598e01
+  - id: SHARD_TORRID
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R95
+      - id: SKULL_HEAD
+        texture: 9da145254a59efce57186e6c99b64ba0e86803a4496cdbe8c96cc13dda71aa24
+  - id: SHARD_DRYBARK
+    material: PLAYER_HEAD
+    rarity: RARE
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: R97
+      - id: SKULL_HEAD
+        texture: fbad692faf604509e8ce346be9798162c13696dbbe03eff7c6f442b29d14c776
   - id: SHARD_TERRA
     material: PLAYER_HEAD
     rarity: EPIC
@@ -979,6 +1835,14 @@ items:
         shard_id: E7
       - id: SKULL_HEAD
         texture: 545c2368c25cae43208041bc07f1f36c84f20c0356e59c7d9d00090723c1d527
+  - id: SHARD_ABYSSAL_MINER
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E8
+      - id: SKULL_HEAD
+        texture: 58be05cfae2c6a7d47da2ce88b3e00c72a145cc3218f041b3dd5bd5fa5ca827
   - id: SHARD_BASILISK
     material: PLAYER_HEAD
     rarity: EPIC
@@ -1003,6 +1867,14 @@ items:
         shard_id: E11
       - id: SKULL_HEAD
         texture: f94e157cb088e6b31ca21c743ad8ec90115678c50e2eb3f4f7942735108a7331
+  - id: SHARD_SPECIAL_ZEALOT
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E12
+      - id: SKULL_HEAD
+        texture: d528b086ac442c2add45937f654ede70eb45c0a5667f2397a83b7bd994f2b564
   - id: SHARD_LUNAR_MOTH
     material: PLAYER_HEAD
     rarity: EPIC
@@ -1010,7 +1882,7 @@ items:
       - id: ATTRIBUTE_SHARD
         shard_id: E13
       - id: SKULL_HEAD
-        texture: 69f7e0040df40e3d196f48c500f8f86221a85d9b632c0dd57a24bbe043e532aa
+        texture: bee4fcc5aac27bdbb0be210df08b05bca5aebc89bf2821f608a55fd2cf0434be
   - id: SHARD_FIRE_EEL
     material: PLAYER_HEAD
     rarity: EPIC
@@ -1051,6 +1923,14 @@ items:
         shard_id: E18
       - id: SKULL_HEAD
         texture: 737623f79f7eb4f3f80da65b652cc44b2148eea41f9ffe2e86a23bdf49ab77b1
+  - id: SHARD_MURDERWING
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E19
+      - id: SKULL_HEAD
+        texture: bef99dd9e6ef01d9b3fbfd219f930e7469a3ceab0ffbbc75c128f0647df99708
   - id: SHARD_LOCH_EMPEROR
     material: PLAYER_HEAD
     rarity: EPIC
@@ -1075,6 +1955,14 @@ items:
         shard_id: E22
       - id: SKULL_HEAD
         texture: f009ba92036d84541372e9830981d1ea6805566c01092c745487384eca4ac928
+  - id: SHARD_BLUE_CRAB
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E23
+      - id: SKULL_HEAD
+        texture: e834e3aaf6b39eb937f70148057a00aba00c1610ff4ed9115d2ef9eea71effd1
   - id: SHARD_MIMIC
     material: PLAYER_HEAD
     rarity: EPIC
@@ -1083,6 +1971,14 @@ items:
         shard_id: E24
       - id: SKULL_HEAD
         texture: e19c12543bc7792605ef68e1f8749ae8f2a381d9085d4d4b780ba1282d3597a0
+  - id: SHARD_WOLVERINE
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E25
+      - id: SKULL_HEAD
+        texture: b4df809b2bb0c80c7509dc86b7b5c026fe301266c36c54c75fe1be74d9e7f8b2
   - id: SHARD_SHELLWISE
     material: PLAYER_HEAD
     rarity: EPIC
@@ -1107,14 +2003,6 @@ items:
         shard_id: E28
       - id: SKULL_HEAD
         texture: d835b17a26396037deac5796b72e25f2523e9f8650963ddaedc2ecec081b4346
-  - id: SHARD_INFERNO_DEMONLORD
-    material: PLAYER_HEAD
-    rarity: EPIC
-    components:
-      - id: ATTRIBUTE_SHARD
-        shard_id: E29
-      - id: SKULL_HEAD
-        texture: 18046d38a97c91f59949ea742efd74827ccedefe98528552cd327b4b61c39b5f
   - id: SHARD_CAIMAN
     material: PLAYER_HEAD
     rarity: EPIC
@@ -1130,7 +2018,7 @@ items:
       - id: ATTRIBUTE_SHARD
         shard_id: E31
       - id: SKULL_HEAD
-        texture: e8d16180fa4c802ab6b2657c48d0a11c93b3a3e5270add9545feb378f6302dbb
+        texture: 4ce79e90adf34718f313ec24d6c6135b69b3788c618498446ccc83ca640c0b14
   - id: SHARD_SEA_SERPENT
     material: PLAYER_HEAD
     rarity: EPIC
@@ -1195,12 +2083,124 @@ items:
         shard_id: E42
       - id: SKULL_HEAD
         texture: f1e2bd69e773ef229fcaa4679dcdf4af329d9fa74ee47d6d60a50f525feccf7a
-  - id: SHARD_LITTLEFOOT
+  - id: SHARD_DIVE_GHAST
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E43
+      - id: SKULL_HEAD
+        texture: 5b324f99ecacbd9846f59d8bb40ef0c2670bf0234262b83a5b0f9cb3f0cbb3d5
+  - id: SHARD_SILKBREEZE
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E44
+      - id: SKULL_HEAD
+        texture: 2630c3171c4028544ff979ba87fa03102aacbc1e917ace9984d8ee51a9bbd5ba
+  - id: SHARD_GEMZIE
     material: PLAYER_HEAD
     rarity: EPIC
     components:
       - id: ATTRIBUTE_SHARD
         shard_id: E45
+      - id: SKULL_HEAD
+        texture: f2c0fffea6559e22d835535b7ac1b40450773889b2e4843f42bf3b57687eb051
+  - id: SHARD_RABBIT_GODMOTHER
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E46
+      - id: SKULL_HEAD
+        texture: a185c1188c48e7594735dfb3ffa27cae90f4b67642221f0e36d092ca8ca9ecbf
+  - id: SHARD_GIANT_ISOPOD
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E47
+      - id: SKULL_HEAD
+        texture: 3fcb203b029aac4958407daf4072a01a353105162373ce7e559c669d78325bcb
+  - id: SHARD_INFERNO_DEMONLORD
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E48
+      - id: SKULL_HEAD
+        texture: 18046d38a97c91f59949ea742efd74827ccedefe98528552cd327b4b61c39b5f
+  - id: SHARD_QUEEN_BEE
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E49
+      - id: SKULL_HEAD
+        texture: a5faeb2aff324d9451742fed4de7a96e94bbefc766317963e5d4f430dab77223
+  - id: SHARD_BONZO
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E51
+      - id: SKULL_HEAD
+        texture: 91e79f7e628f21f427610cc6ced0ff153e21880d61cbac673bf862b1d4e4426b
+  - id: SHARD_BEEHEEMOTH
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E52
+      - id: SKULL_HEAD
+        texture: 7a9632c18bfe5bdb0205366b5b08ec1b2c9a968aa6cdb88bb7f83e8898e3aad0
+  - id: SHARD_SCARF
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E54
+      - id: SKULL_HEAD
+        texture: 7de7bbbdf22bfe17980d4e20687e386f11d59ee1db6f8b4762391b79a5ac532d
+  - id: SHARD_THORN
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E57
+      - id: SKULL_HEAD
+        texture: 8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
+  - id: SHARD_MOUNTAIN_GOAT
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E58
+      - id: SKULL_HEAD
+        texture: fb4ddfe6b8b5cfb03be6a173bbb7dfc4ad5dc9b7fd34dc8e84fa7f71c1b85a01
+  - id: SHARD_SCATHA
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E60
+      - id: SKULL_HEAD
+        texture: df03ad96092f3f789902436709cdf69de6b727c121b3c2daef9ffa1ccaed186c
+  - id: SHARD_NILBOG
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E63
+      - id: SKULL_HEAD
+        texture: d68d17421fe7f75f6fbd40192454361be4c7c11e158533a0026ec12ef4911ee2
+  - id: SHARD_LITTLEFOOT
+    material: PLAYER_HEAD
+    rarity: EPIC
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: E66
       - id: SKULL_HEAD
         texture: 6cce41cd32db68f699c281f83f20766c83c97fd49664eb8c7584b9f343d960d1
   - id: SHARD_TENEBRIS
@@ -1275,6 +2275,14 @@ items:
         shard_id: L9
       - id: SKULL_HEAD
         texture: 15f88fad142a1719a2260d6c46425bb87f519075593169720f8bbb45cb66667c
+  - id: SHARD_RABBIT_GODFATHER
+    material: PLAYER_HEAD
+    rarity: LEGENDARY
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: L10
+      - id: SKULL_HEAD
+        texture: 986a84fbd41d57495d74edde4bea5902827d3baa9de0bff92bae96789ea85f56
   - id: SHARD_NAGA
     material: PLAYER_HEAD
     rarity: LEGENDARY
@@ -1339,6 +2347,24 @@ items:
         shard_id: L20
       - id: SKULL_HEAD
         texture: b403ea1ab4359a775bf6161c3c39fe8cd8b331893e9c936cab77fe5b7651d066
+  - id: SHARD_DOOMSPIRAL
+    material: PLAYER_HEAD
+    rarity: LEGENDARY
+    unavailable: "Source content not built: Hunting"
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: L21
+      - id: SKULL_HEAD
+        texture: 3a1ba6b2b49f3c12bae223513be8a8e96055e38ec68ab13fb89db1b2ef664321
+  - id: SHARD_MACAW
+    material: PLAYER_HEAD
+    rarity: LEGENDARY
+    unavailable: "Source content not built: Hunting"
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: L22
+      - id: SKULL_HEAD
+        texture: ad7acbd9cd6fd6ec75ebe2e7c2b42d4bb0dedf9fbbd3c6f5a2a933db3870e0d3
   - id: SHARD_SHINYFISH
     material: PLAYER_HEAD
     rarity: LEGENDARY
@@ -1435,6 +2461,14 @@ items:
         shard_id: L34
       - id: SKULL_HEAD
         texture: 4bbc7284ea42af18453627d7db36e46d78989ecf0d0c8f13b3090617fe2bdf9c
+  - id: SHARD_QUEEN_SNAKE
+    material: PLAYER_HEAD
+    rarity: LEGENDARY
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: L35
+      - id: SKULL_HEAD
+        texture: 970945f2ca8eb7ba7f7a1be3ab085b9a4196db4975bf5a8f71c576aa8542a20c
   - id: SHARD_JORMUNG
     material: PLAYER_HEAD
     rarity: LEGENDARY
@@ -1443,6 +2477,14 @@ items:
         shard_id: L36
       - id: SKULL_HEAD
         texture: 9174dc76a89a36717e64573b781c29bc69591fb9937c08b7b7781638c240d356
+  - id: SHARD_GHOST_CRAB
+    material: PLAYER_HEAD
+    rarity: LEGENDARY
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: L38
+      - id: SKULL_HEAD
+        texture: bfa2a6201e4006617407613bc888e4e130e39c0134577d848bb6475624788c63
   - id: SHARD_ETHERDRAKE
     material: PLAYER_HEAD
     rarity: LEGENDARY
@@ -1451,6 +2493,14 @@ items:
         shard_id: L39
       - id: SKULL_HEAD
         texture: ae78e8a60f032ac6a92de5850bc9d5e48e9852c43d97ff5a454f946bae836c63
+  - id: SHARD_GRIZZLY_BEAR
+    material: PLAYER_HEAD
+    rarity: LEGENDARY
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: L40
+      - id: SKULL_HEAD
+        texture: 5406108aa6bdda73df122454aa4250ec0cd457fd318a893d9d7c54d9c0761168
   - id: SHARD_GALAXY_FISH
     material: PLAYER_HEAD
     rarity: LEGENDARY
@@ -1475,6 +2525,15 @@ items:
         shard_id: L44
       - id: SKULL_HEAD
         texture: 5bfd9642cdf3962a0ecd2b9c007295020538da732d597c59bbb820e389f9fc2a
+  - id: SHARD_PRIMORDIAL
+    material: PLAYER_HEAD
+    rarity: LEGENDARY
+    unavailable: "Source content not built: Mob Drops"
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: L45
+      - id: SKULL_HEAD
+        texture: 5c85ba89e5ad46a9b5a9f5c5e192c955c5ea31ea5422cc5a4b27b64793fe51cd
   - id: SHARD_COCOALEECH
     material: PLAYER_HEAD
     rarity: LEGENDARY
@@ -1491,35 +2550,46 @@ items:
         shard_id: L47
       - id: SKULL_HEAD
         texture: 645f2c0bbfe3b8b19b7452072db69a5f59da38ff61415545156e5701e1be756d
-  - id: SHARD_THORN
+  - id: SHARD_RAINBUG
     material: PLAYER_HEAD
     rarity: LEGENDARY
+    unavailable: "Source content not built: Safari Bells"
     components:
       - id: ATTRIBUTE_SHARD
-        shard_id: L48
+        shard_id: L49
       - id: SKULL_HEAD
-        texture: 8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0
-  - id: SHARD_SCARF
+        texture: 9518e6d249eaca8fd058b7ef70d88cf5c2f6b0c2cfa44d301b6f070847ce9866
+  - id: SHARD_FLORA
     material: PLAYER_HEAD
     rarity: LEGENDARY
+    unavailable: "Source content not built: Greenhouse"
     components:
       - id: ATTRIBUTE_SHARD
-        shard_id: L51
-      - id: SKULL_HEAD
-        texture: 7de7bbbdf22bfe17980d4e20687e386f11d59ee1db6f8b4762391b79a5ac532d
-  - id: SHARD_LAVA_LEECH
+        shard_id: L52
+  - id: SHARD_PARAGON
     material: PLAYER_HEAD
-    rarity: RARE
+    rarity: LEGENDARY
+    unavailable: "Source content not built: Mob Drops"
     components:
       - id: ATTRIBUTE_SHARD
-        shard_id: R26
+        shard_id: L54
       - id: SKULL_HEAD
-        texture: 18ae7046da98dcb33f3ed42f1dc41d08ac8dfa5db3a3860de5b1b5c056804187
-  - id: SHARD_THUNDER
+        texture: 75b449420f3c1891bf663c0623f1210bbbe066866cdc4c8da1cd1f9cbfa1eee
+  - id: SHARD_TIMESTALK_CLONE
     material: PLAYER_HEAD
-    rarity: RARE
+    rarity: LEGENDARY
+    unavailable: "Source content not built: Hunting"
     components:
       - id: ATTRIBUTE_SHARD
-        shard_id: R68
+        shard_id: L57
       - id: SKULL_HEAD
-        texture: a3f925d274ec65e002028c898e11aa9b76d6d67aa305ad9c7c69fe61cec5e664
+        texture: 41de7c53b15c639d2b910020435cfe97c233ebd9f04bcd4f336fd032c8a99345
+  - id: SHARD_WUMPA
+    material: PLAYER_HEAD
+    rarity: LEGENDARY
+    unavailable: "Source content not built: Hunting"
+    components:
+      - id: ATTRIBUTE_SHARD
+        shard_id: L60
+      - id: SKULL_HEAD
+        texture: 81f99e05b23756dc044a8bc228965f5995d1ef49750227d5e481636caab693b1

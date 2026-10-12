@@ -49,6 +49,10 @@ public final class GUIAttributeDetails extends StatelessView {
         List<Text> huntLore = new ArrayList<>();
         huntLore.add(Text.empty());
         huntLore.addAll(AttributeText.huntInfo(definition));
+        if (!definition.isAvailable()) {
+            huntLore.add(Text.empty());
+            huntLore.addAll(AttributeText.wrapTexts("<8>" + definition.unavailable(), 34));
+        }
         layout.slot(22, ItemStacks.item(Material.LEAD, 1, Text.of("<a>How to Hunt"), huntLore));
         layout.slot(24, ItemStacks.item(Material.OAK_BUTTON, 1,
                         enabled ? Text.of("<c>Toggle") : Text.of("<a>Toggle"),

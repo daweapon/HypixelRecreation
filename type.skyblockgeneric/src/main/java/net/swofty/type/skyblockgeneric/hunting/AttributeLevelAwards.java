@@ -16,7 +16,7 @@ public final class AttributeLevelAwards {
     public static int skyBlockXp(DatapointHunting.HuntingData data) {
         int levels = 0;
         for (AttributeDefinition definition : AttributeRegistry.values()) levels += data.level(definition.id());
-        return levels * XP_PER_LEVEL;
+        return Math.min(levels * XP_PER_LEVEL, SkyBlockXPSource.ATTRIBUTE_LEVELS.getMaxXP());
     }
 
     public static void syncSkyBlockXP(SkyBlockPlayer player) {

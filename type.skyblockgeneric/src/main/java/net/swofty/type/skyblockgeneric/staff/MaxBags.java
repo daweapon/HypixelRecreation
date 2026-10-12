@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -27,6 +28,7 @@ import java.util.regex.Pattern;
  */
 public final class MaxBags {
     private static final Pattern SIZE_PREFIX = Pattern.compile("^(SMALL|MEDIUM|LARGE|BRONZE|SILVER|GOLD|DIAMOND)_");
+    private static final List<String> SIZE_ORDER = List.of("SMALL", "MEDIUM", "LARGE", "BRONZE", "SILVER", "GOLD", "DIAMOND");
     private static final int ARROW_STACK = 64;
 
     private MaxBags() {
@@ -40,11 +42,22 @@ public final class MaxBags {
             ItemType type = ItemType.get(id);
             if (config == null || type == null || !config.hasComponent(SackComponent.class)) continue;
             capacity.put(type, config.getComponent(SackComponent.class).getMaxCapacity());
-            best.merge(family(id), type, (current, candidate) -> capacity.get(candidate) > capacity.get(current) ? candidate : current);
+            best.merge(family(id), type, (current, candidate) -> outranks(candidate, current, capacity) ? candidate : current);
         }
         return best.values().stream()
                 .sorted(Comparator.comparingInt((ItemType type) -> capacity.get(type)).reversed().thenComparing(ItemType::name))
                 .toList();
+    }
+
+    private static boolean outranks(ItemType candidate, ItemType current, Map<ItemType, Integer> capacity) {
+        int byCapacity = Integer.compare(capacity.get(candidate), capacity.get(current));
+        if (byCapacity != 0) return byCapacity > 0;
+        return tier(candidate.name()) > tier(current.name());
+    }
+
+    private static int tier(String sackId) {
+        Matcher matcher = SIZE_PREFIX.matcher(sackId);
+        return matcher.find() ? SIZE_ORDER.indexOf(matcher.group(1)) : -1;
     }
 
     static String family(String sackId) {

@@ -15,6 +15,7 @@ public final class AttributeFusionService {
     }
 
     public static int required(AttributeDefinition definition) {
+        if (definition.fusionCost() > 0) return definition.fusionCost();
         String family = definition.family().name().toLowerCase(Locale.ROOT);
         if (definition.shard().equalsIgnoreCase("Chameleon")) return 1;
         if (family.contains("reptile") || family.contains("amphibian") || family.contains("elemental")) return 2;

@@ -9,10 +9,11 @@ entries:
     material: player_head
     cost: { gems: 950 }
     unavailable: "Animated skin; animated head textures are not supported yet"
-  - item: SUPER_PUMPKIN_RUNE_III
+  - item: SUPER_PUMPKIN_RUNE
     name: "<d>Super Pumpkin Rune III"
     material: player_head
     cost: { gems: 1350 }
+    unavailable: "The bundle sells this rune at level III and shop purchases cannot set a rune level yet"
   - item: GLOSSY_MINERAL_HELMET_ROYAL
     name: "<d>Royal Skin"
     material: player_head

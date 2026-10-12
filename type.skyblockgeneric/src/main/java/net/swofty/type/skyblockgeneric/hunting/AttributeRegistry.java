@@ -80,7 +80,8 @@ public final class AttributeRegistry {
                 AttributeDefinition definition = new AttributeDefinition(id, text(value, "shard"), text(value, "name"),
                         enumValue(AttributeRarity.class, value.get("rarity")), enumValue(AttributeCategory.class, value.get("category")),
                         enumValue(AttributeFamily.class, value.get("family")), enumValue(AttributeSkill.class, value.get("skill")),
-                        effects, sources, text(value, "description"), strings(value.get("huntInfo")));
+                        effects, sources, text(value, "description"), strings(value.get("huntInfo")),
+                        (int) number(value, "fusion_cost"), value.get("unavailable") == null ? null : text(value, "unavailable"));
                 if (id.rarity() != definition.rarity())
                     throw new IllegalStateException("Rarity does not match id " + id);
                 if (result.put(id, definition) != null) throw new IllegalStateException("Duplicate attribute id " + id);

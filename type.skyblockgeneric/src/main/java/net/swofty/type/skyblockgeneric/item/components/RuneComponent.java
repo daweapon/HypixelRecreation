@@ -27,11 +27,15 @@ public class RuneComponent extends SkyBlockItemComponent {
         addInheritedComponent(new TrackedUniqueComponent());
         addInheritedComponent(new ExtraUnderNameComponent(getExtraDisplay()));
         addInheritedComponent(new SkullHeadComponent((item) -> skullTexture));
-        addInheritedComponent(new LoreUpdateComponent(List.of(
-                "<7>Apply this rune to weapons or",
+        addInheritedComponent(new LoreUpdateComponent(applyLore(this.applicableTo), false));
+    }
+
+    public static List<String> applyLore(RuneableComponent.RuneApplicableTo applicableTo) {
+        return List.of(
+                "<7>Apply this rune to " + applicableTo.name().toLowerCase().replace('_', ' ') + " or",
                 "<7>fuse two together at the Runic",
                 "<7>Pedestal!"
-        ), false));
+        );
     }
 
     private List<String> getExtraDisplay() {

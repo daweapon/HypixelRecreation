@@ -141,12 +141,16 @@ public class PlayerStatistics {
             if (item == null) continue;
             ItemAttributeRuneInfusedWith.RuneData runeData = item.getAttributeHandler().getRuneData();
             if (!runeData.hasRune()) continue;
-            if (runeData.getRuneType() == runeType) continue;
+            if (runeData.getRuneType() != runeType) continue;
 
             return item;
         }
 
         return null;
+    }
+
+    public List<SkyBlockItem> getRunedItems() {
+        return getPossibleRuneItems().stream().filter(Objects::nonNull).toList();
     }
 
     private List<SkyBlockItem> getPossibleRuneItems() {
@@ -329,7 +333,7 @@ public class PlayerStatistics {
         total = ItemStatistics.add(total, petStatistics());
         total = ItemStatistics.add(total, accessoryStatistics);
         total = ItemStatistics.add(total, thaumaturgyStatistics);
-        total = ItemStatistics.add(total, AttributeEffectService.statistics(player));
+        total = ItemStatistics.add(total, AttributeEffectService.statistics(player, enemy));
         total = ItemStatistics.add(total, ItemStatistic.getOfAllBaseValues());
 
         ActivePerks perks = ElectionPerks.current();

@@ -73,8 +73,7 @@
    "<a>VI: <7>Fishing,"
   ],
   "appliedTo": [
-   "Fishing Rod",
-   "Fishing Weapon"
+   "Fishing Rod"
   ],
   "conflicts": [],
   "costs": [
@@ -147,7 +146,6 @@
   "sources": [],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -247,8 +245,7 @@
    "<a>VI: <7>Fishing"
   ],
   "appliedTo": [
-   "Fishing Rod",
-   "Fishing Weapon"
+   "Fishing Rod"
   ],
   "conflicts": [],
   "costs": [
@@ -301,8 +298,7 @@
    "<a>VI: <7>Fishing"
   ],
   "appliedTo": [
-   "Fishing Rod",
-   "Fishing Weapon"
+   "Fishing Rod"
   ],
   "conflicts": [],
   "costs": [
@@ -368,7 +364,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -458,7 +453,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -580,7 +574,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -615,10 +608,9 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
-   "Bow",
-   "Gauntlet"
+   "Gauntlet",
+   "Bow"
   ],
   "conflicts": [],
   "costs": [
@@ -751,8 +743,8 @@
   "appliedTo": [
    "Sword",
    "Longsword",
-   "Bow",
-   "Gauntlet"
+   "Gauntlet",
+   "Bow"
   ],
   "conflicts": [],
   "costs": [
@@ -844,7 +836,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -879,7 +870,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -914,7 +904,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Pickaxe",
    "Longsword",
    "Drill",
@@ -942,8 +931,7 @@
    "<a>I: <7>Community Shop"
   ],
   "appliedTo": [
-   "Fishing Rod",
-   "Fishing Weapon"
+   "Fishing Rod"
   ],
   "conflicts": [],
   "costs": [
@@ -1073,7 +1061,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -1140,7 +1127,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -1184,14 +1170,19 @@
   "neuId": "FOREST_PLEDGE",
   "name": "Forest Pledge",
   "ultimate": false,
-  "maxLevel": 5,
+  "maxLevel": 6,
   "minLevel": 3,
   "levels": {
    "3": "<7>Grants <6>+6☘ Foraging Fortune<7>.",
    "4": "<7>Grants <6>+8☘ Foraging Fortune<7>.",
-   "5": "<7>Grants <6>+10☘ Foraging Fortune<7>."
+   "5": "<7>Grants <6>+10☘ Foraging Fortune<7>.",
+   "6": "<7>Grants <6>+12☘ Foraging Fortune<7>."
   },
-  "sources": [],
+  "sources": [
+   "<7>- Agatha's Shop (Level 3+) (<a>III<7>)",
+   "<7>- Bazaar (<a>III-V<7>)",
+   "<7>- Water Hyacinth (<a>VI<7>)"
+  ],
   "appliedTo": [
    "Armor"
   ],
@@ -1284,7 +1275,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -1440,7 +1430,7 @@
    "<a>VI: <7>Shiny Pigs"
   ],
   "appliedTo": [
-   "Hoe"
+   "Farming Tool"
   ],
   "conflicts": [],
   "costs": [
@@ -1530,7 +1520,6 @@
   "appliedTo": [
    "Fishing Rod",
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet",
    "Bow"
@@ -1621,8 +1610,8 @@
    "<7>Slimeball Collection"
   ],
   "appliedTo": [
+   "Shiny Rod",
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -1685,7 +1674,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -1721,7 +1709,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -1757,7 +1744,6 @@
   "appliedTo": [
    "Fishing Rod",
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -1791,7 +1777,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -1859,8 +1844,7 @@
    "<a>VI: <7>Fishing"
   ],
   "appliedTo": [
-   "Fishing Rod",
-   "Fishing Weapon"
+   "Fishing Rod"
   ],
   "conflicts": [],
   "costs": [
@@ -1918,8 +1902,7 @@
    "<a>VI: <7>Fishing"
   ],
   "appliedTo": [
-   "Fishing Rod",
-   "Fishing Weapon"
+   "Fishing Rod"
   ],
   "conflicts": [],
   "costs": [
@@ -1948,7 +1931,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -2054,9 +2036,9 @@
    "<6>Fossil Excavator"
   ],
   "appliedTo": [
+   "Pickaxe",
    "Drill",
-   "Gauntlet",
-   "Pickaxe"
+   "Gauntlet"
   ],
   "conflicts": [],
   "costs": [
@@ -2300,7 +2282,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -2709,7 +2690,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -2820,10 +2800,10 @@
    "<7>Coal Collection"
   ],
   "appliedTo": [
+   "Shovel",
+   "Pickaxe",
    "Axe",
    "Drill",
-   "Pickaxe",
-   "Shovel",
    "Gauntlet"
   ],
   "conflicts": [
@@ -2885,10 +2865,9 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
-   "Bow",
-   "Gauntlet"
+   "Gauntlet",
+   "Bow"
   ],
   "conflicts": [],
   "costs": [
@@ -3105,7 +3084,6 @@
   "appliedTo": [
    "Fishing Rod",
    "Sword",
-   "Fishing Weapon",
    "Axe",
    "Longsword",
    "Gauntlet",
@@ -3168,7 +3146,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -3205,7 +3182,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -3269,7 +3245,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -3359,7 +3334,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -3879,7 +3853,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -3904,7 +3877,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet"
   ],
@@ -3952,11 +3924,10 @@
   "appliedTo": [
    "Fishing Rod",
    "Sword",
-   "Fishing Weapon",
-   "Axe",
    "Longsword",
-   "Gauntlet",
-   "Bow"
+   "Axe",
+   "Bow",
+   "Gauntlet"
   ],
   "conflicts": []
  },
@@ -3998,8 +3969,7 @@
    "<a>I-V: <7>Fishing"
   ],
   "appliedTo": [
-   "Fishing Rod",
-   "Fishing Weapon"
+   "Fishing Rod"
   ],
   "conflicts": []
  },
@@ -4065,11 +4035,10 @@
   "appliedTo": [
    "Fishing Rod",
    "Sword",
-   "Fishing Weapon",
-   "Axe",
    "Longsword",
-   "Gauntlet",
-   "Bow"
+   "Axe",
+   "Bow",
+   "Gauntlet"
   ],
   "conflicts": []
  },
@@ -4403,15 +4372,15 @@
    "Wand",
    "Shovel",
    "Pickaxe",
-   "Farming Tool",
-   "Precursor Eye",
    "Drill",
+   "Precursor Eye",
    "Shears",
    "Sword",
-   "Fishing Weapon",
+   "Farming Tool",
    "Longsword",
-   "Gauntlet",
-   "Bow"
+   "Axe",
+   "Bow",
+   "Gauntlet"
   ],
   "conflicts": [],
   "costs": [
@@ -4510,7 +4479,6 @@
   ],
   "appliedTo": [
    "Sword",
-   "Fishing Weapon",
    "Longsword",
    "Gauntlet",
    "Bow"

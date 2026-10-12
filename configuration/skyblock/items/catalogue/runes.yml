@@ -1,0 +1,931 @@
+items:
+  - id: ANTLERS_RUNE
+    material: player_head
+    name: "Antlers Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor 2025 Winter Bundle"
+    lore:
+      - "§7A set of beautiful antlers adorn"
+      - "§7your head. Obtained from the Taylor"
+      - "§72025 Winter Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: HELMETS
+        skull_texture: 3c3b15ff40b381d6084f677c7864610c53b25a6aaa840696fcdc0da630b35f37
+  - id: AXE_FADING_BLUE_RUNE
+    material: player_head
+    name: "Fading Blue Rune"
+    rarity: RARE
+    unavailable: "Tree Gifts and throwing axes aren't built"
+    lore:
+      - "§7Your axe fades into beautiful blue"
+      - "§7particles!"
+    components:
+      - id: RUNE
+        required_level: 7
+        color: <9>
+        applicable_to: THROWING_AXES
+        skull_texture: 25111795c18e2d910240dabfcbbab655c00e5bc1c710c30b6f2d2f95e7f75f77
+  - id: AXE_FADING_GREEN_RUNE
+    material: player_head
+    name: "Fading Green Rune"
+    rarity: UNCOMMON
+    unavailable: "Tree Gifts and throwing axes aren't built"
+    lore:
+      - "§7Your axe fades into groovy green"
+      - "§7particles!"
+    components:
+      - id: RUNE
+        required_level: 5
+        color: <a>
+        applicable_to: THROWING_AXES
+        skull_texture: d56d420b2b904debd7be3a157d330e17264f1cf302a2d2022b9e46538653b8b0
+  - id: AXE_FADING_WHITE_RUNE
+    material: player_head
+    name: "Fading White Rune"
+    rarity: COMMON
+    unavailable: "Tree Gifts and throwing axes aren't built"
+    lore:
+      - "§7Your axe fades into wonderful white"
+      - "§7particles!"
+    components:
+      - id: RUNE
+        required_level: 3
+        color: <f>
+        applicable_to: THROWING_AXES
+        skull_texture: 771cadef7545fcb881a4eebaaec93ef2fa5f1e0e99b60d26805cf9c60113f49
+  - id: AXE_RAINBOW_RUNE
+    material: player_head
+    name: "Fading Rainbow Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Your axe fades into every color of"
+      - "§7the rainbow! Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: THROWING_AXES
+        skull_texture: 721265490c20d644a2e02ebe4221468c1975f9982107b78c8b81ebc90ae264ae
+  - id: AXE_SHATTER_RUNE
+    material: player_head
+    name: "Barkshatter Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Your axe throws bark all over the"
+      - "§7place! Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: AXES
+        skull_texture: 54c31b9eb35b31318bc480f5f0e8224ddceec57c25ab00141462663c9d68e488
+  - id: AXE_SOUL_SLICE_RUNE
+    material: player_head
+    name: "Soul Slice Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Your axe slices the very threads of"
+      - "§7this reality. Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: THROWING_AXES
+        skull_texture: 5911d19c29f29a11a2a2a231d2dafaaed078cfa78a1f4bd94ef5625b076ebcb7
+  - id: BARK_TUNES_RUNE
+    material: player_head
+    name: "Bark Tunes Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Plays aggresive barks when slaying"
+      - "§7an enemy. Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <e>
+        applicable_to: WEAPONS
+        skull_texture: d56d1157226e10c63dff08cfb59104873c9315dba128ef62e18a27d4dba04a42
+  - id: BITE_RUNE
+    material: player_head
+    name: "Bite Rune"
+    rarity: EPIC
+    source: "Tarantula Broodfather Tier II+"
+    lore:
+      - "§7Obtained rarely from slaying the"
+      - "§7Tarantula Broodfather."
+    components:
+      - id: RUNE
+        required_level: 15
+        color: <a>
+        applicable_to: BOWS
+        skull_texture: 43a1ad4fcc42fb63c681328e42d63c83ca193b333af2a426728a25a8cc600692
+  - id: BLAZING_SUN_RUNE
+    material: player_head
+    name: "Blazing Sun Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor 2025 Summer Bundle"
+    lore:
+      - "§7The Blazing Sun conquers all."
+      - "§7Obtained from the Taylor 2025"
+      - "§7Summer Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <e>
+        applicable_to: HELMETS
+        skull_texture: 7e817ce13016e9c3d90ca9d3d46c74efd81ad1c210c177a3cddb2cd4954fcb0e
+  - id: BLOOMING_RUNE
+    material: player_head
+    name: "Blooming Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Spring Bundle"
+    lore:
+      - "§7A wonderful circle of flowers"
+      - "§7consumes you! Obtained from the"
+      - "§7Taylor Spring Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <a>
+        applicable_to: CHESTPLATES
+        skull_texture: 1f9203e46ad838b21c806c787dbba63cfed62849a82cd7e7233e5b44af19d8f8
+  - id: CLOUDS_RUNE
+    material: player_head
+    name: "Clouds Rune"
+    rarity: EPIC
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Feels like you're walking in the"
+      - "§7clouds!"
+    components:
+      - id: RUNE
+        required_level: 16
+        color: <f>
+        applicable_to: BOOTS
+        skull_texture: 2273740d454de962484712f9835e35119b37ab867fa6982d5cc1f333c2334e59
+  - id: COUTURE_RUNE
+    material: player_head
+    name: "Couture Rune"
+    rarity: LEGENDARY
+    source: "Sven Packmaster Tier IV"
+    lore:
+      - "§7Obtained very rarely from slaying"
+      - "§7Sven Packmaster."
+    components:
+      - id: RUNE
+        required_level: 24
+        color: <6>
+        applicable_to: BOOTS
+        skull_texture: 734fb3203233efbae82628bd4fca7348cd071e5b7b52407f1d1d2794e31799ff
+  - id: CROWNED_RUNE
+    material: player_head
+    name: "Crowned Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Only befit for a ruler of this world."
+      - "§7Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: HELMETS
+        skull_texture: 99d844d63cd06b4b3a3f21d927f86fd366e677b9a773ef2c223e7a862c7a37c2
+  - id: DARKNESS_WITHIN_RUNE
+    material: player_head
+    name: "Darkness Within Rune"
+    rarity: LEGENDARY
+    source: "Tarantula Broodfather Tier IV"
+    lore:
+      - "§7Obtained very rarely from slaying"
+      - "§7the Tarantula Broodfather."
+    components:
+      - id: RUNE
+        required_level: 17
+        color: <8>
+        applicable_to: BOOTS
+        skull_texture: b8d05fd4fc6fd1cb32ccbabe87040a296b51427b4fa5ce57be5b411d86e234c8
+  - id: DRAGON_RUNE
+    material: player_head
+    name: "End Rune"
+    rarity: EPIC
+    source: "Voidgloom Seraph Tier IV"
+    lore:
+      - "§7Obtained very rarely from slaying"
+      - "§7Voidgloom Seraph."
+    components:
+      - id: RUNE
+        required_level: 1
+        color: <5>
+        applicable_to: BOWS
+        skull_texture: 3b11fb90db7f57beb435954013b1c7ef776c6bd96cbf3308aa8ebac29591ebbd
+  - id: ENCHANT_RUNE
+    material: player_head
+    name: "Enchant Rune"
+    rarity: LEGENDARY
+    source: "Voidgloom Seraph Tier IV"
+    lore:
+      - "§7Obtained very rarely from slaying"
+      - "§7Voidgloom Seraph."
+    components:
+      - id: RUNE
+        required_level: 25
+        color: <7>
+        applicable_to: CHESTPLATES
+        skull_texture: 59ffacec6ee5a23d9cb24a2fe9dc15b24488f5f71006924560bf12148421ae6d
+  - id: ENDERSNAKE_RUNE
+    material: player_head
+    name: "Endersnake Rune"
+    rarity: LEGENDARY
+    source: "Voidgloom Seraph Tier III+"
+    lore:
+      - "§7Obtained very rarely from slaying"
+      - "§7Voidgloom Seraph."
+    components:
+      - id: RUNE
+        required_level: 23
+        color: <5>
+        applicable_to: BOOTS
+        skull_texture: c3a9acbb7d3d49b1d54d26111104d0da57d8b4ab37885b4bbd240ac71074cad2
+  - id: EXPLOSIFALL_RUNE
+    material: player_head
+    name: "Explosifall Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Fall Bundle"
+    lore:
+      - "§7Let the slain be one with nature."
+      - "§7Changes color based on the current"
+      - "§7SkyBlock season. Obtained from the"
+      - "§7Taylor Fall Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: WEAPONS
+        skull_texture: 7ea4c2287ad9e5050df112e612a65b649306dc513888f145607e455ee5ea347c
+  - id: FIRE_SPIRAL_RUNE
+    material: player_head
+    name: "Fire Spiral Rune"
+    rarity: RARE
+    unavailable: "Blaze and Magma Cube drops aren't built"
+    lore:
+      - "§7Inferno arrows!"
+    components:
+      - id: RUNE
+        required_level: 13
+        color: <6>
+        applicable_to: BOWS
+        skull_texture: 8301aa86cafd4b2d732a9b4894cfcfc65edc828e8571b45dbf0a3ba96575cccf
+  - id: FLOWER_CARPET_RUNE
+    material: player_head
+    name: "Flowery Carpet Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Spring Bundle"
+    lore:
+      - "§7A small piece of nature. Obtained"
+      - "§7from the Taylor Spring Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: BOOTS
+        skull_texture: b0ffeddcd2c3a8bbbe4fcfccd9df2c871176ed92786534de8d9c084bc4ac3338
+  - id: FLOWING_FALL_RUNE
+    material: player_head
+    name: "Flowing Fall Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Fall Bundle"
+    lore:
+      - "§7Let the flowers hit the floor."
+      - "§7Obtained from the Taylor Fall Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <c>
+        applicable_to: BOOTS
+        skull_texture: 9a4d525300e2bb6069757d68995cb442ba006c865588a51086237a43522a1ee8
+  - id: GEM_RUNE
+    material: player_head
+    name: "Gem Rune"
+    rarity: COMMON
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Create a gem effect behind your"
+      - "§7arrows!"
+    components:
+      - id: RUNE
+        required_level: 4
+        color: <2>
+        applicable_to: BOWS
+        skull_texture: 43a1ad4fcc42fb63c681328e42d63c83ca193b333af2a426728a25a8cc600692
+  - id: GOLDEN_CARPET_RUNE
+    material: player_head
+    name: "Golden Carpet Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7A small piece of royalty. Obtained"
+      - "§7from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: BOOTS
+        skull_texture: e7a383cd2d8e3f9a2a9e9e2522dd18cfeed9cdaddf90c5e397973eef932b8bef
+  - id: GOLDEN_RUNE
+    material: player_head
+    name: "Golden Rune"
+    rarity: EPIC
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Flaunt your wealth with golden"
+      - "§7arrows!"
+    components:
+      - id: RUNE
+        required_level: 14
+        color: <e>
+        applicable_to: BOWS
+        skull_texture: 35f4861aa5b22ee28a90e75dab45d221efd14c0b1ecc8ee998fb67e43bb8f3de
+  - id: GRAND_FREEZING_RUNE
+    material: player_head
+    name: "Grand Freezing Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Special look on Jerry's Workshop!"
+      - "§7Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <c>
+        applicable_to: CHESTPLATES
+        skull_texture: f14152ead2a5f0ae35a02456998418a2aa18f71f04584c8f04ad35a083c4744e
+  - id: GRAND_GARDENING_RUNE
+    material: player_head
+    name: "Grand Gardening Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Spring Bundle"
+    lore:
+      - "§7Special look on Farming Islands &"
+      - "§7Garden! Obtained from the Taylor"
+      - "§7Spring Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <c>
+        applicable_to: CHESTPLATES
+        skull_texture: 3986e0feb1529fd6957b7fd023116ab0135298ae2192b746f53b78a7568e3a5a
+  - id: GRAND_LEAFING_RUNE
+    material: player_head
+    name: "Grand Leaf-ing Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Fall Bundle"
+    lore:
+      - "§7Special §dCherry Blossom §7effect on"
+      - "§2Foraging Islands§7! Obtained from the"
+      - "§7Taylor Fall Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <a>
+        applicable_to: CHESTPLATES
+        skull_texture: f8b639ab4f75093b4c3a4c4994319b5ca5b1ba5a1432651fb9d4f0035b815d62
+  - id: GRAND_SEARING_RUNE
+    material: player_head
+    name: "Grand Searing Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Special look on the Crimson Isle!"
+      - "§7Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <c>
+        applicable_to: CHESTPLATES
+        skull_texture: 87217a791685cf4fbb78674756a4f9793ae5fd0525dae362b491cc7a472ec64b
+  - id: HARMONY_RUNE
+    material: player_head
+    name: "Harmony Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Less controversial than §5Stereo"
+      - "§5Pants§7."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <d>
+        applicable_to: CHESTPLATES
+        skull_texture: af1e23265a79df4ef4fda59783665a341d9d13262b740aae3b89cf7b50458965
+  - id: HEARTSPLOSION_RUNE
+    material: player_head
+    name: "Heartsplosion Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Valentine's Bundle"
+    lore:
+      - "§7Explode your enemies... with love."
+      - "§7Obtained from the Taylor Valentine's"
+      - "§7Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <c>
+        applicable_to: WEAPONS
+        skull_texture: eaa0e7b81c0bd8acaecb774b4746cbba476d8a6f928a48d09b394797023d164b
+  - id: HEARTS_RUNE
+    material: player_head
+    name: "Hearts Rune"
+    rarity: RARE
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Shower your enemies in love!"
+    components:
+      - id: RUNE
+        required_level: 10
+        color: <d>
+        applicable_to: WEAPONS
+        skull_texture: 2c1c179ad51955f1522c48ea9931f09c162741b45e22e9d3feb682c7e5ed8274
+  - id: HOT_RUNE
+    material: player_head
+    name: "Hot Rune"
+    rarity: UNCOMMON
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Your shoes must be burning!"
+    components:
+      - id: RUNE
+        required_level: 8
+        color: <c>
+        applicable_to: BOOTS
+        skull_texture: 26660b016d05645fffd1f48b792d1abe5d8f30dc96567569ae1d982d250b693c
+  - id: ICE_SKATES_RUNE
+    material: player_head
+    name: "Ice Skates Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Winter 2023 Bundle"
+    lore:
+      - "§7Shred that ice! Obtained from the"
+      - "§7Taylor Winter 2023 Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <f>
+        applicable_to: BOOTS
+        skull_texture: ef6cdce41f180e88b8736f537c6e07b7fb4fb5ae705244a4ddf8578e34891358
+  - id: LAVA_RUNE
+    material: player_head
+    name: "Lava Rune"
+    rarity: COMMON
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Shoot magma arrows!"
+    components:
+      - id: RUNE
+        required_level: 3
+        color: <4>
+        applicable_to: BOWS
+        skull_texture: b13d903f601034ac3400d2625fef104e9b0940746c554193f6d9e85a84a966a1
+  - id: LIGHTNING_RUNE
+    material: player_head
+    name: "Lightning Rune"
+    rarity: LEGENDARY
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Chance to strike lightning on the"
+      - "§7enemies you defeat!"
+    components:
+      - id: RUNE
+        required_level: 19
+        color: <9>
+        applicable_to: WEAPONS
+        skull_texture: b85bcf7f82d34db89a95addf8e53253e2d9554c6fd2f2e39e24362d243a0ccf7
+  - id: MAGIC_RUNE
+    material: player_head
+    name: "Magical Rune"
+    rarity: RARE
+    unavailable: "Ender Node mining drops aren't built"
+    lore:
+      - "§7Your arrows have a magical shine!"
+    components:
+      - id: RUNE
+        required_level: 12
+        color: <d>
+        applicable_to: BOWS
+        skull_texture: 24480e39ea63e347d268de83090d09984bf34394118848348bf4eb57490ce9d2
+  - id: MEOW_MUSIC_RUNE
+    material: player_head
+    name: "Meow Music Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Plays captivating meows when slaying"
+      - "§7an enemy. Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <e>
+        applicable_to: WEAPONS
+        skull_texture: 4c867a5723d2e0f24a7dc4a9c767a4658d12f9075d815f51a0e7f2ea75bde434
+  - id: MUSIC_RUNE
+    material: player_head
+    name: "Music Rune"
+    rarity: EPIC
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Put monsters out of their misery with"
+      - "§7sweet tunes!"
+    components:
+      - id: RUNE
+        required_level: 15
+        color: <b>
+        applicable_to: WEAPONS
+        skull_texture: 3b481c31dc683bdcb7d375a7c5db7ac7adf9e9fe8b6c04a64931613e29fe470e
+  - id: ORNAMENTAL_RUNE
+    material: player_head
+    name: "Ornamental Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Display wonderful ornaments all"
+      - "§7around your person! Obtained from"
+      - "§7Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: CHESTPLATES
+        skull_texture: 9a31170c86b63cc54735ae8c6ad81f5b10b90addcdb29382e1019eb932c6aac8
+  - id: PEAFOWL_RUNE
+    material: player_head
+    name: "Peafowl Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Show off some colorful blue"
+      - "§7feathers! Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <b>
+        applicable_to: CHESTPLATES
+        skull_texture: ed2fc8f894aa1256786b5d75d282617bf45e256061acded5add125f35203fd7c
+  - id: PRIMAL_FEAR_RUNE
+    material: player_head
+    name: "Primal Fear Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7What are you scared of? Obtained"
+      - "§7from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <5>
+        applicable_to: CHESTPLATES
+        skull_texture: 9da05e46c72851f5d0eb2103399d9c2914033ee909458a959895af687ad001e2
+  - id: RAINBOW_CARPET_RUNE
+    material: player_head
+    name: "Rainbow Carpet Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7A small piece of a prism. Obtained"
+      - "§7from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: BOOTS
+        skull_texture: fa3f89efca9890dd480c1d1357b6a881c3c4dee3c994ef06e3e7f82b332ff99a
+  - id: RAINBOW_RUNE
+    material: player_head
+    name: "Rainbow Rune"
+    rarity: LEGENDARY
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Walkin' on rainbows!"
+    components:
+      - id: RUNE
+        required_level: 20
+        color: <d>
+        applicable_to: BOOTS
+        skull_texture: 72114a80357463fe2f59e397aab9fc66d482a65d524f8870d21c724c18ecf757
+  - id: RAINY_DAY_RUNE
+    material: player_head
+    name: "Rainy Day Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor 2024 Summer Bundle"
+    lore:
+      - "§7Nothin' like a rainy summer day."
+      - "§7Lightning included. Obtained from the"
+      - "§7Taylor 2024 Summer Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <9>
+        applicable_to: HELMETS
+        skull_texture: fbc87d30621358ffe493d2cb681b298733161e0b73f9313f18d1e831e632b95c
+  - id: REDSTONE_RUNE
+    material: player_head
+    name: "Redstone Rune"
+    rarity: RARE
+    unavailable: "Redstone Pigman drops aren't built"
+    lore:
+      - "§7Walk like an engineer!"
+    components:
+      - id: RUNE
+        required_level: 9
+        color: <c>
+        applicable_to: BOOTS
+        skull_texture: 87a7a894057d4a1ff22a161d76600f719da57916633f683808cf4d358bb73a21
+  - id: SLIMY_RUNE
+    material: player_head
+    name: "Slimy Rune"
+    rarity: COMMON
+    unavailable: "Rain Slime and Emerald Slime drops aren't built"
+    lore:
+      - "§7A squishy trail to follow your arrows!"
+    components:
+      - id: RUNE
+        required_level: 5
+        color: <a>
+        applicable_to: BOWS
+        skull_texture: 141399e791f795bbc476b5696d75078656847a69bbbb31735f1d90579fcd056
+  - id: SMITTEN_RUNE
+    material: player_head
+    name: "Smitten Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Valentine's 2024 Bundle"
+    lore:
+      - "§7Do you want to be my lover?"
+      - "§7Obtained from the Taylor Valentine's"
+      - "§72024 Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <c>
+        applicable_to: HELMETS
+        skull_texture: adb1e3e0723358f4e2aecadcb9fb179462bafa7496218171f5757d942950cc08
+  - id: SMOKEY_RUNE
+    material: player_head
+    name: "Smokey Rune"
+    rarity: COMMON
+    unavailable: "Wither Skeleton and Sneaky Creeper drops aren't built"
+    lore:
+      - "§7Creates a burnt trail behind your"
+      - "§7arrows!"
+    components:
+      - id: RUNE
+        required_level: 7
+        color: <7>
+        applicable_to: BOWS
+        skull_texture: e4d8a8d527f65a4f434f894f7ee42eb843015bda7927c63c6ea8a754afe9bb1b
+  - id: SNAKE_RUNE
+    material: player_head
+    name: "Snake Rune"
+    rarity: LEGENDARY
+    unavailable: "No source content is built"
+    source: "slaying the Revenant Horror"
+    lore:
+      - "§7Obtained very rarely from slaying"
+      - "§7the Revenant Horror."
+    components:
+      - id: RUNE
+        required_level: 21
+        color: <a>
+        applicable_to: BOOTS
+        skull_texture: 2c4a65c689b2d36409100a60c2ab8d3d0a67ce94eea3c1f7ac974fd893568b5d
+  - id: SNOW_RUNE
+    material: player_head
+    name: "Snow Rune"
+    rarity: COMMON
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Freeze monsters to death!"
+    components:
+      - id: RUNE
+        required_level: 2
+        color: <f>
+        applicable_to: WEAPONS
+        skull_texture: cdc57c75adf39ec6f0e0916049dd9671e98a8a1e600104e84e645c988950bd7
+  - id: SOULTWIST_RUNE
+    material: player_head
+    name: "Soultwist Rune"
+    rarity: EPIC
+    unavailable: "Riftstalker Bloodfiend (Vampire slayer) isn't built"
+    source: "slaying a Vampire slayer boss"
+    lore:
+      - "§7Obtained rarely from slaying a"
+      - "§7Vampire slayer boss."
+    components:
+      - id: RUNE
+        required_level: 10
+        color: <5>
+        applicable_to: WEAPONS
+        skull_texture: f5ffdfbd490fc7310d61a1c4c35a4e0cd2f9fccc1239c6a4bcd7dec05e25ea67
+  - id: SPARKLING_RUNE
+    material: player_head
+    name: "Sparkling Rune"
+    rarity: RARE
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Your shoes are sparkling!"
+    components:
+      - id: RUNE
+        required_level: 11
+        color: <f>
+        applicable_to: BOOTS
+        skull_texture: f1e2428cb359988f4c4ff0e61de21385c62269de19a69762d773223b75dd1666
+  - id: SPELLBOUND_RUNE
+    material: player_head
+    name: "Spellbound Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Creates a captivating Enchanting"
+      - "§7Halo! Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <c>
+        applicable_to: HELMETS
+        skull_texture: 4cf05abe53191d93d42aa485889e064d5d99ffd43e8ffc6137d3389442816dd7
+  - id: SPIRIT_RUNE
+    material: player_head
+    name: "Spirit Rune"
+    rarity: RARE
+    source: "Sven Packmaster Tier II+"
+    lore:
+      - "§7Obtained rarely from slaying Sven"
+      - "§7Packmaster."
+    components:
+      - id: RUNE
+        required_level: 12
+        color: <b>
+        applicable_to: WEAPONS
+        skull_texture: c738b8af8d7ce1a26dc6d40180b3589403e11ef36a66d7c4590037732829542e
+  - id: SUNNY_SPIRAL_RUNE
+    material: player_head
+    name: "Sunny Spiral Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Summer Bundle"
+    lore:
+      - "§7The heat of the sun orbits you!"
+      - "§7Obtained from the Taylor Summer"
+      - "§7Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: CHESTPLATES
+        skull_texture: e382c1706a7ff4c68b34fda218d8a2af8bd4b191bb658471c17fb3ce2f978b3f
+  - id: SUPER_PUMPKIN_RUNE
+    material: player_head
+    name: "Super Pumpkin Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "the Taylor Fall 2024 Bundle"
+    lore:
+      - "§7YEAH BABY? GIANT PUMPKIN?"
+      - "§7WOOOOOOO!!! Obtained from the Taylor"
+      - "§7Fall 2024 Bundle."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: CHESTPLATES
+        skull_texture: a122ec2d2c754c1317444d64b5c68aca38c6d871ff9f30975cf19c6e4aa70371
+  - id: TIDAL_RUNE
+    material: player_head
+    name: "Tidal Rune"
+    rarity: LEGENDARY
+    unavailable: "Phantom Fisher and the Spooky Festival drop pool aren't built"
+    source: "Phantom Fisher during Spooky Festival"
+    lore:
+      - "§7Obtained from Phantom Fisher during"
+      - "§7Spooky Festival."
+    components:
+      - id: RUNE
+        required_level: 20
+        color: <1>
+        applicable_to: BOOTS
+        skull_texture: 69671047c6ade8a9c4d6a581bc26d284a54ae32e85c34ce69d81f92799bf3fbb
+  - id: TURKEY_RUNE
+    material: player_head
+    name: "Turkey Rune"
+    rarity: LEGENDARY
+    unavailable: "Fire Sales and seasonal Taylor bundles aren't built"
+    source: "Fire Sales"
+    lore:
+      - "§7Show off some gobbly brown"
+      - "§7feathers! Obtained from Fire Sales."
+    components:
+      - id: RUNE
+        required_level: 0
+        color: <6>
+        applicable_to: CHESTPLATES
+        skull_texture: fe532dbb29d79089922960147cdc9bc8c29a935ccd3824bc1e3166d78dca1b8d
+  - id: WAKE_RUNE
+    material: player_head
+    name: "Wake Rune"
+    rarity: LEGENDARY
+    unavailable: "Sea creature drops aren't built"
+    lore:
+      - "§7Your arrows are calming waves!"
+    components:
+      - id: RUNE
+        required_level: 18
+        color: <9>
+        applicable_to: BOWS
+        skull_texture: 977c1fc93216e96d435cf962e1173de8d1a249b644894d72676eba732fcd56e7
+  - id: WHITE_SPIRAL_RUNE
+    material: player_head
+    name: "White Spiral Rune"
+    rarity: UNCOMMON
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Show your elegance with white"
+      - "§7spiraling arrows!"
+    components:
+      - id: RUNE
+        required_level: 6
+        color: <f>
+        applicable_to: BOWS
+        skull_texture: 3ef2432ef305361384d4318df5bda5bd1ac2d9bea06d1f5cfead6dd87e37ddf5
+  - id: ZAP_RUNE
+    material: player_head
+    name: "Zap Rune"
+    rarity: UNCOMMON
+    unavailable: "Runic mobs aren't built"
+    source: "Runic mobs"
+    lore:
+      - "§7Zap across the lands!"
+    components:
+      - id: RUNE
+        required_level: 5
+        color: <e>
+        applicable_to: BOOTS
+        skull_texture: ed0947c40de6789f6cfa2370add2a04c9855e45fde9483d655101e9510288ee8
+  - id: ZOMBIE_SLAYER_RUNE
+    material: player_head
+    name: "Pestilence Rune"
+    rarity: RARE
+    unavailable: "Revenant Horror rune odds aren't published on the wiki"
+    source: "slaying the Revenant Horror"
+    lore:
+      - "§7Obtained rarely from slaying the"
+      - "§7Revenant Horror."
+    components:
+      - id: RUNE
+        required_level: 10
+        color: <2>
+        applicable_to: WEAPONS
+        skull_texture: a8c4811395fbf7f620f05cc3175cef1515aaf775ba04a01045027f0693a90147

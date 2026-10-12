@@ -21,6 +21,9 @@ import net.swofty.type.skyblockgeneric.event.custom.ArrowHitBlockEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowEffect;
 import net.swofty.type.skyblockgeneric.item.handlers.bow.ArrowEffects;
+import net.swofty.type.skyblockgeneric.item.rune.RuneEffect;
+import net.swofty.type.skyblockgeneric.item.rune.RuneEffects;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -66,6 +69,12 @@ public class ArrowEntityImpl extends LivingEntity {
         arrowMeta.setPiercingLevel((byte) 5);
     }
 
+    private void emitRuneTrail(Pos position) {
+        if (bow == null || !(shooter instanceof SkyBlockPlayer player)) return;
+        RuneEffects.Active active = RuneEffects.active(bow, RuneEffect.Trigger.ARROW);
+        if (active != null) RuneEffects.emit(player, position, active);
+    }
+
     public boolean claimExplosion() {
         return exploded.compareAndSet(false, true);
     }
@@ -98,6 +107,7 @@ public class ArrowEntityImpl extends LivingEntity {
         final Pos posBefore = getPosition();
         super.tick(time);
         final Pos posNow = getPosition();
+        emitRuneTrail(posNow);
 
         Vec diff = posNow.sub(posBefore).asVec();
         PhysicsResult result = CollisionUtils.handlePhysics(

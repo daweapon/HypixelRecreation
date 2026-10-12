@@ -96,14 +96,13 @@ items:
     rarity: COMMON
     lore:
       - "\xA77It's Jerrys all the way down."
-      - ""
-      - "\xA77Apply this rune to weapons or fuse"
-      - "\xA77two together at the Runic Pedestal!"
     default_statistics: { }
     components:
-      - id: SKULL_HEAD
-        texture: a1353ba65b6521f922b6464d17af39bddd43c984b8a227d99161594eba7a14c4
-      - id: NOT_FINISHED_YET
+      - id: RUNE
+        required_level: 4
+        color: <a>
+        applicable_to: WEAPONS
+        skull_texture: a1353ba65b6521f922b6464d17af39bddd43c984b8a227d99161594eba7a14c4
   - id: PET_ITEM_TOY_JERRY
     material: player_head
     name: "Jerry 3D Glasses"

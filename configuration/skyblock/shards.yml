@@ -22,7 +22,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "C2",
@@ -46,7 +47,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "C3",
@@ -70,7 +72,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "C4",
@@ -100,7 +103,8 @@
         {
           "type": "TREE_GIFT"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C5",
@@ -130,7 +134,38 @@
         {
           "type": "FISHING"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "C6",
+      "shard": "Howling Spirit",
+      "name": "Animal Resistance",
+      "rarity": "COMMON",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:defense:+4> against Animal mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Howling Spirit or Pack Spirit with a Black Hole or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 4,
+          "maximum": 40,
+          "condition": "ALWAYS",
+          "mob_type": "ANIMAL",
+          "key": "RESISTANCE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "C7",
@@ -160,7 +195,39 @@
         {
           "type": "TREE_GIFT"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "C8",
+      "shard": "Dumpster Diver",
+      "name": "Aquatic Resistance",
+      "rarity": "COMMON",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:defense:+4> against Aquatic mobs",
+      "huntInfo": [
+        "This shard can be obtained from killing a Dumpster Diver with enough Charm Chance to Charm it.",
+        "This shard can be obtained from Huntraps by placing them in the Backwater Bayou (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 4,
+          "maximum": 40,
+          "condition": "ALWAYS",
+          "mob_type": "AQUATIC",
+          "key": "RESISTANCE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
     },
     {
       "id": "C9",
@@ -190,7 +257,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C10",
@@ -210,7 +278,12 @@
           "key": "C10"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C11",
@@ -240,7 +313,8 @@
         {
           "type": "FISHING"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C12",
@@ -273,7 +347,37 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "C13",
+      "shard": "Fly",
+      "name": "Fortunate Farmer",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Grants <sbstat:farming_fortune:+2.5>",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Fly with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "FARMING_FORTUNE",
+          "minimum": 2.5,
+          "maximum": 25,
+          "condition": "ALWAYS"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "C14",
@@ -303,7 +407,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C15",
@@ -333,7 +438,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C16",
@@ -357,7 +463,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C17",
@@ -390,7 +497,8 @@
         {
           "type": "FISHING_NET"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C18",
@@ -417,7 +525,8 @@
             "super_tank_zombie"
           ]
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C19",
@@ -437,7 +546,12 @@
           "condition": "ALWAYS"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C20",
@@ -470,7 +584,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "C21",
@@ -500,7 +615,37 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "C22",
+      "shard": "Rabbit Mafioso",
+      "name": "Hitman Cooldown",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "The cooldown of the Rabbit Hitman is reduced by +2.5%",
+      "huntInfo": [
+        "This shard can be purchased from the Chocolate Shop for 1,000,000,000 Chocolate after reaching Chocolate Factory level 2. The player can purchase up to 12 each SkyBlock Year."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2.5,
+          "maximum": 25,
+          "condition": "ALWAYS",
+          "key": "C22"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
     },
     {
       "id": "C23",
@@ -530,7 +675,8 @@
         {
           "type": "FISHING_NET"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "C24",
@@ -562,7 +708,7 @@
         },
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": []
         },
         {
           "type": "FUSION"
@@ -570,7 +716,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C25",
@@ -594,7 +741,8 @@
         {
           "type": "TRAP"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C26",
@@ -618,7 +766,8 @@
         {
           "type": "TRAP"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C27",
@@ -648,7 +797,37 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "C28",
+      "shard": "Locust",
+      "name": "Crop Speed",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Grants +1 Crop Growth while in The Garden",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Locust with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "C28"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "C29",
@@ -675,7 +854,8 @@
         {
           "type": "FISHING"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C30",
@@ -705,7 +885,38 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "C31",
+      "shard": "Stag Beetle",
+      "name": "Woodland Resistance",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:defense:+4> against Woodland mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Stag Beetle with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 4,
+          "maximum": 40,
+          "condition": "ALWAYS",
+          "mob_type": "WOODLAND",
+          "key": "RESISTANCE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "C32",
@@ -735,7 +946,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C33",
@@ -765,7 +977,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C34",
@@ -789,7 +1002,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "C35",
@@ -813,7 +1027,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "C36",
@@ -843,7 +1058,66 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "C37",
+      "shard": "Flitter",
+      "name": "Fortunate Miner",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "MINING",
+      "description": "Grants <sbstat:mining_fortune:+2.5>",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Flitter with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "MINING_FORTUNE",
+          "minimum": 2.5,
+          "maximum": 25,
+          "condition": "ALWAYS"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C38",
+      "shard": "Tepid",
+      "name": "Lake Fishing",
+      "rarity": "COMMON",
+      "category": "WATER",
+      "family": "TROPICAL_FISH",
+      "skill": "FISHING",
+      "description": "Grants <sbstat:fishing_speed:+3> while on Fishing Islands",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Tepid with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "FISHING_SPEED",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "FISHING_ISLAND"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "C39",
@@ -852,7 +1126,7 @@
       "rarity": "COMMON",
       "category": "COMBAT",
       "family": "NONE",
-      "skill": "GLOBAL",
+      "skill": "COMBAT",
       "description": "Grants +4 <sbstat:defense> against Mythological mobs",
       "effects": [
         {
@@ -876,12 +1150,511 @@
         },
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": []
         },
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "C40",
+      "shard": "Ant",
+      "name": "Queen Tracker",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "HUNTING",
+      "description": "Grants +0.5 Tracking towards Queen Ants",
+      "huntInfo": [
+        "This shard can be obtained from killing an Ant with enough Charm Chance to Charm it.",
+        "This shard can be obtained from Huntraps by placing them in the Ant's Cave."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "C40"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "C41",
+      "shard": "Cavernfish",
+      "name": "Cave Fishing",
+      "rarity": "COMMON",
+      "category": "WATER",
+      "family": "TROPICAL_FISH",
+      "skill": "FISHING",
+      "description": "Grants <sbstat:fishing_speed:+3> while on Mining Islands",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Cavernfish with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "FISHING_SPEED",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "MINING_ISLAND"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C42",
+      "shard": "Strongarm",
+      "name": "Frozen Resistance",
+      "rarity": "COMMON",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:defense:+4> against Frozen mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Strongarm with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 4,
+          "maximum": 40,
+          "condition": "ALWAYS",
+          "mob_type": "FROZEN",
+          "key": "RESISTANCE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C43",
+      "shard": "Hideonsun",
+      "name": "Gold Box",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "SHULKER",
+      "skill": "MINING",
+      "description": "Grants <sbstat:ore_fortune:+5>",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Hideonsun."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "ORE_FORTUNE",
+          "minimum": 5,
+          "maximum": 50,
+          "condition": "ALWAYS"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C44",
+      "shard": "Haggard",
+      "name": "Skeletal Resistance",
+      "rarity": "COMMON",
+      "category": "WATER",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:defense:+4> against Skeletal mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Haggard with a Fishing Net or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 4,
+          "maximum": 40,
+          "condition": "ALWAYS",
+          "mob_type": "SKELETAL",
+          "key": "RESISTANCE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C45",
+      "shard": "Honeyhog",
+      "name": "Honey Speed",
+      "rarity": "COMMON",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "FORAGING",
+      "description": "Trees lathered with Honeycomb attract mobs +1% faster",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Honeyhog with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "C45"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C46",
+      "shard": "Shyworm",
+      "name": "Subterranean Resistance",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Grants <sbstat:defense:+4> against Subterranean mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Shyworm with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 4,
+          "maximum": 40,
+          "condition": "ALWAYS",
+          "mob_type": "SUBTERRANEAN",
+          "key": "RESISTANCE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C47",
+      "shard": "Brineling",
+      "name": "Arcane Resistance",
+      "rarity": "COMMON",
+      "category": "WATER",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:defense:+4> against Arcane mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Brineling with a Fishing Net or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 4,
+          "maximum": 40,
+          "condition": "ALWAYS",
+          "mob_type": "ARCANE",
+          "key": "RESISTANCE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C48",
+      "shard": "Chocobun",
+      "name": "Rabbit Youth",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Rabbit Bro, Cousin, and Sis can have +1 extra levels",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "C48"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "C49",
+      "shard": "Foxtrot",
+      "name": "Foraging Speed",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Grants <sbstat:speed:+3> while on Foraging Islands",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Foxtrot with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "SPEED",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "FORAGING_ISLAND"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C52",
+      "shard": "Firefox",
+      "name": "Torrhus Mastery",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "FORAGING",
+      "description": "Grants +10 Helix Fortune",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Firefox with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 10,
+          "maximum": 100,
+          "condition": "ALWAYS",
+          "key": "C52"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C55",
+      "shard": "Groundhog",
+      "name": "Diurnal Animal",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "FORAGING",
+      "description": "Grants <sbstat:sweep:+1> during the day",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Groundhog with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "SWEEP",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "DAY"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C56",
+      "shard": "Timil",
+      "name": "Torrhus Diver",
+      "rarity": "COMMON",
+      "category": "WATER",
+      "family": "TROPICAL_FISH",
+      "skill": "FISHING",
+      "description": "Grants +0.5 Pressure Resistance while on Torrhus Canyon",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Timil with a Fishing Net.",
+        "This shard can be obtained from Huntraps by placing them in the Spring Path (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "C56"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "C58",
+      "shard": "Blue Jay",
+      "name": "Airborne Resistance",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:defense:+4> against Airborne mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Blue Jay with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 4,
+          "maximum": 40,
+          "condition": "ALWAYS",
+          "mob_type": "AIRBORNE",
+          "key": "RESISTANCE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "C61",
+      "shard": "Bunbun",
+      "name": "Chocolate Speed",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Increases your Chocolate Factory speed by +0.25%",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Bunbun with a Lasso.",
+        "This shard can be obtained from Huntraps by placing them in the Torrhus Canyon (On Land)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.25,
+          "maximum": 2.5,
+          "condition": "ALWAYS",
+          "key": "C61"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "C64",
+      "shard": "Honeybuzz",
+      "name": "Honey Haul",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Honeyhives have a +2.5% chance to contain double the Honeycomb",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Honeybuzz with a Lasso.",
+        "This shard can be obtained from a Honeyhive."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2.5,
+          "maximum": 25,
+          "condition": "ALWAYS",
+          "key": "C64"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Honeyhive); only Fusion works"
+    },
+    {
+      "id": "C67",
+      "shard": "Pollendart",
+      "name": "Honey Luck",
+      "rarity": "COMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Trees lathered with Honeycomb have a +5% chance to attract a second mob",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Pollendart with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 5,
+          "maximum": 50,
+          "condition": "ALWAYS",
+          "key": "C67"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "U1",
@@ -905,7 +1678,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U2",
@@ -929,7 +1703,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U3",
@@ -953,7 +1728,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U4",
@@ -973,7 +1749,12 @@
           "key": "U4"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U5",
@@ -984,12 +1765,13 @@
       "family": "NONE",
       "skill": "FISHING",
       "description": "The cooldown of Golden Fish is reduced by +30s–300s",
-      "effects": [ ],
+      "effects": [],
       "sources": [
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U6",
@@ -1013,7 +1795,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U7",
@@ -1022,7 +1805,7 @@
       "rarity": "UNCOMMON",
       "category": "FOREST",
       "family": "SHULKER",
-      "skill": "GLOBAL",
+      "skill": "MINING",
       "description": "Grants a +5% chance to find an extra item in Treasure Chests and the Crystal Nucleus",
       "effects": [
         {
@@ -1037,7 +1820,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U8",
@@ -1061,7 +1845,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U9",
@@ -1085,22 +1870,23 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U10",
-      "shard": "Pest",
+      "shard": "Field Mouse",
       "name": "Pest Luck",
       "rarity": "UNCOMMON",
       "category": "FOREST",
       "family": "OTHER",
       "skill": "FARMING",
-      "description": "Grants +2 Overbloom towards Pests",
+      "description": "Grants +0.5 Overbloom towards Pests",
       "effects": [
         {
           "type": "ABILITY_VALUE",
-          "minimum": 2,
-          "maximum": 20,
+          "minimum": 0.5,
+          "maximum": 5,
           "condition": "ALWAYS",
           "key": "U10"
         }
@@ -1111,9 +1897,10 @@
         },
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": []
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U11",
@@ -1140,7 +1927,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U12",
@@ -1170,7 +1958,39 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "U14",
+      "shard": "Wetwing",
+      "name": "Humanoid Ruler",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants +3% more Damage against Humanoid mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Wetwing with a Black Hole or enough Charm Chance to Charm it.",
+        "This shard can be obtained from Huntraps by placing them in the Murkwater Depths (Underwater) or Murkwater Shallows (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "ALWAYS",
+          "mob_type": "HUMANOID",
+          "key": "RULER"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
     },
     {
       "id": "U15",
@@ -1180,7 +2000,7 @@
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Your Dragon Shortbow gains +2% more undefined Damage while in The End",
+      "description": "Your Dragon Shortbow gains +2% more Damage while in The End",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -1200,7 +2020,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U16",
@@ -1220,7 +2041,41 @@
           "condition": "ALWAYS"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "U17",
+      "shard": "Sea Witch",
+      "name": "Witch's Fortune",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "NONE",
+      "skill": "ALCHEMY",
+      "description": "Increases your chance of dropping Ingredients during the Year of the Witch by +1%",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Sea Witch with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U17"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "U18",
@@ -1250,7 +2105,37 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "U19",
+      "shard": "Cricket",
+      "name": "Pest Fortune",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Grants +5 Farming Fortune on Pests",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Cricket with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 5,
+          "maximum": 50,
+          "condition": "ALWAYS",
+          "key": "U19"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "U20",
@@ -1280,7 +2165,8 @@
         {
           "type": "FISHING"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U21",
@@ -1304,31 +2190,37 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U22",
       "shard": "Praying Mantis",
-      "name": "Insect Power",
+      "name": "Pest Ruler",
       "rarity": "UNCOMMON",
       "category": "FOREST",
       "family": "OTHER",
-      "skill": "FARMING",
-      "description": "Your Vacuum deals +10% extra undefined Damage",
+      "skill": "COMBAT",
+      "description": "Grants +3% more Damage against Pest mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Praying Mantis with a Lasso or enough Charm Chance to Charm it."
+      ],
       "effects": [
         {
           "type": "ABILITY_VALUE",
-          "minimum": 10,
-          "maximum": 100,
+          "minimum": 3,
+          "maximum": 30,
           "condition": "ALWAYS",
-          "key": "U22"
+          "mob_type": "PEST",
+          "key": "RULER"
         }
       ],
       "sources": [
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U23",
@@ -1352,7 +2244,8 @@
         {
           "type": "TRAP"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U24",
@@ -1362,7 +2255,7 @@
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Grants +3% more undefined Damage against Undead mobs",
+      "description": "Grants +3% more Damage against Undead mobs",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -1379,7 +2272,8 @@
             "zombie_knight"
           ]
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U25",
@@ -1403,7 +2297,38 @@
         {
           "type": "TRAP"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "U26",
+      "shard": "Treasure Hoarder",
+      "name": "Dwarven Training",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "MINING",
+      "description": "Gain +1% more Heart of the Mountain Exp",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Treasure Hoarder with a Black Hole or enough Charm Chance to Charm it.",
+        "This shard can be obtained from Huntraps by placing them in the Dwarven Mines (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U26"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
     },
     {
       "id": "U27",
@@ -1433,7 +2358,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U28",
@@ -1453,7 +2379,12 @@
           "key": "U28"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U29",
@@ -1463,7 +2394,7 @@
       "category": "WATER",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Grants +3% more undefined Damage against Woodland mobs",
+      "description": "Grants +3% more Damage against Woodland mobs",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -1486,7 +2417,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U30",
@@ -1496,7 +2428,7 @@
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Deal +0.1% more undefined Damage per Grandma Wolf Pet combo. Max 50 combo",
+      "description": "Deal +0.1% more Damage per Grandma Wolf Pet combo. Max 50 combo",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -1519,7 +2451,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U31",
@@ -1543,7 +2476,8 @@
         {
           "type": "TRAP"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U32",
@@ -1576,7 +2510,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U33",
@@ -1586,7 +2521,7 @@
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Grants +3% more undefined Damage against Arthropod mobs",
+      "description": "Grants +3% more Damage against Arthropod mobs",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -1606,7 +2541,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U34",
@@ -1630,17 +2566,18 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U36",
-      "shard": "Bruiser",
+      "shard": "Zealot Bruiser",
       "name": "Ender Ruler",
       "rarity": "UNCOMMON",
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Grants +3% more undefined Damage against Ender mobs",
+      "description": "Grants +3% more Damage against Ender mobs",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -1660,7 +2597,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U38",
@@ -1670,7 +2608,7 @@
       "category": "WATER",
       "family": "OTHER",
       "skill": "COMBAT",
-      "description": "Grants +3% more undefined Damage against Magmatic mobs",
+      "description": "Grants +3% more Damage against Magmatic mobs",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -1686,12 +2624,13 @@
         },
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": []
         },
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U39",
@@ -1715,11 +2654,12 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U40",
-      "shard": "Termite",
+      "shard": "Earthworm",
       "name": "Infiltration",
       "rarity": "UNCOMMON",
       "category": "FOREST",
@@ -1739,7 +2679,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "U41",
@@ -1766,7 +2707,479 @@
         {
           "type": "FISHING_NET"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "U42",
+      "shard": "Polaris",
+      "name": "Frozen Ruler",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants +3% more Damage against Frozen mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Polaris with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "ALWAYS",
+          "mob_type": "FROZEN",
+          "key": "RULER"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U43",
+      "shard": "Treefrog",
+      "name": "Foraging Frog",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "AMPHIBIAN",
+      "skill": "FORAGING",
+      "description": "Your Frog Pet gains +1 Foraging Fortune",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Treefrog with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U43"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 2,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U44",
+      "shard": "Bayou Sludge",
+      "name": "Compost Speed",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Your Composter works +1% faster",
+      "huntInfo": [
+        "This shard can be obtained from killing a Bayou Sludge with enough Charm Chance to Charm it.",
+        "This shard can be obtained from Huntraps by placing them in the Backwater Bayou (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U44"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "U45",
+      "shard": "Areita",
+      "name": "Battle Arachnid",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "TAMING",
+      "description": "Your Spider Pet and Tarantula Pet gain +2 Crit Damage",
+      "huntInfo": [
+        "This shard can be obtained from Hunting an Areita with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2,
+          "maximum": 20,
+          "condition": "ALWAYS",
+          "key": "U45"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U46",
+      "shard": "Bluebird",
+      "name": "Airborne Ruler",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants +3% more Damage against Airborne mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Bluebird with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "ALWAYS",
+          "mob_type": "AIRBORNE",
+          "key": "RULER"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U47",
+      "shard": "Osedax",
+      "name": "Flexible Fisher",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Increases your chance of catching Flexbones by +2.5% while in the Tomb Floodway",
+      "huntInfo": [
+        "This shard can be purchase from Sanger for 250,000. The player can purchase up to 10 per day."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2.5,
+          "maximum": 25,
+          "condition": "ALWAYS",
+          "key": "U47"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+    },
+    {
+      "id": "U48",
+      "shard": "Duplico",
+      "name": "Arcane Ruler",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants +3% more Damage against Arcane mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Duplico with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "ALWAYS",
+          "mob_type": "ARCANE",
+          "key": "RULER"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U49",
+      "shard": "Litterbug",
+      "name": "Buckle Fisher",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Junk catches are +1% more likely to be GREAT",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Litterbug with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U49"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U50",
+      "shard": "Water Snake",
+      "name": "Titanoboa Tracker",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "NONE",
+      "skill": "FISHING",
+      "description": "Grants +0.5 Tracking towards Titanoboa",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Water Snake with a Fishing Net.",
+        "This shard can be obtained from Huntraps by placing them in the Spring Depths (Underwater) or Spring Shallows (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "U50"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 2,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "U51",
+      "shard": "Gazer",
+      "name": "Zealot Tracker",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "DEMON",
+      "skill": "COMBAT",
+      "description": "Grants +0.5 Tracking towards Special Zealots",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Gazer with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "U51"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U52",
+      "shard": "Honeybug",
+      "name": "Visitor Honey",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Garden Visitors have a +0.25% chance to bring Honey Jar",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Honeybug with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.25,
+          "maximum": 2.5,
+          "condition": "ALWAYS",
+          "key": "U52"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U53",
+      "shard": "Shuddersquid",
+      "name": "Yeti Tracker",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Grants +0.5 Tracking towards Yeti",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Shuddersquid with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "U53"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U55",
+      "shard": "Solsnatcher",
+      "name": "Soul Snatcher",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "PHANTOM",
+      "skill": "COMBAT",
+      "description": "Mobs are +1% more likely to drop their soul when killed",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Solsnatcher with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U55"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U56",
+      "shard": "Sepialot",
+      "name": "Bucket Greed",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Your Chums give +10% extra Coins when deposited into any bucket",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Sepialot with a Fishing Net or a Lasso.",
+        "This shard can be obtained from Huntraps by placing them in the Torrhus Canyon (On Land), Spring Depths (Underwater), Spring Shallows (Underwater), or Torrhus Springs (On Land)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 10,
+          "maximum": 100,
+          "condition": "ALWAYS",
+          "key": "U56"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 2,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "U57",
+      "shard": "Honey Badger",
+      "name": "Honey Serendipity",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "HUNTING",
+      "description": "Grants a +0.5% chance to instantly attract a mob when lathering a Tree with Honeycomb",
+      "huntInfo": [
+        "CRAFT}}"
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "U57"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Crafting); only Fusion works"
+    },
+    {
+      "id": "U58",
+      "shard": "Driftling",
+      "name": "Subterranean Ruler",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants +3% more Damage against Subterranean mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Driftling with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "ALWAYS",
+          "mob_type": "SUBTERRANEAN",
+          "key": "RULER"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "U59",
@@ -1790,7 +3203,8 @@
         {
           "type": "TRAP"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "U60",
@@ -1825,7 +3239,741 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "U61",
+      "shard": "Woodchucker",
+      "name": "Builder Discount",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Reduces the cost of items in the Builder's Shop by +1%",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Woodchucker with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U61"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U62",
+      "shard": "Solar",
+      "name": "Starlyn Training",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "TROPICAL_FISH",
+      "skill": "FORAGING",
+      "description": "Gain +0.5% more points in Starlyn Contests",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Solar with a Fishing Net.",
+        "This shard can be obtained from Huntraps by placing them in the Spring Shallows (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "U62"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "U63",
+      "shard": "Parched",
+      "name": "Visitor Compost",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "FARMING",
+      "description": "Garden Visitors have a +0.25% chance to bring Compost",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Parched with a Black Hole or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.25,
+          "maximum": 2.5,
+          "condition": "ALWAYS",
+          "key": "U63"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U64",
+      "shard": "Bloodbat",
+      "name": "Bartender Discount",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Reduces the cost of items in the Bartender's Shop by +1%",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Bloodbat with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U64"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U65",
+      "shard": "Dustybit",
+      "name": "Combat Trap",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "HUNTING",
+      "description": "Combat Shards get caught by Traps +1% faster",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Dustybit.",
+        "This shard can be obtained from Huntraps by placing them in the Spring Path or Torrhus Springs (On Land)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U65"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "U67",
+      "shard": "Woodlouse",
+      "name": "Visitor Cheese",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "FARMING",
+      "description": "Garden Visitors have a +0.25% chance to bring Tasty Cheese",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Woodlouse with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.25,
+          "maximum": 2.5,
+          "condition": "ALWAYS",
+          "key": "U67"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U68",
+      "shard": "Ember",
+      "name": "Galatea Training",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "TROPICAL_FISH",
+      "skill": "FORAGING",
+      "description": "Gain +1% more Heart of the Forest Exp",
+      "huntInfo": [
+        "This shard can be obtained from Hunting an Ember with a Fishing Net.",
+        "This shard can be obtained from Huntraps by placing them in the Hotspot Haven (Underwater) or Spring Depths (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U68"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "U69",
+      "shard": "Cheeky Tiki",
+      "name": "Bayou Treasure",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Grants <sbstat:treasure_chance:+0.1> while in the Backwater Bayou",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Cheeky Tiki with a Black Hole."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "TREASURE_CHANCE",
+          "minimum": 0.1,
+          "maximum": 1,
+          "condition": "BACKWATER_BAYOU"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U70",
+      "shard": "Red Panda",
+      "name": "Visitor Plant",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Garden Visitors have a +0.25% chance to bring Plant Matter",
+      "huntInfo": [
+        "This shard can be purchase from Sanger for 250,000. The player can purchase up to 10 per day."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.25,
+          "maximum": 2.5,
+          "condition": "ALWAYS",
+          "key": "U70"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+    },
+    {
+      "id": "U71",
+      "shard": "Sprawl",
+      "name": "Animal Ruler",
+      "rarity": "UNCOMMON",
+      "category": "WATER",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Grants +3% more Damage against Animal mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Sprawl with a Fishing Net, a Lasso, or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "ALWAYS",
+          "mob_type": "ANIMAL",
+          "key": "RULER"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U72",
+      "shard": "Sneaky Tiki",
+      "name": "Tiki Tracker",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Grants +0.5 Tracking towards Wiki Tiki",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Sneaky Tiki with a Black Hole."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "U72"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U73",
+      "shard": "Packrat",
+      "name": "Fiesta Fortune",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "MINING",
+      "description": "Grants +5 Gemstone Fortune while Mayor Cole's Mining Fiesta perk is active",
+      "huntInfo": [
+        "This shard can be purchased from Brynmor for 250k with stock of 64 per Year while Cole is in office with Mining Fiesta perk."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 5,
+          "maximum": 50,
+          "condition": "ALWAYS",
+          "key": "U73"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+    },
+    {
+      "id": "U75",
+      "shard": "Shrieky Tiki",
+      "name": "Construct Ruler",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants +3% more Damage against Construct mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Shrieky Tiki with a Black Hole."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "ALWAYS",
+          "mob_type": "CONSTRUCT",
+          "key": "RULER"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U76",
+      "shard": "Woodpecker",
+      "name": "Forest Felling",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Grants +0.1 Timber on Helix Trees",
+      "huntInfo": [
+        "This shard can be purchased from Miria for Miria's Coupon after reaching Miria Milestone II."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.1,
+          "maximum": 1,
+          "condition": "ALWAYS",
+          "key": "U76"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+    },
+    {
+      "id": "U78",
+      "shard": "Honeymite",
+      "name": "Mite Spawner",
+      "rarity": "UNCOMMON",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "MINING",
+      "description": "Grants a +2.5% chance to spawn an additional Nest Endermite when mining Ender Nodes",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Honeymite with a Black Hole or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2.5,
+          "maximum": 25,
+          "condition": "ALWAYS",
+          "key": "U78"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U79",
+      "shard": "Queen Ant",
+      "name": "Elusive Ruler",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants +3% more Damage against Elusive mobs",
+      "huntInfo": [
+        "This shard can be obtained from killing a Queen Ant. Since it is an Elusive mob, it is guaranteed to drop one.",
+        "This shard can be obtained from Huntraps by placing them in the Ant's Cave."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 3,
+          "maximum": 30,
+          "condition": "ALWAYS",
+          "mob_type": "ELUSIVE",
+          "key": "RULER"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Mob Drops, Huntraps); only Fusion works"
+    },
+    {
+      "id": "U82",
+      "shard": "Hawk",
+      "name": "Helix Collector",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Grants +1 Helix Fortune for every digit in your Helix Log collection. (Max 10M collection)",
+      "huntInfo": [
+        "CRAFT}}"
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U82"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Crafting); only Fusion works"
+    },
+    {
+      "id": "U85",
+      "shard": "June Bug",
+      "name": "Ticket Discount",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Upgrading Safari Tickets at the Safari Manager costs +1% less Forest Essence",
+      "huntInfo": [
+        "CRAFT}}"
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U85"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Crafting); only Fusion works"
+    },
+    {
+      "id": "U88",
+      "shard": "Dung Beetle",
+      "name": "Visitor Dung",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Garden Visitors have a +0.25% chance to bring Dung",
+      "huntInfo": [
+        "This shard can be obtained from Floor Drops on the Torrhus Canyon.",
+        "This shard can be obtained from Huntraps by placing them in the Torrhus Canyon (On Land) or Spring Path."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.25,
+          "maximum": 2.5,
+          "condition": "ALWAYS",
+          "key": "U88"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Floor Drops, Huntraps); only Fusion works"
+    },
+    {
+      "id": "U91",
+      "shard": "Rat",
+      "name": "Sprayonator Serendipity",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Grants a +1% chance for Pests to drop an extra Sprayonator Material",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Rat with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U91"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U94",
+      "shard": "Keeled Slug",
+      "name": "Bonus Pest Chance",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Grants <sbstat:bonus_pest_chance:+1>",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Slug with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "BONUS_PEST_CHANCE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U97",
+      "shard": "Mite",
+      "name": "Filter Upgrade",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Increases the effects of your Atmospheric Filter by +2%",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Mite with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2,
+          "maximum": 20,
+          "condition": "ALWAYS",
+          "key": "U97"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U100",
+      "shard": "Moth",
+      "name": "Pest Cooldown",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Reduces the spawn cooldown of Pests by 0.5s",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Moth with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "U100"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U103",
+      "shard": "Mosquito",
+      "name": "Enchanted Farmer",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Grants a +0.001% chance to find an Enchanted Crop while Farming",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Mosquito with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.001,
+          "maximum": 0.01,
+          "condition": "ALWAYS",
+          "key": "U103"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "U106",
+      "shard": "Rabbit Cat",
+      "name": "Legendary Rabbit Luck",
+      "rarity": "UNCOMMON",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Increases your chance of finding LEGENDARY Rabbits during Hoppity's Hunt by +1%",
+      "huntInfo": [
+        "This shard can be purchased from the Chocolate Shop for 4,000,000,000 Chocolate after reaching Chocolate Factory level 3. The player can purchase up to 9 each SkyBlock Year."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "U106"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
     },
     {
       "id": "R1",
@@ -1849,7 +3997,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "R2",
@@ -1873,7 +4022,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "R3",
@@ -1897,7 +4047,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "R4",
@@ -1921,7 +4072,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R5",
@@ -1945,7 +4097,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "R6",
@@ -1975,7 +4128,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R7",
@@ -1995,7 +4149,12 @@
           "key": "R7"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R8",
@@ -2019,7 +4178,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "R9",
@@ -2043,7 +4203,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "R10",
@@ -2067,7 +4228,8 @@
         {
           "type": "TRAP"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R11",
@@ -2094,7 +4256,8 @@
         {
           "type": "FISHING"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R13",
@@ -2118,7 +4281,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R15",
@@ -2142,11 +4306,12 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R16",
-      "shard": "Cropeetle",
+      "shard": "Beetle",
       "name": "Crop Bug",
       "rarity": "RARE",
       "category": "FOREST",
@@ -2166,24 +4331,30 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R18",
       "shard": "Drowned",
-      "name": "Humanoid Ruler",
+      "name": "Undead Fortune",
       "rarity": "RARE",
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Grants +3% more undefined Damage against Humanoid mobs",
+      "description": "Grants <sbstat:magic_find:+0.5> against Undead mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Drowned with a Black Hole or enough Charm Chance to Charm it.",
+        "This shard can be obtained from Huntraps by placing them in the Drowned Reliquary."
+      ],
       "effects": [
         {
           "type": "ABILITY_VALUE",
-          "minimum": 3,
-          "maximum": 30,
+          "minimum": 0.5,
+          "maximum": 5,
           "condition": "ALWAYS",
-          "key": "R18"
+          "mob_type": "UNDEAD",
+          "key": "FORTUNE"
         }
       ],
       "sources": [
@@ -2199,7 +4370,37 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "R19",
+      "shard": "Vulture",
+      "name": "Helix Sharpening",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Grants +15 Sweep towards Helix Trees",
+      "huntInfo": [
+        "This shard can be purchased from Miria for Miria's Coupon after reaching Miria Milestone IV."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 15,
+          "maximum": 150,
+          "condition": "ALWAYS",
+          "key": "R19"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
     },
     {
       "id": "R21",
@@ -2208,7 +4409,7 @@
       "rarity": "RARE",
       "category": "COMBAT",
       "family": "NONE",
-      "skill": "COMBAT",
+      "skill": "MINING",
       "description": "Gain +1% extra Mithril Powder",
       "effects": [
         {
@@ -2229,7 +4430,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R22",
@@ -2253,7 +4455,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R23",
@@ -2280,7 +4483,8 @@
         {
           "type": "FISHING"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R24",
@@ -2307,7 +4511,8 @@
             "arachne"
           ]
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R25",
@@ -2327,7 +4532,8 @@
           "key": "R25"
         }
       ],
-      "sources": [ ]
+      "sources": [],
+      "fusion_cost": 5
     },
     {
       "id": "R26",
@@ -2336,7 +4542,7 @@
       "rarity": "RARE",
       "category": "WATER",
       "family": "NONE",
-      "skill": "FISHING",
+      "skill": "GLOBAL",
       "description": "Gain +1% more Crimson Essence",
       "effects": [
         {
@@ -2354,34 +4560,8 @@
             "lava_leech"
           ]
         }
-      ]
-    },
-    {
-      "id": "R68",
-      "shard": "Thunder",
-      "name": "Thunder Speed",
-      "rarity": "RARE",
-      "category": "WATER",
-      "family": "ELUSIVE",
-      "skill": "FISHING",
-      "description": "Your Thunder, Storm, and Hurricane Bottles fill +1% faster",
-      "effects": [
-        {
-          "type": "ABILITY_VALUE",
-          "minimum": 1,
-          "maximum": 10,
-          "condition": "ALWAYS",
-          "key": "R68"
-        }
       ],
-      "sources": [
-        {
-          "type": "SALT",
-          "mobs": [
-            "thunder"
-          ]
-        }
-      ]
+      "fusion_cost": 5
     },
     {
       "id": "R27",
@@ -2401,7 +4581,37 @@
           "key": "R27"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "R28",
+      "shard": "Folf",
+      "name": "Catacombs Cap",
+      "rarity": "RARE",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Increases your Speed Cap by +5 while in The Catacombs",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 5,
+          "maximum": 50,
+          "condition": "ALWAYS",
+          "key": "R28"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R29",
@@ -2410,7 +4620,7 @@
       "rarity": "RARE",
       "category": "WATER",
       "family": "OTHER",
-      "skill": "GLOBAL",
+      "skill": "MINING",
       "description": "Treasure Chests you find in the Crystal Hollows have a +1% chance to double their loot",
       "effects": [
         {
@@ -2428,7 +4638,8 @@
         {
           "type": "FISHING"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R30",
@@ -2458,16 +4669,17 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R31",
       "shard": "Thyst",
       "name": "Atomized Crystals",
       "rarity": "RARE",
-      "category": "COMBAT",
+      "category": "FOREST",
       "family": "OTHER",
-      "skill": "COMBAT",
+      "skill": "MINING",
       "description": "Gain +1% extra Gemstone Powder",
       "effects": [
         {
@@ -2491,7 +4703,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R32",
@@ -2515,7 +4728,8 @@
         {
           "type": "FISHING_NET"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R33",
@@ -2539,7 +4753,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R34",
@@ -2563,7 +4778,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R35",
@@ -2587,7 +4803,8 @@
         {
           "type": "TRAP"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R36",
@@ -2597,7 +4814,7 @@
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "When under 20% maximum HP, your undefined Damage and undefined <sbstat:defense> increase by +2.5%",
+      "description": "When under 20% maximum HP, your Damage and <sbstat:defense> increase by +2.5%",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -2617,7 +4834,33 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "R37",
+      "shard": "Hummingbird",
+      "name": "Chop",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Grants a +10% chance to Chop an extra log, on top of the ones you swept",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 10,
+          "maximum": 100,
+          "condition": "ALWAYS",
+          "key": "R37"
+        }
+      ],
+      "sources": [
+        {
+          "type": "TREE_GIFT"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R38",
@@ -2647,17 +4890,18 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R39",
-      "shard": "Wither Specter",
+      "shard": "Wither Spectre",
       "name": "Breeze",
       "rarity": "RARE",
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "When you haven t been damaged in the last 5s or more, your mana costs are decreased by +1%",
+      "description": "When you haven't been damaged in the last 5s or more, your mana costs are decreased by +1%",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -2677,7 +4921,37 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "R40",
+      "shard": "Badger",
+      "name": "Battle Tracker",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "HUNTING",
+      "description": "Grants <sbstat:tracking:+0.5> while on Combat Islands",
+      "huntInfo": [
+        "This shard can be purchase from Sanger for 500,000. The player can purchase up to 6 per day."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "TRACKING",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "COMBAT_ISLAND"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
     },
     {
       "id": "R42",
@@ -2707,7 +4981,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R43",
@@ -2731,7 +5006,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R44",
@@ -2741,12 +5017,12 @@
       "category": "WATER",
       "family": "OTHER",
       "skill": "GLOBAL",
-      "description": "Grants +5 Pressure Resistance",
+      "description": "Grants +1 Pressure Resistance",
       "effects": [
         {
           "type": "ABILITY_VALUE",
-          "minimum": 5,
-          "maximum": 50,
+          "minimum": 1,
+          "maximum": 10,
           "condition": "ALWAYS",
           "key": "R44"
         }
@@ -2758,7 +5034,8 @@
         {
           "type": "FISHING_NET"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R45",
@@ -2778,10 +5055,41 @@
           "key": "R45"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "R46",
+      "shard": "Wild Hog",
+      "name": "Animal Fortune",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Animal mobs",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "ANIMAL",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "R47",
       "shard": "Bullfrog",
       "name": "Berry Enjoyer",
       "rarity": "RARE",
@@ -2795,14 +5103,15 @@
           "minimum": 10,
           "maximum": 100,
           "condition": "ALWAYS",
-          "key": "R46"
+          "key": "R47"
         }
       ],
       "sources": [
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "R49",
@@ -2844,7 +5153,8 @@
         {
           "type": "TREE_GIFT"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R50",
@@ -2854,12 +5164,12 @@
       "category": "WATER",
       "family": "NONE",
       "skill": "GLOBAL",
-      "description": "Grants +5 Respiration",
+      "description": "Grants +1 Respiration",
       "effects": [
         {
           "type": "ABILITY_VALUE",
-          "minimum": 5,
-          "maximum": 50,
+          "minimum": 1,
+          "maximum": 10,
           "condition": "ALWAYS",
           "key": "R50"
         }
@@ -2871,7 +5181,8 @@
         {
           "type": "FISHING_NET"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R51",
@@ -2880,7 +5191,7 @@
       "rarity": "RARE",
       "category": "COMBAT",
       "family": "OTHER",
-      "skill": "COMBAT",
+      "skill": "MINING",
       "description": "Gain +1% extra Glacite Powder",
       "effects": [
         {
@@ -2895,7 +5206,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R52",
@@ -2904,7 +5216,7 @@
       "rarity": "RARE",
       "category": "FOREST",
       "family": "OTHER",
-      "skill": "COMBAT",
+      "skill": "MINING",
       "description": "Gain a +10% chance to gain an additional Chisel charge upon starting the Fossil Excavator",
       "effects": [
         {
@@ -2919,7 +5231,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R53",
@@ -2943,7 +5256,8 @@
         {
           "type": "FISHING"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "R54",
@@ -2967,7 +5281,38 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
+    },
+    {
+      "id": "R55",
+      "shard": "Hewver",
+      "name": "Critter Fortune",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Critter mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Hewver with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "CRITTER",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "R56",
@@ -3000,7 +5345,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R57",
@@ -3020,7 +5366,12 @@
           "key": "R57"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R58",
@@ -3044,7 +5395,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R59",
@@ -3071,7 +5423,8 @@
         {
           "type": "FISHING"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R60",
@@ -3091,7 +5444,12 @@
           "key": "R60"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R61",
@@ -3111,7 +5469,42 @@
           "key": "R61"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 2
+    },
+    {
+      "id": "R62",
+      "shard": "Wiki Tiki",
+      "name": "Construct Fortune",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Construct mobs",
+      "huntInfo": [
+        "This shard can be obtained from killing a Wiki Tiki. Since it is an Elusive mob, it is guaranteed to be Charmed and drop one."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "CONSTRUCT",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "R63",
@@ -3142,36 +5535,886 @@
         },
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": []
         },
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "R64",
-      "shard": "Hummingbird",
-      "name": "Chop",
+      "shard": "Hivethief",
+      "name": "Cubic Fortune",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Cubic mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Hivethief with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "CUBIC",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R65",
+      "shard": "Maggot",
+      "name": "Boot Fisher",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Junk catches are +1% more likely to be OUTSTANDING",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R65"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "R66",
+      "shard": "Snoozle",
+      "name": "Sleepy Spread",
+      "rarity": "RARE",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "MINING",
+      "description": "Grants <sbstat:mining_spread:+1>",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Snoozle with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "MINING_SPREAD",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R67",
+      "shard": "Parakeet",
+      "name": "Flying Fortune",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Airborne mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Parakeet with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "AIRBORNE",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R68",
+      "shard": "Thunder",
+      "name": "Thunder Speed",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "ELUSIVE",
+      "skill": "GLOBAL",
+      "description": "Your Thunder, Storm, and Hurricane Bottles fill +1% faster",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R68"
+        }
+      ],
+      "sources": [
+        {
+          "type": "SALT",
+          "mobs": [
+            "thunder"
+          ]
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "R69",
+      "shard": "Rockmite",
+      "name": "Cavernous Tracker",
+      "rarity": "RARE",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "HUNTING",
+      "description": "Grants <sbstat:tracking:+0.5> while on Mining Islands",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Rockmite with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "TRACKING",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "MINING_ISLAND"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R70",
+      "shard": "Anteater",
+      "name": "Floor Fortune",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Grants a +0.1% chance to gain double loot from Floor Drops",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.1,
+          "maximum": 1,
+          "condition": "ALWAYS",
+          "key": "R70"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "R72",
+      "shard": "Scrappy",
+      "name": "Scrap Chance",
+      "rarity": "RARE",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "MINING",
+      "description": "Increases your chance of finding a Suspicious Scrap while mining in the Glacite Mineshafts by +1%",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Scrappy with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R72"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R73",
+      "shard": "Hideyho",
+      "name": "Elusive Fortune",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Elusive mobs",
+      "huntInfo": [
+        "This shard can be obtained by speaking to Hideyho in the Critter Safari, and then finding them after they teleport away. The amount of shards gained depends on how long it takes to find them:"
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "ELUSIVE",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R74",
+      "shard": "Mantis Shrimp",
+      "name": "Great Treasure",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Treasure catches are +1% more likely to be GREAT",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Mantis Shrimp with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R74"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R75",
+      "shard": "Chuckwalla",
+      "name": "Subterranean Fortune",
+      "rarity": "RARE",
+      "category": "COMBAT",
+      "family": "REPTILE",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Subterranean mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Chuckwalla with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "SUBTERRANEAN",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 2,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R76",
+      "shard": "Hideonfloor",
+      "name": "Woodland Fortune",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "SHULKER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Woodland mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Hideonfloor with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "WOODLAND",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R77",
+      "shard": "Gimmiegold",
+      "name": "Greedy Goblin",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "TAMING",
+      "description": "Your Goblin Pet gains +1 Ore Fortune",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Gimmiegold with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R77"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R78",
+      "shard": "Billygoat",
+      "name": "Frozen Fortune",
+      "rarity": "RARE",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Frozen mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Billygoat with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "FROZEN",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R79",
+      "shard": "Hideonwall",
+      "name": "Arcane Fortune",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "SHULKER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Arcane mobs",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Hideonwall with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "ARCANE",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R80",
+      "shard": "Nozzlenose",
+      "name": "Underwater Tracker",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "NONE",
+      "skill": "HUNTING",
+      "description": "Grants <sbstat:tracking:+0.5> while on Fishing Islands",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Nozzlenose with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "TRACKING",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "FISHING_ISLAND"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R81",
+      "shard": "Stoneworm",
+      "name": "Refined Luck",
+      "rarity": "RARE",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "MINING",
+      "description": "Increases your chance of finding Refined Minerals during Mining Fiestas by +1%",
+      "huntInfo": [
+        "This shard can be obtained from killing a Stoneworm with enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R81"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R82",
+      "shard": "Fluffling",
+      "name": "Foraging Tracker",
       "rarity": "RARE",
       "category": "FOREST",
       "family": "OTHER",
       "skill": "FORAGING",
-      "description": "Grants a +10% chance to Chop an extra log, on top of the ones you swept",
+      "description": "Grants <sbstat:tracking:+0.5> while on Foraging Islands",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Fluffling with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "TRACKING",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "FORAGING_ISLAND"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R83",
+      "shard": "Stingray",
+      "name": "Torrhus Serendipity",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Increases the odds of finding rare items in Tree Gifts at Torrhus Canyon by +2%",
+      "huntInfo": [
+        "This shard can be obtained from Fishing in the Torrhus Canyon with Wooden Bait. There is a 100% chance for Good drops to be replaced with one.",
+        "This shard can be obtained from Huntraps by placing them in the Hotspot Haven (Underwater) or Spring Depths (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2,
+          "maximum": 20,
+          "condition": "ALWAYS",
+          "key": "R83"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Fishing, Huntraps); only Fusion works"
+    },
+    {
+      "id": "R84",
+      "shard": "Zombuddy",
+      "name": "Mutation Serendipity",
+      "rarity": "RARE",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "FARMING",
+      "description": "Mutations have a +0.1% chance to instantly re-mutate at their first growth phase when harvested",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Zombuddy with a Black Hole or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.1,
+          "maximum": 1,
+          "condition": "ALWAYS",
+          "key": "R84"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R85",
+      "shard": "Puck",
+      "name": "Forest Serendipity",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Grants a +0.1% chance for Tree Gifts to contain double loot",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Puck with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.1,
+          "maximum": 1,
+          "condition": "ALWAYS",
+          "key": "R85"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R86",
+      "shard": "Troodon",
+      "name": "Essence of Fossils",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Gain +1% more Fossil Essence",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Troodon with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R86"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R87",
+      "shard": "Black Widow",
+      "name": "Arthropod Fortune",
+      "rarity": "RARE",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Arthropod mobs",
+      "huntInfo": [
+        "This shard can be purchase from Sanger for 500,000. The player can purchase up to 6 per day."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "ARTHROPOD",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+    },
+    {
+      "id": "R88",
+      "shard": "Pangolin",
+      "name": "Atomized Whispers",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "FORAGING",
+      "description": "Gain +1% extra Whispers",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Pangolin with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R88"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R89",
+      "shard": "Giant Water Bug",
+      "name": "Aquatic Fortune",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> against Aquatic mobs",
+      "huntInfo": [
+        "This shard can be obtained from Fishing in the Hotspot Haven. This area contains a Fishing Hotspot, which replaces every great with Giant Water Bug Shard and every outstanding with Giant Water Bug Shards Outstanding Treasure , both affected by hf.",
+        "This shard can be obtained from Huntraps by placing them in the Hotspot Haven (Underwater)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "mob_type": "AQUATIC",
+          "key": "FORTUNE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Fishing, Huntraps); only Fusion works"
+    },
+    {
+      "id": "R91",
+      "shard": "Murkbat",
+      "name": "Rekindle",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Killing a Bat has a +10% chance to add 1 Bonus Score to your Dungeon Run. Limit of +1 Score per run",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Murkbat with a Lasso."
+      ],
       "effects": [
         {
           "type": "ABILITY_VALUE",
           "minimum": 10,
           "maximum": 100,
           "condition": "ALWAYS",
-          "key": "R64"
+          "key": "R91"
         }
       ],
       "sources": [
         {
-          "type": "TREE_GIFT"
+          "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R92",
+      "shard": "Goldolot",
+      "name": "Echo of Buckets",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Your \"Bucket\" Attributes are +2% stronger",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Goldolot with a Fishing Net or a Lasso.",
+        "This shard can be obtained from Huntraps by placing them in the Spring Depths (Underwater), Spring Shallows (Underwater), or Torrhus Springs (On Land)."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2,
+          "maximum": 20,
+          "condition": "ALWAYS",
+          "key": "R92"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 2,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "R94",
+      "shard": "Rabbit Neighbor",
+      "name": "Mythic Rabbit Luck",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Increases your chance of finding MYTHIC Rabbits during Hoppity's Hunt by +1%",
+      "huntInfo": [
+        "This shard can be purchased from the Chocolate Shop for 10,000,000,000 Chocolate after reaching Chocolate Factory level 4. The player can purchase up to 6 each SkyBlock Year."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R94"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+    },
+    {
+      "id": "R95",
+      "shard": "Torrid",
+      "name": "First Sweep",
+      "rarity": "RARE",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Your first Sweep on each Tree is +1% more effective",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Torrid with a Fishing Net, a Lasso, or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R95"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "R97",
+      "shard": "Drybark",
+      "name": "Axe Cooldown",
+      "rarity": "RARE",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "FORAGING",
+      "description": "Reduces the cooldown of throwing your Axe by +1%",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Drybark with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "R97"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "E1",
@@ -3195,7 +6438,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E2",
@@ -3219,7 +6463,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E3",
@@ -3243,7 +6488,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E4",
@@ -3267,7 +6513,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E5",
@@ -3291,7 +6538,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E6",
@@ -3324,14 +6572,15 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E7",
       "shard": "Fenlord",
       "name": "Berry Mogul",
       "rarity": "EPIC",
-      "category": "WATER",
+      "category": "FOREST",
       "family": "OTHER",
       "skill": "HUNTING",
       "description": "Your Salts last +1% longer",
@@ -3351,7 +6600,37 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
+    },
+    {
+      "id": "E8",
+      "shard": "Abyssal Miner",
+      "name": "Pickaxe Cooldown",
+      "rarity": "EPIC",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "MINING",
+      "description": "Reduces the cooldown of your Pickaxe Ability by +1%",
+      "huntInfo": [
+        "This shard can be obtained from killing an Abyssal Miner. Since it is an Elusive mob, it is guaranteed to be Charmed and drop one."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "E8"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "E9",
@@ -3375,7 +6654,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E10",
@@ -3399,7 +6679,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E11",
@@ -3423,7 +6704,37 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
+    },
+    {
+      "id": "E12",
+      "shard": "Special Zealot",
+      "name": "Special Upgrades",
+      "rarity": "EPIC",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Summoning Eyes you drop have a +0.5% chance to be recombobulated. Placing recombobulated Summoning Eyes increases your chance of spawning a Superior Dragon",
+      "huntInfo": [
+        "This shard can be obtained from killing a Special Zealot. Since it is an Elusive mob, it is guaranteed to be Charmed and drop one."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "E12"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "E13",
@@ -3447,7 +6758,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E14",
@@ -3480,7 +6792,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E15",
@@ -3490,7 +6803,7 @@
       "category": "COMBAT",
       "family": "OTHER",
       "skill": "MINING",
-      "description": "Each block you mine has a +1% chance to grant 1 extra undefined <sbstat:pristine> for that block",
+      "description": "Each block you mine has a +1% chance to grant 1 extra <sbstat:pristine> for that block",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -3507,7 +6820,8 @@
             "bal"
           ]
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E16",
@@ -3531,7 +6845,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E17",
@@ -3561,7 +6876,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E18",
@@ -3571,7 +6887,7 @@
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Grants +3% more undefined Damage against Infernal mobs",
+      "description": "Grants +3% more Damage against Infernal mobs",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -3591,7 +6907,33 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "E19",
+      "shard": "Murderwing",
+      "name": "Sky High",
+      "rarity": "EPIC",
+      "category": "FOREST",
+      "family": "PHANTOM",
+      "skill": "GLOBAL",
+      "description": "Increases the distance you can fall before taking fall damage by +0.5 blocks",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "E19"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E20",
@@ -3621,7 +6963,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E21",
@@ -3648,7 +6991,8 @@
             "crypt_undead_princes"
           ]
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E22",
@@ -3672,7 +7016,33 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
+    },
+    {
+      "id": "E23",
+      "shard": "Blue Crab",
+      "name": "Outstanding Fisher",
+      "rarity": "EPIC",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Treasure catches are +1% more likely to be OUTSTANDING",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "E23"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E24",
@@ -3699,7 +7069,37 @@
             "mimic"
           ]
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "E25",
+      "shard": "Wolverine",
+      "name": "Slayer Progress",
+      "rarity": "EPIC",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Slayer Quests start +1% complete",
+      "huntInfo": [
+        "This shard can be purchase from Sanger for 750,000. The player can purchase up to 3 per day."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "E25"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
     },
     {
       "id": "E26",
@@ -3708,7 +7108,7 @@
       "rarity": "EPIC",
       "category": "WATER",
       "family": "OTHER",
-      "skill": "GLOBAL",
+      "skill": "COMBAT",
       "description": "Gain a +10% chance to negate knockback",
       "effects": [
         {
@@ -3726,7 +7126,8 @@
         {
           "type": "FISHING_NET"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E27",
@@ -3756,7 +7157,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E28",
@@ -3780,27 +7182,8 @@
         {
           "type": "FUSION"
         }
-      ]
-    },
-    {
-      "id": "E29",
-      "shard": "Inferno Demonlord",
-      "name": "Attack Speed",
-      "rarity": "EPIC",
-      "category": "COMBAT",
-      "family": "OTHER",
-      "skill": "COMBAT",
-      "description": "Grants +1 Attack Speed",
-      "effects": [
-        {
-          "type": "STATISTIC_PER_LEVEL",
-          "statistic": "BONUS_ATTACK_SPEED",
-          "minimum": 1,
-          "maximum": 10,
-          "condition": "ALWAYS"
-        }
       ],
-      "sources": [ ]
+      "fusion_cost": 5
     },
     {
       "id": "E30",
@@ -3824,7 +7207,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E31",
@@ -3848,7 +7232,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E32",
@@ -3872,7 +7257,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E33",
@@ -3902,7 +7288,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E34",
@@ -3931,9 +7318,10 @@
         },
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": []
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E35",
@@ -3957,7 +7345,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "E36",
@@ -3981,7 +7370,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E37",
@@ -4005,7 +7395,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E39",
@@ -4035,12 +7426,13 @@
         },
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": []
         },
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "E42",
@@ -4069,15 +7461,415 @@
         },
         {
           "type": "SALT",
-          "mobs": [ ]
+          "mobs": []
         },
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "E43",
+      "shard": "Dive Ghast",
+      "name": "Ghastly Distraction",
+      "rarity": "EPIC",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Pacifies enemies for +1s after mining Opal Gemstones in the Smoldering Tomb. Does not work on Slayer Bosses, Slayer Minibosses. Attacking an enemy ends effect early",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Dive Ghast with a Lasso or enough Charm Chance to Charm it."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "E43"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "E44",
+      "shard": "Silkbreeze",
+      "name": "Forager's Fortune",
+      "rarity": "EPIC",
+      "category": "WATER",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Grants <sbstat:magic_find:+0.5> while on Foraging Islands",
+      "huntInfo": [
+        "This shard can be obtained from killing a Silkbreeze. Since it is an Elusive mob, it is guaranteed to be Charmed and drop one."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "MAGIC_FIND",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "FORAGING_ISLAND"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "E45",
+      "shard": "Gemzie",
+      "name": "Devouring Spread",
+      "rarity": "EPIC",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "MINING",
+      "description": "Grants +0.25 Gemstone Spread",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Gemzie with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.25,
+          "maximum": 2.5,
+          "condition": "ALWAYS",
+          "key": "E45"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "E46",
+      "shard": "Rabbit Godmother",
+      "name": "Divine Rabbit Luck",
+      "rarity": "EPIC",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Increases your chance of finding DIVINE Rabbits during Hoppity's Hunt by +1%",
+      "huntInfo": [
+        "This shard can be purchased from the Chocolate Shop for 20,000,000,000 Chocolate after reaching Chocolate Factory level 5. The player can purchase up to 3 each SkyBlock Year."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "E46"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Shop Purchase); only Fusion works"
+    },
+    {
+      "id": "E47",
+      "shard": "Giant Isopod",
+      "name": "Fisher's Fortune",
+      "rarity": "EPIC",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "FISHING",
+      "description": "Grants <sbstat:magic_find:+0.5> while on Fishing Islands",
+      "huntInfo": [
+        "This shard can be obtained from killing a Giant Isopod. Since it is an Elusive mob, it is guaranteed to be Charmed and drop one."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "MAGIC_FIND",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "FISHING_ISLAND"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "E48",
+      "shard": "Inferno Demonlord",
+      "name": "Attack Speed",
+      "rarity": "EPIC",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Grants +1 Attack Speed",
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "BONUS_ATTACK_SPEED",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "E49",
+      "shard": "Queen Bee",
+      "name": "Honey Refill",
+      "rarity": "EPIC",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Honeyhives have a +0.5% chance to refill instantly",
+      "huntInfo": [
+        "CRAFT}}",
+        "This shard has a 2.08% chance to be obtained from a Honeyhive."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "E49"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Crafting, Honeyhive); only Fusion works"
+    },
+    {
+      "id": "E51",
+      "shard": "Bonzo",
+      "name": "Catacombs Explorer",
+      "rarity": "EPIC",
+      "category": "COMBAT",
+      "family": "DEMON",
+      "skill": "COMBAT",
+      "description": "Grants +1% more Catacombs XP",
+      "huntInfo": [
+        "This shard can be obtained from Dungeon Reward Chests in the Catacombs."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "E51"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Dungeon Reward Chest); only Fusion works"
+    },
+    {
+      "id": "E52",
+      "shard": "Beeheemoth",
+      "name": "Lathering Greed",
+      "rarity": "EPIC",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "FORAGING",
+      "description": "Gain +10% more Honeycomb from hunting mobs spawned from Trees lathered with Honeycomb",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Beeheemoth with a Lasso."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 10,
+          "maximum": 100,
+          "condition": "ALWAYS",
+          "key": "E52"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "E54",
+      "shard": "Scarf",
+      "name": "Catacombs Graduate",
+      "rarity": "EPIC",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Gain +2% more Dungeons class experience",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2,
+          "maximum": 20,
+          "condition": "ALWAYS",
+          "key": "E54"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "E57",
+      "shard": "Thorn",
+      "name": "Dominance",
+      "rarity": "EPIC",
+      "category": "COMBAT",
+      "family": "NONE",
+      "skill": "COMBAT",
+      "description": "Gain +1.5% more Damage when at full health",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1.5,
+          "maximum": 15,
+          "condition": "ALWAYS",
+          "key": "E57"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "E58",
+      "shard": "Mountain Goat",
+      "name": "Social Wisdom",
+      "rarity": "EPIC",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Grants <sbstat:social_wisdom:+0.5>",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Mountain Goat with a Lasso.",
+        "This shard can be obtained from Huntraps by placing them in the Spring Path."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "SOCIAL_WISDOM",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting, Huntraps); only Fusion works"
+    },
+    {
+      "id": "E60",
+      "shard": "Scatha",
+      "name": "Glossy Fortune",
+      "rarity": "EPIC",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "MINING",
+      "description": "Increases your chance of finding Glossy Gemstones during Mining Fiestas by +1%",
+      "huntInfo": [
+        "This shard can be obtained from killing a Scatha. Since it is an Elusive mob, it is guaranteed to be Charmed and drop one."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "E60"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
+    },
+    {
+      "id": "E63",
+      "shard": "Nilbog",
+      "name": "Royal Riches",
+      "rarity": "EPIC",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "MINING",
+      "description": "Grants +5 Mining Speed and +2.5 Ore Fortune while in the Mines of Divan",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 5,
+          "maximum": 50,
+          "condition": "ALWAYS",
+          "key": "E63"
+        },
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2.5,
+          "maximum": 25,
+          "condition": "ALWAYS",
+          "key": "E63_ORE"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "E66",
       "shard": "Littlefoot",
       "name": "Freezing Spread",
       "rarity": "EPIC",
@@ -4091,7 +7883,7 @@
           "minimum": 29,
           "maximum": 20,
           "condition": "ALWAYS",
-          "key": "E45"
+          "key": "E66"
         }
       ],
       "sources": [
@@ -4104,7 +7896,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L1",
@@ -4128,7 +7921,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L2",
@@ -4152,7 +7946,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L3",
@@ -4176,7 +7971,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L4",
@@ -4187,12 +7983,13 @@
       "family": "REPTILE",
       "skill": "HUNTING",
       "description": "Fusions with Chameleons grant the next 3 IDs as results",
-      "effects": [ ],
+      "effects": [],
       "sources": [
         {
           "type": "TREE_GIFT"
         }
-      ]
+      ],
+      "fusion_cost": 1
     },
     {
       "id": "L5",
@@ -4219,7 +8016,8 @@
             "nessie"
           ]
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L6",
@@ -4243,7 +8041,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L7",
@@ -4267,7 +8066,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L8",
@@ -4291,7 +8091,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L9",
@@ -4301,7 +8102,7 @@
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Your undefined <sbstat:defense> is increased by +0.2%",
+      "description": "Your <sbstat:defense> is increased by +0.2%",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -4311,7 +8112,37 @@
           "key": "L9"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "L10",
+      "shard": "Rabbit Godfather",
+      "name": "Egg Finder",
+      "rarity": "LEGENDARY",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Finds a Hitman Egg every 750 seconds during Hoppity's Hunt",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 750,
+          "maximum": 300,
+          "condition": "ALWAYS",
+          "key": "L10"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L11",
@@ -4319,7 +8150,7 @@
       "name": "Charmed",
       "rarity": "LEGENDARY",
       "category": "WATER",
-      "family": "AMPHIBIAN", # TODO: and also EEL
+      "family": "AMPHIBIAN",
       "skill": "HUNTING",
       "description": "Grants +0.05 Charm Chance",
       "effects": [
@@ -4335,7 +8166,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L12",
@@ -4344,7 +8176,7 @@
       "rarity": "LEGENDARY",
       "category": "COMBAT",
       "family": "NONE",
-      "skill": "COMBAT",
+      "skill": "ENCHANTING",
       "description": "Grants +0.5 Enchanting Wisdom",
       "effects": [
         {
@@ -4359,7 +8191,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L13",
@@ -4383,7 +8216,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L14",
@@ -4392,7 +8226,7 @@
       "rarity": "LEGENDARY",
       "category": "WATER",
       "family": "NONE",
-      "skill": "FORAGING",
+      "skill": "COMBAT",
       "description": "When hit, your next hit deals +2% damage",
       "effects": [
         {
@@ -4410,7 +8244,8 @@
         {
           "type": "FISHING_NET"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L15",
@@ -4420,17 +8255,22 @@
       "category": "COMBAT",
       "family": "DEMON",
       "skill": "GLOBAL",
-      "description": "Grants +2 <sbstat:vitality>",
+      "description": "Grants +1 <sbstat:vitality>",
       "effects": [
         {
           "type": "ABILITY_VALUE",
-          "minimum": 2,
-          "maximum": 20,
+          "minimum": 1,
+          "maximum": 10,
           "condition": "ALWAYS",
           "key": "L15"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L17",
@@ -4440,7 +8280,7 @@
       "category": "WATER",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Your undefined <sbstat:intelligence> is increased by +0.1%",
+      "description": "Your <sbstat:intelligence> is increased by +0.1%",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -4460,7 +8300,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L18",
@@ -4484,7 +8325,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L20",
@@ -4508,7 +8350,58 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "L21",
+      "shard": "Doomspiral",
+      "name": "Echo of Tracking",
+      "rarity": "LEGENDARY",
+      "category": "COMBAT",
+      "family": "DEMON",
+      "skill": "GLOBAL",
+      "description": "Your \"Tracker\" Attributes are +2% stronger",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Doomspiral with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2,
+          "maximum": 20,
+          "condition": "ALWAYS",
+          "key": "L21"
+        }
+      ],
+      "sources": [],
+      "fusion_cost": 2,
+      "unavailable": "Source content not built: Hunting"
+    },
+    {
+      "id": "L22",
+      "shard": "Macaw",
+      "name": "Splendor",
+      "rarity": "LEGENDARY",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "HUNTING",
+      "description": "Grants a +2.5% chance to get a bonus Rainbow Feather when hunting a SPARKLING Critter in the Critter Safari",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Macaw with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 2.5,
+          "maximum": 25,
+          "condition": "ALWAYS",
+          "key": "L22"
+        }
+      ],
+      "sources": [],
+      "fusion_cost": 5,
+      "unavailable": "Source content not built: Hunting"
     },
     {
       "id": "L23",
@@ -4528,7 +8421,8 @@
           "key": "L23"
         }
       ],
-      "sources": [ ]
+      "sources": [],
+      "fusion_cost": 5
     },
     {
       "id": "L24",
@@ -4537,7 +8431,7 @@
       "rarity": "LEGENDARY",
       "category": "COMBAT",
       "family": "OTHER",
-      "skill": "COMBAT",
+      "skill": "GLOBAL",
       "description": "Increases the odds of finding Ananke Feathers by +2%",
       "effects": [
         {
@@ -4552,7 +8446,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L25",
@@ -4576,7 +8471,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L26",
@@ -4606,7 +8502,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L27",
@@ -4639,7 +8536,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L28",
@@ -4675,7 +8573,8 @@
         {
           "type": "BLACK_HOLE"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L29",
@@ -4699,7 +8598,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L30",
@@ -4709,7 +8609,7 @@
       "category": "COMBAT",
       "family": "OTHER",
       "skill": "COMBAT",
-      "description": "Grants +3% more undefined Damage against bosses and mini-bosses",
+      "description": "Grants +3% more Damage against bosses and mini-bosses",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -4719,7 +8619,12 @@
           "key": "L30"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L31",
@@ -4743,7 +8648,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L32",
@@ -4767,7 +8673,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L33",
@@ -4791,23 +8698,24 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L34",
       "shard": "Dodo",
-      "name": "Rare Bird",
+      "name": "Tracking",
       "rarity": "LEGENDARY",
       "category": "FOREST",
       "family": "OTHER",
-      "skill": "TAMING",
-      "description": "Grants +1 <sbstat:pet_luck>",
+      "skill": "GLOBAL",
+      "description": "Grants <sbstat:tracking:+0.5>",
       "effects": [
         {
           "type": "STATISTIC_PER_LEVEL",
-          "statistic": "PET_LUCK",
-          "minimum": 1,
-          "maximum": 10,
+          "statistic": "TRACKING",
+          "minimum": 0.5,
+          "maximum": 5,
           "condition": "ALWAYS"
         }
       ],
@@ -4815,7 +8723,33 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "L35",
+      "shard": "Queen Snake",
+      "name": "Queenly Echo",
+      "rarity": "LEGENDARY",
+      "category": "WATER",
+      "family": "NONE",
+      "skill": "GLOBAL",
+      "description": "Your \"Visitor\" Attributes are +5% stronger",
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 5,
+          "maximum": 50,
+          "condition": "ALWAYS",
+          "key": "L35"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 2
     },
     {
       "id": "L36",
@@ -4825,7 +8759,7 @@
       "category": "COMBAT",
       "family": "OTHER",
       "skill": "GLOBAL",
-      "description": "Your undefined <sbstat:strength> is increased by +0.1%",
+      "description": "Your <sbstat:strength> is increased by +0.1%",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -4839,7 +8773,33 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "L38",
+      "shard": "Ghost Crab",
+      "name": "Treasure Fisher",
+      "rarity": "LEGENDARY",
+      "category": "WATER",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Grants <sbstat:treasure_chance:+0.1>",
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "TREASURE_CHANCE",
+          "minimum": 0.1,
+          "maximum": 1,
+          "condition": "ALWAYS"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L39",
@@ -4849,7 +8809,7 @@
       "category": "COMBAT",
       "family": "OTHER",
       "skill": "GLOBAL",
-      "description": "Your undefined Crit Damage is increased by +0.1%",
+      "description": "Your Crit Damage is increased by +0.1%",
       "effects": [
         {
           "type": "ABILITY_VALUE",
@@ -4863,7 +8823,37 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
+    },
+    {
+      "id": "L40",
+      "shard": "Grizzly Bear",
+      "name": "Tough Claws",
+      "rarity": "LEGENDARY",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "FORAGING",
+      "description": "Whenever you cut a Tree with an Axe, reduce its Toughness by +0.1",
+      "huntInfo": [
+        "This shard can be obtained from killing a Grizzly Bear. Since it is an Elusive mob, it is guaranteed to be Charmed and drop one."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.1,
+          "maximum": 1,
+          "condition": "ALWAYS",
+          "key": "L40"
+        }
+      ],
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5,
+      "unavailable": "Normal sources not built (Hunting); only Fusion works"
     },
     {
       "id": "L41",
@@ -4873,7 +8863,7 @@
       "category": "WATER",
       "family": "NONE",
       "skill": "GLOBAL",
-      "description": "Grants +1 Mining Fortune, undefined <sbstat:farming_fortune>, and undefined <sbstat:foraging_fortune>",
+      "description": "Grants +1 Mining Fortune, <sbstat:farming_fortune>, and <sbstat:foraging_fortune>",
       "effects": [
         {
           "type": "STATISTIC_PER_LEVEL",
@@ -4887,7 +8877,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L42",
@@ -4911,7 +8902,8 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L44",
@@ -4935,7 +8927,33 @@
         {
           "type": "FUSION"
         }
-      ]
+      ],
+      "fusion_cost": 2
+    },
+    {
+      "id": "L45",
+      "shard": "Primordial",
+      "name": "Cocoon Chance",
+      "rarity": "LEGENDARY",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "COMBAT",
+      "description": "Increases the chance of The Primordial cocooning Slayer Bosses and Slayer Minibosses by +0.5%",
+      "huntInfo": [
+        "This shard has a base 0.71% chance to drop from defeating a Tier 5 Primordial Broodfather."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS",
+          "key": "L45"
+        }
+      ],
+      "sources": [],
+      "fusion_cost": 5,
+      "unavailable": "Source content not built: Mob Drops"
     },
     {
       "id": "L46",
@@ -4955,7 +8973,12 @@
           "key": "L46"
         }
       ],
-      "sources": [ ]
+      "sources": [
+        {
+          "type": "FUSION"
+        }
+      ],
+      "fusion_cost": 5
     },
     {
       "id": "L47",
@@ -4985,47 +9008,133 @@
             "titanoboa"
           ]
         }
-      ]
+      ],
+      "fusion_cost": 2
     },
     {
-      "id": "L48",
-      "shard": "Thorn",
-      "name": "Dominance",
+      "id": "L49",
+      "shard": "Rainbug",
+      "name": "Miracle Chance",
+      "rarity": "LEGENDARY",
+      "category": "FOREST",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Increases your chance of finding Dyes by +0.1%",
+      "huntInfo": [
+        "This shard cannot be obtained as an individual Shard; find all 7 Bells in the Critter Safari and return to \"Hunter\" Tobias."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 0.1,
+          "maximum": 1,
+          "condition": "ALWAYS",
+          "key": "L49"
+        }
+      ],
+      "sources": [],
+      "fusion_cost": 5,
+      "unavailable": "Source content not built: Safari Bells"
+    },
+    {
+      "id": "L52",
+      "shard": "Flora",
+      "name": "Unique Bonus",
+      "rarity": "LEGENDARY",
+      "category": "FOREST",
+      "family": "NONE",
+      "skill": "FARMING",
+      "description": "Counts as +1 towards the Unique Crop Bonus in your Greenhouse",
+      "huntInfo": [
+        "Flora Shard has a 3% chance to drop for every 100 Copper obtained from analyzing Mutations using the Crop Analyzer. It's possible to get multiple Flora Shard from analyzing one Mutations."
+      ],
+      "effects": [
+        {
+          "type": "ABILITY_VALUE",
+          "minimum": 1,
+          "maximum": 10,
+          "condition": "ALWAYS",
+          "key": "L52"
+        }
+      ],
+      "sources": [],
+      "fusion_cost": 5,
+      "unavailable": "Source content not built: Greenhouse"
+    },
+    {
+      "id": "L54",
+      "shard": "Paragon",
+      "name": "Slayer Discount",
       "rarity": "LEGENDARY",
       "category": "COMBAT",
       "family": "NONE",
       "skill": "COMBAT",
-      "description": "Gain +1.5% more undefined Damage when at full health",
+      "description": "Grants a +0.5% discount on starting Slayer Quests",
+      "huntInfo": [
+        "This shard can be rarely obtained from defeating any Tier 4 and Tier 5 Slayer Boss excepted the Riftstalker Bloodfiend, provided the player is at least at Slayer for the respective Slayer. * The shard does not follow the usual weight-based system: instead, it uses a flat chance. * The shard does not belong to the Token, the Main or the Extra Loot Pool: instead, it rolls in a Separate Loot Pool in which it is the only drop. This means dropping it should not prevent other shards such as the Primordial Shard from dropping as well. * The RNG Meters can be set on it but will not increase its chance."
+      ],
       "effects": [
         {
           "type": "ABILITY_VALUE",
-          "minimum": 1.5,
-          "maximum": 15,
+          "minimum": 0.5,
+          "maximum": 5,
           "condition": "ALWAYS",
-          "key": "L48"
+          "key": "L54"
         }
       ],
-      "sources": [ ]
+      "sources": [],
+      "fusion_cost": 5,
+      "unavailable": "Source content not built: Mob Drops"
     },
     {
-      "id": "L51",
-      "shard": "Scarf",
-      "name": "Catacombs Graduate",
+      "id": "L57",
+      "shard": "Timestalk Clone",
+      "name": "Greenhouse Speed",
       "rarity": "LEGENDARY",
       "category": "COMBAT",
-      "family": "NONE",
-      "skill": "COMBAT",
-      "description": "Gain +2% more Dungeons class experience",
+      "family": "OTHER",
+      "skill": "FARMING",
+      "description": "Grants +0.1% Growth Speed in your Greenhouse",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Timestalk Clone with a Black Hole or enough Charm Chance to Charm it."
+      ],
       "effects": [
         {
           "type": "ABILITY_VALUE",
-          "minimum": 2,
-          "maximum": 20,
+          "minimum": 0.1,
+          "maximum": 1,
           "condition": "ALWAYS",
-          "key": "L51"
+          "key": "L57"
         }
       ],
-      "sources": [ ]
+      "sources": [],
+      "fusion_cost": 5,
+      "unavailable": "Source content not built: Hunting"
+    },
+    {
+      "id": "L60",
+      "shard": "Wumpa",
+      "name": "Cold Resistance",
+      "rarity": "LEGENDARY",
+      "category": "COMBAT",
+      "family": "OTHER",
+      "skill": "GLOBAL",
+      "description": "Grants <sbstat:cold_resistance:+0.5>",
+      "huntInfo": [
+        "This shard can be obtained from Hunting a Wumpa with a Critter Capsule in the Critter Safari."
+      ],
+      "effects": [
+        {
+          "type": "STATISTIC_PER_LEVEL",
+          "statistic": "COLD_RESISTANCE",
+          "minimum": 0.5,
+          "maximum": 5,
+          "condition": "ALWAYS"
+        }
+      ],
+      "sources": [],
+      "fusion_cost": 5,
+      "unavailable": "Source content not built: Hunting"
     }
   ]
 }

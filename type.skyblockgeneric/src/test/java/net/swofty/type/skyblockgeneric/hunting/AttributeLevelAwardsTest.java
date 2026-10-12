@@ -26,7 +26,7 @@ class AttributeLevelAwardsTest {
             data.syphon(id, definition.rarity().cumulativeForLevel(10));
         }
         int total = AttributeLevelAwards.skyBlockXp(data);
-        assertEquals(AttributeRegistry.values().size() * 10, total);
+        assertEquals(Math.min(AttributeRegistry.values().size() * 10, SkyBlockXPSource.ATTRIBUTE_LEVELS.getMaxXP()), total);
         assertTrue(total <= SkyBlockXPSource.ATTRIBUTE_LEVELS.getMaxXP());
     }
 }

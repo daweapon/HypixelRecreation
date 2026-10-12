@@ -20,12 +20,18 @@ public record AttributeDefinition(
         List<AttributeEffect> effects,
         List<AttributeSource> sources,
         String effectDescription,
-        List<String> huntInfo
+        List<String> huntInfo,
+        int fusionCost,
+        String unavailable
 ) {
     public AttributeDefinition {
         effects = List.copyOf(effects);
         sources = List.copyOf(sources);
         huntInfo = List.copyOf(huntInfo);
+    }
+
+    public boolean isAvailable() {
+        return unavailable == null || unavailable.isBlank();
     }
 
     public String shardName() {
@@ -66,7 +72,7 @@ public record AttributeDefinition(
 
     public enum EffectType {STATISTIC_PER_LEVEL, PERCENTAGE_STATISTIC_PER_LEVEL, ABILITY_VALUE}
 
-    public enum Condition {ALWAYS, DAY, NIGHT, FORAGING_ISLAND, FISHING_ISLAND, COMBAT_ISLAND, END}
+    public enum Condition {ALWAYS, DAY, NIGHT, FORAGING_ISLAND, FISHING_ISLAND, COMBAT_ISLAND, MINING_ISLAND, BACKWATER_BAYOU, END}
 
     public record AttributeEffect(EffectType type, ItemStatistic statistic, double minimum, double maximum,
                                   Condition condition, MobType mobType, String key) {
