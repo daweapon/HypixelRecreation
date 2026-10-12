@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import net.swofty.type.skyblockgeneric.item.components.SkillableMineComponent;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 
 // Grants mining-skill XP for blocks broken with a skillable mining tool
@@ -29,6 +30,12 @@ public class ActionSkillMiningHandler implements HypixelEventClass {
         double experience = skillCategory == SkillCategories.MINING
                 ? MiningPetBonuses.miningSkillExperience(event.getPlayer(), skillableMine.getMiningValue())
                 : skillableMine.getMiningValue();
+        if (skillCategory == SkillCategories.MINING) {
+            experience *= ReforgeLoadout.miningExperienceMultiplier(event.getPlayer());
+        }
+        if (skillCategory == SkillCategories.FARMING) {
+            event.getPlayer().addCoins(ReforgeLoadout.harvestCoins(event.getPlayer()));
+        }
         skills.increase(event.getPlayer(), skillCategory, experience);
     }
 }

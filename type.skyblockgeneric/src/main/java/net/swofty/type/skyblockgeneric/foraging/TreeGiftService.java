@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.hunting.AttributeId;
 import net.swofty.type.skyblockgeneric.hunting.AttributeRegistry;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -76,15 +77,19 @@ public final class TreeGiftService {
             if (vinesap > 0) player.addAndUpdateItem(ItemType.VINESAP, vinesap);
             rewards.add(Text.of("<a>Vinesap <7>x<f>0-{}", scaled));
         }
+        long whispersAwarded;
         if (treeType.equals("HELIX")) {
+            whispersAwarded = 225L * scaled;
             increase(player, SkyBlockDataHandler.Data.FOREST_WHISPERS, 225L * scaled);
             rewards.add(Text.of("<a>Forest Whispers <7>x<f>{}", 75 * scaled));
             rewards.add(Text.of("<a>Forest Whispers <7>x<f>{}", 150 * scaled));
         } else {
             int whispers = ThreadLocalRandom.current().nextInt(20 * scaled, 40 * scaled + 1);
+            whispersAwarded = whispers;
             increase(player, SkyBlockDataHandler.Data.FOREST_WHISPERS, whispers);
             rewards.add(Text.of("<a>Forest Whispers <7>x<f>{}", whispers));
         }
+        increase(player, SkyBlockDataHandler.Data.FOREST_WHISPERS, ReforgeLoadout.forestWhispers(player, whispersAwarded));
         List<Bonus> bonuses = bonuses(treeType);
         int guaranteedRewards = rewards.size();
         double treeLurker = AttributeEffectService.value(player.getHuntingData(), AttributeId.parse("C24")) / 100D;

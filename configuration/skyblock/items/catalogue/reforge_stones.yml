@@ -359,6 +359,7 @@ items:
       - "§8§oA cold and hardened heart that was"
       - "§8§oonce brimming with eager love."
     source: "Banshee fishing sea creature (Backwater Bayou), 0.1% (was 1%; wiki page possibly outdated)"
+    unavailable: "Banshee has no sea creature profile or spawn yet, so it cannot be caught"
     components:
       - id: REFORGE_STONE
         reforge: calcified
@@ -1374,6 +1375,17 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPELESS
+            recipe-type: FORAGING
+            ingredients:
+              - type: ENCHANTED_MANGROVE_LOG
+                amount: 144
+            result:
+              type: MANGROVE_GEM
+              amount: 1
   - id: MANTID_CLAW
     material: paper
     name: "Mantid Claw"
@@ -1598,6 +1610,19 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPELESS
+            recipe-type: MINING
+            ingredients:
+              - type: FINE_AMETHYST_GEM
+                amount: 8
+              - type: COMPACTED_MOONFLOWER
+                amount: 8
+            result:
+              type: MOONSTONE
+              amount: 1
   - id: MORNING_DEW
     material: paper
     name: "Morning Dew"
@@ -1773,6 +1798,7 @@ items:
       - ""
       - "§eRight-click to view rarity scaling!"
     source: "Dumpster Diver sea creature drop (wiki says 0.5%, changelog says 1%: inconsistent)"
+    unavailable: "Dumpster Diver has no sea creature profile or spawn yet, so it cannot be caught"
     components:
       - id: REFORGE_STONE
         reforge: trashy
@@ -2631,6 +2657,19 @@ items:
         mythic_cost: 100000
       - id: EXTRA_RARITY
         display: REFORGE STONE
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPELESS
+            recipe-type: MINING
+            ingredients:
+              - type: COMPACTED_SUNFLOWER
+                amount: 8
+              - type: FINE_TOPAZ_GEM
+                amount: 8
+            result:
+              type: SUNSTONE
+              amount: 1
   - id: SUSPICIOUS_VIAL
     material: paper
     name: "Suspicious Vial"
@@ -2691,6 +2730,7 @@ items:
       - ""
       - "§4❣ §cRequires §aMining Skill 15§c."
     source: "Bought from Terry in Jerry's Workshop for 32 Hunk of Ice + 8 Hunk of Blue Ice"
+    unavailable: "Terry's shop is not built and Hunk of Ice / Hunk of Blue Ice do not exist as items yet"
     components:
       - id: REFORGE_STONE
         reforge: snowy

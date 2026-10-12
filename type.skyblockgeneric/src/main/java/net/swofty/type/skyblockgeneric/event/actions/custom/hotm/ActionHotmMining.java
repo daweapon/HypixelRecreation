@@ -16,6 +16,7 @@ import net.swofty.type.skyblockgeneric.hotm.HotmSkyMallBuff;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import net.swofty.type.skyblockgeneric.region.mining.MineableBlock;
@@ -47,6 +48,8 @@ public class ActionHotmMining implements HypixelEventClass {
 
     private void mineDwarvenMetal(SkyBlockPlayer player, MineableBlock block, CustomBlockBreakEvent event) {
         if (block == MineableBlock.TITANIUM) {
+            long reforgePowder = ReforgeLoadout.titaniumMithrilPowder(player);
+            if (reforgePowder > 0) HotmService.gainPowder(player, HotmPowder.MITHRIL, reforgePowder);
             if (HotmService.skyMallBuff(player) == HotmSkyMallBuff.TITANIUM) {
                 event.getDrops().forEach(drop -> drop.setAmount(drop.getAmount() * 5));
             }

@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.item.handlers.ability;
 
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentRefrigerate;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.enchantment.impl.EnchantmentWise;
 import lombok.Getter;
 import lombok.NonNull;
@@ -66,6 +67,7 @@ public class RegisteredAbility {
             return false;
         }
         cost.onUse(player, this);
+        if (cost.isTransmission()) ReforgeLoadout.onTransmission(player);
         CombatPetHooks.abilityCast(player, item);
         return true;
     }
@@ -103,6 +105,10 @@ public class RegisteredAbility {
         public abstract void onUse(@NonNull SkyBlockPlayer player, @NonNull RegisteredAbility ability);
         public abstract void onFail(@NonNull SkyBlockPlayer player);
         public abstract @Nullable String getLoreDisplay();
+
+        public boolean isTransmission() {
+            return false;
+        }
     }
 
     public static int effectiveManaCost(SkyBlockPlayer player, int baseCost) {
@@ -126,6 +132,11 @@ public class RegisteredAbility {
         public AbilityManaCost transmission() {
             this.transmission = true;
             return this;
+        }
+
+        @Override
+        public boolean isTransmission() {
+            return transmission;
         }
 
         @Override
@@ -180,6 +191,11 @@ public class RegisteredAbility {
         public AbilityManaSoulflowCost transmission() {
             this.transmission = true;
             return this;
+        }
+
+        @Override
+        public boolean isTransmission() {
+            return transmission;
         }
 
         @Override

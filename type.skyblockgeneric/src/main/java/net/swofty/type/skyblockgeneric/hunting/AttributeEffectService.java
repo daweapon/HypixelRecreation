@@ -62,7 +62,8 @@ public final class AttributeEffectService {
     }
 
     public static double hunterFortune(SkyBlockPlayer player, AttributeDefinition hunted) {
-        double fortune = player.getStatistics().allStatistics().getOverall(ItemStatistic.HUNTER_FORTUNE);
+        double fortune = player.getStatistics().allStatistics().getOverall(ItemStatistic.HUNTER_FORTUNE)
+                + net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout.hunterFortune(player, hunted);
         String karma = switch (hunted.rarity()) {
             case COMMON -> "C35";
             case UNCOMMON -> "U8";

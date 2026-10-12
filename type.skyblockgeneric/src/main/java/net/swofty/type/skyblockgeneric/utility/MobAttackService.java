@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.Combat
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
 import net.swofty.type.skyblockgeneric.mythological.gear.MythologicalGear;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 
@@ -40,7 +41,8 @@ public final class MobAttackService {
         double resistanceMultiplier = (100D + Math.max(0, baseDefense))
                 / (100D + Math.max(0, baseDefense + resistance));
         PlayerDamagedByMobValueUpdateEvent valueEvent = new PlayerDamagedByMobValueUpdateEvent(
-                player, (float) (damageDealt.getKey() * resistanceMultiplier * gearMultiplier(mob, player)), mob);
+                player, (float) (damageDealt.getKey() * resistanceMultiplier * gearMultiplier(mob, player)
+                        * ReforgeLoadout.defenseMultiplier(player, mob, baseDefense)), mob);
         SkyBlockValueEvent.callValueUpdateEvent(valueEvent);
 
         float finalDamage = net.swofty.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.burststop(player, (float) valueEvent.getValue());
@@ -75,7 +77,7 @@ public final class MobAttackService {
 
     private static double gearMultiplier(SkyBlockMob mob, SkyBlockPlayer player) {
         double mythological = mob instanceof MythologicalCreatureMob ? MythologicalGear.incomingDamageMultiplier(player) : 1;
-        return mythological * net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.incomingMultiplier(player, mob)
+        return mythological * ReforgeLoadout.incomingMultiplier(player, mob) * net.swofty.type.skyblockgeneric.fishing.lava.CrimsonFishingGear.incomingMultiplier(player, mob)
                 * net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks.mobDamageMultiplier(mob);
     }
 }

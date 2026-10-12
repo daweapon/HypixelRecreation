@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.spookyfestival.SpookyFestivalCandyTally;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -50,7 +51,8 @@ public class SpookyFestivalCandyHandler implements HypixelEventClass {
         SkyBlockPlayer player = event.getPlayer();
         int spookyPieces = countSpookyArmorPieces(player);
         double dropChance = CANDY_DROP_CHANCE + (spookyPieces * SPOOKY_ARMOR_PIECE_BONUS) + candyAccessoryBonus(player)
-                + ElectionPerks.bonus(SkyBlockMayor.Perk.SWEET_BENEVOLENCE) / 100D;
+                + ElectionPerks.bonus(SkyBlockMayor.Perk.SWEET_BENEVOLENCE) / 100D
+                + ReforgeLoadout.candyDropBonus(player);
         dropChance *= 1 + PetAbilities.value(player, ItemType.BAT_PET, "Candy Lover", 0) / 100D;
         ItemType forced = LootRoll.claim(player.getUuid(), List.of(ItemType.PURPLE_CANDY, ItemType.GREEN_CANDY));
         int candies = (int) dropChance + (ThreadLocalRandom.current().nextDouble() < dropChance % 1D ? 1 : 0);

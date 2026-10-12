@@ -17,6 +17,8 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.commons.skyblock.item.attribute.attributes.*;
 import net.swofty.commons.skyblock.item.reforge.Reforge;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeAbilities;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeAbilityCatalogue;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.commons.text.Text;
@@ -92,6 +94,7 @@ public class ItemLore {
 		fillConfigLore(lore);
 		fillAccessoryEffects(lore);
 		fillAbilities(lore);
+		fillReforgeAbility(lore);
 		fillShortbow(lore, rarity);
 		fillFullSetBonus(lore);
 		fillRecipes(lore);
@@ -120,6 +123,7 @@ public class ItemLore {
 		fillConfigLore(lore);
 		FishingRodLoreBuilder.fillParts(lore);
 		fillAbilities(lore);
+		fillReforgeAbility(lore);
 		fillReforgeable(lore);
 		FishingRodLoreBuilder.fillRequirements(lore);
 		fillSoulbound(lore);
@@ -395,6 +399,19 @@ public class ItemLore {
 
 		TextBody.Section section = lore.section(LoreText.Sections.CONFIG_LORE);
 		configLore.forEach(line -> section.line(LoreText.gray(line)));
+	}
+
+	private static void fillReforgeAbility(LoreText lore) {
+		SkyBlockItem item = lore.item();
+		Reforge reforge = item.getAttributeHandler().getReforge();
+		if (reforge == null || !item.hasComponent(ReforgableComponent.class)) return;
+		ReforgeAbilityCatalogue.Entry entry = ReforgeAbilities.registry().entry(reforge.getId()).orElse(null);
+		if (entry == null) return;
+
+		TextBody.Section section = lore.section(LoreText.Sections.REFORGE_ABILITY);
+		section.line(Text.of("<9>{} Bonus", reforge.getName()));
+		Text.of("<7><wrap:40>{}</wrap>", Text.parseLenient(entry.text())).lines().forEach(section::line);
+		if (entry.unavailable() != null) section.line(LoreText.darkGray("Not active yet"));
 	}
 
 	private static void fillAbilities(LoreText lore) {

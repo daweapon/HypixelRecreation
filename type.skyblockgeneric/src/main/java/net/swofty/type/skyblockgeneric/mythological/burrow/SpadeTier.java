@@ -2,9 +2,10 @@ package net.swofty.type.skyblockgeneric.mythological.burrow;
 
 import lombok.Getter;
 import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.commons.skyblock.item.reforge.Reforge;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
+import net.swofty.type.skyblockgeneric.reforge.abilities.EruditeAbility;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
@@ -47,8 +48,7 @@ public enum SpadeTier {
             BurrowTreasure.coins(10, 1_000_000),
             BurrowTreasure.item(1, ItemType.BRAIDED_GRIFFIN_FEATHER)));
 
-    public static final String ERUDITE = "erudite";
-    public static final int ERUDITE_BONUS_LENGTH = 2;
+    public static final int ERUDITE_BONUS_LENGTH = EruditeAbility.EXTRA_BURROWS;
     private static final double MYTH_THE_FISH_CHANCE = 0.0001;
     private static final double MYTHOLOGICAL_DYE_CHANCE = 0.000001;
 
@@ -72,9 +72,7 @@ public enum SpadeTier {
 
     public static int chainLength(SkyBlockItem spade) {
         SpadeTier tier = of(spade.getAttributeHandler().getPotentialType()).orElse(ANCESTRAL);
-        Reforge reforge = spade.getAttributeHandler().getReforge();
-        boolean erudite = reforge != null && reforge.getId().equalsIgnoreCase(ERUDITE);
-        return tier.chainLength + (erudite ? ERUDITE_BONUS_LENGTH : 0);
+        return tier.chainLength + ReforgeLoadout.extraBurrows(spade);
     }
 
     public BurrowTreasure roll(@Nullable UUID player, RandomGenerator random) {

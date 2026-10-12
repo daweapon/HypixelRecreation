@@ -42,6 +42,7 @@ public final class LoreText {
         public static final String CUSTOM_BEFORE_ABILITY = "custom_before_ability";
         public static final String CONFIG_LORE = "config_lore";
         public static final String ABILITIES = "abilities";
+        public static final String REFORGE_ABILITY = "reforge_ability";
         public static final String CUSTOM_AFTER_ABILITY = "custom_after_ability";
         public static final String FULL_SET_BONUS = "full_set_bonus";
         public static final String RECIPES = "recipes";
@@ -68,6 +69,7 @@ public final class LoreText {
     private static final int CUSTOM_BEFORE_ABILITY_ORDER = 70;
     private static final int CONFIG_LORE_ORDER = 80;
     private static final int ABILITIES_ORDER = 90;
+    private static final int REFORGE_ABILITY_ORDER = 95;
     private static final int CUSTOM_AFTER_ABILITY_ORDER = 100;
     private static final int FULL_SET_BONUS_ORDER = 110;
     private static final int RECIPES_ORDER = 120;
@@ -140,6 +142,7 @@ public final class LoreText {
         body.section(Sections.CUSTOM_BEFORE_ABILITY, CUSTOM_BEFORE_ABILITY_ORDER).separated();
         body.section(Sections.CONFIG_LORE, CONFIG_LORE_ORDER).separated();
         body.section(Sections.ABILITIES, ABILITIES_ORDER);
+        body.section(Sections.REFORGE_ABILITY, REFORGE_ABILITY_ORDER).separated();
         body.section(Sections.CUSTOM_AFTER_ABILITY, CUSTOM_AFTER_ABILITY_ORDER).separated();
         body.section(Sections.FULL_SET_BONUS, FULL_SET_BONUS_ORDER).separated();
         body.section(Sections.RECIPES, RECIPES_ORDER).separated();

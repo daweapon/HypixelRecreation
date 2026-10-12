@@ -72,6 +72,7 @@ import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
 import net.swofty.type.skyblockgeneric.item.set.impl.TieredArmorSet;
 import net.swofty.type.skyblockgeneric.crimson.CrimsonGear;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.SkyBlockProgressMission;
 import net.swofty.type.skyblockgeneric.region.RegionType;
@@ -445,6 +446,11 @@ public class PlayerStatistics {
                 getReforgeStatistics(item, ItemStatistics.empty()), sourceType,
                 StatisticModifierType.REFORGE, parent, material, texture);
         }
+        if (item.getAttributeHandler().getReforge() != null) {
+            addModifier(modifiers, item.getAttributeHandler().getReforge().getName() + " Bonus",
+                ReforgeLoadout.statistics(item, player), sourceType,
+                StatisticModifierType.ABILITY_PASSIVE, parent, material, texture);
+        }
         addModifier(modifiers, "Gemstones", getGemstoneStatistics(item, ItemStatistics.empty()),
             sourceType, StatisticModifierType.GEMSTONE, parent, material, texture);
         for (SkyBlockEnchantment enchantment : item.getAttributeHandler().getEnchantments().toList()) {
@@ -581,6 +587,7 @@ public class PlayerStatistics {
         statistics = ItemStatistics.add(statistics, MythologicalGear.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, SnowSuit.extraItemStatistics(item, player));
         statistics = ItemStatistics.add(statistics, CrimsonGear.extraItemStatistics(item, player));
+        statistics = ItemStatistics.add(statistics, ReforgeLoadout.statistics(item, player));
 
         return statistics;
     }

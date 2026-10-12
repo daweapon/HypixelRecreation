@@ -22,6 +22,7 @@ import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.ItemRequirementsComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.utility.AttackService;
 
@@ -73,7 +74,8 @@ public class PlayerActionDamageMob implements HypixelEventClass {
         COOLDOWN.put(player.getUuid(), System.currentTimeMillis() +
                 MathUtility.ticksToMilliseconds(player.getStatistics().getInvulnerabilityTime()));
 
-        float damageAmount = ((Number) valueEvent.getValue()).floatValue();
+        float damageAmount = ((Number) valueEvent.getValue()).floatValue()
+                * (float) ReforgeLoadout.outgoingMultiplier(player, mob, critical);
         if (!AttackService.applyHit(player, mob, damageAmount, critical)) return;
         player.getPetData().dispatch(new PetEvent.MeleeHit(player, player.getPetData().getEnabledPet(), mob, damageAmount));
 
@@ -87,7 +89,8 @@ public class PlayerActionDamageMob implements HypixelEventClass {
 
         for (SkyBlockEnchantment enchantment : mainHandItem.getAttributeHandler().getEnchantments().toList()) {
             if (enchantment.type().getEnch() instanceof DamageEventEnchant damageEventEnchant) {
-                damageEventEnchant.onDamageDealt(player, targetLivingEntity, damageValue, enchantment.level());
+                damageEventEnchant.onDamageDealt(player, targetLivingEntity, damageValue,
+                        ReforgeLoadout.effectiveEnchantLevel(player, enchantment.type(), enchantment.level()));
             }
         }
     }

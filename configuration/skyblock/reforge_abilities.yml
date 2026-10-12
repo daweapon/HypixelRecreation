@@ -1,0 +1,199 @@
+ambered:
+  name: "Ambered"
+  text: "<7>Find <6>Goblins <7>from mining <a>40% <7>more <7>often."
+  unavailable: "Needs Goblins spawning from mining"
+ancient:
+  name: "Ancient"
+  text: "<7>Grants <9>+1 Crit Damage <7>per <c>Catacombs <7>skill level you have."
+  unavailable: "Needs the Catacombs skill and Dungeons"
+auspicious:
+  name: "Auspicious"
+  text: "<7>Grants <6>+1%  Mining Fortune<7>."
+beady:
+  name: "Beady"
+  text: "<7>Grants <6>+100 Farming Fortune <7>towards <2> Pests<7>."
+  unavailable: "Needs the Garden and its Pests"
+blazing:
+  name: "Blazing"
+  text: "<7>For every <c>1♨ Heat<7>, you are <a>0.05% <7>more likely to find <6>Worms<7>."
+  unavailable: "Needs the Heat mechanic"
+blessed:
+  name: "Blessed"
+  text: "<7>You have a <a>0.25% <7>chance to find <7>enchanted forms of items when <7>harvesting <a>Crops<7>."
+  unavailable: "Needs enchanted-form conversion of harvested crops"
+blood_soaked:
+  name: "Blood-Soaked"
+  text: "<7>Adds <d>+1 Level <7>to your <9>Life Steal<7>, <9>Drain<7>, and <9>Vampirism <7>enchantments."
+bloodshot:
+  name: "Bloodshot"
+  text: "<7>When killing an enemy, you have a <a>2.5% <7>chance to cocoon them! <7>Cocooned enemies will quickly hatch, <7>and can be killed again. <8>(Cannot trigger in Dungeons, Kuudra, <8>or on Bosses)."
+  unavailable: "Needs cocooned mobs that hatch and respawn"
+bountiful:
+  name: "Bountiful"
+  text: "<7>Earn <6>+0.2 Coins <7>every time you <7>harvest a <a>Crop<7>."
+buzzing:
+  name: "Buzzing"
+  text: "<7>This item deals <c>x2 Damage <7>towards <2> Pests<7>."
+  unavailable: "Needs the Garden and its Pests"
+calcified:
+  name: "Calcified"
+  text: "<7>Grants <a>+25 Defense <7>towards <3>Sea <3>Creatures<7>."
+candied:
+  name: "Candied"
+  text: "<7>Mobs are <a>1% <7>more likely to drop <7>candy during the <6>Spooky Festival<7>."
+chomp:
+  name: "Chomp"
+  text: "<7>Each unique <c>Lava Sea Creature <7>killed with this rod in your inventory <7>reduces their <c> Health <7>when fished <7>by <a>1%<7>. <8>Capped at -20% health. <7>Current Reduction: <c>-0% ❤"
+  unavailable: "Needs per-rod tracking of unique Lava Sea Creatures killed"
+coldfused:
+  name: "Coldfused"
+  text: "<8>While a Wisp Pet is active: <c>+75 Strength <9>+55 Crit Damage <7>Deal <c>+1 Damage <7>to Fire Pillars. Breaking one <7>grants <f>+30 True Defense <7>and <c>+15%  <c>Damage <7>for <a>60s<7>."
+  unavailable: "Needs breakable Fire Pillars and the Wisp pet effects"
+cubic:
+  name: "Cubic"
+  text: "<7>Take <c>-2%  Damage <7>from <4> Infernal <7>mobs."
+deep_fried:
+  name: "Deep Fried"
+  text: "<7>Find Seasonings <a>25% <7>more often <7>during the <e>Feast<7>."
+  unavailable: "Needs the Harvest Feast and Seasonings"
+dimensional:
+  name: "Dimensional"
+  text: "<a>Titanium <7>drops <2>+10 ᠅ Mithril Powder <7>when mined."
+earthy:
+  name: "Earthy"
+  text: "<7>Earn <2>+5% Sowdust <7>from farming."
+  unavailable: "Needs the Garden and Sowdust"
+empowered:
+  name: "Empowered"
+  text: "<7>Grants <a>+10 Mending <7>while in  <c>Dungeons<7>."
+  unavailable: "Needs Dungeons"
+erudite:
+  name: "Erudite"
+  text: "<e>Griffin Burrow <7>chains always consist <7>of <a>2 <7>additional burrows."
+fabled:
+  name: "Fabled"
+  text: "<9> Crits <7>have a chance to deal up to <c>+15% <7>more <c> Damage<7>."
+fanged:
+  name: "Fanged"
+  text: "<7>Every <c>7th <7>melee hit on a mob deals <c>+100%  Damage<7>."
+fleet:
+  name: "Fleet"
+  text: "<7>Grants <e>+50 Mining Spread <7>towards <9>Blocks<7>."
+  unavailable: "Needs a Mining Spread stat that only triggers on Blocks"
+fruitful:
+  name: "Fruitful"
+  text: "<7>Grants <a>+75 Defense <7>while on  <6>Mining Islands<7>."
+geometric:
+  name: "Geometric"
+  text: "<7>Gain a <a>+5% <7>chance to catch a bonus <6>Trophy <7>while fishing in a <d>Wormhole<f>."
+  unavailable: "Needs the Wormhole fishing location"
+gilded:
+  name: "Gilded"
+  text: "<7>Killing a mob has a rare chance to <7>grant <6>Coins <7>to a nearby player."
+  unavailable: "The ability text gives no chance or coin amount to reproduce"
+glacial:
+  name: "Glacial"
+  text: "<7>Grants <6>+2 Mining Fortune <7>for <7>every <b>1❄ Cold <7>you have."
+headstrong:
+  name: "Headstrong"
+  text: "<7>Deal <c>+8%  Damage <7>when hitting a <7>mob's head."
+  unavailable: "Needs head-hit detection on mobs"
+heated:
+  name: "Heated"
+  text: "<7>Grants <6>+1 Mining Fortune <7>and <6>+4 <6>Mining Speed <7>per <c>1♨ Heat <7>you have."
+  unavailable: "Needs the Heat mechanic"
+hyper:
+  name: "Hyper"
+  text: "<7>Grants <f>+5 Speed <7>for <a>5s <7>after <7>using a <6>Transmission <7>ability."
+loving:
+  name: "Loving"
+  text: "<7>Grants <c>+5%  Ability Damage<7>."
+lustrous:
+  name: "Lustrous"
+  text: "<7>Grants <e>+25 Mining Spread <7>while <b>Mayor Cole's <6>Mining Fiesta <7>perk is <7>active."
+  unavailable: "Needs the Mining Fiesta event"
+magnetic:
+  name: "Magnetic"
+  text: "<7>Earn <a>+100% <7>more Exp when mining."
+majestic:
+  name: "Majestic"
+  text: "<7>Grants <f>+50 Speed <7>while in the  <2>Critter Safari<7>."
+  unavailable: "Needs the Critter Safari"
+mantid:
+  name: "Mantid"
+  text: "<7>Grants <2>+0.25 Bonus Pest Chance <7>per <2> Pest <7>killed for <a>10 minutes<7>. <7>Caps at <2>5 Bonus Pest Chance<7>."
+  unavailable: "Needs the Garden and its Pests"
+marshy:
+  name: "Marshy"
+  text: "<7>Earn <3>+1% Forest Whispers <7>from <7>foraging."
+mithraic:
+  name: "Mithraic"
+  text: "<7>Grants <6>+50 Mining Fortune <7>towards <a>Mithril <7>and <a>Titanium<7>."
+perfect:
+  name: "Perfect"
+  text: "<7>Grants <a>+2%  Defense<7>."
+precise:
+  name: "Precise"
+  text: "<7>Deal <c>+10%  Damage <7>when hitting a <7>mob's head."
+  unavailable: "Needs head-hit detection on mobs"
+refined:
+  name: "Refined"
+  text: "<7>You have a <a>0.25% <7>chance to find <7>enchanted forms of items when mining <6>Ores<7>."
+  unavailable: "Needs enchanted-form conversion of mined ores"
+renowned:
+  name: "Renowned"
+  text: "<7>Grants <b>+1%  Magic Find <7>and <c>+1% <7>to <7>ALL <c>Combat Stats<7>."
+ridiculous:
+  name: "Ridiculous"
+  text: "<7>Fart, granting <a>+30 Defense <7>and <b>+50 Mana <7>for <a>5s<7>, but inflicts <9>-20% <9> Crit Chance <7>for <a>20s<7>."
+  unavailable: "The ability text does not say what triggers the fart"
+royal:
+  name: "Royal"
+  text: "<7>Earn <2>+15% ᠅ Mithril Powder <7>from <b>Mining Events <7>in the <2>Dwarven Mines<7>."
+  unavailable: "Needs Mining Events"
+salty:
+  name: "Salty"
+  text: "<7>This gives <a>2x stats <7>while on  <c>Jerry's Workshop<7>."
+scraped:
+  name: "Scraped"
+  text: "<7>If the block you are mining has the <7>same <2> Breaking Power <7>as this item, <6>+25 Mining Fortune<7>."
+  unavailable: "Needs the mined block's Breaking Power in the Mining Fortune calculation"
+spiritual:
+  name: "Spiritual"
+  text: "<7>Killing an enemy has a <a>10% <7>chance to <7>spawn a Spirit Decoy while in  <c>Dungeons<7>."
+  unavailable: "Needs Dungeons"
+squeaky:
+  name: "Squeaky"
+  text: "<2> Pests <7>spawn <a>2.5% <7>faster."
+  unavailable: "Needs the Garden and its Pests"
+stellar:
+  name: "Stellar"
+  text: "<7>Earn <2>+20% ᠅ Mithril Powder <7>and <6>+75 Mining Fortune <7>when mining <7>near <5> Fallen Stars<7>."
+  unavailable: "Needs Fallen Stars and Mining Events"
+sticky:
+  name: "Sticky"
+  text: "<7>Grants <d>+2.5 Hunting Fortune <7>towards <9>Water Shards<7>."
+stiff:
+  name: "Stiff"
+  text: "<3>Sea Creatures <7>killed with this <b>Fishing <b>Rod <7>drop <a>+1 Chum<7>."
+  unavailable: "Needs Chum drops from sea creatures killed with a fishing rod"
+suspicious:
+  name: "Suspicious"
+  text: "<7>Adds <c>+15 Damage <7>to this item's <7>base stats."
+thorny:
+  name: "Thorny"
+  text: "<7>Grants an additional <e>+0.1 <e>Overbloom <7>per tier of <9>Thorns <7>on all <7>of your armor pieces."
+trashy:
+  name: "Trashy"
+  text: "<7>Grants <6>+1 Treasure Chance <7>while <7>in the  <2>Backwater Bayou<7>."
+treacherous:
+  name: "Treacherous"
+  text: "<7>Earn <b>+20% Ice Essence <7>from <6><l>TREASURE <7>catches."
+  unavailable: "Needs Ice Essence from Treasure catches"
+undead:
+  name: "Undead"
+  text: "<7>Take <c>-2%  Damage <7>from <2> Undead <7>mobs."
+withered:
+  name: "Withered"
+  text: "<7>Grants <c>+1 Strength <7>per <c>Catacombs <7>skill level you have."
+  unavailable: "Needs the Catacombs skill and Dungeons"

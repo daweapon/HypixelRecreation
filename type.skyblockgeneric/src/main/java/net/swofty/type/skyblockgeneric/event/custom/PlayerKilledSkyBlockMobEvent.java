@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.item.updater.PlayerItemOrigin;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +34,8 @@ public class PlayerKilledSkyBlockMobEvent implements PlayerInstanceEvent {
 
         for (SkyBlockEnchantment enchantment : mainHandItem.getAttributeHandler().getEnchantments().toList()) {
             if (enchantment.type().getEnch() instanceof KillEventEnchant killEventEnchant) {
-                killEventEnchant.onMobKilled(player, killedMob, enchantment.level());
+                killEventEnchant.onMobKilled(player, killedMob,
+                        ReforgeLoadout.effectiveEnchantLevel(player, enchantment.type(), enchantment.level()));
             }
         }
 
