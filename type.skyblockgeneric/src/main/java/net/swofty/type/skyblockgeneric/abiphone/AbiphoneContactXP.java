@@ -16,6 +16,22 @@ public final class AbiphoneContactXP {
     private AbiphoneContactXP() {
     }
 
+    public static final int MAX_CONTACTS = SkyBlockXPSource.ABIPHONE_CONTACTS.getMaxXP() / XP_PER_CONTACT;
+    private static final String UNBUILT_CONTACT_PREFIX = "UNBUILT_CONTACT_";
+
+    public static void maxOut(SkyBlockPlayer player) {
+        List<String> ids = new ArrayList<>(unlocked(player));
+        AbiphoneRegistry.getRegisteredContactNPCs().stream().map(AbiphoneNPC::getId)
+                .filter(id -> !ids.contains(id)).forEach(ids::add);
+        for (int number = 1; ids.size() < MAX_CONTACTS; number++) {
+            String id = UNBUILT_CONTACT_PREFIX + number;
+            if (!ids.contains(id)) ids.add(id);
+        }
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.ABIPHONE_CONTACTS_UNLOCKED, DatapointStringList.class)
+                .setValue(ids);
+        syncSkyBlockXP(player);
+    }
+
     public static int total(int unlockedContacts) {
         return Math.min(unlockedContacts * XP_PER_CONTACT, SkyBlockXPSource.ABIPHONE_CONTACTS.getMaxXP());
     }

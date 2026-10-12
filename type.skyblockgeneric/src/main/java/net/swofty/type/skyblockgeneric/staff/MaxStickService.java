@@ -182,6 +182,7 @@ public final class MaxStickService {
             new Step("Kuudra clears", KuudraProgress::maxOut),
             new Step("Crimson town", CrimsonTownProgress::maxOut),
             new Step("Pets", MaxPets::maxOut),
+            new Step("Abiphone contacts", net.swofty.type.skyblockgeneric.abiphone.AbiphoneContactXP::maxOut),
             new Step("Accessory Bag", MaxAccessories::maxOut),
             new Step("Accessory powers", MaxPowers::maxOut),
             new Step("Sack of Sacks", MaxBags::maxSacks),

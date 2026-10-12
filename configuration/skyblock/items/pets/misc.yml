@@ -280,6 +280,7 @@ items:
         pet_name: "Montezuma"
         source: { text: "The Rift", active: false }
         pet_type: FRACTURED_SOUL
+        pet_score: false
         rarities: [RARE, EPIC]
         fixed_level: true
         skull_texture: df656c06e8a5cb4692564ee21748bddec9d785d1834284aaa1439601bba47d6b

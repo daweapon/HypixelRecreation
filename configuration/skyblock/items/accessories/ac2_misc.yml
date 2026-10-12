@@ -212,6 +212,7 @@ items:
     rarity: COMMON
     components:
       - id: ACCESSORY
+        dynamic_max_rarity: RARE
         effects:
           - type: INACTIVE
             reason: "Trevor's pelt hunts aren't in the game yet."

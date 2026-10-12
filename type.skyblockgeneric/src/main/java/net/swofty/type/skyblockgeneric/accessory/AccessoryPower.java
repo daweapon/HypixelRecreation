@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.accessory;
 import net.minestom.server.item.ItemStack;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.data.datapoints.DatapointBoolean;
+import net.swofty.type.skyblockgeneric.abiphone.AbiphoneContactXP;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.AbiphoneComponent;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * Accessory Power (Hypixel renamed Magical Power in July 2026). Each counted accessory in the bag
  * adds its effective rarity's value; the Hegemony Artifact counts twice, an Abicase adds one per two
- * Abiphone contacts, dungeon accessories count twice inside Dungeons, and imbuing a Rift Prism at
+ * Abiphone contacts (the profile's unlocked contacts, or the best phone in the inventory), dungeon accessories count twice inside Dungeons, and imbuing a Rift Prism at
  * Erihann adds a permanent 11 (a Rift Prism still in the bag after that adds nothing more).
  */
 public final class AccessoryPower {
@@ -54,7 +55,7 @@ public final class AccessoryPower {
     }
 
     public static int abiphoneContacts(SkyBlockPlayer player) {
-        int best = 0;
+        int best = AbiphoneContactXP.unlocked(player).size();
         for (ItemStack stack : player.getInventory().getItemStacks()) {
             if (stack.isAir() || !SkyBlockItem.isSkyBlockItem(stack)) continue;
             SkyBlockItem item = new SkyBlockItem(stack);

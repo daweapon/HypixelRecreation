@@ -106,6 +106,7 @@ items:
       - id: CUSTOM_DISPLAY_NAME
         display_name: Relic of Power
       - id: ACCESSORY
+        dynamic_max_rarity: LEGENDARY
         effects:
           - type: INACTIVE
             reason: "Accessory gemstone slots"
