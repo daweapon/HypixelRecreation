@@ -1,6 +1,16 @@
 package net.swofty.type.skyblockgeneric.garden;
 
+import net.kyori.adventure.nbt.BinaryTagTypes;
+import net.kyori.adventure.nbt.CompoundBinaryTag;
+import net.kyori.adventure.nbt.ListBinaryTag;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.Entity;
+import net.minestom.server.entity.metadata.other.ItemFrameMeta;
+import net.minestom.server.instance.block.Block;
+import net.minestom.server.tag.Tag;
+import net.minestom.server.utils.Direction;
+import net.minestom.server.utils.Rotation;
+import net.swofty.type.generic.block.PlayerHeadBlockHandler;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.EquipmentSlot;
@@ -26,6 +36,36 @@ public final class GardenModels {
     public static void spawn(Instance instance, String model) {
         for (Object stand : load().getJSONArray(model)) {
             spawnStand(instance, (JSONObject) stand);
+        }
+    }
+
+    public static void spawnFrames(Instance instance) {
+        for (Object frame : load().getJSONArray("frames")) {
+            JSONObject spec = (JSONObject) frame;
+            Material material = Material.fromKey("minecraft:" + spec.getString("item"));
+            if (material == null || material == Material.AIR) continue;
+            Entity entity = new Entity(EntityType.ITEM_FRAME);
+            ItemFrameMeta meta = (ItemFrameMeta) entity.getEntityMeta();
+            meta.setDirection(Direction.values()[spec.getInt("dir")]);
+            meta.setItem(ItemStack.of(material));
+            meta.setRotation(Rotation.values()[spec.optInt("rot") % Rotation.values().length]);
+            entity.setInstance(instance, new Pos(spec.getInt("x"), spec.getInt("y"), spec.getInt("z")));
+        }
+    }
+
+    public static void applySkulls(Instance instance) {
+        for (Object skull : load().getJSONArray("skulls")) {
+            JSONObject spec = (JSONObject) skull;
+            int x = spec.getInt("x"), y = spec.getInt("y"), z = spec.getInt("z");
+            if (instance.getChunkAt(x, z) == null) continue;
+            Block block = instance.getBlock(x, y, z);
+            if (!block.name().endsWith("_head") && !block.name().endsWith("_skull")) continue;
+            CompoundBinaryTag profile = CompoundBinaryTag.builder().put("properties",
+                    ListBinaryTag.builder(BinaryTagTypes.COMPOUND).add(CompoundBinaryTag.builder()
+                            .putString("name", "textures")
+                            .putString("value", spec.getString("value"))
+                            .build()).build()).build();
+            instance.setBlock(x, y, z, block.withHandler(new PlayerHeadBlockHandler()).withTag(Tag.NBT("profile"), profile));
         }
     }
 

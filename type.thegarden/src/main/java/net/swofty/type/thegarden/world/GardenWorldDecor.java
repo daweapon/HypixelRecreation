@@ -143,6 +143,15 @@ public class GardenWorldDecor implements GardenPresence {
         }
     }
 
+    private static void decorate(String what, Runnable step) {
+        try {
+            step.run();
+        } catch (RuntimeException exception) {
+            System.err.println("Garden decor failed: " + what);
+            exception.printStackTrace();
+        }
+    }
+
     private static void spawnInteractions(SharedInstance instance) {
         synchronized (INTERACTIONS_SPAWNED) {
             if (instance.hasTag(INTERACTIONS_SPAWNED)) return;
@@ -166,12 +175,11 @@ public class GardenWorldDecor implements GardenPresence {
                 (player, _) -> ((SkyBlockPlayer) player).openView(new GUIVisitorLogbook()));
         logbook.setInstance(instance, new Pos(LOGBOOK.x(), 71, LOGBOOK.z()));
 
-        try {
-            clearOldComposterBlocks(instance);
-            GardenModels.spawn(instance, "composter");
-            GardenModels.spawn(instance, "desk");
-        } catch (RuntimeException exception) {
-            exception.printStackTrace();
-        }
+        decorate("old composter blocks", () -> clearOldComposterBlocks(instance));
+        decorate("composter model", () -> GardenModels.spawn(instance, "composter"));
+        decorate("desk model", () -> GardenModels.spawn(instance, "desk"));
+        decorate("logbook model", () -> GardenModels.spawn(instance, "logbook"));
+        decorate("barn item frames", () -> GardenModels.spawnFrames(instance));
+        decorate("barn skull textures", () -> GardenModels.applySkulls(instance));
     }
 }
