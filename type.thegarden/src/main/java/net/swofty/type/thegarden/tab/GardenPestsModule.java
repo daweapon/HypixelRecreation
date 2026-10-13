@@ -41,10 +41,6 @@ public class GardenPestsModule extends TablistModule {
             entries.add(new TablistEntry(Text.of(" <7>Cooldown: {}", Text.parse(data.getCooldownUntil() > now ? "<c>" + clock(data.getCooldownUntil() - now) : "<a>READY")), TablistSkinRegistry.GRAY));
             int loss = PestService.fortuneLoss(player, profile);
             if (loss > 0) entries.add(new TablistEntry(Text.of(" <c>Fortune reduced by {}%", loss), TablistSkinRegistry.GRAY));
-            entries.add(new TablistEntry(Text.of("<a><l>Pest Traps:"), TablistSkinRegistry.GRAY));
-            entries.add(new TablistEntry(Text.of(" <7>Placed: <a>{}/{}", data.getTraps().size(), PestTraps.MAX_TRAPS), TablistSkinRegistry.GRAY));
-            entries.add(new TablistEntry(Text.of(" <7>Full Traps: <a>{}", Text.parse(trapList(data, true))), TablistSkinRegistry.GRAY));
-            entries.add(new TablistEntry(Text.of(" <7>No Bait: <a>{}", Text.parse(trapList(data, false))), TablistSkinRegistry.GRAY));
         }
         GreenhouseData greenhouse = profile.greenhouse();
         if (!greenhouse.getBeds().isEmpty()) {
@@ -52,6 +48,18 @@ public class GardenPestsModule extends TablistModule {
             entries.add(new TablistEntry(Text.of(" <7>Next Stage: <a>{}", clock(GreenhouseService.nextStageIn(greenhouse))), TablistSkinRegistry.GRAY));
         }
         fillRestWithGray(entries);
+        return entries;
+    }
+
+    static List<TablistEntry> trapEntries(GardenProfile profile) {
+        List<TablistEntry> entries = new ArrayList<>();
+        if (!PestService.unlocked(profile)) return entries;
+        PestData data = profile.pests();
+        entries.add(getGrayEntry());
+            entries.add(new TablistEntry(Text.of("<a><l>Pest Traps:"), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>Placed: <a>{}/{}", data.getTraps().size(), PestTraps.MAX_TRAPS), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>Full Traps: <a>{}", Text.parse(trapList(data, true))), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>No Bait: <a>{}", Text.parse(trapList(data, false))), TablistSkinRegistry.GRAY));
         return entries;
     }
 

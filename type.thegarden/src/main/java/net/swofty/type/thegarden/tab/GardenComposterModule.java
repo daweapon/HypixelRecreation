@@ -9,6 +9,7 @@ import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
 import net.swofty.type.skyblockgeneric.elections.ElectionManager;
 import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContest;
+import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterService;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterState;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -54,6 +55,7 @@ public class GardenComposterModule extends TablistModule {
         entries.add(new TablistEntry(Text.of("<a><l>Election:"), TablistSkinRegistry.GRAY));
         SkyBlockMayor mayor = ElectionManager.getCurrentMayor();
         entries.add(new TablistEntry(Text.of(" <7>Mayor: <a>{}", mayor == null ? "None" : mayor.getDisplayName()), TablistSkinRegistry.GRAY));
+        entries.addAll(GardenPestsModule.trapEntries(Gardens.profile(player)));
         fillRestWithGray(entries);
         return entries;
     }

@@ -9,11 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class VisitorSlots {
     public static final Pos[] POSITIONS = {
-            new Pos(-14.5, 71, -27.5, 20, 0),
-            new Pos(-22.5, 71, -15.5, 0, 0),
-            new Pos(-20.5, 71, -15.5, 0, 0),
-            new Pos(-18.5, 71, -15.5, 0, 0),
-            new Pos(1.5, 71, -29.5, 14, 0)
+            new Pos(5.5, 72, -18.5, 0, 0),
+            new Pos(5.5, 72, -15.5, 0, 0),
+            new Pos(5.5, 72, -12.5, 0, 0),
+            new Pos(6.5, 71, -8.5, 0, 0),
+            new Pos(9.5, 71, -8.5, 0, 0)
     };
     private static final Map<UUID, Map<String, Integer>> SLOTS = new ConcurrentHashMap<>();
 
