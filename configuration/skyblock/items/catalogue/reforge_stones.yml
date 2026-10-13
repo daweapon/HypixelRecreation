@@ -144,7 +144,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 27§c."
-    unavailable: "Needs Crystal Hollows"
     source: "Lava Blaze drop, 1% (Crystal Hollows lava mob)"
     components:
       - id: REFORGE_STONE
@@ -1286,8 +1285,7 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 30§c."
-    unavailable: "Needs Crystal Hollows"
-    source: "Crystal Nucleus Treasure Stash, ~0.47%"
+    source: "Crystal Nucleus loot bundle, ~0.47% per roll"
     components:
       - id: REFORGE_STONE
         reforge: jaded

@@ -18,7 +18,7 @@ public final class PerkMagnitudes {
             Map.entry(Perk.PATHFINDER, 20D),
             Map.entry(Perk.PROSPECTION, 25D),
             Map.entry(Perk.MINING_XP_BUFF, 60D),
-            Map.entry(Perk.MINING_FIESTA, 75D),
+            Map.entry(Perk.MINING_FIESTA, 25D),
             Map.entry(Perk.MOLTEN_FORGE, 25D),
             Map.entry(Perk.HUNTRESS_INTUITION, 10D),
             Map.entry(Perk.PET_XP_BUFF, 35D),

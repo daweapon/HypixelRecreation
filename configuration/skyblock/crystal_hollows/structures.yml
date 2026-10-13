@@ -62,7 +62,8 @@ structures:
     optional: true
     clearance: 40
     candidates: []
-    anchors: {}
+    anchors:
+      golden_dragon: {}
   - id: fairy_grotto_1
     name: "Fairy Grotto"
     region: FAIRY_GROTTO
@@ -108,3 +109,11 @@ structures:
     candidates: []
     anchors:
       chunk: {}
+  - id: mithril_forger_room
+    name: "Mithril Deposits Forger Room"
+    region: MITHRIL_DEPOSITS
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors:
+      forger: {}

@@ -60,6 +60,7 @@ public final class BundleTable {
         list.add(BundleReward.ofItem("oil_barrel", "Oil Barrel", 8000, ItemType.OIL_BARREL, 1, 0));
         list.add(BundleReward.ofItem("pickonimbus", "Pickonimbus 2000", 10_000, ItemType.PICKONIMBUS_2000, 1, 4_000));
         list.add(BundleReward.ofItem("bob_omb", "Bob-omb", 10_000, ItemType.BOB_OMB, 20, 0));
+        list.add(BundleReward.ofItem("jade_dye", "Jade Dye", 0.622, ItemType.DYE_JADE, 1, 5_000_000));
         for (String gem : GEMS) {
             list.add(BundleReward.ofItem("flawless_" + gem.toLowerCase(), "Flawless " + title(gem) + " Gemstone", 15, ItemType.valueOf("FLAWLESS_" + gem + "_GEM"), 1, 0));
             list.add(BundleReward.ofItem("fine_" + gem.toLowerCase(), "Fine " + title(gem) + " Gemstone", 900, ItemType.valueOf("FINE_" + gem + "_GEM"), 1, 0));

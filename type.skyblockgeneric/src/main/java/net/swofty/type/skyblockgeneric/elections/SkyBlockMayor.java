@@ -113,7 +113,7 @@ public enum SkyBlockMayor {
 
         PROSPECTION("Prospection", "<7>Mining minions work <a>25% <7>faster."),
         MINING_XP_BUFF("Mining XP Buff", "<7>Get <3>+60☯ Mining Wisdom <7>on public islands."),
-        MINING_FIESTA("Mining Fiesta", "<7>Schedules 5 <6>Mining Fiestas <7>throughout the year! During these events gain <3>+75☯ Mining Wisdom<7>, collect <9>Refined Mineral <7>and <5>Glossy Gemstone<7>, and earn <d>2x drops <7>from mining!"),
+        MINING_FIESTA("Mining Fiesta", "<7>The <6>Mining Fiesta <7>lasts the whole term! On public islands gain <3>+25☯ Mining Wisdom <7>and <6>+25☘ Mining Fortune<7>, and collect <9>Refined Mineral <7>and <5>Glossy Gemstone <7>from mining!"),
         MOLTEN_FORGE("Molten Forge", "<7>Decrease the time it takes to <6>forge items <7>by <d>25%<7>."),
 
         HUNTRESS_INTUITION("Huntress' Intuition", "<7>Gain <d>+10❃ Tracking<7>."),

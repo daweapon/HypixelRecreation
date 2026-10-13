@@ -1,6 +1,6 @@
-package net.swofty.type.dwarvenmines.commission;
+package net.swofty.type.skyblockgeneric.commission;
 
-// Describes what a Dwarven Mines commission requires: the action type, target, amount, location, and event.
+// Describes what a commission requires: the action type, target, amount, location, and event.
 public class Objective {
 	public final ObjectiveType type;
 	public final BlockTarget target;
@@ -31,6 +31,21 @@ public class Objective {
 		STAR_SENTRY,
 		MITHRIL,
 		TITANIUM,
+		HOLLOWS_AUTOMATON,
+		HOLLOWS_SLUDGE,
+		HOLLOWS_TREASURITE_MEMBER,
+		HOLLOWS_GOBLIN,
+		HOLLOWS_YOG,
+		HOLLOWS_THYST,
+		HOLLOWS_BOSS_CORLEONE,
+		HARD_STONE,
+		CHEST,
+		GEM_AMBER,
+		GEM_AMETHYST,
+		GEM_JADE,
+		GEM_RUBY,
+		GEM_SAPPHIRE,
+		GEM_TOPAZ,
 		UMBER,
 		TUNGSTEN,
 		GLACITE,
@@ -41,6 +56,10 @@ public class Objective {
 
 		public boolean isGlacite() {
 			return ordinal() >= UMBER.ordinal();
+		}
+
+		public boolean isGemstone() {
+			return ordinal() >= GEM_AMBER.ordinal() && ordinal() <= GEM_TOPAZ.ordinal();
 		}
 	}
 }

@@ -25,6 +25,10 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Iterator;
 
+import net.swofty.type.skyblockgeneric.carnival.CarnivalPerk;
+import net.swofty.type.skyblockgeneric.carnival.Carnivals;
+import net.swofty.type.skyblockgeneric.fiesta.MiningFiesta;
+
 public class ActionHotmMining implements HypixelEventClass {
 
     @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
@@ -65,6 +69,7 @@ public class ActionHotmMining implements HypixelEventClass {
         if (HotmService.hasPerk(player, "daily_powder")) awardDailyPowder(player);
 
         double chance = HotmService.perkValue(player, "titanium_insanium");
+        if (MiningFiesta.appliesTo(player)) chance += Carnivals.perkValue(player, CarnivalPerk.TITANIUM_TENACITY);
         if (chance > 0 && LootRoll.roll(player.getUuid(), ItemType.TITANIUM, chance)) {
             Iterator<SkyBlockItem> drops = event.getDrops().iterator();
             while (drops.hasNext()) {

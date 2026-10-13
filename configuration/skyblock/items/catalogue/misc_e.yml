@@ -1007,8 +1007,7 @@ items:
     material: paper
     name: "Sapphire Crystal"
     rarity: SPECIAL
-    unavailable: "Needs the Crystal Hollows and Glacite Mineshafts, which are not built"
-    source: "Mining Ruby/Sapphire gemstone (0.002%), Crystal Nucleus treasure, Glacite Mineshafts"
+    source: "Professor Robot in the Lost Precursor City: six different Automaton Parts or a Precursor Apparatus"
     lore:
       - "§7Energetic crystal found deep in the"
       - "§5Crystal Hollows§7."

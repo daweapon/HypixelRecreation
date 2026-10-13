@@ -18,6 +18,7 @@ import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.DroppedItemEntityImpl;
+import net.swofty.type.skyblockgeneric.commission.CommissionProgress;
 import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsOre;
 import net.swofty.type.skyblockgeneric.crystalhollows.HardStone;
 import net.swofty.type.skyblockgeneric.glacite.GlaciteOre;
@@ -206,6 +207,9 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                 // Update the drop item amount
                 dropItem.setAmount(dropAmount);
                 ItemType droppedItemType = dropItem.getAttributeHandler().getPotentialType();
+                if (!playerPlaced) {
+                    CommissionProgress.recordHollowsDrop(player, droppedItemType, dropAmount, breakRegionType);
+                }
                 if (!playerPlaced && droppedItemType != null) {
                     FarmingContests.recordHarvest(player, droppedItemType, dropAmount);
                 }

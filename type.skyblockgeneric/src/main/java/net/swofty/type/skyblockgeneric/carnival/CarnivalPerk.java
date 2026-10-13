@@ -29,16 +29,16 @@ public enum CarnivalPerk {
 
     REFINED_MIND(CarnivalPerkEvent.MINING_FIESTA, "Refined Mind", Material.LIGHT_BLUE_DYE, Tiers.FIVE,
             new double[]{2, 4, 6, 8, 10},
-            "<7>Grants a <a>+%s% <7>higher chance to find\n<9>Refined Mineral <7>and <5>Glossy Gemstone\n<7>during the <6>Mining Fiesta<7>.", Reasons.MINING_FIESTA),
+            "<7>Grants a <a>+%s% <7>higher chance to find\n<9>Refined Mineral <7>and <5>Glossy Gemstone\n<7>during the <6>Mining Fiesta<7>.", null),
     FORTUNATE_FESTIVITY(CarnivalPerkEvent.MINING_FIESTA, "Fortunate Festivity", Material.GOLDEN_PICKAXE, Tiers.FIVE,
             new double[]{5, 10, 15, 20, 25},
-            "<7>Gain <6>+%s☘ Mining Fortune <7>during the\n<6>Mining Fiesta<7>.", Reasons.MINING_FIESTA),
+            "<7>Gain <6>+%s☘ Mining Fortune <7>during the\n<6>Mining Fiesta<7>.", null),
     POWDER_HOARDER(CarnivalPerkEvent.MINING_FIESTA, "Powder Hoarder", Material.LIME_DYE, Tiers.THREE,
             new double[]{2, 4, 6},
-            "<7>Gain <a>+%s% <2>Mithril Powder<7>, <d>Gemstone\n<d>Powder<7>, and <b>Glacite Powder <7>during\n<7>the <6>Mining Fiesta<7>.", Reasons.MINING_FIESTA),
+            "<7>Gain <a>+%s% <2>Mithril Powder<7>, <d>Gemstone\n<d>Powder<7>, and <b>Glacite Powder <7>during\n<7>the <6>Mining Fiesta<7>.", null),
     TITANIUM_TENACITY(CarnivalPerkEvent.MINING_FIESTA, "Titanium Tenacity", Material.IRON_NUGGET, Tiers.TWO,
             new double[]{3, 6},
-            "<7>Increases your chance of finding\n<9>Titanium <7>by <a>+%s% <7>during the <6>Mining\n<6>Fiesta<7>.", Reasons.MINING_FIESTA),
+            "<7>Increases your chance of finding\n<9>Titanium <7>by <a>+%s% <7>during the <6>Mining\n<6>Fiesta<7>.", null),
 
     STORIED_STINGER(CarnivalPerkEvent.MYTHOLOGICAL_RITUAL, "Storied Stinger", Material.GOLDEN_SWORD, Tiers.FIVE,
             new double[]{5, 10, 15, 20, 25},
@@ -166,7 +166,6 @@ public enum CarnivalPerk {
     }
 
     private static final class Reasons {
-        static final String MINING_FIESTA = "The Mining Fiesta isn't in this server yet.";
         static final String HARVEST_FEAST = "The Harvest Feast isn't in this server yet.";
     }
 }

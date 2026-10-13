@@ -1369,7 +1369,6 @@ items:
     material: paper
     name: "Topaz Crystal"
     rarity: SPECIAL
-    unavailable: "Needs the Crystal Hollows (Bal in Khazad-dum, Magma Fields)"
     source: "Defeating Bal in Khazad-dum (Crystal Hollows)"
     lore:
       - "§7Energetic crystal found deep in the"

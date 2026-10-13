@@ -10,6 +10,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.fiesta.MiningFiesta;
 import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestival;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
@@ -44,6 +45,10 @@ public final class CarnivalStatistics {
         if (FishingFestival.isActive()) {
             total = ItemStatistics.add(total, single(ItemStatistic.FISHING_WISDOM,
                     Carnivals.perkValue(player, CarnivalPerk.FISHING_PRODIGY)));
+        }
+        if (MiningFiesta.appliesTo(player)) {
+            total = ItemStatistics.add(total, single(ItemStatistic.MINING_FORTUNE,
+                    Carnivals.perkValue(player, CarnivalPerk.FORTUNATE_FESTIVITY)));
         }
         return total;
     }

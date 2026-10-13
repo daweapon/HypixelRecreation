@@ -1,4 +1,4 @@
-package net.swofty.type.dwarvenmines.gui;
+package net.swofty.type.skyblockgeneric.commission;
 
 import net.minestom.server.event.inventory.InventoryPreClickEvent;
 import net.minestom.server.inventory.InventoryType;
@@ -6,8 +6,6 @@ import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
-import net.swofty.type.dwarvenmines.commission.CommissionMilestone;
-import net.swofty.type.dwarvenmines.commission.Commissions;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
@@ -21,13 +19,20 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
-// GUI displaying Dwarven Mines commission milestone tiers, their progress, and claimable rewards.
+// GUI displaying commission milestone tiers, their progress, and claimable rewards.
 public class GUICommissionMilestones extends HypixelInventoryGUI {
 
 	private static final int[] MILESTONE_SLOTS = {19, 20, 21, 23, 24, 25};
 
+	private final CommissionZone zone;
+
 	public GUICommissionMilestones() {
+		this(CommissionZone.DWARVEN_MINES);
+	}
+
+	public GUICommissionMilestones(CommissionZone zone) {
 		super("<e>Commission Milestones", InventoryType.CHEST_6_ROW);
+		this.zone = zone;
 	}
 
 	@Override
@@ -93,7 +98,7 @@ public class GUICommissionMilestones extends HypixelInventoryGUI {
 					if (data.getTotalCompleted() >= milestone.getCommissionsRequired()
 							&& !data.isMilestoneClaimed(milestone.getTier())) {
 						claimMilestone(sbPlayer, milestone, data);
-						new GUICommissionMilestones().open(sbPlayer);
+						new GUICommissionMilestones(zone).open(sbPlayer);
 					}
 				}
 
@@ -158,7 +163,7 @@ public class GUICommissionMilestones extends HypixelInventoryGUI {
 		set(new GUIClickableItem(48) {
 			@Override
 			public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-				new GUICommisions().open((SkyBlockPlayer) player);
+				new GUICommisions(zone).open((SkyBlockPlayer) player);
 			}
 
 			@Override

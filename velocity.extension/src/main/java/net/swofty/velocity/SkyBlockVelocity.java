@@ -282,7 +282,8 @@ public class SkyBlockVelocity {
             new DoesServerHaveIslandProtocol(), new DoesServerHaveGardenProtocol(),
             new RunEventProtocol(), new PingServerProtocol(),
             new GivePlayersOriginTypeProtocol(), new BroadcastStaffChatProtocol(),
-            new PlayerLocationProtocol(), new PlayerRankProtocol()
+            new PlayerLocationProtocol(), new PlayerRankProtocol(),
+            new IsServerJoinableProtocol()
         };
         for (RedisProtocol<?, ?> protocol : fromProxyProtocols) {
             RedisClient.registerResponseProtocol(protocol);

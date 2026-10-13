@@ -41,6 +41,7 @@ public final class CrystalHollowsMobSpec {
     private long damageCooldown = 500;
     private List<MobType> types = List.of(MobType.HUMANOID);
     private final List<Drop> drops = new ArrayList<>();
+    private final List<Drop> exclusiveDrops = new ArrayList<>();
 
     private CrystalHollowsMobSpec(String id, String name, int level, double health, double damage) {
         this.id = id;
@@ -103,6 +104,11 @@ public final class CrystalHollowsMobSpec {
         return this;
     }
 
+    public CrystalHollowsMobSpec exclusiveDrops(Drop... drops) {
+        this.exclusiveDrops.addAll(List.of(drops));
+        return this;
+    }
+
     public String id() { return id; }
     public String name() { return name; }
     public int level() { return level; }
@@ -121,4 +127,5 @@ public final class CrystalHollowsMobSpec {
     public long damageCooldown() { return damageCooldown; }
     public List<MobType> types() { return types; }
     public List<Drop> drops() { return List.copyOf(drops); }
+    public List<Drop> exclusiveDrops() { return List.copyOf(exclusiveDrops); }
 }

@@ -11,6 +11,8 @@ import net.swofty.commons.ServiceType;
 import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.type.crystalhollows.boss.CrystalHollowsBossSpawner;
 import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
+import net.swofty.type.crystalhollows.lifecycle.CrystalHollowsLobby;
+import net.swofty.type.crystalhollows.redis.RedisIsLobbyJoinable;
 import net.swofty.type.crystalhollows.tab.CrystalHollowsInfoModule;
 import net.swofty.type.generic.SkyBlockTypeLoader;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
@@ -19,6 +21,8 @@ import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.crystalhollows.HeatService;
+import net.swofty.type.skyblockgeneric.crystalhollows.HollowsSpawnProtection;
+import net.swofty.type.skyblockgeneric.user.AreaSidebar;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import org.jetbrains.annotations.Nullable;
@@ -45,6 +49,9 @@ public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
     public void afterInitialize(MinecraftServer server) {
         CrystalHollowsLayout.generate();
         HeatService.start();
+        HollowsSpawnProtection.start();
+        CrystalHollowsLobby.start();
+        AreaSidebar.registerDetail(CrystalHollowsSidebar::detail);
         CrystalHollowsBossSpawner.start();
     }
 
@@ -91,7 +98,7 @@ public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<RedisMessageHandler<?, ?>> getProxyHandlers() {
-        return List.of();
+        return List.of(new RedisIsLobbyJoinable());
     }
 
     @Override

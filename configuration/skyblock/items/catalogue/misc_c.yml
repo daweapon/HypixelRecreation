@@ -3312,12 +3312,44 @@ items:
             result:
               type: JACOBS_PARTICIPATION_MEDAL
               amount: 1
+  - id: AMBER_CRYSTAL
+    material: paper
+    name: "Amber Crystal"
+    rarity: SPECIAL
+    unavailable: "The Goblin Queen's Den claim point needs the Crystal Hollows world, which isn't built"
+    source: "Claimed in the Goblin Queen's Den (Goblin Holdout) while covered in King Yolkar's scent"
+    lore:
+      - "§7Energetic crystal found deep in the"
+      - "§5Crystal Hollows§7."
+      - ""
+      - "§7Some say that it can be infused with"
+      - "§dgemstones§7, and it is rumored to"
+      - "§7unlock §etreasure§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/amber_crystal
+  - id: AMETHYST_CRYSTAL
+    material: paper
+    name: "Amethyst Crystal"
+    rarity: SPECIAL
+    unavailable: "The Jungle Temple parkour and crystal claim need the Crystal Hollows world, which isn't built"
+    source: "Claimed at the end of the Jungle Temple parkours with an active Jungle Key"
+    lore:
+      - "§7Energetic crystal found deep in the"
+      - "§5Crystal Hollows§7."
+      - ""
+      - "§7Some say that it can be infused with"
+      - "§dgemstones§7, and it is rumored to"
+      - "§7unlock §etreasure§7."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/amethyst_crystal
   - id: JADE_CRYSTAL
     material: paper
     name: "Jade Crystal"
     rarity: SPECIAL
-    unavailable: "Not a standalone obtainable item"
-    source: "Heart of the Mountain achievement (Keepers in the Mines of Divan)"
+    unavailable: "The Keepers hand it over once the four Scavenged Items are turned in, but the Metal Detector digging that finds them isn't built"
+    source: "Keepers of Gold, Emerald, Diamond and Lapis in the Mines of Divan, once all four Scavenged Items are turned in"
     lore:
       - "§7Energetic crystal found deep in the"
       - "§5Crystal Hollows§7."

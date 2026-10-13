@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.crystalhollows.mob;
 
 import lombok.NonNull;
 import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.damage.Damage;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.entity.ai.target.LastEntityDamagerTarget;
@@ -16,6 +17,8 @@ import net.swofty.type.skyblockgeneric.entity.mob.ai.ClosestEntityRegionTarget;
 import net.swofty.type.skyblockgeneric.entity.mob.ai.MeleeAttackWithinRegionGoal;
 import net.swofty.type.skyblockgeneric.entity.mob.ai.RandomRegionStrollGoal;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.loottable.LootAffector;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.swofty.type.skyblockgeneric.region.RegionType;
@@ -24,7 +27,9 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class CrystalHollowsMob extends BestiaryMob {
@@ -119,6 +124,62 @@ public abstract class CrystalHollowsMob extends BestiaryMob {
                 return CalculationMode.CALCULATE_INDIVIDUAL;
             }
         };
+    }
+
+    @Override
+    public void tick(long time) {
+        super.tick(time);
+        if (!isDead() && getInstance() != null) onAiTick((int) getAliveTicks());
+    }
+
+    protected void onAiTick(int ticks) {
+    }
+
+    protected void onHitBy(SkyBlockPlayer player) {
+    }
+
+    protected Optional<SkyBlockPlayer> nearestPlayer(double range) {
+        if (getInstance() == null) return Optional.empty();
+        return getInstance().getNearbyEntities(getPosition(), range).stream()
+                .filter(entity -> entity instanceof SkyBlockPlayer player && !player.isDead())
+                .map(entity -> (SkyBlockPlayer) entity)
+                .min(java.util.Comparator.comparingDouble(player -> player.getPosition().distanceSquared(getPosition())));
+    }
+
+    @Override
+    public boolean damage(@NotNull Damage damage) {
+        boolean hurt = super.damage(damage);
+        if (hurt && damage.getAttacker() instanceof SkyBlockPlayer player) onHitBy(player);
+        return hurt;
+    }
+
+    @Override
+    public void kill() {
+        super.kill();
+        if (!(getLastDamageSource() != null && getLastDamageSource().getAttacker() instanceof SkyBlockPlayer player)) return;
+        rollExclusiveDrops(player);
+    }
+
+    private void rollExclusiveDrops(SkyBlockPlayer player) {
+        List<CrystalHollowsMobSpec.Drop> exclusive = spec().exclusiveDrops();
+        if (exclusive.isEmpty()) return;
+        List<ExclusiveEntry> entries = new ArrayList<>();
+        double taken = 0;
+        for (CrystalHollowsMobSpec.Drop drop : exclusive) {
+            double chance = LootAffector.MAGIC_FIND.getAffector().apply(player, drop.chance(), this);
+            entries.add(new ExclusiveEntry(drop, chance));
+            taken += chance;
+        }
+        entries.add(new ExclusiveEntry(null, Math.max(0, 100 - taken)));
+        ExclusiveEntry picked = LootRoll.pick(player.getUuid(), entries,
+                entry -> entry.drop() == null ? null : entry.drop().item(), ExclusiveEntry::weight,
+                ThreadLocalRandom.current());
+        if (picked.drop() == null) return;
+        awardDrop(player, picked.drop().item(),
+                new SkyBlockLootTable.LootRecord(picked.drop().item(), picked.drop().min(), picked.drop().chance()));
+    }
+
+    private record ExclusiveEntry(CrystalHollowsMobSpec.Drop drop, double weight) {
     }
 
     @Override

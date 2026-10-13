@@ -163,6 +163,7 @@ public final class FishingService {
         SkyBlockRegion region = player.getRegion();
         payload = PetEvents.fishCaught(player, payload, region == null ? null : region.getType().name(), context);
         payload.apply(new CatchAwardContext(player, rod, hook.getSpawnPosition()));
+        net.swofty.type.skyblockgeneric.crystalhollows.FairyGrottoFishing.onCatch(player, region == null ? null : region.getType(), rodMedium(rod));
         GatheringPetDrops.fishCaught(player, rodMedium(rod), payload);
 
         if (!(payload instanceof CatchPayload.SeaCreature) && payload.skillXp() > 0) {

@@ -1,4 +1,4 @@
-package net.swofty.type.dwarvenmines.commission;
+package net.swofty.type.skyblockgeneric.commission;
 
 import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-// Holds the pools of available Dwarven Mines commissions and manages generating/replacing a player's active ones.
+// Holds the pools of available Dwarven Mines and Crystal Hollows commissions and manages generating/replacing a player's active ones.
 public class Commissions {
 	public static List<Commission> CONSISTENT = List.of(
 
@@ -127,6 +127,31 @@ public class Commissions {
 			)
 	);
 
+	public static List<Commission> HOLLOWS = List.of(
+			hollows("Amber Gemstone Collector", ObjectiveType.COLLECT, Objective.BlockTarget.GEM_AMBER, 1000, null, false),
+			hollows("Amethyst Gemstone Collector", ObjectiveType.COLLECT, Objective.BlockTarget.GEM_AMETHYST, 1000, null, false),
+			hollows("Jade Gemstone Collector", ObjectiveType.COLLECT, Objective.BlockTarget.GEM_JADE, 1000, null, false),
+			hollows("Ruby Gemstone Collector", ObjectiveType.COLLECT, Objective.BlockTarget.GEM_RUBY, 1000, null, false),
+			hollows("Sapphire Gemstone Collector", ObjectiveType.COLLECT, Objective.BlockTarget.GEM_SAPPHIRE, 1000, null, false),
+			hollows("Topaz Gemstone Collector", ObjectiveType.COLLECT, Objective.BlockTarget.GEM_TOPAZ, 1000, null, false),
+			hollows("Automaton Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_AUTOMATON, 13, RegionType.PRECURSOR_REMNANTS, false),
+			hollows("Sludge Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_SLUDGE, 25, RegionType.JUNGLE, false),
+			hollows("Team Treasurite Member Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_TREASURITE_MEMBER, 13, RegionType.MITHRIL_DEPOSITS, false),
+			hollows("Hollows Goblin Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_GOBLIN, 13, RegionType.GOBLIN_HOLDOUT, false),
+			hollows("Yog Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_YOG, 13, RegionType.MAGMA_FIELDS, false),
+			hollows("Chest Looter", ObjectiveType.OPEN, Objective.BlockTarget.CHEST, 3, null, false),
+			hollows("Thyst Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_THYST, 5, RegionType.JUNGLE, false),
+			hollows("Hard Stone Miner", ObjectiveType.MINE, Objective.BlockTarget.HARD_STONE, 1000, null, false),
+			hollows("Boss Corleone Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_BOSS_CORLEONE, 1, RegionType.MITHRIL_DEPOSITS, true)
+	);
+
+	private static Commission hollows(String name, ObjectiveType type, Objective.BlockTarget target, int amount,
+									 RegionType region, boolean crystalGroup) {
+		return new Commission(name, CommissionCategory.CONSISTENT,
+				new Objective(type, target, amount, region == null ? LocationSelector.any() : LocationSelector.of(region), EventType.NONE),
+				false, CommissionZone.CRYSTAL_HOLLOWS, crystalGroup);
+	}
+
 	public static List<Commission> SITUATIONAL = List.of(
 			new Commission("Goblin Raid Slayer", CommissionCategory.SITUATIONAL,
 					new Objective(ObjectiveType.SLAY, Objective.BlockTarget.GOBLIN, 20, LocationSelector.any(), EventType.GOBLIN_RAID),
@@ -203,31 +228,46 @@ public class Commissions {
 	}
 
 	public static void generateCommissions(SkyBlockPlayer player) {
-		DatapointCommissions.PlayerCommissionData data = getCommissionData(player);
+		generateCommissions(player, CommissionZone.DWARVEN_MINES);
+	}
 
-		data.getActiveCommissions().clear();
+	public static void generateCommissions(SkyBlockPlayer player, CommissionZone zone) {
+		DatapointCommissions.PlayerCommissionData data = getCommissionData(player);
+		List<DatapointCommissions.ActiveCommission> active = zone.active(data);
+
+		active.clear();
 		int slots = getCommissionSlots(player);
 		List<String> usedNames = new ArrayList<>();
 
 		for (int i = 0; i < slots; i++) {
 			Commission commission;
 
-			if (i % 2 == 0) {
-				commission = selectRandomCommission(consistentPool(player), usedNames);
-			} else {
-				commission = selectRandomCommission(SITUATIONAL, usedNames);
-				if (commission == null) {
-					commission = selectRandomCommission(consistentPool(player), usedNames);
-				}
-			}
+			commission = pick(player, zone, i, usedNames);
 
 			if (commission != null) {
 				usedNames.add(commission.name);
-				data.getActiveCommissions().add(new DatapointCommissions.ActiveCommission(commission.name));
+				active.add(new DatapointCommissions.ActiveCommission(commission.name));
 			}
 		}
 
 		saveCommissionData(player, data);
+	}
+
+	private static Commission pick(SkyBlockPlayer player, CommissionZone zone, int slotIndex, List<String> usedNames) {
+		if (zone == CommissionZone.CRYSTAL_HOLLOWS) {
+			List<Commission> pool = slotIndex % 2 == 0 ? hollowsNonCrystalPool() : HOLLOWS;
+			Commission picked = selectRandomCommission(pool, usedNames);
+			return picked != null ? picked : selectRandomCommission(HOLLOWS, usedNames);
+		}
+		if (slotIndex % 2 == 0) {
+			return selectRandomCommission(consistentPool(player), usedNames);
+		}
+		Commission picked = selectRandomCommission(SITUATIONAL, usedNames);
+		return picked != null ? picked : selectRandomCommission(consistentPool(player), usedNames);
+	}
+
+	private static List<Commission> hollowsNonCrystalPool() {
+		return HOLLOWS.stream().filter(commission -> !commission.crystalGroup).toList();
 	}
 
 	public static List<Commission> consistentPool(SkyBlockPlayer player) {
@@ -267,17 +307,25 @@ public class Commissions {
 		for (Commission c : TUTORIAL) {
 			if (c.name.equals(name)) return c;
 		}
+		for (Commission c : HOLLOWS) {
+			if (c.name.equals(name)) return c;
+		}
 		return null;
 	}
 
 	public static boolean needsGeneration(SkyBlockPlayer player) {
+		return needsGeneration(player, CommissionZone.DWARVEN_MINES);
+	}
+
+	public static boolean needsGeneration(SkyBlockPlayer player, CommissionZone zone) {
 		DatapointCommissions.PlayerCommissionData data = getCommissionData(player);
-		if (data.getActiveCommissions().isEmpty()) {
+		List<DatapointCommissions.ActiveCommission> active = zone.active(data);
+		if (active.isEmpty()) {
 			return true;
 		}
 
 		boolean allCompleted = true;
-		for (DatapointCommissions.ActiveCommission ac : data.getActiveCommissions()) {
+		for (DatapointCommissions.ActiveCommission ac : active) {
 			if (!ac.isCompleted()) {
 				allCompleted = false;
 				break;
@@ -302,26 +350,25 @@ public class Commissions {
 	}
 
 	public static void replaceCommissionAt(SkyBlockPlayer player, int slotIndex) {
+		replaceCommissionAt(player, slotIndex, CommissionZone.DWARVEN_MINES);
+	}
+
+	public static void replaceCommissionAt(SkyBlockPlayer player, int slotIndex, CommissionZone zone) {
 		DatapointCommissions.PlayerCommissionData data = getCommissionData(player);
-		if (slotIndex < 0 || slotIndex >= data.getActiveCommissions().size()) return;
+		List<DatapointCommissions.ActiveCommission> active = zone.active(data);
+		if (slotIndex < 0 || slotIndex >= active.size()) return;
 
 		List<String> usedNames = new ArrayList<>();
-		for (DatapointCommissions.ActiveCommission ac : data.getActiveCommissions()) {
+		for (DatapointCommissions.ActiveCommission ac : active) {
 			if (ac != null && ac.getCommissionName() != null) usedNames.add(ac.getCommissionName());
 		}
 
-		Commission newComm;
-		if (slotIndex % 2 == 0) {
-			newComm = selectRandomCommission(consistentPool(player), usedNames);
-		} else {
-			newComm = selectRandomCommission(SITUATIONAL, usedNames);
-			if (newComm == null) newComm = selectRandomCommission(consistentPool(player), usedNames);
-		}
+		Commission newComm = pick(player, zone, slotIndex, usedNames);
 
 		if (newComm == null) {
-			data.getActiveCommissions().remove(slotIndex);
+			active.remove(slotIndex);
 		} else {
-			data.getActiveCommissions().set(slotIndex, new DatapointCommissions.ActiveCommission(newComm.name));
+			active.set(slotIndex, new DatapointCommissions.ActiveCommission(newComm.name));
 		}
 
 		saveCommissionData(player, data);

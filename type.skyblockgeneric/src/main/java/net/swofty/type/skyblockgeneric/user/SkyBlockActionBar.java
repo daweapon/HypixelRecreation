@@ -79,6 +79,7 @@ public class SkyBlockActionBar {
         MANA("mana"),
         COLD("cold"),
         HEAT("heat"),
+        PROTECTION("protection"),
         ABILITY_CHARGE("ability_charge"),
         ;
 

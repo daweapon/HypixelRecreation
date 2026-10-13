@@ -7,6 +7,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoDamageProtection;
+import net.swofty.type.skyblockgeneric.crystalhollows.HollowsSpawnProtection;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.island.VisitManager;
 
@@ -17,7 +18,8 @@ public class ActionAnimateEntityDamage implements HypixelEventClass {
     @PhasedEvent(node = EventNodes.ENTITY, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
     public void run(EntityDamageEvent event) {
         if (event.getEntity() instanceof SkyBlockPlayer player
-                && (VisitManager.isVisiting(player.getUuid()) || DojoDamageProtection.isProtected(player))) {
+                && (VisitManager.isVisiting(player.getUuid()) || DojoDamageProtection.isProtected(player)
+                || HollowsSpawnProtection.isProtected(player))) {
             event.setCancelled(true);
             return;
         }

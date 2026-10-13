@@ -10,6 +10,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.crimson.CrimsonZoneTips;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsZoneTips;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.event.custom.PlayerRegionChangeEvent;
 import net.swofty.type.skyblockgeneric.region.RegionType;
@@ -204,6 +205,8 @@ public class ActionNewZoneDisplay implements HypixelEventClass {
             default -> {
                 Text[] crimsonTips = CrimsonZoneTips.of(event.getTo());
                 if (crimsonTips != null) onNewZone(player, event.getTo(), crimsonTips);
+                Text[] hollowsTips = CrystalHollowsZoneTips.of(event.getTo());
+                if (hollowsTips != null) onNewZone(player, event.getTo(), hollowsTips);
             }
         }
     }

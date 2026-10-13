@@ -1,4 +1,4 @@
-package net.swofty.type.dwarvenmines.gui;
+package net.swofty.type.skyblockgeneric.commission;
 
 import net.swofty.type.skyblockgeneric.hotm.HotmPowder;
 import net.swofty.type.skyblockgeneric.hotm.HotmService;
@@ -13,10 +13,6 @@ import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.loottable.RareDropAward;
-import net.swofty.type.dwarvenmines.commission.Commission;
-import net.swofty.type.dwarvenmines.commission.CommissionMilestone;
-import net.swofty.type.dwarvenmines.commission.CommissionReward;
-import net.swofty.type.dwarvenmines.commission.Commissions;
 import net.swofty.type.generic.gui.inventory.HypixelInventoryGUI;
 import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.inventory.item.GUIClickableItem;
@@ -32,11 +28,18 @@ import java.util.List;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.user.pets.PetEvents;
 
-// GUI showing a player's active Dwarven Mines commissions and letting them claim completed rewards.
+// GUI showing a player's active commissions for one zone and letting them claim completed rewards.
 public class GUICommisions extends HypixelInventoryGUI {
 
+	private final CommissionZone zone;
+
 	public GUICommisions() {
+		this(CommissionZone.DWARVEN_MINES);
+	}
+
+	public GUICommisions(CommissionZone zone) {
 		super("Commissions", InventoryType.CHEST_4_ROW);
+		this.zone = zone;
 	}
 
 	@Override
@@ -47,15 +50,15 @@ public class GUICommisions extends HypixelInventoryGUI {
 		DatapointCommissions.PlayerCommissionData commissionData = Commissions.getCommissionData(player);
 		commissionData.checkAndResetDaily();
 
-		if (Commissions.needsGeneration(player)) {
-			Commissions.generateCommissions(player);
+		if (Commissions.needsGeneration(player, zone)) {
+			Commissions.generateCommissions(player, zone);
 			commissionData = Commissions.getCommissionData(player); // refresh
 		}
 
 		int slotCount = Commissions.getCommissionSlots(player);
 		int[] slots = Commissions.getGuiSlots(slotCount);
 
-		List<DatapointCommissions.ActiveCommission> activeCommissions = commissionData.getActiveCommissions();
+		List<DatapointCommissions.ActiveCommission> activeCommissions = zone.active(commissionData);
 
 		DatapointHOTM.PlayerHOTMData hotmData = player.getSkyblockDataHandler()
 				.get(SkyBlockDataHandler.Data.HOTM, DatapointHOTM.class).getValue();
@@ -84,7 +87,9 @@ public class GUICommisions extends HypixelInventoryGUI {
 						boolean isHotmMaxed = hotmData.isMaxed();
 						boolean isDailyBonus = commissionData.hasDailyBonus();
 
-						CommissionReward reward = commission.isGlacite()
+						CommissionReward reward = zone == CommissionZone.CRYSTAL_HOLLOWS
+								? CommissionReward.calculateHollows(hotmTier, isHotmMaxed, isDailyBonus)
+								: commission.isGlacite()
 								? CommissionReward.calculateGlacite(hotmTier, isHotmMaxed, isDailyBonus)
 								: CommissionReward.calculate(hotmTier, isHotmMaxed, isDailyBonus);
 
@@ -99,6 +104,10 @@ public class GUICommisions extends HypixelInventoryGUI {
 
 						if (reward.glacitePowder() > 0) {
 							HotmService.gainPowder(player, HotmPowder.GLACITE, reward.glacitePowder());
+						}
+
+						if (reward.gemstonePowder() > 0) {
+							HotmService.gainPowder(player, HotmPowder.GEMSTONE, reward.gemstonePowder());
 						}
 
 						if (HotmService.claimDailyGrind(player)) {
@@ -116,8 +125,8 @@ public class GUICommisions extends HypixelInventoryGUI {
 						commissionData.completeCommission();
 						Commissions.saveCommissionData(player, commissionData);
 						SkyBlockAchievementSync.syncCommissions(player);
-						Commissions.replaceCommissionAt(player, index);
-						new GUICommisions().open(player);
+						Commissions.replaceCommissionAt(player, index, zone);
+						new GUICommisions(zone).open(player);
 					}
 				}
 
@@ -139,7 +148,9 @@ public class GUICommisions extends HypixelInventoryGUI {
 
 					lore.add(Text.empty());
 					lore.add(Text.of("<9>Rewards"));
-					lore.addAll(commission.isGlacite()
+					lore.addAll(zone == CommissionZone.CRYSTAL_HOLLOWS
+							? CommissionReward.getHollowsRewardLore(hotmTier, isHotmMaxed, willGetDailyBonus)
+							: commission.isGlacite()
 							? CommissionReward.getGlaciteRewardLore(hotmTier, isHotmMaxed, willGetDailyBonus)
 							: CommissionReward.getRewardLore(hotmTier, isHotmMaxed, willGetDailyBonus));
 
@@ -166,7 +177,7 @@ public class GUICommisions extends HypixelInventoryGUI {
 		set(new GUIClickableItem(30) {
 			@Override
 			public void run(InventoryPreClickEvent e, HypixelPlayer player) {
-				new GUICommissionMilestones().open(player);
+				new GUICommissionMilestones(zone).open(player);
 			}
 
 			@Override

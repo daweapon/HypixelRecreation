@@ -226,6 +226,10 @@ public final class HotmService {
         double bonusPercent = perkValue(player, "powder_buff");
         if (skyMallBuff(player) == HotmSkyMallBuff.POWDER) bonusPercent += 15;
         bonusPercent += net.swofty.type.skyblockgeneric.item.tool.ToolPassives.heldPowderPercent(player, powder);
+        if (net.swofty.type.skyblockgeneric.fiesta.MiningFiesta.appliesTo(player)) {
+            bonusPercent += net.swofty.type.skyblockgeneric.carnival.Carnivals.perkValue(player,
+                    net.swofty.type.skyblockgeneric.carnival.CarnivalPerk.POWDER_HOARDER);
+        }
         long amount = Math.round(base * (1 + bonusPercent / 100));
         if (powder == HotmPowder.MITHRIL) amount = GatheringPetBonuses.mithrilPowder(player, amount);
         else amount = MiningPetBonuses.powder(player, powder, amount);

@@ -18,7 +18,8 @@ public class MobAutomaton71 extends CrystalHollowsMob implements RegionPopulator
             .rewards(106, 23, 78)
             .types(MobType.CONSTRUCT)
             .drops(
-                    Drop.always(ItemType.ROUGH_SAPPHIRE_GEM, 10, 18),
+                    Drop.always(ItemType.ROUGH_SAPPHIRE_GEM, 10, 18))
+            .exclusiveDrops(
                     Drop.single(ItemType.ELECTRON_TRANSMITTER, 2),
                     Drop.single(ItemType.FTX_3070, 2),
                     Drop.single(ItemType.ROBOTRON_REFLECTOR, 2),

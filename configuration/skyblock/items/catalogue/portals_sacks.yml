@@ -389,7 +389,7 @@ items:
     lore:
       - "§7Island: §aCrystal Hollows"
       - "§7Teleport: §eEntrance"
-    unavailable: "Needs the Crystal Hollows island"
+    unavailable: "Removed from the game in 2023: the Entrance fast travel unlocks on first visit to the Crystal Hollows"
     source: "Forged at The Forge (see forge/recipes.yml)"
     components:
       - id: TRAVEL_SCROLL

@@ -111,7 +111,7 @@ public class MobGoblin extends BestiaryMob implements RegionPopulator, MobPlayer
 			@Override
 			public @NonNull List<LootRecord> getLootTable() {
 				return List.of(
-						new LootRecord(ItemType.GOBLIN_EGG, 1, 100)
+						new LootRecord(ItemType.GOBLIN_EGG, 1, 1)
 				);
 			}
 

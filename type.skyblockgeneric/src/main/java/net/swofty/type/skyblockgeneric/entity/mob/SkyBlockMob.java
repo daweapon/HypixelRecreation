@@ -377,24 +377,26 @@ public abstract class SkyBlockMob extends EntityCreature {
         }
 
         for (ItemType itemType : drops.keySet()) {
-            SkyBlockLootTable.LootRecord record = drops.get(itemType);
+            awardDrop(player, itemType, drops.get(itemType));
+        }
+    }
 
-            if (SkyBlockLootTable.LootRecord.isNone(record)) continue;
+    protected void awardDrop(SkyBlockPlayer player, ItemType itemType, SkyBlockLootTable.LootRecord record) {
+        if (SkyBlockLootTable.LootRecord.isNone(record)) return;
 
-            int amount = GatheringPetBonuses.squidDropAmount(player, this,
-                    CombatPetHooks.collectionDropAmount(player, itemType, record.getAmount()));
-            SkyBlockItem item = createDrop(itemType, amount);
-            ItemType droppedItemLinker = item.getAttributeHandler().getPotentialType();
-            if (record.getChancePercent() < RARE_DROP_CHANCE_PERCENT) announceRareDrop(player, item);
+        int amount = GatheringPetBonuses.squidDropAmount(player, this,
+                CombatPetHooks.collectionDropAmount(player, itemType, record.getAmount()));
+        SkyBlockItem item = createDrop(itemType, amount);
+        ItemType droppedItemLinker = item.getAttributeHandler().getPotentialType();
+        if (record.getChancePercent() < RARE_DROP_CHANCE_PERCENT) announceRareDrop(player, item);
 
-            if (player.canInsertItemIntoSacks(droppedItemLinker, amount)) {
-                player.getSackItems().increase(droppedItemLinker, amount);
-            } else if (player.getSkyBlockExperience().getLevel().asInt() >= 6) {
-                player.addAndUpdateItem(item);
-            } else {
-                ItemDrops.dropAt(new DroppedItemEntityImpl(item, player),
-                        getInstance(), getPosition().add(0, 0.5, 0));
-            }
+        if (player.canInsertItemIntoSacks(droppedItemLinker, amount)) {
+            player.getSackItems().increase(droppedItemLinker, amount);
+        } else if (player.getSkyBlockExperience().getLevel().asInt() >= 6) {
+            player.addAndUpdateItem(item);
+        } else {
+            ItemDrops.dropAt(new DroppedItemEntityImpl(item, player),
+                    getInstance(), getPosition().add(0, 0.5, 0));
         }
     }
 

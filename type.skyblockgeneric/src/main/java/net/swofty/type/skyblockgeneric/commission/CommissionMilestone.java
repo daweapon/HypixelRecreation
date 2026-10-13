@@ -1,4 +1,4 @@
-package net.swofty.type.dwarvenmines.commission;
+package net.swofty.type.skyblockgeneric.commission;
 
 import lombok.Getter;
 import net.swofty.commons.text.Text;

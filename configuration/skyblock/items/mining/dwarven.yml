@@ -14,7 +14,12 @@ items:
     material: egg
     name: "Goblin Egg"
     rarity: RARE
+    lore:
+      - "\xA77\xA7oWhat came first the goblin or the"
+      - "\xA77\xA7oegg?"
     components:
+      - id: INTERACTABLE
+        handler_id: GOBLIN_EGG_THROW
       - id: SELLABLE
         value: 421.0
       - id: ITEM_MODEL
@@ -363,8 +368,7 @@ items:
     material: paper
     name: "Yoggie"
     rarity: UNCOMMON
-    unavailable: "Needs the Crystal Hollows Magma Fields (not built)"
-    source: "Dropped by Yogs and found in treasure chests in the Magma Fields of the Crystal Hollows"
+    source: "Dropped by Yogs and Bal in the Magma Fields of the Crystal Hollows"
     lore:
       - "§7Harvested from the core of Yogs."
       - "§7Used to upgrade Magma equipment."

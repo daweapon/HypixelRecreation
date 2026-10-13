@@ -1,4 +1,4 @@
-package net.swofty.type.dwarvenmines.commission;
+package net.swofty.type.skyblockgeneric.commission;
 
 // Special timed events in the Dwarven Mines that some commissions can require participation in.
 public enum EventType {

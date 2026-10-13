@@ -46,14 +46,14 @@ public enum SkyBlockXPSource {
     FAST_TRAVELS_UNLOCKED(Group.CORE, null, 360, Availability.LIVE, Material.MAP),
 
     // ----- Event Tasks (1,439 XP) -----
-    MINING_FIESTA(Group.EVENT, null, 200, Availability.NOT_IN_GAME, Material.IRON_PICKAXE),
+    MINING_FIESTA(Group.EVENT, null, 200, Availability.LIVE, Material.IRON_PICKAXE),
     FISHING_FESTIVAL(Group.EVENT, null, 100, Availability.LIVE, Material.FISHING_ROD),
     HARVEST_FEAST_SEASONING(Group.EVENT, null, 100, Availability.NOT_IN_GAME, Material.PUMPKIN_PIE),
     SPOOKY_FESTIVAL(Group.EVENT, null, 225, Availability.LIVE, Material.JACK_O_LANTERN),
     HOPPITYS_HUNT(Group.EVENT, null, 285, Availability.LIVE, Material.COCOA_BEANS),
     JACOBS_FARMING_CONTEST(Group.EVENT, null, 130, Availability.LIVE, Material.GOLDEN_HOE),
     FISHING_FESTIVAL_PERK_SHOP(Group.EVENT, null, 49, Availability.LIVE, Material.COD),
-    MINING_FIESTA_PERK_SHOP(Group.EVENT, null, 49, Availability.NOT_IN_GAME, Material.RAW_IRON),
+    MINING_FIESTA_PERK_SHOP(Group.EVENT, null, 49, Availability.LIVE, Material.RAW_IRON),
     MYTHOLOGICAL_RITUAL_PERK_SHOP(Group.EVENT, null, 49, Availability.LIVE, Material.FEATHER),
     SPOOKY_FESTIVAL_PERK_SHOP(Group.EVENT, null, 49, Availability.LIVE, Material.PUMPKIN),
     SEASON_OF_JERRY_PERK_SHOP(Group.EVENT, null, 49, Availability.LIVE, Material.SNOWBALL),
@@ -373,6 +373,11 @@ public enum SkyBlockXPSource {
                     "event!",
                     "Per 50 Sharks Killed: <b>+1 XP",
                     "<8>(Caps at 5,000 Sharks killed!)");
+            case MINING_FIESTA -> List.of(
+                    "Gain XP by mining ores during the",
+                    "<6>Mining Fiesta<7>!",
+                    "Per 5,000 Breaking Power mined: <b>+1 XP",
+                    "<8>(Caps at 1,000,000!)");
             case COLLECT_MOB_TYPES -> List.of(
                     "Gain XP by collecting all of the Mob",
                     "Types!",

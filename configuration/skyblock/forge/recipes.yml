@@ -1241,8 +1241,8 @@ recipes:
     coins: 25000
     inputs:
       ENCHANTED_ENDER_PEARL: 16
-      MITHRIL_ORE: 48
-      TITANIUM_ORE: 80
+      MITHRIL: 48
+      TITANIUM: 80
   - id: "BEACON_2"
     name: "Beacon II"
     category: OTHER
@@ -1310,7 +1310,7 @@ recipes:
     inputs:
       GOBLIN_OMELETTE: 1
       FLAWLESS_SAPPHIRE_GEM: 1
-      GOBLIN_EGG_BLUE: 96
+      BLUE_GOBLIN_EGG: 96
   - id: "GOBLIN_OMELETTE_PESTO"
     name: "Pesto Goblin Omelette"
     category: OTHER
@@ -1321,7 +1321,7 @@ recipes:
     coins: 0
     inputs:
       FLAWLESS_JADE_GEM: 1
-      GOBLIN_EGG_GREEN: 96
+      GREEN_GOBLIN_EGG: 96
       GOBLIN_OMELETTE: 1
   - id: "GOBLIN_OMELETTE_SPICY"
     name: "Spicy Goblin Omelette"
@@ -1334,7 +1334,7 @@ recipes:
     inputs:
       FLAWLESS_RUBY_GEM: 1
       GOBLIN_OMELETTE: 1
-      GOBLIN_EGG_RED: 96
+      RED_GOBLIN_EGG: 96
   - id: "GOBLIN_OMELETTE_SUNNY_SIDE"
     name: "Sunny Side Goblin Omelette"
     category: OTHER
@@ -1344,7 +1344,7 @@ recipes:
     amount: 1
     coins: 0
     inputs:
-      GOBLIN_EGG_YELLOW: 96
+      YELLOW_GOBLIN_EGG: 96
       FLAWLESS_TOPAZ_GEM: 1
       GOBLIN_OMELETTE: 1
   - id: "BEACON_5"

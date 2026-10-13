@@ -68,7 +68,7 @@ items:
     components:
       - id: PET
         pet_name: "Bal"
-        source: { text: "Bal", active: false }
+        source: "Bal"
         pet_type: MINING
         rarities: [EPIC, LEGENDARY]
         skull_texture: c469ba2047122e0a2de3c7437ad3dd5d31f1ac2d27abde9f8841e1d92a8c5b75
@@ -348,7 +348,7 @@ items:
     components:
       - id: PET
         pet_name: "Goblin"
-        source: { text: "The Forge", active: false }
+        source: "The Forge"
         pet_type: MINING
         rarities: [LEGENDARY]
         skull_texture: 7309d8dc35a638a04b915a3b15a1452ceeae0d7ea42bcdadb21b03046987515c
@@ -461,7 +461,7 @@ items:
     components:
       - id: PET
         pet_name: "Mole"
-        source: { text: "The Forge", active: false }
+        source: "The Forge"
         pet_type: MINING
         rarities: [LEGENDARY]
         skull_texture: 727baaafc09978d4bda73e16afdde85ec13b0f95ad989524c5fcaa717cf06b4a
@@ -553,7 +553,7 @@ items:
     components:
       - id: PET
         pet_name: "Scatha"
-        source: { text: "Scatha", active: false }
+        source: "Scatha"
         pet_type: MINING
         rarities: [RARE, EPIC, LEGENDARY]
         skull_texture: df03ad96092f3f789902436709cdf69de6b727c121b3c2daef9ffa1ccaed186c

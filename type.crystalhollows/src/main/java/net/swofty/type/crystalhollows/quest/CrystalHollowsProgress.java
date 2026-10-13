@@ -120,10 +120,10 @@ public final class CrystalHollowsProgress {
     }
 
     public enum Keeper {
-        LAPIS("Lapis", "<9>", "SCAVENGED_LAPIS_SWORD", "Lapis Sword"),
-        GOLD("Gold", "<6>", "SCAVENGED_GOLDEN_HAMMER", "Golden Hammer"),
-        DIAMOND("Diamond", "<b>", "SCAVENGED_DIAMOND_AXE", "Diamond Axe"),
-        EMERALD("Emerald", "<a>", "SCAVENGED_EMERALD_HAMMER", "Emerald Hammer");
+        LAPIS("Lapis", "<9>", "DWARVEN_LAPIS_SWORD", "Lapis Sword"),
+        GOLD("Gold", "<6>", "DWARVEN_GOLD_HAMMER", "Golden Hammer"),
+        DIAMOND("Diamond", "<b>", "DWARVEN_DIAMOND_AXE", "Diamond Axe"),
+        EMERALD("Emerald", "<a>", "DWARVEN_EMERALD_HAMMER", "Emerald Hammer");
 
         public final String displayName;
         public final String color;

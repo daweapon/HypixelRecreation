@@ -1,4 +1,4 @@
-package net.swofty.type.dwarvenmines.commission;
+package net.swofty.type.skyblockgeneric.commission;
 
 import net.swofty.type.skyblockgeneric.region.RegionType;
 

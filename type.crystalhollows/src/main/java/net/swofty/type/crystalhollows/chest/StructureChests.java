@@ -6,6 +6,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
 import net.swofty.type.skyblockgeneric.crystalhollows.TreasureLoot;
 import net.swofty.type.skyblockgeneric.crystalhollows.TreasurePool;
+import net.swofty.type.skyblockgeneric.commission.CommissionProgress;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.yaml.snakeyaml.Yaml;
 
@@ -74,5 +75,6 @@ public final class StructureChests {
         }
         Random lootRandom = new Random(CrystalHollowsLayout.seed() ^ spec.id().hashCode());
         TreasureLoot.open(player, spec.pool(), lootRandom, ThreadLocalRandom.current());
+        CommissionProgress.recordChestOpened(player);
     }
 }

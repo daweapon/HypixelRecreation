@@ -2,7 +2,13 @@ items:
   - id: BLUE_GOBLIN_EGG
     material: egg
     name: "Blue Goblin Egg"
-    rarity: COMMON
+    rarity: RARE
+    lore:
+      - "§7§oWhat came first the goblin or the"
+      - "§7§oegg?"
+    components:
+      - id: INTERACTABLE
+        handler_id: GOBLIN_EGG_THROW
   - id: BOB_OMB
     material: player_head
     name: "Bob Omb"
@@ -58,8 +64,12 @@ items:
         item_model: hypixel_skyblock:item/uncategorized/control_switch
   - id: DIVAN_ALLOY
     material: player_head
-    name: "Divan Alloy"
+    name: "Divan's Alloy"
     rarity: LEGENDARY
+    lore:
+      - "§7The legendary Divan explored where"
+      - "§7no other man has set foot, and came"
+      - "§7back with this incredibly rare alloy."
     components:
       - id: SKULL_HEAD
         texture: 8da414d29cc9ebbfc1cbdcd211eee4726d0676be262e9cb8eeffafd1fc380b14
@@ -70,6 +80,10 @@ items:
     material: player_head
     name: "Divan Fragment"
     rarity: EPIC
+    lore:
+      - "§7One of the greatest alloys naturally"
+      - "§7found in the Crystal Hollows, named"
+      - "§7after the first Dwarf to find them."
     components:
       - id: SKULL_HEAD
         texture: 633844f03c92d82503c9cd567a51fda47404fa53f216fad473f16ac83a97314f
@@ -112,6 +126,10 @@ items:
     material: player_head
     name: "Gemstone Mixture"
     rarity: RARE
+    lore:
+      - "§7A collection of finely treated"
+      - "§dGemstones §7held together by the"
+      - "§7sturdiest of §asticky §7substances."
     components:
       - id: SKULL_HEAD
         texture: 34d42f9c461cee1997b67bf3610c6411bf852b9e5db607bbf626527cfb42912c
@@ -120,7 +138,15 @@ items:
   - id: GREEN_GOBLIN_EGG
     material: egg
     name: "Green Goblin Egg"
-    rarity: COMMON
+    rarity: UNCOMMON
+    lore:
+      - "§7§oWhat came first the goblin or the"
+      - "§7§oegg?"
+    components:
+      - id: INTERACTABLE
+        handler_id: GOBLIN_EGG_THROW
+      - id: SELLABLE
+        value: 1000.0
   - id: HARD_STONE
     material: stone
     name: "Hard Stone"
@@ -205,7 +231,13 @@ items:
   - id: RED_GOBLIN_EGG
     material: egg
     name: "Red Goblin Egg"
-    rarity: COMMON
+    rarity: RARE
+    lore:
+      - "§7§oWhat came first the goblin or the"
+      - "§7§oegg?"
+    components:
+      - id: INTERACTABLE
+        handler_id: GOBLIN_EGG_THROW
   - id: ROBOTRON_REFLECTOR
     material: player_head
     name: "Robotron Reflector"
@@ -274,7 +306,13 @@ items:
   - id: YELLOW_GOBLIN_EGG
     material: egg
     name: "Yellow Goblin Egg"
-    rarity: COMMON
+    rarity: RARE
+    lore:
+      - "§7§oWhat came first the goblin or the"
+      - "§7§oegg?"
+    components:
+      - id: INTERACTABLE
+        handler_id: GOBLIN_EGG_THROW
   - id: CORLEONITE
     material: player_head
     name: "Corleonite"

@@ -23,6 +23,8 @@ public final class MayorPerkStatistics {
         if (onPublicIsland) {
             bonuses = addBase(bonuses, perks, Perk.MINING_XP_BUFF, ItemStatistic.MINING_WISDOM);
             bonuses = addBase(bonuses, perks, Perk.FISHING_XP_BUFF, ItemStatistic.FISHING_WISDOM);
+            bonuses = addBase(bonuses, perks, Perk.MINING_FIESTA, ItemStatistic.MINING_WISDOM);
+            bonuses = addBase(bonuses, perks, Perk.MINING_FIESTA, ItemStatistic.MINING_FORTUNE);
         }
         bonuses = addBase(bonuses, perks, Perk.MAGIC_XP_BOOST, ItemStatistic.ALCHEMY_WISDOM);
         bonuses = addBase(bonuses, perks, Perk.MAGIC_XP_BOOST, ItemStatistic.ENCHANTING_WISDOM);

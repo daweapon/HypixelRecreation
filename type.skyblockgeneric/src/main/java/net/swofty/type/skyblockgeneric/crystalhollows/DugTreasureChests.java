@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.hotm.HotmPerk;
 import net.swofty.type.skyblockgeneric.hotm.HotmRegistry;
 import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
+import net.swofty.type.skyblockgeneric.commission.CommissionProgress;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.pets.PetAbilities;
 
@@ -108,6 +109,7 @@ public final class DugTreasureChests {
         chest.instance.setBlock(chest.point, chest.previous);
         player.sendMessage(Text.of("<a><l>CHEST LOCKPICKED"));
         TreasureLoot.open(player, chest.pool, ThreadLocalRandom.current(), ThreadLocalRandom.current());
+        CommissionProgress.recordChestOpened(player);
         var data = CrystalHollowsAccess.data(player);
         data.addCounter("treasure_chests_opened", 1);
         CrystalHollowsAccess.save(player, data);

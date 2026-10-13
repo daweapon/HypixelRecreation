@@ -962,7 +962,7 @@ items:
       mining_speed: 100
       mining_fortune: 25
       cold_resistance: 10
-    unavailable: "Needs the Shattered Locket item (not defined)"
+    unavailable: "The Shattered Locket ingredient only drops in the Glacite Mineshafts, which are excluded"
     source: "Forge (HotM 10, 7 days): 10 Divan Fragments + Perfect Plate + Shattered Locket"
     lore:
       - "§7Gemstones: §8[] []"

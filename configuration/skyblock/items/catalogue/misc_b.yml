@@ -1015,7 +1015,7 @@ items:
     material: diamond_axe
     name: "Scavenged Diamond Axe"
     rarity: SPECIAL
-    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    unavailable: "Metal Detector digging in the Mines of Divan isn't built"
     source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
     lore:
       - "§8Quest Item"
@@ -1026,7 +1026,7 @@ items:
     material: wooden_axe
     name: "Scavenged Emerald Hammer"
     rarity: SPECIAL
-    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    unavailable: "Metal Detector digging in the Mines of Divan isn't built"
     source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
     lore:
       - "§8Quest Item"
@@ -1037,7 +1037,7 @@ items:
     material: golden_axe
     name: "Scavenged Golden Hammer"
     rarity: SPECIAL
-    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    unavailable: "Metal Detector digging in the Mines of Divan isn't built"
     source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
     lore:
       - "§8Quest Item"
@@ -1048,7 +1048,7 @@ items:
     material: iron_axe
     name: "Scavenged Iron Hammer"
     rarity: SPECIAL
-    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    unavailable: "Needs the Spider's Den Trapped Spiders and Gold Mine anvil content, which isn't built"
     source: "Anvil combination of a Scavenged Golden Hammer and a Scavenged Emerald Hammer in the Gold Mine"
     lore:
       - "§7Strong enough to break the"
@@ -1060,7 +1060,7 @@ items:
     material: diamond_sword
     name: "Scavenged Lapis Sword"
     rarity: SPECIAL
-    unavailable: "The Mines of Divan Keepers quest and Metal Detector chests aren't built"
+    unavailable: "Metal Detector digging in the Mines of Divan isn't built"
     source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
     lore:
       - "§8Quest Item"

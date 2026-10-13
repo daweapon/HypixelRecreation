@@ -2,16 +2,13 @@ package net.swofty.type.dwarvenmines.events;
 
 import net.minestom.server.event.player.PlayerBlockBreakEvent;
 import net.minestom.server.item.Material;
-import net.swofty.type.dwarvenmines.commission.Commission;
-import net.swofty.type.dwarvenmines.commission.Commissions;
-import net.swofty.type.dwarvenmines.commission.Objective;
-import net.swofty.type.dwarvenmines.commission.ObjectiveType;
+import net.swofty.type.skyblockgeneric.commission.CommissionProgress;
+import net.swofty.type.skyblockgeneric.commission.Objective;
+import net.swofty.type.skyblockgeneric.commission.ObjectiveType;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
-import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
-import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCommissions;
 import net.swofty.type.skyblockgeneric.glacite.GlaciteOre;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
@@ -52,41 +49,6 @@ public class ActionPlayerCommissions implements HypixelEventClass {
 	}
 
 	public static void updateCommissionProgress(SkyBlockPlayer player, ObjectiveType type, Objective.BlockTarget target, int amount, RegionType regionType) {
-		SkyBlockDataHandler dataHandler = player.getSkyblockDataHandler();
-		DatapointCommissions.PlayerCommissionData commissionData = dataHandler.get(SkyBlockDataHandler.Data.COMMISSIONS, DatapointCommissions.class).getValue();
-
-		boolean anyUpdated = false;
-
-		for (DatapointCommissions.ActiveCommission activeCommission : commissionData.getActiveCommissions()) {
-			if (activeCommission.isCompleted()) continue;
-
-			Commission commission = Commissions.getCommissionByName(activeCommission.getCommissionName());
-			if (commission == null) continue;
-
-			// Check if this commission matches the action
-			if (commission.objective.type != type) continue;
-			if (commission.objective.target != target) continue;
-
-			if (!commission.objective.location.isAny() && regionType != null) {
-				if (!commission.objective.location.allows(regionType)) continue;
-			}
-
-			int newProgress = activeCommission.getProgress() + amount;
-			activeCommission.setProgress(newProgress);
-			anyUpdated = true;
-
-			if (newProgress >= commission.objective.amount) {
-				activeCommission.setCompleted(true);
-				onCommissionComplete(player, commission);
-			}
-		}
-
-		if (anyUpdated) {
-			Commissions.saveCommissionData(player, commissionData);
-		}
-	}
-
-	private static void onCommissionComplete(SkyBlockPlayer player, Commission commission) {
-		player.sendMessage("<a><l>{} </l><e>Commission Complete! Visit the King to claim your rewards!", commission.name);
+		CommissionProgress.update(player, type, target, amount, regionType);
 	}
 }

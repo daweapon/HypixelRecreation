@@ -382,8 +382,7 @@ items:
       - ""
       - "§7Changes the color of an armor piece"
       - "§7to §2#00A86B§7!"
-    unavailable: "Needs Crystal Hollows"
-    source: "1/500k per Crystal Nucleus run (0.0002%)"
+    source: "1/500k per Crystal Nucleus bundle roll (0.0002%)"
     components:
       - id: SKULL_HEAD
         texture: 8b215ff671f111e98d17a473fda8e5e9d0425ccd6e79426654ccb55f3f0cc652

@@ -62,7 +62,7 @@ class EssenceShopsTest {
         assertEquals(48_350 + 7_500, total(EssenceType.SAFARI));
     }
 
-    private static final java.util.Set<String> CODE_WIRED = java.util.Set.of("treasures_of_the_earth");
+    private static final java.util.Set<String> CODE_WIRED = java.util.Set.of("treasures_of_the_earth", "return_to_sender");
 
     @Test
     void wiredPerksCanBeBoughtAndTheRestSayWhyNot() {
