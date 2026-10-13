@@ -10,6 +10,7 @@ public final class VisitorText {
         return line.replace("{player}", player.getUsername())
                 .replace("{item}", "crops")
                 .replace("[number]", "many")
-                .replace("[player]", player.getUsername());
+                .replace("[player]", player.getUsername())
+                .replace("<playername>", player.getUsername());
     }
 }
