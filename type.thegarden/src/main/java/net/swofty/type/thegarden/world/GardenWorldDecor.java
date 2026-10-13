@@ -1,6 +1,8 @@
 package net.swofty.type.thegarden.world;
 
+import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.timer.TaskSchedule;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.SharedInstance;
 import net.minestom.server.tag.Tag;
@@ -50,8 +52,20 @@ public class GardenWorldDecor implements GardenPresence {
         VisitorService.tick(player);
         VisitorSlots.refresh(player.getUuid(), Gardens.profile(player).visitors());
         spawnInteractions(instance);
-        departed(player);
+        spawnHolograms(player, instance);
+        for (int seconds : new int[]{2, 6}) {
+            MinecraftServer.getSchedulerManager().buildTask(() -> {
+                try {
+                    if (player.isOnline() && instance.equals(player.getInstance())) spawnHolograms(player, instance);
+                } catch (RuntimeException exception) {
+                    exception.printStackTrace();
+                }
+            }).delay(TaskSchedule.seconds(seconds)).schedule();
+        }
+    }
 
+    private void spawnHolograms(SkyBlockPlayer player, SharedInstance instance) {
+        departed(player);
         List<ExternalPlayerHologram> spawned = new ArrayList<>();
         track(spawned, "Desk", () -> clickHologram(player, instance, DESK, "§aDesk"));
         track(spawned, "Visitor's Logbook", () -> clickHologram(player, instance, LOGBOOK, "§aVisitor's Logbook"));

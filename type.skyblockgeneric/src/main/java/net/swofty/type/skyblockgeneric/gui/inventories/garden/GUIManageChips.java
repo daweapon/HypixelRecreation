@@ -72,7 +72,7 @@ public class GUIManageChips extends StatelessView {
         }
     }
 
-    static ItemStack.Builder icon(GardenChip chip) {
+    public static ItemStack.Builder icon(GardenChip chip) {
         ItemType type = ItemType.get(chip.getItemId());
         return type == null ? ItemStack.builder(chip.getIcon()) : new SkyBlockItem(type).getDisplayItem();
     }
