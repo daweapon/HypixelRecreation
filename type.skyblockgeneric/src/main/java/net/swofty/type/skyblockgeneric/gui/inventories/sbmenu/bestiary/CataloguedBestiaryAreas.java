@@ -30,6 +30,11 @@ public final class CataloguedBestiaryAreas {
                 new CataloguedBestiaryMob.Family(mobId, displayName, bracket, maxTier, material, type))));
     }
 
+    public static List<BestiaryMob> placeholder(String mobId, String displayName, int bracket, int maxTier, MobType type, String texture) {
+        return List.of(CataloguedBestiaryMob.of(new CataloguedBestiaryMob.Family(
+                mobId, displayName, bracket, maxTier, new GUIMaterial(texture), type)));
+    }
+
     public static CataloguedFamily family(String mobId, String displayName, String description, int bracket, int maxTier, MobType type, Material icon) {
         GUIMaterial material = new GUIMaterial(icon);
         return new CataloguedFamily("<a>" + displayName, description, material, List.of(CataloguedBestiaryMob.of(

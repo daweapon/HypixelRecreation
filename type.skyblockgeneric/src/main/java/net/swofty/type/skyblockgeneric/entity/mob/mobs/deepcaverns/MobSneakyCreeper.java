@@ -130,7 +130,7 @@ public class MobSneakyCreeper extends BestiaryMob implements RegionPopulator {
 
 	@Override
 	public GUIMaterial getGuiMaterial() {
-		return new GUIMaterial(Material.CREEPER_HEAD);
+		return new GUIMaterial("a68224cf8ed4c03b457bf49beb6f544193679268b8421b01ffce6d27b25ac32d");
 	}
 
 	@Override

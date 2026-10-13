@@ -90,8 +90,8 @@ public enum BestiaryCategory {
         CREEPER("<a>Creeper", "Look out for their hiss!", new GUIMaterial(Material.CREEPER_HEAD), allLevels(IslandMobSpecies.CREEPER)),
         ENDERMAN("<a>Enderman", "Don't like making eye contact.", new GUIMaterial(Material.ENDER_PEARL), allLevels(IslandMobSpecies.ENDERMAN)),
         WITCH("<a>Witch", "Masters of alchemy.", new GUIMaterial(Material.POTION), allLevels(IslandMobSpecies.WITCH)),
-        BAT("<a>Bat", "Can be found hanging around.", new GUIMaterial(Material.BAT_SPAWN_EGG), CataloguedBestiaryAreas.placeholder("BAT", "Bat", 2, 5, MobType.AIRBORNE, Material.BAT_SPAWN_EGG)),
-        SLIME("<a>Slime", "World's loudest creatures.", new GUIMaterial(Material.SLIME_BALL), CataloguedBestiaryAreas.placeholder("SLIME", "Slime", 2, 5, MobType.CUBIC, Material.SLIME_BALL)),
+        BAT("<a>Bat", "Can be found hanging around.", new GUIMaterial("382fc3f71b41769376a9e92fe3adbaac3772b999b219c9d6b4680ba9983e527"), CataloguedBestiaryAreas.placeholder("BAT", "Bat", 2, 5, MobType.AIRBORNE, "382fc3f71b41769376a9e92fe3adbaac3772b999b219c9d6b4680ba9983e527")),
+        SLIME("<a>Slime", "World's loudest creatures.", new GUIMaterial("895aeec6b842ada8669f846d65bc49762597824ab944f22f45bf3bbb941abe6c"), CataloguedBestiaryAreas.placeholder("SLIME", "Slime", 2, 5, MobType.CUBIC, "895aeec6b842ada8669f846d65bc49762597824ab944f22f45bf3bbb941abe6c")),
         ;
 
         private static List<BestiaryMob> allLevels(IslandMobSpecies species) {
@@ -117,9 +117,9 @@ public enum BestiaryCategory {
         GRAVEYARD_ZOMBIE("<a>Graveyard Zombie", "Brains.", new GUIMaterial(Material.ZOMBIE_HEAD), List.of(new MobGraveyardZombie())),
         OLD_WOLF("<a>Old Wolf", "Wolves older than the island itself.", new GUIMaterial("d359537c15534f61c1cd886bc118774ed22280e7cdab6613870160aad4ca39"), List.of(new MobRuinsOldWolf())),
         WOLF("<a>Wolf", "Roaming the remains of a Castle far from its best days.", new GUIMaterial("f4cb7a6bf6c32c49f2589147e6f0f888e9e35875dd1ea2a8af379ca710589e6b"), List.of(new MobRuinsWolf())),
-        CRYPT_GHOUL("<a>Crypt Ghoul", "Long buried, newly unburied.", new GUIMaterial(Material.ZOMBIE_HEAD), CataloguedBestiaryAreas.placeholder("CRYPT_GHOUL", "Crypt Ghoul", 2, 20, MobType.UNDEAD, Material.ZOMBIE_HEAD)),
-        GOLDEN_GHOUL("<a>Golden Ghoul", "A ghoul that fell into molten gold.", new GUIMaterial(Material.GOLDEN_HELMET), CataloguedBestiaryAreas.placeholder("GOLDEN_GHOUL", "Golden Ghoul", 4, 15, MobType.UNDEAD, Material.GOLDEN_HELMET)),
-        SHINY_PIG("<a>Shiny Pig", "Found all around the Hub during the Year of the Pig!", new GUIMaterial(Material.PORKCHOP), CataloguedBestiaryAreas.placeholder("SHINY_PIG", "Shiny Pig", 5, 15, MobType.ANIMAL, Material.PORKCHOP)),
+        CRYPT_GHOUL("<a>Crypt Ghoul", "Long buried, newly unburied.", new GUIMaterial("b3666d1bdf4558b0d16990b241e8185cbf58c3e03c24d904544e8cc65b1c38d1"), CataloguedBestiaryAreas.placeholder("CRYPT_GHOUL", "Crypt Ghoul", 2, 20, MobType.UNDEAD, "b3666d1bdf4558b0d16990b241e8185cbf58c3e03c24d904544e8cc65b1c38d1")),
+        GOLDEN_GHOUL("<a>Golden Ghoul", "A ghoul that fell into molten gold.", new GUIMaterial("69be1cf0639c6b7db506686f26af222671ce52321e1c921b296933cd40ac4c62"), CataloguedBestiaryAreas.placeholder("GOLDEN_GHOUL", "Golden Ghoul", 4, 15, MobType.UNDEAD, "69be1cf0639c6b7db506686f26af222671ce52321e1c921b296933cd40ac4c62")),
+        SHINY_PIG("<a>Shiny Pig", "Found all around the Hub during the Year of the Pig!", new GUIMaterial("621668ef7cb79dd9c22ce3d1f3f4cb6e2559893b6df4a469514e667c16aa4"), CataloguedBestiaryAreas.placeholder("SHINY_PIG", "Shiny Pig", 5, 15, MobType.ANIMAL, "621668ef7cb79dd9c22ce3d1f3f4cb6e2559893b6df4a469514e667c16aa4")),
         ZOMBIE_VILLAGER("<a>Zombie Villager", "The real enemy isn't the dead - it's the living.", new GUIMaterial("69198f410a10f99314aa0fbe9a3db10697bbc1c011f019507d96673c64217f5a"), List.of(new MobGraveyardZombieVillager())),
         ;
 
@@ -176,7 +176,7 @@ public enum BestiaryCategory {
         REDSTONE_PIGMAN("<a>Redstone Pigman", "These pigmen will defend their redstone to the death.",
                 new GUIMaterial("74e9c6e98582ffd8ff8feb3322cd1849c43fb16b158abb11ca7b42eda7743eb"), List.of(new MobRedstonePigman())),
         SNEAKY_CREEPER("<a>Sneaky Creeper", "They be creepin'.",
-                new GUIMaterial("74e9c6e98582ffd8ff8feb3322cd1849c43fb16b158abb11ca7b42eda7743eb"), List.of(new MobSneakyCreeper())),
+                new GUIMaterial("a68224cf8ed4c03b457bf49beb6f544193679268b8421b01ffce6d27b25ac32d"), List.of(new MobSneakyCreeper())),
         ;
 
         private final String name, description;
@@ -199,15 +199,15 @@ public enum BestiaryCategory {
                 List.of(new MobGoblin(), new MobFireslinger(), new MobKnifethrower(), new MobGoblinFlamethrower())),
         GOLDEN_GOBLIN("<a>Golden Goblin", "Take the things you love in life, and run with them.", List.of(new GoldenGoblin())),
         TREASURE_HOARDER("<a>Treasure Hoarder", "The real treasure was the gold we found along the way.", List.of(new MobTreasureHoarder())),
-        GHOST("<a>Ghost", "It is hard to find that which you cannot see.", CataloguedBestiaryAreas.placeholder("GHOST", "Ghost", 2, 20, MobType.ELUSIVE, Material.GHAST_TEAR)),
-        GLACITE_BOWMAN("<a>Glacite Bowman", "Unable to see, it hunts by sound.", CataloguedBestiaryAreas.placeholder("GLACITE_BOWMAN", "Glacite Bowman", 4, 15, MobType.GLACIAL, Material.BOW)),
-        GLACITE_CAVER("<a>Glacite Caver", "Dug too deep and never looked back.", CataloguedBestiaryAreas.placeholder("GLACITE_CAVER", "Glacite Caver", 4, 15, MobType.GLACIAL, Material.IRON_PICKAXE)),
-        GLACITE_MAGE("<a>Glacite Mage", "Unknowing and unpredictable in its destruction.", CataloguedBestiaryAreas.placeholder("GLACITE_MAGE", "Glacite Mage", 4, 15, MobType.GLACIAL, Material.BLAZE_ROD)),
-        GLACITE_MUTT("<a>Glacite Mutt", "Remarkably loyal, even in death.", CataloguedBestiaryAreas.placeholder("GLACITE_MUTT", "Glacite Mutt", 4, 15, MobType.GLACIAL, Material.BONE)),
-        GOBLIN_RAIDERS("<a>Goblin Raiders", "If it moves, it gets smashed.", CataloguedBestiaryAreas.placeholder("GOBLIN_RAIDERS", "Goblin Raiders", 4, 15, MobType.SUBTERRANEAN, Material.IRON_AXE)),
-        LITTLEFOOT("<a>Littlefoot", "You've probably heard of his older brother.", CataloguedBestiaryAreas.placeholder("LITTLEFOOT", "Littlefoot", 2, 5, MobType.SUBTERRANEAN, Material.LEATHER_BOOTS)),
-        POWDER_GHAST("<a>Powder Ghast", "Powder and coal replaces ash and soot!", CataloguedBestiaryAreas.placeholder("POWDER_GHAST", "Powder Ghast", 8, 15, MobType.AIRBORNE, Material.GHAST_TEAR)),
-        STAR_SENTRY("<a>Star Sentry", "Defenders of the Fallen Star.", CataloguedBestiaryAreas.placeholder("STAR_SENTRY", "Star Sentry", 6, 15, MobType.CONSTRUCT, Material.NETHER_STAR)),
+        GHOST("<a>Ghost", "It is hard to find that which you cannot see.", CataloguedBestiaryAreas.placeholder("GHOST", "Ghost", 2, 20, MobType.ELUSIVE, "981977918a1180e0dec879e6bcd1aa39494977bb913be2ab01aff1db1fa4")),
+        GLACITE_BOWMAN("<a>Glacite Bowman", "Unable to see, it hunts by sound.", CataloguedBestiaryAreas.placeholder("GLACITE_BOWMAN", "Glacite Bowman", 4, 15, MobType.GLACIAL, "d2a0057edd8e8480f0ea2a78c1ad88e401c4844f4458aeb4e33ac93a58b8c11a")),
+        GLACITE_CAVER("<a>Glacite Caver", "Dug too deep and never looked back.", CataloguedBestiaryAreas.placeholder("GLACITE_CAVER", "Glacite Caver", 4, 15, MobType.GLACIAL, "d2a0057edd8e8480f0ea2a78c1ad88e401c4844f4458aeb4e33ac93a58b8c11a")),
+        GLACITE_MAGE("<a>Glacite Mage", "Unknowing and unpredictable in its destruction.", CataloguedBestiaryAreas.placeholder("GLACITE_MAGE", "Glacite Mage", 4, 15, MobType.GLACIAL, "d2a0057edd8e8480f0ea2a78c1ad88e401c4844f4458aeb4e33ac93a58b8c11a")),
+        GLACITE_MUTT("<a>Glacite Mutt", "Remarkably loyal, even in death.", CataloguedBestiaryAreas.placeholder("GLACITE_MUTT", "Glacite Mutt", 4, 15, MobType.GLACIAL, "69d1d3113ec43ac2961dd59f28175fb4718873c6c448dfca8722317d67")),
+        GOBLIN_RAIDERS("<a>Goblin Raiders", "If it moves, it gets smashed.", CataloguedBestiaryAreas.placeholder("GOBLIN_RAIDERS", "Goblin Raiders", 4, 15, MobType.SUBTERRANEAN, "172850906b7f0d952c0e508073cc439fd3374ccf5b889c06f7e8d90cc0cc255c")),
+        LITTLEFOOT("<a>Littlefoot", "You've probably heard of his older brother.", CataloguedBestiaryAreas.placeholder("LITTLEFOOT", "Littlefoot", 2, 5, MobType.SUBTERRANEAN, "6cce41cd32db68f699c281f83f20766c83c97fd49664eb8c7584b9f343d960d1")),
+        POWDER_GHAST("<a>Powder Ghast", "Powder and coal replaces ash and soot!", CataloguedBestiaryAreas.placeholder("POWDER_GHAST", "Powder Ghast", 8, 15, MobType.AIRBORNE, "de8a38e9afbd3da10d19b577c55c7bfd6b4f2e407e44d4017b23be9167abff02")),
+        STAR_SENTRY("<a>Star Sentry", "Defenders of the Fallen Star.", CataloguedBestiaryAreas.placeholder("STAR_SENTRY", "Star Sentry", 6, 15, MobType.CONSTRUCT, "d87b8f3cf1c1014883276f230501d5af1397699071bfab1ee294c861722cc2f")),
         ;
 
         private final String name, description;
