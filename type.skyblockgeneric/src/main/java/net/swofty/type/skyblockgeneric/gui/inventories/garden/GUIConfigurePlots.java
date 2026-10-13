@@ -84,7 +84,9 @@ public class GUIConfigurePlots extends StatelessView {
         } else {
             lore.add(Text.key("gui_garden_upgrades.plots.locked.click"));
         }
-        return GardenMenus.item(Material.RED_STAINED_GLASS_PANE, Text.key("gui_garden_upgrades.plots.locked.name", plot), lore);
+        boolean purchasable = quote.status() != GardenProgress.PlotStatus.NOT_ADJACENT && level >= quote.requiredLevel();
+        return GardenMenus.item(purchasable ? Material.YELLOW_STAINED_GLASS_PANE : Material.RED_STAINED_GLASS_PANE,
+                Text.key("gui_garden_upgrades.plots.locked.name", plot), lore);
     }
 
     private void click(int plot, ClickContext<DefaultState> click, ViewContext ctx) {
