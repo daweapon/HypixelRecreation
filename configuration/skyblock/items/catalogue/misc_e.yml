@@ -776,7 +776,6 @@ items:
     material: paper
     name: "Ruby-Polished Drill Engine"
     rarity: RARE
-    unavailable: "Needs Crystals and the Drill part upgrade; Source unconfirmed"
     source: "Crafted from a crystal (exact recipe unconfirmed)"
     lore:
       - "§8Drill Part"
@@ -1022,7 +1021,6 @@ items:
     material: paper
     name: "Sapphire-Polished Drill Engine"
     rarity: RARE
-    unavailable: "Needs Crystals and the Drill part upgrade; Source unconfirmed"
     source: "Crafted from a crystal (exact recipe unconfirmed)"
     lore:
       - "§8Drill Part"

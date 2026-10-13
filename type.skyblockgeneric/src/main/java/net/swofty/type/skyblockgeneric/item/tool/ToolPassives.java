@@ -3,6 +3,8 @@ package net.swofty.type.skyblockgeneric.item.tool;
 import net.minestom.server.entity.Entity;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
+import net.swofty.type.skyblockgeneric.drill.DrillFuel;
+import net.swofty.type.skyblockgeneric.drill.DrillParts;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
 import net.swofty.type.skyblockgeneric.hotm.HotmPowder;
@@ -87,7 +89,8 @@ public final class ToolPassives {
     public static double heldPowderPercent(SkyBlockPlayer player, HotmPowder powder) {
         SkyBlockItem held = new SkyBlockItem(player.getInventory().getItemStack(player.getHeldSlot()));
         if (held.isAir()) return 0;
-        return powderPercent(held.getAttributeHandler().getTypeAsString(), powder);
+        double drillParts = DrillFuel.isDrill(held) ? DrillParts.powderPercent(held.getAttributeHandler().getDrillData()) : 0;
+        return powderPercent(held.getAttributeHandler().getTypeAsString(), powder) + drillParts;
     }
 
     public static boolean holding(SkyBlockPlayer player, String itemId) {

@@ -64,6 +64,10 @@ public final class CommissionProgress {
         }
     }
 
+    public static void recordCrystalFound(SkyBlockPlayer player) {
+        update(player, ObjectiveType.COLLECT, Objective.BlockTarget.HOLLOWS_CRYSTAL, 1, null);
+    }
+
     public static void recordChestOpened(SkyBlockPlayer player) {
         update(player, ObjectiveType.OPEN, Objective.BlockTarget.CHEST, 1, null);
     }

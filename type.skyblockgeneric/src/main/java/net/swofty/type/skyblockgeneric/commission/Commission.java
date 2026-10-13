@@ -104,6 +104,7 @@ public class Commission {
             case HOLLOWS_YOG -> "Yog";
             case HOLLOWS_THYST -> "Thyst";
             case HOLLOWS_BOSS_CORLEONE -> "Boss Corleone";
+            case HOLLOWS_CRYSTAL -> "Crystal";
             case CHEST -> "Chest";
             case GEM_AMBER -> "Amber";
             case GEM_AMETHYST -> "Amethyst";
@@ -132,6 +133,7 @@ public class Commission {
             case HOLLOWS_YOG -> Text.of("<c>Yogs");
             case HOLLOWS_THYST -> Text.of("<5>Thysts");
             case HOLLOWS_BOSS_CORLEONE -> Text.of("<6>Boss Corleone");
+            case HOLLOWS_CRYSTAL -> Text.of("Crystals");
             case HARD_STONE, CHEST, GEM_AMBER, GEM_AMETHYST, GEM_JADE, GEM_RUBY, GEM_SAPPHIRE, GEM_TOPAZ ->
                     Text.of(getTargetName(target));
             case NONE -> Text.empty();
@@ -141,6 +143,7 @@ public class Commission {
     private String getCollectibleName(Objective.BlockTarget target) {
         return switch (target) {
             case MITHRIL -> "Mithril Powder";
+            case HOLLOWS_CRYSTAL -> "Gemstone Crystal";
             case GEM_AMBER, GEM_AMETHYST, GEM_JADE, GEM_RUBY, GEM_SAPPHIRE, GEM_TOPAZ -> getTargetName(target) + " Gemstones";
             default -> target.name();
         };

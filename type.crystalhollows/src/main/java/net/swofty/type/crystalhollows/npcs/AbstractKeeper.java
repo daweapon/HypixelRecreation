@@ -5,6 +5,8 @@ import net.swofty.type.crystalhollows.quest.CrystalHollowsProgress;
 import net.swofty.type.crystalhollows.quest.CrystalHollowsProgress.Keeper;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalNucleus;
+import net.swofty.type.skyblockgeneric.crystalhollows.NucleusCrystal;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Locale;
@@ -33,7 +35,7 @@ public abstract class AbstractKeeper extends AbstractStructureNPC {
             return;
         }
         if (CrystalHollowsProgress.has(id, CrystalHollowsProgress.JADE_CRYSTAL_CLAIMED)) {
-            setDialogue(player, "again");
+            setDialogue(player, CrystalNucleus.claim(player, NucleusCrystal.JADE) ? "complete" : "again");
             return;
         }
         if (!CrystalHollowsProgress.turnedIn(id, keeper)) {
@@ -47,7 +49,7 @@ public abstract class AbstractKeeper extends AbstractStructureNPC {
         }
         if (CrystalHollowsProgress.allKeepersSatisfied(id)) {
             CrystalHollowsProgress.mark(id, CrystalHollowsProgress.JADE_CRYSTAL_CLAIMED);
-            player.addAndUpdateItem(ItemType.JADE_CRYSTAL);
+            CrystalNucleus.claim(player, NucleusCrystal.JADE);
             setDialogue(player, "complete");
             return;
         }

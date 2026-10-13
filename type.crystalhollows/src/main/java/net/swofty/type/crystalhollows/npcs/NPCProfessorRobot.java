@@ -4,6 +4,8 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.crystalhollows.quest.CrystalHollowsProgress;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalNucleus;
+import net.swofty.type.skyblockgeneric.crystalhollows.NucleusCrystal;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.UUID;
@@ -82,8 +84,8 @@ public class NPCProfessorRobot extends AbstractStructureNPC {
 
     private void giveCrystal(SkyBlockPlayer player) {
         UUID id = player.getUuid();
-        if (CrystalHollowsProgress.mark(id, CrystalHollowsProgress.SAPPHIRE_CRYSTAL_CLAIMED)) {
-            player.addAndUpdateItem(ItemType.SAPPHIRE_CRYSTAL);
+        CrystalHollowsProgress.mark(id, CrystalHollowsProgress.SAPPHIRE_CRYSTAL_CLAIMED);
+        if (CrystalNucleus.claim(player, NucleusCrystal.SAPPHIRE)) {
             sendNPCMessage(player, "<f>Take the Sapphire Crystal, and place it at the Crystal Nucleus.");
             return;
         }

@@ -44,6 +44,10 @@ public abstract class CrystalHollowsBossMob extends CrimsonIsleMob {
         return 0;
     }
 
+    protected double hitMultiplier(SkyBlockPlayer attacker) {
+        return 1;
+    }
+
     protected double lootShareDamage() {
         return 1;
     }
@@ -51,8 +55,9 @@ public abstract class CrystalHollowsBossMob extends CrimsonIsleMob {
     @Override
     public boolean damage(@NotNull Damage damage) {
         float fixed = hitDamage();
-        if (fixed > 0 && damage.getAttacker() instanceof SkyBlockPlayer) {
-            damage = new Damage(damage.getType(), damage.getSource(), damage.getAttacker(), damage.getSourcePosition(), fixed);
+        if (fixed > 0 && damage.getAttacker() instanceof SkyBlockPlayer attacker) {
+            float scaled = (float) (fixed * hitMultiplier(attacker));
+            damage = new Damage(damage.getType(), damage.getSource(), damage.getAttacker(), damage.getSourcePosition(), scaled);
         }
         return super.damage(damage);
     }

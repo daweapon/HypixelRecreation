@@ -1,0 +1,49 @@
+package net.swofty.type.crystalhollows.command.groups;
+
+import net.minestom.server.command.builder.arguments.ArgumentType;
+import net.swofty.type.crystalhollows.command.HollowsSupport;
+import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
+import net.swofty.type.crystalhollows.layout.StructurePlacement;
+import net.swofty.type.generic.command.CommandParameters;
+import net.swofty.type.generic.command.HypixelCommand;
+import net.swofty.type.generic.user.categories.Rank;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.concurrent.ThreadLocalRandom;
+
+@CommandParameters(description = "Shows the current layout, or regenerates it",
+        labels = "layout",
+        usage = "/hollows layout [regenerate [seed]]",
+        permission = Rank.STAFF,
+        allowsConsole = false)
+public class HollowsLayoutCommand extends HypixelCommand {
+    @Override
+    public void registerUsage(MinestomCommand command) {
+        var regenerate = ArgumentType.Literal("regenerate");
+        var seed = ArgumentType.Long("seed");
+
+        command.setDefaultExecutor((sender, _) -> {
+            if (!permissionCheck(sender)) return;
+            ((SkyBlockPlayer) sender).sendMessage("<a>Layout seed <e>{}<a>, <e>{}<a> structures placed.", CrystalHollowsLayout.seed(), CrystalHollowsLayout.placements().size());
+            for (StructurePlacement placement : CrystalHollowsLayout.placements().values()) {
+                ((SkyBlockPlayer) sender).sendMessage("<7>{} <8>at <f>{} {} {} <8>({} anchors)", placement.spec().id(),
+                        placement.origin().blockX(), placement.origin().blockY(), placement.origin().blockZ(), placement.anchors().size());
+            }
+        });
+
+        command.addSyntax((sender, _) -> {
+            if (!permissionCheck(sender)) return;
+            regenerate(sender, ThreadLocalRandom.current().nextLong());
+        }, regenerate);
+
+        command.addSyntax((sender, context) -> {
+            if (!permissionCheck(sender)) return;
+            regenerate(sender, context.get(seed));
+        }, regenerate, seed);
+    }
+
+    private static void regenerate(net.minestom.server.command.CommandSender sender, long seed) {
+        HollowsSupport.reloadLayout(seed);
+        ((SkyBlockPlayer) sender).sendMessage("<a>Layout regenerated with seed <e>{}<a>: <e>{}<a> structures placed.", seed, CrystalHollowsLayout.placements().size());
+    }
+}

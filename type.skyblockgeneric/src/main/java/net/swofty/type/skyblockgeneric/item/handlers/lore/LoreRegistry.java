@@ -33,6 +33,7 @@ public class LoreRegistry {
         PartyEquipment.registerLore();
         net.swofty.type.skyblockgeneric.foraging.FrenzyAxes.registerLore();
         KuudraTeethPlaqueLore.register();
+        net.swofty.type.skyblockgeneric.crystalhollows.PrehistoricEggs.registerLore();
         net.swofty.type.skyblockgeneric.garden.tool.FarmingTools.registerLore();
         net.swofty.type.skyblockgeneric.garden.pest.PestItems.registerLore();
         net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseItems.registerLore();

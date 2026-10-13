@@ -24,8 +24,9 @@ items:
             values:
               - { per_level: 0.01 }
           - name: "Expert Cave Fisher"
-            unavailable: "Needs Crystal Hollows content"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: AMMONITE_EXPERT_CAVE_FISHER
+            when: { conditions: [CRYSTAL_HOLLOWS] }
             text:
               - "<7>Grants <9>+{0}<glyph:stat_double_hook_chance> Double Hook Chance"
               - "<7>for each <5>Heart of the Mountain <7>level"

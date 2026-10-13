@@ -119,6 +119,12 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                 }
 
                 // Check breaking power requirement
+                if (net.swofty.type.skyblockgeneric.drill.DrillFuel.isEmpty(heldItem)) {
+                    net.swofty.type.skyblockgeneric.drill.DrillFuel.warnEmpty(player);
+                    event.setCancelled(true);
+                    return;
+                }
+
                 int playerBreakingPower = heldItem.getAttributeHandler().getBreakingPower();
                 if (playerBreakingPower + net.swofty.type.skyblockgeneric.hotm.HotmAbilities.breakingPowerBonus(player) < handler.getMiningPowerRequirement()) {
                     event.setCancelled(true);

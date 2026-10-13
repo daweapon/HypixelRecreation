@@ -4,6 +4,7 @@ import net.minestom.server.instance.block.Block;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsZones;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM;
 import net.swofty.type.skyblockgeneric.fishing.festival.FishingFestival;
@@ -24,6 +25,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.Tre
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetConditions;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.definition.PetType;
+import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
@@ -48,6 +50,9 @@ public final class GatheringPetAbilities implements PetAbilityRegistry.Provider 
         PetConditions.register("ABSORPTION_ACTIVE", player -> player.getAdditionalHearts() > 0);
         PetConditions.register("HOLDING_INK_WAND", player -> holdingType(player) == ItemType.INK_WAND);
 
+        PetConditions.register("CRYSTAL_HOLLOWS", player -> CrystalHollowsZones.isCrystalHollows(regionOf(player)));
+        registrar.register("AMMONITE_EXPERT_CAVE_FISHER",
+                CountScaledStatHandler.flat(GatheringPetAbilities::hotmTier, ItemStatistic.DOUBLE_HOOK_CHANCE));
         registrar.register("AMMONITE_HEART_OF_THE_SEA",
                 CountScaledStatHandler.flat(GatheringPetAbilities::hotmTier, ItemStatistic.SEA_CREATURE_CHANCE));
         registrar.register("AMMONITE_GIFT", CountScaledStatHandler.flat(GatheringPetAbilities::miningAndFishingLevels,
@@ -80,6 +85,10 @@ public final class GatheringPetAbilities implements PetAbilityRegistry.Provider 
                 CountScaledStatHandler.percent(GatheringPetAbilities::maxedAttributes, ItemStatistic.SWEEP));
         registrar.register("JADE_DRAGON_SYMBIOSIS",
                 CountScaledStatHandler.flat(GatheringPetAbilities::jadeSymbiosisPets, ItemStatistic.FORAGING_FORTUNE));
+    }
+
+    private static RegionType regionOf(SkyBlockPlayer player) {
+        return player.getRegion() == null ? null : player.getRegion().getType();
     }
 
     private static boolean holding(SkyBlockPlayer player, Class<? extends SkyBlockItemComponent> component) {

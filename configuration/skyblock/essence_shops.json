@@ -606,7 +606,7 @@
         "costs": [
           5000
         ],
-        "unavailable": "Crystal Hollows isn't in this server yet."
+        "unavailable": null
       },
       {
         "id": "return_to_sender",

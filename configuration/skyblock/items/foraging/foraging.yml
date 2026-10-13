@@ -139,7 +139,14 @@ items:
     rarity: RARE
     material: GREEN_DYE
     name: "Biofuel"
+    lore:
+      - "§7Adds §2+3,000 Fuel §7to a refuelable"
+      - "§7machine."
+      - ""
+      - "§8§o100% renewable energy!"
     components:
+      - id: EXTRA_UNDER_NAME
+        display: Machine Fuel
       - id: SELLABLE
         value: 10000.0
       - id: ITEM_MODEL

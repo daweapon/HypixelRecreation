@@ -289,7 +289,7 @@ items:
     material: player_head
     name: "Fiesta Flask"
     rarity: LEGENDARY
-    unavailable: "Needs Brynmor (Dwarven Tavern) and Mayor Cole's Mining Fiesta perk"
+    unavailable: "Its timed Mining Fortune buff is not wired up"
     source: "Brynmor for 2,500,000 Coins while Mining Fiesta is active"
     lore:
       - "§8Consumable"
@@ -326,7 +326,7 @@ items:
     material: cooked_cod
     name: "Filet O' Fortune"
     rarity: RARE
-    unavailable: "Needs Brynmor (Dwarven Tavern)"
+    unavailable: "Its timed Mining Fortune buff is not wired up"
     source: "Brynmor for 100,000 Coins (Heart of the Mountain Tier 4)"
     lore:
       - "§8Consumable"
@@ -970,7 +970,6 @@ items:
     material: paper
     name: "Fuel Canister"
     rarity: RARE
-    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
     source: "Forge: 2 Enchanted Coal Block, 10h (Heart of the Mountain 2)"
     components:
       - id: ITEM_MODEL
@@ -1118,7 +1117,6 @@ items:
     material: paper
     name: "Gemstone Fuel Tank"
     rarity: RARE
-    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
     source: "Forge: Titanium-Infused Fuel Tank, 4 Precursor Apparatus and 10 Gemstone Mixture, 30s (Heart of the Mountain 7)"
     lore:
       - "§8Drill Part"
@@ -1678,7 +1676,6 @@ items:
     material: paper
     name: "Goblin Omelette"
     rarity: RARE
-    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
     source: "Forge: 96 Goblin Egg, 18h (Heart of the Mountain 3)"
     lore:
       - "§8Drill Part"
@@ -1699,7 +1696,6 @@ items:
     material: paper
     name: "Blue Cheese Goblin Omelette"
     rarity: RARE
-    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
     source: "Forge: 96 Blue Goblin Egg and a Flawless Sapphire Gemstone (Heart of the Mountain 5)"
     lore:
       - "§8Drill Part"
@@ -1720,7 +1716,6 @@ items:
     material: paper
     name: "Pesto Goblin Omelette"
     rarity: RARE
-    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
     source: "Forge: 96 Green Goblin Egg and a Flawless Jade Gemstone (Heart of the Mountain 5)"
     lore:
       - "§8Drill Part"
@@ -1741,7 +1736,6 @@ items:
     material: paper
     name: "Spicy Goblin Omelette"
     rarity: RARE
-    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
     source: "Forge: 96 Red Goblin Egg and a Flawless Ruby Gemstone (Heart of the Mountain 5)"
     lore:
       - "§8Drill Part"
@@ -1761,7 +1755,6 @@ items:
     material: paper
     name: "Sunny Side Goblin Omelette"
     rarity: RARE
-    unavailable: "Drill Mechanic part slots are not built; forgeable once the forge recipe is available"
     source: "Forge: 96 Yellow Goblin Egg and a Flawless Topaz Gemstone (Heart of the Mountain 5)"
     lore:
       - "§8Drill Part"
@@ -3316,7 +3309,6 @@ items:
     material: paper
     name: "Amber Crystal"
     rarity: SPECIAL
-    unavailable: "The Goblin Queen's Den claim point needs the Crystal Hollows world, which isn't built"
     source: "Claimed in the Goblin Queen's Den (Goblin Holdout) while covered in King Yolkar's scent"
     lore:
       - "§7Energetic crystal found deep in the"
@@ -3332,7 +3324,6 @@ items:
     material: paper
     name: "Amethyst Crystal"
     rarity: SPECIAL
-    unavailable: "The Jungle Temple parkour and crystal claim need the Crystal Hollows world, which isn't built"
     source: "Claimed at the end of the Jungle Temple parkours with an active Jungle Key"
     lore:
       - "§7Energetic crystal found deep in the"
@@ -3348,7 +3339,6 @@ items:
     material: paper
     name: "Jade Crystal"
     rarity: SPECIAL
-    unavailable: "The Keepers hand it over once the four Scavenged Items are turned in, but the Metal Detector digging that finds them isn't built"
     source: "Keepers of Gold, Emerald, Diamond and Lapis in the Mines of Divan, once all four Scavenged Items are turned in"
     lore:
       - "§7Energetic crystal found deep in the"

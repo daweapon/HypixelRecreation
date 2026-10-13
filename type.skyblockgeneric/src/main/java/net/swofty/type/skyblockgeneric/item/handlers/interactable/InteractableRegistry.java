@@ -39,6 +39,7 @@ public class InteractableRegistry {
         SnowCannon.registerInteractables();
         CrimsonItemHandlers.registerInteractables();
         net.swofty.type.skyblockgeneric.crystalhollows.GoblinEggs.registerInteractables();
+        net.swofty.type.skyblockgeneric.crystalhollows.MetalDetector.registerInteractables();
         ReaperPepper.registerInteractables();
         net.swofty.type.skyblockgeneric.consumable.VialOfVenom.registerInteractables();
         net.swofty.type.skyblockgeneric.item.utility.BiomeSticks.registerInteractables();

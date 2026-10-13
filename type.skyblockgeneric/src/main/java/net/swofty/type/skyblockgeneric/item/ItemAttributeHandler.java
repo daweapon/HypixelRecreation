@@ -404,6 +404,9 @@ public class ItemAttributeHandler {
         ItemStatistics baseStats = getBaseStatistics();
         ItemStatistics extraStats = getExtraDynamicStatistics();
         ItemStatistics statistics = ItemStatistics.add(baseStats, extraStats);
+        if (item.hasComponent(DrillComponent.class)) {
+            statistics = ItemStatistics.add(statistics, net.swofty.type.skyblockgeneric.drill.DrillParts.statistics(getDrillData()));
+        }
         int stars = getUpgradeLevel();
         if (stars <= 0) return statistics;
         return ItemStatistics.add(statistics, ItemStatistics.multiply(baseStats, stars * STAR_STAT_BONUS));
@@ -641,6 +644,22 @@ public class ItemAttributeHandler {
 
     public void setFarmingToolOverclockers(int overclockers) {
         item.getAttribute("farming_tool_overclockers").setValue(overclockers);
+    }
+
+    public int getBlocksWalked() {
+        return ((ItemAttributeBlocksWalked) item.getAttribute("blocks_walked")).getValue();
+    }
+
+    public void setBlocksWalked(int blocksWalked) {
+        ((ItemAttributeBlocksWalked) item.getAttribute("blocks_walked")).setValue(blocksWalked);
+    }
+
+    public ItemAttributeDrillData.DrillData getDrillData() {
+        return ((ItemAttributeDrillData) item.getAttribute("drill_data")).getValue();
+    }
+
+    public void setDrillData(ItemAttributeDrillData.DrillData data) {
+        item.getAttribute("drill_data").setValue(data);
     }
 
     public int getLogsCut() {

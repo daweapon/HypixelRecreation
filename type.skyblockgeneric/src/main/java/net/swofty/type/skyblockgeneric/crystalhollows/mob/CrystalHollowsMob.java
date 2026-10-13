@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.entity.mob.ai.ClosestEntityRegionTarget;
 import net.swofty.type.skyblockgeneric.entity.mob.ai.MeleeAttackWithinRegionGoal;
 import net.swofty.type.skyblockgeneric.entity.mob.ai.RandomRegionStrollGoal;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import net.swofty.type.skyblockgeneric.loottable.LootAffector;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
@@ -166,7 +167,8 @@ public abstract class CrystalHollowsMob extends BestiaryMob {
         List<ExclusiveEntry> entries = new ArrayList<>();
         double taken = 0;
         for (CrystalHollowsMobSpec.Drop drop : exclusive) {
-            double chance = LootAffector.MAGIC_FIND.getAffector().apply(player, drop.chance(), this);
+            double chance = MiningPetBonuses.automatonPartChance(player,
+                    LootAffector.MAGIC_FIND.getAffector().apply(player, drop.chance(), this), this);
             entries.add(new ExclusiveEntry(drop, chance));
             taken += chance;
         }

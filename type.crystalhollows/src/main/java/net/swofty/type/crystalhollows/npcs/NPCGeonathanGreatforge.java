@@ -1,11 +1,10 @@
 package net.swofty.type.crystalhollows.npcs;
 
 import net.minestom.server.coordinate.Pos;
-import net.swofty.type.crystalhollows.gui.GUIShopGeonathan;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
-import net.swofty.type.skyblockgeneric.item.components.DrillComponent;
+import net.swofty.type.skyblockgeneric.drill.DrillFuel;
+import net.swofty.type.skyblockgeneric.gui.inventories.drill.GUIDrillAnvil;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCGeonathanGreatforge extends AbstractHollowsNPC {
@@ -23,19 +22,11 @@ public class NPCGeonathanGreatforge extends AbstractHollowsNPC {
             setDialogue(player, "hello").thenRun(() -> markMet(player, MET));
             return;
         }
-        if (!hasDrill(player)) {
+        if (!DrillFuel.hasDrill(player)) {
             setDialogue(player, "no-drill");
             return;
         }
-        player.openView(new GUIShopGeonathan());
-    }
-
-    private static boolean hasDrill(SkyBlockPlayer player) {
-        for (int slot = 0; slot < 36; slot++) {
-            SkyBlockItem item = new SkyBlockItem(player.getInventory().getItemStack(slot));
-            if (!item.isAir() && item.hasComponent(DrillComponent.class)) return true;
-        }
-        return false;
+        player.openView(new GUIDrillAnvil());
     }
 
     @Override

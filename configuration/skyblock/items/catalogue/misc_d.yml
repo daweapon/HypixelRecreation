@@ -1699,8 +1699,6 @@ items:
       - "§7of a Drill at a §2Drill Mechanic§7!"
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
-      - ""
-      - "§8Not active yet: Needs the Drill Mechanic NPC and drill part slots (not built)"
     components:
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -1725,8 +1723,6 @@ items:
       - "§7a Drill at a §2Drill Mechanic§7!"
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
-      - ""
-      - "§8Not active yet: Needs the Drill Mechanic NPC and drill part slots (not built)"
     components:
       - id: ITEM_REQUIREMENTS
         requirements:
@@ -2720,7 +2716,6 @@ items:
     material: player_head
     name: "Perfectly Cut Diamond"
     rarity: LEGENDARY
-    unavailable: "Perfect Armor Tier XIII and Gemma's Crystal Nucleus shop are not built"
     source: "Gemma (Crystal Nucleus): Diamond Essence and Refined Diamond"
     lore:
       - "§7An outstanding find. While few are"
@@ -2747,8 +2742,6 @@ items:
       - "§7a Drill at a §2Drill Mechanic§7!"
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 8§c."
-      - ""
-      - "§8Not active yet: Needs the Drill Mechanic NPC and drill part slots (not built)"
     components:
       - id: ITEM_REQUIREMENTS
         requirements:

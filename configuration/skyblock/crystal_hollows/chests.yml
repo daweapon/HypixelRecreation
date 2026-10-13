@@ -1,7 +1,6 @@
 chests:
-  - {id: jungle_temple_1, structure: jungle_temple, anchor: chest_1, pool: STRUCTURE}
-  - {id: jungle_temple_2, structure: jungle_temple, anchor: chest_2, pool: STRUCTURE}
-  - {id: sludge_cage, structure: sludge_cage, anchor: chest, pool: SLUDGE}
+  - {id: jungle_temple_1, structure: jungle_temple, anchor: chest_1, pool: JUNGLE_TEMPLE, requires_jungle_key: true}
+  - {id: jungle_temple_2, structure: jungle_temple, anchor: chest_2, pool: JUNGLE_TEMPLE, requires_jungle_key: true}
   - {id: mines_of_divan_1, structure: mines_of_divan, anchor: chest_1, pool: STRUCTURE}
   - {id: mines_of_divan_2, structure: mines_of_divan, anchor: chest_2, pool: STRUCTURE}
   - {id: lost_precursor_city_1, structure: lost_precursor_city, anchor: chest_1, pool: STRUCTURE}

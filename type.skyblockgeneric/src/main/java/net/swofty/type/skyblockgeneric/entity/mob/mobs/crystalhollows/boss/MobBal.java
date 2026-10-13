@@ -7,9 +7,10 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
 import net.swofty.type.skyblockgeneric.crimson.mob.CrimsonIsleMob;
 import net.swofty.type.skyblockgeneric.crimson.mob.CrimsonMobLoot;
-import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess;
-import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrystalHollows;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalNucleus;
+import net.swofty.type.skyblockgeneric.crystalhollows.NucleusCrystal;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -24,7 +25,6 @@ import java.util.function.Supplier;
  * wave, their caps, the swipe range and the swipe interval are estimates.
  */
 public class MobBal extends CrystalHollowsBossMob {
-    public static final String TOPAZ_FOUND_FLAG = "crystal_found_topaz";
     private static final float HIT_DAMAGE = 10;
     private static final int BLAZES_PER_HIT = 6;
     private static final int MAX_BLAZES = 18;
@@ -57,6 +57,11 @@ public class MobBal extends CrystalHollowsBossMob {
     @Override
     protected float hitDamage() {
         return HIT_DAMAGE;
+    }
+
+    @Override
+    protected double hitMultiplier(SkyBlockPlayer attacker) {
+        return MiningPetBonuses.cannibalMultiplier(attacker);
     }
 
     @Override
@@ -105,11 +110,7 @@ public class MobBal extends CrystalHollowsBossMob {
 
     private void claimTopazCrystal(SkyBlockPlayer player) {
         ItemType crystal = ItemType.get("TOPAZ_CRYSTAL");
-        if (crystal == null) return;
-        DatapointCrystalHollows.CrystalHollowsData data = CrystalHollowsAccess.data(player);
-        if (data.hasFlag(TOPAZ_FOUND_FLAG)) return;
-        data.getFlags().add(TOPAZ_FOUND_FLAG);
-        CrystalHollowsAccess.save(player, data);
+        if (crystal == null || !CrystalNucleus.markFound(player, NucleusCrystal.TOPAZ)) return;
         CrimsonMobLoot.deliver(player, this, new SkyBlockItem(crystal, 1), false);
         player.sendMessage("<d>You've claimed the <6>Topaz Crystal<d>!");
     }

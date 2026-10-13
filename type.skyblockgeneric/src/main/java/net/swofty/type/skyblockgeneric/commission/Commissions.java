@@ -142,7 +142,8 @@ public class Commissions {
 			hollows("Chest Looter", ObjectiveType.OPEN, Objective.BlockTarget.CHEST, 3, null, false),
 			hollows("Thyst Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_THYST, 5, RegionType.JUNGLE, false),
 			hollows("Hard Stone Miner", ObjectiveType.MINE, Objective.BlockTarget.HARD_STONE, 1000, null, false),
-			hollows("Boss Corleone Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_BOSS_CORLEONE, 1, RegionType.MITHRIL_DEPOSITS, true)
+			hollows("Boss Corleone Slayer", ObjectiveType.SLAY, Objective.BlockTarget.HOLLOWS_BOSS_CORLEONE, 1, RegionType.MITHRIL_DEPOSITS, true),
+			hollows("Crystal Hunter", ObjectiveType.COLLECT, Objective.BlockTarget.HOLLOWS_CRYSTAL, 1, null, true)
 	);
 
 	private static Commission hollows(String name, ObjectiveType type, Objective.BlockTarget target, int amount,

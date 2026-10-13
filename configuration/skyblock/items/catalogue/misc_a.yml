@@ -338,7 +338,6 @@ items:
     material: paper
     name: "Amber-Polished Drill Engine"
     rarity: RARE
-    unavailable: "Drill Engine slot parts and the Plasma/Precursor Apparatus inputs need the Crystal Hollows and the Drill Mechanic engine slot, which aren't built"
     source: "Forge: Heart of the Mountain 9, 30 seconds (5 Drill Motor, 5 Perfect Amber Gemstone, 16 Precursor Apparatus, Sapphire-Polished Drill Engine, 32 Plasma)"
     lore:
       - "§8Drill Part"

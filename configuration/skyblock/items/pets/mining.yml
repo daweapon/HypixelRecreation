@@ -6,7 +6,7 @@ items:
     components:
       - id: PET
         pet_name: "Armadillo"
-        source: { text: "Prehistoric Eggs", active: false }
+        source: "Prehistoric Eggs"
         pet_type: MINING
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: c1eb6df4736ae24dd12a3d00f91e6e3aa7ade6bbefb0978afef2f0f92461018f
@@ -28,7 +28,7 @@ items:
               - "<7>ride it! Moves faster based on your"
               - "<f><glyph:stat_speed> Speed<7>."
           - name: "Tunneller"
-            unavailable: "Needs Crystal Hollows content"
+            unavailable: "Needs pet riding"
             kind: INACTIVE
             text:
               - "<7>While in the <5>Crystal Hollows<7>, this Pet"
@@ -52,7 +52,7 @@ items:
             values:
               - { per_level: 3 }
           - name: "Well-Worked"
-            unavailable: "Needs Crystal Hollows content"
+            unavailable: "Needs pet riding"
             rarity: MYTHIC
             kind: INACTIVE
             text:
@@ -79,25 +79,24 @@ items:
           EPIC: { heat_resistance: { per_level: 1.5 }, mining_fortune: { per_level: 1 } }
         abilities:
           - name: "Furnace"
-            unavailable: "Needs Crystal Hollows content"
-            kind: INACTIVE
+            kind: STAT
+            statistics: { pristine: "{0}" }
+            when: { regions: [MAGMA_FIELDS, KHAZAD_DUM] }
             text:
               - "<7>Grants <5>+{0}<glyph:stat_pristine> Pristine <7>while in the"
               - "<c>Magma Fields<7>."
             values:
               - { per_level: { EPIC: 0.02, LEGENDARY: 0.03 } }
           - name: "Dispersion"
-            unavailable: "Needs Crystal Hollows content"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>While in the <5>Crystal Hollows<7>, killing"
-              - "<7>mobs reduces your <c><glyph:stat_heat_resistance> Heat <7>by <c>4<7>."
+              - "<7>mobs reduces your <c><glyph:stat_heat_resistance> Heat <7>by <c>{0}<7>."
             values:
               - { per_level: 0.04 }
           - name: "Cannibal"
-            unavailable: "Needs Crystal Hollows content"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Increases damage dealt to <c><l>Bal <7>by"
               - "<a>{0}%<7>."
@@ -364,7 +363,7 @@ items:
             values:
               - { per_level: 2.5 }
           - name: "Fetid Thief"
-            unavailable: "Needs Crystal Hollows content"
+            unavailable: "Needs Mining Spread"
             kind: INACTIVE
             text:
               - "<7>Gain <e>+{0}<glyph:stat_mining_spread> Mining Spread <7>while in the"
@@ -470,7 +469,7 @@ items:
           LEGENDARY: { intelligence: { per_level: 1 }, magic_find: { per_level: 0.05 }, mining_speed: { per_level: 1.5 } }
         abilities:
           - name: "Archaeologist"
-            unavailable: "Needs Crystal Hollows content"
+            unavailable: "Needs the Metal Detector"
             kind: INACTIVE
             text:
               - "<7>Increase your chance of finding"
@@ -479,8 +478,7 @@ items:
             values:
               - { per_level: 0.25 }
           - name: "Magnetic Nose"
-            unavailable: "Needs Crystal Hollows content"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<9>Automatons <7>drop their parts <a>{0}%"
               - "<7>more frequently."

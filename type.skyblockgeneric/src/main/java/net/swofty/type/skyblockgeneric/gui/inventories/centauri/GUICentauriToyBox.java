@@ -70,6 +70,7 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         action(layout, 44, Material.WHITE_CONCRETE, "<a>Greenhouse Blueprint Shortcut", "<8>Sam says yes.", "<7>Skip Sam's Greenhouse quest so you can <a>convert a plot<7>.", p -> addGarden(p, profile -> { profile.greenhouse().setBlueprintGiven(true); profile.greenhouse().setBlueprintOffered(true); profile.greenhouse().setBlueprintDelivered(true); profile.greenhouse().setResourcesDelivered(true); }));
         action(layout, 31, Material.SUNFLOWER, "<a>\"Organically Grown\" Garden Levels!", "<8>Fertiliser for your progress.", "<7>Gain <a>10,000 Garden Experience<7>.", p -> net.swofty.type.skyblockgeneric.garden.GardenService.addGardenXp(p, 10_000));
         action(layout, 46, Material.MINECART, "<d>Crystal Hollows Access", "<8>Skip the queue at Gwendolyn.", "<7>Gain permanent <d>Crystal Hollows<7> access.", net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess::grantFullAccess);
+        action(layout, 47, Material.BUCKET, "<2>Fill Drill Tank", "<8>Never run dry.", "<7>Refill the <a>Drill <7>in your hand to its maximum <2>Fuel<7>.", p -> net.swofty.type.skyblockgeneric.drill.DrillFuel.fillHeld(p));
         info(layout, 50, Material.OAK_SIGN, "<a>Got Suggestions?", "<7>Share Alpha Network utility ideas in our discord!");
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);

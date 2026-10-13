@@ -1,6 +1,7 @@
 package net.swofty.type.crystalhollows.quest;
 
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.crystalhollows.temple.JungleTemple;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public final class CrystalHollowsProgress {
     public static final String SAPPHIRE_CRYSTAL_CLAIMED = "sapphire_crystal_claimed";
     public static final String MET_KING_YOLKAR = "met_king_yolkar";
     public static final String SLUDGE_FREED = "sludge_freed";
+    public static final String DEN_ACCESS = "goblin_den_access";
 
     public static final List<ItemType> AUTOMATON_PARTS = List.of(
             ItemType.ELECTRON_TRANSMITTER, ItemType.FTX_3070, ItemType.ROBOTRON_REFLECTOR,
@@ -113,6 +115,7 @@ public final class CrystalHollowsProgress {
 
     public static void consumeJungleKey(UUID player) {
         clear(player, JUNGLE_KEY_ACTIVE);
+        JungleTemple.reset(player);
     }
 
     public static int hitSludge(UUID player) {

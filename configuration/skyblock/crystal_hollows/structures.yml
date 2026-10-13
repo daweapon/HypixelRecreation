@@ -7,6 +7,8 @@ structures:
     candidates: []
     anchors:
       door_guardian: {}
+      entrance: {}
+      crystal_claim: {}
   - id: mines_of_divan
     name: "Mines of Divan"
     region: MINES_OF_DIVAN
@@ -32,7 +34,9 @@ structures:
     optional: false
     clearance: 40
     candidates: []
-    anchors: {}
+    anchors:
+      entrance: {}
+      crystal_claim: {}
   - id: king_yolkars_tower
     name: "King Yolkar's Tower"
     region: GOBLIN_HOLDOUT

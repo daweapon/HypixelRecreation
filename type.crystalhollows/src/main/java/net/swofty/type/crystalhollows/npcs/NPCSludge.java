@@ -2,11 +2,15 @@ package net.swofty.type.crystalhollows.npcs;
 
 import net.swofty.type.crystalhollows.quest.CrystalHollowsProgress;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
+import net.swofty.type.skyblockgeneric.commission.CommissionProgress;
+import net.swofty.type.skyblockgeneric.crystalhollows.TreasureLoot;
+import net.swofty.type.skyblockgeneric.crystalhollows.TreasurePool;
 import net.swofty.type.skyblockgeneric.hotm.HotmPowder;
 import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class NPCSludge extends AbstractStructureNPC {
     public static final long GEMSTONE_POWDER_REWARD = 2_500;
@@ -32,5 +36,7 @@ public class NPCSludge extends AbstractStructureNPC {
         long powder = HotmService.gainPowder(player, HotmPowder.GEMSTONE, GEMSTONE_POWDER_REWARD);
         sendNPCMessage(player, "<f>You freed me! I'd been stuck there for weeks. Here, take this for your trouble.");
         player.sendMessage("<d>You received <a>" + powder + " <d>Gemstone Powder!");
+        TreasureLoot.open(player, TreasurePool.SLUDGE, ThreadLocalRandom.current(), ThreadLocalRandom.current());
+        CommissionProgress.recordChestOpened(player);
     }
 }

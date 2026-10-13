@@ -44,6 +44,19 @@ public final class MiningPetBonuses {
         return true;
     }
 
+    public static double dispersionHeat(SkyBlockPlayer player) {
+        return PetAbilities.value(player, ItemType.BAL_PET, "Dispersion", 0);
+    }
+
+    public static double cannibalMultiplier(SkyBlockPlayer player) {
+        return 1 + PetAbilities.value(player, ItemType.BAL_PET, "Cannibal", 0) / 100;
+    }
+
+    public static double automatonPartChance(SkyBlockPlayer player, double chancePercent, SkyBlockMob mob) {
+        if (!(mob instanceof net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob bestiary) || !bestiary.getMobID().startsWith("AUTOMATON")) return chancePercent;
+        return PetPerkMath.boostChance(chancePercent, PetAbilities.value(player, ItemType.MOLE_PET, "Magnetic Nose", 0));
+    }
+
     public static double goblinEggChance(SkyBlockPlayer player, SkyBlockMob mob, ItemType item, double chancePercent) {
         if (!(mob instanceof MobGoblin) || !RARE_GOBLIN_EGGS.contains(item)) return chancePercent;
         return PetPerkMath.boostChance(chancePercent, PetAbilities.value(player, ItemType.GOBLIN_PET, "Free-range Eggs", 0));

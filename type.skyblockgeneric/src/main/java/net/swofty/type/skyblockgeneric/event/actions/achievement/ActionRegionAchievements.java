@@ -36,6 +36,7 @@ public class ActionRegionAchievements implements HypixelEventClass {
 
         switch (to) {
             case DRAGONS_NEST -> achievements.completeAchievement("skyblock.heart_of_the_end");
+            case DRAGONS_LAIR -> achievements.completeAchievement("skyblock.how_to_train_your_dragon");
             case OBSIDIAN_SANCTUARY -> achievements.completeAchievement("skyblock.into_the_deep");
             default -> {
             }

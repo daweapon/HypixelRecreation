@@ -1,7 +1,10 @@
 package net.swofty.type.skyblockgeneric.crystalhollows;
 
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.commission.CommissionProgress;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrystalHollows;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -49,6 +52,14 @@ public final class CrystalNucleus {
     public static boolean markFound(SkyBlockPlayer player, NucleusCrystal crystal) {
         if (state(player, crystal) != State.NOT_FOUND) return false;
         FOUND.computeIfAbsent(player.getUuid(), _ -> EnumSet.noneOf(NucleusCrystal.class)).add(crystal);
+        CommissionProgress.recordCrystalFound(player);
+        return true;
+    }
+
+    public static boolean claim(SkyBlockPlayer player, NucleusCrystal crystal) {
+        ItemType item = ItemType.get(crystal.name() + "_CRYSTAL");
+        if (item == null || !markFound(player, crystal)) return false;
+        player.addAndUpdateItem(new SkyBlockItem(item, 1));
         return true;
     }
 
@@ -79,6 +90,7 @@ public final class CrystalNucleus {
         data.setNucleusRuns(data.getNucleusRuns() + 1);
         CrystalHollowsAccess.save(player, data);
         NucleusRngMeter.addRun(player);
+        player.getAchievementHandler().addProgress("skyblock.crystal_nucleus", 1);
         syncSkyBlockXp(player);
         CrystalBundle.award(player);
     }

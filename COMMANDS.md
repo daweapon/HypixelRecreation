@@ -2,7 +2,7 @@
 
 Sorted reference for the current HypixelRecreation source tree. Updated 2026-10-11.
 
-This catalog covers **129 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](command-alias-audit.md).
+This catalog covers **130 top-level game-server command definitions** (after merging 52 staff commands into subcommand groups, see Merged staff commands), **7 proxy commands**, and the optional Spark command. It describes the remake as implemented, not a promise of complete real-Hypixel parity. Alias research is in [command-alias-audit.md](command-alias-audit.md).
 
 ## Contents
 
@@ -169,6 +169,7 @@ This catalog covers **129 top-level game-server command definitions** (after mer
 | `/build` | `/buildmode` | Toggles whether or not you are in build mode. | STAFF | No | `type.skyblockgeneric` |
 | `/force <drop\|diana\|darkauction\|eruption> ...` | `/forcedrop`, `/forcedianamob`, `/dianamob`, `/forcedarkauction`, `/forceeruption` | Forces a chance-based or timed event the next time it could happen: an item drop, the next Griffin burrow creature, a Dark Auction or a Blazing Volcano eruption. | STAFF | No | `type.skyblockgeneric` |
 | `/gamemode <gamemode>` | `/gm` | Sets a players gamemode. | STAFF | No | `type.generic` |
+| `/hollows <layout\|tp\|candidate\|anchor\|statue\|chest\|region\|spawn\|bounds\|validate\|debug\|heat\|spawnworm> ...` | — | Staff tooling for capturing the Crystal Hollows world's coordinates in game and validating the configuration. See Merged staff commands. Only registered on the Crystal Hollows server. | STAFF | No | `type.crystalhollows` |
 | `/regions <add\|remove\|wand> ...` | — | Handles regions across the server. See region syntax below. | STAFF | No | `type.skyblockgeneric` |
 | `/sendto <server_type>` | `/transfer` | Transfers a player to another server. | STAFF | No | `type.generic` |
 | `/spawn <mob> [amount]` | `/spawnseacreature`, `/spawnsc`, `/spawncrimsonmob`, `/spawncm` | Spawns any sea creature, registered SkyBlock mob or Mythological creature at your feet, 1-50 at a time. The id list comes from the game's registries, so new mobs are included automatically. See Spawning below. | STAFF | No | `type.skyblockgeneric` |
@@ -422,6 +423,29 @@ World, structure, hologram, crystal, orb, minion-speed, dragon and velocity tool
 | `/world crystal <itemType>` | `/spawncrystal`, `/addcrystal` | Spawns in a crystal at the player's location. Item must provide the orb and skull components the handler uses. |
 | `/world deleteorb` | `/deleteorb` | Deletes orbs at the player's location. |
 | `/world minionspeed <NORMAL\|MULTIPLY_2\|MULTIPLY_5\|MULTIPLY_10>` | `/handleminionspeed` | Handle minion speed. Changes the server-side minion speed divisor. |
+
+#### /hollows
+
+Crystal Hollows capture and validation tools, Crystal Hollows server only. Every write goes to the yml under `configuration/skyblock/crystal_hollows/` (or `Minestom.regions.yml`) and takes effect immediately; structure and chest writes also reload the layout in memory with the same seed. Offsets are measured from the candidate origin nearest to you.
+
+| Syntax | Behaviour |
+| --- | --- |
+| `/hollows layout` | Prints the layout seed and every placed structure with its origin and anchor count. |
+| `/hollows layout regenerate [seed]` | Re-rolls the layout with a random or given seed. |
+| `/hollows tp <structure>`<br>`/hollows tp <structure>/<anchor>` | Teleports to a placed structure's origin or one of its anchors. |
+| `/hollows candidate add <structure>` | Records your position and yaw as a new candidate origin of the structure. |
+| `/hollows candidate list <structure>` | Lists the structure's candidate origins. |
+| `/hollows candidate clear <structure>` | Removes every candidate of the structure. |
+| `/hollows anchor set <structure> <anchorName>` | Stores your position and facing as the anchor, as an offset from the nearest candidate so it follows randomization. Needs at least one candidate. |
+| `/hollows statue set <crystal>` | Stores the block you are looking at (or standing in) as the Nucleus statue of `JADE`, `AMBER`, `AMETHYST`, `SAPPHIRE` or `TOPAZ`. |
+| `/hollows chest set <id>` | Stores the chest block you are looking at as the anchor of the configured structure chest `<id>` (ids come from `chests.yml`). |
+| `/hollows region set <regionId>` | Two-step capture: run at one corner, then at the opposite corner. Rewrites the x/z of the Crystal Hollows region (`crystal_hollows` or `crystal_hollows_<zone>`), keeping its height range, and creates it if missing. |
+| `/hollows spawn set` | Sets the lobby spawn (`world.yml`) to your position and facing. |
+| `/hollows bounds set` | Two-step capture of the world's x/z bounds (`world.yml`). |
+| `/hollows validate` | Lists every structure without candidates, every anchor referenced by NPCs, bosses or chests that is unset, missing statues, placeholder or undefined regions and an unset spawn. |
+| `/hollows debug` | Toggles particle markers for yourself: flame on the placed origin, sparks on other candidates, green on anchors. |
+| `/hollows heat <0-100>` | Sets your Heat. |
+| `/hollows spawnworm [stoneworm\|scatha]` | Spawns a worm at your feet. |
 
 ### Spawning
 

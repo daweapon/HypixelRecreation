@@ -3,7 +3,6 @@ items:
     material: paper
     name: "Starfall Seasoning"
     rarity: RARE
-    unavailable: "Needs the Drill Mechanic (upgrade module slot)"
     source: "Forge (Heart of the Mountain 2, 18 hours): 64 Starfall and 16 Treasurite"
     lore:
       - "§8Drill Part"
@@ -318,7 +317,6 @@ items:
     material: paper
     name: "Sunflower Oil"
     rarity: RARE
-    unavailable: "Needs the Drill Mechanic (machine fuel)"
     source: "Crafting (Sunflower V): 9 Enchanted Sunflower"
     lore:
       - "§8Machine Fuel"
@@ -1296,7 +1294,6 @@ items:
     material: paper
     name: "Titanium-Plated Drill Engine"
     rarity: RARE
-    unavailable: "Needs the Drill Mechanic (engine slot)"
     source: "Forge (Heart of the Mountain 5, 30 seconds): 2 Drill Motor, Mithril-Plated Drill Engine and 8 Refined Titanium"
     lore:
       - "§8Drill Part"
@@ -1315,7 +1312,6 @@ items:
     material: paper
     name: "Titanium-Infused Fuel Tank"
     rarity: RARE
-    unavailable: "Needs the Drill Mechanic (fuel tank slot)"
     source: "Forge (Heart of the Mountain 5, 30 seconds): 5 Refined Diamond, 10 Refined Titanium, 5 Fuel Tank and a Mithril-Infused Fuel Tank"
     lore:
       - "§8Drill Part"
@@ -1519,7 +1515,6 @@ items:
     material: paper
     name: "Tungsten Regulator"
     rarity: RARE
-    unavailable: "Needs the Drill Mechanic (upgrade module slot)"
     source: "Forge (Heart of the Mountain 8, 18 hours): Perfect Opal Gemstone, 5 Fuel Tank and 5 Tungsten Plate"
     lore:
       - "§8Drill Part"

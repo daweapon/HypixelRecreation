@@ -4,6 +4,8 @@ import java.util.List;
 import net.minestom.server.entity.EntityType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
+import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
+import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
@@ -29,7 +31,8 @@ public record SeaCreatureProfile(
         List<MobType> mobTypes,
         SeaCreatureBehaviour behaviour,
         SkyBlockLootTable lootTable,
-        @Nullable String catchMessage
+        @Nullable String catchMessage,
+        @Nullable SkyBlockEnchantment droppedBook
 ) {
 
     public ItemStatistics asBaseStatistics() {
@@ -63,6 +66,7 @@ public record SeaCreatureProfile(
         private SeaCreatureBehaviour behaviour = SeaCreatureBehaviour.passive(8);
         private SkyBlockLootTable lootTable = null;
         private String catchMessage = null;
+        private SkyBlockEnchantment droppedBook = null;
 
         private Builder(String id) {
             this.id = id;
@@ -82,12 +86,16 @@ public record SeaCreatureProfile(
         public Builder behaviour(SeaCreatureBehaviour behaviour) { this.behaviour = behaviour; return this; }
         public Builder lootTable(SkyBlockLootTable lootTable) { this.lootTable = lootTable; return this; }
         public Builder catchMessage(String catchMessage) { this.catchMessage = catchMessage; return this; }
+        public Builder droppedBook(EnchantmentType type, int level) {
+            this.droppedBook = new SkyBlockEnchantment(type, level);
+            return this;
+        }
 
         public SeaCreatureProfile build() {
             return new SeaCreatureProfile(
                     id, displayName, level, entityType,
                     health, damage, speed, damageCooldownMs,
-                    fishingXpReward, xpOrbs, mobTypes, behaviour, lootTable, catchMessage
+                    fishingXpReward, xpOrbs, mobTypes, behaviour, lootTable, catchMessage, droppedBook
             );
         }
     }

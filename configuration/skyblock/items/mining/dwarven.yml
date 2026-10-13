@@ -130,6 +130,11 @@ items:
   - id: VOLTA
     material: player_head
     name: "Volta"
+    lore:
+      - "§7Adds §2+10,000 Fuel §7to a refuelable"
+      - "§7machine."
+      - ""
+      - "§8§oBzzzt"
     rarity: RARE
     components:
       - id: SELLABLE

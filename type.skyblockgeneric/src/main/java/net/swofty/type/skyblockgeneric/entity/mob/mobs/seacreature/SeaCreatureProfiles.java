@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
 import net.minestom.server.entity.EntityType;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
@@ -270,7 +271,9 @@ public final class SeaCreatureProfiles {
                     new SkyBlockLootTable.LootRecord(ItemType.FLAWED_AMETHYST_GEM, 1, 20),
                     new SkyBlockLootTable.LootRecord(ItemType.FLAWED_JADE_GEM, 1, 20),
                     new SkyBlockLootTable.LootRecord(ItemType.FLAWED_SAPPHIRE_GEM, 1, 20),
+                    new SkyBlockLootTable.LootRecord(ItemType.ENCHANTED_BOOK, 1, 2),
                     new SkyBlockLootTable.LootRecord(ItemType.DYE_AQUAMARINE, 1, 0.002)))
+            .droppedBook(EnchantmentType.PISCARY, 6)
             .build();
 
     public static final List<SeaCreatureProfile> CANONICAL = List.of(

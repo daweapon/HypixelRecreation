@@ -38,6 +38,11 @@ import net.swofty.type.skyblockgeneric.item.set.ArmorSetRegistry;
 import net.swofty.type.skyblockgeneric.item.set.impl.ArmorSet;
 import net.swofty.type.skyblockgeneric.item.set.impl.TieredArmorSet;
 import net.swofty.type.skyblockgeneric.potion.PotionEffectType;
+import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeDrillData.DrillData;
+import net.swofty.type.skyblockgeneric.drill.DrillFuel;
+import net.swofty.type.skyblockgeneric.drill.DrillPart;
+import net.swofty.type.skyblockgeneric.drill.DrillParts;
+import net.swofty.type.skyblockgeneric.drill.DrillSlot;
 import net.swofty.type.skyblockgeneric.text.LoreText;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -45,6 +50,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 public class ItemLore {
+	private static final Map<DrillSlot, List<String>> DRILL_SLOT_HINTS = Map.of(
+			DrillSlot.TANK, List.of("Increases fuel capacity with part installed."),
+			DrillSlot.ENGINE, List.of("Increases <6>Mining Speed <7>with part installed."),
+			DrillSlot.MODULE, List.of("Applies a passive upgrade with part installed."));
+
 	private static final List<ItemStatistic> RENDERED_STATISTICS = List.of(
 			ItemStatistic.DAMAGE, ItemStatistic.STRENGTH, ItemStatistic.CRITICAL_CHANCE, ItemStatistic.CRITICAL_DAMAGE,
 			ItemStatistic.SEA_CREATURE_CHANCE, ItemStatistic.BONUS_ATTACK_SPEED, ItemStatistic.ABILITY_DAMAGE, ItemStatistic.HEALTH, ItemStatistic.DEFENSE,
@@ -92,6 +102,7 @@ public class ItemLore {
 		fillRune(lore);
 		fillCustomLore(lore);
 		fillConfigLore(lore);
+		fillDrill(lore);
 		fillAccessoryEffects(lore);
 		fillAbilities(lore);
 		fillReforgeAbility(lore);
@@ -391,6 +402,27 @@ public class ItemLore {
 			effect.text().forEach(line -> LoreText.grayWrapped(line).forEach(section::line));
 			if (!effect.kind().isActive()) section.line(LoreText.darkGray("Not active yet"));
 		}
+	}
+
+	private static void fillDrill(LoreText lore) {
+		SkyBlockItem item = lore.item();
+		if (!item.hasComponent(DrillComponent.class)) return;
+		DrillData data = item.getAttributeHandler().getDrillData();
+		TextBody.Section section = lore.section(LoreText.Sections.CUSTOM_AFTER_ABILITY);
+		for (DrillSlot slot : DrillSlot.values()) {
+			DrillPart part = DrillParts.get(DrillParts.installed(data, slot));
+			if (part == null) {
+				section.line(Text.of("<7>{}: <c>Not Installed", slot.getDisplayName()));
+				DRILL_SLOT_HINTS.get(slot).forEach(hint -> section.line(LoreText.gray(hint)));
+			} else {
+				section.line(Text.of("<7>{}: {}", slot.getDisplayName(), new SkyBlockItem(part.itemId()).getDisplayNameText()));
+				DrillParts.effectLines(part).forEach(line -> LoreText.grayWrapped(line).forEach(section::line));
+			}
+			section.line(Text.empty());
+		}
+		section.line(LoreText.gray("Apply Drill Parts to this Drill by talking to a <2>Drill Mechanic<7>!"));
+		section.line(Text.empty());
+		section.line(Text.of("<7>Fuel: <2>{}<8>/{}", DrillFuel.format(data.fuel()), DrillFuel.formatCapacity(DrillFuel.capacity(data))));
 	}
 
 	private static void fillConfigLore(LoreText lore) {

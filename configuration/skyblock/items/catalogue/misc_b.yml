@@ -1015,7 +1015,6 @@ items:
     material: diamond_axe
     name: "Scavenged Diamond Axe"
     rarity: SPECIAL
-    unavailable: "Metal Detector digging in the Mines of Divan isn't built"
     source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
     lore:
       - "§8Quest Item"
@@ -1026,7 +1025,6 @@ items:
     material: wooden_axe
     name: "Scavenged Emerald Hammer"
     rarity: SPECIAL
-    unavailable: "Metal Detector digging in the Mines of Divan isn't built"
     source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
     lore:
       - "§8Quest Item"
@@ -1037,7 +1035,6 @@ items:
     material: golden_axe
     name: "Scavenged Golden Hammer"
     rarity: SPECIAL
-    unavailable: "Metal Detector digging in the Mines of Divan isn't built"
     source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
     lore:
       - "§8Quest Item"
@@ -1060,7 +1057,6 @@ items:
     material: diamond_sword
     name: "Scavenged Lapis Sword"
     rarity: SPECIAL
-    unavailable: "Metal Detector digging in the Mines of Divan isn't built"
     source: "20% chest drop from Metal Detector treasure in the Mines of Divan"
     lore:
       - "§8Quest Item"
@@ -1078,6 +1074,9 @@ items:
       - "§7Detector beeps louder and faster"
       - "§7the closer you are to a buried"
       - "§7treasure."
+    components:
+      - id: INTERACTABLE
+        handler_id: METAL_DETECTOR_DIG
   - id: DWARVEN_OS_BLOCK_BRAN
     material: player_head
     name: "Dwarven O's Block Bran"

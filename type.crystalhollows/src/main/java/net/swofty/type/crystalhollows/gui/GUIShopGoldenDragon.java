@@ -26,7 +26,8 @@ public class GUIShopGoldenDragon extends ShopView {
     public void initializeShopItems() {
         SkyBlockItem egg = new SkyBlockItem(ItemType.GOLDEN_DRAGON_PET);
         egg.getAttributeHandler().setRarity(Rarity.LEGENDARY);
-        attachItem(ShopItem.Single(egg, 1, eggPrice()));
+        attachItem(ShopItem.Single(egg, 1, eggPrice())
+                .onPurchase(player -> player.getAchievementHandler().completeAchievement("skyblock.the_golden_dragon_s_egg")));
     }
 
     public static ShopPrice eggPrice() {

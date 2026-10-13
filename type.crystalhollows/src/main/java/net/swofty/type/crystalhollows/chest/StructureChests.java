@@ -4,6 +4,7 @@ import net.minestom.server.coordinate.Point;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.commons.text.Text;
 import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
+import net.swofty.type.crystalhollows.quest.CrystalHollowsProgress;
 import net.swofty.type.skyblockgeneric.crystalhollows.TreasureLoot;
 import net.swofty.type.skyblockgeneric.crystalhollows.TreasurePool;
 import net.swofty.type.skyblockgeneric.commission.CommissionProgress;
@@ -26,7 +27,7 @@ public final class StructureChests {
     public static final Path FILE = Path.of("./configuration/skyblock/crystal_hollows/chests.yml");
     private static final Set<String> OPENED = ConcurrentHashMap.newKeySet();
 
-    public record ChestSpec(String id, String structure, String anchor, TreasurePool pool) {
+    public record ChestSpec(String id, String structure, String anchor, TreasurePool pool, boolean requiresJungleKey) {
         public Pos position() {
             return CrystalHollowsLayout.anchor(structure, anchor);
         }
@@ -43,6 +44,10 @@ public final class StructureChests {
         return loaded;
     }
 
+    public static void reload() {
+        specs = null;
+    }
+
     @SuppressWarnings("unchecked")
     private static List<ChestSpec> read() {
         if (!Files.exists(FILE)) return List.of();
@@ -51,7 +56,8 @@ public final class StructureChests {
             List<ChestSpec> list = new ArrayList<>();
             for (Map<String, Object> entry : (List<Map<String, Object>>) root.getOrDefault("chests", List.of())) {
                 list.add(new ChestSpec((String) entry.get("id"), (String) entry.get("structure"),
-                        (String) entry.get("anchor"), TreasurePool.valueOf((String) entry.get("pool"))));
+                        (String) entry.get("anchor"), TreasurePool.valueOf((String) entry.get("pool")),
+                        Boolean.TRUE.equals(entry.get("requires_jungle_key"))));
             }
             return List.copyOf(list);
         } catch (IOException e) {
@@ -69,6 +75,10 @@ public final class StructureChests {
     }
 
     public static void open(SkyBlockPlayer player, ChestSpec spec) {
+        if (spec.requiresJungleKey() && !CrystalHollowsProgress.hasActiveJungleKey(player.getUuid())) {
+            player.sendMessage(Text.of("<c>The chest is sealed. You need an active Jungle Key to open it!"));
+            return;
+        }
         if (!OPENED.add(player.getUuid() + ":" + spec.id())) {
             player.sendMessage(Text.of("<c>You have already looted this chest!"));
             return;

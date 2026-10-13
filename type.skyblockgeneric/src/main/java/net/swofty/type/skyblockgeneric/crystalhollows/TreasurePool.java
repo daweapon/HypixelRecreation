@@ -9,6 +9,7 @@ public enum TreasurePool {
     LOW(build(false)),
     HIGH(build(true)),
     STRUCTURE(structure()),
+    JUNGLE_TEMPLE(jungleTemple()),
     SLUDGE(sludge()),
     FAIRY_GROTTO(grotto());
 
@@ -56,6 +57,12 @@ public enum TreasurePool {
         List<Entry> list = new ArrayList<>(build(true));
         list.add(Entry.cut(30, 1_000, 4_000));
         list.add(Entry.of(0.5, ItemType.RUBY_CRYSTAL, 1, 1));
+        return List.copyOf(list);
+    }
+
+    private static List<Entry> jungleTemple() {
+        List<Entry> list = new ArrayList<>(structure());
+        list.add(Entry.of(3, ItemType.JUNGLE_HEART, 1, 1));
         return List.copyOf(list);
     }
 

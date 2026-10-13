@@ -364,6 +364,18 @@ class PetPerksBatch4Test {
     }
 
     @Test
+    void crystalHollowsPerksAreWiredOrSayWhyNot() {
+        for (String perk : new String[]{"Dispersion", "Cannibal"}) {
+            assertEquals(PetAbilityKind.TEXT, ability(ItemType.BAL_PET, perk, Rarity.LEGENDARY).getKind());
+            assertEquals(null, ability(ItemType.BAL_PET, perk, Rarity.LEGENDARY).getUnavailable());
+        }
+        assertEquals(PetAbilityKind.STAT, ability(ItemType.BAL_PET, "Furnace", Rarity.LEGENDARY).getKind());
+        assertEquals(PetAbilityKind.TEXT, ability(ItemType.MOLE_PET, "Magnetic Nose", Rarity.LEGENDARY).getKind());
+        assertEquals(PetAbilityKind.HANDLER, ability(ItemType.AMMONITE_PET, "Expert Cave Fisher", Rarity.LEGENDARY).getKind());
+        assertEquals("Needs pet riding", ability(ItemType.ARMADILLO_PET, "Tunneller", Rarity.COMMON).getUnavailable());
+    }
+
+    @Test
     void witherSkeletonDeathsTouchDealsAThirdPerSecondAndNeverStacks() {
         for (int level : new int[]{1, 50, 100}) {
             assertEquals(2.0 * level, ability(ItemType.WITHER_SKELETON_PET, "Death's Touch", Rarity.LEGENDARY).valuesAt(Rarity.LEGENDARY, level)[0], 1e-9);

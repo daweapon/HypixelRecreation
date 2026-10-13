@@ -46,8 +46,19 @@ public final class HeatService {
         return HEAT.getOrDefault(player.getUuid(), 0.0);
     }
 
+    public static void set(SkyBlockPlayer player, double value) {
+        double clamped = Math.max(0, Math.min(DEATH_HEAT, value));
+        if (clamped <= 0) HEAT.remove(player.getUuid());
+        else HEAT.put(player.getUuid(), clamped);
+    }
+
     public static void reset(SkyBlockPlayer player) {
         HEAT.remove(player.getUuid());
+    }
+
+    public static void reduce(SkyBlockPlayer player, double amount) {
+        if (amount <= 0) return;
+        HEAT.computeIfPresent(player.getUuid(), (_, heat) -> heat - amount > 0 ? heat - amount : null);
     }
 
     public static double resistance(SkyBlockPlayer player) {

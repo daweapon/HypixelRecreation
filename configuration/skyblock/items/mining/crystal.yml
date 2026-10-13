@@ -185,6 +185,11 @@ items:
   - id: OIL_BARREL
     material: player_head
     name: "Oil Barrel"
+    lore:
+      - "§7Adds §2+10,000 Fuel §7to a refuelable"
+      - "§7machine."
+      - ""
+      - "§8§o100% unrenewable energy!"
     rarity: UNCOMMON
     components:
       - id: SKULL_HEAD
@@ -212,7 +217,19 @@ items:
     material: player_head
     name: "Prehistoric Egg"
     rarity: COMMON
+    lore:
+      - "§7After §bwalking §7a certain amount of blocks, has a §achance"
+      - "§7to spawn an §fArmadillo§7!"
+      - ""
+      - "§b4,000§7: §a50% §7for a §fCommon Armadillo!"
+      - "§b10,000§7: §a50% §7for an §aUncommon Armadillo!"
+      - "§b20,000§7: §a50% §7for a §9Rare Armadillo!"
+      - "§b40,000§7: §a50% §7for an §5Epic Armadillo!"
+      - "§b100,000§7: §a100% §7for a §6Legendary Armadillo!"
     components:
+      - id: LORE_UPDATE
+        handler_id: PREHISTORIC_EGG
+        is_absolute: false
       - id: SKULL_HEAD
         texture: bc8b15e85ed225c21c32367da7be244779e36afe7f7563a6a570a717cb5be1b1
       - id: SELLABLE

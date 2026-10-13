@@ -48,6 +48,15 @@ public class GUIEssenceShop extends StatelessView {
 
                 <7>Your {} Essence: <d>{}""", essence.getDisplayName(), entry.colour(), essence.getDisplayName(),
                 essence.getDisplayName(), StringUtility.commaify(Essences.get((SkyBlockPlayer) c.player(), essence))));
+        if (essence == EssenceType.DIAMOND) {
+            layout.slot(50, (_, _) -> ItemStacks.item(Material.DIAMOND_PICKAXE, """
+                    <a>Gemma's Wares
+                    <7>Spend Diamond Essence on the
+                    <6>Perfectly Cut Diamond <7>and the
+                    <6>Mining Off Camera <7>Drone Mod.
+
+                    <e>Click to browse!"""), (_, c) -> c.player().openView(new GUIShopGemma()));
+        }
         EssenceShop<CataloguePerk> shop = EssenceShops.shop(essence).orElseThrow();
         List<CataloguePerk> perks = shop.perks();
         for (int i = 0; i < perks.size() && i < SLOTS.length; i++) {

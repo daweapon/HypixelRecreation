@@ -46,7 +46,9 @@ public final class StructureCatalogue {
         }
         Map<String, Pos> anchors = new LinkedHashMap<>();
         Map<String, Object> rawAnchors = (Map<String, Object>) entry.getOrDefault("anchors", Map.of());
-        rawAnchors.forEach((name, value) -> anchors.put(name, pos((Map<String, Object>) value)));
+        rawAnchors.forEach((name, value) -> {
+            if (value != null && !((Map<String, Object>) value).isEmpty()) anchors.put(name, pos((Map<String, Object>) value));
+        });
         return new StructureSpec(
                 (String) entry.get("id"),
                 (String) entry.get("name"),

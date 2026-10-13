@@ -813,6 +813,11 @@ public class SkyBlockPlayer extends HypixelPlayer {
             return -1;
         }
 
+        if (net.swofty.type.skyblockgeneric.drill.DrillFuel.isEmpty(item)) {
+            net.swofty.type.skyblockgeneric.drill.DrillFuel.warnEmpty(this);
+            return -1;
+        }
+
         // Handle vanilla-like fixed break times (e.g., logs with axes)
         if (handler.usesVanillaBreakTime()) {
             return handler.getBreakTimeForTool(item);

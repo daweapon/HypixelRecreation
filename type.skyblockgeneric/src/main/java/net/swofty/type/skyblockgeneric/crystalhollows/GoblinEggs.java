@@ -1,7 +1,9 @@
 package net.swofty.type.skyblockgeneric.crystalhollows;
 
 import net.minestom.server.MinecraftServer;
+import net.minestom.server.coordinate.Point;
 import net.minestom.server.coordinate.Pos;
+import net.minestom.server.item.Material;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.HypixelConst;
@@ -14,6 +16,10 @@ import net.swofty.type.skyblockgeneric.essence.EssenceType;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableItemConfig;
 import net.swofty.type.skyblockgeneric.item.handlers.interactable.InteractableRegistry;
+import net.swofty.type.skyblockgeneric.loottable.LootRoll;
+import net.swofty.type.skyblockgeneric.region.RegionType;
+import net.swofty.type.skyblockgeneric.region.mining.MineableBlock;
+import net.swofty.type.skyblockgeneric.region.mining.MiningBlockClassification;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Map;
@@ -28,6 +34,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class GoblinEggs {
     public static final String HANDLER_ID = "GOBLIN_EGG_THROW";
     private static final double DIAMOND_BASE_CHANCE = 3.33;
+    private static final double ORE_CHANCE = 0.1;
+    private static final double HARD_STONE_CHANCE = 0.01;
     private static final long LIFETIME_TICKS = 2400;
     private static final Map<ItemType, Double> GOLDEN_CHANCE = Map.of(
             ItemType.GOBLIN_EGG, 2D,
@@ -58,10 +66,42 @@ public final class GoblinEggs {
         if (player.getInstance() == null || player.getItemInMainHand().isAir()) return;
         player.setItemInMainHand(player.getItemInMainHand().withAmount(player.getItemInMainHand().amount() - 1));
         if (HypixelConst.isIslandServer()) return;
+        if (!LootRoll.roll(player.getUuid(), null, goldenChance(egg))) return;
+        spawnGoblin(player, landingSpot(player));
+    }
+
+    public static double oreSpawnChance(Material material, RegionType region) {
+        if (HardStone.isHardStone(material, region)) return HARD_STONE_CHANCE;
+        if (CrystalHollowsZones.isCrystalHollows(region)) {
+            if (CrystalHollowsOre.of(material, region) != null || isMithril(material)) return ORE_CHANCE;
+            return 0;
+        }
+        return isCustomOre(material) ? ORE_CHANCE : 0;
+    }
+
+    public static void spawnFromOre(SkyBlockPlayer player, Material material, RegionType region, Point point) {
+        if (HypixelConst.isIslandServer() || player.getInstance() == null) return;
+        if (!LootRoll.roll(player.getUuid(), null, oreSpawnChance(material, region))) return;
+        spawnGoblin(player, new Pos(point.x() + 0.5, point.y() + 1, point.z() + 0.5));
+    }
+
+    private static boolean isMithril(Material material) {
+        for (MineableBlock block : MineableBlock.values()) {
+            if (block.getMaterial() == material && block.name().startsWith("MITHRIL")) return true;
+        }
+        return false;
+    }
+
+    private static boolean isCustomOre(Material material) {
+        for (MineableBlock block : MineableBlock.values()) {
+            if (block.getMaterial() == material && block.getBlockType().equals(MiningBlockClassification.oreBlock())) return true;
+        }
+        return false;
+    }
+
+    private static void spawnGoblin(SkyBlockPlayer player, Pos landing) {
         ThreadLocalRandom random = ThreadLocalRandom.current();
-        if (random.nextDouble() * 100 >= goldenChance(egg)) return;
         SkyBlockMob goblin = random.nextDouble() * 100 < diamondChance(player) ? new DiamondGoblin() : new GoldenGoblin();
-        Pos landing = landingSpot(player);
         goblin.setInstance(player.getInstance(), landing);
         if (goblin instanceof GoldenGoblin) {
             player.getAchievementHandler().addProgressByTrigger("skyblock.the_next_generation_trigger", 1);

@@ -92,7 +92,7 @@ class GatheringPetsTest {
         PetComponent ammonite = component(ItemType.AMMONITE_PET);
         assertTrue(ability(ammonite, "Heart of the Sea").isActive());
         assertTrue(ability(ammonite, "Gift of the Ammonite").isActive());
-        assertFalse(ability(ammonite, "Expert Cave Fisher").isActive());
+        assertTrue(ability(ammonite, "Expert Cave Fisher").isActive());
         assertTrue(ability(component(ItemType.BAT_PET), "Nightmare").isActive());
         assertTrue(ability(component(ItemType.JADE_DRAGON_PET), "Symbiosis").isActive());
         assertFalse(ability(component(ItemType.ROCK_PET), "Rideable").isActive());

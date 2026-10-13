@@ -65,7 +65,7 @@ public final class HotmAbilities {
     public static double cooldownSeconds(SkyBlockPlayer player, HotmAbility ability) {
         double seconds = ability.cooldown(HotmService.abilityLevel(player));
         if (HotmService.skyMallBuff(player) == HotmSkyMallBuff.COOLDOWN) seconds *= 0.8;
-        return seconds;
+        return seconds * (1 - net.swofty.type.skyblockgeneric.drill.DrillFuel.heldCooldownReductionPercent(player) / 100);
     }
 
     public static boolean activate(SkyBlockPlayer player, SkyBlockItem held) {

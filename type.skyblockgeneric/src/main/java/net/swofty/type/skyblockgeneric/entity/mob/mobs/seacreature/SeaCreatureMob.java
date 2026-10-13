@@ -4,7 +4,10 @@ import java.util.List;
 import net.minestom.server.entity.ai.GoalSelector;
 import net.minestom.server.entity.ai.TargetSelector;
 import net.minestom.server.item.Material;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
+import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.generic.gui.inventory.item.GUIMaterial;
 import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
@@ -85,6 +88,14 @@ public final class SeaCreatureMob extends BestiaryMob {
     @Override
     public String getMobID() {
         return live().id();
+    }
+
+    @Override
+    public SkyBlockItem createDrop(ItemType type, int amount) {
+        SkyBlockItem drop = super.createDrop(type, amount);
+        SkyBlockEnchantment book = live().droppedBook();
+        if (type == ItemType.ENCHANTED_BOOK && book != null) drop.getAttributeHandler().addEnchantment(book);
+        return drop;
     }
 
     @Override

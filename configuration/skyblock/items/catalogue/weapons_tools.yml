@@ -847,8 +847,6 @@ items:
     source: "Forge (HotM 7): Titanium Drill DR-X655, 50,000,000 coins, Divan's Alloy"
     lore:
       - "§4❣ §cRequires §5Heart of the Mountain Tier 7§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1060,8 +1058,6 @@ items:
       - "§dGemstones§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 4§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1083,8 +1079,6 @@ items:
       - "§dGemstones§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 4§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1106,8 +1100,6 @@ items:
       - "§dGemstones§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1129,8 +1121,6 @@ items:
       - "§dGemstones§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 6§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1457,8 +1447,6 @@ items:
       - "§7Grants §2+20% Mithril Powder§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 2§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1477,8 +1465,6 @@ items:
       - "§7Grants §2+40% Mithril Powder§7."
       - ""
       - "§4❣ §cRequires §5Heart of the Mountain Tier 3§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1637,8 +1623,6 @@ items:
     source: "Forge (HotM 5, 4 hours): Fuel Tank, Drill Motor, 8 Refined Mithril, 8 Refined Titanium, 6 Golden Plate"
     lore:
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1655,8 +1639,6 @@ items:
     source: "Forge (HotM 5): Titanium Drill DR-X355, 5 Mithril Plate, 12 Refined Titanium, 10 Refined Diamond"
     lore:
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1673,8 +1655,6 @@ items:
     source: "Forge (HotM 5): Titanium Drill DR-X455, 20 Refined Diamond, 2 Enchanted Iron Block, 20 Plasma, 16 Refined Titanium, 10 Mithril Plate"
     lore:
       - "§4❣ §cRequires §5Heart of the Mountain Tier 5§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL
@@ -1691,8 +1671,6 @@ items:
     source: "Forge (HotM 6): Titanium Drill DR-X555, 16 Gemstone Mixture, Flawless Ruby, 10 Mithril Plate, 32 Refined Titanium, 30 Corleonite, 5 Refined Diamond"
     lore:
       - "§4❣ §cRequires §5Heart of the Mountain Tier 6§c."
-      - ""
-      - "§8Fuel and drill parts are not active yet"
     components:
       - id: DRILL
       - id: ITEM_MODEL

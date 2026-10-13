@@ -53,7 +53,10 @@ public final class HotmService {
 
     public static double perkValue(SkyBlockPlayer player, String perkId) {
         HotmPerk perk = HotmRegistry.get().perk(perkId);
-        return perk == null ? 0 : perk.value(data(player).activeLevel(perkId));
+        if (perk == null) return 0;
+        int level = data(player).activeLevel(perkId);
+        if (level > 0) level += net.swofty.type.skyblockgeneric.drill.DrillFuel.heldPerkLevelBonus(player);
+        return perk.value(level);
     }
 
     public static boolean onMiningIsland() {
