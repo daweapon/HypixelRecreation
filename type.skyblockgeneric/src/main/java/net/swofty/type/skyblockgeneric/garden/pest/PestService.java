@@ -11,7 +11,10 @@ import net.swofty.type.skyblockgeneric.garden.feast.FeastService;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.GardenProgress;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.item.equipment.EquipmentBonuses;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,6 +25,8 @@ import java.util.TreeSet;
 import java.util.concurrent.ThreadLocalRandom;
 
 public final class PestService {
+    public static final String PEST_VEST = "PEST_VEST";
+
     private PestService() {
     }
 
@@ -40,9 +45,19 @@ public final class PestService {
         return PestRules.fortuneLossPercent(profile.pests().aliveCount(), bonusChance(player, profile));
     }
 
-    public static int cooldownReduction(SkyBlockPlayer player) {
-        long pieces = EquipmentBonuses.wornItems(player).keySet().stream().filter(id -> id.startsWith("PESTHUNTERS_")).count();
-        return (int) pieces * PestRules.COOLDOWN_REDUCTION_PER_PESTHUNTER_PIECE;
+    public static int pesthunterPieces(SkyBlockPlayer player) {
+        return (int) EquipmentBonuses.wornItems(player).keySet().stream().filter(id -> id.startsWith("PESTHUNTERS_")).count();
+    }
+
+    public static double cooldownReduction(SkyBlockPlayer player) {
+        double vest = EquipmentBonuses.wornItems(player).containsKey(PEST_VEST) ? PestRules.COOLDOWN_REDUCTION_PEST_VEST : 0;
+        return pesthunterPieces(player) * PestRules.COOLDOWN_REDUCTION_PER_PESTHUNTER_PIECE + vest
+                + ReforgeLoadout.pestCooldownReduction(player)
+                + ElectionPerks.bonus(SkyBlockMayor.Perk.PEST_ERADICATOR);
+    }
+
+    public static double pestFortune(SkyBlockPlayer player) {
+        return PestRules.eradicatorFortune(pesthunterPieces(player)) + ReforgeLoadout.pestFortune(player);
     }
 
     public static double fortuneBoost(GardenProfile profile, long now) {
@@ -57,8 +72,9 @@ public final class PestService {
         long now = System.currentTimeMillis();
         if (now < data.getCooldownUntil() || data.aliveCount() >= PestData.MAX_ALIVE) return;
         PestData.Spray spray = data.sprayOn(plot, now);
-        if (ThreadLocalRandom.current().nextDouble() * 100 >= PestRules.spawnChancePercent(spray != null)) return;
-        int chance = bonusChance(player, profile) + (spray != null ? PestRules.SPRAY_BONUS_CHANCE : 0);
+        PestNozzle nozzle = spray == null ? null : PestNozzle.parse(spray.nozzle());
+        if (ThreadLocalRandom.current().nextDouble() * 100 >= PestRules.spawnChancePercent(nozzle == null ? 1 : nozzle.spawnMultiplier())) return;
+        int chance = bonusChance(player, profile) + (nozzle != null ? nozzle.bonusChance() : 0);
         int count = PestRules.pestsPerSpawn(chance, ThreadLocalRandom.current().nextDouble());
         spawn(player, farmedPlotOrNeighbour(profile, plot), count, null);
     }
@@ -120,7 +136,8 @@ public final class PestService {
         int total = 0;
         for (int i = 0; i < pool.size(); i++) {
             weights[i] = PestRules.BASE_WEIGHT
-                    + (spray != null && spray.material().equals(pool.get(i).spray()) ? PestRules.SPRAY_ATTRACT_WEIGHT : 0);
+                    + (spray != null && spray.material().equals(pool.get(i).spray()) ? PestRules.SPRAY_ATTRACT_WEIGHT : 0)
+                    + (int) PestVinyls.weight(profile.pests().getPlayingVinyl(), pool.get(i).id());
             total += weights[i];
         }
         int roll = ThreadLocalRandom.current().nextInt(total);
@@ -154,6 +171,8 @@ public final class PestService {
         PestTraps.tick(data, now);
         PestWorld.reconcile(instance, data);
         PestWorld.reconcileTraps(instance, data);
+        PestWorld.reconcileDisco(instance, data);
+        PestWorld.indicate(instance, data);
     }
 
     private static void offlineSpawns(SkyBlockPlayer player, GardenProfile profile, PestData data, long now) {
@@ -168,8 +187,10 @@ public final class PestService {
             int plot = plots.get(ThreadLocalRandom.current().nextInt(plots.size()));
             PestCatalogue.Pest type = pickType(profile, plot, now);
             if (type == null) continue;
-            data.getAlive().add(PestData.Alive.create(type.id(), plot));
-            hit.add(plot);
+            PestData.Alive alive = PestDisco.attracts(data, type.id())
+                    ? PestDisco.spawnNear(data.getDisco(), type.id()) : PestData.Alive.create(type.id(), plot);
+            data.getAlive().add(alive);
+            hit.add(alive.getPlot());
         }
         if (hit.isEmpty()) return;
         Gardens.save(player, profile);

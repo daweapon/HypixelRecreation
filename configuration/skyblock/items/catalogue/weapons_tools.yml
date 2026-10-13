@@ -1277,6 +1277,8 @@ items:
       - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: REFORGABLE
+        reforge_type: VACUUMS
       - id: INTERACTABLE
         handler_id: PEST_VACUUM
       - id: LORE_UPDATE
@@ -1310,10 +1312,10 @@ items:
       - "§7more likely to appear when certain"
       - "§7vinyls are playing."
       - ""
-      - "§7Now Playing: §cNone"
-      - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: REFORGABLE
+        reforge_type: VACUUMS
       - id: INTERACTABLE
         handler_id: PEST_VACUUM
       - id: LORE_UPDATE
@@ -1529,6 +1531,8 @@ items:
       - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: REFORGABLE
+        reforge_type: VACUUMS
       - id: INTERACTABLE
         handler_id: PEST_VACUUM
       - id: LORE_UPDATE
@@ -1558,6 +1562,8 @@ items:
       - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: REFORGABLE
+        reforge_type: VACUUMS
       - id: INTERACTABLE
         handler_id: PEST_VACUUM
       - id: LORE_UPDATE
@@ -1587,6 +1593,8 @@ items:
       - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: REFORGABLE
+        reforge_type: VACUUMS
       - id: INTERACTABLE
         handler_id: PEST_VACUUM
       - id: LORE_UPDATE

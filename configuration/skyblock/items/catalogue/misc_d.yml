@@ -2570,16 +2570,16 @@ items:
     material: paper
     name: "Overclocker 3000"
     rarity: LEGENDARY
-    source: "Garden visitors, Jacob's contests, crops, the Greenhouse (0.05%) and Pests, with pity"
+    source: "The Greenhouse (0.05% base chance, raised by pity); the visitor, contest, crop and pest sources are not wired"
     lore:
-      - "§8Combinable in Anvil"
       - ""
       - "§7Permanently increases the maximum"
       - "§7level of a §eFarming Tool §7by §a+1§7."
       - ""
       - "§8Can be applied up to 10 times."
-      - "§8Requires tool level 40+ to apply."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: OVERCLOCKER_3000
       - id: SELLABLE
         value: 250000.0
       - id: ITEM_MODEL
@@ -2810,7 +2810,6 @@ items:
     material: player_head
     name: "A Beginner's Guide to Pesthunting"
     rarity: LEGENDARY
-    unavailable: "Needs Garden Pests"
     source: "Pesthunter Phillip: 500 Pests, or a Superpairs reward"
     lore:
       - "§8Combinable in Anvil"
@@ -2826,6 +2825,8 @@ items:
       - "§8§oexist anymore - looks like someone"
       - "§8§odid a good job!"
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: PESTHUNTING_GUIDE
       - id: SKULL_HEAD
         texture: 38a7c9e0c1dab89e14b788d96157ab0152136f8fd7a23d6db3eebe555d448ec3
       - id: SELLABLE
@@ -3041,8 +3042,7 @@ items:
     material: paper
     name: "Plot Eraser"
     rarity: RARE
-    unavailable: "Needs the Garden"
-    source: "Crafted from 32 Enchanted Wild Rose, 1 Plumber Sponge"
+    source: "Crafted from 32 Enchanted Wild Rose, 1 Plumber's Sponge"
     lore:
       - "§7Right-click while on a plot to"
       - "§ainstantly clean §7it, saving you the"
@@ -3050,6 +3050,8 @@ items:
       - "§7However, the §9Plot Eraser §7gets"
       - "§7comsumed in the process."
     components:
+      - id: INTERACTABLE
+        handler_id: PLOT_ERASER
       - id: SELLABLE
         value: 10240.0
       - id: DEFAULT_CRAFTABLE
@@ -3296,7 +3298,6 @@ items:
     material: paper
     name: "Portable Washer"
     rarity: RARE
-    unavailable: "Needs the Garden"
     source: "SkyMart: 20,000 Coins"
     lore:
       - "§8Consumable"
@@ -3309,6 +3310,8 @@ items:
       - ""
       - "§eRight-click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: PORTABLE_WASHER
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pests/portable_washer
   - id: POSTCARD

@@ -68,6 +68,15 @@ public final class GardenPlotCleaner {
         finish(player, plot, profile);
     }
 
+    public static boolean eraseWithoutClearing(SkyBlockPlayer player, int plot) {
+        GardenProfile profile = Gardens.profile(player);
+        if (!profile.isPlotUnlocked(plot) || profile.isPlotCleaned(plot)) return false;
+        profile.markPlotCleaned(plot);
+        Gardens.save(player, profile);
+        GardenQuests.plotCleaned(player);
+        return true;
+    }
+
     private static void afterClearing(SkyBlockPlayer player, Instance instance, int plot, PlotState state, GardenProfile profile) {
         if (!state.leavesDecayed && GardenCleaning.leavesDecay(state.total, state.remaining)) {
             state.leavesDecayed = true;

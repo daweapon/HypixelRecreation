@@ -13,7 +13,6 @@ import java.util.Set;
 import java.util.random.RandomGenerator;
 
 public final class MutationSpread {
-    public static final int MAX_NEIGHBOURS = 8;
     private static final String FIRE = "FIRE";
 
     private MutationSpread() {
@@ -28,7 +27,7 @@ public final class MutationSpread {
         List<Integer> spawned = new ArrayList<>();
         List<Integer> empty = new ArrayList<>();
         for (int slot = 0; slot < GreenhouseData.SLOTS; slot++) {
-            if (bed.getUnlocked()[slot] && !bed.getPlants().containsKey(slot)) empty.add(slot);
+            if (bed.getUnlocked()[slot] && !bed.occupied(slot)) empty.add(slot);
         }
         Collections.shuffle(empty, new java.util.Random(random.nextLong()));
         List<MutationCatalogue.Mutation> candidates = new ArrayList<>(MutationCatalogue.get().all());
@@ -51,23 +50,39 @@ public final class MutationSpread {
         return spawned;
     }
 
-    public static boolean eligible(MutationCatalogue.Mutation mutation, GreenhouseData.Bed bed, int slot, Map<Integer, String> placed) {
+    public static boolean eligible(MutationCatalogue.Mutation mutation, GreenhouseData.Bed bed, int anchor, Map<Integer, String> placed) {
         if (mutation.chancePercent() <= 0) return false;
+        int size = mutation.footprint();
+        if (!footprintFree(mutation, bed, anchor, placed)) return false;
         return switch (mutation.mode()) {
-            case "ADJACENT_ALL" -> conditionsMet(mutation, neighbourTypes(bed, slot, Map.of()));
-            case "UNIQUE_BASE" -> uniqueBase(neighbourTypes(bed, slot, Map.of())) >= 12 / 2;
-            case "SPECIAL" -> mutation.id().equals("LONELILY") && !bed.getPlants().isEmpty() && isolated(bed, slot, Map.of());
+            case "ADJACENT_ALL" -> conditionsMet(mutation, neighbourTypes(bed, anchor, size));
+            case "UNIQUE_BASE" -> GreenhouseRules.godseedSatisfied(neighbourTypes(bed, anchor, size), GreenhouseConfig.get());
+            case "SPECIAL" -> mutation.id().equals("LONELILY") && !bed.getPlants().isEmpty() && neighbourTypes(bed, anchor, size).isEmpty();
             default -> false;
         };
     }
 
-    static List<String> neighbourTypes(GreenhouseData.Bed bed, int slot, Map<Integer, String> placed) {
+    static boolean footprintFree(MutationCatalogue.Mutation mutation, GreenhouseData.Bed bed, int anchor, Map<Integer, String> placed) {
+        List<Integer> cells = Footprint.cells(anchor, mutation.footprint());
+        if (cells.isEmpty()) return false;
+        Set<Integer> taken = new HashSet<>();
+        GreenhouseConfig config = GreenhouseConfig.get();
+        placed.forEach((slot, id) -> {
+            PlantType type = config.plant(id);
+            taken.addAll(Footprint.cells(slot, type == null ? 1 : type.footprint()));
+        });
+        for (int cell : cells) {
+            if (!bed.getUnlocked()[cell] || bed.occupied(cell) || taken.contains(cell)) return false;
+            if (!Surface.accepts(mutation.surface(), bed.surface(cell))) return false;
+        }
+        return true;
+    }
+
+    static List<String> neighbourTypes(GreenhouseData.Bed bed, int anchor, int size) {
         List<String> types = new ArrayList<>();
-        for (int[] cell : GreenhouseLayout.around(slot)) {
-            int other = GreenhouseData.slot(cell[0], cell[1]);
-            GreenhouseData.Plant plant = bed.getPlants().get(other);
-            String type = plant != null ? plant.getType() : placed.get(other);
-            if (type != null) types.add(type);
+        for (int cell : Footprint.ring(anchor, size)) {
+            GreenhouseData.Plant plant = bed.plantAt(cell);
+            if (plant != null) types.add(plant.getType());
         }
         return types;
     }
@@ -78,13 +93,12 @@ public final class MutationSpread {
             if (!condition.crop().equals(FIRE)) required.add(condition);
         }
         if (required.isEmpty()) return false;
-        int total = required.stream().mapToInt(MutationCatalogue.Condition::count).sum();
-        double scale = total > MAX_NEIGHBOURS ? MAX_NEIGHBOURS / (double) total : 1;
         Map<String, Integer> available = new HashMap<>();
         neighbours.forEach(type -> available.merge(type, 1, Integer::sum));
-        for (MutationCatalogue.Condition condition : required) {
-            int need = Math.max(1, (int) Math.floor(condition.count() * scale));
-            if (available.getOrDefault(normalise(condition.crop()), 0) < need) return false;
+        Map<String, Integer> needed = new HashMap<>();
+        for (MutationCatalogue.Condition condition : required) needed.merge(normalise(condition.crop()), condition.count(), Integer::sum);
+        for (Map.Entry<String, Integer> need : needed.entrySet()) {
+            if (available.getOrDefault(need.getKey(), 0) < need.getValue()) return false;
         }
         return true;
     }
@@ -95,18 +109,5 @@ public final class MutationSpread {
             case "MELON_SLICE" -> "MELON";
             default -> crop;
         };
-    }
-
-    static int uniqueBase(List<String> neighbours) {
-        Set<String> unique = new HashSet<>();
-        for (String type : neighbours) {
-            PlantType plant = GreenhouseConfig.get().plant(type);
-            if (plant != null && plant.baseCrop()) unique.add(type);
-        }
-        return unique.size();
-    }
-
-    static boolean isolated(GreenhouseData.Bed bed, int slot, Map<Integer, String> placed) {
-        return neighbourTypes(bed, slot, Map.of()).isEmpty();
     }
 }

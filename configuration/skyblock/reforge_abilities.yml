@@ -12,7 +12,6 @@ auspicious:
 beady:
   name: "Beady"
   text: "<7>Grants <6>+100 Farming Fortune <7>towards <2> Pests<7>."
-  unavailable: "Needs the Garden and its Pests"
 blazing:
   name: "Blazing"
   text: "<7>For every <c>1♨ Heat<7>, you are <a>0.05% <7>more likely to find <6>Worms<7>."
@@ -34,7 +33,6 @@ bountiful:
 buzzing:
   name: "Buzzing"
   text: "<7>This item deals <c>x2 Damage <7>towards <2> Pests<7>."
-  unavailable: "Needs the Garden and its Pests"
 calcified:
   name: "Calcified"
   text: "<7>Grants <a>+25 Defense <7>towards <3>Sea <3>Creatures<7>."
@@ -165,7 +163,6 @@ spiritual:
 squeaky:
   name: "Squeaky"
   text: "<2> Pests <7>spawn <a>2.5% <7>faster."
-  unavailable: "Needs the Garden and its Pests"
 stellar:
   name: "Stellar"
   text: "<7>Earn <2>+20% ᠅ Mithril Powder <7>and <6>+75 Mining Fortune <7>when mining <7>near <5> Fallen Stars<7>."

@@ -34,7 +34,7 @@ public final class PestRewards {
             String itemId = pest.altItem() != null && ThreadLocalRandom.current().nextBoolean() ? pest.altItem() : pest.item();
             ItemType item = ItemType.get(itemId);
             if (item != null) {
-                int amount = guaranteedAmount(pest, GardenFarm.fortune(player, profile, pest.crop()));
+                int amount = guaranteedAmount(pest, GardenFarm.fortune(player, profile, pest.crop()) + PestService.pestFortune(player));
                 give(player, new SkyBlockItem(item, amount));
                 player.sendMessage(Text.of("<7>You received <a>{}x {} <7>for killing a <2>{}<7>!",
                         StringUtility.commaify(amount), new SkyBlockItem(item).getDisplayNameText(), pest.name()));
@@ -66,7 +66,7 @@ public final class PestRewards {
         PestCatalogue.Pest pick = crops.get(ThreadLocalRandom.current().nextInt(crops.size()));
         ItemType item = ItemType.get(pick.item());
         if (item != null) {
-            int amount = (int) Math.floor(guaranteedAmount(pick, GardenFarm.fortune(player, profile, pick.crop())) * 1.5);
+            int amount = (int) Math.floor(guaranteedAmount(pick, GardenFarm.fortune(player, profile, pick.crop()) + PestService.pestFortune(player)) * 1.5);
             give(player, new SkyBlockItem(item, amount));
         }
     }
@@ -88,7 +88,7 @@ public final class PestRewards {
         for (MobDrop drop : pest.rare()) {
             List<ItemType> items = drop.availableItems();
             if (items.isEmpty()) continue;
-            ItemType won = CrimsonMobLoot.decide(player.getUuid(), items, drop.chancePercent(), ThreadLocalRandom.current());
+            ItemType won = CrimsonMobLoot.decide(player.getUuid(), items, drop.chancePercent() * FeastService.overbloomFactor(player), ThreadLocalRandom.current());
             if (won == null) continue;
             SkyBlockItem item = create(won, drop);
             give(player, item);

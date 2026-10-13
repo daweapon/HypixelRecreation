@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreConfig;
 import net.swofty.type.skyblockgeneric.item.handlers.lore.LoreRegistry;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -23,6 +24,7 @@ public final class PestItems {
     public static final String SPRAYONATOR = "SPRAYONATOR";
     public static final String REPELLENT = "PEST_REPELLENT";
     public static final String REPELLENT_MAX = "PEST_REPELLENT_MAX";
+    public static final String PORTABLE_WASHER = "PORTABLE_WASHER";
     public static final long SPRAY_COOLDOWN_MILLIS = 3000;
     public static final int LARVA_BONUS = 2;
     public static final int MAX_LARVA_BONUS = 10;
@@ -39,9 +41,12 @@ public final class PestItems {
                 .leftClickHandler(PestVacuum::track)
                 .build());
         InteractableRegistry.register(SPRAYONATOR, InteractableItemConfig.builder()
-                .rightClickHandler((player, item) -> spray(player))
-                .leftClickHandler((player, item) -> cycle(player))
+                .rightClickHandler((player, item) -> spray(player, item))
+                .leftClickHandler((player, item) -> configure(player, item))
                 .build());
+        PestDisco.registerInteractables();
+        InteractableRegistry.register(PORTABLE_WASHER, InteractableItemConfig.builder()
+                .rightClickHandler(PestItems::wash).build());
         for (PestTraps.Kind kind : PestTraps.KINDS.values()) {
             InteractableRegistry.register(kind.item().name(), InteractableItemConfig.builder()
                     .rightClickHandler((player, item) -> PestTraps.place(player, item, kind.id())).build());
@@ -64,14 +69,42 @@ public final class PestItems {
     }
 
     public static void registerLore() {
-        LoreRegistry.register(VACUUM, new LoreConfig((item, player) -> List.of("",
-                "<7>Vacuum Bag: <2>" + Gardens.profile(player).pests().getStored() + " Pests", "<8>Vacuum Pests in your Garden to", "<8>increase!"),
+        LoreRegistry.register(VACUUM, new LoreConfig((item, player) -> vacuumLore(item, player),
                 null, LoreConfig.LoreConfigLocation.AFTER_ABILITY));
         LoreRegistry.register(SPRAYONATOR, new LoreConfig((item, player) -> {
-            String material = Gardens.profile(player).pests().getSelectedSpray();
-            return List.of("", "<7>Selected Material: <a>" + materialName(material),
-                    "<7>Attracts: <6>" + String.join("<7>, <6>", attracts(material)));
+            PestData data = Gardens.profile(player).pests();
+            PestNozzle nozzle = selectedNozzle(data, item);
+            return List.of("", "<7>Selected Nozzle: " + nozzle.colored(),
+                    "<7>Selected Material: <a>" + materialName(data.getSelectedSpray()),
+                    "<7>Attracts: <6>" + String.join("<7>, <6>", attracts(data.getSelectedSpray())));
         }, null, LoreConfig.LoreConfigLocation.AFTER_ABILITY));
+    }
+
+    private static List<String> vacuumLore(SkyBlockItem item, SkyBlockPlayer player) {
+        PestData data = Gardens.profile(player).pests();
+        List<String> lore = new ArrayList<>();
+        lore.add("");
+        int books = item.getAttributeHandler().getBookwormBooks();
+        if (books > 0) lore.add("<7>Bookworm's Favorite Book: <c>+" + books * PestRules.BOOKWORM_DAMAGE + " Damage <8>(" + books + "/" + PestRules.MAX_VACUUM_BOOKS + ")");
+        int dummies = item.getAttributeHandler().getFarmingForDummies();
+        if (dummies > 0) lore.add("<7>Farming for Dummies: <6>+" + dummies * PestRules.FARMING_FOR_DUMMIES_FORTUNE + " Farming Fortune <8>(" + dummies + "/" + PestRules.MAX_VACUUM_BOOKS + ")");
+        if (PestVinyls.isHooverius(item)) {
+            lore.add("<7>Now Playing: " + PestVinyls.playingName(data.getPlayingVinyl()));
+            lore.add("");
+        }
+        lore.add("<7>Vacuum Bag: <2>" + data.getStored() + " Pests");
+        lore.add("<8>Vacuum Pests in your Garden to");
+        lore.add("<8>increase!");
+        return lore;
+    }
+
+    private static PestNozzle bestNozzle(SkyBlockItem item) {
+        PestNozzle best = PestNozzle.ofSprayonator(item.getAttributeHandler().getTypeAsString());
+        return best == null ? PestNozzle.BASIC : best;
+    }
+
+    private static PestNozzle selectedNozzle(PestData data, SkyBlockItem item) {
+        return PestNozzle.parse(data.getSelectedNozzle()).clamp(bestNozzle(item));
     }
 
     public static String materialName(String material) {
@@ -83,16 +116,24 @@ public final class PestItems {
         return PestCatalogue.get().natural().stream().filter(pest -> material.equals(pest.spray())).map(PestCatalogue.Pest::name).toList();
     }
 
-    private static void cycle(SkyBlockPlayer player) {
+    private static void configure(SkyBlockPlayer player, SkyBlockItem item) {
         if (!PestVacuum.inGarden(player)) return;
         PestData data = Gardens.profile(player).pests();
+        if (player.isSneaking()) {
+            PestNozzle best = bestNozzle(item);
+            PestNozzle next = selectedNozzle(data, item).cycle(best);
+            data.setSelectedNozzle(next.name());
+            player.sendMessage(Text.of("<7>Selected Nozzle: {} <7>(<2>+{} Bonus Pest Chance<7>, <a>{}x <7>spawn chance, uses <a>{} <7>per spray)",
+                    next.colored(), next.bonusChance(), next.spawnMultiplier(), next.materialCost()));
+            return;
+        }
         int next = (MATERIALS.indexOf(data.getSelectedSpray()) + 1) % MATERIALS.size();
         data.setSelectedSpray(MATERIALS.get(next));
         player.sendMessage(Text.of("<7>Selected Material: <a>{} <7>(attracts <6>{}<7>)",
                 materialName(MATERIALS.get(next)), String.join("<7>, <6>", attracts(MATERIALS.get(next)))));
     }
 
-    private static void spray(SkyBlockPlayer player) {
+    private static void spray(SkyBlockPlayer player, SkyBlockItem item) {
         if (!PestVacuum.inGarden(player)) {
             player.sendMessage(Text.of("<c>You can only spray plots in the Garden!"));
             return;
@@ -109,19 +150,35 @@ public final class PestItems {
         PestData data = profile.pests();
         ItemType material = ItemType.get(data.getSelectedSpray());
         if (material == null) return;
-        if (player.getAmountInInventory(material) > 0) {
-            player.removeItemFromPlayer(material, 1);
-        } else if (player.getSackItems().getAmount(material) > 0) {
-            player.getSackItems().decrease(material, 1);
-        } else {
-            player.sendMessage(Text.of("<c>You don't have any {}<c>!", materialName(data.getSelectedSpray())));
+        PestNozzle nozzle = selectedNozzle(data, item);
+        if (!player.removeItemFromPlayer(material, nozzle.materialCost())) {
+            player.sendMessage(Text.of("<c>You need {}x {} <c>to spray with the {} <c>Nozzle!", nozzle.materialCost(),
+                    materialName(data.getSelectedSpray()), nozzle.colored()));
             return;
         }
         SPRAYED.put(player.getUuid(), now);
-        data.getSprays().put(plot, new PestData.Spray(data.getSelectedSpray(), now + PestRules.SPRAY_DURATION_MILLIS));
+        data.getSprays().put(plot, new PestData.Spray(data.getSelectedSpray(), now + nozzle.durationMillis(), nozzle.name()));
         Gardens.save(player, profile);
-        player.sendMessage(Text.of("<a>Sprayed <a>Plot <7>- <b>{} <a>with <a>{}<a>! <7>Attracts <6>{}<7>.", plot,
-                materialName(data.getSelectedSpray()), String.join("<7>, <6>", attracts(data.getSelectedSpray()))));
+        player.sendMessage(Text.of("<a>Sprayed <a>Plot <7>- <b>{} <a>with <a>{} <7>({} Nozzle<7>)<a>! <7>Attracts <6>{}<7>.", plot,
+                materialName(data.getSelectedSpray()), nozzle.colored(), String.join("<7>, <6>", attracts(data.getSelectedSpray()))));
+    }
+
+    private static void wash(SkyBlockPlayer player, SkyBlockItem item) {
+        if (!PestVacuum.inGarden(player)) {
+            player.sendMessage(Text.of("<c>You can only use the Portable Washer in the Garden!"));
+            return;
+        }
+        GardenProfile profile = Gardens.profile(player);
+        PestData data = profile.pests();
+        long now = System.currentTimeMillis();
+        if (data.getSprays().values().stream().noneMatch(spray -> spray.until() > now)) {
+            player.sendMessage(Text.of("<c>None of your plots are sprayed!"));
+            return;
+        }
+        TimedConsumables.consumeHeld(player, item);
+        data.getSprays().clear();
+        Gardens.save(player, profile);
+        player.sendMessage(Text.of("<a>You washed every <a>Sprayonator <a>effect off your Garden!"));
     }
 
     private static void repel(SkyBlockPlayer player, SkyBlockItem item, boolean max) {

@@ -11,14 +11,19 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
+import net.swofty.type.skyblockgeneric.garden.GardenCrop;
+import net.swofty.type.skyblockgeneric.garden.farm.GardenPresetCost;
 import net.swofty.type.skyblockgeneric.garden.farm.GardenPresets;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.garden.GardenService;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class GUIPlotModification extends StatelessView {
     private final int plot;
@@ -98,7 +103,15 @@ public class GUIPlotModification extends StatelessView {
             lore.add(Text.key("gui_garden_upgrades.modify.preset.selected"));
             lore.add(GardenMenus.blank());
         }
-        lore.add(Text.key("gui_garden_upgrades.modify.preset.click"));
+        GardenCrop crop = GardenPresets.cropOf(preset.name());
+        if (crop != null) {
+            lore.add(Text.of("<7>Cost"));
+            lore.add(Text.of("<8> - <a>{}x <7>{}", NumberFormat.getIntegerInstance(Locale.US).format(GardenPresetCost.required(crop)),
+                    new SkyBlockItem(GardenPresetCost.seed(crop)).getDisplayNameText()));
+            lore.add(GardenMenus.blank());
+        }
+        lore.add(GardenPresets.isPastable(preset.name()) ? Text.key("gui_garden_upgrades.modify.preset.click")
+                : Text.key("gui_garden_upgrades.modify.preset.unavailable"));
         return GardenMenus.item(preset.icon(), Text.key("gui_garden_upgrades.modify.preset.name", preset.name()), lore);
     }
 

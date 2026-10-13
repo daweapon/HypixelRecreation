@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.garden.farm.GardenFarm;
 import net.swofty.type.skyblockgeneric.garden.pest.PestRewards;
 import net.swofty.type.skyblockgeneric.garden.quest.GardenQuests;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.components.HoeComponent;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -32,6 +33,7 @@ public final class GreenhouseService {
         void onHarvest(SkyBlockPlayer player, GardenProfile profile, int plot, int slot, PlantType type, List<GreenhouseEffect> effects);
     }
 
+    private static final String JERRYSEED = "FERTILIZED_JERRYSEED";
     private static final long MISSED_STAGE_GRACE_MILLIS = 120_000;
     private static final int MAX_CATCH_UP = 96;
     private static final List<StageListener> STAGE_LISTENERS = new ArrayList<>();
@@ -113,20 +115,62 @@ public final class GreenhouseService {
         return GreenhouseLayout.spotAt(point, plot);
     }
 
+    private static @Nullable MutationBehaviour.Ctx context(SkyBlockPlayer player, GardenProfile profile, int plot, GreenhouseData.Bed bed, int anchor, long now) {
+        GreenhouseData.Plant plant = bed.getPlants().get(anchor);
+        PlantType type = plant == null ? null : GreenhouseConfig.get().plant(plant.getType());
+        return type == null ? null : new MutationBehaviour.Ctx(player, profile, plot, bed, anchor, plant, type, now);
+    }
+
     public static boolean handleBreak(SkyBlockPlayer player, Point point) {
         GardenProfile profile = Gardens.profile(player);
         int plot = GardenLayout.plotAt(point.x(), point.z());
         if (plot == GardenLayout.NONE || !isGreenhouse(profile, plot)) return false;
-        GreenhouseLayout.Spot spot = GreenhouseLayout.spotAt(point, plot);
-        if (spot == null) return true;
-        GreenhouseData.Plant plant = profile.greenhouse().bed(plot).getPlants().get(spot.slot());
-        PlantType type = plant == null ? null : GreenhouseConfig.get().plant(plant.getType());
-        if (type == null) return true;
-        if (plant.grown(type)) {
+        GreenhouseLayout.Spot clicked = GreenhouseLayout.spotAt(point, plot);
+        if (clicked == null) return true;
+        GreenhouseData.Bed bed = profile.greenhouse().bed(plot);
+        int anchor = bed.anchorAt(clicked.slot());
+        if (anchor < 0) return true;
+        GreenhouseLayout.Spot spot = new GreenhouseLayout.Spot(plot, anchor);
+        if (GreenhouseMinigames.intercept(player, spot, true)) return true;
+        MutationBehaviour.Ctx ctx = context(player, profile, plot, bed, anchor, System.currentTimeMillis());
+        if (ctx == null) return true;
+        if (MutationBehaviours.of(ctx.type().id()).harvestable(ctx)) {
             harvest(player, spot);
         } else {
             player.openView(new net.swofty.type.skyblockgeneric.gui.inventories.garden.GUIGreenhouseDestroy(spot));
         }
+        return true;
+    }
+
+    public static boolean interact(SkyBlockPlayer player, GreenhouseLayout.Spot clicked, SkyBlockItem held) {
+        GardenProfile profile = Gardens.profile(player);
+        GreenhouseData.Bed bed = profile.greenhouse().bed(clicked.plot());
+        if (bed == null) return false;
+        int anchor = bed.anchorAt(clicked.slot());
+        if (anchor < 0) return !held.isNA() && setSurface(player, profile, bed, clicked, held);
+        GreenhouseLayout.Spot spot = new GreenhouseLayout.Spot(clicked.plot(), anchor);
+        if (GreenhouseMinigames.intercept(player, spot, false)) return true;
+        MutationBehaviour.Ctx ctx = context(player, profile, clicked.plot(), bed, anchor, System.currentTimeMillis());
+        if (ctx == null || !MutationBehaviours.of(ctx.type().id()).onUse(ctx, held)) return false;
+        Gardens.save(player, profile);
+        render(player, clicked.plot());
+        return true;
+    }
+
+    private static boolean setSurface(SkyBlockPlayer player, GardenProfile profile, GreenhouseData.Bed bed, GreenhouseLayout.Spot spot, SkyBlockItem held) {
+        ItemType heldType = held.getAttributeHandler().getPotentialType();
+        boolean hoe = held.hasComponent(HoeComponent.class);
+        Surface surface = hoe ? Surface.FARMLAND : Surface.ofItem(heldType == null ? null : heldType.name());
+        if (surface == null || !bed.getUnlocked()[spot.slot()]) return false;
+        if (bed.surface(spot.slot()) == surface) {
+            player.sendMessage(Text.of("<c>This slot already has {} <c>as its growth surface!", surface.displayName()));
+            return true;
+        }
+        if (!hoe) player.removeItemFromPlayer(heldType, 1);
+        bed.setSurface(spot.slot(), surface);
+        Gardens.save(player, profile);
+        render(player, spot.plot());
+        player.sendMessage(Text.of("<a>Changed the growth surface to <e>{}<a>!", surface.displayName()));
         return true;
     }
 
@@ -141,17 +185,36 @@ public final class GreenhouseService {
             player.sendMessage(Text.of("<c>This slot is currently locked! Use an Ethereal Vine to unlock this slot!"));
             return true;
         }
-        if (bed.getPlants().containsKey(spot.slot())) {
-            player.sendMessage(Text.of("<c>This block is already occupied!"));
+        int size = type.footprint();
+        int anchor = Footprint.anchorFor(spot.slot(), size);
+        List<Integer> cells = Footprint.cells(anchor, size);
+        if (cells.isEmpty()) {
+            player.sendMessage(Text.of("<c>There is not enough room for a {}x{} crop here!", size, size));
             return true;
         }
-        if (type.mutation() && !profile.greenhouse().getAnalyzed().contains(type.id())) {
+        for (int cell : cells) {
+            if (!bed.getUnlocked()[cell]) {
+                player.sendMessage(Text.of("<c>Every slot under a {}x{} crop must be unlocked!", size, size));
+                return true;
+            }
+            if (bed.occupied(cell)) {
+                player.sendMessage(Text.of("<c>This block is already occupied!"));
+                return true;
+            }
+            if (!type.id().equals(GreenhouseConfig.DEAD_PLANT) && !Surface.accepts(type.surface(), bed.surface(cell))) {
+                player.sendMessage(Text.of("<c>{} <c>needs <e>{}<c> to grow! Right-click an empty slot with that block to change its surface.", type.name(), type.surface()));
+                return true;
+            }
+        }
+        boolean seed = heldType != null && heldType.name().equals(JERRYSEED);
+        if (type.mutation() && !seed && !profile.greenhouse().getAnalyzed().contains(type.id())) {
             player.sendMessage(Text.of("<c>You haven't analyzed this Mutation! Analyze it at the Crop Analyzer first."));
             return true;
         }
         player.removeItemFromPlayer(heldType, 1);
         GreenhouseData.Plant plant = new GreenhouseData.Plant(type.id(), System.currentTimeMillis());
-        bed.getPlants().put(spot.slot(), plant);
+        if (type.stages() == 0) plant.setGrownAt(plant.getPlantedAt());
+        bed.getPlants().put(anchor, plant);
         Gardens.save(player, profile);
         render(player, spot.plot());
         return true;
@@ -161,6 +224,7 @@ public final class GreenhouseService {
         GreenhouseConfig config = GreenhouseConfig.get();
         GardenCrop crop = GardenCrop.ofItem(item);
         if (crop != null) return config.plantOf(crop);
+        if (item != null && item.name().equals(JERRYSEED)) return config.plant("JERRYFLOWER");
         MutationCatalogue.Mutation mutation = MutationCatalogue.get().ofItem(item);
         return mutation == null ? null : config.plant(mutation.id());
     }
@@ -169,19 +233,36 @@ public final class GreenhouseService {
         GardenProfile profile = Gardens.profile(player);
         GreenhouseData.Bed bed = profile.greenhouse().bed(spot.plot());
         if (bed == null || bed.getPlants().remove(spot.slot()) == null) return;
+        if (player.getInstance() != null) GreenhouseCreatures.dismiss(player.getInstance(), spot.plot(), spot.slot(), "rat");
         Gardens.save(player, profile);
         render(player, spot.plot());
     }
 
     public static boolean harvest(SkyBlockPlayer player, GreenhouseLayout.Spot spot) {
         GardenProfile profile = Gardens.profile(player);
+        GreenhouseData.Bed bed = profile.greenhouse().bed(spot.plot());
+        MutationBehaviour.Ctx ctx = bed == null ? null : context(player, profile, spot.plot(), bed, spot.slot(), System.currentTimeMillis());
+        if (ctx == null) return false;
+        MutationBehaviour behaviour = MutationBehaviours.of(ctx.type().id());
+        if (!behaviour.harvestable(ctx)) return false;
+        MutationBehaviour.Harvest outcome = behaviour.onHarvest(ctx, new SkyBlockItem(player.getItemInMainHand()));
+        if (outcome != MutationBehaviour.Harvest.PROCEED) {
+            Gardens.save(player, profile);
+            render(player, spot.plot());
+            return true;
+        }
+        return finishHarvest(player, spot);
+    }
+
+    public static boolean finishHarvest(SkyBlockPlayer player, GreenhouseLayout.Spot spot) {
+        GardenProfile profile = Gardens.profile(player);
         GreenhouseData data = profile.greenhouse();
         GreenhouseData.Bed bed = data.bed(spot.plot());
         GreenhouseConfig config = GreenhouseConfig.get();
-        GreenhouseData.Plant plant = bed == null ? null : bed.getPlants().get(spot.slot());
-        PlantType type = plant == null ? null : config.plant(plant.getType());
-        if (type == null) return false;
-        if (!plant.grown(type)) return false;
+        MutationBehaviour.Ctx ctx = bed == null ? null : context(player, profile, spot.plot(), bed, spot.slot(), System.currentTimeMillis());
+        if (ctx == null) return false;
+        PlantType type = ctx.type();
+        MutationBehaviour behaviour = MutationBehaviours.of(type.id());
         List<GreenhouseEffect> effects = GreenhouseRules.appliedEffects(bed, config).getOrDefault(spot.slot(), List.of());
         bed.getPlants().remove(spot.slot());
         double unique = GreenhouseRules.uniquePercent(data, config);
@@ -200,15 +281,18 @@ public final class GreenhouseService {
             player.getSkills().increase(player, SkillCategories.FARMING, xp);
             GardenService.recordCrops(player, type.crop(), Math.max(1, amount));
         }
-        if (type.mutation()) harvestMutation(player, profile, type, effects, unique);
+        if (type.mutation()) harvestMutation(player, profile, ctx, behaviour, effects, unique);
         rollBounty(player, effects);
+        net.swofty.type.skyblockgeneric.garden.tool.OverclockerPity.record(player, profile, net.swofty.type.skyblockgeneric.garden.tool.OverclockerPity.Source.GREENHOUSE);
+        behaviour.afterHarvest(ctx);
         for (HarvestListener listener : HARVEST_LISTENERS) listener.onHarvest(player, profile, spot.plot(), spot.slot(), type, effects);
         Gardens.save(player, profile);
         render(player, spot.plot());
         return true;
     }
 
-    private static void harvestMutation(SkyBlockPlayer player, GardenProfile profile, PlantType type, List<GreenhouseEffect> effects, double unique) {
+    private static void harvestMutation(SkyBlockPlayer player, GardenProfile profile, MutationBehaviour.Ctx ctx, MutationBehaviour behaviour, List<GreenhouseEffect> effects, double unique) {
+        PlantType type = ctx.type();
         GreenhouseConfig config = GreenhouseConfig.get();
         GreenhouseData data = profile.greenhouse();
         if (type.id().equals(GreenhouseConfig.DEAD_PLANT)) {
@@ -219,12 +303,17 @@ public final class GreenhouseService {
         MutationCatalogue.Mutation mutation = MutationCatalogue.get().mutation(type.id());
         if (mutation == null) return;
         ItemType item = mutation.item();
-        if (item != null) {
-            PestRewards.give(player, new SkyBlockItem(item, 1));
-            player.sendMessage(Text.of("<7>You harvested a {}<7>!", new SkyBlockItem(item).getDisplayNameText()));
+        int count = behaviour.itemCount(ctx);
+        if (item != null && count > 0) {
+            PestRewards.give(player, new SkyBlockItem(item, count));
+            player.sendMessage(Text.of("<7>You harvested {}x {}<7>!", count, new SkyBlockItem(item).getDisplayNameText()));
+        }
+        for (SkyBlockItem extra : behaviour.extraDrops(ctx)) {
+            PestRewards.give(player, extra);
+            player.sendMessage(Text.of("<7>You harvested <a>{}x {}<7>!", extra.getAmount(), extra.getDisplayNameText()));
         }
         double fortune = player.getStatistics().allStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.FARMING_FORTUNE);
-        double multiplier = GreenhouseRules.yieldMultiplier(effects, config.plantYieldPercent(data.getPlantYieldTier()), unique);
+        double multiplier = GreenhouseRules.yieldMultiplier(effects, config.plantYieldPercent(data.getPlantYieldTier()), unique) * behaviour.dropMultiplier(ctx);
         for (MutationCatalogue.Drop drop : mutation.drops()) {
             ItemType dropItem = ItemType.get(drop.item());
             if (dropItem == null) continue;
@@ -273,8 +362,8 @@ public final class GreenhouseService {
     public static void water(SkyBlockPlayer player, GreenhouseLayout.Spot spot, double levels) {
         GardenProfile profile = Gardens.profile(player);
         GreenhouseData.Bed bed = profile.greenhouse().bed(spot.plot());
-        GreenhouseData.Plant plant = bed == null ? null : bed.getPlants().get(spot.slot());
-        if (plant == null) return;
+        GreenhouseData.Plant plant = bed == null ? null : bed.plantAt(spot.slot());
+        if (plant == null || !MutationBehaviours.waterable(plant.getType())) return;
         plant.setWater(Math.min(GreenhouseRules.MAX_WATER, plant.getWater() + levels));
         plant.setLastWateredAt(System.currentTimeMillis());
     }
@@ -336,7 +425,8 @@ public final class GreenhouseService {
             changed = true;
         }
         if (guard > MAX_CATCH_UP) data.setNextStageAt(now + stageMillis(data));
-        if (decay(profile, now)) changed = true;
+        if (decay(player, profile, now)) changed = true;
+        tickBehaviours(player, profile, now);
         if (changed) Gardens.save(player, profile);
         Instance instance = player.getInstance();
         if (instance != null) data.getBeds().forEach((plot, bed) -> GreenhouseWorld.render(instance, plot, bed));
@@ -350,23 +440,56 @@ public final class GreenhouseService {
         for (var entry : data.getBeds().entrySet()) {
             GreenhouseData.Bed bed = entry.getValue();
             var effects = GreenhouseRules.appliedEffects(bed, config);
-            for (var plantEntry : bed.getPlants().entrySet()) {
-                GreenhouseData.Plant plant = plantEntry.getValue();
-                PlantType type = config.plant(plant.getType());
-                if (type == null || plant.grown(type)) continue;
-                plant.setWater(Math.max(GreenhouseRules.MIN_WATER,
-                        plant.getWater() - GreenhouseRules.waterLoss(config, effects.getOrDefault(plantEntry.getKey(), List.of()), ThreadLocalRandom.current())));
-                if (plant.getWater() <= GreenhouseRules.MIN_WATER) {
-                    plantEntry.setValue(deadPlant(now));
-                    continue;
+            for (int anchor : new ArrayList<>(bed.getPlants().keySet())) {
+                MutationBehaviour.Ctx ctx = context(player, profile, entry.getKey(), bed, anchor, now);
+                if (ctx == null) continue;
+                MutationBehaviour behaviour = MutationBehaviours.of(ctx.type().id());
+                if (!behaviour.ticks(ctx)) continue;
+                GreenhouseData.Plant plant = ctx.plant();
+                if (behaviour.needsWater()) {
+                    plant.setWater(Math.max(GreenhouseRules.MIN_WATER,
+                            plant.getWater() - GreenhouseRules.waterLoss(config, effects.getOrDefault(anchor, List.of()), ThreadLocalRandom.current())));
+                    if (plant.getWater() <= GreenhouseRules.MIN_WATER) {
+                        bed.getPlants().put(anchor, deadPlant(now));
+                        continue;
+                    }
+                    if (!GreenhouseRules.advances(config, plant.getWater(), ThreadLocalRandom.current())) continue;
                 }
-                if (GreenhouseRules.advances(config, plant.getWater(), ThreadLocalRandom.current())) {
-                    plant.setStage(plant.getStage() + 1);
-                    if (plant.grown(type)) plant.setGrownAt(now);
-                }
+                stagePlant(ctx, behaviour);
             }
             for (StageListener listener : STAGE_LISTENERS) listener.onStage(player, profile, entry.getKey(), bed, now);
         }
+    }
+
+    private static void stagePlant(MutationBehaviour.Ctx ctx, MutationBehaviour behaviour) {
+        if (!behaviour.beforeStage(ctx)) return;
+        GreenhouseData.Plant plant = ctx.plant();
+        plant.setStage(plant.getStage() + 1);
+        if (plant.grown(ctx.type())) plant.setGrownAt(ctx.now());
+        behaviour.onStage(ctx);
+    }
+
+    public static int growPlot(SkyBlockPlayer player, int plot, int stages) {
+        GardenProfile profile = Gardens.profile(player);
+        GreenhouseData.Bed bed = profile.greenhouse().bed(plot);
+        if (bed == null) return 0;
+        long now = System.currentTimeMillis();
+        int grown = 0;
+        for (int anchor : new ArrayList<>(bed.getPlants().keySet())) {
+            for (int i = 0; i < stages; i++) {
+                MutationBehaviour.Ctx ctx = context(player, profile, plot, bed, anchor, now);
+                if (ctx == null) break;
+                MutationBehaviour behaviour = MutationBehaviours.of(ctx.type().id());
+                if (!behaviour.ticks(ctx)) break;
+                int before = ctx.plant().getStage();
+                stagePlant(ctx, behaviour);
+                if (bed.getPlants().get(anchor) != ctx.plant()) break;
+                if (ctx.plant().getStage() > before) grown++;
+            }
+        }
+        Gardens.save(player, profile);
+        render(player, plot);
+        return grown;
     }
 
     private static GreenhouseData.Plant deadPlant(long now) {
@@ -375,20 +498,41 @@ public final class GreenhouseService {
         return dead;
     }
 
-    private static boolean decay(GardenProfile profile, long now) {
+    private static boolean decay(SkyBlockPlayer player, GardenProfile profile, long now) {
         GreenhouseConfig config = GreenhouseConfig.get();
         boolean changed = false;
-        for (GreenhouseData.Bed bed : profile.greenhouse().getBeds().values()) {
-            for (var entry : bed.getPlants().entrySet()) {
-                GreenhouseData.Plant plant = entry.getValue();
-                if (plant.getType().equals(GreenhouseConfig.DEAD_PLANT)) continue;
-                if (GreenhouseRules.decayed(config, plant, true, now)) {
-                    entry.setValue(deadPlant(now));
-                    changed = true;
-                }
+        for (var bedEntry : profile.greenhouse().getBeds().entrySet()) {
+            GreenhouseData.Bed bed = bedEntry.getValue();
+            for (int anchor : new ArrayList<>(bed.getPlants().keySet())) {
+                MutationBehaviour.Ctx ctx = context(player, profile, bedEntry.getKey(), bed, anchor, now);
+                if (ctx == null || ctx.type().id().equals(GreenhouseConfig.DEAD_PLANT)) continue;
+                MutationCatalogue.Mutation mutation = MutationCatalogue.get().mutation(ctx.type().id());
+                if (mutation != null && mutation.neverDecays()) continue;
+                MutationBehaviour behaviour = MutationBehaviours.of(ctx.type().id());
+                if (!GreenhouseRules.decayed(config, ctx.plant(), MutationBehaviours.waterable(ctx.type().id()), now)) continue;
+                behaviour.onDecay(ctx);
+                bed.getPlants().put(anchor, deadPlant(now));
+                changed = true;
             }
         }
         return changed;
+    }
+
+    private static void tickBehaviours(SkyBlockPlayer player, GardenProfile profile, long now) {
+        Instance instance = player.getInstance();
+        if (instance == null) return;
+        List<SkyBlockPlayer> players = new ArrayList<>();
+        for (net.minestom.server.entity.Player online : instance.getPlayers()) if (online instanceof SkyBlockPlayer other) players.add(other);
+        for (var bedEntry : profile.greenhouse().getBeds().entrySet()) {
+            GreenhouseData.Bed bed = bedEntry.getValue();
+            for (int anchor : new ArrayList<>(bed.getPlants().keySet())) {
+                MutationBehaviour.Ctx ctx = context(player, profile, bedEntry.getKey(), bed, anchor, now);
+                if (ctx == null) continue;
+                MutationBehaviour behaviour = MutationBehaviours.of(ctx.type().id());
+                behaviour.onTick(ctx);
+                if (behaviour.listensNear()) for (SkyBlockPlayer other : players) behaviour.onNear(ctx, other);
+            }
+        }
     }
 
     public static void simulate(SkyBlockPlayer player, int hours) {

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.garden.tool;
 
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.commons.text.Text;
@@ -19,6 +20,9 @@ public final class FarmingTools {
     public static final String LORE_HANDLER = "FARMING_TOOL";
     public static final int FORTUNE_PER_LEVEL = 4;
     public static final int MAX_LEVEL = 50;
+    public static final int MAX_OVERCLOCKERS = 10;
+    public static final long CAPSULE_XP = 100_000;
+    public static final long OVERFLOW_PER_CAPSULE = 200_000;
 
     private static final int[] LEVEL_XP = {
             0, 1_000, 2_000, 3_000, 5_000, 8_000, 12_000, 16_000, 20_000, 25_000,
@@ -55,6 +59,14 @@ public final class FarmingTools {
         LoreRegistry.register(LORE_HANDLER, new LoreConfig(FarmingTools::lore, null, LoreConfig.LoreConfigLocation.AFTER_ABILITY));
     }
 
+    public static @Nullable String familyOf(String itemId) {
+        int underscore = itemId.lastIndexOf('_');
+        if (underscore > 0 && itemId.substring(underscore + 1).matches("[123]") && FAMILIES.containsKey(itemId.substring(0, underscore))) {
+            return itemId.substring(0, underscore);
+        }
+        return FAMILIES.containsKey(itemId) ? itemId : null;
+    }
+
     public static @Nullable Tool of(@Nullable String itemId) {
         if (itemId == null) return null;
         int mk = 1;
@@ -68,7 +80,30 @@ public final class FarmingTools {
         return crops == null ? null : new Tool(crops[0], crops[1], mk);
     }
 
+    public record Gain(long xp, long overflow, int capsules) {
+    }
+
+    public static int levelCap(int mk, int overclockers) {
+        int base = MK_LEVEL_CAP[Math.max(1, Math.min(3, mk))];
+        return mk >= 3 ? Math.min(MAX_LEVEL, base + Math.max(0, Math.min(MAX_OVERCLOCKERS, overclockers))) : base;
+    }
+
     public static int level(long xp, int mk) {
+        return level(xp, mk, 0);
+    }
+
+    public static Gain gain(long xp, long overflow, int mk, int overclockers, long gained, boolean keepOverflow) {
+        long total = xp + Math.max(0, gained);
+        if (levelCap(mk, overclockers) < MAX_LEVEL || total <= cumulativeXp(MAX_LEVEL)) {
+            return new Gain(total, overflow, 0);
+        }
+        long surplus = total - cumulativeXp(MAX_LEVEL);
+        if (!keepOverflow) return new Gain(cumulativeXp(MAX_LEVEL), overflow, 0);
+        long banked = overflow + surplus;
+        return new Gain(cumulativeXp(MAX_LEVEL), banked % OVERFLOW_PER_CAPSULE, (int) (banked / OVERFLOW_PER_CAPSULE));
+    }
+
+    public static int level(long xp, int mk, int overclockers) {
         int level = 1;
         long cumulative = 0;
         for (int next = 2; next <= MAX_LEVEL; next++) {
@@ -76,7 +111,7 @@ public final class FarmingTools {
             if (xp < cumulative) break;
             level = next;
         }
-        return Math.min(level, MK_LEVEL_CAP[Math.max(1, Math.min(3, mk))]);
+        return Math.min(level, levelCap(mk, overclockers));
     }
 
     public static long cumulativeXp(int level) {
@@ -109,19 +144,46 @@ public final class FarmingTools {
         Tool tool = of(held.getAttributeHandler().getTypeAsString());
         if (tool == null || !tool.works(crop)) return;
 
-        long before = held.getAttributeHandler().getFarmingToolXp();
         double chipBoost = 1 + net.swofty.type.skyblockgeneric.garden.chip.ChipService.bonus(player, net.swofty.type.skyblockgeneric.garden.chip.GardenChip.MECHAMIND) / 100.0;
         long gained = Math.max(1, Math.round(collectionGained * xpPerCollection(crop) * chipBoost));
-        int levelBefore = level(before, tool.mk());
+        int[] levels = new int[2];
+        int[] capsules = new int[1];
         player.updateItemInSlot(slot, item -> {
-            long xp = item.getAttributeHandler().getFarmingToolXp() + gained;
-            item.getAttributeHandler().setFarmingToolXp(xp);
-            item.getAttributeHandler().setExtraDynamicStatistics(bonus(tool, level(xp, tool.mk())));
+            levels[0] = levelOf(item, tool);
+            capsules[0] = grant(item, tool, gained, true);
+            levels[1] = levelOf(item, tool);
         });
-        int levelAfter = level(before + gained, tool.mk());
-        if (levelAfter > levelBefore) {
-            player.sendMessage(Text.of("<a>Your {} <a>reached <6>Tool Level {}<a>!", held.getDisplayNameText(), levelAfter));
+        if (levels[1] > levels[0]) {
+            player.sendMessage(Text.of("<a>Your {} <a>reached <6>Tool Level {}<a>!", held.getDisplayNameText(), levels[1]));
         }
+        if (capsules[0] > 0) {
+            player.addAndUpdateItem(new SkyBlockItem(ItemType.TOOL_EXP_CAPSULE, capsules[0]));
+            player.sendMessage(Text.of("<3><l>OVERFLOW!</l> <7>Your {} <7>has just dropped a <9>Tool Exp Capsule<7>!", held.getDisplayNameText()));
+        }
+    }
+
+    public static int grant(SkyBlockItem item, Tool tool, long gained, boolean keepOverflow) {
+        var handler = item.getAttributeHandler();
+        Gain result = gain(handler.getFarmingToolXp(), handler.getFarmingToolOverflow(), tool.mk(),
+                handler.getFarmingToolOverclockers(), gained, keepOverflow);
+        handler.setFarmingToolXp(result.xp());
+        handler.setFarmingToolOverflow(result.overflow());
+        refresh(item, tool);
+        return result.capsules();
+    }
+
+    public static int levelOf(SkyBlockItem item, Tool tool) {
+        var handler = item.getAttributeHandler();
+        return level(handler.getFarmingToolXp(), tool.mk(), handler.getFarmingToolOverclockers());
+    }
+
+    public static void refresh(SkyBlockItem item) {
+        Tool tool = of(item.getAttributeHandler().getTypeAsString());
+        if (tool != null) refresh(item, tool);
+    }
+
+    private static void refresh(SkyBlockItem item, Tool tool) {
+        item.getAttributeHandler().setExtraDynamicStatistics(bonus(tool, levelOf(item, tool)));
     }
 
     private static ItemStatistics bonus(Tool tool, int level) {
@@ -152,15 +214,24 @@ public final class FarmingTools {
         Tool tool = of(item.getAttributeHandler().getTypeAsString());
         if (tool == null) return List.of();
         long xp = item.getAttributeHandler().getFarmingToolXp();
-        int level = level(xp, tool.mk());
+        int overclockers = item.getAttributeHandler().getFarmingToolOverclockers();
+        int cap = levelCap(tool.mk(), overclockers);
+        int level = level(xp, tool.mk(), overclockers);
         NumberFormat format = NumberFormat.getIntegerInstance(Locale.US);
         String progress;
-        if (level >= MK_LEVEL_CAP[Math.min(3, tool.mk())]) {
-            progress = level >= MAX_LEVEL ? "<7>Max level reached!" : "<7>Upgrade the tool to keep levelling!";
+        if (level >= MAX_LEVEL) {
+            long overflow = item.getAttributeHandler().getFarmingToolOverflow();
+            progress = "<7>Next Capsule: <8>(<a>" + format.format(overflow) + "<7>/<c>" + format.format(OVERFLOW_PER_CAPSULE) + "<8>)";
+        } else if (level >= cap) {
+            progress = tool.mk() >= 3 ? "<7>Apply an <6>Overclocker 3000 <7>to keep levelling!" : "<7>Upgrade the tool to keep levelling!";
         } else {
             long into = xp - cumulativeXp(level);
             progress = "<7>Next Level: <8>(<a>" + format.format(into) + "<7>/<c>" + format.format(LEVEL_XP[level]) + "<8>)";
         }
-        return List.of("", "<7>Tool Level: <a>" + level + "<7>/<a>" + MAX_LEVEL, progress);
+        List<String> lines = new java.util.ArrayList<>(List.of("", "<7>Tool Level: <a>" + level + "<7>/<a>" + MAX_LEVEL, progress));
+        if (overclockers > 0) {
+            lines.add("<7>Overclocker 3000s: <6>" + overclockers + "<7>/<6>" + MAX_OVERCLOCKERS);
+        }
+        return lines;
     }
 }

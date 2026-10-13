@@ -37,35 +37,60 @@ public final class GreenhouseRules {
         return Math.round(config.stageHours() * 3_600_000L * factor);
     }
 
+    public static Map<Integer, java.util.Set<Integer>> neighbourAnchors(GreenhouseData.Bed bed, GreenhouseConfig config) {
+        Map<Integer, java.util.Set<Integer>> result = new java.util.TreeMap<>();
+        for (Map.Entry<Integer, GreenhouseData.Plant> entry : bed.getPlants().entrySet()) {
+            PlantType type = config.plant(entry.getValue().getType());
+            java.util.Set<Integer> adjacent = new java.util.LinkedHashSet<>();
+            for (int cell : Footprint.edge(entry.getKey(), type == null ? 1 : type.footprint())) {
+                int other = bed.anchorAt(cell);
+                if (other >= 0 && other != entry.getKey()) adjacent.add(other);
+            }
+            result.put(entry.getKey(), adjacent);
+        }
+        return result;
+    }
+
     public static Map<Integer, List<GreenhouseEffect>> appliedEffects(GreenhouseData.Bed bed, GreenhouseConfig config) {
+        Map<Integer, java.util.Set<Integer>> adjacent = neighbourAnchors(bed, config);
         Map<Integer, List<GreenhouseEffect>> direct = new java.util.TreeMap<>();
-        for (int slot : bed.getPlants().keySet()) {
+        for (int anchor : bed.getPlants().keySet()) {
             List<GreenhouseEffect> list = new ArrayList<>();
-            for (int[] cell : GreenhouseLayout.neighbours(slot)) {
-                GreenhouseData.Plant neighbour = bed.getPlants().get(GreenhouseData.slot(cell[0], cell[1]));
-                PlantType type = neighbour == null ? null : config.plant(neighbour.getType());
+            for (int other : adjacent.get(anchor)) {
+                PlantType type = config.plant(bed.getPlants().get(other).getType());
                 if (type == null) continue;
                 for (GreenhouseEffect effect : type.effects()) {
                     if (effect != GreenhouseEffect.EFFECT_SPREAD) list.add(effect);
                 }
             }
-            direct.put(slot, list);
+            direct.put(anchor, list);
         }
         Map<Integer, List<GreenhouseEffect>> result = new java.util.TreeMap<>();
-        for (int slot : bed.getPlants().keySet()) {
-            List<GreenhouseEffect> list = new ArrayList<>(direct.get(slot));
-            for (int[] cell : GreenhouseLayout.neighbours(slot)) {
-                int other = GreenhouseData.slot(cell[0], cell[1]);
-                GreenhouseData.Plant neighbour = bed.getPlants().get(other);
-                PlantType type = neighbour == null ? null : config.plant(neighbour.getType());
+        for (int anchor : bed.getPlants().keySet()) {
+            List<GreenhouseEffect> list = new ArrayList<>(direct.get(anchor));
+            for (int other : adjacent.get(anchor)) {
+                PlantType type = config.plant(bed.getPlants().get(other).getType());
                 if (type != null && type.effects().contains(GreenhouseEffect.EFFECT_SPREAD)) {
                     direct.get(other).stream().filter(GreenhouseEffect::spreadable).forEach(list::add);
                 }
             }
             if (list.contains(GreenhouseEffect.IMMUNITY)) list.removeIf(GreenhouseEffect::isNegative);
-            result.put(slot, list);
+            result.put(anchor, list);
         }
         return result;
+    }
+
+    public static final java.util.Set<GreenhouseEffect> GODSEED_REQUIRED = java.util.EnumSet.of(
+            GreenhouseEffect.IMPROVED_HARVEST_BOOST, GreenhouseEffect.IMPROVED_XP_BOOST, GreenhouseEffect.IMPROVED_WATER_RETAIN,
+            GreenhouseEffect.IMMUNITY, GreenhouseEffect.BONUS_DROPS, GreenhouseEffect.EFFECT_SPREAD);
+
+    public static boolean godseedSatisfied(java.util.Collection<String> neighbourTypes, GreenhouseConfig config) {
+        java.util.Set<GreenhouseEffect> present = java.util.EnumSet.noneOf(GreenhouseEffect.class);
+        for (String id : neighbourTypes) {
+            PlantType type = config.plant(id);
+            if (type != null && !id.equals("GODSEED")) present.addAll(type.effects());
+        }
+        return present.containsAll(GODSEED_REQUIRED);
     }
 
     public static double sum(List<GreenhouseEffect> effects, GreenhouseEffect... kinds) {

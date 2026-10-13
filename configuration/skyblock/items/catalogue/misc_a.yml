@@ -319,7 +319,6 @@ items:
     material: gold_nugget
     name: "All-in Aloe Fragment"
     rarity: UNCOMMON
-    unavailable: "Needs Garden mutations"
     source: "Harvested from the All-in Aloe Garden mutation"
     lore:
       - "§7Hope you hit it big!"
@@ -1411,17 +1410,18 @@ items:
     material: book
     name: "Bookworm's Favorite Book"
     rarity: RARE
-    unavailable: "Needs the Vacuum and its Bookworm drop"
-    source: "Mob drop (Bookworm)"
+    source: "Rare drop from the Earthworm Pest (4%)"
     lore:
       - "§8Combinable in Anvil"
       - ""
       - "§7When applied to a vacuum, grants"
-      - "§c+10❁ Damage§7."
+      - "§c+20❁ Damage§7."
       - ""
       - "§7This can be applied to a vacuum up"
       - "§7to §a5 §7times!"
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: BOOKWORM_BOOK
       - id: SELLABLE
         value: 10000.0
   - id: BOOK_AND_QUILL
@@ -1976,7 +1976,6 @@ items:
     material: spawner
     name: "Buzzybee's Fantabulous Disco Destination"
     rarity: UNCOMMON
-    unavailable: "Needs Pest Vinyls and Botroot (Harvest Feast)"
     source: "Crafted from 3 Cheesebite, 80 Botroot and a Jukebox"
     lore:
       - "§7Place this in your §2Garden §7and fill it"
@@ -1986,6 +1985,8 @@ items:
       - "§7blocks of this if their Pest Vinyl has"
       - "§7been placed in this."
     components:
+      - id: INTERACTABLE
+        handler_id: BUZZYBEES_FANTABULOUS_DISCO_DESTINATION
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED

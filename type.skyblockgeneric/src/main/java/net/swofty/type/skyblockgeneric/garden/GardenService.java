@@ -121,6 +121,7 @@ public final class GardenService {
             experience.setSourceXP(SkyBlockXPSource.COMPOSTER_UPGRADES, (double) ComposterConfig.get().skyblockXp(profile.composter().getTiers()));
             experience.setSourceXP(SkyBlockXPSource.GREENHOUSE_UPGRADES, (double) (profile.greenhouse().getGrowthSpeedTier() + profile.greenhouse().getPlantYieldTier() + profile.greenhouse().getPlotLimitTier()) * 5);
             experience.setSourceXP(SkyBlockXPSource.DNA_ANALYSIS_MILESTONES, (double) profile.greenhouse().getDnaClaimed() * 15);
+            experience.setSourceXP(SkyBlockXPSource.FARMING_TOOLKIT, profile.toolkit().isUnlocked() ? 2.0 : 0.0);
             experience.setSourceXP(SkyBlockXPSource.GARDEN_UNLOCKED_PLOTS,
                     (double) profile.getUnlockedPlots().size() * GardenConfig.get().skyblockXpPerPlot());
         });
@@ -130,6 +131,7 @@ public final class GardenService {
         GardenConfig config = GardenConfig.get();
         GardenProfile profile = profile(player);
         profile.setAccessUnlocked(true);
+        profile.toolkit().setUnlocked(true);
         profile.setGardenXp(config.level(config.maxLevel()).cumulativeXp());
         for (GardenCrop crop : GardenCrop.values()) {
             profile.addCropCount(crop, config.cumulativeThreshold(crop, config.maxMilestoneTier()) - profile.cropCount(crop));
@@ -154,10 +156,15 @@ public final class GardenService {
             profile.greenhouse().getAnalyzed().add(mutation.id());
         }
         profile.greenhouse().setDnaClaimed(net.swofty.type.skyblockgeneric.garden.analyzer.AnalyzerService.MILESTONE_TARGETS.length);
+        profile.greenhouse().setFlasksConsumed(net.swofty.type.skyblockgeneric.garden.greenhouse.RosewaterFlask.PERMANENT_LIMIT);
         for (var chip : net.swofty.type.skyblockgeneric.garden.chip.GardenChip.values()) {
             profile.chips().setConsumed(chip, net.swofty.type.skyblockgeneric.garden.chip.GardenChip.CONSUMED_FOR_RARITY[2]);
             profile.chips().setLevel(chip, net.swofty.type.skyblockgeneric.garden.chip.GardenChip.MAX_LEVEL[2]);
         }
+        profile.chips().setJeffStage(3);
+        profile.pests().setMetPhillip(true);
+        profile.pests().setMetPamela(true);
+        profile.pests().setPhillipDebriefed(true);
         VisitorCatalogue visitors = VisitorCatalogue.get();
         visitors.visitors().forEach(visitor -> profile.visitors().markServed(visitor.id()));
         profile.visitors().setUniqueTier(visitors.uniqueMilestones().getLast().tier());

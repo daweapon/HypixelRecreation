@@ -3,7 +3,9 @@ package net.swofty.type.skyblockgeneric.garden.farm;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.batch.AbsoluteBlockBatch;
 import net.minestom.server.instance.block.Block;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.garden.GardenCleaning;
 import net.swofty.type.skyblockgeneric.garden.GardenCrop;
 import net.swofty.type.skyblockgeneric.garden.GardenLayout;
@@ -32,6 +34,28 @@ public final class GardenPresets {
         return FLAT.equals(preset) || cropOf(preset) != null;
     }
 
+    public static int available(SkyBlockPlayer player, ItemType type) {
+        return player.getAmountInInventory(type) + player.getSackItems().getAmount(type);
+    }
+
+    public static @Nullable GardenPresetCost.Payment payment(SkyBlockPlayer player, GardenCrop crop) {
+        return GardenPresetCost.plan(GardenPresetCost.required(crop), GardenPresetCost.sources(crop), type -> available(player, type));
+    }
+
+    private static boolean charge(SkyBlockPlayer player, GardenCrop crop) {
+        GardenPresetCost.Payment payment = payment(player, crop);
+        if (payment == null) {
+            player.sendMessage(Text.of("<c>You need <a>{}x {}<c> to paste this preset!",
+                    GardenPresetCost.required(crop), new SkyBlockItem(GardenPresetCost.seed(crop)).getDisplayNameText()));
+            return false;
+        }
+        payment.take().forEach(player::removeItemFromPlayer);
+        for (int left = payment.refund(); left > 0; left -= 64) {
+            player.addAndUpdateItem(new SkyBlockItem(payment.refundItem(), Math.min(64, left)));
+        }
+        return true;
+    }
+
     public static void paste(SkyBlockPlayer player, int plot, String preset) {
         Instance instance = player.getInstance();
         GardenProfile profile = Gardens.profile(player);
@@ -46,6 +70,7 @@ public final class GardenPresets {
             return;
         }
         GardenCrop crop = cropOf(preset);
+        if (crop != null && !charge(player, crop)) return;
         player.sendMessage(Text.key("garden.preset.pasting", preset));
         Thread.startVirtualThread(() -> {
             AbsoluteBlockBatch batch = new AbsoluteBlockBatch();

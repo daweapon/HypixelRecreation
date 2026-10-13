@@ -10,4 +10,10 @@ public record PlantType(String id, String name, @Nullable GardenCrop crop, boole
     public boolean baseCrop() {
         return crop != null;
     }
+
+    public int footprint() {
+        if (!mutation) return 1;
+        MutationCatalogue.Mutation entry = MutationCatalogue.get().mutation(id);
+        return entry == null ? 1 : entry.footprint();
+    }
 }

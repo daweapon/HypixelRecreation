@@ -45,13 +45,17 @@ public final class AnalyzerService {
         return (int) Math.round((mutation.copperRepeat() + (first ? mutation.copperFirst() : 0)) * synthesis);
     }
 
+    public static int owned(SkyBlockPlayer player, ItemType item) {
+        return player.getAmountInInventory(item) + player.getSackItems().getAmount(item);
+    }
+
     public static boolean canAfford(SkyBlockPlayer player, long coins) {
         return player.getCoins() >= coins;
     }
 
     public static boolean complete(SkyBlockPlayer player, MutationCatalogue.Mutation mutation) {
         ItemType item = mutation.item();
-        if (item == null || player.getAmountInInventory(item) < 1 || !canAfford(player, mutation.coinsCost())) return false;
+        if (item == null || owned(player, item) < 1 || !canAfford(player, mutation.coinsCost())) return false;
         GardenProfile profile = Gardens.profile(player);
         boolean first = profile.greenhouse().getAnalyzed().add(mutation.id());
         player.removeItemFromPlayer(item, 1);
@@ -76,7 +80,7 @@ public final class AnalyzerService {
         for (MutationCatalogue.Mutation mutation : MutationCatalogue.get().all()) {
             ItemType item = mutation.item();
             if (item == null || !analyzed(player, mutation) || seen.put(mutation.id(), true) != null) continue;
-            int count = player.getAmountInInventory(item);
+            int count = owned(player, item);
             if (count > 0) entries.add(new MassEntry(mutation, count));
         }
         return entries;

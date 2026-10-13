@@ -1355,14 +1355,14 @@ items:
     material: paper
     name: "Tool Exp Capsule"
     rarity: RARE
-    unavailable: "Needs Farming Tool experience (max level farming tools overflow)"
     source: "Maximum level Farming Tool overflow (every 200,000 experience)"
     lore:
-      - "§8Combinable in Anvil"
       - ""
       - "§7Grants §b+100,000 Exp §7to any of your"
       - "§eFarming Tools§7."
     components:
+      - id: ANVIL_COMBINABLE
+        handler_id: TOOL_EXP_CAPSULE
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/tool_xp_capsule
   - id: TOPAZ_CRYSTAL
@@ -1981,10 +1981,9 @@ items:
     material: music_disc_mellohi
     name: "Not Just a Pest Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Beetle Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts"
@@ -1993,10 +1992,9 @@ items:
     material: music_disc_ward
     name: "Buzzin' Beats Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Mosquito Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts"
@@ -2005,10 +2003,9 @@ items:
     material: music_disc_blocks
     name: "Cicada Symphony Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Locust Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts"
@@ -2017,10 +2014,9 @@ items:
     material: music_disc_chirp
     name: "Cricket Choir Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Cricket Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts"
@@ -2029,10 +2025,9 @@ items:
     material: music_disc_strad
     name: "DynaMITES Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Mite Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts §2Mite"
@@ -2041,10 +2036,9 @@ items:
     material: music_disc_mall
     name: "Earthworm Ensemble Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Earthworm Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts"
@@ -2053,10 +2047,9 @@ items:
     material: music_disc_blocks
     name: "Firefly in the Hole Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Firefly Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts"
@@ -2065,10 +2058,9 @@ items:
     material: music_disc_cat
     name: "Imagine Dragonflies Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Dragonfly Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts"
@@ -2077,10 +2069,9 @@ items:
     material: music_disc_mellohi
     name: "Pray For Me Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Praying Mantis Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts"
@@ -2089,10 +2080,9 @@ items:
     material: music_disc_stal
     name: "Pretty Fly Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Fly Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts §2Fly"
@@ -2101,10 +2091,9 @@ items:
     material: music_disc_13
     name: "Rodent Revolution Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Rat Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts §2Rat"
@@ -2113,10 +2102,9 @@ items:
     material: music_disc_far
     name: "Slow and Groovy Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Slug Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts §2Slug"
@@ -2125,10 +2113,9 @@ items:
     material: music_disc_wait
     name: "Wings of Harmony Vinyl"
     rarity: UNCOMMON
-    unavailable: "Needs Garden Pests and the Chirping Stereo"
     source: "Garden Moth Pest drop"
     lore:
-      - "§7Place in a §6Chirping Stereo §7to play"
+      - "§7Insert into an §6InfiniVacuum Hooverius"
       - "§7funky tunes for §2 Pests§7."
       - ""
       - "§7When playing, this vinyl attracts §2Moth"

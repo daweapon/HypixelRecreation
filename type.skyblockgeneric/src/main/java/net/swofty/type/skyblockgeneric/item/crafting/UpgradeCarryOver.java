@@ -15,7 +15,8 @@ import java.util.Set;
 public final class UpgradeCarryOver {
     private static final Set<String> CARRIED = Set.of(
             "enchantments", "reforge", "hot_potato_book_data", "recombobulated", "gems", "soul_bound",
-            "dye_color", "rune_infused_with", "rune_level", "coins_consumed", "applied_scrolls", "abiphone_extra_contacts", "sack_upgrades");
+            "dye_color", "rune_infused_with", "rune_level", "coins_consumed", "applied_scrolls", "abiphone_extra_contacts", "sack_upgrades",
+            "farming_tool_xp", "farming_tool_overflow", "farming_tool_overclockers");
 
     private UpgradeCarryOver() {
     }
@@ -29,6 +30,7 @@ public final class UpgradeCarryOver {
             ItemAttribute carried = source.getAttribute(attribute.getKey());
             if (carried != null) attribute.setValue(carried.getValue());
         }
+        net.swofty.type.skyblockgeneric.garden.tool.FarmingTools.refresh(upgraded);
         return upgraded;
     }
 

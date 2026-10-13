@@ -319,6 +319,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
         BitsService.startFarming();
         AccessoryEconomyHooks.start();
         BottleOfJyrre.startAging();
+        net.swofty.type.skyblockgeneric.garden.greenhouse.RosewaterFlask.startAging();
         SnowmanPet.startBlizzard();
         CoopSync.subscribe();
         PlayerDataService.register(new SkyBlockDomain());

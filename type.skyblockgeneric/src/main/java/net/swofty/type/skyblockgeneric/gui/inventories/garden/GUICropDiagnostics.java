@@ -17,6 +17,9 @@ import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseEffect;
 import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseLayout;
 import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseRules;
 import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
+import net.swofty.type.skyblockgeneric.garden.greenhouse.MutationBehaviour;
+import net.swofty.type.skyblockgeneric.garden.greenhouse.MutationBehaviours;
+import net.swofty.type.skyblockgeneric.garden.greenhouse.MutationCatalogue;
 import net.swofty.type.skyblockgeneric.garden.greenhouse.PlantType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -49,7 +52,7 @@ public class GUICropDiagnostics extends StatelessView {
 
     private GreenhouseData.Plant plant(SkyBlockPlayer player) {
         GreenhouseData.Bed bed = GreenhouseService.data(player).bed(spot.plot());
-        return bed == null ? null : bed.getPlants().get(spot.slot());
+        return bed == null ? null : bed.plantAt(spot.slot());
     }
 
     private PlantType type(GreenhouseData.Plant plant) {
@@ -66,7 +69,7 @@ public class GUICropDiagnostics extends StatelessView {
         if (type == null) return missing();
         return ItemStacks.item(type.baseCrop() ? GardenMenus.icon(type.crop()) : Material.FERN, Text.of("<a>" + type.name()), List.of(
                 Text.of(type.mutation() ? "<5>Mutation Crop" : "<8>Base Crop"),
-                Text.of("<7>Size: <a>1x1"),
+                Text.of("<7>Size: <a>{}x{}", type.footprint(), type.footprint()),
                 Text.of("<7>Growth Surface: <a>{}", type.surface()),
                 Text.of("<7>Growth Stages: <a>{}", type.stages())));
     }
@@ -78,12 +81,15 @@ public class GUICropDiagnostics extends StatelessView {
         GreenhouseData data = GreenhouseService.data(player);
         long now = System.currentTimeMillis();
         boolean grown = plant.grown(type);
+        MutationBehaviour.Ctx ctx = new MutationBehaviour.Ctx(player, null, spot.plot(), GreenhouseService.data(player).bed(spot.plot()), spot.slot(), plant, type, now);
+        String status = MutationBehaviours.of(type.id()).status(ctx);
         List<Text> lore = new ArrayList<>(List.of(
                 Text.of("<7>Age: <a>{}", span(now - plant.getPlantedAt())),
                 Text.of("<7>Stage: <a>{}", grown ? "FULLY GROWN" : plant.getStage() + "/" + type.stages()),
                 Text.of("<7>Next Stage: <a>{}", grown ? "FULLY GROWN" : span(GreenhouseService.nextStageIn(data))),
                 Text.empty(),
                 Text.of("<7>Shows how much the crop has grown.")));
+        if (status != null) lore.add(3, Text.of("<7>Status: <e>{}", status));
         return ItemStacks.item(Material.OAK_SAPLING, Text.of("<a>Growth Stage"), lore);
     }
 
@@ -91,7 +97,7 @@ public class GUICropDiagnostics extends StatelessView {
         GreenhouseData.Plant plant = plant(player);
         PlantType type = type(plant);
         if (type == null) return missing();
-        boolean needs = !plant.grown(type);
+        boolean needs = !plant.grown(type) && MutationBehaviours.of(type.id()).needsWater();
         return ItemStacks.item(Material.WATER_BUCKET, Text.of("<b>Water Level"), List.of(
                 Text.of("<7>Water: <b>{}<7>/<b>100", Math.round(plant.getWater())),
                 Text.of(needs ? "<7>This crop needs water to grow." : "<7>This crop doesn't need water!"),
@@ -129,12 +135,19 @@ public class GUICropDiagnostics extends StatelessView {
         GreenhouseData.Plant plant = plant(player);
         if (plant == null) return missing();
         GreenhouseConfig config = GreenhouseConfig.get();
-        long left = plant.getLastWateredAt() + config.decayDaysSinceWatering() * 86_400_000L - System.currentTimeMillis();
+        MutationCatalogue.Mutation mutation = MutationCatalogue.get().mutation(plant.getType());
+        if (mutation != null && mutation.neverDecays()) {
+            return ItemStacks.item(Material.CLOCK, Text.of("<c>Decay Information"), List.of(Text.of("<7>Decay: <a>Never"), Text.empty(), Text.of("<7>This mutation never decays.")));
+        }
+        boolean waterable = MutationBehaviours.waterable(plant.getType());
+        long left = waterable
+                ? plant.getLastWateredAt() + config.decayDaysSinceWatering() * 86_400_000L - System.currentTimeMillis()
+                : plant.getPlantedAt() + config.decayDaysUnwaterable() * 86_400_000L - System.currentTimeMillis();
         return ItemStacks.item(Material.CLOCK, Text.of("<c>Decay Information"), List.of(
                 Text.of("<7>Decay: <c>{}", left <= 0 ? "Decayed" : span(left)),
                 Text.empty(),
-                Text.of("<7>A crop decays {} days after it was", config.decayDaysSinceWatering()),
-                Text.of("<7>last watered.")));
+                waterable ? Text.of("<7>A crop decays {} days after it was", config.decayDaysSinceWatering()) : Text.of("<7>A crop that cannot be watered decays {}", config.decayDaysUnwaterable()),
+                Text.of(waterable ? "<7>last watered." : "<7>days after it was planted.")));
     }
 
     private static String span(long millis) {

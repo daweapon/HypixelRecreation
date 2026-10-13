@@ -42,7 +42,7 @@ class SkyMartShopTest {
             assertFalse(entries.isEmpty(), shop);
             total += entries.size();
         }
-        assertEquals(70, total);
+        assertEquals(72, total);
     }
 
     @Test

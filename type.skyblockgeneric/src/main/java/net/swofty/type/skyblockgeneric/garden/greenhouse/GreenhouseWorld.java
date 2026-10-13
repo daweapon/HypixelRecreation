@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 public final class GreenhouseWorld {
-    private record Display(Entity entity, int stage) {
+    private record Display(Entity entity, int stage, String type) {
     }
 
     private static final Map<Instance, Map<Long, Display>> DISPLAYS = new WeakHashMap<>();
@@ -57,20 +57,22 @@ public final class GreenhouseWorld {
             }
             return;
         }
-        if (current != null && !current.entity().isRemoved() && current.stage() == plant.getStage()) return;
+        if (current != null && !current.entity().isRemoved() && current.stage() == plant.getStage() && current.type().equals(type.id())) return;
         if (current != null) current.entity().remove();
         MutationCatalogue.Mutation mutation = MutationCatalogue.get().mutation(type.id());
         ItemType item = mutation == null ? null : mutation.item();
         if (item == null) return;
+        int size = type.footprint();
         double progress = type.stages() == 0 ? 1 : 0.45 + 0.55 * Math.min(1, plant.getStage() / (double) type.stages());
+        double scale = progress * 1.3 * size;
         Entity entity = new Entity(EntityType.ITEM_DISPLAY);
         entity.setNoGravity(true);
         entity.editEntityMeta(ItemDisplayMeta.class, meta -> {
             meta.setItemStack(new SkyBlockItem(item).getItemStack());
-            meta.setScale(new Vec(progress * 1.3, progress * 1.3, progress * 1.3));
+            meta.setScale(new Vec(scale, scale, scale));
         });
-        entity.setInstance(instance, new Pos(x + 0.5, GreenhouseLayout.CROP_Y + 0.5 * progress, z + 0.5));
-        live.put(key, new Display(entity, plant.getStage()));
+        entity.setInstance(instance, new Pos(x + size / 2.0, GreenhouseLayout.CROP_Y + 0.5 * progress * size, z + size / 2.0));
+        live.put(key, new Display(entity, plant.getStage(), type.id()));
     }
 
     public static void render(Instance instance, int plot, GreenhouseData.Bed bed) {
@@ -80,11 +82,13 @@ public final class GreenhouseWorld {
             int x = GreenhouseLayout.worldX(plot, slot % GreenhouseData.SIZE);
             int z = GreenhouseLayout.worldZ(plot, slot / GreenhouseData.SIZE);
             if (!instance.isChunkLoaded(x >> 4, z >> 4)) continue;
-            GreenhouseData.Plant plant = bed.getPlants().get(slot);
-            set(instance, x, GreenhouseLayout.FLOOR_Y, z, floor(bed.getUnlocked()[slot], plant));
-            PlantType type = plant == null ? null : config.plant(plant.getType());
-            Block[] column = type == null ? new Block[]{Block.AIR, Block.AIR} : crop(type, plant);
-            display(instance, plot, slot, x, z, type, plant);
+            int anchor = bed.anchorAt(slot);
+            GreenhouseData.Plant owner = anchor < 0 ? null : bed.getPlants().get(anchor);
+            boolean origin = anchor == slot;
+            set(instance, x, GreenhouseLayout.FLOOR_Y, z, floor(bed.getUnlocked()[slot], owner, bed.surface(slot)));
+            PlantType type = owner == null ? null : config.plant(owner.getType());
+            Block[] column = type == null || !origin ? new Block[]{Block.AIR, Block.AIR} : crop(type, owner);
+            display(instance, plot, slot, x, z, origin ? type : null, owner);
             set(instance, x, GreenhouseLayout.CROP_Y, z, column[0]);
             set(instance, x, GreenhouseLayout.CROP_Y + 1, z, column[1]);
         }
@@ -94,9 +98,16 @@ public final class GreenhouseWorld {
         if (!instance.getBlock(x, y, z).compare(block)) instance.setBlock(x, y, z, block);
     }
 
-    public static Block floor(boolean unlocked, GreenhouseData.Plant plant) {
+    public static Block floor(boolean unlocked, GreenhouseData.Plant plant, Surface surface) {
         if (!unlocked) return Block.COARSE_DIRT;
-        return Block.FARMLAND.withProperty("moisture", plant != null && plant.getWater() > 0 ? "7" : "0");
+        return switch (surface) {
+            case SOUL_SAND -> Block.SOUL_SAND;
+            case SAND -> Block.SAND;
+            case MYCELIUM -> Block.MYCELIUM;
+            case DIRT -> Block.DIRT;
+            case END_STONE -> Block.END_STONE;
+            case FARMLAND -> Block.FARMLAND.withProperty("moisture", plant != null && plant.getWater() > 0 ? "7" : "0");
+        };
     }
 
     public static Block[] crop(PlantType type, GreenhouseData.Plant plant) {

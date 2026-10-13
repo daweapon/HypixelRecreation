@@ -13,7 +13,6 @@ import java.util.List;
 public final class AnitaShop {
     private static final String FARMING_TOOLS = "Anita's farming tools aren't in this server yet.";
     private static final String FARMING_ENCHANTS = "Farming enchantments aren't in this server yet.";
-    private static final String GARDEN_CHIPS = "Garden Chips need the Garden, which isn't in this server yet.";
 
     public enum Kind { ITEM, LEVEL_CAP, EXTRA_FORTUNE, PERSONAL_BESTS, UNAVAILABLE }
 
@@ -62,8 +61,8 @@ public final class AnitaShop {
             Offer.item(ItemType.ANITA_TALISMAN, MedalCost.bronze(2, 32), null),
             Offer.item(ItemType.ANITA_RING, MedalCost.silver(2, 64), ItemType.ANITA_TALISMAN),
             Offer.item(ItemType.ANITA_ARTIFACT, MedalCost.gold(2, 100), ItemType.ANITA_RING),
-            Offer.unavailable("Mechamind Chip", "<9>", Material.REPEATER, 1, MedalCost.gold(1, 0), GARDEN_CHIPS),
-            Offer.unavailable("Overdrive Chip", "<9>", Material.COMPARATOR, 1, MedalCost.gold(2, 0), GARDEN_CHIPS));
+            Offer.item(ItemType.MECHAMIND_GARDEN_CHIP, MedalCost.gold(1, 0), null),
+            Offer.item(ItemType.OVERDRIVE_GARDEN_CHIP, MedalCost.gold(2, 0), null));
 
     private AnitaShop() {}
 

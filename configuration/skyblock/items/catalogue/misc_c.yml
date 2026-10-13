@@ -26,6 +26,9 @@ items:
       - "§7applied to a Farming Tool or Vacuum."
       - "§7Can be applied to an item up to §a5"
       - "§7times."
+    components:
+      - id: ANVIL_COMBINABLE
+        handler_id: FARMING_FOR_DUMMIES
   - id: FARMING_ISLAND
     material: player_head
     name: "Farming Island"
@@ -60,7 +63,6 @@ items:
     material: player_head
     name: "Farming Toolkit"
     rarity: RARE
-    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
     source: "SkyMart for 500 Copper"
     lore:
       - "§8Consumable"
@@ -73,6 +75,8 @@ items:
       - ""
       - "§4❣ §cRequires §aFarming Skill 5§c."
     components:
+      - id: INTERACTABLE
+        handler_id: FARMING_TOOLKIT
       - id: SKULL_HEAD
         texture: 7418c74e0d7d56bdaf5fb5018a738d4300b8b33a0ea8875fb876123943089f5d
   - id: FARM_CRYSTAL
@@ -337,8 +341,7 @@ items:
     material: paper
     name: "Filled Rosewater Flask"
     rarity: LEGENDARY
-    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
-    source: "Crafted from 32 Compacted Wild Rose and a Bottle of Jyrre (Wild Rose VI)"
+    source: "Evolves from a Rosewater Flask after it has aged 300 hours in your inventory"
     lore:
       - "§7Consume to grow crops within the"
       - "§aGreenhouse §7by §24 Growth Stages§7."
@@ -352,6 +355,10 @@ items:
       - ""
       - "§8Co-op wide 2h cooldown."
     components:
+      - id: INTERACTABLE
+        handler_id: FILLED_ROSEWATER_FLASK
+      - id: SELLABLE
+        value: 400000.0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/greenhouse/wild_rose/filled_rosewater_flask
   - id: FINNS_FOCACCIA
@@ -3435,7 +3442,6 @@ items:
     material: paper
     name: "Juicy Nozzle"
     rarity: RARE
-    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
     source: "Crafted from 192 Enchanted Melon Slice"
     lore:
       - "§7Can be used at §aSkyMart §7to upgrade"
@@ -3466,7 +3472,6 @@ items:
     material: paper
     name: "Juicy Sprayonator"
     rarity: RARE
-    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
     source: "SkyMart for 1 Sprayonator, 1 Juicy Nozzle and 1,000 Copper (Garden V)"
     lore:
       - "§6Ability: Configure  §e§lLEFT CLICK"
@@ -3474,9 +3479,6 @@ items:
       - "§7spraying. Certain materials attract"
       - "§7certain types of §2 Pests§7."
       - ""
-      - "§7Selected Nozzle: §9Juicy"
-      - "§7Selected Material: §aCompost"
-      - "§7Attracts: §6Earthworm§7, §6Mosquito"
       - ""
       - "§6Ability: Spray  §e§lRIGHT CLICK"
       - "§7Sprays your selected material onto"
@@ -3492,6 +3494,11 @@ items:
       - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: INTERACTABLE
+        handler_id: SPRAYONATOR
+      - id: LORE_UPDATE
+        handler_id: SPRAYONATOR
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pests/juicy_sprayonator
   - id: JUMBO_POT_OF_HONEYCOMB

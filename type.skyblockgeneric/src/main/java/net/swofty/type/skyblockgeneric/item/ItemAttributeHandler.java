@@ -627,8 +627,40 @@ public class ItemAttributeHandler {
         item.getAttribute("farming_tool_xp").setValue(xp);
     }
 
+    public long getFarmingToolOverflow() {
+        return ((ItemAttributeFarmingToolOverflow) item.getAttribute("farming_tool_overflow")).getValue();
+    }
+
+    public void setFarmingToolOverflow(long overflow) {
+        item.getAttribute("farming_tool_overflow").setValue(overflow);
+    }
+
+    public int getFarmingToolOverclockers() {
+        return ((ItemAttributeFarmingToolOverclockers) item.getAttribute("farming_tool_overclockers")).getValue();
+    }
+
+    public void setFarmingToolOverclockers(int overclockers) {
+        item.getAttribute("farming_tool_overclockers").setValue(overclockers);
+    }
+
     public int getLogsCut() {
         return ((ItemAttributeLogsCut) item.getAttribute("logs_cut")).getValue();
+    }
+
+    public int getBookwormBooks() {
+        return ((ItemAttributeBookwormBooks) item.getAttribute("bookworm_books")).getValue();
+    }
+
+    public void setBookwormBooks(int books) {
+        ((ItemAttributeBookwormBooks) item.getAttribute("bookworm_books")).setValue(books);
+    }
+
+    public int getFarmingForDummies() {
+        return ((ItemAttributeFarmingForDummies) item.getAttribute("farming_for_dummies")).getValue();
+    }
+
+    public void setFarmingForDummies(int books) {
+        ((ItemAttributeFarmingForDummies) item.getAttribute("farming_for_dummies")).setValue(books);
     }
 
     public int getSackUpgrades() {

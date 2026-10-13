@@ -32,8 +32,10 @@ public class AnvilCombineRegistry {
         CrimsonItemHandlers.registerAnvilCombines();
         HollyDye.registerAnvilCombine();
         EnchantLevelBoost.registerAnvilCombines();
+        net.swofty.type.skyblockgeneric.garden.pest.PestBooks.registerAnvilCombines();
         net.swofty.type.skyblockgeneric.item.utility.SilexUpgrade.registerAnvilCombine();
         Recombobulation.registerAnvilCombine();
+        net.swofty.type.skyblockgeneric.garden.tool.FarmingToolItems.registerAnvilCombines();
         net.swofty.type.skyblockgeneric.item.utility.PocketSackInASack.registerAnvilCombine();
         net.swofty.type.skyblockgeneric.abiphone.AbiphoneContactsTrio.registerAnvilCombine();
         net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments.registerAnvilCombine();

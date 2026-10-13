@@ -6,7 +6,11 @@ import net.minestom.server.entity.Player;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.network.packet.server.play.ParticlePacket;
 import net.minestom.server.particle.Particle;
+import net.swofty.commons.skyblock.item.reforge.Reforge;
+import net.swofty.commons.skyblock.statistics.ItemStatistic;
+import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -37,7 +41,7 @@ public final class PestVacuum {
     private static final Map<UUID, Held> HOLDING = new ConcurrentHashMap<>();
     private static final Map<UUID, Long> TRACKER = new ConcurrentHashMap<>();
 
-    private record Held(Tier tier, long until) {
+    private record Held(Tier tier, double damage, long until) {
     }
 
     private PestVacuum() {
@@ -58,7 +62,7 @@ public final class PestVacuum {
             player.sendMessage(Text.of("<c>You need <a>Garden Level 5 <c>to use this!"));
             return;
         }
-        HOLDING.put(player.getUuid(), new Held(tier, System.currentTimeMillis() + HOLD_WINDOW_MILLIS));
+        HOLDING.put(player.getUuid(), new Held(tier, damage(item, tier), System.currentTimeMillis() + HOLD_WINDOW_MILLIS));
     }
 
     public static void tick(Instance instance) {
@@ -71,11 +75,23 @@ public final class PestVacuum {
                 HOLDING.remove(player.getUuid());
                 continue;
             }
-            vacuum(player, instance, held.tier());
+            vacuum(player, instance, held.tier(), held.damage());
         }
     }
 
-    private static void vacuum(SkyBlockPlayer player, Instance instance, Tier tier) {
+    public static double damage(SkyBlockItem item, Tier tier) {
+        return PestRules.vacuumDamage(tier.damage(), item.getAttributeHandler().getBookwormBooks(), reforgeDamage(item),
+                ReforgeLoadout.pestDamageMultiplier(item) > 1);
+    }
+
+    private static double reforgeDamage(SkyBlockItem item) {
+        Reforge reforge = item.getAttributeHandler().getReforge();
+        if (reforge == null) return 0;
+        return reforge.getAfterCalculation(ItemStatistics.empty(), item.getAttributeHandler().getRarity().ordinal() + 1)
+                .getOverall(ItemStatistic.DAMAGE);
+    }
+
+    private static void vacuum(SkyBlockPlayer player, Instance instance, Tier tier, double damage) {
         Pos eye = player.getPosition().add(0, player.getEyeHeight(), 0);
         Vec look = player.getPosition().direction();
         PestEntity target = null;
@@ -94,7 +110,7 @@ public final class PestVacuum {
         if (target == null) return;
         beam(player, eye, target.getPosition().add(0, 0.3, 0));
         target.pullToward(eye, PULL_SPEED);
-        if (target.hurt(tier.damage() * TICK_SECONDS)) PestService.kill(player, target);
+        if (target.hurt(damage * TICK_SECONDS)) PestService.kill(player, target);
     }
 
     private static void beam(SkyBlockPlayer player, Pos from, Pos to) {
@@ -109,6 +125,10 @@ public final class PestVacuum {
 
     public static void track(SkyBlockPlayer player, SkyBlockItem item) {
         if (tier(item) == null || !inGarden(player)) return;
+        if (player.isSneaking() && PestVinyls.isHooverius(item)) {
+            PestVinyls.cycle(player);
+            return;
+        }
         long now = System.currentTimeMillis();
         Long last = TRACKER.get(player.getUuid());
         if (last != null && now - last < TRACKER_COOLDOWN_MILLIS) return;

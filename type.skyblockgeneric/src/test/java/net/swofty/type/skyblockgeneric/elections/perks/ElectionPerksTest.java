@@ -36,7 +36,7 @@ class ElectionPerksTest {
 
     @Test
     void perksWithoutTheirSystemCarryAReason() {
-        for (Perk perk : new Perk[]{Perk.MARAUDER, Perk.EZPZ, Perk.BENEDICTION, Perk.PEST_ERADICATOR,
+        for (Perk perk : new Perk[]{Perk.MARAUDER, Perk.EZPZ, Perk.BENEDICTION,
                 Perk.BLOOMING_BUSINESS}) {
             assertTrue(PerkAvailability.isMissing(perk), perk.name());
             assertFalse(PerkAvailability.gap(perk).orElseThrow().reason().isBlank(), perk.name());

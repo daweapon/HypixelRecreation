@@ -34,18 +34,18 @@
   ],
   "vineChance": {"COMMON": 15, "UNCOMMON": 20, "RARE": 25, "EPIC": 30, "LEGENDARY": 40},
   "crops": {
-    "WHEAT": {"stages": 8, "yield": 72, "effects": ["HARVEST_BOOST"]},
-    "CARROT": {"stages": 8, "yield": 175, "effects": ["XP_BOOST"]},
-    "POTATO": {"stages": 8, "yield": 150, "effects": ["IMMUNITY"]},
-    "PUMPKIN": {"stages": 11, "yield": 68, "effects": ["BONUS_DROPS"]},
-    "SUGAR_CANE": {"stages": 8, "yield": 136, "effects": ["IMPROVED_XP_BOOST", "HARVEST_LOSS"]},
-    "MELON": {"stages": 11, "yield": 320, "effects": ["WATER_RETAIN"]},
-    "CACTUS": {"stages": 8, "yield": 132, "effects": ["IMPROVED_WATER_RETAIN", "HARVEST_LOSS"]},
-    "COCOA_BEANS": {"stages": 6, "yield": 120, "effects": ["IMMUNITY"]},
-    "MUSHROOM": {"stages": 6, "yield": 30, "effects": ["IMPROVED_HARVEST_BOOST", "WATER_DRAIN"]},
-    "NETHER_WART": {"stages": 8, "yield": 108, "effects": ["IMPROVED_HARVEST_BOOST", "XP_LOSS"]},
-    "SUNFLOWER": {"stages": 15, "yield": 232, "effects": ["BONUS_DROPS"]},
-    "MOONFLOWER": {"stages": 15, "yield": 232, "effects": ["BONUS_DROPS"]},
-    "WILD_ROSE": {"stages": 15, "yield": 200, "effects": ["EFFECT_SPREAD"]}
+    "WHEAT": {"surface": "Farmland", "stages": 8, "yield": 72, "effects": ["HARVEST_BOOST"]},
+    "CARROT": {"surface": "Farmland", "stages": 8, "yield": 175, "effects": ["XP_BOOST"]},
+    "POTATO": {"surface": "Farmland", "stages": 8, "yield": 150, "effects": ["IMMUNITY"]},
+    "PUMPKIN": {"surface": "Farmland", "stages": 11, "yield": 68, "effects": ["BONUS_DROPS"]},
+    "SUGAR_CANE": {"surface": "Sand/Dirt", "stages": 8, "yield": 136, "effects": ["IMPROVED_XP_BOOST", "HARVEST_LOSS"]},
+    "MELON": {"surface": "Farmland", "stages": 11, "yield": 320, "effects": ["WATER_RETAIN"]},
+    "CACTUS": {"surface": "Sand/Farmland", "stages": 8, "yield": 132, "effects": ["IMPROVED_WATER_RETAIN", "HARVEST_LOSS"]},
+    "COCOA_BEANS": {"surface": "Farmland", "stages": 6, "yield": 120, "effects": ["IMMUNITY"]},
+    "MUSHROOM": {"surface": "Mycelium", "stages": 6, "yield": 30, "effects": ["IMPROVED_HARVEST_BOOST", "WATER_DRAIN"]},
+    "NETHER_WART": {"surface": "Soul Sand", "stages": 8, "yield": 108, "effects": ["IMPROVED_HARVEST_BOOST", "XP_LOSS"]},
+    "SUNFLOWER": {"surface": "Farmland", "stages": 15, "yield": 232, "effects": ["BONUS_DROPS"]},
+    "MOONFLOWER": {"surface": "Farmland", "stages": 15, "yield": 232, "effects": ["BONUS_DROPS"]},
+    "WILD_ROSE": {"surface": "Farmland", "stages": 15, "yield": 200, "effects": ["EFFECT_SPREAD"]}
   }
 }

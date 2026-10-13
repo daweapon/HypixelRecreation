@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.garden.farm.GardenCropGrowth;
 import net.swofty.type.skyblockgeneric.garden.npc.CarpenterNpc;
 import net.swofty.type.skyblockgeneric.garden.npc.JakeNpc;
+import net.swofty.type.skyblockgeneric.garden.npc.JeffNpc;
 import net.swofty.type.skyblockgeneric.garden.npc.NPCSam;
 import net.swofty.type.skyblockgeneric.garden.npc.PesthunterNpc;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
@@ -124,7 +125,8 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
             npcs.add(new CarpenterNpc(i));
             npcs.add(new JakeNpc(i));
         }
-        for (PesthunterNpc.Kind kind : PesthunterNpc.Kind.values()) npcs.add(new PesthunterNpc(kind));
+        npcs.add(new JeffNpc());
+        for (PesthunterNpc.Kind kind : PesthunterNpc.Kind.values()) npcs.add(PesthunterNpc.of(kind));
         VisitorCatalogue.get().visitors().stream().filter(VisitorCatalogue.Visitor::available)
                 .forEach(visitor -> npcs.add(new VisitorNpc(visitor)));
         return npcs;

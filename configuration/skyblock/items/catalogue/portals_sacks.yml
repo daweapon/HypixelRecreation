@@ -1489,6 +1489,7 @@ items:
       - id: SACK
         valid_items:
           - ALL_IN_ALOE
+          - ALL_IN_ALOE_FRAGMENT
           - ASHWREATH
           - BLASTBERRY
           - CHEESEBITE
@@ -1499,6 +1500,7 @@ items:
           - CINDERSHADE
           - COALROOT
           - CREAMBLOOM
+          - DEAD_PLANT
           - DEVOURER
           - DO_NOT_EAT_SHROOM
           - DUSKBLOOM
@@ -2030,6 +2032,7 @@ items:
       - id: SACK
         valid_items:
           - ALL_IN_ALOE
+          - ALL_IN_ALOE_FRAGMENT
           - ASHWREATH
           - BLASTBERRY
           - CHEESEBITE
@@ -2040,6 +2043,7 @@ items:
           - CINDERSHADE
           - COALROOT
           - CREAMBLOOM
+          - DEAD_PLANT
           - DEVOURER
           - DO_NOT_EAT_SHROOM
           - DUSKBLOOM
@@ -2866,6 +2870,7 @@ items:
       - id: SACK
         valid_items:
           - ALL_IN_ALOE
+          - ALL_IN_ALOE_FRAGMENT
           - ASHWREATH
           - BLASTBERRY
           - CHEESEBITE
@@ -2876,6 +2881,7 @@ items:
           - CINDERSHADE
           - COALROOT
           - CREAMBLOOM
+          - DEAD_PLANT
           - DEVOURER
           - DO_NOT_EAT_SHROOM
           - DUSKBLOOM

@@ -54,7 +54,7 @@ public final class GreenhouseConfig {
             JSONArray array = crop.getJSONArray("effects");
             for (int i = 0; i < array.length(); i++) effects.add(GreenhouseEffect.valueOf(array.getString(i)));
             plants.put(key, new PlantType(key, garden.getDisplayName(), garden, false, crop.getInt("stages"),
-                    crop.getInt("yield"), effects, key.equals("SUGAR_CANE") ? "Sand/Dirt" : key.equals("NETHER_WART") ? "Soul Sand" : "Farmland", null));
+                    crop.getInt("yield"), effects, crop.optString("surface", "Farmland"), null));
         }
         plants.put(DEAD_PLANT, new PlantType(DEAD_PLANT, "Dead Plant", null, true, 0, 1, List.of(), "Farmland", "COMMON"));
         JSONObject all = json.getJSONObject("upgrades");

@@ -288,6 +288,7 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.levels.SkyBlockLevelRequirement
                 .getStatisticsUpTo(experience.getLevel().asInt()));
         spare = ItemStatistics.add(spare, FarmingContestStatistics.all(player));
+        spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.garden.chip.ChipStatistics.all(player));
         spare = ItemStatistics.add(spare, CarnivalStatistics.all(player));
         spare = ItemStatistics.add(spare, IceEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.essence.FossilEssenceShop.statistics(player));
@@ -298,6 +299,7 @@ public class PlayerStatistics {
         spare = ItemStatistics.add(spare, PetScore.statistics(player));
         spare = ItemStatistics.add(spare, MythologicalItemHandlers.permanentStatistics(player));
         spare = ItemStatistics.add(spare, BottleOfJyrre.permanentStatistics(player));
+        spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.garden.greenhouse.RosewaterFlask.statistics(player));
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.minion.inferno.ReaperPepper.permanentStatistics(player));
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.consumable.VialOfVenom.permanentStatistics(player));
         spare = ItemStatistics.add(spare, net.swofty.type.skyblockgeneric.consumable.DwarvenOs.statistics(player));
@@ -472,6 +474,8 @@ public class PlayerStatistics {
         }
         addModifier(modifiers, "Hot Potato Books", getHotPotatoBookStatistics(item, ItemStatistics.empty()),
             sourceType, StatisticModifierType.HOT_POTATO_BOOK, parent, material, texture);
+        addModifier(modifiers, "Pest Books", net.swofty.type.skyblockgeneric.garden.pest.PestBooks.statistics(item),
+            sourceType, StatisticModifierType.OTHER, parent, material, texture);
     }
 
     private void addProgressionModifiers(List<StatisticModifier> modifiers) {
@@ -511,6 +515,8 @@ public class PlayerStatistics {
         addModifier(modifiers, "Anita's Extra Farming Fortune", FarmingContestStatistics.extraFortune(contests),
             StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.WHEAT, null);
         addModifier(modifiers, "Personal Bests", FarmingContestStatistics.personalBests(contests),
+            StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.PAPER, null);
+        addModifier(modifiers, "Garden Chips", net.swofty.type.skyblockgeneric.garden.chip.ChipStatistics.all(player),
             StatisticSourceType.OTHER, StatisticModifierType.PROGRESSION, null, Material.PAPER, null);
         addModifier(modifiers, "Anita's Accessory", FarmingContestStatistics.anitaAccessory(player),
             StatisticSourceType.ACCESSORY_BAG, StatisticModifierType.ABILITY_PASSIVE, null, Material.PLAYER_HEAD, null);

@@ -26,7 +26,7 @@ public final class PestCatalogue {
 
     public record Pest(String id, String name, @Nullable GardenCrop crop, int level, @Nullable String spray,
                        EntityType entity, @Nullable String item, @Nullable String altItem, int base, double perFortune,
-                       boolean flees, List<MobDrop> rare) {
+                       boolean flees, @Nullable String vinyl, List<MobDrop> rare) {
         public boolean isTrapOnly() {
             return spray == null;
         }
@@ -45,16 +45,18 @@ public final class PestCatalogue {
         for (int i = 0; i < array.length(); i++) {
             JSONObject entry = array.getJSONObject(i);
             List<MobDrop> rare = rare(entry);
+            String vinyl = PestVinyls.vinylOf(entry.getString("id"));
+            if (vinyl != null) rare.add(MobDrop.chance(vinyl, PestVinyls.DROP_CHANCE_PERCENT));
             pests.put(entry.getString("id"), new Pest(entry.getString("id"), entry.getString("name"),
                     GardenCrop.valueOf(entry.getString("crop")), entry.getInt("level"), entry.getString("spray"),
                     entity(entry.getString("entity")), entry.getString("item"), entry.optString("altItem", null),
-                    entry.getInt("base"), entry.getDouble("perFortune"), entry.optBoolean("flees", true), rare));
+                    entry.getInt("base"), entry.getDouble("perFortune"), entry.optBoolean("flees", true), PestVinyls.vinylOf(entry.getString("id")), rare));
         }
         JSONObject traps = json.getJSONObject("traps");
         for (String id : traps.keySet()) {
             JSONObject entry = traps.getJSONObject(id);
             pests.put(id, new Pest(id, entry.getString("name"), null, 5, null, entity(entry.getString("entity")),
-                    null, null, 0, 1, true, rare(entry)));
+                    null, null, 0, 1, true, null, rare(entry)));
         }
     }
 
@@ -95,7 +97,7 @@ public final class PestCatalogue {
         if (items != null) {
             for (int i = 0; i < items.length(); i++) {
                 JSONArray row = items.getJSONArray(i);
-                drops.add(MobDrop.chance(row.getString(0), row.getDouble(1)));
+                drops.add(MobDrop.chance(row.getString(0), row.optInt(2, 1), row.getDouble(1)));
             }
         }
         JSONArray pets = entry.optJSONArray("pets");

@@ -1,12 +1,11 @@
 # SkyMart: Pests (data from wiki Template:SkyMart/UI; Farming Tools unlock at Garden Level 4).
 title: "SkyMart: Pests"
-slots: [10, 11, 12, 13, 14, 15, 16, 19, 20]
+slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22]
 entries:
   - item: PORTABLE_WASHER
     name: "<a>Portable Washer"
     material: paper
     cost: { coins: 20000 }
-    unavailable: "<c>The Portable Washer is not built yet."
   - item: SKYMART_VACUUM
     name: "<a>SkyMart Vacuum"
     material: paper
@@ -39,3 +38,11 @@ entries:
     name: "<a>Pest Repellent MAX"
     material: paper
     cost: { copper: 25, items: { PEST_REPELLENT: 1 } }
+  - item: JUICY_SPRAYONATOR
+    name: "<9>Juicy Sprayonator"
+    material: paper
+    cost: { copper: 1000, items: { SPRAYONATOR: 1, JUICY_NOZZLE: 1 } }
+  - item: SALTY_SPRAYONATOR
+    name: "<5>Salty Sprayonator"
+    material: paper
+    cost: { copper: 10000, items: { JUICY_SPRAYONATOR: 1, SALTY_NOZZLE: 1 } }

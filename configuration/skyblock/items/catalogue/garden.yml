@@ -165,7 +165,7 @@ items:
     default_statistics:
       cactus_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -191,6 +191,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/cactus_knife_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: CACTUS_KNIFE
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: ENCHANTED_CACTUS
+                amount: 8
+              L:
+                type: ENCHANTED_CACTUS
+                amount: 8
+              B:
+                type: CACTUS_KNIFE
+                amount: 1
+            result:
+              type: CACTUS_KNIFE_2
+              amount: 1
   - id: CACTUS_KNIFE_3
     material: iron_sword
     name: "Cactus Knife Mk. III"
@@ -198,7 +223,7 @@ items:
     default_statistics:
       cactus_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -224,6 +249,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/cactus_knife_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: CACTUS_KNIFE_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: ENCHANTED_CACTUS
+                amount: 32
+              L:
+                type: ENCHANTED_CACTUS
+                amount: 32
+              B:
+                type: CACTUS_KNIFE_2
+                amount: 1
+            result:
+              type: CACTUS_KNIFE_3
+              amount: 1
   - id: COCO_CHOPPER
     material: golden_axe
     name: "Cocoa Chopper Mk. I"
@@ -258,7 +308,7 @@ items:
     default_statistics:
       cocoa_beans_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -278,6 +328,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/coco_chopper_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: COCO_CHOPPER
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: ENCHANTED_COOKIE
+                amount: 10
+              L:
+                type: ENCHANTED_COOKIE
+                amount: 10
+              B:
+                type: COCO_CHOPPER
+                amount: 1
+            result:
+              type: COCO_CHOPPER_2
+              amount: 1
   - id: COCO_CHOPPER_3
     material: golden_axe
     name: "Cocoa Chopper Mk. III"
@@ -285,7 +360,7 @@ items:
     default_statistics:
       cocoa_beans_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -305,6 +380,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/coco_chopper_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: COCO_CHOPPER_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: ENCHANTED_COOKIE
+                amount: 40
+              L:
+                type: ENCHANTED_COOKIE
+                amount: 40
+              B:
+                type: COCO_CHOPPER_2
+                amount: 1
+            result:
+              type: COCO_CHOPPER_3
+              amount: 1
   - id: FUNGI_CUTTER
     material: iron_hoe
     name: "Fungi Cutter Mk. I"
@@ -339,7 +439,7 @@ items:
     default_statistics:
       mushroom_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -359,6 +459,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/fungi_cutter_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: FUNGI_CUTTER
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: ENCHANTED_RED_MUSHROOM_BLOCK
+                amount: 5
+              L:
+                type: ENCHANTED_BROWN_MUSHROOM_BLOCK
+                amount: 5
+              B:
+                type: FUNGI_CUTTER
+                amount: 1
+            result:
+              type: FUNGI_CUTTER_2
+              amount: 1
   - id: FUNGI_CUTTER_3
     material: iron_hoe
     name: "Fungi Cutter Mk. III"
@@ -366,7 +491,7 @@ items:
     default_statistics:
       mushroom_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -386,6 +511,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/fungi_cutter_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: FUNGI_CUTTER_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: ENCHANTED_RED_MUSHROOM_BLOCK
+                amount: 20
+              L:
+                type: ENCHANTED_BROWN_MUSHROOM_BLOCK
+                amount: 20
+              B:
+                type: FUNGI_CUTTER_2
+                amount: 1
+            result:
+              type: FUNGI_CUTTER_3
+              amount: 1
   - id: MELON_DICER
     material: melon
     name: "Melon Dicer Mk. I"
@@ -420,7 +570,7 @@ items:
     default_statistics:
       melon_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -443,6 +593,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/melon_dicer_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: MELON_DICER
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: ENCHANTED_MELON_BLOCK
+                amount: 16
+              L:
+                type: ENCHANTED_MELON_BLOCK
+                amount: 16
+              B:
+                type: MELON_DICER
+                amount: 1
+            result:
+              type: MELON_DICER_2
+              amount: 1
   - id: MELON_DICER_3
     material: golden_axe
     name: "Melon Dicer Mk. III"
@@ -450,7 +625,7 @@ items:
     default_statistics:
       melon_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -473,6 +648,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/melon_dicer_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: MELON_DICER_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: ENCHANTED_MELON_BLOCK
+                amount: 64
+              L:
+                type: ENCHANTED_MELON_BLOCK
+                amount: 64
+              B:
+                type: MELON_DICER_2
+                amount: 1
+            result:
+              type: MELON_DICER_3
+              amount: 1
   - id: PUMPKIN_DICER
     material: pumpkin
     name: "Pumpkin Dicer Mk. I"
@@ -507,7 +707,7 @@ items:
     default_statistics:
       pumpkin_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -530,6 +730,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pumpkin_dicer_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: PUMPKIN_DICER
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: POLISHED_PUMPKIN
+                amount: 5
+              L:
+                type: POLISHED_PUMPKIN
+                amount: 5
+              B:
+                type: PUMPKIN_DICER
+                amount: 1
+            result:
+              type: PUMPKIN_DICER_2
+              amount: 1
   - id: PUMPKIN_DICER_3
     material: golden_axe
     name: "Pumpkin Dicer Mk. III"
@@ -537,7 +762,7 @@ items:
     default_statistics:
       pumpkin_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -560,6 +785,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pumpkin_dicer_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: PUMPKIN_DICER_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: POLISHED_PUMPKIN
+                amount: 20
+              L:
+                type: POLISHED_PUMPKIN
+                amount: 20
+              B:
+                type: PUMPKIN_DICER_2
+                amount: 1
+            result:
+              type: PUMPKIN_DICER_3
+              amount: 1
   - id: ROOKIE_FARMING_AXE
     material: stone_axe
     name: "Rookie Farming Axe"
@@ -1608,7 +1858,7 @@ items:
     material: player_head
     name: "Cropshot Chip"
     rarity: RARE
-    source: "Garden Tutorial reward"
+    source: "Given free by Jeff once you show him a Specialized Farming Tool"
     lore:
       - "§6Ability: Cropshot "
       - "§7Grants §6+3☘ Farming Fortune §7per"
@@ -1707,7 +1957,7 @@ items:
     default_statistics:
       sugar_cane_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1727,6 +1977,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_cane_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_CANE_1
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: ENCHANTED_SUGAR_CANE
+                amount: 10
+              L:
+                type: ENCHANTED_SUGAR_CANE
+                amount: 10
+              B:
+                type: THEORETICAL_HOE_CANE_1
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_CANE_2
+              amount: 1
   - id: THEORETICAL_HOE_CANE_3
     material: iron_hoe
     name: "Turing Sugar Cane Cutter Mk. III"
@@ -1734,7 +2009,7 @@ items:
     default_statistics:
       sugar_cane_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1754,6 +2029,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_cane_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_CANE_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: ENCHANTED_SUGAR_CANE
+                amount: 40
+              L:
+                type: ENCHANTED_SUGAR_CANE
+                amount: 40
+              B:
+                type: THEORETICAL_HOE_CANE_2
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_CANE_3
+              amount: 1
   - id: THEORETICAL_HOE_CARROT_2
     material: iron_hoe
     name: "Gauss Carrot Shovel Mk. II"
@@ -1761,7 +2061,7 @@ items:
     default_statistics:
       carrot_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1781,6 +2081,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_carrot_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_CARROT_1
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: ENCHANTED_GOLDEN_CARROT
+                amount: 16
+              L:
+                type: ENCHANTED_GOLDEN_CARROT
+                amount: 16
+              B:
+                type: THEORETICAL_HOE_CARROT_1
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_CARROT_2
+              amount: 1
   - id: THEORETICAL_HOE_CARROT_3
     material: iron_hoe
     name: "Gauss Carrot Shovel Mk. III"
@@ -1788,7 +2113,7 @@ items:
     default_statistics:
       carrot_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1808,6 +2133,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_carrot_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_CARROT_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: ENCHANTED_GOLDEN_CARROT
+                amount: 64
+              L:
+                type: ENCHANTED_GOLDEN_CARROT
+                amount: 64
+              B:
+                type: THEORETICAL_HOE_CARROT_2
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_CARROT_3
+              amount: 1
   - id: THEORETICAL_HOE_POTATO_2
     material: iron_hoe
     name: "Pythagorean Potato Shovel Mk. II"
@@ -1815,7 +2165,7 @@ items:
     default_statistics:
       potato_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1835,6 +2185,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_potato_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_POTATO_1
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: ENCHANTED_BAKED_POTATO
+                amount: 15
+              L:
+                type: ENCHANTED_BAKED_POTATO
+                amount: 15
+              B:
+                type: THEORETICAL_HOE_POTATO_1
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_POTATO_2
+              amount: 1
   - id: THEORETICAL_HOE_POTATO_3
     material: iron_hoe
     name: "Pythagorean Potato Shovel Mk. III"
@@ -1842,7 +2217,7 @@ items:
     default_statistics:
       potato_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1862,6 +2237,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_potato_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_POTATO_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: ENCHANTED_BAKED_POTATO
+                amount: 60
+              L:
+                type: ENCHANTED_BAKED_POTATO
+                amount: 60
+              B:
+                type: THEORETICAL_HOE_POTATO_2
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_POTATO_3
+              amount: 1
   - id: THEORETICAL_HOE_SUNFLOWER_2
     material: iron_hoe
     name: "Eclipse Sickle Mk. II"
@@ -1869,7 +2269,7 @@ items:
     default_statistics:
       sunflower_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1889,6 +2289,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_sunflower_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_SUNFLOWER_1
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: COMPACTED_MOONFLOWER
+                amount: 10
+              L:
+                type: COMPACTED_SUNFLOWER
+                amount: 10
+              B:
+                type: THEORETICAL_HOE_SUNFLOWER_1
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_SUNFLOWER_2
+              amount: 1
   - id: THEORETICAL_HOE_SUNFLOWER_3
     material: iron_hoe
     name: "Eclipse Sickle Mk. III"
@@ -1896,7 +2321,7 @@ items:
     default_statistics:
       sunflower_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1916,6 +2341,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_sunflower_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_SUNFLOWER_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: COMPACTED_MOONFLOWER
+                amount: 40
+              L:
+                type: COMPACTED_SUNFLOWER
+                amount: 40
+              B:
+                type: THEORETICAL_HOE_SUNFLOWER_2
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_SUNFLOWER_3
+              amount: 1
   - id: THEORETICAL_HOE_WARTS_2
     material: iron_hoe
     name: "Newton Nether Wart Cutter Mk. II"
@@ -1923,7 +2373,7 @@ items:
     default_statistics:
       nether_wart_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1943,6 +2393,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_warts_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_WARTS_1
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: MUTANT_NETHER_WART
+                amount: 15
+              L:
+                type: MUTANT_NETHER_WART
+                amount: 15
+              B:
+                type: THEORETICAL_HOE_WARTS_1
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_WARTS_2
+              amount: 1
   - id: THEORETICAL_HOE_WARTS_3
     material: iron_hoe
     name: "Newton Nether Wart Cutter Mk. III"
@@ -1950,7 +2425,7 @@ items:
     default_statistics:
       nether_wart_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1970,6 +2445,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_warts_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_WARTS_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: MUTANT_NETHER_WART
+                amount: 60
+              L:
+                type: MUTANT_NETHER_WART
+                amount: 60
+              B:
+                type: THEORETICAL_HOE_WARTS_2
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_WARTS_3
+              amount: 1
   - id: THEORETICAL_HOE_WHEAT_2
     material: iron_hoe
     name: "Euclid's Wheat Sickle Mk. II"
@@ -1977,7 +2477,7 @@ items:
     default_statistics:
       wheat_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -1996,6 +2496,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wheat_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_WHEAT_1
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: ENCHANTED_HAY_BALE
+                amount: 5
+              L:
+                type: ENCHANTED_HAY_BALE
+                amount: 5
+              B:
+                type: THEORETICAL_HOE_WHEAT_1
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_WHEAT_2
+              amount: 1
   - id: THEORETICAL_HOE_WHEAT_3
     material: iron_hoe
     name: "Euclid's Wheat Sickle Mk. III"
@@ -2003,7 +2528,7 @@ items:
     default_statistics:
       wheat_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -2022,6 +2547,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wheat_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_WHEAT_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: ENCHANTED_HAY_BALE
+                amount: 20
+              L:
+                type: ENCHANTED_HAY_BALE
+                amount: 20
+              B:
+                type: THEORETICAL_HOE_WHEAT_2
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_WHEAT_3
+              amount: 1
   - id: THEORETICAL_HOE_WILD_ROSE_2
     material: iron_hoe
     name: "Wild Rose Cutter Mk. II"
@@ -2029,7 +2579,7 @@ items:
     default_statistics:
       wild_rose_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 64 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -2049,6 +2599,31 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wild_rose_2
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_WILD_ROSE_1
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 16
+              T:
+                type: COMPACTED_WILD_ROSE
+                amount: 10
+              L:
+                type: COMPACTED_WILD_ROSE
+                amount: 10
+              B:
+                type: THEORETICAL_HOE_WILD_ROSE_1
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_WILD_ROSE_2
+              amount: 1
   - id: THEORETICAL_HOE_WILD_ROSE_3
     material: iron_hoe
     name: "Wild Rose Cutter Mk. III"
@@ -2056,7 +2631,7 @@ items:
     default_statistics:
       wild_rose_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
+    source: "Crafted from the previous Mk. tier, 256 Jacob's Ticket and enchanted crops"
     lore:
       - "§8Farming Tool"
       - ""
@@ -2076,3 +2651,28 @@ items:
         display: "FARMING TOOL"
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/jacob/hoes/theoretical_hoe_wild_rose_3
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            upgrades_from: THEORETICAL_HOE_WILD_ROSE_2
+            pattern:
+              - ATA
+              - LBL
+              - ATA
+            ingredients:
+              A:
+                type: JACOBS_TICKET
+                amount: 64
+              T:
+                type: COMPACTED_WILD_ROSE
+                amount: 40
+              L:
+                type: COMPACTED_WILD_ROSE
+                amount: 40
+              B:
+                type: THEORETICAL_HOE_WILD_ROSE_2
+                amount: 1
+            result:
+              type: THEORETICAL_HOE_WILD_ROSE_3
+              amount: 1

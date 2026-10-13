@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.garden.pest;
 
+import net.kyori.adventure.sound.Sound;
 import net.minestom.server.component.DataComponents;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
@@ -9,6 +10,7 @@ import net.minestom.server.entity.Player;
 import net.minestom.server.entity.damage.Damage;
 import net.minestom.server.entity.metadata.cube.SlimeMeta;
 import net.minestom.server.instance.Instance;
+import net.minestom.server.sound.SoundEvent;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.garden.GardenLayout;
 import net.swofty.type.skyblockgeneric.garden.npc.GardenGround;
@@ -82,6 +84,17 @@ public final class PestEntity extends EntityCreature {
         super.tick(time);
         if (getInstance() == null || getAliveTicks() % 3 != 0) return;
         steer();
+        if (ThreadLocalRandom.current().nextInt(120) == 0) ambient();
+    }
+
+    private void ambient() {
+        EntityType type = pest.entity();
+        SoundEvent sound = type == EntityType.BEE ? SoundEvent.ENTITY_BEE_LOOP
+                : type == EntityType.SILVERFISH ? SoundEvent.ENTITY_SILVERFISH_AMBIENT
+                : type == EntityType.ENDERMITE ? SoundEvent.ENTITY_ENDERMITE_AMBIENT
+                : type == EntityType.RABBIT ? SoundEvent.ENTITY_RABBIT_AMBIENT
+                : SoundEvent.ENTITY_SLIME_SQUISH_SMALL;
+        getInstance().playSound(Sound.sound(sound, Sound.Source.HOSTILE, 0.5f, 1.2f), getPosition().x(), getPosition().y(), getPosition().z());
     }
 
     private void refreshName() {

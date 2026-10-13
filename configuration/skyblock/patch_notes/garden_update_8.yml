@@ -1,0 +1,23 @@
+title: "The Garden Update, Part 8"
+date: "13th October 2026"
+intro:
+  - "A big polish pass over the Greenhouse, Pests, tools and chips."
+sections:
+  - heading: "Greenhouse"
+    colour: "<a>"
+    lines:
+      - "Mutations now follow their real shapes: 2x2 and 3x3 mutations take several slots, and growth surfaces matter. Right-click an empty slot with Soul Sand, Sand, Mycelium, Dirt or End Stone to change its surface, or a hoe to restore farmland."
+      - "Most mutations now behave like their real counterparts: Blastberry explodes, Snoozling falls asleep, Devourer devours, Zombud summons zombies, Timestalk clones you, and PlantBoy Advance wants a game of Snake."
+      - "The Rosewater Flask ages in your inventory and grows your Greenhouse crops. Mutation Sacks store mutations, and Mass Analyze counts them."
+  - heading: "Pests"
+    colour: "<2>"
+    lines:
+      - "Juicy and Salty Sprayonators with nozzles, the Portable Washer, the Pest Vest, Bookworm's Favorite Book, Farming for Dummies, the Squeaky, Beady Eyes and Buzzing reforges, and A Beginner's Guide to Pesthunting."
+      - "Pest Vinyls, Stereo Harmony on the InfiniVacuum Hooverius, and Buzzybee's Fantabulous Disco Destination."
+      - "Pesthunter Phillip has his full conversation and his Abiphone contact."
+  - heading: "Tools and Chips"
+    colour: "<6>"
+    lines:
+      - "Mk. II and Mk. III farming tools can be crafted and keep their XP. Overclocker 3000 and Tool Exp Capsule work at the anvil. The Farming Toolkit and Plot Eraser are usable, and presets cost seeds."
+      - "Sowledge and Overdrive chips are active. Anita sells the Mechamind and Overdrive chips, and Jeff gives you a free Cropshot chip."
+      - "The Garden tab list shows your Pest Traps, Jacob's Contest and the Election."

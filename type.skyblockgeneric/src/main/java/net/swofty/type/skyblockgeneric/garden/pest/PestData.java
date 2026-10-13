@@ -8,7 +8,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.UUID;
 
 @Getter
@@ -21,19 +23,51 @@ public final class PestData {
         private final String id;
         private final String type;
         private final int plot;
+        private final double spawnX;
+        private final double spawnZ;
 
         public Alive(String id, String type, int plot) {
+            this(id, type, plot, Double.NaN, Double.NaN);
+        }
+
+        public Alive(String id, String type, int plot, double spawnX, double spawnZ) {
             this.id = id;
             this.type = type;
             this.plot = plot;
+            this.spawnX = spawnX;
+            this.spawnZ = spawnZ;
         }
 
         public static Alive create(String type, int plot) {
             return new Alive(UUID.randomUUID().toString(), type, plot);
         }
+
+        public static Alive createAt(String type, int plot, double x, double z) {
+            return new Alive(UUID.randomUUID().toString(), type, plot, x, z);
+        }
+
+        public boolean hasSpawnPoint() {
+            return !Double.isNaN(spawnX) && !Double.isNaN(spawnZ);
+        }
     }
 
-    public record Spray(String material, long until) {
+    @Getter
+    public static final class Disco {
+        private final int plot;
+        private final double x;
+        private final double y;
+        private final double z;
+        private final Set<String> vinyls = new TreeSet<>();
+
+        public Disco(int plot, double x, double y, double z) {
+            this.plot = plot;
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+    }
+
+    public record Spray(String material, long until, String nozzle) {
     }
 
     @Getter
@@ -76,6 +110,11 @@ public final class PestData {
     private long lastTick;
     private boolean metPhillip;
     private boolean metPamela;
+    private String selectedNozzle = "BASIC";
+    private String playingVinyl = "";
+    private boolean squeakyGiven;
+    private boolean phillipDebriefed;
+    private Disco disco;
 
     public int aliveCount() {
         return alive.size();
@@ -105,10 +144,14 @@ public final class PestData {
 
     public JSONObject toJson() {
         JSONArray pests = new JSONArray();
-        alive.forEach(pest -> pests.put(new JSONObject().put("id", pest.id).put("type", pest.type).put("plot", pest.plot)));
+        alive.forEach(pest -> {
+            JSONObject entry = new JSONObject().put("id", pest.id).put("type", pest.type).put("plot", pest.plot);
+            if (pest.hasSpawnPoint()) entry.put("x", pest.spawnX).put("z", pest.spawnZ);
+            pests.put(entry);
+        });
         JSONObject sprayJson = new JSONObject();
         sprays.forEach((plot, spray) -> sprayJson.put(String.valueOf(plot),
-                new JSONObject().put("material", spray.material()).put("until", spray.until())));
+                new JSONObject().put("material", spray.material()).put("until", spray.until()).put("nozzle", spray.nozzle())));
         JSONArray trapJson = new JSONArray();
         traps.forEach(trap -> trapJson.put(new JSONObject().put("id", trap.id).put("kind", trap.kind).put("plot", trap.plot)
                 .put("x", trap.x).put("y", trap.y).put("z", trap.z).put("material", trap.material).put("bait", trap.bait)
@@ -118,7 +161,10 @@ public final class PestData {
                 .put("repellentUntil", repellentUntil).put("repellentMax", repellentMax)
                 .put("selectedSpray", selectedSpray).put("boostUntil", boostUntil).put("boostFortune", boostFortune)
                 .put("permanentBonusChance", permanentBonusChance).put("lastTick", lastTick)
-                .put("metPhillip", metPhillip).put("metPamela", metPamela);
+                .put("metPhillip", metPhillip).put("metPamela", metPamela).put("selectedNozzle", selectedNozzle)
+                .put("playingVinyl", playingVinyl).put("squeakyGiven", squeakyGiven).put("phillipDebriefed", phillipDebriefed)
+                .put("disco", disco == null ? JSONObject.NULL : new JSONObject().put("plot", disco.plot).put("x", disco.x)
+                        .put("y", disco.y).put("z", disco.z).put("vinyls", new JSONArray(disco.vinyls)));
     }
 
     public static PestData fromJson(JSONObject json) {
@@ -128,7 +174,8 @@ public final class PestData {
         if (pests != null) {
             for (int i = 0; i < pests.length(); i++) {
                 JSONObject pest = pests.getJSONObject(i);
-                data.alive.add(new Alive(pest.getString("id"), pest.getString("type"), pest.getInt("plot")));
+                data.alive.add(new Alive(pest.getString("id"), pest.getString("type"), pest.getInt("plot"),
+                        pest.optDouble("x", Double.NaN), pest.optDouble("z", Double.NaN)));
             }
         }
         JSONArray trapJson = json.optJSONArray("traps");
@@ -148,7 +195,7 @@ public final class PestData {
         if (sprays != null) {
             for (String key : sprays.keySet()) {
                 JSONObject spray = sprays.getJSONObject(key);
-                data.sprays.put(Integer.parseInt(key), new Spray(spray.getString("material"), spray.getLong("until")));
+                data.sprays.put(Integer.parseInt(key), new Spray(spray.getString("material"), spray.getLong("until"), spray.optString("nozzle", "BASIC")));
             }
         }
         JSONObject killed = json.optJSONObject("killedByType");
@@ -167,6 +214,16 @@ public final class PestData {
         data.lastTick = json.optLong("lastTick", 0);
         data.metPhillip = json.optBoolean("metPhillip", false);
         data.metPamela = json.optBoolean("metPamela", false);
+        data.selectedNozzle = json.optString("selectedNozzle", "BASIC");
+        data.playingVinyl = json.optString("playingVinyl", "");
+        data.squeakyGiven = json.optBoolean("squeakyGiven", false);
+        JSONObject discoJson = json.optJSONObject("disco");
+        if (discoJson != null) {
+            data.disco = new Disco(discoJson.getInt("plot"), discoJson.getDouble("x"), discoJson.getDouble("y"), discoJson.getDouble("z"));
+            JSONArray vinyls = discoJson.optJSONArray("vinyls");
+            if (vinyls != null) for (int i = 0; i < vinyls.length(); i++) data.disco.vinyls.add(vinyls.getString(i));
+        }
+        data.phillipDebriefed = json.optBoolean("phillipDebriefed", json.optInt("stored", 0) > 0 || json.optLong("totalKilled", 0) > 0);
         return data;
     }
 }

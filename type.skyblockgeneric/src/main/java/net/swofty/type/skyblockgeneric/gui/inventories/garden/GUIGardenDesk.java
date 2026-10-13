@@ -44,10 +44,21 @@ public class GUIGardenDesk extends StatelessView {
         view(layout, 23, Material.EMERALD, "skymart", 6, () -> new GUISkyMart());
         view(layout, 25, Material.GOLD_BLOCK, "milestones", 2, () -> new GUIGardenMilestones());
         view(layout, 31, Material.CLOCK, "speed", 2, () -> new GUICropSpeed());
+        view(layout, 33, Material.PLAYER_HEAD, "chips", 2, () -> new GUIManageChips());
         layout.slot(29, (_, c) -> levelsItem(c), (_, c) -> GardenMenus.open(c, new GUIGardenLevels()));
         view(layout, 48, Material.CHEST, "logbook", 2, () -> new GUIVisitorLogbook());
         pending(layout, 50, Material.DAYLIGHT_DETECTOR, "time", 1, "Garden Time");
-        pending(layout, 51, Material.DIAMOND_HOE, "toolkit", 3, "Farming Toolkit");
+        layout.slot(51, (_, _) -> GardenMenus.item(Material.DIAMOND_HOE, Text.key(KEY + "toolkit.name"), tooltip("toolkit", 3, false)),
+                (_, c) -> openToolkit(c));
+    }
+
+    private void openToolkit(ViewContext c) {
+        SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+        if (!GardenService.profile(player).toolkit().isUnlocked()) {
+            player.sendMessage("<c>You haven't unlocked the Farming Toolkit yet!");
+            return;
+        }
+        GardenMenus.open(c, new GUIFarmingToolkit());
     }
 
     private net.minestom.server.item.ItemStack.Builder levelsItem(ViewContext c) {

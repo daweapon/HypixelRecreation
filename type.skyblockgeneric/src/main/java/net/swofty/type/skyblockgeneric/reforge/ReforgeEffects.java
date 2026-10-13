@@ -135,4 +135,28 @@ public final class ReforgeEffects {
         }
         return fraction;
     }
+
+    public static double pestFortune(Collection<? extends ReforgeAbility> abilities) {
+        double fortune = 0;
+        for (ReforgeAbility ability : abilities) {
+            if (ability instanceof ReforgeAbility.PestFortune effect) fortune += effect.pestFortune();
+        }
+        return fortune;
+    }
+
+    public static double pestDamageMultiplier(Collection<? extends ReforgeAbility> abilities) {
+        double multiplier = 1;
+        for (ReforgeAbility ability : abilities) {
+            if (ability instanceof ReforgeAbility.PestDamage effect) multiplier *= effect.pestDamageMultiplier();
+        }
+        return multiplier;
+    }
+
+    public static double pestCooldownReduction(Collection<? extends ReforgeAbility> abilities) {
+        double reduction = 0;
+        for (ReforgeAbility ability : abilities) {
+            if (ability instanceof ReforgeAbility.PestCooldown effect) reduction += effect.cooldownReductionPercent();
+        }
+        return reduction;
+    }
 }

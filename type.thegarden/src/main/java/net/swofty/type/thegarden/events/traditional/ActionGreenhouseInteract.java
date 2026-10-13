@@ -21,6 +21,10 @@ public class ActionGreenhouseInteract implements HypixelEventClass {
         GreenhouseLayout.Spot spot = GreenhouseService.spotAt(Gardens.profile(player), event.getBlockPosition());
         if (spot == null) return;
         SkyBlockItem held = new SkyBlockItem(player.getItemInMainHand());
+        if (GreenhouseService.interact(player, spot, held)) {
+            event.setBlockingItemUse(true);
+            return;
+        }
         if (held.isNA()) return;
         if (GreenhouseService.unlockSlot(player, spot, held) || GreenhouseService.plant(player, spot, held)) {
             event.setBlockingItemUse(true);

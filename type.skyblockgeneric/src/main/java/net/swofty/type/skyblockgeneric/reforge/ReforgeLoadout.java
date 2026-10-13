@@ -119,6 +119,18 @@ public final class ReforgeLoadout {
         return whole + (ThreadLocalRandom.current().nextDouble() < extra - whole ? 1 : 0);
     }
 
+    public static double pestFortune(SkyBlockPlayer player) {
+        return ReforgeEffects.pestFortune(abilities(player));
+    }
+
+    public static double pestCooldownReduction(SkyBlockPlayer player) {
+        return ReforgeEffects.pestCooldownReduction(abilities(player));
+    }
+
+    public static double pestDamageMultiplier(SkyBlockItem vacuum) {
+        return ReforgeAbilities.active(reforgeOf(vacuum)).map(ability -> ReforgeEffects.pestDamageMultiplier(List.of(ability))).orElse(1D);
+    }
+
     public static List<SkyBlockItem> items(SkyBlockPlayer player) {
         List<SkyBlockItem> items = new ArrayList<>();
         PlayerItemOrigin.OriginCache cache = PlayerItemOrigin.getFromCache(player.getUuid());

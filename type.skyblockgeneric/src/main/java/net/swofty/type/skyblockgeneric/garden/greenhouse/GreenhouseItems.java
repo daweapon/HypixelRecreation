@@ -48,6 +48,7 @@ public final class GreenhouseItems {
     }
 
     public static void registerInteractables() {
+        RosewaterFlask.registerInteractables();
         InteractableRegistry.register(CAN, InteractableItemConfig.builder().rightClickHandler(GreenhouseItems::useCan).build());
         InteractableRegistry.register(DIAGNOSTICS, InteractableItemConfig.builder().rightClickHandler((player, item) -> {
             GardenProfile profile = Gardens.profile(player);
@@ -56,15 +57,17 @@ public final class GreenhouseItems {
                 player.sendMessage(Text.of("<c>Aim at a plant inside your Greenhouse!"));
                 return;
             }
-            if (!profile.greenhouse().bed(spot.plot()).getPlants().containsKey(spot.slot())) {
+            int anchor = profile.greenhouse().bed(spot.plot()).anchorAt(spot.slot());
+            if (anchor < 0) {
                 player.sendMessage(Text.of("<c>There is no plant in that slot!"));
                 return;
             }
-            player.openView(new GUICropDiagnostics(spot));
+            player.openView(new GUICropDiagnostics(new GreenhouseLayout.Spot(spot.plot(), anchor)));
         }).build());
     }
 
     public static void registerLore() {
+        RosewaterFlask.registerLore();
         LoreRegistry.register(CAN, new LoreConfig((item, player) -> {
             Can can = CANS.get(item.getAttributeHandler().getTypeAsString());
             if (can == null) return List.of();
@@ -96,6 +99,7 @@ public final class GreenhouseItems {
     }
 
     public static void tick(Instance instance) {
+        GreenhouseMinigames.tick(instance);
         long now = System.currentTimeMillis();
         for (Player online : instance.getPlayers()) {
             if (!(online instanceof SkyBlockPlayer player)) continue;
@@ -123,12 +127,17 @@ public final class GreenhouseItems {
         double levels = amount / GreenhouseConfig.get().waterPerLevel();
         int radius = can.burst();
         int plot = spot.plot();
+        GreenhouseData.Bed bed = data.bed(plot);
+        java.util.Set<Integer> watered = new java.util.HashSet<>();
         for (int dx = -radius; dx <= radius; dx++) {
             for (int dz = -radius; dz <= radius; dz++) {
                 int column = spot.column() + dx;
                 int row = spot.row() + dz;
                 if (column < 0 || row < 0 || column >= GreenhouseData.SIZE || row >= GreenhouseData.SIZE) continue;
-                GreenhouseService.water(player, new GreenhouseLayout.Spot(plot, GreenhouseData.slot(column, row)), levels);
+                int slot = GreenhouseData.slot(column, row);
+                int anchor = bed.anchorAt(slot);
+                if (anchor >= 0 && !watered.add(anchor)) continue;
+                GreenhouseService.water(player, new GreenhouseLayout.Spot(plot, slot), levels);
             }
         }
         data.getTanks().put(can.id(), tank - amount);

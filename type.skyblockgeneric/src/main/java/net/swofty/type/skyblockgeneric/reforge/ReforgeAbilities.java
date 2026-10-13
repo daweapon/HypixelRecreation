@@ -12,6 +12,7 @@ import net.swofty.type.skyblockgeneric.reforge.abilities.HyperAbility;
 import net.swofty.type.skyblockgeneric.reforge.abilities.MagneticAbility;
 import net.swofty.type.skyblockgeneric.reforge.abilities.MarshyAbility;
 import net.swofty.type.skyblockgeneric.reforge.abilities.MobDamageReductionAbility;
+import net.swofty.type.skyblockgeneric.reforge.abilities.PestReforgeAbilities;
 import net.swofty.type.skyblockgeneric.reforge.abilities.SaltyAbility;
 import net.swofty.type.skyblockgeneric.reforge.abilities.SeaCreatureDefenseAbility;
 import net.swofty.type.skyblockgeneric.reforge.abilities.StatisticAbilities;
@@ -60,7 +61,10 @@ public final class ReforgeAbilities {
                 new BloodSoakedAbility(),
                 new EruditeAbility(),
                 new CandiedAbility(),
-                new MarshyAbility()));
+                new MarshyAbility(),
+                new PestReforgeAbilities.Beady(),
+                new PestReforgeAbilities.Buzzing(),
+                new PestReforgeAbilities.Squeaky()));
         return all;
     }
 

@@ -168,7 +168,7 @@ public enum SkyBlockXPSource {
     FEAST_BURGER_WITH_A_SIDE_OF_DEEPFRIES(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.PAPER),
     MOUND_OF_SEAGRASS(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.SEAGRASS),
     HUNTING_TOOLKIT(Group.CONSUMABLES, null, 2, Availability.NOT_IN_GAME, Material.PAPER),
-    FARMING_TOOLKIT(Group.CONSUMABLES, null, 2, Availability.NOT_IN_GAME, Material.BUNDLE),
+    FARMING_TOOLKIT(Group.CONSUMABLES, null, 2, Availability.LIVE, Material.BUNDLE),
     ISOPOD_HUSK(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.PAPER),
     BEE_SALIVA(Group.CONSUMABLES, null, 10, Availability.NOT_IN_GAME, Material.PAPER),
     ;

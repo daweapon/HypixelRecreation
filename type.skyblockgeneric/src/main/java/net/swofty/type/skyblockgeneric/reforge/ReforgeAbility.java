@@ -60,4 +60,16 @@ public interface ReforgeAbility {
     interface ForestWhispers extends ReforgeAbility {
         double bonusFraction();
     }
+
+    interface PestFortune extends ReforgeAbility {
+        double pestFortune();
+    }
+
+    interface PestDamage extends ReforgeAbility {
+        double pestDamageMultiplier();
+    }
+
+    interface PestCooldown extends ReforgeAbility {
+        double cooldownReductionPercent();
+    }
 }

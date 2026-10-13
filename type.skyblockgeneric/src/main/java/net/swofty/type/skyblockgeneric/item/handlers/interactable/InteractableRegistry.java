@@ -45,6 +45,8 @@ public class InteractableRegistry {
         net.swofty.type.skyblockgeneric.garden.pest.PestItems.registerInteractables();
         net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseItems.registerInteractables();
         net.swofty.type.skyblockgeneric.garden.chip.ChipItems.registerInteractables();
+        net.swofty.type.skyblockgeneric.garden.tool.FarmingToolItems.registerInteractables();
+        net.swofty.type.skyblockgeneric.garden.tool.FarmingToolkit.registerInteractables();
         net.swofty.type.skyblockgeneric.bank.PersonalBankItem.registerInteractables();
         net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments.registerInteractables();
         register("SKYBLOCK_MENU_INTERACT", InteractableItemConfig.builder().rightClickHandler(

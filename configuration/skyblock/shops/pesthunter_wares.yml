@@ -1,6 +1,6 @@
 # Pesthunter Phillip's Wares (prices from the wiki Pesthunter Phillip page; upgrade chains per the item sources).
 title: "Pesthunter's Wares"
-slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28]
+slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29]
 entries:
   - item: PESTHUNTER_BADGE
     name: "<a>Pesthunter Badge"
@@ -62,3 +62,7 @@ entries:
     name: "<a>Biohazard Boots"
     material: paper
     cost: { pests: 40, items: { MUSHROOM_BOOTS: 1 } }
+  - item: PESTHUNTING_GUIDE
+    name: "<6>A Beginner's Guide to Pesthunting"
+    material: player_head
+    cost: { pests: 500 }

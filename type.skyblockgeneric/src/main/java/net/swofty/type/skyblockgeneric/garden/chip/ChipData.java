@@ -8,6 +8,15 @@ import java.util.Map;
 public final class ChipData {
     private final Map<GardenChip, Integer> consumed = new EnumMap<>(GardenChip.class);
     private final Map<GardenChip, Integer> levels = new EnumMap<>(GardenChip.class);
+    private int jeffStage;
+
+    public int jeffStage() {
+        return jeffStage;
+    }
+
+    public void setJeffStage(int stage) {
+        jeffStage = stage;
+    }
 
     public int consumed(GardenChip chip) {
         return consumed.getOrDefault(chip, 0);
@@ -40,13 +49,16 @@ public final class ChipData {
                 json.put(chip.name(), new JSONObject().put("consumed", consumed(chip)).put("level", level(chip)));
             }
         }
+        if (jeffStage > 0) json.put("jeffStage", jeffStage);
         return json;
     }
 
     public static ChipData fromJson(JSONObject json) {
         ChipData data = new ChipData();
         if (json == null) return data;
+        data.jeffStage = json.optInt("jeffStage", 0);
         for (String key : json.keySet()) {
+            if (key.equals("jeffStage")) continue;
             try {
                 GardenChip chip = GardenChip.valueOf(key);
                 JSONObject entry = json.getJSONObject(key);

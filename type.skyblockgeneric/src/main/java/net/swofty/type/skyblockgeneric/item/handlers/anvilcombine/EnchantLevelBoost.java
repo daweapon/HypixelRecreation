@@ -18,7 +18,8 @@ public enum EnchantLevelBoost {
     TURBO_GOURD(Stream.of(EnchantmentType.values()).filter(type -> type.name().startsWith("TURBO_")).toList(), 5),
     TROUBLED_BUBBLE(List.of(EnchantmentType.PISCARY), 6),
     VIBRANT_CORAL(List.of(EnchantmentType.SCUBA), 5),
-    WATER_HYACINTH(List.of(EnchantmentType.FOREST_PLEDGE), 5);
+    WATER_HYACINTH(List.of(EnchantmentType.FOREST_PLEDGE), 5),
+    PESTHUNTING_GUIDE(List.of(EnchantmentType.PESTERMINATOR), 5);
 
     private final List<EnchantmentType> targets;
     private final int requiredLevel;

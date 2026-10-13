@@ -20,8 +20,6 @@ public final class PerkAvailability {
                     "a MINING_FIESTA CalendarEvent gated on ElectionPerks.isActive(MINING_FIESTA)"),
             missing(Perk.SHOPPING_SPREE, "NPC shops have no daily buy limits in this server yet.",
                     "daily NPC buy limit * ElectionPerks.factor(SHOPPING_SPREE)"),
-            missing(Perk.PEST_ERADICATOR, GARDEN,
-                    "pest spawn cooldown * (1 - ElectionPerks.bonus(PEST_ERADICATOR) / 100)"),
             missing(Perk.BLOOMING_BUSINESS, GARDEN,
                     "visitor copper * ElectionPerks.multiplier(BLOOMING_BUSINESS)"),
             missing(Perk.GRAND_FEAST, "The Harvest Feast isn't in this server yet.",

@@ -51,6 +51,37 @@ public final class GardenFarmLayout {
         };
     }
 
+    public static int plantCount(GardenCrop crop) {
+        int size = MARGIN * 2 + FARM_SIZE;
+        int count = 0;
+        for (int lx = 0; lx < size; lx++) {
+            for (int lz = 0; lz < size; lz++) {
+                for (Block block : column(crop, lx, lz)) {
+                    if (isPlant(crop, block)) count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    private static boolean isPlant(GardenCrop crop, Block block) {
+        return switch (crop) {
+            case WHEAT -> block.compare(Block.WHEAT);
+            case CARROT -> block.compare(Block.CARROTS);
+            case POTATO -> block.compare(Block.POTATOES);
+            case NETHER_WART -> block.compare(Block.NETHER_WART);
+            case PUMPKIN -> block.compare(Block.PUMPKIN_STEM);
+            case MELON -> block.compare(Block.MELON_STEM);
+            case SUGAR_CANE -> block.compare(Block.SUGAR_CANE);
+            case CACTUS -> block.compare(Block.CACTUS);
+            case MUSHROOM -> block.compare(Block.RED_MUSHROOM);
+            case SUNFLOWER -> block.compare(Block.SUNFLOWER) && "lower".equals(block.getProperty("half"));
+            case WILD_ROSE -> block.compare(Block.ROSE_BUSH) && "lower".equals(block.getProperty("half"));
+            case MOONFLOWER -> block.compare(Block.BLUE_ORCHID);
+            case COCOA_BEANS -> block.compare(Block.COCOA);
+        };
+    }
+
     private static List<Block> doublePlant(int fx, int fz, Block plant) {
         if (fx % 2 != 0 || fz % 2 != 0) {
             return GRASS;

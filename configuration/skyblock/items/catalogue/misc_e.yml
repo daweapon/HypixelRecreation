@@ -571,24 +571,36 @@ items:
     material: paper
     name: "Rosewater Flask"
     rarity: RARE
-    unavailable: "Needs the Greenhouse, which is not built"
-    source: "Greenhouse consumable (exact source unconfirmed)"
-    lore:
-      - "§7Consume to grow crops within the"
-      - "§aGreenhouse §7by several §2Growth"
-      - "§2Stages§7."
-      - ""
-      - "§7Keep this item in your inventory to"
-      - "§7increase the bonus up to §24 Growth"
-      - "§2Stages§7, at which point the item"
-      - "§c§oevolves§7!"
-      - ""
-      - "§7Current Bonus: §2+0 Growth Stages"
-      - ""
-      - "§8Co-op wide 2h cooldown."
+    source: "Crafted from 32 Compacted Wild Rose and a Bottle of Jyrre (unlocked by the Wild Rose VI collection)"
     components:
+      - id: LORE_UPDATE
+        handler_id: ROSEWATER_FLASK
+        is_absolute: false
+      - id: INTERACTABLE
+        handler_id: ROSEWATER_FLASK
+      - id: SELLABLE
+        value: 400000.0
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/greenhouse/wild_rose/rosewater_flask
+      - id: DEFAULT_CRAFTABLE
+        default-craftable: false
+        recipes:
+          - type: SHAPED
+            recipe-type: FARMING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: COMPACTED_WILD_ROSE
+                amount: 4
+              B:
+                type: NEW_BOTTLE_OF_JYRRE
+                amount: 1
+            result:
+              type: ROSEWATER_FLASK
+              amount: 1
   - id: ROSE_BOUQUET
     material: sunflower
     name: "Rose Bouquet"
@@ -889,20 +901,36 @@ items:
     material: paper
     name: "Salty Nozzle"
     rarity: EPIC
-    unavailable: "Needs Garden pests and SkyMart, which are not built"
-    source: "SkyMart upgrade of a Sprayonator"
+    source: "Crafted from 96 Salted Sunflower Seeds"
     lore:
       - "§7Can be used at §aSkyMart §7to upgrade"
       - "§7the §9Juicy Sprayonator §7to the §5Salty"
       - "§5Sprayonator§7."
     components:
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - OAO
+              - AAA
+              - AAO
+            ingredients:
+              A:
+                type: SALTED_SUNFLOWER_SEEDS
+                amount: 16
+              O:
+                type: AIR
+                amount: 1
+            result:
+              type: SALTY_NOZZLE
+              amount: 1
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pests/salty_nozzle
   - id: SALTY_SPRAYONATOR
     material: paper
     name: "Salty Sprayonator"
     rarity: EPIC
-    unavailable: "Needs Garden pests and SkyMart, which are not built"
     source: "SkyMart upgrade of a Sprayonator"
     lore:
       - "§6Ability: Configure  §e§lLEFT CLICK"
@@ -910,9 +938,6 @@ items:
       - "§7spraying. Certain materials attract"
       - "§7certain types of §2 Pests§7."
       - ""
-      - "§7Selected Nozzle: §5Salty"
-      - "§7Selected Material: §aCompost"
-      - "§7Attracts: §6Earthworm§7, §6Mosquito"
       - ""
       - "§6Ability: Spray  §e§lRIGHT CLICK"
       - "§7Sprays your selected material onto"
@@ -928,6 +953,11 @@ items:
       - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: INTERACTABLE
+        handler_id: SPRAYONATOR
+      - id: LORE_UPDATE
+        handler_id: SPRAYONATOR
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pests/salty_sprayonator
   - id: SAM_ASSISTANT

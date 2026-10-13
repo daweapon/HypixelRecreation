@@ -16,6 +16,11 @@ public final class PestWorld {
 
     private static final Map<Instance, Map<String, List<net.minestom.server.entity.Entity>>> TRAPS = new WeakHashMap<>();
 
+    private record DiscoLive(double x, double y, double z, List<net.minestom.server.entity.Entity> entities) {
+    }
+
+    private static final Map<Instance, DiscoLive> DISCO = new WeakHashMap<>();
+
     private PestWorld() {
     }
 
@@ -46,12 +51,57 @@ public final class PestWorld {
         int[] origin = GardenLayout.plotOrigin(alive.getPlot());
         if (pest == null || origin == null) return null;
         ThreadLocalRandom random = ThreadLocalRandom.current();
-        double x = origin[0] + 6 + random.nextDouble() * (GardenLayout.PLOT_SIZE - 12);
-        double z = origin[1] + 6 + random.nextDouble() * (GardenLayout.PLOT_SIZE - 12);
+        double x = alive.hasSpawnPoint() ? alive.getSpawnX() : origin[0] + 6 + random.nextDouble() * (GardenLayout.PLOT_SIZE - 12);
+        double z = alive.hasSpawnPoint() ? alive.getSpawnZ() : origin[1] + 6 + random.nextDouble() * (GardenLayout.PLOT_SIZE - 12);
         PestEntity entity = new PestEntity(pest, alive.getId(), alive.getPlot());
         instance.loadChunk(new Pos(x, 72, z)).thenRun(() ->
                 entity.setInstance(instance, GardenGround.onGround(instance, new Pos(x, 72, z))));
         return entity;
+    }
+
+    public static synchronized void reconcileDisco(Instance instance, PestData data) {
+        if (instance == null) return;
+        PestData.Disco disco = data.getDisco();
+        DiscoLive live = DISCO.get(instance);
+        if (live != null && disco != null && live.x() == disco.getX() && live.y() == disco.getY() && live.z() == disco.getZ()) return;
+        if (live != null) {
+            live.entities().forEach(net.minestom.server.entity.Entity::remove);
+            DISCO.remove(instance);
+        }
+        if (disco == null) return;
+        Pos at = new Pos(disco.getX(), disco.getY(), disco.getZ());
+        net.minestom.server.entity.Entity display = new net.minestom.server.entity.Entity(net.minestom.server.entity.EntityType.ITEM_DISPLAY);
+        display.setNoGravity(true);
+        display.editEntityMeta(net.minestom.server.entity.metadata.display.ItemDisplayMeta.class, meta -> {
+            meta.setItemStack(net.minestom.server.item.ItemStack.of(net.minestom.server.item.Material.JUKEBOX));
+            meta.setScale(new net.minestom.server.coordinate.Vec(0.9, 0.9, 0.9));
+        });
+        net.swofty.type.generic.entity.InteractionEntity click = new net.swofty.type.generic.entity.InteractionEntity(1f, 1f,
+                (player, event) -> PestDisco.interact((net.swofty.type.skyblockgeneric.user.SkyBlockPlayer) player));
+        instance.loadChunk(at).thenRun(() -> {
+            display.setInstance(instance, at.add(0, 0.5, 0));
+            click.setInstance(instance, at);
+        });
+        DISCO.put(instance, new DiscoLive(disco.getX(), disco.getY(), disco.getZ(), List.of(display, click)));
+    }
+
+    public static void indicate(Instance instance, PestData data) {
+        java.util.Set<Integer> plots = new java.util.TreeSet<>();
+        data.getAlive().forEach(pest -> plots.add(pest.getPlot()));
+        for (int plot : plots) {
+            int[] origin = GardenLayout.plotOrigin(plot);
+            if (origin == null) continue;
+            double x = origin[0] + GardenLayout.PLOT_SIZE / 2.0;
+            double z = origin[1] + GardenLayout.PLOT_SIZE / 2.0;
+            for (net.minestom.server.entity.Player player : instance.getPlayers()) {
+                for (int i = 0; i < 6; i++) {
+                    player.sendPacket(new net.minestom.server.network.packet.server.play.ParticlePacket(
+                            net.minestom.server.particle.Particle.ANGRY_VILLAGER, true, true, (float) x, (float) (74 + i * 0.7), (float) z,
+                            0.5f, 0.2f, 0.5f, 0f, 2));
+                }
+            }
+        }
+        PestDisco.emitNotes(instance, data);
     }
 
     public static synchronized void reconcileTraps(Instance instance, PestData data) {

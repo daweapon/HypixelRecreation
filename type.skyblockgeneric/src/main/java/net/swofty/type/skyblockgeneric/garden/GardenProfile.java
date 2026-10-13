@@ -7,6 +7,8 @@ import net.swofty.type.skyblockgeneric.garden.chip.ChipData;
 import net.swofty.type.skyblockgeneric.garden.feast.FeastData;
 import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseData;
 import net.swofty.type.skyblockgeneric.garden.pest.PestData;
+import net.swofty.type.skyblockgeneric.garden.tool.OverclockerPity;
+import net.swofty.type.skyblockgeneric.garden.tool.ToolkitData;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorData;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
@@ -38,6 +40,8 @@ public class GardenProfile {
     private GreenhouseData greenhouse = new GreenhouseData();
     private ChipData chips = new ChipData();
     private FeastData feast = new FeastData();
+    private OverclockerPity overclockerPity = new OverclockerPity();
+    private ToolkitData toolkit = new ToolkitData();
     private final Map<GardenCrop, Long> cropCounters = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> milestoneTiers = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> cropUpgradeTiers = new EnumMap<>(GardenCrop.class);
@@ -49,6 +53,14 @@ public class GardenProfile {
 
     public FeastData feast() {
         return feast;
+    }
+
+    public OverclockerPity overclockerPity() {
+        return overclockerPity;
+    }
+
+    public ToolkitData toolkit() {
+        return toolkit;
     }
 
     public ChipData chips() {
@@ -177,6 +189,8 @@ public class GardenProfile {
         json.put("greenhouse", greenhouse.toJson());
         json.put("chips", chips.toJson());
         json.put("feast", feast.toJson());
+        json.put("overclockerPity", overclockerPity.toJson());
+        json.put("toolkit", toolkit.toJson());
         json.put("cropCounters", cropJson(cropCounters));
         json.put("milestoneTiers", cropJson(milestoneTiers));
         json.put("cropUpgradeTiers", cropJson(cropUpgradeTiers));
@@ -218,6 +232,8 @@ public class GardenProfile {
         profile.greenhouse = GreenhouseData.fromJson(json.optJSONObject("greenhouse"));
         profile.chips = ChipData.fromJson(json.optJSONObject("chips"));
         profile.feast = FeastData.fromJson(json.optJSONObject("feast"));
+        profile.overclockerPity = OverclockerPity.fromJson(json.optJSONObject("overclockerPity"));
+        profile.toolkit = ToolkitData.fromJson(json.optJSONObject("toolkit"));
         JSONObject presets = json.optJSONObject("plotPresets");
         if (presets != null) {
             for (String key : presets.keySet()) {

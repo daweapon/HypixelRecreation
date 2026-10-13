@@ -32,6 +32,10 @@ public final class MutationCatalogue {
             return itemId == null ? null : ItemType.get(itemId);
         }
 
+        public int footprint() {
+            return Footprint.sizeOf(size);
+        }
+
         public boolean neverDecays() {
             return "none".equalsIgnoreCase(decay);
         }
@@ -75,9 +79,13 @@ public final class MutationCatalogue {
             JSONArray tooltipArray = entry.optJSONArray("tooltip");
             if (tooltipArray != null) for (int t = 0; t < tooltipArray.length(); t++) tooltip.add(tooltipArray.getString(t));
             JSONObject copper = entry.optJSONObject("copper");
+            JSONArray surfaceArray = entry.optJSONArray("surfaces");
+            List<String> surfaceNames = new ArrayList<>();
+            if (surfaceArray != null) for (int s = 0; s < surfaceArray.length(); s++) surfaceNames.add(surfaceArray.getString(s));
+            String surface = surfaceNames.isEmpty() ? entry.optString("surface", "Farmland") : String.join(" / ", surfaceNames);
             Mutation mutation = new Mutation(entry.getString("id"), entry.isNull("itemId") ? null : entry.optString("itemId", null),
                     entry.getString("name"), entry.optString("rarity", "COMMON"), entry.optInt("stages", 0),
-                    entry.optString("surface", "Farmland"), entry.optString("size", "1x1"), effects, entry.optString("mode", "ADJACENT_ALL"),
+                    surface, entry.optString("size", "1x1"), effects, entry.optString("mode", "ADJACENT_ALL"),
                     conditions, entry.isNull("specialNote") ? null : entry.optString("specialNote", null), entry.optDouble("chancePercent", 0),
                     entry.optInt("farmingXp", 0), drops, copper == null ? 0 : copper.optInt("analyzeRepeat", 0),
                     copper == null ? 0 : copper.optInt("analyzeFirst", 0), copper == null ? 0 : copper.optInt("coinsCost", 0),

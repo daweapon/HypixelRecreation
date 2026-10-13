@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
 import net.swofty.type.skyblockgeneric.garden.pest.PestData;
 import net.swofty.type.skyblockgeneric.garden.pest.PestItems;
 import net.swofty.type.skyblockgeneric.garden.pest.PestService;
+import net.swofty.type.skyblockgeneric.garden.pest.PestTraps;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -40,6 +41,10 @@ public class GardenPestsModule extends TablistModule {
             entries.add(new TablistEntry(Text.of(" <7>Cooldown: {}", data.getCooldownUntil() > now ? "<c>" + clock(data.getCooldownUntil() - now) : "<a>READY"), TablistSkinRegistry.GRAY));
             int loss = PestService.fortuneLoss(player, profile);
             if (loss > 0) entries.add(new TablistEntry(Text.of(" <c>Fortune reduced by {}%", loss), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of("<a><l>Pest Traps:"), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>Placed: <a>{}/{}", data.getTraps().size(), PestTraps.MAX_TRAPS), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>Full Traps: <a>{}", trapList(data, true)), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>No Bait: <a>{}", trapList(data, false)), TablistSkinRegistry.GRAY));
         }
         GreenhouseData greenhouse = profile.greenhouse();
         if (!greenhouse.getBeds().isEmpty()) {
@@ -48,6 +53,17 @@ public class GardenPestsModule extends TablistModule {
         }
         fillRestWithGray(entries);
         return entries;
+    }
+
+    private static String trapList(PestData data, boolean full) {
+        List<String> numbers = new ArrayList<>();
+        for (int i = 0; i < data.getTraps().size(); i++) {
+            PestData.Trap trap = data.getTraps().get(i);
+            PestTraps.Kind kind = PestTraps.KINDS.get(trap.getKind());
+            boolean matches = full ? kind != null && trap.getCaught().size() >= kind.capacity() : trap.getBait() == 0;
+            if (matches) numbers.add(String.valueOf(i + 1));
+        }
+        return numbers.isEmpty() ? "None" : String.join("<7>, <a>", numbers);
     }
 
     private static String spray(PestData data, long now) {
