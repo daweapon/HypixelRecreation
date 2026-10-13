@@ -20,8 +20,8 @@ import java.util.stream.Stream;
 
 public class PesthunterNpc extends HypixelNPC {
     public enum Kind {
-        PHILLIP("Pesthunter Phillip", "PESTHUNTER_PHILLIP", new Pos(-25.5, 72, -13.5, -90, 0)),
-        PAMELA("Pesthunter Pamela", "PESTHUNTER_PAMELA", new Pos(-25.5, 72, -17.5, -90, 0));
+        PHILLIP("Pesthunter Phillip", "PESTHUNTER_PHILLIP", new Pos(-26, 71, -14, 0, 0)),
+        PAMELA("Pesthunter Pamela", "PESTHUNTER_PAMELA", new Pos(-24, 71, -14, 0, 0));
 
         private final String displayName;
         private final String skinKey;
