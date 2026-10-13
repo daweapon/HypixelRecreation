@@ -80,6 +80,13 @@ public final class FarmingTools {
         return crops == null ? null : new Tool(crops[0], crops[1], mk);
     }
 
+    public static @Nullable ItemType nextTier(@Nullable String itemId) {
+        Tool tool = of(itemId);
+        String family = itemId == null ? null : familyOf(itemId);
+        if (tool == null || family == null || tool.mk() >= 3) return null;
+        return ItemType.get(family + "_" + (tool.mk() + 1));
+    }
+
     public record Gain(long xp, long overflow, int capsules) {
     }
 

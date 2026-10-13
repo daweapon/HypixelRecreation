@@ -11,6 +11,7 @@ import net.swofty.type.generic.entity.npc.configuration.NPCConfiguration;
 import net.swofty.type.generic.entity.npc.configuration.VillagerConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.npc.GardenGround;
 import net.swofty.type.skyblockgeneric.garden.npc.GardenNpcSkins;
 import net.swofty.type.skyblockgeneric.gui.inventories.garden.GUIVisitor;
@@ -65,6 +66,16 @@ public class VisitorNpc extends HypixelNPC {
                 }
 
                 @Override
+                public Pos spawnPosition(HypixelPlayer player) {
+                    return Shared.spawnPosition(visitor, player);
+                }
+
+                @Override
+                public boolean walksToNewPosition() {
+                    return true;
+                }
+
+                @Override
                 public boolean looking(HypixelPlayer player) {
                     return true;
                 }
@@ -105,6 +116,16 @@ public class VisitorNpc extends HypixelNPC {
 
                 @Override
                 public boolean dynamicPosition() {
+                    return true;
+                }
+
+                @Override
+                public Pos spawnPosition(HypixelPlayer player) {
+                    return Shared.spawnPosition(visitor, player);
+                }
+
+                @Override
+                public boolean walksToNewPosition() {
                     return true;
                 }
 
@@ -156,6 +177,16 @@ public class VisitorNpc extends HypixelNPC {
             }
 
             @Override
+            public Pos spawnPosition(HypixelPlayer player) {
+                return Shared.spawnPosition(visitor, player);
+            }
+
+            @Override
+            public boolean walksToNewPosition() {
+                return true;
+            }
+
+            @Override
             public boolean looking(HypixelPlayer player) {
                 return true;
             }
@@ -186,6 +217,15 @@ public class VisitorNpc extends HypixelNPC {
             int slot = VisitorSlots.slotOf(player.getUuid(), visitor.id());
             Pos wanted = VisitorSlots.POSITIONS[Math.max(0, slot) % VisitorSlots.POSITIONS.length];
             return GardenGround.onGround(player.getInstance(), wanted);
+        }
+
+        private static Pos spawnPosition(VisitorCatalogue.Visitor visitor, HypixelPlayer player) {
+            Pos slot = position(visitor, player);
+            VisitorData.Present present = Gardens.profile((SkyBlockPlayer) player).visitors().find(visitor.id());
+            if (present == null || System.currentTimeMillis() - present.getArrivedAt() > VisitorSlots.ARRIVAL_WINDOW_MILLIS) {
+                return slot;
+            }
+            return GardenGround.onGround(player.getInstance(), VisitorSlots.ENTRANCE);
         }
 
         private static boolean visible(VisitorCatalogue.Visitor visitor, HypixelPlayer player) {

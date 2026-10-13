@@ -13,11 +13,12 @@ import java.util.function.ToIntFunction;
 
 public final class GardenPresetCost {
     public static final int ENCHANTED_VALUE = 160;
+    public static final int COMPACTED_VALUE = ENCHANTED_VALUE * ENCHANTED_VALUE;
 
     public record Source(ItemType item, int value) {
     }
 
-    public record Payment(Map<ItemType, Integer> take, ItemType refundItem, int refund) {
+    public record Payment(Map<ItemType, Integer> take, Map<ItemType, Integer> refund) {
     }
 
     private static final Map<GardenCrop, Integer> REQUIRED = new EnumMap<>(GardenCrop.class);
@@ -51,14 +52,34 @@ public final class GardenPresetCost {
         List<Source> sources = new ArrayList<>();
         add(sources, seed(crop).name(), 1);
         switch (crop) {
-            case WHEAT -> add(sources, "ENCHANTED_SEEDS", ENCHANTED_VALUE);
+            case WHEAT -> {
+                add(sources, "ENCHANTED_SEEDS", ENCHANTED_VALUE);
+                add(sources, "BOX_OF_SEEDS", COMPACTED_VALUE);
+            }
             case PUMPKIN -> {
                 add(sources, "PUMPKIN", 1);
                 add(sources, "ENCHANTED_PUMPKIN", ENCHANTED_VALUE);
+                add(sources, "POLISHED_PUMPKIN", COMPACTED_VALUE);
             }
             case MELON -> {
                 add(sources, "MELON_SLICE", 1);
                 add(sources, "ENCHANTED_MELON", ENCHANTED_VALUE);
+            }
+            case POTATO -> {
+                add(sources, "ENCHANTED_POTATO", ENCHANTED_VALUE);
+                add(sources, "ENCHANTED_BAKED_POTATO", COMPACTED_VALUE);
+            }
+            case SUGAR_CANE -> {
+                add(sources, "ENCHANTED_SUGAR", ENCHANTED_VALUE);
+                add(sources, "ENCHANTED_SUGAR_CANE", COMPACTED_VALUE);
+            }
+            case NETHER_WART -> {
+                add(sources, "ENCHANTED_NETHER_WART", ENCHANTED_VALUE);
+                add(sources, "MUTANT_NETHER_WART", COMPACTED_VALUE);
+            }
+            case SUNFLOWER, MOONFLOWER, WILD_ROSE -> {
+                add(sources, "ENCHANTED_" + crop.name(), ENCHANTED_VALUE);
+                add(sources, "COMPACTED_" + crop.name(), COMPACTED_VALUE);
             }
             default -> add(sources, "ENCHANTED_" + seed(crop).name(), ENCHANTED_VALUE);
         }
@@ -70,10 +91,18 @@ public final class GardenPresetCost {
         if (item != null) sources.add(new Source(item, value));
     }
 
+    public static long equivalent(List<Source> sources, ToIntFunction<ItemType> available) {
+        long total = 0;
+        for (Source source : sources) {
+            total += (long) available.applyAsInt(source.item()) * source.value();
+        }
+        return total;
+    }
+
     public static @Nullable Payment plan(int required, List<Source> sources, ToIntFunction<ItemType> available) {
         Map<ItemType, Integer> take = new LinkedHashMap<>();
         int remaining = required;
-        int refund = 0;
+        int overshoot = 0;
         for (Source source : sources) {
             if (remaining <= 0) break;
             int have = available.applyAsInt(source.item());
@@ -82,10 +111,23 @@ public final class GardenPresetCost {
             int used = Math.min(have, needed);
             take.put(source.item(), used);
             int covered = used * source.value();
-            if (covered > remaining) refund = covered - remaining;
+            if (covered > remaining) overshoot = covered - remaining;
             remaining -= covered;
         }
         if (remaining > 0) return null;
-        return new Payment(take, sources.getFirst().item(), refund);
+        return new Payment(take, change(overshoot, sources));
+    }
+
+    private static Map<ItemType, Integer> change(int overshoot, List<Source> sources) {
+        Map<ItemType, Integer> refund = new LinkedHashMap<>();
+        for (int i = sources.size() - 1; i >= 0 && overshoot > 0; i--) {
+            Source source = sources.get(i);
+            int count = overshoot / source.value();
+            if (count > 0) {
+                refund.put(source.item(), count);
+                overshoot -= count * source.value();
+            }
+        }
+        return refund;
     }
 }

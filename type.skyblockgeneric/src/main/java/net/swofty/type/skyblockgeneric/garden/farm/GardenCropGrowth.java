@@ -40,7 +40,7 @@ public final class GardenCropGrowth {
             int plot = entry.getKey();
             GardenCrop crop = GardenPresets.cropOf(entry.getValue());
             int[] origin = GardenLayout.plotOrigin(plot);
-            if (crop == null || origin == null || !profile.isPlotCleaned(plot)) continue;
+            if (crop == null || origin == null || !profile.isPlotCleaned(plot) || GardenPlotLock.isLocked(instance, plot)) continue;
             for (int i = 0; i < SAMPLES_PER_PLOT; i++) {
                 int lx = ThreadLocalRandom.current().nextInt(GardenFarmLayout.MARGIN, GardenFarmLayout.MARGIN + GardenFarmLayout.FARM_SIZE);
                 int lz = ThreadLocalRandom.current().nextInt(GardenFarmLayout.MARGIN, GardenFarmLayout.MARGIN + GardenFarmLayout.FARM_SIZE);

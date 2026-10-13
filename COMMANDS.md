@@ -60,6 +60,7 @@ This catalog covers **130 top-level game-server command definitions** (after mer
 | `/bait` | — | Opens the Bait Guide, the same menu Angler Angus shows after he gives you Fish Bait. | DEFAULT | No | `type.skyblockgeneric` |
 | `/bank` | — | Open your Personal Bank. | DEFAULT | No | `type.skyblockgeneric` |
 | `/bazzar` | `/bazaar`, `/bz` | Opens the Bazaar remotely. Requires an active Booster Cookie and SkyBlock Level 7. | DEFAULT | No | `type.skyblockgeneric` |
+| `/bestiary` | `/be` | Opens the Bestiary menu. Needs the Bestiary unlocked by speaking to Bramass Beastslayer (staff can use `/unlock bestiary`). | DEFAULT | No | `type.skyblockgeneric` |
 | `/calendar` | — | Opens the SkyBlock Calendar. | DEFAULT | No | `type.skyblockgeneric` |
 | `/chips` | `/gardenchips` | Opens the Garden Chips menu, where you level up the chips you have redeemed with Sowdust. | DEFAULT | No | `type.skyblockgeneric` |
 | `/chocolatefactory` | `/cf`, `/factory` | Opens the Chocolate Factory menu. | DEFAULT | No | `type.skyblockgeneric` |
@@ -172,7 +173,7 @@ This catalog covers **130 top-level game-server command definitions** (after mer
 | `/hollows <layout\|tp\|candidate\|anchor\|statue\|chest\|region\|spawn\|bounds\|validate\|debug\|heat\|spawnworm> ...` | — | Staff tooling for capturing the Crystal Hollows world's coordinates in game and validating the configuration. See Merged staff commands. Only registered on the Crystal Hollows server. | STAFF | No | `type.crystalhollows` |
 | `/regions <add\|remove\|wand> ...` | — | Handles regions across the server. See region syntax below. | STAFF | No | `type.skyblockgeneric` |
 | `/sendto <server_type>` | `/transfer` | Transfers a player to another server. | STAFF | No | `type.generic` |
-| `/spawn <mob> [amount]` | `/spawnseacreature`, `/spawnsc`, `/spawncrimsonmob`, `/spawncm` | Spawns any sea creature, registered SkyBlock mob or Mythological creature at your feet, 1-50 at a time. The id list comes from the game's registries, so new mobs are included automatically. See Spawning below. | STAFF | No | `type.skyblockgeneric` |
+| `/spawn <mob> [amount]` | `/spawnseacreature`, `/spawnsc`, `/spawncrimsonmob`, `/spawncm` | Spawns any sea creature, registered SkyBlock mob, Mythological creature or Garden Pest (`PEST_<id>`, e.g. `PEST_FLY`, `PEST_FIELD_MOUSE`, `PEST_LUNAR_MOTH`) at your feet, 1-50 at a time. The id list comes from the game's registries, so new mobs are included automatically. See Spawning below. | STAFF | No | `type.skyblockgeneric` |
 | `/speed <speed> [FLY\|WALK]` | `/flyspeed` | Sets a players speed. Speed range 0–10; defaults to FLY. | STAFF | No | `type.generic` |
 | `/tp <player>`<br>`/tp <x> <y> <z>`<br>`/tp npc <npc>` | `/teleport`, `/tpnpc`, `/teleportnpc` | Teleports you to an online player, to coordinates or to an NPC. | STAFF | No | `type.generic` |
 | `/world <structure\|tree\|regrow\|hologram\|crystal\|deleteorb\|minionspeed\|dragon\|velocity> ...` | `/dragon`, `/setvelocity`, `/structure`, `/tree`, `/regrowtrees`, `/spawnholo`, `/spawnhologram`, `/spawncrystal`, `/addcrystal`, `/deleteorb`, `/handleminionspeed` | World, structure, hologram, crystal, orb, minion-speed, dragon and velocity tools. Dragon and velocity are on every server type; the rest are added on SkyBlock servers. | STAFF | No | `type.generic` |
@@ -449,7 +450,7 @@ Crystal Hollows capture and validation tools, Crystal Hollows server only. Every
 
 ### Spawning
 
-`/spawn <mob> [amount]` spawns any mob at your feet: every sea creature (as if fished up, with the angler and catch message), every registered SkyBlock mob (Hub, Farming, Deep Caverns, Dwarven Mines, Crimson Isle, Kuudra-free minibosses and so on) and every Mythological creature. The mob list is built from the game's own registries, so new mobs appear automatically. `amount` is 1-50 (default 1); lava sea creatures still respect the 10-per-player cap. Old names `/spawnseacreature`, `/spawnsc`, `/spawncrimsonmob` and `/spawncm` forward to it.
+`/spawn <mob> [amount]` spawns any mob at your feet: every sea creature (as if fished up, with the angler and catch message), every registered SkyBlock mob (Hub, Farming, Deep Caverns, Dwarven Mines, Crimson Isle, Kuudra-free minibosses and so on) every Mythological creature and every Garden Pest (`PEST_<id>`; only in your Garden, on the plot you stand on, counting toward the 8-Pest cap, and the Vacuum can kill and loot them). The mob list is built from the game's own registries, so new mobs appear automatically. `amount` is 1-50 (default 1); lava sea creatures still respect the 10-per-player cap. Old names `/spawnseacreature`, `/spawnsc`, `/spawncrimsonmob` and `/spawncm` forward to it.
 
 ### SkyBlock XP
 

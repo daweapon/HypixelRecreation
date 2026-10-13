@@ -64,7 +64,7 @@ public class PesthunterNpc extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return GardenGround.onGround(player.getInstance(), kind.position);
+                return kind.position;
             }
 
             @Override

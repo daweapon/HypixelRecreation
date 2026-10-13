@@ -103,6 +103,24 @@ public final class PestService {
         return spawned;
     }
 
+    public static int spawnByStaff(SkyBlockPlayer player, String type, int count) {
+        GardenProfile profile = Gardens.profile(player);
+        PestData data = profile.pests();
+        Instance instance = player.getInstance();
+        if (!PestVacuum.inGarden(player) || PestCatalogue.get().pest(type) == null) return 0;
+        int plot = GardenLayout.plotAt(player.getPosition().x(), player.getPosition().z());
+        if (plot == GardenLayout.NONE || plot == GardenLayout.BARN) return 0;
+        int spawned = 0;
+        for (int i = 0; i < count && data.aliveCount() < PestData.MAX_ALIVE; i++) {
+            data.getAlive().add(PestData.Alive.createAt(type, plot, player.getPosition().x(), player.getPosition().z()));
+            spawned++;
+        }
+        if (spawned == 0) return 0;
+        Gardens.save(player, profile);
+        PestWorld.reconcile(instance, data);
+        return spawned;
+    }
+
     private static void announce(SkyBlockPlayer player, int plot, int count, int lossBefore, int lossNow) {
         String lead = count == 1 ? "<6><l>GROSS!</l> <7>A <2>Pest <7>has appeared in <a>Plot <7>- <b>{}<7>!"
                 : count == 2 ? "<6><l>EWW!</l> <7>{} <2>Pests <7>have spawned in <a>Plot <7>- <b>{}<7>!"

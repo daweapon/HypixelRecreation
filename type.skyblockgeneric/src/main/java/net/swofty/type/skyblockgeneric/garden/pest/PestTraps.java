@@ -6,6 +6,7 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.garden.GardenLayout;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.gui.inventories.garden.GUIPestTrap;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -100,19 +101,7 @@ public final class PestTraps {
             pickUp(player, profile, trap, kind);
             return;
         }
-        SkyBlockItem held = new SkyBlockItem(player.getItemInMainHand());
-        String heldId = held.getAttributeHandler().getTypeAsString();
-        if ((PestItems.MATERIALS.contains(heldId) || "MOONDEW".equals(heldId)) && !held.isNA()) {
-            addBait(player, profile, trap, held, heldId);
-            return;
-        }
-        if (!trap.getCaught().isEmpty()) {
-            collect(player, profile, trap);
-            return;
-        }
-        player.sendMessage(Text.of("<7>{}<7>: bait <a>{}x {}<7>, caught <a>{}<7>/<a>{}<7>. <8>Sneak-click to pick it up.",
-                kind.name(), trap.getBait(), trap.getMaterial().isEmpty() ? "None" : PestItems.materialName(trap.getMaterial()),
-                trap.getCaught().size(), kind.capacity()));
+        player.openView(new GUIPestTrap(trapId));
     }
 
     private static void addBait(SkyBlockPlayer player, GardenProfile profile, PestData.Trap trap, SkyBlockItem held, String id) {
@@ -161,5 +150,68 @@ public final class PestTraps {
         PestWorld.reconcileTraps(player.getInstance(), profile.pests());
         player.addAndUpdateItem(new SkyBlockItem(kind.item()));
         player.sendMessage(Text.of("<a>You picked up the {}<a>.", kind.name()));
+    }
+
+    public static PestData.Trap find(SkyBlockPlayer player, String trapId) {
+        tick(Gardens.profile(player).pests(), System.currentTimeMillis());
+        return Gardens.profile(player).pests().getTraps().stream().filter(t -> t.getId().equals(trapId)).findFirst().orElse(null);
+    }
+
+    public static String baitInInventory(SkyBlockPlayer player, PestData.Trap trap) {
+        if (trap.getBait() > 0 && !trap.getMaterial().isEmpty()) {
+            return has(player, trap.getMaterial()) ? trap.getMaterial() : null;
+        }
+        List<String> candidates = new java.util.ArrayList<>(PestItems.MATERIALS);
+        candidates.add("MOONDEW");
+        return candidates.stream().filter(id -> has(player, id)).findFirst().orElse(null);
+    }
+
+    private static boolean has(SkyBlockPlayer player, String id) {
+        ItemType type = ItemType.get(id);
+        return type != null && player.getAmountInInventory(type) > 0;
+    }
+
+    public static void addBaitFromInventory(SkyBlockPlayer player, String trapId) {
+        PestData.Trap trap = find(player, trapId);
+        if (trap == null) return;
+        String id = baitInInventory(player, trap);
+        if (id == null) {
+            player.sendMessage(Text.of("<c>You have no bait to add!"));
+            return;
+        }
+        ItemType type = ItemType.get(id);
+        addBait(player, Gardens.profile(player), trap, new SkyBlockItem(type, player.getAmountInInventory(type)), id);
+    }
+
+    public static void removeBait(SkyBlockPlayer player, String trapId) {
+        PestData.Trap trap = find(player, trapId);
+        if (trap == null) return;
+        ItemType bait = ItemType.get(trap.getMaterial());
+        if (bait == null || trap.getBait() <= 0) {
+            player.sendMessage(Text.of("<c>This Trap has no bait to remove!"));
+            return;
+        }
+        PestRewards.give(player, new SkyBlockItem(bait, trap.getBait()));
+        player.sendMessage(Text.of("<a>Removed {}x {} <a>from the Trap.", trap.getBait(), PestItems.materialName(trap.getMaterial())));
+        trap.setBait(0);
+        trap.setMaterial("");
+        trap.setNextAt(0);
+        Gardens.save(player, Gardens.profile(player));
+    }
+
+    public static void collectCaught(SkyBlockPlayer player, String trapId) {
+        PestData.Trap trap = find(player, trapId);
+        if (trap == null) return;
+        if (trap.getCaught().isEmpty()) {
+            player.sendMessage(Text.of("<c>This Trap hasn't caught any Pests yet!"));
+            return;
+        }
+        collect(player, Gardens.profile(player), trap);
+    }
+
+    public static void pickUpTrap(SkyBlockPlayer player, String trapId) {
+        PestData.Trap trap = find(player, trapId);
+        Kind kind = trap == null ? null : KINDS.get(trap.getKind());
+        if (kind != null) pickUp(player, Gardens.profile(player), trap, kind);
     }
 }

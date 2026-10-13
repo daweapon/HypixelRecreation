@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
+import net.swofty.type.skyblockgeneric.garden.farm.GardenPlotLock;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.generic.utility.MathUtility;
 
@@ -26,6 +27,9 @@ public class ActionRegionBlockPlace implements HypixelEventClass {
 
         if (!HypixelConst.isIslandServer()) {
             event.setCancelled(true);
+            if (HypixelConst.isGardenServer() && GardenPlotLock.isLocked(event.getInstance(), event.getBlockPosition().x(), event.getBlockPosition().z())) {
+                player.sendMessage("<c>This plot is being pasted right now, you cannot change it until it finishes!");
+            }
             return;
         }
 

@@ -2,6 +2,8 @@ package net.swofty.type.skyblockgeneric.entity.mob;
 
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureProfile;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.seacreature.SeaCreatureSpawner;
+import net.swofty.type.skyblockgeneric.garden.pest.PestCatalogue;
+import net.swofty.type.skyblockgeneric.garden.pest.PestService;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreature;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -32,6 +34,7 @@ public final class SpawnableMobs {
         sources.addAll(seaCreatures());
         sources.addAll(registeredMobs());
         sources.addAll(mythologicalCreatures());
+        sources.addAll(gardenPests());
         for (Entry entry : sources) byKey.putIfAbsent(normalize(entry.id()), entry);
         return List.copyOf(byKey.values());
     }
@@ -43,6 +46,7 @@ public final class SpawnableMobs {
         sources.addAll(seaCreatures());
         sources.addAll(registeredMobs());
         sources.addAll(mythologicalCreatures());
+        sources.addAll(gardenPests());
         for (Entry entry : sources) {
             if (seen.putIfAbsent(normalize(entry.id()), entry) != null) duplicates.add(entry);
         }
@@ -107,6 +111,15 @@ public final class SpawnableMobs {
                 }
                 return amount;
             }));
+        }
+        return entries;
+    }
+
+    private static List<Entry> gardenPests() {
+        List<Entry> entries = new ArrayList<>();
+        for (PestCatalogue.Pest pest : PestCatalogue.get().all()) {
+            entries.add(new Entry("PEST_" + pest.id(), pest.name() + " Pest",
+                    (player, amount) -> PestService.spawnByStaff(player, pest.id(), amount)));
         }
         return entries;
     }

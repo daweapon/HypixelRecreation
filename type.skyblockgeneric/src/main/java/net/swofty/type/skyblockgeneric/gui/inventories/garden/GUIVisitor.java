@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.garden;
 
+import net.minestom.server.entity.PlayerSkin;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -14,6 +15,7 @@ import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.garden.npc.GardenNpcSkins;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorData;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorOffer;
@@ -60,7 +62,9 @@ public class GUIVisitor extends StatelessView {
         lore.add(Text.empty());
         lore.add(Text.of("<7>Times Visited: <a>{}", data.timesVisited(visitorId)));
         lore.add(Text.of("<7>Offers Accepted: <a>{}", data.offersAccepted(visitorId)));
-        return ItemStacks.item(Material.PLAYER_HEAD, Text.of(visitor == null ? visitorId : visitor.coloured()), lore);
+        Text name = Text.of(visitor == null ? visitorId : visitor.coloured());
+        PlayerSkin skin = GardenNpcSkins.playerSkin(visitorId);
+        return skin == null ? ItemStacks.item(Material.PLAYER_HEAD, name, lore) : ItemStacks.head(skin, name, lore);
     }
 
     private ItemStack.Builder accept(SkyBlockPlayer player) {

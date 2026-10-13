@@ -37,6 +37,7 @@ import net.swofty.type.skyblockgeneric.region.mining.handler.SkyBlockMiningHandl
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.garden.GardenPlotCleaner;
 import net.swofty.type.skyblockgeneric.garden.farm.GardenFarm;
+import net.swofty.type.skyblockgeneric.garden.farm.GardenPlotLock;
 
 import java.util.List;
 
@@ -63,6 +64,12 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
 
         // Skip if player has build bypass
         if (player.isBypassBuild()) return;
+
+        if (HypixelConst.isGardenServer() && GardenPlotLock.isLocked(event.getInstance(), event.getBlockPosition().x(), event.getBlockPosition().z())) {
+            event.setCancelled(true);
+            player.sendMessage("<c>This plot is being pasted right now, you cannot change it until it finishes!");
+            return;
+        }
 
         if (HypixelConst.isGardenServer()) {
             event.setCancelled(true);

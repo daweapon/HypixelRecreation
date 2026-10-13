@@ -53,13 +53,12 @@ public class GardenWorldDecor implements GardenPresence {
         departed(player);
 
         List<ExternalPlayerHologram> spawned = new ArrayList<>();
-        spawned.add(clickHologram(player, instance, DESK, "§aDesk"));
-        spawned.add(clickHologram(player, instance, LOGBOOK, "§aVisitor's Logbook"));
-        spawned.add(composterHologram(player, instance));
+        track(spawned, "Desk", () -> clickHologram(player, instance, DESK, "§aDesk"));
+        track(spawned, "Visitor's Logbook", () -> clickHologram(player, instance, LOGBOOK, "§aVisitor's Logbook"));
+        track(spawned, "Composter", () -> composterHologram(player, instance));
         for (GardenLayout.PlotSign sign : GardenLayout.signs()) {
-            spawned.add(signHologram(player, instance, sign));
+            track(spawned, "plot sign " + sign.plot(), () -> signHologram(player, instance, sign));
         }
-        spawned.forEach(PlayerHolograms::addExternalPlayerHologram);
         holograms.put(player.getUuid(), spawned);
     }
 
@@ -140,6 +139,17 @@ public class GardenWorldDecor implements GardenPresence {
             if (name.equals("minecraft:blast_furnace") || name.equals("minecraft:cauldron") || name.equals("minecraft:stone_brick_wall")) {
                 instance.setBlock(at[0], at[1], at[2], net.minestom.server.instance.block.Block.AIR);
             }
+        }
+    }
+
+    private static void track(List<ExternalPlayerHologram> spawned, String what, java.util.function.Supplier<ExternalPlayerHologram> factory) {
+        try {
+            ExternalPlayerHologram hologram = factory.get();
+            PlayerHolograms.addExternalPlayerHologram(hologram);
+            spawned.add(hologram);
+        } catch (RuntimeException exception) {
+            System.err.println("Garden hologram failed: " + what);
+            exception.printStackTrace();
         }
     }
 

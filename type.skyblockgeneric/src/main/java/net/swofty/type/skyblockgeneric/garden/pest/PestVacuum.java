@@ -25,20 +25,20 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class PestVacuum {
     public static final long HOLD_WINDOW_MILLIS = 450;
     public static final long TRACKER_COOLDOWN_MILLIS = 1000;
-    private static final double TICK_SECONDS = 0.1;
     private static final double AIM_COSINE = 0.8;
     private static final double PULL_SPEED = 6;
 
-    public record Tier(String id, double damage, double range) {
+    public record Tier(String id, double damage, double range, long intervalMillis) {
     }
 
     private static final Map<String, Tier> TIERS = Map.of(
-            "SKYMART_VACUUM", new Tier("SKYMART_VACUUM", 100, 5),
-            "SKYMART_TURBO_VACUUM", new Tier("SKYMART_TURBO_VACUUM", 150, 7.5),
-            "SKYMART_HYPER_VACUUM", new Tier("SKYMART_HYPER_VACUUM", 200, 10),
-            "INFINI_VACUUM", new Tier("INFINI_VACUUM", 300, 12.5),
-            "INFINI_VACUUM_HOOVERIUS", new Tier("INFINI_VACUUM_HOOVERIUS", 400, 15));
+            "SKYMART_VACUUM", new Tier("SKYMART_VACUUM", 100, 5, 3000),
+            "SKYMART_TURBO_VACUUM", new Tier("SKYMART_TURBO_VACUUM", 150, 7.5, 2500),
+            "SKYMART_HYPER_VACUUM", new Tier("SKYMART_HYPER_VACUUM", 200, 10, 2000),
+            "INFINI_VACUUM", new Tier("INFINI_VACUUM", 300, 12.5, 1500),
+            "INFINI_VACUUM_HOOVERIUS", new Tier("INFINI_VACUUM_HOOVERIUS", 400, 15, 1000));
     private static final Map<UUID, Held> HOLDING = new ConcurrentHashMap<>();
+    private static final Map<UUID, Long> LAST_HIT = new ConcurrentHashMap<>();
     private static final Map<UUID, Long> TRACKER = new ConcurrentHashMap<>();
 
     private record Held(Tier tier, double damage, long until) {
@@ -110,7 +110,11 @@ public final class PestVacuum {
         if (target == null) return;
         beam(player, eye, target.getPosition().add(0, 0.3, 0));
         target.pullToward(eye, PULL_SPEED);
-        if (target.hurt(damage * TICK_SECONDS)) PestService.kill(player, target);
+        long now = System.currentTimeMillis();
+        Long last = LAST_HIT.get(player.getUuid());
+        if (last != null && now - last < tier.intervalMillis()) return;
+        LAST_HIT.put(player.getUuid(), now);
+        if (target.hurt(damage * tier.intervalMillis() / 1000.0)) PestService.kill(player, target);
     }
 
     private static void beam(SkyBlockPlayer player, Pos from, Pos to) {

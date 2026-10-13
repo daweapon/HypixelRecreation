@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.garden;
 
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.commons.StringUtility;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.garden.quest.GardenQuests;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterConfig;
@@ -38,10 +39,11 @@ public final class GardenService {
 
     public static void recordCrops(SkyBlockPlayer player, GardenCrop crop, long amount) {
         GardenProfile profile = profile(player);
+        int previousTier = profile.milestoneTier(crop);
         GardenProgress.MilestoneProgress progress = GardenProgress.addCrops(profile, crop, amount);
         Gardens.save(player, profile);
         if (progress.newTiers() > 0) {
-            player.sendMessage(Text.key("garden.milestone_reached", crop.getDisplayName(), profile.milestoneTier(crop)));
+            sendMilestoneMessage(player, crop, previousTier, profile.milestoneTier(crop), progress);
             if (progress.farmingXp() > 0) {
                 player.getSkills().increase(player, SkillCategories.FARMING, (double) progress.farmingXp());
             }
@@ -57,6 +59,7 @@ public final class GardenService {
         if (result == GardenProgress.UpgradeResult.UPGRADED) {
             Gardens.save(player, profile);
             syncExperience(player);
+            playExperienceSound(player);
         }
         return result;
     }
@@ -107,6 +110,22 @@ public final class GardenService {
             player.addAndUpdateItem(new SkyBlockItem(ItemType.COMPOST, refund));
         }
         return true;
+    }
+
+    private static void sendMilestoneMessage(SkyBlockPlayer player, GardenCrop crop, int from, int to, GardenProgress.MilestoneProgress progress) {
+        player.sendMessage("<2><m>---------------------------------");
+        player.sendMessage("  <2><l>GARDEN MILESTONE </l><a>{} <8>{} ➜ <a>{}", crop.getDisplayName(), from, to);
+        player.sendMessage(" ");
+        player.sendMessage("  <a><l>REWARDS");
+        if (progress.gardenXp() > 0) player.sendMessage("   <8>+<2>{} Garden Experience", StringUtility.commaify(progress.gardenXp()));
+        if (progress.farmingXp() > 0) player.sendMessage("   <8>+<3>{} Farming Experience", StringUtility.commaify(progress.farmingXp()));
+        if (progress.skyblockXp() > 0) player.sendMessage("   <8>+<b>{} SkyBlock XP", StringUtility.commaify(progress.skyblockXp()));
+        player.sendMessage("<2><m>---------------------------------");
+    }
+
+    public static void playExperienceSound(SkyBlockPlayer player) {
+        player.playSound(net.kyori.adventure.sound.Sound.sound(net.kyori.adventure.key.Key.key("entity.experience_orb.pickup"),
+                net.kyori.adventure.sound.Sound.Source.PLAYER, 1f, 2f), net.kyori.adventure.sound.Sound.Emitter.self());
     }
 
     public static void syncExperience(SkyBlockPlayer player) {

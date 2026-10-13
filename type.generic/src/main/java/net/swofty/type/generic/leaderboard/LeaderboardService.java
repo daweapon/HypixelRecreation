@@ -11,6 +11,7 @@ import redis.clients.jedis.resps.Tuple;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class LeaderboardService {
@@ -64,6 +65,19 @@ public class LeaderboardService {
             jedis.zadd(PREFIX + leaderboardKey, score, playerUuid.toString());
         } catch (Exception e) {
             Logger.warn(e, "Failed to update leaderboard score for {} on {}", playerUuid, leaderboardKey);
+        }
+    }
+
+    public static void updateScores(UUID playerUuid, Map<String, Double> scoresByKey) {
+        if (!isInitialized() || scoresByKey.isEmpty()) return;
+
+        try (Jedis jedis = jedisPool.getResource()) {
+            var pipeline = jedis.pipelined();
+            String member = playerUuid.toString();
+            scoresByKey.forEach((key, score) -> pipeline.zadd(PREFIX + key, score, member));
+            pipeline.sync();
+        } catch (Exception e) {
+            Logger.warn(e, "Failed to batch update leaderboard scores for {}", playerUuid);
         }
     }
 

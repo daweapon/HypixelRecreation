@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.garden.npc;
 
+import net.minestom.server.entity.PlayerSkin;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 import org.tinylog.Logger;
@@ -37,6 +38,11 @@ public final class GardenNpcSkins {
             skins = load(FILE);
         }
         return skins.get(visitorId);
+    }
+
+    public static @Nullable PlayerSkin playerSkin(String visitorId) {
+        Skin skin = known(visitorId);
+        return skin == null ? null : new PlayerSkin(skin.texture(), skin.signature());
     }
 
     public static synchronized @Nullable Entity entity(String visitorId) {

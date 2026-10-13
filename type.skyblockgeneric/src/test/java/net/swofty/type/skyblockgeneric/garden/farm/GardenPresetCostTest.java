@@ -37,15 +37,14 @@ class GardenPresetCostTest {
     void baseSeedsArePaidBeforeEnchantedOnes() {
         GardenPresetCost.Payment payment = GardenPresetCost.plan(100, SOURCES, item -> item.equals(SEEDS) ? 500 : 5);
         assertEquals(Map.of(SEEDS, 100), payment.take());
-        assertEquals(0, payment.refund());
+        assertEquals(Map.of(), payment.refund());
     }
 
     @Test
     void enchantedSeedsCoverTheRestAndTheDifferenceIsRefunded() {
         GardenPresetCost.Payment payment = GardenPresetCost.plan(200, SOURCES, item -> item.equals(SEEDS) ? 50 : 3);
         assertEquals(Map.of(SEEDS, 50, ENCHANTED_SEEDS, 1), payment.take());
-        assertEquals(10, payment.refund());
-        assertEquals(SEEDS, payment.refundItem());
+        assertEquals(Map.of(SEEDS, 10), payment.refund());
     }
 
     @Test

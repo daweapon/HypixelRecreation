@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.DroppedItemEntityImpl;
+import net.swofty.type.skyblockgeneric.garden.tool.FarmingToolkit;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -20,6 +21,12 @@ public class ActionItemDrop implements HypixelEventClass {
 
         if (new SkyBlockItem(event.getItemStack()).getAttributeHandler().getTypeAsString().toLowerCase().contains("menu")) {
             event.setCancelled(true);
+            return;
+        }
+
+        if (FarmingToolkit.slotOf(new SkyBlockItem(event.getItemStack()).getAttributeHandler().getTypeAsString()) != null) {
+            event.setCancelled(true);
+            player.sendMessage("<c>You can't drop Farming Tools! Store them in your <e>/farmingtoolkit<c> instead.");
             return;
         }
 

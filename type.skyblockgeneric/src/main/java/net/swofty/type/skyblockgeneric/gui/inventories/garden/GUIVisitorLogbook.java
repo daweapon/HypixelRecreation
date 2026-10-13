@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.garden;
 
+import net.minestom.server.entity.PlayerSkin;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
@@ -14,6 +15,7 @@ import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.garden.GardenProgress;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.garden.npc.GardenNpcSkins;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorData;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -158,8 +160,13 @@ public class GUIVisitorLogbook extends StatefulPaginatedView<VisitorCatalogue.Vi
                 lore.add(Text.of("<c>Not added yet!"));
             }
         }
-        Material icon = visited > 0 ? Material.PLAYER_HEAD : Material.GRAY_DYE;
-        return ItemStacks.item(icon, Text.of(visited > 0 ? visitor.coloured() : "<7>" + visitor.name()), lore);
+        if (visited == 0) {
+            return ItemStacks.item(Material.GRAY_DYE, Text.of("<7>" + visitor.name()), lore);
+        }
+        PlayerSkin skin = GardenNpcSkins.playerSkin(visitor.id());
+        return skin == null
+                ? ItemStacks.item(Material.PLAYER_HEAD, Text.of(visitor.coloured()), lore)
+                : ItemStacks.head(skin, Text.of(visitor.coloured()), lore);
     }
 
     @Override

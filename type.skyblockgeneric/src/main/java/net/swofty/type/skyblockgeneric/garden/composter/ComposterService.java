@@ -133,6 +133,7 @@ public final class ComposterService {
         state.setTier(upgrade, next);
         Gardens.save(player, profile);
         GardenService.syncExperience(player);
+        GardenService.playExperienceSound(player);
         player.sendMessage(Text.of("<b><l>COMPOSTER UPGRADED <a>{} {}", upgrade.getDisplayName(), StringUtility.getAsRomanNumeral(next)));
         return UpgradeResult.UPGRADED;
     }

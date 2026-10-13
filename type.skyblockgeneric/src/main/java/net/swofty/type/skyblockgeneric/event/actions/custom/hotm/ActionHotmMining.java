@@ -38,7 +38,7 @@ public class ActionHotmMining implements HypixelEventClass {
         SkyBlockRegion region = SkyBlockRegion.getRegionOfPosition(event.getPoint());
         RegionType regionType = region == null ? null : region.getType();
         GlaciteOre ore = GlaciteOre.of(event.getMaterial(), regionType);
-        MineableBlock block = ore != null ? ore.getMineable() : MineableBlock.get(event.getMaterial().block());
+        MineableBlock block = ore != null ? ore.getMineable() : event.getMaterial().block() == null ? null : MineableBlock.get(event.getMaterial().block());
         if (block == null) return;
 
         HotmAbilities.onBlockMined(player);

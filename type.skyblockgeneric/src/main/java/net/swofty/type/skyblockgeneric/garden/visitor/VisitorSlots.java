@@ -15,6 +15,8 @@ public final class VisitorSlots {
             new Pos(6.5, 71, -8.5, 0, 0),
             new Pos(9.5, 71, -8.5, 0, 0)
     };
+    public static final Pos ENTRANCE = new Pos(12.5, 71, -8.5, 90, 0);
+    public static final long ARRIVAL_WINDOW_MILLIS = 20_000;
     private static final Map<UUID, Map<String, Integer>> SLOTS = new ConcurrentHashMap<>();
 
     private VisitorSlots() {

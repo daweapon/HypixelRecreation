@@ -107,16 +107,21 @@ public final class FeastService {
         return data.getClaimed() < targets.length && data.getSeasoning() >= targets[data.getClaimed()];
     }
 
+    public static int flasksFor(SkyBlockPlayer player, int tier) {
+        int[] flasks = FeastCalendar.grand() ? GRAND_FLASKS : NORMAL_FLASKS;
+        int count = flasks[tier];
+        if (tier == flasks.length - 1) count += (int) Carnivals.perkValue(player, CarnivalPerk.LEFTOVERS);
+        return count;
+    }
+
     public static boolean claim(SkyBlockPlayer player) {
         GardenProfile profile = Gardens.profile(player);
         if (!claimable(profile)) return false;
         FeastData data = data(profile);
         int tier = data.getClaimed();
         boolean grand = FeastCalendar.grand();
-        int[] flasks = grand ? GRAND_FLASKS : NORMAL_FLASKS;
         int last = targets().length - 1;
-        int flaskCount = flasks[tier];
-        if (tier == last) flaskCount += (int) Carnivals.perkValue(player, CarnivalPerk.LEFTOVERS);
+        int flaskCount = flasksFor(player, tier);
         data.setClaimed(tier + 1);
         ItemType flask = ItemType.get("FEAST_FLASK");
         if (flask != null) player.addAndUpdateItem(new SkyBlockItem(flask, flaskCount));
@@ -129,9 +134,9 @@ public final class FeastService {
         }
         Gardens.save(player, profile);
         GardenService.syncExperience(player);
-        player.sendMessage(Text.of("<6>You claimed Harvest Feast milestone {}<6>: <5>{}x Feast Flask<6>, <a>{} Carnival Tickets{}",
-                net.swofty.commons.StringUtility.getAsRomanNumeral(tier + 1), flaskCount, TICKETS_PER_MILESTONE,
-                grand ? ", <e>" + GRAND_KERNELS[tier] + " Kernels" : ""));
+        String kernels = grand ? "<6>, <e>" + GRAND_KERNELS[tier] + " Kernels" : "";
+        player.sendMessage(Text.of("<6>You claimed Harvest Feast milestone <e>{}<6>: <5>{}x Feast Flask<6>, <a>{} Carnival Tickets" + kernels,
+                net.swofty.commons.StringUtility.getAsRomanNumeral(tier + 1), flaskCount, TICKETS_PER_MILESTONE));
         return true;
     }
 }

@@ -17,7 +17,9 @@ import net.swofty.type.generic.gui.v2.DefaultState;
 import net.swofty.type.generic.gui.v2.StatelessView;
 import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
+import net.swofty.type.generic.gui.v2.context.ClickContext;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
+import net.swofty.type.skyblockgeneric.item.equipment.EquipmentSlots;
 import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievements;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointInventory;
@@ -277,6 +279,23 @@ public class GUISkyBlockProfile extends StatelessView {
         }, (_, c) -> {
             c.player().openView(new GUIGatheringCategoryStats(GUIGatheringCategoryStats.Category.MISC));
         });
+    }
+
+    @Override
+    public boolean onBottomClick(ClickContext<DefaultState> click, ViewContext ctx) {
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        if (click.slot() < 0 || click.slot() >= player.getInventory().getSize()) return false;
+        if (!player.getInventory().getCursorItem().isAir()) return false;
+
+        ItemStack clicked = player.getInventory().getItemStack(click.slot());
+        EquipmentSlots slot = EquipmentSlots.forItem(clicked);
+        if (slot == null) return false;
+
+        ItemStack previous = slot.unequip(player);
+        slot.equip(player, clicked);
+        player.getInventory().setItemStack(click.slot(), previous);
+        player.openView(new GUISkyBlockProfile());
+        return false;
     }
 
     private static void equipmentSlot(

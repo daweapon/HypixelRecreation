@@ -1,6 +1,13 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.garden;
 
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.sound.Sound;
 import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.inventory.click.Click;
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.generic.gui.v2.context.ClickContext;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.components.SkullHeadComponent;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.StringUtility;
@@ -90,8 +97,9 @@ public class GUIComposter extends StatelessView {
         lore.add(Text.empty());
         lore.add(Text.of("<e>Click to pickup a stack!"));
         lore.add(Text.of("<e>Shift-click to fill your inventory!"));
-        return ItemStacks.item(stored > 0 ? Material.COMPOSTER : Material.RED_CONCRETE, Math.max(1, Math.min(64, stored)),
-                Text.of("<e>Collect Compost"), lore);
+        SkyBlockItem compost = new SkyBlockItem(ItemType.COMPOST);
+        return ItemStacks.head(compost.getComponent(SkullHeadComponent.class).getSkullTexture(compost),
+                Math.max(1, Math.min(64, stored)), Text.of("<e>Collect Compost"), lore);
     }
 
     private ItemStack.Builder meter(SkyBlockPlayer player, boolean fuel) {
@@ -139,6 +147,32 @@ public class GUIComposter extends StatelessView {
         }
         Material icon = sacks ? Material.CAULDRON : fuel ? Material.KELP : Material.HAY_BLOCK;
         return ItemStacks.item(icon, Text.of("<a>Insert " + (fuel ? "Fuel" : "Crops") + " from " + (sacks ? "Sacks" : "Inventory")), lore);
+    }
+
+    @Override
+    public boolean onBottomClick(ClickContext<DefaultState> click, ViewContext ctx) {
+        SkyBlockPlayer player = (SkyBlockPlayer) click.player();
+        ItemStack stack = player.getInventory().getItemStack(click.slot());
+        if (stack.isAir() || !SkyBlockItem.isSkyBlockItem(stack)) return false;
+        ItemType type = new SkyBlockItem(stack).getAttributeHandler().getPotentialType();
+        if (type == null) return false;
+        ComposterConfig config = ComposterConfig.get();
+        boolean matter = config.organicMatterValue(type.name()) > 0;
+        boolean fuel = config.fuelValue(type.name()) > 0;
+        if (!matter && !fuel) return false;
+
+        int requested = click.click() instanceof Click.Right ? 1 : stack.amount();
+        int added = fuel
+                ? ComposterService.addFuel(player, type, requested, ComposterService.Source.INVENTORY)
+                : ComposterService.addMatter(player, type, requested, ComposterService.Source.INVENTORY);
+        if (added <= 0) {
+            player.sendMessage(Text.of("<c>The composter can't hold any more " + (fuel ? "fuel" : "organic matter") + "!"));
+            player.playSound(Sound.sound(Key.key("entity.villager.no"), Sound.Source.PLAYER, 1, 1));
+        } else {
+            player.playSound(Sound.sound(Key.key("block.composter.fill_success"), Sound.Source.PLAYER, 1, 1));
+        }
+        ctx.session(DefaultState.class).refresh();
+        return false;
     }
 
     private void insertAll(ViewContext ctx, ComposterService.Source source, boolean fuel) {

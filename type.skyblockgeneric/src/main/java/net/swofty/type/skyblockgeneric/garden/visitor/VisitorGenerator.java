@@ -83,7 +83,7 @@ public final class VisitorGenerator {
                 double raw = base * family.multiplier() * catalogue.quantityMultiplier(visitor.rarity());
                 required.add(compact(family, raw));
                 baseItems += raw;
-                baseQuantityTotal += raw / family.multiplier();
+                baseQuantityTotal += raw / catalogue.quantityMultiplier(visitor.rarity());
             }
         }
         if (required.isEmpty()) {
@@ -93,7 +93,7 @@ public final class VisitorGenerator {
                     * catalogue.quantityMultiplier(visitor.rarity());
             required.add(compact(fallback, raw));
             baseItems = raw;
-            baseQuantityTotal = raw / fallback.multiplier();
+            baseQuantityTotal = raw / catalogue.quantityMultiplier(visitor.rarity());
         }
 
         long farmingXp = Math.round(baseItems * FARMING_XP_PER_ITEM * catalogue.farmingXpMultiplier(visitor.rarity()));

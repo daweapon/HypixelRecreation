@@ -578,6 +578,7 @@ public final class GreenhouseService {
         setTier(data, upgrade, tier + 1);
         Gardens.save(player, profile);
         GardenService.syncExperience(player);
+        GardenService.playExperienceSound(player);
         return UpgradeResult.UPGRADED;
     }
 

@@ -224,6 +224,7 @@ public enum PlayerHolograms {
 
             // If hologram has a display function, update it
             if (hologram.displayFunction != null) {
+              try {
                 String[] newLines = hologram.displayFunction.apply(hologram.player);
                 if (newLines != null) {
                     double spacing = hologram.getSpacing();
@@ -254,6 +255,9 @@ public enum PlayerHolograms {
                         entity.remove();
                     }
                 }
+              } catch (RuntimeException exception) {
+                exception.printStackTrace();
+              }
             }
         }
 

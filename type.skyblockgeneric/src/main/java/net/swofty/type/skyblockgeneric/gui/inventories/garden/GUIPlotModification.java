@@ -45,7 +45,7 @@ public class GUIPlotModification extends StatelessView {
 
         for (GardenGrids.Preset preset : GardenGrids.PRESETS) {
             layout.slot(preset.slot(),
-                    (_, c) -> presetItem(preset, GardenService.profile((SkyBlockPlayer) c.player())),
+                    (_, c) -> presetItem((SkyBlockPlayer) c.player(), preset, GardenService.profile((SkyBlockPlayer) c.player())),
                     (_, c) -> select(preset, c));
         }
 
@@ -94,7 +94,7 @@ public class GUIPlotModification extends StatelessView {
                 ? "<c>Already at max Greenhouse plots!" : "<c>Finish Sam's Greenhouse quest to unlock this!";
     }
 
-    private ItemStack.Builder presetItem(GardenGrids.Preset preset, GardenProfile profile) {
+    private ItemStack.Builder presetItem(SkyBlockPlayer player, GardenGrids.Preset preset, GardenProfile profile) {
         List<Text> lore = new ArrayList<>();
         lore.add(Text.key("gui_garden_upgrades.modify.preset.lore.1"));
         lore.add(Text.key("gui_garden_upgrades.modify.preset.lore.2"));
@@ -108,6 +108,10 @@ public class GUIPlotModification extends StatelessView {
             lore.add(Text.of("<7>Cost"));
             lore.add(Text.of("<8> - <a>{}x <7>{}", NumberFormat.getIntegerInstance(Locale.US).format(GardenPresetCost.required(crop)),
                     new SkyBlockItem(GardenPresetCost.seed(crop)).getDisplayNameText()));
+            long have = GardenPresets.available(player, crop);
+            lore.add(Text.of(have >= GardenPresetCost.required(crop) ? "<8> - <7>You have <a>{} <7>(counting compacted items)"
+                    : "<8> - <7>You have <c>{} <7>(counting compacted items)",
+                    NumberFormat.getIntegerInstance(Locale.US).format(have)));
             lore.add(GardenMenus.blank());
         }
         lore.add(GardenPresets.isPastable(preset.name()) ? Text.key("gui_garden_upgrades.modify.preset.click")

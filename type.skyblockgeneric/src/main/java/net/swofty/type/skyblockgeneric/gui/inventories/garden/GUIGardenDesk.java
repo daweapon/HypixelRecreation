@@ -32,6 +32,10 @@ public class GUIGardenDesk extends StatelessView {
 
         layout.slot(4, (_, c) -> sunflower((SkyBlockPlayer) c.player()), (_, c) -> GardenMenus.open(c, new GUIGardenLevels()));
 
+        layout.slot(5, (_, _) -> net.swofty.type.generic.gui.inventory.ItemStacks.text(GUIManageChips.icon(net.swofty.type.skyblockgeneric.garden.chip.GardenChip.CROPSHOT),
+                Text.of("<a>Manage Chips"), List.of(Text.of("<7>Redeem chips, then level them up"), Text.of("<7>with <2>Sowdust<7>."), GardenMenus.blank(), Text.key(KEY + "click_to_view"))),
+                (_, c) -> GardenMenus.open(c, new GUIManageChips()));
+
         view(layout, 19, Material.GRASS_BLOCK, "plots", 2, () -> new GUIConfigurePlots());
         view(layout, 21, Material.MELON_SLICE, "upgrades", 2, () -> new GUIGardenUpgrades());
         view(layout, 23, Material.EMERALD, "skymart", 6, () -> new GUISkyMart());
