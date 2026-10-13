@@ -37,7 +37,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class GardenWorldDecor implements GardenPresence {
     private static final Tag<Boolean> INTERACTIONS_SPAWNED = Tag.Boolean("garden_interactions_spawned");
-    private static final Pos DESK = new Pos(-5.5, 71.34, -24.5);
+    private static final Pos DESK = new Pos(-5.5, 72.75, -24.5);
     private static final Pos LOGBOOK = new Pos(7.5, 71.34, -22.5);
     private static final Pos COMPOSTER = new Pos(-11.5, 73.2, -27.3);
     private static final double CLICK_SPACING = 0.38;
