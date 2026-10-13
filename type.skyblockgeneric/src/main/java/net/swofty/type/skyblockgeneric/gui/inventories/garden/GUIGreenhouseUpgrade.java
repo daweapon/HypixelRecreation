@@ -40,6 +40,7 @@ public class GUIGreenhouseUpgrade extends StatelessView {
                     case UPGRADED -> Text.of("<a>You upgraded your Greenhouse {}<a>!", upgrade.displayName());
                     case MAX_TIER -> Text.of("<c>This upgrade is already maxed!");
                     case NOT_ENOUGH_COPPER -> Text.of("<c>You need more Copper!");
+                    case NOT_ENOUGH_COMPOST -> Text.of("<c>You need more Compost!");
                     case NOT_ENOUGH_BUNDLES -> Text.of("<c>You need more Compost Bundles!");
                     case NOT_ENOUGH_VINES -> Text.of("<c>You need more Ethereal Vines!");
                     case SLOTS_LOCKED -> Text.of("<c>Unlock all Greenhouse crop slots to use this!");

@@ -84,7 +84,7 @@ public final class GardenService {
         return player.getAmountAnywhere(ItemType.COMPOST) + (long) player.getAmountAnywhere(ItemType.COMPOST_BUNDLE) * perBundle >= compost;
     }
 
-    private static boolean payCompost(SkyBlockPlayer player, int compost) {
+    public static boolean payCompost(SkyBlockPlayer player, int compost) {
         if (!canAffordCompost(player, compost)) {
             return false;
         }

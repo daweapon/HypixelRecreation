@@ -40,7 +40,7 @@ public final class GreenhouseService {
     private static final List<HarvestListener> HARVEST_LISTENERS = new ArrayList<>();
 
     public enum UpgradeResult {
-        UPGRADED, MAX_TIER, NOT_ENOUGH_COPPER, NOT_ENOUGH_BUNDLES, NOT_ENOUGH_VINES, SLOTS_LOCKED
+        UPGRADED, MAX_TIER, NOT_ENOUGH_COPPER, NOT_ENOUGH_COMPOST, NOT_ENOUGH_BUNDLES, NOT_ENOUGH_VINES, SLOTS_LOCKED
     }
 
     static {
@@ -88,12 +88,9 @@ public final class GreenhouseService {
         GreenhouseData.Bed bed = new GreenhouseData.Bed();
         boolean first = data.getBeds().isEmpty();
         GreenhouseConfig config = GreenhouseConfig.get();
-        int[] columns = config.starterColumns();
-        int[] rows = config.starterRows();
+        java.util.Set<Integer> starter = config.starterSlots();
         for (int slot = 0; slot < GreenhouseData.SLOTS; slot++) {
-            int column = slot % GreenhouseData.SIZE;
-            int row = slot / GreenhouseData.SIZE;
-            bed.getUnlocked()[slot] = !first || (column >= columns[0] && column <= columns[1] && row >= rows[0] && row <= rows[1]);
+            bed.getUnlocked()[slot] = !first || starter.contains(slot);
         }
         data.getBeds().put(plot, bed);
         profile.setPlotPreset(plot, "Greenhouse");
@@ -566,6 +563,9 @@ public final class GreenhouseService {
         }
         GreenhouseConfig.Cost cost = config.costs(upgrade).get(tier);
         if (profile.getCopper() < cost.copper()) return UpgradeResult.NOT_ENOUGH_COPPER;
+        if (cost.compost() > 0 && !GardenService.canAffordCompost(player, cost.compost())) {
+            return UpgradeResult.NOT_ENOUGH_COMPOST;
+        }
         if (cost.bundles() > 0 && player.getAmountAnywhere(ItemType.COMPOST_BUNDLE) < cost.bundles()) {
             return UpgradeResult.NOT_ENOUGH_BUNDLES;
         }
@@ -573,6 +573,7 @@ public final class GreenhouseService {
             return UpgradeResult.NOT_ENOUGH_VINES;
         }
         profile.spendCopper(cost.copper());
+        if (cost.compost() > 0) GardenService.payCompost(player, cost.compost());
         take(player, ItemType.COMPOST_BUNDLE, cost.bundles());
         take(player, ItemType.ETHEREAL_VINE, cost.vines());
         setTier(data, upgrade, tier + 1);

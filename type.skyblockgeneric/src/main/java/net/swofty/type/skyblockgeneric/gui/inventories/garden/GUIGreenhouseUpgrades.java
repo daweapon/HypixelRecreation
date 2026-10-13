@@ -69,22 +69,23 @@ public class GUIGreenhouseUpgrades extends StatelessView {
         Material material = index < tier ? Material.LIME_STAINED_GLASS_PANE : index == tier ? Material.YELLOW_STAINED_GLASS_PANE : Material.RED_STAINED_GLASS_PANE;
         List<Text> lore = new ArrayList<>();
         switch (upgrade) {
-            case GROWTH_SPEED -> lore.add(Text.of("<7>Growth Speed: <a>{}%", trim(config.growthSpeedPercent(index + 1))));
-            case PLANT_YIELD -> lore.add(Text.of("<7>Plant Yield: <a>{}%", trim(config.plantYieldPercent(index + 1))));
-            case PLOT_LIMIT -> lore.add(Text.of("<7>Plot Limit: <a>+{}", index + 1));
+            case GROWTH_SPEED -> lore.add(Text.of("<b>+{}% Greenhouse Growth Speed", trim(config.growthSpeedPercent(index + 1) - config.growthSpeedPercent(index))));
+            case PLANT_YIELD -> lore.add(Text.of("<e>+{}% Greenhouse Plant Yield", trim(config.plantYieldPercent(index + 1) - config.plantYieldPercent(index))));
+            case PLOT_LIMIT -> lore.add(Text.of("<a>+1 Greenhouse Plot"));
         }
-        lore.add(Text.of("<8>+<b>5 SkyBlock XP"));
+        lore.add(Text.of("<b>+{} SkyBlock XP", cost.xp()));
         lore.add(Text.empty());
         if (index < tier) {
             lore.add(Text.of("<a>Unlocked!"));
         } else {
             lore.add(Text.of("<7>Cost"));
             if (cost.copper() > 0) lore.add(Text.of("<c>{} Copper", StringUtility.commaify(cost.copper())));
-            if (cost.bundles() > 0) lore.add(Text.of("<a>Compost Bundle <8>x{}", cost.bundles()));
+            if (cost.compost() > 0) lore.add(Text.of("<9>Compost <8>x{}", cost.compost()));
+            if (cost.bundles() > 0) lore.add(Text.of("<9>Compost Bundle <8>x{}", cost.bundles()));
             if (cost.vines() > 0) lore.add(Text.of("<5>Ethereal Vine <8>x{}", cost.vines()));
             lore.add(Text.empty());
             lore.add(index == tier ? Text.of("<e>Click to upgrade!") : Text.of("<c>You need to unlock the previous tier first!"));
         }
-        return ItemStacks.item(material, index + 1, Text.of("<a>" + upgrade.displayName() + " " + roman), lore);
+        return ItemStacks.item(material, index + 1, Text.of("<e>" + upgrade.displayName() + " " + roman), lore);
     }
 }

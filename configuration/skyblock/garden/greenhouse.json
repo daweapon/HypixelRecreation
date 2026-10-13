@@ -1,12 +1,12 @@
 {
-  "source": "Hypixel SkyBlock Wiki 'Greenhouse' (2026-10-13) for base crops, effects, timer and Harvest Bounty; upgrade tier percentages from the user's videos (Growth Speed 3/9 = 15%, 9/9 = 50%; Plant Yield 3/9 = 6%, 9/9 = 20%, tier VI = 2,000 Copper + 2 Compost Bundles + 5 SkyBlock XP); other tier costs are placeholders.",
+  "source": "Hypixel SkyBlock Wiki 'Greenhouse' (2026-10-13) for base crops, effects, timer and Harvest Bounty; every Growth Speed, Plant Yield and Plot Limit tier cost, effect and XP read from the user's 2026-10-13 15-07-35 recording of the Greenhouse Upgrades GUI (Compost tiers I-IV cost loose Compost x5, later tiers Compost Bundles).",
   "stageHours": 4,
   "baseXp": 320,
-  "plantYield": [0, 2, 4, 6, 8, 10, 12, 14, 17, 20],
+  "plantYield": [0, 2, 4, 6, 8, 10, 12, 14, 16, 20],
   "growthSpeed": [0, 5, 10, 15, 20, 25, 30, 35, 40, 50],
   "uniqueCropPercent": 2.5,
   "maxUniqueCrops": 10,
-  "starterSlots": {"columns": [2, 7], "rows": [2, 7]},
+  "starterSlots": {"4": [5, 6], "5": [4, 5, 6, 7], "6": [4, 5, 6, 7], "7": [5, 6]},
   "waterPerLevel": 10,
   "waterLossMin": 2,
   "waterLossMax": 3,
@@ -15,14 +15,26 @@
   "decayDaysUnwaterable": 9,
   "upgrades": {
     "GROWTH_SPEED": [
-      {"copper": 100, "bundles": 0, "xp": 5}, {"copper": 250, "bundles": 0, "xp": 5}, {"copper": 500, "bundles": 1, "xp": 5},
-      {"copper": 1000, "bundles": 1, "xp": 5}, {"copper": 1500, "bundles": 2, "xp": 5}, {"copper": 2000, "bundles": 2, "xp": 5},
-      {"copper": 3000, "bundles": 3, "xp": 5}, {"copper": 4500, "bundles": 4, "xp": 5}, {"copper": 6000, "bundles": 5, "xp": 5}
+      {"copper": 50, "compost": 5, "xp": 5},
+      {"copper": 100, "compost": 5, "xp": 5},
+      {"copper": 250, "compost": 5, "xp": 5},
+      {"copper": 500, "compost": 5, "xp": 5},
+      {"copper": 1000, "bundles": 1, "xp": 5},
+      {"copper": 2000, "bundles": 2, "xp": 5},
+      {"copper": 3000, "bundles": 3, "xp": 5},
+      {"copper": 4000, "bundles": 4, "xp": 5},
+      {"copper": 5000, "bundles": 5, "xp": 5}
     ],
     "PLANT_YIELD": [
-      {"copper": 100, "bundles": 0, "xp": 5}, {"copper": 250, "bundles": 0, "xp": 5}, {"copper": 500, "bundles": 1, "xp": 5},
-      {"copper": 1000, "bundles": 1, "xp": 5}, {"copper": 1500, "bundles": 2, "xp": 5}, {"copper": 2000, "bundles": 2, "xp": 5},
-      {"copper": 3000, "bundles": 3, "xp": 5}, {"copper": 4500, "bundles": 4, "xp": 5}, {"copper": 6000, "bundles": 5, "xp": 5}
+      {"copper": 50, "compost": 5, "xp": 5},
+      {"copper": 100, "compost": 5, "xp": 5},
+      {"copper": 250, "compost": 5, "xp": 5},
+      {"copper": 500, "compost": 5, "xp": 5},
+      {"copper": 1000, "bundles": 1, "xp": 5},
+      {"copper": 2000, "bundles": 2, "xp": 5},
+      {"copper": 3000, "bundles": 3, "xp": 5},
+      {"copper": 4000, "bundles": 4, "xp": 5},
+      {"copper": 5000, "bundles": 5, "xp": 5}
     ],
     "PLOT_LIMIT": [
       {"vines": 100, "bundles": 10, "xp": 5}, {"vines": 150, "bundles": 20, "xp": 5}

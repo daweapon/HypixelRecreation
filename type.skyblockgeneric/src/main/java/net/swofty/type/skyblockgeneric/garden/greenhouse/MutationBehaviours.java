@@ -40,6 +40,8 @@ public final class MutationBehaviours {
     public static final int FLESHTRAP_START_HUNGER = 10;
     public static final int FLESHTRAP_HUNGER_PER_STAGE = 2;
     public static final double FLESHTRAP_BONUS_CAP = 100;
+    public static final double FLESHTRAP_THIRD_DROP_CHANCE = 25;
+    public static final int FLESHTRAP_MAX_ITEMS = 3;
     public static final double DEVOURER_ROOT_CHANCE = 0.4;
     public static final double PUFFERCLOUD_DAMAGE_PERCENT = 4;
     public static final int JERRYFLOWER_FEEDINGS = 10;
@@ -481,7 +483,10 @@ public final class MutationBehaviours {
             double bonus = ctx.plant().state("bonus");
             int count = 1 + (int) (bonus / 100);
             ItemType item = ItemType.get("FLESHTRAP");
-            if (item != null && LootRoll.roll(ctx.player().getUuid(), item, bonus % 100, ThreadLocalRandom.current())) count++;
+            if (item == null) return count;
+            if (LootRoll.roll(ctx.player().getUuid(), item, bonus % 100, ThreadLocalRandom.current())) count++;
+            if (bonus >= FLESHTRAP_BONUS_CAP && LootRoll.roll(ctx.player().getUuid(), item, FLESHTRAP_THIRD_DROP_CHANCE, ThreadLocalRandom.current())) count++;
+            count = Math.min(count, FLESHTRAP_MAX_ITEMS);
             return count;
         }
 

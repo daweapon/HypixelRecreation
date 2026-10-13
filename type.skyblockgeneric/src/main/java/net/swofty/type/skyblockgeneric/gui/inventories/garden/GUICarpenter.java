@@ -70,12 +70,17 @@ public class GUICarpenter extends StatelessView {
                 Text.of("<7>unlock additional plant slots in your"),
                 Text.of("<7>Greenhouse."),
                 Text.empty(),
+                Text.of("<a>■ <7>Unlocked  <e>■ <7>Unlockable  <c>■ <7>Locked"),
+                Text.of("<7>A slot can only be unlocked next to"),
+                Text.of("<7>an unlocked slot."),
+                Text.empty(),
                 Text.of("<7>Your Slots: <a>{}<7>/<a>{}", bed == null ? 0 : bed.unlockedCount(), GreenhouseData.SLOTS)));
         if (bed != null) {
             for (int row = 0; row < GreenhouseData.SIZE; row++) {
                 StringBuilder line = new StringBuilder();
                 for (int column = 0; column < GreenhouseData.SIZE; column++) {
-                    line.append(bed.getUnlocked()[GreenhouseData.slot(column, row)] ? "<a>■" : "<c>■");
+                    int slot = GreenhouseData.slot(column, row);
+                    line.append(bed.getUnlocked()[slot] ? "<a>■" : GreenhouseService.adjacentToUnlocked(bed, slot) ? "<e>■" : "<c>■");
                 }
                 lore.add(Text.of(line.toString()));
             }

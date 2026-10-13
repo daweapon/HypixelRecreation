@@ -33,7 +33,7 @@ public final class GreenhouseConfig {
         }
     }
 
-    public record Cost(int copper, int bundles, int vines, int xp) {
+    public record Cost(int copper, int compost, int bundles, int vines, int xp) {
     }
 
     public record Bounty(String item, double chancePercent) {
@@ -63,7 +63,7 @@ public final class GreenhouseConfig {
             List<Cost> costs = new ArrayList<>();
             for (int i = 0; i < tiers.length(); i++) {
                 JSONObject tier = tiers.getJSONObject(i);
-                costs.add(new Cost(tier.optInt("copper"), tier.optInt("bundles"), tier.optInt("vines"), tier.optInt("xp")));
+                costs.add(new Cost(tier.optInt("copper"), tier.optInt("compost"), tier.optInt("bundles"), tier.optInt("vines"), tier.optInt("xp")));
             }
             upgrades.put(upgrade, costs);
         }
@@ -163,14 +163,14 @@ public final class GreenhouseConfig {
         return json.getInt("decayDaysUnwaterable");
     }
 
-    public int[] starterColumns() {
-        JSONArray array = json.getJSONObject("starterSlots").getJSONArray("columns");
-        return new int[]{array.getInt(0), array.getInt(1)};
-    }
-
-    public int[] starterRows() {
-        JSONArray array = json.getJSONObject("starterSlots").getJSONArray("rows");
-        return new int[]{array.getInt(0), array.getInt(1)};
+    public java.util.Set<Integer> starterSlots() {
+        JSONObject rows = json.getJSONObject("starterSlots");
+        java.util.Set<Integer> slots = new java.util.TreeSet<>();
+        for (String row : rows.keySet()) {
+            JSONArray columns = rows.getJSONArray(row);
+            for (int i = 0; i < columns.length(); i++) slots.add(GreenhouseData.slot(columns.getInt(i) - 1, Integer.parseInt(row) - 1));
+        }
+        return slots;
     }
 
     public double vineChance(String rarity) {
