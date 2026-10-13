@@ -36,7 +36,8 @@ public class AccountInformationModule extends TablistModule {
         entries.add(new TablistEntry(Text.key("tablist.account_info.bank", StringUtility.shortenNumber(bankData.getAmount()), StringUtility.shortenNumber(bankData.getBalanceLimit())), TablistSkinRegistry.GRAY));
         entries.add(getGrayEntry());
 
-        SkillCategories skillCategory = dataHandler.get(SkyBlockDataHandler.Data.LAST_EDITED_SKILL, DatapointSkillCategory.class).getValue();
+        SkillCategories skillCategory = net.swofty.type.generic.HypixelConst.isGardenServer() ? SkillCategories.FARMING
+                : dataHandler.get(SkyBlockDataHandler.Data.LAST_EDITED_SKILL, DatapointSkillCategory.class).getValue();
         DatapointSkills.PlayerSkills skills = player.getSkills();
         ItemStatistics playerStatistics = player.getStatistics().allStatistics();
         entries.add(new TablistEntry(Text.key("tablist.account_info.skills_label", String.valueOf(skillCategory), String.valueOf(skills.getCurrentLevel(skillCategory)), String.valueOf(skills.getPercentage(skillCategory))), TablistSkinRegistry.GRAY));

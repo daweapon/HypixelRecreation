@@ -90,9 +90,9 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
             @Override
             public List<TablistModule> getModules() {
                 return new ArrayList<>(List.of(
+                        new GardenInfoModule(),
                         new GardenComposterModule(),
                         new GardenPestsModule(),
-                        new GardenInfoModule(),
                         new AccountInformationModule()
                 ));
             }
