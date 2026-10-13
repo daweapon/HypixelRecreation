@@ -111,7 +111,7 @@ class MiscPetsTest {
         assertTrue(ability(component(ItemType.RABBIT_PET), "Efficient Farming").isActive());
         assertTrue(ability(component(ItemType.PARROT_PET), "Flamboyant").isActive());
         assertTrue(ability(component(ItemType.HEDGEHOG_PET), "Spiky Quills").isActive());
-        assertFalse(ability(component(ItemType.HEDGEHOG_PET), "Hunter's Insight").isActive());
+        assertTrue(ability(component(ItemType.HEDGEHOG_PET), "Hunter's Insight").isActive());
         assertFalse(ability(component(ItemType.JELLYFISH_PET), "Stored Energy").isActive());
     }
 

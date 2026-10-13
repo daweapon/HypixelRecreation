@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.Barthere
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.RepugnantAromaHandler;
 import net.swofty.type.skyblockgeneric.garden.GardenProgress;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.garden.pest.PestBestiary;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BingoChimeraHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BingoClimberHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BulwarkHandler;
@@ -44,6 +45,8 @@ final class MiscPetAbilities implements PetAbilityRegistry.Provider {
         registrar.register("WITHER_SKELETON_DEATHS_TOUCH", new DeathsTouchHandler());
         registrar.register("ROSE_DRAGON_GARDEN_POWER", CountScaledStatHandler.flat(
                 player -> player.getSkills().getCurrentLevel(SkillCategories.FARMING), ItemStatistic.FARMING_FORTUNE));
+        registrar.register("HEDGEHOG_HUNTERS_INSIGHT",
+                CountScaledStatHandler.flat(PestBestiary::totalTiers, ItemStatistic.FARMING_FORTUNE));
         registrar.register("MOSQUITO_BUZZIN_BARTERER", new BarthererHandler());
         registrar.register("SLUG_REPUGNANT_AROMA", new RepugnantAromaHandler());
         registrar.register("ROSE_DRAGON_ROSY_SCALES", CountScaledStatHandler.flat(

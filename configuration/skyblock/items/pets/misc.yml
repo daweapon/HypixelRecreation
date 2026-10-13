@@ -212,8 +212,8 @@ items:
               - { per_level: 1 }
               - { per_level: 0.35 }
           - name: "Hunter's Insight"
-            unavailable: "Needs the Pest Bestiary"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: HEDGEHOG_HUNTERS_INSIGHT
             text:
               - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming Fortune<7> per"
               - "<7>Pest Bestiary Tier."

@@ -179,6 +179,7 @@ public final class PestService {
         Instance instance = player.getInstance();
         if (instance != null) PestWorld.despawn(instance, entity.aliveId());
         data.addKill(entity.pest().id());
+        PestBestiary.recordKill(player, entity.pest().id());
         data.setStored(data.getStored() + 1);
         PestRewards.award(player, profile, entity.pest());
         Gardens.save(player, profile);
