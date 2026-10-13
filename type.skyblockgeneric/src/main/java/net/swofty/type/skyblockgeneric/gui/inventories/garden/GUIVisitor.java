@@ -44,8 +44,8 @@ public class GUIVisitor extends StatelessView {
         Components.close(layout, 31);
 
         layout.slot(13, (_, c) -> head((SkyBlockPlayer) c.player()));
-        layout.slot(29, (_, c) -> accept((SkyBlockPlayer) c.player()), (_, c) -> give(c));
-        layout.slot(33, (_, _) -> ItemStacks.item(Material.RED_TERRACOTTA, Text.of("<c>Refuse Offer"), List.of(
+        layout.slot(20, (_, c) -> accept((SkyBlockPlayer) c.player()), (_, c) -> give(c));
+        layout.slot(24, (_, _) -> ItemStacks.item(Material.RED_TERRACOTTA, Text.of("<c>Refuse Offer"), List.of(
                 Text.of("<7>Send this visitor away. You will"),
                 Text.of("<7>not receive any rewards."),
                 Text.empty(),

@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.item;
 
+import net.swofty.type.skyblockgeneric.garden.GardenProgress;
+import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.slayer.SlayerRequirement;
@@ -18,6 +20,7 @@ import java.util.regex.Pattern;
 public final class RequirementLines {
     private static final Pattern SKILL = Pattern.compile("Requires (\\w+) Skill (\\d+)");
     private static final Pattern HOTM = Pattern.compile("Requires Heart of the Mountain Tier (\\d+)");
+    private static final Pattern GARDEN = Pattern.compile("Requires Garden Level (\\d+)");
     private static final Pattern SLAYER = Pattern.compile("Requires (\\w+) Slayer (\\d+)");
 
     public record Requirement(Kind kind, String name, int level) {
@@ -26,7 +29,8 @@ public final class RequirementLines {
     public enum Kind {
         SKILL,
         HOTM,
-        SLAYER
+        SLAYER,
+        GARDEN
     }
 
     private RequirementLines() {
@@ -36,6 +40,8 @@ public final class RequirementLines {
         String text = markupLine.replaceAll("§.", "").replaceAll("<[^>]*>", "");
         Matcher hotm = HOTM.matcher(text);
         if (hotm.find()) return new Requirement(Kind.HOTM, "", Integer.parseInt(hotm.group(1)));
+        Matcher garden = GARDEN.matcher(text);
+        if (garden.find()) return new Requirement(Kind.GARDEN, "", Integer.parseInt(garden.group(1)));
         Matcher skill = SKILL.matcher(text);
         if (skill.find()) return new Requirement(Kind.SKILL, skill.group(1), Integer.parseInt(skill.group(2)));
         Matcher slayer = SLAYER.matcher(text);
@@ -46,6 +52,7 @@ public final class RequirementLines {
     public static boolean isMet(Requirement requirement, SkyBlockPlayer player) {
         return switch (requirement.kind()) {
             case HOTM -> HotmService.data(player).getTier() >= requirement.level();
+            case GARDEN -> GardenProgress.level(Gardens.profile(player)) >= requirement.level();
             case SLAYER -> SlayerRequirement.isMet(player, requirement.name(), requirement.level());
             case SKILL -> {
                 try {

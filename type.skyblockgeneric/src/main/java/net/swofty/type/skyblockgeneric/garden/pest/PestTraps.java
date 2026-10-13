@@ -124,19 +124,18 @@ public final class PestTraps {
     }
 
     private static void collect(SkyBlockPlayer player, GardenProfile profile, PestData.Trap trap) {
-        int count = trap.getCaught().size();
         PestData data = profile.pests();
+        int released = 0;
         for (String type : List.copyOf(trap.getCaught())) {
-            PestCatalogue.Pest pest = PestCatalogue.get().pest(type);
-            if (pest == null) continue;
-            data.addKill(type);
-            data.setStored(data.getStored() + 1);
-            PestRewards.award(player, profile, pest);
+            if (PestCatalogue.get().pest(type) == null) continue;
+            data.getAlive().add(PestData.Alive.createAt(type, trap.getPlot(), trap.getX(), trap.getZ()));
+            released++;
         }
         trap.getCaught().clear();
         if (trap.getBait() > 0 && trap.getNextAt() == 0) trap.setNextAt(System.currentTimeMillis() + CATCH_INTERVAL_MILLIS);
         Gardens.save(player, profile);
-        player.sendMessage(Text.of("<a>You collected <2>{} Pests <a>from the Trap!", count));
+        if (player.getInstance() != null) PestWorld.reconcile(player.getInstance(), data);
+        player.sendMessage(Text.of("<a>You released <2>{} Pests <a>from the Trap! <7>Vacuum them up to claim their rewards.", released));
     }
 
     private static void pickUp(SkyBlockPlayer player, GardenProfile profile, PestData.Trap trap, Kind kind) {

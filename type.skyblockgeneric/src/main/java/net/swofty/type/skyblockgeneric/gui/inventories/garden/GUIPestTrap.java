@@ -64,7 +64,7 @@ public class GUIPestTrap extends StatelessView {
         });
 
         layout.slot(PICK_UP_SLOT, (_, _) -> ItemStacks.item(Material.BARRIER, Text.of("<c>Pick Up Trap"), List.of(
-                        Text.of("<7>Collects any caught Pests, returns"),
+                        Text.of("<7>Releases any caught Pests onto the plot, returns"),
                         Text.of("<7>the bait and gives the Trap back."),
                         Text.empty(),
                         Text.of("<e>Click to pick up!"))),
@@ -113,7 +113,7 @@ public class GUIPestTrap extends StatelessView {
         return ItemStacks.head(pest.texture(), Text.of("<a>" + pest.name()), List.of(
                 Text.of("<7>Caught in this Trap."),
                 Text.empty(),
-                Text.of("<e>Click Collect to take it!")));
+                Text.of("<e>Click Release to let it out!")));
     }
 
     private net.minestom.server.item.ItemStack.Builder collect(SkyBlockPlayer player) {
@@ -123,7 +123,7 @@ public class GUIPestTrap extends StatelessView {
         List<Text> lore = new ArrayList<>();
         lore.add(Text.of("<7>Caught: <a>{}<7>/<a>{}", count, kind == null ? 0 : kind.capacity()));
         lore.add(Text.empty());
-        lore.add(count > 0 ? Text.of("<e>Click to collect {} Pests!", count) : Text.of("<c>There is nothing to collect!"));
-        return ItemStacks.item(count > 0 ? Material.LIME_DYE : Material.GRAY_DYE, Text.of("<a>Collect Pests"), lore);
+        lore.add(count > 0 ? Text.of("<e>Click to release {} Pests!", count) : Text.of("<c>There is nothing to release!"));
+        return ItemStacks.item(count > 0 ? Material.LIME_DYE : Material.GRAY_DYE, Text.of("<a>Release Pests"), lore);
     }
 }
