@@ -13,8 +13,12 @@ import java.util.Map;
 public final class GardenNpcSkins {
     private static final Path FILE = Path.of("./configuration/skyblock/garden/visitor_skins.json");
     private static Map<String, Skin> skins;
+    private static Map<String, Entity> entities;
 
     public record Skin(String texture, String signature) {
+    }
+
+    public record Entity(String type, @Nullable String profession) {
     }
 
     private GardenNpcSkins() {
@@ -33,6 +37,29 @@ public final class GardenNpcSkins {
             skins = load(FILE);
         }
         return skins.get(visitorId);
+    }
+
+    public static synchronized @Nullable Entity entity(String visitorId) {
+        if (entities == null) {
+            entities = loadEntities(FILE);
+        }
+        return entities.get(visitorId);
+    }
+
+    static Map<String, Entity> loadEntities(Path path) {
+        Map<String, Entity> loaded = new HashMap<>();
+        try {
+            JSONObject root = new JSONObject(Files.readString(path)).optJSONObject("entities");
+            if (root != null) {
+                for (String id : root.keySet()) {
+                    JSONObject entity = root.getJSONObject(id);
+                    loaded.put(id, new Entity(entity.getString("type"), entity.optString("profession", null)));
+                }
+            }
+        } catch (IOException | RuntimeException exception) {
+            Logger.warn(exception, "Could not read visitor entities from {}", path);
+        }
+        return loaded;
     }
 
     static Map<String, Skin> load(Path path) {
