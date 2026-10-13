@@ -167,7 +167,7 @@ public class GardenWorldDecor implements GardenPresence {
         });
         composter.setInstance(instance, new Pos(COMPOSTER.x(), 71, COMPOSTER.z()));
 
-        InteractionEntity logbook = new InteractionEntity(1.2f, 1.5f,
+        InteractionEntity logbook = new InteractionEntity(2.2f, 2.2f,
                 (player, _) -> ((SkyBlockPlayer) player).openView(new GUIVisitorLogbook()));
         logbook.setInstance(instance, new Pos(LOGBOOK.x(), 71, LOGBOOK.z()));
     }
