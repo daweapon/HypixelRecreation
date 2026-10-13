@@ -1,0 +1,34 @@
+title: "The Garden Update, Part 1"
+date: "12th October 2026"
+intro:
+  - "The Garden is open. It is your own farm next to your island, with a plot of land to clean, plant and harvest."
+sections:
+  - heading: "Getting There"
+    colour: "<a>"
+    lines:
+      - "At SkyBlock Level 5 a Stranger appears on your island. Talk to them and agree to help to be taken to the Garden."
+      - "Use /warp garden or /warp barn to come back later."
+      - "Each profile has its own Garden, and your changes are saved."
+  - heading: "Sam's Quests"
+    colour: "<e>"
+    lines:
+      - "Sam walks you through Helpful Farmer, Learning to Compost and Prepping the Plot."
+      - "The Composter and SkyMart steps wait for the next updates."
+  - heading: "Plots and Cleaning"
+    colour: "<2>"
+    lines:
+      - "Unlock plots at the Desk with Compost. A plot has to touch the Barn or a plot you already own."
+      - "Clean a plot by breaking the natural blocks on it. Leaves clear by themselves once it is over 70 percent clean."
+      - "Sam's Scythe clears grass, leaves and flowers in a 3x3 area."
+  - heading: "Farming"
+    colour: "<6>"
+    lines:
+      - "Paste a preset onto a clean plot from the Desk: Wheat, Carrot, Potato, Pumpkin, Sugar Cane, Melon, Cactus, Cocoa Beans, Mushroom, Nether Wart, Sunflower, Wild Rose and Moonflower."
+      - "Crops regrow after you harvest them. Farming Fortune, crop upgrades and your plots all raise your drops."
+      - "Mega Farm, Neon Farm and custom presets are not added yet."
+  - heading: "Garden Progress"
+    colour: "<b>"
+    lines:
+      - "Garden Levels 1 to 15, crop milestones for all 13 crops and crop upgrades are in the Desk."
+      - "Copper and Sowdust show on the scoreboard once you have some."
+      - "Visitors, the Composter, Pests and the Greenhouse are coming in later parts."
