@@ -94,6 +94,11 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
     }
 
     @Override
+    public boolean usesPerPlayerNpcInstances() {
+        return true;
+    }
+
+    @Override
     public List<HypixelNPC> getNPCs() {
         return new ArrayList<>(List.of(NPCSam.get()));
     }

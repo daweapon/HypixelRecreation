@@ -41,6 +41,10 @@ public interface HypixelTypeLoader {
 
     List<HypixelNPC> getNPCs();
 
+    default boolean usesPerPlayerNpcInstances() {
+        return false;
+    }
+
     List<RedisMessageHandler<?, ?>> getProxyHandlers();
 
     record LoaderValues(Function<ServerType, Pos> spawnPosition, boolean announceDeathMessages) {

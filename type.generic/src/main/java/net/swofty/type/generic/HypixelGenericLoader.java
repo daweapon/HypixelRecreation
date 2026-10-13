@@ -254,7 +254,7 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
         MinecraftServer.getBlockManager().registerHandler(BannerBlockHandler.KEY, BannerBlockHandler::new);
 
         // Register NPCs
-        if (mainInstance != null) {
+        if (mainInstance != null || loader.usesPerPlayerNpcInstances()) {
             loader.getNPCs().forEach(HypixelNPC::register);
         }
 
