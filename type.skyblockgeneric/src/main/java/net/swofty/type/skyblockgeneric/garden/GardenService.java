@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.garden;
 
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.garden.quest.GardenQuests;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
@@ -67,6 +68,7 @@ public final class GardenService {
         profile.unlockPlot(plot);
         Gardens.save(player, profile);
         syncExperience(player);
+        GardenQuests.plotUnlocked(player);
         return quote;
     }
 

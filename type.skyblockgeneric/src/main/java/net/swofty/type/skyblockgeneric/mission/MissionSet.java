@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import net.swofty.type.skyblockgeneric.mission.missions.*;
 import net.swofty.type.skyblockgeneric.mission.missions.barn.MissionCraftWheatMinion;
+import net.swofty.type.skyblockgeneric.mission.missions.garden.*;
 import net.swofty.type.skyblockgeneric.mission.missions.barn.MissionTalkToFarmHand;
 import net.swofty.type.skyblockgeneric.mission.missions.barn.MissionTalkToFarmhandAgain;
 import net.swofty.type.skyblockgeneric.mission.missions.blacksmith.MissionMineCoal;
@@ -43,6 +44,9 @@ public enum MissionSet {
     LOST_AND_FOUND(MissionFindLazyMinerPickaxe.class, MissionTalkToLazyMiner.class),
     THE_CAMPFIRE_CULT(MissionTravelToTheDarkThicket.class, MissionFindTheCampfire.class, MissionSneakUpOnRyan.class, MissionCompleteTrialOfFireOne.class, MissionTalkToRyan.class, MissionCollectDarkOakLogs.class, MissionGiveRyanDarkOakLogs.class),
     THE_REBUILD(MissionTravelToTheSavannaWoodland.class, MissionCheckOnMelody.class, MissionCollectAcaciaLogs.class, MissionGiveMelodyAcaciaLogs.class),
+    HELPFUL_FARMER(MissionTalkToSam.class, MissionBringWheatToSam.class),
+    LEARNING_TO_COMPOST(MissionTalkToSamAtComposter.class, MissionPurchaseFuel.class, MissionRefuelComposter.class, MissionTakeCompost.class),
+    PREPPING_THE_PLOT(MissionPurchasePlot.class, MissionCleanPlot.class, MissionTalkToSamPlotCleaned.class),
     MOLE_PROBLEMS(MissionTalkToMolbert.class, MissionCollectJungleLogs.class, MissionGiveMolbertJungleLogs.class, MissionLeaveTheArea.class, MissionTalkToMolbertAgain.class, MissionPlaceTraps.class, MissionTalkToMolbertAgainAgain.class,
             MissionLeaveTheAreaAgain.class, MissionTalkToMolbertAgainAgainAgain.class)
     ;

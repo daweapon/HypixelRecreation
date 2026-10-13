@@ -57,7 +57,7 @@ public class NPCEntityImpl extends EntityCreature implements NPCViewable {
             .pos(pos.add(0, getBoundingBox().height() - 0.1f, 0))
             .text(holograms)
             .player(viewer)
-            .instance(config.instance())
+            .instance(config.instance(viewer))
             .build();
 
         this.holo = holo;
@@ -65,7 +65,7 @@ public class NPCEntityImpl extends EntityCreature implements NPCViewable {
             PlayerHolograms.addExternalPlayerHologram(holo);
         }
 
-        setInstance(config.instance(), pos);
+        setInstance(config.instance(viewer), pos);
         addViewer(viewer);
         setCustomNameVisible(false);
 

@@ -35,6 +35,17 @@ public final class GardenLayout {
         return PLOT_GRID[row][column];
     }
 
+    public static int[] plotOrigin(int plot) {
+        for (int row = 0; row < PLOT_GRID.length; row++) {
+            for (int column = 0; column < PLOT_GRID[row].length; column++) {
+                if (PLOT_GRID[row][column] == plot) {
+                    return new int[]{GRID_LOW + column * PLOT_SIZE, GRID_LOW + row * PLOT_SIZE};
+                }
+            }
+        }
+        return null;
+    }
+
     public static List<PlotSign> signs() {
         List<PlotSign> signs = new ArrayList<>();
         int size = PLOT_GRID.length;

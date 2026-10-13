@@ -944,7 +944,6 @@ items:
     material: iron_hoe
     name: "Sam's Scythe"
     rarity: COMMON
-    unavailable: "Needs the Garden and Sam, which are not built"
     source: "Sam gives it after buying the first Garden plot; SkyMart repurchase for 2,000 Coins"
     lore:
       - "§7Cleans a §93x3 §7area of grass, leaves"

@@ -71,6 +71,11 @@ public interface NPCConfiguration {
         return HypixelConst.getInstanceContainer();
     }
 
+    /** The instance this player's copy of the NPC lives in; private worlds override this to return the player's own world. */
+    default Instance instance(HypixelPlayer player) {
+        return instance();
+    }
+
     default EntityPose pose(HypixelPlayer player) {
         return EntityPose.STANDING;
     }

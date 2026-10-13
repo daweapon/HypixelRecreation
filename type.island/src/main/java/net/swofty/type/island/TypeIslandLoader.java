@@ -15,6 +15,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.island.lifecycle.IslandLifecycleSteps;
+import net.swofty.type.island.npcs.NPCStranger;
 import net.swofty.type.island.tab.IslandGuestsModule;
 import net.swofty.type.island.tab.IslandMemberModule;
 import net.swofty.type.island.tab.IslandServerModule;
@@ -88,7 +89,7 @@ public class TypeIslandLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<HypixelNPC> getNPCs() {
-        return new ArrayList<>();
+        return new ArrayList<>(List.of(new NPCStranger()));
     }
 
 

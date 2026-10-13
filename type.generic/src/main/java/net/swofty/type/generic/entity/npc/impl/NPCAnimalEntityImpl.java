@@ -42,13 +42,13 @@ public class NPCAnimalEntityImpl extends EntityCreature implements NPCViewable {
             .pos(pos.add(0, getBoundingBox().height() - 0.1f, 0))
             .text(holograms)
             .player(viewer)
-            .instance(config.instance())
+            .instance(config.instance(viewer))
             .build();
 
         this.holo = holo;
 
         PlayerHolograms.addExternalPlayerHologram(holo);
-        setInstance(config.instance(), pos);
+        setInstance(config.instance(viewer), pos);
         addViewer(viewer);
         setPose(config.pose(viewer));
     }

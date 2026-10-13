@@ -32,6 +32,7 @@ import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import net.swofty.type.skyblockgeneric.region.mining.MineableBlock;
 import net.swofty.type.skyblockgeneric.region.mining.handler.SkyBlockMiningHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+import net.swofty.type.skyblockgeneric.user.garden.GardenPlotCleaner;
 
 import java.util.List;
 
@@ -61,6 +62,8 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
 
         if (HypixelConst.isGardenServer()) {
             event.setCancelled(true);
+            boolean scythe = ItemType.SAM_SCYTHE.equals(item.getAttributeHandler().getPotentialType());
+            GardenPlotCleaner.breakBlock(player, event.getInstance(), event.getBlockPosition(), event.getBlock(), scythe);
             return;
         }
 

@@ -23,6 +23,8 @@ public class GardenProfile {
     private double copper;
     private double sowdust;
     private final TreeSet<Integer> unlockedPlots = new TreeSet<>();
+    private final TreeSet<Integer> cleanedPlots = new TreeSet<>();
+    private final Map<Integer, Integer> cleanTotals = new TreeMap<>();
     private final Map<Integer, String> plotPresets = new TreeMap<>();
     private final Map<GardenCrop, Long> cropCounters = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> milestoneTiers = new EnumMap<>(GardenCrop.class);
@@ -75,6 +77,22 @@ public class GardenProfile {
         return plot >= 1 && plot <= PLOT_COUNT && unlockedPlots.add(plot);
     }
 
+    public boolean isPlotCleaned(int plot) {
+        return cleanedPlots.contains(plot);
+    }
+
+    public boolean markPlotCleaned(int plot) {
+        return cleanedPlots.add(plot);
+    }
+
+    public int cleanTotal(int plot) {
+        return cleanTotals.getOrDefault(plot, 0);
+    }
+
+    public void setCleanTotal(int plot, int total) {
+        cleanTotals.put(plot, total);
+    }
+
     public String plotPreset(int plot, String defaultPreset) {
         return plotPresets.getOrDefault(plot, defaultPreset);
     }
@@ -114,6 +132,8 @@ public class GardenProfile {
         json.put("copper", copper);
         json.put("sowdust", sowdust);
         json.put("unlockedPlots", new JSONArray(unlockedPlots));
+        json.put("cleanedPlots", new JSONArray(cleanedPlots));
+        json.put("cleanTotals", presetsLikeJson(cleanTotals));
         json.put("plotPresets", presetsJson());
         json.put("cropCounters", cropJson(cropCounters));
         json.put("milestoneTiers", cropJson(milestoneTiers));
@@ -138,6 +158,18 @@ public class GardenProfile {
                 profile.unlockedPlots.add(plots.getInt(i));
             }
         }
+        JSONArray cleaned = json.optJSONArray("cleanedPlots");
+        if (cleaned != null) {
+            for (int i = 0; i < cleaned.length(); i++) {
+                profile.cleanedPlots.add(cleaned.getInt(i));
+            }
+        }
+        JSONObject totals = json.optJSONObject("cleanTotals");
+        if (totals != null) {
+            for (String key : totals.keySet()) {
+                profile.cleanTotals.put(Integer.parseInt(key), totals.getInt(key));
+            }
+        }
         JSONObject presets = json.optJSONObject("plotPresets");
         if (presets != null) {
             for (String key : presets.keySet()) {
@@ -158,6 +190,12 @@ public class GardenProfile {
     private JSONObject presetsJson() {
         JSONObject json = new JSONObject();
         plotPresets.forEach((plot, preset) -> json.put(String.valueOf(plot), preset));
+        return json;
+    }
+
+    private static JSONObject presetsLikeJson(Map<Integer, Integer> values) {
+        JSONObject json = new JSONObject();
+        values.forEach((plot, value) -> json.put(String.valueOf(plot), value));
         return json;
     }
 

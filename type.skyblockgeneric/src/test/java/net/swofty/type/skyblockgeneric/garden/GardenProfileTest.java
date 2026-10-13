@@ -16,6 +16,8 @@ class GardenProfileTest {
         profile.addSowdust(2_500);
         profile.unlockPlot(3);
         profile.setPlotPreset(3, "Sugar Cane");
+        profile.markPlotCleaned(3);
+        profile.setCleanTotal(4, 812);
         profile.addCropCount(GardenCrop.CARROT, 5_000);
         profile.setMilestoneTier(GardenCrop.CARROT, 4);
         profile.setCropUpgradeTier(GardenCrop.WHEAT, 2);
@@ -29,6 +31,9 @@ class GardenProfileTest {
         assertEquals(2_500, copy.getSowdust());
         assertTrue(copy.isPlotUnlocked(3));
         assertEquals("Sugar Cane", copy.plotPreset(3, "Wheat"));
+        assertTrue(copy.isPlotCleaned(3));
+        assertFalse(copy.isPlotCleaned(4));
+        assertEquals(812, copy.cleanTotal(4));
         assertEquals(5_000, copy.cropCount(GardenCrop.CARROT));
         assertEquals(4, copy.milestoneTier(GardenCrop.CARROT));
         assertEquals(2, copy.cropUpgradeTier(GardenCrop.WHEAT));
