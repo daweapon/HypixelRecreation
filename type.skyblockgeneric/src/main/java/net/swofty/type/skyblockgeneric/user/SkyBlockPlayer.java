@@ -359,22 +359,24 @@ public class SkyBlockPlayer extends HypixelPlayer {
         return getAllOfTypeInInventory(type).values().stream().mapToInt(Integer::intValue).sum();
     }
 
+    public int getAmountAnywhere(ItemType type) {
+        return getAmountInInventory(type) + getSackItems().getAmount(type) + StoredItems.count(this, type);
+    }
+
     public boolean removeItemFromPlayer(ItemType type, int amount) {
         int inventoryAmount = getAmountInInventory(type);
         int sacksAmount = getSackItems().getAmount(type);
-        int leftToTakeFromSacks = amount - inventoryAmount;
+        int stored = StoredItems.count(this, type);
+        if (inventoryAmount + sacksAmount + stored < amount) return false;
 
-        if ((inventoryAmount + sacksAmount) < amount) return false;
-
-        if (inventoryAmount >= amount) {
-            takeItem(type, amount);
-        } else if (inventoryAmount >= 1) {
-            takeItem(type, inventoryAmount);
-            getSackItems().decrease(type, leftToTakeFromSacks);
-        } else {
-            getSackItems().decrease(type, amount);
-        }
-
+        int left = amount;
+        int fromInventory = Math.min(left, inventoryAmount);
+        if (fromInventory > 0) takeItem(type, fromInventory);
+        left -= fromInventory;
+        int fromSacks = Math.min(left, sacksAmount);
+        if (fromSacks > 0) getSackItems().decrease(type, fromSacks);
+        left -= fromSacks;
+        if (left > 0) StoredItems.take(this, type, left);
         return true;
     }
 

@@ -122,7 +122,7 @@ public final class ComposterService {
         if (profile.getCopper() < tier.copper()) return UpgradeResult.MISSING_COPPER;
         for (ComposterConfig.Item item : required(tier)) {
             ItemType type = ItemType.get(item.item());
-            if (type == null || player.getAmountInInventory(type) + player.getSackItems().getAmount(type) < item.amount()) {
+            if (type == null || player.getAmountAnywhere(type) < item.amount()) {
                 return UpgradeResult.MISSING_ITEMS;
             }
         }

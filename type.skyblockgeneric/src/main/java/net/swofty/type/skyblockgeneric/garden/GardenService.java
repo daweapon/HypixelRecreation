@@ -78,7 +78,7 @@ public final class GardenService {
 
     public static boolean canAffordCompost(SkyBlockPlayer player, int compost) {
         int perBundle = GardenConfig.get().compostPerBundle();
-        return player.getAmountInInventory(ItemType.COMPOST) + (long) player.getAmountInInventory(ItemType.COMPOST_BUNDLE) * perBundle >= compost;
+        return player.getAmountAnywhere(ItemType.COMPOST) + (long) player.getAmountAnywhere(ItemType.COMPOST_BUNDLE) * perBundle >= compost;
     }
 
     private static boolean payCompost(SkyBlockPlayer player, int compost) {
@@ -86,9 +86,9 @@ public final class GardenService {
             return false;
         }
         int perBundle = GardenConfig.get().compostPerBundle();
-        int bundlesUsed = Math.min(player.getAmountInInventory(ItemType.COMPOST_BUNDLE), compost / perBundle);
+        int bundlesUsed = Math.min(player.getAmountAnywhere(ItemType.COMPOST_BUNDLE), compost / perBundle);
         int remainder = compost - bundlesUsed * perBundle;
-        int loose = player.getAmountInInventory(ItemType.COMPOST);
+        int loose = player.getAmountAnywhere(ItemType.COMPOST);
         if (loose >= remainder) {
             if (bundlesUsed > 0) {
                 player.removeItemFromPlayer(ItemType.COMPOST_BUNDLE, bundlesUsed);

@@ -153,7 +153,7 @@ public final class VisitorService {
         for (VisitorOffer.Required required : present.getOffer().required()) {
             ItemType type = ItemType.get(required.item());
             if (type == null || required.remaining() == 0) continue;
-            int have = player.getAmountInInventory(type) + player.getSackItems().getAmount(type);
+            int have = player.getAmountAnywhere(type);
             int amount = Math.min(have, required.remaining());
             if (amount > 0 && player.removeItemFromPlayer(type, amount)) {
                 required.give(amount);
@@ -173,7 +173,7 @@ public final class VisitorService {
         for (VisitorOffer.Required required : offer.required()) {
             ItemType type = ItemType.get(required.item());
             if (type != null && required.remaining() > 0
-                    && player.getAmountInInventory(type) + player.getSackItems().getAmount(type) > 0) {
+                    && player.getAmountAnywhere(type) > 0) {
                 return true;
             }
         }

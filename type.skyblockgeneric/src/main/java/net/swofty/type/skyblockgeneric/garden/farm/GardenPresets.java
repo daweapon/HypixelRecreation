@@ -35,7 +35,7 @@ public final class GardenPresets {
     }
 
     public static int available(SkyBlockPlayer player, ItemType type) {
-        return player.getAmountInInventory(type) + player.getSackItems().getAmount(type);
+        return player.getAmountAnywhere(type);
     }
 
     public static @Nullable GardenPresetCost.Payment payment(SkyBlockPlayer player, GardenCrop crop) {

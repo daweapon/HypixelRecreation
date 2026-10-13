@@ -112,7 +112,7 @@ public class NPCSam extends HypixelNPC {
         if (data.isCurrentlyActive(MissionTalkToSam.class)) {
             setDialogue(player, "welcome").thenRun(() -> GardenQuests.end(player, MissionTalkToSam.class));
         } else if (data.isCurrentlyActive(MissionBringWheatToSam.class)) {
-            if (player.getAmountInInventory(ItemType.WHEAT) < WHEAT_FOR_COMPOST) {
+            if (player.getAmountAnywhere(ItemType.WHEAT) < WHEAT_FOR_COMPOST) {
                 player.sendMessage("<c>Sam needs " + WHEAT_FOR_COMPOST + " Wheat. Come back when you have it!");
                 return;
             }
@@ -133,7 +133,7 @@ public class NPCSam extends HypixelNPC {
         } else if (data.isCurrentlyActive(MissionTalkToSamPlotCleaned.class)) {
             setDialogue(player, "plot_cleaned").thenRun(() -> GardenQuests.end(player, MissionTalkToSamPlotCleaned.class));
         } else if (data.isCurrentlyActive(MissionBringBreadWheat.class)) {
-            if (player.getAmountInInventory(ItemType.WHEAT) < BREAD_WHEAT) {
+            if (player.getAmountAnywhere(ItemType.WHEAT) < BREAD_WHEAT) {
                 setDialogue(player, "bread_ask");
                 return;
             }
@@ -147,7 +147,7 @@ public class NPCSam extends HypixelNPC {
         } else if (data.isCurrentlyActive(MissionServeFirstCustomer.class)) {
             setDialogue(player, "first_customer");
         } else if (data.isCurrentlyActive(MissionGiveSamBlueprint.class)) {
-            if (player.getAmountInInventory(ItemType.GREENHOUSE_BLUEPRINT) == 0) {
+            if (player.getAmountAnywhere(ItemType.GREENHOUSE_BLUEPRINT) == 0) {
                 player.sendMessage("<c>Sam is waiting for the Greenhouse Blueprint!");
                 return;
             }
@@ -156,8 +156,8 @@ public class NPCSam extends HypixelNPC {
             Gardens.save(player, Gardens.profile(player));
             setDialogue(player, "blueprint").thenRun(() -> GardenQuests.end(player, MissionGiveSamBlueprint.class));
         } else if (data.isCurrentlyActive(MissionCollectResourcesForSam.class)) {
-            if (player.getAmountInInventory(ItemType.ENCHANTED_OAK_LOG) < GREENHOUSE_LOGS
-                    || player.getAmountInInventory(ItemType.ENCHANTED_SAND) < GREENHOUSE_SAND) {
+            if (player.getAmountAnywhere(ItemType.ENCHANTED_OAK_LOG) < GREENHOUSE_LOGS
+                    || player.getAmountAnywhere(ItemType.ENCHANTED_SAND) < GREENHOUSE_SAND) {
                 setDialogue(player, "resources_ask");
                 return;
             }

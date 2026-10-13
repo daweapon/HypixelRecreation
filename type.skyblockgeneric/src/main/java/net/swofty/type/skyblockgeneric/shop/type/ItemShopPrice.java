@@ -31,12 +31,12 @@ public class ItemShopPrice implements ShopPrice {
 
     @Override
     public boolean canAfford(SkyBlockPlayer player) {
-        return player.getAmountInInventory(type) >= amount;
+        return player.getAmountAnywhere(type) >= amount;
     }
 
     @Override
     public void processPurchase(SkyBlockPlayer player) {
-        player.takeItem(type, amount);
+        player.removeItemFromPlayer(type, amount);
     }
 
     @Override

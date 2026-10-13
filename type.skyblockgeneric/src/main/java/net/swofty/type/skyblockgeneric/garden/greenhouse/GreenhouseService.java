@@ -566,10 +566,10 @@ public final class GreenhouseService {
         }
         GreenhouseConfig.Cost cost = config.costs(upgrade).get(tier);
         if (profile.getCopper() < cost.copper()) return UpgradeResult.NOT_ENOUGH_COPPER;
-        if (cost.bundles() > 0 && player.getAmountInInventory(ItemType.COMPOST_BUNDLE) + player.getSackItems().getAmount(ItemType.COMPOST_BUNDLE) < cost.bundles()) {
+        if (cost.bundles() > 0 && player.getAmountAnywhere(ItemType.COMPOST_BUNDLE) < cost.bundles()) {
             return UpgradeResult.NOT_ENOUGH_BUNDLES;
         }
-        if (cost.vines() > 0 && player.getAmountInInventory(ItemType.ETHEREAL_VINE) + player.getSackItems().getAmount(ItemType.ETHEREAL_VINE) < cost.vines()) {
+        if (cost.vines() > 0 && player.getAmountAnywhere(ItemType.ETHEREAL_VINE) < cost.vines()) {
             return UpgradeResult.NOT_ENOUGH_VINES;
         }
         profile.spendCopper(cost.copper());
@@ -583,9 +583,7 @@ public final class GreenhouseService {
 
     private static void take(SkyBlockPlayer player, ItemType type, int amount) {
         if (amount <= 0) return;
-        int inventory = Math.min(amount, player.getAmountInInventory(type));
-        if (inventory > 0) player.removeItemFromPlayer(type, inventory);
-        if (amount > inventory) player.getSackItems().decrease(type, amount - inventory);
+        player.removeItemFromPlayer(type, amount);
     }
 
     public static int tier(GreenhouseData data, GreenhouseConfig.Upgrade upgrade) {

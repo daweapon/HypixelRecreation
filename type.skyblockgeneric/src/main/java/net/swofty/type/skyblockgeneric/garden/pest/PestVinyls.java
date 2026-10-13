@@ -85,7 +85,7 @@ public final class PestVinyls {
         options.add("");
         for (Map.Entry<String, String> entry : VINYL_BY_PEST.entrySet()) {
             ItemType type = ItemType.get(entry.getValue());
-            if (type != null && (player.getAmountInInventory(type) > 0 || player.getSackItems().getAmount(type) > 0)) {
+            if (type != null && player.getAmountAnywhere(type) > 0) {
                 options.add(entry.getKey());
             }
         }

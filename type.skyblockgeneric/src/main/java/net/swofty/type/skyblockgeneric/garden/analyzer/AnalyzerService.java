@@ -46,7 +46,7 @@ public final class AnalyzerService {
     }
 
     public static int owned(SkyBlockPlayer player, ItemType item) {
-        return player.getAmountInInventory(item) + player.getSackItems().getAmount(item);
+        return player.getAmountAnywhere(item);
     }
 
     public static boolean canAfford(SkyBlockPlayer player, long coins) {

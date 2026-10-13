@@ -65,7 +65,7 @@ public class GUIComposterUpgrades extends StatelessView {
             boolean affordable = true;
             for (ComposterConfig.Item cost : ComposterService.required(next)) {
                 ItemType type = ItemType.get(cost.item());
-                int have = type == null ? 0 : player.getAmountInInventory(type) + player.getSackItems().getAmount(type);
+                int have = type == null ? 0 : player.getAmountAnywhere(type);
                 affordable &= have >= cost.amount();
                 lore.add(Text.of(" <a>{} <8>x<a>{}", type == null ? cost.item() : new SkyBlockItem(type).getDisplayName(), StringUtility.commaify(cost.amount())));
             }
