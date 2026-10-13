@@ -662,6 +662,9 @@
    "type": "VILLAGER",
    "profession": "LIBRARIAN"
   },
+  "VARGUL": {
+   "type": "ZOMBIE"
+  },
   "PLUMBER_JOE": {
    "type": "VILLAGER",
    "profession": "TOOLSMITH"

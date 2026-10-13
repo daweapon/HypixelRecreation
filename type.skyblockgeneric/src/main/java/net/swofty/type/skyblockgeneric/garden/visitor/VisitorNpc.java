@@ -119,7 +119,11 @@ public class VisitorNpc extends HypixelNPC {
                 }
             };
         }
-        EntityType type = entity.type().equals("WITCH") ? EntityType.WITCH : EntityType.SNOW_GOLEM;
+        EntityType type = switch (entity.type()) {
+            case "WITCH" -> EntityType.WITCH;
+            case "ZOMBIE" -> EntityType.ZOMBIE;
+            default -> EntityType.SNOW_GOLEM;
+        };
         return new AnimalConfiguration() {
             @Override
             public EntityType entityType() {
