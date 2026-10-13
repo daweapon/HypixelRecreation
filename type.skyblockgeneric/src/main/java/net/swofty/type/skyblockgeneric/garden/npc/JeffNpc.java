@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 
 public class JeffNpc extends HypixelNPC {
     public static final int MIN_GARDEN_LEVEL = 4;
-    private static final Pos POSITION = new Pos(-3.5, 71, -24.5, 90, 0);
+    private static final Pos POSITION = new Pos(1.5, 72, -28.5, 14, 0);
 
     public JeffNpc() {
         super(configuration());
@@ -47,7 +47,7 @@ public class JeffNpc extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return GardenGround.onGround(player.getInstance(), POSITION);
+                return POSITION;
             }
 
             @Override

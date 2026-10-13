@@ -22,7 +22,7 @@ public class NPCSam extends HypixelNPC {
     public static final int BREAD_WHEAT = 100;
     public static final int GREENHOUSE_LOGS = 64;
     public static final int GREENHOUSE_SAND = 128;
-    private static final Pos HOUSE = new Pos(-2.5, 71, -12.5, 0, 0);
+    private static final Pos HOUSE = new Pos(-7.5, 71, -6.5, 90, 0);
     private static final Pos STAND = new Pos(4.5, 71, -9.5, 0, 0);
     private static final Pos COMPOSTER = new Pos(-9.5, 71, -26.5, 90, 0);
     private static NPCSam instance;
@@ -46,8 +46,8 @@ public class NPCSam extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return GardenGround.onGround(player.getInstance(), standsAtComposter((SkyBlockPlayer) player) ? COMPOSTER
-                        : standsAtStand((SkyBlockPlayer) player) ? STAND : HOUSE);
+                return standsAtComposter((SkyBlockPlayer) player) ? COMPOSTER
+                        : standsAtStand((SkyBlockPlayer) player) ? STAND : HOUSE;
             }
 
             @Override
