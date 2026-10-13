@@ -8,10 +8,11 @@ import net.minestom.server.entity.EntityCreature;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.Player;
 import net.minestom.server.entity.damage.Damage;
-import net.minestom.server.entity.metadata.cube.SlimeMeta;
+import net.minestom.server.entity.metadata.other.ArmorStandMeta;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.sound.SoundEvent;
 import net.swofty.commons.text.Text;
+import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.skyblockgeneric.garden.GardenLayout;
 import net.swofty.type.skyblockgeneric.garden.npc.GardenGround;
 import org.jetbrains.annotations.NotNull;
@@ -34,14 +35,17 @@ public final class PestEntity extends EntityCreature {
     private long nextWander;
 
     public PestEntity(PestCatalogue.Pest pest, String aliveId, int plot) {
-        super(pest.entity());
+        super(EntityType.ARMOR_STAND);
         this.pest = pest;
         this.aliveId = aliveId;
         this.plot = plot;
         this.flies = pest.entity() == EntityType.BEE;
         this.health = PestCatalogue.get().health();
         setNoGravity(flies);
-        if (getEntityMeta() instanceof SlimeMeta slime) slime.setSize(1);
+        setInvisible(true);
+        ((ArmorStandMeta) getEntityMeta()).setSmall(true);
+        ((ArmorStandMeta) getEntityMeta()).setHasNoBasePlate(true);
+        setHelmet(ItemStacks.head(pest.texture(), "").build());
         setCustomNameVisible(true);
         refreshName();
     }

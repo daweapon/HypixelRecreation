@@ -26,7 +26,7 @@ public final class PestCatalogue {
 
     public record Pest(String id, String name, @Nullable GardenCrop crop, int level, @Nullable String spray,
                        EntityType entity, @Nullable String item, @Nullable String altItem, int base, double perFortune,
-                       boolean flees, @Nullable String vinyl, List<MobDrop> rare) {
+                       boolean flees, @Nullable String vinyl, List<MobDrop> rare, String texture) {
         public boolean isTrapOnly() {
             return spray == null;
         }
@@ -50,13 +50,13 @@ public final class PestCatalogue {
             pests.put(entry.getString("id"), new Pest(entry.getString("id"), entry.getString("name"),
                     GardenCrop.valueOf(entry.getString("crop")), entry.getInt("level"), entry.getString("spray"),
                     entity(entry.getString("entity")), entry.getString("item"), entry.optString("altItem", null),
-                    entry.getInt("base"), entry.getDouble("perFortune"), entry.optBoolean("flees", true), PestVinyls.vinylOf(entry.getString("id")), rare));
+                    entry.getInt("base"), entry.getDouble("perFortune"), entry.optBoolean("flees", true), PestVinyls.vinylOf(entry.getString("id")), rare, entry.getString("texture")));
         }
         JSONObject traps = json.getJSONObject("traps");
         for (String id : traps.keySet()) {
             JSONObject entry = traps.getJSONObject(id);
             pests.put(id, new Pest(id, entry.getString("name"), null, 5, null, entity(entry.getString("entity")),
-                    null, null, 0, 1, true, null, rare(entry)));
+                    null, null, 0, 1, true, null, rare(entry), entry.getString("texture")));
         }
     }
 
