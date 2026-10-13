@@ -41,7 +41,7 @@ public class GardenInfoModule extends TablistModule {
         entries.add(new TablistEntry(Text.of("<b><l>Visitors: <f>({})", visitors.visible().size()), TablistSkinRegistry.GRAY));
         for (VisitorData.Present present : visitors.visible()) {
             VisitorCatalogue.Visitor visitor = VisitorCatalogue.get().visitor(present.getId());
-            entries.add(new TablistEntry(Text.of(" {}", visitor == null ? present.getId() : visitor.coloured()), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" " + (visitor == null ? present.getId() : visitor.coloured())), TablistSkinRegistry.GRAY));
         }
         long wait = Math.max(0, visitors.getNextVisitorAt() - System.currentTimeMillis());
         entries.add(new TablistEntry(Text.of(" <7>Next Visitor: <f>{}", wait == 0 ? "Soon" : (wait / 60_000 + 1) + "m"), TablistSkinRegistry.GRAY));

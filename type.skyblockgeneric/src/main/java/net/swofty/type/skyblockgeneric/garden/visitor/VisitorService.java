@@ -115,7 +115,7 @@ public final class VisitorService {
         data.recordVisit(visitor.id());
         if (visitor.id().equals("CARPENTER")) profile.greenhouse().setBlueprintOffered(true);
         if (player != null && !hidden) {
-            player.sendMessage(Text.of("{} <f>has arrived on your Garden!", visitor.coloured()));
+            player.sendMessage(Text.of(visitor.coloured() + " <f>has arrived on your Garden!"));
         }
         return true;
     }
@@ -189,9 +189,9 @@ public final class VisitorService {
         Gardens.save(player, profile);
         if (visitor != null) {
             if (!visitor.declineLines().isEmpty()) {
-                player.sendMessage(Text.of("<e>[NPC] {}<f>: {}", visitor.coloured(), VisitorText.fill(visitor.declineLines().getFirst(), player)));
+                player.sendMessage(Text.of("<e>[NPC] " + visitor.coloured() + "<f>: {}", VisitorText.fill(visitor.declineLines().getFirst(), player)));
             }
-            player.sendMessage(Text.of("{} <f>has left your Garden.", visitor.coloured()));
+            player.sendMessage(Text.of(visitor.coloured() + " <f>has left your Garden."));
         }
     }
 
@@ -316,7 +316,7 @@ public final class VisitorService {
         String name = visitor == null ? "Visitor" : visitor.coloured();
         String rarity = visitor == null ? "" : " <8>(" + visitor.rarity().getColour() + visitor.rarity().getLabel() + "<8>)";
         player.sendMessage(Text.of("<b><m>                                                    "));
-        player.sendMessage(Text.of("<a><l>OFFER ACCEPTED <f>with {}{}", name, rarity));
+        player.sendMessage(Text.of("<a><l>OFFER ACCEPTED <f>with " + name + rarity));
         player.sendMessage(Text.of("<a><l>REWARDS"));
         player.sendMessage(Text.of(" <8>+<3>{} Farming XP", StringUtility.commaify(farmingXp)));
         player.sendMessage(Text.of(" <8>+<a>{} Garden Experience", offer.gardenXp()));
@@ -325,7 +325,7 @@ public final class VisitorService {
         extra.forEach(line -> player.sendMessage(Text.of(" <8>+{}", line)));
         player.sendMessage(Text.of("<b><m>                                                    "));
         if (visitor != null && !visitor.acceptLines().isEmpty()) {
-            player.sendMessage(Text.of("<e>[NPC] {}<f>: {}", name, VisitorText.fill(visitor.acceptLines().getFirst(), player)));
+            player.sendMessage(Text.of("<e>[NPC] " + name + "<f>: {}", VisitorText.fill(visitor.acceptLines().getFirst(), player)));
         }
     }
 

@@ -153,6 +153,16 @@ public class GUISkyBlockMenu extends StatelessView {
             }, (click, c) -> c.push(new net.swofty.type.skyblockgeneric.gui.inventories.hotm.GUIHotm()));
         }
 
+        else if (net.swofty.type.generic.HypixelConst.isGardenServer()) {
+            layout.slot(10, (s, c) -> {
+                SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+                var profile = net.swofty.type.skyblockgeneric.garden.Gardens.profile(player);
+                int level = net.swofty.type.skyblockgeneric.garden.GardenProgress.level(profile);
+                return ItemStacks.item(Material.SUNFLOWER, "<a>Garden Level " + StringUtility.getAsRomanNumeral(level)
+                        + "\n<7>Earn Garden experience by accepting\n<7>visitors' offers and unlocking new\n<7>milestones!\n\n<e>Click to view!");
+            }, (click, c) -> c.push(new net.swofty.type.skyblockgeneric.gui.inventories.garden.GUIGardenLevels()));
+        }
+
         layout.slot(19, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             double average = java.util.Arrays.stream(SkillCategories.values())
