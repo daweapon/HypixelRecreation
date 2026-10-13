@@ -56,10 +56,12 @@ public final class GreenhouseData {
 
     private final Map<Integer, Bed> beds = new TreeMap<>();
     private final Map<String, Double> tanks = new TreeMap<>();
+    private final java.util.Set<String> analyzed = new java.util.TreeSet<>();
     private boolean blueprintOffered;
     private boolean blueprintGiven;
     private boolean blueprintDelivered;
     private boolean resourcesDelivered;
+    private int dnaClaimed;
     private int growthSpeedTier;
     private int plantYieldTier;
     private int plotLimitTier;
@@ -84,8 +86,8 @@ public final class GreenhouseData {
         });
         return new JSONObject().put("beds", bedJson).put("blueprintOffered", blueprintOffered).put("blueprintGiven", blueprintGiven)
                 .put("blueprintDelivered", blueprintDelivered).put("resourcesDelivered", resourcesDelivered)
-                .put("growthSpeedTier", growthSpeedTier).put("plantYieldTier", plantYieldTier).put("plotLimitTier", plotLimitTier)
-                .put("tanks", new JSONObject(tanks)).put("nextStageAt", nextStageAt).put("lastStageAt", lastStageAt).put("stageCount", stageCount);
+                .put("dnaClaimed", dnaClaimed).put("growthSpeedTier", growthSpeedTier).put("plantYieldTier", plantYieldTier).put("plotLimitTier", plotLimitTier)
+                .put("tanks", new JSONObject(tanks)).put("analyzed", new JSONArray(analyzed)).put("nextStageAt", nextStageAt).put("lastStageAt", lastStageAt).put("stageCount", stageCount);
     }
 
     public static GreenhouseData fromJson(JSONObject json) {
@@ -116,10 +118,13 @@ public final class GreenhouseData {
         }
         JSONObject tanks = json.optJSONObject("tanks");
         if (tanks != null) for (String key : tanks.keySet()) data.tanks.put(key, tanks.getDouble(key));
+        JSONArray analyzed = json.optJSONArray("analyzed");
+        if (analyzed != null) for (int i = 0; i < analyzed.length(); i++) data.analyzed.add(analyzed.getString(i));
         data.blueprintOffered = json.optBoolean("blueprintOffered", false);
         data.blueprintGiven = json.optBoolean("blueprintGiven", false);
         data.blueprintDelivered = json.optBoolean("blueprintDelivered", false);
         data.resourcesDelivered = json.optBoolean("resourcesDelivered", false);
+        data.dnaClaimed = json.optInt("dnaClaimed", 0);
         data.growthSpeedTier = json.optInt("growthSpeedTier", 0);
         data.plantYieldTier = json.optInt("plantYieldTier", 0);
         data.plotLimitTier = json.optInt("plotLimitTier", 0);

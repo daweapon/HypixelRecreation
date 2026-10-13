@@ -77,7 +77,9 @@ public final class GreenhouseConfig {
     public static synchronized GreenhouseConfig get() {
         if (instance == null) {
             try {
-                instance = new GreenhouseConfig(new JSONObject(Files.readString(FILE)));
+                GreenhouseConfig created = new GreenhouseConfig(new JSONObject(Files.readString(FILE)));
+                instance = created;
+                MutationCatalogue.get().registerInto(created);
             } catch (IOException e) {
                 throw new UncheckedIOException(e);
             }

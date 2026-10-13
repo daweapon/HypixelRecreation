@@ -18,6 +18,8 @@ import net.swofty.type.skyblockgeneric.garden.GardenLayout;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.tool.FarmingTools;
+import net.swofty.type.skyblockgeneric.garden.chip.ChipService;
+import net.swofty.type.skyblockgeneric.garden.chip.GardenChip;
 import net.swofty.type.skyblockgeneric.garden.pest.PestService;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -64,7 +66,13 @@ public final class GardenFarm {
             FarmingTools.addXp(player, harvest.crop().crop(), drop.getAmount());
             give(player, drop, position);
         }
+        profile.addSowdust(sowdust(fortune(player, profile, harvest.crop().crop()), harvest.crop().crop()));
         return true;
+    }
+
+    public static double sowdust(double fortune, GardenCrop crop) {
+        double multiplier = crop == GardenCrop.SUGAR_CANE || crop == GardenCrop.CACTUS ? 2 : 1;
+        return Math.max(1, Math.ceil(fortune / 100.0)) * multiplier;
     }
 
     private static Harvest plan(Instance instance, Point position, Block block) {
@@ -139,7 +147,9 @@ public final class GardenFarm {
                 + statistics.getOverall(specificFortune(crop))
                 + profile.cropUpgradeTier(crop) * FORTUNE_PER_UPGRADE_TIER
                 + profile.getUnlockedPlots().size() * FORTUNE_PER_PLOT
-                + PestService.fortuneBoost(profile, System.currentTimeMillis());
+                + PestService.fortuneBoost(profile, System.currentTimeMillis())
+                + ChipService.bonus(profile.chips(), GardenChip.CROPSHOT)
+                + profile.greenhouse().getDnaClaimed() * 5;
         return total * (1 - PestService.fortuneLoss(player, profile) / 100.0);
     }
 

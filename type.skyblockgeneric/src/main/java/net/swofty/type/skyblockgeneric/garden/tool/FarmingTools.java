@@ -110,7 +110,8 @@ public final class FarmingTools {
         if (tool == null || !tool.works(crop)) return;
 
         long before = held.getAttributeHandler().getFarmingToolXp();
-        long gained = Math.max(1, Math.round(collectionGained * xpPerCollection(crop)));
+        double chipBoost = 1 + net.swofty.type.skyblockgeneric.garden.chip.ChipService.bonus(player, net.swofty.type.skyblockgeneric.garden.chip.GardenChip.MECHAMIND) / 100.0;
+        long gained = Math.max(1, Math.round(collectionGained * xpPerCollection(crop) * chipBoost));
         int levelBefore = level(before, tool.mk());
         player.updateItemInSlot(slot, item -> {
             long xp = item.getAttributeHandler().getFarmingToolXp() + gained;

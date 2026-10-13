@@ -31,7 +31,7 @@
     {"id": "BEETLE", "name": "Beetle", "crop": "NETHER_WART", "level": 10, "spray": "DUNG", "entity": "SILVERFISH", "item": "ENCHANTED_NETHER_WART", "base": 3, "perFortune": 18,
      "rare": [["MUTANT_NETHER_WART", 0.75]], "books": [["PESTERMINATOR", 1, 7]]},
     {"id": "DRAGONFLY", "name": "Dragonfly", "crop": "SUNFLOWER", "level": 11, "spray": "JELLY", "entity": "BEE", "item": "ENCHANTED_SUNFLOWER", "base": 2, "perFortune": 26.25,
-     "rare": [["VERMIN_VAPORIZER_CHIP", 2], ["COMPACTED_SUNFLOWER", 0.75]]},
+     "rare": [["VERMIN_VAPORIZER_GARDEN_CHIP", 2], ["COMPACTED_SUNFLOWER", 0.75]]},
     {"id": "FIREFLY", "name": "Firefly", "crop": "MOONFLOWER", "level": 11, "spray": "JELLY", "entity": "BEE", "item": "ENCHANTED_MOONFLOWER", "base": 2, "perFortune": 26.25,
      "rare": [["FIRE_IN_A_BOTTLE", 2], ["COMPACTED_MOONFLOWER", 0.75]]},
     {"id": "PRAYING_MANTIS", "name": "Praying Mantis", "crop": "WILD_ROSE", "level": 12, "spray": "JELLY", "entity": "ENDERMITE", "item": "ENCHANTED_WILD_ROSE", "base": 2, "perFortune": 26.25,

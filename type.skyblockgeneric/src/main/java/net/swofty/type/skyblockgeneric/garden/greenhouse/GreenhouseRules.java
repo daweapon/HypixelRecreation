@@ -1,5 +1,7 @@
 package net.swofty.type.skyblockgeneric.garden.greenhouse;
 
+import net.swofty.type.skyblockgeneric.garden.GardenCrop;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -87,6 +89,23 @@ public final class GreenhouseRules {
     public static double waterLossFactor(List<GreenhouseEffect> effects) {
         return Math.max(0, 1 - sum(effects, GreenhouseEffect.WATER_RETAIN, GreenhouseEffect.IMPROVED_WATER_RETAIN)
                 + sum(effects, GreenhouseEffect.WATER_DRAIN));
+    }
+
+    public static double greenhouseSowdustMultiplier(GardenCrop crop) {
+        return switch (crop) {
+            case WHEAT -> 1;
+            case CARROT -> 3.5;
+            case POTATO, NETHER_WART -> 3;
+            case PUMPKIN -> 0.85;
+            case SUGAR_CANE, COCOA_BEANS, MOONFLOWER, SUNFLOWER, WILD_ROSE -> 2;
+            case MELON -> 4;
+            case CACTUS -> 1.5;
+            case MUSHROOM -> 0.95;
+        };
+    }
+
+    public static double sowdust(GardenCrop crop, double baseAmount, double fortune) {
+        return Math.round(baseAmount / (5 * greenhouseSowdustMultiplier(crop))) * 5 * (1 + Math.max(0, fortune) / 100.0);
     }
 
     public static int harvestAmount(PlantType type, double fortune, double multiplier) {

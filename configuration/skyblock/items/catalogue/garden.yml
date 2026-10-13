@@ -776,7 +776,6 @@ items:
     material: player_head
     name: "All-in Aloe"
     rarity: LEGENDARY
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7This bold plant grows bigger the"
@@ -795,7 +794,6 @@ items:
     material: player_head
     name: "Ashwreath"
     rarity: COMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7It rises from ashen ground, gray"
@@ -812,7 +810,6 @@ items:
     material: player_head
     name: "Blastberry"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7Only harvest at your own risk."
@@ -828,7 +825,6 @@ items:
     material: player_head
     name: "Cheesebite"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A smell so aromatic that even"
@@ -845,7 +841,6 @@ items:
     material: player_head
     name: "Chloronite"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A plant that hardens into a shining"
@@ -863,7 +858,6 @@ items:
     material: player_head
     name: "Chocoberry"
     rarity: UNCOMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7It looks incredibly tasty, taking a"
@@ -881,7 +875,6 @@ items:
     material: player_head
     name: "Choconut"
     rarity: COMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7Its shell is tough, but inside, it's"
@@ -898,7 +891,6 @@ items:
     material: player_head
     name: "Chorus Fruit"
     rarity: EPIC
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7This tricky plant has a mind of its"
@@ -916,7 +908,6 @@ items:
     material: player_head
     name: "Cindershade"
     rarity: UNCOMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A hazy flower that glows like dying"
@@ -934,7 +925,6 @@ items:
     material: player_head
     name: "Coalroot"
     rarity: UNCOMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§8Machine Fuel"
@@ -956,7 +946,6 @@ items:
     material: player_head
     name: "Creambloom"
     rarity: UNCOMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A flower so soft and creamy, it could"
@@ -974,7 +963,6 @@ items:
     material: paper
     name: "Cropshot Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "Bought from SkyMart for 500 Copper"
     lore:
       - "§6Ability: Cropshot "
@@ -986,6 +974,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -994,7 +984,6 @@ items:
     material: player_head
     name: "Devourer"
     rarity: LEGENDARY
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A relentless plant that spreads its"
@@ -1012,7 +1001,6 @@ items:
     material: player_head
     name: "Do-not-eat-shroom"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7It's clearly labeled, but who can"
@@ -1031,7 +1019,6 @@ items:
     material: player_head
     name: "Duskbloom"
     rarity: UNCOMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7It turns to neither day nor night,"
@@ -1048,7 +1035,6 @@ items:
     material: player_head
     name: "Dustgrain"
     rarity: COMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7Fragile and dry, it crumbles with the"
@@ -1065,7 +1051,6 @@ items:
     material: paper
     name: "Evergreen Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "3% drop from a Greenhouse Harvest Bounty"
     lore:
       - "§6Ability: Evergreen "
@@ -1078,6 +1063,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -1086,7 +1073,6 @@ items:
     material: player_head
     name: "Fleshtrap"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A twisted version of the Venus"
@@ -1106,7 +1092,6 @@ items:
     material: player_head
     name: "Glasscorn"
     rarity: LEGENDARY
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7This delicate, crystal-like corn"
@@ -1125,7 +1110,6 @@ items:
     material: player_head
     name: "Gloomgourd"
     rarity: COMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7Heavy and strange, it seems to"
@@ -1142,7 +1126,6 @@ items:
     material: player_head
     name: "Godseed"
     rarity: LEGENDARY
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A seed so powerful, it feels like it"
@@ -1160,7 +1143,6 @@ items:
     material: paper
     name: "Hypercharge Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "2% drop from Visitor offers"
     lore:
       - "§6Ability: Hypercharge "
@@ -1172,6 +1154,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -1180,7 +1164,6 @@ items:
     material: player_head
     name: "Jerryflower"
     rarity: LEGENDARY
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7Jerryflower never sleeps,"
@@ -1200,7 +1183,6 @@ items:
     material: player_head
     name: "Lonelily"
     rarity: COMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A delicate flower that only blooms"
@@ -1218,7 +1200,6 @@ items:
     material: player_head
     name: "Magic Jellybean"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A strange bean that starts growing"
@@ -1236,7 +1217,6 @@ items:
     material: paper
     name: "Mechamind Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "Bought from Anita's shop for 1 Gold Medal"
     lore:
       - "§6Ability: Mechamind "
@@ -1248,6 +1228,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -1256,7 +1238,6 @@ items:
     material: player_head
     name: "Noctilume"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A delicate flower that needs just"
@@ -1275,7 +1256,6 @@ items:
     material: paper
     name: "Overdrive Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "Bought from Anita's shop for 2 Gold Medals"
     lore:
       - "§6Ability: Overdrive "
@@ -1288,6 +1268,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -1296,7 +1278,6 @@ items:
     material: player_head
     name: "Phantomleaf"
     rarity: LEGENDARY
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7It hides in plain sight, blending in with"
@@ -1316,7 +1297,6 @@ items:
     material: player_head
     name: "PlantBoy Advance"
     rarity: EPIC
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7This plant loves a good challenge."
@@ -1336,7 +1316,6 @@ items:
     material: player_head
     name: "Puffercloud"
     rarity: EPIC
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7Puffercloud looks harmless, but step"
@@ -1354,7 +1333,6 @@ items:
     material: paper
     name: "Quickdraw Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "2% drop from Visitor offers"
     lore:
       - "§6Ability: Quickdraw "
@@ -1367,6 +1345,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -1375,7 +1355,6 @@ items:
     material: paper
     name: "Rarefinder Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "0.0005% chance when farming crops in the Garden"
     lore:
       - "§6Ability: Rarefinder "
@@ -1387,6 +1366,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -1395,7 +1376,6 @@ items:
     material: player_head
     name: "Scourroot"
     rarity: COMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7Bitter to the core, as if cursed by"
@@ -1412,7 +1392,6 @@ items:
     material: player_head
     name: "Shadevine"
     rarity: COMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7Tough and tangled, it grows where"
@@ -1429,7 +1408,6 @@ items:
     material: player_head
     name: "Shellfruit"
     rarity: EPIC
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7When the shell cracks open, sweet,"
@@ -1447,7 +1425,6 @@ items:
     material: player_head
     name: "Snoozling"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7This sluggish plant takes its sweet"
@@ -1467,7 +1444,6 @@ items:
     material: player_head
     name: "Soggybud"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A plant that drinks it all in, then"
@@ -1484,7 +1460,6 @@ items:
     material: paper
     name: "Sowledge Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "Bought from SkyMart for 200 Copper"
     lore:
       - "§6Ability: Sowledge "
@@ -1496,6 +1471,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -1504,7 +1481,6 @@ items:
     material: player_head
     name: "Startlevine"
     rarity: EPIC
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7This skittish plant bolts the moment"
@@ -1523,7 +1499,6 @@ items:
     material: player_head
     name: "Stoplight Petal"
     rarity: EPIC
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7This flower switches between green"
@@ -1543,7 +1518,6 @@ items:
     material: paper
     name: "Synthesis Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "3% drop from a Greenhouse Harvest Bounty"
     lore:
       - "§6Ability: Synthesis "
@@ -1556,6 +1530,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -1564,7 +1540,6 @@ items:
     material: player_head
     name: "Thornshade"
     rarity: UNCOMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A rose with thick vines and thorns"
@@ -1581,7 +1556,6 @@ items:
     material: player_head
     name: "Thunderling"
     rarity: EPIC
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7This plant hums with electricity"
@@ -1601,7 +1575,6 @@ items:
     material: player_head
     name: "Timestalk"
     rarity: LEGENDARY
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7The timestalk is a mysterious plant"
@@ -1619,7 +1592,6 @@ items:
     material: player_head
     name: "Turtlellini"
     rarity: RARE
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7Outside, it's smooth, but there's more"
@@ -1636,7 +1608,6 @@ items:
     material: player_head
     name: "Cropshot Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "Garden Tutorial reward"
     lore:
       - "§6Ability: Cropshot "
@@ -1648,6 +1619,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: SKULL_HEAD
         texture: e85b6f92f03867f835d3179a42557b4c4bdd3545c9a8e9285bdd32dab464d08f
       - id: EXTRA_RARITY
@@ -1658,7 +1631,6 @@ items:
     material: player_head
     name: "Veilshroom"
     rarity: COMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7It hides from the light, shrouded in"
@@ -1675,7 +1647,6 @@ items:
     material: paper
     name: "Vermin Vaporizer Chip"
     rarity: RARE
-    unavailable: "Garden Chips need the Garden, which is not built"
     source: "2% drop from Dragonfly pests"
     lore:
       - "§6Ability: Vermin Vaporizer "
@@ -1687,6 +1658,8 @@ items:
       - "§eRight-Click to redeem!"
       - "§eShift Right-Click to redeem all!"
     components:
+      - id: INTERACTABLE
+        handler_id: GARDEN_CHIP
       - id: EXTRA_RARITY
         display: "GARDEN CHIP"
       - id: ITEM_MODEL
@@ -1695,7 +1668,6 @@ items:
     material: player_head
     name: "Witherbloom"
     rarity: COMMON
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7A plant that only thrives in the"
@@ -1714,7 +1686,6 @@ items:
     material: player_head
     name: "Zombud"
     rarity: EPIC
-    unavailable: "Grown in the Greenhouse and analysed with the Crop Analyzer; the Greenhouse is not built"
     source: "Grown in the Garden Greenhouse by meeting its mutation conditions, then analysed through Visitor Beth"
     lore:
       - "§7No one really understands how it"

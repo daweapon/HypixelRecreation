@@ -40,6 +40,16 @@ public final class GreenhouseLayout {
         return new Pos(origin[0] + CARPENTER_X + 0.5, FLOOR_Y, origin[1] + CARPENTER_Z + 0.5, CARPENTER_YAW, 0);
     }
 
+    public static Pos jake(int plot) {
+        int[] origin = GardenLayout.plotOrigin(plot);
+        return new Pos(origin[0] + CARPENTER_X + 3.5, FLOOR_Y, origin[1] + CARPENTER_Z + 0.5, -20, 0);
+    }
+
+    public static Pos analyzer(int plot) {
+        int[] origin = GardenLayout.plotOrigin(plot);
+        return new Pos(origin[0] + CARPENTER_X - 3 + 0.5, FLOOR_Y, origin[1] + CARPENTER_Z + 0.5, 0, 0);
+    }
+
     public static @Nullable Spot spotAt(Point point, int plot) {
         int[] origin = GardenLayout.plotOrigin(plot);
         if (origin == null) return null;

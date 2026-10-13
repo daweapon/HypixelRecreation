@@ -19,7 +19,18 @@ sections:
     lines:
       - "Right-click a locked slot next to an unlocked one with an Ethereal Vine to unlock it."
       - "The Carpenter in your Greenhouse sells nothing, but his menu leads to Greenhouse Upgrades: Growth Speed, Plant Yield and Plot Limit, which lets you build more Greenhouses."
-  - heading: "Coming next"
-    colour: "<e>"
+  - heading: "Mutations"
+    colour: "<d>"
     lines:
-      - "Mutations, the Crop Analyzer and DNA Sequencing, Garden Chips and Sowdust."
+      - "Crops planted next to each other can spread into mutations on every growth stage. 40 mutations, each with its own recipe, growth time and rewards, and harvesting them has a chance to drop an Ethereal Vine."
+      - "The Carpenter's All Mutations menu lists them all. Recipes stay hidden until you analyze the mutation."
+  - heading: "Crop Analyzer and DNA"
+    colour: "<b>"
+    lines:
+      - "Jake's Crop Analyzer stands next to the Carpenter in your Greenhouse. Hold a mutation and analyze it for Copper. The first time you analyze one you solve a DNA Sequencing puzzle and earn a bonus."
+      - "Mass Analyze handles mutations you have already done. DNA Analysis Milestones reward unique mutations analyzed."
+  - heading: "Garden Chips and Sowdust"
+    colour: "<2>"
+    lines:
+      - "Harvesting crops now earns Sowdust. Redeem Garden Chips to unlock them, raise their rarity with more copies, and spend Sowdust to level them in /chips."
+      - "Cropshot, Evergreen, Synthesis, Mechamind, Hypercharge, Quickdraw and Vermin Vaporizer are active. Sowledge, Overdrive and Rarefinder wait for their systems."

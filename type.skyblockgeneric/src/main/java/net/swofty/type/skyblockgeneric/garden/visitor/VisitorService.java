@@ -124,7 +124,8 @@ public final class VisitorService {
         GardenProfile profile = Gardens.profile(player);
         VisitorData data = profile.visitors();
         if (data.getNextVisitorAt() == 0) return;
-        data.setNextVisitorAt(data.getNextVisitorAt() - (long) (seconds * 1000));
+        double boost = 1 + net.swofty.type.skyblockgeneric.garden.chip.ChipService.bonus(profile.chips(), net.swofty.type.skyblockgeneric.garden.chip.GardenChip.QUICKDRAW) / 100.0;
+        data.setNextVisitorAt(data.getNextVisitorAt() - (long) (seconds * boost * 1000));
         Gardens.save(player, profile);
     }
 

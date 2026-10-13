@@ -30,7 +30,8 @@ public final class PestService {
 
     public static int bonusChance(SkyBlockPlayer player, GardenProfile profile) {
         double stat = player.getStatistics().allStatistics().getOverall(ItemStatistic.BONUS_PEST_CHANCE);
-        return (int) Math.floor(stat) + profile.pests().getPermanentBonusChance();
+        return (int) Math.floor(stat) + profile.pests().getPermanentBonusChance()
+                + (int) Math.floor(net.swofty.type.skyblockgeneric.garden.chip.ChipService.bonus(profile.chips(), net.swofty.type.skyblockgeneric.garden.chip.GardenChip.VERMIN_VAPORIZER));
     }
 
     public static int fortuneLoss(SkyBlockPlayer player, GardenProfile profile) {

@@ -41,6 +41,10 @@ public final class GreenhouseService {
         UPGRADED, MAX_TIER, NOT_ENOUGH_COPPER, NOT_ENOUGH_BUNDLES, NOT_ENOUGH_VINES, SLOTS_LOCKED
     }
 
+    static {
+        STAGE_LISTENERS.add(MutationSpread::onStage);
+    }
+
     private GreenhouseService() {
     }
 
@@ -141,6 +145,10 @@ public final class GreenhouseService {
             player.sendMessage(Text.of("<c>This block is already occupied!"));
             return true;
         }
+        if (type.mutation() && !profile.greenhouse().getAnalyzed().contains(type.id())) {
+            player.sendMessage(Text.of("<c>You haven't analyzed this Mutation! Analyze it at the Crop Analyzer first."));
+            return true;
+        }
         player.removeItemFromPlayer(heldType, 1);
         GreenhouseData.Plant plant = new GreenhouseData.Plant(type.id(), System.currentTimeMillis());
         bed.getPlants().put(spot.slot(), plant);
@@ -153,10 +161,8 @@ public final class GreenhouseService {
         GreenhouseConfig config = GreenhouseConfig.get();
         GardenCrop crop = GardenCrop.ofItem(item);
         if (crop != null) return config.plantOf(crop);
-        for (PlantType type : config.plants()) {
-            if (type.mutation() && item != null && type.id().equals(item.name())) return type;
-        }
-        return null;
+        MutationCatalogue.Mutation mutation = MutationCatalogue.get().ofItem(item);
+        return mutation == null ? null : config.plant(mutation.id());
     }
 
     public static void destroyUngrown(SkyBlockPlayer player, GreenhouseLayout.Spot spot) {
@@ -183,20 +189,56 @@ public final class GreenhouseService {
             double fortune = GardenFarm.fortune(player, profile, type.crop());
             double multiplier = GreenhouseRules.yieldMultiplier(effects, config.plantYieldPercent(data.getPlantYieldTier()), unique);
             int amount = GreenhouseRules.harvestAmount(type, fortune, multiplier);
+            amount = (int) Math.round(amount * (1 + net.swofty.type.skyblockgeneric.garden.chip.ChipService.bonus(profile.chips(), net.swofty.type.skyblockgeneric.garden.chip.GardenChip.EVERGREEN) / 100.0));
             ItemType item = type.crop() == GardenCrop.MUSHROOM ? ItemType.RED_MUSHROOM : itemOf(type.crop());
             if (item != null && amount > 0) {
                 PestRewards.give(player, new SkyBlockItem(item, amount));
                 player.sendMessage(Text.of("<7>You harvested <a>{}x {}<7>!", StringUtility.commaify(amount), new SkyBlockItem(item).getDisplayNameText()));
             }
+            profile.addSowdust(GreenhouseRules.sowdust(type.crop(), type.baseYield(), fortune));
             double xp = config.baseXp() * GreenhouseRules.xpMultiplier(effects);
             player.getSkills().increase(player, SkillCategories.FARMING, xp);
             GardenService.recordCrops(player, type.crop(), Math.max(1, amount));
         }
+        if (type.mutation()) harvestMutation(player, profile, type, effects, unique);
         rollBounty(player, effects);
         for (HarvestListener listener : HARVEST_LISTENERS) listener.onHarvest(player, profile, spot.plot(), spot.slot(), type, effects);
         Gardens.save(player, profile);
         render(player, spot.plot());
         return true;
+    }
+
+    private static void harvestMutation(SkyBlockPlayer player, GardenProfile profile, PlantType type, List<GreenhouseEffect> effects, double unique) {
+        GreenhouseConfig config = GreenhouseConfig.get();
+        GreenhouseData data = profile.greenhouse();
+        if (type.id().equals(GreenhouseConfig.DEAD_PLANT)) {
+            ItemType dead = ItemType.get("DEAD_PLANT");
+            if (dead != null) PestRewards.give(player, new SkyBlockItem(dead, 1));
+            return;
+        }
+        MutationCatalogue.Mutation mutation = MutationCatalogue.get().mutation(type.id());
+        if (mutation == null) return;
+        ItemType item = mutation.item();
+        if (item != null) {
+            PestRewards.give(player, new SkyBlockItem(item, 1));
+            player.sendMessage(Text.of("<7>You harvested a {}<7>!", new SkyBlockItem(item).getDisplayNameText()));
+        }
+        double fortune = player.getStatistics().allStatistics().getOverall(net.swofty.commons.skyblock.statistics.ItemStatistic.FARMING_FORTUNE);
+        double multiplier = GreenhouseRules.yieldMultiplier(effects, config.plantYieldPercent(data.getPlantYieldTier()), unique);
+        for (MutationCatalogue.Drop drop : mutation.drops()) {
+            ItemType dropItem = ItemType.get(drop.item());
+            if (dropItem == null) continue;
+            int amount = (int) Math.round(drop.amount() * (1 + Math.max(0, fortune) / 100.0) * Math.max(0, multiplier));
+            if (amount > 0) PestRewards.give(player, new SkyBlockItem(dropItem, amount));
+            GardenCrop dropCrop = GardenCrop.ofItem(dropItem);
+            if (dropCrop != null) profile.addSowdust(GreenhouseRules.sowdust(dropCrop, drop.amount(), fortune));
+        }
+        player.getSkills().increase(player, SkillCategories.FARMING, mutation.farmingXp() * GreenhouseRules.xpMultiplier(effects));
+        ItemType vine = ItemType.ETHEREAL_VINE;
+        if (LootRoll.roll(player.getUuid(), vine, config.vineChance(mutation.rarity()), ThreadLocalRandom.current())) {
+            PestRewards.give(player, new SkyBlockItem(vine, 1));
+            player.sendMessage(Text.of("<6><l>RARE DROP!</l> {}", new SkyBlockItem(vine).getDisplayNameText()));
+        }
     }
 
     private static @Nullable ItemType itemOf(GardenCrop crop) {

@@ -1,0 +1,2573 @@
+{
+  "notes": [
+    "Primary source: Hypixel SkyBlock Wiki Mutations page table plus each mutation page (raw wikitext). Georik Greenhouse tab used for Copper/cost cross-check. Local video notes used as fallback; where videos disagree with the wiki the wiki wins.",
+    "copper.analyzeRepeat = Copper granted per analysis. Georik column 2 and the wiki Copper line agree for every mutation. copper.analyzeFirst = the extra one-time Copper first-time bonus stated on each wiki mutation page (additional to the repeat reward). Georik has no first-time column. copper.coinsCost = Georik column 3 = the wiki analyze price in coins (Cheesebite 80,000 for 80 Copper, 1k coins per Copper; every other mutation is 2k coins per Copper). copper.sheetBoosted60 = Georik column 3 (the sheet header says Total Boost 60%): repeat x 1.6 + 1 (Ashwreath 5 -> 9), i.e. the mass-analyze payout with the 60% boost plus the mass-analyze +1 bug, confirmed by video 47x Ashwreath = 376 Copper (8 each). Not a first-time bonus.",
+    "Spreading conditions are the wiki Mutations table counts. Each count is the number of the 8 neighbours (all adjacent including diagonals) of the empty slot that must be that crop. Spawn chance follows the Admin statement: weight x (fraction of the listed neighbour requirements satisfied); chancePercent is the wiki listed chance assuming all requirements are fully met (Ashwreath 15% because Fire is not a crop, confirmed 15%). Roll happens at each global greenhouse growth stage tick (base every 4 hours), per the video notes.",
+    "Condition crop ids: base crops and FIRE and FERMENTO (Fermento is a base crop id not in the requested set) use kind BASE; mutations use kind MUTATION including DEAD_PLANT. SPECIAL entries carry specialNote.",
+    "Drops are the fixed wiki amounts (min = max); actual amounts are scaled by yield multipliers. Drop item ids are friendly ids (MELON_SLICE for melon slices, COCOA_BEANS, NETHER_WART), not NEU raw ids. itemId is the wiki infobox id (matches the bazaar id) for each mutation; NEU repo was not checked.",
+    "tooltip: line 1 is the wiki description; the Crop Analyzer line and the RARITY MUTATION line are only verbatim-confirmed from the All-in Aloe item tooltip in video notes and are assumed identical for the others.",
+    "effects use the wiki Mutations table effect lines; Cheesebite (HARVEST_LOSS) and Chloronite (XP_BOOST) additionally come from the individual wiki pages because the table omits them. Timestalk Harvest Loss is shown green in the wiki table but is a -20% yield debuff on its page.",
+    "Wiki table notes mutationValue (minimum number of other mutations generated); INFINITE for Magic Jellybean. null = blank in wiki."
+  ],
+  "sources": [
+    "https://hypixelskyblock.minecraft.wiki/w/Mutations",
+    "https://hypixelskyblock.minecraft.wiki/index.php?title=Mutations&action=raw",
+    "https://hypixelskyblock.minecraft.wiki/index.php?title=<each mutation>&action=raw (40 mutation pages + Dead_Plant)",
+    "https://hypixelskyblock.minecraft.wiki/index.php?title=Greenhouse&action=raw",
+    "https://docs.google.com/spreadsheets/d/1ZY-nG60U7amPfqEcKnP5qkcK2JKrzpTyX8NkpPlYwZU (Georik Greenhouse tab, gviz csv)",
+    "/home/bradl/hypixel-dev/.claude/garden-work/mutations_videos.md",
+    "/home/bradl/hypixel-dev/.claude/garden-work/mutations_videos_2.md",
+    "/home/bradl/hypixel-dev/.claude/garden-work/dna_videos.md"
+  ],
+  "uncertain": [
+    "Glasscorn growth stages: wiki page says 8 (harvest at 7-8, reset at 8) but the Mutations table shows 9; 8 used.",
+    "Startlevine harvest requirement: wiki says Invisibility potion effect; video notes say Sorrow Armor. Wiki used.",
+    "Spreading counts differ from the older video recipe cards (e.g. Dustgrain 4 Wheat in video vs 2 on the wiki, Ashwreath 4 Wart + 4 Fire vs 2/2, Snoozling gained Duskbloom 3). Wiki used (page history shows reductions).",
+    "Godseed: conditions are not a numeric count on the wiki (all positive effects present); 12 unique base crops is from the user/video notes. chance 5%.",
+    "chancePercent null for Shellfruit, Jerryflower, Dead Plant (no spread roll); weight null for them (admin weight 0 = special conditions).",
+    "Fermento is not in the requested BASE crop id set; used FERMENTO.",
+    "Jerryflower farming XP, tooltip first-line verified from wiki; Jerryflower drops none (wiki). Jerryflower copper first-time bonus 250 from its page.",
+    "Dead Plant: no Copper (not analyzable), no tooltip text on the wiki, surface null.",
+    "Per-mutation decay timers other than Dead Plant lowest 3 days and none for All-in Aloe, Fleshtrap, Magic Jellybean are not on the wiki (decay null = unknown); decay is read in-game with the Plant Diagnostics Tool.",
+    "Puffercloud 4% max HP spore damage and PlantBoy/Stoplight retry rules are marked unconfirmed on the wiki.",
+    "Mutation Value for Turtlellini, Stoplight Petal, All-in Aloe, Devourer, Glasscorn, Godseed, Jerryflower, Phantomleaf, Timestalk is blank on the wiki (null); Shellfruit 6.",
+    "Devourer farming XP: table says 30400 but its page says 3400 (probable page typo); table value used. Creambloom XP: table 4480, page 4480.",
+    "NEU repo item ids were not verified; itemId comes from the wiki infobox id."
+  ],
+  "mutations": [
+    {
+      "id": "ASHWREATH",
+      "itemId": "ASHWREATH",
+      "name": "Ashwreath",
+      "rarity": "COMMON",
+      "stages": 0,
+      "surface": "Soul Sand",
+      "surfaces": [
+        "Soul Sand"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_HARVEST_BOOST",
+        "XP_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "NETHER_WART",
+          "count": 2,
+          "kind": "BASE"
+        },
+        {
+          "crop": "FIRE",
+          "count": 2,
+          "kind": "BASE"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 15.0,
+      "weight": 30,
+      "mutationValue": 10,
+      "farmingXp": 240,
+      "drops": [
+        {
+          "item": "NETHER_WART",
+          "min": 180,
+          "max": 180
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 5,
+        "analyzeFirst": 250,
+        "coinsCost": 10000,
+        "sheetBoosted60": 9
+      },
+      "behaviour": "Needs 2 Nether Wart and 2 Fire blocks around the empty Soul Sand slot. Per the Admins, effective spawn chance is weight x fraction of satisfied neighbour requirements (Fire is not a crop): 30% x 50% = 15%.",
+      "decay": null,
+      "tooltip": [
+        "It rises from ashen ground, gray and whispering.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "COMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "CHOCONUT",
+      "itemId": "CHOCONUT",
+      "name": "Choconut",
+      "rarity": "COMMON",
+      "stages": 0,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMMUNITY"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "COCOA_BEANS",
+          "count": 2,
+          "kind": "BASE"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 30.0,
+      "weight": 30,
+      "mutationValue": 10,
+      "farmingXp": 400,
+      "drops": [
+        {
+          "item": "COCOA_BEANS",
+          "min": 200,
+          "max": 200
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 5,
+        "analyzeFirst": 250,
+        "coinsCost": 10000,
+        "sheetBoosted60": 9
+      },
+      "behaviour": null,
+      "decay": null,
+      "tooltip": [
+        "Its shell is tough, but inside, it's filled with pure chocolate.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "COMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "DUSTGRAIN",
+      "itemId": "DUSTGRAIN",
+      "name": "Dustgrain",
+      "rarity": "COMMON",
+      "stages": 0,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "HARVEST_BOOST"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "WHEAT",
+          "count": 2,
+          "kind": "BASE"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 30.0,
+      "weight": 30,
+      "mutationValue": 10,
+      "farmingXp": 400,
+      "drops": [
+        {
+          "item": "WHEAT",
+          "min": 100,
+          "max": 100
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 5,
+        "analyzeFirst": 250,
+        "coinsCost": 10000,
+        "sheetBoosted60": 9
+      },
+      "behaviour": null,
+      "decay": null,
+      "tooltip": [
+        "Fragile and dry, it crumbles with the slightest touch.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "COMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "GLOOMGOURD",
+      "itemId": "GLOOMGOURD",
+      "name": "Gloomgourd",
+      "rarity": "COMMON",
+      "stages": 0,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "WATER_RETAIN",
+        "BONUS_DROPS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "PUMPKIN",
+          "count": 1,
+          "kind": "BASE"
+        },
+        {
+          "crop": "MELON",
+          "count": 1,
+          "kind": "BASE"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 30.0,
+      "weight": 30,
+      "mutationValue": 10,
+      "farmingXp": 320,
+      "drops": [
+        {
+          "item": "PUMPKIN",
+          "min": 34,
+          "max": 34
+        },
+        {
+          "item": "MELON_SLICE",
+          "min": 160,
+          "max": 160
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 5,
+        "analyzeFirst": 250,
+        "coinsCost": 10000,
+        "sheetBoosted60": 9
+      },
+      "behaviour": null,
+      "decay": null,
+      "tooltip": [
+        "Heavy and strange, it seems to carry a hidden weight.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "COMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "LONELILY",
+      "itemId": "LONELILY",
+      "name": "Lonelily",
+      "rarity": "COMMON",
+      "stages": 0,
+      "surface": "Farmland / Dirt",
+      "surfaces": [
+        "Farmland",
+        "Dirt"
+      ],
+      "size": "1x1",
+      "effects": [
+        "BONUS_DROPS"
+      ],
+      "mode": "SPECIAL",
+      "conditions": [],
+      "specialNote": "No crops (Dead Plants and Fermento count as crops) may be within 1 block of the empty Farmland or Dirt slot. Random roll, weight 6.",
+      "chancePercent": 6.0,
+      "weight": 6,
+      "mutationValue": 10,
+      "farmingXp": 2800,
+      "drops": [
+        {
+          "item": "POTATO",
+          "min": 525,
+          "max": 525
+        },
+        {
+          "item": "CARROT",
+          "min": 613,
+          "max": 613
+        },
+        {
+          "item": "PUMPKIN",
+          "min": 298,
+          "max": 298
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 25,
+        "analyzeFirst": 250,
+        "coinsCost": 50000,
+        "sheetBoosted60": 41
+      },
+      "behaviour": "Spawns only when there are NO crops within 1 block (Farmland or Dirt). Rolls randomly with weight 6. Dead Plants and Fermento count as crops.",
+      "decay": null,
+      "tooltip": [
+        "A delicate flower that only blooms when left alone, thriving in the stillness of its own space.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "COMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "SCOURROOT",
+      "itemId": "SCOURROOT",
+      "name": "Scourroot",
+      "rarity": "COMMON",
+      "stages": 0,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMMUNITY",
+        "XP_BOOST"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "POTATO",
+          "count": 1,
+          "kind": "BASE"
+        },
+        {
+          "crop": "CARROT",
+          "count": 1,
+          "kind": "BASE"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 30.0,
+      "weight": 30,
+      "mutationValue": 10,
+      "farmingXp": 272,
+      "drops": [
+        {
+          "item": "POTATO",
+          "min": 102,
+          "max": 102
+        },
+        {
+          "item": "CARROT",
+          "min": 119,
+          "max": 119
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 5,
+        "analyzeFirst": 250,
+        "coinsCost": 10000,
+        "sheetBoosted60": 9
+      },
+      "behaviour": null,
+      "decay": null,
+      "tooltip": [
+        "Bitter to the core, as if cursed by the soil.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "COMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "SHADEVINE",
+      "itemId": "SHADEVINE",
+      "name": "Shadevine",
+      "rarity": "COMMON",
+      "stages": 0,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland",
+        "Sand"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_WATER_RETAIN",
+        "IMPROVED_XP_BOOST",
+        "HARVEST_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "CACTUS",
+          "count": 1,
+          "kind": "BASE"
+        },
+        {
+          "crop": "SUGAR_CANE",
+          "count": 1,
+          "kind": "BASE"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 30.0,
+      "weight": 30,
+      "mutationValue": 10,
+      "farmingXp": 416,
+      "drops": [
+        {
+          "item": "CACTUS",
+          "min": 78,
+          "max": 78
+        },
+        {
+          "item": "SUGAR_CANE",
+          "min": 104,
+          "max": 104
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 5,
+        "analyzeFirst": 250,
+        "coinsCost": 10000,
+        "sheetBoosted60": 9
+      },
+      "behaviour": "Wiki lists Farmland in the table but the page says Sand or Farmland.",
+      "decay": null,
+      "tooltip": [
+        "Tough and tangled, it grows where few others can.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "COMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "VEILSHROOM",
+      "itemId": "VEILSHROOM",
+      "name": "Veilshroom",
+      "rarity": "COMMON",
+      "stages": 0,
+      "surface": "Mycelium",
+      "surfaces": [
+        "Mycelium"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_HARVEST_BOOST",
+        "WATER_DRAIN"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "RED_MUSHROOM",
+          "count": 1,
+          "kind": "BASE"
+        },
+        {
+          "crop": "BROWN_MUSHROOM",
+          "count": 1,
+          "kind": "BASE"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 30.0,
+      "weight": 30,
+      "mutationValue": 10,
+      "farmingXp": 240,
+      "drops": [
+        {
+          "item": "BROWN_MUSHROOM",
+          "min": 28,
+          "max": 28
+        },
+        {
+          "item": "RED_MUSHROOM",
+          "min": 28,
+          "max": 28
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 5,
+        "analyzeFirst": 250,
+        "coinsCost": 10000,
+        "sheetBoosted60": 9
+      },
+      "behaviour": null,
+      "decay": null,
+      "tooltip": [
+        "It hides from the light, shrouded in mystery.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "COMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "WITHERBLOOM",
+      "itemId": "WITHERBLOOM",
+      "name": "Witherbloom",
+      "rarity": "COMMON",
+      "stages": 0,
+      "surface": "Soul Sand",
+      "surfaces": [
+        "Soul Sand"
+      ],
+      "size": "1x1",
+      "effects": [
+        "EFFECT_SPREAD"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "DEAD_PLANT",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 30.0,
+      "weight": 30,
+      "mutationValue": 10,
+      "farmingXp": 368,
+      "drops": [
+        {
+          "item": "WILD_ROSE",
+          "min": 184,
+          "max": 184
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 20,
+        "analyzeFirst": 250,
+        "coinsCost": 40000,
+        "sheetBoosted60": 33
+      },
+      "behaviour": "Fed by Dead Plants; keeps working as Dead Plants accumulate.",
+      "decay": null,
+      "tooltip": [
+        "A plant that only thrives in the presence of decay, its petals growing strong where life once was. Only death thrives the living.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "COMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "CHOCOBERRY",
+      "itemId": "CHOCOBERRY",
+      "name": "Chocoberry",
+      "rarity": "UNCOMMON",
+      "stages": 6,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "WATER_RETAIN"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "CHOCONUT",
+          "count": 6,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "GLOOMGOURD",
+          "count": 2,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 10,
+      "farmingXp": 3520,
+      "drops": [
+        {
+          "item": "COCOA_BEANS",
+          "min": 440,
+          "max": 440
+        },
+        {
+          "item": "PUMPKIN",
+          "min": 187,
+          "max": 187
+        },
+        {
+          "item": "MELON_SLICE",
+          "min": 1760,
+          "max": 1760
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 30,
+        "analyzeFirst": 500,
+        "coinsCost": 60000,
+        "sheetBoosted60": 49
+      },
+      "behaviour": "Can be given to Jake for his Abiphone contact. Harvesting before the final growth stage destroys it without reward.",
+      "decay": null,
+      "tooltip": [
+        "It looks incredibly tasty, surely taking a small bite wouldn't hurt the plant, right? Right?",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "UNCOMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "CINDERSHADE",
+      "itemId": "CINDERSHADE",
+      "name": "Cindershade",
+      "rarity": "UNCOMMON",
+      "stages": 8,
+      "surface": "Soul Sand",
+      "surfaces": [
+        "Soul Sand"
+      ],
+      "size": "1x1",
+      "effects": [
+        "EFFECT_SPREAD",
+        "IMPROVED_HARVEST_BOOST",
+        "XP_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "ASHWREATH",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "WITHERBLOOM",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 2720,
+      "drops": [
+        {
+          "item": "NETHER_WART",
+          "min": 1020,
+          "max": 1020
+        },
+        {
+          "item": "WILD_ROSE",
+          "min": 680,
+          "max": 680
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 40,
+        "analyzeFirst": 500,
+        "coinsCost": 80000,
+        "sheetBoosted60": 65
+      },
+      "behaviour": "Does not need water.",
+      "decay": null,
+      "tooltip": [
+        "A hazy flower that glows like dying embers, stuck somewhere between fire and life.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "UNCOMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "COALROOT",
+      "itemId": "COALROOT",
+      "name": "Coalroot",
+      "rarity": "UNCOMMON",
+      "stages": 8,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "XP_BOOST"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "ASHWREATH",
+          "count": 5,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "SCOURROOT",
+          "count": 3,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 10,
+      "farmingXp": 2720,
+      "drops": [
+        {
+          "item": "POTATO",
+          "min": 510,
+          "max": 510
+        },
+        {
+          "item": "CARROT",
+          "min": 1190,
+          "max": 1190
+        },
+        {
+          "item": "NETHER_WART",
+          "min": 510,
+          "max": 510
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 40,
+        "analyzeFirst": 500,
+        "coinsCost": 80000,
+        "sheetBoosted60": 65
+      },
+      "behaviour": "Dead Bush base makes it awkward to harvest with a Farming Tool. Adds 5,000 Fuel to Drills (Drill Anvil) or the Composter.",
+      "decay": null,
+      "tooltip": [
+        "A smoldering root that oddly can be used as fuel.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "UNCOMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "CREAMBLOOM",
+      "itemId": "CREAMBLOOM",
+      "name": "Creambloom",
+      "rarity": "UNCOMMON",
+      "stages": 6,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMMUNITY"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "CHOCONUT",
+          "count": 8,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 4480,
+      "drops": [
+        {
+          "item": "COCOA_BEANS",
+          "min": 2240,
+          "max": 2240
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 30,
+        "analyzeFirst": 500,
+        "coinsCost": 60000,
+        "sheetBoosted60": 49
+      },
+      "behaviour": null,
+      "decay": null,
+      "tooltip": [
+        "A flower so soft and creamy, it could almost pass for milk. Just don't be tempted to try drinking it.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "UNCOMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "DUSKBLOOM",
+      "itemId": "DUSKBLOOM",
+      "name": "Duskbloom",
+      "rarity": "UNCOMMON",
+      "stages": 8,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "BONUS_DROPS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "MOONFLOWER",
+          "count": 2,
+          "kind": "BASE"
+        },
+        {
+          "crop": "SHADEVINE",
+          "count": 2,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "SUNFLOWER",
+          "count": 2,
+          "kind": "BASE"
+        },
+        {
+          "crop": "DUSTGRAIN",
+          "count": 2,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 4320,
+      "drops": [
+        {
+          "item": "MOONFLOWER",
+          "min": 720,
+          "max": 720
+        },
+        {
+          "item": "SUNFLOWER",
+          "min": 720,
+          "max": 720
+        },
+        {
+          "item": "WHEAT",
+          "min": 360,
+          "max": 360
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 40,
+        "analyzeFirst": 500,
+        "coinsCost": 80000,
+        "sheetBoosted60": 65
+      },
+      "behaviour": null,
+      "decay": null,
+      "tooltip": [
+        "It turns to neither day nor night, lost somewhere in between.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "UNCOMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "THORNSHADE",
+      "itemId": "THORNSHADE",
+      "name": "Thornshade",
+      "rarity": "UNCOMMON",
+      "stages": 8,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "EFFECT_SPREAD"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "WILD_ROSE",
+          "count": 4,
+          "kind": "BASE"
+        },
+        {
+          "crop": "VEILSHROOM",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 3200,
+      "drops": [
+        {
+          "item": "BROWN_MUSHROOM",
+          "min": 190,
+          "max": 190
+        },
+        {
+          "item": "RED_MUSHROOM",
+          "min": 190,
+          "max": 190
+        },
+        {
+          "item": "WILD_ROSE",
+          "min": 800,
+          "max": 800
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 40,
+        "analyzeFirst": 500,
+        "coinsCost": 80000,
+        "sheetBoosted60": 65
+      },
+      "behaviour": "Walking into it deals damage similar to a Cactus.",
+      "decay": null,
+      "tooltip": [
+        "A rose with thick thorns and vines sharper than they should be.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "UNCOMMON MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "BLASTBERRY",
+      "itemId": "BLASTBERRY",
+      "name": "Blastberry",
+      "rarity": "RARE",
+      "stages": 6,
+      "surface": "Sand",
+      "surfaces": [
+        "Sand"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMMUNITY",
+        "IMPROVED_HARVEST_BOOST",
+        "XP_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "CHOCOBERRY",
+          "count": 5,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "ASHWREATH",
+          "count": 3,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 3200,
+      "drops": [
+        {
+          "item": "COCOA_BEANS",
+          "min": 800,
+          "max": 800
+        },
+        {
+          "item": "NETHER_WART",
+          "min": 1200,
+          "max": 1200
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 120,
+        "analyzeFirst": 750,
+        "coinsCost": 240000,
+        "sheetBoosted60": 193
+      },
+      "behaviour": "When harvested or when it decays it explodes and destroys adjacent crops within 1 block (other Blastberries are ignored). Priming takes 1 growth stage. Used on Turtlellini to make Shellfruit.",
+      "decay": null,
+      "tooltip": [
+        "Only harvest at your own risk.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "CHEESEBITE",
+      "itemId": "CHEESEBITE",
+      "name": "Cheesebite",
+      "rarity": "RARE",
+      "stages": 10,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_WATER_RETAIN",
+        "HARVEST_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "CREAMBLOOM",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "FERMENTO",
+          "count": 4,
+          "kind": "BASE"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 6400,
+      "drops": [
+        {
+          "item": "BROWN_MUSHROOM",
+          "min": 253,
+          "max": 253
+        },
+        {
+          "item": "CACTUS",
+          "min": 800,
+          "max": 800
+        },
+        {
+          "item": "SUGAR_CANE",
+          "min": 1067,
+          "max": 1067
+        },
+        {
+          "item": "RED_MUSHROOM",
+          "min": 253,
+          "max": 253
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 80,
+        "analyzeFirst": 750,
+        "coinsCost": 80000,
+        "sheetBoosted60": 129
+      },
+      "behaviour": "At growth stages 4 and 7 a Rat spawns beside it and eats it; growth stops while the Rat lives. Kill the Rat with a Vacuum like a Pest. The Rat gives no loot, Bestiary or pest counter, and cannot be Lassoed. Only mutation that costs 1k coins per Copper to analyze.",
+      "decay": null,
+      "tooltip": [
+        "A smell so aromatic that even rodents can't resist.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "CHLORONITE",
+      "itemId": "CHLORONITE",
+      "name": "Chloronite",
+      "rarity": "RARE",
+      "stages": 10,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMMUNITY",
+        "XP_BOOST"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "COALROOT",
+          "count": 6,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "THORNSHADE",
+          "count": 2,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 4320,
+      "drops": [
+        {
+          "item": "BROWN_MUSHROOM",
+          "min": 128,
+          "max": 128
+        },
+        {
+          "item": "POTATO",
+          "min": 810,
+          "max": 810
+        },
+        {
+          "item": "CARROT",
+          "min": 945,
+          "max": 945
+        },
+        {
+          "item": "RED_MUSHROOM",
+          "min": 128,
+          "max": 128
+        },
+        {
+          "item": "WILD_ROSE",
+          "min": 540,
+          "max": 540
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 20,
+        "analyzeFirst": 750,
+        "coinsCost": 40000,
+        "sheetBoosted60": 33
+      },
+      "behaviour": "Requires a tool with Breaking Power 1 or higher to harvest. Drop count scales with Mining Fortune: M>=2000 -> 4; 1000-1999 -> 3+(M-1000)/1000; 500-999 -> 2+(M-500)/500; 100-499 -> 1+(M-100)/400; below 100 -> M/100 (fractional part is a chance for one more).",
+      "decay": null,
+      "tooltip": [
+        "A plant that hardens into a shining green gemstone as it matures, ready to be mined.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": "Tool with Breaking Power 1 or higher"
+    },
+    {
+      "id": "DO_NOT_EAT_SHROOM",
+      "itemId": "DO_NOT_EAT_SHROOM",
+      "name": "Do-not-eat-shroom",
+      "rarity": "RARE",
+      "stages": 8,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_HARVEST_BOOST",
+        "WATER_DRAIN"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "VEILSHROOM",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "SCOURROOT",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 3360,
+      "drops": [
+        {
+          "item": "BROWN_MUSHROOM",
+          "min": 200,
+          "max": 200
+        },
+        {
+          "item": "POTATO",
+          "min": 630,
+          "max": 630
+        },
+        {
+          "item": "CARROT",
+          "min": 735,
+          "max": 735
+        },
+        {
+          "item": "RED_MUSHROOM",
+          "min": 200,
+          "max": 200
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 120,
+        "analyzeFirst": 750,
+        "coinsCost": 240000,
+        "sheetBoosted60": 193
+      },
+      "behaviour": "Harvesting grants Blindness III for 3 seconds and Nausea III for 5 seconds.",
+      "decay": null,
+      "tooltip": [
+        "It's clearly labeled, but who can resist? Eat at your own risk – things get strange when this one's consumed.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "FLESHTRAP",
+      "itemId": "FLESHTRAP",
+      "name": "Fleshtrap",
+      "rarity": "RARE",
+      "stages": 14,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "BONUS_DROPS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "CINDERSHADE",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "LONELILY",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 6,
+      "farmingXp": 2720,
+      "drops": [
+        {
+          "item": "POTATO",
+          "min": 510,
+          "max": 510
+        },
+        {
+          "item": "CARROT",
+          "min": 595,
+          "max": 595
+        },
+        {
+          "item": "PUMPKIN",
+          "min": 289,
+          "max": 289
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 180,
+        "analyzeFirst": 750,
+        "coinsCost": 360000,
+        "sheetBoosted60": 289
+      },
+      "behaviour": "Needs meat-based food while growing (right-click it). Basic food +2 hunger; Enchanted +4 hunger and +20% bonus drop; Enchanted cooked +6 hunger and +40% bonus drop; bonus drop caps at +100% (can still give up to 3). Cannot grow when hunger is 0. Message when full: [CROP] Fleshtrap: I'm already full! Does not decay.",
+      "decay": "none",
+      "tooltip": [
+        "A twisted version of the Venus Flytrap, this plant thrives on feeding its insatiable hunger for flesh. It requires regular offerings to stay alive, or it withers away.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "MAGIC_JELLYBEAN",
+      "itemId": "MAGIC_JELLYBEAN",
+      "name": "Magic Jellybean",
+      "rarity": "RARE",
+      "stages": 120,
+      "surface": "Sand",
+      "surfaces": [
+        "Sand"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_XP_BOOST",
+        "HARVEST_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "SUGAR_CANE",
+          "count": 5,
+          "kind": "BASE"
+        },
+        {
+          "crop": "DUSKBLOOM",
+          "count": 3,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": "INFINITE",
+      "farmingXp": 4800,
+      "drops": [
+        {
+          "item": "MOONFLOWER",
+          "min": 600,
+          "max": 600
+        },
+        {
+          "item": "SUNFLOWER",
+          "min": 600,
+          "max": 600
+        },
+        {
+          "item": "SUGAR_CANE",
+          "min": 1200,
+          "max": 1200
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 80,
+        "analyzeFirst": 750,
+        "coinsCost": 160000,
+        "sheetBoosted60": 129
+      },
+      "behaviour": "Grows up to 10 blocks tall (120 stages). Harvestable from stage 12; every 12 stages after adds +1 drop multiplier up to 10x. Does not decay. A block cannot be placed between two Jellybeans if one is stage 2 or below.",
+      "decay": "none",
+      "tooltip": [
+        "A strange bean that starts growing in unexpected ways, stretching higher and higher.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": "Growth stage 12 or later"
+    },
+    {
+      "id": "NOCTILUME",
+      "itemId": "NOCTILUME",
+      "name": "Noctilume",
+      "rarity": "RARE",
+      "stages": 4,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "2x2",
+      "effects": [
+        "EFFECT_SPREAD",
+        "IMPROVED_WATER_RETAIN",
+        "HARVEST_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "DUSKBLOOM",
+          "count": 6,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "LONELILY",
+          "count": 6,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 8480,
+      "drops": [
+        {
+          "item": "CACTUS",
+          "min": 1590,
+          "max": 1590
+        },
+        {
+          "item": "WILD_ROSE",
+          "min": 2120,
+          "max": 2120
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 150,
+        "analyzeFirst": 750,
+        "coinsCost": 300000,
+        "sheetBoosted60": 241
+      },
+      "behaviour": "Switches between a sun and a moon flower; it only advances to the next stage during the matching time of day (swap between day and night).",
+      "decay": null,
+      "tooltip": [
+        "A delicate flower that just needs the right balance of day and night, changing colors to show when it's craving more light or darkness.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "SNOOZLING",
+      "itemId": "SNOOZLING",
+      "name": "Snoozling",
+      "rarity": "RARE",
+      "stages": 20,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "3x3",
+      "effects": [
+        "BONUS_DROPS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "CREAMBLOOM",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "DUSTGRAIN",
+          "count": 3,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "WITHERBLOOM",
+          "count": 3,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "DUSKBLOOM",
+          "count": 3,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "THORNSHADE",
+          "count": 3,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": "Counts are total adjacent blocks of that mutation; a multi-block mutation (Snoozling 3x3, Noctilume 2x2, PlantBoy Advance 2x2) touches several neighbours at once, so e.g. 2 Snoozlings can supply 6 blocks (wiki note).",
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 33600,
+      "drops": [
+        {
+          "item": "MOONFLOWER",
+          "min": 4200,
+          "max": 4200
+        },
+        {
+          "item": "SUNFLOWER",
+          "min": 4200,
+          "max": 4200
+        },
+        {
+          "item": "CACTUS",
+          "min": 3150,
+          "max": 3150
+        },
+        {
+          "item": "SUGAR_CANE",
+          "min": 4200,
+          "max": 4200
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 300,
+        "analyzeFirst": 750,
+        "coinsCost": 600000,
+        "sheetBoosted60": 481
+      },
+      "behaviour": "Falls asleep at growth stages 5, 10 and 15 and cannot grow until right-clicked. Wake messages: Fine, I'm up, I'm up. / Okay, okay, I'm awake! Happy now? / Alright, Alright. No need to get violent! / Sheesh, can't a plant catch a nap? A Lonelily or Godseed spawning inside its 3x3 area blocks it.",
+      "decay": null,
+      "tooltip": [
+        "This sluggish plant takes its sweet time to grow. Every now and then, you'll need to give it a little nudge (or punch) to keep it from dozing off for too long.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": "Wake it with right-click at stages 5, 10, 15"
+    },
+    {
+      "id": "SOGGYBUD",
+      "itemId": "SOGGYBUD",
+      "name": "Soggybud",
+      "rarity": "RARE",
+      "stages": 10,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "WATER_RETAIN"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "MELON",
+          "count": 2,
+          "kind": "BASE"
+        },
+        {
+          "crop": "GLOOMGOURD",
+          "count": 2,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 8,
+      "farmingXp": 1920,
+      "drops": [
+        {
+          "item": "MELON_SLICE",
+          "min": 1920,
+          "max": 1920
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 30,
+        "analyzeFirst": 750,
+        "coinsCost": 60000,
+        "sheetBoosted60": 49
+      },
+      "behaviour": "Can only be watered by taking water from nearby crops.",
+      "decay": null,
+      "tooltip": [
+        "A plant that drinks it all in, then expands like a water balloon.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "CHORUS_FRUIT",
+      "itemId": "CHORUS_FRUIT",
+      "name": "Chorus Fruit",
+      "rarity": "EPIC",
+      "stages": 12,
+      "surface": "End Stone",
+      "surfaces": [
+        "End Stone"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_XP_BOOST",
+        "HARVEST_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "CHLORONITE",
+          "count": 5,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "MAGIC_JELLYBEAN",
+          "count": 3,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 6,
+      "farmingXp": 5600,
+      "drops": [
+        {
+          "item": "POTATO",
+          "min": 1050,
+          "max": 1050
+        },
+        {
+          "item": "CARROT",
+          "min": 1225,
+          "max": 1225
+        },
+        {
+          "item": "SUGAR_CANE",
+          "min": 1400,
+          "max": 1400
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 300,
+        "analyzeFirst": 1000,
+        "coinsCost": 600000,
+        "sheetBoosted60": 481
+      },
+      "behaviour": "Teleports as it grows, converting blocks to End Stone (corrupts unused soil). Avoids crop slots but destroys a plant if forced onto one.",
+      "decay": null,
+      "tooltip": [
+        "This tricky plant has a mind of its own, teleporting to a new spot every time you think you've found it.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "EPIC MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "PLANTBOY_ADVANCE",
+      "itemId": "PLANTBOY_ADVANCE",
+      "name": "PlantBoy Advance",
+      "rarity": "EPIC",
+      "stages": 12,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "2x2",
+      "effects": [
+        "HARVEST_BOOST"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "SNOOZLING",
+          "count": 6,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "THUNDERLING",
+          "count": 6,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": "Counts are total adjacent blocks of that mutation; a multi-block mutation (Snoozling 3x3, Noctilume 2x2, PlantBoy Advance 2x2) touches several neighbours at once, so e.g. 2 Snoozlings can supply 6 blocks (wiki note).",
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 6,
+      "farmingXp": 36800,
+      "drops": [
+        {
+          "item": "MOONFLOWER",
+          "min": 4600,
+          "max": 4600
+        },
+        {
+          "item": "SUNFLOWER",
+          "min": 4600,
+          "max": 4600
+        },
+        {
+          "item": "WHEAT",
+          "min": 4600,
+          "max": 4600
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 350,
+        "analyzeFirst": 1250,
+        "coinsCost": 700000,
+        "sheetBoosted60": 561
+      },
+      "behaviour": "Harvest triggers a Snake minigame: collect 8 apples. [CROP] PlantBoy Advance: I doubt you are a real gamer. I challenge you to a game of Snake! [ACCEPT]. Win: You bested me, you may harvest me now. Failure may be retried immediately (wiki marks this unconfirmed). Have chat visible.",
+      "decay": null,
+      "tooltip": [
+        "This plant loves a good challenge. Every time you harvest it, it'll challenge you to a quick game. Win, and it thrives. Lose, though, and it's game over for this little guy.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "EPIC MUTATION"
+      ],
+      "unlock": "Win the Snake minigame (8 apples)"
+    },
+    {
+      "id": "PUFFERCLOUD",
+      "itemId": "PUFFERCLOUD",
+      "name": "Puffercloud",
+      "rarity": "EPIC",
+      "stages": 14,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_HARVEST_BOOST",
+        "WATER_DRAIN"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "SNOOZLING",
+          "count": 2,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "DO_NOT_EAT_SHROOM",
+          "count": 6,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": "Counts are total adjacent blocks of that mutation; a multi-block mutation (Snoozling 3x3, Noctilume 2x2, PlantBoy Advance 2x2) touches several neighbours at once, so e.g. 2 Snoozlings can supply 6 blocks (wiki note).",
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 6,
+      "farmingXp": 9600,
+      "drops": [
+        {
+          "item": "BROWN_MUSHROOM",
+          "min": 570,
+          "max": 570
+        },
+        {
+          "item": "MOONFLOWER",
+          "min": 1200,
+          "max": 1200
+        },
+        {
+          "item": "SUNFLOWER",
+          "min": 1200,
+          "max": 1200
+        },
+        {
+          "item": "RED_MUSHROOM",
+          "min": 570,
+          "max": 570
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 500,
+        "analyzeFirst": 1250,
+        "coinsCost": 1000000,
+        "sheetBoosted60": 801
+      },
+      "behaviour": "Releases spores dealing about 4% of max HP as True Damage (wiki: unconfirmed) to players within a 3x3x3 area.",
+      "decay": null,
+      "tooltip": [
+        "Puffercloud looks harmless, but step too close and it releases a toxic cloud. Probably best to stay away.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "EPIC MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "SHELLFRUIT",
+      "itemId": "SHELLFRUIT",
+      "name": "Shellfruit",
+      "rarity": "EPIC",
+      "stages": 0,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "WATER_RETAIN",
+        "IMMUNITY"
+      ],
+      "mode": "SPECIAL",
+      "conditions": [
+        {
+          "crop": "TURTLELLINI",
+          "count": 1,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "BLASTBERRY",
+          "count": 1,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": "Explode a Turtlellini with a Blastberry; each Blastberry needs 1 growth stage to prime and blows up all 8 adjacent crops, up to 8 Shellfruit.",
+      "chancePercent": null,
+      "weight": null,
+      "mutationValue": 6,
+      "farmingXp": 800,
+      "drops": [
+        {
+          "item": "COCOA_BEANS",
+          "min": 400,
+          "max": 400
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 250,
+        "analyzeFirst": 1000,
+        "coinsCost": 500000,
+        "sheetBoosted60": 401
+      },
+      "behaviour": "Not grown by spreading: right-click-detonate a Blastberry next to Turtellini (each Blastberry needs 1 growth stage to prime; blows up all 8 adjacent crops, up to 8 Shellfruit per Blastberry).",
+      "decay": null,
+      "tooltip": [
+        "When the shell cracks open, sweet, refreshing juice spills out, revealing the fruit inside.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "EPIC MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "STARTLEVINE",
+      "itemId": "STARTLEVINE",
+      "name": "Startlevine",
+      "rarity": "EPIC",
+      "stages": 12,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_WATER_RETAIN",
+        "IMPROVED_XP_BOOST",
+        "HARVEST_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "BLASTBERRY",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "CHEESEBITE",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 6,
+      "farmingXp": 12000,
+      "drops": [
+        {
+          "item": "CACTUS",
+          "min": 2250,
+          "max": 2250
+        },
+        {
+          "item": "SUGAR_CANE",
+          "min": 3000,
+          "max": 3000
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 250,
+        "analyzeFirst": 1000,
+        "coinsCost": 500000,
+        "sheetBoosted60": 401
+      },
+      "behaviour": "Needs the Invisibility potion effect to be harvested. Chat: [CROP] Startlevine: Eeek! (approaching) / I'm too scared to be harvested right now... (harvest attempt).",
+      "decay": null,
+      "tooltip": [
+        "This skittish plant bolts the moment you get too close, disappearing into the ground. You'll need to figure out how to get near without scaring it off.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "EPIC MUTATION"
+      ],
+      "unlock": "Invisibility potion effect (wiki). The video notes say Sorrow Armor; the wiki is used."
+    },
+    {
+      "id": "STOPLIGHT_PETAL",
+      "itemId": "STOPLIGHT_PETAL",
+      "name": "Stoplight Petal",
+      "rarity": "EPIC",
+      "stages": 12,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "EFFECT_SPREAD",
+        "IMPROVED_WATER_RETAIN",
+        "HARVEST_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "SNOOZLING",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "NOCTILUME",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": "Counts are total adjacent blocks of that mutation; a multi-block mutation (Snoozling 3x3, Noctilume 2x2, PlantBoy Advance 2x2) touches several neighbours at once, so e.g. 2 Snoozlings can supply 6 blocks (wiki note).",
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": null,
+      "farmingXp": 40000,
+      "drops": [
+        {
+          "item": "CACTUS",
+          "min": 7500,
+          "max": 7500
+        },
+        {
+          "item": "WILD_ROSE",
+          "min": 10000,
+          "max": 10000
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 2000,
+        "analyzeFirst": 1250,
+        "coinsCost": 4000000,
+        "sheetBoosted60": 3201
+      },
+      "behaviour": "Harvest is a punch minigame: it cycles green, yellow (warning) and red. Punch it only while green to fill a progress bar; punching on red resets the bar (retry allowed, wiki unconfirmed).",
+      "decay": null,
+      "tooltip": [
+        "This flower switches between green and red as you try to harvest it. Break it when it's green, but don't touch it when it's red or it'll wither!",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "EPIC MUTATION"
+      ],
+      "unlock": "Punch only while the light is green"
+    },
+    {
+      "id": "THUNDERLING",
+      "itemId": "THUNDERLING",
+      "name": "Thunderling",
+      "rarity": "EPIC",
+      "stages": 16,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "EFFECT_SPREAD"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "SOGGYBUD",
+          "count": 5,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "NOCTILUME",
+          "count": 3,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": "Counts are total adjacent blocks of that mutation; a multi-block mutation (Snoozling 3x3, Noctilume 2x2, PlantBoy Advance 2x2) touches several neighbours at once, so e.g. 2 Snoozlings can supply 6 blocks (wiki note).",
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 6,
+      "farmingXp": 17600,
+      "drops": [
+        {
+          "item": "CACTUS",
+          "min": 1650,
+          "max": 1650
+        },
+        {
+          "item": "MELON_SLICE",
+          "min": 4400,
+          "max": 4400
+        },
+        {
+          "item": "WILD_ROSE",
+          "min": 4400,
+          "max": 4400
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 400,
+        "analyzeFirst": 1000,
+        "coinsCost": 800000,
+        "sheetBoosted60": 641
+      },
+      "behaviour": "Gains 2000 charge per growth stage; above 16000 charge it stops growing until discharged by right-click. Discharging with bare hands (harvest) deals 30% of current HP as True Damage (never lethal). Holding an empty Thunder/Storm/Hurricane in a Bottle absorbs the charge instead. Messages: OUCH! The Thunderling has discharged all his energy, frying you! / ZOOP! Your [item] has absorbed [amount] charge, calming your Thunderling.",
+      "decay": null,
+      "tooltip": [
+        "This plant hums with electricity growing more volatile the longer it's left unchecked. If you don't release its charge in time, it'll shock anything nearby – yourself included.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "EPIC MUTATION"
+      ],
+      "unlock": "Discharge by right-click (empty Thunder/Storm/Hurricane Bottle in hand avoids damage)"
+    },
+    {
+      "id": "TURTLELLINI",
+      "itemId": "TURTLELLINI",
+      "name": "Turtlellini",
+      "rarity": "RARE",
+      "stages": 0,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "WATER_RETAIN",
+        "IMMUNITY"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "SOGGYBUD",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "CHOCONUT",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": null,
+      "farmingXp": 800,
+      "drops": [
+        {
+          "item": "MELON_SLICE",
+          "min": 800,
+          "max": 800
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 120,
+        "analyzeFirst": 750,
+        "coinsCost": 240000,
+        "sheetBoosted60": 193
+      },
+      "behaviour": "Rarity was reduced from Epic to Rare on 2026-08-20. Blastberry explosion turns it into Shellfruit.",
+      "decay": null,
+      "tooltip": [
+        "Outside, it's smooth, but there's more to it than meets the eye.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "RARE MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "ZOMBUD",
+      "itemId": "ZOMBUD",
+      "name": "Zombud",
+      "rarity": "EPIC",
+      "stages": 16,
+      "surface": "Soul Sand",
+      "surfaces": [
+        "Soul Sand"
+      ],
+      "size": "1x1",
+      "effects": [
+        "EFFECT_SPREAD",
+        "BONUS_DROPS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "DEAD_PLANT",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "CINDERSHADE",
+          "count": 2,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "FLESHTRAP",
+          "count": 2,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": 6,
+      "farmingXp": 7200,
+      "drops": [
+        {
+          "item": "PUMPKIN",
+          "min": 765,
+          "max": 765
+        },
+        {
+          "item": "WILD_ROSE",
+          "min": 1800,
+          "max": 1800
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 500,
+        "analyzeFirst": 1250,
+        "coinsCost": 1000000,
+        "sheetBoosted60": 801
+      },
+      "behaviour": "Does not need water. When harvested, converts all Dead Plants within 1 block into Zombuddy mobs; each Zombuddy slain drops a Zombud.",
+      "decay": null,
+      "tooltip": [
+        "No one really understands how it works, but somehow this flower can bring the dead back to life, transforming them into... well, zombies.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "EPIC MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "ALL_IN_ALOE",
+      "itemId": "ALL_IN_ALOE",
+      "name": "All-in Aloe",
+      "rarity": "LEGENDARY",
+      "stages": 27,
+      "surface": "Sand",
+      "surfaces": [
+        "Sand"
+      ],
+      "size": "1x1",
+      "effects": [
+        "HARVEST_BOOST"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "MAGIC_JELLYBEAN",
+          "count": 6,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "PLANTBOY_ADVANCE",
+          "count": 2,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": "Counts are total adjacent blocks of that mutation; a multi-block mutation (Snoozling 3x3, Noctilume 2x2, PlantBoy Advance 2x2) touches several neighbours at once, so e.g. 2 Snoozlings can supply 6 blocks (wiki note).",
+      "chancePercent": 25.0,
+      "weight": 25,
+      "mutationValue": null,
+      "farmingXp": 1120,
+      "drops": [
+        {
+          "item": "MOONFLOWER",
+          "min": 140,
+          "max": 140
+        },
+        {
+          "item": "SUNFLOWER",
+          "min": 140,
+          "max": 140
+        },
+        {
+          "item": "WHEAT",
+          "min": 140,
+          "max": 140
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 2300,
+        "analyzeFirst": 1500,
+        "coinsCost": 4600000,
+        "sheetBoosted60": 3681
+      },
+      "behaviour": "Does not need water, harvestable at any stage (27). Higher stages give more All-in Aloe Fragments but raise the chance to reset to stage 1 whenever a new stage is reached. Does not decay. 9 Fragments craft an All-in Aloe.",
+      "decay": "none",
+      "tooltip": [
+        "This bold plant grows bigger the longer you wait, but wait too long and it's gone. Time your harvest right for big rewards.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "LEGENDARY MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "DEVOURER",
+      "itemId": "DEVOURER",
+      "name": "Devourer",
+      "rarity": "LEGENDARY",
+      "stages": 16,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [
+        "BONUS_DROPS",
+        "IMPROVED_HARVEST_BOOST",
+        "WATER_DRAIN"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "PUFFERCLOUD",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "ZOMBUD",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 20.0,
+      "weight": 20,
+      "mutationValue": null,
+      "farmingXp": 30400,
+      "drops": [
+        {
+          "item": "BROWN_MUSHROOM",
+          "min": 1805,
+          "max": 1805
+        },
+        {
+          "item": "PUMPKIN",
+          "min": 3230,
+          "max": 3230
+        },
+        {
+          "item": "RED_MUSHROOM",
+          "min": 1805,
+          "max": 1805
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 5000,
+        "analyzeFirst": 3000,
+        "coinsCost": 10000000,
+        "sheetBoosted60": 8001
+      },
+      "behaviour": "Very destructive: 40% chance on each new growth stage to spread roots and destroy nearby crops. Keep other crops away. Reduces water.",
+      "decay": null,
+      "tooltip": [
+        "A relentless plant that spreads its root far and wide, consuming and destroying everything in its path.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "LEGENDARY MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "GLASSCORN",
+      "itemId": "GLASSCORN",
+      "name": "Glasscorn",
+      "rarity": "LEGENDARY",
+      "stages": 8,
+      "surface": "Sand",
+      "surfaces": [
+        "Sand"
+      ],
+      "size": "2x2",
+      "effects": [
+        "IMMUNITY",
+        "IMPROVED_WATER_RETAIN",
+        "HARVEST_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "STARTLEVINE",
+          "count": 6,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "CHLORONITE",
+          "count": 6,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 20.0,
+      "weight": 20,
+      "mutationValue": null,
+      "farmingXp": 25600,
+      "drops": [
+        {
+          "item": "POTATO",
+          "min": 4800,
+          "max": 4800
+        },
+        {
+          "item": "CACTUS",
+          "min": 7200,
+          "max": 7200
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 2000,
+        "analyzeFirst": 1500,
+        "coinsCost": 4000000,
+        "sheetBoosted60": 3201
+      },
+      "behaviour": "Harvestable only at growth stages 7 and 8. If a stage passes while at 8 it resets to stage 1.",
+      "decay": null,
+      "tooltip": [
+        "This delicate, crystal-like corn needs to be handled with care. If not harvested at the right time, it will shatter into a million pieces.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "LEGENDARY MUTATION"
+      ],
+      "unlock": "Harvest at growth stage 7 or 8"
+    },
+    {
+      "id": "GODSEED",
+      "itemId": "GODSEED",
+      "name": "Godseed",
+      "rarity": "LEGENDARY",
+      "stages": 40,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "3x3",
+      "effects": [
+        "IMPROVED_HARVEST_BOOST",
+        "IMPROVED_WATER_RETAIN",
+        "IMPROVED_XP_BOOST",
+        "IMMUNITY",
+        "BONUS_DROPS",
+        "EFFECT_SPREAD"
+      ],
+      "mode": "UNIQUE_BASE",
+      "conditions": [
+        {
+          "crop": "UNIQUE_BASE",
+          "count": 12,
+          "kind": "BASE"
+        }
+      ],
+      "specialNote": "Wiki: every positive crop effect must be present around it. Video/user notes: 12 different base crops (Sunflower and Moonflower count as one in the Greenhouse unique bonus, but the guide says easiest is 12 different crops with either sunflower or moonflower).",
+      "chancePercent": 5.0,
+      "weight": 5,
+      "mutationValue": null,
+      "farmingXp": 12800,
+      "drops": [
+        {
+          "item": "BROWN_MUSHROOM",
+          "min": 117,
+          "max": 117
+        },
+        {
+          "item": "COCOA_BEANS",
+          "min": 492,
+          "max": 492
+        },
+        {
+          "item": "MOONFLOWER",
+          "min": 492,
+          "max": 492
+        },
+        {
+          "item": "CARROT",
+          "min": 862,
+          "max": 862
+        },
+        {
+          "item": "SUNFLOWER",
+          "min": 492,
+          "max": 492
+        },
+        {
+          "item": "CACTUS",
+          "min": 369,
+          "max": 369
+        },
+        {
+          "item": "SUGAR_CANE",
+          "min": 492,
+          "max": 492
+        },
+        {
+          "item": "PUMPKIN",
+          "min": 209,
+          "max": 209
+        },
+        {
+          "item": "WHEAT",
+          "min": 246,
+          "max": 246
+        },
+        {
+          "item": "MELON_SLICE",
+          "min": 985,
+          "max": 985
+        },
+        {
+          "item": "POTATO",
+          "min": 738,
+          "max": 738
+        },
+        {
+          "item": "NETHER_WART",
+          "min": 738,
+          "max": 738
+        },
+        {
+          "item": "RED_MUSHROOM",
+          "min": 117,
+          "max": 117
+        },
+        {
+          "item": "WILD_ROSE",
+          "min": 492,
+          "max": 492
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 500,
+        "analyzeFirst": 500,
+        "coinsCost": 1000000,
+        "sheetBoosted60": 801
+      },
+      "behaviour": "Grows when every positive crop effect is present around it. While growing, all adjacent crops receive all positive effects. Drops every base crop.",
+      "decay": null,
+      "tooltip": [
+        "A seed so powerful, it feels like it shouldn't exist. Its growth knows no limits.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "LEGENDARY MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "JERRYFLOWER",
+      "itemId": "JERRYFLOWER",
+      "name": "Jerryflower",
+      "rarity": "LEGENDARY",
+      "stages": 10,
+      "surface": "Farmland",
+      "surfaces": [
+        "Farmland"
+      ],
+      "size": "1x1",
+      "effects": [],
+      "mode": "SPECIAL",
+      "conditions": [],
+      "specialNote": "Grown from a Fertilized Jerryseed planted on Farmland; at stage 5 it waits for Move Jerry. Not spread.",
+      "chancePercent": null,
+      "weight": null,
+      "mutationValue": null,
+      "farmingXp": null,
+      "drops": [],
+      "copper": {
+        "analyzeRepeat": 10,
+        "analyzeFirst": 250,
+        "coinsCost": 20000,
+        "sheetBoosted60": 17
+      },
+      "behaviour": "Not grown by spreading. Plant a Fertilized Jerryseed on Farmland. At stage 5 growth stops until given Move Jerry. Does not need water, no effects, drops no crops. Hidden from the All Mutations menu until discovered; cannot go in Mutations Sacks. Acquisition chain (videos): Unfulfilled Jerryseed from a Jerry visitor, Mysterious Crop to Xalx (Crystal Hollows), reforge to Dirty, Dirt Guy (Dwarven Mines), plant, feed Move Jerrys until stage 10.",
+      "decay": null,
+      "tooltip": [
+        "Jerryflower never sleeps, Jerryflower never stops, Jerryflower is always watching.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "LEGENDARY MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "PHANTOMLEAF",
+      "itemId": "PHANTOMLEAF",
+      "name": "Phantomleaf",
+      "rarity": "LEGENDARY",
+      "stages": 15,
+      "surface": "Soul Sand",
+      "surfaces": [
+        "Soul Sand"
+      ],
+      "size": "1x1",
+      "effects": [
+        "XP_BOOST",
+        "IMMUNITY"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "CHORUS_FRUIT",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "SHELLFRUIT",
+          "count": 4,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 20.0,
+      "weight": 20,
+      "mutationValue": null,
+      "farmingXp": 8000,
+      "drops": [
+        {
+          "item": "POTATO",
+          "min": 3000,
+          "max": 3000
+        },
+        {
+          "item": "CARROT",
+          "min": 3500,
+          "max": 3500
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 1500,
+        "analyzeFirst": 1500,
+        "coinsCost": 3000000,
+        "sheetBoosted60": 2401
+      },
+      "behaviour": "Does not need water. On harvest it hides in a random crop in the Greenhouse for 60 seconds with a heart icon and heartbeat; click the correct crop to harvest it, wrong crop or timeout destroys it. If there are no other crops it does nothing. Messages: Poof! Try and find me! / You have 45/30/15/5 seconds left! / Time's up! You didn't find me fast enough! / That's not me! Better luck next time! / You found me! / I have no where to hide!",
+      "decay": null,
+      "tooltip": [
+        "It hides in plain sight, blending in with its surroundings until it's ready to reveal itself. If you listen closely, you can hear its pulse guiding you to the right spot.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "LEGENDARY MUTATION"
+      ],
+      "unlock": "Find the hidden Phantomleaf within 60 seconds"
+    },
+    {
+      "id": "TIMESTALK",
+      "itemId": "TIMESTALK",
+      "name": "Timestalk",
+      "rarity": "LEGENDARY",
+      "stages": 14,
+      "surface": "End Stone",
+      "surfaces": [
+        "End Stone"
+      ],
+      "size": "1x1",
+      "effects": [
+        "IMPROVED_WATER_RETAIN",
+        "IMPROVED_XP_BOOST",
+        "HARVEST_LOSS"
+      ],
+      "mode": "ADJACENT_ALL",
+      "conditions": [
+        {
+          "crop": "STOPLIGHT_PETAL",
+          "count": 4,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "CHORUS_FRUIT",
+          "count": 2,
+          "kind": "MUTATION"
+        },
+        {
+          "crop": "SHELLFRUIT",
+          "count": 2,
+          "kind": "MUTATION"
+        }
+      ],
+      "specialNote": null,
+      "chancePercent": 20.0,
+      "weight": 20,
+      "mutationValue": null,
+      "farmingXp": 14400,
+      "drops": [
+        {
+          "item": "CACTUS",
+          "min": 2700,
+          "max": 2700
+        },
+        {
+          "item": "SUGAR_CANE",
+          "min": 3600,
+          "max": 3600
+        }
+      ],
+      "copper": {
+        "analyzeRepeat": 9500,
+        "analyzeFirst": 4000,
+        "coinsCost": 19000000,
+        "sheetBoosted60": 15201
+      },
+      "behaviour": "Harvest spawns a Timestalk Clone mob (copy of the player); defeating it drops the Timestalk.",
+      "decay": null,
+      "tooltip": [
+        "The timestalk is a mysterious plant that defies time itself, starting fully grown and slowly aging backwards.",
+        "Analyze this Mutation at the Crop Analyzer in Jake's Underground Lab.",
+        "LEGENDARY MUTATION"
+      ],
+      "unlock": null
+    },
+    {
+      "id": "DEAD_PLANT",
+      "itemId": "DEAD_PLANT",
+      "name": "Dead Plant",
+      "special": true,
+      "rarity": "UNCOMMON",
+      "stages": 0,
+      "surface": null,
+      "surfaces": [],
+      "size": "1x1",
+      "effects": [],
+      "mode": "SPECIAL",
+      "conditions": [],
+      "specialNote": "Not a spreading mutation. A crop that reaches -100 water becomes a Dead Plant; decay also turns most fully grown mutations (even watered or player-placed) into Dead Plants after a few days (lowest 3 days; some mutations never decay). Tradeable item, sells to NPC for 500, storable in Mutations Sacks. Used for Witherbloom and Zombud.",
+      "chancePercent": null,
+      "weight": null,
+      "mutationValue": null,
+      "farmingXp": null,
+      "drops": [],
+      "copper": null,
+      "behaviour": "Dead crops do not need water. Per the user, decay hits 5 days after the last watering, or 9 days total if the crop cannot be watered.",
+      "decay": null,
+      "tooltip": [],
+      "unlock": null
+    }
+  ]
+}

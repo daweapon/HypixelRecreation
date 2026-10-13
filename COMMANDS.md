@@ -61,6 +61,7 @@ This catalog covers **129 top-level game-server command definitions** (after mer
 | `/bank` | — | Open your Personal Bank. | DEFAULT | No | `type.skyblockgeneric` |
 | `/bazzar` | `/bazaar`, `/bz` | Opens the Bazaar remotely. Requires an active Booster Cookie and SkyBlock Level 7. | DEFAULT | No | `type.skyblockgeneric` |
 | `/calendar` | — | Opens the SkyBlock Calendar. | DEFAULT | No | `type.skyblockgeneric` |
+| `/chips` | `/gardenchips` | Opens the Garden Chips menu, where you level up the chips you have redeemed with Sowdust. | DEFAULT | No | `type.skyblockgeneric` |
 | `/chocolatefactory` | `/cf`, `/factory` | Opens the Chocolate Factory menu. | DEFAULT | No | `type.skyblockgeneric` |
 | `/clearstash [confirm]` | — | Clear your stash. Confirmation is required before deleting the stash. | DEFAULT | No | `type.skyblockgeneric` |
 | `/etable` | `/et`, `/enchantingtable`, `/enchantmenttable`, `/enchantingtablemenu`, `/enchantmenttablemenu` | Opens an Enchantment Table remotely. Requires an active Booster Cookie. | DEFAULT | No | `type.skyblockgeneric` |

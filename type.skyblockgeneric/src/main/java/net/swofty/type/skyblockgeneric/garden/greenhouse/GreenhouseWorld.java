@@ -1,15 +1,81 @@
 package net.swofty.type.skyblockgeneric.garden.greenhouse;
 
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.coordinate.Vec;
+import net.minestom.server.entity.Entity;
+import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.metadata.display.ItemDisplayMeta;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
+import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.garden.GardenCrop;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 public final class GreenhouseWorld {
+    private record Display(Entity entity, int stage) {
+    }
+
+    private static final Map<Instance, Map<Long, Display>> DISPLAYS = new WeakHashMap<>();
+    private static final Map<Instance, java.util.Set<Integer>> STATIONS = new WeakHashMap<>();
+
+    private static synchronized void station(Instance instance, int plot) {
+        java.util.Set<Integer> built = STATIONS.computeIfAbsent(instance, key -> new java.util.HashSet<>());
+        if (built.contains(plot)) return;
+        Pos at = GreenhouseLayout.analyzer(plot);
+        if (!instance.isChunkLoaded(at)) return;
+        built.add(plot);
+        net.swofty.type.generic.entity.InteractionEntity click = new net.swofty.type.generic.entity.InteractionEntity(1.2f, 1.6f,
+                (player, event) -> ((net.swofty.type.skyblockgeneric.user.SkyBlockPlayer) player)
+                        .openView(new net.swofty.type.skyblockgeneric.gui.inventories.garden.GUICropAnalyzer()));
+        click.setInstance(instance, at);
+        Entity label = new Entity(EntityType.TEXT_DISPLAY);
+        label.setNoGravity(true);
+        label.editEntityMeta(net.minestom.server.entity.metadata.display.TextDisplayMeta.class, meta -> {
+            meta.setText(net.swofty.commons.text.Text.parse("<a><l>CROP ANALYZER\n<e><l>Click to open!").asComponent());
+            meta.setBillboardRenderConstraints(net.minestom.server.entity.metadata.display.AbstractDisplayMeta.BillboardConstraints.CENTER);
+            meta.setBackgroundColor(0);
+        });
+        label.setInstance(instance, at.add(0, 1.9, 0));
+    }
+
     private GreenhouseWorld() {
+    }
+
+    private static synchronized void display(Instance instance, int plot, int slot, int x, int z, @org.jetbrains.annotations.Nullable PlantType type, GreenhouseData.Plant plant) {
+        Map<Long, Display> live = DISPLAYS.computeIfAbsent(instance, key -> new HashMap<>());
+        long key = plot * 1000L + slot;
+        Display current = live.get(key);
+        boolean wanted = type != null && type.mutation() && !type.id().equals(GreenhouseConfig.DEAD_PLANT);
+        if (!wanted) {
+            if (current != null) {
+                current.entity().remove();
+                live.remove(key);
+            }
+            return;
+        }
+        if (current != null && !current.entity().isRemoved() && current.stage() == plant.getStage()) return;
+        if (current != null) current.entity().remove();
+        MutationCatalogue.Mutation mutation = MutationCatalogue.get().mutation(type.id());
+        ItemType item = mutation == null ? null : mutation.item();
+        if (item == null) return;
+        double progress = type.stages() == 0 ? 1 : 0.45 + 0.55 * Math.min(1, plant.getStage() / (double) type.stages());
+        Entity entity = new Entity(EntityType.ITEM_DISPLAY);
+        entity.setNoGravity(true);
+        entity.editEntityMeta(ItemDisplayMeta.class, meta -> {
+            meta.setItemStack(new SkyBlockItem(item).getItemStack());
+            meta.setScale(new Vec(progress * 1.3, progress * 1.3, progress * 1.3));
+        });
+        entity.setInstance(instance, new Pos(x + 0.5, GreenhouseLayout.CROP_Y + 0.5 * progress, z + 0.5));
+        live.put(key, new Display(entity, plant.getStage()));
     }
 
     public static void render(Instance instance, int plot, GreenhouseData.Bed bed) {
         GreenhouseConfig config = GreenhouseConfig.get();
+        station(instance, plot);
         for (int slot = 0; slot < GreenhouseData.SLOTS; slot++) {
             int x = GreenhouseLayout.worldX(plot, slot % GreenhouseData.SIZE);
             int z = GreenhouseLayout.worldZ(plot, slot / GreenhouseData.SIZE);
@@ -18,6 +84,7 @@ public final class GreenhouseWorld {
             set(instance, x, GreenhouseLayout.FLOOR_Y, z, floor(bed.getUnlocked()[slot], plant));
             PlantType type = plant == null ? null : config.plant(plant.getType());
             Block[] column = type == null ? new Block[]{Block.AIR, Block.AIR} : crop(type, plant);
+            display(instance, plot, slot, x, z, type, plant);
             set(instance, x, GreenhouseLayout.CROP_Y, z, column[0]);
             set(instance, x, GreenhouseLayout.CROP_Y + 1, z, column[1]);
         }

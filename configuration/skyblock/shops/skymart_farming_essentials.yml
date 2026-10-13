@@ -107,12 +107,10 @@ entries:
     name: "<a>Sowledge Chip"
     material: paper
     cost: { copper: 200 }
-    unavailable: "<c>Garden Chips arrive with the Greenhouse update."
   - item: CROPSHOT_GARDEN_CHIP
     name: "<a>Cropshot Chip"
     material: paper
     cost: { copper: 500 }
-    unavailable: "<c>Garden Chips arrive with the Greenhouse update."
   - item: HYDRO_CAN_1000
     name: "<a>HydroCan 1000"
     material: carrot_on_a_stick

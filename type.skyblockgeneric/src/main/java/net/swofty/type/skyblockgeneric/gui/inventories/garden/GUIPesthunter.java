@@ -78,10 +78,11 @@ public class GUIPesthunter extends StatelessView {
             return;
         }
         data.setStored(data.getStored() - pests);
-        data.setBoostFortune(PestRules.tradeFortune(pests));
+        int fortune = (int) Math.round(PestRules.tradeFortune(pests) * (1 + net.swofty.type.skyblockgeneric.garden.chip.ChipService.bonus(profile.chips(), net.swofty.type.skyblockgeneric.garden.chip.GardenChip.HYPERCHARGE) / 100.0));
+        data.setBoostFortune(fortune);
         data.setBoostUntil(System.currentTimeMillis() + PestRules.TRADE_BOOST_MILLIS);
         Gardens.save(player, profile);
         player.sendMessage(Text.of("<b>[NPC] Pesthunter Phillip<f>: Thank you for the <2>{} Pests<f>! You gained <6>+{} Farming Fortune <f>for <a>30 minutes<f>.",
-                pests, PestRules.tradeFortune(pests)));
+                pests, fortune));
     }
 }

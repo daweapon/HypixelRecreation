@@ -166,7 +166,6 @@ items:
     material: dead_bush
     name: "Dead Plant"
     rarity: UNCOMMON
-    unavailable: "Needs the Garden Greenhouse, which isn't built"
     source: "Forms in the Greenhouse when a plant's water reaches -100 or a mutation decays"
     lore:
       - "§7Once full of life, now a reminder of"
@@ -2300,7 +2299,6 @@ items:
     material: vine
     name: "Ethereal Vine"
     rarity: EPIC
-    unavailable: "Needs the Garden Greenhouse, which isn't built"
     source: "Harvesting Mutations in the Greenhouse (15% Common to 40% Legendary)"
     lore:
       - "§7Allows you to unlock additional plant"

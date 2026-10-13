@@ -48,7 +48,10 @@ public class GUICarpenter extends StatelessView {
                 Text.empty(),
                 Text.of("<7>For detailed requirements and spread"),
                 Text.of("<7>conditions, check out your unlocked"),
-                Text.of("<7>mutations!"))));
+                Text.of("<7>mutations!"),
+                Text.empty(),
+                Text.of("<e>Click to view!"))),
+                (_, c) -> c.push(new GUIAllMutations()));
         layout.slot(16, (_, _) -> ItemStacks.item(Material.WHEAT, Text.of("<a>Crop Guide"), List.of(
                         Text.of("<7>See how every base crop grows, what it"),
                         Text.of("<7>yields and which effects it gives to the"),
