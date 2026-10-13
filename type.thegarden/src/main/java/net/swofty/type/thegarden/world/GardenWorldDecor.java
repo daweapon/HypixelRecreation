@@ -152,9 +152,9 @@ public class GardenWorldDecor implements GardenPresence {
             if (instance.hasTag(INTERACTIONS_SPAWNED)) return;
             instance.setTag(INTERACTIONS_SPAWNED, true);
         }
-        InteractionEntity desk = new InteractionEntity(1.2f, 1.5f,
+        InteractionEntity desk = new InteractionEntity(3.2f, 2.4f,
                 (player, _) -> ((SkyBlockPlayer) player).openView(new GUIGardenDesk()));
-        desk.setInstance(instance, new Pos(DESK.x(), 71, DESK.z()));
+        desk.setInstance(instance, new Pos(DESK.x(), 71, DESK.z() - 1));
 
         placeComposterBlocks(instance);
         InteractionEntity composter = new InteractionEntity(1.8f, 2.2f, (player, _) -> {
