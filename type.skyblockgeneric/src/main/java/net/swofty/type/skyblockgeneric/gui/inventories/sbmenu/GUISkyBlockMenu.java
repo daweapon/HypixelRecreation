@@ -159,8 +159,8 @@ public class GUISkyBlockMenu extends StatelessView {
                 var profile = net.swofty.type.skyblockgeneric.garden.Gardens.profile(player);
                 int level = net.swofty.type.skyblockgeneric.garden.GardenProgress.level(profile);
                 return ItemStacks.item(Material.SUNFLOWER, "<a>Garden Level " + StringUtility.getAsRomanNumeral(level)
-                        + "\n<7>Earn Garden experience by accepting\n<7>visitors' offers and unlocking new\n<7>milestones!\n\n<e>Click to view!");
-            }, (click, c) -> c.push(new net.swofty.type.skyblockgeneric.gui.inventories.garden.GUIGardenLevels()));
+                        + "\n<7>Earn Garden experience by accepting\n<7>visitors' offers and unlocking new\n<7>milestones!\n\n<e>Click to open the Desk!");
+            }, (click, c) -> c.push(new net.swofty.type.skyblockgeneric.gui.inventories.garden.GUIGardenDesk()));
         }
 
         layout.slot(19, (s, c) -> {
