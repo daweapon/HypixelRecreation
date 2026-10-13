@@ -12,6 +12,12 @@ patch_notes:
     material: amethyst_shard
     title: "The Crystal Hollows Update"
     book: "crystal_hollows_update.yml"
+  - version: "garden-9"
+    name: "The Garden Update, Part 9"
+    date: "13th October 2026"
+    material: bread
+    title: "The Garden Update, Part 9"
+    book: "garden_update_9.yml"
   - version: "garden-8"
     name: "The Garden Update, Part 8"
     date: "13th October 2026"

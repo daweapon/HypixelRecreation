@@ -1,0 +1,19 @@
+title: "The Garden Update, Part 9"
+date: "13th October 2026"
+intro:
+  - "Garden pet perks, the Grand Bakery and Blooming Business."
+sections:
+  - heading: "Pets"
+    colour: "<d>"
+    lines:
+      - "Spiky Quills, Fearsome Farmer, Smooth Jazz, Bloodsucker's Betrayal, Intelligent Specimen, Spiritual Perfection, Buzzin' Barterer, Rosy Scales and Repugnant Aroma now work."
+  - heading: "Harvest Feast"
+    colour: "<6>"
+    lines:
+      - "Spend Kernels at the Grand Bakery during the Grand Feast: Freshly Baked accessories and Finn's Focaccia."
+      - "Freshly Baked accessories now double their Overbloom during Feast events."
+      - "Blooming Business gives Fine Flour, 10% more Copper, faster and rarer visitors."
+  - heading: "Pests"
+    colour: "<2>"
+    lines:
+      - "The pest spawn cooldown now has the wiki floor of 2m10s (1m10s with Pest Eradicator) and a 20 minute ceiling."
