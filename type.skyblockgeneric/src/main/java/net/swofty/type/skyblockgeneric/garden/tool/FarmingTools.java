@@ -152,7 +152,7 @@ public final class FarmingTools {
         if (tool == null || !tool.works(crop)) return;
 
         double chipBoost = 1 + net.swofty.type.skyblockgeneric.garden.chip.ChipService.bonus(player, net.swofty.type.skyblockgeneric.garden.chip.GardenChip.MECHAMIND) / 100.0;
-        long gained = Math.max(1, Math.round(collectionGained * xpPerCollection(crop) * chipBoost));
+        long gained = Math.max(1, Math.round(collectionGained * xpPerCollection(crop) * chipBoost * net.swofty.type.skyblockgeneric.garden.GardenPetBonuses.toolXpMultiplier(player)));
         int[] levels = new int[2];
         int[] capsules = new int[1];
         player.updateItemInSlot(slot, item -> {

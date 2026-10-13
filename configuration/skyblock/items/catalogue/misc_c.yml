@@ -365,7 +365,6 @@ items:
     material: bread
     name: "Finn's Focaccia"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Feast Baker Scott for 50 Kernels during the Grand Feast"
     lore:
       - "§8Consumable"
@@ -376,6 +375,9 @@ items:
       - "§8Grand Feast."
       - ""
       - "§eRight-click to consume!"
+    components:
+      - id: INTERACTABLE
+        handler_id: FINNS_FOCACCIA
   - id: FIREPLACE
     material: player_head
     name: "Fireplace"

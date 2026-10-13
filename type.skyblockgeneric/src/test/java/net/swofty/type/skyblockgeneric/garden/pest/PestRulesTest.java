@@ -32,6 +32,8 @@ class PestRulesTest {
         assertEquals(600_000, PestRules.cooldownMillis(true, false, 0));
         assertEquals(1_200_000, PestRules.cooldownMillis(false, true, 0));
         assertEquals(270_000, PestRules.cooldownMillis(false, false, 10));
+        assertEquals(130_000, PestRules.cooldownMillis(false, false, 90));
+        assertEquals(70_000, PestRules.cooldownMillis(false, false, 90, true));
     }
 
     @Test

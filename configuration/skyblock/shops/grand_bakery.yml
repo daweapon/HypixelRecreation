@@ -1,0 +1,28 @@
+# Feast Baker Scott's Grand Bakery (wiki: Kernels). Ted's and Scott's Contacts and the Feast I book are not in this shop yet.
+title: "Grand Bakery"
+slots: [10, 11, 12, 13, 14, 19, 20]
+entries:
+  - item: FRESHLY_BAKED_TALISMAN
+    name: "<f>Freshly Baked Talisman"
+    material: bread
+    cost: { kernels: 25 }
+  - item: FRESHLY_BAKED_RING
+    name: "<a>Freshly Baked Ring"
+    material: bread
+    cost: { kernels: 100, items: { FRESHLY_BAKED_TALISMAN: 1 } }
+  - item: FRESHLY_BAKED_ARTIFACT
+    name: "<9>Freshly Baked Artifact"
+    material: bread
+    cost: { kernels: 250, items: { FRESHLY_BAKED_RING: 1 } }
+  - item: FRESHLY_BAKED_RELIC
+    name: "<5>Freshly Baked Relic"
+    material: bread
+    cost: { kernels: 500, items: { FRESHLY_BAKED_ARTIFACT: 1 } }
+  - item: FRESHLY_BAKED_HEIRLOOM
+    name: "<6>Freshly Baked Heirloom"
+    material: bread
+    cost: { kernels: 1000, items: { FRESHLY_BAKED_RELIC: 1 } }
+  - item: FINNS_FOCACCIA
+    name: "<a>Finn's Focaccia"
+    material: bread
+    cost: { kernels: 50 }

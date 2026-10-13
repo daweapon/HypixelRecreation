@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.feast.FeastCalendar;
 import net.swofty.type.skyblockgeneric.garden.feast.FeastData;
 import net.swofty.type.skyblockgeneric.garden.feast.FeastService;
+import net.swofty.type.skyblockgeneric.shop.catalogue.CatalogueShopView;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -34,7 +35,24 @@ public class GUIFeast extends StatelessView {
         Components.fill(layout);
         Components.close(layout, 31);
         layout.slot(11, (_, _) -> seasonItem());
+        layout.slot(13, (_, _) -> bakery(), (_, c) -> openBakery(c));
         layout.slot(15, (_, c) -> stew((SkyBlockPlayer) c.player()), (_, c) -> GardenMenus.open(c, new GUIFeastStew()));
+    }
+
+    private ItemStack.Builder bakery() {
+        List<Text> lore = new ArrayList<>();
+        lore.add(Text.of("<7>Spend <e>Kernels <7>on baked goods."));
+        lore.add(Text.empty());
+        lore.add(FeastCalendar.grand() ? Text.of("<e>Click to browse!") : Text.of("<c>Only open during the Grand Feast."));
+        return ItemStacks.item(Material.BREAD, Text.of("<6>Grand Bakery"), lore);
+    }
+
+    private void openBakery(ViewContext ctx) {
+        if (!FeastCalendar.grand()) {
+            ctx.player().sendMessage(Text.of("<c>The Grand Bakery is only open during the Grand Feast!"));
+            return;
+        }
+        GardenMenus.open(ctx, new CatalogueShopView("grand_bakery"));
     }
 
     private ItemStack.Builder seasonItem() {

@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.garden.visitor;
 
+import net.swofty.type.skyblockgeneric.garden.GardenPetBonuses;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
@@ -8,6 +9,8 @@ import net.swofty.type.skyblockgeneric.essence.Essences;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.GardenProgress;
 import net.swofty.type.skyblockgeneric.garden.GardenService;
+import net.swofty.type.skyblockgeneric.elections.SkyBlockMayor;
+import net.swofty.type.skyblockgeneric.elections.perks.ElectionPerks;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.quest.GardenQuests;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -29,6 +32,9 @@ public final class VisitorService {
     public enum GiveResult {
         NOTHING, PARTIAL, COMPLETED
     }
+
+    private static final double BLOOMING_RARITY_BONUS = 0.2;
+    private static final double BLOOMING_COOLDOWN_FACTOR = 0.8;
 
     private VisitorService() {
     }
@@ -68,7 +74,8 @@ public final class VisitorService {
     }
 
     static long cooldownMillis(VisitorCatalogue catalogue, VisitorData data) {
-        return (long) (catalogue.cooldownMinutes(data.uniqueServed()) * 60_000);
+        double perk = ElectionPerks.isActive(SkyBlockMayor.Perk.BLOOMING_BUSINESS) ? BLOOMING_COOLDOWN_FACTOR : 1;
+        return (long) (catalogue.cooldownMinutes(data.uniqueServed()) * 60_000 * perk);
     }
 
     public static boolean eligible(GardenProfile profile, VisitorCatalogue.Visitor visitor) {
@@ -101,7 +108,7 @@ public final class VisitorService {
         }
         if (visitor == null) {
             var present = data.getPresent().stream().map(VisitorData.Present::getId).collect(java.util.stream.Collectors.toSet());
-            visitor = VisitorGenerator.pick(catalogue, candidate -> eligible(profile, candidate), present, 0, RANDOM);
+            visitor = VisitorGenerator.pick(catalogue, candidate -> eligible(profile, candidate), present, BLOOMING_RARITY_BONUS * (ElectionPerks.isActive(SkyBlockMayor.Perk.BLOOMING_BUSINESS) ? 1 : 0), RANDOM);
         }
         return visitor != null && add(profile, player, visitor, now);
     }
@@ -239,6 +246,11 @@ public final class VisitorService {
 
         boolean blueprint = visitor != null && visitor.id().equals("CARPENTER") && !profile.greenhouse().isBlueprintGiven();
         if (blueprint) profile.greenhouse().setBlueprintGiven(true);
+        copper = (int) Math.round(copper * GardenPetBonuses.copperMultiplier(player) * ElectionPerks.multiplier(SkyBlockMayor.Perk.BLOOMING_BUSINESS));
+        if (ElectionPerks.isActive(SkyBlockMayor.Perk.BLOOMING_BUSINESS)) {
+            player.addAndUpdateItem(new SkyBlockItem(ItemType.FINE_FLOUR, 1));
+            lines.add("<f>Fine Flour");
+        }
         profile.addCopper(copper);
         data.recordAccepted(present.getId());
         remove(data, present);

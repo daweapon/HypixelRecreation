@@ -243,8 +243,10 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Feast events"
+          - type: HANDLER
+            handler: FEAST_OVERBLOOM
+            statistics:
+              OVERBLOOM: 1
             text:
               - "This item has <e>x2  Overbloom <7>during"
               - "Feast events."
@@ -260,8 +262,10 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Feast events"
+          - type: HANDLER
+            handler: FEAST_OVERBLOOM
+            statistics:
+              OVERBLOOM: 2
             text:
               - "This item has <e>x2  Overbloom <7>during"
               - "Feast events."
@@ -277,8 +281,10 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Feast events"
+          - type: HANDLER
+            handler: FEAST_OVERBLOOM
+            statistics:
+              OVERBLOOM: 3
             text:
               - "This item has <e>x2  Overbloom <7>during"
               - "Feast events."
@@ -294,8 +300,10 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Feast events"
+          - type: HANDLER
+            handler: FEAST_OVERBLOOM
+            statistics:
+              OVERBLOOM: 4
             text:
               - "This item has <e>x2  Overbloom <7>during"
               - "Feast events."
@@ -311,8 +319,10 @@ items:
     components:
       - id: ACCESSORY
         effects:
-          - type: INACTIVE
-            reason: "Feast events"
+          - type: HANDLER
+            handler: FEAST_OVERBLOOM
+            statistics:
+              OVERBLOOM: 5
             text:
               - "This item has <e>x2  Overbloom <7>during"
               - "Feast events."

@@ -4,6 +4,7 @@ import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.title.Title;
 import net.minestom.server.instance.Instance;
+import net.swofty.type.skyblockgeneric.garden.GardenPetBonuses;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.garden.GardenLayout;
@@ -57,7 +58,8 @@ public final class PestService {
     }
 
     public static double pestFortune(SkyBlockPlayer player) {
-        return PestRules.eradicatorFortune(pesthunterPieces(player)) + ReforgeLoadout.pestFortune(player);
+        return PestRules.eradicatorFortune(pesthunterPieces(player)) + ReforgeLoadout.pestFortune(player)
+                + GardenPetBonuses.pestFortune(player);
     }
 
     public static double fortuneBoost(GardenProfile profile, long now) {
@@ -86,7 +88,7 @@ public final class PestService {
         int before = fortuneLoss(player, profile);
         List<PestData.Alive> spawned = new ArrayList<>();
         for (int i = 0; i < count && data.aliveCount() < PestData.MAX_ALIVE; i++) {
-            PestCatalogue.Pest type = forcedType != null ? PestCatalogue.get().pest(forcedType) : pickType(profile, plot, now);
+            PestCatalogue.Pest type = forcedType != null ? PestCatalogue.get().pest(forcedType) : pickType(profile, plot, now, GardenPetBonuses.vinylBoostFraction(player));
             if (type == null) continue;
             PestData.Alive alive = PestData.Alive.create(type.id(), plot);
             data.getAlive().add(alive);
@@ -95,7 +97,7 @@ public final class PestService {
         if (spawned.isEmpty()) return spawned;
         boolean repelled = data.getRepellentUntil() > now;
         data.setCooldownUntil(now + PestRules.cooldownMillis(repelled && !data.isRepellentMax(), repelled && data.isRepellentMax(),
-                cooldownReduction(player)));
+                cooldownReduction(player), ElectionPerks.bonus(SkyBlockMayor.Perk.PEST_ERADICATOR) > 0));
         Gardens.save(player, profile);
         Instance instance = player.getInstance();
         if (instance != null) PestWorld.reconcile(instance, data);
@@ -146,6 +148,10 @@ public final class PestService {
     }
 
     public static @Nullable PestCatalogue.Pest pickType(GardenProfile profile, int plot, long now) {
+        return pickType(profile, plot, now, 0);
+    }
+
+    public static @Nullable PestCatalogue.Pest pickType(GardenProfile profile, int plot, long now, double vinylBoost) {
         int level = GardenProgress.level(profile);
         PestData.Spray spray = profile.pests().sprayOn(plot, now);
         List<PestCatalogue.Pest> pool = PestCatalogue.get().natural().stream().filter(pest -> pest.level() <= level).toList();
@@ -155,7 +161,7 @@ public final class PestService {
         for (int i = 0; i < pool.size(); i++) {
             weights[i] = PestRules.BASE_WEIGHT
                     + (spray != null && spray.material().equals(pool.get(i).spray()) ? PestRules.SPRAY_ATTRACT_WEIGHT : 0)
-                    + (int) PestVinyls.weight(profile.pests().getPlayingVinyl(), pool.get(i).id());
+                    + (int) PestVinyls.weight(profile.pests().getPlayingVinyl(), pool.get(i).id(), vinylBoost);
             total += weights[i];
         }
         int roll = ThreadLocalRandom.current().nextInt(total);
@@ -203,7 +209,7 @@ public final class PestService {
         TreeSet<Integer> hit = new TreeSet<>();
         for (long i = 0; i < hours && data.aliveCount() < PestData.MAX_ALIVE; i++) {
             int plot = plots.get(ThreadLocalRandom.current().nextInt(plots.size()));
-            PestCatalogue.Pest type = pickType(profile, plot, now);
+            PestCatalogue.Pest type = pickType(profile, plot, now, GardenPetBonuses.vinylBoostFraction(player));
             if (type == null) continue;
             PestData.Alive alive = PestDisco.attracts(data, type.id())
                     ? PestDisco.spawnNear(data.getDisco(), type.id()) : PestData.Alive.create(type.id(), plot);

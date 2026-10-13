@@ -75,7 +75,7 @@ class MiscPetsTest {
         assertEquals(3, ability(rose, "Garden Power").valuesAt(Rarity.LEGENDARY, 200)[0], 1e-9);
         assertEquals(40, ability(rose, "Dragon's Gluttony").valuesAt(Rarity.LEGENDARY, 200)[0], 1e-9);
         assertTrue(ability(rose, "Symbiosis").isActive());
-        assertFalse(ability(rose, "Rosy Scales").isActive());
+        assertTrue(ability(rose, "Rosy Scales").isActive());
     }
 
     @Test
@@ -110,7 +110,8 @@ class MiscPetsTest {
         assertTrue(ability(component(ItemType.ORCHID_MANTIS_PET), "Swift Sickles").isActive());
         assertTrue(ability(component(ItemType.RABBIT_PET), "Efficient Farming").isActive());
         assertTrue(ability(component(ItemType.PARROT_PET), "Flamboyant").isActive());
-        assertFalse(ability(component(ItemType.HEDGEHOG_PET), "Spiky Quills").isActive());
+        assertTrue(ability(component(ItemType.HEDGEHOG_PET), "Spiky Quills").isActive());
+        assertFalse(ability(component(ItemType.HEDGEHOG_PET), "Hunter's Insight").isActive());
         assertFalse(ability(component(ItemType.JELLYFISH_PET), "Stored Energy").isActive());
     }
 

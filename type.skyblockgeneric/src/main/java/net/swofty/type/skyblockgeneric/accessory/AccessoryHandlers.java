@@ -19,6 +19,7 @@ public final class AccessoryHandlers {
             Map.entry("COINS_PER_MOB_LEVEL", "accessory/AccessoryEconomyHooks"),
             Map.entry("DOUBLE_BITS_CHANCE", "accessory/AccessoryEconomyHooks"),
             Map.entry("FALL_DAMAGE_REDUCTION", "item/events/AccessoryFallDamageEvent"),
+            Map.entry("FEAST_OVERBLOOM", "accessory/AccessoryHandlerStats"),
             Map.entry("GRAVITY_TALISMAN", "accessory/AccessoryHandlerStats"),
             Map.entry("HASTE", "accessory/AccessoryHandlerStats"),
             Map.entry("MAGIC_8_BALL", "accessory/AccessoryHandlerStats"),

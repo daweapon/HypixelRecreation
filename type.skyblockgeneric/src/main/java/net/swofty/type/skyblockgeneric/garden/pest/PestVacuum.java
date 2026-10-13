@@ -6,6 +6,7 @@ import net.minestom.server.entity.Player;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.network.packet.server.play.ParticlePacket;
 import net.minestom.server.particle.Particle;
+import net.swofty.type.skyblockgeneric.garden.GardenPetBonuses;
 import net.swofty.commons.skyblock.item.reforge.Reforge;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
@@ -114,7 +115,7 @@ public final class PestVacuum {
         Long last = LAST_HIT.get(player.getUuid());
         if (last != null && now - last < tier.intervalMillis()) return;
         LAST_HIT.put(player.getUuid(), now);
-        if (target.hurt(damage * tier.intervalMillis() / 1000.0)) PestService.kill(player, target);
+        if (target.hurt(damage * GardenPetBonuses.pestDamageMultiplier(player) * tier.intervalMillis() / 1000.0)) PestService.kill(player, target);
     }
 
     private static void beam(SkyBlockPlayer player, Pos from, Pos to) {

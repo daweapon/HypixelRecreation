@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.garden.pest;
 
+import net.swofty.type.skyblockgeneric.garden.GardenPetBonuses;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
@@ -88,7 +89,7 @@ public final class PestRewards {
         for (MobDrop drop : pest.rare()) {
             List<ItemType> items = drop.availableItems();
             if (items.isEmpty()) continue;
-            ItemType won = CrimsonMobLoot.decide(player.getUuid(), items, drop.chancePercent() * FeastService.overbloomFactor(player), ThreadLocalRandom.current());
+            ItemType won = CrimsonMobLoot.decide(player.getUuid(), items, drop.chancePercent() * (FeastService.overbloomFactor(player) + GardenPetBonuses.pestOverbloom(player) / 100.0), ThreadLocalRandom.current());
             if (won == null) continue;
             SkyBlockItem item = create(won, drop);
             give(player, item);

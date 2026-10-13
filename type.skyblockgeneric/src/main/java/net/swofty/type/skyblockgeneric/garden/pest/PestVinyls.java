@@ -60,7 +60,11 @@ public final class PestVinyls {
     }
 
     public static double weight(String playing, String pestId) {
-        return playing.equals(pestId) ? PestRules.vinylWeight(0) : 0;
+        return weight(playing, pestId, 0);
+    }
+
+    public static double weight(String playing, String pestId, double mosquitoBoostFraction) {
+        return playing.equals(pestId) ? PestRules.vinylWeight(mosquitoBoostFraction) : 0;
     }
 
     public static boolean isHooverius(SkyBlockItem item) {

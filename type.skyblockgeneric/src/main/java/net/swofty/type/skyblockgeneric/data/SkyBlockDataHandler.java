@@ -750,6 +750,7 @@ public class SkyBlockDataHandler extends DataHandler {
                 (player, datapoint) -> {
                     GreatSpookPotion.restore(player);
                     net.swofty.type.skyblockgeneric.consumable.JerryCandy.restore(player);
+                    net.swofty.type.skyblockgeneric.consumable.FinnsFocaccia.restore(player);
                 }),
 
         JYRRE_BUFF_EXPIRATION("jyrre_buff_expiration", false, false, false,

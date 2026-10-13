@@ -6,6 +6,10 @@ import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.components.PetComponent;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.CountScaledStatHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BarthererHandler;
+import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.RepugnantAromaHandler;
+import net.swofty.type.skyblockgeneric.garden.GardenProgress;
+import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BingoChimeraHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BingoClimberHandler;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.misc.BulwarkHandler;
@@ -40,6 +44,11 @@ final class MiscPetAbilities implements PetAbilityRegistry.Provider {
         registrar.register("WITHER_SKELETON_DEATHS_TOUCH", new DeathsTouchHandler());
         registrar.register("ROSE_DRAGON_GARDEN_POWER", CountScaledStatHandler.flat(
                 player -> player.getSkills().getCurrentLevel(SkillCategories.FARMING), ItemStatistic.FARMING_FORTUNE));
+        registrar.register("MOSQUITO_BUZZIN_BARTERER", new BarthererHandler());
+        registrar.register("SLUG_REPUGNANT_AROMA", new RepugnantAromaHandler());
+        registrar.register("ROSE_DRAGON_ROSY_SCALES", CountScaledStatHandler.flat(
+                player -> GardenProgress.totalMilestoneTiers(Gardens.profile(player)),
+                ItemStatistic.FARMING_FORTUNE, ItemStatistic.SPEED));
         registrar.register("ROSE_DRAGON_SYMBIOSIS",
                 CountScaledStatHandler.flat(MiscPetAbilities::roseSymbiosisPets, ItemStatistic.FARMING_FORTUNE));
     }

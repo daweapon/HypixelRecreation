@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.garden.pest;
 
 import net.minestom.server.coordinate.Point;
+import net.swofty.type.skyblockgeneric.garden.GardenPetBonuses;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.garden.GardenLayout;
@@ -132,7 +133,11 @@ public final class PestTraps {
             released++;
         }
         trap.getCaught().clear();
-        if (trap.getBait() > 0 && trap.getNextAt() == 0) trap.setNextAt(System.currentTimeMillis() + CATCH_INTERVAL_MILLIS);
+        if (trap.getBait() > 0) {
+            long now = System.currentTimeMillis();
+            long remaining = trap.getNextAt() == 0 ? CATCH_INTERVAL_MILLIS : Math.max(0, trap.getNextAt() - now);
+            trap.setNextAt(now + Math.round(remaining * (1 - GardenPetBonuses.trapCatchSpeedFraction(player))));
+        }
         Gardens.save(player, profile);
         if (player.getInstance() != null) PestWorld.reconcile(player.getInstance(), data);
         player.sendMessage(Text.of("<a>You released <2>{} Pests <a>from the Trap! <7>Vacuum them up to claim their rewards.", released));

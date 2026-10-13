@@ -13,15 +13,12 @@ import java.util.Optional;
  */
 public final class PerkAvailability {
     private static final String DUNGEONS = "Dungeons aren't in this server yet.";
-    private static final String GARDEN = "The Garden isn't in this server yet.";
 
     private static final Map<Perk, Gap> GAPS = new EnumMap<>(Map.ofEntries(
             missing(Perk.SHOPPING_SPREE, "NPC shops have no daily buy limits in this server yet.",
                     "daily NPC buy limit * ElectionPerks.factor(SHOPPING_SPREE)"),
-            missing(Perk.BLOOMING_BUSINESS, GARDEN,
-                    "visitor copper * ElectionPerks.multiplier(BLOOMING_BUSINESS)"),
-            missing(Perk.GRAND_FEAST, "The Harvest Feast isn't in this server yet.",
-                    "run the Feast for the whole year when ElectionPerks.isActive(GRAND_FEAST)"),
+            partial(Perk.GRAND_FEAST, "The Feast runs all year, but the Grand Bakery and its Kernels aren't in this server yet.",
+                    "open the Grand Bakery shop when ElectionPerks.isActive(GRAND_FEAST)"),
             partial(Perk.A_TIME_FOR_GIVING, "Party Chests aren't in this server yet, so only Party Gifts from Winter Sea Creatures are given.",
                     "spawn Party Chests instead of Trick or Treat Chests when ElectionPerks.isActive(A_TIME_FOR_GIVING)"),
             missing(Perk.MARAUDER, DUNGEONS,

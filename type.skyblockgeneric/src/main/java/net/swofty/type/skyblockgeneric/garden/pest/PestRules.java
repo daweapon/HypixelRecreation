@@ -3,6 +3,9 @@ package net.swofty.type.skyblockgeneric.garden.pest;
 public final class PestRules {
     public static final double BASE_SPAWN_CHANCE_PERCENT = 0.2;
     public static final int BASE_COOLDOWN_SECONDS = 300;
+    public static final long MIN_COOLDOWN_MILLIS = 130_000L;
+    public static final long MIN_COOLDOWN_ERADICATOR_MILLIS = 70_000L;
+    public static final long MAX_COOLDOWN_MILLIS = 20 * 60_000L;
     public static final long REPELLENT_DURATION_MILLIS = 60 * 60_000L;
     public static final int SPRAY_ATTRACT_WEIGHT = 1000;
     public static final int VINYL_ATTRACT_WEIGHT = 1000;
@@ -63,9 +66,15 @@ public final class PestRules {
     }
 
     public static long cooldownMillis(boolean repellent, boolean repellentMax, double reductionPercent) {
+        return cooldownMillis(repellent, repellentMax, reductionPercent, false);
+    }
+
+    public static long cooldownMillis(boolean repellent, boolean repellentMax, double reductionPercent, boolean eradicator) {
         int factor = repellentMax ? 4 : repellent ? 2 : 1;
         double reduction = 1 - Math.min(90, Math.max(0, reductionPercent)) / 100.0;
-        return Math.round(BASE_COOLDOWN_SECONDS * 1000L * reduction) * factor;
+        long reduced = Math.max(Math.round(BASE_COOLDOWN_SECONDS * 1000L * reduction),
+                eradicator ? MIN_COOLDOWN_ERADICATOR_MILLIS : MIN_COOLDOWN_MILLIS);
+        return Math.min(MAX_COOLDOWN_MILLIS, reduced * factor);
     }
 
     public static long tradeBoostMillis(boolean pestEradicator) {

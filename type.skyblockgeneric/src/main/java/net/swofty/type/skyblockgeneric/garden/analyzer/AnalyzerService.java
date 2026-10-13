@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.garden.analyzer;
 
+import net.swofty.type.skyblockgeneric.garden.GardenPetBonuses;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
@@ -42,7 +43,7 @@ public final class AnalyzerService {
 
     public static int copperFor(SkyBlockPlayer player, MutationCatalogue.Mutation mutation, boolean first) {
         double synthesis = 1 + ChipService.bonus(player, GardenChip.SYNTHESIS) / 100.0;
-        return (int) Math.round((mutation.copperRepeat() + (first ? mutation.copperFirst() : 0)) * synthesis);
+        return (int) Math.round((mutation.copperRepeat() + (first ? mutation.copperFirst() : 0)) * synthesis * GardenPetBonuses.copperMultiplier(player));
     }
 
     public static int owned(SkyBlockPlayer player, ItemType item) {

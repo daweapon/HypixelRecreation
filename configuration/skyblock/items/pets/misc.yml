@@ -198,15 +198,13 @@ items:
           LEGENDARY: { speed: { per_level: 0.15 } }
         abilities:
           - name: "Spiky Quills"
-            unavailable: "Needs the Garden"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Deal <a>{0}% <7>more damage to <2><glyph:mobs_pest> Pests<7>."
             values:
               - { per_level: 1 }
           - name: "Fearsome Farmer"
-            unavailable: "Needs the Garden"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming Fortune <7>and"
               - "<e>+{1}<glyph:stat_overbloom> Overbloom<7> <7>on <2><glyph:mobs_pest> Pests<7>."
@@ -214,7 +212,7 @@ items:
               - { per_level: 1 }
               - { per_level: 0.35 }
           - name: "Hunter's Insight"
-            unavailable: "Needs the Garden"
+            unavailable: "Needs the Pest Bestiary"
             kind: INACTIVE
             text:
               - "<7>Grants <6>+{0}<glyph:stat_farming_fortune> Farming Fortune<7> per"
@@ -324,16 +322,15 @@ items:
           COMMON: { speed: { per_level: 0.2 }, bonus_pest_chance: { per_level: 0.5 } }
         abilities:
           - name: "Smooth Jazz"
-            unavailable: "Needs the Garden"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Pest Vinyls are <a>+{0}% <7>more effective."
             values:
               - { per_level: { COMMON: 0.25, RARE: 0.35, EPIC: 0.5 } }
           - name: "Buzzin' Barterer"
-            unavailable: "Needs the Garden"
             rarity: RARE
-            kind: INACTIVE
+            kind: HANDLER
+            handler: MOSQUITO_BUZZIN_BARTERER
             text:
               - "<7>Gain <6>+{0}<glyph:stat_farming_fortune> Sugar Cane Fortune <7>for"
               - "<7>every unique visitor you've served"
@@ -342,9 +339,8 @@ items:
             values:
               - { per_level: { RARE: 0.01, EPIC: 0.02 } }
           - name: "Bloodsucker's Betrayal"
-            unavailable: "Needs the Garden"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>When collected, <2>Pest Traps <7>will catch"
               - "<7>the next pest <a>{0}% <7>faster."
@@ -390,8 +386,7 @@ items:
           COMMON: { speed: { per_level: 0.3 }, overbloom: { per_level: 0.15 } }
         abilities:
           - name: "Intelligent Specimen"
-            unavailable: "Needs the Garden"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Earn <a>+{0}% <7>more Farming Tool Exp."
             values:
@@ -531,7 +526,7 @@ items:
           COMMON: { speed: { per_level: 0.15 }, potato_fortune: { per_level: 0.2 } }
         abilities:
           - name: "Hamfisted"
-            unavailable: "Needs the Garden"
+            unavailable: "Needs Shiny Pigs"
             kind: INACTIVE
             text:
               - "<7>Increases <6>Coin <7>gain from <6>Shiny Pigs"
@@ -539,7 +534,7 @@ items:
             values:
               - { per_level: { COMMON: 0.2, UNCOMMON: 0.35, EPIC: 0.5 } }
           - name: "Shining Stampede"
-            unavailable: "Needs the Garden"
+            unavailable: "Needs Shiny Pigs"
             rarity: RARE
             kind: INACTIVE
             text:
@@ -664,8 +659,8 @@ items:
             values:
               - { base: 1.5, per_level: 0.015 }
           - name: "Rosy Scales"
-            unavailable: "Needs the Garden"
-            kind: INACTIVE
+            kind: HANDLER
+            handler: ROSE_DRAGON_ROSY_SCALES
             text:
               - "<7>Grants <6>{0}<glyph:stat_farming_fortune> Farming Fortune <7>and"
               - "<f>{1}<glyph:stat_speed> Speed<7> per Crop Milestone."
@@ -680,8 +675,7 @@ items:
             values:
               - { base: 20, per_level: 0.2 }
           - name: "Spiritual Perfection"
-            unavailable: "Needs the Garden"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain <a>{0}% <7>more <c>Copper <7>from <a>Garden"
               - "<a>Visitors<7> and from analyzing <e>Mutations<7>."
@@ -797,9 +791,9 @@ items:
             values:
               - { per_level: 0.4 }
           - name: "Repugnant Aroma"
-            unavailable: "Needs the Garden"
             rarity: LEGENDARY
-            kind: INACTIVE
+            kind: HANDLER
+            handler: SLUG_REPUGNANT_AROMA
             text:
               - "<7>When farming in a plot"
               - "<7>affected by a <a>Sprayonator<7>,"

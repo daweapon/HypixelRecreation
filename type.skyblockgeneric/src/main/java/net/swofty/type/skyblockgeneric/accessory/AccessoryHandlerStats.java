@@ -5,6 +5,7 @@ import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.type.skyblockgeneric.accessory.effect.AccessoryEffect;
 import net.swofty.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import net.swofty.type.skyblockgeneric.garden.feast.FeastCalendar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.Objects;
 public final class AccessoryHandlerStats {
     public static final String WHILE_BURNING = "WHILE_BURNING";
     public static final String HASTE = "HASTE";
+    public static final String FEAST_OVERBLOOM = "FEAST_OVERBLOOM";
     public static final String GRAVITY = "GRAVITY_TALISMAN";
     public static final String MAGIC_8_BALL = "MAGIC_8_BALL";
     public static final String TOTAL_INTELLIGENCE = "TOTAL_INTELLIGENCE";
@@ -39,6 +41,7 @@ public final class AccessoryHandlerStats {
     private static final Map<String, StatHandler> HANDLERS = Map.of(
             WHILE_BURNING, (player, effect) -> player.getFireTicks() > 0 ? effect.statistics() : ItemStatistics.empty(),
             HASTE, (player, effect) -> effect.statistics(),
+            FEAST_OVERBLOOM, (player, effect) -> FeastCalendar.active() ? effect.statistics() : ItemStatistics.empty(),
             GRAVITY, (player, effect) -> gravity(player),
             MAGIC_8_BALL, (player, effect) -> MAGIC_8_BALL_BONUSES.get(magic8BallIndex(player)),
             TOTAL_INTELLIGENCE, (player, effect) -> ItemStatistics.builder()
