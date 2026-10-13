@@ -13,11 +13,17 @@ import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorData;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.collection.CollectionCategories;
+import net.swofty.type.skyblockgeneric.collection.CollectionCategory;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
 public class GardenInfoModule extends TablistModule {
+    private static final List<ItemType> COLLECTIONS = List.of(ItemType.CARROT, ItemType.POTATO, ItemType.WHEAT);
 
     @Override
     public List<TablistEntry> getEntries(HypixelPlayer p) {
@@ -27,7 +33,7 @@ public class GardenInfoModule extends TablistModule {
         int level = GardenProgress.level(garden);
 
         List<TablistEntry> entries = new ArrayList<>(List.of(
-                centered(Text.key("tablist.module.server_info"), l, TablistSkinRegistry.CYAN)
+                centered("<b><l>Info", l, TablistSkinRegistry.CYAN)
         ));
         entries.add(new TablistEntry(Text.key("tablist.server_info.area.garden"), TablistSkinRegistry.GRAY));
         entries.add(new TablistEntry(Text.key("tablist.server_info.server_label", HypixelConst.getServerName()), TablistSkinRegistry.GRAY));
@@ -36,16 +42,28 @@ public class GardenInfoModule extends TablistModule {
                 level > 0 ? StringUtility.getAsRomanNumeral(level) : "0"), TablistSkinRegistry.GRAY));
         entries.add(new TablistEntry(Text.key("tablist.garden.copper", StringUtility.commaify(Math.floor(garden.getCopper()))), TablistSkinRegistry.GRAY));
         entries.add(new TablistEntry(Text.key("tablist.garden.sowdust", StringUtility.commaify(Math.floor(garden.getSowdust()))), TablistSkinRegistry.GRAY));
-        VisitorData visitors = garden.visitors();
         entries.add(getGrayEntry());
-        entries.add(new TablistEntry(Text.of("<b><l>Visitors: <f>({})", visitors.visible().size()), TablistSkinRegistry.GRAY));
-        for (VisitorData.Present present : visitors.visible()) {
-            VisitorCatalogue.Visitor visitor = VisitorCatalogue.get().visitor(present.getId());
-            entries.add(new TablistEntry(Text.of(" " + (visitor == null ? present.getId() : visitor.coloured())), TablistSkinRegistry.GRAY));
+        entries.add(new TablistEntry(Text.of("<a><l>Collection:"), TablistSkinRegistry.GRAY));
+        for (ItemType type : COLLECTIONS) {
+            entries.add(new TablistEntry(Text.of(" <7>" + name(type) + " " + collectionLevel(player, type)), TablistSkinRegistry.GRAY));
         }
-        long wait = Math.max(0, visitors.getNextVisitorAt() - System.currentTimeMillis());
-        entries.add(new TablistEntry(Text.of(" <7>Next Visitor: <f>{}", wait == 0 ? "Soon" : (wait / 60_000 + 1) + "m"), TablistSkinRegistry.GRAY));
+        entries.add(getGrayEntry());
+        entries.addAll(GardenComposterModule.entries(player));
         fillRestWithGray(entries);
         return entries;
+    }
+
+    private static String name(ItemType type) {
+        return StringUtility.toNormalCase(type.name());
+    }
+
+    private static String collectionLevel(SkyBlockPlayer player, ItemType type) {
+        CollectionCategory category = CollectionCategories.getCategory(type);
+        if (category == null) return "<7>-";
+        CollectionCategory.ItemCollection collection = category.getCollection(type);
+        int collected = player.getCollection().get(type);
+        int level = (int) Arrays.stream(collection.rewards()).filter(reward -> collected >= reward.requirement()).count();
+        if (level >= collection.rewards().length) return "<c><l>MAX";
+        return "<a>" + (level > 0 ? StringUtility.getAsRomanNumeral(level) : "0");
     }
 }

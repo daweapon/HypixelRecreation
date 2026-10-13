@@ -24,11 +24,11 @@ import net.swofty.type.skyblockgeneric.garden.npc.PesthunterNpc;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorNpc;
 import net.swofty.type.thegarden.world.VisitorTicker;
-import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.user.AreaSidebar;
 import net.swofty.type.skyblockgeneric.user.garden.SkyBlockGarden;
 import net.swofty.type.thegarden.tab.GardenPestsModule;
-import net.swofty.type.thegarden.tab.GardenComposterModule;
+import net.swofty.type.thegarden.tab.GardenContestModule;
+import net.swofty.type.thegarden.tab.GardenPlayersModule;
 import net.swofty.type.thegarden.tab.GardenInfoModule;
 import net.swofty.type.thegarden.world.GardenSidebar;
 import net.swofty.type.thegarden.world.GardenWorldDecor;
@@ -90,10 +90,10 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
             @Override
             public List<TablistModule> getModules() {
                 return new ArrayList<>(List.of(
+                        new GardenPlayersModule(),
                         new GardenInfoModule(),
-                        new GardenComposterModule(),
-                        new GardenPestsModule(),
-                        new AccountInformationModule()
+                        new GardenContestModule(),
+                        new GardenPestsModule()
                 ));
             }
         };

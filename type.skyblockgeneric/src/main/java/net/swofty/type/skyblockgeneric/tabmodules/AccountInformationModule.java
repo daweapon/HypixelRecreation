@@ -51,7 +51,7 @@ public class AccountInformationModule extends TablistModule {
         return entries;
     }
 
-    static Component stat(ItemStatistic statistic, ItemStatistics statistics) {
+    public static Component stat(ItemStatistic statistic, ItemStatistics statistics) {
         return statistic.getColouredSymbol()
                 .append(Component.text(StringUtility.commaify(Math.round(statistics.getOverall(statistic))), statistic.getDisplayColor()));
     }

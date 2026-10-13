@@ -14,6 +14,14 @@ import net.swofty.type.skyblockgeneric.garden.pest.PestService;
 import net.swofty.type.skyblockgeneric.garden.pest.PestTraps;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import net.swofty.commons.skyblock.statistics.ItemStatistic;
+import net.swofty.commons.skyblock.statistics.ItemStatistics;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.components.PetComponent;
+import net.swofty.type.skyblockgeneric.skill.SkillCategories;
+import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
+import net.swofty.type.skyblockgeneric.user.pets.PetLevels;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
@@ -25,6 +33,7 @@ public class GardenPestsModule extends TablistModule {
         SkyBlockPlayer player = (SkyBlockPlayer) p;
         GardenProfile profile = Gardens.profile(player);
         List<TablistEntry> entries = new ArrayList<>();
+        entries.add(centered("<b><l>Info", p.getLocale(), TablistSkinRegistry.CYAN));
         if (PestService.unlocked(profile)) {
             PestData data = profile.pests();
             long now = System.currentTimeMillis();
@@ -46,6 +55,26 @@ public class GardenPestsModule extends TablistModule {
         if (!greenhouse.getBeds().isEmpty()) {
             entries.add(new TablistEntry(Text.of("<a><l>Greenhouse:"), TablistSkinRegistry.GRAY));
             entries.add(new TablistEntry(Text.of(" <7>Next Stage: <a>{}", clock(GreenhouseService.nextStageIn(greenhouse))), TablistSkinRegistry.GRAY));
+        }
+        entries.add(getGrayEntry());
+        SkyBlockItem pet = player.getPetData().getEnabledPet();
+        entries.add(new TablistEntry(Text.of("<a><l>Pet:"), TablistSkinRegistry.GRAY));
+        if (pet == null) {
+            entries.add(new TablistEntry(Text.of(" <7>None"), TablistSkinRegistry.GRAY));
+        } else {
+            entries.add(new TablistEntry(Text.of(" <7>[Lvl {}] <color:{}>{}", PetLevels.level(pet), pet.getAttributeHandler().getRarity().getColor().asHexString(), pet.getComponent(PetComponent.class).getPetName()), TablistSkinRegistry.GRAY));
+            if (PetLevels.isMaxLevel(pet)) entries.add(new TablistEntry(Text.of(" <b><l>MAX LEVEL"), TablistSkinRegistry.GRAY));
+        }
+        entries.add(getGrayEntry());
+        SkillCategories skill = SkillCategories.FARMING;
+        entries.add(new TablistEntry(Text.of("<a><l>Skills:"), TablistSkinRegistry.GRAY));
+        int skillLevel = player.getSkills().getCurrentLevel(skill);
+        entries.add(new TablistEntry(Text.of(" <7>Farming {}: {}", skillLevel, Text.parse(skillLevel >= 60 ? "<c><l>MAX" : "<a>" + player.getSkills().getPercentage(skill) + "%")), TablistSkinRegistry.GRAY));
+        entries.add(getGrayEntry());
+        ItemStatistics stats = player.getStatistics().allStatistics();
+        entries.add(new TablistEntry(Text.of("<a><l>Stats:"), TablistSkinRegistry.GRAY));
+        for (ItemStatistic statistic : List.of(ItemStatistic.SPEED, ItemStatistic.STRENGTH, ItemStatistic.BONUS_PEST_CHANCE)) {
+            entries.add(new TablistEntry(Text.of(" ").append(Text.component(AccountInformationModule.stat(statistic, stats))), TablistSkinRegistry.GRAY));
         }
         fillRestWithGray(entries);
         return entries;
