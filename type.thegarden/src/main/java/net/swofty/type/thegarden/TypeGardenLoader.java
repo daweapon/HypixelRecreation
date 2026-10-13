@@ -15,6 +15,7 @@ import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
+import net.swofty.type.skyblockgeneric.garden.farm.GardenCropGrowth;
 import net.swofty.type.skyblockgeneric.garden.npc.NPCSam;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.user.AreaSidebar;
@@ -44,6 +45,10 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
         SkyBlockGarden.setPresence(new GardenWorldDecor());
         AreaSidebar.register(GardenSidebar::area);
         AreaSidebar.registerDetail(GardenSidebar::detail);
+        MinecraftServer.getSchedulerManager()
+                .buildTask(GardenCropGrowth::tick)
+                .repeat(TaskSchedule.seconds(1))
+                .schedule();
         MinecraftServer.getSchedulerManager()
                 .buildTask(PlayerHolograms::updateExternalHolograms)
                 .repeat(TaskSchedule.seconds(1))

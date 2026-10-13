@@ -11,6 +11,7 @@ import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
+import net.swofty.type.skyblockgeneric.garden.farm.GardenPresets;
 import net.swofty.type.skyblockgeneric.garden.GardenService;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -86,9 +87,11 @@ public class GUIPlotModification extends StatelessView {
         if (!profile.isPlotUnlocked(plot)) {
             return;
         }
-        profile.setPlotPreset(plot, preset.name());
-        Gardens.save(player, profile);
-        player.sendMessage(Text.key("gui_garden_upgrades.modify.preset.changing"));
-        ctx.session(DefaultState.class).refresh();
+        if (!GardenPresets.isPastable(preset.name())) {
+            player.sendMessage(Text.key("gui_garden_upgrades.modify.preset.unavailable"));
+            return;
+        }
+        player.closeInventory();
+        GardenPresets.paste(player, plot, preset.name());
     }
 }
