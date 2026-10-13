@@ -322,7 +322,7 @@ public final class VisitorService {
         player.sendMessage(Text.of(" <8>+<a>{} Garden Experience", offer.gardenXp()));
         player.sendMessage(Text.of(" <8>+<c>{} Copper", copper));
         player.sendMessage(Text.of(" <8>+<b>{} Bits", offer.bits()));
-        extra.forEach(line -> player.sendMessage(Text.of(" <8>+{}", line)));
+        extra.forEach(line -> player.sendMessage(Text.parse(" <8>+" + line)));
         player.sendMessage(Text.of("<b><m>                                                    "));
         if (visitor != null && !visitor.acceptLines().isEmpty()) {
             player.sendMessage(Text.of("<e>[NPC] " + name + "<f>: {}", VisitorText.fill(visitor.acceptLines().getFirst(), player)));
