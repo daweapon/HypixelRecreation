@@ -19,6 +19,7 @@ import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.tool.FarmingTools;
 import net.swofty.type.skyblockgeneric.garden.chip.ChipService;
+import net.swofty.type.skyblockgeneric.garden.feast.FeastService;
 import net.swofty.type.skyblockgeneric.garden.chip.GardenChip;
 import net.swofty.type.skyblockgeneric.garden.pest.PestService;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorService;
@@ -66,6 +67,7 @@ public final class GardenFarm {
             FarmingTools.addXp(player, harvest.crop().crop(), drop.getAmount());
             give(player, drop, position);
         }
+        FeastService.onHarvest(player, harvest.crop().crop());
         profile.addSowdust(sowdust(fortune(player, profile, harvest.crop().crop()), harvest.crop().crop()));
         return true;
     }
@@ -149,7 +151,8 @@ public final class GardenFarm {
                 + profile.getUnlockedPlots().size() * FORTUNE_PER_PLOT
                 + PestService.fortuneBoost(profile, System.currentTimeMillis())
                 + ChipService.bonus(profile.chips(), GardenChip.CROPSHOT)
-                + profile.greenhouse().getDnaClaimed() * 5;
+                + profile.greenhouse().getDnaClaimed() * 5
+                + FeastService.feastFortune(player);
         return total * (1 - PestService.fortuneLoss(player, profile) / 100.0);
     }
 

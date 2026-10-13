@@ -83,16 +83,16 @@ public enum CarnivalPerk {
 
     NATURAL_TALENT(CarnivalPerkEvent.HARVEST_FEAST, "Natural Talent", Material.WHEAT_SEEDS, Tiers.FIVE,
             new double[]{1, 2, 3, 4, 5},
-            "<7>Grants a <a>+%s% <7>chance to find\n<2>Seasonings <7>during a <6>Harvest Feast<7>.", Reasons.HARVEST_FEAST),
+            "<7>Grants a <a>+%s% <7>chance to find\n<2>Seasonings <7>during a <6>Harvest Feast<7>.", null),
     FORTUNATE_FEASTING(CarnivalPerkEvent.HARVEST_FEAST, "Fortunate Feasting", Material.GOLDEN_HOE, Tiers.FIVE,
             new double[]{5, 10, 15, 20, 25},
-            "<7>Grants <6>+%s☘ Farming Fortune <7>during\n<7>a <6>Harvest Feast<7>.", Reasons.HARVEST_FEAST),
+            "<7>Grants <6>+%s☘ Farming Fortune <7>during\n<7>a <6>Harvest Feast<7>.", null),
     FEAST_CRASHERS(CarnivalPerkEvent.HARVEST_FEAST, "Feast Crashers", Material.TNT_MINECART, Tiers.THREE,
             new double[]{2, 4, 6},
-            "<7>Grants <2>+%sഊ Bonus Pest Chance\n<7>during a <6>Harvest Feast<7>.", Reasons.HARVEST_FEAST),
+            "<7>Grants <2>+%sഊ Bonus Pest Chance\n<7>during a <6>Harvest Feast<7>.", null),
     LEFTOVERS(CarnivalPerkEvent.HARVEST_FEAST, "Leftovers", Material.POTION, Tiers.TWO,
             new double[]{1, 2},
-            "<7>Earn <a>+%s <5>Feast Flask <7>at the final\n<7>Donation Tier of each <6>Harvest Feast<7>.", Reasons.HARVEST_FEAST);
+            "<7>Earn <a>+%s <5>Feast Flask <7>at the final\n<7>Donation Tier of each <6>Harvest Feast<7>.", null);
 
     private final CarnivalPerkEvent event;
     private final String displayName;

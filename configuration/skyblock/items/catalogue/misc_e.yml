@@ -881,7 +881,6 @@ items:
     material: paper
     name: "Salted Sunflower Seeds"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Dropped rarely from Sunflower during the Harvest Feast event"
     lore:
       - "§7Dropped rarely from §bSunflower"

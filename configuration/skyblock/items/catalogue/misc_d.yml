@@ -1202,7 +1202,6 @@ items:
     material: paper
     name: "Melon Juice"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event (Garden)"
     source: "Rare drop from Melon Slice during the Harvest Feast event"
     lore:
       - "§7Dropped rarely from §bMelon Slice"

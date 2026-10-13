@@ -219,7 +219,6 @@ items:
     material: paper
     name: "Deepfries"
     rarity: UNCOMMON
-    unavailable: "The Harvest Feast event and Garden pests aren't built"
     source: "Harvest Feast rare drop (about 0.006% of mature Potatoes, 15% from Locusts, 30% from Field Mice)"
     lore:
       - "§7Dropped rarely from §bPotato §7during"
@@ -331,7 +330,6 @@ items:
     material: paper
     name: "Designer Coffee Beans"
     rarity: UNCOMMON
-    unavailable: "The Harvest Feast event and Garden pests aren't built"
     source: "Harvest Feast rare drop from Cocoa Beans"
     lore:
       - "§7Dropped rarely from §bCocoa Beans"

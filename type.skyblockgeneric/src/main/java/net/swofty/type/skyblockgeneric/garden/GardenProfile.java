@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterState;
 import net.swofty.type.skyblockgeneric.garden.chip.ChipData;
+import net.swofty.type.skyblockgeneric.garden.feast.FeastData;
 import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseData;
 import net.swofty.type.skyblockgeneric.garden.pest.PestData;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorData;
@@ -36,6 +37,7 @@ public class GardenProfile {
     private PestData pests = new PestData();
     private GreenhouseData greenhouse = new GreenhouseData();
     private ChipData chips = new ChipData();
+    private FeastData feast = new FeastData();
     private final Map<GardenCrop, Long> cropCounters = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> milestoneTiers = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> cropUpgradeTiers = new EnumMap<>(GardenCrop.class);
@@ -43,6 +45,10 @@ public class GardenProfile {
 
     public ComposterState composter() {
         return composter;
+    }
+
+    public FeastData feast() {
+        return feast;
     }
 
     public ChipData chips() {
@@ -170,6 +176,7 @@ public class GardenProfile {
         json.put("pests", pests.toJson());
         json.put("greenhouse", greenhouse.toJson());
         json.put("chips", chips.toJson());
+        json.put("feast", feast.toJson());
         json.put("cropCounters", cropJson(cropCounters));
         json.put("milestoneTiers", cropJson(milestoneTiers));
         json.put("cropUpgradeTiers", cropJson(cropUpgradeTiers));
@@ -210,6 +217,7 @@ public class GardenProfile {
         profile.pests = PestData.fromJson(json.optJSONObject("pests"));
         profile.greenhouse = GreenhouseData.fromJson(json.optJSONObject("greenhouse"));
         profile.chips = ChipData.fromJson(json.optJSONObject("chips"));
+        profile.feast = FeastData.fromJson(json.optJSONObject("feast"));
         JSONObject presets = json.optJSONObject("plotPresets");
         if (presets != null) {
             for (String key : presets.keySet()) {

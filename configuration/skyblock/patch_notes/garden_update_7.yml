@@ -1,0 +1,20 @@
+title: "The Garden Update, Part 7"
+date: "13th October 2026"
+intro:
+  - "The Harvest Feast has come to the Garden, and Overbloom finally does something."
+sections:
+  - heading: "The Harvest Feast"
+    colour: "<6>"
+    lines:
+      - "Every SkyBlock Year, from Early Autumn to Late Autumn, four crops are in season at a time, rotating every SkyBlock month. Feast Chef Ted in the Hub shows this month's and next month's crops."
+      - "Harvesting an in-season crop has a tiny chance to drop its Rare Crop. Pests of an in-season crop drop theirs far more often, and Field Mice can drop any of them."
+      - "Seasoning turns up while you farm and goes straight into the Communal Stew. Milestones reward Feast Flasks and Carnival Tickets, and the last one a Commemorative Mason Jar. Claim them from Feast Chef Ted."
+      - "While Finnegan's Grand Feast perk is active the Feast runs all year, with nine milestones and Kernels."
+  - heading: "Overbloom"
+    colour: "<a>"
+    lines:
+      - "Overbloom multiplies your chance of Rare Crops and Seasoning. The Rarefinder Chip grants it, and so do the accessories, pets and reforges that already carried it."
+  - heading: "Carnival perks"
+    colour: "<e>"
+    lines:
+      - "Natural Talent, Fortunate Feasting, Feast Crashers and Leftovers now work during a Harvest Feast."

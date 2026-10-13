@@ -10,6 +10,7 @@ import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.GardenService;
 import net.swofty.type.skyblockgeneric.garden.farm.GardenFarm;
+import net.swofty.type.skyblockgeneric.garden.feast.FeastService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
@@ -49,6 +50,7 @@ public final class PestRewards {
             rollMaterial(player, universal);
         }
         rollRare(player, pest);
+        FeastService.onPestKill(player, pest.crop(), pest.id().equals("FIELD_MOUSE"));
     }
 
     private static void awardFieldMouse(SkyBlockPlayer player, GardenProfile profile) {

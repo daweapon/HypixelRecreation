@@ -111,7 +111,6 @@ items:
     material: paper
     name: "Feastfungus"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Rare drop from Mushroom during the Harvest Feast"
     lore:
       - "§7Dropped rarely from §bMushroom"
@@ -148,7 +147,6 @@ items:
     material: player_head
     name: "Feast Flask"
     rarity: EPIC
-    unavailable: "Needs the Harvest Feast event"
     source: "Harvest Feast milestone rewards"
     lore:
       - "§7A cup of soup from the §eCommunal"
@@ -535,7 +533,6 @@ items:
     material: paper
     name: "Floral Gelatin"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Rare drop from Wild Rose during the Harvest Feast"
     lore:
       - "§7Dropped rarely from §bWild Rose"

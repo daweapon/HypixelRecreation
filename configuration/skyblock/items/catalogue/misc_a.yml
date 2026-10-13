@@ -291,7 +291,6 @@ items:
     material: paper
     name: "Aggourdian"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Pumpkin)"
     lore:
       - "§7Dropped rarely from §bPumpkin §7during"
@@ -1454,7 +1453,6 @@ items:
     material: paper
     name: "Botroot"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Nether Wart)"
     lore:
       - "§7Dropped rarely from §bNether Wart"
@@ -2013,7 +2011,6 @@ items:
     material: paper
     name: "Cactus Flower"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Cactus)"
     lore:
       - "§7Dropped rarely from §bCactus §7during"
@@ -2272,7 +2269,6 @@ items:
     material: paper
     name: "Cane Knot"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Sugar Cane)"
     lore:
       - "§7Dropped rarely from §bSugar Cane"
@@ -2445,7 +2441,6 @@ items:
     material: paper
     name: "Carrot Zest"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Carrot)"
     lore:
       - "§7Dropped rarely from §bCarrot §7during"
@@ -2775,7 +2770,6 @@ items:
     material: player_head
     name: "Commemorative Mason Jar"
     rarity: SPECIAL
-    unavailable: "Needs the Harvest Feast event"
     source: "Harvest Feast: final Feast Milestone"
     lore:
       - "§7Obtained during the §61st Harvest"
@@ -2959,7 +2953,6 @@ items:
     material: paper
     name: "Cornucopia"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Wheat)"
     lore:
       - "§7Dropped rarely from §bWheat §7during"
@@ -3168,7 +3161,6 @@ items:
     material: paper
     name: "Crystalized Moonlight"
     rarity: UNCOMMON
-    unavailable: "Needs the Harvest Feast event"
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Moonflower)"
     lore:
       - "§7Dropped rarely from §bMoonflower"

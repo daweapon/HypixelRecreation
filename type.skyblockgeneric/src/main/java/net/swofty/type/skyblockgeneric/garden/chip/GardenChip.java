@@ -14,7 +14,7 @@ public enum GardenChip {
     OVERDRIVE("OVERDRIVE_GARDEN_CHIP", "Overdrive", Material.ORANGE_CONCRETE, new double[]{5, 6, 7}, "", " Crop Fortune during Jacob's Contest", "Grants Crop Fortune for the active crop during Jacob's Farming Contest.", false),
     CROPSHOT("CROPSHOT_GARDEN_CHIP", "Cropshot", Material.RED_CONCRETE, new double[]{3, 4, 5}, "", " Farming Fortune", "Grants Farming Fortune per chip level.", true),
     QUICKDRAW("QUICKDRAW_GARDEN_CHIP", "Quickdraw", Material.LIGHT_BLUE_CONCRETE, new double[]{1.5, 2, 2.5}, "%", " faster Visitors", "Decreases the time for Visitors to appear when harvesting crops per chip level.", true),
-    RAREFINDER("RAREFINDER_GARDEN_CHIP", "Rarefinder", Material.CYAN_CONCRETE, new double[]{1.5, 2, 2.5}, "", " Overbloom", "Grants Overbloom per chip level.", false);
+    RAREFINDER("RAREFINDER_GARDEN_CHIP", "Rarefinder", Material.CYAN_CONCRETE, new double[]{1.5, 2, 2.5}, "", " Overbloom", "Grants Overbloom per chip level.", true);
 
     public static final int[] CONSUMED_FOR_RARITY = {1, 5, 21};
     public static final int[] MAX_LEVEL = {10, 15, 20};

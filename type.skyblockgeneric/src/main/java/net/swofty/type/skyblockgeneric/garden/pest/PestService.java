@@ -7,6 +7,7 @@ import net.minestom.server.instance.Instance;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.garden.GardenLayout;
+import net.swofty.type.skyblockgeneric.garden.feast.FeastService;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.GardenProgress;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
@@ -31,6 +32,7 @@ public final class PestService {
     public static int bonusChance(SkyBlockPlayer player, GardenProfile profile) {
         double stat = player.getStatistics().allStatistics().getOverall(ItemStatistic.BONUS_PEST_CHANCE);
         return (int) Math.floor(stat) + profile.pests().getPermanentBonusChance()
+                + (int) FeastService.feastPestChance(player)
                 + (int) Math.floor(net.swofty.type.skyblockgeneric.garden.chip.ChipService.bonus(profile.chips(), net.swofty.type.skyblockgeneric.garden.chip.GardenChip.VERMIN_VAPORIZER));
     }
 
