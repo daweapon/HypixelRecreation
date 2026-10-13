@@ -1,0 +1,52 @@
+{
+ "maxTier": 9,
+ "fortunePerTier": 5,
+ "skyblockXpPerTier": 1,
+ "tiers": [
+  {
+   "tier": 1,
+   "gardenLevel": 2,
+   "copper": 5
+  },
+  {
+   "tier": 2,
+   "gardenLevel": 4,
+   "copper": 10
+  },
+  {
+   "tier": 3,
+   "gardenLevel": 6,
+   "copper": 20
+  },
+  {
+   "tier": 4,
+   "gardenLevel": 8,
+   "copper": 50
+  },
+  {
+   "tier": 5,
+   "gardenLevel": 10,
+   "copper": 100
+  },
+  {
+   "tier": 6,
+   "gardenLevel": 12,
+   "copper": 500
+  },
+  {
+   "tier": 7,
+   "gardenLevel": 13,
+   "copper": 1000
+  },
+  {
+   "tier": 8,
+   "gardenLevel": 14,
+   "copper": 2000
+  },
+  {
+   "tier": 9,
+   "gardenLevel": 15,
+   "copper": 4000
+  }
+ ]
+}

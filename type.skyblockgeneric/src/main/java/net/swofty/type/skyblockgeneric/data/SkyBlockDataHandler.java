@@ -816,6 +816,9 @@ public class SkyBlockDataHandler extends DataHandler {
 
         ACCESSORY_POWERS("accessory_powers", false, false, false,
                 DatapointAccessoryPowers.class, new DatapointAccessoryPowers("accessory_powers")),
+
+        GARDEN("garden", false, false, false,
+                DatapointGarden.class, new DatapointGarden("garden")),
         ;
 
         @Getter

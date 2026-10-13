@@ -1,0 +1,234 @@
+{
+ "levels": [
+  {
+   "level": 1,
+   "cumulativeXp": 0,
+   "newVisitors": 47,
+   "crops": [
+    "WHEAT"
+   ],
+   "pests": [],
+   "cropUpgradeTier": 0,
+   "barnSkin": "",
+   "extras": [],
+   "skyblockXp": 0,
+   "cropGrowth": 0
+  },
+  {
+   "level": 2,
+   "cumulativeXp": 70,
+   "newVisitors": 9,
+   "crops": [
+    "CARROT"
+   ],
+   "pests": [],
+   "cropUpgradeTier": 1,
+   "barnSkin": "",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 3,
+   "cumulativeXp": 140,
+   "newVisitors": 13,
+   "crops": [
+    "POTATO"
+   ],
+   "pests": [],
+   "cropUpgradeTier": 0,
+   "barnSkin": "Medieval Barn Skin",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 4,
+   "cumulativeXp": 280,
+   "newVisitors": 5,
+   "crops": [
+    "PUMPKIN"
+   ],
+   "pests": [],
+   "cropUpgradeTier": 2,
+   "barnSkin": "",
+   "extras": [
+    "Gearing Up Quest"
+   ],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 5,
+   "cumulativeXp": 520,
+   "newVisitors": 5,
+   "crops": [
+    "SUGAR_CANE"
+   ],
+   "pests": [
+    "Fly",
+    "Cricket",
+    "Locust",
+    "Rat",
+    "Mosquito",
+    "Field Mouse",
+    "Lunar Moth"
+   ],
+   "cropUpgradeTier": 0,
+   "barnSkin": "",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 6,
+   "cumulativeXp": 1120,
+   "newVisitors": 6,
+   "crops": [
+    "MELON"
+   ],
+   "pests": [
+    "Earthworm"
+   ],
+   "cropUpgradeTier": 3,
+   "barnSkin": "Sunny Barn Skin",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 7,
+   "cumulativeXp": 2620,
+   "newVisitors": 10,
+   "crops": [
+    "CACTUS"
+   ],
+   "pests": [
+    "Mite"
+   ],
+   "cropUpgradeTier": 0,
+   "barnSkin": "",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 8,
+   "cumulativeXp": 4620,
+   "newVisitors": 9,
+   "crops": [
+    "COCOA_BEANS"
+   ],
+   "pests": [
+    "Moth"
+   ],
+   "cropUpgradeTier": 4,
+   "barnSkin": "",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 9,
+   "cumulativeXp": 7120,
+   "newVisitors": 8,
+   "crops": [
+    "MUSHROOM"
+   ],
+   "pests": [
+    "Slug"
+   ],
+   "cropUpgradeTier": 0,
+   "barnSkin": "Red Barn Skin",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 10,
+   "cumulativeXp": 10120,
+   "newVisitors": 9,
+   "crops": [
+    "NETHER_WART"
+   ],
+   "pests": [
+    "Beetle"
+   ],
+   "cropUpgradeTier": 5,
+   "barnSkin": "",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 11,
+   "cumulativeXp": 20120,
+   "newVisitors": 4,
+   "crops": [
+    "SUNFLOWER",
+    "MOONFLOWER"
+   ],
+   "pests": [
+    "Dragonfly",
+    "Firefly"
+   ],
+   "cropUpgradeTier": 0,
+   "barnSkin": "Cabin Barn Skin",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 12,
+   "cumulativeXp": 30120,
+   "newVisitors": 9,
+   "crops": [
+    "WILD_ROSE"
+   ],
+   "pests": [
+    "Praying Mantis"
+   ],
+   "cropUpgradeTier": 6,
+   "barnSkin": "",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 13,
+   "cumulativeXp": 40120,
+   "newVisitors": 2,
+   "crops": [],
+   "pests": [],
+   "cropUpgradeTier": 7,
+   "barnSkin": "",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 14,
+   "cumulativeXp": 50120,
+   "newVisitors": 2,
+   "crops": [],
+   "pests": [],
+   "cropUpgradeTier": 8,
+   "barnSkin": "",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  },
+  {
+   "level": 15,
+   "cumulativeXp": 60120,
+   "newVisitors": 2,
+   "crops": [],
+   "pests": [],
+   "cropUpgradeTier": 9,
+   "barnSkin": "Mansion Heights Barn Skin",
+   "extras": [],
+   "skyblockXp": 10,
+   "cropGrowth": 10
+  }
+ ]
+}
