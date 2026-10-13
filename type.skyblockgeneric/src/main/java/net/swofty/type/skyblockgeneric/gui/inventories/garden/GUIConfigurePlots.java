@@ -37,7 +37,7 @@ public class GUIConfigurePlots extends StatelessView {
                 Text.key("gui_garden_upgrades.plots.barn.lore"),
                 GardenMenus.blank(),
                 Text.key("gui_garden_upgrades.plots.unlocked.teleport"))),
-                (_, c) -> c.player().sendMessage(Text.key("gui_garden_upgrades.plots.teleport_unavailable")));
+                (_, c) -> net.swofty.type.skyblockgeneric.garden.GardenTeleport.toPlot((SkyBlockPlayer) c.player(), net.swofty.type.skyblockgeneric.garden.GardenLayout.BARN));
 
         for (int plot = 1; plot <= GardenProfile.PLOT_COUNT; plot++) {
             int number = plot;
@@ -93,7 +93,7 @@ public class GUIConfigurePlots extends StatelessView {
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         if (GardenService.profile(player).isPlotUnlocked(plot)) {
             if (click.click() instanceof Click.Right) {
-                player.sendMessage(Text.key("gui_garden_upgrades.plots.teleport_unavailable"));
+                net.swofty.type.skyblockgeneric.garden.GardenTeleport.toPlot(player, plot);
             } else {
                 GardenMenus.open(ctx, new GUIPlotModification(plot));
             }

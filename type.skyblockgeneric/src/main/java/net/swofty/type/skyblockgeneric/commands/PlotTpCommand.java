@@ -24,18 +24,7 @@ public class PlotTpCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> {
             if (!permissionCheck(sender)) return;
             SkyBlockPlayer player = (SkyBlockPlayer) sender;
-            if (player.getInstance() == null || player.getInstance() != SkyBlockGarden.of(player).getGardenInstance()) {
-                player.sendMessage("<c>You can only teleport to plots while in your Garden!");
-                return;
-            }
-            int plot = context.get(plotArgument);
-            int[] origin = GardenLayout.plotOrigin(plot);
-            if (origin == null || (plot != GardenLayout.BARN && !Gardens.profile(player).isPlotUnlocked(plot))) {
-                player.sendMessage("<c>You haven't unlocked Plot - " + plot + "<c>!");
-                return;
-            }
-            Pos centre = new Pos(origin[0] + GardenLayout.PLOT_SIZE / 2.0, 72, origin[1] + GardenLayout.PLOT_SIZE / 2.0);
-            player.teleport(GardenGround.onGround(player.getInstance(), centre));
+            net.swofty.type.skyblockgeneric.garden.GardenTeleport.toPlot(player, context.get(plotArgument));
         }, plotArgument);
     }
 }
