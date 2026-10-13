@@ -56,7 +56,31 @@ public final class StructureCatalogue {
                 Boolean.TRUE.equals(entry.get("optional")),
                 ((Number) entry.getOrDefault("clearance", 40)).intValue(),
                 List.copyOf(candidates),
-                Map.copyOf(anchors));
+                Map.copyOf(anchors),
+                (String) entry.get("schematic"),
+                site((Map<String, Object>) entry.get("site")),
+                (String) entry.get("empty_patch"),
+                rotations(entry.get("rotations")));
+    }
+
+    @SuppressWarnings("unchecked")
+    static StructureSite site(Map<String, Object> raw) {
+        if (raw == null || raw.get("min") == null || raw.get("max") == null) return null;
+        Map<String, Object> min = (Map<String, Object>) raw.get("min");
+        Map<String, Object> max = (Map<String, Object>) raw.get("max");
+        return new StructureSite(block(min.get("x")), block(min.get("y")), block(min.get("z")),
+                block(max.get("x")), block(max.get("y")), block(max.get("z")));
+    }
+
+    static List<Integer> rotations(Object raw) {
+        if (raw == null) return List.of();
+        List<Integer> result = new ArrayList<>();
+        for (Object value : (List<Object>) raw) result.add(((Number) value).intValue());
+        return List.copyOf(result);
+    }
+
+    private static int block(Object value) {
+        return value == null ? 0 : (int) Math.floor(((Number) value).doubleValue());
     }
 
     private static Pos pos(Map<String, Object> raw) {

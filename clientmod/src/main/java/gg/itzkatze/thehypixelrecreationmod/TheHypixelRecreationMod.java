@@ -6,6 +6,7 @@ import gg.itzkatze.thehypixelrecreationmod.features.SpraySchemaRecorder;
 import gg.itzkatze.thehypixelrecreationmod.features.fullcapture.FullCapture;
 import gg.itzkatze.thehypixelrecreationmod.features.guicapture.GuiCaptureRecorder;
 import gg.itzkatze.thehypixelrecreationmod.features.packetlog.EntityPacketLogger;
+import gg.itzkatze.thehypixelrecreationmod.features.schematic.SchematicSelection;
 import gg.itzkatze.thehypixelrecreationmod.features.worldexport.ChunkExportRecorder;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -36,6 +37,7 @@ public final class TheHypixelRecreationMod implements ClientModInitializer {
 		GetArmorStandInfos.register();
 		GetScoreboardInfo.register();
 		ChunkExporterCommand.register();
+		SchematicCommand.register();
 		CopyMapTextureCommand.register();
 		CopyBiomeData.register();
 		FetchBlockDisplaysCommand.register();
@@ -59,6 +61,7 @@ public final class TheHypixelRecreationMod implements ClientModInitializer {
 			gg.itzkatze.thehypixelrecreationmod.features.packetlog.RavengardSessionLogger.tick();
 			GuiCaptureRecorder.tick(net.minecraft.client.Minecraft.getInstance());
 			FullCapture.tick();
+			SchematicSelection.tick(net.minecraft.client.Minecraft.getInstance());
 		});
 	}
 

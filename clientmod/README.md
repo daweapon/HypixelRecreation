@@ -37,6 +37,18 @@ particles, block changes, entities, and your own clicks and commands, one JSON o
 - `/chunkexporter status` shows the active capture counts.
 - `/nbsrecord start`, `/nbsrecord stop <name>`, `/nbsrecord status` records inbound server sounds to
   `nbs-recordings/<name>.nbs` and exports custom instrument sounds.
+- `/schematic pos1 [x y z]` and `/schematic pos2 [x y z]` set the selection corners (default: the block under the
+  crosshair within 128 blocks, else the block at your feet). `/schematic box` toggles a particle outline of the
+  selection, `/schematic status` prints corners, size, volume and how many chunks in the box are not loaded, and
+  `/schematic clear` resets it. Also available as `/recreation schematic ...`.
+- `/schematic save <name>` writes `.minecraft/schematics/<name>.schem` (Sponge Schematic v3, gzip NBT) from the
+  loaded client chunks, max 2,000,000 blocks. It holds the block palette and varint block data, block entities
+  (chests, signs, skulls with texture data, banners) and any block displays, item displays and armor stands in the
+  box under `Entities`. `Offset` is the ABSOLUTE world min corner; `Pos` of block entities and entities is
+  relative to that corner. Unloaded chunks are exported as air and reported with a warning in chat.
+  A sibling `<name>.json` records the absolute world min/max corners, size, dimension, your position and yaw, the
+  server address, timestamp, block counts and unloaded chunk count.
+- `Keybind (unbound by default)` "Schematic Pos1/Pos2 at Crosshair" in the controls menu.
 - `Keybind K` Copies the texture ID of the hovered player head into the clipboard.
 - `Keybind L` Copies the lore of the hovered item.
 - `Keybind I` Selects the entity under the crosshair and opens a client-only inspector for inbound packets referencing

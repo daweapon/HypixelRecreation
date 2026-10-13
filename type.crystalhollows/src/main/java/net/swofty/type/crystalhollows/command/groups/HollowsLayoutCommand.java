@@ -3,7 +3,9 @@ package net.swofty.type.crystalhollows.command.groups;
 import net.minestom.server.command.builder.arguments.ArgumentType;
 import net.swofty.type.crystalhollows.command.HollowsSupport;
 import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
+import net.swofty.type.crystalhollows.layout.StructurePaster;
 import net.swofty.type.crystalhollows.layout.StructurePlacement;
+import net.swofty.type.skyblockgeneric.schematic.SchematicPaster;
 import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
 import net.swofty.type.generic.user.categories.Rank;
@@ -44,6 +46,18 @@ public class HollowsLayoutCommand extends HypixelCommand {
 
     private static void regenerate(net.minestom.server.command.CommandSender sender, long seed) {
         HollowsSupport.reloadLayout(seed);
+        var instance = net.swofty.type.generic.HypixelConst.getInstanceContainer();
+        if (instance != null) {
+            StructurePaster.apply(instance, SchematicPaster.NEXT_TICK).whenComplete((report, error) -> {
+                SkyBlockPlayer player = (SkyBlockPlayer) sender;
+                if (error != null) {
+                    player.sendMessage("<c>Structure paste failed: {}", error.getMessage());
+                    return;
+                }
+                player.sendMessage("<a>Pasted <e>{}<a> structures, erased <e>{}<a> sites, <e>{}<a> failures.",
+                        report.pasted().size(), report.erased().size(), report.failures().size());
+            });
+        }
         ((SkyBlockPlayer) sender).sendMessage("<a>Layout regenerated with seed <e>{}<a>: <e>{}<a> structures placed.", seed, CrystalHollowsLayout.placements().size());
     }
 }

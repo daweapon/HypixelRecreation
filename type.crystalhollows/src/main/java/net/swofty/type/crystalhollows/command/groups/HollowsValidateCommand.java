@@ -5,6 +5,7 @@ import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
 import net.swofty.type.crystalhollows.layout.HollowsRegions;
 import net.swofty.type.crystalhollows.layout.HollowsValidator;
 import net.swofty.type.crystalhollows.layout.HollowsWorld;
+import net.swofty.type.crystalhollows.layout.SchematicFiles;
 import net.swofty.type.crystalhollows.layout.StructureCatalogue;
 import net.swofty.type.generic.command.CommandParameters;
 import net.swofty.type.generic.command.HypixelCommand;
@@ -29,9 +30,10 @@ public class HollowsValidateCommand extends HypixelCommand {
             if (!permissionCheck(sender)) return;
             SkyBlockPlayer player = (SkyBlockPlayer) sender;
             HollowsSupport.reloadLayout(CrystalHollowsLayout.seed());
-            List<HollowsValidator.Issue> issues = HollowsValidator.validate(new HollowsValidator.Input(
+            List<HollowsValidator.Issue> issues = new java.util.ArrayList<>(HollowsValidator.validate(new HollowsValidator.Input(
                     StructureCatalogue.load(), HollowsSupport.references(), NucleusConfig.get().statues().keySet(),
-                    regionBoxes(), HollowsWorld.get(), CrystalHollowsLayout.placements().keySet()));
+                    regionBoxes(), HollowsWorld.get(), CrystalHollowsLayout.placements().keySet())));
+            issues.addAll(HollowsValidator.validateSchematics(StructureCatalogue.load(), SchematicFiles.DIRECTORY));
             if (issues.isEmpty()) {
                 player.sendMessage("<a>Crystal Hollows configuration is complete.");
                 return;

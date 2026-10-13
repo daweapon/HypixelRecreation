@@ -2,6 +2,7 @@ package net.swofty.type.crystalhollows.layout;
 
 import net.swofty.type.skyblockgeneric.crystalhollows.NucleusCrystal;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -21,6 +22,47 @@ public final class HollowsValidator {
     }
 
     private HollowsValidator() {
+    }
+
+    public static List<Issue> validateSchematics(List<StructureSpec> structures, Path directory) {
+        List<Issue> issues = new ArrayList<>();
+        for (StructureSpec spec : structures) {
+            StructureSite site = spec.site();
+            if (site != null && spec.emptyPatch() == null) {
+                issues.add(new Issue(Level.WARNING, "Structure " + spec.id() + " has a site but no empty_patch, so the captured building stays when it is placed elsewhere"));
+            }
+            if (spec.emptyPatch() != null && site == null) {
+                issues.add(new Issue(Level.ERROR, "Structure " + spec.id() + " has an empty_patch but no site to paste it over"));
+            }
+            for (int rotation : spec.rotations()) {
+                if (rotation % 90 != 0) issues.add(new Issue(Level.ERROR, "Structure " + spec.id() + " has an invalid rotation " + rotation));
+            }
+            if (!spec.rotations().isEmpty() && !spec.anchors().isEmpty() && spec.rotations().stream().anyMatch(r -> Math.floorMod(r, 360) != 0)) {
+                issues.add(new Issue(Level.WARNING, "Structure " + spec.id() + " rotates its schematic but its anchors are not rotated"));
+            }
+            if (spec.schematic() != null) check(issues, spec, "schematic", spec.schematic(), directory, null);
+            if (spec.emptyPatch() != null) check(issues, spec, "empty_patch", spec.emptyPatch(), directory, site);
+        }
+        return issues;
+    }
+
+    private static void check(List<Issue> issues, StructureSpec spec, String role, String file, Path directory, StructureSite site) {
+        SchematicFiles.Probe probe = SchematicFiles.probe(directory, file);
+        String label = "Structure " + spec.id() + " " + role + " " + file;
+        if (!probe.exists()) {
+            issues.add(new Issue(Level.ERROR, label + ": " + probe.error()));
+        } else if (!probe.readable()) {
+            issues.add(new Issue(Level.ERROR, label + " is unreadable: " + probe.error()));
+        } else {
+            if (probe.schematic().unknownBlocks() > 0) {
+                issues.add(new Issue(Level.WARNING, label + " has " + probe.schematic().unknownBlocks() + " unknown blocks (skipped when pasting)"));
+            }
+            if (site != null && (probe.schematic().width() != site.width() || probe.schematic().height() != site.height()
+                    || probe.schematic().length() != site.length())) {
+                issues.add(new Issue(Level.WARNING, label + " is " + probe.schematic().width() + "x" + probe.schematic().height() + "x"
+                        + probe.schematic().length() + " but the site is " + site.width() + "x" + site.height() + "x" + site.length()));
+            }
+        }
     }
 
     public static List<Issue> validate(Input input) {

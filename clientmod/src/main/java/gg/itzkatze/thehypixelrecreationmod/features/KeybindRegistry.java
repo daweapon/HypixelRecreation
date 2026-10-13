@@ -13,6 +13,8 @@ public final class KeybindRegistry {
     public static KeyMapping copyChatKey;
     public static KeyMapping copyGuiKey;
     public static KeyMapping entityPacketInspectorKey;
+    public static KeyMapping schematicPos1Key;
+    public static KeyMapping schematicPos2Key;
     private static boolean chatCopyPressed = false;
 
     private KeybindRegistry() {
@@ -40,6 +42,18 @@ public final class KeybindRegistry {
         copyGuiKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.thehypixelrecreationmod.copygui",
                 GLFW.GLFW_KEY_B,
+                KeyMapping.Category.MISC
+        ));
+
+        schematicPos1Key = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+                "key.thehypixelrecreationmod.schematicpos1",
+                GLFW.GLFW_KEY_UNKNOWN,
+                KeyMapping.Category.MISC
+        ));
+
+        schematicPos2Key = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+                "key.thehypixelrecreationmod.schematicpos2",
+                GLFW.GLFW_KEY_UNKNOWN,
                 KeyMapping.Category.MISC
         ));
 

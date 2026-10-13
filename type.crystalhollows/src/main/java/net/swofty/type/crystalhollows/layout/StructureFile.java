@@ -24,6 +24,10 @@ public final class StructureFile {
         private final int clearance;
         private final List<Pos> candidates = new ArrayList<>();
         private final Map<String, Pos> anchors = new LinkedHashMap<>();
+        private String schematic;
+        private StructureSite site;
+        private String emptyPatch;
+        private List<Integer> rotations = List.of();
 
         private Entry(String id, String name, String region, boolean optional, int clearance) {
             this.id = id;
@@ -35,6 +39,22 @@ public final class StructureFile {
 
         public String id() {
             return id;
+        }
+
+        public String schematic() {
+            return schematic;
+        }
+
+        public StructureSite site() {
+            return site;
+        }
+
+        public String emptyPatch() {
+            return emptyPatch;
+        }
+
+        public List<Integer> rotations() {
+            return rotations;
         }
 
         public List<Pos> candidates() {
@@ -83,6 +103,10 @@ public final class StructureFile {
     private static Entry parse(Map<String, Object> raw) {
         Entry entry = new Entry((String) raw.get("id"), (String) raw.get("name"), (String) raw.get("region"),
                 Boolean.TRUE.equals(raw.get("optional")), ((Number) raw.getOrDefault("clearance", 40)).intValue());
+        entry.schematic = (String) raw.get("schematic");
+        entry.emptyPatch = (String) raw.get("empty_patch");
+        entry.site = StructureCatalogue.site((Map<String, Object>) raw.get("site"));
+        entry.rotations = StructureCatalogue.rotations(raw.get("rotations"));
         Object candidates = raw.get("candidates");
         if (candidates != null) {
             for (Object candidate : (List<Object>) candidates) entry.candidates.add(pos((Map<String, Object>) candidate));
@@ -129,6 +153,13 @@ public final class StructureFile {
         require(id).candidates.clear();
     }
 
+    public void setSchematic(String id, String schematic, String emptyPatch, StructureSite site) {
+        Entry entry = require(id);
+        entry.schematic = schematic;
+        entry.emptyPatch = emptyPatch;
+        entry.site = site;
+    }
+
     public void setAnchor(String id, String name, Pos offset) {
         require(id).anchors.put(name, offset);
     }
@@ -141,6 +172,14 @@ public final class StructureFile {
             out.append("    region: ").append(entry.region).append('\n');
             out.append("    optional: ").append(entry.optional).append('\n');
             out.append("    clearance: ").append(entry.clearance).append('\n');
+            if (entry.schematic != null) out.append("    schematic: ").append(quote(entry.schematic)).append('\n');
+            if (entry.emptyPatch != null) out.append("    empty_patch: ").append(quote(entry.emptyPatch)).append('\n');
+            if (!entry.rotations.isEmpty()) out.append("    rotations: ").append(entry.rotations).append('\n');
+            if (entry.site != null) {
+                StructureSite site = entry.site;
+                out.append("    site: {min: {x: ").append(site.minX()).append(", y: ").append(site.minY()).append(", z: ").append(site.minZ())
+                        .append("}, max: {x: ").append(site.maxX()).append(", y: ").append(site.maxY()).append(", z: ").append(site.maxZ()).append("}}\n");
+            }
             if (entry.candidates.isEmpty()) {
                 out.append("    candidates: []\n");
             } else {

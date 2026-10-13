@@ -7,7 +7,9 @@ import net.swofty.type.crystalhollows.command.groups.HollowsChestCommand;
 import net.swofty.type.crystalhollows.command.groups.HollowsDebugCommand;
 import net.swofty.type.crystalhollows.command.groups.HollowsHeatCommand;
 import net.swofty.type.crystalhollows.command.groups.HollowsLayoutCommand;
+import net.swofty.type.crystalhollows.command.groups.HollowsPasteCommand;
 import net.swofty.type.crystalhollows.command.groups.HollowsRegionCommand;
+import net.swofty.type.crystalhollows.command.groups.HollowsSchematicsCommand;
 import net.swofty.type.crystalhollows.command.groups.HollowsSpawnCommand;
 import net.swofty.type.crystalhollows.command.groups.HollowsSpawnWormCommand;
 import net.swofty.type.crystalhollows.command.groups.HollowsStatueCommand;
@@ -23,7 +25,7 @@ import java.util.Map;
 
 @CommandParameters(labels = "hollows",
         description = "Staff tooling for capturing and validating the Crystal Hollows layout",
-        usage = "/hollows <layout|tp|candidate|anchor|statue|chest|region|spawn|bounds|validate|debug|heat|spawnworm> ...",
+        usage = "/hollows <layout|tp|candidate|anchor|statue|chest|region|spawn|bounds|validate|debug|heat|spawnworm|paste|schematics> ...",
         permission = Rank.STAFF,
         allowsConsole = false)
 public class HollowsCommand extends CommandGroup {
@@ -41,7 +43,9 @@ public class HollowsCommand extends CommandGroup {
                 new HollowsValidateCommand(),
                 new HollowsDebugCommand(),
                 new HollowsHeatCommand(),
-                new HollowsSpawnWormCommand());
+                new HollowsSpawnWormCommand(),
+                new HollowsPasteCommand(),
+                new HollowsSchematicsCommand());
     }
 
     @Override
