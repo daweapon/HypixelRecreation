@@ -63,7 +63,7 @@ public class ReindrakeMob extends WinterSeaCreatureMob {
         Text message = count > 1
                 ? Text.of("<c><l>WOAH! </l><7>{} <c>summoned <4>TWO Reindrakes <c>from the depths!", angler.getUsername())
                 : Text.of("<c><l>WOAH! </l><7>{} <c>summoned a <4>Reindrake <c>from the depths!", angler.getUsername());
-        SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> player.sendMessage(message));
+        SkyBlockGenericLoader.forEachLoadedPlayer(player -> player.sendMessage(message));
     }
 
     @Override

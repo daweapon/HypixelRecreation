@@ -61,7 +61,7 @@ public final class BottleOfJyrre {
 
     public static void startAging() {
         MinecraftServer.getSchedulerManager().buildTask(() ->
-                        SkyBlockGenericLoader.getLoadedPlayers().forEach(BottleOfJyrre::age))
+                        SkyBlockGenericLoader.forEachLoadedPlayer(BottleOfJyrre::age))
                 .repeat(TaskSchedule.minutes(1))
                 .schedule();
     }

@@ -31,7 +31,7 @@ public final class AccessoryEconomyHooks {
 
     public static void start() {
         MinecraftServer.getSchedulerManager().buildTask(() ->
-                        SkyBlockGenericLoader.getLoadedPlayers().forEach(AccessoryEconomyHooks::payMinute))
+                        SkyBlockGenericLoader.forEachLoadedPlayer(AccessoryEconomyHooks::payMinute))
                 .repeat(TaskSchedule.minutes(1))
                 .schedule();
     }

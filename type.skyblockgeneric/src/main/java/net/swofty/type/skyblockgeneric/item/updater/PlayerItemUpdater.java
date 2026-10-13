@@ -181,7 +181,7 @@ public class PlayerItemUpdater {
         scheduler.submitTask(() -> {
             List<CompletableFuture<Void>> futures = new ArrayList<>();
 
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 futures.add(CompletableFuture.runAsync(() -> {
                     PlayerItemOrigin.OriginCache cache = PlayerItemOrigin.getFromCache(player.getUuid());
 

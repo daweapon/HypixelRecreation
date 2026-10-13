@@ -77,7 +77,7 @@ public class ServerCrystalImpl extends LivingEntity {
                 goingDown = false;
             }
             teleport(getPosition().add(0, yLevel, 0));
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 player.sendPacket(new ParticlePacket(
                         Particle.HAPPY_VILLAGER,
                         false,
@@ -135,7 +135,7 @@ public class ServerCrystalImpl extends LivingEntity {
             for (int i = 0; i < 20; i++) {
                 Pos pos = crystalLocation.add(direction.mul((double) i / 20));
 
-                SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+                SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                     player.sendPacket(new ParticlePacket(
                             Particle.CLOUD,
                             false,

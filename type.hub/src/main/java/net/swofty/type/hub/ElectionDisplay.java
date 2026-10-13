@@ -30,7 +30,7 @@ public class ElectionDisplay {
                 .collect(Collectors.toSet());
         holos.keySet().removeIf(p -> !loadedUuids.contains(p.getUuid()));
 
-        HypixelGenericLoader.getLoadedPlayers().forEach(player -> {
+        HypixelGenericLoader.forEachLoadedPlayer(player -> {
             long timeLeft = SkyBlockCalendar.ticksUntilEvent(CalendarEvent.ELECTION_CLOSE);
             String timeLeftFormatted = StringUtility.formatTimeLeft(timeLeft * 50L);
 

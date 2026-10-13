@@ -250,7 +250,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
             double TPS = TpsMeter.tps();
 
             if (TPS < TpsMeter.WARN_BELOW_TPS) {
-                HypixelGenericLoader.getLoadedPlayers().forEach(player -> {
+                HypixelGenericLoader.forEachLoadedPlayer(player -> {
                     player.getLogHandler().debug(Text.of("<c>Server TPS is below 20! TPS: {}", TPS));
                 });
                 Logger.error("Server TPS is below 20! TPS: " + TPS);
@@ -419,7 +419,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
          */
         MinecraftServer.getSchedulerManager().submitTask(() -> {
             Thread.startVirtualThread(() -> {
-                SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+                forEachLoadedPlayer(player -> {
                     player.getBazaarConnector().processAllPendingTransactions();
                 });
             });
@@ -610,6 +610,16 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
             ElectionManager.loadFromService();
             ElectionManager.checkElectionCycle();
         }).thenRun(() -> MinecraftServer.getSchedulerManager().buildTask(ElectionManager::checkElectionCycle).repeat(10, TimeUnit.SECOND).schedule());
+    }
+
+    public static void forEachLoadedPlayer(java.util.function.Consumer<SkyBlockPlayer> action) {
+        for (SkyBlockPlayer player : getLoadedPlayers()) {
+            try {
+                action.accept(player);
+            } catch (RuntimeException exception) {
+                Logger.warn(exception, "Periodic task failed for {}", player.getUuid());
+            }
+        }
     }
 
     public static List<SkyBlockPlayer> getLoadedPlayers() {

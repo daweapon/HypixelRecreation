@@ -1034,7 +1034,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
         if (!HypixelConst.getTypeLoader().getLoaderValues().announceDeathMessages()) return;
 
-        SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+        SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
             if (player.getUuid().equals(getUuid())) return;
             if (player.getInstance() != getInstance()) return;
 

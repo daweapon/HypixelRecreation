@@ -27,7 +27,7 @@ public class LaunchPadHandler {
         scheduler.scheduleTask(() -> {
             for (LaunchPad launchPad : launchPads) {
                 for (Pos slimeBlock : launchPad.getSlimeBlocks()) {
-                    HypixelGenericLoader.getLoadedPlayers().forEach(player -> {
+                    HypixelGenericLoader.forEachLoadedPlayer(player -> {
                         if (slimeBlock.distance(player.getPosition()) <= 15) {
                             player.sendPacket(new ParticlePacket(
                                     Particle.COMPOSTER,

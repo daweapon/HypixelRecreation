@@ -165,7 +165,7 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
                     final double TPS = TpsMeter.tps();
 
                     if (TPS < TpsMeter.WARN_BELOW_TPS) {
-                        HypixelGenericLoader.getLoadedPlayers().forEach(player -> {
+                        forEachLoadedPlayer(player -> {
                             player.getLogHandler().debug("<c>Server TPS is below 20! TPS: {}", TPS);
                         });
                         Logger.error("Server TPS is below 20! TPS: " + TPS);
@@ -261,7 +261,11 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
         // Update NPCs for loaded players
         MinecraftServer.getSchedulerManager().scheduleTask(() -> {
             for (HypixelPlayer player : getLoadedPlayers()) {
-                HypixelNPC.updateForPlayer(player);
+                try {
+                    HypixelNPC.updateForPlayer(player);
+                } catch (RuntimeException exception) {
+                    Logger.warn(exception, "NPC update failed for {}", player.getUuid());
+                }
             }
         }, TaskSchedule.tick(2), TaskSchedule.tick(2));
 
@@ -350,6 +354,16 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
             if (api instanceof DataAPIImpl impl) impl.shutdown();
         } catch (Exception e) {
             Logger.error(e, "Failed to flush the {} data API during shutdown", name);
+        }
+    }
+
+    public static void forEachLoadedPlayer(java.util.function.Consumer<HypixelPlayer> action) {
+        for (HypixelPlayer player : getLoadedPlayers()) {
+            try {
+                action.accept(player);
+            } catch (RuntimeException exception) {
+                Logger.warn(exception, "Periodic task failed for {}", player.getUuid());
+            }
         }
     }
 

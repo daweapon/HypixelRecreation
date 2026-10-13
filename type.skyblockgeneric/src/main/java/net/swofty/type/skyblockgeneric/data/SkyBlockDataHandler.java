@@ -910,7 +910,7 @@ public class SkyBlockDataHandler extends DataHandler {
 
     public static void startRepeatSetValueLoop() {
         MinecraftServer.getSchedulerManager().submitTask(() -> {
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 SkyBlockDataHandler h = PlayerDataService.find(SkyBlockDomain.KEY, player.getUuid()).orElse(null);
                 if (h == null) return;
                 for (Data data : Data.values()) {

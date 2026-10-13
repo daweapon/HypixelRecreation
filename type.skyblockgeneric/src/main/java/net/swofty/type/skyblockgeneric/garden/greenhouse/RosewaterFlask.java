@@ -58,7 +58,7 @@ public final class RosewaterFlask {
 
     public static void startAging() {
         MinecraftServer.getSchedulerManager().buildTask(() ->
-                        SkyBlockGenericLoader.getLoadedPlayers().forEach(RosewaterFlask::age))
+                        SkyBlockGenericLoader.forEachLoadedPlayer(RosewaterFlask::age))
                 .repeat(TaskSchedule.minutes(1))
                 .schedule();
     }

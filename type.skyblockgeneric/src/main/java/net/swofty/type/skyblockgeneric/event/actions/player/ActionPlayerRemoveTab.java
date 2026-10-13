@@ -23,7 +23,7 @@ public class ActionPlayerRemoveTab implements HypixelEventClass {
     public void run(PlayerSpawnEvent event) {
         Player player = event.getPlayer();
 
-        SkyBlockGenericLoader.getLoadedPlayers().forEach(player2 -> {
+        SkyBlockGenericLoader.forEachLoadedPlayer(player2 -> {
             Rank player2Rank = player2.getRank();
             Rank playerRank = ((SkyBlockPlayer) player).getRank();
 

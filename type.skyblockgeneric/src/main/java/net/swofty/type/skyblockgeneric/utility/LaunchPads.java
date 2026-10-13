@@ -506,7 +506,7 @@ public enum LaunchPads {
         scheduler.scheduleTask(() -> {
             List<UUID> updated = new ArrayList<>();
 
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 if (hologramMap.containsKey(player.getUuid())) {
                     hologramMap.get(player.getUuid()).forEach(PlayerHolograms::removeExternalPlayerHologram);
                     hologramMap.remove(player.getUuid());
@@ -528,7 +528,7 @@ public enum LaunchPads {
         scheduler.scheduleTask(() -> {
             for (LaunchPads launchPad : launchPads) {
                 for (Pos slimeBlock : launchPad.getSlimeBlocks()) {
-                    SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+                    SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                         if (slimeBlock.distance(player.getPosition()) <= 15) {
                             player.sendPacket(new ParticlePacket(
                                 Particle.COMPOSTER,

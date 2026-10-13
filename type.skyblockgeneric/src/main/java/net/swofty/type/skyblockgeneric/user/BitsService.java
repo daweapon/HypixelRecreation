@@ -25,7 +25,7 @@ public final class BitsService {
 
     public static void startFarming() {
         MinecraftServer.getSchedulerManager().buildTask(() ->
-                        SkyBlockGenericLoader.getLoadedPlayers().forEach(BitsService::farm))
+                        SkyBlockGenericLoader.forEachLoadedPlayer(BitsService::farm))
                 .repeat(TaskSchedule.minutes(1))
                 .schedule();
     }

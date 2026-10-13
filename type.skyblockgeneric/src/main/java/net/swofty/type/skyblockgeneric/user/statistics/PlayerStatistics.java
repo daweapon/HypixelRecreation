@@ -805,7 +805,7 @@ public class PlayerStatistics {
     public static void experiencedStatisticsLoop() {
         Scheduler scheduler = MinecraftServer.getSchedulerManager();
         scheduler.submitTask(() -> {
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 Thread.startVirtualThread(() -> {
                     List<String> experiencedStatistics = player.getSkyblockDataHandler().get(
                             SkyBlockDataHandler.Data.EXPERIENCED_STATISTICS, DatapointStringList.class
@@ -844,7 +844,7 @@ public class PlayerStatistics {
     public static void barLoop() {
         Scheduler scheduler = MinecraftServer.getSchedulerManager();
         scheduler.submitTask(() -> {
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 SkyBlockActionBar actionBar = SkyBlockActionBar.getFor(player);
 
                 float absorption = player.getAdditionalHearts();
@@ -870,7 +870,7 @@ public class PlayerStatistics {
     public static void statisticsLoop() {
         Scheduler scheduler = MinecraftServer.getSchedulerManager();
         scheduler.submitTask(() -> {
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 Thread.startVirtualThread(() -> {
                     player.getStatistics().updateAccessoryStatistics();
                 });
@@ -882,7 +882,7 @@ public class PlayerStatistics {
     public static void speedLoop() {
         Scheduler scheduler = MinecraftServer.getSchedulerManager();
         scheduler.submitTask(() -> {
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 Thread.startVirtualThread(() -> {
                     double speed = Math.min(player.getStatistics().allStatistics().getOverall(ItemStatistic.SPEED), ColdService.speedCap(player));
                     if (player.isSpeedManaged()) return; // if the Speed is currently managed by another source, don't override it
@@ -896,7 +896,7 @@ public class PlayerStatistics {
     public static void healthLoop() {
         Scheduler scheduler = MinecraftServer.getSchedulerManager();
         scheduler.submitTask(() -> {
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 if (player.getHealth() > player.getMaxHealth())
                     player.setHealth(player.getMaxHealth());
 
@@ -919,7 +919,7 @@ public class PlayerStatistics {
     public static void missionLoop() {
         Scheduler scheduler = MinecraftServer.getSchedulerManager();
         scheduler.submitTask(() -> {
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 if (player.getRegion() == null) return;
                 RegionType region = player.getRegion().getType();
                 List<MissionData.ActiveMission> activeMissions = player.getMissionData().getActiveMissions(region);
@@ -969,7 +969,7 @@ public class PlayerStatistics {
     public static void manaLoop() {
         Scheduler scheduler = MinecraftServer.getSchedulerManager();
         scheduler.submitTask(() -> {
-            SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 if (player.getMana() > player.getMaxMana())
                     player.setMana(player.getMaxMana());
                 if (player.getMana() <= player.getMaxMana()) {

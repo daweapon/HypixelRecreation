@@ -15,7 +15,7 @@ public interface MissionRepeater {
         List<SkyBlockPlayer> toReturn = new ArrayList<>();
         SkyBlockMission mission = (SkyBlockMission) this;
 
-        SkyBlockGenericLoader.getLoadedPlayers().forEach((player) -> {
+        SkyBlockGenericLoader.forEachLoadedPlayer((player) -> {
             if (player.getMissionData().isCurrentlyActive(mission.getID())) {
                 toReturn.add(player);
             }
@@ -28,7 +28,7 @@ public interface MissionRepeater {
         List<SkyBlockPlayer> toReturn = new ArrayList<>();
         SkyBlockMission mission = (SkyBlockMission) this;
 
-        SkyBlockGenericLoader.getLoadedPlayers().forEach((player) -> {
+        SkyBlockGenericLoader.forEachLoadedPlayer((player) -> {
             if (!player.getMissionData().hasCompleted(mission.getID())
                     && !player.getMissionData().isCurrentlyActive(mission.getID())) {
                 toReturn.add(player);
@@ -42,7 +42,7 @@ public interface MissionRepeater {
         List<SkyBlockPlayer> toReturn = new ArrayList<>();
         SkyBlockMission mission = (SkyBlockMission) this;
 
-        SkyBlockGenericLoader.getLoadedPlayers().forEach((player) -> {
+        SkyBlockGenericLoader.forEachLoadedPlayer((player) -> {
             if (player.getMissionData().hasCompleted(mission.getID())) {
                 toReturn.add(player);
             }

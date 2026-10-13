@@ -44,7 +44,7 @@ public abstract class TablistManager {
 
     public void runScheduler(Scheduler scheduler) {
         scheduler.scheduleTask(() -> {
-            HypixelGenericLoader.getLoadedPlayers().forEach(player -> {
+            HypixelGenericLoader.forEachLoadedPlayer(player -> {
                 PlayerTabCache cache = tablistEntries.computeIfAbsent(player, ignored -> new PlayerTabCache());
 
                 if (!cache.tabEntries.isEmpty()) {

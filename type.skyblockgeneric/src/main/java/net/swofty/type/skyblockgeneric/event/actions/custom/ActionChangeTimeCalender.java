@@ -14,7 +14,7 @@ public class ActionChangeTimeCalender implements HypixelEventClass {
         int hour = event.hour();
         long minecraftTime = (hour * 1000L + 6000) % 24000;
 
-        SkyBlockGenericLoader.getLoadedPlayers().forEach(player -> {
+        SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
             player.getInstance().setTime(minecraftTime);
         });
     }

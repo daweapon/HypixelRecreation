@@ -74,7 +74,7 @@ public class SpookyFestivalLeaderboardDisplay {
         String leaderboardKey = "spooky_festival_" + SkyBlockCalendar.getYear();
         List<LeaderboardService.LeaderboardEntry> top = LeaderboardService.getTopN(leaderboardKey, TOP_N);
 
-        HypixelGenericLoader.getLoadedPlayers().forEach(player -> {
+        HypixelGenericLoader.forEachLoadedPlayer(player -> {
             List<String> message = new ArrayList<>(List.of(
                     "<6><l>" + StringUtility.ntify(SkyBlockCalendar.getYear()) + " SPOOKY FESTIVAL",
                     "<f>Candy Contest",
