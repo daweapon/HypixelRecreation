@@ -30,14 +30,7 @@ public class GUIGardenDesk extends StatelessView {
         Components.fill(layout);
         Components.close(layout, 49);
 
-        layout.slot(4, (_, c) -> {
-            SkyBlockPlayer player = (SkyBlockPlayer) c.player();
-            var profile = GardenService.profile(player);
-            List<Text> lore = GardenMenus.lines(KEY + "sunflower.lore.", 1);
-            lore.add(Text.key(KEY + "sunflower.level", GardenProgress.level(profile)));
-            lore.add(Text.key(KEY + "sunflower.xp", GardenMenus.number((long) profile.getGardenXp())));
-            return GardenMenus.item(Material.SUNFLOWER, Text.key(KEY + "sunflower.name"), lore);
-        });
+        layout.slot(4, (_, c) -> sunflower((SkyBlockPlayer) c.player()), (_, c) -> GardenMenus.open(c, new GUIGardenLevels()));
 
         view(layout, 19, Material.GRASS_BLOCK, "plots", 2, () -> new GUIConfigurePlots());
         view(layout, 21, Material.MELON_SLICE, "upgrades", 2, () -> new GUIGardenUpgrades());
@@ -45,7 +38,6 @@ public class GUIGardenDesk extends StatelessView {
         view(layout, 25, Material.GOLD_BLOCK, "milestones", 2, () -> new GUIGardenMilestones());
         view(layout, 31, Material.CLOCK, "speed", 2, () -> new GUICropSpeed());
         view(layout, 33, Material.PLAYER_HEAD, "chips", 2, () -> new GUIManageChips());
-        layout.slot(29, (_, c) -> levelsItem(c), (_, c) -> GardenMenus.open(c, new GUIGardenLevels()));
         view(layout, 48, Material.CHEST, "logbook", 2, () -> new GUIVisitorLogbook());
         pending(layout, 50, Material.DAYLIGHT_DETECTOR, "time", 1, "Garden Time");
         layout.slot(51, (_, _) -> GardenMenus.item(Material.DIAMOND_HOE, Text.key(KEY + "toolkit.name"), tooltip("toolkit", 3, false)),
@@ -61,12 +53,31 @@ public class GUIGardenDesk extends StatelessView {
         GardenMenus.open(c, new GUIFarmingToolkit());
     }
 
-    private net.minestom.server.item.ItemStack.Builder levelsItem(ViewContext c) {
-        List<Text> lore = GardenMenus.lines(KEY + "levels.lore.", 2);
-        lore.add(Text.key(KEY + "levels.current", GardenProgress.level(GardenService.profile((SkyBlockPlayer) c.player()))));
+    private net.minestom.server.item.ItemStack.Builder sunflower(SkyBlockPlayer player) {
+        var profile = GardenService.profile(player);
+        var config = net.swofty.type.skyblockgeneric.garden.GardenConfig.get();
+        int level = GardenProgress.level(profile);
+        List<Text> lore = new java.util.ArrayList<>();
+        lore.add(Text.of("<7>Earn Garden experience by accepting"));
+        lore.add(Text.of("<7>visitors' offers and unlocking new"));
+        lore.add(Text.of("<7>milestones!"));
+        lore.add(GardenMenus.blank());
+        if (level >= config.maxLevel()) {
+            lore.add(Text.of("<a>Max level reached!"));
+        } else {
+            double base = config.level(level).cumulativeXp();
+            double need = config.level(level + 1).cumulativeXp() - base;
+            long into = (long) Math.max(0, profile.getGardenXp() - base);
+            String roman = net.swofty.commons.StringUtility.getAsRomanNumeral(level + 1);
+            lore.add(Text.of("<7>Progress to Level {}: <e>{}", roman, GardenMenus.percent(into, (long) need)));
+            lore.add(Text.of("<8>{}<7>/<8>{}", GardenMenus.number(into), GardenMenus.number((long) need)));
+            lore.add(GardenMenus.blank());
+            lore.add(Text.of("<7>Level {} Reward:", roman));
+            lore.add(Text.of("<8>+<b>10 SkyBlock XP"));
+        }
         lore.add(GardenMenus.blank());
         lore.add(Text.key(KEY + "click_to_view"));
-        return GardenMenus.item(Material.EXPERIENCE_BOTTLE, Text.key(KEY + "levels.name"), lore);
+        return GardenMenus.item(Material.SUNFLOWER, Text.of("<a>Garden Level " + net.swofty.commons.StringUtility.getAsRomanNumeral(level)), lore);
     }
 
     private void view(ViewLayout<DefaultState> layout, int slot, Material material, String id, int loreLines,
