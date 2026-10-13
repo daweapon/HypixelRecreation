@@ -261,7 +261,7 @@ perks:
     maxLevel: 1
     exponent: 0
     offset: 0
-    available: false
+    available: true
     requires: null
     verified: true
     lore:
@@ -402,7 +402,7 @@ perks:
     maxLevel: 20
     exponent: 4.0
     offset: 1
-    available: false
+    available: true
     requires: null
     verified: false
     lore:

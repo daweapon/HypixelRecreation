@@ -1,0 +1,36 @@
+title: "The Crystal Hollows Update"
+date: "13th October 2026"
+intro:
+  - "The Crystal Hollows are open to anyone with Heart of the Mountain Tier 4 and Mining 12. Every lobby places its structures somewhere new, while the gemstones and the Crystal Nucleus stay put."
+sections:
+  - heading: "Getting there"
+    colour: "<d>"
+    lines:
+      - "Gwendolyn in the Dwarven Mines sells a 6 hour Crystal Hollows Pass for 10,000 coins. Reach Heart of the Mountain Tier 7 and help Dulin and the pass becomes permanent."
+      - "Arrive without a valid pass and you are sent back to the Dwarven Mines."
+  - heading: "Mining"
+    colour: "<b>"
+    lines:
+      - "Mine Ruby, Amethyst (Jungle), Jade (Mithril Deposits), Sapphire (Precursor Remnants), Amber (Goblin Holdout), Topaz (Magma Fields) and Jasper (Fairy Grotto) gemstones. Breaking Power needed: Ruby 6, Amethyst, Jade, Sapphire and Amber 7, Topaz 8, Jasper 9."
+      - "Stone in the Hollows is Hard Stone, which needs Breaking Power 4. Mined blocks do not grow back."
+      - "Front Loaded now works: triple Gemstone Powder, plus bonus Gemstone Fortune and Mining Speed, for the first 2,500 gemstones you mine each day."
+  - heading: "Treasure"
+    colour: "<6>"
+    lines:
+      - "Hard Stone can hide Treasure Chests. Great Explorer and the Scatha pet raise the chance and remove locks. Only the player who found a chest can open it, and it vanishes after a minute."
+      - "Stoneworms and Scatha burrow up while you mine Hard Stone. Treasure of the Earth makes them more likely."
+  - heading: "Crystal Nucleus"
+    colour: "<5>"
+    lines:
+      - "Find the Amethyst, Jade, Sapphire, Amber and Topaz Crystals, then place all five at the Crystal Nucleus for a Crystal Loot Bundle, 800 Heart of the Mountain XP and SkyBlock XP."
+      - "Fill the Nucleus RNG Meter, opened from the Heart of the Mountain menu, to improve your odds at a chosen reward."
+  - heading: "Magma Fields"
+    colour: "<c>"
+    lines:
+      - "Deep in the Magma Fields and Khazad-dum, Heat builds up. Warnings come at 90 Heat and at 100 you burn to death. Keep It Cool grants Heat Resistance."
+  - heading: "Mobs and people"
+    colour: "<a>"
+    lines:
+      - "New mobs include Automatons, Grunts, Treasurite Executives, Sludges, Yogs, Thysts, Key Guardians and Butterflies, and the bosses Boss Corleone and Bal."
+      - "Odawa, Professor Robot, King Yolkar, the Keepers, Chunk, Xalx, Emissary Sisko, Gemma and Geonathan Greatforge live in the Hollows."
+      - "The Crystal Hollows Bestiary and new Lava and Water fishing creatures are in."

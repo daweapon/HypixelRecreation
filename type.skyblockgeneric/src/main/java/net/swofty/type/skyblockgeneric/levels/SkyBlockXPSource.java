@@ -92,7 +92,7 @@ public enum SkyBlockXPSource {
     // ----- Skill Related Tasks (11,732 XP) -----
     HEART_OF_THE_MOUNTAIN(Group.SKILL_RELATED, SubArea.MINING, 3117, Availability.LIVE, Material.REDSTONE),
     COMMISSION_MILESTONES(Group.SKILL_RELATED, SubArea.MINING, 255, Availability.LIVE, Material.PAPER),
-    CRYSTAL_NUCLEUS_RUNS(Group.SKILL_RELATED, SubArea.MINING, 200, Availability.NOT_IN_GAME, Material.AMETHYST_SHARD),
+    CRYSTAL_NUCLEUS_RUNS(Group.SKILL_RELATED, SubArea.MINING, 200, Availability.LIVE, Material.AMETHYST_SHARD),
     CORE_OF_THE_MOUNTAIN(Group.SKILL_RELATED, SubArea.MINING, 1000, Availability.LIVE, Material.NETHERITE_PICKAXE),
     FOSSIL_RESEARCH(Group.SKILL_RELATED, SubArea.MINING, 80, Availability.LIVE, Material.BONE),
     FROZEN_CORPSE_MILESTONES(Group.SKILL_RELATED, SubArea.MINING, 140, Availability.NOT_IN_GAME, Material.PACKED_ICE),

@@ -2623,10 +2623,10 @@ items:
     material: player_head
     name: "Kalhuiki Mask"
     rarity: COMMON
+    source: "Bought from Odawa in the Crystal Hollows Jungle for Sludge Juice and Jungle Logs"
     default_statistics:
       health: 100
       defense: 50
-    unavailable: "Needs Galatea foraging content"
     lore:
       - "§7A ceremonial mask worn by the"
       - "§7members of the Kalhuiki Tribe."

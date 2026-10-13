@@ -143,8 +143,30 @@ seaCreatures:
   # Crystal Hollows lava (not catchable on the Crimson Isle)
   - id: LAVA_BLAZE
     requiredFishingLevel: 20
-    skillXp: 1000
+    skillXp: 500
     tags: [LAVA, RARE]
+  - id: LAVA_PIGMAN
+    requiredFishingLevel: 22
+    skillXp: 500
+    tags: [LAVA, RARE]
+  - id: FLAMING_WORM
+    requiredFishingLevel: 19
+    skillXp: 1150
+    tags: [LAVA, RARE]
+
+  # ---------- Crystal Hollows water ----------
+  - id: WATER_WORM
+    requiredFishingLevel: 15
+    skillXp: 887
+    tags: [WATER, RARE]
+  - id: POISONED_WATER_WORM
+    requiredFishingLevel: 20
+    skillXp: 1000
+    tags: [WATER, RARE]
+  - id: ABYSSAL_MINER
+    requiredFishingLevel: 24
+    skillXp: 3640
+    tags: [WATER, EPIC]
 
   # ---------- winter (Jerry's Workshop only; weights live in tables.yml) ----------
   - id: FROZEN_STEVE

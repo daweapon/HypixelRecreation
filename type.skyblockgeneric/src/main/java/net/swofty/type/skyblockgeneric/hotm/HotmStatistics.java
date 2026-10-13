@@ -35,6 +35,10 @@ public final class HotmStatistics {
             }
             total = ItemStatistics.add(total, builder.build());
         }
+        if (onMiningIsland && FrontLoaded.active(player)) {
+            total = total.addBase(ItemStatistic.GEMSTONE_FORTUNE, FrontLoaded.GEMSTONE_FORTUNE)
+                    .addBase(ItemStatistic.MINING_SPEED, FrontLoaded.MINING_SPEED);
+        }
         HotmSkyMallBuff buff = HotmService.skyMallBuff(player);
         if (buff == HotmSkyMallBuff.MINING_SPEED) total = total.addBase(ItemStatistic.MINING_SPEED, 100D);
         if (buff == HotmSkyMallBuff.MINING_FORTUNE) total = total.addBase(ItemStatistic.MINING_FORTUNE, 50D);

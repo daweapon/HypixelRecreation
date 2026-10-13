@@ -487,8 +487,7 @@ items:
             values:
               - { per_level: 0.5 }
           - name: "Nucleic Explorer"
-            unavailable: "Needs Crystal Hollows content"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain a <a>{0}% <7>chance to receive an"
               - "<7>extra drop when completing the"
@@ -566,8 +565,7 @@ items:
           RARE: { mining_speed: { per_level: 1 }, mining_fortune: { per_level: 1.25 } }
         abilities:
           - name: "Burrowing"
-            unavailable: "Needs Crystal Hollows content"
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Grants a <a>+{0}% <7>chance to find"
               - "<e>Treasure Chests <7>while mining."

@@ -5,6 +5,7 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.generic.data.datapoints.DatapointToggles;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess;
 import net.swofty.type.skyblockgeneric.glacite.RailroadPass;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -21,6 +22,7 @@ public class NPCDulin extends AbstractTalkingNPC {
 		SkyBlockPlayer player = (SkyBlockPlayer) event.player();
 		if (isInDialogue(player)) return;
 		var toggles = player.getToggles();
+		recordHelp(player);
 		if (player.countItem(ItemType.SECRET_RAILROAD_PASS) > 0) {
 			setDialogue(player, "pass");
 		} else if (!toggles.get(DatapointToggles.Toggles.ToggleType.HAS_SPOKEN_TO_DULIN) && !RailroadPass.isUnlocked(player)) {
@@ -30,6 +32,12 @@ public class NPCDulin extends AbstractTalkingNPC {
 		} else {
 			setDialogue(player, "again");
 		}
+	}
+
+	private static void recordHelp(SkyBlockPlayer player) {
+		if (!RailroadPass.isUnlocked(player) || !RailroadPass.meetsRequirement(player)) return;
+		if (CrystalHollowsAccess.data(player).hasFlag(CrystalHollowsAccess.HELPED_DULIN_FLAG)) return;
+		CrystalHollowsAccess.markHelpedDulin(player);
 	}
 
 	@Override

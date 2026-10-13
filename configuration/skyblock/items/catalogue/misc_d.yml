@@ -1993,7 +1993,6 @@ items:
     material: rotten_flesh
     name: "Mysterious Meat"
     rarity: COMMON
-    unavailable: "Needs the Garden"
     source: "Given by Xalx"
     lore:
       - "§7Quest item"

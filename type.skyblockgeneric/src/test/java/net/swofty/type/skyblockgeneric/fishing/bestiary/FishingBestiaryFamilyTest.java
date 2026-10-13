@@ -94,7 +94,7 @@ class FishingBestiaryFamilyTest {
         assertEquals(FishingBestiaryFamily.RIDER_OF_THE_DEEP, FishingBestiaryFamily.forMobKey("MONSTER_OF_THE_DEEP").orElseThrow());
         assertEquals(FishingBestiaryFamily.LORD_JAWBUS, FishingBestiaryFamily.forMobKey("LORD_JAWBUS").orElseThrow());
         assertTrue(FishingBestiaryFamily.forMobKey("THE_SEA_EMPEROR").isEmpty());
-        assertTrue(FishingBestiaryFamily.ABYSSAL_MINER.getMobKeys().isEmpty());
+        assertTrue(FishingBestiaryFamily.AGARIMOO.getMobKeys().isEmpty());
     }
 
     @Test

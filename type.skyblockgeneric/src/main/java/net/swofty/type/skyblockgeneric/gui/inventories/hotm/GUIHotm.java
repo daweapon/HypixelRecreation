@@ -106,7 +106,7 @@ public class GUIHotm extends StatelessView {
                 <d>Crystal Nucleus RNG Meter
                 <7>Your <d>Crystal Nucleus RNG Meter<7> fills with <9>1,000 Nucleus XP<7> every time you complete the <5>Crystal Nucleus<7>!
 
-                <8>The Crystal Hollows is not available yet.""")));
+                <e>Click to view!""")), (_, c) -> c.push(new GUINucleusRngMeter()));
         layout.slot(52, (_, _) -> ItemStacks.item(Material.CAULDRON, HotmTooltips.reset(player)), (_, c) -> c.push(new GUIHotmReset()));
     }
 

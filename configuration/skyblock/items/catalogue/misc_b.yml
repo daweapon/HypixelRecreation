@@ -1071,7 +1071,6 @@ items:
     material: iron_hoe
     name: "Metal Detector"
     rarity: SPECIAL
-    unavailable: "The Mines of Divan Keepers quest isn't built"
     source: "Given by the Keepers of Gold, Emerald, Diamond and Lapis"
     lore:
       - "§7Used to find lost Dwarven treasures"
@@ -1101,7 +1100,6 @@ items:
     material: player_head
     name: "Dwarven O's Gemstone Grahams"
     rarity: EPIC
-    unavailable: "Dwarven Mines Mining Events (the drop source) aren't built"
     source: "Rare drop during Dwarven Mines Mining Events"
     lore:
       - "§8Consumable"

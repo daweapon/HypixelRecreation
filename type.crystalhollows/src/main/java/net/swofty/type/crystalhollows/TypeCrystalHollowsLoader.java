@@ -9,14 +9,16 @@ import net.swofty.commons.CustomWorlds;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.redis.RedisMessageHandler;
+import net.swofty.type.crystalhollows.boss.CrystalHollowsBossSpawner;
 import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
+import net.swofty.type.crystalhollows.tab.CrystalHollowsInfoModule;
 import net.swofty.type.generic.SkyBlockTypeLoader;
 import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.event.HypixelEventClass;
-import net.swofty.type.generic.tab.AreaServerModule;
 import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
+import net.swofty.type.skyblockgeneric.crystalhollows.HeatService;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.tabmodules.SkyBlockPlayersOnlineModule;
 import org.jetbrains.annotations.Nullable;
@@ -42,6 +44,8 @@ public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
     @Override
     public void afterInitialize(MinecraftServer server) {
         CrystalHollowsLayout.generate();
+        HeatService.start();
+        CrystalHollowsBossSpawner.start();
     }
 
     @Override
@@ -57,7 +61,7 @@ public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
                 return new ArrayList<>(List.of(
                         new SkyBlockPlayersOnlineModule(1),
                         new SkyBlockPlayersOnlineModule(2),
-                        new AreaServerModule("tablist.server_info.area.crystal_hollows"),
+                        new CrystalHollowsInfoModule(),
                         new AccountInformationModule()
                 ));
             }

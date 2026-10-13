@@ -7,6 +7,23 @@ import net.swofty.type.skyblockgeneric.entity.mob.BestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.CataloguedBestiaryMob;
 import net.swofty.type.skyblockgeneric.entity.mob.MobType;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.crimsonisle.MobAshfang;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobAutomaton67;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobAutomaton71;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobButterfly;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobExecutiveSebastian;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobExecutiveViper;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobExecutiveWendy;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobGrunt;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobKeyGuardian;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobSludgeLarge;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobSludgeMedium;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobSludgeSmall;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobThyst;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.MobYog;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.boss.MobBal;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.boss.MobBossCorleone;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.boss.MobScatha;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.boss.MobStoneworm;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.DiamondGoblin;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.GoldenGoblin;
 import net.swofty.type.skyblockgeneric.entity.mob.mobs.dwarvenmines.MobGlaciteWalker;
@@ -226,6 +243,37 @@ public enum BestiaryCategory {
         private final List<BestiaryMob> mobs;
 
         CRIMSON_ISLE(String name, String description, List<BestiaryMob> mobs) {
+            this.name = name;
+            this.description = description;
+            this.mobs = mobs;
+        }
+
+        @Override
+        public GUIMaterial getGuiMaterial() {
+            return mobs.getFirst().getGuiMaterial();
+        }
+    }
+
+    @Getter
+    public enum CRYSTAL_HOLLOWS implements BestiaryEntry {
+        AUTOMATON("<a>Automaton", "Ancient robots that still guard the Lost Precursor City.", List.of(new MobAutomaton67(), new MobAutomaton71())),
+        BAL("<a>Bal", "A giant that guards the Topaz Crystal.", List.of(new MobBal())),
+        BOSS_CORLEONE("<a>Boss Corleone", "Don't let him call down the Smog.", List.of(new MobBossCorleone())),
+        BUTTERFLY("<a>Butterfly", "Flutters through the Fairy Grotto.", List.of(new MobButterfly())),
+        GRUNT("<a>Grunt", "Team Treasurite's foot soldiers and the executives that command them.",
+                List.of(new MobGrunt(), new MobExecutiveSebastian(), new MobExecutiveWendy(), new MobExecutiveViper())),
+        KEY_GUARDIAN("<a>Key Guardian", "Keeps the key to the Jungle Temple.", List.of(new MobKeyGuardian())),
+        SLUDGE("<a>Sludge", "Splits into smaller Sludges when defeated.",
+                List.of(new MobSludgeSmall(), new MobSludgeMedium(), new MobSludgeLarge())),
+        STONEWORM("<a>Stoneworm", "Hear it coming before you see it.", List.of(new MobStoneworm(), new MobScatha())),
+        THYST("<a>Thyst", "Burrows out of Amethyst when it is mined.", List.of(new MobThyst())),
+        YOG("<a>Yog", "A molten cube that roams the Magma Fields.", List.of(new MobYog())),
+        ;
+
+        private final String name, description;
+        private final List<BestiaryMob> mobs;
+
+        CRYSTAL_HOLLOWS(String name, String description, List<BestiaryMob> mobs) {
             this.name = name;
             this.description = description;
             this.mobs = mobs;

@@ -13,6 +13,7 @@ public final class CrystalHollowsAccess {
     public static final int PERMANENT_HOTM_TIER = 7;
     public static final double PASS_PRICE = 10_000;
     public static final long PASS_DURATION_MILLIS = 6L * 60 * 60 * 1000;
+    private static final long FULL_ACCESS_PASS_MILLIS = 30L * 24 * 60 * 60 * 1000;
     public static final String HELPED_DULIN_FLAG = "helped_dulin";
 
     private CrystalHollowsAccess() {
@@ -90,6 +91,7 @@ public final class CrystalHollowsAccess {
         DatapointCrystalHollows.CrystalHollowsData data = data(player);
         data.setPermanentAccess(true);
         data.getFlags().add(HELPED_DULIN_FLAG);
+        data.setPassExpiresAt(Math.max(data.getPassExpiresAt(), System.currentTimeMillis() + FULL_ACCESS_PASS_MILLIS));
         save(player, data);
     }
 }

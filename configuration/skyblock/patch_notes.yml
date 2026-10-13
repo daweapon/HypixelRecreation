@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "crystal-hollows"
+    name: "The Crystal Hollows Update"
+    date: "13th October 2026"
+    material: amethyst_shard
+    title: "The Crystal Hollows Update"
+    book: "crystal_hollows_update.yml"
   - version: "garden-8"
     name: "The Garden Update, Part 8"
     date: "13th October 2026"

@@ -9,6 +9,7 @@ import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointHOTM;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.glacite.GlaciteOre;
+import net.swofty.type.skyblockgeneric.hotm.FrontLoaded;
 import net.swofty.type.skyblockgeneric.hotm.HotmAbilities;
 import net.swofty.type.skyblockgeneric.hotm.HotmPowder;
 import net.swofty.type.skyblockgeneric.hotm.HotmService;
@@ -89,7 +90,12 @@ public class ActionHotmMining implements HypixelEventClass {
         if (MiningPetBonuses.rollingMinerReady(player, System.currentTimeMillis())) {
             event.getDrops().forEach(drop -> drop.setAmount(drop.getAmount() * 2));
         }
-        HotmService.gainPowder(player, HotmPowder.GEMSTONE, 1 + HotmService.baseBonus(player, HotmPowder.GEMSTONE));
+        long base = 1 + HotmService.baseBonus(player, HotmPowder.GEMSTONE);
+        if (FrontLoaded.active(player)) {
+            base = Math.round(base * FrontLoaded.POWDER_MULTIPLIER);
+            FrontLoaded.consume(player);
+        }
+        HotmService.gainPowder(player, HotmPowder.GEMSTONE, base);
     }
 
     private void awardDailyPowder(SkyBlockPlayer player) {

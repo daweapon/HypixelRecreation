@@ -108,7 +108,7 @@ class PetPerksUnavailableTest {
                 assertFalse(ability.getUnavailable().isBlank());
             }
         }
-        assertTrue(marked >= 82, "marked " + marked);
+        assertTrue(marked >= 80, "marked " + marked);
     }
 
     private static void assertUnavailable(ItemType type, Rarity rarity, String perk, String reason) {

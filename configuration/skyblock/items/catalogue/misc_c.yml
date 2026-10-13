@@ -3347,7 +3347,6 @@ items:
     material: paper
     name: "Jasper Crystal"
     rarity: SPECIAL
-    unavailable: "Removed as an item in 2021; Crystal Hollows/Glacite Mineshaft crystal"
     source: "Fairy Grotto chests, Nucleus stash and Glacite Mineshafts (legacy)"
     lore:
       - "§7Exquisite crystal found deep in the"

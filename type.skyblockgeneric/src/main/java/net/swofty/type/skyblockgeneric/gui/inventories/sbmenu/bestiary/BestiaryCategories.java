@@ -17,6 +17,7 @@ public enum BestiaryCategories {
     DEEP_CAVERNS("<b>Deep Caverns", BestiaryCategory.DEEP_CAVERNS.values()),
     DWARVEN_MINES("<2>Dwarven Mines", BestiaryCategory.DWARVEN_MINES.values()),
     MYTHOLOGICAL_CREATURES("<b>Mythological Creatures", BestiaryCategory.MYTHOLOGICAL_CREATURES.values()),
+    CRYSTAL_HOLLOWS("<5>Crystal Hollows", BestiaryCategory.CRYSTAL_HOLLOWS.values()),
     CRIMSON_ISLE("<c>Crimson Isle", BestiaryCategory.CRIMSON_ISLE.values()),
     KUUDRA("<c>Kuudra", BestiaryCategory.KUUDRA.values()),
     FISHING(FishingBestiarySection.FISHING),

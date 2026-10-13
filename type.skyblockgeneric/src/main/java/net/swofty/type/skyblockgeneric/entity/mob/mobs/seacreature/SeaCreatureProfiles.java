@@ -172,13 +172,105 @@ public final class SeaCreatureProfiles {
 
     public static final SeaCreatureProfile LAVA_BLAZE = SeaCreatureProfile.builder("LAVA_BLAZE")
             .displayName("Lava Blaze")
-            .level(30)
+            .level(123)
             .entityType(EntityType.BLAZE)
-            .health(1500D).damage(250D).speed(90D)
+            .health(400_000D).damage(600D).speed(90D)
             .behaviour(SeaCreatureBehaviour.aggressive(2.5, 20, 20))
             .mobTypes(MobType.MAGMATIC)
             .damageCooldownMs(350)
-            .fishingXpReward(1000).xpOrbs(18)
+            .fishingXpReward(500).xpOrbs(185)
+            .lootTable(drops(
+                    new SkyBlockLootTable.LootRecord(ItemType.ROUGH_TOPAZ_GEM, 28, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.BLAZE_ROD, 5, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.BLAZEN_SPHERE, 1, 1),
+                    new SkyBlockLootTable.LootRecord(ItemType.ETERNAL_FLAME_RING, 1, 0.5),
+                    new SkyBlockLootTable.LootRecord(ItemType.MAGMA_CORE, 1, 0.5),
+                    new SkyBlockLootTable.LootRecord(ItemType.DYE_CARMINE, 1, 0.00004)))
+            .build();
+
+    public static final SeaCreatureProfile LAVA_PIGMAN = SeaCreatureProfile.builder("LAVA_PIGMAN")
+            .displayName("Lava Pigman")
+            .level(129)
+            .entityType(EntityType.ZOMBIFIED_PIGLIN)
+            .health(450_000D).damage(700D).speed(90D)
+            .behaviour(SeaCreatureBehaviour.aggressive(2.0, 20, 20))
+            .mobTypes(MobType.MAGMATIC)
+            .damageCooldownMs(350)
+            .fishingXpReward(500).xpOrbs(194)
+            .lootTable(drops(
+                    new SkyBlockLootTable.LootRecord(ItemType.ROUGH_TOPAZ_GEM, 28, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.ETERNAL_FLAME_RING, 1, 0.5),
+                    new SkyBlockLootTable.LootRecord(ItemType.MAGMA_CORE, 1, 0.5),
+                    new SkyBlockLootTable.LootRecord(ItemType.DYE_CARMINE, 1, 0.00004)))
+            .build();
+
+    public static final SeaCreatureProfile FLAMING_WORM = SeaCreatureProfile.builder("FLAMING_WORM")
+            .displayName("Flaming Worm")
+            .level(92)
+            .entityType(EntityType.MAGMA_CUBE)
+            .health(100_000D).damage(500D).speed(80D)
+            .behaviour(SeaCreatureBehaviour.aggressive(2.0, 20, 20))
+            .mobTypes(MobType.MAGMATIC)
+            .damageCooldownMs(350)
+            .fishingXpReward(1150).xpOrbs(119)
+            .lootTable(drops(
+                    new SkyBlockLootTable.LootRecord(ItemType.ROUGH_SAPPHIRE_GEM, 28, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.WORM_MEMBRANE, 1, 25),
+                    new SkyBlockLootTable.LootRecord(ItemType.ETERNAL_FLAME_RING, 1, 0.5),
+                    new SkyBlockLootTable.LootRecord(ItemType.DYE_CARMINE, 1, 0.00004)))
+            .build();
+
+    public static final SeaCreatureProfile WATER_WORM = SeaCreatureProfile.builder("WATER_WORM")
+            .displayName("Water Worm")
+            .level(71)
+            .entityType(EntityType.SILVERFISH)
+            .health(50_000D).damage(300D).speed(80D)
+            .behaviour(SeaCreatureBehaviour.aggressive(2.0, 20, 20))
+            .mobTypes(MobType.AQUATIC)
+            .damageCooldownMs(350)
+            .fishingXpReward(887).xpOrbs(93)
+            .lootTable(drops(
+                    new SkyBlockLootTable.LootRecord(ItemType.HARD_STONE, 10, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.ROUGH_AMBER_GEM, 13, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.WORM_MEMBRANE, 1, 15),
+                    new SkyBlockLootTable.LootRecord(ItemType.DYE_AQUAMARINE, 1, 0.00004)))
+            .build();
+
+    public static final SeaCreatureProfile POISONED_WATER_WORM = SeaCreatureProfile.builder("POISONED_WATER_WORM")
+            .displayName("Poisoned Water Worm")
+            .level(76)
+            .entityType(EntityType.SILVERFISH)
+            .health(75_000D).damage(400D).speed(80D)
+            .behaviour(SeaCreatureBehaviour.aggressive(2.0, 20, 20))
+            .mobTypes(MobType.AQUATIC)
+            .damageCooldownMs(350)
+            .fishingXpReward(1000).xpOrbs(100)
+            .lootTable(drops(
+                    new SkyBlockLootTable.LootRecord(ItemType.HARD_STONE, 10, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.ROUGH_AMBER_GEM, 13, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.WORM_MEMBRANE, 1, 15),
+                    new SkyBlockLootTable.LootRecord(ItemType.DYE_AQUAMARINE, 1, 0.00004)))
+            .build();
+
+    public static final SeaCreatureProfile ABYSSAL_MINER = SeaCreatureProfile.builder("ABYSSAL_MINER")
+            .displayName("Abyssal Miner")
+            .level(182)
+            .entityType(EntityType.ZOMBIE)
+            .health(2_000_000D).damage(1_300D).speed(90D)
+            .behaviour(SeaCreatureBehaviour.aggressive(1.6, 20, 20))
+            .mobTypes(MobType.AQUATIC, MobType.HUMANOID)
+            .damageCooldownMs(350)
+            .fishingXpReward(3640).xpOrbs(457)
+            .catchMessage("An Abyssal Miner breaks out of the water!")
+            .lootTable(drops(
+                    new SkyBlockLootTable.LootRecord(ItemType.ROUGH_AMETHYST_GEM, 20, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.ROUGH_JADE_GEM, 20, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.ROUGH_SAPPHIRE_GEM, 20, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.QUARTZ, 10, 100),
+                    new SkyBlockLootTable.LootRecord(ItemType.FLAWED_AMETHYST_GEM, 1, 20),
+                    new SkyBlockLootTable.LootRecord(ItemType.FLAWED_JADE_GEM, 1, 20),
+                    new SkyBlockLootTable.LootRecord(ItemType.FLAWED_SAPPHIRE_GEM, 1, 20),
+                    new SkyBlockLootTable.LootRecord(ItemType.DYE_AQUAMARINE, 1, 0.002)))
             .build();
 
     public static final List<SeaCreatureProfile> CANONICAL = List.of(
@@ -186,8 +278,9 @@ public final class SeaCreatureProfiles {
             SQUID, SEA_WALKER, NIGHT_SQUID, SEA_GUARDIAN,
             SEA_WITCH, SEA_ARCHER, MONSTER_OF_THE_DEEP, CATFISH, CARROT_KING,
             SEA_LEECH, GUARDIAN_DEFENDER, WATER_HYDRA, THE_SEA_EMPEROR,
+            WATER_WORM, POISONED_WATER_WORM, ABYSSAL_MINER,
             // Lava
-            LAVA_BLAZE
+            LAVA_BLAZE, LAVA_PIGMAN, FLAMING_WORM
     );
 
     private static SkyBlockLootTable drops(SkyBlockLootTable.LootRecord... records) {

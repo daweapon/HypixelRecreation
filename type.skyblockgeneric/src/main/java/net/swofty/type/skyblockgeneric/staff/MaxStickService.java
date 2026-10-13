@@ -171,6 +171,7 @@ public final class MaxStickService {
             new Step("Ice Essence shop", IceEssenceShop::maxAvailable),
             new Step("Fossil Essence shop", net.swofty.type.skyblockgeneric.essence.FossilEssenceShop::maxAvailable),
             new Step("Fossil Research Center", net.swofty.type.skyblockgeneric.fossil.FossilService::donateAll),
+            new Step("Crystal Nucleus", net.swofty.type.skyblockgeneric.crystalhollows.CrystalNucleus::maxOut),
             new Step("Crimson Essence shop", CrimsonEssenceShop::maxAvailable),
             new Step("Other Essence shops", net.swofty.type.skyblockgeneric.essence.EssenceShops::maxAvailable),
             new Step("Chicken Race", ChickenRaceProgress::maxOut),
@@ -278,6 +279,7 @@ public final class MaxStickService {
 
     private static void maxHotm(SkyBlockPlayer player) {
         HotmService.maxOut(player);
+        net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess.grantFullAccess(player);
     }
 
     private static void maxFairySouls(SkyBlockPlayer player) {

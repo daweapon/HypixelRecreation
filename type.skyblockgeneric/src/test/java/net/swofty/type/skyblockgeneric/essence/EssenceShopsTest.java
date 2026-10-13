@@ -62,6 +62,8 @@ class EssenceShopsTest {
         assertEquals(48_350 + 7_500, total(EssenceType.SAFARI));
     }
 
+    private static final java.util.Set<String> CODE_WIRED = java.util.Set.of("treasures_of_the_earth");
+
     @Test
     void wiredPerksCanBeBoughtAndTheRestSayWhyNot() {
         CataloguePerk health = perk(EssenceType.WITHER, "FORBIDDEN_HEALTH");
@@ -69,7 +71,7 @@ class EssenceShopsTest {
         assertEquals(EssenceShop.Result.BOUGHT, EssenceShops.shop(EssenceType.WITHER).get().check(0, health, 100));
         for (EssenceType type : SHOPS) {
             for (CataloguePerk perk : EssenceShops.shop(type).get().perks()) {
-                assertTrue(perk.getUnavailableReason() != null || perk.stat() != null, perk.name() + " has no effect and no reason");
+                assertTrue(perk.getUnavailableReason() != null || perk.stat() != null || CODE_WIRED.contains(perk.id()), perk.name() + " has no effect and no reason");
             }
         }
     }

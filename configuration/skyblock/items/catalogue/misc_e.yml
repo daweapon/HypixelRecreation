@@ -760,7 +760,6 @@ items:
     material: paper
     name: "Ruby Crystal"
     rarity: SPECIAL
-    unavailable: "Needs the Crystal Hollows and Glacite Mineshafts, which are not built"
     source: "Mining Ruby/Sapphire gemstone (0.002%), Crystal Nucleus treasure, Glacite Mineshafts"
     lore:
       - "§7Exquisite crystal found deep in the"

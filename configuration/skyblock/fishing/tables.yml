@@ -80,9 +80,7 @@ tables:
         amount: 2
         skillXp: 15
     junk: [ ]
-    seaCreatures:
-      - seaCreatureId: LAVA_BLAZE
-        chance: 5
+    seaCreatures: [ ]
   - id: BAYOU_WATERS
     regions:
       - BACKWATER_BAYOU
@@ -376,3 +374,72 @@ tables:
         weight: 100
       - seaCreatureId: REINDRAKE
         weight: 25
+  # Crystal Hollows (wiki: Sea_Creatures/List/Crystal_Hollows). Region tables come first so they win over the server-wide pools.
+  # Poisoned Water Worm weight is an estimate; the wiki gives none.
+  - id: CRYSTAL_HOLLOWS_PRECURSOR_LAVA
+    regions:
+      - PRECURSOR_REMNANTS
+      - LOST_PRECURSOR_CITY
+    mediums:
+      - LAVA
+    weightedSeaCreatures: true
+    items:
+      - itemId: MAGMAFISH
+        chance: 100
+        amount: 1
+        skillXp: 10
+    junk: [ ]
+    seaCreatures:
+      - seaCreatureId: FLAMING_WORM
+        weight: 180
+  - id: CRYSTAL_HOLLOWS_HOLDOUT_WATER
+    regions:
+      - GOBLIN_HOLDOUT
+    mediums:
+      - WATER
+    weightedSeaCreatures: true
+    items:
+      - itemId: RAW_FISH
+        chance: 100
+        amount: 1
+        skillXp: 5
+    junk: [ ]
+    seaCreatures:
+      - seaCreatureId: WATER_WORM
+        weight: 300
+      - seaCreatureId: POISONED_WATER_WORM
+        weight: 60
+  - id: CRYSTAL_HOLLOWS_LAVA
+    serverTypes:
+      - SKYBLOCK_CRYSTAL_HOLLOWS
+    regions: [ ]
+    mediums:
+      - LAVA
+    weightedSeaCreatures: true
+    items:
+      - itemId: MAGMAFISH
+        chance: 100
+        amount: 1
+        skillXp: 10
+    junk: [ ]
+    seaCreatures:
+      - seaCreatureId: LAVA_BLAZE
+        weight: 36
+      - seaCreatureId: LAVA_PIGMAN
+        weight: 36
+  - id: CRYSTAL_HOLLOWS_WATER
+    serverTypes:
+      - SKYBLOCK_CRYSTAL_HOLLOWS
+    regions: [ ]
+    mediums:
+      - WATER
+    weightedSeaCreatures: true
+    items:
+      - itemId: RAW_FISH
+        chance: 100
+        amount: 1
+        skillXp: 5
+    junk: [ ]
+    seaCreatures:
+      - seaCreatureId: ABYSSAL_MINER
+        weight: 90

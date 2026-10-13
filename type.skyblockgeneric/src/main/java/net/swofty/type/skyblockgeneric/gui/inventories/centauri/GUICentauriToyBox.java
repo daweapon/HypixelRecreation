@@ -43,8 +43,8 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         action(layout, 19, Material.PRISMARINE_CRYSTALS, "<5>50k HOTM Exp", "<8>The power of a pickaxe.", "<7>Gain <5>50,000 HOTM Experience<7>.", p -> HotmService.addExperience(p, 50_000));
         action(layout, 20, Material.GUNPOWDER, "<a>Give 2m powder of each type", "<8>Mindcraft.", "<7>Get 2,000,000 of each powder type: <2>Mithril<7>, <d>Gemstone <7>and <b>Glacite<7>.", p -> HotmService.addPowderToAll(p, 2_000_000));
         action(layout, 21, Material.EMERALD, "<a>5k Gems", "<8>Get rich quick.", "<7>Set your gem purse to 5,000.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.GEMS, DatapointInteger.class).setValue(5_000));
-        unavailable(layout, 22, Material.EXPERIENCE_BOTTLE, "<a>Set RNG Meter Progress", "<7>Set every RNG Meter to a custom value.");
-        unavailable(layout, 23, Material.GLASS_BOTTLE, "<a>Clear RNG Meter Progress", "<7>Clear every RNG Meter.");
+        action(layout, 22, Material.EXPERIENCE_BOTTLE, "<a>Set RNG Meter Progress", "<8>Luck, on demand.", "<7>Fill the <d>Crystal Nucleus<7> RNG Meter.", p -> { var data = net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess.data(p); data.setRngXp(10_000_000L); net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess.save(p, data); });
+        action(layout, 23, Material.GLASS_BOTTLE, "<a>Clear RNG Meter Progress", "<8>Back to zero.", "<7>Clear the <d>Crystal Nucleus<7> RNG Meter.", net.swofty.type.skyblockgeneric.crystalhollows.NucleusRngMeter::reset);
         unavailable(layout, 24, Material.OAK_LOG, "<a>Fill Agatha's Rewards", "<7>Grant 25 contest rewards.");
         action(layout, 25, Material.SEA_LANTERN, "<a>Big ol' chunk o' Whispers!", "<8>To turn your tears to roses.", "<7>Get 1,000,000 Forest Whispers.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.FOREST_WHISPERS, DatapointLong.class).setValue(1_000_000L));
         action(layout, 34, Material.NETHER_STAR, "<5>Tokens of the Mountain", "<8>Spend them wisely.", "<7>Gain <5>10 Tokens of the Mountain<7>.", p -> HotmService.addTokens(p, 10));
@@ -69,6 +69,7 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         action(layout, 43, Material.CLOCK, "<a>Greenhouse Time Warp", "<8>Hours go by.", "<7>Simulate <a>6 hours <7>of Greenhouse growth.", p -> net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseService.simulate(p, 6));
         action(layout, 44, Material.WHITE_CONCRETE, "<a>Greenhouse Blueprint Shortcut", "<8>Sam says yes.", "<7>Skip Sam's Greenhouse quest so you can <a>convert a plot<7>.", p -> addGarden(p, profile -> { profile.greenhouse().setBlueprintGiven(true); profile.greenhouse().setBlueprintOffered(true); profile.greenhouse().setBlueprintDelivered(true); profile.greenhouse().setResourcesDelivered(true); }));
         action(layout, 31, Material.SUNFLOWER, "<a>\"Organically Grown\" Garden Levels!", "<8>Fertiliser for your progress.", "<7>Gain <a>10,000 Garden Experience<7>.", p -> net.swofty.type.skyblockgeneric.garden.GardenService.addGardenXp(p, 10_000));
+        action(layout, 46, Material.MINECART, "<d>Crystal Hollows Access", "<8>Skip the queue at Gwendolyn.", "<7>Gain permanent <d>Crystal Hollows<7> access.", net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess::grantFullAccess);
         info(layout, 50, Material.OAK_SIGN, "<a>Got Suggestions?", "<7>Share Alpha Network utility ideas in our discord!");
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);

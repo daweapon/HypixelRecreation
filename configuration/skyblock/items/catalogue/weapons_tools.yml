@@ -1327,11 +1327,11 @@ items:
     material: wooden_pickaxe
     name: "Jungle Pickaxe"
     rarity: UNCOMMON
+    source: "Bought from Odawa in the Crystal Hollows Jungle for Sludge Juice"
     default_statistics:
       breaking_power: 5
       damage: 50
       mining_speed: 330
-    unavailable: "Needs the Crystal Hollows"
     lore:
       - "§7Gives a chance to drop §aSludge Juice"
       - "§7when mining in the §2Jungle §7of the"

@@ -373,7 +373,7 @@
           2000,
           3000
         ],
-        "unavailable": "Worms and Scatha aren't in this server yet."
+        "unavailable": null
       },
       {
         "id": "dwarven_training",

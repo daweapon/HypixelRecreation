@@ -167,6 +167,7 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
             RegionType breakRegionType = region == null ? null : region.getType();
             CrystalHollowsOre crystalOre = CrystalHollowsOre.of(material, breakRegionType);
             if (crystalOre != null) {
+                net.swofty.type.skyblockgeneric.crystalhollows.ThystSpawner.onBreak(crystalOre, player.getInstance(), event.getBlockPosition());
                 customDrops.clear();
                 customDrops.add(new SkyBlockItem(crystalOre.getDrop(), java.util.concurrent.ThreadLocalRandom.current()
                         .nextInt(CrystalHollowsOre.MIN_ROUGH_DROP, CrystalHollowsOre.MAX_ROUGH_DROP + 1)));
