@@ -17,6 +17,7 @@ import net.swofty.type.skyblockgeneric.garden.GardenCrop;
 import net.swofty.type.skyblockgeneric.garden.GardenLayout;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.garden.tool.FarmingTools;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -56,6 +57,7 @@ public final class GardenFarm {
         for (SkyBlockItem drop : drops) {
             ItemType type = drop.getAttributeHandler().getPotentialType();
             FarmingContests.recordHarvest(player, type, drop.getAmount());
+            FarmingTools.addXp(player, harvest.crop().crop(), drop.getAmount());
             give(player, drop, position);
         }
         return true;
@@ -118,13 +120,13 @@ public final class GardenFarm {
 
     private static List<SkyBlockItem> drops(SkyBlockPlayer player, GardenProfile profile, Harvest harvest) {
         Crop crop = harvest.crop();
-        double multiplier = 1 + fortune(player, profile, crop.crop()) / 100;
-        double scaled = harvest.amount() * multiplier;
-        int whole = (int) Math.floor(scaled);
-        if (LootRoll.roll(player.getUuid(), crop.item(), (scaled - whole) * 100, RANDOM)) {
-            whole++;
+        double fortune = fortune(player, profile, crop.crop());
+        int guaranteed = (int) Math.floor(fortune / 100);
+        int total = harvest.amount() * (1 + guaranteed);
+        if (LootRoll.roll(player.getUuid(), crop.item(), fortune - guaranteed * 100, RANDOM)) {
+            total += harvest.amount();
         }
-        return whole <= 0 ? List.of() : List.of(new SkyBlockItem(crop.item(), whole));
+        return List.of(new SkyBlockItem(crop.item(), total));
     }
 
     public static double fortune(SkyBlockPlayer player, GardenProfile profile, GardenCrop crop) {

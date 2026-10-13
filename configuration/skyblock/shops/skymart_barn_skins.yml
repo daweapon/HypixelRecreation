@@ -1,5 +1,5 @@
 # SkyMart: Barn Skins (data from wiki Template:SkyMart/UI; Farming Tools unlock at Garden Level 4).
-title: SkyMart: Barn Skins
+title: "SkyMart: Barn Skins"
 slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22]
 entries:
   - item: TRADING_POST_BARN_SKIN

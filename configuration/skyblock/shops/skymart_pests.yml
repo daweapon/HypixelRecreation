@@ -1,5 +1,5 @@
 # SkyMart: Pests (data from wiki Template:SkyMart/UI; Farming Tools unlock at Garden Level 4).
-title: SkyMart: Pests
+title: "SkyMart: Pests"
 slots: [10, 11, 12, 13, 14, 15, 16, 19, 20]
 entries:
   - item: PORTABLE_WASHER

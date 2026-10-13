@@ -619,6 +619,14 @@ public class ItemAttributeHandler {
         ((ItemAttributeLogsCut) item.getAttribute("logs_cut")).setValue(logsCut);
     }
 
+    public long getFarmingToolXp() {
+        return ((ItemAttributeFarmingToolXp) item.getAttribute("farming_tool_xp")).getValue();
+    }
+
+    public void setFarmingToolXp(long xp) {
+        item.getAttribute("farming_tool_xp").setValue(xp);
+    }
+
     public int getLogsCut() {
         return ((ItemAttributeLogsCut) item.getAttribute("logs_cut")).getValue();
     }

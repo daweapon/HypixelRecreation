@@ -3,6 +3,7 @@ items:
     material: golden_axe
     name: "Advanced Gardening Axe"
     rarity: RARE
+    source: "SkyMart: 20 Copper + 1 Basic Gardening Axe"
     default_statistics:
       farming_fortune: 15
     lore:
@@ -28,6 +29,7 @@ items:
     material: iron_hoe
     name: "Advanced Gardening Hoe"
     rarity: RARE
+    source: "SkyMart: 20 Copper + 1 Basic Gardening Hoe"
     default_statistics:
       farming_fortune: 15
     lore:
@@ -54,6 +56,7 @@ items:
     material: iron_axe
     name: "Basic Gardening Axe"
     rarity: UNCOMMON
+    source: "SkyMart: 5 Copper"
     default_statistics:
       farming_fortune: 10
     lore:
@@ -73,6 +76,7 @@ items:
     material: iron_hoe
     name: "Basic Gardening Hoe"
     rarity: UNCOMMON
+    source: "SkyMart: 5 Copper"
     default_statistics:
       farming_fortune: 10
     lore:
@@ -125,6 +129,10 @@ items:
     material: iron_sword
     name: "Cactus Knife Mk. I"
     rarity: UNCOMMON
+    default_statistics:
+      cactus_fortune: 4
+      farming_wisdom: 1
+    source: "SkyMart: 250 Copper"
     lore:
       - "§8Farming Tool"
       - ""
@@ -137,6 +145,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 7§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -151,6 +162,9 @@ items:
     material: iron_sword
     name: "Cactus Knife Mk. II"
     rarity: RARE
+    default_statistics:
+      cactus_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
     lore:
       - "§8Farming Tool"
@@ -164,6 +178,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 7§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -178,6 +195,9 @@ items:
     material: iron_sword
     name: "Cactus Knife Mk. III"
     rarity: EPIC
+    default_statistics:
+      cactus_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
     lore:
       - "§8Farming Tool"
@@ -191,6 +211,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 7§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -205,6 +228,7 @@ items:
     material: golden_axe
     name: "Cocoa Chopper Mk. I"
     rarity: UNCOMMON
+    source: "SkyMart: 250 Copper"
     default_statistics:
       cocoa_beans_fortune: 4
       farming_wisdom: 1
@@ -214,6 +238,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 8§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -238,6 +265,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 8§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -262,6 +292,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 8§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -276,12 +309,19 @@ items:
     material: iron_hoe
     name: "Fungi Cutter Mk. I"
     rarity: UNCOMMON
+    default_statistics:
+      mushroom_fortune: 4
+      farming_wisdom: 1
+    source: "SkyMart: 250 Copper"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 9§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -296,6 +336,9 @@ items:
     material: iron_hoe
     name: "Fungi Cutter Mk. II"
     rarity: RARE
+    default_statistics:
+      mushroom_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
     lore:
       - "§8Farming Tool"
@@ -303,6 +346,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 9§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -317,6 +363,9 @@ items:
     material: iron_hoe
     name: "Fungi Cutter Mk. III"
     rarity: EPIC
+    default_statistics:
+      mushroom_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
     lore:
       - "§8Farming Tool"
@@ -324,6 +373,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 9§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -338,6 +390,7 @@ items:
     material: melon
     name: "Melon Dicer Mk. I"
     rarity: UNCOMMON
+    source: "SkyMart: 250 Copper"
     default_statistics:
       melon_fortune: 4
       farming_wisdom: 1
@@ -347,6 +400,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 6§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -374,6 +430,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 6§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -401,6 +460,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 6§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -415,6 +477,7 @@ items:
     material: pumpkin
     name: "Pumpkin Dicer Mk. I"
     rarity: UNCOMMON
+    source: "SkyMart: 250 Copper"
     default_statistics:
       pumpkin_fortune: 4
       farming_wisdom: 1
@@ -424,6 +487,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 4§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -451,6 +517,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 4§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -478,6 +547,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 4§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -516,12 +588,19 @@ items:
     material: iron_hoe
     name: "Turing Sugar Cane Cutter Mk. I"
     rarity: UNCOMMON
+    default_statistics:
+      sugar_cane_fortune: 4
+      farming_wisdom: 1
+    source: "SkyMart: 250 Copper"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -536,12 +615,19 @@ items:
     material: iron_hoe
     name: "Gauss Carrot Shovel Mk. I"
     rarity: UNCOMMON
+    default_statistics:
+      carrot_fortune: 4
+      farming_wisdom: 1
+    source: "SkyMart: 250 Copper"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 2§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -556,12 +642,19 @@ items:
     material: iron_hoe
     name: "Pythagorean Potato Shovel Mk. I"
     rarity: UNCOMMON
+    default_statistics:
+      potato_fortune: 4
+      farming_wisdom: 1
+    source: "SkyMart: 250 Copper"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 3§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -576,12 +669,19 @@ items:
     material: iron_hoe
     name: "Eclipse Sickle Mk. I"
     rarity: UNCOMMON
+    default_statistics:
+      sunflower_fortune: 4
+      farming_wisdom: 1
+    source: "SkyMart: 250 Copper"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 11§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -596,12 +696,19 @@ items:
     material: iron_hoe
     name: "Newton Nether Wart Cutter Mk. I"
     rarity: UNCOMMON
+    default_statistics:
+      nether_wart_fortune: 4
+      farming_wisdom: 1
+    source: "SkyMart: 250 Copper"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 10§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -616,11 +723,18 @@ items:
     material: iron_hoe
     name: "Euclid's Wheat Sickle Mk. I"
     rarity: UNCOMMON
+    default_statistics:
+      wheat_fortune: 4
+      farming_wisdom: 1
+    source: "SkyMart: 250 Copper"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 10§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -635,12 +749,19 @@ items:
     material: iron_hoe
     name: "Wild Rose Cutter Mk. I"
     rarity: UNCOMMON
+    default_statistics:
+      wild_rose_fortune: 4
+      farming_wisdom: 1
+    source: "SkyMart: 250 Copper"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 10§c."
       - "§4❣ §cRequires §aGarden Level 12§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1612,6 +1733,9 @@ items:
     material: iron_hoe
     name: "Turing Sugar Cane Cutter Mk. II"
     rarity: RARE
+    default_statistics:
+      sugar_cane_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1619,6 +1743,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1633,6 +1760,9 @@ items:
     material: iron_hoe
     name: "Turing Sugar Cane Cutter Mk. III"
     rarity: EPIC
+    default_statistics:
+      sugar_cane_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1640,6 +1770,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1654,6 +1787,9 @@ items:
     material: iron_hoe
     name: "Gauss Carrot Shovel Mk. II"
     rarity: RARE
+    default_statistics:
+      carrot_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1661,6 +1797,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 2§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1675,6 +1814,9 @@ items:
     material: iron_hoe
     name: "Gauss Carrot Shovel Mk. III"
     rarity: EPIC
+    default_statistics:
+      carrot_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1682,6 +1824,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 2§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1696,6 +1841,9 @@ items:
     material: iron_hoe
     name: "Pythagorean Potato Shovel Mk. II"
     rarity: RARE
+    default_statistics:
+      potato_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1703,6 +1851,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 3§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1717,6 +1868,9 @@ items:
     material: iron_hoe
     name: "Pythagorean Potato Shovel Mk. III"
     rarity: EPIC
+    default_statistics:
+      potato_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1724,6 +1878,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 3§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1738,6 +1895,9 @@ items:
     material: iron_hoe
     name: "Eclipse Sickle Mk. II"
     rarity: RARE
+    default_statistics:
+      sunflower_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1745,6 +1905,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 11§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1759,6 +1922,9 @@ items:
     material: iron_hoe
     name: "Eclipse Sickle Mk. III"
     rarity: EPIC
+    default_statistics:
+      sunflower_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1766,6 +1932,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 11§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1780,6 +1949,9 @@ items:
     material: iron_hoe
     name: "Newton Nether Wart Cutter Mk. II"
     rarity: RARE
+    default_statistics:
+      nether_wart_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1787,6 +1959,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 10§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1801,6 +1976,9 @@ items:
     material: iron_hoe
     name: "Newton Nether Wart Cutter Mk. III"
     rarity: EPIC
+    default_statistics:
+      nether_wart_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1808,6 +1986,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 10§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1822,12 +2003,18 @@ items:
     material: iron_hoe
     name: "Euclid's Wheat Sickle Mk. II"
     rarity: RARE
+    default_statistics:
+      wheat_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 15§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1842,12 +2029,18 @@ items:
     material: iron_hoe
     name: "Euclid's Wheat Sickle Mk. III"
     rarity: EPIC
+    default_statistics:
+      wheat_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
       - ""
       - "§4❣ §cRequires §aFarming Skill 20§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1862,6 +2055,9 @@ items:
     material: iron_hoe
     name: "Wild Rose Cutter Mk. II"
     rarity: RARE
+    default_statistics:
+      wild_rose_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1869,6 +2065,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 15§c."
       - "§4❣ §cRequires §aGarden Level 12§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE
@@ -1883,6 +2082,9 @@ items:
     material: iron_hoe
     name: "Wild Rose Cutter Mk. III"
     rarity: EPIC
+    default_statistics:
+      wild_rose_fortune: 4
+      farming_wisdom: 1
     unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
@@ -1890,6 +2092,9 @@ items:
       - "§4❣ §cRequires §aFarming Skill 20§c."
       - "§4❣ §cRequires §aGarden Level 12§c."
     components:
+      - id: LORE_UPDATE
+        handler_id: FARMING_TOOL
+        is_absolute: false
       - id: REFORGABLE
         reforge_type: HOES
       - id: ENCHANTABLE

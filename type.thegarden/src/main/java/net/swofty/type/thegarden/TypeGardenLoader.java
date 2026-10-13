@@ -20,6 +20,7 @@ import net.swofty.type.skyblockgeneric.garden.npc.NPCSam;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.user.AreaSidebar;
 import net.swofty.type.skyblockgeneric.user.garden.SkyBlockGarden;
+import net.swofty.type.thegarden.tab.GardenBlankModule;
 import net.swofty.type.thegarden.tab.GardenInfoModule;
 import net.swofty.type.thegarden.world.GardenSidebar;
 import net.swofty.type.thegarden.world.GardenWorldDecor;
@@ -73,6 +74,8 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
             @Override
             public List<TablistModule> getModules() {
                 return new ArrayList<>(List.of(
+                        new GardenBlankModule(),
+                        new GardenBlankModule(),
                         new GardenInfoModule(),
                         new AccountInformationModule()
                 ));

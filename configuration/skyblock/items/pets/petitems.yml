@@ -370,6 +370,7 @@ items:
     material: player_head
     name: "Yellow Bandana"
     rarity: RARE
+    source: "SkyMart: 300 Copper"
     components:
       - id: PET_ITEM
         description:

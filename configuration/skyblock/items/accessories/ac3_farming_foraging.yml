@@ -323,6 +323,7 @@ items:
     material: PLAYER_HEAD
     name: "Copper Talisman"
     rarity: COMMON
+    source: "SkyMart: 5,000 Copper"
     components:
       - id: ACCESSORY
         effects:
@@ -338,6 +339,7 @@ items:
     material: PLAYER_HEAD
     name: "Copper Ring"
     rarity: UNCOMMON
+    source: "SkyMart: 20,000 Copper + 1 Copper Talisman"
     components:
       - id: ACCESSORY
         effects:
@@ -353,6 +355,7 @@ items:
     material: PLAYER_HEAD
     name: "Copper Artifact"
     rarity: RARE
+    source: "SkyMart: 50,000 Copper + 1 Copper Ring"
     components:
       - id: ACCESSORY
         effects:
