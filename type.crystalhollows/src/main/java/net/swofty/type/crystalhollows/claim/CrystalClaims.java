@@ -41,10 +41,15 @@ public final class CrystalClaims {
         return null;
     }
 
+    private static final int CLAIM_HALF_WIDTH = 5;
+    private static final int CLAIM_HEIGHT = 12;
+    private static final int CLAIM_DEPTH = 10;
+
     private static boolean matches(String structure, Point point) {
         Pos claim = CrystalHollowsLayout.anchor(structure, CLAIM_ANCHOR);
-        return claim != null && claim.blockX() == point.blockX() && claim.blockY() == point.blockY()
-                && claim.blockZ() == point.blockZ();
+        return claim != null && Math.abs(point.blockX() - claim.blockX()) <= CLAIM_HALF_WIDTH
+                && point.blockY() - claim.blockY() >= -1 && point.blockY() - claim.blockY() <= CLAIM_HEIGHT
+                && Math.abs(point.blockZ() - claim.blockZ()) <= CLAIM_DEPTH;
     }
 
     public static void claim(SkyBlockPlayer player, NucleusCrystal crystal) {
@@ -55,7 +60,7 @@ public final class CrystalClaims {
                 : amber(CrystalHollowsProgress.has(id, CrystalHollowsProgress.DEN_ACCESS), CrystalNucleus.state(player, crystal));
         switch (result) {
             case NOT_EARNED -> player.sendMessage(Text.of("<c>You haven't earned this Crystal! Come back when you have >:-)"));
-            case ALREADY_HAVE -> player.sendMessage(Text.of("<c>You already have this Crystal! Place it at the Crystal Nucleus."));
+            case ALREADY_HAVE -> player.sendMessage(Text.of("<c>You have already obtained this Crystal!"));
             case GRANTED -> grant(player, crystal);
         }
     }
@@ -65,6 +70,5 @@ public final class CrystalClaims {
         UUID id = player.getUuid();
         if (crystal == NucleusCrystal.AMETHYST) CrystalHollowsProgress.consumeJungleKey(id);
         else CrystalHollowsProgress.clear(id, CrystalHollowsProgress.DEN_ACCESS);
-        player.sendMessage(Text.of("<a>You claimed the {}<a>! Place it at the Crystal Nucleus.", crystal.coloured()));
     }
 }

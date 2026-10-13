@@ -1,1 +1,6 @@
-statues: []
+statues:
+  - {crystal: JADE, x: 547, y: 111, z: 497}
+  - {crystal: AMBER, x: 479, y: 111, z: 529}
+  - {crystal: AMETHYST, x: 479, y: 111, z: 497}
+  - {crystal: SAPPHIRE, x: 547, y: 111, z: 529}
+  - {crystal: TOPAZ, x: 513, y: 111, z: 478}

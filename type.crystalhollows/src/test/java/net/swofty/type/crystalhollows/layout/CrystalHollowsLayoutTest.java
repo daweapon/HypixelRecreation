@@ -21,12 +21,14 @@ class CrystalHollowsLayoutTest {
     }
 
     @Test
-    void shippedCatalogueParsesAndPlacesNothingWithoutCandidates() {
+    void shippedCatalogueParsesAndPlacesTheCapturedStructures() {
         List<StructureSpec> specs = StructureCatalogue.load(java.nio.file.Path.of("../configuration/skyblock/crystal_hollows/structures.yml"));
         assertFalse(specs.isEmpty());
         CrystalHollowsLayout.generate(specs, 1L);
-        assertTrue(CrystalHollowsLayout.placements().isEmpty());
-        assertNull(CrystalHollowsLayout.anchor("khazad_dum", "bal"));
+        assertTrue(CrystalHollowsLayout.isPlaced("jungle_temple"));
+        assertTrue(CrystalHollowsLayout.isPlaced("khazad_dum"));
+        assertNotNull(CrystalHollowsLayout.anchor("khazad_dum", "bal"));
+        assertFalse(CrystalHollowsLayout.isPlaced("goblin_queens_den"));
     }
 
     @Test

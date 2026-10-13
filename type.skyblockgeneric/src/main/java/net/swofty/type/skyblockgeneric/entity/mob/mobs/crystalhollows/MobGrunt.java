@@ -80,6 +80,6 @@ public class MobGrunt extends CrystalHollowsMob implements RegionPopulator {
 
     @Override
     public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.MITHRIL_DEPOSITS, 8));
+        return List.of(new Populator(RegionType.MITHRIL_DEPOSITS, 3));
     }
 }

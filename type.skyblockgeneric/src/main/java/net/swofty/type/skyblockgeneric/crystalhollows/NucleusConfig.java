@@ -58,10 +58,18 @@ public final class NucleusConfig {
         return value == null ? 0 : ((Number) value).doubleValue();
     }
 
+    public static final int STATUE_HALF_WIDTH = 5;
+    public static final int STATUE_HEIGHT = 12;
+
     public NucleusCrystal statueAt(int x, int y, int z) {
         for (Map.Entry<NucleusCrystal, Vec> entry : statues.entrySet()) {
             Vec at = entry.getValue();
-            if ((int) at.x() == x && (int) at.y() == y && (int) at.z() == z) return entry.getKey();
+            int dx = x - (int) at.x();
+            int dy = y - (int) at.y();
+            int dz = z - (int) at.z();
+            if (Math.abs(dx) <= STATUE_HALF_WIDTH && dy >= 0 && dy <= STATUE_HEIGHT && Math.abs(dz) <= STATUE_HALF_WIDTH) {
+                return entry.getKey();
+            }
         }
         return null;
     }

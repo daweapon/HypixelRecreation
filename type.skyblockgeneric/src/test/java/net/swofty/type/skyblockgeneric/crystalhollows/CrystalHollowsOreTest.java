@@ -45,4 +45,11 @@ class CrystalHollowsOreTest {
         assertEquals(MineableBlock.HARD_STONE, MineableBlock.get(net.minestom.server.instance.block.Block.STONE, RegionType.MITHRIL_DEPOSITS));
         assertEquals(MineableBlock.STONE, MineableBlock.get(net.minestom.server.instance.block.Block.STONE, RegionType.DWARVEN_MINES));
     }
+
+    @Test
+    void theMinesOfDivanGoldFloorCanBeMined() {
+        var config = new net.swofty.type.skyblockgeneric.region.mining.configurations.CrystalHollowsConfiguration();
+        assertTrue(config.getMineableBlocks(null, null).contains(Material.GOLD_BLOCK));
+        assertTrue(config.getMineableBlocks(null, null).contains(Material.STONE));
+    }
 }

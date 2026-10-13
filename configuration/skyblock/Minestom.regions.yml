@@ -1306,21 +1306,21 @@ regions:
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS
   - id: crystal_hollows_mithril_deposits
     type: MITHRIL_DEPOSITS
-    x1: 202
-    y1: 31
-    z1: 513
-    x2: 513
-    y2: 188
-    z2: 823
-    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
-  - id: crystal_hollows_goblin_holdout
-    type: GOBLIN_HOLDOUT
     x1: 513
     y1: 31
     z1: 202
     x2: 823
     y2: 188
     z2: 513
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_goblin_holdout
+    type: GOBLIN_HOLDOUT
+    x1: 202
+    y1: 31
+    z1: 513
+    x2: 513
+    y2: 188
+    z2: 823
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS
   - id: crystal_hollows_precursor_remnants
     type: PRECURSOR_REMNANTS
@@ -1337,15 +1337,51 @@ regions:
     y1: 31
     z1: 202
     x2: 823
-    y2: 64
+    y2: 65
     z2: 823
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS
   - id: crystal_hollows_nucleus
     type: CRYSTAL_NUCLEUS
-    x1: 462
-    y1: 31
-    z1: 462
-    x2: 562
+    x1: 456
+    y1: 66
+    z1: 457
+    x2: 568
     y2: 188
-    z2: 562
+    z2: 568
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_jungle_temple
+    type: JUNGLE_TEMPLE
+    x1: 413
+    y1: 66
+    z1: 265
+    x2: 478
+    y2: 94
+    z2: 369
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_mines_of_divan
+    type: MINES_OF_DIVAN
+    x1: 721
+    y1: 65
+    z1: 227
+    x2: 821
+    y2: 182
+    z2: 327
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_lost_precursor_city
+    type: LOST_PRECURSOR_CITY
+    x1: 596
+    y1: 66
+    z1: 696
+    x2: 702
+    y2: 180
+    z2: 798
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_khazad_dum
+    type: KHAZAD_DUM
+    x1: 335
+    y1: 31
+    z1: 690
+    x2: 440
+    y2: 57
+    z2: 795
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS

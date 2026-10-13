@@ -25,6 +25,6 @@ public class MobKalhuikiTribeMember extends KalhuikiMob {
 
     @Override
     public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.JUNGLE, 3));
+        return List.of(new Populator(RegionType.JUNGLE, 5));
     }
 }

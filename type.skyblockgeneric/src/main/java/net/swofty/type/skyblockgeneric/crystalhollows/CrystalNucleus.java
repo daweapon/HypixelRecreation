@@ -24,9 +24,9 @@ public final class CrystalNucleus {
     }
 
     public enum State {
-        NOT_FOUND("<c>Not Found"),
-        NOT_PLACED("<e>Not Placed"),
-        PLACED("<a>Placed");
+        NOT_FOUND("<c>✖ Not Found"),
+        NOT_PLACED("<e>✖ Not Placed"),
+        PLACED("<a>✔ Placed");
 
         private final String label;
 
@@ -53,7 +53,31 @@ public final class CrystalNucleus {
         if (state(player, crystal) != State.NOT_FOUND) return false;
         FOUND.computeIfAbsent(player.getUuid(), _ -> EnumSet.noneOf(NucleusCrystal.class)).add(crystal);
         CommissionProgress.recordCrystalFound(player);
+        announceFound(player, crystal);
         return true;
+    }
+
+    private static void announceFound(SkyBlockPlayer player, NucleusCrystal crystal) {
+        int found = FOUND.getOrDefault(player.getUuid(), Set.of()).size() + placedCount(player);
+        String bar = "§5§l" + "▬".repeat(64);
+        player.sendMessage(Text.legacy(bar));
+        player.sendMessage(Text.legacy("§f                       §5§l✦ CRYSTAL FOUND §7(" + found + "§7/" + NucleusCrystal.values().length + "§7)"));
+        player.sendMessage(Text.legacy("§f                              " + legacyColour(crystal) + crystal.getDisplayName() + " Crystal"));
+        player.sendMessage(Text.legacy(""));
+        player.sendMessage(Text.legacy("§f            §7Place this Crystal in the §5Crystal Nucleus §7and"));
+        player.sendMessage(Text.legacy("§f             §7find all §a5 §7Crystals in the §5Crystal Hollows §7to"));
+        player.sendMessage(Text.legacy("§f                               §7earn §6rare loot§7!"));
+        player.sendMessage(Text.legacy(bar));
+    }
+
+    private static String legacyColour(NucleusCrystal crystal) {
+        return switch (crystal) {
+            case JADE -> "§a";
+            case AMBER -> "§6";
+            case AMETHYST -> "§5";
+            case SAPPHIRE -> "§b";
+            case TOPAZ -> "§e";
+        };
     }
 
     public static boolean claim(SkyBlockPlayer player, NucleusCrystal crystal) {

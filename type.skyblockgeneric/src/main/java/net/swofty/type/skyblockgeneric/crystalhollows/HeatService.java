@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.crystalhollows;
 
+import net.kyori.adventure.title.Title;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
@@ -10,6 +11,7 @@ import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import net.swofty.type.skyblockgeneric.user.SkyBlockActionBar;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,6 +30,7 @@ public final class HeatService {
             new Warning(99, "<4>Time to leave!"));
 
     private static final Map<UUID, Double> HEAT = new ConcurrentHashMap<>();
+    private static final Set<UUID> DANGER_SHOWN = ConcurrentHashMap.newKeySet();
     private static boolean started;
 
     private HeatService() {
@@ -77,6 +80,7 @@ public final class HeatService {
     private static void tick() {
         var players = SkyBlockGenericLoader.getLoadedPlayers();
         HEAT.keySet().removeIf(id -> players.stream().noneMatch(player -> player.getUuid().equals(id)));
+        DANGER_SHOWN.removeIf(id -> players.stream().noneMatch(player -> player.getUuid().equals(id)));
         for (SkyBlockPlayer player : players) {
             try {
                 tickPlayer(player);
@@ -89,7 +93,12 @@ public final class HeatService {
         SkyBlockRegion region = player.getRegion();
         double before = heat(player);
         double after;
-        if (!player.isDead() && isHot(region == null ? null : region.getType(), player.getPosition().y())) {
+        boolean hot = !player.isDead() && isHot(region == null ? null : region.getType(), player.getPosition().y());
+        if (hot && DANGER_SHOWN.add(player.getUuid())) {
+            player.showTitle(Text.of("<c><l>DANGER"), Text.of("<7>You have entered the {}", region.getType().getName()),
+                    Title.Times.times(Duration.ofMillis(500), Duration.ofSeconds(1), Duration.ofMillis(500)));
+        }
+        if (hot) {
             after = before + heatPerSecond(player.getPosition().y(), resistance(player));
         } else {
             after = Math.max(0, before - COOL_PER_SECOND);

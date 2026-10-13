@@ -2,6 +2,7 @@ package net.swofty.type.crystalhollows.events;
 
 import net.minestom.server.event.player.PlayerDisconnectEvent;
 import net.minestom.server.event.player.PlayerMoveEvent;
+import net.swofty.commons.text.Text;
 import net.swofty.type.crystalhollows.gate.EntryGate;
 import net.swofty.type.crystalhollows.temple.JungleTemple;
 import net.swofty.type.generic.event.EventNodes;
@@ -34,7 +35,12 @@ public class ActionStructureMove implements HypixelEventClass {
                 return;
             }
         }
-        if (current == RegionType.JUNGLE_TEMPLE) JungleTemple.onMove(player, to);
+        if (current == RegionType.JUNGLE_TEMPLE) {
+            if (previous != RegionType.JUNGLE_TEMPLE) {
+                player.sendMessage(Text.of("<c>You are entering the jungle temple, your speed is reduced and your jump boost will not work!"));
+            }
+            JungleTemple.onMove(player, to);
+        }
     }
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)

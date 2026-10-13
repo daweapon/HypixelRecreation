@@ -4,30 +4,38 @@ structures:
     region: JUNGLE_TEMPLE
     optional: false
     clearance: 40
-    candidates: []
+    site: {min: {x: 413, y: 66, z: 265}, max: {x: 478, y: 153, z: 369}}
+    candidates:
+      - {x: 413, y: 66, z: 265, yaw: 0, pitch: 0}
     anchors:
-      door_guardian: {}
-      entrance: {}
-      crystal_claim: {}
+      door_guardian: {x: 31.5, y: 46, z: 42.5, yaw: 0, pitch: 0}
+      entrance: {x: 34.5, y: 46, z: 46.5, yaw: 180, pitch: 0}
+      crystal_claim: {x: 53.5, y: 6.5, z: 77.5, yaw: 0, pitch: 0}
+      chest_1: {x: 50.5, y: 5.5, z: 75.5, yaw: 0, pitch: 0}
+      chest_2: {x: 56.5, y: 5.5, z: 75.5, yaw: 0, pitch: 0}
   - id: mines_of_divan
     name: "Mines of Divan"
     region: MINES_OF_DIVAN
     optional: false
     clearance: 40
-    candidates: []
+    site: {min: {x: 721, y: 64, z: 227}, max: {x: 821, y: 182, z: 327}}
+    candidates:
+      - {x: 721, y: 64, z: 227, yaw: 0, pitch: 0}
     anchors:
-      keeper_lapis: {}
-      keeper_gold: {}
-      keeper_diamond: {}
-      keeper_emerald: {}
+      keeper_lapis: {x: 83.5, y: 23, z: 53.5, yaw: 112.5, pitch: 0}
+      keeper_gold: {x: 47.5, y: 23, z: 83.5, yaw: -168.75, pitch: 0}
+      keeper_diamond: {x: 17.5, y: 23, z: 47.5, yaw: -67.5, pitch: 0}
+      keeper_emerald: {x: 53.5, y: 23, z: 17.5, yaw: 22.5, pitch: 0}
   - id: lost_precursor_city
     name: "Lost Precursor City"
     region: LOST_PRECURSOR_CITY
     optional: false
     clearance: 40
-    candidates: []
+    site: {min: {x: 598, y: 66, z: 697}, max: {x: 696, y: 178, z: 795}}
+    candidates:
+      - {x: 598, y: 66, z: 697, yaw: 0, pitch: 0}
     anchors:
-      professor_robot: {}
+      professor_robot: {x: 32.5, y: 46, z: 61.5, yaw: -135, pitch: 0}
   - id: goblin_queens_den
     name: "Goblin Queen's Den"
     region: GOBLIN_QUEENS_DEN
@@ -58,8 +66,11 @@ structures:
     region: KHAZAD_DUM
     optional: false
     clearance: 40
-    candidates: []
-    anchors: {}
+    site: {min: {x: 336, y: 31, z: 692}, max: {x: 434, y: 72, z: 790}}
+    candidates:
+      - {x: 336, y: 31, z: 692, yaw: 0, pitch: 0}
+    anchors:
+      bal: {x: 54, y: 6, z: 54, yaw: 0, pitch: 0}
   - id: dragons_lair
     name: "Dragon's Lair"
     region: DRAGONS_LAIR
@@ -94,9 +105,11 @@ structures:
     region: JUNGLE
     optional: false
     clearance: 40
-    candidates: []
+    site: {min: {x: 373, y: 138, z: 380}, max: {x: 390, y: 158, z: 397}}
+    candidates:
+      - {x: 373, y: 138, z: 380, yaw: 0, pitch: 0}
     anchors:
-      odawa: {}
+      odawa: {x: 8.5, y: 8, z: 12.5, yaw: 180, pitch: 0}
   - id: sludge_cage
     name: "Sludge Cage"
     region: JUNGLE

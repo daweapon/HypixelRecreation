@@ -43,6 +43,6 @@ public class MobAutomaton67 extends CrystalHollowsMob implements RegionPopulator
 
     @Override
     public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.PRECURSOR_REMNANTS, 10));
+        return List.of(new Populator(RegionType.PRECURSOR_REMNANTS, 6), new Populator(RegionType.LOST_PRECURSOR_CITY, 3));
     }
 }

@@ -77,7 +77,7 @@ public final class DugTreasureChests {
         DugChest chest = new DugChest(player.getUuid(), instance, point, instance.getBlock(point), pool, locks(player));
         CHESTS.put(key, chest);
         instance.setBlock(point, Block.CHEST);
-        player.sendMessage(Text.of("<6>You uncovered a treasure chest!"));
+        player.sendMessage(Text.of("<a>You uncovered a treasure chest!"));
         MinecraftServer.getSchedulerManager().scheduleTask(() -> expire(key, chest), TaskSchedule.seconds(LIFETIME_SECONDS), TaskSchedule.stop());
     }
 

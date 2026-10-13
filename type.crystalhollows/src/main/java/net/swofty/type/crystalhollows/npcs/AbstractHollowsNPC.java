@@ -14,14 +14,24 @@ public abstract class AbstractHollowsNPC extends HypixelNPC {
     private static final Pos UNPLACED = new Pos(0, 0, 0);
 
     protected AbstractHollowsNPC(String name, String color, String texture, Pos fixed) {
-        this(name, color, texture, () -> fixed);
+        this(null, name, color, texture, () -> fixed);
+    }
+
+    protected AbstractHollowsNPC(String header, String name, String color, String texture, Pos fixed) {
+        this(header, name, color, texture, () -> fixed);
     }
 
     protected AbstractHollowsNPC(String name, String color, String texture, Supplier<Pos> position) {
+        this(null, name, color, texture, position);
+    }
+
+    protected AbstractHollowsNPC(String header, String name, String color, String texture, Supplier<Pos> position) {
         super(new HumanConfiguration() {
             @Override
             public String[] holograms(HypixelPlayer player) {
-                return new String[]{color + name, "<e><l>CLICK"};
+                return header == null
+                        ? new String[]{color + name, "<e><l>CLICK"}
+                        : new String[]{header, color + name, "<e><l>CLICK"};
             }
 
             @Override

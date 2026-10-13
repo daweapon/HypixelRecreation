@@ -1,2 +1,2 @@
-spawn: {}
-bounds: {}
+spawn: {x: 513.5, y: 106.5, z: 526.5, yaw: 0, pitch: 0}
+bounds: {x1: 202, z1: 202, x2: 823, z2: 823}

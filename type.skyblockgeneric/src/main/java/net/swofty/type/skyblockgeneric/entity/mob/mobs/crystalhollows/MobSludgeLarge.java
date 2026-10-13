@@ -29,6 +29,6 @@ public class MobSludgeLarge extends MobSludge {
 
     @Override
     protected int populationTarget() {
-        return 5;
+        return 3;
     }
 }

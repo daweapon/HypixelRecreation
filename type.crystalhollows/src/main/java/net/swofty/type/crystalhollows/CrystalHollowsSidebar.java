@@ -17,6 +17,7 @@ public final class CrystalHollowsSidebar {
         SkyBlockRegion region = player.getRegion();
         if (region == null || !CrystalHollowsZones.isCrystalHollows(region.getType())) return null;
         int heat = (int) Math.floor(HeatService.heat(player));
-        return heat < 1 ? List.of() : List.of(Text.of("<c>Heat: {}♨", heat));
+        boolean hot = HeatService.isHot(region.getType(), player.getPosition().y());
+        return heat < 1 && !hot ? List.of() : List.of(Text.of("<f>Heat: <c>{}♨", heat));
     }
 }

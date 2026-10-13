@@ -42,4 +42,16 @@ class DivanDigSiteTest {
         for (long seed = 0; seed < 20; seed++) variants.add(DivanDigSite.select(all, 16, seed));
         assertTrue(variants.size() > 1);
     }
+
+    @Test
+    void scannedSpotsKeepTheirDistanceAndAreDeterministic() {
+        List<Pos> floor = new ArrayList<>();
+        for (int x = 0; x < 100; x += 2) for (int z = 0; z < 100; z += 2) floor.add(new Pos(x, 0, z));
+        List<Pos> chosen = DivanDigSite.spread(floor, 16, 9L);
+        assertEquals(16, chosen.size());
+        assertEquals(chosen, DivanDigSite.spread(floor, 16, 9L));
+        for (int i = 0; i < chosen.size(); i++) {
+            for (int j = i + 1; j < chosen.size(); j++) assertTrue(chosen.get(i).distance(chosen.get(j)) >= 12);
+        }
+    }
 }

@@ -37,7 +37,7 @@ public class CrystalHollowsConfiguration extends SkyBlockRegenConfiguration {
             all.addAll(List.of(Material.CYAN_TERRACOTTA, Material.GRAY_WOOL, Material.LIGHT_BLUE_WOOL,
                     Material.PRISMARINE, Material.DARK_PRISMARINE, Material.PRISMARINE_BRICKS, Material.POLISHED_DIORITE,
                     Material.COAL_ORE, Material.IRON_ORE, Material.GOLD_ORE, Material.LAPIS_ORE, Material.REDSTONE_ORE,
-                    Material.EMERALD_ORE, Material.DIAMOND_ORE, Material.DIRT, Material.NETHERRACK, Material.NETHER_QUARTZ_ORE));
+                    Material.EMERALD_ORE, Material.DIAMOND_ORE, Material.GOLD_BLOCK, Material.DIRT, Material.NETHERRACK, Material.NETHER_QUARTZ_ORE));
             mineable = List.copyOf(all);
         }
         return mineable;

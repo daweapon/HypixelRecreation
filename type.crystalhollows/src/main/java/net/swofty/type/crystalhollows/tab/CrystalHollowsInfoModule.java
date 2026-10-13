@@ -24,10 +24,10 @@ public class CrystalHollowsInfoModule extends TablistModule {
                 new TablistEntry(Text.key("tablist.server_info.area.crystal_hollows"), TablistSkinRegistry.GRAY),
                 new TablistEntry(Text.key("tablist.server_info.server_label", HypixelConst.getServerName()), TablistSkinRegistry.GRAY),
                 getGrayEntry(),
-                new TablistEntry("<d><b>Crystals:", TablistSkinRegistry.GRAY)
+                new TablistEntry("<b><l>Crystals:", TablistSkinRegistry.GRAY)
         ));
         for (NucleusCrystal crystal : NucleusCrystal.values()) {
-            entries.add(new TablistEntry(" " + crystal.coloured() + "<7>: " + CrystalNucleus.state(player, crystal).label(),
+            entries.add(new TablistEntry(" " + crystal.getColour() + crystal.getDisplayName() + "<f>: " + CrystalNucleus.state(player, crystal).label(),
                     TablistSkinRegistry.GRAY));
         }
         return fillRestWithGray(new ArrayList<>(entries));

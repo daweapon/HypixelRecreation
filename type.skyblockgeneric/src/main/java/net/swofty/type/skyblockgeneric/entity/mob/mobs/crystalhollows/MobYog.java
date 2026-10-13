@@ -43,6 +43,6 @@ public class MobYog extends CrystalHollowsMob implements RegionPopulator {
 
     @Override
     public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.MAGMA_FIELDS, 10));
+        return List.of(new Populator(RegionType.MAGMA_FIELDS, 5));
     }
 }

@@ -22,7 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HollowsToolingTest {
-    private static final Path SHIPPED = Path.of("../configuration/skyblock/crystal_hollows");
+    private static final Path SHIPPED = Path.of("src/test/resources/crystal_hollows");
+    private static final Path REAL = Path.of("../configuration/skyblock/crystal_hollows");
 
     private static Path copyOfShipped(Path dir) throws IOException {
         Path copy = dir.resolve("structures.yml");
@@ -32,8 +33,8 @@ class HollowsToolingTest {
 
     @Test
     void shippedStructuresRoundTripExactly() throws IOException {
-        String original = Files.readString(SHIPPED.resolve("structures.yml"));
-        assertEquals(original, StructureFile.read(SHIPPED.resolve("structures.yml")).render());
+        String original = Files.readString(REAL.resolve("structures.yml"));
+        assertEquals(original, StructureFile.read(REAL.resolve("structures.yml")).render());
     }
 
     @Test
@@ -44,6 +45,9 @@ class HollowsToolingTest {
         assertEquals(Files.readString(SHIPPED.resolve("world.yml")), world.render());
         assertEquals(Files.readString(SHIPPED.resolve("nucleus.yml")),
                 NucleusStatueFile.render(NucleusStatueFile.read(SHIPPED.resolve("nucleus.yml"))));
+        assertEquals(Files.readString(REAL.resolve("world.yml")), HollowsWorld.read(REAL.resolve("world.yml")).render());
+        assertEquals(Files.readString(REAL.resolve("nucleus.yml")),
+                NucleusStatueFile.render(NucleusStatueFile.read(REAL.resolve("nucleus.yml"))));
     }
 
     @Test

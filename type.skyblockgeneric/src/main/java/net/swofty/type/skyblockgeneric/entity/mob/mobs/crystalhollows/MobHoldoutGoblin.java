@@ -24,12 +24,17 @@ import java.util.List;
 public class MobHoldoutGoblin extends MobGoblin {
     @Override
     public Integer getLevel() {
-        return 40;
+        return 3;
     }
 
     @Override
     public String getMobID() {
-        return "GOBLIN_HOLDOUT";
+        return "GOBLIN_HOLDOUT_WEAKLING";
+    }
+
+    @Override
+    public String getDisplayName() {
+        return "Weakling";
     }
 
     @Override
@@ -51,8 +56,8 @@ public class MobHoldoutGoblin extends MobGoblin {
     @Override
     public ItemStatistics getBaseStatistics() {
         return ItemStatistics.builder()
-                .withBase(ItemStatistic.HEALTH, 3_000D)
-                .withBase(ItemStatistic.DAMAGE, 400D)
+                .withBase(ItemStatistic.HEALTH, 200D)
+                .withBase(ItemStatistic.DAMAGE, 50D)
                 .withBase(ItemStatistic.SPEED, 100D)
                 .build();
     }
@@ -79,6 +84,6 @@ public class MobHoldoutGoblin extends MobGoblin {
 
     @Override
     public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.GOBLIN_HOLDOUT, 12));
+        return List.of(new Populator(RegionType.GOBLIN_HOLDOUT, 4));
     }
 }

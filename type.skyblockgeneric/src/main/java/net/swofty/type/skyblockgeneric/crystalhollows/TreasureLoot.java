@@ -41,8 +41,13 @@ public final class TreasureLoot {
             player.addAndUpdateItem(reward);
             summary.merge(reward.getDisplayName(), (long) amount, Long::sum);
         }
-        player.sendMessage(Text.of("<6><l>TREASURE CHEST <r><7>You looted the chest:"));
-        if (powder > 0) player.sendMessage(Text.of("  <d>+{} Gemstone Powder", String.format("%,d", powder)));
-        summary.forEach((name, amount) -> player.sendMessage(Text.of("  <8>{}x <f>{}", amount, name)));
+        String bar = "§d§l" + "▬".repeat(64);
+        player.sendMessage(Text.legacy(bar));
+        player.sendMessage(Text.legacy("  §5§lLOOT CHEST COLLECTED "));
+        player.sendMessage(Text.legacy(""));
+        player.sendMessage(Text.legacy("  §f§lREWARDS"));
+        summary.forEach((name, amount) -> player.sendMessage(Text.of("    <f>{} <8>x{}", name, amount)));
+        if (powder > 0) player.sendMessage(Text.of("    <d>Gemstone Powder <8>x{}", powder));
+        player.sendMessage(Text.legacy(bar));
     }
 }

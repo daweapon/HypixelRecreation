@@ -37,6 +37,6 @@ public class MobButterfly extends CrystalHollowsMob implements RegionPopulator {
 
     @Override
     public List<Populator> getPopulators() {
-        return List.of(new Populator(RegionType.FAIRY_GROTTO, 6));
+        return List.of(new Populator(RegionType.FAIRY_GROTTO, 4));
     }
 }
