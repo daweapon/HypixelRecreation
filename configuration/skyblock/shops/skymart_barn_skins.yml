@@ -1,0 +1,59 @@
+# SkyMart: Barn Skins (data from wiki Template:SkyMart/UI; Farming Tools unlock at Garden Level 4).
+title: SkyMart: Barn Skins
+slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22]
+entries:
+  - item: TRADING_POST_BARN_SKIN
+    name: "<a>Trading Post Barn Skin"
+    material: oak_fence
+    cost: { copper: 1000 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: AUTUMN_HUT_BARN_SKIN
+    name: "<a>Autumn Hut Barn Skin"
+    material: oak_leaves
+    cost: { copper: 2000 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: BAMBOO_BARN_SKIN
+    name: "<a>Bamboo Barn Skin"
+    material: stick
+    cost: { copper: 7500 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: HIVE_BARN_SKIN
+    name: "<a>Hive Barn Skin"
+    material: terracotta
+    cost: { copper: 10000 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: CASTLE_BARN_SKIN
+    name: "<a>Castle Barn Skin"
+    material: cobblestone
+    cost: { copper: 15000 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: CUBE_BARN_SKIN
+    name: "<a>Cube Barn Skin"
+    material: white_wool
+    cost: { gems: 250 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: COZY_COTTAGE_BARN_SKIN
+    name: "<a>Cozy Cottage Barn Skin"
+    material: hay_block
+    cost: { gems: 250 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: WINDMILL_BARN_SKIN
+    name: "<a>Windmill Barn Skin"
+    material: feather
+    cost: { gems: 250 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: TAVERN_BARN_SKIN
+    name: "<a>Tavern Barn Skin"
+    material: oak_log
+    cost: { gems: 250 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: MELON_BARN_SKIN
+    name: "<a>Melon Barn Skin"
+    material: melon
+    cost: { gems: 950 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."
+  - item: LUCKY_BARN_SKIN
+    name: "<a>Lucky Barn Skin"
+    material: player_head
+    cost: { gems: 950 }
+    unavailable: "<c>Barn and Greenhouse skins arrive in a later Garden update."

@@ -1,0 +1,57 @@
+# SkyMart: Farming Tools (data from wiki Template:SkyMart/UI; Farming Tools unlock at Garden Level 4).
+title: SkyMart: Farming Tools
+slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24]
+entries:
+  - item: THEORETICAL_HOE_WHEAT_1
+    name: "<a>Euclid's Wheat Sickle Mk. I"
+    material: iron_hoe
+    cost: { copper: 250 }
+  - item: THEORETICAL_HOE_CARROT_1
+    name: "<a>Gauss Carrot Shovel Mk. I"
+    material: iron_hoe
+    cost: { copper: 250 }
+  - item: THEORETICAL_HOE_POTATO_1
+    name: "<a>Pythagorean Potato Shovel Mk. I"
+    material: iron_hoe
+    cost: { copper: 250 }
+  - item: PUMPKIN_DICER
+    name: "<a>Pumpkin Dicer Mk. I"
+    material: pumpkin
+    cost: { copper: 250 }
+  - item: THEORETICAL_HOE_CANE_1
+    name: "<a>Turing Sugar Cane Cutter Mk. I"
+    material: iron_hoe
+    cost: { copper: 250 }
+  - item: MELON_DICER
+    name: "<a>Melon Dicer Mk. I"
+    material: melon
+    cost: { copper: 250 }
+  - item: CACTUS_KNIFE
+    name: "<a>Cactus Knife Mk. I"
+    material: iron_sword
+    cost: { copper: 250 }
+  - item: COCO_CHOPPER
+    name: "<a>Cocoa Chopper Mk. I"
+    material: golden_axe
+    cost: { copper: 250 }
+  - item: FUNGI_CUTTER
+    name: "<a>Fungi Cutter Mk. I"
+    material: iron_hoe
+    cost: { copper: 250 }
+  - item: THEORETICAL_HOE_WARTS_1
+    name: "<a>Newton Nether Wart Cutter Mk. I"
+    material: iron_hoe
+    cost: { copper: 250 }
+  - item: THEORETICAL_HOE_SUNFLOWER_1
+    name: "<a>Eclipse Sickle Mk. I"
+    material: iron_hoe
+    cost: { copper: 250 }
+  - item: THEORETICAL_HOE_WILD_ROSE_1
+    name: "<a>Wild Rose Cutter Mk. I"
+    material: iron_hoe
+    cost: { copper: 250 }
+  - item: FARMING_TOOLKIT
+    name: "<a>Farming Toolkit"
+    material: player_head
+    cost: { copper: 500 }
+    unavailable: "<c>The Farming Toolkit is not added yet."

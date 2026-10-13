@@ -1,0 +1,49 @@
+# SkyMart: Pests (data from wiki Template:SkyMart/UI; Farming Tools unlock at Garden Level 4).
+title: SkyMart: Pests
+slots: [10, 11, 12, 13, 14, 15, 16, 19, 20]
+entries:
+  - item: PORTABLE_WASHER
+    name: "<a>Portable Washer"
+    material: paper
+    cost: { coins: 20000 }
+    unavailable: "<c>Pests arrive in a later Garden update."
+  - item: SKYMART_VACUUM
+    name: "<a>SkyMart Vacuum"
+    material: paper
+    cost: { copper: 100 }
+    unavailable: "<c>Pests arrive in a later Garden update."
+  - item: SKYMART_TURBO_VACUUM
+    name: "<a>SkyMart Turbo Vacuum"
+    material: paper
+    cost: { copper: 200, items: { SKYMART_VACUUM: 1 } }
+    unavailable: "<c>Pests arrive in a later Garden update."
+  - item: SKYMART_HYPER_VACUUM
+    name: "<a>SkyMart Hyper Vacuum"
+    material: paper
+    cost: { copper: 500, items: { SKYMART_TURBO_VACUUM: 1 } }
+    unavailable: "<c>Pests arrive in a later Garden update."
+  - item: INFINI_VACUUM
+    name: "<a>InfiniVacuum"
+    material: paper
+    cost: { copper: 1000, items: { SKYMART_HYPER_VACUUM: 1 } }
+    unavailable: "<c>Pests arrive in a later Garden update."
+  - item: INFINI_VACUUM_HOOVERIUS
+    name: "<a>InfiniVacuum Hooverius"
+    material: paper
+    cost: { copper: 2500, items: { CHIRPING_STEREO: 1, INFINI_VACUUM: 1 } }
+    unavailable: "<c>Pests arrive in a later Garden update."
+  - item: SPRAYONATOR
+    name: "<a>Sprayonator"
+    material: paper
+    cost: { copper: 25 }
+    unavailable: "<c>Pests arrive in a later Garden update."
+  - item: PEST_REPELLENT
+    name: "<a>Pest Repellent"
+    material: paper
+    cost: { copper: 15 }
+    unavailable: "<c>Pests arrive in a later Garden update."
+  - item: PEST_REPELLENT_MAX
+    name: "<a>Pest Repellent MAX"
+    material: paper
+    cost: { copper: 25, items: { PEST_REPELLENT: 1 } }
+    unavailable: "<c>Pests arrive in a later Garden update."

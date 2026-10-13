@@ -5,7 +5,6 @@ items:
     rarity: RARE
     default_statistics:
       farming_fortune: 15
-    unavailable: "Upgraded at SkyMart from a Basic Gardening Axe plus 20 Copper; SkyMart and Copper are Garden content"
     lore:
       - "§9Replenish I"
       - "§7Upon breaking crops, nether wart,"
@@ -31,7 +30,6 @@ items:
     rarity: RARE
     default_statistics:
       farming_fortune: 15
-    unavailable: "Upgraded at SkyMart from a Basic Gardening Hoe plus 20 Copper; SkyMart and Copper are Garden content"
     lore:
       - "§9Replenish I"
       - "§7Upon breaking crops, nether wart,"
@@ -58,7 +56,6 @@ items:
     rarity: UNCOMMON
     default_statistics:
       farming_fortune: 10
-    unavailable: "Sold at SkyMart for 5 Copper; SkyMart and Copper are Garden content"
     lore:
       - "§4❣ §cRequires §aGarden Level 4§c."
     components:
@@ -78,7 +75,6 @@ items:
     rarity: UNCOMMON
     default_statistics:
       farming_fortune: 10
-    unavailable: "Sold at SkyMart for 5 Copper; SkyMart and Copper are Garden content"
     lore:
       - "§4❣ §cRequires §aFarming Skill 5§c."
     components:
@@ -129,7 +125,6 @@ items:
     material: iron_sword
     name: "Cactus Knife Mk. I"
     rarity: UNCOMMON
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
     lore:
       - "§8Farming Tool"
       - ""
@@ -213,7 +208,6 @@ items:
     default_statistics:
       cocoa_beans_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
     lore:
       - "§8Farming Tool"
       - ""
@@ -282,7 +276,6 @@ items:
     material: iron_hoe
     name: "Fungi Cutter Mk. I"
     rarity: UNCOMMON
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
     lore:
       - "§8Farming Tool"
       - ""
@@ -348,7 +341,6 @@ items:
     default_statistics:
       melon_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
     lore:
       - "§8Farming Tool"
       - ""
@@ -426,7 +418,6 @@ items:
     default_statistics:
       pumpkin_fortune: 4
       farming_wisdom: 1
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built"
     lore:
       - "§8Farming Tool"
       - ""
@@ -525,7 +516,6 @@ items:
     material: iron_hoe
     name: "Turing Sugar Cane Cutter Mk. I"
     rarity: UNCOMMON
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
       - ""
@@ -546,7 +536,6 @@ items:
     material: iron_hoe
     name: "Gauss Carrot Shovel Mk. I"
     rarity: UNCOMMON
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
       - ""
@@ -567,7 +556,6 @@ items:
     material: iron_hoe
     name: "Pythagorean Potato Shovel Mk. I"
     rarity: UNCOMMON
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
       - ""
@@ -588,7 +576,6 @@ items:
     material: iron_hoe
     name: "Eclipse Sickle Mk. I"
     rarity: UNCOMMON
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
       - ""
@@ -609,7 +596,6 @@ items:
     material: iron_hoe
     name: "Newton Nether Wart Cutter Mk. I"
     rarity: UNCOMMON
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
       - ""
@@ -630,7 +616,6 @@ items:
     material: iron_hoe
     name: "Euclid's Wheat Sickle Mk. I"
     rarity: UNCOMMON
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
       - ""
@@ -650,7 +635,6 @@ items:
     material: iron_hoe
     name: "Wild Rose Cutter Mk. I"
     rarity: UNCOMMON
-    unavailable: "Level progression and per-crop bonuses need Garden crop counters, which are not built; upgraded from the previous Mk. tier"
     lore:
       - "§8Farming Tool"
       - ""

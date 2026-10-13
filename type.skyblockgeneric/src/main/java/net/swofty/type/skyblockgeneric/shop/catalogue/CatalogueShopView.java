@@ -6,6 +6,7 @@ import net.swofty.type.generic.gui.inventory.ItemStacks;
 import net.swofty.type.generic.gui.v2.context.ClickContext;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.garden.quest.GardenQuests;
 import net.swofty.type.skyblockgeneric.gui.ShopView;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
@@ -38,10 +39,11 @@ public class CatalogueShopView extends ShopView {
 
     private ShopItem forPlayer(CatalogueEntry entry, SkyBlockPlayer player) {
         double multiplier = CataloguePriceModifiers.coinMultiplier(catalogue.priceModifier(), player);
-        SkyBlockItem item = new SkyBlockItem(entry.itemType());
+        SkyBlockItem item = entry.buildItem();
         ShopItem shopItem = entry.stackable()
                 ? ShopItem.Stackable(item, entry.amount(), entry.cost().toShopPrice(multiplier))
                 : ShopItem.Single(item, entry.amount(), entry.cost().toShopPrice(multiplier));
+        if (entry.itemId().equals("BIOFUEL")) shopItem.onPurchase(GardenQuests::fuelPurchased);
         ReputationRequirement requirement = entry.requirement();
         if (requirement != null) shopItem.lockedWhen(viewer -> requirement.isMet(viewer) ? null : requirement.lockLine());
         return shopItem;

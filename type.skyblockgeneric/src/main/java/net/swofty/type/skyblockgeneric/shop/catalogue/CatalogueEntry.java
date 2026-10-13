@@ -3,6 +3,9 @@ package net.swofty.type.skyblockgeneric.shop.catalogue;
 import net.minestom.server.item.Material;
 import net.swofty.commons.StringUtility;
 import net.swofty.commons.skyblock.item.ItemType;
+import net.swofty.type.skyblockgeneric.enchantment.EnchantmentType;
+import net.swofty.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -17,7 +20,9 @@ public record CatalogueEntry(
         boolean stackable,
         List<String> lore,
         @Nullable String unavailableReason,
-        @Nullable ReputationRequirement requirement
+        @Nullable ReputationRequirement requirement,
+        @Nullable String enchantment,
+        int enchantmentLevel
 ) {
     public static final String MISSING_ITEM_REASON = "<c>This item is not in the game yet!";
 
@@ -35,7 +40,9 @@ public record CatalogueEntry(
                 Boolean.TRUE.equals(raw.get("stackable")),
                 lore instanceof List<?> list ? (List<String>) list : List.of(),
                 raw.get("unavailable") == null ? null : String.valueOf(raw.get("unavailable")),
-                ReputationRequirement.parse(raw.get("requires"))
+                ReputationRequirement.parse(raw.get("requires")),
+                raw.get("enchantment") == null ? null : String.valueOf(raw.get("enchantment")),
+                raw.get("enchantment_level") instanceof Number level ? level.intValue() : 1
         );
     }
 
@@ -47,6 +54,14 @@ public record CatalogueEntry(
 
     public @Nullable ItemType itemType() {
         return ItemType.get(itemId);
+    }
+
+    public SkyBlockItem buildItem() {
+        SkyBlockItem item = new SkyBlockItem(itemType());
+        if (enchantment != null) {
+            item.getAttributeHandler().addEnchantment(new SkyBlockEnchantment(EnchantmentType.valueOf(enchantment), enchantmentLevel));
+        }
+        return item;
     }
 
     public boolean available() {

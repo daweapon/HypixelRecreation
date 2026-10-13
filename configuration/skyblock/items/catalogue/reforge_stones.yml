@@ -1360,7 +1360,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 12§c."
-    unavailable: "Needs Garden Copper currency and SkyMart (not built)"
     source: "Bought from SkyMart for 150 Copper"
     components:
       - id: REFORGE_STONE
@@ -2655,7 +2654,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 9§c."
-    unavailable: "Garden SkyMart/Copper shop not built"
     source: "Bought from SkyMart for 100 Copper (Garden)"
     components:
       - id: REFORGE_STONE

@@ -1058,7 +1058,6 @@ items:
     material: iron_hoe
     name: "Garden Scythe"
     rarity: UNCOMMON
-    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
     source: "SkyMart for 1 Sam's Scythe and 20 Copper"
     lore:
       - "§7Cleans a §95x5 §7area of grass, leaves"

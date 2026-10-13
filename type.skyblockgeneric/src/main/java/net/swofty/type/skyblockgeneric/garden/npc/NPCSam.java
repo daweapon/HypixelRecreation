@@ -20,6 +20,8 @@ public class NPCSam extends HypixelNPC {
     public static final int WHEAT_FOR_COMPOST = 25;
     private static final Pos HOUSE = new Pos(-2.5, 71, -12.5, 0, 0);
     private static final Pos COMPOSTER = new Pos(-9.5, 71, -26.5, 90, 0);
+    private static final int SCAN_TOP = 74;
+    private static final int SCAN_BOTTOM = 60;
     private static NPCSam instance;
 
     private NPCSam() {
@@ -41,7 +43,7 @@ public class NPCSam extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return standsAtComposter((SkyBlockPlayer) player) ? COMPOSTER : HOUSE;
+                return onGround(player.getInstance(), standsAtComposter((SkyBlockPlayer) player) ? COMPOSTER : HOUSE);
             }
 
             @Override
@@ -71,6 +73,16 @@ public class NPCSam extends HypixelNPC {
                 return true;
             }
         });
+    }
+
+    private static Pos onGround(Instance instance, Pos wanted) {
+        if (instance == null) return wanted;
+        for (int y = SCAN_TOP; y > SCAN_BOTTOM; y--) {
+            if (instance.getChunkAt(wanted.x(), wanted.z()) != null && instance.getBlock(wanted.blockX(), y, wanted.blockZ()).isSolid()) {
+                return wanted.withY(y + 1);
+            }
+        }
+        return wanted;
     }
 
     public static synchronized NPCSam get() {

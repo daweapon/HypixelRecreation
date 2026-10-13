@@ -41,7 +41,7 @@ public class GUIGardenDesk extends StatelessView {
 
         view(layout, 19, Material.GRASS_BLOCK, "plots", 2, () -> new GUIConfigurePlots());
         view(layout, 21, Material.MELON_SLICE, "upgrades", 2, () -> new GUIGardenUpgrades());
-        pending(layout, 23, Material.EMERALD, "skymart", 6, "SkyMart");
+        view(layout, 23, Material.EMERALD, "skymart", 6, () -> new GUISkyMart());
         view(layout, 25, Material.GOLD_BLOCK, "milestones", 2, () -> new GUIGardenMilestones());
         view(layout, 31, Material.CLOCK, "speed", 2, () -> new GUICropSpeed());
         layout.slot(29, (_, c) -> levelsItem(c), (_, c) -> GardenMenus.open(c, new GUIGardenLevels()));

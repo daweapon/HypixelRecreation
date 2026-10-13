@@ -1806,7 +1806,6 @@ items:
     material: paper
     name: "Builder's Ruler"
     rarity: LEGENDARY
-    unavailable: "Needs SkyMart (Copper shop), which isn't built"
     source: "SkyMart: 20 Copper"
     lore:
       - "§6Ability: Area Planner  §e§lRIGHT CLICK"

@@ -1,0 +1,148 @@
+# SkyMart: Farming Essentials (data from wiki Template:SkyMart/UI; Farming Tools unlock at Garden Level 4).
+title: SkyMart: Farming Essentials
+slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43, 10, 11, 12, 13, 14]
+entries:
+  - item: BIOFUEL
+    name: "<a>Biofuel"
+    material: paper
+    cost: { coins: 5000 }
+  - item: SAM_SCYTHE
+    name: "<a>Sam's Scythe"
+    material: iron_hoe
+    cost: { coins: 2000 }
+  - item: GARDEN_SCYTHE
+    name: "<a>Garden Scythe"
+    material: iron_hoe
+    cost: { copper: 20, items: { SAM_SCYTHE: 1 } }
+  - item: BASIC_GARDENING_HOE
+    name: "<a>Basic Gardening Hoe"
+    material: iron_hoe
+    cost: { copper: 5 }
+  - item: ADVANCED_GARDENING_HOE
+    name: "<a>Advanced Gardening Hoe"
+    material: iron_hoe
+    cost: { copper: 20, items: { BASIC_GARDENING_HOE: 1 } }
+  - item: BASIC_GARDENING_AXE
+    name: "<a>Basic Gardening Axe"
+    material: iron_axe
+    cost: { copper: 5 }
+  - item: ADVANCED_GARDENING_AXE
+    name: "<a>Advanced Gardening Axe"
+    material: golden_axe
+    cost: { copper: 20, items: { BASIC_GARDENING_AXE: 1 } }
+  - item: BUILDERS_RULER
+    name: "<a>Builder's Ruler"
+    material: paper
+    cost: { copper: 20 }
+  - item: ENCHANTED_BOOK
+    name: "<a>Enchanted Book (Dedication I)"
+    material: enchanted_book
+    enchantment: DEDICATION
+    enchantment_level: 1
+    cost: { copper: 250 }
+  - item: ENCHANTED_BOOK
+    name: "<a>Enchanted Book (Green Thumb I)"
+    material: enchanted_book
+    enchantment: GREEN_THUMB
+    enchantment_level: 1
+    cost: { copper: 1500 }
+  - item: LOTUS_BRACELET
+    name: "<a>Peony Bracelet"
+    material: paper
+    cost: { copper: 50 }
+  - item: LOTUS_BELT
+    name: "<a>Peony Belt"
+    material: paper
+    cost: { copper: 100 }
+  - item: LOTUS_NECKLACE
+    name: "<a>Peony Necklace"
+    material: paper
+    cost: { copper: 200 }
+  - item: LOTUS_CLOAK
+    name: "<a>Peony Cloak"
+    material: paper
+    cost: { copper: 500 }
+  - item: YELLOW_BANDANA
+    name: "<a>Yellow Bandana"
+    material: player_head
+    cost: { copper: 300 }
+  - item: SKYMART_BROCHURE
+    name: "<a>SkyMart Brochure"
+    material: paper
+    cost: { copper: 100 }
+  - item: LARGE_WALNUT
+    name: "<a>Large Walnut"
+    material: paper
+    cost: { copper: 150 }
+  - item: BLOSSOM_BRACELET
+    name: "<a>Blossom Bracelet"
+    material: paper
+    cost: { copper: 2500, items: { LOTUS_BRACELET: 1 } }
+  - item: BLOSSOM_BELT
+    name: "<a>Blossom Belt"
+    material: paper
+    cost: { copper: 5000, items: { LOTUS_BELT: 1 } }
+  - item: BLOSSOM_NECKLACE
+    name: "<a>Blossom Necklace"
+    material: paper
+    cost: { copper: 7500, items: { LOTUS_NECKLACE: 1 } }
+  - item: BLOSSOM_CLOAK
+    name: "<a>Blossom Cloak"
+    material: paper
+    cost: { copper: 10000, items: { LOTUS_CLOAK: 1 } }
+  - item: COPPER_TALISMAN
+    name: "<a>Copper Talisman"
+    material: player_head
+    cost: { copper: 5000 }
+  - item: COPPER_RING
+    name: "<a>Copper Ring"
+    material: player_head
+    cost: { copper: 20000, items: { COPPER_TALISMAN: 1 } }
+  - item: COPPER_ARTIFACT
+    name: "<a>Copper Artifact"
+    material: player_head
+    cost: { copper: 50000, items: { COPPER_RING: 1 } }
+  - item: SOWLEDGE_GARDEN_CHIP
+    name: "<a>Sowledge Chip"
+    material: paper
+    cost: { copper: 200 }
+    unavailable: "<c>Garden Chips arrive with the Greenhouse update."
+  - item: CROPSHOT_GARDEN_CHIP
+    name: "<a>Cropshot Chip"
+    material: paper
+    cost: { copper: 500 }
+    unavailable: "<c>Garden Chips arrive with the Greenhouse update."
+  - item: HYDRO_CAN_1000
+    name: "<a>HydroCan 1000"
+    material: carrot_on_a_stick
+    cost: { coins: 5000 }
+    unavailable: "<c>Watering cans arrive with the Greenhouse update."
+  - item: HYDRO_CAN_TURBO_2000
+    name: "<a>HydroCan Turbo 2000"
+    material: carrot_on_a_stick
+    cost: { copper: 200, items: { HYDRO_CAN_1000: 1 } }
+    unavailable: "<c>Watering cans arrive with the Greenhouse update."
+  - item: HYDRO_CAN_ULTRA_3000
+    name: "<a>HydroCan Ultra 3000"
+    material: carrot_on_a_stick
+    cost: { copper: 500, items: { HYDRO_CAN_TURBO_2000: 1 } }
+    unavailable: "<c>Watering cans arrive with the Greenhouse update."
+  - item: AQUAMASTER_X
+    name: "<a>AquaMaster X"
+    material: carrot_on_a_stick
+    cost: { copper: 1000, items: { HYDRO_CAN_ULTRA_3000: 1 } }
+    unavailable: "<c>Watering cans arrive with the Greenhouse update."
+  - item: AQUAMASTER_HYDROMAX
+    name: "<a>AquaMaster Hydromax"
+    material: carrot_on_a_stick
+    cost: { copper: 2500, items: { AQUAMASTER_X: 1, IRIDIUM: 1 } }
+    unavailable: "<c>Watering cans arrive with the Greenhouse update."
+  - item: SUNFLOWER_GENERATOR_12
+    name: "<a>Sunflower Minion XII"
+    material: paper
+    cost: { items: { SUNFLOWER_GENERATOR_11: 1, COMPACTED_SUNFLOWER: 32 } }
+  - item: PLANT_DIAGNOSTICS_TOOL
+    name: "<a>Plant Diagnostics Tool"
+    material: paper
+    cost: { copper: 50 }
+    unavailable: "<c>The Plant Diagnostics Tool arrives with the Greenhouse update."
