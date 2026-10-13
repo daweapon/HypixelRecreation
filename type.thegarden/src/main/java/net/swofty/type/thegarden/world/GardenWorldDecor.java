@@ -13,6 +13,7 @@ import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.GardenProgress;
 import net.swofty.type.skyblockgeneric.garden.GardenService;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.garden.GardenModels;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterConfig;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterEngine;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterService;
@@ -131,19 +132,14 @@ public class GardenWorldDecor implements GardenPresence {
         return new String[]{colour + "Plot §7- §b" + plot, "§7Cost: §aCompost §8x" + quote.compostCost()};
     }
 
-    private static void placeComposterBlocks(SharedInstance instance) {
-        place(instance, -12, 72, -28, net.minestom.server.instance.block.Block.BLAST_FURNACE.withProperty("facing", "south"));
-        place(instance, -11, 72, -28, net.minestom.server.instance.block.Block.BLAST_FURNACE.withProperty("facing", "south"));
-        place(instance, -12, 72, -27, net.minestom.server.instance.block.Block.CAULDRON);
-        place(instance, -11, 72, -27, net.minestom.server.instance.block.Block.CAULDRON);
-        for (int y = 73; y <= 75; y++) {
-            place(instance, -12, y, -28, net.minestom.server.instance.block.Block.STONE_BRICK_WALL);
-        }
-    }
-
-    private static void place(SharedInstance instance, int x, int y, int z, net.minestom.server.instance.block.Block block) {
-        if (instance.getChunkAt(x, z) != null && instance.getBlock(x, y, z).isAir()) {
-            instance.setBlock(x, y, z, block);
+    private static void clearOldComposterBlocks(SharedInstance instance) {
+        for (int[] at : new int[][]{{-12, 72, -28}, {-11, 72, -28}, {-12, 72, -27}, {-11, 72, -27}, {-12, 73, -28}, {-12, 74, -28}, {-12, 75, -28}}) {
+            if (instance.getChunkAt(at[0], at[2]) == null) continue;
+            net.minestom.server.instance.block.Block block = instance.getBlock(at[0], at[1], at[2]);
+            String name = block.name();
+            if (name.equals("minecraft:blast_furnace") || name.equals("minecraft:cauldron") || name.equals("minecraft:stone_brick_wall")) {
+                instance.setBlock(at[0], at[1], at[2], net.minestom.server.instance.block.Block.AIR);
+            }
         }
     }
 
@@ -156,7 +152,6 @@ public class GardenWorldDecor implements GardenPresence {
                 (player, _) -> ((SkyBlockPlayer) player).openView(new GUIGardenDesk()));
         desk.setInstance(instance, new Pos(DESK.x(), 71, DESK.z() - 1));
 
-        placeComposterBlocks(instance);
         InteractionEntity composter = new InteractionEntity(1.8f, 2.2f, (player, _) -> {
             SkyBlockPlayer skyBlockPlayer = (SkyBlockPlayer) player;
             if (ComposterService.tutorialLocked(skyBlockPlayer)) {
@@ -170,5 +165,13 @@ public class GardenWorldDecor implements GardenPresence {
         InteractionEntity logbook = new InteractionEntity(2.2f, 2.2f,
                 (player, _) -> ((SkyBlockPlayer) player).openView(new GUIVisitorLogbook()));
         logbook.setInstance(instance, new Pos(LOGBOOK.x(), 71, LOGBOOK.z()));
+
+        try {
+            clearOldComposterBlocks(instance);
+            GardenModels.spawn(instance, "composter");
+            GardenModels.spawn(instance, "desk");
+        } catch (RuntimeException exception) {
+            exception.printStackTrace();
+        }
     }
 }
