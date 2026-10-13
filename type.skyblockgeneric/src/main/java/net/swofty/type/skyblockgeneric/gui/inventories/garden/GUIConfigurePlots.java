@@ -75,7 +75,9 @@ public class GUIConfigurePlots extends StatelessView {
                 ? Text.key("gui_garden_upgrades.plots.locked.compost_bundle", bundles)
                 : Text.key("gui_garden_upgrades.plots.locked.compost", quote.compostCost()));
         lore.add(GardenMenus.blank());
-        if (level < quote.requiredLevel()) {
+        if (quote.status() == GardenProgress.PlotStatus.NOT_ADJACENT) {
+            lore.add(Text.key("gui_garden_upgrades.plots.locked.need_adjacent"));
+        } else if (level < quote.requiredLevel()) {
             lore.add(Text.key("gui_garden_upgrades.plots.locked.need_level"));
         } else if (!GardenService.canAffordCompost(player, quote.compostCost())) {
             lore.add(Text.key("gui_garden_upgrades.plots.locked.need_compost"));
@@ -101,6 +103,7 @@ public class GUIConfigurePlots extends StatelessView {
         GardenProgress.PlotQuote result = GardenService.unlockPlot(player, plot);
         switch (result.status()) {
             case UNLOCKABLE -> player.sendMessage(Text.key("gui_garden_upgrades.plots.unlock.success", plot));
+            case NOT_ADJACENT -> player.sendMessage(Text.key("gui_garden_upgrades.plots.unlock.adjacent"));
             case LEVEL_TOO_LOW -> player.sendMessage(Text.key("gui_garden_upgrades.plots.unlock.level", result.requiredLevel()));
             case ALREADY_UNLOCKED -> player.sendMessage(Text.key("gui_garden_upgrades.plots.unlock.already"));
             case INVALID -> player.sendMessage(Text.key(result.compostCost() > 0

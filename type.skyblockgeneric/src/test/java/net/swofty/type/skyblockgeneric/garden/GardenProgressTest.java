@@ -98,8 +98,24 @@ class GardenProgressTest {
         assertEquals(2, GardenProgress.quotePlot(profile, 2).compostCost());
         assertEquals(GardenProgress.PlotStatus.ALREADY_UNLOCKED, GardenProgress.quotePlot(profile, 1).status());
         assertEquals(16, GardenProgress.quotePlot(profile, 8).compostCost());
+        assertEquals(GardenProgress.PlotStatus.NOT_ADJACENT, GardenProgress.quotePlot(profile, 8).status());
         assertEquals(GardenProgress.PlotStatus.LEVEL_TOO_LOW, GardenProgress.quotePlot(profile, 9).status());
+        assertEquals(GardenProgress.PlotStatus.UNLOCKABLE, GardenProgress.quotePlot(profile, 6).status());
+        assertEquals(GardenProgress.PlotStatus.NOT_ADJACENT, GardenProgress.quotePlot(profile, 24).status());
         assertEquals(GardenProgress.PlotStatus.INVALID, GardenProgress.quotePlot(profile, 25).status());
+    }
+
+    @Test
+    void plotsMustTouchTheBarnOrAnOwnedPlot() {
+        GardenProfile profile = new GardenProfile();
+        GardenProgress.addGardenXp(profile, 1_000_000);
+
+        assertEquals(GardenProgress.PlotStatus.UNLOCKABLE, GardenProgress.quotePlot(profile, 1).status());
+        assertEquals(GardenProgress.PlotStatus.NOT_ADJACENT, GardenProgress.quotePlot(profile, 5).status());
+        profile.unlockPlot(1);
+        assertEquals(GardenProgress.PlotStatus.UNLOCKABLE, GardenProgress.quotePlot(profile, 5).status());
+        assertEquals(GardenProgress.PlotStatus.UNLOCKABLE, GardenProgress.quotePlot(profile, 9).status());
+        assertEquals(java.util.Set.of(1, 2, 3, 4), GardenLayout.neighbours(GardenLayout.BARN));
     }
 
     @Test

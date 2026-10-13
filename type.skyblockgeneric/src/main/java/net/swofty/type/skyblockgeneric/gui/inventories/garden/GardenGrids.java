@@ -21,13 +21,7 @@ final class GardenGrids {
 
     static final List<Integer> CROP_SLOTS = List.of(11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 30, 31, 32);
 
-    static final int[][] PLOT_GRID = {
-            {21, 13, 9, 14, 22},
-            {15, 5, 1, 6, 16},
-            {10, 2, 0, 3, 11},
-            {17, 7, 4, 8, 18},
-            {23, 19, 12, 20, 24}
-    };
+    static final int[][] PLOT_GRID = net.swofty.type.skyblockgeneric.garden.GardenLayout.PLOT_GRID;
 
     static final List<Preset> PRESETS = List.of(
             new Preset(10, DEFAULT_PRESET, Material.GRASS_BLOCK),

@@ -10,7 +10,7 @@ public final class GardenProgress {
     }
 
     public enum PlotStatus {
-        UNLOCKABLE, ALREADY_UNLOCKED, LEVEL_TOO_LOW, INVALID
+        UNLOCKABLE, ALREADY_UNLOCKED, NOT_ADJACENT, LEVEL_TOO_LOW, INVALID
     }
 
     public record MilestoneProgress(int newTiers, int gardenXp, int farmingXp, int skyblockXp) {
@@ -131,7 +131,12 @@ public final class GardenProgress {
             }
             long owned = group.plots().stream().filter(profile::isPlotUnlocked).count();
             int cost = group.costs().get((int) owned);
-            PlotStatus status = level(profile) < group.minGardenLevel() ? PlotStatus.LEVEL_TOO_LOW : PlotStatus.UNLOCKABLE;
+            PlotStatus status = PlotStatus.UNLOCKABLE;
+            if (!GardenLayout.touchesBarnOrOwnedPlot(plot, profile.getUnlockedPlots())) {
+                status = PlotStatus.NOT_ADJACENT;
+            } else if (level(profile) < group.minGardenLevel()) {
+                status = PlotStatus.LEVEL_TOO_LOW;
+            }
             return new PlotQuote(status, cost, group.minGardenLevel());
         }
         return new PlotQuote(PlotStatus.INVALID, 0, 0);
