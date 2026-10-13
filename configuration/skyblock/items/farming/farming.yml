@@ -33,6 +33,21 @@ items:
       - id: SELLABLE
         value: 10.0
       - id: TRACKED_UNIQUE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: NONE
+            pattern:
+              - " A "
+              - "AAA"
+              - " A "
+            ingredients:
+              A:
+                type: COMPOST
+                amount: 32
+            result:
+              type: COMPOST_BUNDLE
+              amount: 1
   - id: CONDENSED_FERMENTO
     material: paper
     name: "Condensed Fermento"

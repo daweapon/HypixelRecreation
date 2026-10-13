@@ -1,0 +1,21 @@
+title: "The Garden Update, Part 4"
+date: "13th October 2026"
+intro:
+  - "The Composter is open. Turn crops into Compost, and finish Sam's compost tutorial."
+sections:
+  - heading: "The Composter"
+    colour: "<a>"
+    lines:
+      - "Feed the Composter crops for Organic Matter and machine fuel such as Biofuel, and it makes Compost over time. It keeps working while you are away."
+      - "Collect Compost from the menu, and use it to unlock plots at the Desk. Craft Compost Bundles from 160 Compost."
+      - "Insert crops and fuel from your inventory or your sacks, and watch the gauges and the countdown above the machine."
+  - heading: "Composter Upgrades"
+    colour: "<6>"
+    lines:
+      - "Five upgrades with 25 tiers each: Composter Speed, Multi Drop, Fuel Cap, Organic Matter Cap and Cost Reduction."
+      - "Upgrades cost Copper, crops and rare crops, and each tier gives SkyBlock XP."
+  - heading: "Sam's Compost Quest"
+    colour: "<e>"
+    lines:
+      - "Learning to Compost works from start to finish: buy Biofuel at SkyMart, fuel the Composter and take your first Compost."
+      - "The Garden tab list now shows your Composter."

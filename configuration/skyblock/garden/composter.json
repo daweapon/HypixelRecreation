@@ -1,0 +1,1605 @@
+{
+ "organicMatter": {
+  "CROPIE": 2500,
+  "SQUASH": 10000,
+  "FERMENTO": 20000,
+  "CONDENSED_FERMENTO": 180000,
+  "HELIANTHUS": 30000,
+  "CONDENSED_HELIANTHUS": 270000,
+  "ETHEREAL_VINE": 5000,
+  "FLOWERING_BOUQUET": 6000,
+  "FINE_FLOUR": 150,
+  "WHEAT": 1,
+  "ENCHANTED_BREAD": 60,
+  "ENCHANTED_WHEAT": 160,
+  "ENCHANTED_HAY_BALE": 25600,
+  "SEEDS": 1,
+  "ENCHANTED_SEEDS": 160,
+  "BOX_OF_SEEDS": 25600,
+  "CARROT": 0.29,
+  "ENCHANTED_CARROT": 46.4,
+  "ENCHANTED_GOLDEN_CARROT": 5939.2,
+  "POTATO": 0.33,
+  "POISONOUS_POTATO": 0.33,
+  "ENCHANTED_POTATO": 52.8,
+  "ENCHANTED_POISONOUS_POTATO": 52.8,
+  "ENCHANTED_BAKED_POTATO": 8448,
+  "PUMPKIN": 1,
+  "ENCHANTED_PUMPKIN": 160,
+  "POLISHED_PUMPKIN": 25600,
+  "MELON_SLICE": 0.2,
+  "MELON_BLOCK": 1.8,
+  "ENCHANTED_MELON": 32,
+  "ENCHANTED_MELON_BLOCK": 5120,
+  "RED_MUSHROOM": 1,
+  "RED_MUSHROOM_BLOCK": 9,
+  "ENCHANTED_RED_MUSHROOM": 160,
+  "ENCHANTED_RED_MUSHROOM_BLOCK": 5184,
+  "BROWN_MUSHROOM": 1,
+  "BROWN_MUSHROOM_BLOCK": 9,
+  "ENCHANTED_BROWN_MUSHROOM": 160,
+  "ENCHANTED_BROWN_MUSHROOM_BLOCK": 5184,
+  "COCOA_BEANS": 0.4,
+  "ENCHANTED_COCOA_BEANS": 64,
+  "CACTUS": 0.5,
+  "CACTUS_GREEN": 0.5,
+  "ENCHANTED_CACTUS_GREEN": 80,
+  "ENCHANTED_CACTUS": 12800,
+  "SUGAR_CANE": 0.5,
+  "ENCHANTED_SUGAR": 80,
+  "ENCHANTED_PAPER": 96,
+  "ENCHANTED_SUGAR_CANE": 12800,
+  "NETHER_WART": 0.33,
+  "ENCHANTED_NETHER_WART": 52.8,
+  "MUTANT_NETHER_WART": 8448,
+  "WILD_ROSE": 0.5,
+  "ENCHANTED_WILD_ROSE": 80,
+  "COMPACTED_WILD_ROSE": 12800,
+  "SUNFLOWER": 0.5,
+  "ENCHANTED_SUNFLOWER": 80,
+  "COMPACTED_SUNFLOWER": 12800
+ },
+ "fuel": {
+  "RED_THORNLEAF": 200,
+  "ENCHANTED_DANDELION": 360,
+  "ENCHANTED_POPPY": 1024,
+  "BIOFUEL": 3000,
+  "VOLTA": 10000,
+  "OIL_BARREL": 10000,
+  "SUNFLOWER_OIL": 20000,
+  "COALROOT": 5000,
+  "HELIX": 50000,
+  "CLAW_FOSSIL": 50000,
+  "CLUBBED_FOSSIL": 50000,
+  "FOOTPRINT_FOSSIL": 50000,
+  "SPINE_FOSSIL": 50000,
+  "TUSK_FOSSIL": 50000,
+  "UGLY_FOSSIL": 50000,
+  "WEBBED_FOSSIL": 50000,
+  "POPPY": 2,
+  "DANDELION": 2,
+  "PLANT_MATTER": 150,
+  "GOBLIN_EGG": 2000,
+  "GREEN_GOBLIN_EGG": 5000,
+  "YELLOW_GOBLIN_EGG": 10000,
+  "RED_GOBLIN_EGG": 15000,
+  "BLUE_GOBLIN_EGG": 20000
+ },
+ "base": {
+  "organicMatterCap": 40000,
+  "fuelCap": 100000,
+  "secondsPerCompost": 600,
+  "matterPerCompost": 4000,
+  "fuelPerCompost": 2000,
+  "compostPerCycle": 1
+ },
+ "perTier": {
+  "SPEED": "+20% production speed per tier (secondsPerCompost = 600 / (1 + 0.20*tier))",
+  "MULTI_DROP": "+3% chance of 1 extra compost per tier",
+  "FUEL_CAP": "+30000 fuel cap per tier",
+  "ORGANIC_MATTER_CAP": "+30000 organic matter cap per tier",
+  "COST_REDUCTION": "-1% matter and fuel per compost per tier (multiplier 1 - 0.01*tier)"
+ },
+ "gardenLevelRequired": {
+  "SPEED": 2,
+  "MULTI_DROP": 4,
+  "FUEL_CAP": 6,
+  "ORGANIC_MATTER_CAP": 8,
+  "COST_REDUCTION": 10
+ },
+ "compostBundle": {
+  "item": "ENCHANTED_COMPOST",
+  "repoId": "COMPOST_BUNDLE",
+  "recipe": {
+   "COMPOST": 160
+  },
+  "recipeSlots": "5-slot cross, 32 COMPOST each"
+ },
+ "tutorial": {
+  "organicMatter": 4000,
+  "fuel": 1700,
+  "firstCycleSeconds": 10
+ },
+ "upgrades": {
+  "SPEED": [
+   {
+    "tier": 1,
+    "value": 20,
+    "items": [
+     {
+      "item": "ENCHANTED_WHEAT",
+      "amount": 128
+     }
+    ]
+   },
+   {
+    "tier": 2,
+    "value": 40,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "tier": 3,
+    "value": 60,
+    "items": [
+     {
+      "item": "ENCHANTED_WHEAT",
+      "amount": 256
+     }
+    ]
+   },
+   {
+    "tier": 4,
+    "value": 80,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 4
+     }
+    ]
+   },
+   {
+    "tier": 5,
+    "value": 100,
+    "items": [
+     {
+      "item": "ENCHANTED_WHEAT",
+      "amount": 512
+     }
+    ]
+   },
+   {
+    "tier": 6,
+    "value": 120,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 8
+     }
+    ]
+   },
+   {
+    "tier": 7,
+    "value": 140,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 8
+     }
+    ]
+   },
+   {
+    "tier": 8,
+    "value": 160,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 16
+     }
+    ]
+   },
+   {
+    "tier": 9,
+    "value": 180,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 12
+     }
+    ]
+   },
+   {
+    "tier": 10,
+    "value": 200,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 11,
+    "value": 220,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 16
+     }
+    ]
+   },
+   {
+    "tier": 12,
+    "value": 240,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "tier": 13,
+    "value": 260,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 24
+     }
+    ]
+   },
+   {
+    "tier": 14,
+    "value": 280,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 15,
+    "value": 300,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 16,
+    "value": 320,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 17,
+    "value": 340,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "tier": 18,
+    "value": 360,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 96
+     }
+    ]
+   },
+   {
+    "tier": 19,
+    "value": 380,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 20,
+    "value": 400,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 128
+     }
+    ]
+   },
+   {
+    "tier": 21,
+    "value": 420,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 22,
+    "value": 440,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 192
+     }
+    ]
+   },
+   {
+    "tier": 23,
+    "value": 460,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 96
+     }
+    ]
+   },
+   {
+    "tier": 24,
+    "value": 480,
+    "items": [
+     {
+      "item": "ENCHANTED_GOLDEN_CARROT",
+      "amount": 256
+     }
+    ]
+   },
+   {
+    "tier": 25,
+    "value": 500,
+    "items": [
+     {
+      "item": "ENCHANTED_HAY_BALE",
+      "amount": 128
+     }
+    ]
+   }
+  ],
+  "MULTI_DROP": [
+   {
+    "tier": 1,
+    "value": 3,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "tier": 2,
+    "value": 6,
+    "items": [
+     {
+      "item": "ENCHANTED_PUMPKIN",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 3,
+    "value": 9,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "tier": 4,
+    "value": 12,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "tier": 5,
+    "value": 15,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 4
+     }
+    ]
+   },
+   {
+    "tier": 6,
+    "value": 18,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "tier": 7,
+    "value": 21,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 8
+     }
+    ]
+   },
+   {
+    "tier": 8,
+    "value": 24,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 4
+     }
+    ]
+   },
+   {
+    "tier": 9,
+    "value": 27,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 16
+     }
+    ]
+   },
+   {
+    "tier": 10,
+    "value": 30,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 8
+     }
+    ]
+   },
+   {
+    "tier": 11,
+    "value": 33,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 12,
+    "value": 36,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 16
+     }
+    ]
+   },
+   {
+    "tier": 13,
+    "value": 39,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 14,
+    "value": 42,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 24
+     }
+    ]
+   },
+   {
+    "tier": 15,
+    "value": 45,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 16,
+    "value": 48,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 17,
+    "value": 51,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 80
+     }
+    ]
+   },
+   {
+    "tier": 18,
+    "value": 54,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 19,
+    "value": 57,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 112
+     }
+    ]
+   },
+   {
+    "tier": 20,
+    "value": 60,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 21,
+    "value": 63,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 144
+     }
+    ]
+   },
+   {
+    "tier": 22,
+    "value": 66,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 96
+     }
+    ]
+   },
+   {
+    "tier": 23,
+    "value": 69,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 176
+     }
+    ]
+   },
+   {
+    "tier": 24,
+    "value": 72,
+    "items": [
+     {
+      "item": "POLISHED_PUMPKIN",
+      "amount": 128
+     }
+    ]
+   },
+   {
+    "tier": 25,
+    "value": 75,
+    "items": [
+     {
+      "item": "ENCHANTED_BAKED_POTATO",
+      "amount": 224
+     }
+    ]
+   }
+  ],
+  "FUEL_CAP": [
+   {
+    "tier": 1,
+    "value": 130000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "tier": 2,
+    "value": 160000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 4
+     }
+    ]
+   },
+   {
+    "tier": 3,
+    "value": 190000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "tier": 4,
+    "value": 220000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 8
+     }
+    ]
+   },
+   {
+    "tier": 5,
+    "value": 250000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 4
+     }
+    ]
+   },
+   {
+    "tier": 6,
+    "value": 280000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 16
+     }
+    ]
+   },
+   {
+    "tier": 7,
+    "value": 310000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 8
+     }
+    ]
+   },
+   {
+    "tier": 8,
+    "value": 340000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 9,
+    "value": 370000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 16
+     }
+    ]
+   },
+   {
+    "tier": 10,
+    "value": 400000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "tier": 11,
+    "value": 430000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 12,
+    "value": 460000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 13,
+    "value": 490000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "tier": 14,
+    "value": 520000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 15,
+    "value": 550000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 16,
+    "value": 580000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 96
+     }
+    ]
+   },
+   {
+    "tier": 17,
+    "value": 610000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 18,
+    "value": 640000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 128
+     }
+    ]
+   },
+   {
+    "tier": 19,
+    "value": 670000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 96
+     }
+    ]
+   },
+   {
+    "tier": 20,
+    "value": 700000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 192
+     }
+    ]
+   },
+   {
+    "tier": 21,
+    "value": 730000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 144
+     }
+    ]
+   },
+   {
+    "tier": 22,
+    "value": 760000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 288
+     }
+    ]
+   },
+   {
+    "tier": 23,
+    "value": 790000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 192
+     }
+    ]
+   },
+   {
+    "tier": 24,
+    "value": 820000,
+    "items": [
+     {
+      "item": "ENCHANTED_MELON_BLOCK",
+      "amount": 384
+     }
+    ]
+   },
+   {
+    "tier": 25,
+    "value": 850000,
+    "items": [
+     {
+      "item": "ENCHANTED_SUGAR_CANE",
+      "amount": 256
+     }
+    ]
+   }
+  ],
+  "ORGANIC_MATTER_CAP": [
+   {
+    "tier": 1,
+    "value": 70000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "tier": 2,
+    "value": 100000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 3
+     }
+    ]
+   },
+   {
+    "tier": 3,
+    "value": 130000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "tier": 4,
+    "value": 160000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 6
+     }
+    ]
+   },
+   {
+    "tier": 5,
+    "value": 190000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 4
+     }
+    ]
+   },
+   {
+    "tier": 6,
+    "value": 220000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 12
+     }
+    ]
+   },
+   {
+    "tier": 7,
+    "value": 250000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 7
+     }
+    ]
+   },
+   {
+    "tier": 8,
+    "value": 280000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 24
+     }
+    ]
+   },
+   {
+    "tier": 9,
+    "value": 310000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 10
+     }
+    ]
+   },
+   {
+    "tier": 10,
+    "value": 340000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 11,
+    "value": 370000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 16
+     }
+    ]
+   },
+   {
+    "tier": 12,
+    "value": 400000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 13,
+    "value": 430000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 24
+     }
+    ]
+   },
+   {
+    "tier": 14,
+    "value": 460000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 96
+     }
+    ]
+   },
+   {
+    "tier": 15,
+    "value": 490000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 16,
+    "value": 520000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 128
+     }
+    ]
+   },
+   {
+    "tier": 17,
+    "value": 550000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 40
+     }
+    ]
+   },
+   {
+    "tier": 18,
+    "value": 580000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 160
+     }
+    ]
+   },
+   {
+    "tier": 19,
+    "value": 610000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 20,
+    "value": 640000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 208
+     }
+    ]
+   },
+   {
+    "tier": 21,
+    "value": 670000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 22,
+    "value": 700000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 256
+     }
+    ]
+   },
+   {
+    "tier": 23,
+    "value": 730000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 96
+     }
+    ]
+   },
+   {
+    "tier": 24,
+    "value": 760000,
+    "items": [
+     {
+      "item": "ENCHANTED_COOKIE",
+      "amount": 320
+     }
+    ]
+   },
+   {
+    "tier": 25,
+    "value": 790000,
+    "items": [
+     {
+      "item": "ENCHANTED_CACTUS",
+      "amount": 128
+     }
+    ]
+   }
+  ],
+  "COST_REDUCTION": [
+   {
+    "tier": 1,
+    "value": 1,
+    "items": [
+     {
+      "item": "ENCHANTED_BROWN_MUSHROOM",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 2,
+    "value": 2,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 1
+     }
+    ]
+   },
+   {
+    "tier": 3,
+    "value": 3,
+    "items": [
+     {
+      "item": "ENCHANTED_RED_MUSHROOM_BLOCK",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "tier": 4,
+    "value": 4,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 2
+     }
+    ]
+   },
+   {
+    "tier": 5,
+    "value": 5,
+    "items": [
+     {
+      "item": "ENCHANTED_BROWN_MUSHROOM_BLOCK",
+      "amount": 4
+     }
+    ]
+   },
+   {
+    "tier": 6,
+    "value": 6,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 4
+     }
+    ]
+   },
+   {
+    "tier": 7,
+    "value": 7,
+    "items": [
+     {
+      "item": "ENCHANTED_RED_MUSHROOM_BLOCK",
+      "amount": 8
+     }
+    ]
+   },
+   {
+    "tier": 8,
+    "value": 8,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 8
+     }
+    ]
+   },
+   {
+    "tier": 9,
+    "value": 9,
+    "items": [
+     {
+      "item": "ENCHANTED_BROWN_MUSHROOM_BLOCK",
+      "amount": 16
+     }
+    ]
+   },
+   {
+    "tier": 10,
+    "value": 10,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 16
+     }
+    ]
+   },
+   {
+    "tier": 11,
+    "value": 11,
+    "items": [
+     {
+      "item": "ENCHANTED_RED_MUSHROOM_BLOCK",
+      "amount": 24
+     }
+    ]
+   },
+   {
+    "tier": 12,
+    "value": 12,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 13,
+    "value": 13,
+    "items": [
+     {
+      "item": "ENCHANTED_BROWN_MUSHROOM_BLOCK",
+      "amount": 32
+     }
+    ]
+   },
+   {
+    "tier": 14,
+    "value": 14,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 15,
+    "value": 15,
+    "items": [
+     {
+      "item": "ENCHANTED_RED_MUSHROOM_BLOCK",
+      "amount": 48
+     }
+    ]
+   },
+   {
+    "tier": 16,
+    "value": 16,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 17,
+    "value": 17,
+    "items": [
+     {
+      "item": "ENCHANTED_BROWN_MUSHROOM_BLOCK",
+      "amount": 64
+     }
+    ]
+   },
+   {
+    "tier": 18,
+    "value": 18,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 80
+     }
+    ]
+   },
+   {
+    "tier": 19,
+    "value": 19,
+    "items": [
+     {
+      "item": "ENCHANTED_RED_MUSHROOM_BLOCK",
+      "amount": 96
+     }
+    ]
+   },
+   {
+    "tier": 20,
+    "value": 20,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 112
+     }
+    ]
+   },
+   {
+    "tier": 21,
+    "value": 21,
+    "items": [
+     {
+      "item": "ENCHANTED_BROWN_MUSHROOM_BLOCK",
+      "amount": 128
+     }
+    ]
+   },
+   {
+    "tier": 22,
+    "value": 22,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 160
+     }
+    ]
+   },
+   {
+    "tier": 23,
+    "value": 23,
+    "items": [
+     {
+      "item": "ENCHANTED_RED_MUSHROOM_BLOCK",
+      "amount": 160
+     }
+    ]
+   },
+   {
+    "tier": 24,
+    "value": 24,
+    "items": [
+     {
+      "item": "MUTANT_NETHER_WART",
+      "amount": 224
+     }
+    ]
+   },
+   {
+    "tier": 25,
+    "value": 25,
+    "items": [
+     {
+      "item": "ENCHANTED_BROWN_MUSHROOM_BLOCK",
+      "amount": 192
+     }
+    ]
+   }
+  ]
+ },
+ "tierCosts": [
+  {
+   "tier": 1,
+   "copper": 100,
+   "rareCrop": null,
+   "skyblockXp": 1
+  },
+  {
+   "tier": 2,
+   "copper": 150,
+   "rareCrop": null,
+   "skyblockXp": 1
+  },
+  {
+   "tier": 3,
+   "copper": 200,
+   "rareCrop": null,
+   "skyblockXp": 1
+  },
+  {
+   "tier": 4,
+   "copper": 250,
+   "rareCrop": null,
+   "skyblockXp": 1
+  },
+  {
+   "tier": 5,
+   "copper": 300,
+   "rareCrop": null,
+   "skyblockXp": 1
+  },
+  {
+   "tier": 6,
+   "copper": 350,
+   "rareCrop": null,
+   "skyblockXp": 1
+  },
+  {
+   "tier": 7,
+   "copper": 400,
+   "rareCrop": null,
+   "skyblockXp": 1
+  },
+  {
+   "tier": 8,
+   "copper": 500,
+   "rareCrop": {
+    "item": "CROPIE",
+    "amount": 3
+   },
+   "skyblockXp": 2
+  },
+  {
+   "tier": 9,
+   "copper": 600,
+   "rareCrop": {
+    "item": "CROPIE",
+    "amount": 6
+   },
+   "skyblockXp": 2
+  },
+  {
+   "tier": 10,
+   "copper": 700,
+   "rareCrop": {
+    "item": "CROPIE",
+    "amount": 12
+   },
+   "skyblockXp": 2
+  },
+  {
+   "tier": 11,
+   "copper": 800,
+   "rareCrop": {
+    "item": "CROPIE",
+    "amount": 24
+   },
+   "skyblockXp": 2
+  },
+  {
+   "tier": 12,
+   "copper": 900,
+   "rareCrop": {
+    "item": "CROPIE",
+    "amount": 48
+   },
+   "skyblockXp": 2
+  },
+  {
+   "tier": 13,
+   "copper": 1000,
+   "rareCrop": {
+    "item": "CROPIE",
+    "amount": 96
+   },
+   "skyblockXp": 2
+  },
+  {
+   "tier": 14,
+   "copper": 1200,
+   "rareCrop": {
+    "item": "SQUASH",
+    "amount": 3
+   },
+   "skyblockXp": 3
+  },
+  {
+   "tier": 15,
+   "copper": 1400,
+   "rareCrop": {
+    "item": "SQUASH",
+    "amount": 6
+   },
+   "skyblockXp": 3
+  },
+  {
+   "tier": 16,
+   "copper": 1600,
+   "rareCrop": {
+    "item": "SQUASH",
+    "amount": 12
+   },
+   "skyblockXp": 3
+  },
+  {
+   "tier": 17,
+   "copper": 1800,
+   "rareCrop": {
+    "item": "SQUASH",
+    "amount": 24
+   },
+   "skyblockXp": 3
+  },
+  {
+   "tier": 18,
+   "copper": 2000,
+   "rareCrop": {
+    "item": "SQUASH",
+    "amount": 48
+   },
+   "skyblockXp": 3
+  },
+  {
+   "tier": 19,
+   "copper": 2250,
+   "rareCrop": {
+    "item": "SQUASH",
+    "amount": 96
+   },
+   "skyblockXp": 3
+  },
+  {
+   "tier": 20,
+   "copper": 2500,
+   "rareCrop": {
+    "item": "FERMENTO",
+    "amount": 3
+   },
+   "skyblockXp": 4
+  },
+  {
+   "tier": 21,
+   "copper": 2750,
+   "rareCrop": {
+    "item": "FERMENTO",
+    "amount": 6
+   },
+   "skyblockXp": 4
+  },
+  {
+   "tier": 22,
+   "copper": 3000,
+   "rareCrop": {
+    "item": "FERMENTO",
+    "amount": 12
+   },
+   "skyblockXp": 4
+  },
+  {
+   "tier": 23,
+   "copper": 3300,
+   "rareCrop": {
+    "item": "CONDENSED_FERMENTO",
+    "amount": 2
+   },
+   "skyblockXp": 4
+  },
+  {
+   "tier": 24,
+   "copper": 3600,
+   "rareCrop": {
+    "item": "CONDENSED_FERMENTO",
+    "amount": 4
+   },
+   "skyblockXp": 4
+  },
+  {
+   "tier": 25,
+   "copper": 4000,
+   "rareCrop": {
+    "item": "CONDENSED_FERMENTO",
+    "amount": 8
+   },
+   "skyblockXp": 4
+  }
+ ],
+ "assumptions": [
+  "Items and tier costs verified three ways: wiki table, Georik Composter tab (all 125 item cells and 25 Copper/rare cells identical; Georik shows tiers 23-25 rare as Fermento 18/36/72 = 2/4/8 Condensed Fermento x9), user image.",
+  "Upgrade item ids use repo ids: the wiki/Hypixel ids ENCHANTED_HUGE_MUSHROOM_1/2 and MUTANT_NETHER_STALK are ENCHANTED_BROWN/RED_MUSHROOM_BLOCK and MUTANT_NETHER_WART here; ENCHANTED_MELON_BLOCK is the Enchanted Melon used in Fuel Cap, ENCHANTED_MELON (slice, 32 OM) is not used by upgrades.",
+  "GUESS: Fuel items POPPY, DANDELION, PLANT_MATTER, GOBLIN_EGG variants are listed in organicMatter-style fuel map but the wiki fuel table says Composter = No for them while the 2026/Sep 30 history says they were fixed to work in the Composter. Included; drop them if unsure.",
+  "GUESS: HELIX id is the repo id for Helix Fossil (Hypixel HELIX). Condensed Helianthus / Helianthus / Ethereal Vine values are wiki-only (not in Georik).",
+  "OM cap +30000 per tier (790k max) from wiki text and the user idle image (790k); the wiki upgrade-menu template example (Next Tier 60,000) is the stale +20k value.",
+  "Fuel cap +30000 per tier (850k at tier 25) verified against idle image (850k).",
+  "Cost reduction effect is multiplicative on base 4000/2000: tier 25 = 3000 matter, 1500 fuel.",
+  "GUESS: cost reduction does not change the cap-start rule; the cycle needs full per-compost matter and fuel in storage before starting.",
+  "GUESS: tutorial pre-fill 4000 matter / 1700 fuel and 10 s first cycle come from one video; the observed fuel drop 4.7k to 1.7k (3000) does not match 2000 per compost, so treat the tutorial as scripted.",
+  "GUESS: wiki claim of exactly 5 hours unattended at max conflicts with 790k/108k per hour = 7.3 h; ignored.",
+  "SkyBlock XP per upgrade tier: 1 (1-7), 2 (8-13), 3 (14-19), 4 (20-25) per wiki; 61 per upgrade line, 305 total over the five upgrades = repo COMPOSTER_UPGRADES 305.",
+  "GUESS: there is no cap on stored (uncollected) Compost; tab list shows Stored Compost 77.6k."
+ ]
+}

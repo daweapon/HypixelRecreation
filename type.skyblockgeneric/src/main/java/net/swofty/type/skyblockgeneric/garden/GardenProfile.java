@@ -2,6 +2,7 @@ package net.swofty.type.skyblockgeneric.garden;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.swofty.type.skyblockgeneric.garden.composter.ComposterState;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorData;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
@@ -28,10 +29,15 @@ public class GardenProfile {
     private final Map<Integer, Integer> cleanTotals = new TreeMap<>();
     private final Map<Integer, String> plotPresets = new TreeMap<>();
     private VisitorData visitors = new VisitorData();
+    private ComposterState composter = new ComposterState();
     private final Map<GardenCrop, Long> cropCounters = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> milestoneTiers = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> cropUpgradeTiers = new EnumMap<>(GardenCrop.class);
     private final Map<GardenCrop, Integer> speedCaps = new EnumMap<>(GardenCrop.class);
+
+    public ComposterState composter() {
+        return composter;
+    }
 
     public VisitorData visitors() {
         return visitors;
@@ -142,6 +148,7 @@ public class GardenProfile {
         json.put("cleanTotals", presetsLikeJson(cleanTotals));
         json.put("plotPresets", presetsJson());
         json.put("visitors", visitors.toJson());
+        json.put("composter", composter.toJson());
         json.put("cropCounters", cropJson(cropCounters));
         json.put("milestoneTiers", cropJson(milestoneTiers));
         json.put("cropUpgradeTiers", cropJson(cropUpgradeTiers));
@@ -178,6 +185,7 @@ public class GardenProfile {
             }
         }
         profile.visitors = VisitorData.fromJson(json.optJSONObject("visitors"));
+        profile.composter = ComposterState.fromJson(json.optJSONObject("composter"));
         JSONObject presets = json.optJSONObject("plotPresets");
         if (presets != null) {
             for (String key : presets.keySet()) {

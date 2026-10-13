@@ -3,6 +3,8 @@ package net.swofty.type.skyblockgeneric.garden;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.garden.quest.GardenQuests;
+import net.swofty.type.skyblockgeneric.garden.composter.ComposterConfig;
+import net.swofty.type.skyblockgeneric.garden.composter.ComposterUpgrade;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
@@ -115,6 +117,7 @@ public final class GardenService {
             experience.setSourceXP(SkyBlockXPSource.CROP_UPGRADES, GardenProgress.totalUpgradeTiers(profile));
             experience.setSourceXP(SkyBlockXPSource.GARDEN_VISITORS_SERVED, (double) profile.visitors().getUniqueTier() * 3);
             experience.setSourceXP(SkyBlockXPSource.OFFERS_ACCEPTED, (double) profile.visitors().getAcceptedTier() * 3);
+            experience.setSourceXP(SkyBlockXPSource.COMPOSTER_UPGRADES, (double) ComposterConfig.get().skyblockXp(profile.composter().getTiers()));
             experience.setSourceXP(SkyBlockXPSource.GARDEN_UNLOCKED_PLOTS,
                     (double) profile.getUnlockedPlots().size() * GardenConfig.get().skyblockXpPerPlot());
         });
@@ -132,6 +135,9 @@ public final class GardenService {
         }
         for (int plot = 1; plot <= GardenProfile.PLOT_COUNT; plot++) {
             profile.unlockPlot(plot);
+        }
+        for (ComposterUpgrade upgrade : ComposterUpgrade.values()) {
+            profile.composter().setTier(upgrade, ComposterUpgrade.MAX_TIER);
         }
         VisitorCatalogue visitors = VisitorCatalogue.get();
         visitors.visitors().forEach(visitor -> profile.visitors().markServed(visitor.id()));
