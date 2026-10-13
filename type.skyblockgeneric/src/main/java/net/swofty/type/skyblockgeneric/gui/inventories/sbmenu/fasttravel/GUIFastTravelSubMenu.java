@@ -53,7 +53,7 @@ public class GUIFastTravelSubMenu extends StatelessView {
             boolean unlocked = island.isAvailable() && island.isUnlocked(p);
 
             List<Text> lore = new ArrayList<>();
-            lore.add(Text.of("<8>/warp {}", island.getInternalName()));
+            lore.add(Text.of("<8>/warp {}", island.getWarpCommandName()));
             lore.add(Text.literal(" "));
 
             lore.addAll(Text.of("<7><wrap:30>{}</wrap>", island.getDescription().apply(true)).lines());
@@ -87,7 +87,7 @@ public class GUIFastTravelSubMenu extends StatelessView {
                 p.sendMessage("<c>You haven't unlocked this fast travel destination!");
                 return;
             }
-            String blocked = island.entryBlockReason(p);
+            Text blocked = island.entryBlockReason(p);
             if (blocked != null) {
                 p.sendMessage(blocked);
                 return;
@@ -155,7 +155,7 @@ public class GUIFastTravelSubMenu extends StatelessView {
                     p.sendMessage("<c>You haven't unlocked this fast travel destination!");
                     return;
                 }
-                String blocked = island.entryBlockReason(p);
+                Text blocked = island.entryBlockReason(p);
                 if (blocked != null) {
                     p.sendMessage(blocked);
                     return;

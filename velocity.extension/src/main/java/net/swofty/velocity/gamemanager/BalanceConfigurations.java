@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import com.velocitypowered.api.proxy.Player;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.text.Text;
+import net.swofty.velocity.gamemanager.impl.GardenCheck;
 import net.swofty.velocity.gamemanager.impl.IslandCheck;
 import net.swofty.velocity.gamemanager.impl.LowestPlayerCount;
 import net.swofty.velocity.testflow.TestFlowManager;
@@ -22,11 +23,13 @@ public final class BalanceConfigurations {
     // Shared singletons — the strategies are stateless, so there's no reason to
     // hold 25+ separate instances when one per kind suffices.
     private static final BalanceConfiguration ISLAND_CHECK = new IslandCheck();
+    private static final BalanceConfiguration GARDEN_CHECK = new GardenCheck();
     private static final BalanceConfiguration LOWEST_PLAYER_COUNT = new LowestPlayerCount();
     private static final List<BalanceConfiguration> DEFAULT_CHAIN = List.of(LOWEST_PLAYER_COUNT);
 
     public static final Map<ServerType, List<BalanceConfiguration>> CONFIGURATIONS = Map.ofEntries(
             Map.entry(ServerType.SKYBLOCK_ISLAND, List.of(ISLAND_CHECK, LOWEST_PLAYER_COUNT)),
+            Map.entry(ServerType.SKYBLOCK_THE_GARDEN, List.of(GARDEN_CHECK, LOWEST_PLAYER_COUNT)),
             Map.entry(ServerType.SKYBLOCK_HUB, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_DUNGEON_HUB, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_THE_FARMING_ISLANDS, DEFAULT_CHAIN),

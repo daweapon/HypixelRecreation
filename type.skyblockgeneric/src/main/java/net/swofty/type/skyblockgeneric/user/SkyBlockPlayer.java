@@ -1020,7 +1020,7 @@ public class SkyBlockPlayer extends HypixelPlayer {
 
         playSound(Sound.sound(Key.key("block.anvil.fall"), Sound.Source.PLAYER, 1.0f, 2.0f));
 
-        if (HypixelConst.isIslandServer()) return;
+        if (HypixelConst.isPrivateWorldServer()) return;
 
         if (HypixelConst.getTypeLoader().getType() != ServerType.SKYBLOCK_KUUDRA
                 && !isBoosterCookieActive()

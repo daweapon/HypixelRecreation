@@ -71,7 +71,7 @@ public class GUIFastTravel extends StatelessView {
                 boolean isPaper = p.getToggles().get(DatapointToggles.Toggles.ToggleType.PAPER_ICONS);
 
                 List<Text> lore = new ArrayList<>();
-                lore.add(Text.of("<8>/warp {}", island.getInternalName()));
+                lore.add(Text.of("<8>/warp {}", island.getWarpCommandName()));
                 lore.add(Text.literal(" "));
 
                 lore.addAll(Text.of("<7><wrap:30>{}</wrap>", island.getDescription().apply(hasUnlockedIsland)).lines());
@@ -135,7 +135,7 @@ public class GUIFastTravel extends StatelessView {
                     return;
                 }
 
-                String blocked = island.entryBlockReason(p);
+                Text blocked = island.entryBlockReason(p);
                 if (blocked != null) {
                     p.sendMessage(blocked);
                     return;

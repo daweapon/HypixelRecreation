@@ -113,6 +113,7 @@ import net.swofty.type.skyblockgeneric.user.StashReminder;
 import net.swofty.type.skyblockgeneric.user.fairysouls.FairySoul;
 import net.swofty.type.skyblockgeneric.user.island.CoopContributionTracker;
 import net.swofty.type.skyblockgeneric.entity.mob.island.PrivateIslandMobSpawner;
+import net.swofty.type.skyblockgeneric.user.garden.SkyBlockGarden;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import net.swofty.type.skyblockgeneric.user.statistics.TemporaryStatistic;
@@ -372,6 +373,9 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
                 .ambientLight(1)
                 .build());
         SkyBlockIsland.runVacantLoop(MinecraftServer.getSchedulerManager());
+        if (HypixelConst.isGardenServer()) {
+            SkyBlockGarden.runVacantLoop(MinecraftServer.getSchedulerManager());
+        }
         PrivateIslandMobSpawner.start(MinecraftServer.getSchedulerManager());
 
         SkyBlockRegion.getRegions().forEach(region -> {

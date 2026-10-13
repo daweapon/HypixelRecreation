@@ -14,11 +14,25 @@ import java.util.function.Function;
 public final class AreaSidebar {
     private static final List<Function<SkyBlockPlayer, @Nullable Text>> PROVIDERS = new CopyOnWriteArrayList<>();
 
+    private static final List<Function<SkyBlockPlayer, @Nullable List<Text>>> DETAIL_PROVIDERS = new CopyOnWriteArrayList<>();
+
     private AreaSidebar() {
     }
 
     public static void register(Function<SkyBlockPlayer, @Nullable Text> provider) {
         PROVIDERS.add(provider);
+    }
+
+    public static void registerDetail(Function<SkyBlockPlayer, @Nullable List<Text>> provider) {
+        DETAIL_PROVIDERS.add(provider);
+    }
+
+    public static List<Text> detailFor(SkyBlockPlayer player) {
+        for (Function<SkyBlockPlayer, @Nullable List<Text>> provider : DETAIL_PROVIDERS) {
+            List<Text> lines = provider.apply(player);
+            if (lines != null) return lines;
+        }
+        return List.of();
     }
 
     public static @Nullable Text areaFor(SkyBlockPlayer player) {

@@ -5,6 +5,7 @@ import lombok.Getter;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.StringUtility;
 import net.swofty.type.generic.data.datapoints.DatapointStringList;
+import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.commons.text.Text;
@@ -62,7 +63,7 @@ public enum TravelScrollIslands {
 					TravelScrollType.CRIMSON_ISLE_DRAGONTAIL, TravelScrollType.CRIMSON_ISLE_SCARLETON,
 					TravelScrollType.CRIMSON_ISLE_SMOLDERING_TOMB)),
 	THE_GARDEN("garden", "<a>The Garden", TravelScrollType.Textures.ROSE_DRAGON,
-			(unused) -> "Your own plot of land to farm crops and host visitors.", null),
+			(unused) -> "Your own plot of land to farm crops and host visitors.", ServerType.SKYBLOCK_THE_GARDEN),
 	JERRYS_WORKSHOP("jerry", "<b>Jerry's Workshop", TravelScrollType.Textures.JERRY,
 			(unused) -> "Help Jerry's elves get the gifts ready during the Season of Jerry.", ServerType.SKYBLOCK_JERRYS_WORKSHOP),
 	THE_RIFT("rift", "<d>The Rift", TravelScrollType.Textures.RIFT_FERRET,
@@ -86,6 +87,7 @@ public enum TravelScrollIslands {
 			Map.entry("tower", "wizard"), Map.entry("wiz", "wizard"), Map.entry("wizard_tower", "wizard"),
 			Map.entry("dungeons", "dungeon_hub"), Map.entry("dhub", "dungeon_hub"), Map.entry("dh", "dungeon_hub"),
 			Map.entry("farming", "barn"),
+			Map.entry("barn", "garden"),
 			Map.entry("trap", "trapper"),
 			Map.entry("trees", "park"), Map.entry("foraging", "park"),
 			Map.entry("howling_cave", "howl"), Map.entry("wolf_cave", "howl"),
@@ -183,7 +185,14 @@ public enum TravelScrollIslands {
 		return serverType != null;
 	}
 
+	public String getWarpCommandName() {
+		return this == THE_BARN ? "farming" : internalName;
+	}
+
 	public boolean isUnlocked(SkyBlockPlayer player) {
+		if (this == THE_GARDEN) {
+			return Gardens.profile(player).isAccessUnlocked();
+		}
 		if (unlockScroll != null) {
 			return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.USED_SCROLLS, DatapointStringList.class)
 					.getValue().contains(unlockScroll.getInternalName());
@@ -192,12 +201,13 @@ public enum TravelScrollIslands {
 				.getValue().contains(internalName);
 	}
 
-	/** The message shown when the player's skill is too low to travel here, or null if they may. */
-	public @Nullable String entryBlockReason(SkyBlockPlayer player) {
+	/** The message shown when the player may not travel here yet, or null if they may. */
+	public @Nullable Text entryBlockReason(SkyBlockPlayer player) {
+		if (this == THE_GARDEN && !isUnlocked(player)) return Text.key("commands.warp.garden_locked");
 		if (associatedSkill == null || requiredSkillLevel <= 0) return null;
 		if (player.getSkills().getCurrentLevel(associatedSkill) >= requiredSkillLevel) return null;
-		return "<c>You must be at least " + StringUtility.toNormalCase(associatedSkill.name()) + " Level "
-				+ StringUtility.getAsRomanNumeral(requiredSkillLevel) + " to join this island!";
+		return Text.of("<c>You must be at least " + StringUtility.toNormalCase(associatedSkill.name()) + " Level "
+				+ StringUtility.getAsRomanNumeral(requiredSkillLevel) + " to join this island!");
 	}
 
 	public static void unlockAll(SkyBlockPlayer player) {

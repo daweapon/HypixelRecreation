@@ -15,6 +15,7 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.SkyBlockScoreboard;
 import net.swofty.type.skyblockgeneric.event.actions.player.ActionPlayerChangeHypixelMenuDisplay;
 import net.swofty.type.skyblockgeneric.user.island.IslandHostLookup;
+import net.swofty.type.skyblockgeneric.user.garden.SkyBlockGarden;
 import net.swofty.type.skyblockgeneric.user.island.SkyBlockIsland;
 import net.swofty.type.skyblockgeneric.user.island.VisitManager;
 import org.bson.Document;
@@ -143,6 +144,7 @@ public final class ProfileSwitcher {
     private static Result switchInPlace(SkyBlockPlayer player, SkyBlockPlayerProfiles profiles, UUID targetProfileId) {
         PlayerDataDomain<SkyBlockDataHandler> domain = PlayerDataService.domain(SkyBlockDomain.KEY);
         boolean islandServer = HypixelConst.isIslandServer();
+        boolean gardenServer = HypixelConst.isGardenServer();
         AtomicReference<Result> result = new AtomicReference<>(Result.FAILED);
 
         PlayerDataService.runLifecycleTransition(player.getUuid(), () -> {
@@ -167,6 +169,10 @@ public final class ProfileSwitcher {
                 moveTo(player, HypixelConst.getEmptyInstance());
                 if (previousIsland != null) previousIsland.runVacantCheck();
             }
+            if (gardenServer) {
+                SkyBlockGarden.getPresence().departed(player);
+                moveTo(player, HypixelConst.getEmptyInstance());
+            }
 
             domain.unload(player.getUuid());
 
@@ -178,6 +184,12 @@ public final class ProfileSwitcher {
             if (islandServer) {
                 SharedInstance instance = player.getSkyBlockIsland().getSharedInstance().join();
                 moveTo(player, instance);
+            }
+            if (gardenServer) {
+                SharedInstance instance = SkyBlockGarden.of(player).getSharedInstance().join();
+                player.setReadyForEvents();
+                moveTo(player, instance);
+                SkyBlockGarden.getPresence().arrived(player, instance);
             }
 
             domain.applyToPlayer(player);

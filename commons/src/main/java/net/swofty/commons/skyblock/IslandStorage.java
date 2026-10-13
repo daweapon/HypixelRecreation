@@ -18,6 +18,7 @@ public final class IslandStorage {
 
     public static boolean delete(String islandId) {
         try (Jedis jedis = SwoftyData.jedisPool().getResource()) {
+            jedis.del(GardenStorage.key(islandId));
             return jedis.del(key(islandId)) > 0;
         }
     }

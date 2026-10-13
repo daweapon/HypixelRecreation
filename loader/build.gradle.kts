@@ -25,6 +25,7 @@ repositories {
 
 dependencies {
     implementation(project(":type.island"))
+    implementation(project(":type.thegarden"))
     implementation(project(":type.hub"))
     implementation(project(":type.thefarmingislands"))
     implementation(project(":type.spidersden"))

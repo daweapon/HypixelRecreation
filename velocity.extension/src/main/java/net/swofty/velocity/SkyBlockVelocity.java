@@ -279,7 +279,7 @@ public class SkyBlockVelocity {
             .forEach(RedisHandlerRegistry::register);
         RedisProtocol<?, ?>[] fromProxyProtocols = {
             new TeleportProtocol(), new PlayerSwitchedProtocol(),
-            new DoesServerHaveIslandProtocol(),
+            new DoesServerHaveIslandProtocol(), new DoesServerHaveGardenProtocol(),
             new RunEventProtocol(), new PingServerProtocol(),
             new GivePlayersOriginTypeProtocol(), new BroadcastStaffChatProtocol(),
             new PlayerLocationProtocol(), new PlayerRankProtocol()

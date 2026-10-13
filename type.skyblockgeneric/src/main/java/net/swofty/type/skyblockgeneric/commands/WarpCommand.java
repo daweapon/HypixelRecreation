@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.commands;
 
+import net.swofty.commons.text.Text;
 import net.minestom.server.command.builder.arguments.ArgumentString;
 import net.minestom.server.command.builder.arguments.ArgumentType;
 import net.swofty.type.generic.command.CommandParameters;
@@ -43,7 +44,7 @@ public class WarpCommand extends HypixelCommand {
                     player.sendMessage(TravelScrollIslands.NOT_AVAILABLE_MESSAGE);
                     return;
                 }
-                String blocked = island.entryBlockReason(player);
+                Text blocked = island.entryBlockReason(player);
                 if (blocked != null) {
                     player.sendMessage(blocked);
                     return;
@@ -69,7 +70,7 @@ public class WarpCommand extends HypixelCommand {
                     return;
                 }
                 if (unlockedWarps.contains(warp)) {
-                    String blocked = islandFromScroll.entryBlockReason(player);
+                    Text blocked = islandFromScroll.entryBlockReason(player);
                     if (blocked != null) {
                         player.sendMessage(blocked);
                         return;

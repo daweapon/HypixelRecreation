@@ -59,6 +59,11 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
         // Skip if player has build bypass
         if (player.isBypassBuild()) return;
 
+        if (HypixelConst.isGardenServer()) {
+            event.setCancelled(true);
+            return;
+        }
+
         event.setCancelled(true);
         SkyBlockRegion region = SkyBlockRegion.getRegionOfPosition(event.getBlockPosition());
 

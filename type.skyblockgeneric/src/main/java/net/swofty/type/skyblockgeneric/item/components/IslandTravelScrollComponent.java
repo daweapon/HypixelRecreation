@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric.item.components;
 
+import net.swofty.commons.text.Text;
 import lombok.Getter;
 import net.swofty.type.generic.data.datapoints.DatapointStringList;
 import net.swofty.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -41,7 +42,7 @@ public class IslandTravelScrollComponent extends SkyBlockItemComponent {
                 && !item.getComponent(ItemRequirementsComponent.class).ensureCanUse(player)) {
             return;
         }
-        String blocked = island.entryBlockReason(player);
+        Text blocked = island.entryBlockReason(player);
         if (blocked != null) {
             player.sendMessage(blocked);
             return;

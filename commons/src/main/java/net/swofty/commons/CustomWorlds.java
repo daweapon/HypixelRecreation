@@ -5,6 +5,7 @@ import java.nio.file.Path;
 // Enumerates the pre-built Polar world files shipped with the server and their on-disk paths.
 public enum CustomWorlds {
 	SKYBLOCK_ISLAND_TEMPLATE("hypixel_skyblock_island_template"),
+	SKYBLOCK_GARDEN_TEMPLATE("hypixel_skyblock_garden_template"),
 	SKYBLOCK_HUB("hypixel_skyblock_hub"),
 	SKYBLOCK_SPIDERS_DEN("hypixel_skyblock_spiders_den"),
 	SKYBLOCK_THE_END("hypixel_skyblock_the_end"),

@@ -112,6 +112,7 @@ public class SkyBlockScoreboard {
         } catch (NullPointerException ignored) {
             location.line(" {}", Text.key("scoreboard.skyblock.region_unknown"));
         }
+        AreaSidebar.detailFor(player).forEach(detail -> location.line(detail));
         double cold = ColdService.cold(player);
         if (cold < 0) {
             location.line(Text.of("<b>Cold: {}❄", (int) Math.floor(cold)));

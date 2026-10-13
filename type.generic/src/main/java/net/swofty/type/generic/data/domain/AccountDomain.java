@@ -63,7 +63,7 @@ public final class AccountDomain implements PlayerDataDomain<HypixelDataHandler>
         }
 
         HypixelNPC.updateForPlayer(player);
-        if (!HypixelConst.isIslandServer()) {
+        if (!HypixelConst.isPrivateWorldServer()) {
             PlayerHolograms.spawnAll(player);
         }
     }
