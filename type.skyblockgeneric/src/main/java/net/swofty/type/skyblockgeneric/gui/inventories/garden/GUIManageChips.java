@@ -64,7 +64,7 @@ public class GUIManageChips extends StatelessView {
             lore.add(Text.of("<7>Level <a>0<7>/<a>{}", GardenChip.MAX_LEVEL[0]));
             lore.add(Text.empty());
             lore.add(Text.of("<6>Ability: {}", chip.getDisplayName()));
-            lore.addAll(Text.of("<7><wrap:30>{}</wrap>", chip.getDescription().replace("<green>", "<a>").replace("<gray>", "<7>")).lines());
+            lore.addAll(Text.of("<7><wrap:30>" + chip.getDescription().replace("<green>", "<a>").replace("<gray>", "<7>") + "</wrap>").lines());
             lore.add(Text.empty());
             lore.add(Text.of("<c>LOCKED"));
             return ItemStacks.item(Material.GRAY_STAINED_GLASS, Text.of("<7>" + chip.getDisplayName() + " Chip"), lore);

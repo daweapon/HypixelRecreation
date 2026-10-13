@@ -93,8 +93,8 @@ public final class PestDisco {
             return;
         }
         player.sendMessage(Text.of("<7>Inserted vinyls: {}<7>. <8>Right-click with a Pest Vinyl to insert, sneak-click to pick up.",
-                disco.getVinyls().isEmpty() ? "<c>None" : "<a>" + String.join("<7>, <a>", disco.getVinyls().stream()
-                        .map(id -> PestCatalogue.get().pest(id).name()).toList())));
+                Text.parse(disco.getVinyls().isEmpty() ? "<c>None" : "<a>" + String.join("<7>, <a>", disco.getVinyls().stream()
+                        .map(id -> PestCatalogue.get().pest(id).name()).toList()))));
     }
 
     private static void pickUp(SkyBlockPlayer player, GardenProfile profile, PestData.Disco disco) {

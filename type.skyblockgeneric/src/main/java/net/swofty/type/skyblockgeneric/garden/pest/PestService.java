@@ -195,6 +195,6 @@ public final class PestService {
         if (hit.isEmpty()) return;
         Gardens.save(player, profile);
         player.sendMessage(Text.of("<6><l>GROSS!</l> <7>While you were offline, <2>Pests <7>spawned in <a>Plots {}<7>!",
-                String.join("<7>, <a>", hit.stream().map(String::valueOf).toList())));
+                Text.parse(String.join("<7>, <a>", hit.stream().map(String::valueOf).toList()))));
     }
 }

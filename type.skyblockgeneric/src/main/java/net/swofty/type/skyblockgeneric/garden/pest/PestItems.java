@@ -130,7 +130,7 @@ public final class PestItems {
         int next = (MATERIALS.indexOf(data.getSelectedSpray()) + 1) % MATERIALS.size();
         data.setSelectedSpray(MATERIALS.get(next));
         player.sendMessage(Text.of("<7>Selected Material: <a>{} <7>(attracts <6>{}<7>)",
-                materialName(MATERIALS.get(next)), String.join("<7>, <6>", attracts(MATERIALS.get(next)))));
+                materialName(MATERIALS.get(next)), Text.parse(String.join("<7>, <6>", attracts(MATERIALS.get(next))))));
     }
 
     private static void spray(SkyBlockPlayer player, SkyBlockItem item) {
@@ -160,7 +160,7 @@ public final class PestItems {
         data.getSprays().put(plot, new PestData.Spray(data.getSelectedSpray(), now + nozzle.durationMillis(), nozzle.name()));
         Gardens.save(player, profile);
         player.sendMessage(Text.of("<a>Sprayed <a>Plot <7>- <b>{} <a>with <a>{} <7>({} Nozzle<7>)<a>! <7>Attracts <6>{}<7>.", plot,
-                materialName(data.getSelectedSpray()), nozzle.colored(), String.join("<7>, <6>", attracts(data.getSelectedSpray()))));
+                materialName(data.getSelectedSpray()), Text.parse(nozzle.colored()), Text.parse(String.join("<7>, <6>", attracts(data.getSelectedSpray())))));
     }
 
     private static void wash(SkyBlockPlayer player, SkyBlockItem item) {

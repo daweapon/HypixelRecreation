@@ -33,18 +33,18 @@ public class GardenPestsModule extends TablistModule {
             if (data.aliveCount() > 0) {
                 TreeSet<Integer> plots = new TreeSet<>();
                 data.getAlive().forEach(alive -> plots.add(alive.getPlot()));
-                entries.add(new TablistEntry(Text.of(" <7>Plots: <a>{}", String.join("<7>, <a>", plots.stream().map(String::valueOf).toList())), TablistSkinRegistry.GRAY));
+                entries.add(new TablistEntry(Text.of(" <7>Plots: <a>{}", Text.parse(String.join("<7>, <a>", plots.stream().map(String::valueOf).toList()))), TablistSkinRegistry.GRAY));
             }
-            entries.add(new TablistEntry(Text.of(" <7>Spray: <a>{}", spray(data, now)), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>Spray: <a>{}", Text.parse(spray(data, now))), TablistSkinRegistry.GRAY));
             entries.add(new TablistEntry(Text.of(" <7>Repellent: <a>{}", data.getRepellentUntil() > now ? minutes(data.getRepellentUntil() - now) : "None"), TablistSkinRegistry.GRAY));
-            entries.add(new TablistEntry(Text.of(" <7>Bonus: {}", data.getBoostUntil() > now ? "<a>+" + data.getBoostFortune() + "☘ (" + minutes(data.getBoostUntil() - now) + ")" : "<c>INACTIVE"), TablistSkinRegistry.GRAY));
-            entries.add(new TablistEntry(Text.of(" <7>Cooldown: {}", data.getCooldownUntil() > now ? "<c>" + clock(data.getCooldownUntil() - now) : "<a>READY"), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>Bonus: {}", Text.parse(data.getBoostUntil() > now ? "<a>+" + data.getBoostFortune() + "☘ (" + minutes(data.getBoostUntil() - now) + ")" : "<c>INACTIVE")), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>Cooldown: {}", Text.parse(data.getCooldownUntil() > now ? "<c>" + clock(data.getCooldownUntil() - now) : "<a>READY")), TablistSkinRegistry.GRAY));
             int loss = PestService.fortuneLoss(player, profile);
             if (loss > 0) entries.add(new TablistEntry(Text.of(" <c>Fortune reduced by {}%", loss), TablistSkinRegistry.GRAY));
             entries.add(new TablistEntry(Text.of("<a><l>Pest Traps:"), TablistSkinRegistry.GRAY));
             entries.add(new TablistEntry(Text.of(" <7>Placed: <a>{}/{}", data.getTraps().size(), PestTraps.MAX_TRAPS), TablistSkinRegistry.GRAY));
-            entries.add(new TablistEntry(Text.of(" <7>Full Traps: <a>{}", trapList(data, true)), TablistSkinRegistry.GRAY));
-            entries.add(new TablistEntry(Text.of(" <7>No Bait: <a>{}", trapList(data, false)), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>Full Traps: <a>{}", Text.parse(trapList(data, true))), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>No Bait: <a>{}", Text.parse(trapList(data, false))), TablistSkinRegistry.GRAY));
         }
         GreenhouseData greenhouse = profile.greenhouse();
         if (!greenhouse.getBeds().isEmpty()) {

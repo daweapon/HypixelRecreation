@@ -49,7 +49,7 @@ public class GardenComposterModule extends TablistModule {
         entries.add(new TablistEntry(Text.of(" <7>Stored Compost: <a>{}", StringUtility.commaify(state.getStoredCompost())), TablistSkinRegistry.GRAY));
         entries.add(getGrayEntry());
         entries.add(new TablistEntry(Text.of("<a><l>Jacob's Contest:"), TablistSkinRegistry.GRAY));
-        entries.add(new TablistEntry(Text.of(" {}", contestLine()), TablistSkinRegistry.GRAY));
+        entries.add(new TablistEntry(Text.of(" {}", Text.parse(contestLine())), TablistSkinRegistry.GRAY));
         entries.add(getGrayEntry());
         entries.add(new TablistEntry(Text.of("<a><l>Election:"), TablistSkinRegistry.GRAY));
         SkyBlockMayor mayor = ElectionManager.getCurrentMayor();
