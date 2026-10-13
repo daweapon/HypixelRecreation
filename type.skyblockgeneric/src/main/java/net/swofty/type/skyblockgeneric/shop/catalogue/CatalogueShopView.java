@@ -63,7 +63,13 @@ public class CatalogueShopView extends ShopView {
         lore.add(Text.empty());
         if (entry.requirement() != null) lore.add(Text.of(entry.requirement().lockLine()));
         lore.addAll(Text.of(entry.reason()).lines());
-        return ItemStacks.item(entry.material(), entry.amount(), Text.of(entry.name()), lore);
+        ItemStack.Builder builder = ItemStacks.item(entry.material(), entry.amount(), Text.of(entry.name()), lore);
+        net.swofty.commons.skyblock.item.ItemType type = entry.itemType();
+        if (type != null) {
+            String model = new SkyBlockItem(type).getItemStack().get(net.minestom.server.component.DataComponents.ITEM_MODEL);
+            if (model != null) builder.set(net.minestom.server.component.DataComponents.ITEM_MODEL, model);
+        }
+        return builder;
     }
 
     @Override

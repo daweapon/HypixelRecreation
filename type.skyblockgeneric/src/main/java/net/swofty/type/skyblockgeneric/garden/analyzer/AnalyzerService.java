@@ -66,7 +66,7 @@ public final class AnalyzerService {
         player.sendMessage(Text.of("<d><m>                              "));
         player.sendMessage(Text.of("{} <6><l>ANALYSIS COMPLETE", "<a>" + mutation.name().toUpperCase()));
         player.sendMessage(Text.of("<7>REWARDS"));
-        player.sendMessage(Text.of(" <8>+<6>{} Copper{}", StringUtility.commaify(copper), first ? " <e>(First Time Bonus)" : ""));
+        player.sendMessage(Text.of(" <8>+<c>{} Copper{}", StringUtility.commaify(copper), first ? " <e>(First Time Bonus)" : ""));
         player.sendMessage(Text.of("<d><m>                              "));
         return true;
     }
@@ -109,7 +109,7 @@ public final class AnalyzerService {
         GardenProfile profile = Gardens.profile(player);
         profile.addCopper(copper);
         Gardens.save(player, profile);
-        player.sendMessage(Text.of("<a>Mass analysis complete! You received <6>{} Copper<a>.", StringUtility.commaify(copper)));
+        player.sendMessage(Text.of("<a>Mass analysis complete! You received <c>{} Copper<a>.", StringUtility.commaify(copper)));
         return true;
     }
 

@@ -13,7 +13,7 @@ public record CopperShopPrice(int amount) implements ShopPrice {
 
     @Override
     public List<Text> getGUIDisplay() {
-        return List.of(Text.of("<6>{} Copper", StringUtility.commaify(amount)));
+        return List.of(Text.of("<c>{} Copper", StringUtility.commaify(amount)));
     }
 
     @Override

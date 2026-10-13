@@ -70,7 +70,7 @@ public class GUIComposterUpgrades extends StatelessView {
                 lore.add(Text.of(" <a>{} <8>x<a>{}", type == null ? cost.item() : new SkyBlockItem(type).getDisplayName(), StringUtility.commaify(cost.amount())));
             }
             affordable &= Gardens.profile(player).getCopper() >= next.copper();
-            lore.add(Text.of(" <6>{} Copper", StringUtility.commaify(next.copper())));
+            lore.add(Text.of(" <c>{} Copper", StringUtility.commaify(next.copper())));
             lore.add(Text.empty());
             lore.add(Text.of("<b>+{} SkyBlock XP", next.skyblockXp()));
             lore.add(Text.empty());

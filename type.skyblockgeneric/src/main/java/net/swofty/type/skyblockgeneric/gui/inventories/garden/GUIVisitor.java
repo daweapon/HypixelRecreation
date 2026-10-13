@@ -78,7 +78,7 @@ public class GUIVisitor extends StatelessView {
         lore.add(Text.of("<7>Rewards:"));
         lore.add(Text.of(" <8>+<3>{} Farming XP", StringUtility.shortenNumber(offer.farmingXp())));
         lore.add(Text.of(" <8>+<a>{} Garden Experience", offer.gardenXp()));
-        lore.add(Text.of(" <8>+<6>{} Copper", offer.copper()));
+        lore.add(Text.of(" <8>+<c>{} Copper", offer.copper()));
         lore.add(Text.of(" <8>+<b>{} Bits", offer.bits()));
         lore.add(Text.empty());
         if (!VisitorService.hasAnythingToGive(player, offer)) {

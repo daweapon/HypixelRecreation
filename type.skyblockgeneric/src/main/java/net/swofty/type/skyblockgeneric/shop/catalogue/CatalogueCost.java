@@ -87,7 +87,7 @@ public record CatalogueCost(double coins, int gems, int bits, int copper, int pe
         if (coins > 0) lines.add(Text.of("<6>{} Coin{}", StringUtility.commaify(coins), coins != 1 ? "s" : ""));
         if (gems > 0) lines.add(Text.of("<a>{} Gems", StringUtility.commaify(gems)));
         if (bits > 0) lines.add(Text.of("<b>{} Bits", StringUtility.commaify(bits)));
-        if (copper > 0) lines.add(Text.of("<6>{} Copper", StringUtility.commaify(copper)));
+        if (copper > 0) lines.add(Text.of("<c>{} Copper", StringUtility.commaify(copper)));
         if (pests > 0) lines.add(Text.of("<2>{} Pests", StringUtility.commaify(pests)));
         if (essence > 0) lines.add(Text.of("<d>{} {} Essence", StringUtility.commaify(essence), StringUtility.toNormalCase(essenceType)));
         items.forEach((id, amount) -> lines.add(Text.of("<a>{} <8>x{}", StringUtility.toNormalCase(id), amount)));

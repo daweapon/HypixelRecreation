@@ -79,7 +79,7 @@ public class GUIGreenhouseUpgrades extends StatelessView {
             lore.add(Text.of("<a>Unlocked!"));
         } else {
             lore.add(Text.of("<7>Cost"));
-            if (cost.copper() > 0) lore.add(Text.of("<6>{} Copper", StringUtility.commaify(cost.copper())));
+            if (cost.copper() > 0) lore.add(Text.of("<c>{} Copper", StringUtility.commaify(cost.copper())));
             if (cost.bundles() > 0) lore.add(Text.of("<a>Compost Bundle <8>x{}", cost.bundles()));
             if (cost.vines() > 0) lore.add(Text.of("<5>Ethereal Vine <8>x{}", cost.vines()));
             lore.add(Text.empty());

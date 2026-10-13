@@ -57,7 +57,7 @@ public class GUICropAnalyzer extends StatelessView {
         });
         layout.slot(47, (_, _) -> ItemStacks.item(Material.REDSTONE_TORCH, Text.of("<a>How this works"), List.of(
                 Text.of("<7>Hold a Mutation in your hand, then"),
-                Text.of("<7>analyze it for <6>Copper<7>."),
+                Text.of("<7>analyze it for <c>Copper<7>."),
                 Text.empty(),
                 Text.of("<7>The first time you analyze a mutation"),
                 Text.of("<7>you complete a DNA Sequencing puzzle"),
@@ -84,7 +84,7 @@ public class GUICropAnalyzer extends StatelessView {
             return ItemStacks.item(Material.BARRIER, Text.of("<c>No Mutation"), List.of(Text.of("<7>Hold a Mutation in your hand.")));
         }
         return ItemStacks.item(Material.PLAYER_HEAD, Text.of("<a>" + mutation.name()), List.of(
-                Text.of("<7>Rewards <6>{} Copper", StringUtility.commaify(AnalyzerService.copperFor(player, mutation, !AnalyzerService.analyzed(player, mutation)))),
+                Text.of("<7>Rewards <c>{} Copper", StringUtility.commaify(AnalyzerService.copperFor(player, mutation, !AnalyzerService.analyzed(player, mutation)))),
                 Text.of(AnalyzerService.analyzed(player, mutation) ? "<a>Already analyzed" : "<e>Not analyzed yet")));
     }
 
@@ -122,11 +122,11 @@ public class GUICropAnalyzer extends StatelessView {
         } else {
             lore.add(Text.of("<7>You have:"));
             for (AnalyzerService.MassEntry entry : entries) {
-                lore.add(Text.of("<8>{}x <a>{} <7>worth <6>{} Copper", entry.count(), entry.mutation().name(),
+                lore.add(Text.of("<8>{}x <a>{} <7>worth <c>{} Copper", entry.count(), entry.mutation().name(),
                         StringUtility.commaify(AnalyzerService.copperFor(player, entry.mutation(), false) * entry.count())));
             }
             lore.add(Text.empty());
-            lore.add(Text.of("<7>Totaling <6>{} Copper", StringUtility.commaify(AnalyzerService.massCopper(player, entries))));
+            lore.add(Text.of("<7>Totaling <c>{} Copper", StringUtility.commaify(AnalyzerService.massCopper(player, entries))));
             lore.add(Text.of("<7>Cost <6>{} Coins", StringUtility.commaify(AnalyzerService.massCost(entries))));
             lore.add(Text.empty());
             lore.add(Text.of("<e>Click to analyze!"));
