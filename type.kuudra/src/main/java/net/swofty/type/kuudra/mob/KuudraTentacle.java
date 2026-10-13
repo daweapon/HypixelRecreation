@@ -25,9 +25,9 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public final class KuudraTentacle extends KuudraMob {
     public static final String ID = "KUUDRA_TENTACLE";
-    private static final int[] SIZES = {20, 18, 16, 14, 12, 11, 11, 10, 9, 7, 6, 5, 5, 4, 3, 3};
-    private static final double[] HEIGHTS = {0, 6.5, 12.3, 17.4, 21.8, 25.6, 29.0, 32.5, 35.6, 38.5, 40.7, 42.7, 44.2, 45.8, 47.1, 48.0};
-    private static final double TIP_LEAN = 9;
+    private static final int[] SIZES = {16, 15, 13, 11, 10, 9, 9, 8, 7, 6, 5, 4, 4, 3, 2, 2};
+    private static final double[] HEIGHTS = {0.0, 5.3, 10.1, 14.3, 17.9, 21.0, 23.8, 26.6, 29.2, 31.6, 33.4, 35.0, 36.2, 37.6, 38.6, 39.4};
+    private static final double TIP_LEAN = 7.4;
 
     private final List<Entity> segments = new ArrayList<>();
     private int slamCountdown;
