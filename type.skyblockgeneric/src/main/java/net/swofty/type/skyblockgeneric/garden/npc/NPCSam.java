@@ -73,6 +73,11 @@ public class NPCSam extends HypixelNPC {
             public boolean looking(HypixelPlayer player) {
                 return true;
             }
+
+            @Override
+            public String chatName(HypixelPlayer player) {
+                return "<b>Sam";
+            }
         });
     }
 

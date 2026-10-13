@@ -66,7 +66,7 @@ public class NPCStranger extends HypixelNPC {
 
             @Override
             public String chatName(HypixelPlayer player) {
-                return introduced.contains(player.getUuid()) ? "<e>Sam" : "<e>Stranger";
+                return introduced.contains(player.getUuid()) ? "<b>Sam" : "<b>Stranger";
             }
         });
     }
@@ -97,7 +97,12 @@ public class NPCStranger extends HypixelNPC {
         player.sendMessage("<e>Help her out?");
         NPCOption.sendOption(player, "garden_stranger", false, List.of(
                 new NPCOption.Option("yes", NamedTextColor.GREEN, true, "YES", _ -> accept(player)),
-                new NPCOption.Option("no", NamedTextColor.RED, true, "NO", _ -> introduced.remove(player.getUuid()))));
+                new NPCOption.Option("no", NamedTextColor.RED, true, "NO", _ -> declined(player))));
+    }
+
+    private void declined(SkyBlockPlayer player) {
+        sendNPCMessage(player, "Oh... ok then..");
+        introduced.remove(player.getUuid());
     }
 
     private void accept(SkyBlockPlayer player) {

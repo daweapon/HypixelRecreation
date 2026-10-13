@@ -7,7 +7,7 @@ import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.garden.npc.GardenGround;
-import net.swofty.type.skyblockgeneric.garden.npc.GardenNpcSkin;
+import net.swofty.type.skyblockgeneric.garden.npc.GardenNpcSkins;
 import net.swofty.type.skyblockgeneric.gui.inventories.garden.GUIVisitor;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.garden.SkyBlockGarden;
@@ -24,12 +24,12 @@ public class VisitorNpc extends HypixelNPC {
 
             @Override
             public String signature(HypixelPlayer player) {
-                return GardenNpcSkin.SIGNATURE;
+                return GardenNpcSkins.of(visitor.id()).signature();
             }
 
             @Override
             public String texture(HypixelPlayer player) {
-                return GardenNpcSkin.TEXTURE;
+                return GardenNpcSkins.of(visitor.id()).texture();
             }
 
             @Override
