@@ -12,8 +12,12 @@ sections:
     lines:
       - "Spend Kernels at the Grand Bakery during the Grand Feast: Freshly Baked accessories and Finn's Focaccia."
       - "Freshly Baked accessories now double their Overbloom during Feast events."
-      - "Blooming Business gives Fine Flour, 10% more Copper, faster and rarer visitors."
+      - "Blooming Business gives 7 to 10 Fine Flour (more from Legendary and Mythic visitors), 10% more Copper, faster and rarer visitors."
   - heading: "Pests"
     colour: "<2>"
     lines:
       - "The pest spawn cooldown now has the wiki floor of 2m10s (1m10s with Pest Eradicator) and a 20 minute ceiling."
+  - heading: "Kuudra"
+    colour: "<c>"
+    lines:
+      - "Energized Chunks light up during the fight. Hit one to knock it away from you: it explodes when its 20 second fuse runs out, falls off the platform, or hurts Kuudra if you send it into him. The Bomberman perk makes it hurt him more."

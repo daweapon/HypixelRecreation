@@ -104,7 +104,12 @@ public class ActionKuudraFightInput implements HypixelEventClass {
     public void onArrow(ProjectileCollideWithEntityEvent event) {
         if (!(event.getEntity() instanceof ArrowEntityImpl arrow) || !(arrow.getShooter() instanceof SkyBlockPlayer player)) return;
         KuudraFight fight = fightOf(player);
-        if (fight == null || !fight.isKuudra(event.getTarget())) return;
+        if (fight == null) return;
+        if (fight.arrowHitChunk(player, event.getTarget())) {
+            arrow.remove();
+            return;
+        }
+        if (!fight.isKuudra(event.getTarget())) return;
         fight.arrowHitKuudra(player, ArrowDamage.roll(player, arrow, ItemStatistics.empty()).getKey());
         ArrowDamage.onLanded(player, arrow);
         arrow.remove();

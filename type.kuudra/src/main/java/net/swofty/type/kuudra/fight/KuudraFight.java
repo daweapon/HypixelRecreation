@@ -32,6 +32,7 @@ import net.swofty.type.skyblockgeneric.entity.ArmorStandModels;
 import net.swofty.type.kuudra.fight.world.BallistaSite;
 import net.swofty.type.kuudra.fight.world.Displays;
 import net.swofty.type.kuudra.fight.world.ElleLavaRod;
+import net.swofty.type.kuudra.fight.world.EnergizedChunk;
 import net.swofty.type.kuudra.fight.world.KuudraBoss;
 import net.swofty.type.kuudra.fight.world.KuudraCannon;
 import net.swofty.type.kuudra.fight.world.KuudraItems;
@@ -126,6 +127,10 @@ public final class KuudraFight {
     private final Map<UUID, Carried> carrying = new ConcurrentHashMap<>();
     private final Set<String> filledPiles = ConcurrentHashMap.newKeySet();
     private final Set<KuudraMob> mobs = ConcurrentHashMap.newKeySet();
+    private static final int CHUNK_EVERY_WAVES = 4;
+    private static final int CHUNKS_PER_EVENT = 4;
+    private static final double CHUNK_KUUDRA_PERCENT = 1.0;
+    private final List<EnergizedChunk> chunks = new java.util.concurrent.CopyOnWriteArrayList<>();
     private final List<Long> tentacleRespawns = new CopyOnWriteArrayList<>();
     private final List<KuudraCannon> cannons = new ArrayList<>();
     private final List<Shot> shots = new CopyOnWriteArrayList<>();
@@ -279,6 +284,8 @@ public final class KuudraFight {
             new ArrayList<>(carrying.keySet()).forEach(uuid -> dropCarried(uuid, false));
             new ArrayList<>(mobs).forEach(KuudraMob::remove);
             mobs.clear();
+            chunks.forEach(EnergizedChunk::remove);
+            chunks.clear();
             shots.forEach(shot -> shot.projectile().remove());
             shots.clear();
             if (slams != null) slams.clear();
@@ -379,6 +386,7 @@ public final class KuudraFight {
         tickCarries();
         tickBuild();
         tickShots();
+        tickChunks();
         tickLeaps();
         if (tick % 20 == 0) rescueFallenMobs();
         if (ballista != null) ballista.tick();
@@ -957,8 +965,69 @@ public final class KuudraFight {
                     return;
                 }
             }
+            for (EnergizedChunk chunk : chunks) {
+                if (chunk.owns(target)) {
+                    chunk.hit(player);
+                    return;
+                }
+            }
             if (boss != null && boss.is(target)) hitKuudra(player);
         }
+    }
+
+    public boolean arrowHitChunk(SkyBlockPlayer player, Entity target) {
+        synchronized (run) {
+            for (EnergizedChunk chunk : chunks) {
+                if (!chunk.owns(target)) continue;
+                chunk.hit(player);
+                return true;
+            }
+            return false;
+        }
+    }
+
+    private void spawnChunks() {
+        dialogue.chat("energized_chunks", ThreadLocalRandom.current()).forEach(run::broadcast);
+        for (int i = 0; i < CHUNKS_PER_EVENT; i++) {
+            chunks.add(new EnergizedChunk(instance, randomPlatformPoint(10)));
+        }
+    }
+
+    private void tickChunks() {
+        for (EnergizedChunk chunk : chunks) {
+            chunk.tick();
+            Pos at = chunk.position();
+            if (hitsKuudra(at) || hitsKuudra(at.add(0, 2, 0))) {
+                chunkHitsKuudra(chunk);
+            } else if (!onMainPlatform(at)) {
+                ring(at, 1.5, Particle.LAVA);
+                playAt(at, "block.fire.extinguish", 1f);
+            } else if (chunk.expired()) {
+                chunkExplodes(chunk);
+            } else {
+                continue;
+            }
+            chunk.remove();
+            chunks.remove(chunk);
+        }
+    }
+
+    private void chunkHitsKuudra(EnergizedChunk chunk) {
+        ring(chunk.position(), 3, Particle.EXPLOSION_EMITTER);
+        playAt(chunk.position(), "entity.generic.explode", 0.8f);
+        if (!bossState.canBeShot()) return;
+        double bomberman = chunk.lastHitter() == null ? 0 : perks.fraction(chunk.lastHitter().getUuid(), "BOMBERMAN");
+        damageKuudraPoints(bossState.maxHealth() * CHUNK_KUUDRA_PERCENT / 100 * (1 + bomberman));
+    }
+
+    private void chunkExplodes(EnergizedChunk chunk) {
+        KuudraMobSpec landmine = config.mob("KUUDRA_LANDMINE");
+        KuudraMob source = mobs.stream().findFirst().orElse(null);
+        if (landmine == null || source == null || landmine.stats(tier) == null) {
+            ring(chunk.position(), spec.mobs().explosionRadius(), Particle.EXPLOSION);
+            return;
+        }
+        explode(chunk.position(), spec.mobs().explosionRadius() * 1.5, landmine.stats(tier).damage() * 2, source);
     }
 
     private void hitKuudra(SkyBlockPlayer player) {
@@ -1170,6 +1239,7 @@ public final class KuudraFight {
     public void spawnWave(int number) {
         synchronized (run) {
             if (stopped || !emerged || (lair != null && lair.started())) return;
+            if (number % CHUNK_EVERY_WAVES == CHUNK_EVERY_WAVES - 1) spawnChunks();
             int partySize = Math.max(1, run.onlineMembers().size());
             for (KuudraWavePlan.Batch batch : KuudraWavePlan.plan(number, config.waves(), partySize, spec.waves())) {
                 int alive = (int) mobs.stream().filter(mob -> !(mob instanceof KuudraTentacle)).count();

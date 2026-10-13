@@ -36,6 +36,15 @@ public final class VisitorService {
     private static final double BLOOMING_RARITY_BONUS = 0.2;
     private static final double BLOOMING_COOLDOWN_FACTOR = 0.8;
 
+    static int fineFlour(VisitorRarity rarity, java.util.random.RandomGenerator random) {
+        int bonus = switch (rarity) {
+            case LEGENDARY -> 3;
+            case MYTHIC, SPECIAL -> 6;
+            default -> 0;
+        };
+        return 7 + bonus + random.nextInt(4);
+    }
+
     private VisitorService() {
     }
 
@@ -248,8 +257,9 @@ public final class VisitorService {
         if (blueprint) profile.greenhouse().setBlueprintGiven(true);
         copper = (int) Math.round(copper * GardenPetBonuses.copperMultiplier(player) * ElectionPerks.multiplier(SkyBlockMayor.Perk.BLOOMING_BUSINESS));
         if (ElectionPerks.isActive(SkyBlockMayor.Perk.BLOOMING_BUSINESS)) {
-            player.addAndUpdateItem(new SkyBlockItem(ItemType.FINE_FLOUR, 1));
-            lines.add("<f>Fine Flour");
+            int flour = fineFlour(visitor == null ? VisitorRarity.UNCOMMON : visitor.rarity(), RANDOM);
+            player.addAndUpdateItem(new SkyBlockItem(ItemType.FINE_FLOUR, flour));
+            lines.add("<f>" + flour + "x Fine Flour");
         }
         profile.addCopper(copper);
         data.recordAccepted(present.getId());
