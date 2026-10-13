@@ -18,10 +18,10 @@ import java.util.stream.Stream;
 
 public class NPCSam extends HypixelNPC {
     public static final int WHEAT_FOR_COMPOST = 25;
+    public static final int BREAD_WHEAT = 100;
     private static final Pos HOUSE = new Pos(-2.5, 71, -12.5, 0, 0);
+    private static final Pos STAND = new Pos(4.5, 71, -9.5, 0, 0);
     private static final Pos COMPOSTER = new Pos(-9.5, 71, -26.5, 90, 0);
-    private static final int SCAN_TOP = 74;
-    private static final int SCAN_BOTTOM = 60;
     private static NPCSam instance;
 
     private NPCSam() {
@@ -43,7 +43,8 @@ public class NPCSam extends HypixelNPC {
 
             @Override
             public Pos position(HypixelPlayer player) {
-                return onGround(player.getInstance(), standsAtComposter((SkyBlockPlayer) player) ? COMPOSTER : HOUSE);
+                return GardenGround.onGround(player.getInstance(), standsAtComposter((SkyBlockPlayer) player) ? COMPOSTER
+                        : standsAtStand((SkyBlockPlayer) player) ? STAND : HOUSE);
             }
 
             @Override
@@ -75,19 +76,14 @@ public class NPCSam extends HypixelNPC {
         });
     }
 
-    private static Pos onGround(Instance instance, Pos wanted) {
-        if (instance == null) return wanted;
-        for (int y = SCAN_TOP; y > SCAN_BOTTOM; y--) {
-            if (instance.getChunkAt(wanted.x(), wanted.z()) != null && instance.getBlock(wanted.blockX(), y, wanted.blockZ()).isSolid()) {
-                return wanted.withY(y + 1);
-            }
-        }
-        return wanted;
-    }
-
     public static synchronized NPCSam get() {
         if (instance == null) instance = new NPCSam();
         return instance;
+    }
+
+    private static boolean standsAtStand(SkyBlockPlayer player) {
+        MissionData data = player.getMissionData();
+        return data.isCurrentlyActive(MissionSetUpStand.class) || data.isCurrentlyActive(MissionServeFirstCustomer.class);
     }
 
     private static boolean standsAtComposter(SkyBlockPlayer player) {
@@ -128,9 +124,27 @@ public class NPCSam extends HypixelNPC {
             setDialogue(player, "clean_plot");
         } else if (data.isCurrentlyActive(MissionTalkToSamPlotCleaned.class)) {
             setDialogue(player, "plot_cleaned").thenRun(() -> GardenQuests.end(player, MissionTalkToSamPlotCleaned.class));
+        } else if (data.isCurrentlyActive(MissionBringBreadWheat.class)) {
+            if (player.getAmountInInventory(ItemType.WHEAT) < BREAD_WHEAT) {
+                setDialogue(player, "bread_ask");
+                return;
+            }
+            player.removeItemFromPlayer(ItemType.WHEAT, BREAD_WHEAT);
+            setDialogue(player, "bread_done").thenRun(() -> GardenQuests.end(player, MissionBringBreadWheat.class));
+        } else if (data.isCurrentlyActive(MissionSetUpStand.class)) {
+            setDialogue(player, "stand_here").thenRun(() -> {
+                GardenQuests.end(player, MissionSetUpStand.class);
+                GardenQuests.firstCustomer(player);
+            });
+        } else if (data.isCurrentlyActive(MissionServeFirstCustomer.class)) {
+            setDialogue(player, "first_customer");
         } else {
             setDialogue(player, "idle");
         }
+    }
+
+    public void firstCustomerServed(SkyBlockPlayer player) {
+        setDialogue(player, "first_customer_done");
     }
 
     public void plotUnlocked(SkyBlockPlayer player) {
@@ -185,6 +199,30 @@ public class NPCSam extends HypixelNPC {
                         "Wow! It's squeaky clean over there, you did so well!",
                         "Now you can grow crops you've unlocked there!",
                         "To save you a bit of time, you can also use a preset farm at your desk!"
+                ).build(),
+                DialogueSet.builder().key("bread_ask").lines(
+                        "I have an idea! Why don't you collect me some <e>Wheat<f> and I'll bake us some lovely bread for dinner!",
+                        "To bake us some bread, I think I need about <e>100 Wheat<f>.",
+                        "That shouldn't be a problem for someone like you, right?"
+                ).build(),
+                DialogueSet.builder().key("bread_done").lines(
+                        "Wow, that was quick! Here, take some fresh bread! *nom* *nom*",
+                        "It's pretty tasty. But it seems like we still have some dozen Wheat left over and our Composter is already full...",
+                        "Oh, I have an idea! We could open a small stand and sell our Wheat to other people!",
+                        "We need to set up a stand somewhere..."
+                ).build(),
+                DialogueSet.builder().key("stand_here").lines(
+                        "I think this spot would work perfectly!",
+                        "Oh, we already have our first customer! How exciting, I wonder what they want! Can you check on them?"
+                ).build(),
+                DialogueSet.builder().key("first_customer").lines(
+                        "Your first customer is right in front of you!",
+                        "Go ahead and talk to them to see what they need!"
+                ).build(),
+                DialogueSet.builder().key("first_customer_done").lines(
+                        "Wow we did it! We served our first customer!",
+                        "Keep checking back on them, I am sure more people will visit our farm soon.",
+                        "Besides that, you can always go check the desk to find out what to do next!"
                 ).build(),
                 DialogueSet.builder().key("idle").lines(
                         "You can always go check the desk to find out what to do next!"

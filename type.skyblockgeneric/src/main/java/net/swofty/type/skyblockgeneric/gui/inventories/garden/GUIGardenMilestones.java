@@ -32,7 +32,7 @@ public class GUIGardenMilestones extends StatelessView {
         layout.slot(11, (_, _) -> GardenMenus.item(Material.WHEAT, Text.key(KEY + "crops.name"), lore("crops")),
                 (_, c) -> GardenMenus.open(c, new GUICropMilestones()));
         layout.slot(15, (_, _) -> GardenMenus.item(Material.EMERALD, Text.key(KEY + "visitors.name"), lore("visitors")),
-                (_, c) -> GardenMenus.notAdded(c, "Visitor Milestones"));
+                (_, c) -> GardenMenus.open(c, new GUIVisitorMilestones(true)));
     }
 
     private List<Text> lore(String id) {

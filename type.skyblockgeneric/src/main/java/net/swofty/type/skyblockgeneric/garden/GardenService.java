@@ -3,6 +3,7 @@ package net.swofty.type.skyblockgeneric.garden;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.garden.quest.GardenQuests;
+import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
@@ -112,6 +113,8 @@ public final class GardenService {
             experience.setSourceXP(SkyBlockXPSource.GARDEN_LEVEL, GardenProgress.skyblockXpFromLevel(profile));
             experience.setSourceXP(SkyBlockXPSource.GARDEN_CROP_MILESTONES_REACHED, GardenProgress.totalMilestoneTiers(profile));
             experience.setSourceXP(SkyBlockXPSource.CROP_UPGRADES, GardenProgress.totalUpgradeTiers(profile));
+            experience.setSourceXP(SkyBlockXPSource.GARDEN_VISITORS_SERVED, (double) profile.visitors().getUniqueTier() * 3);
+            experience.setSourceXP(SkyBlockXPSource.OFFERS_ACCEPTED, (double) profile.visitors().getAcceptedTier() * 3);
             experience.setSourceXP(SkyBlockXPSource.GARDEN_UNLOCKED_PLOTS,
                     (double) profile.getUnlockedPlots().size() * GardenConfig.get().skyblockXpPerPlot());
         });
@@ -130,6 +133,10 @@ public final class GardenService {
         for (int plot = 1; plot <= GardenProfile.PLOT_COUNT; plot++) {
             profile.unlockPlot(plot);
         }
+        VisitorCatalogue visitors = VisitorCatalogue.get();
+        visitors.visitors().forEach(visitor -> profile.visitors().markServed(visitor.id()));
+        profile.visitors().setUniqueTier(visitors.uniqueMilestones().getLast().tier());
+        profile.visitors().setAcceptedTier(visitors.acceptedMilestones().getLast().tier());
         Gardens.save(player, profile);
         syncExperience(player);
     }

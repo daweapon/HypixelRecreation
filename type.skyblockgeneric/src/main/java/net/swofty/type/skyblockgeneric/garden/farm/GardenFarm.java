@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.garden.GardenLayout;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.tool.FarmingTools;
+import net.swofty.type.skyblockgeneric.garden.visitor.VisitorService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -51,6 +52,7 @@ public final class GardenFarm {
         if (harvest == null) return false;
 
         harvest.apply().run();
+        VisitorService.reduceCooldown(player, VisitorService.CROP_COOLDOWN_SECONDS);
         List<SkyBlockItem> drops = drops(player, profile, harvest);
         HypixelEventHandler.callCustomEvent(new CustomBlockBreakEvent(
                 player, harvest.crop().material(), position, drops, false));

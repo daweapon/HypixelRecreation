@@ -1,0 +1,26 @@
+title: "The Garden Update, Part 3"
+date: "13th October 2026"
+intro:
+  - "Visitors are here! All 140 are in the Logbook, and the ones whose homes exist today will come knocking."
+sections:
+  - heading: "Visitors"
+    colour: "<a>"
+    lines:
+      - "Visitors arrive every 15 minutes, up to five at a time. The timer shortens to 12 and then 10 minutes as you serve more unique visitors, and every crop you harvest speeds it up."
+      - "Click a visitor to see what they want and give them the items. You can hand over part of the request now and the rest later."
+      - "Rewards are Farming XP, Garden Experience, Copper and Bits, plus rare drops and each visitor's own unique rewards."
+      - "Uncommon visitors are common and Mythic visitors are very rare. Rarer visitors ask for more and pay more."
+  - heading: "The Logbook"
+    colour: "<6>"
+    lines:
+      - "The Visitor's Logbook at the Desk lists all 140 visitors, how often each has visited, and what they need to show up."
+      - "Talk to an NPC around SkyBlock and the visitor of the same name can start visiting your Garden."
+      - "Visitor Milestones for Unique Visitors Served and Offers Accepted are in Garden Milestones."
+  - heading: "Sam's Third Quest"
+    colour: "<e>"
+    lines:
+      - "Crop 'n Profit has Sam asking for 100 Wheat, setting up a stand, and your first customer."
+  - heading: "Not Yet"
+    colour: "<c>"
+    lines:
+      - "Visitors that need events, Mayors, Crimson Isle or Catacombs quests and other unbuilt content are in the Logbook but marked not added."

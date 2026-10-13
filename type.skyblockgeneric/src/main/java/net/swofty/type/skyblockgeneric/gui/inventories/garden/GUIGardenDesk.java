@@ -45,7 +45,7 @@ public class GUIGardenDesk extends StatelessView {
         view(layout, 25, Material.GOLD_BLOCK, "milestones", 2, () -> new GUIGardenMilestones());
         view(layout, 31, Material.CLOCK, "speed", 2, () -> new GUICropSpeed());
         layout.slot(29, (_, c) -> levelsItem(c), (_, c) -> GardenMenus.open(c, new GUIGardenLevels()));
-        pending(layout, 48, Material.CHEST, "logbook", 2, "Visitor's Logbook");
+        view(layout, 48, Material.CHEST, "logbook", 2, () -> new GUIVisitorLogbook());
         pending(layout, 50, Material.DAYLIGHT_DETECTOR, "time", 1, "Garden Time");
         pending(layout, 51, Material.DIAMOND_HOE, "toolkit", 3, "Farming Toolkit");
     }

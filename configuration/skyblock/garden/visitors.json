@@ -1,0 +1,7119 @@
+{
+  "visitors": [
+    {
+      "id": "ANDREW",
+      "name": "Andrew",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Did you know that SkyBlock has been running for [number] in-game months already? Time flies."
+        ],
+        "accept": [
+          "See you around!"
+        ],
+        "decline": [
+          "I guess I'll come back in a bit."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ARTHUR",
+      "name": "Arthur",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Arthur",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 53,
+        "y": 72,
+        "z": -112
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WHEAT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "My wheat minion has been slacking recently, I am thinking about giving it an upgrade. He hasn't produced any wheat in years! Every time I check on him, he's empty."
+        ],
+        "accept": [
+          "Holy Macaroni! That should boost my minion to at least Tier 5! Thank you a lot!"
+        ],
+        "decline": [
+          "I guess I'll have to keep going like this."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:ARTHUR"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "BAKER",
+      "name": "Baker",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Export 3,000 Fine Flour",
+        "kind": "OTHER",
+        "count": 3000
+      },
+      "event": "BLOOMING_BUSINESS",
+      "location": {
+        "area": "Village",
+        "x": -37.5,
+        "y": 69,
+        "z": 16.5
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "FINE_FLOUR",
+            "name": "Fine Flour",
+            "amount": 50
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "COPPER",
+          "item": null,
+          "name": "Copper",
+          "amount": 500,
+          "chancePercent": null,
+          "note": "sheet only"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "My Wheat Minions produce the finest flour around, but they can't keep up with today's demand..."
+        ],
+        "accept": [
+          "That should do it! Thanks for your help, {player}."
+        ],
+        "decline": [
+          "\"Use better minion fuel\"? But... what could possibly be better than Enchanted Bread?."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Mayor Finnegan's Blooming Business perk (mayors/elections) is not built",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "BARTENDER",
+      "name": "Bartender",
+      "rarity": "RARE",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Bartender",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": -84,
+        "y": 74,
+        "z": -135
+      },
+      "desire": {
+        "mode": "N_FAMILIES",
+        "families": [],
+        "count": 2,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I want to make some new brews, do you think you can give me some ingredients to work with?"
+        ],
+        "accept": [
+          "Many Thanks! I'll be sure to let you have the first taste as soon as it's done... at a discounted price of course."
+        ],
+        "decline": [
+          "Hard times we are in. Take care!"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:BARTENDER"
+      ],
+      "verified": true,
+      "notes": "wiki says Any 2; Georik says Any Two Crops"
+    },
+    {
+      "id": "BETH",
+      "name": "Beth",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Beth",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Mushroom Desert",
+        "x": 163,
+        "y": 77,
+        "z": -359
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "JAKE_PLUSHIE",
+          "name": "Jake's Plushie",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I think I am really onto something here.",
+          "Jake says he can't walk, but I've seen him walk yesterday.",
+          "He also asks strangers to get him some animals, but these animals are nowhere to be found!"
+        ],
+        "accept": [
+          "I'm getting really close to solving this mystery."
+        ],
+        "decline": [
+          "Maybe I was wrong to trust you..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:BETH"
+      ],
+      "verified": false,
+      "notes": null
+    },
+    {
+      "id": "CARROT_KING_AVATAR",
+      "name": "Carrot King Avatar",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Consume a Poignant Carrot Bait",
+        "kind": "OTHER",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_GOLDEN_CARROT",
+            "name": "Enchanted Golden Carrot",
+            "amount": null
+          },
+          {
+            "item": "PET_ITEM_LUCKY_CLOVER",
+            "name": "Lucky Clover",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "POIGNANT_LUCKY_CLOVER",
+          "name": "Poignant Lucky Clover",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I crave vast heaps of carrots, my hunger ferrets!"
+        ],
+        "accept": [
+          "I will hunger no longer."
+        ],
+        "decline": [
+          "How dare you let this hare hunger."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on unbuilt content: Consume a Poignant Carrot Bait",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "no Garden level requirement on the wiki and blank on Georik; level 1 used so the per-level totals match Georik (47 at level 1)"
+    },
+    {
+      "id": "DALBREK",
+      "name": "Dalbrek",
+      "rarity": "RARE",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Dalbrek",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 190,
+        "y": 216,
+        "z": 154
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I saw some weird guy in a mask go into a tiny hole inside the Dwarven Mines, maybe he's part of the Cult of the Fallen Star?"
+        ],
+        "accept": [
+          "These guys... are scaring me. I'm not quite sure what they are planning in there, but I'd also rather not want to know."
+        ],
+        "decline": []
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Dalbrek",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": null
+    },
+    {
+      "id": "DUKE",
+      "name": "Duke",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "You seem new here. You should probably try to get some [crop] for me."
+        ],
+        "accept": [
+          "See ya next time!"
+        ],
+        "decline": [
+          "Maybe next time."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "FARM_MERCHANT",
+      "name": "Farm Merchant",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Farm Merchant",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 63,
+        "y": 72,
+        "z": -113
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WHEAT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I'm hungry...whatcha got?"
+        ],
+        "accept": [
+          "Ooh, this is exactly what I wanted!"
+        ],
+        "decline": [
+          "Back to standing still for hours on end!"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:FARM_MERCHANT"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "FARMER_JON",
+      "name": "Farmer Jon",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Farmer Jon",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Mushroom Desert",
+        "x": 167,
+        "y": 91,
+        "z": -598
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "WHEAT",
+          "CARROT",
+          "POTATO",
+          "PUMPKIN",
+          "MELON",
+          "CACTUS",
+          "COCOA_BEANS",
+          "MUSHROOM",
+          "NETHER_WART"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I've competed in numerous sugar cane contests, but I've never actually tried farming other crops."
+        ],
+        "accept": [
+          "This'll be a nice hobby to work on. Thank you."
+        ],
+        "decline": [
+          "Cultivating sugar cane gets boring eventually."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:FARMER_JON"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "FELIX",
+      "name": "Felix",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "You won't be able to store any items in the Garden, you should keep them on your Private Island!"
+        ],
+        "accept": [
+          "Until next time!"
+        ],
+        "decline": [
+          "Maybe next time."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "FRIENDLY_HIKER",
+      "name": "Friendly Hiker",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Friendly Hiker",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Mushroom Desert",
+        "x": 181,
+        "y": 77,
+        "z": -381
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "RAW_MUTTON",
+          "RAW_PORKCHOP",
+          "RAW_RABBIT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I'm planning to head back into the gorge to fetch my hiker friend, but I'll need some meat to cook before I head in there."
+        ],
+        "accept": [
+          "Thanks! I'll be heading to look for him as soon as possible."
+        ],
+        "decline": [
+          "That's alright. I can always head into the Oasis to hunt down some sheep."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:FRIENDLY_HIKER"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "GEONATHAN_GREATFORGE",
+      "name": "Geonathan Greatforge",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Geonathan Greatforge",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Crystal Hollows",
+        "x": 530,
+        "y": 106,
+        "z": 556
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "COMPOST",
+            "name": "Compost",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "BIOFUEL",
+          "name": "Biofuel",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "FARMING_XP",
+          "item": null,
+          "name": "Farming XP",
+          "amount": 15000,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "COPPER",
+          "item": null,
+          "name": "Copper",
+          "amount": 30,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I usually only work with Oil Barrels, but I'd like to try making some Biofuel from compost."
+        ],
+        "accept": [
+          "Oil Barrels are much more superior, but at least this is 100% renewable. Pretty neat!"
+        ],
+        "decline": [
+          "Not a problem. I hear that Biofuel is worse anyways."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Geonathan Greatforge",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "GIMLEY",
+      "name": "Gimley",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Gimley",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 29,
+        "y": 202,
+        "z": -148
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WHEAT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "bUuUrP!?!?"
+        ],
+        "accept": [
+          "BuRRrP Burp!"
+        ],
+        "decline": [
+          "BURP BURP!?!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Gimley",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "GRANDMA_WOLF",
+      "name": "Grandma Wolf",
+      "rarity": "RARE",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Grandma Wolf",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Spider's Den",
+        "x": -282,
+        "y": 121,
+        "z": -191
+      },
+      "desire": {
+        "mode": "N_FAMILIES",
+        "families": [],
+        "count": 3,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "My little child, you don't look so good. You should eat something. I have an idea, give me some ingredients and I'll make you a nice soup."
+        ],
+        "accept": [
+          "I will make you a meal that you won't forget!"
+        ],
+        "decline": [
+          "You denied Grandma Wolf's request. How dare you treat your granny like that."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:GRANDMA_WOLF"
+      ],
+      "verified": true,
+      "notes": "wiki says Any 3; Georik says Any Three Crops"
+    },
+    {
+      "id": "GWENDOLYN",
+      "name": "Gwendolyn",
+      "rarity": "RARE",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Gwendolyn",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 88,
+        "y": 198,
+        "z": -98
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "COCOA_BEANS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": null,
+          "name": "Crystal Hollows Pass",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I don't really have a sweet tooth, but chocolate is probably my favorite thing in this world. But the supply is really poor mostly because of the mines' lack of accessibility."
+        ],
+        "accept": [
+          "Amazing! I haven't eaten such chocolatey goodness in a long time...Maybe they should invest in that rusty old lift."
+        ],
+        "decline": [
+          "I helped you enter the Crystal Hollows so many times! Why won't you return the favor?"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Gwendolyn",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "HORNUM",
+      "name": "Hornum",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Hornum",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 34,
+        "y": 202,
+        "z": -145
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Buurrrp!"
+        ],
+        "accept": [
+          "BURP!?!"
+        ],
+        "decline": [
+          "burp"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Hornum",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "wiki wants Any; Georik blank"
+    },
+    {
+      "id": "HUNGRY_HIKER",
+      "name": "Hungry Hiker",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Complete Hiker's Quest",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Mushroom Desert",
+        "x": 269,
+        "y": 48,
+        "z": -481
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "PET_ITEM_FARMING_SKILL_BOOST_RARE",
+          "name": "Farming Exp Boost (30%)",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "rare pet item; sheet: 30% Farming EXP Boost"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Hello there, I seem to be stuck here with no good food to eat, could you bring me some square orange fruits?"
+        ],
+        "accept": [
+          "Thanks so much for feeding me, please take this as a token of my gratitude."
+        ],
+        "decline": [
+          "I guess I'll just go hungry then..."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Complete Hiker's Quest",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "JACK",
+      "name": "Jack",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Did you know that you gain additional ☘ Farming Fortune while on the The Garden? You can check it in your SkyBlock Profile!"
+        ],
+        "accept": [
+          "Thanks for the crops. See ya around."
+        ],
+        "decline": [
+          "I'll come by later."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "JACOB",
+      "name": "Jacob",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Jacob",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 46,
+        "y": 73,
+        "z": -129
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WHEAT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "JACOBS_TICKET",
+          "name": "Jacob's Ticket",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "ITEM",
+          "item": null,
+          "name": "Farming Contest Display",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Howdy! Fine barn ye got there eh? Good lad, you think ye could get me some wheat, eh?"
+        ],
+        "accept": [
+          "Thanks a lot matey. That'll help ye prepare my next farming contest eh?"
+        ],
+        "decline": [
+          "Gosh darn it matey, can't believe ya do me like that, eh?"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:JACOB"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "JAMIE",
+      "name": "Jamie",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "You might have noticed that you can purchase additional plots within your Desk in the Barn!"
+        ],
+        "accept": [
+          "Thank you! Until next time!"
+        ],
+        "decline": [
+          "No worries."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "JERRY",
+      "name": "Jerry",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Private Island",
+        "x": 9.5,
+        "y": 100,
+        "z": 33.5
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "BREAD",
+            "name": "Bread",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "FARMING_XP",
+          "item": null,
+          "name": "Farming XP",
+          "amount": 500,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "COPPER",
+          "item": null,
+          "name": "Copper",
+          "amount": 5,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "ITEM",
+          "item": "UNFULFILLED_JERRYSEED",
+          "name": "Unfulfilled Jerryseed",
+          "amount": 1,
+          "chancePercent": 10,
+          "note": "wiki says random; exact chance unknown, 10 percent is a placeholder"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Hello {player}. Glad to meet you here. I need some {item}."
+        ],
+        "accept": [
+          "This is not my realm. I must return. Thank you."
+        ],
+        "decline": [
+          "Jerry unhappy."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": "amount follows the wheat formula for Bread"
+    },
+    {
+      "id": "JOTRAELINE_GREATFORGE",
+      "name": "Jotraeline Greatforge",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Jotraeline Greatforge",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": -6,
+        "y": 145,
+        "z": -18
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "COMPOST",
+            "name": "Compost",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "BIOFUEL",
+          "name": "Biofuel",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "FARMING_XP",
+          "item": null,
+          "name": "Farming XP",
+          "amount": 15000,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "COPPER",
+          "item": null,
+          "name": "Copper",
+          "amount": 30,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I heard you have a composter in your barn, it happens to run on the same fuel drills run on! Could I check it out?"
+        ],
+        "accept": [
+          "Quite fascinating technology you have there, I'm sure with this machinery we could create even better appliances in the future!"
+        ],
+        "decline": [
+          "That's alright! I'll just save up 12 years to be able to afford one myself."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Jotraeline Greatforge",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "Georik says 2-3 Compost; amount not fixed on the wiki"
+    },
+    {
+      "id": "LEO",
+      "name": "Leo",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Sadly you can't gather logs in the The Garden, however there are plenty of crops here!"
+        ],
+        "accept": [
+          "Until next time!"
+        ],
+        "decline": [
+          "Hmm, too bad."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "LIAM",
+      "name": "Liam",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "One day you'll be able to buy the sun, trust me on that mate."
+        ],
+        "accept": [
+          "That makes me feel better."
+        ],
+        "decline": [
+          "Alright..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "LIFT_OPERATOR",
+      "name": "Lift Operator",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Reach the Lapis Quarry",
+        "kind": "OTHER",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CARROT"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_GOLDEN_CARROT",
+            "name": "Enchanted Golden Carrot",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Operating that lift all day takes a lot outta ya, you know?"
+        ],
+        "accept": [
+          "Cheers, that's the stuff!"
+        ],
+        "decline": [
+          "Back to the mines I go..."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on unbuilt content: Reach the Lapis Quarry",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "requests the specific item Enchanted Golden Carrot"
+    },
+    {
+      "id": "LYNN",
+      "name": "Lynn",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "If you ever get lost, you should check on the Desk on what to do next."
+        ],
+        "accept": [
+          "Have a good one."
+        ],
+        "decline": [
+          "Maybe next time."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "MASON",
+      "name": "Mason",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Mason",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Mushroom Desert",
+        "x": 177,
+        "y": 77,
+        "z": -356
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "RAW_MUTTON",
+          "POTATO",
+          "CARROT",
+          "MUSHROOM"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I paid for one of Treasure Hunter's tips today and again, it only led me to a dirty shoelace. His tips are just not worth it..."
+        ],
+        "accept": [
+          "Maybe if I continue buying his tips I'll hit the jackpot soon. Just gotta spend a little bit more..."
+        ],
+        "decline": [
+          "You're no better than the Treasure Hunter..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:MASON"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ODAWA",
+      "name": "Odawa",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Odawa",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Crystal Hollows",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "JUNGLE_KEY",
+          "name": "Jungle Key",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I'm supposed to collect some food for the village, the Kalhuiki people have been through a tough time recently."
+        ],
+        "accept": [
+          "Perfect! I'll share the good news with my village!"
+        ],
+        "decline": [
+          "I guess I'll have to turn up empty-handed."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Odawa",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ORINGO",
+      "name": "Oringo",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Oringo",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub (event)",
+        "x": -34.5,
+        "y": 69,
+        "z": 5.5
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WHEAT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "PET_CAKE",
+          "name": "Pet Cake",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "1000 pet XP"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Hey, you got some wheat for my pets by any chance? Gotta keep those little monsters fed, haha!"
+        ],
+        "accept": [
+          "You know how it is, they never stop eating haha, thank you very much!"
+        ],
+        "decline": [
+          "Oh, you're out of wheat? Alright, I'll come back later then."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:ORINGO"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "PEST_WRANGLER",
+      "name": "Pest Wrangler",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "BLOOMING_BUSINESS",
+      "location": {
+        "area": "The Garden",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": null,
+            "name": "Any 10% Pest Drop (Sprayonator material)",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "FINE_FLOUR",
+          "name": "Fine Flour",
+          "amount": 5,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "There's pests everywhere. I can smell 'em in the walls!"
+        ],
+        "accept": [
+          "Thanks mate, this should help me catch 'em!"
+        ],
+        "decline": [
+          "Hm, how strange.. you smell just like 'em.."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Mayor Finnegan's Blooming Business perk (mayors/elections) is not built",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "wiki says Any Sprayonator material; Georik says Any 10% Pest Drop"
+    },
+    {
+      "id": "PEST_WRANGLER_DISGUISED_RATS",
+      "name": "Pest Wrangler? (Disguised Rats)",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "BLOOMING_BUSINESS",
+      "location": {
+        "area": "The Garden",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "TASTY_CHEESE",
+            "name": "Tasty Cheese",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "FINE_FLOUR",
+          "name": "Fine Flour",
+          "amount": 50,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "The figure hands you a slip of paper."
+        ],
+        "accept": [
+          "The figure nods at you and shambles away."
+        ],
+        "decline": [
+          "The figure glares at you and shambles away."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Mayor Finnegan's Blooming Business perk (mayors/elections) is not built",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "Georik name: Pest Wrangler? (Disguised Rats)"
+    },
+    {
+      "id": "RAVENOUS_RHINO",
+      "name": "Ravenous Rhino",
+      "rarity": "MYTHIC",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Serve 50 unique visitors",
+        "kind": "SERVE_UNIQUE",
+        "count": 50
+      },
+      "event": "BLOOMING_BUSINESS",
+      "location": {
+        "area": "The Garden",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_BREAD",
+            "name": "Enchanted Bread",
+            "amount": 2048
+          },
+          {
+            "item": "ENCHANTED_CAKE",
+            "name": "Enchanted Cake",
+            "amount": 32
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Dedication IV",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "enchanted book: DEDICATION 4"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I'm very hungry. Give me the Enchanted Cake!"
+        ],
+        "accept": [
+          "You know, that wasn't too bad."
+        ],
+        "decline": [
+          "No! I don't want that!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Mayor Finnegan's Blooming Business perk (mayors/elections) is not built",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "RESIDENT_NEIGHBOR",
+      "name": "Resident Neighbor",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Resident Neighbor",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 92,
+        "y": 202,
+        "z": 277
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "My neighbor told me to get off his property, but he doesn't even own this place!"
+        ],
+        "accept": [
+          "Maybe I have to talk to the King about him. He is going too far. I think the current King is [name]."
+        ],
+        "decline": [
+          "Maybe I have to talk to the King about him. He is going too far. I think the current King is [name]."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Resident Neighbor",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ROYAL_RESIDENT",
+      "name": "Royal Resident",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Royal Resident",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 165,
+        "y": 202,
+        "z": 279
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I need one more ingredient to make The Cake for the next person I can get to listen to me."
+        ],
+        "accept": [
+          "This should do it! I've got some counting to do."
+        ],
+        "decline": [
+          "What cake? There is no cake."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Royal Resident",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "wiki wants Any; two visitors share the display name Royal Resident (Uncommon level 1 and Rare level 7)"
+    },
+    {
+      "id": "RUSTY",
+      "name": "Rusty",
+      "rarity": "RARE",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Rusty",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Gold Mine",
+        "x": -19,
+        "y": 78,
+        "z": -325
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "IRON_HOE",
+          "name": "Iron Hoe",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Ever wondered how I find all the things that other players lost? I outsource it. Right now, someone is looking for their [crop]. Can you find that for me?"
+        ],
+        "accept": [
+          "There we go, a job well done. I'll make sure to leave a good review for you!"
+        ],
+        "decline": [
+          "Turns out, if you want something done, you have to do it yourself."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Rusty",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "RYU",
+      "name": "Ryu",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Did you know that there is a Garden Level? Increase it by hitting milestones or selling to customers like me!"
+        ],
+        "accept": [
+          "Good trade!"
+        ],
+        "decline": [
+          "That's alright."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "SARGWYN",
+      "name": "Sargwyn",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Sargwyn",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 34,
+        "y": 202,
+        "z": -150
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WHEAT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Buurrrp? ... BuURrpPp!"
+        ],
+        "accept": [
+          "BUuuUUuuUURrRRRrRPPpPPP!"
+        ],
+        "decline": [
+          "BUUUUUUUUUUUUUUUUUUUUUUUUURP!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Sargwyn",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "SHAGGY",
+      "name": "Shaggy",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Shaggy",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Spider's Den",
+        "x": -278,
+        "y": 121,
+        "z": -182
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "ARACHNE_FRAGMENT",
+          "name": "Arachne Fragment",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Hey kid, I haven't seen you in a while. Arachne's powers are growing day by day. Soon she'll take over the Spider's Den."
+        ],
+        "accept": [
+          "The evil doesn't defeat itself. You should come to the Spider's Den again when you are free."
+        ],
+        "decline": [
+          "I wish peace upon you."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:SHAGGY"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "SIRIUS",
+      "name": "Sirius",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Sirius",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 91,
+        "y": 75,
+        "z": 177
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I've always wanted to start a farm but instead I got sucked into this life of crim...I mean business!"
+        ],
+        "accept": [
+          "This smell... it reminds me of my childhood when I used to pick flowers in the garden. Keep this between you and me, understand?"
+        ],
+        "decline": [
+          "I'll be back. I know you'll make the right decision."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:SIRIUS"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "STELLA",
+      "name": "Stella",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "The amount of plots you can unlock here is perfect for a Co-op. So much space!"
+        ],
+        "accept": [
+          "Good choice!"
+        ],
+        "decline": [
+          "Don't worry, I'll come back later."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "TARWEN",
+      "name": "Tarwen",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Tarwen",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 34,
+        "y": 202,
+        "z": -140
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WHEAT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Buurrrp? ... Burrp bURp!"
+        ],
+        "accept": [
+          "Buuuuurp!"
+        ],
+        "decline": [
+          "BuUuUrRrPpP!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Tarwen",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "TIA_THE_FAIRY",
+      "name": "Tia the Fairy",
+      "rarity": "RARE",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Tia the Fairy",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 119,
+        "y": 65,
+        "z": 147
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "FLAG",
+          "item": null,
+          "name": "Fairy Soul",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "once"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "You are currently missing [#] Fairy Souls. Better get to work!",
+          "You collected every single Fairy Soul?!? Amazing!"
+        ],
+        "accept": [
+          "That's exactly what I needed!"
+        ],
+        "decline": [
+          "Alright, I won't bother you anymore."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:TIA_THE_FAIRY"
+      ],
+      "verified": false,
+      "notes": null
+    },
+    {
+      "id": "TOM",
+      "name": "Tom",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I don't have a recipe for you, however I'd happily take some crops."
+        ],
+        "accept": [
+          "I'll be sure to come by next time."
+        ],
+        "decline": [
+          "No problem, see ya next time!"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "TREVOR",
+      "name": "Trevor",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": "Talk to Trevor",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Mushroom Desert",
+        "x": 281,
+        "y": 104,
+        "z": -543
+      },
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": null,
+          "name": "Pelt",
+          "amount": 2,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I've been tracking an animal for the past few days. Got anything I could use as bait?"
+        ],
+        "accept": [
+          "This should do nicely. I'll have plenty of pelts by the end of the day."
+        ],
+        "decline": [
+          "Looks like I'll have to catch it the old fashioned way."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:TREVOR"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "VEX",
+      "name": "Vex",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "DEAD_BUSH",
+          "name": "Dead Bush",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I have an offer for you that you can't refuse."
+        ],
+        "accept": [
+          "Told you."
+        ],
+        "decline": [
+          "Oh well that's awkward."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": false,
+      "notes": null
+    },
+    {
+      "id": "VINYL_COLLECTOR",
+      "name": "Vinyl Collector",
+      "rarity": "RARE",
+      "gardenLevel": 1,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "BLOOMING_BUSINESS",
+      "location": {
+        "area": "The Garden",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": null,
+            "name": "Any Vinyl from Pests",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "FINE_FLOUR",
+          "name": "Fine Flour",
+          "amount": 15,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Hey man, I just need one more vinyl to complete the full Pest Vinyl collection."
+        ],
+        "accept": [
+          "Finally! Thanks man, now I have another complete set!"
+        ],
+        "decline": [
+          "Aw man, guess I'll have to look somewhere else."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Mayor Finnegan's Blooming Business perk (mayors/elections) is not built",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "wiki says Any Pest Vinyl"
+    },
+    {
+      "id": "ANITA",
+      "name": "Anita",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 2,
+      "requirement": {
+        "text": "Talk to Anita",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 54,
+        "y": 73,
+        "z": -129
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CARROT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Hey hey hey again! I'll trade you some copper for some carrots!"
+        ],
+        "accept": [
+          "Yay, thank you so much!"
+        ],
+        "decline": [
+          "Oh, darn it :("
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:ANITA"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "EMISSARY_WILSON",
+      "name": "Emissary Wilson",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 2,
+      "requirement": {
+        "text": "Talk to Emissary Wilson",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 171,
+        "y": 150,
+        "z": 31
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CARROT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "FLAG",
+          "item": null,
+          "name": "Mithril Powder or Gemstone Powder",
+          "amount": null,
+          "chancePercent": null,
+          "note": "amount not documented; one of the two"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "The King's least favorite vegetable is carrot, so he sent me, his favorite emissary, to make it better!"
+        ],
+        "accept": [
+          "I'm sure that by giving him his least favorite vegetable, he'll make me his favoritest emissary!"
+        ],
+        "decline": [
+          "I'm not sure if the carrots would have worked anyways..."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Emissary Wilson",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "FISHERMAN_GERALD",
+      "name": "Fisherman Gerald",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 2,
+      "requirement": {
+        "text": "Talk to Fisherman Gerald",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 118,
+        "y": 71,
+        "z": -33
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CARROT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "A Carrot King has been scaring off all the good fish, I need to deal with it before I lose more fish."
+        ],
+        "accept": [
+          "Holy Mackerel! You got me the whole nine yards."
+        ],
+        "decline": [
+          "S'alright, we are all busy some days."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:FISHERMAN_GERALD"
+      ],
+      "verified": true,
+      "notes": "wiki: hidden soft requirement Fishing V"
+    },
+    {
+      "id": "GOLD_FORGER",
+      "name": "Gold Forger",
+      "rarity": "RARE",
+      "gardenLevel": 2,
+      "requirement": {
+        "text": "Talk to Gold Forger",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Gold Mine",
+        "x": -27,
+        "y": 74,
+        "z": -294
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "GOLDEN_CARROT",
+            "name": "Golden Carrot",
+            "amount": 1024
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ESSENCE",
+          "item": null,
+          "name": "Gold Essence",
+          "amount": 2,
+          "chancePercent": null,
+          "note": "random 2-5"
+        },
+        {
+          "type": "COPPER",
+          "item": null,
+          "name": "Copper",
+          "amount": 15,
+          "chancePercent": null,
+          "note": "always"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Do Golden Carrots taste different than normal ones? I've actually never tried one before so I am pretty curious how they taste."
+        ],
+        "accept": [
+          "Let's taste...THIS IS DISGUSTING!!! Why would anyone waste such precious gold on this? Just like any other fancy food, expensive and gross..."
+        ],
+        "decline": [
+          "They would've probably tasted bad anyways..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:GOLD_FORGER"
+      ],
+      "verified": true,
+      "notes": "Georik says Golden Carrots; wiki list gives a fixed 1024 Golden Carrot (one part file mentions x10)"
+    },
+    {
+      "id": "IRON_FORGER",
+      "name": "Iron Forger",
+      "rarity": "RARE",
+      "gardenLevel": 2,
+      "requirement": {
+        "text": "Talk to Iron Forger",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Gold Mine",
+        "x": -2,
+        "y": 75,
+        "z": -308
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CARROT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I've recently got into cooking, yesterday I made pasta carbonara, today I'm planning on baking a carrot cake."
+        ],
+        "accept": [
+          "That's quite an excessive amount of carrots, but it'll do! Thanks, [username]!"
+        ],
+        "decline": [
+          "Will have to order some food today then."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:IRON_FORGER"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "MADAME_ELEANOR",
+      "name": "Madame Eleanor",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 2,
+      "requirement": {
+        "text": "Talk to Madame Eleanor",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 34,
+        "y": 73,
+        "z": 11
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CARROT"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_GOLDEN_CARROT",
+            "name": "Enchanted Golden Carrot",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I'm here to put a value on your farm. Bring me your fanciest crop."
+        ],
+        "accept": [
+          "Truly Magnificent! I value your farm at a minimum of [value of farm] coins!"
+        ],
+        "decline": [
+          "I value your farm at 0 coins. Horrible service."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:MADAME_ELEANOR"
+      ],
+      "verified": true,
+      "notes": "requests the specific item Enchanted Golden Carrot; on completing she appraises the farm (Garden level x 10,000,000 + 100 coins)"
+    },
+    {
+      "id": "OLD_SHAMAN_NYKO",
+      "name": "Old Shaman Nyko",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 2,
+      "requirement": {
+        "text": "Talk to Old Shaman Nyko",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "The Park",
+        "x": -370,
+        "y": 84,
+        "z": -64
+      },
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Where I live, vegetables aren't really an option. No sunlight, you see. Could you get me some?"
+        ],
+        "accept": [
+          "You know you should live life in moderation. Too much of anything is no good. Balance is key."
+        ],
+        "decline": [
+          "Welp. Meat is good too, I suppose."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "wanted items are unknown on the wiki and the sheet (InfoNeeded)",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted item marked InfoNeeded on the wiki and blank on Georik; desire unknown"
+    },
+    {
+      "id": "PUZZLER",
+      "name": "Puzzler",
+      "rarity": "RARE",
+      "gardenLevel": 2,
+      "requirement": {
+        "text": "Talk to Puzzler",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 181,
+        "y": 196,
+        "z": 135
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CARROT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "▲▼triangle▼▶▲food◀▲"
+        ],
+        "accept": [
+          "(⌐■_■)✌"
+        ],
+        "decline": [
+          "╳ (ノಠ益ಠ)ノ彡┻━┻"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:PUZZLER"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "QUEEN_MISMYLA",
+      "name": "Queen Mismyla",
+      "rarity": "RARE",
+      "gardenLevel": 2,
+      "requirement": {
+        "text": "Talk to Queen Mismyla",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 126,
+        "y": 195,
+        "z": 195
+      },
+      "desire": {
+        "mode": "N_FAMILIES",
+        "families": [],
+        "count": 2,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "The King made me go grocery shopping. Me! Can you believe that? He has a pair of perfectly good legs, and still, here I am."
+        ],
+        "accept": [
+          "I bet when I am back, they are all still sitting around that table! All day, every day! It's ludicrous!"
+        ],
+        "decline": [
+          "Oh, you refuse to work as well? I should have known."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Queen Mismyla",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ADVENTURER",
+      "name": "Adventurer",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": "Talk to Adventurer",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": -49,
+        "y": 69,
+        "z": -66
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "POTATO"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Exploring the whole wide world makes me hungry, I could take some fresh potatoes."
+        ],
+        "accept": [
+          "Thanks man, that should be enough food for my travels."
+        ],
+        "decline": [
+          "Darn it, I'll have to find another farmer then."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:ADVENTURER"
+      ],
+      "verified": true,
+      "notes": "wiki name is Combat Merchant (formerly Adventurer)"
+    },
+    {
+      "id": "EMISSARY_CEANNA",
+      "name": "Emissary Ceanna",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": "Talk to Emissary Ceanna",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 42,
+        "y": 134,
+        "z": 22
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "POTATO"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "FLAG",
+          "item": null,
+          "name": "Mithril Powder or Gemstone Powder",
+          "amount": null,
+          "chancePercent": null,
+          "note": "amount not documented; one of the two"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "The King's favorite emissary is here to request potatoes for the King's great feast!"
+        ],
+        "accept": [
+          "Maybe the King will even announce me as his favorite at the feast!"
+        ],
+        "decline": [
+          "I will inform the King about this disgrace!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Emissary Ceanna",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "FARMHAND",
+      "name": "Farmhand",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": "Talk to Farmhand",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "The Barn",
+        "x": 144,
+        "y": 73,
+        "z": -240
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "WHEAT",
+          "CARROT",
+          "POTATO"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I took a break from work for too long! Now I need your help to meet my quota!"
+        ],
+        "accept": [
+          "Exactly what I needed. I think I will take the remainder of the day off."
+        ],
+        "decline": [
+          "You condemn me to doing my own work? How can you do this to me!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Farmhand",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "MAYOR_AATROX",
+      "name": "Mayor Aatrox",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "MAYOR_AATROX",
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CACTUS"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_CACTUS",
+            "name": "Enchanted Cactus",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "VOTER_BADGE",
+          "name": "Voter's Badge",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "first unique mayor; the line upgrades to VIP at 3, Elite at 5 and Supreme at 8 unique mayors"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Thank for voting me mayor. Me need food."
+        ],
+        "accept": [
+          "You slay."
+        ],
+        "decline": [
+          "Me find you."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "mayors and elections are not built (visitor only appears when this mayor is elected)",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "requests the specific item Enchanted Cactus"
+    },
+    {
+      "id": "MAYOR_COLE",
+      "name": "Mayor Cole",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "MAYOR_COLE",
+      "location": null,
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "VOTER_BADGE",
+          "name": "Voter's Badge",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "first unique mayor; the line upgrades to VIP at 3, Elite at 5 and Supreme at 8 unique mayors"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Nothin's better than a full belly after a hard day of work!"
+        ],
+        "accept": [
+          "Break is over, back to the mines I go!"
+        ],
+        "decline": [
+          "Out of stock? sigh"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "mayors and elections are not built (visitor only appears when this mayor is elected)",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted item marked InfoNeeded on the wiki and blank on Georik; desire unknown"
+    },
+    {
+      "id": "MAYOR_DIANA",
+      "name": "Mayor Diana",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "MAYOR_DIANA",
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WHEAT"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_WHEAT",
+            "name": "Enchanted Wheat",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "VOTER_BADGE",
+          "name": "Voter's Badge",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "first unique mayor; the line upgrades to VIP at 3, Elite at 5 and Supreme at 8 unique mayors"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "My Griffin's getting reaaal hungry. I need to find some food QUICKLY!"
+        ],
+        "accept": [
+          "I was worried he would take a nab at me!"
+        ],
+        "decline": [
+          "If you ran for mayor, I would not vote for you."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "mayors and elections are not built (visitor only appears when this mayor is elected)",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "requests the specific item Enchanted Wheat (wiki: Confirm)"
+    },
+    {
+      "id": "MAYOR_DIAZ",
+      "name": "Mayor Diaz",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "MAYOR_DIAZ",
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "POTATO"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_POTATO",
+            "name": "Enchanted Potato",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "VOTER_BADGE",
+          "name": "Voter's Badge",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "first unique mayor; the line upgrades to VIP at 3, Elite at 5 and Supreme at 8 unique mayors"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Made a bil profit this morning through some Bazaar flipping, always makes me real hungry."
+        ],
+        "accept": [
+          "Tudelu, the profits never sleep."
+        ],
+        "decline": [
+          "I'll undercut your orders, just watch."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "mayors and elections are not built (visitor only appears when this mayor is elected)",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "requests the specific item Enchanted Potato (wiki: Confirm)"
+    },
+    {
+      "id": "MAYOR_FINNEGAN",
+      "name": "Mayor Finnegan",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "MAYOR_FINNEGAN",
+      "location": null,
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "VOTER_BADGE",
+          "name": "Voter's Badge",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "first unique mayor; the line upgrades to VIP at 3, Elite at 5 and Supreme at 8 unique mayors"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "All this farming is making me hungry!"
+        ],
+        "accept": [
+          "Back to farming I go! These PBs ain't gonna beat themselves!"
+        ],
+        "decline": [
+          "Guess I'll have to go gather the crops myself..."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "mayors and elections are not built (visitor only appears when this mayor is elected)",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted item marked InfoNeeded on the wiki and blank on Georik; desire unknown"
+    },
+    {
+      "id": "MAYOR_FOXY",
+      "name": "Mayor Foxy",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "MAYOR_FOXY",
+      "location": null,
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "VOTER_BADGE",
+          "name": "Voter's Badge",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "first unique mayor; the line upgrades to VIP at 3, Elite at 5 and Supreme at 8 unique mayors"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Yoooo! FOXY is in TOWN!"
+        ],
+        "accept": [
+          "Let's get this party started!"
+        ],
+        "decline": [
+          "You are soooo boring."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "mayors and elections are not built (visitor only appears when this mayor is elected)",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted item marked InfoNeeded on the wiki and blank on Georik; desire unknown"
+    },
+    {
+      "id": "MAYOR_MARINA",
+      "name": "Mayor Marina",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "MAYOR_MARINA",
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUNFLOWER"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "COMPACTED_SUNFLOWER",
+            "name": "Compacted Sunflower",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "VOTER_BADGE",
+          "name": "Voter's Badge",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "first unique mayor; the line upgrades to VIP at 3, Elite at 5 and Supreme at 8 unique mayors"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Caught a big fish today, you got anything to pair it with?"
+        ],
+        "accept": [
+          "Perfect, just what I needed!"
+        ],
+        "decline": [
+          "No worries, the sea provides."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "mayors and elections are not built (visitor only appears when this mayor is elected)",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "requests the specific item Compacted Sunflower"
+    },
+    {
+      "id": "MAYOR_PAUL",
+      "name": "Mayor Paul",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": "MAYOR_PAUL",
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MELON"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_MELON_BLOCK",
+            "name": "Enchanted Melon",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "VOTER_BADGE",
+          "name": "Voter's Badge",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "first unique mayor; the line upgrades to VIP at 3, Elite at 5 and Supreme at 8 unique mayors"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "All this paperwork is making me hungry."
+        ],
+        "accept": [
+          "I yearn for the dungeons, {player}."
+        ],
+        "decline": [
+          "Being a mayor is downtime, anyways."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "mayors and elections are not built (visitor only appears when this mayor is elected)",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "requests the specific item Enchanted Melon (block)"
+    },
+    {
+      "id": "WEAPONSMITH",
+      "name": "Weaponsmith",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": "Talk to Weaponsmith",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": -51,
+        "y": 69,
+        "z": -86
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "POTATO"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Hey! I am looking to make some Hot Potato Books to enhance some of my weapons, do you have any potatoes to spare?"
+        ],
+        "accept": [
+          "Thanks man! I'll be sure to smear these potatoes all over my weapons, that'll sure improve 'em!"
+        ],
+        "decline": [
+          "Too bad, I guess I'll have to look for actual metal next time..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:WEAPONSMITH"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "WIZARD",
+      "name": "Wizard",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 3,
+      "requirement": {
+        "text": "Talk to Wizard",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 49,
+        "y": 119,
+        "z": 100
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "POTATO"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Where am I? Oh, it's you {player}."
+        ],
+        "accept": [
+          "Thank you. This should be enough potatoes to generate about # volts. Might be just enough to cause a reaction."
+        ],
+        "decline": [
+          "I suppose that was expected. Not many people have enough potatoes to power a magical portal."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:WIZARD"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "FEAR_MONGERER",
+      "name": "Fear Mongerer",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 4,
+      "requirement": {
+        "text": "Talk to Fear Mongerer",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub (event)",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "GREEN_CANDY",
+          "name": "Green Candy",
+          "amount": 1,
+          "chancePercent": 50,
+          "note": "one of Green or Purple Candy"
+        },
+        {
+          "type": "ITEM",
+          "item": "PURPLE_CANDY",
+          "name": "Purple Candy",
+          "amount": 1,
+          "chancePercent": 50,
+          "note": "one of Green or Purple Candy"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Mortal, the time of reckoning is near. The Past will light the future."
+        ],
+        "accept": [
+          "May your destiny be ridded with fortune."
+        ],
+        "decline": [
+          "Soon."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:FEAR_MONGERER"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "LUMINA",
+      "name": "Lumina",
+      "rarity": "RARE",
+      "gardenLevel": 4,
+      "requirement": {
+        "text": "Talk to Lumina",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 77,
+        "y": 199,
+        "z": -110
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I'm looking to make some Jack o' Lanterns to help light up the Crystal Hollows - maybe you can help me out?"
+        ],
+        "accept": [
+          "Nice doin' business with ya! Here's some copper in return."
+        ],
+        "decline": [
+          "Not a problem, thanks for your time anyways."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:LUMINA"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "RHYS",
+      "name": "Rhys",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 4,
+      "requirement": {
+        "text": "Talk to Rhys",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Deep Caverns",
+        "x": 31,
+        "y": 12,
+        "z": 14
+      },
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "JACK_O_LANTERN",
+            "name": "Jack o' Lantern",
+            "amount": 512
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "FARMING_XP",
+          "item": null,
+          "name": "Farming XP",
+          "amount": 1000,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "COPPER",
+          "item": null,
+          "name": "Copper",
+          "amount": 2,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I found an unexplored cave while mining for titanium. But it's too dark to see in there, even for me! Can you spare any glowing pumpkins?"
+        ],
+        "accept": [
+          "Thank you! Discovery awaits."
+        ],
+        "decline": [
+          "Well then, I will even mine in total darkness if I must!"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:RHYS"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "SEYMOUR",
+      "name": "Seymour",
+      "rarity": "RARE",
+      "gardenLevel": 4,
+      "requirement": {
+        "text": "Talk to Seymour",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 29,
+        "y": 66,
+        "z": -40
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "VELVET_TOP_HAT",
+          "name": "Velvet Top Hat",
+          "amount": 1,
+          "chancePercent": 25,
+          "note": "one random piece of Seymour's Special Armor"
+        },
+        {
+          "type": "ITEM",
+          "item": "CASHMERE_JACKET",
+          "name": "Cashmere Jacket",
+          "amount": 1,
+          "chancePercent": 25,
+          "note": "one random piece of Seymour's Special Armor"
+        },
+        {
+          "type": "ITEM",
+          "item": "SATIN_TROUSERS",
+          "name": "Satin Trousers",
+          "amount": 1,
+          "chancePercent": 25,
+          "note": "one random piece of Seymour's Special Armor"
+        },
+        {
+          "type": "ITEM",
+          "item": "OXFORD_SHOES",
+          "name": "Oxford Shoes",
+          "amount": 1,
+          "chancePercent": 25,
+          "note": "one random piece of Seymour's Special Armor"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Wanting to buy something from me? I got some pretty fancy tuxedos for sale, for a price of a small fortune."
+        ],
+        "accept": [
+          "Wow, don't you look dashing with that! Pleasure doing business with you."
+        ],
+        "decline": [
+          "*sigh* You're missing out on some awfully fancy gear."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:SEYMOUR"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "TYASHOI_ALCHEMIST",
+      "name": "Tyashoi Alchemist",
+      "rarity": "RARE",
+      "gardenLevel": 4,
+      "requirement": {
+        "text": "Talk to Tyashoi Alchemist",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": "GREAT_SPOOK",
+      "location": {
+        "area": "Hub/Great Spook",
+        "x": 41,
+        "y": 68,
+        "z": -55
+      },
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [],
+        "accept": [],
+        "decline": []
+      },
+      "available": false,
+      "unavailableReason": "Great Spook event is not built",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted items not on wiki list (InfoNeeded/blank on Georik); desire unknown"
+    },
+    {
+      "id": "CLERK_SERAPHINE",
+      "name": "Clerk Seraphine",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 5,
+      "requirement": {
+        "text": "Talk to Seraphine",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": -1,
+        "y": 79,
+        "z": 10
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUGAR_CANE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Hey {player}, the mayor elections are coming up and I've ran out of ballot paper! Could you help me out?"
+        ],
+        "accept": [
+          "Thank you very much! I'll make sure to give these extra ballots to only the elites!"
+        ],
+        "decline": [
+          "Oh no... I might have to cancel the elections now..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:CLERK_SERAPHINE"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "JACOBUS",
+      "name": "Jacobus",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 5,
+      "requirement": {
+        "text": "Talk to Jacobus",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": -50,
+        "y": 70,
+        "z": -61
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUGAR_CANE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "A recipe has no soul. It is up to the cook to bring that ingredient to the table."
+        ],
+        "accept": [
+          "Knowledge is the food of the soul."
+        ],
+        "decline": [
+          "One cannot sleep well, love well, think well, if one has not dined well."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:JACOBUS"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "LIBRARIAN",
+      "name": "Librarian",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 5,
+      "requirement": {
+        "text": "Talk to Librarian",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": -69,
+        "y": 70,
+        "z": -80
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUGAR_CANE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Cacti I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_CACTI 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Cane I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_CANE 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Carrot I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_CARROT 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Cocoa I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_COCOA 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Melon I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_MELON 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Moonflower I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_MOONFLOWER 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Mushrooms I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_MUSHROOMS 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Potato I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_POTATO 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Pumpkin I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_PUMPKIN 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Rose I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_ROSE 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Sunflower I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_SUNFLOWER 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Warts I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_WARTS 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Turbo-Wheat I",
+          "amount": 1,
+          "chancePercent": 7.42,
+          "note": "enchanted book: TURBO_WHEAT 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Cultivating I",
+          "amount": 1,
+          "chancePercent": 1,
+          "note": "enchanted book: CULTIVATING 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Delicate V",
+          "amount": 1,
+          "chancePercent": 1,
+          "note": "enchanted book: DELICATE 5"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Replenish I",
+          "amount": 1,
+          "chancePercent": 1,
+          "note": "enchanted book: REPLENISH 1"
+        },
+        {
+          "type": "ITEM",
+          "item": "ENCHANTED_BOOK",
+          "name": "Dedication IV",
+          "amount": 1,
+          "chancePercent": 0.5,
+          "note": "enchanted book: DEDICATION 4"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Greetings! I've been running low on paper recently for my Enchanted Books, could you bring me some Sugar Cane?"
+        ],
+        "accept": [
+          "I'll be sure to make some Enchanted Books out of these, I hope you come around some day!"
+        ],
+        "decline": [
+          "Very unfortunate, I really needed that paper..."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Librarian",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "OPHELIA",
+      "name": "Ophelia",
+      "rarity": "RARE",
+      "gardenLevel": 5,
+      "requirement": {
+        "text": "Talk to Ophelia",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": -86,
+        "y": 55,
+        "z": -140
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUGAR_CANE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Restocking, restocking!"
+        ],
+        "accept": [
+          "Thanks! I'm headed back to my shop, hope to see you there soon!"
+        ],
+        "decline": [
+          "I see. Hopefully next time I see you, you won't be needing anything that requires anything from me..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:OPHELIA"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "XALX",
+      "name": "Xalx",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 5,
+      "requirement": {
+        "text": "Talk to Xalx",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Crystal Hollows",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUGAR_CANE"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "SUGAR",
+            "name": "Sugar",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "MYSTERIOUS_CROP",
+          "name": "Mysterious Crop",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Hello gardener, I've been looking for some sugar to grow my new crop. Wanna try it?"
+        ],
+        "accept": [
+          "Darn humans, you don't understand how to use things..."
+        ],
+        "decline": [
+          "Smart choice."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Xalx",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "wiki item is Sugar; counted as Sugar Cane family"
+    },
+    {
+      "id": "DUSK",
+      "name": "Dusk",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 6,
+      "requirement": {
+        "text": "Talk to Dusk",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 31,
+        "y": 64,
+        "z": -136
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MELON"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "CLOUDS_RUNE",
+          "name": "Clouds Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "FIRE_SPIRAL_RUNE",
+          "name": "Fire Spiral Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "GEM_RUNE",
+          "name": "Gem Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "GOLDEN_RUNE",
+          "name": "Golden Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "HEARTS_RUNE",
+          "name": "Hearts Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "HOT_RUNE",
+          "name": "Hot Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "LAVA_RUNE",
+          "name": "Lava Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "LIGHTNING_RUNE",
+          "name": "Lightning Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "MAGIC_RUNE",
+          "name": "Magical Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "MUSIC_RUNE",
+          "name": "Music Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "RAINBOW_RUNE",
+          "name": "Rainbow Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "REDSTONE_RUNE",
+          "name": "Redstone Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "SMOKEY_RUNE",
+          "name": "Smokey Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "SNOW_RUNE",
+          "name": "Snow Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "SPARKLING_RUNE",
+          "name": "Sparkling Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "WAKE_RUNE",
+          "name": "Wake Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "WHITE_SPIRAL_RUNE",
+          "name": "White Spiral Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        },
+        {
+          "type": "ITEM",
+          "item": "ZAP_RUNE",
+          "name": "Zap Rune I",
+          "amount": 1,
+          "chancePercent": 5.5556,
+          "note": "one random Level I rune, uniform pick (exact chances not on the wiki)"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Dusk needs some watermelon to quench his thirst. Dusk would appreciate it."
+        ],
+        "accept": [
+          "Dusk thanks you. Dusk will make sure to visit your farm again."
+        ],
+        "decline": [
+          "Dusk is disappointed. Dusk goes away now."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:DUSK"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "EMISSARY_FRAISER",
+      "name": "Emissary Fraiser",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 6,
+      "requirement": {
+        "text": "Talk to Emissary Fraiser",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": -132,
+        "y": 174,
+        "z": -50
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MELON"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "FLAG",
+          "item": null,
+          "name": "Mithril Powder or Gemstone Powder",
+          "amount": null,
+          "chancePercent": null,
+          "note": "amount not documented; one of the two"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I know what all the others say, but I am the King's true favorite emissary."
+        ],
+        "accept": [
+          "As the King's true favorite only I know he secretly loves melon."
+        ],
+        "decline": [
+          "The King will surely punish you for this disrespect!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Emissary Fraiser",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "RYAN",
+      "name": "Ryan",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 6,
+      "requirement": {
+        "text": "Complete Trial of Fire 20",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "The Park",
+        "x": -364,
+        "y": 102,
+        "z": -90
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Welcome, fellow member of the Campfire Cult. It is time to embrace the Campfire within and sacrifice something. What that something should be is an interesting question. I am thinking potato. Yes. Yes, a good baked potato does sound very good right now."
+        ],
+        "accept": [
+          "Come, my brethren, and let us rejoice!"
+        ],
+        "decline": [
+          "sigh"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Complete Trial of Fire 20",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "Georik says Potato; wiki says Pumpkin (preferred)"
+    },
+    {
+      "id": "SHIFTY",
+      "name": "Shifty",
+      "rarity": "RARE",
+      "gardenLevel": 6,
+      "requirement": {
+        "text": "Talk to Shifty",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 114,
+        "y": 73,
+        "z": 174
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MELON"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "It seems like my brew selection is rather small...I've recently heard that melon juice is really sought after so maybe it can enhance my drinks' flavors!"
+        ],
+        "accept": [
+          "Well done! I'm sure that even Sirius will enjoy my revolutionary melon refreshments."
+        ],
+        "decline": [
+          "What a pity! Enjoy the Bartender's terrible and unrefreshing mixins."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:SHIFTY"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "TERRY",
+      "name": "Terry",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 6,
+      "requirement": {
+        "text": "Talk to Terry",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Winter Island",
+        "x": -92,
+        "y": 78,
+        "z": 25
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MELON"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Ahoy, {player}! People always tell me they like ice cream, but ice never really tastes like anything for me!"
+        ],
+        "accept": [
+          "You are saying I need to combine these items with ice to have a taste? I'll believe it when I see it!"
+        ],
+        "decline": [
+          "I'll keep crunching on those ice cubes, maybe I am missing something."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:TERRY"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "VARGUL",
+      "name": "Vargul",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 6,
+      "requirement": {
+        "text": "Talk to Vargul",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": "GREAT_SPOOK",
+      "location": {
+        "area": "Hub/Great Spook",
+        "x": -3,
+        "y": 74,
+        "z": 150
+      },
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "DARK_CANDY",
+          "name": "Dark Candy",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Sometimes, Dark Candy is not enough to satiate a gnawing hunger. Something...more, is needed."
+        ],
+        "accept": [
+          "Your offering is appreciated."
+        ],
+        "decline": []
+      },
+      "available": false,
+      "unavailableReason": "Great Spook event is not built",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted items not on wiki list (InfoNeeded/blank on Georik); desire unknown"
+    },
+    {
+      "id": "BANKER_BROADJAW",
+      "name": "Banker Broadjaw",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": "Talk to the Banker Broadjaw",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 13,
+        "y": 201,
+        "z": -149
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CACTUS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Standing in that bank all day. Just me and the dwarves. But they are either all business, or drunk. Or both! I need better company!"
+        ],
+        "accept": [
+          "Oh what a lovely specimen this is. I wonder, how should I name you?"
+        ],
+        "decline": [
+          "Well, maybe I will be able to understand the burping dwarves if I try hard enough."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:BANKER_BROADJAW"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "CARPENTER",
+      "name": "Carpenter",
+      "rarity": "RARE",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ALL_FAMILIES",
+        "families": [
+          "MELON",
+          "COCOA_BEANS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "GREENHOUSE_BLUEPRINT",
+          "name": "Greenhouse Blueprint",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "first visit unlocks the Greenhouse; later visits before building it give a blueprint copy"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Hey, <playername>. I found this blueprint laying around in my house, just collecting dust. Thought it might catch your interest."
+        ],
+        "accept": [
+          "Here you go! Hopefully, you'll make better use of it than I ever could."
+        ],
+        "decline": [
+          "No worries, I'll hang on to it for now. I'll come back later."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": "wiki lists Melon Slice and Cocoa Beans without stating and/or; treated as both (fixed multi-item)"
+    },
+    {
+      "id": "CHUNK",
+      "name": "Chunk",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": "Talk to Chunk",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Crystal Hollows",
+        "x": 797,
+        "y": 128,
+        "z": 708
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "MELON",
+          "CACTUS"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_MELON_BLOCK",
+            "name": "Enchanted Melon",
+            "amount": null
+          },
+          {
+            "item": "ENCHANTED_CACTUS_GREEN",
+            "name": "Enchanted Cactus Green",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "SUPERBOOM_TNT",
+          "name": "Superboom TNT",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I have a big issue to get rid of."
+        ],
+        "accept": [
+          "That'll do."
+        ],
+        "decline": [
+          "I guess I'll have to turn up empty-handed."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Chunk",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wiki cell is Item(Enchanted Melon, Enchanted Cactus Green): treated as either Enchanted Melon (melon family) or Enchanted Cactus Green (cactus family); Georik blank"
+    },
+    {
+      "id": "FANN",
+      "name": "Fann",
+      "rarity": "RARE",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": "Talk to Fann",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 10,
+        "y": 73,
+        "z": -62
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "NETHER_WART",
+          "MUSHROOM"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "This pet I'm looking after is super hungry! You got anything?"
+        ],
+        "accept": [
+          "That should work! Hopefully they'll be all tired from eating and finally have a nap."
+        ],
+        "decline": [
+          "Oh my feathers, these little ones are not going to be happy!"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:FANN"
+      ],
+      "verified": true,
+      "notes": "wiki item list (Nether Wart, Mushroom) without stating and/or; treated as either; Georik blank"
+    },
+    {
+      "id": "FRAGILIS",
+      "name": "Fragilis",
+      "rarity": "RARE",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": "Talk to Fragilis",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 88,
+        "y": 199,
+        "z": -108
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CACTUS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Hey you! Can you bring me the hardest block you can mine?"
+        ],
+        "accept": [
+          "Cactus? I'm sure you could do better, but I'll take it for now."
+        ],
+        "decline": [
+          "Just as I thought...I am talking to a softie!"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:FRAGILIS"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "PETE",
+      "name": "Pete",
+      "rarity": "RARE",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": "Listen to the Bear Story",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Crystal Hollows",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUGAR_CANE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Horror stories are better when you have something to snack on y'know? If you help us gather some ingredients, we could roast some tasty marshmallows."
+        ],
+        "accept": [
+          "Thanks Pal! Why don't you sit around the campfire with us and enjoy these tasty treats?"
+        ],
+        "decline": [
+          "No supplies? You wouldn't want to experience what the lil' bear did, would you?"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Listen to the Bear Story",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wiki wants Sugar Cane; Georik blank"
+    },
+    {
+      "id": "PLUMBER_JOE",
+      "name": "Plumber Joe",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": "Talk to Plumber Joe",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 123,
+        "y": 74,
+        "z": -38
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CACTUS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I once dumped a magical water bucket into the toilet. It won't stop overflowing. Anyway, you got something for me?"
+        ],
+        "accept": [
+          "Thanks. That should help me fix my water troubles."
+        ],
+        "decline": [
+          "I guess I'll just try to fix it myself."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Plumber Joe",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ROYAL_RESIDENT_RARE",
+      "name": "Royal Resident",
+      "rarity": "RARE",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": "Receive the Royal Resident's Cake",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 62,
+        "y": 204,
+        "z": 200
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "WHEAT",
+          "SUGAR_CANE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I need one more ingredient to make The Cake for the next person I can get to listen to me."
+        ],
+        "accept": [
+          "This should do it! I've got some counting to do."
+        ],
+        "decline": [
+          "What cake? There is no cake."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Receive the Royal Resident's Cake",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "Georik: Enchanted Sugar or Wheat; two visitors share the display name Royal Resident (Uncommon level 1 and Rare level 7)"
+    },
+    {
+      "id": "TAMMY",
+      "name": "Tammy",
+      "rarity": "RARE",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": "Talk to Tammy",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Mushroom Desert",
+        "x": 284,
+        "y": 104,
+        "z": -545
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CACTUS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I've been planning to build a trap for unaware animals so I can hunt them more efficiently. I really need some cactus, preferably the ones with the biggest spikes!"
+        ],
+        "accept": [
+          "Amazing! Thanks for taking the time! Now, time to finish my Cactus Trap...and hopefully it boosts my pelt earnings."
+        ],
+        "decline": [
+          "You can't tell me that you couldn't find a single cactus..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:TAMMY"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ZOG",
+      "name": "Zog",
+      "rarity": "RARE",
+      "gardenLevel": 7,
+      "requirement": {
+        "text": "Talk to Zog",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 10,
+        "y": 69,
+        "z": -71
+      },
+      "desire": {
+        "mode": "ALL_FAMILIES",
+        "families": [
+          "MELON",
+          "CACTUS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I have a big problem. I lost my sense of taste, now I can't tell the difference between a melon and a cactus..."
+        ],
+        "accept": [
+          "Eating enough of these surely should bring back my taste memories. Thank you."
+        ],
+        "decline": [
+          "My tongue is hurting for some reason..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:ZOG"
+      ],
+      "verified": true,
+      "notes": "Georik: Melons and Cactus (both)"
+    },
+    {
+      "id": "ALCHEMAGE",
+      "name": "Alchemage",
+      "rarity": "RARE",
+      "gardenLevel": 8,
+      "requirement": {
+        "text": "Alchemist Quest",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Crimson Isle",
+        "x": -86,
+        "y": 118,
+        "z": -771
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CARROT"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I miscalculated, I need more for my research."
+        ],
+        "accept": [
+          "As promised, here is your reward."
+        ],
+        "decline": [
+          "You have single-handedly slowed down my research by several years."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Alchemist Quest",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "BEDNOM",
+      "name": "Bednom",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 8,
+      "requirement": {
+        "text": "Talk to Bednom",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": -30,
+        "y": 213,
+        "z": -89
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "COCOA_BEANS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Last night I had another horrible nightmare. I'm afraid to fall asleep again."
+        ],
+        "accept": [
+          "Thank you. I'll make a strong brew from this that'll keep me awake all night."
+        ],
+        "decline": [
+          "Tough love, but maybe you're right. They're only nightmares, right? Not real. Heh."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Bednom",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "COLD_ENJOYER",
+      "name": "Cold Enjoyer",
+      "rarity": "RARE",
+      "gardenLevel": 8,
+      "requirement": {
+        "text": "Talk to Cold Enjoyer",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": -15,
+        "y": 136,
+        "z": 217
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "CACTUS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "In order to better understand the cold, sometimes you have to get warm."
+        ],
+        "accept": [
+          "We're chill, you and I."
+        ],
+        "decline": [
+          "I am not a {player} enjoyer."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:COLD_ENJOYER"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "DUNCAN",
+      "name": "Duncan",
+      "rarity": "RARE",
+      "gardenLevel": 8,
+      "requirement": {
+        "text": "Talk to Duncan",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Catacombs",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MELON"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "PET_ITEM_FARMING_SKILL_BOOST_EPIC",
+          "name": "Farming Exp Boost (50%)",
+          "amount": 1,
+          "chancePercent": 5,
+          "note": "epic pet item; 1 in 20 per wiki citing a staff post"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I'm all out of Melons down in the Catacombs, you got any?"
+        ],
+        "accept": [
+          "Truthfully, I've forgotten how I ended up down there in the first place."
+        ],
+        "decline": [
+          "That's rough. Thanks anyways."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Duncan",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "EMISSARY_CARLTON",
+      "name": "Emissary Carlton",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 8,
+      "requirement": {
+        "text": "Talk to Emissary Carlton",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": -73,
+        "y": 153,
+        "z": -11
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "COCOA_BEANS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "FLAG",
+          "item": null,
+          "name": "Mithril Powder or Gemstone Powder",
+          "amount": null,
+          "chancePercent": null,
+          "note": "amount not documented; one of the two"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "The King has sent me to go shopping for I am his favorite emissary!"
+        ],
+        "accept": [
+          "This will make me gain even more favor with the King!"
+        ],
+        "decline": [
+          "How dare you reject me, the King's favorite emissary?!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Emissary Carlton",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "HOPPITY",
+      "name": "Hoppity",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 8,
+      "requirement": {
+        "text": "Chocolate Factory 3, Talk to Hoppity",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": "HOPPITYS_HUNT",
+      "location": {
+        "area": "Hub",
+        "x": 56,
+        "y": 70,
+        "z": -3
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "COCOA_BEANS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": null,
+          "name": "Random Chocolate Rabbit",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Hoppity's Hunt is on, and I need a break! Got something sweet?"
+        ],
+        "accept": [
+          "Simply exquisite! I don't think I'll ever get tired of chocolate."
+        ],
+        "decline": [
+          "Oh...stingy, aren't we?"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Hoppity's Hunt and the Chocolate Factory are not built",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "LAZY_MINER",
+      "name": "Lazy Miner",
+      "rarity": "RARE",
+      "gardenLevel": 8,
+      "requirement": {
+        "text": "Talk to Lazy Miner",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Gold Mine",
+        "x": -11,
+        "y": 78,
+        "z": -337
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "COCOA_BEANS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "It's <real life day of week>, my resting day! I earned myself a little treat, maybe you could bring me some chocolate?"
+        ],
+        "accept": [
+          "Mmh! This is really good! I'll be sure to come back again when I'm no longer busy!"
+        ],
+        "decline": [
+          "That's really unfortunate, I'll just come back again on my next resting day!"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:LAZY_MINER"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "OLD_MAN_GARRY",
+      "name": "Old Man Garry",
+      "rarity": "RARE",
+      "gardenLevel": 8,
+      "requirement": {
+        "text": "Talk to Old Man Garry",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 5,
+        "y": 200,
+        "z": -109
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "COCOA_BEANS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "People have no manners these days. They come up to me, and disappear instantly! They don't even greet me! Back in my day, we were raised better than that."
+        ],
+        "accept": [
+          "It turns out, manners haven't all been lost yet."
+        ],
+        "decline": [
+          "Of course. What else did I expect from this generation."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Old Man Garry",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "SCOUT_SCARDIUS",
+      "name": "Scout Scardius",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 8,
+      "requirement": {
+        "text": "Talk to Scout Scardius",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": -16,
+        "y": 121,
+        "z": 232
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Do you have any pumpkins I can wear as a mask while down in the Glacite Tunnels?"
+        ],
+        "accept": [
+          "Thanks, hopefully I'll be safe with this to hide behind!"
+        ],
+        "decline": [
+          "You want me to go back down there with nothing to hide behind? Bro..."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:SCOUT_SCARDIUS"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "EMISSARY_SISKO",
+      "name": "Emissary Sisko",
+      "rarity": "RARE",
+      "gardenLevel": 9,
+      "requirement": {
+        "text": "Talk to Emissary Sisko",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Crystal Hollows",
+        "x": 495,
+        "y": 106,
+        "z": 556
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MUSHROOM"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "FLAG",
+          "item": null,
+          "name": "Mithril Powder or Gemstone Powder",
+          "amount": null,
+          "chancePercent": null,
+          "note": "amount not documented; one of the two"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I've heard I can find the best mushrooms here, and as the King's favorite emissary I will bring them to him!"
+        ],
+        "accept": [
+          "My standing as the King's favorite emissary is secured as soon as I bring these back home!"
+        ],
+        "decline": [
+          "You are going to regret this!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Emissary Sisko",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "GARY",
+      "name": "Gary",
+      "rarity": "RARE",
+      "gardenLevel": 9,
+      "requirement": {
+        "text": "Talk to Gary",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": "SEASON_OF_JERRY",
+      "location": {
+        "area": "Jerry's Workshop",
+        "x": 53,
+        "y": 103,
+        "z": 56
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "COCOA_BEANS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "While I love the cold, I can no longer feel my fingers."
+        ],
+        "accept": [
+          "Ooh yes! I can make some hot chocolate with this!"
+        ],
+        "decline": [
+          "No sense of festive spirit in you, is there?"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Jerry's Workshop (Season of Jerry) event is not built",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "GUY",
+      "name": "Guy",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 9,
+      "requirement": {
+        "text": "Talk to Guy",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 52,
+        "y": 78,
+        "z": 20
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MUSHROOM"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Heard you may got some mushrooms...I've been looking for some..."
+        ],
+        "accept": [
+          "Thank ya man, I knew I could trust you! These will come in good use!"
+        ],
+        "decline": [
+          "Oh man gee, that's awful man, call me when you got 'em alright?"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:GUY"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "HENDRIK",
+      "name": "Hendrik",
+      "rarity": "RARE",
+      "gardenLevel": 9,
+      "requirement": {
+        "text": "Talk to Hendrik",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": "SEASON_OF_JERRY",
+      "location": {
+        "area": "Jerry's Workshop",
+        "x": 16,
+        "y": 62,
+        "z": -30
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "POTATO",
+          "CACTUS"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I'm looking to try out a new bait for fishing in the Jerry Pond, can you help me out?"
+        ],
+        "accept": [
+          "This'll work, I'll let you know if I catch anything!"
+        ],
+        "decline": [
+          "Don't come asking me for help anytime soon..."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Jerry's Workshop (Season of Jerry) event is not built",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "wiki item list (Potato, Cactus) without stating and/or; treated as either; Georik blank"
+    },
+    {
+      "id": "LUMBER_JACK",
+      "name": "Lumber Jack",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 9,
+      "requirement": {
+        "text": "Give Lumber Jack Oak Logs",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": -123,
+        "y": 73,
+        "z": -30
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "CARROT",
+          "POTATO",
+          "MELON",
+          "PUMPKIN",
+          "MUSHROOM"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "My assistant is feeling off, and I think we could do with a hearty meal. Do you think you can help us out?"
+        ],
+        "accept": [
+          "Thank you! I'm sure this will make him feel better."
+        ],
+        "decline": [
+          "I thought you'd be more thankful for the sweet axe my assistant gave you."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Give Lumber Jack Oak Logs",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "MASTER_TACTICIAN_FUNK",
+      "name": "Master Tactician Funk",
+      "rarity": "RARE",
+      "gardenLevel": 9,
+      "requirement": {
+        "text": "Talk to Master Tactician Funk",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "The Park",
+        "x": -452,
+        "y": 110,
+        "z": 29
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MUSHROOM"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Recruit, please scavenge the island for any food you can find."
+        ],
+        "accept": [
+          "Satisfactory job, recruit."
+        ],
+        "decline": [
+          "If I could demote you any further I would, recruit."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:MASTER_TACTICIAN_FUNK"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "MOBY",
+      "name": "Moby",
+      "rarity": "RARE",
+      "gardenLevel": 9,
+      "requirement": {
+        "text": "Talk to Moby",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Mushroom Desert",
+        "x": 206,
+        "y": 43,
+        "z": -500
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MUSHROOM"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "CHUM",
+          "name": "Chum",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Listen. Glowing Mushrooms don't seem to be too good for my health. About time I tried something else. You got anything, chum?"
+        ],
+        "accept": [
+          "That's good."
+        ],
+        "decline": [
+          "You are no chum of mine."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:MOBY"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "SHERRY",
+      "name": "Sherry",
+      "rarity": "RARE",
+      "gardenLevel": 9,
+      "requirement": {
+        "text": "Talk to Sherry",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": "SEASON_OF_JERRY",
+      "location": {
+        "area": "Jerry's Workshop",
+        "x": 6,
+        "y": 76,
+        "z": 95
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "PUMPKIN"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "My helmet is constantly breaking. Could you provide me with some Pumpkins to help with maintenance?"
+        ],
+        "accept": [
+          "Thank you, I'll never run out of Pumpkins!"
+        ],
+        "decline": [
+          "I'll look elsewhere for more Pumpkins."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Jerry's Workshop (Season of Jerry) event is not built",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ALCHEMIST",
+      "name": "Alchemist",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 10,
+      "requirement": {
+        "text": "Talk to Alchemist",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 80,
+        "y": 72,
+        "z": -90
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "NETHER_WART"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Been running low on my brewing supplies, Nether Warts are quite hard to come by these days."
+        ],
+        "accept": [
+          "Project Centurion can finally begin. You've been quite the help."
+        ],
+        "decline": [
+          "Unfortunate, I'll see if I can find some Nether Warts from someone else."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:ALCHEMIST"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "AN",
+      "name": "An",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 10,
+      "requirement": {
+        "text": "Talk to An",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Crimson Isle",
+        "x": -621,
+        "y": 108,
+        "z": -741
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "NETHER_WART"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Someone just bought up my entire stock of Nether Wart! Could you help me replenish my supply?"
+        ],
+        "accept": [
+          "Thanks. Hopefully I won't run out again."
+        ],
+        "decline": [
+          "Looks like I'll have to find something else to sell."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to An",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ARCHAEOLOGIST",
+      "name": "Archaeologist",
+      "rarity": "RARE",
+      "gardenLevel": 10,
+      "requirement": {
+        "text": "Relic Hunting Quest",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Spider's Den",
+        "x": -360,
+        "y": 111,
+        "z": -290
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "NETHER_WART"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Oh, hello there! You must be the adventurer who helped who helped me find all those relics."
+        ],
+        "accept": [
+          "I came to visit your Garden and see if I could find any artifacts. I heard there might be something interesting here."
+        ],
+        "decline": [
+          "Oh, that's alright. I understand you're busy with your own adventures."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Relic Hunting Quest",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "BRUUH",
+      "name": "Bruuh",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 10,
+      "requirement": {
+        "text": "Pay Bruuh",
+        "kind": "OTHER",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Crimson Isle",
+        "x": -635,
+        "y": 124,
+        "z": -688
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WHEAT"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "ENCHANTED_HAY_BALE",
+            "name": "Enchanted Hay Bale",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "FLAG",
+          "item": null,
+          "name": "Fairy Soul",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I have a business deal to propose to you. I have something that you need, and you have something that I need. Let's make a deal, shall we?"
+        ],
+        "accept": [
+          "I knew you would come to terms. Pleasure doing business with you."
+        ],
+        "decline": [
+          "Are you trying to scam me, bruh? Get out of here! Oh wait, this is your house...I'll get out of here!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on unbuilt content: Pay Bruuh",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "requests the specific item Enchanted Hay Bale; quantity from the wheat formula"
+    },
+    {
+      "id": "ELLE",
+      "name": "Elle",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 10,
+      "requirement": {
+        "text": "Basic Kuudra Completion",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MUSHROOM"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Sometimes, after a long day of fighting incomprehensible horrors in the Crimson Isle, you just want to kick back."
+        ],
+        "accept": [
+          "Time to kick back and put my feet up, at least until tomorrow!"
+        ],
+        "decline": [
+          "Do you have any idea how many Mushroom Bulls I'll have to go through just to find a single high-quality mushroom?"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Basic Kuudra Completion",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "PEARL_DEALER",
+      "name": "Pearl Dealer",
+      "rarity": "UNCOMMON",
+      "gardenLevel": 10,
+      "requirement": {
+        "text": "Talk to Pearl Dealer",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "The End",
+        "x": -504,
+        "y": 101,
+        "z": -284
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "NETHER_WART"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "My old buddy was a Wart Dealer...I miss him, and his Wart."
+        ],
+        "accept": [
+          "I'm glad that you're keeping him in your memories."
+        ],
+        "decline": [
+          "His memory will soon be lost, like tears in rain."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Pearl Dealer",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ST_JERRY",
+      "name": "St. Jerry",
+      "rarity": "RARE",
+      "gardenLevel": 10,
+      "requirement": {
+        "text": "Talk to St. Jerry",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": "SEASON_OF_JERRY",
+      "location": {
+        "area": "Jerry's Workshop",
+        "x": -22,
+        "y": 76,
+        "z": 92
+      },
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Golly gee - I want to spread joy around the world, in the form of raw materials!"
+        ],
+        "accept": [
+          "Your help has been the greatest gift of all."
+        ],
+        "decline": [
+          "Without your help, I can only supply plain white gifts this holiday."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Jerry's Workshop (Season of Jerry) event is not built",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted items not on wiki list (InfoNeeded/blank on Georik); desire unknown"
+    },
+    {
+      "id": "TOMIOKA",
+      "name": "Tomioka",
+      "rarity": "RARE",
+      "gardenLevel": 10,
+      "requirement": {
+        "text": "Rough Deal Achievement",
+        "kind": "ACHIEVEMENT",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Catacombs",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MUSHROOM"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I ordered a snack down to my room in the Catacombs. Took them years to find me, and even then they forgot the toppings!"
+        ],
+        "accept": [
+          "Sometimes you just have to take matters into your own hands, you know?"
+        ],
+        "decline": [
+          "I didn't expect you of all people to let me down..."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on the Rough Deal Catacombs achievement",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "wiki wants Mushroom; Georik blank"
+    },
+    {
+      "id": "TRINITY",
+      "name": "Trinity",
+      "rarity": "RARE",
+      "gardenLevel": 10,
+      "requirement": {
+        "text": "Talk to Trinity",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Catacombs",
+        "x": null,
+        "y": null,
+        "z": null
+      },
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [],
+        "accept": [],
+        "decline": []
+      },
+      "available": false,
+      "unavailableReason": "NPC to talk to does not exist in this repo: Talk to Trinity",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted items not on wiki list (InfoNeeded/blank on Georik); desire unknown"
+    },
+    {
+      "id": "CHANTELLE",
+      "name": "Chantelle",
+      "rarity": "RARE",
+      "gardenLevel": 11,
+      "requirement": {
+        "text": "Talk to Chantelle",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub/Carnival",
+        "x": -83,
+        "y": 71,
+        "z": -18
+      },
+      "desire": {
+        "mode": "ALL_FAMILIES",
+        "families": [
+          "SUNFLOWER",
+          "MOONFLOWER"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "CARNIVAL_TICKET",
+          "name": "Carnival Ticket",
+          "amount": 5,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I like to press a flower for each place the Carnival stops at. Do you have any?"
+        ],
+        "accept": [
+          "Thank you! These smell amazing!"
+        ],
+        "decline": [
+          "Oh, that's unfortunate. Maybe next time?"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:CHANTELLE"
+      ],
+      "verified": true,
+      "notes": "Georik time gate is Carnival; the wiki says this gate is bugged and she visits at any time, so no event gate is applied; wiki lists Sunflower and Moonflower without stating and/or; treated as both (fixed multi-item)"
+    },
+    {
+      "id": "DULIN",
+      "name": "Dulin",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 11,
+      "requirement": {
+        "text": "Talk to Dulin",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 15,
+        "y": 128,
+        "z": 206
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "POTATO"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "I suppose this is your very own kingdom in a sense, {player}? Splendid."
+        ],
+        "accept": [
+          "Potatoes are a dwarf's favorite food. They are like us in many ways, springing to life from the soil under even the harshest conditions.",
+          "That resolve is what makes us who we are and keeps our flame alight.",
+          "We will push beyond the tunnels and retake what is ours, no matter the cost."
+        ],
+        "decline": [
+          "This doesn't change things between us - you are still needed as a member of the Expedition Team."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:DULIN"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ERIHANN",
+      "name": "Erihann",
+      "rarity": "RARE",
+      "gardenLevel": 11,
+      "requirement": {
+        "text": "Talk to Erihann",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 42,
+        "y": 97,
+        "z": 94
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "NETHER_WART"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Hi! I'm looking for a very specific crop."
+        ],
+        "accept": [
+          "Nether Warts have some...unique properties, that make them especially useful to me"
+        ],
+        "decline": [
+          "Oh."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:ERIHANN"
+      ],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "TAL_KER",
+      "name": "Tal Ker",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 11,
+      "requirement": {
+        "text": "Listen to everything Tal Ker has to say",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MOONFLOWER"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": null,
+          "name": "Dimensional Infusion",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I'm not really in the mood to talk right now",
+          "At least not right now",
+          "I'm all business today"
+        ],
+        "accept": [
+          "Thanks for the lovely flowers",
+          "They're a gift to myself, sort of",
+          "You see, recently I spoke to the wizard up in his big tower"
+        ],
+        "decline": [
+          "I wonder what your alternate self is like",
+          "Maybe they are a florist",
+          "And they give out flowers to everyone, even if they can't afford them"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Listen to everything Tal Ker has to say",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "DANTE_GOON",
+      "name": "Dante Goon",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 12,
+      "requirement": {
+        "text": "Visit Dante Memorial",
+        "kind": "OTHER",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "WILD_ROSE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "POPPY",
+          "name": "Poppy",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "where am i? oh i am here now."
+        ],
+        "accept": [
+          "o7"
+        ],
+        "decline": [
+          "{player} worst"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on unbuilt content: Visit Dante Memorial",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "FROZEN_ALEX",
+      "name": "Frozen Alex",
+      "rarity": "RARE",
+      "gardenLevel": 12,
+      "requirement": {
+        "text": "Unlock 5 perks from the Ice Essence Shop",
+        "kind": "ESSENCE_PERKS",
+        "count": 5
+      },
+      "event": "SEASON_OF_JERRY",
+      "location": {
+        "area": "Jerry's Workshop",
+        "x": -74,
+        "y": 74,
+        "z": -6
+      },
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ESSENCE",
+          "item": null,
+          "name": "Ice Essence",
+          "amount": 10,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [],
+        "accept": [],
+        "decline": []
+      },
+      "available": false,
+      "unavailableReason": "Jerry's Workshop (Season of Jerry) event is not built",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted item marked InfoNeeded on the wiki and blank on Georik; desire unknown"
+    },
+    {
+      "id": "GEMMA",
+      "name": "Gemma",
+      "rarity": "RARE",
+      "gardenLevel": 12,
+      "requirement": {
+        "text": "Unlock 5 perks from the Diamond Essence Shop",
+        "kind": "ESSENCE_PERKS",
+        "count": 5
+      },
+      "event": null,
+      "location": {
+        "area": "Crystal Hollows",
+        "x": 475,
+        "y": 106,
+        "z": 513
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUGAR_CANE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ESSENCE",
+          "item": null,
+          "name": "Diamond Essence",
+          "amount": 10,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Oh, a human! I think...?"
+        ],
+        "accept": [
+          "Nice seeing you! It gets a bit lonely down in the Hollows."
+        ],
+        "decline": [
+          "Maybe next time!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "essence shop perk counts are not tracked for this shop",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "MAEVE",
+      "name": "Maeve",
+      "rarity": "MYTHIC",
+      "gardenLevel": 12,
+      "requirement": {
+        "text": null,
+        "kind": "NONE",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "CROPIE",
+            "name": "Cropie",
+            "amount": null
+          },
+          {
+            "item": "SQUASH",
+            "name": "Squash",
+            "amount": null
+          },
+          {
+            "item": "FERMENTO",
+            "name": "Fermento",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": null,
+          "name": "Harvest Harbinger V Potion",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Ah, so the Garden isn't just full of weeds, huh?",
+          "Finally, someone worth talking to. You look like you know the difference between a Cropie and a lump of dirt.",
+          "I'm in the market for some rare materials. Maybe you're familiar?"
+        ],
+        "accept": [
+          "Ah, a trade well made. A potion for you, brewed by yours truly.",
+          "Good deal. Here, this potion isn't found on any old store shelf. Don't waste it.",
+          "You're not here on Seth's behalf, are you? I mean, he's cute but he could never afford me."
+        ],
+        "decline": [
+          "No materials? Huh, I guess your adventures are as empty as your inventory."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL"
+      ],
+      "verified": true,
+      "notes": "wiki has request lines for Cropie, Squash and Fermento; amounts not documented"
+    },
+    {
+      "id": "MARCO",
+      "name": "Marco",
+      "rarity": "RARE",
+      "gardenLevel": 12,
+      "requirement": {
+        "text": "Marco the Artist Quest",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Hub",
+        "x": 90,
+        "y": 76,
+        "z": 4
+      },
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "SUNFLOWER",
+          "MOONFLOWER",
+          "WILD_ROSE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Hey there! I'm looking for a new type of flower to plant in my Garden."
+        ],
+        "accept": [
+          "This'll do nicely! Ciao!"
+        ],
+        "decline": [
+          "If you ever change your mind, you know where to find me!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Marco the Artist Quest",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "wiki item list (Sunflower, Moonflower, Wild Rose) without stating and/or; treated as any one; Georik blank"
+    },
+    {
+      "id": "MARIGOLD",
+      "name": "Marigold",
+      "rarity": "RARE",
+      "gardenLevel": 12,
+      "requirement": {
+        "text": "Unlock 5 perks from the Gold Essence Shop",
+        "kind": "ESSENCE_PERKS",
+        "count": 5
+      },
+      "event": null,
+      "location": {
+        "area": "Dwarven Mines",
+        "x": 181,
+        "y": 150,
+        "z": 60
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "MELON"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ESSENCE",
+          "item": null,
+          "name": "Gold Essence",
+          "amount": 10,
+          "chancePercent": null,
+          "note": "sheet only"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "May I quickly grab some Melon, please? I left the Gold Essence Shop unattended!"
+        ],
+        "accept": [
+          "Have you ever tried eating a Glistening Melon Slice? It's not easy, let me tell you!"
+        ],
+        "decline": [
+          "I'm in too much of a rush to be angry! Bye!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "essence shop perk counts are not tracked for this shop",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "ROMERO",
+      "name": "Romero",
+      "rarity": "RARE",
+      "gardenLevel": 12,
+      "requirement": {
+        "text": "Love's Trial Quest",
+        "kind": "QUEST",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_OF_FAMILIES",
+        "families": [
+          "SUNFLOWER",
+          "MOONFLOWER",
+          "WILD_ROSE"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Fancy seeing you here, friend! Today is a special day for me, as I am seeing Juliette! Think you can help me get her some flowers?"
+        ],
+        "accept": [
+          "You're a lifesaver! Today's going to be the best day ever! Well, after my wedding day, that is."
+        ],
+        "decline": [
+          "Just because I see Juliette every day doesn't mean it's not a reason to celebrate."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on an unbuilt quest: Love's Trial Quest",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": "Georik says Wild Rose only; wiki item list (Sunflower, Moonflower, Wild Rose) preferred"
+    },
+    {
+      "id": "SPIDER_TAMER",
+      "name": "Spider Tamer",
+      "rarity": "RARE",
+      "gardenLevel": 12,
+      "requirement": {
+        "text": "Unlock 5 perks from the Spider Essence Shop",
+        "kind": "ESSENCE_PERKS",
+        "count": 5
+      },
+      "event": null,
+      "location": {
+        "area": "Spider's Den",
+        "x": -298,
+        "y": 62,
+        "z": -194
+      },
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ESSENCE",
+          "item": null,
+          "name": "Spider Essence",
+          "amount": 10,
+          "chancePercent": null,
+          "note": "sheet only"
+        }
+      ],
+      "dialogue": {
+        "offer": [],
+        "accept": [],
+        "decline": []
+      },
+      "available": false,
+      "unavailableReason": "essence shop perk counts are not tracked for this shop",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted items not on wiki list (InfoNeeded/blank on Georik); desire unknown"
+    },
+    {
+      "id": "TYZZO",
+      "name": "Tyzzo",
+      "rarity": "RARE",
+      "gardenLevel": 12,
+      "requirement": {
+        "text": "Unlock 5 perks from the Dragon Essence Shop",
+        "kind": "ESSENCE_PERKS",
+        "count": 5
+      },
+      "event": null,
+      "location": {
+        "area": "The End",
+        "x": -597,
+        "y": 5,
+        "z": -272
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "NETHER_WART"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ESSENCE",
+          "item": null,
+          "name": "Dragon Essence",
+          "amount": 10,
+          "chancePercent": null,
+          "note": "sheet only"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "A tribute is needed."
+        ],
+        "accept": [
+          "This will make for the perfect sacrifice."
+        ],
+        "decline": [
+          "This simply won't do."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "essence shop perk counts are not tracked for this shop",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "CHIEF_SCORN",
+      "name": "Chief Scorn",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 13,
+      "requirement": {
+        "text": "Reach 12,000 Barbarian Reputation",
+        "kind": "REPUTATION",
+        "count": 12000
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "NETHER_WART"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Greetings, I am in dire need of my favorite snack."
+        ],
+        "accept": [
+          "I lied about having an important meeting just to be here, glad it was worth it!"
+        ],
+        "decline": [
+          "That is...not ideal!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Crimson Isle faction reputation requirement is not wired to the Garden",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "QUEEN_NYX",
+      "name": "Queen Nyx",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 13,
+      "requirement": {
+        "text": "Reach 12,000 Mage Reputation",
+        "kind": "REPUTATION",
+        "count": 12000
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "UNKNOWN",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [],
+      "dialogue": {
+        "offer": [
+          "Us Taika people love the taste of Melon Juice so much that we'd go just about anywhere to get some."
+        ],
+        "accept": [
+          "Normally I'd send somebody else to do my bidding for me, but this is an urgent matter."
+        ],
+        "decline": [
+          "Do you have the faintest idea who you're talking to? I won't forget this!"
+        ]
+      },
+      "available": false,
+      "unavailableReason": "Crimson Isle faction reputation requirement is not wired to the Garden",
+      "requirementChecks": [],
+      "verified": false,
+      "notes": "wanted item marked InfoNeeded on the wiki and blank on Georik; desire unknown"
+    },
+    {
+      "id": "TAYLOR",
+      "name": "Taylor",
+      "rarity": "MYTHIC",
+      "gardenLevel": 14,
+      "requirement": {
+        "text": "Talk to Taylor",
+        "kind": "TALK_TO_NPC",
+        "count": null
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "FIXED_ITEMS",
+        "families": [],
+        "count": null,
+        "items": [
+          {
+            "item": "DEEPFRIES",
+            "name": "Deepfries",
+            "amount": 256
+          },
+          {
+            "item": "SALTED_SUNFLOWER_SEEDS",
+            "name": "Salted Sunflower Seeds",
+            "amount": 256
+          },
+          {
+            "item": "ENCHANTED_BAKED_POTATO",
+            "name": "Enchanted Baked Potato",
+            "amount": 3200
+          },
+          {
+            "item": "FLORAL_GELATIN",
+            "name": "Floral Gelatin",
+            "amount": 256
+          },
+          {
+            "item": "MELON_JUICE",
+            "name": "Melon Juice",
+            "amount": 256
+          },
+          {
+            "item": "COMPACTED_WILD_ROSE",
+            "name": "Compacted Wild Rose",
+            "amount": 2560
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "SKIN",
+          "item": "FAST_FOOD_BARN_SKIN",
+          "name": "Fast Food Barn Skin",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "Deepfries offer set"
+        },
+        {
+          "type": "FARMING_XP",
+          "item": null,
+          "name": "Farming XP",
+          "amount": 614400,
+          "chancePercent": null,
+          "note": "Deepfries offer set; overrides the formula"
+        },
+        {
+          "type": "SKIN",
+          "item": "JELLY_GREENHOUSE_SKIN",
+          "name": "Jelly Garden Greenhouse Skin",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "Floral Gelatin offer set"
+        },
+        {
+          "type": "FARMING_XP",
+          "item": null,
+          "name": "Farming XP",
+          "amount": 1500000,
+          "chancePercent": null,
+          "note": "Floral Gelatin offer set; overrides the formula"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Hi adventurer.",
+          "I have a pretty dashing cosmetic if you would care to exchange it for some rare crops."
+        ],
+        "accept": [
+          "I can see you value fashion over most farmers!",
+          "Cheers!"
+        ],
+        "decline": [
+          "Such a shame.",
+          "Make sure to check out my Fashion Shop in the Hub to see if there's something you'd like more."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "TALKED_TO:TAYLOR"
+      ],
+      "verified": true,
+      "notes": "two offer sets: Fast Food Barn Skin (Deepfries, Salted Sunflower Seeds, Enchanted Baked Potato) or Jelly Garden Greenhouse Skin (Floral Gelatin, Melon Juice, Compacted Wild Rose)"
+    },
+    {
+      "id": "VINCENT",
+      "name": "Vincent",
+      "rarity": "LEGENDARY",
+      "gardenLevel": 14,
+      "requirement": {
+        "text": "Donate a Dye",
+        "kind": "OTHER",
+        "count": null
+      },
+      "event": null,
+      "location": {
+        "area": "Artist's Abode",
+        "x": 79.5,
+        "y": 74,
+        "z": 53.5
+      },
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUNFLOWER"
+        ],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "DYE_WILD_STRAWBERRY",
+          "name": "Wild Strawberry Dye",
+          "amount": 1,
+          "chancePercent": 0.04,
+          "note": "1 in 2500"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "I decided to take a leisurely stroll in search of inspiration, and as fate would have it - I ended up here!"
+        ],
+        "accept": [
+          "These...these speak to me. There's something about them. You have inspired me once again!"
+        ],
+        "decline": [
+          "If you truly love nature, you will find beauty everywhere. You, my friend, need to open your eyes."
+        ]
+      },
+      "available": false,
+      "unavailableReason": "depends on unbuilt content: Donate a Dye",
+      "requirementChecks": [],
+      "verified": true,
+      "notes": null
+    },
+    {
+      "id": "LUDLETH",
+      "name": "Ludleth",
+      "rarity": "MYTHIC",
+      "gardenLevel": 15,
+      "requirement": {
+        "text": "Serve 100 unique visitors",
+        "kind": "SERVE_UNIQUE",
+        "count": 100
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ONE_FAMILY",
+        "families": [
+          "SUNFLOWER"
+        ],
+        "count": null,
+        "items": [
+          {
+            "item": "COMPACTED_SUNFLOWER",
+            "name": "Compacted Sunflower",
+            "amount": null
+          }
+        ]
+      },
+      "rewards": [
+        {
+          "type": "FLAG",
+          "item": null,
+          "name": "Ability to buy the Rose Dragon pet",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "unlocked by completing the first offer"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "You've amassed quite a fortune. I have an antiquity that might interest you. However, I wouldn't sell it to just anybody, you know? I need something in return. So, what do you say?"
+        ],
+        "accept": [
+          "I'm glad we are in agreement, <Player>. Meet me in the Hub, we'll discuss our business then."
+        ],
+        "decline": [
+          "Not everyone can afford my lifestyle!"
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "UNIQUE_SERVED:100"
+      ],
+      "verified": false,
+      "notes": "wiki marks the wanted item InfoNeeded; Compacted Sunflower listed; Ludleth is the only Mythic visitor that does not request unique items"
+    },
+    {
+      "id": "SPACEMAN",
+      "name": "Spaceman",
+      "rarity": "SPECIAL",
+      "gardenLevel": 15,
+      "requirement": {
+        "text": "Serve 75 unique visitors",
+        "kind": "SERVE_UNIQUE",
+        "count": 75
+      },
+      "event": null,
+      "location": null,
+      "desire": {
+        "mode": "ANY_CROP",
+        "families": [],
+        "count": null,
+        "items": []
+      },
+      "rewards": [
+        {
+          "type": "ITEM",
+          "item": "DCTR_SPACE_HELM",
+          "name": "Space Helmet",
+          "amount": 1,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "FARMING_XP",
+          "item": null,
+          "name": "Farming XP",
+          "amount": 100000,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "GARDEN_XP",
+          "item": null,
+          "name": "Garden XP",
+          "amount": 75,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "COPPER",
+          "item": null,
+          "name": "Copper",
+          "amount": 100,
+          "chancePercent": null,
+          "note": null
+        },
+        {
+          "type": "SKIN",
+          "item": "ASTRONAUT_PERSONALITY",
+          "name": "Astronaut Minion Skin",
+          "amount": 1,
+          "chancePercent": null,
+          "note": "only if charmed with the Carrot-Colored Vinyl Set on the previous visit"
+        }
+      ],
+      "dialogue": {
+        "offer": [
+          "Man, coming back here after being in space for so long feels really good.",
+          "Something I have been craving for a while is [crop], they unfortunately do not grow in space."
+        ],
+        "accept": [
+          "You are amazing, thank you so much."
+        ],
+        "decline": [
+          "I am quite disappointed."
+        ]
+      },
+      "available": true,
+      "unavailableReason": null,
+      "requirementChecks": [
+        "GARDEN_LEVEL",
+        "UNIQUE_SERVED:75"
+      ],
+      "verified": true,
+      "notes": "any crop item except Seeds; amount is the quantity that sells to an NPC for about 1B coins; partial hand-ins accepted; no refund if declined; guaranteed on every 3,000th visitor when eligible"
+    }
+  ]
+}

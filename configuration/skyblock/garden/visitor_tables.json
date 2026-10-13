@@ -1,0 +1,936 @@
+{
+  "baseQuantity": {
+    "1": [
+      500,
+      1000
+    ],
+    "2": [
+      1250,
+      2500
+    ],
+    "3": [
+      2000,
+      4000
+    ],
+    "4": [
+      5000,
+      10000
+    ],
+    "5": [
+      10000,
+      20000
+    ],
+    "6": [
+      20000,
+      40000
+    ],
+    "7": [
+      30000,
+      60000
+    ],
+    "8": [
+      40000,
+      80000
+    ],
+    "9": [
+      50000,
+      100000
+    ],
+    "10": [
+      70000,
+      140000
+    ],
+    "11": [
+      75000,
+      150000
+    ],
+    "12": [
+      80000,
+      160000
+    ],
+    "13": [
+      85000,
+      180000
+    ],
+    "14": [
+      90000,
+      180000
+    ],
+    "15": [
+      95000,
+      190000
+    ]
+  },
+  "rarityQuantityMultiplier": {
+    "UNCOMMON": 1,
+    "RARE": 1.5,
+    "LEGENDARY": 3,
+    "MYTHIC": 3,
+    "SPECIAL": 3
+  },
+  "rarityWeights": {
+    "UNCOMMON": 50,
+    "RARE": 15,
+    "LEGENDARY": 3,
+    "MYTHIC": 0.3,
+    "SPECIAL": 0.03
+  },
+  "gardenXpByLevel": {
+    "1": 2,
+    "2": 3,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 8,
+    "8": 10,
+    "9": 12,
+    "10": 15,
+    "11": 15,
+    "12": 15,
+    "13": 15,
+    "14": 15,
+    "15": 15
+  },
+  "gardenXpRarityMultiplier": {
+    "UNCOMMON": 1,
+    "RARE": 2,
+    "LEGENDARY": 5,
+    "MYTHIC": 5,
+    "SPECIAL": 5
+  },
+  "farmingXpRarityMultiplier": {
+    "UNCOMMON": 0.05,
+    "RARE": 0.06,
+    "LEGENDARY": 0.75,
+    "MYTHIC": 0.75,
+    "SPECIAL": 0.75
+  },
+  "copperRarityMultiplier": {
+    "UNCOMMON": 1,
+    "RARE": 1,
+    "LEGENDARY": 5,
+    "MYTHIC": 5,
+    "SPECIAL": 5
+  },
+  "bits": 5,
+  "cooldownMinutes": [
+    {
+      "uniqueServed": 0,
+      "minutes": 15
+    },
+    {
+      "uniqueServed": 50,
+      "minutes": 12
+    },
+    {
+      "uniqueServed": 100,
+      "minutes": 10
+    }
+  ],
+  "families": {
+    "WHEAT": {
+      "multiplier": 1,
+      "items": [
+        {
+          "item": "WHEAT",
+          "name": "Wheat",
+          "rawUnits": 1
+        },
+        {
+          "item": "BREAD",
+          "name": "Bread",
+          "rawUnits": 3
+        },
+        {
+          "item": "ENCHANTED_WHEAT",
+          "name": "Enchanted Wheat",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_BREAD",
+          "name": "Enchanted Bread",
+          "rawUnits": 480
+        },
+        {
+          "item": "ENCHANTED_HAY_BALE",
+          "name": "Enchanted Hay Bale",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "CARROT": {
+      "multiplier": 3.5,
+      "items": [
+        {
+          "item": "CARROT",
+          "name": "Carrot",
+          "rawUnits": 1
+        },
+        {
+          "item": "GOLDEN_CARROT",
+          "name": "Golden Carrot",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_CARROT",
+          "name": "Enchanted Carrot",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_GOLDEN_CARROT",
+          "name": "Enchanted Golden Carrot",
+          "rawUnits": 160
+        }
+      ]
+    },
+    "POTATO": {
+      "multiplier": 3,
+      "items": [
+        {
+          "item": "POTATO",
+          "name": "Potato",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_POTATO",
+          "name": "Enchanted Potato",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_BAKED_POTATO",
+          "name": "Enchanted Baked Potato",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "PUMPKIN": {
+      "multiplier": 0.85,
+      "items": [
+        {
+          "item": "PUMPKIN",
+          "name": "Pumpkin",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_PUMPKIN",
+          "name": "Enchanted Pumpkin",
+          "rawUnits": 160
+        },
+        {
+          "item": "POLISHED_PUMPKIN",
+          "name": "Polished Pumpkin",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "SUGAR_CANE": {
+      "multiplier": 2,
+      "items": [
+        {
+          "item": "SUGAR_CANE",
+          "name": "Sugar Cane",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_SUGAR",
+          "name": "Enchanted Sugar",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_SUGAR_CANE",
+          "name": "Enchanted Sugar Cane",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "MELON": {
+      "multiplier": 4,
+      "items": [
+        {
+          "item": "MELON_SLICE",
+          "name": "Melon Slice",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_MELON",
+          "name": "Enchanted Melon Slice",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_MELON_BLOCK",
+          "name": "Enchanted Melon",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "CACTUS": {
+      "multiplier": 1.5,
+      "items": [
+        {
+          "item": "CACTUS",
+          "name": "Cactus",
+          "rawUnits": 1
+        },
+        {
+          "item": "CACTUS_GREEN",
+          "name": "Cactus Green",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_CACTUS_GREEN",
+          "name": "Enchanted Cactus Green",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_CACTUS",
+          "name": "Enchanted Cactus",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "COCOA_BEANS": {
+      "multiplier": 1,
+      "items": [
+        {
+          "item": "COCOA_BEANS",
+          "name": "Cocoa Beans",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_COCOA_BEANS",
+          "name": "Enchanted Cocoa Beans",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_COOKIE",
+          "name": "Enchanted Cookie",
+          "rawUnits": 20480
+        }
+      ]
+    },
+    "MUSHROOM": {
+      "multiplier": 0.95,
+      "items": [
+        {
+          "item": "BROWN_MUSHROOM",
+          "name": "Brown Mushroom",
+          "rawUnits": 1
+        },
+        {
+          "item": "RED_MUSHROOM",
+          "name": "Red Mushroom",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_BROWN_MUSHROOM",
+          "name": "Enchanted Brown Mushroom",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_RED_MUSHROOM",
+          "name": "Enchanted Red Mushroom",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_BROWN_MUSHROOM_BLOCK",
+          "name": "Enchanted Brown Mushroom Block",
+          "rawUnits": 25600
+        },
+        {
+          "item": "ENCHANTED_RED_MUSHROOM_BLOCK",
+          "name": "Enchanted Red Mushroom Block",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "NETHER_WART": {
+      "multiplier": 3,
+      "items": [
+        {
+          "item": "NETHER_WART",
+          "name": "Nether Wart",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_NETHER_WART",
+          "name": "Enchanted Nether Wart",
+          "rawUnits": 160
+        },
+        {
+          "item": "MUTANT_NETHER_WART",
+          "name": "Mutant Nether Wart",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "SUNFLOWER": {
+      "multiplier": 1,
+      "items": [
+        {
+          "item": "SUNFLOWER",
+          "name": "Sunflower",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_SUNFLOWER",
+          "name": "Enchanted Sunflower",
+          "rawUnits": 160
+        },
+        {
+          "item": "COMPACTED_SUNFLOWER",
+          "name": "Compacted Sunflower",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "MOONFLOWER": {
+      "multiplier": 1,
+      "items": [
+        {
+          "item": "MOONFLOWER",
+          "name": "Moonflower",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_MOONFLOWER",
+          "name": "Enchanted Moonflower",
+          "rawUnits": 160
+        },
+        {
+          "item": "COMPACTED_MOONFLOWER",
+          "name": "Compacted Moonflower",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "WILD_ROSE": {
+      "multiplier": 1,
+      "items": [
+        {
+          "item": "WILD_ROSE",
+          "name": "Wild Rose",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_WILD_ROSE",
+          "name": "Enchanted Wild Rose",
+          "rawUnits": 160
+        },
+        {
+          "item": "COMPACTED_WILD_ROSE",
+          "name": "Compacted Wild Rose",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "RAW_MUTTON": {
+      "multiplier": 1,
+      "items": [
+        {
+          "item": "MUTTON",
+          "name": "Raw Mutton",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_MUTTON",
+          "name": "Enchanted Mutton",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_COOKED_MUTTON",
+          "name": "Enchanted Cooked Mutton",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "RAW_PORKCHOP": {
+      "multiplier": 1,
+      "items": [
+        {
+          "item": "PORKCHOP",
+          "name": "Raw Porkchop",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_PORK",
+          "name": "Enchanted Pork",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_GRILLED_PORK",
+          "name": "Enchanted Grilled Pork",
+          "rawUnits": 25600
+        }
+      ]
+    },
+    "RAW_RABBIT": {
+      "multiplier": 1,
+      "items": [
+        {
+          "item": "RAW_RABBIT",
+          "name": "Raw Rabbit",
+          "rawUnits": 1
+        },
+        {
+          "item": "ENCHANTED_RAW_RABBIT",
+          "name": "Enchanted Raw Rabbit",
+          "rawUnits": 160
+        },
+        {
+          "item": "ENCHANTED_COOKED_RABBIT",
+          "name": "Enchanted Cooked Rabbit",
+          "rawUnits": 25600
+        }
+      ]
+    }
+  },
+  "uniqueMilestones": [
+    {
+      "tier": 1,
+      "visitors": 1,
+      "cumulative": 1,
+      "farmingXp": 500,
+      "gardenXp": 30,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 2,
+      "visitors": 4,
+      "cumulative": 5,
+      "farmingXp": 1000,
+      "gardenXp": 60,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 3,
+      "visitors": 5,
+      "cumulative": 10,
+      "farmingXp": 2000,
+      "gardenXp": 90,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 4,
+      "visitors": 10,
+      "cumulative": 20,
+      "farmingXp": 3000,
+      "gardenXp": 120,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 5,
+      "visitors": 10,
+      "cumulative": 30,
+      "farmingXp": 4000,
+      "gardenXp": 150,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 6,
+      "visitors": 10,
+      "cumulative": 40,
+      "farmingXp": 5000,
+      "gardenXp": 180,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 7,
+      "visitors": 10,
+      "cumulative": 50,
+      "farmingXp": 6000,
+      "gardenXp": 210,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 8,
+      "visitors": 10,
+      "cumulative": 60,
+      "farmingXp": 7000,
+      "gardenXp": 240,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 9,
+      "visitors": 10,
+      "cumulative": 70,
+      "farmingXp": 8000,
+      "gardenXp": 270,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 10,
+      "visitors": 10,
+      "cumulative": 80,
+      "farmingXp": 9000,
+      "gardenXp": 300,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 11,
+      "visitors": 10,
+      "cumulative": 90,
+      "farmingXp": 10000,
+      "gardenXp": 330,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 12,
+      "visitors": 10,
+      "cumulative": 100,
+      "farmingXp": 10000,
+      "gardenXp": 360,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 13,
+      "visitors": 10,
+      "cumulative": 110,
+      "farmingXp": 12000,
+      "gardenXp": 390,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 14,
+      "visitors": 10,
+      "cumulative": 120,
+      "farmingXp": 14000,
+      "gardenXp": 420,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 15,
+      "visitors": 10,
+      "cumulative": 130,
+      "farmingXp": 16000,
+      "gardenXp": 450,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 16,
+      "visitors": 10,
+      "cumulative": 140,
+      "farmingXp": 18000,
+      "gardenXp": 480,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 17,
+      "visitors": 10,
+      "cumulative": 150,
+      "farmingXp": 20000,
+      "gardenXp": 510,
+      "skyblockXp": 3
+    }
+  ],
+  "acceptedMilestones": [
+    {
+      "tier": 1,
+      "visitors": 1,
+      "cumulative": 1,
+      "farmingXp": 500,
+      "gardenXp": 30,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 2,
+      "visitors": 4,
+      "cumulative": 5,
+      "farmingXp": 1000,
+      "gardenXp": 60,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 3,
+      "visitors": 5,
+      "cumulative": 10,
+      "farmingXp": 2000,
+      "gardenXp": 90,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 4,
+      "visitors": 10,
+      "cumulative": 20,
+      "farmingXp": 3000,
+      "gardenXp": 120,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 5,
+      "visitors": 10,
+      "cumulative": 30,
+      "farmingXp": 5000,
+      "gardenXp": 150,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 6,
+      "visitors": 20,
+      "cumulative": 50,
+      "farmingXp": 7500,
+      "gardenXp": 180,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 7,
+      "visitors": 25,
+      "cumulative": 75,
+      "farmingXp": 15000,
+      "gardenXp": 210,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 8,
+      "visitors": 25,
+      "cumulative": 100,
+      "farmingXp": 20000,
+      "gardenXp": 240,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 9,
+      "visitors": 50,
+      "cumulative": 150,
+      "farmingXp": 25000,
+      "gardenXp": 270,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 10,
+      "visitors": 50,
+      "cumulative": 200,
+      "farmingXp": 30000,
+      "gardenXp": 300,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 11,
+      "visitors": 100,
+      "cumulative": 300,
+      "farmingXp": 30000,
+      "gardenXp": 330,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 12,
+      "visitors": 100,
+      "cumulative": 400,
+      "farmingXp": 30000,
+      "gardenXp": 360,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 13,
+      "visitors": 100,
+      "cumulative": 500,
+      "farmingXp": 30000,
+      "gardenXp": 390,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 14,
+      "visitors": 100,
+      "cumulative": 600,
+      "farmingXp": 30000,
+      "gardenXp": 420,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 15,
+      "visitors": 100,
+      "cumulative": 700,
+      "farmingXp": 30000,
+      "gardenXp": 450,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 16,
+      "visitors": 100,
+      "cumulative": 800,
+      "farmingXp": 30000,
+      "gardenXp": 480,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 17,
+      "visitors": 100,
+      "cumulative": 900,
+      "farmingXp": 30000,
+      "gardenXp": 510,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 18,
+      "visitors": 100,
+      "cumulative": 1000,
+      "farmingXp": 30000,
+      "gardenXp": 540,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 19,
+      "visitors": 100,
+      "cumulative": 1100,
+      "farmingXp": 30000,
+      "gardenXp": 570,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 20,
+      "visitors": 100,
+      "cumulative": 1200,
+      "farmingXp": 30000,
+      "gardenXp": 600,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 21,
+      "visitors": 100,
+      "cumulative": 1300,
+      "farmingXp": 30000,
+      "gardenXp": 630,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 22,
+      "visitors": 100,
+      "cumulative": 1400,
+      "farmingXp": 30000,
+      "gardenXp": 660,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 23,
+      "visitors": 100,
+      "cumulative": 1500,
+      "farmingXp": 30000,
+      "gardenXp": 690,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 24,
+      "visitors": 100,
+      "cumulative": 1600,
+      "farmingXp": 30000,
+      "gardenXp": 720,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 25,
+      "visitors": 100,
+      "cumulative": 1700,
+      "farmingXp": 30000,
+      "gardenXp": 750,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 26,
+      "visitors": 100,
+      "cumulative": 1800,
+      "farmingXp": 30000,
+      "gardenXp": 780,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 27,
+      "visitors": 150,
+      "cumulative": 1950,
+      "farmingXp": 30000,
+      "gardenXp": 810,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 28,
+      "visitors": 150,
+      "cumulative": 2100,
+      "farmingXp": 30000,
+      "gardenXp": 840,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 29,
+      "visitors": 200,
+      "cumulative": 2300,
+      "farmingXp": 30000,
+      "gardenXp": 870,
+      "skyblockXp": 3
+    },
+    {
+      "tier": 30,
+      "visitors": 200,
+      "cumulative": 2500,
+      "farmingXp": 30000,
+      "gardenXp": 900,
+      "skyblockXp": 3
+    }
+  ],
+  "globalRareDrops": [
+    {
+      "item": "HYPERCHARGE_GARDEN_CHIP",
+      "chancePercent": 3,
+      "minRarity": "UNCOMMON"
+    },
+    {
+      "item": "QUICKDRAW_GARDEN_CHIP",
+      "chancePercent": 3,
+      "minRarity": "UNCOMMON"
+    },
+    {
+      "item": "FLOWERING_BOUQUET",
+      "chancePercent": 2,
+      "minRarity": "UNCOMMON"
+    },
+    {
+      "item": "OVERGROWN_GRASS",
+      "chancePercent": 0.1,
+      "minRarity": "UNCOMMON"
+    },
+    {
+      "item": "GREEN_BANDANA",
+      "chancePercent": 0.4,
+      "minRarity": "RARE"
+    }
+  ],
+  "queueChatter": [
+    "I'm tired",
+    "When's the next update coming out?",
+    "I heard this guy sells bad crops",
+    "I missed breakfast for this",
+    "They cut in line!",
+    "Its too hot out",
+    "That person stinks",
+    "I was here first",
+    "My feet hurt...",
+    "I'm falling asleep",
+    "I demand a refund!",
+    "Hey, don't push!",
+    "Terrible service!",
+    "This is taking too long",
+    "Their Abiphone is too loud",
+    "I'm supposed to be home by now",
+    "Nice barn!",
+    "It's too cold out",
+    "It's dark outside",
+    "What time is it? / It's {time} right now",
+    "I should get my order filled first / But I've been waiting here longer",
+    "Let's play tic tac toe! / I win! / YOU CHEATED!",
+    "Have you heard what {mayor} said? / Yeah, it was quite disturbing.",
+    "Knock knock / Who's there? / Zupdog / What's Zupdog? / Nothing much, what's up with you?"
+  ],
+  "assumptions": [
+    "Sunflower, Moonflower and Wild Rose quantity multipliers are unknown on the wiki and set to 1.",
+    "ANY_CROP and Any Two/Three Crops draw from the ten classic crop families (WHEAT, CARROT, POTATO, PUMPKIN, SUGAR_CANE, MELON, CACTUS, COCOA_BEANS, MUSHROOM, NETHER_WART); flowers and raw meats are excluded.",
+    "Every Enchanted tier is 160 of the previous one (five slots of 32, SkyBlockRecipe.getStandardEnchantedRecipe); Hay Bale, Baked Potato, Polished Pumpkin, Enchanted Sugar Cane, Mutant Nether Wart, Compacted flowers, Cooked Mutton, Grilled Pork and Cooked Rabbit are therefore 25,600 raw.",
+    "Bread is taken as 3 Wheat (vanilla recipe) and Enchanted Bread as 160 Bread = 480 raw following the repo recipe (item_id BREAD); real Hypixel Enchanted Bread is 60 Wheat, so the repo is 8x costlier per item.",
+    "Golden Carrot counts as 1 raw Carrot (vanilla 8 gold nuggets + carrot); Enchanted Golden Carrot = 160 Golden Carrot = 160 raw.",
+    "Enchanted Melon (ENCHANTED_MELON_BLOCK) is set to 25,600 raw (160 Enchanted Melon Slice, matching its 51,200 sell value) although its yml item_id is MELON_BLOCK (9 slices, which would give 1,440).",
+    "Enchanted Cactus (ENCHANTED_CACTUS) is set to 25,600 raw (160 Enchanted Cactus Green, matching its 102,400 sell value) although its yml item_id is CACTUS (which would give 160).",
+    "Enchanted Brown/Red Mushroom Block has no mushroom block recipe in the catalogue; set to 25,600 raw (160 Enchanted Mushroom) as the closest chain value.",
+    "Enchanted Cookie recipe is 4 x 32 Enchanted Cocoa Beans + 32 Wheat; counted as 128 Enchanted Cocoa Beans = 20,480 raw cocoa, ignoring the 32 Wheat.",
+    "Enchanted Cake (Ravenous Rhino) is a fixed item and is not part of any family ladder.",
+    "The unique-visitor milestone table lists tiers 1..17 as requested; the wiki table continues to tier 32 (+10 visitors, +2,000 Farming XP, +30 Garden XP per tier).",
+    "The Unfulfilled Jerryseed drop chance on Jerry is unknown (\"random\" on the wiki); 10 percent is a placeholder.",
+    "Raw Mutton, Raw Porkchop and Raw Rabbit multipliers are 1 per the wiki table."
+  ]
+}

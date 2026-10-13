@@ -17,6 +17,9 @@ import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.garden.farm.GardenCropGrowth;
 import net.swofty.type.skyblockgeneric.garden.npc.NPCSam;
+import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
+import net.swofty.type.skyblockgeneric.garden.visitor.VisitorNpc;
+import net.swofty.type.thegarden.world.VisitorTicker;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.user.AreaSidebar;
 import net.swofty.type.skyblockgeneric.user.garden.SkyBlockGarden;
@@ -46,6 +49,10 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
         SkyBlockGarden.setPresence(new GardenWorldDecor());
         AreaSidebar.register(GardenSidebar::area);
         AreaSidebar.registerDetail(GardenSidebar::detail);
+        MinecraftServer.getSchedulerManager()
+                .buildTask(VisitorTicker::tick)
+                .repeat(TaskSchedule.seconds(1))
+                .schedule();
         MinecraftServer.getSchedulerManager()
                 .buildTask(GardenCropGrowth::tick)
                 .repeat(TaskSchedule.seconds(1))
@@ -103,7 +110,11 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<HypixelNPC> getNPCs() {
-        return new ArrayList<>(List.of(NPCSam.get()));
+        List<HypixelNPC> npcs = new ArrayList<>();
+        npcs.add(NPCSam.get());
+        VisitorCatalogue.get().visitors().stream().filter(VisitorCatalogue.Visitor::available)
+                .forEach(visitor -> npcs.add(new VisitorNpc(visitor)));
+        return npcs;
     }
 
     @Override

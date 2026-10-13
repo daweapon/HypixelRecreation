@@ -1,12 +1,15 @@
 package net.swofty.type.skyblockgeneric.garden.quest;
 
 import net.swofty.type.skyblockgeneric.garden.npc.NPCSam;
+import net.swofty.type.skyblockgeneric.garden.visitor.VisitorService;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
 import net.swofty.type.skyblockgeneric.mission.SkyBlockMission;
 import net.swofty.type.skyblockgeneric.mission.missions.garden.*;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public final class GardenQuests {
+    private static final String FIRST_CUSTOMER = "ANDREW";
+
     private GardenQuests() {
     }
 
@@ -42,6 +45,16 @@ public final class GardenQuests {
         if (end(player, MissionPurchasePlot.class)) {
             NPCSam.get().plotUnlocked(player);
         }
+    }
+
+    public static void visitorServed(SkyBlockPlayer player) {
+        if (end(player, MissionServeFirstCustomer.class)) {
+            NPCSam.get().firstCustomerServed(player);
+        }
+    }
+
+    public static void firstCustomer(SkyBlockPlayer player) {
+        VisitorService.callNow(player, FIRST_CUSTOMER);
     }
 
     public static void plotCleaned(SkyBlockPlayer player) {

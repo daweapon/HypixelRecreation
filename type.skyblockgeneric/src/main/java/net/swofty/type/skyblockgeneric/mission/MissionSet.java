@@ -47,6 +47,7 @@ public enum MissionSet {
     HELPFUL_FARMER(MissionTalkToSam.class, MissionBringWheatToSam.class),
     LEARNING_TO_COMPOST(MissionTalkToSamAtComposter.class, MissionPurchaseFuel.class, MissionRefuelComposter.class, MissionTakeCompost.class),
     PREPPING_THE_PLOT(MissionPurchasePlot.class, MissionCleanPlot.class, MissionTalkToSamPlotCleaned.class),
+    CROP_N_PROFIT(MissionBringBreadWheat.class, MissionSetUpStand.class, MissionServeFirstCustomer.class),
     MOLE_PROBLEMS(MissionTalkToMolbert.class, MissionCollectJungleLogs.class, MissionGiveMolbertJungleLogs.class, MissionLeaveTheArea.class, MissionTalkToMolbertAgain.class, MissionPlaceTraps.class, MissionTalkToMolbertAgainAgain.class,
             MissionLeaveTheAreaAgain.class, MissionTalkToMolbertAgainAgainAgain.class)
     ;

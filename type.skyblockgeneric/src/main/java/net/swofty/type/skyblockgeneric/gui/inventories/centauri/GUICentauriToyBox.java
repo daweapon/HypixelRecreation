@@ -56,6 +56,7 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         unavailable(layout, 28, Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard.");
         action(layout, 29, Material.GREEN_DYE, "<2>Pile of Sowdust", "<8>Farmed the hard way.", "<7>Give yourself <2>1,000,000,000 Sowdust<7>.", p -> addGarden(p, profile -> profile.addSowdust(1_000_000_000D)));
         action(layout, 30, Material.BRICKS, "<c>Vault of Copper", "<8>Shiny and reddish.", "<7>Give yourself <c>1,000,000 Copper<7>.", p -> addGarden(p, profile -> profile.addCopper(1_000_000D)));
+        action(layout, 40, Material.VILLAGER_SPAWN_EGG, "<a>Visitors, Right Now!", "<8>Impatient customers.", "<7>Call the next <a>Garden Visitor <7>immediately.", p -> net.swofty.type.skyblockgeneric.garden.visitor.VisitorService.callNow(p, null));
         action(layout, 31, Material.SUNFLOWER, "<a>\"Organically Grown\" Garden Levels!", "<8>Fertiliser for your progress.", "<7>Gain <a>10,000 Garden Experience<7>.", p -> net.swofty.type.skyblockgeneric.garden.GardenService.addGardenXp(p, 10_000));
         info(layout, 50, Material.OAK_SIGN, "<a>Got Suggestions?", "<7>Share Alpha Network utility ideas in our discord!");
         Components.back(layout, 48, ctx);

@@ -17,7 +17,7 @@ public class MissionTalkToSamPlotCleaned extends GardenQuestMission {
 
     @Override
     protected @Nullable Class<? extends SkyBlockMission> next() {
-        return null;
+        return MissionBringBreadWheat.class;
     }
 
     @Override

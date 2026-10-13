@@ -9,6 +9,8 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.GardenProgress;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
+import net.swofty.type.skyblockgeneric.garden.visitor.VisitorData;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -34,6 +36,15 @@ public class GardenInfoModule extends TablistModule {
                 level > 0 ? StringUtility.getAsRomanNumeral(level) : "0"), TablistSkinRegistry.GRAY));
         entries.add(new TablistEntry(Text.key("tablist.garden.copper", StringUtility.commaify(Math.floor(garden.getCopper()))), TablistSkinRegistry.GRAY));
         entries.add(new TablistEntry(Text.key("tablist.garden.sowdust", StringUtility.commaify(Math.floor(garden.getSowdust()))), TablistSkinRegistry.GRAY));
+        VisitorData visitors = garden.visitors();
+        entries.add(getGrayEntry());
+        entries.add(new TablistEntry(Text.of("<b><l>Visitors: <f>({})", visitors.visible().size()), TablistSkinRegistry.GRAY));
+        for (VisitorData.Present present : visitors.visible()) {
+            VisitorCatalogue.Visitor visitor = VisitorCatalogue.get().visitor(present.getId());
+            entries.add(new TablistEntry(Text.of(" {}", visitor == null ? present.getId() : visitor.coloured()), TablistSkinRegistry.GRAY));
+        }
+        long wait = Math.max(0, visitors.getNextVisitorAt() - System.currentTimeMillis());
+        entries.add(new TablistEntry(Text.of(" <7>Next Visitor: <f>{}", wait == 0 ? "Soon" : (wait / 60_000 + 1) + "m"), TablistSkinRegistry.GRAY));
         fillRestWithGray(entries);
         return entries;
     }

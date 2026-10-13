@@ -13,7 +13,10 @@ import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.GardenProgress;
 import net.swofty.type.skyblockgeneric.garden.GardenService;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.garden.visitor.VisitorService;
+import net.swofty.type.skyblockgeneric.garden.visitor.VisitorSlots;
 import net.swofty.type.skyblockgeneric.gui.inventories.garden.GUIGardenDesk;
+import net.swofty.type.skyblockgeneric.gui.inventories.garden.GUIVisitorLogbook;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.garden.GardenPresence;
 
@@ -36,6 +39,8 @@ public class GardenWorldDecor implements GardenPresence {
 
     @Override
     public void arrived(SkyBlockPlayer player, SharedInstance instance) {
+        VisitorService.tick(player);
+        VisitorSlots.refresh(player.getUuid(), Gardens.profile(player).visitors());
         spawnInteractions(instance);
         departed(player);
 
@@ -95,8 +100,8 @@ public class GardenWorldDecor implements GardenPresence {
                 (player, _) -> ((SkyBlockPlayer) player).openView(new GUIGardenDesk()));
         desk.setInstance(instance, new Pos(DESK.x(), 71, DESK.z()));
 
-        InteractionEntity logbook = new InteractionEntity(1.2f, 1.5f, (player, _) ->
-                player.sendMessage(Text.key("gui_garden_desk.not_added", "Visitor's Logbook")));
+        InteractionEntity logbook = new InteractionEntity(1.2f, 1.5f,
+                (player, _) -> ((SkyBlockPlayer) player).openView(new GUIVisitorLogbook()));
         logbook.setInstance(instance, new Pos(LOGBOOK.x(), 71, LOGBOOK.z()));
     }
 }
