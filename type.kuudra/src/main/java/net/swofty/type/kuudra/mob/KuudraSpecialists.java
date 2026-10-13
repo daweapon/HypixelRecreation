@@ -140,8 +140,8 @@ public final class KuudraSpecialists {
     /** Leaps slowly around the platform, leaving a ring of particles where it lands, and sometimes teleports. */
     public static final class Slasher extends KuudraMob {
         public Slasher(KuudraFight fight, KuudraMobSpec spec) {
-            super(fight, spec, EntityType.WITHER_SKELETON, MobType.INFERNAL);
-            setEquipment(EquipmentSlot.MAIN_HAND, ItemStack.of(Material.IRON_SWORD));
+            super(fight, spec, EntityType.MAGMA_CUBE, MobType.INFERNAL);
+            editEntityMeta(net.minestom.server.entity.metadata.cube.MagmaCubeMeta.class, meta -> meta.setSize(4));
         }
 
         @Override

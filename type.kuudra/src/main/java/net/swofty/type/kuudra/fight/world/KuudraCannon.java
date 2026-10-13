@@ -1,14 +1,16 @@
 package net.swofty.type.kuudra.fight.world;
 
 import net.minestom.server.coordinate.Pos;
-import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.instance.Instance;
-import net.minestom.server.instance.block.Block;
+import net.swofty.type.skyblockgeneric.entity.ArmorStandModels;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -18,9 +20,19 @@ import java.util.function.Consumer;
 public final class KuudraCannon {
     private static final String LABEL = "<f><l>CANNON\n<e><l>RIGHT-CLICK TO MOUNT";
 
+    private static final List<ArmorStandModels.Stand> RIGHT = ArmorStandModels.load("/kuudra_models.json", "cannon_right");
+    private static final List<ArmorStandModels.Stand> LEFT = ArmorStandModels.load("/kuudra_models.json", "cannon_left");
+
+    private static List<ArmorStandModels.Stand> nearestModel(Pos at) {
+        return distance(RIGHT, at) <= distance(LEFT, at) ? RIGHT : LEFT;
+    }
+
+    private static double distance(List<ArmorStandModels.Stand> model, Pos at) {
+        return model.getFirst().position().distance(at);
+    }
+
     private final Pos at;
-    private final Entity base;
-    private final Entity barrel;
+    private final List<Entity> model = new ArrayList<>();
     private final Entity label;
     private final Entity hitbox;
     private final Entity seat;
@@ -28,8 +40,11 @@ public final class KuudraCannon {
 
     public KuudraCannon(Instance instance, Pos at, Consumer<SkyBlockPlayer> onUse) {
         this.at = at;
-        base = Displays.block(instance, at, Block.POLISHED_BLACKSTONE_BRICKS, new Vec(1.4, 0.8, 1.4));
-        barrel = Displays.block(instance, at.add(0, 0.8, 0), Block.BLACK_CONCRETE, new Vec(0.7, 0.7, 2.2));
+        for (ArmorStandModels.Stand stand : nearestModel(at)) {
+            LivingEntity entity = stand.create();
+            entity.setInstance(instance, stand.position());
+            model.add(entity);
+        }
         label = Displays.text(instance, at.add(0, 2.2, 0), LABEL);
         hitbox = Displays.hitbox(instance, at, 1.5f, 1.6f, onUse);
         seat = new Entity(EntityType.ITEM_DISPLAY);
@@ -39,8 +54,6 @@ public final class KuudraCannon {
 
     public void tick() {
         if (rider != null && !seat.getPassengers().contains(rider)) dismount();
-        float yaw = rider == null ? at.yaw() : rider.getPosition().yaw();
-        barrel.teleport(at.add(0, 0.8, 0).withView(yaw, 0));
     }
 
     public boolean mount(SkyBlockPlayer player) {
@@ -66,7 +79,7 @@ public final class KuudraCannon {
     }
 
     public boolean owns(Entity entity) {
-        return entity == hitbox || entity == base || entity == barrel;
+        return entity == hitbox || model.contains(entity);
     }
 
     public Pos position() {
@@ -75,8 +88,7 @@ public final class KuudraCannon {
 
     public void remove() {
         dismount();
-        Displays.remove(base);
-        Displays.remove(barrel);
+        model.forEach(Displays::remove);
         Displays.remove(label);
         Displays.remove(hitbox);
         Displays.remove(seat);

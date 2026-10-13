@@ -4,9 +4,11 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.swofty.type.kuudra.fight.BallistaBuild;
+import net.swofty.type.skyblockgeneric.entity.ArmorStandModels;
 import net.swofty.type.skyblockgeneric.crimson.kuudra.data.KuudraArena;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -24,26 +26,8 @@ import java.util.function.Consumer;
  * the rider's look.
  */
 public final class BallistaSite {
-    private record Part(double x, double y, double z, Block block, double sx, double sy, double sz) {
-    }
-
-    private static final List<Part> MODEL = List.of(
-            new Part(0, 0, 0, Block.DARK_OAK_PLANKS, 3.2, 0.4, 4.2),
-            new Part(-1.3, 0.4, -1.6, Block.STRIPPED_DARK_OAK_LOG, 0.5, 1.4, 0.5),
-            new Part(1.3, 0.4, -1.6, Block.STRIPPED_DARK_OAK_LOG, 0.5, 1.4, 0.5),
-            new Part(-1.3, 0.4, 1.6, Block.STRIPPED_DARK_OAK_LOG, 0.5, 1.4, 0.5),
-            new Part(1.3, 0.4, 1.6, Block.STRIPPED_DARK_OAK_LOG, 0.5, 1.4, 0.5),
-            new Part(0, 1.8, 0, Block.SPRUCE_PLANKS, 2.8, 0.3, 3.6),
-            new Part(0, 2.1, 0.4, Block.DARK_OAK_LOG, 0.7, 0.7, 4.6),
-            new Part(0, 2.1, -2.2, Block.POLISHED_BLACKSTONE, 1.0, 0.9, 0.6),
-            new Part(-1.4, 2.4, -1.6, Block.SPRUCE_LOG, 2.4, 0.35, 0.35),
-            new Part(1.4, 2.4, -1.6, Block.SPRUCE_LOG, 2.4, 0.35, 0.35),
-            new Part(-2.7, 2.4, -1.2, Block.SPRUCE_LOG, 0.35, 0.35, 0.9),
-            new Part(2.7, 2.4, -1.2, Block.SPRUCE_LOG, 0.35, 0.35, 0.9),
-            new Part(0, 2.55, -0.3, Block.COBWEB, 5.2, 0.12, 0.12),
-            new Part(0, 2.85, 0.4, Block.IRON_BARS, 0.3, 0.3, 4.0),
-            new Part(0, 2.8, -2.5, Block.IRON_BLOCK, 0.5, 0.5, 0.5),
-            new Part(0, 1.2, 2.3, Block.ANVIL, 1.0, 0.8, 1.0));
+    private static final List<ArmorStandModels.Stand> MODEL = ArmorStandModels.load("/kuudra_models.json", "ballista");
+    private static final Vec CAPTURE_CENTRE = new Vec(-102.5, 80, -106.5);
 
     private final Instance instance;
     private final Pos base;
@@ -56,7 +40,7 @@ public final class BallistaSite {
     private static final Vec SEAT = new Vec(0, 1.4, 2.6);
     private static final Vec MUZZLE = new Vec(0, 2.8, -2.5);
 
-    private final List<Entity> parts = new ArrayList<>();
+    private final List<LivingEntity> parts = new ArrayList<>();
     private final Entity overall;
     private final Entity seat;
     private final Consumer<SkyBlockPlayer> onSeatUse;
@@ -107,11 +91,14 @@ public final class BallistaSite {
         float wanted = rider.getPosition().yaw();
         if (Math.abs(Pos.fixYaw(wanted - facing)) < TURN_STEP) return;
         facing = wanted;
-        for (int i = 0; i < parts.size(); i++) {
-            Part part = MODEL.get(i);
-            parts.get(i).teleport(placed(new Vec(part.x(), part.y(), part.z())));
-        }
+        for (int i = 0; i < parts.size(); i++) parts.get(i).teleport(standPosition(MODEL.get(i)));
         seat.teleport(placed(SEAT));
+    }
+
+    private Pos standPosition(ArmorStandModels.Stand stand) {
+        Pos at = stand.position();
+        Pos turned = placed(new Vec(at.x() - CAPTURE_CENTRE.x(), at.y() - CAPTURE_CENTRE.y(), at.z() - CAPTURE_CENTRE.z()));
+        return turned.withYaw(at.yaw() + facing - NORTH);
     }
 
     public float facing() {
@@ -171,9 +158,10 @@ public final class BallistaSite {
     public void reveal(double fraction) {
         int wanted = (int) Math.ceil(MODEL.size() * Math.max(0, Math.min(1, fraction)));
         while (parts.size() < wanted) {
-            Part part = MODEL.get(parts.size());
-            parts.add(Displays.block(instance, placed(new Vec(part.x(), part.y(), part.z())), part.block(),
-                    new Vec(part.sx(), part.sy(), part.sz())));
+            ArmorStandModels.Stand stand = MODEL.get(parts.size());
+            LivingEntity entity = stand.create();
+            entity.setInstance(instance, standPosition(stand));
+            parts.add(entity);
         }
         while (parts.size() > wanted) Displays.remove(parts.removeLast());
     }

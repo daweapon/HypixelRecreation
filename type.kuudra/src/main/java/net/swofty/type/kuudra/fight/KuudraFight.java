@@ -8,6 +8,7 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.coordinate.Vec;
 import net.minestom.server.entity.Entity;
+import net.minestom.server.entity.LivingEntity;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.GameMode;
 import net.minestom.server.entity.damage.EntityDamage;
@@ -27,6 +28,7 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.statistics.ItemStatistic;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.entity.ArmorStandModels;
 import net.swofty.type.kuudra.fight.world.BallistaSite;
 import net.swofty.type.kuudra.fight.world.Displays;
 import net.swofty.type.kuudra.fight.world.ElleLavaRod;
@@ -178,7 +180,11 @@ public final class KuudraFight {
             run.onlineMembers().forEach(this::join);
             ballista = new BallistaSite(instance, arena, this::usePile, this::useBallistaSeat);
             arena.cannons().forEach(at -> cannons.add(new KuudraCannon(instance, at, this::useCannon)));
-            props.add(Displays.block(instance, arena.perkShop(), Block.SMITHING_TABLE, new Vec(1, 1, 1)));
+            for (ArmorStandModels.Stand stand : ArmorStandModels.load("/kuudra_models.json", "perk_shop")) {
+                LivingEntity entity = stand.create();
+                entity.setInstance(instance, stand.position());
+                props.add(entity);
+            }
             props.add(Displays.text(instance, arena.perkShop().add(0, 1.9, 0), "<a><l>Perk Shop"));
             props.add(Displays.hitbox(instance, arena.perkShop(), 1.2f, 1.2f, this::openPerkShop));
             slams = new TentacleSlams(instance, arena.floorY() - 1, spec.tentacles().telegraphTicks());
@@ -1751,7 +1757,7 @@ public final class KuudraFight {
         return instance;
     }
 
-    KuudraArena arena() {
+    public KuudraArena arena() {
         return arena;
     }
 
