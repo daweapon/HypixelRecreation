@@ -151,6 +151,18 @@ public class SkyBlockScoreboard {
                 bitsLine.line(Text.key("scoreboard.skyblock.bits_line",
                     StringUtility.commaify(bits)));
             }
+
+            net.swofty.type.skyblockgeneric.garden.GardenProfile garden = net.swofty.type.skyblockgeneric.garden.Gardens.profile(player);
+            boolean hasCopper = garden.getCopper() >= 1;
+            TextBody.Section copperLine = purse.child("copper").when(() -> hasCopper);
+            if (hasCopper) {
+                copperLine.line(Text.key("scoreboard.skyblock.copper_line", StringUtility.commaify(Math.floor(garden.getCopper()))));
+            }
+            boolean hasSowdust = garden.getSowdust() >= 1;
+            TextBody.Section sowdustLine = purse.child("sowdust").when(() -> hasSowdust);
+            if (hasSowdust) {
+                sowdustLine.line(Text.key("scoreboard.skyblock.sowdust_line", StringUtility.commaify(Math.floor(garden.getSowdust()))));
+            }
         }
 
         List<String> challengeLines = ChallengeSidebar.linesFor(player);

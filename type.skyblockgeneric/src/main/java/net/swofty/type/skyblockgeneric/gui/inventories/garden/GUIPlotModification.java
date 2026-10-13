@@ -1,0 +1,94 @@
+package net.swofty.type.skyblockgeneric.gui.inventories.garden;
+
+import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.item.ItemStack;
+import net.minestom.server.item.Material;
+import net.swofty.commons.text.Text;
+import net.swofty.type.generic.gui.v2.Components;
+import net.swofty.type.generic.gui.v2.DefaultState;
+import net.swofty.type.generic.gui.v2.StatelessView;
+import net.swofty.type.generic.gui.v2.ViewConfiguration;
+import net.swofty.type.generic.gui.v2.ViewLayout;
+import net.swofty.type.generic.gui.v2.context.ViewContext;
+import net.swofty.type.skyblockgeneric.garden.GardenProfile;
+import net.swofty.type.skyblockgeneric.garden.GardenService;
+import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GUIPlotModification extends StatelessView {
+    private final int plot;
+
+    public GUIPlotModification(int plot) {
+        this.plot = plot;
+    }
+
+    @Override
+    public ViewConfiguration<DefaultState> configuration() {
+        return new ViewConfiguration<>(Text.key("gui_garden_upgrades.modify.title", plot), InventoryType.CHEST_6_ROW);
+    }
+
+    @Override
+    public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
+        Components.fill(layout);
+        Components.back(layout, 48, ctx);
+        Components.close(layout, 49);
+
+        for (GardenGrids.Preset preset : GardenGrids.PRESETS) {
+            layout.slot(preset.slot(),
+                    (_, c) -> presetItem(preset, GardenService.profile((SkyBlockPlayer) c.player())),
+                    (_, c) -> select(preset, c));
+        }
+
+        layout.slot(47, GardenMenus.item(Material.WHITE_CONCRETE, Text.key("gui_garden_upgrades.modify.greenhouse.name"), List.of(
+                Text.key("gui_garden_upgrades.modify.greenhouse.lore.1"),
+                Text.key("gui_garden_upgrades.modify.greenhouse.lore.2"),
+                Text.key("gui_garden_upgrades.modify.greenhouse.lore.3"),
+                GardenMenus.blank(),
+                Text.key("gui_garden_upgrades.modify.greenhouse.unavailable"))),
+                (_, c) -> c.player().sendMessage(Text.key("gui_garden_upgrades.modify.greenhouse.unavailable")));
+
+        layout.slot(50, GardenMenus.item(Material.COMMAND_BLOCK, Text.key("gui_garden_upgrades.modify.save.name"), List.of(
+                Text.key("gui_garden_upgrades.modify.save.lore.1"),
+                Text.key("gui_garden_upgrades.modify.save.lore.2"),
+                Text.key("gui_garden_upgrades.modify.save.lore.3"),
+                GardenMenus.blank(),
+                Text.key("gui_garden_upgrades.modify.save.click"))),
+                (_, c) -> c.player().sendMessage(Text.key("gui_garden_upgrades.modify.save.unavailable")));
+
+        layout.slot(51, GardenMenus.item(Material.OAK_SIGN, Text.key("gui_garden_upgrades.modify.name.name"), List.of(
+                Text.key("gui_garden_upgrades.modify.name.lore"),
+                GardenMenus.blank(),
+                Text.key("gui_garden_upgrades.modify.name.current", plot),
+                GardenMenus.blank(),
+                Text.key("gui_garden_upgrades.modify.name.click"))),
+                (_, c) -> c.player().sendMessage(Text.key("gui_garden_upgrades.modify.name.unavailable")));
+    }
+
+    private ItemStack.Builder presetItem(GardenGrids.Preset preset, GardenProfile profile) {
+        List<Text> lore = new ArrayList<>();
+        lore.add(Text.key("gui_garden_upgrades.modify.preset.lore.1"));
+        lore.add(Text.key("gui_garden_upgrades.modify.preset.lore.2"));
+        lore.add(GardenMenus.blank());
+        if (preset.name().equals(profile.plotPreset(plot, GardenGrids.DEFAULT_PRESET))) {
+            lore.add(Text.key("gui_garden_upgrades.modify.preset.selected"));
+            lore.add(GardenMenus.blank());
+        }
+        lore.add(Text.key("gui_garden_upgrades.modify.preset.click"));
+        return GardenMenus.item(preset.icon(), Text.key("gui_garden_upgrades.modify.preset.name", preset.name()), lore);
+    }
+
+    private void select(GardenGrids.Preset preset, ViewContext ctx) {
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        GardenProfile profile = GardenService.profile(player);
+        if (!profile.isPlotUnlocked(plot)) {
+            return;
+        }
+        profile.setPlotPreset(plot, preset.name());
+        Gardens.save(player, profile);
+        player.sendMessage(Text.key("gui_garden_upgrades.modify.preset.changing"));
+        ctx.session(DefaultState.class).refresh();
+    }
+}

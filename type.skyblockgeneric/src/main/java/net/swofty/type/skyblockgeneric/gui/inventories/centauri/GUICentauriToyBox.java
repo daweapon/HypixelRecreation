@@ -54,12 +54,18 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         action(layout, 38, Material.BONE_BLOCK, "<d>Fossil Essence", "<8>Older than time itself.", "<7>Gain <d>100,000 Fossil Essence<7>.", p -> net.swofty.type.skyblockgeneric.essence.Essences.add(p, net.swofty.type.skyblockgeneric.essence.EssenceType.FOSSIL, 100_000));
         action(layout, 39, Material.NETHER_STAR, "<d>Every Essence", "<8>The full collection.", "<7>Gain <d>100,000<7> of every essence type.", p -> { for (net.swofty.type.skyblockgeneric.essence.EssenceType type : net.swofty.type.skyblockgeneric.essence.EssenceType.values()) net.swofty.type.skyblockgeneric.essence.Essences.add(p, type, 100_000); });
         unavailable(layout, 28, Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard.");
-        unavailable(layout, 29, Material.GREEN_DYE, "<2>Pile of Sowdust", "<7>Give yourself <2>1,000,000,000 Sowdust<7>.");
-        unavailable(layout, 30, Material.BRICKS, "<c>Vault of Copper", "<7>Give yourself <c>1,000,000 Copper<7>.");
-        unavailable(layout, 31, Material.SUNFLOWER, "<a>\"Organically Grown\" Garden Levels!", "<7>Increase Garden Experience by a custom amount.");
+        action(layout, 29, Material.GREEN_DYE, "<2>Pile of Sowdust", "<8>Farmed the hard way.", "<7>Give yourself <2>1,000,000,000 Sowdust<7>.", p -> addGarden(p, profile -> profile.addSowdust(1_000_000_000D)));
+        action(layout, 30, Material.BRICKS, "<c>Vault of Copper", "<8>Shiny and reddish.", "<7>Give yourself <c>1,000,000 Copper<7>.", p -> addGarden(p, profile -> profile.addCopper(1_000_000D)));
+        action(layout, 31, Material.SUNFLOWER, "<a>\"Organically Grown\" Garden Levels!", "<8>Fertiliser for your progress.", "<7>Gain <a>10,000 Garden Experience<7>.", p -> net.swofty.type.skyblockgeneric.garden.GardenService.addGardenXp(p, 10_000));
         info(layout, 50, Material.OAK_SIGN, "<a>Got Suggestions?", "<7>Share Alpha Network utility ideas in our discord!");
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);
+    }
+
+    private void addGarden(SkyBlockPlayer player, java.util.function.Consumer<net.swofty.type.skyblockgeneric.garden.GardenProfile> change) {
+        var profile = net.swofty.type.skyblockgeneric.garden.Gardens.profile(player);
+        change.accept(profile);
+        net.swofty.type.skyblockgeneric.garden.Gardens.save(player, profile);
     }
 
     private void duplicate(SkyBlockPlayer player) {

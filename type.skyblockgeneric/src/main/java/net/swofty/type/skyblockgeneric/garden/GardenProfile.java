@@ -14,6 +14,7 @@ import java.util.TreeSet;
 @Getter
 public class GardenProfile {
     public static final int PLOT_COUNT = 24;
+    public static final int DEFAULT_SPEED_CAP = 100;
 
     @Setter
     private double gardenXp;
@@ -60,6 +61,10 @@ public class GardenProfile {
 
     public void setSpeedCap(GardenCrop crop, int cap) {
         speedCaps.put(crop, cap);
+    }
+
+    public void resetSpeedCap(GardenCrop crop) {
+        speedCaps.remove(crop);
     }
 
     public boolean isPlotUnlocked(int plot) {

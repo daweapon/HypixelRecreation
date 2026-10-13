@@ -154,6 +154,7 @@ public final class MaxStickService {
             new Step("Bits", MaxStickService::giveMaxBits),
             new Step("Dark Auction calendar", MaxStickService::unlockDarkAuctionCalendar),
             new Step("Farming contests", MaxStickService::maxFarmingContests),
+            new Step("Garden", net.swofty.type.skyblockgeneric.garden.GardenService::maxOut),
             new Step("Accessory Bag upgrades", MaxStickService::maxAccessoryBagUpgrades),
             new Step("Personal bank", MaxStickService::maxPersonalBank),
             new Step("Hub upgrades", MaxStickService::maxHubUpgrades),

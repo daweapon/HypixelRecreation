@@ -1,6 +1,8 @@
 package net.swofty.type.skyblockgeneric.garden;
 
 import lombok.Getter;
+import net.swofty.commons.skyblock.item.ItemType;
+import org.jetbrains.annotations.Nullable;
 
 @Getter
 public enum GardenCrop {
@@ -22,5 +24,25 @@ public enum GardenCrop {
 
     GardenCrop(String displayName) {
         this.displayName = displayName;
+    }
+
+    public static @Nullable GardenCrop ofItem(@Nullable ItemType type) {
+        if (type == null) return null;
+        return switch (type.name()) {
+            case "WHEAT" -> WHEAT;
+            case "CARROT" -> CARROT;
+            case "POTATO" -> POTATO;
+            case "PUMPKIN" -> PUMPKIN;
+            case "SUGAR_CANE" -> SUGAR_CANE;
+            case "MELON_SLICE" -> MELON;
+            case "CACTUS" -> CACTUS;
+            case "COCOA_BEANS" -> COCOA_BEANS;
+            case "RED_MUSHROOM", "BROWN_MUSHROOM" -> MUSHROOM;
+            case "NETHER_WART" -> NETHER_WART;
+            case "SUNFLOWER" -> SUNFLOWER;
+            case "MOONFLOWER" -> MOONFLOWER;
+            case "WILD_ROSE" -> WILD_ROSE;
+            default -> null;
+        };
     }
 }
