@@ -122,7 +122,7 @@ public final class AttributeEffectService {
             case FORAGING_ISLAND -> server == ServerType.SKYBLOCK_GALATEA || server == ServerType.SKYBLOCK_THE_PARK;
             case FISHING_ISLAND ->
                     server == ServerType.SKYBLOCK_BACKWATER_BAYOU || server == ServerType.SKYBLOCK_JERRYS_WORKSHOP;
-            case MINING_ISLAND -> server == ServerType.SKYBLOCK_DWARVEN_MINES || server == ServerType.SKYBLOCK_DEEP_CAVERNS
+            case MINING_ISLAND -> server == ServerType.SKYBLOCK_DWARVEN_MINES || server == ServerType.SKYBLOCK_CRYSTAL_HOLLOWS || server == ServerType.SKYBLOCK_DEEP_CAVERNS
                     || server == ServerType.SKYBLOCK_GOLD_MINE;
             case BACKWATER_BAYOU -> server == ServerType.SKYBLOCK_BACKWATER_BAYOU;
             case COMBAT_ISLAND ->

@@ -1,0 +1,99 @@
+structures:
+  - id: jungle_temple
+    name: "Jungle Temple"
+    region: JUNGLE_TEMPLE
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: mines_of_divan
+    name: "Mines of Divan"
+    region: MINES_OF_DIVAN
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: lost_precursor_city
+    name: "Lost Precursor City"
+    region: LOST_PRECURSOR_CITY
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: goblin_queens_den
+    name: "Goblin Queen's Den"
+    region: GOBLIN_QUEENS_DEN
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: king_yolkars_tower
+    name: "King Yolkar's Tower"
+    region: GOBLIN_HOLDOUT
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: deep_goblin_lair
+    name: "Deep Goblin Lair"
+    region: GOBLIN_HOLDOUT
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: khazad_dum
+    name: "Khazad-dûm"
+    region: KHAZAD_DUM
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: dragons_lair
+    name: "Dragon's Lair"
+    region: DRAGONS_LAIR
+    optional: true
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: fairy_grotto_1
+    name: "Fairy Grotto"
+    region: FAIRY_GROTTO
+    optional: true
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: fairy_grotto_2
+    name: "Fairy Grotto"
+    region: FAIRY_GROTTO
+    optional: true
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: fairy_grotto_3
+    name: "Fairy Grotto"
+    region: FAIRY_GROTTO
+    optional: true
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: odawa_hut
+    name: "Odawa's Hut"
+    region: JUNGLE
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: sludge_cage
+    name: "Sludge Cage"
+    region: JUNGLE
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}
+  - id: chunk_stand
+    name: "Chunk's Stand"
+    region: PRECURSOR_REMNANTS
+    optional: false
+    clearance: 40
+    candidates: []
+    anchors: {}

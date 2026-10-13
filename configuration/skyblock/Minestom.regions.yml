@@ -1286,3 +1286,66 @@ regions:
     y2: 255
     z2: 239
     serverType: SKYBLOCK_THE_GARDEN
+  - id: crystal_hollows
+    type: CRYSTAL_HOLLOWS
+    x1: 202
+    y1: 31
+    z1: 202
+    x2: 823
+    y2: 188
+    z2: 823
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_jungle
+    type: JUNGLE
+    x1: 202
+    y1: 31
+    z1: 202
+    x2: 513
+    y2: 188
+    z2: 513
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_mithril_deposits
+    type: MITHRIL_DEPOSITS
+    x1: 202
+    y1: 31
+    z1: 513
+    x2: 513
+    y2: 188
+    z2: 823
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_goblin_holdout
+    type: GOBLIN_HOLDOUT
+    x1: 513
+    y1: 31
+    z1: 202
+    x2: 823
+    y2: 188
+    z2: 513
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_precursor_remnants
+    type: PRECURSOR_REMNANTS
+    x1: 513
+    y1: 31
+    z1: 513
+    x2: 823
+    y2: 188
+    z2: 823
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_magma_fields
+    type: MAGMA_FIELDS
+    x1: 202
+    y1: 31
+    z1: 202
+    x2: 823
+    y2: 64
+    z2: 823
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_nucleus
+    type: CRYSTAL_NUCLEUS
+    x1: 462
+    y1: 31
+    z1: 462
+    x2: 562
+    y2: 188
+    z2: 562
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS

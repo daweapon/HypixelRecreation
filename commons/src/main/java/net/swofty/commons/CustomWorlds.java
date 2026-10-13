@@ -13,6 +13,7 @@ public enum CustomWorlds {
 	SKYBLOCK_GOLD_MINE("hypixel_skyblock_gold_mine"),
 	SKYBLOCK_DEEP_CAVERNS("hypixel_skyblock_deep_caverns"),
 	SKYBLOCK_DWARVEN_MINES("hypixel_skyblock_dwarven_mines"),
+	SKYBLOCK_CRYSTAL_HOLLOWS("hypixel_skyblock_crystal_hollows"),
 	SKYBLOCK_THE_PARK("hypixel_skyblock_the_park"),
 	SKYBLOCK_GALATEA("hypixel_skyblock_galatea"),
 	SKYBLOCK_BACKWATER_BAYOU("hypixel_skyblock_backwater_bayou"),

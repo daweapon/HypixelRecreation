@@ -349,6 +349,6 @@ public class GUISkyBlockMenu extends StatelessView {
     private static boolean onMiningIsland() {
         if (net.swofty.type.generic.HypixelConst.getTypeLoader() == null) return false;
         ServerType type = net.swofty.type.generic.HypixelConst.getTypeLoader().getType();
-        return type == ServerType.SKYBLOCK_DWARVEN_MINES || type == ServerType.SKYBLOCK_DEEP_CAVERNS || type == ServerType.SKYBLOCK_GOLD_MINE;
+        return type == ServerType.SKYBLOCK_DWARVEN_MINES || type == ServerType.SKYBLOCK_CRYSTAL_HOLLOWS || type == ServerType.SKYBLOCK_DEEP_CAVERNS || type == ServerType.SKYBLOCK_GOLD_MINE;
     }
 }

@@ -14,7 +14,7 @@ public final class StatisticAbilities {
             ItemStatistic.CRITICAL_CHANCE, ItemStatistic.CRITICAL_DAMAGE, ItemStatistic.BONUS_ATTACK_SPEED,
             ItemStatistic.ABILITY_DAMAGE, ItemStatistic.FEROCITY);
     static final Set<ServerType> MINING_ISLANDS = Set.of(ServerType.SKYBLOCK_GOLD_MINE,
-            ServerType.SKYBLOCK_DEEP_CAVERNS, ServerType.SKYBLOCK_DWARVEN_MINES);
+            ServerType.SKYBLOCK_DEEP_CAVERNS, ServerType.SKYBLOCK_DWARVEN_MINES, ServerType.SKYBLOCK_CRYSTAL_HOLLOWS);
 
     private StatisticAbilities() {
     }

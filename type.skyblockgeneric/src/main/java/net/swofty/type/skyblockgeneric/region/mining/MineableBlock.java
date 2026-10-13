@@ -84,6 +84,16 @@ public enum MineableBlock {
     ONYX_ORE(Material.BLACK_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
     PERIDOT_ORE(Material.GREEN_STAINED_GLASS, MiningHandlers.pickaxe(5200, 9), MiningBlockClassification.gemstoneBlock()),
 
+    // Crystal Hollows
+    HARD_STONE(Material.STONE, MiningHandlers.pickaxe(50, 4), MiningBlockClassification.blockBlock()),
+    RUBY_ORE(Material.RED_STAINED_GLASS, MiningHandlers.pickaxe(2300, 6), MiningBlockClassification.gemstoneBlock()),
+    AMETHYST_ORE(Material.PURPLE_STAINED_GLASS, MiningHandlers.pickaxe(3000, 7), MiningBlockClassification.gemstoneBlock()),
+    JADE_ORE(Material.LIME_STAINED_GLASS, MiningHandlers.pickaxe(3000, 7), MiningBlockClassification.gemstoneBlock()),
+    SAPPHIRE_ORE(Material.LIGHT_BLUE_STAINED_GLASS, MiningHandlers.pickaxe(3000, 7), MiningBlockClassification.gemstoneBlock()),
+    AMBER_ORE(Material.ORANGE_STAINED_GLASS, MiningHandlers.pickaxe(3000, 7), MiningBlockClassification.gemstoneBlock()),
+    TOPAZ_ORE(Material.YELLOW_STAINED_GLASS, MiningHandlers.pickaxe(3800, 8), MiningBlockClassification.gemstoneBlock()),
+    JASPER_ORE(Material.MAGENTA_STAINED_GLASS, MiningHandlers.pickaxe(4800, 9), MiningBlockClassification.gemstoneBlock()),
+
     // Crimson Isle
     MYCELIUM(Material.MYCELIUM, MiningHandlers.hand(12, 6), MiningBlockClassification.blockBlock()),
     RED_SAND(Material.RED_SAND, MiningHandlers.hand(12, 6), MiningBlockClassification.blockBlock()),
@@ -119,7 +129,10 @@ public enum MineableBlock {
 
     public static MineableBlock get(Block block, RegionType region) {
         GlaciteOre ore = GlaciteOre.of(block, region);
-        return ore != null ? ore.getMineable() : get(block);
+        if (ore != null) return ore.getMineable();
+        net.minestom.server.item.Material material = net.minestom.server.item.Material.fromKey(block.name());
+        if (net.swofty.type.skyblockgeneric.crystalhollows.HardStone.isHardStone(material, region)) return HARD_STONE;
+        return get(block);
     }
 
     public static MineableBlock get(Block block) {

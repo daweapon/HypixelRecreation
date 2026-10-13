@@ -18,6 +18,8 @@ import net.swofty.type.generic.event.HypixelEventHandler;
 import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.DroppedItemEntityImpl;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsOre;
+import net.swofty.type.skyblockgeneric.crystalhollows.HardStone;
 import net.swofty.type.skyblockgeneric.glacite.GlaciteOre;
 import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.farmingcontest.FarmingContests;
@@ -160,6 +162,17 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
             if (glaciteOre != null) {
                 customDrops.clear();
                 customDrops.add(new SkyBlockItem(glaciteOre.getDrop(), 1));
+            }
+
+            RegionType breakRegionType = region == null ? null : region.getType();
+            CrystalHollowsOre crystalOre = CrystalHollowsOre.of(material, breakRegionType);
+            if (crystalOre != null) {
+                customDrops.clear();
+                customDrops.add(new SkyBlockItem(crystalOre.getDrop(), java.util.concurrent.ThreadLocalRandom.current()
+                        .nextInt(CrystalHollowsOre.MIN_ROUGH_DROP, CrystalHollowsOre.MAX_ROUGH_DROP + 1)));
+            } else if (HardStone.isHardStone(material, breakRegionType)) {
+                customDrops.clear();
+                customDrops.add(new SkyBlockItem(ItemType.HARD_STONE, 1));
             }
 
             // Call custom break event

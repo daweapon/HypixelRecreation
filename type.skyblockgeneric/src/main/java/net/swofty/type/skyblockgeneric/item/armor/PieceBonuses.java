@@ -17,7 +17,7 @@ public final class PieceBonuses {
     public static final double ZOMBIE_HAT_DEFENSE_PER_ZOMBIE = 10;
     public static final double ZOMBIE_HAT_RANGE = 8;
     private static final Set<ServerType> MINING_ISLANDS = Set.of(ServerType.SKYBLOCK_GOLD_MINE,
-            ServerType.SKYBLOCK_DEEP_CAVERNS, ServerType.SKYBLOCK_DWARVEN_MINES);
+            ServerType.SKYBLOCK_DEEP_CAVERNS, ServerType.SKYBLOCK_DWARVEN_MINES, ServerType.SKYBLOCK_CRYSTAL_HOLLOWS);
     private static final Set<String> TANK_MINER = Set.of("TANK_MINER_HELMET", "TANK_MINER_CHESTPLATE",
             "TANK_MINER_LEGGINGS", "TANK_MINER_BOOTS");
     private static final Set<String> NUTCRACKER = Set.of("NUTCRACKER_HELMET", "NUTCRACKER_CHESTPLATE",

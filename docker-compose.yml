@@ -105,6 +105,23 @@ services:
     networks:
       - hypixel_network
 
+  hypixelcore_crystal_hollows:
+    image: game_server_prepared
+    container_name: hypixelcore_crystal_hollows
+    restart: "unless-stopped"
+    environment:
+      <<: *forwarding_env
+      SERVICE_CMD: java -jar HypixelCore.jar SKYBLOCK_CRYSTAL_HOLLOWS
+    depends_on:
+      proxy:
+        condition: service_healthy
+      game_server_builder:
+        condition: service_started
+    volumes:
+      - ./configuration:/app/configuration_files
+    networks:
+      - hypixel_network
+
   hypixelcore_hub:
     image: game_server_prepared
     container_name: hypixelcore_hub

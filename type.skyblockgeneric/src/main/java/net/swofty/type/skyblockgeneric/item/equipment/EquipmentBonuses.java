@@ -52,7 +52,7 @@ public final class EquipmentBonuses {
 
     public static ItemStatistics statistics(Map<String, ItemStatistics> worn, Situation situation) {
         ItemStatistics.Builder total = ItemStatistics.builder();
-        if (situation.server() == ServerType.SKYBLOCK_DWARVEN_MINES) {
+        if (situation.server() == ServerType.SKYBLOCK_DWARVEN_MINES || situation.server() == ServerType.SKYBLOCK_CRYSTAL_HOLLOWS) {
             if (worn.keySet().containsAll(MITHRIL_SET)) {
                 total.withBase(ItemStatistic.MINING_SPEED, DWARF_WANNABE_SPEED);
                 total.withBase(ItemStatistic.MINING_FORTUNE, DWARF_WANNABE_FORTUNE);

@@ -46,7 +46,7 @@ public enum TravelScrollIslands {
 			(unused) -> "An island that gets progressively deeper and contains 6 layers of dangerous mobs and new resources.", ServerType.SKYBLOCK_DWARVEN_MINES, SkillCategories.MINING, 2,
 			List.of(TravelScrollType.DWARVEN_FORGE, TravelScrollType.DWARVEN_BASE_CAMP)),
 	CRYSTAL_HOLLOWS("crystals", "<d>Crystal Hollows", TravelScrollType.Textures.SCATHA,
-			(unused) -> "A vast network of caves full of gemstones, treasure and ancient secrets.", null,
+			(unused) -> "A vast network of caves full of gemstones, treasure and ancient secrets.", ServerType.SKYBLOCK_CRYSTAL_HOLLOWS,
 			List.of(TravelScrollType.CRYSTAL_NUCLEUS)),
 	SPIDERS_DEN("spider", "<c>Spider's Den", TravelScrollType.Textures.SPIDER,
 			(unused) -> "A dark and dangerous island crawling with spiders.", ServerType.SKYBLOCK_SPIDERS_DEN,

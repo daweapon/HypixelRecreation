@@ -34,6 +34,7 @@ dependencies {
     implementation(project(":type.goldmine"))
     implementation(project(":type.deepcaverns"))
     implementation(project(":type.dwarvenmines"))
+    implementation(project(":type.crystalhollows"))
     implementation(project(":type.thepark"))
     implementation(project(":type.galatea"))
     implementation(project(":type.backwaterbayou"))

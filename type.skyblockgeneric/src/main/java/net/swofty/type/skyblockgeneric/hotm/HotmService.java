@@ -57,7 +57,8 @@ public final class HotmService {
     }
 
     public static boolean onMiningIsland() {
-        return HypixelConst.getTypeLoader() != null && HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_DWARVEN_MINES;
+        return HypixelConst.getTypeLoader() != null && (HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_DWARVEN_MINES
+                || HypixelConst.getTypeLoader().getType() == ServerType.SKYBLOCK_CRYSTAL_HOLLOWS);
     }
 
     public static int forgeSlots(SkyBlockPlayer player) {

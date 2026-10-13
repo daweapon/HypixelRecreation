@@ -39,6 +39,7 @@ public final class BalanceConfigurations {
             Map.entry(ServerType.SKYBLOCK_GOLD_MINE, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_DEEP_CAVERNS, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_DWARVEN_MINES, DEFAULT_CHAIN),
+            Map.entry(ServerType.SKYBLOCK_CRYSTAL_HOLLOWS, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_THE_PARK, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_GALATEA, DEFAULT_CHAIN),
             Map.entry(ServerType.SKYBLOCK_BACKWATER_BAYOU, DEFAULT_CHAIN),

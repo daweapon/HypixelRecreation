@@ -163,7 +163,7 @@ public final class EssenceShops {
         if (HypixelConst.getTypeLoader() == null) return false;
         ServerType server = HypixelConst.getTypeLoader().getType();
         return switch (scope) {
-            case MINING -> server == ServerType.SKYBLOCK_DWARVEN_MINES;
+            case MINING -> server == ServerType.SKYBLOCK_DWARVEN_MINES || server == ServerType.SKYBLOCK_CRYSTAL_HOLLOWS;
             case SPIDERS_DEN -> server == ServerType.SKYBLOCK_SPIDERS_DEN;
             case THE_END -> server == ServerType.SKYBLOCK_THE_END;
             case FORAGING -> server == ServerType.SKYBLOCK_GALATEA;
