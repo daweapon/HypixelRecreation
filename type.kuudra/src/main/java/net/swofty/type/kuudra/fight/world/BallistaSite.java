@@ -39,12 +39,14 @@ public final class BallistaSite {
     private static final float TURN_STEP = 1;
     private static final Vec SEAT = new Vec(0, 1.4, 2.6);
     private static final Vec MUZZLE = new Vec(0, 2.8, -2.5);
+    private static final Vec SEAT_MODEL = new Vec(0, 0.85, 2.6);
 
     private final List<LivingEntity> parts = new ArrayList<>();
     private final Entity overall;
     private final Entity seat;
     private final Consumer<SkyBlockPlayer> onSeatUse;
     private @Nullable Entity bodyHitbox;
+    private @Nullable Entity seatModel;
     private @Nullable SkyBlockPlayer rider;
     private float facing;
 
@@ -93,6 +95,7 @@ public final class BallistaSite {
         facing = wanted;
         for (int i = 0; i < parts.size(); i++) parts.get(i).teleport(standPosition(MODEL.get(i)));
         seat.teleport(placed(SEAT));
+        if (seatModel != null) seatModel.teleport(placed(SEAT_MODEL));
     }
 
     private Pos standPosition(ArmorStandModels.Stand stand) {
@@ -150,6 +153,9 @@ public final class BallistaSite {
             Displays.remove(pileHitboxes.get(pile));
         });
         reveal(1);
+        if (seatModel == null) {
+            seatModel = Displays.block(instance, placed(SEAT_MODEL), Block.SPRUCE_STAIRS.withProperty("facing", "north"), new Vec(0.9, 0.9, 0.9));
+        }
         if (bodyHitbox == null) bodyHitbox = Displays.hitbox(instance, base, 3.6f, 3.2f, onSeatUse);
         int charge = needed <= 0 ? 100 : Math.min(100, fuel * 100 / needed);
         Displays.setText(overall, "<f>Energy Charge: <a>" + charge + "%\n<c><l>BALLISTA\n<e><l>RIGHT-CLICK TO MOUNT");
@@ -207,6 +213,7 @@ public final class BallistaSite {
         parts.forEach(Displays::remove);
         Displays.remove(overall);
         if (bodyHitbox != null) Displays.remove(bodyHitbox);
+        if (seatModel != null) Displays.remove(seatModel);
         Displays.remove(seat);
     }
 }

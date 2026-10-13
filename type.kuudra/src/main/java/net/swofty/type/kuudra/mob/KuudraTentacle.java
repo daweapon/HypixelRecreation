@@ -29,7 +29,7 @@ public final class KuudraTentacle extends KuudraMob {
     private static final double[] HEIGHTS = {0.0, 5.3, 10.1, 14.3, 17.9, 21.0, 23.8, 26.6, 29.2, 31.6, 33.4, 35.0, 36.2, 37.6, 38.6, 39.4};
     private static final double TIP_LEAN = 7.4;
 
-    private final List<Entity> segments = new ArrayList<>();
+    private final List<Segment> segments = new ArrayList<>();
     private int slamCountdown;
 
     public KuudraTentacle(KuudraFight fight, KuudraMobSpec spec) {
@@ -78,9 +78,7 @@ public final class KuudraTentacle extends KuudraMob {
         if (getInstance() == null) return;
         while (segments.size() < SIZES.length) {
             int size = SIZES[segments.size()];
-            Entity cube = new Entity(EntityType.MAGMA_CUBE);
-            cube.setNoGravity(true);
-            cube.editEntityMeta(MagmaCubeMeta.class, meta -> meta.setSize(size));
+            Segment cube = new Segment(fight, spec(), this, size);
             cube.setInstance(getInstance(), getPosition());
             segments.add(cube);
         }
@@ -92,6 +90,39 @@ public final class KuudraTentacle extends KuudraMob {
             double lean = TIP_LEAN * fraction * fraction;
             double sway = Math.sin(ticks * 0.1 + i * 0.4) * 2.7 * fraction;
             segments.get(i).teleport(base.add(outward.x() * lean - outward.z() * sway, HEIGHTS[i], outward.z() * lean + outward.x() * sway));
+        }
+    }
+
+    /** One drawn cube of the chain: hits on it count as hits on the tentacle. */
+    private static final class Segment extends KuudraMob {
+        private final KuudraTentacle owner;
+
+        Segment(KuudraFight fight, KuudraMobSpec spec, KuudraTentacle owner, int size) {
+            super(fight, spec, EntityType.MAGMA_CUBE, MobType.INFERNAL, MobType.MAGMATIC);
+            this.owner = owner;
+            setNoGravity(true);
+            setCustomNameVisible(false);
+            editEntityMeta(MagmaCubeMeta.class, meta -> meta.setSize(size));
+        }
+
+        @Override
+        public List<GoalSelector> getGoalSelectors() {
+            return List.of();
+        }
+
+        @Override
+        public List<TargetSelector> getTargetSelectors() {
+            return List.of();
+        }
+
+        @Override
+        public boolean hasCollision() {
+            return false;
+        }
+
+        @Override
+        public boolean damage(@org.jetbrains.annotations.NotNull net.minestom.server.entity.damage.Damage damage) {
+            return owner.damage(damage);
         }
     }
 
