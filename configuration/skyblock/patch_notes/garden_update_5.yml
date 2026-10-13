@@ -1,0 +1,26 @@
+title: "The Garden Update, Part 5"
+date: "13th October 2026"
+intro:
+  - "Pests have arrived in the Garden. Break crops and something nasty might show up."
+sections:
+  - heading: "Pests"
+    colour: "<2>"
+    lines:
+      - "From Garden Level 5, breaking crops has a small chance to spawn Pests in your plot or the plots next to it. Thirteen Pests, one for each crop, unlock as your Garden Level rises."
+      - "With four or more Pests alive your Farming Fortune drops, up to 75% at eight. Bonus Pest Chance lets you carry more before it starts."
+      - "Pests that spawn while you are away show up after an hour. Click the chat message to teleport to the plot with /plottp."
+  - heading: "Vacuums"
+    colour: "<a>"
+    lines:
+      - "Hold right-click with a Vacuum to suck up nearby Pests. Left-click to track the nearest one. Vacuums come in five tiers at SkyMart."
+      - "Every Pest drops its crop, coins, Farming XP, Garden XP and Bits, with rare drops like Chirping Stereo, Beady Eyes and Pesterminator. Each kill adds a Pest to your vacuum bag."
+  - heading: "Sprayonator, Repellent and Traps"
+    colour: "<6>"
+    lines:
+      - "Spray a plot with Compost, Honey Jar, Dung, Plant Matter, Tasty Cheese or Jelly to attract matching Pests for 30 minutes."
+      - "Pest Repellent slows spawns for an hour. Pest, Mouse and Vermin Traps catch Pests while you are away, and Field Mice only turn up in traps."
+  - heading: "Pesthunters"
+    colour: "<e>"
+    lines:
+      - "Pesthunter Phillip trades the Pests in your vacuum for temporary Farming Fortune, and sells traps, armor and accessories. Pesthunter Pamela gives you the Sprayonator."
+      - "The Garden tab list and scoreboard now show your Pests."

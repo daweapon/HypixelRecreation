@@ -2397,7 +2397,6 @@ items:
       health: 20
       defense: 5
       bonus_pest_chance: 16.5
-    unavailable: "Needs Pesthunter Phillip's armour shop"
     source: "Bought from Pesthunter Phillip for the matching Mushroom piece and Pests (Helmet 50, Suit 80, Leggings 70, Boots 40)"
     lore:
       - "§4❣ §cRequires §aGarden Level 5§c."
@@ -2420,7 +2419,6 @@ items:
       health: 20
       defense: 10
       bonus_pest_chance: 16.5
-    unavailable: "Needs Pesthunter Phillip's armour shop"
     source: "Bought from Pesthunter Phillip for the matching Mushroom piece and Pests (Helmet 50, Suit 80, Leggings 70, Boots 40)"
     lore:
       - "§4❣ §cRequires §aGarden Level 5§c."
@@ -2441,7 +2439,6 @@ items:
       health: 20
       defense: 15
       bonus_pest_chance: 16.5
-    unavailable: "Needs Pesthunter Phillip's armour shop"
     source: "Bought from Pesthunter Phillip for the matching Mushroom piece and Pests (Helmet 50, Suit 80, Leggings 70, Boots 40)"
     lore:
       - "§4❣ §cRequires §aGarden Level 5§c."

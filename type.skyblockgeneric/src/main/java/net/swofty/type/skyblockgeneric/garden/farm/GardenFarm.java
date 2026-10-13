@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.garden.GardenLayout;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.tool.FarmingTools;
+import net.swofty.type.skyblockgeneric.garden.pest.PestService;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
@@ -52,6 +53,7 @@ public final class GardenFarm {
         if (harvest == null) return false;
 
         harvest.apply().run();
+        PestService.onHarvest(player, plot);
         VisitorService.reduceCooldown(player, VisitorService.CROP_COOLDOWN_SECONDS);
         List<SkyBlockItem> drops = drops(player, profile, harvest);
         HypixelEventHandler.callCustomEvent(new CustomBlockBreakEvent(
@@ -133,10 +135,12 @@ public final class GardenFarm {
 
     public static double fortune(SkyBlockPlayer player, GardenProfile profile, GardenCrop crop) {
         var statistics = player.getStatistics().allStatistics();
-        return statistics.getOverall(ItemStatistic.FARMING_FORTUNE)
+        double total = statistics.getOverall(ItemStatistic.FARMING_FORTUNE)
                 + statistics.getOverall(specificFortune(crop))
                 + profile.cropUpgradeTier(crop) * FORTUNE_PER_UPGRADE_TIER
-                + profile.getUnlockedPlots().size() * FORTUNE_PER_PLOT;
+                + profile.getUnlockedPlots().size() * FORTUNE_PER_PLOT
+                + PestService.fortuneBoost(profile, System.currentTimeMillis());
+        return total * (1 - PestService.fortuneLoss(player, profile) / 100.0);
     }
 
     private static ItemStatistic specificFortune(GardenCrop crop) {

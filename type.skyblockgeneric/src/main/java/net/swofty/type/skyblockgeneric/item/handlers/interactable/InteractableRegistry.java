@@ -42,6 +42,7 @@ public class InteractableRegistry {
         net.swofty.type.skyblockgeneric.consumable.VialOfVenom.registerInteractables();
         net.swofty.type.skyblockgeneric.item.utility.BiomeSticks.registerInteractables();
         PetItems.registerInteractables();
+        net.swofty.type.skyblockgeneric.garden.pest.PestItems.registerInteractables();
         net.swofty.type.skyblockgeneric.bank.PersonalBankItem.registerInteractables();
         net.swofty.type.skyblockgeneric.accessory.enrichment.Enrichments.registerInteractables();
         register("SKYBLOCK_MENU_INTERACT", InteractableItemConfig.builder().rightClickHandler(

@@ -1,0 +1,64 @@
+# Pesthunter Phillip's Wares (prices from the wiki Pesthunter Phillip page; upgrade chains per the item sources).
+title: "Pesthunter's Wares"
+slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28]
+entries:
+  - item: PESTHUNTER_BADGE
+    name: "<a>Pesthunter Badge"
+    material: paper
+    cost: { pests: 25 }
+  - item: PESTHUNTER_RING
+    name: "<9>Pesthunter Ring"
+    material: paper
+    cost: { pests: 50, items: { PESTHUNTER_BADGE: 1 } }
+  - item: PESTHUNTER_ARTIFACT
+    name: "<5>Pesthunter Artifact"
+    material: paper
+    cost: { pests: 100, items: { PESTHUNTER_RING: 1 } }
+  - item: PESTHUNTER_RELIC
+    name: "<6>Pesthunter Relic"
+    material: paper
+    cost: { pests: 200, items: { PESTHUNTER_ARTIFACT: 1 } }
+  - item: PESTHUNTERS_NECKLACE
+    name: "<9>Pesthunter's Necklace"
+    material: paper
+    cost: { pests: 40 }
+  - item: PESTHUNTERS_CLOAK
+    name: "<9>Pesthunter's Cloak"
+    material: paper
+    cost: { pests: 40 }
+  - item: PESTHUNTERS_BELT
+    name: "<9>Pesthunter's Belt"
+    material: paper
+    cost: { pests: 40 }
+  - item: PESTHUNTERS_GLOVES
+    name: "<9>Pesthunter's Gloves"
+    material: paper
+    cost: { pests: 40 }
+  - item: PEST_TRAP
+    name: "<9>Pest Trap"
+    material: paper
+    cost: { pests: 50 }
+  - item: MOUSE_PEST_TRAP
+    name: "<5>Mouse Trap"
+    material: paper
+    cost: { pests: 75, items: { PEST_TRAP: 1 } }
+  - item: VERMIN_PEST_TRAP
+    name: "<6>Vermin Trap"
+    material: paper
+    cost: { pests: 200, items: { MOUSE_PEST_TRAP: 1, FIRE_IN_A_BOTTLE: 1 } }
+  - item: BIOHAZARD_HELMET
+    name: "<a>Biohazard Helmet"
+    material: paper
+    cost: { pests: 50, items: { MUSHROOM_HELMET: 1 } }
+  - item: BIOHAZARD_SUIT
+    name: "<a>Biohazard Suit"
+    material: paper
+    cost: { pests: 80, items: { MUSHROOM_CHESTPLATE: 1 } }
+  - item: BIOHAZARD_LEGGINGS
+    name: "<a>Biohazard Leggings"
+    material: paper
+    cost: { pests: 70, items: { MUSHROOM_LEGGINGS: 1 } }
+  - item: BIOHAZARD_BOOTS
+    name: "<a>Biohazard Boots"
+    material: paper
+    cost: { pests: 40, items: { MUSHROOM_BOOTS: 1 } }

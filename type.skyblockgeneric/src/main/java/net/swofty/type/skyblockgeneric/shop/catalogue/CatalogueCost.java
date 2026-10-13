@@ -11,6 +11,7 @@ import net.swofty.type.skyblockgeneric.shop.type.CombinedShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.CopperShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.EssenceShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.GemShopPrice;
+import net.swofty.type.skyblockgeneric.shop.type.PestShopPrice;
 import net.swofty.type.skyblockgeneric.shop.type.ItemShopPrice;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,12 +20,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public record CatalogueCost(double coins, int gems, int bits, int copper, Map<String, Integer> items, @Nullable String essenceType, int essence) {
+public record CatalogueCost(double coins, int gems, int bits, int copper, int pests, Map<String, Integer> items, @Nullable String essenceType, int essence) {
 
     @SuppressWarnings("unchecked")
     public static CatalogueCost parse(@Nullable Object raw) {
         if (!(raw instanceof Map<?, ?> map)) {
-            return new CatalogueCost(0, 0, 0, 0, Map.of(), null, 0);
+            return new CatalogueCost(0, 0, 0, 0, 0, Map.of(), null, 0);
         }
         Map<String, Integer> items = new LinkedHashMap<>();
         Object rawItems = map.get("items");
@@ -37,6 +38,7 @@ public record CatalogueCost(double coins, int gems, int bits, int copper, Map<St
                 number(map.get("gems")).intValue(),
                 number(map.get("bits")).intValue(),
                 number(map.get("copper")).intValue(),
+                number(map.get("pests")).intValue(),
                 items,
                 essence.isEmpty() ? null : String.valueOf(essence.get("type")),
                 number(essence.get("amount")).intValue()
@@ -72,6 +74,7 @@ public record CatalogueCost(double coins, int gems, int bits, int copper, Map<St
         if (gems > 0) parts.add(new GemShopPrice(gems));
         if (bits > 0) parts.add(new BitsShopPrice(bits));
         if (copper > 0) parts.add(new CopperShopPrice(copper));
+        if (pests > 0) parts.add(new PestShopPrice(pests));
         if (essence > 0 && essenceKind() != null) parts.add(new EssenceShopPrice(essenceKind(), essence));
         items.forEach((id, amount) -> parts.add(new ItemShopPrice(ItemType.get(id), amount)));
         if (parts.isEmpty()) return new CoinShopPrice(0);
@@ -85,6 +88,7 @@ public record CatalogueCost(double coins, int gems, int bits, int copper, Map<St
         if (gems > 0) lines.add(Text.of("<a>{} Gems", StringUtility.commaify(gems)));
         if (bits > 0) lines.add(Text.of("<b>{} Bits", StringUtility.commaify(bits)));
         if (copper > 0) lines.add(Text.of("<6>{} Copper", StringUtility.commaify(copper)));
+        if (pests > 0) lines.add(Text.of("<2>{} Pests", StringUtility.commaify(pests)));
         if (essence > 0) lines.add(Text.of("<d>{} {} Essence", StringUtility.commaify(essence), StringUtility.toNormalCase(essenceType)));
         items.forEach((id, amount) -> lines.add(Text.of("<a>{} <8>x{}", StringUtility.toNormalCase(id), amount)));
         return lines;

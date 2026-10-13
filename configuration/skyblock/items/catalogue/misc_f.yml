@@ -1840,7 +1840,6 @@ items:
     material: paper
     name: "Vermin Trap"
     rarity: LEGENDARY
-    unavailable: "Needs Garden Pests"
     source: "Pesthunter Phillip: 200 Pests, Mouse Trap and Fire in a Bottle"
     lore:
       - "§7Place in a §aGarden §7plot and fill with"
@@ -1851,6 +1850,8 @@ items:
       - "§6Field Mice §7are §a4x §7more likely to be"
       - "§7caught in this type of trap!"
     components:
+      - id: INTERACTABLE
+        handler_id: VERMIN_PEST_TRAP
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pests/vermin_pest_trap
   - id: VERY_MOLDY_BREAD

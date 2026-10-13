@@ -2308,7 +2308,6 @@ items:
     rarity: RARE
     default_statistics:
       bonus_pest_chance: 5
-    unavailable: "Garden pests / Pesthunter Phillip not built"
     source: "Bought from Pesthunter Phillip for 40 Pests."
     lore:
       - "§7Decreases the spawn cooldown of §2"
@@ -2322,8 +2321,6 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 5§c."
-      - ""
-      - "§8Not active yet: Needs the Garden pest system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: BELT
@@ -2335,7 +2332,6 @@ items:
     rarity: RARE
     default_statistics:
       bonus_pest_chance: 5
-    unavailable: "Pesthunter Phillip NPC and pest-kill trade are not built"
     source: "Pesthunter Phillip for 40 Pests"
     lore:
       - "§7Decreases the spawn cooldown of §2"
@@ -2349,8 +2345,6 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 5§c."
-      - ""
-      - "§8Not active yet: Needs the Garden pest system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
@@ -2362,7 +2356,6 @@ items:
     rarity: RARE
     default_statistics:
       bonus_pest_chance: 5
-    unavailable: "Pesthunter Phillip shop not found"
     source: "Pesthunter Phillip sells it for 40 Pests"
     lore:
       - "§7Decreases the spawn cooldown of §2"
@@ -2376,8 +2369,6 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 5§c."
-      - ""
-      - "§8Not active yet: Needs the Garden pest system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
@@ -2389,7 +2380,6 @@ items:
     rarity: RARE
     default_statistics:
       bonus_pest_chance: 5
-    unavailable: "Pesthunter Phillip shop not built"
     source: "Bought from Pesthunter Phillip for 40 Pests."
     lore:
       - "§7Decreases the spawn cooldown of §2"
@@ -2403,8 +2393,6 @@ items:
       - ""
       - "§8This item can be reforged!"
       - "§4❣ §cRequires §aGarden Level 5§c."
-      - ""
-      - "§8Not active yet: Needs the Garden pest system, which does not exist"
     components:
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE

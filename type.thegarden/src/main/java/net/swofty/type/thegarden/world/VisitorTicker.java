@@ -3,6 +3,8 @@ package net.swofty.type.thegarden.world;
 import net.minestom.server.entity.Player;
 import net.minestom.server.instance.Instance;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterService;
+import net.swofty.type.skyblockgeneric.garden.pest.PestService;
+import net.swofty.type.skyblockgeneric.garden.pest.PestVacuum;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.garden.SkyBlockGarden;
@@ -19,9 +21,17 @@ public final class VisitorTicker {
                 if (online instanceof SkyBlockPlayer player) {
                     VisitorService.tick(player);
                     ComposterService.tick(player);
+                    PestService.tick(player);
                     break;
                 }
             }
+        }
+    }
+
+    public static void tickVacuums() {
+        for (SkyBlockGarden garden : SkyBlockGarden.loaded()) {
+            Instance instance = garden.getGardenInstance();
+            if (instance != null) PestVacuum.tick(instance);
         }
     }
 }

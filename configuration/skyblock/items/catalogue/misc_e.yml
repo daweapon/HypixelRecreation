@@ -3282,7 +3282,6 @@ items:
     material: paper
     name: "Sprayonator"
     rarity: UNCOMMON
-    unavailable: "Needs Garden pests and SkyMart, which are not built"
     source: "Pesthunter Pamela (free) or SkyMart for 25 Copper"
     lore:
       - "§6Ability: Configure  §e§lLEFT CLICK"
@@ -3290,9 +3289,6 @@ items:
       - "§7spraying. Certain materials attract"
       - "§7certain types of §2 Pests§7."
       - ""
-      - "§7Selected Nozzle: §aBasic"
-      - "§7Selected Material: §aCompost"
-      - "§7Attracts: §6Earthworm§7, §6Mosquito"
       - ""
       - "§6Ability: Spray  §e§lRIGHT CLICK"
       - "§7Sprays your selected material onto"
@@ -3308,6 +3304,11 @@ items:
       - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: INTERACTABLE
+        handler_id: SPRAYONATOR
+      - id: LORE_UPDATE
+        handler_id: SPRAYONATOR
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/pests/sprayonator
   - id: SPRINKLER
@@ -3329,7 +3330,6 @@ items:
     material: paper
     name: "Squeaky Mousemat"
     rarity: LEGENDARY
-    unavailable: "Needs Garden pests and SkyMart, which are not built"
     source: "Field Mouse pest: 1% rare drop"
     lore:
       - "§6Ability: Set  §e§lRIGHT CLICK"

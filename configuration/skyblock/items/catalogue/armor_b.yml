@@ -2446,7 +2446,7 @@ items:
       health: 20
       defense: 20
       bonus_pest_chance: 16.5
-    unavailable: "Needs Garden Level 5 and the Garden pest shop"
+    source: "Pesthunter Phillip: Mushroom Chestplate and 80 Pests"
     lore:
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:

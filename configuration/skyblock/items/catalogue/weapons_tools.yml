@@ -1237,7 +1237,7 @@ items:
     default_statistics:
       damage: 300
       farming_fortune: 20
-    unavailable: "Needs the Garden"
+    source: "SkyMart: SkyMart Hyper Vacuum, 5,000 Coins and 1,000 Copper"
     lore:
       - "§7Can be used to damage §2 Pests§7."
       - ""
@@ -1250,12 +1250,13 @@ items:
       - "§7nearest §2 Pest§7."
       - "§8Cooldown: §a1s"
       - ""
-      - "§7Vacuum Bag: §20 Pests"
-      - "§8Vacuum  Pests in your Garden to"
-      - "§8increase!"
-      - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: INTERACTABLE
+        handler_id: PEST_VACUUM
+      - id: LORE_UPDATE
+        handler_id: PEST_VACUUM
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/infini_vacuum
   - id: INFINI_VACUUM_HOOVERIUS
@@ -1265,7 +1266,7 @@ items:
     default_statistics:
       damage: 400
       farming_fortune: 25
-    unavailable: "Needs the Garden"
+    source: "SkyMart: InfiniVacuum, Chirping Stereo, 5,000 Coins and 2,500 Copper"
     lore:
       - "§7Can be used to damage §2 Pests§7."
       - ""
@@ -1286,12 +1287,13 @@ items:
       - ""
       - "§7Now Playing: §cNone"
       - ""
-      - "§7Vacuum Bag: §20 Pests"
-      - "§8Vacuum  Pests in your Garden to"
-      - "§8increase!"
-      - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: INTERACTABLE
+        handler_id: PEST_VACUUM
+      - id: LORE_UPDATE
+        handler_id: PEST_VACUUM
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/infini_vacuum_hooverius
   - id: JUNGLE_PICKAXE
@@ -1487,7 +1489,7 @@ items:
     default_statistics:
       damage: 200
       farming_fortune: 15
-    unavailable: "Needs the Garden"
+    source: "SkyMart: SkyMart Turbo Vacuum, 5,000 Coins and 500 Copper"
     lore:
       - "§7Can be used to damage §2 Pests§7."
       - ""
@@ -1500,12 +1502,13 @@ items:
       - "§7nearest §2 Pest§7."
       - "§8Cooldown: §a1s"
       - ""
-      - "§7Vacuum Bag: §20 Pests"
-      - "§8Vacuum  Pests in your Garden to"
-      - "§8increase!"
-      - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: INTERACTABLE
+        handler_id: PEST_VACUUM
+      - id: LORE_UPDATE
+        handler_id: PEST_VACUUM
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/skymart_hyper_vacuum
   - id: SKYMART_TURBO_VACUUM
@@ -1515,7 +1518,7 @@ items:
     default_statistics:
       damage: 150
       farming_fortune: 10
-    unavailable: "Needs the Garden"
+    source: "SkyMart: SkyMart Vacuum, 5,000 Coins and 200 Copper"
     lore:
       - "§7Can be used to damage §2 Pests§7."
       - ""
@@ -1528,12 +1531,13 @@ items:
       - "§7nearest §2 Pest§7."
       - "§8Cooldown: §a1s"
       - ""
-      - "§7Vacuum Bag: §20 Pests"
-      - "§8Vacuum  Pests in your Garden to"
-      - "§8increase!"
-      - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: INTERACTABLE
+        handler_id: PEST_VACUUM
+      - id: LORE_UPDATE
+        handler_id: PEST_VACUUM
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/skymart_turbo_vacuum
   - id: SKYMART_VACUUM
@@ -1543,7 +1547,7 @@ items:
     default_statistics:
       damage: 100
       farming_fortune: 5
-    unavailable: "Needs the Garden"
+    source: "SkyMart: 5,000 Coins"
     lore:
       - "§7Can be used to damage §2 Pests§7."
       - ""
@@ -1556,12 +1560,13 @@ items:
       - "§7nearest §2 Pest§7."
       - "§8Cooldown: §a1s"
       - ""
-      - "§7Vacuum Bag: §20 Pests"
-      - "§8Vacuum  Pests in your Garden to"
-      - "§8increase!"
-      - ""
       - "§4❣ §cRequires §aGarden Level 5§c."
     components:
+      - id: INTERACTABLE
+        handler_id: PEST_VACUUM
+      - id: LORE_UPDATE
+        handler_id: PEST_VACUUM
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/vacuum/skymart_vacuum
   - id: STONK_PICKAXE

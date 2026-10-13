@@ -105,7 +105,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 15§c."
-    unavailable: "Needs Garden Pests"
     source: "Rare Pest drop from Fly, 3%"
     components:
       - id: REFORGE_STONE
@@ -447,7 +446,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 15§c."
-    unavailable: "Needs Garden Pests"
     source: "Rare Pest drop from Mosquito, 2%"
     components:
       - id: REFORGE_STONE
@@ -1481,7 +1479,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 22§c."
-    unavailable: "Needs Garden pests / Praying Mantis mob (only exists as a hunting shard)"
     source: "Praying Mantis drop, 2% (wiki links to Pest rare drops, so likely a Garden pest drop)"
     components:
       - id: REFORGE_STONE
@@ -2741,7 +2738,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 21§c."
-    unavailable: "Needs Garden Pests"
     source: "Rare Pest drop from Field Mouse, 5%"
     components:
       - id: REFORGE_STONE

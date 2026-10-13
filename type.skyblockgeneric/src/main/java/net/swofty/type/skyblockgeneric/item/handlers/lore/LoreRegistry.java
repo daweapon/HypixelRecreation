@@ -34,6 +34,7 @@ public class LoreRegistry {
         net.swofty.type.skyblockgeneric.foraging.FrenzyAxes.registerLore();
         KuudraTeethPlaqueLore.register();
         net.swofty.type.skyblockgeneric.garden.tool.FarmingTools.registerLore();
+        net.swofty.type.skyblockgeneric.garden.pest.PestItems.registerLore();
         register("ENCHANTED_BOOK", new LoreConfig(
                 (item, player) -> {
                     List<SkyBlockEnchantment> enchantments = item.getAttributeHandler().getEnchantments().toList();

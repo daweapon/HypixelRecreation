@@ -282,7 +282,6 @@ items:
     material: paper
     name: "Wriggling Larva"
     rarity: EPIC
-    unavailable: "Needs Garden Pests (not built)"
     source: "Dropped by Garden Pests"
     lore:
       - "§8Consumable"
@@ -297,6 +296,8 @@ items:
       - ""
       - "§eRight-click to consume!"
     components:
+      - id: INTERACTABLE
+        handler_id: WRIGGLING_LARVA
       - id: SELLABLE
         value: 250000.0
       - id: ITEM_MODEL

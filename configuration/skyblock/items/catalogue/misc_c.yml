@@ -389,7 +389,6 @@ items:
     material: paper
     name: "Fire in a Bottle"
     rarity: LEGENDARY
-    unavailable: "Needs Pesthunter Phillip's Vermin Trap upgrade and Fireflies"
     source: "2% drop from Fireflies; trade to Pesthunter Phillip for the Vermin Trap"
     lore:
       - "§7Can be used at §6Phillip §7to upgrade the"

@@ -17,13 +17,14 @@ import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.garden.farm.GardenCropGrowth;
 import net.swofty.type.skyblockgeneric.garden.npc.NPCSam;
+import net.swofty.type.skyblockgeneric.garden.npc.PesthunterNpc;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorNpc;
 import net.swofty.type.thegarden.world.VisitorTicker;
 import net.swofty.type.skyblockgeneric.tabmodules.AccountInformationModule;
 import net.swofty.type.skyblockgeneric.user.AreaSidebar;
 import net.swofty.type.skyblockgeneric.user.garden.SkyBlockGarden;
-import net.swofty.type.thegarden.tab.GardenBlankModule;
+import net.swofty.type.thegarden.tab.GardenPestsModule;
 import net.swofty.type.thegarden.tab.GardenComposterModule;
 import net.swofty.type.thegarden.tab.GardenInfoModule;
 import net.swofty.type.thegarden.world.GardenSidebar;
@@ -55,6 +56,10 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
                 .repeat(TaskSchedule.seconds(1))
                 .schedule();
         MinecraftServer.getSchedulerManager()
+                .buildTask(VisitorTicker::tickVacuums)
+                .repeat(TaskSchedule.tick(2))
+                .schedule();
+        MinecraftServer.getSchedulerManager()
                 .buildTask(GardenCropGrowth::tick)
                 .repeat(TaskSchedule.seconds(1))
                 .schedule();
@@ -83,7 +88,7 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
             public List<TablistModule> getModules() {
                 return new ArrayList<>(List.of(
                         new GardenComposterModule(),
-                        new GardenBlankModule(),
+                        new GardenPestsModule(),
                         new GardenInfoModule(),
                         new AccountInformationModule()
                 ));
@@ -113,6 +118,7 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
     public List<HypixelNPC> getNPCs() {
         List<HypixelNPC> npcs = new ArrayList<>();
         npcs.add(NPCSam.get());
+        for (PesthunterNpc.Kind kind : PesthunterNpc.Kind.values()) npcs.add(new PesthunterNpc(kind));
         VisitorCatalogue.get().visitors().stream().filter(VisitorCatalogue.Visitor::available)
                 .forEach(visitor -> npcs.add(new VisitorNpc(visitor)));
         return npcs;
