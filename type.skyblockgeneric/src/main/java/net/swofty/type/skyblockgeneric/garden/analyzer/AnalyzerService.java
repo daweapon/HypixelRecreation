@@ -63,11 +63,11 @@ public final class AnalyzerService {
         int copper = copperFor(player, mutation, first);
         profile.addCopper(copper);
         Gardens.save(player, profile);
-        player.sendMessage(Text.of("<d><st>                              "));
+        player.sendMessage(Text.of("<d><m>                              "));
         player.sendMessage(Text.of("{} <6><l>ANALYSIS COMPLETE", "<a>" + mutation.name().toUpperCase()));
         player.sendMessage(Text.of("<7>REWARDS"));
         player.sendMessage(Text.of(" <8>+<6>{} Copper{}", StringUtility.commaify(copper), first ? " <e>(First Time Bonus)" : ""));
-        player.sendMessage(Text.of("<d><st>                              "));
+        player.sendMessage(Text.of("<d><m>                              "));
         return true;
     }
 

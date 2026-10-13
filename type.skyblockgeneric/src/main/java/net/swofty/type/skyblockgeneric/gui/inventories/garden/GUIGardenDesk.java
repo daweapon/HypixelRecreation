@@ -70,7 +70,9 @@ public class GUIGardenDesk extends StatelessView {
             long into = (long) Math.max(0, profile.getGardenXp() - base);
             String roman = net.swofty.commons.StringUtility.getAsRomanNumeral(level + 1);
             lore.add(Text.of("<7>Progress to Level {}: <e>{}", roman, GardenMenus.percent(into, (long) need)));
-            lore.add(Text.of("<8>{}<7>/<8>{}", GardenMenus.number(into), GardenMenus.number((long) need)));
+            int filled = GardenMenus.filled(into, (long) need, GardenMenus.BAR_WIDTH);
+            lore.add(Text.of("<dark_green><m>" + GardenMenus.spaces(filled) + "<white><m>" + GardenMenus.spaces(GardenMenus.BAR_WIDTH - filled)
+                    + "<reset> <gold>" + GardenMenus.number(into) + "<yellow>/<yellow>" + GardenMenus.number((long) need)));
             lore.add(GardenMenus.blank());
             lore.add(Text.of("<7>Level {} Reward:", roman));
             lore.add(Text.of("<8>+<b>10 SkyBlock XP"));

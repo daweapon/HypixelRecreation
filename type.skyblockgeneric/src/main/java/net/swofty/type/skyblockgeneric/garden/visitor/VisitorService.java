@@ -302,20 +302,20 @@ public final class VisitorService {
     private static void reward(SkyBlockPlayer player, String track, VisitorCatalogue.MilestoneTier tier) {
         player.getSkills().increase(player, SkillCategories.FARMING, (double) tier.farmingXp());
         GardenService.addGardenXp(player, tier.gardenXp());
-        player.sendMessage(Text.of("<b><st>                                                    "));
+        player.sendMessage(Text.of("<b><m>                                                    "));
         player.sendMessage(Text.of("<b><l>GARDEN MILESTONE <a>{} {}", track, StringUtility.getAsRomanNumeral(tier.tier())));
         player.sendMessage(Text.of("<a><l>REWARDS"));
         player.sendMessage(Text.of(" <8>+<a>{} Garden Experience", tier.gardenXp()));
         player.sendMessage(Text.of(" <8>+<3>{} Farming Experience", StringUtility.commaify(tier.farmingXp())));
         player.sendMessage(Text.of(" <8>+<b>{} SkyBlock XP", tier.skyblockXp()));
-        player.sendMessage(Text.of("<b><st>                                                    "));
+        player.sendMessage(Text.of("<b><m>                                                    "));
     }
 
     private static void announce(SkyBlockPlayer player, @Nullable VisitorCatalogue.Visitor visitor, long farmingXp,
                                  VisitorOffer offer, int copper, List<String> extra) {
         String name = visitor == null ? "Visitor" : visitor.coloured();
         String rarity = visitor == null ? "" : " <8>(" + visitor.rarity().getColour() + visitor.rarity().getLabel() + "<8>)";
-        player.sendMessage(Text.of("<b><st>                                                    "));
+        player.sendMessage(Text.of("<b><m>                                                    "));
         player.sendMessage(Text.of("<a><l>OFFER ACCEPTED <f>with {}{}", name, rarity));
         player.sendMessage(Text.of("<a><l>REWARDS"));
         player.sendMessage(Text.of(" <8>+<3>{} Farming XP", StringUtility.commaify(farmingXp)));
@@ -323,7 +323,7 @@ public final class VisitorService {
         player.sendMessage(Text.of(" <8>+<6>{} Copper", copper));
         player.sendMessage(Text.of(" <8>+<b>{} Bits", offer.bits()));
         extra.forEach(line -> player.sendMessage(Text.of(" <8>+{}", line)));
-        player.sendMessage(Text.of("<b><st>                                                    "));
+        player.sendMessage(Text.of("<b><m>                                                    "));
         if (visitor != null && !visitor.acceptLines().isEmpty()) {
             player.sendMessage(Text.of("<e>[NPC] {}<f>: {}", name, VisitorText.fill(visitor.acceptLines().getFirst(), player)));
         }
