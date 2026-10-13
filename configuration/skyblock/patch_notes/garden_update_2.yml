@@ -1,0 +1,25 @@
+title: "The Garden Update, Part 2"
+date: "13th October 2026"
+intro:
+  - "SkyMart is open at the Desk, and farming tools now level up as you harvest."
+sections:
+  - heading: "SkyMart"
+    colour: "<a>"
+    lines:
+      - "Browse the SkyMart from the Desk: Farming Essentials, Farming Tools, Barn Skins, Greenhouse Skins and Pests."
+      - "Farming Tools unlock at Garden Level 4."
+      - "Spend Copper on tools, books and accessories. Biofuel costs 5,000 Coins and moves Sam's quest along."
+      - "Items for features that are not built yet are listed but cannot be bought."
+  - heading: "Farming Tools"
+    colour: "<6>"
+    lines:
+      - "The twelve crop tools (Mk. I) cost 250 Copper. Each gains tool XP from its own crop and levels up to 14, adding Crop Fortune every level."
+      - "Basic and Advanced Gardening Hoes and Axes, the Garden Scythe and the Copper accessories can be bought."
+      - "Sam's Scythe clears a 3x3 area when cleaning a plot, and the Garden Scythe clears 5x5."
+      - "Farming Fortune now works like the real game: every 100 gives a guaranteed extra drop, and the rest is a chance."
+      - "Mk. II and III crafting, the Builder's Ruler and the Farming Toolkit are not added yet."
+  - heading: "Fixes"
+    colour: "<e>"
+    lines:
+      - "Sam and the Stranger now appear, and Sam stands on the ground."
+      - "The Garden tab list is laid out like the other servers."

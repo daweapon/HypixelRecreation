@@ -1806,6 +1806,7 @@ items:
     material: paper
     name: "Builder's Ruler"
     rarity: LEGENDARY
+    unavailable: "The Builder's Ruler line placement is not added yet"
     source: "SkyMart: 20 Copper"
     lore:
       - "§6Ability: Area Planner  §e§lRIGHT CLICK"

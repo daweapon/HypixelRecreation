@@ -63,8 +63,9 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
 
         if (HypixelConst.isGardenServer()) {
             event.setCancelled(true);
-            boolean scythe = ItemType.SAM_SCYTHE.equals(item.getAttributeHandler().getPotentialType());
-            if (!GardenPlotCleaner.breakBlock(player, event.getInstance(), event.getBlockPosition(), event.getBlock(), scythe)) {
+            ItemType heldType = item.getAttributeHandler().getPotentialType();
+            int scytheRadius = ItemType.GARDEN_SCYTHE.equals(heldType) ? 2 : ItemType.SAM_SCYTHE.equals(heldType) ? 1 : 0;
+            if (!GardenPlotCleaner.breakBlock(player, event.getInstance(), event.getBlockPosition(), event.getBlock(), scytheRadius)) {
                 GardenFarm.harvest(player, event.getInstance(), event.getBlockPosition(), event.getBlock());
             }
             return;

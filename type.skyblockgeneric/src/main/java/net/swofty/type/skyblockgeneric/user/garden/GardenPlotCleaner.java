@@ -35,7 +35,7 @@ public final class GardenPlotCleaner {
         }
     }
 
-    public static boolean breakBlock(SkyBlockPlayer player, Instance instance, Point position, Block block, boolean scythe) {
+    public static boolean breakBlock(SkyBlockPlayer player, Instance instance, Point position, Block block, int scytheRadius) {
         int plot = GardenLayout.plotAt(position.x(), position.z());
         if (plot == GardenLayout.NONE || plot == GardenLayout.BARN) return false;
         GardenProfile profile = Gardens.profile(player);
@@ -44,9 +44,9 @@ public final class GardenPlotCleaner {
 
         PlotState state = state(player, instance, plot, profile);
         int cleared = clear(instance, position, state);
-        if (scythe) {
-            for (int dx = -1; dx <= 1; dx++) {
-                for (int dz = -1; dz <= 1; dz++) {
+        if (scytheRadius > 0) {
+            for (int dx = -scytheRadius; dx <= scytheRadius; dx++) {
+                for (int dz = -scytheRadius; dz <= scytheRadius; dz++) {
                     if (dx == 0 && dz == 0) continue;
                     Point target = position.add(dx, 0, dz);
                     if (GardenLayout.plotAt(target.x(), target.z()) != plot) continue;

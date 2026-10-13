@@ -34,6 +34,7 @@ entries:
     name: "<a>Builder's Ruler"
     material: paper
     cost: { copper: 20 }
+    unavailable: "<c>The Builder's Ruler is not added yet."
   - item: ENCHANTED_BOOK
     name: "<a>Enchanted Book (Dedication I)"
     material: enchanted_book
