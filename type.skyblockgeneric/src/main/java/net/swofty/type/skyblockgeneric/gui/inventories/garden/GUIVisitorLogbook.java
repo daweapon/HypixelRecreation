@@ -19,13 +19,61 @@ import net.swofty.type.skyblockgeneric.garden.visitor.VisitorData;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class GUIVisitorLogbook extends StatefulPaginatedView<VisitorCatalogue.Visitor, GUIVisitorLogbook.State> {
 
+    public enum Sort {
+        ALPHABETICAL("Alphabetical"), RARITY("Rarity"), GARDEN_LEVEL("Garden Level"), TIMES_VISITED("Times Visited"), OFFERS_ACCEPTED("Offers Accepted");
+
+        private final String label;
+
+        Sort(String label) {
+            this.label = label;
+        }
+
+        Sort next() {
+            return values()[(ordinal() + 1) % values().length];
+        }
+    }
+
+    public enum Filter {
+        ALL("All"), VISITED("Visited"), NOT_VISITED("Not Visited"), UNCOMMON("Uncommon"), RARE("Rare"), LEGENDARY("Legendary"), MYTHIC("Mythic"), SPECIAL("Special");
+
+        private final String label;
+
+        Filter(String label) {
+            this.label = label;
+        }
+
+        Filter next() {
+            return values()[(ordinal() + 1) % values().length];
+        }
+    }
+
     @Override
     public State initialState() {
-        return new State(VisitorCatalogue.get().visitors(), 0);
+        return new State(VisitorCatalogue.get().visitors().stream()
+                .sorted(Comparator.comparing(VisitorCatalogue.Visitor::name)).toList(), 0, Sort.ALPHABETICAL, Filter.ALL);
+    }
+
+    private static List<VisitorCatalogue.Visitor> build(SkyBlockPlayer player, Sort sort, Filter filter) {
+        VisitorData data = Gardens.profile(player).visitors();
+        Comparator<VisitorCatalogue.Visitor> byName = Comparator.comparing(VisitorCatalogue.Visitor::name);
+        Comparator<VisitorCatalogue.Visitor> order = switch (sort) {
+            case ALPHABETICAL -> byName;
+            case RARITY -> Comparator.<VisitorCatalogue.Visitor>comparingInt(v -> -v.rarity().ordinal()).thenComparing(byName);
+            case GARDEN_LEVEL -> Comparator.<VisitorCatalogue.Visitor>comparingInt(VisitorCatalogue.Visitor::gardenLevel).thenComparing(byName);
+            case TIMES_VISITED -> Comparator.<VisitorCatalogue.Visitor>comparingInt(v -> -data.timesVisited(v.id())).thenComparing(byName);
+            case OFFERS_ACCEPTED -> Comparator.<VisitorCatalogue.Visitor>comparingInt(v -> -data.offersAccepted(v.id())).thenComparing(byName);
+        };
+        return VisitorCatalogue.get().visitors().stream().filter(v -> switch (filter) {
+            case ALL -> true;
+            case VISITED -> data.timesVisited(v.id()) > 0;
+            case NOT_VISITED -> data.timesVisited(v.id()) == 0;
+            default -> v.rarity().name().equals(filter.name());
+        }).sorted(order).toList();
     }
 
     @Override
@@ -52,6 +100,26 @@ public class GUIVisitorLogbook extends StatefulPaginatedView<VisitorCatalogue.Vi
     protected void layoutCustom(ViewLayout<State> layout, State state, ViewContext ctx) {
         Components.close(layout, 49);
         layout.slot(4, (_, c) -> summary((SkyBlockPlayer) c.player()));
+        layout.slot(48, (_, _) -> option(Material.HOPPER, "<a>Sort", state.sort().label, java.util.Arrays.stream(Sort.values()).map(v -> v.label).toList()),
+                (_, c) -> {
+                    State current = state;
+                    Sort next = current.sort().next();
+                    c.session(State.class).setState(new State(build((SkyBlockPlayer) c.player(), next, current.filter()), 0, next, current.filter()));
+                });
+        layout.slot(50, (_, _) -> option(Material.ENDER_EYE, "<a>Filter", state.filter().label, java.util.Arrays.stream(Filter.values()).map(v -> v.label).toList()),
+                (_, c) -> {
+                    State current = state;
+                    Filter next = current.filter().next();
+                    c.session(State.class).setState(new State(build((SkyBlockPlayer) c.player(), current.sort(), next), 0, current.sort(), next));
+                });
+    }
+
+    private static ItemStack.Builder option(Material material, String title, String current, List<String> options) {
+        List<Text> lore = new ArrayList<>();
+        for (String option : options) lore.add(Text.of(option.equals(current) ? "<a>▶ " + option : "<8>  " + option));
+        lore.add(Text.empty());
+        lore.add(Text.of("<e>Click to change!"));
+        return ItemStacks.item(material, Text.of(title), lore);
     }
 
     private ItemStack.Builder summary(SkyBlockPlayer player) {
@@ -103,15 +171,15 @@ public class GUIVisitorLogbook extends StatefulPaginatedView<VisitorCatalogue.Vi
         return false;
     }
 
-    public record State(List<VisitorCatalogue.Visitor> items, int page) implements PaginatedState<VisitorCatalogue.Visitor> {
+    public record State(List<VisitorCatalogue.Visitor> items, int page, Sort sort, Filter filter) implements PaginatedState<VisitorCatalogue.Visitor> {
         @Override
         public PaginatedState<VisitorCatalogue.Visitor> withPage(int page) {
-            return new State(items, page);
+            return new State(items, page, sort, filter);
         }
 
         @Override
         public PaginatedState<VisitorCatalogue.Visitor> withItems(List<VisitorCatalogue.Visitor> items) {
-            return new State(items, page);
+            return new State(items, page, sort, filter);
         }
     }
 }
