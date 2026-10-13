@@ -37,6 +37,10 @@ public final class GardenPresets {
         GardenProfile profile = Gardens.profile(player);
         int[] origin = GardenLayout.plotOrigin(plot);
         if (instance == null || origin == null || !profile.isPlotUnlocked(plot) || !isPastable(preset)) return;
+        if (profile.greenhouse().bed(plot) != null) {
+            player.sendMessage(Text.of("<c>A Greenhouse cannot be changed back!"));
+            return;
+        }
         if (!profile.isPlotCleaned(plot)) {
             player.sendMessage(Text.key("garden.preset.not_clean", plot));
             return;

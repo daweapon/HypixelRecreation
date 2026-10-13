@@ -117,27 +117,22 @@ entries:
     name: "<a>HydroCan 1000"
     material: carrot_on_a_stick
     cost: { coins: 5000 }
-    unavailable: "<c>Watering cans arrive with the Greenhouse update."
   - item: HYDRO_CAN_TURBO_2000
     name: "<a>HydroCan Turbo 2000"
     material: carrot_on_a_stick
     cost: { copper: 200, items: { HYDRO_CAN_1000: 1 } }
-    unavailable: "<c>Watering cans arrive with the Greenhouse update."
   - item: HYDRO_CAN_ULTRA_3000
     name: "<a>HydroCan Ultra 3000"
     material: carrot_on_a_stick
     cost: { copper: 500, items: { HYDRO_CAN_TURBO_2000: 1 } }
-    unavailable: "<c>Watering cans arrive with the Greenhouse update."
   - item: AQUAMASTER_X
     name: "<a>AquaMaster X"
     material: carrot_on_a_stick
     cost: { copper: 1000, items: { HYDRO_CAN_ULTRA_3000: 1 } }
-    unavailable: "<c>Watering cans arrive with the Greenhouse update."
   - item: AQUAMASTER_HYDROMAX
     name: "<a>AquaMaster Hydromax"
     material: carrot_on_a_stick
     cost: { copper: 2500, items: { AQUAMASTER_X: 1, IRIDIUM: 1 } }
-    unavailable: "<c>Watering cans arrive with the Greenhouse update."
   - item: SUNFLOWER_GENERATOR_12
     name: "<a>Sunflower Minion XII"
     material: paper
@@ -146,4 +141,3 @@ entries:
     name: "<a>Plant Diagnostics Tool"
     material: paper
     cost: { copper: 50 }
-    unavailable: "<c>The Plant Diagnostics Tool arrives with the Greenhouse update."

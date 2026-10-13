@@ -48,6 +48,7 @@ public enum MissionSet {
     LEARNING_TO_COMPOST(MissionTalkToSamAtComposter.class, MissionPurchaseFuel.class, MissionRefuelComposter.class, MissionTakeCompost.class),
     PREPPING_THE_PLOT(MissionPurchasePlot.class, MissionCleanPlot.class, MissionTalkToSamPlotCleaned.class),
     CROP_N_PROFIT(MissionBringBreadWheat.class, MissionSetUpStand.class, MissionServeFirstCustomer.class),
+    ROOTING_FOR_YOU(MissionGiveSamBlueprint.class, MissionCollectResourcesForSam.class, MissionPasteGreenhouse.class, MissionWaitForGreenhouse.class),
     MOLE_PROBLEMS(MissionTalkToMolbert.class, MissionCollectJungleLogs.class, MissionGiveMolbertJungleLogs.class, MissionLeaveTheArea.class, MissionTalkToMolbertAgain.class, MissionPlaceTraps.class, MissionTalkToMolbertAgainAgain.class,
             MissionLeaveTheAreaAgain.class, MissionTalkToMolbertAgainAgainAgain.class)
     ;

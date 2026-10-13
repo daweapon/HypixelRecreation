@@ -2182,7 +2182,6 @@ items:
     material: filled_map
     name: "Greenhouse Blueprint"
     rarity: RARE
-    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
     source: "Carpenter, first time you serve them in the Garden"
     lore:
       - "§7This blueprint depicts some sort of"
@@ -3226,7 +3225,6 @@ items:
     material: paper
     name: "Iridium"
     rarity: LEGENDARY
-    unavailable: "Needs the Garden (SkyMart, Greenhouse and visitors are not built)"
     source: "Greenhouse Harvest Bounty drop (0.2%)"
     lore:
       - "§7Can be used at §aSkyMart §7to upgrade"

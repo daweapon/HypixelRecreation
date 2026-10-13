@@ -332,7 +332,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 24§c."
-    unavailable: "Needs Garden/Greenhouse"
     source: "Garden mushroom breaking (~1/350,000) or Greenhouse Harvest Bounty (~1/500); wiki may be outdated"
     components:
       - id: REFORGE_STONE
@@ -1921,7 +1920,6 @@ items:
       - "§eRight-click to view rarity scaling!"
       - ""
       - "§4❣ §cRequires §aMining Skill 23§c."
-    unavailable: "Garden visitors/Greenhouse not built"
     source: "Garden Visitors 0.1% / Greenhouse Harvest Bounties 0.1% / DNA Analysis milestone II"
     components:
       - id: REFORGE_STONE

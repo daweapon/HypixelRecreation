@@ -694,7 +694,7 @@ items:
     material: carrot_on_a_stick
     name: "AquaMaster™ Hydromax"
     rarity: LEGENDARY
-    unavailable: "Needs the Garden"
+    source: "SkyMart"
     lore:
       - "§7Use it on plants in the §aGreenhouse"
       - "§7to keep them watered."
@@ -712,13 +712,18 @@ items:
       - "§7Spreads water in a larger area at"
       - "§7once."
     components:
+      - id: INTERACTABLE
+        handler_id: WATERING_CAN
+      - id: LORE_UPDATE
+        handler_id: WATERING_CAN
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/tools/aquamaster_hydromax
   - id: AQUAMASTER_X
     material: carrot_on_a_stick
     name: "AquaMaster™ X"
     rarity: EPIC
-    unavailable: "Needs the Garden"
+    source: "SkyMart"
     lore:
       - "§7Use it on plants in the §aGreenhouse"
       - "§7to keep them watered."
@@ -736,6 +741,11 @@ items:
       - "§7Spreads water in a larger area at"
       - "§7once."
     components:
+      - id: INTERACTABLE
+        handler_id: WATERING_CAN
+      - id: LORE_UPDATE
+        handler_id: WATERING_CAN
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/tools/aquamaster_x
   - id: BASIC_FISHING_NET
@@ -1154,7 +1164,7 @@ items:
     material: carrot_on_a_stick
     name: "HydroCan™ 1000"
     rarity: COMMON
-    unavailable: "Needs the Garden"
+    source: "SkyMart"
     lore:
       - "§7Use it on plants in the §aGreenhouse"
       - "§7to keep them watered."
@@ -1168,13 +1178,18 @@ items:
       - "§7When aiming at a water source, fills"
       - "§7your can back up with water."
     components:
+      - id: INTERACTABLE
+        handler_id: WATERING_CAN
+      - id: LORE_UPDATE
+        handler_id: WATERING_CAN
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/tools/hydro_can_1000
   - id: HYDRO_CAN_TURBO_2000
     material: carrot_on_a_stick
     name: "HydroCan™ Turbo 2000"
     rarity: UNCOMMON
-    unavailable: "Needs the Garden"
+    source: "SkyMart"
     lore:
       - "§7Use it on plants in the §aGreenhouse"
       - "§7to keep them watered."
@@ -1188,13 +1203,18 @@ items:
       - "§7When aiming at a water source, fills"
       - "§7your can back up with water."
     components:
+      - id: INTERACTABLE
+        handler_id: WATERING_CAN
+      - id: LORE_UPDATE
+        handler_id: WATERING_CAN
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/tools/hydro_can_turbo_2000
   - id: HYDRO_CAN_ULTRA_3000
     material: carrot_on_a_stick
     name: "HydroCan™ Ultra 3000"
     rarity: RARE
-    unavailable: "Needs the Garden"
+    source: "SkyMart"
     lore:
       - "§7Use it on plants in the §aGreenhouse"
       - "§7to keep them watered."
@@ -1212,6 +1232,11 @@ items:
       - "§7Spreads water in a larger area at"
       - "§7once."
     components:
+      - id: INTERACTABLE
+        handler_id: WATERING_CAN
+      - id: LORE_UPDATE
+        handler_id: WATERING_CAN
+        is_absolute: false
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/tools/hydro_can_ultra_3000
   - id: ICEBREAKER

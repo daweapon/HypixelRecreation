@@ -23,6 +23,7 @@ import java.util.random.RandomGenerator;
 
 public final class VisitorService {
     public static final double CROP_COOLDOWN_SECONDS = 0.1;
+    private static final int BLUEPRINT_GARDEN_LEVEL = 7;
     private static final RandomGenerator RANDOM = new java.util.Random();
 
     public enum GiveResult {
@@ -95,6 +96,9 @@ public final class VisitorService {
             visitor = catalogue.visitor(data.getForcedNext());
             data.setForcedNext(null);
         }
+        if (visitor == null && !profile.greenhouse().isBlueprintOffered() && GardenProgress.level(profile) >= BLUEPRINT_GARDEN_LEVEL) {
+            visitor = catalogue.visitor("CARPENTER");
+        }
         if (visitor == null) {
             var present = data.getPresent().stream().map(VisitorData.Present::getId).collect(java.util.stream.Collectors.toSet());
             visitor = VisitorGenerator.pick(catalogue, candidate -> eligible(profile, candidate), present, 0, RANDOM);
@@ -109,6 +113,7 @@ public final class VisitorService {
         boolean hidden = data.visible().size() >= VisitorData.MAX_VISIBLE;
         data.getPresent().add(new VisitorData.Present(visitor.id(), offer, now, hidden));
         data.recordVisit(visitor.id());
+        if (visitor.id().equals("CARPENTER")) profile.greenhouse().setBlueprintOffered(true);
         if (player != null && !hidden) {
             player.sendMessage(Text.of("{} <f>has arrived on your Garden!", visitor.coloured()));
         }
@@ -210,7 +215,11 @@ public final class VisitorService {
                 switch (reward.type()) {
                     case "FARMING_XP" -> farmingXp += (long) reward.amount();
                     case "COPPER" -> copper += (int) reward.amount();
-                    case "ITEM" -> giveItem(player, reward, lines);
+                    case "ITEM" -> {
+                        if (!"GREENHOUSE_BLUEPRINT".equals(reward.item()) || !profile.greenhouse().isBlueprintGiven()) {
+                            giveItem(player, reward, lines);
+                        }
+                    }
                     case "ESSENCE" -> giveEssence(player, reward, lines);
                     case "SKIN", "FLAG" -> lines.add("<d>" + reward.name());
                     default -> {
@@ -227,6 +236,8 @@ public final class VisitorService {
             }
         }
 
+        boolean blueprint = visitor != null && visitor.id().equals("CARPENTER") && !profile.greenhouse().isBlueprintGiven();
+        if (blueprint) profile.greenhouse().setBlueprintGiven(true);
         profile.addCopper(copper);
         data.recordAccepted(present.getId());
         remove(data, present);
@@ -237,6 +248,7 @@ public final class VisitorService {
         claimMilestones(player);
         announce(player, visitor, farmingXp, offer, copper, lines);
         GardenQuests.visitorServed(player);
+        if (blueprint) GardenQuests.carpenterServed(player);
     }
 
     private static void giveItem(SkyBlockPlayer player, VisitorCatalogue.Reward reward, List<String> lines) {

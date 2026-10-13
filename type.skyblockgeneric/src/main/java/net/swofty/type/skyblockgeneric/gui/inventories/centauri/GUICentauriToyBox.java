@@ -63,6 +63,8 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
             net.swofty.type.skyblockgeneric.garden.pest.PestService.spawn(p, plot, 4, null);
         });
         action(layout, 42, Material.HOPPER, "<2>Full Vacuum Bag", "<8>Hoovered up.", "<7>Add <2>1,000 Pests <7>to your vacuum bag.", p -> addGarden(p, profile -> profile.pests().setStored(profile.pests().getStored() + 1_000)));
+        action(layout, 43, Material.CLOCK, "<a>Greenhouse Time Warp", "<8>Hours go by.", "<7>Simulate <a>6 hours <7>of Greenhouse growth.", p -> net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseService.simulate(p, 6));
+        action(layout, 44, Material.WHITE_CONCRETE, "<a>Greenhouse Blueprint Shortcut", "<8>Sam says yes.", "<7>Skip Sam's Greenhouse quest so you can <a>convert a plot<7>.", p -> addGarden(p, profile -> { profile.greenhouse().setBlueprintGiven(true); profile.greenhouse().setBlueprintOffered(true); profile.greenhouse().setBlueprintDelivered(true); profile.greenhouse().setResourcesDelivered(true); }));
         action(layout, 31, Material.SUNFLOWER, "<a>\"Organically Grown\" Garden Levels!", "<8>Fertiliser for your progress.", "<7>Gain <a>10,000 Garden Experience<7>.", p -> net.swofty.type.skyblockgeneric.garden.GardenService.addGardenXp(p, 10_000));
         info(layout, 50, Material.OAK_SIGN, "<a>Got Suggestions?", "<7>Share Alpha Network utility ideas in our discord!");
         Components.back(layout, 48, ctx);

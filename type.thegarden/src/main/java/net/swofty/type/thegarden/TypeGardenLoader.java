@@ -16,6 +16,7 @@ import net.swofty.type.generic.tab.TablistManager;
 import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.garden.farm.GardenCropGrowth;
+import net.swofty.type.skyblockgeneric.garden.npc.CarpenterNpc;
 import net.swofty.type.skyblockgeneric.garden.npc.NPCSam;
 import net.swofty.type.skyblockgeneric.garden.npc.PesthunterNpc;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
@@ -118,6 +119,7 @@ public class TypeGardenLoader implements SkyBlockTypeLoader {
     public List<HypixelNPC> getNPCs() {
         List<HypixelNPC> npcs = new ArrayList<>();
         npcs.add(NPCSam.get());
+        for (int i = 0; i < 3; i++) npcs.add(new CarpenterNpc(i));
         for (PesthunterNpc.Kind kind : PesthunterNpc.Kind.values()) npcs.add(new PesthunterNpc(kind));
         VisitorCatalogue.get().visitors().stream().filter(VisitorCatalogue.Visitor::available)
                 .forEach(visitor -> npcs.add(new VisitorNpc(visitor)));

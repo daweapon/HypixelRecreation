@@ -6,6 +6,8 @@ import net.swofty.type.generic.tab.TablistSkinRegistry;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseData;
+import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
 import net.swofty.type.skyblockgeneric.garden.pest.PestData;
 import net.swofty.type.skyblockgeneric.garden.pest.PestItems;
 import net.swofty.type.skyblockgeneric.garden.pest.PestService;
@@ -39,6 +41,11 @@ public class GardenPestsModule extends TablistModule {
             int loss = PestService.fortuneLoss(player, profile);
             if (loss > 0) entries.add(new TablistEntry(Text.of(" <c>Fortune reduced by {}%", loss), TablistSkinRegistry.GRAY));
         }
+        GreenhouseData greenhouse = profile.greenhouse();
+        if (!greenhouse.getBeds().isEmpty()) {
+            entries.add(new TablistEntry(Text.of("<a><l>Greenhouse:"), TablistSkinRegistry.GRAY));
+            entries.add(new TablistEntry(Text.of(" <7>Next Stage: <a>{}", clock(GreenhouseService.nextStageIn(greenhouse))), TablistSkinRegistry.GRAY));
+        }
         fillRestWithGray(entries);
         return entries;
     }
@@ -56,6 +63,7 @@ public class GardenPestsModule extends TablistModule {
 
     private static String clock(long millis) {
         long seconds = millis / 1000;
+        if (seconds >= 3600) return seconds / 3600 + "h " + seconds % 3600 / 60 + "m";
         return seconds >= 60 ? seconds / 60 + "m " + seconds % 60 + "s" : seconds + "s";
     }
 }

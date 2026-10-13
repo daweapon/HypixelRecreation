@@ -60,4 +60,16 @@ public final class GardenQuests {
     public static void plotCleaned(SkyBlockPlayer player) {
         end(player, MissionCleanPlot.class);
     }
+
+    public static void carpenterServed(SkyBlockPlayer player) {
+        start(player, MissionGiveSamBlueprint.class);
+    }
+
+    public static void greenhouseConverted(SkyBlockPlayer player) {
+        end(player, MissionPasteGreenhouse.class);
+    }
+
+    public static void greenhouseBuilt(SkyBlockPlayer player) {
+        end(player, MissionWaitForGreenhouse.class);
+    }
 }

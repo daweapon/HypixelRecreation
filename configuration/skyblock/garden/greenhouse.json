@@ -1,0 +1,51 @@
+{
+  "source": "Hypixel SkyBlock Wiki 'Greenhouse' (2026-10-13) for base crops, effects, timer and Harvest Bounty; upgrade tier percentages from the user's videos (Growth Speed 3/9 = 15%, 9/9 = 50%; Plant Yield 3/9 = 6%, 9/9 = 20%, tier VI = 2,000 Copper + 2 Compost Bundles + 5 SkyBlock XP); other tier costs are placeholders.",
+  "stageHours": 4,
+  "baseXp": 320,
+  "plantYield": [0, 2, 4, 6, 8, 10, 12, 14, 17, 20],
+  "growthSpeed": [0, 5, 10, 15, 20, 25, 30, 35, 40, 50],
+  "uniqueCropPercent": 2.5,
+  "maxUniqueCrops": 10,
+  "starterSlots": {"columns": [2, 7], "rows": [2, 7]},
+  "waterPerLevel": 10,
+  "waterLossMin": 2,
+  "waterLossMax": 3,
+  "unwateredAdvanceChance": 0.5,
+  "decayDaysSinceWatering": 5,
+  "decayDaysUnwaterable": 9,
+  "upgrades": {
+    "GROWTH_SPEED": [
+      {"copper": 100, "bundles": 0, "xp": 5}, {"copper": 250, "bundles": 0, "xp": 5}, {"copper": 500, "bundles": 1, "xp": 5},
+      {"copper": 1000, "bundles": 1, "xp": 5}, {"copper": 1500, "bundles": 2, "xp": 5}, {"copper": 2000, "bundles": 2, "xp": 5},
+      {"copper": 3000, "bundles": 3, "xp": 5}, {"copper": 4500, "bundles": 4, "xp": 5}, {"copper": 6000, "bundles": 5, "xp": 5}
+    ],
+    "PLANT_YIELD": [
+      {"copper": 100, "bundles": 0, "xp": 5}, {"copper": 250, "bundles": 0, "xp": 5}, {"copper": 500, "bundles": 1, "xp": 5},
+      {"copper": 1000, "bundles": 1, "xp": 5}, {"copper": 1500, "bundles": 2, "xp": 5}, {"copper": 2000, "bundles": 2, "xp": 5},
+      {"copper": 3000, "bundles": 3, "xp": 5}, {"copper": 4500, "bundles": 4, "xp": 5}, {"copper": 6000, "bundles": 5, "xp": 5}
+    ],
+    "PLOT_LIMIT": [
+      {"vines": 100, "bundles": 10, "xp": 5}, {"vines": 150, "bundles": 20, "xp": 5}
+    ]
+  },
+  "bounty": [
+    ["BURROWING_SPORES", 0.2], ["ETHEREAL_VINE", 5], ["EVERGREEN_CHIP", 3], ["IRIDIUM", 0.2],
+    ["OVERCLOCKER_3000", 0.05], ["OVERGROWN_GRASS", 0.1], ["SYNTHESIS_CHIP", 3]
+  ],
+  "vineChance": {"COMMON": 15, "UNCOMMON": 20, "RARE": 25, "EPIC": 30, "LEGENDARY": 40},
+  "crops": {
+    "WHEAT": {"stages": 8, "yield": 72, "effects": ["HARVEST_BOOST"]},
+    "CARROT": {"stages": 8, "yield": 175, "effects": ["XP_BOOST"]},
+    "POTATO": {"stages": 8, "yield": 150, "effects": ["IMMUNITY"]},
+    "PUMPKIN": {"stages": 11, "yield": 68, "effects": ["BONUS_DROPS"]},
+    "SUGAR_CANE": {"stages": 8, "yield": 136, "effects": ["IMPROVED_XP_BOOST", "HARVEST_LOSS"]},
+    "MELON": {"stages": 11, "yield": 320, "effects": ["WATER_RETAIN"]},
+    "CACTUS": {"stages": 8, "yield": 132, "effects": ["IMPROVED_WATER_RETAIN", "HARVEST_LOSS"]},
+    "COCOA_BEANS": {"stages": 6, "yield": 120, "effects": ["IMMUNITY"]},
+    "MUSHROOM": {"stages": 6, "yield": 30, "effects": ["IMPROVED_HARVEST_BOOST", "WATER_DRAIN"]},
+    "NETHER_WART": {"stages": 8, "yield": 108, "effects": ["IMPROVED_HARVEST_BOOST", "XP_LOSS"]},
+    "SUNFLOWER": {"stages": 15, "yield": 232, "effects": ["BONUS_DROPS"]},
+    "MOONFLOWER": {"stages": 15, "yield": 232, "effects": ["BONUS_DROPS"]},
+    "WILD_ROSE": {"stages": 15, "yield": 200, "effects": ["EFFECT_SPREAD"]}
+  }
+}

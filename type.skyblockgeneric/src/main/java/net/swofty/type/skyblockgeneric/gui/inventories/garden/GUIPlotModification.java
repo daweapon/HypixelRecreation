@@ -14,6 +14,7 @@ import net.swofty.type.skyblockgeneric.garden.GardenProfile;
 import net.swofty.type.skyblockgeneric.garden.farm.GardenPresets;
 import net.swofty.type.skyblockgeneric.garden.GardenService;
 import net.swofty.type.skyblockgeneric.garden.Gardens;
+import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
@@ -43,13 +44,16 @@ public class GUIPlotModification extends StatelessView {
                     (_, c) -> select(preset, c));
         }
 
-        layout.slot(47, GardenMenus.item(Material.WHITE_CONCRETE, Text.key("gui_garden_upgrades.modify.greenhouse.name"), List.of(
-                Text.key("gui_garden_upgrades.modify.greenhouse.lore.1"),
-                Text.key("gui_garden_upgrades.modify.greenhouse.lore.2"),
-                Text.key("gui_garden_upgrades.modify.greenhouse.lore.3"),
-                GardenMenus.blank(),
-                Text.key("gui_garden_upgrades.modify.greenhouse.unavailable"))),
-                (_, c) -> c.player().sendMessage(Text.key("gui_garden_upgrades.modify.greenhouse.unavailable")));
+        layout.slot(47, (_, c) -> convertItem((SkyBlockPlayer) c.player()), (_, c) -> {
+            SkyBlockPlayer player = (SkyBlockPlayer) c.player();
+            GardenProfile profile = Gardens.profile(player);
+            if (GreenhouseService.isGreenhouse(profile, plot)) return;
+            if (!GreenhouseService.canConvert(profile)) {
+                player.sendMessage(Text.of(convertReason(profile)));
+                return;
+            }
+            c.push(new GUIGreenhouseConvert(plot));
+        });
 
         layout.slot(50, GardenMenus.item(Material.COMMAND_BLOCK, Text.key("gui_garden_upgrades.modify.save.name"), List.of(
                 Text.key("gui_garden_upgrades.modify.save.lore.1"),
@@ -66,6 +70,23 @@ public class GUIPlotModification extends StatelessView {
                 GardenMenus.blank(),
                 Text.key("gui_garden_upgrades.modify.name.click"))),
                 (_, c) -> c.player().sendMessage(Text.key("gui_garden_upgrades.modify.name.unavailable")));
+    }
+
+    private ItemStack.Builder convertItem(SkyBlockPlayer player) {
+        GardenProfile profile = Gardens.profile(player);
+        boolean converted = GreenhouseService.isGreenhouse(profile, plot);
+        return GardenMenus.item(Material.WHITE_CONCRETE, Text.key("gui_garden_upgrades.modify.greenhouse.name"), List.of(
+                Text.key("gui_garden_upgrades.modify.greenhouse.lore.1"),
+                Text.key("gui_garden_upgrades.modify.greenhouse.lore.2"),
+                Text.key("gui_garden_upgrades.modify.greenhouse.lore.3"),
+                GardenMenus.blank(),
+                converted ? Text.of("<a>This plot is a Greenhouse!")
+                        : GreenhouseService.canConvert(profile) ? Text.of("<e>Click to convert!") : Text.of(convertReason(profile))));
+    }
+
+    private static String convertReason(GardenProfile profile) {
+        return profile.greenhouse().getBeds().size() >= profile.greenhouse().greenhouseLimit() && profile.greenhouse().isBlueprintDelivered()
+                ? "<c>Already at max Greenhouse plots!" : "<c>Finish Sam's Greenhouse quest to unlock this!";
     }
 
     private ItemStack.Builder presetItem(GardenGrids.Preset preset, GardenProfile profile) {

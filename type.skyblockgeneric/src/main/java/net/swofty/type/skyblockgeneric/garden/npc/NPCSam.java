@@ -7,6 +7,7 @@ import net.swofty.type.generic.entity.npc.HypixelNPC;
 import net.swofty.type.generic.entity.npc.configuration.HumanConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.garden.Gardens;
 import net.swofty.type.skyblockgeneric.garden.quest.GardenQuests;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.mission.MissionData;
@@ -19,6 +20,8 @@ import java.util.stream.Stream;
 public class NPCSam extends HypixelNPC {
     public static final int WHEAT_FOR_COMPOST = 25;
     public static final int BREAD_WHEAT = 100;
+    public static final int GREENHOUSE_LOGS = 64;
+    public static final int GREENHOUSE_SAND = 128;
     private static final Pos HOUSE = new Pos(-2.5, 71, -12.5, 0, 0);
     private static final Pos STAND = new Pos(4.5, 71, -9.5, 0, 0);
     private static final Pos COMPOSTER = new Pos(-9.5, 71, -26.5, 90, 0);
@@ -143,6 +146,30 @@ public class NPCSam extends HypixelNPC {
             });
         } else if (data.isCurrentlyActive(MissionServeFirstCustomer.class)) {
             setDialogue(player, "first_customer");
+        } else if (data.isCurrentlyActive(MissionGiveSamBlueprint.class)) {
+            if (player.getAmountInInventory(ItemType.GREENHOUSE_BLUEPRINT) == 0) {
+                player.sendMessage("<c>Sam is waiting for the Greenhouse Blueprint!");
+                return;
+            }
+            player.removeItemFromPlayer(ItemType.GREENHOUSE_BLUEPRINT, 1);
+            Gardens.profile(player).greenhouse().setBlueprintDelivered(true);
+            Gardens.save(player, Gardens.profile(player));
+            setDialogue(player, "blueprint").thenRun(() -> GardenQuests.end(player, MissionGiveSamBlueprint.class));
+        } else if (data.isCurrentlyActive(MissionCollectResourcesForSam.class)) {
+            if (player.getAmountInInventory(ItemType.ENCHANTED_OAK_LOG) < GREENHOUSE_LOGS
+                    || player.getAmountInInventory(ItemType.ENCHANTED_SAND) < GREENHOUSE_SAND) {
+                setDialogue(player, "resources_ask");
+                return;
+            }
+            player.removeItemFromPlayer(ItemType.ENCHANTED_OAK_LOG, GREENHOUSE_LOGS);
+            player.removeItemFromPlayer(ItemType.ENCHANTED_SAND, GREENHOUSE_SAND);
+            Gardens.profile(player).greenhouse().setResourcesDelivered(true);
+            Gardens.save(player, Gardens.profile(player));
+            setDialogue(player, "resources_done").thenRun(() -> GardenQuests.end(player, MissionCollectResourcesForSam.class));
+        } else if (data.isCurrentlyActive(MissionPasteGreenhouse.class)) {
+            setDialogue(player, "paste");
+        } else if (data.isCurrentlyActive(MissionWaitForGreenhouse.class)) {
+            setDialogue(player, "wait");
         } else {
             setDialogue(player, "idle");
         }
@@ -228,6 +255,26 @@ public class NPCSam extends HypixelNPC {
                         "Wow we did it! We served our first customer!",
                         "Keep checking back on them, I am sure more people will visit our farm soon.",
                         "Besides that, you can always go check the desk to find out what to do next!"
+                ).build(),
+                DialogueSet.builder().key("blueprint").lines(
+                        "What's this? ...A blueprint for a Greenhouse?!",
+                        "Do you know what this means?? We can build our very own Greenhouse! I'm so excited, I can't wait to get started on it.",
+                        "I'm sorry, I just can't help myself. Let me calm myself down a bit.",
+                        "Alright, I feel better now. First we need to gather some resources to build the Greenhouse.",
+                        "Looking at the blueprint, it seems we need about <e>64 Enchanted Oak Logs <f>and <e>128 Enchanted Sand<f>."
+                ).build(),
+                DialogueSet.builder().key("resources_ask").lines(
+                        "We still need <e>64 Enchanted Oak Logs <f>and <e>128 Enchanted Sand <f>to build the Greenhouse."
+                ).build(),
+                DialogueSet.builder().key("resources_done").lines(
+                        "Perfect! Now that we have enough resources, we can finally build this Greenhouse.",
+                        "Head over to the Desk, configure one of the plots you already own and place a <a>Greenhouse <f>on it."
+                ).build(),
+                DialogueSet.builder().key("paste").lines(
+                        "Head over to the Desk, configure one of the plots you already own and place a <a>Greenhouse <f>on it."
+                ).build(),
+                DialogueSet.builder().key("wait").lines(
+                        "The Greenhouse is still being built. Give it a moment!"
                 ).build(),
                 DialogueSet.builder().key("idle").lines(
                         "You can always go check the desk to find out what to do next!"

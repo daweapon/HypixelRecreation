@@ -4,6 +4,7 @@ import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.garden.quest.GardenQuests;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterConfig;
+import net.swofty.type.skyblockgeneric.garden.greenhouse.GreenhouseConfig;
 import net.swofty.type.skyblockgeneric.garden.composter.ComposterUpgrade;
 import net.swofty.type.skyblockgeneric.garden.visitor.VisitorCatalogue;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
@@ -118,6 +119,7 @@ public final class GardenService {
             experience.setSourceXP(SkyBlockXPSource.GARDEN_VISITORS_SERVED, (double) profile.visitors().getUniqueTier() * 3);
             experience.setSourceXP(SkyBlockXPSource.OFFERS_ACCEPTED, (double) profile.visitors().getAcceptedTier() * 3);
             experience.setSourceXP(SkyBlockXPSource.COMPOSTER_UPGRADES, (double) ComposterConfig.get().skyblockXp(profile.composter().getTiers()));
+            experience.setSourceXP(SkyBlockXPSource.GREENHOUSE_UPGRADES, (double) (profile.greenhouse().getGrowthSpeedTier() + profile.greenhouse().getPlantYieldTier() + profile.greenhouse().getPlotLimitTier()) * 5);
             experience.setSourceXP(SkyBlockXPSource.GARDEN_UNLOCKED_PLOTS,
                     (double) profile.getUnlockedPlots().size() * GardenConfig.get().skyblockXpPerPlot());
         });
@@ -139,6 +141,14 @@ public final class GardenService {
         for (ComposterUpgrade upgrade : ComposterUpgrade.values()) {
             profile.composter().setTier(upgrade, ComposterUpgrade.MAX_TIER);
         }
+        GreenhouseConfig greenhouse = GreenhouseConfig.get();
+        profile.greenhouse().setGrowthSpeedTier(greenhouse.maxTier(GreenhouseConfig.Upgrade.GROWTH_SPEED));
+        profile.greenhouse().setPlantYieldTier(greenhouse.maxTier(GreenhouseConfig.Upgrade.PLANT_YIELD));
+        profile.greenhouse().setPlotLimitTier(greenhouse.maxTier(GreenhouseConfig.Upgrade.PLOT_LIMIT));
+        profile.greenhouse().setBlueprintOffered(true);
+        profile.greenhouse().setBlueprintGiven(true);
+        profile.greenhouse().setBlueprintDelivered(true);
+        profile.greenhouse().setResourcesDelivered(true);
         VisitorCatalogue visitors = VisitorCatalogue.get();
         visitors.visitors().forEach(visitor -> profile.visitors().markServed(visitor.id()));
         profile.visitors().setUniqueTier(visitors.uniqueMilestones().getLast().tier());

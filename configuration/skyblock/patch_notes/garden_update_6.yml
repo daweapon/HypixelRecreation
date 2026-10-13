@@ -1,0 +1,25 @@
+title: "The Garden Update, Part 6"
+date: "13th October 2026"
+intro:
+  - "The Greenhouse is here. Build one on a plot of your own and grow crops that the open field can't."
+sections:
+  - heading: "Building the Greenhouse"
+    colour: "<a>"
+    lines:
+      - "At Garden Level 7 the next visitor is the Carpenter, with a Greenhouse Blueprint. Give it to Sam, bring him 64 Enchanted Oak Logs and 128 Enchanted Sand, then pick Convert to Greenhouse in Plot Modification at the Desk."
+      - "Converting costs nothing, replaces everything on the plot and can't be undone."
+  - heading: "Growing in the Greenhouse"
+    colour: "<2>"
+    lines:
+      - "Right-click an unlocked plant slot with a crop to plant it, and break it once it has fully grown to harvest it. Every crop grows one stage every four hours, all at once."
+      - "Crops need water. Keep them watered with a HydroCan or AquaMaster, or they stop growing and can die. Neglected crops decay after five days."
+      - "Crops pass effects to the crops next to them, like Harvest Boost, XP Boost and Water Retain. Check any plant with the Plant Diagnostics Tool."
+  - heading: "Slots and Upgrades"
+    colour: "<5>"
+    lines:
+      - "Right-click a locked slot next to an unlocked one with an Ethereal Vine to unlock it."
+      - "The Carpenter in your Greenhouse sells nothing, but his menu leads to Greenhouse Upgrades: Growth Speed, Plant Yield and Plot Limit, which lets you build more Greenhouses."
+  - heading: "Coming next"
+    colour: "<e>"
+    lines:
+      - "Mutations, the Crop Analyzer and DNA Sequencing, Garden Chips and Sowdust."

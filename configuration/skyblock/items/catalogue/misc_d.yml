@@ -2571,7 +2571,6 @@ items:
     material: paper
     name: "Overclocker 3000"
     rarity: LEGENDARY
-    unavailable: "Needs the Garden"
     source: "Garden visitors, Jacob's contests, crops, the Greenhouse (0.05%) and Pests, with pity"
     lore:
       - "§8Combinable in Anvil"
@@ -3006,13 +3005,14 @@ items:
     material: paper
     name: "Plant Diagnostics Tool"
     rarity: RARE
-    unavailable: "Needs the Garden Greenhouse, which isn't built"
     source: "Sam (Garden Greenhouse unlock quest) or SkyMart: 50 Copper"
     lore:
       - "§6Ability: Analyze  §e§lRIGHT CLICK"
       - "§7View the detailed properties of a"
       - "§7plant inside the §aGreenhouse§7."
     components:
+      - id: INTERACTABLE
+        handler_id: PLANT_DIAGNOSTICS_TOOL
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/garden/greenhouse/plant_diagnostics_tool
   - id: PLASMA_NUCLEUS
