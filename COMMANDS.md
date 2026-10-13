@@ -148,6 +148,7 @@ This catalog covers **130 top-level game-server command definitions** (after mer
 | `/set <coins\|bits\|xp\|essence\|reputation\|petlevel\|petrarity\|bestiary\|collection\|stat> ...` | `/coins`, `/bits`, `/bit`, `/xp`, `/experience`, `/setessence`, `/setreputation`, `/setrep`, `/setpetlevel`, `/updatepetlevel`, `/setpetrarity`, `/updatebestiary`, `/updatecollection`, `/setstat`, `/setstatistic` | Sets a profile value for yourself or an online player. One subcommand per value; each keeps the arguments of the command it replaced (see Merged staff commands). | STAFF | No | `type.skyblockgeneric` |
 | `/skyblockxp <action> [amount] [player]` | `/sbxp` | Manages SkyBlock XP and SkyBlock Level. Also `cause <cause> [player]`, which awards a single named cause (old `/giveskyblockxp` and `/awardskyblockxp`). See the SkyBlock XP subcommand reference below. | STAFF | No | `type.skyblockgeneric` |
 | `/unlock <warps\|bestiary> [player]` | `/unlockwarps`, `/unlockbestiary` | Unlocks every Fast Travel warp, or the Bestiary, for yourself or an online player. | STAFF | No | `type.skyblockgeneric` |
+| `/visitor spawn <visitor>` | — | Summons any Garden visitor (even ones you are not eligible for yet) onto your Garden, with Tab completion on visitor ids and names. Garden server only; fails if the visitor is already present or the Garden is full. | STAFF | No | `type.skyblockgeneric` |
 
 ### Moderation and accounts
 
