@@ -12,7 +12,7 @@ public class NPCGeonathanGreatforge extends AbstractHollowsNPC {
     private static final String MET = "met_geonathan";
 
     public NPCGeonathanGreatforge() {
-        super("Geonathan Greatforge", "<6>", DEFAULT_TEXTURE, new Pos(530.5, 106, 556.5, 0, 0));
+        super("Geonathan Greatforge", "<6>", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzIxM2NmMGNhNzlhMzYxMWI4ZTA1ZmU5ZTI2NGZiMmJmOGQyN2U0NjRkYzEyZGM2ZTk1ZGQwYWUwYzMzNWE1NjEifX19", new Pos(530.5, 106, 556.5, 0, 0));
     }
 
     @Override

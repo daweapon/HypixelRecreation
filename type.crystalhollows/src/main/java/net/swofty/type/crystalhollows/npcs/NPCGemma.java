@@ -10,7 +10,7 @@ public class NPCGemma extends AbstractHollowsNPC {
     private static final String MET = "met_gemma";
 
     public NPCGemma() {
-        super("Gemma", "<b>", DEFAULT_TEXTURE, new Pos(475.5, 106, 513.5, 0, 0));
+        super("Gemma", "<b>", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzhlNDIwMTVkMGJmYTg1NWY5OWQwOWFmMDZmMzI3OTBkOWUzOTM4Mzk2MTc2NmQ4ZTJjOGYxNjA0NTg1MjQ1YjkifX19", new Pos(475.5, 106, 513.5, 0, 0));
     }
 
     @Override

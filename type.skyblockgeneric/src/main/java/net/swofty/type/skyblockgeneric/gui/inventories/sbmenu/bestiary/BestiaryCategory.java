@@ -90,6 +90,8 @@ public enum BestiaryCategory {
         CREEPER("<a>Creeper", "Look out for their hiss!", new GUIMaterial(Material.CREEPER_HEAD), allLevels(IslandMobSpecies.CREEPER)),
         ENDERMAN("<a>Enderman", "Don't like making eye contact.", new GUIMaterial(Material.ENDER_PEARL), allLevels(IslandMobSpecies.ENDERMAN)),
         WITCH("<a>Witch", "Masters of alchemy.", new GUIMaterial(Material.POTION), allLevels(IslandMobSpecies.WITCH)),
+        BAT("<a>Bat", "Can be found hanging around.", new GUIMaterial(Material.BAT_SPAWN_EGG), CataloguedBestiaryAreas.placeholder("BAT", "Bat", 2, 5, MobType.AIRBORNE, Material.BAT_SPAWN_EGG)),
+        SLIME("<a>Slime", "World's loudest creatures.", new GUIMaterial(Material.SLIME_BALL), CataloguedBestiaryAreas.placeholder("SLIME", "Slime", 2, 5, MobType.CUBIC, Material.SLIME_BALL)),
         ;
 
         private static List<BestiaryMob> allLevels(IslandMobSpecies species) {
@@ -115,6 +117,9 @@ public enum BestiaryCategory {
         GRAVEYARD_ZOMBIE("<a>Graveyard Zombie", "Brains.", new GUIMaterial(Material.ZOMBIE_HEAD), List.of(new MobGraveyardZombie())),
         OLD_WOLF("<a>Old Wolf", "Wolves older than the island itself.", new GUIMaterial("d359537c15534f61c1cd886bc118774ed22280e7cdab6613870160aad4ca39"), List.of(new MobRuinsOldWolf())),
         WOLF("<a>Wolf", "Roaming the remains of a Castle far from its best days.", new GUIMaterial("f4cb7a6bf6c32c49f2589147e6f0f888e9e35875dd1ea2a8af379ca710589e6b"), List.of(new MobRuinsWolf())),
+        CRYPT_GHOUL("<a>Crypt Ghoul", "Long buried, newly unburied.", new GUIMaterial(Material.ZOMBIE_HEAD), CataloguedBestiaryAreas.placeholder("CRYPT_GHOUL", "Crypt Ghoul", 2, 20, MobType.UNDEAD, Material.ZOMBIE_HEAD)),
+        GOLDEN_GHOUL("<a>Golden Ghoul", "A ghoul that fell into molten gold.", new GUIMaterial(Material.GOLDEN_HELMET), CataloguedBestiaryAreas.placeholder("GOLDEN_GHOUL", "Golden Ghoul", 4, 15, MobType.UNDEAD, Material.GOLDEN_HELMET)),
+        SHINY_PIG("<a>Shiny Pig", "Found all around the Hub during the Year of the Pig!", new GUIMaterial(Material.PORKCHOP), CataloguedBestiaryAreas.placeholder("SHINY_PIG", "Shiny Pig", 5, 15, MobType.ANIMAL, Material.PORKCHOP)),
         ZOMBIE_VILLAGER("<a>Zombie Villager", "The real enemy isn't the dead - it's the living.", new GUIMaterial("69198f410a10f99314aa0fbe9a3db10697bbc1c011f019507d96673c64217f5a"), List.of(new MobGraveyardZombieVillager())),
         ;
 
@@ -194,6 +199,15 @@ public enum BestiaryCategory {
                 List.of(new MobGoblin(), new MobFireslinger(), new MobKnifethrower(), new MobGoblinFlamethrower())),
         GOLDEN_GOBLIN("<a>Golden Goblin", "Take the things you love in life, and run with them.", List.of(new GoldenGoblin())),
         TREASURE_HOARDER("<a>Treasure Hoarder", "The real treasure was the gold we found along the way.", List.of(new MobTreasureHoarder())),
+        GHOST("<a>Ghost", "It is hard to find that which you cannot see.", CataloguedBestiaryAreas.placeholder("GHOST", "Ghost", 2, 20, MobType.ELUSIVE, Material.GHAST_TEAR)),
+        GLACITE_BOWMAN("<a>Glacite Bowman", "Unable to see, it hunts by sound.", CataloguedBestiaryAreas.placeholder("GLACITE_BOWMAN", "Glacite Bowman", 4, 15, MobType.GLACIAL, Material.BOW)),
+        GLACITE_CAVER("<a>Glacite Caver", "Dug too deep and never looked back.", CataloguedBestiaryAreas.placeholder("GLACITE_CAVER", "Glacite Caver", 4, 15, MobType.GLACIAL, Material.IRON_PICKAXE)),
+        GLACITE_MAGE("<a>Glacite Mage", "Unknowing and unpredictable in its destruction.", CataloguedBestiaryAreas.placeholder("GLACITE_MAGE", "Glacite Mage", 4, 15, MobType.GLACIAL, Material.BLAZE_ROD)),
+        GLACITE_MUTT("<a>Glacite Mutt", "Remarkably loyal, even in death.", CataloguedBestiaryAreas.placeholder("GLACITE_MUTT", "Glacite Mutt", 4, 15, MobType.GLACIAL, Material.BONE)),
+        GOBLIN_RAIDERS("<a>Goblin Raiders", "If it moves, it gets smashed.", CataloguedBestiaryAreas.placeholder("GOBLIN_RAIDERS", "Goblin Raiders", 4, 15, MobType.SUBTERRANEAN, Material.IRON_AXE)),
+        LITTLEFOOT("<a>Littlefoot", "You've probably heard of his older brother.", CataloguedBestiaryAreas.placeholder("LITTLEFOOT", "Littlefoot", 2, 5, MobType.SUBTERRANEAN, Material.LEATHER_BOOTS)),
+        POWDER_GHAST("<a>Powder Ghast", "Powder and coal replaces ash and soot!", CataloguedBestiaryAreas.placeholder("POWDER_GHAST", "Powder Ghast", 8, 15, MobType.AIRBORNE, Material.GHAST_TEAR)),
+        STAR_SENTRY("<a>Star Sentry", "Defenders of the Fallen Star.", CataloguedBestiaryAreas.placeholder("STAR_SENTRY", "Star Sentry", 6, 15, MobType.CONSTRUCT, Material.NETHER_STAR)),
         ;
 
         private final String name, description;

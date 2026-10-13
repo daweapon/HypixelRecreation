@@ -15,7 +15,7 @@ public class NPCGwendolyn extends AbstractTalkingNPC {
 
     public NPCGwendolyn() {
         super("Gwendolyn", "<d>",
-                "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzY3NGMxMjRhMmQ1NDM1OWMyZmRkMDg2Mjk4ODcwNjYwODkzNWU2MGVmNzQ1ODg2N2E5MGJlMDEyMjM3ZjVkZjgifX19",
+                "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzVjMzQzNTE2MDZhOTlmNjJjYWI5ZTdjNTEyODM4NjQ3NTNkMmU2Nzk0OGIxZjEyNmJhZjcwYzEyOTE3MjMzZjAifX19",
                 new Pos(88.5, 198, -98.5, 0, 0));
     }
 

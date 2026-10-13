@@ -10,7 +10,7 @@ public class NPCXalx extends AbstractStructureNPC {
     private static final String MEAT_GIVEN = "xalx_meat_given";
 
     public NPCXalx() {
-        super("Xalx", "<a>", DEFAULT_TEXTURE, "king_yolkars_tower", "xalx");
+        super("Xalx", "<a>", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzE3Mjg1MDkwNmI3ZjBkOTUyYzBlNTA4MDczY2M0MzlmZDMzNzRjY2Y1Yjg4OWMwNmY3ZThkOTBjYzBjYzI1NWMifX19", "king_yolkars_tower", "xalx");
     }
 
     @Override

@@ -9,7 +9,7 @@ public class NPCOdawa extends AbstractStructureNPC {
     private static final String MET = "met_odawa";
 
     public NPCOdawa() {
-        super("Odawa", "<2>", DEFAULT_TEXTURE, "odawa_hut", "odawa");
+        super("Odawa", "<2>", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzZiN2NhZjRiZDkzNjE4MWY2YmExMGIwYTZiZGExNDRhYWIwMzY0ZThjODZlZmNhZDYwN2ZlZjRiZDc3MDgxNyJ9fX0=", "odawa_hut", "odawa");
     }
 
     @Override
