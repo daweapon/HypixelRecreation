@@ -2,14 +2,12 @@ package net.swofty.type.kuudra;
 
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
-import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.CustomWorlds;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.ServiceType;
-import net.swofty.commons.protocol.objects.orchestrator.GameHeartbeatProtocol;
 import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.proxyapi.ProxyService;
-import net.swofty.type.game.game.GameObject;
+import net.swofty.type.game.instance.InstanceHeartbeat;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.generic.SkyBlockTypeLoader;
 import net.swofty.type.generic.command.HypixelCommand;
@@ -20,7 +18,7 @@ import net.swofty.type.generic.tab.AreaServerModule;
 import net.swofty.type.generic.tab.TablistModule;
 import net.swofty.type.kuudra.fight.KuudraFightHooks;
 import net.swofty.type.kuudra.redis.KuudraInstantiateGameHandler;
-import net.swofty.type.kuudra.run.KuudraRun;
+import net.swofty.type.kuudra.run.KuudraInstanceHost;
 import net.swofty.type.kuudra.run.KuudraRequeue;
 import net.swofty.type.kuudra.run.KuudraRuns;
 import net.swofty.type.kuudra.run.KuudraSidebar;
@@ -70,29 +68,11 @@ public class TypeKuudraLoader implements SkyBlockTypeLoader {
 
     private void startOrchestratorHeartbeat() {
         ProxyService orchestrator = new ProxyService(ServiceType.ORCHESTRATOR);
-        MinecraftServer.getSchedulerManager().buildTask(() -> {
-            List<GameObject> games = new ArrayList<>();
-            for (KuudraRun run : KuudraRuns.all()) {
-                GameObject game = new GameObject();
-                game.setGameId(run.id());
-                game.setType(ServerType.SKYBLOCK_KUUDRA);
-                game.setMap("kuudras_hollow");
-                game.setGameTypeName(run.tier().name());
-                game.setAcceptingJoins(false);
-                game.setInvolvedPlayers(new ArrayList<>(run.roster()));
-                game.setDisconnectedPlayers(run.disconnectedMembers());
-                games.add(game);
-            }
-            orchestrator.handleRequest(new GameHeartbeatProtocol.HeartbeatMessage(
-                    HypixelConst.getServerUUID(),
-                    HypixelConst.getShortenedServerName(),
-                    getType(),
-                    HypixelConst.getMaxPlayers(),
-                    MinecraftServer.getConnectionManager().getOnlinePlayers().size(),
-                    games,
-                    List.of(),
-                    KuudraRuns.remainingSlots()));
-        }).delay(TaskSchedule.seconds(5)).repeat(TaskSchedule.seconds(1)).schedule();
+        InstanceHeartbeat.start(new KuudraInstanceHost(), new InstanceHeartbeat.Identity(
+                HypixelConst.getServerUUID(),
+                HypixelConst.getShortenedServerName(),
+                HypixelConst.getMaxPlayers(),
+                () -> MinecraftServer.getConnectionManager().getOnlinePlayers().size()), orchestrator::handleRequest);
     }
 
     @Override

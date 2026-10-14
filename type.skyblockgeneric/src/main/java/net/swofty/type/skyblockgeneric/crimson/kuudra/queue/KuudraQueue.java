@@ -28,6 +28,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Sends a party (or a solo player) from any SkyBlock server into a fresh Kuudra run: the leader queues, every
@@ -36,9 +37,10 @@ import java.util.concurrent.TimeUnit;
  */
 public final class KuudraQueue {
     public static final int START_DELAY_SECONDS = 4;
-    private static final long REQUEST_TIMEOUT_SECONDS = 25;
+    private static final long REQUEST_TIMEOUT_SECONDS = 75;
     private static final long REGISTRATION_TIMEOUT_SECONDS = 3;
-    private static final long QUEUE_LIFETIME_MILLIS = 60_000;
+    private static final int BUSY_NOTICE_SECONDS = 6;
+    private static final long QUEUE_LIFETIME_MILLIS = 120_000;
     private static final ProxyService ORCHESTRATOR = new ProxyService(ServiceType.ORCHESTRATOR);
     private static final Map<UUID, Entry> QUEUED = new ConcurrentHashMap<>();
 
@@ -175,11 +177,22 @@ public final class KuudraQueue {
                 delist(roster);
                 return;
             }
-            GetServerForMapProtocol.GetServerForMapResponse response = requestRun(roster, tier);
+            AtomicBoolean answered = new AtomicBoolean();
+            MinecraftServer.getSchedulerManager().buildTask(() -> {
+                if (answered.get()) return;
+                present.stream().filter(SkyBlockPlayer::isOnline)
+                        .forEach(member -> member.sendMessage("<e>All Kuudra servers are busy. You are in the queue and will be sent as soon as one frees up."));
+            }).delay(TaskSchedule.seconds(BUSY_NOTICE_SECONDS)).schedule();
+            GetServerForMapProtocol.GetServerForMapResponse response;
+            try {
+                response = requestRun(roster, tier);
+            } finally {
+                answered.set(true);
+            }
             UnderstandableProxyServer server = response == null ? null : response.server();
             if (server == null || response.gameId() == null) {
                 Logger.warn("Kuudra run request failed: {}", response == null ? "no response" : response.error());
-                fail(present, "<c>Couldn't find a Kuudra server! Please try again later.");
+                fail(present, failureMessage(response));
                 return;
             }
             register(present, server, response.gameId());
@@ -197,6 +210,12 @@ public final class KuudraQueue {
             Logger.error(exception, "Kuudra queue send failed");
             fail(members, "<c>Something went wrong while queueing for Kuudra. Please try again.");
         }
+    }
+
+    private static String failureMessage(@Nullable GetServerForMapProtocol.GetServerForMapResponse response) {
+        String reason = response == null ? null : response.reason();
+        if ("FULL".equals(reason)) return "<c>All Kuudra servers are busy right now. Please try again in a moment.";
+        return "<c>Couldn't find a Kuudra server! Please try again later.";
     }
 
     private static @Nullable GetServerForMapProtocol.GetServerForMapResponse requestRun(List<UUID> roster, KuudraTier tier) {

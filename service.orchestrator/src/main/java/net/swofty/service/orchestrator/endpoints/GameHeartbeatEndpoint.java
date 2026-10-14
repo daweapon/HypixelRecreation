@@ -1,5 +1,6 @@
 package net.swofty.service.orchestrator.endpoints;
 
+import net.swofty.service.orchestrator.instance.InstancedActivities;
 import net.swofty.commons.protocol.RedisProtocol;
 import net.swofty.commons.protocol.objects.orchestrator.GameHeartbeatProtocol;
 import net.swofty.commons.redis.RedisMessageHandler;
@@ -28,6 +29,7 @@ public class GameHeartbeatEndpoint implements RedisMessageHandler
             body.mapAdvertisements(),
             body.remainingGameSlots()
         );
+        InstancedActivities.queue().capacityMayHaveChanged();
         return new GameHeartbeatProtocol.HeartbeatResponse(true, null);
     }
 }

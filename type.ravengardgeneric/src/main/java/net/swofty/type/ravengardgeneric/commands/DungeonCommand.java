@@ -85,7 +85,7 @@ public class DungeonCommand extends HypixelCommand {
                         ServerType.RAVENGARD_DUNGEON, null, mode, 1);
         ORCHESTRATOR.handleRequest(request).thenAccept(response -> {
             if (!(response instanceof GetServerForMapProtocol.GetServerForMapResponse(
-                    UnderstandableProxyServer server, String gameId, boolean success, String error))
+                    UnderstandableProxyServer server, String gameId, boolean success, String error, String reason))
                     || server == null || gameId == null) {
                 String reason = response instanceof GetServerForMapProtocol.GetServerForMapResponse r
                         && r.error() != null ? r.error() : "no servers available";
@@ -146,7 +146,7 @@ public class DungeonCommand extends HypixelCommand {
 
         ORCHESTRATOR.handleRequest(request).thenAccept(response -> {
             if (!(response instanceof GetServerForMapProtocol.GetServerForMapResponse(
-                    UnderstandableProxyServer server, String gameId, boolean success, String error))
+                    UnderstandableProxyServer server, String gameId, boolean success, String error, String reason))
                     || server == null || gameId == null) {
                 String reason = response instanceof GetServerForMapProtocol.GetServerForMapResponse r
                         && r.error() != null ? r.error() : "no servers available";

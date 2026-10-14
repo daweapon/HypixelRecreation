@@ -95,32 +95,15 @@ public class TypeRavengardDungeonLoader implements RavengardTypeLoader {
     }
 
     private void startOrchestratorHeartbeat() {
-        MinecraftServer.getSchedulerManager().buildTask(() -> {
-            java.util.List<net.swofty.type.game.game.GameObject> games = new java.util.ArrayList<>();
-            for (var instance : net.swofty.type.ravengarddungeon.game.DungeonInstanceRegistry.all()) {
-                net.swofty.type.game.game.GameObject game = new net.swofty.type.game.game.GameObject();
-                game.setGameId(instance.getGameId());
-                game.setType(ServerType.RAVENGARD_DUNGEON);
-                game.setMap(instance.getPlayers().isEmpty()
-                        ? "empty:" + instance.getRemainingLifeSeconds() : "generated");
-                game.setGameTypeName(instance.getMode());
-                game.setAcceptingJoins(instance.isAcceptingJoins());
-                game.setInvolvedPlayers(new java.util.ArrayList<>(instance.getPlayers()));
-                game.setDisconnectedPlayers(java.util.List.of());
-                games.add(game);
-            }
-            var heartbeat = new net.swofty.commons.protocol.objects.orchestrator.GameHeartbeatProtocol.HeartbeatMessage(
-                    net.swofty.type.generic.HypixelConst.getServerUUID(),
-                    net.swofty.type.generic.HypixelConst.getShortenedServerName(),
-                    getType(),
-                    net.swofty.type.generic.HypixelConst.getMaxPlayers(),
-                    MinecraftServer.getConnectionManager().getOnlinePlayers().size(),
-                    games,
-                    java.util.List.of(),
-                    net.swofty.type.ravengarddungeon.game.DungeonInstanceRegistry.remainingSlots());
-            new net.swofty.proxyapi.ProxyService(ServiceType.ORCHESTRATOR).handleRequest(heartbeat);
-        }).delay(net.minestom.server.timer.TaskSchedule.seconds(5))
-                .repeat(net.minestom.server.timer.TaskSchedule.seconds(1)).schedule();
+        net.swofty.proxyapi.ProxyService orchestrator = new net.swofty.proxyapi.ProxyService(ServiceType.ORCHESTRATOR);
+        net.swofty.type.game.instance.InstanceHeartbeat.start(
+                new net.swofty.type.ravengarddungeon.game.RavengardInstanceHost(),
+                new net.swofty.type.game.instance.InstanceHeartbeat.Identity(
+                        net.swofty.type.generic.HypixelConst.getServerUUID(),
+                        net.swofty.type.generic.HypixelConst.getShortenedServerName(),
+                        net.swofty.type.generic.HypixelConst.getMaxPlayers(),
+                        () -> MinecraftServer.getConnectionManager().getOnlinePlayers().size()),
+                orchestrator::handleRequest);
     }
 
     @Override

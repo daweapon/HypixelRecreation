@@ -10,7 +10,7 @@ import net.swofty.commons.murdermystery.MurderMysteryGameType;
 import net.swofty.commons.skywars.SkywarsGameType;
 import net.swofty.commons.redis.RedisClient;
 import net.swofty.commons.redis.RedisMessageHandler;
-import net.swofty.service.orchestrator.KuudraServerSelector;
+import net.swofty.service.orchestrator.instance.InstancedActivities;
 import net.swofty.service.orchestrator.OrchestratorCache;
 import org.tinylog.Logger;
 
@@ -133,24 +133,7 @@ public class GetServerForMapEndpoint implements RedisMessageHandler
 				}
 			}
 
-			OrchestratorCache.GameServerState server = OrchestratorCache.pickServerForNewGame(ServerType.RAVENGARD_DUNGEON);
-			Logger.info("[matchmaking] RAVENGARD_DUNGEON mode='{}' -> server={}",
-					mode, server == null ? "NONE" : server.shortName());
-			if (server == null) {
-				return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, "No dungeon servers online");
-			}
-
-			CompletableFuture<InstantiateGamePushProtocol.Response> responseFuture = RedisClient.requestServerFromService(
-					server.uuid(),
-					new InstantiateGamePushProtocol(),
-					new InstantiateGamePushProtocol.Request(mode, body.map()));
-			InstantiateGamePushProtocol.Response response = responseFuture.get(15, java.util.concurrent.TimeUnit.SECONDS);
-			if (response != null && response.success()) {
-				return new GetServerForMapProtocol.GetServerForMapResponse(
-						toProxyServer(server), response.gameId(), true, null);
-			}
-			return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true,
-					response == null ? "No response from dungeon server" : response.error());
+			return InstancedActivities.ravengardNew(mode, body.map());
 		} catch (Exception e) {
 			Logger.error(e, "Failed to allocate Ravengard dungeon");
 			return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, e.getMessage());
@@ -159,46 +142,11 @@ public class GetServerForMapEndpoint implements RedisMessageHandler
 
 	private GetServerForMapProtocol.GetServerForMapResponse handleKuudra(
 			GetServerForMapProtocol.GetServerForMapMessage body) {
-		String tier = body.mode();
-		if (tier == null || tier.isBlank()) {
-			return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, "No Kuudra tier given");
-		}
-		int neededSlots = Math.max(1, body.neededSlots());
-		List<OrchestratorCache.GameServerState> candidates = KuudraServerSelector.rank(
-				OrchestratorCache.getAllServers(), neededSlots, OrchestratorCache::getReservedPlayerSlots);
-		Logger.info("[matchmaking] SKYBLOCK_KUUDRA tier={} party={} -> {} candidate servers", tier, neededSlots, candidates.size());
-
-		for (OrchestratorCache.GameServerState server : candidates) {
-			try {
-				InstantiateGamePushProtocol.Response response = RedisClient.requestServerFromService(
-						server.uuid(),
-						new InstantiateGamePushProtocol(),
-						new InstantiateGamePushProtocol.Request(tier, body.map())
-				).get(15, java.util.concurrent.TimeUnit.SECONDS);
-				if (response != null && response.success()) {
-					OrchestratorCache.reservePlayerSlots(server.uuid(), neededSlots);
-					return new GetServerForMapProtocol.GetServerForMapResponse(
-							toProxyServer(server), response.gameId(), true, null);
-				}
-				Logger.warn("[matchmaking] SKYBLOCK_KUUDRA {} refused the run: {}", server.shortName(),
-						response == null ? "no response" : response.error());
-			} catch (Exception e) {
-				Logger.error(e, "Failed to start a Kuudra run on {}", server.shortName());
-			}
-		}
-		return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true,
-				candidates.isEmpty() ? "No Kuudra server has room" : "No Kuudra server could start the run");
+		return InstancedActivities.kuudra(body);
 	}
 
 	private static UnderstandableProxyServer toProxyServer(OrchestratorCache.GameServerState server) {
-		return new UnderstandableProxyServer(
-				server.shortName(),
-				server.uuid(),
-				server.type(),
-				-1,
-				new ArrayList<>(),
-				server.maxPlayers(),
-				server.shortName());
+		return InstancedActivities.toProxyServer(server);
 	}
 
 	private GetServerForMapProtocol.GetServerForMapResponse handleMurderMystery(

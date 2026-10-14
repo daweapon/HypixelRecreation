@@ -34,6 +34,10 @@ public class GetServerForMapProtocol extends RedisProtocol
     public record GetServerForMapMessage(ServerType type, @Nullable String map, String mode, int neededSlots) {
     }
 
-    public record GetServerForMapResponse(UnderstandableProxyServer server, String gameId, boolean success, @Nullable String error) {
+    public record GetServerForMapResponse(UnderstandableProxyServer server, String gameId, boolean success,
+                                          @Nullable String error, @Nullable String reason) {
+        public GetServerForMapResponse(UnderstandableProxyServer server, String gameId, boolean success, @Nullable String error) {
+            this(server, gameId, success, error, null);
+        }
     }
 }
