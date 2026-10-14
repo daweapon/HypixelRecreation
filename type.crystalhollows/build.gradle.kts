@@ -24,6 +24,8 @@ dependencies {
     testImplementation(libs.minestom) {
         exclude(group = "org.jboss.shrinkwrap.resolver", module = "shrinkwrap-resolver-depchain")
     }
+    testImplementation(libs.polar)
+    testImplementation(libs.fastutil)
     implementation(libs.snakeyaml)
     implementation(libs.tinylog.api)
     implementation(libs.tinylog.impl)

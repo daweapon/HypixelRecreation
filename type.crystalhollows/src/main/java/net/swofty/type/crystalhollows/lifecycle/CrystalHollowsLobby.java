@@ -4,7 +4,7 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.ServerType;
 import net.swofty.commons.text.Text;
-import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
+import net.swofty.type.crystalhollows.layout.HollowsLayoutRefresh;
 import net.swofty.type.skyblockgeneric.SkyBlockGenericLoader;
 import net.swofty.type.skyblockgeneric.crystalhollows.FairyGrottoFishing;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -83,7 +83,7 @@ public final class CrystalHollowsLobby {
             player.sendTo(ServerType.SKYBLOCK_DWARVEN_MINES);
         }
         ADMITTED.clear();
-        CrystalHollowsLayout.generate();
+        HollowsLayoutRefresh.run(net.swofty.type.generic.HypixelConst.getInstanceContainer());
         FairyGrottoFishing.reset();
         lastWarnedMinutes = Long.MAX_VALUE;
         openedAt = System.currentTimeMillis();

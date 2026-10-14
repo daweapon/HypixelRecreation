@@ -1385,3 +1385,12 @@ regions:
     y2: 57
     z2: 795
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS
+  - id: crystal_hollows_goblin_queens_den
+    type: GOBLIN_QUEENS_DEN
+    x1: 281
+    y1: 71
+    z1: 609
+    x2: 385
+    y2: 174
+    z2: 713
+    serverType: SKYBLOCK_CRYSTAL_HOLLOWS

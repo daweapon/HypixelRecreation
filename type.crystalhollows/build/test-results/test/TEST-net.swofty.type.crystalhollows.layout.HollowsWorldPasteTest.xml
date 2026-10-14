@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="net.swofty.type.crystalhollows.layout.HollowsWorldPasteTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-14T05:13:01.863Z" hostname="DESKTOP-JOQND7K" time="255.774">
+  <properties/>
+  <testcase name="everyStructureIsPastedExactlyOntoTheRealWorldForSeveralLayouts()" classname="net.swofty.type.crystalhollows.layout.HollowsWorldPasteTest" time="253.882"/>
+  <system-out><![CDATA[2026-10-13 22:13:05 [Test worker] net.swofty.type.crystalhollows.layout.CrystalHollowsLayout.generate()
+INFO: Crystal Hollows layout 1 placed 7 of 15 structures
+2026-10-13 22:13:52 [] net.swofty.type.crystalhollows.layout.StructurePaster.lambda$apply$5()
+INFO: Crystal Hollows structures: pasted [jungle_temple, mines_of_divan, lost_precursor_city, goblin_queens_den, king_yolkars_tower, khazad_dum, odawa_hut], erased [], failures []
+2026-10-13 22:13:52 [Test worker] net.swofty.type.crystalhollows.layout.CrystalHollowsLayout.generate()
+INFO: Crystal Hollows layout 2 placed 7 of 15 structures
+2026-10-13 22:15:02 [] net.swofty.type.crystalhollows.layout.StructurePaster.lambda$apply$5()
+INFO: Crystal Hollows structures: pasted [jungle_temple, mines_of_divan, lost_precursor_city, goblin_queens_den, king_yolkars_tower, khazad_dum, odawa_hut], erased [], failures []
+2026-10-13 22:15:02 [Test worker] net.swofty.type.crystalhollows.layout.CrystalHollowsLayout.generate()
+INFO: Crystal Hollows layout 3 placed 7 of 15 structures
+2026-10-13 22:16:11 [] net.swofty.type.crystalhollows.layout.StructurePaster.lambda$apply$5()
+INFO: Crystal Hollows structures: pasted [jungle_temple, mines_of_divan, lost_precursor_city, goblin_queens_den, king_yolkars_tower, khazad_dum, odawa_hut], erased [], failures []
+2026-10-13 22:16:11 [Test worker] net.swofty.type.crystalhollows.layout.CrystalHollowsLayout.generate()
+INFO: Crystal Hollows layout 4 placed 7 of 15 structures
+2026-10-13 22:17:17 [] net.swofty.type.crystalhollows.layout.StructurePaster.lambda$apply$5()
+INFO: Crystal Hollows structures: pasted [jungle_temple, mines_of_divan, lost_precursor_city, goblin_queens_den, king_yolkars_tower, khazad_dum, odawa_hut], erased [], failures []
+]]></system-out>
+  <system-err><![CDATA[SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+]]></system-err>
+</testsuite>

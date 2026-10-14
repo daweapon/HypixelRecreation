@@ -28,7 +28,11 @@ class CrystalHollowsLayoutTest {
         assertTrue(CrystalHollowsLayout.isPlaced("jungle_temple"));
         assertTrue(CrystalHollowsLayout.isPlaced("khazad_dum"));
         assertNotNull(CrystalHollowsLayout.anchor("khazad_dum", "bal"));
-        assertFalse(CrystalHollowsLayout.isPlaced("goblin_queens_den"));
+        assertTrue(CrystalHollowsLayout.isPlaced("goblin_queens_den"));
+        assertTrue(CrystalHollowsLayout.isPlaced("king_yolkars_tower"));
+        assertTrue(CrystalHollowsLayout.isPlaced("odawa_hut"));
+        assertTrue(CrystalHollowsLayout.isPlaced("lost_precursor_city"));
+        assertTrue(CrystalHollowsLayout.isPlaced("mines_of_divan"));
     }
 
     @Test

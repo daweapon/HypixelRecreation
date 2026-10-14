@@ -70,7 +70,25 @@ class StructureSchematicTest {
         assertEquals(new StructureSite(1, 2, 3, 11, 12, 13), spec.site());
         assertEquals(11, spec.site().width());
         assertEquals(Files.readString(file), StructureFile.read(file).render());
-        assertNull(StructureCatalogue.load(Path.of("../configuration/skyblock/crystal_hollows/structures.yml")).getFirst().schematic());
+        assertEquals("jungle_temple", StructureCatalogue.load(Path.of("../configuration/skyblock/crystal_hollows/structures.yml")).getFirst().schematic());
+    }
+
+    @Test
+    void shippedSchematicsAreReadableAndMatchTheirSites() {
+        List<StructureSpec> specs = StructureCatalogue.load(Path.of("../configuration/skyblock/crystal_hollows/structures.yml"));
+        Path directory = Path.of("../configuration/skyblock/crystal_hollows/schematics");
+        long withSchematic = specs.stream().filter(spec -> spec.schematic() != null).count();
+        assertTrue(withSchematic >= 7);
+        for (StructureSpec spec : specs) {
+            if (spec.schematic() == null) continue;
+            SchematicFiles.Probe probe = SchematicFiles.probe(directory, spec.schematic());
+            assertTrue(probe.readable(), spec.id() + ": " + probe.error());
+            assertEquals(spec.site().width(), probe.schematic().width(), spec.id());
+            assertEquals(spec.site().height(), probe.schematic().height(), spec.id());
+            assertEquals(spec.site().length(), probe.schematic().length(), spec.id());
+            assertEquals(0, probe.schematic().unknownBlocks(), spec.id());
+            assertTrue(spec.candidates().size() >= 2 || spec.id().equals("mines_of_divan"), spec.id());
+        }
     }
 
     @Test

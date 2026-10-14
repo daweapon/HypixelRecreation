@@ -19,6 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class SchematicReader {
+    private static final long SIZE_LIMIT = 256L * 1024 * 1024;
+
     private SchematicReader() {
     }
 
@@ -33,7 +35,7 @@ public final class SchematicReader {
     }
 
     public static Schematic read(InputStream in) throws IOException {
-        return parse(BinaryTagIO.reader().read(in, BinaryTagIO.Compression.GZIP));
+        return parse(BinaryTagIO.reader(SIZE_LIMIT).read(in, BinaryTagIO.Compression.GZIP));
     }
 
     public static Schematic parse(CompoundBinaryTag file) {

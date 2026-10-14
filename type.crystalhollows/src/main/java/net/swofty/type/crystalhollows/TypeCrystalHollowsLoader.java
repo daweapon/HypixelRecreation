@@ -12,10 +12,8 @@ import net.swofty.commons.redis.RedisMessageHandler;
 import net.swofty.type.crystalhollows.boss.CrystalHollowsBossSpawner;
 import net.swofty.type.crystalhollows.command.HollowsCommand;
 import net.swofty.type.crystalhollows.divan.DivanDigSite;
-import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
 import net.swofty.type.crystalhollows.layout.HollowsWorld;
-import net.swofty.type.crystalhollows.layout.StructurePaster;
-import net.swofty.type.skyblockgeneric.schematic.SchematicPaster;
+import net.swofty.type.crystalhollows.layout.HollowsLayoutRefresh;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.crystalhollows.lifecycle.CrystalHollowsLobby;
 import net.swofty.type.crystalhollows.redis.RedisIsLobbyJoinable;
@@ -55,8 +53,7 @@ public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
 
     @Override
     public void afterInitialize(MinecraftServer server) {
-        CrystalHollowsLayout.generate();
-        pasteStructures();
+        HollowsLayoutRefresh.run(HypixelConst.getInstanceContainer());
         MetalDetector.install(new DivanDigSite());
         MetalDetector.start();
         HeatService.start();
@@ -64,17 +61,6 @@ public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
         CrystalHollowsLobby.start();
         AreaSidebar.registerDetail(CrystalHollowsSidebar::detail);
         CrystalHollowsBossSpawner.start();
-    }
-
-    private static void pasteStructures() {
-        var instance = HypixelConst.getInstanceContainer();
-        if (instance == null) return;
-        try {
-            StructurePaster.Report report = StructurePaster.apply(instance, SchematicPaster.CALLER).join();
-            report.failures().forEach(failure -> Logger.warn("Crystal Hollows structure paste: {}", failure));
-        } catch (RuntimeException e) {
-            Logger.error(e, "Crystal Hollows structure paste failed");
-        }
     }
 
     @Override
