@@ -87,6 +87,20 @@ public final class CrystalNucleus {
         return true;
     }
 
+    public static int grantAllUnplaced(SkyBlockPlayer player) {
+        int given = 0;
+        for (NucleusCrystal crystal : NucleusCrystal.values()) {
+            State state = state(player, crystal);
+            if (state == State.NOT_PLACED) continue;
+            if (state == State.PLACED) PLACED.get(player.getUuid()).remove(crystal);
+            FOUND.computeIfAbsent(player.getUuid(), _ -> EnumSet.noneOf(NucleusCrystal.class)).add(crystal);
+            ItemType item = ItemType.get(crystal.name() + "_CRYSTAL");
+            if (item != null) player.addAndUpdateItem(new SkyBlockItem(item, 1));
+            given++;
+        }
+        return given;
+    }
+
     public static void place(SkyBlockPlayer player, NucleusCrystal crystal) {
         State state = state(player, crystal);
         if (state == State.PLACED) {
@@ -131,6 +145,7 @@ public final class CrystalNucleus {
     }
 
     public static void maxOut(SkyBlockPlayer player) {
+        grantAllUnplaced(player);
         DatapointCrystalHollows.CrystalHollowsData data = CrystalHollowsAccess.data(player);
         int needed = SkyBlockXPSource.CRYSTAL_NUCLEUS_RUNS.getMaxXP() / XP_PER_RUN;
         data.setNucleusRuns(Math.max(data.getNucleusRuns(), needed));
