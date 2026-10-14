@@ -1,5 +1,6 @@
 package net.swofty.service.bazaar;
 
+import net.swofty.commons.skyblock.bazaar.BazaarTransaction;
 import net.swofty.commons.skyblock.bazaar.BuyOrderRefundTransaction;
 import net.swofty.commons.skyblock.bazaar.OrderExpiredBazaarTransaction;
 import net.swofty.commons.skyblock.bazaar.SuccessfulBazaarTransaction;
@@ -20,22 +21,49 @@ import java.util.concurrent.TimeUnit;
 
 // Singleton in-memory order book (buy/sell per item) that matches bazaar orders, tracks refunds, and expires stale orders.
 public class BazaarMarket {
-    private static final BazaarMarket INSTANCE = new BazaarMarket();
-    public static BazaarMarket get() { return INSTANCE; }
+    private static final class Holder {
+        private static final BazaarMarket INSTANCE = new BazaarMarket();
+    }
+
+    public static BazaarMarket get() { return Holder.INSTANCE; }
+
+    interface OrderStore {
+        void saveNew(LimitOrder order, String itemName);
+        void updateRemaining(UUID orderId, double remaining);
+        void delete(UUID orderId);
+    }
+
+    private static final class RepositoryOrderStore implements OrderStore {
+        public void saveNew(LimitOrder order, String itemName) { OrderRepository.saveNew(order, itemName); }
+        public void updateRemaining(UUID orderId, double remaining) { OrderRepository.updateRemaining(orderId, remaining); }
+        public void delete(UUID orderId) { OrderRepository.delete(orderId); }
+    }
 
     private static final double TAX_RATE = 0.0125;
     private static final long EXPIRE_DAYS = 7;
 
-    private final BazaarPropagator propagator = new BazaarPropagator();
+    private final OrderStore orders;
+    private final java.util.function.Consumer<BazaarTransaction> publisher;
     private final Map<String, PriorityQueue<LimitOrder>> buyBook = new ConcurrentHashMap<>();
     private final Map<String, PriorityQueue<LimitOrder>> sellBook = new ConcurrentHashMap<>();
-    private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+    private final ScheduledExecutorService scheduler;
 
     // Track order refund information
     private final Map<UUID, OrderRefundTracker> refundTrackers = new ConcurrentHashMap<>();
 
     private BazaarMarket() {
-        scheduler.scheduleAtFixedRate(this::expireOldOrders, 1, 1, TimeUnit.HOURS);
+        this(new RepositoryOrderStore(), new BazaarPropagator()::propagate, true);
+    }
+
+    BazaarMarket(OrderStore orders, java.util.function.Consumer<BazaarTransaction> publisher, boolean scheduleExpiry) {
+        this.orders = orders;
+        this.publisher = publisher;
+        if (scheduleExpiry) {
+            this.scheduler = Executors.newSingleThreadScheduledExecutor();
+            scheduler.scheduleAtFixedRate(this::expireOldOrders, 1, 1, TimeUnit.HOURS);
+        } else {
+            this.scheduler = null;
+        }
     }
 
     public static class LimitOrder {
@@ -138,10 +166,10 @@ public class BazaarMarket {
                     orderId, tracker.itemName, tracker.owner, tracker.profileUuid,
                     tracker.accumulatedRefunds, "CANCELLED", Instant.now()
             );
-            propagator.propagate(refundTx);
+            publisher.accept(refundTx);
         }
 
-        OrderRepository.delete(orderId);
+        orders.delete(orderId);
         buyBook.values().forEach(q -> q.removeIf(o -> o.orderId.equals(orderId)));
         sellBook.values().forEach(q -> q.removeIf(o -> o.orderId.equals(orderId)));
     }
@@ -150,7 +178,7 @@ public class BazaarMarket {
         var buys = buyBook.computeIfAbsent(item, k -> newBook(LimitOrder.Side.BUY));
         var sells = sellBook.computeIfAbsent(item, k -> newBook(LimitOrder.Side.SELL));
 
-        OrderRepository.saveNew(incoming, item);
+        orders.saveNew(incoming, item);
         (incoming.side == LimitOrder.Side.BUY ? buys : sells).add(incoming);
         match(item, buys, sells);
     }
@@ -227,7 +255,7 @@ public class BazaarMarket {
                     b.orderId, s.orderId,
                     Instant.now()
             );
-            propagator.propagate(tx);
+            publisher.accept(tx);
 
             // Update quantities and repository
             b.remaining -= qty;
@@ -235,28 +263,29 @@ public class BazaarMarket {
 
             if (b.remaining <= 0) {
                 buys.poll();
-                OrderRepository.delete(b.orderId);
+                orders.delete(b.orderId);
                 if (tracker != null && tracker.accumulatedRefunds > 0) {
                     var refundTx = new BuyOrderRefundTransaction(
                             b.orderId, item, b.owner, b.profileUuid,
                             tracker.accumulatedRefunds, "COMPLETED", Instant.now()
                     );
-                    propagator.propagate(refundTx);
+                    publisher.accept(refundTx);
                     refundTrackers.remove(b.orderId);
                 }
             } else {
-                OrderRepository.updateRemaining(b.orderId, b.remaining);
+                orders.updateRemaining(b.orderId, b.remaining);
             }
 
             if (s.remaining <= 0) {
-                OrderRepository.delete(s.orderId);
+                orders.delete(s.orderId);
             } else {
-                OrderRepository.updateRemaining(s.orderId, s.remaining);
+                orders.updateRemaining(s.orderId, s.remaining);
+                sells.add(s);
             }
         }
     }
 
-    private void expireOldOrders() {
+    void expireOldOrders() {
         Instant cutoff = Instant.now().minus(EXPIRE_DAYS, ChronoUnit.DAYS);
         expireSide(buyBook, cutoff);
         expireSide(sellBook, cutoff);
@@ -274,7 +303,7 @@ public class BazaarMarket {
 
             for (var o : toExpire) {
                 pq.remove(o);
-                OrderRepository.delete(o.orderId);
+                orders.delete(o.orderId);
 
                 if (o.side == LimitOrder.Side.BUY) {
                     // Handle buy order expiry with accumulated refunds
@@ -286,7 +315,7 @@ public class BazaarMarket {
                                     o.orderId, item, o.owner, o.profileUuid,
                                     totalRefund, "EXPIRED", Instant.now()
                             );
-                            propagator.propagate(refundTx);
+                            publisher.accept(refundTx);
                         }
                     }
                 } else {
@@ -295,7 +324,7 @@ public class BazaarMarket {
                             o.orderId, item, o.owner, o.profileUuid, o.side.name(),
                             o.originalPrice, o.remaining, Instant.now()
                     );
-                    propagator.propagate(evt);
+                    publisher.accept(evt);
                 }
             }
         }

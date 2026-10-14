@@ -35,6 +35,47 @@ public class GuildCache {
     private static final Map<UUID, PendingGuildInvite> pendingInvites = new ConcurrentHashMap<>();
     private static final Map<UUID, Long> lastChatTimestamps = new ConcurrentHashMap<>();
 
+    interface GuildStore {
+        GuildData getGuild(UUID guildId);
+        void saveGuild(GuildData guild);
+        void deleteGuild(UUID guildId);
+        void mapPlayerToGuild(UUID playerUuid, UUID guildId);
+        void removePlayerMapping(UUID playerUuid);
+        UUID getPlayerGuildId(UUID playerUuid);
+        boolean guildNameExists(String name);
+        GuildData getGuildByName(String name);
+    }
+
+    private static final class DatabaseGuildStore implements GuildStore {
+        public GuildData getGuild(UUID guildId) { return GuildDatabase.getGuild(guildId); }
+        public void saveGuild(GuildData guild) { GuildDatabase.saveGuild(guild); }
+        public void deleteGuild(UUID guildId) { GuildDatabase.deleteGuild(guildId); }
+        public void mapPlayerToGuild(UUID playerUuid, UUID guildId) { GuildDatabase.mapPlayerToGuild(playerUuid, guildId); }
+        public void removePlayerMapping(UUID playerUuid) { GuildDatabase.removePlayerMapping(playerUuid); }
+        public UUID getPlayerGuildId(UUID playerUuid) { return GuildDatabase.getPlayerGuildId(playerUuid); }
+        public boolean guildNameExists(String name) { return GuildDatabase.guildNameExists(name); }
+        public GuildData getGuildByName(String name) { return GuildDatabase.getGuildByName(name); }
+    }
+
+    static GuildStore store = new DatabaseGuildStore();
+    static java.util.function.Consumer<GuildEvent> eventSink = GuildCache::publishEvent;
+    static ErrorSender errorSender = GuildCache::publishError;
+
+    @FunctionalInterface
+    interface ErrorSender {
+        void send(UUID playerUUID, String markup, Object... arguments);
+    }
+
+    static void resetState() {
+        guildCache.invalidateAll();
+        pendingInvites.clear();
+        lastChatTimestamps.clear();
+    }
+
+    static boolean hasPendingInvite(UUID invitee) {
+        return pendingInvites.containsKey(invitee);
+    }
+
     public static boolean isInGuild(final @NotNull UUID playerUUID) {
         Objects.requireNonNull(playerUUID, "playerUUID cannot be null");
 
@@ -44,17 +85,17 @@ public class GuildCache {
     public static GuildData getGuildFromPlayer(final @NotNull UUID playerUUID) {
         Objects.requireNonNull(playerUUID, "playerUUID cannot be null");
 
-        UUID guildId = GuildDatabase.getPlayerGuildId(playerUUID);
+        UUID guildId = store.getPlayerGuildId(playerUUID);
         if (guildId == null) return null;
         GuildData guild = getGuild(guildId);
         if (guild == null) {
-            GuildDatabase.removePlayerMapping(playerUUID);
+            store.removePlayerMapping(playerUUID);
         }
         return guild;
     }
 
     public static GuildData getGuild(final @NotNull UUID guildId) {
-        return guildCache.get(guildId, GuildDatabase::getGuild);
+        return guildCache.get(guildId, id -> store.getGuild(id));
     }
 
     public static void handleCreateRequest(final GuildCreateRequestEvent event) {
@@ -71,14 +112,14 @@ public class GuildCache {
             return;
         }
 
-        if (GuildDatabase.guildNameExists(guildName)) {
+        if (store.guildNameExists(guildName)) {
             sendErrorToPlayer(creator, "<c>A guild with that name already exists!");
             return;
         }
 
         final GuildData guild = new GuildData(UUID.randomUUID(), guildName, creator);
         persistGuild(guild);
-        GuildDatabase.mapPlayerToGuild(creator, guild.getGuildId());
+        store.mapPlayerToGuild(creator, guild.getGuildId());
 
         GuildCreatedResponseEvent response = new GuildCreatedResponseEvent(guild, creator);
         sendEvent(response);
@@ -159,7 +200,7 @@ public class GuildCache {
         pendingInvites.remove(accepter);
 
         persistGuild(guild);
-        GuildDatabase.mapPlayerToGuild(accepter, guild.getGuildId());
+        store.mapPlayerToGuild(accepter, guild.getGuildId());
 
         GuildMemberJoinedResponseEvent response = new GuildMemberJoinedResponseEvent(guild, accepter);
         sendEvent(response);
@@ -174,7 +215,7 @@ public class GuildCache {
             return;
         }
 
-        GuildData guild = GuildDatabase.getGuildByName(guildName);
+        GuildData guild = store.getGuildByName(guildName);
         if (guild == null) {
             sendErrorToPlayer(joiner, "<c>No guild named {} exists!", guildName);
             return;
@@ -195,7 +236,7 @@ public class GuildCache {
         log(guild, "<a>{}<7> joined", joiner);
 
         persistGuild(guild);
-        GuildDatabase.mapPlayerToGuild(joiner, guild.getGuildId());
+        store.mapPlayerToGuild(joiner, guild.getGuildId());
 
         GuildMemberJoinedResponseEvent response = new GuildMemberJoinedResponseEvent(guild, joiner);
         sendEvent(response);
@@ -220,7 +261,7 @@ public class GuildCache {
         log(guild, "<a>{}<7> left", leaver);
 
         persistGuild(guild);
-        GuildDatabase.removePlayerMapping(leaver);
+        store.removePlayerMapping(leaver);
 
         GuildMemberLeftResponseEvent response = new GuildMemberLeftResponseEvent(guild, leaver);
         sendEvent(response);
@@ -260,7 +301,7 @@ public class GuildCache {
                 .appendIf(!reason.isBlank(), " <7>for <e>{}", reason));
 
         persistGuild(guild);
-        GuildDatabase.removePlayerMapping(target);
+        store.removePlayerMapping(target);
 
         GuildMemberKickedResponseEvent response = new GuildMemberKickedResponseEvent(guild, kicker, target, reason);
         sendEvent(response);
@@ -543,7 +584,7 @@ public class GuildCache {
                     sendErrorToPlayer(changer, "<c>Guild name must be between 3 and 30 characters.");
                     return;
                 }
-                if (GuildDatabase.guildNameExists(value)) {
+                if (store.guildNameExists(value)) {
                     sendErrorToPlayer(changer, "<c>A guild with that name already exists!");
                     return;
                 }
@@ -783,10 +824,18 @@ public class GuildCache {
         sendEvent(response);
 
         guildCache.invalidate(guild.getGuildId());
-        GuildDatabase.deleteGuild(guild.getGuildId());
+        store.deleteGuild(guild.getGuildId());
     }
 
     private static void sendEvent(final @NotNull GuildEvent event) {
+        eventSink.accept(event);
+    }
+
+    private static void sendErrorToPlayer(UUID playerUUID, String markup, Object... arguments) {
+        errorSender.send(playerUUID, markup, arguments);
+    }
+
+    private static void publishEvent(final @NotNull GuildEvent event) {
         RedisClient.requestAllServersFromService(
             new GuildEventPushProtocol(),
             new GuildEventPushProtocol.Request(
@@ -798,7 +847,7 @@ public class GuildCache {
         );
     }
 
-    private static void sendErrorToPlayer(UUID playerUUID, String markup, Object... arguments) {
+    private static void publishError(UUID playerUUID, String markup, Object... arguments) {
         Text message = Text.of("<sep>\n").append(markup, arguments).append("\n<sep>");
         sendMessageToPlayer(playerUUID, message);
     }
@@ -826,7 +875,7 @@ public class GuildCache {
 
     private static void persistGuild(final @NotNull GuildData guild) {
         guildCache.put(guild.getGuildId(), guild);
-        GuildDatabase.saveGuild(guild);
+        store.saveGuild(guild);
     }
 
     private static void log(GuildData guild, String markup, Object... arguments) {

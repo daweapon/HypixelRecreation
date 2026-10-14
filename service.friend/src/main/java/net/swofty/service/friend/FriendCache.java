@@ -470,7 +470,7 @@ public class FriendCache {
         return names;
     }
 
-    private static String parseStoredName(String raw) {
+    static String parseStoredName(String raw) {
         if (raw == null) return null;
         raw = raw.trim();
         if (raw.startsWith("\"") && raw.endsWith("\"") && raw.length() >= 2) {
@@ -479,7 +479,7 @@ public class FriendCache {
         return raw.isEmpty() ? null : raw;
     }
 
-    private static String formatServerDisplay(net.swofty.commons.presence.PresenceInfo info) {
+    static String formatServerDisplay(net.swofty.commons.presence.PresenceInfo info) {
         String type = info.getServerType();
         String id = info.getServerId();
         if (type == null && id == null) return null;

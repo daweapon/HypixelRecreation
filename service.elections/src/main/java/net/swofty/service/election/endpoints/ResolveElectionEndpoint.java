@@ -186,7 +186,7 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
     }
 
     @SuppressWarnings("unchecked")
-    private void updatePerkProgression(Map<String, Object> data,
+    void updatePerkProgression(Map<String, Object> data,
                                        List<Map<String, Object>> candidates,
                                        String winnerName) {
         Map<String, Object> candidateActivePerks = (Map<String, Object>) data.getOrDefault("candidateActivePerks", new HashMap<>());
@@ -249,7 +249,7 @@ public class ResolveElectionEndpoint implements RedisMessageHandler
         return index >= 0 && index < CANDIDATE_COLORS.size() ? CANDIDATE_COLORS.get(index) : NamedTextColor.WHITE;
     }
 
-    private static String wireColorForIndex(int index) {
+    static String wireColorForIndex(int index) {
         return Text.colorTag(colorForIndex(index));
     }
 }

@@ -257,13 +257,6 @@ public class SkyBlockDataHandler extends DataHandler {
         }
     }
 
-    private static int freeInventorySlot(SkyBlockInventory inventory) {
-        for (int slot = 0; slot < 36; slot++) {
-            if (slot != 8 && !inventory.getItems().containsKey(slot)) return slot;
-        }
-        return -1;
-    }
-
     private static boolean isCoopBacked(Datapoint<?> datapoint) {
         return datapoint.getData() instanceof Data data && data.coopField() != null;
     }
@@ -281,7 +274,7 @@ public class SkyBlockDataHandler extends DataHandler {
             if (existing != null && Arrays.asList(existing.split(",")).contains(receipt.toString())) return false;
             reward.run();
             runOnSave(player);
-            writeProfileDocument(transaction, toProfileDocument());
+            SkyBlockProfileDocumentWriter.write(transaction, toProfileDocument());
             return true;
         });
     }
@@ -293,43 +286,12 @@ public class SkyBlockDataHandler extends DataHandler {
             if (!saved.equals(expected)) throw new IllegalStateException("Auction operation state changed; reload the profile");
             change.run();
             runOnSave(player);
-            writeProfileDocument(transaction, toProfileDocument());
+            SkyBlockProfileDocumentWriter.write(transaction, toProfileDocument());
         });
     }
 
     static void persistProfileDocument(net.swofty.DataAPI api, UUID profile, Document document) {
-        validateProfileDocument(document);
-        api.transaction(profile, transaction -> { writeProfileDocument(transaction, document); });
-    }
-
-    private static void validateProfileDocument(Document document) {
-        for (Data field : new Data[]{Data.COINS, Data.INVENTORY, Data.AUCTION_DELIVERED_CLAIMS, Data.AUCTION_OPERATIONS,
-                Data.AUCTION_ACTIVE_OWNED, Data.AUCTION_INACTIVE_OWNED, Data.AUCTION_ACTIVE_BIDS, Data.AUCTION_INACTIVE_BIDS}) {
-            if (!document.containsKey(field.getKey())) throw new IllegalStateException("Incomplete profile save: " + field);
-        }
-    }
-
-    private static void writeProfileDocument(net.swofty.transaction.Transaction transaction, Document document) {
-        validateProfileDocument(document);
-        String savedClaims = transaction.get(Data.AUCTION_DELIVERED_CLAIMS.profileField());
-        if (savedClaims != null && !savedClaims.isEmpty()) {
-            var currentClaims = Arrays.asList(document.getString(Data.AUCTION_DELIVERED_CLAIMS.getKey()).split(","));
-            if (!currentClaims.containsAll(Arrays.asList(savedClaims.split(",")))) {
-                throw new IllegalStateException("Refusing to overwrite newer auction claim receipts");
-            }
-        }
-        var savedOperations = DatapointAuctionOperations.read(transaction.get(Data.AUCTION_OPERATIONS.profileField()));
-        var operations = DatapointAuctionOperations.read(document.getString(Data.AUCTION_OPERATIONS.getKey()));
-        if (operations.revision() < savedOperations.revision()
-                || operations.revision() == savedOperations.revision() && !operations.equals(savedOperations)) {
-            throw new IllegalStateException("Refusing to overwrite newer auction operations");
-        }
-        for (Data field : Data.values()) {
-            if (field.coopField() == null && document.containsKey(field.getKey())) {
-                transaction.set(field.profileField(), document.getString(field.getKey()));
-            }
-        }
-        transaction.set(ProfilesDatabase.DOCUMENT, document.toJson());
+        SkyBlockProfileDocumentWriter.persist(api, profile, document);
     }
 
     public Map<String, Object> getCoopValues() {
@@ -369,64 +331,8 @@ public class SkyBlockDataHandler extends DataHandler {
                 DatapointInventory.class, new DatapointInventory("inventory", new SkyBlockInventory()),
                 (player, datapoint) -> {
                 },
-                (player, datapoint) -> {
-                    SkyBlockInventory inv = (SkyBlockInventory) datapoint.getValue();
-
-                    player.setHelmet(new SkyBlockItem(inv.getHelmet()).getItemStack());
-                    player.setChestplate(new SkyBlockItem(inv.getChestplate()).getItemStack());
-                    player.setLeggings(new SkyBlockItem(inv.getLeggings()).getItemStack());
-                    player.setBoots(new SkyBlockItem(inv.getBoots()).getItemStack());
-
-                    List<SkyBlockItem> displaced = new ArrayList<>();
-                    inv.getItems().forEach((slot, item) -> {
-                        SkyBlockItem loaded = new SkyBlockItem(item);
-                        if (loaded.getItemType() == ItemType.SKYBLOCK_MENU) return;
-                        if (slot == 8) {
-                            displaced.add(loaded);
-                            return;
-                        }
-                        PlayerItemOrigin origin = PlayerItemOrigin.INVENTORY_SLOT;
-                        origin.setData(slot);
-
-                        ItemStack updated = PlayerItemUpdater.playerUpdate(
-                                player,
-                                loaded.getItemStack(),
-                                true
-                        ).build();
-
-                        origin.setStack(player, updated);
-                    });
-
-                    player.getInventory().setItemStack(8,
-                            new NonPlayerItemUpdater(new SkyBlockItem(ItemType.SKYBLOCK_MENU).getItemStack())
-                                    .getUpdatedItem().build());
-                    displaced.forEach(player::addAndUpdateItem);
-                },
-                (player) -> {
-                    SkyBlockInventory inv = new SkyBlockInventory();
-                    ItemStack helmet = player.getHelmet();
-                    if (SkyBlockItem.isSkyBlockItem(helmet)) inv.setHelmet(new SkyBlockItem(helmet).toUnderstandable());
-                    ItemStack chestplate = player.getChestplate();
-                    if (SkyBlockItem.isSkyBlockItem(chestplate))
-                        inv.setChestplate(new SkyBlockItem(chestplate).toUnderstandable());
-                    ItemStack leggings = player.getLeggings();
-                    if (SkyBlockItem.isSkyBlockItem(leggings))
-                        inv.setLeggings(new SkyBlockItem(leggings).toUnderstandable());
-                    ItemStack boots = player.getBoots();
-                    if (SkyBlockItem.isSkyBlockItem(boots)) inv.setBoots(new SkyBlockItem(boots).toUnderstandable());
-
-                    for (int i = 0; i < 36; i++) {
-                        ItemStack stack = player.getInventory().getItemStack(i);
-                        if (SkyBlockItem.isSkyBlockItem(stack)) {
-                            inv.getItems().put(i, new SkyBlockItem(stack).toUnderstandable());
-                        }
-                    }
-                    for (TradeOffer.HeldItem held : TradeManager.heldItems(player)) {
-                        int slot = inv.getItems().containsKey(held.homeSlot()) ? freeInventorySlot(inv) : held.homeSlot();
-                        if (slot >= 0) inv.getItems().put(slot, new SkyBlockItem(held.stack()).toUnderstandable());
-                    }
-                    return new DatapointInventory("inventory", inv);
-                }),
+                SkyBlockInventorySync::applyLoaded,
+                SkyBlockInventorySync::capture),
 
         SKILLS("skills", false, false, false,
                 DatapointSkills.class, new DatapointSkills("skills")),
@@ -916,24 +822,6 @@ public class SkyBlockDataHandler extends DataHandler {
     }
 
     public static void startRepeatSetValueLoop() {
-        MinecraftServer.getSchedulerManager().submitTask(() -> {
-            SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
-                SkyBlockDataHandler h = PlayerDataService.find(SkyBlockDomain.KEY, player.getUuid()).orElse(null);
-                if (h == null) return;
-                for (Data data : Data.values()) {
-                    if (!data.repeatSetValue) continue;
-                    try {
-                        Datapoint<?> dp = h.get(data);
-                        @SuppressWarnings("unchecked")
-                        Datapoint<Object> any = (Datapoint<Object>) dp;
-                        any.setValue(any.getValue());
-                    } catch (Exception e) {
-                        Logger.error(e, "Failed to repeat set SkyBlock datapoint {} for user {}",
-                                data.getKey(), player.getUuid());
-                    }
-                }
-            });
-            return TaskSchedule.nextTick();
-        });
+        SkyBlockRepeatSetValueLoop.start();
     }
 }

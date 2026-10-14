@@ -37,6 +37,9 @@ dependencies {
 
     implementation(libs.configurate.yaml)
 
+    testImplementation(libs.minestom) {
+        exclude(group = "org.jboss.shrinkwrap.resolver", module = "shrinkwrap-resolver-depchain")
+    }
     testImplementation("org.junit.jupiter:junit-jupiter:6.1.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

@@ -508,14 +508,57 @@ public class PartyCache {
         disconnectTimers.remove(playerUUID);
     }
 
+    @FunctionalInterface
+    interface ErrorSender {
+        void send(UUID playerUUID, String markup, Object... arguments);
+    }
+
+    static java.util.function.Consumer<PartyBroadcast> broadcaster = PartyCache::publishBroadcast;
+    static ErrorSender errorSender = PartyCache::publishError;
+
+    static void resetState() {
+        activeParties.clear();
+        playerToParty.clear();
+        pendingInvites.clear();
+        disconnectTimers.clear();
+        warpCooldown.clear();
+    }
+
+    static void registerParty(FullParty party) {
+        activeParties.put(party.getUuid(), party);
+        for (FullParty.Member member : party.getMembers()) {
+            playerToParty.put(member.getUuid(), party.getUuid());
+        }
+    }
+
+    static boolean hasPendingInvite(UUID invitee) {
+        return pendingInvites.containsKey(invitee);
+    }
+
+    static boolean hasDisconnectTimer(UUID player) {
+        return disconnectTimers.containsKey(player);
+    }
+
+    static boolean isPartyActive(UUID partyUuid) {
+        return activeParties.containsKey(partyUuid);
+    }
+
     private static void broadcast(PartyBroadcast broadcast) {
+        broadcaster.accept(broadcast);
+    }
+
+    private static void sendErrorToPlayer(UUID playerUUID, String markup, Object... arguments) {
+        errorSender.send(playerUUID, markup, arguments);
+    }
+
+    private static void publishBroadcast(PartyBroadcast broadcast) {
         RedisClient.requestAllServersFromService(
                 new PartyBroadcastPushProtocol(),
                 new PartyBroadcastPushProtocol.Request(broadcast),
                 BROADCAST_TIMEOUT_MS);
     }
 
-    private static void sendErrorToPlayer(UUID playerUUID, String markup, Object... arguments) {
+    private static void publishError(UUID playerUUID, String markup, Object... arguments) {
         Text message = Text.of("<sep>\n").append(markup, arguments).append("\n<sep>");
         RedisClient.requestAllServersFromService(
                 new SendMessagePushProtocol(),

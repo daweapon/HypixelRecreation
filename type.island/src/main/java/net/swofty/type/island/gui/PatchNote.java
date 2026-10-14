@@ -31,7 +31,7 @@ public record PatchNote(String version, String name, String date, Material mater
         return new File("./configuration/skyblock/patch_notes/" + book);
     }
 
-    private static PatchNote parse(Map<String, Object> entry) {
+    static PatchNote parse(Map<String, Object> entry) {
         Material material = Material.fromKey("minecraft:" + String.valueOf(entry.getOrDefault("material", "book")).toLowerCase());
         return new PatchNote(
                 String.valueOf(entry.get("version")),
