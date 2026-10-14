@@ -10,15 +10,15 @@ RUN curl -fSL -o velocity.jar "https://fill-data.papermc.io/v1/objects/0ec616020
 # Locally built JARs, empty for a regular install
 COPY ./DockerFiles/jars /app/prebuilt_jars
 
-# Take SkyBlockProxy.jar from the local build when it is there, download it otherwise
+# SkyBlockProxy.jar must be built locally into DockerFiles/jars (./gradlew shadowJar)
 RUN set -eu; \
     mkdir -p plugins; \
     if [ -f /app/prebuilt_jars/SkyBlockProxy.jar ]; then \
         echo "Using locally built SkyBlockProxy.jar"; \
         cp /app/prebuilt_jars/SkyBlockProxy.jar plugins/SkyBlockProxy.jar; \
     else \
-        echo "Downloading SkyBlockProxy.jar"; \
-        curl -fSL -o plugins/SkyBlockProxy.jar "https://github.com/Swofty-Developments/HypixelRecreation/releases/download/latest/SkyBlockProxy.jar"; \
+        echo "Missing SkyBlockProxy.jar in DockerFiles/jars - build it with ./gradlew shadowJar" >&2; \
+        exit 1; \
     fi; \
     rm -rf /app/prebuilt_jars
 

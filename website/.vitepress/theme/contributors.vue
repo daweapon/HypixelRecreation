@@ -8,7 +8,7 @@ const error = ref(null);
 onMounted(async () => {
   try {
     const response = await fetch(
-      "https://api.github.com/repos/Swofty-Developments/HypixelSkyblock/contributors",
+      "https://api.github.com/repos/daweapon/HypixelRecreation/contributors",
     );
     if (!response.ok) throw new Error(`GitHub API error: ${response.status}`);
     contributors.value = await response.json();

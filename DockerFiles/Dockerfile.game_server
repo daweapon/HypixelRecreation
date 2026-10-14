@@ -4,12 +4,10 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y jq curl && apt-get clean
 
-ARG JAR_BASE_URL=https://github.com/Swofty-Developments/HypixelRecreation/releases/download/latest
-
 # Locally built JARs, empty for a regular install
 COPY ./DockerFiles/jars /app/prebuilt_jars
 
-# Take every JAR from the local build when it is there, download it otherwise
+# Every JAR must be built locally into DockerFiles/jars (./gradlew shadowJar)
 RUN set -eu; \
     for jar in \
         HypixelCore.jar \
@@ -32,8 +30,8 @@ RUN set -eu; \
             echo "Using locally built $jar"; \
             cp "/app/prebuilt_jars/$jar" "$jar"; \
         else \
-            echo "Downloading $jar"; \
-            curl -fSL -o "$jar" "${JAR_BASE_URL}/$jar"; \
+            echo "Missing $jar in DockerFiles/jars - build it with ./gradlew shadowJar" >&2; \
+            exit 1; \
         fi; \
     done; \
     for jar in \
@@ -43,7 +41,7 @@ RUN set -eu; \
             echo "Using locally built $jar"; \
             cp "/app/prebuilt_jars/$jar" "$jar"; \
         else \
-            echo "Skipping $jar - not built locally and not published upstream"; \
+            echo "Skipping $jar - not built locally"; \
         fi; \
     done; \
     rm -rf /app/prebuilt_jars

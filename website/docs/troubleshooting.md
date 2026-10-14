@@ -170,9 +170,8 @@ Common causes:
 If you're still having issues:
 
 1. **Check logs** for specific error messages
-2. **Search existing issues** on [GitHub](https://github.com/Swofty-Developments/HypixelRecreation/issues)
-3. **Join Discord** at [discord.swofty.net](https://discord.swofty.net)
-4. **Ask in #code-help** with:
+2. **Search existing issues** on [GitHub](https://github.com/daweapon/HypixelRecreation/issues)
+3. **Open an issue** with:
     - Screenshots of all console outputs
     - Your `config.yml` (remove secrets)
     - Steps you've already tried

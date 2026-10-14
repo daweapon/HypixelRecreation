@@ -31,8 +31,7 @@ export default defineConfig({
     nav: [
       { text: "Guide", link: "/docs/introduction" },
       { text: "Reference", link: "/docs/reference/server-types" },
-      { text: "Javadoc", link: "https://swofty-developments.github.io/HypixelRecreation/" },
-      { text: "Discord", link: "https://discord.swofty.net" },
+      { text: "Javadoc", link: "https://daweapon.github.io/HypixelRecreation/" },
     ],
     sidebar: {
       "/docs/": [
@@ -79,12 +78,11 @@ export default defineConfig({
       ],
     },
     socialLinks: [
-      { icon: "github", link: "https://github.com/Swofty-Developments/HypixelRecreation" },
-      { icon: "discord", link: "https://discord.swofty.net" },
+      { icon: "github", link: "https://github.com/daweapon/HypixelRecreation" },
     ],
     footer: {
       message: "Released under the AGPL-3.0 License.",
-      copyright: "Copyright © 2026 Swofty Developments",
+      copyright: "Copyright © 2026 daweapon and HypixelRecreation contributors",
     },
   },
 });

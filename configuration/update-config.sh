@@ -40,7 +40,7 @@ echo "Created temporary directory: $TEMP_DIR"
 
 # Download repository
 echo "Downloading configuration files..."
-wget -q https://github.com/Swofty-Developments/HypixelRecreation/archive/refs/heads/master.zip -O "$TEMP_DIR/master.zip"
+wget -q https://github.com/daweapon/HypixelRecreation/archive/refs/heads/master.zip -O "$TEMP_DIR/master.zip"
 
 # Check if download was successful
 if [ $? -ne 0 ]; then

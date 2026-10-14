@@ -50,12 +50,7 @@ The project is organized into several module types:
 | `clientmod`          | Optional client mod for resource pack/export tooling          |
 | `setup`              | Native TUI installer for Docker deployments                   |
 
-## Related Projects
-
-This project is designed to work with [HypixelForums](https://github.com/Swofty-Developments/HypixelForums) for a complete forum and website experience.
-
 ## Getting Help
 
-- **Discord**: [discord.swofty.net](https://discord.swofty.net)
-- **Javadocs**: [swofty-developments.github.io/HypixelRecreation](https://swofty-developments.github.io/HypixelRecreation/)
+- **Javadocs**: [daweapon.github.io/HypixelRecreation](https://daweapon.github.io/HypixelRecreation/)
 - **Video Guide**: [YouTube Setup Tutorial](https://www.youtube.com/watch?v=pxzJbjjQL-M)

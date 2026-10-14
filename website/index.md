@@ -13,10 +13,7 @@ hero:
       link: /docs/introduction
     - theme: alt
       text: View on GitHub
-      link: https://github.com/Swofty-Developments/HypixelRecreation
-    - theme: alt
-      text: Join Discord
-      link: https://discord.swofty.net
+      link: https://github.com/daweapon/HypixelRecreation
 
 features:
   - icon: ⚡

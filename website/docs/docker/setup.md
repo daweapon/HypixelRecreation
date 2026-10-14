@@ -5,10 +5,10 @@
 The fastest way to get running. A single command downloads the native installer and launches an interactive TUI that handles everything:
 
 ```bash
-curl -fsSL skyblock-installer.swofty.net | bash
+curl -fsSL raw.githubusercontent.com/daweapon/HypixelRecreation/master/setup/install.sh | bash
 ```
 
-This fetches the prebuilt `skyblock-installer` binary for your platform from the [latest release](https://github.com/Swofty-Developments/HypixelRecreation/releases/latest), caches it under `~/.cache/skyblock-installer`, and runs it. The installer will:
+This fetches the prebuilt `skyblock-installer` binary for your platform from the [latest release](https://github.com/daweapon/HypixelRecreation/releases/latest), caches it under `~/.cache/skyblock-installer`, and runs it. The installer will:
 
 1. Check its dependencies (`docker`, `docker compose` v2, a reachable daemon, `git`, `curl`) and offer to install anything missing
 2. Let you pick which server types and services to run
@@ -55,10 +55,10 @@ The installer never inspects your machine's RAM, CPU, disk space or Docker versi
 To manage an existing install, run the installer again — it detects your installation and offers to open the dashboard:
 
 ```bash
-curl -fsSL skyblock-installer.swofty.net | bash
+curl -fsSL raw.githubusercontent.com/daweapon/HypixelRecreation/master/setup/install.sh | bash
 ```
 
-By default it installs to `~/.hypixel-skyblock`; pass `-dir <path>` to use a different location (`curl -fsSL skyblock-installer.swofty.net | bash -s -- -dir /opt/skyblock`). From the home menu choose **Manage existing installation** to reach the dashboard, which provides:
+By default it installs to `~/.hypixel-skyblock`; pass `-dir <path>` to use a different location (`curl -fsSL raw.githubusercontent.com/daweapon/HypixelRecreation/master/setup/install.sh | bash -s -- -dir /opt/skyblock`). From the home menu choose **Manage existing installation** to reach the dashboard, which provides:
 
 - **Refresh status** - Live view of every container's health
 - **Start all / Stop all** - Control all containers at once
@@ -81,7 +81,7 @@ If you prefer to set things up manually or aren't on Linux, you can use Docker C
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Swofty-Developments/HypixelRecreation.git
+git clone https://github.com/daweapon/HypixelRecreation.git
 cd HypixelRecreation
 ```
 

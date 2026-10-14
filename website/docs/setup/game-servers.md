@@ -4,10 +4,10 @@ Game servers run the actual gameplay using Minestom. Each server runs as a speci
 
 ## Download Required Files
 
-1. Download `HypixelCore.jar` from the [releases page](https://github.com/Swofty-Developments/HypixelRecreation/releases/tag/latest)
-2. Download [`config.yml`](https://github.com/Swofty-Developments/HypixelRecreation/tree/master/configuration)
+1. Download `HypixelCore.jar` from the [releases page](https://github.com/daweapon/HypixelRecreation/releases/tag/latest)
+2. Download [`config.yml`](https://github.com/daweapon/HypixelRecreation/tree/master/configuration)
 3. Download [world files](https://files.catbox.moe/flri48.zip) (all server worlds + `limbo.schem`; extract into `configuration/`)
-4. Download [`PicoLimbo.jar`](https://github.com/Swofty-Developments/HypixelRecreation/tree/master/configuration) and its config
+4. Download [`PicoLimbo.jar`](https://github.com/daweapon/HypixelRecreation/tree/master/configuration) and its config
 
 ## Directory Structure
 
@@ -77,7 +77,7 @@ Extract the world files zip directly into your `configuration/` folder. The zip 
 
 ### 4. Install Data Files
 
-Download from [configuration/skyblock](https://github.com/Swofty-Developments/HypixelRecreation/tree/master/configuration/skyblock):
+Download from [configuration/skyblock](https://github.com/daweapon/HypixelRecreation/tree/master/configuration/skyblock):
 
 - `skills/` folder → `configuration/skyblock/skills/`
 - `levels/` folder → `configuration/skyblock/levels/`

@@ -22,7 +22,7 @@ Services are independent microservices that handle specific features. They commu
 
 ## Download
 
-Download all service JARs from the [releases page](https://github.com/Swofty-Developments/HypixelRecreation/releases/tag/latest).
+Download all service JARs from the [releases page](https://github.com/daweapon/HypixelRecreation/releases/tag/latest).
 
 ## Directory Structure
 

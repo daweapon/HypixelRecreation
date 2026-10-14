@@ -7,8 +7,8 @@ import (
 	"os"
 
 	tea "charm.land/bubbletea/v2"
-	"github.com/Swofty-Developments/HypixelRecreation/setup/internal/installer"
-	"github.com/Swofty-Developments/HypixelRecreation/setup/internal/tui"
+	"github.com/daweapon/HypixelRecreation/setup/internal/installer"
+	"github.com/daweapon/HypixelRecreation/setup/internal/tui"
 )
 
 const headlessEnv = "HYPIXEL_INSTALLER_HEADLESS"
