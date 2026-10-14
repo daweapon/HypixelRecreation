@@ -1,6 +1,8 @@
 rootProject.name = "HypixelSkyBlock"
 include(":packer")
 include(":commons")
+include(":lib.redisapi")
+include(":lib.datahandler")
 include(":dungeons")
 
 include(":velocity.extension")

@@ -2,7 +2,6 @@
 adventure = "5.2.0"
 adventure-platform-mod = "7.0.0"
 annotations = "26.1.0"
-atlasRedis = "1.1.6"
 byte-buddy = "1.18.12"
 caffeine = "3.2.3"
 configlib-yaml = "4.8.1"
@@ -40,7 +39,6 @@ packetevents = "2.13.1-SNAPSHOT"
 shadow = "9.6.1"
 protobuf = "4.35.1"
 zstd-jni = "1.5.7-15"
-swoftyDataHandler = "1.6.0"
 fabric-loom = "1.17-SNAPSHOT"
 fabric-loader = "0.19.3"
 fabric-api = "0.155.2+26.2"
@@ -58,7 +56,6 @@ adventure-text-serializer-gson = { module = "net.kyori:adventure-text-serializer
 adventure-text-serializer-legacy = { module = "net.kyori:adventure-text-serializer-legacy", version.ref = "adventure" }
 adventure-text-logger-slf4j = { module = "net.kyori:adventure-text-logger-slf4j", version.ref = "adventure" }
 annotations = { module = "org.jetbrains:annotations", version.ref = "annotations" }
-atlas-redis = { module = "com.github.Swofty-Developments:AtlasRedisAPI", version.ref = "atlasRedis" }
 byte-buddy = { module = "net.bytebuddy:byte-buddy", version.ref = "byte-buddy" }
 byte-buddy-agent = { module = "net.bytebuddy:byte-buddy-agent", version.ref = "byte-buddy" }
 caffeine = { module = "com.github.ben-manes.caffeine:caffeine", version.ref = "caffeine" }
@@ -76,7 +73,6 @@ jackson-core = { module = "tools.jackson.core:jackson-core" }
 jackson-databind = { module = "tools.jackson.core:jackson-databind" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protobuf" }
 jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
-swofty-datahandler = { module = "net.swofty:SwoftyDataHandler", version.ref = "swoftyDataHandler" }
 json = { module = "org.json:json", version.ref = "json" }
 joml = { module = "org.joml:joml", version.ref = "joml" }
 junit = { module = "junit:junit", version.ref = "junit" }

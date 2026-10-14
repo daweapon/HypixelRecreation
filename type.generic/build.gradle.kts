@@ -14,7 +14,6 @@ java {
 }
 
 repositories {
-    maven("https://jitpack.io")
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
     maven("https://repo.viaversion.com")
 }
@@ -27,7 +26,7 @@ dependencies {
     implementation(libs.mongodb.driver.sync)
     // Must match AtlasRedisAPI's Jedis version to avoid conflicts
     implementation(libs.jedis)
-    implementation(libs.atlas.redis)
+    implementation(project(":lib.redisapi"))
     implementation(libs.tinylog.api)
     implementation(libs.tinylog.impl)
     implementation(libs.kotlin.stdlib)

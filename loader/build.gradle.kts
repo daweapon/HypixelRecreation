@@ -19,7 +19,6 @@ java {
 }
 
 repositories {
-    maven("https://jitpack.io")
     mavenCentral()
 }
 

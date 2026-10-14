@@ -15,12 +15,11 @@ java {
 
 repositories {
     mavenCentral()
-    maven("https://jitpack.io")
 }
 
 dependencies {
     implementation(project(":commons"))
-    implementation(libs.atlas.redis)
+    implementation(project(":lib.redisapi"))
     implementation(libs.adventure.api)
     implementation(libs.adventure.text.serializer.gson)
     implementation(libs.tinylog.api)

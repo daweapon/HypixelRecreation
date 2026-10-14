@@ -35,7 +35,6 @@ subprojects {
         mavenCentral()
         mavenLocal()
         maven("https://repo.viaversion.com")
-        maven("https://jitpack.io")
         maven("https://repo.lucko.me/")
         maven("https://repo.nexomc.com/releases")
         maven("https://repo.codemc.io/repository/maven-public/")

@@ -15,12 +15,11 @@ java {
 
 repositories {
     mavenCentral()
-    maven("https://jitpack.io")
 }
 
 dependencies {
     implementation(project(":commons"))
-    implementation(libs.atlas.redis)
+    implementation(project(":lib.redisapi"))
     compileOnly(libs.minestom) {
         exclude(group = "org.jboss.shrinkwrap.resolver", module = "shrinkwrap-resolver-depchain")
     }

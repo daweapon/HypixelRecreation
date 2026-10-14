@@ -18,7 +18,6 @@ java {
 }
 
 repositories {
-    maven("https://jitpack.io")
     mavenCentral()
 }
 
@@ -32,7 +31,7 @@ dependencies {
     implementation(libs.mongodb.bson)
     implementation(libs.mongodb.driver.sync)
 
-    //implementation(libs.atlas.redis)
+    //implementation(project(":lib.redisapi"))
     implementation(libs.jedis)
 }
 

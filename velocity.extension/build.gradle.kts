@@ -18,7 +18,6 @@ java {
 
 repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
-    maven("https://jitpack.io")
     maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
     maven("https://repo.viaversion.com")
 
@@ -31,7 +30,7 @@ dependencies {
     annotationProcessor(libs.velocity.api)
     compileOnly(files("velocity-4.1.0-SNAPSHOT-9.jar"))
 
-    implementation(libs.atlas.redis)
+    implementation(project(":lib.redisapi"))
     implementation(libs.jedis)
     implementation(project(":commons"))
     implementation(project(":proxy.api"))
