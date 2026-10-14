@@ -129,7 +129,7 @@ items:
     components:
       - id: PET
         pet_name: "Guardian"
-        source: { text: "Superpairs", active: false }
+        source: { text: "Superpairs", active: true }
         pet_type: ENCHANTING
         rarities: [COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, MYTHIC]
         skull_texture: 221025434045bda7025b3e514b316a4b770c6faa4ba9adb4be3809526db77f9d
@@ -171,9 +171,8 @@ items:
             values:
               - { per_level: 0.3 }
           - name: "Lucky Seven"
-            unavailable: "Needs Superpairs"
             rarity: MYTHIC
-            kind: INACTIVE
+            kind: TEXT
             text:
               - "<7>Gain <b>+{0}% <7>chance to find"
               - "<5>ultra rare <7>books in"

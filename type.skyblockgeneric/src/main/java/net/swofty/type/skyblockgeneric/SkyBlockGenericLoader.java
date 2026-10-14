@@ -557,6 +557,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
             });
         });
         net.swofty.type.skyblockgeneric.slayer.SlayerRecipeGates.install();
+        net.swofty.type.skyblockgeneric.experiments.ExperimentRecipeGate.install();
 
         /**
          * Cache custom collections

@@ -22,7 +22,8 @@ public final class IslandUtilityBlocks {
     }
 
     public static boolean isUtility(ItemType type) {
-        return type == ItemType.MITHRIL_CRYSTAL || type == ItemType.REPELLING_CANDLE || type == ItemType.SILENCE_BLOCK;
+        return type == ItemType.MITHRIL_CRYSTAL || type == ItemType.REPELLING_CANDLE || type == ItemType.SILENCE_BLOCK
+                || type == ItemType.EXPERIMENTATION_TABLE;
     }
 
     public static void place(Instance instance, Point position, ItemType type) {

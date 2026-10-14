@@ -1828,7 +1828,6 @@ items:
     material: player_head
     name: "Ensnared Snail"
     rarity: LEGENDARY
-    unavailable: "Drop odds from the Tarantula Broodfather aren't verified and Superpairs/Legacy Trades aren't built"
     source: "Rare Tarantula Broodfather drop (Spider Slayer VII), Superpairs reward, or Legacy Trades for a Bane of Arthropods VII book"
     lore:
       - "§7When applied to to a sword,"
@@ -2310,7 +2309,6 @@ items:
     material: player_head
     name: "Experimentation Table"
     rarity: RARE
-    unavailable: "The Experimentation Table and Superpairs aren't built"
     source: "Crafted from 8 Logs and an Experience Bottle"
     lore:
       - "§7Place this item on your island!"
@@ -2320,11 +2318,30 @@ items:
     components:
       - id: SKULL_HEAD
         texture: 81b843451184a8ccd8e6e49d0edf3451d3dea50fde5b6a2f98ab7cf1138bcece
+      - id: PLACEABLE
+        block_type: EXPERIMENTATION_TABLE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPED
+            recipe-type: ENCHANTING
+            pattern:
+              - "AAA"
+              - "ABA"
+              - "AAA"
+            ingredients:
+              A:
+                type: OAK_LOG
+                amount: 1
+              B:
+                type: EXPERIENCE_BOTTLE
+                amount: 1
+            result:
+              type: EXPERIMENTATION_TABLE
+              amount: 1
   - id: EXPERIMENT_THE_FISH
     material: cod
     name: "Experiment the Fish"
     rarity: SPECIAL
-    unavailable: "The Experimentation Table and Superpairs aren't built"
     source: "Superpairs reward at the Experimentation Table (about 5.28%)"
     lore:
       - "§7Fish me once, shame on you. Fish me"

@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "experimentation-table"
+    name: "The Experimentation Table Update"
+    date: "14th October 2026"
+    material: enchanting_table
+    title: "The Experimentation Table Update"
+    book: "experimentation_table_update.yml"
   - version: "crystal-hollows"
     name: "The Crystal Hollows Update"
     date: "13th October 2026"

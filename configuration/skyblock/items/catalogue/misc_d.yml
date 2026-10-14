@@ -1425,7 +1425,6 @@ items:
     material: player_head
     name: "Metaphysical Serum"
     rarity: EPIC
-    unavailable: "The Experimentation Table and Superpairs aren't built"
     source: "Rare drop from Experimentation Table experiments"
     lore:
       - "§8Consumable"
@@ -1442,6 +1441,8 @@ items:
     components:
       - id: SKULL_HEAD
         texture: 1dbf5e10d0837f20dd7ae691aa6b5c508e4ce11eb1c5aa7b0acc71a554fcbd81
+      - id: INTERACTABLE
+        handler_id: METAPHYSICAL_SERUM
   - id: MIMIC_CHEST
     material: player_head
     name: "Mimic Chest"
@@ -2451,7 +2452,6 @@ items:
     material: player_head
     name: "Octopus Tendril"
     rarity: LEGENDARY
-    unavailable: "The Experimentation Table and Superpairs aren't built"
     source: "Experimentation Table (Superpairs) reward or mob drop"
     lore:
       - "§8Combinable in Anvil"

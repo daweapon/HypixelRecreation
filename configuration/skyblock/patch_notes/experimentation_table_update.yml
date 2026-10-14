@@ -1,0 +1,36 @@
+title: "The Experimentation Table Update"
+date: "14th October 2026"
+intro:
+  - "Enchanting finally has its own endgame. Craft an Experimentation Table, place it on your island and play Superpairs, Chronomatron and Ultrasequencer for Enchanting Exp, enchanted books and rare items."
+  - "Per-board prize weights are estimates until they can be checked against the real game, so they may be tuned."
+sections:
+  - heading: "Enchanting Exp"
+    colour: "<d>"
+    lines:
+      - "Using the Enchantment Table or an Anvil now grants Enchanting Exp equal to 3.5 times the Experience Levels you spent, to the power of 1.5. This manual Exp is capped at 500,000 per day."
+      - "Experience, Grand, Titanic and Colossal Experience Bottles can now be smashed open for experience, which grows by 5 percent for every Enchanting level."
+      - "The Colossal Experience Bottle can be crafted from a Titanic Experience Bottle and a Colossal Experience Bottle Upgrade from the Community Shop."
+  - heading: "The Experimentation Table"
+    colour: "<5>"
+    lines:
+      - "Craft it from 8 Oak Logs around an Experience Bottle once you reach Enchanting 10. You can place one on your island."
+      - "Right-click it to open the experiments menu. The table has 3 charges, and each charge returns 24 hours after you use it."
+      - "Out of charges? Buy up to 3 extra games per day for Experience Levels and Bits. The purchases reset at 12:00 AM GMT."
+  - heading: "Add-on Experiments"
+    colour: "<a>"
+    lines:
+      - "Chronomatron: repeat the growing pattern of notes. Stakes High, Grand, Supreme, Transcendent and Metaphysical need Enchanting 20, 25, 30, 35 and 40."
+      - "Ultrasequencer: memorise the numbers for 2 seconds, then click them in order. Stakes Supreme, Transcendent and Metaphysical need Enchanting 25, 30 and 40."
+      - "Claim your result for Enchanting Exp and extra clicks on your next Superpairs, or decline to try again. Trying again the same day costs Experience Levels."
+  - heading: "Superpairs"
+    colour: "<b>"
+    lines:
+      - "Find matching pairs before you run out of clicks or the 90 second timer ends. Stakes run from Beginner to Metaphysical."
+      - "Enchanted Lapis Lazuli Blocks give 1 click, Feathers give 3 clicks and Diamonds make your next click an Instant Find."
+      - "Prizes include Enchanting Exp, Experience Bottles, Grand and Titanic Experience Bottles, enchanted books, Guardian Pets, Metaphysical Serum, Experiment the Fish, Endcap items and the Nadeshiko Dye."
+      - "Metaphysical Serum can be drunk three times. Each dose shortens add-on chains, and the third grants 2 permanent Superpairs clicks."
+      - "Guardian Pet's Lucky Seven perk, the Bone Font shard and Enderman Slayer 8 raise your chance of ultra rare books."
+  - heading: "RNG Meter"
+    colour: "<d>"
+    lines:
+      - "Every 1,000 Enchanting Exp earned from experiments fills 1 RNG Meter Exp. Pick a drop in the table menu or with the rngmeter command, and it is guaranteed once the meter is full."

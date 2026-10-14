@@ -14,6 +14,7 @@ public enum BlockType {
     BREWING_STAND(BlockBrewingStand.class),
     ISLAND_UTILITY(BlockIslandUtility.class),
     PORTABLE_CAMPFIRE(BlockPortableCampfire.class),
+    EXPERIMENTATION_TABLE(net.swofty.type.skyblockgeneric.block.blocks.BlockExperimentationTable.class),
     ;
 
     public final Class<? extends CustomSkyBlockBlock> clazz;

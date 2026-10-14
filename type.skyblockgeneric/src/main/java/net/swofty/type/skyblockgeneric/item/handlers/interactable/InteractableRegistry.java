@@ -38,6 +38,7 @@ public class InteractableRegistry {
         net.swofty.type.skyblockgeneric.consumable.FinnsFocaccia.registerInteractables();
         net.swofty.type.skyblockgeneric.spookyfestival.BlastOLantern.registerInteractables();
         net.swofty.type.skyblockgeneric.experiments.ExperienceBottle.registerInteractables();
+        net.swofty.type.skyblockgeneric.experiments.MetaphysicalSerum.registerInteractables();
         SnowCannon.registerInteractables();
         CrimsonItemHandlers.registerInteractables();
         net.swofty.type.skyblockgeneric.crystalhollows.GoblinEggs.registerInteractables();

@@ -580,7 +580,6 @@ items:
       - ""
       - "§7Changes the color of an armor piece"
       - "§7to §d#F6ADC6§7!"
-    unavailable: "Needs Experimentation Table"
     source: "Superpairs: 1/75k Supreme, 1/50k Transcendent, 1/25k Metaphysical Experiments"
     components:
       - id: SKULL_HEAD

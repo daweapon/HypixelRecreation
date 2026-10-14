@@ -1479,7 +1479,6 @@ items:
     material: player_head
     name: "Troubled Bubble"
     rarity: LEGENDARY
-    unavailable: "Needs the Wiki Tiki sea creature and Superpairs (not built)"
     source: "Wiki Tiki drop (0.2%) or Superpairs"
     lore:
       - "§8Combinable in Anvil"
