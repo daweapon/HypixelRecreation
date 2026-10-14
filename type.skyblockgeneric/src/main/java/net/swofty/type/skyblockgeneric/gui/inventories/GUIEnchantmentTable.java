@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.gui.inventories;
 
 import net.swofty.type.skyblockgeneric.achievement.SkyBlockEnchantingAchievements;
+import net.swofty.type.skyblockgeneric.experiments.EnchantingXpService;
 import lombok.SneakyThrows;
 import net.minestom.server.component.DataComponents;
 import net.minestom.server.coordinate.Pos;
@@ -359,6 +360,7 @@ public class GUIEnchantmentTable extends HypixelInventoryGUI {
 
                         int levelsSpent = selected.getEnchFromTable().getLevelsFromTableToApply(player).get(finalLevel);
                         player.setLevel(player.getLevel() - levelsSpent);
+                        EnchantingXpService.awardForLevelsSpent(player, levelsSpent);
                         SkyBlockEnchantingAchievements.onTableEnchant(player, selected, finalLevel, levelsSpent);
                         player.sendMessage(Text.key("gui_enchantment.enchanted_message", itemName, selected.getName(), StringUtility.getAsRomanNumeral(finalLevel)));
                     } else {

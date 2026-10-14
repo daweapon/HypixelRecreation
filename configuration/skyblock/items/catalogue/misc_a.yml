@@ -2759,11 +2759,24 @@ items:
     material: experience_bottle
     name: "Colossal Experience Bottle"
     rarity: EPIC
-    unavailable: "Needs Experience Bottle upgrades (Experimentation Table)"
     source: "Crafted from Titanic Experience Bottle and a Colossal Experience Bottle Upgrade"
     lore:
       - "§7Smash it open to receive experience!"
     components:
+      - id: INTERACTABLE
+        handler_id: COLOSSAL_EXP_BOTTLE
+      - id: DEFAULT_CRAFTABLE
+        recipes:
+          - type: SHAPELESS
+            recipe-type: ENCHANTING
+            ingredients:
+              - type: TITANIC_EXP_BOTTLE
+                amount: 1
+              - type: COLOSSAL_EXPERIENCE_BOTTLE_UPGRADE
+                amount: 1
+            result:
+              type: COLOSSAL_EXP_BOTTLE
+              amount: 1
       - id: SELLABLE
         value: 5000.0
   - id: COMMEMORATIVE_MASON_JAR

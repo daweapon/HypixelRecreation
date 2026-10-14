@@ -697,6 +697,9 @@ public class SkyBlockDataHandler extends DataHandler {
         CRYSTAL_HOLLOWS("crystal_hollows", false, false, false,
                 DatapointCrystalHollows.class, new DatapointCrystalHollows("crystal_hollows")),
 
+        EXPERIMENTS("experiments", false, false, false,
+                DatapointExperiments.class, new DatapointExperiments("experiments")),
+
         KAT("kat", false, false, false,
                 DatapointKat.class, new DatapointKat("kat")),
 

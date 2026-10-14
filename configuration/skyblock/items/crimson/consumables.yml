@@ -240,6 +240,8 @@ items:
     lore:
       - "§7Smash it open to receive experience!"
     components:
+      - id: INTERACTABLE
+        handler_id: GRAND_EXP_BOTTLE
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED
@@ -265,6 +267,8 @@ items:
     lore:
       - "§7Smash it open to receive experience!"
     components:
+      - id: INTERACTABLE
+        handler_id: TITANIC_EXP_BOTTLE
       - id: DEFAULT_CRAFTABLE
         recipes:
           - type: SHAPED

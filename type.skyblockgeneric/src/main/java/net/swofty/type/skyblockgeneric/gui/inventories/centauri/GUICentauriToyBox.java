@@ -40,6 +40,8 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         action(layout, 14, Material.PAINTING, "<6>Max Collections", "<8>Gotta collect 'em all.", "<7>Max every available collection.", this::maxCollections);
         action(layout, 15, Material.DIAMOND_SWORD, "<6>Max Skills", "<8>Gotta collect 'em all.", "<7>Max every skill.", this::maxSkills);
         action(layout, 16, Material.ROTTEN_FLESH, "<6>Max Slayers", "<8>Gotta collect 'em all.", "<7>Impress Maddox!", this::maxSlayers);
+        action(layout, 17, Material.ENCHANTING_TABLE, "<d>Enchanting Exp", "<8>Knowledge is power.", "<7>Gain <d>1,000,000 Enchanting Experience<7>.", p -> net.swofty.type.skyblockgeneric.experiments.EnchantingXpService.award(p, 1_000_000));
+        action(layout, 18, Material.EXPERIENCE_BOTTLE, "<a>Experience Bottles", "<8>Smash them open.", "<7>Get <a>16 <7>of every <a>Experience Bottle<7>.", this::giveBottles);
         action(layout, 19, Material.PRISMARINE_CRYSTALS, "<5>50k HOTM Exp", "<8>The power of a pickaxe.", "<7>Gain <5>50,000 HOTM Experience<7>.", p -> HotmService.addExperience(p, 50_000));
         action(layout, 20, Material.GUNPOWDER, "<a>Give 2m powder of each type", "<8>Mindcraft.", "<7>Get 2,000,000 of each powder type: <2>Mithril<7>, <d>Gemstone <7>and <b>Glacite<7>.", p -> HotmService.addPowderToAll(p, 2_000_000));
         action(layout, 21, Material.EMERALD, "<a>5k Gems", "<8>Get rich quick.", "<7>Set your gem purse to 5,000.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.GEMS, DatapointInteger.class).setValue(5_000));
@@ -118,6 +120,13 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.HOTM, DatapointHOTM.class).getValue();
     }
 
+    private void giveBottles(SkyBlockPlayer player) {
+        for (var bottle : net.swofty.type.skyblockgeneric.experiments.ExperienceBottle.values()) {
+            SkyBlockItem item = new SkyBlockItem(bottle.itemType());
+            item.setAmount(16);
+            player.addAndUpdateItem(item);
+        }
+    }
     private void give(SkyBlockPlayer player, ItemType type) { player.addAndUpdateItem(type); }
     private void success(SkyBlockPlayer player) { player.sendMessage("<a>Centauri granted your request!"); }
 

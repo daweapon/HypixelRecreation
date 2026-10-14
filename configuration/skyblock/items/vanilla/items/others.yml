@@ -38,6 +38,9 @@ items:
     rarity: COMMON
     material: EXPERIENCE_BOTTLE
     name: "Experience Bottle"
+    components:
+      - id: INTERACTABLE
+        handler_id: EXPERIENCE_BOTTLE
   - id: FIREWORK_ROCKET
     rarity: COMMON
     material: FIREWORK_ROCKET
