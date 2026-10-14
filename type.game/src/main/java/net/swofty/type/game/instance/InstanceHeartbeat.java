@@ -4,6 +4,8 @@ import net.minestom.server.MinecraftServer;
 import net.minestom.server.timer.TaskSchedule;
 import net.swofty.commons.protocol.objects.orchestrator.GameHeartbeatProtocol;
 
+import org.tinylog.Logger;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
@@ -31,7 +33,14 @@ public final class InstanceHeartbeat {
 
     public static void start(InstanceHost host, Identity identity, Consumer<GameHeartbeatProtocol.HeartbeatMessage> sender) {
         MinecraftServer.getSchedulerManager()
-                .buildTask(() -> sender.accept(message(host, identity)))
+                .buildTask(() -> {
+                    if (identity.uuid().get() == null || identity.shortName().get() == null) return;
+                    try {
+                        sender.accept(message(host, identity));
+                    } catch (RuntimeException e) {
+                        Logger.warn(e, "Failed to send the instance heartbeat");
+                    }
+                })
                 .delay(TaskSchedule.seconds(START_DELAY_SECONDS))
                 .repeat(TaskSchedule.seconds(1))
                 .schedule();
