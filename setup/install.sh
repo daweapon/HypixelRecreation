@@ -61,7 +61,16 @@ if [[ ! -x "$bin" ]]; then
   fi
 
   echo "Downloading ${INSTALLER_NAME} (${os}/${arch})..." >&2
-  curl -fsSL "$url" -o "$tmp/$asset"
+  if curl -fsSL "$url" -o "$tmp/$asset" 2>/dev/null; then
+    :
+  elif command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+    tag_args=()
+    [[ "$VERSION" != "latest" ]] && tag_args=("$VERSION")
+    gh release download "${tag_args[@]}" --repo "$REPO" --pattern "$asset" --dir "$tmp"
+  else
+    echo "Could not download ${asset} from ${REPO}. For a private repository, sign in with 'gh auth login'." >&2
+    exit 1
+  fi
   tar -xzf "$tmp/$asset" -C "$tmp"
   chmod +x "$tmp/$INSTALLER_NAME"
   mv "$tmp/$INSTALLER_NAME" "$bin"

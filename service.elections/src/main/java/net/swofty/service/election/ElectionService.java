@@ -1,5 +1,6 @@
 package net.swofty.service.election;
 
+import net.swofty.service.generic.MongoReadiness;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.config.ConfigProvider;
 import net.swofty.service.generic.SkyBlockService;
@@ -11,6 +12,7 @@ import java.util.List;
 public class ElectionService implements SkyBlockService {
 
     public static void main(String[] args) {
+        MongoReadiness.await(ConfigProvider.settings().getMongodb());
         String mongoUri = ConfigProvider.settings().getMongodb();
         new ElectionDatabase(null).connect(mongoUri);
         SkyBlockService.init(new ElectionService());

@@ -1,9 +1,10 @@
 package installer
 
+import "os"
+
 const (
 	Version           = "2.1.0"
 	GitHubRepo        = "daweapon/HypixelRecreation"
-	GitHubAPI         = "https://api.github.com/repos/" + GitHubRepo
 	LimboAssetsURL    = "https://files.catbox.moe/flri48.zip"
 	StateFileName     = ".state.json"
 	DefaultInstallSub = ".hypixel-skyblock"
@@ -79,4 +80,11 @@ func AllServers() []string {
 	servers = append(servers, SkyBlockServers...)
 	servers = append(servers, MinigameServers...)
 	return servers
+}
+
+func Repo() string {
+	if repo := os.Getenv("SKYBLOCK_INSTALLER_REPO"); repo != "" {
+		return repo
+	}
+	return GitHubRepo
 }

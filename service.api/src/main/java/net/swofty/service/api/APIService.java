@@ -1,5 +1,6 @@
 package net.swofty.service.api;
 
+import net.swofty.service.generic.MongoReadiness;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -30,6 +31,7 @@ import java.util.TreeMap;
 public class APIService implements SkyBlockService {
 
     static void main(String[] args) {
+        MongoReadiness.await(ConfigProvider.settings().getMongodb());
         int port = 0;
         for (String arg : args) {
             if (arg.startsWith("--port=")) {

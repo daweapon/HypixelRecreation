@@ -57,7 +57,6 @@ export default defineConfig({
             { text: "Services", link: "/docs/setup/services" },
             { text: "Store Payments", link: "/docs/setup/store-payments" },
             { text: "Resource Pack", link: "/docs/setup/resource-pack" },
-            { text: "Forums Website", link: "/docs/setup/forums" },
           ],
         },
         {

@@ -1,5 +1,6 @@
 package net.swofty.service.friend;
 
+import net.swofty.service.generic.MongoReadiness;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.config.ConfigProvider;
 import net.swofty.service.generic.SkyBlockService;
@@ -11,6 +12,7 @@ import java.util.List;
 public class FriendService implements SkyBlockService {
 
     static void main() {
+        MongoReadiness.await(ConfigProvider.settings().getMongodb());
         String mongoUri = ConfigProvider.settings().getMongodb();
         new FriendDatabase(null).connect(mongoUri);
 

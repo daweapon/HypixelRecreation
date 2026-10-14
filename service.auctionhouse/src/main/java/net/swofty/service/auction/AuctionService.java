@@ -1,5 +1,6 @@
 package net.swofty.service.auction;
 
+import net.swofty.service.generic.MongoReadiness;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.config.ConfigProvider;
 import net.swofty.service.generic.SkyBlockService;
@@ -12,6 +13,7 @@ public class AuctionService implements SkyBlockService {
     public static AuctionsCacheService cacheService;
 
     static void main(String[] args) {
+        MongoReadiness.await(ConfigProvider.settings().getMongodb());
         new AuctionActiveDatabase("_placeholder").connect(ConfigProvider.settings().getMongodb());
         new AuctionInactiveDatabase("_placeholder").connect(ConfigProvider.settings().getMongodb());
 

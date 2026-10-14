@@ -1,5 +1,6 @@
 package net.swofty.service.replay;
 
+import net.swofty.service.generic.MongoReadiness;
 import lombok.Getter;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.config.ConfigProvider;
@@ -20,6 +21,7 @@ public class ReplayService implements SkyBlockService {
 	private static ReplaySessionManager sessionManager;
 
     static void main() {
+        MongoReadiness.await(ConfigProvider.settings().getMongodb());
         Logger.info("Starting Replay Service...");
 
         String mongoUri = ConfigProvider.settings().getMongodb();

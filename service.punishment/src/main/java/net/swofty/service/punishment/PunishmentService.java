@@ -1,5 +1,6 @@
 package net.swofty.service.punishment;
 
+import net.swofty.service.generic.MongoReadiness;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.config.ConfigProvider;
 import net.swofty.commons.punishment.PunishmentRedis;
@@ -12,6 +13,7 @@ import java.util.List;
 public class PunishmentService implements SkyBlockService {
 
     static void main(String[] args) {
+        MongoReadiness.await(ConfigProvider.settings().getMongodb());
         String mongoUri = ConfigProvider.settings().getMongodb();
         new PunishmentDatabase(null).connect(mongoUri);
         PunishmentRedis.connect(ConfigProvider.settings().getRedisUri());

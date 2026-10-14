@@ -5,8 +5,10 @@
 The fastest way to get running. A single command downloads the native installer and launches an interactive TUI that handles everything:
 
 ```bash
-curl -fsSL raw.githubusercontent.com/daweapon/HypixelRecreation/master/setup/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/daweapon/HypixelRecreation/master/setup/install.sh | bash
 ```
+
+To install from a private repository, sign in with `gh auth login` and run the installer with `SKYBLOCK_INSTALLER_REPO=<owner>/<repo>`; the installer then downloads the release through `gh`.
 
 This fetches the prebuilt `skyblock-installer` binary for your platform from the [latest release](https://github.com/daweapon/HypixelRecreation/releases/latest), caches it under `~/.cache/skyblock-installer`, and runs it. The installer will:
 
@@ -55,10 +57,10 @@ The installer never inspects your machine's RAM, CPU, disk space or Docker versi
 To manage an existing install, run the installer again — it detects your installation and offers to open the dashboard:
 
 ```bash
-curl -fsSL raw.githubusercontent.com/daweapon/HypixelRecreation/master/setup/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/daweapon/HypixelRecreation/master/setup/install.sh | bash
 ```
 
-By default it installs to `~/.hypixel-skyblock`; pass `-dir <path>` to use a different location (`curl -fsSL raw.githubusercontent.com/daweapon/HypixelRecreation/master/setup/install.sh | bash -s -- -dir /opt/skyblock`). From the home menu choose **Manage existing installation** to reach the dashboard, which provides:
+By default it installs to `~/.hypixel-skyblock`; pass `-dir <path>` to use a different location (`curl -fsSL https://raw.githubusercontent.com/daweapon/HypixelRecreation/master/setup/install.sh | bash -s -- -dir /opt/skyblock`). From the home menu choose **Manage existing installation** to reach the dashboard, which provides:
 
 - **Refresh status** - Live view of every container's health
 - **Start all / Stop all** - Control all containers at once

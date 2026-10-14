@@ -130,7 +130,7 @@ func (r *Runner) cloneAssets(ctx context.Context, cfg Config) (string, error) {
 	}
 
 	r.emit("Cloning repository assets")
-	if err := runStream(ctx, installDir, r.Events, "git", "clone", "--depth", "1", "--filter=blob:none", "--sparse", "https://github.com/"+GitHubRepo+".git", "_repo"); err != nil {
+	if err := runStream(ctx, installDir, r.Events, "git", "clone", "--depth", "1", "--filter=blob:none", "--sparse", "https://github.com/"+Repo()+".git", "_repo"); err != nil {
 		return "", err
 	}
 	if err := runStream(ctx, repoDir, r.Events, "git", "sparse-checkout", "set", "configuration", "DockerFiles"); err != nil {

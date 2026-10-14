@@ -1,5 +1,6 @@
 package net.swofty.service.store;
 
+import net.swofty.service.generic.MongoReadiness;
 import net.swofty.commons.ServiceType;
 import net.swofty.commons.config.ConfigProvider;
 import net.swofty.commons.redis.RedisMessageHandler;
@@ -16,6 +17,7 @@ public class StoreService implements SkyBlockService {
     }
 
     static void main() {
+        MongoReadiness.await(ConfigProvider.settings().getMongodb());
         String mongoUri = ConfigProvider.settings().getMongodb();
         StoreDatabase database = (StoreDatabase) new StoreDatabase(null).connect(mongoUri);
 
