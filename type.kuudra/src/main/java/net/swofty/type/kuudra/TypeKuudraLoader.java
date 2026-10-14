@@ -69,9 +69,9 @@ public class TypeKuudraLoader implements SkyBlockTypeLoader {
     private void startOrchestratorHeartbeat() {
         ProxyService orchestrator = new ProxyService(ServiceType.ORCHESTRATOR);
         InstanceHeartbeat.start(new KuudraInstanceHost(), new InstanceHeartbeat.Identity(
-                HypixelConst.getServerUUID(),
-                HypixelConst.getShortenedServerName(),
-                HypixelConst.getMaxPlayers(),
+                HypixelConst::getServerUUID,
+                HypixelConst::getShortenedServerName,
+                HypixelConst::getMaxPlayers,
                 () -> MinecraftServer.getConnectionManager().getOnlinePlayers().size()), orchestrator::handleRequest);
     }
 

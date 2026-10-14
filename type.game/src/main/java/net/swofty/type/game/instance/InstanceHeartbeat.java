@@ -8,20 +8,21 @@ import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.function.IntSupplier;
+import java.util.function.Supplier;
 
 public final class InstanceHeartbeat {
     private static final int START_DELAY_SECONDS = 5;
 
     private InstanceHeartbeat() {}
 
-    public record Identity(UUID uuid, String shortName, int maxPlayers, IntSupplier onlinePlayers) {}
+    public record Identity(Supplier<UUID> uuid, Supplier<String> shortName, IntSupplier maxPlayers, IntSupplier onlinePlayers) {}
 
     public static GameHeartbeatProtocol.HeartbeatMessage message(InstanceHost host, Identity identity) {
         return new GameHeartbeatProtocol.HeartbeatMessage(
-                identity.uuid(),
-                identity.shortName(),
+                identity.uuid().get(),
+                identity.shortName().get(),
                 host.type(),
-                identity.maxPlayers(),
+                identity.maxPlayers().getAsInt(),
                 identity.onlinePlayers().getAsInt(),
                 host.instances(),
                 List.of(),

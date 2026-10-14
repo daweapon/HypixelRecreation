@@ -99,9 +99,9 @@ public class TypeRavengardDungeonLoader implements RavengardTypeLoader {
         net.swofty.type.game.instance.InstanceHeartbeat.start(
                 new net.swofty.type.ravengarddungeon.game.RavengardInstanceHost(),
                 new net.swofty.type.game.instance.InstanceHeartbeat.Identity(
-                        net.swofty.type.generic.HypixelConst.getServerUUID(),
-                        net.swofty.type.generic.HypixelConst.getShortenedServerName(),
-                        net.swofty.type.generic.HypixelConst.getMaxPlayers(),
+                        net.swofty.type.generic.HypixelConst::getServerUUID,
+                        net.swofty.type.generic.HypixelConst::getShortenedServerName,
+                        net.swofty.type.generic.HypixelConst::getMaxPlayers,
                         () -> MinecraftServer.getConnectionManager().getOnlinePlayers().size()),
                 orchestrator::handleRequest);
     }
