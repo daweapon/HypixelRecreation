@@ -14,7 +14,7 @@ public class NPCProfessorRobot extends AbstractStructureNPC {
     private static final String MET = "met_professor_robot";
 
     public NPCProfessorRobot() {
-        super("Professor Robot", "<b>", DEFAULT_TEXTURE, "lost_precursor_city", "professor_robot");
+        super("Professor Robot", "<e>", DEFAULT_TEXTURE, "lost_precursor_city", "professor_robot");
     }
 
     @Override
@@ -32,7 +32,7 @@ public class NPCProfessorRobot extends AbstractStructureNPC {
         }
         if (player.getAmountAnywhere(ItemType.PRECURSOR_APPARATUS) > 0) {
             player.removeItemFromPlayer(ItemType.PRECURSOR_APPARATUS, 1);
-            openStorage(player);
+            openStorage(player, "apparatus");
             return;
         }
         submitParts(player);
@@ -40,30 +40,27 @@ public class NPCProfessorRobot extends AbstractStructureNPC {
 
     private void submitParts(SkyBlockPlayer player) {
         UUID id = player.getUuid();
-        boolean duplicate = false;
-        boolean submitted = false;
+        int needed = CrystalHollowsProgress.AUTOMATON_PARTS.size();
+        boolean held = false;
         for (ItemType part : CrystalHollowsProgress.AUTOMATON_PARTS) {
             if (player.getAmountAnywhere(part) <= 0) continue;
+            held = true;
             if (CrystalHollowsProgress.partSubmitted(id, part)) {
-                duplicate = true;
+                sendNPCMessage(player, "You have already delivered that part to me! Bring me a unique robot part!");
                 continue;
             }
             player.removeItemFromPlayer(part, 1);
             CrystalHollowsProgress.submitPart(id, part);
-            submitted = true;
+            int total = CrystalHollowsProgress.partsSubmitted(id);
+            if (total >= needed) break;
+            sendNPCMessage(player, "Thanks for bringing me the <9>" + part.getDisplayName() + "<f>! Bring me " + (needed - total) + " more components to fix the giant!");
         }
-        int total = CrystalHollowsProgress.partsSubmitted(id);
-        int needed = CrystalHollowsProgress.AUTOMATON_PARTS.size();
-        if (total >= needed) {
-            openStorage(player);
+        if (CrystalHollowsProgress.partsSubmitted(id) >= needed) {
+            openStorage(player, "open");
             return;
         }
-        if (submitted) {
-            sendNPCMessage(player, "<f>Thank you! I need " + (needed - total) + " more.");
-        } else if (duplicate) {
-            sendNPCMessage(player, "<f>I already have that one. I need a unique part!");
-        } else {
-            sendNPCMessage(player, "<f>I still need the " + missingParts(id) + ". Bring me any I'm missing, or a Precursor Apparatus!");
+        if (!held) {
+            sendNPCMessage(player, "That's not one of the components I need! Bring me one of the missing components:\n" + missingParts(id));
         }
     }
 
@@ -71,38 +68,53 @@ public class NPCProfessorRobot extends AbstractStructureNPC {
         StringBuilder missing = new StringBuilder();
         for (ItemType part : CrystalHollowsProgress.AUTOMATON_PARTS) {
             if (CrystalHollowsProgress.partSubmitted(id, part)) continue;
-            if (!missing.isEmpty()) missing.append(", ");
-            missing.append(part.getDisplayName());
+            if (!missing.isEmpty()) missing.append('\n');
+            missing.append("<9>").append(part.getDisplayName());
         }
         return missing.toString();
     }
 
-    private void openStorage(SkyBlockPlayer player) {
+    private void openStorage(SkyBlockPlayer player, String dialogue) {
         CrystalHollowsProgress.mark(player.getUuid(), CrystalHollowsProgress.SAPPHIRE_STORAGE_OPEN);
-        setDialogue(player, "open").thenRun(() -> giveCrystal(player));
+        setDialogue(player, dialogue).thenRun(() -> giveCrystal(player));
     }
 
     private void giveCrystal(SkyBlockPlayer player) {
-        UUID id = player.getUuid();
-        CrystalHollowsProgress.mark(id, CrystalHollowsProgress.SAPPHIRE_CRYSTAL_CLAIMED);
-        if (CrystalNucleus.claim(player, NucleusCrystal.SAPPHIRE)) {
-            sendNPCMessage(player, "<f>Take the Sapphire Crystal, and place it at the Crystal Nucleus.");
+        CrystalHollowsProgress.mark(player.getUuid(), CrystalHollowsProgress.SAPPHIRE_CRYSTAL_CLAIMED);
+        if (CrystalNucleus.claim(player, NucleusCrystal.SAPPHIRE)) return;
+        if (CrystalNucleus.state(player, NucleusCrystal.SAPPHIRE) == CrystalNucleus.State.NOT_PLACED) {
+            setDialogue(player, "unplaced");
             return;
         }
-        sendNPCMessage(player, "<f>Don't forget to place the Sapphire Crystal at the Crystal Nucleus.");
+        sendNPCMessage(player, "Don't forget to place the Sapphire Crystal at the Crystal Nucleus.");
     }
 
     @Override
     protected DialogueSet[] dialogues(HypixelPlayer player) {
         return new DialogueSet[]{
                 DialogueSet.builder().key("intro").lines(
-                        "Ah, a visitor to the Lost Precursor City! This citadel was built by the Precursors long ago.",
-                        "Its guardian, the Automaton Prime, is missing six components: an Electron Transmitter, an FTX 3070, a Robotron Reflector, a Superlite Motor, a Control Switch and a Synthetic Heart.",
-                        "Bring me each of them, or a Precursor Apparatus that combines all six, and I can open the storage vault."
+                        "This citadel used to be the epicenter of fructuous engineering.",
+                        "The inhabitants, <b>Precursors<f>, as they were once called, laid the foundations for the future.",
+                        "However, they have been extinct for eons - only leaving the remnants of the <c>Automatons<f> behind.",
+                        "One rather peculiar discovery is the <b>Automaton Prime<f> - the giant robot towering above me. The exact purpose of it is unknown, although it appears to be guarding something.",
+                        "There seems to be <a>6<f> key components to the giant that are missing.",
+                        "Each part - the <9>Electron Transmitter<f>, <9>FTX 3070<f>, <9>Robotron Reflector<f>, <9>Superlite Motor<f>, <9>Control Switch<f>, and a <9>Synthetic Heart<f> plays a distinctive role in the creation of this behemoth.",
+                        "I think the Automatons nearby are built with similar components. Find them and bring them to me!"
                 ).build(),
                 DialogueSet.builder().key("open").lines(
-                        "That's every component! The vault is opening...",
-                        "Perhaps the long-lost Sapphire Crystal is in there!"
+                        "You've brought me all of the components!",
+                        "I have uploaded them to the giant below...it appears it has opened its storage compartment!",
+                        "Perhaps the long-lost <b>Sapphire Crystal<f> is in there!"
+                ).build(),
+                DialogueSet.builder().key("apparatus").lines(
+                        "That's not one of the compon-",
+                        "Wait a minute. This will work just fine.",
+                        "I have uploaded this to the giant below...it appears it has opened its storage compartment!",
+                        "Perhaps the long-lost <b>Sapphire Crystal<f> is in there!"
+                ).build(),
+                DialogueSet.builder().key("unplaced").lines(
+                        "You haven't placed the <b>Sapphire Crystal<f> yet!",
+                        "Go to the <5>Crystal Nucleus<f> to place it!"
                 ).build()
         };
     }

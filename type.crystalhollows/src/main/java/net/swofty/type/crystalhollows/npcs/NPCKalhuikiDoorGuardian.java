@@ -5,6 +5,8 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.crystalhollows.quest.CrystalHollowsProgress;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalNucleus;
+import net.swofty.type.skyblockgeneric.crystalhollows.NucleusCrystal;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.UUID;
@@ -19,6 +21,10 @@ public class NPCKalhuikiDoorGuardian extends AbstractStructureNPC {
         SkyBlockPlayer player = skyBlock(event.player());
         if (isInDialogue(player)) return;
         UUID id = player.getUuid();
+        if (CrystalNucleus.state(player, NucleusCrystal.AMETHYST) != CrystalNucleus.State.NOT_FOUND) {
+            setDialogue(player, "claimed");
+            return;
+        }
         if (CrystalHollowsProgress.hasActiveJungleKey(id)) {
             setDialogue(player, "open");
             return;
@@ -37,13 +43,16 @@ public class NPCKalhuikiDoorGuardian extends AbstractStructureNPC {
     protected DialogueSet[] dialogues(HypixelPlayer player) {
         return new DialogueSet[]{
                 DialogueSet.builder().key("locked").lines(
-                        "The temple is sealed. Only those who carry a Jungle Key may pass."
+                        "This temple is locked, you will need to bring me a key open the door!"
                 ).build(),
                 DialogueSet.builder().key("accepted").lines(
                         "A Jungle Key! I will open the door for you."
                 ).build(),
                 DialogueSet.builder().key("open").lines(
                         "Your key is already recognised. The door is open, go on in."
+                ).build(),
+                DialogueSet.builder().key("claimed").lines(
+                        "This temple does not have the treasure you are seeking at this time."
                 ).build()
         };
     }

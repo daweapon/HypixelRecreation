@@ -42,82 +42,27 @@ public record CommissionReward(int hotmXp, int miningXp, int mithrilPowder, int 
 	}
 
 	public static CommissionReward calculate(int hotmTier, boolean isHotmMaxed, boolean isDailyBonus) {
-		int hotmXp;
-		int miningXp;
-		int mithrilPowder;
-
-		if (!isHotmMaxed) {
-			if (hotmTier == 1) {
-				hotmXp = 100;
-			} else if (hotmTier == 2) {
-				hotmXp = 200;
-			} else {
-				hotmXp = 400;
-			}
-		} else {
-			hotmXp = 0;
-		}
-
-		miningXp = ThreadLocalRandom.current().nextInt(5_000, 10_001);
-		if (!isHotmMaxed) {
-			mithrilPowder = ThreadLocalRandom.current().nextInt(100, 201);
-		} else {
-			mithrilPowder = 500;
-		}
-
-		int dailyBonusHotmXp = 0;
-		int dailyBonusPowder = 0;
-		if (isDailyBonus) {
-			if (!isHotmMaxed) {
-				dailyBonusHotmXp = 900;
-			} else {
-				dailyBonusPowder = 2000;
-			}
-		}
-
-		return new CommissionReward(
-				hotmXp + dailyBonusHotmXp,
-				miningXp,
-				mithrilPowder + dailyBonusPowder,
-				0,
-				0,
-				isDailyBonus
-		);
+		int hotmXp = isHotmMaxed ? 0 : baseHotmXp(hotmTier) + (isDailyBonus ? 900 : 0);
+		int mithrilPowder = mithrilPowder(hotmTier) + (isDailyBonus && isHotmMaxed ? 1_600 : 0);
+		return new CommissionReward(hotmXp, ThreadLocalRandom.current().nextInt(5_000, 10_001), mithrilPowder, 0, 0, isDailyBonus);
 	}
 
 	public static List<Text> getRewardLore(int hotmTier, boolean isHotmMaxed, boolean isDailyBonus) {
 		List<Text> lore = new ArrayList<>();
-
 		if (!isHotmMaxed) {
-			int baseHotmXp;
-			if (hotmTier == 1) {
-				baseHotmXp = 100;
-			} else if (hotmTier == 2) {
-				baseHotmXp = 200;
-			} else {
-				baseHotmXp = 400;
-			}
-
-			if (isDailyBonus) {
-				lore.add(Text.of("<7>- <5>+{} Heart of the Mountain XP <e>(Daily Bonus)", baseHotmXp + 900));
-			} else {
-				lore.add(Text.of("<7>- <5>+{} Heart of the Mountain XP", baseHotmXp));
-			}
+			int hotmXp = baseHotmXp(hotmTier) + (isDailyBonus ? 900 : 0);
+			lore.add(Text.of(isDailyBonus ? "<7>- <5>+{} Heart of the Mountain XP <e>(Daily Bonus)" : "<7>- <5>+{} Heart of the Mountain XP", hotmXp));
 		}
-
-		if (!isHotmMaxed) {
-			if (isDailyBonus) {
-				lore.add(Text.of("<7>- <2>+100 Mithril Powder"));
-			} else {
-				lore.add(Text.of("<7>- <2>+100 Mithril Powder"));
-			}
-		} else {
-			lore.add(Text.of("<7>- <2>+500 Mithril Powder"));
-		}
-
+		lore.add(Text.of("<7>- <2>+{} Mithril Powder", String.format("%,d", mithrilPowder(hotmTier) + (isDailyBonus && isHotmMaxed ? 1_600 : 0))));
 		lore.add(Text.of("<7>- <3>+7.5k Mining XP"));
-
 		return lore;
 	}
-}
 
+	private static int baseHotmXp(int hotmTier) {
+		return hotmTier <= 1 ? 100 : hotmTier == 2 ? 200 : 400;
+	}
+
+	private static int mithrilPowder(int hotmTier) {
+		return hotmTier >= 10 ? 1_000 : 500;
+	}
+}

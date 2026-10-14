@@ -9,7 +9,7 @@ public class NPCGoldenDragon extends AbstractStructureNPC {
     private static final String MET = "met_golden_dragon";
 
     public NPCGoldenDragon() {
-        super("Golden Dragon", "<6>", DEFAULT_TEXTURE, "dragons_lair", "golden_dragon");
+        super("Golden Dragon", "<e>", DEFAULT_TEXTURE, "dragons_lair", "golden_dragon");
     }
 
     @Override
@@ -26,8 +26,9 @@ public class NPCGoldenDragon extends AbstractStructureNPC {
     @Override
     protected DialogueSet[] dialogues(HypixelPlayer player) {
         return new DialogueSet[]{DialogueSet.builder().key("hello").lines(
-                "So, a visitor finds my lair. I have hoarded the finest treasures of the Hollows for centuries.",
-                "An egg of my line can be yours, for a hoard worthy of a dragon: coins, gold, and a Perfect Gemstone of every crystal."
+                "Do not think I am sleeping, thief.",
+                "Those eggs are mine, but I would be willing to sell them against pure gold and gemstones.",
+                "But are you rich enough?"
         ).build()};
     }
 }

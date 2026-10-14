@@ -16,46 +16,64 @@ import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess;
 import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
+import java.util.Map;
+
 public class GUIGwendolyn extends StatelessView {
-    private static final String SPEAKER = "<e>[NPC] <b>Gwendolyn<f>: ";
+    private static final String SPEAKER = "<e>[NPC] <5>Gwendolyn<f>: ";
+
+    private static final Map<Integer, Material> PANES = Map.of(
+            12, Material.LIME_STAINED_GLASS_PANE, 13, Material.GREEN_STAINED_GLASS_PANE, 14, Material.BLACK_STAINED_GLASS_PANE,
+            21, Material.GRAY_STAINED_GLASS_PANE, 23, Material.BLACK_STAINED_GLASS_PANE,
+            30, Material.BLACK_STAINED_GLASS_PANE, 31, Material.BLACK_STAINED_GLASS_PANE, 32, Material.BLACK_STAINED_GLASS_PANE);
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>("Crystal Hollows Pass", InventoryType.CHEST_4_ROW);
+        return new ViewConfiguration<>("Crystal Hollows", InventoryType.CHEST_6_ROW);
     }
 
     @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
-        layout.slot(11, (_, _) -> passItem(player), (_, c) -> buy(player, c));
-        layout.slot(15, (_, _) -> minecartItem(player), (_, _) -> ride(player));
-        Components.close(layout, 31);
+        PANES.forEach((slot, material) -> layout.slot(slot, (_, _) -> Components.asFiller(material)));
+        layout.slot(22, (_, _) -> minecartItem(player), (_, c) -> enter(player, c));
+        layout.slot(50, (_, _) -> infoItem());
+        Components.close(layout, 49);
     }
 
-    private ItemStack.Builder passItem(SkyBlockPlayer player) {
-        if (CrystalHollowsAccess.hasPermanentAccess(player)) {
-            return ItemStacks.item(Material.NETHER_STAR, "<a>Crystal Hollows Pass\n<7>You have <a>permanent access<7> to the\n<7>Crystal Hollows.");
-        }
-        String left = CrystalHollowsAccess.hasValidPass(player)
-                ? "\n<7>Time left: <a>" + HotmService.formatDuration(CrystalHollowsAccess.millisLeft(player)) + "\n"
-                : "\n";
-        return ItemStacks.item(Material.PAPER, "<a>Crystal Hollows Pass\n<7>Grants access to the Crystal Hollows\n<7>for <e>6 hours<7>.\n" + left
-                + "\n<7>Cost: <6>" + StringUtility.commaify((int) CrystalHollowsAccess.PASS_PRICE) + " coins\n\n<e>Click to purchase!");
+    private ItemStack.Builder infoItem() {
+        return ItemStacks.item(Material.REDSTONE_TORCH, "<3>Crystal Hollows Info\n"
+                + "<7>The <3>Crystal Hollows <7>is a\n<7>huge random underground area\n<7>that hosts many different\n"
+                + "<6>ores<7>, <d>gems<7>, <a>biomes<7>,\n<7>and <c>creatures<7>.\n\n"
+                + "<d>Gemstones <7>are brightly\n<7>colored shards embedded in the\n<7>walls of most <8>tunnels<7>. You\n"
+                + "<7>will find different types of\n<d>Gemstones <7>in different\n<a>biomes <7>except for <c>Ruby\n"
+                + "<7>that appears to be found\n<7>everywhere.\n\n"
+                + "<7>On your <a>adventures <7>you\n<7>will find many structures. Some\n<7>abandoned, some not. Structures\n"
+                + "<7>such as these can contain <5>epic\n<5>loot <7>or <c>dangerous foes <7>so\n<7>always be on the look out.\n\n<e>Good luck!");
     }
 
     private ItemStack.Builder minecartItem(SkyBlockPlayer player) {
-        if (!CrystalHollowsAccess.hasValidPass(player)) {
-            return ItemStacks.item(Material.MINECART, "<c>Minecart\n<7>You need a valid pass to ride\n<7>to the Crystal Hollows.");
+        if (CrystalHollowsAccess.hasPermanentAccess(player)) {
+            return ItemStacks.item(Material.MINECART, "<3>Join the Crystal Hollows\n\n<7>You have <a>permanent access <7>to the\n<2>Crystal Hollows<7>.\n\n<e>Click to travel!");
         }
-        return ItemStacks.item(Material.MINECART, "<a>Minecart\n<7>Ride to the <5>Crystal Hollows<7>.\n\n<e>Click to travel!");
+        if (CrystalHollowsAccess.hasValidPass(player)) {
+            return ItemStacks.item(Material.MINECART, "<3>Join the Crystal Hollows\n\n<7>Your pass is active for another\n<a>"
+                    + HotmService.formatDuration(CrystalHollowsAccess.millisLeft(player)) + "<7>.\n\n<e>Click to travel!");
+        }
+        return ItemStacks.item(Material.MINECART, "<3>Join the Crystal Hollows\n\n<7>This pass grants you access to the\n<2>Crystal Hollows<7> for <6>6 hours<7>.\n\n"
+                + "<7>As long as the pass is active, you can\n<7>travel back and forth using the <b>Minecart\n<7>in your <a>SkyBlock Menu<7>.\n\n"
+                + "<7>Cost\n<6>" + StringUtility.commaify((int) CrystalHollowsAccess.PASS_PRICE) + " Coins\n\n<e>Click to purchase!");
+    }
+
+    private void enter(SkyBlockPlayer player, ViewContext click) {
+        if (CrystalHollowsAccess.hasValidPass(player)) {
+            ride(player);
+            return;
+        }
+        buy(player, click);
     }
 
     private void buy(SkyBlockPlayer player, ViewContext click) {
-        if (CrystalHollowsAccess.hasValidPass(player)) {
-            player.sendMessage(SPEAKER + "You already have access to the Crystal Hollows!");
-            return;
-        }
         String problem = CrystalHollowsAccess.buyPass(player);
         if (problem != null) {
             player.sendMessage("<c>" + problem);
@@ -66,10 +84,6 @@ public class GUIGwendolyn extends StatelessView {
     }
 
     private void ride(SkyBlockPlayer player) {
-        if (!CrystalHollowsAccess.hasValidPass(player)) {
-            player.sendMessage("<c>You need a valid Crystal Hollows pass to ride the Minecart!");
-            return;
-        }
         player.closeInventory();
         player.sendMessage(SPEAKER + "Good luck in the mines!");
         player.sendTo(ServerType.SKYBLOCK_CRYSTAL_HOLLOWS);

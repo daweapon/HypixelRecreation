@@ -7,7 +7,7 @@ import net.swofty.type.skyblockgeneric.shop.type.CoinShopPrice;
 
 public class GUIShopChunk extends ShopView {
     public GUIShopChunk() {
-        super("Chunk", DEFAULT);
+        super("Chunk", SINGLE_SLOT);
     }
 
     @Override

@@ -170,7 +170,9 @@ public class DatapointToggles extends Datapoint<DatapointToggles.Toggles> {
             PERSONAL_COMPACTOR_REDSTONE(true),
             PERSONAL_COMPACTOR_LAPIS(true),
             HALVE_DARK_AUCTION_CALENDAR_ENTRIES(false),
-            HAS_SPOKEN_TO_HATTIE(false);
+            HAS_SPOKEN_TO_HATTIE(false),
+            HAS_SPOKEN_TO_JOTRAELINE(false),
+            HAS_SPOKEN_TO_BRYNMOR(false);
 
             private final boolean defaultValue;
 

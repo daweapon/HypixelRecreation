@@ -7,6 +7,7 @@ import net.swofty.type.generic.entity.npc.configuration.VillagerConfiguration;
 import net.swofty.type.generic.event.custom.NPCInteractEvent;
 import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.skyblockgeneric.gui.inventories.forge.GUIForge;
+import net.swofty.type.skyblockgeneric.hotm.HotmService;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public abstract class AbstractForger extends HypixelNPC {
@@ -37,6 +38,11 @@ public abstract class AbstractForger extends HypixelNPC {
 
     @Override
     public void onClick(NPCInteractEvent event) {
-        ((SkyBlockPlayer) event.player()).openView(new GUIForge());
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (HotmService.data(player).getTier() < 2) {
+            player.sendMessage("<e>[NPC] <b>Forger<f>: You need to unlock Heart of the Mountain Tier 2 to access the Forge!");
+            return;
+        }
+        player.openView(new GUIForge());
     }
 }

@@ -15,8 +15,8 @@ public class GUIShopGoldenDragon extends ShopView {
     public static final long EGG_COINS = 500_000_000L;
     public static final int EGG_GOLD_BLOCKS = 50;
     public static final List<ItemType> EGG_GEMS = List.of(
-            ItemType.PERFECT_SAPPHIRE_GEM, ItemType.PERFECT_JADE_GEM, ItemType.PERFECT_AMBER_GEM,
-            ItemType.PERFECT_AMETHYST_GEM, ItemType.PERFECT_TOPAZ_GEM);
+            ItemType.PERFECT_AMETHYST_GEM, ItemType.PERFECT_JADE_GEM, ItemType.PERFECT_SAPPHIRE_GEM,
+            ItemType.PERFECT_AMBER_GEM, ItemType.PERFECT_TOPAZ_GEM);
 
     public GUIShopGoldenDragon() {
         super("Golden Dragon", DEFAULT);

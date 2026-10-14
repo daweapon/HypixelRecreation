@@ -732,6 +732,9 @@ public class SkyBlockDataHandler extends DataHandler {
         ESSENCE_PERKS("essence_perks", false, false, false, DatapointMapStringLong.class,
                 new DatapointMapStringLong("essence_perks")),
 
+        SHOP_PURCHASE_LIMITS("shop_purchase_limits", false, false, false, DatapointMapStringLong.class,
+                new DatapointMapStringLong("shop_purchase_limits")),
+
         CHICKEN_RACE_CLUCKPOINT("chicken_race_cluckpoint", false, false, false,
                 DatapointInteger.class, new DatapointInteger("chicken_race_cluckpoint", 0)),
 

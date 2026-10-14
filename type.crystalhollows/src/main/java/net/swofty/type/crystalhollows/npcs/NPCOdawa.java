@@ -26,9 +26,10 @@ public class NPCOdawa extends AbstractStructureNPC {
     @Override
     protected DialogueSet[] dialogues(HypixelPlayer player) {
         return new DialogueSet[]{DialogueSet.builder().key("hello").lines(
-                "Outsider. The Kalhuiki tribe does not welcome visitors easily.",
-                "Bring me Sludge Juice from the creatures of this jungle, and I will trade you what you need.",
-                "A Jungle Key opens the temple door. A Kalhuiki Mask keeps the tribe from attacking you."
+                "Welcome traveler to our village!",
+                "We have much to offer and explore - but be careful.",
+                "The Kalhuiki tribe are a friendly people, but protective.",
+                "Do not attack our young, else we will put you down."
         ).build()};
     }
 }

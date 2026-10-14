@@ -35,18 +35,24 @@ public abstract class AbstractKeeper extends AbstractStructureNPC {
             return;
         }
         if (CrystalHollowsProgress.has(id, CrystalHollowsProgress.JADE_CRYSTAL_CLAIMED)) {
-            setDialogue(player, CrystalNucleus.claim(player, NucleusCrystal.JADE) ? "complete" : "again");
-            return;
-        }
-        if (!CrystalHollowsProgress.turnedIn(id, keeper)) {
-            ItemType scavenged = CrystalHollowsProgress.scavengedItem(keeper);
-            if (scavenged == null || player.getAmountAnywhere(scavenged) <= 0) {
-                setDialogue(player, "missing");
+            if (CrystalNucleus.claim(player, NucleusCrystal.JADE)) {
+                setDialogue(player, "complete");
                 return;
             }
-            player.removeItemFromPlayer(scavenged, 1);
-            CrystalHollowsProgress.turnIn(id, keeper);
+            setDialogue(player, CrystalNucleus.state(player, NucleusCrystal.JADE) == CrystalNucleus.State.NOT_PLACED ? "unplaced" : "placed");
+            return;
         }
+        if (CrystalHollowsProgress.turnedIn(id, keeper)) {
+            setDialogue(player, "restored");
+            return;
+        }
+        ItemType scavenged = CrystalHollowsProgress.scavengedItem(keeper);
+        if (scavenged == null || player.getAmountAnywhere(scavenged) <= 0) {
+            setDialogue(player, "missing");
+            return;
+        }
+        player.removeItemFromPlayer(scavenged, 1);
+        CrystalHollowsProgress.turnIn(id, keeper);
         if (CrystalHollowsProgress.allKeepersSatisfied(id)) {
             CrystalHollowsProgress.mark(id, CrystalHollowsProgress.JADE_CRYSTAL_CLAIMED);
             CrystalNucleus.claim(player, NucleusCrystal.JADE);
@@ -58,24 +64,33 @@ public abstract class AbstractKeeper extends AbstractStructureNPC {
 
     @Override
     protected DialogueSet[] dialogues(HypixelPlayer player) {
+        String item = "<c>Scavenged " + keeper.scavengedName;
         return new DialogueSet[]{
                 DialogueSet.builder().key("detector").lines(
-                        "Take this Metal Detector to scavenge the ground for lost items!",
-                        "Bring me the Scavenged " + keeper.scavengedName + " if you find it. The other Keepers are waiting on theirs too."
+                        "Take this <c>Metal Detector<f> to scavenge the ground for lost items!",
+                        "Return the items to their rightful owners to gain a reward!"
                 ).build(),
                 DialogueSet.builder().key("missing").lines(
-                        "I am the Keeper of " + keeper.displayName + ". I am looking for the Scavenged " + keeper.scavengedName + ".",
-                        "Use the Metal Detector to dig it up!"
+                        "Talk to me when you have found a " + item + "<f>."
                 ).build(),
                 DialogueSet.builder().key("thanks").lines(
-                        "You found the Scavenged " + keeper.scavengedName + "! Thank you.",
-                        "Bring the rest to the other Keepers."
+                        "Excellent! You have returned the " + item + " <f>to it's rightful place!",
+                        "Use your <c>Metal Detector<f> to find the remaining items!"
+                ).build(),
+                DialogueSet.builder().key("restored").lines(
+                        "You have already restored this Dwarf's " + item + "<f>!",
+                        "Use your <c>Metal Detector<f> to find the rest of the items!"
                 ).build(),
                 DialogueSet.builder().key("complete").lines(
-                        "You found all of the items! Behold... the Jade Crystal!"
+                        "You found all of the items! Behold... the <a>Jade Crystal<f>!"
                 ).build(),
-                DialogueSet.builder().key("again").lines(
-                        "Come back when you need to collect it again."
+                DialogueSet.builder().key("unplaced").lines(
+                        "You haven't placed the <a>Jade Crystal <f>yet!",
+                        "Go to the <5>Crystal Nucleus <f>to place it!"
+                ).build(),
+                DialogueSet.builder().key("placed").lines(
+                        "You have already placed the <a>Jade Crystal<f>!",
+                        "Come back when you need to collect it again!"
                 ).build()
         };
     }
