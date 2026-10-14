@@ -1,5 +1,6 @@
 package net.swofty.type.hub;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import net.minestom.server.MinecraftServer;
@@ -263,10 +264,10 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
 
 	@Override
 	public List<HypixelEventClass> getTraditionalEvents() {
-		return SkyBlockGenericLoader.loopThroughPackage(
+		return SpawnOnJoin.intoMainInstance(SkyBlockGenericLoader.loopThroughPackage(
 				"net.swofty.type.hub.events",
 				HypixelEventClass.class
-		).collect(Collectors.toList());
+		));
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package net.swofty.type.skywarsconfigurator;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import lombok.Getter;
 import lombok.Setter;
 import net.minestom.server.MinecraftServer;
@@ -100,10 +101,10 @@ public class TypeSkyWarsConfiguratorLoader implements HypixelTypeLoader {
 
     @Override
     public List<HypixelEventClass> getTraditionalEvents() {
-        return HypixelGenericLoader.loopThroughPackage(
+        return SpawnOnJoin.intoEmptyInstance(HypixelGenericLoader.loopThroughPackage(
                 "net.swofty.type.skywarsconfigurator.events",
                 HypixelEventClass.class
-        ).toList();
+        ));
     }
 
     @Override

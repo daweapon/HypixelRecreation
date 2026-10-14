@@ -1,5 +1,6 @@
 package net.swofty.type.murdermysteryconfigurator;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Getter;
@@ -123,10 +124,10 @@ public class TypeMurderMysteryConfiguratorLoader implements HypixelTypeLoader {
 
     @Override
     public List<HypixelEventClass> getTraditionalEvents() {
-        return HypixelGenericLoader.loopThroughPackage(
+        return SpawnOnJoin.intoEmptyInstance(HypixelGenericLoader.loopThroughPackage(
                 "net.swofty.type.murdermysteryconfigurator.events",
                 HypixelEventClass.class
-        ).toList();
+        ));
     }
 
     @Override

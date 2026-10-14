@@ -1,5 +1,6 @@
 package net.swofty.type.dwarvenmines;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import net.kyori.adventure.key.Key;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Point;
@@ -93,10 +94,10 @@ public class TypeDwarvenMinesLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<HypixelEventClass> getTraditionalEvents() {
-        return SkyBlockGenericLoader.loopThroughPackage(
+        return SpawnOnJoin.intoMainInstance(SkyBlockGenericLoader.loopThroughPackage(
                 "net.swofty.type.dwarvenmines.events",
                 HypixelEventClass.class
-        ).collect(Collectors.toList());
+        ));
     }
 
     @Override

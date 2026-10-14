@@ -1,5 +1,6 @@
 package net.swofty.type.thepark;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.BlockVec;
 import net.minestom.server.coordinate.Point;
@@ -252,10 +253,10 @@ public class TypeTheParkLoader implements SkyBlockTypeLoader, RaceInstance {
 
 	@Override
 	public List<HypixelEventClass> getTraditionalEvents() {
-		return SkyBlockGenericLoader.loopThroughPackage(
+		return SpawnOnJoin.intoMainInstance(SkyBlockGenericLoader.loopThroughPackage(
 				"net.swofty.type.thepark.events",
 				HypixelEventClass.class
-		).collect(Collectors.toList());
+		));
 	}
 
 	@Override

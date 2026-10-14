@@ -1,5 +1,6 @@
 package net.swofty.type.crimsonisle;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.commons.CustomWorlds;
@@ -72,10 +73,10 @@ public class TypeCrimsonIsleLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<HypixelEventClass> getTraditionalEvents() {
-        return SkyBlockGenericLoader.loopThroughPackage(
+        return SpawnOnJoin.intoMainInstance(SkyBlockGenericLoader.loopThroughPackage(
                 "net.swofty.type.crimsonisle.events",
                 HypixelEventClass.class
-        ).collect(Collectors.toList());
+        ));
     }
 
     @Override

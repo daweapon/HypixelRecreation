@@ -1,5 +1,6 @@
 package net.swofty.type.generic;
 
+import net.swofty.commons.reflection.PackageScanner;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -60,10 +61,8 @@ import net.swofty.type.generic.user.HypixelPlayer;
 import net.swofty.type.generic.user.categories.Rank;
 import net.swofty.type.generic.world.HypixelWorldLoader;
 import org.jetbrains.annotations.Nullable;
-import org.reflections.Reflections;
 import org.tinylog.Logger;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicReference;
@@ -389,21 +388,6 @@ public record HypixelGenericLoader(HypixelTypeLoader loader) {
     }
 
     public static <T> Stream<T> loopThroughPackage(String packageName, Class<T> clazz) {
-        Reflections reflections = new Reflections(packageName);
-        Set<Class<? extends T>> subTypes = reflections.getSubTypesOf(clazz);
-
-        return subTypes.stream()
-                .filter(subClass -> !java.lang.reflect.Modifier.isAbstract(subClass.getModifiers()))
-                .map(subClass -> {
-                    try {
-                        return clazz.cast(subClass.getDeclaredConstructor().newInstance());
-                    } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
-                             InvocationTargetException e) {
-                        Logger.error(e, "Failed to instantiate {} while scanning {}",
-                                subClass.getSimpleName(), packageName);
-                        return null;
-                    }
-                })
-                .filter(Objects::nonNull);
+        return PackageScanner.instantiateSubtypes(packageName, clazz);
     }
 }

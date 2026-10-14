@@ -1,5 +1,6 @@
 package net.swofty.type.bedwarsconfigurator;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Getter;
@@ -117,10 +118,10 @@ public class TypeBedWarsConfiguratorLoader implements HypixelTypeLoader {
 
 	@Override
 	public List<HypixelEventClass> getTraditionalEvents() {
-		return HypixelGenericLoader.loopThroughPackage(
+		return SpawnOnJoin.intoEmptyInstance(HypixelGenericLoader.loopThroughPackage(
 				"net.swofty.type.bedwarsconfigurator.events",
 				HypixelEventClass.class
-		).toList();
+		));
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package net.swofty.velocity;
 
+import net.swofty.commons.reflection.PackageScanner;
 import com.github.retrooper.packetevents.PacketEvents;
 import com.github.retrooper.packetevents.event.EventManager;
 import com.github.retrooper.packetevents.event.PacketListenerPriority;
@@ -85,15 +86,12 @@ import net.swofty.velocity.text.ProxyText;
 import net.swofty.velocity.viaversion.SkyBlockPlatform;
 import net.swofty.velocity.viaversion.SkyBlockPlatformLoader;
 import net.swofty.velocity.viaversion.injector.SkyBlockViaInjector;
-import org.reflections.Reflections;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.InetSocketAddress;
 import java.nio.file.Path;
 import java.time.Duration;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -540,19 +538,7 @@ public class SkyBlockVelocity {
     }
 
     public static <T> Stream<T> loopThroughPackage(String packageName, Class<T> clazz) {
-        Reflections reflections = new Reflections(packageName);
-        Set<Class<? extends T>> subTypes = reflections.getSubTypesOf(clazz);
-
-        return subTypes.stream()
-            .map(subClass -> {
-                try {
-                    return clazz.cast(subClass.getDeclaredConstructor().newInstance());
-                } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
-                         InvocationTargetException e) {
-                    return null;
-                }
-            })
-            .filter(Objects::nonNull);
+        return PackageScanner.instantiateSubtypes(packageName, clazz);
     }
 
     private void injectPlayer(final Player player) {

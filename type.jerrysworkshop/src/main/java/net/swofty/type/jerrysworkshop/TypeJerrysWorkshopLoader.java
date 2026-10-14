@@ -1,5 +1,6 @@
 package net.swofty.type.jerrysworkshop;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.minestom.server.MinecraftServer;
@@ -93,10 +94,10 @@ public class TypeJerrysWorkshopLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<HypixelEventClass> getTraditionalEvents() {
-        return SkyBlockGenericLoader.loopThroughPackage(
+        return SpawnOnJoin.intoMainInstance(SkyBlockGenericLoader.loopThroughPackage(
             "net.swofty.type.jerrysworkshop.events",
             HypixelEventClass.class
-        ).collect(Collectors.toList());
+        ));
     }
 
     @Override

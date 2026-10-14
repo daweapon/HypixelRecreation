@@ -1,5 +1,6 @@
 package net.swofty.type.galatea;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.commons.CustomWorlds;
@@ -71,10 +72,10 @@ public class TypeGalateaLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<HypixelEventClass> getTraditionalEvents() {
-        return SkyBlockGenericLoader.loopThroughPackage(
+        return SpawnOnJoin.intoMainInstance(SkyBlockGenericLoader.loopThroughPackage(
                 "net.swofty.type.galatea.events",
                 HypixelEventClass.class
-        ).collect(Collectors.toList());
+        ));
     }
 
     @Override

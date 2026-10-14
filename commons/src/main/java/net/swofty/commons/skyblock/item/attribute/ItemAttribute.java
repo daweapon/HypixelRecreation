@@ -1,17 +1,16 @@
 package net.swofty.commons.skyblock.item.attribute;
 
+import net.swofty.commons.reflection.PackageScanner;
 import lombok.Getter;
 import lombok.Setter;
 import net.swofty.commons.skyblock.statistics.ItemStatistics;
 import org.jetbrains.annotations.Nullable;
-import org.reflections.Reflections;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Stream;
 
 @Setter
@@ -70,18 +69,6 @@ public abstract class ItemAttribute<T> {
     }
 
     public static <T> Stream<T> loopThroughPackage(String packageName, Class<T> clazz) {
-        Reflections reflections = new Reflections(packageName);
-        Set<Class<? extends T>> subTypes = reflections.getSubTypesOf(clazz);
-
-        return subTypes.stream()
-                .map(subClass -> {
-                    try {
-                        return clazz.cast(subClass.getDeclaredConstructor().newInstance());
-                    } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
-                             InvocationTargetException e) {
-                        return null;
-                    }
-                })
-                .filter(java.util.Objects::nonNull);
+        return PackageScanner.instantiateSubtypes(packageName, clazz);
     }
 }

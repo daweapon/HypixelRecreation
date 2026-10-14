@@ -1,5 +1,6 @@
 package net.swofty.type.ravengardgeneric;
 
+import net.swofty.commons.reflection.PackageScanner;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import net.minestom.server.MinecraftServer;
@@ -19,13 +20,10 @@ import net.swofty.type.generic.world.HypixelWorldLoader;
 import net.swofty.type.ravengardgeneric.resourcepack.RavengardPack;
 import net.swofty.type.ravengardgeneric.user.RavengardPlayer;
 import org.jetbrains.annotations.Nullable;
-import org.reflections.Reflections;
 import org.tinylog.Logger;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Stream;
 
@@ -136,18 +134,6 @@ public record RavengardGenericLoader(HypixelTypeLoader typeLoader) {
     }
 
     public static <T> Stream<T> loopThroughPackage(String packageName, Class<T> clazz) {
-        Reflections reflections = new Reflections(packageName);
-        Set<Class<? extends T>> subTypes = reflections.getSubTypesOf(clazz);
-
-        return subTypes.stream()
-                .map(subClass -> {
-                    try {
-                        return clazz.cast(subClass.getDeclaredConstructor().newInstance());
-                    } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
-                             InvocationTargetException e) {
-                        return null;
-                    }
-                })
-                .filter(java.util.Objects::nonNull);
+        return PackageScanner.instantiateSubtypes(packageName, clazz);
     }
 }

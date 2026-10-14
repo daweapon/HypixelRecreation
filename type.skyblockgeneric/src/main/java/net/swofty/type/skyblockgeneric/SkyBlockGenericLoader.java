@@ -1,5 +1,6 @@
 package net.swofty.type.skyblockgeneric;
 
+import net.swofty.commons.reflection.PackageScanner;
 import net.swofty.type.skyblockgeneric.hotm.HotmRegistry;
 import net.swofty.type.skyblockgeneric.achievement.SkyBlockAchievements;
 import net.swofty.type.skyblockgeneric.accessory.AccessoryEconomyHooks;
@@ -119,21 +120,16 @@ import net.swofty.type.skyblockgeneric.user.statistics.PlayerStatistics;
 import net.swofty.type.skyblockgeneric.user.statistics.TemporaryStatistic;
 import net.swofty.type.skyblockgeneric.utility.LaunchPads;
 import org.jetbrains.annotations.Nullable;
-import org.reflections.Reflections;
 import org.tinylog.Logger;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
@@ -648,29 +644,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
     }
 
     public static <T> Stream<T> loopThroughPackage(String packageName, Class<T> clazz) {
-        Reflections reflections = new Reflections(packageName);
-        Set<Class<? extends T>> subTypes = reflections.getSubTypesOf(clazz);
-
-        return subTypes.stream()
-            // Abstract classes/interfaces picked up by getSubTypesOf() were never meant to be
-            // instantiated directly (e.g. SkyBlockMission) - skip them without complaint.
-            .filter(subClass -> !Modifier.isAbstract(subClass.getModifiers()))
-            .map(subClass -> {
-                try {
-                    return clazz.cast(subClass.getDeclaredConstructor().newInstance());
-                } catch (NoSuchMethodException | IllegalAccessException e) {
-                    // No accessible no-arg constructor: this class deliberately opts out of
-                    // reflection-based construction (e.g. SlayerMinionMob, which is only ever
-                    // built via its own factory method with real context) - not an error.
-                    return null;
-                } catch (InstantiationException | InvocationTargetException e) {
-                    // Has a no-arg constructor but it actually threw - a genuine bug worth surfacing.
-                    Logger.error(e, "Failed to instantiate {} while scanning package {} for {} - it will be silently skipped",
-                        subClass.getSimpleName(), packageName, clazz.getSimpleName());
-                    return null;
-                }
-            })
-            .filter(Objects::nonNull);
+        return PackageScanner.instantiateSubtypes(packageName, clazz);
     }
 
     private record ChunkKey(int chunkX, int chunkZ) {

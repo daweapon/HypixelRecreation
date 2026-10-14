@@ -1,5 +1,6 @@
 package net.swofty.type.backwaterbayou;
 
+import net.swofty.type.generic.event.join.SpawnOnJoin;
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.commons.CustomWorlds;
@@ -63,10 +64,10 @@ public class TypeBackwaterBayouLoader implements SkyBlockTypeLoader {
 
     @Override
     public List<HypixelEventClass> getTraditionalEvents() {
-        return SkyBlockGenericLoader.loopThroughPackage(
+        return SpawnOnJoin.intoMainInstance(SkyBlockGenericLoader.loopThroughPackage(
                 "net.swofty.type.backwaterbayou.events",
                 HypixelEventClass.class
-        ).collect(Collectors.toList());
+        ));
     }
 
     @Override
