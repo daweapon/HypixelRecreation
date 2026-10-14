@@ -1355,13 +1355,13 @@ regions:
     y1: 66
     z1: 265
     x2: 478
-    y2: 94
+    y2: 153
     z2: 369
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS
   - id: crystal_hollows_mines_of_divan
     type: MINES_OF_DIVAN
     x1: 721
-    y1: 65
+    y1: 64
     z1: 227
     x2: 821
     y2: 182
@@ -1369,21 +1369,21 @@ regions:
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS
   - id: crystal_hollows_lost_precursor_city
     type: LOST_PRECURSOR_CITY
-    x1: 596
+    x1: 598
     y1: 66
-    z1: 696
-    x2: 702
-    y2: 180
-    z2: 798
+    z1: 697
+    x2: 696
+    y2: 178
+    z2: 795
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS
   - id: crystal_hollows_khazad_dum
     type: KHAZAD_DUM
-    x1: 335
+    x1: 336
     y1: 31
-    z1: 690
-    x2: 440
-    y2: 57
-    z2: 795
+    z1: 692
+    x2: 434
+    y2: 72
+    z2: 790
     serverType: SKYBLOCK_CRYSTAL_HOLLOWS
   - id: crystal_hollows_goblin_queens_den
     type: GOBLIN_QUEENS_DEN
