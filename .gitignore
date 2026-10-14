@@ -77,3 +77,10 @@ store/.next
 store/node_modules
 store/next-env.d.ts
 /type.skyblockgeneric/configuration
+
+### Test client ###
+/tools/test-client/node_modules/
+/tools/test-client/last-result.json
+
+### Generated sources (rebuilt by commons:generateItemTypes) ###
+/commons/src/generated/
