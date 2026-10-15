@@ -143,7 +143,7 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
             }
             case FAILED, FINISHED -> {
                 screen.phase = Phase.OVER;
-                screen.reason = result == UltrasequencerGame.Result.FAILED ? (emptyCell ? "Clicked empty cell" : "Clicked the wrong number") : "";
+                screen.reason = result == UltrasequencerGame.Result.FAILED ? (emptyCell ? "Clicked empty cell" : "Clicked the wrong number") : "Maximum series";
                 ExperimentGuis.sound(player, "block.note_block.bass", 0.6f);
             }
         }

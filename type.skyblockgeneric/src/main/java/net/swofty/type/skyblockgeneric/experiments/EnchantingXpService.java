@@ -19,8 +19,11 @@ public final class EnchantingXpService {
         return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.EXPERIMENTS, DatapointExperiments.class).getValue();
     }
 
-    public static void award(SkyBlockPlayer player, double xp) {
-        if (xp > 0) player.getSkills().increase(player, SkillCategories.ENCHANTING, xp);
+    public static double award(SkyBlockPlayer player, double xp) {
+        if (xp <= 0) return 0;
+        double before = player.getSkills().getRaw(SkillCategories.ENCHANTING);
+        player.getSkills().increase(player, SkillCategories.ENCHANTING, xp);
+        return player.getSkills().getRaw(SkillCategories.ENCHANTING) - before;
     }
 
     public static double awardForLevelsSpent(SkyBlockPlayer player, int levelsSpent) {

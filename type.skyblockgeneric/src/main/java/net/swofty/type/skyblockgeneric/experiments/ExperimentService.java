@@ -64,8 +64,8 @@ public final class ExperimentService {
 
     public static void claimSuperpairs(SkyBlockPlayer player, SuperpairsGame game, SuperpairsResult result) {
         for (PairPrize prize : result.prizes()) grant(player, prize);
-        EnchantingXpService.award(player, result.totalXp());
-        ExperimentRngMeter.addFromEnchantingXp(player, result.totalXp());
+        double gained = EnchantingXpService.award(player, result.totalXp());
+        ExperimentRngMeter.addFromEnchantingXp(player, Math.round(gained));
         ExperimentRngMeter.consumeIfWon(player, game.foundPrizes());
     }
 
@@ -125,8 +125,8 @@ public final class ExperimentService {
     public static int claimChronomatron(SkyBlockPlayer player, ChronomatronGame game) {
         DatapointExperiments.ExperimentsData data = ExperimentTable.data(player);
         int clicks = game.stake().clickBonus().clicksFor(game.longestChain(), ExperimentTable.serums(data));
-        EnchantingXpService.award(player, game.stake().xpFor(game.longestChain()));
-        ExperimentRngMeter.addFromEnchantingXp(player, game.stake().xpFor(game.longestChain()));
+        double gained = EnchantingXpService.award(player, game.stake().xpFor(game.longestChain()));
+        ExperimentRngMeter.addFromEnchantingXp(player, Math.round(gained));
         ExperimentTable.completeChronomatron(data, clicks);
         ExperimentTable.save(player);
         return clicks;
@@ -135,8 +135,8 @@ public final class ExperimentService {
     public static int claimUltrasequencer(SkyBlockPlayer player, UltrasequencerGame game) {
         DatapointExperiments.ExperimentsData data = ExperimentTable.data(player);
         int clicks = game.stake().clickBonus().clicksFor(game.longestSequence(), ExperimentTable.serums(data));
-        EnchantingXpService.award(player, game.stake().xpFor(game.longestSequence()));
-        ExperimentRngMeter.addFromEnchantingXp(player, game.stake().xpFor(game.longestSequence()));
+        double gained = EnchantingXpService.award(player, game.stake().xpFor(game.longestSequence()));
+        ExperimentRngMeter.addFromEnchantingXp(player, Math.round(gained));
         ExperimentTable.completeUltrasequencer(data, clicks);
         ExperimentTable.save(player);
         return clicks;

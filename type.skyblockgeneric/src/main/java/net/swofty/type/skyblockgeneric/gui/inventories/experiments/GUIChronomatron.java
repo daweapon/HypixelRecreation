@@ -193,7 +193,7 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
             }
             case FAILED, FINISHED -> {
                 screen.phase = Phase.OVER;
-                screen.reason = result == ChronomatronGame.Result.FAILED ? "Clicked the wrong color!" : "";
+                screen.reason = result == ChronomatronGame.Result.FAILED ? "Clicked the wrong color!" : "Maximum chain";
                 refresh(ctx);
             }
             default -> {

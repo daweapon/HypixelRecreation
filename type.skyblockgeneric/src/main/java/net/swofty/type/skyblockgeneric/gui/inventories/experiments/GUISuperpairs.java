@@ -83,7 +83,7 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
         SuperpairsGame game = screen.game;
         if (screen.phase == Phase.REWARDS) return game.stake().slotOf(tile) == 22 ? summary(screen.result) : blank();
         if (screen.phase == Phase.REVIEW) {
-            ItemStack.Builder builder = icon(game.prizeAt(tile));
+            ItemStack.Builder builder = proceedHint(icon(game.prizeAt(tile)));
             return game.isMatched(tile) ? ExperimentGuis.glowing(builder) : builder;
         }
         if (game.isRevealed(tile)) {
@@ -92,6 +92,13 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
         }
         return ExperimentGuis.item(Material.LIGHT_BLUE_STAINED_GLASS, game.instantFindActive() ? "<b>Instant Find!"
                 : game.hasFirstPick() ? "<e>Click a second button!" : "<e>Click any button!");
+    }
+
+    private ItemStack.Builder proceedHint(ItemStack.Builder builder) {
+        java.util.List<net.swofty.commons.text.Text> lore = new java.util.ArrayList<>(ItemStacks.loreText(builder));
+        lore.add(net.swofty.commons.text.Text.of(" "));
+        lore.add(net.swofty.commons.text.Text.of("<e>Click any to proceed!"));
+        return ItemStacks.lore(builder, lore);
     }
 
     private ItemStack.Builder icon(PairPrize prize) {
