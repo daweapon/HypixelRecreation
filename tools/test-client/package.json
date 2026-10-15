@@ -1,0 +1,7 @@
+{
+  "name": "skyblock-test-client",
+  "private": true,
+  "type": "commonjs",
+  "scripts": { "scenario": "node run.js" },
+  "dependencies": { "mineflayer": "4.39.0" }
+}
