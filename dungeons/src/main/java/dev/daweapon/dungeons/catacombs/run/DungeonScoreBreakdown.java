@@ -4,10 +4,15 @@ public record DungeonScoreBreakdown(
         int skill,
         int exploration,
         int speed,
-        int bonus
+        int bonus,
+        int leavePenalty
 ) {
+    public DungeonScoreBreakdown(int skill, int exploration, int speed, int bonus) {
+        this(skill, exploration, speed, bonus, 0);
+    }
+
     public int total() {
-        return skill + exploration + speed + bonus;
+        return Math.min(DungeonScoreCalculator.MAXIMUM_SCORE, skill + exploration + speed + bonus) - leavePenalty;
     }
 
     public DungeonScoreRank rank() {

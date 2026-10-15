@@ -5,6 +5,7 @@ import dev.daweapon.commons.UnderstandableProxyServer;
 import dev.daweapon.commons.protocol.objects.game.InstantiateGamePushProtocol;
 import dev.daweapon.commons.protocol.objects.orchestrator.GetServerForMapProtocol;
 import dev.daweapon.commons.redis.RedisClient;
+import dev.daweapon.service.orchestrator.InstancedServerSelector;
 import dev.daweapon.service.orchestrator.KuudraServerSelector;
 import dev.daweapon.service.orchestrator.OrchestratorCache;
 import org.tinylog.Logger;
@@ -17,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 public final class InstancedActivities {
     private static final long START_TIMEOUT_SECONDS = 15;
     private static final Duration KUUDRA_MAX_WAIT = Duration.ofSeconds(45);
+    private static final Duration CATACOMBS_MAX_WAIT = Duration.ofSeconds(45);
     private static final Duration RAVENGARD_MAX_WAIT = Duration.ofSeconds(10);
     private static final ActivityQueue QUEUE = new ActivityQueue();
     private static final InstanceAllocator ALLOCATOR = new InstanceAllocator(
@@ -45,6 +47,23 @@ public final class InstancedActivities {
         });
         Logger.info("[matchmaking] SKYBLOCK_KUUDRA tier={} party={} -> {}", tier, neededSlots, describe(allocation));
         return toResponse(allocation, Messages.KUUDRA);
+    }
+
+    public static GetServerForMapProtocol.GetServerForMapResponse catacombs(GetServerForMapProtocol.GetServerForMapMessage body) {
+        String floor = body.mode();
+        if (floor == null || floor.isBlank()) {
+            return new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, "No Catacombs floor given");
+        }
+        int neededSlots = Math.max(1, body.neededSlots());
+        InstantiateGamePushProtocol.Request request = new InstantiateGamePushProtocol.Request(floor, body.map());
+
+        Allocation allocation = QUEUE.await(ServerType.SKYBLOCK_CATACOMBS, CATACOMBS_MAX_WAIT, () -> {
+            List<OrchestratorCache.GameServerState> candidates = InstancedServerSelector.rank(ServerType.SKYBLOCK_CATACOMBS,
+                    OrchestratorCache.getAllServers(), neededSlots, OrchestratorCache::getReservedPlayerSlots);
+            return ALLOCATOR.allocate(candidates, anyOnline(ServerType.SKYBLOCK_CATACOMBS), request, neededSlots);
+        });
+        Logger.info("[matchmaking] SKYBLOCK_CATACOMBS floor={} party={} -> {}", floor, neededSlots, describe(allocation));
+        return toResponse(allocation, Messages.CATACOMBS);
     }
 
     public static GetServerForMapProtocol.GetServerForMapResponse ravengardNew(String mode, String map) {
@@ -91,6 +110,8 @@ public final class InstancedActivities {
     record Messages(String noServer, String full, String couldNotStart) {
         static final Messages KUUDRA = new Messages("No Kuudra server is online", "No Kuudra server has room",
                 "No Kuudra server could start the run");
+        static final Messages CATACOMBS = new Messages("No Catacombs server is online", "No Catacombs server has room",
+                "No Catacombs server could start the run");
         static final Messages RAVENGARD = new Messages("No dungeon servers online", "No dungeon server has room",
                 "No dungeon server could start the instance");
 

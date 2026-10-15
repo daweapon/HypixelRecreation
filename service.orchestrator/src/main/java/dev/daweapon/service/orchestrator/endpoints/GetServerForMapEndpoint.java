@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import dev.daweapon.commons.redis.RedisMessageContext;
 
-// Redis endpoint that resolves a matchmaking request into a specific server/game to join, per-game-type (Bedwars, Murder Mystery, Skywars, Ravengard Dungeon, Kuudra), instantiating a new game if none is joinable.
+// Redis endpoint that resolves a matchmaking request into a specific server/game to join, per-game-type (Bedwars, Murder Mystery, Skywars, Ravengard Dungeon, Kuudra, Catacombs), instantiating a new game if none is joinable.
 public class GetServerForMapEndpoint implements RedisMessageHandler
 		<GetServerForMapProtocol.GetServerForMapMessage,
 				GetServerForMapProtocol.GetServerForMapResponse> {
@@ -37,6 +37,7 @@ public class GetServerForMapEndpoint implements RedisMessageHandler
 			case SKYWARS_GAME -> handleSkywars(body);
 			case RAVENGARD_DUNGEON -> handleRavengardDungeon(body);
 			case SKYBLOCK_KUUDRA -> handleKuudra(body);
+			case SKYBLOCK_CATACOMBS -> InstancedActivities.catacombs(body);
 			default -> new GetServerForMapProtocol.GetServerForMapResponse(null, null, true, null);
 		};
 	}

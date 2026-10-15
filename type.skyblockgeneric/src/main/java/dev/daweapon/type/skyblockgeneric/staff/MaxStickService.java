@@ -183,6 +183,7 @@ public final class MaxStickService {
             new Step("Crimson side quests", CrimsonSideQuests::maxOut),
             new Step("Kuudra follower", KuudraFollowerProgress::maxOut),
             new Step("Kuudra clears", KuudraProgress::maxOut),
+            new Step("Catacombs level", dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress::maxOut),
             new Step("Crimson town", CrimsonTownProgress::maxOut),
             new Step("Pets", MaxPets::maxOut),
             new Step("Abiphone contacts", dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneContactXP::maxOut),

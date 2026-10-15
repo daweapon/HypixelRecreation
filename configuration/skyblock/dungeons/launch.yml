@@ -1,0 +1,3 @@
+# The Catacombs launch switch. false: only staff can queue the playable floors (Entrance and Floor I) and the
+# Catacombs Party Finder. true: everyone can. Servers pick up a change within a few seconds; no rebuild or restart needed.
+public: false

@@ -1,21 +1,17 @@
 package dev.daweapon.dungeons.catacombs.run;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 public enum DungeonScoreRank {
-    S_PLUS("S+", 300),
-    S("S", 270),
-    A("A", 230),
-    B("B", 160),
+    D("D", 0),
     C("C", 100),
-    D("D", 40),
-    NONE("", 0);
+    B("B", 160),
+    A("A", 230),
+    S("S", 269.5),
+    S_PLUS("S+", 300);
 
     private final String displayName;
-    private final int minimumScore;
+    private final double minimumScore;
 
-    DungeonScoreRank(String displayName, int minimumScore) {
+    DungeonScoreRank(String displayName, double minimumScore) {
         this.displayName = displayName;
         this.minimumScore = minimumScore;
     }
@@ -24,15 +20,21 @@ public enum DungeonScoreRank {
         return displayName;
     }
 
-    public int minimumScore() {
+    public double minimumScore() {
         return minimumScore;
     }
 
-    public static DungeonScoreRank fromScore(int score) {
-        return Arrays.stream(values())
-                .sorted(Comparator.comparingInt(DungeonScoreRank::minimumScore).reversed())
-                .filter(rank -> score >= rank.minimumScore)
-                .findFirst()
-                .orElse(NONE);
+    public boolean atLeast(DungeonScoreRank other) {
+        return compareTo(other) >= 0;
+    }
+
+    public static DungeonScoreRank fromScore(double score) {
+        DungeonScoreRank result = D;
+        for (DungeonScoreRank rank : values()) {
+            if (score >= rank.minimumScore) {
+                result = rank;
+            }
+        }
+        return result;
     }
 }

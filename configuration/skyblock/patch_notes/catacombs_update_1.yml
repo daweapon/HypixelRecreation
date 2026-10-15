@@ -1,0 +1,22 @@
+title: "The Catacombs Update, Part 1"
+date: "15th October 2026"
+intro:
+  - "The Catacombs engine is in, but it is a staff preview. Players cannot queue yet: real rooms, bosses and puzzles need more work first."
+sections:
+  - heading: "New"
+    colour: "<a>"
+    lines:
+      - "A Catacombs server runs Entrance and Floor I dungeons for a party, up to four at once, with a queue when every server is busy."
+      - "Mort at the Hub and now also at the Dungeon Hub opens the Catacombs Gate. Entrance and Floor I can be queued, and Find a Party opens a Party Finder for the Catacombs."
+      - "Dungeon layouts are generated from room data: a start room, a path of Wither Doors to the Blood Room with the Fairy Room along it, puzzle rooms and side rooms."
+      - "Wither Keys and the Blood Key open the doors. Entering the Blood Room without the Blood Key fails the run."
+      - "Runs end with a Team Score summary: Skill, Exploration, Speed and Bonus, from 0 to 300, with ranks D to S+."
+      - "Completing a run gives Catacombs XP, and the Catacombs level is stored on your profile."
+  - heading: "Fixes"
+    colour: "<e>"
+    lines:
+      - "Floor sizes, the score formulas, speed times, rank thresholds and Bonzo's health now follow the wiki."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Rooms are flat placeholders. Real room builds, secrets, puzzles, the Bonzo fight, classes, the map and reward chests are not built, and Floors II to VII and Master Mode are locked."

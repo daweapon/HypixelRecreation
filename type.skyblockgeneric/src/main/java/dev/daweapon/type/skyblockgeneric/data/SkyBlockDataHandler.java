@@ -738,6 +738,15 @@ public class SkyBlockDataHandler extends DataHandler {
 
         GARDEN("garden", false, false, false,
                 DatapointGarden.class, new DatapointGarden("garden")),
+
+        CATACOMBS_XP("catacombs_xp", false, false, false,
+                DatapointLong.class, new DatapointLong("catacombs_xp", 0L)),
+
+        CATACOMBS_COMPLETIONS("catacombs_completions", false, false, false,
+                DatapointString.class, new DatapointString("catacombs_completions", "")),
+
+        CATACOMBS_DAILY("catacombs_daily", false, false, false,
+                DatapointString.class, new DatapointString("catacombs_daily", "")),
         ;
 
         @Getter

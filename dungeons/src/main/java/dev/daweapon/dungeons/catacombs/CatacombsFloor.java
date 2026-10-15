@@ -4,14 +4,14 @@ import java.util.Arrays;
 
 // Catacombs floors (Entrance through Floor VII) with their boss, size, and Normal/Master score requirements.
 public enum CatacombsFloor {
-    ENTRANCE("Entrance", "The Watcher", CatacombsDungeonSize.TINY, 0, -1),
-    FLOOR_ONE("Floor I", "Bonzo", CatacombsDungeonSize.TINY, 1, 24),
-    FLOOR_TWO("Floor II", "Scarf", CatacombsDungeonSize.SMALL, 3, 26),
-    FLOOR_THREE("Floor III", "The Professor", CatacombsDungeonSize.SMALL, 5, 28),
-    FLOOR_FOUR("Floor IV", "Thorn", CatacombsDungeonSize.SMALL, 9, 30),
-    FLOOR_FIVE("Floor V", "Livid", CatacombsDungeonSize.MEDIUM_TALL, 14, 32),
-    FLOOR_SIX("Floor VI", "Sadan", CatacombsDungeonSize.MEDIUM, 19, 34),
-    FLOOR_SEVEN("Floor VII", "The Wither Lords", CatacombsDungeonSize.LARGE, 24, 36);
+    ENTRANCE("Entrance", "The Watcher", CatacombsDungeonSize.FOUR_BY_FOUR, 0, -1),
+    FLOOR_ONE("Floor I", "Bonzo", CatacombsDungeonSize.FOUR_BY_FIVE, 1, 24),
+    FLOOR_TWO("Floor II", "Scarf", CatacombsDungeonSize.FIVE_BY_FIVE, 3, 26),
+    FLOOR_THREE("Floor III", "The Professor", CatacombsDungeonSize.FIVE_BY_FIVE, 5, 28),
+    FLOOR_FOUR("Floor IV", "Thorn", CatacombsDungeonSize.SIX_BY_FIVE, 9, 30),
+    FLOOR_FIVE("Floor V", "Livid", CatacombsDungeonSize.SIX_BY_FIVE, 14, 32),
+    FLOOR_SIX("Floor VI", "Sadan", CatacombsDungeonSize.SIX_BY_SIX, 19, 34),
+    FLOOR_SEVEN("Floor VII", "The Wither Lords", CatacombsDungeonSize.SIX_BY_SIX, 24, 36);
 
     private final String displayName;
     private final String bossName;

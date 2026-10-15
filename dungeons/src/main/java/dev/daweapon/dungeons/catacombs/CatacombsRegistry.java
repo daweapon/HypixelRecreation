@@ -1,5 +1,6 @@
 package dev.daweapon.dungeons.catacombs;
 
+import dev.daweapon.dungeons.catacombs.boss.CatacombsBossEncounter;
 import dev.daweapon.dungeons.catacombs.boss.CatacombsBosses;
 import dev.daweapon.dungeons.catacombs.puzzle.CatacombsPuzzle;
 import dev.daweapon.dungeons.catacombs.run.DungeonRunRules;
@@ -12,6 +13,8 @@ import java.util.stream.Collectors;
 
 // Registry of CatacombsFloorDefinitions per mode/floor, with the built-in default Normal and Master configurations.
 public record CatacombsRegistry(Map<CatacombsMode, Map<CatacombsFloor, CatacombsFloorDefinition>> floors) {
+    private static final int MINIMUM_PUZZLE_ROOMS = 2;
+
     public CatacombsRegistry {
         floors = Map.copyOf(floors);
     }
@@ -26,64 +29,44 @@ public record CatacombsRegistry(Map<CatacombsMode, Map<CatacombsFloor, Catacombs
 
     public static CatacombsRegistry defaults() {
         Map<CatacombsMode, Map<CatacombsFloor, CatacombsFloorDefinition>> floors = new EnumMap<>(CatacombsMode.class);
-        floors.put(CatacombsMode.NORMAL, normalFloors());
-        floors.put(CatacombsMode.MASTER, masterFloors());
+        floors.put(CatacombsMode.NORMAL, floorsFor(CatacombsMode.NORMAL));
+        floors.put(CatacombsMode.MASTER, floorsFor(CatacombsMode.MASTER));
         return new CatacombsRegistry(floors);
     }
 
-    private static Map<CatacombsFloor, CatacombsFloorDefinition> normalFloors() {
+    private static Map<CatacombsFloor, CatacombsFloorDefinition> floorsFor(CatacombsMode mode) {
         Map<CatacombsFloor, CatacombsFloorDefinition> floors = new EnumMap<>(CatacombsFloor.class);
-        floors.put(CatacombsFloor.ENTRANCE, definition(CatacombsFloor.ENTRANCE, CatacombsMode.NORMAL,
-                CatacombsBosses.watcher(), 1, 0, 0, 600, true));
-        floors.put(CatacombsFloor.FLOOR_ONE, definition(CatacombsFloor.FLOOR_ONE, CatacombsMode.NORMAL,
-                CatacombsBosses.bonzo(), 2, 1, 0, 600, true));
-        floors.put(CatacombsFloor.FLOOR_TWO, definition(CatacombsFloor.FLOOR_TWO, CatacombsMode.NORMAL,
-                CatacombsBosses.scarf(), 2, 1, 0, 600, true));
-        floors.put(CatacombsFloor.FLOOR_THREE, definition(CatacombsFloor.FLOOR_THREE, CatacombsMode.NORMAL,
-                CatacombsBosses.professor(), 2, 1, 1, 600, false));
-        floors.put(CatacombsFloor.FLOOR_FOUR, definition(CatacombsFloor.FLOOR_FOUR, CatacombsMode.NORMAL,
-                CatacombsBosses.thorn(), 2, 1, 1, 720, false));
-        floors.put(CatacombsFloor.FLOOR_FIVE, definition(CatacombsFloor.FLOOR_FIVE, CatacombsMode.NORMAL,
-                CatacombsBosses.livid(), 3, 2, 1, 720, false));
-        floors.put(CatacombsFloor.FLOOR_SIX, definition(CatacombsFloor.FLOOR_SIX, CatacombsMode.NORMAL,
-                CatacombsBosses.sadan(), 3, 2, 1, 840, false));
-        floors.put(CatacombsFloor.FLOOR_SEVEN, definition(CatacombsFloor.FLOOR_SEVEN, CatacombsMode.NORMAL,
-                CatacombsBosses.witherLords(false), 3, 2, 1, 840, false));
+        for (CatacombsFloor floor : CatacombsFloor.values()) {
+            if (floor.supports(mode)) {
+                floors.put(floor, definition(floor, mode));
+            }
+        }
         return floors;
     }
 
-    private static Map<CatacombsFloor, CatacombsFloorDefinition> masterFloors() {
-        Map<CatacombsFloor, CatacombsFloorDefinition> floors = new EnumMap<>(CatacombsFloor.class);
-        floors.put(CatacombsFloor.FLOOR_ONE, master(CatacombsFloor.FLOOR_ONE, CatacombsBosses.bonzo(), 2, 1, 0, 540));
-        floors.put(CatacombsFloor.FLOOR_TWO, master(CatacombsFloor.FLOOR_TWO, CatacombsBosses.scarf(), 2, 1, 0, 540));
-        floors.put(CatacombsFloor.FLOOR_THREE, master(CatacombsFloor.FLOOR_THREE, CatacombsBosses.professor(), 2, 1, 1, 540));
-        floors.put(CatacombsFloor.FLOOR_FOUR, master(CatacombsFloor.FLOOR_FOUR, CatacombsBosses.thorn(), 2, 1, 1, 660));
-        floors.put(CatacombsFloor.FLOOR_FIVE, master(CatacombsFloor.FLOOR_FIVE, CatacombsBosses.livid(), 3, 2, 1, 660));
-        floors.put(CatacombsFloor.FLOOR_SIX, master(CatacombsFloor.FLOOR_SIX, CatacombsBosses.sadan(), 3, 2, 1, 780));
-        floors.put(CatacombsFloor.FLOOR_SEVEN, master(CatacombsFloor.FLOOR_SEVEN, CatacombsBosses.witherLords(true), 3, 2, 1, 780));
-        return floors;
+    private static CatacombsBossEncounter bossFor(CatacombsFloor floor, CatacombsMode mode) {
+        return switch (floor) {
+            case ENTRANCE -> CatacombsBosses.watcher();
+            case FLOOR_ONE -> CatacombsBosses.bonzo();
+            case FLOOR_TWO -> CatacombsBosses.scarf();
+            case FLOOR_THREE -> CatacombsBosses.professor();
+            case FLOOR_FOUR -> CatacombsBosses.thorn();
+            case FLOOR_FIVE -> CatacombsBosses.livid();
+            case FLOOR_SIX -> CatacombsBosses.sadan();
+            case FLOOR_SEVEN -> CatacombsBosses.witherLords(mode == CatacombsMode.MASTER);
+        };
     }
 
-    private static CatacombsFloorDefinition master(CatacombsFloor floor,
-                                                   dev.daweapon.dungeons.catacombs.boss.CatacombsBossEncounter boss,
-                                                   int puzzleRooms, int minibossRooms, int trapRooms,
-                                                   int speedScoreSeconds) {
-        return definition(floor, CatacombsMode.MASTER, boss, puzzleRooms, minibossRooms, trapRooms,
-                speedScoreSeconds, false);
-    }
-
-    private static CatacombsFloorDefinition definition(CatacombsFloor floor, CatacombsMode mode,
-                                                       dev.daweapon.dungeons.catacombs.boss.CatacombsBossEncounter boss,
-                                                       int puzzleRooms, int minibossRooms, int trapRooms,
-                                                       int speedScoreSeconds, boolean automaticGhostRevive) {
+    private static CatacombsFloorDefinition definition(CatacombsFloor floor, CatacombsMode mode) {
+        DungeonRunRules rules = DungeonRunRules.of(floor, mode);
         return new CatacombsFloorDefinition(
                 floor,
                 mode,
-                boss,
-                new DungeonRunRules(speedScoreSeconds, 4200, 2, 5, 17, automaticGhostRevive, trapRooms > 0),
-                puzzleRooms,
-                minibossRooms,
-                trapRooms,
+                bossFor(floor, mode),
+                rules,
+                MINIMUM_PUZZLE_ROOMS,
+                floor == CatacombsFloor.ENTRANCE ? 0 : 1,
+                rules.trapRoomsEnabled() ? 1 : 0,
                 puzzlesFor(floor));
     }
 

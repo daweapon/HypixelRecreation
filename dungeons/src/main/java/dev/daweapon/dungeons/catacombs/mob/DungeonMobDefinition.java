@@ -33,4 +33,9 @@ public record DungeonMobDefinition(
                 (int) Math.round(defense * defenseMultiplier),
                 abilities);
     }
+
+    public DungeonMobDefinition scaleForRoomsExplored(int roomsExploredBefore) {
+        double multiplier = FloorMobScaling.roomsExploredMultiplier(roomsExploredBefore);
+        return scale(multiplier, multiplier, 1);
+    }
 }

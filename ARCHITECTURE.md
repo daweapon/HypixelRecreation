@@ -18,7 +18,7 @@ player -> Velocity proxy -> HypixelCore game server (one per ServerType/area)
 | Vendored libraries | `lib.redisapi`, `lib.datahandler` | AtlasRedisAPI (MIT) and SharedDataHandler (Apache-2.0), compiled from source. See `NOTICE.md` |
 | Game base | `type.generic`, `type.game`, `type.lobby` | `HypixelGenericLoader`, events, GUI v2, commands, player base class |
 | SkyBlock base | `type.skyblockgeneric` | Items, skills, collections, mobs, pets, loot tables, SkyBlockPlayer and SkyBlockDataHandler |
-| SkyBlock areas | `type.hub`, `type.island`, `type.thegarden`, `type.crimsonisle`, `type.crystalhollows`, `type.kuudra`, `type.dwarvenmines` and the other `type.*` area modules | One `Type*Loader` each: NPCs, regions, area events |
+| SkyBlock areas | `type.hub`, `type.island`, `type.thegarden`, `type.crimsonisle`, `type.crystalhollows`, `type.kuudra`, `type.catacombs`, `type.dwarvenmines` and the other `type.*` area modules | One `Type*Loader` each: NPCs, regions, area events |
 | Minigames | `type.bedwars*`, `type.skywars*`, `type.murdermystery*`, `type.ravengard*`, `type.replayviewer` | Games, their lobbies and configurators |
 | Services | `service.generic` plus one `service.*` per domain | Redis-driven services; `service.generic` holds `ServiceInitializer` and the base `SkyBlockService` |
 | Proxy | `velocity.extension`, `proxy.api` | Routing, heartbeat, server selection; `proxy.api` is the game-server side client |

@@ -22,6 +22,7 @@ public enum ServerType {
 	SKYBLOCK_JERRYS_WORKSHOP(true),
 	SKYBLOCK_KUUDRA(true),
 	SKYBLOCK_THE_GARDEN(true),
+	SKYBLOCK_CATACOMBS(true),
 	PROTOTYPE_LOBBY(false),
 	BEDWARS_LOBBY(false),
 	BEDWARS_GAME(false),

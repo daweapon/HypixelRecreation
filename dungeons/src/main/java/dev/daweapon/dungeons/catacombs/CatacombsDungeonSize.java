@@ -1,11 +1,11 @@
 package dev.daweapon.dungeons.catacombs;
 
 public enum CatacombsDungeonSize {
-    TINY(4, 4),
-    SMALL(5, 5),
-    MEDIUM_TALL(5, 6),
-    MEDIUM(6, 6),
-    LARGE(6, 6);
+    FOUR_BY_FOUR(4, 4),
+    FOUR_BY_FIVE(4, 5),
+    FIVE_BY_FIVE(5, 5),
+    SIX_BY_FIVE(6, 5),
+    SIX_BY_SIX(6, 6);
 
     private final int width;
     private final int height;

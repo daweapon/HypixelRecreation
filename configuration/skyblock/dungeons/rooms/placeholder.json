@@ -1,0 +1,1097 @@
+{
+  "templates": [
+    {
+      "id": "placeholder_1x1_a",
+      "name": "Placeholder 1x1 A",
+      "shape": "ONE_BY_ONE",
+      "kind": "NORMAL",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 19.5, "y": 1, "z": 4.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 4.5, "y": 1, "z": 23.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_3", "x": 20.5, "y": 1, "z": 17.5, "mobId": "SCARED_SKELETON", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 22, "y": 1, "z": 24}
+      ]
+    },
+    {
+      "id": "placeholder_1x1_b",
+      "name": "Placeholder 1x1 B",
+      "shape": "ONE_BY_ONE",
+      "kind": "NORMAL",
+      "secretCount": 3,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 25.5, "y": 1, "z": 5.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 21.5, "y": 1, "z": 9.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_3", "x": 25.5, "y": 1, "z": 12.5, "mobId": "ZOMBIE_GRUNT", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 15, "y": 1, "z": 25},
+        {"type": "ITEM", "x": 11, "y": 1, "z": 12},
+        {"type": "BAT", "x": 23, "y": 1, "z": 16}
+      ]
+    },
+    {
+      "id": "placeholder_1x1_c",
+      "name": "Placeholder 1x1 C",
+      "shape": "ONE_BY_ONE",
+      "kind": "NORMAL",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 26.5, "y": 1, "z": 4.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_2", "x": 18.5, "y": 1, "z": 17.5, "mobId": "SKELETON_GRUNT", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 4, "y": 1, "z": 24}
+      ]
+    },
+    {
+      "id": "placeholder_1x1_d",
+      "name": "Placeholder 1x1 D",
+      "shape": "ONE_BY_ONE",
+      "kind": "NORMAL",
+      "secretCount": 3,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 7.5, "y": 1, "z": 6.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 21.5, "y": 1, "z": 5.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_3", "x": 21.5, "y": 1, "z": 10.5, "mobId": "SCARED_SKELETON", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 4, "y": 1, "z": 18},
+        {"type": "ITEM", "x": 21, "y": 1, "z": 9},
+        {"type": "BAT", "x": 22, "y": 1, "z": 12}
+      ]
+    },
+    {
+      "id": "placeholder_1x2_a",
+      "name": "Placeholder 1x2 A",
+      "shape": "ONE_BY_TWO",
+      "kind": "NORMAL",
+      "secretCount": 4,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 1, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 12.5, "y": 1, "z": 26.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 10.5, "y": 1, "z": 13.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_3", "x": 6.5, "y": 1, "z": 16.5, "mobId": "TANK_ZOMBIE", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 26, "y": 1, "z": 11},
+        {"type": "ITEM", "x": 30, "y": 1, "z": 23},
+        {"type": "BAT", "x": 48, "y": 1, "z": 18},
+        {"type": "ESSENCE", "x": 33, "y": 1, "z": 4}
+      ]
+    },
+    {
+      "id": "placeholder_1x2_b",
+      "name": "Placeholder 1x2 B",
+      "shape": "ONE_BY_TWO",
+      "kind": "NORMAL",
+      "secretCount": 3,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 1, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 50.5, "y": 1, "z": 22.5, "mobId": "SKELETON_SOLDIER", "starred": true},
+        {"id": "spawn_2", "x": 12.5, "y": 1, "z": 11.5, "mobId": "SCARED_SKELETON", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 44, "y": 1, "z": 26},
+        {"type": "ITEM", "x": 32, "y": 1, "z": 20},
+        {"type": "BAT", "x": 57, "y": 1, "z": 16}
+      ]
+    },
+    {
+      "id": "placeholder_1x2_c",
+      "name": "Placeholder 1x2 C",
+      "shape": "ONE_BY_TWO",
+      "kind": "NORMAL",
+      "secretCount": 3,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 1, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 30.5, "y": 1, "z": 25.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 49.5, "y": 1, "z": 17.5, "mobId": "TANK_ZOMBIE", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 11, "y": 1, "z": 16},
+        {"type": "ITEM", "x": 55, "y": 1, "z": 19},
+        {"type": "BAT", "x": 39, "y": 1, "z": 7}
+      ]
+    },
+    {
+      "id": "placeholder_1x2_d",
+      "name": "Placeholder 1x2 D",
+      "shape": "ONE_BY_TWO",
+      "kind": "NORMAL",
+      "secretCount": 2,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 1, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 26.5, "y": 1, "z": 15.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 6.5, "y": 1, "z": 6.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_3", "x": 9.5, "y": 1, "z": 4.5, "mobId": "SKELETON_GRUNT", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 40, "y": 1, "z": 20},
+        {"type": "ITEM", "x": 15, "y": 1, "z": 13}
+      ]
+    },
+    {
+      "id": "placeholder_1x3_a",
+      "name": "Placeholder 1x3 A",
+      "shape": "ONE_BY_THREE",
+      "kind": "NORMAL",
+      "secretCount": 4,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 2, "row": 0, "side": "NORTH"},
+        {"col": 2, "row": 0, "side": "EAST"},
+        {"col": 2, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 14.5, "y": 1, "z": 8.5, "mobId": "SKELETON_SOLDIER", "starred": true},
+        {"id": "spawn_2", "x": 89.5, "y": 1, "z": 22.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_3", "x": 76.5, "y": 1, "z": 12.5, "mobId": "SKELETON_SOLDIER", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 54, "y": 1, "z": 23},
+        {"type": "ITEM", "x": 45, "y": 1, "z": 22},
+        {"type": "BAT", "x": 64, "y": 1, "z": 5},
+        {"type": "ESSENCE", "x": 35, "y": 1, "z": 24}
+      ]
+    },
+    {
+      "id": "placeholder_1x3_b",
+      "name": "Placeholder 1x3 B",
+      "shape": "ONE_BY_THREE",
+      "kind": "NORMAL",
+      "secretCount": 4,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 2, "row": 0, "side": "NORTH"},
+        {"col": 2, "row": 0, "side": "EAST"},
+        {"col": 2, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 35.5, "y": 1, "z": 24.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 22.5, "y": 1, "z": 8.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_3", "x": 24.5, "y": 1, "z": 16.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_4", "x": 25.5, "y": 1, "z": 8.5, "mobId": "TANK_ZOMBIE", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 8, "y": 1, "z": 8},
+        {"type": "ITEM", "x": 71, "y": 1, "z": 17},
+        {"type": "BAT", "x": 43, "y": 1, "z": 15},
+        {"type": "ESSENCE", "x": 17, "y": 1, "z": 5}
+      ]
+    },
+    {
+      "id": "placeholder_1x3_c",
+      "name": "Placeholder 1x3 C",
+      "shape": "ONE_BY_THREE",
+      "kind": "NORMAL",
+      "secretCount": 5,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 2, "row": 0, "side": "NORTH"},
+        {"col": 2, "row": 0, "side": "EAST"},
+        {"col": 2, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 81.5, "y": 1, "z": 25.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_2", "x": 50.5, "y": 1, "z": 8.5, "mobId": "SCARED_SKELETON", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 57, "y": 1, "z": 4},
+        {"type": "ITEM", "x": 90, "y": 1, "z": 16},
+        {"type": "BAT", "x": 45, "y": 1, "z": 7},
+        {"type": "ESSENCE", "x": 10, "y": 1, "z": 20},
+        {"type": "CHEST", "x": 8, "y": 1, "z": 23}
+      ]
+    },
+    {
+      "id": "placeholder_1x3_d",
+      "name": "Placeholder 1x3 D",
+      "shape": "ONE_BY_THREE",
+      "kind": "NORMAL",
+      "secretCount": 5,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 2, "row": 0, "side": "NORTH"},
+        {"col": 2, "row": 0, "side": "EAST"},
+        {"col": 2, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 55.5, "y": 1, "z": 5.5, "mobId": "SKELETON_SOLDIER", "starred": true},
+        {"id": "spawn_2", "x": 31.5, "y": 1, "z": 20.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_3", "x": 52.5, "y": 1, "z": 5.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_4", "x": 19.5, "y": 1, "z": 5.5, "mobId": "ZOMBIE_GRUNT", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 43, "y": 1, "z": 24},
+        {"type": "ITEM", "x": 64, "y": 1, "z": 10},
+        {"type": "BAT", "x": 17, "y": 1, "z": 22},
+        {"type": "ESSENCE", "x": 90, "y": 1, "z": 21},
+        {"type": "CHEST", "x": 19, "y": 1, "z": 12}
+      ]
+    },
+    {
+      "id": "placeholder_1x4_a",
+      "name": "Placeholder 1x4 A",
+      "shape": "ONE_BY_FOUR",
+      "kind": "NORMAL",
+      "secretCount": 5,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 2, "row": 0, "side": "NORTH"},
+        {"col": 2, "row": 0, "side": "SOUTH"},
+        {"col": 3, "row": 0, "side": "NORTH"},
+        {"col": 3, "row": 0, "side": "EAST"},
+        {"col": 3, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 22.5, "y": 1, "z": 21.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_2", "x": 76.5, "y": 1, "z": 11.5, "mobId": "SKELETON_GRUNT", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 96, "y": 1, "z": 22},
+        {"type": "ITEM", "x": 89, "y": 1, "z": 6},
+        {"type": "BAT", "x": 5, "y": 1, "z": 20},
+        {"type": "ESSENCE", "x": 35, "y": 1, "z": 19},
+        {"type": "CHEST", "x": 43, "y": 1, "z": 4}
+      ]
+    },
+    {
+      "id": "placeholder_1x4_b",
+      "name": "Placeholder 1x4 B",
+      "shape": "ONE_BY_FOUR",
+      "kind": "NORMAL",
+      "secretCount": 4,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 2, "row": 0, "side": "NORTH"},
+        {"col": 2, "row": 0, "side": "SOUTH"},
+        {"col": 3, "row": 0, "side": "NORTH"},
+        {"col": 3, "row": 0, "side": "EAST"},
+        {"col": 3, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 104.5, "y": 1, "z": 13.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_2", "x": 23.5, "y": 1, "z": 12.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_3", "x": 112.5, "y": 1, "z": 19.5, "mobId": "SKELETON_GRUNT", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 28, "y": 1, "z": 22},
+        {"type": "ITEM", "x": 64, "y": 1, "z": 19},
+        {"type": "BAT", "x": 113, "y": 1, "z": 15},
+        {"type": "ESSENCE", "x": 12, "y": 1, "z": 26}
+      ]
+    },
+    {
+      "id": "placeholder_1x4_c",
+      "name": "Placeholder 1x4 C",
+      "shape": "ONE_BY_FOUR",
+      "kind": "NORMAL",
+      "secretCount": 6,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 2, "row": 0, "side": "NORTH"},
+        {"col": 2, "row": 0, "side": "SOUTH"},
+        {"col": 3, "row": 0, "side": "NORTH"},
+        {"col": 3, "row": 0, "side": "EAST"},
+        {"col": 3, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 41.5, "y": 1, "z": 16.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 40.5, "y": 1, "z": 22.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_3", "x": 81.5, "y": 1, "z": 25.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_4", "x": 76.5, "y": 1, "z": 14.5, "mobId": "SCARED_SKELETON", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 121, "y": 1, "z": 22},
+        {"type": "ITEM", "x": 109, "y": 1, "z": 9},
+        {"type": "BAT", "x": 96, "y": 1, "z": 15},
+        {"type": "ESSENCE", "x": 78, "y": 1, "z": 7},
+        {"type": "CHEST", "x": 122, "y": 1, "z": 9},
+        {"type": "ITEM", "x": 58, "y": 1, "z": 11}
+      ]
+    },
+    {
+      "id": "placeholder_1x4_d",
+      "name": "Placeholder 1x4 D",
+      "shape": "ONE_BY_FOUR",
+      "kind": "NORMAL",
+      "secretCount": 4,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 2, "row": 0, "side": "NORTH"},
+        {"col": 2, "row": 0, "side": "SOUTH"},
+        {"col": 3, "row": 0, "side": "NORTH"},
+        {"col": 3, "row": 0, "side": "EAST"},
+        {"col": 3, "row": 0, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 33.5, "y": 1, "z": 20.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 45.5, "y": 1, "z": 11.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_3", "x": 65.5, "y": 1, "z": 9.5, "mobId": "SKELETON_SOLDIER", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 21, "y": 1, "z": 15},
+        {"type": "ITEM", "x": 44, "y": 1, "z": 5},
+        {"type": "BAT", "x": 78, "y": 1, "z": 25},
+        {"type": "ESSENCE", "x": 27, "y": 1, "z": 5}
+      ]
+    },
+    {
+      "id": "placeholder_2x2_a",
+      "name": "Placeholder 2x2 A",
+      "shape": "TWO_BY_TWO",
+      "kind": "NORMAL",
+      "secretCount": 4,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 1, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "WEST"},
+        {"col": 1, "row": 1, "side": "EAST"},
+        {"col": 1, "row": 1, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 4.5, "y": 1, "z": 45.5, "mobId": "SKELETON_SOLDIER", "starred": true},
+        {"id": "spawn_2", "x": 56.5, "y": 1, "z": 42.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_3", "x": 58.5, "y": 1, "z": 28.5, "mobId": "SCARED_SKELETON", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 17, "y": 1, "z": 56},
+        {"type": "ITEM", "x": 55, "y": 1, "z": 28},
+        {"type": "BAT", "x": 14, "y": 1, "z": 51},
+        {"type": "ESSENCE", "x": 41, "y": 1, "z": 9}
+      ]
+    },
+    {
+      "id": "placeholder_2x2_b",
+      "name": "Placeholder 2x2 B",
+      "shape": "TWO_BY_TWO",
+      "kind": "NORMAL",
+      "secretCount": 6,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 1, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "WEST"},
+        {"col": 1, "row": 1, "side": "EAST"},
+        {"col": 1, "row": 1, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 11.5, "y": 1, "z": 19.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_2", "x": 53.5, "y": 1, "z": 39.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_3", "x": 17.5, "y": 1, "z": 23.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_4", "x": 17.5, "y": 1, "z": 21.5, "mobId": "TANK_ZOMBIE", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 32, "y": 1, "z": 51},
+        {"type": "ITEM", "x": 9, "y": 1, "z": 39},
+        {"type": "BAT", "x": 7, "y": 1, "z": 53},
+        {"type": "ESSENCE", "x": 16, "y": 1, "z": 30},
+        {"type": "CHEST", "x": 47, "y": 1, "z": 28},
+        {"type": "ITEM", "x": 43, "y": 1, "z": 16}
+      ]
+    },
+    {
+      "id": "placeholder_2x2_c",
+      "name": "Placeholder 2x2 C",
+      "shape": "TWO_BY_TWO",
+      "kind": "NORMAL",
+      "secretCount": 6,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 1, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "WEST"},
+        {"col": 1, "row": 1, "side": "EAST"},
+        {"col": 1, "row": 1, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 57.5, "y": 1, "z": 55.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_2", "x": 41.5, "y": 1, "z": 17.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_3", "x": 8.5, "y": 1, "z": 57.5, "mobId": "ZOMBIE_GRUNT", "starred": true},
+        {"id": "spawn_4", "x": 5.5, "y": 1, "z": 57.5, "mobId": "SKELETON_GRUNT", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 47, "y": 1, "z": 48},
+        {"type": "ITEM", "x": 15, "y": 1, "z": 10},
+        {"type": "BAT", "x": 35, "y": 1, "z": 6},
+        {"type": "ESSENCE", "x": 5, "y": 1, "z": 41},
+        {"type": "CHEST", "x": 18, "y": 1, "z": 37},
+        {"type": "ITEM", "x": 5, "y": 1, "z": 57}
+      ]
+    },
+    {
+      "id": "placeholder_2x2_d",
+      "name": "Placeholder 2x2 D",
+      "shape": "TWO_BY_TWO",
+      "kind": "NORMAL",
+      "secretCount": 4,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 1, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "WEST"},
+        {"col": 1, "row": 1, "side": "EAST"},
+        {"col": 1, "row": 1, "side": "SOUTH"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 19.5, "y": 1, "z": 32.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_2", "x": 15.5, "y": 1, "z": 58.5, "mobId": "SKELETON_SOLDIER", "starred": true},
+        {"id": "spawn_3", "x": 51.5, "y": 1, "z": 13.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_4", "x": 35.5, "y": 1, "z": 22.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_5", "x": 55.5, "y": 1, "z": 16.5, "mobId": "SKELETON_GRUNT", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 22, "y": 1, "z": 27},
+        {"type": "ITEM", "x": 31, "y": 1, "z": 13},
+        {"type": "BAT", "x": 31, "y": 1, "z": 55},
+        {"type": "ESSENCE", "x": 51, "y": 1, "z": 55}
+      ]
+    },
+    {
+      "id": "placeholder_l_a",
+      "name": "Placeholder L A",
+      "shape": "L_SHAPE",
+      "kind": "NORMAL",
+      "secretCount": 2,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "EAST"},
+        {"col": 0, "row": 1, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 51.5, "y": 1, "z": 32.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 38.5, "y": 1, "z": 46.5, "mobId": "SKELETON_SOLDIER", "starred": true},
+        {"id": "spawn_3", "x": 11.5, "y": 1, "z": 42.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_4", "x": 43.5, "y": 1, "z": 28.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_5", "x": 54.5, "y": 1, "z": 56.5, "mobId": "ZOMBIE_GRUNT", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 33, "y": 1, "z": 13},
+        {"type": "ITEM", "x": 39, "y": 1, "z": 24}
+      ]
+    },
+    {
+      "id": "placeholder_l_b",
+      "name": "Placeholder L B",
+      "shape": "L_SHAPE",
+      "kind": "NORMAL",
+      "secretCount": 3,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "EAST"},
+        {"col": 0, "row": 1, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 20.5, "y": 1, "z": 58.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 57.5, "y": 1, "z": 45.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_3", "x": 32.5, "y": 1, "z": 28.5, "mobId": "SKELETON_SOLDIER", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 38, "y": 1, "z": 9},
+        {"type": "ITEM", "x": 11, "y": 1, "z": 11},
+        {"type": "BAT", "x": 28, "y": 1, "z": 50}
+      ]
+    },
+    {
+      "id": "placeholder_l_c",
+      "name": "Placeholder L C",
+      "shape": "L_SHAPE",
+      "kind": "NORMAL",
+      "secretCount": 2,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "EAST"},
+        {"col": 0, "row": 1, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 16.5, "y": 1, "z": 56.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_2", "x": 31.5, "y": 1, "z": 5.5, "mobId": "SKELETON_SOLDIER", "starred": true},
+        {"id": "spawn_3", "x": 30.5, "y": 1, "z": 10.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_4", "x": 36.5, "y": 1, "z": 47.5, "mobId": "TANK_ZOMBIE", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 43, "y": 1, "z": 37},
+        {"type": "ITEM", "x": 56, "y": 1, "z": 7}
+      ]
+    },
+    {
+      "id": "placeholder_l_d",
+      "name": "Placeholder L D",
+      "shape": "L_SHAPE",
+      "kind": "NORMAL",
+      "secretCount": 3,
+      "placeholder": true,
+      "tags": ["placeholder", "normal"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "WEST"},
+        {"col": 1, "row": 0, "side": "NORTH"},
+        {"col": 1, "row": 0, "side": "EAST"},
+        {"col": 1, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "EAST"},
+        {"col": 0, "row": 1, "side": "SOUTH"},
+        {"col": 0, "row": 1, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 34.5, "y": 1, "z": 7.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_2", "x": 42.5, "y": 1, "z": 47.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_3", "x": 39.5, "y": 1, "z": 46.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_4", "x": 10.5, "y": 1, "z": 37.5, "mobId": "SKELETON_GRUNT", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 38, "y": 1, "z": 23},
+        {"type": "ITEM", "x": 27, "y": 1, "z": 32},
+        {"type": "BAT", "x": 49, "y": 1, "z": 7}
+      ]
+    },
+    {
+      "id": "placeholder_rare_a",
+      "name": "Placeholder Rare A",
+      "shape": "ONE_BY_ONE",
+      "kind": "RARE",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "rare"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 22.5, "y": 1, "z": 8.5, "mobId": "SKELETON_GRUNT", "starred": true},
+        {"id": "spawn_2", "x": 8.5, "y": 1, "z": 26.5, "mobId": "SKELETON_GRUNT", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 9, "y": 1, "z": 20}
+      ]
+    },
+    {
+      "id": "placeholder_rare_b",
+      "name": "Placeholder Rare B",
+      "shape": "ONE_BY_ONE",
+      "kind": "RARE",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "rare"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 4.5, "y": 1, "z": 7.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_2", "x": 15.5, "y": 1, "z": 24.5, "mobId": "TANK_ZOMBIE", "starred": true},
+        {"id": "spawn_3", "x": 12.5, "y": 1, "z": 4.5, "mobId": "SKELETON_GRUNT", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 18, "y": 1, "z": 14}
+      ]
+    },
+    {
+      "id": "placeholder_entrance_a",
+      "name": "Placeholder Entrance A",
+      "shape": "ONE_BY_ONE",
+      "kind": "ENTRANCE",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "entrance"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_entrance_b",
+      "name": "Placeholder Entrance B",
+      "shape": "ONE_BY_ONE",
+      "kind": "ENTRANCE",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "entrance"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_fairy",
+      "name": "Placeholder Fairy",
+      "shape": "ONE_BY_ONE",
+      "kind": "FAIRY",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "fairy"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_blood",
+      "name": "Placeholder Blood",
+      "shape": "ONE_BY_ONE",
+      "kind": "BLOOD",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "blood"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_puzzle_three_weirdos",
+      "name": "Three Weirdos",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_puzzle_water_board",
+      "name": "Water Board",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_puzzle_ice_fill",
+      "name": "Ice Fill",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_puzzle_creeper_beams",
+      "name": "Creeper Beams",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_puzzle_teleport_maze",
+      "name": "Teleport Maze",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_puzzle_blaze",
+      "name": "Blaze",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_puzzle_quiz",
+      "name": "Quiz",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 6, "y": 1, "z": 8}
+      ]
+    },
+    {
+      "id": "placeholder_puzzle_tic_tac_toe",
+      "name": "Tic Tac Toe",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 6, "y": 1, "z": 23}
+      ]
+    },
+    {
+      "id": "placeholder_puzzle_boulder",
+      "name": "Boulder",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 0,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": []
+    },
+    {
+      "id": "placeholder_puzzle_ice_path",
+      "name": "Ice Path",
+      "shape": "ONE_BY_ONE",
+      "kind": "PUZZLE",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "puzzle"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 9, "y": 1, "z": 21}
+      ]
+    },
+    {
+      "id": "placeholder_miniboss",
+      "name": "Miniboss",
+      "shape": "ONE_BY_ONE",
+      "kind": "MINIBOSS",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "miniboss"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 25.5, "y": 1, "z": 4.5, "mobId": "SKELETON_SOLDIER", "starred": true},
+        {"id": "spawn_2", "x": 25.5, "y": 1, "z": 23.5, "mobId": "SCARED_SKELETON", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 12, "y": 1, "z": 13}
+      ]
+    },
+    {
+      "id": "placeholder_king_midas",
+      "name": "King Midas",
+      "shape": "ONE_BY_ONE",
+      "kind": "MINIBOSS",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "miniboss"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 5.5, "y": 1, "z": 4.5, "mobId": "SCARED_SKELETON", "starred": true},
+        {"id": "spawn_2", "x": 12.5, "y": 1, "z": 15.5, "mobId": "ZOMBIE_GRUNT", "starred": false}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 20, "y": 1, "z": 17}
+      ]
+    },
+    {
+      "id": "placeholder_shadow_assassin",
+      "name": "Shadow Assassin",
+      "shape": "ONE_BY_ONE",
+      "kind": "MINIBOSS",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "miniboss"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [
+        {"id": "spawn_1", "x": 18.5, "y": 1, "z": 14.5, "mobId": "TANK_ZOMBIE", "starred": true}
+      ],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 18, "y": 1, "z": 26}
+      ]
+    },
+    {
+      "id": "placeholder_new_trap",
+      "name": "New Trap",
+      "shape": "ONE_BY_ONE",
+      "kind": "TRAP",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "trap"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 21, "y": 1, "z": 6}
+      ]
+    },
+    {
+      "id": "placeholder_old_trap",
+      "name": "Old Trap",
+      "shape": "ONE_BY_ONE",
+      "kind": "TRAP",
+      "secretCount": 1,
+      "placeholder": true,
+      "tags": ["placeholder", "trap"],
+      "doorSockets": [
+        {"col": 0, "row": 0, "side": "NORTH"},
+        {"col": 0, "row": 0, "side": "EAST"},
+        {"col": 0, "row": 0, "side": "SOUTH"},
+        {"col": 0, "row": 0, "side": "WEST"}
+      ],
+      "mobSpawns": [],
+      "secretAnchors": [
+        {"type": "CHEST", "x": 16, "y": 1, "z": 5}
+      ]
+    }
+  ]
+}

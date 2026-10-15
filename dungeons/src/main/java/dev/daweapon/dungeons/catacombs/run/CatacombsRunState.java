@@ -3,6 +3,7 @@ package dev.daweapon.dungeons.catacombs.run;
 import dev.daweapon.dungeons.catacombs.blessing.BlessingSet;
 import dev.daweapon.dungeons.catacombs.blessing.BlessingType;
 
+import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.EnumMap;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 public final class CatacombsRunState {
     private final CatacombsRunConfig config;
+    private final Clock clock;
     private final Instant startedAt;
     private final Map<Integer, DungeonRoomState> rooms = new HashMap<>();
     private final BlessingSet blessings = new BlessingSet();
@@ -21,18 +23,27 @@ public final class CatacombsRunState {
     private int secretsFound;
     private int failedPuzzles;
     private boolean spiritPetFirstDeathReduction;
+    private boolean mimicKilled;
+    private boolean paulBonus;
+    private boolean princeAttribute;
+    private boolean batAttribute;
     private Instant finishedAt;
 
-    private CatacombsRunState(CatacombsRunConfig config) {
+    private CatacombsRunState(CatacombsRunConfig config, Clock clock) {
         this.config = config;
-        this.startedAt = Instant.now();
+        this.clock = clock;
+        this.startedAt = clock.instant();
         for (int room = 0; room < config.totalRooms(); room++) {
             rooms.put(room, DungeonRoomState.UNDISCOVERED);
         }
     }
 
     public static CatacombsRunState start(CatacombsRunConfig config) {
-        return new CatacombsRunState(config);
+        return start(config, Clock.systemUTC());
+    }
+
+    public static CatacombsRunState start(CatacombsRunConfig config, Clock clock) {
+        return new CatacombsRunState(config, clock);
     }
 
     public CatacombsRunConfig config() {
@@ -72,7 +83,7 @@ public final class CatacombsRunState {
     }
 
     public Duration elapsed() {
-        return Duration.between(startedAt, finishedAt == null ? Instant.now() : finishedAt);
+        return Duration.between(startedAt, finishedAt == null ? clock.instant() : finishedAt);
     }
 
     public CatacombsRunState enterClearing() {
@@ -92,13 +103,13 @@ public final class CatacombsRunState {
 
     public CatacombsRunState complete() {
         phase = DungeonRunPhase.COMPLETED;
-        finishedAt = Instant.now();
+        finishedAt = clock.instant();
         return this;
     }
 
     public CatacombsRunState fail() {
         phase = DungeonRunPhase.FAILED;
-        finishedAt = Instant.now();
+        finishedAt = clock.instant();
         return this;
     }
 
@@ -123,6 +134,26 @@ public final class CatacombsRunState {
         return this;
     }
 
+    public CatacombsRunState recordMimicKilled() {
+        mimicKilled = true;
+        return this;
+    }
+
+    public CatacombsRunState applyPaulBonus() {
+        paulBonus = true;
+        return this;
+    }
+
+    public CatacombsRunState triggerPrinceAttribute() {
+        princeAttribute = true;
+        return this;
+    }
+
+    public CatacombsRunState triggerBatAttribute() {
+        batAttribute = true;
+        return this;
+    }
+
     public CatacombsRunState recordSecret() {
         secretsFound++;
         return this;
@@ -140,7 +171,27 @@ public final class CatacombsRunState {
     }
 
     public DungeonScoreBreakdown score() {
-        return new DungeonScoreBreakdown(skillScore(), explorationScore(), speedScore(), bonusScore());
+        return DungeonScoreCalculator.calculate(scoreInput());
+    }
+
+    public DungeonScoreInput scoreInput() {
+        return new DungeonScoreInput(
+                config.floor().floor(),
+                config.floor().mode(),
+                deaths,
+                spiritPetFirstDeathReduction,
+                failedPuzzles,
+                completedRooms,
+                config.totalRooms(),
+                secretsFound,
+                config.totalSecrets(),
+                elapsed().toSeconds(),
+                crypts,
+                mimicKilled,
+                paulBonus,
+                princeAttribute,
+                batAttribute,
+                phase != DungeonRunPhase.FAILED);
     }
 
     public Map<String, Integer> scoreTrace() {
@@ -153,12 +204,13 @@ public final class CatacombsRunState {
         trace.put("totalSecrets", config.totalSecrets());
         trace.put("crypts", crypts);
         trace.put("elapsedSeconds", (int) elapsed().toSeconds());
-        trace.put("speedScoreSeconds", config.floor().rules().speedScoreSeconds());
-        trace.put("skill", skillScore());
-        trace.put("exploration", explorationScore());
-        trace.put("speed", speedScore());
-        trace.put("bonus", bonusScore());
-        trace.put("total", score().total());
+        trace.put("speedTimeLimitSeconds", config.floor().rules().speedTimeLimitSeconds());
+        DungeonScoreBreakdown breakdown = score();
+        trace.put("skill", breakdown.skill());
+        trace.put("exploration", breakdown.exploration());
+        trace.put("speed", breakdown.speed());
+        trace.put("bonus", breakdown.bonus());
+        trace.put("total", breakdown.total());
         return Map.copyOf(trace);
     }
 
@@ -175,70 +227,5 @@ public final class CatacombsRunState {
             return value != DungeonRunPhase.COMPLETED;
         }
         return value.ordinal() <= phase.ordinal();
-    }
-
-    private int skillScore() {
-        int deathPenalty = deaths * 2;
-        if (spiritPetFirstDeathReduction && deaths > 0) {
-            deathPenalty--;
-        }
-        return clamp(100 - deathPenalty - failedPuzzles * 10, 20, 100);
-    }
-
-    private int explorationScore() {
-        double roomCompletion = ratio(completedRooms, config.totalRooms());
-        double secretCompletion = ratio(secretsFound, config.totalSecrets());
-        return clamp((int) Math.floor(roomCompletion * 60 + secretCompletion * 40), 0, 100);
-    }
-
-    private int speedScore() {
-        int target = config.floor().rules().speedScoreSeconds();
-        long elapsedSeconds = elapsed().toSeconds();
-        if (elapsedSeconds <= target) {
-            return 100;
-        }
-        double percentOver = ((double) elapsedSeconds / target - 1) * 100;
-        return clamp(100 - speedPenalty(percentOver), 0, 100);
-    }
-
-    private int bonusScore() {
-        int bonus = Math.min(5, crypts);
-        if (secretsFound >= config.totalSecrets()) {
-            bonus += 5;
-        }
-        return clamp(bonus, 0, config.floor().rules().bonusScoreCap());
-    }
-
-    private int speedPenalty(double percentOver) {
-        double remaining = percentOver;
-        int penalty = 0;
-        penalty += consumeSpeedBand(remaining, 20, 2);
-        remaining -= Math.min(remaining, 20);
-        penalty += consumeSpeedBand(remaining, 20, 4);
-        remaining -= Math.min(remaining, 20);
-        penalty += consumeSpeedBand(remaining, 10, 5);
-        remaining -= Math.min(remaining, 10);
-        penalty += consumeSpeedBand(remaining, 10, 6);
-        remaining -= Math.min(remaining, 10);
-        penalty += consumeSpeedBand(remaining, Double.MAX_VALUE, 7);
-        return penalty;
-    }
-
-    private int consumeSpeedBand(double remainingPercent, double bandSize, double percentPerPoint) {
-        if (remainingPercent <= 0) {
-            return 0;
-        }
-        return (int) Math.floor(Math.min(remainingPercent, bandSize) / percentPerPoint);
-    }
-
-    private double ratio(int current, int total) {
-        if (total <= 0) {
-            return 1;
-        }
-        return Math.min(1, Math.max(0, (double) current / total));
-    }
-
-    private int clamp(int value, int min, int max) {
-        return Math.max(min, Math.min(max, value));
     }
 }

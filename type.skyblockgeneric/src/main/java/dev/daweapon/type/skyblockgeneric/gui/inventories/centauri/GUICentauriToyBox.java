@@ -75,6 +75,7 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
         action(layout, 31, Material.SUNFLOWER, "<a>\"Organically Grown\" Garden Levels!", "<8>Fertiliser for your progress.", "<7>Gain <a>10,000 Garden Experience<7>.", p -> dev.daweapon.type.skyblockgeneric.garden.GardenService.addGardenXp(p, 10_000));
         action(layout, 46, Material.MINECART, "<d>Crystal Hollows Access", "<8>Skip the queue at Gwendolyn.", "<7>Gain permanent <d>Crystal Hollows<7> access.", dev.daweapon.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess::grantFullAccess);
         action(layout, 47, Material.BUCKET, "<2>Fill Drill Tank", "<8>Never run dry.", "<7>Refill the <a>Drill <7>in your hand to its maximum <2>Fuel<7>.", p -> dev.daweapon.type.skyblockgeneric.drill.DrillFuel.fillHeld(p));
+        action(layout, 51, Material.WITHER_SKELETON_SKULL, "<c>Catacombs XP", "<8>The dead keep their secrets.", "<7>Gain <c>5,000,000 Catacombs Experience<7>.", p -> dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress.addXp(p, 5_000_000L));
         info(layout, 50, Material.OAK_SIGN, "<a>Got Suggestions?", "<7>Share Alpha Network utility ideas in our discord!");
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);
