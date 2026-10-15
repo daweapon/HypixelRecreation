@@ -539,7 +539,7 @@ items:
       - "§6inventory after leaving the §2Critter"
       - "§2Safari§6!"
   - id: FLORAL_GELATIN
-    material: paper
+    material: honey_bottle
     name: "Floral Gelatin"
     rarity: UNCOMMON
     source: "Rare drop from Wild Rose during the Harvest Feast"
@@ -2530,7 +2530,7 @@ items:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_3/logs/helixis
   - id: HELIX_LOG
-    material: paper
+    material: stripped_mangrove_log
     name: "Helix Log"
     rarity: COMMON
     unavailable: "Needs Galatea hunting content (Critter Safari, Tree Gifts and Protection Orders are not built)"
@@ -3269,7 +3269,7 @@ items:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/island_relevant/foraging_3/isopod_husk
   - id: JACOBS_PARTICIPATION_MEDAL
-    material: paper
+    material: mangrove_hanging_sign
     name: "Jacob's Participation Medal"
     rarity: EPIC
     unavailable: "Legacy item replaced by the Super Jacob Entertainment System"
@@ -3387,7 +3387,7 @@ items:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/jasper_crystal
   - id: JASPER_POWER_SCROLL
-    material: paper
+    material: writable_book
     name: "Jasper Power Scroll"
     rarity: EPIC
     unavailable: "Power scroll anvil application isn't built"

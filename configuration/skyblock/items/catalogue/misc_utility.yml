@@ -263,7 +263,7 @@ items:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/boosters/uncommon/booster_foraging_wisdom_upgraded
   - id: FROGS_SPIRIT_SCROLL
-    material: paper
+    material: writable_book
     name: "Frog's Spirit"
     rarity: UNCOMMON
     unavailable: "Leapfrog double jump on Foraging Islands isn't implemented"

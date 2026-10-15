@@ -483,10 +483,16 @@ items:
     rarity: RARE
     material: PLAYER_HEAD
     name: "Gabagool Distillate"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/minion/fuel/distillate/gabagool_distillate
   - id: GLOWSTONE_DISTILLATE
     rarity: RARE
     material: PLAYER_HEAD
     name: "Glowstone Distillate"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/minion/fuel/distillate/glowstone_distillate
   - id: MAGMA_CREAM_DISTILLATE
     rarity: RARE
     material: PLAYER_HEAD
@@ -500,3 +506,6 @@ items:
     rarity: RARE
     material: PLAYER_HEAD
     name: "Nether Wart Distillate"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/minion/fuel/distillate/nether_wart_distillate

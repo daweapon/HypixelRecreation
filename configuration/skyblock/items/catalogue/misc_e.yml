@@ -791,7 +791,7 @@ items:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/ruby_polished_drill_engine
   - id: RUBY_POWER_SCROLL
-    material: paper
+    material: writable_book
     name: "Ruby Power Scroll"
     rarity: EPIC
     unavailable: "Power Scroll anvil application is not built; needs Crystals"
@@ -888,7 +888,7 @@ items:
       - id: SKULL_HEAD
         texture: d81fcffb53acbc7c00c53bc7121ca259371b5b76c001dc52139e1804c287e54
   - id: SALTED_SUNFLOWER_SEEDS
-    material: paper
+    material: yellow_bundle
     name: "Salted Sunflower Seeds"
     rarity: UNCOMMON
     source: "Dropped rarely from Sunflower during the Harvest Feast event"
@@ -1037,7 +1037,7 @@ items:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/sapphire_polished_drill_engine
   - id: SAPPHIRE_POWER_SCROLL
-    material: paper
+    material: writable_book
     name: "Sapphire Power Scroll"
     rarity: EPIC
     unavailable: "Power Scroll anvil application is not built; needs Crystals"

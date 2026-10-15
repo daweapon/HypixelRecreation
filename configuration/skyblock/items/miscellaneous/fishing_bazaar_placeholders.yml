@@ -593,6 +593,8 @@ items:
       - "§7skin. There's so much of it that it's"
       - "§7hard to lift."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/fishing/misc/titanboa_shed
       - id: SELLABLE
         value: 500000.0
   - id: WATER_ORB

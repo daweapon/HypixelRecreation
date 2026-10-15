@@ -93,6 +93,8 @@ items:
       - ""
       - "§eRight-click to view rarity scaling!"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/molten_cube
       - id: REFORGE_STONE
         reforge: cubic
         required_skill: MINING
@@ -128,6 +130,8 @@ items:
       - ""
       - "§eRight-click to view rarity scaling!"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/blaze_wax
       - id: REFORGE_STONE
         reforge: waxed
         required_skill: MINING
@@ -180,6 +184,8 @@ items:
       - ""
       - "§eRight-click to view rarity scaling!"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/searing_stone
       - id: REFORGE_STONE
         reforge: strengthened
         required_skill: MINING
@@ -235,6 +241,8 @@ items:
       - ""
       - "§eRight-click to view rarity scaling!"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/shiny_prism
       - id: REFORGE_STONE
         reforge: glistening
         required_skill: MINING
@@ -288,6 +296,8 @@ items:
       - ""
       - "§eRight-click to view rarity scaling!"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/meteor_shard
       - id: REFORGE_STONE
         reforge: fortified
         required_skill: MINING
@@ -353,6 +363,8 @@ items:
       - ""
       - "§eRight-click to view rarity scaling!"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/entropy_suppressor
       - id: REFORGE_STONE
         reforge: coldfused
         required_skill: MINING
@@ -409,6 +421,8 @@ items:
       - ""
       - "§eRight-click to view rarity scaling!"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/golden_ball
       - id: REFORGE_STONE
         reforge: bountiful
         required_skill: MINING

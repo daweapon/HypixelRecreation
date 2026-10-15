@@ -7,6 +7,9 @@ items:
     lore:
       - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
       - "<f>Common <7>to <a>Uncommon."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/small_honey_dipper
   - id: MEDIUM_HONEY_DIPPER
     centauri_category: PETS
     material: paper
@@ -15,6 +18,9 @@ items:
     lore:
       - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
       - "<a>Uncommon <7>to <9>Rare."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/medium_honey_dipper
   - id: LARGE_HONEY_DIPPER
     centauri_category: PETS
     material: paper
@@ -23,6 +29,9 @@ items:
     lore:
       - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
       - "<9>Rare <7>to <5>Epic."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/large_honey_dipper
   - id: GIANT_HONEY_DIPPER
     centauri_category: PETS
     material: paper
@@ -31,6 +40,9 @@ items:
     lore:
       - "<7>Use at <b>Kat <7>to upgrade <e>Bee Pets <7>from"
       - "<5>Epic <7>to <6>Legendary."
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/giant_honey_dipper
   - id: SMALL_FROG_TREAT
     centauri_category: PETS
     material: player_head
@@ -188,6 +200,8 @@ items:
       - "<7>Use at <b>Kat <7>to upgrade <e>Sloth Pets"
       - "<7>from <f>Common <7>to <a>Uncommon."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/petupgrades/sloth_claw_small
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: MEDIUM_SLOTH_CLAW
@@ -199,6 +213,8 @@ items:
       - "<7>Use at <b>Kat <7>to upgrade <e>Sloth Pets"
       - "<7>from <a>Uncommon <7>to <9>Rare."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/petupgrades/sloth_claw_medium
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: LARGE_SLOTH_CLAW
@@ -210,6 +226,8 @@ items:
       - "<7>Use at <b>Kat <7>to upgrade <e>Sloth Pets"
       - "<7>from <9>Rare <7>to <5>Epic."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/petupgrades/sloth_claw_large
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: GIANT_SLOTH_CLAW
@@ -221,6 +239,8 @@ items:
       - "<7>Use at <b>Kat <7>to upgrade <e>Sloth Pets"
       - "<7>from <5>Epic <7>to <6>Legendary."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/petupgrades/sloth_claw_giant
       - id: EXTRA_RARITY
         display: "PET ITEM"
   - id: SMALL_WITCH_CAULDRON
@@ -421,7 +441,7 @@ items:
               amount: 1
   - id: BUCKET_OF_FROGSPAWN
     centauri_category: PETS
-    material: paper
+    material: tadpole_bucket
     name: "Frogspawn Bucket"
     rarity: MYTHIC
     lore:

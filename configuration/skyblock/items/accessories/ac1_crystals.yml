@@ -4,6 +4,8 @@ items:
     name: "Sunshine Crystal"
     rarity: EPIC
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/sunshine_crystal
       - id: ACCESSORY
         effects:
           - type: STAT

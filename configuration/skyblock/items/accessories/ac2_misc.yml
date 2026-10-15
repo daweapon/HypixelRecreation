@@ -545,6 +545,8 @@ items:
     default_statistics:
       strength: 1
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/beastslayers_codex_1
       - id: ACCESSORY
         recombobulate: false
         dynamic_max_rarity: MYTHIC

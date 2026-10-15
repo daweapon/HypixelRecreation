@@ -73,6 +73,8 @@ items:
     name: "Accretion Talisman"
     rarity: COMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/accelerative/accelerative_talisman
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -86,6 +88,8 @@ items:
     name: "Accretion Ring"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/accelerative/accelerative_ring
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -99,6 +103,8 @@ items:
     name: "Accretion Artifact"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/accelerative/accelerative_artifact
       - id: ACCESSORY
         effects:
           - type: INACTIVE

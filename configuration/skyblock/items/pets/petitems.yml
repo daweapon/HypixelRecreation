@@ -303,6 +303,8 @@ items:
     name: "Magic For Pets In A Hurry"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/magic_for_pets
       - id: PET_ITEM
         description:
           - "<7>Grants <f>+20<glyph:stat_speed> Speed<7> and <b>+50<glyph:stat_intelligence>"
@@ -356,7 +358,7 @@ items:
               type: PET_ITEM_LUCKY_CLOVER
               amount: 1
   - id: POIGNANT_LUCKY_CLOVER
-    material: paper
+    material: big_dripleaf
     name: "Poignant Lucky Clover"
     rarity: LEGENDARY
     components:
@@ -477,6 +479,8 @@ items:
     name: "Rubber Snorkel"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/petitems/rubber_snorkel
       - id: PET_ITEM
         description:
           - "<7>Grants <3>5<glyph:stat_respiration> Respiration<7>, doubled while"
@@ -488,6 +492,8 @@ items:
     name: "Winding Ivy"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/petitems/winding_ivy
       - id: PET_ITEM
         description:
           - "<7>Grants <2>+10<glyph:stat_sweep> Sweep<7>."
@@ -599,6 +605,8 @@ items:
     name: "Drone Mod: Contraband"
     rarity: EPIC
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/contraband
       - id: PET_ITEM
         description:
           - "<7>Can be applied to <6>Precursor Drone"
@@ -643,6 +651,8 @@ items:
     name: "Drone Mod: Grungle"
     rarity: EPIC
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/grungle
       - id: PET_ITEM
         description:
           - "<7>Can be applied to <6>Precursor Drone"
@@ -663,6 +673,8 @@ items:
     name: "Drone Mod: Mining Off Camera"
     rarity: EPIC
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/mining_off_camera
       - id: PET_ITEM
         description:
           - "<7>Can be applied to <6>Precursor Drone"

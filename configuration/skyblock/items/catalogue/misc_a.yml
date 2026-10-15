@@ -288,7 +288,7 @@ items:
       - id: SELLABLE
         value: 10000.0
   - id: AGGOURDIAN
-    material: paper
+    material: goat_horn
     name: "Aggourdian"
     rarity: UNCOMMON
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Pumpkin)"
@@ -355,7 +355,7 @@ items:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/amber_polished_drill_engine
   - id: AMBER_POWER_SCROLL
-    material: paper
+    material: writable_book
     name: "Amber Power Scroll"
     rarity: EPIC
     unavailable: "Power Scroll anvil application is not built"
@@ -387,7 +387,7 @@ items:
               type: AMBER_POWER_SCROLL
               amount: 1
   - id: AMETHYST_POWER_SCROLL
-    material: paper
+    material: writable_book
     name: "Amethyst Power Scroll"
     rarity: EPIC
     unavailable: "Power Scroll anvil application is not built"
@@ -1449,7 +1449,7 @@ items:
               type: BOOK_AND_QUILL
               amount: 1
   - id: BOTROOT
-    material: paper
+    material: weeping_vines
     name: "Botroot"
     rarity: UNCOMMON
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Nether Wart)"
@@ -2008,7 +2008,7 @@ items:
               type: BUZZYBEES_FANTABULOUS_DISCO_DESTINATION
               amount: 1
   - id: CACTUS_FLOWER
-    material: paper
+    material: cactus_flower
     name: "Cactus Flower"
     rarity: UNCOMMON
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Cactus)"
@@ -2266,7 +2266,7 @@ items:
       - id: SKULL_HEAD
         texture: 75ba393b926ee69a14d4d853b25d285a868b16c56c919d2b824413e6566d4e55
   - id: CANE_KNOT
-    material: paper
+    material: kelp
     name: "Cane Knot"
     rarity: UNCOMMON
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Sugar Cane)"
@@ -2438,7 +2438,7 @@ items:
       - id: SKULL_HEAD
         texture: a1c217bf43b4d3ef2bfe6e74643e74b1985d312cdc853c135a2c7181f64a6ea4
   - id: CARROT_ZEST
-    material: paper
+    material: fire_coral
     name: "Carrot Zest"
     rarity: UNCOMMON
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Carrot)"
@@ -2963,7 +2963,7 @@ items:
               type: COOKIE
               amount: 8
   - id: CORNUCOPIA
-    material: paper
+    material: nautilus_shell
     name: "Cornucopia"
     rarity: UNCOMMON
     source: "Harvest Feast: 0.006% (1 in 18,000) crop drop, 15% from the in-season pest and 30% from the Field Mouse (Wheat)"

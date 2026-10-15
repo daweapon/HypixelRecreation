@@ -77,6 +77,8 @@ items:
     name: "Moonlight Crystal"
     rarity: EPIC
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/moonlight_crystal
       - id: ACCESSORY
         effects:
           - type: STAT
@@ -110,6 +112,8 @@ items:
     name: "Honeycomb Talisman"
     rarity: COMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/honey/honeycomb_talisman
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -138,6 +142,8 @@ items:
     name: "Honeycomb Ring"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/honey/honeycomb_ring
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -151,6 +157,8 @@ items:
     name: "Honeycomb Artifact"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/honey/honeycomb_artifact
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -164,6 +172,8 @@ items:
     name: "Lumberjack Talisman"
     rarity: COMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/lumberjack/lumberjack_talisman
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -177,6 +187,8 @@ items:
     name: "Lumberjack Ring"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/lumberjack/lumberjack_ring
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -190,6 +202,8 @@ items:
     name: "Lumberjack Artifact"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/lumberjack/lumberjack_artifact
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -203,6 +217,8 @@ items:
     name: "Torrhus Talisman"
     rarity: COMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/torrhus/torrhus_talisman
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -215,6 +231,8 @@ items:
     name: "Torrhus Ring"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/torrhus/torrhus_ring
       - id: ACCESSORY
         effects:
           - type: INACTIVE
@@ -227,6 +245,8 @@ items:
     name: "Torrhus Artifact"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/foraging_3/accessories/torrhus/torrhus_artifact
       - id: ACCESSORY
         effects:
           - type: INACTIVE

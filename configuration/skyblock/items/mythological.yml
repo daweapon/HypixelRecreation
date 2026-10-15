@@ -476,6 +476,8 @@ items:
       - ""
       - "\xA74❣ \xA7cRequires \xA7aMining Skill 30\xA7c."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/reforge_stones/daedalus_notes
       - id: REFORGE_STONE
         reforge: erudite
         required_skill: MINING

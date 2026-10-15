@@ -216,6 +216,8 @@ items:
     name: "Party Necklace"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/party_necklace
       - id: LORE_UPDATE
         handler_id: PARTY_EQUIPMENT
         is_absolute: false
@@ -226,6 +228,8 @@ items:
     name: "Party Cloak"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/party_cloak
       - id: LORE_UPDATE
         handler_id: PARTY_EQUIPMENT
         is_absolute: false
@@ -236,6 +240,8 @@ items:
     name: "Party Belt"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/party_belt
       - id: LORE_UPDATE
         handler_id: PARTY_EQUIPMENT
         is_absolute: false
@@ -246,6 +252,8 @@ items:
     name: "Party Gloves"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/party_gloves
       - id: LORE_UPDATE
         handler_id: PARTY_EQUIPMENT
         is_absolute: false

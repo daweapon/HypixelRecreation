@@ -278,6 +278,8 @@ items:
     name: "InfiniPot™"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/dungeons/infinipot
       - id: ACCESSORY
         dungeon: true
         effects:

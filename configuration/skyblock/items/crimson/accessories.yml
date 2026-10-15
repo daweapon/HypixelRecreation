@@ -70,6 +70,8 @@ items:
     name: "Night Crystal"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/night_crystal
       - id: TALISMAN
         effects:
           - type: STAT
@@ -102,6 +104,8 @@ items:
     name: "Day Crystal"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/day_crystal
       - id: TALISMAN
         effects:
           - type: STAT

@@ -7,6 +7,9 @@ items:
     material: paper
     name: "Architects First Draft"
     rarity: COMMON
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/dungeons/architects_first_draft
   - id: KISMET_FEATHER
     material: feather
     name: "Kismet Feather"

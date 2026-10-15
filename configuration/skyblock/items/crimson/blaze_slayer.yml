@@ -267,6 +267,8 @@ items:
       - "§7Deal §a1.15x §7damage against §4"
       - "§4Infernal §7Mobs."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/equipment/demonlord_gauntlet
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
       - id: ITEM_REQUIREMENTS
@@ -329,6 +331,8 @@ items:
     lore:
       - "§7Heal §c15❤ §7every §a1s §7while worn."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/equipment/destruction_cloak
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
       - id: ITEM_REQUIREMENTS
@@ -349,6 +353,8 @@ items:
     lore:
       - "§7Heal §c25❤ §7every §a1s §7while worn."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/equipment/annihilation_cloak
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
       - id: ITEM_REQUIREMENTS

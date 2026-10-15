@@ -2454,7 +2454,7 @@ items:
           - type: PENDING
             description: "Garden Level 5"
   - id: CREEPER_HAT
-    material: player_head
+    material: creeper_head
     name: "Creeper Hat"
     rarity: COMMON
     default_statistics:

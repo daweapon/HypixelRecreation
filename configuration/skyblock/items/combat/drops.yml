@@ -223,6 +223,9 @@ items:
     rarity: EPIC
     material: PLAYER_HEAD
     name: "Bundle Of Magma Arrows"
+    components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/slayer/blaze/arrows/bundle_of_magma_arrows
   - id: BONZO_FRAGMENT
     rarity: RARE
     material: RED_MUSHROOM

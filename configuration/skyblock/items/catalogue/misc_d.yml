@@ -1199,7 +1199,7 @@ items:
       - id: SKULL_HEAD
         texture: cecfd74ae2ac3fd6f9b954097ad606efab66f4c0799c2724db4a649d38bf1d38
   - id: MELON_JUICE
-    material: paper
+    material: beetroot_soup
     name: "Melon Juice"
     rarity: UNCOMMON
     source: "Rare drop from Melon Slice during the Harvest Feast event"
@@ -2510,7 +2510,7 @@ items:
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/glacite/crystal/opal_crystal
   - id: OPAL_POWER_SCROLL
-    material: paper
+    material: writable_book
     name: "Opal Power Scroll"
     rarity: EPIC
     unavailable: "Power Scrolls are not wired to anvils or abilities"
@@ -3099,7 +3099,7 @@ items:
       - id: DEFAULT_SOULBOUND
         coop_allowed: true
   - id: POIGNANT_CARROT_BAIT
-    material: paper
+    material: orange_candle
     name: "Poignant Carrot Bait"
     rarity: LEGENDARY
     unavailable: "Needs the Garden (Visitors: Carrot King Avatar)"
@@ -4204,7 +4204,7 @@ items:
       - id: SKULL_HEAD
         texture: 4f62496cb945d9d69895f1aa528c87e523119ea07882f512e28411c7ba746a45
   - id: RAY_OF_HELIOS
-    material: paper
+    material: horn_coral
     name: "Ray of Helios"
     rarity: LEGENDARY
     unavailable: "Needs the Harvest Feast event (Garden)"

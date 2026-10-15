@@ -327,7 +327,7 @@ items:
       - id: SKULL_HEAD
         texture: f35ae57695353e335ddee24ccbb582324dd06896609b34cb72ef416eceecfd0c
   - id: DESIGNER_COFFEE_BEANS
-    material: paper
+    material: beetroot_seeds
     name: "Designer Coffee Beans"
     rarity: UNCOMMON
     source: "Harvest Feast rare drop from Cocoa Beans"
@@ -1630,7 +1630,7 @@ items:
       - id: INTERACTABLE
         handler_id: ENCHANTED_BOOK_BUNDLE_VICIOUS
   - id: ENCHANTED_HELIX_LOG
-    material: paper
+    material: stripped_mangrove_log
     name: "Enchanted Helix Log"
     rarity: UNCOMMON
     unavailable: "The Helix Log collection item isn't in the game"
@@ -1642,7 +1642,7 @@ items:
       - "§7wrapped around each other in a"
       - "§7spiral."
   - id: ENCHANTED_HONEYCOMB
-    material: paper
+    material: honeycomb
     name: "Enchanted Honeycomb"
     rarity: UNCOMMON
     source: "Crafted from 160 Honeycomb (Honeycomb collection II)"
@@ -1672,7 +1672,7 @@ items:
               type: ENCHANTED_HONEYCOMB
               amount: 1
   - id: ENCHANTED_HONEYCOMB_BLOCK
-    material: paper
+    material: honeycomb_block
     name: "Enchanted Honeycomb Block"
     rarity: RARE
     unavailable: "The Honeycomb collection and the recipe for this item aren't built"

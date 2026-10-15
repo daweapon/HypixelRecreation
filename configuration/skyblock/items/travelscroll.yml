@@ -1,13 +1,13 @@
 items:
   - id: HUB_CASTLE_TRAVEL_SCROLL
-    material: PAPER
+    material: map
     name: "Hub Castle Travel Scroll"
     rarity: EPIC
     components:
       - id: TRAVEL_SCROLL
         scroll_type: HUB_CASTLE
   - id: HUB_MUSEUM_TRAVEL_SCROLL
-    material: PAPER
+    material: map
     name: "Hub Museum Travel Scroll"
     rarity: UNCOMMON
     components:
@@ -32,28 +32,28 @@ items:
               type: HUB_CRYPTS_TRAVEL_SCROLL
               amount: 1
   - id: HUB_DARK_AUCTION_TRAVEL_SCROLL
-    material: PAPER
+    material: map
     name: "Hub Dark Auction Travel Scroll"
     rarity: UNCOMMON
     components:
       - id: TRAVEL_SCROLL
         scroll_type: HUB_DARK_AUCTION
   - id: HUB_WIZARD_TOWER_TRAVEL_SCROLL
-    material: PAPER
+    material: map
     name: "Travel Scroll to the Wizard Tower"
     rarity: RARE
     components:
       - id: TRAVEL_SCROLL
         scroll_type: HUB_WIZARD_TOWER
   - id: FORAGING_1_TRAVEL_SCROLL
-    material: PAPER
+    material: map
     name: "Foraging 1 Travel Scroll"
     rarity: RARE
     components:
       - id: TRAVEL_SCROLL
         scroll_type: THE_PARK
   - id: HUB_CRYPTS_TRAVEL_SCROLL
-    material: PAPER
+    material: map
     name: "Hub Crypts Travel Scroll"
     rarity: EPIC
     components:

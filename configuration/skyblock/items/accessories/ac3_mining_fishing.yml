@@ -154,6 +154,8 @@ items:
     name: "Powder of One"
     rarity: COMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/mining_3/accessories/powder_of_one
       - id: ACCESSORY
         effects:
           - type: HANDLER
@@ -168,6 +170,8 @@ items:
     name: "Powder of the Few"
     rarity: UNCOMMON
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/mining_3/accessories/powder_of_the_few
       - id: ACCESSORY
         effects:
           - type: HANDLER
@@ -182,6 +186,8 @@ items:
     name: "Powder of the Many"
     rarity: RARE
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/mining_3/accessories/powder_of_the_many
       - id: ACCESSORY
         effects:
           - type: HANDLER
@@ -202,6 +208,8 @@ items:
     name: "Powder of the People"
     rarity: EPIC
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/mining_3/accessories/powder_of_the_people
       - id: ACCESSORY
         effects:
           - type: HANDLER

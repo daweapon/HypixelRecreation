@@ -11,6 +11,8 @@ items:
       - "§7Gain a §a10% §7chance to reflect"
       - "§cFireballs§7."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/blaze_belt
       - id: STANDARD_ITEM
         standard_item_type: BELT
       - id: ITEM_REQUIREMENTS
@@ -53,6 +55,8 @@ items:
       - "§7Piece Bonus: §c+0❁"
       - "§7Next Upgrade: §c+1❁ §8(§a0§7/§c1,000§8)"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/vanquished_blaze_belt
       - id: STANDARD_ITEM
         standard_item_type: BELT
       - id: ITEM_REQUIREMENTS
@@ -92,6 +96,8 @@ items:
       - "§7Gain §a10% §7more §cMagma Cream §7when"
       - "§7killing Magma Cubes."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/magma_necklace
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
       - id: ITEM_REQUIREMENTS
@@ -135,6 +141,8 @@ items:
       - "§7Piece Bonus: §9+0☠"
       - "§7Next Upgrade: §9+1☠ §8(§a0§7/§c1,000§8)"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/vanquished_magma_necklace
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
       - id: ITEM_REQUIREMENTS
@@ -172,6 +180,8 @@ items:
       intelligence: 10
       mining_fortune: 5
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/glowstone_gauntlet
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
       - id: ITEM_REQUIREMENTS
@@ -212,6 +222,8 @@ items:
       - "§7Piece Bonus: §b+0✎"
       - "§7Next Upgrade: §b+1✎ §8(§a0§7/§c1,000§8)"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/vanquished_glowstone_gauntlet
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
       - id: ITEM_REQUIREMENTS
@@ -253,6 +265,8 @@ items:
       - "§7Restores §c+5❤ Health §7every second"
       - "§7while worn."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/ghast_cloak
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
       - id: ITEM_REQUIREMENTS
@@ -296,6 +310,8 @@ items:
       - "§7Piece Bonus: §a+0❈"
       - "§7Next Upgrade: §a+1❈ §8(§a0§7/§c1,000§8)"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/vanquished_ghast_cloak
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
       - id: ITEM_REQUIREMENTS
@@ -335,6 +351,8 @@ items:
       - "§6Ability: Consolidated "
       - "§7Increases all explosion damage dealt by §a25%§7."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/implosion_belt
       - id: STANDARD_ITEM
         standard_item_type: BELT
       - id: ITEM_REQUIREMENTS
@@ -378,6 +396,8 @@ items:
       - "§7will also be §6contaminated §7causing"
       - "§7them to explode on death."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/gauntlet_of_contagion
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
       - id: ITEM_REQUIREMENTS
@@ -415,6 +435,8 @@ items:
       - "§7Health-consuming abilities deal §a10%"
       - "§7more damage."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/ancient_cloak
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
       - id: ITEM_REQUIREMENTS
@@ -453,6 +475,8 @@ items:
       - "§c10,000%§7. Increases your next hit by"
       - "§c20% §7of the last fire damage you took."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/scourge_cloak
       - id: STANDARD_ITEM
         standard_item_type: CLOAK
       - id: ITEM_REQUIREMENTS
@@ -493,6 +517,8 @@ items:
       - "§7enemy within a 10 block radius up to"
       - "§7a maximum of §a+1,000❈ Defense§7."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/scoville_belt
       - id: STANDARD_ITEM
         standard_item_type: BELT
       - id: ITEM_REQUIREMENTS
@@ -535,6 +561,8 @@ items:
       - "§7Increase the fire damage you"
       - "§7receive by §c8% §7per §c+1❁ Strength§7."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/delirium_necklace
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
       - id: ITEM_REQUIREMENTS
@@ -573,6 +601,8 @@ items:
       - "§aMending §7to §c0§7, and you can no longer"
       - "§7receive healing!"
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/lava_shell_necklace
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
       - id: ITEM_REQUIREMENTS
@@ -614,6 +644,8 @@ items:
       - "§8§osomehow elicits their deepest,"
       - "§8§odarkest fears."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/tera_shell_necklace
       - id: STANDARD_ITEM
         standard_item_type: NECKLACE
       - id: ITEM_REQUIREMENTS
@@ -657,6 +689,8 @@ items:
       - "§7three §6flaming fists §7dealing §c10,000"
       - "§7fire damage over time."
     components:
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/uncategorized/flaming_fist
       - id: STANDARD_ITEM
         standard_item_type: GLOVES
       - id: ITEM_REQUIREMENTS
