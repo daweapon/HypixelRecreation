@@ -84,7 +84,7 @@ class ExperimentGamesTest {
         game.click(tile);
         game.click(partner);
         PairPrize first = game.prizeAt(tile);
-        assertEquals(first.kind() == PairPrize.Kind.FEATHER ? 11 : 8, game.clicksRemaining());
+        assertEquals(first.kind() == PairPrize.Kind.FEATHER ? 11 : 9, game.clicksRemaining());
         if (first.kind() == PairPrize.Kind.DIAMOND) {
             assertTrue(game.instantFindActive());
             int next = -1;
