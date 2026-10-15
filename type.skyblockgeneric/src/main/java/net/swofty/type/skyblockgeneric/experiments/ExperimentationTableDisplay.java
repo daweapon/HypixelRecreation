@@ -6,12 +6,14 @@ import net.minestom.server.entity.Entity;
 import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.metadata.display.ItemDisplayMeta;
 import net.minestom.server.instance.Instance;
+import net.minestom.server.component.DataComponents;
+import net.minestom.server.item.ItemStack;
+import net.minestom.server.item.Material;
 import net.minestom.server.tag.Tag;
-import net.swofty.commons.skyblock.item.ItemType;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 
 public final class ExperimentationTableDisplay {
     private static final Tag<Boolean> DISPLAY = Tag.Boolean("experimentation_table_display");
+    private static final String MODEL = "hypixel_skyblock:item/island_relevant/enchanting/experimentation_table";
 
     private ExperimentationTableDisplay() {
     }
@@ -22,7 +24,7 @@ public final class ExperimentationTableDisplay {
         entity.setNoGravity(true);
         entity.setTag(DISPLAY, true);
         entity.editEntityMeta(ItemDisplayMeta.class, meta -> {
-            meta.setItemStack(new SkyBlockItem(ItemType.EXPERIMENTATION_TABLE).getItemStack());
+            meta.setItemStack(ItemStack.builder(Material.PAPER).set(DataComponents.ITEM_MODEL, MODEL).build());
             meta.setDisplayContext(ItemDisplayMeta.DisplayContext.FIXED);
         });
         entity.setInstance(instance, new Pos(position.blockX() + 0.5, position.blockY() + 0.5, position.blockZ() + 0.5));
