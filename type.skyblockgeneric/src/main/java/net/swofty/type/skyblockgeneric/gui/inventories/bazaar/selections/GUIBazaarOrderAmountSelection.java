@@ -190,6 +190,7 @@ public class GUIBazaarOrderAmountSelection extends HypixelInventoryGUI {
 
     @Override
     public void onClose(InventoryCloseEvent e, CloseReason reason) {
+        if (reason == CloseReason.SIGN_OPENED) return;
         if (!future.isDone()) future.complete(0);
     }
 
