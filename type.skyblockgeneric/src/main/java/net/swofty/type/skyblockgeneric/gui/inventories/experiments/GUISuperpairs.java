@@ -63,7 +63,7 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
                 : s.phase == Phase.REVIEW ? ExperimentGuis.item(Material.CLOCK, Math.max(1, Math.min(64, secondsLeft(s))), "<a>Experiment over") : blank());
         for (int tile = 0; tile < screen.game.tileCount(); tile++) {
             int index = tile;
-            layout.slot(screen.game.stake().slotOf(tile), (s, c) -> render(s, index), (click, c) -> click(state(c), index, c));
+            layout.slot(screen.game.stake().slotOf(tile), (s, c) -> render(s, index, (SkyBlockPlayer) c.player()), (click, c) -> click(state(c), index, c));
         }
     }
 
@@ -79,15 +79,15 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
         return (int) Math.max(0, (screen.deadline - System.currentTimeMillis() + 999) / 1000);
     }
 
-    private ItemStack.Builder render(Screen screen, int tile) {
+    private ItemStack.Builder render(Screen screen, int tile, SkyBlockPlayer player) {
         SuperpairsGame game = screen.game;
         if (screen.phase == Phase.REWARDS) return game.stake().slotOf(tile) == 22 ? summary(screen.result) : blank();
         if (screen.phase == Phase.REVIEW) {
-            ItemStack.Builder builder = proceedHint(icon(game.prizeAt(tile)));
+            ItemStack.Builder builder = proceedHint(icon(player, game.prizeAt(tile)));
             return game.isMatched(tile) ? ExperimentGuis.glowing(builder) : builder;
         }
         if (game.isRevealed(tile)) {
-            ItemStack.Builder builder = icon(game.prizeAt(tile));
+            ItemStack.Builder builder = icon(player, game.prizeAt(tile));
             return game.isMatched(tile) ? ExperimentGuis.glowing(builder) : builder;
         }
         return ExperimentGuis.item(Material.LIGHT_BLUE_STAINED_GLASS, game.instantFindActive() ? "<b>Instant Find!"
@@ -101,10 +101,10 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
         return ItemStacks.lore(builder, lore);
     }
 
-    private ItemStack.Builder icon(PairPrize prize) {
+    private ItemStack.Builder icon(SkyBlockPlayer player, PairPrize prize) {
         SkyBlockItem item = ExperimentService.itemFor(prize);
         if (item != null) {
-            ItemStack.Builder real = item.getItemStack().builder().amount(Math.min(64, Math.max(1, prize.amount())));
+            ItemStack.Builder real = ExperimentGuis.real(player, item, prize.amount());
             java.util.List<net.swofty.commons.text.Text> lore = new java.util.ArrayList<>();
             lore.add(net.swofty.commons.text.Text.of("<8>Item Reward"));
             lore.add(net.swofty.commons.text.Text.of(" "));

@@ -56,7 +56,7 @@ public final class SuperpairsRewards {
         }
         for (String id : ENDCAPS) {
             ItemType type = ItemType.get(id);
-            if (type != null) pool.add(PairPrize.item("ENDCAP_" + id, Material.PLAYER_HEAD, "<6>" + id, type, 1));
+            if (type != null) pool.add(PairPrize.item("ENDCAP_" + id, Material.PLAYER_HEAD, "<6>" + new net.swofty.type.skyblockgeneric.item.SkyBlockItem(type).getDisplayName(), type, 1));
         }
         return pool;
     }

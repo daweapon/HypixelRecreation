@@ -62,17 +62,36 @@ public class GUIExperimentRngMeter implements StatefulView<GUIExperimentRngMeter
     }
 
     private ItemStack.Builder display(SkyBlockPlayer player, ExperimentRngMeter.Target target) {
-        boolean selected = target.id().equals(player.getSkyblockDataHandler() == null ? null
-                : ExperimentRngMeter.selected(player) == null ? null : ExperimentRngMeter.selected(player).id());
+        ExperimentRngMeter.Target chosen = ExperimentRngMeter.selected(player);
+        boolean selected = chosen != null && chosen.id().equals(target.id());
         SkyBlockItem real = ExperimentService.itemFor(target.prize());
-        ItemStack.Builder builder = real != null ? real.getItemStack().builder().amount(1)
-                : ExperimentGuis.item(target.prize().icon(), target.prize().name());
-        String progress = selected
-                ? "<7>Progress: <d>" + String.format("%.1f", ExperimentRngMeter.percent(player, target)) + "%"
-                : "<7>Required: <d>" + ExperimentGuis.commas(target.meterXp()) + " XP";
-        ItemStack.Builder shown = ItemStacks.lore(builder, "<8>RNG Meter drop\n" + progress + "\n"
-                + (selected ? "<d>" + ExperimentGuis.commas(ExperimentRngMeter.stored(player)) + "<5>/<d>" + ExperimentGuis.commas(target.meterXp()) + " XP\n\n<a>Selected!" : "\n<e>Click to select!"));
-        return selected ? ExperimentGuis.glowing(shown) : shown;
+        List<String> extra = new java.util.ArrayList<>();
+        extra.add("<8>RNG Meter drop");
+        extra.add(selected ? "<7>Progress: <d>" + String.format("%.1f", ExperimentRngMeter.percent(player, target)) + "%"
+                : "<7>Required: <d>" + ExperimentGuis.commas(target.meterXp()) + " XP");
+        if (selected) {
+            extra.add("<d>" + ExperimentGuis.commas(ExperimentRngMeter.stored(player)) + "<5>/<d>" + ExperimentGuis.commas(target.meterXp()) + " XP");
+            extra.add("");
+            extra.add("<a>Selected!");
+        } else {
+            extra.add("");
+            extra.add("<e>Click to select!");
+        }
+        ItemStack.Builder builder;
+        if (real == null) {
+            extra.add(0, target.prize().name());
+            builder = ExperimentGuis.item(target.prize().icon(), extra.toArray(new String[0]));
+        } else {
+            ItemStack.Builder stack = ExperimentGuis.real(player, real, 1);
+            List<net.swofty.commons.text.Text> lore = new java.util.ArrayList<>();
+            extra.forEach(line -> lore.add(net.swofty.commons.text.Text.of(line.isEmpty() ? " " : line)));
+            lore.add(net.swofty.commons.text.Text.of(" "));
+            lore.addAll(ItemStacks.loreText(stack));
+            builder = target.prize().kind() == net.swofty.type.skyblockgeneric.experiments.PairPrize.Kind.BOOK
+                    ? ItemStacks.lore(ItemStacks.named(Material.ENCHANTED_BOOK, net.swofty.commons.text.Text.of(target.prize().name())), lore)
+                    : ItemStacks.lore(stack, lore);
+        }
+        return selected ? ExperimentGuis.glowing(builder) : builder;
     }
 
     private void select(SkyBlockPlayer player, ExperimentRngMeter.Target target, ViewContext ctx) {
