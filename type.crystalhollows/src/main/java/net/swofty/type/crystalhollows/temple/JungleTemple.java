@@ -1,5 +1,6 @@
 package net.swofty.type.crystalhollows.temple;
 
+import net.minestom.server.coordinate.Point;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.Player;
 import net.minestom.server.instance.block.Block;
@@ -19,6 +20,10 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class JungleTemple {
     public static final String STRUCTURE = "jungle_temple";
     public static final Path FILE = Path.of("./configuration/skyblock/crystal_hollows/parkours.yml");
+
+    private static final int EXIT_LEVER_X = 53;
+    private static final int EXIT_LEVER_Y = 6;
+    private static final int EXIT_LEVER_Z = 95;
 
     private record Cache(long seed, Pos origin, List<Parkour> parkours) {
     }
@@ -61,6 +66,21 @@ public final class JungleTemple {
         List<Parkour> shifted = base.stream().map(parkour -> parkour.shift(origin)).toList();
         cache = new Cache(seed, origin, shifted);
         return shifted;
+    }
+
+    public static boolean isExitLever(Point block) {
+        Pos origin = CrystalHollowsLayout.origin(STRUCTURE);
+        return origin != null && block.blockX() == origin.blockX() + EXIT_LEVER_X
+                && block.blockY() == origin.blockY() + EXIT_LEVER_Y
+                && block.blockZ() == origin.blockZ() + EXIT_LEVER_Z;
+    }
+
+    public static void useExitLever(SkyBlockPlayer player) {
+        Pos target = CrystalHollowsLayout.anchor(STRUCTURE, "entrance");
+        if (target == null) return;
+        reset(player.getUuid());
+        player.teleport(target);
+        player.sendMessage(Text.of("<7>The lever pulls you out of the temple."));
     }
 
     public static ParkourState state(UUID player) {

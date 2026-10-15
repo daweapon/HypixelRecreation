@@ -8,6 +8,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.crimson.dojo.DojoDamageProtection;
 import net.swofty.type.skyblockgeneric.crystalhollows.HollowsSpawnProtection;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.CreeperVeil;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.island.VisitManager;
 
@@ -20,6 +21,11 @@ public class ActionAnimateEntityDamage implements HypixelEventClass {
         if (event.getEntity() instanceof SkyBlockPlayer player
                 && (VisitManager.isVisiting(player.getUuid()) || DojoDamageProtection.isProtected(player)
                 || HollowsSpawnProtection.isProtected(player))) {
+            event.setCancelled(true);
+            return;
+        }
+
+        if (event.getEntity() instanceof SkyBlockPlayer veiled && CreeperVeil.absorb(veiled)) {
             event.setCancelled(true);
             return;
         }

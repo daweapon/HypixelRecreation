@@ -58,7 +58,7 @@ structures:
       - {x: 202, y: 78, z: 536, yaw: 0, pitch: 0}
     anchors:
       entrance: {}
-      crystal_claim: {}
+      crystal_claim: {x: 49.5, y: 53, z: 54.5, yaw: 0, pitch: 0}
   - id: king_yolkars_tower
     name: "King Yolkar's Tower"
     region: GOBLIN_HOLDOUT
@@ -71,7 +71,7 @@ structures:
       - {x: 492, y: 85, z: 726, yaw: 0, pitch: 0}
     anchors:
       king_yolkar: {x: 25.5, y: 23, z: 18.5, yaw: 0, pitch: 0}
-      xalx: {}
+      xalx: {x: 21.5, y: 23, z: 18.5, yaw: -90, pitch: 0}
   - id: deep_goblin_lair
     name: "Deep Goblin Lair"
     region: GOBLIN_HOLDOUT

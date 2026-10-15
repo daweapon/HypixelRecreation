@@ -3681,6 +3681,9 @@ items:
             tier: 7
       - id: ITEM_MODEL
         item_model: hypixel_skyblock:item/uncategorized/wither_cloak_sword
+      - id: ABILITY
+        abilities:
+          - CREEPER_VEIL
   - id: WIZARD_WAND
     material: BLAZE_ROD
     rarity: EPIC

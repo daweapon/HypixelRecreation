@@ -7,9 +7,10 @@ import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class NPCGoldenDragon extends AbstractStructureNPC {
     private static final String MET = "met_golden_dragon";
+    private static final String TEXTURE = "ewogICJ0aW1lc3RhbXAiIDogMTYyMDM1MDA5ODgyNiwKICAicHJvZmlsZUlkIiA6ICJiNWRkZTVmODJlYjM0OTkzYmMwN2Q0MGFiNWY2ODYyMyIsCiAgInByb2ZpbGVOYW1lIiA6ICJsdXhlbWFuIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzJlOWY5YjFmYzAxNDE2NmNiNDZhMDkzZTUzNDliMmJmNmVkZDIwMWI2ODBkNjJlNDhkYmYzYWY5YjA0NTkxMTYiLAogICAgICAibWV0YWRhdGEiIDogewogICAgICAgICJtb2RlbCIgOiAic2xpbSIKICAgICAgfQogICAgfQogIH0KfQ==";
 
     public NPCGoldenDragon() {
-        super("Golden Dragon", "<e>", DEFAULT_TEXTURE, "dragons_lair", "golden_dragon");
+        super("Golden Dragon", "<e>", TEXTURE, "dragons_lair", "golden_dragon");
     }
 
     @Override

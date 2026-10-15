@@ -3,6 +3,7 @@ package net.swofty.type.crystalhollows.events;
 import net.minestom.server.entity.PlayerHand;
 import net.minestom.server.event.player.PlayerBlockInteractEvent;
 import net.swofty.type.crystalhollows.chest.StructureChests;
+import net.swofty.type.crystalhollows.temple.JungleTemple;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
@@ -23,6 +24,11 @@ public class ActionNucleusAndChestInteract implements HypixelEventClass {
         if (DugTreasureChests.isDugChest(event.getBlockPosition())) {
             event.setBlockingItemUse(true);
             DugTreasureChests.interact(player, event.getBlockPosition());
+            return;
+        }
+        if (JungleTemple.isExitLever(event.getBlockPosition())) {
+            event.setBlockingItemUse(true);
+            JungleTemple.useExitLever(player);
             return;
         }
         StructureChests.ChestSpec chest = StructureChests.at(event.getBlockPosition());

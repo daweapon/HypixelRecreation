@@ -8,6 +8,7 @@ import net.swofty.type.skyblockgeneric.event.value.SkyBlockValueEvent;
 import net.swofty.type.skyblockgeneric.event.value.events.PlayerDamagedByMobValueUpdateEvent;
 import net.swofty.type.skyblockgeneric.hunting.AttributeEffectService;
 import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.CreeperVeil;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abstr.PetEvent;
 import net.swofty.type.skyblockgeneric.mythological.MythologicalCreatureMob;
@@ -31,6 +32,7 @@ public final class MobAttackService {
     }
 
     public static float strike(SkyBlockMob mob, SkyBlockPlayer player, ItemStatistics mobStatistics) {
+        if (CreeperVeil.absorb(player)) return 0;
         ItemStatistics playerStatistics = player.getStatistics().allStatistics();
 
         Map.Entry<Double, Boolean> damageDealt =
@@ -63,7 +65,7 @@ public final class MobAttackService {
     }
 
     public static void trueStrike(SkyBlockMob mob, SkyBlockPlayer player, double damage) {
-        if (damage <= 0 || player.isRemoved()) return;
+        if (damage <= 0 || player.isRemoved() || CreeperVeil.absorb(player)) return;
         damage *= gearMultiplier(mob, player);
         damage = net.swofty.type.skyblockgeneric.slayer.inferno.BlazeSlayerGear.burststop(player, (float) damage);
         CombatPetHooks.mobAttacked(player, mob);

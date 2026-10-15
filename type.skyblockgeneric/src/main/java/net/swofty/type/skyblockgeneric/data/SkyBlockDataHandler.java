@@ -538,6 +538,9 @@ public class SkyBlockDataHandler extends DataHandler {
         BRAIN_FOOD_CONSUMED("brain_food_consumed", false, false, false,
                 DatapointInteger.class, new DatapointInteger("brain_food_consumed", 0)),
 
+        RANCHERS_SPEED_CAP("ranchers_speed_cap", false, false, false,
+                DatapointInteger.class, new DatapointInteger("ranchers_speed_cap", 0)),
+
         FORCED_DROPS("forced_drops", false, false, false,
                 DatapointStringList.class, new DatapointStringList("forced_drops")),
 

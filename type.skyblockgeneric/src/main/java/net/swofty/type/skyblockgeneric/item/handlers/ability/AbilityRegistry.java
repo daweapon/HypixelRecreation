@@ -18,6 +18,7 @@ import net.swofty.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.AbilityDamage;
 import net.swofty.type.skyblockgeneric.item.handlers.bow.Salvation;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.BuildersWandAbility;
+import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.CreeperVeil;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.CrimsonAbilities;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ExplosionSound;
 import net.swofty.type.skyblockgeneric.item.handlers.ability.abilities.ForwardTeleport;
@@ -103,6 +104,16 @@ public class AbilityRegistry {
             20,
             new RegisteredAbility.NoAbilityCost(),
             (player, _, _, _) -> JingleBellsAbility.ring(player)
+        ));
+
+        register(new RegisteredAbility(
+            CreeperVeil.ABILITY_ID,
+            "Creeper Veil",
+            (_, _) -> "<7>Nullifies damage you would take at the cost of <a>20% <7>of your max mana per hit. Toggle on or off. Turns off if you run out of mana or swap your armor.",
+            RegisteredAbility.AbilityActivation.RIGHT_CLICK,
+            200,
+            new RegisteredAbility.NoAbilityCost(),
+            (player, _, _, _) -> CreeperVeil.toggle(player)
         ));
 
         register(new ShadowWarpAbility());
