@@ -72,15 +72,14 @@ public enum UltrasequencerStake {
         return (long) Math.min(sequence, XP_NUMBER_CAP) * xpPerNumber;
     }
 
+    private static final List<Material> PANES = List.of(Material.WHITE_STAINED_GLASS_PANE, Material.LIGHT_BLUE_STAINED_GLASS_PANE,
+            Material.BLUE_STAINED_GLASS_PANE, Material.PURPLE_STAINED_GLASS_PANE, Material.MAGENTA_STAINED_GLASS_PANE,
+            Material.PINK_STAINED_GLASS_PANE, Material.RED_STAINED_GLASS_PANE, Material.ORANGE_STAINED_GLASS_PANE,
+            Material.YELLOW_STAINED_GLASS_PANE, Material.LIME_STAINED_GLASS_PANE, Material.GREEN_STAINED_GLASS_PANE,
+            Material.CYAN_STAINED_GLASS_PANE);
+
     public static Material paneFor(int round) {
-        return switch ((round - 1) % 6) {
-            case 0 -> Material.PURPLE_STAINED_GLASS_PANE;
-            case 1 -> Material.LIGHT_BLUE_STAINED_GLASS_PANE;
-            case 2 -> Material.PINK_STAINED_GLASS_PANE;
-            case 3 -> Material.RED_STAINED_GLASS_PANE;
-            case 4 -> Material.LIME_STAINED_GLASS_PANE;
-            default -> Material.ORANGE_STAINED_GLASS_PANE;
-        };
+        return PANES.get(round % PANES.size());
     }
 
     public static Material dyeFor(int number) {
@@ -89,7 +88,7 @@ public enum UltrasequencerStake {
 
     public List<Integer> slots() {
         List<Integer> slots = new ArrayList<>();
-        int firstRow = rows == 3 ? 2 : 1;
+        int firstRow = 1;
         int firstColumn = (9 - columns) / 2;
         for (int row = 0; row < rows; row++) {
             for (int column = 0; column < columns; column++) slots.add((firstRow + row) * 9 + firstColumn + column);

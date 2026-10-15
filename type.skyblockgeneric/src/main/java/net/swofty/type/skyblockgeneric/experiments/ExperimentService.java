@@ -56,7 +56,7 @@ public final class ExperimentService {
         long pairXp = 0;
         List<PairPrize> items = new ArrayList<>();
         for (PairPrize prize : found) {
-            if (prize.kind() == PairPrize.Kind.XP) pairXp += prize.xp();
+            if (prize.kind() == PairPrize.Kind.XP || prize.kind() == PairPrize.Kind.LAPIS_BLOCK) pairXp += prize.xp();
             else if (!prize.isPowerUp()) items.add(prize);
         }
         return new SuperpairsResult(stake.stakeXp(), pairXp, found.size(), stake.pairCount(), items, game.clicksUsed(), stake.displayName());

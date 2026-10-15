@@ -36,6 +36,7 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
         private int inputIndex;
         private boolean closed;
         private boolean settled;
+        private String reason = "";
 
         public Screen(ChronomatronGame game, boolean admin) {
             this.game = game;
@@ -120,6 +121,7 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
         ChronomatronStake stake = screen.game.stake();
         int chain = screen.game.longestChain();
         return ExperimentGuis.item(Material.LIME_DYE, "<d>Chronomatron", "<8>Claim", "",
+                screen.reason.isEmpty() ? "" : "<c>" + screen.reason, screen.reason.isEmpty() ? "" : "",
                 "<7>Stakes: <d>" + stake.displayName(), "",
                 "<7>Longest Chain: <a>" + chain + " notes", "",
                 "<7>Rewards:", "<b> +" + ExperimentGuis.commas(stake.xpFor(chain)) + " Enchanting Exp",
@@ -134,7 +136,15 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
     @Override
     public void onClose(Screen screen, ViewContext ctx, ViewSession.CloseReason reason) {
         screen.closed = true;
+        if (screen.phase == Phase.OVER || screen.settled || reason == ViewSession.CloseReason.REPLACED) return;
         screen.game.abandon();
+        screen.phase = Phase.OVER;
+        screen.reason = "You closed the game!";
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        net.minestom.server.MinecraftServer.getSchedulerManager().scheduleNextTick(() -> {
+            screen.closed = false;
+            player.openView(new GUIChronomatron(), screen);
+        });
     }
 
     private void startRound(Screen screen, ViewContext ctx) {
@@ -183,6 +193,7 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
             }
             case FAILED, FINISHED -> {
                 screen.phase = Phase.OVER;
+                screen.reason = result == ChronomatronGame.Result.FAILED ? "Clicked the wrong color!" : "";
                 refresh(ctx);
             }
             default -> {
@@ -195,8 +206,9 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
         screen.settled = true;
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         int clicks = ExperimentService.claimChronomatron(player, screen.game);
-        player.sendMessage("<a>You claimed <b>{} Enchanting Exp <a>and <d>{} <a>extra Superpairs clicks!",
-                ExperimentGuis.commas(screen.game.stake().xpFor(screen.game.longestChain())), clicks);
+        player.sendMessage("<e>You claimed the <a>Chronomatron <e>rewards!");
+        player.sendMessage("<7> +<b>{} Enchanting Exp", ExperimentGuis.commas(screen.game.stake().xpFor(screen.game.longestChain())));
+        if (clicks > 0) player.sendMessage("<7> +<d>{} Superpairs {}", clicks, clicks == 1 ? "click" : "clicks");
         ctx.backOrClose();
     }
 

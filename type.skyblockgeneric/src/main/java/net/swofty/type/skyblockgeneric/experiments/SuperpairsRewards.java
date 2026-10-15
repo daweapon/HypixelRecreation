@@ -65,7 +65,7 @@ public final class SuperpairsRewards {
                                         @Nullable PairPrize guaranteed, RandomGenerator random) {
         List<PairPrize> board = new ArrayList<>();
         int pairs = stake.pairCount();
-        board.add(PairPrize.powerUp(PairPrize.Kind.LAPIS_BLOCK));
+        board.add(PairPrize.lapis(Math.round(stake.pairXpMax() * (3 + random.nextDouble() * 0.4) / 100) * 100));
         board.add(PairPrize.powerUp(PairPrize.Kind.FEATHER));
         if (pairs >= 10) board.add(PairPrize.powerUp(PairPrize.Kind.DIAMOND));
 

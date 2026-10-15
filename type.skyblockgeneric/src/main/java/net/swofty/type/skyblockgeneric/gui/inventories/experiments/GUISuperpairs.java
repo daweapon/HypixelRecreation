@@ -59,8 +59,8 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
             case REWARDS -> blank();
         });
         layout.slot(49, (s, c) -> s.phase == Phase.PLAYING
-                ? ExperimentGuis.item(Material.CLOCK, Math.max(1, secondsLeft(s)), "<a>Timer: <f>" + secondsLeft(s) + "s")
-                : s.phase == Phase.REVIEW ? ExperimentGuis.item(Material.CLOCK, Math.max(1, secondsLeft(s)), "<a>Experiment over") : blank());
+                ? ExperimentGuis.item(Material.CLOCK, Math.max(1, Math.min(64, secondsLeft(s))), "<a>Timer: <f>" + secondsLeft(s) + "s")
+                : s.phase == Phase.REVIEW ? ExperimentGuis.item(Material.CLOCK, Math.max(1, Math.min(64, secondsLeft(s))), "<a>Experiment over") : blank());
         for (int tile = 0; tile < screen.game.tileCount(); tile++) {
             int index = tile;
             layout.slot(screen.game.stake().slotOf(tile), (s, c) -> render(s, index), (click, c) -> click(state(c), index, c));
@@ -97,7 +97,18 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
     private ItemStack.Builder icon(PairPrize prize) {
         SkyBlockItem item = ExperimentService.itemFor(prize);
         if (item != null) {
-            return item.getItemStack().builder().amount(Math.min(64, Math.max(1, prize.amount())));
+            ItemStack.Builder real = item.getItemStack().builder().amount(Math.min(64, Math.max(1, prize.amount())));
+            java.util.List<net.swofty.commons.text.Text> lore = new java.util.ArrayList<>();
+            lore.add(net.swofty.commons.text.Text.of("<8>Item Reward"));
+            lore.add(net.swofty.commons.text.Text.of(" "));
+            lore.addAll(ItemStacks.loreText(real));
+            return ItemStacks.lore(real, lore);
+        }
+        if (prize.kind() == PairPrize.Kind.LAPIS_BLOCK) {
+            return ExperimentGuis.item(prize.icon(), prize.name(), "<7>+1 Click", "<b>Instant powerup!");
+        }
+        if (prize.kind() == PairPrize.Kind.DIAMOND) {
+            return ExperimentGuis.item(Material.DIAMOND, prize.name(), "<7>+1 Click", "<b>Powerup");
         }
         if (prize.kind() == PairPrize.Kind.XP) {
             return ExperimentGuis.item(prize.icon(), prize.name(), "<8>Skill Exp Reward");
@@ -197,9 +208,9 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
         screen.claimed = true;
         ExperimentService.claimSuperpairs(player, screen.game, screen.result);
         player.sendMessage("<e>You claimed the <d>Superpairs <e>rewards!");
-        player.sendMessage("<b> +" + ExperimentGuis.commas(screen.result.stakeXp()) + " Enchanting Exp");
-        player.sendMessage("<b> +" + ExperimentGuis.commas(screen.result.pairXp()) + " Enchanting Exp");
-        for (PairPrize prize : screen.result.prizes()) player.sendMessage("<7> + " + prize.name());
+        player.sendMessage("<7> +<b>" + ExperimentGuis.commas(screen.result.stakeXp()) + " Enchanting Exp");
+        player.sendMessage("<7> +<b>" + ExperimentGuis.commas(screen.result.pairXp()) + " Enchanting Exp");
+        for (PairPrize prize : screen.result.prizes()) player.sendMessage("<7> +" + prize.name());
     }
 
     private void refresh(ViewContext ctx) {

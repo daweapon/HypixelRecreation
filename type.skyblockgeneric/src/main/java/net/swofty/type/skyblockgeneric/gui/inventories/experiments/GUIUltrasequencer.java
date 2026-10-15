@@ -30,6 +30,7 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
         private final Set<Integer> solved = new HashSet<>();
         private boolean closed;
         private boolean settled;
+        private String reason = "";
 
         public Screen(UltrasequencerGame game, boolean admin) {
             this.game = game;
@@ -102,7 +103,15 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
     @Override
     public void onClose(Screen screen, ViewContext ctx, ViewSession.CloseReason reason) {
         screen.closed = true;
+        if (screen.phase == Phase.OVER || screen.settled || reason == ViewSession.CloseReason.REPLACED) return;
         screen.game.abandon();
+        screen.phase = Phase.OVER;
+        screen.reason = "You closed the game!";
+        SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
+        net.minestom.server.MinecraftServer.getSchedulerManager().scheduleNextTick(() -> {
+            screen.closed = false;
+            player.openView(new GUIUltrasequencer(), screen);
+        });
     }
 
     private void startRound(Screen screen, ViewContext ctx) {
@@ -118,6 +127,7 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
 
     private void press(Screen screen, int slot, ViewContext ctx) {
         if (screen.phase != Phase.INPUT || screen.solved.contains(slot)) return;
+        boolean emptyCell = screen.game.numberAt(slot) == 0;
         UltrasequencerGame.Result result = screen.game.press(slot);
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         switch (result) {
@@ -133,6 +143,7 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
             }
             case FAILED, FINISHED -> {
                 screen.phase = Phase.OVER;
+                screen.reason = result == UltrasequencerGame.Result.FAILED ? (emptyCell ? "Clicked empty cell" : "Clicked the wrong number") : "";
                 ExperimentGuis.sound(player, "block.note_block.bass", 0.6f);
             }
         }
@@ -144,8 +155,9 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
         screen.settled = true;
         SkyBlockPlayer player = (SkyBlockPlayer) ctx.player();
         int clicks = ExperimentService.claimUltrasequencer(player, screen.game);
-        player.sendMessage("<a>You claimed <b>{} Enchanting Exp <a>and <e>{} <a>extra Superpairs clicks!",
-                ExperimentGuis.commas(screen.game.stake().xpFor(screen.game.longestSequence())), clicks);
+        player.sendMessage("<e>You claimed the <a>Ultrasequencer <e>rewards!");
+        player.sendMessage("<7> +<b>{} Enchanting Exp", ExperimentGuis.commas(screen.game.stake().xpFor(screen.game.longestSequence())));
+        if (clicks > 0) player.sendMessage("<7> +<d>{} Superpairs {}", clicks, clicks == 1 ? "click" : "clicks");
         ctx.backOrClose();
     }
 

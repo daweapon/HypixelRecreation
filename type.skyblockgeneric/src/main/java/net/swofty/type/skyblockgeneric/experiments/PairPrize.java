@@ -32,11 +32,16 @@ public record PairPrize(String key, Kind kind, Material icon, String name, @Null
                 colorOf(rarity) + "Guardian Pet", ItemType.get("GUARDIAN_PET"), 1, 0, null, 0, rarity);
     }
 
+    public static PairPrize lapis(long xp) {
+        return new PairPrize("POWER_LAPIS", Kind.LAPIS_BLOCK, Material.LAPIS_BLOCK, "<b>+" + String.format("%,d", xp) + " XP",
+                null, 0, xp, null, 0, null);
+    }
+
     public static PairPrize powerUp(Kind kind) {
         return switch (kind) {
-            case LAPIS_BLOCK -> new PairPrize("POWER_LAPIS", kind, Material.LAPIS_BLOCK, "<9>Enchanted Lapis Block <7>(+1 click)", null, 0, 0, null, 0, null);
-            case FEATHER -> new PairPrize("POWER_FEATHER", kind, Material.FEATHER, "<f>Feather <7>(+3 clicks)", null, 0, 0, null, 0, null);
-            case DIAMOND -> new PairPrize("POWER_DIAMOND", kind, Material.DIAMOND, "<b>Diamond <7>(Instant Find)", null, 0, 0, null, 0, null);
+            case LAPIS_BLOCK -> lapis(0);
+            case FEATHER -> new PairPrize("POWER_FEATHER", kind, Material.FEATHER, "<f>Feather", null, 0, 0, null, 0, null);
+            case DIAMOND -> new PairPrize("POWER_DIAMOND", kind, Material.DIAMOND, "<b>Instant Find", null, 0, 0, null, 0, null);
             default -> throw new IllegalArgumentException(kind.name());
         };
     }

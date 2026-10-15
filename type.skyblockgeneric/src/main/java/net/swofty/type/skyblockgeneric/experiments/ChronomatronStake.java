@@ -90,7 +90,7 @@ public enum ChronomatronStake {
         };
         List<int[]> tiles = new ArrayList<>();
         for (int group = 0; group < groups.length; group++) {
-            int topRow = groups.length == 1 ? 2 : 1 + group * 2;
+            int topRow = 1 + group * 2;
             int firstColumn = 4 - groups[group] / 2;
             for (int i = 0; i < groups[group]; i++) {
                 int slot = topRow * 9 + firstColumn + i;

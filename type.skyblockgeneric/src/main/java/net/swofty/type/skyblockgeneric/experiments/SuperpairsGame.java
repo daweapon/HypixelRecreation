@@ -130,7 +130,10 @@ public final class SuperpairsGame {
         switch (prize.kind()) {
             case LAPIS_BLOCK -> clicksRemaining += 1;
             case FEATHER -> clicksRemaining += 3;
-            case DIAMOND -> instantFind = true;
+            case DIAMOND -> {
+                instantFind = true;
+                clicksRemaining += 1;
+            }
             default -> {
             }
         }
