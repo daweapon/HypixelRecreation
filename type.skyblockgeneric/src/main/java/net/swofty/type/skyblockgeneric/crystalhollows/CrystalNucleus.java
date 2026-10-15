@@ -57,6 +57,10 @@ public final class CrystalNucleus {
         AVAILABLE.computeIfAbsent(player.getUuid(), _ -> EnumSet.noneOf(NucleusCrystal.class)).add(crystal);
     }
 
+    public static void revokeAvailable(NucleusCrystal crystal) {
+        AVAILABLE.values().forEach(set -> set.remove(crystal));
+    }
+
     public static boolean markFound(SkyBlockPlayer player, NucleusCrystal crystal) {
         if (state(player, crystal) != State.NOT_FOUND) return false;
         removeAvailable(player.getUuid(), crystal);

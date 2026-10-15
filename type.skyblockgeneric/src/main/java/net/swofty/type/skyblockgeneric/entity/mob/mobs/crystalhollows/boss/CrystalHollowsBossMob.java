@@ -79,10 +79,14 @@ public abstract class CrystalHollowsBossMob extends CrimsonIsleMob {
                 HypixelEventHandler.callCustomEvent(new PlayerKilledSkyBlockMobEvent(player, this));
                 player.getSkills().increase(player, getSkillCategory(), (double) getOtherLoot().getSkillXPAmount());
             }
-            CrimsonMobLoot.roll(player, this, getProfile().drops());
+            if (rollsLootOnKill()) CrimsonMobLoot.roll(player, this, getProfile().drops());
             reward(player);
         }
         onDefeated();
+    }
+
+    protected boolean rollsLootOnKill() {
+        return true;
     }
 
     protected void reward(SkyBlockPlayer player) {
