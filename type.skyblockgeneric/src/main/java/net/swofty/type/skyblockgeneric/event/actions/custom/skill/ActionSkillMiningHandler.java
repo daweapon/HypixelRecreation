@@ -13,6 +13,10 @@ import net.swofty.type.skyblockgeneric.item.tool.ToolPassives;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.reforge.ReforgeLoadout;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsDrops;
+import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
+
+import java.util.OptionalDouble;
 
 // Grants mining-skill XP for blocks broken with a skillable mining tool
 public class ActionSkillMiningHandler implements HypixelEventClass {
@@ -21,17 +25,25 @@ public class ActionSkillMiningHandler implements HypixelEventClass {
     public void run(CustomBlockBreakEvent event) {
         if (event.getPlayerPlaced()) return;
 
-        SkyBlockItem item = new SkyBlockItem(event.getMaterial());
-
-        if (!item.hasComponent(SkillableMineComponent.class)) return;
-
-        SkillableMineComponent skillableMine = item.getComponent(SkillableMineComponent.class);
-        SkillCategories skillCategory = skillableMine.getCategory();
+        SkyBlockRegion region = SkyBlockRegion.getRegionOfPosition(event.getPoint());
+        OptionalDouble hollowsXp = CrystalHollowsDrops.miningXp(event.getMaterial(), region == null ? null : region.getType());
+        SkillCategories skillCategory;
+        double baseXp;
+        if (hollowsXp.isPresent()) {
+            skillCategory = SkillCategories.MINING;
+            baseXp = hollowsXp.getAsDouble();
+        } else {
+            SkyBlockItem item = new SkyBlockItem(event.getMaterial());
+            if (!item.hasComponent(SkillableMineComponent.class)) return;
+            SkillableMineComponent skillableMine = item.getComponent(SkillableMineComponent.class);
+            skillCategory = skillableMine.getCategory();
+            baseXp = skillableMine.getMiningValue();
+        }
         DatapointSkills.PlayerSkills skills = event.getPlayer().getSkills();
 
         double experience = skillCategory == SkillCategories.MINING
-                ? MiningPetBonuses.miningSkillExperience(event.getPlayer(), skillableMine.getMiningValue())
-                : skillableMine.getMiningValue();
+                ? MiningPetBonuses.miningSkillExperience(event.getPlayer(), baseXp)
+                : baseXp;
         if (skillCategory == SkillCategories.MINING) {
             experience *= ReforgeLoadout.miningExperienceMultiplier(event.getPlayer());
             if (ToolPassives.holding(event.getPlayer(), "LAPIS_PICKAXE")

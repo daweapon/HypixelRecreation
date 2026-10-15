@@ -2,7 +2,6 @@ package net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows;
 
 import net.minestom.server.MinecraftServer;
 import net.minestom.server.coordinate.Pos;
-import net.minestom.server.entity.EntityType;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.timer.TaskSchedule;
 import net.minestom.server.item.Material;
@@ -38,7 +37,14 @@ public class MobGrunt extends CrystalHollowsMob implements RegionPopulator {
                     Drop.single(ItemType.TREASURITE, 1));
 
     public MobGrunt() {
-        super(EntityType.ZOMBIE);
+        super(HollowsSkins.PLAYER_MODEL);
+    }
+
+    @Override
+    public void onSpawn() {
+        super.onSpawn();
+        HollowsSkins.dress(this, HollowsSkins.GRUNT);
+        setItemInMainHand(ItemStack.of(Material.IRON_PICKAXE));
     }
 
     @Override

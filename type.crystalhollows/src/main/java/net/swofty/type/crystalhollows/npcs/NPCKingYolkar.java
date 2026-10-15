@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class NPCKingYolkar extends AbstractStructureNPC {
     public NPCKingYolkar() {
-        super("King Yolkar", "<6>", DEFAULT_TEXTURE, "king_yolkars_tower", "king_yolkar");
+        super("King Yolkar", "<6>", GOBLIN_TEXTURE, "king_yolkars_tower", "king_yolkar");
     }
 
     @Override

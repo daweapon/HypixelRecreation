@@ -22,6 +22,7 @@ import net.swofty.type.skyblockgeneric.loottable.LootAffector;
 import net.swofty.type.skyblockgeneric.loottable.LootRoll;
 import net.swofty.type.skyblockgeneric.loottable.OtherLoot;
 import net.swofty.type.skyblockgeneric.loottable.SkyBlockLootTable;
+import net.swofty.type.skyblockgeneric.region.MobFreeZones;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.skill.SkillCategories;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
@@ -34,6 +35,8 @@ import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class CrystalHollowsMob extends BestiaryMob {
+    private static final int MOB_FREE_CHECK_TICKS = 40;
+
     protected CrystalHollowsMob(EntityType entityType) {
         super(entityType);
     }
@@ -130,7 +133,12 @@ public abstract class CrystalHollowsMob extends BestiaryMob {
     @Override
     public void tick(long time) {
         super.tick(time);
-        if (!isDead() && getInstance() != null) onAiTick((int) getAliveTicks());
+        if (isDead() || getInstance() == null) return;
+        if (getAliveTicks() % MOB_FREE_CHECK_TICKS == 0 && MobFreeZones.isMobFreeAt(getPosition())) {
+            remove();
+            return;
+        }
+        onAiTick((int) getAliveTicks());
     }
 
     protected void onAiTick(int ticks) {

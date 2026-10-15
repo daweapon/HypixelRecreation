@@ -21,7 +21,7 @@ public class NPCSludge extends AbstractStructureNPC {
     };
 
     public NPCSludge() {
-        super("Sludge", "<e>", DEFAULT_TEXTURE, "sludge_cage", "sludge");
+        super("Sludge", "<e>", SLUDGE_TEXTURE, "sludge_cage", "sludge");
     }
 
     @Override

@@ -3,7 +3,6 @@ package net.swofty.type.crystalhollows.claim;
 import net.minestom.server.coordinate.Point;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.commons.text.Text;
-import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
 import net.swofty.type.crystalhollows.quest.CrystalHollowsProgress;
 import net.swofty.type.crystalhollows.temple.JungleTemple;
 import net.swofty.type.skyblockgeneric.crystalhollows.CrystalNucleus;
@@ -15,6 +14,7 @@ import java.util.UUID;
 public final class CrystalClaims {
     public static final String CLAIM_ANCHOR = "crystal_claim";
     public static final String DEN_STRUCTURE = "goblin_queens_den";
+    public static final double REACH = 8;
 
     public enum Result {
         GRANTED,
@@ -26,39 +26,46 @@ public final class CrystalClaims {
     }
 
     public static Result amethyst(boolean activeKey, boolean parkoursDone, CrystalNucleus.State state) {
-        if (state != CrystalNucleus.State.NOT_FOUND) return Result.ALREADY_HAVE;
-        return activeKey && parkoursDone ? Result.GRANTED : Result.NOT_EARNED;
+        return resolve(activeKey && parkoursDone, state);
     }
 
     public static Result amber(boolean denAccess, CrystalNucleus.State state) {
+        return resolve(denAccess, state);
+    }
+
+    public static Result resolve(boolean earned, CrystalNucleus.State state) {
         if (state != CrystalNucleus.State.NOT_FOUND) return Result.ALREADY_HAVE;
-        return denAccess ? Result.GRANTED : Result.NOT_EARNED;
+        return earned ? Result.GRANTED : Result.NOT_EARNED;
     }
 
     public static NucleusCrystal crystalAt(Point point) {
-        if (matches(JungleTemple.STRUCTURE, point)) return NucleusCrystal.AMETHYST;
-        if (matches(DEN_STRUCTURE, point)) return NucleusCrystal.AMBER;
-        return null;
+        return ClaimSpots.crystalAt(point);
     }
 
-    private static final int CLAIM_HALF_WIDTH = 5;
-    private static final int CLAIM_HEIGHT = 12;
-    private static final int CLAIM_DEPTH = 10;
+    public static boolean earned(SkyBlockPlayer player, NucleusCrystal crystal) {
+        UUID id = player.getUuid();
+        return switch (crystal) {
+            case AMETHYST -> CrystalHollowsProgress.hasActiveJungleKey(id) && JungleTemple.allParkoursComplete(id);
+            case AMBER -> CrystalHollowsProgress.has(id, CrystalHollowsProgress.DEN_ACCESS);
+            case SAPPHIRE -> CrystalHollowsProgress.has(id, CrystalHollowsProgress.SAPPHIRE_STORAGE_OPEN);
+            case JADE -> CrystalHollowsProgress.has(id, CrystalHollowsProgress.JADE_CRYSTAL_CLAIMED);
+            case TOPAZ -> CrystalNucleus.isAvailable(player, crystal);
+        };
+    }
 
-    private static boolean matches(String structure, Point point) {
-        Pos claim = CrystalHollowsLayout.anchor(structure, CLAIM_ANCHOR);
-        return claim != null && Math.abs(point.blockX() - claim.blockX()) <= CLAIM_HALF_WIDTH
-                && point.blockY() - claim.blockY() >= -1 && point.blockY() - claim.blockY() <= CLAIM_HEIGHT
-                && Math.abs(point.blockZ() - claim.blockZ()) <= CLAIM_DEPTH;
+    public static boolean collectable(SkyBlockPlayer player, NucleusCrystal crystal) {
+        return resolve(earned(player, crystal), CrystalNucleus.state(player, crystal)) == Result.GRANTED;
+    }
+
+    public static boolean inReach(SkyBlockPlayer player, NucleusCrystal crystal) {
+        ClaimSpot spot = ClaimSpots.of(crystal);
+        Pos at = spot == null ? null : spot.crystalPosition();
+        return at != null && player.getInstance() != null && player.getPosition().distance(at) <= REACH;
     }
 
     public static void claim(SkyBlockPlayer player, NucleusCrystal crystal) {
-        UUID id = player.getUuid();
-        Result result = crystal == NucleusCrystal.AMETHYST
-                ? amethyst(CrystalHollowsProgress.hasActiveJungleKey(id), JungleTemple.allParkoursComplete(id),
-                CrystalNucleus.state(player, crystal))
-                : amber(CrystalHollowsProgress.has(id, CrystalHollowsProgress.DEN_ACCESS), CrystalNucleus.state(player, crystal));
-        switch (result) {
+        if (!inReach(player, crystal)) return;
+        switch (resolve(earned(player, crystal), CrystalNucleus.state(player, crystal))) {
             case NOT_EARNED -> player.sendMessage(Text.of("<c>You haven't earned this Crystal! Come back when you have >:-)"));
             case ALREADY_HAVE -> player.sendMessage(Text.of("<c>You have already obtained this Crystal!"));
             case GRANTED -> grant(player, crystal);
@@ -68,7 +75,12 @@ public final class CrystalClaims {
     private static void grant(SkyBlockPlayer player, NucleusCrystal crystal) {
         if (!CrystalNucleus.claim(player, crystal)) return;
         UUID id = player.getUuid();
-        if (crystal == NucleusCrystal.AMETHYST) CrystalHollowsProgress.consumeJungleKey(id);
-        else CrystalHollowsProgress.clear(id, CrystalHollowsProgress.DEN_ACCESS);
+        switch (crystal) {
+            case AMETHYST -> CrystalHollowsProgress.consumeJungleKey(id);
+            case AMBER -> CrystalHollowsProgress.clear(id, CrystalHollowsProgress.DEN_ACCESS);
+            default -> {
+            }
+        }
+        CrystalDisplays.refresh(player);
     }
 }

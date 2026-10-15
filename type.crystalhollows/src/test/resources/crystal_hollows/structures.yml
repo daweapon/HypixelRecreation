@@ -7,6 +7,7 @@ structures:
     candidates: []
     anchors:
       door_guardian: {}
+      door_guardian_2: {}
       entrance: {}
       crystal_claim: {}
   - id: mines_of_divan

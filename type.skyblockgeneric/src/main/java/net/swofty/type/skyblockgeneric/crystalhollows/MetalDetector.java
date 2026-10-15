@@ -87,6 +87,10 @@ public final class MetalDetector {
         return best;
     }
 
+    public static String distanceLabel(double distance) {
+        return String.format(java.util.Locale.ROOT, "%.1f meters away", distance);
+    }
+
     public static int beepIntervalTicks(double distance) {
         return (int) Math.max(4, Math.min(40, Math.round(distance * 1.2)));
     }
@@ -109,7 +113,7 @@ public final class MetalDetector {
     private static void tick() {
         List<Point> spots = site.spots();
         for (SkyBlockPlayer player : SkyBlockGenericLoader.getLoadedPlayers()) {
-            if (spots.isEmpty() || !holdingDetector(player) || !inDivan(player)) {
+            if (spots.isEmpty() || !holdingDetector(player)) {
                 BEEP_COUNTDOWN.remove(player.getUuid());
                 continue;
             }
@@ -119,7 +123,7 @@ public final class MetalDetector {
                 continue;
             }
             SkyBlockActionBar.getFor(player).addReplacement(SkyBlockActionBar.BarSection.PROTECTION,
-                    Text.of("<6><l>TREASURE <e>{}m", Math.round(reading.distance())), 10, 2);
+                    Text.of("<e><l>{}", distanceLabel(reading.distance())), 10, 2);
             int left = BEEP_COUNTDOWN.merge(player.getUuid(), -TICK_INTERVAL, Integer::sum);
             if (left > 0) continue;
             BEEP_COUNTDOWN.put(player.getUuid(), beepIntervalTicks(reading.distance()));
@@ -128,10 +132,6 @@ public final class MetalDetector {
     }
 
     private static void dig(SkyBlockPlayer player, SkyBlockItem item) {
-        if (!inDivan(player)) {
-            player.sendMessage(Text.of("<c>The Metal Detector only works in the Mines of Divan!"));
-            return;
-        }
         List<Point> spots = site.spots();
         Set<Integer> cleared = CLEARED.computeIfAbsent(player.getUuid(), _ -> ConcurrentHashMap.newKeySet());
         Reading reading = nearest(spots, cleared, player.getPosition(), DIG_RADIUS);

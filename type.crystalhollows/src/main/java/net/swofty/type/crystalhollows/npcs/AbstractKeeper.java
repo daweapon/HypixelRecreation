@@ -35,11 +35,11 @@ public abstract class AbstractKeeper extends AbstractStructureNPC {
             return;
         }
         if (CrystalHollowsProgress.has(id, CrystalHollowsProgress.JADE_CRYSTAL_CLAIMED)) {
-            if (CrystalNucleus.claim(player, NucleusCrystal.JADE)) {
-                setDialogue(player, "complete");
-                return;
-            }
-            setDialogue(player, CrystalNucleus.state(player, NucleusCrystal.JADE) == CrystalNucleus.State.NOT_PLACED ? "unplaced" : "placed");
+            setDialogue(player, switch (CrystalNucleus.state(player, NucleusCrystal.JADE)) {
+                case NOT_FOUND -> "complete";
+                case NOT_PLACED -> "unplaced";
+                case PLACED -> "placed";
+            });
             return;
         }
         if (CrystalHollowsProgress.turnedIn(id, keeper)) {
@@ -55,7 +55,6 @@ public abstract class AbstractKeeper extends AbstractStructureNPC {
         CrystalHollowsProgress.turnIn(id, keeper);
         if (CrystalHollowsProgress.allKeepersSatisfied(id)) {
             CrystalHollowsProgress.mark(id, CrystalHollowsProgress.JADE_CRYSTAL_CLAIMED);
-            CrystalNucleus.claim(player, NucleusCrystal.JADE);
             setDialogue(player, "complete");
             return;
         }
@@ -82,7 +81,8 @@ public abstract class AbstractKeeper extends AbstractStructureNPC {
                         "Use your <c>Metal Detector<f> to find the rest of the items!"
                 ).build(),
                 DialogueSet.builder().key("complete").lines(
-                        "You found all of the items! Behold... the <a>Jade Crystal<f>!"
+                        "You found all of the items! Behold... the <a>Jade Crystal<f>!",
+                        "It awaits you at the heart of the mines. Go and collect it!"
                 ).build(),
                 DialogueSet.builder().key("unplaced").lines(
                         "You haven't placed the <a>Jade Crystal <f>yet!",

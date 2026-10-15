@@ -218,6 +218,7 @@ public class PlayerStatistics {
     }
 
     private ItemStatistics computePetStatistics() {
+        if (player.getPetData().isSuspended()) return ItemStatistics.empty();
         SkyBlockItem pet = player.getPetData().getEnabledPet();
         ItemStatistics stats = pet == null ? ItemStatistics.empty() : PetItems.statistics(pet);
 

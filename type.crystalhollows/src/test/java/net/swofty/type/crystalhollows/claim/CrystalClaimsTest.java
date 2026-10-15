@@ -2,6 +2,7 @@ package net.swofty.type.crystalhollows.claim;
 
 import net.swofty.type.crystalhollows.gate.EntryGate;
 import net.swofty.type.skyblockgeneric.crystalhollows.CrystalNucleus.State;
+import net.swofty.type.skyblockgeneric.crystalhollows.NucleusCrystal;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import org.junit.jupiter.api.Test;
 
@@ -30,10 +31,28 @@ class CrystalClaimsTest {
     }
 
     @Test
+    void resolveGrantsOnlyAnEarnedCrystalThatIsNotYetFound() {
+        assertEquals(CrystalClaims.Result.GRANTED, CrystalClaims.resolve(true, State.NOT_FOUND));
+        assertEquals(CrystalClaims.Result.NOT_EARNED, CrystalClaims.resolve(false, State.NOT_FOUND));
+        assertEquals(CrystalClaims.Result.ALREADY_HAVE, CrystalClaims.resolve(true, State.NOT_PLACED));
+        assertEquals(CrystalClaims.Result.ALREADY_HAVE, CrystalClaims.resolve(false, State.PLACED));
+    }
+
+    @Test
+    void everyNucleusCrystalHasAClaimSpotInsideItsCube() {
+        var spots = ClaimSpots.read(java.nio.file.Path.of("../configuration/skyblock/crystal_hollows/claims.yml"));
+        assertEquals(NucleusCrystal.values().length, spots.size());
+        spots.values().forEach(spot -> {
+            assertTrue(spot.cube().contains(spot.crystalAt()), spot.crystal().name());
+            assertTrue(spot.walls().isEmpty() || spot.walls().stream().noneMatch(java.util.Objects::isNull));
+        });
+    }
+
+    @Test
     void gatesTriggerOnlyOnEnteringTheirRegion() {
         assertTrue(EntryGate.entered(RegionType.JUNGLE_TEMPLE, RegionType.JUNGLE, RegionType.JUNGLE_TEMPLE));
         assertFalse(EntryGate.entered(RegionType.JUNGLE_TEMPLE, RegionType.JUNGLE_TEMPLE, RegionType.JUNGLE_TEMPLE));
         assertFalse(EntryGate.entered(RegionType.JUNGLE, RegionType.JUNGLE_TEMPLE, RegionType.JUNGLE_TEMPLE));
-        assertEquals(2, EntryGate.GATES.size());
+        assertEquals(1, EntryGate.GATES.size());
     }
 }

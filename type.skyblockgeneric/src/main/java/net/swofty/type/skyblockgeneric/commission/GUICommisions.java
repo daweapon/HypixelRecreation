@@ -110,8 +110,11 @@ public class GUICommisions extends HypixelInventoryGUI {
 							HotmService.gainPowder(player, HotmPowder.GEMSTONE, reward.gemstonePowder());
 						}
 
-						if (HotmService.claimDailyGrind(player)) {
-							player.sendMessage("<2><b>DAILY GRIND <r><7>You earned <2>{} Mithril Powder<7> for your first commission of the day.",
+						boolean hollows = zone == CommissionZone.CRYSTAL_HOLLOWS;
+						if (HotmService.claimDailyGrind(player, hollows ? HotmPowder.GEMSTONE : HotmPowder.MITHRIL)) {
+							player.sendMessage(hollows
+											? "<d><b>DAILY GRIND <r><7>You earned <d>{} Gemstone Powder<7> for your first commission of the day."
+											: "<2><b>DAILY GRIND <r><7>You earned <2>{} Mithril Powder<7> for your first commission of the day.",
 									String.format("%,d", HotmService.dailyPowderAmount(player)));
 						}
 
@@ -139,7 +142,7 @@ public class GUICommisions extends HypixelInventoryGUI {
 					lore.add(Text.literal(" "));
 
 					if (commission != null) {
-						lore.add(Text.of("<9>{}", commission.name));
+						lore.add(Text.of(commission.nameColourTag() + "{}", commission.name));
 						lore.add(Text.of("<7>{}", commission.generateDescription()));
 					} else {
 						lore.add(Text.of("<9>Unknown Commission"));

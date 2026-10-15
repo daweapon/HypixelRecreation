@@ -1,6 +1,7 @@
 package net.swofty.type.skyblockgeneric.gui.inventories.drill;
 
 import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeDrillData.DrillData;
@@ -11,7 +12,9 @@ import net.swofty.type.generic.gui.v2.StatelessView;
 import net.swofty.type.generic.gui.v2.ViewConfiguration;
 import net.swofty.type.generic.gui.v2.ViewLayout;
 import net.swofty.type.generic.gui.v2.ViewSession;
+import net.swofty.type.generic.gui.v2.context.RawClickContext;
 import net.swofty.type.generic.gui.v2.context.ViewContext;
+import net.swofty.type.skyblockgeneric.drill.DrillAnvilRouting;
 import net.swofty.type.skyblockgeneric.drill.DrillFuel;
 import net.swofty.type.skyblockgeneric.drill.DrillPart;
 import net.swofty.type.skyblockgeneric.drill.DrillParts;
@@ -49,6 +52,44 @@ public class GUIDrillAnvil extends StatelessView {
     }
 
     @Override
+    public boolean onRawClick(RawClickContext<DefaultState> click, ViewContext ctx) {
+        if (click.inViewInventory()) return false;
+        Click raw = click.click();
+        if (raw instanceof Click.LeftShift || raw instanceof Click.RightShift) {
+            click.cancel();
+            quickMove((SkyBlockPlayer) ctx.player(), click.slot(), ctx);
+            return true;
+        }
+        if (raw instanceof Click.Double) {
+            click.cancel();
+        }
+        return true;
+    }
+
+    private static void quickMove(SkyBlockPlayer player, int playerSlot, ViewContext ctx) {
+        ItemStack stack = player.getInventory().getItemStack(playerSlot);
+        if (stack.isAir()) return;
+        DrillAnvilRouting.Target target = DrillAnvilRouting.route(isDrill(stack), idOf(stack));
+        if (target == DrillAnvilRouting.Target.NONE) return;
+        int slot = target == DrillAnvilRouting.Target.DRILL ? DRILL_SLOT : INPUT_SLOT;
+        ItemStack existing = ctx.inventory().getItemStack(slot);
+        ItemStack remainder;
+        if (existing.isAir()) {
+            ctx.inventory().setItemStack(slot, stack);
+            remainder = ItemStack.AIR;
+        } else if (target == DrillAnvilRouting.Target.INPUT && existing.isSimilar(stack)) {
+            int moved = DrillAnvilRouting.mergeable(existing.amount(), stack.amount(), existing.maxStackSize());
+            if (moved == 0) return;
+            ctx.inventory().setItemStack(slot, existing.withAmount(existing.amount() + moved));
+            remainder = moved >= stack.amount() ? ItemStack.AIR : stack.withAmount(stack.amount() - moved);
+        } else {
+            return;
+        }
+        player.getInventory().setItemStack(playerSlot, remainder);
+        ctx.session(DefaultState.class).refresh();
+    }
+
+    @Override
     public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
         Components.fill(layout);
         Components.close(layout, 40);
@@ -79,8 +120,7 @@ public class GUIDrillAnvil extends StatelessView {
     }
 
     private static boolean isInput(ItemStack stack) {
-        String id = idOf(stack);
-        return DrillParts.get(id) != null || MachineFuel.isFuel(id);
+        return DrillAnvilRouting.isInput(idOf(stack));
     }
 
     private static String idOf(ItemStack stack) {

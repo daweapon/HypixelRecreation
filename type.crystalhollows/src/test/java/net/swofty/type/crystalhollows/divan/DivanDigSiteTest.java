@@ -54,4 +54,18 @@ class DivanDigSiteTest {
             for (int j = i + 1; j < chosen.size(); j++) assertTrue(chosen.get(i).distance(chosen.get(j)) >= 12);
         }
     }
+
+    @Test
+    void goldFloorIsReadFromTheSchematicAtTheChosenOrigin() {
+        net.minestom.server.instance.block.Block[] palette = {
+                net.minestom.server.instance.block.Block.AIR, net.minestom.server.instance.block.Block.GOLD_BLOCK};
+        int[] indices = new int[4 * 3 * 4];
+        for (int x = 0; x < 4; x++) for (int z = 0; z < 4; z++) indices[x + z * 4 + 0 * 16] = 1;
+        net.swofty.type.skyblockgeneric.schematic.Schematic shape =
+                net.swofty.type.skyblockgeneric.schematic.Schematic.of(4, 3, 4, palette, indices);
+        List<Pos> floor = DivanDigSite.goldFloor(shape, new Pos(100, 50, 200));
+        assertEquals(4, floor.size());
+        assertTrue(floor.contains(new Pos(100.5, 51, 200.5)));
+        assertTrue(floor.contains(new Pos(102.5, 51, 202.5)));
+    }
 }

@@ -2,6 +2,7 @@ package net.swofty.type.crystalhollows.layout;
 
 import net.minestom.server.instance.Instance;
 import net.swofty.type.skyblockgeneric.schematic.SchematicPaster;
+import net.swofty.type.crystalhollows.temple.TempleDoor;
 import org.tinylog.Logger;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public final class HollowsLayoutRefresh {
         try {
             StructurePaster.Report report = StructurePaster.apply(instance, SchematicPaster.CALLER).join();
             report.failures().forEach(failure -> Logger.warn("Crystal Hollows structure paste: {}", failure));
+            TempleDoor.reset(instance);
         } catch (RuntimeException e) {
             Logger.error(e, "Crystal Hollows structure paste failed");
         }

@@ -1,6 +1,8 @@
 package net.swofty.type.skyblockgeneric.commission;
 
 import net.swofty.commons.text.Text;
+import net.swofty.type.skyblockgeneric.gems.Gemstone;
+import net.swofty.type.skyblockgeneric.gems.GemstoneColours;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 
 // A single commission task, pairing an objective with a display description.
@@ -45,6 +47,11 @@ public class Commission {
         this.oneTimeOnly = oneTimeOnly;
     }
 
+    public String nameColourTag() {
+        Gemstone gemstone = GemstoneColours.of(objective.target);
+        return gemstone == null ? "<9>" : GemstoneColours.tag(gemstone);
+    }
+
     public Text generateDescription() {
         return switch (objective.type) {
             case MINE -> withSuffix(Text.of(isOre(objective.target) ? "Mine <a>{} <7>{} Ore" : "Mine <a>{} <7>{}",
@@ -55,10 +62,17 @@ public class Commission {
             case DAMAGE -> withSuffix(Text.of("Damage {} <7>{} times",
                     getTargetNamePlural(objective.target), objective.amount), true, false);
             case PARTICIPATE -> Text.of("Participate in the {}.", getEventName(objective.event));
-            case COLLECT -> withSuffix(Text.of("Collect {} {}",
-                    objective.amount, getCollectibleName(objective.target)), false, true);
+            case COLLECT -> withSuffix(collectText(), false, true);
             case DEPOSIT -> withSuffix(Text.of("Deposit {} Tickets", objective.amount), false, true);
         };
+    }
+
+    private Text collectText() {
+        Gemstone gemstone = GemstoneColours.of(objective.target);
+        if (gemstone == null || !objective.target.isGemstone()) {
+            return Text.of("Collect {} {}", objective.amount, getCollectibleName(objective.target));
+        }
+        return Text.of("Collect {} " + GemstoneColours.tag(gemstone) + "{}<7>", objective.amount, getCollectibleName(objective.target));
     }
 
     private static boolean isOre(Objective.BlockTarget target) {

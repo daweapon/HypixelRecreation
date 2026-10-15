@@ -34,7 +34,7 @@ public final class CrystalHollowsBossProfiles {
             .build();
 
     public static final CrimsonMobProfile SMOG = CrimsonMobProfile.builder("SMOG", "Smog")
-            .level(150).entity(EntityType.WITHER).stats(10_000, 1_500).rewards(0, 0, 0).speed(0)
+            .level(150).entity(EntityType.WITHER).stats(20_000, 1_500).rewards(0, 0, 0).speed(0)
             .types(MobType.WITHER, MobType.CONSTRUCT).neverCorrupted()
             .build();
 
@@ -57,14 +57,14 @@ public final class CrystalHollowsBossProfiles {
             .build();
 
     public static final CrimsonMobProfile STONEWORM = CrimsonMobProfile.builder(STONEWORM_ID, "Stoneworm")
-            .level(119).entity(EntityType.SILVERFISH).stats(5, 400).rewards(178, 39, 130).speed(150)
+            .level(119).entity(EntityType.ARMOR_STAND).stats(5, 400).rewards(178, 39, 130).speed(150)
             .types(MobType.SUBTERRANEAN, MobType.SHIELDED).bestiary(6, 15, WORM_HEAD).neverCorrupted()
             .drops(always("WORM_MEMBRANE", 1), always("ROUGH_TOPAZ_GEM", 1), chance("ROUGH_AMETHYST_GEM", 40),
                     chance("ROUGH_JADE_GEM", 20), chance("ROUGH_AMBER_GEM", 10), chance("ROUGH_SAPPHIRE_GEM", 10))
             .build();
 
     public static final CrimsonMobProfile SCATHA = CrimsonMobProfile.builder(SCATHA_ID, "Scatha")
-            .level(181).entity(EntityType.SILVERFISH).stats(10, 2_500).rewards(271, 60, 199).speed(170)
+            .level(181).entity(EntityType.ARMOR_STAND).stats(10, 2_500).rewards(271, 60, 199).speed(170)
             .types(MobType.SUBTERRANEAN, MobType.SHIELDED).bestiary(6, 15, WORM_HEAD).neverCorrupted()
             .drops(always("WORM_MEMBRANE", 4), always("FINE_TOPAZ_GEM", 1), chance("FINE_AMETHYST_GEM", 40),
                     chance("FINE_JADE_GEM", 20), chance("FINE_AMBER_GEM", 10), chance("FINE_SAPPHIRE_GEM", 10),

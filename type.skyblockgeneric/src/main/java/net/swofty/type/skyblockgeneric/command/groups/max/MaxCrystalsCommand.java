@@ -7,7 +7,7 @@ import net.swofty.type.skyblockgeneric.crystalhollows.CrystalNucleus;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(labels = "crystals",
-        description = "Gives you every Crystal Nucleus crystal, unplaced",
+        description = "Marks every Crystal Nucleus crystal as found, unplaced",
         usage = "/max crystals",
         permission = Rank.STAFF,
         allowsConsole = false)
@@ -19,8 +19,8 @@ public class MaxCrystalsCommand extends HypixelCommand {
             SkyBlockPlayer player = (SkyBlockPlayer) sender;
             int given = CrystalNucleus.grantAllUnplaced(player);
             player.sendMessage(given == 0
-                    ? "<a>You already hold every Crystal, unplaced."
-                    : "<a>You received <e>" + given + " <a>Crystal" + (given == 1 ? "" : "s") + ", all unplaced.");
+                    ? "<a>Every Crystal is already found, unplaced."
+                    : "<a>You found <e>" + given + " <a>Crystal" + (given == 1 ? "" : "s") + ", all unplaced.");
         });
     }
 }

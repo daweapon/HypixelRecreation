@@ -5,6 +5,8 @@ import net.minestom.server.event.player.PlayerMoveEvent;
 import net.swofty.commons.text.Text;
 import net.swofty.type.crystalhollows.gate.EntryGate;
 import net.swofty.type.crystalhollows.temple.JungleTemple;
+import net.swofty.type.crystalhollows.temple.TempleDoor;
+import net.swofty.type.skyblockgeneric.region.rules.TempleLockdown;
 import net.swofty.type.generic.event.EventNodes;
 import net.swofty.type.generic.event.HypixelEventClass;
 import net.swofty.type.generic.event.phase.EventPhase;
@@ -37,14 +39,19 @@ public class ActionStructureMove implements HypixelEventClass {
         }
         if (current == RegionType.JUNGLE_TEMPLE) {
             if (previous != RegionType.JUNGLE_TEMPLE) {
+                TempleLockdown.enter(player);
                 player.sendMessage(Text.of("<c>You are entering the jungle temple, your speed is reduced and your jump boost will not work!"));
             }
             JungleTemple.onMove(player, to);
+        } else if (previous == RegionType.JUNGLE_TEMPLE) {
+            TempleLockdown.leave(player);
         }
     }
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
     public void run(PlayerDisconnectEvent event) {
         PREVIOUS.remove(event.getPlayer().getUuid());
+        TempleLockdown.forget(event.getPlayer().getUuid());
+        TempleDoor.released(event.getPlayer().getUuid());
     }
 }

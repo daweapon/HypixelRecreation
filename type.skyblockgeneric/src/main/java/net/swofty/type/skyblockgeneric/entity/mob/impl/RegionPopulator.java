@@ -5,6 +5,7 @@ import net.minestom.server.coordinate.Pos;
 import net.swofty.type.generic.HypixelConst;
 import net.swofty.type.skyblockgeneric.entity.mob.MobRegistry;
 import net.swofty.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import net.swofty.type.skyblockgeneric.region.MobFreeZones;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 
@@ -21,7 +22,7 @@ public interface RegionPopulator {
 
         Pos randomPosition = region.getRandomPositionForEntity(HypixelConst.getInstanceContainer());
 
-        if (randomPosition == null) return;
+        if (randomPosition == null || MobFreeZones.isMobFreeAt(randomPosition)) return;
 
         if (!HypixelConst.getInstanceContainer().isChunkLoaded(randomPosition))
             HypixelConst.getInstanceContainer().loadChunk(randomPosition).join();

@@ -3,13 +3,11 @@ package net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.boss;
 import net.minestom.server.coordinate.Pos;
 import net.minestom.server.entity.damage.Damage;
 import net.minestom.server.entity.metadata.cube.MagmaCubeMeta;
-import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.crimson.mob.CrimsonIsleMob;
-import net.swofty.type.skyblockgeneric.crimson.mob.CrimsonMobLoot;
 import net.swofty.type.skyblockgeneric.crystalhollows.CrystalNucleus;
 import net.swofty.type.skyblockgeneric.crystalhollows.NucleusCrystal;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.item.handlers.pet.abilities.gathering.MiningPetBonuses;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -109,10 +107,9 @@ public class MobBal extends CrystalHollowsBossMob {
     }
 
     private void claimTopazCrystal(SkyBlockPlayer player) {
-        ItemType crystal = ItemType.get("TOPAZ_CRYSTAL");
-        if (crystal == null || !CrystalNucleus.markFound(player, NucleusCrystal.TOPAZ)) return;
-        CrimsonMobLoot.deliver(player, this, new SkyBlockItem(crystal, 1), false);
-        player.sendMessage("<d>You've claimed the <6>Topaz Crystal<d>!");
+        if (CrystalNucleus.state(player, NucleusCrystal.TOPAZ) != CrystalNucleus.State.NOT_FOUND) return;
+        CrystalNucleus.makeAvailable(player, NucleusCrystal.TOPAZ);
+        player.sendMessage(Text.of("<d>A {}<d> has appeared in Khazad-dûm!", NucleusCrystal.TOPAZ.coloured()));
     }
 
     @Override

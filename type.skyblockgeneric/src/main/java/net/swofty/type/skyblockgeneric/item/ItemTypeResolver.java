@@ -8,12 +8,14 @@ import java.util.Map;
 import java.util.function.Function;
 
 public final class ItemTypeResolver {
+    private static final Map<String, String> ALIASES = Map.of("METAL_DETECTOR", "DWARVEN_METAL_DETECTOR");
     private static volatile Map<String, ItemType> byName;
 
     private ItemTypeResolver() {}
 
     public static @Nullable ItemType resolve(String input) {
-        ItemType exact = ItemType.get(normalize(input));
+        String normalized = normalize(input);
+        ItemType exact = ItemType.get(ALIASES.getOrDefault(normalized, normalized));
         if (exact != null) return exact;
         Map<String, ItemType> names = byName;
         if (names == null) {
@@ -24,7 +26,8 @@ public final class ItemTypeResolver {
     }
 
     static @Nullable ItemType resolve(String input, Function<String, String> configuredName) {
-        ItemType exact = ItemType.get(normalize(input));
+        String normalized = normalize(input);
+        ItemType exact = ItemType.get(ALIASES.getOrDefault(normalized, normalized));
         return exact != null ? exact : index(configuredName).get(compact(input));
     }
 

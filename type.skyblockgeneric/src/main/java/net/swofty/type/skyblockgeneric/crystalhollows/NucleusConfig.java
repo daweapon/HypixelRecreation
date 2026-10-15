@@ -74,6 +74,13 @@ public final class NucleusConfig {
         return null;
     }
 
+    public static final double PEDESTAL_HEIGHT = 4.5;
+
+    public Vec pedestal(NucleusCrystal crystal) {
+        Vec at = statues.get(crystal);
+        return at == null ? null : new Vec(at.x() + 0.5, at.y() + PEDESTAL_HEIGHT, at.z() + 0.5);
+    }
+
     public Map<NucleusCrystal, Vec> statues() {
         return statues;
     }

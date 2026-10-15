@@ -12,6 +12,7 @@ structures:
       - {x: 329, y: 71, z: 486, yaw: 0, pitch: 0}
     anchors:
       door_guardian: {x: 31.5, y: 46, z: 42.5, yaw: 0, pitch: 0}
+      door_guardian_2: {x: 37.5, y: 46, z: 42.5, yaw: 0, pitch: 0}
       entrance: {x: 34.5, y: 46, z: 46.5, yaw: 180, pitch: 0}
       crystal_claim: {x: 53.5, y: 6.5, z: 77.5, yaw: 0, pitch: 0}
       chest_1: {x: 50.5, y: 5.5, z: 75.5, yaw: 0, pitch: 0}

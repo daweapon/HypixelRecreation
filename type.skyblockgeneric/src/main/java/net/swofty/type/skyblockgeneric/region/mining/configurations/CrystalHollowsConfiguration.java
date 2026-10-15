@@ -5,6 +5,7 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.minestom.server.item.Material;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsDrops;
 import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsOre;
 import net.swofty.type.skyblockgeneric.crystalhollows.HardStone;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegenConfiguration;
@@ -34,6 +35,7 @@ public class CrystalHollowsConfiguration extends SkyBlockRegenConfiguration {
         if (mineable == null) {
             List<Material> all = new ArrayList<>(CrystalHollowsOre.allMaterials());
             all.addAll(HardStone.materials());
+            all.addAll(CrystalHollowsDrops.materials());
             all.addAll(List.of(Material.CYAN_TERRACOTTA, Material.GRAY_WOOL, Material.LIGHT_BLUE_WOOL,
                     Material.PRISMARINE, Material.DARK_PRISMARINE, Material.PRISMARINE_BRICKS, Material.POLISHED_DIORITE,
                     Material.COAL_ORE, Material.IRON_ORE, Material.GOLD_ORE, Material.LAPIS_ORE, Material.REDSTONE_ORE,

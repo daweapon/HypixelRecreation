@@ -30,6 +30,8 @@ public enum MineableBlock {
     ORE_GOLD(Material.GOLD_ORE, MiningHandlers.pickaxe(30, 3), MiningBlockClassification.oreBlock()),
     ORE_DIAMOND(Material.DIAMOND_ORE, MiningHandlers.pickaxe(30, 3), MiningBlockClassification.oreBlock()),
     ORE_REDSTONE(Material.REDSTONE_ORE, MiningHandlers.pickaxe(30, 3), MiningBlockClassification.oreBlock()),
+    ORE_LAPIS(Material.LAPIS_ORE, MiningHandlers.pickaxe(30, 3), MiningBlockClassification.oreBlock()),
+    ORE_EMERALD(Material.EMERALD_ORE, MiningHandlers.pickaxe(30, 3), MiningBlockClassification.oreBlock()),
 
     // Break time with axe = blockStrength / axe_strength from AxeComponent
     // Vanilla times: Hand=3s, Wooden=1.5s, Stone=0.75s, Iron=0.5s, Diamond=0.4s, Golden=0.25s
@@ -86,6 +88,14 @@ public enum MineableBlock {
 
     // Crystal Hollows
     HARD_STONE(Material.STONE, MiningHandlers.pickaxe(50, 4), MiningBlockClassification.blockBlock()),
+    HOLLOWS_EMERALD_BLOCK(Material.EMERALD_BLOCK, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
+    HOLLOWS_DIAMOND_BLOCK(Material.DIAMOND_BLOCK, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
+    HOLLOWS_LAPIS_BLOCK(Material.LAPIS_BLOCK, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
+    HOLLOWS_REDSTONE_BLOCK(Material.REDSTONE_BLOCK, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
+    HOLLOWS_IRON_BLOCK(Material.IRON_BLOCK, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
+    HOLLOWS_COAL_BLOCK(Material.COAL_BLOCK, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
+    HOLLOWS_QUARTZ_BLOCK(Material.QUARTZ_BLOCK, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
+    HOLLOWS_QUARTZ_PILLAR(Material.QUARTZ_PILLAR, MiningHandlers.pickaxe(600, 3), MiningBlockClassification.oreBlock()),
     RUBY_ORE(Material.RED_STAINED_GLASS, MiningHandlers.pickaxe(2300, 6), MiningBlockClassification.gemstoneBlock()),
     AMETHYST_ORE(Material.PURPLE_STAINED_GLASS, MiningHandlers.pickaxe(3000, 7), MiningBlockClassification.gemstoneBlock()),
     JADE_ORE(Material.LIME_STAINED_GLASS, MiningHandlers.pickaxe(3000, 7), MiningBlockClassification.gemstoneBlock()),
@@ -131,6 +141,9 @@ public enum MineableBlock {
         GlaciteOre ore = GlaciteOre.of(block, region);
         if (ore != null) return ore.getMineable();
         net.minestom.server.item.Material material = net.minestom.server.item.Material.fromKey(block.name());
+        net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsOre gemstone =
+                net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsOre.of(material, region);
+        if (gemstone != null) return gemstone.getMineable();
         if (net.swofty.type.skyblockgeneric.crystalhollows.HardStone.isHardStone(material, region)) return HARD_STONE;
         return get(block);
     }

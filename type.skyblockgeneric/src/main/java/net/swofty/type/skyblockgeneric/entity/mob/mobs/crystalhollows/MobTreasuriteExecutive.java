@@ -1,6 +1,6 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows;
 
-import net.minestom.server.entity.EntityType;
+import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.crystalhollows.mob.CrystalHollowsMob;
@@ -23,7 +23,14 @@ public abstract class MobTreasuriteExecutive extends CrystalHollowsMob implement
     }
 
     protected MobTreasuriteExecutive() {
-        super(EntityType.ZOMBIE);
+        super(HollowsSkins.PLAYER_MODEL);
+    }
+
+    @Override
+    public void onSpawn() {
+        super.onSpawn();
+        HollowsSkins.dress(this, HollowsSkins.GRUNT);
+        setItemInMainHand(ItemStack.of(Material.IRON_PICKAXE));
     }
 
     @Override

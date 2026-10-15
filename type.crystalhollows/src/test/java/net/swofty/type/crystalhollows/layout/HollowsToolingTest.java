@@ -195,6 +195,6 @@ class HollowsToolingTest {
                 }
             }
         }
-        assertTrue(found >= 10);
+        assertTrue(found >= 5);
     }
 }

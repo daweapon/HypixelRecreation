@@ -81,12 +81,11 @@ public class NPCProfessorRobot extends AbstractStructureNPC {
 
     private void giveCrystal(SkyBlockPlayer player) {
         CrystalHollowsProgress.mark(player.getUuid(), CrystalHollowsProgress.SAPPHIRE_CRYSTAL_CLAIMED);
-        if (CrystalNucleus.claim(player, NucleusCrystal.SAPPHIRE)) return;
-        if (CrystalNucleus.state(player, NucleusCrystal.SAPPHIRE) == CrystalNucleus.State.NOT_PLACED) {
-            setDialogue(player, "unplaced");
-            return;
+        switch (CrystalNucleus.state(player, NucleusCrystal.SAPPHIRE)) {
+            case NOT_FOUND -> sendNPCMessage(player, "The Sapphire Crystal is waiting in the storage room. Go and collect it!");
+            case NOT_PLACED -> setDialogue(player, "unplaced");
+            case PLACED -> sendNPCMessage(player, "Don't forget to place the Sapphire Crystal at the Crystal Nucleus.");
         }
-        sendNPCMessage(player, "Don't forget to place the Sapphire Crystal at the Crystal Nucleus.");
     }
 
     @Override

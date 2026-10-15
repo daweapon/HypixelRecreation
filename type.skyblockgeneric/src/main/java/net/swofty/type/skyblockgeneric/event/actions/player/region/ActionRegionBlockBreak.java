@@ -19,6 +19,7 @@ import net.swofty.type.generic.event.phase.EventPhase;
 import net.swofty.type.generic.event.phase.PhasedEvent;
 import net.swofty.type.skyblockgeneric.entity.DroppedItemEntityImpl;
 import net.swofty.type.skyblockgeneric.commission.CommissionProgress;
+import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsDrops;
 import net.swofty.type.skyblockgeneric.crystalhollows.CrystalHollowsOre;
 import net.swofty.type.skyblockgeneric.crystalhollows.HardStone;
 import net.swofty.type.skyblockgeneric.glacite.GlaciteOre;
@@ -33,6 +34,7 @@ import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegenConfiguration;
 import net.swofty.type.skyblockgeneric.region.SkyBlockRegion;
 import net.swofty.type.skyblockgeneric.region.mining.MineableBlock;
+import net.swofty.type.skyblockgeneric.region.mining.MiningSpread;
 import net.swofty.type.skyblockgeneric.region.mining.handler.SkyBlockMiningHandler;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import net.swofty.type.skyblockgeneric.user.garden.GardenPlotCleaner;
@@ -64,6 +66,11 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
 
         // Skip if player has build bypass
         if (player.isBypassBuild()) return;
+
+        if (net.swofty.type.skyblockgeneric.region.rules.TempleLockdown.isLocked(player)) {
+            event.setCancelled(true);
+            return;
+        }
 
         if (HypixelConst.isGardenServer() && GardenPlotLock.isLocked(event.getInstance(), event.getBlockPosition().x(), event.getBlockPosition().z())) {
             event.setCancelled(true);
@@ -188,6 +195,12 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
             } else if (HardStone.isHardStone(material, breakRegionType)) {
                 customDrops.clear();
                 customDrops.add(new SkyBlockItem(ItemType.HARD_STONE, 1));
+            } else {
+                CrystalHollowsDrops.Drop hollowsDrop = CrystalHollowsDrops.of(material, breakRegionType);
+                if (hollowsDrop != null) {
+                    customDrops.clear();
+                    customDrops.add(new SkyBlockItem(hollowsDrop.item(), hollowsDrop.roll(java.util.concurrent.ThreadLocalRandom.current())));
+                }
             }
 
             // Call custom break event
@@ -266,6 +279,10 @@ public class ActionRegionBlockBreak implements HypixelEventClass {
                     ItemDrops.dropFromBlock(new DroppedItemEntityImpl(dropItem, player),
                             player.getInstance(), dropBlock);
                 }
+            }
+
+            if (!playerPlaced && region != null && !HypixelConst.isIslandServer()) {
+                MiningSpread.trigger(player, event.getBlockPosition(), block, region.getType());
             }
         }
     }

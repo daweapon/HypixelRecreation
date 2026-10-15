@@ -258,12 +258,16 @@ public final class HotmService {
     }
 
     public static boolean claimDailyGrind(SkyBlockPlayer player) {
+        return claimDailyGrind(player, HotmPowder.MITHRIL);
+    }
+
+    public static boolean claimDailyGrind(SkyBlockPlayer player, HotmPowder powder) {
         if (!hasPerk(player, "daily_grind")) return false;
         DatapointHOTM.PlayerHOTMData data = data(player);
         long today = dailyBonusDay();
         if (data.getDailyCommissionDay() == today) return false;
         data.setDailyCommissionDay(today);
-        data.addMithrilPowder(dailyPowderAmount(player));
+        data.addPowder(powder, dailyPowderAmount(player));
         save(player, data);
         return true;
     }

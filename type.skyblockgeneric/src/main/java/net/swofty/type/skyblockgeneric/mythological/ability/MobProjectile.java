@@ -62,6 +62,10 @@ public final class MobProjectile {
         fire(display, shooter, aim(shooter, target, 0), blocksPerTick, true, onHit);
     }
 
+    public static void witherSkull(Entity shooter, Entity target, double blocksPerTick, Consumer<SkyBlockPlayer> onHit) {
+        fire(new Entity(EntityType.WITHER_SKULL), shooter, aim(shooter, target, 0), blocksPerTick, false, onHit);
+    }
+
     public static void bobber(Entity shooter, Entity target, double blocksPerTick, Consumer<SkyBlockPlayer> onHit) {
         Entity hook = new Entity(EntityType.FISHING_BOBBER);
         hook.editEntityMeta(FishingHookMeta.class, meta -> meta.setOwnerEntity(shooter));

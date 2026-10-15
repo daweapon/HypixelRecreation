@@ -124,6 +124,8 @@ final class PlayerStatisticLoops {
             SkyBlockGenericLoader.forEachLoadedPlayer(player -> {
                 Thread.startVirtualThread(() -> {
                     double speed = Math.min(player.getStatistics().allStatistics().getOverall(ItemStatistic.SPEED), ColdService.speedCap(player));
+                    speed = net.swofty.type.skyblockgeneric.region.rules.TempleLockdown.limitSpeed(
+                            net.swofty.type.skyblockgeneric.region.rules.TempleLockdown.isLocked(player), speed);
                     if (player.isSpeedManaged()) return; // if the Speed is currently managed by another source, don't override it
                     player.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue((float) (speed / 1000));
                 });

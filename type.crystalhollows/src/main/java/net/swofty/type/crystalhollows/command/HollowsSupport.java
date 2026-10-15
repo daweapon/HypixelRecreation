@@ -6,6 +6,8 @@ import net.minestom.server.command.builder.suggestion.SuggestionEntry;
 import net.minestom.server.coordinate.Point;
 import net.minestom.server.coordinate.Pos;
 import net.swofty.type.crystalhollows.chest.StructureChests;
+import net.swofty.type.crystalhollows.claim.ClaimSpots;
+import net.swofty.type.crystalhollows.claim.CrystalDisplays;
 import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
 import net.swofty.type.crystalhollows.layout.HollowsAnchors;
 import net.swofty.type.crystalhollows.layout.HollowsWorld;
@@ -57,6 +59,8 @@ public final class HollowsSupport {
     public static void reloadLayout(long seed) {
         StructureChests.reload();
         NucleusConfig.reload();
+        ClaimSpots.reload();
+        CrystalDisplays.reset();
         HollowsWorld.reload();
         CrystalHollowsLayout.generate(StructureCatalogue.load(), seed);
     }

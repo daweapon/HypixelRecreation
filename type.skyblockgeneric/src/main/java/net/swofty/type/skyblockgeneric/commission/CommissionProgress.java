@@ -94,7 +94,7 @@ public final class CommissionProgress {
     }
 
     private static void onComplete(SkyBlockPlayer player, Commission commission) {
-        player.sendMessage("<a><l>{} </l><e>Commission Complete! Visit {} to claim your rewards!", commission.name,
+        player.sendMessage(commission.nameColourTag() + "<l>{} </l><e>Commission Complete! Visit {} to claim your rewards!", commission.name,
                 commission.zone.claimGiver());
     }
 }

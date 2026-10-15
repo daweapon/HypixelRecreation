@@ -2,11 +2,11 @@ package net.swofty.type.crystalhollows.divan;
 
 import net.minestom.server.coordinate.Point;
 import net.minestom.server.coordinate.Pos;
-import net.minestom.server.instance.Instance;
 import net.minestom.server.instance.block.Block;
 import net.swofty.type.crystalhollows.layout.StructurePlacement;
-import net.swofty.type.crystalhollows.layout.StructureSite;
-import net.swofty.type.generic.HypixelConst;
+import net.swofty.type.crystalhollows.layout.SchematicFiles;
+import net.swofty.type.crystalhollows.layout.StructurePaster;
+import net.swofty.type.skyblockgeneric.schematic.Schematic;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.crystalhollows.config.ConfigReader;
 import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
@@ -82,25 +82,24 @@ public final class DivanDigSite implements MetalDetector.DigSite {
         Cache cached = cache;
         if (cached != null && cached.seed() == seed && cached.origin().equals(origin)) return cached.spots();
         StructurePlacement placement = CrystalHollowsLayout.placement(current.structure());
-        Instance instance = HypixelConst.getInstanceContainer();
-        if (placement == null || placement.spec().site() == null || instance == null) return List.of();
-        List<Pos> floor = goldFloor(instance, placement.spec().site(), origin);
-        List<Point> chosen = new ArrayList<>(spread(floor, current.lobbySpots(), seed ^ 0x4D44L));
+        if (placement == null || placement.spec().schematic() == null) return List.of();
+        SchematicFiles.Probe probe = SchematicFiles.probe(SchematicFiles.DIRECTORY, placement.spec().schematic());
+        if (!probe.readable()) return List.of();
+        Schematic shape = probe.schematic().rotated(StructurePaster.rotationFor(placement.spec(), seed));
+        List<Point> chosen = new ArrayList<>(spread(goldFloor(shape, origin), current.lobbySpots(), seed ^ 0x4D44L));
         cache = new Cache(seed, origin, List.copyOf(chosen));
         return cache.spots();
     }
 
-    public static List<Pos> goldFloor(Instance instance, StructureSite site, Pos origin) {
-        int shiftX = origin.blockX() - site.minX();
-        int shiftY = origin.blockY() - site.minY();
-        int shiftZ = origin.blockZ() - site.minZ();
+    public static List<Pos> goldFloor(Schematic shape, Pos origin) {
         List<Pos> floor = new ArrayList<>();
-        for (int x = site.minX(); x <= site.maxX(); x += FLOOR_STEP) {
-            for (int z = site.minZ(); z <= site.maxZ(); z += FLOOR_STEP) {
-                instance.loadChunk(x >> 4, z >> 4).join();
-                for (int y = site.maxY(); y >= site.minY(); y--) {
-                    if (instance.getBlock(x, y, z).compare(Block.GOLD_BLOCK) && instance.getBlock(x, y + 1, z).isAir()) {
-                        floor.add(new Pos(x + shiftX + 0.5, y + shiftY + 1, z + shiftZ + 0.5));
+        for (int x = 0; x < shape.width(); x += FLOOR_STEP) {
+            for (int z = 0; z < shape.length(); z += FLOOR_STEP) {
+                for (int y = shape.height() - 2; y >= 0; y--) {
+                    Block block = shape.blockAt(x, y, z);
+                    Block above = shape.blockAt(x, y + 1, z);
+                    if (block != null && block.compare(Block.GOLD_BLOCK) && (above == null || above.isAir())) {
+                        floor.add(new Pos(origin.x() + x + 0.5, origin.y() + y + 1, origin.z() + z + 0.5));
                         break;
                     }
                 }

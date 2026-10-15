@@ -5,6 +5,7 @@ import net.minestom.server.coordinate.Pos;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import net.minestom.server.timer.TaskSchedule;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.HollowsSkins;
 import net.swofty.type.skyblockgeneric.mythological.ability.MobProjectile;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 import org.jetbrains.annotations.Nullable;
@@ -35,6 +36,8 @@ public class MobBossCorleone extends CrystalHollowsBossMob {
     public void onSpawn() {
         super.onSpawn();
         if (home == null) home = getPosition();
+        HollowsSkins.dress(this, HollowsSkins.CORLEONE);
+        setItemInMainHand(ItemStack.of(Material.IRON_PICKAXE));
     }
 
     @Override

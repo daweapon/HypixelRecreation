@@ -3311,6 +3311,7 @@ items:
     material: paper
     name: "Amber Crystal"
     rarity: SPECIAL
+    unavailable: "Claimed in the world, not an inventory item"
     source: "Claimed in the Goblin Queen's Den (Goblin Holdout) while covered in King Yolkar's scent"
     lore:
       - "§7Energetic crystal found deep in the"
@@ -3326,6 +3327,7 @@ items:
     material: paper
     name: "Amethyst Crystal"
     rarity: SPECIAL
+    unavailable: "Claimed in the world, not an inventory item"
     source: "Claimed at the end of the Jungle Temple parkours with an active Jungle Key"
     lore:
       - "§7Energetic crystal found deep in the"
@@ -3341,6 +3343,7 @@ items:
     material: paper
     name: "Jade Crystal"
     rarity: SPECIAL
+    unavailable: "Claimed in the world, not an inventory item"
     source: "Keepers of Gold, Emerald, Diamond and Lapis in the Mines of Divan, once all four Scavenged Items are turned in"
     lore:
       - "§7Energetic crystal found deep in the"

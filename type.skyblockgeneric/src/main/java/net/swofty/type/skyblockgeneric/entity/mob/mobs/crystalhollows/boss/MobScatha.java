@@ -1,12 +1,18 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.boss;
 
 import net.swofty.commons.skyblock.item.Rarity;
+import net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows.HollowsSkins;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public class MobScatha extends MobWorm {
 
     public MobScatha() {
         super(CrystalHollowsBossProfiles.SCATHA);
+    }
+
+    @Override
+    protected String headTexture() {
+        return HollowsSkins.SCATHA_HEAD;
     }
 
     @Override

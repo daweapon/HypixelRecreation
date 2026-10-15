@@ -1,10 +1,8 @@
 package net.swofty.type.skyblockgeneric.crystalhollows;
 
-import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.commons.text.Text;
 import net.swofty.type.skyblockgeneric.commission.CommissionProgress;
 import net.swofty.type.skyblockgeneric.data.datapoints.DatapointCrystalHollows;
-import net.swofty.type.skyblockgeneric.item.SkyBlockItem;
 import net.swofty.type.skyblockgeneric.levels.SkyBlockXPSource;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -19,6 +17,7 @@ public final class CrystalNucleus {
 
     private static final Map<UUID, Set<NucleusCrystal>> FOUND = new ConcurrentHashMap<>();
     private static final Map<UUID, Set<NucleusCrystal>> PLACED = new ConcurrentHashMap<>();
+    private static final Map<UUID, Set<NucleusCrystal>> AVAILABLE = new ConcurrentHashMap<>();
 
     private CrystalNucleus() {
     }
@@ -49,8 +48,18 @@ public final class CrystalNucleus {
         return PLACED.getOrDefault(player.getUuid(), Set.of()).size();
     }
 
+    public static boolean isAvailable(SkyBlockPlayer player, NucleusCrystal crystal) {
+        return AVAILABLE.getOrDefault(player.getUuid(), Set.of()).contains(crystal);
+    }
+
+    public static void makeAvailable(SkyBlockPlayer player, NucleusCrystal crystal) {
+        if (state(player, crystal) != State.NOT_FOUND) return;
+        AVAILABLE.computeIfAbsent(player.getUuid(), _ -> EnumSet.noneOf(NucleusCrystal.class)).add(crystal);
+    }
+
     public static boolean markFound(SkyBlockPlayer player, NucleusCrystal crystal) {
         if (state(player, crystal) != State.NOT_FOUND) return false;
+        removeAvailable(player.getUuid(), crystal);
         FOUND.computeIfAbsent(player.getUuid(), _ -> EnumSet.noneOf(NucleusCrystal.class)).add(crystal);
         CommissionProgress.recordCrystalFound(player);
         announceFound(player, crystal);
@@ -62,7 +71,7 @@ public final class CrystalNucleus {
         String bar = "§5§l" + "▬".repeat(64);
         player.sendMessage(Text.legacy(bar));
         player.sendMessage(Text.legacy("§f                       §5§l✦ CRYSTAL FOUND §7(" + found + "§7/" + NucleusCrystal.values().length + "§7)"));
-        player.sendMessage(Text.legacy("§f                              " + legacyColour(crystal) + crystal.getDisplayName() + " Crystal"));
+        player.sendMessage(Text.legacy("§f                              " + crystal.getLegacyColour() + crystal.getDisplayName() + " Crystal"));
         player.sendMessage(Text.legacy(""));
         player.sendMessage(Text.legacy("§f            §7Place this Crystal in the §5Crystal Nucleus §7and"));
         player.sendMessage(Text.legacy("§f             §7find all §a5 §7Crystals in the §5Crystal Hollows §7to"));
@@ -70,21 +79,13 @@ public final class CrystalNucleus {
         player.sendMessage(Text.legacy(bar));
     }
 
-    private static String legacyColour(NucleusCrystal crystal) {
-        return switch (crystal) {
-            case JADE -> "§a";
-            case AMBER -> "§6";
-            case AMETHYST -> "§5";
-            case SAPPHIRE -> "§b";
-            case TOPAZ -> "§e";
-        };
+    private static void removeAvailable(UUID id, NucleusCrystal crystal) {
+        Set<NucleusCrystal> available = AVAILABLE.get(id);
+        if (available != null) available.remove(crystal);
     }
 
     public static boolean claim(SkyBlockPlayer player, NucleusCrystal crystal) {
-        ItemType item = ItemType.get(crystal.name() + "_CRYSTAL");
-        if (item == null || !markFound(player, crystal)) return false;
-        player.addAndUpdateItem(new SkyBlockItem(item, 1));
-        return true;
+        return markFound(player, crystal);
     }
 
     public static int grantAllUnplaced(SkyBlockPlayer player) {
@@ -94,8 +95,7 @@ public final class CrystalNucleus {
             if (state == State.NOT_PLACED) continue;
             if (state == State.PLACED) PLACED.get(player.getUuid()).remove(crystal);
             FOUND.computeIfAbsent(player.getUuid(), _ -> EnumSet.noneOf(NucleusCrystal.class)).add(crystal);
-            ItemType item = ItemType.get(crystal.name() + "_CRYSTAL");
-            if (item != null) player.addAndUpdateItem(new SkyBlockItem(item, 1));
+            removeAvailable(player.getUuid(), crystal);
             given++;
         }
         return given;
@@ -113,7 +113,9 @@ public final class CrystalNucleus {
         }
         FOUND.get(player.getUuid()).remove(crystal);
         PLACED.computeIfAbsent(player.getUuid(), _ -> EnumSet.noneOf(NucleusCrystal.class)).add(crystal);
+        removeAvailable(player.getUuid(), crystal);
         player.sendMessage(Text.of("<a>You placed the {}<a>!", crystal.coloured()));
+        CrystalPlacementEffects.play(player, crystal);
         if (placedCount(player) < NucleusCrystal.values().length) {
             player.sendMessage(Text.of("<7>Keep exploring the Crystal Hollows to find the rest!"));
             return;
@@ -124,6 +126,7 @@ public final class CrystalNucleus {
     private static void complete(SkyBlockPlayer player) {
         PLACED.remove(player.getUuid());
         FOUND.remove(player.getUuid());
+        AVAILABLE.remove(player.getUuid());
         DatapointCrystalHollows.CrystalHollowsData data = CrystalHollowsAccess.data(player);
         data.setNucleusRuns(data.getNucleusRuns() + 1);
         CrystalHollowsAccess.save(player, data);
@@ -136,6 +139,7 @@ public final class CrystalNucleus {
     public static void forget(SkyBlockPlayer player) {
         FOUND.remove(player.getUuid());
         PLACED.remove(player.getUuid());
+        AVAILABLE.remove(player.getUuid());
     }
 
     public static void syncSkyBlockXp(SkyBlockPlayer player) {

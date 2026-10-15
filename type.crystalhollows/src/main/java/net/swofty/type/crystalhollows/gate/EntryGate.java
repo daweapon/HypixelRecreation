@@ -5,7 +5,6 @@ import net.swofty.commons.text.Text;
 import net.swofty.type.crystalhollows.claim.CrystalClaims;
 import net.swofty.type.crystalhollows.layout.CrystalHollowsLayout;
 import net.swofty.type.crystalhollows.quest.CrystalHollowsProgress;
-import net.swofty.type.crystalhollows.temple.JungleTemple;
 import net.swofty.type.skyblockgeneric.region.RegionType;
 import net.swofty.type.skyblockgeneric.user.SkyBlockPlayer;
 
@@ -18,9 +17,6 @@ public record EntryGate(RegionType region, String structure, Predicate<UUID> all
     public static final String EXIT_ANCHOR = "entrance";
 
     public static final List<EntryGate> GATES = List.of(
-            new EntryGate(RegionType.JUNGLE_TEMPLE, JungleTemple.STRUCTURE, CrystalHollowsProgress::hasActiveJungleKey,
-                    "<c>The Kalhuiki Door Guardian won't let you into the temple without a Jungle Key!", _ -> {
-            }),
             new EntryGate(RegionType.GOBLIN_QUEENS_DEN, CrystalClaims.DEN_STRUCTURE, CrystalHollowsProgress::hasKingsScent,
                     "<c>The Goblin Queen's guards throw you out! You need King Yolkar's scent to sneak past them.",
                     id -> CrystalHollowsProgress.mark(id, CrystalHollowsProgress.DEN_ACCESS)));

@@ -2,6 +2,7 @@ package net.swofty.type.crystalhollows.quest;
 
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.crystalhollows.temple.JungleTemple;
+import net.swofty.type.crystalhollows.temple.TempleDoor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -116,6 +117,7 @@ public final class CrystalHollowsProgress {
     public static void consumeJungleKey(UUID player) {
         clear(player, JUNGLE_KEY_ACTIVE);
         JungleTemple.reset(player);
+        TempleDoor.released(player);
     }
 
     public static int hitSludge(UUID player) {

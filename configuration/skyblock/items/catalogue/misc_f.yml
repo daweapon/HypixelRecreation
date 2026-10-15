@@ -1365,6 +1365,7 @@ items:
     material: paper
     name: "Topaz Crystal"
     rarity: SPECIAL
+    unavailable: "Claimed in the world, not an inventory item"
     source: "Defeating Bal in Khazad-dum (Crystal Hollows)"
     lore:
       - "§7Energetic crystal found deep in the"

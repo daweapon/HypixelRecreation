@@ -124,6 +124,8 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
         private PetEntityImpl enabledPetEntityImpl = null;
         @JsonIgnore
         private transient List<ActiveAbility> activeAbilities;
+        @JsonIgnore
+        private transient volatile boolean suspended;
         private final transient Map<PetAbility, AbilityRuntime> abilityRuntimes = new HashMap<>();
 
         public UserPetData() {
@@ -235,6 +237,7 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
 
         @JsonIgnore
         public List<ActiveAbility> getActiveAbilities() {
+            if (suspended) return List.of();
             List<ActiveAbility> cached = activeAbilities;
             if (cached == null) {
                 cached = computeActiveAbilities();
@@ -278,6 +281,10 @@ public class DatapointPetData extends SkyBlockDatapoint<DatapointPetData.UserPet
                 active.ability().onEvent(event, active.pet());
             }
             return event;
+        }
+
+        public void setSuspended(boolean suspended) {
+            this.suspended = suspended;
         }
 
         public void refreshCachedAbilities() {

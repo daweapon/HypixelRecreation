@@ -16,6 +16,8 @@ import net.swofty.type.crystalhollows.divan.DivanDigSite;
 import net.swofty.type.crystalhollows.layout.HollowsWorld;
 import net.swofty.type.crystalhollows.layout.HollowsLayoutRefresh;
 import net.swofty.type.generic.HypixelConst;
+import net.swofty.type.crystalhollows.claim.CrystalDisplays;
+import net.swofty.type.crystalhollows.quest.KingsScentWater;
 import net.swofty.type.crystalhollows.lifecycle.CrystalHollowsLobby;
 import net.swofty.type.crystalhollows.redis.RedisIsLobbyJoinable;
 import net.swofty.type.crystalhollows.tab.CrystalHollowsInfoModule;
@@ -62,6 +64,8 @@ public class TypeCrystalHollowsLoader implements SkyBlockTypeLoader {
         CrystalHollowsLobby.start();
         AreaSidebar.registerDetail(CrystalHollowsSidebar::detail);
         CrystalHollowsBossSpawner.start();
+        CrystalDisplays.start();
+        KingsScentWater.start();
     }
 
     @Override

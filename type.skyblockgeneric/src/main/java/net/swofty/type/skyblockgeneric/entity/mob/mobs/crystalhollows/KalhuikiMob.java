@@ -1,6 +1,5 @@
 package net.swofty.type.skyblockgeneric.entity.mob.mobs.crystalhollows;
 
-import net.minestom.server.entity.EntityType;
 import net.minestom.server.entity.ai.TargetSelector;
 import net.swofty.commons.skyblock.item.ItemType;
 import net.swofty.type.skyblockgeneric.crystalhollows.mob.CrystalHollowsMob;
@@ -31,7 +30,13 @@ public abstract class KalhuikiMob extends CrystalHollowsMob implements RegionPop
     private final Map<UUID, Long> angryUntil = new ConcurrentHashMap<>();
 
     protected KalhuikiMob() {
-        super(EntityType.ZOMBIE);
+        super(HollowsSkins.PLAYER_MODEL);
+    }
+
+    @Override
+    public void onSpawn() {
+        super.onSpawn();
+        HollowsSkins.dressAsKalhuiki(this);
     }
 
     @Override

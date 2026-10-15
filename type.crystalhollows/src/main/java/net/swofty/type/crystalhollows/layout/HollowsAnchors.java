@@ -10,7 +10,8 @@ public final class HollowsAnchors {
 
     private static final List<Ref> REFS = List.of(
             new Ref("jungle_temple", "door_guardian", "Kalhuiki Door Guardian NPC", false),
-            new Ref("jungle_temple", "entrance", "Jungle Temple entry gate exit and teleport target", false),
+            new Ref("jungle_temple", "door_guardian_2", "Second Kalhuiki Door Guardian NPC", false),
+            new Ref("jungle_temple", "entrance", "Jungle Temple parkour respawn fallback", false),
             new Ref("jungle_temple", "crystal_claim", "Amethyst crystal claim", false),
             new Ref("goblin_queens_den", "entrance", "Goblin Queen's Den entry gate exit", false),
             new Ref("goblin_queens_den", "crystal_claim", "Amber crystal claim", false),

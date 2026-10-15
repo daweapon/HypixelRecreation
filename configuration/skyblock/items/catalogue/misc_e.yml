@@ -1006,6 +1006,7 @@ items:
     material: paper
     name: "Sapphire Crystal"
     rarity: SPECIAL
+    unavailable: "Claimed in the world, not an inventory item"
     source: "Professor Robot in the Lost Precursor City: six different Automaton Parts or a Precursor Apparatus"
     lore:
       - "§7Energetic crystal found deep in the"

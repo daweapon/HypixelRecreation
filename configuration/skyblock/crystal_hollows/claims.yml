@@ -1,0 +1,26 @@
+claims:
+  - crystal: AMETHYST
+    structure: jungle_temple
+    crystal_at: {x: 53.5, y: 9.5, z: 82.5}
+    cube: {min: {x: 48, y: 5, z: 77}, max: {x: 58, y: 17, z: 87}}
+    walls: []
+  - crystal: AMBER
+    structure: goblin_queens_den
+    crystal_at: {x: 50.5, y: 59.5, z: 52.5}
+    cube: {min: {x: 45, y: 55, z: 47}, max: {x: 55, y: 67, z: 57}}
+    walls: []
+  - crystal: JADE
+    structure: mines_of_divan
+    crystal_at: {x: 50.5, y: 32.5, z: 50.5}
+    cube: {min: {x: 45, y: 28, z: 45}, max: {x: 55, y: 40, z: 55}}
+    walls: []
+  - crystal: SAPPHIRE
+    structure: lost_precursor_city
+    crystal_at: {x: 16.5, y: 53.5, z: 82.5}
+    cube: {min: {x: 11, y: 49, z: 77}, max: {x: 21, y: 61, z: 87}}
+    walls: []
+  - crystal: TOPAZ
+    structure: khazad_dum
+    crystal_at: {x: 52.5, y: 10.5, z: 38.5}
+    cube: {min: {x: 47, y: 6, z: 33}, max: {x: 57, y: 18, z: 43}}
+    walls: []
