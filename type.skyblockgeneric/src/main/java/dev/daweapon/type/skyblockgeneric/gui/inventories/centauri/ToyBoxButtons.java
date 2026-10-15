@@ -1,0 +1,100 @@
+package dev.daweapon.type.skyblockgeneric.gui.inventories.centauri;
+
+import net.minestom.server.item.Material;
+import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.generic.data.datapoints.DatapointInteger;
+import dev.daweapon.type.generic.data.datapoints.DatapointLong;
+import dev.daweapon.type.skyblockgeneric.crystalhollows.CrystalHollowsAccess;
+import dev.daweapon.type.skyblockgeneric.crystalhollows.NucleusRngMeter;
+import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
+import dev.daweapon.type.skyblockgeneric.drill.DrillFuel;
+import dev.daweapon.type.skyblockgeneric.dungeons.CatacombsProgress;
+import dev.daweapon.type.skyblockgeneric.essence.EssenceType;
+import dev.daweapon.type.skyblockgeneric.essence.Essences;
+import dev.daweapon.type.skyblockgeneric.experiments.EnchantingXpService;
+import dev.daweapon.type.skyblockgeneric.experiments.ExperimentRngMeter;
+import dev.daweapon.type.skyblockgeneric.experiments.ExperimentTable;
+import dev.daweapon.type.skyblockgeneric.forge.ForgeService;
+import dev.daweapon.type.skyblockgeneric.garden.GardenService;
+import dev.daweapon.type.skyblockgeneric.garden.feast.FeastService;
+import dev.daweapon.type.skyblockgeneric.garden.greenhouse.GreenhouseService;
+import dev.daweapon.type.skyblockgeneric.garden.visitor.VisitorService;
+import dev.daweapon.type.skyblockgeneric.hotm.HotmService;
+
+import java.util.List;
+
+import static dev.daweapon.type.skyblockgeneric.gui.inventories.centauri.ToyBoxButton.of;
+import static dev.daweapon.type.skyblockgeneric.gui.inventories.centauri.ToyBoxButton.unavailable;
+
+final class ToyBoxButtons {
+    private ToyBoxButtons() {}
+
+    static List<ToyBoxButton> general() {
+        return List.of(
+                of(Material.COOKIE, "<6>Cookie Jar", "<8>I'd give you a cookie, but I ate it.", "<7>Claim free infinite <6>Booster Cookies<7>!", p -> ToyBoxActions.give(p, ItemType.BOOSTER_COOKIE)),
+                of(Material.POTION, "<6>Potion Seller", "<8>My potions are too strong for you.", "<7>Claim a <c>God Potion<7>!", p -> ToyBoxActions.give(p, ItemType.GOD_POTION)),
+                of(Material.DIAMOND_PICKAXE, "<6>Max Items", "<8>The Great Sword begotten in dragon's breath...", "<7>Maximise the stack in your hand.", ToyBoxActions::maxItem),
+                of(Material.GOLD_BLOCK, "<6>Duplicate Item", "<8>The original is impossible to discern.", "<7>Duplicate the item you are holding.", ToyBoxActions::duplicate),
+                of(Material.PAINTING, "<6>Max Collections", "<8>Gotta collect 'em all.", "<7>Max every available collection.", ToyBoxActions::maxCollections),
+                of(Material.DIAMOND_SWORD, "<6>Max Skills", "<8>Gotta collect 'em all.", "<7>Max every skill.", ToyBoxActions::maxSkills),
+                of(Material.ROTTEN_FLESH, "<6>Max Slayers", "<8>Gotta collect 'em all.", "<7>Impress Maddox!", ToyBoxActions::maxSlayers));
+    }
+
+    static List<ToyBoxButton> mining() {
+        return List.of(
+                of(Material.PRISMARINE_CRYSTALS, "<5>50k HOTM Exp", "<8>The power of a pickaxe.", "<7>Gain <5>50,000 HOTM Experience<7>.", p -> HotmService.addExperience(p, 50_000)),
+                of(Material.GUNPOWDER, "<a>Give 2m powder of each type", "<8>Mindcraft.", "<7>Get 2,000,000 of each powder type: <2>Mithril<7>, <d>Gemstone <7>and <b>Glacite<7>.", p -> HotmService.addPowderToAll(p, 2_000_000)),
+                of(Material.NETHER_STAR, "<5>Tokens of the Mountain", "<8>Spend them wisely.", "<7>Gain <5>10 Tokens of the Mountain<7>.", p -> HotmService.addTokens(p, 10)),
+                of(Material.BEACON, "<5>Max Core of the Mountain", "<8>The heart of it all.", "<7>Set the Core of the Mountain to level 10.", HotmService::maxCore),
+                of(Material.REDSTONE_BLOCK, "<c>Reset HOTM Perks", "<8>A fresh start.", "<7>Reset every Heart of the Mountain perk.", HotmService::reset),
+                of(Material.FURNACE, "<6>Finish Forge Processes", "<8>Patience is overrated.", "<7>Finish every running <6>Forge<7> process.", ForgeService::finishAll),
+                of(Material.BUCKET, "<2>Fill Drill Tank", "<8>Never run dry.", "<7>Refill the <a>Drill <7>in your hand to its maximum <2>Fuel<7>.", DrillFuel::fillHeld),
+                of(Material.MINECART, "<d>Crystal Hollows Access", "<8>Skip the queue at Gwendolyn.", "<7>Gain permanent <d>Crystal Hollows<7> access.", CrystalHollowsAccess::grantFullAccess),
+                of(Material.EXPERIENCE_BOTTLE, "<a>Set RNG Meter Progress", "<8>Luck, on demand.", "<7>Fill the <d>Crystal Nucleus<7> RNG Meter.", p -> {
+                    var data = CrystalHollowsAccess.data(p);
+                    data.setRngXp(10_000_000L);
+                    CrystalHollowsAccess.save(p, data);
+                }),
+                of(Material.GLASS_BOTTLE, "<a>Clear RNG Meter Progress", "<8>Back to zero.", "<7>Clear the <d>Crystal Nucleus<7> RNG Meter.", NucleusRngMeter::reset));
+    }
+
+    static List<ToyBoxButton> garden() {
+        return List.of(
+                of(Material.SUNFLOWER, "<a>\"Organically Grown\" Garden Levels!", "<8>Fertiliser for your progress.", "<7>Gain <a>10,000 Garden Experience<7>.", p -> GardenService.addGardenXp(p, 10_000)),
+                of(Material.GREEN_DYE, "<2>Pile of Sowdust", "<8>Farmed the hard way.", "<7>Give yourself <2>1,000,000,000 Sowdust<7>.", p -> ToyBoxActions.garden(p, profile -> profile.addSowdust(1_000_000_000D))),
+                of(Material.BRICKS, "<c>Vault of Copper", "<8>Shiny and reddish.", "<7>Give yourself <c>1,000,000 Copper<7>.", p -> ToyBoxActions.garden(p, profile -> profile.addCopper(1_000_000D))),
+                of(Material.VILLAGER_SPAWN_EGG, "<a>Visitors, Right Now!", "<8>Impatient customers.", "<7>Call the next <a>Garden Visitor <7>immediately.", p -> VisitorService.callNow(p, null)),
+                of(Material.SPIDER_EYE, "<2>Infestation!", "<8>Gross.", "<7>Spawn <2>4 Pests <7>in the plot you are standing in.", ToyBoxActions::infestation),
+                of(Material.HOPPER, "<2>Full Vacuum Bag", "<8>Hoovered up.", "<7>Add <2>1,000 Pests <7>to your vacuum bag.", p -> ToyBoxActions.garden(p, profile -> profile.pests().setStored(profile.pests().getStored() + 1_000))),
+                of(Material.BREWING_STAND, "<a>Mutation Analyst", "<8>Skip the minigame.", "<7>Mark <a>every Mutation <7>as analyzed.", ToyBoxActions::analyseEveryMutation),
+                of(Material.PLAYER_HEAD, "<2>Chip Stash", "<8>Silicon and green fingers.", "<7>Get <a>21 of every Garden Chip<7>.", ToyBoxActions::giveEveryChip),
+                of(Material.PUMPKIN_PIE, "<6>Seasoning Rush", "<8>Season to taste.", "<7>Donate <a>50 Seasoning <7>to the Communal Stew.", p -> FeastService.addSeasoning(p, 50)),
+                of(Material.CLOCK, "<a>Greenhouse Time Warp", "<8>Hours go by.", "<7>Simulate <a>6 hours <7>of Greenhouse growth.", p -> GreenhouseService.simulate(p, 6)),
+                of(Material.WHITE_CONCRETE, "<a>Greenhouse Blueprint Shortcut", "<8>Sam says yes.", "<7>Skip Sam's Greenhouse quest so you can <a>convert a plot<7>.", ToyBoxActions::skipGreenhouseQuest),
+                unavailable(Material.OAK_LOG, "<a>Fill Agatha's Rewards", "<7>Grant 25 contest rewards."));
+    }
+
+    static List<ToyBoxButton> experimentation() {
+        return List.of(
+                of(Material.ENCHANTING_TABLE, "<d>Enchanting Exp", "<8>Knowledge is power.", "<7>Gain <d>1,000,000 Enchanting Experience<7>.", p -> EnchantingXpService.award(p, 1_000_000)),
+                of(Material.EXPERIENCE_BOTTLE, "<a>Experience Bottles", "<8>Smash them open.", "<7>Get <a>16 <7>of every <a>Experience Bottle<7>.", ToyBoxActions::giveBottles),
+                of(Material.ENCHANTING_TABLE, "<5>Recharge Experimentation Table", "<8>Another round of experiments.", "<7>Restore every <a>Superpairs charge<7> and reset today's purchases.", ExperimentTable::resetCharges),
+                of(Material.ENDER_EYE, "<d>Fill Experimentation RNG Meter", "<8>Luck, on demand.", "<7>Fill the <d>Experimentation Table<7> RNG Meter.", p -> ExperimentRngMeter.add(p, 5_000_000)));
+    }
+
+    static List<ToyBoxButton> currencies() {
+        return List.of(
+                of(Material.EMERALD, "<a>5k Gems", "<8>Get rich quick.", "<7>Set your gem purse to 5,000.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.GEMS, DatapointInteger.class).setValue(5_000)),
+                of(Material.SEA_LANTERN, "<a>Big ol' chunk o' Whispers!", "<8>To turn your tears to roses.", "<7>Get 1,000,000 Forest Whispers.", p -> p.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.FOREST_WHISPERS, DatapointLong.class).setValue(1_000_000L)),
+                of(Material.BONE_BLOCK, "<d>Fossil Essence", "<8>Older than time itself.", "<7>Gain <d>100,000 Fossil Essence<7>.", p -> Essences.add(p, EssenceType.FOSSIL, 100_000)),
+                of(Material.NETHER_STAR, "<d>Every Essence", "<8>The full collection.", "<7>Gain <d>100,000<7> of every essence type.", p -> {
+                    for (EssenceType type : EssenceType.values()) Essences.add(p, type, 100_000);
+                }),
+                unavailable(Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard."));
+    }
+
+    static List<ToyBoxButton> dungeons() {
+        return List.of(
+                of(Material.WITHER_SKELETON_SKULL, "<c>Catacombs XP", "<8>The dead keep their secrets.", "<7>Gain <c>5,000,000 Catacombs Experience<7>.", p -> CatacombsProgress.addXp(p, 5_000_000L)));
+    }
+}
