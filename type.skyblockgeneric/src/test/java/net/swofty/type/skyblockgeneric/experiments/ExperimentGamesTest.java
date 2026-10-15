@@ -104,6 +104,20 @@ class ExperimentGamesTest {
     }
 
     @Test
+    void mismatchedTilesStayRevealed() {
+        PairPrize a = PairPrize.xp("XP_0", net.minestom.server.item.Material.LAPIS_LAZULI, 5_000);
+        PairPrize b = PairPrize.xp("XP_1", net.minestom.server.item.Material.IRON_INGOT, 6_000);
+        SuperpairsGame game = new SuperpairsGame(SuperpairsStake.BEGINNER, List.of(a, b), 10, new Random(7));
+        int other = -1;
+        for (int tile = 1; tile < game.tileCount(); tile++) if (game.prizeAt(tile) != game.prizeAt(0)) other = tile;
+        game.click(0);
+        assertEquals(SuperpairsGame.Outcome.MISMATCHED, game.click(other).outcome());
+        assertTrue(game.isRevealed(0));
+        assertTrue(game.isRevealed(other));
+        assertEquals(8, game.clicksRemaining());
+    }
+
+    @Test
     void clicksRunningOutEndsTheGame() {
         PairPrize a = PairPrize.xp("XP_0", net.minestom.server.item.Material.LAPIS_LAZULI, 5_000);
         PairPrize b = PairPrize.xp("XP_1", net.minestom.server.item.Material.IRON_INGOT, 6_000);

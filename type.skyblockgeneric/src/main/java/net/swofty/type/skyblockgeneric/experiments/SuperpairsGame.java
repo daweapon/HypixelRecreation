@@ -16,11 +16,11 @@ public final class SuperpairsGame {
     private final SuperpairsStake stake;
     private final List<PairPrize> tiles = new ArrayList<>();
     private final boolean[] matched;
+    private final boolean[] seen;
     private final List<PairPrize> foundPrizes = new ArrayList<>();
     private int clicksRemaining;
     private int clicksUsed;
     private int firstPick = -1;
-    private int[] pendingHide;
     private boolean instantFind;
     private boolean over;
 
@@ -32,6 +32,7 @@ public final class SuperpairsGame {
         }
         Collections.shuffle(tiles, new java.util.Random(random.nextLong()));
         this.matched = new boolean[tiles.size()];
+        this.seen = new boolean[tiles.size()];
         this.clicksRemaining = clicks;
     }
 
@@ -60,7 +61,7 @@ public final class SuperpairsGame {
     }
 
     public boolean isRevealed(int tile) {
-        return matched[tile] || tile == firstPick || (pendingHide != null && (tile == pendingHide[0] || tile == pendingHide[1]));
+        return matched[tile] || seen[tile];
     }
 
     public boolean instantFindActive() {
@@ -83,30 +84,23 @@ public final class SuperpairsGame {
         return foundPrizes.size();
     }
 
-    public boolean awaitingHide() {
-        return pendingHide != null;
-    }
-
-    public void hidePending() {
-        pendingHide = null;
-        finishIfDone();
-    }
-
     public void end() {
         over = true;
     }
 
     public Click click(int tile) {
-        if (over || pendingHide != null || tile < 0 || tile >= tiles.size() || matched[tile] || tile == firstPick) {
+        if (over || tile < 0 || tile >= tiles.size() || matched[tile] || tile == firstPick) {
             return new Click(Outcome.IGNORED, null);
         }
         clicksRemaining--;
         clicksUsed++;
+        seen[tile] = true;
         if (instantFind && firstPick < 0) {
             instantFind = false;
             matched[tile] = true;
             int partner = partnerOf(tile);
             matched[partner] = true;
+            seen[partner] = true;
             return new Click(Outcome.MATCHED, award(tiles.get(tile)));
         }
         if (firstPick < 0) {
@@ -121,7 +115,7 @@ public final class SuperpairsGame {
             matched[tile] = true;
             return new Click(Outcome.MATCHED, award(tiles.get(tile)));
         }
-        pendingHide = new int[]{first, tile};
+        finishIfDone();
         return new Click(Outcome.MISMATCHED, null);
     }
 
@@ -149,7 +143,6 @@ public final class SuperpairsGame {
     }
 
     private void finishIfDone() {
-        if (pendingHide != null) return;
         boolean everyPairFound = foundPrizes.size() >= tiles.size() / 2;
         if (everyPairFound || clicksRemaining <= 0) over = true;
     }

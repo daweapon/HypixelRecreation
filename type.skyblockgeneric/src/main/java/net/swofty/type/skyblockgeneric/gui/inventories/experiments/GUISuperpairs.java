@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
-    private static final long MISMATCH_MILLIS = 900;
-
     public enum Phase { PLAYING, REVIEW, REWARDS }
 
     public static final class Screen {
@@ -184,16 +182,9 @@ public class GUISuperpairs implements StatefulView<GUISuperpairs.Screen> {
             }
             case FIRST_REVEALED -> ExperimentGuis.sound(player, "block.note_block.harp", 1.0f);
             case MATCHED -> ExperimentGuis.sound(player, "entity.experience_orb.pickup", 1.3f);
-            case MISMATCHED -> {
-                ExperimentGuis.sound(player, "block.note_block.bass", 0.7f);
-                ExperimentGuis.later(MISMATCH_MILLIS, () -> !screen.closed && screen.phase == Phase.PLAYING, () -> {
-                    screen.game.hidePending();
-                    if (screen.game.isOver()) finish(screen, ctx);
-                    else refresh(ctx);
-                });
-            }
+            case MISMATCHED -> ExperimentGuis.sound(player, "block.note_block.bass", 0.7f);
         }
-        if (screen.game.isOver() && !screen.game.awaitingHide()) finish(screen, ctx);
+        if (screen.game.isOver()) finish(screen, ctx);
         else refresh(ctx);
     }
 
