@@ -177,6 +177,8 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
         switch (result) {
             case ROUND_COMPLETE -> {
                 screen.phase = Phase.SHOWING;
+                screen.lit = -1;
+                refresh(ctx);
                 ExperimentGuis.later(400, () -> !screen.closed, () -> startRound(screen, ctx));
             }
             case FAILED, FINISHED -> {
