@@ -44,6 +44,9 @@ import java.util.*;
 
 // Main SkyBlock menu hub, linking out to bags, calendar, bank, skills, storage, and other sub-menus
 public class GUISkyBlockMenu extends StatelessView {
+    private static final List<ItemStatistic> PROFILE_LORE_STATS = List.of(ItemStatistic.SPEED, ItemStatistic.STRENGTH,
+        ItemStatistic.DEFENSE, ItemStatistic.CRITICAL_DAMAGE, ItemStatistic.CRITICAL_CHANCE, ItemStatistic.HEALTH,
+        ItemStatistic.INTELLIGENCE);
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
@@ -63,20 +66,16 @@ public class GUISkyBlockMenu extends StatelessView {
             lore.add(Text.literal(" "));
 
             PlayerStatistics statistics = player.getStatistics();
-            List<String> statNames = new ArrayList<>(List.of("Health", "Defense", "Speed", "Strength", "Intelligence",
-                "Crit Chance", "Crit Damage", "Swing Range"
-            ));
-            List<Map.Entry<ItemStatistic, Double>> statisticEntries = new ArrayList<>(statistics.allStatistics().getOverall().entrySet());
-            statisticEntries.sort(Comparator.comparing(entry -> entry.getKey().name().endsWith("_WISDOM")));
-            statisticEntries.forEach(entry -> {
-                ItemStatistic statistic = entry.getKey();
-                Double value = entry.getValue();
-                if (!value.equals(statistic.getBaseAdditiveValue()) || statNames.contains(statistic.getDisplayName())) {
-                    lore.add(Text.of(" <stat:{}> <f>{}{}", statistic.name(),
-                        StringUtility.decimalify(value, 2), statistic.getSuffix()));
-                }
-            });
+            Map<ItemStatistic, Double> overall = statistics.allStatistics().getOverall();
+            for (ItemStatistic statistic : PROFILE_LORE_STATS) {
+                lore.add(Text.of(" <stat:{}> <f>{}{}", statistic.name(),
+                    StringUtility.decimalify(overall.getOrDefault(statistic, statistic.getBaseAdditiveValue()), 2),
+                    statistic.getSuffix()));
+            }
+            lore.add(Text.key("gui_sbmenu.main.your_profile.and_more"));
 
+            lore.add(Text.literal(" "));
+            lore.add(Text.key("gui_sbmenu.main.your_profile.stats_command"));
             lore.add(Text.literal(" "));
             lore.add(Text.key("gui_sbmenu.main.your_profile.view"));
 
