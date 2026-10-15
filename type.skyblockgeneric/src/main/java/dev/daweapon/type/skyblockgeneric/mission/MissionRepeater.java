@@ -1,0 +1,53 @@
+package dev.daweapon.type.skyblockgeneric.mission;
+
+import net.minestom.server.timer.Scheduler;
+import net.minestom.server.timer.Task;
+import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public interface MissionRepeater {
+    Task getTask(Scheduler scheduler);
+
+    default List<SkyBlockPlayer> getPlayersWithMissionActive() {
+        List<SkyBlockPlayer> toReturn = new ArrayList<>();
+        SkyBlockMission mission = (SkyBlockMission) this;
+
+        SkyBlockGenericLoader.forEachLoadedPlayer((player) -> {
+            if (player.getMissionData().isCurrentlyActive(mission.getID())) {
+                toReturn.add(player);
+            }
+        });
+
+        return toReturn;
+    }
+
+    default List<SkyBlockPlayer> getPlayersWithMissionNotStarted() {
+        List<SkyBlockPlayer> toReturn = new ArrayList<>();
+        SkyBlockMission mission = (SkyBlockMission) this;
+
+        SkyBlockGenericLoader.forEachLoadedPlayer((player) -> {
+            if (!player.getMissionData().hasCompleted(mission.getID())
+                    && !player.getMissionData().isCurrentlyActive(mission.getID())) {
+                toReturn.add(player);
+            }
+        });
+
+        return toReturn;
+    }
+
+    default List<SkyBlockPlayer> getPlayersWithMissionCompleted() {
+        List<SkyBlockPlayer> toReturn = new ArrayList<>();
+        SkyBlockMission mission = (SkyBlockMission) this;
+
+        SkyBlockGenericLoader.forEachLoadedPlayer((player) -> {
+            if (player.getMissionData().hasCompleted(mission.getID())) {
+                toReturn.add(player);
+            }
+        });
+
+        return toReturn;
+    }
+}

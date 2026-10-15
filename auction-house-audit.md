@@ -54,9 +54,9 @@ An isolated process using a copy of the deployed service jar and fake Mongo coll
 
 ## Code locations
 
-- Service: `service.auctionhouse/src/main/java/net/swofty/service/auction/` — `endpoints/EndpointAddItem.java`, `EndpointFetchItem.java`, `EndpointFetchItems.java`, and `AuctionsCacheService.java`.
-- Menus/transactions: `type.skyblockgeneric/src/main/java/net/swofty/type/skyblockgeneric/gui/inventories/auction/` and its `view/` directory.
-- Data: `commons/src/main/java/net/swofty/commons/skyblock/auctions/AuctionItem.java` and `commons/src/main/java/net/swofty/commons/protocol/serializers/AuctionItemSerializer.java`.
+- Service: `service.auctionhouse/src/main/java/dev/daweapon/service/auction/` — `endpoints/EndpointAddItem.java`, `EndpointFetchItem.java`, `EndpointFetchItems.java`, and `AuctionsCacheService.java`.
+- Menus/transactions: `type.skyblockgeneric/src/main/java/dev/daweapon/type/skyblockgeneric/gui/inventories/auction/` and its `view/` directory.
+- Data: `commons/src/main/java/dev/daweapon/commons/skyblock/auctions/AuctionItem.java` and `commons/src/main/java/dev/daweapon/commons/protocol/serializers/AuctionItemSerializer.java`.
 - Entry/restrictions: `type.hub/.../npcs/NPCAuctionMaster.java`, `NPCAuctionAgent1.java`, `NPCAuctionAgent2.java`; `type.skyblockgeneric/.../commands/AhViewCommand.java`.
 
 ## Reproduction

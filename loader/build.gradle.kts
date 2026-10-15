@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.shadow)
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "3.0"
 
 java {
@@ -80,7 +80,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("net.swofty.loader.Hypixel")
+    mainClass.set("dev.daweapon.loader.Hypixel")
     applicationDefaultJvmArgs = listOf("-Duser.dir=${rootProject.projectDir}")
 }
 
@@ -111,7 +111,7 @@ tasks.register<JavaExec>("runServer") {
 
     workingDir = projectDir
 
-    mainClass.set("net.swofty.loader.Hypixel")
+    mainClass.set("dev.daweapon.loader.Hypixel")
     classpath = sourceSets["main"].runtimeClasspath
     args(resolvedServerType)
 
@@ -197,7 +197,7 @@ tasks.register("runWithTestFlow") {
                     "java",
                     "-Duser.dir=${rootProject.projectDir}",
                     "-cp", sourceSets["main"].runtimeClasspath.asPath,
-                    "net.swofty.loader.Hypixel",
+                    "dev.daweapon.loader.Hypixel",
                     serverType,
                     "--test-flow", testFlowName,
                     "--test-flow-handler", handler,

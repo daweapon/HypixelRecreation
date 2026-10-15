@@ -1,6 +1,6 @@
 # HypixelRecreation SkyBlock Server — Session Handoff Notes
 
-Context for picking up work on this project. Player: `daweapon`, staff/OP rank. Server: [Swofty's HypixelRecreation](https://github.com/Swofty-Developments/HypixelRecreation) (Minestom-based Hypixel SkyBlock clone), running on Windows WSL2/Ubuntu via Docker.
+Context for picking up work on this project. Player: `daweapon`, staff/OP rank. Server: [Swofty's HypixelRecreation](https://github.com/daweapon/HypixelRecreation) (Minestom-based Hypixel SkyBlock clone), running on Windows WSL2/Ubuntu via Docker.
 
 ## Key locations
 
@@ -45,11 +45,11 @@ Context for picking up work on this project. Player: `daweapon`, staff/OP rank. 
 - **Diagnosis method:** `jstack` thread dump on the running container's JVM showed one thread burning ~70% of a core continuously in this exact call chain.
 - **Fix:** added a `cachedRewards` field, computed once and reused (`config.rewards` never changes after initial YAML load).
 - **Result:** 0.5 TPS → 18 TPS.
-- **PR:** [#908](https://github.com/Swofty-Developments/HypixelRecreation/pull/908) — open, awaiting maintainer review.
+- **PR:** [#908](https://github.com/daweapon/HypixelRecreation/pull/908) — open, awaiting maintainer review.
 
 ### 2. Sirius NPC (Dark Auction) doesn't spawn — diagnosed, NOT fixed
 - `NPCSirius.java` (in `type.hub/.../npcs/`) is a fully-written class with correct logic (position, dialogue, click handling all implemented).
-- Confirmed `getNPCs()` in `TypeHubLoader` scans the whole `net.swofty.type.hub.npcs` package via reflection, and `NPCSirius` sits directly in that package — so structurally it *should* auto-register the same way the working `NPCClerkSeraphine` does.
+- Confirmed `getNPCs()` in `TypeHubLoader` scans the whole `dev.daweapon.type.hub.npcs` package via reflection, and `NPCSirius` sits directly in that package — so structurally it *should* auto-register the same way the working `NPCClerkSeraphine` does.
 - Never found the actual reason she doesn't appear — ruled out: registration (reflection scan should catch her), the round-start NPE (separate bug, in `DarkAuctionHandler.handleRoundStart`, also unfixed — missing null check on `localState.getCurrentRound()` at line ~178 despite an earlier check on the same field a few lines up).
 - **This is the natural next thing to dig into if picking this project back up.**
 

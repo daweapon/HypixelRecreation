@@ -1,0 +1,38 @@
+package dev.daweapon.commons.friend.events.response;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import dev.daweapon.commons.friend.FriendResponseEvent;
+import dev.daweapon.commons.protocol.JacksonSerializer;
+import dev.daweapon.commons.protocol.Serializer;
+
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+// Friend-system response event: confirms every friend was removed and how many were affected.
+public final class FriendRemoveAllResponseEvent extends FriendResponseEvent {
+    private static final Serializer<FriendRemoveAllResponseEvent> SERIALIZER =
+            new JacksonSerializer<>(FriendRemoveAllResponseEvent.class);
+
+    private final UUID player;
+    private final int removedCount;
+
+    @JsonCreator
+    public FriendRemoveAllResponseEvent(@JsonProperty("player") UUID player, @JsonProperty("removedCount") int removedCount) {
+        super();
+        this.player = player;
+        this.removedCount = removedCount;
+    }
+
+    @Override
+    public List<UUID> getParticipants() {
+        return List.of(player);
+    }
+
+    @Override
+    public Serializer<FriendRemoveAllResponseEvent> getSerializer() {
+        return SERIALIZER;
+    }
+}

@@ -1,0 +1,29 @@
+package dev.daweapon.commons.guild.events.response;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import dev.daweapon.commons.guild.GuildData;
+import dev.daweapon.commons.guild.GuildResponseEvent;
+
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+@NoArgsConstructor
+// Guild-system response event: notifies the guild and the leaving player that a member left.
+public class GuildMemberLeftResponseEvent extends GuildResponseEvent {
+    private UUID leaver;
+
+    public GuildMemberLeftResponseEvent(GuildData guild, UUID leaver) {
+        super(guild);
+        this.leaver = leaver;
+    }
+
+    @Override
+    public List<UUID> getParticipants() {
+        List<UUID> participants = new java.util.ArrayList<>(getGuild().getAllMemberUuids());
+        if (!participants.contains(leaver)) participants.add(leaver);
+        return participants;
+    }
+
+}

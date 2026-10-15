@@ -1,0 +1,59 @@
+package dev.daweapon.type.skyblockgeneric.potion.handler;
+
+import dev.daweapon.type.skyblockgeneric.entity.mob.MobStatusEffects;
+import net.minestom.server.entity.attribute.Attribute;
+import net.minestom.server.entity.damage.Damage;
+import net.minestom.server.entity.damage.DamageType;
+import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import dev.daweapon.type.skyblockgeneric.potion.PotionEffectType;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+/**
+ * Handler for instant healing potions.
+ * Heals players, damages undead mobs.
+ */
+public class InstantHealingHandler implements PotionEffectHandler {
+
+    @Override
+    public void applyToPlayer(SkyBlockPlayer player, int level, long durationMs) {
+        double healAmount = PotionEffectType.HEALING.getInstantHealAmount(level);
+        float currentHealth = player.getHealth();
+        float maxHealth = player.getMaxHealth();
+        player.setHealth(Math.min(maxHealth, currentHealth + (float) healAmount));
+        player.sendMessage("<c>+{} ❤", (int) healAmount);
+    }
+
+    @Override
+    public void applyToMob(SkyBlockMob mob, int level, long durationMs, double distance) {
+        double healAmount = PotionEffectType.HEALING.getInstantHealAmount(level);
+        double modifier = getDistanceModifier(distance);
+        healAmount *= modifier;
+
+        if (isUndeadMob(mob)) {
+            // Healing damages undead
+            mob.damage(new Damage(DamageType.MAGIC, null, null, null, (float) healAmount));
+        } else {
+            float maxHealth = (float) SkyBlockMob.maxHealthOf(mob);
+            float newHealth = Math.min(maxHealth, mob.getHealth() + MobStatusEffects.healing(mob, healAmount));
+            mob.setHealth(newHealth);
+        }
+    }
+
+    @Override
+    public boolean affectsMobs() {
+        return true;
+    }
+
+    @Override
+    public boolean affectsOtherPlayers() {
+        return true;
+    }
+
+    private boolean isUndeadMob(SkyBlockMob mob) {
+        String mobName = mob.getEntityType().name().toLowerCase();
+        return mobName.contains("zombie") ||
+               mobName.contains("skeleton") ||
+               mobName.contains("wither") ||
+               mobName.contains("phantom");
+    }
+}

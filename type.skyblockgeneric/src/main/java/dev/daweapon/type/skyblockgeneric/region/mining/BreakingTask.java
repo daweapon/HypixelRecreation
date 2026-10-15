@@ -1,0 +1,115 @@
+package dev.daweapon.type.skyblockgeneric.region.mining;
+
+import net.minestom.server.MinecraftServer;
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.event.player.PlayerBlockBreakEvent;
+import net.minestom.server.instance.block.Block;
+import net.minestom.server.instance.block.BlockFace;
+import net.minestom.server.network.packet.client.play.ClientPlayerActionPacket;
+import net.minestom.server.network.packet.server.play.BlockBreakAnimationPacket;
+import net.minestom.server.timer.TaskSchedule;
+import dev.daweapon.type.generic.event.HypixelEventHandler;
+import dev.daweapon.type.skyblockgeneric.event.custom.PlayerDamageSkyBlockBlockEvent;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+public class BreakingTask {
+    private int counter = 0;
+    private final SkyBlockPlayer player;
+    private final PositionedBlock block;
+    private final double breakTime;
+    private TaskSchedule nextSchedule;
+    private final int sequence;
+
+    public BreakingTask(SkyBlockPlayer player, PositionedBlock block, SkyBlockItem item, int sequence) {
+        this.player = player;
+        this.block = block;
+        this.sequence = sequence;
+
+        double miningTime = player.getTimeToMine(item, block.block());
+
+        if (miningTime == -1) {
+            // Player can't mine this block - keep running to stall progress
+            sendBlockBreak(0);
+            this.breakTime = -1;
+            this.nextSchedule = TaskSchedule.tick(1);
+            return;
+        }
+
+        this.breakTime = miningTime;
+        this.nextSchedule = TaskSchedule.tick(1);
+    }
+
+    public Pos getPosition() {
+        return block.pos();
+    }
+
+    public TaskSchedule run() {
+        if (nextSchedule.equals(TaskSchedule.stop())) {
+            sendBlockBreak(-1);
+            return TaskSchedule.stop();
+        }
+
+        // If player can't mine this block, continuously send progress 0 to stall
+        if (breakTime == -1) {
+            sendBlockBreak(0);
+            return TaskSchedule.tick(1);
+        }
+
+        int dmg = (int) ((counter / (float) breakTime) * 10);
+        sendBlockBreak(dmg);
+        counter += 1;
+
+        if (counter >= breakTime) {
+            // resultBlock must be AIR, not the original block: most callers explicitly cancel this
+            // event and remove the block themselves, but for a player with build-bypass enabled
+            // (e.g. staff in Creative), nothing cancels it and Minestom applies resultBlock directly -
+            // leaving it as the original block silently puts the same block right back with no
+            // visible break, no drop, and no error.
+            MinecraftServer.getGlobalEventHandler().call(new PlayerBlockBreakEvent(
+                    player,
+                player.getInstance(),
+                    block.block(),
+                    Block.AIR,
+                block.pos().asBlockVec(),
+                    BlockFace.BOTTOM));
+
+            this.counter = 0;
+            // Handle if the player continues to break the block without a release tick
+            MinecraftServer.getSchedulerManager().scheduleNextTick(() -> {
+                // Minecraft won't send a cancel digging packet if the player is still holding the block,
+                // but our system requires it, so we simulate it here
+                HypixelEventHandler.callCustomEvent(new PlayerDamageSkyBlockBlockEvent(
+                        player,
+                        block.pos(),
+                        ClientPlayerActionPacket.Status.CANCELLED_DIGGING,
+                        sequence));
+                HypixelEventHandler.callCustomEvent(new PlayerDamageSkyBlockBlockEvent(
+                        player,
+                        block.pos(),
+                        ClientPlayerActionPacket.Status.STARTED_DIGGING,
+                        sequence));
+            });
+            return TaskSchedule.stop();
+        }
+
+        return nextSchedule;
+    }
+
+    public void cancel() {
+        sendBlockBreak(-1);
+        this.nextSchedule = TaskSchedule.stop();
+    }
+
+    private void sendBlockBreak(int damage) {
+        int blockId = block.pos().hashCode();
+        player.getPlayerConnection().sendPacket(new BlockBreakAnimationPacket(
+                blockId,
+            block.pos(),
+                (byte) damage
+        ));
+    }
+
+    public record PositionedBlock(Block block, Pos pos) {
+    }
+}

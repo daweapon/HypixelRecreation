@@ -1,4 +1,4 @@
-# Swofty AntiCheat
+# AntiCheat
 
 [<img src="https://discordapp.com/assets/e4923594e694a21542a489471ecffa50.svg" alt="" height="55" />](https://discord.gg/atlasmc)
 
@@ -52,24 +52,24 @@ with physics simulation, and lag compensation.
 
 ## Getting Started
 
-SwoftyAnticheat requires Java 25+ and Minestom.
+Anticheat requires Java 25+ and Minestom.
 
 ## Minestom Loader
-To use SwoftyAnticheat with Minestom, create a new instance of the MinestomLoader and initialize the anticheat:
+To use Anticheat with Minestom, create a new instance of the MinestomLoader and initialize the anticheat:
 
 ```java
 MinestomLoader minestomLoader = new MinestomLoader();
 
-SwoftyAnticheat.loader(minestomLoader);
-SwoftyAnticheat.values(new SwoftyValues());
-SwoftyAnticheat.start(); // Do this after MinecraftServer#init()
+Anticheat.loader(minestomLoader);
+Anticheat.values(new AnticheatValues());
+Anticheat.start(); // Do this after MinecraftServer#init()
 ```
 
 The MinestomLoader automatically registers all packet listeners using Minestom's native packet API.
 
 ## API Usage
 
-SwoftyAnticheat provides a comprehensive API for extending the anticheat with custom functionality.
+Anticheat provides a comprehensive API for extending the anticheat with custom functionality.
 
 ### Custom Modifiers
 
@@ -78,10 +78,10 @@ You can register custom velocity and friction modifiers to extend the movement p
 #### Example: Speed Boost Item
 
 ```java
-import net.swofty.anticheat.api.AnticheatAPI;
-import net.swofty.anticheat.prediction.modifier.VelocityModifier;
-import net.swofty.anticheat.prediction.PlayerContext;
-import net.swofty.anticheat.math.Vel;
+import dev.daweapon.anticheat.api.AnticheatAPI;
+import dev.daweapon.anticheat.prediction.modifier.VelocityModifier;
+import dev.daweapon.anticheat.prediction.PlayerContext;
+import dev.daweapon.anticheat.math.Vel;
 
 public class SpeedBoostModifier extends VelocityModifier {
     @Override
@@ -110,9 +110,9 @@ AnticheatAPI.registerVelocityModifier(new SpeedBoostModifier());
 #### Example: Slippery Block
 
 ```java
-import net.swofty.anticheat.api.AnticheatAPI;
-import net.swofty.anticheat.prediction.modifier.FrictionModifier;
-import net.swofty.anticheat.prediction.PlayerContext;
+import dev.daweapon.anticheat.api.AnticheatAPI;
+import dev.daweapon.anticheat.prediction.modifier.FrictionModifier;
+import dev.daweapon.anticheat.prediction.PlayerContext;
 
 public class SlipperyBlockModifier extends FrictionModifier {
     @Override
@@ -143,7 +143,7 @@ Store and retrieve custom data associated with players. Data is automatically cl
 #### Example: Speed Boost Management
 
 ```java
-import net.swofty.anticheat.api.AnticheatAPI;
+import dev.daweapon.anticheat.api.AnticheatAPI;
 import java.util.UUID;
 
 public class SpeedBoostManager {
@@ -178,8 +178,8 @@ Temporarily or permanently disable specific checks for players. Useful for admin
 #### Example: Admin Mode
 
 ```java
-import net.swofty.anticheat.api.AnticheatAPI;
-import net.swofty.anticheat.detection.FlagType;
+import dev.daweapon.anticheat.api.AnticheatAPI;
+import dev.daweapon.anticheat.detection.FlagType;
 import java.util.UUID;
 
 public class AdminModeManager {
@@ -205,8 +205,8 @@ public class AdminModeManager {
 #### Example: Temporary Teleport Bypass
 
 ```java
-import net.swofty.anticheat.api.AnticheatAPI;
-import net.swofty.anticheat.detection.FlagType;
+import dev.daweapon.anticheat.api.AnticheatAPI;
+import dev.daweapon.anticheat.detection.FlagType;
 import java.util.UUID;
 
 public class TeleportHandler {
@@ -227,8 +227,8 @@ public class TeleportHandler {
 #### Example: Custom Game Mode Bypass
 
 ```java
-import net.swofty.anticheat.api.AnticheatAPI;
-import net.swofty.anticheat.detection.FlagType;
+import dev.daweapon.anticheat.api.AnticheatAPI;
+import dev.daweapon.anticheat.detection.FlagType;
 import java.util.UUID;
 
 public class GameModeManager {
@@ -273,7 +273,7 @@ public class GameModeManager {
 - `clearBypasses(UUID uuid)` - Clear all bypasses for a player
 
 ## License
-SwoftyAnticheat's directory is licensed under the permissive MIT license. Please see [`LICENSE.txt`](https://github.com/daweapon/HypixelRecreation/blob/master/anticheat/LICENSE.md) for more information.
+Anticheat's directory is licensed under the permissive MIT license. Please see [`LICENSE.txt`](https://github.com/daweapon/HypixelRecreation/blob/master/anticheat/LICENSE.md) for more information.
 
 ## Credits
 Thanks to:

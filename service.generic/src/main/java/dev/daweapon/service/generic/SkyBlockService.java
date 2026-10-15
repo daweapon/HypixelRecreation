@@ -1,0 +1,26 @@
+package dev.daweapon.service.generic;
+
+import dev.daweapon.commons.reflection.PackageScanner;
+import dev.daweapon.commons.ServiceType;
+import dev.daweapon.commons.redis.RedisMessageHandler;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+// Base contract for a standalone backend microservice: declares its ServiceType and Redis endpoints, and bootstraps via init().
+public interface SkyBlockService {
+    ServiceType getType();
+
+    List<RedisMessageHandler> getEndpoints();
+
+    default void onReady() {
+    }
+
+    static void init(SkyBlockService service) {
+        new ServiceInitializer(service).init();
+    }
+
+    default <T> Stream<T> loopThroughPackage(String packageName, Class<T> clazz) {
+        return PackageScanner.instantiateSubtypes(packageName, clazz);
+    }
+}

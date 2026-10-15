@@ -1,0 +1,26 @@
+package dev.daweapon.type.skyblockgeneric.item.components;
+
+import lombok.Getter;
+import dev.daweapon.commons.skyblock.item.reforge.ReforgeType;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItemComponent;
+import dev.daweapon.type.skyblockgeneric.utility.groups.EnchantItemGroups;
+
+import java.util.List;
+
+@Getter
+public class AxeComponent extends SkyBlockItemComponent {
+    private final int axeStrength;
+
+    /**
+     * Create an axe component with specified strength.
+     * @param axeStrength The axe's breaking speed (higher = faster). Used to calculate break time.
+     */
+    public AxeComponent(int axeStrength) {
+        this.axeStrength = axeStrength;
+        addInheritedComponent(new ExtraRarityComponent("AXE"));
+        addInheritedComponent(new ReforgableComponent(ReforgeType.AXES));
+        addInheritedComponent(new EnchantableComponent(List.of(EnchantItemGroups.TOOLS, EnchantItemGroups.AXE), true));
+        addInheritedComponent(new TrackedUniqueComponent());
+    }
+
+}

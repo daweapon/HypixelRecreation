@@ -118,7 +118,7 @@ jobs:
           set -eu
           cd "$INSTALL_DIR"
           declared=$(sed -n 's/^[[:space:]]*\([A-Z][A-Z0-9_]*\)(\(true\|false\)).*/\1/p' \
-            "$GITHUB_WORKSPACE/commons/src/main/java/net/swofty/commons/ServerType.java")
+            "$GITHUB_WORKSPACE/commons/src/main/java/dev/daweapon/commons/ServerType.java")
           generated=$(docker compose config --services)
           missing=0
           for type in $declared; do

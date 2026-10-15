@@ -13,7 +13,7 @@ mkdir temp 2>nul
 
 :: Download and extract required files
 echo Downloading configuration files...
-powershell -Command "& {Invoke-WebRequest -Uri 'https://github.com/Swofty-Developments/HypixelRecreation/archive/refs/heads/master.zip' -OutFile 'temp\master.zip'}"
+powershell -Command "& {Invoke-WebRequest -Uri 'https://github.com/daweapon/HypixelRecreation/archive/refs/heads/master.zip' -OutFile 'temp\master.zip'}"
 
 :: Extract the zip file
 echo Extracting files...

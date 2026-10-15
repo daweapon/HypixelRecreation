@@ -6,7 +6,7 @@ plugins {
     id("com.gradleup.shadow") version "9.6.1"
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "3.0"
 
 java {
@@ -34,7 +34,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("net.swofty.service.election.ElectionService")
+    mainClass.set("dev.daweapon.service.election.ElectionService")
 }
 
 tasks {

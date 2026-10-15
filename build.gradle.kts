@@ -17,7 +17,7 @@ plugins {
     id("io.sentry.jvm.gradle") version "6.19.0" apply false
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "1.0"
 
 repositories {

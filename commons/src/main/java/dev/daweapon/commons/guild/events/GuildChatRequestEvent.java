@@ -1,0 +1,33 @@
+package dev.daweapon.commons.guild.events;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import dev.daweapon.commons.guild.GuildEvent;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+@NoArgsConstructor
+// Guild-system event: a player sent a message to guild (or officer) chat.
+public class GuildChatRequestEvent extends GuildEvent {
+    @NotNull
+    private UUID sender;
+    @NotNull
+    private String message;
+    private boolean officerChat;
+
+    public GuildChatRequestEvent(@NotNull UUID sender, @NotNull String message, boolean officerChat) {
+        super(null);
+        this.sender = sender;
+        this.message = message;
+        this.officerChat = officerChat;
+    }
+
+    @Override
+    public List<UUID> getParticipants() {
+        return List.of(sender);
+    }
+
+}

@@ -1,0 +1,44 @@
+package dev.daweapon.type.skyblockgeneric.item.components;
+
+import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItemComponent;
+import dev.daweapon.type.skyblockgeneric.item.handlers.anvilcombine.AnvilCombineHandler;
+import dev.daweapon.type.skyblockgeneric.item.handlers.anvilcombine.AnvilCombineRegistry;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+public class AnvilCombinableComponent extends SkyBlockItemComponent {
+    private final String handlerId;
+
+    public AnvilCombinableComponent(String handlerId) {
+        this.handlerId = handlerId;
+        addInheritedComponent(new ExtraUnderNameComponent("Combinable in Anvil"));
+    }
+
+    public void apply(SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem) {
+        AnvilCombineHandler handler = AnvilCombineRegistry.getHandler(handlerId);
+        if (handler != null) {
+            handler.combineFunction().apply(upgradeItem, sacrificeItem);
+        }
+    }
+
+    public boolean canApply(SkyBlockPlayer player, SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem) {
+        AnvilCombineHandler handler = AnvilCombineRegistry.getHandler(handlerId);
+        return handler != null && handler.validateFunction().canApply(player, upgradeItem, sacrificeItem);
+    }
+
+    public int applyCostLevels(SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem, SkyBlockPlayer player) {
+        AnvilCombineHandler handler = AnvilCombineRegistry.getHandler(handlerId);
+        return handler != null
+                ? ElectionPerks.experienceLevelCost(handler.costFunction().getCost(upgradeItem, sacrificeItem, player))
+                : 0;
+    }
+
+    public boolean onCraft(SkyBlockPlayer player, SkyBlockItem upgradeItem, SkyBlockItem sacrificeItem) {
+        AnvilCombineHandler handler = AnvilCombineRegistry.getHandler(handlerId);
+        if (handler != null && handler.onCraftFunction() != null) {
+            return handler.onCraftFunction().onCraft(player, upgradeItem, sacrificeItem);
+        }
+        return true; // No onCraft function = always proceed
+    }
+}

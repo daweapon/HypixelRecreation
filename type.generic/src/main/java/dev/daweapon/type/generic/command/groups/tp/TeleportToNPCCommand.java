@@ -1,0 +1,43 @@
+package dev.daweapon.type.generic.command.groups.tp;
+
+import net.minestom.server.command.builder.arguments.Argument;
+import net.minestom.server.command.builder.arguments.ArgumentType;
+import net.minestom.server.command.builder.suggestion.SuggestionEntry;
+import net.minestom.server.entity.Player;
+import dev.daweapon.type.generic.command.CommandParameters;
+import dev.daweapon.type.generic.command.HypixelCommand;
+import dev.daweapon.type.generic.entity.npc.HypixelNPC;
+import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.generic.user.categories.Rank;
+
+@CommandParameters(
+    usage = "/tp npc <npc>",
+    labels = "npc",
+    permission = Rank.STAFF,
+    description = "Teleports you to the specified NPC.",
+    allowsConsole = false
+)
+// Staff command to teleport the sender to a named registered NPC.
+public class TeleportToNPCCommand extends HypixelCommand {
+
+    @Override
+    public void registerUsage(MinestomCommand command) {
+        Argument<String[]> npcArgument = ArgumentType.StringArray("npc").setSuggestionCallback((_, _, suggestion) -> {
+            HypixelNPC.getRegisteredNPCs().forEach((npc) -> {
+                suggestion.addEntry(new SuggestionEntry(npc.getName()));
+            });
+        });
+
+        command.addSyntax((sender, context) -> {
+            if (!(sender instanceof Player player)) return;
+            String npcName = String.join(" ", context.get(npcArgument));
+            HypixelNPC npc = HypixelNPC.getRegisteredNPCs().stream().filter(n -> n.getName().equalsIgnoreCase(npcName)).findFirst().orElse(null);
+
+            if (npc == null) {
+                ((HypixelPlayer) player).sendMessage("<c>No NPC found with the name '{}'.", npcName);
+                return;
+            }
+            player.teleport(npc.getParameters().position((HypixelPlayer) player));
+        }, npcArgument);
+    }
+}

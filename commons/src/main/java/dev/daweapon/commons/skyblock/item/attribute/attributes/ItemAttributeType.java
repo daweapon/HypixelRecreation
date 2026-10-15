@@ -1,0 +1,28 @@
+package dev.daweapon.commons.skyblock.item.attribute.attributes;
+
+import dev.daweapon.commons.skyblock.item.attribute.ItemAttribute;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
+import org.jetbrains.annotations.Nullable;
+
+// Item attribute storing the item's underlying ItemType identifier as a raw string.
+public class ItemAttributeType extends ItemAttribute<String> {
+    @Override
+    public String getKey() {
+        return "item_type";
+    }
+
+    @Override
+    public String getDefaultValue(@Nullable ItemStatistics defaultStatistics) {
+        return "N/A";
+    }
+
+    @Override
+    public String loadFromString(String string) {
+        return string;
+    }
+
+    @Override
+    public String saveIntoString() {
+        return this.value;
+    }
+}

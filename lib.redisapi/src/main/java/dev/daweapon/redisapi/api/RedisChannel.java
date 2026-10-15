@@ -1,0 +1,48 @@
+package dev.daweapon.redisapi.api;
+
+import lombok.Getter;
+import dev.daweapon.redisapi.events.RedisMessagingReceiveEvent;
+import dev.daweapon.redisapi.events.RedisMessagingReceiveInterface;
+
+import java.util.function.Consumer;
+
+public class RedisChannel {
+
+      /**
+       * Consumer that contains the function ran when a message is received on this channel
+       */
+      public Consumer<RedisMessagingReceiveEvent> receiveEvent;
+      /**
+       * Class that contains the function ran when a message is received on this channel
+       */
+      public Class<? extends RedisMessagingReceiveInterface> receiveInterface;
+
+      /**
+       * Used to determine what type of function is being used to receive messages.
+       */
+      public ChannelFunctionType functionType;
+
+      /**
+       * Name of the channel that messages are sent through
+       */
+      public String channelName;
+
+      /**
+       * Timestamp in Unix milliseconds of when the channel last had a message received through it
+       */
+      @Getter
+      public Long timestamp;
+
+      public RedisChannel(String channelName, Consumer<RedisMessagingReceiveEvent> receiveEventClass) {
+            this.channelName = channelName;
+            this.receiveEvent = receiveEventClass;
+            this.functionType = ChannelFunctionType.CONSUMER;
+      }
+
+      public RedisChannel(String channelName, Class<? extends RedisMessagingReceiveInterface> classz) {
+            this.channelName = channelName;
+            this.receiveInterface = classz;
+            this.functionType = ChannelFunctionType.CLASS;
+      }
+
+}

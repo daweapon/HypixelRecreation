@@ -1,0 +1,172 @@
+package dev.daweapon.type.skyblockgeneric.entity;
+
+import lombok.Getter;
+import lombok.Setter;
+import net.minestom.server.MinecraftServer;
+import net.minestom.server.collision.CollisionUtils;
+import net.minestom.server.collision.EntityCollisionResult;
+import net.minestom.server.collision.PhysicsResult;
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.coordinate.Vec;
+import net.minestom.server.entity.Entity;
+import net.minestom.server.entity.EntityType;
+import net.minestom.server.entity.LivingEntity;
+import net.minestom.server.entity.metadata.projectile.ArrowMeta;
+import net.minestom.server.event.entity.projectile.ProjectileCollideWithEntityEvent;
+import net.minestom.server.instance.block.Block;
+import net.minestom.server.timer.TaskSchedule;
+import dev.daweapon.type.generic.event.HypixelEventHandler;
+import dev.daweapon.type.generic.utility.ScheduleUtility;
+import dev.daweapon.type.skyblockgeneric.event.custom.ArrowHitBlockEvent;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.item.handlers.bow.ArrowEffect;
+import dev.daweapon.type.skyblockgeneric.item.handlers.bow.ArrowEffects;
+import dev.daweapon.type.skyblockgeneric.item.rune.RuneEffect;
+import dev.daweapon.type.skyblockgeneric.item.rune.RuneEffects;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class ArrowEntityImpl extends LivingEntity {
+    public static final double LARGEST_TARGET_REACH = 24;
+
+    private long cooldown = 0;
+    @Getter
+    private final Entity shooter;
+    @Getter
+    private final SkyBlockItem arrowItem;
+    private boolean hasHit = false;
+    private final AtomicBoolean exploded = new AtomicBoolean();
+    @Getter
+    @Setter
+    private @Nullable SkyBlockItem bow;
+    @Getter
+    @Setter
+    private double damageFactor = 1;
+    @Getter
+    @Setter
+    private @Nullable Pos origin;
+    private final Set<UUID> piercedTargets = new HashSet<>();
+
+    public ArrowEntityImpl(Entity player, SkyBlockItem arrowItem) {
+        super(EntityType.ARROW);
+
+        this.collidesWithEntities = false;
+        this.hasPhysics = false;
+
+        this.shooter = player;
+        this.arrowItem = arrowItem;
+
+        ArrowMeta arrowMeta = (ArrowMeta) getEntityMeta();
+        arrowMeta.setShooter(player);
+        arrowMeta.setPiercingLevel((byte) 5);
+    }
+
+    private void emitRuneTrail(Pos position) {
+        if (bow == null || !(shooter instanceof SkyBlockPlayer player)) return;
+        RuneEffects.Active active = RuneEffects.active(bow, RuneEffect.Trigger.ARROW);
+        if (active != null) RuneEffects.emit(player, position, active);
+    }
+
+    public boolean claimExplosion() {
+        return exploded.compareAndSet(false, true);
+    }
+
+    private void explodeIfExplosive() {
+        if (ArrowEffects.of(arrowItem) == ArrowEffect.EXPLOSIVE) ArrowEffects.explode(this, getPosition());
+    }
+
+    public int pierceTarget(Entity target) {
+        if (!piercedTargets.add(target.getUuid())) return -1;
+        return piercedTargets.size() - 1;
+    }
+
+    @Override
+    public void spawn() {
+        super.spawn();
+        cooldown = System.currentTimeMillis();
+
+        MinecraftServer.getSchedulerManager().scheduleTask(() -> {
+            if (!isRemoved()) {
+                explodeIfExplosive();
+                kill();
+                remove();
+            }
+        }, TaskSchedule.tick(30), TaskSchedule.stop());
+    }
+
+    @Override
+    public void tick(long time) {
+        final Pos posBefore = getPosition();
+        super.tick(time);
+        final Pos posNow = getPosition();
+        emitRuneTrail(posNow);
+
+        Vec diff = posNow.sub(posBefore).asVec();
+        PhysicsResult result = CollisionUtils.handlePhysics(
+                instance, this.getChunk(),
+                this.getBoundingBox(),
+                posBefore, diff,
+                null, true
+        );
+
+        if (cooldown + 200 < System.currentTimeMillis()) {
+            float yaw = (float) Math.toDegrees(Math.atan2(diff.x(), diff.z()));
+            float pitch = (float) Math.toDegrees(Math.atan2(diff.y(), Math.sqrt(diff.x() * diff.x() + diff.z() * diff.z())));
+            super.refreshPosition(new Pos(posNow.x(), posNow.y(), posNow.z(), yaw, pitch));
+            cooldown = System.currentTimeMillis();
+        }
+
+        List<EntityCollisionResult> collided = CollisionUtils.checkEntityCollisions(instance, this.getBoundingBox(), posBefore, diff,
+                LARGEST_TARGET_REACH, (e) -> e != this && e != shooter, result).stream()
+                .sorted(Comparator.comparingDouble(EntityCollisionResult::percentage))
+                .toList();
+        for (EntityCollisionResult collisionResult : collided) {
+            Entity entity = collisionResult.entity();
+            EntityType entityType = entity.getEntityType();
+            if (entityType == EntityType.PLAYER || entityType == EntityType.ARMOR_STAND) continue;
+
+            var e = new ProjectileCollideWithEntityEvent(this, collisionResult.collisionPoint().asPos(), entity);
+            MinecraftServer.getGlobalEventHandler().call(e);
+            if (!e.isCancelled()) {
+                remove();
+                kill();
+            }
+            return;
+        }
+
+        if (result.hasCollision()) {
+            if (hasHit) return;
+
+            // Use the collision shape positions directly from physics result
+            var shapePositions = result.collisionShapePositions();
+
+            if (shapePositions.length > 0 && shapePositions[0] != null) {
+                var hitPosition = shapePositions[0];
+                Block hitBlock = getInstance().getBlock(hitPosition);
+
+                if (!hitBlock.air()) {
+                    // Fire arrow hit block event
+                    ArrowHitBlockEvent arrowHitBlockEvent = new ArrowHitBlockEvent(shooter, arrowItem, hitBlock, hitPosition);
+                    HypixelEventHandler.callCustomEvent(arrowHitBlockEvent);
+                    hasHit = true;
+                    explodeIfExplosive();
+                }
+            }
+
+            // We've hit a block
+            ScheduleUtility.delay(() -> {
+                if (isDead() || isRemoved()) return;
+                remove();
+                kill();
+            }, 20);
+        }
+    }
+}

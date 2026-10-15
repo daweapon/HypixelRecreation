@@ -1,0 +1,24 @@
+package dev.daweapon.velocity.text;
+
+import com.velocitypowered.api.proxy.Player;
+import net.kyori.adventure.text.Component;
+import dev.daweapon.commons.text.Text;
+
+// Proxy-side helpers for rendering markup text and disconnecting players with a formatted reason.
+public final class ProxyText {
+
+    private ProxyText() {
+    }
+
+    public static Component render(String markup, Object... arguments) {
+        return Text.of(markup, arguments).asComponent();
+    }
+
+    public static void disconnect(Player player, String markup, Object... arguments) {
+        player.disconnect(render(markup, arguments));
+    }
+
+    public static void disconnect(Player player, Text reason) {
+        player.disconnect(reason.asComponent());
+    }
+}

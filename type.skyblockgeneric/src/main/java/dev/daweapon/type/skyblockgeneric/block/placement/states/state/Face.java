@@ -1,0 +1,28 @@
+package dev.daweapon.type.skyblockgeneric.block.placement.states.state;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.stream.Stream;
+
+// Block state values for a block's mounting face (floor/wall/ceiling), e.g. buttons and grindstones.
+public enum Face implements State<Face> {
+    FLOOR, WALL, CEILING;
+
+    @NotNull
+    @Override
+    public String getKey() {
+        return "face";
+    }
+
+    @NotNull
+    @Override
+    public String getValue() {
+        return name().toLowerCase().trim();
+    }
+
+    @NotNull
+    @Override
+    public Face parse(String rawValue) {
+        return Stream.of(values()).filter(shape -> shape.name().equalsIgnoreCase(rawValue.trim())).findFirst().orElse(FLOOR);
+    }
+}

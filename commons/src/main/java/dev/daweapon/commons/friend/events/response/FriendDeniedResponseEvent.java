@@ -1,0 +1,40 @@
+package dev.daweapon.commons.friend.events.response;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import dev.daweapon.commons.friend.FriendResponseEvent;
+import dev.daweapon.commons.protocol.JacksonSerializer;
+import dev.daweapon.commons.protocol.Serializer;
+
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+// Friend-system response event: notifies the original requester that their friend request was denied.
+public final class FriendDeniedResponseEvent extends FriendResponseEvent {
+    private static final Serializer<FriendDeniedResponseEvent> SERIALIZER =
+            new JacksonSerializer<>(FriendDeniedResponseEvent.class);
+
+    private final UUID denier;
+    private final UUID requester;
+    private final String denierName;
+
+    @JsonCreator
+    public FriendDeniedResponseEvent(@JsonProperty("denier") UUID denier, @JsonProperty("requester") UUID requester, @JsonProperty("denierName") String denierName) {
+        super();
+        this.denier = denier;
+        this.requester = requester;
+        this.denierName = denierName;
+    }
+
+    @Override
+    public List<UUID> getParticipants() {
+        return List.of(requester);
+    }
+
+    @Override
+    public Serializer<FriendDeniedResponseEvent> getSerializer() {
+        return SERIALIZER;
+    }
+}

@@ -2,7 +2,7 @@
 
 Services are microservices that handle specific features independently of game servers. There are **13 services**; every service also depends on `service.generic`, the shared service base library (MongoDB connection, Redis manager, service initializer) — it is not a runnable service itself.
 
-The full list lives in `net.swofty.commons.ServiceType`.
+The full list lives in `dev.daweapon.commons.ServiceType`.
 
 ## Architecture Overview
 
@@ -403,7 +403,7 @@ Services communicate via Redis pub/sub with a specific protocol:
 
 ### Protocol Objects
 
-Located in `net.swofty.commons.protocol.objects`, these handle serialization:
+Located in `dev.daweapon.commons.protocol.objects`, these handle serialization:
 
 ```java
 // Example endpoint registration

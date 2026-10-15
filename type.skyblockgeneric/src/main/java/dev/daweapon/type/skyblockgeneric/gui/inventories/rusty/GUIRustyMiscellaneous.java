@@ -1,0 +1,64 @@
+package dev.daweapon.type.skyblockgeneric.gui.inventories.rusty;
+
+import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.chickenrace.ChickenRaceProgress;
+import dev.daweapon.type.skyblockgeneric.chickenrace.Cluckpoint;
+import dev.daweapon.type.skyblockgeneric.enchantment.EnchantmentType;
+import dev.daweapon.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.mission.missions.goldmine.lazyminer.MissionFindLazyMinerPickaxe;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.List;
+import java.util.function.Function;
+
+public class GUIRustyMiscellaneous extends GUIRustySubMenu<GUIRustyMiscellaneous.RustyItem> {
+    public GUIRustyMiscellaneous() {
+        super(
+                "gui_rusty.miscellaneous.title",
+                () -> List.of(RustyItem.values())
+        );
+    }
+
+
+    public enum RustyItem implements ShopEntry {
+        IRON_PICKAXE(getRustyPickaxe(), 200, (player) -> player.getMissionData().hasCompleted(MissionFindLazyMinerPickaxe.class)),
+        GIFT_COMPASS(new SkyBlockItem(ItemType.GIFT_COMPASS), 1_000, (player) -> ChickenRaceProgress.hasClaimed(player, Cluckpoint.TWO)),
+        ;
+
+        private final SkyBlockItem item;
+        private final int price;
+        private final Function<SkyBlockPlayer, Boolean> unlocked;
+
+        RustyItem(
+                SkyBlockItem item,
+                int price,
+                Function<SkyBlockPlayer, Boolean> unlocked
+        ) {
+            this.item = item;
+            this.price = price;
+            this.unlocked = unlocked;
+        }
+
+        @Override public SkyBlockItem item() { return item; }
+        @Override public int price() { return price; }
+        @Override public Function<SkyBlockPlayer, Boolean> hasUnlocked() { return unlocked; }
+    }
+
+    private static SkyBlockItem getRustyPickaxe() {
+        SkyBlockItem pickaxe = new SkyBlockItem(ItemType.IRON_PICKAXE);
+        pickaxe.getAttributeHandler().addEnchantment(
+                new SkyBlockEnchantment(
+                        EnchantmentType.EFFICIENCY,
+                        1
+                )
+        );
+        pickaxe.getAttributeHandler().addEnchantment(
+                new SkyBlockEnchantment(
+                        EnchantmentType.SMELTING_TOUCH,
+                        1
+                )
+        );
+        return pickaxe;
+    }
+}

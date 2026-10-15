@@ -1,0 +1,182 @@
+package dev.daweapon.event;
+
+import dev.daweapon.DataField;
+import dev.daweapon.ExpiringField;
+import dev.daweapon.ExpiringLinkedField;
+import dev.daweapon.LinkType;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class EventBus {
+    private static final System.Logger LOGGER = System.getLogger(EventBus.class.getName());
+
+    private final Map<String, List<PlayerDataListener<?>>> playerListeners = new ConcurrentHashMap<>();
+    private final Map<String, List<LinkedDataListener<?, ?>>> linkedListeners = new ConcurrentHashMap<>();
+    private final Map<String, List<LinkChangeListener<?>>> linkChangeListeners = new ConcurrentHashMap<>();
+    private final Map<String, List<ExpirationListener<?>>> expirationListeners = new ConcurrentHashMap<>();
+    private final Map<String, List<LinkedExpirationListener<?, ?>>> linkedExpirationListeners = new ConcurrentHashMap<>();
+
+    public <T> void subscribe(DataField<T> field, PlayerDataListener<T> listener) {
+        playerListeners.computeIfAbsent(field.fullKey(), k -> new CopyOnWriteArrayList<>()).add(listener);
+    }
+
+    public <K, T> void subscribeLinked(DataField<T> field, LinkedDataListener<K, T> listener) {
+        linkedListeners.computeIfAbsent(field.fullKey(), k -> new CopyOnWriteArrayList<>()).add(listener);
+    }
+
+    public <K> void subscribeLinkChange(LinkType<K> type, LinkChangeListener<K> listener) {
+        linkChangeListeners.computeIfAbsent(type.name(), k -> new CopyOnWriteArrayList<>()).add(listener);
+    }
+
+    public <T> void subscribeExpiration(ExpiringField<T> field, ExpirationListener<T> listener) {
+        expirationListeners.computeIfAbsent(field.fullKey(), k -> new CopyOnWriteArrayList<>()).add(listener);
+    }
+
+    public <K, T> void subscribeLinkedExpiration(ExpiringLinkedField<K, T> field, LinkedExpirationListener<K, T> listener) {
+        linkedExpirationListeners.computeIfAbsent(field.fullKey(), k -> new CopyOnWriteArrayList<>()).add(listener);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> void firePlayerDataChanged(DataField<T> field, UUID player, T oldValue, T newValue) {
+        List<PlayerDataListener<?>> listeners = playerListeners.get(field.fullKey());
+        if (listeners != null) {
+            for (PlayerDataListener<?> listener : listeners) {
+                dispatch(field.fullKey(), () ->
+                        ((PlayerDataListener<T>) listener).onChanged(player, oldValue, newValue));
+            }
+        }
+    }
+
+    public <T> void firePlayerDataChanged(DataField<T> field, UUID player, T oldValue, T newValue, long version) {
+        firePlayerDataChanged(field, player, oldValue, newValue);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <K, T> void fireLinkedDataChanged(DataField<T> field, K linkKey, T oldValue, T newValue, Set<UUID> affected) {
+        List<LinkedDataListener<?, ?>> listeners = linkedListeners.get(field.fullKey());
+        if (listeners != null) {
+            for (LinkedDataListener<?, ?> listener : listeners) {
+                dispatch(field.fullKey(), () ->
+                        ((LinkedDataListener<K, T>) listener).onChanged(linkKey, oldValue, newValue, affected));
+            }
+        }
+    }
+
+    public <K, T> void fireLinkedDataChanged(DataField<T> field, K linkKey, T oldValue, T newValue,
+                                              Set<UUID> affected, long version) {
+        fireLinkedDataChanged(field, linkKey, oldValue, newValue, affected);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <K> void fireLinked(LinkType<K> type, UUID player, K linkKey) {
+        List<LinkChangeListener<?>> listeners = linkChangeListeners.get(type.name());
+        if (listeners != null) {
+            for (LinkChangeListener<?> listener : listeners) {
+                dispatch(type.name(), () -> ((LinkChangeListener<K>) listener).onLinked(player, type, linkKey));
+            }
+        }
+    }
+
+    public <K> void fireLinked(LinkType<K> type, UUID player, K linkKey, long version) {
+        fireLinked(type, player, linkKey);
+    }
+
+    public <K> void fireUnlinked(LinkType<K> type, UUID player, K previousKey) {
+        unlinkedLocally(type, player, previousKey);
+    }
+
+    /**
+     * Reports an unlink to this node's listeners only. Separate from {@link #fireUnlinked} because
+     * the distributed bus publishes from that one, and a link cleared as part of an event that is
+     * already being published (or already came off the wire) must not be published a second time.
+     */
+    @SuppressWarnings("unchecked")
+    protected final <K> void unlinkedLocally(LinkType<K> type, UUID player, K previousKey) {
+        List<LinkChangeListener<?>> listeners = linkChangeListeners.get(type.name());
+        if (listeners != null) {
+            for (LinkChangeListener<?> listener : listeners) {
+                dispatch(type.name(), () -> ((LinkChangeListener<K>) listener).onUnlinked(player, type, previousKey));
+            }
+        }
+    }
+
+    public <K> void fireUnlinked(LinkType<K> type, UUID player, K previousKey, long version) {
+        fireUnlinked(type, player, previousKey);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> void fireExpired(ExpiringField<T> field, UUID playerId, T expiredValue) {
+        List<ExpirationListener<?>> listeners = expirationListeners.get(field.fullKey());
+        if (listeners != null) {
+            for (ExpirationListener<?> listener : listeners) {
+                dispatch(field.fullKey(), () ->
+                        ((ExpirationListener<T>) listener).onExpired(playerId, field, expiredValue));
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <K, T> void fireLinkedExpired(ExpiringLinkedField<K, T> field, K linkKey, T expiredValue, Set<UUID> memberIds) {
+        List<LinkedExpirationListener<?, ?>> listeners = linkedExpirationListeners.get(field.fullKey());
+        if (listeners != null) {
+            for (LinkedExpirationListener<?, ?> listener : listeners) {
+                dispatch(field.fullKey(), () ->
+                        ((LinkedExpirationListener<K, T>) listener).onExpired(linkKey, field, expiredValue, memberIds));
+            }
+        }
+    }
+
+    /** Signals that deferred changes were durably flushed as one document snapshot. */
+    public void firePlayerSnapshotSaved(UUID player, long version) {}
+
+    /** Signals that deferred linked changes were durably flushed as one document snapshot. */
+    public void fireLinkedSnapshotSaved(String linkTypeName, Object linkKey, long version) {}
+
+    /** Signals that a shared entity's document was deleted outright. */
+    public <K> void fireLinkDeleted(LinkType<K> type, K linkKey) {}
+
+    /**
+     * Signals that a player's document was deleted outright. {@code clearedLinks} maps each link
+     * type the player still had to the key it pointed at; those are reported to local link
+     * listeners exactly as an unlink would be, because from a listener's point of view that is
+     * what happened to the shared entity's membership.
+     */
+    @SuppressWarnings("unchecked")
+    public void firePlayerDeleted(UUID player, Map<LinkType<?>, Object> clearedLinks) {
+        for (Map.Entry<LinkType<?>, Object> cleared : clearedLinks.entrySet()) {
+            unlinkedLocally((LinkType<Object>) cleared.getKey(), player, cleared.getValue());
+        }
+    }
+
+    /**
+     * Records the version of a whole document this node has just read, so every event older than it
+     * is known to be already included and can be rejected on arrival.
+     */
+    public void rememberPlayerDocument(UUID player, long version) {}
+
+    public void rememberLinkedDocument(String linkTypeName, Object linkKey, long version) {}
+
+    /** Drops the per-entity ordering state kept for a player this node no longer caches. */
+    public void forgetPlayer(UUID player) {}
+
+    /** Drops the per-entity ordering state kept for a shared entity this node no longer caches. */
+    public void forgetLinked(String linkTypeName, Object linkKey) {}
+
+    /**
+     * Runs one listener in isolation. A listener that throws must not swallow the remaining
+     * listeners, and on the distributed path an escaping exception would tear down the pub/sub
+     * subscription and drop events for everyone.
+     */
+    private static void dispatch(String subject, Runnable invocation) {
+        try {
+            invocation.run();
+        } catch (Exception e) {
+            LOGGER.log(System.Logger.Level.ERROR, "Listener for " + subject + " threw", e);
+        }
+    }
+}

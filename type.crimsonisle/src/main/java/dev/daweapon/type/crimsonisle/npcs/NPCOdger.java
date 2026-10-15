@@ -1,0 +1,89 @@
+package dev.daweapon.type.crimsonisle.npcs;
+
+import net.minestom.server.coordinate.Pos;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.crimsonisle.faction.OdgerQuestTopics;
+import dev.daweapon.type.crimsonisle.gui.odger.GUITrophyFishing;
+import dev.daweapon.type.generic.entity.npc.HypixelNPC;
+import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
+import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;
+import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
+import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.skyblockgeneric.fishing.trophy.OdgerRewards;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+// Odger, the trophy fishing Goblin in his hut on top of the Blazing Volcano (wiki: Odger). Gives a Starter Lava
+// Rod the first time a profile talks to him, then opens the Trophy Fishing menu.
+public class NPCOdger extends HypixelNPC implements NPCAbiphoneTrait {
+
+    public NPCOdger() {
+        super(new HumanConfiguration() {
+            @Override
+            public String[] holograms(HypixelPlayer player) {
+                return new String[]{"<6>Odger", "<e><l>CLICK"};
+            }
+
+            @Override
+            public String signature(HypixelPlayer player) {
+                return null;
+            }
+
+            @Override
+            public String texture(HypixelPlayer player) {
+                return "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHBzOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzk3M2VjMmFkMzgxZmM4ODMxYThhNmEyMzhmMzhkODAwNmNhNTFkNTY1NDJkZDk5MTllNDk1NWI5YWM4OWFmNGQifX19";
+            }
+
+            @Override
+            public Text chatNameText(HypixelPlayer player) {
+                return Text.of("<e>Odger");
+            }
+
+            @Override
+            public Pos position(HypixelPlayer player) {
+                return new Pos(-373.5, 207, -810.5);
+            }
+
+            @Override
+            public boolean looking(HypixelPlayer player) {
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public void onClick(NPCInteractEvent event) {
+        SkyBlockPlayer player = (SkyBlockPlayer) event.player();
+        if (isInDialogue(player)) return;
+        if (player.getTrophyFishData().isOdgerMet()) {
+            giveStarterRod(player);
+            if (OdgerQuestTopics.intercept(player, () -> player.openView(new GUITrophyFishing()))) return;
+            player.openView(new GUITrophyFishing());
+            return;
+        }
+        setDialogue(player, "first").thenRun(() -> giveStarterRod(player));
+    }
+
+    private static void giveStarterRod(SkyBlockPlayer player) {
+        if (OdgerRewards.giveStarterRod(player)) {
+            player.sendMessage("<a>You received a <a>Starter Lava Rod<a>!");
+        }
+    }
+
+    @Override
+    public DialogueSet[] dialogues(HypixelPlayer player) {
+        return new DialogueSet[]{
+                DialogueSet.builder().key("first").lines(
+                        "Crimson Isle fishing. Different.",
+                        "Fish trophy like fish. But not same.",
+                        "Unique way to fish. All trophy fish.",
+                        "Bring trophy fish. To me. Reward.",
+                        "Take this. Help you."
+                ).build()
+        };
+    }
+
+    @Override
+    public String getAbiphoneKey() {
+        return "odger";
+    }
+}

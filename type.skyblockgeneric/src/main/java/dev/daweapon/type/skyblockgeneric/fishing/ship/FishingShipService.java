@@ -1,0 +1,35 @@
+package dev.daweapon.type.skyblockgeneric.fishing.ship;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
+import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointShipState;
+import dev.daweapon.type.skyblockgeneric.item.components.FishingShipPartComponent;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Reads/updates a player's fishing ship state: installing ship parts and unlocking travel destinations.
+public final class FishingShipService {
+
+    public static DatapointShipState.ShipState getState(SkyBlockPlayer player) {
+        return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SHIP_STATE, DatapointShipState.class).getValue();
+    }
+
+    public static void installPart(SkyBlockPlayer player, String itemId, FishingShipPartComponent definition) {
+        DatapointShipState.ShipState state = getState(player);
+        switch (definition.getSlot()) {
+            case HELM -> state.setHelm(itemId);
+            case ENGINE -> state.setEngine(itemId);
+            case HULL -> state.setHull(itemId);
+        }
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SHIP_STATE, DatapointShipState.class).setValue(state);
+        ShipPartAwards.syncSkyBlockXP(player);
+    }
+
+    public static void unlockDestination(SkyBlockPlayer player, String destinationId) {
+        DatapointShipState.ShipState state = getState(player);
+        state.unlockDestination(destinationId);
+        player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.SHIP_STATE, DatapointShipState.class).setValue(state);
+    }
+}

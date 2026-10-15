@@ -3,7 +3,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "3.0"
 
 java {
@@ -66,7 +66,7 @@ val generateItemTypes by tasks.registering(JavaExec::class) {
     description = "Generate ItemType enum from SkyBlock YAML"
 
     classpath = sourceSets["codegen"].runtimeClasspath
-    mainClass.set("net.swofty.codegen.ItemTypeGenerator")
+    mainClass.set("dev.daweapon.codegen.ItemTypeGenerator")
 
     args(
         rootProject.projectDir

@@ -1,0 +1,386 @@
+package dev.daweapon.type.skyblockgeneric.event.actions.player.region;
+
+import dev.daweapon.type.skyblockgeneric.essence.CrimsonEssenceShop;
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.event.player.PlayerBlockBreakEvent;
+import net.minestom.server.instance.SharedInstance;
+import net.minestom.server.instance.block.Block;
+import net.minestom.server.item.ItemStack;
+import net.minestom.server.item.Material;
+import net.minestom.server.tag.Tag;
+import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.gathering.GatheringPetBonuses;
+import dev.daweapon.type.generic.HypixelConst;
+import dev.daweapon.type.generic.entity.drop.ItemDrops;
+import dev.daweapon.type.generic.event.EventNodes;
+import dev.daweapon.type.generic.event.HypixelEventClass;
+import dev.daweapon.type.generic.event.HypixelEventHandler;
+import dev.daweapon.type.generic.event.phase.EventPhase;
+import dev.daweapon.type.generic.event.phase.PhasedEvent;
+import dev.daweapon.type.skyblockgeneric.entity.DroppedItemEntityImpl;
+import dev.daweapon.type.skyblockgeneric.commission.CommissionProgress;
+import dev.daweapon.type.skyblockgeneric.crystalhollows.CrystalHollowsDrops;
+import dev.daweapon.type.skyblockgeneric.crystalhollows.CrystalHollowsOre;
+import dev.daweapon.type.skyblockgeneric.crystalhollows.HardStone;
+import dev.daweapon.type.skyblockgeneric.glacite.GlaciteOre;
+import dev.daweapon.type.skyblockgeneric.event.custom.CustomBlockBreakEvent;
+import dev.daweapon.type.skyblockgeneric.farmingcontest.FarmingContests;
+import dev.daweapon.type.skyblockgeneric.foraging.ForagingTreeManager;
+import dev.daweapon.type.skyblockgeneric.foraging.FrenzyAxes;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.item.components.CustomDropComponent;
+import dev.daweapon.type.skyblockgeneric.item.components.RegionSelectorComponent;
+import dev.daweapon.type.skyblockgeneric.region.RegionType;
+import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegenConfiguration;
+import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegion;
+import dev.daweapon.type.skyblockgeneric.region.mining.MineableBlock;
+import dev.daweapon.type.skyblockgeneric.region.mining.MiningSpread;
+import dev.daweapon.type.skyblockgeneric.region.mining.handler.SkyBlockMiningHandler;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.user.garden.GardenPlotCleaner;
+import dev.daweapon.type.skyblockgeneric.garden.farm.GardenFarm;
+import dev.daweapon.type.skyblockgeneric.garden.farm.GardenPlotLock;
+
+import java.util.List;
+
+// Handles custom block-break rules: region selector tool, build-bypass, foraging leaves, and island vs. mineable-region drops
+public class ActionRegionBlockBreak implements HypixelEventClass {
+
+    @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
+    public void run(PlayerBlockBreakEvent event) {
+        final SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
+        final ItemStack stack = event.getPlayer().getItemInMainHand();
+        final SkyBlockItem item = new SkyBlockItem(stack);
+
+        if (item.hasComponent(RegionSelectorComponent.class)) {
+            RegionSelectorComponent.SelectedRegion region = RegionSelectorComponent.getPlayerRegionSelection().get(player);
+            if (region == null) {
+                region = new RegionSelectorComponent.SelectedRegion(null, null);
+            }
+            region.setPos1(event.getBlockPosition());
+            RegionSelectorComponent.getPlayerRegionSelection().put(player, region);
+            player.sendMessage("<a>Position 1 set to <e>{}<a>.", event.getBlockPosition());
+            event.setCancelled(true);
+            return;
+        }
+
+        // Skip if player has build bypass
+        if (player.isBypassBuild()) return;
+
+        if (dev.daweapon.type.skyblockgeneric.region.rules.TempleLockdown.isLocked(player)) {
+            event.setCancelled(true);
+            return;
+        }
+
+        if (HypixelConst.isGardenServer() && GardenPlotLock.isLocked(event.getInstance(), event.getBlockPosition().x(), event.getBlockPosition().z())) {
+            event.setCancelled(true);
+            player.sendMessage("<c>This plot is being pasted right now, you cannot change it until it finishes!");
+            return;
+        }
+
+        if (HypixelConst.isGardenServer()) {
+            event.setCancelled(true);
+            if (dev.daweapon.type.skyblockgeneric.garden.greenhouse.GreenhouseService.handleBreak(player, event.getBlockPosition())) return;
+            ItemType heldType = item.getAttributeHandler().getPotentialType();
+            int scytheRadius = ItemType.GARDEN_SCYTHE.equals(heldType) ? 2 : ItemType.SAM_SCYTHE.equals(heldType) ? 1 : 0;
+            if (!GardenPlotCleaner.breakBlock(player, event.getInstance(), event.getBlockPosition(), event.getBlock(), scytheRadius)) {
+                GardenFarm.harvest(player, event.getInstance(), event.getBlockPosition(), event.getBlock());
+            }
+            return;
+        }
+
+        event.setCancelled(true);
+        SkyBlockRegion region = SkyBlockRegion.getRegionOfPosition(event.getBlockPosition());
+
+        Block block = event.getBlock();
+        Material material = Material.fromKey(block.name());
+        boolean shouldItemDrop = false;
+
+        // Leaves on public foraging islands are authored parts of their tree. Handle them before
+        // region mineability validation so players can remove them and the tree can restore them.
+        if (!HypixelConst.isIslandServer() && ForagingTreeManager.isTreeLeaf(block)
+                && ForagingTreeManager.breakLeaf(player, event.getBlockPosition())) {
+            return;
+        }
+
+        // Handle island server block breaks
+        if (HypixelConst.isIslandServer()) {
+            event.getInstance().setBlock(event.getBlockPosition(), Block.AIR);
+            shouldItemDrop = true;
+        }
+
+        // Handle region-specific block breaks
+        else if (region != null) {
+            RegionType type = region.getType();
+            SkyBlockRegenConfiguration mining = type.getMiningHandler();
+
+            // Validate if block can be mined in this region
+            if (material != null && mining != null && !mining.getMineableBlocks(player.getInstance(), event.getBlockPosition()).contains(material)) {
+                event.setCancelled(true);
+                return;
+            }
+
+            // Check if player's tool can break this block using the handler system
+            MineableBlock mineableBlock = MineableBlock.get(block, type);
+            SkyBlockItem heldItem = new SkyBlockItem(player.getItemInMainHand());
+            if (mineableBlock != null) {
+                SkyBlockMiningHandler handler = mineableBlock.getMiningHandler();
+
+                // Check if tool can break this block (unless it breaks instantly)
+                if (!handler.breaksInstantly() && !handler.canToolBreak(heldItem)) {
+                    event.setCancelled(true);
+                    return;
+                }
+
+                // Check breaking power requirement
+                if (dev.daweapon.type.skyblockgeneric.drill.DrillFuel.isEmpty(heldItem)) {
+                    dev.daweapon.type.skyblockgeneric.drill.DrillFuel.warnEmpty(player);
+                    event.setCancelled(true);
+                    return;
+                }
+
+                int playerBreakingPower = heldItem.getAttributeHandler().getBreakingPower();
+                if (playerBreakingPower + dev.daweapon.type.skyblockgeneric.hotm.HotmAbilities.breakingPowerBonus(player) < handler.getMiningPowerRequirement()) {
+                    event.setCancelled(true);
+                    return;
+                }
+            }
+
+            // Authored Park/Galatea trees are handled as a single tracked structure so Sweep can
+            // harvest connected logs and the exact original blocks can grow back bottom-up.
+            if (ForagingTreeManager.isTreeLog(block)) {
+                harvestTree(player, heldItem, region, event.getBlockPosition(), 1.0);
+                return;
+            }
+
+            // Queue block for mining if in valid region
+            if (mining != null && material != null) {
+                mining.addToQueue(player, event.getBlockPosition().asPos(), (SharedInstance) player.getInstance());
+                shouldItemDrop = true;
+            }
+        }
+        // Cancel if not in a region at all
+        else {
+            event.setCancelled(true);
+            return;
+        }
+
+        // Handle item drops for valid breaks
+        if (material != null && shouldItemDrop) {
+            SkyBlockItem brokenBlockItem = new SkyBlockItem(material);
+
+            // Determine which item(s) should be dropped using CustomDropComponent
+            List<SkyBlockItem> customDrops = CustomDropComponent.simulateDrop(
+                    brokenBlockItem,
+                    player,
+                    new SkyBlockItem(player.getItemInMainHand()),
+                    region,
+                    HypixelConst.getTypeLoader().getType(),
+                    HypixelConst.isIslandServer()
+            );
+
+            GlaciteOre glaciteOre = GlaciteOre.of(material, region == null ? null : region.getType());
+            if (glaciteOre != null) {
+                customDrops.clear();
+                customDrops.add(new SkyBlockItem(glaciteOre.getDrop(), 1));
+            }
+
+            RegionType breakRegionType = region == null ? null : region.getType();
+            CrystalHollowsOre crystalOre = CrystalHollowsOre.of(material, breakRegionType);
+            if (crystalOre != null) {
+                dev.daweapon.type.skyblockgeneric.crystalhollows.ThystSpawner.onBreak(crystalOre, player.getInstance(), event.getBlockPosition());
+                customDrops.clear();
+                customDrops.add(new SkyBlockItem(crystalOre.getDrop(), java.util.concurrent.ThreadLocalRandom.current()
+                        .nextInt(CrystalHollowsOre.MIN_ROUGH_DROP, CrystalHollowsOre.MAX_ROUGH_DROP + 1)));
+            } else if (HardStone.isHardStone(material, breakRegionType)) {
+                customDrops.clear();
+                customDrops.add(new SkyBlockItem(ItemType.HARD_STONE, 1));
+            } else {
+                CrystalHollowsDrops.Drop hollowsDrop = CrystalHollowsDrops.of(material, breakRegionType);
+                if (hollowsDrop != null) {
+                    customDrops.clear();
+                    customDrops.add(new SkyBlockItem(hollowsDrop.item(), hollowsDrop.roll(java.util.concurrent.ThreadLocalRandom.current())));
+                }
+            }
+
+            // Call custom break event
+            boolean playerPlaced = block.hasTag(Tag.Boolean("player_placed")) && block.getTag(Tag.Boolean("player_placed"));
+
+            HypixelEventHandler.callCustomEvent(new CustomBlockBreakEvent(
+                    player, material, event.getBlockPosition(), customDrops, playerPlaced
+            ));
+
+            // Process each drop with fortune multiplier
+            for (SkyBlockItem dropItem : customDrops) {
+                // Calculate drop amount with fortune multiplier
+                int dropAmount = dropItem.getAmount(); // Base amount from CustomDropComponent
+
+                try {
+                    MineableBlock mineableBlock = MineableBlock.get(block, region == null ? null : region.getType());
+                    if (mineableBlock != null) {
+                        double baseFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().baseSkillFortune());
+                        double specificFortune = player.getStatistics().allStatistics().getOverall(mineableBlock.getBlockType().specificBlockFortune());
+                        double fortune = baseFortune + specificFortune
+                                + CrimsonEssenceShop.miningFortune(player, mineableBlock.getMaterial())
+                                + dev.daweapon.type.skyblockgeneric.item.equipment.EquipmentBonuses.miningFortune(player, mineableBlock);
+                        double dropMultiplier = (1 + (fortune * 0.01));
+                        dropAmount = (int) Math.ceil(dropAmount * dropMultiplier);
+                    }
+                } catch (NullPointerException e) {
+                    // Keep base amount if fortune calculation fails
+                }
+
+                // Update the drop item amount
+                dropItem.setAmount(dropAmount);
+                ItemType droppedItemType = dropItem.getAttributeHandler().getPotentialType();
+                if (!playerPlaced) {
+                    CommissionProgress.recordHollowsDrop(player, droppedItemType, dropAmount, breakRegionType);
+                }
+                if (!playerPlaced && droppedItemType != null) {
+                    FarmingContests.recordHarvest(player, droppedItemType, dropAmount);
+                }
+
+                // Handle item distribution based on player conditions
+                if (player.canInsertItemIntoSacks(droppedItemType, dropAmount)) {
+                    player.getSackItems().increase(droppedItemType, dropAmount);
+                } else if (player.getSkyBlockExperience().getLevel().asInt() >= 6) {
+                    player.addAndUpdateItem(dropItem);
+                } else {
+                    // Determine nearest air block between ore and player
+                    Pos orePos = event.getBlockPosition().asPos();
+                    Pos playerPos = player.getPosition();
+
+                    Pos[] offsets = {
+                            new Pos(1, 0, 0), new Pos(-1, 0, 0),
+                            new Pos(0, 1, 0), new Pos(0, -1, 0),
+                            new Pos(0, 0, 1), new Pos(0, 0, -1)
+                    };
+
+                    Pos nearestAirBlock = null;
+                    double closestDistanceSquared = Double.MAX_VALUE;
+
+                    for (Pos offset : offsets) {
+                        Pos adjacentPos = orePos.add(offset);
+                        Block block2 = player.getInstance().getBlock(adjacentPos);
+
+                        if (block2.air()) {
+                            double distanceSquared = adjacentPos.distanceSquared(playerPos);
+                            if (distanceSquared < closestDistanceSquared) {
+                                closestDistanceSquared = distanceSquared;
+                                nearestAirBlock = adjacentPos;
+                            }
+                        }
+                    }
+
+                    // Use the nearest air block or fallback to default position
+                    Pos dropBlock = (nearestAirBlock != null) ? nearestAirBlock : orePos.add(0, 1, 0);
+
+                    // Spawn the item
+                    ItemDrops.dropFromBlock(new DroppedItemEntityImpl(dropItem, player),
+                            player.getInstance(), dropBlock);
+                }
+            }
+
+            if (!playerPlaced && region != null && !HypixelConst.isIslandServer()) {
+                MiningSpread.trigger(player, event.getBlockPosition(), block, region.getType());
+            }
+        }
+    }
+
+    public static void harvestTree(SkyBlockPlayer player, SkyBlockItem heldItem, SkyBlockRegion region,
+                                   net.minestom.server.coordinate.Point position, double sweepScale) {
+        GatheringPetBonuses.SlowStart slowStart = GatheringPetBonuses.consumeSlowStart(player);
+        List<ForagingTreeManager.HarvestedLog> harvested = ForagingTreeManager.breakLogs(
+                player, position, heldItem, slowStart.sweep(), sweepScale
+        );
+        for (ForagingTreeManager.HarvestedLog log : harvested) {
+            processTreeLog(player, heldItem, region, log, slowStart.foragingFortune());
+        }
+        FrenzyAxes.recordLogs(player, player.getHeldSlot(), harvested.size());
+    }
+
+    private static void processTreeLog(SkyBlockPlayer player, SkyBlockItem heldItem, SkyBlockRegion region,
+                                ForagingTreeManager.HarvestedLog harvested, double extraFortune) {
+        Material originalMaterial = Material.fromKey(harvested.originalBlock().key());
+        if (originalMaterial == null) return;
+
+        SkyBlockItem brokenItem = harvested.dropType() == null
+                ? new SkyBlockItem(originalMaterial)
+                : new SkyBlockItem(harvested.dropType());
+        List<SkyBlockItem> drops = CustomDropComponent.simulateDrop(
+                brokenItem,
+                player,
+                heldItem,
+                region,
+                HypixelConst.getTypeLoader().getType(),
+                false
+        );
+
+        double fortune = player.getStatistics().allStatistics().getOverall(
+                dev.daweapon.commons.skyblock.statistics.ItemStatistic.FORAGING_FORTUNE
+        );
+        fortune += extraFortune;
+        if (GatheringPetBonuses.treeEssenceProcs(player)) player.addExperience(1);
+        if (harvested.dropType() == ItemType.FIG_LOG) {
+            fortune += player.getStatistics().allStatistics().getOverall(
+                    dev.daweapon.commons.skyblock.statistics.ItemStatistic.FIG_FORTUNE
+            );
+        } else if (harvested.dropType() == ItemType.MANGROVE_LOG) {
+            fortune += player.getStatistics().allStatistics().getOverall(
+                    dev.daweapon.commons.skyblock.statistics.ItemStatistic.MANGROVE_FORTUNE
+            );
+        }
+
+        double multiplier = 1 + fortune * 0.01;
+        for (SkyBlockItem drop : drops) {
+            drop.setAmount((int) Math.ceil(drop.getAmount() * multiplier));
+        }
+
+        // Fire after fortune is applied so collection gains match the items actually awarded.
+        Material harvestedMaterial = Material.fromKey(brokenItem.getMaterial().key());
+        HypixelEventHandler.callCustomEvent(new CustomBlockBreakEvent(
+                player,
+                harvestedMaterial == null ? originalMaterial : harvestedMaterial,
+                harvested.position(),
+                drops,
+                false
+        ));
+
+        for (SkyBlockItem drop : drops) {
+            distributeDrop(player, drop, harvested.position().asPos());
+        }
+    }
+
+    private static void distributeDrop(SkyBlockPlayer player, SkyBlockItem dropItem, Pos source) {
+        int amount = dropItem.getAmount();
+        ItemType type = dropItem.getAttributeHandler().getPotentialType();
+        if (player.canInsertItemIntoSacks(type, amount)) {
+            player.getSackItems().increase(type, amount);
+            return;
+        }
+        if (player.getSkyBlockExperience().getLevel().asInt() >= 6) {
+            player.addAndUpdateItem(dropItem);
+            return;
+        }
+
+        Pos[] offsets = {
+                new Pos(1, 0, 0), new Pos(-1, 0, 0),
+                new Pos(0, 1, 0), new Pos(0, -1, 0),
+                new Pos(0, 0, 1), new Pos(0, 0, -1)
+        };
+        Pos nearest = null;
+        double nearestDistance = Double.MAX_VALUE;
+        for (Pos offset : offsets) {
+            Pos candidate = source.add(offset);
+            if (!player.getInstance().getBlock(candidate).air()) continue;
+            double distance = candidate.distanceSquared(player.getPosition());
+            if (distance < nearestDistance) {
+                nearest = candidate;
+                nearestDistance = distance;
+            }
+        }
+
+        Pos dropBlock = nearest == null ? source.add(0, 1, 0) : nearest;
+        ItemDrops.dropFromBlock(new DroppedItemEntityImpl(dropItem, player), player.getInstance(), dropBlock);
+    }
+}

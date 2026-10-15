@@ -15,7 +15,7 @@ player -> Velocity proxy -> HypixelCore game server (one per ServerType/area)
 | Group | Modules | Role |
 |---|---|---|
 | Shared | `commons` | Enums (`ServerType`, `ServiceType`), item and data models, Redis messaging (`commons.redis`), protocol objects (`commons.protocol`), config loading, `PackageScanner` |
-| Vendored libraries | `lib.redisapi`, `lib.datahandler` | AtlasRedisAPI (MIT) and SwoftyDataHandler (Apache-2.0), compiled from source. See `NOTICE.md` |
+| Vendored libraries | `lib.redisapi`, `lib.datahandler` | AtlasRedisAPI (MIT) and SharedDataHandler (Apache-2.0), compiled from source. See `NOTICE.md` |
 | Game base | `type.generic`, `type.game`, `type.lobby` | `HypixelGenericLoader`, events, GUI v2, commands, player base class |
 | SkyBlock base | `type.skyblockgeneric` | Items, skills, collections, mobs, pets, loot tables, SkyBlockPlayer and SkyBlockDataHandler |
 | SkyBlock areas | `type.hub`, `type.island`, `type.thegarden`, `type.crimsonisle`, `type.crystalhollows`, `type.kuudra`, `type.dwarvenmines` and the other `type.*` area modules | One `Type*Loader` each: NPCs, regions, area events |

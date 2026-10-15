@@ -77,9 +77,9 @@ public final class CopyCurrentGui {
         code.append("import net.kyori.adventure.text.format.TextDecoration;\n");
         code.append("import net.minestom.server.inventory.InventoryType;\n");
         code.append("import net.minestom.server.item.Material;\n");
-        code.append("import net.swofty.type.generic.gui.inventory.ItemStackCreator;\n");
-        code.append("import net.swofty.type.generic.gui.v2.*;\n");
-        code.append("import net.swofty.type.generic.gui.v2.context.ViewContext;\n\n");
+        code.append("import dev.daweapon.type.generic.gui.inventory.ItemStackCreator;\n");
+        code.append("import dev.daweapon.type.generic.gui.v2.*;\n");
+        code.append("import dev.daweapon.type.generic.gui.v2.context.ViewContext;\n\n");
         code.append("public class ").append(className).append(" extends StatelessView {\n\n");
         code.append("    @Override\n");
         code.append("    public ViewConfiguration<DefaultState> configuration() {\n");

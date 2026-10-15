@@ -1,0 +1,28 @@
+package dev.daweapon.commons.skyblock.item.attribute.attributes;
+
+import dev.daweapon.commons.skyblock.item.attribute.ItemAttribute;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
+import org.jetbrains.annotations.Nullable;
+
+// Item attribute storing the unique ID used to look up an item's TrackedItem provenance record.
+public class ItemAttributeUniqueTrackedID extends ItemAttribute<String> {
+    @Override
+    public String getKey() {
+        return "unique-tracked-id";
+    }
+
+    @Override
+    public String getDefaultValue(@Nullable ItemStatistics defaultStatistics) {
+        return "none";
+    }
+
+    @Override
+    public String loadFromString(String string) {
+        return string;
+    }
+
+    @Override
+    public String saveIntoString() {
+        return this.value;
+    }
+}

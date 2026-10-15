@@ -1,0 +1,33 @@
+package dev.daweapon.spark;
+
+import me.lucko.spark.common.platform.PlatformInfo;
+import net.minestom.server.MinecraftServer;
+
+// Spark platform info implementation describing this server as a Minestom-based "Hypixel" server.
+public final class MinestomPlatformInfo implements PlatformInfo {
+
+    @Override
+    public Type getType() {
+        return Type.SERVER;
+    }
+
+    @Override
+    public String getName() {
+        return "Minestom";
+    }
+
+    @Override
+    public String getBrand() {
+        return "Hypixel";
+    }
+
+    @Override
+    public String getVersion() {
+        return getMinecraftVersion() + "-" + MinecraftServer.getBrandName();
+    }
+
+    @Override
+    public String getMinecraftVersion() {
+        return MinecraftServer.VERSION_NAME;
+    }
+}

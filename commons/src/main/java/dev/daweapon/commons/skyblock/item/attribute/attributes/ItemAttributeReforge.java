@@ -1,0 +1,43 @@
+package dev.daweapon.commons.skyblock.item.attribute.attributes;
+
+import dev.daweapon.commons.skyblock.item.attribute.ItemAttribute;
+import dev.daweapon.commons.skyblock.item.reforge.ReforgeLoader;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
+import org.jetbrains.annotations.Nullable;
+import org.tinylog.Logger;
+
+// Item attribute storing an item's applied reforge, validated against the ReforgeLoader registry.
+public class ItemAttributeReforge extends ItemAttribute<String> {
+    @Override
+    public String getKey() {
+        return "reforge";
+    }
+
+    @Override
+    public String getDefaultValue(@Nullable ItemStatistics defaultStatistics) {
+        return null;
+    }
+
+    @Override
+    public String loadFromString(String string) {
+        if (string == null || string.isEmpty()) {
+            return null;
+        }
+
+        if (ReforgeLoader.getReforge(string) != null) {
+            return string;
+        }
+
+        Logger.warn("Unknown reforge: {}", string);
+        return null;
+    }
+
+    @Override
+    public String saveIntoString() {
+        String toSave = getValue();
+        if (toSave == null || toSave.isEmpty()) {
+            return "";
+        }
+        return toSave;
+    }
+}

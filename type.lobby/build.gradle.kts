@@ -2,7 +2,7 @@ plugins {
     java
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "1.0"
 
 java {

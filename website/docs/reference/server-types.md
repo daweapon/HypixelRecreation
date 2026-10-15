@@ -2,7 +2,7 @@
 
 ServerTypes define the different game modes and locations that can be run as separate server instances. There are **28 server types** in total: 14 SkyBlock locations and 14 lobbies/minigame servers.
 
-The full list lives in `net.swofty.commons.ServerType`.
+The full list lives in `dev.daweapon.commons.ServerType`.
 
 ## SkyBlock Server Types
 

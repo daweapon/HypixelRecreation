@@ -1,0 +1,31 @@
+package dev.daweapon.commons.guild.events;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import dev.daweapon.commons.guild.GuildEvent;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+@NoArgsConstructor
+// Guild-system event: promotes a guild member to the next rank up.
+public class GuildPromoteRequestEvent extends GuildEvent {
+    @NotNull
+    private UUID promoter;
+    @NotNull
+    private UUID target;
+
+    public GuildPromoteRequestEvent(@NotNull UUID promoter, @NotNull UUID target) {
+        super(null);
+        this.promoter = promoter;
+        this.target = target;
+    }
+
+    @Override
+    public List<UUID> getParticipants() {
+        return List.of(promoter, target);
+    }
+
+}

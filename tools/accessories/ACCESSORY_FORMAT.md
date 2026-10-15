@@ -4,7 +4,7 @@ Written by worker AF for the Accessories update (Roadmap #36). Every accessory i
 block with an `ACCESSORY` component** (`TALISMAN` is an alias). Most accessories need no Java: stats
 go in `default_statistics`, and conditional or combat effects go in a typed `effects:` list.
 
-SBG = `type.skyblockgeneric/src/main/java/net/swofty/type/skyblockgeneric`.
+SBG = `type.skyblockgeneric/src/main/java/dev/daweapon/type/skyblockgeneric`.
 
 | What | Where |
 |---|---|
@@ -41,7 +41,7 @@ SBG = `type.skyblockgeneric/src/main/java/net/swofty/type/skyblockgeneric`.
 4. Regenerate `ItemType`: `./gradlew :commons:generateItemTypes` (never hand-edit it).
 5. Run the guard tests with `--rerun` (config-only changes don't rerun tests otherwise):
    ```
-   ./gradlew :type.skyblockgeneric:test --tests net.swofty.type.skyblockgeneric.accessory.AccessoryFrameworkTest --tests net.swofty.type.skyblockgeneric.item.EveryItemParsesTest --rerun -Dorg.gradle.jvmargs=-Xmx1536m --no-daemon -q
+   ./gradlew :type.skyblockgeneric:test --tests dev.daweapon.type.skyblockgeneric.accessory.AccessoryFrameworkTest --tests dev.daweapon.type.skyblockgeneric.item.EveryItemParsesTest --rerun -Dorg.gradle.jvmargs=-Xmx1536m --no-daemon -q
    ```
 6. Nothing else. The family file already lists every Hypixel upgrade line (by the ids this server
    uses), so a new member joins its line automatically. The bag, stats, Accessory Power, SkyBlock

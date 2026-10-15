@@ -1,0 +1,36 @@
+package dev.daweapon.type.skyblockgeneric.user;
+
+import lombok.Getter;
+import lombok.Setter;
+import net.minestom.server.item.Material;
+import dev.daweapon.commons.skyblock.item.UnderstandableSkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Getter
+public class SkyBlockInventory {
+
+    @Setter
+    private Map<Integer, UnderstandableSkyBlockItem> items = new HashMap<>();
+    @Setter
+    private UnderstandableSkyBlockItem helmet = new SkyBlockItem(Material.AIR).toUnderstandable();
+    @Setter
+    private UnderstandableSkyBlockItem chestplate = new SkyBlockItem(Material.AIR).toUnderstandable();
+    @Setter
+    private UnderstandableSkyBlockItem leggings = new SkyBlockItem(Material.AIR).toUnderstandable();
+    @Setter
+    private UnderstandableSkyBlockItem boots = new SkyBlockItem(Material.AIR).toUnderstandable();
+    @Setter
+    private UnderstandableSkyBlockItem necklace = new SkyBlockItem(Material.AIR).toUnderstandable();
+    @Setter
+    private UnderstandableSkyBlockItem cloak = new SkyBlockItem(Material.AIR).toUnderstandable();
+    @Setter
+    private UnderstandableSkyBlockItem belt = new SkyBlockItem(Material.AIR).toUnderstandable();
+    @Setter
+    private UnderstandableSkyBlockItem gloves = new SkyBlockItem(Material.AIR).toUnderstandable();
+
+    public SkyBlockInventory() {
+    }
+}

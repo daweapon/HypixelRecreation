@@ -2,7 +2,7 @@ plugins {
     id("java")
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "3.0"
 
 java {

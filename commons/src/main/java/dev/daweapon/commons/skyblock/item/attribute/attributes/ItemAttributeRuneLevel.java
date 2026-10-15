@@ -1,0 +1,28 @@
+package dev.daweapon.commons.skyblock.item.attribute.attributes;
+
+import dev.daweapon.commons.skyblock.item.attribute.ItemAttribute;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
+import org.jetbrains.annotations.Nullable;
+
+// Item attribute storing a rune item's own level.
+public class ItemAttributeRuneLevel extends ItemAttribute<Integer> {
+    @Override
+    public String getKey() {
+        return "rune_level";
+    }
+
+    @Override
+    public Integer getDefaultValue(@Nullable ItemStatistics defaultStatistics) {
+        return 1;
+    }
+
+    @Override
+    public Integer loadFromString(String string) {
+        return Integer.parseInt(string);
+    }
+
+    @Override
+    public String saveIntoString() {
+        return getValue().toString();
+    }
+}

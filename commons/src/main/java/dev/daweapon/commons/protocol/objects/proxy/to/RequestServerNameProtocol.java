@@ -1,0 +1,29 @@
+package dev.daweapon.commons.protocol.objects.proxy.to;
+
+import dev.daweapon.commons.protocol.JacksonSerializer;
+import dev.daweapon.commons.protocol.RedisProtocol;
+import dev.daweapon.commons.protocol.Serializer;
+import org.jetbrains.annotations.Nullable;
+
+// Redis RPC protocol for a server to ask the proxy for its own display name and short display name.
+public class RequestServerNameProtocol extends RedisProtocol<
+        RequestServerNameProtocol.Request,
+        RequestServerNameProtocol.Response> {
+    private static final Serializer<Request> SERIALIZER =
+            new JacksonSerializer<>(Request.class);
+    private static final Serializer<Response> RETURN_SERIALIZER =
+            new JacksonSerializer<>(Response.class);
+
+    @Override
+    public Serializer<Request> getSerializer() {
+        return SERIALIZER;
+    }
+
+    @Override
+    public Serializer<Response> getReturnSerializer() {
+        return RETURN_SERIALIZER;
+    }
+
+    public record Request() {}
+    public record Response(String serverName, String shortenedServerName, boolean success, @Nullable String error) {}
+}

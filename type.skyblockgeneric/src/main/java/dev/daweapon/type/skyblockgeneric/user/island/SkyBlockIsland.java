@@ -1,0 +1,227 @@
+package dev.daweapon.type.skyblockgeneric.user.island;
+
+import lombok.Getter;
+import lombok.Setter;
+import net.hollowcube.polar.PolarLoader;
+import net.hollowcube.polar.PolarWorld;
+import net.kyori.adventure.key.Key;
+import net.minestom.server.MinecraftServer;
+import net.minestom.server.instance.InstanceContainer;
+import net.minestom.server.instance.SharedInstance;
+import net.minestom.server.registry.RegistryKey;
+import net.minestom.server.timer.ExecutionType;
+import net.minestom.server.timer.Scheduler;
+import net.minestom.server.timer.TaskSchedule;
+import net.minestom.server.world.DimensionType;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.generic.HypixelConst;
+import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.generic.utility.MathUtility;
+import dev.daweapon.type.skyblockgeneric.SkyBlockGenericLoader;
+import dev.daweapon.type.skyblockgeneric.data.monogdb.CoopDatabase;
+import dev.daweapon.type.skyblockgeneric.data.monogdb.IslandDatabase;
+import dev.daweapon.type.skyblockgeneric.minion.IslandMinionData;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import dev.daweapon.type.skyblockgeneric.utility.JerryInformation;
+import org.jetbrains.annotations.Nullable;
+import org.tinylog.Logger;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+@Getter
+public class SkyBlockIsland {
+    private static final Map<UUID, SkyBlockIsland> loadedIslands = new ConcurrentHashMap<>();
+    private static final AtomicBoolean shutdownHookRegistered = new AtomicBoolean();
+
+    private final IslandDatabase database;
+    private final UUID coopId;
+    private final UUID islandID;
+    private Boolean created = false;
+    private volatile boolean discarded = false;
+    private SharedInstance islandInstance;
+    private PolarWorld world;
+
+    @Setter
+    private JerryInformation jerryInformation = null;
+    @Setter
+    private IslandMinionData minionData = null;
+    @Setter
+    private long lastSaved = 0;
+    @Setter
+    private Integer islandVersion;
+
+    public SkyBlockIsland(UUID islandID, UUID profileID) {
+        this.islandID = islandID;
+        this.database = new IslandDatabase(islandID.toString());
+        CoopDatabase.Coop coop = CoopDatabase.getFromMemberProfile(profileID);
+        this.coopId = coop == null ? null : coop.coopUUID();
+
+        loadedIslands.put(islandID, this);
+    }
+
+    public CompletableFuture<SharedInstance> getSharedInstance() {
+        CompletableFuture<SharedInstance> future = new CompletableFuture<>();
+
+        Thread.startVirtualThread(() -> {
+            try {
+                if (created) {
+                    future.complete(islandInstance);
+                    return;
+                }
+
+                Logger.info("[{}] Starting island instance load", islandID);
+                loadedIslands.putIfAbsent(islandID, this);
+
+                InstanceContainer temporaryInstance = createInstanceContainer();
+                islandInstance = MinecraftServer.getInstanceManager().createSharedInstance(temporaryInstance);
+
+                IslandWorldStorage.LoadedIslandWorld loadedWorld = IslandWorldStorage.load(database);
+                world = loadedWorld.world();
+                islandVersion = loadedWorld.version();
+                lastSaved = loadedWorld.lastSaved();
+                IslandLifecycleContext context = lifecycleContext();
+
+                if (loadedWorld.firstCreated()) {
+                    IslandLifecycle.run(IslandLifecyclePhase.CREATE, context);
+                }
+
+                migrateIfNeeded();
+                temporaryInstance.setChunkLoader(new PolarLoader(world));
+
+                this.created = true;
+                IslandLifecycle.run(IslandLifecyclePhase.LOAD, context);
+
+                future.complete(islandInstance);
+                context.onlineMembers().forEach(HypixelPlayer::setReadyForEvents);
+                Logger.info("[{}] Completed island instance load", islandID);
+            } catch (Throwable throwable) {
+                Logger.error(throwable, "[{}] Failed island instance load", islandID);
+                future.completeExceptionally(throwable);
+            }
+        });
+
+        return future;
+    }
+
+    public synchronized void runVacantCheck() {
+        if (!created || islandInstance == null) {
+            if (discarded) loadedIslands.remove(islandID, this);
+            return;
+        }
+        if (!islandInstance.getPlayers().isEmpty()) return;
+
+        if (!discarded) {
+            IslandLifecycle.run(IslandLifecyclePhase.SAVE, lifecycleContext());
+            save();
+        }
+        this.created = false;
+        islandInstance.getChunks().forEach(chunk -> {
+            islandInstance.unloadChunk(chunk);
+        });
+        this.islandInstance = null;
+        this.world = null;
+        loadedIslands.remove(islandID, this);
+    }
+
+    private synchronized void flush() {
+        if (discarded || !created || islandInstance == null || world == null) return;
+
+        IslandLifecycle.run(IslandLifecyclePhase.SAVE, lifecycleContext());
+        save();
+    }
+
+    private void save() {
+        new PolarLoader(world).saveInstance(islandInstance);
+        IslandWorldStorage.save(database, world, islandVersion);
+    }
+
+    private InstanceContainer createInstanceContainer() {
+        RegistryKey<DimensionType> dimensionTypeKey = MinecraftServer.getDimensionTypeRegistry().getKey(
+                Key.key("skyblock:island")
+        );
+        return MinecraftServer.getInstanceManager().createInstanceContainer(dimensionTypeKey);
+    }
+
+    private IslandLifecycleContext lifecycleContext() {
+        CoopDatabase.Coop coop = coopId == null ? null : CoopDatabase.get(coopId);
+        List<SkyBlockPlayer> onlineMembers = IslandMembers.onlineMembers(islandID, coop);
+        List<UUID> memberProfiles = IslandMembers.memberProfiles(islandID, coop);
+        return new IslandLifecycleContext(this, coop != null, onlineMembers, memberProfiles);
+    }
+
+    private void migrateIfNeeded() {
+        int oldVersion = islandVersion;
+        if (islandVersion >= HypixelConst.getCurrentIslandVersion()) return;
+
+        world = IslandMigrations.apply(world, this, oldVersion, HypixelConst.getCurrentIslandVersion());
+
+        MathUtility.delay(() -> SkyBlockGenericLoader.getLoadedPlayers().stream()
+                .filter(player -> player.getSkyBlockIsland().getIslandID().equals(islandID))
+                .forEach(player -> player.getLogHandler().debug(Text.of("Your island was migrated from version <c>{} <f>to <a>{}<f>!",
+                        oldVersion, HypixelConst.getCurrentIslandVersion()))), 20);
+
+        islandVersion = HypixelConst.getCurrentIslandVersion();
+    }
+
+    public static Collection<SkyBlockIsland> loaded() {
+        return loadedIslands.values();
+    }
+
+    public static boolean hasIsland(UUID islandID) {
+        return loadedIslands.containsKey(islandID);
+    }
+
+    public static SkyBlockIsland getOrCreate(UUID islandID, UUID profileID) {
+        SkyBlockIsland existing = loadedIslands.get(islandID);
+        if (existing != null) return existing;
+
+        return new SkyBlockIsland(islandID, profileID);
+    }
+
+    public static @Nullable SkyBlockIsland getIsland(UUID islandID) {
+        if (!loadedIslands.containsKey(islandID)) return null;
+        return loadedIslands.get(islandID);
+    }
+
+    public @Nullable CoopDatabase.Coop getCoop() {
+        return coopId == null ? null : CoopDatabase.get(coopId);
+    }
+
+    public static boolean discard(UUID islandID) {
+        SkyBlockIsland island = loadedIslands.get(islandID);
+        if (island == null) return false;
+        island.discarded = true;
+        return true;
+    }
+
+    public static void runVacantLoop(Scheduler scheduler) {
+        IslandMigrations.validate(HypixelConst.getCurrentIslandVersion());
+        registerShutdownHook();
+
+        scheduler.submitTask(() -> {
+            loadedIslands.values().forEach(SkyBlockIsland::runVacantCheck);
+            return TaskSchedule.tick(4);
+        }, ExecutionType.TICK_END);
+    }
+
+    private static void registerShutdownHook() {
+        if (!shutdownHookRegistered.compareAndSet(false, true)) return;
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            Logger.info("Saving {} loaded SkyBlock island(s) before shutdown", loadedIslands.size());
+            loadedIslands.values().forEach(island -> {
+                try {
+                    island.flush();
+                } catch (Throwable throwable) {
+                    Logger.error(throwable, "[{}] Failed to save island during shutdown", island.islandID);
+                }
+            });
+        }, "skyblock-island-shutdown-save"));
+    }
+}

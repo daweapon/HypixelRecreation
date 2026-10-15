@@ -1,11 +1,11 @@
 import com.mongodb.client.*;
 import net.minestom.server.item.Material;
-import net.swofty.commons.skyblock.auctions.*;
-import net.swofty.commons.skyblock.item.UnderstandableSkyBlockItem;
-import net.swofty.commons.skyblock.item.attribute.attributes.ItemAttributeType;
-import net.swofty.commons.protocol.objects.auctions.*;
-import net.swofty.service.auction.*;
-import net.swofty.service.auction.endpoints.*;
+import dev.daweapon.commons.skyblock.auctions.*;
+import dev.daweapon.commons.skyblock.item.UnderstandableSkyBlockItem;
+import dev.daweapon.commons.skyblock.item.attribute.attributes.ItemAttributeType;
+import dev.daweapon.commons.protocol.objects.auctions.*;
+import dev.daweapon.service.auction.*;
+import dev.daweapon.service.auction.endpoints.*;
 import org.bson.Document;
 import java.lang.reflect.Proxy;
 import java.util.*;

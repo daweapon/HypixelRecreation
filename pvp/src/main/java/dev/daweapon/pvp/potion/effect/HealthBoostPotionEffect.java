@@ -1,0 +1,22 @@
+package dev.daweapon.pvp.potion.effect;
+
+import dev.daweapon.pvp.utils.CombatVersion;
+import net.minestom.server.entity.LivingEntity;
+import net.minestom.server.entity.attribute.Attribute;
+import net.minestom.server.potion.PotionEffect;
+
+// Implements the Health Boost potion effect, clamping current health back down when the bonus max health is lost.
+public class HealthBoostPotionEffect extends CombatPotionEffect {
+	public HealthBoostPotionEffect() {
+		super(PotionEffect.HEALTH_BOOST);
+	}
+	
+	@Override
+	public void onRemoved(LivingEntity entity, int amplifier, CombatVersion version) {
+		super.onRemoved(entity, amplifier, version);
+		
+		if (entity.getHealth() > entity.getAttributeValue(Attribute.MAX_HEALTH)) {
+			entity.setHealth((float) entity.getAttributeValue(Attribute.MAX_HEALTH));
+		}
+	}
+}

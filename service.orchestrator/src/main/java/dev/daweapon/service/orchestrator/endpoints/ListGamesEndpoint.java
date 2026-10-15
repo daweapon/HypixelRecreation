@@ -1,0 +1,43 @@
+package dev.daweapon.service.orchestrator.endpoints;
+
+import dev.daweapon.commons.protocol.RedisProtocol;
+import dev.daweapon.commons.protocol.objects.orchestrator.ListGamesProtocol;
+import dev.daweapon.commons.redis.RedisMessageContext;
+import dev.daweapon.commons.redis.RedisMessageHandler;
+import dev.daweapon.service.orchestrator.OrchestratorCache;
+
+import java.util.ArrayList;
+import java.util.List;
+
+// Redis endpoint that lists all known servers and their active games for a given server type.
+public class ListGamesEndpoint implements RedisMessageHandler
+        <ListGamesProtocol.ListGamesMessage, ListGamesProtocol.ListGamesResponse> {
+
+    @Override
+    public RedisProtocol<ListGamesProtocol.ListGamesMessage, ListGamesProtocol.ListGamesResponse> protocol() {
+        return new ListGamesProtocol();
+    }
+
+    @Override
+    public ListGamesProtocol.ListGamesResponse handle(ListGamesProtocol.ListGamesMessage body,
+                                                      RedisMessageContext context) {
+        List<ListGamesProtocol.ServerGames> servers = new ArrayList<>();
+        for (OrchestratorCache.GameServerState server : OrchestratorCache.getAllServers()) {
+            if (server.type() != body.type()) continue;
+            List<ListGamesProtocol.GameSummary> games = new ArrayList<>();
+            for (OrchestratorCache.GameWithServer game : OrchestratorCache.getAllActiveGames()) {
+                if (!game.serverUuid().equals(server.uuid())) continue;
+                games.add(new ListGamesProtocol.GameSummary(
+                        game.game().getGameId().toString(),
+                        game.game().getGameTypeName(),
+                        game.game().getMap(),
+                        game.game().getInvolvedPlayers().size(),
+                        game.game().isAcceptingJoins()));
+            }
+            servers.add(new ListGamesProtocol.ServerGames(server.shortName(),
+                    server.uuid().toString(), server.onlinePlayers(), server.maxPlayers(),
+                    server.remainingGameSlots(), games));
+        }
+        return new ListGamesProtocol.ListGamesResponse(servers, true, null);
+    }
+}

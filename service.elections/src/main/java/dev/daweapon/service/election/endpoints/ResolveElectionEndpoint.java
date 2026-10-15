@@ -1,0 +1,255 @@
+package dev.daweapon.service.election.endpoints;
+
+import com.google.gson.Gson;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextColor;
+import dev.daweapon.commons.protocol.RedisProtocol;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.commons.protocol.objects.election.ResolveElectionProtocol;
+import dev.daweapon.service.election.ElectionDatabase;
+import dev.daweapon.commons.redis.RedisMessageHandler;
+import org.tinylog.Logger;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+import dev.daweapon.commons.redis.RedisMessageContext;
+
+// Redis endpoint that tallies votes to determine the winning mayor and minister, applies perk progression, and closes the election.
+public class ResolveElectionEndpoint implements RedisMessageHandler
+        <ResolveElectionProtocol.ResolveElectionMessage,
+                ResolveElectionProtocol.ResolveElectionResponse> {
+
+    private static final Gson GSON = new Gson();
+
+    private static final List<String> SPECIAL_MAYORS = List.of("SCORPIUS", "DERPY", "JERRY");
+
+    // Mirrors the perk pool defined per-candidate in SkyBlockMayor.java (type.skyblockgeneric). This
+    // service module can't depend on that enum directly, so the full perk list per regular mayor is
+    // duplicated here to drive perk-count progression (a losing candidate gradually unlocks more of
+    // their own perks across elections, per the SkyBlock Wiki's documented Mayor perk mechanic).
+    private static final Map<String, List<String>> MAYOR_PERK_POOLS = Map.of(
+            "AATROX", List.of("SLASHED_PRICING", "SLAYER_XP_BUFF", "PATHFINDER"),
+            "COLE", List.of("PROSPECTION", "MINING_XP_BUFF", "MINING_FIESTA", "MOLTEN_FORGE"),
+            "DIANA", List.of("HUNTRESS_INTUITION", "MYTHOLOGICAL_RITUAL", "PET_XP_BUFF", "SHARING_IS_CARING"),
+            "DIAZ", List.of("STOCK_EXCHANGE", "LONG_TERM_INVESTMENT", "SHOPPING_SPREE", "VOLUME_TRADING"),
+            "FINNEGAN", List.of("PEST_ERADICATOR", "GOATED", "BLOOMING_BUSINESS", "GRAND_FEAST"),
+            "FOXY", List.of("SWEET_BENEVOLENCE", "A_TIME_FOR_GIVING", "CHIVALROUS_CARNIVAL", "EXTRA_EVENT"),
+            "MARINA", List.of("FISHING_XP_BUFF", "LUCK_OF_THE_SEA", "FISHING_FESTIVAL", "DOUBLE_TROUBLE"),
+            "PAUL", List.of("MARAUDER", "BENEDICTION", "EZPZ"),
+            "BARRY", List.of("ARCANE_CATALYST", "ASTRAL_NEGOTIATOR", "MAGIC_XP_BOOST")
+    );
+
+    private static final List<NamedTextColor> CANDIDATE_COLORS = List.of(
+            NamedTextColor.RED, NamedTextColor.GREEN, NamedTextColor.AQUA,
+            NamedTextColor.YELLOW, NamedTextColor.LIGHT_PURPLE);
+
+    @Override
+    public RedisProtocol<ResolveElectionProtocol.ResolveElectionMessage,
+            ResolveElectionProtocol.ResolveElectionResponse> protocol() {
+        return new ResolveElectionProtocol();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public ResolveElectionProtocol.ResolveElectionResponse handle(ResolveElectionProtocol.ResolveElectionMessage messageObject, RedisMessageContext context) {
+        try {
+            String rawData = ElectionDatabase.loadElectionData();
+            if (rawData == null) {
+                return new ResolveElectionProtocol.ResolveElectionResponse(false, null, true, null);
+            }
+
+            Map<String, Object> data = GSON.fromJson(rawData, Map.class);
+            Boolean electionOpen = (Boolean) data.get("electionOpen");
+
+            if (electionOpen == null || !electionOpen) {
+                data.remove("votes");
+                return new ResolveElectionProtocol.ResolveElectionResponse(false, GSON.toJson(data), true, null);
+            }
+
+            int electionYear = messageObject.year();
+            Map<String, Long> tallies = ElectionDatabase.getTallies(electionYear);
+
+            List<Map<String, Object>> candidates = (List<Map<String, Object>>) data.get("candidates");
+            if (candidates == null) candidates = new ArrayList<>();
+
+            for (Map<String, Object> c : candidates) {
+                String name = (String) c.get("mayorName");
+                tallies.putIfAbsent(name, 0L);
+            }
+
+            List<Map.Entry<String, Long>> sorted = new ArrayList<>(tallies.entrySet());
+            sorted.sort((a, b) -> Long.compare(b.getValue(), a.getValue()));
+
+            if (sorted.isEmpty()) {
+                return new ResolveElectionProtocol.ResolveElectionResponse(false, GSON.toJson(data), true, null);
+            }
+
+            long topVotes = sorted.getFirst().getValue();
+            List<Map.Entry<String, Long>> tied = sorted.stream()
+                    .filter(e -> e.getValue() == topVotes).toList();
+
+            String winnerName;
+            if (tied.size() > 1) {
+                winnerName = tied.get(ThreadLocalRandom.current().nextInt(tied.size())).getKey();
+            } else {
+                winnerName = sorted.getFirst().getKey();
+            }
+
+            Map<String, Object> winnerCandidate = candidates.stream()
+                    .filter(c -> winnerName.equals(c.get("mayorName")))
+                    .findFirst().orElse(null);
+
+            int winnerIndex = winnerCandidate != null
+                    ? ((Number) winnerCandidate.getOrDefault("index", 0)).intValue()
+                    : 0;
+
+            boolean isSpecialWinner = SPECIAL_MAYORS.contains(winnerName);
+
+            data.put("currentMayor", winnerName);
+            data.put("currentMayorColor", wireColorForIndex(winnerIndex));
+
+            if (winnerCandidate != null && winnerCandidate.get("activePerks") != null) {
+                data.put("currentMayorPerks", winnerCandidate.get("activePerks"));
+            } else {
+                data.put("currentMayorPerks", List.of());
+            }
+            data.put("mayorElectedYear", electionYear);
+
+            Map<String, Object> lastElectedYear = (Map<String, Object>) data.getOrDefault("lastElectedYear", new HashMap<>());
+            lastElectedYear.put(winnerName, electionYear);
+            data.put("lastElectedYear", lastElectedYear);
+
+            if (isSpecialWinner) {
+                data.put("currentMinister", null);
+                data.put("ministerPerk", null);
+                data.put("currentMinisterColor", null);
+            } else {
+                String secondPlace = sorted.stream()
+                        .filter(e -> !e.getKey().equals(winnerName))
+                        .findFirst().map(Map.Entry::getKey).orElse(null);
+
+                if (secondPlace != null) {
+                    Map<String, Object> ministerCandidate = candidates.stream()
+                            .filter(c -> secondPlace.equals(c.get("mayorName")))
+                            .findFirst().orElse(null);
+
+                    int ministerIndex = ministerCandidate != null
+                            ? ((Number) ministerCandidate.getOrDefault("index", 1)).intValue()
+                            : 1;
+
+                    data.put("currentMinister", secondPlace);
+                    data.put("currentMinisterColor", wireColorForIndex(ministerIndex));
+
+                    // The ministerPerk star was already rolled and shown to voters when the candidate
+                    // list was built (ElectionData.assignMinisterPerk) - reuse it here instead of
+                    // rolling a new one, so the perk that actually activates matches what voters saw.
+                    String designatedMinisterPerk = ministerCandidate != null
+                            ? (String) ministerCandidate.get("ministerPerk")
+                            : null;
+                    if (designatedMinisterPerk != null) {
+                        data.put("ministerPerk", designatedMinisterPerk);
+                    }
+                }
+            }
+
+            updatePerkProgression(data, candidates, winnerName);
+
+            long totalVoteCount = tallies.values().stream().mapToLong(Long::longValue).sum();
+            Map<String, Object> electionResult = new HashMap<>();
+            electionResult.put("year", electionYear);
+            List<Map<String, Object>> candidateResults = new ArrayList<>();
+            for (Map.Entry<String, Long> entry : sorted) {
+                Map<String, Object> cr = new HashMap<>();
+                cr.put("mayorName", entry.getKey());
+                cr.put("votes", entry.getValue());
+                cr.put("percentage", totalVoteCount > 0 ? (entry.getValue() * 100.0) / totalVoteCount : 0);
+                candidateResults.add(cr);
+            }
+            electionResult.put("candidateResults", candidateResults);
+            data.put("lastElectionResult", electionResult);
+
+            data.put("candidates", List.of());
+            data.remove("votes");
+            data.put("voteTallies", Map.of());
+            data.put("electionOpen", false);
+
+            ElectionDatabase.saveElectionData(GSON.toJson(data));
+
+            return new ResolveElectionProtocol.ResolveElectionResponse(true, GSON.toJson(data), true, null);
+        } catch (Exception e) {
+            Logger.error(e, "Failed to resolve election");
+            return new ResolveElectionProtocol.ResolveElectionResponse(false, null, true, null);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    void updatePerkProgression(Map<String, Object> data,
+                                       List<Map<String, Object>> candidates,
+                                       String winnerName) {
+        Map<String, Object> candidateActivePerks = (Map<String, Object>) data.getOrDefault("candidateActivePerks", new HashMap<>());
+        Map<String, Object> failedPerkGainLastTime = (Map<String, Object>) data.getOrDefault("failedPerkGainLastTime", new HashMap<>());
+
+        for (Map<String, Object> candidate : candidates) {
+            String name = (String) candidate.get("mayorName");
+            if (name.equals(winnerName)) {
+                candidateActivePerks.remove(winnerName);
+                failedPerkGainLastTime.remove(winnerName);
+                continue;
+            }
+
+            if (SPECIAL_MAYORS.contains(name)) continue;
+
+            List<String> currentPerks = candidate.get("activePerks") != null
+                    ? new ArrayList<>((List<String>) candidate.get("activePerks"))
+                    : new ArrayList<>();
+
+            List<String> fullPool = MAYOR_PERK_POOLS.getOrDefault(name, List.of());
+            // Drops perks Hypixel has since retired, so they stop occupying a slot.
+            if (!fullPool.isEmpty()) currentPerks.retainAll(fullPool);
+            List<String> remainingPerks = fullPool.stream().filter(p -> !currentPerks.contains(p)).toList();
+
+            if (!remainingPerks.isEmpty()) {
+                Boolean failedLast = (Boolean) failedPerkGainLastTime.get(name);
+                boolean gainPerk = Boolean.TRUE.equals(failedLast) || ThreadLocalRandom.current().nextBoolean();
+
+                if (gainPerk) {
+                    currentPerks.add(remainingPerks.get(ThreadLocalRandom.current().nextInt(remainingPerks.size())));
+                    failedPerkGainLastTime.put(name, false);
+                } else {
+                    failedPerkGainLastTime.put(name, true);
+                }
+            }
+            candidateActivePerks.put(name, currentPerks);
+        }
+
+        if (!SPECIAL_MAYORS.contains(winnerName)) {
+            List<String> winnerCurrentPerks = (List<String>) candidateActivePerks.getOrDefault(winnerName, new ArrayList<>());
+            if (winnerCurrentPerks.isEmpty()) {
+                List<String> winnerPerksFromCandidate = candidates.stream()
+                        .filter(c -> winnerName.equals(c.get("mayorName")))
+                        .findFirst()
+                        .map(c -> (List<String>) c.get("activePerks"))
+                        .orElse(List.of());
+                if (!winnerPerksFromCandidate.isEmpty()) {
+                    String randomPerk = winnerPerksFromCandidate.get(
+                            ThreadLocalRandom.current().nextInt(winnerPerksFromCandidate.size()));
+                    candidateActivePerks.put(winnerName, List.of(randomPerk));
+                }
+            }
+        }
+
+        data.put("candidateActivePerks", candidateActivePerks);
+        data.put("failedPerkGainLastTime", failedPerkGainLastTime);
+    }
+
+    private static TextColor colorForIndex(int index) {
+        return index >= 0 && index < CANDIDATE_COLORS.size() ? CANDIDATE_COLORS.get(index) : NamedTextColor.WHITE;
+    }
+
+    static String wireColorForIndex(int index) {
+        return Text.colorTag(colorForIndex(index));
+    }
+}

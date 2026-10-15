@@ -1,0 +1,54 @@
+package dev.daweapon.service.api.http.endpoints;
+
+import dev.daweapon.service.api.APIAdminDatabase;
+import dev.daweapon.service.api.APIAdminDatabaseObject;
+import dev.daweapon.service.api.http.APIResponse;
+import dev.daweapon.service.api.http.EndpointType;
+import dev.daweapon.service.api.http.SkyBlockEndpoint;
+import dev.daweapon.service.api.http.StatusResponse;
+import org.jetbrains.annotations.Nullable;
+import spark.Request;
+import spark.Response;
+
+import java.util.Map;
+import java.util.UUID;
+
+// Admin panel HTTP endpoint that logs out the caller's authenticated session.
+public class LogoutEndpoint extends SkyBlockEndpoint {
+    @Override
+    public EndpointType getType() {
+        return EndpointType.ADMINISTRATIVE;
+    }
+
+    @Override
+    public String getPath() {
+        return "/logout";
+    }
+
+    @Override
+    public @Nullable APIResponse handle(Map<String, String> headers, Request req, Response res) {
+        String sessionId = req.cookie("sessionId");
+
+        if (sessionId == null) {
+            return APIResponse.error("Missing required headers");
+        }
+
+        APIAdminDatabase adminDatabase = new APIAdminDatabase();
+        APIAdminDatabaseObject document = adminDatabase.getFromSessionId(sessionId);
+
+        if (document == null) {
+            return APIResponse.error("Invalid session ID");
+        }
+
+        if (!document.isAuthenticated()) {
+            return APIResponse.error("Session is not authenticated");
+        }
+
+        document.setAuthenticatorName("");
+        document.setAuthenticatorUUID(UUID.randomUUID());
+
+        APIAdminDatabase.replaceOrInsert(document);
+
+        return new APIResponse(StatusResponse.SUCCESS, document.toDocument().toJson());
+    }
+}

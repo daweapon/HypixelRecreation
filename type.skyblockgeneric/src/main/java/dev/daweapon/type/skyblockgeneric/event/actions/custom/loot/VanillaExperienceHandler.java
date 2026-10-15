@@ -1,0 +1,60 @@
+package dev.daweapon.type.skyblockgeneric.event.actions.custom.loot;
+
+import dev.daweapon.type.skyblockgeneric.accessory.handler.UtilityAccessories;
+import dev.daweapon.type.skyblockgeneric.bestiary.BestiaryData;
+import dev.daweapon.type.skyblockgeneric.entity.mob.BestiaryMob;
+import dev.daweapon.type.skyblockgeneric.entity.mob.SkyBlockMob;
+import dev.daweapon.type.generic.event.EventNodes;
+import dev.daweapon.type.generic.event.HypixelEventClass;
+import dev.daweapon.type.generic.event.phase.EventPhase;
+import dev.daweapon.type.generic.event.phase.PhasedEvent;
+import dev.daweapon.type.skyblockgeneric.enchantment.EnchantmentType;
+import dev.daweapon.type.skyblockgeneric.enchantment.SkyBlockEnchantment;
+import dev.daweapon.type.skyblockgeneric.enchantment.impl.EnchantmentExperience;
+import dev.daweapon.type.skyblockgeneric.event.custom.PlayerKilledSkyBlockMobEvent;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.item.handlers.pet.abilities.combat.CombatPetHooks;
+import dev.daweapon.type.skyblockgeneric.item.updater.PlayerItemOrigin;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+// Awards vanilla XP orbs for mob kills, boosted by bestiary tier and the Experience enchantment
+public class VanillaExperienceHandler implements HypixelEventClass {
+    BestiaryData bestiaryData = new BestiaryData();
+
+    @PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = true, phase = EventPhase.GAMEPLAY)
+    public void run(PlayerKilledSkyBlockMobEvent event) {
+
+        SkyBlockPlayer player = event.getPlayer();
+        SkyBlockMob mob = event.getKilledMob();
+
+        if (mob == null) return;
+
+        long xpOrbsDropped;
+
+        // Base XP Orbs (additive)
+        long baseXpOrbs = mob.getOtherLoot().getXpOrbAmount();
+
+        // Bestiary Boost (multiplicative)
+        float bestiaryBoost = 1;
+        if (mob instanceof BestiaryMob bestiaryMob) {
+            int tier = bestiaryData.getCurrentBestiaryTier(bestiaryMob, player.getBestiaryData().getAmount(bestiaryMob));
+            bestiaryBoost += (float) bestiaryData.getTotalExtraXPPercentage(tier) / 100;
+        }
+
+        // Experience enchantment (multiplicative)
+        float experienceEnchBoost = 1;
+        SkyBlockItem mainHandItem = PlayerItemOrigin.getFromCache(player.getUuid()).get(PlayerItemOrigin.MAIN_HAND);
+        SkyBlockEnchantment experienceEnchantment = mainHandItem.getAttributeHandler().getEnchantment(EnchantmentType.EXPERIENCE);
+        if (experienceEnchantment != null) {
+            if (EnchantmentExperience.shouldDoubleExperience(experienceEnchantment.level())) {
+                experienceEnchBoost *= 2;
+            }
+        }
+
+        xpOrbsDropped = Math.round((baseXpOrbs) * bestiaryBoost * experienceEnchBoost
+                * UtilityAccessories.experienceOrbMultiplier(player)
+                * CombatPetHooks.experienceOrbMultiplier(player));
+
+        player.addExperience(xpOrbsDropped);
+    }
+}

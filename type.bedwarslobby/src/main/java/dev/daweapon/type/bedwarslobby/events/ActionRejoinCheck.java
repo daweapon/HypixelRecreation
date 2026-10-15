@@ -1,0 +1,39 @@
+package dev.daweapon.type.bedwarslobby.events;
+
+import net.minestom.server.event.player.PlayerSpawnEvent;
+import dev.daweapon.commons.ServiceType;
+import dev.daweapon.commons.protocol.objects.orchestrator.RejoinGameProtocol;
+import dev.daweapon.proxyapi.ProxyService;
+import dev.daweapon.type.generic.event.EventNodes;
+import dev.daweapon.type.generic.event.phase.PhasedEvent;
+import dev.daweapon.type.generic.event.HypixelEventClass;
+import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.type.generic.utility.ScheduleUtility;
+
+// Checks the orchestrator for an active game on spawn and prompts the player to rejoin if found.
+public class ActionRejoinCheck implements HypixelEventClass {
+    private static final ProxyService ORCHESTRATOR = new ProxyService(ServiceType.ORCHESTRATOR);
+
+    @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, isAsync = true)
+    public void run(PlayerSpawnEvent event) {
+        final HypixelPlayer player = (HypixelPlayer) event.getPlayer();
+
+        // Delay slightly to ensure player is fully spawned
+        ScheduleUtility.delay(() -> {
+            // Check if player has an active game to rejoin
+            RejoinGameProtocol.RejoinGameRequest request =
+                    new RejoinGameProtocol.RejoinGameRequest(player.getUuid());
+
+            ORCHESTRATOR.handleRequest(request).thenAccept(response -> {
+                if (response instanceof RejoinGameProtocol.RejoinGameResponse resp
+                        && resp.hasActiveGame()) {
+                    // Show rejoin message
+                    player.sendMessage("<c>You have a game currently ongoing! <click:run:'/rejoin'>Click here to rejoin.</click>");
+                }
+            }).exceptionally(throwable -> {
+                // Silently fail - don't bother the player with errors on this check
+                return null;
+            });
+        }, 500); // 500ms delay
+    }
+}

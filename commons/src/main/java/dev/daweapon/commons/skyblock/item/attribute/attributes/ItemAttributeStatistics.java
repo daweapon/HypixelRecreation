@@ -1,0 +1,30 @@
+package dev.daweapon.commons.skyblock.item.attribute.attributes;
+
+import dev.daweapon.commons.skyblock.item.attribute.ItemAttribute;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
+import org.jetbrains.annotations.Nullable;
+
+// Item attribute storing an item's full computed statistics block.
+public class ItemAttributeStatistics extends ItemAttribute<ItemStatistics> {
+    @Override
+    public String getKey() {
+        return "statistics";
+    }
+
+    @Override
+    public ItemStatistics getDefaultValue(@Nullable ItemStatistics defaultStatistics) {
+        if (defaultStatistics != null)
+            return defaultStatistics;
+        return ItemStatistics.builder().build();
+    }
+
+    @Override
+    public ItemStatistics loadFromString(String string) {
+        return ItemStatistics.fromString(string);
+    }
+
+    @Override
+    public String saveIntoString() {
+        return getValue().toString();
+    }
+}

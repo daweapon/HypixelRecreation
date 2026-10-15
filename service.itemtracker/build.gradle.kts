@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.shadow)
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "3.0"
 
 java {
@@ -30,7 +30,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("net.swofty.service.itemtracker.ItemTrackerService")
+    mainClass.set("dev.daweapon.service.itemtracker.ItemTrackerService")
 }
 
 tasks {

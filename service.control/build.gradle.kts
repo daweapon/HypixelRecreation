@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.shadow)
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "3.0"
 
 java {
@@ -31,7 +31,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("net.swofty.service.control.ControlService")
+    mainClass.set("dev.daweapon.service.control.ControlService")
 }
 
 tasks {

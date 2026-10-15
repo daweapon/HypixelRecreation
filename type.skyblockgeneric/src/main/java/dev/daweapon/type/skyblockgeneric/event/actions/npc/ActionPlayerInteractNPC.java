@@ -1,0 +1,50 @@
+package dev.daweapon.type.skyblockgeneric.event.actions.npc;
+
+import dev.daweapon.type.generic.entity.npc.HypixelNPC;
+import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;
+import dev.daweapon.type.generic.event.EventNodes;
+import dev.daweapon.type.generic.event.HypixelEventClass;
+import dev.daweapon.type.generic.event.phase.EventPhase;
+import dev.daweapon.type.generic.event.phase.PhasedEvent;
+import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneNPC;
+import dev.daweapon.type.skyblockgeneric.abiphone.AbiphoneRegistry;
+import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.item.components.AbiphoneComponent;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+import org.tinylog.Logger;
+
+// Adds an NPC to the player's Abiphone contacts when interacted with while holding an Abiphone
+public class ActionPlayerInteractNPC implements HypixelEventClass {
+
+	@PhasedEvent(node = EventNodes.CUSTOM, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
+	public void run(NPCInteractEvent event) {
+		final SkyBlockPlayer player = (SkyBlockPlayer) event.getPlayer();
+		HypixelNPC npc = event.getNpc();
+		SkyBlockItem item = new SkyBlockItem(player.getItemInMainHand());
+		if (item.hasComponent(AbiphoneComponent.class)) {
+			if (!(npc instanceof NPCAbiphoneTrait trait)) {
+				player.sendMessage("<7>[<b>✆<7>] This NPC doesn't own an Abiphone...");
+				event.setCancelled(true);
+				return;
+			}
+			AbiphoneNPC abiphoneNPC = AbiphoneRegistry.getFromId(trait.getAbiphoneKey());
+			if (abiphoneNPC != null) {
+				if (item.getAttributeHandler().hasAbiphoneNPC(abiphoneNPC)) {
+					player.sendMessage("<7>[<b>✆<7>] This NPC is already in your contacts list!");
+					return;
+				}
+				if (item.getAttributeHandler().getAbiphoneNPCs().size() >= item.getComponent(AbiphoneComponent.class).contactLimit(item)) {
+					player.sendMessage("<7>[<b>✆<7>] <c>Your Abiphone has no free contact slots! Use an <9>Abiphone Contacts Trio <c>to add more.");
+					event.setCancelled(true);
+					return;
+				}
+				abiphoneNPC.onAdd(player, player.getHeldSlot());
+			} else {
+				Logger.warn("NPC " + npc.getClass().getName() + " has an invalid Abiphone key: " + trait.getAbiphoneKey());
+			}
+			event.setCancelled(true);
+		}
+	}
+
+}

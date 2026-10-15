@@ -3,7 +3,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "1.0"
 
 repositories {
@@ -62,7 +62,7 @@ publishing {
     }
     publications {
         register<MavenPublication>("gpr") {
-            groupId = "net.swofty"
+            groupId = "dev.daweapon"
             artifactId = "anticheat"
             version = "1.0"
 

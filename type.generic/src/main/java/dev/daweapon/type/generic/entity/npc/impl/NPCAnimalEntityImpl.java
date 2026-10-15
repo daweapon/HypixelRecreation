@@ -1,0 +1,95 @@
+package dev.daweapon.type.generic.entity.npc.impl;
+
+import lombok.Getter;
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.entity.*;
+import net.minestom.server.item.ItemStack;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.generic.entity.hologram.PlayerHolograms;
+import dev.daweapon.type.generic.entity.npc.NPCMovementController;
+import dev.daweapon.type.generic.entity.npc.configuration.AnimalConfiguration;
+import dev.daweapon.type.generic.user.HypixelPlayer;
+import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
+
+import java.util.*;
+
+@Getter
+public class NPCAnimalEntityImpl extends EntityCreature implements NPCViewable {
+    private final List<HypixelPlayer> inRangeOf = Collections.synchronizedList(new ArrayList<>());
+    private final HypixelPlayer viewer;
+    private final PlayerHolograms.ExternalPlayerHologram holo;
+    private final AnimalConfiguration config;
+    private final NPCMovementController movementController;
+    private String[] holograms;
+    private Pos lastHologramPosition;
+    private Entity seatMount;
+
+    public NPCAnimalEntityImpl(@NotNull HypixelPlayer viewer, @NotNull Pos pos, @NotNull String bottomDisplay, @NotNull EntityType entityType, @NotNull AnimalConfiguration config, String[] holograms) {
+        super(entityType);
+
+        this.viewer = viewer;
+        this.config = config;
+        this.movementController = new NPCMovementController(this);
+        this.holograms = holograms;
+        this.lastHologramPosition = pos;
+
+        this.setCustomNameVisible(false);
+        setNoGravity(true);
+        setAutoViewable(false);
+
+        PlayerHolograms.ExternalPlayerHologram holo = PlayerHolograms.ExternalPlayerHologram.builder()
+            .pos(pos.add(0, getBoundingBox().height() - 0.1f, 0))
+            .text(holograms)
+            .player(viewer)
+            .instance(config.instance(viewer))
+            .build();
+
+        this.holo = holo;
+
+        PlayerHolograms.addExternalPlayerHologram(holo);
+        setInstance(config.instance(viewer), pos);
+        addViewer(viewer);
+        setPose(config.pose(viewer));
+    }
+
+    @Override
+    public void remove() {
+        movementController.stop();
+        super.remove();
+        PlayerHolograms.removeExternalPlayerHologram(holo);
+    }
+
+    @Override
+    public void updateNewViewer(@NonNull Player player) {
+        super.updateNewViewer(player);
+
+        Map<EquipmentSlot, ItemStack> equipment = config.equipment((HypixelPlayer) player);
+        if (equipment != null) {
+            for (Map.Entry<EquipmentSlot, ItemStack> entry : equipment.entrySet()) {
+                syncEntityEquipment(entry.getKey(), entry.getValue());
+            }
+        }
+    }
+
+    @Override
+    public void updateNPC() {
+        Pos npcPosition = getPosition();
+        if (!npcPosition.asVec().equals(lastHologramPosition.asVec())) {
+            PlayerHolograms.relocateExternalPlayerHologram(holo, npcPosition.add(0, getBoundingBox().height() - 0.1f, 0));
+            lastHologramPosition = npcPosition;
+        }
+
+        if (!getPose().equals(config.pose(viewer))) {
+            setPose(config.pose(viewer));
+        }
+
+        String[] newHolograms = config.hologramTexts(viewer).stream()
+                .map(Text::serialize)
+                .toArray(String[]::new);
+        if (!Arrays.equals(newHolograms, holograms)) {
+            PlayerHolograms.updateExternalPlayerHologramText(holo, newHolograms);
+            this.holograms = newHolograms;
+        }
+    }
+}

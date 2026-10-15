@@ -1,0 +1,30 @@
+package dev.daweapon.commons.party;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
+import java.util.UUID;
+
+// Represents an outstanding party invite from a leader to an invitee, before the party is confirmed.
+public record PendingParty(UUID resultPartyUUID, UUID invitee, UUID leader) implements Party {
+
+    @JsonCreator
+    public PendingParty(
+            @JsonProperty("resultPartyUUID") UUID resultPartyUUID,
+            @JsonProperty("invitee") UUID invitee,
+            @JsonProperty("leader") UUID leader) {
+        this.resultPartyUUID = resultPartyUUID;
+        this.invitee = invitee;
+        this.leader = leader;
+    }
+
+    public static PendingParty create(UUID invitee, UUID leader) {
+        return new PendingParty(UUID.randomUUID(), invitee, leader);
+    }
+
+    @Override
+    public List<UUID> getParticipants() {
+        return List.of(invitee, leader);
+    }
+}

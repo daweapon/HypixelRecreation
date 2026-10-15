@@ -6,7 +6,7 @@ plugins {
     id("com.gradleup.shadow") version "9.6.1"
 }
 
-group = "net.swofty"
+group = "dev.daweapon"
 version = "3.0"
 
 java {
@@ -30,7 +30,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("net.swofty.service.orchestrator.OrchestratorService")
+    mainClass.set("dev.daweapon.service.orchestrator.OrchestratorService")
 }
 
 tasks {

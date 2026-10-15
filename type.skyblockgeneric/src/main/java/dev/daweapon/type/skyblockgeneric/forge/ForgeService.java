@@ -1,0 +1,120 @@
+package dev.daweapon.type.skyblockgeneric.forge;
+
+import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointHOTM;
+import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointHOTM.ForgeProcess;
+import dev.daweapon.type.skyblockgeneric.elections.perks.ElectionPerks;
+import dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor;
+import dev.daweapon.type.skyblockgeneric.hotm.HotmService;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.Comparator;
+import java.util.List;
+
+public final class ForgeService {
+    public static final int MAX_SLOTS = 7;
+    private static final double MAX_REDUCTION_PERCENT = 90;
+
+    private ForgeService() {
+    }
+
+    public static int slots(SkyBlockPlayer player) {
+        return Math.min(MAX_SLOTS, HotmService.forgeSlots(player));
+    }
+
+    public static List<ForgeProcess> processes(SkyBlockPlayer player) {
+        return HotmService.data(player).getForgeProcesses();
+    }
+
+    public static ForgeProcess processIn(SkyBlockPlayer player, int slot) {
+        return processes(player).stream().filter(process -> process.slot() == slot).findFirst().orElse(null);
+    }
+
+    public static double reductionPercent(SkyBlockPlayer player) {
+        double percent = HotmService.perkValue(player, "quick_forge") + ElectionPerks.bonus(SkyBlockMayor.Perk.MOLTEN_FORGE);
+        return Math.min(MAX_REDUCTION_PERCENT, percent);
+    }
+
+    public static long durationMillis(SkyBlockPlayer player, ForgeRecipe recipe) {
+        return Math.max(1_000L, Math.round(recipe.seconds() * 1000D * (1D - reductionPercent(player) / 100D)));
+    }
+
+    public static boolean isFinished(ForgeProcess process) {
+        return process.endsAt() <= System.currentTimeMillis();
+    }
+
+    public static long remainingMillis(ForgeProcess process) {
+        return Math.max(0, process.endsAt() - System.currentTimeMillis());
+    }
+
+    public static String reasonUnavailable(SkyBlockPlayer player, ForgeRecipe recipe) {
+        if (!recipe.available()) return "<c>This recipe isn't available on this server yet.";
+        String locked = dev.daweapon.type.skyblockgeneric.fossil.FossilService.recipeLock(player, recipe.id());
+        if (locked != null) return locked;
+        if (HotmService.data(player).getTier() < recipe.hotm()) return "<c>Requires Heart of the Mountain Tier " + recipe.hotm() + ".";
+        return null;
+    }
+
+    public static int firstFreeSlot(SkyBlockPlayer player) {
+        for (int slot = 1; slot <= slots(player); slot++) if (processIn(player, slot) == null) return slot;
+        return -1;
+    }
+
+    public static boolean canAfford(SkyBlockPlayer player, ForgeRecipe recipe) {
+        if (player.getCoins() < recipe.coins()) return false;
+        return recipe.inputTypes().entrySet().stream()
+                .allMatch(input -> player.getAmountInInventory(input.getKey()) + player.getSackItems().getAmount(input.getKey()) >= input.getValue());
+    }
+
+    public static String start(SkyBlockPlayer player, ForgeRecipe recipe, int slot) {
+        String unavailable = reasonUnavailable(player, recipe);
+        if (unavailable != null) return unavailable;
+        if (slot < 1 || slot > slots(player)) return "<c>That forge slot is locked.";
+        if (processIn(player, slot) != null) return "<c>That forge slot is already in use!";
+        if (player.getCoins() < recipe.coins()) return "<c>You don't have enough coins to forge this!";
+        if (!player.removeItemsFromPlayer(recipe.inputTypes())) return "<c>You don't have the ingredients to forge this!";
+        if (recipe.coins() > 0) player.removeCoins(recipe.coins());
+
+        DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
+        long now = System.currentTimeMillis();
+        data.getForgeProcesses().add(new ForgeProcess(slot, recipe.id(), now, now + durationMillis(player, recipe)));
+        data.getForgeProcesses().sort(Comparator.comparingInt(ForgeProcess::slot));
+        HotmService.save(player, data);
+        return null;
+    }
+
+    public static String claim(SkyBlockPlayer player, int slot) {
+        ForgeProcess process = processIn(player, slot);
+        if (process == null) return "<c>There is nothing in this forge slot.";
+        if (!isFinished(process)) return "<c>This item is still being forged!";
+        ForgeRecipe recipe = ForgeRegistry.get().recipe(process.recipeId());
+        if (recipe == null || recipe.output() == null) return "<c>This forge item can't be collected right now.";
+        if (!player.hasEmptySlots(1)) return "<c>Your inventory is full!";
+
+        DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
+        data.getForgeProcesses().removeIf(existing -> existing.slot() == slot);
+        HotmService.save(player, data);
+        player.addAndUpdateItem(recipe.outputItem());
+        return null;
+    }
+
+    public static int finishSlot(SkyBlockPlayer player, int slot) {
+        DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
+        ForgeProcess process = processIn(player, slot);
+        if (process == null) return 0;
+        data.getForgeProcesses().removeIf(existing -> existing.slot() == slot);
+        data.getForgeProcesses().add(new ForgeProcess(slot, process.recipeId(), process.startedAt(), System.currentTimeMillis()));
+        data.getForgeProcesses().sort(Comparator.comparingInt(ForgeProcess::slot));
+        HotmService.save(player, data);
+        return 1;
+    }
+
+    public static int finishAll(SkyBlockPlayer player) {
+        DatapointHOTM.PlayerHOTMData data = HotmService.data(player);
+        long now = System.currentTimeMillis();
+        List<ForgeProcess> finished = data.getForgeProcesses().stream().map(process -> new ForgeProcess(process.slot(), process.recipeId(), process.startedAt(), now)).toList();
+        data.getForgeProcesses().clear();
+        data.getForgeProcesses().addAll(finished);
+        HotmService.save(player, data);
+        return finished.size();
+    }
+}

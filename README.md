@@ -20,7 +20,7 @@ For the commands implemented in this checkout, see the sorted [Commands referenc
 
 ## Credits
 
-Started as a fork of [Swofty-Developments/HypixelRecreation](https://github.com/Swofty-Developments/HypixelRecreation) (AGPL-3.0) and developed independently from there. See NOTICE.md.
+Started as a fork of [daweapon/HypixelRecreation](https://github.com/daweapon/HypixelRecreation) (AGPL-3.0) and developed independently from there. See NOTICE.md.
 Thanks to the Minestom community
 
 ## License

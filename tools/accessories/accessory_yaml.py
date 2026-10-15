@@ -32,7 +32,7 @@ def warn(msg):
 
 
 def repo_ids(repo):
-    path = os.path.join(repo, 'commons/src/generated/java/net/swofty/commons/skyblock/item/ItemType.java')
+    path = os.path.join(repo, 'commons/src/generated/java/dev/daweapon/commons/skyblock/item/ItemType.java')
     return set(re.findall(r'^\s+([A-Z0-9_]+)\(', open(path).read(), re.M))
 
 
@@ -43,7 +43,7 @@ def stat_name(label, known):
 
 
 def known_stats(repo):
-    path = os.path.join(repo, 'commons/src/main/java/net/swofty/commons/skyblock/statistics/ItemStatistic.java')
+    path = os.path.join(repo, 'commons/src/main/java/dev/daweapon/commons/skyblock/statistics/ItemStatistic.java')
     return set(re.findall(r'^\s+([A-Z_]+)\(', open(path).read(), re.M))
 
 

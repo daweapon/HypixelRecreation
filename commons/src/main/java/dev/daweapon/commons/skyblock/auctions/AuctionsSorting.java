@@ -1,0 +1,14 @@
+package dev.daweapon.commons.skyblock.auctions;
+
+// Cyclable Auction House listing sort orders.
+public enum AuctionsSorting {
+    HIGHEST_BID,
+    LOWEST_BID,
+    ENDING_SOON,
+    MOST_BIDS,
+    ;
+
+    public AuctionsSorting next() {
+        return values()[(ordinal() + 1) % values().length];
+    }
+}

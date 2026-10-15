@@ -6,7 +6,7 @@ import contributors from '../.vitepress/theme/contributors.vue'
 
 ## Contributors
 
-This project is maintained by [daweapon](https://github.com/daweapon) and all the amazing contributors. It began as a fork of [Swofty-Developments/HypixelRecreation](https://github.com/Swofty-Developments/HypixelRecreation) and keeps that project's AGPL-3.0 licence and copyright notices; see `NOTICE.md` for the vendored MIT and Apache-2.0 libraries.
+This project is maintained by [daweapon](https://github.com/daweapon) and all the amazing contributors. It began as a fork of [daweapon/HypixelRecreation](https://github.com/daweapon/HypixelRecreation) and keeps that project's AGPL-3.0 licence and copyright notices; see `NOTICE.md` for the vendored MIT and Apache-2.0 libraries.
 
 View all contributors on [GitHub](https://github.com/daweapon/HypixelRecreation/graphs/contributors).
 

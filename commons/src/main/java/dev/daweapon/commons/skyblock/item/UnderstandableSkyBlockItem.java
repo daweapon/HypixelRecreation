@@ -1,0 +1,37 @@
+package dev.daweapon.commons.skyblock.item;
+
+import net.minestom.server.item.Material;
+import dev.daweapon.commons.skyblock.item.attribute.ItemAttribute;
+import dev.daweapon.commons.protocol.serializers.UnderstandableSkyBlockItemSerializer;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+
+// Transport-friendly snapshot of a SkyBlock item (type, material, amount, and attributes) used for cross-server serialization.
+public record UnderstandableSkyBlockItem(@Nullable ItemType itemKey, List<ItemAttribute> attributes,
+                                         int amount, Material material) {
+    public UnderstandableSkyBlockItem() {
+        this(ItemType.AIR, List.of(), 1, Material.AIR);
+    }
+
+    public UnderstandableSkyBlockItem(int amount) {
+        this(ItemType.AIR, List.of(), amount, Material.AIR);
+    }
+
+    public ItemAttribute getAttribute(String key) {
+        for (ItemAttribute attribute : attributes) {
+            if (attribute.getKey().equals(key)) {
+                return attribute;
+            }
+        }
+        return null;
+    }
+
+    public String serialize() {
+        return new UnderstandableSkyBlockItemSerializer().serialize(this);
+    }
+
+    public static UnderstandableSkyBlockItem deserialize(String json) {
+        return new UnderstandableSkyBlockItemSerializer().deserialize(json);
+    }
+}

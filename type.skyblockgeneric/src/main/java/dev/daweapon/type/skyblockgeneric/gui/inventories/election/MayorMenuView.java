@@ -1,0 +1,139 @@
+package dev.daweapon.type.skyblockgeneric.gui.inventories.election;
+
+import net.kyori.adventure.text.format.TextColor;
+import net.minestom.server.entity.PlayerSkin;
+import net.minestom.server.inventory.InventoryType;
+import net.minestom.server.item.Material;
+import dev.daweapon.commons.text.Text;
+import dev.daweapon.type.skyblockgeneric.calendar.CalendarEvent;
+import dev.daweapon.type.skyblockgeneric.calendar.SkyBlockCalendar;
+import dev.daweapon.type.generic.gui.inventory.ItemStacks;
+import dev.daweapon.type.generic.gui.v2.Components;
+import dev.daweapon.type.generic.gui.v2.DefaultState;
+import dev.daweapon.type.generic.gui.v2.StatelessView;
+import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
+import dev.daweapon.type.generic.gui.v2.ViewLayout;
+import dev.daweapon.type.generic.gui.v2.context.ViewContext;
+import dev.daweapon.type.skyblockgeneric.elections.ElectionData;
+import dev.daweapon.type.skyblockgeneric.elections.ElectionManager;
+import dev.daweapon.type.skyblockgeneric.elections.SkyBlockMayor;
+import dev.daweapon.type.skyblockgeneric.elections.perks.PerkLore;
+
+import java.util.ArrayList;
+import java.util.List;
+
+// GUI showing the current SkyBlock mayor and their active perks
+public class MayorMenuView extends StatelessView {
+
+    @Override
+    public ViewConfiguration<DefaultState> configuration() {
+        SkyBlockMayor mayor = ElectionManager.getCurrentMayor();
+        if (mayor == null) {
+            return ViewConfiguration.translatable("gui_election.mayor.title_fallback", InventoryType.CHEST_4_ROW);
+        }
+        return ViewConfiguration.withText(
+                (s, ctx) -> Text.key("gui_election.mayor.title", mayor.getDisplayName()),
+                InventoryType.CHEST_4_ROW);
+    }
+
+    @Override
+    public void layout(ViewLayout<DefaultState> layout, DefaultState state, ViewContext ctx) {
+        Components.fill(layout);
+        Components.close(layout, 31);
+
+        SkyBlockMayor mayor = ElectionManager.getCurrentMayor();
+        if (mayor == null) return;
+
+        ElectionData data = ElectionManager.getElectionData();
+        String mayorColor = data.getCurrentMayorColor();
+        List<SkyBlockMayor.Perk> activePerks = data.getCurrentMayorPerkEnums();
+
+        layout.slot(11, (s, c) -> {
+            List<Text> lore = new ArrayList<>();
+            lore.add(Text.key("gui_election.mayor.perks_label"));
+            lore.add(Text.empty());
+            lore.add(Text.of("<8><m>--------------------------"));
+
+            for (SkyBlockMayor.Perk perk : activePerks) {
+                lore.add(ElectionData.colored(mayorColor, perk.getDisplayName()));
+                lore.addAll(PerkLore.description(perk, 50));
+                lore.add(Text.empty());
+            }
+
+            if (mayor == SkyBlockMayor.JERRY && ElectionManager.isMayorPerkActive(SkyBlockMayor.Perk.PERKPOCALYPSE)) {
+                long ticksUntilNext = SkyBlockCalendar.ticksUntilEvent(CalendarEvent.PERKPOCALYPSE);
+                if (ticksUntilNext > 0) {
+                    lore.add(Text.of("<7>Next Perkpocalypse in: <e>{:time}", ticksUntilNext * 50L));
+                    lore.add(Text.empty());
+                }
+            }
+
+            SkyBlockMayor perkpocalypseSource = ElectionManager.getPerkpocalypseSourceMayor();
+            if (perkpocalypseSource != null) {
+                lore.add(Text.of("<c><l>PERKPOCALYPSE! <7>Also active:"));
+                lore.add(Text.empty());
+                for (SkyBlockMayor.Perk perk : perkpocalypseSource.getAllPerks()) {
+                    lore.add(Text.of("<e>{}", perk.getDisplayName()));
+                    lore.addAll(PerkLore.description(perk, 50));
+                    lore.add(Text.empty());
+                }
+            }
+
+            lore.add(Text.of("<8><m>--------------------------"));
+            lore.add(Text.empty());
+            lore.add(Text.key("gui_election.mayor.perks_footer_1"));
+            lore.add(Text.key("gui_election.mayor.perks_footer_2"));
+            lore.add(Text.key("gui_election.mayor.perks_footer_3"));
+
+            Text mayorName = ElectionData.colored(mayorColor, "Mayor " + mayor.getDisplayName());
+            if (mayor == SkyBlockMayor.JERRY) {
+                return ItemStacks.item(Material.VILLAGER_SPAWN_EGG, 1, mayorName, lore);
+            }
+            return ItemStacks.head(
+                    new PlayerSkin(mayor.getTexture(), mayor.getSignature()),
+                    mayorName,
+                    lore
+            );
+        });
+
+        if (DianaOffice.isDiana(mayor)) {
+            DianaOffice.layoutMayor(layout);
+        }
+
+        int resultsSlot = DianaOffice.isDiana(mayor) ? DianaOffice.MAYOR_RESULTS_SLOT : 15;
+        layout.slot(resultsSlot, (s, c) -> {
+            ElectionData.ElectionResult lastResult = data.getLastElectionResult();
+            if (lastResult == null) {
+                return ItemStacks.item(Material.JUKEBOX, 1, Text.key("gui_election.mayor.results_title"), List.of(
+                        Text.key("gui_election.mayor.results_no_data_1"),
+                        Text.key("gui_election.mayor.results_no_data_2")
+                ));
+            }
+
+            List<Text> resultLore = new ArrayList<>();
+            resultLore.add(Text.key("gui_election.mayor.results_year", lastResult.getYear()));
+            resultLore.add(Text.empty());
+
+            List<ElectionData.CandidateResult> results = lastResult.getCandidateResults();
+            for (int i = 0; i < results.size(); i++) {
+                ElectionData.CandidateResult cr = results.get(i);
+                TextColor clr = ElectionData.colorForIndex(i);
+                SkyBlockMayor m = null;
+                try { m = SkyBlockMayor.valueOf(cr.getMayorName()); } catch (IllegalArgumentException ignored) {}
+                String name = m != null ? m.getDisplayName() : cr.getMayorName();
+                resultLore.add(Text.of("<color:{0}>{1}", clr, String.format("%.1f%%", cr.getPercentage()))
+                        .append("<8> ○ ")
+                        .append("<color:{0}>{1} votes", clr, String.format("%,d", cr.getVotes()))
+                        .append("<8> | ")
+                        .append("<color:{0}>{1}", clr, name));
+            }
+
+            resultLore.add(Text.empty());
+            resultLore.add(Text.key("gui_election.mayor.results_footer_1"));
+            resultLore.add(Text.key("gui_election.mayor.results_footer_2", mayor.getDisplayName()));
+            resultLore.add(Text.key("gui_election.mayor.results_footer_3"));
+
+            return ItemStacks.item(Material.JUKEBOX, 1, Text.key("gui_election.mayor.results_title"), resultLore);
+        });
+    }
+}

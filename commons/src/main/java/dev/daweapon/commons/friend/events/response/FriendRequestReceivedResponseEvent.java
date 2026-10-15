@@ -1,0 +1,40 @@
+package dev.daweapon.commons.friend.events.response;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import dev.daweapon.commons.friend.FriendResponseEvent;
+import dev.daweapon.commons.protocol.JacksonSerializer;
+import dev.daweapon.commons.protocol.Serializer;
+
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+// Friend-system response event: notifies the target player that they received a new friend request.
+public final class FriendRequestReceivedResponseEvent extends FriendResponseEvent {
+    private static final Serializer<FriendRequestReceivedResponseEvent> SERIALIZER =
+            new JacksonSerializer<>(FriendRequestReceivedResponseEvent.class);
+
+    private final UUID sender;
+    private final UUID target;
+    private final String senderName;
+
+    @JsonCreator
+    public FriendRequestReceivedResponseEvent(@JsonProperty("sender") UUID sender, @JsonProperty("target") UUID target, @JsonProperty("senderName") String senderName) {
+        super();
+        this.sender = sender;
+        this.target = target;
+        this.senderName = senderName;
+    }
+
+    @Override
+    public List<UUID> getParticipants() {
+        return List.of(target);
+    }
+
+    @Override
+    public Serializer<FriendRequestReceivedResponseEvent> getSerializer() {
+        return SERIALIZER;
+    }
+}

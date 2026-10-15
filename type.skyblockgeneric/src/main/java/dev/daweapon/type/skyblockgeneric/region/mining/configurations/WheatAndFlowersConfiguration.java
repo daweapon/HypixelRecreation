@@ -1,0 +1,55 @@
+package dev.daweapon.type.skyblockgeneric.region.mining.configurations;
+
+import net.minestom.server.coordinate.Point;
+import net.minestom.server.coordinate.Pos;
+import net.minestom.server.instance.Instance;
+import net.minestom.server.instance.block.Block;
+import net.minestom.server.item.Material;
+import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.generic.HypixelConst;
+import dev.daweapon.type.skyblockgeneric.data.crystals.CrystalCatalog;
+import dev.daweapon.type.skyblockgeneric.region.SkyBlockRegenConfiguration;
+import dev.daweapon.type.skyblockgeneric.utility.groups.Groups;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class WheatAndFlowersConfiguration extends SkyBlockRegenConfiguration {
+    @Override
+    public MiningTask handleStageOne(MiningTask task, Pos brokenBlock) {
+        task.setIntermediaryBlock(Block.AIR);
+        task.setReviveBlock(Block.AIR);
+
+        if (task.getInitialMinedBlock().equals(Block.WHEAT)) {
+            // Revive must already be the mature crop: the regen repeater applies reviveBlock
+            // directly with no further growth ticking, so a default (age=0) block would leave
+            // farmland permanently bare instead of regrowing wheat.
+            task.setReviveBlock(Block.WHEAT.withProperty("age", "7"));
+        }
+
+        return task;
+    }
+
+    @Override
+    public MiningTask handleStageTwo(MiningTask task, Pos brokenBlock) {
+        return MiningTask.never();
+    }
+
+    @Override
+    public List<Material> getMineableBlocks(Instance instance, Point point) {
+        ArrayList<Material> materials = new ArrayList<>(Collections.singletonList(Material.WHEAT));
+
+        if (CrystalCatalog.getFromAround(HypixelConst.getTypeLoader().getType(), point.asPos(), 15)
+                .stream().anyMatch(crystal -> crystal.itemType == ItemType.FLOWER_CRYSTAL)) {
+            materials.addAll(new ArrayList<>(Groups.FLOWERS));
+        }
+
+        return materials;
+    }
+
+    @Override
+    public long getRegenerationTime() {
+        return 10000;
+    }
+}

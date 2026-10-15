@@ -1,0 +1,22 @@
+package dev.daweapon.type.lobby.events;
+
+import net.minestom.server.event.player.PlayerBlockBreakEvent;
+import net.minestom.server.event.player.PlayerBlockPlaceEvent;
+import dev.daweapon.type.generic.event.EventNodes;
+import dev.daweapon.type.generic.event.HypixelEventClass;
+import dev.daweapon.type.generic.event.phase.EventPhase;
+import dev.daweapon.type.generic.event.phase.PhasedEvent;
+
+// Prevents players from breaking or placing blocks in the lobby.
+public class LobbyWorldEvent implements HypixelEventClass {
+
+    @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
+    public void onBlockBreak(PlayerBlockBreakEvent event) {
+        event.setCancelled(true);
+    }
+
+    @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false)
+    public void onBlockPlace(PlayerBlockPlaceEvent event) {
+        event.setCancelled(true);
+    }
+}

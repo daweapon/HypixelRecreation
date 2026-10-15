@@ -59,12 +59,12 @@ dependencies {
 evaluationDependsOn(":commons")
 
 application {
-    mainClass.set("net.swofty.velocity.SkyBlockVelocity")
+    mainClass.set("dev.daweapon.velocity.SkyBlockVelocity")
 }
 
 tasks.withType<ShadowJar> {
     manifest {
-        attributes["Main-Class"] = "net.swofty.velocity.SkyBlockVelocity"
+        attributes["Main-Class"] = "dev.daweapon.velocity.SkyBlockVelocity"
     }
     archiveBaseName.set("SkyBlockProxy")
     archiveClassifier.set("")
