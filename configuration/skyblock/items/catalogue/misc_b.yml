@@ -2318,6 +2318,8 @@ items:
     components:
       - id: SKULL_HEAD
         texture: 81b843451184a8ccd8e6e49d0edf3451d3dea50fde5b6a2f98ab7cf1138bcece
+      - id: ITEM_MODEL
+        item_model: hypixel_skyblock:item/island_relevant/enchanting/experimentation_table
       - id: PLACEABLE
         block_type: EXPERIMENTATION_TABLE
       - id: DEFAULT_CRAFTABLE

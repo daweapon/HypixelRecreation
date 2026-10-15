@@ -46,6 +46,18 @@ public final class IslandUtilityBlocks {
         return island != null && placed(island).containsValue(type.name());
     }
 
+    public static List<Point> positions(Instance instance, ItemType type) {
+        SkyBlockIsland island = islandOf(instance);
+        List<Point> positions = new ArrayList<>();
+        if (island == null) return positions;
+        placed(island).forEach((key, value) -> {
+            if (!value.equals(type.name())) return;
+            String[] parts = key.split(",");
+            positions.add(new net.minestom.server.coordinate.Vec(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2])));
+        });
+        return positions;
+    }
+
     public static double minionSpeedPercent(Instance instance, boolean miningMinion) {
         return miningMinion && has(instance, ItemType.MITHRIL_CRYSTAL) ? MITHRIL_CRYSTAL_MINION_SPEED_PERCENT : 0;
     }

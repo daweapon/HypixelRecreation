@@ -1,16 +1,17 @@
 package net.swofty.type.skyblockgeneric.experiments;
 
 public enum SuperpairsStake {
-    BEGINNER("Beginner", 7, 2, 10, 10, 25, 50_000, 3_500, 50_000),
-    HIGH("High", 5, 4, 12, 20, 50, 75_000, 5_000, 60_000),
-    GRAND("Grand", 5, 4, 12, 25, 75, 100_000, 5_000, 90_000),
-    SUPREME("Supreme", 7, 4, 14, 30, 100, 200_000, 5_000, 120_000),
-    TRANSCENDENT("Transcendent", 7, 4, 16, 40, 200, 300_000, 25_000, 130_000),
-    METAPHYSICAL("Metaphysical", 7, 4, 12, 50, 350, 400_000, 25_000, 150_000);
+    BEGINNER("Beginner", "<b>", 7, 2, 10, 10, 25, 50_000, 3_500, 50_000),
+    HIGH("High", "<a>", 5, 4, 12, 20, 50, 75_000, 5_000, 60_000),
+    GRAND("Grand", "<e>", 5, 4, 12, 25, 75, 100_000, 5_000, 90_000),
+    SUPREME("Supreme", "<6>", 7, 4, 14, 30, 100, 200_000, 5_000, 120_000),
+    TRANSCENDENT("Transcendent", "<c>", 7, 4, 16, 40, 200, 300_000, 25_000, 130_000),
+    METAPHYSICAL("Metaphysical", "<d>", 7, 4, 12, 50, 350, 400_000, 25_000, 150_000);
 
     public static final int TIME_LIMIT_SECONDS = 90;
 
     private final String displayName;
+    private final String color;
     private final int columns;
     private final int rows;
     private final int baseClicks;
@@ -20,9 +21,10 @@ public enum SuperpairsStake {
     private final long pairXpMin;
     private final long pairXpMax;
 
-    SuperpairsStake(String displayName, int columns, int rows, int baseClicks, int requiredEnchanting, int startLevels,
+    SuperpairsStake(String displayName, String color, int columns, int rows, int baseClicks, int requiredEnchanting, int startLevels,
                     long stakeXp, long pairXpMin, long pairXpMax) {
         this.displayName = displayName;
+        this.color = color;
         this.columns = columns;
         this.rows = rows;
         this.baseClicks = baseClicks;
@@ -35,6 +37,10 @@ public enum SuperpairsStake {
 
     public String displayName() {
         return displayName;
+    }
+
+    public String color() {
+        return color;
     }
 
     public int baseClicks() {
@@ -59,6 +65,10 @@ public enum SuperpairsStake {
 
     public long pairXpMax() {
         return pairXpMax;
+    }
+
+    public String gridLabel() {
+        return columns + "x" + rows;
     }
 
     public int tileCount() {

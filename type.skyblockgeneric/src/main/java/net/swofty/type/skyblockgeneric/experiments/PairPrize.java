@@ -15,7 +15,7 @@ public record PairPrize(String key, Kind kind, Material icon, String name, @Null
     }
 
     public static PairPrize xp(String key, Material icon, long xp) {
-        return new PairPrize(key, Kind.XP, icon, "<d>+" + String.format("%,d", xp) + " Enchanting Exp", null, 0, xp, null, 0, null);
+        return new PairPrize(key, Kind.XP, icon, "<b>" + (xp >= 1000 ? String.format("%dk", Math.round(xp / 1000D)) : String.valueOf(xp)) + " Enchanting Exp", null, 0, xp, null, 0, null);
     }
 
     public static PairPrize item(String key, Material icon, String name, ItemType item, int amount) {

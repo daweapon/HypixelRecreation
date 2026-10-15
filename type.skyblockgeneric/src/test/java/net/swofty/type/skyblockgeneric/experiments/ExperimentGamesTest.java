@@ -24,26 +24,27 @@ class ExperimentGamesTest {
         assertEquals(ChronomatronGame.Result.FAILED, game.press(wrong));
         assertEquals(5, game.longestChain());
         assertEquals(7_500, ChronomatronStake.HIGH.xpFor(game.longestChain()));
-        assertEquals(1, ChronomatronStake.HIGH.clickBonus().clicksFor(5, 0));
-        assertEquals(2, ChronomatronStake.HIGH.clickBonus().clicksFor(9, 0));
+        assertEquals(1, ChronomatronStake.HIGH.clickBonus().clicksFor(2, 0));
+        assertEquals(2, ChronomatronStake.HIGH.clickBonus().clicksFor(6, 0));
     }
 
     @Test
     void chronomatronXpCapsAtFifteenNotes() {
         assertEquals(90_000, ChronomatronStake.METAPHYSICAL.xpFor(30));
-        assertEquals(3, ChronomatronStake.METAPHYSICAL.clickBonus().clicksFor(12, 0));
+        assertEquals(3, ChronomatronStake.METAPHYSICAL.clickBonus().clicksFor(9, 0));
+        assertEquals(54_000, ChronomatronStake.METAPHYSICAL.xpFor(9));
     }
 
     @Test
     void serumShortensChains() {
-        assertEquals(1, ChronomatronStake.HIGH.clickBonus().clicksFor(4, 1));
-        assertEquals(0, ChronomatronStake.HIGH.clickBonus().clicksFor(4, 0));
+        assertEquals(1, ChronomatronStake.HIGH.clickBonus().clicksFor(1, 1));
+        assertEquals(0, ChronomatronStake.HIGH.clickBonus().clicksFor(1, 0));
     }
 
     @Test
     void ultrasequencerSequenceNineOnMetaphysicalPaysSixtyThreeThousand() {
         assertEquals(63_000, UltrasequencerStake.METAPHYSICAL.xpFor(9));
-        assertEquals(3, UltrasequencerStake.METAPHYSICAL.clickBonus().clicksFor(9, 0));
+        assertEquals(3, UltrasequencerStake.METAPHYSICAL.clickBonus().clicksFor(6, 0));
     }
 
     @Test

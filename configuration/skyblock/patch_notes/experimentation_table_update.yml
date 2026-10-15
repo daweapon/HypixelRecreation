@@ -13,7 +13,7 @@ sections:
   - heading: "The Experimentation Table"
     colour: "<5>"
     lines:
-      - "Craft it from 8 Oak Logs around an Experience Bottle once you reach Enchanting 10. You can place one on your island."
+      - "Craft it from 8 Oak Logs around an Experience Bottle once you reach Enchanting 10. You can place one on your island and pick it back up by sneaking and right-clicking it."
       - "Right-click it to open the experiments menu. The table has 3 charges, and each charge returns 24 hours after you use it."
       - "Out of charges? Buy up to 3 extra games per day for Experience Levels and Bits. The purchases reset at 12:00 AM GMT."
   - heading: "Add-on Experiments"

@@ -25,13 +25,15 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
 
     public static final class Screen {
         private final UltrasequencerGame game;
+        private final boolean admin;
         private Phase phase = Phase.SHOWING;
         private final Set<Integer> solved = new HashSet<>();
         private boolean closed;
         private boolean settled;
 
-        public Screen(UltrasequencerGame game) {
+        public Screen(UltrasequencerGame game, boolean admin) {
             this.game = game;
+            this.admin = admin;
         }
     }
 
@@ -73,13 +75,14 @@ public class GUIUltrasequencer implements StatefulView<GUIUltrasequencer.Screen>
 
     private ItemStack.Builder cell(Screen screen, int slot) {
         int number = screen.game.numberAt(slot);
-        if (screen.phase == Phase.SHOWING && number > 0) {
+        if ((screen.phase == Phase.SHOWING || (screen.admin && screen.phase == Phase.INPUT)) && number > 0 && !screen.solved.contains(slot)) {
             return ExperimentGuis.item(UltrasequencerStake.dyeFor(number), number, "<a>" + number);
         }
         if (screen.solved.contains(slot)) {
             return ExperimentGuis.item(Material.LIME_STAINED_GLASS_PANE, number, "<a>" + number);
         }
-        return ExperimentGuis.item(Material.GRAY_STAINED_GLASS_PANE, "<7>?");
+        return ExperimentGuis.item(screen.phase == Phase.OVER ? Material.GRAY_STAINED_GLASS_PANE
+                : UltrasequencerStake.paneFor(screen.game.round()), "<7>?");
     }
 
     private ItemStack.Builder claimButton(Screen screen) {

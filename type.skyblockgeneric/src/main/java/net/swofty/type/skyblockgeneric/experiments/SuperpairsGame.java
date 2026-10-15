@@ -18,6 +18,7 @@ public final class SuperpairsGame {
     private final boolean[] matched;
     private final List<PairPrize> foundPrizes = new ArrayList<>();
     private int clicksRemaining;
+    private int clicksUsed;
     private int firstPick = -1;
     private int[] pendingHide;
     private boolean instantFind;
@@ -50,6 +51,10 @@ public final class SuperpairsGame {
         return clicksRemaining;
     }
 
+    public int clicksUsed() {
+        return clicksUsed;
+    }
+
     public boolean isMatched(int tile) {
         return matched[tile];
     }
@@ -60,6 +65,10 @@ public final class SuperpairsGame {
 
     public boolean instantFindActive() {
         return instantFind;
+    }
+
+    public boolean hasFirstPick() {
+        return firstPick >= 0;
     }
 
     public boolean isOver() {
@@ -92,6 +101,7 @@ public final class SuperpairsGame {
             return new Click(Outcome.IGNORED, null);
         }
         clicksRemaining--;
+        clicksUsed++;
         if (instantFind && firstPick < 0) {
             instantFind = false;
             matched[tile] = true;

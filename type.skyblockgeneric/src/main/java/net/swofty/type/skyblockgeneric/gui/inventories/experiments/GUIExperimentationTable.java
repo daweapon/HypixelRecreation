@@ -91,15 +91,27 @@ public class GUIExperimentationTable extends StatelessView {
 
     private net.minestom.server.item.ItemStack.Builder meter(SkyBlockPlayer player) {
         ExperimentRngMeter.Target target = ExperimentRngMeter.selected(player);
+        java.util.List<String> lines = new java.util.ArrayList<>(java.util.List.of(
+                "<d>Experimentation Table RNG Meter",
+                "<7>Your <d>Experimentation Table RNG", "<d>Meter <7>fills with <b>Enchanting XP <7>every",
+                "<7>time you complete your <d>Superpairs<7>!", "",
+                "<7>Your selected <d>RNG Drop <7>will be", "<7>guaranteed to appear in your next",
+                "<d>Superpairs <7>once your <d>RNG Meter <7>is", "<7>full!", ""));
         if (target == null) {
-            return ExperimentGuis.item(Material.ENDER_EYE, "<d>Experimentation Table RNG Meter",
-                    "<7>Choose a drop to make it more", "<7>likely in Superpairs.", "", "<e>Click to select a drop!");
+            lines.add("<7>Selected Drop");
+            lines.add("<c>None");
+            lines.add("");
+            lines.add("<e>Click to select a drop!");
+        } else {
+            lines.add("<7>Selected Drop");
+            lines.add(target.prize().name());
+            lines.add("");
+            lines.add("<7>Progress: <d>" + String.format("%.1f", ExperimentRngMeter.percent(player, target)) + "%");
+            lines.add("<d>" + ExperimentGuis.commas(ExperimentRngMeter.stored(player)) + "<5>/<d>" + ExperimentGuis.commas(target.meterXp()) + " XP");
+            lines.add("");
+            lines.add("<e>Click to view!");
         }
-        return ExperimentGuis.item(Material.ENDER_EYE, "<d>Experimentation Table RNG Meter",
-                "<7>Selected Drop: " + target.prize().name(), "",
-                "<7>Progress: <d>" + String.format("%.1f", ExperimentRngMeter.percent(player, target)) + "%",
-                "<d>" + ExperimentGuis.commas(ExperimentRngMeter.stored(player)) + "<5>/<d>" + ExperimentGuis.commas(target.meterXp()) + " XP",
-                "", "<e>Click to view!");
+        return ExperimentGuis.item(Material.ENDER_EYE, lines.toArray(new String[0]));
     }
 
     private String duration(long millis) {

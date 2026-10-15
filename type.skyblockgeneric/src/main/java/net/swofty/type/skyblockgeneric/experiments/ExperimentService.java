@@ -59,12 +59,14 @@ public final class ExperimentService {
             if (prize.kind() == PairPrize.Kind.XP) pairXp += prize.xp();
             else if (!prize.isPowerUp()) items.add(prize);
         }
-        long stakeXp = Math.round((double) stake.stakeXp() * found.size() / stake.pairCount());
-        for (PairPrize prize : items) grant(player, prize);
-        EnchantingXpService.award(player, stakeXp + pairXp);
-        ExperimentRngMeter.addFromEnchantingXp(player, stakeXp + pairXp);
-        ExperimentRngMeter.consumeIfWon(player, found);
-        return new SuperpairsResult(stakeXp, pairXp, found.size(), stake.pairCount(), items);
+        return new SuperpairsResult(stake.stakeXp(), pairXp, found.size(), stake.pairCount(), items, game.clicksUsed(), stake.displayName());
+    }
+
+    public static void claimSuperpairs(SkyBlockPlayer player, SuperpairsGame game, SuperpairsResult result) {
+        for (PairPrize prize : result.prizes()) grant(player, prize);
+        EnchantingXpService.award(player, result.totalXp());
+        ExperimentRngMeter.addFromEnchantingXp(player, result.totalXp());
+        ExperimentRngMeter.consumeIfWon(player, game.foundPrizes());
     }
 
     public static @Nullable SkyBlockItem itemFor(PairPrize prize) {
