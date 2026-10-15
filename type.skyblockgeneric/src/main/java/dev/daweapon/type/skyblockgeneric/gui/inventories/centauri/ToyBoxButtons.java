@@ -40,6 +40,11 @@ final class ToyBoxButtons {
                 of(Material.ROTTEN_FLESH, "<6>Max Slayers", "<8>Gotta collect 'em all.", "<7>Impress Maddox!", ToyBoxActions::maxSlayers));
     }
 
+    static List<ToyBoxButton> uncategorised() {
+        return List.of(
+                unavailable(Material.OAK_LOG, "<a>Fill Agatha's Rewards", "<7>Grant 25 contest rewards."));
+    }
+
     static List<ToyBoxButton> mining() {
         return List.of(
                 of(Material.PRISMARINE_CRYSTALS, "<5>50k HOTM Exp", "<8>The power of a pickaxe.", "<7>Gain <5>50,000 HOTM Experience<7>.", p -> HotmService.addExperience(p, 50_000)),
@@ -70,8 +75,7 @@ final class ToyBoxButtons {
                 of(Material.PLAYER_HEAD, "<2>Chip Stash", "<8>Silicon and green fingers.", "<7>Get <a>21 of every Garden Chip<7>.", ToyBoxActions::giveEveryChip),
                 of(Material.PUMPKIN_PIE, "<6>Seasoning Rush", "<8>Season to taste.", "<7>Donate <a>50 Seasoning <7>to the Communal Stew.", p -> FeastService.addSeasoning(p, 50)),
                 of(Material.CLOCK, "<a>Greenhouse Time Warp", "<8>Hours go by.", "<7>Simulate <a>6 hours <7>of Greenhouse growth.", p -> GreenhouseService.simulate(p, 6)),
-                of(Material.WHITE_CONCRETE, "<a>Greenhouse Blueprint Shortcut", "<8>Sam says yes.", "<7>Skip Sam's Greenhouse quest so you can <a>convert a plot<7>.", ToyBoxActions::skipGreenhouseQuest),
-                unavailable(Material.OAK_LOG, "<a>Fill Agatha's Rewards", "<7>Grant 25 contest rewards."));
+                of(Material.WHITE_CONCRETE, "<a>Greenhouse Blueprint Shortcut", "<8>Sam says yes.", "<7>Skip Sam's Greenhouse quest so you can <a>convert a plot<7>.", ToyBoxActions::skipGreenhouseQuest));
     }
 
     static List<ToyBoxButton> experimentation() {

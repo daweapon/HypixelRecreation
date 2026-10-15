@@ -8,9 +8,10 @@ import dev.daweapon.type.generic.gui.v2.ViewConfiguration;
 import dev.daweapon.type.generic.gui.v2.ViewLayout;
 import dev.daweapon.type.generic.gui.v2.context.ViewContext;
 
-// Developer/cheat GUI: general utilities on the first row, then one button per category that opens its own menu
+// Developer/cheat GUI: general utilities on the first row, one button per category on the second, and loose buttons that belong to no category yet on the third
 public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
     private static final int FIRST_CATEGORY_INDEX = ToyBoxGrid.COLUMNS;
+    private static final int FIRST_UNCATEGORISED_INDEX = ToyBoxGrid.COLUMNS * 2;
 
     @Override
     public ViewConfiguration<State> configuration() {
@@ -29,6 +30,7 @@ public final class GUICentauriToyBox implements View<GUICentauriToyBox.State> {
                             "<7>" + category.description(), " ", "<7>Buttons: <b>" + category.buttons().size(), " ", "<e>Click to view!"),
                     (click, c) -> c.push(new GUICentauriToyBoxCategory(), new GUICentauriToyBoxCategory.State(category)));
         }
+        ToyBoxGrid.place(layout, ToyBoxButtons.uncategorised(), FIRST_UNCATEGORISED_INDEX);
         Components.back(layout, 48, ctx);
         Components.close(layout, 49);
     }

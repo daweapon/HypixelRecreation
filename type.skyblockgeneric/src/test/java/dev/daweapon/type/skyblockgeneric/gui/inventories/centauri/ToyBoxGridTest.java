@@ -37,7 +37,8 @@ class ToyBoxGridTest {
     @Test
     void mainMenuHoldsTheGeneralRowAndEveryCategoryButton() {
         assertEquals(ToyBoxGrid.COLUMNS, ToyBoxButtons.general().size());
-        assertTrue(ToyBoxCategory.values().length <= ToyBoxGrid.CAPACITY - ToyBoxGrid.COLUMNS);
+        assertTrue(ToyBoxCategory.values().length <= ToyBoxGrid.COLUMNS);
+        assertTrue(ToyBoxButtons.uncategorised().size() <= ToyBoxGrid.CAPACITY - ToyBoxGrid.COLUMNS * 2);
     }
 
     @Test
