@@ -71,8 +71,8 @@ public class GUIChronomatron implements StatefulView<GUIChronomatron.Screen> {
                 layout.slot(slot, (s, c) -> tile(s, stake, color), (click, c) -> press(state(c), color, c));
             }
         }
-        layout.slot(11, (s, c) -> s.phase == Phase.OVER ? claimButton(s) : blank(), (click, c) -> claim(state(c), c));
-        layout.slot(15, (s, c) -> s.phase == Phase.OVER ? ExperimentGuis.item(Material.REDSTONE_BLOCK, "<c>Decline",
+        layout.slot(2, (s, c) -> s.phase == Phase.OVER ? claimButton(s) : blank(), (click, c) -> claim(state(c), c));
+        layout.slot(6, (s, c) -> s.phase == Phase.OVER ? ExperimentGuis.item(Material.REDSTONE_BLOCK, "<c>Decline",
                 "<7>Do you think you can do better on", "<7>this experiment?", "",
                 "<7>Decline your rewards to play one more", "<7>time today!", "",
                 "<c>Note: Subsequent attempts today", "<c>will cost XP levels.", "", "<e>Click to decline rewards!") : blank(),
