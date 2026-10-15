@@ -154,7 +154,7 @@ public class SkyBlockScoreboard {
             }
 
             net.swofty.type.skyblockgeneric.garden.GardenProfile garden = net.swofty.type.skyblockgeneric.garden.Gardens.profile(player);
-            boolean hasCopper = garden.getCopper() >= 1;
+            boolean hasCopper = net.swofty.type.generic.HypixelConst.isGardenServer() && garden.getCopper() >= 1;
             TextBody.Section copperLine = purse.child("copper").when(() -> hasCopper);
             if (hasCopper) {
                 copperLine.line(Text.key("scoreboard.skyblock.copper_line", StringUtility.commaify(Math.floor(garden.getCopper()))));
