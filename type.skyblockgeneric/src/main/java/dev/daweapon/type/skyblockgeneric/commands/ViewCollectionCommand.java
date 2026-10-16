@@ -5,7 +5,8 @@ import dev.daweapon.type.generic.command.CommandParameters;
 import dev.daweapon.type.generic.command.HypixelCommand;
 import dev.daweapon.type.generic.user.categories.Rank;
 import dev.daweapon.type.skyblockgeneric.collection.CollectionCategories;
-import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.GUISkyBlockProfile;
+import dev.daweapon.type.skyblockgeneric.collection.CollectionNames;
+import dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.collection.GUICollectionItem;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 @CommandParameters(description = "Opens up a collections GUI",
@@ -22,14 +23,14 @@ public class ViewCollectionCommand extends HypixelCommand {
         command.addSyntax((sender, context) -> {
             if (!permissionCheck(sender)) return;
 
-            final ItemType itemTypeLinker = context.get(itemArgument);
+            final ItemType itemTypeLinker = CollectionNames.canonical(context.get(itemArgument));
 
             if (CollectionCategories.getCategory(itemTypeLinker) == null) {
                 sender.sendMessage("<c>This item does not have a collection!");
                 return;
             }
 
-            ((SkyBlockPlayer) sender).openView(new GUISkyBlockProfile());
+            ((SkyBlockPlayer) sender).openView(new GUICollectionItem(itemTypeLinker));
         }, itemArgument);
     }
 }

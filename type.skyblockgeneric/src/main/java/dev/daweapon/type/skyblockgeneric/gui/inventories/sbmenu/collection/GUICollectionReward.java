@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.collection;
 
+import dev.daweapon.type.skyblockgeneric.collection.CollectionNames;
 import net.minestom.server.inventory.InventoryType;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.text.Text;
@@ -52,7 +53,7 @@ public class GUICollectionReward extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(Text.of("{} {:roman} Rewards", item.getDisplayName(), placement + 1), InventoryType.CHEST_6_ROW);
+        return new ViewConfiguration<>(Text.of("{} {:roman} Rewards", CollectionNames.displayName(item), placement + 1), InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -67,12 +68,12 @@ public class GUICollectionReward extends StatelessView {
             player.getCollection().getDisplay(rendered, category, reward);
 
             List<Text> lore = new ArrayList<>();
-            lore.add(Text.of("<7>View your {} {:roman} Collection rewards!", item.getDisplayName(), placement + 1));
+            lore.add(Text.of("<7>View your {} {:roman} Collection rewards!", CollectionNames.displayName(item), placement + 1));
             lore.add(Text.empty());
             lore.addAll(rendered.stream().map(Text::parse).toList());
 
             return ItemStacks.item(item.material, 1,
-                    Text.of("<a>{} {:roman}", item.getDisplayName(), placement + 1), lore);
+                    Text.of("<a>{} {:roman}", CollectionNames.displayName(item), placement + 1), lore);
         });
 
         int[] slots = SLOTS.getOrDefault(reward.unlocks().length, new int[]{});

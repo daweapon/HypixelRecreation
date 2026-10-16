@@ -6,7 +6,9 @@ import dev.daweapon.commons.skyblock.statistics.ItemStatistics;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public final class CollectionStatistics {
     private record Grant(ItemType type, int requirement, ItemStatistic statistic, double value) {
@@ -19,14 +21,15 @@ public final class CollectionStatistics {
 
     public static ItemStatistics all(SkyBlockPlayer player) {
         if (player.getSkyblockDataHandler() == null) return ItemStatistics.empty();
-        ItemStatistics.Builder builder = ItemStatistics.builder();
-        boolean any = false;
+        Map<ItemStatistic, Double> totals = new EnumMap<>(ItemStatistic.class);
         for (Grant grant : grants()) {
             if (player.getCollection().get(grant.type()) < grant.requirement()) continue;
-            builder.withBase(grant.statistic(), grant.value());
-            any = true;
+            totals.merge(grant.statistic(), grant.value(), Double::sum);
         }
-        return any ? builder.build() : ItemStatistics.empty();
+        if (totals.isEmpty()) return ItemStatistics.empty();
+        ItemStatistics.Builder builder = ItemStatistics.builder();
+        totals.forEach(builder::withBase);
+        return builder.build();
     }
 
     private static List<Grant> grants() {

@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.collection;
 
+import dev.daweapon.type.skyblockgeneric.collection.CollectionNames;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
 import dev.daweapon.commons.skyblock.item.ItemType;
@@ -28,7 +29,7 @@ public class GUICollectionItem extends StatelessView {
 
     @Override
     public ViewConfiguration<DefaultState> configuration() {
-        return new ViewConfiguration<>(Text.literal(item.getDisplayName() + " Collection"), InventoryType.CHEST_6_ROW);
+        return new ViewConfiguration<>(Text.literal(CollectionNames.displayName(item) + " Collection"), InventoryType.CHEST_6_ROW);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class GUICollectionItem extends StatelessView {
                     <7>progress and rewards!
 
                     <7>Total Collected: <e>{}""",
-                    item.getDisplayName(), item.getDisplayName(), player.getCollection().get(item));
+                    CollectionNames.displayName(item), CollectionNames.displayName(item), player.getCollection().get(item));
         });
 
         int slot = 17;
@@ -68,7 +69,7 @@ public class GUICollectionItem extends StatelessView {
 
                 if (playerCollection.getReward(collection) == null) {
                     return ItemStacks.item(Material.GREEN_STAINED_GLASS_PANE, 1,
-                            Text.of("<7>{} {:roman}", item.getDisplayName(), collection.getPlacementOf(reward) + 1), lore);
+                            Text.of("<7>{} {:roman}", CollectionNames.displayName(item), collection.getPlacementOf(reward) + 1), lore);
                 }
 
                 Material material;
@@ -85,7 +86,7 @@ public class GUICollectionItem extends StatelessView {
                 }
 
                 return ItemStacks.item(material, 1,
-                        Text.of(colourTag + "{} {:roman}", item.getDisplayName(), collection.getPlacementOf(reward) + 1), lore);
+                        Text.of(colourTag + "{} {:roman}", CollectionNames.displayName(item), collection.getPlacementOf(reward) + 1), lore);
             }, (click, c) -> {
                 ctx.push(new GUICollectionReward(item, reward));
             });
