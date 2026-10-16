@@ -7,6 +7,11 @@ public interface DataFormat {
     DataWriter createWriter();
     byte[] toBytes(DataWriter writer);
 
+    /** True when one reader can serve any number of independent section lookups, so callers may keep it. */
+    default boolean randomAccessReaders() {
+        return false;
+    }
+
     /**
      * Parses a stored document into its top-level {@code fullKey -> value} map.
      * Used to merge a partial in-memory view back over the full stored document so

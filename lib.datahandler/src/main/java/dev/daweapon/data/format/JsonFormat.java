@@ -27,6 +27,11 @@ public class JsonFormat implements DataFormat {
     }
 
     @Override
+    public boolean randomAccessReaders() {
+        return true;
+    }
+
+    @Override
     public DataWriter createWriter() {
         return new JsonDataWriter();
     }

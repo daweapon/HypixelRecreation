@@ -36,6 +36,9 @@ class DataContainer {
     private volatile boolean documentLoaded;
     private volatile boolean dirty;
     private volatile long documentVersion;
+    private volatile ParsedDocument parsedDocument;
+
+    private record ParsedDocument(byte[] source, DataReader reader) {}
 
     @SuppressWarnings("unchecked")
     public <T> T get(DataField<T> field) {
@@ -70,6 +73,7 @@ class DataContainer {
 
     public void loadDocument(DataFormat format, byte[] raw, long version) {
         this.backingDocument = raw;
+        this.parsedDocument = null;
         this.documentVersion = version;
         this.documentLoaded = true;
     }
@@ -86,13 +90,22 @@ class DataContainer {
     public void ensureField(DataField<?> field, DataFormat format) {
         if (data.containsKey(field.fullKey()) || tombstones.contains(field.fullKey())) return;
         if (backingDocument == null) return;
-        DataReader reader = format.createReader(backingDocument);
+        DataReader reader = readerFor(format, backingDocument);
         if (reader.hasKey(field.fullKey())) {
             Object value = field.codec().read(reader.readSection(field.fullKey()));
             if (value != null) {
                 data.put(field.fullKey(), value);
             }
         }
+    }
+
+    private DataReader readerFor(DataFormat format, byte[] source) {
+        if (!format.randomAccessReaders()) return format.createReader(source);
+        ParsedDocument cached = parsedDocument;
+        if (cached != null && cached.source() == source) return cached.reader();
+        DataReader reader = format.createReader(source);
+        parsedDocument = new ParsedDocument(source, reader);
+        return reader;
     }
 
     /** Back-compat entry point: warm the document (if needed) then pull a single field out of it. */
@@ -116,6 +129,7 @@ class DataContainer {
         tombstones.clear();
         pendingWrites.clear();
         this.backingDocument = raw;
+        this.parsedDocument = null;
         this.documentVersion = version;
         this.documentLoaded = true;
         this.dirty = false;
@@ -134,6 +148,7 @@ class DataContainer {
         data.keySet().removeIf(key -> !pendingWrites.contains(key));
         tombstones.retainAll(pendingWrites);
         this.backingDocument = raw;
+        this.parsedDocument = null;
         this.documentVersion = version;
         this.documentLoaded = true;
     }
@@ -178,11 +193,13 @@ class DataContainer {
             document.put(fullKey, value);
         }
         this.backingDocument = format.writeRaw(document);
+        this.parsedDocument = null;
     }
 
     /** Records the bytes just written to storage as the new backing document and clears the dirty flag. */
     public void markPersisted(byte[] bytes, long version) {
         this.backingDocument = bytes;
+        this.parsedDocument = null;
         this.documentVersion = Math.max(documentVersion, version);
         this.documentLoaded = true;
         this.dirty = false;
