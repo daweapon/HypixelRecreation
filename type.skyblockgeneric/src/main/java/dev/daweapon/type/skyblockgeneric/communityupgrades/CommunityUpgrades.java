@@ -102,6 +102,7 @@ public final class CommunityUpgrades {
     public static void finishDue(SkyBlockPlayer player) {
         if (player.getSkyblockDataHandler() == null) return;
         syncEnderChestPages(player);
+        payCoinsAllowance(player);
         for (CommunityUpgradeId.Scope scope : CommunityUpgradeId.Scope.values()) {
             CommunityUpgradeData data = data(player, scope);
             CommunityUpgradeData.Active active = data.active();
@@ -109,6 +110,19 @@ public final class CommunityUpgrades {
                 complete(player, scope, data, active);
             }
         }
+    }
+
+    private static void payCoinsAllowance(SkyBlockPlayer player) {
+        int allowance = intValue(player, CommunityUpgradeId.COINS_ALLOWANCE);
+        if (allowance <= 0) return;
+        String profileId = player.getSkyblockDataHandler().getCurrentProfileId().toString();
+        long today = java.time.LocalDate.now(java.time.ZoneOffset.UTC).toEpochDay();
+        CommunityUpgradeData account = data(player, CommunityUpgradeId.Scope.ACCOUNT);
+        if (account.allowanceDay(profileId) >= today) return;
+        account.setAllowanceDay(profileId, today);
+        save(player, CommunityUpgradeId.Scope.ACCOUNT, account);
+        player.addCoins(allowance);
+        player.sendMessage("<6>Your Coins Allowance paid you <e>{} coins<6> for logging in today!", String.format("%,d", allowance));
     }
 
     private static void syncEnderChestPages(SkyBlockPlayer player) {

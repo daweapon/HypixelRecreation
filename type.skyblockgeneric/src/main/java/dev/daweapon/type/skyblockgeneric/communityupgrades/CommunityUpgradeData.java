@@ -11,6 +11,7 @@ public final class CommunityUpgradeData {
 
     private final Map<CommunityUpgradeId, Integer> tiers = new EnumMap<>(CommunityUpgradeId.class);
     private Active active;
+    private final Map<String, Long> allowanceDays = new java.util.HashMap<>();
 
     public int tier(CommunityUpgradeId id) {
         return tiers.getOrDefault(id, 0);
@@ -18,6 +19,14 @@ public final class CommunityUpgradeData {
 
     public void setTier(CommunityUpgradeId id, int tier) {
         tiers.put(id, tier);
+    }
+
+    public long allowanceDay(String profileId) {
+        return allowanceDays.getOrDefault(profileId, -1L);
+    }
+
+    public void setAllowanceDay(String profileId, long day) {
+        allowanceDays.put(profileId, day);
     }
 
     public Active active() {
@@ -33,6 +42,7 @@ public final class CommunityUpgradeData {
         JSONObject tierJson = new JSONObject();
         tiers.forEach((id, tier) -> tierJson.put(id.name(), tier));
         json.put("tiers", tierJson);
+        json.put("allowance", new JSONObject(allowanceDays));
         if (active != null) {
             json.put("active", new JSONObject()
                     .put("id", active.id().name())
@@ -52,6 +62,10 @@ public final class CommunityUpgradeData {
             for (CommunityUpgradeId id : CommunityUpgradeId.values()) {
                 if (tierJson.has(id.name())) data.tiers.put(id, tierJson.getInt(id.name()));
             }
+        }
+        JSONObject allowanceJson = json.optJSONObject("allowance");
+        if (allowanceJson != null) {
+            for (String key : allowanceJson.keySet()) data.allowanceDays.put(key, allowanceJson.getLong(key));
         }
         JSONObject activeJson = json.optJSONObject("active");
         if (activeJson != null) {

@@ -41,7 +41,7 @@ public enum CommunityUpgradeId {
     }
 
     public boolean isImplemented() {
-        return this != ISLAND_SIZE;
+        return this != ISLAND_SIZE && this != BAZAAR_FLIPPER;
     }
 
     public String formatValue(double value) {

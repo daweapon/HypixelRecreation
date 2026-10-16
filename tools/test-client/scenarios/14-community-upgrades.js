@@ -79,6 +79,19 @@ module.exports = {
             return lore;
         });
 
+        await t.step('Coins Allowance I: start, skip, and the daily payout arrives', async () => {
+            const minions = bot.window().slots.find((entry) => entry.name.includes('Minion Slots'));
+            await bot.click(minions.slot, { button: 0, mode: 1, settleMs: 2000 });
+            const allowance = bot.window().slots.find((entry) => entry.name.includes('Coins Allowance'));
+            await bot.click(allowance.slot, { settleMs: 1500 });
+            const mark = bot.markChat();
+            await bot.click(allowance.slot, { button: 0, mode: 1, settleMs: 2000 });
+            const lore = bot.window().slots.find((entry) => entry.name.includes('Coins Allowance')).lore.join(' ');
+            t.assert(/Tier: 1\/5/.test(lore), `Coins Allowance lore after skip: ${lore}`);
+            const paid = await bot.waitChat(/Coins Allowance paid you/, { since: mark, timeoutMs: 40000 });
+            return paid;
+        });
+
         await t.step('shift-click skips Magic Find I for Gems', async () => {
             const mf = bot.window().slots.find((entry) => entry.name.includes('Magic Find'));
             const mark = bot.markChat();
