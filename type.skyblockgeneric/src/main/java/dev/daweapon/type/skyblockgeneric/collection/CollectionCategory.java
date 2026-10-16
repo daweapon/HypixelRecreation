@@ -5,6 +5,7 @@ import net.minestom.server.item.Material;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
@@ -55,7 +56,11 @@ public abstract class CollectionCategory {
             Arrays.stream(unlocks).forEach(unlock -> {
                 switch (unlock.type()) {
                     case RECIPE -> {
-                        ((UnlockRecipe) unlock).getRecipes().forEach(recipe -> {
+                        UnlockRecipe unlockRecipe = (UnlockRecipe) unlock;
+                        if (unlockRecipe.getRecipes().isEmpty()) {
+                            lore.add("<7>  <e>" + unlockRecipe.unlockedItemType().getDisplayName() + " <7>Recipe");
+                        }
+                        unlockRecipe.getRecipes().forEach(recipe -> {
                             if (recipe.getResult().getDisplayName().contains("Minion")) {
                                 if (lore.stream().noneMatch(line -> line.contains("Minion") && line.contains("Recipes"))) {
                                     lore.add("<9>  " + StringUtility.toNormalCase(
@@ -68,6 +73,7 @@ public abstract class CollectionCategory {
                         });
                     }
                     case SKILL_XP -> lore.add("<7>  " + ((UnlockSkillXP) unlock).display());
+                    case STAT -> lore.add("<7>  " + ((UnlockStat) unlock).display());
                     case CUSTOM_AWARD -> {
                         lore.add("<7>  " + ((UnlockCustomAward) unlock).getAward().getDisplay());
                     }
@@ -91,7 +97,8 @@ public abstract class CollectionCategory {
             RECIPE,
             XP,
             CUSTOM_AWARD,
-            SKILL_XP
+            SKILL_XP,
+            STAT
         }
     }
 
@@ -103,6 +110,10 @@ public abstract class CollectionCategory {
 
         @Override
         public ItemStack.Builder getDisplay(SkyBlockPlayer player) {
+            if (getRecipes().isEmpty()) {
+                ItemStack.Builder item = new NonPlayerItemUpdater(new SkyBlockItem(unlockedItemType())).getUpdatedItem();
+                return ItemStacks.appendLore(item, List.of(Text.literal(" "), Text.of("<7>Unlocks the recipe for this item.")));
+            }
             SkyBlockItem skyBlockItem = getRecipes().getFirst().getResult();
             ItemStack.Builder updatedItem = new NonPlayerItemUpdater(getRecipes().getFirst().getResult()).getUpdatedItem();
 
@@ -129,6 +140,8 @@ public abstract class CollectionCategory {
 
             return ItemStacks.appendLore(updatedItem, lore);
         }
+
+        public abstract ItemType unlockedItemType();
 
         public abstract SkyBlockRecipe<?> getRecipe();
 
@@ -186,5 +199,26 @@ public abstract class CollectionCategory {
         public abstract SkillCategories skill();
 
         public abstract int xp();
+    }
+
+    public abstract static class UnlockStat extends Unlock {
+        @Override
+        public UnlockType type() {
+            return UnlockType.STAT;
+        }
+
+        @Override
+        public ItemStack.Builder getDisplay(SkyBlockPlayer player) {
+            return ItemStacks.item(Material.PURPLE_STAINED_GLASS_PANE, 1, display(), List.of());
+        }
+
+        public String display() {
+            return "<8>+<a>" + (value() % 1 == 0 ? String.valueOf((int) value()) : String.valueOf(value())) + " "
+                    + statistic().getDisplayName();
+        }
+
+        public abstract ItemStatistic statistic();
+
+        public abstract double value();
     }
 }

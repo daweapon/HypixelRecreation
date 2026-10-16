@@ -126,6 +126,7 @@ public final class VisitManager {
         try (Jedis jedis = SharedData.jedisPool().getResource()) {
             jedis.sadd(VISITORS_PREFIX + session.islandId(), visitorUuid.toString());
         }
+        dev.daweapon.type.skyblockgeneric.social.SocialXp.onGuestArrived(visitorUuid, session);
     }
 
     public static VisitSession activeVisit(UUID visitorUuid) {

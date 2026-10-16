@@ -40,15 +40,15 @@ public enum SkyBlockEmblems {
             //new SkyBlockEmblem("Alchemy Brew", Material.BREWING_STAND, "<7>☕",
             //        SkyBlockLevelCause.getSkillCause(SkillCategories.ALCHEMY, 50)),
             new SkyBlockEmblem("Carpentry House", Material.CRAFTING_TABLE, "<7>☖",
-                    SkyBlockLevelCause.getSkillCause(SkillCategories.CARPENTRY, 50))
+                    SkyBlockLevelCause.getSkillCause(SkillCategories.CARPENTRY, 50)),
             //new SkyBlockEmblem("Taming Clover", Material.WOLF_SPAWN_EGG, "<7>♣",
             //        SkyBlockLevelCause.getSkillCause(SkillCategories.TAMING, 50)),
             //new SkyBlockEmblem("Taming Master", Material.WOLF_SPAWN_EGG, "<6>♣",
             //        SkyBlockLevelCause.getSkillCause(SkillCategories.TAMING, 60)),
-            //new SkyBlockEmblem("Social Statement", Material.EMERALD, "<7>℻",
-            //        SkyBlockLevelCause.getSkillCause(SkillCategories.SOCIAL, 15)),
-            //new SkyBlockEmblem("Social Master", Material.EMERALD, "<6>℻",
-            //        SkyBlockLevelCause.getSkillCause(SkillCategories.SOCIAL, 25)) //Skills not there rn, would throw an error
+            new SkyBlockEmblem("Social Statement", Material.EMERALD, "<7>℻",
+                    SkyBlockLevelCause.getSkillCause(SkillCategories.SOCIAL, 15)),
+            new SkyBlockEmblem("Social Master", Material.EMERALD, "<6>℻",
+                    SkyBlockLevelCause.getSkillCause(SkillCategories.SOCIAL, 25))
     )),
     LEVELING(new GUIMaterial("3255327dd8e90afad681a19231665bea2bd06065a09d77ac1408837f9e0b242"), List.of("<7>These symbols are unlocked by", "<7>leveling up your SkyBlock Level."), List.of(
             new SkyBlockEmblem("Diamond", Material.NAME_TAG, "<7>◆",

@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.event.actions.custom.collection;
 
+import dev.daweapon.type.skyblockgeneric.collection.CollectionNames;
 import net.minestom.server.component.DataComponents;
 import net.minestom.server.item.ItemStack;
 import dev.daweapon.commons.StringUtility;
@@ -26,7 +27,7 @@ public class ActionCollectionDisplay implements HypixelEventClass {
         if (event.getOldValue() == 0 && CollectionCategories.getCategory(event.getItemType()) != null) {
             event.getPlayer().sendMessage(
                     "<hover:'<e>Click to view your {0} Collection!'><click:run:'/viewcollection {1}'>  <6><l>COLLECTION UNLOCKED </l><e>{0}</click></hover>",
-                    event.getItemType().getDisplayName(), event.getItemType().name()
+                    CollectionNames.displayName(event.getItemType()), event.getItemType().name()
             );
             return;
         }
@@ -55,12 +56,12 @@ public class ActionCollectionDisplay implements HypixelEventClass {
             if (placement == 0) {
                 player.sendMessage(
                         "<hover:'<e>Click to view your {0} Collection!'><click:run:'/viewcollection {2}'>  <6><l>COLLECTION LEVEL UP </l><e>{0} {1:roman}</click></hover>",
-                        event.getItemType().getDisplayName(), unlockedLevel, event.getItemType().name()
+                        CollectionNames.displayName(event.getItemType()), unlockedLevel, event.getItemType().name()
                 );
             } else {
                 player.sendMessage(
                         "<hover:'<e>Click to view your {0} Collection!'><click:run:'/viewcollection {3}'>  <6><l>COLLECTION LEVEL UP </l><e>{0} <8>{1:roman}➜<e>{2:roman}</click></hover>",
-                        event.getItemType().getDisplayName(), collection.getPlacementOf(oldReward), unlockedLevel, event.getItemType().name()
+                        CollectionNames.displayName(event.getItemType()), collection.getPlacementOf(oldReward), unlockedLevel, event.getItemType().name()
                 );
             }
 
@@ -73,7 +74,7 @@ public class ActionCollectionDisplay implements HypixelEventClass {
                         case RECIPE -> {
                             CollectionCategory.UnlockRecipe recipeUnlock = (CollectionCategory.UnlockRecipe) unlock;
                             if (recipeUnlock.getRecipe() == null) {
-                                Logger.error("We have a null recipe in collection unlocks for " + event.getItemType().name() + " in " + event.getPlayer().getCollection().get(event.getItemType()));
+                                player.sendMessage("    <7>{} Recipes", recipeUnlock.unlockedItemType().getDisplayName());
                                 return;
                             }
                             ItemStack.Builder item = ((CollectionCategory.UnlockRecipe) unlock).getRecipe().getResult().getItemStackBuilder();
@@ -89,6 +90,7 @@ public class ActionCollectionDisplay implements HypixelEventClass {
                             player.getSkills().increase(player, skillXP.skill(), (double) skillXP.xp());
                             player.sendMessage("    " + skillXP.display());
                         }
+                        case STAT -> player.sendMessage("    " + ((CollectionCategory.UnlockStat) unlock).display());
                     }
                 });
             }

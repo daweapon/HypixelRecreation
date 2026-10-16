@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.data.datapoints;
 
+import dev.daweapon.type.skyblockgeneric.collection.CollectionNames;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import dev.daweapon.commons.StringUtility;
@@ -130,25 +131,29 @@ public class DatapointCollection extends SkyBlockDatapoint<DatapointCollection.P
         }
 
         public void increase(ItemType type) {
+            type = CollectionNames.canonical(type);
             items.put(type, get(type) + 1);
         }
 
         public int increase(SkyBlockPlayer player, ItemType type, int amount) {
+            type = CollectionNames.canonical(type);
             int credited = MiscPetHooks.collectionAmount(player, type, amount);
             items.put(type, get(type) + credited);
             return credited;
         }
 
         public void increase(ItemType type, int amount) {
+            type = CollectionNames.canonical(type);
             items.put(type, get(type) + amount);
         }
 
         public void set(ItemType type, int amount) {
+            type = CollectionNames.canonical(type);
             items.put(type, amount);
         }
 
         public Integer get(ItemType type) {
-            return items.getOrDefault(type, 0);
+            return items.getOrDefault(CollectionNames.canonical(type), 0);
         }
 
         public boolean unlocked(ItemType type) {
@@ -186,7 +191,7 @@ public class DatapointCollection extends SkyBlockDatapoint<DatapointCollection.P
 
             String collectedPercentage = String.format("%.2f", (collected / (double) required) * 100);
             lore.add(Text.of("<7>Progress to {} {:roman}: <e>{}<6>%",
-                    collection.type().getDisplayName(), collection.getPlacementOf(reward) + 1,
+                    CollectionNames.displayName(collection.type()), collection.getPlacementOf(reward) + 1,
                     collectedPercentage).serialize());
 
             String baseLoadingBar = "─────────────────";
@@ -201,7 +206,7 @@ public class DatapointCollection extends SkyBlockDatapoint<DatapointCollection.P
             if (reward.unlocks().length > 0) {
                 lore.add(" ");
                 reward.getDisplay(lore,
-                        collection.type().getDisplayName() + " "
+                        CollectionNames.displayName(collection.type()) + " "
                                 + StringUtility.getAsRomanNumeral(collection.getPlacementOf(reward) + 1) + " ");
             }
 
@@ -214,7 +219,7 @@ public class DatapointCollection extends SkyBlockDatapoint<DatapointCollection.P
 
             String collectedPercentage = String.format("%.2f", Math.min(((collected / (double) reward.requirement()) * 100), 100));
             lore.add(Text.of("<7>Progress to {} {:roman}: <e>{}<6>%",
-                    collection.type().getDisplayName(), collection.getPlacementOf(reward) + 1,
+                    CollectionNames.displayName(collection.type()), collection.getPlacementOf(reward) + 1,
                     collectedPercentage).serialize());
 
             String baseLoadingBar = "─────────────────";
@@ -231,7 +236,7 @@ public class DatapointCollection extends SkyBlockDatapoint<DatapointCollection.P
             if (reward.unlocks().length > 0) {
                 lore.add(" ");
                 reward.getDisplay(lore,
-                        collection.type().getDisplayName() + " "
+                        CollectionNames.displayName(collection.type()) + " "
                                 + StringUtility.getAsRomanNumeral(collection.getPlacementOf(reward) + 1) + " ");
             }
 

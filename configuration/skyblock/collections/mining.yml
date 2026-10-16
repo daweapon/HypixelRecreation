@@ -1634,3 +1634,239 @@ collections:
     - type: RECIPE_UNLOCK
       data:
         unlockedItemType: IMPLOSION_BELT
+- itemType: GLACITE
+  rewards:
+  - amount: 100
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 1000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ENCHANTED_GLACITE
+  - amount: 5000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: GLACITE_AMALGAMATION
+  - amount: 10000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: GLACITE_GOLEM_PET
+  - amount: 25000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: FRIGID_HUSK
+  - amount: 50000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 100000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 250000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 500000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: SKILL_XP
+      data:
+        skill: MINING
+        xp: 10000
+- itemType: TUNGSTEN
+  rewards:
+  - amount: 100
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 1000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ENCHANTED_TUNGSTEN
+  - amount: 5000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: REFINED_TUNGSTEN
+  - amount: 10000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: TUNGSTEN_KEY
+  - amount: 25000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 50000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: TUNGSTEN_PLATE
+  - amount: 100000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 250000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 500000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+- itemType: UMBER
+  rewards:
+  - amount: 100
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 1000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: ENCHANTED_UMBER
+  - amount: 5000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: REFINED_UMBER
+  - amount: 10000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: UMBER_KEY
+  - amount: 25000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 50000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: UMBER_PLATE
+  - amount: 100000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 250000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: STAT
+      data:
+        stat: MINING_FORTUNE
+        value: 1
+  - amount: 500000
+    rewards:
+    - type: XP
+      data:
+        xp: 4
+    - type: RECIPE_UNLOCK
+      data:
+        unlockedItemType: UMBERELLA

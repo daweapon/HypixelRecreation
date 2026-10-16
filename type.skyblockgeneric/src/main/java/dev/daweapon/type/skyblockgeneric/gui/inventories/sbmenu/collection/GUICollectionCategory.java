@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.collection;
 
+import dev.daweapon.type.skyblockgeneric.collection.CollectionNames;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.item.Material;
 import dev.daweapon.commons.text.Text;
@@ -89,14 +90,14 @@ public class GUICollectionCategory extends StatelessView {
                             <c>{}
                             <7>Find this item to add it to your
                             <7>collection and unlock collection
-                            <7>rewards!""", item.type().getDisplayName());
+                            <7>rewards!""", CollectionNames.displayName(item.type()));
                 }
 
                 List<String> rendered = new ArrayList<>();
                 collection.getDisplay(rendered, item);
 
                 List<Text> lore = new ArrayList<>();
-                lore.add(Text.of("<7>View all your {} Collection", item.type().getDisplayName()));
+                lore.add(Text.of("<7>View all your {} Collection", CollectionNames.displayName(item.type())));
                 lore.add(Text.of("<7>progress and rewards!"));
                 lore.add(Text.empty());
                 lore.addAll(rendered.stream().map(Text::parse).toList());
@@ -104,7 +105,7 @@ public class GUICollectionCategory extends StatelessView {
                 lore.add(Text.of("<e>Click to view!"));
 
                 return ItemStacks.item(item.type().material, 1,
-                        Text.of("<e>{}", item.type().getDisplayName()), lore);
+                        Text.of("<e>{}", CollectionNames.displayName(item.type())), lore);
             }, (click, c) -> {
                 SkyBlockPlayer player = (SkyBlockPlayer) c.player();
                 DatapointCollection.PlayerCollection collection = player.getCollection();

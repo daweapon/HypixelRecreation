@@ -6,6 +6,12 @@
 # book: a file in configuration/skyblock/patch_notes/, which opens as a written book. Entries without a
 # book send their url in chat instead (the seeded Hypixel releases from wiki Module:History/Datasheet).
 patch_notes:
+  - version: "collections-social"
+    name: "The Collections and Social Update"
+    date: "16th October 2026"
+    material: emerald
+    title: "The Collections and Social Update"
+    book: "collections_social_update.yml"
   - version: "catacombs-1"
     name: "The Catacombs Update, Part 1"
     date: "15th October 2026"

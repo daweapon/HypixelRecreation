@@ -170,7 +170,7 @@ public class GUISkyBlockMenu extends StatelessView {
         layout.slot(19, (s, c) -> {
             SkyBlockPlayer player = (SkyBlockPlayer) c.player();
             double average = java.util.Arrays.stream(SkillCategories.values())
-                .filter(category -> category != SkillCategories.RUNECRAFTING && category != SkillCategories.CARPENTRY)
+                .filter(category -> category != SkillCategories.RUNECRAFTING && category != SkillCategories.CARPENTRY && !category.isCosmetic())
                 .mapToInt(category -> player.getSkills().getCurrentLevel(category))
                 .average().orElse(0);
             return ItemStacks.item(Material.DIAMOND_SWORD, 1,

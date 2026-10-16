@@ -1,0 +1,23 @@
+title: "The Collections and Social Update"
+date: "16th October 2026"
+intro:
+  - "Four new collections, a fixed Gemstone collection and the Social skill."
+sections:
+  - heading: "Collections"
+    colour: "<a>"
+    lines:
+      - "Added the Glacite, Tungsten and Umber mining collections and the Lotus fishing collection, with every tier reward from the wiki."
+      - "Collection tiers can now give stats. The mining metal collections grant Mining Fortune, and Glacite IX grants 10,000 Mining XP."
+      - "Enchanted Glacite, Enchanted Tungsten and Enchanted Umber can now be crafted once their collection tier is reached."
+      - "The Gemstone collection now counts every gemstone you collect, not only Fine Jasper, and is shown as Gemstone."
+  - heading: "Social skill"
+    colour: "<b>"
+    lines:
+      - "Added the Social skill, level 25 maximum. It gives coins and unlocks Amelia's island items; it does not count toward your skill average."
+      - "Earn 10 Social XP for each new guest that visits your island (once per guest per day), 2 XP a minute per guest on your island, and 1 XP a minute while visiting an island whose owner is home."
+      - "Amelia's shop now unlocks items at the Social level the wiki lists, and the Social Statement and Social Master emblems exist."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Lotus cannot be collected until the Lotus Atoll is built. Boss and Rift collections wait for their own updates."
+      - "Social XP from losing a Loudmouth Bass duel is not built."

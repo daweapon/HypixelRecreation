@@ -16,16 +16,24 @@ public enum SkillCategories {
     ALCHEMY("alchemy", ItemStatistic.ALCHEMY_WISDOM),
     TAMING("taming", ItemStatistic.TAMING_WISDOM),
     HUNTING("hunting", ItemStatistic.HUNTING_WISDOM),
+    SOCIAL("social", ItemStatistic.SOCIAL_WISDOM, true),
     ;
 
     private final String file;
     @Getter
     private final ItemStatistic wisdomStatistic;
+    @Getter
+    private final boolean cosmetic;
     private SkillCategory category;
 
     SkillCategories(String file, ItemStatistic wisdomStatistic) {
+        this(file, wisdomStatistic, false);
+    }
+
+    SkillCategories(String file, ItemStatistic wisdomStatistic, boolean cosmetic) {
         this.file = file;
         this.wisdomStatistic = wisdomStatistic;
+        this.cosmetic = cosmetic;
     }
 
     @Override

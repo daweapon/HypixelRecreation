@@ -3,6 +3,7 @@ package dev.daweapon.type.hub.gui.amelia;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 import java.util.Arrays;
@@ -28,10 +29,8 @@ public enum SocialShopEntry {
     private final double coinCost;
     private final int requiredSocialLevel;
 
-    // The Social skill (and the island features these items place) is not on this server yet,
-    // so no player can meet a Social level requirement.
     public boolean isUnlocked(SkyBlockPlayer player) {
-        return false;
+        return player.getSkills().getCurrentLevel(SkillCategories.SOCIAL) >= requiredSocialLevel;
     }
 
     public static Optional<SocialShopEntry> of(ItemType item) {

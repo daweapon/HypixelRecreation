@@ -1,0 +1,182 @@
+name: "Social"
+displayIcon: "emerald"
+description:
+  - "<7>Visit and host guests on islands"
+  - "<7>to earn Social XP!"
+
+rewards:
+  - level: 1
+    requirement: 50
+    unlocks:
+      - type: COINS
+        data:
+          amount: 100
+
+  - level: 2
+    requirement: 150
+    unlocks:
+      - type: COINS
+        data:
+          amount: 250
+
+  - level: 3
+    requirement: 300
+    unlocks:
+      - type: COINS
+        data:
+          amount: 500
+
+  - level: 4
+    requirement: 550
+    unlocks:
+      - type: COINS
+        data:
+          amount: 750
+
+  - level: 5
+    requirement: 1050
+    unlocks:
+      - type: COINS
+        data:
+          amount: 1000
+
+  - level: 6
+    requirement: 1800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 2000
+
+  - level: 7
+    requirement: 2800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 3000
+
+  - level: 8
+    requirement: 4050
+    unlocks:
+      - type: COINS
+        data:
+          amount: 4000
+
+  - level: 9
+    requirement: 5550
+    unlocks:
+      - type: COINS
+        data:
+          amount: 5000
+
+  - level: 10
+    requirement: 7550
+    unlocks:
+      - type: COINS
+        data:
+          amount: 7500
+
+  - level: 11
+    requirement: 10050
+    unlocks:
+      - type: COINS
+        data:
+          amount: 10000
+
+  - level: 12
+    requirement: 13050
+    unlocks:
+      - type: COINS
+        data:
+          amount: 15000
+
+  - level: 13
+    requirement: 16800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 20000
+
+  - level: 14
+    requirement: 21300
+    unlocks:
+      - type: COINS
+        data:
+          amount: 25000
+
+  - level: 15
+    requirement: 27300
+    unlocks:
+      - type: COINS
+        data:
+          amount: 30000
+
+  - level: 16
+    requirement: 35300
+    unlocks:
+      - type: COINS
+        data:
+          amount: 40000
+
+  - level: 17
+    requirement: 45300
+    unlocks:
+      - type: COINS
+        data:
+          amount: 50000
+
+  - level: 18
+    requirement: 57800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 65000
+
+  - level: 19
+    requirement: 72800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 80000
+
+  - level: 20
+    requirement: 92800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 100000
+
+  - level: 21
+    requirement: 117800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 125000
+
+  - level: 22
+    requirement: 147800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 150000
+
+  - level: 23
+    requirement: 182800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 175000
+
+  - level: 24
+    requirement: 222800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 200000
+
+  - level: 25
+    requirement: 272800
+    unlocks:
+      - type: COINS
+        data:
+          amount: 225000
+

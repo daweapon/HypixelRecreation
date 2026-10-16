@@ -5,6 +5,7 @@ import net.minestom.server.item.Material;
 import dev.daweapon.type.skyblockgeneric.skill.SkillCategories;
 import dev.daweapon.commons.YamlFileUtils;
 import dev.daweapon.commons.skyblock.item.ItemType;
+import dev.daweapon.commons.skyblock.statistics.ItemStatistic;
 import dev.daweapon.commons.text.Text;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
 import dev.daweapon.type.skyblockgeneric.item.components.EnchantedComponent;
@@ -64,6 +65,9 @@ public class CollectionLoader {
 
         // Skill XP data
         public String skill;
+
+        public String stat;
+        public Double value;
     }
 
     @Data
@@ -157,6 +161,17 @@ public class CollectionLoader {
                         return r.data.xp;
                     }
                 });
+                case "STAT" -> rewardTypes.add(new CollectionCategory.UnlockStat() {
+                    @Override
+                    public ItemStatistic statistic() {
+                        return ItemStatistic.valueOf(r.data.stat);
+                    }
+
+                    @Override
+                    public double value() {
+                        return r.data.value;
+                    }
+                });
                 default -> throw new IllegalArgumentException("Unknown reward type: " + r.type);
             }
         }
@@ -166,6 +181,11 @@ public class CollectionLoader {
 
     private static CollectionCategory.UnlockRecipe parseRecipeUnlock(RewardData data) {
         return new CollectionCategory.UnlockRecipe() {
+            @Override
+            public ItemType unlockedItemType() {
+                return ItemType.valueOf(data.unlockedItemType);
+            }
+
             @Override
             public SkyBlockRecipe<?> getRecipe() {
                 if (data.unlockedItemType == null || data.unlockedItemType.isEmpty()) {
@@ -185,8 +205,7 @@ public class CollectionLoader {
                         }
                     }
 
-                    throw new RuntimeException("No recipes found for item: " + data.unlockedItemType +
-                            ". Make sure the item has a CraftableComponent or EnchantedComponent with recipes defined.");
+                    return null;
                 }
 
                 return recipes.getFirst();

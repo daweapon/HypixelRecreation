@@ -182,6 +182,9 @@ items:
     material: PACKED_ICE
     name: "Enchanted Glacite"
     components:
+      - id: ENCHANTED
+        recipe_type: MINING
+        item_id: GLACITE
       - id: SELLABLE
         value: 1920.0
       - id: ITEM_MODEL
@@ -200,6 +203,9 @@ items:
     material: PLAYER_HEAD
     name: "Enchanted Tungsten"
     components:
+      - id: ENCHANTED
+        recipe_type: MINING
+        item_id: TUNGSTEN
       - id: SELLABLE
         value: 1600.0
       - id: ITEM_MODEL
@@ -218,6 +224,9 @@ items:
     material: PLAYER_HEAD
     name: "Enchanted Umber"
     components:
+      - id: ENCHANTED
+        recipe_type: MINING
+        item_id: UMBER
       - id: SELLABLE
         value: 1600.0
       - id: ITEM_MODEL

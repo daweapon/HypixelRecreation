@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric;
 
+import dev.daweapon.type.skyblockgeneric.collection.CollectionNames;
 import dev.daweapon.commons.reflection.PackageScanner;
 import dev.daweapon.type.skyblockgeneric.hotm.HotmRegistry;
 import dev.daweapon.type.skyblockgeneric.achievement.SkyBlockAchievements;
@@ -539,7 +540,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
                                         int amount = player.getCollection().get(collection.type());
                                         return new SkyBlockRecipe.CraftingResult(
                                             amount >= reward.requirement(),
-                                            new String[]{"<7>You must have <c>" + collection.type().getDisplayName()
+                                            new String[]{"<7>You must have <c>" + CollectionNames.displayName(collection.type())
                                                 + " Collection "
                                                 + StringUtility.getAsRomanNumeral(collection.getPlacementOf(reward))}
                                         );
@@ -556,6 +557,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
                 recipes.forEach(SkyBlockRecipe::init);
             });
         });
+        dev.daweapon.type.skyblockgeneric.social.SocialXp.start();
         dev.daweapon.type.skyblockgeneric.slayer.SlayerRecipeGates.install();
         dev.daweapon.type.skyblockgeneric.experiments.ExperimentRecipeGate.install();
 

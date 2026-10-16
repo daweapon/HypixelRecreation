@@ -1,5 +1,6 @@
 package dev.daweapon.type.skyblockgeneric.event.actions.custom.collection;
 
+import dev.daweapon.type.skyblockgeneric.collection.CollectionNames;
 import dev.daweapon.commons.StringUtility;
 import dev.daweapon.commons.skyblock.item.ItemType;
 import dev.daweapon.commons.text.Text;
@@ -33,6 +34,7 @@ public class ActionCollectionAdd implements HypixelEventClass {
         for (dev.daweapon.type.skyblockgeneric.item.SkyBlockItem drop : event.getDrops()) {
             ItemType type = drop.getAttributeHandler().getPotentialType();
             if (type == null) continue;
+            type = CollectionNames.canonical(type);
 
             int oldAmount = player.getCollection().get(type);
             int dropAmount = player.getCollection().increase(player, type, drop.getAmount());
@@ -71,7 +73,7 @@ public class ActionCollectionAdd implements HypixelEventClass {
                             SkyBlockActionBar.BarSection.DEFENSE,
                             Text.of("<2>+{} {} <7>({}/{})",
                                     addedAmount,
-                                    finalType.getDisplayName(),
+                                    CollectionNames.displayName(finalType),
                                     StringUtility.commaify(player.getCollection().get(finalType)),
                                     StringUtility.shortenNumber(player.getCollection().getReward(collection).requirement())),
                             20,
@@ -82,7 +84,7 @@ public class ActionCollectionAdd implements HypixelEventClass {
                             SkyBlockActionBar.BarSection.DEFENSE,
                             Text.of("<2>+{} {} <7>({})",
                                     addedAmount,
-                                    finalType.getDisplayName(),
+                                    CollectionNames.displayName(finalType),
                                     StringUtility.commaify(player.getCollection().get(finalType))),
                             20,
                             startingPriority

@@ -38,6 +38,7 @@ final class SpareStatistics {
         spare = ItemStatistics.add(spare, FarmingContestStatistics.all(player));
         spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.garden.chip.ChipStatistics.all(player));
         spare = ItemStatistics.add(spare, CarnivalStatistics.all(player));
+        spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.collection.CollectionStatistics.all(player));
         spare = ItemStatistics.add(spare, IceEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, dev.daweapon.type.skyblockgeneric.essence.FossilEssenceShop.statistics(player));
         spare = ItemStatistics.add(spare, CrimsonEssenceShop.statistics(player));

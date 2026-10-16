@@ -24,6 +24,7 @@ public class SkillLevelCause extends SkyBlockLevelCauseAbstr implements CauseEmb
 
     @Override
     public double xpReward() {
+        if (category.isCosmetic()) return 0;
         for (SkillCategory.Reward unlock : category.asCategory().getReward(level).unlocks()) {
             if (unlock.type() == SkillCategory.Reward.UnlockType.XP) {
                 return ((SkillCategory.XPReward) unlock).getXP();
