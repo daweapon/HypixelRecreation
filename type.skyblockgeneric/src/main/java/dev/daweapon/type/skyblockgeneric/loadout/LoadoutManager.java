@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.loadout;
 
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import net.minestom.server.item.ItemStack;
 import net.minestom.server.item.Material;
 import dev.daweapon.commons.skyblock.item.ItemType;
@@ -29,16 +31,11 @@ public final class LoadoutManager {
     }
 
     public static int unlockedLoadouts(SkyBlockPlayer player) {
-        return Math.min(DatapointLoadouts.LOADOUT_COUNT, WardrobeService.rankSlots(player.getRank()) + communitySlots(player));
+        return Math.min(DatapointLoadouts.LOADOUT_COUNT, WardrobeService.rankSlots(player.getRank()) + CommunityUpgrades.intValue(player, CommunityUpgradeId.LOADOUT_SLOTS));
     }
 
     public static int unlockedEquipmentSets(SkyBlockPlayer player) {
-        return Math.min(DatapointLoadouts.EQUIPMENT_SET_COUNT, WardrobeService.rankSlots(player.getRank()) + communitySlots(player));
-    }
-
-    private static int communitySlots(SkyBlockPlayer player) {
-        return player.getSkyblockDataHandler().get(SkyBlockDataHandler.Data.WARDROBE, DatapointWardrobe.class)
-                .getValue().getCommunitySlots();
+        return Math.min(DatapointLoadouts.EQUIPMENT_SET_COUNT, WardrobeService.rankSlots(player.getRank()) + CommunityUpgrades.intValue(player, CommunityUpgradeId.EQUIPMENT_WARDROBE));
     }
 
     public static boolean equip(SkyBlockPlayer player, int index) {

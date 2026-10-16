@@ -71,15 +71,17 @@ public final class VisitManager {
     // of the island" - i.e. a co-op island's limit is the max across every member's own rank, not
     // just whichever member's profile happens to be looked up.
     public static int maxGuestLimit(UUID ownerProfileId, UUID ownerAccountUuid) {
+        int bonus = dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades.profileIntValue(ownerProfileId,
+                dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId.GUESTS_LIMIT);
         CoopDatabase.Coop coop = CoopDatabase.getFromMemberProfile(ownerProfileId);
         if (coop == null) {
-            return rankOf(ownerAccountUuid).maxIslandGuests();
+            return rankOf(ownerAccountUuid).maxIslandGuests() + bonus;
         }
         int max = 0;
         for (UUID member : coop.members()) {
             max = Math.max(max, rankOf(member).maxIslandGuests());
         }
-        return max;
+        return max + bonus;
     }
 
     private static Rank rankOf(UUID accountUuid) {

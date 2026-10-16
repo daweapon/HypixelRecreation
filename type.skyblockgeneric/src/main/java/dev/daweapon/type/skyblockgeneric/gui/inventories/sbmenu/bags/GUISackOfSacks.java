@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu.bags;
 
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.ItemStack;
@@ -134,7 +136,7 @@ public class GUISackOfSacks implements StatefulView<GUISackOfSacks.SackOfSacksSt
                 totalSlots = Math.max(totalSlots, SLOTS_PER_UPGRADE.get(entry));
             }
         }
-        return totalSlots;
+        return totalSlots + CommunityUpgrades.intValue(player, CommunityUpgradeId.SACK_OF_SACKS);
     }
 
     private CustomCollectionAward getUpgradeNeededForSlotIndex(int slotIndex) {

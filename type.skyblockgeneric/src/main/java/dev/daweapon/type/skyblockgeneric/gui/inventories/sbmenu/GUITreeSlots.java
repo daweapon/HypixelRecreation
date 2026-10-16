@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.gui.inventories.sbmenu;
 
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import net.minestom.server.inventory.InventoryType;
 import net.minestom.server.inventory.click.Click;
 import net.minestom.server.item.Material;
@@ -94,7 +96,7 @@ public class GUITreeSlots extends StatelessView {
 
         for (int slot = 0; slot < DatapointLoadouts.TREE_SLOT_COUNT; slot++) {
             int treeSlot = slot;
-            boolean unlocked = slot < 2;
+            boolean unlocked = slot < 2 + CommunityUpgrades.intValue(player, tree == TreeType.HOTM ? CommunityUpgradeId.HOTM_SLOTS : CommunityUpgradeId.HOTF_SLOTS);
             boolean active = slot == selected;
             List<Text> lore = new ArrayList<>(diagram(slot));
             lore.add(Text.empty());

@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.item.handlers.place;
 
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import net.minestom.server.instance.block.Block;
 import dev.daweapon.type.generic.HypixelConst;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -26,7 +28,7 @@ public class PlaceEventRegistry {
                     SkyBlockDataHandler.Data.MINION_DATA, DatapointMinionData.class
             ).getValue();
 
-            int slots = playerData.getSlots();
+            int slots = playerData.getSlots() + CommunityUpgrades.intValue(player, CommunityUpgradeId.MINION_SLOTS);
 
             IslandMinionData minionData = player.getSkyBlockIsland().getMinionData();
 
@@ -47,7 +49,7 @@ public class PlaceEventRegistry {
             event.setBlock(Block.AIR);
 
             player.sendMessage("<b>You placed a minion! ({}/{})",
-                    minionData.getMinions().size(), playerData.getSlots());
+                    minionData.getMinions().size(), slots);
         });
         register(SprayCanHandlers.HANDLER_ID, SprayCanHandlers.place());
         register(InfiniTorchPlacement.HANDLER_ID, InfiniTorchPlacement.handler());

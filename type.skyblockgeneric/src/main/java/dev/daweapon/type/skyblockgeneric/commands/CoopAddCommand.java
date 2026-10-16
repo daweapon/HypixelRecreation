@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.commands;
 
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import net.minestom.server.command.builder.arguments.ArgumentType;
 import net.minestom.server.command.builder.arguments.ArgumentWord;
 import dev.daweapon.proxyapi.ProxyPlayer;
@@ -76,8 +78,9 @@ public class CoopAddCommand extends HypixelCommand {
             }
 
             int totalSlots = coop.members().size() + coop.memberInvites().size();
-            if (totalSlots >= 5) {
-                player.sendMessage("<b>[Co-op] <c>Your co-op is full! (Max 5 players)");
+            int maxMembers = 5 + CommunityUpgrades.intValue(player, CommunityUpgradeId.COOP_SLOTS);
+            if (totalSlots >= maxMembers) {
+                player.sendMessage("<b>[Co-op] <c>Your co-op is full! (Max {} players)", maxMembers);
                 return;
             }
 

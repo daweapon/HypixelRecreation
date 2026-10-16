@@ -74,6 +74,7 @@ public class TypeHubLoader implements SkyBlockTypeLoader {
 
 	@Override
 	public void onInitialize(MinecraftServer server) {
+		dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityShop.register(player -> new dev.daweapon.type.hub.gui.elizabeth.GUIAccountAndProfileUpgrades().open(player));
 		Logger.info("TypeHubLoader initialized!");
 	}
 

@@ -205,7 +205,7 @@ public class GUIBitsShop extends HypixelInventoryGUI {
                 }
                 @Override
                 public ItemStack.Builder getItem(HypixelPlayer p) {
-                    return shopCategorys.buildStack(slot == 4);
+                    return shopCategorys.buildStack(slot == 4, p);
                 }
             });
             index++;

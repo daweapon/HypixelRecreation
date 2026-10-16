@@ -558,6 +558,7 @@ public record SkyBlockGenericLoader(HypixelTypeLoader typeLoader) {
             });
         });
         dev.daweapon.type.skyblockgeneric.social.SocialXp.start();
+        dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeTicker.start();
         dev.daweapon.type.skyblockgeneric.slayer.SlayerRecipeGates.install();
         dev.daweapon.type.skyblockgeneric.experiments.ExperimentRecipeGate.install();
 

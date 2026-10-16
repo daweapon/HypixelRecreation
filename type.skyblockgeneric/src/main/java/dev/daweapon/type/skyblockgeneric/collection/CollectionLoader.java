@@ -90,6 +90,8 @@ public class CollectionLoader {
             CollectionConfig config = yaml.loadAs(new FileReader(collectionFile), CollectionConfig.class);
 
             return new CollectionCategory() {
+                private ItemCollection[] parsed;
+
                 @Override
                 public Material getDisplayIcon() {
                     return Material.values().stream()
@@ -106,13 +108,15 @@ public class CollectionLoader {
                 }
 
                 @Override
-                public ItemCollection[] getCollections() {
-                    List<ItemCollection> collections = new ArrayList<>();
-                    for (CollectionEntry entry : config.collections) {
-                        ItemCollection collection = parseCollection(entry);
-                        collections.add(collection);
+                public synchronized ItemCollection[] getCollections() {
+                    if (parsed == null) {
+                        List<ItemCollection> collections = new ArrayList<>();
+                        for (CollectionEntry entry : config.collections) {
+                            collections.add(parseCollection(entry));
+                        }
+                        parsed = collections.toArray(new ItemCollection[0]);
                     }
-                    return collections.toArray(new ItemCollection[0]);
+                    return parsed;
                 }
             };
         } catch (Exception e) {

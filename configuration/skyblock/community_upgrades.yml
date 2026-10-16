@@ -1,0 +1,134 @@
+# Elizabeth's Account & Profile Upgrades. value = total bonus at that tier (island size: width); gems = cost to start the tier; hours = real time to finish.
+upgrades:
+  ISLAND_SIZE:
+    tiers:
+      - {value: 169, gems: 0, hours: 48}
+      - {value: 177, gems: 175, hours: 96}
+      - {value: 185, gems: 175, hours: 144}
+      - {value: 193, gems: 175, hours: 192}
+      - {value: 201, gems: 175, hours: 240}
+      - {value: 209, gems: 175, hours: 240}
+      - {value: 217, gems: 200, hours: 240}
+      - {value: 225, gems: 200, hours: 240}
+      - {value: 233, gems: 200, hours: 240}
+      - {value: 241, gems: 200, hours: 240}
+  MINION_SLOTS:
+    tiers:
+      - {value: 1, gems: 0, hours: 24}
+      - {value: 2, gems: 0, hours: 96}
+      - {value: 3, gems: 0, hours: 192}
+      - {value: 4, gems: 0, hours: 384}
+      - {value: 5, gems: 0, hours: 576}
+  GUESTS_LIMIT:
+    tiers:
+      - {value: 1, gems: 0, hours: 48}
+      - {value: 2, gems: 50, hours: 96}
+      - {value: 3, gems: 50, hours: 144}
+      - {value: 4, gems: 50, hours: 192}
+      - {value: 5, gems: 50, hours: 384}
+  COOP_SLOTS:
+    tiers:
+      - {value: 1, gems: 600, hours: 0}
+      - {value: 2, gems: 600, hours: 0}
+      - {value: 3, gems: 600, hours: 0}
+  COINS_ALLOWANCE:
+    tiers:
+      - {value: 10000, gems: 0, hours: 120}
+      - {value: 20000, gems: 0, hours: 240}
+      - {value: 30000, gems: 0, hours: 360}
+      - {value: 40000, gems: 0, hours: 480}
+      - {value: 50000, gems: 0, hours: 600}
+  ARMOR_WARDROBE:
+    tiers:
+      - {value: 1, gems: 0, hours: 144}
+      - {value: 2, gems: 250, hours: 144}
+      - {value: 3, gems: 500, hours: 144}
+      - {value: 4, gems: 500, hours: 144}
+      - {value: 5, gems: 500, hours: 144}
+      - {value: 6, gems: 500, hours: 144}
+      - {value: 7, gems: 500, hours: 144}
+      - {value: 8, gems: 500, hours: 144}
+      - {value: 9, gems: 500, hours: 144}
+  EQUIPMENT_WARDROBE:
+    tiers:
+      - {value: 1, gems: 250, hours: 144}
+      - {value: 2, gems: 250, hours: 144}
+      - {value: 3, gems: 250, hours: 144}
+      - {value: 4, gems: 250, hours: 144}
+      - {value: 5, gems: 250, hours: 144}
+      - {value: 6, gems: 250, hours: 144}
+      - {value: 7, gems: 250, hours: 144}
+      - {value: 8, gems: 250, hours: 144}
+      - {value: 9, gems: 250, hours: 144}
+  LOADOUT_SLOTS:
+    tiers:
+      - {value: 1, gems: 500, hours: 144}
+      - {value: 2, gems: 500, hours: 144}
+      - {value: 3, gems: 500, hours: 144}
+      - {value: 4, gems: 500, hours: 144}
+      - {value: 5, gems: 500, hours: 144}
+      - {value: 6, gems: 500, hours: 144}
+      - {value: 7, gems: 500, hours: 144}
+      - {value: 8, gems: 500, hours: 144}
+      - {value: 9, gems: 500, hours: 144}
+  HOTM_SLOTS:
+    tiers:
+      - {value: 1, gems: 150, hours: 144}
+      - {value: 2, gems: 150, hours: 144}
+      - {value: 3, gems: 150, hours: 144}
+  HOTF_SLOTS:
+    tiers:
+      - {value: 1, gems: 150, hours: 144}
+      - {value: 2, gems: 150, hours: 144}
+      - {value: 3, gems: 150, hours: 144}
+  ENDER_CHEST_PAGES:
+    tiers:
+      - {value: 1, gems: 0, hours: 144}
+      - {value: 2, gems: 75, hours: 144}
+      - {value: 3, gems: 150, hours: 144}
+      - {value: 4, gems: 150, hours: 144}
+      - {value: 5, gems: 150, hours: 144}
+      - {value: 6, gems: 150, hours: 144}
+      - {value: 7, gems: 150, hours: 144}
+      - {value: 7, gems: 150, hours: 144}
+  ACCESSORY_BAG:
+    tiers:
+      - {value: 2, gems: 0, hours: 96}
+      - {value: 4, gems: 0, hours: 144}
+      - {value: 6, gems: 0, hours: 192}
+      - {value: 8, gems: 0, hours: 240}
+      - {value: 10, gems: 0, hours: 336}
+      - {value: 12, gems: 0, hours: 432}
+  SACK_OF_SACKS:
+    tiers:
+      - {value: 2, gems: 0, hours: 72}
+      - {value: 4, gems: 0, hours: 144}
+      - {value: 6, gems: 100, hours: 288}
+      - {value: 8, gems: 100, hours: 288}
+      - {value: 10, gems: 200, hours: 288}
+      - {value: 12, gems: 200, hours: 288}
+      - {value: 14, gems: 300, hours: 288}
+      - {value: 16, gems: 300, hours: 288}
+  MAGIC_FIND:
+    tiers:
+      - {value: 1, gems: 0, hours: 24}
+      - {value: 2, gems: 0, hours: 48}
+      - {value: 3, gems: 0, hours: 96}
+      - {value: 4, gems: 0, hours: 192}
+      - {value: 5, gems: 0, hours: 384}
+  BAZAAR_FLIPPER:
+    tiers:
+      - {value: 7, gems: 0, hours: 120, extra: 0.125}
+      - {value: 14, gems: 100, hours: 240, extra: 0.25}
+  GARDEN_FARMING_FORTUNE:
+    tiers:
+      - {value: 4, gems: 0, hours: 72}
+      - {value: 8, gems: 0, hours: 120}
+      - {value: 12, gems: 0, hours: 168}
+      - {value: 16, gems: 0, hours: 240}
+      - {value: 20, gems: 0, hours: 288}
+      - {value: 24, gems: 0, hours: 360}
+      - {value: 28, gems: 0, hours: 432}
+      - {value: 32, gems: 0, hours: 504}
+      - {value: 36, gems: 0, hours: 600}
+      - {value: 40, gems: 0, hours: 720}

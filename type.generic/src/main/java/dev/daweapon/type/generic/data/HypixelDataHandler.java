@@ -339,6 +339,7 @@ public class HypixelDataHandler extends DataHandler {
         HYPIXEL_EXPERIENCE("hypixel_experience",
                 DatapointHypixelExperience.class, new DatapointHypixelExperience("hypixel_experience", 0L)),
 
+        COMMUNITY_UPGRADES("community_upgrades", DatapointString.class, new DatapointString("community_upgrades", "")),
         BAZAAR_DIRECT_MODE("bazaar_direct_mode", DatapointBoolean.class, new DatapointBoolean("bazaar_direct_mode", true)),
         BAZAAR_IGNORED_ITEMS("bazaar_ignored_items", DatapointStringList.class, new DatapointStringList("bazaar_ignored_items")),
 

@@ -529,6 +529,9 @@ public class SkyBlockDataHandler extends DataHandler {
         STAT_OVERRIDES("stat_overrides", false, false, false,
                 DatapointString.class, new DatapointString("stat_overrides", "")),
 
+        COMMUNITY_UPGRADES_PROFILE("community_upgrades", false, true, false,
+                DatapointString.class, new DatapointString("community_upgrades", "")),
+
         GEMS("gems", false, false, false,
                 DatapointInteger.class, new DatapointInteger("gems", 0)),
 

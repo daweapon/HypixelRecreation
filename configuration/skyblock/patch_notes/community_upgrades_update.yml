@@ -1,0 +1,23 @@
+title: "The Community Upgrades Update"
+date: "16th October 2026"
+intro:
+  - "Elizabeth's Account & Profile Upgrades are open: permanent upgrades that take real time to finish."
+sections:
+  - heading: "Account & Profile Upgrades"
+    colour: "<d>"
+    lines:
+      - "Open the Community Shop's Account & Profile Upgrades tab to start an upgrade. You can run one Profile upgrade and one Account upgrade at a time."
+      - "Profile upgrades are shared with your co-op: Minion Slots, Guests Limit and Co-op Slots. Account upgrades apply to every profile you own."
+      - "Account upgrades: Armor Wardrobe, Equipment Wardrobe, Loadout, Heart of the Mountain and Heart of the Forest slots, Ender Chest pages, Accessory Bag slots, Sack of Sacks slots and Magic Find."
+      - "Early tiers are free and only cost time. Later tiers cost Gems. Shift-click a running upgrade to skip the wait for 6 Gems per hour."
+      - "You hear about finished upgrades in chat, and Elizabeth calls you when you have her in your Abiphone."
+  - heading: "Changes"
+    colour: "<e>"
+    lines:
+      - "Armor Wardrobe, Equipment Wardrobe and Loadout slots are now three separate upgrades instead of sharing one counter."
+      - "Ender Chest pages beyond the first two come from Elizabeth, up to the nine pages this menu shows."
+  - heading: "Not here yet"
+    colour: "<c>"
+    lines:
+      - "Island Size, Coins Allowance, the Bazaar Flipper and Garden Farming Fortune upgrades are listed but cannot be started yet."
+      - "Gems cannot be bought; they come from staff."

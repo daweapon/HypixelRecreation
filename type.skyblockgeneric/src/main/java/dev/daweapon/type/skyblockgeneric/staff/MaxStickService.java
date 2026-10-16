@@ -136,6 +136,7 @@ public final class MaxStickService {
     // Last: maxSkyBlockLevel tops the total up to real Hypixel's maximum, so every step above it
     // must have granted its own SkyBlock XP causes first or the top-up would overshoot.
     private static final List<Step> STEPS = List.of(
+            new Step("Community Shop upgrades", dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades::maxAll),
             new Step("Skills", MaxStickService::maxSkills),
             new Step("Collections", MaxStickService::maxCollections),
             new Step("Coins", MaxStickService::maxCoins),

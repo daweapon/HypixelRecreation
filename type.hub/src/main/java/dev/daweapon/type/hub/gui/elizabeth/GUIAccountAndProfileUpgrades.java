@@ -15,7 +15,16 @@ import dev.daweapon.type.generic.gui.inventory.ItemStacks;
 import dev.daweapon.type.generic.gui.inventory.item.GUIClickableItem;
 import dev.daweapon.type.generic.gui.inventory.item.GUIItem;
 import dev.daweapon.type.generic.user.HypixelPlayer;
+import dev.daweapon.commons.StringUtility;
+import dev.daweapon.type.skyblockgeneric.elections.FameRank;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeCatalog;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeData;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GUIAccountAndProfileUpgrades extends HypixelInventoryGUI {
 
@@ -46,8 +55,8 @@ public class GUIAccountAndProfileUpgrades extends HypixelInventoryGUI {
                 <7>SkyBlock account with permanent
                 <7>upgrades.
 
-                <7>Profile: <8>Nothing going on!
-                <7>Account: <8>None underway!
+                <7>Profile: {profile}
+                <7>Account: {account}
 
                 """),
         BOOSTER_COOKIE(new GUIBuyBoosterCookies(), Material.COOKIE, true, """
@@ -95,14 +104,121 @@ public class GUIAccountAndProfileUpgrades extends HypixelInventoryGUI {
             this.textBlock = textBlock;
         }
 
-        public ItemStack.Builder buildStack(boolean selected) {
+        public ItemStack.Builder buildStack(boolean selected, HypixelPlayer player) {
+            String text = textBlock;
+            if (this == ACCOUNT_AND_PROFILE_UPGRADES) {
+                SkyBlockPlayer skyBlockPlayer = (SkyBlockPlayer) player;
+                text = text.replace("{profile}", status(skyBlockPlayer, CommunityUpgradeId.Scope.PROFILE, "<8>Nothing going on!"))
+                        .replace("{account}", status(skyBlockPlayer, CommunityUpgradeId.Scope.ACCOUNT, "<8>None underway!"));
+            }
             ItemStack.Builder builder = ItemStacks.item(material,
-                    textBlock + (selected ? "<a>Currently selected!" : "<e>Click to view!"));
+                    text + (selected ? "<a>Currently selected!" : "<e>Click to view!"));
             return enchanted ? ItemStacks.enchanted(builder) : builder;
         }
     }
 
+    private static String status(SkyBlockPlayer player, CommunityUpgradeId.Scope scope, String idle) {
+        CommunityUpgradeData.Active active = CommunityUpgrades.active(player, scope);
+        if (active == null) return idle;
+        return "<e>" + active.id().getDisplayName() + " " + StringUtility.getAsRomanNumeral(active.targetTier());
+    }
+
+    private static final int[] PROFILE_SLOTS = {19, 20, 21, 22, 23};
+    private static final int[] ACCOUNT_SLOTS = {28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40};
+
+    private void placeUpgrades() {
+        place(CommunityUpgradeId.Scope.PROFILE, PROFILE_SLOTS);
+        place(CommunityUpgradeId.Scope.ACCOUNT, ACCOUNT_SLOTS);
+    }
+
+    private void place(CommunityUpgradeId.Scope scope, int[] slots) {
+        int index = 0;
+        for (CommunityUpgradeId id : CommunityUpgradeId.values()) {
+            if (id.getScope() != scope) continue;
+            set(new GUIClickableItem(slots[index++]) {
+                @Override
+                public void run(InventoryPreClickEvent e, HypixelPlayer p) {
+                    SkyBlockPlayer player = (SkyBlockPlayer) p;
+                    CommunityUpgradeData.Active active = CommunityUpgrades.active(player, scope);
+                    boolean running = active != null && active.id() == id;
+                    CommunityUpgrades.Result result = running && e.getClick() instanceof net.minestom.server.inventory.click.Click.LeftShift
+                            ? CommunityUpgrades.skip(player, scope)
+                            : running ? CommunityUpgrades.Result.BUSY : CommunityUpgrades.start(player, id);
+                    announce(player, id, result);
+                    new GUIAccountAndProfileUpgrades().open(player);
+                }
+
+                @Override
+                public ItemStack.Builder getItem(HypixelPlayer p) {
+                    return upgradeStack((SkyBlockPlayer) p, id, scope);
+                }
+            });
+        }
+    }
+
+    private static void announce(SkyBlockPlayer player, CommunityUpgradeId id, CommunityUpgrades.Result result) {
+        switch (result) {
+            case STARTED -> player.sendMessage("<a>You started the {} upgrade!", id.getDisplayName());
+            case FINISHED -> player.sendMessage("<a>{} upgraded!", id.getDisplayName());
+            case SKIPPED -> player.sendMessage("<a>You skipped the wait!");
+            case NO_GEMS -> player.sendMessage("<c>You don't have enough Gems!");
+            case BUSY -> player.sendMessage("<c>You already have a {} upgrade underway!",
+                    id.getScope() == CommunityUpgradeId.Scope.PROFILE ? "Profile" : "Account");
+            case MAXED -> player.sendMessage("<c>This upgrade is already maxed!");
+            case UNAVAILABLE -> player.sendMessage("<c>This upgrade is not available yet.");
+            default -> {
+            }
+        }
+    }
+
+    private static ItemStack.Builder upgradeStack(SkyBlockPlayer player, CommunityUpgradeId id, CommunityUpgradeId.Scope scope) {
+        int tier = CommunityUpgrades.tier(player, id);
+        int max = CommunityUpgradeCatalog.maxTier(id);
+        boolean implemented = id.isImplemented();
+        List<String> lore = new ArrayList<>();
+        lore.add("<8>" + (scope == CommunityUpgradeId.Scope.PROFILE ? "Profile Upgrade" : "Account Upgrade"));
+        lore.add("");
+        lore.add("<7>" + id.getDescription());
+        lore.add("");
+        lore.add("<7>Tier: <a>" + tier + "<7>/<a>" + max);
+        if (tier > 0) lore.add("<7>Current: <a>" + id.formatValue(CommunityUpgrades.valueAt(id, tier)));
+        CommunityUpgradeCatalog.Tier next = CommunityUpgrades.nextTier(player, id);
+        CommunityUpgradeData.Active active = CommunityUpgrades.active(player, scope);
+        boolean running = active != null && active.id() == id;
+        if (next == null) {
+            lore.add("");
+            lore.add("<a>Maxed out!");
+        } else {
+            lore.add("<7>Next: <a>" + id.formatValue(next.value()));
+            lore.add("");
+            lore.add("<7>Cost: " + (next.gems() == 0 ? "<a>Free" : "<a>" + StringUtility.commaify(next.gems()) + " Gems"));
+            lore.add("<7>Time: <a>" + (next.hours() == 0 ? "Instant" : formatHours(next.hours())));
+            lore.add("");
+            if (!implemented) {
+                lore.add("<c>Not available yet.");
+            } else if (running) {
+                long remaining = Math.max(0, active.completesAt() - System.currentTimeMillis());
+                lore.add("<7>Underway: <e>" + formatHours((long) Math.ceil(remaining / 3_600_000D)) + " left");
+                lore.add("<e>Shift-click to skip for <a>" + CommunityUpgrades.skipCost(active) + " Gems<e>.");
+            } else if (active != null) {
+                lore.add("<c>Another " + (scope == CommunityUpgradeId.Scope.PROFILE ? "Profile" : "Account") + " upgrade is underway.");
+            } else {
+                lore.add("<e>Click to start!");
+            }
+        }
+        ItemStack.Builder builder = ItemStacks.item(id.getIcon(), "<a>" + id.getDisplayName() + (tier > 0 ? " " + StringUtility.getAsRomanNumeral(tier) : "")
+                + "\n" + String.join("\n", lore));
+        return running || next == null ? ItemStacks.enchanted(builder) : builder;
+    }
+
+    private static String formatHours(long hours) {
+        if (hours >= 24 && hours % 24 == 0) return hours / 24 + (hours == 24 ? " day" : " days");
+        if (hours >= 24) return hours / 24 + "d " + hours % 24 + "h";
+        return hours + (hours == 1 ? " hour" : " hours");
+    }
+
     public void onOpen(InventoryGUIOpenEvent e) {
+        CommunityUpgrades.finishDue((SkyBlockPlayer) getPlayer());
         fill(ItemStacks.filler(Material.BLACK_STAINED_GLASS_PANE));
 
         ShopCategorys[] allShopCategorys = ShopCategorys.values();
@@ -118,7 +234,7 @@ public class GUIAccountAndProfileUpgrades extends HypixelInventoryGUI {
                 }
                 @Override
                 public ItemStack.Builder getItem(HypixelPlayer p) {
-                    return shopCategorys.buildStack(slot == 2);
+                    return shopCategorys.buildStack(slot == 2, p);
                 }
             });
             index++;
@@ -161,16 +277,17 @@ public class GUIAccountAndProfileUpgrades extends HypixelInventoryGUI {
                         <7>Bits: <b>{:,}
                         <8>Earn from Booster Cookies!
 
-                        <7>Fame Rank: <e>
+                        <7>Fame Rank: <e>{}
                         <8>Rank up by spending gems & bits!
-                        <e>Click to get link!""", player.getGems(), player.getBits()));
+                        <e>Click to get link!""", player.getGems(), player.getBits(), FameRank.forFame(player.getFame()).getDisplayName()));
             }
         });
+        placeUpgrades();
         updateItemStacks(getInventory(), getPlayer());
     }
     @Override
     public boolean allowHotkeying() {
-        return false;
+        return true;
     }
 
     @Override
@@ -183,5 +300,6 @@ public class GUIAccountAndProfileUpgrades extends HypixelInventoryGUI {
 
     @Override
     public void onBottomClick(InventoryPreClickEvent e) {
+        e.setCancelled(true);
     }
 }

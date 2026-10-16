@@ -1,5 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.accessory;
 
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import dev.daweapon.type.generic.data.datapoints.DatapointInteger;
 import dev.daweapon.type.skyblockgeneric.collection.CustomCollectionAward;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -56,7 +58,7 @@ public final class AccessoryBagSlots {
     }
 
     public static int communityCenter(SkyBlockPlayer player) {
-        return 0;
+        return Math.min(COMMUNITY_CENTER_MAX, CommunityUpgrades.intValue(player, CommunityUpgradeId.ACCESSORY_BAG));
     }
 
     public static int redstoneMiner(SkyBlockPlayer player) {

@@ -3,6 +3,7 @@ package dev.daweapon.type.hub.npcs;
 import net.minestom.server.coordinate.Pos;
 import dev.daweapon.type.generic.entity.npc.HypixelNPC;
 import dev.daweapon.type.generic.entity.npc.configuration.HumanConfiguration;
+import dev.daweapon.type.generic.entity.npc.trait.NPCAbiphoneTrait;
 import dev.daweapon.type.generic.event.custom.NPCInteractEvent;
 import dev.daweapon.type.generic.user.HypixelPlayer;
 import dev.daweapon.type.hub.gui.elizabeth.GUIBitsShop;
@@ -12,7 +13,7 @@ import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import java.util.stream.Stream;
 
 // NPC for Elizabeth, who runs the Hub's Community/Bits Shop for players above SkyBlock level 3
-public class NPCElizabeth extends HypixelNPC {
+public class NPCElizabeth extends HypixelNPC implements NPCAbiphoneTrait {
 
     public NPCElizabeth() {
         super(new HumanConfiguration() {
@@ -41,6 +42,11 @@ public class NPCElizabeth extends HypixelNPC {
                 return true;
             }
         });
+    }
+
+    @Override
+    public String getAbiphoneKey() {
+        return "elizabeth";
     }
 
     @Override

@@ -1,9 +1,12 @@
 package dev.daweapon.type.skyblockgeneric.wardrobe;
 
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import net.minestom.server.item.Material;
 import dev.daweapon.type.generic.user.categories.Rank;
 import dev.daweapon.type.skyblockgeneric.data.datapoints.DatapointWardrobe;
 import dev.daweapon.type.skyblockgeneric.item.SkyBlockItem;
+import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 
 public final class WardrobeService {
 
@@ -15,8 +18,8 @@ public final class WardrobeService {
         return 2;
     }
 
-    public static boolean isUnlocked(int slot, Rank rank, DatapointWardrobe.WardrobeData data) {
-        return slot < Math.min(27, rankSlots(rank) + data.getCommunitySlots());
+    public static boolean isUnlocked(int slot, SkyBlockPlayer player) {
+        return slot < Math.min(27, rankSlots(player.getRank()) + CommunityUpgrades.intValue(player, CommunityUpgradeId.ARMOR_WARDROBE));
     }
 
     public static boolean accepts(int pieceIndex, SkyBlockItem item) {

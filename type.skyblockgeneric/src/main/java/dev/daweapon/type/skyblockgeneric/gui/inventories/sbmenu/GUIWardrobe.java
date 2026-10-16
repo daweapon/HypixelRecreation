@@ -63,7 +63,7 @@ public class GUIWardrobe implements StatefulView<GUIWardrobe.WardrobeState> {
 
         for (int column = 0; column < 9; column++) {
             int setIndex = start + column;
-            boolean unlocked = WardrobeService.isUnlocked(setIndex, player.getRank(), data);
+            boolean unlocked = WardrobeService.isUnlocked(setIndex, player);
             DatapointWardrobe.ArmorSet set = data.getSets()[setIndex];
             for (int piece = 0; piece < 4; piece++) {
                 int guiSlot = piece * 9 + column;
@@ -228,7 +228,7 @@ public class GUIWardrobe implements StatefulView<GUIWardrobe.WardrobeState> {
         int pageStart = page * 9;
         for (int distance = 0; distance < data.getSets().length; distance++) {
             int setIndex = (pageStart + distance) % data.getSets().length;
-            if (!WardrobeService.isUnlocked(setIndex, player.getRank(), data)
+            if (!WardrobeService.isUnlocked(setIndex, player)
                     || data.getEquippedSlot() == setIndex || isSelectedForLoadout(player, setIndex)) {
                 continue;
             }
@@ -259,7 +259,7 @@ public class GUIWardrobe implements StatefulView<GUIWardrobe.WardrobeState> {
         DatapointWardrobe.WardrobeData data = data(player);
         for (int column = 0; column < 9; column++) {
             int setIndex = page * 9 + column;
-            if (!WardrobeService.isUnlocked(setIndex, player.getRank(), data)) continue;
+            if (!WardrobeService.isUnlocked(setIndex, player)) continue;
             for (int piece = 0; piece < 4; piece++) {
                 SkyBlockItem item = new SkyBlockItem(ctx.inventory().getItemStack(piece * 9 + column));
                 if (data.getEquippedSlot() == setIndex) {

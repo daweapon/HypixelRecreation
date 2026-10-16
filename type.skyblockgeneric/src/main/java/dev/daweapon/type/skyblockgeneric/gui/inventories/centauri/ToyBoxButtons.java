@@ -94,6 +94,7 @@ final class ToyBoxButtons {
                 of(Material.NETHER_STAR, "<d>Every Essence", "<8>The full collection.", "<7>Gain <d>100,000<7> of every essence type.", p -> {
                     for (EssenceType type : EssenceType.values()) Essences.add(p, type, 100_000);
                 }),
+                of(Material.HOPPER, "<d>Max Community Upgrades", "<8>Elizabeth is thrilled.", "<7>Finish every <d>Account <7>and <d>Profile Upgrade <7>at its top tier.", dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades::maxAll),
                 unavailable(Material.PRISMARINE_SHARD, "<a>Shards!", "<7>Get 10 of each available Shard."));
     }
 

@@ -46,7 +46,7 @@ public class GUIHypixelRanks extends HypixelInventoryGUI {
                 }
                 @Override
                 public ItemStack.Builder getItem(HypixelPlayer p) {
-                    return shopCategorys.buildStack(slot == 7);
+                    return shopCategorys.buildStack(slot == 7, p);
                 }
             });
             index++;

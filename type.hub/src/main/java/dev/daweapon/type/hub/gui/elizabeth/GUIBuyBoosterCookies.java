@@ -92,7 +92,7 @@ public class GUIBuyBoosterCookies extends HypixelInventoryGUI {
                 }
                 @Override
                 public ItemStack.Builder getItem(HypixelPlayer p) {
-                    return shopCategorys.buildStack(slot == 3);
+                    return shopCategorys.buildStack(slot == 3, p);
                 }
             });
             index++;
