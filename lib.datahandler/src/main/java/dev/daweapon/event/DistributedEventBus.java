@@ -247,8 +247,29 @@ public class DistributedEventBus extends EventBus {
 
     // ==================== Pub/Sub ====================
 
+    private final ThreadLocal<List<String>> batched = new ThreadLocal<>();
+
+    @Override
+    public void batch(Runnable action) {
+        if (batched.get() != null) {
+            action.run();
+            return;
+        }
+        List<String> pending = new ArrayList<>();
+        batched.set(pending);
+        try {
+            action.run();
+        } finally {
+            batched.remove();
+            if (!pending.isEmpty()) pubSubHandler.publishAll(pending);
+        }
+    }
+
     private void publish(EventMessage message) {
-        pubSubHandler.publish(GSON.toJson(message));
+        String json = GSON.toJson(message);
+        List<String> pending = batched.get();
+        if (pending != null) pending.add(json);
+        else pubSubHandler.publish(json);
     }
 
     @SuppressWarnings("unchecked")

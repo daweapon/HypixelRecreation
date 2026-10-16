@@ -42,6 +42,11 @@ public class EventBus {
     }
 
     @SuppressWarnings("unchecked")
+    /** Runs the action; subclasses may coalesce whatever the action publishes into one flush. */
+    public void batch(Runnable action) {
+        action.run();
+    }
+
     public <T> void firePlayerDataChanged(DataField<T> field, UUID player, T oldValue, T newValue) {
         List<PlayerDataListener<?>> listeners = playerListeners.get(field.fullKey());
         if (listeners != null) {

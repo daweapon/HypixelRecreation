@@ -290,8 +290,12 @@ class TransactionManager {
 
         // A transactional write is still a write: without this, committed changes reached storage
         // but no listener ran locally, nothing was published, and peers kept serving stale caches.
-        @SuppressWarnings("unchecked")
         private void fireEvents(long playerVersion, Map<String, Long> linkedVersions) {
+            eventBus.batch(() -> publishEvents(playerVersion, linkedVersions));
+        }
+
+        @SuppressWarnings("unchecked")
+        private void publishEvents(long playerVersion, Map<String, Long> linkedVersions) {
             for (Map.Entry<String, Write> entry : newPlayerValues.entrySet()) {
                 Write write = entry.getValue();
                 eventBus.firePlayerDataChanged((DataField<Object>) write.field(), player,

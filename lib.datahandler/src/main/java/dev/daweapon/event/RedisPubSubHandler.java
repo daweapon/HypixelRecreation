@@ -3,6 +3,9 @@ package dev.daweapon.event;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPubSub;
+import redis.clients.jedis.Pipeline;
+
+import java.util.List;
 
 public class RedisPubSubHandler implements PubSubHandler {
     private final JedisPool pool;
@@ -25,6 +28,18 @@ public class RedisPubSubHandler implements PubSubHandler {
     public void publish(String message) {
         try (Jedis jedis = pool.getResource()) {
             jedis.publish(channel, message);
+        }
+    }
+
+    @Override
+    public void publishAll(List<String> messages) {
+        if (messages.size() < 2) {
+            PubSubHandler.super.publishAll(messages);
+            return;
+        }
+        try (Jedis jedis = pool.getResource(); Pipeline pipeline = jedis.pipelined()) {
+            for (String message : messages) pipeline.publish(channel, message);
+            pipeline.sync();
         }
     }
 
