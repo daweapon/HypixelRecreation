@@ -62,6 +62,17 @@ class BazaarMarketTest {
     }
 
     @Test
+    void sellerTaxRateComesFromThePerSellerPolicy() {
+        BazaarMarket flipped = new BazaarMarket(store, published::add, false,
+                owner -> owner.equals(seller) ? 0.01 : 0.0125);
+        flipped.submitSell(ITEM, seller, sellerProfile, 100, 10);
+        flipped.submitBuy(ITEM, buyer, buyerProfile, 100, 10);
+
+        assertEquals(1, trades().size());
+        assertEquals(10.0, trades().getFirst().taxTaken(), EPS);
+    }
+
+    @Test
     void nonCrossingOrdersRestInTheBook() {
         market.submitSell(ITEM, seller, sellerProfile, 100, 5);
         market.submitBuy(ITEM, buyer, buyerProfile, 90, 5);

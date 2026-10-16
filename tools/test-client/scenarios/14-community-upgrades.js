@@ -102,6 +102,17 @@ module.exports = {
             return lore;
         });
 
+        for (const [name, scopeNote] of [['Island Size', 'profile'], ['Bazaar Flipper', 'account']]) {
+            await t.step(`${name} I starts and skips (${scopeNote})`, async () => {
+                const entry = bot.window().slots.find((slot) => slot.name.includes(name));
+                await bot.click(entry.slot, { settleMs: 1500 });
+                await bot.click(entry.slot, { button: 0, mode: 1, settleMs: 2000 });
+                const lore = bot.window().slots.find((slot) => slot.name.includes(name)).lore.join(' ');
+                t.assert(/Tier: 1\//.test(lore), `${name} lore after skip: ${lore}`);
+                return lore;
+            });
+        }
+
         await t.step('Magic Find went up by 1', async () => {
             const after = await magicFind();
             t.assert(after - before === 1, `Magic Find ${before} -> ${after}`);

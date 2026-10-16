@@ -20,6 +20,7 @@ public final class IslandLifecycleSteps {
         IslandLifecycle.register(new MinionLoadStep());
         IslandLifecycle.register(new PortalBuildStep());
         IslandLifecycle.register(new ExperimentationTableLoadStep());
+        IslandLifecycle.register(new IslandBorderLoadStep());
         IslandLifecycle.register(new MinionSaveStep());
         IslandLifecycle.register(new JerrySaveStep());
 

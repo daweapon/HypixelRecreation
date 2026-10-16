@@ -75,6 +75,9 @@ public enum CustomCollectionAward {
     SACK_OF_SACKS_UPGRADE_4("<a>Giant Sack of Sacks Upgrade <7>(+4 slots)"),
     SACK_OF_SACKS_UPGRADE_5("<a>Massive Sack of Sacks Upgrade <7>(+5 slots)"),
 
+    // BREWING
+    COLD_RESISTANCE_POTION("<a>Cold Resistance Potion <7>Recipe"),
+
     // FORAGING LEVEL CAP
     FIG_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),
     MANGROVE_FORAGING_LEVEL_CAP("<a>Foraging Level Cap <7>(+1)"),

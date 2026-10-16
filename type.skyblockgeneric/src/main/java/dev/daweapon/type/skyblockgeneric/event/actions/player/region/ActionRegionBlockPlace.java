@@ -8,13 +8,13 @@ import dev.daweapon.type.generic.event.EventNodes;
 import dev.daweapon.type.generic.event.HypixelEventClass;
 import dev.daweapon.type.generic.event.phase.EventPhase;
 import dev.daweapon.type.generic.event.phase.PhasedEvent;
+import dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades;
 import dev.daweapon.type.skyblockgeneric.garden.farm.GardenPlotLock;
 import dev.daweapon.type.skyblockgeneric.user.SkyBlockPlayer;
 import dev.daweapon.type.generic.utility.MathUtility;
 
 // Restricts block placement to within island bounds and tags player-placed blocks on island servers
 public class ActionRegionBlockPlace implements HypixelEventClass {
-    private static final int ISLAND_SIZE = 161;
     private static final Tag<Boolean> PLAYER_PLACED_TAG = Tag.Boolean("player_placed");
 
     @PhasedEvent(node = EventNodes.PLAYER, requireDataLoaded = false, phase = EventPhase.GAMEPLAY)
@@ -33,7 +33,7 @@ public class ActionRegionBlockPlace implements HypixelEventClass {
             return;
         }
 
-        int islandSizePlus = (int) Math.floor((double) ISLAND_SIZE/2);
+        int islandSizePlus = (int) Math.floor((double) CommunityUpgrades.islandSize(player) / 2);
         int islandSizeMinus = -islandSizePlus;
         Point position = event.getBlockPosition();
         int x = position.blockX();

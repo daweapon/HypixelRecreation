@@ -342,8 +342,9 @@ public class GUIBazaarItem extends HypixelInventoryGUI implements RefreshingGUI 
             public void run(InventoryPreClickEvent e, HypixelPlayer p) {
                 SkyBlockPlayer player = (SkyBlockPlayer) p;
 
-                new GUIBazaarOrderAmountSelection(GUIBazaarItem.this, product, true, false, 71680, player.getCoins())
-                        .openAmountSelection(player)
+                orderSlotFree(player).thenCompose(free -> !free ? java.util.concurrent.CompletableFuture.completedFuture(0)
+                        : new GUIBazaarOrderAmountSelection(GUIBazaarItem.this, product, true, false, 71680, player.getCoins())
+                        .openAmountSelection(player))
                         .thenAccept(amount -> {
                             if (amount <= 0) return;
 
@@ -402,8 +403,9 @@ public class GUIBazaarItem extends HypixelInventoryGUI implements RefreshingGUI 
                     return;
                 }
 
-                new GUIBazaarOrderAmountSelection(GUIBazaarItem.this, product, false, false, have, 0)
-                        .openAmountSelection(player)
+                orderSlotFree(player).thenCompose(free -> !free ? java.util.concurrent.CompletableFuture.completedFuture(0)
+                        : new GUIBazaarOrderAmountSelection(GUIBazaarItem.this, product, false, false, have, 0)
+                        .openAmountSelection(player))
                         .thenAccept(amount -> {
                             if (amount <= 0) return;
 
@@ -477,5 +479,12 @@ public class GUIBazaarItem extends HypixelInventoryGUI implements RefreshingGUI 
     @Override
     public void onBottomClick(InventoryPreClickEvent e) {
         e.setCancelled(true);
+    }
+
+    private java.util.concurrent.CompletableFuture<Boolean> orderSlotFree(SkyBlockPlayer player) {
+        return player.getBazaarConnector().hasFreeOrderSlot().thenApply(free -> {
+            if (!free) player.sendMessage("<gold>[Bazaar] <red>You have reached your maximum number of open orders! Cancel one or upgrade Bazaar Flipper with Elizabeth.");
+            return free;
+        });
     }
 }

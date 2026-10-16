@@ -40,6 +40,7 @@ public class BazaarMarket {
     }
 
     private static final double TAX_RATE = 0.0125;
+    private final java.util.function.ToDoubleFunction<UUID> sellerTaxRate;
     private static final long EXPIRE_DAYS = 7;
 
     private final OrderStore orders;
@@ -52,10 +53,17 @@ public class BazaarMarket {
     private final Map<UUID, OrderRefundTracker> refundTrackers = new ConcurrentHashMap<>();
 
     private BazaarMarket() {
-        this(new RepositoryOrderStore(), new BazaarPropagator()::propagate, true);
+        this(new RepositoryOrderStore(), new BazaarPropagator()::propagate, true,
+                dev.daweapon.commons.skyblock.bazaar.BazaarFlipper::taxRateOf);
     }
 
     BazaarMarket(OrderStore orders, java.util.function.Consumer<BazaarTransaction> publisher, boolean scheduleExpiry) {
+        this(orders, publisher, scheduleExpiry, seller -> TAX_RATE);
+    }
+
+    BazaarMarket(OrderStore orders, java.util.function.Consumer<BazaarTransaction> publisher, boolean scheduleExpiry,
+                 java.util.function.ToDoubleFunction<UUID> sellerTaxRate) {
+        this.sellerTaxRate = sellerTaxRate;
         this.orders = orders;
         this.publisher = publisher;
         if (scheduleExpiry) {
@@ -235,7 +243,7 @@ public class BazaarMarket {
             double qty         = Math.min(b.remaining, s.remaining);
             double actualPrice = s.originalPrice;
             double gross       = actualPrice * qty;
-            double tax         = gross * TAX_RATE;
+            double tax         = gross * sellerTaxRate.applyAsDouble(s.owner);
 
             // Track partial fills/refunds for the buy side
             OrderRefundTracker tracker = refundTrackers.get(b.orderId);

@@ -185,6 +185,12 @@ items:
       - id: ENCHANTED
         recipe_type: MINING
         item_id: GLACITE
+      - id: BREWING_INGREDIENT
+        brewing_time_seconds: 20
+        effect: COLD_RESISTANCE
+        effect_duration: 180
+        effect_amplifier: 0
+        alchemy_xp: 500
       - id: SELLABLE
         value: 1920.0
       - id: ITEM_MODEL

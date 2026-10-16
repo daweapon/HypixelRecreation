@@ -237,6 +237,12 @@ public class GUIBrewingStand extends HypixelInventoryGUI implements RefreshingGU
 
         BrewingIngredientComponent brewComp = ingredientItem.getComponent(BrewingIngredientComponent.class);
 
+        if ("COLD_RESISTANCE".equals(brewComp.getPotionEffect()) && getPlayer() instanceof SkyBlockPlayer brewer
+                && !brewer.hasCustomCollectionAward(dev.daweapon.type.skyblockgeneric.collection.CustomCollectionAward.COLD_RESISTANCE_POTION)) {
+            brewer.sendMessage("<c>You need Glacite Collection II to brew this potion!");
+            return;
+        }
+
         // Validate all 3 potion slots have valid items
         for (SkyBlockItem potion : potionItems) {
             if (potion == null || potion.isNA() || potion.isAir()) return;

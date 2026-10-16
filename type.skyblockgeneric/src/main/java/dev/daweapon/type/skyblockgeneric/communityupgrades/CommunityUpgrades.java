@@ -1,6 +1,7 @@
 package dev.daweapon.type.skyblockgeneric.communityupgrades;
 
 import dev.daweapon.commons.data.SharedData;
+import dev.daweapon.type.skyblockgeneric.achievement.SkyBlockAchievementSync;
 import dev.daweapon.type.generic.data.HypixelDataHandler;
 import dev.daweapon.type.generic.data.datapoints.DatapointString;
 import dev.daweapon.type.skyblockgeneric.data.SkyBlockDataHandler;
@@ -42,6 +43,11 @@ public final class CommunityUpgrades {
         Object parsed = new JSONTokener(raw).nextValue();
         String json = parsed instanceof String text ? text : raw;
         return (int) valueAt(id, CommunityUpgradeData.fromJson(json).tier(id));
+    }
+
+    public static int islandSize(SkyBlockPlayer player) {
+        int upgraded = intValue(player, CommunityUpgradeId.ISLAND_SIZE);
+        return upgraded > 0 ? upgraded : IslandBorder.DEFAULT_SIZE;
     }
 
     public static int intValue(SkyBlockPlayer player, CommunityUpgradeId id) {
@@ -142,6 +148,7 @@ public final class CommunityUpgrades {
             }
         }
         if (changed) datapoint.setValue(storage);
+        if (extra > 0) SkyBlockAchievementSync.syncDeepStorage(player);
     }
 
     public static void maxAll(SkyBlockPlayer player) {

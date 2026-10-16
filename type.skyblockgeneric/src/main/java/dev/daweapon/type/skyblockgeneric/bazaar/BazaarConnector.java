@@ -55,6 +55,13 @@ public class BazaarConnector {
                         .toList());
     }
 
+    public CompletableFuture<Boolean> hasFreeOrderSlot() {
+        int limit = dev.daweapon.commons.skyblock.bazaar.BazaarFlipper.maxOrders(
+                dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgrades.tier(player,
+                        dev.daweapon.type.skyblockgeneric.communityupgrades.CommunityUpgradeId.BAZAAR_FLIPPER));
+        return getPendingOrders().thenApply(orders -> orders.size() < limit).exceptionally(error -> true);
+    }
+
     public CompletableFuture<Boolean> cancelOrder(UUID orderId) {
         var message = new BazaarCancelProtocol.CancelMessage(
                 orderId,

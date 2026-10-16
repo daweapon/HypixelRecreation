@@ -9,6 +9,7 @@ sections:
       - "Open the Community Shop's Account & Profile Upgrades tab to start an upgrade. You can run one Profile upgrade and one Account upgrade at a time."
       - "Profile upgrades are shared with your co-op: Minion Slots, Guests Limit and Co-op Slots. Account upgrades apply to every profile you own."
       - "Account upgrades: Armor Wardrobe, Equipment Wardrobe, Loadout, Heart of the Mountain and Heart of the Forest slots, Ender Chest pages, Accessory Bag slots, Sack of Sacks slots, Magic Find and Garden Farming Fortune (only on the Garden)."
+      - "Island Size widens your island's build area and shows a world border."
       - "Profile upgrades also include Coins Allowance: coins paid once for each day (UTC) that you log in."
       - "Early tiers are free and only cost time. Later tiers cost Gems. Shift-click a running upgrade to skip the wait for 6 Gems per hour."
       - "You hear about finished upgrades in chat, and Elizabeth calls you when you have her in your Abiphone."
@@ -20,5 +21,5 @@ sections:
   - heading: "Not here yet"
     colour: "<c>"
     lines:
-      - "Island Size and the Bazaar Flipper are listed but cannot be started yet."
+      - "Elizabeth now rings you with three pings when you have her in your Abiphone, and the Bazaar limits you to 14 open orders (Bazaar Flipper adds 7 or 14 and lowers the tax on what you sell)."
       - "Gems cannot be bought; they come from staff."

@@ -17,7 +17,7 @@ class IslandLifecycleStepsTest {
 
     private static List<IslandLifecycleStep> steps() {
         return List.of(new JerryDefaultsStep(), new StarterChestStep(), new FirstMinionStep(),
-                new JerryLoadStep(), new MinionLoadStep(), new PortalBuildStep(),
+                new JerryLoadStep(), new MinionLoadStep(), new PortalBuildStep(), new IslandBorderLoadStep(),
                 new MinionSaveStep(), new JerrySaveStep());
     }
 

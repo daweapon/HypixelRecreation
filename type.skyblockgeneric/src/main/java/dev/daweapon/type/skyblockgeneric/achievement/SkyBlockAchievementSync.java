@@ -79,6 +79,10 @@ public final class SkyBlockAchievementSync {
         if (found > 0) handler(player).setProgressByTrigger("skyblock.fairy_soul_found", found);
     }
 
+    public static void syncDeepStorage(SkyBlockPlayer player) {
+        handler(player).setProgressByTrigger("skyblock.deep_storage_trigger", 1);
+    }
+
     private static PlayerAchievementHandler handler(SkyBlockPlayer player) {
         return player.getAchievementHandler();
     }
